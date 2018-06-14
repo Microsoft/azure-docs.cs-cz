@@ -1,12 +1,12 @@
 ---
-title: "Použití sady .NET SDK pro Microsoft Azure StorSimple Data Manager úlohy | Microsoft Docs"
-description: "Další informace o použití sady .NET SDK ke spuštění úlohy Data Manager zařízení StorSimple"
+title: Použití sady .NET SDK pro Microsoft Azure StorSimple Data Manager úlohy | Microsoft Docs
+description: Další informace o použití sady .NET SDK ke spuštění úlohy Data Manager zařízení StorSimple
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27928232"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>Zahájit transformaci dat pomocí .net SDK
 

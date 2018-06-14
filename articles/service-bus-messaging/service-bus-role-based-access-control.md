@@ -1,12 +1,12 @@
 ---
-title: "Azure preview Service Bus Role-Based řízení přístupu (RBAC) | Microsoft Docs"
-description: "Řízení přístupu na základě role Azure Service Bus"
+title: Azure preview Service Bus Role-Based řízení přístupu (RBAC) | Microsoft Docs
+description: Řízení přístupu na základě role Azure Service Bus
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783412"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktivní Directory Role-Based řízení přístupu (preview)
 

@@ -1,11 +1,11 @@
 ---
-title: "Běžné příčiny cloudové služby rolí recyklace | Microsoft Docs"
-description: "Cloudové služby role, kterou najednou recykluje může způsobit významné výpadky. Tady jsou některé běžné problémy, které způsobí role recyklace, které mohou pomoci zkrátit dobu prostojů."
+title: Běžné příčiny cloudové služby rolí recyklace | Microsoft Docs
+description: Cloudové služby role, kterou najednou recykluje může způsobit významné výpadky. Tady jsou některé běžné problémy, které způsobí role recyklace, které mohou pomoci zkrátit dobu prostojů.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 533930d1-8035-4402-b16a-cf887b2c4f85
 ms.service: cloud-services
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2017
+ms.locfileid: "23984282"
 ---
 # <a name="common-issues-that-cause-roles-to-recycle"></a>Běžné potíže, které můžou způsobit recyklaci rolí
 Tento článek popisuje některé běžné příčiny problémů s nasazením a poskytuje tipy k řešení potíží k řešení těchto problémů. Jako ukazatel toho, zda existuje problém s aplikací je, když se nepodaří spustit instanci role, nebo ji cyklů mezi stavy inicializace, zaneprázdněn a ukončení.

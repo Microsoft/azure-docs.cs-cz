@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření aplikace pro iOS v Azure App Service Mobile Apps | Dokumentace Microsoftu"
-description: "V tomto kurzu začnete používat back-endy mobilních aplikací Azure pro vývoj pro iOS v Objective-C nebo Swiftu."
+title: Vytvoření aplikace pro iOS v Azure App Service Mobile Apps | Dokumentace Microsoftu
+description: V tomto kurzu začnete používat back-endy mobilních aplikací Azure pro vývoj pro iOS v Objective-C nebo Swiftu.
 services: app-service\mobile
 documentationcenter: ios
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 6461a899-9340-42dd-b118-ffc5ba00e846
 ms.service: app-service-mobile
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27595310"
 ---
 # <a name="create-an-ios-app"></a>Vytvoření aplikace pro iOS
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

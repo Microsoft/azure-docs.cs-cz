@@ -1,11 +1,11 @@
 ---
-title: "Zásady ukládání do mezipaměti Azure API Management | Microsoft Docs"
-description: "Další informace o ukládání do mezipaměti zásady, které jsou k dispozici pro použití v Azure API Management."
+title: Zásady ukládání do mezipaměti Azure API Management | Microsoft Docs
+description: Další informace o ukládání do mezipaměti zásady, které jsou k dispozici pro použití v Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8147199c-24d8-439f-b2a9-da28a70a890c
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26344818"
 ---
 # <a name="api-management-caching-policies"></a>Ukládání do mezipaměti zásady služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  

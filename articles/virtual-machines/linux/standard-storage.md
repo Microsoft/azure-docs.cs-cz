@@ -1,8 +1,8 @@
 ---
-title: "Standardní úložiště pro disky virtuálního počítače s Linuxem v Azure | Microsoft Docs"
-description: "Prodiskutujte nákladově efektivní standardní úložiště a disky virtuálního počítače s Linuxem a nespravované."
+title: Standardní úložiště pro disky virtuálního počítače s Linuxem v Azure | Microsoft Docs
+description: Prodiskutujte nákladově efektivní standardní úložiště a disky virtuálního počítače s Linuxem a nespravované.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: yuemlu
 manager: jeconnoc
 editor: tysonn
@@ -20,5 +20,6 @@ ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/02/2017
+ms.locfileid: "23949136"
 ---
 [!INCLUDE [virtual-machines-common-standard-storage.md](../../../includes/virtual-machines-common-standard-storage.md)]

@@ -1,11 +1,11 @@
 ---
-title: "Přidání akce dotazu v aplikace logiky | Microsoft Docs"
-description: "Přehled akce dotazu pro provádění akcí, jako je pole filtru."
-services: 
-documentationcenter: 
+title: Přidání akce dotazu v aplikace logiky | Microsoft Docs
+description: Přehled akce dotazu pro provádění akcí, jako je pole filtru.
+services: ''
+documentationcenter: ''
 author: jeffhollan
 manager: erikre
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 34e702c7-f9e5-4885-9266-fc7404adecfe
 ms.service: logic-apps
@@ -20,6 +20,7 @@ ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/19/2018
+ms.locfileid: "27962641"
 ---
 # <a name="get-started-with-the-query-action"></a>Začínáme s akce dotazu
 Pomocí akce dotazu, můžete pracovat se dávek a aby provést pracovní postupy pro pole:

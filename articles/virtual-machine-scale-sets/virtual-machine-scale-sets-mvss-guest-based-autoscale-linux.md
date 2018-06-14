@@ -1,11 +1,11 @@
 ---
-title: "Použití Azure škálování s hosta metriky v šabloně sady škálování Linux | Microsoft Docs"
-description: "Zjistěte, jak chcete používat automatické škálování pomocí hosta metriky v šabloně sadu škálování virtuálního počítače systému Linux"
+title: Použití Azure škálování s hosta metriky v šabloně sady škálování Linux | Microsoft Docs
+description: Zjistěte, jak chcete používat automatické škálování pomocí hosta metriky v šabloně sadu škálování virtuálního počítače systému Linux
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: na
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781424"
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Škálování pomocí hosta metriky v šabloně sady škálování Linux
 

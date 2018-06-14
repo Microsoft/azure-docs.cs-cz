@@ -1,8 +1,8 @@
 ---
-title: "Jak používat hesla aplikací v Azure MFA? | Dokumenty Microsoft"
-description: "Tato stránka vám pomůže uživatelům pomoct pochopit, jaké jsou hesla aplikací a jaké se používají s ohledem na Azure MFA."
+title: Jak používat hesla aplikací v Azure MFA? | Dokumenty Microsoft
+description: Tato stránka vám pomůže uživatelům pomoct pochopit, jaké jsou hesla aplikací a jaké se používají s ohledem na Azure MFA.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27700346"
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Co jsou hesla aplikací v Azure Multi-Factor Authentication?
 Některé neprohlížečové aplikace, jako je například klienta Apple nativní e-mailu, který používá protokolu Exchange Active Sync, aktuálně nepodporují službu Multi-Factor authentication. Služba Multi-Factor authentication je povoleno podle uživatelů. To znamená, že pokud uživatel povolen pro službu Multi-Factor authentication a že se pokoušíte použít neprohlížečové aplikace, nebude možné provést. Heslo aplikace umožňuje tuto funkci používat. Pokud jste vynutit ověřování Multi-Factor Authentication prostřednictvím zásad podmíněného přístupu a ne prostřednictvím MFA na uživatele, nebude možné vytvořit hesla aplikací. Aplikace, které používají zásady podmíněného přístupu k řízení přístupu není nutné hesla aplikací.

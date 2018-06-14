@@ -1,12 +1,12 @@
 ---
-title: "Nainstalujte na zařízení řady StorSimple 8000 Update 5 | Microsoft Docs"
-description: "Popisuje postup instalace zařízení StorSimple 8000 řady aktualizací 5 na vašem zařízení řady StorSimple 8000."
+title: Nainstalujte na zařízení řady StorSimple 8000 Update 5 | Microsoft Docs
+description: Popisuje postup instalace zařízení StorSimple 8000 řady aktualizací 5 na vašem zařízení řady StorSimple 8000.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28108716"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Instalace aktualizací 5 zařízení StorSimple
 

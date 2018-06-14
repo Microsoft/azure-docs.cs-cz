@@ -1,12 +1,12 @@
 ---
-title: "Připojení k Azure IoT Suite pomocí Node.js pro podporu aktualizace firmwaru malin platformy | Microsoft Docs"
-description: "Pomocí Startovní sady Microsoft Azure IoT Malinová pí 3 a sady Azure IoT Suite. Použití Node.js pro vaše platformy malin připojení k řešení vzdáleného monitorování, odesílat telemetrická data ze snímače do cloudu a provést aktualizaci firmwaru vzdálené."
-services: 
+title: Připojení k Azure IoT Suite pomocí Node.js pro podporu aktualizace firmwaru malin platformy | Microsoft Docs
+description: Pomocí Startovní sady Microsoft Azure IoT Malinová pí 3 a sady Azure IoT Suite. Použití Node.js pro vaše platformy malin připojení k řešení vzdáleného monitorování, odesílat telemetrická data ze snímače do cloudu a provést aktualizaci firmwaru vzdálené.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: nodejs
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24012110"
 ---
 # <a name="connect-your-raspberry-pi-3-to-the-remote-monitoring-solution-and-enable-remote-firmware-updates-using-nodejs"></a>Připojení k řešení vzdáleného monitorování vaší malin pí 3 a povolit vzdálenou firmware aktualizace pomocí Node.js
 

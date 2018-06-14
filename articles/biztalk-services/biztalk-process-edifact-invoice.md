@@ -1,11 +1,11 @@
 ---
-title: "Kurz: Zpracovat EDIFACT faktury pomocí služby Azure BizTalk Services | Microsoft Docs"
-description: "Jak vytvořit a nakonfigurovat konektor pole nebo rozhraní API app a použít ho v aplikaci logiky ve službě Azure App Service"
+title: 'Kurz: Zpracovat EDIFACT faktury pomocí služby Azure BizTalk Services | Microsoft Docs'
+description: Jak vytvořit a nakonfigurovat konektor pole nebo rozhraní API app a použít ho v aplikaci logiky ve službě Azure App Service
 services: biztalk-services
 documentationcenter: .net,nodejs,java
 author: msftman
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7e0b93fa-3e2b-4a9c-89ef-abf1d3aa8fa9
 ms.service: biztalk-services
 ms.devlang: multiple
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26633862"
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>Kurz: Proces EDIFACT faktury pomocí služby Azure BizTalk Services
 
