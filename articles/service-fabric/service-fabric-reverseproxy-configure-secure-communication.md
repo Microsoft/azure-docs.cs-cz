@@ -18,6 +18,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209167"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Připojení na zabezpečené služby s reverzní proxy server
 

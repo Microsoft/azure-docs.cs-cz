@@ -4,7 +4,7 @@ description: Ukázkový skript Azure CLI – Vytvoření virtuálního počíta�
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,11 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a88077d405a662c0b5f83022209712545fea537f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3f222a11c19c9a2ee1e6c5c245d0823f3269cddc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34654330"
 ---
 # <a name="create-a-vm-with-nginx"></a>Vytvoření virtuálního počítače se serverem NGINX
 

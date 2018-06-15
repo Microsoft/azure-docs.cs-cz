@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212540"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Přidávat nebo odebírat uzly do clusteru Service Fabric samostatné systémem Windows Server
 Až budete mít [vytvořen samostatný cluster Service Fabric na počítačích systému Windows Server](service-fabric-cluster-creation-for-windows-server.md), může změnit potřeb (business) a budete muset přidávat nebo odebírat uzly do clusteru. Tento článek obsahuje podrobné pokyny k dosažení tohoto cíle. Upozorňujeme, že přidat nebo odebrat uzel funkce není podporována v clusterech místní vývoj.

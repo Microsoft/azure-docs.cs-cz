@@ -9,11 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 05/12/2018
 ms.author: heidist
-ms.openlocfilehash: 5454e659d488c84de32a15de65226bc3e1b07dfe
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: bbf535c5b446fd654331374d29c106b6e43d55f5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34266876"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
@@ -67,9 +68,9 @@ Pro často používané standardní vrstvy, s posunem fokus **S1 S3** jsou rozš
 | Velikost oddílu|  25 GB | 100 GB | 250 GB |  |  |  |  |
 | index a indexer omezení| 50 | 200 | 200 |  |  |  |  |
 
-**S1** je běžné volbou, kdy nezbytné k vyhrazených prostředcích. S oddíly 25 GB pro až 12 oddíly za službu limit **S1** je celkový počet 300 GB, pokud maximalizovat oddíly přes repliky (najdete v části [přidělení replik a oddíly](search-capacity-planning.md#chart) další realistické a vyrovnáváním složení.)
+**S1** je běžné použít v případě vyhrazených prostředcích a více oddílů, budou nezbytné. S oddíly 25 GB pro až 12 oddíly za službu limit **S1** je celkový počet 300 GB, pokud maximalizovat oddíly přes repliky (najdete v části [přidělení replik a oddíly](search-capacity-planning.md#chart) pro více vyrovnáváním složení.)
 
-Kromě úložiště a omezení jsou dalších aspektů služby schopností uniform v rámci úrovně. Repliky, které jsou instancemi třídy na vyhledávací web (zpracování operace indexování a dotazů), se neliší vrstva: **S1** repliky je stejný jako **S3** repliky. Podobně žádostí a odpovědí datových částí, dotazů za sekundu, propustnosti a maximální dobu spuštění není lišit podle úrovně.
+Stránky portálu a ceny zaměření na velikost oddílu a úložiště, ale pro každou vrstvu všechny výpočetní možnosti (kapacita disku, rychlosti procesorů) růst lineárně s ceny. **S2** replika je rychlejší než **S1**, a **S3** je rychlejší než **S2**. **S3** vrstev rozdělit obecně lineární výpočetní ceny vzor s nepřiměřeně rychlejší vstupně-výstupní operace. Pokud očekáváte, že vstupně-výstupních operací jako problémové místo, **S3** vám dává mnohem víc IOPS než nižší úrovně.
 
 **S3** a **S3 HD** jsou zajišťované pomocí infrastruktury identické vysoké kapacity, ale každý jeden dosáhne své maximální limit různými způsoby. **S3** cílem menší počet velké indexy. Jako takový jeho maximální limit je vázán na prostředků (pro každou službu 2.4 TB). **S3 HD** cílem velký počet velmi malé indexy. Na 1000 indexy **S3 HD** dosaženo omezení ve formě indexu omezení. Pokud jste **S3 HD** zákazníkovi, který vyžaduje více než 1 000 indexy, obraťte se na Microsoft Support informace o tom, jak pokračovat.
 

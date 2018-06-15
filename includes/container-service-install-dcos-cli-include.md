@@ -1,13 +1,13 @@
 ---
-title: "Instalace rozhraní příkazového řádku DC/OS | Dokumentace Microsoftu"
-description: "Nainstalujte rozhraní příkazového řádku DC/OS."
+title: Instalace rozhraní příkazového řádku DC/OS | Dokumentace Microsoftu
+description: Nainstalujte rozhraní příkazového řádku DC/OS.
 services: container-service
-documentationcenter: 
+documentationcenter: ''
 author: rgardler
 manager: timlt
-editor: 
+editor: ''
 tags: acs, azure-container-service
-keywords: "Kontejnery, mikroslužby, DC/OS, Azure"
+keywords: Kontejnery, mikroslužby, DC/OS, Azure
 ms.service: container-service
 ms.devlang: na
 ms.topic: get-started-article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23761965"
 ---
 > [!NOTE]
 > To slouží k práci s clustery ACS založenými na DC/OS. Není nutné pro clustery ACS založené na metodě Swarm.

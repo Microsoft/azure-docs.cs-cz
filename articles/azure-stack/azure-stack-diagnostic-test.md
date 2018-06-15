@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31394386"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Spustit test pro ověření pro Azure zásobníku
 

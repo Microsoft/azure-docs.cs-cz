@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208892"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>Simulace chyb během zatížení služeb
 Scénáře testovatelnosti v Azure Service Fabric umožňují vývojářům není starat o práci s jednotlivých chyb. Existují scénáře, ale kde explicitní prokládání zatížení klienta a selhání může být potřeba. Prokládání zatížení klienta a chyb zajistí, že služba ve skutečnosti provádí některé akce v případě selhání. Udělená úroveň ovládací prvek, který poskytuje možnosti testování, může jít v přesné body spuštění úlohy. Tato indukční chyb v různých stavů v aplikaci můžete najít chyby a zlepšení kvality.

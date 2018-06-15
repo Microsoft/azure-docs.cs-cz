@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 434cbdca42e4287a0f3d7e3960bc0baa373bc358
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: d72d0823d78f47aed3d8690cee81f8bb00e7921d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636966"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Shromažďování protokolů aktivit Azure do Log Analytics napříč předplatnými
 
@@ -113,7 +114,7 @@ Před vytvořením aplikace logiky se ujistěte, že z předchozích kroků mát
 - ID pracovního prostoru Log Analytics
 - Sdílený klíč Log Analytics
 
-Pokud chcete získat název a připojovací řetězec centra událostí, postupujte podle kroků v části [Kontrola oprávnění oboru názvů služby Event Hubs a vyhledání připojovacího řetězce](../connectors/connectors-create-api-azure-event-hubs.md#connect-to-azure-event-hubs).
+Pokud chcete získat název a připojovací řetězec centra událostí, postupujte podle kroků v části [Kontrola oprávnění oboru názvů služby Event Hubs a vyhledání připojovacího řetězce](../connectors/connectors-create-api-azure-event-hubs.md#permissions-connection-string).
 
 
 ### <a name="create-a-new-blank-logic-app"></a>Vytvoření nové prázdné aplikace logiky

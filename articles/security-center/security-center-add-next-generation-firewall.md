@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34363685"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Přidat Brána Firewall příští generace v Azure Security Center
 Azure Security Center může doporučujeme, abyste přidali brána firewall příští generace (NGFW) od partnera Microsoftu ke zvýšení ochrany vaší zabezpečení. Tento dokument vás příklad toho, jak to udělat provede.

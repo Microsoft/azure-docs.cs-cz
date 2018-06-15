@@ -12,7 +12,7 @@ ms.author: sashan
 ms.reviewer: carlrab
 ms.openlocfilehash: b2f3c454ba84c7b892096cc42dcbe2706ab6159f
 ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/01/2018
 ms.locfileid: "34648288"

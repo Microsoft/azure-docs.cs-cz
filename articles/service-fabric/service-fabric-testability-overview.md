@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209680"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>Úvod ke službě analýza selhání
 Služba Analysis Service selhání je určená pro testování služby, které jsou postaveny na Microsoft Azure Service Fabric. Se službou Analysis selhání můžete vyvolat smysluplný chyb a spouštění scénáře dokončení testování vaší aplikace. Tyto scénáře a chyb vykonává a ověřit množství stavy a přechody, které služba bude mít v průběhu své životnosti, všechny řízené, bezpečné a konzistentním způsobem.

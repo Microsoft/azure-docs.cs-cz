@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212319"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Upgrade aplikace Service Fabric: advanced témata
 ## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>Přidání nebo odebrání typů služeb během upgradu aplikace

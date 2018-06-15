@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213193"
 ---
 # <a name="introduction-to-auto-scaling"></a>Úvod do automatické škálování
 Automatické škálování je další schopností Service Fabric dynamicky škálování vašich služeb podle zatížení, které služby jsou vytváření sestav, nebo na základě jejich využití prostředků. Automatické škálování nabízí skvělý pružnost a umožňuje zřizování další instance nebo oddíly služby na vyžádání. Celý automatické škálování proces je automatické a transparentní, a po nastavení zásad na službě, není nutné pro ruční škálování operace na úrovni služby. Automatické škálování může být zapnut buď při vytváření služby, nebo kdykoli při aktualizaci.

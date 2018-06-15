@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260006"
 ---
 # <a name="using-chef-with-azure"></a>Chef pomocí Azure
 [Chef](http://www.chef.io) je výkonný automatizace platforma, která transformuje infrastruktury virtuálního počítače na platformě Azure do kódu. Chef automatizuje, jak je infrastruktura nakonfigurované, nasazují a spravují v síti, bez ohledu na jeho velikost.

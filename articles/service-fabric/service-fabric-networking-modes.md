@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205650"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Režimy sítě kontejneru Service Fabric
 

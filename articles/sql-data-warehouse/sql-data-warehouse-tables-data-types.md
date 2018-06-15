@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31523502"
 ---
 # <a name="table-data-types-in-azure-sql-data-warehouse"></a>Tabulka datových typů v Azure SQL Data Warehouse
 Doporučení pro definování typů tabulek dat v Azure SQL Data Warehouse. 

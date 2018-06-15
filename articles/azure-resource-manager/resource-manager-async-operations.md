@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358706"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Sledování asynchronní operace v Azure
 Některé operace Azure REST spustit asynchronně, protože operaci nelze dokončit rychle. Toto téma popisuje, jak sledovat stav asynchronní operace prostřednictvím hodnot vrácených v odpovědi.  
