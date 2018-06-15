@@ -16,7 +16,7 @@ ms.date: 09/19/2017
 ms.author: renash
 ms.openlocfilehash: a9585bc77a73cbd84fb2efa201a5745c62f3360a
 ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/04/2018
 ms.locfileid: "34738196"

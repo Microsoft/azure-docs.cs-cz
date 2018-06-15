@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360338"
 ---
 # <a name="azure-cloud-services-definition-webrole-schema"></a>Definice schématu WebRole služby Azure Cloud Services
 Azure webovou roli je role, která je přizpůsobené pro programování webové aplikace podporuje ve službě IIS 7, jako je ASP.NET, PHP, WCF a FastCGI.

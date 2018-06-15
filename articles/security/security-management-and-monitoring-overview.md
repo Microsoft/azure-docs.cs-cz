@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364365"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Přehled monitorování a správu zabezpečení Azure
 Azure nabízí mechanismy zabezpečení, které pomáhají při správy a monitorování cloudových služeb Azure a virtuálních počítačů (VM). Tento článek obsahuje přehled těchto klíčových funkcí zabezpečení a služeb. Jsou uvedeny odkazy na články, které poskytují podrobnosti o jednotlivých tak další informace.

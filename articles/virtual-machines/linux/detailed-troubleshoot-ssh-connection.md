@@ -21,6 +21,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365487"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Podrobné SSH řešení potíží s kroky pro připojení k virtuální počítač s Linuxem v Azure
 Existuje mnoho možných příčin, které použije klient SSH nemusí být možné kontaktovat službu SSH ve virtuálním počítači. Pokud jste provedli prostřednictvím Čím více [obecné SSH při řešení potíží](troubleshoot-ssh-connection.md), budete muset dále řešit potíže s připojením. Tento článek vás provede podrobný postup řešení potíží k určení, kde se nedaří připojení SSH a jak je vyřešit.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205980"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Zabalení a nasazení existující spustitelný soubor do Service Fabric
 Když balení existující spustitelný soubor jako [spustitelný soubor hosta](service-fabric-guest-executables-introduction.md), můžete buď používat šablony projektů Visual Studio nebo [ručně vytvořit balíček aplikace](#manually). Pomocí sady Visual Studio, struktury balíček aplikace a soubory manifestu vytvářejí nové šablona projektu pro vás.

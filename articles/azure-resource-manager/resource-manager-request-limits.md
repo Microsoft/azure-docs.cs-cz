@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358859"
 ---
 # <a name="throttling-resource-manager-requests"></a>Omezení žádostí Resource Manager
 Omezení správce prostředků pro každé předplatné a klienta, přečtěte si požadavky na 15 000 za hodinu a požadavků na zápis na 1 200 za hodinu. Tato omezení se použijí na každou instanci Azure Resource Manager. Existuje více instancí v každé oblasti Azure a Azure Resource Manager je nasazen na všechny oblasti Azure.  Tím, že v praxi, jsou omezení efektivně mnohem vyšší než tato omezení, jako uživatel požadavky jsou obvykle obsluhovány pomocí mnoha různými instancemi.

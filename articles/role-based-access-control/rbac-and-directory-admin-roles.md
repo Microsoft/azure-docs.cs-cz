@@ -17,7 +17,7 @@ ms.reviewer: skwan
 ms.custom: it-pro;
 ms.openlocfilehash: 3be2026e480f33a7b8d403d375614310695613da
 ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/11/2018
 ms.locfileid: "35266716"

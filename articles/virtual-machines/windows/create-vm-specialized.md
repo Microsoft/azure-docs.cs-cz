@@ -20,6 +20,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012780"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-using-powershell"></a>Vytvoření virtuálního počítače s Windows z disku specializované pomocí prostředí PowerShell
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34364229"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Přehled zabezpečení služby Azure virtuální počítače
 Virtuální počítače Azure můžete použít k nasazení širokou škálu výpočetní řešení agilní způsobem. Služba podporuje Microsoft Windows, Linux, Microsoft SQL Server, Oracle, SAP, IBM a služby Azure BizTalk Services. Proto můžete nasadit jakoukoli úlohu a jakýkoli jazyk na téměř jakémkoliv operačním systému.

@@ -11,7 +11,7 @@ ms.date: 05/07/2018
 ms.author: rimman
 ms.openlocfilehash: cc66b2f506d81a7ba10b26c3b24287472e890682
 ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/04/2018
 ms.locfileid: "34724903"

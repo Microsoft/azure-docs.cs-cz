@@ -2,7 +2,7 @@
 title: Vytvoření automatizovaných pracovních postupů prostřednictvím Scheduleru – Azure Logic Apps | Microsoft Docs
 description: Tento kurz ukazuje, jak ve službě Azure Logic Apps vytvořit opakované automatizované pracovní postupy s využitím Scheduleru
 author: ecfan
-manager: anneta
+manager: jeconnoc
 editor: ''
 services: logic-apps
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 4360249367632a01e4357c527f595f8416c7cc38
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 84779d3e56b089c34e6556368008d794e634d535
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300765"
 ---
 # <a name="check-traffic-with-a-scheduler-based-logic-app"></a>Kontrola dopravní situace s využitím aplikace logiky založené na Scheduleru
 

@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360032"
 ---
 # <a name="azure-cloud-services-definition-networktrafficrules-schema"></a>Definice schématu NetworkTrafficRules služby Azure Cloud Services
 `NetworkTrafficRules` Uzel je volitelný element v souboru definice služby, která určuje, jak se role vzájemně komunikovat. Omezuje přístup vnitřních koncových bodů konkrétní role jednotlivé role. `NetworkTrafficRules` Není element samostatné; se zkombinuje s dvěma nebo více rolí v definičním souboru služby.

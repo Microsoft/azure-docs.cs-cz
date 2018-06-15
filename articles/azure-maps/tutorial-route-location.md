@@ -1,29 +1,27 @@
 ---
 title: Vyhledání trasy s využitím Azure Maps | Microsoft Docs
 description: Trasa k bodu zájmu s využitím Azure Maps
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: tutorial
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 73ca61140f05a65ca75cd703ed226773b9a43dfa
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fc5dfafec303a439d8a1092771fd2247ab305172
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601339"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Trasa k bodu zájmu s využitím Azure Maps
 
 V tomto kurzu se dozvíte, jak pomocí účtu Azure Maps a sady SDK Route Service vyhledat trasu k bodu zájmu. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
+> * Vytvoření nové webové stránky s použitím rozhraní API pro mapové ovládací prvky
 > * Nastavit souřadnice pro adresu
 > * Zadat dotaz na rozhraní API Route Service ohledně trasy k bodu zájmu
 
@@ -205,7 +203,7 @@ Tato část ukazuje způsob použití rozhraní API Maps Route Service k vyhled�
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Vytvořit novou webovou stránku s použitím rozhraní API pro mapové ovládací prvky
+> * Vytvoření nové webové stránky s použitím rozhraní API pro mapové ovládací prvky
 > * Nastavit souřadnice pro adresu
 > * Zadat dotaz na službu Route Service ohledně trasy k bodu zájmu
 

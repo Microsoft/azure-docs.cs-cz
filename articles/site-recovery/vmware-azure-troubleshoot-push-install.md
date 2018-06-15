@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery řešení potíží s z VMware do Azure | Microsoft Docs"
-description: "Řešení chyb při replikaci virtuálních počítačů Azure."
+title: Azure Site Recovery řešení potíží s z VMware do Azure | Microsoft Docs
+description: Řešení chyb při replikaci virtuálních počítačů Azure.
 services: site-recovery
 author: anoopkv
 manager: gauravd
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812891"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Služba Mobility nabízené řešení potíží s instalací
 

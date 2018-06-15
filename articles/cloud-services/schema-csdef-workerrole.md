@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360253"
 ---
 # <a name="azure-cloud-services-definition-workerrole-schema"></a>Definice schématu WorkerRole služby Azure Cloud Services
 Role pracovního procesu Azure je role, která je vhodný pro vývoj zobecněný a může provádět zpracování na pozadí pro webové role.

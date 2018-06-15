@@ -13,6 +13,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34367133"
 ---
 Tento článek popisuje sadu osvědčených postupů pro spuštění linuxového virtuálního počítače v Azure, s důrazem na škálovatelnost, dostupnost, možnosti správy a zabezpečení. Azure podporuje spouštění různých oblíbených linuxových distribucí, mezi které patří CentOS, Debian, Red Hat Enterprise, Ubuntu a FreeBSD. Další informace najdete v tématu [Azure a Linux][azure-linux].
 

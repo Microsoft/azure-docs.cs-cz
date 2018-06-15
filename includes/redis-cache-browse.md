@@ -10,9 +10,10 @@ ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: a9d0f4c8de26d3c501c3b04e42864efaa880ee62
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32297599"
 ---
 Pokud jste mezipaměť na řídicí panel nepřipnuli, najdete ji na webu [Azure Portal](https://portal.azure.com) po kliknutí na **Všechny služby**.
 

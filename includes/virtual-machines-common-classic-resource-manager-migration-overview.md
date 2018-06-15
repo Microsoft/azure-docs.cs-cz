@@ -13,6 +13,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371333"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Platforma podporovaná migrace z klasického do Azure Resource Manageru prostředků IaaS
 V tomto článku jsme popisují, jak jsme se povolení migrace infrastruktury jako služby (IaaS) prostředky z klasického modely nasazení Resource Manager. Další informace o [funkce služby Správce prostředků Azure a výhody](../articles/azure-resource-manager/resource-group-overview.md). Jsme podrobnosti o tom, jak připojit prostředky z modelů dvě nasazení, které společně existovat ve vašem předplatném pomocí brány virtuální sítě site-to-site.

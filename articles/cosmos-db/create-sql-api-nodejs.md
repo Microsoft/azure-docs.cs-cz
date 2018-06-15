@@ -1,24 +1,22 @@
 ---
-title: 'Azure Cosmos DB: Vytvoření aplikace s využitím Node.js a rozhraní SQL API | Microsoft Docs'
+title: 'Azure Cosmos DB: Vytvoření aplikace s využitím Node.js a rozhraní SQL API | Dokumentace Microsoftu'
 description: Tento článek představuje vzorový kód Node.js, který můžete použít k připojení a dotazování služby Azure Cosmos DB přes rozhraní SQL API.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 9c0f033c-240e-4fee-8421-08907231087f
 ms.service: cosmos-db
+ms.component: cosmosdb-sql
 ms.custom: quick start connect, mvc
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 076693250faaafe85df5b8c1ffcbc657b9201f3e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 78aaba91851d118c45d6796a99b704de8e8a3e04
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34794934"
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-app-with-nodejs-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření aplikace SQL API s využitím Node.js a webu Azure Portal
 
@@ -154,7 +152,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
 
 2. Spuštění v terminálu `node app.js`, aby se spustila aplikace uzlu.
 
-Teď se můžete vrátit do Průzkumníka dat a zobrazit dotaz nebo provést úpravy a pracovat s těmito novými daty. 
+Teď se můžete vrátit do Průzkumníku dat a zobrazit dotaz nebo provést úpravy a pracovat s těmito novými daty. 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Ověření podmínek SLA na portálu Azure Portal
 

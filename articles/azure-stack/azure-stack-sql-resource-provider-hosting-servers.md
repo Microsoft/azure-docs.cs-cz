@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359420"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků SQL
 Instance SQL můžete použít na virtuální počítače uvnitř vaší [zásobník Azure](azure-stack-poc.md), nebo k nim mohla připojit instanci mimo prostředí Azure zásobníku, pokud poskytovatel prostředků. Obecné požadavky jsou:

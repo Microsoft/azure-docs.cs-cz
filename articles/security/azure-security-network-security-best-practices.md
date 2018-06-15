@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34367320"
 ---
 # <a name="azure-network-security-best-practices"></a>Osvědčené postupy zabezpečení sítě Azure
 Microsoft Azure umožňuje připojit virtuální počítače a zařízení k další síťová zařízení tím, že je na virtuálních sítí Azure. Virtuální síť Azure je konstrukce, která umožňuje připojit virtuální síťové karty k virtuální síti a povolit založené na protokolu TCP komunikaci mezi síťových zařízení. Virtuální počítače Azure připojené k virtuální síti Azure může připojit k zařízení na stejné Azure virtuální síti, jinou virtuální sítí Azure, na Internetu nebo dokonce na vlastní místní sítě.

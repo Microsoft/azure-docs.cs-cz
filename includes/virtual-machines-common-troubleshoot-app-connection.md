@@ -13,6 +13,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34371265"
 ---
 Při nesmí začínat ani připojit k aplikaci spuštěné v Azure virtuální počítač (VM) se z různých důvodů. Z těchto důvodů aplikace není spuštěna nebo naslouchá na očekávaných portech, port pro naslouchání blokované nebo sítě pravidla není správně předávání provoz do aplikace. Tento článek popisuje metodický přístup k vyhledání a odstranění problému.
 
