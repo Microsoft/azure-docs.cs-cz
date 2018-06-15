@@ -1,11 +1,11 @@
 ---
-title: "Správa aktualizací v zásobníku Azure přehled | Microsoft Docs"
-description: "Další informace o správě aktualizací pro Azure zásobníku integrované systémy."
+title: Správa aktualizací v zásobníku Azure přehled | Microsoft Docs
+description: Další informace o správě aktualizací pro Azure zásobníku integrované systémy.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 9b0781f4-2cd5-4619-a9b1-59182b4a6e43
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/06/2018
+ms.locfileid: "27620919"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Správa aktualizací v přehledu Azure zásobníku
 

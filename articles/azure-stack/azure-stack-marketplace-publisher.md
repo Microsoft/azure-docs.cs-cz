@@ -1,12 +1,12 @@
 ---
-title: "Použijte sadu nástrojů Marketplace vytvoření a publikování položky marketplace. | Microsoft Docs"
-description: "Zjistěte, jak rychle vytvořit položky marketplace s publikování Toolkit"
+title: Použijte sadu nástrojů Marketplace vytvoření a publikování položky marketplace. | Microsoft Docs
+description: Zjistěte, jak rychle vytvořit položky marketplace s publikování Toolkit
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386873"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>Přidat publikování nástroji položky marketplace.
 Přidání svůj obsah do [Azure Marketplace zásobníku](azure-stack-marketplace.md) zpřístupní řešení pro vás i vaši klienti pro nasazení.  Sada nástrojů Marketplace vytvoří soubory balíčků Azure Marketplace (.azpkg) na základě šablony správce prostředků Azure IaaS nebo rozšíření virtuálního počítače.  Sada nástrojů Marketplace můžete použít také k publikování .azpkg soubory vytvořené pomocí nástroje nebo pomocí [ruční](azure-stack-create-and-publish-marketplace-item.md) kroky.  Toto téma vás provede stažení nástroje, vytvoření položky marketplace na základě šablony virtuálního počítače a poté publikujete daná položka pro Azure Marketplace zásobníku.     

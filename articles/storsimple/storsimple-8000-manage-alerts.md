@@ -1,12 +1,12 @@
 ---
-title: "Zobrazovat a spravovat výstrahy pro zařízení řady StorSimple 8000 | Microsoft Docs"
-description: "Popisuje výstrahy podmínek StorSimple a závažnost, jak nakonfigurovat oznámení výstrah a jak výstrahy můžete spravovat pomocí služby StorSimple Manager zařízení."
+title: Zobrazovat a spravovat výstrahy pro zařízení řady StorSimple 8000 | Microsoft Docs
+description: Popisuje výstrahy podmínek StorSimple a závažnost, jak nakonfigurovat oznámení výstrah a jak výstrahy můžete spravovat pomocí služby StorSimple Manager zařízení.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27745774"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Pomocí služby StorSimple Manager zařízení můžete zobrazit a spravovat výstrahy StorSimple
 

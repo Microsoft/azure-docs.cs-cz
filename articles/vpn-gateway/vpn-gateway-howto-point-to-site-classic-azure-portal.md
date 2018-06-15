@@ -1,11 +1,11 @@
 ---
-title: "Připojení počítače k virtuální síti typu Point-to-Site s použitím ověření certifikátu: Portál Azure Classic | Dokumentace Microsoftu"
-description: "Vytvoříte připojení classic k bráně VPN typu Point-to-Site pomocí portálu Azure Portal."
+title: 'Připojení počítače k virtuální síti typu Point-to-Site s použitím ověření certifikátu: Portál Azure Classic | Dokumentace Microsoftu'
+description: Vytvoříte připojení classic k bráně VPN typu Point-to-Site pomocí portálu Azure Portal.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 65e14579-86cf-4d29-a6ac-547ccbd743bd
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29464265"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-classic-azure-portal"></a>Konfigurace připojení typu Point-to-Site k virtuální síti s použitím ověření certifikátu (Classic): Azure Portal
 

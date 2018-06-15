@@ -1,12 +1,12 @@
 ---
-title: "Vytvoření balíčku pro podporu řady StorSimple 8000 | Microsoft Docs"
-description: "Naučte se vytvářet, dešifrování a upravovat balíčku pro podporu pro vaše zařízení řady StorSimple 8000."
+title: Vytvoření balíčku pro podporu řady StorSimple 8000 | Microsoft Docs
+description: Naučte se vytvářet, dešifrování a upravovat balíčku pro podporu pro vaše zařízení řady StorSimple 8000.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743574"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Vytvoření a Správa balíčku pro podporu pro řady StorSimple 8000
 

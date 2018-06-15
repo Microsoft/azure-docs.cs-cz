@@ -1,12 +1,12 @@
 ---
-title: "Externí tabulky vazby pro Azure Functions (experimentální)"
-description: "Používání vazeb externí tabulky v Azure Functions"
+title: Externí tabulky vazby pro Azure Functions (experimentální)
+description: Používání vazeb externí tabulky v Azure Functions
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/05/2018
+ms.locfileid: "27613277"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Externí tabulky vazby pro Azure Functions (experimentální)
 

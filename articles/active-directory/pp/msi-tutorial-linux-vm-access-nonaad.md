@@ -1,8 +1,8 @@
 ---
-title: "Používat pro přístup k Azure Key Vault MSI virtuálních počítačů Linux"
-description: "Kurz vás provede procesem pomocí Linux virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure Resource Manager."
+title: Používat pro přístup k Azure Key Vault MSI virtuálních počítačů Linux
+description: Kurz vás provede procesem pomocí Linux virtuálního počítače spravované služby Identity (MSI) pro přístup k Azure Resource Manager.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29384697"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Používat pro přístup k Azure Key Vault Linux virtuálního počítače spravované služby Identity (MSI) 
 

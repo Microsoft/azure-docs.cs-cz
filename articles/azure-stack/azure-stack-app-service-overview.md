@@ -1,12 +1,12 @@
 ---
-title: "Přehled služby App Service: Azure zásobníku | Microsoft Docs"
-description: "Přehled služby App Service v Azure zásobníku"
+title: 'Přehled služby App Service: Azure zásobníku | Microsoft Docs'
+description: Přehled služby App Service v Azure zásobníku
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: app-service
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386071"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Přehled App Service v Azure Stacku
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*

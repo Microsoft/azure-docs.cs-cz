@@ -13,6 +13,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29402493"
 ---
 Uzamčení prostředků zabránit uživatelům ve vaší organizaci neúmyslnému odstranění nebo úprava důležitých prostředků. Na rozdíl od řízení přístupu na základě rolí uzamčení prostředků platí omezení ve všech uživatelů a rolí. 
 

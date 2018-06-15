@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31795907"
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>Publikování-WebApplicationVM (skript prostředí Windows PowerShell)
 Nasadí webovou aplikaci pro virtuální počítač. Pokud ještě neexistují, vytvoří skript ve vašem předplatném Azure požadované prostředky.

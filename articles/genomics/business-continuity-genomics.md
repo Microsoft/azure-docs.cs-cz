@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31426904"
 ---
 # <a name="overview-of-business-continuity-with-microsoft-genomics"></a>Přehled kontinuity podnikových procesů s Genomics Microsoft
 Tento přehled popisuje možnosti, které poskytuje Microsoft Genomics pro provozní kontinuitu a zotavení po havárii. Informace o možnostech pro obnovení z rušivý událostmi, například výpadek oblast Azure, který by mohl způsobit ztrátu dat. 

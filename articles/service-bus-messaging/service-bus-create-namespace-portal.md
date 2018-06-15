@@ -19,6 +19,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29556395"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Vytvoření oboru názvů služby Service Bus pomocí webu Azure Portal
 

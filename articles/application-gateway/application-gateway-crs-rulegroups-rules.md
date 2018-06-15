@@ -17,6 +17,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31515522"
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Nabízí seznam webových aplikací brány firewall řádku pravidlo skupiny a pravidel
 

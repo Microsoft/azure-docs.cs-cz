@@ -1,6 +1,6 @@
 ---
-title: "Připojení k virtuálnímu počítači s SQL serverem (Resource Manager) | Microsoft Docs"
-description: "Zjistěte, jak se připojit k serveru SQL, které jsou spuštěny na virtuálním počítači v Azure. Toto téma používá model nasazení classic. Scénáře se liší v závislosti na konfiguraci sítě a umístění klienta."
+title: Připojení k virtuálnímu počítači s SQL serverem (Resource Manager) | Microsoft Docs
+description: Zjistěte, jak se připojit k serveru SQL, které jsou spuštěny na virtuálním počítači v Azure. Toto téma používá model nasazení classic. Scénáře se liší v závislosti na konfiguraci sítě a umístění klienta.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400235"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Připojit k virtuálnímu počítači serveru SQL v Azure
 

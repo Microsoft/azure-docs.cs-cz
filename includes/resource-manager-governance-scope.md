@@ -10,9 +10,10 @@ ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: 4f5dbbd1da8a221fb5f8b9641e016829987db538
 ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29529958"
 ---
 Před vytvořením všechny položky, pojďme si shrnout koncept oboru. Azure nabízí čtyři úrovně správy: skupin pro správu, předplatné, skupinu prostředků a prostředků. [Skupiny pro správu](../articles/billing/billing-enterprise-mgmt-group-overview.md) jsou ve verzi preview. Následující obrázek ukazuje příklad tyto vrstvy.
 

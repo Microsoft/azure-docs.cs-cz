@@ -1,13 +1,13 @@
 ---
-title: "Zaregistrovat pro resetování hesla pomocí samoobslužné služby – Azure Active Directory"
-description: "Zaregistrovat data ověření pro hesla pomocí samoobslužné služby Azure AD resetovat"
+title: Zaregistrovat pro resetování hesla pomocí samoobslužné služby – Azure Active Directory
+description: Zaregistrovat data ověření pro hesla pomocí samoobslužné služby Azure AD resetovat
 services: active-directory
-keywords: 
-documentationcenter: 
+keywords: ''
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -21,6 +21,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29460471"
 ---
 # <a name="register-for-self-service-password-reset"></a>Registrace pro samoobslužné resetování hesla
 

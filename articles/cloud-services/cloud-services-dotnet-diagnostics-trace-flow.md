@@ -1,11 +1,11 @@
 ---
-title: "Sledování toku v aplikaci služby cloudu s Azure Diagnostics | Microsoft Docs"
-description: "Přidání trasování zprávy do Azure aplikace usnadňuje ladění, měření výkonu, monitorování, analýza provozu a další."
+title: Sledování toku v aplikaci služby cloudu s Azure Diagnostics | Microsoft Docs
+description: Přidání trasování zprávy do Azure aplikace usnadňuje ladění, měření výkonu, monitorování, analýza provozu a další.
 services: cloud-services
 documentationcenter: .net
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 09934772-cc07-4fd2-ba88-b224ca192f8e
 ms.service: cloud-services
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29461232"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>Trasování toku aplikace cloudových služeb s Azure Diagnostics
 Trasování je způsob, jak můžete monitorovat aplikace, když je spuštěná. Můžete použít [System.Diagnostics.Trace](https://msdn.microsoft.com/library/system.diagnostics.trace.aspx), [System.Diagnostics.Debug](https://msdn.microsoft.com/library/system.diagnostics.debug.aspx), a [System.Diagnostics.TraceSource](https://msdn.microsoft.com/library/system.diagnostics.tracesource.aspx) třídy k zaznamenání informací o chybách a spuštění aplikace v protokolech, textové soubory nebo jiné zařízení pro pozdější analýzu. Další informace o trasování najdete v tématu [trasování a instrumentace aplikací](https://msdn.microsoft.com/library/zs6s4h68.aspx).

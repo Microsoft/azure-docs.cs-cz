@@ -1,13 +1,13 @@
 ---
-title: "Nastavit filtry směrování pro partnerský vztah Azure ExpressRoute Microsoft: portál | Microsoft Docs"
-description: "Tento článek popisuje, jak nastavit filtry tras pro aplikaci Microsoft Peering pomocí portálu Azure"
+title: 'Nastavit filtry směrování pro partnerský vztah Azure ExpressRoute Microsoft: portál | Microsoft Docs'
+description: Tento článek popisuje, jak nastavit filtry tras pro aplikaci Microsoft Peering pomocí portálu Azure
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29387723"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Nastavit filtry směrování pro partnerský vztah Microsoftu: portál Azure
 > [!div class="op_single_selector"]

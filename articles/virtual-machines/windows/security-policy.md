@@ -18,6 +18,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31524325"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Zabezpečení a použití zásad na virtuálních počítačích v Azure
 

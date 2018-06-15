@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774824"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center"></a>Monitorování identity a přístupu v Azure Security Center
 Tento článek vám pomůže používat Azure Security Center k monitorování identit a aktivit přístupu uživatelů.

@@ -1,11 +1,11 @@
 ---
-title: "Skript přidáte do plánu obnovení v Azure Site Recovery | Microsoft Docs"
-description: "Další informace o požadavky pro přidání nový skript System Center Virtual Machine Manager (VMM) do plánu obnovení v Azure."
+title: Skript přidáte do plánu obnovení v Azure Site Recovery | Microsoft Docs
+description: Další informace o požadavky pro přidání nový skript System Center Virtual Machine Manager (VMM) do plánu obnovení v Azure.
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: ruturaj
 manager: shons
-editor: 
+editor: ''
 ms.assetid: 72408c62-fcb6-4ee2-8ff5-cab1218773f2
 ms.service: site-recovery
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29402430"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>Skript VMM přidat do plánu obnovení
 

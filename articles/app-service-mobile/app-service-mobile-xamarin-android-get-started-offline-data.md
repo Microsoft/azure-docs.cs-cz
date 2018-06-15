@@ -1,10 +1,10 @@
 ---
-title: "Zapnutí offline synchronizace pro mobilní aplikace Azure (Xamarin Android)"
-description: "Další informace o použití aplikace služby mobilní aplikace do mezipaměti a synchronizaci dat offline v aplikaci Xamarin Android"
+title: Zapnutí offline synchronizace pro mobilní aplikace Azure (Xamarin Android)
+description: Další informace o použití aplikace služby mobilní aplikace do mezipaměti a synchronizaci dat offline v aplikaci Xamarin Android
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 services: app-service\mobile
 ms.assetid: 91d59e4b-abaa-41f4-80cf-ee7933b32568
 ms.service: app-service-mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27593092"
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>Zapnutí offline synchronizace pro mobilní aplikace Xamarin.Android
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]

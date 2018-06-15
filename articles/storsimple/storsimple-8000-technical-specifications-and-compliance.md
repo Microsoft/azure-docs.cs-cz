@@ -1,12 +1,12 @@
 ---
-title: "Technických specifikací StorSimple | Microsoft Docs"
-description: "Popisuje technické údaje a informace o kompatibilitě zákonných norem pro StorSimple hardwarové součásti."
+title: Technických specifikací StorSimple | Microsoft Docs
+description: Popisuje technické údaje a informace o kompatibilitě zákonných norem pro StorSimple hardwarové součásti.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27785522"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technických specifikací a dodržování předpisů pro zařízení StorSimple
 

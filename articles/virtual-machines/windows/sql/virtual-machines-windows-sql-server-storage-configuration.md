@@ -1,6 +1,6 @@
 ---
-title: "Konfiguraci úložiště pro virtuální počítače SQL serveru | Microsoft Docs"
-description: "Toto téma popisuje, jak Azure konfiguruje úložiště pro virtuální počítače SQL serveru při zřizování (modelu nasazení Resource Manager). Také vysvětluje, jak konfigurace úložiště pro existující virtuální počítače SQL serveru."
+title: Konfiguraci úložiště pro virtuální počítače SQL serveru | Microsoft Docs
+description: Toto téma popisuje, jak Azure konfiguruje úložiště pro virtuální počítače SQL serveru při zřizování (modelu nasazení Resource Manager). Také vysvětluje, jak konfigurace úložiště pro existující virtuální počítače SQL serveru.
 services: virtual-machines-windows
 documentationcenter: na
 author: ninarn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29399079"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfiguraci úložiště pro virtuální počítače serveru SQL
 Když konfigurujete image virtuálního počítače systému SQL Server v Azure, pomáhá automatizovat konfiguraci úložiště na portálu. Jedná se o připojení k virtuálnímu počítači, zpřístupnění této úložiště pro SQL Server a nakonfigurovat jej pro optimalizaci pro vašim požadavkům na výkon konkrétní úložiště.
