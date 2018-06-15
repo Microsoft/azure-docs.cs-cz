@@ -12,9 +12,10 @@ manager: mtillman
 ms.reviewer: sahenry
 ms.openlocfilehash: 1c44b2738fb21450c5a37f715c995a3e7aecc4a6
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33868821"
 ---
 # <a name="password-writeback-overview"></a>Přehled zpětný zápis hesla
 

@@ -18,6 +18,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31598128"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Sledování brány sítě VPN s řešení potíží s sledovací proces sítě
 

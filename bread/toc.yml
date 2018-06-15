@@ -469,6 +469,9 @@
     - name: Odolnost
       tocHref: /azure/resiliency/
       topicHref: /azure/resiliency/
+    - name: Řízení přístupu na základě role
+      tocHref: /azure/role-based-access-control/
+      topicHref: /azure/role-based-access-control/
     - name: Service Health
       tocHref: /azure/service-health/
       topicHref: /azure/service-health/

@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787994"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Použití Azure DevTest Labs pro školení
 Azure DevTest Labs lze použít k implementaci mnoho klíčových scénářů, kromě vývoje/testování. Jedním z těchto scénářů je nastavit testovací prostředí pro školení. Azure DevTest Labs umožňuje vytvoření testovacího prostředí, kde můžete zadat vlastní šablony, které každý praktikanta můžete použít k vytvoření identické a izolované prostředí pro školení. Můžete použít zásady, abyste zajistili, že školení prostředí jsou k dispozici pro každý praktikanta jenom v případě, že je potřebují a obsahovat dostatek prostředků – jako jsou virtuální počítače - požadované pro školení. Nakonec můžete snadno sdílet testovací prostředí s povolání, které mají přístup k jedním kliknutím.

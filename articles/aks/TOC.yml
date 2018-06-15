@@ -31,6 +31,8 @@
   items:
     - name: Kvóty a místní omezení
       href: container-service-quotas.md
+    - name: Migrace z ACS do AKS
+      href: acs-aks-migration.md
 - name: Návody
   items:
     - name: Operace clusteru
@@ -43,6 +45,13 @@
           href: upgrade-cluster.md
         - name: Odstranění clusteru AKS
           href: delete-cluster.md
+        - name: AKS s podporou Azure AD
+          href: aad-integration.md
+        - name: Použití Virtual Kubeletu
+          href: virtual-kubelet.md
+        - name: Nasazení AKS s Terraformem
+          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          maintainContext: true
     - name: Konfigurace svazků s daty
       items:
         - name: Disky Azure – dynamické
@@ -77,18 +86,26 @@
       items:
         - name: Spouštění aplikací pomocí Helm
           href: kubernetes-helm.md
+        - name: Vývoj s využitím Dev Spaces
+          href: ../dev-spaces/azure-dev-spaces.md
+          maintainContext: true
         - name: Vývoj aplikací pomocí Draft
           href: kubernetes-draft.md
         - name: Technologie Open Service Broker for Azure
           href: integrate-azure.md
-        - name: Průběžné nasazování Jenkins
-          href: jenkins-continuous-deployment.md
         - name: Použití OpenFaaS s AKS
           href: openfaas.md
         - name: Spouštění sparkových úloh v AKS
           href: spark-job.md
         - name: Použití grafických procesorů v AKS
           href: gpu-cluster.md
+    - name: DevOps v AKS
+      items:
+        - name: Průběžné nasazování Jenkins
+          href: jenkins-continuous-deployment.md
+        - name: Projekt Azure DevOps pro AKS
+          href: 'https://docs.microsoft.com/en-us/vsts/pipelines/actions/azure-devops-project-aks'
+          maintainContext: true
     - name: Základy Kubernetes
       items:
         - name: Použití řídicího panelu Kubernetes
@@ -105,6 +122,14 @@
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks
+    - name: Python
+      href: /python/api/overview/azure/containerservice
+    - name: Java
+      href: /java/api/overview/azure/containerservice
+    - name: Node.js
+      href: /javascript/api/overview/azure/container-service
+    - name: Šablona Resource Manageru
+      href: /azure/templates/microsoft.containerservice/managedclusters
 - name: Zdroje a prostředky
   items:
     - name: Dostupnost v oblastech

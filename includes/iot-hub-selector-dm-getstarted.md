@@ -1,6 +1,5 @@
 > [!div class="op_single_selector"]
 > * [Zařízení: Node.js Služba: Node.js](../articles/iot-hub/iot-hub-node-node-device-management-get-started.md)
-> * [Zařízení: Node.js Služba: C#](../articles/iot-hub/iot-hub-csharp-node-device-management-get-started.md)
 > * [Zařízení: Služba C#: C#](../articles/iot-hub/iot-hub-csharp-csharp-device-management-get-started.md)
 > * [Zařízení: Služba Java: Java](../articles/iot-hub/iot-hub-java-java-device-management-getstarted.md)
 > * [Zařízení: Služba Python: Python](../articles/iot-hub/iot-hub-python-python-device-management-get-started.md)

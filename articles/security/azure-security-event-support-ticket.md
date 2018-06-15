@@ -1,6 +1,6 @@
 ---
-title: "Protokolování lístek podpory událostí zabezpečení – Azure | Microsoft Docs"
-description: "Jako prodejce na webu Azure Marketplace s identifikovat potenciální událostí zabezpečení potřebuji vědět, jak se přihlásit na příslušné lístek."
+title: Protokolování lístek podpory událostí zabezpečení – Azure | Microsoft Docs
+description: Jako prodejce na webu Azure Marketplace s identifikovat potenciální událostí zabezpečení potřebuji vědět, jak se přihlásit na příslušné lístek.
 services: security
 documentationcenter: na
 author: DavidBosland
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26129936"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Postup protokolu lístek podpory událostí zabezpečení
 

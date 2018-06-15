@@ -33,7 +33,8 @@ Následující kroky ukazují, jak nastavit ověřování hesla pro aplikaci AD 
    * **{Heslo}:** heslo, které použijete k ověření s vaší aplikací.
      
      ```powershell
-     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password {Password}
+     $SecurePassword=ConvertTo-SecureString {password} –asplaintext –force
+     New-AzureRmADApplication -DisplayName {Display name} -HomePage {Home page URL} -IdentifierUris {Application identifier} -Password $SecurePassword
      ```
 4. Poznamenejte si **ApplicationId** aplikace, které jste vytvořili. Budete potřebovat později.
 5. Vytvořit nový objekt služby pomocí následujícího příkazu, nahraďte **{MyApplicationId}** s **ApplicationId** z předchozího kroku:

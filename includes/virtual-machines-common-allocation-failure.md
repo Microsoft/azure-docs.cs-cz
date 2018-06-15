@@ -13,6 +13,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33901325"
 ---
 Při vytvoření virtuálního počítače (VM), restartujte zastaveném (deallocated) virtuálních počítačů nebo změnit velikost virtuálního počítače Microsoft Azure přiřadí výpočetní prostředky do vašeho předplatného. Nemůžeme se průběžně investice do další infrastrukturu a funkce a ujistěte se, že vždy obsahuje všechny typy virtuálních počítačů jsou dostupné pro podporu poptávku zákazníků. Však může někdy dojít k selhání přidělení prostředků z důvodu nebývalá rostoucích požadavků na služby Azure v určitých oblastí. Tento problém může vzniknout při pokusu o vytvoření nebo spusťte virtuální počítače v oblasti, když virtuální počítače zobrazovat následující kód chyby a zpráva:
 

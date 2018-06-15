@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895448"
 ---
 # <a name="chd-requirements-for-pci-dss-compliant-environments"></a>CHD požadavky pro kompatibilní se standardem PCI DSS prostředí
 ## <a name="pci-dss-requirement-3"></a>PCI DSS požadavek 3

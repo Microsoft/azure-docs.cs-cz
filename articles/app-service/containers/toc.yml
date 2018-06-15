@@ -157,6 +157,8 @@
       href: /rest/api/appservice/
 - name: Zdroje a prostředky
   items:
+    - name: Nejčastější dotazy k App Service v Linuxu
+      href: app-service-linux-faq.md
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Ceny

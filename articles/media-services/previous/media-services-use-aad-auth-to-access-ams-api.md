@@ -15,9 +15,10 @@ ms.date: 06/17/2017
 ms.author: juliako
 ms.openlocfilehash: a7f20c22b39458134d3dcd42b7e13860c03bad58
 ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790402"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Přístup k Azure Media Services API pomocí ověřování Azure AD
  
