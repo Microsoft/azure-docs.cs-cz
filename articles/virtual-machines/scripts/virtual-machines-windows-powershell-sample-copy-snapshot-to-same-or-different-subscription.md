@@ -1,13 +1,13 @@
 ---
-title: "Azure ukázkový skript prostředí PowerShell - kopírování (přesunout) snímek spravovaných disků na stejný nebo jiný předplatné | Microsoft Docs"
-description: "Azure ukázkový skript prostředí PowerShell - kopírování (přesunout) snímek spravovaných disků na stejný nebo jiný odběr"
+title: Azure ukázkový skript prostředí PowerShell - kopírování (přesunout) snímek spravovaných disků na stejný nebo jiný předplatné | Microsoft Docs
+description: Azure ukázkový skript prostředí PowerShell - kopírování (přesunout) snímek spravovaných disků na stejný nebo jiný odběr
 services: virtual-machines-windows
 documentationcenter: storage
 author: ramankumarlive
 manager: kavithag
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -17,9 +17,10 @@ ms.date: 06/06/2017
 ms.author: ramankum
 ms.openlocfilehash: 064b5355da10fe683563fa078cfafc65080f7ea2
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23879656"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Kopírování snímku spravovaného disku v rámci stejného předplatného nebo jiného předplatného pomocí prostředí PowerShell
 

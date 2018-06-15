@@ -16,9 +16,10 @@ ms.date: 10/18/2017
 ms.author: glenga
 ms.openlocfilehash: e0a04d44edf39c90533c59d67ea2dfce69f092cd
 ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33771088"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 

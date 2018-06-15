@@ -1,11 +1,11 @@
 ---
-title: "Načítání informací o stavu pro úlohu Azure Import/Export | Microsoft Docs"
-description: "Zjistěte, jak získat informace o stavu úloh služby Microsoft Azure Import/Export."
+title: Načítání informací o stavu pro úlohu Azure Import/Export | Microsoft Docs
+description: Zjistěte, jak získat informace o stavu úloh služby Microsoft Azure Import/Export.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 22d7e5f0-94da-49b4-a1ac-dd4c14a423c2
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874007"
 ---
 # <a name="retrieving-state-information-for-an-importexport-job"></a>Načítání informací o stavu pro úlohu importu/exportu
 Můžete volat [Get Job](/rest/api/storageimportexport/jobs#Jobs_Get) operace k načtení informací o obě import a export úloh. Vrátí následující informace:

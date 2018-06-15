@@ -1,11 +1,11 @@
 ---
 title: Service Bus ceny a fakturace | Microsoft Docs
-description: "Přehled služby Service Bus cenové struktury."
+description: Přehled služby Service Bus cenové struktury.
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 7c45b112-e911-45ab-9203-a2e5abccd6e0
 ms.service: service-bus-messaging
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/22/2017
+ms.locfileid: "27159782"
 ---
 # <a name="service-bus-pricing-and-billing"></a>Service Bus ceny a fakturace
 

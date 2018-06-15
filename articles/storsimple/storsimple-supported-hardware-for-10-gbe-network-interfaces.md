@@ -1,11 +1,11 @@
 ---
-title: "Rozhraní hardwaru pro zařízení StorSimple 10 GbE | Microsoft Docs"
-description: "Popisuje podporované malé faktor formuláře modulární vysílače (SFP), kabely a přepínače pro rozhraní sítě 10 GbE zařízení StorSimple."
+title: Rozhraní hardwaru pro zařízení StorSimple 10 GbE | Microsoft Docs
+description: Popisuje podporované malé faktor formuláře modulární vysílače (SFP), kabely a přepínače pro rozhraní sítě 10 GbE zařízení StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: df8d40c7-f5ad-4f84-93eb-779fbd5f7243
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927751"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>Podporovaném hardwaru 10 GbE síťových rozhraních zařízení StorSimple
 ## <a name="overview"></a>Přehled

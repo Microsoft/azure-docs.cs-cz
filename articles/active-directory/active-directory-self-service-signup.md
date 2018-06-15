@@ -16,9 +16,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.openlocfilehash: 67fd5ba9be2de1f79511c806ffaa0ae3001bfdcf
 ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33760285"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>Co je samoobslužné registrace pro Azure Active Directory?
 Tento článek vysvětluje samoobslužné registrace a jak ho podporují v Azure Active Directory (Azure AD). Pokud chcete převzít kontrolu nad název domény klienta z nespravovaných Azure AD najdete v tématu [převzít kontrolu nad adresář nespravované jako správce](domains-admin-takeover.md).

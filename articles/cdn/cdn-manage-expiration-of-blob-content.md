@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33765632"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Spravovat konec platnosti úložiště objektů Azure Blob v Azure CDN
 > [!div class="op_single_selector"]

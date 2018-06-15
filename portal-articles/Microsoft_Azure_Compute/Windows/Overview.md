@@ -1,6 +1,6 @@
 ---
-title: "Přehled virtuálních počítačů s Windows | Dokumentace Microsoftu"
-description: "Přehled obsahu nápovědy pro virtuální počítače s Windows na webu Azure Portal"
+title: Přehled virtuálních počítačů s Windows | Dokumentace Microsoftu
+description: Přehled obsahu nápovědy pro virtuální počítače s Windows na webu Azure Portal
 services: virtual-machines-windows
 author: sewatson
 manager: lwelicki
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23073856"
 ---
 # <a name="windows-virtual-machines-documentation"></a>Dokumentace k virtuálním počítačům s Windows
 

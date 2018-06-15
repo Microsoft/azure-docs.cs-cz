@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157349"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Jak se přihlásit žádné uživatele Azure Active Directory pomocí vzoru víceklientské aplikace
 Pokud nabízíte softwaru jako aplikace služby k mnoha organizacích, můžete nakonfigurovat aplikaci tak, aby přijímal přihlášení jakéhokoli klienta Azure Active Directory (AD). Tato konfigurace se nazývá provedení víceklientské vaší aplikace. Uživatelé v jakékoli klientovi Azure AD bude moci přihlásit k aplikaci po souhlas používat svůj účet s vaší aplikací. 

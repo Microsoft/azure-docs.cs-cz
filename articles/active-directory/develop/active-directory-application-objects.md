@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155615"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Aplikace a služby hlavní objekty ve službě Azure Active Directory (Azure AD)
 Někdy význam "aplikace" může být nesprávně pochopeny, pokud se používá v kontextu služby Azure AD. Cílem tohoto článku je vysvětlení koncepční a konkrétní aspekty integrace aplikace Azure AD, s ilustraci registrace a pro svůj souhlas [víceklientské aplikace](active-directory-dev-glossary.md#multi-tenant-application).

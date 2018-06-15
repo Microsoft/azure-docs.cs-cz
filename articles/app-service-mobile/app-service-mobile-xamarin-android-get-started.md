@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s Azure Mobile Apps u aplikací na platformě Xamarin.Android"
-description: "V tomto kurzu začnete používat Azure Mobile Apps pro vývoj na platformě Xamarin.Android."
+title: Začínáme s Azure Mobile Apps u aplikací na platformě Xamarin.Android
+description: V tomto kurzu začnete používat Azure Mobile Apps pro vývoj na platformě Xamarin.Android.
 services: app-service\mobile
 documentationcenter: xamarin
 author: conceptdev
 manager: crdun
-editor: 
+editor: ''
 ms.assetid: 81649dd3-544f-40ff-b9b7-60c66d683e60
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/04/2018
+ms.locfileid: "27592775"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Vytvoření aplikace Xamarin.Android
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]

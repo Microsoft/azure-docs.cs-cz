@@ -19,6 +19,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34161308"
 ---
 # <a name="cli-example-create-an-azure-event-grid-subscription"></a>Ukázka CLI: Vytvoření předplatného služby Azure Event Grid 
 

@@ -13,6 +13,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32182658"
 ---
 ### <a name="retrieve-host-name-ports-and-access-keys-using-azure-cli"></a>Načtení názvu hostitele, portů a přístupových klíčů pomocí Azure CLI
 Chcete-li načíst název hostitele a porty pomocí Azure CLI 2.0, můžete zavolat příkaz [az redis show](https://docs.microsoft.com/cli/azure/redis#az_redis_show). K načtení klíčů můžete zavolat příkaz [az redis list-keys](https://docs.microsoft.com/cli/azure/redis#az_redis_list_keys). Následující skript volá tyto dva příkazy a vypíše název hostitele, porty a klíče na konzolu.

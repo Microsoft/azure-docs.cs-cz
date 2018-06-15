@@ -20,6 +20,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34068148"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>Začínáme vytvářet interní nástroj pro vyrovnávání zatížení (Classic) pomocí prostředí PowerShell
 

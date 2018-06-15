@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace ke službě Log Analytics"
+title: Dokumentace ke službě Log Analytics
 metadata:
-  title: "Dokumentace ke službě Azure Log Analytics – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-  description: "Log Analytics je součástí celkového monitorovacího řešení Microsoft Azure.  Log Analytics monitoruje cloudová a místní prostředí pro zajištění dostupnosti a výkonu. Získáte přehled napříč úlohami a systémy pro zajištění dostupnosti a výkonu. Naučte se prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek shromažďovat data, analyzovat je a reagovat na ně."
+  title: Dokumentace ke službě Azure Log Analytics – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+  description: Log Analytics je součástí celkového monitorovacího řešení Microsoft Azure.  Log Analytics monitoruje cloudová a místní prostředí pro zajištění dostupnosti a výkonu. Získáte přehled napříč úlohami a systémy pro zajištění dostupnosti a výkonu. Naučte se prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek shromažďovat data, analyzovat je a reagovat na ně.
   services: log-analytics
   author: czeumault
   manager: carolz
@@ -18,53 +18,54 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 01/12/2018
+  ms.locfileid: "27786114"
 abstract:
-  description: "Log Analytics je součástí celkového monitorovacího řešení Microsoft Azure. Log Analytics monitoruje cloudová a místní prostředí pro zajištění dostupnosti a výkonu. Získáte přehled napříč úlohami a systémy pro zajištění dostupnosti a výkonu. Naučte se prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek shromažďovat data, analyzovat je a reagovat na ně."
+  description: Log Analytics je součástí celkového monitorovacího řešení Microsoft Azure. Log Analytics monitoruje cloudová a místní prostředí pro zajištění dostupnosti a výkonu. Získáte přehled napříč úlohami a systémy pro zajištění dostupnosti a výkonu. Naučte se prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek shromažďovat data, analyzovat je a reagovat na ně.
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Naučte se, jak nasadit Log Analytics a konfigurovat shromažďování dat z Azure, dalších poskytovatelů cloudových služeb a místních prostředků."
+    text: Naučte se, jak nasadit Log Analytics a konfigurovat shromažďování dat z Azure, dalších poskytovatelů cloudových služeb a místních prostředků.
   - type: list
     style: icon48
     items:
     - image:
         src: https://docs.microsoft.com/azure/media/index/virtualmachine.svg
-      text: "Virtuální počítače Azure"
+      text: Virtuální počítače Azure
       href: /azure/log-analytics/log-analytics-quick-collect-azurevm
     - image:
         src: https://docs.microsoft.com/media/logos/logo_linux.svg
-      text: "Počítač s Linuxem"
+      text: Počítač s Linuxem
       href: /azure/log-analytics/log-analytics-quick-collect-linux-computer
     - image:
         src: https://docs.microsoft.com/media/logos/logo_Windows.svg
-      text: "Počítač s Windows"
+      text: Počítač s Windows
       href: /azure/log-analytics/log-analytics-quick-collect-windows-computer
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Naučte se analyzovat a vizualizovat shromážděná data a reagovat na ně."
+    text: Naučte se analyzovat a vizualizovat shromážděná data a reagovat na ně.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/log-analytics/log-analytics-tutorial-viewdata\">Zobrazení nebo analýza shromážděných dat</a>"
-    - html: "<a href=\"/azure/log-analytics/log-analytics-tutorial-dashboards\">Vytváření a sdílení řídicích panelů</a>"
-    - html: "<a href=\"/azure/log-analytics/log-analytics-tutorial-response\">Reakce na události s využitím upozornění Log Analytics</a>"
-- title: "Bezplatné školicí video od Pluralsightu"
+    - html: <a href="/azure/log-analytics/log-analytics-tutorial-viewdata">Zobrazení nebo analýza shromážděných dat</a>
+    - html: <a href="/azure/log-analytics/log-analytics-tutorial-dashboards">Vytváření a sdílení řídicích panelů</a>
+    - html: <a href="/azure/log-analytics/log-analytics-tutorial-response">Reakce na události s využitím upozornění Log Analytics</a>
+- title: Bezplatné školicí video od Pluralsightu
   items:
   - type: list
     style: cards
     className: cardsFTitle
     items:
-    - title: "Začínáme s monitorováním IaaS"
+    - title: Začínáme s monitorováním IaaS
       href: https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://app.pluralsight.com/library/courses/azure-iaas-monitoring-management-getting-started/table-of-contents
-- title: "Ukázky"
+- title: Ukázky
   items:
   - type: paragraph
-    text: "Následující ukázky použijte ke konfiguraci a správě Log Analytics."
+    text: Následující ukázky použijte ke konfiguraci a správě Log Analytics.
   - type: list
     style: unordered
     className: spaced noBullet
@@ -76,7 +77,7 @@ sections:
     style: cards
     className: cardsD
     items:
-    - title: "Příkazový řádek"
+    - title: Příkazový řádek
       html: <p><a href="/powershell/module/azurerm.operationalinsights">Azure PowerShell</a></p>
     - title: REST
-      html: "<p><a href=\"/rest/api/loganalytics\">Reference k rozhraní REST API</a></p>"
+      html: <p><a href="/rest/api/loganalytics">Reference k rozhraní REST API</a></p>

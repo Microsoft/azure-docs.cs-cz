@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157310"
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Obory, oprávnění a souhlasu v koncového bodu v2.0 Azure Active Directory
 Aplikace, které se integrují s Azure Active Directory (Azure AD), postupujte podle modelu autorizace, který nabízí uživatelům kontrolu nad přístupu svá data aplikace. Implementace v2.0 modelu autorizace byl aktualizován a změní způsob, jakým aplikace musí komunikovat s Azure AD. Tento článek se zabývá základními koncepty prostředí tato ověřování modelu, včetně obory, oprávnění a souhlasu.

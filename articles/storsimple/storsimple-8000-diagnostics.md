@@ -1,12 +1,12 @@
 ---
-title: "Nástroj diagnostiky pro zařízení StorSimple 8000 Poradce při potížích | Microsoft Docs"
-description: "Popisuje režimy zařízení StorSimple a vysvětluje, jak pomocí prostředí Windows PowerShell pro StorSimple ke změně režimu zařízení."
+title: Nástroj diagnostiky pro zařízení StorSimple 8000 Poradce při potížích | Microsoft Docs
+description: Popisuje režimy zařízení StorSimple a vysvětluje, jak pomocí prostředí Windows PowerShell pro StorSimple ke změně režimu zařízení.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27744108"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>Nástroj diagnostiky StorSimple potíží pomocí 8000 řady zařízení
 

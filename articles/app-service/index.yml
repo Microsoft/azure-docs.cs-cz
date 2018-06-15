@@ -3,7 +3,7 @@ documentType: LandingData
 title: Dokumentace k Web Apps
 metadata:
   document_id: 6c8db72a-cdb7-8fb7-ed57-ed75afcca4d0
-  title: "Dokumentace ke službě Azure Web Apps – kurzy, reference k rozhraní API"
+  title: Dokumentace ke službě Azure Web Apps – kurzy, reference k rozhraní API
   meta.description: Learn how to use App Service Web Apps to build and host websites and web applications.
   services: app-service
   author: czeumault
@@ -19,22 +19,23 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 01/12/2018
+  ms.locfileid: "27785453"
 abstract:
-  description: "Azure Web Apps umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Visual studio Team Services nebo libovolného úložiště Git. Naučte se používat Azure Web Apps prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek."
+  description: Azure Web Apps umožňuje vytvářet a hostovat webové aplikace v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Nabízí automatické škálování a vysokou dostupnost, podporuje systémy Windows a Linux a umožňuje automatizované nasazení z Githubu, Visual studio Team Services nebo libovolného úložiště Git. Naučte se používat Azure Web Apps prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
   aside:
     image:
       alt: 
       height: 110
       src: https://docs.microsoft.com/azure/app-service/media/index/create-a-web-app-with-nodejs-and-azure-app-service.png
       width: 250
-    title: "Vytvořte webovou aplikaci pomocí Node.js a Azure App Service. (2:41)"
+    title: Vytvořte webovou aplikaci pomocí Node.js a Azure App Service. (2:41)
     href: https://azure.microsoft.com/resources/videos/create-a-web-app-with-nodejs-and-azure-app-service/
     width: 250
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Jak nasadit první aplikaci do cloudu pomocí Web Apps:"
+    text: 'Jak nasadit první aplikaci do cloudu pomocí Web Apps:'
   - type: list
     style: icon48
     items:
@@ -63,7 +64,7 @@ sections:
       text: HTML
       href: https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html
   - type: paragraph
-    text: "Naučte se průběžně nasazovat:"
+    text: 'Naučte se průběžně nasazovat:'
   - type: list
     style: icon48
     items:
@@ -71,37 +72,37 @@ sections:
         src: https://docs.microsoft.com/azure/media/index/logo_vs-team-services.svg
       text: VSTS
       href: https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?toc=/vsts/deploy-azure/toc.json&bc=/vsts/deploy-azure/breadcrumb/toc.json
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Jak nasadit, spravovat a monitorovat zabezpečené webové aplikace v Azure"
+    text: Jak nasadit, spravovat a monitorovat zabezpečené webové aplikace v Azure
   - type: list
     style: ordered
     items:
-    - html: "Vytvoření aplikace pomocí <a href=\"/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase\">.NET s Azure SQL DB</a> nebo <a href=\"/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app\">Node.js s MongoDB</a>"
-    - html: "<a href=\"/azure/app-service/app-service-web-tutorial-custom-domain\">Mapování existující vlastní domény na aplikaci</a>"
-    - html: "<a href=\"/azure/app-service/app-service-web-tutorial-custom-SSL\">Vytvoření vazby stávajícího certifikátu SSL na vaši aplikaci</a>"
-    - html: "<a href=\"/azure/app-service/app-service-web-tutorial-content-delivery-network\">Přidání sítě CDN do aplikace</a>"
-- title: "Bezplatné školicí video od Pluralsightu"
+    - html: Vytvoření aplikace pomocí <a href="/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase">.NET s Azure SQL DB</a> nebo <a href="/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app">Node.js s MongoDB</a>
+    - html: <a href="/azure/app-service/app-service-web-tutorial-custom-domain">Mapování existující vlastní domény na aplikaci</a>
+    - html: <a href="/azure/app-service/app-service-web-tutorial-custom-SSL">Vytvoření vazby stávajícího certifikátu SSL na vaši aplikaci</a>
+    - html: <a href="/azure/app-service/app-service-web-tutorial-content-delivery-network">Přidání sítě CDN do aplikace</a>
+- title: Bezplatné školicí video od Pluralsightu
   items:
   - type: list
     style: cards
     className: cardsFTitle
     items:
-    - title: "Vývoj v .NET"
+    - title: Vývoj v .NET
       href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-    - title: "Vývoj v Node.js"
+    - title: Vývoj v Node.js
       href: https://www.pluralsight.com/courses/developing-nodejs-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
         href: https://www.pluralsight.com/courses/developing-nodejs-microsoft-azure-getting-started?twoid=d6abac77-7dcc-4d33-9e03-f85e78989f02
-- title: "Ukázky"
+- title: Ukázky
   items:
   - type: paragraph
-    text: "Vyhledání skriptů pro správu běžných úkolů"
+    text: Vyhledání skriptů pro správu běžných úkolů
   - type: list
     style: unordered
     className: spaced noBullet
@@ -114,9 +115,9 @@ sections:
     style: cards
     className: cardsD
     items:
-    - title: "Příkazový řádek"
+    - title: Příkazový řádek
       html: <p><a href="/powershell/azureps-cmdlets-docs">Azure PowerShell</a></p><p><a href="/cli/azure/appservice">Azure CLI</a></p>
     - title: Jazyky
       html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/">Java</a></p>
     - title: REST
-      html: "<p><a href=\"/rest/api/appservice\">Reference k rozhraní REST API</a></p>"
+      html: <p><a href="/rest/api/appservice">Reference k rozhraní REST API</a></p>

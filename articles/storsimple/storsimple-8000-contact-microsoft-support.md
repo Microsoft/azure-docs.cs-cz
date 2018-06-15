@@ -1,12 +1,12 @@
 ---
-title: "Vytvoření lístku podpory nebo případ řady StorSimple 8000 | Microsoft Docs"
-description: "Informace o protokolu žádosti o podporu a spustit relaci podporu ve vašem zařízení řady StorSimple 8000."
+title: Vytvoření lístku podpory nebo případ řady StorSimple 8000 | Microsoft Docs
+description: Informace o protokolu žádosti o podporu a spustit relaci podporu ve vašem zařízení řady StorSimple 8000.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743040"
 ---
 # <a name="contact-microsoft-support"></a>Obraťte se na podporu společnosti Microsoft
 

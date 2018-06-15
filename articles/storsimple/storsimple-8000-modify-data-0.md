@@ -1,12 +1,12 @@
 ---
-title: "Upravit DATA 0 nastavení na zařízení řady StorSimple 8000 | Microsoft Docs"
-description: "Další informace o použití prostředí Windows PowerShell pro StorSimple překonfigurovat síťového rozhraní DATA 0 v zařízení StorSimple."
+title: Upravit DATA 0 nastavení na zařízení řady StorSimple 8000 | Microsoft Docs
+description: Další informace o použití prostředí Windows PowerShell pro StorSimple překonfigurovat síťového rozhraní DATA 0 v zařízení StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927583"
 ---
 # <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>Upravit nastavení 0 síťového rozhraní DATA ve vašem zařízení řady StorSimple 8000
 

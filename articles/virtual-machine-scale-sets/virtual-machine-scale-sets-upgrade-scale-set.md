@@ -20,6 +20,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32194042"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Upravit škálovací sadu virtuálních počítačů
 V průběhu životního cyklu aplikací musíte upravit nebo aktualizovat vaše škálovací sadu virtuálních počítačů. Tyto aktualizace může zahrnovat jak aktualizovat konfiguraci sady škálování nebo změnit konfiguraci aplikace. Tento článek popisuje, jak upravit existující měřítku nastavit pomocí rozhraní REST API, prostředí Azure PowerShell nebo Azure CLI 2.0.

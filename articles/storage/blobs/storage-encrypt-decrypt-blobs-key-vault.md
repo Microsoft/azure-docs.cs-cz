@@ -1,6 +1,6 @@
 ---
-title: "Kurz: Šifrování a dešifrování objektů BLOB v úložišti Azure pomocí Azure Key Vault | Microsoft Docs"
-description: "Jak šifrování a dešifrování objektu blob pomocí šifrování na straně klienta pro úložiště Microsoft Azure s Azure Key Vault."
+title: 'Kurz: Šifrování a dešifrování objektů BLOB v úložišti Azure pomocí Azure Key Vault | Microsoft Docs'
+description: Jak šifrování a dešifrování objektu blob pomocí šifrování na straně klienta pro úložiště Microsoft Azure s Azure Key Vault.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/16/2018
+ms.locfileid: "27815809"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Kurz: Šifrování a dešifrování objektů BLOB v úložišti Microsoft Azure pomocí Azure Key Vault
 ## <a name="introduction"></a>Úvod

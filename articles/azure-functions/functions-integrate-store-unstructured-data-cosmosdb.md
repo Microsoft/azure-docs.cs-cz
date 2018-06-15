@@ -1,14 +1,14 @@
 ---
-title: "Ukládání nestrukturovaných dat pomocí služeb Azure Cosmos DB a Functions | Dokumentace Microsoftu"
-description: "Ukládání nestrukturovaných dat pomocí Azure Functions a databáze Cosmos DB"
+title: Ukládání nestrukturovaných dat pomocí služeb Azure Cosmos DB a Functions | Dokumentace Microsoftu
+description: Ukládání nestrukturovaných dat pomocí Azure Functions a databáze Cosmos DB
 services: functions
 documentationcenter: functions
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "azure functions, functions, zpracování událostí, Cosmos DB, dynamické výpočty, architektura bez serverů"
-ms.assetid: 
+editor: ''
+tags: ''
+keywords: azure functions, functions, zpracování událostí, Cosmos DB, dynamické výpočty, architektura bez serverů
+ms.assetid: ''
 ms.service: functions
 ms.devlang: csharp
 ms.topic: quickstart
@@ -22,6 +22,7 @@ ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/11/2018
+ms.locfileid: "27767549"
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-azure-cosmos-db"></a>Ukládání nestrukturovaných dat pomocí služeb Azure Functions a Azure Cosmos DB
 

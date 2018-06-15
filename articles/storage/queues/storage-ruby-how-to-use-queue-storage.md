@@ -1,6 +1,6 @@
 ---
-title: "Používání úložiště Queue z Ruby | Microsoft Docs"
-description: "Naučte se používat službu front Azure k vytváření a odstraňování front a vložit, získání a odstranění zprávy. Ukázky napsané v Ruby."
+title: Používání úložiště Queue z Ruby | Microsoft Docs
+description: Naučte se používat službu front Azure k vytváření a odstraňování front a vložit, získání a odstranění zprávy. Ukázky napsané v Ruby.
 services: storage
 documentationcenter: ruby
 author: tamram
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27993632"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Používání úložiště Queue z Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

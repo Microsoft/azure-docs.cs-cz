@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32181816"
 ---
 # <a name="azure-status"></a>Stav Azure
 [Azure stav](https://azure.microsoft.com/status/) poskytuje globální zobrazení stavu služby Azure. S Azure stav můžete získat nejnovějších informací o dostupnosti služby. Všem uživatelům přístup k Azure stav a můžete zobrazit všechny služby, které sestavy jejich stav služby. 

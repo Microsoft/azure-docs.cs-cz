@@ -1,23 +1,24 @@
 ---
-title: "Volba Azure hybridní řešení identit | Microsoft Docs"
-description: "Získejte základní povědomí dostupné hybridní řešení identity a doporučení pro vám umožní provádět rozhodnutí nejlepší identity zásad správného řízení pro vaši organizaci."
-keywords: 
+title: Volba Azure hybridní řešení identit | Microsoft Docs
+description: Získejte základní povědomí dostupné hybridní řešení identity a doporučení pro vám umožní provádět rozhodnutí nejlepší identity zásad správného řízení pro vaši organizaci.
+keywords: ''
 author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: billmath
 ms.date: 03/02/2018
 ms.topic: article
-ms.prod: 
+ms.prod: ''
 ms.service: azure
-ms.technology: 
-ms.assetid: 
+ms.technology: ''
+ms.assetid: ''
 ms.custom: it-pro
 ms.openlocfilehash: 9f9099c0ebd65ba84e171314e6f04d858648a805
 ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29800733"
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft hybridních řešení identit
 [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) hybridních řešení identit umožňují synchronizovat místní adresáře objekty s Azure AD při nadále spravuje uživatele místní. První rozhodnutí při plánování vaší místní Windows Server Active Directory synchronizovat s Azure AD je, jestli chcete používat identity synchronizovaných nebo federovaných identit. Synchronizované identity a volitelně hodnot hash hesel, povolte uživatelům používat stejné heslo pro přístup k místní i cloudové prostředkům organizace. Pro pokročilejší scénáře požadavky, například jednotného přihlašování (SSO) nebo místní vícefaktorové ověřování musíte k nasazení služby Active Directory Federation Services (AD FS) pro vytvoření federace identit. 

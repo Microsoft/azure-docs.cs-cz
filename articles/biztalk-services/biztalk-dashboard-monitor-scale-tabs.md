@@ -1,11 +1,11 @@
 ---
-title: "Řídicí panel, sledování, měřítko, konfigurovat a hybridní připojení ve službě BizTalk Services | Microsoft Docs"
-description: "Další informace o ovládací prvky a sledovat výkon služby BizTalk Services"
+title: Řídicí panel, sledování, měřítko, konfigurovat a hybridní připojení ve službě BizTalk Services | Microsoft Docs
+description: Další informace o ovládací prvky a sledovat výkon služby BizTalk Services
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 7a1815db-0de2-4274-8be0-198c1b077324
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24103357"
 ---
 # <a name="review-the-dashboard-monitor-scale-configure-and-hybrid-connection-tabs"></a>Kontrola karet řídicího panelu, monitorování, škálování, konfigurace a hybridní připojení
 

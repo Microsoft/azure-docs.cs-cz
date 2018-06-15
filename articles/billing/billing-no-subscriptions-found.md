@@ -20,6 +20,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34070613"
 ---
 # <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Žádná předplatná nalezena chyba na portálu Azure nebo centra účtů Azure
 

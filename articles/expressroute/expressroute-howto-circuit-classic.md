@@ -1,11 +1,11 @@
 ---
-title: "Úprava okruhu ExpressRoute: prostředí PowerShell: portál Azure classic | Microsoft Docs"
-description: "Tento článek vás provede kroky pro kontrolu stavu, aktualizace nebo odstranění a zrušení zřízení okruhu ExpressRoute modelu nasazení classic."
+title: 'Úprava okruhu ExpressRoute: prostředí PowerShell: portál Azure classic | Microsoft Docs'
+description: Tento článek vás provede kroky pro kontrolu stavu, aktualizace nebo odstranění a zrušení zřízení okruhu ExpressRoute modelu nasazení classic.
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 0134d242-6459-4dec-a2f1-4657c3bc8b23
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "24102830"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>Úprava okruhu ExpressRoute pomocí prostředí PowerShell (klasické)
 

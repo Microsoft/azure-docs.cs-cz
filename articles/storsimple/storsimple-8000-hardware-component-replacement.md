@@ -1,12 +1,12 @@
 ---
-title: "Výměna součást hardwaru řady StorSimple 8000 | Microsoft Docs"
-description: "Popisuje, jak bezpečně PCMs, baterie, moduly řadiče, EBOD řadiče, diskové jednotky a nahradíte skříň zařízení StorSimple."
+title: Výměna součást hardwaru řady StorSimple 8000 | Microsoft Docs
+description: Popisuje, jak bezpečně PCMs, baterie, moduly řadiče, EBOD řadiče, diskové jednotky a nahradíte skříň zařízení StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.custom: 
+ms.custom: ''
 ms.openlocfilehash: 6de50c5031db59176bdf17ecc69b934559220f6a
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927604"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Nahraďte hardwarová komponenta na vašem zařízení řady StorSimple 8000
 

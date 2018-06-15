@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace funkce MPIO na hostiteli systému StorSimple Linux | Microsoft Docs"
-description: "Konfigurace funkce MPIO na StorSimple připojené k Linux hostitele se systémem CentOS 6.6"
+title: Konfigurace funkce MPIO na hostiteli systému StorSimple Linux | Microsoft Docs
+description: Konfigurace funkce MPIO na StorSimple připojené k Linux hostitele se systémem CentOS 6.6
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27779087"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurace funkce MPIO na StorSimple hostitele se systémem CentOS
 Tento článek vysvětluje kroky nutné ke konfiguraci více cest vstupně-výstupní operace (MPIO) na serveru hostitele Centos 6.6. Hostitelský server je připojená k zařízení s Microsoft Azure StorSimple pro vysokou dostupnost prostřednictvím iniciátory iSCSI. Je podrobně popisuje automatické zjišťování vícenásobný zařízení a konkrétní nastavení pouze pro svazky zařízení StorSimple.
