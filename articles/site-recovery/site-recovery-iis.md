@@ -1,6 +1,6 @@
 ---
-title: "Replikovat vícevrstvé založené na službě IIS webové aplikace pomocí Azure Site Recovery | Microsoft Docs"
-description: "Zjistěte, jak k replikaci adresáře služby IIS webové farmy virtuálních počítačů pomocí Azure Site Recovery."
+title: Replikovat vícevrstvé založené na službě IIS webové aplikace pomocí Azure Site Recovery | Microsoft Docs
+description: Zjistěte, jak k replikaci adresáře služby IIS webové farmy virtuálních počítačů pomocí Azure Site Recovery.
 services: site-recovery
 author: nsoneji
 manager: gauravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29809416"
 ---
 # <a name="replicate-a-multi-tier-iis-based-web-application"></a>Replikovat vícevrstvé webové aplikace využívající službu IIS
 

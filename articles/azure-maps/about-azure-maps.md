@@ -1,23 +1,20 @@
 ---
 title: Přehled Azure Maps | Microsoft Docs
 description: Seznámení s Azure Maps
-services: azure-maps
-keywords: ''
 author: kgremban
 ms.author: kgremban
 ms.date: 05/07/2018
 ms.topic: overview
 ms.service: azure-maps
-documentationcenter: ''
+services: azure-maps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4882eadb8db5137d6fcf75c6d80c34ae050d3a6d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 9eb6039a10cbdac004ab25f8295f5659c246a743
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193947"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600057"
 ---
 # <a name="an-introduction-to-azure-maps"></a>Seznámení s Azure Maps
 Azure Maps je portfolio geoprostorových služeb, mezi které patří rozhraní API pro mapy, vyhledávání, trasy, provoz a časová pásma. Portfolio služeb umožňuje používat známé nástroje k rychlému vývoji a škálování řešení, která integrují informace o poloze do vašich řešení v Azure. Azure Maps poskytuje vývojářům ze všech odvětví výkonné geoprostorové funkce společně s čerstvými mapovými daty, která jsou nezbytná k zajištění geografického kontextu pro webové a mobilní aplikace. Azure Maps představuje sadu rozhraní REST API doprovázenou webovým ovládáním v JavaScriptu pro zajištění snadného, flexibilního a přenositelného vývoje napříč různými médii. 

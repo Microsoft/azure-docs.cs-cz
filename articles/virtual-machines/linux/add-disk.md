@@ -22,6 +22,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30837002"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Přidání disku do virtuálního počítače s Linuxem
 Tento článek ukazuje, jak připojit trvalé disk k virtuálnímu počítači tak, aby můžete zachovat data - i v případě, že virtuální počítač je znovu poskytnuto z důvodu údržby nebo změnou velikosti. 

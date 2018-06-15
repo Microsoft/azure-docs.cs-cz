@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 05/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 18f7c0323493b73f4f136228fb9535ed63323c05
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: HT
+ms.openlocfilehash: b3055e6b22e3f391c0bc3f321cd8117d55a95cf5
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271645"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Připojte počítače bez přístupu k Internetu pomocí brány OMS
 Tento dokument popisuje, jak nakonfigurovat komunikaci s Azure Automation a analýzy protokolů pomocí brány OMS při přímé připojení nebo Operations Manager monitorované počítače nemají přístup k Internetu.  Bránu OMS, což je předat dál proxy protokolu HTTP, podporující tunelování HTTP pomocí příkazu HTTP připojení, můžete shromažďovat data a odeslat do Azure Automation a analýzy protokolů jejich jménem.  
@@ -131,20 +132,18 @@ Můžete nakonfigurovat bránu pro vysokou dostupnost, pomocí služby Vyrovnáv
 
 Další informace o návrhu a nasazení clusteru služby Vyrovnávání zatížení sítě systému Windows Server 2016 najdete v tématu [Vyrovnávání zatížení sítě](https://technet.microsoft.com/windows-server-docs/networking/technologies/network-load-balancing).  Následující kroky popisují postup konfigurace clusteru služby Vyrovnávání zatížení sítě společnosti Microsoft.  
 
-1.  Přihlaste do Windows serveru, který je členem clusteru vyrovnávání zatížení sítě k účtu správce.  
-2.  Ve Správci serveru otevřete Správce vyrovnávání zatížení sítě, klikněte na tlačítko **nástroje**a potom klikněte na **Správce vyrovnávání zatížení sítě**.
+1. Přihlaste do Windows serveru, který je členem clusteru vyrovnávání zatížení sítě k účtu správce.  
+2. Ve Správci serveru otevřete Správce vyrovnávání zatížení sítě, klikněte na tlačítko **nástroje**a potom klikněte na **Správce vyrovnávání zatížení sítě**.
 3. Pro připojení serveru brány OMS s nainstalovaným agentem monitorování společnosti Microsoft, klikněte pravým tlačítkem na IP adresu clusteru a pak klikněte na tlačítko **přidat hostitele do clusteru**.<br><br> ![Zatížení sítě vyrovnávání Manager – přidání hostitele do clusteru](./media/log-analytics-oms-gateway/nlb02.png)<br> 
 4. Zadejte IP adresu serveru brány, kterému se chcete připojit.<br><br> ![Sítě Správce vyrovnávání zatížení – přidání hostitele do clusteru: připojení](./media/log-analytics-oms-gateway/nlb03.png) 
     
 ## <a name="configure-oms-agent-and-operations-manager-management-group"></a>Konfigurace agenta OMS a skupiny pro správu nástroje Operations Manager
 Následující část obsahuje kroky pro konfiguraci přímo připojené OMS agentů, skupinu pro správu nástroje Operations Manager nebo procesy Azure Automation Hybrid Runbook Worker s bránou OMS komunikovat s Azure Automation nebo analýzy protokolů.  
 
-Zjistit požadavky a kroky k instalaci agenta OMS na počítačích s Windows připojení přímo k Log Analytics najdete v části [počítače se systémem Windows se připojit k analýze protokolů](log-analytics-windows-agents.md) nebo Linux počítačů najdete v tématu [připojit Linux počítače k analýze protokolů](log-analytics-quick-collect-linux-computer.md).  Informace související s Automation Hybrid Runbook Worker najdete v tématu [nasazení Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md).
-
-### <a name="configuring-the-oms-agent-and-operations-manager-to-use-the-oms-gateway-as-a-proxy-server"></a>Konfigurace agenta OMS a nástroje Operations Manager pro použití brány OMS jako proxy server
-
 ### <a name="configure-standalone-oms-agent"></a>Konfigurace agenta OMS samostatné
-V tématu [nakonfigurovat nastavení proxy a firewall pomocí agenta Microsoft Monitoring Agent](log-analytics-proxy-firewall.md) informace o konfiguraci agenta použít proxy server, který v tomto případě je brány.  Pokud jste nasadili několik serverů brány za službou Vyrovnávání zatížení sítě, je konfigurace proxy serveru agenta OMS virtuální IP adresy služby NLB:<br><br> ![Microsoft Monitoring Agent vlastnosti – nastavení proxy serveru](./media/log-analytics-oms-gateway/nlb04.png)
+Zjistit požadavky a kroky k instalaci agenta OMS na počítačích s Windows připojení přímo k Log Analytics najdete v části [počítače se systémem Windows se připojit k analýze protokolů](log-analytics-windows-agents.md) nebo Linux počítačů najdete v tématu [připojit Linux počítače k analýze protokolů](log-analytics-quick-collect-linux-computer.md). Místo zadání proxy server při konfiguraci agenta, nahraďte tuto hodnotu IP adresu serveru brány OMS a jeho číslo portu.  Pokud jste nasadili několik serverů brány za službou Vyrovnávání zatížení sítě, je konfigurace proxy serveru agenta OMS virtuální IP adresy služby NLB.  
+
+Informace související s Automation Hybrid Runbook Worker najdete v tématu [nasazení Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md).
 
 ### <a name="configure-operations-manager---all-agents-use-the-same-proxy-server"></a>Konfigurace nástroje Operations Manager – všechny agenty používat stejný server proxy
 Chcete-li přidat server brány nástroje Operations Manager nakonfigurujete.  Konfiguraci proxy serveru nástroje Operations Manager je automaticky použita pro všechny agenty k nástroji Operations Manager reporting, i když je toto nastavení prázdné.  

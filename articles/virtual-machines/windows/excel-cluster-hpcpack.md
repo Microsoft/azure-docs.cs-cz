@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30917400"
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Začít a spustit úlohy aplikace Excel a SOA v clusteru HPC Pack v Azure
 Tento článek ukazuje, jak nasadit cluster Microsoft HPC Pack 2012 R2 na virtuálních počítačích Azure pomocí šablony Azure rychlý start, nebo volitelně skript nasazení Azure PowerShell. Cluster využívá Image virtuálního počítače Azure Marketplace, které jsou navrženy pro spouštění úloh orientované na služby architektura (SOA) nebo Microsoft Excel pomocí sady HPC Pack. Clusteru můžete použít ke spuštění aplikace Excel HPC a SOA služby z klientského počítače k místní. Služby HPC pro Excel obsahovat snižování zátěže sešitu aplikace Excel a uživatelem definované funkce aplikace Excel nebo UDF.

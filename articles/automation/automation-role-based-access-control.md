@@ -12,7 +12,7 @@ ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: fd96a6cfebe44bd02e3f44a44d91119ad1c2c5a9
 ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/01/2018
 ms.locfileid: "34598748"

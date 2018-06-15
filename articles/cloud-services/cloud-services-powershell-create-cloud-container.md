@@ -1,11 +1,11 @@
 ---
-title: "Vytvořte kontejner cloudové služby pomocí prostředí PowerShell | Microsoft Docs"
-description: "Tento článek vysvětluje, jak vytvořit kontejner cloudové služby pomocí prostředí PowerShell. Kontejner hostuje webové a pracovní role."
+title: Vytvořte kontejner cloudové služby pomocí prostředí PowerShell | Microsoft Docs
+description: Tento článek vysvětluje, jak vytvořit kontejner cloudové služby pomocí prostředí PowerShell. Kontejner hostuje webové a pracovní role.
 services: cloud-services
 documentationcenter: .net
 author: cawaMS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c8f32469-610e-4f37-a3aa-4fac5c714e13
 ms.service: cloud-services
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29376129"
 ---
 # <a name="use-an-azure-powershell-command-to-create-an-empty-cloud-service-container"></a>Použít příkaz prostředí Azure PowerShell k vytvoření kontejner prázdný cloudové služby
 Tento článek vysvětluje, jak rychle vytvořit kontejner cloudové služby pomocí rutin prostředí Azure PowerShell. Postupujte podle následujících kroků:

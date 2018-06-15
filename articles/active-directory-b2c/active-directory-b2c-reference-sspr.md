@@ -12,7 +12,7 @@ ms.author: davidmu
 ms.component: B2C
 ms.openlocfilehash: ea8b23618b382f557340643afd62e56932bbfb2d
 ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/04/2018
 ms.locfileid: "34712092"

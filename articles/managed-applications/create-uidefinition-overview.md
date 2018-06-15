@@ -18,6 +18,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34305221"
 ---
 # <a name="create-azure-portal-user-interface-for-your-managed-application"></a>Vytvoření Azure portálu uživatelského rozhraní pro spravované aplikace
 Tento dokument uvádí základní koncepty createUiDefinition.json souboru. Portál Azure tento soubor používá ke generování uživatelského rozhraní pro vytváření spravované aplikace.

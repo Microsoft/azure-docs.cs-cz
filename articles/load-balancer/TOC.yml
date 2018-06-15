@@ -74,6 +74,8 @@
       href: load-balancer-standard-public-zone-redundant-cli.md
     - name: Vyrovnávání zatížení virtuálních počítačů v rámci zóny (CLI)
       href: load-balancer-standard-public-zonal-cli.md
+    - name: Vytvoření nástroje pro vyrovnávání zatížení Azure s využitím REST API
+      href: create-load-balancer-rest-api.md
     - name: Vytvoření Load Balancer úrovně Basic (šablona)
       href: load-balancer-get-started-internet-arm-template.md
     - name: Vytvoření veřejného nástroje pro vyrovnávání zatížení s využitím IPv6
@@ -106,6 +108,8 @@
           href: load-balancer-multiple-ip-powershell.md
     - name: Log Analytics pro Azure Load Balancer
       href: load-balancer-monitor-log.md
+    - name: Získání metrik nástroje pro vyrovnávání zatížení s využitím REST
+      href: load-balancer-query-metrics-rest-api.md
     - name: Konfigurace portů s vysokou dostupností pro interní nástroj pro vyrovnávání zatížení
       href: load-balancer-configure-ha-ports.md
     - name: Řešení potíží

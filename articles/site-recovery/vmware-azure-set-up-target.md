@@ -1,6 +1,6 @@
 ---
-title: "Příprava cílového prostředí pro replikace VMware do Azure | Microsoft Docs"
-description: "Tento článek popisuje postup přípravy cílovém prostředí Azure pro replikaci virtuálních počítačů VMware do Azure."
+title: Příprava cílového prostředí pro replikace VMware do Azure | Microsoft Docs
+description: Tento článek popisuje postup přípravy cílovém prostředí Azure pro replikaci virtuálních počítačů VMware do Azure.
 services: site-recovery
 author: bsiva
 manager: abhemraj
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812632"
 ---
 # <a name="prepare-the-target-environment-for-vmware-replication-to-azure"></a>Příprava cílového prostředí pro replikace VMware do Azure
 

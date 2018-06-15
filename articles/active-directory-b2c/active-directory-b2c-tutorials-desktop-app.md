@@ -2,18 +2,20 @@
 title: Kurz – Povolení ověřování účtů pomocí Azure Active Directory B2C pro desktopovou aplikaci | Microsoft Docs
 description: Kurz týkající se použití Azure Active Directory B2C k zajištění přihlašování uživatelů v desktopové aplikaci .NET.
 services: active-directory-b2c
-author: PatAltimore
-ms.author: patricka
-ms.reviewer: parja
+author: davidmu1
+manager: mtillman
+ms.author: davidmu
 ms.date: 2/28/2018
 ms.custom: mvc
 ms.topic: tutorial
-ms.service: active-directory-b2c
-ms.openlocfilehash: 86d8b105828bdb2a83eac24aebf227b9ae7615e2
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.service: active-directory
+ms.component: B2C
+ms.openlocfilehash: ff9cfd0f1f3d8ee62b7f93d88023b3dedce3e7be
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711728"
 ---
 # <a name="tutorial-enable-desktop-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Kurz – Povolení ověřování účtů pomocí Azure Active Directory B2C pro desktopovou aplikaci
 

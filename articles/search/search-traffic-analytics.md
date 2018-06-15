@@ -13,6 +13,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777255"
 ---
 # <a name="what-is-search-traffic-analytics"></a>Co je analýza provozu vyhledávání
 Analýza provozu vyhledávání je vzor pro implementaci zpětné vazby pro vaši službu vyhledávání. Tento vzor popisuje potřebná data a jak shromažďovat pomocí Application Insights, vedoucí odvětví pro monitorování služeb ve více platformách.

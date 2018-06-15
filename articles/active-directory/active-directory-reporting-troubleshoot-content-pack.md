@@ -18,7 +18,7 @@ ms.author: rolyon
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 801c425d0d467f8df63f981a1a03c6d202b4c3c5
 ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/01/2018
 ms.locfileid: "34589215"

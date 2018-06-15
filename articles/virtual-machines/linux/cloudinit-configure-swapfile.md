@@ -1,11 +1,11 @@
 ---
-title: "Použít cloudové init ke konfiguraci swapfile na virtuální počítač s Linuxem | Microsoft Docs"
-description: "Jak používat cloudové init ke konfiguraci swapfile v virtuálního počítače s Linuxem během vytváření pomocí Azure CLI 2.0"
+title: Použít cloudové init ke konfiguraci swapfile na virtuální počítač s Linuxem | Microsoft Docs
+description: Jak používat cloudové init ke konfiguraci swapfile v virtuálního počítače s Linuxem během vytváření pomocí Azure CLI 2.0
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rickstercdn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29952594"
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>Ke konfiguraci swapfile na virtuální počítač s Linuxem použít init cloudu
 V tomto článku se dozvíte, jak používat [cloudu init](https://cloudinit.readthedocs.io) ke konfiguraci swapfile na různých distribucí Linux. Swapfile tradičně byla nakonfigurována pomocí Linux agenta (WALA) podle které distribuce vyžaduje jeden.  Tento dokument se popisují proces tvorby swapfile na vyžádání při zřizování dobu používání cloudové init.  Další informace o cloudu init fungování nativně ve službě Azure a podporovaných distribucích systému Linux najdete v tématu [init cloudu – přehled](using-cloud-init.md)

@@ -1,8 +1,8 @@
 ---
-title: "Sestavy rizikových přihlášení na portálu Azure Active Directory | Microsoft Docs"
-description: "Informace o sestavách rizikových přihlášení na portálu Azure Active Directory"
+title: Sestavy rizikových přihlášení na portálu Azure Active Directory | Dokumentace Microsoftu
+description: Informace o sestavách rizikových přihlášení na portálu Azure Active Directory
 services: active-directory
-author: MarkusVi
+author: rolyon
 manager: mtillman
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
@@ -10,14 +10,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: compliance-reports
 ms.date: 11/14/2017
-ms.author: markvi
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 542a111ea5227db727deeac9c56b9f4b4a9f694c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 16b0f9fd240f393c23bc33ac0c9f5d024c3cb42e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34589419"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Sestavy rizikových přihlášení na portálu Azure Active Directory
 
@@ -71,7 +73,7 @@ Na základě prošetření rizikového přihlášení můžete službě Azure Ac
 
 ![Riziková přihlášení](./media/active-directory-reporting-security-risky-sign-ins/21.png)
 
-další informace najdete v tématu věnovaném [ručnímu zavření rizikových událostí](active-directory-identityprotection.md#closing-risk-events-manually).
+Další informace najdete v tématu věnovaném [ručnímu zavření rizikových událostí](active-directory-identityprotection.md#closing-risk-events-manually).
 
 V tomto dialogovém okně máte možnost:
 

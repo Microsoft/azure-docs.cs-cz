@@ -14,6 +14,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34362998"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>Indexování objekty BLOB JSON s indexer objektu blob Azure Search
 Tento článek ukazuje, jak nakonfigurovat indexer Azure Search objektů blob k extrahování strukturovaných obsahu z JSON objektů BLOB v Azure Blob storage.
