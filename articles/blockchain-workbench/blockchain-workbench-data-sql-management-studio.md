@@ -12,9 +12,10 @@ ms.reviewer: mmercuri
 manager: femila
 ms.openlocfilehash: b640aec322d6dc184a428e67d9576cf162c8f394
 ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34075251"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Použití dat služby Azure Blockchain Workbench v aplikaci SQL Server Management Studio
 

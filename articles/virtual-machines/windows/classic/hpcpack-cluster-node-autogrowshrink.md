@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31603840"
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>Automaticky zvýšit nebo snížit prostředků clusteru HPC Pack v Azure podle zatížení clusteru
 Pokud nasazujete Azure "shluků" uzly v clusteru HPC Pack nebo vytváření clusteru HPC Pack ve virtuálních počítačích Azure, můžete způsob, jak automaticky zvětšovat a zmenšovat prostředků clusteru jako uzly nebo jader podle zatížení v clusteru. Škálování prostředků clusteru tímto způsobem umožňuje efektivněji používat vašich prostředků Azure a kontrolovat náklady.

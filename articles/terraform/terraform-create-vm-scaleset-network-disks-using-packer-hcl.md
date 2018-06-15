@@ -1,7 +1,7 @@
 ---
-title: "Nastavte Terraform použijte k vytvoření škálování virtuálního počítače Azure ze balírna vlastní image"
-description: "Terraform použijte ke konfiguraci a verze Azure škálovací sady virtuálních počítačů z vlastní image generované balírna (dokončení se virtuální sítě a spravovaných připojených disků)."
-keywords: "terraform, devops, škálovat nastaveno, virtuální počítače, sítě, úložiště, moduly, vlastních bitových kopií, balírna"
+title: Nastavte Terraform použijte k vytvoření škálování virtuálního počítače Azure ze balírna vlastní image
+description: Terraform použijte ke konfiguraci a verze Azure škálovací sady virtuálních počítačů z vlastní image generované balírna (dokončení se virtuální sítě a spravovaných připojených disků).
+keywords: terraform, devops, škálovat nastaveno, virtuální počítače, sítě, úložiště, moduly, vlastních bitových kopií, balírna
 author: VaijanathB
 ms.author: tarcher
 ms.date: 10/29/2017
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/01/2017
+ms.locfileid: "23945853"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Nastavte Terraform použijte k vytvoření škálování virtuálního počítače Azure ze balírna vlastní image
 

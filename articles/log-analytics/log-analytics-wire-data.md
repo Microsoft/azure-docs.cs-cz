@@ -16,9 +16,10 @@ ms.date: 05/09/2018
 ms.author: magoedte
 ms.openlocfilehash: c86d1274ed46ff725c9db3093a8852fbae7f67ff
 ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011437"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Řešení Wire Data 2.0 (Preview) ve službě Log Analytics
 

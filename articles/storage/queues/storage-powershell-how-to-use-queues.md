@@ -16,9 +16,10 @@ ms.date: 09/14/2017
 ms.author: robinsh
 ms.openlocfilehash: bad9f1f3fd5737e865a8f4d1d15ab3d5eb68b4cb
 ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31603009"
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Provedení operace úložiště Azure Queue pomocí prostředí Azure PowerShell
 

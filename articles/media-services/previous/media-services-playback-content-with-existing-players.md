@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788477"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Přehrávání obsahu s existující hráči
 Azure Media Services podporuje mnoho oblíbených streamování formátů, jako je například technologie Smooth Streaming, HTTP Live Streaming a MPEG-Dash. Toto téma vám ukazuje na existující přehrávačů, které můžete použít k testování vaše datové proudy.

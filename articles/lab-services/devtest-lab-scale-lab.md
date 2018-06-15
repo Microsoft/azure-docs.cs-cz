@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787476"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Škálování kvóty a omezení v DevTest Labs
 Při práci v DevTest Labs, můžete si všimnout, že existují určitá omezení výchozí některé prostředky Azure, což může ovlivnit DevTest Labs služby. Tato omezení jsou označovány jako **kvóty**.

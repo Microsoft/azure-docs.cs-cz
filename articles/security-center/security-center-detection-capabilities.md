@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894229"
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Funkce detekce ve službě Azure Security Center
 Tento dokument popisuje pokročilé schopnosti detekce služby Azure Security Center, které pomáhají při identifikaci aktivních hrozeb cílených na prostředky Microsoft Azure, a poskytuje vám informace potřebné pro rychlou reakci na tyto hrozby.

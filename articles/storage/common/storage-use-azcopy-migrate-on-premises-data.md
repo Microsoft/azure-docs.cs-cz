@@ -10,11 +10,12 @@ ms.devlang: azcopy
 ms.topic: tutorial
 ms.date: 12/14/2017
 ms.author: rogarana
-ms.openlocfilehash: 1e7292cf4d647b38a6fe8ceb270ba161e548a537
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3f9735a1e5a6973ab1c1c3f575cf3aa345a3a5a4
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267437"
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>Migrace místních dat do cloudového úložiště pomocí AzCopy
 
@@ -22,8 +23,8 @@ AzCopy je nástroj příkazového řádku určený ke kopírování dat do nebo 
 
 Můžete si stáhnout dvě verze AzCopy:
 
-* [AzCopy v Linuxu](storage-use-azcopy.md) využívá rozhraní .NET Core Framework. Nabízí možnosti příkazového řádku ve stylu POSIX a cílí tak na platformy Linuxu. 
-* [AzCopy ve Windows](../storage-use-azcopy.md) využívá rozhraní .NET Framework. Nabízí možnosti příkazového řádku ve stylu Windows. 
+* [AzCopy v Linuxu](storage-use-azcopy-linux.md) využívá rozhraní .NET Core Framework. Nabízí možnosti příkazového řádku ve stylu POSIX a cílí tak na platformy Linuxu. 
+* [AzCopy ve Windows](storage-use-azcopy.md) využívá rozhraní .NET Framework. Nabízí možnosti příkazového řádku ve stylu Windows. 
  
 V tomto kurzu se naučíte:
 

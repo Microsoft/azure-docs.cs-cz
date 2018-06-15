@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788484"
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Zpracování mediálních souborů pomocí Azure Media Hyperlapse
 Azure Media Hyperlapse je média procesoru (PP) vytvářející smooth vypršelo čas videa z první osoba nebo akce fotoaparát obsahu.  Na stejné úrovni cloudu k [plochy Hyperlapse Pro a mobilního telefonu Hyperlapse Microsoft Research](http://aka.ms/hyperlapse), Microsoft Hyperlapse pro službu Azure Media Services využívá masivním měřítku na platformě Azure Media Services média zpracování vodorovně škálování a paralelní hromadné Hyperlapse zpracování.

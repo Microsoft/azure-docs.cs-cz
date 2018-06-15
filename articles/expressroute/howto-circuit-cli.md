@@ -1,13 +1,13 @@
 ---
-title: "Vytvoření a úprava okruhu Azure ExpressRoute: rozhraní příkazového řádku | Microsoft Docs"
-description: "Tento článek popisuje, jak vytvořit, zřízení, ověřte, aktualizovat, odstranit a zrušit jejich zřízení okruhu ExpressRoute pomocí rozhraní příkazového řádku."
+title: 'Vytvoření a úprava okruhu Azure ExpressRoute: rozhraní příkazového řádku | Microsoft Docs'
+description: Tento článek popisuje, jak vytvořit, zřízení, ověřte, aktualizovat, odstranit a zrušit jejich zřízení okruhu ExpressRoute pomocí rozhraní příkazového řádku.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23933246"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Vytvoření a úprava okruhu ExpressRoute pomocí rozhraní příkazového řádku
 

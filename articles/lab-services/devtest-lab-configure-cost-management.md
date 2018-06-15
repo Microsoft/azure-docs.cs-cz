@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787630"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>Zobrazit měsíční náklady na trend odhadované testovacího prostředí v Azure DevTest Labs
 Náklady na správu funkce DevTest Labs vám pomůže sledovat náklady na vašem testovacím prostředí. Tento článek ukazuje, jak používat **měsíční odhadované náklady Trend** grafu zobrazíte aktuální kalendářní měsíc odhadované náklady na začátku a předpokládané náklady na konci měsíce pro aktuální měsíc kalendáře. Tento článek také ukazuje, jak Správa testovacího prostředí náklady nastavením útraty cíle a prahové hodnoty, když dosaženo, aktivační události DevTest Labs nahlásit výsledky pro vás.

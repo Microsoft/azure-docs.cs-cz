@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31597305"
 ---
 # <a name="filter-inbound-and-outbound-vm-network-traffic"></a>Filtrovat příchozí a odchozí provoz sítě virtuálních počítačů
 

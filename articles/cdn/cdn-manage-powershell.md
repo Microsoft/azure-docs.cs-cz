@@ -19,6 +19,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31592419"
 ---
 # <a name="manage-azure-cdn-with-powershell"></a>Správa Azure CDN pomocí prostředí PowerShell
 PowerShell poskytuje jednu z metod nejpružnější ke správě profilů Azure CDN a koncové body.  Interaktivní nebo psaní skriptů můžete použít PowerShell k automatizaci úloh správy.  Tento kurz představuje některé z nejčastějších úloh, můžete provést pomocí prostředí PowerShell ke správě profilů Azure CDN a koncové body.

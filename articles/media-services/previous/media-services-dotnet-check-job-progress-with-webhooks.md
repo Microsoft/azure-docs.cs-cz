@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33789408"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Použití Azure Webhooky monitorování oznámení úlohy Media Services pomocí rozhraní .NET
 Při spuštění úlohy, často vyžadují způsob, jak sledovat průběh úlohy. Oznámení úlohy Media Services můžete monitorovat pomocí Webhooků Azure nebo [Azure Queue storage](media-services-dotnet-check-job-progress-with-queues.md). Tento článek ukazuje, jak pracovat s webhooky.

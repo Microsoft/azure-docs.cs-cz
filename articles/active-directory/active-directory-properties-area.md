@@ -16,9 +16,10 @@ ms.reviewer: bpham
 ms.custom: it-pro
 ms.openlocfilehash: 8cdf30ed09601a31529073eaedd4ab53780157d5
 ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077547"
 ---
 # <a name="how-to-add-your-organizations-privacy-info-in-azure-active-directory"></a>Postupy: Přidání informace o ochraně osobních údajů vaší organizace v Azure Active Directory
 Tento článek vysvětluje, jak správce klienta můžete přidat informace týkající se ochrany osobních údajů organizace klienta Azure Active Directory (Azure AD), prostřednictvím portálu Azure.

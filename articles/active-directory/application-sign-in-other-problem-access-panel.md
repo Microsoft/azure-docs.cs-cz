@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34070272"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>Potíže při přihlašování k aplikaci na přístupovém panelu
 

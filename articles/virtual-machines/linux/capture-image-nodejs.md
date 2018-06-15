@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942230"
 ---
 # <a name="capture-a-linux-virtual-machine-running-on-azure"></a>Zachytit virtuální počítač Linux spuštěné v Azure
 Postupujte podle kroků v tomto článku generalize a zachycení Azure Linux virtuálního počítače (VM) v modelu nasazení Resource Manager. Při průchodu generalize virtuálního počítače, můžete odebrat informace o osobní účet a připravit virtuální počítač, který se má použít jako obrázek. Můžete potom zachycení bitové kopie zobecněný virtuální pevný disk (VHD) pro operační systém, virtuální pevné disky pro připojené datových disků, a [šablony Resource Manageru](../../azure-resource-manager/resource-group-overview.md) pro nová nasazení virtuálních počítačů. Tento článek popisuje, jak zachytit image virtuálního počítače s 1.0 rozhraní příkazového řádku Azure pro virtuální počítač pomocí nespravované disků. Můžete také [zachytit virtuální počítač Azure spravované disky pomocí Azure CLI 2.0](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Spravované disky jsou zpracovávány platformy Azure a nevyžadují, aby všechny přípravné nebo umístění pro uložení. Další informace najdete v tématu [Přehled služby Azure Managed Disks](../windows/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 

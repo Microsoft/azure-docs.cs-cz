@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790423"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Opakujte logiky sady Media Services SDK pro .NET
 Při práci se službou Microsoft Azure, může dojít přechodných. Pokud dojde k přechodná chyba, ve většině případů po několika pokusech operace proběhla úspěšně. Media Services SDK pro .NET implementuje logiku opakovaných pokusů pro zpracování přechodné chyby související s výjimek a chyb, které jsou způsobeny webových požadavků, provádění dotazů, ukládání změn a operace úložiště.  Ve výchozím nastavení spustí sadu Media Services SDK pro .NET do čtyř opakovaných vyhledávání před znovu způsobující výjimku do vaší aplikace. Kód ve vaší aplikaci pak musí správně zpracovat výjimku.  

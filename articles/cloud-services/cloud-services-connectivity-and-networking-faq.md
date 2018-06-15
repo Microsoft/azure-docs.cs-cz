@@ -20,6 +20,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34070160"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Problémy s připojením a sítě pro Azure Cloud Services: Časté otázky (FAQ)
 

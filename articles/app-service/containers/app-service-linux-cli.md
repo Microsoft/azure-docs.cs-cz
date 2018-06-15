@@ -1,13 +1,13 @@
 ---
-title: "Správa webové aplikace pro kontejnery pomocí Azure CLI 2.0 | Microsoft Docs"
-description: "Správa webové aplikace pro kontejnery pomocí rozhraní příkazového řádku Azure."
-keywords: "služby Azure app service, webové aplikace, rozhraní příkazového řádku, linux, operačních systémů"
+title: Správa webové aplikace pro kontejnery pomocí Azure CLI 2.0 | Microsoft Docs
+description: Správa webové aplikace pro kontejnery pomocí rozhraní příkazového řádku Azure.
+keywords: služby Azure app service, webové aplikace, rozhraní příkazového řádku, linux, operačních systémů
 services: app-service
-documentationCenter: 
+documentationCenter: ''
 author: ahmedelnably
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24105385"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Správa webové aplikace pro kontejnery pomocí rozhraní příkazového řádku Azure
 

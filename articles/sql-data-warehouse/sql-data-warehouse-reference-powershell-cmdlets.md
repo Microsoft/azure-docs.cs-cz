@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31599702"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>Rutiny prostředí PowerShell a rozhraní REST API pro SQL Data Warehouse
 Mnoho úloh správy serveru SQL datového skladu lze spravovat pomocí rutin prostředí Azure PowerShell nebo rozhraní REST API.  Níže jsou uvedeny příklady použití příkazů prostředí PowerShell pro automatizaci běžných úkolů v SQL Data Warehouse.  Některé dobrými příklady REST, najdete v článku [spravovat škálovatelnost REST][Manage scalability with REST].

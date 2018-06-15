@@ -3,17 +3,18 @@ title: Kurz Kubernetes v Azure – Nasazení aplikace
 description: Kurz AKS – Nasazení aplikace
 services: container-service
 author: neilpeterson
-manager: timlt
+manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8649fc12bd36172f3a10e1a2c9da891685c0b821
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e992d7ca455ad4d95d0f10a94c6c9ce8055f8286
+ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/11/2018
+ms.locfileid: "34067669"
 ---
 # <a name="tutorial-run-applications-in-azure-kubernetes-service-aks"></a>Kurz: Spouštění aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -72,10 +73,10 @@ Uložte soubor a zavřete ho.
 
 ## <a name="deploy-application"></a>Nasazení aplikace
 
-Pomocí příkazu [kubectl create][kubectl-create] spusťte aplikaci. Tento příkaz analyzuje soubor manifestu a vytvoří definované objekty Kubernetes.
+Pomocí příkazu [kubectl apply][kubectl-apply] spusťte aplikaci. Tento příkaz analyzuje soubor manifestu a vytvoří definované objekty Kubernetes.
 
 ```azurecli
-kubectl create -f azure-vote-all-in-one-redis.yaml
+kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
 Výstup:
@@ -132,6 +133,7 @@ V dalším kurzu se dozvíte, jak škálovat aplikaci Kubernetes i příslušnou
 > [Škálování aplikace a infrastruktury Kubernetes][aks-tutorial-scale]
 
 <!-- LINKS - external -->
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-documentation]: https://kubernetes.io/docs/home/

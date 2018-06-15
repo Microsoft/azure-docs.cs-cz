@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "23945881"
 ---
 # <a name="filters-in-log-analytics-views"></a>Filtry v zobrazení analýzy protokolů
 A **filtru** v [zobrazení analýzy protokolů](log-analytics-view-designer.md) umožňuje uživatelům filtrování dat v zobrazení hodnotou určité vlastnosti beze změny samotném zobrazení.  Můžete například povolit uživatelům zobrazení filtrovat zobrazení pro data pouze z určitého počítače nebo sadu počítačů.  V rámci jednoho zobrazení umožníte uživatelům filtrovat podle více vlastností můžete vytvořit více filtrů.  Tento článek popisuje, jak používat filtr a přidat vlastní zobrazení.

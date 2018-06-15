@@ -17,9 +17,10 @@ ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 92089904941ae913f1992a4407083bfcae010f2d
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33887857"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Návrh a vytvoření řešení správy v Azure (Preview)
 > [!NOTE]

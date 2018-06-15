@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33766100"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>Řešení potíží s koncovými body Azure CDN, které vracejí stav 404 kódu
 Tento článek vám umožňuje řešení problémů s koncovými body Azure Content Delivery Network (CDN), které vracejí 404 kódy stavu odpovědi HTTP.

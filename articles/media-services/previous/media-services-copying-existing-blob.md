@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788638"
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>Kopírování do služby Asset média existující objekty BLOB
 Tento článek ukazuje, jak chcete zkopírovat objekty BLOB z účtu úložiště do nového prostředku Azure Media Services (AMS) pomocí [rozšíření Azure Media Services .NET SDK](https://github.com/Azure/azure-sdk-for-media-services-extensions/).

@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788218"
 ---
 # <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Vytvoření klipů s Azure Media výřez v portálu.
 Azure Media výřez portálu slouží k vytvoření klipů z prostředků ve svých účtů media services. Chcete-li začít, přejděte na svůj účet mediálních služeb v portálu. Potom vyberte **Subclip** kartě.

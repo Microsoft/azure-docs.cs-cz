@@ -20,6 +20,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894237"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio bitové kopie v Azure
 V předkonfigurovaných Azure virtuálního počítače (VM) pomocí sady Visual Studio je rychlý a snadný způsob, jak přechod od nic k prostředí vývoj nahoru a spuštěna. Bitové kopie systému s různými konfiguracemi sady Visual Studio jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).

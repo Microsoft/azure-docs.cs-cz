@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33778490"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Indexování dokumentů v úložišti objektů Blob v Azure s Azure Search
 Tento článek ukazuje, jak používat Azure Search k indexování dokumentů (například soubory PDF, dokumentů Microsoft Office a několik dalších běžných formátů) uložené v úložišti objektů Blob Azure. Nejprve vysvětluje základní informace o nastavení a konfiguraci indexer objektů blob. Poté nabízí podrobnější zkoumání chování, a scénáře, můžete se setkat.

@@ -1,22 +1,20 @@
 ---
 title: Nastavení zařízení pro službu Azure IoT Hub Device Provisioning
 description: Nastavení zařízení pro zřízení prostřednictvím služby IoT Hub Device Provisioning během procesu výroby zařízení
-services: iot-dps
-keywords: ''
 author: dsk-2015
 ms.author: dkshir
 ms.date: 04/02/2018
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: c885e4d5d747d913eaf0b7137b240950e920e7ff
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 1e4e93c276fe62caae17c85bf9ac92282dfdfb88
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631264"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Nastavení zařízení pro zřízení pomocí služby Azure IoT Hub Device Provisioning
 

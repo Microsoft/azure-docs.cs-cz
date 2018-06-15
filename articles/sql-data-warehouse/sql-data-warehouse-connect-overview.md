@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31596166"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Připojení k Azure SQL Data Warehouse
 Připojení k Azure SQL Data Warehouse.

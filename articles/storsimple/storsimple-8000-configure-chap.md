@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012654"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurace protokolů CHAP pro vaše zařízení StorSimple
 

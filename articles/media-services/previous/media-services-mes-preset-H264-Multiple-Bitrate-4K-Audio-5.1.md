@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788547"
 ---
 # <a name="h264-multiple-bitrate-4k-audio-51"></a>H264 Zvuk přenosovou rychlostí 4K více 5.1
 `Media Encoder Standard` definuje sadu kódování přednastavení, které můžete použít při vytváření úlohy kódování. Můžete použít `preset name` zadat do formátu, který chcete zakódovat váš soubor média. Nebo můžete vytvořit vlastní JSON nebo na základě XML přednastavení (pomocí kódování UTF-8 nebo UTF-16. By pak předejte vlastní přednastavení kodéru. Seznam všech názvů přednastavené podporovaných touto `Media Encoder Standard` kodér, najdete v části [přednastavení úloh pro Media Encoder Standard](media-services-mes-presets-overview.md).  

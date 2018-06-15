@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33936891"
 ---
 # <a name="api-management-policies"></a>Zásady služby API Management
 Tato část obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](api-management-howto-policies.md).  

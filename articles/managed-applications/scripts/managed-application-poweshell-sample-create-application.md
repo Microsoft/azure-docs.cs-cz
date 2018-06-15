@@ -1,6 +1,6 @@
 ---
-title: "Azure skript prostředí PowerShell ukázkový – nasadit spravované aplikace | Microsoft Docs"
-description: "Azure skript prostředí PowerShell ukázkový – nasazení definici spravované aplikace"
+title: Azure skript prostředí PowerShell ukázkový – nasadit spravované aplikace | Microsoft Docs
+description: Azure skript prostředí PowerShell ukázkový – nasazení definici spravované aplikace
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -14,9 +14,10 @@ ms.date: 10/27/2017
 ms.author: tomfitz
 ms.openlocfilehash: 2429d561beffed5bc171b9dbc2c2c9c88eba3313
 ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2017
+ms.locfileid: "23941247"
 ---
 # <a name="deploy-a-managed-application-for-a-service-catalog-with-powershell"></a>Nasadit spravované aplikace pro katalog služeb v prostředí PowerShell
 

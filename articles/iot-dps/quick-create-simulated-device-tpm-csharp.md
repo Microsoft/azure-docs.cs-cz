@@ -1,22 +1,20 @@
 ---
 title: Zřízení simulovaného zařízení TPM pro službu Azure IoT Hub pomocí jazyka C# | Dokumentace Microsoftu
 description: Rychlý start Azure – Vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení jazyka C# pro službu Azure IoT Hub Device Provisioning
-services: iot-dps
-keywords: ''
 author: bryanla
-ms.author: v-jamebr;bryanla
+ms.author: bryanla
 ms.date: 04/09/2018
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4bca89f71922e36707c0c4893a7190d508242ffc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6e9f1894f4ecf64a5802fd06f2def28e4fb654a1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630064"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení TPM pomocí sady SDK pro zařízení jazyka C# pro službu IoT Hub Device Provisioning
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33779850"
 ---
 # <a name="azure-cli-samples"></a>Ukázky Azure CLI
 

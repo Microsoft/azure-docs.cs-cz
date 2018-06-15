@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069978"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Pochopení omezení a jak ho odebrat útraty u Azure
 

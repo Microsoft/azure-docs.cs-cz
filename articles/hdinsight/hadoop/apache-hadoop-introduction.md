@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33771020"
 ---
 # <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>Co je Azure HDInsight a technologie Hadoop
 Tento článek obsahuje úvod k Apache Hadoop ve službě Azure HDInsight. Azure HDInsight je plně spravovaná opensourcová analytická služba určená pro podniky. Můžete používat open source architektury, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm, R a další. 

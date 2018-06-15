@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937228"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak se mají autorizovat vývojářským účtům pomocí OAuth 2.0 ve službě Azure API Management
 Mnoho rozhraní API podporují [OAuth 2.0](http://oauth.net/2/) zabezpečení rozhraní API a zkontrolujte, zda mají přístup jenom uživatelé platný a jejich pouze přístup k prostředkům, ke kterým máte nárok. Aby bylo možné používat interaktivní vývojářské konzole Azure API Management s takové rozhraní API, služba umožňuje nakonfigurovat instanci služby pro práci s vaší OAuth 2.0 povoleno rozhraní API.

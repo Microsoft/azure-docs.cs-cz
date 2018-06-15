@@ -1,6 +1,6 @@
 ---
-title: "Prostředí Azure PowerShell ukázkový skript – získat skupinu spravovaných prostředků a změně velikosti virtuálních počítačů | Microsoft Docs"
-description: "Azure ukázkový skript prostředí PowerShell - získat skupinu spravovaných prostředků a změně velikosti virtuálních počítačů"
+title: Prostředí Azure PowerShell ukázkový skript – získat skupinu spravovaných prostředků a změně velikosti virtuálních počítačů | Microsoft Docs
+description: Azure ukázkový skript prostředí PowerShell - získat skupinu spravovaných prostředků a změně velikosti virtuálních počítačů
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -14,9 +14,10 @@ ms.date: 10/27/2017
 ms.author: tomfitz
 ms.openlocfilehash: f549f26cb3f9fdb2d805d2efb2c0e1706abe3edb
 ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/30/2017
+ms.locfileid: "23940939"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-powershell"></a>Získat prostředky ve skupině spravovaných prostředků a změně velikosti virtuálních počítačů pomocí prostředí PowerShell
 
