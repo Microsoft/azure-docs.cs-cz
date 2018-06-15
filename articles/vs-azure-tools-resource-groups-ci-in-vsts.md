@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192940"
 ---
 # <a name="continuous-integration-in-visual-studio-team-services-using-azure-resource-group-deployment-projects"></a>Průběžnou integraci ve Visual Studio Team Services pomocí projekty nasazení skupiny prostředků Azure
 Pokud chcete nasadit šablonu Azure, můžete provádět úlohy v různých fázích: sestavení, testovací, kopírovat do Azure (také nazývané "Přípravy") a nasadit šablonu. Existují dva různé způsoby pro nasazení šablon pro Visual Studio Team Services (Visual Studio Team Services). Obě metody zadejte stejné výsledky, takže vybrat tu, které nejlépe vyhovuje pracovního postupu.

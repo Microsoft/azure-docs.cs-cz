@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32151225"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Interní virtuální sítě pomocí služby Azure API Management
 S virtuálními sítěmi Azure Azure API Management můžete spravovat rozhraní API není dostupný na Internetu. Počet technologie VPN jsou k dispozici pro připojení. API Management se dá nasadit v dva hlavní režimy uvnitř virtuální sítě:

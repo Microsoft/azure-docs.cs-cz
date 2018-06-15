@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32181966"
 ---
 # <a name="upgrading-to-the-latest-azure-search-service-rest-api-version"></a>Upgrade na nejnovější verzi rozhraní API REST služby Azure Search
 Pokud používáte předchozí verzi [rozhraní REST API služby Azure Search](https://docs.microsoft.com/rest/api/searchservice/), tento článek vám pomůže při upgradu vaší aplikace, aby používal nejnovější všeobecně dostupná verze rozhraní API, 2017. 11 11.

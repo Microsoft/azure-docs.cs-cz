@@ -21,6 +21,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32185990"
 ---
 # <a name="resize-a-linux-virtual-machine-using-cli-20"></a>Změnit velikost virtuální počítač s Linuxem pomocí rozhraní příkazového řádku 2.0
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32168278"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Shromáždit čítače výkonu pro Linux aplikace v analýzy protokolů 
 Tento článek obsahuje podrobné informace pro konfiguraci [OMS agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) ke shromažďování čítače výkonu pro konkrétní aplikace.  Aplikace, zahrnuté v tomto článku jsou:  

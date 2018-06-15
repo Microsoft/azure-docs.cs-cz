@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32190086"
 ---
 # <a name="lucene-query-syntax-examples-for-building-queries-in-azure-search"></a>Příklady syntaxe dotazů Lucene pro tvorbu dotazů ve službě Azure Search
 Při vytváření dotazů pro službu Azure Search, můžete použít buď výchozí [jednoduchá syntaxe dotazů](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) nebo alternativním [analyzátor dotazů Lucene ve službě Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search). Analyzátor dotazů Lucene podporuje složitější konstruktory dotazu, jako jsou dotazy v rámci pole, přibližné vyhledávání, vyhledávání blízkých výrazů, termín zvyšovat skóre a hledání regulárního výrazu.

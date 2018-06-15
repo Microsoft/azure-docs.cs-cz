@@ -20,6 +20,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188459"
 ---
 # <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Kurz: Instalace webového serveru LEMP na virtuální počítač s Linuxem v Azure
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32178516"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah v analýzy protokolů pomocí rozhraní REST API
 Log Analytics výstrahy REST API umožňuje vytvářet a spravovat výstrahy v Operations Management Suite (OMS).  Tento článek obsahuje podrobné informace o rozhraní API a několik příkladů pro provádění různých akcí.

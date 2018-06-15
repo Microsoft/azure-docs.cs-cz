@@ -17,6 +17,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32179926"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Transformace dat ve službě Azure Virtual Network pomocí aktivity Hivu v Azure Data Factory
 V tomto kurzu pomocí webu Azure Portal vytvoříte kanál Data Factory, který transformuje data pomocí aktivity Hivu v clusteru HDInsight ve službě Azure Virtual Network. V tomto kurzu provedete následující kroky:

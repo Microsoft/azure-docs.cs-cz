@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/01/2018
+ms.locfileid: "32313354"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-ssl-certificates-stored-in-key-vault"></a>Kurz: Zabezpečení webového serveru na virtuálním počítači s Linuxem v Azure pomocí certifikátů SSL uložených v Key Vaultu
 K zabezpečení webových serverů můžete použít certifikáty SSL (Secure Sockets Layer), které šifrují webový provoz. Tyto certifikáty SSL můžete ukládat do služby Azure Key Vault a umožnit zabezpečené nasazování certifikátů do virtuálních počítačů s Linuxem v Azure. V tomto kurzu se naučíte:

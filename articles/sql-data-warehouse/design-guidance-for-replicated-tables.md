@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32189560"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Pokyny k návrhu pro používání replikovaných tabulek v Azure SQL Data Warehouse
 Tento článek obsahuje doporučení pro návrh replikovaných tabulek v SQL Data Warehouse schéma. Použijte tato doporučení pro zlepšení výkonu dotazů, protože se sníží složitost dat přesouvání a dotazu.

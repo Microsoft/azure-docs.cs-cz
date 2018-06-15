@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32151796"
 ---
 # <a name="getting-started"></a>Informace o funkci Mobile Apps v Azure App Service
 Azure App Service nabízí plně spravovanou [platformu jako službu](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) pro profesionální vývojáře. Tato služba přináší bohatou sadu možností pro webové, mobilní a integrační scénáře. 

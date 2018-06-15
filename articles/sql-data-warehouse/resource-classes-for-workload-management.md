@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192777"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>Úlohy správy pomocí třídy prostředků v Azure SQL Data Warehouse
 Pokyny pro použití třídy prostředků ke správě paměti a souběžnost pro dotazy v Azure SQL Data Warehouse.  

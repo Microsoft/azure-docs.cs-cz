@@ -13,5 +13,6 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186140"
 ---
 Pokud jste obeznámeni s MSI, podívejte se [přehled identita spravované služby](~/articles/active-directory/managed-service-identity/overview.md), a **nezapomeňte si přečíst [rozdíl mezi generovaný systémem a uživatel přiřazenou MSI](~/articles/active-directory/managed-service-identity/overview.md#how-does-it-work)** . Pokud ještě nemáte účet Azure [si zaregistrovat bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.

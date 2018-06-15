@@ -14,6 +14,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186874"
 ---
 # <a name="how-to-page-search-results-in-azure-search"></a>Jak v Azure Search stránkovat výsledky hledání
 Tento článek obsahuje pokyny týkající se používání rozhraní API REST služby vyhledávání Azure k implementaci standardní elementy stránka s výsledky hledání, například celkový počet, načtení dokumentu, pořadí řazení a navigace.

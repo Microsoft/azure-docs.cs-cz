@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788225"
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>Postupy: poskytování prostředek službou
 Tento článek popisuje možnosti pro doručování média prostředky nahrán do Media Services. V mnoha případech aplikace můžete doručování obsahu Media Services. Po kódování, stažení prostředky generovaného média nebo k nim přistupovat pomocí Lokátor streamování. Pro lepší výkon a škálovatelnost můžete také doručovat obsah pomocí sítě doručování obsahu (CDN).

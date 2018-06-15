@@ -16,6 +16,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32168203"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Přehled požadavků na používání služby Azure databáze migrace
 Existuje několik předpokladů, vyžaduje se pro zajištění, že služba migrace databáze Azure běží bez problémů při provádění migrace databáze. Některé požadované součásti aplikaci ve všech scénářích (cílový Zdroj páry) podporována službou, zatímco jiné požadavky, které jsou jedinečné pro konkrétní scénář.

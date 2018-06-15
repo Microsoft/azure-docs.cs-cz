@@ -21,6 +21,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192794"
 ---
 # <a name="sap-hana-availability-within-one-azure-region"></a>SAP HANA dostupnosti v rámci jedné oblasti Azure
 Tento článek popisuje několik scénářů dostupnosti v rámci jedné oblasti Azure. Azure má v mnoha oblastech šíří po celém světě. Seznam oblastí Azure najdete v tématu [oblastí Azure](https://azure.microsoft.com/regions/). Pro nasazení SAP HANA na virtuálních počítačích v rámci jedné oblasti Azure, společnost Microsoft nabízí nasazení jeden virtuální počítač s instancí HANA. K zajištění vyšší dostupnosti, můžete nasadit dva virtuální počítače se dvěma instancemi HANA v rámci [sady dostupnosti. Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) používající HANA systému replikace pro dostupnost. 

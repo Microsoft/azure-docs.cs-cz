@@ -20,6 +20,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32151123"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Plánování rozhodnutí pro Azure zásobník Azure odpojené nasazení integrované systémy
 Poté, co jste se rozhodli [jak bude zásobník Azure integrovat do cloudového prostředí hybridní](azure-stack-connection-models.md), pak můžete dokončit svoje rozhodnutí o nasazení Azure zásobníku.

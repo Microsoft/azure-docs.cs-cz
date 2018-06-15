@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788988"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard schématu
 Tento článek popisuje některé prvky a typy schématu XML, na kterém [Media Encoder Standard přednastavení](media-services-mes-presets-overview.md) jsou založené. Článek obsahuje vysvětlení elementů a jejich platné hodnoty.  
