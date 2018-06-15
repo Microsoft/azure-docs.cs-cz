@@ -15,6 +15,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33865931"
 ---
 # <a name="how-azure-multi-factor-authentication-works"></a>Jak funguje Azure Multi-Factor Authentication
 Zabezpečení dvoustupňové ověření spočívá v jeho vrstveného přístupu. Porušení zabezpečení několika faktory ověřování uvede významné výzvu pro útočníky. I v případě, že útočník dokázal další heslo uživatele, je zbytečné bez nutnosti důvěryhodné zařízení u sebe. 

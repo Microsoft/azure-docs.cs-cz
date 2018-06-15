@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206194"
 ---
 # <a name="reliable-actors-state-management"></a>Spolehlivé aktéři řízení stavu
 Reliable Actors jsou jedním podprocesem objekty, které může zapouzdřit logiku a stavu. Protože aktéři spustit na spolehlivé služby, jejich stavu udržovat spolehlivé pomocí stejné trvalosti a mechanismech replikace. Tímto způsobem Neztraťte aktéři jejich stav po selhání při opětovné aktivaci po uvolnění paměti, nebo při jejich přesunu mezi uzly v clusteru s podporou kvůli vyrovnávání prostředků nebo upgradu.

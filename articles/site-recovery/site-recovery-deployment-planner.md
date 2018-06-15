@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894352"
 ---
 # <a name="azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Plánovač nasazení služby Azure Site Recovery pro nasazení VMware do Azure
 Tento článek představuje uživatelskou příručku k Plánovači nasazení služby Azure Site Recovery pro produkční nasazení VMware do Azure.

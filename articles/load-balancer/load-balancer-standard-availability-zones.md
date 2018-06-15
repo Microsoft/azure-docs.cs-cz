@@ -19,6 +19,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30322790"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Nástroj pro vyrovnávání zatížení standardní a dostupnosti zón
 

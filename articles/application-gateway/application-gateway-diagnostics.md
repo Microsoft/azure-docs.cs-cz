@@ -17,6 +17,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30314044"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back-end, diagnostické protokoly a metriky pro službu Application Gateway
 

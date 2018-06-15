@@ -1,11 +1,11 @@
 ---
-title: "Migrace databáze SQL serveru do systému SQL Server na virtuálním počítači | Microsoft Docs"
-description: "Další informace o tom, jak migrovat databázi místní uživatele k systému SQL Server ve virtuálním počítači Azure."
+title: Migrace databáze SQL serveru do systému SQL Server na virtuálním počítači | Microsoft Docs
+description: Další informace o tom, jak migrovat databázi místní uživatele k systému SQL Server ve virtuálním počítači Azure.
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 00fd08c6-98fa-4d62-a3b8-ca20aa5246b1
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29809433"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-in-an-azure-vm"></a>Migrovat databázi SQL Serveru na SQL Server na virtuálním počítači Azure
 

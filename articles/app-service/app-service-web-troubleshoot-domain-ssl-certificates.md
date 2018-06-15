@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195178"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Řešení potíží s domény a problémy s certifikátem SSL ve službě Azure web apps
 

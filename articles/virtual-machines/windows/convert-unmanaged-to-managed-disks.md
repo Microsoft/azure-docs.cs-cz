@@ -1,13 +1,13 @@
 ---
-title: "Převod virtuálního počítače s Windows nespravované disky na spravovaných disků - disků spravované Azure | Microsoft Docs"
-description: "Jak převést virtuální počítač s Windows z nespravovaných disků na discích spravovaných pomocí prostředí PowerShell v modelu nasazení Resource Manager"
+title: Převod virtuálního počítače s Windows nespravované disky na spravovaných disků - disků spravované Azure | Microsoft Docs
+description: Jak převést virtuální počítač s Windows z nespravovaných disků na discích spravovaných pomocí prostředí PowerShell v modelu nasazení Resource Manager
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29804211"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Převod virtuálního počítače s Windows nespravovaných disky na spravované disky
 

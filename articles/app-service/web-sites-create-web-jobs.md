@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30231098"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Spuštění úlohy na pozadí s webové úlohy v Azure App Service
 

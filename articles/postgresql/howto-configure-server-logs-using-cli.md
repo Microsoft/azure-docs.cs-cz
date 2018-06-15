@@ -15,6 +15,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30235519"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurace a přístup k protokolům serveru pomocí rozhraní příkazového řádku Azure
 Protokoly chyb serveru PostgreSQL si můžete stáhnout pomocí rozhraní příkazového řádku (Azure CLI). Přístup k protokoly transakcí však není podporován. 

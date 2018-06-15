@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect Health - data o stavu služby není až datum výstraha | Microsoft Docs"
-description: "Tento dokument popisuje příčinu \"data o stavu služby není aktuální\" výstrahy a řešení potíží s ho."
+title: Azure AD Connect Health - data o stavu služby není až datum výstraha | Microsoft Docs
+description: Tento dokument popisuje příčinu "data o stavu služby není aktuální" výstrahy a řešení potíží s ho.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: zhiweiw
 manager: maheshu
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29715007"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Stav služby data nejsou aktuální výstrahy
 

@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30247371"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Co jsou škálovací sady virtuálních počítačů?
 Škálovací sady virtuálních počítačů Azure umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení. Počet instancí virtuálních počítačů se může automaticky zvyšovat nebo snižovat s ohledem na požadavky nebo definovaný plán. Škálovací sady zajišťují vysokou dostupnost aplikací a umožňují centrálně spravovat, konfigurovat a aktualizovat velký počet virtuálních počítačů. S využitím škálovacích sad virtuálních počítačů můžete sestavovat rozsáhlé služby pro oblasti, jako jsou výpočty, velké objemy dat a úlohy kontejneru.

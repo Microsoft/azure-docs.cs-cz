@@ -17,6 +17,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30312055"
 ---
 # <a name="pool-delete-start-event"></a>Událost zahájení odstranění fondu
 

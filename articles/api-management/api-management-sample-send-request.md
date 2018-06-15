@@ -1,11 +1,11 @@
 ---
-title: "Použití služby API Management pro generování požadavků HTTP"
-description: "Naučit se používat zásady žádostí a odpovědí ve službě API Management volat externí služby z rozhraní API"
+title: Použití služby API Management pro generování požadavků HTTP
+description: Naučit se používat zásady žádostí a odpovědí ve službě API Management volat externí služby z rozhraní API
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 4539c0fa-21ef-4b1c-a1d4-d89a38c242fa
 ms.service: api-management
 ms.devlang: dotnet
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29714667"
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Pomocí externích služeb ze služby Azure API Management
 Zásady, které jsou dostupné ve službě Azure API Management service může provádět široké škály užitečné pracovní výhradně na základě příchozího požadavku, odchozí odpovědi a informace o základní konfiguraci. Ale schopnost komunikovat s externích služeb z rozhraní API správy zásad mnoho většího počtu možností otevře.

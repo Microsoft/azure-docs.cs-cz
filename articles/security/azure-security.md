@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895247"
 ---
 # <a name="introduction-to-azure-security"></a>Úvod do Azure zabezpečení
 ## <a name="overview"></a>Přehled

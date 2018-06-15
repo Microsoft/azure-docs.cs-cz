@@ -21,6 +21,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30320981"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Správa dostupnosti virtuálních počítačů Linux
 

@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30246351"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>Automatické škálování škálovací sady virtuálních počítačů pomocí PowerShellu
 Tento skript vytvoří škálovací sadu virtuálních počítačů s Windows Serverem 2016 a použije metriky hostitele k automatickému škálování s ohledem na měnící se zatížení procesoru.

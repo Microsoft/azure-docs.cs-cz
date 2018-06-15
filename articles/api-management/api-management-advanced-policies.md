@@ -18,6 +18,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30233822"
 ---
 # <a name="api-management-advanced-policies"></a>Pokročilé zásady API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).

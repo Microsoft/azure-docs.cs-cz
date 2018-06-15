@@ -13,6 +13,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33814726"
 ---
 ## <a name="generate-the-certificate-signing-request-file"></a>Generování souboru s žádostí o podepsání certifikátu
 Služba Apple Push Notification Service (APNS) používá k ověřování nabízených oznámení certifikáty. Pokud chcete vytvořit nabízený certifikát pro odesílání a přijímání oznámení, postupujte podle těchto pokynů. Další informace o těchto konceptech najdete v oficiální dokumentaci ke službě [Apple Push Notification Service](http://go.microsoft.com/fwlink/p/?LinkId=272584).

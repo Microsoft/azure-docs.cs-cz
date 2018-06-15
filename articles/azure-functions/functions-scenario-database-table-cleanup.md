@@ -20,6 +20,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30231272"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Používat Azure Functions k připojení k databázi SQL Azure
 Toto téma ukazuje, jak používat Azure Functions vytvořit naplánovanou úlohu, která vyčistí řádky v tabulce v Azure SQL Database. Nové funkce skriptu jazyka C# se vytvoří na základě šablony aktivační událost časovače předem definovaných na portálu Azure. Pro podporu tohoto scénáře, musíte taky nastavit připojovací řetězec databáze jako nastavení aplikace v aplikaci funkce. Tento scénář používá hromadné operace v databázi. 

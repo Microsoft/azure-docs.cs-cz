@@ -20,6 +20,7 @@ ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34076907"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Správa účtů úložiště v Azure zásobníku
 Zjistěte, jak chcete spravovat účty úložiště v Azure zásobníku najít, obnovit a opětovné využití kapacity úložiště na základě obchodních potřeb.

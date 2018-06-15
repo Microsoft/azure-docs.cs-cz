@@ -20,6 +20,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30314295"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Přesunout veřejný partnerský vztah na partnerský vztah Microsoftu
 

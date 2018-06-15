@@ -17,6 +17,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 05/10/2018
+  ms.locfileid: "33941063"
 abstract:
   description: Škálovací sady virtuálních počítačů Azure umožňují vytvářet a spravovat skupiny identických virtuálních počítačů s vyrovnáváním zatížení a automatickým škálováním. Naučte se vytvářet, konfigurovat, spravovat a automaticky škálovat škálovací sady virtuálních počítačů prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
 sections:

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160321"
 ---
 # <a name="redeploy-windows-virtual-machine-to-new-azure-node"></a>Znovu nasaďte Windows virtuálního počítače do nového uzlu Azure
 Pokud jste byla směrem problémy je řešení potíží s Remote Desktop (RDP) připojení nebo aplikaci přístup k systému Windows Azure virtuálnímu počítači (VM), opětovného nasazení virtuálního počítače může pomoct. Při opětovném nasazování virtuálního počítače, virtuální počítač přesune do nového uzlu v rámci infrastruktury Azure a potom zapne ji zpět, zachování všech možností konfigurace a přidružených prostředků. Tento článek ukazuje, jak znovu nasadit virtuální počítač pomocí prostředí Azure PowerShell nebo portálu Azure.

@@ -1,10 +1,10 @@
 ---
-title: "Správa procesu serveru v Azure Site Recovery | Microsoft Docs"
-description: "Tento článek popisuje správu serveru procesu nastavení pro virtuální počítač VMware a replikaci fyzický server v Azure Site Recovery."
+title: Správa procesu serveru v Azure Site Recovery | Microsoft Docs
+description: Tento článek popisuje správu serveru procesu nastavení pro virtuální počítač VMware a replikaci fyzický server v Azure Site Recovery.
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
-editor: 
+editor: ''
 ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812737"
 ---
 # <a name="manage-process-servers"></a>Spravovat servery procesu
 

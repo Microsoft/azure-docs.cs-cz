@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788071"
 ---
 # <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Konfigurace Azure Media výřez klávesové zkratky
 Azure Media výřez podporuje přizpůsobení klávesových zkratek výchozí tím, že poskytuje volitelný `keymap` parametr JSON.

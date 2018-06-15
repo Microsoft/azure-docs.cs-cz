@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30238609"
 ---
 # <a name="using-remote-desktop-to-connect-to-a-microsoft-azure-linux-vm"></a>Použití Vzdálené plochy pro připojení k virtuálnímu počítači Microsoft Azure s Linuxem
 > [!IMPORTANT] 

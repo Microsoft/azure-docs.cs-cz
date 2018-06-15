@@ -20,6 +20,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30241007"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>Instalace a konfigurace PostgreSQL v Azure
 PostgreSQL je pokročilé open-source databáze podobné Oracle a DB2. Obsahuje funkce připravené pro organizace, například úplné ACID dodržování předpisů, spolehlivé zpracování transakcí a řízení více verzí souběžnosti. Podporuje také standardy, jako je ANSI SQL a SQL nebo MED (včetně obálky cizí dat Oracle, MySQL, MongoDB a mnoho dalších). Je velmi dobře rozšiřitelná s podporou pro více než 12 procedurální jazyky, GIN a GiST indexů, podporu prostorových dat a více funkcí jako NoSQL pro JSON nebo na základě klíčů hodnota aplikace.

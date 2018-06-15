@@ -10,9 +10,10 @@ ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 865f4a963dfbaa7b8392865f8b0c468734673ba0
 ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30197631"
 ---
 ### <a name="to-modify-the-local-network-gateway-gatewayipaddress"></a>Úprava IP adresy brány místní sítě (gatewayIpAddress)
 

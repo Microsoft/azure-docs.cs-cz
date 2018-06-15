@@ -10,9 +10,10 @@ ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: ffba2c1dbb2e4b9d4694fe2a289a37289ce8902a
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33903513"
 ---
 | Kategorie | Úložiště dat |
 |:--- |:--- |

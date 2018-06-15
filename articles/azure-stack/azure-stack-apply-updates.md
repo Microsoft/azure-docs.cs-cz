@@ -1,11 +1,11 @@
 ---
-title: "Aktualizace v zásobníku Azure | Microsoft Docs"
-description: "Zjistěte, jak importovat a nainstalovat balíčky aktualizací společnosti Microsoft pro systém Azure zásobníku integrované."
+title: Aktualizace v zásobníku Azure | Microsoft Docs
+description: Zjistěte, jak importovat a nainstalovat balíčky aktualizací společnosti Microsoft pro systém Azure zásobníku integrované.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29802647"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Aktualizace v Azure zásobníku
 

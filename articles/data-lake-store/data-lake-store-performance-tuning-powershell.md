@@ -16,6 +16,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198646"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-store"></a>Pokyny pro používání prostředí PowerShell s Azure Data Lake Store optimalizace výkonu
 

@@ -21,6 +21,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30246504"
 ---
 # <a name="create-a-virtual-machine-scale-set-from-a-custom-vm-image-with-powershell"></a>Vytvoření škálovací sady virtuálních počítačů z vlastní image virtuálního počítače pomocí PowerShellu
 Tento skript vytvoří škálovací sadu virtuálních počítačů, která jako zdroj pro instance virtuálních počítačů používá vlastní image virtuálního počítače.

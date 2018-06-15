@@ -12,9 +12,10 @@ ms.reviewer: mmercuri
 manager: femila
 ms.openlocfilehash: 63b718bcb8722c5fd501891d162eadfae9fb8ec2
 ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34074883"
 ---
 # <a name="get-information-about-your-azure-blockchain-workbench-database"></a>Získání informací o databázi služby Azure Blockchain Workbench
 

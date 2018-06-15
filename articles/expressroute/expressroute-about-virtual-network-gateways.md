@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30235321"
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>O branách virtuálních sítí pro ExpressRoute
 Brána virtuální sítě se používá k posílání síťového provozu mezi virtuálními sítěmi Azure a místními umístěními. Při konfiguraci připojení ExpressRoute, musíte vytvořit a konfigurovat bránu virtuální sítě a připojení brány virtuální sítě.
