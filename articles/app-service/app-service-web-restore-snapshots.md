@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33767298"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Obnovení ze snímku aplikace v Azure
 Tento článek ukazuje, jak obnovit aplikaci [Azure App Service](../app-service/app-service-web-overview.md) ze snímku. Aplikace můžete obnovit do předchozího stavu, na základě jedné z vaší aplikace snímky. Není nutné k povolení zálohování snímky, platformu automaticky uloží všechny aplikace pro účely obnovení dat snímku.

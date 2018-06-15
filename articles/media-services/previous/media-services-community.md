@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788155"
 ---
 # <a name="azure-media-services-community"></a>Komunita Azure Media Services
 Tato stránka komunity Azure Media Services (AMS) popisuje různé způsoby získáte aktualizací v souvislosti s AMS. Můžete také zobrazit nové videa a podcastů, klást otázky a váš názor.   

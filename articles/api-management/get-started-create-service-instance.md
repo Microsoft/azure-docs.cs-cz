@@ -17,6 +17,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33934924"
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Vytvoření nové instance služby Azure API Management
 

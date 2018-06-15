@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33895319"
 ---
 # <a name="azure-advanced-threat-detection"></a>Azure Advanced Threat detekce
 ## <a name="introduction"></a>Úvod

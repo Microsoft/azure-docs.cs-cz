@@ -1,6 +1,6 @@
 ---
-title: "Ukázky rozhraní příkazového řádku Azure - služby App Service | Microsoft Docs"
-description: "Ukázky rozhraní příkazového řádku Azure - služby App Service"
+title: Ukázky rozhraní příkazového řádku Azure - služby App Service | Microsoft Docs
+description: Ukázky rozhraní příkazového řádku Azure - služby App Service
 services: app-service
 documentationcenter: app-service
 author: syntaxc4
@@ -18,9 +18,10 @@ ms.author: cfowler
 ms.custom: mvc
 ms.openlocfilehash: fdc5e03350783fb8c3e30b6c9a40af45a5925ba8
 ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/12/2017
+ms.locfileid: "26658360"
 ---
 # <a name="azure-cli-samples"></a>Ukázky rozhraní příkazového řádku Azure
 

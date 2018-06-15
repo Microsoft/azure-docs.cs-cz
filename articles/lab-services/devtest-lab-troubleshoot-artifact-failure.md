@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788722"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Diagnostikování selhání artefaktů v testovacím prostředí 
 Po vytvoření artefakt můžete můžete zkontrolujte, zda byla úspěšná nebo neúspěšná. Protokoly artefaktů v Azure DevTest Labs poskytují informace, které můžete použít k diagnostikování selhání artefaktů. Máte několik možností pro zobrazení informací protokolu artefaktů pro virtuální počítač s Windows:

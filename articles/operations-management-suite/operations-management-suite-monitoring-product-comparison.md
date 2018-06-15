@@ -1,8 +1,8 @@
 ---
-title: "Monitorování porovnání produktů Microsoft | Microsoft Docs"
-description: "Microsoft Operations Management Suite (OMS) je řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudové infrastruktury založené na službě cloud společnosti Microsoft.  Tento článek identifikuje různé služby zahrnuté v OMS a poskytuje odkazy na podrobné informace."
+title: Monitorování porovnání produktů Microsoft | Microsoft Docs
+description: Microsoft Operations Management Suite (OMS) je řešení pro správu IT, která pomáhá spravovat a chránit místní a cloudové infrastruktury založené na službě cloud společnosti Microsoft.  Tento článek identifikuje různé služby zahrnuté v OMS a poskytuje odkazy na podrobné informace.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866314"
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Porovnání monitorování produktů společnosti Microsoft
 Tento článek obsahuje porovnání mezi službou System Center Operations Manager (SCOM) a analýzy protokolů v Operations Management Suite (OMS) z hlediska jejich architektury, logiku, jak je i sledování prostředků, a jak budou provádět analýzy dat, která se budou shromažďovat .  Toto je získáte základní přehled o jejich rozdíly a relativní síly.  

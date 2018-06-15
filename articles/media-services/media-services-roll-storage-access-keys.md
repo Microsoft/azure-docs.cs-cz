@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: ebaa679c43bd577d4f37feb7f3a025086490e25f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 304e72e0d2d4a7e95df513e6d5481def9eae3f68
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790290"
+ms.lasthandoff: 10/11/2017
+ms.locfileid: "23860672"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Po vrácení přístupových klíčů k úložišti aktualizuje Media Services
 
 Když vytvoříte nový účet Azure Media Services (AMS), zobrazí se výzva, vyberte účet úložiště Azure, který se používá k ukládání mediální obsah. Můžete přidat více než jeden účty úložiště pro váš účet Media Services. Toto téma ukazuje, jak otočit klíče úložiště. Také ukazuje, jak přidat účty úložiště k účtu media. 
 
-K provedení akce popsané v tomto tématu, měli byste použít [rozhraní API ARM](https://docs.microsoft.com/rest/api/media/mediaservice) a [prostředí Powershell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media).  Další informace najdete v tématu [jak ke správě prostředků Azure pomocí prostředí PowerShell a správce prostředků](../../azure-resource-manager/powershell-azure-resource-manager.md).
+K provedení akce popsané v tomto tématu, měli byste použít [rozhraní API ARM](https://docs.microsoft.com/rest/api/media/mediaservice) a [prostředí Powershell](https://docs.microsoft.com/powershell/resourcemanager/azurerm.media/v0.3.2/azurerm.media).  Další informace najdete v tématu [jak ke správě prostředků Azure pomocí prostředí PowerShell a správce prostředků](../azure-resource-manager/powershell-azure-resource-manager.md).
 
 ## <a name="overview"></a>Přehled
 
@@ -71,10 +71,10 @@ Následující příklad ukazuje, jak získat účet úložiště a synchronizov
 Následující téma ukazuje, jak přidat účty úložiště do vašeho účtu AMS: [k účtu Media Services připojit více účtů úložiště](meda-services-managing-multiple-storage-accounts.md).
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
-[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Poskytnutí zpětné vazby
-[!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
+[!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ### <a name="acknowledgments"></a>Potvrzování
 Rádi bychom se na vědomí následující osob, které podílí k vytvoření tohoto dokumentu: Cenk Dingiloglu, Gada Milán Seva Titov.

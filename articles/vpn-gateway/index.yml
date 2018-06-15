@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 05/03/2018
+  ms.locfileid: "32779484"
 abstract:
   description: Naučíte se konfigurovat, vytvářet a spravovat Azure VPN Gateway. Můžete vytvořit šifrovaná připojení víc míst k vaší virtuální síti z místních umístění nebo šifrovaná připojení mezi virtuálními sítěmi.
 sections:

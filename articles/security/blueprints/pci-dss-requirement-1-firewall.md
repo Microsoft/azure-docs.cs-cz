@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894394"
 ---
 # <a name="firewall-requirements-for-pci-dss-compliant-environments"></a>Požadavky na bránu firewall pro kompatibilní se standardem PCI DSS prostředí 
 ## <a name="pci-dss-requirement-1"></a>PCI DSS požadavek 1

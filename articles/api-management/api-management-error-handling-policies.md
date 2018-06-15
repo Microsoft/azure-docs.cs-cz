@@ -1,11 +1,11 @@
 ---
-title: "Zpracování chyb v zásad Azure API managementu | Microsoft Docs"
-description: "Zjistěte, jak reagovat na chybové stavy, které mohou nastat během zpracování požadavků ve službě Azure API Management."
+title: Zpracování chyb v zásad Azure API managementu | Microsoft Docs
+description: Zjistěte, jak reagovat na chybové stavy, které mohou nastat během zpracování požadavků ve službě Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3c777964-02b2-4f55-8731-8c3bd3c0ae27
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26128222"
 ---
 # <a name="error-handling-in-api-management-policies"></a>Zpracování chyb v zásady služby API Management
 Azure API Management umožňuje vydavatelů reagovat na chybové stavy, které mohou nastat během zpracování žádosti k proxy serveru tím, že poskytuje `ProxyError` objektu. `ProxyError` Objekt přistupuje prostřednictvím [kontextu. Poslední chyba](api-management-policy-expressions.md#ContextVariables) vlastnost a mohou být využívána zásad v `on-error` zásad. Toto téma obsahuje odkaz pro Chyba funkce zpracování v Azure API Management.  

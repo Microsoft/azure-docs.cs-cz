@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788330"
 ---
 # <a name="crop-videos-with-media-encoder-standard"></a>Oříznutí videa pomocí kodéru Media Encoder Standard
 Chcete-li oříznout váš vstup videa můžete Media Encoder Standard (MES). Oříznutí je proces kódování pixelů v rámci dané okno a výběrem obdélníkový okno v rámci videa. Následující diagram pomáhá proces znázorněn.

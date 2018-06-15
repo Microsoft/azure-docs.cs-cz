@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "31602626"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Rychlé kroky: vytváření a používání dvojici klíčů veřejný soukromý SSH pro virtuální počítače s Linuxem v Azure
 Pomocí páru klíčů SSH (Secure Shell) můžete v Azure vytvořit virtuální počítače, které k ověřování používají klíče SSH. Není potom potřeba používat k přihlašování hesla. Tento článek ukazuje, jak rychle generovat a používat páru veřejného a privátního klíče souboru SSH pro virtuální počítače s Linuxem. Můžete provést tyto kroky prostředí cloudu Azure, systému macOS nebo Linux hostitele, subsystému Windows pro Linux a dalších nástrojů, které podporují OpenSSH. 

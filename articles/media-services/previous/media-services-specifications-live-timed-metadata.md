@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790521"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalizace vypršel časový limit Metadata v živé vysílání datového proudu
 

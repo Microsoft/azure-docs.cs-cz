@@ -1,13 +1,13 @@
 ---
-title: "Opravte 502 Chybná brána, 503 Služba nedostupná chyby | Microsoft Docs"
-description: "Vyřešte potíže Chybná brána 502 a 503 Služba není k dispozici chyby ve vaší webové aplikace hostované v Azure App Service."
+title: Opravte 502 Chybná brána, 503 Služba nedostupná chyby | Microsoft Docs
+description: Vyřešte potíže Chybná brána 502 a 503 Služba není k dispozici chyby ve vaší webové aplikace hostované v Azure App Service.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 tags: top-support-issue
-keywords: "502 Chybná brána 503 Služba nedostupná, chyby 503, chyby 502"
+keywords: 502 Chybná brána 503 Služba nedostupná, chyby 503, chyby 502
 ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.service: app-service-web
 ms.workload: web
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836515"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>Řešení chyb HTTP "502 Chybná brána" a "503 Služba není k dispozici" ve službě Azure web apps
 "502 Chybná brána" a "503 Služba nedostupná" jsou běžné chyby ve vaší webové aplikace hostované v [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Tento článek vám pomůže vyřešit tyto chyby.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788939"
 ---
 # <a name="input-metadata"></a>Vstupní metadat
 Kódování úlohy jsou přiřazeny prostředek vstupní (nebo prostředky) na který chcete provést některé úlohy kódování.  Po dokončení úlohy se vytvářejí výstupní asset.  Výstupní asset obsahuje video, zvuk, miniatur, manifest atd. Výstupní asset obsahuje také soubor s metadata o vstupní asset. Název souboru XML metadat má následující formát: &lt;asset_id&gt;_metadata.xml (například 41114ad3-eb5e - 4c 57 8d 92-5354e2b7d4a4_metadata.xml), kde &lt;asset_id&gt; je hodnota ID vstupní prostředek.  

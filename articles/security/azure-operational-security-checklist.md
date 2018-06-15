@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894745"
 ---
 # <a name="azure-operational-security-checklist"></a>Kontrolní seznam zabezpečení Azure provozní
 Nasazení aplikace v Azure je rychlý, snadný a nákladově efektivní. Před nasazením cloudových aplikací v provozním prostředí, které jsou užitečné používat kontrolní seznam pro si udělali představu o vaší aplikace podle seznamu provozního zabezpečení důležité a doporučené akce je třeba zvážit.

@@ -1,11 +1,11 @@
 ---
-title: "Postup vytvoření ILB App Service Environment pomocí šablony Azure Resource Manageru | Microsoft Docs"
-description: "Naučte se vytvořit interní služby load vyrovnávání App Service Environment pomocí šablony Azure Resource Manager."
+title: Postup vytvoření ILB App Service Environment pomocí šablony Azure Resource Manageru | Microsoft Docs
+description: Naučte se vytvořit interní služby load vyrovnávání App Service Environment pomocí šablony Azure Resource Manager.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: stefsch
 manager: nirma
-editor: 
+editor: ''
 ms.assetid: 091decb6-b0de-42a1-9f2f-c18d9b2e67df
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836851"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Vytvoření ILB ASE pomocí šablon Azure Resource Manageru
 

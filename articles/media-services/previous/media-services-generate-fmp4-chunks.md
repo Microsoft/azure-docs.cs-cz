@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788204"
 ---
 #  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>Vytvoření kódování úlohy, který generuje fMP4 bloky
 

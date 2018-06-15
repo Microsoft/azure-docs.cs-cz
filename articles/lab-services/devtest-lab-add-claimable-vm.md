@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787490"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Vytvoření a správa vymahatelných virtuálních počítačů v Azure DevTest Labs
 Přidat vymahatelných virtuálního počítače do testovacího prostředí podobným způsobem, jak můžete [přidat standardní virtuální počítač](devtest-lab-add-vm.md) – z *základní* to znamená buď [vlastní image](devtest-lab-create-template.md), [vzorec](devtest-lab-manage-formulas.md), nebo [Marketplace image](devtest-lab-configure-marketplace-images.md). V tomto kurzu vás provede pomocí portálu Azure pro přidání do testovacího prostředí v DevTest Labs vymahatelných virtuálního počítače a zobrazuje procesy že uživatel bude postupovat pro deklarace identity a unclaim virtuálního počítače.

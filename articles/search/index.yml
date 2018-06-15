@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 05/10/2018
+  ms.locfileid: "33943174"
 abstract:
   description: Naučte se vytvářet podniková řešení pro hledání nad privátním heterogenním obsahem s využitím Azure Search. Kurzy, reference k rozhraní API a další dokumenty ukazují, jak konsolidovat prohledávatelný obsah do jednoho rychlého indexu, pro který se dají vytvářet dotazy prostřednictvím jednoduché i složité syntaxe a který podporuje širokou škálu scénářů. <p/><b>Nová verze Preview kognitivního hledání</b> Předběžnou verzi REST API můžete využít k vytvoření vazby algoritmů s podporou AI na kanál indexování. Extrakce dat a vyvolání zpracování přirozeného jazyka obrázků umožňuje transformovat nezpracovaný a nestrukturovaný obsah na prohledávatelný obsah v indexu Azure Search. <p/>Začněte s využitím <a href="/azure/search/cognitive-search-quickstart-blob">prostředků a ukázkových dat</a> nebo si přečtěte víc v části <a href="/azure/search/cognitive-search-concept-intro">Koncepty</a>.
   aside:

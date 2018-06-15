@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788827"
 ---
 # <a name="media-services-playready-license-template-overview"></a>Přehled šablonu licence Media Services PlayReady
 Azure Media Services nyní poskytuje službu k doručování licencí PlayReady. Když player (například Silverlight) pokusí o přehrání obsahu chráněného PlayReady, žádost o posílá službu doručování licencí jak licenci získat. Pokud licenční služby schvalovat žádosti, vydá licenci, která se může odeslat klientovi a slouží k dešifrování- and -play zadaný obsah.

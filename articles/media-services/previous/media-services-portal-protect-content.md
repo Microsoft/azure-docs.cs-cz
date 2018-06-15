@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790381"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Nakonfigurujte zásady ochrany obsahu pomocí portálu Azure
  Pomocí služby Azure Media Services můžete zabezpečit médiu od okamžiku, kdy by poté počítač prostřednictvím úložiště, zpracování a doručení. Služba Media Services můžete použít k doručení obsahu dynamicky šifrovat s Standard AES (Advanced Encryption) pomocí klíčů 128bitové šifrování. Také můžete se s běžným šifrováním (CENC) pomocí PlayReady nebo Widevine správy digitálních práv (DRM) a Apple FairPlay. 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937848"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Řešení běžných problémů pro certifikáty PKI zásobník Azure
 Informace v tomto článku vám může pomoct pochopit a řešit obvyklé problémy pro certifikáty PKI zásobník Azure. Můžete zjistit problémy při použití nástroje Kontrola připravenosti zásobník Azure k [ověření certifikátů PKI zásobník Azure](azure-stack-validate-pki-certs.md). Nástroj zkontroluje, zkontrolujte, zda splňují požadavky infrastruktury veřejných KLÍČŮ nasazení zásobník Azure a Azure zásobníku tajný klíč otočení certifikáty a přihlásí výsledky [report.json soubor](azure-stack-validation-report.md).  

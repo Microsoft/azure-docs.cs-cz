@@ -37,7 +37,7 @@
 ## [Fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [Ceny](https://azure.microsoft.com/pricing/details/data-catalog/)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)
-## [Poznámky k verzi](data-catalog-whats-new.md)
+## [Poznámky k verzi](../active-directory/fundamentals/whats-new.md)
 ## [Aktualizace služeb](https://azure.microsoft.com/updates/?product=data-catalog)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)
 ## [Terminologie](data-catalog-terminology.md)

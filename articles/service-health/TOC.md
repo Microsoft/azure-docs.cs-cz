@@ -11,6 +11,7 @@
 ### [Konfigurace s použitím ServiceNow](service-health-alert-webhook-servicenow.md)
 ### [Konfigurace s použitím PagerDuty](service-health-alert-webhook-pagerduty.md)
 ### [Konfigurace s použitím OpsGenie](service-health-alert-webhook-opsgenie.md)
+### [Načtení událostí stavu s využitím REST](service-health-rest.md)
 # Zdroje a prostředky
 ## [Nejčastější dotazy](resource-health-faq.md)
 ## [ Cenová kalkulačka](https://azure.microsoft.com/pricing/calculator/)

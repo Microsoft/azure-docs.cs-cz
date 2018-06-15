@@ -1,12 +1,12 @@
 ---
-title: "Ukázek Azure CLI pro úložiště objektů Blob | Microsoft Docs"
-description: "Ukázek Azure CLI pro práci s Azure Blob Storage"
+title: Ukázek Azure CLI pro úložiště objektů Blob | Microsoft Docs
+description: Ukázek Azure CLI pro práci s Azure Blob Storage
 services: storage
 documentationcenter: na
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
@@ -17,9 +17,10 @@ ms.date: 06/13/2017
 ms.author: tamram
 ms.openlocfilehash: e247a788a593b2e8fe7be76c25b85cad3cef2291
 ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/01/2017
+ms.locfileid: "26040171"
 ---
 # <a name="azure-cli-samples-for-azure-blob-storage"></a>Ukázek Azure CLI pro úložiště objektů Blob v Azure
 

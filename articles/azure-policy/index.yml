@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 05/10/2018
+  ms.locfileid: "33934526"
 abstract:
   description: Azure Policy pomáhá zajišťovat správu a prevenci potíží s IT prostřednictvím definic zásad, které vynucují pravidla a efekty pro vaše prostředky. Když použijete Azure Policy, prostředky budou odpovídat vašim firemním standardům a smlouvám o úrovni služeb. Naučte se vytvářet, přiřazovat a spravovat definice zásad prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
 sections:

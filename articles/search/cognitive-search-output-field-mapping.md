@@ -13,6 +13,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790948"
 ---
 # <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>Jak provádět rozšířené mapování na index s možností vyhledávání
 

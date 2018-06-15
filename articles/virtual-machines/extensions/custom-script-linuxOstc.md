@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942771"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Virtuální počítače s Linuxem pomocí Azure vlastní skript rozšíření verze 1
 Vlastní skript rozšíření verze 1 se stáhne a spustí skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalace softwaru nebo jiná úloha správy nebo konfigurace. Skripty si můžete stáhnout z Azure Storage nebo jiné dostupné umístění v Internetu, nebo je můžete zadat rozšíření modulu runtime. 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31529482"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Kontrolní bod a opětovného přehrání koncepty v úlohy Azure Stream Analytics
 Tento článek popisuje interní kontrolní bod a opětovného přehrání koncepty v Azure Stream Analytics a dopad na těch, které mít na úlohu obnovení. Při každém spuštění úlohy Stream Analytics informace o stavu zachovaný interně. Aby se informace o stavu pravidelně uloží do kontrolní bod. V některých scénářích kontrolního bodu informace slouží pro úlohy obnovení, pokud dojde k selhání úlohy nebo upgradu. Za jiných okolností kontrolní bod nelze použít pro obnovení a je nezbytné přehrání.

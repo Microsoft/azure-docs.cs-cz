@@ -16,6 +16,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788113"
 ---
 # <a name="azure-media-services-v3-preview-release-notes"></a>Azure Media Services v3 poznámky k verzi (preview) 
 

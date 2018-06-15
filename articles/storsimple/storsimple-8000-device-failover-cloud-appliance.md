@@ -1,12 +1,12 @@
 ---
-title: "StorSimple převzetí služeb při selhání, zotavení po havárii pro o cloudu zařízení StorSimple | Microsoft Docs"
-description: "Zjistěte, jak při selhání fyzického zařízení řady StorSimple 8000 do cloudu zařízení."
+title: StorSimple převzetí služeb při selhání, zotavení po havárii pro o cloudu zařízení StorSimple | Microsoft Docs
+description: Zjistěte, jak při selhání fyzického zařízení řady StorSimple 8000 do cloudu zařízení.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874896"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>Převzetí služeb při selhání pro vaše zařízení StorSimple cloudu
 

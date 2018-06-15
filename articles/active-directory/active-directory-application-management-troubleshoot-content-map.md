@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33927776"
 ---
 # <a name="troubleshoot-azure-active-directory-application-management"></a>Řešení potíží s Azure Active Directory, Správa aplikací
 Následující odkazy vás přivedou k mapě obsahu, která vám pomůže vyřešit některé z nejběžnějších problémů, se kterými se můžete setkat při správě **podnikových aplikací** v Azure Active Directory.

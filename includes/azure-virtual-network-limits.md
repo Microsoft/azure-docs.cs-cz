@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 06/12/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: bbeceb868466de42cfdffa3991983ac906cb98aa
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: ad76046a092a37a2dc1f59459ac3c3e48bc284e5
+ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35323727"
+ms.lasthandoff: 06/13/2018
+ms.locfileid: "35568122"
 ---
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné. Zjistěte, jak [zobrazení vašeho aktuálního využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
@@ -68,7 +68,6 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |
 | Služby vyrovnávání zatížení | 100 | 1000 |
-| Back-endové prostředky podle zatížení vyrovnávání * | 50 | 150 |
 | Pravidla na prostředek, Basic | 150 | 250 |
 | Pravidla na prostředek, Standard | 1250 | 1 500 |
 | Pravidla pro konfiguraci protokolu IP | 299 |299 |
@@ -76,9 +75,10 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Konfigurace IP front-endu, Standard | 10 | 600 |
 | Fond back-end, Basic | 100, jedna skupina dostupnosti | 100, jedna skupina dostupnosti |
 | Fond back-end, Standard | 1000, jedna virtuální síť | 1000, jedna virtuální síť |
+| Back-endové prostředky na Vyrovnávání zatížení, Standard &ast; | 50 | 150 |
 | HA porty, Standard | 1 na interní front-endu | 1 na interní front-endu |
 
-* Až 150 prostředky libovolnou kombinaci samostatné virtuální počítače, skupiny dostupnosti a sady škálování virtuálního počítače.
+&ast; Až 150 prostředky libovolnou kombinaci samostatné virtuální počítače, skupiny dostupnosti a sady škálování virtuálního počítače.
 
 Pokud potřebujete navýšit výchozí omezení, [kontaktujte podporu](../articles/azure-supportability/resource-manager-core-quotas-request.md ).
 
