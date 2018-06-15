@@ -1,13 +1,13 @@
 ---
-title: "Azure skript prostředí PowerShell ukázkový – vytvoření virtuálního počítače ze snímku | Microsoft Docs"
-description: "Azure skript prostředí PowerShell ukázkový – vytvoření virtuálního počítače ze snímku"
+title: Azure skript prostředí PowerShell ukázkový – vytvoření virtuálního počítače ze snímku | Microsoft Docs
+description: Azure skript prostředí PowerShell ukázkový – vytvoření virtuálního počítače ze snímku
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: ramankum
 manager: kavithag
 editor: ramankum
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -18,9 +18,10 @@ ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 63d108bbfd0f58f8a40bf1c7c8649e3a1f7ed288
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23879775"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-powershell"></a>Vytvoření virtuálního počítače ze snímku pomocí prostředí PowerShell
 

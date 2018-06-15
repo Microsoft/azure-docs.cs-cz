@@ -1,11 +1,11 @@
 ---
-title: "Testovací virtuální počítač nabídku pro Marketplace | Microsoft Docs"
-description: "Pochopit, jak chcete otestovat bitové kopie virtuálních počítačů v Azure Marketplace."
+title: Testovací virtuální počítač nabídku pro Marketplace | Microsoft Docs
+description: Pochopit, jak chcete otestovat bitové kopie virtuálních počítačů v Azure Marketplace.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 7a41c3c6-625c-4478-b804-e124dee89040
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29936935"
 ---
 # <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>Při přípravě otestovat vaši nabídku virtuálních počítačů pro Azure Marketplace
 Pracovní znamená nasazení vaší SKU privátního "izolovaného", kde můžete testovat a před nasazením na Marketplace s cílem ověřit její funkce. Verze SKU se zobrazí v pracovním stejně, jako by zákazníkovi, který je nasazena. Chcete-li být vložena do přípravy musí mít certifikovanou bitové kopie virtuálního počítače.

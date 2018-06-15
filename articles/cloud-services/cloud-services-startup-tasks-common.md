@@ -1,11 +1,11 @@
 ---
-title: "Běžné úlohy spuštění pro cloudové služby | Microsoft Docs"
-description: "Obsahuje některé příklady běžných úloh spuštění, které můžete chtít provést ve vaší cloudové služby webovou roli nebo role pracovního procesu."
+title: Běžné úlohy spuštění pro cloudové služby | Microsoft Docs
+description: Obsahuje některé příklady běžných úloh spuštění, které můžete chtít provést ve vaší cloudové služby webovou roli nebo role pracovního procesu.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a7095dad-1ee7-4141-bc6a-ef19a6e570f1
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843697"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Běžné úlohy spuštění cloudové služby
 Tento článek obsahuje některé příklady běžných úloh spuštění, který chcete provést v rámci cloudové služby. Spuštění úlohy můžete použít k provádění operací před zahájením roli. Operace, které můžete chtít provést zahrnovat instalaci komponenty, registraci komponenty modelu COM, nastavení klíče registru nebo dlouhotrvající proces. 

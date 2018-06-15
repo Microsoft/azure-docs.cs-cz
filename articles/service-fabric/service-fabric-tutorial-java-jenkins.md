@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949833"
 ---
 # <a name="tutorial-set-up-a-jenkins-environment-with-service-fabric"></a>Kurz: Nastavení prostředí Jenkins s využitím Service Fabric
 Tento kurz je pátou částí série. Ukazuje použití Jenkinse k nasazování upgradů do aplikace. V tomto kurzu se pomocí modulu plug-in Jenkinse pro Service Fabric v kombinaci s úložištěm GitHub hostujícím hlasovací aplikaci nasadí tato aplikace do clusteru. 

@@ -1,11 +1,11 @@
 ---
-title: "Nastavení Azure Import/Export nástroj v1 | Microsoft Docs"
-description: "Zjistěte, jak nastavit přípravy disku a opravit nástroj pro službu Azure Import/Export. Vztahuje se k v1 nástroj importu a exportu."
+title: Nastavení Azure Import/Export nástroj v1 | Microsoft Docs
+description: Zjistěte, jak nastavit přípravy disku a opravit nástroj pro službu Azure Import/Export. Vztahuje se k v1 nástroj importu a exportu.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: c312b1ab-5b9e-4d24-becd-790a88b3ba8d
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873937"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Nastavení nástroje Azure Import/Export
 Nástroj Microsoft Azure Import/Export je jednotka přípravy a opravit nástroj, který můžete použít se službou Microsoft Azure Import/Export. Nástroj můžete použít pro následující funkce:  

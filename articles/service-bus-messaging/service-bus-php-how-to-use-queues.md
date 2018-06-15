@@ -1,11 +1,11 @@
 ---
-title: "Jak používat fronty Service Bus s PHP | Microsoft Docs"
-description: "Naučte se používat fronty Service Bus v Azure. Ukázky kódu jsou vytvořeny v jazyce PHP."
+title: Jak používat fronty Service Bus s PHP | Microsoft Docs
+description: Naučte se používat fronty Service Bus v Azure. Ukázky kódu jsou vytvořeny v jazyce PHP.
 services: service-bus-messaging
 documentationcenter: php
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: e29c829b-44c5-4350-8f2e-39e0c380a9f2
 ms.service: service-bus-messaging
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23868323"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>Jak používat fronty Service Bus s PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]

@@ -1,6 +1,6 @@
 ---
-title: "Výsledky testu pro replikaci virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality s Azure Site Recovery | Microsoft Docs"
-description: "Tento článek obsahuje informace o testování výkonu pro replikaci virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality pomocí Azure Site Recovery."
+title: Výsledky testu pro replikaci virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality s Azure Site Recovery | Microsoft Docs
+description: Tento článek obsahuje informace o testování výkonu pro replikaci virtuálních počítačů Hyper-V v cloudech VMM do sekundární lokality pomocí Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29378894"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>Výsledky testu pro replikaci technologie Hyper-V do sekundární lokality
 

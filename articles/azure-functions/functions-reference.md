@@ -1,13 +1,13 @@
 ---
-title: "Pokyny pro vývoj Azure Functions | Microsoft Docs"
-description: "Další koncepty Azure Functions a techniky, které potřebujete k vývoji funkce v Azure, ve všech programovací jazyky a vazeb."
+title: Pokyny pro vývoj Azure Functions | Microsoft Docs
+description: Další koncepty Azure Functions a techniky, které potřebujete k vývoji funkce v Azure, ve všech programovací jazyky a vazeb.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "vývojáře průvodce azure funkce, funkce, událostí zpracování, webhooků, dynamické výpočetní, bez serveru architektura"
+editor: ''
+tags: ''
+keywords: vývojáře průvodce azure funkce, funkce, událostí zpracování, webhooků, dynamické výpočetní, bez serveru architektura
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.service: functions
 ms.devlang: multiple
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29121742"
 ---
 # <a name="azure-functions-developers-guide"></a>Příručka pro vývojáře Azure funkce
 V Azure Functions se konkrétní funkce sdílet několik klíčových technických konceptech a součásti, bez ohledu na jazyk nebo vazby, které používáte. Před přechodem do učení podrobnosti, které jsou specifické pro daný jazyk nebo vazby, nezapomeňte si přečíst tento přehled, který se vztahuje na všechny z nich.

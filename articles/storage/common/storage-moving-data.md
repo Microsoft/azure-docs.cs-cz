@@ -1,8 +1,8 @@
 ---
-title: "Přesunutí velké objemy dat do nebo ze cloudové úložiště v Azure | Microsoft Docs"
-description: "Přehled různé metody pro přesun dat do a z Azure Storage."
+title: Přesunutí velké objemy dat do nebo ze cloudové úložiště v Azure | Microsoft Docs
+description: Přehled různé metody pro přesun dat do a z Azure Storage.
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: JarrettRenshaw
 manager: msmets
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28984591"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Přesunutí dat z Azure Storage a do Azure Storage
 Pokud chcete přesunout místní data do služby Azure Storage (nebo naopak), existuje mnoho různých způsobů, jak to udělat. Přístup, který nejlépe vyhovuje bude záviset na váš scénář. Tento článek vám poskytne rychlý přehled o různých scénářů a příslušné nabídky pro každé z nich.

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29949816"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>Kurz: Monitorování aplikací Service Fabric pomocí ELK 
 Tento kurz je čtvrtou částí série. Ukazuje, jak pomocí ELK (Elasticsearch, Logstash a Kibana) monitorovat aplikace Service Fabric spuštěné v Azure. 

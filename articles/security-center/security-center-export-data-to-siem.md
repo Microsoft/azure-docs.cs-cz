@@ -1,12 +1,12 @@
 ---
-title: "Azure data zabezpečení exportovat do systému SIEM - kanálu konfigurace [Preview] | Microsoft Docs"
-description: "Tento článek dokumenty produktu získání Azure security center protokoly server SIEM"
+title: Azure data zabezpečení exportovat do systému SIEM - kanálu konfigurace [Preview] | Microsoft Docs
+description: Tento článek dokumenty produktu získání Azure security center protokoly server SIEM
 services: security-center
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29124829"
 ---
 # <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>Azure data zabezpečení exportovat do systému SIEM - kanálu konfigurace [Preview]
 

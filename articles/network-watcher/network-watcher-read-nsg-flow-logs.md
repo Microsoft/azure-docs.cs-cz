@@ -1,11 +1,11 @@
 ---
-title: "Tok protokolů NSG pro čtení | Microsoft Docs"
-description: "Tento článek ukazuje, jak k analýze protokolů NSG toku"
+title: Tok protokolů NSG pro čtení | Microsoft Docs
+description: Tento článek ukazuje, jak k analýze protokolů NSG toku
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29149630"
 ---
 # <a name="read-nsg-flow-logs"></a>Tok protokolů NSG pro čtení
 

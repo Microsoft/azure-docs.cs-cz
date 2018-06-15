@@ -1,11 +1,11 @@
 ---
-title: "Správa cloudových služeb Azure pomocí Azure Automation | Microsoft Docs"
-description: "Další informace o používání služby Azure Automation ke správě cloudových služeb Azure ve velkém měřítku."
+title: Správa cloudových služeb Azure pomocí Azure Automation | Microsoft Docs
+description: Další informace o používání služby Azure Automation ke správě cloudových služeb Azure ve velkém měřítku.
 services: cloud-services, automation
-documentationcenter: 
+documentationcenter: ''
 author: jodoglevy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3789810a-2892-4eef-bf29-c781c1b5af48
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23842934"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Správa cloudových služeb Azure pomocí Azure Automation.
 Tento průvodce vás seznámí s služba Azure Automation a jak může sloužit ke zjednodušení správy Azure cloudových služeb.

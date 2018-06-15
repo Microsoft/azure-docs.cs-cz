@@ -1,12 +1,12 @@
 ---
-title: "StorSimple místně připnutý svazky – nejčastější dotazy | Microsoft Docs"
-description: "Poskytuje odpovědi na nejčastější dotazy týkající se svazky zařízení StorSimple místně vázaný."
+title: StorSimple místně připnutý svazky – nejčastější dotazy | Microsoft Docs
+description: Poskytuje odpovědi na nejčastější dotazy týkající se svazky zařízení StorSimple místně vázaný.
 services: storsimple
 documentationcenter: NA
 author: manuaery
 manager: syadav
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875589"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple místně připojené svazky: Nejčastější dotazy (FAQ)
 ## <a name="overview"></a>Přehled
@@ -161,7 +162,7 @@ Další informace o tom, jak [převést vrstvený svazek na místně vázaný sv
 
 **Otázka:** Můžete změnit typ svazku během obnovení?
 
-**A.**Ne, nemůžete změnit typ svazku během obnovení.
+**A.** Ne, nemůžete změnit typ svazku během obnovení.
 
 * Jako typ uložené ve snímku se obnoví svazky, které byly odstraněny.
 * Existující svazky jsou obnoveny podle jejich aktuálního typu, bez ohledu na typ uložené ve snímku (viz předchozí dva dotazy).

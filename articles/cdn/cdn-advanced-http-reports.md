@@ -1,11 +1,11 @@
 ---
-title: "Statistika využití analyzovat pomocí Azure CDN Rozšířené sestavy HTTP | Microsoft Docs"
-description: "Naučte se vytvářet rozšířené sestavy HTTP v Microsoft Azure CDN. Tyto sestavy poskytují podrobné informace o aktivity CDN."
+title: Statistika využití analyzovat pomocí Azure CDN Rozšířené sestavy HTTP | Microsoft Docs
+description: Naučte se vytvářet rozšířené sestavy HTTP v Microsoft Azure CDN. Tyto sestavy poskytují podrobné informace o aktivity CDN.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ef90adc1-580e-4955-8ff1-bde3f3cafc5d
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843613"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Statistika využití analyzovat pomocí Azure CDN Rozšířené sestavy HTTP
 ## <a name="overview"></a>Přehled

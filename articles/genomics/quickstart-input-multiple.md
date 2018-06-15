@@ -1,7 +1,7 @@
 ---
-title: "Rychlý start: Odeslání pracovního postupu pomocí více vstupů | Dokumentace Microsoftu"
+title: 'Rychlý start: Odeslání pracovního postupu pomocí více vstupů | Dokumentace Microsoftu'
 titleSuffix: Azure
-description: "Tento článek předpokládá, že máte nainstalovaného klienta msgen a úspěšně jste ve službě zpracovali ukázková data."
+description: Tento článek předpokládá, že máte nainstalovaného klienta msgen a úspěšně jste ve službě zpracovali ukázková data.
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29119991"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Odeslání pracovního postupu pomocí více vstupů ze stejného vzorku
 

@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s knihovnou Azure CDN pro rozhraní .NET | Microsoft Docs"
-description: "Zjistěte, jak psát aplikace .NET pro správu Azure CDN pomocí sady Visual Studio."
+title: Začínáme s knihovnou Azure CDN pro rozhraní .NET | Microsoft Docs
+description: Zjistěte, jak psát aplikace .NET pro správu Azure CDN pomocí sady Visual Studio.
 services: cdn
 documentationcenter: .net
 author: zhangmanling
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 63cf4101-92e7-49dd-a155-a90e54a792ca
 ms.service: cdn
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23843046"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
 > [!div class="op_single_selector"]

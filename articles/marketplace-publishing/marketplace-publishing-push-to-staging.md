@@ -1,11 +1,11 @@
 ---
-title: "Příprava a otestovat vaši nabídku pro nasazení do Azure Marketplace | Microsoft Docs"
-description: "Podrobné pokyny k poskytnete marketingové obsah, konfigurace cenovou plány a testování vaši nabídku před nasazením do Azure Marketplace."
+title: Příprava a otestovat vaši nabídku pro nasazení do Azure Marketplace | Microsoft Docs
+description: Podrobné pokyny k poskytnete marketingové obsah, konfigurace cenovou plány a testování vaši nabídku před nasazením do Azure Marketplace.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 3ccd2448-895b-477e-adf6-ab655a21d2fa
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29947266"
 ---
 # <a name="complete-the-offer-creation-with-marketing-content"></a>Vytvoření nabídky s obsahem, marketing
 V tomto kroku procesu publikování musíte poskytnout určité marketing obsah a podrobnosti o nabídka nebo jednotky SKU v Azure Marketplace. Bude například zadat popis produkt společnosti, loga společnosti, cena plány, podrobnosti o plány a další informace, které jsou potřeba nabízená nabídka nebo SKU pracovní. Tyto informace slouží jako marketing obsah na webu Azure portal. Začnete tohoto procesu [publikování portál][link-pubportal].

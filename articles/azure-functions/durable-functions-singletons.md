@@ -1,12 +1,12 @@
 ---
-title: "Jednotlivé prvky pro odolná funkce – Azure"
-description: "Jak používat jednotlivé prvky v trvanlivý Functons rozšíření pro Azure Functions."
+title: Jednotlivé prvky pro odolná funkce – Azure
+description: Jak používat jednotlivé prvky v trvanlivý Functons rozšíření pro Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29972547"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Singleton orchestrators trvanlivý funkcí (Azure Functions)
 

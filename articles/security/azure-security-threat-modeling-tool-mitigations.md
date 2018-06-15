@@ -1,6 +1,6 @@
 ---
-title: "Způsoby zmírnění – nástroj Microsoft Threat modelování – Azure | Microsoft Docs"
-description: "Stránka jejich zmírnění pro Microsoft Threat modelování nástroj zvýraznění možná řešení nejvíce ohrožených generována hrozeb."
+title: Způsoby zmírnění – nástroj Microsoft Threat modelování – Azure | Microsoft Docs
+description: Stránka jejich zmírnění pro Microsoft Threat modelování nástroj zvýraznění možná řešení nejvíce ohrožených generována hrozeb.
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23867980"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Nástroje pro modelování hrozeb Microsoft jejich zmírnění
 

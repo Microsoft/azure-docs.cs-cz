@@ -17,9 +17,10 @@ ms.date: 08/16/2017
 ms.author: monicar
 ms.openlocfilehash: 84766ba4cf9e844184752bc44d2e0a471b97db27
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32159124"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Glosář Microsoft Azure: slovník terminologie cloudu na platformě Azure
 
