@@ -1,11 +1,11 @@
 ---
-title: "Odkazovat na existující virtuální síť v šablonu sady Azure škálování | Microsoft Docs"
-description: "Informace o postupu přidání virtuální sítě do stávající šablony sadu škálování virtuálního počítače Azure"
+title: Odkazovat na existující virtuální síť v šablonu sady Azure škálování | Microsoft Docs
+description: Informace o postupu přidání virtuální sítě do stávající šablony sadu škálování virtuálního počítače Azure
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26782367"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Přidat odkaz na existující virtuální síť v šablonu sady Azure škálování
 

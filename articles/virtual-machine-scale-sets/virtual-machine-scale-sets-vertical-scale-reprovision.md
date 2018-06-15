@@ -1,11 +1,11 @@
 ---
-title: "Svisle škálování sady škálování virtuálního počítače Azure | Microsoft Docs"
-description: "Postup svisle škálování virtuálního počítače v reakci na monitorování výstrahy s Azure Automation."
+title: Svisle škálování sady škálování virtuálního počítače Azure | Microsoft Docs
+description: Postup svisle škálování virtuálního počítače v reakci na monitorování výstrahy s Azure Automation.
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781815"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Nastaví svislé škálování s škálování virtuálních počítačů
 Tento článek popisuje postup svisle škálování Azure [sady škálování virtuálního počítače](https://azure.microsoft.com/services/virtual-machine-scale-sets/) s nebo bez reprovisioning. Svislé škálování virtuálních počítačů, které nejsou v sadách škálování, najdete v části [svisle škálování virtuální počítač Azure s Azure Automation](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

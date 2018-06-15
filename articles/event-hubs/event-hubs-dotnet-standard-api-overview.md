@@ -1,11 +1,11 @@
 ---
-title: "Přehled služby Azure Event Hubs standardní rozhraní API technologie .NET | Microsoft Docs"
-description: "Přehled standardní rozhraní API .NET"
+title: Přehled služby Azure Event Hubs standardní rozhraní API technologie .NET | Microsoft Docs
+description: Přehled standardní rozhraní API .NET
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a173f8e4-556c-42b8-b856-838189f7e636
 ms.service: event-hubs
 ms.devlang: na
@@ -16,9 +16,10 @@ ms.date: 12/19/2017
 ms.author: sethm
 ms.openlocfilehash: 855f6e7f401621d7f923d68215ca880c05d38629
 ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26782995"
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Přehled služby Event Hubs .NET standardní API
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787392"
 ---
 # <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Konfigurace nastavení Azure Marketplace bitové kopie v Azure DevTest Labs
 DevTest Labs podporuje vytváření virtuálních počítačů založené na imagích Azure Marketplace v závislosti na tom, jak jste nakonfigurovali Azure Marketplace Image ve vašem testovacím prostředí. Tento článek ukazuje, jak určit, které, pokud existuje, může být Azure Marketplace Image používá při vytváření virtuálních počítačů v testovacím prostředí. Tím se zajistí, že váš tým má přístup pouze k Marketplace bitové kopie, které potřebují. 

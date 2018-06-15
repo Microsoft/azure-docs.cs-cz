@@ -16,9 +16,10 @@ ms.date: 04/27/2017
 ms.author: bwren
 ms.openlocfilehash: 65585e6c09def23101d9735c8b9c719d213938ac
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33887843"
 ---
 # <a name="targeting-management-solutions-in-azure-preview"></a>Cílení na řešení pro správu v Azure (Preview)
 Když přidáte k předplatnému řešení pro správu, je automaticky nasadí ve výchozím nastavení všechny agenty systému Windows a Linux připojené k pracovní prostor analýzy protokolů.  Můžete spravovat vaše náklady a omezit množství dat vybraných pro řešení omezením na konkrétní sadu agenty.  Tento článek popisuje způsob použití **cílení na řešení** což je funkce, která umožňuje použít obor pro vaše řešení.

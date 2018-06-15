@@ -1,9 +1,9 @@
 ---
-title: "Převést šablonu Azure Resource Manager škálování sadu používat spravovaných disků na | Microsoft Docs"
-description: "Převeďte na šablonu sady škálování spravovaných disků na šablonu sady škálování."
-keywords: "Sady škálování virtuálního počítače"
+title: Převést šablonu Azure Resource Manager škálování sadu používat spravovaných disků na | Microsoft Docs
+description: Převeďte na šablonu sady škálování spravovaných disků na šablonu sady škálování.
+keywords: Sady škálování virtuálního počítače
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
 editor: tysonn
@@ -21,6 +21,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781067"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Převést na šablonu sady škálování spravovaných disků na šablonu sady škálování
 

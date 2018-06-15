@@ -20,6 +20,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33770867"
 ---
 # <a name="what-is-apache-kafka-on-hdinsight"></a>Co je Apache Kafka ve službě HDInsight?
 

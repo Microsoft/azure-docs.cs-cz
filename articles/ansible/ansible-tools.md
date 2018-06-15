@@ -1,8 +1,8 @@
 ---
-title: "Nástroje pro Ansible pomocí Azure"
-description: "Nainstalovat a používat jednotlivé nástroje pro Ansible s Azure"
+title: Nástroje pro Ansible pomocí Azure
+description: Nainstalovat a používat jednotlivé nástroje pro Ansible s Azure
 ms.service: ansible
-keywords: "ansible, azure, devops, nástroje, vs kód, kód v sadě visual studio, rozšíření"
+keywords: ansible, azure, devops, nástroje, vs kód, kód v sadě visual studio, rozšíření
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
@@ -13,6 +13,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28212047"
 ---
 # <a name="tools-for-using-ansible-with-azure"></a>Nástroje pro Ansible pomocí Azure
 

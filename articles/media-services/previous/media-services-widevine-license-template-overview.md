@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33790479"
 ---
 # <a name="widevine-license-template-overview"></a>Přehled šablonu licence Widevine
 Azure Media Services můžete použít ke konfiguraci a požadují licence Google Widevine. Když přehrávač pokusí o přehrání obsahu chráněného Widevine, žádost o posílá službu doručování licencí jak licenci získat. Pokud licenční služby schvalovat žádosti, služba vydává licence. To se může odeslat klientovi a slouží k dešifrování- and -play zadaný obsah.

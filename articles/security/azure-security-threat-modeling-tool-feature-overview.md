@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Threat modelování nástroj – Azure | Microsoft Docs"
-description: "Další informace o všech funkcí, které jsou k dispozici v nástroji pro modelování hrozeb"
+title: Microsoft Threat modelování nástroj – Azure | Microsoft Docs
+description: Další informace o všech funkcí, které jsou k dispozici v nástroji pro modelování hrozeb
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/18/2017
+ms.locfileid: "26754741"
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Přehled funkcí nástroje modelování hrozeb
 

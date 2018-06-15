@@ -1,11 +1,11 @@
 ---
-title: "Vypršení platnosti zprávy Azure Service Bus | Microsoft Docs"
-description: "Vypršení platnosti a jeho hodnota time to live zpráv Azure Service Bus"
+title: Vypršení platnosti zprávy Azure Service Bus | Microsoft Docs
+description: Vypršení platnosti a jeho hodnota time to live zpráv Azure Service Bus
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28196764"
 ---
 # <a name="message-expiration-time-to-live"></a>Vypršení platnosti zprávy (Time to Live)
 

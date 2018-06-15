@@ -15,6 +15,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33866446"
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>Ověření služby LDAP a Server Azure Multi-Factor Authentication
 

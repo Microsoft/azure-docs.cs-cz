@@ -15,6 +15,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942547"
 ---
 # <a name="create-kafka-enabled-event-hubs"></a>Vytvoření Kafka povoleno Event Hubs
 

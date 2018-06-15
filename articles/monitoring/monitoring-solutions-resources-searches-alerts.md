@@ -16,9 +16,10 @@ ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8b16c88b5ec45dec7bf0fe40da24e817ae325a3e
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33887913"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání analýzy protokolů uložit výstrahy a hledání řešení pro správu (Preview)
 

@@ -2,8 +2,8 @@
 documentType: LandingData
 title: Dokumentace k Azure Event Grid
 metadata:
-  title: "Dokumentace k Azure Event Grid – kurzy, reference k rozhraní API"
-  description: "Azure Event Grid vám umožní reagovat na relevantní události služeb Azure i mimo Azure, a to téměř v reálném čase."
+  title: Dokumentace k Azure Event Grid – kurzy, reference k rozhraní API
+  description: Azure Event Grid vám umožní reagovat na relevantní události služeb Azure i mimo Azure, a to téměř v reálném čase.
   services: event-grid
   author: czeumault
   manager: carolz
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 02/01/2018
+  ms.locfileid: "28921765"
 abstract:
-  description: "Azure Event Grid je plně spravovaná služba inteligentního směrování událostí, která umožňuje jednotnou spotřebu událostí s využitím modelu publikování a odběru. Azure Event Grid vám umožní reagovat na relevantní události služeb Azure i mimo Azure, a to téměř v reálném čase. Naučte se používat Azure Event Grid prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek."
+  description: Azure Event Grid je plně spravovaná služba inteligentního směrování událostí, která umožňuje jednotnou spotřebu událostí s využitím modelu publikování a odběru. Azure Event Grid vám umožní reagovat na relevantní události služeb Azure i mimo Azure, a to téměř v reálném čase. Naučte se používat Azure Event Grid prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Naučte se vytvářet vlastní události a přihlašovat se k jejich odběru."
+    text: Naučte se vytvářet vlastní události a přihlašovat se k jejich odběru.
   - type: list
     style: icon48
     items:
@@ -41,7 +42,7 @@ sections:
       text: Azure Portal
       href: /azure/event-grid/custom-event-quickstart-portal
   - type: paragraph
-    text: "Naučte se směrovat události služby Blob Storage."
+    text: Naučte se směrovat události služby Blob Storage.
   - type: list
     style: icon48
     items:
@@ -53,25 +54,25 @@ sections:
         src: /azure/event-grid/media/index/logo_powershell.svg
       text: Azure PowerShell
       href: /azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fevent-grid%2ftoc.json
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Naučte se vyvíjet aplikace, které reagují na události."
+    text: Naučte se vyvíjet aplikace, které reagují na události.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app\">Monitorování změn ve virtuálních počítačích pomocí aplikací logiky</a>"
-    - html: "<a href=\"/azure/event-grid/resize-images-on-storage-blob-upload-event\">Změna velikosti nahraných obrázků</a>"
-    - html: "<a href=\"/azure/event-grid/ensure-tags-exists-on-new-virtual-machines\">Integrace Azure Automation se službou Event Grid</a>"
-- title: "Referenční informace"
+    - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">Monitorování změn ve virtuálních počítačích pomocí aplikací logiky</a>
+    - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Změna velikosti nahraných obrázků</a>
+    - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Integrace Azure Automation se službou Event Grid</a>
+- title: Referenční informace
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "Příkazový řádek"
+    - title: Příkazový řádek
       html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/azurerm.eventgrid">PowerShell</a></p>
-    - title: "Rozhraní REST API"
+    - title: Rozhraní REST API
       html: <p><a href="/rest/api/eventgrid">REST</a></p>
-    - title: "Schémata"
-      html: "<p><a href=\"/azure/event-grid/subscription-creation-schema \">Schéma předplatného</a></p><p><a href=\"/azure/event-grid/event-schema\">Schéma událostí</a></p>"
+    - title: Schémata
+      html: <p><a href="/azure/event-grid/subscription-creation-schema ">Schéma předplatného</a></p><p><a href="/azure/event-grid/event-schema">Schéma událostí</a></p>

@@ -1,13 +1,13 @@
 ---
-title: "Diagnostické protokoly služby Azure Event Hubs | Microsoft Docs"
-description: "Zjistěte, jak nastavit diagnostické protokoly pro event hubs v Azure."
-keywords: 
-documentationcenter: 
+title: Diagnostické protokoly služby Azure Event Hubs | Microsoft Docs
+description: Zjistěte, jak nastavit diagnostické protokoly pro event hubs v Azure.
+keywords: ''
+documentationcenter: ''
 services: event-hubs
 author: banisadr
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28932711"
 ---
 # <a name="event-hubs-diagnostic-logs"></a>Diagnostické protokoly událostí rozbočovače
 

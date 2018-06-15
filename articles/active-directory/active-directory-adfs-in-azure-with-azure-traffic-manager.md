@@ -1,12 +1,12 @@
 ---
-title: "Vysoká dostupnost mezi geografickými nasazeními služby AD FS v Azure pomocí Azure Traffic Manageru | Dokumentace Microsoftu"
-description: "V tomto dokumentu se dozvíte, jak nasadit služby AD FS v Azure a zajistit vysokou dostupnost."
-keywords: "AD FS pomoc Azure Traffic Manageru, ADFS pomocí Azure Traffic Manageru, geografické, více datových center, geografická datová centra, více geografických datových center, nasazení AD FS v Azure, nasazení Azure AD FS, Azure ADFS, Azure AD FS, nasazení ADFS, nasazení AD FS, AD FS v Azure, nasazení ADFS v Azure, nasazení AD FS v Azure, ADFS Azure, úvod do AD FS, Azure, AD FS v Azure, IAAS, ADFS, přesunutí AD FS do Azure"
+title: Vysoká dostupnost mezi geografickými nasazeními služby AD FS v Azure pomocí Azure Traffic Manageru | Dokumentace Microsoftu
+description: V tomto dokumentu se dozvíte, jak nasadit služby AD FS v Azure a zajistit vysokou dostupnost.
+keywords: AD FS pomoc Azure Traffic Manageru, ADFS pomocí Azure Traffic Manageru, geografické, více datových center, geografická datová centra, více geografických datových center, nasazení AD FS v Azure, nasazení Azure AD FS, Azure ADFS, Azure AD FS, nasazení ADFS, nasazení AD FS, AD FS v Azure, nasazení ADFS v Azure, nasazení AD FS v Azure, ADFS Azure, úvod do AD FS, Azure, AD FS v Azure, IAAS, ADFS, přesunutí AD FS do Azure
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: a14bc870-9fad-45ed-acd5-a90ccd432e54
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26604775"
 ---
 # <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>Vysoká dostupnost mezi geografickými nasazeními služby AD FS v Azure pomocí Azure Traffic Manageru
 Článek [Nasazení služby AD FS v Azure](active-directory-aadconnect-azure-adfs.md) poskytuje podrobné pokyny pro nasazení jednoduché infrastruktury služby AD FS pro vaši organizaci v Azure. Tento článek popisuje další kroky při vytváření nasazení služby AD FS v Azure mezi geografickými lokalitami pomocí [Azure Traffic Manageru](../traffic-manager/traffic-manager-overview.md). Azure Traffic Manager pomáhá vytvořit geograficky rozsáhlou infrastruktury služby AD FS s vysokou dostupnost a vysokým výkonem pro vaši organizaci tím, že využívá široké spektrum metod směrování, které jsou k dispozici pro splnění různých požadavků infrastruktury.

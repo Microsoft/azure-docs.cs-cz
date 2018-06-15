@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření plně kvalifikovaný název domény pro virtuální počítač s Linuxem na portálu Azure | Microsoft Docs"
-description: "Naučte se vytvářet plně kvalifikovaný název domény, nebo plně kvalifikovaný název domény, pro správce prostředků na základě virtuálního počítače na portálu Azure."
+title: Vytvoření plně kvalifikovaný název domény pro virtuální počítač s Linuxem na portálu Azure | Microsoft Docs
+description: Naučte se vytvářet plně kvalifikovaný název domény, nebo plně kvalifikovaný název domény, pro správce prostředků na základě virtuálního počítače na portálu Azure.
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/14/2017
+ms.locfileid: "26707284"
 ---
 # <a name="create-a-fully-qualified-domain-name-in-the-azure-portal-for-a-linux-vm"></a>V portálu Azure vytvořit platný plně kvalifikovaný název domény pro virtuální počítač s Linuxem
 

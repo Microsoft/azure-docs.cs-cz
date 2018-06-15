@@ -1,11 +1,11 @@
 ---
-title: "Virtuální počítač restartováním nebo změnou velikosti problémy v Azure | Microsoft Docs"
-description: "Řešení problémů nasazení Resource Manager s restartováním nebo změnou velikosti existující virtuální počítač Windows v Azure"
+title: Virtuální počítač restartováním nebo změnou velikosti problémy v Azure | Microsoft Docs
+description: Řešení problémů nasazení Resource Manager s restartováním nebo změnou velikosti existující virtuální počítač Windows v Azure
 services: virtual-machines-windows, azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: Deland-Han
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 0756b52d-4f5a-4503-ae45-c00a6a2edcdf
 ms.service: virtual-machines-windows
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27581392"
 ---
 # <a name="troubleshoot-deployment-issues-with-restarting-or-resizing-an-existing-windows-vm-in-azure"></a>Řešení potíží s nasazením s restartováním nebo změnou velikosti existující virtuální počítač Windows v Azure
 Při pokusu o spuštění virtuálního počítače pro zastavený Azure (VM), nebo přizpůsobit existující virtuální počítač Azure je běžnou chybou, které zaznamenáte chybu přidělení. Tato chyba nastává clusteru nebo oblast buď nemá k dispozici prostředky nebo nemůže podporovat požadovaná velikost virtuálního počítače.

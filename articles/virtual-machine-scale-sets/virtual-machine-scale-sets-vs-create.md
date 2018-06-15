@@ -1,11 +1,11 @@
 ---
-title: "Nasazení sadu škálování virtuálního počítače pomocí sady Visual Studio | Microsoft Docs"
-description: "Nasazení sady škálování virtuálního počítače pomocí sady Visual Studio a šablony Resource Manageru"
+title: Nasazení sadu škálování virtuálního počítače pomocí sady Visual Studio | Microsoft Docs
+description: Nasazení sady škálování virtuálního počítače pomocí sady Visual Studio a šablony Resource Manageru
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
 ms.service: virtual-machine-scale-sets
@@ -21,6 +21,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26782142"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Jak vytvořit sadu škálování virtuálního počítače pomocí sady Visual Studio
 Tento článek ukazuje, jak nasadit služby Azure sadu škálování virtuálního počítače pomocí Visual Studio nasazení skupiny prostředků.

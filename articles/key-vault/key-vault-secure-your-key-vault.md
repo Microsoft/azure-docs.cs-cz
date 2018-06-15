@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34070375"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpečení trezoru klíčů
 Azure Key Vault je cloudová služba, která chrání šifrovací klíče a tajné klíče (například certifikáty, připojovací řetězce a hesla) a pro vaše cloudové aplikace. Jelikož tato data jsou citlivá a zcela klíčová pro vaši obchodní (i jinou) činnost, je na místě zabezpečit přístup k trezorům klíčů tak, aby k nim mohli přistupovat jen autorizované aplikace a autorizovaní uživatelé. Tento článek představuje model přístupu k trezoru klíčů, vysvětluje ověření a autorizaci a na příkladu názorně popisuje, jak lze zabezpečit přístup k trezoru klíčů pro vaše cloudové aplikace.

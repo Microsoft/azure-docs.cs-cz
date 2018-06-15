@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788120"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Vytvoření klipů pomocí Azure Media výřez
 Azure Media výřez je volné knihovna JavaScript, která umožňuje vývojářům webů jejich uživatelům poskytnout rozhraní pro vytváření klipů média. Tento nástroj lze integrovat do žádné webové stránce a poskytuje rozhraní API pro načítání prostředků a odesílání úloh výstřižek.

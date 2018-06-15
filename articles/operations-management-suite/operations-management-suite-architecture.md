@@ -1,8 +1,8 @@
 ---
 title: Architektura Operations Management Suite (OMS) | Dokumentace Microsoftu
-description: "Microsoft Operations Management Suite (OMS) je cloudové řešení společnosti Microsoft pro správu IT, které pomáhá se správou a ochranou místních a cloudových infrastruktur.  Tento článek identifikuje různé služby zahrnuté v OMS a poskytuje odkazy na podrobné informace."
+description: Microsoft Operations Management Suite (OMS) je cloudové řešení společnosti Microsoft pro správu IT, které pomáhá se správou a ochranou místních a cloudových infrastruktur.  Tento článek identifikuje různé služby zahrnuté v OMS a poskytuje odkazy na podrobné informace.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2017
+ms.locfileid: "26683261"
 ---
 # <a name="oms-architecture"></a>Architektura OMS
 [Operations Management Suite (OMS)](https://azure.microsoft.com/documentation/services/operations-management-suite/) je kolekce cloudových služeb pro správu vašich místních a cloudových prostředí.  Tento článek popisuje různé místní a cloudové komponenty OMS a jejich základní cloudovou výpočetní architekturu.  Další podrobnosti najdete v dokumentaci k jednotlivým službám.

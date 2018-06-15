@@ -1,11 +1,11 @@
 ---
-title: "Vývoj a správu úloh seznamu ve službě BizTalk Services | Microsoft Docs"
-description: "Plánování a úlohy podpory pro nasazení služby Azure BizTalk Services."
+title: Vývoj a správu úloh seznamu ve službě BizTalk Services | Microsoft Docs
+description: Plánování a úlohy podpory pro nasazení služby Azure BizTalk Services.
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: msftman
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 0ab70b5b-1a88-4ba5-b329-ec51b785010e
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26626584"
 ---
 # <a name="administration-and-development-task-list-in-biztalk-services"></a>Správu a vývoj seznamu úloh ve službě BizTalk Services
 

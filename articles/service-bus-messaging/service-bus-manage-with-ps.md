@@ -1,12 +1,12 @@
 ---
-title: "Pomocí prostředí PowerShell ke správě prostředků Azure Service Bus | Microsoft Docs"
-description: "Modul prostředí PowerShell slouží k vytvoření a Správa prostředků služby Service Bus"
+title: Pomocí prostředí PowerShell ke správě prostředků Azure Service Bus | Microsoft Docs
+description: Modul prostředí PowerShell slouží k vytvoření a Správa prostředků služby Service Bus
 services: service-bus-messaging
 documentationcenter: .NET
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/22/2017
+ms.locfileid: "27159734"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Pomocí prostředí PowerShell pro správu prostředků služby Service Bus
 

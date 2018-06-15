@@ -1,12 +1,12 @@
 ---
-title: "Zachovat soubory pro Bash v prostředí cloudu Azure | Microsoft Docs"
-description: "Návod, jak Bash v prostředí cloudu Azure potrvají soubory."
+title: Zachovat soubory pro Bash v prostředí cloudu Azure | Microsoft Docs
+description: Návod, jak Bash v prostředí cloudu Azure potrvají soubory.
 services: azure
-documentationcenter: 
+documentationcenter: ''
 author: jluk
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919538"
 ---
 [!INCLUDE [features-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 

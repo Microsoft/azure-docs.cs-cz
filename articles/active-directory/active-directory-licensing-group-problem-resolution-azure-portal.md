@@ -16,9 +16,10 @@ ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: e91b0a79e7b45ce7e0de1b7cf4aa3123550692af
 ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33763712"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifikovat a vyřešit problémy přiřazení licence pro skupinu v Azure Active Directory
 

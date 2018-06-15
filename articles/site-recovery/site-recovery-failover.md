@@ -13,6 +13,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894633"
 ---
 # <a name="failover-in-site-recovery"></a>Převzetí služeb při selhání v Site Recovery
 Tento článek popisuje, jak k převzetí služeb při selhání virtuálního počítače a fyzické servery, které se chránit pomocí Site Recovery.

@@ -13,6 +13,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "30196760"
 ---
 Pro aktuální SKU (VpnGw1, VpnGw2 a VPNGW3), kterou chcete změnit velikost bránu SKU pro upgrade na výkonnější jeden, můžete použít `Resize-AzureRmVirtualNetworkGateway` rutiny prostředí PowerShell. Můžete také starší verzi brány velikost SKU použití této rutiny. Pokud používáte bránu základní SKU, [místo toho použijte tyto pokyny](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md#resize) ke změně velikosti brány.
 

@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření první funkce v Linuxu pomocí Azure CLI (Preview)| Dokumentace Microsoftu"
-description: "Zjistěte, jak pomocí Azure CLI vytvořit první funkci Azure Functions spuštěnou ve výchozí imagi Linuxu."
+title: Vytvoření první funkce v Linuxu pomocí Azure CLI (Preview)| Dokumentace Microsoftu
+description: Zjistěte, jak pomocí Azure CLI vytvořit první funkci Azure Functions spuštěnou ve výchozí imagi Linuxu.
 services: functions
-keywords: 
+keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.date: 11/15/2017
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919385"
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>Vytvoření první funkce spuštěné v Linuxu pomocí Azure CLI (Preview)
 

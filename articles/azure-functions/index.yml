@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 05/08/2018
+  ms.locfileid: "33868071"
 abstract:
   description: Azure Functions je výpočetní služba <a href="https://azure.microsoft.com/overview/serverless-computing/">bez serveru</a> umožňující spouštění kódu na vyžádání bez nutnosti explicitně zřizovat nebo spravovat infrastrukturu. Azure Functions můžete použít ke spuštění skriptu nebo kusu kódu jako reakci na různé události. Naučte se používat službu Azure Functions prostřednictvím našich šablon Rychlý start, kurzů a ukázek.
   aside:

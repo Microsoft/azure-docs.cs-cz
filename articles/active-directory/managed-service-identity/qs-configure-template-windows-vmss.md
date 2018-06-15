@@ -19,6 +19,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33930608"
 ---
 # <a name="configure-a-vmss-managed-service-identity-by-using-a-template"></a>Nakonfigurujte identitu VMSS spravované služby pomocí šablony
 

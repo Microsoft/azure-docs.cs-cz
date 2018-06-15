@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788764"
 ---
 # <a name="azure-media-services-error-codes"></a>Kódy chyb Azure Media Services
 Při použití Microsoft Azure Media Services, může se zobrazit kódy chyb HTTP ze služby v závislosti na problémy, jako je například ověřování tokenů vypršení platnosti na akce, které nejsou podporovány ve službě Media Services. Následuje seznam **kódy chyb HTTP** , mohou být vráceny Media Services a možné příčiny pro ně.  

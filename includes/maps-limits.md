@@ -13,6 +13,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33951500"
 ---
 Tady jsou omezení využití pro službu Azure mapy. Informace o náklady najdete v tématu [Azure mapy podrobnosti o cenách](https://azure.microsoft.com/pricing/details/azure-maps/). [Kontaktujte nás](https://azure.microsoft.com/overview/sales-number/) zvýšit rychlost maximální požadavků pro vaše předplatné.
 

@@ -1,8 +1,8 @@
 ---
-title: "Migrovat název DNS active do služby Azure App Service | Microsoft Docs"
-description: "Zjistěte, jak migrovat vlastní název domény DNS, který je již přiřazen k lokalitě v za provozu do služby Azure App Service bez odstávky."
+title: Migrovat název DNS active do služby Azure App Service | Microsoft Docs
+description: Zjistěte, jak migrovat vlastní název domény DNS, který je již přiřazen k lokalitě v za provozu do služby Azure App Service bez odstávky.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/03/2018
+ms.locfileid: "27566487"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrovat název DNS active do služby Azure App Service
 

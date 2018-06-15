@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33893363"
 ---
 # <a name="pen-testing"></a>Testování pera
 Jednou z výhod používání Azure pro testování aplikací a nasazení je, můžete rychle získat prostředí vytvořili.  Nemusíte si dělat starosti o žádanek, získávání a "stáčení a překrývání" vlastní místní hardware.

@@ -1,11 +1,11 @@
 ---
-title: "Ukázkový pracovní postup připravená data pevné disky pro úlohy importu Azure Import/Export - v1 | Microsoft Docs"
-description: "Návod pro dokončení procesu přípravy jednotky pro úlohy importu v rámci služby Azure Import/Export najdete."
+title: Ukázkový pracovní postup připravená data pevné disky pro úlohy importu Azure Import/Export - v1 | Microsoft Docs
+description: Návod pro dokončení procesu přípravy jednotky pro úlohy importu v rámci služby Azure Import/Export najdete.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 6eb1b1b7-c69f-4365-b5ef-3cd5e05eb72a
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/14/2017
+ms.locfileid: "26692020"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Ukázkový pracovní postup pro přípravu pevných disků pro úlohu importu
 Toto téma vás provede kompletní proces přípravy jednotky pro úlohy importu.  

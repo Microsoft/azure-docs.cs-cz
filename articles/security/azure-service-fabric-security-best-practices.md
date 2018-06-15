@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33894125"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Azure Service Fabric osvědčené postupy zabezpečení
 Nasazení aplikace v Azure je rychlý, snadný a nákladově efektivní. Před nasazením cloudové aplikace do produkčního prostředí, projděte si seznam důležité a doporučené osvědčené postupy pro implementaci zabezpečeného clustery ve vaší aplikaci.

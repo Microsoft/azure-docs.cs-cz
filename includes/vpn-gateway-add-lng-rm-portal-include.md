@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30196881"
 ---
 1. Na portálu v části **Všechny prostředky** klikněte na **+Přidat**.
 2. V **všechno, co** stránky vyhledávacího pole, typ **brány místní sítě**, a pak klepněte na vrátí seznam prostředků. Kliknutím na **Brána místní sítě** otevřete stránku a potom kliknutím na **Vytvořit** otevřete stránku **Vytvořit bránu místní sítě**.

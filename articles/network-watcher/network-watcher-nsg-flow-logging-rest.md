@@ -1,11 +1,11 @@
 ---
-title: "Spravovat skupiny zabezpečení sítě toku protokoly s sledovací proces sítě Azure - REST API | Microsoft Docs"
-description: "Tato stránka vysvětluje, jak spravovat protokoly toku skupinu zabezpečení sítě v Azure sledovací proces sítě pomocí rozhraní REST API"
+title: Spravovat skupiny zabezpečení sítě toku protokoly s sledovací proces sítě Azure - REST API | Microsoft Docs
+description: Tato stránka vysvětluje, jak spravovat protokoly toku skupinu zabezpečení sítě v Azure sledovací proces sítě pomocí rozhraní REST API
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2ab25379-0fd3-4bfe-9d82-425dfc7ad6bb
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "26774367"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Protokoly toku konfigurace skupinu zabezpečení sítě pomocí rozhraní REST API
 
