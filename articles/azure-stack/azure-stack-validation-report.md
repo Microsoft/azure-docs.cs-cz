@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937815"
 ---
 # <a name="azure-stack-validation-report"></a>Sestava ověření Azure zásobníku
 Nástroj pro kontrolu připravenosti zásobník Azure spustí ověření, které podporují nasazení a obsluhy prostředí Azure zásobníku. Tento nástroj zapisuje do souboru sestavy .json výsledky ověření. Sestava zobrazí podrobné a souhrnná data týkající se stavu požadavky na nasazení Azure zásobníku a na otočení tajné klíče pro existující nasazení zásobník Azure.  

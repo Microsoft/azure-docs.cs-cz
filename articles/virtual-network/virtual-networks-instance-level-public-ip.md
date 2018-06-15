@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31796016"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Přehled veřejné IP (klasické) instance
 Instance úrovně veřejné IP (splnění) je veřejná IP adresa, kterou můžete přiřadit přímo k instanci role virtuálního počítače nebo cloudové služby, a nikoli pro cloudovou službu, která jsou umístěny ve vaší instanci virtuálního počítače nebo role. SPLNĚNÍ neberou v místě z virtuální IP (VIP) přiřazený ke cloudové službě. Místo toho je další IP adresu, která můžete použít pro připojení přímo k vaší instanci virtuálního počítače nebo role.

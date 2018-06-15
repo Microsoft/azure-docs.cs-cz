@@ -17,6 +17,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196776"
 ---
 # <a name="comparing-azure-data-lake-store-and-azure-blob-storage"></a>Porovnání Azure Data Lake Store a Azure Blob Storage
 Tabulka v tomto článku shrnuje rozdíly mezi Azure Data Lake Store a Azure Blob Storage podél některé klíčové aspekty zpracování velkých objemů dat. Azure Blob Storage je obecné účely, škálovatelné objekt úložiště, které je určená pro širokou škálu scénářů úložiště. Azure Data Lake Store je flexibilně škálovatelné úložiště, která je optimalizovaná pro úlohy analýzy velkých objemů dat.
