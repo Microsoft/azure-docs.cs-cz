@@ -1,6 +1,6 @@
 ---
-title: "Server v protokolech v Azure databázi PostgreSQL"
-description: "Tento článek popisuje Azure databáze PostgreSQL generuje dotaz a chybové protokoly a jak protokolu uchování konfiguraci."
+title: Server v protokolech v Azure databázi PostgreSQL
+description: Tento článek popisuje Azure databáze PostgreSQL generuje dotaz a chybové protokoly a jak protokolu uchování konfiguraci.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29691089"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Server v protokolech v Azure databázi PostgreSQL 
 Generuje Azure databázi PostgreSQL dotazu a chybové protokoly. Přístup k protokoly transakcí však není podporován. Protokoly dotazu a chyba lze identifikovat, odstraňování potíží a opravte chyby konfigurace a zhoršené výkonu. Další informace najdete v tématu [Chyba protokolování a generování sestav](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html).

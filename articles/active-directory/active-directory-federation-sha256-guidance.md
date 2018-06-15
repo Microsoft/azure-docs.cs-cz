@@ -1,12 +1,12 @@
 ---
-title: "Algoritmus hash podpisu změnu vztahu důvěryhodnosti předávající strany Office 365 | Microsoft Docs"
-description: "Tato stránka obsahuje pokyny pro změnu algoritmus SHA pro vztah důvěryhodnosti federace s Office 365"
-keywords: "SHA1, SHA256, O365, federace, aadconnect, služby AD FS, služby ad fs, změny sha, vztah důvěryhodnosti federace, vztah důvěryhodnosti předávající strany"
+title: Algoritmus hash podpisu změnu vztahu důvěryhodnosti předávající strany Office 365 | Microsoft Docs
+description: Tato stránka obsahuje pokyny pro změnu algoritmus SHA pro vztah důvěryhodnosti federace s Office 365
+keywords: SHA1, SHA256, O365, federace, aadconnect, služby AD FS, služby ad fs, změny sha, vztah důvěryhodnosti federace, vztah důvěryhodnosti předávající strany
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: anandyadavmsft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: cf6880e2-af78-4cc9-91bc-b64de4428bbd
 ms.service: active-directory
 ms.workload: identity
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26598958"
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Změňte algoritmus hash podpisu pro Office 365 vztah důvěryhodnosti předávající strany
 ## <a name="overview"></a>Přehled

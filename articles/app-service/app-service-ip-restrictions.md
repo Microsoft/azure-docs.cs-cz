@@ -1,11 +1,11 @@
 ---
-title: "Omezení IP adres služby Azure App Service | Microsoft Docs"
-description: "Použití omezení IP adres s Azure App Service"
+title: Omezení IP adres služby Azure App Service | Microsoft Docs
+description: Použití omezení IP adres s Azure App Service
 author: btardif
 manager: stefsch
-editor: 
+editor: ''
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 3be1f4bd-8a81-4565-8a56-528c037b24bd
 ms.service: app-service-web
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29800105"
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Omezení statickou IP adresu služby Azure App Service #
 

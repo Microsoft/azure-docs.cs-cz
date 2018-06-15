@@ -1,11 +1,11 @@
 ---
-title: "Další informace o šablonách sady škálování virtuálního počítače | Microsoft Docs"
-description: "Naučte se vytvořit šablonu sady minimální přijatelná škálování pro sady škálování virtuálního počítače"
+title: Další informace o šablonách sady škálování virtuálního počítače | Microsoft Docs
+description: Naučte se vytvořit šablonu sady minimální přijatelná škálování pro sady škálování virtuálního počítače
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -20,6 +20,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26781251"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Další informace o šablonách sady škálování virtuálního počítače
 [Šablony Azure Resource Manageru](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) nabízí skvělou možnost pro nasazení skupin souvisejících prostředků. Tato řada kurz ukazuje, jak vytvořit šablonu sady minimální přijatelná škálování a postup úpravy této šablony, aby vyhovovala různé scénáře. Všechny příklady pocházejí z tohoto [úložiště GitHub](https://github.com/gatneil/mvss). 

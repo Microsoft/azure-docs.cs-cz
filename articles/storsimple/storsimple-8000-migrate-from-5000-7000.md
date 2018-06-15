@@ -1,11 +1,11 @@
 ---
-title: "Migrace dat na zařízení StorSimple řady 5000 7000 zařízení řady 8000 | Microsoft Docs"
-description: "Poskytuje přehled a požadavky funkci migrace."
+title: Migrace dat na zařízení StorSimple řady 5000 7000 zařízení řady 8000 | Microsoft Docs
+description: Poskytuje přehled a požadavky funkci migrace.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-ms.assetid: 
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -18,6 +18,7 @@ ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26639865"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrovat data z řady 5000 7000 zařízení StorSimple řady 8000 zařízení
 

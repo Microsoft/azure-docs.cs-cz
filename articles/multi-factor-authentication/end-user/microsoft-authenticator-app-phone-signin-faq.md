@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Authenticator phone přihlášení - účty Azure a Microsoft | Microsoft Docs"
-description: "Váš telefon používáte pro přihlášení ke svému účtu Microsoft místo zadávání hesla. Tento článek obsahuje nejčastější dotazy k odpovědi na tuto funkci."
+title: Microsoft Authenticator phone přihlášení - účty Azure a Microsoft | Microsoft Docs
+description: Váš telefon používáte pro přihlášení ke svému účtu Microsoft místo zadávání hesla. Tento článek obsahuje nejčastější dotazy k odpovědi na tuto funkci.
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/14/2018
+ms.locfileid: "26630388"
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Přihlaste se pomocí telefonu není heslo
 

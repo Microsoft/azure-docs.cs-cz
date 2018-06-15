@@ -1,6 +1,6 @@
 ---
-title: "Odeberte servery a zakažte | Microsoft Docs"
-description: "Tento článek popisuje, jak zrušit registraci serveru z trezoru Site Recovery a zakažte ochranu pro virtuální počítače a fyzické servery."
+title: Odeberte servery a zakažte | Microsoft Docs
+description: Tento článek popisuje, jak zrušit registraci serveru z trezoru Site Recovery a zakažte ochranu pro virtuální počítače a fyzické servery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29806411"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Odebrání serverů a zakázání ochrany
 

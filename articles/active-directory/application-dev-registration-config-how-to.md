@@ -1,11 +1,11 @@
 ---
-title: "Jak vybrat oprávnění pro dané rozhraní API | Microsoft Docs"
-description: "Jak najít koncové body ověřování pro vlastní aplikaci vývoji nebo Probíhá registrace ve službě Azure AD."
+title: Jak vybrat oprávnění pro dané rozhraní API | Microsoft Docs
+description: Jak najít koncové body ověřování pro vlastní aplikaci vývoji nebo Probíhá registrace ve službě Azure AD.
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26612925"
 ---
 # <a name="how-to-select-permissions-for-a-given-api"></a>Jak vybrat oprávnění pro dané rozhraní API
 

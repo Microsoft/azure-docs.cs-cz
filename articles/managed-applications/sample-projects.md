@@ -1,6 +1,6 @@
 ---
-title: "Spravované aplikace ukázkové projekty Azure | Microsoft Docs"
-description: "Shrnuje ukázkové projekty, které jsou k dispozici pro Azure spravované aplikace"
+title: Spravované aplikace ukázkové projekty Azure | Microsoft Docs
+description: Shrnuje ukázkové projekty, které jsou k dispozici pro Azure spravované aplikace
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -15,9 +15,10 @@ ms.date: 12/15/2017
 ms.author: tomfitz
 ms.openlocfilehash: 9acc769355b44628ca617550e44c9ed9724cfdcb
 ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/18/2017
+ms.locfileid: "26753056"
 ---
 # <a name="sample-projects-for-azure-managed-applications"></a>Ukázkové projekty Azure spravované aplikace
 
