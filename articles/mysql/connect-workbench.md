@@ -1,20 +1,21 @@
 ---
-title: "Připojení k Azure Database for MySQL z aplikace MySQL Workbench"
-description: "V tomto rychlém startu najdete postup pro použití aplikace MySQL Workbench k připojení a dotazování dat ze služby Azure Database for MySQL."
+title: Připojení k Azure Database for MySQL z aplikace MySQL Workbench
+description: V tomto rychlém startu najdete postup pro použití aplikace MySQL Workbench k připojení a dotazování dat ze služby Azure Database for MySQL.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
 manager: kfile
 editor: seanli1988
-ms.service: mysql-database
+ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 7c49f3586036efd5784f63fcd79dacea6fb51546
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: def984a6a31cdfe9b9dfbba93ccfb5016b5e315d
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265163"
 ---
 # <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí aplikace MySQL Workbench
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL pomocí aplikace MySQL Workbench. 

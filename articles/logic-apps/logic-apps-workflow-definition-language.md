@@ -3,7 +3,7 @@ title: Pracovní postup schema Definition Language - Azure Logic Apps | Microsof
 description: Zápis definice vlastní pracovní postup pro Azure Logic Apps s jazykem definice pracovního postupu
 services: logic-apps
 author: ecfan
-manager: cfowler
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
@@ -14,11 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: efbfffec10b665ebab230375e774e476199c4ad5
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: MT
+ms.openlocfilehash: 6a4e113c6816540e303210c3f1c96d81146cf5db
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300177"
 ---
 # <a name="logic-apps-workflow-definitions-with-the-workflow-definition-language-schema"></a>Definice pracovního postupu aplikace logiky se schématem jazyk definic workflowů funkce
 
@@ -408,7 +409,7 @@ Pro práci s daty a časy, můžete tyto funkce data a času.
 
 <a name="workflow-functions"></a>
 
-### <a name="workflow-functions"></a>Funkce pracovního postupu
+### <a name="workflow-functions"></a>Funkce pracovních postupů
 
 Vám můžou pomoct tyto funkce pracovního postupu:
 
@@ -444,7 +445,7 @@ Například můžete odkazovat výstupy z jednu akci a tato data použít v rám
 
 <a name="uri-parsing-functions"></a>
 
-### <a name="uri-parsing-functions"></a>Identifikátor URI funkcí analýzy
+### <a name="uri-parsing-functions"></a>Funkce parsování identifikátorů URI
 
 Práce s identifikátory URI (URI) a získat různé hodnoty pro tyto identifikátory URI, můžete použít tyto URI funkcí analýzy. Úplné informace o každé funkci, najdete v článku [abecedně řazená referenční dokumentace článku](../logic-apps/workflow-definition-language-functions-reference.md).
 

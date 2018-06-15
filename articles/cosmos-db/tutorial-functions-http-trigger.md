@@ -2,29 +2,26 @@
 title: Vytvoření triggeru HTTP s využitím vstupní vazby Azure Cosmos DB | Microsoft Docs
 description: Zjistěte, jak pomocí služby Azure Functions a triggerů HTTP dotazovat službu Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 85a9e66491513b016380913617d8e78cf5d82f6d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 3ea102d56df1e47fd1d1c35bd23a3e987fa45145
+ms.sourcegitcommit: 00e875607372517b4b93ca4b6baa915cbbad8064
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34818895"
 ---
 # <a name="create-an-azure-functions-http-trigger-with-an-azure-cosmos-db-input-binding"></a>Vytvoření triggeru HTTP ve službě Azure Functions s využitím vstupní vazby Azure Cosmos DB
 
 Azure Cosmos DB je globálně distribuovaná databázová služba pro více modelů, bez schématu a bez serveru. Azure Functions je výpočetní služba bez serveru, která umožňuje spouštět kód na vyžádání. Spojením těchto dvou služeb Azure získáte základ architektury bez serveru, která vám umožní zaměřit se na vytváření skvělých aplikací bez starostí o zřizování a správu serverů pro vaše výpočetní a databázové požadavky.
 
-Tento kurz vychází z kódu vytvořeného v tématu [Rychlý úvod k rozhraní Graph API pro .NET](create-graph-dotnet.md). V tomto kurzu se přidá funkce Azure Functions obsahující [trigger HTTP](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-bindings-http-webhook.md#http-trigger). Trigger HTTP pomocí [vstupní vazby](https://github.com/MicrosoftDocs/azure-docs-pr/azure-functions/functions-triggers-bindings.md) služby Azure Cosmos DB načítá data z databáze grafů vytvořené v rychlém startu. Tento konkrétní trigger HTTP dotazuje data ve službě Azure Cosmos DB, ale vstupní vazby ze služby Azure Cosmos DB je možné použít k načítání vstupních hodnot dat pro cokoli, co vaše funkce požaduje.
+Tento kurz vychází z kódu vytvořeného v tématu [Rychlý úvod k rozhraní Graph API pro .NET](create-graph-dotnet.md). V tomto kurzu se přidá funkce Azure Functions obsahující [trigger HTTP](../azure-functions/functions-bindings-http-webhook.md). Trigger HTTP pomocí [vstupní vazby](../azure-functions/functions-triggers-bindings.md) služby Azure Cosmos DB načítá data z databáze grafů vytvořené v rychlém startu. Tento konkrétní trigger HTTP dotazuje data ve službě Azure Cosmos DB, ale vstupní vazby ze služby Azure Cosmos DB je možné použít k načítání vstupních hodnot dat pro cokoli, co vaše funkce požaduje.
 
 Tento kurz se zabývá následujícími úkony:
 

@@ -2,25 +2,23 @@
 title: Jak provádět dotazy na data grafu ve službě Azure Cosmos DB? | Dokumenty Microsoft
 description: Zjistěte, jak provádět dotazy na data grafu ve službě Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: ''
 author: luisbosquez
 manager: kfile
 editor: ''
 tags: ''
-ms.assetid: 8bde5c80-581c-4f70-acb4-9578873c92fa
 ms.service: cosmos-db
+ms.component: cosmosdb-graph
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 449821d6121f8fec40b151ae06f687586133c3d1
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: dfaf3fe1427c9069939f5421c6a87efb584ebe48
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763200"
 ---
 # <a name="tutorial-query-azure-cosmos-db-graph-api-by-using-gremlin"></a>Kurz: Dotazování rozhraní Graph API služby Azure Cosmos DB pomocí Gremlin
 

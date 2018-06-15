@@ -17,7 +17,7 @@ ms.author: barbkess
 ms.reviewer: luleon
 ms.openlocfilehash: 487312cb79c5c278849668a472acfda7823e4bc1
 ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/11/2018
 ms.locfileid: "35303285"
