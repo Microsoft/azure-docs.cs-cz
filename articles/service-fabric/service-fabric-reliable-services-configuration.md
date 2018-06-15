@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209997"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurovat stavová spolehlivé služby
 Existují dvě sady nastavení konfigurace pro spolehlivé služby. Jedna sada je globální pro všechny spolehlivé služby v clusteru, zatímco druhá sada je specifická pro konkrétní službu spolehlivé.

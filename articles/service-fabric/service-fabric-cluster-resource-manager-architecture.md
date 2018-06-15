@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211425"
 ---
 # <a name="cluster-resource-manager-architecture-overview"></a>Přehled architektury správce prostředků clusteru
 Správce prostředků clusteru Service Fabric je centrální služba, která běží v clusteru. Spravuje požadovaný stav služeb v clusteru, zejména s ohledem na využití prostředků a pravidla pro umístění. 

@@ -15,6 +15,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195501"
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Ověření runbooků pomocí nasazení Azure Classic a Resource Manager
 Tento článek popisuje kroky, které musíte provést při konfiguraci uživatelského účtu Azure AD pro runbooky Azure Automation, které běží s modelem nasazení Azure Classic nebo prostředky Azure Resource Manageru. Když toto zůstává podporovanou identitou ověřování pro runbooky na základě Azure Resource Manager, je použít účet spustit v Azure jako doporučenou metodu.       

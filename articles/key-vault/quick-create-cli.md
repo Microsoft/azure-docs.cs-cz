@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34067652"
 ---
 # <a name="quickstart-create-an-azure-key-vault-using-the-cli"></a>Rychlý start: Vytvoření služby Azure Key Vault pomocí rozhraní příkazového řádku
 

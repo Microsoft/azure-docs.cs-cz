@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210575"
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Konfigurace nastavení správce prostředků clusteru služby Service Fabric
 Správce prostředků clusteru Service Fabric umožňuje jemně odstupňovanou kontrolu nad pravidla, která řídí každé jednotlivé s názvem služby. Každé pojmenované služby lze určit pravidla, jak by měla být přidělená v clusteru. Každé pojmenované služby můžete také definovat sadu metriky, které se chce k sestavě, včetně toho, jak důležité jsou k této službě. Konfigurace služeb, rozděleny do tří různých úloh:

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204919"
 ---
 # <a name="service-movement-cost"></a>Náklady na přesunutí služby
 Faktor, který správce prostředků clusteru Service Fabric zvažuje při pokusu určit, jaké změny, aby do clusteru s podporou jsou náklady na tyto změny. Pojem "náklady" se prodávají vypnout proti kolik clusteru je možné zlepšit. Náklady se započítá při přesunu služby pro vyrovnání, Defragmentace a další požadavky. Cílem je pro splnění požadavků způsobem alespoň rušivý nebo nákladné. 

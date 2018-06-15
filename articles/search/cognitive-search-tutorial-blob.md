@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 3c8b3afcda4422fa5df599798bcd9cd94fe58486
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0bca64675ed656373d6a73ca772fa713ad36a57e
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366745"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34757566"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Kurz: Jak volat rozhraní API kognitivního hledání (Preview)
 
@@ -85,7 +85,7 @@ Kanál pro rozšiřování načítá informace ze zdrojů dat Azure. Zdrojová d
   Připojovací řetězec by měl být adresa URL, která vypadá nějak takto:
 
       ```http
-      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=aaAAAbb123123cccCCCdd456456EeEe789789ffFFgg==;EndpointSuffix=core.windows.net
+      DefaultEndpointsProtocol=https;AccountName=cogsrchdemostorage;AccountKey=<your account key>;EndpointSuffix=core.windows.net
       ```
 
 Existují i jiné způsoby, jak zadat připojovací řetězec, například poskytnutím sdíleného přístupového podpisu. Další informace o přihlašovacích údajích ke zdroji dat najdete v článku o [indexování služby Azure Blob Storage](search-howto-indexing-azure-blob-storage.md#Credentials).

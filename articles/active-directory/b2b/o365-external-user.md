@@ -12,9 +12,10 @@ manager: mtillman
 ms.reviewer: sasubram
 ms.openlocfilehash: d55d587022b763a6890c098dd0a1b9bef2a3b7fb
 ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34267380"
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Externí sdílení Office 365 a spolupráce Azure Active Directory s B2B
 

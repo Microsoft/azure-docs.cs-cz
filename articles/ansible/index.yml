@@ -2,7 +2,7 @@
 documentType: LandingData
 title: Ansible v dokumentaci k Azure
 metadata:
-  title: "Ansible v dokumentaci k Azure – kurzy, ukázky, odkazy a prostředky"
+  title: Ansible v dokumentaci k Azure – kurzy, ukázky, odkazy a prostředky
   meta.description: Learn how to use Ansible to automate cloud provisioning, configuration management, and application deployments.
   services: terraform
   author: tomarcher
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 01/29/2018
+  ms.locfileid: "28207700"
 abstract:
-  description: "Použití <a href=\"http://www.ansible.com\">Ansible</a> k automatizaci zřizování cloudu, správě konfigurací a nasazení aplikací."
+  description: Použití <a href="http://www.ansible.com">Ansible</a> k automatizaci zřizování cloudu, správě konfigurací a nasazení aplikací.
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Nakonfigurujte Ansible a použijte ho k vytvoření virtuálního počítače s Linuxem v Azure."
+    text: Nakonfigurujte Ansible a použijte ho k vytvoření virtuálního počítače s Linuxem v Azure.
   - type: list
     style: icon48
     items:
@@ -34,19 +35,19 @@ sections:
       href: /azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
     - image:
         src: /azure/media/index/VirtualMachine.svg
-      text: "Vytvoření virtuálního počítače s Linuxem"
+      text: Vytvoření virtuálního počítače s Linuxem
       href: /azure/virtual-machines/linux/ansible-create-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Zjistěte, jak použít Ansible k vytvoření a správě výpočetní a síťové infrastruktury Azure."
+    text: Zjistěte, jak použít Ansible k vytvoření a správě výpočetní a síťové infrastruktury Azure.
   - type: list
     style: unordered
     items:
-    - html: "<a href=\"/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json\">Vytvořte virtuální počítač s Linuxem, včetně virtuální sítě, veřejné IP adresy a virtuální síťové karty.</a>"
-    - html: "<a href=\"./ansible-run-playbook-in-cloudshell\">Připojte se k virtuálnímu počítači Azure a spusťte playbook Ansible v Cloud Shellu.</a>"
-    - html: "<a href=\"./ansible-manage-azure-dynamic-inventories\">Vytvořte a spravujte dynamický inventář vašich prostředků Azure.</a>"
-- title: "Referenční informace"
+    - html: <a href="/azure/virtual-machines/linux/ansible-create-complete-vm?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json">Vytvořte virtuální počítač s Linuxem, včetně virtuální sítě, veřejné IP adresy a virtuální síťové karty.</a>
+    - html: <a href="./ansible-run-playbook-in-cloudshell">Připojte se k virtuálnímu počítači Azure a spusťte playbook Ansible v Cloud Shellu.</a>
+    - html: <a href="./ansible-manage-azure-dynamic-inventories">Vytvořte a spravujte dynamický inventář vašich prostředků Azure.</a>
+- title: Referenční informace
   items:
   - type: list
     style: cards
@@ -55,4 +56,4 @@ sections:
     - title: Role playbooku
       html: <p><a href="https://galaxy.ansible.com/Azure/azure_modules/">azure_module</a></p><p><a href="https://galaxy.ansible.com/Azure/azure_preview_modules/">azure_preview_module</a></p>
     - title: Verze a funkce
-      html: "<p><a href=\"./ansible-matrix.md\">Matice funkcí pro moduly a role</a></p>"
+      html: <p><a href="./ansible-matrix.md">Matice funkcí pro moduly a role</a></p>

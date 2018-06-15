@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212523"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>Přidání vlastních stavových sestav Service Fabric
 Představuje Azure Service Fabric [stavu modelu](service-fabric-health-introduction.md) navržený tak, aby příznak není v pořádku, cluster a aplikace podmínek na konkrétní entity. Health model používá **stavu reporters** (součásti systému a watchdogs). Cílem je rychlé a snadné diagnostiky a opravy. Služba zapisovače muset myslíte o stavu předem. Všechny podmínku, která může mít vliv na stav by měl být zaznamenány na, zejména v případě, že může pomoci příznak problémy blízko kořenu. Informace o stavu můžete ušetřit čas a úsilí na ladění a šetření. Užitečnost je obzvláště vymazat, jakmile služba je spuštěná ve velkém měřítku v cloudu (privátní nebo Azure).

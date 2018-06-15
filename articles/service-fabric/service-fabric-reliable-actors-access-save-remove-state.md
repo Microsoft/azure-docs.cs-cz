@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206743"
 ---
 # <a name="access-save-and-remove-reliable-actors-state"></a>Přístup k, uložte a odebrat stavu Reliable Actors
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) jsou jedním podprocesem objekty, které můžete zapouzdření logiku a stavu a spolehlivě Udržovat stav. Všechny instance objektu actor má svou vlastní [správce stavu](service-fabric-reliable-actors-state-management.md): jako slovník datová struktura, která spolehlivě uchová dvojice klíč/hodnota. Správce stavu je obálku kolem zprostředkovatele stavu. Slouží k ukládání dat bez ohledu na to, které [trvalost nastavení](service-fabric-reliable-actors-state-management.md#state-persistence-and-replication) se používá.

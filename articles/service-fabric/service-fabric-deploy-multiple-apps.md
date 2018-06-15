@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206075"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Nasazení několika hostujících spustitelných souborů
 Tento článek ukazuje, jak pro balíček a nasazení více spustitelné soubory hosta pro Azure Service Fabric. Vytváření a nasazování jeden balíček Service Fabric najdete v návodu k [nasadit do Service Fabric Host spustitelný soubor](service-fabric-deploy-existing-app.md).

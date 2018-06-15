@@ -13,7 +13,7 @@ manager: mtillman
 ms.reviewer: sasubram
 ms.openlocfilehash: 50c64386f1eab07c299112617283b1d8d7295295
 ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/01/2018
 ms.locfileid: "34591047"

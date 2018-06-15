@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158383"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 protokoly - SPA pomocí implicitního toku
 S koncovým bodem v2.0 můžete přihlásit uživatele do vaší jednostránkové aplikace s osobní i pracovní nebo školní účty od společnosti Microsoft. Jednostránkové a další aplikace JavaScript, spusťte především v prohlížeči řez pár zajímavé vyzve, pokud jde o ověřování:

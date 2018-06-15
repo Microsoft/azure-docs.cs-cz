@@ -20,6 +20,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210371"
 ---
 # <a name="set-up-a-linux-rdma-cluster-to-run-mpi-applications"></a>Nastavení clusteru Linux RDMA pro spouštění aplikací MPI
 Zjistěte, jak nastavit clusteru s podporou Linux RDMA v Azure pomocí [vysokovýkonné výpočetní velikosti virtuálních počítačů](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ke spouštění paralelních aplikací Message Passing Interface (MPI). Tento článek obsahuje kroky k přípravě image Linux HPC ke spuštění v clusteru s podporou Intel MPI. Po přípravě nasazení clusteru virtuálních počítačů pomocí tuto bitovou kopii a jeden velikostí podporující RDMA virtuální počítač Azure (aktuálně H16r, H16mr, A8 a A9). Použijte cluster ke spouštění aplikací MPI, které efektivně komunikují přes síť s nízkou latencí, vysokou propustností založené na technologii do paměti vzdáleného přímý přístup do (počítače RDMA).

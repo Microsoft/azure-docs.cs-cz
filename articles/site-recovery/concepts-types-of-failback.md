@@ -1,6 +1,6 @@
 ---
-title: "Navrácení služeb po obnovení ve službě Azure Site Recovery | Microsoft Docs"
-description: "Tento článek obsahuje přehled různých typů navrácení služeb po obnovení a upozornění, aby byla považována za při selhání zpátky do místního se službou Azure Site Recovery."
+title: Navrácení služeb po obnovení ve službě Azure Site Recovery | Microsoft Docs
+description: Tento článek obsahuje přehled různých typů navrácení služeb po obnovení a upozornění, aby byla považována za při selhání zpátky do místního se službou Azure Site Recovery.
 services: site-recovery
 author: rajani-janaki-ram
 manager: guaravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29803548"
 ---
 # <a name="overview-of-failback"></a>Přehled o navrácení služeb po obnovení
 

@@ -13,6 +13,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34162180"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-gdpr"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého: Analýza pro GDPR
 

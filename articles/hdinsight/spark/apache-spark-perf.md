@@ -18,6 +18,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164362"
 ---
 # <a name="optimize-spark-jobs"></a>Optimalizace sparkových úloh
 
