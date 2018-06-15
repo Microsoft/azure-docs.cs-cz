@@ -15,6 +15,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34198822"
 ---
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Příprava Docker a Kubernetes vývoj kódu
 Pokud máte základní webové aplikace, kterou můžete spustit místně. Budete je nyní containerize vytvořením prostředky, které definují kontejneru aplikace a jak ji nasadí na Kubernetes. Toto je snadné provést prostory Dev Azure: 

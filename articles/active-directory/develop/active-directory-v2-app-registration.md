@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157839"
 ---
 # <a name="how-to-register-an-app-with-the-v20-endpoint"></a>Postup registrace aplikace s koncovým bodem v2.0
 Sestavit aplikaci, která přijímá jak osobní účet Microsoft (MSA) & pracovní nebo školní účet (Azure AD) přihlásit, budete nejprve muset zaregistrovat aplikaci se společností Microsoft. V tomto okamžiku nebudete moci používat všechny existující aplikace, které jste uzavřeli s Azure AD nebo MSA - budete muset vytvořit nové.

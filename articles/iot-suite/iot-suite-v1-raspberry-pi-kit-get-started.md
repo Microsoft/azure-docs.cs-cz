@@ -1,12 +1,12 @@
 ---
-title: "Připojit Malinová platformy Azure IoT Suite | Microsoft Docs"
-description: "Kurzy pomocí Node.js nebo C můžete další informace o použití Microsoft Azure IoT Starter Kit malin pí 3 a řešení vzdáleného sledování IoT Suite. Můžete zvolit kurz, který simuluje telemetrických dat, nebo skutečné senzorů, který používá nebo umožňující vzdálené firmware aktualizace."
-services: 
+title: Připojit Malinová platformy Azure IoT Suite | Microsoft Docs
+description: Kurzy pomocí Node.js nebo C můžete další informace o použití Microsoft Azure IoT Starter Kit malin pí 3 a řešení vzdáleného sledování IoT Suite. Můžete zvolit kurz, který simuluje telemetrických dat, nebo skutečné senzorů, který používá nebo umožňující vzdálené firmware aktualizace.
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24011788"
 ---
 # <a name="connect-your-microsoft-azure-iot-raspberry-pi-3-starter-kit-to-the-remote-monitoring-solution"></a>Připojit vaše Microsoft Azure IoT malin pí 3 Starter Kit k řešení vzdáleného monitorování
 

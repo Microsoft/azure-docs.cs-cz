@@ -1,11 +1,11 @@
 ---
-title: "Kurz REST Azure předáváním přes | Microsoft Docs"
-description: "Vytvořit jednoduchou hostitelskou aplikaci předávání přes Azure Service Bus, která vystavuje rozhraní založené na REST."
+title: Kurz REST Azure předáváním přes | Microsoft Docs
+description: Vytvořit jednoduchou hostitelskou aplikaci předávání přes Azure Service Bus, která vystavuje rozhraní založené na REST.
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1312b2db-94c4-4a48-b815-c5deb5b77a6a
 ms.service: service-bus-relay
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/06/2017
+ms.locfileid: "24008032"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Kurz pro Azure předávání přes REST WCF
 

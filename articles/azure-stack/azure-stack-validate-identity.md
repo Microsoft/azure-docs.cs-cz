@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937826"
 ---
 # <a name="validate-azure-identity"></a>Ověření identit Azure 
 Nástroj Kontrola připravenosti zásobník Azure (AzsReadinessChecker) k ověření, že služby Azure Active Directory (Azure AD) je připravený k použití s Azure zásobníku. Ověření řešení identit Azure před zahájením nasazení služby Azure zásobníku.  

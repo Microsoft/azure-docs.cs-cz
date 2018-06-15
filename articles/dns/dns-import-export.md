@@ -18,6 +18,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069373"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli-20"></a>Import a export souboru zóny DNS pomocí Azure CLI 2.0 
 

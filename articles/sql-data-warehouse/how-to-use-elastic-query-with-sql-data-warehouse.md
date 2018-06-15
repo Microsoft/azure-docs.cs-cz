@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31797154"
 ---
 # <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Doporučené postupy pro používání elastické dotazu v databázi SQL Azure pro přístup k datům v Azure SQL Data Warehouse
 Přečtěte si doporučené postupy pro používání elastické dotazu pro přístup k datům v Azure SQL Data Warehouse z databáze SQL Azure. 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34192614"
 ---
 # <a name="troubleshooting-tips-for-hybrid-runbook-worker"></a>Tipy pro odstraňování potíží pro hybridní pracovní proces Runbooku
 

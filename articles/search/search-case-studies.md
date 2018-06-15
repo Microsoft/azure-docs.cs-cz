@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31790266"
 ---
 # <a name="whos-using-azure-search-case-studies-and-customer-stories"></a>Kdo je používání služby Azure Search: případové studie a scénářů zákazníka
 Zjistěte, jak přesunout následující organizace, že jejich podnikům dál integrací bohaté Azure Search prostředí do svých aplikací online.

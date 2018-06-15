@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156870"
 ---
 # <a name="quickstart-for-the-azure-ad-graph-api"></a>Rychlý úvodní kurz pro Azure AD Graph API
 Rozhraní Graph API Azure Active Directory (AD) zajišťují programový přístup ke službě Azure AD prostřednictvím koncové body OData REST API. Aplikace můžete použít Azure AD Graph API k provedení vytvářet, číst, aktualizovat a odstraňovat operace na data adresáře a objekty. Například můžete použít Azure AD Graph API k vytvoření nového uživatele, zobrazit nebo aktualizovat vlastnosti uživatele, změnit heslo uživatele, zkontrolovat členství ve skupinách pro přístup na základě rolí, zakázat nebo odstranit uživatele. Další informace o aplikaci scénáře a funkce Azure AD Graph API najdete v tématu [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) a [Azure AD Graph API požadavky](https://msdn.microsoft.com/library/hh974476.aspx). 

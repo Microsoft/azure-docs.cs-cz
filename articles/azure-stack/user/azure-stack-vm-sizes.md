@@ -12,13 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 05/17/2018
 ms.author: brenduns
-ms.openlocfilehash: 38f3ec1d408139831f0bbb4e946c1403a62367e2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: b84744a52426123f2f3e7dd4c14419fef8b779cc
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258626"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Velikosti virtuálních počítačů, které jsou podporovány v Azure zásobníku
 
@@ -132,10 +133,10 @@ Velikosti virtuálních počítačů pro obecné účely poskytují vyrovnáván
 |---------------------|----|----|-----|-----|-------|--------------|---------|
 |**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |Střední |
 |**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8 x 2300    |Střední |
-|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16 x 23000 |Vysoký     |
-|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32 x 23000 |Vysoký     |
-|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32 x 23000 |Vysoký  |
-|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32 x 23000 |Velmi vysoké  |
+|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16 x 2300  |Vysoký     |
+|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32 x 2300  |Vysoký     |
+|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32 x 2300  |Vysoký  |
+|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32 x 2300  |Velmi vysoké  |
 
 
 ## <a name="memory-optimized"></a>Optimalizované z hlediska paměti

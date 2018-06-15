@@ -13,6 +13,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31795037"
 ---
 # <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>Část 2: Prohledávání částečně strukturovaných dat v cloudovém úložišti
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207073"
 ---
 # <a name="actor-events"></a>Události objektu actor
 Události objektu actor poskytují způsob, jak odeslat oznámení best effort z objektu actor pro klienty. Události objektu actor navržených pro komunikaci objektu actor klienta a by se neměla používat pro komunikaci objektu actor actor.

@@ -16,9 +16,10 @@ ms.date: 04/20/2018
 ms.author: bwren
 ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33885264"
 ---
 # <a name="management-solutions-in-azure"></a>Řešení pro správu v Azure
 Řešení pro správu využívají služby v Azure a poskytnout další aspekty operaci určitá aplikace nebo služby. Tento článek poskytuje stručný přehled řešení pro správu ve službě Azure a podrobnosti o používání a nainstalujete.

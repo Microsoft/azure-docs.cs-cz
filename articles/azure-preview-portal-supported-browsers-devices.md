@@ -21,6 +21,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165107"
 ---
 # <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Podporovaných prohlížečích a zařízeních pro portál Azure
 Můžete spustit [portál Azure](https://portal.azure.com) na všechny plochy moderní, tablet zařízení a prohlížeče.

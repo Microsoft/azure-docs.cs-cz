@@ -16,9 +16,10 @@ ms.reviewer: elkuzmen
 ms.custom: oldportal;it-pro;
 ms.openlocfilehash: 4fa93e4bf64e01b44b0826b2182b125004c49609
 ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157478"
 ---
 # <a name="administrative-units-management-in-azure-ad---public-preview"></a>Správa administrativních jednotek ve službě Azure AD - verzi public preview
 Tento článek popisuje administrativních jednotek – nový kontejner služby Active Directory Azure prostředků, které lze použít pro delegování oprávnění ke správě přes podmnožiny uživatelů a použití zásady na určitou podskupinu uživatelů. Administrativních jednotek v Azure Active Directory, povolte centrální správcům delegovat oprávnění pro místní správce nebo nastavení zásad na nejnižší úrovni.

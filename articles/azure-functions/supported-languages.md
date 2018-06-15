@@ -1,12 +1,12 @@
 ---
-title: "Podporované jazyky v Azure Functions"
-description: "Další jazyky, které jsou podporovány (GA) a které jsou experimentální nebo v náhledu."
+title: Podporované jazyky v Azure Functions
+description: Další jazyky, které jsou podporovány (GA) a které jsou experimentální nebo v náhledu.
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: functions
 ms.devlang: dotnet
 ms.topic: reference
@@ -19,6 +19,7 @@ ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2017
+ms.locfileid: "24879437"
 ---
 # <a name="supported-languages-in-azure-functions"></a>Podporované jazyky v Azure Functions
 

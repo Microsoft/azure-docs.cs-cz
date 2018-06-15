@@ -1,6 +1,6 @@
 ---
-title: "Přehled Azure zabezpečení | Microsoft Docs"
-description: "Informace o zabezpečení Microsoft Azure web na Azure.com je vaše místní pro technické odpovědi na otázky zabezpečení Azure."
+title: Přehled Azure zabezpečení | Microsoft Docs
+description: Informace o zabezpečení Microsoft Azure web na Azure.com je vaše místní pro technické odpovědi na otázky zabezpečení Azure.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25542142"
 ---
 # <a name="azure-security-overview"></a>Přehled zabezpečení Azure
 Informace o zabezpečení Microsoft Azure web na Azure.com je vaše místní pro technické odpovědi na otázky zabezpečení Azure. Pokud vás zajímá Azure dodržování předpisů a jak Azure zabezpečuje svou vlastní infrastrukturu, navštivte [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).

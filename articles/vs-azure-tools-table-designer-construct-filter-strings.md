@@ -16,6 +16,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31794275"
 ---
 # <a name="constructing-filter-strings-for-the-table-designer"></a>Vytváření řetězců filtru pro návrháře tabulky
 ## <a name="overview"></a>Přehled

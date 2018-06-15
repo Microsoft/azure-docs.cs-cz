@@ -21,6 +21,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34071506"
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>Jak obnovit virtuální počítač s Linuxem heslo nebo klíč SSH, opravit konfiguraci SSH a kontrola konzistence disku pomocí rozšíření VMAccess
 Pokud se nemůžete připojit k virtuální počítač s Linuxem v Azure z důvodu zapomenuté heslo, nesprávného klíče Secure Shell (SSH), nebo problém s konfigurací SSH, používají rozšíření VMAccessForLinux s Azure CLI resetovat heslo nebo klíč SSH, opravte SSH Konfigurace a kontrolu konzistence disku. 

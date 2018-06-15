@@ -1,11 +1,11 @@
 ---
-title: "Monitorování stavu replikace služby Active Directory s Azure Log Analytics | Microsoft Docs"
-description: "Sada pro stav replikace Active Directory řešení pravidelně monitoruje prostředí služby Active Directory k jeho selhání replikace."
+title: Monitorování stavu replikace služby Active Directory s Azure Log Analytics | Microsoft Docs
+description: Sada pro stav replikace Active Directory řešení pravidelně monitoruje prostředí služby Active Directory k jeho selhání replikace.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
 ms.service: log-analytics
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29179330"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitorování stavu replikace služby Active Directory s analýzy protokolů
 

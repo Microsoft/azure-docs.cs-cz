@@ -10,7 +10,7 @@ ms.date: 04/18/2017
 ms.author: cshoe
 ms.openlocfilehash: 4f20e79ea6cb2d9d403f4451f595516d5c2e9373
 ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/01/2018
 ms.locfileid: "34650736"

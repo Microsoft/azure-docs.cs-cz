@@ -21,6 +21,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012355"
 ---
 # <a name="log-on-to-a-windows-virtual-machine-using-the-azure-portal"></a>Přihlášení k virtuálnímu počítači s Windows pomocí portálu Azure
 Na portálu Azure můžete použít **Connect** tlačítko spuštění relace vzdálené plochy a přihlaste se k virtuální počítač s Windows.

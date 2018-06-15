@@ -20,6 +20,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164971"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Prostřednictvím kódu programu pohled na použití Azure pomocí rozhraní API Správce Azure fakturace
 Používáte rozhraní API Správce Azure fakturace k získání dat využití a prostředků do vašeho nástrojů pro analýzu dat upřednostňované. Rozhraní API RateCard a využití prostředků Azure vám může pomoct přesně předpovědět a náklady na správu. Rozhraní API jsou implementovány jako poskytovatel prostředků a součástí řady rozhraní API vystavené pomocí Správce prostředků Azure.  

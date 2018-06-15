@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31795999"
 ---
 # <a name="migrate-your-data"></a>Migrace dat
 Data lze přesunout z různých zdrojů do SQL Data Warehouse pomocí různých nástrojů.  Kopírování ADF, SSIS a bcp můžete použít k dosažení tohoto cíle. Jako velikost dat zvyšuje však měli myslíte o rozdělení proces migrace dat do kroků. To nabízí možnost optimalizovat každý krok pro výkon i pro odolnost k zajištění smooth dat migrace.

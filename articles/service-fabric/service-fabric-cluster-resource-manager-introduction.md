@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210592"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Představení správce prostředků clusteru Service Fabric
 Tradičně Správa systémy IT nebo online služby určené vyhradit konkrétní fyzické nebo virtuální počítače pro tyto konkrétní služby nebo systémy. Služby byly navržen jako vrstev. By "web" vrstvu a vrstvu "data" nebo "úložiště". Aplikace by měla mít zasílání zpráv úrovně, kde plynoucích požadavky a odhlašování, a také sada počítačů vyhrazený pro ukládání do mezipaměti. Jednotlivé typy úlohy nebo vrstvě měl konkrétních počítačů, které jsou vyhrazené pro jeho: databáze získali vyhrazené, webové servery a několika několik počítačů. Pokud konkrétní typ zatížení způsobená na počítače, které bylo na spuštění příliš aktivní, pak jste přidali další počítače pomocí této stejnou konfiguraci do této vrstvy. Ale ne všechny úlohy může tak snadno škálovat – zejména s datovou vrstvu obvykle nahradíte počítače, které mají větší počítače. Snadné. Pokud na počítači se nezdařilo, spustili část celkového aplikace na nižší kapacitu, dokud tento počítač může obnovit. Stále poměrně snadno (Pokud je to nutně zábavné).

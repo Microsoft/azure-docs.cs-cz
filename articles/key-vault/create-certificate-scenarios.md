@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012078"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Sledování a správě vytváření certifikátu
 Platí pro: Azure  

@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157071"
 ---
 # <a name="azure-active-directory-application-manifest"></a>Manifest aplikace Azure Active Directory
 Aplikace, které se integrují s Azure AD musí být zaregistrován u klienta služby Azure AD. Tuto aplikaci lze nastavit v manifest aplikace (v okně Azure AD) [portál Azure](https://portal.azure.com).

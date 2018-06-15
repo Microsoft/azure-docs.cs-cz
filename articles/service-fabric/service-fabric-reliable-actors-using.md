@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212887"
 ---
 # <a name="implementing-service-level-features-in-your-actor-service"></a>Implementace funkce na úrovni služby ve službě objektu actor
 Jak je popsáno v [služby rozvrstvení](service-fabric-reliable-actors-platform.md#service-layering), samotné služby objektu actor je spolehlivá služba.  Můžete napsat vlastní službu, která je odvozena z `ActorService` a implementovat funkce úrovně služeb stejným způsobem jako při dědění StatefulService, jako například:

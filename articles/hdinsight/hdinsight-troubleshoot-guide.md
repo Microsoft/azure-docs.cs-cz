@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s příručky Azure HDInsight | Microsoft Docs"
-description: "Řešení potíží úloh Hadoop pomocí Azure HDInsight. Krok za krokem dokumentace ukazuje, jak používat službu HDInsight k řešení běžných problémů s Hive, Spark, YARN, HBase, HDFS a Storm."
+title: Řešení potíží s příručky Azure HDInsight | Microsoft Docs
+description: Řešení potíží úloh Hadoop pomocí Azure HDInsight. Krok za krokem dokumentace ukazuje, jak používat službu HDInsight k řešení běžných problémů s Hive, Spark, YARN, HBase, HDFS a Storm.
 services: hdinsight
 author: arijitt
 manager: arijitt
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/04/2017
+ms.locfileid: "23984711"
 ---
 # <a name="troubleshoot-by-using-azure-hdinsight"></a>Řešení potíží pomocí Azure HDInsight
 

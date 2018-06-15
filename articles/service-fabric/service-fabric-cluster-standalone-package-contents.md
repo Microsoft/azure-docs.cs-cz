@@ -18,6 +18,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209351"
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Obsah balíčku Fabric samostatné služby pro systém Windows Server
 V [Stáhnout](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric samostatný balíček, zjistíte, následující soubory:

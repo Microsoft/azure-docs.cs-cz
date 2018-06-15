@@ -19,6 +19,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165345"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Vytvářet a sdílet řídicí panely na portálu Azure
 Můžete vytvořit více řídicí panely a sdílet je s ostatními uživateli, kteří mají přístup k vašemu předplatnému Azure.  Tento článek probírá základní informace o vytváření, úpravy, publikování a správa přístupu k řídicí panely.

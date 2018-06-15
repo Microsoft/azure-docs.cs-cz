@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34011454"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Proměnné HTTP pro stroj pravidel Azure CDN
 Proměnné HTTP prostředkem, pomocí kterého můžete načíst metadata žádosti a odpovědi HTTP. Tato metadata pak lze dynamicky upravit požadavek nebo odpověď. Použití proměnných HTTP je omezen na tyto funkce stroj pravidel:

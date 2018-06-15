@@ -18,6 +18,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33929264"
 ---
 # <a name="problems-configuring-conditional-access-to-one-of-my-applications"></a>Problémy konfigurace podmíněného přístupu k jedné z mých aplikací
 
