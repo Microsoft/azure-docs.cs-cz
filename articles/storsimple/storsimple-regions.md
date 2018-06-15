@@ -1,12 +1,12 @@
 ---
 title: Dostupnost v oblastech StorSimple | Microsoft Docs
-description: "Vysvětluje oblastí Azure, ve kterých jsou k dispozici různé modely zařízení StorSimple."
+description: Vysvětluje oblastí Azure, ve kterých jsou k dispozici různé modely zařízení StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/17/2017
+ms.locfileid: "24879054"
 ---
 # <a name="available-regions-for-your-storsimple"></a>Dostupné oblasti pro vaše zařízení StorSimple
 

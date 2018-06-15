@@ -1,11 +1,11 @@
 ---
-title: "Cloudové služby Role konfigurace XPath tahák | Microsoft Docs"
-description: "Různá nastavení XPath můžete v konfiguračním cloudové služby role vystavit nastavení jako proměnné prostředí."
+title: Cloudové služby Role konfigurace XPath tahák | Microsoft Docs
+description: Různá nastavení XPath můžete v konfiguračním cloudové služby role vystavit nastavení jako proměnné prostředí.
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c51e4493-0643-4d05-bc44-06c76bcbf7d1
 ms.service: cloud-services
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24860364"
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Vystavit nastavení konfigurace role v proměnné prostředí, jejichž výraz XPath
 V pracovní cloudové služby nebo v souboru definice služby role Webový můžou zpřístupnit hodnoty konfigurace modulu runtime jako proměnné prostředí. Následující výraz XPath hodnoty jsou podporovány (které odpovídají hodnotám rozhraní API).

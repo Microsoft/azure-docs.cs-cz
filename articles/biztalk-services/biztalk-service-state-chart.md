@@ -1,11 +1,11 @@
 ---
-title: "Úlohy, které jsou povoleny v různých stavů nebo stavy, které jsou ve službě BizTalk Services | Microsoft Docs"
-description: "Akce nebo operace v jiný stav MABS povoleny: zastavit, spustit, restartovat, pozastavit, obnovit, odstranit, škálovat, aktualizace konfigurace a základní nahoru"
+title: Úlohy, které jsou povoleny v různých stavů nebo stavy, které jsou ve službě BizTalk Services | Microsoft Docs
+description: 'Akce nebo operace v jiný stav MABS povoleny: zastavit, spustit, restartovat, pozastavit, obnovit, odstranit, škálovat, aktualizace konfigurace a základní nahoru'
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: aea738f3-ec76-4099-a41b-e17fea9e252f
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102738"
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>Můžete a nemůže provádět pomocí stavu služby BizTalk
 
