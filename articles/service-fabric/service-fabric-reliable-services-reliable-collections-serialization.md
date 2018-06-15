@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207661"
 ---
 # <a name="reliable-collection-object-serialization-in-azure-service-fabric"></a>Spolehlivé serializace objektu kolekce v Azure Service Fabric
 Spolehlivé kolekce replikovat a zachovat jejich položky a ujistěte se, že jsou odolné napříč selhání počítače a výpadky napájení.

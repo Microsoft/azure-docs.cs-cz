@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212615"
 ---
 # <a name="application-upgrade-parameters"></a>Parametry upgradu aplikace
 Tento článek popisuje různé parametry, které se vztahují během upgradu aplikace Azure Service Fabric. Parametry patří název a verzi aplikace. Jsou knoflíky, která řídí vypršení časových limitů a kontroly stavu, které se použijí během upgradu a určují zásady, které je nutné použít, když se upgrade nezdaří.

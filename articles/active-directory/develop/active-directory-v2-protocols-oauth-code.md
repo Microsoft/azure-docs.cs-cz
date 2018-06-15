@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34158233"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoly v2.0 - toku kódu autorizace OAuth 2.0
 Udělení autorizačního kódu OAuth 2.0 lze použít v aplikacích, které jsou nainstalované na zařízení k získání přístupu k chráněným prostředkům, jako jsou webová rozhraní API. Pomocí implementace v2.0 modelu aplikace OAuth 2.0, můžete přidat, přihlaste se a rozhraní API, přístup k mobilním a desktopovým aplikacím. Tento průvodce je nezávislé na jazyku a popisuje, jak odesílat a přijímat zprávy HTTP bez použití žádné z [knihovny Azure ověřování open-source](active-directory-authentication-libraries.md).

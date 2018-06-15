@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203518"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Přidání brány firewall webových aplikací v Azure Security Center
 Azure Security Center může doporučujeme, abyste přidali brány firewall webových aplikací (firewall webových aplikací) z partnera společnosti Microsoft k zabezpečení webových aplikací. Tento dokument vás příklad toho, jak použít toto doporučení provede.

@@ -10,9 +10,10 @@ ms.date: 05/16/2018
 ms.author: rajanaki
 ms.openlocfilehash: add80b17c76e7262f55e50cd07d4e9b053cfa1ff
 ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209827"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatické aktualizace služby Mobility v replikaci Azure do Azure
 

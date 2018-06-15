@@ -13,6 +13,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203089"
 ---
 # <a name="allocate-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>Přidělit oddíly a repliky pro dotazy a indexování úlohy ve službě Azure Search
 Po jste [zvolte cenovou úroveň](search-sku-tier.md) a [zřídit službu vyhledávání](search-create-service-portal.md), dalším krokem je volitelně zvýšit počet replik nebo oddíly, které používá vaše služba. Každá úroveň nabízí pevný počet fakturace jednotky. Tento článek vysvětluje, jak přidělit tyto jednotky k dosažení optimálního konfigurace, který vyrovnává vaše požadavky na spuštění dotazu, indexování a úložiště.

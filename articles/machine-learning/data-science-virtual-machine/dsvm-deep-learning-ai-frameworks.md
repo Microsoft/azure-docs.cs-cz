@@ -20,6 +20,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160746"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>Architektura AI a hloubkového učení
 [Datové vědy virtuálního počítače](http://aka.ms/dsvm) (DSVM) a [počítač hloubkového učení](http://aka.ms/dsvm/deeplearning) podporuje mnoho hloubkové learning rozhraní k sestavení aplikace umělé Intelligence (AI) s prediktivní analýzy a kognitivní možnosti jako bitovou kopii a znalosti jazyka. 

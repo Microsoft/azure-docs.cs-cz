@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205361"
 ---
 # <a name="configuration-settings-for-a-standalone-windows-cluster"></a>Nastavení konfigurace pro samostatné clusteru se systémem Windows
 Tento článek popisuje postup konfigurace clusteru s podporou samostatné Azure Service Fabric pomocí souboru souboru ClusterConfig.json. Tento soubor použijete k zadání informací o uzly clusteru, konfigurace zabezpečení, jakož i topologie sítě z hlediska selhání a upgradu domény.

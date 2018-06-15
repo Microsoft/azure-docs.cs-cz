@@ -19,6 +19,7 @@ ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34058261"
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Správa aplikací pomocí služby Azure Active Directory
 Mimo pracovní postup nebo obsahu firmy mají dva základní požadavky pro všechny aplikace:

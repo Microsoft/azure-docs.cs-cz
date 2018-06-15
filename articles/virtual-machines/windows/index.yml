@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 05/14/2018
+  ms.locfileid: "34166486"
 abstract:
   description: Virtuální počítače s Windows v Azure poskytují vysoce škálovatelnou zabezpečenou virtualizovanou infrastrukturu na vyžádání s využitím Windows Serveru. Naučte se vytvářet, konfigurovat, spravovat a škálovat virtuální počítače s Windows prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
   aside:

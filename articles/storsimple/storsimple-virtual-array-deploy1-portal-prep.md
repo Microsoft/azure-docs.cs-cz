@@ -1,11 +1,11 @@
 ---
-title: "Příprava portálu aplikace pro pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "První kurz k nasazení pole virtuální zařízení StorSimple spočívá v přípravě portálu Azure"
+title: Příprava portálu aplikace pro pole virtuální zařízení StorSimple | Microsoft Docs
+description: První kurz k nasazení pole virtuální zařízení StorSimple spočívá v přípravě portálu Azure
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/14/2017
+ms.locfileid: "24526549"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Nasazení pole virtuálního zařízení StorSimple – Příprava portálu Azure
 

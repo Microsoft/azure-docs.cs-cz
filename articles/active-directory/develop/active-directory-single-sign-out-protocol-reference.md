@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34155493"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Protokol jeden odhlašování SAML
 Azure Active Directory (Azure AD) podporuje SAML 2.0 webové prohlížeče jediného odhlašování profilu. Pro jeden odhlašování fungovala správně **LogoutURL** pro aplikace, musí být explicitně zaregistrované v Azure AD při registraci aplikace. Azure AD se používá LogoutURL přesměrovat uživatele, jakmile se odhlásili.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207906"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Aplikace Service Fabric a zabezpečení služby
 Můžete zahrnout architektura mikroslužeb [spoustu výhod](service-fabric-overview-microservices.md). Správa zabezpečení mikroslužeb, je však výzvy a jiné než pro správu zabezpečení tradiční monolitický aplikace. 

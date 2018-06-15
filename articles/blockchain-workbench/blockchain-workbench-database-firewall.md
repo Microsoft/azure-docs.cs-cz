@@ -12,9 +12,10 @@ ms.reviewer: mmercuri
 manager: femila
 ms.openlocfilehash: afeea143f73fa4f7d3e373535007846a668616ab
 ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34074945"
 ---
 # <a name="configure-the-azure-blockchain-workbench-database-firewall"></a>Konfigurace brány firewall databáze služby Azure Blockchain Workbench
 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34194481"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integrace správy zdrojového kódu ve službě Azure Automation
 Integrace ovládacích prvků zdrojového umožňuje přidružit sady runbook ve vašem účtu Automation se úložištěm řízení zdrojů Githubu. Správa zdrojového kódu umožňuje snadno spolupracovat s týmem, sledovat změny a vrátit zpět na dřívější verze sadu runbook. Například Správa zdrojového kódu umožňuje synchronizovat různých větví ve správě zdrojového kódu do vaší vývoj, testovací nebo produkční účty Automation, což usnadňuje povýšit kód, který byl testován v vývojové prostředí pro vaše produkční automatizace účet.

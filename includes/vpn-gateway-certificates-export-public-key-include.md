@@ -8,15 +8,16 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7e19837c1d16ddeea185f340305a0c9c52ce23ff
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 4ae4cfb91fb3a746c73d6b098a1adc9e4dee8698
+ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35414701"
 ---
 Po vytvoření vlastních kořenových certifikátů, exportujte soubor veřejného klíče .cer kořenového certifikátu (ne privátní klíč). Tento soubor později odešlete do Azure. Následující postup můžete exportovat soubor .cer pro podepsané svým držitelem kořenový certifikát:
 
-1. Chcete-li získat soubor .cer z certifikátu, otevřete **správu uživatelských certifikátů**. Vyhledejte kořenový certifikát podepsaný svým držitelem, obvykle v Certificates - Current User\Personal\Certificates, a klikněte pravým tlačítkem myši. Klikněte na **Všechny úlohy** a potom klikněte na **Exportovat**. Otevře se **Průvodce exportem certifikátu**.
+1. Chcete-li získat soubor .cer z certifikátu, otevřete **správu uživatelských certifikátů**. Vyhledejte kořenový certifikát podepsaný svým držitelem, obvykle v Certificates - Current User\Personal\Certificates, a klikněte pravým tlačítkem myši. Klikněte na **Všechny úlohy** a potom klikněte na **Exportovat**. Otevře se **Průvodce exportem certifikátu**. Pokud nemůžete najít certifikát pod aktuální User\Personal\Certificates může to být otevřen správce certifikátů pro certifikáty místního počítače (název bude "Certifikáty – místní počítač" jako nikoli "Certifikáty – aktuální uživatel"). Otevřete Správce certifikátů v aktuálním oboru uživatele spusťte ho z stejné prostředí PowerShell, které certifikáty byly vytvořeny tak, že zadáte ```certmgr```.
 
   ![Export](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. V průvodci klikněte na **Další**.

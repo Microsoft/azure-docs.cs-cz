@@ -17,9 +17,10 @@ ms.date: 05/11/2018
 ms.author: genli
 ms.openlocfilehash: 09c2badf6116dd36add6cccc82486d7f5b8f8697
 ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069135"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidat nebo změnit správce předplatného Azure
 

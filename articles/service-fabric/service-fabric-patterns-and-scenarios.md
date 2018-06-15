@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206136"
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Vzory Service Fabric a scénáře
 Pokud zvažujete sestavování rozsáhlých mikroslužeb pomocí Azure Service Fabric, přečtěte si od odborníků, kteří navržen a sestaven Tato platforma jako služba (PaaS). Začínáme s správnou architekturu a pak zjistěte, jak optimalizovat prostředky pro vaši aplikaci. [Service Fabric Patterns and Practices](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344) kurzu odpovídá na dotazy nejčastěji požaduje od zákazníků reálného o scénáře Service Fabric a v oblastech aplikace.

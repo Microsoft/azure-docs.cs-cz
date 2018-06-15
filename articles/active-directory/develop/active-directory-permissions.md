@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156887"
 ---
 # <a name="permissions-in-azure-ad"></a>Oprávnění ve službě Azure AD
 Azure Active Directory (Azure AD) ve velké míře využívá oprávnění v tocích OAuth i OpenID Connect (OIDC). Když vaše aplikace obdrží přístupový token ze služby Azure AD, bude tento token obsahovat deklarace identity popisující oprávnění (označovaná také jako obory) vaší aplikace ve vztahu ke konkrétnímu prostředku. Tím se usnadňuje autorizace prostředku, protože stačí pouze zkontrolovat, jestli váš token obsahuje odpovídající oprávnění pro volané rozhraní API. 

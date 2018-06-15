@@ -19,6 +19,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34164835"
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>Kurz: DevOps pomocí portálu Azure
 Platforma Azure je plná flexibilních pracovních postupů DevOps. V tomto kurzu zjistěte, jak využít možnosti portálu Azure k vývoji, testování, nasazení, řešení potíží s, monitorování a správě spuštěných aplikací. Tento kurz se zaměřuje na:

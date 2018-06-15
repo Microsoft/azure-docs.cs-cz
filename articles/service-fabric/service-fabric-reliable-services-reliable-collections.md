@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212921"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>Úvod do spolehlivé kolekcí v stavové služby Azure Service Fabric
 Spolehlivé kolekce umožňují zápisu vysoce dostupných, škálovatelných a nízkou latencí cloudové aplikace, jako kdyby byly psaní aplikací jeden počítač. Třídy v **Microsoft.ServiceFabric.Data.Collections** obor názvů poskytují sadu kolekcí, které automaticky nastavit vašemu stavu jako vysoce dostupný. Vývojáři muset programu jen pro spolehlivé rozhraní API kolekce a nechat spolehlivé kolekce Správa stavu replikují a místní.

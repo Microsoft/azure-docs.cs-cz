@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210337"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Změňte clusteru z kryptografický otisk certifikátu běžný název
 Dva certifikáty, může mít stejné kryptografický otisk, což znesnadňuje clusteru certifikáty vyměnit nebo správu. Více certifikátů, však může mít stejný běžný název nebo předmětu.  Přepínání cluster nasazené pomocí kryptografické otisky certifikátu pomocí certifikátu běžné názvy usnadňuje správu certifikátů mnohem jednodušší. Tento článek popisuje postup aktualizace spuštěného clusteru Service Fabric, aby používaly běžný název certifikátu místo kryptografický otisk certifikátu.

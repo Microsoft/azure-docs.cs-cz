@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213091"
 ---
 # <a name="service-state"></a>Stav služby
 **Služba stavu** odkazuje v paměti nebo na data na disku, který služba vyžaduje, aby funkce. Obsahuje, například datové struktury a členské proměnné, které Služba čte a zapisuje fungují. V závislosti na tom, jak je navržen služby se mohly by také zahrnovat souborům nebo jiným prostředkům, které jsou uložené na disku. Například soubory databáze využije k uložení dat a protokoly transakcí.

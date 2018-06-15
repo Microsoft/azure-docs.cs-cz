@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212411"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Zabezpečení samostatné clusteru v systému Windows pomocí certifikátů X.509
 Tento článek popisuje, jak pro zabezpečení komunikace mezi různými uzly clusteru Windows samostatné. Také popisuje, jak k ověřování klientů, které se připojují k tomuto clusteru pomocí certifikátů X.509. Ověřování zajistí, že můžete jenom autorizovaným uživatelům přístup ke clusteru a nasazené aplikace a provádět úlohy správy. Certifikát zabezpečení by měly být povoleny v clusteru při vytvoření clusteru.  
