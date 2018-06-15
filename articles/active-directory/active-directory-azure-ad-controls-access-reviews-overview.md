@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
+ms.component: compliance-reports
 ms.date: 05/02/2018
-ms.author: billmath
-ms.openlocfilehash: 02711f4fd54051f726a3823112230247df4776d1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: 31f3ce4ae7915ef463a557a9be60c651acdbabe6
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193692"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233267"
 ---
 # <a name="azure-ad-access-reviews"></a>Kontroly přístupu Azure AD
 

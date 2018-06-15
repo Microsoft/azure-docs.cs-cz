@@ -16,7 +16,7 @@ ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
 ms.openlocfilehash: 8c1db4693c6816ca7c3cc5b3147c0e8f3f8179c5
 ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/06/2018
 ms.locfileid: "34807454"

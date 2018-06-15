@@ -17,7 +17,7 @@ ms.date: 6/07/2018
 ms.author: erikre
 ms.openlocfilehash: f84071577e9636e40d621093e2c57e3e9adf4913
 ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/08/2018
 ms.locfileid: "35247662"

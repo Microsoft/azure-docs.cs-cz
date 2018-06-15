@@ -11,18 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
+ms.component: compliance-reports
 ms.date: 05/16/2018
-ms.author: billmath
-ms.openlocfilehash: cdd07fd837863d9a5abced0db8cacaded6288a41
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: c30d166335e31cdbf03283371da42fa6b7cda162
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192220"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35233110"
 ---
 # <a name="retrieve-access-review-results"></a>Načtení výsledků kontroly přístupu
 
 Správci můžou pomocí Azure Active Directory (Azure AD) [vytvořit kontrolu přístupu](active-directory-azure-ad-controls-create-access-review.md) pro členy skupiny nebo uživatele přiřazené k aplikaci.  Uživatel, který je v roli **Globální správce**, **Správce zabezpečení** nebo **Čtenář zabezpečení**, může také číst výsledky kontroly přístupu.  Pokud chcete uživatele přiřadit k jedné z těchto rolí, může Správce privilegovaných rolí pomocí nástroje Azure Active Directory Privileged Identity Management nastavit u uživatele nárok na aktivaci role, nebo Globální správce může trvale [přiřadit uživatele k roli](active-directory-users-assign-role-azure-portal.md).
+
+[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="locating-an-access-review"></a>Vyhledání kontroly přístupu
 
@@ -42,8 +45,6 @@ Pokud chcete zobrazit výsledky dokončené instance kontroly přístupu, která
 
 
 ## <a name="removing-users-from-an-access-review"></a>Odebírání uživatelů z kontroly přístupu
-
-[!INCLUDE [Privacy](../../includes/gdpr-intro-sentence.md)]
 
 Ve výchozím nastavení zůstane odstraněný uživatel ve službě Azure Active Directory odstraněný na 30 dní, během kterých ho v případě potřeby může správce obnovit.  Po 30 dnech je tento uživatel odstraněn trvale.  Kromě toho může globální správce pomocí portálu Azure Active Directory explicitně [trvale odstranit nedávno odstraněného uživatele](active-directory-users-restore.md) ještě před dosažením tohoto časového období.  Jakmile je uživatel trvale odstraněný, odeberou se následně data o tomto uživateli z aktivních kontrol přístupu.  Informace o auditování o odstraněných uživatelích zůstávají v protokolu auditu.
 

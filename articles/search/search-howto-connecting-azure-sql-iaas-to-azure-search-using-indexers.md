@@ -13,6 +13,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34366456"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurovat spojení z indexer Azure Search na SQL Server na virtuálním počítači Azure
 Jak jsme uvedli v [připojení databáze SQL Azure do Azure Search pomocí indexerů](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), vytváření indexery proti **systému SQL Server na virtuálních počítačích Azure** (nebo **virtuálních počítačích SQL Azure** pro zkrácení) je podporováno ve službě Azure Search je ale několik předpoklady související se zabezpečením, která se postará o první. 

@@ -1,8 +1,8 @@
 ---
-title: Funkce Azure Active Directory Terms of Use | Microsoft Docs
+title: Funkce Azure Active Directory Terms of Use | Dokumentace Microsoftu
 description: Funkce Azure AD Terms of Use umožní vám a vaší společnosti poskytnout podmínky použití uživatelům služeb Azure AD.
 services: active-directory
-author: billmath
+author: rolyon
 manager: mtillman
 editor: ''
 ms.assetid: d55872ef-7e45-4de5-a9a0-3298e3de3565
@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
+ms.component: compliance-reports
 ms.date: 05/15/2018
-ms.author: billmath
-ms.openlocfilehash: 428d70474ba928a9e0c774aeb16395ef6a4cea2e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.author: rolyon
+ms.openlocfilehash: 8fea445a4cd02da3cf3c3239a119b491327abf54
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192951"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35234113"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům.  Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů.

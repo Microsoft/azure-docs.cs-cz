@@ -15,7 +15,7 @@ ms.author: rolyon
 ms.custom: pim
 ms.openlocfilehash: fc7f7323f0c5c5975b74d3d30194ed0711b12eb4
 ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/08/2018
 ms.locfileid: "35233872"

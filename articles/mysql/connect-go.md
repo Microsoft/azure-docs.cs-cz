@@ -1,21 +1,22 @@
 ---
-title: "Připojení k Azure Database for MySQL pomocí Go"
-description: "V tomto rychlém startu najdete několik vzorových kódů jazyka Go, které můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL."
+title: Připojení k Azure Database for MySQL pomocí Go
+description: V tomto rychlém startu najdete několik vzorových kódů jazyka Go, které můžete použít k připojení a dotazování dat ze služby Azure Database for MySQL.
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: af4027835ca503c0875d098d0daf7a98bdef44fb
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8f11453cd7ccdd878e20d80469f12263e72166b7
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264853"
 ---
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí jazyka Go
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL z platforem Windows, Ubuntu Linux a Apple macOS pomocí kódu napsaného v jazyce [Go](https://golang.org/). Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí jazyka Go a teprve začínáte pracovat se službou Azure Database for MySQL.

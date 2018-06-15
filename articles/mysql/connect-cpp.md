@@ -6,16 +6,17 @@ author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.custom: mvc
 ms.devlang: C++
 ms.topic: quickstart
 ms.date: 04/12/2018
-ms.openlocfilehash: 8394fbf5146a268bad464dc1a11d0772359c9acb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 0c017907378376c01e4a4a98190f73a9452b9a3d
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264948"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Připojení a dotazování dat pomocí konektoru Connector/C++
 Tento rychlý start ukazuje, jak se připojit ke službě Azure Database for MySQL s použitím aplikace v C++. Ukazuje, jak pomocí příkazů jazyka SQL dotazovat, vkládat, aktualizovat a odstraňovat data v databázi. Toto téma předpokládá, že máte zkušenosti s vývojem pomocí C++ a teprve začínáte pracovat se službou Azure Database for MySQL.

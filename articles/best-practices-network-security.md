@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360468"
 ---
 # <a name="microsoft-cloud-services-and-network-security"></a>Zabezpečení služeb a sítě cloudu Microsoft
 Cloudové služby společnosti Microsoft poskytování služeb flexibilně škálovatelné a infrastruktury, podnikové úrovni funkce a mnoho možností pro hybridní připojení. Tato volba se přístup k těmto službám prostřednictvím Internetu nebo s Azure ExpressRoute, které poskytuje připojení k privátní síti. Platforma Microsoft Azure umožňuje zákazníkům bezproblémově rozšířit jejich infrastrukturu do cloudu a vytvářet vícevrstvé architektury. Kromě toho můžete povolit třetím stranám rozšířené možnosti prostřednictvím nabídky zabezpečení služeb a virtuálních zařízení. Tento dokument poskytuje přehled o zabezpečení a architektury problémy, které zákazníci by měli zvážit při používání cloudové služby společnosti Microsoft získat přístup přes ExpressRoute. Také vysvětluje vytváření bezpečnější služeb ve virtuálních sítí Azure.
