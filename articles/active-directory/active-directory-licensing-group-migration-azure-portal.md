@@ -16,9 +16,10 @@ ms.author: curtand
 ms.custom: seohack1
 ms.openlocfilehash: ed95ba1329ba3052fab3d81327d23475e9902d8a
 ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33762216"
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Postup přidání licencovaní uživatelé pro skupinu pro licencování v Azure Active Directory
 
