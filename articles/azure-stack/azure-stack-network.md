@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33936513"
 ---
 # <a name="network-connectivity"></a>Připojení k síti
 Tento článek obsahuje informace o infrastruktuře síťový zásobník Azure vám pomohou rozhodnout, jak nejlépe zásobník Azure integrovat do stávajícího síťového prostředí. 

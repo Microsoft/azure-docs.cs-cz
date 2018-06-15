@@ -14,6 +14,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33934366"
 ---
 # <a name="tutorial-scale-application-in-azure-kubernetes-service-aks"></a>Kurz: Škálování aplikace ve službě Azure Kubernetes Service (AKS)
 

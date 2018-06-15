@@ -21,6 +21,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942792"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Monitorování a Diagnostika pomocí šablony virtuálního počítače s Windows a Azure Resource Manager
 Rozšíření diagnostiky Azure poskytuje monitorovací a diagnostické funkce v systému Windows Azure virtuálního počítače. Tyto funkce na virtuálním počítači můžete povolit v rámci šablony Azure Resource Manageru, přiložením rozšíření. V tématu [vytváření šablon Azure Resource Manager pomocí rozšíření virtuálního počítače](../windows/template-description.md#extensions) Další informace o včetně všechna rozšíření v rámci šablony virtuálního počítače. Tento článek popisuje, jak přidat rozšíření Azure Diagnostics do šablony virtuálního počítače windows.  

@@ -17,7 +17,7 @@ ms.date: 05/08/2018
 ms.author: gokuma
 ms.openlocfilehash: 70c6b8cd147cefaa3128bc1e6a414a6fa61dba6d
 ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/07/2018
 ms.locfileid: "34830890"

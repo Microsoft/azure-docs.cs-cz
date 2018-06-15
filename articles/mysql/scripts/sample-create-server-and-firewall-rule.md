@@ -1,21 +1,22 @@
 ---
-title: "Skript Azure CLI – Vytvoření Azure Database for MySQL"
-description: "Tento ukázkový skript Azure CLI vytvoří server Azure Database for MySQL a nakonfiguruje pravidlo brány firewall na úrovni serveru."
+title: Skript Azure CLI – Vytvoření Azure Database for MySQL
+description: Tento ukázkový skript Azure CLI vytvoří server Azure Database for MySQL a nakonfiguruje pravidlo brány firewall na úrovni serveru.
 services: mysql
 author: ajlam
 ms.author: andrela
 manager: kfile
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.devlang: azure-cli
 ms.custom: mvc
 ms.topic: sample
 ms.date: 02/28/2018
-ms.openlocfilehash: 547c0e89faf4eed3f24d9b6710df030ac743cd68
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ea00ad1742089bf53c79d5c3d17d3e7ba8477a38
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35265968"
 ---
 # <a name="create-a-mysql-server-and-configure-a-firewall-rule-using-the-azure-cli"></a>Vytvoření serveru MySQL a konfigurace pravidla brány firewall pomocí Azure CLI
 Tento ukázkový skript Azure CLI vytvoří server Azure Database for MySQL a nakonfiguruje pravidlo brány firewall na úrovni serveru. Po úspěšném spuštění skriptu bude server MySQL přístupný ze všech služeb Azure a nakonfigurovaných IP adres.

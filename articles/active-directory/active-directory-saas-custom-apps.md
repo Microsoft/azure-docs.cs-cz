@@ -17,7 +17,7 @@ ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3c115414fc6ae599342192196e256597c28e5aa6
 ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/11/2018
 ms.locfileid: "35293190"

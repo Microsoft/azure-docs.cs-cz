@@ -16,7 +16,7 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.openlocfilehash: fa299603a14ef94ab4cf3eac2b1123def1a0b6de
 ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/01/2018
 ms.locfileid: "34594879"
