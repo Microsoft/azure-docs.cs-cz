@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32189747"
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>Nasazení místního zařízení StorSimple (Update 3 a novější)
 

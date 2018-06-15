@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32188374"
 ---
 # <a name="load-data-from-azure-data-lake-store-to-sql-data-warehouse"></a>Načtení dat z Azure Data Lake Store k SQL Data Warehouse
 Načtení dat z Azure Data Lake Store do Azure SQL Data Warehouse pomocí PolyBase externí tabulky. I když můžete spustit ad hoc dotazy na data uložená v ADLS, doporučujeme importu dat do SQL Data Warehouse pro nejlepší výkon.

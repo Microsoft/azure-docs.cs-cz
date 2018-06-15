@@ -21,6 +21,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187925"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-with-the-azure-cli-20"></a>Rychlý start: Vytvoření virtuálního počítače s Linuxem pomocí Azure CLI 2.0
 

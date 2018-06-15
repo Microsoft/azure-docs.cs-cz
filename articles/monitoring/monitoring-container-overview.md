@@ -19,6 +19,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33207523"
 ---
 # <a name="overview-of-monitoring-containers-in-azure"></a>Přehled monitorování kontejnerů v Azure
 S Azure můžete efektivně monitorovat a spravovat úlohy na Azure kontejnery systémem Kubernetes nebo Docker nasazené. Je důležité pochopit, jak kontejnery s více aplikacemi mikroslužbu fungují pro poskytování spolehlivé služeb ve velkém měřítku a podporují plán monitorování. Tento článek poskytuje stručný přehled správy a možnosti monitorování v Azure ke každé rozumíte a které jsou vhodné podle svých požadavků.

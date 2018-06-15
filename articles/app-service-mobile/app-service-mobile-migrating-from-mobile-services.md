@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32158864"
 ---
 # <a name="article-top"></a>Migrovat existující Mobile Service Azure do Azure App Service
 Pomocí [obecné dostupnosti služby Azure App Service], weby Azure Mobile Services můžete snadno migrovat na místě chcete využít výhod všech funkcí služby Azure App Service.  Tento dokument popisuje, co očekávat při migraci váš web z Azure Mobile Services do služby Azure App Service.

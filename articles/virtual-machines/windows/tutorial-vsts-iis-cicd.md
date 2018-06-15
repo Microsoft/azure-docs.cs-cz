@@ -21,6 +21,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32192216"
 ---
 # <a name="tutorial-create-a-continuous-integration-pipeline-with-visual-studio-team-services-and-iis"></a>Kurz: Vytvoření kanálu průběžnou integraci s Visual Studio Team Services a služby IIS
 K automatizaci sestavení, testování a fáze nasazení pro vývoj aplikací, můžete použít průběžnou integraci a nasazení (CI/CD) kanálu. V tomto kurzu vytvoříte kanál CI/CD pomocí Visual Studio Team Services a virtuálního počítače (VM) s Windows v Azure, který spouští IIS. Získáte informace o těchto tématech:

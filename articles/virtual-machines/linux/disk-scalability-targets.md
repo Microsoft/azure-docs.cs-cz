@@ -1,6 +1,6 @@
 ---
-title: "Škálovatelnosti a cílech výkonnosti pro disky virtuálních počítačů v systému Linux – Microsoft Azure | Microsoft Docs"
-description: "Další informace o škálovatelnosti a cílech výkonnosti pro disky virtuálního počítače připojené k virtuální počítače se systémem Linux."
+title: Škálovatelnosti a cílech výkonnosti pro disky virtuálních počítačů v systému Linux – Microsoft Azure | Microsoft Docs
+description: Další informace o škálovatelnosti a cílech výkonnosti pro disky virtuálního počítače připojené k virtuální počítače se systémem Linux.
 services: virtual-machines
 author: tamram
 manager: jeconnoc
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/16/2017
+ms.locfileid: "24872327"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Škálovatelnosti a cílech výkonnosti pro disky virtuálních počítačů v systému Linux
 

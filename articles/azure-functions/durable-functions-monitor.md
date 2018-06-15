@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32157471"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Scénáře monitorování v trvanlivý funkce – ukázka počasí sledovacích procesů
 

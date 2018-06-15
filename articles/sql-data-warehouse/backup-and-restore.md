@@ -12,9 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: a4f24aad95f13315eaeac790c9006ca00f61af69
 ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32187595"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Zálohování a obnovení v Azure SQL Data Warehouse
 Zjistěte, jak funguje zálohování a obnovení v Azure SQL Data Warehouse. Použití zálohování skladu data k obnovení datového skladu na bod obnovení v primární oblasti. Chcete-li obnovit jiné zeměpisné oblasti použijte geograficky redundantní zálohy. 

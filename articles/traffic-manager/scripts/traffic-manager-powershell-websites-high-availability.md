@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/01/2018
+ms.locfileid: "32313052"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-powershell"></a>Směrovat provoz pro vysokou dostupnost aplikací pomocí Azure PowerShell
 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32179329"
 ---
 # <a name="create-a-microsoft-developer-account"></a>Vytvoření účtu Microsoft Developer
 Tento článek vás provede procesem vytvoření nezbytné účtu a procesu registrace se schválené Microsoft Developer pro Azure Marketplace.

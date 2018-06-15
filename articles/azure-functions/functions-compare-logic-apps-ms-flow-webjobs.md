@@ -20,6 +20,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32157369"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Porovnání služeb Flow, Logic Apps, Functions a WebJobs
 

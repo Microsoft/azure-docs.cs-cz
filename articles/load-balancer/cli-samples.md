@@ -20,6 +20,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32182476"
 ---
 # <a name="azure-cli-samples-for-load-balancer"></a>Ukázky rozhraní příkazového řádku Azure pro nástroj pro vyrovnávání zatížení
 
