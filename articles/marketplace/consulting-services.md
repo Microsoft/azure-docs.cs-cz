@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/01/2018
+ms.locfileid: "32312079"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Konzultace ohledně služby Azure Marketplace
 Konzultační služby v Azure Marketplace poskytuje cílem propojení zákazníků s služby podporují a rozšířit jejich používání Azure partnery společnosti Microsoft. Azure Marketplace podporuje seznam všech nabídek konzultace ohledně služby od partnerů systému integrátor (SI) společnosti Microsoft. 

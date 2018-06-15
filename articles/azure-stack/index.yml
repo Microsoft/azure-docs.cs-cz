@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: MT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 04/23/2018
+  ms.locfileid: "31786532"
 abstract:
   description: Microsoft Azure Stack je hybridní cloudová platforma, která umožňuje zřizovat služby Azure z vašeho datového centra. Zjistěte, jak ke správě infrastruktury integrované systémy zásobník Azure a jak nabízet služby s naše kurzy a quickstarts.<br/><br/>Pokud jste zásobník Azure uživatele, který používá služby nebo sestavení aplikací pro Azure zásobníku, přečtěte si naše <a href="/azure/azure-stack/user">dokumentaci pro uživatele</a>.<br/><br/>Pokud jste Azure zásobníku operátor zúčastněným v Azure zásobníku Development Kit (ASDK), nasazení jeden uzel zásobníku Azure, která můžete stáhnout a použít zdarma, najdete v našich <a href="/azure/azure-stack/asdk">ASDK dokumentaci</a>.
 sections:

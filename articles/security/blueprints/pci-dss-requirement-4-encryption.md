@@ -19,6 +19,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33896417"
 ---
 # <a name="encryption-requirements-for-pci-dss-compliant-environments"></a>Požadavky na šifrování pro kompatibilní se standardem PCI DSS prostředí 
 ## <a name="pci-dss-requirement-4"></a>PCI DSS požadavek 4

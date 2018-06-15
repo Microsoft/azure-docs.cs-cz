@@ -14,6 +14,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33939701"
 ---
 # <a name="build-and-deploy-text-classification-models-with-azure-machine-learning"></a>Vytváření a nasazování text klasifikační modely pomocí Azure Machine Learning
 

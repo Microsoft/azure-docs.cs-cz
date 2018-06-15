@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31795353"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>Analyzovat vaše úlohy v Azure SQL Data Warehouse
 Techniky pro analýzu spustit dotaz pro stanovení priorit pro úlohy v Azure SQL Data Warehouse.

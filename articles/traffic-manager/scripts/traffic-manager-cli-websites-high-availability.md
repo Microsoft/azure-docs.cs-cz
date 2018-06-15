@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/01/2018
+ms.locfileid: "32313045"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Směrovat provoz pro vysokou dostupnost aplikací pomocí rozhraní příkazového řádku Azure
 

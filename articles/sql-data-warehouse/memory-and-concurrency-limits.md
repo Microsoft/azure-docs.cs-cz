@@ -15,6 +15,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942249"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Paměť a souběžnost limity pro Azure SQL Data Warehouse
 Zobrazení omezení paměti a souběžnost přidělit různé úrovně výkonu a třídy prostředků v Azure SQL Data Warehouse. Další informace a chcete použít tyto možnosti pro váš plán úloh správy, najdete v části [třídy prostředků pro úlohy správy](resource-classes-for-workload-management.md). 

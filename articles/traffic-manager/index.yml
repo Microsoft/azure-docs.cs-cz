@@ -20,6 +20,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 05/01/2018
+  ms.locfileid: "32313104"
 abstract:
   description: Naučte se používat Azure Traffic Manager. Rychlá zprovoznění, kurzy, ukázky a další materiály vám ukážou, jak spravovat příchozí provoz pro zajištění optimálního výkonu aplikací a jak distribuovat provoz do Azure nebo externích koncových bodů služby.
 sections:

@@ -17,9 +17,10 @@ ms.author: magoedte
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 016b5bafdf6543ad43e36a875e6aa68572b35f97
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33886174"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Optimalizace prostředí služby Active Directory s řešením pro kontrolu stavu v Active Directory v analýzy protokolů
 

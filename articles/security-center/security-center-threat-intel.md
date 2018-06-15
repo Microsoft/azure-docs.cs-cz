@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774569"
 ---
 # <a name="threat-intelligence-in-azure-security-center"></a>Analýza hrozeb v Azure Security Center
 Tento článek vám pomůže s používáním analýzy hrozeb v Azure Security Center k vyřešení problémů souvisejících se zabezpečením.

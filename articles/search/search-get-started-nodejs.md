@@ -13,6 +13,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31793541"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Začínáme se službou Azure Search v Node.js
 > [!div class="op_single_selector"]

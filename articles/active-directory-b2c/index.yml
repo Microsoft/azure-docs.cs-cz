@@ -16,6 +16,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 04/30/2018
+  ms.locfileid: "32308861"
 abstract:
   description: Azure Active Directory (Azure AD) B2C je služba pro správu identit, která umožňuje přizpůsobení a řízení způsobu, jakým se zákazníci registrují, přihlašují a jakým při používání vašich aplikací spravují své profily. To zahrnuje mimo jiné aplikace vyvinuté pro iOS, Android a .NET. Azure AD B2C umožňuje tyto akce, zatímco zároveň chrání identity vašich zákazníků. Naučte se používat Azure AD B2C prostřednictvím našich rychlých startů, kurzů a ukázek.
   aside:

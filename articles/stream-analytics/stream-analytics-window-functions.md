@@ -14,6 +14,7 @@ ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33893640"
 ---
 # <a name="introduction-to-stream-analytics-windowing-functions"></a>Úvod do služby Stream Analytics oddílová funkce
 Ve scénářích streamování čas provádění operací na data obsažená v dočasné windows je běžný vzor. Stream Analytics má nativní podporu pro oddílová funkce umožňují vývojářům úlohy zpracování Autor komplexní datového proudu s minimálním úsilím.

@@ -12,9 +12,10 @@ ms.author: kavithaj
 ms.reviewer: igorstan
 ms.openlocfilehash: 173bc797cb6436decddb68aaf1599ea7a6dd597e
 ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31793575"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Ověření do Azure SQL Data Warehouse
 Naučte se provádět ověřování na Azure SQL Data Warehouse pomocí ověřování Azure Active Directory (AAD) nebo SQL Server.

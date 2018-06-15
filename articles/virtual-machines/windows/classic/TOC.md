@@ -33,7 +33,6 @@
 ### [Správa virtuálních počítačů přes Azure PowerShell](manage-psh-classic.md)
 ### [O agentech a rozšířeních virtuálních počítačů](agents-and-extensions-classic.md)
 ### [Správa rozšíření virtuálních počítačů](manage-extensions-classic.md)
-### [Rozšíření vlastních skriptů pro virtuální počítače](extensions-customscript-classic.md)
 
 ## Správa úloh
 ### [Vysokovýkonné výpočetní prostředí (HPC)](../../virtual-machines-windows-hpcpack-cluster-options.md)
@@ -53,7 +52,7 @@
 ### [Resetování hesla protokolu RDP](reset-rdp.md)
 ### [Připojení virtuálního pevného disku pro řešení potíží s virtuálním počítačem](troubleshoot-recovery-disks-portal.md)
 
-# Odkaz
+# Referenční informace
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
