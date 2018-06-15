@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915255"
 ---
 # <a name="create-the-head-node-of-an-hpc-pack-cluster-in-an-azure-vm-with-a-marketplace-image"></a>Vytvoření hlavního uzlu clusteru HPC Pack ve virtuálním počítači Azure s imagí Marketplace
 Použití [bitovou kopii virtuálního počítače Microsoft HPC Pack 2012 R2](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/) z Azure Marketplace a portálu Azure k vytvoření hlavního uzlu clusteru prostředí HPC. Tuto bitovou kopii virtuálního počítače HPC Pack je založená na Windows Server 2012 R2 Datacenter s HPC Pack 2012 R2 Update 3 předinstalován. Pomocí tohoto hlavního uzlu pro testování konceptu nasazení sady HPC Pack v Azure. Výpočetní uzly potom můžete přidat do clusteru ke spuštění úlohy v prostředí HPC.

@@ -1,6 +1,6 @@
 ---
-title: "Minimální dobou výpadku migrace do databáze Azure pro PostgreSQL"
-description: "Tento článek popisuje, jak provést migraci minimální dobou výpadku extrahujte databázi PostgreSQL do souboru výpisu, obnovení databáze PostgreSQL ze souboru archivu vytvořené pg_dump v databázi Azure pro PostgreSQL a nastavení počáteční zatížení a synchronizaci průběžné dat ze zdrojové databáze na cílovou databázi pomocí společnosti Attunity replikace pro Migrations společnosti Microsoft."
+title: Minimální dobou výpadku migrace do databáze Azure pro PostgreSQL
+description: Tento článek popisuje, jak provést migraci minimální dobou výpadku extrahujte databázi PostgreSQL do souboru výpisu, obnovení databáze PostgreSQL ze souboru archivu vytvořené pg_dump v databázi Azure pro PostgreSQL a nastavení počáteční zatížení a synchronizaci průběžné dat ze zdrojové databáze na cílovou databázi pomocí společnosti Attunity replikace pro Migrations společnosti Microsoft.
 services: postgresql
 author: HJToland3
 ms.author: jtoland
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29692085"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Minimální dobou výpadku migrace do databáze Azure pro PostgreSQL
 Existující databáze PostgreSQL můžete migrovat do databáze Azure pro PostgreSQL pomocí společnosti Attunity replikace pro Migrations společnosti Microsoft. Společnosti Attunity replikace je společné nabídky od společnosti Attunity a společnosti Microsoft. Společně se službou migrace databáze Azure je zahrnuta bez dalších poplatků zákazníkům společnosti Microsoft. 

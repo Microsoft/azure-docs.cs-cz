@@ -1,11 +1,11 @@
 ---
 title: Odkaz na modul Azure CDN pravidla | Microsoft Docs
-description: "Referenční dokumentace pro Azure CDN pravidla shody stav motoru a funkce."
+description: Referenční dokumentace pro Azure CDN pravidla shody stav motoru a funkce.
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733675"
 ---
 # <a name="azure-cdn-rules-engine-reference"></a>Odkaz na modul pravidla ve službě Azure CDN
 Tento článek obsahuje seznam podrobný popis funkcí a podmínky k dispozici shodu pro Content Delivery Network (CDN) Azure [stroj pravidel](cdn-rules-engine.md).

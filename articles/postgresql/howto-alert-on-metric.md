@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace výstrah metriky pro databázi Azure pro PostgreSQL na portálu Azure"
-description: "Tento článek popisuje postup konfigurace a výstrahy metriky přístup pro databázi Azure pro PostgreSQL z portálu Azure."
+title: Konfigurace výstrah metriky pro databázi Azure pro PostgreSQL na portálu Azure
+description: Tento článek popisuje postup konfigurace a výstrahy metriky přístup pro databázi Azure pro PostgreSQL z portálu Azure.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29690249"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Nastavit výstrahy na metriky pro databázi Azure pro PostgreSQL pomocí portálu Azure 
 

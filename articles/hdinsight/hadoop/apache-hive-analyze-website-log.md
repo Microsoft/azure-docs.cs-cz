@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31398153"
 ---
 # <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Použijte Hive s HDInsight se systémem Windows k analýze protokolů z webů
 Zjistěte, jak použít HiveQL v prostředí HDInsight k analýze protokolů z webu. Analýza protokolu webu můžete použít, segmentovat cílovou skupinu podle podobné aktivity, kategorizace návštěvníky podle demografické údaje a zjistit, obsah se zobrazení, webů, které pocházejí z a tak dále.

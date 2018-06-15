@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s klasický nasazení virtuálního počítače s Windows | Microsoft Docs"
-description: "Řešení problémů nasazení classic, když vytvoříte nový virtuální počítač Windows v Azure"
+title: Řešení potíží s klasický nasazení virtuálního počítače s Windows | Microsoft Docs
+description: Řešení problémů nasazení classic, když vytvoříte nový virtuální počítač Windows v Azure
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: JiangChen79
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 9f01d237-ba39-4c32-b72d-18f5f505d43a
 ms.service: virtual-machines-windows
@@ -20,6 +20,7 @@ ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/09/2017
+ms.locfileid: "24056637"
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-creating-a-new-windows-virtual-machine-in-azure"></a>Řešení problémů nasazení classic s vytvoření nového virtuálního počítače Windows v Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-selectors](../../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-selectors-include.md)]

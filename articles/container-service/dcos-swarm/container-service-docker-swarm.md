@@ -1,6 +1,6 @@
 ---
-title: "Správě clusteru Swarm v Azure s rozhraním API Docker"
-description: "Nasazení kontejnerů do clusteru s podporou Docker Swarm v Azure Container Service"
+title: Správě clusteru Swarm v Azure s rozhraním API Docker
+description: Nasazení kontejnerů do clusteru s podporou Docker Swarm v Azure Container Service
 services: container-service
 author: rgardler
 manager: madhana
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26331541"
 ---
 # <a name="container-management-with-docker-swarm"></a>Správa kontejnerů pomocí nástroje Docker Swarm
 

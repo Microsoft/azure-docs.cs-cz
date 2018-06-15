@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31406503"
 ---
 # <a name="use-the-tez-ui-to-debug-tez-jobs-on-windows-based-hdinsight"></a>Chcete-li ladit úlohách Tez na HDInsight se systémem Windows pomocí uživatelského rozhraní Tez
 Rozhraní Tez lze použít k ladění úlohy Hive, které používají Tez jako modul provádění. Rozhraní Tez vizualizuje úlohy, jako graf připojených položek, můžete přejít k podrobnostem jednotlivých položek a načíst informace o protokolování a statistiky.

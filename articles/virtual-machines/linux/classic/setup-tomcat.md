@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841611"
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Nastavit Tomcat7 na virtuální počítač s Linuxem v Azure
 Apache Tomcat (nebo jednoduše Tomcat, také dříve se označovaly jako Jakarta Tomcat) je webový server s otevřeným zdrojem a kontejner servlet vyvinuté pomocí softwaru Foundation Apache (amp). Tomcat implementuje Java Servlet a specifikace JavaServer stránky (JSP) z Sun Microsystems. Tomcat poskytuje čistý Java HTTP prostředí webového serveru ke spouštění kódu v jazyce Java. V nejjednodušší konfiguraci Tomcat běží v procesu jednoho operačního systému. Tento proces se spustí nástroje Java virtual machine (JVM). Každý požadavek HTTP z prohlížeče do Tomcat zpracovávány jako samostatné vláken v procesu Tomcat.  

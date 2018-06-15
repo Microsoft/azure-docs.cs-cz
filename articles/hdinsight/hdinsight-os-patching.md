@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31409751"
 ---
 # <a name="os-patching-for-hdinsight"></a>Opravy chyb pro HDInsight operačního systému 
 Služba se spravuje Hadoop HDInsight má na starosti opravy operačního systému základní virtuální počítače, které jsou používané clustery HDInsight. Od 1. srpna 2016 jsme změnili oprav zásady hostovaného operačního systému pro clustery HDInsight se systémem Linux (verze 3.4 nebo novější). Cílem nové zásady je výrazně snížit počet restartování z důvodu opravy. Nové zásady budou nadále opravy virtuálních počítačů (VM) v clusterech Linux každé pondělí a čtvrtek začínající na 12: 00 UTC postupný způsobem mezi uzly v jakémkoliv daného clusteru. Všechny daného virtuálního počítače se však pouze restartuje maximálně jednou za 30 dní z důvodu opravy operačního systému hosta. Kromě toho první restartování pro nově vytvořený cluster neprovede dřív než 30 dní od data vytvoření clusteru. Opravy bude platit, jakmile jsou virtuální počítače restartovat.

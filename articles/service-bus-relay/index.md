@@ -17,6 +17,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30834397"
 ---
 ---
 # <a name="service-bus-relay-documentation"></a>Dokumentace ke službě Service Bus Relay

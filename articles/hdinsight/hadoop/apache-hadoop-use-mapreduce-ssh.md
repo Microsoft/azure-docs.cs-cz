@@ -21,6 +21,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31398995"
 ---
 # <a name="use-mapreduce-with-hadoop-on-hdinsight-with-ssh"></a>Používání nástroje MapReduce s Hadoop v HDInsight pomocí protokolu SSH
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915306"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image-by-using-the-azure-cli-10"></a>Nahrání a vytvoření virtuálního počítače s Linuxem z image vlastní disku pomocí Azure CLI 1.0
 Tento článek ukazuje, jak nahrát virtuální pevný disk (VHD) do Azure pomocí modelu nasazení Resource Manager a vytvořit virtuální počítače s Linuxem z této vlastní image. Tato funkce umožňuje instalovat a konfigurovat Linux distro svých požadavků a použije tento virtuální pevný disk k rychlému vytvoření Azure virtuální počítače (VM).

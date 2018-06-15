@@ -21,6 +21,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30908999"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Použití škálování virtuálních počítačů sad s Azure rozšíření DSC
 [Sady škálování virtuálního počítače](virtual-machine-scale-sets-overview.md) lze použít s [Azure požadovaného stavu konfigurace (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) rozšíření obslužné rutiny. Sady škálování virtuálního počítače zadejte způsob, jak nasadit a spravovat velké počty virtuálních počítačů a můžete Elasticky škálovat a odhlašování v reakci na zatížení. DSC slouží ke konfiguraci virtuálních počítačů jako jejich uvést do režimu online, používají produkční softwaru.

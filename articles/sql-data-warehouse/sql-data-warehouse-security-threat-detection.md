@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31523893"
 ---
 # <a name="threat-detection-in-azure-sql-data-warehouse"></a>Detekce hrozeb v Azure SQL Data Warehouse
 Nakonfigurujte detekce hrozeb a prozkoumejte podezřelé události v Azure SQL Data Warehouse.

@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30840506"
 ---
 # <a name="how-to-detach-a-disk-from-a-linux-virtual-machine"></a>Jak odpojit disk od virtuálního počítače s Linuxem
 > [!IMPORTANT] 

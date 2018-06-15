@@ -1,11 +1,11 @@
 ---
-title: "Vytvoření a obnovení zálohy ve službě BizTalk Services | Microsoft Docs"
-description: "BizTalk Services zahrnuje zálohování a obnovení. Zjistěte, jak vytvořit a obnovení zálohy a zjistěte, co se zálohuje. MABS, WABS"
+title: Vytvoření a obnovení zálohy ve službě BizTalk Services | Microsoft Docs
+description: BizTalk Services zahrnuje zálohování a obnovení. Zjistěte, jak vytvořit a obnovení zálohy a zjistěte, co se zálohuje. MABS, WABS
 services: biztalk-services
-documentationcenter: 
+documentationcenter: ''
 author: MandiOhlinger
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 59f91173-4683-48df-abd5-41262bfce6df
 ms.service: biztalk-services
 ms.workload: integration
@@ -19,6 +19,7 @@ ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/10/2017
+ms.locfileid: "24102337"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk Services: Zálohování a obnovení
 

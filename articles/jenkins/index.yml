@@ -14,53 +14,59 @@ metadata:
   ms.date: 11/01/2017
   ms.author: routlaw
   ms.custom: Jenkins
+  ms.openlocfilehash: 0925fb5cda7bdfde1a97d0725bd23a8f79882366
+  ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 11/08/2017
+  ms.locfileid: "24052153"
 abstract:
-  description: 'Využijte opensourcový server Jenkins k sestavování aplikací v cloudu a jejich nasazení do Azure. Naučte se instalovat, konfigurovat a škálovat Jenkinse v Azure a prostřednictvím našich šablon Rychlý start, kurzů a ukázkových kanálů nastavte pro svoje aplikace průběžnou integraci (CI).'
+  description: Využijte opensourcový server Jenkins k sestavování aplikací v cloudu a jejich nasazení do Azure. Naučte se instalovat, konfigurovat a škálovat Jenkinse v Azure a prostřednictvím našich šablon Rychlý start, kurzů a ukázkových kanálů nastavte pro svoje aplikace průběžnou integraci (CI).
   aside:
     image:
       alt: Jenkins logo
       height: 133
       width: 110
       src: media/Jenkins.png
-    title: null
+    title: 
 sections:
-  - title: Zprovoznění během 5 minut
-    items:
-      - type: paragraph
-        text: Vytvořte v Azure systém Jenkins a sestavte aplikaci.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
-            text: Azure Portal
-            href: 'https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template'
-  - title: Podrobné kurzy
-    items:
-      - type: paragraph
-        text: 'Nastavte průběžnou integraci pro vaše aplikace, spouštějte agenty v cloudu a využijte ve svých úlohách služby Azure.'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Nastavte průběžnou integraci do služby <a href="/azure/jenkins/java-deploy-webapp-tutorial">Azure App Service</a>, protokolu <a href="/azure/container-service/kubernetes/container-service-kubernetes-jenkins">Kubernetes</a> nebo <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">virtuálního počítače s Linuxem</a>.'
-          - html: <a href="/azure/jenkins/execute-cli-jenkins-pipeline">Zřiďte prostředky v úloze kanálu</a>.
-          - html: <a href="/azure/jenkins/jenkins-azure-vm-agents">Škálujte s využitím agentů virtuálních počítačů Azure</a>.
-  - title: Ukázky
-    items:
-      - type: paragraph
-        text: Ukázkové skripty a fáze pro vaše kanály
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: '<a href="https://github.com/Azure/azure-devops-utils/tree/master/jenkins">Fragmenty kódu a fáze souboru Jenkinsfile</a>'
-  - title: Referenční informace
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Moduly plug-in
-            html: '<p><a href="https://plugins.jenkins.io/azure-vm-agents">Azure VM Agents</a><p><a href="https://plugins.jenkins.io/azure-app-service">Azure App Service</a></p><p><a href="https://plugins.jenkins.io/windows-azure-storage">Azure Storage</a></p><p><a href="https://plugins.jenkins.io/azure-container-agents">Azure Container Agents</a><p><a href="https://plugins.jenkins.io/azure-function">Modul plug-in Azure Function</a><p><a href="https://plugins.jenkins.io/azure-acs">Modul plug-in Azure Container Service</a>'
+- title: Zprovoznění během 5 minut
+  items:
   - type: paragraph
-    text: '<h4>Jenkins® je registrovaná ochranná známka společnosti Software in the Public Interest, Inc. [Logo Jenkins®](https://wiki.jenkins.io/display/JENKINS/Logo) je licencováno v rámci [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) z [projektu Jenkins](https://jenkins.io).</h4>'
+    text: Vytvořte v Azure systém Jenkins a sestavte aplikaci.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg
+      text: Azure Portal
+      href: https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: Nastavte průběžnou integraci pro vaše aplikace, spouštějte agenty v cloudu a využijte ve svých úlohách služby Azure.
+  - type: list
+    style: ordered
+    items:
+    - html: Nastavte průběžnou integraci do služby <a href="/azure/jenkins/java-deploy-webapp-tutorial">Azure App Service</a>, protokolu <a href="/azure/container-service/kubernetes/container-service-kubernetes-jenkins">Kubernetes</a> nebo <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">virtuálního počítače s Linuxem</a>.
+    - html: <a href="/azure/jenkins/execute-cli-jenkins-pipeline">Zřiďte prostředky v úloze kanálu</a>.
+    - html: <a href="/azure/jenkins/jenkins-azure-vm-agents">Škálujte s využitím agentů virtuálních počítačů Azure</a>.
+- title: Ukázky
+  items:
+  - type: paragraph
+    text: Ukázkové skripty a fáze pro vaše kanály
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="https://github.com/Azure/azure-devops-utils/tree/master/jenkins">Fragmenty kódu a fáze souboru Jenkinsfile</a>
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Moduly plug-in
+      html: <p><a href="https://plugins.jenkins.io/azure-vm-agents">Azure VM Agents</a><p><a href="https://plugins.jenkins.io/azure-app-service">Azure App Service</a></p><p><a href="https://plugins.jenkins.io/windows-azure-storage">Azure Storage</a></p><p><a href="https://plugins.jenkins.io/azure-container-agents">Azure Container Agents</a><p><a href="https://plugins.jenkins.io/azure-function">Modul plug-in Azure Function</a><p><a href="https://plugins.jenkins.io/azure-acs">Modul plug-in Azure Container Service</a>
+- type: paragraph
+  text: <h4>Jenkins® je registrovaná ochranná známka společnosti Software in the Public Interest, Inc. [Logo Jenkins®](https://wiki.jenkins.io/display/JENKINS/Logo) je licencováno v rámci [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) z [projektu Jenkins](https://jenkins.io).</h4>

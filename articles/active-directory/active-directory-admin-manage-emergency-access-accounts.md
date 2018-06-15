@@ -12,9 +12,10 @@ ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.openlocfilehash: 5c256befba4c73527b529c953f7b9cd4d266450c
 ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30901101"
 ---
 # <a name="manage-emergency-access-administrative-accounts-in-azure-ad"></a>Spravovat účty pro správu přístupu nouze ve službě Azure AD 
 

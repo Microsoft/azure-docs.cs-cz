@@ -19,6 +19,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30905329"
 ---
 # <a name="expand-os-disk-on-a-linux-vm-using-the-azure-cli-with-the-azure-cli-10"></a>Rozbalte disk operačního systému na virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure s Azure CLI 1.0
 Výchozí velikost virtuálního pevného disku pro operační systém (OS) je obvykle 30 GB na virtuální počítač s Linuxem (VM) v Azure. Můžete [přidat datových disků](add-disk.md) zajistit pro dalšího volného místa, ale můžete také chtít rozbalte disk operačního systému. Tento článek podrobně popisují rozbalte disk operačního systému pro virtuální počítač s Linuxem pomocí Azure CLI 1.0 nespravované disky.

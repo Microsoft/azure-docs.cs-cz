@@ -10,9 +10,10 @@ ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 3b187b5d776a099fd41e3db5b5c14c67f3ef9483
 ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30325935"
 ---
 Možnosti replikace pro účet úložiště:
 

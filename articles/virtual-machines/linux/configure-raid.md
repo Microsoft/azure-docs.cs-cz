@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30911753"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurace softwarového pole RAID v Linuxu
 Je běžný scénář pomocí softwaru diskového pole RAID na virtuální počítače s Linuxem v Azure k dispozici více připojených datových disků jako jedno zařízení RAID. Obvykle to lze zlepšit výkon a umožňuje lepší výkon ve srovnání s použitím právě jeden disk.

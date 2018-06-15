@@ -1,6 +1,6 @@
 ---
-title: "Kurzy zabezpečení Azure z webu Microsoft Virtual Academy | Microsoft Docs"
-description: "Tento článek obsahuje kurátorované skupiny zabezpečení Azure související kurzy z webu Microsoft Virtual Academy.  Microsoft Virtual Academy poskytuje bezplatné, online školení k pomoci vývojářům, IT a odborníci v oblasti dat a studenti další nejnovější technologie, jejich znalosti a zálohy kariéře."
+title: Kurzy zabezpečení Azure z webu Microsoft Virtual Academy | Microsoft Docs
+description: Tento článek obsahuje kurátorované skupiny zabezpečení Azure související kurzy z webu Microsoft Virtual Academy.  Microsoft Virtual Academy poskytuje bezplatné, online školení k pomoci vývojářům, IT a odborníci v oblasti dat a studenti další nejnovější technologie, jejich znalosti a zálohy kariéře.
 services: security
 documentationcenter: na
 author: TomShinder
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 11/22/2017
+ms.locfileid: "25540044"
 ---
 # <a name="azure-security-courses-from-microsoft-virtual-academy"></a>Kurzy zabezpečení Azure z webu Microsoft Virtual Academy
 Microsoft Virtual Academy poskytuje bezplatné, online školení k pomoci vývojářům, IT a odborníci v oblasti dat a studenti další nejnovější technologie, jejich znalosti a zálohy kariéře.

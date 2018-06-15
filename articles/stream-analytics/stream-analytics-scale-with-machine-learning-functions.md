@@ -14,6 +14,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30909271"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Škálovat vaše úloha Stream Analytics s funkcemi Azure Machine Learning
 Nastavení úlohy Stream Analytics a spuštění ukázkových dat přes něj je přímo dál. Co můžeme dělat, když budeme potřebovat spuštění stejné úlohy s vyšší datový svazek? To vyžaduje nám pochopit, jak nakonfigurovat úlohy služby Stream Analytics tak, aby se škáluje. V tomto dokumentu zaměříme na zvláštní aspekty škálování úlohy Stream Analytics s funkcemi, Machine Learning. Informace o tom, jak obecně škálování úlohy Stream Analytics najdete v článku [škálování úlohy](stream-analytics-scale-jobs.md).

@@ -21,6 +21,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913480"
 ---
 # <a name="vertically-scale-azure-linux-virtual-machine-with-azure-automation"></a>Svisle škálování virtuálního počítače Azure Linux s Azure Automation.
 Svislé škálování je proces zvýšením nebo snížením prostředky počítače v reakci na zatížení. V Azure to můžete provést změnou velikosti virtuálního počítače. To může pomoct v těchto scénářích

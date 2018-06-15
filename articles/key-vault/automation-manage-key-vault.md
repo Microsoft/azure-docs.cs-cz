@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31406870"
 ---
 # <a name="managing-azure-key-vault-using-azure-automation"></a>Správa Azure Key Vault pomocí Azure Automation.
 Tento průvodce vás seznámí s služba Azure Automation a jak může sloužit ke zjednodušení správy klíčů a tajných klíčů v Azure Key Vault.

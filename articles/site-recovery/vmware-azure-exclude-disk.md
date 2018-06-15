@@ -1,6 +1,6 @@
 ---
-title: "Vyloučit z ochrany pomocí Azure Site Recovery disky | Microsoft Docs"
-description: "Tento článek popisuje, proč a jak vyloučit disky virtuálních počítačů z replikace pro scénáře z VMware do Azure."
+title: Vyloučit z ochrany pomocí Azure Site Recovery disky | Microsoft Docs
+description: Tento článek popisuje, proč a jak vyloučit disky virtuálních počítačů z replikace pro scénáře z VMware do Azure.
 services: site-recovery
 author: nsoneji
 manager: garavd
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812933"
 ---
 # <a name="exclude-disks-from-replication-for-vmware-to-azure-scenario"></a>Vyloučení disků z replikace pro scénář VMware do Azure
 

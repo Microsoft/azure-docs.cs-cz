@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30918111"
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2016"></a>Instalace databáze MySQL na virtuální počítač vytvořený s modelem nasazení classic se systémem Windows Server 2016
 [MySQL](https://www.mysql.com) je populární open source, databáze SQL. V tomto kurzu se dozvíte, jak nainstalovat a spustit **komunitní verzi MySQL 5.7.18** jako Server databáze MySQL na virtuálním počítači s **systému Windows Server 2016**. Prostředí může být mírně lišit pro jiné verze MySQL nebo Windows Server.

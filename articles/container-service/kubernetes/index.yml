@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 04/16/2018
+  ms.locfileid: "31394573"
 abstract:
   description: Azure Container Service umožňuje rychle nastavit cluster Kubernetes připravený pro produkční prostředí. Naučte se prostřednictvím těchto šablon Rychlý start, kurzů a ukázek používat službu Azure Container Service společně s protokolem Kubernetes.
 sections:

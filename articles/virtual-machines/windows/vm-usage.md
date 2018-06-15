@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31425176"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Porozumění využití virtuálního počítače Azure
 Analýzou data o využití Azure, může být získávají efektivní využívání Statistika – přehledy, které umožňují lépe náklady správy a přidělení v celé organizaci. Tento dokument obsahuje podrobné informace do vaší spotřeby podrobnosti Azure Compute. Další informace o využití obecné Azure, přejděte na [pochopení vaše faktura](../../billing/billing-understand-your-bill.md).

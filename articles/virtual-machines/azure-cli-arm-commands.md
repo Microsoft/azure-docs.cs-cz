@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30839140"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Azure CLI příkazy v režimu Resource Manager
 Tento článek obsahuje syntaxi a možnosti pro příkazy rozhraní příkazového řádku Azure (CLI), které by běžně používat k vytváření a správě prostředků Azure v modelu nasazení Azure Resource Manager. Tyto příkazy přistupujete pomocí rozhraní příkazového řádku v režimu Resource Manager (arm). Toto není odkazem na dokončení a CLI verze může zobrazovat mírně odlišné příkazy nebo parametry. Obecné přehled prostředků Azure a skupiny prostředků, najdete v tématu [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md).  

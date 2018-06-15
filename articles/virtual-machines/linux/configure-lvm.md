@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30912225"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurace LVM na virtuální počítač s Linuxem v Azure
 Tento dokument popisuje postup konfigurace logické svazku Manager (LVM) ve virtuálním počítači Azure. I když je to vhodné konfigurace LVM na všechny disky připojené k virtuálnímu počítači, ve výchozím nastavení většina cloudu Image nebude mít LVM nakonfigurované na disk operačního systému. Toto je zabránit problémům s duplicitní svazku skupiny, pokud disk operačního systému je někdy připojena k jiné virtuální počítač se stejným distribuce a typem, tj. během na scénář zotavení. Proto se doporučuje jenom pro použití LVM v datových disků.

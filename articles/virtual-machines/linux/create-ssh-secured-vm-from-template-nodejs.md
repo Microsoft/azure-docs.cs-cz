@@ -21,6 +21,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30905547"
 ---
 # <a name="how-to-create-a-linux-vm-using-the-azure-cli-10-an-azure-resource-manager-template"></a>Postup vytvoření virtuálního počítače s Linuxem pomocí Azure CLI 1.0 šablonu Azure Resource Manager
 Tento článek ukazuje, jak rychle nasadit virtuální počítač s Linuxem pomocí Azure CLI 1.0 a šablonu Azure Resource Manager. Tento článek vyžaduje:

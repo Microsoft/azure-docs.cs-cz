@@ -1,6 +1,6 @@
 ---
-title: "Příprava cílového (fyzické do Azure) | Microsoft Docs"
-description: "Tento článek popisuje postup přípravy prostředí Azure pro zahájení replikace fyzických serverů s Windows nebo Linuxem do Azure."
+title: Příprava cílového (fyzické do Azure) | Microsoft Docs
+description: Tento článek popisuje postup přípravy prostředí Azure pro zahájení replikace fyzických serverů s Windows nebo Linuxem do Azure.
 services: site-recovery
 author: bsiva
 manager: abhemraj
@@ -13,6 +13,7 @@ ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29812625"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Příprava cílového (VMware do Azure)
 

@@ -22,6 +22,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841941"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Směrovat síťový provoz s směrovací tabulku pomocí rozhraní příkazového řádku Azure
 

@@ -18,6 +18,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31513631"
 ---
 # <a name="add-a-java-application-to-azure-app-service-web-apps"></a>Přidání aplikace v jazyce Java do Azure App Service Web Apps
 Když jste inicializovali webové aplikace Java v [Azure App Service] [ Azure App Service] podle postupu uvedeného v [vytvoření webové aplikace Java v Azure App Service](app-service-web-get-started-java.md), můžete nahrát aplikaci tím, že vaše WAR v **webapps** složky.

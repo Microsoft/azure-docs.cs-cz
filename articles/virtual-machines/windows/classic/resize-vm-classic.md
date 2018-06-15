@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913617"
 ---
 # <a name="resize-a-windows-vm-created-in-the-classic-deployment-model"></a>Změnit velikost virtuálního počítače Windows vytvořené v modelu nasazení classic
 Tento článek ukazuje, jak změnit velikost virtuálního počítače Windows, vytvořené v modelu nasazení classic pomocí Azure Powershell.

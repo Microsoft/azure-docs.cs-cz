@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915054"
 ---
 # <a name="manage-users-ssh-and-check-or-repair-disks-on-azure-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-10"></a>Spravovat uživatele, SSH a zkontrolujte nebo opravte disky na virtuálních počítačích Azure Linux rozšíření VMAccess pomocí Azure CLI 1.0
 Tento článek ukazuje, jak používat rozšíření VMAcesss Azure zkontrolujte nebo opravit disk, obnovte přístup uživatele, Správa uživatelských účtů nebo obnovit konfiguraci SSHD v systému Linux. Tento článek vyžaduje:
