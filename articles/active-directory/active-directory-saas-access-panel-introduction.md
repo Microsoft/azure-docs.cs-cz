@@ -17,9 +17,10 @@ ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 982e2cb6780e5285dc5849d655efdf830f76cf13
 ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34347495"
 ---
 # <a name="what-is-the-access-panel"></a>Co je na přístupovém panelu?
 

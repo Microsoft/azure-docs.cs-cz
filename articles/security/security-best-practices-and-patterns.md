@@ -1,6 +1,6 @@
 ---
-title: "Osvědčené postupy zabezpečení Azure a vzory | Microsoft Docs"
-description: "Článek obsahuje seznam zabezpečení Azure osvědčené postupy a vzory pro různými prostředky Azure."
+title: Osvědčené postupy zabezpečení Azure a vzory | Microsoft Docs
+description: Článek obsahuje seznam zabezpečení Azure osvědčené postupy a vzory pro různými prostředky Azure.
 services: azure-security
 documentationcenter: na
 author: TomShinder
@@ -13,12 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/16/2018
-ms.author: 
+ms.author: ''
 ms.openlocfilehash: 6713580325450d7548e63c78af4d44c65653f884
 ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/08/2018
+ms.locfileid: "29802586"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Osvědčené postupy zabezpečení Azure a vzory
 
