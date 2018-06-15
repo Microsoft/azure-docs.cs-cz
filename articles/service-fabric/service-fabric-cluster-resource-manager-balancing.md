@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213142"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Vyrovnávání váš cluster service fabric
 Správce prostředků clusteru Service Fabric podporuje dynamické zatížení změny reaktivní dodatky nebo odstraňování uzly nebo služeb. Také automaticky opraví narušení omezení a proaktivně znovu vytvoří rovnováhu clusteru. Ale jsou jak často tyto akce provést a co je aktivuje?

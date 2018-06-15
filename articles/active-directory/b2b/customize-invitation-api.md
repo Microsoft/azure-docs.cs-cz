@@ -12,9 +12,10 @@ manager: mtillman
 ms.reviewer: sasubram
 ms.openlocfilehash: e53bac5bca199fe08d53f232416a1c6432148f34
 ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260012"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Spolupráce Azure Active Directory s B2B rozhraní API a přizpůsobení
 

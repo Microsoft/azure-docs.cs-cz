@@ -16,6 +16,7 @@ ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/12/2018
+ms.locfileid: "34077390"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Sledování a ladění aplikace Azure Batch .NET s Application Insights
 

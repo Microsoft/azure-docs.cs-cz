@@ -1,14 +1,14 @@
 ---
-title: "Vytváření imagí kontejneru pro Azure Service Fabric | Dokumentace Microsoftu"
-description: "V tomto kurzu se naučíte vytvářet image kontejneru pro vícekontejnerovou aplikaci Service Fabric."
+title: Vytváření imagí kontejneru pro Azure Service Fabric | Dokumentace Microsoftu
+description: V tomto kurzu se naučíte vytvářet image kontejneru pro vícekontejnerovou aplikaci Service Fabric.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: suhuruli
 manager: timlt
 editor: suhuruli
 tags: servicefabric
-keywords: "Docker, kontejnery, mikroslužby, Service Fabric, Azure"
-ms.assetid: 
+keywords: Docker, kontejnery, mikroslužby, Service Fabric, Azure
+ms.assetid: ''
 ms.service: service-fabric
 ms.topic: tutorial
 ms.tgt_pltfrm: na
@@ -21,6 +21,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29558181"
 ---
 # <a name="tutorial-create-container-images-for-service-fabric"></a>Kurz: Vytváření imagí kontejneru pro Service Fabric
 

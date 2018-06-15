@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212819"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Proto chcete dozvědět o Service Fabric?
 Azure Service Fabric je platforma distribuovaných systémů usnadňující balení, nasazování a spravování škálovatelných a spolehlivých mikroslužeb.  Service Fabric má rozlehlých, ale a je mnoha Další.  Tento článek obsahuje souhrn Service Fabric a popisuje základní koncepty, programovací modely, životního cyklu aplikací, testování, clustery a sledování stavu. Pro čtení [přehled](service-fabric-overview.md) a [co jsou mikroslužeb?](service-fabric-overview-microservices.md) úvod a jak Service Fabric slouží k vytvoření mikroslužeb. Tento článek neobsahuje kompletní seznam obsahu, ale propojit přehled a získávání Začínáme články pro každou oblast Service Fabric. 

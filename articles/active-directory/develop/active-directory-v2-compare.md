@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156802"
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>Co se liší o koncový bod v2.0?
 Pokud jste se seznámili s Azure Active Directory nebo aplikací mít integrované s Azure AD v minulosti, může být určité rozdíly v koncový bod v2.0, které by uživatel očekával. Tento dokument se volá na těchto rozdílů za pochopení.

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206787"
 ---
 # <a name="actor-timers-and-reminders"></a>Časovače objektu actor a upomínek
 Aktéři můžete naplánovat pravidelné práce na samotných tak, že zaregistrujete časovače nebo připomenutí. Tento článek ukazuje, jak použít časovačů a připomenutí a vysvětluje rozdíly mezi nimi.

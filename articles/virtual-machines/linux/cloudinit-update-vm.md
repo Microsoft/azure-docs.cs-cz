@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186150"
 ---
 # <a name="use-cloud-init-to-update-and-install-packages-in-a-linux-vm-in-azure"></a>Aktualizace a nainstalovat balíčky v virtuálního počítače s Linuxem v Azure pomocí init cloudu
 V tomto článku se dozvíte, jak používat [cloudu init](https://cloudinit.readthedocs.io) aktualizovat balíčky na systémem Linux nastaví virtuální počítač (VM) nebo škálování virtuálních počítačů (VMSS) při zřizování čas v Azure. Tyto skripty cloudu init spustit při prvním spuštění počítače po prostředky se zřizují Azure. Další informace o cloudu init fungování nativně ve službě Azure a podporovaných distribucích systému Linux najdete v tématu [init cloudu – přehled](using-cloud-init.md)

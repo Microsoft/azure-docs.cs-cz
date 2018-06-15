@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205140"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Ručně mění certifikát clusteru Service Fabric
 Pokud je certifikát clusteru Service Fabric blíží vypršení platnosti, budete muset aktualizovat certifikát.  Změna certifikátu je jednoduché, pokud byl cluster [nastavena tak, aby používat certifikáty založené na běžný název](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (namísto kryptografický otisk).  Získejte nový certifikát od certifikační autority s novým datem vypršení platnosti.  Certifikáty podepsané svým držitelem, včetně těch, které generuje při nasazování clusteru Service Fabric na portálu Azure nejsou podporovány.  Nový certifikát musí mít stejný běžný název jako starší certifikát. 

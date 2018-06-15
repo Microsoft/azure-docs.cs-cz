@@ -19,6 +19,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34010247"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Podrobnosti o shromažďování dat pro řešení pro správu v Azure
 Tento článek obsahuje seznam [řešení pro správu](monitoring-solutions.md) od společnosti Microsoft k dispozici s odkazy na jejich podrobnou dokumentaci.  Také obsahuje informace o jejich metoda a frekvenci shromažďování dat do analýzy protokolů.  K identifikaci různých řešení, které jsou k dispozici a lépe porozumět požadavkům připojení a toku dat pro řešení pro správu jiný, můžete použít informace v tomto článku. 

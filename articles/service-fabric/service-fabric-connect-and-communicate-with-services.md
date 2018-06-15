@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205582"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Připojení a komunikovat se službami v Service Fabric
 V Service Fabric běží služba někde v clusteru Service Fabric, obvykle se distribuují napříč více virtuálními počítači. Ho může být z jednoho místa na jiný přesunout, pomocí vlastníka služby, nebo automaticky pomocí Service Fabric. Služby nejsou staticky vázaný na konkrétní počítač nebo na adresu.

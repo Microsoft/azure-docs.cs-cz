@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34204851"
 ---
 # <a name="configuring-and-using-service-affinity-in-service-fabric"></a>Konfigurace a použití spřažení služby v Service Fabric
 Spřažení je ovládací prvek, který je k dispozici především ke zjednodušení přechodu větší monolitický aplikací do cloudu a mikroslužeb world. Používá se také jako optimalizace pro zlepšení výkonu služeb, i když tak může mít vedlejší účinky.

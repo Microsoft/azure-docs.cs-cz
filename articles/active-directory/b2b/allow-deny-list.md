@@ -12,9 +12,10 @@ manager: mtillman
 ms.reviewer: sasubram
 ms.openlocfilehash: 3b4b57dd2299c6278fe823f59a4f2c7d8721f712
 ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34259997"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Povolování nebo blokování pozvánek uživatelů B2B z konkrétních organizací
 

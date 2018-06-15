@@ -9,11 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 877cdcc10e32dd915adc3579d5a08c2826d2a6e6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: ee866248ae7f0c1f1c49c449b777c2b68d884c5b
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257675"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Assety připojení v Azure Automation.
 
@@ -91,7 +92,7 @@ Následující vzorové příkazy ukazují, jak používat účet Spustit jako, 
 
 ```powershell
 $Conn = Get-AutomationConnection -Name AzureRunAsConnection 
-Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint 
+Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 ```
 
 ### <a name="graphical-runbook-samples"></a>Ukázky grafický runbook

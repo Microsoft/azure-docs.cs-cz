@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30283992"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Připojení k analýze protokolů nástroje Configuration Manager
 Můžete se připojit prostředí System Center Configuration Manager k analýze protokolů Azure na synchronizaci zařízení shromažďování dat a odkazovat na těchto kolekcí v analýzy protokolů a automatizace Azure.  

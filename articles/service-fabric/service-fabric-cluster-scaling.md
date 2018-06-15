@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208025"
 ---
 # <a name="scaling-service-fabric-clusters"></a>Clustery škálování Service Fabric
 Cluster Service Fabric je sada virtuální nebo fyzické počítače, do kterých jsou nasazené a spravovat vaše mikroslužeb připojené k síti. Počítač nebo virtuální počítač, který je součástí clusteru, se nazývá uzel. Clustery může obsahovat potenciálně tisících uzlů. Po vytvoření clusteru Service Fabric, je možné škálovat clusteru vodorovně (změnit počet uzlů) nebo svisle (změnit prostředky uzly).  Je možné škálovat clusteru kdykoli, i když jsou úlohy běžící v clusteru.  Jako cluster škáluje, vaše aplikace se automaticky také škálování.

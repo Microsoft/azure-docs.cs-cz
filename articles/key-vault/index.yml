@@ -20,6 +20,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 04/28/2018
+  ms.locfileid: "32180789"
 abstract:
   description: Naučte se využívat službu Azure Key Vault k ochraně kryptografických a tajných klíčů používaných cloudovými aplikacemi a službami. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy vytváření a správy klíčů, které umožňují přístup k vašim prostředkům a řešením a jejich šifrování.
 sections:

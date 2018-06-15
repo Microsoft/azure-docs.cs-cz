@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207263"
 ---
 # <a name="enumerate-service-fabric-reliable-actors"></a>Zobrazení výčtu Service Fabric Reliable Actors
 Služby Reliable Actors umožňuje klientovi výčet metadata o aktéři, která je hostitelem služby. Protože služby objektu actor oddílů stavové služby, výčet se provádí na oddíl. Protože každý oddíl může obsahovat mnoho aktéři, výčtu se vrátí jako sadu stránkových výsledků. Na stránkách jsou smyčce přes, dokud se číst všechny stránky. Následující příklad ukazuje, jak vytvořit seznam všech active aktéři v jednom oddílu služby objektu actor:

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213159"
 ---
 # <a name="how-data-serialization-affects-an-application-upgrade"></a>Jak ovlivňuje serializace dat upgradu aplikace
 V [vrácení upgradu aplikace](service-fabric-application-upgrade.md), upgradu se použije pro dílčí sadu uzlů, jednu upgradovací doménu najednou. Během tohoto procesu jsou některé domény upgrade na novější verzi aplikace a jsou některé upgradu domény na starší verzi aplikace. Při zavedení nová verze aplikace musí být možné číst stará verze vaše data a starší verzi aplikace musí být možné číst novou verzi vaše data. Pokud formát dat není vpřed a zpětně kompatibilní, upgrade může selhat nebo horší, mohou být data ztrátě nebo poškození. Tento článek popisuje, co se považuje za vaše formát dat a nabízí osvědčené postupy pro zajištění, aby vaše data byla vpřed a zpětně kompatibilní.

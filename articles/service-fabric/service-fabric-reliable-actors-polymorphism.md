@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209334"
 ---
 # <a name="polymorphism-in-the-reliable-actors-framework"></a>Polymorfismus v rámci Reliable Actors
 Rozhraní framework Reliable Actors umožňuje vytvářet, kteří používají řadu se stejné techniky, které byste použili v objektově orientované návrhu. Jeden z těchto postupů je polymorfismus, která umožňuje typy a rozhraní dědění z více zobecněn nadřazené položky. Dědičnost v rámci Reliable Actors obvykle následuje model rozhraní .NET s několika další omezení. V případě Java či Linux postupuje modelu Java.

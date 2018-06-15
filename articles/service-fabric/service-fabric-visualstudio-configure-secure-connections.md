@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208681"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>Konfigurace zabezpečeného připojení ke clusteru Service Fabric ze sady Visual Studio
 Další informace o použití sady Visual Studio bezpečný přístup k clusteru služby Azure Service Fabric s nakonfigurované zásady řízení přístupu.

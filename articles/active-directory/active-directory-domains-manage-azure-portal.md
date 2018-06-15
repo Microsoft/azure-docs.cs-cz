@@ -15,9 +15,10 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.openlocfilehash: 81c2371d5dbb17399071c80ff4e8b81813ed014c
 ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33762390"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Správa vlastních názvů domén v Azure Active Directory
 Název domény, je důležitou součástí identifikátoru pro mnoho prostředků adresáře: je součástí uživatelského jména nebo e-mailové adresy pro uživatele, část adresy pro skupinu a můžou být součástí identifikátor ID URI aplikace pro aplikaci. Prostředek v Azure Active Directory (Azure AD) může zahrnovat název domény, který už je ověřený jako vlastníkem adresáře, která obsahuje daný prostředek. Globální správce můžete provádět úlohy správy domény ve službě Azure AD.

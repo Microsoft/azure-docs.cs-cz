@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207532"
 ---
 # <a name="service-fabric-application-scenarios"></a>Scénáře aplikací Service Fabric
 Azure Service Fabric nabízí spolehlivé a flexibilní platformu, která umožňuje zápis a spustit mnoho typů obchodních aplikací a služeb. Tyto aplikace a mikroslužeb může být bezstavové nebo stavová a jsou vyrovnávání prostředků mezi virtuální počítače chcete maximalizovat efektivitu. Jedinečná architektura Service Fabric umožňuje provádět poblíž analýza dat v reálném čase, výpočtů v paměti, paralelní transakce a událostí zpracování ve svých aplikacích. Je možné snadno škálovat aplikace nahoru nebo dolů (skutečně příchozí nebo odchozí), v závislosti na měnící požadavky na prostředky.

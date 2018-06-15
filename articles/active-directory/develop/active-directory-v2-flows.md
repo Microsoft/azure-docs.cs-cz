@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157662"
 ---
 # <a name="app-types-for-the-azure-active-directory-v20-endpoint"></a>Typy aplikací pro koncový bod v2.0 Azure Active Directory
 Koncový bod v2.0 Azure Active Directory (Azure AD) podporuje ověřování pro celou řadu architektur moderní aplikace, všechny z nich založené na standardních protokolech [OAuth 2.0 nebo OpenID Connect](active-directory-v2-protocols.md). Tento článek popisuje typy aplikací, které můžete vytvořit pomocí Azure AD v2.0, bez ohledu na to upřednostňovaný jazyk nebo platformu. Informace v tomto článku je navržená tak, které vám pomohou pochopit scénáře vysoké úrovně před [zahájení práce s kódem](active-directory-appmodel-v2-overview.md#getting-started).

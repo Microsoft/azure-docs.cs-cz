@@ -19,6 +19,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32186041"
 ---
 # <a name="azure-security-white-papers"></a>Azure zabezpečení dokumenty white paper
 | | |

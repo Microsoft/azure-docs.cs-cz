@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: bf0853b137e65ddd6ad40483c50fc8debb62f920
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 812f11a1ced3bac765441bf66f402abb4da4bc3f
+ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826544"
+ms.lasthandoff: 06/12/2018
+ms.locfileid: "35414565"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovanými a nespravovanými prémiové disky
 
@@ -45,13 +45,9 @@ Ceny spravované prémiové disky je stejný jako nespravované prémiové disky
 
 Ano. Typ účtu úložiště spravovaného disky můžete změnit pomocí portálu Azure, PowerShell nebo rozhraní příkazového řádku Azure.
 
-**Existuje způsob, že umožní kopírování a exportovat spravovaných disků na účet privátní úložiště?**
-
-Ano. Vaše spravované disky můžete exportovat pomocí portálu Azure, PowerShell nebo rozhraní příkazového řádku Azure.
-
 **Můžete použít soubor virtuálního pevného disku v účtu úložiště Azure k vytvoření spravovaného disk pomocí jiné předplatné?**
 
-Ne.
+Ano.
 
 **Můžete použít soubor virtuálního pevného disku v účtu úložiště Azure k vytvoření spravovaného disku v jiné oblasti?**
 
@@ -59,7 +55,7 @@ Ne.
 
 **Existují nějaká omezení škálování pro zákazníky, kteří používají spravované disky?**
 
-Spravované disky eliminuje omezení spojená s účty úložiště. Maximální limit a také výchozí limit je však 10 000 spravovaných disků na každou oblast a na typu disku pro předplatné.
+Spravované disky eliminuje omezení spojená s účty úložiště. Maximální limit je však 50 000 spravovaných disků na každou oblast a na typu disku pro předplatné.
 
 **Může trvat přírůstkový snímek spravovaného disku?**
 
@@ -95,7 +91,7 @@ Spravované disky podporuje tři klíčové výchozích rolí:
 
 **Existuje způsob, že umožní kopírování a exportovat spravovaných disků na účet privátní úložiště?**
 
-Můžete získat jen pro čtení sdíleného přístupového podpisu identifikátor URI pro spravované disk a použít ho zkopírovat obsah do privátní úložiště účet nebo místní úložiště.
+Můžete vygenerovat jen pro čtení sdíleného přístupového podpisu (SAS) identifikátor URI pro spravované disk a použít ho ke zkopírování obsah do privátní úložiště účet nebo místní úložiště. Můžete použít identifikátor URI SAS pomocí portálu Azure, Azure PowerShell, rozhraní příkazového řádku Azure nebo [AzCopy](../articles/storage/common/storage-use-azcopy.md)
 
 **Můžete vytvořit kopii Moje spravovaného disku?**
 

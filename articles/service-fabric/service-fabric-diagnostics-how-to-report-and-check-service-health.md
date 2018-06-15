@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208416"
 ---
 # <a name="report-and-check-service-health"></a>Hlášení a kontrola stavu služeb
 Pokud vaše služby dojde k potížím, budete moci reagovat na a opravte incidentů a výpadky závisí na budete moci rychle zjistit problémy. Pokud hlášení problémů a selhání do Azure Service Fabric správce stavu z vašeho kódu služby můžete použít standardní stavu monitorování nástroje, které Service Fabric nabízí zkontrolovat stav.

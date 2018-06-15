@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32190891"
 ---
 # <a name="load-contoso-retail-data-to-azure-sql-data-warehouse"></a>Načíst data o maloobchodním Contoso do Azure SQL Data Warehouse
 

@@ -17,6 +17,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206316"
 ---
 # <a name="azure-service-fabric-hosting-model"></a>Model hostování Azure Service Fabric
 Tento článek obsahuje přehled hostování modely, které poskytuje Azure Service Fabric aplikace a popisuje rozdíly mezi **sdílený proces** a **výhradní proces** modelů. Popisuje, jak vypadá nasazené aplikace na uzlu Service Fabric a vztah mezi repliky (nebo instance) služby a proces hostitele služby.

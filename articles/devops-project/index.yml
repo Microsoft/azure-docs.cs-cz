@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 05/07/2018
+  ms.locfileid: "33778643"
 abstract:
   description: Azure DevOps Project představuje zjednodušené prostředí, kam můžete přenést váš stávající kód a úložiště Git a kde si můžete vybrat jednu z ukázkových aplikací pro vytvoření kanálu kontinuální integrace (CI) a průběžného doručování (CD) do Azure.
   aside:

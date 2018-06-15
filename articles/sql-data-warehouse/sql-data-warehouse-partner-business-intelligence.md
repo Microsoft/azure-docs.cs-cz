@@ -15,6 +15,7 @@ ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2018
+ms.locfileid: "32191712"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL Data Warehouse business intelligence partnery
 K vytvoření řešení začátku do konce datového skladu, vyberte z široké škály špičkový nástroje.  Tento článek označuje partnerských společností Microsoft s řešení pro business intelligence (BI) podporuje Azure SQL Data Warehouse.

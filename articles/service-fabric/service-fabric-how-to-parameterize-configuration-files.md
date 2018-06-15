@@ -17,6 +17,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207814"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Postupy: Parametrizace konfigurační soubory v Service Fabric
 

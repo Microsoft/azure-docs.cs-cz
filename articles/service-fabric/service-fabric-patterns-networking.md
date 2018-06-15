@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207219"
 ---
 # <a name="service-fabric-networking-patterns"></a>Vzory sítě Service Fabric
 Cluster Azure Service Fabric může integrovat další funkce Azure sítě. V tomto článku jsme ukazují, jak vytvořit clustery, které používají následující funkce:

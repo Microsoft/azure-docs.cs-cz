@@ -13,6 +13,7 @@ ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "34012811"
 ---
 1. Klikněte **Connect** tlačítko na stránce vlastností virtuálního počítače. 
 2. V **připojit k virtuálnímu počítači** , zachovat, vyberte požadované možnosti a klikněte na tlačítko **soubor RDP Stáhnout**.

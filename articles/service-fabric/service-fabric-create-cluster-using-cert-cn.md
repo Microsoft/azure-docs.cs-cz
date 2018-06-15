@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34211061"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Nasadit cluster Service Fabric, která používá běžný název certifikátu místo kryptografický otisk
 Dva certifikáty, může mít stejné kryptografický otisk, což znesnadňuje clusteru certifikáty vyměnit nebo správu. Více certifikátů, však může mít stejný běžný název nebo předmětu.  Cluster pomocí certifikátu běžné názvy usnadňuje správu certifikátů mnohem jednodušší. Tento článek popisuje, jak nasadit cluster Service Fabric používat běžný název certifikátu místo kryptografický otisk certifikátu.

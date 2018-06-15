@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34207294"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
 Azure Service Fabric zavádí stavu model, který poskytuje bohatý, flexibilní a rozšiřitelný stavu vyhodnocení a vytváření sestav. Model umožňuje téměř v reálném čase monitorování stavu clusteru a služby spuštěné v ní. Můžete snadno získat informace o stavu a opravte potenciální problémy předtím, než v kaskádě a způsobit masivní výpadků. V typické modelu služby odesílat sestavy založené na jejich místní zobrazení, a že informace se shromažďují zajistit celkovou clusteru úrovni zobrazení.

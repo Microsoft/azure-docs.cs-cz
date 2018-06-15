@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208749"
 ---
 # <a name="testability-scenarios"></a>Testovatelnosti scénáře
 Velkých distribuovaných systémech stejně, jako jsou ze své podstaty nespolehlivé cloudových infrastruktur. Azure Service Fabric nabízí vývojářům možnost zapisovat spuštění nad nespolehlivé infrastruktury služeb. Chcete-li potřebovat vývojáři mohli vyvolat takovou nespolehlivé infrastrukturu k testování stabilitu své služby zápisu vysoce kvalitních služeb.

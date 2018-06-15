@@ -10,9 +10,10 @@ ms.author: tomfitz
 ms.custom: include file
 ms.openlocfilehash: c04514218c7ed8dfd72b94345d2deb88e663fda1
 ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29529975"
 ---
 [Azure zásady](/azure/azure-policy/) nápovědy byste si ověřit, všechny prostředky v předplatném splňovat firemními standardy. Pomocí zásad můžete snížit náklady na omezení možnosti nasazení pouze tyto typy prostředků a skladových položek, které jsou schváleny. Můžete definovat pravidla a akce pro vaše prostředky a tato pravidla se vynucují automaticky během nasazení. Například můžete řídit typy prostředků, které jsou nasazeny. Nebo můžete omezit schválené umístění pro prostředky. Některé zásady Odepřít akce a některé zásady, nastavit auditování akce.
 

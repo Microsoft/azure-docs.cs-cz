@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156122"
 ---
 # <a name="federation-metadata"></a>Metadata federování
 Azure Active Directory (Azure AD) publikuje dokumentu metadat federace pro služby nakonfigurovaný tak, aby přijímal tokeny zabezpečení, které Azure AD vydá. Formát dokumentu metadat federace je popsaný v tématu [Web Services Federation Language (WS-Federation) verze 1.2](http://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), který rozšiřuje [Metadata pro v2.0 OASIS Security Assertion Markup Language (SAML)](http://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).

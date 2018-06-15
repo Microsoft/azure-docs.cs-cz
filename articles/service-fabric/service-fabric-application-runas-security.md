@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212394"
 ---
 # <a name="run-a-service-as-a-local-user-account-or-local-system-account"></a>Spuštění služby jako účet místního uživatele nebo místní systémový účet
 Pomocí Azure Service Fabric můžete zabezpečit aplikace, které jsou spuštěny v clusteru v rámci jiné uživatelské účty. Ve výchozím nastavení se aplikace Service Fabric běžet pod účtem, proces Fabric.exe kompatibilní se. Service Fabric taky poskytuje možnost spouštět aplikace pod účtem místního uživatele nebo systému. Typy účtů podporovaný místní systém **LocalUser**, **NetworkService**, **LocalService**, a **LocalSystem**.  Pokud používáte Service Fabric na samostatné clusteru se systémem Windows, můžete spustit službu pod [účtů domény služby Active Directory](service-fabric-run-service-as-ad-user-or-group.md) nebo [skupiny účty spravované služby](service-fabric-run-service-as-gmsa.md).

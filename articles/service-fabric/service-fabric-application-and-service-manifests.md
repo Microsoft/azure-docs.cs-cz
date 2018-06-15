@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208467"
 ---
 # <a name="service-fabric-application-and-service-manifests"></a>Manifestů služby a aplikace Service Fabric
 Tento článek popisuje, jak Service Fabric aplikace a služby jsou určené a verzí pomocí ApplicationManifest.xml a ServiceManifest.xml souborů.  Schéma XML pro tyto soubory manifestu je popsána v [dokumentace schématu ServiceFabricServiceModel.xsd](service-fabric-service-model-schema.md).

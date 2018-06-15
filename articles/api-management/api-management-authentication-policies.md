@@ -1,11 +1,11 @@
 ---
-title: "Zásady ověřování Azure API Management | Microsoft Docs"
-description: "Další informace o zásady ověřování, která je k dispozici pro použití v Azure API Management."
+title: Zásady ověřování Azure API Management | Microsoft Docs
+description: Další informace o zásady ověřování, která je k dispozici pro použití v Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 061702a7-3a78-472b-a54a-f3b1e332490d
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/04/2017
+ms.locfileid: "26127755"
 ---
 # <a name="api-management-authentication-policies"></a>Zásady ověřování služby API Management
 Toto téma obsahuje odkaz pro následující zásady služby API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady ve službě API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  

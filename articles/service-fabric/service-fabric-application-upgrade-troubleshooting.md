@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34212734"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Řešení potíží s upgrady aplikací
 Tento článek popisuje některé běžné problémy, týkající se upgradu aplikace Azure Service Fabric a způsob jejich řešení.

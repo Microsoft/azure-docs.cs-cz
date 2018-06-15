@@ -21,6 +21,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33763729"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Použití vlastní image Dockeru pro službu Web App for Containers
 

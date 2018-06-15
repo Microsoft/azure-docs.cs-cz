@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205966"
 ---
 # <a name="service-fabric-programming-model-overview"></a>Přehled modelu programování Service Fabric
 Service Fabric nabízí několik způsobů, jak zapsat a spravovat vaše služby. Služby můžete plně využít výhod funkcí a architektur aplikací platformu pomocí rozhraní API služby prostředků infrastruktury. Služby mohou být také kompilované spustitelné programy vytvořené v libovolném jazyce nebo kód spuštěný v kontejneru hostovaná v clusteru Service Fabric.

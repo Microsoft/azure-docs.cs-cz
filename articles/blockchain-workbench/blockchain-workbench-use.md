@@ -5,16 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 4/26/2018
+ms.date: 5/16/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 8732d1b87acaa6673ae92b3302fb257dcb134217
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: b15d4980875b805b49f7dc1cdb941e607232f3cb
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34258035"
 ---
 # <a name="using-applications-in-azure-blockchain-workbench"></a>Použití aplikace v Azure Blockchain Workbench
 
@@ -33,7 +34,7 @@ Musíte se přihlásit jako člen skupiny Blockchain Workbench. Pokud nejsou uve
 
 ## <a name="create-new-contract"></a>Vytvoření nové smlouvy. 
 
-Pokud chcete vytvořit nové smlouvy, musíte být členem skupiny **AllowedInstanceRoles** role. 
+Pokud chcete vytvořit nové smlouvy, musíte být členem zadané jako kontrakt **iniciátor**. Definování aplikační role a iniciátory pro kontrakt informace najdete v tématu [pracovních postupů v Přehled konfigurace](blockchain-workbench-configuration-overview.md#workflows). Informace o přiřazování členy aplikačních rolí najdete v tématu [přidat člena do aplikace](blockchain-workbench-manage-users.md#add-member-to-application).
 
 1. V oddílu aplikací Blockchain Workbench vyberte dlaždici aplikace, která obsahuje smlouvu, kterou chcete vytvořit. Zobrazí se seznam aktivních smluv.
 
@@ -50,6 +51,8 @@ Pokud chcete vytvořit nové smlouvy, musíte být členem skupiny **AllowedInst
     ![Seznam aktivních smluv](media/blockchain-workbench-use/active-contracts.png)
 
 ## <a name="take-action-on-contract"></a>Provést akci pro kontraktu
+
+V závislosti na stavu je kontrakt, členy jde provádět akce pro přechod na další stav kontraktu. Akce jsou definovány jako [přechody](blockchain-workbench-configuration-overview.md#transitions) v rámci [stavu](blockchain-workbench-configuration-overview.md#states). Členové, které patří do povolené aplikace nebo instanci role pro přechod může trvat akce. 
 
 1. V oddílu aplikací Blockchain Workbench vyberte dlaždici aplikace, která obsahuje kontrakt provést akci.
 2. V seznamu vyberte kontrakt. Podrobnosti o smlouvě se zobrazují v různých oddílů. 

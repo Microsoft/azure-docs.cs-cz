@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34209048"
 ---
 # <a name="notes-on-service-fabric-reliable-actors-type-serialization"></a>Poznámky k Service Fabric Reliable Actors zadejte serializace
 Argumenty všech metod, typy výsledků úlohy vrácený jednotlivých metod v objektu actor rozhraní a musí být objekty uložené ve Správci stavu objektu actor [kontraktů dat serializovatelný](/dotnet/framework/wcf/feature-details/types-supported-by-the-data-contract-serializer). To platí také pro argumenty metody definované v [objektu actor událostí rozhraní](service-fabric-reliable-actors-events.md). (Metody rozhraní události objektu actor vždy vracet typ void.)

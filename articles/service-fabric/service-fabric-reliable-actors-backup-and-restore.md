@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206862"
 ---
 # <a name="implement-reliable-actors-backup-and-restore"></a>Implementace Reliable Actors zálohování a obnovení
 V následujícím příkladu, zpřístupní služby objektu actor vlastní metodu zálohování dat objektu actor využívat výhod naslouchacího procesu vzdálené komunikace, která je již v `ActorService`:

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34210490"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Spuštění skriptu spuštění služby jako místní uživatel nebo systémový účet
 Před spuštění spustitelného souboru služby Service Fabric může být nutné spustit pracovní některé konfigurace nebo instalační program.  Například konfigurace proměnné prostředí. Můžete určit skript běžet před spustitelný soubor služby spuštění v service manifest pro službu. Tím, že nakonfigurujete zásadu RunAs pro instalační program Vstupní bod služby, že můžete změnit účet, který instalačního programu běží pod.  Vstupní bod samostatného instalačního umožňuje spustit vysokou privilged konfigurace na krátkou dobu, spustitelný soubor hostitele služby nemusí spustit s vysokou úrovní oprávnění pro dlouhou dobu.

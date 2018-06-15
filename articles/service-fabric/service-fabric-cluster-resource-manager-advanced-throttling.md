@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205123"
 ---
 # <a name="throttling-the-service-fabric-cluster-resource-manager"></a>Omezení správce prostředků clusteru Service Fabric
 I v případě, že správce prostředků clusteru jste správně nakonfigurovaný, můžete získat dojde k narušení clusteru. Například může být současně uzel a selhání domény selhání - co by mohlo dojít, pokud, ke kterým došlo během upgradu? Správce prostředků clusteru se vždy pokusí opravit vše, využívání prostředků clusteru pokusu reorganizovat a opravte clusteru. Omezení zajišťuje backstop tak, aby cluster může používat prostředky na stabilizaci – uzly vraťte retušovat síťové oddíly, nasadí opravené bits.

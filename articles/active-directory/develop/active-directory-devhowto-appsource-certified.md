@@ -17,11 +17,12 @@ ms.date: 08/03/2017
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: 72516ce84fc9a4cf2657548be4ef98e75e46d550
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 844c19803f57987f4435d013cd12aa3d1ef8aeb8
+ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257527"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Jak získat AppSource certifikované pro Azure Active Directory
 [Microsoft AppSource](https://appsource.microsoft.com/) je cíl pro firmy uživatelům zjišťovat, zkuste a spravovat-obchodní aplikace SaaS (samostatný SaaS a rozšíření na existující produktů Microsoft SaaS).
@@ -43,7 +44,7 @@ Chcete-li povolit více klientů ve vaší aplikaci:
 Další informace o víceklientské najdete v tématu: [jak se přihlásit žádné uživatele Azure Active Directory (AD) pomocí vzoru víceklientské aplikace](./active-directory-devhowto-multi-tenant-overview.md).
 
 ### <a name="single-tenant-applications"></a>Single klientské aplikace
-Aplikace, které přijímají pouze přihlášení z uživatelů definovaných instance služby Azure Active Directory se označují jako *jednoho klienta aplikace*. Externí uživatelé (včetně pracovní nebo školní účty z jiných organizací, nebo osobní účet) se můžete přihlásit k aplikaci jednoho klienta po přidání každého uživatele jako *účtu guest* k instanci služby Azure Active Directory, že aplikace je zaregistrován. Jako účet hosta. můžete přidat uživatele do služby Azure Active Directory pomocí [ *spolupráce Azure AD B2B* ](../active-directory-b2b-what-is-azure-ad-b2b.md) - a je možné ji provést [programově](../active-directory-b2b-code-samples.md). Když přidáte uživatele jako účet guest do Azure Active Directory, pozvánka e-mail je odeslán uživateli, který má k přijetí pozvánky kliknutím na odkaz v e-mailová pozvánka. Pozvánky, které se odesílají do dalšího uživatele v organizaci pozváním, která je také členem partnerské organizace nejsou muset přijmout pozvánku k přihlášení.
+Aplikace, které přijímají pouze přihlášení z uživatelů definovaných instance služby Azure Active Directory se označují jako *jednoho klienta aplikace*. Externí uživatelé (včetně pracovní nebo školní účty z jiných organizací, nebo osobní účet) se můžete přihlásit k aplikaci jednoho klienta po přidání každého uživatele jako *účtu guest* k instanci služby Azure Active Directory, že aplikace je zaregistrován. Jako účet hosta. můžete přidat uživatele do služby Azure Active Directory pomocí [ *spolupráce Azure AD B2B* ](../b2b/what-is-b2b.md) - a je možné ji provést [programově](../b2b/code-samples.md). Když přidáte uživatele jako účet guest do Azure Active Directory, pozvánka e-mail je odeslán uživateli, který má k přijetí pozvánky kliknutím na odkaz v e-mailová pozvánka. Pozvánky, které se odesílají do dalšího uživatele v organizaci pozváním, která je také členem partnerské organizace nejsou muset přijmout pozvánku k přihlášení.
 
 Můžete povolit jeden klienta aplikace *kontaktujte mi* prostředí, ale pokud chcete povolit jedním kliknutím / bezplatné zkušební prostředí, které doporučuje AppSource, povolte víceklientský ve vaší aplikaci místo.
 

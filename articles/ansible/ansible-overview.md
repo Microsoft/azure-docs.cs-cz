@@ -1,8 +1,8 @@
 ---
-title: "Ansible pomocí Azure"
-description: "Úvod do používání Ansible k automatizuje zřizování cloudu, správu konfigurace a nasazení aplikací."
+title: Ansible pomocí Azure
+description: Úvod do používání Ansible k automatizuje zřizování cloudu, správu konfigurace a nasazení aplikací.
 ms.service: ansible
-keywords: "ansible, azure, devops, přehled, cloudu zřizování, Správa konfigurace, nasazení aplikace, ansible moduly, ansible playbooks"
+keywords: ansible, azure, devops, přehled, cloudu zřizování, Správa konfigurace, nasazení aplikace, ansible moduly, ansible playbooks
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
@@ -13,6 +13,7 @@ ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/29/2018
+ms.locfileid: "28212103"
 ---
 # <a name="ansible-with-azure"></a>Ansible s Azure
 

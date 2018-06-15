@@ -19,6 +19,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165124"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Sdílet řídicí panely Azure pomocí řízení přístupu na základě Role
 Po dokončení konfigurace na řídicí panel, můžete ji publikovat a sdílet s jinými uživateli ve vaší organizaci. Můžete povolit zobrazení řídicího panelu pomocí služby Azure [řízení přístupu na základě Role](../role-based-access-control/role-assignments-portal.md). Přiřadíte roli uživatele nebo skupinu uživatelů, a tato role definuje, zda uživatelům, můžete zobrazit nebo upravit publikované řídicího panelu. 
