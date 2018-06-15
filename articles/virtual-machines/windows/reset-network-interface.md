@@ -19,6 +19,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34160678"
 ---
 # <a name="how-to-reset-network-interface-for-azure-windows-vm"></a>Postup resetování síťové rozhraní virtuálního počítače Windows Azure 
 
