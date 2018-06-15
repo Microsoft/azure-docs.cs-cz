@@ -1,6 +1,6 @@
 ---
-title: "Ukázky v Azure CLI pro službu Azure Database for PostgreSQL"
-description: "Tento článek uvádí několik dostupných vzorových kódů Azure CLI pro práci se servery Azure Database for PostgreSQL."
+title: Ukázky v Azure CLI pro službu Azure Database for PostgreSQL
+description: Tento článek uvádí několik dostupných vzorových kódů Azure CLI pro práci se servery Azure Database for PostgreSQL.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -16,6 +16,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29688118"
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql"></a>Ukázky v Azure CLI pro službu Azure Database for PostgreSQL 
 Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro službu Azure Database for PostgreSQL.

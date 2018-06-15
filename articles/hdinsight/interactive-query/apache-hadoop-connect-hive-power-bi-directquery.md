@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31407958"
 ---
 # <a name="visualize-interactive-query-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>Vizualizovat data interaktivní Hive dotaz s Microsoft Power BI pomocí přímých dotazů v Azure HDInsight
 
@@ -43,7 +44,7 @@ Tabulka hivesampletable Hive obsahuje všechny clustery HDInsight.
 
     ![Otevřete data HDInsight Power BI](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
 3. Z **načíst Data** podokně, typ **hdinsight** do vyhledávacího pole. Pokud nevidíte **HDInsight interaktivní dotazu (Beta)**, budete muset aktualizovat vaše Power BI Desktop na nejnovější verzi.
-4. Klikněte na tlačítko **HDInsight interaktivní dotazu (Beta)**a potom klikněte na **Connect**.
+4. Klikněte na tlačítko **HDInsight interaktivní dotazu (Beta)** a potom klikněte na **Connect**.
 5. Klikněte na tlačítko **pokračovat** zavřete **Preview konektor** dialogové okno s upozorněním.
 6. Z **HDInsight interaktivní dotazu**, vyberte nebo zadejte následující informace:
 

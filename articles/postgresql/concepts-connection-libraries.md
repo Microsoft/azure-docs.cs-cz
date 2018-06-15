@@ -1,6 +1,6 @@
 ---
-title: "Knihovny připojení pro databázi Azure pro PostgreSQL"
-description: "Tento článek popisuje několik knihovny a ovladače, vývojáři mohou použít při kódování aplikace k připojení a dotazování databáze Azure pro PostgreSQL."
+title: Knihovny připojení pro databázi Azure pro PostgreSQL
+description: Tento článek popisuje několik knihovny a ovladače, vývojáři mohou použít při kódování aplikace k připojení a dotazování databáze Azure pro PostgreSQL.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687002"
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Knihovny připojení pro databázi Azure pro PostgreSQL
 V tomto článku jsou uvedené knihovny a ovladače, které mohou vývojáři použít k vývoji aplikací a připojení k dotazování databáze Azure pro PostgreSQL.

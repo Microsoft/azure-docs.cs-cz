@@ -1,6 +1,6 @@
 ---
-title: "Sledování v Azure databázi PostgreSQL"
-description: "Tento článek popisuje metriky pro monitorování a generování výstrah pro databázi Azure pro PostgreSQL, včetně statistik využití procesoru, úložiště a připojení."
+title: Sledování v Azure databázi PostgreSQL
+description: Tento článek popisuje metriky pro monitorování a generování výstrah pro databázi Azure pro PostgreSQL, včetně statistik využití procesoru, úložiště a připojení.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687604"
 ---
 # <a name="monitoring-in-azure-database-for-postgresql"></a>Sledování v Azure databázi PostgreSQL
 Data o serverech monitorování pomáhá řešení a optimalizovat pro úlohy. Azure databázi PostgreSQL poskytuje různé metriky, které poskytují přehled o chování prostředků podporuje PostgreSQL server. 

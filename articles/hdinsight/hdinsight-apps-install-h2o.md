@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31402103"
 ---
 # <a name="install-published-application---h2o-sparkling-water"></a>Nainstalujte publikované aplikace – H2O šumivého horních
 

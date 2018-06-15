@@ -1,6 +1,6 @@
 ---
-title: "Databáze Azure pro pravidla brány firewall serveru PostgreSQL"
-description: "Tento článek popisuje pravidla brány firewall pro vaši databázi Azure pro PostgreSQL server."
+title: Databáze Azure pro pravidla brány firewall serveru PostgreSQL
+description: Tento článek popisuje pravidla brány firewall pro vaši databázi Azure pro PostgreSQL server.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29689883"
 ---
 # <a name="azure-database-for-postgresql-server-firewall-rules"></a>Databáze Azure pro pravidla brány firewall serveru PostgreSQL
 Azure databázi PostgreSQL serverová brána firewall brání veškerý přístup k databázovému serveru, dokud je určit, které počítače mají oprávnění. Brána firewall uděluje přístup k serveru na základě původní IP adresy každého požadavku.

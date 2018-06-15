@@ -1,6 +1,6 @@
 ---
-title: "Koncepty vysoké dostupnosti v databázi Azure pro PostgreSQL"
-description: "Tento článek obsahuje informace o vysoké dostupnosti při použití Azure databázi PostgreSQL."
+title: Koncepty vysoké dostupnosti v databázi Azure pro PostgreSQL
+description: Tento článek obsahuje informace o vysoké dostupnosti při použití Azure databázi PostgreSQL.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687078"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql"></a>Koncepty vysoké dostupnosti v databázi Azure pro PostgreSQL
 Databáze Azure pro službu PostgreSQL poskytuje zaručené vysokou dostupnost. Finančně zálohovány smlouvu o úrovni služeb (SLA) je 99,99 % při obecné dostupnosti. Není prakticky žádná aplikace výpadek při používání této služby.

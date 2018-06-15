@@ -1,12 +1,12 @@
 ---
-title: "Pomocí náročné virtuálních počítačích Azure Batch | Microsoft Docs"
-description: "Jak chcete využít výhod podporující RDMA nebo grafický procesor s podporou velikosti virtuálních počítačů ve fondech Azure Batch"
+title: Pomocí náročné virtuálních počítačích Azure Batch | Microsoft Docs
+description: Jak chcete využít výhod podporující RDMA nebo grafický procesor s podporou velikosti virtuálních počítačů ve fondech Azure Batch
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29762437"
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Používání podporující RDMA nebo grafický procesor s podporou instancí ve fondech Batch
 
