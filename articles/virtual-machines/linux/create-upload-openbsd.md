@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31424300"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Vytvořit a odeslat bitovou kopii disku OpenBSD do Azure
 Tento článek ukazuje, jak vytvořit a odeslat virtuální pevný disk (VHD), který obsahuje OpenBSD operační systém. Po odeslání, můžete ho použít jako vlastní image pro vytvoření virtuálního počítače (VM) v Azure pomocí rozhraní příkazového řádku Azure.

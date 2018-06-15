@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31425591"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Výpočetní srovnávacího testu skóre pro virtuální počítače s Linuxem
 Následující srovnávacího testu skóre CoreMark zobrazit výpočetní výkon systémem Ubuntu řazení pro virtuální počítač Azure vysoce výkonné. Výpočetní srovnávacího testu skóre jsou také k dispozici pro [virtuálních počítačů Windows](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

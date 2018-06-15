@@ -10,7 +10,7 @@ ms.author: v-mamcge
 ms.custom: include file
 ms.openlocfilehash: 5ffc16a4337c928cc166841e660cb0335c4d8b9e
 ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/08/2018
 ms.locfileid: "31432753"

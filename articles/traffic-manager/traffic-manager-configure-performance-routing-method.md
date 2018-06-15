@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace metody směrování výkonu provozu pomocí Azure Traffic Manageru | Microsoft Docs"
-description: "Tento článek vysvětluje, jak nakonfigurovat Traffic Manager přesměrovat provoz na koncový bod s nejnižší latencí"
+title: Konfigurace metody směrování výkonu provozu pomocí Azure Traffic Manageru | Microsoft Docs
+description: Tento článek vysvětluje, jak nakonfigurovat Traffic Manager přesměrovat provoz na koncový bod s nejnižší latencí
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876310"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>Konfigurace metody směrování provozu výkonu
 

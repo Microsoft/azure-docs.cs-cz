@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31426899"
 ---
 # <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Spuštění a zastavení Azure zásobníku Development Kit (ASDK)
 Není doporučeno jednoduše restartujte ASDK hostitelský počítač. Místo toho by měla podle postupů v tomto článku správně vypnutí a restartování služby ASDK. 

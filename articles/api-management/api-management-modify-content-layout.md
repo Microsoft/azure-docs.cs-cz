@@ -1,11 +1,11 @@
 ---
-title: "Úprava obsahu stránek na portálu pro vývojáře ve službě Azure API Management | Dokumentace Microsoftu"
-description: "Naučte se upravovat obsah stránek na portálu pro vývojáře ve službě Azure API Management."
+title: Úprava obsahu stránek na portálu pro vývojáře ve službě Azure API Management | Dokumentace Microsoftu
+description: Naučte se upravovat obsah stránek na portálu pro vývojáře ve službě Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: antonba
 manager: vlvinogr
-editor: 
+editor: ''
 ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29377795"
 ---
 # <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Úprava obsahu a rozložení stránek na portálu pro vývojáře ve službě Azure API Management
 Existují tři základní způsoby, kterými jde přizpůsobit portál pro vývojáře ve službě Azure API Management:

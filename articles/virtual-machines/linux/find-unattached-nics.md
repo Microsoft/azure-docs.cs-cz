@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31426955"
 ---
 # <a name="how-to-find-and-delete-unattached-network-interface-cards-nics-for-azure-vms"></a>Postup nalezení a odstranění Odpojit síťové karty pro virtuální počítače Azure
 Při odstranění virtuálního počítače (VM) v Azure, nebudou odstraněny karty síťového rozhraní (NIC) ve výchozím nastavení. Je-li vytvářet a odstraňovat víc virtuálních počítačů, nepoužívané síťové adaptéry nadále používat interní zapůjčení IP adres. Při vytváření další síťové adaptéry virtuálních počítačů, mohou nelze získat zapůjčení IP do adresního prostoru podsítě. Tento článek ukazuje, jak vyhledat a odstranit Odpojit síťové adaptéry.

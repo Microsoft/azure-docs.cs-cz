@@ -1,12 +1,12 @@
 ---
-title: "Spravovat zásady zálohování řady StorSimple 8000 | Microsoft Docs"
-description: "Vysvětluje, jak je možné použít službu StorSimple Manager zařízení k vytváření a správě ručního zálohování, plánů zálohování a uchovávání záloh na zařízení řady StorSimple 8000."
+title: Spravovat zásady zálohování řady StorSimple 8000 | Microsoft Docs
+description: Vysvětluje, jak je možné použít službu StorSimple Manager zařízení k vytváření a správě ručního zálohování, plánů zálohování a uchovávání záloh na zařízení řady StorSimple 8000.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874868"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-manage-backup-policies"></a>Použít službu StorSimple Manager zařízení na portálu Azure ke správě zásady zálohování
 

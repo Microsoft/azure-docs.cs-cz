@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace ke spravovaným aplikacím Azure"
+title: Dokumentace ke spravovaným aplikacím Azure
 metadata:
-  title: "Dokumentace ke spravovaným aplikacím Azure – kurzy, reference k rozhraní API"
-  description: "Spravované aplikace Azure využijte k publikování cloudových řešení, jejichž údržba je pro zákazníky jednodušší."
+  title: Dokumentace ke spravovaným aplikacím Azure – kurzy, reference k rozhraní API
+  description: Spravované aplikace Azure využijte k publikování cloudových řešení, jejichž údržba je pro zákazníky jednodušší.
   services: managed-applications
   author: tfitzmac
   manager: timlt
@@ -18,13 +18,14 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 01/12/2018
+  ms.locfileid: "27779563"
 abstract:
-  description: "Spravované aplikace Azure umožňují nabízet vaše cloudová řešení interním i externím zákazníkům. Definujete infrastrukturu pro příslušné řešení a podmínky pro jeho průběžnou správu. Fakturace pro vaše řešení se zpracovává prostřednictvím fakturace Azure."
+  description: Spravované aplikace Azure umožňují nabízet vaše cloudová řešení interním i externím zákazníkům. Definujete infrastrukturu pro příslušné řešení a podmínky pro jeho průběžnou správu. Fakturace pro vaše řešení se zpracovává prostřednictvím fakturace Azure.
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Naučte se publikovat a nasazovat spravované aplikace."
+    text: Naučte se publikovat a nasazovat spravované aplikace.
   - type: list
     style: icon48
     items:
@@ -32,24 +33,24 @@ sections:
         src: /azure/managed-applications/media/index/cli.svg
       text: Azure CLI
       href: /azure/managed-applications/managed-apps-quickstart-cli
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Naučte se vyvíjet spravované aplikace a nabízet je prostřednictvím Azure Marketplace."
+    text: Naučte se vyvíjet spravované aplikace a nabízet je prostřednictvím Azure Marketplace.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/managed-applications/publish-service-catalog-app\">Publikování spravované aplikace pro interní uživatele</a>"
-    - html: "<a href=\"/azure/managed-applications/publish-marketplace-app\">Publikování spravované aplikace pro externí uživatele</a>"
+    - html: <a href="/azure/managed-applications/publish-service-catalog-app">Publikování spravované aplikace pro interní uživatele</a>
+    - html: <a href="/azure/managed-applications/publish-marketplace-app">Publikování spravované aplikace pro externí uživatele</a>
 - title: Odkaz
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "Příkazový řádek"
+    - title: Příkazový řádek
       html: <p><a href="/cli/azure/managedapp">Azure CLI</a></p><p><a href="/powershell/module/azurerm.resources">PowerShell</a></p>
-    - title: "Rozhraní REST API"
+    - title: Rozhraní REST API
       html: <p><a href="/rest/api/resources/">REST</a></p>
-    - title: "Uživatelské rozhraní"
-      html: "<p><a href=\"/azure/managed-applications/create-uidefinition-elements\">Prvky uživatelského rozhraní</a></p><p><a href=\"/azure/managed-applications/create-uidefinition-functions\">Funkce uživatelského rozhraní</a></p>"
+    - title: Uživatelské rozhraní
+      html: <p><a href="/azure/managed-applications/create-uidefinition-elements">Prvky uživatelského rozhraní</a></p><p><a href="/azure/managed-applications/create-uidefinition-functions">Funkce uživatelského rozhraní</a></p>

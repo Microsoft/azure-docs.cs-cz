@@ -13,6 +13,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31433245"
 ---
 Chcete Ujistěte se, že uživatelé ve vaší organizaci mají správnou úroveň přístupu na tyto prostředky. Nechcete, aby uživatelům udělit neomezený přístup, ale musíte také zkontrolujte, zda že mohou provádět práci. Řízení přístupu na základě role (RBAC) umožňuje spravovat uživatele, kteří mají oprávnění k dokončení určitých akcí u oboru. Role definuje sadu povolených akcí. Obor přiřazení role a zadat uživatele, kteří patří do této role pro obor.
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31414089"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Zabezpečení na úrovni řádků s Power BI prostoru kolekce
 

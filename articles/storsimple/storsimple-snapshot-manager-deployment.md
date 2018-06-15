@@ -1,11 +1,11 @@
 ---
-title: "Nasazení Snapshot Manager zařízení StorSimple | Microsoft Docs"
-description: "Zjistěte, jak stáhnout a nainstalovat Snapshot Manager zařízení StorSimple, modul snap-in konzoly MMC pro správu funkce pro ochranu a zálohování dat StorSimple."
+title: Nasazení Snapshot Manager zařízení StorSimple | Microsoft Docs
+description: Zjistěte, jak stáhnout a nainstalovat Snapshot Manager zařízení StorSimple, modul snap-in konzoly MMC pro správu funkce pro ochranu a zálohování dat StorSimple.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f0128f57-519e-49ec-9187-23575809cdbe
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876317"
 ---
 # <a name="deploy-the-storsimple-snapshot-manager-mmc-snap-in"></a>Nasazení modulu snap-in konzoly MMC Snapshot Manager zařízení StorSimple
 

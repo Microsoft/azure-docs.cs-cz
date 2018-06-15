@@ -1,6 +1,6 @@
 ---
-title: "Skupiny dostupnosti SQL serveru – virtuální počítače Azure – přehled | Microsoft Docs"
-description: "Tento článek představuje skupin dostupnosti SQL Server na virtuálních počítačích Azure."
+title: Skupiny dostupnosti SQL serveru – virtuální počítače Azure – přehled | Microsoft Docs
+description: Tento článek představuje skupin dostupnosti SQL Server na virtuálních počítačích Azure.
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29396427"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Představení skupiny dostupnosti SQL serveru Always On na virtuálních počítačích Azure #
 

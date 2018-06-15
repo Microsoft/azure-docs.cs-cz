@@ -1,12 +1,12 @@
 ---
-title: "Nahraďte baterie na zařízení řady Microsoft Azure StorSimple 8000 | Microsoft Docs"
-description: "Popisuje, jak odebrat, nahraďte a udržovat modul zálohování baterie zařízení StorSimple."
+title: Nahraďte baterie na zařízení řady Microsoft Azure StorSimple 8000 | Microsoft Docs
+description: Popisuje, jak odebrat, nahraďte a udržovat modul zálohování baterie zařízení StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27742809"
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Nahraďte modul zálohování baterie zařízení StorSimple
 

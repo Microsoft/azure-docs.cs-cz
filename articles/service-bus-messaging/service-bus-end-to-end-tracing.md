@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus začátku do konce trasování a diagnostiku | Microsoft Docs"
-description: "Přehled služby Service Bus klient diagnostiky a začátku do konce trasování"
+title: Azure Service Bus začátku do konce trasování a diagnostiku | Microsoft Docs
+description: Přehled služby Service Bus klient diagnostiky a začátku do konce trasování
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: lmolkova
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27741332"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Distribuované trasování a korelace prostřednictvím zasílání zpráv Service Bus
 

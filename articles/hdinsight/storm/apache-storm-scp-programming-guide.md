@@ -18,6 +18,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31421551"
 ---
 # <a name="scp-programming-guide"></a>Průvodce programováním spojovací bod služby
 Spojovací bod služby je platforma pro sestavení v reálném čase, spolehlivou a konzistentní a zpracování dat vysoce výkonné aplikace. Je založen na [Apache Storm](http://storm.incubator.apache.org/) – systém navrhovány komunit OSS zpracování datového proudu. Storm je určen podle Nathan Marz a byla open source pomocí služby Twitter. Využívá [Apache ZooKeeper](http://zookeeper.apache.org/), jiného projektu Apache umožňující vysoce spolehlivé distribuované správy koordinace a stavu. 

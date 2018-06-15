@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Dokumentace ke službě API Management"
+title: Dokumentace ke službě API Management
 metadata:
-  title: "Dokumentace ke službě Azure API Management – kurzy, reference k rozhraní API | Dokumentace Microsoftu"
-  description: "Naučte se využívat API Management k bezpečnému a škálovanému publikování rozhraní API vývojářům ze strany externích dodavatelů, partnerů i zaměstnanců. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy vytváření a správy moderních bran rozhraní API pro stávající back-endové služby, ať už jsou hostované kdekoli."
+  title: Dokumentace ke službě Azure API Management – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+  description: Naučte se využívat API Management k bezpečnému a škálovanému publikování rozhraní API vývojářům ze strany externích dodavatelů, partnerů i zaměstnanců. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy vytváření a správy moderních bran rozhraní API pro stávající back-endové služby, ať už jsou hostované kdekoli.
   services: api-management
   author: czeumault
   manager: carolz
@@ -18,45 +18,46 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 01/12/2018
+  ms.locfileid: "27786692"
 abstract:
-  description: "Naučte se využívat API Management k bezpečnému a škálovanému publikování rozhraní API vývojářům ze strany externích dodavatelů, partnerů i zaměstnanců. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy vytváření a správy moderních bran rozhraní API pro stávající back-endové služby, ať už jsou hostované kdekoli."
+  description: Naučte se využívat API Management k bezpečnému a škálovanému publikování rozhraní API vývojářům ze strany externích dodavatelů, partnerů i zaměstnanců. Kurzy, reference k rozhraní API a další dokumentace ukazují postupy vytváření a správy moderních bran rozhraní API pro stávající back-endové služby, ať už jsou hostované kdekoli.
 sections:
-- title: "Zprovoznění během 5 minut"
+- title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: "Vytvoření instance API Managementu"
+    text: Vytvoření instance API Managementu
   - type: list
     style: icon48
     items:
     - image:
         src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
-      text: "Vytvoření instance – portál"
+      text: Vytvoření instance – portál
       href: /azure/api-management/get-started-create-service-instance
     - image:
         src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
-      text: "Vytvoření instance – PowerShell"
+      text: Vytvoření instance – PowerShell
       href: /azure/api-management/powershell-create-service-instance
-- title: "Podrobné kurzy"
+- title: Podrobné kurzy
   items:
   - type: paragraph
-    text: "Naučte se spravovat službu API Management."
+    text: Naučte se spravovat službu API Management.
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"/azure/api-management/import-and-publish\">Import a publikování vašeho prvního rozhraní API</a>"
-    - html: "<a href=\"/azure/api-management/api-management-howto-add-products\">Vytvoření a publikování produktu</a>"
-    - html: "<a href=\"/azure/api-management/mock-api-responses\">Napodobení odpovědí API</a>"
-    - html: "<a href=\"/azure/api-management/transform-api\">Transformace a ochrana vašeho rozhraní API</a>"
-    - html: "<a href=\"/azure/api-management/api-management-howto-use-azure-monitor\">Monitorování publikovaných rozhraní API</a>"
-    - html: "<a href=\"/azure/api-management/api-management-howto-api-inspector\">Ladění rozhraní API s využitím trasování požadavků</a>"
-    - html: "<a href=\"/azure/api-management/api-management-get-started-revise-api\">Použití revizí k bezpečnému provedení nevýznamných změn</a>"
-    - html: "<a href=\"/azure/api-management/api-management-get-started-publish-versions\">Publikování několika verzí vašeho rozhraní API</a>"
-    - html: "<a href=\"/azure/api-management/api-management-customize-styles\">Přizpůsobení stylu stránek portálu pro vývojáře</a>"
-- title: "Ukázky"
+    - html: <a href="/azure/api-management/import-and-publish">Import a publikování vašeho prvního rozhraní API</a>
+    - html: <a href="/azure/api-management/api-management-howto-add-products">Vytvoření a publikování produktu</a>
+    - html: <a href="/azure/api-management/mock-api-responses">Napodobení odpovědí API</a>
+    - html: <a href="/azure/api-management/transform-api">Transformace a ochrana vašeho rozhraní API</a>
+    - html: <a href="/azure/api-management/api-management-howto-use-azure-monitor">Monitorování publikovaných rozhraní API</a>
+    - html: <a href="/azure/api-management/api-management-howto-api-inspector">Ladění rozhraní API s využitím trasování požadavků</a>
+    - html: <a href="/azure/api-management/api-management-get-started-revise-api">Použití revizí k bezpečnému provedení nevýznamných změn</a>
+    - html: <a href="/azure/api-management/api-management-get-started-publish-versions">Publikování několika verzí vašeho rozhraní API</a>
+    - html: <a href="/azure/api-management/api-management-customize-styles">Přizpůsobení stylu stránek portálu pro vývojáře</a>
+- title: Ukázky
   items:
   - type: list
     style: unordered
     className: spaced noBullet
     items:
-    - html: "<a href=\"/azure/api-management/policy-samples\">Zásady</a>"
+    - html: <a href="/azure/api-management/policy-samples">Zásady</a>
     - html: <a href="/azure/api-management/powershell-samples">Azure PowerShell</a>

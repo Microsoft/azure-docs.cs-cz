@@ -1,11 +1,11 @@
 ---
-title: "42 znaky následované | Microsoft Docs"
-description: "Zobrazovaných na vyhledávacích webech pod názvem. Jsou zde umístěny, použijte popisnější vysvětlení než nadpis a další klíčová slova"
+title: 42 znaky následované | Microsoft Docs
+description: Zobrazovaných na vyhledávacích webech pod názvem. Jsou zde umístěny, použijte popisnější vysvětlení než nadpis a další klíčová slova
 services: service-name
 documentationcenter: dev-center-name
 author: GitHub-alias-of-only-one-author
 manager: manager-alias
-editor: 
+editor: ''
 tags: top-support-issue
 ms.service: required
 ms.devlang: may be required
@@ -19,6 +19,7 @@ ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/16/2018
+ms.locfileid: "23886250"
 ---
 # <a name="title-maximum-120-characters-target-the-primary-keyword"></a>Název (maximální 120 znaků, cílové primární – klíčové slovo)
 *V popisu použijte sekundární klíčová slova 2-3.*

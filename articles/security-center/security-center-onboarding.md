@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31416485"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Registrace k Azure Security Center Standard pro rozšířené zabezpečení
 Upgradujte Security Center standardní využívat výhod správy lepší zabezpečení a ochrana před internetovými útoky pro zatížení hybridní cloud.  Můžete zkusit Standard zdarma 60 dnů. Najdete v Centru zabezpečení [stránce s cenami](https://azure.microsoft.com/pricing/details/security-center/) Další informace.

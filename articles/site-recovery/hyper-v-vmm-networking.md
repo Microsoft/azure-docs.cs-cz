@@ -1,6 +1,6 @@
 ---
-title: "Nastavení IP adresy pro připojení k sekundární místní lokalitu po převzetí služeb při selhání s Azure Site Recovery | Microsoft Docs"
-description: "Popisuje postup nastavení IP adresy pro připojení k virtuální počítače v sekundární místní lokalitu po převzetí služeb při selhání Azure Site Recovery."
+title: Nastavení IP adresy pro připojení k sekundární místní lokalitu po převzetí služeb při selhání s Azure Site Recovery | Microsoft Docs
+description: Popisuje postup nastavení IP adresy pro připojení k virtuální počítače v sekundární místní lokalitu po převzetí služeb při selhání Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29378887"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>Nastavení IP adresy pro připojení k sekundární místní lokalitu po převzetí služeb při selhání
 

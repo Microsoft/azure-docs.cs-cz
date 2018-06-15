@@ -1,13 +1,13 @@
 ---
-title: "Úprava předpon adres IP brány místní sítě a adresa brány VPN | Azure | Portál | Microsoft Docs"
-description: "Tento článek vás provede změna předpony IP adresy pro bránu místní sítě pomocí portálu Azure."
+title: Úprava předpon adres IP brány místní sítě a adresa brány VPN | Azure | Portál | Microsoft Docs
+description: Tento článek vás provede změna předpony IP adresy pro bránu místní sítě pomocí portálu Azure.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23883821"
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Upravit nastavení brány místní sítě pomocí portálu Azure
 

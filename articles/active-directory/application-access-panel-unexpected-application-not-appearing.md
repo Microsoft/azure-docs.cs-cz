@@ -1,11 +1,11 @@
 ---
-title: "Přiřazená aplikace se nezobrazují na přístupovém panelu | Microsoft Docs"
-description: "Poradce při potížích se aplikace nejsou zobrazeny na přístupovém panelu"
+title: Přiřazená aplikace se nezobrazují na přístupovém panelu | Microsoft Docs
+description: Poradce při potížích se aplikace nejsou zobrazeny na přístupovém panelu
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29384112"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>Přiřazená aplikace se nezobrazují přístupového panelu
 
