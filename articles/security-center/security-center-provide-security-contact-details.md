@@ -1,11 +1,11 @@
 ---
-title: "Zadejte kontaktní údaje zabezpečení v Azure Security Center | Microsoft Docs"
-description: "Tento dokument ukazuje, jak zajistit zabezpečení kontaktní údaje v Azure Security Center."
+title: Zadejte kontaktní údaje zabezpečení v Azure Security Center | Microsoft Docs
+description: Tento dokument ukazuje, jak zajistit zabezpečení kontaktní údaje v Azure Security Center.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 26b5dcb4-ce3f-4f22-8d56-d2bf743cfc90
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866524"
 ---
 # <a name="provide-security-contact-details-in-azure-security-center"></a>Zadejte kontaktní údaje zabezpečení v Azure Security Center
 Azure Security Center doporučí, pokud jste to ještě neudělali zadejte kontaktní údaje zabezpečení pro vaše předplatné Azure. Prostřednictvím tohoto kontaktu se na vás společnost Microsoft obrátí, pokud středisko Microsoft Security Response Center (MSRC) zjistí, že k datům zákazníka nezákonně nebo neoprávněně přistupovala třetí strana. Střediska MSRC provádí sledování zabezpečení vyberte síť Azure a infrastruktury a přijímá stížností intelligence a zneužití ohrožení od jiných výrobců.

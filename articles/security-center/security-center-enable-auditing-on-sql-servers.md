@@ -1,11 +1,11 @@
 ---
-title: "Povolení auditování a zjišťování hrozeb na serverech SQL v Azure Security Center | Microsoft Docs"
-description: "Tento dokument se dozvíte, jak provést doporučení Azure Security Center ** povolení auditování a detekce hrozeb na SQL servery **."
+title: Povolení auditování a zjišťování hrozeb na serverech SQL v Azure Security Center | Microsoft Docs
+description: Tento dokument se dozvíte, jak provést doporučení Azure Security Center ** povolení auditování a detekce hrozeb na SQL servery **.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 042fca4d-7dab-4172-8614-e8c21ccb4960
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866405"
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-servers-in-azure-security-center"></a>Povolení auditování a zjišťování hrozeb na serverech SQL v Azure Security Center
 Azure Security Center bude vhodné zapnout auditování a detekce hrozeb pro všechny databáze na serverech Azure SQL, pokud auditování již není povolena. Auditování a hrozeb, že detekce vám může pomoct zajistit dodržování předpisů, porozumět databázové aktivitě a proniknout do nesrovnalostí a anomálií, které by mohly být známkou problémů obchodního charakteru nebo by mohly vzbuzovat podezření narušení zabezpečení.

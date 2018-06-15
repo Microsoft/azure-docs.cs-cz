@@ -1,11 +1,11 @@
 ---
-title: "Použití protokolu AMQP 1.0 se rozhraní API Java Service Bus | Microsoft Docs"
-description: "Jak používat službu zpráva Java (JMS) s Azure Service Bus a rozšířené zpráv služby Řízení front Protodol (AMQP) 1.0."
+title: Použití protokolu AMQP 1.0 se rozhraní API Java Service Bus | Microsoft Docs
+description: Jak používat službu zpráva Java (JMS) s Azure Service Bus a rozšířené zpráv služby Řízení front Protodol (AMQP) 1.0.
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: be766f42-6fd1-410c-b275-8c400c811519
 ms.service: service-bus-messaging
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23868379"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak používat Java zprávy služby (JMS) rozhraní API se Service Bus a protokolu AMQP 1.0
 Rozšířené zpráv služby Řízení front Protocol (AMQP) 1.0 je efektivní, spolehlivou a úroveň zasílání zpráv protokol, který můžete použít k vytvoření robustní, multiplatformní aplikace zasílání zpráv.

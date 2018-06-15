@@ -1,8 +1,8 @@
 ---
-title: "Služby Operations Management Suite (OMS) SDK | Microsoft Docs"
-description: "V tomto článku jsou uvedeny v dokumentaci a další prostředky, které jsou k dispozici pro přístup ke službám OMS mimo portálů OMS a Azure.  To zahrnuje rozhraní REST API pro přístup z různých programovacích rozhraní a skriptovacích strojů, jako je například prostředí PowerShell"
+title: Služby Operations Management Suite (OMS) SDK | Microsoft Docs
+description: V tomto článku jsou uvedeny v dokumentaci a další prostředky, které jsou k dispozici pro přístup ke službám OMS mimo portálů OMS a Azure.  To zahrnuje rozhraní REST API pro přístup z různých programovacích rozhraní a skriptovacích strojů, jako je například prostředí PowerShell
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865621"
 ---
 # <a name="operations-management-suite-oms-sdk"></a>Služby Operations Management Suite (OMS) sady SDK
 [Operations Management Suite (OMS)](operations-management-suite-overview.md) je společnosti Microsoft založená na cloudu IT řešení správy, které pomáhá spravovat a chránit místní a cloudové infrastruktury.  V tomto článku jsou uvedeny v dokumentaci a další prostředky, které jsou k dispozici pro přístup ke službám OMS mimo portálů OMS a Azure.  To zahrnuje rozhraní REST API pro přístup z různých skriptovacích strojů, jako je například prostředí PowerShell a programovací rozhraní. 

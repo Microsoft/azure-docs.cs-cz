@@ -1,12 +1,12 @@
 ---
-title: "Správa knihovny Azure Event Hubs | Microsoft Docs"
-description: "Správa oborů názvů Event Hubs a entity z rozhraní .NET"
+title: Správa knihovny Azure Event Hubs | Microsoft Docs
+description: Správa oborů názvů Event Hubs a entity z rozhraní .NET
 services: event-hubs
 cloud: na
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-ms.assetid: 
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -16,9 +16,10 @@ ms.date: 12/19/2017
 ms.author: sethm
 ms.openlocfilehash: 2ae2f8f2006507284338fb4fa62e4942476cf2bc
 ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26780969"
 ---
 # <a name="event-hubs-management-libraries"></a>Knihovny správy centra událostí
 

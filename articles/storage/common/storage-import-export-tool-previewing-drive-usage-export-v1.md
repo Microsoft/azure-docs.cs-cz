@@ -1,11 +1,11 @@
 ---
-title: "Náhled využití disku pro úlohy exportu Azure Import/Export - v1 | Microsoft Docs"
-description: "Informace o zobrazení náhledu seznam objektů BLOB, které jste vybrali pro úlohy exportu ve službě Azure Import/Export."
+title: Náhled využití disku pro úlohy exportu Azure Import/Export - v1 | Microsoft Docs
+description: Informace o zobrazení náhledu seznam objektů BLOB, které jste vybrali pro úlohy exportu ve službě Azure Import/Export.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 7707d744-7ec7-4de8-ac9b-93a18608dc9a
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873643"
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>Náhled využití disku pro úlohu exportu
 Než vytvoříte úlohy exportu, je třeba vybrat sadu objektů blob pro export. Službu Microsoft Azure Import/Export můžete použít seznam objektů blob cesty nebo objekt blob předpony k reprezentaci objektů BLOB, které jste vybrali.  

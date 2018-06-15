@@ -1,11 +1,11 @@
 ---
-title: "Ukázky konfigurace směrovače zákazníka ExpressRoute | Microsoft Docs"
-description: "Tato stránka obsahuje ukázky konfigurace směrovače pro směrovače Cisco a Juniper."
+title: Ukázky konfigurace směrovače zákazníka ExpressRoute | Microsoft Docs
+description: Tato stránka obsahuje ukázky konfigurace směrovače pro směrovače Cisco a Juniper.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 564826bc-017a-4683-a385-37c9fa814948
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23850767"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>Ukázky konfigurace směrovače nastavit a spravovat směrování
 Tato stránka obsahuje rozhraní a směrování ukázky konfigurace pro Cisco IOS-XE a Juniper MX směrovače řady. Tyto by měla být ukázky jenom pokyny a nesmí se používat, protože je. Můžete pracovat s vaším dodavatelem spolu s odpovídající konfigurací pro vaši síť. 

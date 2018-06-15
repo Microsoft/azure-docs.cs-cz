@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771134"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Pochopit podmínky na vaše poplatky Azure podrobné informace o použití Microsoftu 
 
