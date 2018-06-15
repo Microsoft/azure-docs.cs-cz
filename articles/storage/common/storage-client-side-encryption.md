@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30245443"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Šifrování na straně klienta a Azure Key Vault pro Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -65,7 +66,7 @@ Během šifrování se klientské knihovny bude generovat náhodných inicializa
 > 
 > 
 
-Stahování zašifrovaný objekt blob zahrnuje načítání obsah pomocí celý objekt blob **DownloadTo *** /**BlobReadStream ** usnadňující metody. Zabalená CEK je úkony, spočívající a společně s IV (uložené v tomto případě jako metadata objektu blob) používá k vrácení dešifrovaná data pro uživatele.
+Stahování zašifrovaný objekt blob zahrnuje načítání obsah pomocí celý objekt blob **DownloadTo *** /** BlobReadStream ** usnadňující metody. Zabalená CEK je úkony, spočívající a společně s IV (uložené v tomto případě jako metadata objektu blob) používá k vrácení dešifrovaná data pro uživatele.
 
 Stahování libovolný rozsah (**DownloadRange*** metody) v zašifrovaný objekt blob zahrnuje úpravy rozsahu poskytované uživatelé mohli malé množství další data, která slouží k dešifrování úspěšně požadovaný rozsah.
 

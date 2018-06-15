@@ -10,9 +10,10 @@ ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: b5aea9d7fe54402693be095350f7c095334fd4b5
 ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30198107"
 ---
 **Chcete-li stáhnout konfiguraci zařízení VPN skriptů:**
 

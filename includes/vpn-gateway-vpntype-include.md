@@ -13,6 +13,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "30196757"
 ---
 * **PolicyBased:** sítě VPN PolicyBased označovaly jako brány se statickým směrováním v modelu nasazení classic. Sítě VPN založené na zásadách šifrují pakety a směrují je do tunelových propojení IPsec na základě zásad IPsec nakonfigurovaných pomocí kombinace předpon adres mezi vaší místní sítí a virtuální síť Azure. Zásada (nebo selektor provozu) se většinou určuje v konfiguraci zařízení VPN jako přístupový seznam. Hodnota parametru typu Policybased *PolicyBased*. Při použití sítě VPN PolicyBased, mějte na paměti následující omezení:
   

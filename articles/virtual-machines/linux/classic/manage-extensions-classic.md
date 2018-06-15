@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841448"
 ---
 # <a name="manage-virtual-machine-extensions"></a>Správa rozšíření virtuálního počítače
 Popisuje, jak najít, přidávat, upravovat nebo odebírat rozšíření virtuálního počítače se systémem Windows, nebo virtuální počítače s Linuxem v Azure.

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30164963"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Plánování nasazení Azure zásobníku
 Před nasazením Azure zásobníku Development Kit (ASDK), ujistěte se, že vaše development kit hostitelský počítač splňuje požadavky popsané v tomto článku.

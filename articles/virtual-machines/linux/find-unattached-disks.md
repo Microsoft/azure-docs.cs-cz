@@ -20,6 +20,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30323249"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks"></a>Vyhledejte a odstraňte odpojit spravovanými a nespravovanými disky systému Azure
 Při odstranění virtuálního počítače (VM) v Azure, ve výchozím nastavení, nebudou odstraněny všechny disky, které jsou připojené k virtuálnímu počítači. Tato funkce pomáhá zabránit ztrátě dat v důsledku neúmyslné odstranění virtuálních počítačů. Po odstranění virtuálního počítače, bude platit pro disky odpojit. Tento článek ukazuje, jak najít a odstraňte požadované disky odpojit a omezení zbytečných nákladů. 

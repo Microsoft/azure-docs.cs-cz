@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30182724"
 ---
 #  <a name="agent-health-solution-in-oms"></a>Řešení Agent Health v OMS
 Řešení Agent Health v OMS vám pomůže rozpoznat, kteří z agentů, odesílajících sestavy přímo do pracovního prostoru OMS nebo do skupiny pro správu nástroje System Center Operations Manager připojené k OMS, nereagují a odesílají provozní data.  Můžete také sledovat, kolik agentů je nasazených a jak jsou geograficky distribuováni, a provádět další dotazy, abyste si udrželi přehled o distribuci agentů nasazených v Azure, dalších cloudových prostředích nebo místně.    

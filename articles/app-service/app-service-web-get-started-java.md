@@ -20,6 +20,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30283924"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Vytvoření první webové Java aplikace ve službě Azure
 

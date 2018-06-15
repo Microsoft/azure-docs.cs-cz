@@ -18,6 +18,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30181635"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Zpráva relací: první, nejprve out (FIFO) 
 

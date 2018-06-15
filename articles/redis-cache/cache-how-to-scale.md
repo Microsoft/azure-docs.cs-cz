@@ -19,6 +19,7 @@ ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30240220"
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Postup škálování Azure Redis Cache
 Azure Redis Cache má jiný mezipaměti nabídky, které poskytují flexibilitu při výběru velikost mezipaměti a funkce. Po vytvoření mezipaměti je možné škálovat na velikost a cenovou úroveň mezipaměti, pokud se změní požadavky vaší aplikace. Tento článek ukazuje, jak se škálovat mezipaměti pomocí portálu Azure a nástroje, jako je Azure PowerShell a rozhraní příkazového řádku Azure.

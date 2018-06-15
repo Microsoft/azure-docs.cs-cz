@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30161842"
 ---
 # <a name="managing-azure-api-management-using-azure-automation"></a>Správa Azure API Management pomocí Azure Automation.
 Tento průvodce vás seznámí s služba Azure Automation a jak může sloužit ke zjednodušení správy služby Azure API Management.

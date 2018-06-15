@@ -16,9 +16,10 @@ ms.date: 04/12/2017
 ms.author: cshoe
 ms.openlocfilehash: dee0fd68ccaf80ff6e44ee10fa24bb19e220d0d5
 ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30240825"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Nakonfigurování připojovacích řetězců Azure Storage
 

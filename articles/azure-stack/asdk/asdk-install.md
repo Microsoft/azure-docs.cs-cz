@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30171192"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Nainstalovat Azure zásobníku Development Kit (ASDK)
 Po [Příprava hostitelský počítač ASDK](asdk-prepare-host.md), ASDK lze nasadit do bitové kopie CloudBuilder.vhdx pomocí následujících kroků v tomto článku.

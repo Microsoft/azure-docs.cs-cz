@@ -17,6 +17,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30180581"
 ---
 # <a name="sql-server-stretch-database-documentation"></a>Dokumentace k funkci SQL Server Stretch Database
 

@@ -1,11 +1,11 @@
 ---
-title: "Použití Twilio pro hlasové, VoIP a zasílání zpráv SMS v Azure"
-description: "Naučte se telefonní hovor a odeslání zprávy SMS službou Twilio rozhraní API v Azure. Ukázky kódu jsou vytvořeny v Node.js."
-services: 
+title: Použití Twilio pro hlasové, VoIP a zasílání zpráv SMS v Azure
+description: Naučte se telefonní hovor a odeslání zprávy SMS službou Twilio rozhraní API v Azure. Ukázky kódu jsou vytvořeny v Node.js.
+services: ''
 documentationcenter: nodejs
 author: devinrader
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: f558cbbd-13d2-416f-b9b1-33a99c426af9
 ms.service: multiple
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865880"
 ---
 # <a name="using-twilio-for-voice-voip-and-sms-messaging-in-azure"></a>Použití Twilio pro hlasové, VoIP a zasílání zpráv SMS v Azure
 Tato příručka ukazuje, jak vytvářet aplikace, které komunikují s Twilio a node.js v Azure.

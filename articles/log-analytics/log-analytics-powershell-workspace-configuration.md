@@ -19,6 +19,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30179085"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Správa služby Log Analytics pomocí PowerShellu
 Můžete použít [rutiny prostředí PowerShell Log Analytics](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) k provádění různých funkcí v analýzy protokolů z příkazového řádku nebo v rámci skriptu.  Příklady úlohy, které můžete provést pomocí prostředí PowerShell:

@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 03/23/2018
+  ms.locfileid: "30166738"
 abstract:
   description: Naučte se používat cloudovou službu pro integraci dat Data Factory k sestavování služeb úložišť dat, přesouvání a zpracování v automatizovaných datových kanálech. V kurzech a další dokumentaci se naučíte nastavit a spravovat datové kanály a také přesouvat a transformovat data pro analýzu. <p>Momentálně je služba Data Factory V2 ve verzi Preview. Verze V1 je obecně dostupná. Pokud používáte službu Data Factory V1, projděte si <a href=/azure/data-factory/v1/data-factory-introduction>dokumentaci k V1</a>.</p>
   aside:
