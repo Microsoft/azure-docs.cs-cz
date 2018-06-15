@@ -1,11 +1,11 @@
 ---
-title: "Práce s moduly Node.js"
-description: "Naučte se pracovat s modulů Node.js při použití služby Azure App Service nebo cloudové služby."
-services: 
+title: Práce s moduly Node.js
+description: Naučte se pracovat s modulů Node.js při použití služby Azure App Service nebo cloudové služby.
+services: ''
 documentationcenter: nodejs
 author: TomArcher
 manager: routlaw
-editor: 
+editor: ''
 ms.assetid: c0e6cd3d-932d-433e-b72d-e513e23b4eb6
 ms.service: multiple
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23864053"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Používání modulů Node.js s aplikacemi Azure
 Tento dokument obsahuje pokyny k používání modulů Node.js s aplikacemi, které jsou hostované v Azure. Poskytuje rady, jak zajistit, aby aplikace používala konkrétní verzi modulu, a jak používat nativní moduly s Azure.

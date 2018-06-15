@@ -16,9 +16,10 @@ ms.date: 01/16/2018
 ms.author: bwren
 ms.openlocfilehash: b4f54358f4bc1db973d6fe7163411e3a313c3cf4
 ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/08/2018
+ms.locfileid: "33887864"
 ---
 # <a name="views-in-management-solutions-preview"></a>Zobrazení v řešení pro správu (Preview)
 > [!NOTE]

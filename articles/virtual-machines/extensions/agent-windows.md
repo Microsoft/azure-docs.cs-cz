@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33942652"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Přehled služby Azure agenta virtuálního počítače
 Agent virtuálního počítače Microsoft Azure (VM Agent) je zabezpečený, lightweight proces, který spravuje interakci virtuální počítač (VM) s Kontroleru prostředků infrastruktury Azure. Agent virtuálního počítače má primární roli v povolení a spuštění rozšíření virtuálního počítače Azure. Rozšíření virtuálních počítačů povolit konfiguraci po nasazení virtuálního počítače, jako je instalace a konfigurace softwaru. Rozšíření virtuálního počítače také povolit obnovení funkce jako je resetování hesla pro správu virtuálního počítače. Bez agenta virtuálního počítače Azure nelze spustit, rozšíření virtuálního počítače.

@@ -1,12 +1,12 @@
 ---
-title: "Souhrn zařízení řady StorSimple 8000 použití | Microsoft Docs"
-description: "Popisuje zařízení služby StorSimple Manager zařízení, souhrn a způsobu jeho použití k zobrazení metriky úložiště a připojené iniciátory a najít sériové číslo a IQN."
+title: Souhrn zařízení řady StorSimple 8000 použití | Microsoft Docs
+description: Popisuje zařízení služby StorSimple Manager zařízení, souhrn a způsobu jeho použití k zobrazení metriky úložiště a připojené iniciátory a najít sériové číslo a IQN.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874854"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Použití zařízení souhrnné ve službě service Manager zařízení StorSimple
 
