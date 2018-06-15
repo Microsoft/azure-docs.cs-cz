@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s poli virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje Správce zařízení StorSimple diagnostikovat schopnosti a vysvětluje, jak ji použít k řešení potíží s pole virtuální zařízení StorSimple."
+title: Řešení potíží s poli virtuální zařízení StorSimple | Microsoft Docs
+description: Popisuje Správce zařízení StorSimple diagnostikovat schopnosti a vysvětluje, jak ji použít k řešení potíží s pole virtuální zařízení StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 53f57d17-07af-457f-a0e8-741e52fbbc2a
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875253"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-troubleshoot-the-storsimple-virtual-array"></a>Používat službu StorSimple Manager zařízení k řešení potíží s poli virtuální zařízení StorSimple
 ## <a name="overview"></a>Přehled

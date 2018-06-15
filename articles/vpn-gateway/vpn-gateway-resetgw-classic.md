@@ -1,11 +1,11 @@
 ---
-title: "Resetování služby Azure VPN gateway k opětovnému zavedení tunelových propojení IPsec | Microsoft Docs"
-description: "Tento článek vás provede procesem resetování služby Azure VPN Gateway k opětovnému zavedení tunelových propojení IPsec. Článek se týká bran VPN jak classic a modelem nasazení Resource Manager."
+title: Resetování služby Azure VPN gateway k opětovnému zavedení tunelových propojení IPsec | Microsoft Docs
+description: Tento článek vás provede procesem resetování služby Azure VPN Gateway k opětovnému zavedení tunelových propojení IPsec. Článek se týká bran VPN jak classic a modelem nasazení Resource Manager.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 79d77cb8-d175-4273-93ac-712d7d45b1fe
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23884549"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetování brány VPN Gateway
 

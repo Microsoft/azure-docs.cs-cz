@@ -128,6 +128,8 @@
           href: azure-stack-monitor-health.md
         - name: Správa síťových prostředků
           href: azure-stack-viewing-public-ip-address-consumption.md
+        - name: Změnit vlastníka předplatného uživatele
+          href: azure-stack-change-subscription-owner.md
         - name: Správa virtuálních počítačů se sadou Windows Azure Pack
           href: azure-stack-manage-windows-azure-pack.md
         - name: Spuštění a zastavení Azure zásobníku
@@ -189,6 +191,8 @@
               href: azure-stack-enable-multitenancy.md
         - name: Otočit tajné klíče
           href: azure-stack-rotate-secrets.md
+        - name: Aktualizace antivirového programu
+          href: azure-stack-security-av.md
     - name: Nabídka služeb
       items:
         - name: Přehled nabízených služeb
@@ -216,7 +220,7 @@
           items:
             - name: Nasazení poskytovatele prostředků SQL serveru
               href: azure-stack-sql-resource-provider-deploy.md
-            - name: Přidat hostitelskými servery
+            - name: Přidání hostitelské servery SQL
               href: azure-stack-sql-resource-provider-hosting-servers.md
             - name: Vytvoření databáze SQL
               href: azure-stack-sql-resource-provider-databases.md
@@ -227,7 +231,20 @@
             - name: Odebrat zprostředkovatele prostředků SQL serveru
               href: azure-stack-sql-resource-provider-remove.md
         - name: Nabídka MySQL jako PaaS
-          href: azure-stack-mysql-resource-provider-deploy.md
+          href: azure-stack-mysql-resource-provider.md
+          items:
+            - name: Nasazení poskytovatele prostředků serveru MySQL
+              href: azure-stack-mysql-resource-provider-deploy.md
+            - name: Přidat MySQL hostitelské servery
+              href: azure-stack-mysql-resource-provider-hosting-servers.md
+            - name: Vytvoření databáze MySQL
+              href: azure-stack-mysql-resource-provider-databases.md
+            - name: Aktualizujte zprostředkovatele prostředků serveru MySQL
+              href: azure-stack-mysql-resource-provider-update.md
+            - name: Spravovat poskytovatele prostředků serveru MySQL
+              href: azure-stack-mysql-resource-provider-maintain.md
+            - name: Odebrat zprostředkovatele prostředků serveru MySQL
+              href: azure-stack-mysql-resource-provider-remove.md
         - name: Nabídka App Service jako PaaS
           items:
             - name: Přehled App Service v Azure Stacku
