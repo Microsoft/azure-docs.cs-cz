@@ -13,6 +13,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30198141"
 ---
 ### <a name="step-1-navigate-to-the-virtual-network-gateway"></a>Krok 1: Přejděte na bránu virtuální sítě
 

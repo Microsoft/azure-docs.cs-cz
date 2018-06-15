@@ -18,6 +18,7 @@ ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30173262"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-python"></a>Vytvoření datové továrny a kanálu pomocí Pythonu
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

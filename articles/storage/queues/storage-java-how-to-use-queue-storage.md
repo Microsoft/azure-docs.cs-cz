@@ -19,6 +19,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30319477"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>Používání úložiště Queue z Javy
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

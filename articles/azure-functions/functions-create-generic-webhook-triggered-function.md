@@ -21,6 +21,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30283003"
 ---
 # <a name="create-a-function-triggered-by-a-generic-webhook"></a>Vytvoření funkce aktivované obecným webhookem
 

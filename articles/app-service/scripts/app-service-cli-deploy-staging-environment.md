@@ -21,6 +21,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30280899"
 ---
 # <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Vytvoření webové aplikace a nasazení kódu do přípravného prostředí
 
