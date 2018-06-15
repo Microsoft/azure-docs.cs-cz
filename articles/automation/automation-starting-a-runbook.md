@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195290"
 ---
 # <a name="starting-a-runbook-in-azure-automation"></a>Spuštění sady runbook ve službě Azure Automation
 Následující tabulka vám pomůže určit, metoda pro spuštění sady runbook ve službě Azure Automation, který je nejvhodnější k danému scénáři. Tento článek obsahuje informace o spuštění sady runbook pomocí portálu Azure a pomocí prostředí Windows PowerShell. Informace o jiných metod jsou uvedeny v jiných dokumentace, která je přístupné z níže uvedených odkazů.

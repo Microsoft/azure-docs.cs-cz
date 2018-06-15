@@ -18,6 +18,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260819"
 ---
 # <a name="microsoftcommontextblock-ui-element"></a>Element Microsoft.Common.TextBlock uživatelského rozhraní
 Ovládací prvek, který slouží k přidání textu do rozhraní portálu.

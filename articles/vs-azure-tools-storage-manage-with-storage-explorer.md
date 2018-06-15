@@ -19,6 +19,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34304626"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme se Storage Explorerem
 ## <a name="overview"></a>Přehled

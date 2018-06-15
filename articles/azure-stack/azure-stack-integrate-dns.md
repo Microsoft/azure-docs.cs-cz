@@ -1,6 +1,6 @@
 ---
-title: "Zásobník datacenter integrace se službou Azure - DNS"
-description: "Zjistěte, jak integrovat Azure zásobníku DNS s vaším datovým centrem DNS"
+title: Zásobník datacenter integrace se službou Azure - DNS
+description: Zjistěte, jak integrovat Azure zásobníku DNS s vaším datovým centrem DNS
 services: azure-stack
 author: jeffgilb
 manager: femila
@@ -9,12 +9,13 @@ ms.topic: article
 ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-keywords: 
+keywords: ''
 ms.openlocfilehash: 5bdac2f3e6082f9449800fe2d4b303e2d59ade46
 ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/02/2018
+ms.locfileid: "29733855"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Zásobník datacenter integrace se službou Azure - DNS
 Pro přístup k koncové body Azure zásobníku (`portal`, `adminportal`, `management`, `adminmanagement`atd.)  ze zásobníku mimo Azure budete muset integraci služby Azure DNS zásobníku se servery DNS, které jsou hostiteli zóny DNS, kterou chcete použít v zásobníku Azure.

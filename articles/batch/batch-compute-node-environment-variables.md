@@ -17,6 +17,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30312697"
 ---
 # <a name="azure-batch-compute-node-environment-variables"></a>Azure Batch výpočetní uzel prostředí proměnné
 [Služby Azure Batch](https://azure.microsoft.com/services/batch/) nastaví následující proměnné prostředí na výpočetních uzlech. Tyto proměnné prostředí v příkazové řádky úkolu a v aplikacích, můžete odkazovat a skripty spouštěné příkazové řádky.

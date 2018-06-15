@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34307433"
 ---
 Počítač B-series rodiny umožňuje zvolit, které velikost virtuálního počítače poskytuje nezbytné základní úroveň výkonu pro úlohy, možnost burst výkonu procesoru až o 100 % Intel® Broadwell E5-2673 v4 2.3 GHz nebo procesor Intel® Haswell 2.4 GHz E5-2673 v3 virtuální procesory.
 
