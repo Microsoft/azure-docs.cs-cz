@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31795530"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>Optimalizace transakce v Azure SQL Data Warehouse
 Informace o optimalizaci výkonu transakcí kódu v Azure SQL Data Warehouse a současně minimalizujete její rizik dlouho odvolání.

@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33938688"
 ---
 # <a name="delete-an-azure-log-analytics-workspace-with-the-azure-portal"></a>Odstranit pracovní prostor služby Azure Log Analytics pomocí portálu Azure
 Tento článek ukazuje, jak pomocí portálu Azure můžete odstranit pracovní prostor analýzy protokolů, které už můžou vyžadovat. 

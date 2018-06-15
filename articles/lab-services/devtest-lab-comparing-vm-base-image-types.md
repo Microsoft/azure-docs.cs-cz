@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787441"
 ---
 # <a name="comparing-custom-images-and-formulas-in-devtest-labs"></a>Porovnání vlastních bitových kopií a vzorce v DevTest Labs
 Obě [vlastních bitových kopií](devtest-lab-create-template.md) a [vzorce](devtest-lab-manage-formulas.md) lze použít jako základ pro [vytvořit nové virtuální počítače](devtest-lab-add-vm.md). Však mezi vlastních bitových kopií a vzorce klíče rozdíl je, že vlastní image je jednoduše image podle virtuální pevný disk, když vzorec je obrázek, který založené na virtuální pevný disk *kromě* předkonfigurované nastavení – například velikost virtuálního počítače, virtuální sítě, podsítě a artefakty. Tyto předem nakonfigurovaných nastavení se nastaví se výchozí hodnoty, které je možné přepsat v době vytvoření virtuálního počítače. Tento článek vysvětluje některé (specialisté) výhody a nevýhody (cons) pomocí vlastních bitových kopií a kdy vzorce.

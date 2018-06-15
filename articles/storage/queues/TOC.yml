@@ -41,7 +41,7 @@
             - name: Použití identity Azure AD s CLI nebo PowerShellem
               href: ../common/storage-auth-aad-script.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Autorizace s využitím sdíleného klíče
-          href: /rest/api/storageservices/authenticate-with-shared-key
+          href: /rest/api/storageservices/authorize-with-shared-key
         - name: Autorizace s využitím SAS
           href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
 - name: Postup
@@ -107,7 +107,7 @@
         - name: Šifrování pro neaktivní uložená data
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Ověřování pomocí sdíleného klíče
-          href: /rest/api/storageservices/Authentication-for-the-Azure-Storage-Services
+          href: /rest/api/storageservices/Authorization-for-the-Azure-Storage-Services
         - name: Sdílené přístupové podpisy (SAS)
           href: ../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Vyžádání bezpečného přenosu

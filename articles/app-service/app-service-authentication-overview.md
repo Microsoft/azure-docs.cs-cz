@@ -16,9 +16,10 @@ ms.date: 08/29/2016
 ms.author: mahender
 ms.openlocfilehash: c180dcf5d769245f3fa2485ccee2cbc18ecf5f67
 ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33763488"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 

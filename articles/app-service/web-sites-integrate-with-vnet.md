@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31789203"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace pomocí virtuální sítě Azure
 Tento dokument popisuje funkci integrace virtuální sítě Azure App Service a ukazuje, jak ho nastavit s aplikacemi ve [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714). Pokud jste obeznámeni s virtuální sítí Azure (virtuální sítě), toto je funkce, která umožňuje umístit mnoho vašich prostředků Azure v Internetu jiných routeable síti, která můžete řídit přístup ke. Tyto sítě můžete pak připojené k vaší místní sítě pomocí různých technologií, sítě VPN. Další informace o virtuálních sítí Azure, spusťte s informacemi, zde: [Přehled virtuálních sítí Azure][VNETOverview]. 

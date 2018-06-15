@@ -1,12 +1,12 @@
 ---
-title: "Připojení k síti integrace důležité informace týkající se Azure zásobníku integrované systémy ohraničení | Microsoft Docs"
-description: "Zjistěte, jak chcete pro připojení k síti datového centra ohraničení s několika uzly Azure zásobníku."
+title: Připojení k síti integrace důležité informace týkající se Azure zásobníku integrované systémy ohraničení | Microsoft Docs
+description: Zjistěte, jak chcete pro připojení k síti datového centra ohraničení s několika uzly Azure zásobníku.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28919430"
 ---
 # <a name="border-connectivity"></a>Připojení ohraničení 
 Plánování integrace sítě je důležitá povinná součást pro úspěšné nasazení Azure zásobníku integrované systémy, operace a správy. Plánování ohraničení připojení začne tak, že zvolíte, zda se má používat dynamické směrování s protokolu border gateway protocol (BGP). To vyžaduje přiřazení 16bitové číslo autonomního systému protokolu BGP (veřejných nebo soukromých) nebo pomocí statické směrování, kde výchozí statické trasy je přiřazená zařízení ohraničení.

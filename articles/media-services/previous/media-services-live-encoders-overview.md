@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788169"
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Postup konfigurace místních kodérů při vytvářejí proudy s více přenosovými rychlostmi pomocí Azure Media Services
 Toto téma uvádí místními kodéry, které můžete použít k zachycení živé události a odesílat živý datový proud jednou přenosovou rychlostí do AMS kanálů, (které jsou kódování v reálném čase povolit) pro další zpracování. V tématu taky obsahuje odkazy na návodů, které ukazují, jak nakonfigurovat uvedené kodérů.

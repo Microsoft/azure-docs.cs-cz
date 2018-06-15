@@ -15,6 +15,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31790810"
 ---
 # <a name="use-python-to-query-an-azure-sql-database"></a>Použití Pythonu k dotazování databáze SQL Azure
 

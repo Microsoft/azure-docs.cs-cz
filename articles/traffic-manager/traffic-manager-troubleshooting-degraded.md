@@ -18,6 +18,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32777726"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Řešení potíží s degradovaný stav na Azure Traffic Manager
 

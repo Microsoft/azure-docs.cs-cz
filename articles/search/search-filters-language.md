@@ -13,6 +13,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31790623"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>Jak filtrovat podle jazyka ve službě Azure Search 
 

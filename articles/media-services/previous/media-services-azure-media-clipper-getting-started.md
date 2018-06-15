@@ -14,6 +14,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788568"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>Vytvoření klipů pomocí Azure Media výřez
 Tato část uvádí základní kroky Začínáme se službou Azure Media výřez. Části obsahují podrobnosti o tom, jak konfigurovat Azure Media výřez.

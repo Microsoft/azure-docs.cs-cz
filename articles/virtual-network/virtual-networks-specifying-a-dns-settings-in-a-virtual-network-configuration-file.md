@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31794520"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>Zadání nastavení DNS v konfiguračním souboru virtuální sítě
 Soubor konfigurace sítě má dva elementy, které můžete použít k určení nastavení systému DNS (Domain Name): **DnsServers** a **DnsServerRef**. Můžete přidat seznam serverů DNS zadáním jejich IP adresy a odkazovat na názvy **DnsServers** element. Pak můžete použít **DnsServerRef** elementu, který chcete určit, které položky serveru DNS z elementu DnsServers budou použity pro jiné síťové lokality v rámci virtuální sítě.

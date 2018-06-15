@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787588"
 ---
 # <a name="attach-or-detach-a-data-disk-to-a-virtual-machine-in-azure-devtest-labs"></a>Připojit nebo odpojit datový disk k virtuálnímu počítači v Azure DevTest Labs
 [Disky systému Azure spravované](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) spravuje účty úložiště přidružené ke datových disků virtuálního počítače. Uživatel připojí, nová data na disku k virtuálnímu počítači, určuje typ a velikost disku, který je potřeba, a Azure vytváří a spravuje disku automaticky. Z virtuálního počítače lze poté odpojit datový disk a buď znovu připojit později na stejný virtuální počítač nebo připojené k jiné virtuální počítač, který patří do stejného uživatele.

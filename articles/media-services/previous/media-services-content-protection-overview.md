@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788736"
 ---
 # <a name="content-protection-overview"></a>Přehled ochrany obsahu
  Azure Media Services můžete použít k zabezpečení médiu od okamžiku, kdy by poté počítač prostřednictvím úložiště, zpracování a doručení. Pomocí služby Media Services, abyste mohli zajistit obsah za provozu a na vyžádání dynamicky šifrován Advanced Encryption Standard (AES-128) nebo jakýkoli systém tři hlavní digitální rights management (DRM): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům. 

@@ -1,11 +1,11 @@
 ---
-title: "Hledání přihlásit k Azure Log Analytics | Microsoft Docs"
-description: "Vyžadujete, aby hledání protokolů načíst všechna data z analýzy protokolů.  Tento článek popisuje, jak nový protokol hledání se používají v analýzy protokolů a poskytuje koncepty, které je třeba porozumět před vytvořením jeden."
+title: Hledání přihlásit k Azure Log Analytics | Microsoft Docs
+description: Vyžadujete, aby hledání protokolů načíst všechna data z analýzy protokolů.  Tento článek popisuje, jak nový protokol hledání se používají v analýzy protokolů a poskytuje koncepty, které je třeba porozumět před vytvořením jeden.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29953312"
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>Principy protokolu hledání v analýzy protokolů
 

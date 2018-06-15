@@ -1,11 +1,11 @@
 ---
-title: "Hodnocení aplikace Service Fabric pomocí portálu Azure Log Analytics | Microsoft Docs"
-description: "Můžete vytvořit řešení Service Fabric v Log Analytics pomocí portálu Azure k vyhodnocení rizik a stavu Service Fabric aplikací, micro-services, uzly a clustery."
+title: Hodnocení aplikace Service Fabric pomocí portálu Azure Log Analytics | Microsoft Docs
+description: Můžete vytvořit řešení Service Fabric v Log Analytics pomocí portálu Azure k vyhodnocení rizik a stavu Service Fabric aplikací, micro-services, uzly a clustery.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: niniikhena
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: 9c91aacb-c48e-466c-b792-261f25940c0c
 ms.service: log-analytics
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/01/2018
+ms.locfileid: "28932677"
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Hodnocení aplikace Service Fabric a micro služby pomocí portálu Azure
 

@@ -14,6 +14,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31796844"
 ---
 # <a name="field-mappings-in-azure-search-indexers"></a>Mapování polí v Azure Search indexery
 Při použití indexerů Azure Search, můžete sami někdy nalézt v situacích, kde vstupní data poměrně neodpovídá schématu cílový index. V takových případech můžete použít **pole mapování** pro transformaci dat do požadovaného tvaru.

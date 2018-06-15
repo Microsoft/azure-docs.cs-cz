@@ -56,8 +56,6 @@
     - name: Zabezpečení IaaS
       href: security-virtual-machines-overview.md
       items:
-        - name: Osvědčené postupy – virtuální počítače Azure
-          href: azure-security-best-practices-vms.md
         - name: Osvědčené postupy – úlohy IaaS
           href: azure-security-iaas.md
         - name: Image na webu Azure Marketplace

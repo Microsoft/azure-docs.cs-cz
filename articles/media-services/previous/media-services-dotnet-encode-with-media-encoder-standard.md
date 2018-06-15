@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788680"
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kódování assetu pomocí kodéru Media Encoder Standard pomocí rozhraní .NET
 Kódování úloh je jednou z nejběžnějších operací zpracování ve službě Media Services. K převodu mediálních souborů z jednoho kódování do druhého se využívají kódovací úlohy. Při kódování, můžete použít předdefinované Media Encoder Media Services. Můžete také použít kodér poskytovanými partnerem Media Services; třetí strany kodéry jsou k dispozici prostřednictvím Azure Marketplace. 

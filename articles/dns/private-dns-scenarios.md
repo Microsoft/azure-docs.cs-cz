@@ -19,6 +19,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771867"
 ---
 # <a name="azure-dns-private-zones-scenarios"></a>Scénáře Azure privátní DNS zóny
 Zóny DNS privátní Azure překladu názvů v rámci virtuální sítě i mezi virtuálními sítěmi. V tomto článku se podíváme na některé běžné scénáře, které může být dosaženo pomocí této funkce. 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/23/2018
+ms.locfileid: "31798066"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Vědecké zpracování dat pomocí datové vědy virtuální počítač s Linuxem v Azure
 Tento návod ukazuje, jak provést několik běžných úkolů data vědecké účely pomocí virtuálního počítače s Linuxem dat vědecké účely. Virtuální počítač pro vědecké účely Data Linux (DSVM) je bitová kopie virtuálního počítače, která je k dispozici v Azure, který je předem nainstalovaná s kolekcí nástrojů pro běžně používané k analýze dat a strojové učení. Klíčové softwarové komponenty je uvedeno v [zřízení virtuálního počítače Linux datové vědy](linux-dsvm-intro.md) tématu. Image virtuálního počítače lze snadno začít provádění vědecké zpracování dat v minutách, bez nutnosti instalace a konfigurace každého nástroje jednotlivě. Můžete snadno škálování virtuálních počítačů, v případě potřeby a zastavte ji když není používán. Proto tento prostředek je elastické a nákladově efektivní.

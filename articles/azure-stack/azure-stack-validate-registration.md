@@ -20,6 +20,7 @@ ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/10/2018
+ms.locfileid: "33937837"
 ---
 # <a name="validate-azure-registration"></a>Ověření registrace Azure 
 Nástroj Kontrola připravenosti zásobník Azure (AzsReadinessChecker) k ověření, že vaše předplatné Azure je připravené k použití s Azure zásobníku. Ověření registrace před zahájením nasazení služby Azure zásobníku. Nástroj pro kontrolu připravenosti ověří:

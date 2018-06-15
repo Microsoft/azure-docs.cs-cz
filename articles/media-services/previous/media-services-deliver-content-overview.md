@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788890"
 ---
 # <a name="deliver-content-to-customers"></a>Doručování obsahu zákazníkům
 Pokud jste doručování obsahu streamování na vyžádání, video-on-demand nebo pro zákazníky, vaším cílem je zajistit vysokou kvalitu videa pro různá zařízení v různých síťových podmínkách.

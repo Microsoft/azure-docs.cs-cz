@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33787665"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-vsts-continuous-integration-and-delivery-pipeline"></a>Integrovat Azure DevTest Labs do vaší služby VSTS průběžnou integraci a doručení kanálu
 Můžete použít *Azure DevTest Labs úlohy* rozšíření, který je nainstalován ve Visual Studio Team Services (služby VSTS) na snadno integrovat Azure DevTest Labs svůj kanál CI/CD sestavení a verze. Instalaci rozšíření je tři úkoly: 

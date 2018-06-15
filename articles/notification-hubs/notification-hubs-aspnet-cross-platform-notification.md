@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33777949"
 ---
 # <a name="send-cross-platform-notifications-to-users-with-notification-hubs"></a>Odesílat oznámení napříč platformami uživatelům s centry oznámení
 V předchozích kurzu [upozorněte uživatele s Notification Hubs], jste se dozvěděli, jak nabízená oznámení pro všechna zařízení, které jsou registrovány pro konkrétního ověřeného uživatele. V tomto kurzu bylo potřeba víc požadavků na odeslání oznámení do každé podporované klientské platformy. Centra oznámení Azure podporuje šablony, pomocí kterých můžete zadat, jak chce dostávat oznámení konkrétní zařízení. Tato metoda zjednodušuje odesílání oznámení napříč platformami. 

@@ -18,6 +18,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788554"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Správa Media Services prostředky napříč více účtů úložiště
 Od verze Microsoft Azure Media Services 2.2, můžete k jednomu účtu Media Services připojit více účtů úložiště. Možnost připojit více účtů úložiště k účtu Media Services poskytuje následující výhody:

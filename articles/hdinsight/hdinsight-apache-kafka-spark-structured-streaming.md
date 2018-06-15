@@ -10,13 +10,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: ''
 ms.topic: tutorial
-ms.date: 04/04/2018
+ms.date: 05/08/2018
 ms.author: larryfr
-ms.openlocfilehash: bdb2369f81ae8aeeb0a57e092dc1af7d0a7ded8f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8c7c1b37102e94f00ac6077958952eb52b342668
+ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 05/10/2018
+ms.locfileid: "33939243"
 ---
 # <a name="tutorial-use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Kurz: Použití strukturovaného streamování Sparku se systémem Kafka ve službě HDInsight
 
@@ -147,8 +148,8 @@ K vytvoření virtuální sítě Azure a následnému vytvoření clusterů Kafk
     | Předplatné | Vaše předplatné Azure |
     | Skupina prostředků | Skupina prostředků obsahující prostředky. |
     | Umístění | Oblast Azure, ve které se prostředky vytvoří. |
-    | Název clusteru Spark | Název clusteru Spark. |
-    | Název clusteru Kafka | Název clusteru Kafka. |
+    | Název clusteru Spark | Název clusteru Spark. Prvních šest znaků se musí lišit od názvu clusteru Kafka. |
+    | Název clusteru Kafka | Název clusteru Kafka. Prvních šest znaků se musí lišit od názvu clusteru Spark. |
     | Uživatelské jméno přihlášení clusteru | Uživatelské jméno správce clusterů. |
     | Heslo přihlášení clusteru | Heslo správce clusterů. |
     | Uživatelské jméno SSH | Uživatel SSH, který se má pro clustery vytvořit. |

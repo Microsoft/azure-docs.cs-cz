@@ -17,6 +17,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33762366"
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>Účet připojení LinkedIn Microsoft aplikace a služby
 V tomto článku se můžete naučit ke správě připojení účtu LinkedIn pro vašeho klienta v Centru správy služby Azure Active Directory (Azure AD). 

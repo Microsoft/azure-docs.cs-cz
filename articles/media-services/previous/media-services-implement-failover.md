@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788855"
 ---
 # <a name="implement-failover-streaming-with-azure-media-services"></a>Implementace převzetí služeb při selhání streamování pomocí služby Azure Media Services
 

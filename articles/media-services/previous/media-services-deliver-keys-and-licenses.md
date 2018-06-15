@@ -19,6 +19,7 @@ ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/07/2018
+ms.locfileid: "33788575"
 ---
 # <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Pomocí Azure Media Services pro doručování licencí DRM nebo klíčů AES
 Azure Media Services umožňuje ingestovat, kódovat, přidat ochranu obsahu a Streamovat obsah. Další informace najdete v tématu [použití PlayReady nebo Widevine běžného dynamického šifrování](media-services-protect-with-playready-widevine.md). Někteří zákazníci chtějí média služby použijete jen k doručování licencí nebo klíče a kódování, šifrování a stream pomocí jejich místních serverů. Tento článek popisuje, jak můžete použít Media Services k doručování licencí PlayReady nebo Widevine, ale udělá zbytek s vašimi místními servery. 

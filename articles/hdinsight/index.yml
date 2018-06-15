@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 05/07/2018
+  ms.locfileid: "33778660"
 abstract:
   description: Naučte se používat Azure HDInsight pro analýzu streamování nebo historických dat. V kurzech a další dokumentaci se dozvíte, jak vytvářet clustery, zpracovávat a analyzovat velké objemy dat a vyvíjet řešení s použitím oblíbených opensourcových architektur, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm a R.<p>Azure HDInsight je plně spravovaná opensourcová analytická služba určená pro podniky. HDInsight je cloudová služba, která umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. HDInsight také podporuje širokou škálu scénářů, jako jsou ETL (extrakce, transformace a načítání), datové sklady, strojové učení a IoT.</p>
   aside:
