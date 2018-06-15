@@ -1,11 +1,11 @@
 ---
-title: "Úlohy zálohování Snapshot Manager zařízení StorSimple | Microsoft Docs"
-description: "Popisuje způsob použití modulu snap-in konzoly MMC StorSimple Snapshot Manager můžete zobrazit a spravovat naplánované, aktuálně spuštěné a dokončené úlohy zálohování."
+title: Úlohy zálohování Snapshot Manager zařízení StorSimple | Microsoft Docs
+description: Popisuje způsob použití modulu snap-in konzoly MMC StorSimple Snapshot Manager můžete zobrazit a spravovat naplánované, aktuálně spuštěné a dokončené úlohy zálohování.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bf4dcff6-c819-4766-b9d9-9922831cb200
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875813"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-backup-jobs"></a>Pomocí StorSimple Snapshot Manager můžete zobrazit a spravovat úlohy zálohování
 

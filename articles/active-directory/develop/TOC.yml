@@ -259,6 +259,8 @@
               href: active-directory-v2-protocols-oauth-on-behalf-of.md
             - name: Přihlašovací údaje ve formě certifikátu
               href: active-directory-certificate-credentials.md
+            - name: Vzorový kód Oauth 2.0
+              href: active-directory-protocols-oauth-get-jwt-token.md
         - name: Tokeny
           href: active-directory-v2-tokens.md
         - name: Rozsah a souhlas

@@ -59,16 +59,16 @@
       href: create-account-cli-how-to.md
     - name: Přístup k rozhraním API – rozhraní příkazového řádku
       href: access-api-cli-how-to.md
-    - name: Události stavu úloh – rozhraní příkazového řádku
+    - name: Monitorování událostí stavu úloh – rozhraní příkazového řádku
       href: job-state-events-cli-how-to.md
+    - name: Přizpůsobení přednastavení transformace – .NET Core
+      href: customize-encoder-presets-how-to.md
     - name: Nahrání obsahu
       items:
         - name: Z HTTP(s) – .NET
           href: job-input-from-http-how-to.md
         - name: Z místního souboru – .NET
           href: job-input-from-local-file-how-to.md
-    - name: Přizpůsobení přednastavení transformace – .NET Core
-      href: customize-encoder-presets-how-to.md
 - name: Referenční informace
   items:
     - name: Specifikace OpenAPI (Swagger)

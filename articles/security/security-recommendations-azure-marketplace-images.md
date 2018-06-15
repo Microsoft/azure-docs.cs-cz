@@ -1,11 +1,11 @@
 ---
-title: "Doporučení zabezpečení pro Image Azure Marketplace | Microsoft Docs"
-description: "Tento článek obsahuje doporučení pro bitové kopie, které jsou součástí Marketplace"
+title: Doporučení zabezpečení pro Image Azure Marketplace | Microsoft Docs
+description: Tento článek obsahuje doporučení pro bitové kopie, které jsou součástí Marketplace
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -16,6 +16,7 @@ ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/19/2017
+ms.locfileid: "23931132"
 ---
 # <a name="security-recommendations-for-azure-marketplace-images"></a>Doporučení zabezpečení pro Azure Marketplace bitové kopie
 

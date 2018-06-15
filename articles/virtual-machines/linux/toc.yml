@@ -222,6 +222,8 @@
           href: scheduled-events.md
         - name: Monitorování metadat
           href: instance-metadata-service.md
+        - name: Získat metriky využití s rozhraním REST
+          href: metrics-vm-usage-rest.md
     - name: Použití imagí
       items:
         - name: Vyhledání a použití imagí

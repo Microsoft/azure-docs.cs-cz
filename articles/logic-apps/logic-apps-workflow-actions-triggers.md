@@ -3,7 +3,7 @@ title: Pracovní postup triggery a akce - Azure Logic Apps | Microsoft Docs
 description: Další informace o aktivační události a akce v definice pracovního postupu pro Azure Logic Apps
 services: logic-apps
 author: kevinlam1
-manager: SyntaxC4
+manager: jeconnoc
 editor: ''
 documentationcenter: ''
 ms.assetid: 86a53bb3-01ba-4e83-89b7-c9a7074cb159
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 5/8/2018
 ms.author: klam; LADocs
-ms.openlocfilehash: 88ee3d810a80bed418e8dbafa4f3e35ccf5e85b1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: f44de1a316a8375618cfef2e4a98d40c2b21e019
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886778"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300143"
 ---
 # <a name="triggers-and-actions-for-workflow-definitions-in-azure-logic-apps"></a>Triggery a akce pro definice pracovního postupu v Azure Logic Apps
 
@@ -56,7 +56,7 @@ Všechny aktivační události mají tyto prvky nejvyšší úrovně, i když n�
 | ------------ | ---- | ----------- | 
 | <*Název aktivační události*> | Objekt JSON | Název aktivační události, který je objektem popsané ve formátu Javascript Object Notation (JSON)  | 
 | type | Řetězec | Zadejte aktivační události, například: "Http" nebo "ApiConnection" | 
-| Vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
+| vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
 | recurrence | Objekt JSON | Četnost a interval, který popisuje, jak často se aktivuje aktivační události |  
 | frequency | Řetězec | Jednotka času, který popisuje, jak často se aktivuje aktivační událost: "Druhý", "minut", "Hodina", "Den", "Týden" nebo "Měsíc" | 
 | interval | Integer | Kladné celé číslo, které popisují, jak často se aktivuje aktivační události na základě četnosti. <p>Toto jsou minimální a maximální hodnotou: <p>-Měsíc: 1-16 měsíců </br>-Den: 1-500 dnů </br>-Hodina: 1-12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Druhý: 1-9,999,999 sekund<p>Například pokud je interval 6 a frekvenci "měsíc", pak opakování je každých 6 měsíců. | 
@@ -124,7 +124,7 @@ Zde je definice aktivační události:
 | ------------ | ---- | ----------- | 
 | Opakování | Objekt JSON | Název aktivační události, který je objektem popsané ve formátu Javascript Object Notation (JSON)  | 
 | type | Řetězec | Typ aktivace, kterým je "Recurrence" | 
-| Vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
+| vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
 | recurrence | Objekt JSON | Četnost a interval, který popisuje, jak často se aktivuje aktivační události |  
 | frequency | Řetězec | Jednotka času, který popisuje, jak často se aktivuje aktivační událost: "Druhý", "minut", "Hodina", "Den", "Týden" nebo "Měsíc" | 
 | interval | Integer | Kladné celé číslo, které popisují, jak často se aktivuje aktivační události na základě četnosti. <p>Toto jsou minimální a maximální hodnotou: <p>-Měsíc: 1-16 měsíců </br>-Den: 1-500 dnů </br>-Hodina: 1-12 000 hodin </br>-Minutu: 1-72,000 minut </br>-Druhý: 1-9,999,999 sekund<p>Například pokud je interval 6 a frekvenci "měsíc", pak opakování je každých 6 měsíců. | 
@@ -228,7 +228,7 @@ Této aktivační události díky aplikaci logiky s tím, že vytvoříte koncov
 | Ruční | Objekt JSON | Název aktivační události, který je objektem popsané ve formátu Javascript Object Notation (JSON)  | 
 | type | Řetězec | Aktivační událost typu, který je "Vyžádat" | 
 | Typ | Řetězec | Typ požadavku, což je "Http" | 
-| Vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
+| vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
 |||| 
 
 *Volitelné*
@@ -239,7 +239,7 @@ Této aktivační události díky aplikaci logiky s tím, že vytvoříte koncov
 | RelativePath | Řetězec | Relativní cesta pro parametr, který přijímá váš koncový bod HTTP adresa URL | 
 | Schéma | Objekt JSON | Schéma JSON, který popisuje a ověří datové části, nebo vstupních hodnot, které obdrží aktivační události z příchozího požadavku. Toto schéma pomáhá akce následné pracovního postupu vědět vlastnosti odkazovat. | 
 | properties | Objekt JSON | Jeden nebo více vlastností ve schématu JSON, který popisuje datové části | 
-| Požadované | Pole | Jeden nebo více vlastností, které vyžadují hodnoty | 
+| povinné | Pole | Jeden nebo více vlastností, které vyžadují hodnoty | 
 |||| 
 
 *Příklad*
@@ -316,7 +316,7 @@ Této aktivační události dotazuje zadaný koncový bod a zkontroluje odpově�
 | ------------ | ---- | ----------- | 
 | HTTP | Objekt JSON | Název aktivační události, který je objektem popsané ve formátu Javascript Object Notation (JSON)  | 
 | type | Řetězec | Typ aktivace, kterým je "Http" | 
-| Vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
+| vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
 | method | Ano | Řetězec | Metoda HTTP pro dotazování zadaný koncový bod: "GET", "PUT", "POST", "OPRAVIT", "Odstranit" nebo "HEAD" | 
 | identifikátor uri | Ano| Řetězec | Adresu URL koncového bodu protokolu HTTP nebo HTTPS, která kontroluje aktivační události nebo dotazuje <p>Maximální velikost řetězce: 2 KB | 
 | recurrence | Objekt JSON | Četnost a interval, který popisuje, jak často se aktivuje aktivační události |  
@@ -328,7 +328,7 @@ Této aktivační události dotazuje zadaný koncový bod a zkontroluje odpově�
 
 | Název elementu | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| Dotazy | Objekt JSON | Všechny parametry dotazu, které chcete zahrnout s adresou URL <p>Například přidá tento element `?api-version=2015-02-01` na adresu URL, řetězec dotazu: <p>`"queries": { "api-version": "2015-02-01" }` <p>Výsledek: `https://contoso.com?api-version=2015-02-01` | 
+| dotazy | Objekt JSON | Všechny parametry dotazu, které chcete zahrnout s adresou URL <p>Například přidá tento element `?api-version=2015-02-01` na adresu URL, řetězec dotazu: <p>`"queries": { "api-version": "2015-02-01" }` <p>Výsledek: `https://contoso.com?api-version=2015-02-01` | 
 | hlavičky | Objekt JSON | Nejméně jedno záhlaví odeslat s požadavkem <p>Chcete-li například nastavit jazyk a typ pro žádost: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | hlavní část | Objekt JSON | Datová část (data) k odeslání do koncového bodu | 
 | Ověřování | Objekt JSON | Metoda, která příchozí požadavek by měl používat pro ověřování. Další informace najdete v tématu [odchozí ověření Scheduleru](../scheduler/scheduler-outbound-authentication.md). Nad rámec Scheduler `authority` vlastnost je podporována. Pokud není zadáno, výchozí hodnota je `https://login.windows.net`, ale můžete použít jinou hodnotu, jako například`https://login.windows\-ppe.net`. | 
@@ -341,14 +341,14 @@ Aby dobře pracoval s svou aplikaci logiky, triggeru protokolu HTTP vyžaduje, �
   
 | Odpověď | Požaduje se | Popis | 
 | -------- | -------- | ----------- |  
-| Stavový kód | Ano | "200 OK" stavový kód spustí spustit. Další kód stavu nelze spustit spustit. | 
+| Kód stavu | Ano | "200 OK" stavový kód spustí spustit. Další kód stavu nelze spustit spustit. | 
 | Opakovat po záhlaví | Ne | Počet sekund do aplikace logiky dotazuje koncový bod znovu | 
 | Hlavička umístění | Ne | Adresa URL pro volání při dalším intervalu dotazování. Pokud není zadaný, použije se původní adresu URL. | 
 |||| 
 
 *Příklad chování pro jiné požadavky*
 
-| Stavový kód | Opakovat po | Chování | 
+| Kód stavu | Opakovat po | Chování | 
 | ----------- | ----------- | -------- | 
 | 200 | {none} | Spusťte pracovní postup, a poté znovu zkontrolujte pro další data po definované opakování. | 
 | 200 | 10 sekund | Spusťte pracovní postup, a poté znovu zkontrolujte pro další data po 10 sekundách. |  
@@ -415,7 +415,7 @@ Zde je definice aktivační události, i když mnoho oddíly jsou volitelné, ta
 | ------------ | ---- | ----------- | 
 | *APIConnectionTriggerName* | Objekt JSON | Název aktivační události, který je objektem popsané ve formátu Javascript Object Notation (JSON)  | 
 | type | Řetězec | Typ aktivace, kterým je "ApiConnection" | 
-| Vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
+| vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
 | hostitel | Objekt JSON | Objekt JSON, který popisuje hostitele brány a ID pro spravované rozhraní API <p>`host` Objekt JSON má tyto prvky: `api` a `connection` | 
 | rozhraní api | Objekt JSON | Adresa URL koncového bodu pro spravované rozhraní API: <p>`"runtimeUrl": "<managed-API-endpoint-URL>"` | 
 | připojení | Objekt JSON | Název pro spravované rozhraní API spojení, které používá pracovní postup, který musí obsahovat odkaz na parametr s názvem `$connection`: <p>`"name": "@parameters('$connections')['<connection-name>'].name"` | 
@@ -429,7 +429,7 @@ Zde je definice aktivační události, i když mnoho oddíly jsou volitelné, ta
 
 | Název elementu | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| Dotazy | Objekt JSON | Všechny parametry dotazu, které chcete zahrnout s adresou URL <p>Například přidá tento element `?api-version=2015-02-01` na adresu URL, řetězec dotazu: <p>`"queries": { "api-version": "2015-02-01" }` <p>Výsledek: `https://contoso.com?api-version=2015-02-01` | 
+| dotazy | Objekt JSON | Všechny parametry dotazu, které chcete zahrnout s adresou URL <p>Například přidá tento element `?api-version=2015-02-01` na adresu URL, řetězec dotazu: <p>`"queries": { "api-version": "2015-02-01" }` <p>Výsledek: `https://contoso.com?api-version=2015-02-01` | 
 | hlavičky | Objekt JSON | Nejméně jedno záhlaví odeslat s požadavkem <p>Chcete-li například nastavit jazyk a typ pro žádost: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | hlavní část | Objekt JSON | Objekt JSON, který popisuje datová část (data) k odeslání do spravované rozhraní API | 
 | Ověřování | Objekt JSON | Metoda, kterou příchozí žádosti by měla použít pro ověřování. Další informace najdete v tématu [odchozí ověření Scheduleru](../scheduler/scheduler-outbound-authentication.md). |
@@ -516,7 +516,7 @@ Zde je definice aktivační událost, když mnoho oddíly jsou volitelné a akti
 | ------------ | ---- | ----------- | 
 | HTTP_Webhook | Objekt JSON | Název aktivační události, který je objektem popsané ve formátu Javascript Object Notation (JSON)  | 
 | type | Řetězec | Typ aktivace, kterým je "HttpWebhook" | 
-| Vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
+| vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
 | přihlášení k odběru | Objekt JSON| Odchozí požadavek volání a provedení počáteční registrace, když se vytvoří aktivační událost. Toto volání se provede tak, aby aktivační událost můžete zahájit naslouchání na události na koncový bod. Další informace najdete v tématu [přihlášení k odběru a odhlášení](#subscribe-unsubscribe). | 
 | method | Řetězec | Metoda protokolu HTTP použitou pro danou žádost předplatné: "GET", "PUT", "POST", "OPRAVIT", "Odstranit" nebo "HEAD" | 
 | identifikátor uri | Řetězec | Adresa URL koncového bodu pro kam má posílat žádosti o odběr | 
@@ -616,7 +616,7 @@ Zde je definice aktivační události:
 | ------------ | ---- | ----------- | 
 | <*ApiConnectionWebhookTriggerName*> | Objekt JSON | Název aktivační události, který je objektem popsané ve formátu Javascript Object Notation (JSON)  | 
 | type | Řetězec | Typ aktivace, kterým je "ApiConnectionWebhook" | 
-| Vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
+| vstupy | Objekt JSON | Vstupy aktivační události, které definují chování aktivační události | 
 | hostitel | Objekt JSON | Objekt JSON, který popisuje hostitele brány a ID pro spravované rozhraní API <p>`host` Objekt JSON má tyto prvky: `api` a `connection` | 
 | připojení | Objekt JSON | Název pro spravované rozhraní API spojení, které používá pracovní postup, který musí obsahovat odkaz na parametr s názvem `$connection`: <p>`"name": "@parameters('$connections')['<connection-name>']['connectionId']"` | 
 | hlavní část | Objekt JSON | Objekt JSON, který popisuje datová část (data) k odeslání do spravované rozhraní API | 
@@ -627,7 +627,7 @@ Zde je definice aktivační události:
 
 | Název elementu | Typ | Popis | 
 | ------------ | ---- | ----------- | 
-| Dotazy | Objekt JSON | Všechny parametry dotazu, které chcete zahrnout s adresou URL <p>Například přidá tento element `?folderPath=Inbox` na adresu URL, řetězec dotazu: <p>`"queries": { "folderPath": "Inbox" }` <p>Výsledek: `https://<managed-API-URL>?folderPath=Inbox` | 
+| dotazy | Objekt JSON | Všechny parametry dotazu, které chcete zahrnout s adresou URL <p>Například přidá tento element `?folderPath=Inbox` na adresu URL, řetězec dotazu: <p>`"queries": { "folderPath": "Inbox" }` <p>Výsledek: `https://<managed-API-URL>?folderPath=Inbox` | 
 |||| 
 
 <a name="trigger-conditions"></a>
@@ -822,7 +822,7 @@ Zde `inputs` objekt trvá těchto parametrů požadovaných pro tvorbu volání 
 | ------------ | -------- | ---- | ----------- | 
 | method | Ano | Řetězec | Použije jeden z těchto metod HTTP: "GET", "POST", "PUT", "Odstranit", "OPRAVIT" nebo "HEAD" | 
 | identifikátor uri | Ano| Řetězec | Protokolu HTTP nebo HTTPs koncový bod, který kontroluje, aktivační události. Maximální velikost řetězce: 2 KB | 
-| Dotazy | Ne | Objekt JSON | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
+| dotazy | Ne | Objekt JSON | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
 | hlavičky | Ne | Objekt JSON | Představuje každá hlavička odeslaný v požadavku. <p>Chcete-li například nastavení jazyka a typu na vyžádání: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | hlavní část | Ne | Objekt JSON | Představuje datovou část, která je odeslána koncovému bodu. | 
 | retryPolicy | Ne | Objekt JSON | Tento objekt použijte k přizpůsobení chování opakování 4xx nebo 5xx chyby. Další informace najdete v tématu [opakujte zásady](../logic-apps/logic-apps-exception-handling.md). | 
@@ -926,7 +926,7 @@ Tato akce odkazuje konektor spravovaný společností Microsoft, vyžadování o
 | hostitel | Ano | Objekt JSON | Představuje informace o konektoru, jako `runtimeUrl` a odkaz na objekt připojení. | 
 | method | Ano | Řetězec | Použije jeden z těchto metod HTTP: "GET", "POST", "PUT", "Odstranit", "OPRAVIT" nebo "HEAD" | 
 | path | Ano | Řetězec | Cesta pro operace rozhraní API | 
-| Dotazy | Ne | Objekt JSON | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
+| dotazy | Ne | Objekt JSON | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
 | hlavičky | Ne | Objekt JSON | Představuje každá hlavička odeslaný v požadavku. <p>Chcete-li například nastavení jazyka a typu na vyžádání: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | hlavní část | Ne | Objekt JSON | Představuje datovou část, která je odeslána koncovému bodu. | 
 | retryPolicy | Ne | Objekt JSON | Tento objekt použijte k přizpůsobení chování opakování 4xx nebo 5xx chyby. Další informace najdete v tématu [opakujte zásady](../logic-apps/logic-apps-exception-handling.md). | 
@@ -979,7 +979,7 @@ Akce APIConnectionWebhook odkazuje konektor spravovaný společností Microsoft.
 | ------------ | -------- | ---- | ----------- | 
 | hostitel | Ano | Objekt JSON | Představuje informace o konektoru, jako `runtimeUrl` a odkaz na objekt připojení. | 
 | path | Ano | Řetězec | Cesta pro operace rozhraní API | 
-| Dotazy | Ne | Objekt JSON | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
+| dotazy | Ne | Objekt JSON | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
 | hlavičky | Ne | Objekt JSON | Představuje každá hlavička odeslaný v požadavku. <p>Chcete-li například nastavení jazyka a typu na vyžádání: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | hlavní část | Ne | Objekt JSON | Představuje datovou část, která je odeslána koncovému bodu. | 
 | retryPolicy | Ne | Objekt JSON | Tento objekt použijte k přizpůsobení chování opakování 4xx nebo 5xx chyby. Další informace najdete v tématu [opakujte zásady](../logic-apps/logic-apps-exception-handling.md). | 
@@ -1068,7 +1068,7 @@ Tato akce vám umožní představují a volání [Azure funkce](../azure-functio
 | ------------ | -------- | ---- | ----------- |  
 | id – funkce | Ano | Řetězec | ID prostředku pro funkci Azure, kterou chcete volat. | 
 | method | Ne | Řetězec | Metoda HTTP, který se používá k volání funkce. Pokud není zadaný, "POST" je výchozí metodou. | 
-| Dotazy | Ne | Objekt JSON | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
+| dotazy | Ne | Objekt JSON | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
 | hlavičky | Ne | Objekt JSON | Představuje každá hlavička odeslaný v požadavku. <p>Chcete-li například nastavení jazyka a typu na vyžádání: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | hlavní část | Ne | Objekt JSON | Představuje datovou část, která je odeslána koncovému bodu. | 
 |||||
@@ -1303,7 +1303,7 @@ Tato akce umožňuje vnořit pracovního postupu. Modul Logic Apps provede kontr
 | ------------ | -------- | ---- | ----------- |  
 | id hostitele | Ano | Řetězec| ID prostředku pro pracovní postup, který chcete volání | 
 | Název aktivační události hostitele | Ano | Řetězec | Název aktivační události, kterou chcete vyvolání | 
-| Dotazy | Ne | Objekt JSON | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
+| dotazy | Ne | Objekt JSON | Představuje všechny parametry dotazu, které chcete zahrnout do adresy URL. <p>Například `"queries": { "api-version": "2015-02-01" }` přidá `?api-version=2015-02-01` na adresu URL. | 
 | hlavičky | Ne | Objekt JSON | Představuje každá hlavička odeslaný v požadavku. <p>Chcete-li například nastavení jazyka a typu na vyžádání: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | hlavní část | Ne | Objekt JSON | Představuje datovou část, která je odeslána koncovému bodu. | 
 ||||| 
@@ -1435,7 +1435,7 @@ Tato akce, který je příkaz switch, provádí různé akce podle konkrétní h
 | Případy | Ano | Objekt JSON | Obsahuje sadu vnitřní akce, které běží na základě na výsledek výrazu. | 
 | Případ | Ano | Řetězec | Hodnota, která má odpovídat výsledek | 
 | Akce | Ano | Objekt JSON | Vnitřní akce, které spustit pro případ odpovídající výsledek výrazu | 
-| výchozí | Ne | Objekt JSON | Vnitřní akce, které spustit, když žádné případy odpovídají výsledku | 
+| default | Ne | Objekt JSON | Vnitřní akce, které spustit, když žádné případy odpovídají výsledku | 
 ||||| 
 
 Příklad:

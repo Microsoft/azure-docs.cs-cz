@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34267377"
 ---
 # <a name="use-habitat-to-deploy-your-application-to-azure"></a>Použití prostředí pro nasazení aplikace do Azure
 [Prostředí](https://www.habitat.sh/) je první jeho typu open source projektu, který nabízí úplně novou přístup ke správě aplikací. Prostředí aplikace a její automatizace je jednotka nasazení. Pokud aplikace jsou uzavřen do lightweight "prostředí", běhové prostředí toho, jestli je kontejner, holý počítač nebo PaaS, již není aktivní a neuvádělo aplikace. 

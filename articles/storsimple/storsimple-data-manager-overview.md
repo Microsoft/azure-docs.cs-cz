@@ -16,7 +16,7 @@ ms.date: 05/21/2018
 ms.author: vidarmsft
 ms.openlocfilehash: d57229ad79909aa0334cc623d727b733a1ec73f9
 ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/01/2018
 ms.locfileid: "34652004"

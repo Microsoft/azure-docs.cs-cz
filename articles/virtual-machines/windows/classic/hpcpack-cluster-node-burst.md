@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30915102"
 ---
 # <a name="add-on-demand-burst-nodes-to-an-hpc-pack-cluster-in-azure"></a>Přidat na vyžádání "shluků" uzly do clusteru HPC Pack v Azure
 Pokud jste nastavili [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) clusteru v Azure, můžete způsob, jak rychle změnit velikost clusteru kapacitu nahoru nebo dolů, bez zachování sadu předkonfigurované výpočetním uzlu virtuálních počítačů. Tento článek ukazuje, jak přidat uzly na vyžádání "shluků" (pracovní role instancí spuštěných v rámci cloudové služby) jako výpočetní prostředky k hlavnímu uzlu v Azure. 

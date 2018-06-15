@@ -1,11 +1,11 @@
 ---
-title: "Deaktivovat a odstranit virtuální pole Microsoft Azure StorSimple | Microsoft Docs"
-description: "Popisuje postup odstranění zařízení StorSimple ze služby tak, že nejprve deaktivace služby a poté ji odstranit."
+title: Deaktivovat a odstranit virtuální pole Microsoft Azure StorSimple | Microsoft Docs
+description: Popisuje postup odstranění zařízení StorSimple ze služby tak, že nejprve deaktivace služby a poté ji odstranit.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: a929f5bc-03e2-4b01-b925-973db236f19f
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875827"
 ---
 # <a name="deactivate-and-delete-a-storsimple-virtual-array"></a>Deaktivovat a odstranit pole virtuální zařízení StorSimple
 

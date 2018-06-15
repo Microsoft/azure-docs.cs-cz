@@ -1,11 +1,11 @@
 ---
-title: "Nastavení pro zařízení StorSimple virtuální pole jako souborový server | Microsoft Docs"
-description: "V tomto kurzu třetí v nasazení pole virtuální zařízení StorSimple dá pokyn k nastavení virtuálního zařízení jako souborový server."
+title: Nastavení pro zařízení StorSimple virtuální pole jako souborový server | Microsoft Docs
+description: V tomto kurzu třetí v nasazení pole virtuální zařízení StorSimple dá pokyn k nastavení virtuálního zařízení jako souborový server.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f609f6ff-0927-48bb-a68a-6d8985d2fe34
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927821"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Nasazení pole virtuálního zařízení StorSimple - Set až jako souborový server prostřednictvím portálu Azure
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)

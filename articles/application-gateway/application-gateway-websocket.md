@@ -1,6 +1,6 @@
 ---
 title: Podpora protokolu WebSocket v Azure Application Gateway | Microsoft Docs
-description: "Tato stránka obsahuje přehled podpory protokolu WebSocket brány aplikace."
+description: Tato stránka obsahuje přehled podpory protokolu WebSocket brány aplikace.
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836795"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>Přehled podpory protokolu WebSocket v aplikační brány
 

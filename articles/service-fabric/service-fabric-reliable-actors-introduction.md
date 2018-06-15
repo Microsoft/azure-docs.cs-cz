@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34213040"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Seznámení se službou Service Fabric Reliable Actors
 Reliable Actors je architektura aplikace Service Fabric na základě [virtuální objektu Actor](http://research.microsoft.com/en-us/projects/orleans/) vzor. Rozhraní API spolehlivé aktéři poskytuje programovací model jednovláknové založený na škálovatelnost a spolehlivost záruk poskytnutých Service Fabric.

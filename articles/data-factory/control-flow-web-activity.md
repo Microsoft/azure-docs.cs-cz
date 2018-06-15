@@ -15,7 +15,7 @@ ms.date: 05/01/2018
 ms.author: shlo
 ms.openlocfilehash: 6d14d84610d97e487e3bf4286267623681c4eb75
 ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/01/2018
 ms.locfileid: "34619231"

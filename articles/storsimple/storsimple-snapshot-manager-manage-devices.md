@@ -1,11 +1,11 @@
 ---
-title: "Spravovat zařízení s Snapshot Manager zařízení StorSimple | Microsoft Docs"
-description: "Popisuje způsob použití modulu snap-in konzoly MMC StorSimple Snapshot Manager k připojení a správě zařízení StorSimple."
+title: Spravovat zařízení s Snapshot Manager zařízení StorSimple | Microsoft Docs
+description: Popisuje způsob použití modulu snap-in konzoly MMC StorSimple Snapshot Manager k připojení a správě zařízení StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 966ecbe3-a7fa-4752-825f-6694dd949946
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876807"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>Použít k připojení a správě zařízení StorSimple Snapshot Manager zařízení StorSimple
 ## <a name="overview"></a>Přehled

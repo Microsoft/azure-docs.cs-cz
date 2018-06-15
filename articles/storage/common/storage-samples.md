@@ -1,6 +1,6 @@
 ---
-title: "Ukázky kódu Azure Storage | Microsoft Docs"
-description: "Zobrazit, stáhnout a spustit ukázkový kód a aplikace pro Azure Storage. Umožňuje zjistit Začínáme ukázky pro objekty BLOB, fronty, tabulky a soubory, pomocí rozhraní .NET, Java, Node.js a C++ knihovny klienta úložiště."
+title: Ukázky kódu Azure Storage | Microsoft Docs
+description: Zobrazit, stáhnout a spustit ukázkový kód a aplikace pro Azure Storage. Umožňuje zjistit Začínáme ukázky pro objekty BLOB, fronty, tabulky a soubory, pomocí rozhraní .NET, Java, Node.js a C++ knihovny klienta úložiště.
 services: storage
 documentationcenter: na
 author: tamram
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927450"
 ---
 # <a name="azure-storage-samples"></a>Ukázky Azure Storage
 

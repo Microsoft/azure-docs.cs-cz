@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23836389"
 ---
 # <a name="azure-sdk-for-net-28-281-and-282"></a>Azure SDK pro .NET 2.8, 2.8.1 a 2.8.2
 ## <a name="overview"></a>Přehled

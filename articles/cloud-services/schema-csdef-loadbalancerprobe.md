@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34360049"
 ---
 # <a name="azure-cloud-services-definition-loadbalancerprobe-schema"></a>Definice schématu LoadBalancerProbe služby Azure Cloud Services
 Sondu nástroje pro vyrovnávání zatížení je sondu zákazník definovaný stavu UDP koncových bodů a koncových bodů v instancí rolí. `LoadBalancerProbe` Není element samostatné; se zkombinuje s webovou roli nebo role pracovního procesu v definičním souboru služby. A `LoadBalancerProbe` mohou využívat více než jednu roli.

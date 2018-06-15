@@ -20,6 +20,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30913786"
 ---
 # <a name="how-to-set-up-endpoints-on-a-classic-windows-virtual-machine-in-azure"></a>Jak nastavit koncové body na klasické virtuální počítač Windows v Azure
 Všechny systémy Windows, který můžou virtuální počítače, které vytvoříte v Azure pomocí modelu nasazení classic automaticky komunikují přes privátního síťový kanál s jinými virtuálními počítači ve stejné cloudové služby nebo virtuální sítě. Počítače v Internetu nebo k jiným virtuálním sítím však vyžadují koncové body směrovat příchozí síťový provoz do virtuálního počítače. Tento článek je také k dispozici pro [virtuální počítače s Linuxem](../../linux/classic/setup-endpoints.md).

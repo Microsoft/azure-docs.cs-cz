@@ -1,14 +1,14 @@
 ---
 services: virtual-machines
-title: "Nastavení prostředí PowerShell"
+title: Nastavení prostředí PowerShell
 author: JoeDavies-MSFT
-solutions: 
+solutions: ''
 manager: timlt
 editor: tysonn
 ms.service: virtual-machines
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/12/2015
 ms.author: rasquill
@@ -17,6 +17,7 @@ ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/16/2018
+ms.locfileid: "23886180"
 ---
 ## <a name="setting-up-powershell"></a>Nastavení prostředí PowerShell
 Než budete moct použít Azure PowerShell, postupujte podle těchto kroků.

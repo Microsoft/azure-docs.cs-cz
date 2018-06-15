@@ -15,6 +15,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/19/2018
+ms.locfileid: "31598961"
 ---
 # <a name="using-t-sql-loops-in-sql-data-warehouse"></a>Pomocí smyčky T-SQL v SQL Data Warehouse
 Tipy pro pomocí smyčky T-SQL a nahrazení kurzory v Azure SQL Data Warehouse na vývoj řešení.

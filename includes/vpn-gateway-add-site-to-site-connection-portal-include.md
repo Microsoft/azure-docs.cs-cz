@@ -13,6 +13,7 @@ ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/06/2018
+ms.locfileid: "30921426"
 ---
 1. Přejděte na stránku brány virtuální sítě a otevřete ji. K oknu se dostanete několika způsoby. K bráně VNet1GW se dostanete tak, že přejdete do části **TestVNet1 -> Přehled -> Připojená zařízení -> VNet1GW**.
 2. Na stránce brány VNet1GW klikněte na **Připojení**. V horní části okna Připojení klikněte na **+ Přidat** a otevřete stránku **Přidat připojení**.

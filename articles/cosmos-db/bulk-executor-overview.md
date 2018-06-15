@@ -12,7 +12,7 @@ ms.date: 05/07/2018
 ms.author: ramkris
 ms.openlocfilehash: 5f1987009d2277590e32136336340aa1b3be07fd
 ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/01/2018
 ms.locfileid: "34610329"

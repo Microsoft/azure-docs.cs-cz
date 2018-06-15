@@ -47,6 +47,8 @@
           href: cdn-dynamic-site-acceleration.md
     - name: Spravovat
       items:
+        - name: Vytvoření koncového bodu
+          href: cdn-create-endpoint-how-to.md
         - name: Správa pomocí Azure PowerShellu
           href: cdn-manage-powershell.md
         - name: Omezení přístupu podle země

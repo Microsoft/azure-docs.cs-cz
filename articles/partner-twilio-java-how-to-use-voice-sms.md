@@ -1,7 +1,7 @@
 ---
-title: "Jak používat Twilio pro hlasový a serveru SMS (Java) | Microsoft Docs"
-description: "Naučte se telefonní hovor a odeslání zprávy SMS službou Twilio rozhraní API v Azure. Ukázky kódu napsanou v jazyce Java."
-services: 
+title: Jak používat Twilio pro hlasový a serveru SMS (Java) | Microsoft Docs
+description: Naučte se telefonní hovor a odeslání zprávy SMS službou Twilio rozhraní API v Azure. Ukázky kódu napsanou v jazyce Java.
+services: ''
 documentationcenter: java
 author: devinrader
 manager: twilio
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866153"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>Jak používat Twilio pro hlasový a možnosti serveru SMS v jazyce Java
 Tato příručka ukazuje, jak provádět běžné úkoly programování službou Twilio rozhraní API v Azure. Pokryté scénáře zahrnují uskutečnění telefonního hovoru a odesílání zprávy služby krátké zprávy (SMS). Další informace o Twilio a používání hlasového a SMS ve svých aplikacích najdete v tématu [další kroky](#NextSteps) části.

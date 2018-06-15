@@ -18,6 +18,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34301831"
 ---
 # <a name="enable-multi-tenancy-in-azure-stack"></a>Povolit víceklientský v Azure zásobníku
 

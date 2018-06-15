@@ -1,6 +1,6 @@
 ---
-title: "Jak používat Hudsonem pomocí úložiště objektů Blob | Microsoft Docs"
-description: "Popisuje, jak používat Hudsonem s úložištěm Azure Blob jako úložiště artefaktů sestavení."
+title: Jak používat Hudsonem pomocí úložiště objektů Blob | Microsoft Docs
+description: Popisuje, jak používat Hudsonem s úložištěm Azure Blob jako úložiště artefaktů sestavení.
 services: storage
 documentationcenter: java
 author: seguler
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874161"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Použití Azure Storage s řešením Hudson Continuous Integration
 ## <a name="overview"></a>Přehled

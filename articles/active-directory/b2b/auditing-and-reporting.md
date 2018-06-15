@@ -12,9 +12,10 @@ manager: mtillman
 ms.reviewer: sasubram
 ms.openlocfilehash: 64f15095bd260cd5f83e0e834607cd64bb3a47ee
 ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34267372"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Auditování a vytváření sestav uživatele spolupráce B2B
 Uživatele typu Host máte auditování podobné možnosti jako s uživateli člen. Tady je příklad pozvánky a uplatnění historii pozvaný Sam Oogle:

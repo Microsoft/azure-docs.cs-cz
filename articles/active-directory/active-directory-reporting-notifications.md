@@ -19,7 +19,7 @@ ms.custom: oldportal
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 8f4beece9d1d351c91f2bb055eedc0ae9851f532
 ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/01/2018
 ms.locfileid: "34588184"

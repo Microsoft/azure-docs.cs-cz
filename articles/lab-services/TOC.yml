@@ -79,6 +79,8 @@
               href: devtest-lab-resize-vm.md
             - name: Znovunasazení virtuálního počítače
               href: devtest-lab-redeploy-vm.md
+            - name: Import virtuálního počítače
+              href: devtest-lab-import-vm.md
         - name: Použití prostředí v testovacím prostředí
           items:
             - name: Vytvoření prostředí

@@ -6,7 +6,7 @@
       href: dns-overview.md
 - name: Šablony Rychlý start
   items:
-    - name: Vytvoření záznamu a zóny DNS – portál
+    - name: Překlad adres IP – portál
       href: dns-getstarted-portal.md
     - name: Vytvoření záznamu a zóny DNS – PowerShell
       href: dns-getstarted-powershell.md
@@ -14,12 +14,12 @@
       href: dns-getstarted-cli.md
 - name: Kurzy
   items:
-    - name: Vytvoření privátní zóny DNS a záznamu
-      href: private-dns-getstarted-powershell.md
-    - name: Delegování domény do Azure DNS
+    - name: Hostování vaší domény v Azure DNS
       href: dns-delegate-domain-azure-dns.md
     - name: Vytvoření vlastních záznamů DNS pro webovou aplikaci
       href: dns-web-sites-custom-domain.md
+    - name: Vytvoření privátní zóny DNS a záznamu
+      href: private-dns-getstarted-powershell.md
 - name: Ukázky
   items:
     - name: Azure CLI

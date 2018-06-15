@@ -1,11 +1,11 @@
 ---
-title: "Automatizovat StorSimple sdílená_složka zotavení po Havárii s Azure Site Recovery | Microsoft Docs"
-description: "Popisuje kroky a osvědčené postupy pro vytváření řešení zotavení po havárii pro sdílené složky hostované na úložiště Microsoft Azure StorSimple."
+title: Automatizovat StorSimple sdílená_složka zotavení po Havárii s Azure Site Recovery | Microsoft Docs
+description: Popisuje kroky a osvědčené postupy pro vytváření řešení zotavení po havárii pro sdílené složky hostované na úložiště Microsoft Azure StorSimple.
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 23049a2c-055e-4d0e-b8f5-af2a87ecf53f
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/17/2017
+ms.locfileid: "23890877"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatizované zotavení po havárii řešení pomocí Azure Site Recovery pro sdílené složky hostované na StorSimple
 ## <a name="overview"></a>Přehled

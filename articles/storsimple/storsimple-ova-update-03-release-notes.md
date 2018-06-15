@@ -1,11 +1,11 @@
 ---
-title: "Poznámky k verzi aktualizace pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje důležité otevřené problémy a řešení pro pole virtuální zařízení StorSimple verzi Update 0.3."
+title: Poznámky k verzi aktualizace pole virtuální zařízení StorSimple | Microsoft Docs
+description: Popisuje důležité otevřené problémy a řešení pro pole virtuální zařízení StorSimple verzi Update 0.3.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: b197651a-3c40-4185-b23d-4c8f22cfa8f4
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875512"
 ---
 # <a name="storsimple-virtual-array-update-03-release-notes"></a>Poznámky k verzi 0,3 aktualizace pole virtuální zařízení StorSimple
 ## <a name="overview"></a>Přehled

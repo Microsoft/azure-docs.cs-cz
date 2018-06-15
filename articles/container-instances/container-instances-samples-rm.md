@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260009"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Šablony Azure Resource Manageru pro instance kontejner Azure
 

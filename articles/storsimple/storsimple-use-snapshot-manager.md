@@ -1,11 +1,11 @@
 ---
-title: "Uživatelské rozhraní Snapshot Manager zařízení StorSimple | Microsoft Docs"
-description: "Popisuje uživatelské rozhraní Snapshot Manager zařízení StorSimple a vysvětluje, jak použít ho ke správě úloh zálohování a zálohování katalog."
+title: Uživatelské rozhraní Snapshot Manager zařízení StorSimple | Microsoft Docs
+description: Popisuje uživatelské rozhraní Snapshot Manager zařízení StorSimple a vysvětluje, jak použít ho ke správě úloh zálohování a zálohování katalog.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c7d91892-2881-41a2-a7a2-908dc3646493
 ms.service: storsimple
 ms.devlang: NA
@@ -14,12 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.custom: 
+ms.custom: ''
 ms.openlocfilehash: b48c507e38eb7cadff56259f617e336e4efe5708
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927947"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>Použití StorSimple Snapshot Manager uživatelské rozhraní pro správu úloh zálohování a zálohování katalogu
 

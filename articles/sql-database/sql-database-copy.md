@@ -11,7 +11,7 @@ ms.author: carlrab
 ms.topic: conceptual
 ms.openlocfilehash: 2217df046cf95ddcd12f6dcaa41b2c3f8b0090f6
 ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/01/2018
 ms.locfileid: "34646197"

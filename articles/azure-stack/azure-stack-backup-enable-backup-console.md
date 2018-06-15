@@ -19,6 +19,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34302252"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Povolit zálohování pro zásobník Azure z portálu pro správu
 Povolte službu infrastruktura zálohování prostřednictvím portálu pro správu tak, aby zásobník Azure může generovat zálohy. Tyto zálohy můžete použít k obnovení vašeho prostředí pomocí cloudu obnovení v případě [k závažnému selhání](.\azure-stack-backup-recover-data.md). Účelem obnovení cloudu je zajistit, že operátory a uživatele můžete znovu se přihlásili k portálu po dokončení obnovení. Uživatelé budou mít předplatné obnovit včetně oprávnění k přístupu na základě rolí a rolí, původní plány, nabízí a předem definované výpočetní, úložiště a síťové kvóty.

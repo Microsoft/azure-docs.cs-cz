@@ -1,11 +1,11 @@
 ---
-title: "Používání úložiště blob pro službu IIS a tabulka úložiště pro události v Azure Log Analytics | Microsoft Docs"
-description: "Analýzy protokolů můžete přečíst v protokolech služby Azure, které zápis diagnostiky table Storage nebo protokoly služby IIS zapisovat do úložiště objektů blob."
+title: Používání úložiště blob pro službu IIS a tabulka úložiště pro události v Azure Log Analytics | Microsoft Docs
+description: Analýzy protokolů můžete přečíst v protokolech služby Azure, které zápis diagnostiky table Storage nebo protokoly služby IIS zapisovat do úložiště objektů blob.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: bf444752-ecc1-4306-9489-c29cb37d6045
 ms.service: log-analytics
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855443"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Používat úložiště objektů blob v Azure pro službu IIS a Azure úložiště table pro události se analýzy protokolů
 
