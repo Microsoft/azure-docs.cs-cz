@@ -1,6 +1,6 @@
 ---
-title: "Používání Azure Storage s řešením volaných průběžnou integraci | Microsoft Docs"
-description: "V tomto kurzu ukazují, jak používat službu objektů blob v Azure jako úložiště pro sestavení artefakty vytvořené volaných průběžnou integraci řešení."
+title: Používání Azure Storage s řešením volaných průběžnou integraci | Microsoft Docs
+description: V tomto kurzu ukazují, jak používat službu objektů blob v Azure jako úložiště pro sestavení artefakty vytvořené volaných průběžnou integraci řešení.
 services: storage
 documentationcenter: java
 author: seguler
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874133"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Použití Azure Storage s řešením Jenkins Continuous Integration
 ## <a name="overview"></a>Přehled

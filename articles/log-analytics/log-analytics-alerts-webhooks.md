@@ -1,8 +1,8 @@
 ---
-title: "Ukázka výstrahy akce Webhooku v OMS Log Analytics | Microsoft Docs"
-description: "Jednu z akcí, můžete spustit v reakci na výstrahy analýzy protokolů je * webhooku *, které umožňuje vyvolání externího procesu prostřednictvím jedné žádosti HTTP. Tento článek vás provede příklad vytvoření webhooku akce výstrahou analýzy protokolů pomocí Slack."
+title: Ukázka výstrahy akce Webhooku v OMS Log Analytics | Microsoft Docs
+description: Jednu z akcí, můžete spustit v reakci na výstrahy analýzy protokolů je * webhooku *, které umožňuje vyvolání externího procesu prostřednictvím jedné žádosti HTTP. Tento článek vás provede příklad vytvoření webhooku akce výstrahou analýzy protokolů pomocí Slack.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23855170"
 ---
 # <a name="create-an-alert-webhook-action-in-oms-log-analytics-to-send-message-to-slack"></a>Vytvoří akci, výstrah webhooku v OMS analýzy protokolů k odeslání zprávy na Slack
 Jednu z akcí můžete spustit v reakci na [analýzy protokolů výstraha](log-analytics-alerts.md) je *webhooku*, která umožňuje vyvolání externího procesu prostřednictvím jedné žádosti HTTP.  Další informace o podrobnosti o výstrahy a pomocí webhooků v [výstrahy v analýzy protokolů](log-analytics-alerts.md)

@@ -1,11 +1,11 @@
 ---
-title: "Postup konfigurace aplikační službu prostředí v1"
-description: "Konfiguraci, správu a monitorování v1 App Service Environment"
+title: Postup konfigurace aplikační službu prostředí v1
+description: Konfiguraci, správu a monitorování v1 App Service Environment
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: ccompy
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
 ms.service: app-service
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23837215"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurování aplikace, služby prostředí v1
 

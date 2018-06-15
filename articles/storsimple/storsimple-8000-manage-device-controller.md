@@ -1,12 +1,12 @@
 ---
-title: "Správa řadiče zařízení řady StorSimple 8000 | Microsoft Docs"
-description: "Naučte se zastavit, vypnout, restartovat nebo obnovit řadičů zařízení StorSimple."
+title: Správa řadiče zařízení řady StorSimple 8000 | Microsoft Docs
+description: Naučte se zastavit, vypnout, restartovat nebo obnovit řadičů zařízení StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875113"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>Spravovat vaše řadiče zařízení StorSimple
 

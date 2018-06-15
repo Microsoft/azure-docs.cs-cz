@@ -1,11 +1,11 @@
 ---
-title: "Jak používat témata Service Bus s PHP | Microsoft Docs"
-description: "Naučte se používat témata Service Bus s PHP v Azure."
+title: Jak používat témata Service Bus s PHP | Microsoft Docs
+description: Naučte se používat témata Service Bus s PHP v Azure.
 services: service-bus-messaging
 documentationcenter: php
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: faaa4bbd-f6ef-42ff-aca7-fc4353976449
 ms.service: service-bus-messaging
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23868596"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Jak používat témata a odběry Service Bus s PHP
 

@@ -1,8 +1,8 @@
 ---
-title: "Diagnostika výjimek za běhu pomocí Azure Application Insights | Dokumentace Microsoftu"
-description: "Kurz popisující, jak v aplikaci vyhledat a diagnostikovat výjimky za běhu pomocí Azure Application Insights."
+title: Diagnostika výjimek za běhu pomocí Azure Application Insights | Dokumentace Microsoftu
+description: Kurz popisující, jak v aplikaci vyhledat a diagnostikovat výjimky za běhu pomocí Azure Application Insights.
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/19/2017
@@ -15,6 +15,7 @@ ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/23/2018
+ms.locfileid: "27998045"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Vyhledání a diagnostika výjimek za běhu pomocí Azure Application Insights
 

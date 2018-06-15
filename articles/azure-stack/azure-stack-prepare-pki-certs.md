@@ -20,6 +20,7 @@ ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/04/2018
+ms.locfileid: "33203472"
 ---
 # <a name="prepare-azure-stack-pki-certificates-for-deployment"></a>Příprava pro nasazení certifikátů PKI zásobník Azure
 Soubory certifikátu [získané z certifikační Autority podle volby](azure-stack-get-pki-certs.md) musí být importovat a exportovat s vlastnostmi odpovídající požadavky na certifikát Azure zásobníku.

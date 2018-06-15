@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace brány virtuální sítě pro ExpressRoute pomocí prostředí PowerShell: classic: Azure | Microsoft Docs"
-description: "Konfigurace brány virtuální sítě pro nasazení classic modelu virtuální sítě pomocí prostředí PowerShell konfigurace ExpressRoute."
+title: 'Konfigurace brány virtuální sítě pro ExpressRoute pomocí prostředí PowerShell: classic: Azure | Microsoft Docs'
+description: Konfigurace brány virtuální sítě pro nasazení classic modelu virtuální sítě pomocí prostředí PowerShell konfigurace ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: charwen
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 85ee0bc1-55be-4760-bfb4-34d9f2c96f30
 ms.service: expressroute
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23850634"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell-classic"></a>Konfigurace brány virtuální sítě pro ExpressRoute pomocí prostředí PowerShell (klasické)
 > [!div class="op_single_selector"]

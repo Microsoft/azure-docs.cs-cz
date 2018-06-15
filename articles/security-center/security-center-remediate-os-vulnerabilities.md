@@ -1,11 +1,11 @@
 ---
-title: "Opravit konfigurace zabezpečení v Azure Security Center | Microsoft Docs"
-description: "Tento dokument ukazuje, jak implementovat Azure Security Center doporučení, \"Konfigurace zabezpečení napravit.\""
+title: Opravit konfigurace zabezpečení v Azure Security Center | Microsoft Docs
+description: Tento dokument ukazuje, jak implementovat Azure Security Center doporučení, "Konfigurace zabezpečení napravit."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 991d41f5-1d17-468d-a66d-83ec1308ab79
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/25/2018
+ms.locfileid: "28103927"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Opravit konfigurace zabezpečení v Azure Security Center
 Azure Security Center analyzuje denně operační systém (OS) virtuálních počítačů (VM) a počítačů pro konfiguraci, které by mohly znamenat virtuálních počítačů a počítačů zranitelnější vůči útokům. Security Center doporučuje, když vaše konfigurace operačního systému neodpovídá pravidla konfigurace doporučené zabezpečení a doporučí změny konfigurace, které tyto nedostatky řeší chyby zabezpečení.

@@ -1,11 +1,11 @@
 ---
-title: "Správa oprávnění k prostředkům na uživatele v Azure zásobníku (Správce služeb a klientů) | Microsoft Docs"
-description: "Jako správce služeb nebo klienta zjistěte, jak ke správě oprávnění RBAC."
+title: Správa oprávnění k prostředkům na uživatele v Azure zásobníku (Správce služeb a klientů) | Microsoft Docs
+description: Jako správce služeb nebo klienta zjistěte, jak ke správě oprávnění RBAC.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: fenila
-editor: 
+editor: ''
 ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
 ms.workload: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29385632"
 ---
 # <a name="manage-role-based-access-control"></a>Správa řízení přístupu na základě rolí
 

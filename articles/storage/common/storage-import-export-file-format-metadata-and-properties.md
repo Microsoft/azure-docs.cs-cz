@@ -1,11 +1,11 @@
 ---
-title: "Azure Import/Export metadat a vlastnosti formát souboru | Microsoft Docs"
-description: "Zjistěte, jak určit metadata a vlastnosti pro jeden nebo více objektů BLOB, které jsou součástí importu nebo exportu úlohy."
+title: Azure Import/Export metadat a vlastnosti formát souboru | Microsoft Docs
+description: Zjistěte, jak určit metadata a vlastnosti pro jeden nebo více objektů BLOB, které jsou součástí importu nebo exportu úlohy.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 840364c6-d9a8-4b43-a9f3-f7441c625069
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873650"
 ---
 # <a name="azure-importexport-service-metadata-and-properties-file-format"></a>Azure Import/Export metadat a vlastnosti souboru formát služby
 Metadata a vlastnosti pro jeden nebo více objektů BLOB můžete zadat jako součást úlohy importu nebo úlohy exportu. Pokud chcete nastavit vlastnosti pro objekty BLOB vytváří jako součást úlohy importu nebo metadata, poskytnete metadata nebo vlastnosti souboru na pevný disk obsahující data, která bude importována. Pro úlohy exportu metadat a vlastnosti se zapisují do metadata nebo vlastnosti souboru, který je zahrnut na pevný disk, který vrátil pro vás.  

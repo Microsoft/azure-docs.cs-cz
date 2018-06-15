@@ -1,12 +1,12 @@
 ---
-title: "Použití Azure Security Center doporučení k vylepšení zabezpečení | Microsoft Docs"
+title: Použití Azure Security Center doporučení k vylepšení zabezpečení | Microsoft Docs
 description: " Další informace o použití zásady a doporučení zabezpečení v Azure Security Center můžete zmírnit útok na zabezpečení. "
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866664"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Použití Azure Security Center doporučení k vylepšení zabezpečení
 Konfigurace zásad zabezpečení a pak implementace doporučení pomocí služby Azure Security Center můžete snížit pravděpodobnost událostí významné zabezpečení. Tento článek ukazuje, jak používat zásady a doporučení zabezpečení v Centru zabezpečení můžete zmírnit útok na zabezpečení.

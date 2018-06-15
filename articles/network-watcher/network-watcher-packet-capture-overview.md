@@ -1,11 +1,11 @@
 ---
-title: "Úvod do zachytáváním paketů v sledovací proces sítě Azure | Microsoft Docs"
-description: "Tato stránka obsahuje přehled funkce zachytávání paketů sledovací proces sítě"
+title: Úvod do zachytáváním paketů v sledovací proces sítě Azure | Microsoft Docs
+description: Tato stránka obsahuje přehled funkce zachytávání paketů sledovací proces sítě
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23864291"
 ---
 # <a name="introduction-to-variable-packet-capture-in-azure-network-watcher"></a>Úvod do proměnné paketu zachycení v sledovací proces sítě Azure
 

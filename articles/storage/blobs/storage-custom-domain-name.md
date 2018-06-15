@@ -1,6 +1,6 @@
 ---
-title: "Konfigurace vlastního názvu doménu pro koncový bod služby Azure Blob storage | Microsoft Docs"
-description: "Použití portálu Azure k mapování vlastní kanonický název (CNAME) na koncový bod úložiště objektů Blob v účtu Azure Storage."
+title: Konfigurace vlastního názvu doménu pro koncový bod služby Azure Blob storage | Microsoft Docs
+description: Použití portálu Azure k mapování vlastní kanonický název (CNAME) na koncový bod úložiště objektů Blob v účtu Azure Storage.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -13,6 +13,7 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/24/2018
+ms.locfileid: "29559923"
 ---
 # <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>Konfigurace vlastního názvu domény pro koncový bod služby Blob Storage
 

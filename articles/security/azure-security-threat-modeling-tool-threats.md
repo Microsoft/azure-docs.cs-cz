@@ -1,6 +1,6 @@
 ---
-title: "Hrozby - modelování nástroj Microsoft Threat - Azure | Microsoft Docs"
-description: "Stránka kategorie hrozeb pro nástroj Microsoft Threat modelování, obsahující kategorie pro všechny vystavené generována hrozeb."
+title: Hrozby - modelování nástroj Microsoft Threat - Azure | Microsoft Docs
+description: Stránka kategorie hrozeb pro nástroj Microsoft Threat modelování, obsahující kategorie pro všechny vystavené generována hrozeb.
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23867896"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Nástroje pro modelování hrozeb Microsoft hrozeb
 

@@ -1,13 +1,13 @@
 ---
-title: "Migrovat ExpressRoute přidružené virtuální sítě z classic do Resource Manager: Azure: prostředí PowerShell | Microsoft Docs"
-description: "Tato stránka popisuje, jak migrovat přidružený virtuálních sítí do Resource Manager po přesunutí okruhu."
+title: 'Migrovat ExpressRoute přidružené virtuální sítě z classic do Resource Manager: Azure: prostředí PowerShell | Microsoft Docs'
+description: Tato stránka popisuje, jak migrovat přidružený virtuálních sítí do Resource Manager po přesunutí okruhu.
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23850823"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>Migrovat ExpressRoute přidružené virtuální sítě z classic do Resource Manager
 

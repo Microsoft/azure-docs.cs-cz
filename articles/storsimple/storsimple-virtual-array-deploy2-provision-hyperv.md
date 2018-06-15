@@ -1,11 +1,11 @@
 ---
-title: "Zřídit pole virtuální zařízení StorSimple technologie Hyper-v | Microsoft Docs"
-description: "Tento druhý kurz v nasazení pole virtuální zařízení StorSimple zahrnuje zřizování virtuální pole Hyper-v."
+title: Zřídit pole virtuální zařízení StorSimple technologie Hyper-v | Microsoft Docs
+description: Tento druhý kurz v nasazení pole virtuální zařízení StorSimple zahrnuje zřizování virtuální pole Hyper-v.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4354963c-e09d-41ac-9c8b-f21abeae9913
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876590"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>Nasazení zařízení StorSimple virtuální pole - zřízení technologie Hyper-v
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)

@@ -1,11 +1,11 @@
 ---
-title: "Verze aktualizace operačního systému v Azure Security Center | Microsoft Docs"
-description: "V tomto článku se dozvíte, jak provést doporučení Azure Security Center ** aktualizace operačního systému verze **."
+title: Verze aktualizace operačního systému v Azure Security Center | Microsoft Docs
+description: V tomto článku se dozvíte, jak provést doporučení Azure Security Center ** aktualizace operačního systému verze **.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: aa372492-ecdb-4368-8fdd-d8ed31e216ee
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866510"
 ---
 # <a name="update-os-version-in-azure-security-center"></a>Aktualizovat verzi operačního systému v Azure Security Center
 Pro virtuální počítače (VM) v cloudové služby Azure Security Center vám doporučí aktualizovat operační systém (OS) Pokud není k dispozici novější verze.  Pouze cloudových služeb webové a pracovní role spuštění v produkčním prostředí, které jsou monitorovány sloty.

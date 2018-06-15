@@ -1,12 +1,12 @@
 ---
-title: "Spravovat záznamy řízení přístupu v zařízení StorSimple | Microsoft Docs"
-description: "Popisuje, jak používat záznamy řízení přístupu (ACRs) k určení, které hostitele může připojit k svazek v zařízení StorSimple."
+title: Spravovat záznamy řízení přístupu v zařízení StorSimple | Microsoft Docs
+description: Popisuje, jak používat záznamy řízení přístupu (ACRs) k určení, které hostitele může připojit k svazek v zařízení StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874903"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>Použít službu StorSimple Manager ke správě záznamy řízení přístupu
 

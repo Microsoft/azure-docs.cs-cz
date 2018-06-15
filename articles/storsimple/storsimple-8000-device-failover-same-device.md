@@ -1,12 +1,12 @@
 ---
-title: "StorSimple převzetí služeb při selhání, zotavení po havárii pro řady 8000 zařízení | Microsoft Docs"
-description: "Naučte se převzít zařízení StorSimple na stejné zařízení."
+title: StorSimple převzetí služeb při selhání, zotavení po havárii pro řady 8000 zařízení | Microsoft Docs
+description: Naučte se převzít zařízení StorSimple na stejné zařízení.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874819"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Selhání fyzického zařízení StorSimple ve stejném zařízení
 

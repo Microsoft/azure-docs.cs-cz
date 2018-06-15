@@ -1,11 +1,11 @@
 ---
-title: "Příprava pevné disky pro úlohy importu Azure Import/Export - v1 | Microsoft Docs"
-description: "Zjistěte, jak připravit pevných disků v nástroji v1 WAImportExport k vytvoření úlohy importu do služby Azure Import/Export."
+title: Příprava pevné disky pro úlohy importu Azure Import/Export - v1 | Microsoft Docs
+description: Zjistěte, jak připravit pevných disků v nástroji v1 WAImportExport k vytvoření úlohy importu do služby Azure Import/Export.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 3d818245-8b1b-4435-a41f-8e5ec1f194b2
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874091"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Příprava pevných disků pro úlohu importu
 Příprava jeden nebo více pevných disků pro úlohy importu, postupujte takto:

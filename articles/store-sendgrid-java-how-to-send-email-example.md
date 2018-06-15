@@ -1,7 +1,7 @@
 ---
 title: Store-sendgrid-Java-How-to-send-email-example
-description: "Postup odesílání e-mailu pomocí sendgrid vám umožňuje z prostředí Java v Azure nasazení"
-services: 
+description: Postup odesílání e-mailu pomocí sendgrid vám umožňuje z prostředí Java v Azure nasazení
+services: ''
 documentationcenter: java
 author: thinkingserious
 manager: sendgrid
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873944"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Postup odesílání e-mailu pomocí sendgrid vám umožňuje z prostředí Java v Azure nasazení
 Následující příklad ukazuje, jak můžete sendgrid vám umožňuje použít k odesílání e-mailů z webové stránky hostované v Azure. Výsledné aplikace vyzve uživatele, hodnoty e-mailu, jak je znázorněno na následujícím snímku obrazovky.

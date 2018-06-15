@@ -1,6 +1,6 @@
 ---
-title: "Výjimka Management - nástroj Microsoft Threat modelování – Azure | Microsoft Docs"
-description: "způsoby zmírnění hrozeb, které jsou zveřejněné v nástroji pro modelování hrozeb"
+title: Výjimka Management - nástroj Microsoft Threat modelování – Azure | Microsoft Docs
+description: způsoby zmírnění hrozeb, které jsou zveřejněné v nástroji pro modelování hrozeb
 services: security
 documentationcenter: na
 author: RodSan
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28019581"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Zabezpečení rámce: Správa výjimek | Způsoby zmírnění rizik 
 | Produktům a službám | Článek |

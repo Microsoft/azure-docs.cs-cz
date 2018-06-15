@@ -1,12 +1,12 @@
 ---
-title: "Nejčastější dotazy na Microsoft Azure StorSimple a programu poskytovatele cloudových řešení pro partnery | Microsoft Docs"
-description: "Odpovědi na obvyklé dotazy týkající se zařízení StorSimple a zprostředkovatele kryptografických služeb pro partnery."
+title: Nejčastější dotazy na Microsoft Azure StorSimple a programu poskytovatele cloudových řešení pro partnery | Microsoft Docs
+description: Odpovědi na obvyklé dotazy týkající se zařízení StorSimple a zprostředkovatele kryptografických služeb pro partnery.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875351"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple programu poskytovatele cloudových řešení pro: Nejčastější dotazy
 

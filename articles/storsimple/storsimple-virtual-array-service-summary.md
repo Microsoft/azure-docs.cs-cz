@@ -1,11 +1,11 @@
 ---
-title: "Souhrn okno služby pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje souhrnu okna služby ve Správci zařízení StorSimple a vysvětluje, jak použít jej k monitorování stavu pole virtuální zařízení StorSimple."
+title: Souhrn okno služby pole virtuální zařízení StorSimple | Microsoft Docs
+description: Popisuje souhrnu okna služby ve Správci zařízení StorSimple a vysvětluje, jak použít jej k monitorování stavu pole virtuální zařízení StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: 8a2b9a84-b0e6-48b9-b366-d16f004241a5
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875736"
 ---
 # <a name="use-the-service-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>Použití okna Souhrn služby ve Správci zařízení StorSimple připojené k poli virtuální zařízení StorSimple
 ## <a name="overview"></a>Přehled

@@ -1,11 +1,11 @@
 ---
-title: "Instalační program serveru iSCSI společnosti Microsoft Azure StorSimple virtuální pole | Microsoft Docs"
-description: "Popisuje postup provedení počáteční instalace, zaregistrujte serveru iSCSI StorSimple a dokončení instalace zařízení."
+title: Instalační program serveru iSCSI společnosti Microsoft Azure StorSimple virtuální pole | Microsoft Docs
+description: Popisuje postup provedení počáteční instalace, zaregistrujte serveru iSCSI StorSimple a dokončení instalace zařízení.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 4db116d1-978b-48e8-b572-a719a8425dbc
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23877304"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Nasadit pole virtuálního zařízení StorSimple – sadu až jako server se službou iSCSI prostřednictvím portálu Azure
 

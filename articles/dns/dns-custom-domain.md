@@ -1,6 +1,6 @@
 ---
-title: "Azure DNS integrovat vašich prostředků Azure | Microsoft Docs"
-description: "Naučte se používat Azure DNS podél zajistit DNS pro vašich prostředků Azure."
+title: Azure DNS integrovat vašich prostředků Azure | Microsoft Docs
+description: Naučte se používat Azure DNS podél zajistit DNS pro vašich prostředků Azure.
 services: dns
 documentationcenter: na
 author: KumudD
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27994378"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Zadejte nastavení vlastní domény pro službu Azure pomocí Azure DNS
 

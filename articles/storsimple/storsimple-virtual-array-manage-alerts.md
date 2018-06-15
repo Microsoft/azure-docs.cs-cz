@@ -1,11 +1,11 @@
 ---
-title: "Zobrazovat a spravovat Microsoft Azure StorSimple virtuální pole výstrahy | Microsoft Docs"
-description: "Popisuje výstrahy podmínky pole virtuální zařízení StorSimple a závažnost a jak používat službu StorSimple Manager ke správě výstrah."
+title: Zobrazovat a spravovat Microsoft Azure StorSimple virtuální pole výstrahy | Microsoft Docs
+description: Popisuje výstrahy podmínky pole virtuální zařízení StorSimple a závažnost a jak používat službu StorSimple Manager ke správě výstrah.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 97ee25a1-0ec3-4883-9a0a-54b722598462
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/12/2018
+ms.locfileid: "27786403"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Pomocí Správce zařízení StorSimple Spravovat výstrahy pro toto pole virtuální zařízení StorSimple
 

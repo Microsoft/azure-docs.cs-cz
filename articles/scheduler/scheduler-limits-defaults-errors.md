@@ -1,11 +1,11 @@
 ---
-title: "Omezení a výchozích hodnot"
-description: "Omezení a výchozích hodnot"
+title: Omezení a výchozích hodnot
+description: Omezení a výchozích hodnot
 services: scheduler
 documentationcenter: .NET
 author: derek1ee
 manager: kevinlam1
-editor: 
+editor: ''
 ms.assetid: 88f4a3e9-6dbd-4943-8543-f0649d423061
 ms.service: scheduler
 ms.workload: infrastructure-services
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23867812"
 ---
 # <a name="scheduler-limits-and-defaults"></a>Omezení a výchozích hodnot
 ## <a name="scheduler-quotas-limits-defaults-and-throttles"></a>Scheduler kvóty, omezení, výchozí hodnoty a omezení

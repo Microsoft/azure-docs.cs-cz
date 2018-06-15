@@ -1,11 +1,11 @@
 ---
-title: "Hledání Azure Security Center | Microsoft Docs"
-description: "Zjistěte, jak Azure Security Center využívá analýzy protokolů hledání načíst a analyzovat data zabezpečení."
+title: Hledání Azure Security Center | Microsoft Docs
+description: Zjistěte, jak Azure Security Center využívá analýzy protokolů hledání načíst a analyzovat data zabezpečení.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866398"
 ---
 # <a name="azure-security-center-search"></a>Azure Security Center vyhledávání
 Azure Security Center používá [analýzy protokolů hledání](../log-analytics/log-analytics-log-searches.md) načíst a analyzovat data zabezpečení. Log Analytics obsahuje dotazovací jazyk rychle načíst a konsolidovat data. Ze služby Security Center můžete využít analýzy protokolů hledání vytvořit dotazy a analyzovat shromážděná data.

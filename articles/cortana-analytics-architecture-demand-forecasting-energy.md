@@ -1,9 +1,9 @@
 ---
-title: "Šablona řešení Cortana Intelligence architektura pro vytváření prognóz vyžádání energie | Microsoft Docs"
-description: "Architektura Microsoft Cortana Intelligence řešení šablony, která pomáhá prognózy vyžádání pro firmu nástroj energie."
-keywords: "řešení akcelerátoru; cortana analytics; prognózy energie"
+title: Šablona řešení Cortana Intelligence architektura pro vytváření prognóz vyžádání energie | Microsoft Docs
+description: Architektura Microsoft Cortana Intelligence řešení šablony, která pomáhá prognózy vyžádání pro firmu nástroj energie.
+keywords: řešení akcelerátoru; cortana analytics; prognózy energie
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: garyericson
 manager: jhubbard
 editor: cgronlun
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23845657"
 ---
 # <a name="cortana-intelligence-solution-template-architecture-for-demand-forecasting-of-energy"></a>Šablona řešení Cortana Intelligence architektura pro vytváření prognóz vyžádání energie
 Následující obrázek poskytuje přehled architektury aplikace [Cortana Intelligence řešení šablonu pro vyžádání prognózy energie](cortana-analytics-playbook-demand-forecasting-energy.md).

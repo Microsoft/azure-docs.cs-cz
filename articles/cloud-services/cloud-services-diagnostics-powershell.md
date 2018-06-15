@@ -1,11 +1,11 @@
 ---
-title: "Povolte diagnostiku ve službě Azure Cloud Services pomocí prostředí PowerShell | Microsoft Docs"
-description: "Informace o povolení diagnostiky pro cloudové služby pomocí prostředí PowerShell"
+title: Povolte diagnostiku ve službě Azure Cloud Services pomocí prostředí PowerShell | Microsoft Docs
+description: Informace o povolení diagnostiky pro cloudové služby pomocí prostředí PowerShell
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 66e08754-8639-4022-ae18-4237749ba17d
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843424"
 ---
 # <a name="enable-diagnostics-in-azure-cloud-services-using-powershell"></a>Povolte diagnostiku ve službě Azure Cloud Services pomocí prostředí PowerShell
 Můžete shromáždit diagnostických dat, jako jsou protokoly aplikací, čítače výkonu z cloudové služby pomocí rozšíření Azure Diagnostics atd. Tento článek popisuje, jak povolit rozšíření diagnostiky Azure pro cloudové služby pomocí prostředí PowerShell.  V tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview) pro součásti potřebné k tomuto článku.

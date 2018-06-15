@@ -1,11 +1,11 @@
 ---
-title: "Všimněte si 1 vyřazení hostovaného operačního systému rodiny | Microsoft Docs"
-description: "Poskytuje informace o při vyřazení Azure hostovaného operačního systému rodiny 1 stalo a jak určit, pokud se vás"
+title: Všimněte si 1 vyřazení hostovaného operačního systému rodiny | Microsoft Docs
+description: Poskytuje informace o při vyřazení Azure hostovaného operačního systému rodiny 1 stalo a jak určit, pokud se vás
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 37b422e9-0713-4a81-a942-f553ef478064
 ms.service: cloud-services
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23843130"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>Všimněte si vyřazení hostovaného operačního systému rodiny 1
 Vyřazení operačního systému rodiny 1 byla poprvé oznámeno na 1 červen 2013.

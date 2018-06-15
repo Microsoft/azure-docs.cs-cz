@@ -1,8 +1,8 @@
 ---
-title: "Postup telefonní hovor z Twilio (PHP) | Microsoft Docs"
-description: "Naučte se telefonní hovor a odeslání zprávy SMS službou Twilio rozhraní API v Azure. Ukázky jsou pro aplikace PHP."
+title: Postup telefonní hovor z Twilio (PHP) | Microsoft Docs
+description: Naučte se telefonní hovor a odeslání zprávy SMS službou Twilio rozhraní API v Azure. Ukázky jsou pro aplikace PHP.
 documentationcenter: php
-services: 
+services: ''
 author: devinrader
 manager: twilio
 editor: mollybos
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865754"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-php-application-on-azure"></a>Postup telefonní hovor pomocí Twilio v aplikaci PHP v Azure
 Následující příklad ukazuje, jak Twilio můžete využít volání z webové stránky PHP hostované v Azure. Výsledné aplikace vyzve uživatele, hodnoty telefonní hovor, jak je znázorněno na následujícím snímku obrazovky.

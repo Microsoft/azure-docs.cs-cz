@@ -1,11 +1,11 @@
 ---
-title: "Stránka šablon ve službě Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak přizpůsobit obsah stránky na portálu vývojáře pomocí sadu šablon ve službě Azure API Management."
+title: Stránka šablon ve službě Azure API Management | Microsoft Docs
+description: Zjistěte, jak přizpůsobit obsah stránky na portálu vývojáře pomocí sadu šablon ve službě Azure API Management.
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: e57df269-1019-4b74-b74d-53155b809d59
 ms.service: api-management
 ms.workload: mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27745003"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Stránka šablon ve službě Azure API Management
 Azure API Management poskytuje schopnost přizpůsobit obsah stránky na portálu vývojáře pomocí sady šablony, které konfigurace jejich obsahu. Pomocí [DotLiquid](http://dotliquidmarkup.org/) syntaxe a editoru podle své volby, například [DotLiquid pro návrháře](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), a lokalizované zadaný sadu [řetězce prostředků](api-management-template-resources.md#strings), [glyfy prostředky](api-management-template-resources.md#glyphs), a [stránka ovládací prvky](api-management-page-controls.md), máte flexibilitu při konfiguraci obsahu stránek, podle potřeby pomocí těchto šablon.  

@@ -1,12 +1,12 @@
 ---
-title: "Úvod do Azure Queue storage | Microsoft Docs"
-description: "Úvod do Azure Queue storage"
+title: Úvod do Azure Queue storage | Microsoft Docs
+description: Úvod do Azure Queue storage
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873825"
 ---
 # <a name="introduction-to-queues"></a>Seznámení s frontami
 

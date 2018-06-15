@@ -1,11 +1,11 @@
 ---
-title: "Katalog zálohování Snapshot Manager zařízení StorSimple | Microsoft Docs"
-description: "Popisuje způsob použití modulu snap-in konzoly MMC StorSimple Snapshot Manager můžete zobrazit a spravovat zálohy katalogu."
+title: Katalog zálohování Snapshot Manager zařízení StorSimple | Microsoft Docs
+description: Popisuje způsob použití modulu snap-in konzoly MMC StorSimple Snapshot Manager můžete zobrazit a spravovat zálohy katalogu.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6abdbfd2-22ce-45a5-aa15-38fae4c8f4ec
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876709"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>Použití StorSimple Snapshot Manager ke správě katalogu zálohování
 
@@ -91,7 +92,7 @@ Použijte následující postup k vytvoření duplicitní (klonování) svazek n
    
    1. V **název** textového pole zadejte název klonovaného svazku. Tento název se zobrazí v **svazky** uzlu. 
    2. (Volitelné) vyberte **jednotky**a potom v rozevíracím seznamu vyberte písmeno jednotky.
-   3. (Volitelné) vyberte **složky (NTFS)**a zadejte cestu ke složce nebo klikněte na tlačítko Procházet a vyberte umístění složky. 
+   3. (Volitelné) vyberte **složky (NTFS)** a zadejte cestu ke složce nebo klikněte na tlačítko Procházet a vyberte umístění složky. 
    4. Klikněte na možnost **Vytvořit**.
 5. Po dokončení procesu klonování je třeba inicializovat klonovaný svazku. Spusťte správce serveru a pak spusťte nástroj Správa disků. Podrobné pokyny najdete v tématu [připojit svazky](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Po inicializaci, zobrazí se svazku v části **svazky** uzlu **oboru** podokně. Pokud se svazek uvedené nezobrazí, aktualizujte seznam svazků (klikněte pravým tlačítkem myši **svazky** uzel a pak klikněte na tlačítko **aktualizovat**).
 
@@ -124,7 +125,7 @@ Než začnete, ujistěte se, že máte aktuální záloha skupiny svazku. Potom 
    
    1. V **název** textového pole zadejte název klonovaného svazku. Tento název se zobrazí v **svazky** uzlu. 
    2. (Volitelné) Vyberte **jednotky**a potom v rozevíracím seznamu vyberte písmeno jednotky. 
-   3. (Volitelné) Vyberte **složky (NTFS)**a zadejte cestu ke složce, nebo klikněte na tlačítko **Procházet** a vyberte umístění složky. 
+   3. (Volitelné) Vyberte **složky (NTFS)** a zadejte cestu ke složce, nebo klikněte na tlačítko **Procházet** a vyberte umístění složky. 
    4. Klikněte na možnost **Vytvořit**. 
 5. Po dokončení procesu klonování je třeba inicializovat klonovaný svazku. Spusťte správce serveru a pak spusťte nástroj Správa disků. Podrobné pokyny najdete v tématu [připojit svazky](storsimple-snapshot-manager-manage-volumes.md#mount-volumes). Po inicializaci, zobrazí se svazku v části **svazky** uzlu **oboru** podokně. 
    

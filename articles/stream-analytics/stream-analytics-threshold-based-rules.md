@@ -14,6 +14,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32767937"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Proces konfigurovatelná pravidla na základě prahové hodnoty v Azure Stream Analytics
 Tento článek popisuje postup používání referenčních dat. k dosažení výstrahy řešení, které využívá konfigurovatelná pravidla na základě prahové hodnoty v Azure Stream Analytics.

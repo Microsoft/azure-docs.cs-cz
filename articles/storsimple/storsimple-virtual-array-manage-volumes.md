@@ -1,11 +1,11 @@
 ---
-title: "Správa svazků v poli virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje Správce zařízení StorSimple a vysvětluje, jak použít ho ke správě svazky na pole virtuální zařízení StorSimple."
+title: Správa svazků v poli virtuální zařízení StorSimple | Microsoft Docs
+description: Popisuje Správce zařízení StorSimple a vysvětluje, jak použít ho ke správě svazky na pole virtuální zařízení StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: manuaery
 manager: syadav
-editor: 
+editor: ''
 ms.assetid: caa6a26b-b7ba-4a05-b092-1a79450225cf
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876051"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Pomocí Správce zařízení StorSimple službou pro správu svazků na poli virtuální zařízení StorSimple
 

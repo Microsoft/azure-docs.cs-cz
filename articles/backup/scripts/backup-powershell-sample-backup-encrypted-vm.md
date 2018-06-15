@@ -1,13 +1,13 @@
 ---
-title: "Azure ukázkový skript prostředí PowerShell – zálohuje virtuální počítač Azure | Microsoft Docs"
-description: "Azure ukázkový skript prostředí PowerShell – zálohuje virtuální počítač Azure"
+title: Azure ukázkový skript prostředí PowerShell – zálohuje virtuální počítač Azure | Microsoft Docs
+description: Azure ukázkový skript prostředí PowerShell – zálohuje virtuální počítač Azure
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: backup
 ms.devlang: na
 ms.topic: sample
@@ -18,9 +18,10 @@ ms.author: markgal
 ms.custom: mvc
 ms.openlocfilehash: 4376add4a2e51806bd5db228ad2fe2afcf2e4f57
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23842647"
 ---
 # <a name="back-up-an-encrypted-azure-virtual-machine-with-powershell"></a>Zálohování šifrované virtuálního počítače Azure pomocí prostředí PowerShell
 

@@ -16,9 +16,10 @@ ms.date: 2/22/2017
 ms.author: cbrooks
 ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
 ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "23873972"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Podpora služby Azure Storage (CORS) pro sdílení prostředků různého původu
 Počínaje verzí 2013-08-15, podporu služby Azure storage sdílení prostředků různých původů (CORS) pro služby objektů Blob, tabulky, fronty a souboru. CORS je funkce protokolu HTTP, která umožňuje webové aplikace spuštěna v rámci jednoho domény přístup k prostředkům v jiné doméně. Webové prohlížeče implementovat omezení zabezpečení, označuje jako [stejného původu zásad](http://www.w3.org/Security/wiki/Same_Origin_Policy) která brání webové stránky z volání rozhraní API v jiné doméně. CORS poskytuje zabezpečení způsob, jak povolit jednu doménu (doménu původu) k volání rozhraní API v jiné doméně. Najdete v článku [specifikace CORS](http://www.w3.org/TR/cors/) podrobnosti o CORS.

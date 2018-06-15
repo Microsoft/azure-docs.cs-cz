@@ -1,11 +1,11 @@
 ---
-title: "Použít aktualizace systému v Azure Security Center | Microsoft Docs"
-description: "Tento dokument ukazuje, jak implementovat Azure Security Center doporučení ** použít aktualizace systému ** a ** po systému aktualizace ** restartuje."
+title: Použít aktualizace systému v Azure Security Center | Microsoft Docs
+description: Tento dokument ukazuje, jak implementovat Azure Security Center doporučení ** použít aktualizace systému ** a ** po systému aktualizace ** restartuje.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866426"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Použít aktualizace systému v Azure Security Center
 Azure Security Center monitoruje denní Windows a Linux virtuální počítače (VM) a počítače pro chybějící aktualizace operačního systému. Security Center načte seznam dostupných zabezpečení a důležité aktualizace ze služby Windows Update nebo Windows Server Update Services (WSUS), podle toho, která je nakonfigurovaná služba počítači se systémem Windows. Security Center také zkontroluje nejnovější aktualizace v systémech Linux. Pokud virtuální počítač nebo počítač chybí aktualizace systému, bude Security Center doporučujeme použít aktualizace systému.

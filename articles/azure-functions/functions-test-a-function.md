@@ -1,13 +1,13 @@
 ---
-title: "Testování funkcí Azure Functions | Microsoft Docs"
-description: "Azure functions otestujte pomocí Postman, cURL a Node.js."
+title: Testování funkcí Azure Functions | Microsoft Docs
+description: Azure functions otestujte pomocí Postman, cURL a Node.js.
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure funkce, funkce, zpracování událostí, webhooků, dynamické výpočetní, bez serveru architektura testování"
+editor: ''
+tags: ''
+keywords: Azure funkce, funkce, zpracování událostí, webhooků, dynamické výpočetní, bez serveru architektura testování
 ms.assetid: c00f3082-30d2-46b3-96ea-34faf2f15f77
 ms.service: functions
 ms.devlang: multiple
@@ -22,6 +22,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23838951"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu v Azure Functions
 

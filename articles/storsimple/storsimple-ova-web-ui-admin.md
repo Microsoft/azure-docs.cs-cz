@@ -1,11 +1,11 @@
 ---
-title: "Pole virtuální zařízení StorSimple webového uživatelského rozhraní správy | Microsoft Docs"
-description: "Popisuje, jak provádět úlohy správy základní zařízení StorSimple virtuální pole webového uživatelského rozhraní."
+title: Pole virtuální zařízení StorSimple webového uživatelského rozhraní správy | Microsoft Docs
+description: Popisuje, jak provádět úlohy správy základní zařízení StorSimple virtuální pole webového uživatelského rozhraní.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ea65b4c7-a478-43e6-83df-1d9ea62916a6
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875883"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>Pomocí webového uživatelského rozhraní pro správu pole virtuální zařízení StorSimple
 ![tok procesu instalace](./media/storsimple-ova-web-ui-admin/manage4.png)

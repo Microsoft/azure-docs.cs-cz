@@ -1,6 +1,6 @@
 ---
-title: "Spustit na místní web pro virtuální počítače Hyper-v navrácení služeb po obnovení | Microsoft Docs"
-description: "Azure Site Recovery koordinuje replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů a fyzických serverů. Další informace o navrácení služeb po obnovení z Azure do místního datového centra."
+title: Spustit na místní web pro virtuální počítače Hyper-v navrácení služeb po obnovení | Microsoft Docs
+description: Azure Site Recovery koordinuje replikaci, převzetí služeb při selhání a obnovení virtuálních počítačů a fyzických serverů. Další informace o navrácení služeb po obnovení z Azure do místního datového centra.
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
@@ -13,6 +13,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29467118"
 ---
 # <a name="run-a-failback-for-hyper-v-vms"></a>Spustit navrácení služeb po obnovení pro virtuální počítače Hyper-V
 

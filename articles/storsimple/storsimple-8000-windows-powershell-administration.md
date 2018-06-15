@@ -1,12 +1,12 @@
 ---
-title: "Prostředí PowerShell pro správu zařízení StorSimple | Microsoft Docs"
-description: "Další informace o použití prostředí Windows PowerShell pro StorSimple ke správě zařízení StorSimple."
+title: Prostředí PowerShell pro správu zařízení StorSimple | Microsoft Docs
+description: Další informace o použití prostředí Windows PowerShell pro StorSimple ke správě zařízení StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27743711"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Ke správě zařízení pomocí Windows Powershellu pro StorSimple
 

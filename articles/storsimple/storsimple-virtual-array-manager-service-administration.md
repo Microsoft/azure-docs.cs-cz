@@ -1,11 +1,11 @@
 ---
-title: "Správa Microsoft Azure StorSimple Manager virtuální pole | Microsoft Docs"
-description: "Zjistěte, jak spravovat virtuální pole místního zařízení StorSimple pomocí služby StorSimple Manager zařízení na portálu Azure."
+title: Správa Microsoft Azure StorSimple Manager virtuální pole | Microsoft Docs
+description: Zjistěte, jak spravovat virtuální pole místního zařízení StorSimple pomocí služby StorSimple Manager zařízení na portálu Azure.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 958244a5-f9f5-455e-b7ef-71a65558872e
 ms.service: storsimple
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875841"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>Použít službu StorSimple Manager zařízení ke správě pole virtuální zařízení StorSimple
 ![tok procesu instalace](./media/storsimple-virtual-array-manager-service-administration/manage4.png)

@@ -1,11 +1,11 @@
 ---
-title: "Správa přihlašovacích údajů účtu úložiště pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "Vysvětluje, jak můžete použít stránku konfigurace Správce zařízení StorSimple Pokud chcete přidat, upravit, odstranit nebo otočit klíče zabezpečení pro přihlašovací údaje účtu úložiště, která je spojená s polem virtuální zařízení StorSimple."
+title: Správa přihlašovacích údajů účtu úložiště pole virtuální zařízení StorSimple | Microsoft Docs
+description: Vysvětluje, jak můžete použít stránku konfigurace Správce zařízení StorSimple Pokud chcete přidat, upravit, odstranit nebo otočit klíče zabezpečení pro přihlašovací údaje účtu úložiště, která je spojená s polem virtuální zařízení StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 234bf8bb-d5fe-40be-9d25-721d7482bc3b
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876982"
 ---
 # <a name="use-storsimple-device-manager-to-manage-storage-account-credentials-for-storsimple-virtual-array"></a>Pomocí Správce zařízení StorSimple ke správě přihlašovacích údajů účtu úložiště pro pole virtuální zařízení StorSimple
 

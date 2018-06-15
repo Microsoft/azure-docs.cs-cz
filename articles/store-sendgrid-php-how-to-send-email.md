@@ -1,8 +1,8 @@
 ---
-title: "Jak používat služby sendgrid vám umožňuje e-mailů (PHP) | Microsoft Docs"
-description: "Zjistěte, jak odeslat e-mailu pomocí e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky kódu jsou vytvořeny v jazyce PHP."
+title: Jak používat služby sendgrid vám umožňuje e-mailů (PHP) | Microsoft Docs
+description: Zjistěte, jak odeslat e-mailu pomocí e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky kódu jsou vytvořeny v jazyce PHP.
 documentationcenter: php
-services: 
+services: ''
 manager: sendgrid
 editor: mollybos
 author: thinkingserious
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874028"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Používání služby sendgrid vám umožňuje e-mailu z PHP
 Tato příručka ukazuje, jak provádět běžné úkoly programování s e-mailovou službu sendgrid vám umožňuje v Azure. Ukázky jsou napsané v jazyce PHP.

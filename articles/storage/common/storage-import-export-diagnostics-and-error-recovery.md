@@ -1,11 +1,11 @@
 ---
-title: "Diagnostiky a zotavení po chybě pro úlohy Azure Import/Export | Microsoft Docs"
-description: "Zjistěte, jak povolit podrobné protokolování pro úlohy služby Microsoft Azure Import/Export."
+title: Diagnostiky a zotavení po chybě pro úlohy Azure Import/Export | Microsoft Docs
+description: Zjistěte, jak povolit podrobné protokolování pro úlohy služby Microsoft Azure Import/Export.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 096cc795-9af6-4335-9fe8-fffa9f239a17
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873636"
 ---
 # <a name="diagnostics-and-error-recovery-for-azure-importexport-jobs"></a>Diagnostiky a zotavení po chybě pro úlohy Azure Import/Export
 Pro každou jednotku zpracovat vytvoří služba Azure Import/Export protokol chyb v přidruženého účtu úložiště. Můžete také povolit podrobné protokolování nastavením `LogLevel` vlastnost `Verbose` při volání metody [Put úlohy](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) nebo [vlastnosti úlohy aktualizace](/rest/api/storageimportexport/jobs#Jobs_Update) operace.

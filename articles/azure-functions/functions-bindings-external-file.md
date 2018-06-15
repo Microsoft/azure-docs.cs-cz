@@ -1,12 +1,12 @@
 ---
-title: "Externí soubor vazby pro Azure Functions (experimentální)"
-description: "Používání vazeb externí soubor v Azure Functions"
+title: Externí soubor vazby pro Azure Functions (experimentální)
+description: Používání vazeb externí soubor v Azure Functions
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/05/2018
+ms.locfileid: "27607917"
 ---
 # <a name="azure-functions-external-file-bindings-experimental"></a>Azure vazby funkcí externí soubor (experimentální)
 Tento článek ukazuje, jak pracovat se soubory od různých poskytovatelů SaaS (například Google Drive nebo Dropbox) v Azure Functions. Azure Functions podporuje aktivaci, vstup a výstup vazby pro externí soubory. Tyto vazby vytvořit rozhraní API připojení k poskytovatelů SaaS, nebo použít existující API připojení ze skupiny prostředků aplikaci funkce.

@@ -1,6 +1,6 @@
 ---
-title: "Vytvoření virtuálního počítače s SQL serverem v prostředí Azure PowerShell (klasické) | Microsoft Docs"
-description: "Obsahuje kroky a skriptů prostředí PowerShell pro vytvoření virtuálního počítače Azure s obrázky Galerie virtuálního počítače systému SQL Server. Toto téma používá režim nasazení classic."
+title: Vytvoření virtuálního počítače s SQL serverem v prostředí Azure PowerShell (klasické) | Microsoft Docs
+description: Obsahuje kroky a skriptů prostředí PowerShell pro vytvoření virtuálního počítače Azure s obrázky Galerie virtuálního počítače systému SQL Server. Toto téma používá režim nasazení classic.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29399657"
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-classic"></a>Zřízení virtuálního počítače s SQL serverem pomocí Azure PowerShell (klasické)
 

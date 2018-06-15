@@ -17,6 +17,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32771408"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Vytvoření služby zahrnuté do bezplatný účet Azure
 

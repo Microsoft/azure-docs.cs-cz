@@ -1,11 +1,11 @@
 ---
-title: "Kontrola stavu úlohy Azure Import/Export - v1 | Microsoft Docs"
-description: "Naučte se používat soubory protokolů vytvořené při spuštění úlohy import nebo export a zjistit stav úlohy importu a exportu."
+title: Kontrola stavu úlohy Azure Import/Export - v1 | Microsoft Docs
+description: Naučte se používat soubory protokolů vytvořené při spuštění úlohy import nebo export a zjistit stav úlohy importu a exportu.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: c69d1d69-6403-4eee-9949-0185faeecfa1
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873706"
 ---
 # <a name="reviewing-azure-importexport-job-status-with-copy-log-files"></a>Kontrola stavu úlohy Azure Import/Export s kopírovat soubory protokolu
 Při zpracovávání službou Microsoft Azure Import/Export jednotky, které jsou přidružené úloze importu nebo exportu, zapíše kopírovat soubory protokolů pro účet úložiště, který nebo ze kterého se import nebo export objektů BLOB. Soubor protokolu obsahuje podrobné informace o stavu o každý soubor, který byl importovat nebo exportovat. Adresa URL ke každému souboru protokolu kopie je vrácena, pokud dotaz na stav dokončené úlohy; v tématu [Get Job](/rest/api/storageservices/Get-Job3) Další informace.  

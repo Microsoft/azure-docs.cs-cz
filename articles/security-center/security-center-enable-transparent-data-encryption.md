@@ -1,11 +1,11 @@
 ---
-title: "Povolit transparentní šifrování dat v Azure Security Center | Microsoft Docs"
-description: "Tento dokument se dozvíte, jak provést doporučení Azure Security Center ** povolit transparentní dat šifrování **."
+title: Povolit transparentní šifrování dat v Azure Security Center | Microsoft Docs
+description: Tento dokument se dozvíte, jak provést doporučení Azure Security Center ** povolit transparentní dat šifrování **.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: e4be8a0e-2118-4ee9-a266-69e52d9f7f8e
 ms.service: security-center
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23866293"
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Povolit transparentní šifrování dat v Azure Security Center
 Azure Security Center doporučí, povolte šifrování transparentní dat (TDE) u databází SQL, pokud již není povolené šifrování TDE. Šifrování TDE chrání vaše data a pomáhá splnit požadavky na dodržování předpisů šifrováním vaší databáze, přidružených záloh a souborů protokolů transakci v klidu, bez nutnosti změny do vaší aplikace. Další informace najdete v další [transparentní šifrování dat s Azure SQL Database](https://msdn.microsoft.com/library/dn948096).

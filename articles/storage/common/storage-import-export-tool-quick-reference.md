@@ -1,12 +1,12 @@
 ---
-title: "Stručná referenční příručka pro nástroj Azure Import/Export import úlohy příkazy | Microsoft Docs"
-description: "Azure Import/Export nástroj informace o příkazech pro import často používané příkazy úlohy."
+title: Stručná referenční příručka pro nástroj Azure Import/Export import úlohy příkazy | Microsoft Docs
+description: Azure Import/Export nástroj informace o příkazech pro import často používané příkazy úlohy.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873720"
 ---
 # <a name="quick-reference-for-frequently-used-commands-for-import-jobs"></a>Stručná referenční příručka pro často používané příkazy pro úlohy importu
 

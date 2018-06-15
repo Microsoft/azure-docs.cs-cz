@@ -20,6 +20,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32774382"
 ---
 # <a name="quickstart-connect-security-solutions-to-security-center"></a>Rychlý start: Připojení řešení zabezpečení ke službě Security Center
 

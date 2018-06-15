@@ -1,11 +1,11 @@
 ---
-title: "Typy koncových bodů Traffic Manageru | Microsoft Docs"
-description: "Tento článek vysvětluje různé typy koncových bodů, které lze použít s Azure Traffic Manager"
+title: Typy koncových bodů Traffic Manageru | Microsoft Docs
+description: Tento článek vysvětluje různé typy koncových bodů, které lze použít s Azure Traffic Manager
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4e506986-f78d-41d1-becf-56c8516e4d21
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23877514"
 ---
 # <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
 Microsoft Azure Traffic Manager umožňuje řídit, jak je síťový provoz distribuován do nasazení aplikace spuštěné v různých datových centrech. Konfigurace nasazení každé aplikace jako "koncový bod, v Traffic Manageru. Když Traffic Manager obdrží žádost o DNS, vybere v odpovědi DNS vrátit k dispozici koncového bodu. Správce provozu základny volba na aktuální stav koncového bodu a metodu směrování provozu. Další informace najdete v tématu [jak Traffic Manager funguje](traffic-manager-how-traffic-manager-works.md).

@@ -1,11 +1,11 @@
 ---
-title: "Webové aplikace klonování pomocí prostředí PowerShell"
-description: "Zjistěte, jak vytvořit kopii vaší webové aplikace do nové webové aplikace pomocí prostředí PowerShell."
+title: Webové aplikace klonování pomocí prostředí PowerShell
+description: Zjistěte, jak vytvořit kopii vaší webové aplikace do nové webové aplikace pomocí prostředí PowerShell.
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: ahmedelnably
 manager: stefsch
-editor: 
+editor: ''
 ms.assetid: f9a5cfa1-fbb0-41e6-95d1-75d457347a35
 ms.service: app-service-web
 ms.workload: web
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/18/2018
+ms.locfileid: "27867466"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Aplikační služby Azure klonování pomocí prostředí PowerShell
 Verze služby Microsoft Azure PowerShell verze 1.1.0, byla přidána nová možnost pro `New-AzureRMWebApp` , která umožňuje klonovat stávající webovou aplikaci do nově vytvořené aplikace v jiné oblasti nebo ve stejné oblasti. Tato možnost umožňuje zákazníkům snadno a rychle nasadit počet aplikací v různých oblastech.

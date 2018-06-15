@@ -1,11 +1,11 @@
 ---
-title: "Kurz pro Azure Security Center – Ochrana prostředků pomocí Azure Security Center | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak nakonfigurovat zásadu přístupu k virtuálním počítačům podle potřeby a zásadu řízení aplikací."
+title: Kurz pro Azure Security Center – Ochrana prostředků pomocí Azure Security Center | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak nakonfigurovat zásadu přístupu k virtuálním počítačům podle potřeby a zásadu řízení aplikací.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/23/2018
+ms.locfileid: "29529410"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Kurz: Ochrana prostředků pomocí Azure Security Center
 Security Center omezuje vaše vystavení hrozbám díky tomu, že pomocí řízení přístupu a aplikací blokuje škodlivé aktivity. Přístup k virtuálním počítačům podle potřeby omezuje vaše vystavení útokům díky tomu, že umožňuje odepření trvalého přístupu k virtuálním počítačům. Místo toho můžete poskytovat řízený a auditovaný přístup k virtuálním počítačům pouze v případě potřeby. Adaptivní řízení aplikací pomáhá posílit ochranu virtuálních počítačů před malwarem díky tomu, že řídí, které aplikace se na virtuálních počítačích můžou spouštět. Služba Security Center pomocí strojového učení analyzuje procesy spuštěné na virtuálním počítači a pomáhá s aplikováním pravidel přidávání na seznam povolených na základě těchto informací.

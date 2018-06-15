@@ -1,12 +1,12 @@
 ---
-title: "Nastavení webového proxy serveru pro zařízení řady StorSimple 8000 | Microsoft Docs"
-description: "Další informace o použití prostředí Windows PowerShell pro StorSimple ke konfiguraci nastavení webového proxy serveru pro zařízení StorSimple."
+title: Nastavení webového proxy serveru pro zařízení řady StorSimple 8000 | Microsoft Docs
+description: Další informace o použití prostředí Windows PowerShell pro StorSimple ke konfiguraci nastavení webového proxy serveru pro zařízení StorSimple.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23874994"
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurace webového proxy serveru pro zařízení StorSimple
 

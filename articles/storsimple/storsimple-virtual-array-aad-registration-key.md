@@ -1,12 +1,12 @@
 ---
-title: "Nové ověřování pro pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "Vysvětluje, jak používat ověřování AAD na základě služby, vygenerujte nový registrační klíč a proveďte ruční registraci zařízení."
+title: Nové ověřování pro pole virtuální zařízení StorSimple | Microsoft Docs
+description: Vysvětluje, jak používat ověřování AAD na základě služby, vygenerujte nový registrační klíč a proveďte ruční registraci zařízení.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28030951"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Nové ověřování používejte pro vaše zařízení StorSimple
 

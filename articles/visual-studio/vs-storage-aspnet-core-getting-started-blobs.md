@@ -1,11 +1,11 @@
 ---
-title: "Začínáme s Azure Blob storage a Visual Studio připojené služby (ASP.NET Core) | Microsoft Docs"
-description: "Jak začít používat úložiště objektů Blob v Azure v projektu ASP.NET Core v sadě Visual Studio po připojení k účtu úložiště pomocí sady Visual Studio připojené služby"
+title: Začínáme s Azure Blob storage a Visual Studio připojené služby (ASP.NET Core) | Microsoft Docs
+description: Jak začít používat úložiště objektů Blob v Azure v projektu ASP.NET Core v sadě Visual Studio po připojení k účtu úložiště pomocí sady Visual Studio připojené služby
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: camsoper
 manager: wpickett
-editor: 
+editor: ''
 ms.service: storage
 ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/06/2018
+ms.locfileid: "27621219"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Začínáme s Azure Blob storage a Visual Studio připojené služby (ASP.NET Core)
 

@@ -1,12 +1,12 @@
 ---
-title: "Nastavení vlastností a metadat pomocí Azure Import/Export | Microsoft Docs"
-description: "Zjistěte, jak zadat vlastnosti a metadata nastavení na cílový objektů BLOB při spuštění nástroje Azure Import/Export Příprava jednotky."
+title: Nastavení vlastností a metadat pomocí Azure Import/Export | Microsoft Docs
+description: Zjistěte, jak zadat vlastnosti a metadata nastavení na cílový objektů BLOB při spuštění nástroje Azure Import/Export Příprava jednotky.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873713"
 ---
 # <a name="setting-properties-and-metadata-during-the-import-process"></a>Nastavení vlastností a metadat během procesu importu
 

@@ -1,8 +1,8 @@
 ---
-title: "Cortana Intelligence řešení šablony scénářem pro vyžádání prognózy energie | Microsoft Docs"
-description: "Šablona řešení s Microsoft Cortana Intelligence, který pomáhá prognózy vyžádání pro firmu nástroj energie."
+title: Cortana Intelligence řešení šablony scénářem pro vyžádání prognózy energie | Microsoft Docs
+description: Šablona řešení s Microsoft Cortana Intelligence, který pomáhá prognózy vyžádání pro firmu nástroj energie.
 services: cortana-analytics
-documentationcenter: 
+documentationcenter: ''
 author: ilanr9
 manager: ilanr9
 editor: yijichen
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23846427"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence řešení šablony scénářem pro vyžádání prognózy energie
 ## <a name="executive-summary"></a>Shrnutí

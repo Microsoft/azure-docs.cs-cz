@@ -1,11 +1,11 @@
 ---
-title: "Ochrana virtuálních počítačů v Azure Security Center | Microsoft Docs"
-description: "Tento dokument adresy doporučení v Azure Security Center, které vám pomůžou chránit virtuální počítače a zůstat souladu se zásadami zabezpečení."
+title: Ochrana virtuálních počítačů v Azure Security Center | Microsoft Docs
+description: Tento dokument adresy doporučení v Azure Security Center, které vám pomůžou chránit virtuální počítače a zůstat souladu se zásadami zabezpečení.
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
 ms.service: security-center
 ms.devlang: na
@@ -16,9 +16,10 @@ ms.date: 01/04/2018
 ms.author: terrylan
 ms.openlocfilehash: 54375f6f98b4989a7af8bcde649d967f77c6c862
 ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/08/2018
+ms.locfileid: "27623494"
 ---
 # <a name="protecting-your-virtual-machines-in-azure-security-center"></a>Ochrana virtuálních počítačů v Azure Security Center
 Azure Security Center analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří se doporučení, která vás provede procesem konfigurace potřebných kontrol.  Doporučení platí pro typy prostředků Azure: virtuální počítače (VM), sítě, SQL a aplikace.

@@ -1,8 +1,8 @@
 ---
-title: "Rychlý start pro Azure Application Insights | Dokumentace Microsoftu"
-description: "Pokyny pro rychlé nastavení webové aplikace ASP.NET Core pro monitorování s využitím Application Insights"
+title: Rychlý start pro Azure Application Insights | Dokumentace Microsoftu
+description: Pokyny pro rychlé nastavení webové aplikace ASP.NET Core pro monitorování s využitím Application Insights
 services: application-insights
-keywords: 
+keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/12/2017
@@ -15,6 +15,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29386378"
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>Zahájení monitorování webové aplikace ASP.NET Core
 

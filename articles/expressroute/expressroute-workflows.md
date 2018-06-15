@@ -1,11 +1,11 @@
 ---
-title: "Pracovní postupy pro konfiguraci okruh ExpressRoute | Microsoft Docs"
-description: "Tato stránka vás provede pracovní postupy pro konfiguraci okruhu ExpressRoute a partnerských vztahů"
+title: Pracovní postupy pro konfiguraci okruh ExpressRoute | Microsoft Docs
+description: Tato stránka vás provede pracovní postupy pro konfiguraci okruhu ExpressRoute a partnerských vztahů
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 55e0418c-e0bf-44a7-9aa1-720076df9297
 ms.service: expressroute
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23850774"
 ---
 # <a name="expressroute-workflows-for-circuit-provisioning-and-circuit-states"></a>Pracovní postupy ExpressRoute pro zřizování a stavy okruhů
 Tato stránka vás provede procesem služby zřizování a pracovní postupy konfigurace směrování na vysoké úrovni.

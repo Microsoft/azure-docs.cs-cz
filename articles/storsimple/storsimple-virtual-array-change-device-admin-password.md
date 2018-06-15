@@ -1,11 +1,11 @@
 ---
-title: "Heslo správce zařízení změnu pole virtuální zařízení StorSimple | Microsoft Docs"
-description: "Popisuje, jak změnit heslo správce zařízení pomocí portálu Azure nebo pole virtuální zařízení StorSimple webového uživatelského rozhraní."
+title: Heslo správce zařízení změnu pole virtuální zařízení StorSimple | Microsoft Docs
+description: Popisuje, jak změnit heslo správce zařízení pomocí portálu Azure nebo pole virtuální zařízení StorSimple webového uživatelského rozhraní.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 11490814-d9fd-4dc7-9c3b-55dd2c23eaf1
 ms.service: storsimple
 ms.devlang: NA
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875568"
 ---
 # <a name="change-the-storsimple-virtual-array-device-administrator-password-via-storsimple-device-manager"></a>Změna hesla správce zařízení pole virtuální zařízení StorSimple pomocí Správce zařízení StorSimple
 

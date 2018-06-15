@@ -1,11 +1,11 @@
 ---
-title: "Analyzovat zabezpečení sítě s Azure sítě sledovacích procesů zabezpečení skupiny zobrazení – REST API | Microsoft Docs"
-description: "Tento článek popisuje, jak pomocí prostředí PowerShell k analýze zabezpečení virtuálních počítačů s zobrazení skupiny zabezpečení."
+title: Analyzovat zabezpečení sítě s Azure sítě sledovacích procesů zabezpečení skupiny zobrazení – REST API | Microsoft Docs
+description: Tento článek popisuje, jak pomocí prostředí PowerShell k analýze zabezpečení virtuálních počítačů s zobrazení skupiny zabezpečení.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a2f418fe-f5d2-43ed-8dc3-df0ed2a4d4ac
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23864319"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>Analýza zabezpečení vašeho virtuálního počítače s zobrazení skupiny zabezpečení pomocí rozhraní REST API
 

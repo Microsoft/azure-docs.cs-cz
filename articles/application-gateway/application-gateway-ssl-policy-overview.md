@@ -1,11 +1,11 @@
 ---
-title: "Přehled zásad SSL pro Azure Application Gateway | Microsoft Docs"
-description: "Další informace o tom, jak Azure Application Gateway umožňuje konfigurovat zásady protokolu SSL"
+title: Přehled zásad SSL pro Azure Application Gateway | Microsoft Docs
+description: Další informace o tom, jak Azure Application Gateway umožňuje konfigurovat zásady protokolu SSL
 services: application gateway
 documentationcenter: na
 author: amsriva
-manager: 
-editor: 
+manager: ''
+editor: ''
 tags: azure resource manager
 ms.service: application gateway
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836949"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Přehled zásad brány SSL aplikace
 

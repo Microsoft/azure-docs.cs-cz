@@ -1,13 +1,13 @@
 ---
-title: "Konfigurace protokolu BGP na bránu VPN Azure VPN: Resource Manager a rozhraní příkazového řádku | Microsoft Docs"
-description: "Tento článek vás provede procesem konfigurace protokolu BGP pomocí služby Azure VPN gateway pomocí Azure Resource Manager a rozhraní příkazového řádku."
+title: 'Konfigurace protokolu BGP na bránu VPN Azure VPN: Resource Manager a rozhraní příkazového řádku | Microsoft Docs'
+description: Tento článek vás provede procesem konfigurace protokolu BGP pomocí služby Azure VPN gateway pomocí Azure Resource Manager a rozhraní příkazového řádku.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23884038"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>Postup konfigurace protokolu BGP na služby Azure VPN gateway pomocí rozhraní příkazového řádku
 

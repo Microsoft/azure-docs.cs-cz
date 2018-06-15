@@ -1,6 +1,6 @@
 ---
-title: "Jak používat fronty Azure Service Bus s Javou | Microsoft Docs"
-description: "Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsanou v jazyce Java."
+title: Jak používat fronty Azure Service Bus s Javou | Microsoft Docs
+description: Naučte se používat fronty Service Bus v Azure. Ukázky kódu napsanou v jazyce Java.
 services: service-bus-messaging
 documentationcenter: java
 author: sethmanheim
@@ -18,6 +18,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23868428"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>Jak používat fronty Service Bus s Javou
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]

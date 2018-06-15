@@ -1,6 +1,6 @@
 ---
-title: "Z klasického zprostředkovatele brány sítě VPN na při migraci správce prostředků | Microsoft Docs"
-description: "Tato stránka obsahuje přehled portálu VPN Gateway Classic migrace správce prostředků."
+title: Z klasického zprostředkovatele brány sítě VPN na při migraci správce prostředků | Microsoft Docs
+description: Tato stránka obsahuje přehled portálu VPN Gateway Classic migrace správce prostředků.
 documentationcenter: na
 services: vpn-gateway
 author: amsriva
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23885214"
 ---
 # <a name="vpn-gateway-classic-to-resource-manager-migration"></a>Brána sítě VPN classic migrace správce prostředků
 Brány sítě VPN lze nyní přenést z klasického modelu nasazení Resource Manager. Další informace o službě Správce prostředků Azure [funkce a výhody](../azure-resource-manager/resource-group-overview.md). V tomto článku jsme podrobnosti migrace z klasického nasazení do novější správce prostředků na základě modelu. 

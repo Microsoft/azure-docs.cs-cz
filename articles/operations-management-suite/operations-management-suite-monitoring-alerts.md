@@ -1,8 +1,8 @@
 ---
-title: "Výstrahy správy v aplikaci Microsoft monitoring produkty | Microsoft Docs"
-description: "Výstraha naznačuje některé problém, který vyžaduje pozornost správce.  Tento článek popisuje rozdíly v tom, jak jsou výstrahy vytvořit a spravovat v System Center Operations Manager (SCOM) a analýzy protokolů a obsahuje osvědčené postupy v využívat tyto dva produkty pro správu výstrah strategie hybridní."
+title: Výstrahy správy v aplikaci Microsoft monitoring produkty | Microsoft Docs
+description: Výstraha naznačuje některé problém, který vyžaduje pozornost správce.  Tento článek popisuje rozdíly v tom, jak jsou výstrahy vytvořit a spravovat v System Center Operations Manager (SCOM) a analýzy protokolů a obsahuje osvědčené postupy v využívat tyto dva produkty pro správu výstrah strategie hybridní.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865768"
 ---
 # <a name="managing-alerts-with-microsoft-monitoring"></a>Správa výstrah s monitorování Microsoft
 Výstraha naznačuje některé problém, který vyžaduje pozornost správce.  Existují významné rozdíly mezi System Center Operations Manager (SCOM) a analýzy protokolů v Operations Management Suite (OMS) z hlediska vytváření výstrah, jak jsou spravovaná a analyzovat a jak jsou oznámit, že kritický problém byl zjištěna.

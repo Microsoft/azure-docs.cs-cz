@@ -1,12 +1,12 @@
 ---
-title: "Nastavení portu Azure předávání | Microsoft Docs"
-description: "Údaje o předávání přes Azure hodnoty portů."
+title: Nastavení portu Azure předávání | Microsoft Docs
+description: Údaje o předávání přes Azure hodnoty portů.
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-bus-relay
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/24/2018
+ms.locfileid: "28017371"
 ---
 # <a name="azure-relay-port-settings"></a>Nastavení portu Azure předávání
 

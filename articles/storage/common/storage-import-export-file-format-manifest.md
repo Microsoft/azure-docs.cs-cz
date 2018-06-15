@@ -1,11 +1,11 @@
 ---
-title: "Formát souboru manifestu Azure Import/Export | Microsoft Docs"
-description: "Další informace o formátu souboru manifestu jednotku, která popisuje mapování mezi objekty BLOB v Azure Blob storage a souborů na disku v importu nebo exportu úlohy ve službě importu a exportu."
+title: Formát souboru manifestu Azure Import/Export | Microsoft Docs
+description: Další informace o formátu souboru manifestu jednotku, která popisuje mapování mezi objekty BLOB v Azure Blob storage a souborů na disku v importu nebo exportu úlohy ve službě importu a exportu.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: f3119e1c-2c25-48ad-8752-a6ed4adadbb0
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873902"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Azure formát souboru manifestu služby importu a exportu
 Soubor manifestu jednotky popisuje mapování mezi objekty BLOB v Azure Blob storage a souborů na jednotce, která obsahuje úlohu import nebo export. Operace importu souboru manifestu je vytvořen jako součást procesu přípravy jednotky a je uložená na disku před odesláním jednotku do datového centra Azure. Během operace exportu do manifestu se vytvoří a uloží na jednotce pomocí služby Azure Import/Export.  

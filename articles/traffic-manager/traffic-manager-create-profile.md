@@ -1,12 +1,12 @@
 ---
-title: "Vytvořte profil Traffic Manageru v Azure | Microsoft Docs"
-description: "Tento článek popisuje postup vytvoření profilu Traffic Manageru"
+title: Vytvořte profil Traffic Manageru v Azure | Microsoft Docs
+description: Tento článek popisuje postup vytvoření profilu Traffic Manageru
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29397566"
 ---
 # <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
 
