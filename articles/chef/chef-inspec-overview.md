@@ -13,6 +13,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34260005"
 ---
 # <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>Použití InSpec pro automatizaci dodržování předpisů infrastruktury Azure
 [InSpec](https://www.chef.io/inspec/) je bezplatná a open source rozhraní pro testování a auditování aplikace a infrastrukturu. InSpec funguje tak, že porovnáte skutečný stav systému s požadovaný stav, který express ve snadno čitelném a: zápis InSpec kódu. InSpec zjistí porušení a zobrazí zjištění ve formě sestavy, které vám umožňuje řídit nápravy. InSpec můžete použít k ověření stavu virtuální počítače běžící v Azure. Můžete taky InSpec můžete zkontrolovat a ověřit stav prostředků a skupin prostředků v rámci předplatného.

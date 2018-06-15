@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34205072"
 ---
 # <a name="defragmentation-of-metrics-and-load-in-service-fabric"></a>Defragmentace metriky a zatížení v Service Fabric
 Správce služby Fabric clusteru prostředků výchozí strategii správy metriky zatížení v clusteru je distribuce zatížení. Zajištění, že uzly jsou rovnoměrně využité zabraňuje úrovněmi horkého a studeného body, které vést k kolizí i nevyužité prostředky. Distribuce zatížení v clusteru je také nejbezpečnější z hlediska zbývajících selhání, protože zajišťuje selhání nebude vyjměte vysoké procento daného zatížení. 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34202124"
 ---
 # <a name="connect-excel-to-hadoop-by-using-power-query"></a>Připojení aplikace Excel k systému Hadoop pomocí Power Query
 Klíčovou vlastností řešení velkých objemů dat společnosti Microsoft je integrace komponenty Microsoft business intelligence (BI) s clustery systému Hadoop v prostředí Azure HDInsight. Primární příkladem je možnost připojit Excel k účtu úložiště Azure, který obsahuje data přidruženého k vašemu clusteru Hadoop pomocí Microsoft Power Query pro doplněk aplikace Excel. Tento článek vás provede procesem nastavení a použití doplňku Power Query k dotazování na data související s clusterem Hadoop spravované s HDInsight.

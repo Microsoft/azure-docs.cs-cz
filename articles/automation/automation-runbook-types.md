@@ -14,6 +14,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34196045"
 ---
 # <a name="azure-automation-runbook-types"></a>Typy runbooků služby Azure Automation
 Služby Azure Automation podporuje několik typů sad runbook, které jsou popsány v následující tabulce.  V níže uvedených částech poskytují další informace o jednotlivých typech včetně důležité informace týkající se použití každé.

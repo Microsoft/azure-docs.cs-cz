@@ -19,6 +19,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34271611"
 ---
 # <a name="develop-script-action-scripts-for-hdinsight-windows-based-clusters"></a>Vývoj skriptů akce skriptu pro clustery se systémem HDInsight Windows
 Zjistěte, jak k psaní skriptů akce skriptu pro HDInsight. Informace o použití akce skriptu skriptů najdete v tématu [HDInsight přizpůsobit clustery pomocí akce skriptu](hdinsight-hadoop-customize-cluster.md). Stejný článek napsán pro clustery HDInsight se systémem Linux, najdete v části [vyvíjet akce skriptu skripty pro HDInsight](hdinsight-hadoop-script-actions-linux.md).

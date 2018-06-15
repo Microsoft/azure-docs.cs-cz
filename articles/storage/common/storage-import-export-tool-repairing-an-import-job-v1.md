@@ -1,11 +1,11 @@
 ---
-title: "Oprava úlohy importu Azure Import/Export - v1 | Microsoft Docs"
-description: "Zjistěte, jak opravit úlohu importu, který byl vytvořen a spuštění pomocí služby Azure Import/Export."
+title: Oprava úlohy importu Azure Import/Export - v1 | Microsoft Docs
+description: Zjistěte, jak opravit úlohu importu, který byl vytvořen a spuštění pomocí služby Azure Import/Export.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 38cc16bd-ad55-4625-9a85-e1726c35fd1b
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23927464"
 ---
 # <a name="repairing-an-import-job"></a>Oprava úlohy importu
 Službu Microsoft Azure Import/Export se pravděpodobně nepodaří zkopírujte některé soubory nebo části souborů do služby Windows Azure Blob. Chyby z těchto důvodů:  

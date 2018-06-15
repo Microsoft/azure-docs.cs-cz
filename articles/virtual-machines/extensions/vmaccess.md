@@ -20,6 +20,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34165787"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>Spravovat administrativní uživatele, SSH a zkontrolujte nebo opravte disky na virtuální počítače s Linuxem pomocí rozšíření VMAccess 2.0 rozhraní příkazového řádku Azure
 ## <a name="overview"></a>Přehled

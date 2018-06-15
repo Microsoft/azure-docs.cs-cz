@@ -1,30 +1,24 @@
 ---
 title: Technologie a řešení Azure Internet věcí (IoT)
 description: Představuje kolekci technologií a řešení PaaS či SaaS, které jsou k dispozici pro sestavení řešení Azure IoT.
-services: iot-hub
-documentationcenter: ''
 author: BryanLa
 manager: timlt
-editor: bryanla; v-clay
-ms.service: iot
-ms.devlang: na
+ms.service: iot-fundamentals
+services: iot-fundamentals
 ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/30/2018
-ms.author: bryanla; v-clay
-ms.custom: ''
-ms.openlocfilehash: 56410b040ac14a2a46927cac8ed41218fc709888
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 05/18/2018
+ms.author: bryanla
+ms.openlocfilehash: e875ec599323b3d037ba704d4cc54a48ff9b1b57
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33886191"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631407"
 ---
 # <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Technologie a řešení Azure IoT: PaaS a SaaS
 
 Microsoft sestavil portfolio, které vyhovuje potřebám všech zákazníků a umožňuje jim přístup k výhodám digitální transformace. Produktové portfolio Azure IoT je přehledem dostupných technologií a řešení PaaS či SaaS. Představuje dvě cesty, kterými se můžete při sestavování vlastního řešení vydat:
-- Platforma jako služba (PaaS): sestavte si vlastní aplikaci pomocí [akcelerátorů řešení Azure IoT](https://www.azureiotsuite.com/), což je kolekce předkonfigurovaných řešení na podnikové úrovni, která vám umožňuje urychlit vývoj vlastních řešení IoT.
+- Platforma jako služba (PaaS): sestavte si vlastní aplikaci pomocí [akcelerátorů řešení Azure IoT](https://www.azureiotsolutions.com/), což je kolekce předkonfigurovaných řešení na podnikové úrovni, která vám umožňuje urychlit vývoj vlastních řešení IoT.
 - Software jako služba (SaaS): začněte rychleji díky [Azure IoT Central](https://azure.microsoft.com/services/iot-central/), což je nové řešení SaaS pro vývoj aplikací IoT, aniž byste se museli vystavit složitosti řešení IoT. Pokud vaše organizace nemá dostatek prostředků na vytvoření vlastního řešení IoT, využijte Azure IoT Central, což je řešení IoT bez kódu, které dokáže vytvořit modely zařízení, řídicí panely a pravidla v řádech minut.
 
 ![Technologie a řešení Azure IoT][img-paas-saas-technologies-solutions]

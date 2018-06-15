@@ -1,22 +1,20 @@
 ---
-title: "Nastavení cloudu pro službu Azure IoT Hub Device Provisioning na portálu | Microsoft Docs"
-description: "Automatické zřizování zařízení IoT Hub na webu Azure Portal"
-services: iot-dps
-keywords: 
+title: Nastavení cloudu pro službu Azure IoT Hub Device Provisioning na portálu | Microsoft Docs
+description: Automatické zřizování zařízení IoT Hub na webu Azure Portal
 author: sethmanheim
 ms.author: sethm
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+services: iot-dps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 247c2155943d651c3be7791571522b652cf63483
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e334ff0c8dec3a9611b60f64e565111064d10c18
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630081"
 ---
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>Konfigurace cloudových prostředků pro zřizování zařízení pomocí služby IoT Hub Device Provisioning
 

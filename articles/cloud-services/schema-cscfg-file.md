@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34358213"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Konfigurační schéma (soubor .cscfg) služby Azure Cloud Services
 Konfigurační soubor služby definuje počet instancí role pro nasazení pro každou roli v rámci služby, hodnoty nastavení konfigurace a kryptografické otisky pro všechny certifikáty přidružené k roli. Pokud služba je součástí virtuální sítě, musí být uvedeny informace o konfiguraci sítě v konfiguračním souboru služby, a také v konfiguračním souboru virtuální sítě. Výchozí rozšíření pro konfigurační soubor služby je .cscfg.

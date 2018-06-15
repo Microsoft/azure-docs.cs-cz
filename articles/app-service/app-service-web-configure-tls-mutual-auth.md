@@ -1,8 +1,8 @@
 ---
-title: "Jak nakonfigurovat vzájemné ověřování protokolu TLS pro webovou aplikaci"
-description: "Informace o konfiguraci webové aplikace na protokol TLS použít ověřování certifikátu klienta."
+title: Jak nakonfigurovat vzájemné ověřování protokolu TLS pro webovou aplikaci
+description: Informace o konfiguraci webové aplikace na protokol TLS použít ověřování certifikátu klienta.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: naziml
 manager: erikre
 editor: jimbe
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836305"
 ---
 # <a name="how-to-configure-tls-mutual-authentication-for-web-app"></a>Jak nakonfigurovat vzájemné ověřování protokolu TLS pro webovou aplikaci
 ## <a name="overview"></a>Přehled

@@ -1,13 +1,13 @@
 ---
-title: "Azure skript prostředí PowerShell ukázkový – vytvoření virtuálního počítače připojením se spravovaným diskem jako disk operačního systému | Microsoft Docs"
-description: "Azure skript prostředí PowerShell ukázkový – vytvoření virtuálního počítače připojením se spravovaným diskem jako disk operačního systému"
+title: Azure skript prostředí PowerShell ukázkový – vytvoření virtuálního počítače připojením se spravovaným diskem jako disk operačního systému | Microsoft Docs
+description: Azure skript prostředí PowerShell ukázkový – vytvoření virtuálního počítače připojením se spravovaným diskem jako disk operačního systému
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: ramankum
 manager: kavithag
 editor: ramankum
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
@@ -18,9 +18,10 @@ ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: ec532811e94647c8a04b9faf9474f6749969f83e
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23928213"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>Vytvoření virtuálního počítače pomocí existujícího spravovaného disku operačního systému pomocí prostředí PowerShell
 

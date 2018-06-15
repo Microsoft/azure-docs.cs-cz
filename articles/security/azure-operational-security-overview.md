@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365708"
 ---
 # <a name="azure-operational-security-overview"></a>Přehled Azure provozního zabezpečení
 [Zabezpečení provozu Azure](https://docs.microsoft.com/azure/security/azure-operational-security) odkazuje na službách, ovládací prvky a funkce, které jsou k dispozici uživatelům pro ochranu svá data, aplikace a dalších prostředků ve službě Microsoft Azure. Je rozhraní, které zahrnuje poznatky získané při celou řadu funkcí, které jsou jedinečné pro Microsoft. Tyto schopnosti zahrnují Microsoft SDL Security Development Lifecycle (), programu Microsoft Security Response Center a hloubkové povědomí o povahu hrozeb počítačové bezpečnosti.

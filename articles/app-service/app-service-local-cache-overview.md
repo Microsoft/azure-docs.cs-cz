@@ -1,13 +1,13 @@
 ---
-title: "Přehled služby Azure App Service místní mezipaměti | Microsoft Docs"
-description: "Tento článek popisuje, jak povolit, přizpůsobit a dotaz na stav funkce Azure App Service místní mezipaměti"
+title: Přehled služby Azure App Service místní mezipaměti | Microsoft Docs
+description: Tento článek popisuje, jak povolit, přizpůsobit a dotaz na stav funkce Azure App Service místní mezipaměti
 services: app-service
 documentationcenter: app-service
 author: SyntaxC4
 manager: yochayk
-editor: 
+editor: ''
 tags: optional
-keywords: 
+keywords: ''
 ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.service: app-service
 ms.devlang: multiple
@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23836382"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Přehled služby Azure App Service místní mezipaměti
 Službě Azure web app obsah se uloží do úložiště Azure a je prezentované až trvanlivý způsobem jako sdílenou složku obsahu. Tento návrh je určená pro práci s celou řadu aplikací a má následující atributy:  
