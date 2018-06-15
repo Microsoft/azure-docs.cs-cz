@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359012"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure Cloud Services definici schématu (soubor .csdef)
 Soubor definice služby definuje model služby pro aplikaci. Soubor obsahuje definice pro role, které jsou k dispozici v cloudové službě, určuje koncové body služby a vytváří nastavení konfigurace pro službu. Konfigurace nastavení hodnoty se nastavují v konfiguračním souboru služby podle [schéma konfigurace cloudové služby (klasické)](http://msdn.microsoft.com/library/b1ae68cd-cc95-48cb-a4a4-da91dc708a35).

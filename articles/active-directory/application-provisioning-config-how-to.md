@@ -1,11 +1,11 @@
 ---
-title: "Postup konfigurace zřizování uživatelů k aplikaci Galerie Azure AD | Microsoft Docs"
-description: "Jak můžete snadno konfigurovat bohaté uživatelský účet zajišťování a rušení zajištění aplikací již uveden v galerii aplikací Azure AD"
+title: Postup konfigurace zřizování uživatelů k aplikaci Galerie Azure AD | Microsoft Docs
+description: Jak můžete snadno konfigurovat bohaté uživatelský účet zajišťování a rušení zajištění aplikací již uveden v galerii aplikací Azure AD
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/22/2018
+ms.locfileid: "29464421"
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Postup konfigurace zřizování uživatelů k aplikaci Galerie Azure AD
 

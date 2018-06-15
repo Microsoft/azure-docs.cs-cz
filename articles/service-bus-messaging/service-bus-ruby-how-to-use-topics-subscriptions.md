@@ -1,11 +1,11 @@
 ---
-title: "Jak používat témata Service Bus (Ruby) | Microsoft Docs"
-description: "Naučte se používat témata a odběry Service Bus v Azure. Ukázky kódu jsou napsané pro poznámky Ruby aplikace."
+title: Jak používat témata Service Bus (Ruby) | Microsoft Docs
+description: Naučte se používat témata a odběry Service Bus v Azure. Ukázky kódu jsou napsané pro poznámky Ruby aplikace.
 services: service-bus-messaging
 documentationcenter: ruby
 author: sethmanheim
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3ef2295e-7c5f-4c54-a13b-a69c8045d4b6
 ms.service: service-bus-messaging
 ms.workload: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23926792"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-ruby"></a>Jak používat témata a odběry Service Bus s Ruby
  

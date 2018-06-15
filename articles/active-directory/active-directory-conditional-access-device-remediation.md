@@ -8,6 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
+ms.component: protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,11 +16,12 @@ ms.topic: get-started-article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5ad9b01d3821b481fe3255c821e8674dcb26b322
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 664909fa78f2034c0750492e529b21cebc087e5c
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34723792"
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Odsud se tam nelze dostat pro zařízení s Windows
 
@@ -40,7 +42,7 @@ Pokud používáte zařízení s **Windows**, měli byste zkontrolovat toto:
 
 ## <a name="supported-browser"></a>Podporovaný prohlížeč
 
-Pokud váš správce nakonfiguroval zásady podmíněného přístupu, můžete pro přístup k prostředkům vaší organizace používat jenom podporovaný prohlížeč. V zařízeních se systémem Windows se podporují jenom prohlížeče **Internet Explorer** a **Microsoft Edge**.
+Pokud váš správce nakonfiguroval zásady podmíněného přístupu, můžete pro přístup k prostředkům vaší organizace používat jenom podporovaný prohlížeč. V zařízeních se systémem Windows se podporují jenom prohlížeče **Internet Explorer** a **Edge**.
 
 To, jestli k prostředku nejde přistupovat kvůli nepodporovanému prohlížeči, snadno zjistíte v sekci podrobností chybové stránky:
 

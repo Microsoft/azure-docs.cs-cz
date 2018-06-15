@@ -4,8 +4,8 @@ description: Zjistěte, jak pomocí Azure CLI spravovat službu Soubory Azure.
 services: storage
 documentationcenter: na
 author: wmgries
-manager: jeconnoc
-editor: ''
+manager: aungoo
+editor: tamram
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -13,11 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/26/2018
 ms.author: wgries
-ms.openlocfilehash: 85b69b7b27153139494539ba3eaa882a4ddcd4ef
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 66373d5a1ddd210d73fa964322862698f208a2f6
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737944"
 ---
 # <a name="manage-azure-file-shares-using-azure-cli"></a>Správa sdílených složek Azure pomocí Azure CLI
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Sdílené složky Azure je možné připojit v systémech Windows, Linux a macOS. Tento článek vás provede základy práce se sdílenými složkami Azure pomocí Azure CLI. Naučte se: 
@@ -47,7 +48,7 @@ Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umí
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 Účet úložiště je sdílený fond úložiště, ve kterém můžete nasazovat sdílené složky Azure nebo jiné prostředky úložiště, jako jsou objekty blob nebo fronty. Účet úložiště může obsahovat neomezený počet sdílených složek. Sdílená složka může obsahovat neomezený počet souborů až do výše maximální kapacity účtu úložiště.
 
 Následující příklad vytvoří pomocí příkazu [az storage account create](/cli/azure/storage/account#create) účet úložiště s názvem *mystorageaccount\<náhodné číslo\>* a pak vloží název tohoto účtu úložiště do proměnné `$STORAGEACCT`. Názvy účtů úložiště musí být jedinečné. Použitím `$RANDOM` připojíte k názvu účtu úložiště nějaké číslo, díky kterému bude název jedinečný. 

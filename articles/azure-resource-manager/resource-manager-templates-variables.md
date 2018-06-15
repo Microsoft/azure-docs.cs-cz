@@ -18,6 +18,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34359284"
 ---
 # <a name="variables-section-of-azure-resource-manager-templates"></a>Části proměnných šablon Azure Resource Manager
 V sekci proměnných můžete vytvořit hodnoty, které lze použít v celé vaší šablony. Není potřeba definovat proměnné, ale jejich často zjednodušit vaše šablony snížením složité výrazy.

@@ -14,6 +14,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34355946"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galerie Runbooků a modulů pro Azure Automation.
 Místo vytvoření vlastní sady runbook a modulů ve službě Azure Automation, můžete zpřístupnit různé scénáře, které jste již vytvořili společností Microsoft a komunitou.  Můžete použít tyto scénáře bez jakýchkoli úprav nebo můžete používat jako výchozí bod a je upravit pro vaše konkrétní požadavky.

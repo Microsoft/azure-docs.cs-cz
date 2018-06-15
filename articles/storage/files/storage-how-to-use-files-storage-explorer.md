@@ -4,8 +4,8 @@ description: Zjistěte, jak pomocí Průzkumníka služby Azure Storage spravova
 services: storage
 documentationcenter: ''
 author: wmgries
-manager: jeconnoc
-editor: ''
+manager: aungoo
+editor: tamram
 ms.assetid: ''
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: wgries
-ms.openlocfilehash: 1953ee18fe878c33a1a0965937f64056278875cf
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: f628f393f1ff5922d9d2c82b30d4fdbf4b5caf23
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34738169"
 ---
 # <a name="manage-azure-file-shares-with-azure-storage-explorer"></a>Správa sdílených složek Azure pomocí Průzkumníka služby Azure Storage 
 Služba [Soubory Azure](storage-files-introduction.md) je snadno použitelný cloudový systém souborů od Microsoftu. Tento článek vás provede základy práce se sdílenými složkami Azure pomocí [Průzkumníka služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/). Průzkumník služby Storage je oblíbený klientský nástroj, který je k dispozici pro Windows, macOS a Linux. Můžete ho použít ke správě sdílených složek Azure a dalších prostředků úložiště.
@@ -37,7 +38,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud ještě nemáte předplatné Azure, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 Průzkumníka služby Storage není možné použít k vytvoření nových prostředků. Pro účely této ukázky si vytvořte účet úložiště na webu [Azure Portal](https://portal.azure.com/). 
 
 [!INCLUDE [storage-files-create-storage-account-portal](../../../includes/storage-files-create-storage-account-portal.md)]

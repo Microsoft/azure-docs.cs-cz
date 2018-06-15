@@ -1,140 +1,138 @@
-2017-07-07
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: cognitive-services
+author: MikeDodaro
+ms.service: cognitive-services
+ms.topic: include
+ms.custom: include file
+ms.date: 04/19/2018
+ms.author: rosh, v-gedod
+ms.openlocfilehash: 174af83686eba665a729246be7a477b9a5054f30
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "35343917"
+---
+# <a name="bing-search-api-use-and-display-requirements"></a>Použít rozhraní API pro Bing hledání a zobrazit požadavky
 
-These use and display requirements apply to your implementation of the content and associated information (for example, relationships, metadata and other signals) available through calls to the Bing Web Search, Image Search, Video Search, News Search, and Entity Search APIs, Bing Spell Check and Bing Autosuggest APIs. Implementation details related to these requirements can be found in documentation for specific features and results.
+Použití a zobrazení požadavky platí pro žádnou implementaci obsah a související informace. Například požadavky platí pro relace, metadat a jinými signály. To může být k dispozici prostřednictvím volání rozhraní API pro následující:
 
-## <a name="1-bing-spell-check-api-and-bing-autosuggest-api"></a>1. BING SPELL CHECK API and BING AUTOSUGGEST API.
+- Vlastní vyhledávání Bingu
+- Vyhledávání entit Bingu
+- Vyhledávání obrázků Bingu
+- Vyhledávání zpráv Bingu
+- Vyhledávání videí Bingu
+- Vizuální vyhledávání Bingu
+- Vyhledávání na webu Bingu
+- Kontrola pravopisu Bingu
+- Automatické návrhy Bingu
 
-You must not:
+Můžete najít podrobnosti implementace související s těmito požadavky v dokumentaci pro konkrétní funkce a výsledky.     
 
-•   copy, store, or cache any data you receive from the Bing Spell Check or Bing Autosuggest APIs; or 
-  
-•   use data you receive from the Bing Spell Check or Bing Autosuggest APIs as part of any machine learning or similar algorithmic activity to train, evaluate, or improve new or existing services which you or third parties may offer.
+## <a name="bing-spell-check-and-bing-autosuggest-apis"></a>Kontrola pravopisu v Bingu a Bing pro automatické návrhy rozhraní API
 
-## <a name="2-search-apis"></a>2. SEARCH APIs
+Ne:
 
-The requirements in Sections 3 through 7 apply to the Bing Web Search, Image Search, Video Search, News Search APIs, and Bing Entity Search API (the “**Search APIs**”). The following definitions apply to Sections 3 through 7:
+- Kopírování, uložení nebo mezipaměti žádná data, které jste získali od kontrola pravopisu Bing nebo rozhraní API pro automatické návrhy v Bingu.
+- Pomocí dat získaných ze služby Bing kontrola pravopisu nebo rozhraní API pro automatické návrhy v Bingu v rámci machine learning či podobné algoritmické aktivity. Nepoužívejte tato data pro trénování, vyhodnocení nebo vylepšení nový nebo existující služby, které může nabídnout vám či třetích stran.
 
-•   "answer" refers to a category of results returned in a response. For example, a response from the Bing Web Search API may include answers in the categories of webpage results, image, video, and news;  
-  
-•   "response" means any and all answers and associated data received in response to a single call to a Search API;  
-  
-•   "result" refers to an item of information in an answer. For example, the set of data connected with a single news article is a result in a news answer.
+## <a name="definitions"></a>Definice
 
-## <a name="3-bing-entity-search-api"></a>3. BING ENTITY SEARCH API
+- *Odpověď* odkazuje na kategorii výsledky vrácené v odpovědi. Například na odpověď od rozhraní API služby Bing webové Search můžete zahrnout odpovědi do kategorie výsledky webovou stránku, image, video, visual a zprávy.   
+- *Odpověď* znamená všechny odpovědi a související data přijatá v reakci na jednoho volání rozhraní API pro vyhledávání.
+- *Výsledek* odkazuje na položku informací v odpovědi na dotaz. Například sada dat, které jsou připojené pomocí jednoho aktuální článek je výsledek v odpovědi na zprávy.
+- *Rozhraní API pro vyhledávání* znamená souhrnně, Bing vlastní vyhledávání, Entity vyhledávání, hledání bitové kopie, zprávy vyhledávání, hledání Video, Visual vyhledávání a webové rozhraní API pro vyhledávání. 
 
-Data returned from the Bing Entity Search API must be:
 
-•   offered only to users located in the United States of America;  
+## <a name="search-apis"></a>Rozhraní API pro vyhledávání
 
-•   displayed only in response to the end user's search interest in the entity (e.g., user-indicated query);  
-  
-•   accompanied by a visible link to the bing.com URL provided in the response, that enables the user to navigate to the search results for the relevant query on bing.com;  
-  
-•   used in accordance with any other measures appropriate to ensure your use of data received from the Bing Entity Search API does not violate any applicable laws or third party rights. For example,  
-  
-  - ensuring image thumbnails are thumbnail-sized in proportion to the user's display; or  
-    
-  - if relying on a creative commons license, ensuring appropriate license and text attribution.
+Požadavky v této části se vztahují na rozhraní API pro vyhledávání. Rozhraní API pro vyhledávání nezahrnují kontrola pravopisu Bing nebo automatické návrhy v Bingu. Požadavky pro tyto dvě rozhraní API jsou popsané v předchozí části.
 
-You must not:
+### <a name="internet-search-experience"></a>Práci vyhledávání v Internetu
 
-•   copy, store, or cache any data you receive from the Bing Entity Search API; or  
-  
-•   use data you receive from the Bing Entity Search API as part of any machine learning or similar algorithmic activity to train, evaluate, or improve new or existing services which you or third parties may offer.
+Všechna data v odpovědi může použít pouze v prostředí Internetu vyhledávání. Hledání Internetu znamená obsah zobrazit, a to: 
+- Je důležité a citlivé přímý dotaz koncového uživatele nebo jiné údaj o zájmu hledat uživatele a záměr (například uživatele uvedené vyhledávací dotaz). 
+- Pomáhají uživatelům najít a přejděte do zdroje dat (například zadané adresy URL jsou implementované jako hypertextové odkazy, tak, aby obsah nebo porušení prokliknutelný odkaz zřetelně zobrazeny s daty). Nebo, pokud používáte rozhraní API služby Bing Entity Search, viditelně propojit vyhledávače bing.com adresy URL poskytnuté v odpovědi, která umožňuje uživatelům přejděte na výsledky hledání relevantní dotaz na vyhledávače bing.com.
+- Obsahuje více výsledků pro uživatele k výběru (například několik výsledky z odpovědí zprávy se zobrazují, nebo jsou vráceny všechny výsledky, pokud je to méně než několik). 
+- Je omezený na dobu příslušné hledání účel (například obrázek, který miniatur jsou miniaturu proměnlivé velikosti v poměru k zobrazení uživatele). 
+- Zahrnuje ukázala pro uživatele, že obsah je výsledky hledání v Internetu (třeba příkaz, že obsah je "z webu").
+- Zahrnuje jinou kombinaci opatření odpovídající Ujistěte se, že používání data přijatá z rozhraní API pro vyhledávání nejsou porušení libovolných příslušných zákonů a práva třetích stran. Například pokud se spoléháte na licenci, licence Creative Commons, budete jednat v souladu s příslušných licenčních podmínek. Prohlédněte, které vaše právní poradci, chcete-li zjistit, co mohou být opatření vhodné.
+Jedinou výjimkou požadavek rozhraní vyhledávání na Internetu je zjišťování adresy URL, jak je popsáno dále v tomto článku. 
 
-## <a name="4-bing-web-search-image-search-news-search-and-video-search-apis"></a>4. BING WEB SEARCH, IMAGE SEARCH, NEWS SEARCH and VIDEO SEARCH APIs:
+### <a name="restrictions"></a>Omezení
 
-**Internet search experience.** All data returned in responses from the Web, Image, News and Video Search APIs may only be used in Internet search experiences. An Internet search experience means the content displayed, as applicable:
+Ne:
 
-•   is relevant and responsive to the end user's direct query or other indication of the user's search interest and intent (e.g., user-indicated search query);  
-  
-•   helps users find and navigate to the sources of data (e.g., the provided URLs are implemented as hyperlinks so the content or attribution is a clickable link conspicuously displayed with the data);  
-  
-•   includes multiple results for the end user to select from (e.g., several results from the news answer are displayed, or all results if fewer than several are returned);  
-  
-•   is limited to an amount appropriate to serve the search purpose (e.g., image thumbnails are thumbnail-sized in proportion to the user's display);  
-  
-•   includes visible indication to the end user that the content is Internet search results (e.g., a statement that the content is "From the web"); and  
-  
-•   includes any other combination of measures appropriate to ensure your use of data received from the Search APIs does not violate any applicable laws or third party rights. Please consult your legal advisors to determine what measures may be appropriate.
+- Kopírování, uložení nebo mezipaměti žádná data z odpovědi (s výjimkou uchování v rozsahu povoleném podle části "Kontinuity služby" později v tomto článku). 
+- Použijte data přijatá z rozhraní API pro vyhledávání v rámci machine learning či podobné algoritmické aktivity. Nepoužívejte tato data pro trénování, vyhodnocení nebo vylepšení nový nebo existující služby, které může nabídnout vám či třetích stran.
+- Upravit obsah výsledky (jiné než chcete přeformátujte je způsobem, který není v rozporu s ostatními požadavky), pokud to vyžaduje zákon nebo ustanovení společností Microsoft. 
+- Vynechte uvedení a adresy URL přidružené výsledek obsahu.
+- Změnit pořadí, třeba tak, že opomenutí, výsledky zobrazené v odpověď, pokud je k dispozici, pokud to není vyžadováno zákonem objednávku nebo hodnocení nebo souhlas s microsoftem. (Rozhraní API služby Bing vlastní vyhledávání toto pravidlo nevztahuje na změny pořadí implementovaná prostřednictvím portálu customsearch.ai.)
+- Zobrazte další obsah v rámci všech součástí odpověď způsobem, který povede uživatele se domnívat, že jiný obsah je součástí odpovědi. 
+- Zobrazit reklamy, který není od Microsoftu na libovolné stránce, který zobrazuje všechny odpovědi. 
+- Zobrazit jakémukoliv inzerování s odpovědí (i) z bitové kopie Bingu zprávy vyhledávání, hledání Video nebo Visual rozhraní API pro vyhledávání; nebo (ii), jsou filtrovány nebo jsou omezena především (nebo výhradně) na bitovou kopii, zprávy nebo video nebo visual výsledky.
 
-The only exception to the internet search experience requirement is for URL discovery as described in Section 7 (Non-display URL discovery) below.
+### <a name="notices-and-branding"></a>Oznámení a značka 
 
-**General.** You must not: 
+- Výrazně zahrnují funkční hypertextový odkaz na [prohlášení o ochraně osobních údajů Microsoft](https://go.microsoft.com/fwlink/?LinkId=521839), téměř každý bod v uživatelském rozhraní (UX), které nabízí možnost vyhledávací dotaz vstup uživatele. Označení hypertextový odkaz **prohlášení o ochraně osobních údajů Microsoft**.
+- Výrazně zobrazí Bing branding konzistentní s [Bing ochranná známka využití pokyny](https://go.microsoft.com/fwlink/?linkid=833278), téměř každý bod v činnosti koncového uživatele, který nabízí možnost vyhledávací dotaz vstup uživatele. Takové branding musí jasně označují uživateli, aby Microsoft je pohánějící Možnosti Internetu vyhledávání.
+- Atribut jednotlivých odpovědi (nebo její části odpověď), zobrazí z hledání webové služby Bing, bitové kopie vyhledávání, hledání zprávy, Video vyhledávání a Visual rozhraní API pro vyhledávání společnosti Microsoft, pokud Microsoft jinak zápis pro vaše použití. To je popsáno v [Bing ochranná známka využití pokyny](https://go.microsoft.com/fwlink/?linkid=833278). 
+- Není atribut odpovědí (nebo její části odpovědí) zobrazí z rozhraní API služby Bing vlastní Search společnosti Microsoft, pokud Microsoft jinak zápis pro vaše konkrétní použití.
 
-•   copy, store, or cache any data from responses (except retention to the extent permitted by the "Continuity of Service" section below);  
-  
-•   modify content of results (other than to reformat them in a way that does not violate any other requirement);  
-  
-•   omit attribution and URLs associated with result content;  
-  
-•   re-order (including by omission) results displayed in an answer when an order or ranking is provided;  
-  
-•   display other content within any part of a response in a way that would lead an end user to believe that the other content is part of the response;  
-  
-•   display advertising that is not provided by Microsoft on any page that displays any part of a response;  
-  
-•   use data received from the Search APIs as part of any machine learning or similar algorithmic activity to train, evaluate, or improve new or existing services which you or third parties may offer.
+### <a name="transferring-responses"></a>Přenášení odpovědí
 
-**Advertising.** Advertising (whether provided by Microsoft or another provider) must not be displayed with responses (i) from the Image, News or Video Search APIs; or (ii) that are filtered or limited primarily (or solely) to image, news and/or video results from other Search APIs.
+Pokud povolíte uživatelům přenosu odpověď z rozhraní API pro vyhledávání na jiného uživatele, například prostřednictvím zasílání zpráv aplikace nebo sociálních příspěvků, následujících podmínek: 
+- Musí být přenášená odpovědí:
+  - Obsahovat obsah, který je z obsahu odpovědi přenášení uživateli zobrazí beze změny. Změny formátování jsou přípustné.
+  - Nezahrnovat žádná data v podobě metadat.
+  - Pro odpovědi z webové služby Bing, Image, zprávy, Video a vizuální rozhraní API jazyk zobrazení, která určuje odpověď získanou prostřednictvím Internetu vyhledávání prostředí používá technologii Bing. Například můžete zobrazit jazyk, jako je například "Zapnuté podle Bing" nebo "Informace" Další informace o tuto bitovou kopii na Bing nebo můžete použít Bing logo.
+  - Pro odpovědi z rozhraní API služby Bing vlastní Search jazyk zobrazení, která určuje odpověď získanou rozhraní vyhledávání Internetu. Například můžete zobrazit jazyk, jako je například "Další informace o výsledek vyhledávání."
+  - Výrazně zobrazte celý dotaz, použít k vygenerování odpovědi.
+  - Zahrnout viditelného odkaz nebo podobné uvedení na podkladový zdroj odpověď, a to buď přímo nebo prostřednictvím vyhledávacího webu (vyhledávače bing.com, m.bing.com nebo vlastní vyhledávací službě, podle vhodnosti).
+- Nemusí automatizovat přenos odpovědi. Přenos musí být iniciovány akcí uživatele jasně prokazující záměrem přenos odpověď.
+- Můžete povolit pouze uživatele k přenosu odpovědi, které byly zobrazeny v odpovědi na dotaz přenášení uživatele.
 
-**Branding.** You may attribute each response (or portion of a response) displayed to Microsoft as described in https://go.microsoft.com/fwlink/?linkid=833278, unless Microsoft specifies otherwise for your particular use.
+### <a name="continuity-of-service"></a>Kontinuitu poskytování služeb 
 
-## <a name="5-transferring-responses"></a>5. Transferring responses.
+Kopírování, uložení nebo žádná data z rozhraní API pro hledání odpovědí do mezipaměti. Pokud chcete povolit kontinuity přístup k službě a vykreslování dat, však může uchovávat výsledky výhradně za následujících podmínek:
 
-If you enable a user to transfer a response from a Search API to another user, such as through a messaging app or social media posting, the following apply:
+**zařízení.** Může povolit uživatele, aby zachovaly výsledky na zařízení pro nižší úrovně (i) 24 hodin od času dotazu, nebo (ii) dokud uživatel odešle další dotaz pro aktualizované výsledky, za předpokladu, že udržených výsledky mohou být použity pouze:
 
-•   Transferred responses must:  
-  
-  - Consist of content that is unmodified from the content of the responses displayed to the transferring user (formatting changes are permissible);  
-    
-  - Not include any data in metadata form;  
-    
-  - Display language indicating the response was obtained through an Internet search experience powered by Bing (e.g., "Powered by Bing," "Learn more about this image on Bing," or "Explore more about this image on Bing" or through the use of the Bing logo);  
-    
-  - Prominently display the full query used to generate the response; and  
-    
-  - Include a prominent link or similar attribution to the underlying source of the response, either directly or through bing.com or m.bing.com.  
-    
-•   You may not automate the transfer of responses. A transfer must be initiated by a user action clearly evidencing an intent to transfer a response.  
-  
-•   You may only enable a user to transfer responses obtained as a result of the transferring user's query.
+- Chcete-li povolit uživatelům přístup k výsledky, které předtím vrátila pro tohoto uživatele na tomto zařízení (například v případě přerušení poskytování služeb).
+- K ukládání výsledků vrácených pro proaktivní dotazu přizpůsobit v očekávání uživatele potřeby, podle jeho signály (například v případě přerušení předpokládaného služby).
 
-## <a name="6-continuity-of-service"></a>6. Continuity of service.
+**Server.** Může zachovaly výsledky, které jsou specifické pro jednoho uživatele bezpečně na serveru, který ovládáte a zobrazit pouze zachované výsledky:
 
-You must not copy, store or cache any data from Search API responses. However, to enable continuity of service access and data rendering, you may retain results solely under the following conditions:
+- Chcete-li povolit uživatelům přístup k historická Sestava výsledků předtím vrátila pro tohoto uživatele ve vašem řešení. Výsledky nemusí (i) zachovává déle než 21 dní od počátečního dotazu koncového uživatele a (ii) zobrazí v reakci na nové nebo opakovaných dotaz uživatele.
+- K ukládání výsledků vrácených pro proaktivní dotazu přizpůsobit v očekávání uživatele potřeby, podle jeho signály. Můžete uložit tyto výsledky pro nižší úrovně (i) 24 hodin od času dotazu, nebo (ii) dokud uživatel odešle další dotaz pro aktualizované výsledky.
 
-**Device.** You may enable an end user to retain results on a device for the lesser of (i) 24 hours from the time of the query or (ii) until an end user submits another query for updated results, provided that retained results may be used only:
+Vždy, když zachována, výsledky pro konkrétního uživatele nelze commingled s výsledky pro jiného uživatele. To znamená musí být výsledky jednotlivých uživatelů uchována a nabízeli samostatně.
 
-•   to enable the end user to access results previously returned to that end user on that device (e.g., in case of service interruption); or  
-  
-•   to store results returned for your proactive query personalized in anticipation of the end user's needs based on that end user's signals (e.g., in case of anticipated service interruption).
+### <a name="general"></a>Obecné 
 
-**Server.** You may retain results specific to a single end user securely on a server you control and display the retained results only:
+Pro všechny prezentace zachované výsledků:
 
-•   to enable the end user to access a historical report of results previously returned to that user in your solution, provided that the results may not be (i) retained for more than 21 days from the time of the end user's initial query and (ii) displayed in response to an end user's new or repeated query; or  
-  
-•   to store results returned for your proactive query personalized in anticipation of an end user's needs based on that end user's signals for the lesser of (i) 24 hours from the time of the query or (ii) until an end user submits another query for updated results.
+- Zahrnout jasné, viditelné oznámení o čas odeslání dotazu.
+- Aktualizovat přítomen, uživatel s tlačítkem nebo podobné znamená znovu dotaz a získat výsledky. 
+- Zachovat Bing brandingu v prezentaci výsledků.
+- Odstranit (a aktualizace se nový dotaz v případě potřeby) uložené výsledky v rámci stanovených časových rámců zadán.
 
-Whenever retained, results for a specific user cannot be commingled with results for another user, i.e., the results of each user must be retained and delivered separately.
+### <a name="non-display-url-discovery"></a>Zjišťování adresy URL bez zobrazení 
 
-**General.** For all presentation of retained results, you must:
+Odpovědi na hledání v prostředí Internetu jiných vyhledávání mohou používat pouze k jedinému účelu zjišťování adresy URL zdrojů informací reaguje na dotaz z vašich uživatelů a zákazníků. V sestavě nebo podobné odpovědi, které poskytnete může zkopírovat tyto adresy URL:
 
-•   include a clear, visible notice of the time the query was sent,  
-  
-•   present the user a button or similar means to re-query and obtain updated results,  
-  
-•   retain the Bing branding in the presentation of the results, and  
-  
-•   delete (and refresh with a new query if needed) the stored results within the timeframes specified.
+- Pouze pro tohoto uživatele nebo zákazníka v reakci na tento dotaz.
+- Pouze v případě, že obsahuje významné další hodnotný obsah, relevantní pro dotaz.
 
-## <a name="7-non-display-url-discovery"></a>7. Non-display URL discovery.
+Použijte v předchozích částech rozhraní API pro vyhledávání a zobrazení požadavky se nevztahují na tuto použijte jiné zobrazení, s těmito výjimkami: 
 
-You may only use search responses in a non-internet search experience for the sole purpose of discovering URLs of sources of information responsive to a query from your user or customer. You may copy such URLs in a report or similar response you provide (i) only to that user or customer, in response to the particular query and (ii) which includes significant additional valuable content relevant to the query. The requirements in sections 2 through 6 of these use and display requirements do not apply to this non-display use, except: 
+- Ukládat do mezipaměti, kopírovat nebo ukládání všech dat nebo obsahu, nebo odvozené od hledání odpovědi, než je omezená URL kopírování popsané.
+- Zkontrolujte, zda používání data (včetně adresy URL) přijaté z rozhraní API pro vyhledávání nejsou porušení libovolných příslušných zákonů a práva třetích stran.
+- Nepoužívejte získaná z rozhraní API pro vyhledávání v rámci hledání index nebo machine learning nebo podobné aktivitě algoritmické data (včetně adresy URL). Nepoužívejte tato data k vytváření train, vyhodnocení a zlepšení služby, které může nabídnout vám či třetích stran.
 
-•   You shall not cache, copy or store any data or content from, or derived from, the search response, other than the limited URL copying described above;  
-  
-•   You must ensure your use of data (including the URLs) received from the Search APIs does not violate any applicable laws or third party rights; and  
-  
-•   You shall not use the data (including the URLs) received from the Search APIs as part of any search index or machine learning or similar algorithmic activity to create train, evaluate, or improve services which you or third parties may offer.
+## <a name="gdpr-compliance"></a>GDPR dodržování předpisů  
+
+S ohledem na souladu Evropské unie obecné nařízení ochrany dat (GDPR) a že je zpracování souvislosti s volání rozhraní API pro vyhledávání, API kontrola pravopisu Bing nebo rozhraní API pro automatické návrhy v Bingu všechna osobní data víte, že jsou jste s Microsoftem nezávislé data řadiče v části GDPR. Jste zodpovědní nezávisle na vaše dodržování předpisů GDPR.  
 

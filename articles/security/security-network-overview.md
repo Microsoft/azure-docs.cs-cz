@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34365623"
 ---
 # <a name="azure-network-security-overview"></a>Přehled zabezpečení sítě Azure
 Azure obsahuje robustní síťové infrastruktury pro podporu aplikací a služeb požadavky na připojení. Připojení k síti je možné mezi prostředky, které jsou umístěné v Azure, mezi místními a Azure hostovaným prostředkům a do a z Internetu a Azure.

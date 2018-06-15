@@ -18,7 +18,7 @@ ms.author: billmath
 ms.custom: seohack1
 ms.openlocfilehash: d65e4c76d6c9bc0b1f6a9f2827a0ae2d7dec5d93
 ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/06/2018
 ms.locfileid: "34824164"

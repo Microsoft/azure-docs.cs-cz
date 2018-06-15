@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34367211"
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Vytvoření a Správa virtuálního počítače s Windows, který má několik síťových adaptérů
 Virtuální počítače (VM) v Azure může mít několik virtuálních síťových karet (NIC) připojené k nim. Obvyklým scénářem je mít různé podsítě pro připojení front-end a back-end nebo síť vyhrazený pro řešení monitorování nebo zálohování. Tento článek popisuje, jak vytvořit virtuální počítač, který má několik síťových adaptérů, které jsou k němu připojen. Můžete také zjistěte, jak přidat nebo odebrat síťové adaptéry ze stávajícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporu různých počet síťových adaptérů, takže odpovídajícím způsobem upravit velikost virtuálního počítače.

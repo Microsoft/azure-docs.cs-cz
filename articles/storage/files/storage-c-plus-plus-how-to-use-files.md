@@ -16,7 +16,7 @@ ms.date: 09/19/2017
 ms.author: renashahmsft
 ms.openlocfilehash: e0b5974780813eb4f3d67c42781db4d95829814d
 ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/04/2018
 ms.locfileid: "34737567"
