@@ -13,6 +13,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29958737"
 ---
 Některé databáze úlohy, jako je SQL Server nebo Oracle vyžadují velkého množství paměti, úložiště a vstupně-výstupní šířky pásma, ale není počet vysoké jader. Řadu úloh databáze nejsou náročná na prostředky procesoru. Azure nabízí určité velikosti virtuálních počítačů, kde můžete omezit počet virtuálních procesorů virtuálních počítačů k snížit náklady na licencování softwaru při zachování stejné paměť, úložiště a vstupně-výstupní šířky pásma.
 

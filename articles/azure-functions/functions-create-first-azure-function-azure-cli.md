@@ -1,8 +1,8 @@
 ---
-title: "Vytvoření první funkce z rozhraní Azure CLI| Dokumentace Microsoftu"
-description: "Naučíte se postup vytvoření první funkce Azure Function pro provádění pomocí Azure CLI bez serveru."
+title: Vytvoření první funkce z rozhraní Azure CLI| Dokumentace Microsoftu
+description: Naučíte se postup vytvoření první funkce Azure Function pro provádění pomocí Azure CLI bez serveru.
 services: functions
-keywords: 
+keywords: ''
 author: ggailey777
 ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29118767"
 ---
 # <a name="create-your-first-function-using-the-azure-cli"></a>Vytvoření první funkce pomocí Azure CLI
 

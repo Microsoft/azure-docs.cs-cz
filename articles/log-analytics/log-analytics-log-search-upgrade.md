@@ -1,11 +1,11 @@
 ---
-title: "Upgrade analýzy protokolů Azure na nové hledání protokolu | Microsoft Docs"
-description: "Nové dotazovací jazyk analýzy protokolů je téměř sem a ve verzi public preview se můžete zapojit.  Tento článek popisuje výhody nový jazyk a jak převést pracovního prostoru."
+title: Upgrade analýzy protokolů Azure na nové hledání protokolu | Microsoft Docs
+description: Nové dotazovací jazyk analýzy protokolů je téměř sem a ve verzi public preview se můžete zapojit.  Tento článek popisuje výhody nový jazyk a jak převést pracovního prostoru.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/03/2018
+ms.locfileid: "28983984"
 ---
 # <a name="azure-log-analytics-upgrade-to-new-log-search"></a>Azure Log Analytics upgradovat na nové hledání protokolu
 

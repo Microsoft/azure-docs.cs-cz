@@ -1,11 +1,11 @@
 ---
-title: "Použití Service Management API (Python) – Průvodce funkcemi"
-description: "Zjistěte, jak programově provádět běžné úlohy správy služby z Pythonu."
+title: Použití Service Management API (Python) – Průvodce funkcemi
+description: Zjistěte, jak programově provádět běžné úlohy správy služby z Pythonu.
 services: cloud-services
 documentationcenter: python
 author: lmazuel
 manager: wpickett
-editor: 
+editor: ''
 ms.assetid: 61538ec0-1536-4a7e-ae89-95967fe35d73
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29124795"
 ---
 # <a name="use-service-management-from-python"></a>Použití služby správy z Pythonu
 Tento průvodce vám ukáže, jak programově provádět běžné úlohy správy služby z Pythonu. **ServiceManagementService** třídy v [Azure SDK pro jazyk Python](https://github.com/Azure/azure-sdk-for-python) podporuje programový přístup k mnohem týkajících se správy funkcí služby, který je k dispozici v [Azure portál][management-portal]. Tuto funkci můžete vytvářet, aktualizovat a odstraňovat cloudové služby, nasazení, data správy služeb a virtuálních počítačů. Tato funkce může být užitečné při vytváření aplikace, které potřebují programový přístup ke správě služby.

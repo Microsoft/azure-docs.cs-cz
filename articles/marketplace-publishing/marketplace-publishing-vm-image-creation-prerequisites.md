@@ -1,11 +1,11 @@
 ---
-title: "Technické požadavky pro vytvoření bitové kopie virtuálního počítače pro Azure Marketplace | Microsoft Docs"
-description: "Pochopili požadavky na vytvoření a nasazení bitové kopie virtuálního počítače v Azure Marketplace pro ostatní k nákupu."
+title: Technické požadavky pro vytvoření bitové kopie virtuálního počítače pro Azure Marketplace | Microsoft Docs
+description: Pochopili požadavky na vytvoření a nasazení bitové kopie virtuálního počítače v Azure Marketplace pro ostatní k nákupu.
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 63c16966-0304-4b17-a715-368a0a5ccb2c
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29936651"
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Technické požadavky pro vytvoření bitové kopie virtuálního počítače pro Azure Marketplace
 Přečtěte si důkladně před zahájením procesu a pochopit, kde a proč se provádí každý krok. Co nejvíce, měli byste Příprava informací o společnosti a další data, stáhněte potřebné nástroje, a vytvořit technické součásti před zahájením procesu vytvoření nabídky. Tyto položky musí být vymazat z kontrola v tomto článku.  

@@ -1,11 +1,11 @@
 ---
-title: "Cloudové služby a certifikáty pro správu | Microsoft Docs"
-description: "Zjistěte, jak vytvořit a použít certifikáty s Microsoft Azure"
+title: Cloudové služby a certifikáty pro správu | Microsoft Docs
+description: Zjistěte, jak vytvořit a použít certifikáty s Microsoft Azure
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc70d00d-899b-4771-855f-44574dc4bfc6
 ms.service: cloud-services
 ms.workload: tbd
@@ -19,6 +19,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29969198"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Přehled certifikáty pro cloudové služby Azure
 Certifikáty se používají v Azure pro cloudové služby ([služby certifikáty](#what-are-service-certificates)) a pro ověřování pomocí rozhraní API pro správu ([certifikáty pro správu](#what-are-management-certificates)). Toto téma obsahuje obecný přehled oba typy certifikátů, jak k [vytvořit](#create) a [nasazení](#deploy) je do Azure.

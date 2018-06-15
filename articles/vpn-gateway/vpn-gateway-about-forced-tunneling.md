@@ -1,11 +1,11 @@
 ---
-title: "Nakonfigurujte vynucené tunelování pro připojení Azure Site-to-Site: classic | Microsoft Docs"
-description: "Postup přesměrování nebo \"Vynutit\" veškerý provoz vázaný na Internet na vaše místní umístění."
+title: 'Nakonfigurujte vynucené tunelování pro připojení Azure Site-to-Site: classic | Microsoft Docs'
+description: Postup přesměrování nebo "Vynutit" veškerý provoz vázaný na Internet na vaše místní umístění.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 5c0177f1-540c-4474-9b80-f541fa44240b
 ms.service: vpn-gateway
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23883520"
 ---
 # <a name="configure-forced-tunneling-using-the-classic-deployment-model"></a>Konfigurace vynuceného tunelování pomocí modelu nasazení Classic
 

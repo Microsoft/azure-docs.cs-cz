@@ -1,12 +1,12 @@
 ---
-title: "Stažení a extrakci Azure zásobníku Development Kit (ASDK) | Microsoft Docs"
-description: "Popisuje postup stažení a extrakci Azure zásobníku Development Kit (ASDK)."
+title: Stažení a extrakci Azure zásobníku Development Kit (ASDK) | Microsoft Docs
+description: Popisuje postup stažení a extrakci Azure zásobníku Development Kit (ASDK).
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29975878"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Stažení a extrakci Azure zásobníku Development Kit (ASDK)
 Jakmile ověříte, že hostitelského počítače development kit splňuje základní požadavky pro instalaci ASDK, je dalším krokem pro stažení a extrakci ASDK balíček pro nasazení získat Cloudbuilder.vhdx.

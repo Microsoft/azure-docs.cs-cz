@@ -1,12 +1,12 @@
 ---
-title: "Pokročilé úlohy hodnocení zásobník Azure | Microsoft Docs"
-description: "Tento článek popisuje pokročilé úlohy hodnocení zásobník Azure."
+title: Pokročilé úlohy hodnocení zásobník Azure | Microsoft Docs
+description: Tento článek popisuje pokročilé úlohy hodnocení zásobník Azure.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/17/2018
+ms.locfileid: "29975822"
 ---
 # <a name="advanced-azure-stack-development-kit-evaluation-tasks"></a>Pokročilé úlohy hodnocení Azure zásobníku Development Kit
 Poté, co jste se dostalo znalost základní funkce služby Azure zásobníku Development Kit (ASDK) a možnosti, můžete prohloubit vaše pochopení nástroje Azure zásobníku další testování se pokročilejší scénáře. Tyto pokročilejší úlohy hodnocení jsou plně popsané v dokumentaci k Azure zásobníku operátor.

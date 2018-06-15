@@ -1,6 +1,6 @@
 ---
-title: "Spojené království – oficiální třívrstvá webové aplikace automatizace – přehled"
-description: "Spojené království – oficiální třívrstvá webové aplikace automatizace – přehled"
+title: Spojené království – oficiální třívrstvá webové aplikace automatizace – přehled
+description: Spojené království – oficiální třívrstvá webové aplikace automatizace – přehled
 services: security
 documentationcenter: na
 author: jomolesk
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/11/2018
+ms.locfileid: "29151374"
 ---
 # <a name="national-cyber-security-centre-cloud-security-principles-overview"></a>Přehled National zásady zabezpečení Kybernetického zabezpečení Centre cloudu
 

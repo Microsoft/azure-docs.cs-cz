@@ -1,12 +1,12 @@
 ---
-title: "Rozhodnutí o Azure připojené nasazení pro Azure zásobníku integrované systémy | Microsoft Docs"
-description: "Určení plánování rozhodnutí pro nasazení na víc uzlů připojená k Azure zásobník Azure nasazení."
+title: Rozhodnutí o Azure připojené nasazení pro Azure zásobníku integrované systémy | Microsoft Docs
+description: Určení plánování rozhodnutí pro nasazení na víc uzlů připojená k Azure zásobník Azure nasazení.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29120382"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Plánování rozhodnutí pro Azure zásobník Azure připojené nasazení integrované systémy
 Poté, co jste se rozhodli [jak bude zásobník Azure integrovat do cloudového prostředí hybridní](azure-stack-connection-models.md), pak můžete dokončit svoje rozhodnutí o nasazení Azure zásobníku.

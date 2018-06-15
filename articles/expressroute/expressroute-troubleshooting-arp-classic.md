@@ -1,6 +1,6 @@
 ---
-title: "Získávání tabulky ARP: Classic: řešení potíží s Azure ExpressRoute | Microsoft Docs"
-description: "Tato stránka obsahuje pokyny pro získání tabulky ARP pro okruh ExpressRoute."
+title: 'Získávání tabulky ARP: Classic: řešení potíží s Azure ExpressRoute | Microsoft Docs'
+description: Tato stránka obsahuje pokyny pro získání tabulky ARP pro okruh ExpressRoute.
 documentationcenter: na
 services: expressroute
 author: ganesr
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/21/2017
+ms.locfileid: "23850795"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>Získání tabulky ARP v modelu nasazení classic
 > [!div class="op_single_selector"]

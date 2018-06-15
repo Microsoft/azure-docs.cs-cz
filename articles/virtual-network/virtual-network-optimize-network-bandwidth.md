@@ -1,12 +1,12 @@
 ---
-title: "Optimalizovat propustnost sítě virtuálních počítačů | Microsoft Docs"
-description: "Zjistěte, jak optimalizovat propustnost sítě virtuálního počítače Azure."
+title: Optimalizovat propustnost sítě virtuálních počítačů | Microsoft Docs
+description: Zjistěte, jak optimalizovat propustnost sítě virtuálního počítače Azure.
 services: virtual-network
 documentationcenter: na
 author: steveesp
 manager: Gerald DeGrace
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29132887"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Optimalizovat propustnost sítě pro virtuální počítače Azure
 

@@ -18,6 +18,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 04/19/2018
+  ms.locfileid: "31598757"
 abstract:
   description: Naučte se využívat Azure Machine Learning s plně spravovanými službami pro vytváření, nasazování a správu strojového učení a modely AI v cloudu. Kurzy, rychlé starty, reference a příklady vám ukážou, jak sestavit a nasadit modely pro libovolnou z vašich aplikací.
 sections:

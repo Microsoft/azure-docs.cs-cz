@@ -1,11 +1,11 @@
 ---
-title: "Přehled o tom, jak vytvořit a nasadit nabídku Marketplace | Microsoft Docs"
-description: "Seznamte se s kroky potřebné k stát schválené Microsoft developer a vytvořit a nasadit bitovou kopii virtuálního počítače, šablony, data služby nebo služby pro vývojáře v Azure Marketplace"
+title: Přehled o tom, jak vytvořit a nasadit nabídku Marketplace | Microsoft Docs
+description: Seznamte se s kroky potřebné k stát schválené Microsoft developer a vytvořit a nasadit bitovou kopii virtuálního počítače, šablony, data služby nebo služby pro vývojáře v Azure Marketplace
 services: marketplace-publishing
-documentationcenter: 
+documentationcenter: ''
 author: msmbaldwin
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 5343bd26-c6e4-4589-85b7-4a2c00bba8ab
 ms.service: marketplace
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/16/2018
+ms.locfileid: "29943169"
 ---
 > [!NOTE]
 > Tato dokumentace již není aktuální a není přesný. Místo toho přejděte do Azure Marketplace [prodejce průvodce](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide) pokyny k publikování nabídky pro Azure Marketplace.

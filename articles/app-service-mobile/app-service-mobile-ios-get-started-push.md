@@ -1,10 +1,10 @@
 ---
-title: "Přidání nabízených oznámení do aplikace pomocí Azure Mobile Apps pro iOS"
-description: "Naučte se používat Azure Mobile Apps k odesílání nabízených oznámení do aplikace pro iOS."
+title: Přidání nabízených oznámení do aplikace pomocí Azure Mobile Apps pro iOS
+description: Naučte se používat Azure Mobile Apps k odesílání nabízených oznámení do aplikace pro iOS.
 services: app-service\mobile
 documentationcenter: ios
 manager: crdun
-editor: 
+editor: ''
 author: conceptdev
 ms.assetid: fa503833-d23e-4925-8d93-341bb3fbab7d
 ms.service: app-service-mobile
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29116666"
 ---
 # <a name="add-push-notifications-to-your-ios-app"></a>Přidání nabízených oznámení do aplikace pro iOS
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]

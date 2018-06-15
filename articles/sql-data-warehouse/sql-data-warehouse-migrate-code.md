@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31527449"
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Migrace do SQL Data Warehouse kódu SQL
 Tento článek vysvětluje změny kódu, které bude pravděpodobně třeba, aby při migraci kódu z jiné databáze SQL Data Warehouse. Některé funkce SQL Data Warehouse může výrazně zlepšit výkon, jako jsou navrženy pro práci v distribuované způsobem. Ale pokud chcete zachovat, výkonu a možností škálování, některé funkce nejsou také k dispozici.

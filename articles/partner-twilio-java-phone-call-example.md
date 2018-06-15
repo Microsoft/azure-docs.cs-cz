@@ -1,7 +1,7 @@
 ---
-title: "Postup telefonní hovor z Twilio (Java) | Microsoft Docs"
-description: "Naučte se telefonní hovor z webové stránky v aplikaci Java v Azure pomocí Twilio."
-services: 
+title: Postup telefonní hovor z Twilio (Java) | Microsoft Docs
+description: Naučte se telefonní hovor z webové stránky v aplikaci Java v Azure pomocí Twilio.
+services: ''
 documentationcenter: java
 author: devinrader
 manager: twilio
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865936"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Postup telefonní hovor pomocí Twilio v aplikaci Java v Azure
 Následující příklad ukazuje, jak Twilio můžete využít volání z webové stránky hostované v Azure. Výsledné aplikace vyzve uživatele, hodnoty telefonní hovor, jak je znázorněno na následujícím snímku obrazovky.

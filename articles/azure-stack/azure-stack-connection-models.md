@@ -1,12 +1,12 @@
 ---
-title: "Azure zásobníku integrované systémy připojení modely | Microsoft Docs"
-description: "Určení plánování rozhodnutí pro více uzly Azure zásobníku nasazení."
+title: Azure zásobníku integrované systémy připojení modely | Microsoft Docs
+description: Určení plánování rozhodnutí pro více uzly Azure zásobníku nasazení.
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
@@ -20,6 +20,7 @@ ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/09/2018
+ms.locfileid: "29118784"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Azure zásobníku integrované systémy připojení modely
 Pokud byste chtěli v systému Azure zásobníku integrované, budete potřebovat zjistit [důležité informace o integraci několik datacenter](azure-stack-datacenter-integration.md) pro nasazení Azure zásobníku k určení, jak v systému se vejde do datového centra. Kromě toho budete muset rozhodnout, přesně jak bude integrace Azure zásobníku do prostředí hybridního cloudu. Tento článek obsahuje přehled těchto hlavní rozhodnutí, včetně připojení k Azure, úložiště identit a fakturace rozhodnutí týkající se modelu.

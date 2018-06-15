@@ -1,11 +1,11 @@
 ---
-title: "Pomocí nástroje Azure Import/Export | Microsoft Docs"
-description: "Další informace o použití nástroje importu a exportu Příprava pevné disky pro úlohy importu, opravte úlohu importu nebo opravit úlohy exportu."
+title: Pomocí nástroje Azure Import/Export | Microsoft Docs
+description: Další informace o použití nástroje importu a exportu Příprava pevné disky pro úlohy importu, opravte úlohu importu nebo opravit úlohy exportu.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: f77535bb-d577-438a-bdd3-e15a82e0c543
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873671"
 ---
 # <a name="using-the-azure-importexport-tool"></a>Pomocí nástroje Azure Import/Export 
 

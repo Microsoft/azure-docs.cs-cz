@@ -1,8 +1,8 @@
 ---
-title: "Optimalizace prostředí System Center Operations Manager s nástrojem Azure Log Analytics | Microsoft Docs"
-description: "Řešení System Center Operations Manager Health kontrolovat můžete vyhodnotit stav prostředí a riziko v pravidelných intervalech."
+title: Optimalizace prostředí System Center Operations Manager s nástrojem Azure Log Analytics | Microsoft Docs
+description: Řešení System Center Operations Manager Health kontrolovat můžete vyhodnotit stav prostředí a riziko v pravidelných intervalech.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
 editor: tysonn
@@ -20,6 +20,7 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/13/2018
+ms.locfileid: "29180032"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizace prostředí s nástrojem System Center Operations Manager Health kontrolovat (Preview) řešení
 
