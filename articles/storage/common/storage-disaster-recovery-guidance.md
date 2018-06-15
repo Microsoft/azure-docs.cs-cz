@@ -19,6 +19,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30323147"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Co dělat v případě výpadku služby Azure Storage
 Ve společnosti Microsoft můžeme fungovat pevného a ujistěte se, že jsou vždy k dispozici našich služeb. V některých případech vynutí nad rámec naše řízení dopad nám způsoby, které způsobit neplánované výpadky v jedné nebo více oblastech. Chcete-li zpracovat tyto výjimečných výskytů, poskytujeme vysoké úrovně pokynů pro služby Azure Storage.

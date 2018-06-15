@@ -20,6 +20,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30320233"
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zone-redundant-frontend-using-azure-cli"></a>Vytvořte standardní veřejné zatížení na vyrovnávání s zónově redundantní front-endu pomocí rozhraní příkazového řádku Azure
 

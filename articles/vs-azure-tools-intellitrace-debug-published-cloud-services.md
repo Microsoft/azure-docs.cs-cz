@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30292553"
 ---
 # <a name="debugging-a-published-azure-cloud-service-with-visual-studio-and-intellitrace"></a>Ladění publikovaný Azure cloud service sadou Visual Studio a IntelliTrace
 S použitím technologie IntelliTrace můžete protokolovat rozsáhlé ladicí informace pro instanci role při spuštění v Azure. Pokud potřebujete najít příčinu problému, můžete protokoly IntelliTrace krokovat kód ze sady Visual Studio, jako kdyby byly spuštěny v Azure. IntelliTrace záznamy ve skutečnosti klíčů provádění kódu a dat prostředí, když vaše aplikace Azure běží jako cloudová služba v Azure a umožňuje přehrát zaznamenaná data ze sady Visual Studio. 

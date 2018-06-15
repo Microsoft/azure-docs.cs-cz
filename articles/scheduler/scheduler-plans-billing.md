@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30837434"
 ---
 # <a name="plans-and-billing-in-azure-scheduler"></a>Plány a fakturace ve Azure Scheduler
 ## <a name="job-collection-plans"></a>Plány kolekce úloh

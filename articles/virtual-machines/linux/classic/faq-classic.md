@@ -21,6 +21,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30840885"
 ---
 # <a name="frequently-asked-question-about-azure-linux-virtual-machines-created-with-the-classic-deployment-model"></a>Časté otázky o Azure Linux virtuální počítače vytvořené pomocí modelu nasazení classic
 > [!IMPORTANT] 

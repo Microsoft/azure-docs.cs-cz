@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30836091"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Možnosti překlad názvů DNS pro virtuální počítače s Linuxem v Azure
 Azure poskytuje překlad názvu DNS ve výchozím nastavení pro všechny virtuální počítače, které se nacházejí v jedné virtuální sítě. Vlastní řešení rozlišení názvu DNS můžete implementovat podle konfigurace služby DNS pro vaše virtuální počítače Azure který je hostitelem. Následující scénáře by vám pomohou zvolit ten, který se dá použít pro vaši situaci.

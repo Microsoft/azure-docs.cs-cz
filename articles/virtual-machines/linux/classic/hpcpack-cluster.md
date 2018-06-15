@@ -20,6 +20,7 @@ ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/05/2018
+ms.locfileid: "30841689"
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Začínáme s výpočetními uzly Linuxu v clusteru HPC Pack v Azure
 Nastavení [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) clusteru v Azure, který obsahuje hlavního uzlu se systémem Windows Server a několika výpočetních uzlech systémem podporované distribuce systému Linux. Prozkoumejte možnosti pro přesun dat mezi uzly Linux a Windows hlavnímu uzlu clusteru. Zjistěte, jak k odesílání úloh Linux HPC do clusteru.
