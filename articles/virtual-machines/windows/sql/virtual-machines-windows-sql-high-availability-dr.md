@@ -1,11 +1,11 @@
 ---
-title: "Vysoká dostupnost a zotavení po havárii pro SQL Server | Microsoft Docs"
-description: "Informace o různých typů HADR strategie pro SQL Server běžící v Azure Virtual Machines."
+title: Vysoká dostupnost a zotavení po havárii pro SQL Server | Microsoft Docs
+description: Informace o různých typů HADR strategie pro SQL Server běžící v Azure Virtual Machines.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401255"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines
 

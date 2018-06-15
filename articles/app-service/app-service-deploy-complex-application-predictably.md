@@ -1,8 +1,8 @@
 ---
-title: "Zřídit a nasadit mikroslužeb předvídatelné v Azure"
-description: "Informace o nasazení aplikace skládá z mikroslužeb v Azure App Service jako na jednu jednotku a předvídatelný způsobem pomocí šablony pro skupiny prostředků JSON a skriptů prostředí PowerShell."
+title: Zřídit a nasadit mikroslužeb předvídatelné v Azure
+description: Informace o nasazení aplikace skládá z mikroslužeb v Azure App Service jako na jednu jednotku a předvídatelný způsobem pomocí šablony pro skupiny prostředků JSON a skriptů prostředí PowerShell.
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
 editor: jimbe
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23837096"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Zřídit a nasadit mikroslužeb předvídatelné v Azure
 Tento kurz ukazuje, jak zřídit a nasadit aplikace skládá z [mikroslužeb](https://en.wikipedia.org/wiki/Microservices) v [Azure App Service](/services/app-service/) jako na jednu jednotku a předvídatelný způsobem pomocí šablony pro skupiny prostředků JSON a skriptů prostředí PowerShell. 

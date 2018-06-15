@@ -1,6 +1,6 @@
 ---
-title: "Vytvořte naslouchací proces skupiny dostupnosti systému SQL Server na virtuálních počítačích Azure | Microsoft Docs"
-description: "Podrobné pokyny pro vytvoření naslouchacího procesu pro skupiny dostupnosti Always On pro SQL Server na virtuálních počítačích Azure"
+title: Vytvořte naslouchací proces skupiny dostupnosti systému SQL Server na virtuálních počítačích Azure | Microsoft Docs
+description: Podrobné pokyny pro vytvoření naslouchacího procesu pro skupiny dostupnosti Always On pro SQL Server na virtuálních počítačích Azure
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
@@ -19,6 +19,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29400626"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurace vyrovnávání zatížení pro skupiny dostupnosti Always On v Azure
 Tento článek vysvětluje, jak vytvořit nástroj pro vyrovnávání zatížení pro skupinu dostupnosti SQL serveru Always On v Azure virtuální počítače, které jsou spuštěny pomocí Azure Resource Manageru. Skupiny dostupnosti vyžaduje nástroj pro vyrovnávání zatížení, pokud jsou instance systému SQL Server na virtuálních počítačích Azure. Nástroje pro vyrovnávání zatížení ukládá IP adresu pro naslouchací proces skupiny dostupnosti. Pokud skupinu dostupnosti zahrnuje několik oblastí, musí každá oblast Vyrovnávání zatížení.

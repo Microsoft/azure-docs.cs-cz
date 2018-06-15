@@ -1,6 +1,6 @@
 ---
-title: "Rozhraní příkazového řádku Azure vzorky – Azure Functions | Microsoft Docs"
-description: "Rozhraní příkazového řádku Azure vzorky – Azure Functions"
+title: Rozhraní příkazového řádku Azure vzorky – Azure Functions | Microsoft Docs
+description: Rozhraní příkazového řádku Azure vzorky – Azure Functions
 services: functions
 documentationcenter: functions
 author: syntaxc4
@@ -18,9 +18,10 @@ ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: ebeec7a9e88cd1c654128da2c197589aaf7c1b5e
 ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 01/10/2018
+ms.locfileid: "27740097"
 ---
 # <a name="azure-cli-samples"></a>Ukázky rozhraní příkazového řádku Azure
 

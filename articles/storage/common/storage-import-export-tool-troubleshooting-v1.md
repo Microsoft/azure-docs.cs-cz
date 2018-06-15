@@ -1,11 +1,11 @@
 ---
-title: "Řešení potíží s nástroj Azure Import/Export | Microsoft Docs"
-description: "Další informace o některé běžné problémy, proto při použití nástroje Azure Import/Export a postupy pro jejich zpracování."
+title: Řešení potíží s nástroj Azure Import/Export | Microsoft Docs
+description: Další informace o některé běžné problémy, proto při použití nástroje Azure Import/Export a postupy pro jejich zpracování.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: b91ca5eb-c557-460a-9afc-0590b38471f9
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23873692"
 ---
 # <a name="troubleshooting-the-azure-importexport-tool"></a>Řešení potíží s nástrojem Azure pro import/export
 Nástroj Microsoft Azure Import/Export vrací chybové zprávy, pokud běží na problémy. Toto téma uvádí některé běžné problémy, které mohou uživatelé do.  

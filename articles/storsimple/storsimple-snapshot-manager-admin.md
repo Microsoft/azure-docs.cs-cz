@@ -1,11 +1,11 @@
 ---
-title: "Správa Snapshot Manager zařízení StorSimple | Microsoft Docs"
-description: "Poskytuje přehled a odkazy na další informace o úlohách správy řešení StorSimple Snapshot Manager a pracovních postupů."
+title: Správa Snapshot Manager zařízení StorSimple | Microsoft Docs
+description: Poskytuje přehled a odkazy na další informace o úlohách správy řešení StorSimple Snapshot Manager a pracovních postupů.
 services: storsimple
 documentationcenter: NA
 author: SharS
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1cdbb61d-bd16-4be4-ade2-ceab11508acb
 ms.service: storsimple
 ms.devlang: NA
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875428"
 ---
 # <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>Použití StorSimple Snapshot Manager ke správě vašeho řešení StorSimple
 

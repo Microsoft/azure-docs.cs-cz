@@ -1,11 +1,11 @@
 ---
-title: "Nastavením vysoké dostupnosti pro virtuální počítače Azure Resource Manager | Microsoft Docs"
-description: "V tomto kurzu se dozvíte, jak vytvořit skupiny dostupnosti Always On s virtuálními počítači Azure v režimu Azure Resource Manager."
+title: Nastavením vysoké dostupnosti pro virtuální počítače Azure Resource Manager | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak vytvořit skupiny dostupnosti Always On s virtuálními počítači Azure v režimu Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
 manager: craigg
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 64e85527-d5c8-40d9-bbe2-13045d25fc68
 ms.service: virtual-machines-sql
@@ -20,6 +20,7 @@ ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/21/2018
+ms.locfileid: "29401017"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>V Azure Virtual Machines automaticky konfigurovat skupiny dostupnosti Always On: Správce prostředků
 

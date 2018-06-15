@@ -1,8 +1,8 @@
 ---
 title: Integrace s Operations Management Suite (OMS) | Microsoft Docs
-description: "Kromě použití standardní funkce OMS, můžete službu integrovat s dalšími aplikací pro správu a službami k poskytování správy hybridní prostředí, zadejte vlastní správu scénáře, které jsou jedinečné pro vaše prostředí nebo zadejte vlastní správy prostředí pro vaše zákazníky.  Tento článek obsahuje přehled různé možnosti pro integraci s odkazy na články, které poskytuje podrobné technické informace a OMS."
+description: Kromě použití standardní funkce OMS, můžete službu integrovat s dalšími aplikací pro správu a službami k poskytování správy hybridní prostředí, zadejte vlastní správu scénáře, které jsou jedinečné pro vaše prostředí nebo zadejte vlastní správy prostředí pro vaše zákazníky.  Tento článek obsahuje přehled různé možnosti pro integraci s odkazy na články, které poskytuje podrobné technické informace a OMS.
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23865859"
 ---
 # <a name="integrating-with-operations-management-suite-oms"></a>Integrace s Operations Management Suite (OMS)
 Služby Operations Management Suite je společnosti Microsoft založená na cloudu IT řešení správy, které pomáhá spravovat a chránit místní a cloudové infrastruktury.  Kromě použití standardní funkce OMS, můžete službu integrovat s dalšími aplikací pro správu a službami k poskytování správy hybridní prostředí, zadejte vlastní správu scénáře, které jsou jedinečné pro vaše prostředí nebo zadejte vlastní správy prostředí pro vaše zákazníky.  Tento článek obsahuje přehled různé možnosti pro integraci se službami OMS a odkazy na články, které poskytuje podrobné technické informace. 

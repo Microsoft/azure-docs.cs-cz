@@ -1,8 +1,8 @@
 ---
-title: "Všechna témata týkající se služby SQL Server Stretch Database | Microsoft Docs"
-description: "Tabulka všechna témata týkající se služby Azure s názvem SQL Server Stretch Database, který neexistuje v http://azure.microsoft.com/documentation/articles/, název a popis."
+title: Všechna témata týkající se služby SQL Server Stretch Database | Microsoft Docs
+description: Tabulka všechna témata týkající se služby Azure s názvem SQL Server Stretch Database, který neexistuje v http://azure.microsoft.com/documentation/articles/, název a popis.
 services: sql-server-stretch-database
-documentationcenter: 
+documentationcenter: ''
 author: DouglasL
 manager: jhubbard
 editor: MightyPen
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23872943"
 ---
 # <a name="all-topics-for-azure-sql-server-stretch-database-service"></a>Všechna témata týkající se služby Azure SQL Server Stretch Database
 Toto téma obsahuje seznam každých téma, které se týkají přímo **SQL Server Stretch Database** služby Azure. Tato webová stránka pro klíčová slova můžete hledat pomocí **Ctrl + F**, vyhledat témata týkající se aktuální.
