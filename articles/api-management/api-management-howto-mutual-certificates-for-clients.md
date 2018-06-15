@@ -1,11 +1,11 @@
 ---
-title: "Zabezpečení rozhraní API klienta pomocí certifikátu ověřování ve službě API Management - Azure API Management | Microsoft Docs"
-description: "Zjistěte, jak zabezpečit přístup k rozhraní API pomocí klientských certifikátů"
+title: Zabezpečení rozhraní API klienta pomocí certifikátu ověřování ve službě API Management - Azure API Management | Microsoft Docs
+description: Zjistěte, jak zabezpečit přístup k rozhraní API pomocí klientských certifikátů
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -18,6 +18,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26406739"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>Zabezpečení rozhraní API pomocí klienta pro ověřování pomocí certifikátu ve službě API Management
 

@@ -20,6 +20,7 @@ ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/20/2018
+ms.locfileid: "31600338"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Podrobný postup: vytvoření a Správa klíčů SSH pro ověřování, aby virtuální počítač s Linuxem v Azure 
 Klíče dvojice zabezpečené shell (SSH) můžete vytvořit virtuální počítač s Linuxem v Azure, který ve výchozím nastavení používá klíče SSH k ověření, což eliminuje potřebu hesla k přihlášení. Virtuální počítače vytvořené pomocí portálu Azure, rozhraní příkazového řádku Azure Resource Manager šablony nebo jiných nástrojů může obsahovat veřejný klíč SSH jako součást nasazení, která nastaví ověření pomocí klíče SSH pro připojení SSH. 

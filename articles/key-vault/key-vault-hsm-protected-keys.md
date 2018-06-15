@@ -1,8 +1,8 @@
 ---
-title: "Postup generování a přenos klíčů chráněných pomocí HSM pro Azure Key Vault | Microsoft Docs"
-description: "Použijte tento článek vám pomohou plánovat, generovat a potom přeneste vlastní klíčů chráněných pomocí HSM pro použití s Azure Key Vault. Taky označovaný jako BYOK nebo přineste si vlastní klíč."
+title: Postup generování a přenos klíčů chráněných pomocí HSM pro Azure Key Vault | Microsoft Docs
+description: Použijte tento článek vám pomohou plánovat, generovat a potom přeneste vlastní klíčů chráněných pomocí HSM pro použití s Azure Key Vault. Taky označovaný jako BYOK nebo přineste si vlastní klíč.
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mbaldwin
 tags: azure-resource-manager
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/06/2017
+ms.locfileid: "26345107"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Klíče postup generování a přenos chráněných pomocí HSM pro Azure Key Vault
 ## <a name="introduction"></a>Úvod

@@ -1,13 +1,13 @@
 ---
-title: "Analýza protokolů toku skupiny zabezpečení sítě Azure - Graylog | Microsoft Docs"
-description: "Zjistěte, jak spravovat a analyzovat protokoly toku skupiny sítě zabezpečení v Azure pomocí sledovací proces sítě a Graylog."
+title: Analýza protokolů toku skupiny zabezpečení sítě Azure - Graylog | Microsoft Docs
+description: Zjistěte, jak spravovat a analyzovat protokoly toku skupiny sítě zabezpečení v Azure pomocí sledovací proces sítě a Graylog.
 services: network-watcher
 documentationcenter: na
 author: mareat
 manager: vitinnan
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26639281"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Spravovat a analyzovat protokoly toku skupiny sítě zabezpečení v Azure pomocí sledovací proces sítě a Graylog
 

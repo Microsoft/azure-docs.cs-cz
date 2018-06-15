@@ -19,6 +19,7 @@ metadata:
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
   ms.lasthandoff: 04/19/2018
+  ms.locfileid: "31590781"
 abstract:
   description: Virtuální počítače pro datové vědy a hloubkové učení jsou přizpůsobené image virtuálních počítačů v Azure jsou vybavené nástroji pro datové vědy, které slouží k sestavování inteligentních aplikací pro rozšířené analýzy.
 sections:

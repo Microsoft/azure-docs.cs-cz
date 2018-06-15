@@ -1,6 +1,6 @@
 ---
-title: "Vytvořte uživatele v Azure databázi PostgreSQL serveru"
-description: "Tento článek popisuje, jak můžete vytvořit nové uživatelské účty pro interakci s Azure Database pro PostgreSQL server."
+title: Vytvořte uživatele v Azure databázi PostgreSQL serveru
+description: Tento článek popisuje, jak můžete vytvořit nové uživatelské účty pro interakci s Azure Database pro PostgreSQL server.
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -14,6 +14,7 @@ ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/27/2018
+ms.locfileid: "29575636"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Vytvořte uživatele v Azure databázi PostgreSQL serveru 
 Tento článek popisuje, jak můžete vytvořit uživatele v databázi Azure pro PostgreSQL server.

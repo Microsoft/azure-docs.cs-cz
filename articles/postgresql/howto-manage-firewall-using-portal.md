@@ -1,6 +1,6 @@
 ---
-title: "Vytváření a Správa pravidel brány firewall v databázi Azure pro PostgreSQL"
-description: "Vytvářet a spravovat databáze Azure pro pravidla brány firewall PostgreSQL pomocí portálu Azure"
+title: Vytváření a Správa pravidel brány firewall v databázi Azure pro PostgreSQL
+description: Vytvářet a spravovat databáze Azure pro pravidla brány firewall PostgreSQL pomocí portálu Azure
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29690335"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-the-azure-portal"></a>Vytvářet a spravovat databáze Azure pro pravidla brány firewall PostgreSQL pomocí portálu Azure
 Pravidla brány firewall na úrovni serveru umožňují správcům přístup k databázi Azure pro PostgreSQL Server z zadaná IP adresa nebo rozsah IP adres. 

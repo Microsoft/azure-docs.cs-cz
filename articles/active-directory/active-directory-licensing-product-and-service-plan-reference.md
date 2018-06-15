@@ -1,13 +1,13 @@
 ---
-title: "Názvy produktů a služeb plánování identifikátory pro licencování v Azure Active Directory | Microsoft Docs"
-description: "Identifikátor mapy ke správě Azure AD licencování v portálu Azure, portál Office 365, prostředí PowerShell nebo Microsoft Graph"
+title: Názvy produktů a služeb plánování identifikátory pro licencování v Azure Active Directory | Microsoft Docs
+description: Identifikátor mapy ke správě Azure AD licencování v portálu Azure, portál Office 365, prostředí PowerShell nebo Microsoft Graph
 services: active-directory
-keywords: "Licenční plány služby Azure Active Directory."
-documentationcenter: 
+keywords: Licenční plány služby Azure Active Directory.
+documentationcenter: ''
 author: piotrci
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -20,6 +20,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26609324"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>Názvy produktů a identifikátory plánu služby pro licencování
 

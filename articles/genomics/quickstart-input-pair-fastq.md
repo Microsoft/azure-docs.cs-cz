@@ -1,7 +1,7 @@
 ---
-title: "Rychlý start: Odeslání pracovního postupu pomocí vstupního souboru FASTQ | Dokumentace Microsoftu"
+title: 'Rychlý start: Odeslání pracovního postupu pomocí vstupního souboru FASTQ | Dokumentace Microsoftu'
 titleSuffix: Azure
-description: "Tento článek předpokládá, že máte nainstalovaného klienta msgen a úspěšně jste ve službě zpracovali ukázková data."
+description: Tento článek předpokládá, že máte nainstalovaného klienta msgen a úspěšně jste ve službě zpracovali ukázková data.
 services: microsoft-genomics
 author: grhuynh
 manager: jhubbard
@@ -16,6 +16,7 @@ ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/13/2017
+ms.locfileid: "26684479"
 ---
 # <a name="submit-a-workflow-using-fastq-file-inputs"></a>Odeslání pracovní postupu pomocí vstupního souboru FASTQ
 

@@ -1,11 +1,11 @@
 ---
-title: "Diagnostikujte místní připojení prostřednictvím brány sítě VPN s sledovací proces sítě Azure | Microsoft Docs"
-description: "Tento článek popisuje, jak diagnostikovat místní připojení prostřednictvím brány sítě VPN s odstraňováním problémů prostředků sledovací proces sítě Azure."
+title: Diagnostikujte místní připojení prostřednictvím brány sítě VPN s sledovací proces sítě Azure | Microsoft Docs
+description: Tento článek popisuje, jak diagnostikovat místní připojení prostřednictvím brány sítě VPN s odstraňováním problémů prostředků sledovací proces sítě Azure.
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
 ms.service: network-watcher
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26374198"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Diagnostika místní připojení prostřednictvím brány sítě VPN
 

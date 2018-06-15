@@ -1,9 +1,9 @@
 ---
-title: "Enterprise State Roaming přehled | Microsoft Docs"
-description: "Poskytuje informace o nastavení Enterprise State Roaming v zařízení se systémem Windows. Enterprise State Roaming poskytuje uživatelům v jednotném rozhraní mezi jejich zařízení se systémem Windows a snižuje čas potřebný pro konfiguraci nové zařízení."
+title: Enterprise State Roaming přehled | Microsoft Docs
+description: Poskytuje informace o nastavení Enterprise State Roaming v zařízení se systémem Windows. Enterprise State Roaming poskytuje uživatelům v jednotném rozhraní mezi jejich zařízení se systémem Windows a snižuje čas potřebný pro konfiguraci nové zařízení.
 services: active-directory
 keywords: Co je Enterprise State Roaming, synchronizace enterprise, windows cloudu
-documentationcenter: 
+documentationcenter: ''
 author: tanning
 manager: mtillman
 editor: curtand
@@ -17,9 +17,10 @@ ms.date: 03/08/2017
 ms.author: markvi
 ms.openlocfilehash: 2e1ebf5a9bfc4a1f0f92ff85f9406ecc7d538819
 ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26614946"
 ---
 # <a name="enterprise-state-roaming-overview"></a>Přehled služby Enterprise State Roaming
 S Windows 10 [Azure Active Directory (Azure AD)](active-directory-whatis.md) uživatelé získají možnost bezpečně synchronizovat jejich uživatelská nastavení a nastavení data aplikací do cloudu. Enterprise State Roaming poskytuje uživatelům v jednotném rozhraní mezi jejich zařízení se systémem Windows a snižuje čas potřebný pro konfiguraci nové zařízení. Enterprise State Roaming funguje podobně jako standardní [příjemce nastavení synchronizace](http://windows.microsoft.com/en-US/windows-8/sync-settings-pcs) který bylo poprvé dostupné ve Windows 8. Enterprise State Roaming dále nabízí:

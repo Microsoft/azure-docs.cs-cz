@@ -1,8 +1,8 @@
 ---
-title: "Terraform pomocí Azure"
-description: "Úvod do používání Terraform k vesion a nasazení infrastruktury Azure."
+title: Terraform pomocí Azure
+description: Úvod do používání Terraform k vesion a nasazení infrastruktury Azure.
 ms.service: virtual-machines-linux
-keywords: "terraform, devops, přehled, plánování, provedení, automatizovat"
+keywords: terraform, devops, přehled, plánování, provedení, automatizovat
 author: binderjoe
 ms.author: jbinder
 ms.date: 10/19/2017
@@ -12,6 +12,7 @@ ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/08/2017
+ms.locfileid: "26364466"
 ---
 # <a name="terraform-with-azure"></a>Terraform s Azure
 

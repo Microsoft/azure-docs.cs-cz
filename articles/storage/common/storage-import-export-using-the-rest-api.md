@@ -1,11 +1,11 @@
 ---
-title: "Pomocí REST API služby Azure Import/Export | Microsoft Docs"
-description: "Zjistěte, kde můžete najít prostředky pro používání služby Azure Import/Export rozhraní REST API, včetně postupy a referenční materiál."
+title: Pomocí REST API služby Azure Import/Export | Microsoft Docs
+description: Zjistěte, kde můžete najít prostředky pro používání služby Azure Import/Export rozhraní REST API, včetně postupy a referenční materiál.
 author: muralikk
 manager: syadav
 editor: tysonn
 services: storage
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 233f80e9-2e7f-48e0-9639-5c7785e7d743
 ms.service: storage
 ms.workload: storage
@@ -19,6 +19,7 @@ ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/14/2017
+ms.locfileid: "26690173"
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>Použití rozhraní REST API služby Azure Import/Export
 

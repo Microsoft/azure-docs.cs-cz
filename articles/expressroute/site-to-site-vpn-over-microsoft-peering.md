@@ -1,12 +1,12 @@
 ---
-title: "Konfigurace VPN typu site-to-site přes partnerský vztah Microsoftu pro Azure ExpressRoute | Microsoft Docs"
-description: "Nakonfigurujte připojení protokolu IPsec/IKE do Azure přes partnerského vztahu okruhu ExpressRoute Microsoft pomocí brána sítě VPN typu site-to-site."
+title: Konfigurace VPN typu site-to-site přes partnerský vztah Microsoftu pro Azure ExpressRoute | Microsoft Docs
+description: Nakonfigurujte připojení protokolu IPsec/IKE do Azure přes partnerského vztahu okruhu ExpressRoute Microsoft pomocí brána sítě VPN typu site-to-site.
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/07/2017
+ms.locfileid: "26357731"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Konfigurace VPN typu site-to-site přes partnerského vztahu ExpressRoute Microsoftu
 

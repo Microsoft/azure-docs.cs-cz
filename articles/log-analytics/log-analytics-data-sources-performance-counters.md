@@ -1,8 +1,8 @@
 ---
-title: "Shromažďovat a analyzovat čítače výkonu v Azure Log Analytics | Microsoft Docs"
-description: "Čítače výkonu jsou shromážděny prostřednictvím analýzy protokolů pro analýzu výkonu na agentů systému Windows a Linux.  Tento článek popisuje postup konfigurace shromažďování čítačů výkonu pro systému Windows a Linux agentů, podrobnosti o jejich jsou uložené v pracovním prostoru a jak analyzovat je na portálu Azure."
+title: Shromažďovat a analyzovat čítače výkonu v Azure Log Analytics | Microsoft Docs
+description: Čítače výkonu jsou shromážděny prostřednictvím analýzy protokolů pro analýzu výkonu na agentů systému Windows a Linux.  Tento článek popisuje postup konfigurace shromažďování čítačů výkonu pro systému Windows a Linux agentů, podrobnosti o jejich jsou uložené v pracovním prostoru a jak analyzovat je na portálu Azure.
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
@@ -19,6 +19,7 @@ ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/20/2017
+ms.locfileid: "26783158"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Systém Windows a Linux zdroje dat výkonu v analýzy protokolů
 Čítače výkonu v systému Windows a Linux získat přehled o výkonu hardwarové součásti, operačních systémů a aplikací.  Analýzy protokolů můžete shromáždit čítače výkonu v pravidelných intervalech pro analýzu téměř reálném čase (NRT) kromě agregování dat výkonu pro delší období analýzu a vytváření sestav.

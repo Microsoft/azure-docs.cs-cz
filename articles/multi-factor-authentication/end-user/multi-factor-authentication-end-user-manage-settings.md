@@ -1,9 +1,9 @@
 ---
-title: "Spravovat nastavení dvoustupňového ověřování | Microsoft Docs"
-description: "Spravujte, jak pomocí Azure Multi-Factor Authentication, včetně změnu kontaktních informací nebo konfigurace zařízení."
+title: Spravovat nastavení dvoustupňového ověřování | Microsoft Docs
+description: Spravujte, jak pomocí Azure Multi-Factor Authentication, včetně změnu kontaktních informací nebo konfigurace zařízení.
 services: multi-factor-authentication
-keywords: "vícefaktorové ověřování klienta, problém s ověřováním, ID korelace"
-documentationcenter: 
+keywords: vícefaktorové ověřování klienta, problém s ověřováním, ID korelace
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi
@@ -21,6 +21,7 @@ ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 12/11/2017
+ms.locfileid: "26626654"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>Spravovat nastavení pro dvoustupňové ověření
 Tento článek obsahuje odpovědi na dotazy týkající se aktualizovat nastavení pro dvoustupňové ověření nebo vícefaktorové ověřování. Pokud máte problémy s přihlášení ke svému účtu, podívejte se na [došlo k potížím s dvoustupnovym overovanim](multi-factor-authentication-end-user-troubleshoot.md) Poradce při potížích.
