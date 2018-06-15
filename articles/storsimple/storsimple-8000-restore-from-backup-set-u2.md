@@ -1,12 +1,12 @@
 ---
-title: "Obnovit svazek ze zálohy na řadu zařízení StorSimple 8000 | Microsoft Docs"
-description: "Vysvětluje, jak používat službu StorSimple Manager zařízení katalogu zálohy obnovit svazek StorSimple ze zálohovacího skladu."
+title: Obnovit svazek ze zálohy na řadu zařízení StorSimple 8000 | Microsoft Docs
+description: Vysvětluje, jak používat službu StorSimple Manager zařízení katalogu zálohy obnovit svazek StorSimple ze zálohovacího skladu.
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875456"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Obnovit svazek StorSimple ze zálohovacího skladu
 

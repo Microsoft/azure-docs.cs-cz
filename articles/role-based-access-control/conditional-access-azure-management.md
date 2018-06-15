@@ -20,6 +20,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34203926"
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>Správa přístupu k Azure správy s podmíněným přístupem
 

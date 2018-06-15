@@ -19,6 +19,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31404031"
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>Uživatelem definované funkce jazyka C# pomocí Hive a Pig streamování systému Hadoop v HDInsight
 
@@ -61,7 +62,7 @@ Další informace o verzi rozhraní .NET framework a Mono součástí verzích H
 
 ### <a name="hive-udf"></a>Hive UDF
 
-1. Otevřete Visual Studio a vytvořte řešení. Typ projektu vyberte **konzolovou aplikaci (rozhraní .NET Framework)**a název nového projektu **HiveCSharp**.
+1. Otevřete Visual Studio a vytvořte řešení. Typ projektu vyberte **konzolovou aplikaci (rozhraní .NET Framework)** a název nového projektu **HiveCSharp**.
 
     > [!IMPORTANT]
     > Vyberte __rozhraní .NET Framework 4.5__ Pokud používáte cluster HDInsight se systémem Linux. Další informace o Mono kompatibilitu s verzí rozhraní .NET Framework naleznete v tématu [Mono kompatibility](http://www.mono-project.com/docs/about-mono/compatibility/).

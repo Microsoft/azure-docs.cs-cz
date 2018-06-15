@@ -19,6 +19,7 @@ ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34304653"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Síťová řešení pro sledování výkonu v Azure
 

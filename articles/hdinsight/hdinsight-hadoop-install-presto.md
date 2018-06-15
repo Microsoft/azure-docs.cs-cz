@@ -17,6 +17,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31401810"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Na nainstalovat a používat Presto clusterů systému HDInsight Hadoop
 

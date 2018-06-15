@@ -20,6 +20,7 @@ ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32779464"
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>Kurz: Definování a vyhodnocení zásad zabezpečení
 Security Center pomáhá zajišťovat dodržování předpisů společnosti nebo soulad se zákonnými požadavky na zabezpečení pomocí zásad zabezpečení, které definují požadovanou konfiguraci úloh. Jakmile určíte zásady pro vaše předplatná Azure a přizpůsobíte je typům úloh nebo míře citlivosti dat, Security Center vám může poskytnout doporučení k zabezpečení pro vaše, výpočetní, síťové, databázové, úložné a aplikační prostředky. V tomto kurzu se naučíte:

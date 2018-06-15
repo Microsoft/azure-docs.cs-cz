@@ -20,6 +20,7 @@ ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34257484"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Architektura identity pro Azure zásobníku
 Než si zvolíte zprostředkovatele identity pro použití s Azure zásobníku, pochopit důležité rozdíly mezi možnosti služby Azure Active Directory (Azure AD) a služby Active Directory Federation Services (AD FS). 

@@ -61,9 +61,9 @@ Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mail�
 
 Pokud chcete spravovat nastavení doručitelnosti e-mailů, klikněte na **tlačítko Manage** (Spravovat). To vás pak přesměruje na řídicím panelu sendgrid vám umožňuje.
 
-    ![manage][manage]
+![manage][manage]
 
-    For more information on sending email through SendGrid, visit the [Email API Overview][Email API Overview].
+Další informace o odesílání e-mailu prostřednictvím Sendgridu, najdete v článku [přehled API e-mailu][Email API Overview].
 
 <!--images-->
 

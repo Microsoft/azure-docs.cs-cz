@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206478"
 ---
 # <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>Další informace o rozdílech mezi cloudové služby a Service Fabric před migrací aplikace.
 Microsoft Azure Service Fabric je platforma aplikace generace cloudu pro vysoce škálovatelnou a vysoce spolehlivé distribuované aplikace. Přináší mnoho nových funkcí pro balení, nasazování, upgrade a správu distribuovaných cloudové aplikace. 

@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34206529"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Spolehlivé služby oddílu Service Fabric
 Tento článek obsahuje úvod do vytváření oddílů spolehlivé služby Azure Service Fabric se základními koncepty. Zdrojový kód používá v článku je také k dispozici na [Githubu](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).

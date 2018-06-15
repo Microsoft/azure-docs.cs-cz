@@ -1,12 +1,12 @@
 ---
-title: "Správy pro service Manager zařízení StorSimple | Microsoft Docs"
-description: "Informace o správě zařízení StorSimple pomocí služby StorSimple Manager zařízení na portálu Azure."
+title: Správy pro service Manager zařízení StorSimple | Microsoft Docs
+description: Informace o správě zařízení StorSimple pomocí služby StorSimple Manager zařízení na portálu Azure.
 services: storsimple
-documentationcenter: 
+documentationcenter: ''
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: na
 ms.topic: article
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23875036"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>Použít službu StorSimple Manager zařízení ke správě zařízení StorSimple
 

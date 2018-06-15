@@ -1,11 +1,11 @@
 ---
-title: "Dokumentace k sadě Azure Operations Management Suite (OMS) – kurzy | Dokumentace Microsoftu"
-description: "Microsoft Operations Management Suite (OMS) je cloudové řešení společnosti Microsoft pro správu IT, které pomáhá se správou a ochranou místních a cloudových infrastruktur. Tento článek identifikuje různé služby zahrnuté v OMS a poskytuje odkazy na podrobné informace."
+title: Dokumentace k sadě Azure Operations Management Suite (OMS) – kurzy | Dokumentace Microsoftu
+description: Microsoft Operations Management Suite (OMS) je cloudové řešení společnosti Microsoft pro správu IT, které pomáhá se správou a ochranou místních a cloudových infrastruktur. Tento článek identifikuje různé služby zahrnuté v OMS a poskytuje odkazy na podrobné informace.
 services: operations-management-suite
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: operations-management-suite
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,6 +17,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23071207"
 ---
 # <a name="what-is-operations-management-suite-oms"></a>Co je Operations Management Suite (OMS)?
 Microsoft Operations Management Suite (OMS) je cloudové řešení společnosti Microsoft pro správu IT, které pomáhá se správou a ochranou místních a cloudových infrastruktur.  Vzhledem k tomu, že je OMS implementována jako cloudová služba, je možné ji zprovoznit velmi rychle a s minimální investicí do služeb infrastruktury.  Nové funkce jsou doručovány pravidelně, což šetří průběžné náklady na údržbu a aktualizace.

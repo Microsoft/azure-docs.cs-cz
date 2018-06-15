@@ -20,6 +20,7 @@ ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34163842"
 ---
 # <a name="azure-portal-documentation"></a>Dokumentace k webu Azure Portal
 Přečtěte si o funkcích, které můžete použít k nasazení prostředků na webu Azure Portal. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak můžete spravovat a monitorovat prostředky Azure.

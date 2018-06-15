@@ -22,6 +22,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34156183"
 ---
 # <a name="app-registration-reference"></a>Informace o registraci aplikace
 Tento dokument obsahuje kontextu a popisy různé funkce, které se nacházejí v portálu pro registraci aplikace Microsoft [ https://apps.dev.microsoft.com ](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).

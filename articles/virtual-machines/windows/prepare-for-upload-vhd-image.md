@@ -20,6 +20,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34072245"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava systému Windows VHD nebo VHDX, který chcete nahrát do Azure
 Před nahráním Windows virtuální počítače (VM) z místní do služby Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje jenom virtuální počítače generace 1, které jsou ve formátu souboru virtuálního pevného disku a mají pevnou velikostí disku. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z je disk VHDX souborů systému na virtuální pevný disk a z dynamicky se zvětšující disk do pevnou velikostí. Ale generaci Virtuálního počítače nelze změnit. Další informace najdete v tématu [měli vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).

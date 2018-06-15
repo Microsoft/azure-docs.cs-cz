@@ -19,6 +19,7 @@ ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/20/2018
+ms.locfileid: "34342704"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrovat Azure Active Directory Remix vedoucí prodeje E
 

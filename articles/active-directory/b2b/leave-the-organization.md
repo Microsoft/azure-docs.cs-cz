@@ -12,9 +12,10 @@ manager: mtillman
 ms.reviewer: sasubram
 ms.openlocfilehash: 3415989cb6cec68f95e7d317671c31ba9bd231e9
 ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34267373"
 ---
 # <a name="leave-an-organization-as-a-guest-user"></a>Nechte organizaci jako uživatel guest
 

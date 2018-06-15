@@ -12,9 +12,10 @@ manager: mtillman
 ms.reviewer: sasubram
 ms.openlocfilehash: 0ae85989f144b790407e4c1dce587f70839417cf
 ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/17/2018
+ms.locfileid: "34259999"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>Získání podpory pro spolupráci B2B
 

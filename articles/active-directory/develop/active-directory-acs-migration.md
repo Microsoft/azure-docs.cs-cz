@@ -21,6 +21,7 @@ ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34157601"
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Migrace ze služby Řízení přístupu Azure
 

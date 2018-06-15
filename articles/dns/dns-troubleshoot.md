@@ -19,6 +19,7 @@ ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/11/2018
+ms.locfileid: "34069095"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS Průvodci odstraňováním potíží
 

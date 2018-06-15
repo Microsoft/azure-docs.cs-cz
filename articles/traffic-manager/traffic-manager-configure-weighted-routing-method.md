@@ -1,11 +1,11 @@
 ---
-title: "Konfigurace metody směrování provozu vážené kruhové dotazování pomocí Azure Traffic Manageru | Microsoft Docs"
-description: "Tento článek vysvětluje, jak načíst vyrovnávání přenosů pomocí jiné metody kruhového dotazování v Traffic Manageru"
+title: Konfigurace metody směrování provozu vážené kruhové dotazování pomocí Azure Traffic Manageru | Microsoft Docs
+description: Tento článek vysvětluje, jak načíst vyrovnávání přenosů pomocí jiné metody kruhového dotazování v Traffic Manageru
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
@@ -19,6 +19,7 @@ ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 10/11/2017
+ms.locfileid: "23876541"
 ---
 # <a name="configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Konfigurace metody směrování vyvážené provoz v Traffic Manageru
 

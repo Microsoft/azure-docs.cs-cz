@@ -16,6 +16,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34195161"
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Odstraňování běžných problémů ve službě Azure Automation 
 Tento článek obsahuje nápovědu k odstraňování běžných chyb, může docházet v Azure Automation a navrhne možná řešení jejich řešení potíží.

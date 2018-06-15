@@ -1,6 +1,6 @@
 ---
-title: "Konfigurovat parametry serveru v databázi Azure pro PostgreSQL prostřednictvím portálu Azure"
-description: "Tento článek popisuje postup konfigurace serveru parametry v databáze Azure pro PostgreSQL prostřednictvím portálu Azure."
+title: Konfigurovat parametry serveru v databázi Azure pro PostgreSQL prostřednictvím portálu Azure
+description: Tento článek popisuje postup konfigurace serveru parametry v databáze Azure pro PostgreSQL prostřednictvím portálu Azure.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -14,6 +14,7 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29687862"
 ---
 # <a name="configure-server-parameters-in-azure-portal"></a>Konfigurovat parametry serveru na portálu Azure
 Můžete zobrazit seznam, zobrazit a aktualizovat parametry konfigurace pro databázi Azure pro server PostgreSQL prostřednictvím portálu Azure.

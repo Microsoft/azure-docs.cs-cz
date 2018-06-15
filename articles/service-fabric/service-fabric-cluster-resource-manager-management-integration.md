@@ -19,6 +19,7 @@ ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/16/2018
+ms.locfileid: "34208280"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Integrace manager prostředek clusteru s Správa clusteru Service Fabric
 Správce prostředků clusteru Service Fabric není disk upgradů Service Fabric, ale je zahrnuta. První způsob, jakým clusteru Resource Manager pomůže se správou je sledování požadovaný stav clusteru a služby je uvnitř. Správce prostředků clusteru rozešle sestav stavu, když ji nemůžete uvést do požadovanou konfiguraci clusteru. Například pokud není dostatečná kapacita správce prostředků clusteru rozešle stavu upozornění a chyby naznačující problém. Další část integrace souvisí se fungování upgradu. Správce prostředků clusteru mění své chování mírně během upgradu.  
