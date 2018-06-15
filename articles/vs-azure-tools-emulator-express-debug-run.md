@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30292196"
 ---
 # <a name="using-emulator-express-to-run-and-debug-an-azure-cloud-service-on-a-local-machine"></a>Pomocí emulátoru Express ke spouštění a ladění Azure cloud service v místním počítači
 Pomocí emulátoru Express, můžete si otestovat a ladění cloudové služby bez spuštění sady Visual Studio jako správce. Můžete nastavit nastavení projektu k použití emulátoru Express nebo úplný emulátor, v závislosti na požadavcích vaší cloudové služby. Další informace o úplný emulátor najdete v tématu [spustit aplikaci Azure v emulátoru výpočetní](storage/common/storage-use-emulator.md).

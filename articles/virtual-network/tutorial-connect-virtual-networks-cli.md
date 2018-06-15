@@ -22,6 +22,7 @@ ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/03/2018
+ms.locfileid: "30321814"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Připojit virtuální sítě pomocí virtuální sítě pomocí rozhraní příkazového řádku Azure vytvoření partnerského vztahu.
 

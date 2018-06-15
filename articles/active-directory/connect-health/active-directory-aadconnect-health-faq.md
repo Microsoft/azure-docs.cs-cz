@@ -19,6 +19,7 @@ ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 03/30/2018
+ms.locfileid: "30282194"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Nejčastější dotazy ke službě Azure AD Connect Health
 Tento článek obsahuje odpovědi na nejčastější dotazy (FAQ) o stavu připojení služby Azure Active Directory (Azure AD). Tyto nejčastější dotazy se týkají dotazy o tom, jak používat službu, která zahrnuje fakturační model, možnosti, omezení a podpory.

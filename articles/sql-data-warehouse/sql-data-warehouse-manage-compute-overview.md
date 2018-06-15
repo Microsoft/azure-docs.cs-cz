@@ -15,6 +15,7 @@ ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/18/2018
+ms.locfileid: "31528490"
 ---
 # <a name="manage-compute-in-azure-sql-data-warehouse"></a>Správa výpočtů v Azure SQL Data Warehouse
 Další informace o správě výpočetních prostředků v Azure SQL Data Warehouse. Nižší náklady ponecháte datového skladu nebo změně velikosti datového skladu k splňovat požadavky na výkon. 

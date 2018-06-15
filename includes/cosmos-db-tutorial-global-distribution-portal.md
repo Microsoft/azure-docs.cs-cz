@@ -13,6 +13,7 @@ ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/16/2018
+ms.locfileid: "31431716"
 ---
 Informace o globální distribuci služby Azure Cosmos DB najdete v následujícím videu, kde Andrew Liu, manažer programu Azure Cosmos DB, prochází funkce globální distribuce.
 
