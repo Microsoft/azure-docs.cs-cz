@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/12/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: ad76046a092a37a2dc1f59459ac3c3e48bc284e5
-ms.sourcegitcommit: 8659efc885be98f42edae0b516ca576e38940c97
+ms.openlocfilehash: 7c7540a650d8726fb0a376788073968af6b48834
+ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/13/2018
-ms.locfileid: "35568122"
+ms.lasthandoff: 06/15/2018
+ms.locfileid: "35683028"
 ---
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné. Zjistěte, jak [zobrazení vašeho aktuálního využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
@@ -50,7 +50,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 | Skupiny zabezpečení sítě (NSG) |100 |5000 |
 | Počet pravidel NSG na skupinu NSG |1000 ** |1000 |
 | IP adresy a rozsahy, zadaný pro zdrojové nebo cílové ve skupině zabezpečení |2000 |4000 |
-| Skupiny zabezpečení aplikací |200 |500 |
+| Skupiny zabezpečení aplikací |500 |3000 |
 | Skupiny zabezpečení aplikací na konfiguraci IP adresy, na síťový adaptér |10 |20 |
 | Konfigurace protokolu IP na skupinu zabezpečení aplikací |1000 |4000 |
 | Skupiny zabezpečení aplikací, které lze zadat v rámci všech pravidel zabezpečení skupiny zabezpečení sítě |50 |100 |

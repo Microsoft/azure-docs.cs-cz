@@ -1,11 +1,11 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 8e710bebf979b60f61552593ae550e95a8340d2b
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 99eaa667e4c6a9d63b4cc43ada8c6e36f7365610
+ms.sourcegitcommit: 39f4911b5933f7062dcf5d57af94eab8a0740b2b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34307562"
+ms.lasthandoff: 06/16/2018
+ms.locfileid: "35683045"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Předem pro virtuální počítače s instancemi Azure vyhrazené virtuálních počítačů
 
@@ -16,7 +16,14 @@ Vyhrazená instance Azure můžete zakoupit [portál Azure](https://portal.azure
 -   U předplatného typu Enterprise, musí být povolená vyhrazenou instanci nákupy v [EA portál](https://ea.azure.com).
 -   Cloud Solution Provider (CSP) programu můžete zakoupit pouze správce agentů nebo prodejní agenty vyhrazenou instancí.
 
-## <a name="buy-a-reserved-instance"></a>Kupte si vyhrazenou instanci
+[!IMPORTANT]
+Musí používat jednu z metod popsaných níže k identifikaci správně velikost virtuálního počítače pro nákup rezervace.
+
+## <a name="determine-the-right-vm-size-before-purchase"></a>Určení správné velikosti virtuálního počítače před nákupu
+1. Odkazujte na pole AdditionalInfo v souboru využití nebo využití rozhraní API k určení správné velikosti virtuálního počítače pro nákup rezervace. Nepoužívejte hodnoty z pole měření dílčí kategorie nebo produktu, vzhledem k tomu, že tato pole nerozlišují mezi S a Non-S verzemi virtuálního počítače.
+2. Můžete také získat přesné informace o velikosti virtuálních počítačů pomocí prostředí Powershell, Azure Resource Manager nebo z virtuálního počítače podrobnosti na portálu Azure.
+
+## <a name="buy-a-reserved-virtual-machine-instance"></a>Kupte si Instance vyhrazený virtuální počítač
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby** > **rezervace**.
 3. Vyberte **přidat** přikoupení novou vyhrazenou instanci.
