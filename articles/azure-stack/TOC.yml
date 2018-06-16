@@ -130,8 +130,6 @@
           href: azure-stack-viewing-public-ip-address-consumption.md
         - name: Změnit vlastníka předplatného uživatele
           href: azure-stack-change-subscription-owner.md
-        - name: Správa virtuálních počítačů se sadou Windows Azure Pack
-          href: azure-stack-manage-windows-azure-pack.md
         - name: Spuštění a zastavení Azure zásobníku
           href: azure-stack-start-and-stop.md
         - name: Správa kapacity
