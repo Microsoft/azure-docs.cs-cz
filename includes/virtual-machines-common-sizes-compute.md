@@ -9,10 +9,11 @@ ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
 ms.openlocfilehash: 638b52edb554b6bddb206943fca42b03bdc69060
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "30845127"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -26,7 +27,7 @@ Za nižší cenu za hodinu seznamu Fsv2-series je hodnota nejlepší v ceníku v
 
 Virtuální počítače řady F-series jsou skvělou volbou pro úlohy, které potřebují rychlejší procesory, ale ne tolik paměti nebo dočasného úložiště na virtuální procesor.  Úlohy jako například analýzy, herní servery, webové servery nebo dávkové zpracování můžou řadu F-series s výhodou využít.
 
-Řada Fs-series nabízí všechny výhody řady F-series a navíc službu Storage úrovně Premium.
+Řada Fs-series nabízí všechny výhody řady F-series a navíc službu Premium Storage.
 
 ## <a name="fsv2-series-sup1sup"></a>Fsv2-series <sup>1</sup>
 
@@ -37,7 +38,7 @@ ACU: 195-210
 | Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000 (32)                                                             | 2 / 875                                        |
 | Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000 (64)                                                             | 2 / 1,750                                      |
 | Standard_F8s_v2   | 8      | 16          | 64             | 16             | 16000 (128)                                                           | 4 / 3,500                                      |
-| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32000 (256)                                                           | 4 / 7,000                                      |
+| Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32000 (256)                                                           | 4 / 7000                                      |
 | Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 (512)                                                           | 8 / 14,000                                     |
 | Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 (1024)                                                         | 8 / 28,000                                     |
 | Standard_F72s_v2<sup>2, 3</sup> | 72     | 144         | 576            | 32             | 144000 (1520)                                                         | 8 / 30,000                                     |
@@ -62,7 +63,7 @@ ACU: 210–250
 
 MB/s = 10^6 bajtů za sekundu a GiB = 1024^3 bajtů.
 
-<sup>1</sup> propustnost maximální disku (IOPS nebo MB/s) možné pomocí řady Fs virtuálních počítačů může být omezena číslo, velikost a proložení připojené disky.  Podrobnosti viz článek [Storage úrovně Premium: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md).
+<sup>1</sup> propustnost maximální disku (IOPS nebo MB/s) možné pomocí řady Fs virtuálních počítačů může být omezena číslo, velikost a proložení připojené disky.  Podrobnosti viz článek [Premium Storage: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md).
 
 
 <br>

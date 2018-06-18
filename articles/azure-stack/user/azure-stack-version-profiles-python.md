@@ -10,19 +10,53 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 05/21/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
 <!-- dev: viananth -->
-ms.openlocfilehash: a4fe62ba8c0732745326831b977e8975e1210436
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: d17ba9ed4548a986d6846d934aee197609ec80ca
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34806832"
 ---
 # <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Použití profilů verze rozhraní API s Pythonem v Azure zásobníku
 
 *Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+
+## <a name="python-and-api-version-profiles"></a>Profily verze Python a rozhraní API
+
+Python SDK podporuje profily verze rozhraní API pro platformu jiný cloud, jako je například Azure zásobníku a globální Azure. Pomocí profilů rozhraní API pro vytváření řešení pro hybridní cloud. Python SDK podporuje následující profily rozhraní API:
+
+1. **Nejnovější**  
+    Profil cílí nejnovější verze rozhraní API pro všechny poskytovatele služeb v platformě Azure.
+2.  **2017-03-09profil**  
+    **2017-03-09profil**  
+    Profil cílí verze rozhraní API poskytovatele prostředků nepodporuje Azure zásobníku.
+
+    Další informace o profilech API a zásobník Azure najdete v tématu [profily verze spravovat rozhraní API v Azure zásobníku](azure-stack-version-profiles.md).
+
+## <a name="install-azure-python-sdk"></a>Instalace sady Azure Python SDK
+
+1.  Nainstalovat Git z [oficiální web](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+2.  Pokyny k instalaci sady SDK pro Python najdete v tématu [Azure pro vývojáře v Pythonu](https://docs.microsoft.com/python/azure/python-sdk-azure-install?view=azure-python).
+3.  Pokud není k dispozici, vytvořit odběr a uložte ID předplatného pro pozdější použití. Pokyny pro vytvoření odběru naleznete v tématu [vytvoření odběrů nabídky v Azure zásobníku](../azure-stack-subscribe-plan-provision-vm.md). 
+4.  Vytvořit objekt služby a uložte jeho ID a tajný klíč. Pokyny k vytvoření objektu služby pro Azure zásobníku najdete v tématu [poskytnout přístup aplikace k Azure zásobníku](../azure-stack-create-service-principals.md). 
+5.  Ujistěte se, zda že má vaše objektu služby roli Přispěvatel nebo vlastníka vaše předplatné. Pokyny o tom, jak přiřadit role objektu služby najdete v tématu [poskytnout přístup aplikace k Azure zásobníku](../azure-stack-create-service-principals.md).
+
+## <a name="prerequisites"></a>Požadavky
+
+Chcete-li použít Python Azure SDK s Azure zásobníku, musíte zadat následující hodnoty a potom nastavte hodnoty proměnné prostředí. Postupujte podle pokynů pod tabulkou pro operační systém na nastavení proměnné prostředí. 
+
+| Hodnota | Proměnné prostředí | Popis |
+|---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
+| ID tenanta | AZURE_TENANT_ID | Hodnota zásobník Azure [ID klienta](../azure-stack-identity-overview.md). |
+| ID klienta | AZURE_CLIENT_ID | Služba ID hlavní aplikace se neuloží, když instanční objekt byl vytvořen v předchozí části tohoto dokumentu. |
+| ID předplatného | AZURE_SUBSCRIPTION_ID | [ID předplatného](../azure-stack-plan-offer-quota-overview.md#subscriptions) je, jak přistupovat k nabídky v Azure zásobníku. |
+| Tajný kód klienta | AZURE_CLIENT_SECRET | Aplikace služby hlavní tajný klíč uložit při vytvoření objektu služby. |
+| Koncový bod služby Resource Manager | ARM_ENDPOINT | V tématu [koncový bod služby zásobník Azure resource manager](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
+
 
 ## <a name="python-samples-for-azure-stack"></a>Ukázky jazyka Python pro Azure zásobníku 
 
@@ -83,11 +117,9 @@ Příklady, nemusí nutně být v pořadí uvedeném v seznamu nahoře.
     pip install -r requirements.txt
     ````
 
-5.  Vytvoření [instanční objekt](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals) pro práci s Azure zásobníku. Ověřte, zda má instanční objekt [roli Přispěvatel nebo vlastníka](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal) vaše předplatné.
+5.  Vytvoření [instanční objekt](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals) pro práci s Azure zásobníku. Ověřte, zda má instanční objekt [roli Přispěvatel nebo vlastníka](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal) vaše předplatné.
 
 6.  Nastavte následující proměnné a exportovat těchto proměnných prostředí do své aktuální prostředí. 
-
-`Note: provide an explanation of where these variables come from?`
 
     ````bash
     export AZURE_TENANT_ID={your tenant id}
@@ -97,30 +129,32 @@ Příklady, nemusí nutně být v pořadí uvedeném v seznamu nahoře.
     export ARM_ENDPOINT={your AzureStack Resource Manager Endpoint}
     ```
 
-7.  Poznámka: aby bylo možné tuto ukázku spustit, Ubuntu 16.04-LTS a Windows Server 2012 R2 – Datacenter obrázků musí být přítomen v zásobníku Azure Marketplace. To může být buď [stahovány ze služby Azure](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-download-azure-marketplace-item) nebo [přidat do úložiště bitové kopie platformy](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-add-vm-image).
+7.  In order to run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-Datacenter images must be present in Azure Stack market place. These can be either [downloaded from Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) or [added to Platform Image Repository](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image).
 
-
-8. Spusťte ukázku.
+8. Run the sample.
 
     ```
     python unmanaged-disks\example.py
     ```
 
-## <a name="notes"></a>Poznámky
+## Notes
 
-Pravděpodobně budete mít tendenci k pokusu o načtení disk operačního systému Virtuálního počítače pomocí `virtual_machine.storage_profile.os_disk`.
-V některých případech to může provést požadovanou, ale mějte na paměti, že nabízí `OSDisk` objektu.
-Aby bylo možné aktualizovat velikost disku operačního systému, jako `example.py` nemá, musíte není `OSDisk` objekt ale `Disk` objektu.
-`example.py` Získá `Disk` objekt s následující:
+You may be tempted to try to retrieve a VM's OS disk by using
+`virtual_machine.storage_profile.os_disk`.
+In some cases, this may do what you want,
+but be aware that it gives you an `OSDisk` object.
+In order to update the OS Disk's size, as `example.py` does,
+you need not an `OSDisk` object but a `Disk` object.
+`example.py` gets the `Disk` object with the following:
 
 ```python
 os_disk_name = virtual_machine.storage_profile.os_disk.name
 os_disk = compute_client.disks.get(GROUP_NAME, os_disk_name)
 ```
 
-## <a name="next-steps"></a>Další postup
+## Next steps
 
-- [Azure Python vývoj Center](https://azure.microsoft.com/develop/python/)
-- [Dokumentace k Azure virtuální počítače](https://azure.microsoft.com/services/virtual-machines/)
-- [Studijní postup pro virtuální počítače](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
-- Pokud nemáte předplatné Microsoft Azure získáte Bezplatný zkušební účet [zde](http://go.microsoft.com/fwlink/?LinkId=330212).
+- [Azure Python Development Center](https://azure.microsoft.com/develop/python/)
+- [Azure Virtual Machines documentation](https://azure.microsoft.com/services/virtual-machines/)
+- [Learning Path for Virtual Machines](https://azure.microsoft.com/documentation/learning-paths/virtual-machines/)
+- If you don't have a Microsoft Azure subscription, you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212).

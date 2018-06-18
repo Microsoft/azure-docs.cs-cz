@@ -1,21 +1,20 @@
 ---
-title: 'Služby Azure Active Directory B2C: Vlastní zásady | Microsoft Docs'
-description: Téma na Azure Active Directory B2C vlastní zásady
+title: Vlastní zásady pro Azure Active Directory B2C | Microsoft Docs
+description: Další informace o vlastních zásad Azure Active Directory B2C.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
-ms.topic: article
 ms.date: 04/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 22d34ac4128da1d1a9f20619aec2aaccc2425a21
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: B2C
+ms.openlocfilehash: 0d507c2116aa9e420ddc0dec4999ea21d28e60fc
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34709253"
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C: Vlastní zásady
 
@@ -29,26 +28,26 @@ Vlastní zásady jsou konfigurační soubory, které určují chování tenanta 
 
 | | Předdefinované zásady | Vlastní zásady |
 |-|-------------------|-----------------|
-|Cíloví uživatelé | Všechny vývojáři aplikací s nebo bez znalosti identity | Odborníci na identitu: integrátorem systémů, konzultanty a týmy interní identity. Jsou tedy se OpenIDConnect toky a pochopit poskytovatelů identit a ověřování na základě deklarace identity |
+|Cíloví uživatelé | Všechny vývojáři aplikací s nebo bez znalosti identity | Odborníci na identitu: integrátorem systémy, konzultantům a týmy interní identity. Jsou tedy se OpenIDConnect toky a pochopit poskytovatelů identit a ověřování na základě deklarace identity |
 |Konfigurace – metoda | Portál Azure s uživatelsky přívětivý uživatelského rozhraní | Přímo úpravy souborů XML a pak se nahrávají na portálu Azure |
 |Přizpůsobení uživatelského rozhraní | Úplné přizpůsobení uživatelského rozhraní, včetně podpory HTML, CSS a javascript (vyžaduje vlastní domény)<br><br>Podpora více jazyků s vlastní řetězce | stejné |
 | Vlastní nastavení atributu | Standardní a vlastní atributy | stejné |
 |Token a relace správy | Vlastní token a více možností relace | stejné |
 |Zprostředkovatelé identit| **Dnes**: předdefinované místní, sociálních zprostředkovatele<br><br>**Budoucí**: založených na standardech OIDC SAML, OAuth | **Dnes**: založených na standardech OIDC OAUTH, SAML<br><br>**Budoucí**: WsFed |
-|Úlohy identity (příklady) | Zaregistrujte nebo Přihlaste se pomocí místního a mnoho sociálních účty<br><br>Samoobslužné resetování hesla<br><br>Úpravy profilu<br><br>Služba Multi-Factor Auth scénáře<br><br>Přizpůsobení tokeny a relace<br><br>Tok tokenu přístupu | Dokončení úloh jako integrovaných zásad pomocí poskytovatelů vlastní identitu nebo používat vlastní obory<br><br>Zřízení uživatele v jiném systému v době registrace<br><br>Odeslání Uvítacího e-mailu pomocí vlastního zprostředkovatele služby e-mailu<br><br>Použít úložiště uživatele mimo B2C<br><br>Ověření uživatele informace s důvěryhodné systému prostřednictvím rozhraní API |
+|Úlohy identity (příklady) | Registrace nebo přihlášení s mnoha sociálních účty a místní<br><br>Samoobslužné resetování hesla<br><br>Úpravy profilu<br><br>Služba Multi-Factor Auth scénáře<br><br>Přizpůsobení tokeny a relace<br><br>Tok tokenu přístupu | Dokončení úloh jako integrovaných zásad pomocí poskytovatelů vlastní identitu nebo používat vlastní obory<br><br>Zřízení uživatele v jiném systému v době registrace<br><br>Odeslání Uvítacího e-mailu pomocí vlastního zprostředkovatele služby e-mailu<br><br>Použít úložiště uživatele mimo B2C<br><br>Ověření uživatele informace s důvěryhodné systému prostřednictvím rozhraní API |
 
 ## <a name="policy-files"></a>Soubory zásad
 
-Vlastní zásady je reprezentován jako jednoho nebo několika formátu XML soubory, které odkazovat navzájem v hierarchické řetězu. Elementy XML definice: schéma deklarace identity, deklarace transformace, obsahu definice, profily poskytovatelů a technické deklarace identity a Userjourney kroků Orchestrace, mezi další prvky.
+Vlastní zásady je reprezentován jako jednoho nebo několika souborů ve formátu XML odkazující na sebe navzájem v hierarchické řetězu. Elementy XML definice: schématu deklarace identity deklarací transformace, obsahu definice, profily poskytovatelů a technické deklarace identity a kroků Orchestrace cesty uživatele, mezi další prvky.
 
 Doporučujeme použít tři typy souborů zásad:
 
 - **ZÁKLADNÍHO souboru**, který obsahuje většinu definice a pro které Azure poskytuje kompletní příklad.  Doporučujeme, že abyste vytvořili minimální počet změn do tohoto souboru, které pomáhají při řešení potíží a dlouhodobé údržby zásad
 - **soubor rozšíření** , obsahuje změny konfigurace jedinečný pro vašeho klienta
-- **soubor předávající strany (RP)** tedy jednoho souboru zaměřené na úlohy, která je volána přímo z aplikace nebo služby (neboli předávající strany).  Přečtěte si článek na soubor definice zásad Další informace.  Každý úkol jedinečný vyžaduje vlastní RP a v závislosti na branding požadavky číslo může být "Celkový počet aplikací x celkový počet případů použití".
+- **soubor předávající strany (RP)** tedy jeden zaměřené na úloh soubor, který je volána přímo z aplikace nebo služby (neboli předávající strany).  Přečtěte si článek na soubor definice zásad Další informace.  Každý úkol jedinečný vyžaduje vlastní RP a v závislosti na branding požadavky může být tento počet "Celkový počet aplikací x celkový počet případů použití."
 
 
-Předdefinované zásady v Azure AD B2C, postupujte podle vzoru souboru 3, které popsané výše, ale vývojář se zobrazují pouze soubor předávající strany (RP), zatímco na portálu provede změny na pozadí v souboru rozšíření.
+Předdefinované zásady v Azure AD B2C, postupujte podle vzoru tři souboru, které popsané výše, ale vývojář se zobrazují pouze soubor předávající strany (RP), zatímco na portálu provede změny na pozadí v souboru rozšíření.
 
 ## <a name="core-concepts-you-should-know-when-using-custom-policies"></a>Základní koncepty, které byste měli vědět při použití vlastních zásad
 
@@ -58,9 +57,9 @@ Azure zákazníka identit a přístupu (CIAM) služba management. Služba zahrnu
 
 1. Adresář uživatelského ve formě speciální Azure Active Directory přístupné přes Microsoft Graph a který obsahuje data o místní účty a účty federované uživatele 
 2. Přístup k **Identity rozhraní Framework** která orchestruje vztah důvěryhodnosti mezi uživateli a entity a předá deklarací identity mezi nimi k dokončení úlohy správy identitě/přístup 
-3. Služby tokenů zabezpečení (STS) vydávání id tokeny, aktualizace tokeny a přístup tokeny (a ekvivalentní kontrolní výrazy SAML) a ověřování je pro ochranu prostředků.
+3. Služby tokenů zabezpečení (STS) vydávání ID tokeny, aktualizace tokeny a přístup tokeny (a ekvivalentní kontrolní výrazy SAML) a ověřování je pro ochranu prostředků.
 
-Azure AD B2C komunikuje s zprostředkovatelů identity jiných systémů, uživatelů a se adresáři místního uživatele v pořadí k dosažení úkol identity aplikace (například přihlášení uživatele, registraci nového uživatele, resetovat heslo). Základní platformu, která vytváří více stran vztah důvěryhodnosti a provede tyto kroky je volána rozhraní prostředí Identity a zásady (také nazývané cesty uživatele nebo zásady důvěryhodnosti framework) explicitně definuje aktéři, akce, protokolů, a pořadí kroků dokončete.
+Azure AD B2C komunikuje s zprostředkovatelů identity jiných systémů, uživatelů a se adresáři místního uživatele v pořadí k dosažení úkol identity aplikace (například přihlášení uživatele, registraci nového uživatele, resetovat heslo). Základní platforma, která vytváří více stran vztah důvěryhodnosti a provede tyto kroky je názvem rozhraní prostředí Identity a zásady (také nazývané cesty uživatele nebo zásady důvěryhodnosti framework) explicitně definuje aktéři, akce, protokolů a pořadí kroků dokončete.
 
 ### <a name="identity-experience-framework"></a>Architektura prostředí identit
 
@@ -68,14 +67,14 @@ Plně konfigurovatelné řízená zásadami, cloudové platformy Azure, které o
 
 ### <a name="built-in-policies"></a>Předdefinované zásady
 
-Předdefinované konfigurační soubory, které budou řídit chování Azure AD B2C provést nejvíc běžně používané identity úlohy (tj. uživatel registrace, přihlášení, resetování hesla) a interakci s důvěryhodné strany, jejichž relace je také předdefinovaná v Azure AD B2C (pro Příklad Facebook zprostředkovatele identity, LinkedIn, Account Microsoft, Google účty).  V budoucnu integrovaných zásad může taky poskytnout k přizpůsobení zprostředkovatelů identity, které jsou obvykle ve sféře enterprise, například Azure Active Directory Premium, Active Directory nebo ADFS Salesforce ID zprostředkovatele.
+Předdefinované konfigurační soubory, které budou řídit chování Azure AD B2C provést nejvíc běžně používané identity úlohy (tedy uživatel registrace, přihlášení, resetování hesla) a interakci s důvěryhodné strany, jejichž relace je také předdefinovaná v Azure AD B2C ( například Facebook zprostředkovatele identity, LinkedIn, Account Microsoft, Google účty).  V budoucnu integrovaných zásad může taky poskytnout k přizpůsobení zprostředkovatelů identity, které jsou obvykle ve sféře enterprise, například Azure Active Directory Premium, Active Directory nebo ADFS Salesforce ID zprostředkovatele.
 
 
 ### <a name="custom-policies"></a>Vlastní zásady
 
 Konfigurační soubory, které definují chování rozhraní Framework Identity ve vašem klientovi Azure AD B2C. Vlastní zásady přístupný jako jednoho nebo několika souborů XML (viz definice soubory zásad) spouštěných rámcem prostředí Identity při vyvolání předávající strana (například aplikace). Vlastní zásady můžete přímo upravovat vývojář identity k dokončení near neomezený počet úloh. Vývojáři vlastní zásady konfigurace musí definovat důvěryhodné vztahy pečlivě podrobně zahrnout koncové body metadat, přesný deklarací exchange definice a konfigurace tajné klíče, klíče a certifikáty podle potřeby jednotlivých poskytovatele identit.
 
-## <a name="policy-file-definitions-for-identity-experience-framework-trustframeworks"></a>Soubor definice zásady pro Trustframeworks Framework prostředí Identity
+## <a name="policy-file-definitions-for-identity-experience-framework-trust-frameworks"></a>Soubor definice zásady pro vztah důvěryhodnosti rozhraní Framework prostředí Identity
 
 ### <a name="policy-files"></a>Soubory zásad
 
