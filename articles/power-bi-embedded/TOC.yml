@@ -4,12 +4,14 @@
   items:
     - name: Co je Power BI Embedded
       href: what-is-power-bi-embedded.md
-- name: Začínáme
+- name: Kurzy
+  items:
+    - name: Ukázka vložení obsahu pro zákazníky
+      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/'
+- name: Koncepty
   items:
     - name: Začínáme s Power BI Embedded
       href: get-started.md
-    - name: Začínáme s pomocí ukázky
-      href: 'https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/'
 - name: Postup
   items:
     - name: Správa kapacity

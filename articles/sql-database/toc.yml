@@ -202,6 +202,30 @@
           href: sql-database-xevent-db-diff-from-svr.md
         - name: Monitorování v paměti
           href: sql-database-in-memory-oltp-monitoring.md
+    - name: Úlohy elastické databáze
+      items:
+        - name: Přehled
+          href: elastic-jobs-overview.md
+        - name: Vytvoření a správa (PowerShell)
+          href: elastic-jobs-powershell.md
+        - name: Vytvoření a správa (T-SQL)
+          href: elastic-jobs-tsql.md
+        - name: Migrace (z původních elastických úloh)
+          href: elastic-jobs-migrate.md
+        - name: Elastické úlohy (zastaralé)
+          items:
+            - name: Přehled (zastaralé)
+              href: sql-database-elastic-jobs-overview.md
+            - name: Instalace elastických úloh (zastaralé)
+              href: sql-database-elastic-jobs-service-installation.md
+            - name: Vytvoření úlohy – portál (zastaralé)
+              href: sql-database-elastic-jobs-create-and-manage.md
+            - name: Vytvoření úlohy – Azure PowerShell (zastaralé)
+              href: sql-database-elastic-jobs-powershell.md
+            - name: Vytvoření úlohy – ukázková aplikace (zastaralé)
+              href: sql-database-elastic-jobs-getting-started.md
+            - name: Odinstalace elastické úlohy (zastaralé)
+              href: sql-database-elastic-jobs-uninstall.md
     - name: Horizontální navýšení kapacity
       items:
         - name: Přehled
@@ -212,8 +236,6 @@
           href: sql-database-elastic-query-overview.md
         - name: Elastické transakce
           href: sql-database-elastic-transactions-overview.md
-        - name: Elastické úlohy
-          href: sql-database-elastic-jobs-overview.md
         - name: Mapy horizontálních oddílů
           href: sql-database-elastic-scale-shard-map-management.md
         - name: Směrování dotazů
@@ -276,16 +298,6 @@
       items:
         - name: Upgrade klientské knihovny služby Elastic Database
           href: sql-database-elastic-scale-upgrade-client-library.md
-        - name: Instalace elastických úloh
-          href: sql-database-elastic-jobs-service-installation.md
-        - name: Vytvoření úlohy – portál
-          href: sql-database-elastic-jobs-create-and-manage.md
-        - name: Vytvoření úlohy – Azure PowerShell
-          href: sql-database-elastic-jobs-powershell.md
-        - name: Vytvoření úlohy – ukázková aplikace
-          href: sql-database-elastic-jobs-getting-started.md
-        - name: Odinstalace elastické úlohy
-          href: sql-database-elastic-jobs-uninstall.md
         - name: Dotazování na vertikálně dělená data
           href: sql-database-elastic-query-getting-started-vertical.md
         - name: Vytváření sestav napříč datovou vrstvou s horizontálním navýšením kapacity
@@ -454,8 +466,6 @@
   items:
     - name: Azure PowerShell
       href: '/powershell/module/azurerm.sql/#sql'
-    - name: PowerShell (elastická databáze)
-      href: '/powershell/module/elasticdatabasejobs/#elasticdatabasejobs'
     - name: Azure CLI 2.0
       href: /cli/azure/sql
     - name: .NET

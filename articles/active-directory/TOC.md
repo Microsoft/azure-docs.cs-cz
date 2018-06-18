@@ -1,22 +1,22 @@
 # [Dokumentace k Azure Active Directory](index.md)
 
 # Přehled
-## [Představení služby Azure Active Directory](active-directory-whatis.md)
+## [Představení služby Azure Active Directory](fundamentals/active-directory-whatis.md)
 ## [Správa identit Azure](fundamentals/identity-fundamentals.md)
 ## [Vysvětlení řešení identit Azure](fundamentals/understand-azure-identity-solutions.md)
 ## [Volba řešení s hybridní identitou](choose-hybrid-identity-solution.md)
-## [Přidružení předplatných Azure](active-directory-how-subscriptions-associated-directory.md)
+## [Přidružení předplatných Azure](fundamentals/active-directory-how-subscriptions-associated-directory.md)
 ## [Požadavky na data a rezidence](fundamentals/active-directory-data-storage-eu.md)
 ## [Nejčastější dotazy](fundamentals/active-directory-faq.md)
 ## [Co je nového](fundamentals/whats-new.md)
 
 
 # Začínáme
-## [Začínáme s Azure AD](get-started-azure-ad.md)
+## [Začínáme s Azure AD](fundamentals/get-started-azure-ad.md)
 ## [Registrace do Azure AD Premium](active-directory-get-started-premium.md)
-## [Přidání vlastního názvu domény](add-custom-domain.md)
-## [Konfigurace značky společnosti](customize-branding.md)
-## [Přidání uživatelů do Azure AD](add-users-azure-active-directory.md)
+## [Přidání vlastního názvu domény](fundamentals/add-custom-domain.md)
+## [Konfigurace značky společnosti](fundamentals/customize-branding.md)
+## [Přidání uživatelů do Azure AD](fundamentals/add-users-azure-active-directory.md)
 ## [Přiřazení licencí k uživatelům](fundamentals/license-users-groups.md)
 ## [Konfigurace samoobslužného resetování hesla](authentication/quickstart-sspr.md)
 ## [Přidání informací o ochraně osobních údajů vaší organizace do Azure AD](active-directory-properties-area.md)
@@ -44,11 +44,11 @@
 #### [Porovnání nabídek](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
 
 ## Správa uživatelů
-### [Přidání nových uživatelů do Azure AD](add-users-azure-active-directory.md)
-### [Správa uživatelských profilů](active-directory-users-profile-azure-portal.md)
+### [Přidání nových uživatelů do Azure AD](fundamentals/add-users-azure-active-directory.md)
+### [Správa uživatelských profilů](fundamentals/active-directory-users-profile-azure-portal.md)
 ### [Sdílení účtů](active-directory-sharing-accounts.md)
-### [Přiřazení uživatelů k rolím správce](active-directory-users-assign-role-azure-portal.md)
-### [Obnovení odstraněného uživatele](active-directory-users-restore.md)
+### [Přiřazení uživatelů k rolím správce](fundamentals/active-directory-users-assign-role-azure-portal.md)
+### [Obnovení odstraněného uživatele](fundamentals/active-directory-users-restore.md)
 ### [Přidání uživatelů typu host z jiného adresáře (B2B)](b2b/what-is-b2b.md)
 #### [Správci přidávají uživatele B2B](b2b/add-users-administrator.md)
 #### [Informační pracovníci přidávají uživatele B2B](b2b/add-users-information-worker.md)
@@ -80,15 +80,15 @@
 #### [Porovnání spolupráce B2B s B2C](b2b/compare-with-b2c.md)
 #### [Získání podpory pro B2B](b2b/get-support.md)
 
-## [Správa skupin a členů](active-directory-manage-groups.md)
+## [Správa skupin a členů](fundamentals/active-directory-manage-groups.md)
 ### Správa skupin
 #### [Azure Portal](active-directory-groups-create-azure-portal.md)
 #### [Azure AD PowerShell pro Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 #### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### [Správa členů skupin](active-directory-groups-members-azure-portal.md)
-### [Správa vlastníků skupin](active-directory-accessmanagement-managing-group-owners.md)
+### [Správa vlastníků skupin](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
 ### [Správa členství ve skupinách](fundamentals/active-directory-groups-membership-azure-portal.md)
-### [Přiřazení licencí pomocí skupin](active-directory-licensing-whatis-azure-portal.md)
+### [Přiřazení licencí pomocí skupin](fundamentals/active-directory-licensing-whatis-azure-portal.md)
 #### [Přiřazení licencí ke skupině](active-directory-licensing-group-assignment-azure-portal.md)
 #### [Identifikace a řešení potíží s licencemi ve skupině](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [Migrace jednotlivě licencovaných uživatelů na licencování na základě skupin](active-directory-licensing-group-migration-azure-portal.md)
@@ -98,10 +98,10 @@
 #### [Referenční informace k produktům a plánům služeb v Azure AD](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Nastavení vypršení platnosti skupin Office 365](active-directory-groups-lifecycle-azure-portal.md)
 ### [Vynucení zásad pojmenování pro skupiny](groups-naming-policy.md)
-### [Zobrazení všech skupin](active-directory-groups-view-azure-portal.md)
+### [Zobrazení všech skupin](fundamentals/active-directory-groups-view-azure-portal.md)
 ### [Přidání skupiny k aplikacím SaaS](active-directory-accessmanagement-group-saasapps.md)
 ### [Obnovení odstraněné skupiny Office 365](fundamentals/active-directory-groups-restore-azure-portal.md)
-### [Správa nastavení skupin](active-directory-groups-settings-azure-portal.md) 
+### [Správa nastavení skupin](fundamentals/active-directory-groups-settings-azure-portal.md) 
 ### Vytváření rozšířených pravidel
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
 ### [Vytvoření samoobslužných skupin](active-directory-accessmanagement-self-service-group-management.md)
@@ -153,7 +153,7 @@
 ### [Požadavky SSPR na data](authentication/howto-sspr-authenticationdata.md)
 ### [Vytváření sestav SSPR](authentication/howto-sspr-reporting.md)
 ### Správci IT: Resetování hesel
-#### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
+#### [Azure Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [Samoobslužné resetování hesla licence](authentication/concept-sspr-licensing.md)
 ### [Zpětný zápis hesla](authentication/howto-sspr-writeback.md)
 ### [Řešení problémů](authentication/active-directory-passwords-troubleshoot.md)
@@ -277,7 +277,7 @@
 ## Správa adresáře
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### Vlastní názvy domén
-#### [Rychlý start](add-custom-domain.md)
+#### [Rychlý start](fundamentals/add-custom-domain.md)
 #### [Přidání vlastních názvů domén](active-directory-domains-manage-azure-portal.md)
 ### [Správa adresáře](fundamentals/active-directory-administer.md)
 ### [Odstranění adresáře](directory-delete-howto.md)
@@ -294,11 +294,9 @@
 
 ### [Integrace místních identit pomocí Azure AD Connect](./connect/active-directory-aadconnect.md)
 
-## [Správa přístupu k Azure](../role-based-access-control/toc.yml)
-
 ## Delegování přístupu k prostředkům
 ### [Role správce](active-directory-assign-admin-roles-azure-portal.md)
-#### [Přiřazení role správce uživateli](active-directory-users-assign-role-azure-portal.md) 
+#### [Přiřazení role správce uživateli](fundamentals/active-directory-users-assign-role-azure-portal.md) 
 #### [Porovnání oprávnění pro členy a uživatele typu host](fundamentals/users-default-permissions.md) 
 ### [Zabezpečení privilegovaného přístupu](admin-roles-best-practices.md)  
 ### [Vytvoření účtů pro správu pro nouzový přístup](active-directory-admin-manage-emergency-access-accounts.md) 
@@ -325,6 +323,7 @@
 #### [Začínáme](active-directory-conditional-access-azure-portal-get-started.md)
 #### Šablony Rychlý start
 ##### [Konfigurace na základě MFA cloudových aplikací](active-directory-conditional-access-app-based-mfa.md)
+##### [Vyžadování přijetí podmínek použití](active-directory-conditional-access-tou.md)
 #### Kurzy
 ##### [Migrace klasických zásad MFA](active-directory-conditional-access-migration-mfa.md)
 #### Koncepty
@@ -369,9 +368,10 @@
 
 ## [Nasazení AD FS v Azure](active-directory-aadconnect-azure-adfs.md)
 ### [Vysoká dostupnost](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
+### 
+  [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
 
-## [Řešení problémů](active-directory-troubleshooting-support-howto.md)
+## [Řešení problémů](fundamentals/active-directory-troubleshooting-support-howto.md)
 
 ## Nasazení testování konceptu (POC) Azure AD
 ### [Scénáře PoC: Úvod](active-directory-playbook-intro.md)

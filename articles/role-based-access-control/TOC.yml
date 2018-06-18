@@ -1,51 +1,57 @@
 - name: Přehled správy přístupu
   href: manage-access-to-azure-resources.md
-- name: Přístup k prostředkům v Azure
-  href: rbac-and-directory-admin-roles.md
-- name: Řízení přístupu na základě role (RBAC)
-  href: overview.md
+  items: null
+- name: Přehled
   items:
-    - name: Šablony Rychlý start
-      items:
-        - name: Udělení přístupu pro uživatele – portál
-          href: quickstart-assign-role-user-portal.md
-    - name: Kurzy
-      items:
-        - name: Udělení přístupu pro uživatele – PowerShell
-          href: tutorial-role-assignments-user-powershell.md
-        - name: Udělení přístupu pro skupinu – PowerShell
-          href: tutorial-role-assignments-group-powershell.md
-        - name: Vytvoření vlastní role – PowerShell
-          href: tutorial-custom-role-powershell.md
-        - name: Vytvoření vlastní role – rozhraní příkazového řádku
-          href: tutorial-custom-role-cli.md
-    - name: Správa přiřazení rolí
-      items:
-        - name: Portál
-          href: role-assignments-portal.md?toc=%2fazure%2factive-directory%2ftoc.json
-        - name: Azure CLI
-          href: role-assignments-cli.md
-        - name: PowerShell
-          href: role-assignments-powershell.md
-        - name: REST
-          href: role-assignments-rest.md
+    - name: Co je RBAC?
+      href: overview.md
+    - name: Vysvětlení různých rolí
+      href: rbac-and-directory-admin-roles.md
+- name: Šablony Rychlý start
+  items:
+    - name: Udělení přístupu pro uživatele
+      href: quickstart-assign-role-user-portal.md
+- name: Kurzy
+  items:
+    - name: Udělení přístupu pro uživatele – PowerShell
+      href: tutorial-role-assignments-user-powershell.md
+    - name: Udělení přístupu pro skupinu – PowerShell
+      href: tutorial-role-assignments-group-powershell.md
+    - name: Vytvoření vlastní role – PowerShell
+      href: tutorial-custom-role-powershell.md
+    - name: Vytvoření vlastní role – rozhraní příkazového řádku
+      href: tutorial-custom-role-cli.md
+- name: Koncepty
+  items:
     - name: Vysvětlení definic rolí
       href: role-definitions.md
     - name: Vestavěné role
       href: built-in-roles.md
     - name: Vlastní role
       href: custom-roles.md
-    - name: Správa přiřazení rolí pro externí uživatele
-      href: role-assignments-external-users.md
+    - name: Operace poskytovatele prostředků
+      href: resource-provider-operations.md
+    - name: Privileged Identity Management (PIM) pro RBAC
+      href: pim-azure-resource.md
+    - name: Podmíněný přístup pro správu Azure
+      href: conditional-access-azure-management.md
+- name: Návody
+  items:
+    - name: Správa přístupu
+      items:
+        - name: Portál
+          href: role-assignments-portal.md
+        - name: Azure CLI
+          href: role-assignments-cli.md
+        - name: PowerShell
+          href: role-assignments-powershell.md
+        - name: REST
+          href: role-assignments-rest.md
     - name: Protokoly aktivit
       href: change-history-report.md
     - name: Zvýšení oprávnění přístupu pro globálního správce
       href: elevate-access-global-admin.md
+    - name: Správa přístupu pro externí uživatele
+      href: role-assignments-external-users.md
     - name: Řešení potíží
       href: troubleshooting.md
-    - name: Operace poskytovatele prostředků
-      href: resource-provider-operations.md
-- name: Privileged Identity Management (PIM) pro RBAC
-  href: pim-azure-resource.md
-- name: Podmíněný přístup pro správu Azure
-  href: conditional-access-azure-management.md

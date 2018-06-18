@@ -16,6 +16,8 @@
       href: tutorial-explore-js-client-lib.md
     - name: Vytvoření prostředí TSI
       href: tutorial-create-populate-tsi-environment.md
+    - name: Vytvoření jednostránkové webové aplikace TSI
+      href: tutorial-create-tsi-sample-spa.md
 - name: Koncepty
   items:
     - name: Plánování prostředí
