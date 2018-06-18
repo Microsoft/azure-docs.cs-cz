@@ -343,7 +343,7 @@
         - name: Načítání dat pomocí BCP
           href: sql-database-load-from-csv-with-bcp.md
         - name: Načítání dat pomocí ADF
-          href: ../data-factory/connector-azure-sql-database.md
+          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
         - name: Synchronizace dat
           href: sql-database-get-started-sql-data-sync.md
     - name: Monitorování a ladění

@@ -13,7 +13,7 @@
 
 # Začínáme
 ## [Začínáme s Azure AD](fundamentals/get-started-azure-ad.md)
-## [Registrace do Azure AD Premium](active-directory-get-started-premium.md)
+## [Registrace do Azure AD Premium](fundamentals/active-directory-get-started-premium.md)
 ## [Přidání vlastního názvu domény](fundamentals/add-custom-domain.md)
 ## [Konfigurace značky společnosti](fundamentals/customize-branding.md)
 ## [Přidání uživatelů do Azure AD](fundamentals/add-users-azure-active-directory.md)
@@ -82,10 +82,10 @@
 
 ## [Správa skupin a členů](fundamentals/active-directory-manage-groups.md)
 ### Správa skupin
-#### [Azure Portal](active-directory-groups-create-azure-portal.md)
+#### [Azure Portal](fundamentals/active-directory-groups-create-azure-portal.md)
 #### [Azure AD PowerShell pro Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 #### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
-### [Správa členů skupin](active-directory-groups-members-azure-portal.md)
+### [Správa členů skupin](fundamentals/active-directory-groups-members-azure-portal.md)
 ### [Správa vlastníků skupin](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
 ### [Správa členství ve skupinách](fundamentals/active-directory-groups-membership-azure-portal.md)
 ### [Přiřazení licencí pomocí skupin](fundamentals/active-directory-licensing-whatis-azure-portal.md)
@@ -368,8 +368,7 @@
 
 ## [Nasazení AD FS v Azure](active-directory-aadconnect-azure-adfs.md)
 ### [Vysoká dostupnost](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
-### 
-  [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
+### [Změna podpisového hashovacího algoritmu](active-directory-federation-sha256-guidance.md)
 
 ## [Řešení problémů](fundamentals/active-directory-troubleshooting-support-howto.md)
 
