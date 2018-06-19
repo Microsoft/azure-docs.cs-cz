@@ -97,6 +97,8 @@
           href: api-management-howto-integrate-internal-vnet-appgateway.md
         - name: Vzájemné ověřování certifikátů
           href: api-management-howto-mutual-certificates.md
+        - name: Správa protokolů a šifer
+          href: api-management-howto-manage-protocols-ciphers.md
     - name: Přizpůsobení prostředí pro vývojáře
       items:
         - name: Změna rozložení a obsahu stránek

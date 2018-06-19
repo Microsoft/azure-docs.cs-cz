@@ -53,7 +53,7 @@
     - name: Monitorování stavu zabezpečení
       href: security-center-monitoring.md
       items:
-        - name: Zabezpečení výpočetních služeb
+        - name: Zabezpečení aplikací a výpočetních funkcí
           href: security-center-virtual-machine-recommendations.md
           items:
             - name: Použít šifrování disku
@@ -74,6 +74,10 @@
               href: security-center-update-os-version.md
             - name: Není nainstalováno posouzení ohrožení zabezpečení
               href: security-center-vulnerability-assessment-recommendations.md
+            - name: Přidání brány firewall webových aplikací
+              href: security-center-add-web-application-firewall.md
+            - name: Finalizace ochrany aplikací
+              href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
         - name: Zabezpečení sítě
           href: security-center-network-recommendations.md
           items:
@@ -94,13 +98,6 @@
               href: security-center-enable-auditing-on-sql-servers.md
             - name: Povolení transparentního šifrování dat
               href: security-center-enable-transparent-data-encryption.md
-        - name: Zabezpečení aplikací
-          href: security-center-application-recommendations.md
-          items:
-            - name: Přidání brány firewall webových aplikací
-              href: security-center-add-web-application-firewall.md
-            - name: Finalizace ochrany aplikací
-              href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
         - name: Identita a přístup
           href: security-center-identity-access.md
     - name: Použití cloudové ochrany

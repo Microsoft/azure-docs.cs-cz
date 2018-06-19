@@ -82,6 +82,11 @@
           href: kubernetes-service-principal.md
         - name: Ověřování pomocí ACR
           href: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json
+    - name: Monitorování a protokolování
+      items:
+        - name: Řešení stavu kontejnerů Azure
+          href: ../monitoring/monitoring-container-health.md
+          maintainContext: true
     - name: Vývoj a spouštění aplikací
       items:
         - name: Spouštění aplikací pomocí Helm
@@ -122,6 +127,8 @@
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks
+    - name: .NET
+      href: /dotnet/api/overview/azure/containerservice
     - name: Python
       href: /python/api/overview/azure/containerservice
     - name: Java

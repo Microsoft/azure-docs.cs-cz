@@ -146,7 +146,21 @@
     - name: Stack Overflow
       href: 'http://stackoverflow.com/questions/tagged/azure-database-postgresql'
     - name: Videa
-      href: videos.md
+      items:
+        - name: Videa k produktům
+          href: videos.md
+        - name: Série videí s postupy
+          items:
+            - name: Seznámení s výhodami a funkcemi produktů
+              href: 'https://aka.ms/postg-intro-vid'
+            - name: Migrace aplikace PostgreSQL do Azure
+              href: 'https://aka.ms/postg-migrate-vid'
+            - name: Sestavování inteligentních aplikací s využitím Cognitive Services
+              href: 'https://aka.ms/postg-cogsvs-vid'
+            - name: Připojení kontejnerů s využitím OSBA
+              href: 'https://aka.ms/postg-osba-vid'
+            - name: Připojení dat vaší aplikace do Power BI
+              href: 'https://aka.ms/postg-powerbi-vid'
     - name: Fórum pro názory
       href: 'https://feedback.azure.com/forums/597976-azure-database-for-postgresql'
     - name: Dostupnost v oblastech

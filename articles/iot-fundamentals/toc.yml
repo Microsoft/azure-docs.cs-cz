@@ -30,3 +30,13 @@
       href: /azure/iot-edge
     - name: Sady SDK pro zařízení IoT
       href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: Zabezpečení
+  items:
+    - name: Architektura zabezpečení
+      href: iot-security-architecture.md
+    - name: Osvědčené postupy zabezpečení
+      href: iot-security-best-practices.md
+    - name: Zabezpečené nasazení
+      href: iot-security-deployment.md
+    - name: Zabezpečení od počátku
+      href: iot-security-ground-up.md

@@ -54,7 +54,7 @@
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Konfigurace upozornění
           href: stream-analytics-set-up-alerts.md
-        - name: Otestování úlohy
+        - name: Testování úlohy
           href: stream-analytics-test-query.md
         - name: Zobrazení výsledků na řídicím panelu
           href: stream-analytics-power-bi-dashboard.md

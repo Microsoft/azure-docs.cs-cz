@@ -122,7 +122,6 @@
 ### Referenční informace
 #### [Uchování](active-directory-reporting-retention.md)
 #### [Latence](active-directory-reporting-latencies-azure-portal.md)
-#### [Oznámení](active-directory-reporting-notifications.md)
 #### [Reference k aktivitě auditování](active-directory-reporting-activity-audit-reference.md)
 #### [Kódy chyb aktivit přihlašování](active-directory-reporting-activity-sign-ins-errors.md)
 #### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
@@ -152,6 +151,12 @@
 ### [Přizpůsobení SSPR](authentication/concept-sspr-customization.md)
 ### [Požadavky SSPR na data](authentication/howto-sspr-authenticationdata.md)
 ### [Vytváření sestav SSPR](authentication/howto-sspr-reporting.md)
+### [Eliminace slabých hesel](authentication/concept-password-ban-bad.md)
+### [Konfigurace seznamu zakázaných hesel](authentication/howto-password-ban-bad.md)
+### [Místní integrace](authentication/concept-password-ban-bad-on-premises.md)
+### [Nasazení ochrany hesel Azure AD](authentication/howto-password-ban-bad-on-premises.md)
+### [Konfigurace ochrany hesel Azure AD](authentication/howto-password-ban-bad-on-premises-operations.md)
+### [Monitorování ochrany hesel Azure AD](authentication/howto-password-ban-bad-on-premises-troubleshoot.md)
 ### Správci IT: Resetování hesel
 #### [Azure Portal](fundamentals/active-directory-users-reset-password-azure-portal.md)
 ### [Samoobslužné resetování hesla licence](authentication/concept-sspr-licensing.md)
@@ -178,14 +183,14 @@
 ## Správa aplikací
 ### [Přehled](manage-apps/what-is-application-management.md)
 ### [Začínáme](manage-apps/plan-an-application-integration.md)
-### [Kurzy integrace aplikací SaaS](active-directory-saas-tutorial-list.md)
+### [Kurzy integrace aplikací SaaS](saas-apps/tutorial-list.md)
 ### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
 #### [Vytvoření sestav snímků](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [Konfigurace průběžného vytváření sestav](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [Použití vlastního analyzátoru protokolů](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
 
 ### [Zřizování a rušení zřízení uživatelů pro aplikace SaaS](active-directory-saas-app-provisioning.md) 
-#### [Kurzy integrace aplikací](active-directory-saas-tutorial-list.md) 
+#### [Kurzy integrace aplikací](saas-apps/tutorial-list.md) 
 #### [Automatizace zřizování pro aplikace s podporou SCIM](manage-apps/use-scim-to-provision-users-and-groups.md) 
 #### [Přizpůsobení mapování atributů](active-directory-saas-customizing-attribute-mappings.md) 
 #### [Zápis výrazů pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md) 
