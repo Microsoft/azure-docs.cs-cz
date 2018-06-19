@@ -1,6 +1,6 @@
 ---
-title: Scénáře využití služby Microsoft Azure Media Services a dostupnost funkcí v datových centrech | Microsoft Docs
-description: V tomto tématu najdete přehled scénářů využití služby Microsoft Azure Media Services a dostupnost funkcí a služeb v datových centrech.
+title: Scénáře využití služby Microsoft Azure Media Services a dostupnost funkcí v datových centrech | Dokumentace Microsoftu
+description: V tomto tématu najdete přehled scénářů využití služby Microsoft Azure Media Services a dostupnosti funkcí a služeb v datových centrech.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 777ba32a6c3ec7545c9911c820ceda7ac823096a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8381cdfffd34ffa25d1b87be3a3aca3de69c2802
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34809274"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scénáře a dostupnost funkcí služby Media Services v datových centrech
 
 Microsoft Azure Media Services (AMS) umožňuje bezpečně nahrávat, ukládat, kódovat a balit obsah (video nebo zvuk) doručovaný na vyžádání i živě streamovaný různým klientům (například do televizí, počítačů a mobilních zařízení).
 
-AMS funguje v několika datových centrech po celém světě. Tato datová centra jsou seskupená do geografických oblastí. To vám poskytuje flexibilitu při výběru místa pro sestavení vašich aplikací. [Seznam oblastí a jejich umístění](https://azure.microsoft.com/regions/) si můžete prohlédnout. 
+AMS funguje v několika datových centrech po celém světě. Tato datová centra jsou seskupená do v geografických oblastí. To vám poskytuje flexibilitu při výběru místa pro sestavení vaší aplikace. [Seznam oblastí a jejich umístění](https://azure.microsoft.com/regions/) si můžete prohlédnout. 
 
 Toto téma představuje běžné scénáře doručování obsahu [živě](#live_scenarios) nebo [na vyžádání](#vod_scenarios). V tématu najdete také podrobnosti o dostupnosti funkcí a služeb pro média v datových centrech.
 

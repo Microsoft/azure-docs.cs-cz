@@ -1,5 +1,5 @@
 ---
-title: Vytvoření vývojového prostředí Kubernetes v cloudu pomocí .NET Core a VS Code| Microsoft Docs
+title: Vytvoření vývojového prostoru Kubernetes v cloudu pomocí rozhraní .NET Core a editoru VS Code | Microsoft Docs
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: a57118feb85a010e38d73b758ebfb84d1cc463fa
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: bd42268c36f44dc20b88d27d19cbf378e848b82f
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361246"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823142"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Začínáme s .NET Core v Azure Dev Spaces
 
@@ -24,15 +24,15 @@ ms.locfileid: "34361246"
 
 [!INCLUDE[](includes/see-troubleshooting.md)]
 
-Teď můžete v Azure vytvořit vývojové prostředí založené na Kubernetes.
+Teď můžete v Azure vytvořit vývojový prostor založený na Kubernetes.
 
 [!INCLUDE[](includes/portal-aks-cluster.md)]
 
 ## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
-Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Většina konfigurace vývojového prostředí se ukládá do cloudu, aby bylo možné ji sdílet s ostatními uživateli. Nejdřív si stáhněte a spusťte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). 
+Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Většina konfigurace vývojového prostoru se ukládá do cloudu, aby ji šlo sdílet s ostatními uživateli. Nejdřív si stáhněte a spusťte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). 
 
 > [!IMPORTANT]
-> Pokud už máte rozhraní příkazového řádku Azure nainstalované, ujistěte se, že používáte verzi 2.0.32 nebo vyšší.
+> Pokud už máte rozhraní příkazového řádku Azure CLI nainstalované, ujistěte se, že používáte verzi 2.0.33 nebo vyšší.
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 
@@ -42,7 +42,11 @@ Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Větš
 
 Při čekání na vytvoření clusteru můžete začít s vývojem kódu.
 
-## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
+## <a name="create-a-web-app-running-in-a-container"></a>Vytvoření webové aplikace spuštěné v kontejneru
+
+V této části vytvoříte webovou aplikaci ASP.NET Core a spustíte ji v kontejneru v Kubernetes.
+
+### <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
 Pokud jste si nainstalovali [.NET Core](https://www.microsoft.com/net), můžete ve složce `webfrontend` rychle vytvořit webovou aplikaci ASP.NET Core.
     
 ```cmd
@@ -55,7 +59,7 @@ Nebo si **stáhněte ukázkový kód z GitHubu**. Přejděte na https://github.c
 
 [!INCLUDE[](includes/build-run-k8s-cli.md)]
 
-## <a name="update-a-content-file"></a>Aktualizace souboru obsahu
+### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
 Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
 
 1. Najděte soubor `./Views/Home/Index.cshtml` a upravte kód HTML. Můžete změnit řádek 70, na kterém je `<h2>Application uses</h2>`, třeba takto: `<h2>Hello k8s in Azure!</h2>`
@@ -64,7 +68,7 @@ Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes.
 
 Co se stalo? Úpravy obsahových souborů jako HTML a CSS nevyžadují rekompilaci ve webové aplikaci .NET Core. Aktivní příkaz `azds up` totiž automaticky synchronizuje všechny upravené soubory obsahu do kontejneru spuštěného v Azure, abyste změny obsahu viděli okamžitě.
 
-## <a name="update-a-code-file"></a>Aktualizace souboru s kódem
+### <a name="update-a-code-file"></a>Aktualizace souboru s kódem
 Aktualizace souborů s kódem je o něco pracnější, protože aplikace .NET Core musí znovu sestavit a vytvořit aktualizované binární soubory aplikace.
 
 1. V okně terminálu stiskněte `Ctrl+C`, abyste zastavili `azds up`.
@@ -97,7 +101,7 @@ Existuje ještě *rychlejší způsob* vývoje kódu, který si ukážeme v dal�
 ### <a name="debug-the-container-in-kubernetes"></a>Ladění kontejneru v Kubernetes
 Když chcete v Kubernetes ladit kód, stiskněte **F5**.
 
-Stejně jako u příkazu `up` se kód synchronizuje s vývojovým prostředím a sestaví se kontejner, který se nasadí v Kubernetes. Ladicí program se tentokrát samozřejmě připojí ke vzdálenému kontejneru.
+Stejně jako u příkazu `up` se kód synchronizuje s vývojovým prostorem a sestaví se kontejner, který se nasadí v Kubernetes. Ladicí program se tentokrát samozřejmě připojí ke vzdálenému kontejneru.
 
 [!INCLUDE[](includes/tip-vscode-status-bar-url.md)]
 
@@ -138,7 +142,7 @@ Kvůli úspoře času si můžete ukázkový kód stáhnout z úložiště GitHu
 ### <a name="run-mywebapi"></a>Spuštění *mywebapi*
 1. V *samostatném okně editoru VS Code* otevřete složku `mywebapi`.
 1. Stiskněte F5 a počkejte na sestavení a nasazení služby. Připravenou službu poznáte podle toho, že se zobrazí panel ladění editoru VS Code.
-1. Poznamenejte si adresu URL koncového bodu, která by měla vypadat zhruba takto http://localhost:\<portnumber\>. **Tip: Na stavovém řádku editoru VS Code se zobrazí adresa URL, na kterou můžete kliknout.** I když to vypadá, že kontejner je spuštěný lokálně, ve skutečnosti je spuštěný ve vývojovém prostředí Azure. Důvodem adresy místního hostitele je, že služba `mywebapi` nemá definované veřejné koncové body, a proto je přístupná jenom z instance Kubernetes. Kvůli jednodušší práci a interakci se soukromou službou z místního počítače vytvoří Azure Dev Spaces do kontejneru se spuštěným Azure dočasný tunel SSH.
+1. Poznamenejte si adresu URL koncového bodu, která by měla vypadat zhruba takto http://localhost:\<portnumber\>. **Tip: Na stavovém řádku editoru VS Code se zobrazí adresa URL, na kterou můžete kliknout.** I když to vypadá, že kontejner je spuštěný lokálně, ve skutečnosti je spuštěný ve vývojovém prostoru v Azure. Důvodem adresy místního hostitele je, že služba `mywebapi` nemá definované veřejné koncové body, a proto je přístupná jenom z instance Kubernetes. Kvůli jednodušší práci a interakci se soukromou službou z místního počítače vytvoří Azure Dev Spaces do kontejneru se spuštěným Azure dočasný tunel SSH.
 1. Až bude služba `mywebapi` připravená, otevřete v prohlížeči adresu místního hostitele. Pokud chcete volat výchozí GET API pro `ValuesController`, připojte k URL kontroler `/api/values`. 
 1. Pokud byly všechny kroky úspěšné, měla by se zobrazit odpověď služby `mywebapi`.
 
@@ -152,23 +156,25 @@ Teď napíšeme kód v projektu `webfrontend`, který vygeneruje požadavek do `
     {
         ViewData["Message"] = "Hello from webfrontend";
         
-        // Use HeaderPropagatingHttpClient instead of HttpClient so we can propagate
-        // headers in the incoming request to any outgoing requests
-        using (var client = new HeaderPropagatingHttpClient(this.Request))
-        {
-            // Call *mywebapi*, and display its response in the page
-            var response = await client.GetAsync("http://mywebapi/api/values/1");
-            ViewData["Message"] += " and " + await response.Content.ReadAsStringAsync();
-        }
+        using (var client = new System.Net.Http.HttpClient())
+            {
+                // Call *mywebapi*, and display its response in the page
+                var request = new System.Net.Http.HttpRequestMessage();
+                request.RequestUri = new Uri("http://mywebapi/api/values/1");
+                if (this.Request.Headers.ContainsKey("azds-route-as"))
+                {
+                    // Propagate the dev space routing header
+                    request.Headers.Add("azds-route-as", this.Request.Headers["azds-route-as"] as IEnumerable<string>);
+                }
+                var response = await client.SendAsync(request);
+                ViewData["Message"] += " and " + await response.Content.ReadAsStringAsync();
+            }
 
         return View();
     }
     ```
 
-Všimněte si, jak se v Kubernetes používá zjišťování služby DNS, aby odkaz na službu vypadal takto: `http://mywebapi`. **Ve vývojovém prostředí běží kód stejně jako v produkčním prostředí**.
-
-V předchozí ukázce kódu se také používá třída `HeaderPropagatingHttpClient`. Tato pomocná třída byla do složky kódu přidána v okamžiku spuštění `azds prep`. Třída `HeaderPropagatingHttpClient` je odvozená ze známé třídy `HttpClient` a přidává funkce potřebné k šíření určitých hlaviček z existujícího objektu ASP.NET HttpRequest do odchozího objektu HttpRequestMessage. Dále si ukážeme, jak tato odvozená třída přispívá při týmových scénářích k větší produktivitě vývojářů.
-
+Předchozí příklad kódu předává hlavičku `azds-route-as` z příchozího požadavku do odchozího požadavku. Později si ukážeme, jak to týmům pomáhá při společném vývoji.
 
 ### <a name="debug-across-multiple-services"></a>Ladění více služeb
 1. V této fázi byste měli mít spuštěnou službu `mywebapi` s připojeným ladicím programem. Pokud tomu tak není, stiskněte v projektu `mywebapi` klávesu F5.

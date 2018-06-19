@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: deb651170b0fd58f8c89b591f3e42b5b629f4095
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0507208e58323fd31bb7c6cdb3a293ec0179cabe
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361467"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823907"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Začínáme v Azure Dev Spaces s Node.js
 
@@ -29,10 +29,10 @@ Teď můžete v Azure vytvořit vývojové prostředí založené na Kubernetes.
 [!INCLUDE[](includes/portal-aks-cluster.md)]
 
 ## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
-Služba Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Většina konfigurace vývojového prostředí se ukládá do cloudu, aby bylo možné ji sdílet s ostatními uživateli. Napřed stáhněte a spusťte [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
+Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Většina konfigurace vývojového prostředí se ukládá do cloudu, aby bylo možné ji sdílet s ostatními uživateli. Nejdřív si stáhněte a spusťte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 > [!IMPORTANT]
-> Pokud už máte Azure CLI nainstalované, ujistěte se, že používáte verzi 2.0.32 nebo vyšší.
+> Pokud už máte rozhraní příkazového řádku Azure CLI nainstalované, ujistěte se, že používáte verzi 2.0.33 nebo vyšší.
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 
@@ -44,7 +44,7 @@ Při čekání na vytvoření clusteru můžete začít psát kód.
 
 ## <a name="create-a-nodejs-container-in-kubernetes"></a>Vytvoření kontejneru Node.js v Kubernetes
 
-V této části vytvoříte webovou aplikaci Node.js a spustíte ji v kontejneru v Kubernetes.
+V této části vytvoříte webovou aplikaci Node.js a spustíte ji v kontejneru v prostředí Kubernetes.
 
 ### <a name="create-a-nodejs-web-app"></a>Vytvoření webové aplikace Node.js
 Stáhněte si kód z GitHubu. Přejděte na https://github.com/Azure/dev-spaces a vyberte **Clone or Download** (Klonovat nebo stáhnout). Úložiště GitHub se stáhne do vašeho místního prostředí. Kód tohoto průvodce je tady: `samples/nodejs/getting-started/webfrontend`.
@@ -54,7 +54,7 @@ Stáhněte si kód z GitHubu. Přejděte na https://github.com/Azure/dev-spaces 
 [!INCLUDE[](includes/build-run-k8s-cli.md)]
 
 ### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
-Azure Dev Spaces neslouží jenom ke spuštění kódu v Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, které probíhají v prostředí Kubernetes v cloudu.
+Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
 
 1. Najděte soubor `./public/index.html` a upravte kód HTML. Můžete třeba změnit barvu pozadí stránky na odstín modré:
 
@@ -97,7 +97,7 @@ Aktualizace souborů s kódem na straně serveru je pracnější, protože aplik
     ```
 
 3. Uložte soubor.
-1. Spusťte `azds up` v okně teminálu. 
+1. V okně terminálu spusťte `azds up`. 
 
 Tím znovu sestavíte image kontejneru a znovu nasadíte Helm chart. Načtěte znovu stránku prohlížeče a podívejte se, jestli se promítly změny kódu.
 
@@ -109,7 +109,7 @@ Existuje ještě *rychlejší způsob* vývoje kódu, který si ukážeme v dal�
 
 [!INCLUDE[](includes/init-debug-assets-vscode.md)]
 
-### <a name="select-the-azds-debug-configuration"></a>Výběr konfigurace AZDS pro ladění
+### <a name="select-the-azds-debug-configuration"></a>Výběr konfiguraci AZDS pro ladění
 1. Pokud chcete zobrazit ladění, klikněte na boku editoru VS Code na **panelu aktivit** na ikonu Ladění.
 1. Jako aktivní konfiguraci ladění vyberte **Launch Program (AZDS)**.
 
@@ -119,7 +119,7 @@ Existuje ještě *rychlejší způsob* vývoje kódu, který si ukážeme v dal�
 > Pokud na paletě příkazů nevidíte příkazy Azure Dev Spaces, ověřte, že máte [nainstalované rozšíření VS Code pro Azure Dev Spaces](get-started-nodejs.md#get-kubernetes-debugging-for-vs-code).
 
 ### <a name="debug-the-container-in-kubernetes"></a>Ladění kontejneru v Kubernetes
-Když chcete v Kubernetes ladit kód, stiskněte **F5**.
+Když chcete v prostředí Kubernetes ladit kód, stiskněte **F5**.
 
 Podobně jako při příkazu `up` se na začátku ladění synchronizuje kód s vývojovým prostředím a sestaví se kontejner, který se nasadí v Kubernetes. Tentokrát se ale ladicí program připojí ke vzdálenému kontejneru.
 
@@ -159,9 +159,9 @@ Vyzkoušejte následující kroky:
 
 Při této konfiguraci kontejner spustí *nodemon*. Po úpravě kódu na straně serveru nástroj *nodemon* automaticky restartuje proces Node úplně stejně, jako při místním vývoji. 
 1. Znovu upravte úvodní zprávu v souboru `server.js` a pak soubor uložte.
-1. Aktualizujte prohlížeč nebo klikněte na tlačítko *Aktualizovat*, aby se změny promítly.
+1. Obnovte prohlížeč nebo klikněte na tlačítko *Aktualizovat*, aby se změny projevily.
 
-**Teď máte metodu, jak rychle provádět iteraci kódu a jeho ladění v Kubernetes.** Příště si ukážeme, jak vytvářet a volat druhý kontejner.
+**Teď máte metodu, jak rychle provádět iteraci kódu a jeho ladění v Kubernetes.** Příště si ukážeme, jak vytvořit a volat druhý kontejner.
 
 ## <a name="call-a-service-running-in-a-separate-container"></a>Volání služby spuštěné v samostatném kontejneru
 
@@ -185,25 +185,25 @@ Teď napíšeme kód v projektu `webfrontend`, který vygeneruje požadavek do `
 1. Na začátek souboru `server.js` přidejte tyto řádky kódu:
     ```javascript
     var request = require('request');
-    var propagateHeaders = require('./propagateHeaders');
     ```
 
 3. *Nahraďte* kód obslužné rutiny GET `/api`. Tato rutina při zpracování požadavku zase volá službu `mywebapi` a následně vrátí výsledky oběma službám.
 
     ```javascript
     app.get('/api', function (req, res) {
-        request({
-            uri: 'http://mywebapi',
-            headers: propagateHeaders.from(req) // propagate headers to outgoing requests
-        }, function (error, response, body) {
-            res.send('Hello from webfrontend and ' + body);
-        });
+       request({
+          uri: 'http://mywebapi',
+          headers: {
+             /* propagate the dev space routing header */
+             'azds-route-as': req.headers['azds-route-as']
+          }
+       }, function (error, response, body) {
+           res.send('Hello from webfrontend and ' + body);
+       });
     });
     ```
 
-Všimněte si, jak se v Kubernetes používá zjišťování služby DNS, aby odkaz na službu vypadal takto: `http://mywebapi`. **Ve vývojovém prostředí běží kód stejně jako v produkčním prostředí**.
-
-V předchozí ukázce kódu je použit pomocný modul s názvem `propagateHeaders`. Tento pomocný modul byl do kódu přidaný v okamžiku spuštění `azds prep`. Funkce `propagateHeaders.from()` rozšíří konkrétní hlavičky ze stávajícího objektu http.IncomingMessage do objektu hlaviček odchozího požadavku. Později si ukážeme, jak to týmům pomáhá při společném vývoji.
+Předchozí příklad kódu předává hlavičku `azds-route-as` z příchozího požadavku do odchozího požadavku. Později si ukážeme, jak to týmům pomáhá při společném vývoji.
 
 ### <a name="debug-across-multiple-services"></a>Ladění více služeb
 1. V této fázi byste měli mít spuštěnou službu `mywebapi` s připojeným ladicím programem. Pokud tomu tak není, stiskněte v projektu `mywebapi` klávesu F5.

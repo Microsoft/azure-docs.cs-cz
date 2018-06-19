@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
-ms.openlocfilehash: bde17a47e0e3e70daf52f4c460118c054b7c1152
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 29d843e2752046e8ab66a4f46fcbb212f6fb57c6
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824393"
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Šifrování virtuálního počítače Azure
 Azure Security Center vás upozorní, pokud máte virtuální počítače, které nejsou šifrované. Tyto výstrahy se zobrazují jako upozornění s vysokou závažností. Doporučuje se tyto virtuální počítače zašifrovat.
@@ -61,7 +62,7 @@ Konfigurační skript požadovaných součástí pro Azure Disk Encryption nasta
 
 Když je obsah skriptu uložený, otevřete skript v integrovaném skriptovacím prostředí v PowerShellu:
 
-1. V nabídce Start klikněte na **Cortana**. Vyhledejte **Cortana** PowerShell zadáním řetězce **PowerShell** do textového pole Cortany pro vyhledávání.
+1. Spusťte Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell.
 2. Klikněte pravým tlačítkem na **Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell** a klikněte na **Spustit jako správce**.
 3. V okně **Správce: Integrované skriptovací prostředí (ISE) v prostředí Windows PowerShell** klikněte na **Zobrazit** a potom klikněte na **Zobrazit podokno skriptu**.
 4. Pokud se na pravé straně tohoto okna zobrazí podokno **Příkazy**, zavřete ho kliknutím na **x** v pravém horním rohu. Pokud je text příliš malý, použijte **CTRL+Add** (Add je znak +). Pokud je text příliš velký, použijte **CTRL+Subtract** (Subtract je znak -).
@@ -74,10 +75,10 @@ Měli byste vidět něco podobného jako na následujícím obrázku.
 
 Horní podokno se označuje jako podokno skriptu a dolní podokno se označuje jako konzola. Tyto termíny využijeme dále v tomto článku.
 
-## <a name="run-the-azure-disk-encryption-prerequisites-powershell-command"></a>Spuštění příkazu PowerShellu pro požadované součásti služby Azure Disk Encryption
-Skript pro požadované součásti služby Azure Disk Encryption po spuštění zobrazí výzvu k zadání následujících informací:
+## <a name="run-the-azure-disk-encryption-prerequisites-powershell-script"></a>Spuštění skriptu PowerShellu pro požadované součásti služby Azure Disk Encryption
+Ve skriptu pro požadované součásti služby Azure Disk Encryption je možné zadat následující parametry: 
 
-* **Název skupiny prostředků** – 	Název skupiny prostředků, do kterého chcete vložit Key Vault.  Pokud skupina prostředků se zadaným názvem neexistuje, vytvoří se nová. Pokud už máte skupinu prostředků, kterou chcete použít v tomto předplatném, zadejte název této skupiny prostředků.
+* **Název skupiny prostředků** – Název skupiny prostředků, do které chcete umístit trezor klíčů služby Key Vault.  Pokud skupina prostředků se zadaným názvem neexistuje, vytvoří se nová. Pokud už máte skupinu prostředků, kterou chcete použít v tomto předplatném, zadejte název této skupiny prostředků.
 * **Název pro Key Vault** – Název služby Key Vault, do které se umístí šifrovací klíče. Pokud služba Key Vault se zadaným názvem neexistuje, vytvoří se nová. Pokud už máte službu Key Vault, kterou chcete použít, zadejte název této služby Key Vault.
 * **Umístění** – Umístění služby Key Vault. Ověřte, že Key Vault a virtuální počítače, které se mají šifrovat, jsou ve stejném umístění. Pokud toto umístění neznáte, dále v tomto článku jsou uvedené kroky, které vám ukážou, jak toto umístění zjistit.
 * **Název aplikace Azure Active Directory** – Název aplikace Azure Active Directory, která se použije k zápisu tajných klíčů do služby Key Vault. Pokud aplikace se zadaným názvem neexistuje, vytvoří se nová. Pokud už máte aplikaci Azure Active Directory, kterou chcete použít, zadejte název této aplikace Azure Active Directory.
@@ -92,18 +93,18 @@ Pomocí následujících kroků zašifrujte virtuální počítač Azure:
 1. Pokud jste zavřeli Integrované skriptovací prostředí (ISE) v prostředí PowerShell, otevřete jeho instanci se zvýšenými oprávněními. Pokud Integrované skriptovací prostředí (ISE) v prostředí PowerShell ještě není spuštěné, postupujte podle pokynů uvedených výše v tomto článku. Pokud jste skript zavřeli, otevřete **ADEPrereqScript.ps1** kliknutím na **Soubor** a **Otevřít** a výběrem tohoto skriptu ve složce **c:\AzureADEScript**. Pokud jste tento článek procházeli od začátku, přejděte k následujícímu kroku.
 2. V konzole Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell (dolní podokno Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell) nastavte zadáním **cd c:\AzureADEScript** fokus na umístění skriptu a stiskněte **ENTER**.
 3. Nastavte na počítači zásady spouštění, aby bylo možné skript spustit. V konzole zadejte **Set-ExecutionPolicy Unrestricted** a stiskněte ENTER. Pokud se zobrazí dialogové okno s informacemi o důsledcích změny zásady spouštění, klikněte na **Ano všem** nebo **Ano** (pokud se zobrazí **Ano všem**, vyberte tuto možnost; pokud se nezobrazí **Ano všem**, klikněte na **Ano**).
-4. Přihlaste se ke svému účtu Azure. V konzole zadejte **Connect-AzureRmAccount** a stiskněte **ENTER**. Zobrazí se dialogové okno pro zadání přihlašovacích údajů. (Zkontrolujte, že máte práva měnit virtuální počítače. Pokud tato práva nemáte, nebudete je moct zašifrovat. Pokud si nejste jisti, zeptejte se správce nebo vlastníka předplatného.) Měly by se zobrazit tyto informace: **prostředí**, **účet**, **ID tenanta**, **ID předplatného** a **aktuální účet úložiště**. Zkopírujte **ID předplatného** do Poznámkového bloku. Budete ho potřebovat v kroku 6.
+4. Přihlaste se ke svému účtu Azure. V konzole zadejte **Login-AzureRmAccount** a stiskněte **ENTER**. Zobrazí se dialogové okno pro zadání přihlašovacích údajů. (Zkontrolujte, že máte práva měnit virtuální počítače. Pokud tato práva nemáte, nebudete je moct zašifrovat. Pokud si nejste jisti, zeptejte se správce nebo vlastníka předplatného.) Měly by se zobrazit tyto informace: **prostředí**, **účet**, **ID tenanta**, **ID předplatného** a **aktuální účet úložiště**. Zkopírujte **ID předplatného** do Poznámkového bloku. Budete ho potřebovat v kroku 6.
 5. Zjistěte, k jakému předplatnému patří váš virtuální počítač, a dál zjistěte jeho umístění. Přejděte na adresu [https://portal.azure.com](ttps://portal.azure.com) a přihlaste se.  Na levé straně stránky klikněte na **Virtual Machines**. Zobrazí se seznam vašich virtuálních počítačů a předplatná, ke kterým patří.
 
    ![Virtuální počítače](./media/security-center-disk-encryption/security-center-disk-encryption-fig3.png)
 6. Vraťte se do Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell. Nastavte kontext předplatného, ve kterém skript poběží. V konzole zadejte **Select-AzureRmSubscription –SubscriptionId <ID_předplatného>** (místo **< ID_předplatného>** zadejte aktuální ID předplatného) a stiskněte **ENTER**. Zobrazí se tyto informace: prostředí, **účet**, **ID tenanta**, **ID předplatného** a **aktuální účet úložiště**.
-7. Nyní jste připraveni skript spustit. Klikněte na tlačítko **Spustit skript** nebo stiskněte **F5** na klávesnici.
+7. V příkazovém okně spusťte skript s následujícími parametry: 
 
    ![Spuštění powershellového skriptu](./media/security-center-disk-encryption/security-center-disk-encryption-fig4.png)
-8. Skript vyzve k zadání **resourceGroupName:** Zadejte název *skupiny prostředků*, kterou chcete použít, a stiskněte **ENTER**. Pokud ji nemáte, zadejte název, pod kterým ji chcete vytvořit. Pokud už máte *skupinu prostředků*, kterou chcete použít (například skupinu, ve které je váš virtuální počítač), zadejte název této skupiny prostředků.
-9. Skript vyzve k zadání **keyVaultName:** Zadejte název služby *Key Vault*, kterou chcete použít, a stiskněte ENTER. Pokud ji nemáte, zadejte název, pod kterým ji chcete vytvořit. Pokud už máte službu Key Vault, kterou chcete použít, zadejte název této služby *Key Vault*.
+8. **-resourceGroupName:** Zadejte název *skupiny prostředků*, kterou chcete použít. Pokud ji nemáte, zadejte název, pod kterým ji chcete vytvořit. Pokud už máte *skupinu prostředků*, kterou chcete použít (například skupinu, ve které je váš virtuální počítač), zadejte název této skupiny prostředků.
+9. **-keyVaultName:** Zadejte název *instance služby Key Vault*, kterou chcete použít. Pokud ji nemáte, zadejte název, pod kterým ji chcete vytvořit. Pokud už máte službu Key Vault, kterou chcete použít, zadejte název této služby *Key Vault*.
 10. Skript vyzve k zadání **umístění:** zadejte název umístění, ve kterém je virtuální počítač, který chcete zašifrovat, a stiskněte **ENTER**. Pokud si umístění nepamatujete, přejděte zpátky ke kroku 5.
-11. Skript vyzve k zadání **aadAppName:** Zadejte název aplikace *Azure Active Directory*, kterou chcete použít, a stiskněte **ENTER**. Pokud ji nemáte, zadejte název, pod kterým ji chcete vytvořit. Pokud už máte *aplikaci Azure Active Directory*, kterou chcete použít, zadejte název této *aplikace Azure Active Directory*.
+11. **-aadAppName:** Zadejte název aplikace *Azure Active Directory*, kterou chcete použít. Pokud ji nemáte, zadejte název, pod kterým ji chcete vytvořit. Pokud už máte *aplikaci Azure Active Directory*, kterou chcete použít, zadejte název této *aplikace Azure Active Directory*.
 12. Zobrazí se přihlašovací dialogové okno. Zadejte svoje přihlašovací údaje (ano, už jste se přihlásili, ale teď to musíte udělat znova).
 13. Skript se spustí a po jeho dokončení se zobrazí výzva ke zkopírování hodnot **aadClientID**, **aadClientSecret**, **diskEncryptionKeyVaultUrl** a **keyVaultResourceId**. Zkopírujte všechny tyto hodnoty do schránky a pak je vložte do Poznámkového bloku.
 14. Vraťte se do Integrovaného skriptovacího prostředí (ISE) v prostředí PowerShell, nastavte kurzor na konec posledního řádku a stiskněte **ENTER**.

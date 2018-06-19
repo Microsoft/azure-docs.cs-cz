@@ -1,5 +1,5 @@
 ---
-title: Koncové body služby virtuální sítě Azure | Microsoft Docs
+title: Koncové body služby virtuální sítě Azure | Dokumentace Microsoftu
 description: Zjistěte, jak povolit přímý přístup k prostředkům Azure z virtuální sítě pomocí koncových bodů služby.
 services: virtual-network
 documentationcenter: na
@@ -12,14 +12,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2018
+ms.date: 06/06/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: 001aadc3dee03a9868a2a78e8dfc280d504633e1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f612eb9647bf64a9435b1c667700bf717d445931
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34824682"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby virtuální sítě
 
@@ -31,6 +32,7 @@ Tato funkce je dostupná pro následující služby a oblasti Azure:
 - **Azure SQL Database**: Obecná dostupnost ve všech oblastech Azure
 - **Azure Cosmos DB**: Obecná dostupnost ve všech oblastech Azure 
 - **Azure SQL Data Warehouse**: Verze Preview ve všech oblastech veřejného cloudu Azure
+- **Služby Azure Database for PostgreSQL a Azure Database for MySQL**: Verze Preview v oblastech Azure, kde je k dispozici služba Azure Database
 
 Nejaktuálnější oznámení najdete na stránce [Aktualizace služby Azure Virtual Network](https://azure.microsoft.com/updates/?product=virtual-network).
 
@@ -98,7 +100,7 @@ Jakmile jsou koncové body služby pro konkrétní službu nakonfigurované, ov�
   - Označuje, že se v porovnání s trasami vynuceného tunelování používá přímější připojení ke službě.
 
 >[!NOTE]
-> Trasy koncového bodu služby přepíší všechny trasy BGP nebo UDR pro shodu předpon adresy služby Azure. Další informace o [řešení potíží pomocí efektivních tras](virtual-network-routes-troubleshoot-portal.md#using-effective-routes-to-troubleshoot-vm-traffic-flow)
+> Trasy koncového bodu služby přepíší všechny trasy BGP nebo UDR pro shodu předpon adresy služby Azure. Další informace o [řešení potíží pomocí efektivních tras](diagnose-network-routing-problem.md)
 
 ## <a name="provisioning"></a>Zřizování
 

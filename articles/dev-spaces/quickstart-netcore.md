@@ -1,93 +1,100 @@
 ---
-title: Vytvoření vývojového prostředí Kubernetes v cloudu | Microsoft Docs
+title: Vytvoření vývojového prostoru Kubernetes v cloudu | Microsoft Docs
 titleSuffix: Azure Dev Spaces
 author: ghogen
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 ms.author: ghogen
-ms.date: 05/11/2018
+ms.date: 06/06/2018
 ms.topic: quickstart
-description: Rychlý vývoj v prostředí Kubernetes s kontejnery a mikroslužbami v Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
+description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 279b7a8c20717668c0ff4be541e9168e2d8706fd
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3802e67503fd546ef71b9c26daddc8ef63cf4bd2
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361573"
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34823222"
 ---
-# <a name="quickstart-create-a-kubernetes-development-environment-with-azure-dev-spaces-net-core-and-vs-code"></a>Rychlý start: Vytvoření vývojového prostředí Kubernetes pomocí služby Azure Dev Spaces (.NET Core a VS Code)
+# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>Rychlý start: Vytvoření vývojového prostoru Kubernetes pomocí služby Azure Dev Spaces (.NET Core a VS Code)
 
+V tomto průvodci se naučíte:
 
-[!INCLUDE[](includes/learning-objectives.md)]
+- Nastavit Azure Dev Spaces se spravovaným clusterem Kubernetes v Azure
+- Iterativně vyvíjet kód v kontejnerech pomocí editoru VS Code a příkazového řádku
+- Ladit kód ve vývojovém prostoru z editoru VS Code
 
-[!INCLUDE[](includes/see-troubleshooting.md)]
+> [!Note]
+> **Pokud se někde zaseknete**, podívejte se na článek o [odstraňování potíží](troubleshooting.md) nebo na tuto stránku přidejte komentář. Můžete také zkusit postupovat podle podrobnějšího [kurzu](get-started-netcore.md).
 
-Teď můžete v Azure vytvořit vývojové prostředí založené na systému Kubernetes.
+## <a name="prerequisites"></a>Požadavky
 
-[!INCLUDE[](includes/portal-aks-cluster.md)]
+- Předplatné Azure. Pokud žádné nemáte, můžete si vytvořit [bezplatný účet](https://azure.microsoft.com/free).
+- [Cluster Kubernetes](https://ms.portal.azure.com/#create/microsoft.aks) na platformě Kubernetes 1.9.6 v oblasti Východní USA, Západní Evropa nebo Východní Kanada s povolenou možností **Směrování aplikace HTTP**.
 
-## <a name="install-the-azure-cli"></a>Instalace rozhraní příkazového řádku Azure CLI
-Služba Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Většina konfigurace vývojového prostředí se ukládá do cloudu, aby bylo možné ji sdílet s ostatními uživateli. Nejdřív si stáhněte a spusťte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). 
+  ![Nezapomeňte povolit možnost Směrování aplikace HTTP.](media/common/Kubernetes-Create-Cluster-3.PNG)
 
-> [!IMPORTANT]
-> Pokud už máte rozhraní příkazového řádku Azure nainstalované, ujistěte se, že používáte verzi 2.0.32 nebo vyšší.
+- [Visual Studio Code](https://code.visualstudio.com/download).
 
-[!INCLUDE[](includes/sign-into-azure.md)]
+## <a name="set-up-azure-dev-spaces"></a>Nastavení služby Azure Dev Spaces
 
-[!INCLUDE[](includes/use-dev-spaces.md)]
+1. Nainstalujte si [rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (verzi 2.0.33 nebo vyšší).
+1. Nastavte službu Dev Spaces v clusteru AKS: `az aks use-dev-spaces -g MyResourceGroup -n MyAKS`.
+1. Stáhněte si [rozšíření Azure Dev Spaces](https://aka.ms/get-azds-code) pro VS Code.
+1. Nainstalujte rozšíření: `code --install-extension path-to-downloaded-extension/azds-0.1.1.vsix`.
 
-[!INCLUDE[](includes/install-vscode-extension.md)]
+## <a name="build-and-run-code-in-kubernetes"></a>Sestavení a spuštění kódu v Kubernetes
 
-Při čekání na vytvoření clusteru můžete začít vyvíjet kód.
+1. Stáhněte si ukázkový kód z GitHubu: [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces). 
+1. Změňte adresář na složku webfrontend: `cd dev-spaces/samples/dotnetcore/getting-started/webfrontend`.
+1. Vygenerujte prostředky pro Docker a Helm chart: `azds prep --public`.
+1. Sestavte a spusťte kód v AKS. V okně terminálu spusťte tento příkaz z **kořenové složky kódu** webfrontend: `azds up`.
+1. Ve výstupu konzoly vyhledejte informace o adrese URL, kterou vytvořil příkaz `up`. Bude v tomto tvaru: 
 
-## <a name="create-an-aspnet-core-web-app"></a>Vytvoření webové aplikace ASP.NET Core
-Pokud máte nainstalovanou architekturu [.NET Core](https://www.microsoft.com/net), můžete rychle vytvořit webovou aplikaci ASP.NET Core ve složce s názvem `webfrontend`.
+   `Service 'webfrontend' port 'http' is available at <url>` 
 
-```cmd
-   dotnet new mvc --name webfrontend
-```
+   Tuto adresu URL otevřete v okně prohlížeče. Mělo by se zobrazit načítání webové aplikace. 
 
-Nebo si **stáhněte vzorový kód z GitHubu**. Přejděte na https://github.com/Azure/dev-spaces a vyberte **Clone or Download** (Klonovat nebo stáhnout), abyste úložiště GitHub stáhli do svého místního prostředí. Kód tohoto průvodce je tady: `samples/dotnetcore/getting-started/webfrontend`.
+### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
 
-[!INCLUDE[](includes/azds-prep.md)]
-
-[!INCLUDE[](includes/build-run-k8s-cli.md)]
-
-## <a name="update-a-content-file"></a>Aktualizace souboru obsahu
-Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
-
-1. Najděte soubor `./Views/Home/Index.cshtml` a upravte ho v HTML. Můžete třeba změnit řádek 70, na kterém je `<h2>Application uses</h2>`, třeba takto: `<h2>Hello k8s in Azure!</h2>`
-1. Uložte soubor. Za chvíli se v okně terminálu zobrazí zpráva o aktualizaci souboru ve spuštěném kontejneru.
+1. Najděte požadovaný soubor, například `./Views/Home/Index.cshtml`, a upravte v něm kód HTML. Můžete změnit řádek 70, na kterém je `<h2>Application uses</h2>`, třeba takto: `<h2>Hello k8s in Azure!</h2>`
+1. Uložte soubor. Za chvilku se v okně terminálu zobrazí zpráva o aktualizaci souboru ve spuštěném kontejneru.
 1. Přejděte do prohlížeče a aktualizujte stránku. Na webové stránce by se měl zobrazit aktualizovaný kód HTML.
 
-Co se stalo? Úpravy obsahových souborů jako HTML a CSS nevyžadují rekompilaci ve webové aplikaci .NET Core, aktivní příkaz `azds up` totiž automaticky synchronizuje všechny upravené obsahové soubory do kontejneru běžícího v Azure, takže úpravy obsahu uvidíte okamžitě.
+Co se stalo? Úpravy obsahových souborů jako HTML a CSS nevyžadují rekompilaci ve webové aplikaci .NET Core. Aktivní příkaz `azds up` totiž automaticky synchronizuje všechny upravené soubory obsahu do kontejneru spuštěného v Azure, abyste změny obsahu viděli okamžitě.
 
-## <a name="update-a-code-file"></a>Aktualizace souboru s kódem
+### <a name="update-a-code-file"></a>Aktualizace souboru s kódem
 Aktualizace souborů s kódem je o něco pracnější, protože aplikace .NET Core musí znovu sestavit a vytvořit aktualizované binární soubory aplikace.
 
 1. V okně terminálu stiskněte `Ctrl+C`, abyste zastavili `azds up`.
-1. Otevřete soubor s kódem s názvem `Controllers/HomeController.cs` a upravte zprávu, která zobrazí na stránce O aplikaci: `ViewData["Message"] = "Your application description page.";`
+1. Otevřete soubor s kódem, který se jmenuje `Controllers/HomeController.cs`, a upravte zprávu, která se zobrazí na stránce O aplikaci: `ViewData["Message"] = "Your application description page.";`
 1. Uložte soubor.
 1. V okně terminálu spusťte `azds up`. 
 
 Tento příkaz znovu sestaví image kontejneru a znovu nasadí Helm chart. Pokud chcete vidět, jak se změny kódu projevily v běžící aplikaci, přejděte do nabídky O aplikaci webové aplikace.
 
-
 Existuje ještě *rychlejší způsob* vývoje kódu, který si ukážeme v další části. 
 
-## <a name="debug-a-container-in-kubernetes"></a>Ladění kontejneru v prostředí Kubernetes
+## <a name="debug-a-container-in-kubernetes"></a>Ladění kontejneru v Kubernetes
 
-[!INCLUDE[](includes/debug-intro.md)]
+V této části použijete editor VS Code k přímému ladění kontejneru spuštěného v Azure. Naučíte se také, jak zrychlit cyklus úpravy-spuštění-testování.
 
-[!INCLUDE[](includes/init-debug-assets-vscode.md)]
+![](./media/common/edit-refresh-see.png)
 
+### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>Inicializace prostředků ladění s využitím rozšíření VS Code
+Nejdřív musíte nakonfigurovat projekt kódu tak, aby editor VS Code komunikoval s vývojovým prostorem v Azure. Rozšíření VS Code pro Azure Dev Spaces poskytuje pomocný příkaz pro nastavení konfigurace ladění. 
 
-### <a name="select-the-azds-debug-configuration"></a>Výběr konfigurace AZDS pro ladění
+Otevřete **paletu příkazů** (pomocí nabídky **Zobrazit | Paleta příkazů**) a pomocí automatického dokončování zadejte a vyberte tento příkaz: `Azure Dev Spaces: Create configuration files for connected development`. 
+
+Tím přidáte konfiguraci ladění pro Azure Dev Spaces do složky `.vscode`.
+
+![](./media/common/command-palette.png)
+
+### <a name="select-the-azds-debug-configuration"></a>Výběr konfiguraci AZDS pro ladění
 1. Pokud chcete zobrazit ladění, klikněte na boku editoru VS Code na **panelu aktivit** na ikonu Ladění.
-1. Jako aktivní konfiguraci ladění vyberte **.NET Core Launch (AZDS)**.
+1. Jako aktivní konfiguraci ladění vyberte **.NET Core Launch (AZDS)** (Spustit .NET Core (AZDS)).
 
 ![](media/get-started-netcore/debug-configuration.png)
 
@@ -95,19 +102,20 @@ Existuje ještě *rychlejší způsob* vývoje kódu, který si ukážeme v dal�
 > Pokud na paletě příkazů nevidíte příkazy Azure Dev Spaces, ověřte, že máte nainstalované rozšíření VS Code pro Azure Dev Spaces. Ujistěte se, že pracovní prostor, který jste otevřeli ve VS Code, je složka obsahující soubor azds.yaml.
 
 
-### <a name="debug-the-container-in-kubernetes"></a>Ladění kontejneru v prostředí Kubernetes
-Když chcete v prostředí Kubernetes ladit kód, stiskněte **F5**.
+### <a name="debug-the-container-in-kubernetes"></a>Ladění kontejneru v Kubernetes
+Když chcete v Kubernetes ladit kód, stiskněte **F5**.
 
-Stejně jako u příkazu `up` se synchronizuje kód s vývojovým prostředím a sestaví se kontejner, který se nasadí v prostředí Kubernetes. Tentokrát se ale ladicí program samozřejmě připojí ke vzdálenému kontejneru.
+Stejně jako u příkazu `up` se kód synchronizuje s vývojovým prostorem a sestaví se kontejner, který se nasadí v Kubernetes. Ladicí program se tentokrát samozřejmě připojí ke vzdálenému kontejneru.
 
-[!INCLUDE[](includes/tip-vscode-status-bar-url.md)]
+> [!Tip]
+> Na stavovém řádku editoru VS Code se zobrazí adresa URL, na kterou můžete kliknout.
 
-V serverovém souboru s kódem nastavte zarážku, třeba ve funkci `Index()` ve zdrojovém souboru `Controllers/HomeController.cs`. Aktualizace stránky prohlížeče způsobí aktivaci zarážky.
+V serverovém souboru s kódem nastavte zarážku, třeba ve funkci `Index()` ve zdrojovém souboru `Controllers/HomeController.cs`. Aktualizace stránky v prohlížeči způsobí aktivaci zarážky.
 
-Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., úplně stejně jako při lokálním spuštění kódu.
+Máte plný přístup k informacím o ladění, jako je zásobník volání, místní proměnné, informace o výjimkách apod., stejně jako při lokálním spuštění kódu.
 
-### <a name="edit-code-and-refresh"></a>Úprava kódu a aktualizace
-S aktivním ladicím programem proveďte úpravu kódu. Změňte třeba zprávu na stránce O aplikaci v `Controllers/HomeController.cs`. 
+### <a name="edit-code-and-refresh"></a>Úprava a aktualizace kódu
+V aktivním ladicím programu upravte kód. Můžete třeba změnit zprávu na stránce O aplikaci v `Controllers/HomeController.cs`. 
 
 ```csharp
 public IActionResult About()
@@ -121,13 +129,15 @@ Uložte soubor a v **podokně akcí ladicího programu** klikněte na tlačítko
 
 ![](media/get-started-netcore/debug-action-refresh.png)
 
-Místo opětovného sestavení a nasazení nové image kontejneru po každé provedené změně, což často dlouho trvá, služba Azure Dev Space provádí přírůstkovou rekompilaci kódu v existujícím kontejneru, takže zajišťuje kratší cyklus úprav/ladění.
+Místo opětovného sestavení a nasazení nové image kontejneru po každé provedené změně, což často dlouho trvá, rekompiluje služba Azure Dev Spaces kód po přírůstcích ve stávajícím kontejneru, aby se zrychlil cyklus úprav/ladění.
 
 Aktualizujte webovou aplikaci v prohlížeči a přejděte na stránku O aplikaci. V uživatelském rozhraní by se měla zobrazit vaše upravená zpráva.
 
-**Teď znáte metodu, která umožňuje rychlou iteraci kódu a ladění přímo v prostředí Kubernetes.**
+**Teď máte metodu, jak rychle provádět iteraci kódu a jeho ladění v Kubernetes.**
 
 ## <a name="next-steps"></a>Další kroky
+
+Zjistěte, jak vám může služba Azure Dev Spaces pomoct s vývojem složitějších aplikací používajících více kontejnerů a jak si můžete zjednodušit spolupráci na vývoji díky práci s různými verzemi nebo větvemi kódu v různých prostorech. 
 
 > [!div class="nextstepaction"]
 > [Práce s více kontejnery a týmový vývoj](get-started-netcore.md#call-a-service-running-in-a-separate-container)
