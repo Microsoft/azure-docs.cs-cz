@@ -419,16 +419,13 @@
         - name: HDInsight ve virtuální síti Azure
           href: ../hdinsight-extend-hadoop-virtual-network.md
           maintainContext: true
-        - name: Připojení HDInsightu k místní síti
+        - name: Připojení služby HDInsight k místní síti
           href: ../connect-on-premises-network.md
           maintainContext: true
-    - name: Monitorování pomocí OMS
+    - name: Monitorování s využitím Log Analytics
       items:
         - name: Použití Azure Log Analytics
           href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: Řídicí panely pro konkrétní clustery
-          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
           maintainContext: true
         - name: Použití dotazů se službou Log Analytics
           href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md

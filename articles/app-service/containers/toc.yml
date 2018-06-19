@@ -29,13 +29,13 @@
       items:
         - name: .NET Core s SQL DB
           href: tutorial-dotnetcore-sqldb-app.md
-        - name: Ruby s MySQL
-          href: tutorial-ruby-mysql-app.md
+        - name: Ruby s Postgresem
+          href: tutorial-ruby-postgres-app.md
         - name: PHP s MySQL
           href: tutorial-php-mysql-app.md
         - name: Node.js s MongoDB
           href: tutorial-nodejs-mongodb-app.md
-        - name: Vlastní kontejner Pythonu s PostgreSQL
+        - name: Vlastní kontejner Pythonu s Postgresem
           href: tutorial-docker-python-postgresql-app.md
     - name: Vícekontejnerová aplikace
       href: tutorial-multi-container-app.md

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 6871127ac138fb0113af73ca5222e3e2c2f99d7e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ac4298b6a386ca40d5fd054ba8712b45c61f653d
+ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32202535"
+ms.lasthandoff: 06/18/2018
+ms.locfileid: "36205616"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Volání Microsoft Graph API z jednoho jazyka JavaScript stránky aplikace (SPA)
 
@@ -31,7 +31,7 @@ Tato příručka ukazuje, jak můžete JavaScript aplikace pro jednu stránku (S
 ![Jak funguje ukázková aplikace generované tímto průvodcem](media/active-directory-develop-guidedsetup-javascriptspa-introduction/javascriptspa-intro.png)
 
 <!--start-collapse-->
-## <a name="more-information"></a>Další informace
+### <a name="more-information"></a>Další informace
 
 Ukázkové aplikace vytvořené v této příručce umožňuje SPA JavaScript do dotazu Microsoft Graph API nebo webového rozhraní API, které přijímá tokeny z koncového bodu v2 Azure Active Directory. Pro tento scénář, poté, co uživatel přihlásí je token přístupu požadovaná a přidat na požadavky HTTP přes autorizační hlavičky. Získání tokenu a obnovení, jsou zpracovávány pomocí knihovny Microsoft ověřování (MSAL).
 

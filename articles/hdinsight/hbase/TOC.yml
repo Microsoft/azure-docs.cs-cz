@@ -249,15 +249,10 @@
           href: apache-hbase-replication.md
         - name: Nastavení zálohování a replikace pro HBase a Phoenix
           href: apache-hbase-backup-replication.md
-    - name: Monitorování pomocí OMS
+    - name: Monitorování s využitím Log Analytics
       items:
         - name: Použití Azure Log Analytics
           href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
-          maintainContext: true
-        - name: Monitorování HBase pomocí OMS
-          href: apache-hbase-monitor-with-oms.md
-        - name: Řídicí panely pro konkrétní clustery
-          href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
           maintainContext: true
         - name: Použití dotazů se službou Log Analytics
           href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md

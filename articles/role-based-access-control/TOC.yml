@@ -1,5 +1,5 @@
-- name: Přehled správy přístupu
-  href: manage-access-to-azure-resources.md
+- name: Dokumentace k řízení přístupu na základě role
+  href: index.yml
   items: null
 - name: Přehled
   items:
@@ -36,6 +36,7 @@
     - name: Podmíněný přístup pro správu Azure
       href: conditional-access-azure-management.md
 - name: Návody
+  expanded: true
   items:
     - name: Správa přístupu
       items:

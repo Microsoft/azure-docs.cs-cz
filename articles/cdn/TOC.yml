@@ -16,6 +16,8 @@
   items:
     - name: Přidání Azure CDN do webové aplikace
       href: cdn-add-to-web-app.md
+    - name: Přístup k objektům blob pomocí vlastní domény přes HTTPS
+      href: cdn-storage-custom-domain-https.md
     - name: Přidání vlastní domény
       href: cdn-map-content-to-custom-domain.md
     - name: Konfigurace HTTPS pro vlastní doménu

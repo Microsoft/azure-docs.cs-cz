@@ -17,6 +17,38 @@
           tocHref: /java/azure/spring-framework/
           topicHref: /java/azure/spring-framework/
 - name: Azure
+  tocHref: /powershell/
+  topicHref: /azure/index
+  items:
+    - name: Key Vault
+      tocHref: /powershell/module/
+      topicHref: /azure/key-vault/
+      items:
+        - name: Rutiny PowerShellu pro Key Vault
+          tocHref: /powershell/module/azurerm.keyvault/
+          topicHref: /powershell/module/azurerm.keyvault/
+- name: Azure
+  tocHref: /cli/
+  topicHref: /azure/index
+  items:
+    - name: Key Vault
+      tocHref: /cli/azure/
+      topicHref: /azure/key-vault/
+      items:
+        - name: Reference k rozhraní příkazového řádku služby Key Vault
+          tocHref: /cli/azure/keyvault/
+          topicHref: /azure/key-vault/
+          items:
+            - name: Certifikáty
+              tocHref: /cli/azure/keyvault/certificate
+              topicHref: /azure/key-vault/
+            - name: Klíče
+              tocHref: /cli/azure/keyvault/key
+              topicHref: /azure/key-vault/
+            - name: Tajné kódy
+              tocHref: /cli/azure/keyvault/secret
+              topicHref: /azure/key-vault/
+- name: Azure
   tocHref: /sccm/
   topicHref: /azure/index
   items:
