@@ -1,4 +1,4 @@
-# [Základy Azure IoT](../iot-fundamentals/index.yml)
+# [Základy Azure IoT](/azure/iot-fundamentals)
 # [Dokumentace k akcelerátorům řešení IoT](index.md)
 
 # Přehled
@@ -94,10 +94,10 @@
 # Referenční informace
 ## [Referenční příručka pro vývojáře](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 ## [Průvodce řešením potíží pro vývojáře](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
-## [Architektura zabezpečení](iot-security-architecture.md)
-## [Osvědčené postupy zabezpečení](iot-security-best-practices.md)
-## [Zabezpečení nasazení IoT](iot-accelerators-security-deployment.md)
-## [Zabezpečení od počátku](securing-iot-ground-up.md)
+## [Zabezpečení od počátku](/azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-accelerators/rc/rc)
+## [Osvědčené postupy zabezpečení](/azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-accelerators/rc/rc)
+## [Architektura zabezpečení](/azure/iot-fundamentals/iot-security-architecture?context=azure/iot-accelerators/rc/rc)
+## [Zabezpečení nasazení IoT](/azure/iot-fundamentals/iot-security-deployment?context=azure/iot-accelerators/rc/rc)
 
 # Související
 ## Řešení 

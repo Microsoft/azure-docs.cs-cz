@@ -1,4 +1,4 @@
-# [Základy Azure IoT](../iot-fundamentals/index.yml)
+# [Základy Azure IoT](/azure/iot-fundamentals)
 # [Dokumentace ke službě IoT Hub](index.yml)
 
 # Přehled
@@ -84,10 +84,10 @@
 ### [Použití IoTHubClient](iot-hub-device-sdk-c-iothubclient.md)
 ### [Použití serializátoru](iot-hub-device-sdk-c-serializer.md)
 
-## [Zabezpečení od počátku](iot-hub-security-ground-up.md)
-## [Osvědčené postupy zabezpečení](iot-hub-security-best-practices.md)
-## [Architektura zabezpečení](iot-hub-security-architecture.md)
-## [Zabezpečení nasazení IoT](iot-hub-security-deployment.md)
+## [Zabezpečení od počátku](/azure/iot-fundamentals/iot-security-ground-up?context=azure/iot-hub/rc/rc)
+## [Osvědčené postupy zabezpečení](/azure/iot-fundamentals/iot-security-best-practices?context=azure/iot-hub/rc/rc)
+## [Architektura zabezpečení](/azure/iot-fundamentals/iot-security-architecture?context=azure/iot-hub/rc/rc)
+## [Zabezpečení nasazení IoT](/azure/iot-fundamentals/iot-security-deployment?context=azure/iot-hub/rc/rc)
 ## Zabezpečení pomocí certifikátů webu X.509
 ### [Přehled zabezpečení pomocí certifikátu webu X.509](iot-hub-x509ca-overview.md)
 #### [Koncepty zabezpečení pomocí certifikátu webu X.509](iot-hub-x509ca-concept.md)

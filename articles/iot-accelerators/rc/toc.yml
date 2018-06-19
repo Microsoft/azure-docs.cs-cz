@@ -1,0 +1,11 @@
+- name: Azure
+  tocHref: /azure/
+  topicHref: /azure/index
+  items:
+    - name: Internet věcí
+      tocHref: /azure/iot-fundamentals/
+      topicHref: /azure/iot-fundamentals/
+      items:
+        - name: Akcelerátory řešení IoT
+          tocHref: /azure/iot-fundamentals/
+          topicHref: /azure/iot-accelerators/

@@ -17,6 +17,7 @@
 ### [Části šablon](resource-group-authoring-templates.md)
 #### [Parametry](resource-manager-templates-parameters.md)
 #### [Proměnné](resource-manager-templates-variables.md)
+#### [Functions](resource-group-authoring-templates.md#functions)
 #### [Prostředky](resource-manager-templates-resources.md)
 #### [Výstupy](resource-manager-templates-outputs.md)
 ### [Propojené a vnořené šablony](resource-group-linked-templates.md)
