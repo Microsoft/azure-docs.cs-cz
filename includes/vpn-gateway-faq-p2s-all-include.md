@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/04/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 9522e1f56c7aa8ce8fbe2b5b7b04f5482738342c
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: f18e94b6f788609dc5a0466e9d8ffa0c02056b1e
+ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236674"
+ms.lasthandoff: 06/15/2018
+ms.locfileid: "35678051"
 ---
 ### <a name="supportedclientos"></a>Které klientské operační systémy je možné používat s připojeními typu Point-to-Site?
 
@@ -21,14 +21,13 @@ Podporovány jsou následující operační systémy:
 
 * Windows 7 (32bitové a 64bitové verze)
 * Windows Server 2008 R2 (pouze 64bitové verze)
-* Windows 8 (32bitové a 64bitové verze)
 * Windows 8.1 (32bitové a 64bitové verze)
 * Windows Server 2012 (pouze 64bitové verze)
 * Windows Server 2012 R2 (pouze 64bitové verze)
 * Windows Server 2016 (pouze 64bitové verze)
 * Windows 10
-* Verze systému Mac OS X 10.11 (El Capitan)
-* Verze systému Mac OS X 10.12 (Sierra)
+* Mac OS X verze 10.11 (El Capitan)
+* Mac OS X verze 10.12 (Sierra)
 * Linux (StrongSwan)
 * iOS
 
@@ -74,28 +73,28 @@ Ne. Pro SSTP můžete použít jenom nativního klienta VPN v systému Windows a
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Podporuje Azure IKEv2 VPN s Windows?
 
-Protokol IKEv2 je podporován v systému Windows 10 a Server 2016. Chcete-li používat protokol IKEv2, musí však instalovat aktualizace a nastavte hodnotu klíče registru místně. Verze operačního systému starší než Windows 10 nepodporuje a můžou používat jenom SSTP.
+IKEv2 se podporuje v systémech Windows 10 a Server 2016. Pokud ale chcete používat IKEv2, musíte nainstalovat aktualizace a nastavit hodnotu klíče registru v místním prostředí. Verze operačního systému starší než Windows 10 se nepodporují a mohou používat jenom SSTP.
 
-Příprava pro IKEv2 Windows 10 nebo Server 2016:
+Postup přípravy systému Windows 10 nebo Server 2016 na IKEv2:
 
 1. Nainstalujte aktualizaci.
 
-  | Verze operačního systému | Datum | Číslo nebo odkaz |
+  | Verze operačního systému | Datum | Číslo/odkaz |
   |---|---|---|---|
   | Windows Server 2016<br>Windows 10 verze 1607 | 17. ledna 2018 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
-  | Verze systému Windows 10 1703 | 17. ledna 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+  | Windows 10 verze 1703 | 17. ledna 2018 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
   |  |  |  |  |
 
-2. Nastavte hodnotu klíče registru. Vytvořit nebo nastavit klíč "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload" REG_DWORD v registru na 1.
+2. Nastavte hodnotu klíče registru. Vytvořte nebo nastavte klíč REG_DWORD HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload v registru na hodnotu 1.
 
-### <a name="what-happens-when-i-configure-both-sstp-and-ikev2-for-p2s-vpn-connections"></a>Co se stane, když konfigurace SSTP a IKEv2 pro připojení P2S VPN?
+### <a name="what-happens-when-i-configure-both-sstp-and-ikev2-for-p2s-vpn-connections"></a>Co se stane, když se pro připojení P2S VPN nakonfiguruje SSTP i IKEv2?
 
-Když konfigurujete SSTP a IKEv2 ve smíšeném prostředí (tvořený zařízení s Windows a Mac), klient VPN ve Windows se vždy pokusí nejdříve tunelového propojení protokolu IKEv2, ale použije místo toho SSTP Pokud připojení IKEv2 není úspěšná. MacOSX připojí pouze prostřednictvím protokolu IKEv2.
+Když nakonfigurujete SSTP a IKEv2 ve smíšeném prostředí (které se skládá ze zařízení se systémy Windows a Mac), klient VPN systému Windows vždycky nejdřív zkusí využít tunel IKEv2, ale pokud připojení IKEv2 není úspěšné, vrátí se k SSTP. MacOSX se bude připojovat jenom prostřednictvím protokolu IKEv2.
 
 ### <a name="other-than-windows-and-mac-which-other-platforms-does-azure-support-for-p2s-vpn"></a>Které další platformy (mimo Windows a Mac) Azure podporuje pro P2S VPN?
 
 Azure pro P2S VPN podporuje pouze systém Windows a Mac.
 
-### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Už mám nasazenou Azure VPN Gateway. Můžete povolit RADIUS nebo IKEv2 VPN na něm?
+### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Už mám nasazenou Azure VPN Gateway. Můžu na ní povolit RADIUS, případně IKEv2 VPN?
 
-Ano, můžete povolit tyto nové funkce na již nasazené Gateway pomocí prostředí Powershell nebo portálu Azure za předpokladu, že podporuje SKU brány, kterou používáte, RADIUS nebo IKEv2. Například základní SKU brány VPN nepodporuje, RADIUS nebo IKEv2.
+Ano, tyto funkce můžete na už nasazených bránách povolit pomocí PowerShellu nebo webu Azure Portal za předpokladu, že použitá jednotka SKU brány podporuje RADIUS a/nebo IKEv2. Například SKU VPN Gateway Basic nepodporuje RADIUS ani IKEv2.

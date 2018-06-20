@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 83711115-1c4f-4dd7-907b-3da24b37c89e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 7fca1c781ddc5ba62b094838eed83322e53ba3d9
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 4d262770dda0f6f70d2c5d8ea2a3095369a56b87
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899362"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218026"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>Kurz: Azure Active Directory integrace s Zscaler privátní přístup (ZPA)
 

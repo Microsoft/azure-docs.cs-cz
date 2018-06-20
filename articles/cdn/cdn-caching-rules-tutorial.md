@@ -1,6 +1,6 @@
 ---
 title: Kurz – Nastavení pravidel ukládání do mezipaměti v Azure CDN | Microsoft Docs
-description: V tomto kurzu nastavíte globální a vlastní pravidlo ukládání do mezipaměti v Azure CDN.
+description: V tomto kurzu nastavíte globální pravidlo ukládání do mezipaměti v Azure CDN a vlastní pravidlo ukládání do mezipaměti.
 services: cdn
 documentationcenter: ''
 author: dksimpson
@@ -14,11 +14,12 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 4f586c47552c9c2bfa807120f99eb6cf170b5788
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a4b5a6a44fe9271f6ff9627c1c5623f0031f23ca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608963"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>Kurz: Nastavení pravidel ukládání do mezipaměti v Azure CDN
 

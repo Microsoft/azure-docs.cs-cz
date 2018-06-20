@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 5cf80d4e-6e8b-48ec-81c8-27872af5e5d5
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 666e7efeb7b541d9f4c760ad92e8d9247ac1afc8
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 6f350daa58ca26654d74054b64bd0f6a7da93dc9
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899124"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224247"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tidemark"></a>Kurz: Azure Active Directory integrace s Tidemark
 

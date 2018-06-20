@@ -15,11 +15,12 @@ ms.workload: ''
 ms.date: 10/30/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: dbd6d050de0c44f3c6e9b6adcf3679bfab1cbe2c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6c4e2dab06309223aaff462ee7725807afa80cb1
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602444"
 ---
 # <a name="deny-hybrid-use-benefit"></a>Odepření zvýhodněného hybridního využití
 
@@ -66,7 +67,7 @@ az policy definition create --name 'deny-hybrid-use-benefit' --display-name 'Den
 az policy assignment create --name <assignmentname> --scope <scope> --policy "deny-hybrid-use-benefit"
 ```
 
-### <a name="clean-up-azure-cli-deployment"></a>Vyčištění nasazení Azure CLI
+### <a name="clean-up-azure-cli-deployment"></a>Vymazání nasazení Azure CLI
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
@@ -76,4 +77,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další ukázkové šablony pro Azure Policy najdete v tématu [Šablony pro Azure Policy](../json-samples.md).
+- Další příklady najdete v [Ukázkách Azure Policy](../json-samples.md).

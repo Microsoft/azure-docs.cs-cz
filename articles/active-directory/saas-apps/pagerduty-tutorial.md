@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 0410456a-76f7-42a7-9bb5-f767de75a0e0
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 87ac0b0ceb6790b91017b1a74825fc192d3dcf52
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 37409ee72591d943a834ff38f077a002a1724ab9
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901778"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215388"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Kurz: Azure Active Directory integrace s PagerDuty
 

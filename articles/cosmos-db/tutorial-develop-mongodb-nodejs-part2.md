@@ -2,24 +2,22 @@
 title: Kurz k MongoDB, Angular a Node pro Azure – Část 2 | Dokumentace Microsoftu
 description: Druhá část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: ''
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 9d3c3209807a201f11d4d0a4ddd905f332a3951f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: b35f003c18e19eafd3dfa9988409ceacb44e3bc4
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798062"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-2-create-a-nodejs-express-app-with-the-angular-cli"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – Část 2: Vytvoření aplikace Node.js Express pomocí Angular CLI 
 
@@ -65,10 +63,10 @@ V tomto kurzu budete také potřebovat:
 
 ## <a name="use-the-angular-cli-to-create-a-new-project"></a>Vytvoření nového projektu pomocí Angular CLI
 
-1. Na příkazovém řádku přejděte do složky, ve které chcete vytvořit nový projekt, a spusťte následující příkaz. Tento příkaz vytvoří novou složku a projekt angular-cosmosdb a nainstaluje komponenty Angular požadované pro novou aplikaci. Kromě toho nainstaluje zdrojový kód ve složce src/client (-sd src/client), použije minimální instalaci (--minimal) a určí, že projekt používá Sass, což je syntax podobná šablonám stylů CSS (pomocí příznaku --style scss).
+1. Na příkazovém řádku přejděte do složky, ve které chcete vytvořit nový projekt, a spusťte následující příkaz. Tento příkaz vytvoří novou složku a projekt angular-cosmosdb a nainstaluje komponenty Angular požadované pro novou aplikaci. Použije minimální instalaci (--minimal) a určí, že projekt používá Sass, což je syntax podobná šablonám stylů CSS (pomocí příznaku --style scss).
 
     ```bash
-    ng new angular-cosmosdb -sd src/client --minimal --style scss
+    ng new angular-cosmosdb --minimal --style scss
     ```
 
 2. Po dokončení příkazu změňte adresář na složku src/client.
@@ -151,11 +149,9 @@ V tomto kurzu budete také potřebovat:
 
 7. Uložte všechny upravené soubory. 
 
-8. Ve Visual Studio Code klikněte na tlačítko **Ladit** ![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png), klikněte na tlačítko ozubeného kola ![Tlačítko ozubeného kola ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png) a pak vyberte **Node.js** pro vytvoření konfigurace.
+8. Ve Visual Studio Code klikněte na tlačítko **Ladit** ![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) a klikněte na tlačítko ozubeného kola ![Tlačítko ozubeného kola ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/gear-button.png). Ve Visual Studio Code se otevře nový soubor launch.js.
 
-   Ve Visual Studio Code se otevře nový soubor launch.js.
-
-8. Na řádku 11 souboru launch.json změňte `"program": "${file}"` na `"program": "${workspaceRoot}/src/server/index.js"` a uložte soubor.
+8. Na řádku 11 souboru launch.json změňte `"${workspaceFolder}\\server"` na `"program": "${workspaceRoot}/src/server/index.js"` a uložte soubor.
 
 9. Kliknutím na tlačítko **Spustit ladění** ![Ikona Spustit ladění ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/start-debugging-button.png) spusťte aplikaci.
 

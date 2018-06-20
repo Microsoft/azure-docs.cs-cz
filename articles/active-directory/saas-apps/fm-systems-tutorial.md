@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: f78c58c5-6e98-458b-8991-78624a245665
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: e7b28813465bbd265877df26d09529283c84e466
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d089e35e28c466f91c550a41898731f683bf5033
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35912780"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36216327"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>Kurz: Azure Active Directory integrace s FM:Systems
 

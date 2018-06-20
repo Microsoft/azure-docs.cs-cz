@@ -15,11 +15,12 @@ ms.workload: ''
 ms.date: 04/27/2018
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 54880ec79d0530d952c81696da0d4c1d55cba128
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 470adb5f27c8a5318197c100a8f973319d9c5001
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602427"
 ---
 # <a name="require-data-lake-store-encryption"></a>Vyžadování šifrování Data Lake Store
 
@@ -91,4 +92,4 @@ az policy assignment delete --name "Data Lake Store encryption" --resource-group
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další ukázkové šablony pro Azure Policy najdete v tématu [Šablony pro Azure Policy](../json-samples.md).
+- Další příklady najdete v [Ukázkách Azure Policy](../json-samples.md).

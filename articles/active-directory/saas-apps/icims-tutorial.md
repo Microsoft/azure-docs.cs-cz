@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 72dbd649-e4b1-4d72-ad76-636d84922596
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 2b7a3c033ab54bb31b28809b69c150b00742fb78
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 4a00815b682f2592799c46687ea429d8e24138e2
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899300"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212287"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-icims"></a>Kurz: Azure Active Directory integrace s ICIMS
 

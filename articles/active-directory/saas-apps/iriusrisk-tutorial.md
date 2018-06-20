@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d2c854d5-101d-4d67-80e0-87749e1a0352
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: jeedes
-ms.openlocfilehash: a91d800caaaccab764d2e9918968ff0bcdc25304
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 00425c5cbc34f00aa25c5d88a6d175d235afe6fe
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898968"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>Kurz: Azure Active Directory integrace s IriusRisk
 

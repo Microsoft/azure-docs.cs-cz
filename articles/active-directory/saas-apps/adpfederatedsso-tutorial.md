@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7be5331b-0481-48f7-9d6b-619dfec657e1
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: jeedes
-ms.openlocfilehash: efd8e5457eaaf8774f3e7c9fcffa76fc43bb33de
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7e7ecce9129f3bf9f70a2ba153ba6ba47bd27731
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901615"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36209880"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>Kurz: Azure Active Directory integrace s ADP
 

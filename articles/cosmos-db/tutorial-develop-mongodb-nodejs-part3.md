@@ -2,24 +2,22 @@
 title: Kurz k MongoDB, Angular a Node pro Azure – Část 3 | Dokumentace Microsoftu
 description: Třetí část série kurzů týkající se vytvoření aplikace MongoDB s Angular a Node postavené na službě Azure Cosmos DB s použitím stejných rozhraní API, jako používáte pro MongoDB.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
 editor: ''
-ms.assetid: ''
 ms.service: cosmos-db
-ms.workload: ''
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: de645f46a889ba05fc54b1c5d2b9da64393d348e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: eba96be567094a3e2e3977f505d4e4a67f0b5cea
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798300"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-3-build-the-ui-with-angular"></a>Vytvoření aplikace MongoDB s Angular a službou Azure Cosmos DB – Část 3: Vytvoření uživatelského rozhraní pomocí Angular
 
@@ -55,56 +53,20 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
     V okně terminálu se zobrazí potvrzení nových komponent.
 
-    ```bash
-    installing component
-      create src\client\app\heroes.component.ts
-      update src\client\app\app.module.ts 
-    ```
+    ![Instalace komponenty hero](./media/tutorial-develop-mongodb-nodejs-part3/install-heros-component.png)
 
     Podívejme se na vytvořené a nahrané soubory. 
 
-3. Ve Visual Studio Code v podokně **Průzkumník** přejděte do složky **src\client\app** a otevřete nový soubor **heroes.component.ts** vytvořený v kroku 2. Tento soubor komponenty TypeScript byl vytvořený předchozím příkazem.
+3. Ve Visual Studio Code v podokně **Průzkumník** přejděte do složky **src\app** a otevřete nový soubor **heroes.component.ts** generovaný do složky aplikace. Tento soubor komponenty TypeScript byl vytvořený předchozím příkazem.
 
     > [!TIP]
     > Pokud se složka aplikace ve Visual Studio Code nezobrazuje, stisknutím kombinace kláves CMD + SHIFT + P na Macu nebo Ctrl + Shift + P ve Windows otevřete Paletu příkazů a zadejte *Reload Window* (Znovu načíst okno) pro převzetí změny systému.
-
-    ![Otevření souboru heroes.component.ts](./media/tutorial-develop-mongodb-nodejs-part3/open-folder.png)
 
 4. Ve stejné složce otevřete soubor **app.module.ts** a všimněte si, že na řádku 5 se importovala komponenta `HeroesComponent`, která se také přidala k deklaracím na řádku 10.
 
     ![Otevření souboru app.module.ts](./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png)
 
-    Když teď máte komponentu Heroes, vytvořte nový soubor pro její kód HTML. Vzhledem k tomu, že jsme vytvořili minimální aplikaci, by kód HTML měl být ve stejném souboru jako TypeScript, ale my je chceme rozdělit a vytvořit samostatný soubor.
-
-5. V podokně **Průzkumník** klikněte pravým tlačítkem na složku **app**, klikněte na **Nový soubor** a pojmenujte nový soubor *heroes.component.html*.
-
-6. V souboru **heroes.component.ts** odstraňte řádky 5 až 9 
-
-    ```ts
-    template: `
-        <p>
-          heroes Works!
-        </p>
-      `,
-      ```
-      a nahraďte je kódem
-  
-    ```ts
-    templateUrl: './heroes.component.html',
-    ```
-
-    pro přidání reference na nový soubor HTML.
- 
-    > [!TIP]
-    > K urychlení vývoje můžete použít rozšíření a fragmenty kódu Angular Essentials pro Visual Studio Code od Johna Papy. 
-    > 1. Klikněte na tlačítko **Rozšíření** ![Tlačítko Rozšíření ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/extensions-button.png).
-    > 2. Do vyhledávacího pole zadejte *angular essentials*.
-    > 3. Klikněte na **Nainstalovat**. 
-    > 4. Klikněte na tlačítko **Znovu načíst**, aby se použila nová rozšíření.
-    > Případně si rozšíření stáhněte z adresy [http://jpapa.me/angularessentials](http://jpapa.me/angularessentials). 
-    > ![Rozšíření Angular Essentials](./media/tutorial-develop-mongodb-nodejs-part3/angular-essentials-extension.png)
-
-7. Přejděte zpět do souboru **heroes.component.html** a zkopírujte do něj tento kód. Element `<div>` je kontejner pro celou stránku. Uvnitř kontejneru je seznam hrdinů, který potřebujeme vytvořit tak, aby se hrdina po kliknutí vybral a bylo možné ho upravit nebo odstranit v uživatelském rozhraní. Dále v kódu HTML máme několik stylů, abyste věděli, který hrdina je vybraný. Je tam také oblast pro úpravy, abyste mohli přidat nového hrdinu nebo upravit existujícího. 
+5. Přejděte zpět do souboru **heroes.component.html** a zkopírujte do něj tento kód. Element `<div>` je kontejner pro celou stránku. Uvnitř kontejneru je seznam hrdinů, který potřebujeme vytvořit tak, aby se hrdina po kliknutí vybral a bylo možné ho upravit nebo odstranit v uživatelském rozhraní. Dále v kódu HTML máme několik stylů, abyste věděli, který hrdina je vybraný. Je tam také oblast pro úpravy, abyste mohli přidat nového hrdinu nebo upravit existujícího. 
 
     ```html
     <div>
@@ -143,7 +105,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     </div>
     ```
 
-8. Když teď máme hotový kód HTML, potřebujeme ho přidat do souboru **heroes.component.ts**, abychom mohli s šablonou interagovat. Níže uvedený nový kód přidaný do souboru **heroes.component.ts** přidá šablonu do našeho souboru komponenty. Přidal se konstruktor, který získá několik hrdinů a inicializuje komponentu služby hero, která získá všechna data. Tento kód také přidává potřebné metody pro zpracování událostí v uživatelském rozhraní. Následující kód můžete zkopírovat a nahradit jím stávající kód v souboru **heroes.component.ts**. 
+7. Když teď máme hotový kód HTML, potřebujeme ho přidat do souboru **heroes.component.ts**, abychom mohli s šablonou interagovat. Následující kód přidá šablonu do souboru komponenty. Přidal se konstruktor, který získá několik hrdinů a inicializuje komponentu služby hero, která získá všechna data. Tento kód také přidává potřebné metody pro zpracování událostí v uživatelském rozhraní. Následující kód můžete zkopírovat a nahradit jím stávající kód v souboru **heroes.component.ts**. Zobrazení chyb v oblastech Hero a HeroService je očekávané, protože odpovídající komponenty nejsou ještě naimportovány. Tyto chyby opravíte v další části. 
 
     ```ts
     import { Component, OnInit } from '@angular/core';
@@ -151,6 +113,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     @Component({
       selector: 'app-heroes',
       templateUrl: './heroes.component.html'
+        styleUrls: ['./heroes.component.scss']
     })
     export class HeroesComponent implements OnInit {
       addingHero = false;
@@ -210,7 +173,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     }
     ```
 
-9. V **Průzkumníku** otevřete soubor **app/app.module.ts** a aktualizujte řádky 13 (na konci přidejte čárku) a 14 pro přidání importu modulu `FormsModule`. Část importování by teď měla vypadat následovně:
+8. V **Průzkumníku** otevřete soubor **app/app.module.ts** a aktualizujte sekci imports pro přidání importu modulu `FormsModule`. Sekce importu by teď měla vypadat následovně:
 
     ```
     imports: [
@@ -219,7 +182,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
     ],
     ```
 
-10. Na řádku 3 přidejte import nového modulu FormsModule. 
+9. V souboru **app/app.module.ts** přidejte na řádku 3 import nového modulu FormsModule. 
 
     ```
     import { BrowserModule } from '@angular/platform-browser';
@@ -229,7 +192,7 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
 ## <a name="use-css-to-set-the-look-and-feel"></a>Nastavení vzhledu a chování pomocí šablon stylů CSS
 
-1. V podokně Průzkumník otevřete soubor **src/client/styles.scss**.
+1. V podokně Průzkumník otevřete soubor **src/styles.scss**.
 
 2. Do souboru **styles.scss** zkopírujte následující kód a nahraďte jím stávající obsah souboru.
 
@@ -392,34 +355,34 @@ Před zahájením této části kurzu se ujistěte, že jste dokončili kroky v 
 
 Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit výchozí komponenty v souboru **app.component.ts**.
 
-1. V podokně Průzkumník otevřete soubor **client/app/app.component.ts**.
-
-2. Na řádcích 6 až 8 změňte nadpis na Heroes a pak přidejte název komponenty, kterou jsme vytvořili v souboru **heroes.components.ts** (app-heroes) pro přidání reference na tuto novou komponentu. Část template by teď měla vypadat následovně: 
+1. V podokně Průzkumník otevřete soubor **/app/app.component.ts**, změňte nadpis na Heroes a pak přidejte název komponenty, kterou jsme vytvořili v souboru **heroes.components.ts** (app-heroes) pro přidání reference na tuto novou komponentu. Obsah souboru by teď měl vypadat takto: 
 
     ```ts
-    template: `
+    import { Component } from '@angular/core';
+
+    @Component({
+      selector: 'app-root',
+      templateUrl: './app.component.html',
+      styleUrls: ['./app.component.scss'],
+      template: `
       <h1>Heroes</h1>
       <div class="header-bar"></div>
       <app-heroes></app-heroes>
-    `,
+    `
+    })
+    export class AppComponent {
+      title = 'app';
+    }
+
     ```
 
-3. V souboru **heroes.components.ts** jsou další komponenty, na které odkazujeme, například komponenta Hero, takže potřebujeme vytvořit i ty. Na příkazovém řádku Angular CLI vytvořte model hero a soubor **hero.ts** pomocí následujícího příkazu, kde g = generovat, cl = třída a hero = název třídy.
+2. V souboru **heroes.components.ts** jsou další komponenty, na které odkazujeme, například komponenta Hero, takže potřebujeme vytvořit i ty. Na příkazovém řádku Angular CLI vytvořte model hero a soubor **hero.ts** pomocí následujícího příkazu, kde g = generovat, cl = třída a hero = název třídy.
 
     ```bash
     ng g cl hero
     ```
 
-    V okně terminálu se zobrazí potvrzení nové třídy.
-
-    ```bash
-    installing class
-    create src\client\app\hero.ts
-    ```
-
-4. V podokně Průzkumník otevřete soubor **src\client\app\hero.ts**.
-
-5. V souboru **hero.ts** nahraďte obsah následujícím kódem, který přidá třídu Hero s ID, jménem (name) a slavným výrokem (saying). 
+3. V podokně Průzkumník otevřete soubor **src\app\hero.ts**. V souboru **hero.ts** nahraďte obsah následujícím kódem, který přidá třídu Hero s ID, jménem (name) a slavným výrokem (saying).
 
     ```ts
       export class Hero {
@@ -429,15 +392,15 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
     }
     ```
 
-6. Přejděte zpět do souboru **heroes.components.ts** a všimněte si, že na řádku `selectedHero: Hero;` (řádek 10) má `Hero` červené podtržení. 
+4. Přejděte zpět do souboru **heroes.components.ts** a všimněte si, že na řádku `selectedHero: Hero;` (řádek 10) má `Hero` červené podtržení. 
 
-7. Klikněte na výraz `Hero` a Visual Studio Code na levé straně bloku kódu zobrazí ikonu žárovky. 
+5. Klikněte na výraz `Hero` a Visual Studio Code na levé straně bloku kódu zobrazí ikonu žárovky. 
 
     ![Žárovka ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png)
 
-8. Klikněte na žárovku a pak klikněte na **Importovat Hero z umístění client/app/hero**. nebo **Importovat Hero z umístění ./hero**. (Zpráva se mění v závislosti na vašem nastavení.)
+6. Klikněte na žárovku a pak klikněte na **Importovat Hero z umístění /app/hero**. nebo **Importovat Hero z umístění ./hero**. (Zpráva se mění v závislosti na vašem nastavení.)
 
-    Na řádku 2 se objeví nový řádek kódu. Pokud řádek 2 odkazuje na client/app/hero, upravte ho tak, aby odkazoval na soubor hero v místní složce (./hero). Řádek 2 by měl vypadat takto:
+    Na řádku 2 se objeví nový řádek kódu. Pokud řádek 2 odkazuje na /app/hero, upravte ho tak, aby odkazoval na soubor hero v místní složce (./hero). Řádek 2 by měl vypadat takto:
 
    ```
    import { Hero } from "./hero";
@@ -453,23 +416,15 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
     ng g s hero -m app.module
     ```
 
-    Výstup uvádí, že se vytvořil soubor **hero.service.ts** a soubor **app.module.ts** se aktualizoval.
-  
-    ```bash
-    installing service
-      create src\client\app\hero.service.ts
-      update src\client\app\app.module.ts
-    ```
+2. Ve Visual Studio Code přejděte zpět do souboru **heroes.components.ts**. Všimněte si, že na řádku `constructor(private heroService: HeroService) {}` (řádek 13) má `HeroService` červené podtržení. Klikněte na `HeroService` a na levé straně bloku kódu se zobrazí žárovka. Klikněte na žárovku a pak klikněte na **Importovat HeroService z umístění ./hero.service**. nebo **Importovat HeroService z umístění /app/hero.service**.
+
+    Kliknutím na žárovku se vloží nový řádek kódu na řádku 2. Pokud řádek 2 odkazuje na složku /app/hero.service, upravte ho tak, aby odkazoval na soubor hero v místní složce (./hero.service). Řádek 2 by měl vypadat takto:
     
-    V souboru app.module.ts se přidaly následující řádky kódu (řádky 6 a 17):
-    
-    ```typescript
-    import { HeroService } from './hero.service';
-    ...
-        providers: [HeroService],
+    ```javascript
+    import { HeroService } from "./hero.service"
     ```
 
-2. Ve Visual Studio Code otevřete soubor **hero.service.ts** a zkopírujte do něj následující kód, kterým nahradíte obsah souboru.
+3. Ve Visual Studio Code otevřete soubor **hero.service.ts** a zkopírujte do něj následující kód, kterým nahradíte obsah souboru.
 
     ```ts
     import { Injectable } from '@angular/core';
@@ -503,7 +458,7 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
 
     Tento kód používá nejnovější verzi modulu HttpClient, kterou Angular nabízí. Tento modul je potřeba zadat, takže to teď provedeme.
 
-3. Ve Visual Studio Code otevřete soubor **app.module.ts** a importujte modul HttpClientModule tak, že aktualizujete část importování, aby zahrnovala HttpClientModule.
+4. Ve Visual Studio Code otevřete soubor **app.module.ts** a importujte modul HttpClientModule tak, že aktualizujete část importování, aby zahrnovala HttpClientModule.
 
     ```ts
     imports: [
@@ -513,18 +468,10 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
     ],
     ```
 
-4. V souboru **app.module.ts** přidejte do seznamu k importování příkaz pro import modulu HttpClientModule.
+5. V souboru **app.module.ts** přidejte do seznamu k importování příkaz pro import modulu HttpClientModule.
 
     ```ts
     import { HttpClientModule } from '@angular/common/http';
-    ```
-
-5. Ve Visual Studio Code přejděte zpět do souboru **heroes.components.ts**. Všimněte si, že na řádku `constructor(private heroService: HeroService) {}` (řádek 13) má `HeroService` červené podtržení. Klikněte na `HeroService` a na levé straně bloku kódu se zobrazí žárovka. Klikněte na žárovku a pak klikněte na **Importovat HeroService z umístění ./hero.service**. nebo **Importovat HeroService z umístění client/app/hero.service**.
-
-    Kliknutím na žárovku se vloží nový řádek kódu na řádku 2. Pokud řádek 2 odkazuje na složku client/app/hero.service, upravte ho tak, aby odkazoval na soubor hero v místní složce (./hero.service). Řádek 2 by měl vypadat takto:
-    
-    ```javascript
-    import { HeroService } from "./hero.service"
     ```
 
 6. Uložte všechny soubory ve Visual Studio Code.
@@ -539,7 +486,7 @@ Když teď máme komponentu, jak ji zobrazíme na obrazovce? Pojďme upravit vý
 
     Pokud dojde k nějakým problémům, v okně terminálu se zobrazí informace o souborech, které potřebují opravu. Po dokončení sestavení se nové soubory přesunou do složky **dist**. Pokud chcete, můžete nové soubory ve složce **dist** zkontrolovat.
 
-    Pojďme aplikaci spustit.
+    Teď aplikaci spustíme.
 
 2. Ve Visual Studio Code klikněte na tlačítko **Ladit** ![Ikona Ladit ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part2/debug-button.png) na levé straně a pak klikněte na tlačítko **Spustit ladění** ![Ikona Spustit ladění ve Visual Studio Code](./media/tutorial-develop-mongodb-nodejs-part3/start-debugging-button.png).
 

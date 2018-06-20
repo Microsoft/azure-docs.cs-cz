@@ -1,27 +1,25 @@
 ---
-title: Použít rozhraní API MongoDB k vytvoření aplikace Azure Cosmos DB | Microsoft Docs
-description: Kurz, který vytváří online databáze pomocí rozhraní API Azure Cosmos DB pro MongoDB.
-keywords: Příklady mongodb
+title: Použití rozhraní MongoDB API k sestavení aplikace Azure Cosmos DB | Microsoft Docs
+description: Kurz, ve kterém se vytvoří online databáze pomocí rozhraní Azure Cosmos DB API pro MongoDB.
+keywords: mongodb examples
 services: cosmos-db
-author: AndrewHoh
+author: SnehaGunda
 manager: kfile
 editor: ''
-documentationcenter: ''
-ms.assetid: fb38bc53-3561-487d-9e03-20f232319a87
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.component: cosmosdb-mongo
+ms.devlang: nodejs
+ms.topic: sample
 ms.date: 03/23/2018
-ms.author: anhoh
-ms.openlocfilehash: 81eff479c94af938918e6a221d45184ca1a84aef
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.author: sngun
+ms.openlocfilehash: bd31656404f11c9676b321e2e40454c33f61e3f5
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795189"
 ---
-# <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Vytvoření Azure DB Cosmos: rozhraní API pro MongoDB aplikaci pomocí Node.js
+# <a name="build-an-azure-cosmos-db-api-for-mongodb-app-using-nodejs"></a>Sestavení aplikace Azure Cosmos DB: API for MongoDB pomocí Node.js
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
@@ -32,16 +30,16 @@ ms.lasthandoff: 04/16/2018
 >  
 >
 
-Tento příklad ukazuje, jak sestavit Azure DB Cosmos: rozhraní API pro MongoDB konzolovou aplikaci pomocí Node.js.
+Tento příklad ukazuje, jak sestavit konzolovou aplikaci Azure Cosmos DB: API for MongoDB pomocí Node.js.
 
-Chcete-li použít tento příklad, postupujte takto:
+Chcete-li použít tento příklad, musíte:
 
-* [Vytvoření](create-mongodb-dotnet.md#create-account) Azure DB Cosmos: rozhraní API pro účet MongoDB.
-* Načíst vaše MongoDB [připojovací řetězec](connect-mongodb-account.md) informace.
+* [Vytvořit](create-mongodb-dotnet.md#create-account) účet Azure Cosmos DB: API for MongoDB.
+* Načíst informace [připojovacího řetězce](connect-mongodb-account.md) MongoDB.
 
 ## <a name="create-the-app"></a>Vytvoření aplikace
 
-1. Vytvoření *app.js* soubor a zkopírujte a vložte kód níže.
+1. Vytvořte soubor *app.js* a zkopírujte a vložte kód níže.
 
     ```nodejs
     var MongoClient = require('mongodb').MongoClient;
@@ -123,7 +121,7 @@ Chcete-li použít tento příklad, postupujte takto:
     });
     ```
     
-    **Volitelné**: Pokud používáte **MongoDB Node.js 2.2 ovladač**, nahraďte následující fragment kódu:
+    **Volitelné:** Pokud používáte **ovladač MongoDB Node.js 2.2**, nahraďte následující fragment kódu:
 
     Původní:
 
@@ -143,7 +141,7 @@ Chcete-li použít tento příklad, postupujte takto:
     });
     ```
     
-    Měl by být nahrazen:
+    Měl by být nahrazen tímto:
 
     ```nodejs
     MongoClient.connect(url, function(err, db) {
@@ -160,14 +158,14 @@ Chcete-li použít tento příklad, postupujte takto:
     });
     ```
     
-2. Upravte následující proměnné v *app.js* soubor pro nastavení svého účtu (informace o vyhledávání vaše [připojovací řetězec](connect-mongodb-account.md)):
+2. Upravte následující proměnné v souboru *app.js* pro nastavení vašeho účtu (informace o vyhledání vašeho [připojovacího řetězce](connect-mongodb-account.md)):
 
     > [!IMPORTANT]
-    > **MongoDB Node.js 3.0 ovladač** vyžaduje kódování speciálních znaků v hesle Cosmos DB. Zajistěte, aby kódování znaků '=' jako % 3D
+    > **Ovladač MongoDB Node.js 3.0** vyžaduje kódování speciálních znaků v hesle Cosmos DB. Zajistěte, aby byly znaky „=“ kódované jako %3D.
     >
-    > Příklad: Heslo *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv ==* kóduje do *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv 3D % 3D*
+    > Příklad: Heslo *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv==* se kóduje na *jm1HbNdLg5zxEuyD86ajvINRFrFCUX0bIWP15ATK3BvSv%3D%3D*.
     >
-    > **MongoDB Node.js 2.2 ovladač** nevyžaduje kódování speciálních znaků v hesle Cosmos DB.
+    > **Ovladač MongoDB Node.js 2.2** nevyžaduje kódování speciálních znaků v hesle Cosmos DB.
     >
     >
    
@@ -175,7 +173,7 @@ Chcete-li použít tento příklad, postupujte takto:
     var url = 'mongodb://<endpoint>:<password>@<endpoint>.documents.azure.com:10255/?ssl=true';
     ```
      
-3. Otevřete svůj oblíbený terminál, spusťte **npm nainstalujte mongodb – uložte**, spusťte aplikaci s **uzlu app.js**
+3. Otevřete svůj oblíbený terminál, spusťte příkaz **npm install mongodb --save** a pak spusťte aplikaci se souborem **node app.js**.
 
-## <a name="next-steps"></a>Další postup
-* Zjistěte, jak [použít MongoChef](mongodb-mongochef.md) s vaší Azure DB Cosmos: rozhraní API pro účet MongoDB.
+## <a name="next-steps"></a>Další kroky
+* Zjistěte, jak [použít MongoChef](mongodb-mongochef.md) s vaším účtem Azure Cosmos DB: API for MongoDB.

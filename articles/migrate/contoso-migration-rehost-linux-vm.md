@@ -3,17 +3,16 @@ title: Migrujte metody opětovného hostování a opětovným hostováním míst
 description: Zjistěte, jak Contoso opětovným hostováním Linux aplikaci místně migrací virtuálních počítačů Azure.
 services: site-recovery
 author: rayne-wiselman
-manager: ''
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 85c377c0fbca32a33cc68c9a1bedfa00ce0a366a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8f039884ca0ea46c128078984d6cab6fd29ac9af
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300370"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220546"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Migrace Contoso: opětovným hostováním místní aplikace Linux na virtuálních počítačích Azure
 

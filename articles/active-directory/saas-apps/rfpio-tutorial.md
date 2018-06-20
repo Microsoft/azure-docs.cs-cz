@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 87187076-7b50-4247-814f-f217b052703f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: eda20d60d04ba8e50c31697b2f8775f2539088f3
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ea5729e02c9f9641b7ed5d136ffea5fc94d1fe03
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903371"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36211648"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Kurz: Azure Active Directory integrace s RFPIO
 

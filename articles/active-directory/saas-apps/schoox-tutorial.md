@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: f8b4cdcc-cbf6-4229-9427-05632e33f942
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: jeedes
-ms.openlocfilehash: f21969ceb74b5403fa8c5406a6b93484190422ec
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: bc11bf33dd257219dad2313eb6e2bf25a0732347
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901723"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210848"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-schoox"></a>Kurz: Azure Active Directory integrace s Schoox
 

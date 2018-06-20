@@ -1,26 +1,21 @@
 ---
-title: "Obnovení souborů do virtuálního počítače pomocí služby Azure Backup | Microsoft Docs"
-description: "Zjistěte, jak na virtuálním počítači Azure provádět obnovení na úrovni souborů pomocí služeb Backup a Recovery Services."
+title: Obnovení souborů do virtuálního počítače pomocí služby Azure Backup
+description: Zjistěte, jak na virtuálním počítači Azure provádět obnovení na úrovni souborů pomocí služeb Backup a Recovery Services.
 services: backup
-documentationcenter: virtual-machines
 author: markgalioto
 manager: carmonm
-editor: 
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
 ms.service: backup
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 2/14/2018
-ms.author: iainfou
+ms.author: markgal
 ms.custom: mvc
-ms.openlocfilehash: 77084c5663f9e12347c243c4e78160657d7443b2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: eff5a292138bca8f443b77ec8e3ce8e3ee15464e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607573"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Obnovení souborů do virtuálního počítače v Azure
 Azure Backup vytváří body obnovení, které se ukládají v geograficky redundantních trezorech obnovení. Při obnovení z bodu obnovení můžete obnovit celý virtuální počítač nebo jednotlivé soubory. Tento článek podrobně popisuje, jak obnovit jednotlivé soubory. V tomto kurzu se naučíte:

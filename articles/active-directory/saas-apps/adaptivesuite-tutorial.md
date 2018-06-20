@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 13af9d00-116a-41b8-8ca0-4870b31e224c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jeedes
-ms.openlocfilehash: c5ac63bc97924d322ce1a6e734f8ccf21367aafc
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 307c3cf258a74d1ddfb409f0d5b22d9e1fd6bf4b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904081"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213817"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>Kurz: Azure Active Directory integrace s adaptivní statistiky
 

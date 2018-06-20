@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 3b985248-056f-4d0f-9ce4-c017b38f5b50
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.openlocfilehash: f876d993e7e585e3b7ff8106d488d8de8fffe03f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 378f2b542270db351a9527e1faddc5b70952455b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899426"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212617"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-encompass"></a>Kurz: Azure Active Directory integrace s Encompass
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: ced1d88d-0e48-40d5-9aea-ef991cd9d270
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: jeedes
-ms.openlocfilehash: c5a806bb586ceeb4ce68774a1b5d874dfc1e4f26
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 73135e3e4a533aa27c228b082f308cb50925c4e5
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898967"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36211692"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-11-token-enabled-lob-app"></a>Kurz: Obchodní aplikace s povoleným integrace Azure Active Directory s tokenu SAML 1.1
 

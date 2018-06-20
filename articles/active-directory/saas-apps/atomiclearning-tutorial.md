@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 495f54a6-e6c4-41b0-aafa-a6283d33efc8
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 4e816e9ee2a1f85b8fbb37337fd3aac825ad959d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 785a2af9cf736bad0aa0520898664c2939720a78
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901606"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-atomic-learning"></a>Kurz: Azure Active Directory integrace s Atomic učení
 

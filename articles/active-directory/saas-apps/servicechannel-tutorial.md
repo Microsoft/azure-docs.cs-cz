@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: c3546eab-96b5-489b-a309-b895eb428053
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.openlocfilehash: e39710430145c7d3e1b00efa8a9ecc52aef96729
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 22de973ae00c93f82b274c0b833149b9fe494a7f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899153"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36209846"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>Kurz: Azure Active Directory integrace s ServiceChannel
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 3c496939-4201-4108-b0cc-d3e7c4244229
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 4917d3fe9a5be302c7076e7272ec926b24fa5bbf
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3c1922892a6a72caa58241a313bd1e3890487a42
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900962"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210237"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdpartytrust"></a>Kurz: Azure Active Directory integrace s ThirdPartyTrust
 

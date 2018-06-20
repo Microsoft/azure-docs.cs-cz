@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 33c148fc-d490-4bb9-90c1-d5933679ce4e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: fb3fdf885d75f0ea19445e305445252737d85cfe
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c5b8b78940d1e7054fa36b630b6d59a4d0c5880f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903184"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224041"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-efi-digital-storefront"></a>Kurz: Azure Active Directory integrace s rozhraním EFI digitální výkladní skříň
 

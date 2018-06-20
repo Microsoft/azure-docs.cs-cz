@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 5e73dd1d-3995-4a73-b9cf-1b2318d49cb3
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 8ec0ffd804ec7a6fcfb104202c0d01f6c132171b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 8b4b41551a1679948518846a63eee87bbd1bbfd9
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903159"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222653"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-23-video"></a>Kurz: Azure Active Directory integrace s 23 Video
 

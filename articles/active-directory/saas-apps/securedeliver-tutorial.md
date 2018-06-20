@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: fccd5668-fe6f-4e6d-a9ce-ba4f321c33d1
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: c8f058005fe908ec6c8785318730ddecbbb19a88
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c4302a2ac3b0d2172c9443ac401547d1607c3456
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35912813"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36209992"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secure-deliver"></a>Kurz: Azure Active Directory integrace s ZABEZPEČENÉ DORUČOVÁNÍ
 

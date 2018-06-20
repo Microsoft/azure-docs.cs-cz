@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 4a9c2914-6c8c-4a88-93e3-3753afb40e6b
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 18429c4d1d548a0455ced985be7a02f622cbc37b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 64f47954d3d8c393bd5bf236fbd265e49f10fe5c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904011"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36211403"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-anaplan"></a>Kurz: Azure Active Directory integrace s Anaplan
 

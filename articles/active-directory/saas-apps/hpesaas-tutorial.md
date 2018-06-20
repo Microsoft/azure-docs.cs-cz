@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 314003d6-ca66-4456-88c3-934254d4a9a2
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 5c37e8f226bbb6d5beace523aaef88b360c70ddf
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 58873cce705ab3106898d09ab4211ebd81464126
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913482"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36211807"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hpe-saas"></a>Kurz: Azure Active Directory integrace s HPE SaaS
 

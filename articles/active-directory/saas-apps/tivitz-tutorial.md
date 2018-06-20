@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: b97ed88f-7888-4185-be22-41d1f62cbbf1
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 210cdfd2b325fabfd117970c671ac9f89d05bcc4
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 922cb542de1ef8d1121646cf83fe790be0994953
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913492"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tivitz"></a>Kurz: Azure Active Directory integrace s TiViTz
 

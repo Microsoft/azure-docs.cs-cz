@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 5b2e53c0-61a3-4954-ae46-8c28c6368bfd
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 5b59fbdbec8b77b5451fd092de8b47c0bebf786e
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 0f8621ec55ee58e818a60dc74ea5c4f111909b8a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35912785"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210271"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-versal"></a>Kurz: Azure Active Directory integrace s Versal odkazů
 

@@ -7,14 +7,14 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 05/12/2018
+ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: bbf535c5b446fd654331374d29c106b6e43d55f5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 241d24746d82a359b4bbf4febbbaaf91180dd23e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34266876"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210920"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Zvolte cenovou úroveň pro službu Azure Search
 
@@ -39,7 +39,7 @@ Koncepty, které je třeba porozumět pro výběr úrovně zahrnují definice ka
 Kapacita strukturovaná jako *repliky* a *oddíly*. Repliky jsou instance Vyhledávací služby, kde každé repliky hostitelem jedné kopie indexu Vyrovnávání zatížení sítě. Například služby s replikami 6 má 6 kopie každý index načíst ve službě. Oddíly ukládat indexy a automaticky rozdělí prohledávatelná data: dva oddíly rozdělení indexu v poloviční, tři oddíly na třetiny a tak dále. Z hlediska kapacity *oddílu velikost* je funkce primární rozdílné mezi vrstvami.
 
 > [!NOTE]
-> Všechny **standardní** úrovně podpory [flexibilní kombinace repliky a oddíly, které](search-capacity-planning.md#chart) , aby bylo možné [vážené systému pro rychlost nebo úložiště](search-performance-optimization.md) změnou rovnováhu mezi. **Základní** nabízí tři repliky pro vysokou dostupnost, ale má pouze oddíl. **Volné** vrstev neposkytují vyhrazených prostředcích: výpočetní prostředky jsou sdíleny více bezplatné služby.
+> Všechny **standardní** úrovně podpory [flexibilní kombinace repliky a oddíly, které](search-capacity-planning.md#chart) , aby bylo možné [vážené systému pro rychlost nebo úložiště](search-performance-optimization.md) změnou rovnováhu mezi. **Základní** nabízí tři repliky pro vysokou dostupnost, ale má jen jeden oddíl. **Volné** vrstev neposkytují vyhrazených prostředcích: výpočetní prostředky jsou sdíleny více bezplatné služby.
 
 ### <a name="limits"></a>Omezení
 

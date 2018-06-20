@@ -10,11 +10,12 @@ ms.topic: tutorial
 ms.date: 01/23/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: c42f67197b10769a49ce61095e1d5d22c9012340
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 916cedfb91f0711f136ff8ad679be94c68964619
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608929"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Kurz: Spuštění paralelní úlohy pomocí služby Azure Batch s využitím rozhraní Python API
 
@@ -178,7 +179,7 @@ new_pool = batch.models.PoolAddParameter(
         image_reference=batchmodels.ImageReference(
             publisher="Canonical",
             offer="UbuntuServer",
-            sku="16.04.0-LTS",
+            sku="16.04-LTS",
             version="latest"
             ),
         node_agent_sku_id="batch.node.ubuntu 16.04"),
@@ -211,7 +212,7 @@ batch_service_client.job.add(job)
 
 ### <a name="create-tasks"></a>Vytvoření úkolů
 
-Aplikace vytvoří ´koly v úloze pomocí volání `add_tasks`. Tato definovaná funkce vytvoří seznam objektů úlohy pomocí třídy [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter). Každá úloha spouští ffmpeg pro zpracování vstupního objektu `resource_files` pomocí parametru `command_line`. Aplikace ffmpeg se na každý uzel nainstalovala dříve při vytváření fondu. Tady příkazový řádek spouští aplikaci ffmpeg kvůli převodu jednotlivých vstupních souborů MP4 (video) na soubory MP3 (zvuk).
+Aplikace vytvoří úkoly pro úlohu pomocí volání `add_tasks`. Tato definovaná funkce vytvoří seznam objektů úlohy pomocí třídy [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter). Každá úloha spouští ffmpeg pro zpracování vstupního objektu `resource_files` pomocí parametru `command_line`. Aplikace ffmpeg se na každý uzel nainstalovala dříve při vytváření fondu. Tady příkazový řádek spouští aplikaci ffmpeg kvůli převodu jednotlivých vstupních souborů MP4 (video) na soubory MP3 (zvuk).
 
 Ukázka po spuštění příkazového řádku vytvoří pro soubor MP3 objekt [OutputFile](/python/api/azure.batch.models.outputfile). Výstupní soubory všech úkolů (v tomto případě jednoho) se pomocí vlastnosti `output_files` nahrají do kontejneru v propojeném účtu úložiště.
 

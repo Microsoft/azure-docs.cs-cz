@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 411cb8c3-95c6-4138-acf2-ffc7f663e89a
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 47abc5868333a5ff5202bbcd306bf3c499b3d6c7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7b60c133e8cd25ceceb9a5441a10a15d6c514868
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899431"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210009"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>Kurz: Azure Active Directory integrace s Trakstar
 

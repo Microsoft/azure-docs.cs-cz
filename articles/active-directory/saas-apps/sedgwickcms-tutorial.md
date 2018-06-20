@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 957931e0-e426-47e7-9904-3ed98d3f504c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
-ms.openlocfilehash: c58d973f878058b9bdc2d1d030e6fe44ba097b67
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d4832807bb8ce3a854bee16eae5d0ced37fedcd8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898970"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215071"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>Kurz: Azure Active Directory integrace s Sedgwick CMS
 

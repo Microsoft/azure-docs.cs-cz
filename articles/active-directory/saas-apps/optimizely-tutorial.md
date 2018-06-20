@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 28ef03e1-9aad-4301-af97-d94e853edc74
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 0739479c3f7a07eb4645b30e51554d3917719098
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 016c495c29144e9c5239f026e035b650651f758f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898986"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215898"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Kurz: Azure Active Directory integrace s Optimizely
 

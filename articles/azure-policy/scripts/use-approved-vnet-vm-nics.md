@@ -15,15 +15,16 @@ ms.workload: ''
 ms.date: 10/30/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 34b849a8df6fc1a7d16dd28890402ea748b9407d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c2e6170ca81deeab7a692e1588c6975e8a6812b5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602342"
 ---
 # <a name="use-approved-vnet-for-vm-network-interfaces"></a>Použití schválené virtuální sítě pro síťová rozhraní virtuálních počítačů
 
-Tato zásada vyžaduje, aby síťová rozhraní používala schválenou virtuální síť. Zadejte ID schválené virtuální sítě.
+Tato zásada vyžaduje, aby síťová rozhraní používala schválenou virtuální síť. Zadáte ID schválené virtuální sítě.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -76,4 +77,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další ukázkové šablony pro Azure Policy najdete v tématu [Šablony pro Azure Policy](../json-samples.md).
+- Další příklady najdete v [Ukázkách Azure Policy](../json-samples.md).

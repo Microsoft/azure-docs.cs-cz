@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 0f59fedb-2cf8-48d2-a5fb-222ed943ff78
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 86da9d692bf814e62579d75dedd0089b5e6f6527
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 6a8696866d5893986a80520149307b013c420fa3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903293"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223741"
 ---
 # <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>Kurz: Konfigurace GoToMeeting pro zřizování automatické uživatelů
 

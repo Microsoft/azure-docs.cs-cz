@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bed7df23-6e13-4e7c-b4cc-53ed4804664d
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 1ad4259ef0e0ca948d677944855ce732b3de98fd
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 0934ec2443d240234b2120056894921f2e30c81c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899455"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213161"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vidyard"></a>Kurz: Azure Active Directory integrace s Vidyard
 

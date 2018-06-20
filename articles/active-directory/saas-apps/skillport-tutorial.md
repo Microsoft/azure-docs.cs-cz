@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 4df349b2-a73f-4b88-a077-ec0fbfc26527
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 7847d008b277908f30cef85a761c4ac850f1fe8d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d7d22355ba3521bd080e7229a6254d0f992942f2
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899011"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218917"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skillport"></a>Kurz: Azure Active Directory integrace s Skillport
 

@@ -3,23 +3,21 @@ title: 'Kurz k ASP.NET MVC pro službu Azure Cosmos DB: Vývoj webové aplikace 
 description: Kurz k ASP.NET MVC, v rámci kterého se vytvoří webová aplikace MVC s použitím služby Azure Cosmos DB. Budete ukládat JSON a přístupová data z aplikace seznamu úkolů hostované na Webech Azure – podrobný kurz ASP.NET MVC.
 keywords: kurz asp.net mvc, vývoj webových aplikací, aplikace mvc web, kurz asp net mvc krok za krokem
 services: cosmos-db
-documentationcenter: .net
 author: SnehaGunda
 manager: kfile
-ms.assetid: 52532d89-a40e-4fdf-9b38-aadb3a4cccbc
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-sql
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
 ms.custom: devcenter
-ms.openlocfilehash: 1193ef84f8edf701f98e50d92a67426e36c40218
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 193f0f74d7a8ebaee72105698c646b55a8159a3b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796991"
 ---
 # <a name="_Toc395809351"></a>Kurz k ASP.NET MVC: Vývoj webové aplikace s použitím služby Azure Cosmos DB
 > [!div class="op_single_selector"]
@@ -34,7 +32,7 @@ Pro větší názornost, jak lze pomocí služby Azure Cosmos DB efektivně ukl�
 
 ![Snímek obrazovky webové aplikace MVC pro seznam úkolů vytvořené v tomto kurzu – podrobný kurz ASP.NET MVC](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-image01.png)
 
-Tento návod ukazuje, jak pomocí služby Azure Cosmos DB ukládat a přistupovat k datům z webové aplikace ASP.NET MVC hostované v Azure. Pokud hledáte kurz, který se zaměřuje jenom na službu Azure Cosmos DB, nikoli komponenty ASP.NET MVC, přečtěte si téma popisující [vytvoření konzolové aplikace využívající službu Azure Cosmos DB v jazyce C#](sql-api-get-started.md).
+Tento návod popisuje, jak pomocí služby Azure Cosmos DB ukládat data a přistupovat k nim z webové aplikace ASP.NET MVC hostované v Azure. Pokud hledáte kurz, který se zaměřuje jenom na službu Azure Cosmos DB, nikoli komponenty ASP.NET MVC, přečtěte si téma popisující [vytvoření konzolové aplikace využívající službu Azure Cosmos DB v jazyce C#](sql-api-get-started.md).
 
 > [!TIP]
 > V tomto kurzu se předpokládá, že již máte zkušenosti s používáním ASP.NET MVC a Webů Azure. Pokud jsou pro vás technologie ASP.NET nebo [požadované nástroje](#_Toc395637760) nové, doporučujeme stáhnout úplný ukázkový projekt z [GitHubu][GitHub] a postupovat podle pokynů v této ukázce. Až jej budete mít sestavený, můžete se k tomuto článku vrátit, abyste kódu lépe porozuměli v kontextu projektu.
@@ -49,12 +47,12 @@ Než budete postupovat podle pokynů tohoto článku, měli byste se ujistit, ž
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 * [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)]  
-* Microsoft Azure SDK pro .NET pro Visual Studio 2017, k dispozici prostřednictvím Instalační program Visual Studio.
+* Microsoft Azure SDK pro .NET pro Visual Studio 2017, k dispozici prostřednictvím Instalačního programu pro Visual Studio.
 
-Všechny snímky obrazovky v tomto článku byly pořízeny pomocí nástroje Microsoft Visual Studio Community 2017. Pokud je systém konfigurován s jinou verzí je možné, že vaše obrazovky a možnosti budou mírně lišit, ale pokud splníte výše uvedené požadavky tohoto řešení by mělo fungovat.
+Všechny snímky obrazovky v tomto článku byly pořízeny pomocí Microsoft Visual Studio Community 2017. Pokud konfigurace vašeho serveru využívá jinou verzi, je možné, že se vaše obrazovky a možnosti budou mírně lišit, ale pokud splníte předpoklady uvedené výše, řešení by mělo fungovat.
 
 ## <a name="_Toc395637761"></a>Krok 1: Vytvoření účtu databáze Azure Cosmos DB
-Začněme vytvořením účtu služby Azure Cosmos DB. Pokud již máte účet SQL pro Azure Cosmos DB nebo pokud používáte emulátor DB Cosmos Azure pro účely tohoto kurzu, můžete přeskočit na [vytvoření nové aplikace ASP.NET MVC](#_Toc395637762).
+Začněme vytvořením účtu služby Azure Cosmos DB. Pokud již účet SQL pro Azure Cosmos DB máte nebo pokud používáte pro účely tohoto kurzu emulátor služby Azure Cosmos DB, můžete přeskočit na [Vytvoření nové aplikace ASP.NET MVC](#_Toc395637762).
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -74,9 +72,9 @@ Nyní vám ukážeme, jak od základů vytvořit novou aplikaci ASP.NET MVC.
 3. Do pole **Název** zadejte název projektu. Tento kurz používá název todo. Pokud se rozhodnete použít něco jiného, pak kdykoli v tomto kurzu bude zmíněn obor názvů todo, je potřeba upravit poskytnuté ukázky kódu tak, aby používaly vámi zvolený název aplikace. 
 4. Po kliknutí na **Procházet** přejděte na složku, ve které chcete vytvořit projekt, a klikněte na **OK**.
    
-      **Nové webové aplikace ASP.NET** zobrazí se dialogové okno.
+      Zobrazí se dialogové okno **Nová webová aplikace ASP.NET**.
    
-    ![Snímek obrazovky dialogového okna nové webové aplikace ASP.NET se zvýrazněnou šablonou aplikace MVC](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-MVC.png)
+    ![Snímek obrazovky dialogového okna Nová webová aplikace ASP.NET se zvýrazněnou šablonou aplikace MVC](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-MVC.png)
 5. V podokně šablon vyberte **MVC**.
 
 6. Klikněte na **OK** a nechte Visual Studio odvést svou práci s generováním prázdné šablony ASP.NET MVC. 
@@ -89,16 +87,16 @@ Nyní vám ukážeme, jak od základů vytvořit novou aplikaci ASP.NET MVC.
 ## <a name="_Toc395637767"></a>Krok 3: Přidání služby Azure Cosmos DB do projektu webové aplikace MVC
 Teď již máme za sebou většinu potřebných příprav technologie ASP.NET MVC, které potřebujeme pro toto řešení. Přejděme tedy ke skutečnému účelu tohoto kurzu, a tím je přidání služby Azure Cosmos DB do webové aplikace MVC.
 
-1. .NET SDK služby Azure Cosmos DB je zabalené a distribuovat jako balíčku NuGet. Balíček NuGet získáte v nástroji Visual Studio tak, že v něm použijete správce balíčků NuGet. Klikněte pravým tlačítkem na projekt v **Průzkumníkovi řešení** a pak levým na **Spravovat balíčky NuGet**.
+1. Sada Azure Cosmos DB .NET SDK se připravuje a distribuuje jako balíček NuGet. Balíček NuGet získáte v nástroji Visual Studio tak, že v něm použijete správce balíčků NuGet. Klikněte pravým tlačítkem na projekt v **Průzkumníkovi řešení** a pak levým na **Spravovat balíčky NuGet**.
    
     ![Snímek obrazovky možností nabídky po kliknutí pravým tlačítkem na projekt webové aplikace v Průzkumníkovi řešení se zvýrazněnou možností Spravovat balíčky NuGet.](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-manage-nuget.png)
    
     Zobrazí se dialogové okno **Správa balíčků NuGet**.
-2. Do pole **Procházet** NuGet zadejte ***Azure DocumentDB***. (Název balíčku nebyla aktualizována pro Azure Cosmos DB.)
+2. Do pole **Procházet** NuGet zadejte ***Azure DocumentDB***. (Název balíčku nebyl pro Azure Cosmos DB aktualizován.)
    
-    Ve výsledcích nainstalovat **Microsoft.Azure.DocumentDB Microsoft** balíčku. Tím stáhnout a nainstalovat balíček Azure Cosmos DB a také všechny závislosti, jako je například Newtonsoft.Json. Dokončete instalaci tak, že v okně **Náhled** kliknete na **OK** a v okně **Souhlas s podmínkami licence** na **Přijímám**.
+    Z výsledků nainstalujte balíček **Microsoft.Azure.DocumentDB by Microsoft**. Tím se stáhne a nainstaluje balíček služby Azure Cosmos DB včetně všech závislostí, jako je například Newtonsoft.Json. Dokončete instalaci tak, že v okně **Náhled** kliknete na **OK** a v okně **Souhlas s podmínkami licence** na **Přijímám**.
    
-    ![Snímek obrazovky okna Správa balíčků NuGet s Microsoft Azure Cosmos DB klientské knihovny zvýrazněná](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-install-nuget.png)
+    ![Snímek obrazovky okna Správa balíčků NuGet se zvýrazněnou položkou Microsoft Azure Cosmos DB Client Library](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-install-nuget.png)
    
       K instalaci balíčku můžete případně použít i Konzolu Správce balíčků. Pokud ji chcete využít, v nabídce **Nástroje** klikněte na **Správce balíčků NuGet** a pak na **Konzola Správce balíčků**. Do příkazového řádku zadejte následující příkaz.
    
@@ -313,7 +311,7 @@ První věc, kterou je zde potřeba udělat, je přidat třídu, která bude obs
         <add key="collection" value="Items"/>
 4. Nyní pomocí okna Klíče na Portálu Azure aktualizujte hodnoty pro *endpoint* a *authKey*. Jako hodnotu pro nastavení endpoint použijte **URI** z okna Klíče, pro nastavení authKey pak jako hodnotu využijte **PRIMÁRNÍ KLÍČ** nebo **SEKUNDÁRNÍ KLÍČ** z téhož okna.
 
-    Vyřešeno připojení úložiště Azure Cosmos DB nyní Pojďme přidat logiku aplikace.
+    Tím je vyřešeno připojení úložiště Azure Cosmos DB. Nyní pojďme přidat logiku aplikace.
 
 1. Tím prvním, co chceme mít možnost v aplikaci seznamu úkolů dělat, je zobrazit neúplné položky.  Zkopírujte a vložte následující fragment kódu kamkoli do třídy **DocumentDBRepository**.
    
@@ -388,7 +386,7 @@ Přidejme do třídy Azure Cosmos DBRepository a ItemController kód, který zaj
            return await client.CreateDocumentAsync(UriFactory.CreateDocumentCollectionUri(DatabaseId, CollectionId), item);
        }
    
-   Tato metoda jednoduše přijme předaný k němu objekt a zachová jej v Azure Cosmos DB.
+   Tato metoda jednoduše přijme předaný objekt a zachová jej jako trvalý v Azure Cosmos DB.
 2. Otevřete soubor ItemController.cs a přidejte do třídy následující fragment kódu. Takto ASP.NET MVC ví, co dělat s akcí **Create**. V tomto případě má pouze vykreslit přidružené zobrazení Create.cshtml vytvořené dříve.
    
         [ActionName("Create")]
@@ -518,33 +516,33 @@ Aplikaci otestujete na svém místním počítači tak, že provedete následuj�
     ![Snímek obrazovky zobrazení Index se zaškrtnutým políčkem Dokončeno](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
 5. Až budete s testováním aplikace hotovi, stiskněte Ctrl+F5, aby se ukončilo ladění aplikace. Jste připraveni aplikaci nasadit!
 
-## <a name="_Toc395637774"></a>Krok 7: Nasazení aplikace do služby Azure App Service 
-Teď, když máte je aplikace dokončena a správně funguje s Azure Cosmos DB vytvoříme nasadíme tuto webovou aplikaci do služby Azure App Service.  
+## <a name="_Toc395637774"></a>Krok 7: Nasazení aplikace do Azure App Service 
+Nyní, když je aplikace dokončena a správně funguje se službou Azure Cosmos DB, nasadíme tuto webovou aplikaci ve službě Azure App Service.  
 
 1. K publikování této aplikace stačí kliknout pravým tlačítkem na projekt v **Průzkumníkovi řešení** a kliknout na **Publikovat**.
    
     ![Snímek obrazovky s možností Publikovat v Průzkumníkovi řešení](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-publish.png)
 
-2. V **publikovat** dialogové okno, klikněte na tlačítko **Microsoft Azure App Service**, pak vyberte **vytvořit nový** vytvořit profil služby App Service, nebo kliknutím na tlačítko **vybrat existující**  sloužící k existujícímu profilu.
+2. V dialogovém okně **Publikovat** klikněte na **Microsoft Azure App Service**, pak vyberte **Vytvořit nový** a vytvořte profil služby App Service, nebo klikněte na **Vybrat existující**  a použijte existující profil.
 
-    ![Dialogové okno publikování v sadě Visual Studio](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-publish-to-existing.png)
+    ![Dialogové okno Publikovat v sadě Visual Studio](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-publish-to-existing.png)
 
-3. Pokud máte existující profil Azure App Service, zadejte název vašeho předplatného. Použití **zobrazení** filtrovat a řadit podle skupiny prostředků nebo typ prostředku a potom vyberte Azure App Service. 
+3. Pokud máte existující profil Azure App Service, zadejte název vašeho předplatného. Pomocí filtru **Zobrazení** proveďte řazení podle skupiny prostředků nebo typ prostředku a potom vyberte Azure App Service. 
    
-    ![Dialogové okno služby App Service v sadě Visual Studio](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service.png)
+    ![Dialogové okno App Service v sadě Visual Studio](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service.png)
 
-4. Chcete-li vytvořit nový profil Azure App Service, klikněte na tlačítko **vytvořit nový** v **publikovat** dialogové okno. V **vytvořit službu App Service** dialogové okno, zadejte název webové aplikace a příslušné předplatné, skupinu prostředků a plán služby App Service, a pak klikněte na tlačítko **vytvořit**.
+4. Chcete-li vytvořit nový profil Azure App Service, klikněte na **Vytvořit nový** v dialogovém okně **Publikovat**. V dialogovém okně **Vytvořit plán App Service** zadejte název webové aplikace a příslušné předplatné, skupinu prostředků a plán služby App Service, a pak klikněte na **Vytvořit**.
 
-    ![Služby App Service dialogové okno vytvořit v sadě Visual Studio](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service.png)
+    ![Dialogové okno Vytvořit plán App Service v sadě Visual Studio](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service.png)
 
-Během pár sekund bude Visual Studio dokončí publikování webové aplikace a spustí prohlížeč, kde uvidíte vaše handiwork běžící v Azure!
+Za několik sekund Visual Studio dokončí publikování webové aplikace a spustí prohlížeč, kde se můžete podívat, jak vaše práce běží v Azure!
 
 
 
 ## <a name="_Toc395637775"></a>Další kroky
-Blahopřejeme! Právě vytvořené webové aplikace pomocí Azure Cosmos DB první rozhraní ASP.NET MVC a publikovali jste ji na Azure. Zdrojový kód hotové aplikace včetně podrobností a odstraněných funkcí, které nebyly součástí tohoto kurzu, si můžete stáhnout nebo naklonovat z [GitHubu][GitHub]. Pokud byste tedy chtěli tyto funkce zahrnout do své aplikace, můžete si kód stáhnout a přidat.
+Blahopřejeme! Právě jste vytvořili svou první webovou aplikaci ASP.NET MVC, která využívá službu Azure Cosmos DB, a publikovali jste ji v Azure. Zdrojový kód hotové aplikace včetně podrobností a odstraněných funkcí, které nebyly součástí tohoto kurzu, si můžete stáhnout nebo naklonovat z [GitHubu][GitHub]. Pokud byste tedy chtěli tyto funkce zahrnout do své aplikace, můžete si kód stáhnout a přidat.
 
-Do aplikace přidat další funkce, prohlédněte si rozhraní API, které jsou k dispozici v [knihovny .NET DB Cosmos Azure](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) a Nebojte se přispět do knihovny Azure DB Cosmos .NET na [Githubu] [GitHub]. 
+Pokud chcete rozšířit funkce aplikace, prohlédněte si rozhraní API dostupná v [knihovně Azure Cosmos DB .NET](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) a nebojte se přispět do knihovny Azure Cosmos DB .NET na [GitHubu][GitHub]. 
 
 [\*]: https://microsoft.sharepoint.com/teams/DocDB/Shared%20Documents/Documentation/Docs.LatestVersions/PicExportError
 [Visual Studio Express]: http://www.visualstudio.com/products/visual-studio-express-vs.aspx

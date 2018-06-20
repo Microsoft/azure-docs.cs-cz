@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bd00a339-27c9-4904-b66f-a95bf597ac3c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: 3cab461c95223df9487de5a4d86fabe432e14ecf
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 293a8921e64bae03d036f847d2f9138d88ebef4a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35897340"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210254"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>Kurz: Azure Active Directory integrace s mindWireless
 

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 9fc5659a-c116-4a1b-a601-333325a26b46
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 121d94193aed456f6a45b6427b52b3d808ef55fa
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 00f255a33e9bfbec97d43bbede6116b14a096553
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903367"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36209863"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jive"></a>Kurz: Azure Active Directory integrace s Jive
 

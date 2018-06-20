@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: bfed291c-a33e-410d-b919-5b965a631d45
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: jeedes
-ms.openlocfilehash: cc078890ec6c93bc2e410fac86a14623de8f8ce4
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e0b20acb29aaf489dd3f449f883c011a26b7862a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901628"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223395"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas-lms"></a>Kurz: Azure Active Directory integrace s plátno pro správu vzdělávacího procesu
 

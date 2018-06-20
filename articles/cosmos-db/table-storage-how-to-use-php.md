@@ -1,30 +1,28 @@
 ---
-title: Jak používat službu Azure Storage Table nebo rozhraní API služby Azure Cosmos DB tabulky z PHP | Microsoft Docs
-description: Naučte se používat rozhraní API služby Table z PHP vytvářet a odstraňovat tabulky, vložení, odstranit a dotaz tabulku.
+title: Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z PHP | Microsoft Docs
+description: Ukládejte si strukturovaná data v cloudu pomocí služby Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: php
 author: SnehaGunda
 manager: kfile
-ms.assetid: 1e57f371-6208-4753-b2a0-05db4aede8e3
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: php
-ms.topic: article
+ms.topic: sample
 ms.date: 04/05/2018
 ms.author: sngun
-ms.openlocfilehash: af193c5ec7993d44fe67216843eb18f459718cfe
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 19d475c16b672b960b417391b4c3a6efe27f6cd6
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797936"
 ---
-# <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>Jak používat službu Azure Storage Table nebo Cosmos DB tabulky rozhraní API z PHP
+# <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Jak používat službu Azure Table Storage nebo rozhraní Table API služby Azure Cosmos DB z PHP
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
 ## <a name="overview"></a>Přehled
-Tento průvodce vám ukáže, jak provádět běžné scénáře s využitím služby Azure Storage Table a rozhraní API služby Azure Cosmos DB tabulky. Ukázky jsou napsané v PHP a použití [klientské knihovny pro Azure Storage tabulky PHP][download]. Pokryté scénáře zahrnují **vytváření a odstraňování tabulek**, a **vkládání, odstraňování a dotazování entity v tabulce**. Další informace o službě Azure Table, najdete v článku [další kroky](#next-steps) části.
+Tato příručka ukazuje, jak provádět běžné scénáře pomocí služby Azure Table Storage a rozhraní Table API služby Azure Cosmos DB. Ukázky jsou napsané v PHP a využívají [klientskou knihovnu služby Azure Table Storage pro PHP][download]. Popsané scénáře zahrnují **vytvoření a odstranění tabulky** a **vkládání, odstraňování a dotazování entit v tabulce**. Další informace o službě Azure Table Storage najdete v části [Další kroky](#next-steps).
 
 
 ## <a name="create-an-azure-service-account"></a>Vytvoření účtu služby Azure
@@ -35,19 +33,19 @@ Tento průvodce vám ukáže, jak provádět běžné scénáře s využitím sl
 
 [!INCLUDE [cosmos-db-create-storage-account](../../includes/cosmos-db-create-storage-account.md)]
 
-### <a name="create-an-azure-cosmos-db-table-api-account"></a>Vytvoření účtu Azure Cosmos DB tabulky rozhraní API
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Vytvoření účtu rozhraní Table API služby Azure Cosmos DB
 
 [!INCLUDE [cosmos-db-create-tableapi-account](../../includes/cosmos-db-create-tableapi-account.md)]
 
 ## <a name="create-a-php-application"></a>Vytvoření aplikace PHP
 
-Jediný požadavek pro vytvoření aplikace PHP pro přístup k služby Storage Table nebo Azure Cosmos DB tabulky API je referenční třídy v sadě SDK tabulku úložiště azure pro jazyk PHP z vašeho kódu. Všechny nástroje pro vývoj slouží k vytvoření aplikace, včetně Poznámkový blok.
+Jediným požadavkem pro vytvoření aplikace PHP umožňující přístup ke službě Table Storage nebo rozhraní Table API služby Azure Cosmos DB je přidání odkazů na třídy v sadě SDK azure-storage-table pro PHP do vašeho kódu. K vytvoření aplikace můžete použít jakékoli vývojové nástroje, včetně Poznámkového bloku.
 
-V tomto průvodci použijete služby Storage Table nebo Azure Cosmos DB funkce, které lze volat z v rámci aplikace PHP místně nebo v kódu běžící v rámci webové role Azure, role pracovního procesu nebo webu.
+V této příručce budete používat funkce služby Table Storage nebo Azure Cosmos DB, které je možné volat místně z aplikace PHP nebo v kódu spuštěném v rámci webové role, role pracovního procesu nebo webu Azure.
 
-## <a name="get-the-client-library"></a>Získat klientské knihovny
+## <a name="get-the-client-library"></a>Získání klientské knihovny
 
-1. Vytvořte soubor s názvem composer.json v kořenu projektu a přidejte do ní následující kód:
+1. V kořenovém adresáři vašeho projektu vytvořte soubor composer.json a přidejte do něj následující kód:
 ```json
 {
   "require": {
@@ -55,58 +53,58 @@ V tomto průvodci použijete služby Storage Table nebo Azure Cosmos DB funkce, 
   }
 }
 ```
-2. Stáhněte si [composer.phar](http://getcomposer.org/composer.phar) v kořenového adresáře. 
-3. Otevřete příkazový řádek a spusťte následující příkaz v kořenového adresáře projektu:
+2. Do kořenového adresáře stáhněte soubor [composer.phar](http://getcomposer.org/composer.phar). 
+3. Otevřete příkazový řádek a spusťte následující příkaz v kořenovém adresáři vašeho projektu:
 ```
 php composer.phar install
 ```
-Případně přejděte do [klientské knihovny pro Azure Storage tabulky PHP](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) na Githubu klonovat zdrojového kódu.
+Případně můžete přejít do úložiště [klientské knihovny služby Azure Table Storage pro PHP](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) na GitHubu a zkopírovat si zdrojový kód.
 
 
-## <a name="add-required-references"></a>Přidejte požadované odkazy na
-Pokud chcete používat služby úložiště Table nebo rozhraní API Správce Azure Cosmos DB, musíte:
+## <a name="add-required-references"></a>Přidání požadovaných odkazů
+Pokud chcete používat službu Table Storage nebo rozhraní API služby Azure Cosmos DB, musíte:
 
-* Reference souboru pomocí automatického zavaděče [require_once] [ require_once] příkaz, a
-* Referenční všechny třídy, které používáte.
+* Přidat odkaz na soubor automatického načítání pomocí příkazu [require_once][require_once].
+* Přidat odkazy na všechny třídy, které používáte.
 
-Následující příklad ukazuje, jak se zahrnuje automatického zavaděče souboru a odkaz **TableRestProxy** třídy.
+Následující příklad ukazuje vložení souboru automatického načítání a odkazu na třídu **TableRestProxy**.
 
 ```php
 require_once 'vendor/autoload.php';
 use MicrosoftAzure\Storage\Table\TableRestProxy;
 ```
 
-V následujících příkladech `require_once` údajů se vždy zobrazí, ale jenom ty třídy potřebné pro tento příklad provést odkazují.
+V následujících příkladech se vždy zobrazuje příkaz `require_once`, který však odkazuje pouze na třídy nezbytné ke spuštění příkladu.
 
-## <a name="add-a-storage-table-service-connection"></a>Přidat připojení tabulky úložiště služby
-K vytváření instancí klienta služby Storage Table, musíte nejprve mít platný připojovací řetězec. Formát pro připojovací řetězec tabulky úložiště služby je:
+## <a name="add-a-storage-table-service-connection"></a>Přidání připojení ke službě Table Storage
+Pokud chcete vytvořit instanci klienta služby Table Storage, musíte nejprve mít platný připojovací řetězec. Formát připojovacího řetězce služby Table Storage je následující:
 
 ```php
 $connectionString = "DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]"
 ```
 
-## <a name="add-an-azure-cosmos-db-connection"></a>Přidat připojení k databázi Azure Cosmos
-K vytváření instancí klientem Azure Cosmos Databázové tabulce, musíte nejprve mít platný připojovací řetězec. Formát pro Azure Cosmos DB připojovacího řetězce je:
+## <a name="add-an-azure-cosmos-db-connection"></a>Přidání připojení ke službě Azure Cosmos DB
+Pokud chcete vytvořit instanci klienta Azure Cosmos DB, musíte nejprve mít platný připojovací řetězec. Formát připojovacího řetězce Azure Cosmos DB je následující:
 
 ```php
 $connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];AccountKey=[myaccountkey];TableEndpoint=[https://myendpoint/]";
 ```
 
-## <a name="add-a-storage-emulator-connection"></a>Přidat připojení emulátor úložiště
-Pro přístup k emulátoru úložiště:
+## <a name="add-a-storage-emulator-connection"></a>Přidání připojení k emulátoru úložiště
+Získání přístupu k úložišti emulátoru:
 
 ```php
 UseDevelopmentStorage = true
 ```
 
-Pro vytvoření aplikace klienta služby Azure Table nebo klienta Azure Cosmos DB, budete muset použít **TableRestProxy** třídy. Můžete:
+Pokud chcete vytvořit klienta služby Azure Table Storage nebo Azure Cosmos DB, musíte použít třídu **TableRestProxy**. Můžete:
 
-* Připojovací řetězec přímo jí předat nebo
-* Použití **CloudConfigurationManager (CCM)** zkontrolujte několik externích zdrojů pro připojovací řetězec:
-  * Ve výchozím nastavení je teď obsahuje podporu pro jeden externí zdroj – proměnné prostředí.
-  * Můžete přidat nové zdroje tím, že rozšíří `ConnectionStringSource` třídy.
+* Do ní předat připojovací řetězec přímo nebo
+* použít **CloudConfigurationManager (CCM)** k vyhledání připojovacího řetězce v několika externích zdrojích:
+  * Ve výchozím nastavení podporuje jeden externí zdroj – proměnné prostředí.
+  * Nové zdroje můžete přidat rozšířením třídy `ConnectionStringSource`.
 
-Příklady podle zde uvedeného je předaná přímo připojovací řetězec.
+Ve zde uvedených příkladech se připojovací řetězec předává přímo.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -117,7 +115,7 @@ $tableClient = TableRestProxy::createTableService($connectionString);
 ```
 
 ## <a name="create-a-table"></a>Vytvoření tabulky
-A **TableRestProxy** objektu umožňuje vytvořit tabulku s **createTable** metoda. Při vytváření tabulky, můžete nastavit časový limit služby Table. (Další informace o tabulce časový limit služby najdete v tématu [nastavení časových limitů pro operace služby s tabulkou][table-service-timeouts].)
+Objekt **TableRestProxy** umožňuje vytvořit tabulku pomocí metody **createTable**. Při vytváření tabulky můžete nastavit časový limit služby Table Storage. (Další informace o časovém limitu služby Table Storage najdete v tématu [Nastavení časových limitů pro operace služby Table Storage][table-service-timeouts].)
 
 ```php
 require_once 'vendor\autoload.php';
@@ -141,10 +139,10 @@ catch(ServiceException $e){
 }
 ```
 
-Informace o omezeních na názvy tabulek najdete v tématu [Principy datového modelu služby Table][table-data-model].
+Další informace o omezeních a názvech tabulek najdete v tématu [Vysvětlení datového modelu služby Table Storage][table-data-model].
 
 ## <a name="add-an-entity-to-a-table"></a>Přidání entity do tabulky
-Pokud chcete přidat entitu do tabulky, vytvořte novou **Entity** objektu a předejte ji do **TableRestProxy -> insertEntity**. Všimněte si, že při vytváření entity, musíte zadat `PartitionKey` a `RowKey`. Tyto jsou jedinečné identifikátory pro entitu a jsou hodnoty, které může být dotazován mnohem rychleji než ostatní vlastnosti entity. Používá systém `PartitionKey` automaticky distribuovat entity v tabulce přes mnoho uzly úložiště. Entity se stejným `PartitionKey` jsou uložené na stejném uzlu. (Provedení operace u více entit, které jsou uložené ve stejném uzlu lepší, než na entity ukládat v rámci různých uzlech.) `RowKey` Je jedinečný Identifikátor entity v rámci oddílu.
+Pokud chcete do tabulky přidat entitu, vytvořte nový objekt **Entity** a předejte ho do metody **TableRestProxy->insertEntity**. Nezapomeňte, že při vytváření entity musíte zadat `PartitionKey` a `RowKey`. Jedná se o jedinečné identifikátory entity a jsou to hodnoty, které je možné dotazovat mnohem rychleji než ostatní vlastnosti entity. Systém používá `PartitionKey` k automatické distribuci entit tabulky do mnoha uzlů úložiště. Entity se stejnou hodnotou `PartitionKey` se ukládají na stejném uzlu. (Operace s více entitami uloženými na stejném uzlu se provádějí rychleji než s entitami uloženými na různých uzlech.) `RowKey` představuje jedinečné ID entity v rámci oddílu.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -178,9 +176,9 @@ catch(ServiceException $e){
 }
 ```
 
-Informace o vlastnosti tabulky a typy najdete v tématu [Principy datového modelu služby Table][table-data-model].
+Další informace o typech a vlastnostech služby Table Storage najdete v tématu [Vysvětlení datového modelu služby Table Storage][table-data-model].
 
-**TableRestProxy** třída nabízí dvě alternativní metody pro vložení entity: **insertOrMergeEntity** a **insertOrReplaceEntity**. Pokud chcete použít tyto metody, vytvořte novou **Entity** a předejte ji jako parametr metody. Pokud neexistuje, každá metoda vloží entitu. Pokud entita již existuje, **insertOrMergeEntity** aktualizace hodnot vlastností, pokud již existují vlastnosti a přidá nové vlastnosti Pokud neexistují, při **insertOrReplaceEntity** úplně nahradí stávající entity. Následující příklad ukazuje, jak používat **insertOrMergeEntity**. Pokud entita s `PartitionKey` "tasksSeattle" a `RowKey` "1" již neexistuje, bude možné vložit. Ale pokud dříve vložení (jak je uvedeno v předchozím příkladu), `DueDate` vlastnost je aktualizovat a `Status` vlastnost je přidána. `Description` a `Location` jsou aktualizovány vlastnosti, ale s hodnotami, které efektivně je ponechte beze změny. Pokud tyto dvě vlastnosti pozdější nebyly přidány, jak je znázorněno v příkladu, ale byly na cílovou entitu, jejich existující hodnoty by zůstanou beze změny.
+Třída **TableRestProxy** nabízí dvě alternativní metody pro vkládání entit: **insertOrMergeEntity** a **insertOrReplaceEntity**. Pokud chcete tyto metody použít, vytvořte nový objekt **Entity** a předejte ho jako parametr do jedné z těchto metod. Obě metody vloží entitu, pokud ještě neexistuje. Pokud entita již existuje, metoda **insertOrMergeEntity** aktualizuje hodnoty vlastností, pokud vlastnosti již existují, a přidá nové vlastnosti, pokud ještě neexistují, zatímco metoda **insertOrReplaceEntity** zcela nahradí existující entitu. Následující příklad ukazuje použití metody **insertOrMergeEntity**. Pokud entita s `PartitionKey` s hodnotou tasksSeattle a `RowKey` s hodnotou 1 ještě neexistuje, vloží se. Pokud se však vložila dříve (jak je znázorněno v předchozím příkladu), vlastnost `DueDate` se aktualizuje a přidá se vlastnost `Status`. Vlastnosti `Description` a `Location` se také aktualizují, ale s použitím hodnot, které je prakticky ponechají beze změny. Pokud by se tyto dvě vlastnosti nepřidaly, jak je znázorněno v příkladu, ale existovaly by v cílové entitě, jejich stávající hodnoty by zůstaly beze změny.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -223,7 +221,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="retrieve-a-single-entity"></a>Načtení jedné entity
-**TableRestProxy -> getEntity** metoda umožňuje načíst jednu entitu pomocí dotazů na jeho `PartitionKey` a `RowKey`. V příkladu níže klíč oddílu `tasksSeattle` a klíč řádku `1` jsou předávány **getEntity** metoda.
+Metoda **TableRestProxy->getEntity** umožňuje načíst jednu entitu prostřednictvím zadání dotazu na její `PartitionKey` a `RowKey`. V následujícím příkladu se do metody **getEntity** předá klíč oddílu `tasksSeattle` a klíč řádku `1`.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -252,7 +250,7 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```
 
 ## <a name="retrieve-all-entities-in-a-partition"></a>Načtení všech entit v oddílu
-Dotazy na entity se vytvářejí pomocí filtrů (Další informace najdete v tématu [dotazování tabulky a entity][filters]). Pro načtení všech entit v oddílu, použijte filtr "PartitionKey eq *název_oddílu*". Následující příklad ukazuje, jak načíst všechny entity v `tasksSeattle` oddílu pomocí filtru k předání **queryEntities** metoda.
+Dotazy na entity se vytvářejí pomocí filtrů (další informace najdete v tématu [Dotazování tabulek a entit][filters]). Pokud chcete načíst všechny entity v oddílu, použijte filtr "PartitionKey eq *název_oddílu*". Následující příklad ukazuje načtení všech entit v oddílu `tasksSeattle` předáním filtru do metody **queryEntities**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -284,8 +282,8 @@ foreach($entities as $entity){
 }
 ```
 
-## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>Načtení podmnožinu entit v oddílu
-Stejným způsobem používaným v předchozím příkladu lze použít k načtení všech podmnožinu entit v oddílu. Určuje podmnožinu entity načtete filtru můžete použít (Další informace najdete v tématu [dotazování tabulky a entity][filters]). Následující příklad ukazuje, jak použít filtr k načtení všech entit s konkrétním `Location` a `DueDate` nižší než zadané datum.
+## <a name="retrieve-a-subset-of-entities-in-a-partition"></a>Načtení podmnožiny entit v oddílu
+Stejným způsobem, jako se použil v předchozím příkladu, je možné načíst jakoukoli podmnožinu entit v oddílu. Podmnožinu načtených entit určuje použitý filtr (další informace najdete v tématu [Dotazování tabulek a entit][filters]). Následující příklad ukazuje použití filtru k načtení všech entit s konkrétní hodnotou `Location` a hodnotou `DueDate` nižší než zadané datum.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -317,8 +315,8 @@ foreach($entities as $entity){
 }
 ```
 
-## <a name="retrieve-a-subset-of-entity-properties"></a>Načtení podmnožinu vlastností entity
-Dotaz můžete načíst podmnožinu vlastností entity. Tento postup volá *projekce*, omezuje šířku pásma a může zlepšit výkon dotazů, hlavně pro velké entity. Pokud chcete nastavit vlastnost, která má načíst, předat název vlastnosti, která má **dotazu -> addSelectField** metoda. Tuto metodu můžete volat více než jednou. Chcete-li přidat další vlastnosti. Po provedení **TableRestProxy -> queryEntities**, vrácené entity budou mít pouze vybraných vlastností. (V Pokud budete chtít vrátit podmnožinu entity tabulky, použijte filtr jak je znázorněno v dotazech výše.)
+## <a name="retrieve-a-subset-of-entity-properties"></a>Načtení podmnožiny vlastností entity
+Dotaz může načíst podmnožinu vlastností entity. Tato technika, označovaná jako *projekce*, snižuje šířku pásma a může zlepšit výkon dotazů, zejména u velkých entit. Pokud chcete zadat vlastnost, která se má načíst, předejte její název do metody **Query->addSelectField**. Tuto metodu můžete zavolat vícekrát a přidat další vlastnosti. Po spuštění metody **TableRestProxy->queryEntities** budou vrácené entity obsahovat pouze vybrané vlastnosti. (Pokud chcete vrátit podmnožinu entit tabulky, použijte filtr, jak je znázorněno v předchozích dotazech.)
 
 ```php
 require_once 'vendor/autoload.php';
@@ -357,7 +355,7 @@ foreach($entities as $entity){
 ```
 
 ## <a name="update-an-entity"></a>Aktualizace entity
-Můžete aktualizovat pomocí stávající entity **Entity -> setProperty** a **Entity -> AddProperty –** v entity a pak volání metody **TableRestProxy -> updateEntity**. Následující příklad načte entitu, upraví jednu vlastnost, odebere jinou vlastnost a přidá novou vlastnost. Všimněte si, že vlastnost můžete odebrat tak nastavení její hodnoty na **null**.
+Existující entitu můžete aktualizovat tak, že na ni použijete metody **Entity->setProperty** a **Entity->addProperty** a pak zavoláte metodu **TableRestProxy->updateEntity**. Následující příklad načte entitu, upraví jednu vlastnost, odebere jinou vlastnost a přidá novou vlastnost. Poznámka: Vlastnost můžete odebrat nastavením její hodnoty na **null**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -391,7 +389,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="delete-an-entity"></a>Odstranění entity
-Pokud chcete odstranit entitu, předat název tabulky a entity `PartitionKey` a `RowKey` k **TableRestProxy -> deleteEntity** metoda.
+Pokud chcete odstranit entitu, předejte název tabulky a hodnoty `PartitionKey` a `RowKey` entity do metody **TableRestProxy->deleteEntity**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -416,19 +414,19 @@ catch(ServiceException $e){
 }
 ```
 
-Pro kontrolách souběžnosti, můžete nastavit značku Etag pro entitu k odstranění pomocí **DeleteEntityOptions -> setEtag** metoda a předávání **DeleteEntityOptions** do objektu  **deleteEntity** jako čtvrtý parametr.
+Pokud chcete provést kontroly souběžnosti, můžete pomocí metody **DeleteEntityOptions->setEtag** nastavit značku entity, která se má odstranit, a předat objekt **DeleteEntityOptions** jako čtvrtý parametr do metody **deleteEntity**.
 
-## <a name="batch-table-operations"></a>Operace s tabulkou batch
-**TableRestProxy -> batch** metoda umožňuje spuštění více operací v jedné žádosti. Vzor zde vyžaduje přidání operací do **BatchRequest** objekt a následné předání **BatchRequest** do objektu **TableRestProxy -> batch** metoda. Chcete-li přidat operace **BatchRequest** objektu, žádný z následujících metod můžete volat vícekrát:
+## <a name="batch-table-operations"></a>Dávkové operace s tabulkou
+Metoda **TableRestProxy->batch** umožňuje v rámci jednoho požadavku spustit více operací. Zde uvedený vzorec zahrnuje přidání operací do objektu **BatchRequest** a následné předání objektu **BatchRequest** do metody **TableRestProxy->batch**. Pokud chcete do objektu **BatchRequest** přidat operaci, můžete několikrát zavolat jakoukoli z následujících metod:
 
-* **addInsertEntity** (přidá insertEntity operace)
-* **addUpdateEntity** (přidá updateEntity operace)
-* **addMergeEntity** (přidá mergeEntity operace)
-* **addInsertOrReplaceEntity** (přidá insertOrReplaceEntity operace)
-* **addInsertOrMergeEntity** (přidá insertOrMergeEntity operace)
-* **addDeleteEntity** (přidá deleteEntity operace)
+* **addInsertEntity** (přidá operaci insertEntity)
+* **addUpdateEntity** (přidá operaci updateEntity)
+* **addMergeEntity** (přidá operaci mergeEntity)
+* **addInsertOrReplaceEntity** (přidá operaci insertOrReplaceEntity)
+* **addInsertOrMergeEntity** (přidá operaci insertOrMergeEntity)
+* **addDeleteEntity** (přidá operaci deleteEntity)
 
-Následující příklad ukazuje, jak provádět **insertEntity** a **deleteEntity** operace v jedné žádosti. 
+Následující příklad ukazuje spuštění operací **insertEntity** a **deleteEntity** v rámci jednoho požadavku. 
 
 ```php
 require_once 'vendor/autoload.php';
@@ -476,10 +474,10 @@ catch(ServiceException $e){
 }
 ```
 
-Další informace o dávkování operace s tabulkou najdete v tématu [provádění transakcí skupiny Entity][entity-group-transactions].
+Další informace o dávkování operací s tabulkou najdete v tématu [Provádění transakcí skupin entit][entity-group-transactions].
 
 ## <a name="delete-a-table"></a>Odstranění tabulky
-Nakonec pokud chcete odstranit tabulku, předat název tabulky k **TableRestProxy -> deleteTable** metoda.
+A konečně, pokud chcete odstranit tabulku, předejte název tabulky do metody **TableRestProxy->deleteTable**.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -504,12 +502,12 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>Další postup
-Teď, když jste se naučili základy služby Azure Table a Azure Cosmos DB, postupujte podle následujících odkazech na další informace.
+## <a name="next-steps"></a>Další kroky
+Seznámili jste se se základy služby Azure Table Storage a Azure Cosmos DB. Další informace najdete na následujících odkazech.
 
 * [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) je bezplatná samostatná aplikace od Microsoftu, která umožňuje vizuálně pracovat s daty Azure Storage ve Windows, macOS a Linuxu.
 
-* [Středisko pro vývojáře PHP](/develop/php/).
+* [Centrum pro vývojáře PHP](/develop/php/)
 
 [download]: https://packagist.org/packages/microsoft/azure-storage-table
 [require_once]: http://php.net/require_once

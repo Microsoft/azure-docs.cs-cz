@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 9e63fe6b-0ad0-405d-9e41-6a1a40a41df8
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 37439fa6a6625d70e33fa31dcbba480602fff4f1
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1800c6be30af57707ef2a0f06077ea5a0634124d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904086"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221559"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-menlo-security"></a>Kurz: Azure Active Directory integrace s Menlo zabezpečení
 

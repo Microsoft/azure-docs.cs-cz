@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 8e521099-bf7d-43ab-a0e0-86aa1c9e577e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 7c002139e4c9c5bd5f985f282a077d6c49f2d686
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 44b34c20c8b21b58ef67beedc1074f0664048b90
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899433"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>Kurz: Azure Active Directory integrace s Manabi Pocket
 

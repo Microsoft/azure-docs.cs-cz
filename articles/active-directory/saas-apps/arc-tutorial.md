@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: ae609583-f875-4cb8-b68e-1b0b7938e9a7
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 9fe3740bf6ad9fe0fd7847f4e1ab0764ea5e4a72
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: bf811d789c0c6effd6f8940ad433092ea9ba04cb
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913481"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210067"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arc-publishing---sso"></a>Kurz: Azure Active Directory integrace s oblouk publikování - jednotného přihlašování
 

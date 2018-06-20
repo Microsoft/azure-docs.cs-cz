@@ -184,6 +184,8 @@
 ### [Přehled](manage-apps/what-is-application-management.md)
 ### [Začínáme](manage-apps/plan-an-application-integration.md)
 ### [Kurzy integrace aplikací SaaS](saas-apps/tutorial-list.md)
+
+
 ### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
 #### [Vytvoření sestav snímků](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
 #### [Konfigurace průběžného vytváření sestav](https://docs.microsoft.com/cloud-app-security/discovery-docker)
@@ -255,27 +257,110 @@
 #### [Exportní tenanta](manage-apps/tenant-restrictions.md)
 #### [Použití uživatelů zřizování SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 
-### [Řešení problémů](active-directory-application-troubleshoot-content-map.md)
-#### [Vývoj aplikací](active-directory-application-dev-troubleshoot-content-map.md)
-##### [Konfigurace a registrace](active-directory-application-dev-config-content-map.md)
-##### [Vývoj](active-directory-application-dev-development-content-map.md)
-#### [Správa aplikací](active-directory-application-management-troubleshoot-content-map.md)
-##### [Konfigurace](active-directory-application-config-content-map.md)
-##### [Přihlášení](active-directory-application-sign-in-content-map.md)
-##### [Zřizování](active-directory-application-provisioning-content-map.md)
 
-###### [Ověření zřízení uživatele](application-provisioning-when-will-provisioning-finish-specific-user.md) 
-###### [Zřizování trvá příliš dlouho](application-provisioning-when-will-provisioning-finish.md) 
-###### [Postup konfigurace zřizování uživatelů](application-provisioning-config-how-to.md) 
-###### [Problém konfigurace zřizování](application-provisioning-config-problem.md) 
-###### [Problém s uložením přihlašovacích údajů správce](application-provisioning-config-problem-storage-limit.md) 
-###### [Neprobíhá zřizování žádných uživatelů](application-provisioning-config-problem-no-users-provisioned.md) 
-###### [Probíhá zřizování nesprávných uživatelů](application-provisioning-config-problem-wrong-users-provisioned.md) 
+### Řešení potíží
 
-##### [Správa přístupu](active-directory-application-access-content-map.md)
-##### [Přístupový panel](active-directory-application-access-panel-content-map.md)
-##### [Proxy soubor aplikace](active-directory-application-proxy-content-map.md)
-##### [Podmíněný přístup](active-directory-application-conditional-access-content-map.md)
+
+
+#### Přístupový panel
+##### [Aplikace se nezobrazuje](application-access-panel-unexpected-application-not-appearing.md)
+##### [Zobrazuje e neočekávaná aplikace](application-access-panel-unexpected-application-appears.md)
+##### [Nejde se přihlásit](application-access-panel-web-sign-in-problem.md)
+##### [Chyba při instalaci rozšíření prohlížeče](application-access-panel-extension-problem-installing.md)
+##### [Jak využívat samoobslužný přístup k aplikacím](application-access-panel-self-service-applications-how-to.md)
+##### [Chyba při využívání samoobslužného přístupu k aplikacím](application-access-panel-self-service-applications-problem.md)
+
+#### Přidání aplikace
+##### [Volba typu aplikace](application-config-add-app-problem-how-to-choose-application-type.md)
+##### [Běžné problémy – aplikace v galerii](application-config-add-app-problem-problem-adding-gallery-app.md)
+##### [Běžné problémy – aplikace mimo galerii](application-config-add-app-problem-problem-adding-non-gallery-app.md)
+
+#### Proxy aplikací
+##### [Potíže při zobrazování stránky aplikace](application-proxy-page-appearance-broken-problem.md)
+##### [Načítání aplikace trvá příliš dlouho](application-proxy-page-load-speed-problem.md)
+##### [Odkazy na stránce aplikace nefungují](application-proxy-page-links-broken-problem.md)
+##### [Jaké porty je potřeba odemknout pro mou aplikaci](application-proxy-connectivity-ports-how-to.md)
+##### [Ve skupině konektorů není žádný fungující konektor pro mou aplikaci](application-proxy-connectivity-no-working-connector.md)
+##### [Konfigurace na portálu pro správu](application-proxy-config-how-to.md)
+##### [Konfigurace jednotného přihlašování k mé aplikaci](application-proxy-config-sso-how-to.md)
+##### [Potíže při vytváření aplikace na portálu pro správu](application-proxy-config-problem.md)
+##### [Konfigurace omezeného delegování Kerberos](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
+##### [Konfigurace s využitím PingAccess](application-proxy-back-end-ping-access-how-to.md)
+##### [Chyba typu Není přístup k podnikové aplikaci](application-proxy-sign-in-bad-gateway-timeout-error.md)
+##### [Potíže při instalaci konektoru agenta proxy aplikací](application-proxy-connector-installation-problem.md)
+
+
+#### Registrace aplikací
+##### [Zadání polí pro objekt aplikace](application-dev-registration-config-specific-application-property-how-to.md)
+##### [Změna výchozího nastavení životnosti tokenu](application-dev-registration-config-change-token-lifetime-how-to.md)
+
+#### Authentication
+##### [Konfigurace koncových bodů](application-dev-registration-config-how-to.md)
+
+#### Podmíněný přístup
+##### [Zákazník nesplnil předběžné požadavky registrace zařízení](active-directory-conditional-access.md)
+##### [Tenant je blokovaný kvůli nesprávnému nastavení zásad podmíněného přístupu](active-directory-conditional-access-device-remediation.md)
+##### [Jak a kdy se uplatní vypnutá pravidla corpnet?](https://aka.ms/calocation)
+##### [Jak zvýšit počet zařízení, které může uživatel zaregistrovat ve službě Azure AD?](active-directory-azureadjoin-setup.md)
+##### [Jak nastavit podmíněný přístup pro Exchange Online?](https://aka.ms/csforexchange)
+##### [Jak nastavit podmíněný přístup pro zařízení s Windows 7?](active-directory-conditional-access.md#device-based-conditional-access)
+##### [Které aplikace jsou podporované s podmíněným přístupem?](active-directory-conditional-access-supported-apps.md)
+
+#### Vyhledání rozhraní API
+##### [Vyhledání rozhraní API](application-dev-api-find-an-api-how-to.md)
+
+#### Správa přístupu
+##### [Přiřazení uživatelů a skupin k aplikaci](application-access-assignment-how-to-add-assignment.md)
+##### [Odebrání přístupu uživatele k aplikaci](application-access-assignment-how-to-remove-assignment.md)
+##### [Konfigurace samoobslužného přiřazení aplikace](application-access-self-service-how-to.md)
+##### [Přiřazený neočekávaný uživatel](application-access-unexpected-user-assignment.md)
+##### [Neočekávaná aplikace v seznamu aplikací](application-access-unexpected-application.md)
+
+#### Aplikace s více tenanty
+##### [Konfigurace nové aplikace](application-dev-setup-multi-tenant-app.md)
+##### [Přidání do galerie aplikací](application-dev-registration-config-multi-tenant-application-add-to-gallery-how-to.md)
+
+#### Oprávnění
+##### [Volba oprávnění pro rozhraní API](application-dev-perms-for-given-api.md)
+##### [Udělení oprávnění pro mou aplikaci](application-dev-registration-config-grant-permissions-how-to.md)
+##### [Delegovaná oprávnění versus oprávnění aplikace](application-dev-delegated-and-app-perms.md)
+##### [Souhlas pro aplikaci](application-dev-consent-framework.md)
+
+#### Zřizování
+##### [Jak dlouho to trvá](application-provisioning-when-will-provisioning-finish-specific-user.md)
+##### [Hodiny – aplikace v galerii](application-provisioning-when-will-provisioning-finish.md)
+##### [Konfigurace zřizování uživatelů – aplikace v galerii](application-provisioning-config-how-to.md)
+##### [Potíže s konfigurací zřizování uživatelů – aplikace v galerii](application-provisioning-config-problem.md)
+##### [Potíže při ukládání přihlašovacích údajů správce při konfigurací zřizování uživatelů – aplikace v galerii](application-provisioning-config-problem-storage-limit.md)
+##### [Uživatelé nejsou zřízení – aplikace v galerii](application-provisioning-config-problem-no-users-provisioned.md)
+##### [Zřízení nesprávných uživatelů konfigurací zřizování uživatelů – aplikace v galerii](application-provisioning-config-problem-wrong-users-provisioned.md)
+
+#### Jednotné přihlašování
+##### [Volba metody](application-config-sso-how-to-choose-sign-on-method.md)
+##### [Konfigurace](application-dev-registration-config-sso-how-to.md)
+##### [Konfigurace federovaného jednotného přihlašování – aplikace v galerii](application-config-sso-how-to-configure-federated-sso-gallery.md)
+##### [Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace v galerii](application-config-sso-problem-configure-federated-sso-gallery.md)
+##### [Konfigurace federovaného jednotného přihlašování – aplikace mimo galerii](application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+##### [Běžné potíže s konfigurací federovaného jednotného přihlašování – aplikace mimo galerii](application-config-sso-problem-configure-federated-sso-non-gallery.md)
+##### [Konfigurace hesel – aplikace v galerii](application-config-sso-how-to-configure-password-sso-gallery.md)
+##### [Běžné potíže s konfigurací hesel – aplikace v galerii](application-config-sso-problem-configure-password-sso-gallery.md)
+##### [Konfigurace hesel – aplikace mimo galerii](application-config-sso-how-to-configure-password-sso-non-gallery.md)
+##### [Běžné potíže s konfigurací hesel – aplikace mimo galerii](application-config-sso-problem-configure-password-sso-non-gallery.md)
+
+#### Potíže s přihlášením uživatelů
+##### [Neočekávaná výzva k poskytnutí souhlasu](application-sign-in-unexpected-user-consent-prompt.md)
+##### [Chyba souhlasu uživatele](application-sign-in-unexpected-user-consent-error.md)
+##### [Potíže s přihlašováním z vlastního portálu](application-sign-in-other-problem-deeplink.md)
+##### [Potíže s přihlašováním z přístupového panelu](application-sign-in-other-problem-access-panel.md)
+##### [Chyba na přihlašovací stránce aplikace](application-sign-in-problem-application-error.md)
+##### [Potíže s jednotným přihlašováním pomocí hesla – aplikace mimo galerii](application-sign-in-problem-password-sso-non-gallery.md)
+##### [Potíže s jednotným přihlašováním pomocí hesla – aplikace v galerii](application-sign-in-problem-password-sso-gallery.md)
+##### [Potíže s přihlášením k aplikaci Microsoftu](application-sign-in-problem-first-party-microsoft.md)
+##### [Potíže s federovaným jednotným přihlašováním – aplikace mimo galerii](application-sign-in-problem-federated-sso-non-gallery.md)
+##### [Potíže s federovaným jednotným přihlašováním – aplikace v galerii](application-sign-in-problem-federated-sso-gallery.md)
+##### [Potíže s vlastní vyvinutou aplikací](application-sign-in-problem-custom-dev.md)
+##### [Potíže s místní aplikací – proxy aplikací](application-sign-in-problem-on-premises-application-proxy.md)
+
 ### [Vývoj aplikací](active-directory-applications-guiding-developers-for-lob-applications.md)
 ### [Knihovna dokumentů](active-directory-apps-index.md)
 

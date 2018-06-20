@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: a6799629-7546-43f8-a966-956db32864b1
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 2a95b6108bb52dc5a5b28bf51ebf431a00a9faa8
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: dacc133f1c6d15aa1fc886ab9086109951478929
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898960"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219896"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Kurz: Azure Active Directory integrace s FirmPlay - hájící zájmy zaměstnanec pro nábor
 

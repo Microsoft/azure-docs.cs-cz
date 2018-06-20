@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: dafa0864-aef2-4f5e-9eac-770504688ef4
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: jeedes
-ms.openlocfilehash: b52d191162857a4f196591d1cace08bf9d628b60
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 55ee7f6b496def5669160f5cfafed7bc6d7eab11
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899004"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219366"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>Kurz: Azure Active Directory integrace s Netsuite
 

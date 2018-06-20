@@ -18,6 +18,7 @@
 ### [Upgrade z předchozí verze](active-directory-aadconnect-upgrade-previous-version.md)
 ### [Instalace s využitím existující databáze ADSync](active-directory-aadconnect-existing-database.md)
 ### [Instalace pomocí oprávnění delegovaného správce SQL](active-directory-aadconnect-sql-delegation.md)
+### [Přesun databáze Azure AD Connect na vzdálený SQL Server](active-directory-aadconnect-move-db.md)
 
 # Postup
 ## Plánování a návrh

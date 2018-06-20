@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 48b6bee0-dbc5-4863-964d-75b25e517741
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 1813c88b972f75412743bdfc0cfe94f85bb6021c
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: a2eaee7af1ae87900fb989f52573200838f6c888
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900996"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222919"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-showpad"></a>Kurz: Azure Active Directory integrace s Showpad
 

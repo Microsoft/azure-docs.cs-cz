@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 2aed2d4b-1dcd-4839-8fed-9419d107c61c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 97014458ddf00305691c78ce6b45eb9e36a3045b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 8266da9c6b7aaa0aea2cd5cefb73febc090f3ba5
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899171"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moxtra"></a>Kurz: Azure Active Directory integrace s Moxtra
 

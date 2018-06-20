@@ -1,6 +1,6 @@
 ---
-title: "Zálohování virtuálních počítačů Azure ve velkém měřítku | Microsoft Docs"
-description: "Současné zálohování několika virtuálních počítačů do Azure"
+title: Zálohování virtuálních počítačů Azure ve velkém měřítku
+description: Současné zálohování několika virtuálních počítačů do Azure
 services: backup
 keywords: virtual machine backup; virtual machine back up; back up vm; backup vm; backup Azure vm; backup and disaster recovery
 author: markgalioto
@@ -9,11 +9,12 @@ ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: f1cfa72d0fb3c83ef6265649b740dec317f0e4b2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ecbf583a9b64868004b246bb01e7f174a21496b0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34607460"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Zálohování několika virtuálních počítačů pomocí webu Azure Portal
 

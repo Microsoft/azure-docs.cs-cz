@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 8c9dc6e6-5d85-4553-8a35-c7137064b928
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 9d450784e9231f8dc7e6a07cfc1157f8cafaab34
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: fa52e444dae922c07ce4c1abf191342c66d9f223
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901009"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210305"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonly"></a>Kurz: Azure Active Directory integrace s Lesson.ly
 

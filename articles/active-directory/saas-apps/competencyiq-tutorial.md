@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: e262bf7e-cc7d-4d0e-aea7-861f00d8837d
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 7b67a7c1df3c5bb70b146b98aab5989dde00c841
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2794c77ecf1fdc8b60edde81ef8e22fc0bfe0aa1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899184"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-competencyiq"></a>Kurz: Azure Active Directory integrace s CompetencyIQ
 

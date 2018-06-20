@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7284dfb6-df62-41f1-a4a4-1b8322b7ef44
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jeedes
-ms.openlocfilehash: a46f10a50d08f1671ac7fb2d9db333a5405336d3
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 270c3b9965665643b8406827cb7421ba46198b4a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898973"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221106"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Kurz: Azure Active Directory integrace s Accredible
 

@@ -15,15 +15,16 @@ ms.workload: ''
 ms.date: 10/30/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 103acb1d6b031f9ef1724ae72ce8c894403f40ed
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 49601932f4676bc0df685531a20ed8595dc1d506
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34604756"
 ---
 # <a name="allowed-express-route-skus"></a>Povolené skladové položky Express Route
 
-Tato zásada vyžaduje, aby okruhy Express Route používaly schválené skladové položky. Zadáte pole povolených skladových položek.
+Tato zásada vyžaduje, aby okruhy Express Route používaly schválené skladové položky. Zadejte pole povolených skladových položek.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -76,4 +77,4 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další ukázkové šablony pro Azure Policy najdete v tématu [Šablony pro Azure Policy](../json-samples.md).
+- Další příklady najdete v [Ukázkách Azure Policy](../json-samples.md).

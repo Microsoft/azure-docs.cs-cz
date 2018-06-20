@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: de8b354cf0199d36d5e0b1410a9f79d4a9e3e05c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: efd8e93f32020d1ef3695e7fc6b9907374275848
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359777"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608385"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Kurz: Přidání Azure CDN do webové aplikace služby Azure App Service
 
@@ -55,6 +55,9 @@ Při vytváření webové aplikace, se kterou budete pracovat, postupujte podle 
 
 Otevřete prohlížeč a přejděte na web [Azure Portal](https://portal.azure.com).
 
+### <a name="dynamic-site-acceleration-optimization"></a>Optimalizace akcelerace dynamického webu
+Pokud chcete koncový bod CDN optimalizovat pro akceleraci dynamického webu (DSA), měli byste k vytvoření profilu a koncového bodu použít [portál CDN](cdn-create-new-endpoint.md). Díky [optimalizaci DSA](cdn-dynamic-site-acceleration.md) se výkon webových stránek s dynamickým obsahem prokazatelně zlepší. Pokyny k optimalizaci koncového bodu CDN pro akceleraci dynamického webu na portálu CDN najdete v tématu o [konfiguraci koncového bodu CDN kvůli rychlejšímu poskytování dynamických souborů](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files). Pokud ale nechcete nový koncový bod optimalizovat, můžete k jeho vytvoření použít portál webových aplikací podle kroků v další části. U profilů **Azure CDN od Verizonu** nemůžete změnit optimalizaci vytvořeného koncového bodu CDN.
+
 ## <a name="create-a-cdn-profile-and-endpoint"></a>Vytvoření koncového bodu a profilu CDN
 
 Na levém navigačním panelu vyberte **App Services** a pak vyberte aplikaci, kterou jste vytvořili v [rychlém úvodu ke statickému HTML](../app-service/app-service-web-get-started-html.md).
@@ -64,9 +67,6 @@ Na levém navigačním panelu vyberte **App Services** a pak vyberte aplikaci, k
 Na stránce **App Service** v části **Nastavení** vyberte **Sítě > Konfigurovat Azure CDN pro aplikaci**.
 
 ![Výběr CDN na portálu](media/cdn-add-to-web-app/portal-select-cdn.png)
-
-### <a name="dynamic-site-acceleration-optimization"></a>Optimalizace akcelerace dynamického webu
-Pokud chcete koncový bod CDN optimalizovat pro akceleraci dynamického webu (DSA), vytvořte koncový bod přímo na portálu CDN. Díky [optimalizaci DSA](cdn-dynamic-site-acceleration.md) se výkon webových stránek s dynamickým obsahem prokazatelně zlepší. Další informace o optimalizaci koncového bodu CDN pro akceleraci dynamického webu na portálu CDN najdete v tématu o [konfiguraci koncového bodu CDN kvůli rychlejšímu poskytování dynamických souborů](cdn-dynamic-site-acceleration.md#cdn-endpoint-configuration-to-accelerate-delivery-of-dynamic-files). U profilů **Azure CDN od Verizonu** nemůžete změnit optimalizaci vytvořeného koncového bodu CDN.
 
 Na stránce **Azure Content Delivery Network** zadejte pro **Nový koncový bod** nastavení tak, jak je uvedeno v tabulce.
 

@@ -1,26 +1,24 @@
 ---
 title: Kurz vývoje aplikace Java využívající službu Azure Cosmos DB | Dokumentace Microsoftu
-description: Tento kurz webové aplikace Java popisuje, jak používat Azure Cosmos DB a rozhraní SQL API k uložení a přístup k datům z aplikace Java hostované na webech Azure.
-keywords: Vývoj aplikací, databázi, aplikaci java, kurz webové aplikace java, azure, Microsoft azure
+description: Tento kurz vývoje webové aplikace Java ukazuje, jak pomocí služby Azure Cosmos DB a rozhraní SQL API ukládat data a přistupovat k nim z aplikace Java hostované ve službě Azure Websites.
+keywords: Application development, database tutorial, java application, java web application tutorial, azure, Microsoft azure
 services: cosmos-db
-documentationcenter: java
 author: dennyglee
 manager: kfile
-ms.assetid: 0867a4a2-4bf5-4898-a1f4-44e3868f8725
 ms.service: cosmos-db
+ms.component: cosmosdb-sql
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
+ms.topic: tutorial
 ms.date: 08/22/2017
 ms.author: denlee
-ms.openlocfilehash: 2124e22ca5ab47b5e1836384132014cc0b356ff1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: 4e3fd2fc31bda1dd8172c574fe087d9fcc6068db
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796821"
 ---
-# <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Vytvoření webové aplikace Java pomocí Azure Cosmos DB a rozhraní SQL API
+# <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Sestavení webové aplikace Java využívající službu Azure Cosmos DB a rozhraní SQL API
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
 > * [Node.js](sql-api-nodejs-application.md)
@@ -29,9 +27,9 @@ ms.lasthandoff: 04/06/2018
 > 
 > 
 
-Tento kurz webové aplikace Java se dozvíte, jak používat [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) služby k ukládání a přístup k datům z aplikace Java hostované v Azure App Service Web Apps. V tomto tématu se naučíte:
+Tento kurz vývoje webové aplikace Java ukazuje, jak pomocí služby [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) ukládat data a přistupovat k nim z aplikace Java hostované ve službě Azure App Service Web Apps. V tomto článku se dozvíte:
 
-* Jak vytvořit základní aplikaci JavaServer stránky (JSP) v prostředí Eclipse.
+* Jak vytvořit základní aplikaci JSP (JavaServer Pages) v prostředí Eclipse.
 * Jak pracovat se službou Azure Cosmos DB pomocí sady [Azure Cosmos DB Java SDK](https://github.com/Azure/azure-documentdb-java).
 
 Tento kurz o aplikaci Java vám ukáže, jak vytvořit webovou aplikaci pro správu úkolů, která umožňuje vytvářet a získávat úkoly a označovat je jako dokončené, jak ilustruje následující obrázek. Každý z úkolů v seznamu se ve službě Azure Cosmos DB ukládá jako dokument JSON.
@@ -52,11 +50,11 @@ Než zahájíte tento kurz vývoje aplikace, musíte mít následující:
 
 * [Java Development Kit (JDK) 7+](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Integrované vývojové prostředí Eclipse pro vývojáře v jazyce Java EE](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
-* [Web s Azure s Java runtime environment (např. Tomcat nebo Jetty) povolen.](../app-service/app-service-web-get-started-java.md)
+* [Web Azure se zapnutou platformou Java Runtime Environment (např. Tomcat nebo Jetty)](../app-service/app-service-web-get-started-java.md)
 
 Pokud tyto nástroje instalujete poprvé, coreservlets.com poskytuje k procesu instalace návod v části Quick Start článku [Tutorial: Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) (Kurz: Instalace TomCat7 a jeho použití s Eclipse).
 
-## <a id="CreateDB"></a>Krok 1: Vytvoření účtu Azure Cosmos DB
+## <a id="CreateDB"></a>Krok 1: Vytvoření účtu služby Azure Cosmos DB
 Začněme vytvořením účtu služby Azure Cosmos DB. Pokud již účet máte nebo pokud používáte pro účely tohoto kurzu emulátor služby Azure Cosmos DB, můžete přeskočit na [Krok 2: Vytvoření aplikace Java JSP](#CreateJSP).
 
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
@@ -85,8 +83,8 @@ Vytvoření aplikace JSP:
    
     ![Hello World – kurz aplikace Java](./media/sql-api-java-application/image12.png)
 
-## <a id="InstallSDK"></a>Krok 3: Instalace SQL Java SDK
-Nejjednodušší způsob, jak stáhnout sady Java SDK SQL a jeho závislé součásti je prostřednictvím [Apache Maven](http://maven.apache.org/).
+## <a id="InstallSDK"></a>Krok 3: Instalace sady SQL Java SDK
+Nejjednodušším způsobem, jak stáhnout sadu SQL Java SDK a její závislosti, je použít [Apache Maven](http://maven.apache.org/).
 
 K tomu bude nutné převést projekt na projekt Maven. K tomu slouží následující kroky:
 
@@ -96,20 +94,20 @@ K tomu bude nutné převést projekt na projekt Maven. K tomu slouží následuj
 4. Na kartě **Dependencies** (Závislosti) v podokně **Dependencies** klikněte na **Add** (Přidat).
 5. V okně **Select Dependency** (Vybrat závislost) udělejte následující:
    
-   * V **Id skupiny** zadejte com.microsoft.azure.
-   * V **Id artefaktů** zadejte azure-documentdb.
-   * V **verze** zadejte 1.5.1.
+   * Do pole **Group Id** (ID skupiny) zadejte com.microsoft.azure.
+   * Do pole **Artifact Id** (ID artefaktu) zadejte azure-documentdb.
+   * Do pole **Version** (Verze) zadejte 1.5.1.
      
-   ![Instalace SQL Java Application SDK](./media/sql-api-java-application/image13.png)
+   ![Instalace sady SQL Java Application SDK](./media/sql-api-java-application/image13.png)
      
-   * Nebo přidejte XML závislosti pro Id skupiny a Id artefaktů přímo do souboru pom.xml pomocí textového editoru:
+   * Nebo přidejte XML závislosti pro GroupId a ArtifactId přímo do souboru pom.xml pomocí textového editoru:
      
         <dependency> <groupId>com.microsoft.azure</groupId> <artifactId>azure-documentdb</artifactId> <version>1.9.1</version> </dependency>
-6. Klikněte na tlačítko **OK** a Maven nainstaluje SQL Java SDK.
+6. Klikněte na **OK** a Maven nainstaluje sadu SQL Java SDK.
 7. Uložte soubor pom.xml.
 
 ## <a id="UseService"></a>Krok 4: Využití služby Azure Cosmos DB v aplikaci Java
-1. Nejdříve definujme objekt TodoItem v TodoItem.java:
+1. Nejdříve definujme objekt TodoItem v souboru TodoItem.java:
    
         @Data
         @Builder
@@ -120,8 +118,8 @@ K tomu bude nutné převést projekt na projekt Maven. K tomu slouží následuj
             private String name;
         }
    
-    V tomto projektu používáme [Project Lombok](http://projectlombok.org/), pomocí kterého generujeme konstruktor, metody getter a setter a tvůrce (builder). Alternativně můžete tento kód napsat ručně nebo jej vygenerovat pomocí rozhraní IDE.
-2. Abyste mohli vyvolat službu Azure Cosmos DB, musíte vytvořit novou instanci **DocumentClient**. Obecně je lépe opakovaně používat **DocumentClient** než pro každý další požadavek vytvářet nového klienta. Klienta můžeme opakovaně používat tak, že jej zabalíme do **DocumentClientFactory**. V DocumentClientFactory.java, je třeba vložit hodnotu URI a PRIMARY KEY jste uložili do schránky v [krok 1](#CreateDB). Nahraďte [YOUR\_ENDPOINT\_HERE] hodnotou URI a [YOUR\_KEY\_HERE] hodnotou PRIMARY KEY.
+    V tomto projektu používáte [Project Lombok](http://projectlombok.org/), pomocí kterého generujeme konstruktor, metody getter a setter a tvůrce (builder). Alternativně můžete tento kód napsat ručně nebo jej vygenerovat pomocí rozhraní IDE.
+2. Abyste mohli vyvolat službu Azure Cosmos DB, musíte vytvořit novou instanci **DocumentClient**. Obecně je lépe opakovaně používat **DocumentClient** než pro každý další požadavek vytvářet nového klienta. Klienta můžeme opakovaně používat tak, že jej zabalíme do **DocumentClientFactory**. Do souboru DocumentClientFactory.java je zapotřebí vložit hodnotu URI a PRIMARY KEY, kterou jste uložili do schránky v [kroku 1](#CreateDB). Nahraďte [YOUR\_ENDPOINT\_HERE] hodnotou URI a [YOUR\_KEY\_HERE] hodnotou PRIMARY KEY.
    
         private static final String HOST = "[YOUR_ENDPOINT_HERE]";
         private static final String MASTER_KEY = "[YOUR_KEY_HERE]";
@@ -278,7 +276,7 @@ K tomu bude nutné převést projekt na projekt Maven. K tomu slouží následuj
                 return null;
             }
         }
-7. Také můžeme použít DocumentClient k získání kolekce nebo seznamu objektů Todoitem pomocí SQL:
+7. Také můžeme použít DocumentClient k získání kolekce nebo seznamu objektů TodoItem pomocí SQL:
    
         @Override
         public List<TodoItem> readTodoItems() {
@@ -343,7 +341,7 @@ K tomu bude nutné převést projekt na projekt Maven. K tomu slouží následuj
         }
 
 ## <a id="Wire"></a>Krok 5: Vzájemné propojení zbytku projektu vývoje aplikace Java
-Teď, když jsme dokončili fun bits - již zbývá je sestavení rychlé uživatelské rozhraní a propojit je s objektem DAO.
+Nyní když jsme dokončili ty zábavné části, zbývá již jen vytvořit rychlé uživatelské rozhraní a propojit je s objektem DAO.
 
 1. Nejdříve začneme vytvořením kontroleru, který bude náš objekt DAO volat:
    
@@ -450,7 +448,7 @@ Teď, když jsme dokončili fun bits - již zbývá je sestavení rychlé uživa
                 doGet(request, response);
             }
         }
-3. Budeme potřebovat webové uživatelské rozhraní zobrazit uživateli. Přepišme soubor index.jsp, který jsme vytvořili dříve:
+3. Budeme potřebovat webové uživatelské rozhraní, které se zobrazí uživateli. Přepišme soubor index.jsp, který jsme vytvořili dříve:
     ```html
         <html>
         <head>
@@ -539,7 +537,7 @@ Teď, když jsme dokončili fun bits - již zbývá je sestavení rychlé uživa
         </body>
         </html>
     ```
-4. A nakonec napišme určitého kódu JavaScript na straně klienta ke svázání společně webové uživatelské rozhraní a se servletem:
+4. A nakonec napišme kód JavaScript na straně klienta, který prováže webové uživatelské rozhraní se servletem:
    
         var todoApp = {
           /*
@@ -714,19 +712,19 @@ Teď, když jsme dokončili fun bits - již zbývá je sestavení rychlé uživa
 5. Skvělé! Nyní již zbývá aplikaci jen otestovat. Spusťte aplikaci místně a zadáním názvů a kategorie položek a kliknutím na **Add Task** (Přidat úkol) přidejte několik položek Todo.
 6. Až se položka zobrazí, můžete aktualizovat, zda je dokončená, přepínáním zaškrtávacího políčka a kliknutím na **Update Tasks** (Aktualizovat úkoly).
 
-## <a id="Deploy"></a>Krok 6: Nasazení aplikace v jazyce Java na weby Azure
-Díky weby Azure je nasazování aplikací Java stejně snadné jako Export aplikace jako souboru WAR a jeho nahrání buď přes řízení zdrojů (např. Git) nebo FTP.
+## <a id="Deploy"></a>Krok 6: Nasazení aplikace Java do Azure Websites
+Díky Azure Websites je nasazování aplikací Java stejně snadné jako export aplikace jako souboru WAR a jeho nahrání buď přes správu zdrojových kódů (např. Git), nebo FTP.
 
-1. Aplikaci exportovat jako soubor WAR, klikněte pravým tlačítkem na projekt v **Project Exploreru**, klikněte na tlačítko **exportovat**a potom klikněte na **soubor WAR**.
+1. Pokud chcete aplikaci exportovat jako soubor WAR, klikněte pravým tlačítkem na projekt v **Project Exploreru**, pak levým na **Export** a nakonec na **WAR File** (Soubor WAR).
 2. V okně **WAR Export** udělejte následující:
    
    * Do pole Web project (Webový projekt) zadejte azure-documentdb-java-sample.
    * V poli Destination (Cíl) vyberte cíl, do kterého se uloží soubor WAR.
    * Klikněte na **Dokončit**.
-3. Teď, když máte soubor WAR v ručně, můžete tento soubor jednoduše nahrát do Azure webu **webapps** adresáře. Pokyny pro nahrání souboru, v tématu [přidat aplikace v jazyce Java do Azure App Service Web Apps](../app-service/web-sites-java-add-app.md).
+3. Nyní když máte k dispozici soubor WAR, můžete tento soubor jednoduše nahrát do adresáře **webapps** Azure Websites. Pokyny, jak soubor nahrát, najdete v tématu o [přidání aplikace Java do Azure App Service Web Apps](../app-service/web-sites-java-add-app.md).
    
     Až bude soubor WAR nahrán do adresáře webapps, běhové prostředí zjistí, že jste jej přidali, a automaticky ho načte.
-4. Chcete-li zobrazit hotový produkt, přejděte na http://YOUR \_lokality\_NAME.azurewebsites.net/azure-java-sample/ a začněte přidávat úkoly!
+4. Chcete-li zobrazit hotový produkt, přejděte na http://YOUR\_SITE\_NAME.azurewebsites.net/azure-java-sample/ a začněte přidávat úkoly.
 
 ## <a id="GetProject"></a>Získání projektu z Githubu
 Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.com/Azure-Samples/documentdb-java-todo-app) na GitHubu. Pokud chcete importovat projekt todo do prostředí Eclipse, ujistěte se, že máte software a prostředky uvedené v části [Předpoklady](#Prerequisites), a udělejte následující:
@@ -736,12 +734,12 @@ Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.c
 3. V prostředí Eclipse v nabídce **File** (Soubor) klikněte na **Import**.
 4. V okně **Import** klikněte na **Git**, pak na **Projects from Git** (Projekty z Gitu) a nakonec na **Next** (Další).
 5. Na obrazovce **Select Repository Source** (Výběr zdroje úložiště) klikněte na **Clone URI** (Klonovat URI).
-6. Na **zdrojové úložiště Git** obrazovce **URI** zadejte https://github.com/Azure-Samples/java-todo-app.gita potom klikněte na **Další**.
+6. Na obrazovce **Source Git Repository** (Zdrojové úložiště Git) v poli **URI** zadejte https://github.com/Azure-Samples/documentdb-java-todo-app.git a potom klikněte na **Next** (Další).
 7. Na obrazovce **Branch Selection** (Výběr větve) se ujistěte, že je zvolena možnost **master** (hlavní), a klikněte na **Next**.
 8. Na obrazovce **Local Destination** (Místní cíl) klikněte na **Browse** (Procházet), vyberte složku, do které lze úložiště zkopírovat, a pak klikněte na **Next**.
 9. Na obrazovce **Select a wizard to use for importing projects** (Výběr průvodce, který se použije k importování projektů) se ujistěte, že je vybrána možnost **Import existing projects** (Import existujících projektů) a klikněte na **Next**.
-10. Na obrazovce **Import Projects** (Import projektů) zrušte výběr projektu **DocumentDB** a klikněte na **Finish** (Dokončit). Projekt DocumentDB obsahuje sadu Azure Cosmos DB Java SDK, kterou přidáme jako závislost místo.
-11. V **Project Exploreru**, přejděte na Azure-documentdb-Java-sample\src\com.microsoft.Azure.documentdb.Sample.dao\DocumentClientFactory.Java a nahraďte hodnoty HOST a MASTER_KEY URI a primární klíč pro vaše Azure Cosmos DB účtu a pak soubor uložte. Další informace najdete v části [Krok 1. Vytvoření účtu Azure Cosmos DB databáze](#CreateDB).
+10. Na obrazovce **Import Projects** (Import projektů) zrušte výběr projektu **DocumentDB** a klikněte na **Finish** (Dokončit). Projekt Azure Cosmos DB obsahuje sadu Azure Cosmos DB Java SDK, kterou přidáme jako závislost.
+11. V **Project Exploreru** přejděte na azure-documentdb-java-sample\src\com.microsoft.azure.documentdb.sample.dao\DocumentClientFactory.java a nahraďte hodnoty HOST a MASTER_KEY hodnotami URI a PRIMARY KEY pro účet Azure Cosmos DB. Pak soubor uložte. Další informace najdete v části [Krok 1. Vytvoření účtu databáze Azure Cosmos DB](#CreateDB).
 12. V **Project Exploreru** klikněte pravým tlačítkem na **azure-documentdb-java-sample**, pak levým na **Build Path** (Cesta sestavení) a nakonec na **Configure Build Path** (Konfigurovat cestu sestavení).
 13. Na obrazovce **Java Build Path** (Cesta sestavení Java) v pravém podokně vyberte kartu **Libraries** (Knihovny) a klikněte na **Add External JARs** (Přidat externí balíčky JAR). Přejděte na umístění souboru lombok.jar, klikněte na **Open** (Otevřít) a pak na **OK**.
 14. Pomocí kroku 12 otevřete znovu okno **Properties** (Vlastnosti) a v levém podokně klikněte na **Targeted Runtimes** (Cílené moduly runtime).
@@ -750,7 +748,7 @@ Všechny ukázky v tomto kurzu jsou součástí projektu [todo](https://github.c
 17. Na obrazovce **Project Facets** vyberte **Dynamic Web Module** (Dynamický webový modul) a **Java** a klikněte na **OK**.
 18. Na kartě **Servers** (Servery) v dolní části obrazovky klikněte pravým tlačítkem na **Tomcat v7.0 Server at localhost** a pak levým na **Add and Remove** (Přidat a odstranit).
 19. V okně **Add and Remove** přesuňte **azure-documentdb-java-sample** do pole **Configured** (Nakonfigurováno) a klikněte na **Finish** (Dokončit).
-20. V **servery** kartě, klikněte pravým tlačítkem na **Tomcat v7.0 Server at localhost**a potom klikněte na **restartujte**.
-21. V prohlížeči přejděte na http://localhost:8080/azure-documentdb-java-sample/ a začněte přidávat položky do seznamu úkolů. Poznámka: Pokud jste změnili výchozí hodnoty portů, změňte 8080 na hodnotu, kterou jste si vybrali.
-22. Postup nasazení projektu na web Azure najdete v části [Krok 6. Nasazení aplikace na weby Azure](#Deploy).
+20. Na kartě **Servers** (Servery) klikněte pravým tlačítkem na **Tomcat v7.0 Server at localhost** a klikněte na **Restart** (Restartovat).
+21. V prohlížeči přejděte na adresu http://localhost:8080/azure-documentdb-java-sample/ a začněte přidávat položky do seznamu úkolů. Poznámka: Pokud jste změnili výchozí hodnoty portů, změňte 8080 na hodnotu, kterou jste si vybrali.
+22. Postup nasazení projektu na web Azure najdete v části [Krok 6. Nasazení aplikace do Azure Websites](#Deploy).
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 24ffc841-7a77-481c-9cc4-6f8bda58fe66
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c3d2e359927d1e1e6aec825145fc84cf2a83a946
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d5fe4b6703f9b860932e36a296f3d103a4f94807
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899135"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>Kurz: Azure Active Directory integrace s iWellnessNow
 

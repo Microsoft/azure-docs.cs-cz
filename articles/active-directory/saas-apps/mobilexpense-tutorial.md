@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: e649fc4e-3e15-4948-b977-00bfe9f7db13
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 2f146f7c730ab90623b6eb013bdc1cecb89df2f4
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 57c811f0f29c885ef4bbe78c46ddc6b10b0f71f3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903312"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212525"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>Kurz: Azure Active Directory integrace s Mobile Xpense
 

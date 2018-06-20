@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 4ea9f47c-25ca-42b0-a878-9e7aa6f34973
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 7d1f3bd953a507600532aec8abc82de5f8649945
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 72cfc470dde29033dfce50aa3e815507c03b3857
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899157"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215932"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>Kurz: Integrace Azure Active Directory pomocí portálu správy cloudu Microsoft Azure
 

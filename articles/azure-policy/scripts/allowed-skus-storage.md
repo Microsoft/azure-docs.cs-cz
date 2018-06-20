@@ -15,11 +15,12 @@ ms.workload: ''
 ms.date: 10/30/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: 482408788b6d74c25350a9885e2bf4bd6ea306d7
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 46677bd25a09789feacc2e276296ba85e2e871e8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601322"
 ---
 # <a name="allowed-skus-for-storage-accounts-and-virtual-machines"></a>Povolené skladové položky účtů úložišť a virtuálních počítačů
 
@@ -80,4 +81,4 @@ az policy set-definition delete --name "skus-for-multiple-types"
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další ukázkové šablony pro Azure Policy najdete v tématu [Šablony pro Azure Policy](../json-samples.md).
+- Další příklady najdete v [Ukázkách Azure Policy](../json-samples.md).

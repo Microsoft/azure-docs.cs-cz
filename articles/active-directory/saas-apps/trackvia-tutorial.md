@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: e7010023-bdda-4a19-a335-19904e75b813
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 632d0b053be549078a493fcc6e5dede7eeceff7b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: a1f1346e363318c73e2cba6a6a356cc376a39eac
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899305"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217955"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trackvia"></a>Kurz: Azure Active Directory integrace s TrackVia
 

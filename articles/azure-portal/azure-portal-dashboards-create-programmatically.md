@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 8670d25e10b58c40b9d0807de1db88c3296b193d
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: d3a59c2d9b62bdbde75c54347ce9117fc9114cd6
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164379"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220012"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Vytváření řídicích panelů Azure prostřednictvím kódu programu
 
@@ -89,11 +89,11 @@ Azure nabízí možnost orchestraci nasazení více prostředků. Můžete vytvo
 Pokud budete tuto trasu, pak by mělo být provedeno Parametrizace pomocí syntaxe parametru šablony.  Můžete nahradit všechny instance, které jsme našli dříve, jak je vidět tady ID prostředku.
 
 ### <a name="example-json-property-with-hard-coded-resource-id"></a>Příklad JSON vlastnost s Id pevně prostředku
-`id: “/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1”`
+`id: "/subscriptions/6531c8c8-df32-4254-d717-b6e983273e5d/resourceGroups/contoso/providers/Microsoft.Compute/virtualMachines/myVM1"`
 
 ### <a name="example-json-property-converted-to-a-parameterized-version-based-on-template-parameters"></a>Příklad JSON vlastnost převedena na parametrizované verzi na základě parametrů šablony
 
-`id: "[resourceId(parameters('virtualMachineResourceGroup'), ‘Microsoft.Compute/virtualMachines’, parameters('virtualMachineName'))]"`
+`id: "[resourceId(parameters('virtualMachineResourceGroup'), 'Microsoft.Compute/virtualMachines', parameters('virtualMachineName'))]"`
 
 Také musíte deklarovat některá metadata požadovanou šablonu a parametry v horní části šablony json takto:
 
@@ -122,7 +122,7 @@ __Uvidíte kompletní, funkční šablonou na konci tohoto dokumentu.__
 
 Jakmile máte vytvořené šablony můžete nasadit pomocí [rozhraní REST API](https://docs.microsoft.com/rest/api/resources/deployments), [prostředí PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/group/deployment#az_group_deployment_create), nebo [stránku nasazení šablony portálu ](https://portal.azure.com/#create/Microsoft.Template).
 
-Tady jsou jsou dvě verze náš příklad řídicího panelu JSON. První je verze, který jsme exportovali z portálu, který byl již vázána na prostředek. Druhá je verzi šablony, které mohou být prostřednictvím kódu programu vázány na žádné virtuální počítače a nasazují pomocí Azure Resource Manager.
+Tady jsou dvě verze náš příklad řídicího panelu JSON. První je verze, který jsme exportovali z portálu, který byl již vázána na prostředek. Druhá je verzi šablony, které mohou být prostřednictvím kódu programu vázány na žádné virtuální počítače a nasazují pomocí Azure Resource Manager.
 
 ## <a name="json-representation-of-our-example-dashboard-before-templating"></a>Reprezentace JSON náš příklad řídicího panelu (před ukázka)
 

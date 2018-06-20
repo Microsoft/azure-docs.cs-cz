@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 4fd6b29b-1b46-4fd1-9f5e-16b1c9d892cd
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 5d4feb1e7fa94b641287afd5706ae57daf2e2d58
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2916820545161d082108c991b424b66d8612b5dd
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900989"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bgs-online"></a>Kurz: Azure Active Directory integrace s BGS Online
 

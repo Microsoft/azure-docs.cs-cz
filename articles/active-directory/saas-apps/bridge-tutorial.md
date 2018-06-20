@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 3dbb6499-80c1-4d00-a0b4-e0ad5522cf0f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 2ca1cf1c4a1773663ccf9b59ffabbc7643a27f63
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1b92773aa3a8dd098e3dffe34f59e6750e3ad23c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900970"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210821"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>Kurz: Azure Active Directory integrace s most
 

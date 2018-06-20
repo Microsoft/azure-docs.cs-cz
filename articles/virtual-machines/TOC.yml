@@ -1,0 +1,26 @@
+- name: Dokumentace k Virtual Machines
+  href: index.md
+- name: Linux Virtual Machines v Azure
+  href: linux/overview.md
+- name: Windows Virtual Machines v Azure
+  href: windows/overview.md
+- name: Dokumentace k rozšířením virtuálních počítačů
+  href: extensions/overview.md
+- name: Úlohy
+  items:
+    - name: Oracle
+      href: workloads/oracle/oracle-considerations.md
+    - name: SAP
+      href: workloads/sap/get-started.md
+- name: Nasazení Classic
+  items:
+    - name: Virtuální počítače s Linuxem používající nasazení Classic
+      href: linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json
+    - name: Virtuální počítače s Windows používající nasazení Classic
+      href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'

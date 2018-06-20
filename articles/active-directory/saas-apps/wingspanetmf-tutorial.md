@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: ace320d3-521c-449c-992f-feabe7538de7
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 0fba293d91f34db453270deffb386d8c1f7349e8
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 63d22a3213e7a3d8d2f8bf7714eb5bc8f3f0f477
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899156"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212634"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>Kurz: Azure Active Directory integrace s Wingspan eTMF
 

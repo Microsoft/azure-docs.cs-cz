@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: b21d711e59ddc762eaf72f49e501d9f324d75105
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 05abd943d85fcdd709143bf7fce221dcdfb86011
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30240530"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215095"
 ---
 # <a name="service-endpoint-monitor"></a>Monitorování koncového bodu služby
 
@@ -52,7 +52,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6Echo" protocol="icmpv6:128,a
 netsh advfirewall firewall add rule name="NPMDICMPV4DestinationUnreachable" protocol="icmpv4:3,any" dir=in action=allow 
 netsh advfirewall firewall add rule name="NPMDICMPV6DestinationUnreachable" protocol="icmpv6:1,any" dir=in action=allow 
 netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmpv4:11,any" dir=in action=allow 
-netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action 
+netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow 
 ```
 
 ### <a name="create-service-endpoint-monitor-tests"></a>Vytváření testů monitorování koncového bodu služby 

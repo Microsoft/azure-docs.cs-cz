@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: a1f49bb8-6b17-433d-8f25-9d26fb390e77
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 7f939f6dfafd0f4425554353b81f5b1e5c46eb20
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: a5caa55f26480d5680fa2ad117d7d65253d83896
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901784"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210084"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>Kurz: Azure Active Directory integrace s Merchlogix
 

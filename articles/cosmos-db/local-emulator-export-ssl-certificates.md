@@ -1,108 +1,105 @@
 ---
-title: Exportu certifikátů emulátoru DB Cosmos Azure | Microsoft Docs
-description: Při vývoji v jazycích a moduly runtime, která nepoužívají Windows Store certifikát budete muset exportovat a spravovat certifikáty SSL. Tento příspěvek poskytuje podrobné pokyny.
+title: Export certifikátů emulátoru služby Azure Cosmos DB | Microsoft Docs
+description: Při vývoji v jazycích a modulech runtime, které nevyužívají úložiště certifikátů systému Windows, budete muset exportovat a spravovat certifikáty SSL. Tento příspěvek obsahuje podrobné pokyny.
 services: cosmos-db
-documentationcenter: ''
-keywords: Emulátor Azure Cosmos DB
+keywords: Emulátor služby Azure Cosmos DB
 author: voellm
 manager: kfile
 editor: ''
-ms.assetid: ef43deda-c2e9-4193-99e2-7f6a88a0319f
 ms.service: cosmos-db
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.devlang: na
+ms.topic: tutorial
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87d453cd544b3e913209f50e4e08b77282efab39
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: 5fce6553ce7407f892ed1de1f71bc812798f91c0
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611802"
 ---
-# <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Exportu certifikátů emulátoru DB Cosmos Azure pro použití s Java, Python a Node.js
+# <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Export certifikátů emulátoru služby Azure Cosmos DB pro použití s Javou, Pythonem a Node.js
 
-[**Stáhněte si v emulátoru**](https://aka.ms/cosmosdb-emulator)
+[**Stáhnout emulátor**](https://aka.ms/cosmosdb-emulator)
 
-Emulátor DB Cosmos Azure poskytuje místní prostředí, které emuluje služby Azure Cosmos DB pro účely vývoje, včetně jeho použití připojení SSL. Tento příspěvek ukazuje, jak k exportu certifikátů SSL pro použití v jazycích a moduly runtime, který nelze integrovat do úložiště certifikátů systému Windows, například Java, která používá vlastní [úložiště certifikátů](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) a Python, který používá [soketu obálky](https://docs.python.org/2/library/ssl.html) a Node.js, která používá [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback). Další informace o emulátoru v [použití emulátoru DB Cosmos Azure pro vývoj a testování](./local-emulator.md).
+Emulátor služby Azure Cosmos DB zajišťuje místní prostředí, které emuluje službu Azure Cosmos DB pro účely vývoje a využívá přitom její připojení SSL. Tento příspěvek ukazuje, jak exportovat certifikáty SSL pro použití v jazycích a modulech runtime, které se neintegrují s úložištěm certifikátů systému Windows, jako je například Java, která používá vlastní [úložiště certifikátů](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html), Python, který používá [obálky soketů](https://docs.python.org/2/library/ssl.html), a Node.js, které používá [tlsSocket](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback). Další informace o emulátoru najdete v tématu [Použití emulátoru služby Azure Cosmos DB pro účely vývoje a testování](./local-emulator.md).
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Otáčení certifikáty
-> * Export certifikátu protokolu SSL
-> * Informace o způsobu použití certifikátu v jazyce Java, Python a Node.js
+> * Obměna certifikátů
+> * Export certifikátu SSL
+> * Seznámení s používáním certifikátů v Javě, Pythonu a Node.js
 
-## <a name="certification-rotation"></a>Otočení certifikační
+## <a name="certification-rotation"></a>Obměna certifikátů
 
-Certifikáty v emulátoru místního DB Cosmos Azure jsou generovány při prvním spuštění emulátor. Existují dva certifikáty. Jeden použité pro připojování k místní emulátoru a jeden pro správu tajných klíčů v emulátoru. Certifikát, který chcete exportovat, je připojení certifikát s popisným názvem "DocumentDBEmulatorCertificate".
+Certifikáty v místním emulátoru služby Azure Cosmos DB se generují při prvním spuštění emulátoru. Existují dva certifikáty. Jeden slouží k připojování k místnímu emulátoru a jeden ke správě tajných klíčů v rámci emulátoru. Certifikát, který chcete exportovat, je certifikát připojení s popisným názvem DocumentDBEmulatorCertificate.
 
-Oba certifikáty je možné znovu generovat kliknutím **obnovit Data** jak je uvedeno níže z emulátoru DB Cosmos Azure je spuštěná na hlavním panelu Windows. Máte-li znovu vygenerovat certifikáty a byly nainstalovány do úložiště certifikátů Java nebo je použili jinde je nutné je aktualizovat, jinak aplikace se už připojí k místní emulátor.
+Oba certifikáty je možné znovu vygenerovat kliknutím na **Resetovat data** v emulátoru služby Azure Cosmos DB spuštěném na hlavním panelu Windows, jak je znázorněno níže. Pokud certifikáty vygenerujete znovu a už dříve jste je nainstalovali do úložiště certifikátů Javy nebo použili jinde, budete je muset aktualizovat, jinak vaše aplikace ztratí připojení k místnímu emulátoru.
 
-![Azure Cosmos DB místní emulátoru obnovení dat](./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png)
+![Resetování dat místního emulátoru služby Azure Cosmos DB](./media/local-emulator-export-ssl-certificates/database-local-emulator-reset-data.png)
 
-## <a name="how-to-export-the-azure-cosmos-db-ssl-certificate"></a>Tom, jak exportovat certifikát Azure Cosmos DB SSL
+## <a name="how-to-export-the-azure-cosmos-db-ssl-certificate"></a>Export certifikátu SSL služby Azure Cosmos DB
 
-1. Spusťte správce certifikátů systému Windows ve spuštění certlm.msc a přejděte do složky-> osobní certifikáty a otevřete certifikát s popisným názvem **DocumentDbEmulatorCertificate**.
+1. Spuštěním certlm.msc spusťte Správce certifikátů systému Windows, přejděte do složky Osobní > Certifikáty a otevřete certifikát s popisným názvem **DocumentDbEmulatorCertificate**.
 
-    ![Azure Cosmos DB místní emulátoru exportovat krok 1](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png)
+    ![Místní emulátor služby Azure Cosmos DB – export, krok 1](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-1.png)
 
-2. Klikněte na **podrobnosti** pak **OK**.
+2. Klikněte na **Podrobnosti** a pak na **OK**.
 
-    ![Azure Cosmos DB místní emulátoru exportovat krok 2](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png)
+    ![Místní emulátor služby Azure Cosmos DB – export, krok 2](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-2.png)
 
-3. Klikněte na tlačítko **kopírovat do souboru...** .
+3. Klikněte na **Kopírovat do souboru**.
 
-    ![Azure Cosmos DB místní emulátoru exportovat krok 3](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png)
+    ![Místní emulátor služby Azure Cosmos DB – export, krok 3](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-3.png)
 
 4. Klikněte na **Další**.
 
-    ![Azure Cosmos DB místní emulátoru exportovat krok 4](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
+    ![Místní emulátor služby Azure Cosmos DB – export, krok 4](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
 
-5. Klikněte na tlačítko **Ne, neexportovat privátní klíč**, pak klikněte na tlačítko **Další**.
+5. Klikněte na **Ne, neexportovat privátní klíč** a pak klikněte na **Další**.
 
-    ![Azure Cosmos DB místní emulátoru exportovat krok 5](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png)
+    ![Místní emulátor služby Azure Cosmos DB – export, krok 5](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-5.png)
 
-6. Klikněte na **X.509 s kódováním Base-64 (. CER)** a potom **Další**.
+6. Klikněte na **X.509, kódování Base-64 (CER)** a pak na **Další**.
 
-    ![Azure Cosmos DB místní emulátoru exportovat krok 6](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png)
+    ![Místní emulátor služby Azure Cosmos DB – export, krok 6](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-6.png)
 
-7. Zadejte název certifikátu. V takovém případě **documentdbemulatorcert** a pak klikněte na **Další**.
+7. Zadejte název certifikátu. V tomto případě zadejte **documentdbemulatorcert** a pak klikněte na **Další**.
 
-    ![Azure Cosmos DB místní emulátoru exportovat krok 7](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png)
+    ![Místní emulátor služby Azure Cosmos DB – export, krok 7](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-7.png)
 
 8. Klikněte na **Dokončit**.
 
-    ![Krok 8 exportovat Azure Cosmos DB místní emulátoru](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png)
+    ![Místní emulátor služby Azure Cosmos DB – export, krok 8](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-8.png)
 
-## <a name="how-to-use-the-certificate-in-java"></a>Postup použití certifikátu v jazyce Java
+## <a name="how-to-use-the-certificate-in-java"></a>Použití certifikátu v Javě
 
-Při spuštění aplikací v jazyce Java nebo MongoDB aplikací, které používají klienta Java je snazší nainstalujte certifikát do úložiště certifikátů výchozí Java než předávání "-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"příznaky. Například zahrnuty [Java ukázkové aplikace](https://localhost:8081/_explorer/index.html) závisí na výchozím úložišti certifikátů.
+Pokud používáte aplikace Java nebo aplikace MongoDB využívající klienta Java, je jednodušší nainstalovat certifikát do výchozího úložiště certifikátů Javy a pak předávat příznaky -Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>. Například zahrnutá [ukázková aplikace Java](https://localhost:8081/_explorer/index.html) závisí na výchozím úložišti certifikátů.
 
-Postupujte podle pokynů [přidání certifikátu do úložiště certifikátů certifikační Autority Java](https://docs.microsoft.com/azure/java-add-certificate-ca-store) pro import certifikátu X.509 do výchozího úložiště certifikátů Java. Uvědomte si, že pracovat v adresáři % JAVA_HOME % při spuštění příkazu keytool.
+Podle pokynů v tématu o [přidání certifikátu do úložiště certifikátů certifikační autority Javy](https://docs.microsoft.com/azure/java-add-certificate-ca-store) importujte certifikát X.509 do výchozího úložiště certifikátů Javy. Mějte na paměti, že při používání nástroje keytool budete pracovat v adresáři %JAVA_HOME%.
 
-Jednou "CosmosDBEmulatorCertificate" SSL je nainstalován certifikát pro aplikaci by mohli připojit a používat místní emulátoru DB Cosmos Azure. Pokud budete pokračovat, potíže se můžete použít postup popsaný [ladění připojení protokolem SSL/TLS](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html) článku. Je velmi pravděpodobné že certifikát není nainstalovaný do %JAVA_HOME%/jre/lib/security/cacerts úložiště. Pro příklad, pokud máte víc nainstalovaných verzí aplikace Java může pomocí různých cacerts úložiště než ten, který jste aktualizovali.
+Po nainstalování certifikátu SSL CosmosDBEmulatorCertificate by vaše aplikace měla být schopná připojit se k místnímu emulátoru služby Azure Cosmos DB a používat ho. Pokud se budou i nadále objevovat potíže, měli byste si přečíst článek o [ladění připojení SSL a TLS](http://docs.oracle.com/javase/7/docs/technotes/guides/security/jsse/ReadDebug.html). Je velmi pravděpodobné, že certifikát není nainstalovaný v úložišti %JAVA_HOME%/jre/lib/security/cacerts. Například pokud máte více nainstalovaných verzí Javy, vaše aplikace může používat jiné úložiště cacerts, než které jste aktualizovali.
 
-## <a name="how-to-use-the-certificate-in-python"></a>Postup použití certifikátu v Pythonu
+## <a name="how-to-use-the-certificate-in-python"></a>Použití certifikátu v Pythonu
 
-Ve výchozím nastavení [Python SDK(version 2.0.0 or higher)](sql-api-sdk-python.md) pro rozhraní SQL API nebude zkuste a použít certifikát SSL při připojování k místní emulátor. Pokud ale chcete použít ověřování SSL můžete podle příklady v [Python soketu obálky](https://docs.python.org/2/library/ssl.html) dokumentaci.
+Ve výchozím nastavení se sada [Python SDK (verze 2.0.0 nebo novější)](sql-api-sdk-python.md) pro rozhraní SQL API nepokusí při připojování k místnímu emulátoru použít certifikát SSL. Pokud však chcete použít ověřování SSL, můžete postupovat podle příkladů v dokumentaci k [obálkám soketů Pythonu](https://docs.python.org/2/library/ssl.html).
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>Použití certifikátu v Node.js
 
-Ve výchozím nastavení [Node.js SDK(version 1.10.1 or higher)](sql-api-sdk-node.md) pro rozhraní SQL API nebude zkuste a použít certifikát SSL při připojování k místní emulátor. Pokud ale chcete použít ověřování SSL můžete podle příklady v [Node.js dokumentaci](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback).
+Ve výchozím nastavení se sada [Node.js SDK (verze 1.10.1 nebo novější)](sql-api-sdk-node.md) pro rozhraní SQL API nepokusí při připojování k místnímu emulátoru použít certifikát SSL. Pokud však chcete použít ověřování SSL, můžete postupovat podle příkladů v [dokumentaci k Node.js](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback).
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste provedli následující:
 
 > [!div class="checklist"]
-> * Otočený certifikáty
-> * Exportovat certifikát SSL
-> * Zjistili, jak pro použití certifikátu v jazyce Java, Python a Node.js
+> * Obměna certifikátů
+> * Export certifikátu SSL
+> * Seznámili jste se s používáním certifikátů v Javě, Pythonu a Node.js.
 
-Nyní můžete přejít k vytvořit aktivační událost INSTEAD HTTP funkce Azure s kurzu vstupní vazby Azure Cosmos DB.
+Teď můžete pokračovat ke kurzu Vytvoření triggeru HTTP ve službě Azure Functions s využitím vstupní vazby Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Vytvoření funkce Azure se vstupem z Azure Cosmos DB](tutorial-functions-http-trigger.md) 
+> [Vytvoření funkce Azure se vstupem ze služby Azure Cosmos DB](tutorial-functions-http-trigger.md) 

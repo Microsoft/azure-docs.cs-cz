@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/15/2018
+ms.date: 06/11/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: d20dca9a1248cfb2915ebbc456fba80aadcf81f5
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f66aaa23a631bd71494587683aab87a74a5aef20
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196500"
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261266"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-azure-cdn-endpoint"></a>Kurz: Přidání vlastní domény do koncového bodu Azure CDN
 V tomto kurzu se dozvíte, jak přidat vlastní doménu do koncového bodu služby Azure Content Delivery Network (CDN). Pokud k doručování obsahu používáte síť CDN a chcete, aby se v adrese URL sítě CDN zobrazoval název vaší vlastní domény, potřebujete vlastní doménu. Srozumitelný název domény může být praktický pro vaše zákazníky a užitečný při budování značky. 
@@ -132,9 +132,9 @@ Po zaregistrování vlastní domény ji můžete přidat do svého koncového bo
    Azure ověří, že pro zadaný název vlastní domény existuje záznam CNAME. Pokud je záznam CNAME správný, vaše vlastní doména se ověří. 
 
    Rozšíření nastavení nové vlastní domény do všech hraničních uzlů CDN může chvíli trvat: 
-    - U profilů **Azure CDN Standard od Microsoftu** šíření trvá většinou 10 minut. 
+    - Šíření profilů **Azure CDN Standard od Microsoftu** trvá většinou 10 minut. 
     - V případě profilů **Azure CDN Standard od Akamai** je šíření obvykle hotové během jedné minuty. 
-    - V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 90 minut.   
+    - V případě profilů **Azure CDN od Verizonu** a **Azure CDN Premium od Verizonu** je šíření obvykle hotové během 10 minut.   
 
 
 ## <a name="verify-the-custom-domain"></a>Ověření vlastní domény

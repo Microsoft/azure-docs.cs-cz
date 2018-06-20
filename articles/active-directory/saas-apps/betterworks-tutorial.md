@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 5bb9505a-be02-46ae-9979-5308715d2b47
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: b627a7db724508d4cf8205f6ea370453bacfe275
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 35293869b066c593c18c01f08fa7f13c48e5f84a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899292"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-betterworks"></a>Kurz: Azure Active Directory integrace s BetterWorks
 

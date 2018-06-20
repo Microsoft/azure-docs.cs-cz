@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 3011d44d-dfcf-4061-888f-cff90fbc8150
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.openlocfilehash: d8636e461daec61556f0abaaa7715e4f86f94e2a
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 5af3195f8543e5ef3763666b3a997ffb4cd25713
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903157"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213773"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-youearnedit"></a>Kurz: Azure Active Directory integrace s YouEarnedIt
 

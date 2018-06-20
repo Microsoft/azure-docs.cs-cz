@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 35e86d08-c29e-49ca-8545-b0ff559c5faf
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 4711aa48e19a604d7b9b81e0f40fc661f5c68da2
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: a95b3d1d35642043728831068f0e01cd16f7b999
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903150"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212943"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>Kurz: Azure Active Directory integrace s Jamf Pro
 

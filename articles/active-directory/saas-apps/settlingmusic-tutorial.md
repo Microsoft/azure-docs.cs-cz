@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 6f86a8a2-4bd0-40cc-b1b4-752fce123328
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 4c74e4b23ad753ad3e9ff7503080b7a3190bc4b5
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 07533670a188c7f50a2848e76ed9d83a96c54cf7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899360"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36211978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-settling-music"></a>Kurz: Azure Active Directory integrace s vyrovnání Hudba
 

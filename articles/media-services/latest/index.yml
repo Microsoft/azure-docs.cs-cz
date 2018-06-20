@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03-20-2018
   ms.author: juliako
-  ms.openlocfilehash: 2aa16fb222c6a58d8e98a7399d1e3fd3cd9044f6
-  ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+  ms.openlocfilehash: 7e250b59ae9ea370b2c019c012d1e2a0e6be3cb4
+  ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/10/2018
-  ms.locfileid: "33940706"
+  ms.lasthandoff: 06/19/2018
+  ms.locfileid: "36217608"
 abstract:
   description: Naučíte se streamovat videa na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services. Kurzy, reference k rozhraní API a další dokumentace ukazují, jak bezpečně doručovat živé video a video na vyžádání nebo zvukový stream, který se škáluje milionům uživatelů.
 sections:
@@ -31,25 +31,39 @@ sections:
     style: icon48
     items:
     - image:
-        src: media/index/media-services.svg
+        src: media/index/AMSIcons-encoding.svg
       text: Streamování videosouborů
       href: /azure/media-services/latest/stream-files-dotnet-quickstart
 - title: Podrobné kurzy
   items:
   - type: paragraph
-    text: Naučíte se streamovat soubory a analyzovat videa s využitím Media Services.
+    text: 'Naučíte se streamovat soubory na vyžádání, živě vysílat a analyzovat vaše videa pomocí Media Services:'
   - type: list
-    style: ordered
+    style: icon48
     items:
-    - html: <a href="/azure/media-services/latest/stream-files-tutorial-with-api">Nahrávání, kódování a streamování videí</a>
-    - html: <a href="/azure/media-services/latest/analyze-videos-tutorial-with-api">Analýza videí</a>
+    - image:
+        src: media/index/AMSIcons-encoding.svg
+      text: Nahrávání, kódování a streamování videí
+      href: /azure/media-services/latest/stream-files-tutorial-with-api
+    - image:
+        src: media/index/AMSIcons-live.svg
+      text: Živé vysílání
+      href: /azure/media-services/latest/stream-live-tutorial-with-api
+    - image:
+        src: media/index/AMSIcons-media_analytics.svg
+      text: Analýza videí
+      href: /azure/media-services/latest/analyze-videos-tutorial-with-api
 - title: Referenční informace
   items:
+  - type: paragraph
+    text: ''
   - type: list
-    style: cards
-    className: cardsD
+    style: unordered
     items:
-    - title: Příkazový řádek
-      html: <p><a href="https://docs.microsoft.com/cli/azure/reference-index?view=azure-cli-latest">Azure CLI</a></p>
-    - title: REST
-      html: <p><a href="https://go.microsoft.com/fwlink/p/?linkid=873030">REST API</a></p>
+    - html: <a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview">Specifikace OpenAPI (Swagger)</a>
+    - html: <a href="https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest">Azure CLI</a>
+    - html: <a href="https://go.microsoft.com/fwlink/p/?linkid=873030">REST</a>
+    - html: <a href="https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet">.NET</a>
+    - html: <a href="https://docs.microsoft.com/java/api/overview/azure/mediaservices">Java</a>
+    - html: <a href="https://docs.microsoft.com/python/api/overview/azure/media-services?view=azure-python">Python</a>
+    - html: <a href="https://docs.microsoft.com/en-us/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest">Node.js</a>

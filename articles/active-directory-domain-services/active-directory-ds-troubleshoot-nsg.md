@@ -8,19 +8,19 @@ manager: ''
 editor: ''
 ms.assetid: 95f970a7-5867-4108-a87e-471fa0910b8c
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: ergreenl
-ms.openlocfilehash: 749f20934180f93ebef282bf1e625d5333da0e5d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 807dd2bdcc1e2ad18b1a93c3337c8244e3f1366b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34586932"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218975"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Řešení potíží s neplatná konfigurace sítí pro spravované doméně
 Tento článek pomáhá vyřešit chyby konfigurace související se sítí, kterých se v následující upozornění:

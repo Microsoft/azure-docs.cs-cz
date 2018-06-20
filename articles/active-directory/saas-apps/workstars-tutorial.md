@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 51a4a4e4-ff60-4971-b3f8-a0367b70d220
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 272f7c059441355dbe7ad27c3e0f14ed9e69851a
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 89b0ace19e7faea053cff0b3be2080f58dc0563c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901107"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36211158"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Kurz: Azure Active Directory integrace s Workstars
 

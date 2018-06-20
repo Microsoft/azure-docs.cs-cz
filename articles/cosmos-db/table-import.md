@@ -1,62 +1,60 @@
 ---
-title: Umožňuje importovat data pro použití s rozhraním API pro Azure Cosmos DB tabulky | Microsoft Docs
-description: Zjistěte, jak importovat data pomocí rozhraní API služby Azure DB Cosmos tabulky.
+title: Import dat pro použití s rozhraním Table API služby Azure Cosmos DB | Microsoft Docs
+description: Zjistěte, jak importovat data pro použití s rozhraním Table API služby Azure Cosmos DB.
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
-documentationcenter: ''
-ms.assetid: b60743e2-0227-43ab-965a-0ae3ebacd917
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-table
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: b6e912d450e1a2fed98fab5b18ba835396257ac9
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: MT
+ms.openlocfilehash: 25e922e211304774462c747ea6a003e47fb38736
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797766"
 ---
-# <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Umožňuje importovat data pro použití s rozhraní API služby Azure DB Cosmos tabulky
+# <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Import dat pro použití s rozhraním Table API služby Azure Cosmos DB
 
-Tento kurz obsahuje pokyny týkající se importu dat pro použití s Azure Cosmos DB [tabulky API](table-introduction.md). Pokud máte data uložená ve službě Azure Table storage, můžete použít buď nástroj pro migraci dat nebo AzCopy k importu vaše data. Pokud máte data uložená v účtu Azure Cosmos DB tabulky API (preview), musíte použít nástroj Migrace dat pro migraci dat. Po importu dat je budete moct využívat nabídky Azure Cosmos DB jako připraveného globální distribuční, vyhrazené propustnosti, latenci jednociferné milisekund na 99th percentilu, zaručit vysoká dostupnost, pomocí možnosti premium a automatické sekundární indexování.
+Tento kurz obsahuje pokyny k importování dat pro použití s rozhraním [Table API](table-introduction.md) služby Azure Cosmos DB. Pokud máte data uložená ve službě Azure Table Storage, můžete k importu dat použít nástroj pro migraci dat nebo AzCopy. Pokud máte data uložená v účtu rozhraní Table API služby Azure Cosmos DB (Preview), musíte k migraci dat použít nástroj pro migraci dat. Po naimportování dat budete moct využívat prémiové možnosti, které Azure Cosmos DB nabízí, jako je globální distribuce na klíč, vyhrazená propustnost, latence v řádu milisekund na 99. percentilu, garantovaná vysoká dostupnost a automatické sekundární indexování.
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
-> * Import dat pomocí nástroje migrace dat
+> * Import dat pomocí nástroje pro migraci dat
 > * Import dat pomocí nástroje AzCopy
-> * Migrace z tabulky rozhraní API (preview) na rozhraní API tabulky 
+> * Migrace z rozhraní Table API (Preview) na rozhraní Table API 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Zvýšit propustnost: trvání migrace dat závisí na množství propustnosti, můžete nastavit pro jednotlivé kolekce nebo sady kolekcí. Ujistěte se, že zvýšit propustnost pro větší dat migrace. Po dokončení migrace, snížit propustnosti, abyste ušetřili náklady. Další informace o zvýšení propustnosti na portálu Azure najdete v tématu úrovně výkonu a cenové úrovně v Azure Cosmos DB.
+* Zvýšená propustnost: Doba trvání migrace dat závisí na propustnosti, kterou pro jednotlivé kolekce nebo sady kolekcí nastavíte. V případě rozsáhlejších migrací dat nezapomeňte zvýšit propustnost. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu Azure Portal najdete v tématu Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB.
 
 ## <a name="data-migration-tool"></a>Nástroj pro migraci dat
 
-Nástroj příkazového řádku Azure Cosmos DB Data migrace (dt.exe) lze použít k importu existujících dat úložiště Azure Table API tabulky GA účtu nebo migrovat data z účtu tabulky rozhraní API (preview) do tabulky API GA účtu. Další zdroje nejsou aktuálně podporovány. Uživatelské rozhraní na základě migrace dat nástroj (dtui.exe) se aktuálně nepodporuje pro tabulku API účty. 
+Nástroj příkazového řádku pro migraci dat Azure Cosmos DB (dt.exe) je možné použít k importu stávajících dat ve službě Azure Table Storage do účtu obecně dostupného rozhraní Table API nebo k migraci dat z účtu rozhraní Table API (Preview) do účtu obecně dostupného rozhraní Table API. Ostatní zdroje se v současné době nepodporují. Nástroj pro migraci dat s uživatelským rozhraním (dtui.exe) se v současné době nepodporuje pro účty rozhraní Table API. 
 
-Chcete-li provést migraci dat v tabulce, proveďte následující úlohy:
+Pokud chcete provést migraci tabulkových dat, proveďte následující úlohy:
 
-1. Stáhněte si nástroj pro migraci z [Githubu](https://github.com/azure/azure-documentdb-datamigrationtool).
-2. Spustit `dt.exe` pomocí argumenty příkazového řádku pro váš scénář.
+1. Stáhněte si nástroj pro migraci z [GitHubu](https://github.com/azure/azure-documentdb-datamigrationtool).
+2. Spusťte `dt.exe` s použitím argumentů příkazového řádku pro váš scénář.
 
-DT.exe trvá příkaz v následujícím formátu:
+dt.exe přijímá příkaz v následujícím formátu:
 
     dt.exe [/<option>:<value>] /s:<source-name> [/s.<source-option>:<value>] /t:<target-name> [/t.<target-option>:<value>] 
 
-Jsou možnosti pro příkaz:
+Možnosti příkazu jsou:
 
     /ErrorLog: Optional. Name of the CSV file to redirect data transfer failures
     /OverwriteErrorLog: Optional. Overwrite error log file
     /ProgressUpdateInterval: Optional, default is 00:00:01. Time interval to refresh on-screen data transfer progress
     /ErrorDetails: Optional, default is None. Specifies that detailed error information should be displayed for the following errors: None, Critical, All
 
-### <a name="command-line-source-settings"></a>Nastavení příkazového řádku zdroje
+### <a name="command-line-source-settings"></a>Nastavení zdroje na příkazovém řádku
 
-Při definování náhled úložiště tabulek Azure nebo rozhraní API tabulky jako zdroj migrace, použijte následující možnosti zdroje.
+Při definování služby Azure Table Storage nebo rozhraní Table API Preview jako zdroje migrace použijte následující možnosti zdroje.
 
     /s:AzureTable: Reads data from Azure Table storage
     /s.ConnectionString: Connection string for the table endpoint. This can be retrieved from the Azure portal
@@ -66,21 +64,21 @@ Při definování náhled úložiště tabulek Azure nebo rozhraní API tabulky 
     /s.Filter: Optional. Filter string to apply
     /s.Projection: Optional. List of columns to select
 
-Chcete-li načíst řetězec připojení zdroje při importu z úložiště tabulek Azure, otevřete portál Azure a klikněte na **účty úložiště** > **účet**  >   **Přístupové klíče**a pak použijte tlačítko Kopírovat, pokud pro kopírování **připojovací řetězec**.
+Pokud chcete načíst připojovací řetězec zdroje při importování ze služby Azure Table Storage, otevřete Azure Portal, klikněte na **Účty úložiště** > **Účet** > **Přístupové klíče** a pomocí tlačítka kopírování zkopírujte **Připojovací řetězec**.
 
-![Možnosti nastavení zdroje snímek HBase](./media/table-import/storage-table-access-key.png)
+![Snímek obrazovky s možnostmi zdroje HBase](./media/table-import/storage-table-access-key.png)
 
-Chcete-li načíst řetězec připojení zdroje při importu z účtu Azure Cosmos DB tabulky API (preview), otevřete Azure portálu klikněte na **Azure Cosmos DB** > **účet**  >  **Připojovací řetězec** a použijte tlačítko Kopírovat, pokud pro kopírování **připojovací řetězec**.
+Pokud chcete načíst připojovací řetězec zdroje při importování z účtu rozhraní Table API služby Azure Cosmos DB (Preview), otevřete Azure Portal, klikněte na **Azure Cosmos DB** > **Účet** > **Připojovací řetězec** a pomocí tlačítka kopírování zkopírujte **Připojovací řetězec**.
 
-![Možnosti nastavení zdroje snímek HBase](./media/table-import/cosmos-connection-string.png)
+![Snímek obrazovky s možnostmi zdroje HBase](./media/table-import/cosmos-connection-string.png)
 
-[Příkaz Ukázka Azure Table Storage](#azure-table-storage)
+[Ukázkový příkaz pro Azure Table Storage](#azure-table-storage)
 
-[Příkaz Ukázka Azure Cosmos DB tabulky API (preview)](#table-api-preview)
+[Ukázkový příkaz pro rozhraní Table API služby Azure Cosmos DB (Preview)](#table-api-preview)
 
-### <a name="command-line-target-settings"></a>Nastavení cílového příkazového řádku
+### <a name="command-line-target-settings"></a>Nastavení cíle na příkazovém řádku
 
-Při definování rozhraní API služby Azure Cosmos DB tabulky jako cíl migrace, použijte následující možnosti cíl.
+Při definování rozhraní Table API služby Azure Storage jako cíle migrace použijte následující možnosti cíle.
 
     /t:TableAPIBulk: Uploads data into Azure CosmosDB Table in batches
     /t.ConnectionString: Connection string for the table endpoint
@@ -91,17 +89,17 @@ Při definování rozhraní API služby Azure Cosmos DB tabulky jako cíl migrac
     /t.MaxBatchSize: Optional, default is 2MB. Specify the batch size in bytes
 
 <a id="azure-table-storage"></a>
-### <a name="sample-command-source-is-azure-table-storage"></a>Ukázkový příkaz: Azure Table storage je zdroj
+### <a name="sample-command-source-is-azure-table-storage"></a>Ukázkový příkaz: Zdrojem je Azure Table Storage
 
-Zde je ukázka příkazového řádku znázorňující postup importu z úložiště tabulek Azure Table API:
+Tady je ukázka příkazového řádku znázorňující provedení importu ze služby Azure Table Storage do rozhraní Table API:
 
 ```
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Table storage account name>;AccountKey=<Account Key>;EndpointSuffix=core.windows.net /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
 ```
 <a id="table-api-preview"></a>
-### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Ukázkový příkaz: zdroj je rozhraní API DB tabulky Azure Cosmos (preview)
+### <a name="sample-command-source-is-azure-cosmos-db-table-api-preview"></a>Ukázkový příkaz: Zdrojem je rozhraní Table API služby Azure Cosmos DB (Preview)
 
-Zde je ukázka příkazového řádku k importu z verze preview rozhraní API tabulky do tabulky API GA:
+Tady je ukázka příkazového řádku pro import z rozhraní Table API Preview do obecně dostupného rozhraní Table API:
 
 ```
 dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Table API preview account name>;AccountKey=<Table API preview account key>;TableEndpoint=https://<Account Name>.documents.azure.com; /s.Table:<Table name> /t:TableAPIBulk /t.ConnectionString:DefaultEndpointsProtocol=https;AccountName=<Azure Cosmos DB account name>;AccountKey=<Azure Cosmos DB account key>;TableEndpoint=https://<Account name>.table.cosmosdb.azure.com:443 /t.TableName:<Table name> /t.Overwrite
@@ -109,42 +107,42 @@ dt /s:AzureTable /s.ConnectionString:DefaultEndpointsProtocol=https;AccountName=
 
 ## <a name="azcopy-command"></a>Příkaz AzCopy
 
-Pomocí nástroje příkazového řádku azcopy je další možností pro migraci dat z Azure Table storage do rozhraní API služby Azure DB Cosmos tabulky. Použití nástroje AzCopy, je nejprve exportovat data jak je popsáno v [exportovat data z úložiště tabulek](../storage/common/storage-use-azcopy.md#export-data-from-table-storage), pak importovat data do databáze Cosmos Azure, jak je popsáno v [rozhraní API služby Azure Cosmos DB tabulky](../storage/common/storage-use-azcopy.md#import-data-into-table-storage).
+Druhou možností, jak migrovat data ze služby Azure Table Storage do rozhraní Table API služby Azure Cosmos DB, je použít nástroj příkazového řádku AzCopy. Pokud chcete použít AzCopy, je potřeba nejprve data exportovat, jak je popsáno v části [Export dat ze služby Table Storage](../storage/common/storage-use-azcopy.md#export-data-from-table-storage), a pak data importovat do služby Azure Cosmos DB, jak je popsáno v části [Rozhraní Table API služby Azure Cosmos DB](../storage/common/storage-use-azcopy.md#import-data-into-table-storage).
 
-Při importu do Azure Cosmos DB, naleznete v následujícím příkladu. Všimněte si, že hodnota/dest používá cosmosdb, ne jádro.
+Při provádění importu do služby Azure Cosmos DB použijte jako referenci následující ukázku. Všimněte si, že v hodnotě /Dest se používá cosmosdb, a ne core.
 
-Příkaz import příklad:
+Ukázka příkazu pro import:
 
 ```
 AzCopy /Source:C:\myfolder\ /Dest:https://myaccount.table.cosmosdb.windows.net/mytable1/ /DestKey:key /Manifest:"myaccount_mytable_20140103T112020.manifest" /EntityOperation:InsertOrReplace
 ```
 
-## <a name="migrate-from-table-api-preview-to-table-api"></a>Migrace z tabulky API (preview) do tabulky rozhraní API
+## <a name="migrate-from-table-api-preview-to-table-api"></a>Migrace z rozhraní Table API (Preview) na rozhraní Table API
 
 > [!WARNING]
-> Pokud chcete okamžitě využívat výhod obecně dostupných tabulek pak proveďte prosím migraci vaší stávající verzi preview tabulky jako zadaná v této části, v opačném případě jsme bude provádět automatických migrací pro stávající zákazníky preview v následujících týdnech, Všimněte si, ale který auto migrovat preview tabulky budou mít určitá omezení k nim, které nově vytvořené tabulky budou není.
+> Pokud chcete okamžitě začít využívat výhod obecně dostupných tabulek, migrujte své stávající tabulky verze Preview, jak je popsáno v této části. Jinak pro stávající zákazníky verze Preview v nadcházejících týdnech provedeme automatickou migraci. Mějte však na paměti, že pro automaticky migrované databáze verze Preview budou platit určitá omezení, která se na nově vytvořené tabulky vztahovat nebudou.
 > 
 
-Rozhraní API tabulky je nyní všeobecně dostupná (GA). Jsou rozdíly mezi preview a verze GA tabulek v kód, který běží v cloudu i v kódu, který běží na straně klienta. Proto se nedoporučuje k pokusu o kombinovat s účtem GA tabulky rozhraní API klienta SDK preview a naopak. Rozhraní API preview zákazníci, kteří chtějí dál používat své existující tabulky, ale v produkčním prostředí muset migraci z verze preview GA prostředí, nebo počkejte Automatická migrace tabulky. Pokud počkat Automatická migrace, budete upozorněni, omezení pro migrované tabulky. Po migraci bude moct vytvářet nové tabulky na existujícího účtu bez omezení (pouze migrované tabulek bude mít omezení).
+Rozhraní Table API je teď obecně dostupné. Mezi tabulkami verze Preview a obecně dostupnými tabulkami existují rozdíly jak v kódu, který běží v cloudu, tak v kódu, který běží v klientovi. Proto se nedoporučuje pokoušet se o kombinaci klienta sady SDK verze Preview a účtu obecně dostupného rozhraní Table API a naopak. Zákazníci rozhraní Table API Preview, kteří chtějí i nadále používat své stávající tabulky, ale v produkčním prostředí, musí provést migraci z verze Preview do obecně dostupného prostředí nebo počkat na automatickou migraci. Pokud počkáte na automatickou migraci, dostanete upozornění na omezení migrovaných tabulek. Po migraci budete ve svém stávajícím účtu moct vytvářet nové tabulky bez omezení (omezení se budou vztahovat pouze na migrované tabulky).
 
-Při migraci z tabulky rozhraní API (preview) do rozhraní API všeobecně dostupná tabulky:
+Migrace z rozhraní Table API (Preview) na obecně dostupné rozhraní Table API:
 
-1. Vytvořit nový účet Azure Cosmos DB a nastavte její typ rozhraní API do tabulky Azure, jak je popsáno v [vytvoření databázového účtu](create-table-dotnet.md#create-a-database-account).
+1. Vytvořte nový účet služby Azure Cosmos DB a nastavte jeho typ rozhraní API na Azure Table, jak je popsáno v části [Vytvoření účtu databáze](create-table-dotnet.md#create-a-database-account).
 
-2. Změnit klientům používat GA verzi [tabulky rozhraní API sady SDK](table-sdk-dotnet.md).
+2. Upravte klienty tak, aby používali obecně dostupnou verzi sad [Table API SDK](table-sdk-dotnet.md).
 
-3. Migrace dat klienta z tabulky preview do tabulek GA pomocí nástroje migrace dat. Pokyny týkající se použití nástroj pro migraci dat pro tento účel, jsou popsané v [nástroj pro migraci dat](#data-migration-tool). 
+3. Pomocí nástroje pro migraci dat migrujte klientská data z tabulek verze Preview do obecně dostupných tabulek. Pokyny pro použití nástroje pro migraci dat k tomuto účelu jsou popsané v části [Nástroj pro migraci dat](#data-migration-tool). 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Umožňuje importovat data pomocí nástroje migrace dat
+> * Import dat pomocí nástroje pro migraci dat
 > * Import dat pomocí nástroje AzCopy
-> * Migrace z tabulky API (preview) do tabulky rozhraní API
+> * Migrace z rozhraní Table API (Preview) na rozhraní Table API
 
-Teď můžete pokračovat v dalším kurzu a zjistěte, jak zadávat dotazy na data pomocí rozhraní API služby Azure DB Cosmos tabulky. 
+Teď můžete pokračovat k dalšímu kurzu, kde zjistíte, jak dotazovat data pomocí rozhraní Table API služby Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
->[Postup dotazování dat?](../cosmos-db/tutorial-query-table.md)
+>[Jak dotazovat data?](../cosmos-db/tutorial-query-table.md)

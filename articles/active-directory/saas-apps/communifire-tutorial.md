@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: de2a164d-2115-43e7-a9ed-e54f483f4aeb
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 3c10ddd1662bd608a98d9957dc20434f6a537e01
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 30f97d203f014355daf72a0bbd474126cc225983
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900965"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217411"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>Kurz: Azure Active Directory integrace s Communifire
 

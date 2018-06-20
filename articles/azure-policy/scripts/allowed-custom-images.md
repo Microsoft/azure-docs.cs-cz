@@ -15,11 +15,12 @@ ms.workload: ''
 ms.date: 10/30/2017
 ms.author: dacoulte
 ms.custom: mvc
-ms.openlocfilehash: f20fc596783e348805977e2a8dceb29cd5cf6fb8
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 18ad65fda35571a57a73c9a9215fae7a89ae8a3f
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34602648"
 ---
 # <a name="approved-vm-images"></a>Schválené image virtuálních počítačů
 
@@ -76,5 +77,5 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další ukázkové šablony pro Azure Policy najdete v článku o [šablonách pro Azure Policy](../json-samples.md).
-- Další příklady kódu pro Azure Policy pro virtuální počítače najdete v článku o [použití zásad pro virtuální počítače s Windows](/azure/virtual-machines/windows/policy).
+- Další příklady najdete v [Ukázkách Azure Policy](../json-samples.md).
+- Další příklady pro Azure Policy pro Virtual Machines najdete v článku o [použití zásad pro Virtual Machines s Windows](../../virtual-machines/windows/policy.md).

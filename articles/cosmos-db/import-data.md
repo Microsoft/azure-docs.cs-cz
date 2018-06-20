@@ -1,95 +1,92 @@
 ---
-title: Nástroj pro migraci databáze pro databázi Azure Cosmos | Microsoft Docs
-description: Další informace o použití nástrojů pro migraci dat Azure Cosmos DB s otevřeným zdrojem pro import dat do Azure Cosmos databáze z různých zdrojů, včetně souborů MongoDB, systému SQL Server, úložiště Table, Amazon DynamoDB, CSV a JSON. CSV k převodu formátu JSON.
-keywords: CSV do formátu json, nástrojů pro migraci databáze, převést na json sdíleného svazku clusteru
+title: Nástroj pro migraci databází pro Azure Cosmos DB | Microsoft Docs
+description: Zjistěte, jak pomocí open source nástrojů pro migraci dat Azure Cosmos DB importovat data do služby Azure Cosmos DB z různých zdrojů, včetně MongoDB, SQL Serveru, služby Table Storage, Amazon DynamoDB a souborů CSV a JSON. Převod formátu CSV na JSON.
+keywords: csv to json, database migration tools, convert csv to json
 services: cosmos-db
-author: andrewhoh
+author: SnehaGunda
 manager: kfile
 editor: monicar
-documentationcenter: ''
-ms.assetid: d173581d-782a-445c-98d9-5e3c49b00e25
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/30/2018
-ms.author: anhoh
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: a14dbaffe6bfa68e7606d117823195144250c230
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
-ms.translationtype: MT
+ms.openlocfilehash: 07c41bb02863cc32372722cbcbac4be2c5071860
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34611462"
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Nástroj pro migraci dat
 
-V tomto kurzu poskytuje pokyny k používání nástroj Azure Cosmos DB Data migrace, který můžete importovat data z různých zdrojů do kolekce Azure Cosmos databáze a tabulky. Můžete importovat z JSON soubory, CSV soubory, SQL, MongoDB, Azure Table úložiště, Amazon DynamoDB a kolekce i rozhraní API pro Azure Cosmos databáze SQL a provedete migraci, že data do kolekcí a tabulky pro použití s Azure Cosmos DB. Nástroj pro migraci dat lze také při migraci z kolekce tvořené jedním oddílem kolekci více oddílů pro rozhraní SQL API.
+Tento kurz obsahuje pokyny k použití nástroje pro migraci dat Azure Cosmos DB, který dokáže importovat data z různých zdrojů do kolekcí a tabulek Azure Cosmos DB. Můžete importovat ze souborů JSON, CSV, SQL, MongoDB, služby Azure Table Storage, Amazon DynamoDB a dokonce i z kolekcí rozhraní SQL API služby Azure Cosmos DB a pro použití se službou Azure Cosmos DB tato data migrujete do kolekcí a tabulek. Nástroj pro migraci dat můžete použít také při migraci z kolekce s jedním oddílem do kolekce s více oddíly pro rozhraní SQL API.
 
-Které rozhraní API budete používat s Azure Cosmos DB? 
-* **[Rozhraní API pro SQL](documentdb-introduction.md)**  -některé z možností na zdroj nástroj pro migraci dat můžete importovat data.
-* **[Tabulka rozhraní API](table-introduction.md)**  -k importu dat můžete použít nástroj pro migraci dat nebo AzCopy. V tématu [Import dat pro použití s rozhraním API pro Azure Cosmos DB tabulky](table-import.md) Další informace.
-* **[Rozhraní API MongoDB](mongodb-introduction.md)**  – nástroj pro migraci dat aktuálně nepodporuje rozhraní API služby Azure Cosmos DB MongoDB jako zdroj nebo jako cíl. Pokud chcete migrovat data do nebo z kolekce MongoDB rozhraní API v Azure Cosmos DB, podívejte se na [Cosmos databázi Azure: migrace dat pro rozhraní API MongoDB](mongodb-migrate.md) pokyny. Nástroj pro migraci dat stále můžete exportovat data z MongoDB do kolekce rozhraní API pro Azure Cosmos databáze SQL pro použití s rozhraním API SQL. 
-* **[Graph API](graph-introduction.md)**  – nástroj pro migraci dat není podporované import nástroj pro rozhraní Graph API účty v tuto chvíli. 
+Jaké rozhraní API budete se službou Azure Cosmos DB používat? 
+* **[SQL API](documentdb-introduction.md)** – Při importu dat můžete využít jakoukoli z možností zdroje, které nástroj pro migraci dat poskytuje.
+* **[Table API](table-introduction.md)** – K importu dat můžete využít nástroj pro migraci dat nebo AzCopy. Další informace najdete v tématu [Import dat pro použití s rozhraním Table API služby Azure Cosmos DB](table-import.md).
+* **[MongoDB API](mongodb-introduction.md)** – Nástroj pro migraci dat v současné době nepodporuje rozhraní MongoDB API služby Azure Cosmos DB jako zdroj ani jako cíl. Pokud chcete migrovat data do nebo z kolekcí rozhraní MongoDB API ve službě Azure Cosmos DB, přečtěte si pokyny v tématu [Azure Cosmos DB: Migrace dat pro rozhraní MongoDB API](mongodb-migrate.md). Nástroj pro migraci dat můžete stále použít k exportu dat z MongoDB do kolekcí rozhraní SQL API služby Azure Cosmos DB pro použití s rozhraním SQL API. 
+* **[Graph API](graph-introduction.md)** – Nástroj pro migraci dat v současné době není podporovaným nástrojem pro import pro účty Graph API. 
 
 Tento kurz se zabývá následujícími úkony:
 
 > [!div class="checklist"]
 > * Instalace nástroje pro migraci dat
-> * Import dat z různých zdrojů dat.
-> * Export z Azure Cosmos DB do formátu JSON
+> * Import dat z různých zdrojů dat
+> * Export ze služby Azure Cosmos DB do formátu JSON
 
 ## <a id="Prerequisites"></a>Požadavky
-Než budete postupovat podle pokynů v tomto článku, ujistěte se, že máte nainstalované tyto položky:
+Než budete postupovat podle pokynů tohoto článku, ujistěte se, že máte následující:
 
-* [Rozhraní Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) nebo vyšší.
+* [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) nebo novější.
 
-* Zvýšit propustnost: trvání migrace dat závisí na množství propustnosti, můžete nastavit pro jednotlivé kolekce nebo sady kolekcí. Ujistěte se, že zvýšit propustnost pro větší dat migrace. Po dokončení migrace, snížit propustnosti, abyste ušetřili náklady. Další informace o zvýšení propustnosti na portálu Azure najdete v tématu úrovně výkonu a cenové úrovně v Azure Cosmos DB.
+* Zvýšená propustnost: Doba trvání migrace dat závisí na propustnosti, kterou pro jednotlivé kolekce nebo sady kolekcí nastavíte. V případě rozsáhlejších migrací dat nezapomeňte zvýšit propustnost. Po dokončení migrace propustnost snižte, abyste dosáhli nižších nákladů. Další informace o zvýšení propustnosti na webu Azure Portal najdete v tématu Úrovně výkonu a cenové úrovně ve službě Azure Cosmos DB.
 
 ## <a id="Overviewl"></a>Přehled
-Nástroj pro migraci dat je řešení open source, který importuje data do Azure Cosmos databáze z různých zdrojů, včetně:
+Nástroj pro migraci dat je open source řešení umožňující import dat do služby Azure Cosmos DB z různých zdrojů, včetně:
 
 * Soubory JSON
 * MongoDB
 * SQL Server
-* CSV soubory
+* Soubory CSV
 * Azure Table Storage
 * Amazon DynamoDB
 * HBase
-* Azure Cosmos DB kolekce
+* Kolekce Azure Cosmos DB
 
-Při importu nástroj obsahuje grafické uživatelské rozhraní (dtui.exe), můžete také vycházejí z příkazového řádku (dt.exe). Ve skutečnosti je možnost výstup přidružený příkaz po nastavení importu v uživatelském rozhraní. Tabulkové zdroje dat (např. SQL Server nebo CSV soubory) lze je transformovat tak, aby hierarchické vztahy (vnořené dokumenty) lze vytvořit při importu. Zachovat čtení Další informace o možnosti nastavení zdroje, ukázkové příkazové řádky pro import z každého zdroje, target – možnosti a import zobrazení výsledků.
+Přestože nástroj pro import obsahuje grafické uživatelské rozhraní (dtui.exe), dá se ovládat i z příkazového řádku (dt.exe). Ve skutečnosti existuje možnost výpisu odpovídajícího příkazu po nastavení importu přes uživatelské rozhraní. Tabulková zdrojová data (např. SQL Server nebo soubory CSV) je možné transformovat tak, aby se hierarchické vztahy (vnořené dokumenty) vytvořily během importu. V dalších částech tohoto článku se dozvíte více o možnostech zdroje, ukázkových příkazech pro import z jednotlivých zdrojů, možnostech cíle a zobrazení výsledků importu.
 
 ## <a id="Install"></a>Instalace
-Migrace nástroj zdrojový kód je k dispozici na Githubu v [toto úložiště](https://github.com/azure/azure-documentdb-datamigrationtool). Můžete stáhnout a zkompilovat řešení místně, nebo [stáhnout předem kompilovaném binární](https://cosmosdbportalstorage.blob.core.windows.net/datamigrationtool/2018.02.28-1.8.1/dt-1.8.1.zip), spusťte buď:
+Zdrojový kód nástroje pro migraci je k dispozici na GitHubu v [tomto úložišti](https://github.com/azure/azure-documentdb-datamigrationtool). Řešení si můžete stáhnout a místně zkompilovat nebo si můžete [stáhnout předkompilovaný binární soubor](https://cosmosdbportalstorage.blob.core.windows.net/datamigrationtool/2018.02.28-1.8.1/dt-1.8.1.zip) a pak spustit:
 
-* **Dtui.exe**: grafické rozhraní verze nástroje
-* **DT.exe**: příkazového řádku verze nástroje
+* **Dtui.exe:** Verze nástroje s grafickým rozhraním
+* **Dt.exe:** Verze nástroje pro příkazový řádek
 
-## <a name="select-data-source"></a>Vyberte zdroj dat
+## <a name="select-data-source"></a>Výběr zdroje dat
 
-Po instalaci tohoto nástroje je čas lze importovat data. Jaký typ dat chcete importovat?
+Po instalaci nástroje je čas importovat data. Jaký druh dat chcete importovat?
 
 * [Soubory JSON](#JSON)
 * [MongoDB](#MongoDB)
-* [MongoDB exportní soubory](#MongoDBExport)
+* [Exportované soubory MongoDB](#MongoDBExport)
 * [SQL Server](#SQL)
-* [CSV soubory](#CSV)
+* [Soubory CSV](#CSV)
 * [Azure Table storage](#AzureTableSource)
 * [Amazon DynamoDB](#DynamoDBSource)
-* [Objekt BLOB](#BlobImport)
-* [Azure Cosmos DB kolekce](#SQLSource)
+* [Objekt blob](#BlobImport)
+* [Kolekce Azure Cosmos DB](#SQLSource)
 * [HBase](#HBaseSource)
-* [Azure Cosmos DB hromadného importu](#SQLBulkImport)
-* [Sekvenční záznam importu do Azure Cosmos DB](#DocumentDSeqTarget)
+* [Hromadný import Azure Cosmos DB](#SQLBulkImport)
+* [Sekvenční import záznamů Azure Cosmos DB](#DocumentDSeqTarget)
 
 
 ## <a id="JSON"></a>Import souborů JSON
-Možnost program pro import zdrojového souboru JSON umožňuje importovat jeden nebo více jednotlivý dokument JSON soubory nebo soubory JSON, že každý obsahovat pole dokumentů JSON. Při přidávání složek, které obsahují soubory JSON pro import, máte možnost rekurzivní hledání souborů v podsložkách.
+Možnost importu ze zdrojového souboru JSON umožňuje importovat jeden nebo několik souborů JSON s jedním dokumentem nebo souborů JSON, které obsahují pole dokumentů JSON. Při přidávání složek obsahujících soubory JSON, které se mají importovat, máte možnost rekurzivně vyhledat soubory v podsložkách.
 
-![Možnosti nastavení zdroje souboru snímek JSON - nástrojů pro migraci databáze](./media/import-data/jsonsource.png)
+![Snímek obrazovky s možnostmi zdrojového souboru JSON – nástroje pro migraci databází](./media/import-data/jsonsource.png)
 
-Zde jsou některé ukázky příkazového řádku k importu souborů JSON:
+Tady je několik ukázek příkazového řádku pro import souborů JSON:
 
     #Import a single JSON file
     dt.exe /s:JsonFile /s.Files:.\Sessions.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Sessions /t.CollectionThroughput:2500
@@ -106,29 +103,29 @@ Zde jsou některé ukázky příkazového řádku k importu souborů JSON:
     #Import a single JSON file and partition the data across 4 collections
     dt.exe /s:JsonFile /s.Files:D:\\CompanyData\\Companies.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:comp[1-4] /t.PartitionKey:name /t.CollectionThroughput:2500
 
-## <a id="MongoDB"></a>Importovat z MongoDB
+## <a id="MongoDB"></a>Import z MongoDB
 
 > [!IMPORTANT]
-> Pokud importujete k účtu Azure Cosmos DB s podporou pro MongoDB, postupujte podle těchto [pokyny](mongodb-migrate.md).
+> Pokud importujete do účtu služby Azure Cosmos DB s podporou MongoDB, postupujte podle těchto [pokynů](mongodb-migrate.md).
 > 
 > 
 
-Možnost MongoDB zdrojový program pro import můžete importovat z kolekci jednotlivých MongoDB a volitelně filtrovat dokumentů pomocí dotazu nebo změna struktury dokumentu pomocí projekce.  
+Možnost importu ze zdroje MongoDB umožňuje importovat z jednotlivých kolekcí MongoDB a volitelně filtrovat dokumenty pomocí dotazu nebo upravit strukturu dokumentu s využitím projekce.  
 
-![Možnosti nastavení zdroje snímek MongoDB](./media/import-data/mongodbsource.png)
+![Snímek obrazovky s možnostmi zdroje MongoDB](./media/import-data/mongodbsource.png)
 
-Připojovací řetězec je ve formátu standard MongoDB:
+Připojovací řetězec je ve standardním formátu MongoDB:
 
     mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database>
 
 > [!NOTE]
-> Pomocí příkazu ověřte, zda je přístupná instance MongoDB, zadaný v poli.
+> Pomocí příkazu Verify se ujistěte, že je instance MongoDB zadaná v poli připojovacího řetězce přístupná.
 > 
 > 
 
-Zadejte název kolekce, ze kterého budou importována data. Může volitelně zadejte nebo zadejte soubor pro dotaz (například {pop: {$gt: 5000}}) nebo projekce (například {loc:0}) pro filtrování i data, která bude importována obrazce.
+Zadejte název kolekce, ze které se data budou importovat. Volitelně můžete pro dotaz zadat soubor (například {pop: {$gt:5000}}) nebo projekci (například {loc:0}) a tím filtrovat a tvarovat data určená k importu.
 
-Zde jsou některé ukázky příkazového řádku k importu z MongoDB:
+Tady je několik ukázek příkazového řádku pro import z MongoDB:
 
     #Import all documents from a MongoDB collection
     dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:BulkZips /t.IdField:_id /t.CollectionThroughput:2500
@@ -136,48 +133,48 @@ Zde jsou některé ukázky příkazového řádku k importu z MongoDB:
     #Import documents from a MongoDB collection which match the query and exclude the loc field
     dt.exe /s:MongoDB /s.ConnectionString:mongodb://<dbuser>:<dbpassword>@<host>:<port>/<database> /s.Collection:zips /s.Query:{pop:{$gt:50000}} /s.Projection:{loc:0} /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:BulkZipsTransform /t.IdField:_id/t.CollectionThroughput:2500
 
-## <a id="MongoDBExport"></a>Import MongoDB exportní soubory
+## <a id="MongoDBExport"></a>Import exportovaných souborů MongoDB
 
 > [!IMPORTANT]
-> Pokud importujete k účtu Azure Cosmos DB s podporou pro MongoDB, postupujte podle těchto [pokyny](mongodb-migrate.md).
+> Pokud importujete do účtu služby Azure Cosmos DB s podporou MongoDB, postupujte podle těchto [pokynů](mongodb-migrate.md).
 > 
 > 
 
-Program pro import možnost MongoDB export souboru JSON zdroj umožňuje importovat jeden nebo více souborů JSON vytvořeného z nástroj mongoexport.  
+Možnost importu ze zdrojového exportovaného souboru JSON z MongoDB umožňuje importovat jeden nebo několik souborů JSON vygenerovaných nástrojem mongoexport.  
 
-![Možnosti nastavení zdroje export snímek MongoDB](./media/import-data/mongodbexportsource.png)
+![Snímek obrazovky s možnostmi zdroje exportu MongoDB](./media/import-data/mongodbexportsource.png)
 
-Při přidávání složek, které obsahují soubory JSON export MongoDB pro import, máte možnost rekurzivní hledání souborů v podsložkách.
+Při přidávání složek obsahujících exportované soubory JSON z MongoDB, které se mají importovat, máte možnost rekurzivně vyhledat soubory v podsložkách.
 
-Zde je ukázka příkazového řádku k importu z soubory JSON export MongoDB:
+Tady je ukázka příkazového řádku pro import z exportovaných souborů JSON z MongoDB:
 
     dt.exe /s:MongoDBExport /s.Files:D:\mongoemployees.json /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:employees /t.IdField:_id /t.Dates:Epoch /t.CollectionThroughput:2500
 
-## <a id="SQL"></a>Import ze serveru SQL Server
-Možnost program pro import zdroje SQL umožňuje importovat z jednotlivých databáze systému SQL Server a volitelně filtrování záznamů k importu pomocí dotazu. Kromě toho můžete upravit strukturu dokumentu zadáním vnoření oddělovače (podrobnosti o této za chvíli).  
+## <a id="SQL"></a>Import z SQL Serveru
+Možnost importu ze zdroje SQL umožňuje importovat z jednotlivých databází SQL Serveru a volitelně pomocí dotazu filtrovat záznamy určené k importu. Kromě toho můžete upravit strukturu dokumentu zadáním oddělovače vnořování (další informace najdete níže).  
 
-![Možnosti nastavení zdroje snímek SQL – nástroje pro migraci databáze](./media/import-data/sqlexportsource.png)
+![Snímek obrazovky s možnostmi zdroje SQL – nástroje pro migraci databází](./media/import-data/sqlexportsource.png)
 
-Formát připojovacího řetězce je standardní formátu řetězce připojení SQL.
+Připojovací řetězec je ve standardním formátu připojovacího řetězce SQL.
 
 > [!NOTE]
-> Pomocí příkazu ověřte Ujistěte se, že instance systému SQL Server zadané v poli je přístupná.
+> Pomocí příkazu Verify se ujistěte, že je instance SQL Serveru zadaná v poli připojovacího řetězce přístupná.
 > 
 > 
 
-Vnoření oddělovače vlastnost se používá k vytvoření hierarchické relací (dílčí dokumenty) během importu. Vezměte v úvahu následujícího dotazu SQL:
+Vlastnost oddělovače vnořování slouží k vytvoření hierarchických vztahů (vnořených dokumentů) během importu. Představte si následující dotaz SQL:
 
-*jako Id, názvu, AddressType jako [Address.AddressType], AddressLine1 jako [Address.AddressLine1], města jako [Address.Location.City], StateProvinceName jako [Address.Location.StateProvinceName], PostalCode jako [vyberte PŘETYPOVÁNÍ (BusinessEntityID AS varchar) Address.PostalCode] CountryRegionName jako [Address.CountryRegionName] z Sales.vStoreWithAddresses kde AddressType = "hlavní kanceláře.*
+*select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.AddressType], AddressLine1 as [Address.AddressLine1], City as [Address.Location.City], StateProvinceName as [Address.Location.StateProvinceName], PostalCode as [Address.PostalCode], CountryRegionName as [Address.CountryRegionName] from Sales.vStoreWithAddresses WHERE AddressType='Main Office'*
 
-Která vrací následující výsledky (částečné):
+Dotaz vrátí následující (částečné) výsledky:
 
-![Snímek obrazovky SQL výsledky dotazu](./media/import-data/sqlqueryresults.png)
+![Snímek obrazovky s výsledky dotazu SQL](./media/import-data/sqlqueryresults.png)
 
-Poznámka: aliasy například Address.AddressType a Address.Location.StateProvinceName. Zadáním oddělovač vnoření z '.', nástroj pro import během importu vytvoří adresu a Address.Location vnořených dokumentů. Tady je příklad výsledné dokumentu v Azure Cosmos DB:
+Všimněte si aliasů, jako jsou Address.AddressType a Address.Location.StateProvinceName. Díky zadání oddělovače vnořování („.“) nástroj pro import během importu vytvoří vnořené dokumenty Address a Address.Location. Tady je příklad výsledného dokumentu ve službě Azure Cosmos DB:
 
-*{"id": "956", "název": "Jemnějšího prodeje a služba", "Adres": {"AddressType": "Hlavní Office", "AddressLine1": "#500 75 O'Connor ulici", "Umístění": {"City": "Ottawa", "StateProvinceName": "Ontario"}, "PostalCode": "K4B 1S2", "CountryRegionName": " Kanada"}}*
+*{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
 
-Zde jsou některé ukázky příkazového řádku k importu ze serveru SQL Server:
+Tady je několik ukázek příkazového řádku pro import z SQL Serveru:
 
     #Import records from SQL which match a query
     dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, * from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Stores /t.IdField:Id /t.CollectionThroughput:2500
@@ -185,130 +182,130 @@ Zde jsou některé ukázky příkazového řádku k importu ze serveru SQL Serve
     #Import records from sql which match a query and create hierarchical relationships
     dt.exe /s:SQL /s.ConnectionString:"Data Source=<server>;Initial Catalog=AdventureWorks;User Id=advworks;Password=<password>;" /s.Query:"select CAST(BusinessEntityID AS varchar) as Id, Name, AddressType as [Address.AddressType], AddressLine1 as [Address.AddressLine1], City as [Address.Location.City], StateProvinceName as [Address.Location.StateProvinceName], PostalCode as [Address.PostalCode], CountryRegionName as [Address.CountryRegionName] from Sales.vStoreWithAddresses WHERE AddressType='Main Office'" /s.NestingSeparator:. /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:StoresSub /t.IdField:Id /t.CollectionThroughput:2500
 
-## <a id="CSV"></a>Import souborů sdíleného svazku clusteru a CSV převést na JSON
-Možnost – Importér zdrojového souboru CSV umožňuje importovat jeden nebo více souborů CSV. Při přidávání složek, které obsahují soubory sdíleného svazku clusteru pro import, máte možnost rekurzivní hledání souborů v podsložkách.
+## <a id="CSV"></a>Import souborů CSV a převod formátu CSV na JSON
+Možnost importu ze zdrojového souboru CSV umožňuje importovat jeden nebo několik souborů CSV. Při přidávání složek obsahujících soubory CSV, které se mají importovat, máte možnost rekurzivně vyhledat soubory v podsložkách.
 
-![Možnosti nastavení zdroje snímek CSV - CSV do formátu JSON](media/import-data/csvsource.png)
+![Snímek obrazovky s možnostmi zdroje CSV – z CSV na JSON](media/import-data/csvsource.png)
 
-Podobně jako u zdroje SQL, vlastnost vnoření oddělovače lze vytvořit hierarchické relace (dílčí dokumenty) během importu. Zvažte následující CSV záhlaví řádků a data řádky:
+Podobně jako u zdroje SQL můžete použít vlastnost oddělovače vnořování k vytvoření hierarchických vztahů (vnořených dokumentů) během importu. Představte si následující řádek záhlaví a datové řádky CSV:
 
-![Snímek obrazovky CSV ukázkové záznamy - CSV do formátu JSON](./media/import-data/csvsample.png)
+![Snímek obrazovky s ukázkovými záznamy CSV – z CSV na JSON](./media/import-data/csvsample.png)
 
-Poznámka: aliasy například DomainInfo.Domain_Name a RedirectInfo.Redirecting. Zadáním oddělovač vnoření z '.', nástroj pro import vytvoří během importu DomainInfo a RedirectInfo vnořených dokumentů. Tady je příklad výsledné dokumentu v Azure Cosmos DB:
+Všimněte si aliasů, jako jsou DomainInfo.Domain_Name a RedirectInfo.Redirecting. Díky zadání oddělovače vnořování („.“) nástroj pro import během importu vytvoří vnořené dokumenty DomainInfo a RedirectInfo. Tady je příklad výsledného dokumentu ve službě Azure Cosmos DB:
 
-*{"DomainInfo": {"Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV" }, "Federal agenturou": "správu konferenční z USA", "RedirectInfo": {"Přesměrování": "0", "Redirect_Destination": ""}, "id": " 9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d"}*
+*{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
-Nástroj pro import se pokusí odvození informací o typu nekotovaných hodnoty v souborů CSV (hodnoty v uvozovkách se vždy pracuje jako řetězce).  Typy jsou označeny v následujícím pořadí: číslo, datum a čas, logická hodnota.  
+Nástroj pro import se u hodnot v souborech CSV bez uvozovek pokusí odvodit informace o jejich typu (hodnoty v uvozovkách se vždy považují za řetězce).  Typy se identifikují v následujícím pořadí: číslo, datetime, logická hodnota.  
 
-Existují dvě věci, které je třeba o importu souboru CSV:
+O importu CSV byste měli vědět ještě dvě věci:
 
-1. Ve výchozím nastavení, jsou nekotovaných hodnoty vždy oříznut pro karty a prostory, zatímco se zachovají hodnoty v uvozovkách jako-je. Toto chování lze přepsat pomocí možnosti příkazového řádku /s.TrimQuoted nebo políčka Trim hodnoty v uvozovkách.
-2. Ve výchozím nastavení nekotovaných null považován za hodnotu null. Toto chování můžete přepsat (tedy považovat za nekotovaných null řetězec "null") se zpracovávat nekotované jako řetězec zaškrtávací políčko nebo možnost příkazového řádku /s.NoUnquotedNulls hodnotu NULL.
+1. Ve výchozím nastavení se v hodnotách bez uvozovek vždy oříznou tabulátory a mezery, zatímco hodnoty v uvozovkách se zachovají tak, jak jsou. Toto chování je možné přepsat pomocí zaškrtávacího políčka Trim quoted values (Oříznout hodnoty v uvozovkách) nebo možnosti příkazového řádku /s.TrimQuoted.
+2. Ve výchozím nastavení se řetězec null bez uvozovek považuje za hodnotu null. Toto chování je možné přepsat (tedy aby se řetězec null bez uvozovek považoval za řetězec null) pomocí zaškrtávacího políčka Treat unquoted NULL as string (Považovat hodnotu NULL bez uvozovek za řetězec) nebo možnosti příkazového řádku /s.NoUnquotedNulls.
 
-Zde je ukázka příkazového řádku pro importu souboru CSV:
+Tady je ukázka příkazového řádku pro import CSV:
 
     dt.exe /s:CsvFile /s.Files:.\Employees.csv /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:Employees /t.IdField:EntityID /t.CollectionThroughput:2500
 
-## <a id="AzureTableSource"></a>Importovat z Azure Table storage
-Možnost zdroje program pro import úložiště Azure Table umožňuje importovat z jednotlivé tabulky Azure Table storage. Volitelně můžete filtrovat entity tabulky určených k importu. 
+## <a id="AzureTableSource"></a>Import ze služby Azure Table Storage
+Možnost importu ze zdroje Azure Table Storage umožňuje importovat z jednotlivých tabulek Azure Table Storage. Entity tabulky, které se mají importovat, můžete volitelně filtrovat. 
 
-Výstupní tabulky Azure Cosmos DB a entity, pro použití s rozhraním API pro tabulky, nebo do kolekcí a dokumenty pro použití s rozhraním API pro SQL lze data importovat z úložiště tabulek Azure. Ale; Je k dispozici jako cíl v nástroj příkazového řádku pouze tabulky rozhraní API, nemůžete exportovat do tabulky API přes uživatelské rozhraní pro nástroj pro migraci dat. Další informace najdete v tématu [Import dat pro použití s rozhraním API pro Azure Cosmos DB tabulky](table-import.md). 
+Data importovaná ze služby Azure Table Storage je možné vypsat do tabulek a entit Azure Cosmos DB pro použití s rozhraním Table API nebo do kolekcí a dokumentů pro použití s rozhraním SQL API. Rozhraní Table API je však k dispozici jako zdroj pouze v nástroji příkazového řádku. Exportovat do rozhraní Table API pomocí uživatelského rozhraní nástroje pro migraci dat není možné. Další informace najdete v tématu [Import dat pro použití s rozhraním Table API služby Azure Cosmos DB](table-import.md). 
 
-![Možnosti nastavení zdroje snímek Azure Table storage](./media/import-data/azuretablesource.png)
+![Snímek obrazovky s možnostmi zdroje Azure Table Storage](./media/import-data/azuretablesource.png)
 
-Formát připojovacího řetězce Azure Table storage je:
+Formát připojovacího řetězce Azure Table Storage je následující:
 
     DefaultEndpointsProtocol=<protocol>;AccountName=<Account Name>;AccountKey=<Account Key>;
 
 > [!NOTE]
-> Pomocí příkazu ověřte, zda je přístupná zadané v poli instanci úložiště Azure Table.
+> Pomocí příkazu Verify se ujistěte, že je instance služby Azure Table Storage zadaná v poli připojovacího řetězce přístupná.
 > 
 > 
 
-Zadejte název tabulky Azure z import z. Volitelně můžete určit [filtru](https://msdn.microsoft.com/library/azure/ff683669.aspx).
+Zadejte název tabulky Azure, ze které se má importovat. Volitelně můžete zadat [filtr](https://msdn.microsoft.com/library/azure/ff683669.aspx).
 
-Možnost zdroje program pro import úložiště Azure Table obsahuje následující další možnosti:
+Možnost importu ze zdroje Azure Table Storage nabízí následující další možnosti:
 
-1. Zahrnutí interní polí
-   1. Všechny - obsahovat všechny interní pole (klíč oddílu, RowKey a časové razítko)
-   2. Žádný - vyloučit všechny interní pole
-   3. RowKey – obsahovat pouze pole RowKey
-2. Vybrat sloupce
-   1. Azure Table storage filtry nepodporují projekce. Pokud chcete importovat pouze vlastnosti entity specifické Azure Table, přidejte je do seznamu vyberte sloupce. Všechny ostatní vlastnosti entity se ignorují.
+1. Include Internal Fields (Zahrnout interní pole)
+   1. All (Vše) – Zahrnou se všechna interní pole (PartitionKey, RowKey a Timestamp)
+   2. None (Žádné) – Všechna interní pole se vyloučí
+   3. RowKey – Zahrne se pouze pole RowKey
+2. Select Columns (Vybrané sloupce)
+   1. Filtry služby Azure Table Storage nepodporují projekce. Pokud chcete importovat pouze určité vlastnosti entit tabulky Azure, přidejte se je do seznamu Select Columns (Vybrané sloupce). Všechny ostatní vlastnosti entit se budou ignorovat.
 
-Zde je ukázka příkazového řádku k importu z úložiště tabulek Azure:
+Tady je ukázka příkazového řádku pro import ze služby Azure Table Storage:
 
     dt.exe /s:AzureTable /s.ConnectionString:"DefaultEndpointsProtocol=https;AccountName=<Account Name>;AccountKey=<Account Key>" /s.Table:metrics /s.InternalFields:All /s.Filter:"PartitionKey eq 'Partition1' and RowKey gt '00001'" /s.Projection:ObjectCount;ObjectSize  /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:metrics /t.CollectionThroughput:2500
 
-## <a id="DynamoDBSource"></a>Importovat z Amazon DynamoDB
-Možnost Amazon DynamoDB zdrojový program pro import můžete importovat z jednotlivé tabulky Amazon DynamoDB a volitelně filtrování entity určených k importu. Tak, aby nastavení importu se co největší jsou k dispozici několik šablon.
+## <a id="DynamoDBSource"></a>Import z Amazon DynamoDB
+Možnost importu ze zdroje Amazon DynamoDB umožňuje importovat z jednotlivých tabulek Amazon DynamoDB a volitelně filtrovat záznamy entity k importu. K dispozici je několik šablon, které nastavení importu co nejvíce zjednodušují.
 
-![Možnosti nastavení zdroje DynamoDB Amazon – snímek obrazovky - nástrojů pro migraci databáze](./media/import-data/dynamodbsource1.png)
+![Snímek obrazovky s možnostmi zdroje Amazon DynamoDB – nástroje pro migraci databází](./media/import-data/dynamodbsource1.png)
 
-![Možnosti nastavení zdroje DynamoDB Amazon – snímek obrazovky - nástrojů pro migraci databáze](./media/import-data/dynamodbsource2.png)
+![Snímek obrazovky s možnostmi zdroje Amazon DynamoDB – nástroje pro migraci databází](./media/import-data/dynamodbsource2.png)
 
-Formát Amazon DynamoDB připojovacího řetězce je:
+Formát připojovacího řetězce Amazon DynamoDB je následující:
 
     ServiceURL=<Service Address>;AccessKey=<Access Key>;SecretKey=<Secret Key>;
 
 > [!NOTE]
-> Pomocí příkazu ověřte, zda je přístupná zadané v poli instanci Amazon DynamoDB.
+> Pomocí příkazu Verify se ujistěte, že je instance Amazon DynamoDB zadaná v poli připojovacího řetězce přístupná.
 > 
 > 
 
-Zde je ukázka příkazového řádku k importu z Amazon DynamoDB:
+Tady je ukázka příkazového řádku pro import z Amazon DynamoDB:
 
     dt.exe /s:DynamoDB /s.ConnectionString:ServiceURL=https://dynamodb.us-east-1.amazonaws.com;AccessKey=<accessKey>;SecretKey=<secretKey> /s.Request:"{   """TableName""": """ProductCatalog""" }" /t:DocumentDBBulk /t.ConnectionString:"AccountEndpoint=<Azure Cosmos DB Endpoint>;AccountKey=<Azure Cosmos DB Key>;Database=<Azure Cosmos DB Database>;" /t.Collection:catalogCollection /t.CollectionThroughput:2500
 
-## <a id="BlobImport"></a>Importovat z Azure Blob storage
-Soubor JSON, MongoDB export souboru a možnosti program pro import zdrojového souboru CSV umožňují importovat jeden nebo více souborů z úložiště objektů Blob v Azure. Po zadání adresy URL kontejneru objektu Blob a klíč účtu, zadejte regulární výraz k vyberte soubory, které chcete importovat.
+## <a id="BlobImport"></a>Import ze služby Azure Blob Storage
+Možnosti importu ze zdrojového souboru JSON, exportovaného souboru MongoDB a souboru CSV umožňují importovat jeden nebo několik souborů ze služby Azure Blob Storage. Po zadání adresy URL kontejneru objektů blob a klíče účtu zadejte regulární výraz pro výběr souborů, které se mají importovat.
 
-![Možnosti nastavení zdroje snímek objektu Blob souboru](./media/import-data/blobsource.png)
+![Snímek obrazovky s možnostmi zdrojového souboru objektu blob](./media/import-data/blobsource.png)
 
-Zde je ukázka příkazového řádku k importu souborů JSON z Azure Blob storage:
+Tady je ukázka příkazového řádku pro import souborů JSON ze služby Azure Blob Storage:
 
     dt.exe /s:JsonFile /s.Files:"blobs://<account key>@account.blob.core.windows.net:443/importcontainer/.*" /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:doctest
 
-## <a id="SQLSource"></a>Importovat z kolekce rozhraní SQL API
-Možnost Azure Cosmos DB zdrojový program pro import umožňuje importovat data z jedné nebo více kolekcí Azure Cosmos DB a volitelně filtrování dokumentů pomocí dotazu.  
+## <a id="SQLSource"></a>Import z kolekce rozhraní SQL API
+Možnost importu ze zdroje Azure Cosmos DB umožňuje importovat data z jedné nebo několika kolekcí Azure Cosmos DB a volitelně filtrovat dokumenty pomocí dotazu.  
 
-![Možnosti nastavení zdroje snímek databázi Cosmos Azure](./media/import-data/documentdbsource.png)
+![Snímek obrazovky s možnostmi zdroje Azure Cosmos DB](./media/import-data/documentdbsource.png)
 
-Formát Azure Cosmos DB připojovacího řetězce je:
+Formát připojovacího řetězce Azure Cosmos DB je následující:
 
     AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;
 
-Připojovací řetězce k účtu Azure Cosmos DB můžete načíst ze stránky klíče na portálu Azure, jak je popsáno v [Správa účtu Azure Cosmos DB](manage-account.md), ale název databáze musí být připojenou k připojovací řetězec v následujícím formátu:
+Připojovací řetězec účtu služby Azure Cosmos DB můžete načíst ze stránky Klíče na webu Azure Portal, jak je popsáno v tématu [Správa účtu služby Azure Cosmos DB](manage-account.md), ale k připojovacímu řetězci je potřeba připojit název databáze v následujícím formátu:
 
     Database=<CosmosDB Database>;
 
 > [!NOTE]
-> Pomocí příkazu ověřte, zda je přístupná zadané v poli instanci Azure Cosmos DB.
+> Pomocí příkazu Verify se ujistěte, že je instance služby Azure Cosmos DB zadaná v poli připojovacího řetězce přístupná.
 > 
 > 
 
-Chcete-li importovat z jedné kolekce Azure Cosmos DB, zadejte název kolekce pro import dat z. Chcete-li importovat z více kolekcí Azure Cosmos DB, zadat regulární výraz tak, aby odpovídaly jeden nebo více názvů kolekcí (například collection01 | collection02 | collection03). Může volitelně zadejte nebo zadejte soubor pro dotaz na filtr a tvar dat určených k importu.
+Pokud chcete importovat z jedné kolekce Azure Cosmos DB, zadejte název kolekce, ze které se mají data importovat. Pokud chcete importovat z několika kolekcí Azure Cosmos DB, zadejte regulární výraz, kterému bude odpovídat jeden nebo několik názvů kolekcí (například collection01 | collection02 | collection03). Volitelně můžete pro dotaz zadat soubor a tím filtrovat a tvarovat data určená k importu.
 
 > [!NOTE]
-> Vzhledem k tomu, že kolekce pole přijímá regulární výrazy, při importu z jedné kolekce, jejichž název obsahuje regulární výraz znaků, musí tyto znaky uvozené odpovídajícím způsobem.
+> Vzhledem k tomu, že pole kolekce přijímá regulární výrazy, musíte v případě, že importujete z jedné kolekce, jejíž název obsahuje znaky regulárního výrazu, tyto znaky odpovídajícím způsobem uvodit.
 > 
 > 
 
-Možnost program pro import zdroje Azure Cosmos DB má následující rozšířené možnosti:
+Možnost importu ze zdroje Azure Cosmos DB nabízí následující pokročilé možnosti:
 
-1. Zahrnutí interní polí: Určuje, zda mají být zahrnuty vlastnosti dokumentu systému Azure Cosmos DB export (například _rid, _ts).
-2. Počet opakovaných pokusů o selhání: Určuje počet opakovaných pokusů připojení k databázi Azure Cosmos v případě přechodných chyb (například přerušení připojení k síti).
-3. Interval opakování: Určuje dobu čekání mezi opakování pokusu o připojení k databázi Azure Cosmos v případě přechodných chyb (například přerušení připojení k síti).
-4. Režim připojení: Určuje režim připojení pro použití s Azure Cosmos DB. Dostupné možnosti jsou DirectTcp, DirectHttps a brány. Režimy přímé připojení je rychlejší, zatímco režimu brány je další brány firewall popisný jako pouze používá port 443.
+1. Include Internal Fields (Zahrnout interní pole): Určuje, jestli se mají do exportu zahrnout systémové vlastnosti dokumentu Azure Cosmos DB (například _rid, _ts).
+2. Number of Retries on Failure (Počet opakování v případě selhání): Určuje, kolikrát se má opakovat pokus o připojení ke službě Azure Cosmos DB v případě přechodného selhání (například přerušení síťového připojení).
+3. Retry Interval (Interval opakování): Určuje, jak dlouho se má počkat před zopakováním pokusu o připojení ke službě Azure Cosmos DB v případě přechodného selhání (například přerušení síťového připojení).
+4. Connection Mode (Režim připojení): Určuje režim připojení ke službě Azure Cosmos DB. Dostupné možnosti jsou DirectTcp, DirectHttps a Gateway. Režimy přímého připojení jsou rychlejší, zatímco režim brány lépe vyhovuje požadavkům brány firewall, protože využívá pouze port 443.
 
-![Snímek obrazovky databázi Cosmos Azure zdroj rozšířené možnosti](./media/import-data/documentdbsourceoptions.png)
+![Snímek obrazovky s pokročilými možnostmi zdroje Azure Cosmos DB](./media/import-data/documentdbsourceoptions.png)
 
 > [!TIP]
-> Nástroj pro import výchozí režim připojení DirectTcp. Pokud máte brány firewall problémy, přejděte do režimu připojení brány, jak vyžaduje jenom port 443.
+> Nástroj pro import jako výchozí režim používá DirectTcp. Pokud máte problémy s bránou firewall, přepněte režim připojení na Gateway, protože vyžaduje pouze port 443.
 > 
 > 
 
-Zde jsou některé příkazového řádku ukázky pro import z databáze Cosmos Azure:
+Tady je několik ukázek příkazového řádku pro import ze služby Azure Cosmos DB:
 
     #Migrate data from one Azure Cosmos DB collection to another Azure Cosmos DB collections
     dt.exe /s:CosmosDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:TEColl /t:CosmosDBBulk /t.ConnectionString:" AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:TESessions /t.CollectionThroughput:2500
@@ -320,180 +317,180 @@ Zde jsou některé příkazového řádku ukázky pro import z databáze Cosmos 
     dt.exe /s:CosmosDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /s.Collection:StoresSub /t:JsonFile /t.File:StoresExport.json /t.Overwrite /t.CollectionThroughput:2500
 
 > [!TIP]
-> Cosmos DB Data importovat nástroj Azure také podporuje import dat z [emulátoru DB Cosmos Azure](local-emulator.md). Při importu dat z místní emulátoru, nastavte koncový bod na `https://localhost:<port>`. 
+> Nástroj pro import dat Azure Cosmos DB podporuje také import dat z [emulátoru služby Azure Cosmos DB](local-emulator.md). Pokud importujete data z místního emulátoru, nastavte koncový bod na `https://localhost:<port>`. 
 > 
 > 
 
-## <a id="HBaseSource"></a>Importovat z HBase
-Možnost program pro import zdroje HBase umožňuje importovat data z tabulky HBase a volitelně data filtrovat. Tak, aby nastavení importu se co největší jsou k dispozici několik šablon.
+## <a id="HBaseSource"></a>Import z HBase
+Možnost importu ze zdroje HBase umožňuje importovat data z tabulky HBase a volitelně data filtrovat. K dispozici je několik šablon, které nastavení importu co nejvíce zjednodušují.
 
-![Možnosti nastavení zdroje snímek HBase](./media/import-data/hbasesource1.png)
+![Snímek obrazovky s možnostmi zdroje HBase](./media/import-data/hbasesource1.png)
 
-![Možnosti nastavení zdroje snímek HBase](./media/import-data/hbasesource2.png)
+![Snímek obrazovky s možnostmi zdroje HBase](./media/import-data/hbasesource2.png)
 
-Formát HBase Stargate připojovacího řetězce je:
+Formát připojovacího řetězce HBase Stargate je následující:
 
     ServiceURL=<server-address>;Username=<username>;Password=<password>
 
 > [!NOTE]
-> Pomocí příkazu ověřte Ujistěte se, že zadané v poli instanci HBase je přístupná.
+> Pomocí příkazu Verify se ujistěte, že je instance HBase zadaná v poli připojovacího řetězce přístupná.
 > 
 > 
 
-Zde je ukázka příkazového řádku k importu z HBase:
+Tady je ukázka příkazového řádku pro import z HBase:
 
     dt.exe /s:HBase /s.ConnectionString:ServiceURL=<server-address>;Username=<username>;Password=<password> /s.Table:Contacts /t:CosmosDBBulk /t.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;" /t.Collection:hbaseimport
 
-## <a id="SQLBulkTarget"></a>Importovat do rozhraní SQL API (hromadným importem)
-Program pro import hromadné DB Cosmos Azure umožňuje importovat z jakéhokoli z dostupných možností, pomocí Azure DB Cosmos uložené procedury pro efektivitu. Nástroj podporuje importovat do jedné kolekce rozdělena na oddíly jedním Azure Cosmos DB, a také horizontálně dělené importu, které je dat rozděleného mezi více kolekcí oddíly jedním Azure Cosmos DB. Další informace o segmentace dat naleznete v tématu [dělení a škálování v Azure Cosmos DB](partition-data.md). Nástroj vytvoří, spustí a odstraní z kolekcí cíl uložené procedury.  
+## <a id="SQLBulkTarget"></a>Import do rozhraní SQL API (hromadný import)
+Nástroj pro hromadný import Azure Cosmos DB umožňuje importovat z jakékoli dostupné možnosti zdroje a k zajištění efektivity využívá uloženou proceduru Azure Cosmos DB. Nástroj podporuje import do kolekce Azure Cosmos DB s jedním oddílem i horizontálně dělený import, kde se data rozdělí do několika kolekcí Azure Cosmos DB s jedním oddílem. Další informace o dělení dat najdete v tématu [Dělení a škálování ve službě Azure Cosmos DB](partition-data.md). Nástroj vytvoří a spustí uloženou proceduru a pak ji odstraní z cílových kolekcí.  
 
-![Možnosti hromadné snímek databázi Cosmos Azure](./media/import-data/documentdbbulk.png)
+![Snímek obrazovky s možnostmi hromadného importu do služby Azure Cosmos DB](./media/import-data/documentdbbulk.png)
 
-Formát Azure Cosmos DB připojovacího řetězce je:
+Formát připojovacího řetězce Azure Cosmos DB je následující:
 
     AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;
 
-Připojovací řetězce k účtu Azure Cosmos DB můžete načíst ze stránky klíče na portálu Azure, jak je popsáno v [Správa účtu Azure Cosmos DB](manage-account.md), ale název databáze musí být připojenou k připojovací řetězec v následujícím formátu:
+Připojovací řetězec účtu služby Azure Cosmos DB můžete načíst ze stránky Klíče na webu Azure Portal, jak je popsáno v tématu [Správa účtu služby Azure Cosmos DB](manage-account.md), ale k připojovacímu řetězci je potřeba připojit název databáze v následujícím formátu:
 
     Database=<CosmosDB Database>;
 
 > [!NOTE]
-> Pomocí příkazu ověřte, zda je přístupná zadané v poli instanci Azure Cosmos DB.
+> Pomocí příkazu Verify se ujistěte, že je instance služby Azure Cosmos DB zadaná v poli připojovacího řetězce přístupná.
 > 
 > 
 
-Import do jedné kolekce, zadejte název kolekce a importovat data z kliknutím na tlačítko Přidat. Import do více kolekcí, zadejte jednotlivé názvy kolekce jednotlivě nebo použijte následující syntaxi zadat více kolekcí: *collection_prefix*[index - end index počátečního]. Při zadávání více kolekcí prostřednictvím výše uvedené syntaxe, mějte tyto pokyny:
+Pokud chcete importovat do jedné kolekce, zadejte název kolekce, ze které se mají data importovat, a klikněte na tlačítko Add (Přidat). Pokud chcete importovat do několika kolekcí, zadejte jednotlivé názvy kolekcí nebo pomocí následující syntaxe zadejte několik kolekcí: *předpona_kolekce*[počáteční index - koncový index]. Při zadávání několika kolekcí prostřednictvím výše uvedené syntaxe mějte na paměti následující pokyny:
 
-1. Jsou podporovány pouze celé číslo vzory názvů rozsahu. Například zadání kolekce [0-3] vytvoří následující kolekce: collection0, collection1, collection2, collection3.
-2. Můžete použít zkrácené syntaxe: kolekce [3] Vytvoří stejnou sadu kolekcí uveden v kroku 1.
-3. Lze zadat více než jeden nahrazení. Například kolekce [0-1] [0-9] generuje 20 názvů kolekcí úvodními nulami (collection01, ..02, ..03).
+1. Podporují se pouze vzory pojmenování s rozsahem celých čísel. Například zadáním collection[0-3] se vytvoří následující kolekce: collection0, collection1, collection2, collection3.
+2. Můžete použít zkrácenou syntaxi: collection[3] vytvoří stejnou sadu kolekcí uvedenou v kroku 1.
+3. Je možné zadat více než jedno nahrazení. Například collection[0-1] [0-9] vygeneruje 20 názvů kolekcí s počátečními nulami (collection01, collection02, collection03 atd.).
 
-Jakmile názvy kolekce byly nastaveny, vyberte požadované propustnost kolekcí (400 RUs na 10 000 RUs). Pro nejlepší výkon import zvolte vyšší propustnost. Další informace o úrovně výkonu najdete v tématu [úrovně výkonu v Azure Cosmos DB](performance-levels.md).
+Po zadání názvů kolekcí zvolte požadovanou propustnost kolekcí (400 až 10 000 RU/s). K zajištění nejlepšího výkonu zvolte vyšší propustnost. Další informace o úrovních výkonu najdete v tématu [Úrovně výkonu ve službě Azure Cosmos DB](performance-levels.md).
 
 > [!NOTE]
-> Nastavení výkonu propustnost platí jenom pro vytvoření kolekce. Pokud zadané kolekce už existuje, její propustnosti se nemění.
+> Nastavení propustnosti výkonu se použije pouze při vytváření kolekce. Pokud zadaná kolekce již existuje, její propustnost se nezmění.
 > 
 > 
 
-Při importu do více kolekcí, podporuje nástroj pro import na základě hodnoty hash horizontálního dělení. V tomto scénáři zadejte vlastnost dokumentu, které chcete použít jako klíč oddílu (Pokud klíč oddílu je prázdné, dokumenty jsou horizontálně dělené náhodně mezi kolekcemi cíl).
+Při importu do několika kolekcí nástroj pro import podporuje horizontální dělení na základě hodnoty hash. V tomto scénáři zadejte vlastnost dokumentu, kterou chcete použít jako klíč oddílu (pokud klíč oddílu zůstane prázdný, dokumenty se náhodně horizontálně rozdělí mezi cílové kolekce).
 
-Můžete volitelně můžete určit, které pole ve zdroji import má být použit jako vlastnost id dokumentu Azure Cosmos DB během importu (Všimněte si, že pokud dokumenty neobsahují tuto vlastnost, pak nástroj pro import vytvoří identifikátor GUID jako hodnota vlastnosti id).
+Volitelně můžete zadat, které pole ve zdroji importu se má během importu použít jako vlastnost ID dokumentu Azure Cosmos DB (pokud dokumenty tuto vlastnost neobsahují, nástroj pro import jako hodnotu vlastnosti ID vygeneruje GUID).
 
-Během importu nejsou k dispozici několik upřesňujících možností. Nejprve při zahrnuje nástroj výchozí hromadně importovat uložené procedury (BulkInsert.js), můžete zadat vlastní import uložené procedury:
+Během importu je k dispozici několik pokročilých možností. Za prvé, přestože nástroj vkládá výchozí uloženou proceduru hromadného importu (BulkInsert.js), můžete zadat svou vlastní uloženou proceduru importu:
 
- ![Snímek obrazovky databázi Cosmos Azure hromadné vložení sproc možnost](./media/import-data/bulkinsertsp.png)
+ ![Snímek obrazovky s možností uložené procedury hromadného vložení do služby Azure Cosmos DB](./media/import-data/bulkinsertsp.png)
 
-Kromě toho při importu datum typy (například ze systému SQL Server nebo MongoDB), můžete zvolit tři možnosti importu:
+Kromě toho máte při importování datových typů (například z SQL Serveru nebo MongoDB) na výběr ze tří možností importu:
 
- ![Snímek obrazovky databázi Cosmos Azure datum čas import možnosti](./media/import-data/datetimeoptions.png)
+ ![Snímek obrazovky s možnostmi importu data a času do služby Azure Cosmos DB](./media/import-data/datetimeoptions.png)
 
-* Řetězec: Zachovat jako hodnotu řetězce
-* Epoch: Zachovat jako číslo hodnota Epoch
-* Oba: Zachovat řetězec a Epoch číselné hodnoty. Tato možnost vytvoří vnořený, například: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245}
+* String (Řetězec): Zachování jako hodnoty řetězce
+* Epoch (Epocha): Zachování jako hodnoty unixového času
+* Both (Obojí): Zachování hodnoty řetězce i hodnoty unixového času. Tato možnost vytvoří vnořený dokument, například: "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
-Program pro import hromadné DB Cosmos Azure má následující další rozšířené možnosti:
+Nástroj pro hromadný import ze služby Azure Cosmos DB nabízí následující další pokročilé možnosti:
 
-1. Velikost dávky: Nástroj výchozí velikost dávky 50.  Pokud jsou dokumenty, které se importovat velké, zvažte, což snižuje velikost dávky. Pokud dokumenty, které se importovat malé, zvažte naopak vyvolání velikost dávky.
-2. Skript maximální velikost (bajty): použije se výchozí hodnota nástroje skriptu maximální velikost 512 KB.
-3. Zakázat automatické generování Id: Pokud každému dokumentu určených k importu obsahuje id pole, pak výběrem této možnosti můžete zvýšit výkon. Chybí hodnota v poli jedinečné id dokumenty nebudou importovány.
-4. Aktualizace stávající dokumenty: Nástroj výchozí není nahrazení stávající dokumenty docházet ke konfliktům id. Výběrem této možnosti povolíte přepsal stávající dokumenty s odpovídajícím ID. Tato funkce je užitečná pro naplánované data migrace, které aktualizovat existující dokumenty.
-5. Počet opakovaných pokusů o selhání: Určuje počet opakovaných pokusů připojení k databázi Azure Cosmos v případě přechodných chyb (například přerušení připojení k síti).
-6. Interval opakování: Určuje dobu čekání mezi opakování pokusu o připojení k databázi Azure Cosmos v případě přechodných chyb (například přerušení připojení k síti).
-7. Režim připojení: Určuje režim připojení pro použití s Azure Cosmos DB. Dostupné možnosti jsou DirectTcp, DirectHttps a brány. Režimy přímé připojení je rychlejší, zatímco režimu brány je další brány firewall popisný jako pouze používá port 443.
+1. Batch Size (Velikost dávky): Nástroj jako výchozí velikost dávky používá 50.  Pokud jsou dokumenty určené k importu velké, zvažte snížení velikosti dávky. Pokud jsou dokumenty určené k importu malé, zvažte naopak zvýšení velikosti dávky.
+2. Max Script Size (bytes) (Maximální velikost skriptu v bajtech): Nástroj jako maximální velikost skriptu používá 512 kB.
+3. Disable Automatic Id Generation (Zakázat automatické generování ID): Pokud všechny dokumenty určené k importu obsahují pole s ID, je možné výběrem této možnosti zvýšit výkon. Dokumenty, u kterých chybí pole s jedinečným ID, se neimportují.
+4. Update Existing Documents (Aktualizovat stávající dokumenty): Nástroj ve výchozím nastavení nenahrazuje stávající dokumenty, u kterých dojde ke konfliktu ID. Výběrem této možnosti umožníte přepsání stávajících dokumentů s odpovídajícími ID. Tato funkce je užitečná pro plánované migrace dat, při kterých se aktualizují stávající dokumenty.
+5. Number of Retries on Failure (Počet opakování v případě selhání): Určuje, kolikrát se má opakovat pokus o připojení ke službě Azure Cosmos DB v případě přechodného selhání (například přerušení síťového připojení).
+6. Retry Interval (Interval opakování): Určuje, jak dlouho se má počkat před zopakováním pokusu o připojení ke službě Azure Cosmos DB v případě přechodného selhání (například přerušení síťového připojení).
+7. Connection Mode (Režim připojení): Určuje režim připojení ke službě Azure Cosmos DB. Dostupné možnosti jsou DirectTcp, DirectHttps a Gateway. Režimy přímého připojení jsou rychlejší, zatímco režim brány lépe vyhovuje požadavkům brány firewall, protože využívá pouze port 443.
 
-![Snímek obrazovky databázi Cosmos Azure hromadným importem rozšířené možnosti](./media/import-data/docdbbulkoptions.png)
+![Snímek obrazovky s pokročilými možnostmi hromadného importu do služby Azure Cosmos DB](./media/import-data/docdbbulkoptions.png)
 
 > [!TIP]
-> Nástroj pro import výchozí režim připojení DirectTcp. Pokud máte brány firewall problémy, přejděte do režimu připojení brány, jak vyžaduje jenom port 443.
+> Nástroj pro import jako výchozí režim používá DirectTcp. Pokud máte problémy s bránou firewall, přepněte režim připojení na Gateway, protože vyžaduje pouze port 443.
 > 
 > 
 
-## <a id="SQLSeqTarget"></a>Importovat do rozhraní SQL API (po sobě jdoucích záznam Import)
-– Importér sekvenční záznam Azure Cosmos DB umožňuje importovat z jakéhokoli z dostupných možností na základě záznamu podle. Tuto možnost můžete zvolit, pokud při importu do existující kolekce, která dosáhla své kvóty uložené procedury. Nástroj podporuje import do Azure Cosmos DB kolekce jedním (jedním oddílem i více oddílu), stejně jako horizontálně dělené importu, které jsou data rozdělena mezi více kolekcí Azure Cosmos DB jedním oddílem nebo více oddílů. Další informace o segmentace dat naleznete v tématu [dělení a škálování v Azure Cosmos DB](partition-data.md).
+## <a id="SQLSeqTarget"></a>Import do rozhraní SQL API (sekvenční import záznamů)
+Nástroj pro sekvenční import záznamů Azure Cosmos DB umožňuje importovat z jakékoli dostupné možnosti zdroje po jednotlivých záznamech. Tuto možnost můžete zvolit, pokud importujete do stávající kolekce, která dosáhla kvóty uložených procedur. Nástroj podporuje import do jedné kolekce Azure Cosmos DB (s jedním oddílem i s více oddíly) i horizontálně dělený import, kde se data rozdělí do několika kolekcí Azure Cosmos DB s jedním oddílem nebo s více oddíly. Další informace o dělení dat najdete v tématu [Dělení a škálování ve službě Azure Cosmos DB](partition-data.md).
 
-![Snímek obrazovky databázi Cosmos Azure možnosti sekvenční záznamů importu](./media/import-data/documentdbsequential.png)
+![Snímek obrazovky s možnostmi sekvenčního importu záznamů do služby Azure Cosmos DB](./media/import-data/documentdbsequential.png)
 
-Formát Azure Cosmos DB připojovacího řetězce je:
+Formát připojovacího řetězce Azure Cosmos DB je následující:
 
     AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB Database>;
 
-Připojovací řetězce k účtu Azure Cosmos DB můžete načíst ze stránky klíče na portálu Azure, jak je popsáno v [Správa účtu Azure Cosmos DB](manage-account.md), ale název databáze musí být připojenou k připojovací řetězec v následujícím formátu:
+Připojovací řetězec účtu služby Azure Cosmos DB můžete načíst ze stránky Klíče na webu Azure Portal, jak je popsáno v tématu [Správa účtu služby Azure Cosmos DB](manage-account.md), ale k připojovacímu řetězci je potřeba připojit název databáze v následujícím formátu:
 
     Database=<Azure Cosmos DB Database>;
 
 > [!NOTE]
-> Pomocí příkazu ověřte, zda je přístupná zadané v poli instanci Azure Cosmos DB.
+> Pomocí příkazu Verify se ujistěte, že je instance služby Azure Cosmos DB zadaná v poli připojovacího řetězce přístupná.
 > 
 > 
 
-Chcete-li importovat na jedinou kolekci, zadejte název kolekce, do které data budou naimportovány a klikněte na tlačítko Přidat. Import do více kolekcí, zadejte jednotlivé názvy kolekce jednotlivě nebo použijte následující syntaxi zadat více kolekcí: *collection_prefix*[index - end index počátečního]. Při zadávání více kolekcí prostřednictvím výše uvedené syntaxe, mějte tyto pokyny:
+Pokud chcete importovat do jedné kolekce, zadejte název kolekce, do které se mají data importovat, a klikněte na tlačítko Add (Přidat). Pokud chcete importovat do několika kolekcí, zadejte jednotlivé názvy kolekcí nebo pomocí následující syntaxe zadejte několik kolekcí: *předpona_kolekce*[počáteční index - koncový index]. Při zadávání několika kolekcí prostřednictvím výše uvedené syntaxe mějte na paměti následující pokyny:
 
-1. Jsou podporovány pouze celé číslo vzory názvů rozsahu. Například zadání kolekce [0-3] vytvoří následující kolekce: collection0, collection1, collection2, collection3.
-2. Můžete použít zkrácené syntaxe: kolekce [3] Vytvoří stejnou sadu kolekcí uveden v kroku 1.
-3. Lze zadat více než jeden nahrazení. Například kolekce [0-1] [0-9] vytvoří 20 názvů kolekcí úvodními nulami (collection01, ..02, ..03).
+1. Podporují se pouze vzory pojmenování s rozsahem celých čísel. Například zadáním collection[0-3] se vytvoří následující kolekce: collection0, collection1, collection2, collection3.
+2. Můžete použít zkrácenou syntaxi: collection[3] vytvoří stejnou sadu kolekcí uvedenou v kroku 1.
+3. Je možné zadat více než jedno nahrazení. Například collection[0-1] [0-9] vytvoří 20 názvů kolekcí s počátečními nulami (collection01, collection02, collection03 atd.).
 
-Jakmile názvy kolekce byly nastaveny, vyberte požadované propustnost kolekcí (400 RUs na 250 000 RUs). Pro nejlepší výkon import zvolte vyšší propustnost. Další informace o úrovně výkonu najdete v tématu [úrovně výkonu v Azure Cosmos DB](performance-levels.md). Všechny import do kolekcí s propustností > 10 000 RUs vyžadují klíč oddílu. Pokud zvolíte možnost mít více než 250 000 RUs, musíte do souboru požadavek na portálu pro svůj účet vyšší.
+Po zadání názvů kolekcí zvolte požadovanou propustnost kolekcí (400 až 250 000 RU/s). K zajištění nejlepšího výkonu zvolte vyšší propustnost. Další informace o úrovních výkonu najdete v tématu [Úrovně výkonu ve službě Azure Cosmos DB](performance-levels.md). Jakýkoli import do kolekce s propustností větší než 10 000 RU/s vyžaduje klíč oddílu. Pokud se rozhodnete, že potřebujete více než 250 000 RU/s, musíte na portálu podat žádost o navýšení limitu účtu.
 
 > [!NOTE]
-> Propustnost nastavení platí jenom pro kolekci nebo vytvoření databáze. Pokud existuje zadané kolekci, se nezmění jeho propustnost.
+> Nastavení propustnosti se použije pouze při vytváření kolekce nebo databáze. Pokud zadaná kolekce již existuje, její propustnost se nezmění.
 > 
 > 
 
-Při importu do více kolekcí, podporuje nástroj pro import na základě hodnoty hash horizontálního dělení. V tomto scénáři zadejte vlastnost dokumentu, které chcete použít jako klíč oddílu (Pokud klíč oddílu je prázdné, dokumenty jsou horizontálně dělené náhodně mezi kolekcemi cíl).
+Při importu do několika kolekcí nástroj pro import podporuje horizontální dělení na základě hodnoty hash. V tomto scénáři zadejte vlastnost dokumentu, kterou chcete použít jako klíč oddílu (pokud klíč oddílu zůstane prázdný, dokumenty se náhodně horizontálně rozdělí mezi cílové kolekce).
 
-Můžete volitelně můžete určit, které pole ve zdroji import má být použit jako vlastnost id dokumentu Azure Cosmos DB během importu (Všimněte si, že pokud dokumenty neobsahují tuto vlastnost, pak nástroj pro import vytvoří identifikátor GUID jako hodnota vlastnosti id).
+Volitelně můžete zadat, které pole ve zdroji importu se má během importu použít jako vlastnost ID dokumentu Azure Cosmos DB (pokud dokumenty tuto vlastnost neobsahují, nástroj pro import jako hodnotu vlastnosti ID vygeneruje GUID).
 
-Během importu nejsou k dispozici několik upřesňujících možností. První při importu datum typy (například ze systému SQL Server nebo MongoDB), můžete zvolit tři možnosti importu:
+Během importu je k dispozici několik pokročilých možností. Za prvé, při importování datových typů (například z SQL Serveru nebo MongoDB) máte na výběr ze tří možností importu:
 
- ![Snímek obrazovky databázi Cosmos Azure datum čas import možnosti](./media/import-data/datetimeoptions.png)
+ ![Snímek obrazovky s možnostmi importu data a času do služby Azure Cosmos DB](./media/import-data/datetimeoptions.png)
 
-* Řetězec: Zachovat jako hodnotu řetězce
-* Epoch: Zachovat jako číslo hodnota Epoch
-* Oba: Zachovat řetězec a Epoch číselné hodnoty. Tato možnost vytvoří vnořený, například: "date_joined": {"Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245}
+* String (Řetězec): Zachování jako hodnoty řetězce
+* Epoch (Epocha): Zachování jako hodnoty unixového času
+* Both (Obojí): Zachování hodnoty řetězce i hodnoty unixového času. Tato možnost vytvoří vnořený dokument, například: "date_joined": { "Value": "2013-10-21T21:17:25.2410000Z", "Epoch": 1382390245 }
 
-Azure Cosmos DB - program pro import po sobě jdoucích záznam obsahuje následující další pokročilé možnosti:
+Nástroj pro sekvenční import záznamů Azure Cosmos DB nabízí následující další pokročilé možnosti:
 
-1. Počet požadavků na paralelní: nástroj výchozí paralelní dva požadavky. Dokumenty, které se importovat jsou malé, vezměte v úvahu vyvolání počet paralelní požadavků. Všimněte si, že pokud toto číslo se vyvolá příliš mnoho, importu může dojít k omezení šířky pásma.
-2. Zakázat automatické generování Id: Pokud každému dokumentu určených k importu obsahuje id pole, pak výběrem této možnosti můžete zvýšit výkon. Chybí hodnota v poli jedinečné id dokumenty nebudou importovány.
-3. Aktualizace stávající dokumenty: Nástroj výchozí není nahrazení stávající dokumenty docházet ke konfliktům id. Výběrem této možnosti povolíte přepsal stávající dokumenty s odpovídajícím ID. Tato funkce je užitečná pro naplánované data migrace, které aktualizovat existující dokumenty.
-4. Počet opakovaných pokusů o selhání: Určuje počet opakovaných pokusů připojení k databázi Azure Cosmos v případě přechodných chyb (například přerušení připojení k síti).
-5. Interval opakování: Určuje dobu čekání mezi opakování pokusu o připojení k databázi Azure Cosmos v případě přechodných chyb (například přerušení připojení k síti).
-6. Režim připojení: Určuje režim připojení pro použití s Azure Cosmos DB. Dostupné možnosti jsou DirectTcp, DirectHttps a brány. Režimy přímé připojení je rychlejší, zatímco režimu brány je další brány firewall popisný jako pouze používá port 443.
+1. Number of Parallel Requests (Počet paralelních požadavků): Nástroj ve výchozím nastavení využívá dva paralelní požadavky. Pokud jsou dokumenty určené k importu malé, zvažte zvýšení počtu paralelních požadavků. Pokud toto číslo zvýšíte příliš, může docházet k omezování importu.
+2. Disable Automatic Id Generation (Zakázat automatické generování ID): Pokud všechny dokumenty určené k importu obsahují pole s ID, je možné výběrem této možnosti zvýšit výkon. Dokumenty, u kterých chybí pole s jedinečným ID, se neimportují.
+3. Update Existing Documents (Aktualizovat stávající dokumenty): Nástroj ve výchozím nastavení nenahrazuje stávající dokumenty, u kterých dojde ke konfliktu ID. Výběrem této možnosti umožníte přepsání stávajících dokumentů s odpovídajícími ID. Tato funkce je užitečná pro plánované migrace dat, při kterých se aktualizují stávající dokumenty.
+4. Number of Retries on Failure (Počet opakování v případě selhání): Určuje, kolikrát se má opakovat pokus o připojení ke službě Azure Cosmos DB v případě přechodného selhání (například přerušení síťového připojení).
+5. Retry Interval (Interval opakování): Určuje, jak dlouho se má počkat před zopakováním pokusu o připojení ke službě Azure Cosmos DB v případě přechodného selhání (například přerušení síťového připojení).
+6. Connection Mode (Režim připojení): Určuje režim připojení ke službě Azure Cosmos DB. Dostupné možnosti jsou DirectTcp, DirectHttps a Gateway. Režimy přímého připojení jsou rychlejší, zatímco režim brány lépe vyhovuje požadavkům brány firewall, protože využívá pouze port 443.
 
-![Snímek obrazovky databázi Cosmos Azure import sekvenční záznam rozšířené možnosti](./media/import-data/documentdbsequentialoptions.png)
+![Snímek obrazovky s pokročilými možnostmi sekvenčního importu záznamů do služby Azure Cosmos DB](./media/import-data/documentdbsequentialoptions.png)
 
 > [!TIP]
-> Nástroj pro import výchozí režim připojení DirectTcp. Pokud máte brány firewall problémy, přejděte do režimu připojení brány, jak vyžaduje jenom port 443.
+> Nástroj pro import jako výchozí režim používá DirectTcp. Pokud máte problémy s bránou firewall, přepněte režim připojení na Gateway, protože vyžaduje pouze port 443.
 > 
 > 
 
-## <a id="IndexingPolicy"></a>Zadejte zásady indexování
-Když povolíte nástroj pro migraci při vytváření kolekcí rozhraní API pro Azure Cosmos databáze SQL během importu, můžete zadat zásady indexování kolekcí. V části Rozšířené možnosti Azure DB Cosmos po sobě jdoucích záznamů možností a Azure Cosmos DB hromadného importu přejděte do části zásady indexování.
+## <a id="IndexingPolicy"></a>Zadání zásady indexování
+Když nástroji pro migraci povolíte vytváření kolekcí rozhraní SQL API služby Azure Cosmos DB během importu, můžete zadat zásadu indexování kolekcí. V části pokročilých možností hromadného importu do služby Azure Cosmos DB a sekvenčního importu záznamů do služby Azure Cosmos DB přejděte do části Indexing Policy (Zásady indexování).
 
-![Snímek obrazovky Azure Cosmos DB indexování zásad rozšířené možnosti](./media/import-data/indexingpolicy1.png)
+![Snímek obrazovky s pokročilými možnostmi zásad indexování Azure Cosmos DB](./media/import-data/indexingpolicy1.png)
 
-Pomocí zásady indexování rozšířené možnosti, můžete vybrat indexování soubor zásad, ručně zadejte zásady indexování nebo vybrat ze sady výchozích šablon (podle pravým tlačítkem myši na do textového pole indexování zásady).
+Pomocí pokročilé možnosti Indexing Policy (Zásady indexování) můžete vybrat soubor zásad indexování, ručně zadat zásadu indexování nebo si vybrat ze sady výchozích šablon (kliknutím pravým tlačítkem do textového pole pro zásady indexování).
 
-Šablony zásad, které tento nástroj nabízí jsou:
+Nástroj poskytuje následující šablony zásad:
 
-* Výchozí hodnota. Tato zásada je vhodné, když jste provádění dotazy na rovnost pro řetězce a pomocí klauzule ORDER BY, rozsah a dotazy na rovnost pro čísla. Tato zásada má nižší režijní náklady úložiště index než rozsah.
-* Rozsah. Tato zásada je vhodné, když používáte ORDER BY, rozsah a dotazy na rovnost na čísla i řetězce. Tato zásada nemá vyšší index režijní náklady na úložiště než výchozí nebo hodnoty Hash.
+* Default (Výchozí). Tato zásada je nejlepší, pokud provádíte dotazy na rovnost pro řetězce a dotazy ORDER BY, na rozsah a na rovnost pro čísla. Tato zásada má nižší režijní náklady na úložiště indexů než Range (Rozsah).
+* Range (Rozsah). Tato zásada je nejlepší, pokud používáte dotazy ORDER BY, na rozsah a na rovnost pro čísla i řetězce. Tato zásada má vyšší režijní náklady na úložiště indexů než Default (Výchozí) a Hash (Hodnota hash).
 
-![Snímek obrazovky Azure Cosmos DB indexování zásad rozšířené možnosti](./media/import-data/indexingpolicy2.png)
+![Snímek obrazovky s pokročilými možnostmi zásad indexování Azure Cosmos DB](./media/import-data/indexingpolicy2.png)
 
 > [!NOTE]
-> Pokud nezadáte zásady indexování, se použije výchozí zásady. Další informace o indexování zásad najdete v tématu [Azure DB Cosmos indexování zásady](indexing-policies.md).
+> Pokud zásadu indexování nezadáte, použije se výchozí zásada. Další informace o zásadách indexování najdete v tématu [Zásady indexování ve službě Azure Cosmos DB](indexing-policies.md).
 > 
 > 
 
-## <a name="export-to-json-file"></a>Exportovat do souboru JSON
-Exportu Azure Cosmos DB JSON umožňuje některé z dostupných možností exportovat do souboru JSON, který obsahuje pole dokumentů JSON. Nástroj zpracuje exportu pro vás, nebo můžete k zobrazení výsledné příkaz migrace a spusťte příkaz. Výsledný soubor JSON může být uložená místně nebo v úložiště objektů Blob v Azure.
+## <a name="export-to-json-file"></a>Export do souboru JSON
+Nástroj pro export do formátu JSON služby Azure Cosmos DB umožňuje exportovat z jakékoli dostupné možnosti zdroje do souboru JSON, který obsahuje pole dokumentů JSON. Nástroj se o export postará za vás nebo můžete zvolit zobrazení výsledného příkazu pro migraci a spustit ho sami. Výsledný soubor JSON je možné uložit místně nebo ve službě Azure Blob Storage.
 
-![Snímek obrazovky z Azure Cosmos DB JSON možností exportu místního souboru](./media/import-data/jsontarget.png)
+![Snímek obrazovky s možností exportu ze služby Azure Cosmos DB do místního souboru JSON](./media/import-data/jsontarget.png)
 
-![Možností exportu snímek z Azure Cosmos DB JSON Azure Blob storage](./media/import-data/jsontarget2.png)
+![Snímek obrazovky s možností exportu ze služby Azure Cosmos DB do souboru JSON ve službě Azure Blob Storage](./media/import-data/jsontarget2.png)
 
-Volitelně můžete prettify výsledný formát JSON, který zvýší velikost výsledného dokumentu při vytváření obsahu více číselné vyjádření.
+Volitelně můžete zvolit očištění výsledného formátu JSON. Tím se zvýší velikost výsledného dokumentu, zatímco obsah bude pro člověka lépe čitelný.
 
     Standard JSON export
     [{"id":"Sample","Title":"About Paris","Language":{"Name":"English"},"Author":{"Name":"Don","Location":{"City":"Paris","Country":"France"}},"Content":"Don's document in Azure Cosmos DB is a valid JSON document as defined by the JSON spec.","PageViews":10000,"Topics":[{"Title":"History of Paris"},{"Title":"Places to see in Paris"}]}]
@@ -526,39 +523,39 @@ Volitelně můžete prettify výsledný formát JSON, který zvýší velikost v
     }]
 
 ## <a name="advanced-configuration"></a>Pokročilá konfigurace
-V dialogovém okně Upřesnit konfiguraci zadejte umístění souboru protokolu, do kterého chcete všechny chyby zapsána. Na této stránce platí následující pravidla:
+Na obrazovce Advanced configuration (Pokročilá konfigurace) zadejte umístění souboru protokolu, do kterého chcete zapisovat případné chyby. Na tuto stránku se vztahují následující pravidla:
 
-1. Pokud není zadaný název souboru, jsou vráceny všechny chyby na stránce výsledky.
-2. Pokud je název souboru zadaný bez adresáře, pak soubor je vytvořen (nebo přepsat) v aktuálním adresáři prostředí.
-3. Pokud vyberete existující soubor, a soubor se přepíše, není žádná možnost připojit.
+1. Pokud nezadáte název souboru, všechny chyby se budou vracet na stránku Results (Výsledky).
+2. Pokud je zadaný název souboru bez adresáře, soubor se vytvoří (nebo přepíše) v aktuálním adresáři prostředí.
+3. Pokud vyberete existující soubor, pak se soubor přepíše. Možnost připojení neexistuje.
 
-Potom vyberte, zda chcete protokolovat všechny, kritické, nebo žádná chybová zpráva. Nakonec rozhodnout, jak často na obrazovce se aktualizuje přenos zpráv s jejím průběhu.
+Pak zvolte, jestli se mají protokolovat všechny chybové zprávy, kritické chybové zprávy, nebo se nemají protokolovat žádné. Nakonec se rozhodněte, jak často se bude aktualizovat průběh ve zprávě o přenosu na obrazovce.
 
     ![Screenshot of Advanced configuration screen](./media/import-data/AdvancedConfiguration.png)
 
-## <a name="confirm-import-settings-and-view-command-line"></a>Potvrďte nastavení pro import a zobrazení příkazového řádku
-1. Po zadání informace o zdroji, informace o cílové a pokročilou konfiguraci, zkontrolujte souhrn migrace a, volitelně, zobrazení nebo zkopírování příkaz výsledné migrace (kopírování příkazu je užitečné k automatizaci operací import):
+## <a name="confirm-import-settings-and-view-command-line"></a>Potvrzení nastavení importu a zobrazení příkazového řádku
+1. Po zadání informací o zdroji, informací o cíli a pokročilé konfigurace zkontrolujte shrnutí migrace a volitelně zobrazte a zkopírujte výsledný příkaz pro migraci (zkopírování příkazu je užitečné k automatizaci operací importu):
    
-    ![Snímek obrazovky souhrn](./media/import-data/summary.png)
+    ![Snímek obrazovky souhrnu](./media/import-data/summary.png)
    
-    ![Snímek obrazovky souhrn](./media/import-data/summarycommand.png)
-2. Jakmile budete spokojeni s možnosti zdroje a cíle, klikněte na možnost **Import**. Uplynulý čas, přenášená počet a informace o selhání (Pokud název souboru v pokročilé konfiguraci neposkytli) aktualizovat, protože proces importu. Po dokončení můžete exportovat výsledky (například k řešení případných selhání import).
+    ![Snímek obrazovky souhrnu](./media/import-data/summarycommand.png)
+2. Jakmile budete s možnostmi zdroje a cíle spokojeni, klikněte na **Import** (Importovat). V průběhu importu se aktualizuje uplynulý čas, počet přenesených souborů a informace o selháních (pokud jste nezadali název souboru v pokročilé konfiguraci). Po dokončení můžete výsledky exportovat (například pro účely řešení případných selhání importu).
    
-    ![Snímek obrazovky z Azure Cosmos DB JSON možností exportu](./media/import-data/viewresults.png)
-3. Nový import, může spustit také zachovat stávající nastavení (například připojovací řetězec informace, zdroje a cíle volba atd.) nebo resetování všechny hodnoty.
+    ![Snímek obrazovky s možností exportu ze služby Azure Cosmos DB do souboru JSON](./media/import-data/viewresults.png)
+3. Můžete také spustit nový import. Při tom můžete zachovat stávající nastavení (například informace o připojovacím řetězci, volbu zdroje a cíle atd.) nebo všechny hodnoty resetovat.
    
-    ![Snímek obrazovky z Azure Cosmos DB JSON možností exportu](./media/import-data/newimport.png)
+    ![Snímek obrazovky s možností exportu ze služby Azure Cosmos DB do souboru JSON](./media/import-data/newimport.png)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste provést následující úlohy:
+V tomto kurzu jste provedli následující úlohy:
 
 > [!div class="checklist"]
-> * Nainstalovaný nástroj pro migraci dat
-> * Importovaná data z různých zdrojů dat.
-> * Export z Azure Cosmos DB do formátu JSON
+> * Instalace nástroje pro migraci dat
+> * Import dat z různých zdrojů dat
+> * Export ze služby Azure Cosmos DB do formátu JSON
 
-Teď můžete pokračovat v dalším kurzu a zjistěte, jak zadávat dotazy na data pomocí Azure Cosmos DB. 
+Teď můžete pokračovat k dalšímu kurzu, kde zjistíte, jak dotazovat data pomocí služby Azure Cosmos DB. 
 
 > [!div class="nextstepaction"]
->[Postup dotazování dat?](../cosmos-db/tutorial-query-sql-api.md)
+>[Jak dotazovat data?](../cosmos-db/tutorial-query-sql-api.md)

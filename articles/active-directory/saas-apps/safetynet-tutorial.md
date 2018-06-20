@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: caa96ea2-da21-4529-8fab-0e06367beb40
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 870c18fce32a3b88db3935e51cc0d23d7d80a258
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: f6f6e4693211788ef6ec4043930d99ac210e80b5
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899019"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217081"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>Kurz: Azure Active Directory integrace s SafetyNet
 

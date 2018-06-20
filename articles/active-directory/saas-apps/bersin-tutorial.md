@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bbc9d229-69fb-4ab5-b6c3-5f3d790ea13e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/16/2018
 ms.author: jeedes
-ms.openlocfilehash: bdc95b7314c4a49795dc344d19df848f4ca1c83f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 6803ae61d8cb8d71fdee763473926e8935dc40b7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901618"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36210434"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>Kurz: Azure Active Directory integrace s Bersin
 

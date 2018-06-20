@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 7a9fa8f3-d611-4ffe-8d50-04e9586b24da
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 15d8e14c0df4ddbf4526cda62af97a1f5b7feb01
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: dc5a1e21dacff74394c2ce05ebb8013306bbc13c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901781"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36211233"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Kurz: Azure Active Directory integrace s LinkedIn prodej Navigátor
 
