@@ -12,16 +12,16 @@ ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: virtual-networ
+ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/14/2018
 ms.author: jdial
-ms.custom: mvc
-ms.openlocfilehash: f53544e756bde623a604513f17f9cc92c8efe42b
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 2efbd6e0fc3f90909553bc839a8b61ff3ed681ad
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267386"
 ---
 # <a name="tutorial-restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-portal"></a>Kurz: Omezení síťového přístupu k prostředkům PaaS s využitím koncových bodů služby virtuální sítě pomocí webu Azure Portal
 
@@ -65,6 +65,8 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 ## <a name="enable-a-service-endpoint"></a>Povolení koncového bodu služby
 
+Koncové body služby se povolují pro každou službu a podsíť. Vytvořte podsíť a povolte pro ni koncový bod služby.
+
 1. Do pole **Hledat prostředky, služby a dokumenty** v horní části portálu zadejte *myVirtualNetwork*. Jakmile se ve výsledcích hledání zobrazí virtuální síť **myVirtualNetwork**, vyberte ji.
 2. Přidejte do virtuální sítě podsíť. V části **NASTAVENÍ** vyberte **Podsítě** a pak vyberte **+ Podsíť**, jak je znázorněno na následujícím obrázku:
 
@@ -78,11 +80,16 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
     |Rozsah adres| 10.0.1.0/24|
     |Koncové body služby| V části **Služby** vyberte **Microsoft.Storage**.|
 
+> [!CAUTION]
+> Než povolíte koncový bod služby pro existující podsíť s prostředky, přečtěte si pokyny pro [změnu nastavení podsítě](virtual-network-manage-subnet.md#change-subnet-settings).
+
 ## <a name="restrict-network-access-for-a-subnet"></a>Omezení síťového přístupu pro podsíť
+
+Ve výchozím nastavení mohou všechny virtuální počítače v podsíti komunikovat se všemi prostředky. Komunikaci do těchto prostředků nebo z nich můžete omezit vytvořením skupiny zabezpečení sítě a jejím přiřazením k podsíti.
 
 1. V levém horním rohu webu Azure Portal vyberte **+ Vytvořit prostředek**.
 2. Vyberte **Sítě** a pak **Skupina zabezpečení sítě**.
-V části **Vytvořit skupinu zabezpečení sítě** zadejte nebo vyberte následující informace a pak vyberte **Vytvořit**:
+3. V části **Vytvořit skupinu zabezpečení sítě** zadejte nebo vyberte následující informace a pak vyberte **Vytvořit**:
 
     |Nastavení|Hodnota|
     |----|----|
@@ -94,7 +101,7 @@ V části **Vytvořit skupinu zabezpečení sítě** zadejte nebo vyberte násle
 4. Po vytvoření skupiny zabezpečení sítě do pole **Hledat prostředky, služby a dokumenty** v horní části portálu zadejte *myNsgPrivate*. Jakmile se ve výsledcích hledání zobrazí skupina zabezpečení sítě **myNsgPrivate**, vyberte ji.
 5. V části **NASTAVENÍ** vyberte **Odchozí pravidla zabezpečení**.
 6. Vyberte **+ Přidat**.
-7. Vytvořte pravidlo, které povolí odchozí přístup k veřejným IP adresám přiřazeným službě Azure Storage. Zadejte nebo vyberte následující informace a pak vyberte **OK**:
+7. Vytvořte pravidlo pro povolení odchozí komunikace do služby Azure Storage. Zadejte nebo vyberte následující informace a pak vyberte **OK**:
 
     |Nastavení|Hodnota|
     |----|----|
@@ -107,7 +114,8 @@ V části **Vytvořit skupinu zabezpečení sítě** zadejte nebo vyberte násle
     |Akce|Povolit|
     |Priorita|100|
     |Název|Allow-Storage-All|
-8. Vytvořte pravidlo, které přepíše výchozí pravidlo zabezpečení a povolí odchozí přístup ke všem veřejným IP adresám. Zopakujte kroky 6 a 7 s použitím následujících hodnot:
+    
+8. Vytvořte pravidlo pro zákaz odchozí komunikace s internetem. Toto pravidlo přepíše výchozí pravidlo ve všech skupinách zabezpečení sítě, které odchozí komunikaci s internetem povoluje. Zopakujte kroky 6 a 7 s použitím následujících hodnot:
 
     |Nastavení|Hodnota|
     |----|----|
@@ -171,9 +179,9 @@ Kroky potřebné k omezení síťového přístupu k prostředkům vytvořeným 
 4. V části **Název** zadejte *my-file-share* a pak vyberte **OK**.
 5. Zavřete okno **Souborová služba**.
 
-### <a name="enable-network-access-from-a-subnet"></a>Povolení síťového přístupu z podsítě
+### <a name="restrict-network-access-to-a-subnet"></a>Omezení síťového přístupu k podsíti
 
-Účty úložiště ve výchozím nastavení přijímají síťová připojení z klientů v jakékoli síti. Pokud chcete povolit přístup pouze z konkrétní podsítě a zakázat přístup ze všech ostatních sítí, proveďte následující kroky:
+Účty úložiště ve výchozím nastavení přijímají síťová připojení z klientů v jakékoli síti včetně internetu. Zakažte síťový přístup z internetu a všech ostatních podsítí ve všech virtuálních sítích kromě podsítě *Private* ve virtuální síti *myVirtualNetwork*.
 
 1. V části **NASTAVENÍ** účtu úložiště vyberte **Brány firewall a virtuální sítě**.
 2. V části **Virtuální sítě** vyberte **Vybrané sítě**.
@@ -256,13 +264,13 @@ Nasazení virtuálního počítače trvá několik minut. Nepokračujte k dalš�
 
     Sdílená složka Azure se úspěšně namapovala na jednotku Z.
 
-7. Na příkazovém řádku potvrďte, že virtuální počítač nemá možnost odchozího připojení k žádné jiné veřejné IP adrese:
+7. Na příkazovém řádku potvrďte, že virtuální počítač nemá možnost odchozího připojení k internetu:
 
     ```
     ping bing.com
     ```
     
-    Neobdržíte žádné odpovědi, protože skupina zabezpečení sítě přidružená k podsíti *Private* nepovoluje odchozí přístup k jiným veřejným IP adresám, než jsou adresy přiřazené službě Azure Storage.
+    Neobdržíte žádné odpovědi, protože skupina zabezpečení sítě přidružená k podsíti *Private* nepovoluje odchozí přístup k internetu.
 
 8. Ukončete relaci vzdálené plochy k virtuálnímu počítači *myVmPrivate*.
 
@@ -272,7 +280,7 @@ Nasazení virtuálního počítače trvá několik minut. Nepokračujte k dalš�
 2. Jakmile se ve výsledcích hledání zobrazí virtuální počítač **myVmPublic**, vyberte ho.
 3. Proveďte pro virtuální počítač *myVmPublic* kroky 1 až 6 v části [Ověření přístupu k účtu úložiště](#confirm-access-to-storage-account).
 
-    Přístup se odepře a zobrazí se chyba `New-PSDrive : Access is denied`. Přístup byl odepřen, protože virtuální počítač *myVmPublic* je nasazený v podsíti *Public*. Podsíť *Public* nemá povolený koncový bod služby pro Azure Storage a účet úložiště umožňuje síťový přístup pouze z podsítě *Private*, a ne z podsítě *Public*.
+    Přístup se odepře a zobrazí se chyba `New-PSDrive : Access is denied`. Přístup byl odepřen, protože virtuální počítač *myVmPublic* je nasazený v podsíti *Public*. Podsíť *Public* nemá pro Azure Storage povolen žádný koncový bod služby. Účet úložiště povoluje síťový přístup pouze z podsítě *Private*, nikoliv z podsítě *Private*.
 
 4. Ukončete relaci vzdálené plochy k virtuálnímu počítači *myVmPublic*.
 
@@ -295,7 +303,7 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků a všechny prostře
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste povolili koncový bod služby pro podsíť virtuální sítě. Dozvěděli jste se, že koncové body služeb je možné povolit pro prostředky nasazené pomocí několika služeb Azure. Vytvořili jste účet služby Azure Storage a omezili jste síťový přístup k účtu úložiště pouze na prostředky v rámci podsítě virtuální sítě. Další informace o koncových bodech služeb najdete v tématech [Přehled koncových bodů služeb](virtual-network-service-endpoints-overview.md) a [Správa podsítí](virtual-network-manage-subnet.md).
+V tomto kurzu jste povolili koncový bod služby pro podsíť virtuální sítě. Dozvěděli jste se, že koncové body služeb můžete povolit pro prostředky nasazené z několika služeb Azure. Vytvořili jste účet služby Azure Storage a omezili jste síťový přístup k účtu úložiště pouze na prostředky v rámci podsítě virtuální sítě. Další informace o koncových bodech služeb najdete v tématech [Přehled koncových bodů služeb](virtual-network-service-endpoints-overview.md) a [Správa podsítí](virtual-network-manage-subnet.md).
 
 Pokud ve svém účtu máte více virtuálních sítí, možná budete chtít propojit dvě virtuální sítě, aby mezi sebou mohly komunikovat prostředky v obou virtuálních sítích. Informace o postupu propojení virtuálních sítí najdete v dalším kurzu.
 

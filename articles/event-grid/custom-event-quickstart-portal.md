@@ -1,19 +1,19 @@
 ---
-title: Vlastní události pro Azure Event Grid pomocí webu Azure Portal | Dokumentace Microsoftu
+title: Vlastní události pro Azure Event Grid pomocí webu Azure Portal | Microsoft Docs
 description: Pomocí Azure Event Gridu a PowerShellu můžete publikovat téma a přihlásit se k odběru příslušné události.
 services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 04/05/2018
+ms.date: 06/04/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a16a9bdb866803a65bf7204628b735bd9ac60aee
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: fa6a232c657d9d96943f241eb05221e42f0f599b
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34302555"
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763336"
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Vytvoření a směrování vlastních událostí pomocí webu Azure Portal a Event Gridu
 
@@ -71,7 +71,7 @@ Před přihlášením k odběru tématu vytvoříme koncový bod pro zprávy ud�
 
    ![Vytvoření funkce](./media/custom-event-quickstart-portal/create-function.png)
 
-1. Zadejte jedinečný název funkce Azure. Nepoužívejte název zobrazený na obrázku. Vyberte skupinu prostředků, kterou jste vytvořili v rámci tohoto článku. Jako plán hostování použijte **Plán Consumption**. Použijte navrhovaný nový účet úložiště. Po zadání hodnot vyberte **Vytvořit**.
+1. Zadejte jedinečný název funkce Azure. Nepoužívejte název zobrazený na obrázku. Vyberte skupinu prostředků, kterou jste vytvořili v rámci tohoto článku. Jako plán hostování použijte **Plán Consumption**. Použijte navrhovaný nový účet úložiště. Můžete vypnout Application Insights. Po zadání hodnot vyberte **Vytvořit**.
 
    ![Zdání hodnot funkce](./media/custom-event-quickstart-portal/provide-function-values.png)
 

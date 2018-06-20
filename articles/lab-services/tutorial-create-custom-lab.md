@@ -1,6 +1,6 @@
 ---
-title: Vytvoření vlastního testovacího prostředí pomocí Azure DevTest Labs | Microsoft Docs
-description: V tomto rychlém startu vytvoříte vlastní testovací prostředí pomocí služby Azure DevTest Labs.
+title: Vytvoření testovacího prostředí ve službě Azure DevTest Labs | Microsoft Docs
+description: V tomto rychlém startu vytvoříte testovací prostředí ve službě Azure DevTest Labs.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,26 +14,26 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3a4f964fe4f103e970a6edb3e9ba716fd72b8c79
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5a93feec7996fc0ebf742b8d62b159dca5f1c1ed
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362239"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34636983"
 ---
-# <a name="tutorial-set-up-a-custom-lab-by-using-azure-devtest-labs"></a>Kurz: Nastavení vlastního testovacího prostředí pomocí Azure DevTest Labs
-V tomto kurzu vytvoříte vlastní testovací prostředí pomocí portálu Azure Portal. Správce testovacího prostředí nastaví testovací prostředí v organizaci, vytvoří virtuální počítače v testovacím prostředí a nakonfiguruje zásady. Uživatelé testovacího prostředí (například vývojář a testeři) nárokují virtuální počítače v testovacím prostředí, připojují se k nim a používají je. 
+# <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Kurz: Nastavení testovacího prostředí ve službě Azure DevTest Labs
+V tomto kurzu vytvoříte testovací prostředí na webu Azure Portal. Správce testovacího prostředí nastaví testovací prostředí v organizaci, vytvoří virtuální počítače v testovacím prostředí a nakonfiguruje zásady. Uživatelé testovacího prostředí (například vývojář a testeři) nárokují virtuální počítače v testovacím prostředí, připojují se k nim a používají je. 
 
 V tomto kurzu provedete následující akce:
 
 > [!div class="checklist"]
-> * Vytvoření vlastního testovacího prostředí
+> * Vytvoření testovacího prostředí
 > * Přidání virtuálních počítačů do testovacího prostředí
 > * Přidání uživatele do role uživatele testovacího prostředí
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-## <a name="create-a-custom-lab"></a>Vytvoření vlastního testovacího prostředí
+## <a name="create-a-lab"></a>Vytvoření testovacího prostředí
 Následující kroky ukazují postup vytvoření testovacího prostředí ve službě Azure DevTest Labs pomocí webu Azure Portal. 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
@@ -97,8 +97,8 @@ Další kurz vám ukáže, jak může uživatel testovacího prostředí nároko
 4. Tento postup opakujte k odstranění další skupiny prostředků vytvořené pro vás s názvem `<your resource group name><random numbers>`. Například: `splab3988722144001`. Virtuální počítače se vytvoří v této skupině prostředků, nikoli ve skupině prostředků, ve které existuje testovací prostředí. 
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste vytvořili vlastní testovací prostředí s virtuálním počítačem a udělili jste uživateli přístup k tomuto testovacímu prostředí. Pokud chcete získat informace o tom, jak k testovacímu prostředí přistupovat jako uživatel testovacího prostředí, přejděte k dalšímu kurzu:
+V tomto kurzu jste vytvořili testovací prostředí s virtuálním počítačem a nastavili jste do něj uživateli přístup. Pokud chcete získat informace o tom, jak k testovacímu prostředí přistupovat jako uživatel testovacího prostředí, přejděte k dalšímu kurzu:
 
 > [!div class="nextstepaction"]
-> [Kurz: Přístup k vlastnímu testovacímu prostředí](tutorial-use-custom-lab.md)
+> [Kurz: Přístup k testovacímu prostředí](tutorial-use-custom-lab.md)
 

@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: fc589b79cf91dcbe24e6d99da44aeee883b58e5f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: b98c1995aa9051029049711ece18aeb23c444f1a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365363"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642790"
 ---
 # <a name="tutorial-package-and-deploy-containers-as-a-service-fabric-application"></a>Kurz: Zabalení a nasazení kontejnerů jako aplikace Service Fabric
 
@@ -237,7 +237,7 @@ Informace o vytvoření vlastního clusteru najdete v tématu věnovaném [vytvo
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>Vytvoření a nasazení aplikace do clusteru
 Aplikaci můžete nasadit do clusteru Azure pomocí rozhraní příkazového řádku Service Fabric. Pokud na počítači nemáte nainstalované rozhraní příkazového řádku Service Fabric, nainstalujte si ho podle [těchto pokynů](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli). 
 
-Připojte se ke clusteru Service Fabric v Azure. Zástupný symbol koncového bodu nahraďte svým vlastním. Koncový bod musí být úplná adresa URL podobná této.
+Připojte se ke clusteru Service Fabric v Azure. Ukázkový koncový bod nahraďte svým vlastním. Koncový bod musí být úplná adresa URL podobná této.
 
 ```bash
 sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify

@@ -1,30 +1,31 @@
 ---
-title: "Nahrání zobecněný virtuální pevný disk do Azure ukázka skriptu prostředí PowerShell | Microsoft Docs"
-description: "Ukázkový skript prostředí PowerShell nahrajte zobecněný virtuální pevný disk do Azure a vytvoření nového virtuálního počítače pomocí modelu nasazení resource manager a spravované disky."
+title: Nahrání generalizovaného virtuálního pevného disku do prostředí Azure PowerShell pomocí ukázkového skriptu | Microsoft Docs
+description: Ukázkový skript prostředí PowerShell nahraje generalizovaný virtuální pevný disk do Azure a vytvoří nový virtuální počítač pomocí modelu nasazení Resource Manager a služby Managed Disks.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 01/02/2017
+ms.date: 01/02/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9534ce2a32ac57a441535cfa26f2981b804182d1
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
-ms.translationtype: MT
+ms.openlocfilehash: c1887bc7dc3cddce7f1c9f91f077388df2e73e9a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716767"
 ---
 # <a name="sample-script-to-upload-a-vhd-to-azure-and-create-a-new-vm"></a>Ukázkový skript pro nahrání virtuálního pevného disku do Azure a vytvoření nového virtuálního počítače
 
-Tento skript trvá soubor VHD místní z zobecněný virtuální počítač a odesílá do Azure, vytvoří bitovou kopii disku spravované a použije k vytvoření nového virtuálního počítače.
+Tento skript vezme z generalizovaného virtuálního počítače místní soubor VHD, nahraje ho do Azure, vytvoří image spravovaného disku a použije je k vytvoření nového virtuálního počítače.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -118,7 +119,7 @@ $vmList.Name
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení 
 
-Spusťte následující příkaz pro odebrání skupiny prostředků, virtuální počítač a všechny související prostředky.
+Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
@@ -126,33 +127,33 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření nasazení. Každou položku v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript pomocí následujících příkazů vytvoří nasazení. Každá položka v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz                                                                                                             | Poznámky                                                                                                                                                                                |
 |---------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Nový AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)                           | Vytvoří skupinu prostředků, ve kterém jsou uložené všechny prostředky.                                                                                                                          |
-| [Nové AzureRmStorageAccount](/powershell/module/azurerm.resources/new-azurermstorageaccount)                         | Vytvoří účet úložiště.                                                                                                                                                           |
-| [Přidat AzureRmVhd](/powershell/module/azurerm.resources/add-azurermvhd)                                               | Ukládání virtuální pevný disk z virtuálního počítače místní do objektu blob v účtu úložiště cloudu v Azure.                                                                       |
-| [Nové AzureRmImageConfig](/powershell/module/azurerm.resources/new-azurermimageconfig)                               | Vytvoří objekt konfigurovat bitové kopie.                                                                                                                                                 |
-| [Set-AzureRmImageOsDisk](/powershell/module/azurerm.resources/set-azurermimageosdisk)                               | Nastaví vlastnosti disku operačního systému na objekt bitové kopie.                                                                                                                        |
-| [Nové AzureRmImage](/powershell/module/azurerm.resources/new-azurermimage)                                           | Vytvoří novou bitovou kopii.                                                                                                                                                                 |
-| [Nové AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.resources/new-azurermvirtualnetworksubnetconfig) | Vytvoří konfiguraci podsítě. Tato konfigurace se používá s procesem vytvoření virtuální sítě.                                                                                |
-| [Nový AzureRmVirtualNetwork](/powershell/module/azurerm.resources/new-azurermvirtualnetwork)                         | Vytvoří virtuální síť.                                                                                                                                                           |
-| [Nové AzureRmPublicIpAddress](/powershell/module/azurerm.resources/new-azurermpublicipaddress)                       | Vytvoří veřejnou IP adresu.                                                                                                                                                         |
-| [Nové AzureRmNetworkInterface](/powershell/module/azurerm.resources/new-azurermnetworkinterface)                     | Vytvoří rozhraní sítě.                                                                                                                                                         |
-| [Nové AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermnetworksecurityruleconfig)   | Vytvoří pravidlo konfiguraci skupiny zabezpečení sítě. Tato konfigurace slouží k vytvoření pravidla NSG, když je vytvořen NSG.                                                       |
-| [Nové AzureRmNetworkSecurityGroup](/powershell/module/azurerm.resources/new-azurermnetworksecuritygroup)             | Vytvoří skupinu zabezpečení sítě.                                                                                                                                                    |
-| [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/get-azurermvirtualnetwork)                         | Získá virtuální síť ve skupině prostředků.                                                                                                                                          |
-| [Nové AzureRmVMConfig](/powershell/module/azurerm.resources/new-azurermvmconfig)                                     | Vytvoří konfigurace virtuálního počítače. Tato konfigurace zahrnuje informace, jako je název virtuálního počítače, operační systém a pověření pro správu. Konfigurace se používá při vytváření virtuálních počítačů. |
-| [Set-AzureRmVMSourceImage](/powershell/module/azurerm.resources/set-azurermvmsourceimage)                           | Určuje obrázek, který pro virtuální počítač.                                                                                                                                            |
-| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.resources/set-azurermvmosdisk)                                     | Nastaví vlastnosti disku operačního systému na virtuálním počítači.                                                                                                                      |
-| [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.resources/set-azurermvmoperatingsystem)                   | Nastaví vlastnosti disku operačního systému na virtuálním počítači.                                                                                                                      |
-| [Přidat AzureRmVMNetworkInterface](/powershell/module/azurerm.resources/add-azurermvmnetworkinterface)                 | Přidá rozhraní sítě k virtuálnímu počítači.                                                                                                                                       |
-| [Nový AzureRmVM](/powershell/module/azurerm.resources/new-azurermvm)                                                 | Vytvoření virtuálního počítače.                                                                                                                                                            |
-| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup)                     | Odebere skupinu prostředků a všechny prostředky obsažené v rámci.                                                                                                                         |
+| [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)                           | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky.                                                                                                                          |
+| [New-AzureRmStorageAccount](/powershell/module/azurerm.resources/new-azurermstorageaccount)                         | Vytvoří účet úložiště.                                                                                                                                                           |
+| [Add-AzureRmVhd](/powershell/module/azurerm.resources/add-azurermvhd)                                               | Nahraje virtuální pevný disk z místního virtuálního počítače do objektu blob na cloudovém účtu úložiště v Azure.                                                                       |
+| [New-AzureRmImageConfig](/powershell/module/azurerm.resources/new-azurermimageconfig)                               | Vytvoří konfigurovatelný objekt image.                                                                                                                                                 |
+| [Set-AzureRmImageOsDisk](/powershell/module/azurerm.resources/set-azurermimageosdisk)                               | Nastaví vlastnosti disku s operačním systémem na objektu image.                                                                                                                        |
+| [New-AzureRmImage](/powershell/module/azurerm.resources/new-azurermimage)                                           | Vytvoří novou image.                                                                                                                                                                 |
+| [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.resources/new-azurermvirtualnetworksubnetconfig) | Vytvoří konfiguraci podsítě. Tato konfigurace se použije v procesu vytváření virtuální sítě.                                                                                |
+| [New-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/new-azurermvirtualnetwork)                         | Vytvoří virtuální síť.                                                                                                                                                           |
+| [New-AzureRmPublicIpAddress](/powershell/module/azurerm.resources/new-azurermpublicipaddress)                       | Vytvoří veřejnou IP adresu.                                                                                                                                                         |
+| [New-AzureRmNetworkInterface](/powershell/module/azurerm.resources/new-azurermnetworkinterface)                     | Vytvoří síťové rozhraní.                                                                                                                                                         |
+| [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.resources/new-azurermnetworksecurityruleconfig)   | Vytvoří konfiguraci pravidla skupiny zabezpečení sítě. Tato konfigurace se použije k vytvoření pravidla skupiny zabezpečení sítě při jejím vytváření.                                                       |
+| [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.resources/new-azurermnetworksecuritygroup)             | Vytvoří skupinu zabezpečení sítě.                                                                                                                                                    |
+| [Get-AzureRmVirtualNetwork](/powershell/module/azurerm.resources/get-azurermvirtualnetwork)                         | Získá ve skupině prostředků virtuální síť.                                                                                                                                          |
+| [New-AzureRmVMConfig](/powershell/module/azurerm.resources/new-azurermvmconfig)                                     | Vytvoří konfiguraci virtuálního počítače. Tato konfigurace zahrnuje informace, jako je název virtuálního počítače, operační systém a přihlašovací údaje pro správu. Tato konfigurace se použije při vytváření virtuálního počítače. |
+| [Set-AzureRmVMSourceImage](/powershell/module/azurerm.resources/set-azurermvmsourceimage)                           | Určuje image pro virtuální počítač.                                                                                                                                            |
+| [Set-AzureRmVMOSDisk](/powershell/module/azurerm.resources/set-azurermvmosdisk)                                     | Nastaví vlastnosti disku s operačním systémem na virtuálním počítači.                                                                                                                      |
+| [Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.resources/set-azurermvmoperatingsystem)                   | Nastaví vlastnosti disku s operačním systémem na virtuálním počítači.                                                                                                                      |
+| [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.resources/add-azurermvmnetworkinterface)                 | Přidá do virtuálního počítače síťové rozhraní.                                                                                                                                       |
+| [New-AzureRmVM](/powershell/module/azurerm.resources/new-azurermvm)                                                 | Vytvoří virtuální počítač.                                                                                                                                                            |
+| [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup)                     | Odebere skupinu prostředků a všechny prostředky, které obsahuje.                                                                                                                         |
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o modulu Azure PowerShell najdete v tématu [dokumentace Azure PowerShell](/powershell/azure/overview).
+Další informace o modulu Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
 
-Ukázky skriptu PowerShell další virtuální počítač nachází v [virtuálního počítače Windows Azure dokumentaci](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Další ukázkové skripty PowerShellu pro virtuální počítače najdete v [dokumentaci k virtuálním počítačům Azure s Windows](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

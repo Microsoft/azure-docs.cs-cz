@@ -15,11 +15,12 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/11/2018
 ms.author: maghan
-ms.openlocfilehash: 692edc9a685ce7d1906f13f08c763909a2513b03
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 7a860742192227e92a14d9bb5622dc9b61f6cb99
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34716019"
 ---
 # <a name="get-started-with-microsoft-power-bi-embedded"></a>Začínáme s Microsoft Power BI Embedded
 
@@ -33,7 +34,7 @@ Vývojáři můžou svůj čas soustředit na vytváření základních dovednos
 
 ## <a name="register-an-application-within-azure-active-directory"></a>Registrace aplikace v Azure Active Directory
 
-Registrovaná aplikace v Azure Active Directory (AAD) je potřeba k vložení do vlastní aplikace. Registrovaná aplikace vyžaduje, aby váš tenant byl tenantem Power BI. Tenant Power BI znamená, že se alespoň jeden uživatel v organizaci zaregistroval k Power BI. Registrace uživatele k Power BI umožní zobrazení rozhraní API Power BI v registrované aplikaci.
+K vložení do vlastní aplikace je potřeba registrovaná aplikace v Azure Active Directory (AAD). Registrovaná aplikace vyžaduje, aby váš tenant byl tenantem Power BI. Tenant Power BI znamená, že se alespoň jeden uživatel v organizaci zaregistroval k Power BI. Registrace uživatele k Power BI umožňuje v registrované aplikaci zobrazení rozhraní API Power BI.
 
 Další informace o postupu registrace aplikace v AAD najdete v tématu [Registrace aplikace Azure AD pro vkládání obsahu Power BI](https://powerbi.microsoft.com/documentation/powerbi-developer-register-app/).
 
@@ -48,14 +49,14 @@ Nabízíme ukázky, které vám pomůžou začít. Názorného průvodce ukázko
 Vytvořte v rámci Microsoft Azure kapacitu Power BI Embedded pro přesun aplikace do produkčního prostředí. Informace o postupu vytvoření kapacity najdete v tématu [Vytvoření kapacity Power BI Embedded na webu Azure Portal](create-capacity.md).
 
 > [!IMPORTANT]
-> Vzhledem k tomu, že vložené tokeny jsou určené jenom pro účely vývoje a testování, omezili jsme počet vložených tokenů, které může vytvořit hlavní účet Power BI. Pro scénáře vkládání v produkčním prostředí je [potřeba zakoupit kapacitu](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Pokud je kapacita zakoupena, není generování vložených tokenů nijak omezené. Pokud chcete zkontrolovat aktuální využití vkládání v procentech, přejděte na [Získat dostupné funkce](https://msdn.microsoft.com/en-us/library/mt846473.aspx).
+> Vzhledem k tomu, že vložené tokeny jsou určené jenom pro účely vývoje a testování, omezili jsme počet vložených tokenů, které může hlavní účet Power BI vytvořit. Pro scénáře vkládání v produkčním prostředí je [potřeba zakoupit kapacitu](https://docs.microsoft.com/power-bi/developer/embedded-faq#technical). Pokud jste zakoupili kapacitu, není generování vložených tokenů nijak omezené. Pokud chcete zkontrolovat aktuální využití vkládání v procentech, přejděte na [Získat dostupné funkce](https://msdn.microsoft.com/en-us/library/mt846473.aspx).
 
-Kapacitu můžete spravovat na portálu pro správu Power BI. Přiřaďte pověřující osobu pracovního prostoru, která vám pomůže s pracovními prostory aplikace. Další informace najdete v tématu [Správa kapacit v Power BI Premium a Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/).
+Kapacitu můžete spravovat na portálu pro správu Power BI. Přiřaďte správce pracovního prostoru, který vám pomůže s pracovními prostory aplikace. Další informace najdete v tématu [Správa kapacit v Power BI Premium a Power BI Embedded](https://powerbi.microsoft.com/documentation/powerbi-admin-premium-manage/).
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokud jste připraveni vytvořit kapacitu Power BI Embedded, přečtěte si téma [Vytvoření kapacity Power BI Embedded na webu Azure Portal](create-capacity.md).
 
-Pokud hledáte názorného průvodce ukázkou, přečtěte si téma [Integrace řídicího panelu, dlaždice nebo sestavy do aplikace](https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/).
+Pokud hledáte názorného průvodce ukázkou, přečtěte si téma o [integraci řídicího panelu, dlaždice nebo sestavy do aplikace](https://powerbi.microsoft.com/documentation/powerbi-developer-embed-sample-app-owns-data/).
 
 Chcete se ještě na něco zeptat? [Vyzkoušejte komunitu Power BI](http://community.powerbi.com/)

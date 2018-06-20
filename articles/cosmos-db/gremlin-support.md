@@ -1,95 +1,93 @@
 ---
-title: Podpora Azure Cosmos DB Gremlin | Microsoft Docs
-description: Další informace o jazyka Gremlin z Apache TinkerPop. Další informace, které funkce a kroky jsou k dispozici v Azure Cosmos DB
+title: Podpora jazyka Gremlin ve službě Azure Cosmos DB | Microsoft Docs
+description: Přečtěte si o jazyce Gremlin od společnosti Apache TinkerPop. Dozvíte se, které funkce a kroky jsou dostupné ve službě Azure Cosmos DB.
 services: cosmos-db
-documentationcenter: ''
 author: LuisBosquez
 manager: kfile
-ms.assetid: 6016ccba-0fb9-4218-892e-8f32a1bcc590
 ms.service: cosmos-db
+ms.component: cosmosdb-graph
 ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: ''
+ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: c3d80fcaa38d0f1d7fa1770879ca9b40642bb796
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: MT
+ms.openlocfilehash: c675f37e50f5b8a259048d9a92fcdbe5b947068c
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34797613"
 ---
-# <a name="azure-cosmos-db-gremlin-graph-support"></a>Graf podporu Azure Cosmos DB Gremlin
-Podporuje Azure Cosmos DB [Apache Tinkerpop](http://tinkerpop.apache.org) graf traversal jazyk [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps), což je rozhraní Graph API pro vytváření entit grafu a provádění operace dotazů grafu. Jazyk Gremlin slouží k vytvoření grafu entit (vrcholy a okraje), změnit vlastnosti v rámci těchto entit, provádět dotazy a traversals a odstranit entity. 
+# <a name="azure-cosmos-db-gremlin-graph-support"></a>Podpora grafu Gremlin ve službě Azure Cosmos DB
+Azure Cosmos DB podporuje [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) – jazyk pro procházení grafu od společnosti [Apache Tinkerpop](http://tinkerpop.apache.org), což je rozhraní Graph API pro vytváření grafových entit a provádění operací dotazování grafu. Pomocí jazyka Gremlin můžete vytvářet grafové entity (vrcholy a okraje), upravovat vlastnosti v rámci těchto entit, provádět dotazy a přechody a odstraňovat entity. 
 
-Azure Cosmos DB přináší funkce připravené pro podniky k databázím grafu. To zahrnuje globální distribuční nezávislé škálování úložiště a propustnosti, latenci předvídatelný řádu milisekund, automatické indexování, SLA, přečtěte si dostupnosti pro účty databáze pokrývání uzlů dvou nebo více oblastech Azure. Protože Azure Cosmos DB podporuje TinkerPop/Gremlin, můžete snadno migrovat aplikace napsané v jiné databáze grafu bez nutnosti provádět změny kódu. Kromě toho na základě Gremlin podpory Azure Cosmos DB zajišťuje bezproblémovou integraci s povoleným TinkerPop analytics architektury, jako je [Apache Spark GraphX](http://spark.apache.org/graphx/). 
+Azure Cosmos DB přidává ke grafovým databázím funkce připravené pro podniky. Tyto funkce zahrnují globální distribuci, nezávislé škálování úložiště a propustnosti, předvídatelné latence v řádu jednotek milisekund, automatické indexování, smlouvy SLA nebo dostupnost čtení databázových účtů pokrývajících dvě a více oblastí Azure. Vzhledem k tomu, že Azure Cosmos DB podporuje TinkerPop/Gremlin, můžete snadno migrovat aplikace napsané s využitím jiné grafové databáze bez nutnosti měnit kód. Díky podpoře jazyka Gremlin se Azure Cosmos DB také bez problémů integruje s analytickými architekturami s podporou standardu TinkerPop, například [Apache Spark GraphX](http://spark.apache.org/graphx/). 
 
-V tomto článku jsme zadejte rychlé návod Gremlin a výčet Gremlin funkcí a kroků, které podporuje rozhraní Graph API.
+V tomto článku vás rychle provedeme jazykem Gremlin a seznámíme vás s jeho funkcemi a kroky, které podporuje Graph API.
 
-## <a name="gremlin-by-example"></a>Gremlin příklad
-Abyste pochopili, jak dotazy mohou být vyjádřeny v Gremlin použijeme Ukázka grafu. Následující obrázek znázorňuje obchodní aplikace, která spravuje data o uživatelích, zájmů a zařízení ve formě grafu.  
+## <a name="gremlin-by-example"></a>Ukázka jazyka Gremlin
+Ukázkový graf vám pomůže pochopit, jak lze v jazyce Gremlin vyjádřit dotazy. Na následujícím obrázku je znázorněna obchodní aplikace, která spravuje data o uživatelích, zájmech a zařízeních v podobě grafu.  
 
-![Zobrazuje osob, zařízení a zájmů ukázkové databáze](./media/gremlin-support/sample-graph.png) 
+![Ukázková databáze znázorňující osoby, zařízení a zájmy](./media/gremlin-support/sample-graph.png) 
 
-Tento graf má následující typy vrchol (nazývané "Popisek" v Gremlin):
+Tento graf má následující typy vrcholů (v jazyce Gremlin se jim říká popisky):
 
-- Lidé: Graf má tři osoby, každý s každým Thomas a Ben
-- Zájmů: Jejich zájmů, v tomto příkladu hra fotbalové
-- Zařízení: Zařízení, která uživatelé použití
-- Operační systémy: Operační systémy zařízení se systémem
+- People (Lidé): Graf obsahuje tři lidi – Robina, Thomase a Bena.
+- Interests (Zájmy): Jejich zájmem v tomto příkladu je hra Football.
+- Devices (Zařízení): Jedná se o zařízení, která lidé používají.
+- Operating Systems (Operační systémy): Jedná se o operační systémy, na nichž zařízení běží.
 
-Jsme představují vztahy mezi tyto entity prostřednictvím následující typy edge/popisky:
+Vztahy mezi těmito entitami vyjádříme pomocí následujících typů okrajů/popisků:
 
-- Zná: například "Thomas ví, každý s každým"
-- Také zajímat: K zastupování zájmů osob v našem grafu, například "Ben má zájem o fotbalu"
-- RunsOS: Přenosný počítač spustí operační systém Windows
-- Používá: Představují které zařízení uživatel používá. Například každý s každým používá Motorola telefon se sériovým číslem 77
+- Knows (Zná): Například Thomas knows Robin (Thomas zná Robina).
+- Interested (Zajímá se): Slouží pro vyjádření zájmů lidí v našem grafu, například Ben is interested in Football (Ben se zajímá o fotbal).
+- RunsOS (Používaný OS): Vyjadřuje, že notebook běží na operačním systému Windows.
+- Uses (Používá): Slouží k vyjádření toho, jaké zařízení osoba používá. Robin například používá telefon Motorola se sériovým číslem 77.
 
-Umožňuje spustit některé operace pro tento graf pomocí [Gremlin konzoly](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console). Můžete také provést tyto operace pomocí Gremlin ovladačů v platformě podle vašeho výběru (Java, Node.js, Python nebo .NET).  Předtím, než se podíváme na co je podporováno v Azure Cosmos DB, podíváme se na několik příkladů, abyste se seznámili s syntaxe.
+Nyní pomocí [konzoly Gremlin](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) spustíme u tohoto grafu několik operací. K jejich provedení můžete také použít ovladače Gremlin na platformě dle vlastního výběru (Java, Node.js, Python nebo .NET).  Než se podíváme na to, co Azure Cosmos DB podporuje, projděme si několik příkladů, abychom se blíže seznámili se syntaxí.
 
-První Podíváme se na CRUD. Následující příkaz Gremlin vloží do grafu vrchol "Thomas":
+Nejprve se podívejme na CRUD. Následující příkaz Gremlinu vloží do grafu vrchol Thomas:
 
 ```
 :> g.addV('person').property('id', 'thomas.1').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44)
 ```
 
-V dalším kroku následující příkaz Gremlin vloží "ví" okraje mezi Thomas a každý s každým.
+Tento příkaz Gremlinu dále vloží do grafu mezi Thomase a Robina okraj knows (zná).
 
 ```
 :> g.V('thomas.1').addE('knows').to(g.V('robin.1'))
 ```
 
-Následující dotaz vrátí vrcholy "osoba" v sestupném pořadí podle jejich názvy první:
+Následující dotaz vrátí vrcholy person (osoba) seřazené podle jmen osob v sestupném pořadí:
 ```
 :> g.V().hasLabel('person').order().by('firstName', decr)
 ```
 
-Kde grafy nám je, když je nutné odpovědět otázky typu "Jaké operační systémy se přátelích Thomas použít?". Můžete spustit tento jednoduchý traversal Gremlin získat tyto informace z grafu:
+Graf je užitečný zejména v případě, kdy potřebujete získat odpověď na otázky, jako je Které operační systémy přátelé Thomase používají? Abyste z grafu tyto informace získali, můžete v Gremlinu spustit toto jednoduché procházení:
 
 ```
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
 ```
-Nyní Podíváme se na databázi Cosmos Azure poskytuje vývojářům Gremlin.
+Nyní se podívejme na to, co Azure Cosmos DB může nabídnout vývojářům v Gremlinu.
 
-## <a name="gremlin-features"></a>Funkce gremlin
-TinkerPop je standard, který obsahuje širokou škálu technologie grafu. Proto musí standardní terminologii popisu, jaké funkce jsou poskytované poskytovatelem grafu. Azure Cosmos DB poskytuje souběžnosti trvalé, vysoká, databázi zapisovatelné grafu, která může být rozdělený napříč více servery nebo clustery. 
+## <a name="gremlin-features"></a>Funkce jazyka Gremlin
+TinkerPop je standard, který zahrnuje širokou řadu grafových technologií. Proto má standardní terminologii popisující, které funkce poskytovatel grafu nabízí. Azure Cosmos DB poskytuje trvalou grafovou databázi s možností zápisu a vysokou souběžností, kterou je možné rozdělit na více serverů nebo clusterů. 
 
-Následující tabulka uvádí TinkerPop funkce, které jsou implementované Cosmos databázi Azure: 
+V následující tabulce najdete přehled funkcí TinkerPop, které Azure Cosmos DB implementuje: 
 
-| Kategorie | Azure Cosmos DB implementace |  Poznámky | 
+| Kategorie | Implementace služby Azure Cosmos DB |  Poznámky | 
 | --- | --- | --- |
-| Funkce grafu | Poskytuje trvalosti a ConcurrentAccess. Určeno k podpoře transakce | Metody počítač se dá implementovat prostřednictvím konektoru Spark. |
-| Proměnné funkce | Podporuje logická hodnota, celé číslo, bajtů, dvakrát, Float, celé číslo, Long, řetězec | Podporuje primitivní typy, není kompatibilní s komplexní typy prostřednictvím datového modelu |
-| Vrchol funkce | Podporuje RemoveVertices, MetaProperties, AddVertices, MultiProperties, StringIds, UserSuppliedIds, AddProperty –, RemoveProperty  | Podporuje vytváření, úpravu a odstranění vrcholy |
-| Vrchol vlastnost funkce | StringIds, UserSuppliedIds, AddProperty –, RemoveProperty, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Podporuje vytváření, úpravy a odstraňování vrchol vlastnosti |
-| Funkce edge | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty –, RemoveProperty | Podporuje vytváření, úpravu a odstranění okrajů |
-| Funkce vlastnost Edge | Vlastnosti, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Podporuje vytváření, úpravy a odstraňování vlastnosti edge |
+| Funkce grafů | Poskytuje trvalost a souběžný přístup. Navrženo s podporou transakcí. | Počítačové metody je možné implementovat prostřednictvím konektoru Spark. |
+| Funkce proměnných | Podporuje datové typy Boolean, Integer, Byte, Double, Float, Integer, Long, String. | Podporuje primitivní typy, prostřednictvím datového modelu je kompatibilní s komplexními typy. |
+| Funkce vrcholů | Podporuje RemoveVertices, MetaProperties, AddVertices, MultiProperties, StringIds, UserSuppliedIds, AddProperty, RemoveProperty.  | Podporuje vytváření, úpravy a odstraňování vrcholů. |
+| Funkce vlastností vrcholů | StringIds, UserSuppliedIds, AddProperty, RemoveProperty, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Podporuje vytváření, úpravy a odstraňování vlastností vrcholů. |
+| Funkce okrajů | AddEdges, RemoveEdges, StringIds, UserSuppliedIds, AddProperty, RemoveProperty | Podporuje vytváření, úpravy a odstraňování okrajů. |
+| Funkce vlastností okrajů | Properties, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Podporuje vytváření, úpravy a odstraňování vlastností okrajů. |
 
-## <a name="gremlin-wire-format-graphson"></a>Gremlin přenosový formát: GraphSON
+## <a name="gremlin-wire-format-graphson"></a>Přenosový formát Gremlinu: GraphSON
 
-Používá Azure Cosmos DB [GraphSON formát](https://github.com/thinkaurelius/faunus/wiki/GraphSON-Format) při vrácení výsledků z Gremlin operace. GraphSON je standardní formát Gremlin představující vrcholy, okraje a vlastností (jeden a více hodnot vlastnosti) pomocí JSON. 
+Při vracení výsledků z operací Gremlinu služba Azure Cosmos DB používá [formát GraphSON](https://github.com/thinkaurelius/faunus/wiki/GraphSON-Format). GraphSON je standardní formát jazyka Gremlin pro reprezentaci vrcholů, okrajů a vlastností (vlastností s jednou i více hodnotami) pomocí formátu JSON. 
 
-Například následující fragment kódu ukazuje znázornění GraphSON vrcholu *vrácen do klienta* z Azure Cosmos DB. 
+Následující fragment kódu například zobrazuje reprezentaci vrcholu *vráceného klientovi* ze služby Azure Cosmos DB ve formátu GraphSON. 
 
 ```json
   {
@@ -128,74 +126,74 @@ Například následující fragment kódu ukazuje znázornění GraphSON vrcholu
   }
 ```
 
-Vlastnosti používané ve GraphSON pro vrcholy jsou následující:
+Vlastnosti, které GraphSON používá pro vrcholy:
 
 | Vlastnost | Popis |
 | --- | --- |
-| id | ID pro vrchol. Musí být jedinečné (v kombinaci s hodnotou _partition, pokud je k dispozici) |
-| Popisek | Popisek vrchol. Toto je volitelné a slouží k popisu typu entity. |
-| type | Rozlišit vrcholy z jiných grafu dokumentů |
-| properties | Kontejner uživatelem definované vlastnosti související s vrchol. Každá vlastnost může mít více hodnot. |
-| _partition (Konfigurovat) | Klíč oddílu vrcholu. Slouží k škálování grafy pro více serverů |
-| outE | Tato položka obsahuje seznam se okraje z vrchol. Ukládání informací o sousedství s vrchol umožňuje rychlé spuštění traversals. Okraje jsou seskupené podle jejich popisky. |
+| id | ID vrcholu. Musí být jedinečné (v odpovídajícím případě v kombinaci s hodnotou _partition). |
+| label | Popisek vrcholu. Tato vlastnost je volitelná a slouží k popisu typu entity. |
+| type | Slouží k odlišení vrcholů od jiných než grafových dokumentů. |
+| properties | Sada uživatelem definovaných vlastností přidružených k vrcholu. Každá vlastnost může mít více hodnot. |
+| _partition (konfigurovatelná) | Klíč oddílu vrcholu. Jeho prostřednictvím je možné horizontálně navýšit kapacitu grafů na více serverů. |
+| outE | Tato vlastnost obsahuje seznam vnějších okrajů z vrcholu. Ukládání informací o sousedství spolu s vrcholem umožňuje rychlé procházení. Hrany jsou seskupeny podle svých popisků. |
 
-A hranici obsahuje následující informace, které pomůžou s odkazy na další části grafu.
-
-| Vlastnost | Popis |
-| --- | --- |
-| id | ID pro hranici. Musí být jedinečné (v kombinaci s hodnotou _partition, pokud je k dispozici) |
-| Popisek | Popisek okraj. Tato vlastnost je volitelná a slouží k popisu typu relace. |
-| inventáře | Tato položka obsahuje seznam v vrcholy pro okraj. Ukládání informací o sousedství s hranou umožňuje rychlé spuštění traversals. Vrcholy jsou seskupené podle jejich popisky. |
-| properties | Kontejner uživatelem definované vlastnosti související s hranou. Každá vlastnost může mít více hodnot. |
-
-Každou vlastnost můžete ukládat víc hodnot v rámci pole. 
+Hrana obsahuje následující informace, které usnadňují navigaci do ostatních částí grafu.
 
 | Vlastnost | Popis |
 | --- | --- |
-| hodnota | Hodnota vlastnosti
+| id | ID okraje. Musí být jedinečné (v odpovídajícím případě v kombinaci s hodnotou _partition). |
+| label | Popisek okraje. Tato vlastnost je volitelná a slouží k popisu typu vztahu. |
+| inV | Tato vlastnost obsahuje seznam vrcholů pro okraj. Ukládání informací o sousedství spolu s okraj umožňuje rychlé procházení. Vrcholy jsou seskupeny podle svých popisků. |
+| properties | Sada uživatelem definovaných vlastností přidružených k okraji. Každá vlastnost může mít více hodnot. |
 
-## <a name="gremlin-steps"></a>Kroky gremlin
-Nyní Podíváme se na postup Gremlin nepodporuje Azure Cosmos DB. Úplný odkaz na Gremlin, najdete v části [TinkerPop odkaz](http://tinkerpop.apache.org/docs/current/reference).
+Každá vlastnost může ukládat více hodnot v rámci pole. 
 
-| Krok | Popis | TinkerPop 3.2 dokumentace |
+| Vlastnost | Popis |
+| --- | --- |
+| hodnota | Hodnota vlastnosti.
+
+## <a name="gremlin-steps"></a>Kroky v jazyce Gremlin
+Nyní se podívejme na kroky v jazyce Gremlin, které Azure Cosmos DB podporuje. Úplné referenční informace o jazyce Gremlin najdete v [referenčních materiálech ke standardu TinkerPop](http://tinkerpop.apache.org/docs/current/reference).
+
+| Krok | Popis | Dokumentace TinkerPop 3.2 |
 | --- | --- | --- |
-| `addE` | Přidá okraj mezi dvěma vrcholy | [Krok addE](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
-| `addV` | Přidá vrchol grafu | [Krok addV](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
-| `and` | Zajišťuje, že všechny traversals vrátit hodnotu | [a krok](http://tinkerpop.apache.org/docs/current/reference/#and-step) |
-| `as` | Krok jedno přiřadit výstup krok proměnné | [jako krok](http://tinkerpop.apache.org/docs/current/reference/#as-step) |
-| `by` | Jedno krok použít s `group` a `order` | [Tímto krokem](http://tinkerpop.apache.org/docs/current/reference/#by-step) |
-| `coalesce` | Vrátí první traversal, který vrací výsledek | [sloučení krok](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
-| `constant` | Vrátí konstantní hodnotu. Použít s `coalesce`| [konstantní krok](http://tinkerpop.apache.org/docs/current/reference/#constant-step) |
-| `count` | Vrátí počet z průchodu | [počet krok](http://tinkerpop.apache.org/docs/current/reference/#count-step) |
-| `dedup` | Vrátí hodnoty s odebranými duplikáty | [krok odstraňování duplicitních dat](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
-| `drop` | Zahodí hodnoty (vrchol nebo edge) | [Přetáhněte krok.](http://tinkerpop.apache.org/docs/current/reference/#drop-step) |
-| `fold` | Jednání jako bariéry, která vypočítá agregace výsledků| [fold – krok](http://tinkerpop.apache.org/docs/current/reference/#fold-step) |
-| `group` | Skupiny podle hodnoty zadané popisků| [Krok skupiny](http://tinkerpop.apache.org/docs/current/reference/#group-step) |
-| `has` | Použít k filtrování vlastností, vrcholy a okrajů. Podporuje `hasLabel`, `hasId`, `hasNot`, a `has` variant. | [má krok](http://tinkerpop.apache.org/docs/current/reference/#has-step) |
-| `inject` | Vložení hodnoty do datového proudu| [Vložit krok](http://tinkerpop.apache.org/docs/current/reference/#inject-step) |
-| `is` | Používá k provádění filtr pomocí logický výraz | [je krok](http://tinkerpop.apache.org/docs/current/reference/#is-step) |
-| `limit` | Používá k omezení počtu položek v průchodu| [limit krok](http://tinkerpop.apache.org/docs/current/reference/#limit-step) |
-| `local` | Místní zabalí oddíl traversal podobná poddotazu | [místní krok](http://tinkerpop.apache.org/docs/current/reference/#local-step) |
-| `not` | Používá se k vytváření negace filtru | [není krok](http://tinkerpop.apache.org/docs/current/reference/#not-step) |
-| `optional` | Vrátí výsledek zadané traversal Pokud vrací výsledek jinak vrátí volání elementu | [volitelný krok](http://tinkerpop.apache.org/docs/current/reference/#optional-step) |
-| `or` | Zajišťuje, aby se nejméně jedna z traversals vrací hodnotu | [nebo krok](http://tinkerpop.apache.org/docs/current/reference/#or-step) |
-| `order` | Vrátí výsledky v určené pořadí řazení | [Krok pořadí](http://tinkerpop.apache.org/docs/current/reference/#order-step) |
-| `path` | Vrátí úplnou cestu průchodu | [Krok cesty](http://tinkerpop.apache.org/docs/current/reference/#path-step) |
-| `project` | Projekty vlastnosti jako mapování | [Krok projektu](http://tinkerpop.apache.org/docs/current/reference/#project-step) |
-| `properties` | Vrací vlastnosti pro zadaný popisky | [Krok vlastnosti](http://tinkerpop.apache.org/docs/current/reference/#properties-step) |
-| `range` | Filtry pro zadaný rozsah hodnot| [Krok rozsahu](http://tinkerpop.apache.org/docs/current/reference/#range-step) |
-| `repeat` | V kroku opakuje pro zadaného počtu opakování. Použít pro opakování ve smyčce | [Opakujte krok](http://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
-| `sample` | Používá k ukázkové výsledky z průchodu | [Ukázka krok](http://tinkerpop.apache.org/docs/current/reference/#sample-step) |
-| `select` | Používá se k projektu výsledky z průchodu |  [Vyberte krok](http://tinkerpop.apache.org/docs/current/reference/#select-step) | |
-| `store` | Použít pro neblokující agregace z průchodu | [Krok úložiště](http://tinkerpop.apache.org/docs/current/reference/#store-step) |
-| `tree` | Agregační cesty z vrchol do stromu | [Krok stromu](http://tinkerpop.apache.org/docs/current/reference/#tree-step) |
-| `unfold` | Nezobrazovaly iterovat jako krok| [unfold – krok](http://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
-| `union` | Sloučení výsledky z více traversals| [Union krok](http://tinkerpop.apache.org/docs/current/reference/#union-step) |
-| `V` | Obsahuje kroky potřebné pro traversals mezi vrcholy a okrajů `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV`, `bothV`, a `otherV` pro | [vrchol kroky](http://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
-| `where` | Umožňuje filtrovat výsledky z průchodu. Podporuje `eq`, `neq`, `lt`, `lte`, `gt`, `gte`, a `between` operátory  | [kde krok](http://tinkerpop.apache.org/docs/current/reference/#where-step) |
+| `addE` | Přidá okraj mezi dva vrcholy. | [addE step](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) |
+| `addV` | Přidá do grafu vrchol. | [addV step](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
+| `and` | Zajišťuje, že všechna procházení vrátí hodnotu. | [and step](http://tinkerpop.apache.org/docs/current/reference/#and-step) |
+| `as` | Modulátor kroku pro přiřazení proměnné k výstupu kroku. | [as step](http://tinkerpop.apache.org/docs/current/reference/#as-step) |
+| `by` | Modulátor kroku používaný s krokem `group` a `order`. | [by step](http://tinkerpop.apache.org/docs/current/reference/#by-step) |
+| `coalesce` | Vrátí první procházení, které vrátí výsledek. | [coalesce step](http://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
+| `constant` | Vrátí konstantní hodnotu. Používá se s krokem `coalesce`.| [constant step](http://tinkerpop.apache.org/docs/current/reference/#constant-step) |
+| `count` | Vrátí počet procházení. | [count step](http://tinkerpop.apache.org/docs/current/reference/#count-step) |
+| `dedup` | Vrátí hodnoty s odebranými duplicitními objekty. | [dedup step](http://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
+| `drop` | Zahodí hodnoty (vrchol/hrana). | [drop step](http://tinkerpop.apache.org/docs/current/reference/#drop-step) |
+| `fold` | Slouží jako bariéra, která vypočítá agregaci výsledků.| [fold step](http://tinkerpop.apache.org/docs/current/reference/#fold-step) |
+| `group` | Seskupí hodnoty na základě zadaných popisků.| [group step](http://tinkerpop.apache.org/docs/current/reference/#group-step) |
+| `has` | Slouží k filtrování vlastností, vrcholů a okrajů. Podporuje varianty `hasLabel`, `hasId`, `hasNot` a `has`. | [has step](http://tinkerpop.apache.org/docs/current/reference/#has-step) |
+| `inject` | Vloží hodnoty do streamu.| [inject step](http://tinkerpop.apache.org/docs/current/reference/#inject-step) |
+| `is` | Slouží k filtrování pomocí logického výrazu. | [is step](http://tinkerpop.apache.org/docs/current/reference/#is-step) |
+| `limit` | Slouží k omezení počtu položek v procházení.| [limit step](http://tinkerpop.apache.org/docs/current/reference/#limit-step) |
+| `local` | Místně zabalí oddíl procházení podobně jako u vnořeného dotazu. | [local step](http://tinkerpop.apache.org/docs/current/reference/#local-step) |
+| `not` | Slouží k vytvoření negace filtru. | [not step](http://tinkerpop.apache.org/docs/current/reference/#not-step) |
+| `optional` | Vrátí výsledek zadaného procházení, pokud vrací výsledek, jinak vrátí volající element. | [optional step](http://tinkerpop.apache.org/docs/current/reference/#optional-step) |
+| `or` | Zajišťuje, že alespoň jedno procházení vrátí hodnotu. | [or step](http://tinkerpop.apache.org/docs/current/reference/#or-step) |
+| `order` | Vrátí výsledky v zadaném pořadí řazení. | [order step](http://tinkerpop.apache.org/docs/current/reference/#order-step) |
+| `path` | Vrátí úplnou cestu procházení. | [path step](http://tinkerpop.apache.org/docs/current/reference/#path-step) |
+| `project` | Zobrazí vlastnosti jako mapu. | [project step](http://tinkerpop.apache.org/docs/current/reference/#project-step) |
+| `properties` | Vrátí vlastnosti zadaných popisků. | [properties step](http://tinkerpop.apache.org/docs/current/reference/#properties-step) |
+| `range` | Vyfiltruje zadaný rozsah hodnot.| [range step](http://tinkerpop.apache.org/docs/current/reference/#range-step) |
+| `repeat` | Opakuje krok po zadaný počet opakování. Slouží k vytváření cyklů. | [repeat step](http://tinkerpop.apache.org/docs/current/reference/#repeat-step) |
+| `sample` | Slouží k zobrazení ukázkových výsledků z procházení. | [sample step](http://tinkerpop.apache.org/docs/current/reference/#sample-step) |
+| `select` | Slouží k zobrazení výsledků z procházení. |  [select step](http://tinkerpop.apache.org/docs/current/reference/#select-step) | |
+| `store` | Slouží k zobrazení neblokujících agregací z procházení. | [store step](http://tinkerpop.apache.org/docs/current/reference/#store-step) |
+| `tree` | Agreguje cesty z vrcholu do stromu. | [tree step](http://tinkerpop.apache.org/docs/current/reference/#tree-step) |
+| `unfold` | Rozbalí iterátor jako krok.| [unfold step](http://tinkerpop.apache.org/docs/current/reference/#unfold-step) |
+| `union` | Sloučí výsledky z více procházení.| [union step](http://tinkerpop.apache.org/docs/current/reference/#union-step) |
+| `V` | Zahrnuje kroky nutné pro procházení mezi vrcholy a okraji: `V`, `E`, `out`, `in`, `both`, `outE`, `inE`, `bothE`, `outV`, `inV`, `bothV` a `otherV`. | [vertex steps](http://tinkerpop.apache.org/docs/current/reference/#vertex-steps) |
+| `where` | Slouží k filtrování výsledků z procházení. Podporuje operátory `eq`, `neq`, `lt`, `lte`, `gt`, `gte` a `between`.  | [where step](http://tinkerpop.apache.org/docs/current/reference/#where-step) |
 
-Modul optimalizované zápisu poskytovaných Azure Cosmos DB podporuje automatické indexování všech vlastností v rámci vrcholy a okrajů ve výchozím nastavení. Proto dotazy s filtry, rozsahem dotazy, řazení, nebo agregace na žádnou vlastnost jsou zpracovány od indexu a efektivně obsluhovat. Další informace o tom, jak indexování funguje v Azure Cosmos DB najdete na našem dokumentu [vázané na schéma indexu](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
+Modul optimalizovaný pro zápis, který Azure Cosmos DB poskytuje, podporuje ve výchozím nastavení automatické indexování všech vlastností v rámci vrcholů a okrajů. Proto se dotazy s filtry, rozsahové dotazy, řazení nebo agregace u všech vlastností zpracovávají z indexu a efektivně předávají. Další informace o tom, jak funguje indexování ve službě Azure Cosmos DB, najdete v našem dokumentu, který se věnuje [indexování bez schémat](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf).
 
-## <a name="next-steps"></a>Další postup
-* Začínáme vytvoření grafu aplikace [pomocí naší sady SDK](create-graph-dotnet.md) 
-* Další informace o [graf podporu](graph-introduction.md) v Azure Cosmos DB
+## <a name="next-steps"></a>Další kroky
+* Pusťte se do vytváření grafové aplikace [pomocí našich sad SDK](create-graph-dotnet.md). 
+* Přečtěte si další informace o [podpoře grafu](graph-introduction.md) ve službě Azure Cosmos DB.

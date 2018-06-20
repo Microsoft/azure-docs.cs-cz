@@ -1,21 +1,22 @@
 ---
 title: Monitorování zařízení v Azure IoT Central | Microsoft Docs
 description: Jako operátor můžete monitorovat zařízení prostřednictvím aplikace Azure IoT Central.
-services: iot-central
-author: tanmaybhagwat
+author: tbhagwat3
 ms.author: tanmayb
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: a07c9e3c28fadaead8bfaaebe4d1ee06ac66a99e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: 9a3b7383651d679b079818fb32bd8f98160d0a4c
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201383"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235477"
 ---
-# <a name="use-azure-iot-central-to-monitor-your-devices"></a>Monitorování zařízení pomocí Azure IoT Central
+# <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Kurz: Monitorování zařízení pomocí Azure IoT Central
 
 V tomto kurzu se dozvíte, jak jako operátor můžete pomocí aplikace Microsoft Azure IoT Central monitorovat zařízení a změnit nastavení.
 
@@ -50,11 +51,11 @@ V prohlížeči se otevře stránka **Device** (Zařízení) simulovaného zař�
 
 Jako operátor se můžete podívat na informace o zařízení na stránkách **Measurements** (Měření), **Settings** (Nastavení), **Properties** (Vlastnosti), **Rules** (Pravidla) a **Dashboard** (Řídicí panel). Tvůrce přizpůsobil stránku **Dashboard**, aby se na ní zobrazovaly důležité informace o připojeném klimatizačním zařízení.
 
-* Zvolte zobrazení **Dashboard** a podívejte se na informace o zařízení:
+Zvolte zobrazení **Dashboard** a podívejte se na informace o zařízení.
 
-    ![Řídicí panel zařízení](media/tutorial-monitor-devices/initial_screen.png)
+![Řídicí panel zařízení](media/tutorial-monitor-devices/initial_screen.png)
 
-    Graf na řídicím panelu vykresluje teplotní křivku zařízení. Na dlaždici **Set target temperature** (Nastavit cílovou teplotu) se můžete také podívat na aktuální cílovou teplotu zařízení. Rozhodnete se, že cílová teplota je příliš vysoká.
+Graf na řídicím panelu vykresluje teplotní křivku zařízení. Na dlaždici **Set target temperature** (Nastavit cílovou teplotu) se můžete také podívat na aktuální cílovou teplotu zařízení. Rozhodnete se, že cílová teplota je příliš vysoká.
 
 ## <a name="remediate-an-issue"></a>Oprava problému
 
@@ -64,7 +65,7 @@ Cílovou teplotu zařízení můžete změnit na stránce **Settings**:
 
     ![Aktualizace nastavení](media/tutorial-monitor-devices/change_settings.png)
 
-1. Zvolte **Dashboard** a ověřte novou hodnotu nastavení:
+2. Zvolte **Dashboard** a ověřte novou hodnotu nastavení:
 
     ![Aktualizovaný řídicí panel zařízení](media/tutorial-monitor-devices/new_settings.png)
 
@@ -77,4 +78,4 @@ V tomto kurzu jste se naučili:
 > * Prozkoumat problém
 > * Opravit problém
 
-Nyní umíte monitorovat zařízení a můžete se přesunout k dalšímu navrhovanému kroku, kterým je [přidání zařízení](tutorial-add-device.md).
+Když už víte, jak monitorovat zařízení, dalším navrhovaným krokem je [přidání zařízení](tutorial-add-device.md).

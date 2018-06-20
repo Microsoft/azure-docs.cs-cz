@@ -1,171 +1,166 @@
 ---
-title: Přehled Azure monitorování | Microsoft Docs
-description: Azure monitorování shromažďuje statistiky pro použití v výstrahy, webhooků, škálování a automatizace. Článek taky seznam dalších možností monitorování společnosti Microsoft.
+title: Přehled služby Azure Monitor
+description: Azure Monitor shromažďuje statistiky pro použití v upozorněních, webhoocích, automatickém škálování a službě Automation. Článek uvádí také seznam dalších možností monitorování od Microsoftu.
 author: rboucher
-manager: carmonm
-editor: ''
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.assetid: ''
-ms.service: monitoring-and-diagnostics
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+services: azure-monitor
+ms.service: azure-monitor
+ms.topic: overview
 ms.date: 03/28/2018
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: 9a9166e93d24f6402d849b1bee3bcf470685c814
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
-ms.translationtype: MT
+ms.component: ''
+ms.openlocfilehash: a96991c424b4709002d46b6b7abe1e884c3605dd
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35264581"
 ---
-# <a name="overview-of-azure-monitor"></a>Přehled Azure monitorování
-Tento článek obsahuje přehled služby Azure monitorování v Microsoft Azure. Popisuje, co monitorování Azure nepodporuje a poskytuje odkazy na další informace o tom, jak používat Azure monitorování.  Pokud upřednostňujete video úvod, najdete v části Další kroky odkazy v dolní části tohoto článku. 
+# <a name="overview-of-azure-monitor"></a>Přehled služby Azure Monitor
+Tento článek obsahuje přehled Azure Monitoru v Microsoft Azure. Popisuje činnost Azure Monitoru a poskytuje odkazy na další informace o tom, jak Azure Monitor používat.  Pokud máte raději úvodní představení pomocí videa, přejděte na odkazy v části Další kroky na konci tohoto článku. 
 
-## <a name="azure-monitor-and-microsofts-other-monitoring-products"></a>Azure monitorování a Microsoft je další monitorování produkty
-Monitorování Azure poskytuje základní úroveň infrastruktura metriky a protokoly pro většina služeb v Microsoft Azure. Služby Azure, které ještě Neumísťujte svá data do Azure monitorování se pro něj existuje v budoucnu.
+## <a name="azure-monitor-and-microsofts-other-monitoring-products"></a>Azure Monitor a další produkty pro monitorování od Microsoftu
+Azure Monitor poskytuje metriky a protokoly základní infrastruktury pro většinu služeb v Microsoft Azure. Služby Azure, které do Azure Monitoru ještě nevkládají svoje data, je tam budou vkládat v budoucnu.
 
-Microsoft dodává další produkty a služby, které poskytují další možnosti monitorování pro vývojáře, DevOps nebo Ops IT, které mají také na místní instalace. Přehled a pochopení jak tyto různé produkty a služby spolupracují, najdete v části [monitorování v Microsoft Azure](monitoring-overview.md).
+Microsoft dodává další produkty a služby, které poskytují další možnosti monitorování pro vývojáře, DevOps nebo provoz IT a mají také místní instalace. Přehled těchto produktů a služeb a principy jejich vzájemné spolupráce najdete v tématu o [monitorování v Microsoft Azure](monitoring-overview.md).
 
-## <a name="portal-overview-page"></a>Přehled portálu stránky
+## <a name="portal-overview-page"></a>Stránka s přehledem portálu
 
-Azure monitorování má cílová stránka, která pomáhá uživatelům: 
-- Seznamte se s monitorování možnostmi, které nabízí Azure.
-- Zjišťovat, konfigurovat a integrovaného Azure platformy a možnosti monitorování premium.
+Azure Monitor má úvodní stránku, která uživatelům poskytuje tyto možnosti: 
+- Seznámení s možnostmi monitorování, které Azure nabízí
+- Zjišťování, konfigurace a onboarding platformy Azure a možností monitorování úrovně Premium
 
-Stránce je výchozím bodem pro navigaci, včetně Startovní. Zobrazuje kurátorované významné problémy z různých služeb a umožňuje uživateli přejděte k nim v kontextu.
+Tato stránka je výchozím místem pro navigaci včetně onboardingu. Zobrazuje pečlivě zpracované významné problémy z různých služeb, na které umožňuje uživateli kontextově přejít.
  
-![Model pro monitorování a Diagnostika pro jiný výpočetní prostředky](./media/monitoring-overview-azure-monitor/monitor-overview-ux2.png)
+![Model pro monitorování a diagnostiku pro jiné než výpočetní prostředky](./media/monitoring-overview-azure-monitor/monitor-overview-ux2.png)
 
-Při otevření stránky, můžete vybrat mezi odběry, které máte přístup pro čtení. Pro vybrané předplatné se zobrazí:
+Po otevření stránky můžete vybírat mezi předplatnými, u kterých máte přístup pro čtení. Pro vybrané předplatné se zobrazují tyto možnosti:
 
-- **Aktivaci výstrahy a výstrahu zdroje** – Tato tabulka obsahuje souhrn počtu výstrah zdrojů, a jak často výstrahy aktivováno pro vybrané doby trvání. Platí pro výstrahy starší a novější. Další informace o [novější výstrahy Azure](monitoring-overview-unified-alerts.md). 
-- **Chyby v protokolu aktivit** – Pokud některé z vašich prostředků Azure protokolu události se závažností úroveň chyb, můžete zobrazit podrobný počet a klikněte na tlačítko prostřednictvím na stránce Protokol aktivit můžete prozkoumat všechny události.
-- **Azure stavu služby** -uvidíte počet problémů služby stav služby, události plánované údržby a zpravodaje stavu. Azure služba stavu poskytuje přizpůsobené informace o při problémy v infrastruktuře Azure vliv na vaše služby.  V tématu [stavu služby Azure](../service-health/service-health-overview.md) Další informace.  
-- **Application Insights** -najdete v části klíčových ukazatelů výkonu pro každý zdroj AppInsights v aktuálním předplatném. Klíčové ukazatele výkonu jsou optimalizované pro aplikace na straně serveru monitorování napříč webové aplikace ASP.NET, Java, uzel a obecné typy aplikací. Klíčové ukazatele výkonu zahrnují metriky pro rychlost požadavků, doba odezvy, míra selhání a dostupnosti %. 
+- **Aktivovaná upozornění a zdroje upozornění** – Tato tabulka obsahuje souhrnné počty, zdroje upozornění a počty aktivovaných upozornění pro vybranou dobu trvání. Platí pro starší i novější upozornění. Přečtěte si další informace o [novějších upozorněních Azure](monitoring-overview-unified-alerts.md). 
+- **Chyby protokolu aktivit** – Pokud některé prostředky Azure protokolují události se závažností na úrovni chyb, je možné zobrazit podrobné počty a kliknutím přejít na stránku protokolu aktivit, abyste mohli každou událost prozkoumat.
+- **Azure Service Health** – Můžete zobrazit počet problémů služby Service Health, události plánované údržby a poradce pro stav. Azure Service Health poskytuje individuální informace o dopadu problémů v infrastruktuře Azure na vaše služby.  Další informace najdete v tématu o [Azure Service Health](../service-health/service-health-overview.md).  
+- **Application Insights** – Můžete zobrazit klíčové ukazatele výkonu pro každý prostředek AppInsights v aktuálním předplatném. Klíčové ukazatele výkonu jsou optimalizované pro aplikaci na straně serveru, která monitoruje webové aplikace ASP.NET, Java, Node a obecné typy aplikací. Klíčové ukazatele výkonu zahrnují metriky pro frekvenci požadavků, dobu odezvy, chybovost a % dostupnosti. 
 
-Pokud jste ještě na zahrnuté analýzy protokolů nebo Application Insights, nebo pokud jste nenakonfigurovali všechny výstrahy Azure v aktuálním předplatném, stránce poskytuje odkazy na zahájení procesu Startovní.
-
-
-
-## <a name="azure-monitor-sources---compute-subset"></a>Azure monitorování zdroje - výpočetní podmnožina
-
-![Model pro monitorování a Diagnostika pro jiný výpočetní prostředky](./media/monitoring-overview-azure-monitor/Monitoring_Azure_Resources-compute_v6.png)
+Pokud jste ještě neprovedli onboarding Log Analytics či Application Insights nebo pokud jste ještě v aktuálním předplatném nenakonfigurovali žádná upozornění Azure, bude stránka nabízet odkazy pro zahájení procesu onboardingu.
 
 
-Patří sem výpočetní služby 
+
+## <a name="azure-monitor-sources---compute-subset"></a>Prostředky Azure Monitoru – podmnožina služby Compute
+
+![Model pro monitorování a diagnostiku pro jiné než výpočetní prostředky](./media/monitoring-overview-azure-monitor/Monitoring_Azure_Resources-compute_v6.png)
+
+
+Mezi služby Compute Services patří: 
 - Cloud Services 
 - Virtuální počítače 
-- Sady škálování virtuálního počítače 
+- Škálovací sady virtuálních počítačů 
 - Service Fabric
 
-### <a name="application---diagnostics-logs-application-logs-and-metrics"></a>Aplikace – diagnostické protokoly, protokoly aplikací a metriky
-Aplikace můžete spustit nad hostovaného operačního systému v výpočetní modelu. Emitování jejich vlastní sadu protokolů a metriky. Azure monitorování spoléhá na rozšíření diagnostiky Azure (Windows nebo Linux) ke shromažďování většina protokoly a metriky na úrovni aplikace. Zahrnout typy
+### <a name="application---diagnostics-logs-application-logs-and-metrics"></a>Aplikace – protokoly diagnostiky, protokoly aplikací a metriky
+Aplikace můžou ve výpočetním modelu běžet nad hostovaným operačním systémem. Generují svoji vlastní sadu protokolů a metrik. Azure Monitor používá rozšíření Azure Diagnostics (Windows nebo Linux) ke shromažďování většiny protokolů a metrik na úrovni aplikace. Patří k nim tyto typy:
 
 * Čítače výkonu
 * Protokoly aplikací
-* Protokoly událostí systému Windows
-* Zdroj události rozhraní .NET
-* Protokoly služby IIS
-* Manifest na základě trasování událostí pro Windows
+* Protokoly událostí Windows
+* Zdroj událostí .NET
+* Protokoly IIS
+* Trasování událostí pro Windows na základě manifestu
 * Výpisy stavu systému
-* Protokoly chyb zákazníka
+* Protokoly chyb zákazníků
 
-Bez rozšíření diagnostiky jsou k dispozici pouze několik metriky jako využití procesoru. 
+Bez rozšíření diagnostiky je k dispozici jenom několik metrik, například Využití procesoru. 
 
-### <a name="host-and-guest-vm-metrics"></a>Metriky hostitele a hostů virtuálních počítačů
-Výše uvedených výpočetní prostředky mít vyhrazený hostitelský počítač a hostovaného operačního systému komunikují s. Hostitele virtuálního počítače a hostovaný operační systém jsou ekvivalentní kořenových virtuálních počítačů a hosta virtuálního počítače v hypervisoru modelu technologie Hyper-V. Můžete shromažďovat metriky na obojí. Může taky shromažďovat diagnostické protokoly na hostovaný operační systém.   
-
-### <a name="activity-log"></a>Protokol aktivit
-Protokol aktivit (dříve označovaný jako provozní nebo protokoly auditu) můžete vyhledat informace o vašem prostředku, jak je vidět infrastruktura Azure. V protokolu obsahuje informace, jako jsou časy, kdy jsou prostředky vytvořit nebo zničeno.  Další informace najdete v tématu [protokol aktivit přehled](monitoring-overview-activity-logs.md). 
-
-## <a name="azure-monitor-sources---everything-else"></a>Azure monitorování zdroje - všem ostatním
-
-![Model pro monitorování a Diagnostika pro výpočetní prostředky](./media/monitoring-overview-azure-monitor/Monitoring_Azure_Resources-non-compute_v6.png)
-
-
-### <a name="resource---metrics-and-diagnostics-logs"></a>Prostředku, metriky a protokolů diagnostiky
-Shromážditelného metriky a diagnostické protokoly lišit v závislosti na typu prostředku. Například Web Apps poskytuje statistiky na v/v disku a procesoru v procentech. Tyto metriky neexistují pro fronty Service Bus, která poskytuje metriky jako propustnost velikost a zprávu fronty. Seznam shromážditelného metriky pro každý zdroj je k dispozici na [podporované metriky](monitoring-supported-metrics.md). 
-
-### <a name="host-and-guest-vm-metrics"></a>Metriky hostitele a hostů virtuálních počítačů
-Není nezbytně mapování 1:1 mezi prostředku a na konkrétní hostitele nebo hosta virtuálního počítače, metriky nejsou k dispozici.
+### <a name="host-and-guest-vm-metrics"></a>Metriky virtuálního počítače hostitele a hosta
+Výše uvedené výpočetní prostředky mají vyhrazený virtuální počítač hostitele a hostovaný operační systém, se kterým komunikují. Virtuální počítač hostitele a hostovaný operační systém jsou ekvivalentem kořenového virtuálního počítače a virtuálního počítače hosta v modelu hypervisoru technologie Hyper-V. Metriky můžete shromažďovat v obou případech. V hostovaném operačním systému můžete shromažďovat také protokoly diagnostiky.   
 
 ### <a name="activity-log"></a>Protokol aktivit
-Protokol aktivit je stejné jako výpočetní prostředky.  
+V protokolu aktivit (dříve označovaném jako operační protokol nebo protokol auditu) můžete hledat informace o vašem prostředku z pohledu infrastruktury Azure. Tento protokol obsahuje informace, jako jsou třeba časy, kdy se prostředky vytvořily nebo zničily.  Další informace najdete v [přehledu protokolu aktivit](monitoring-overview-activity-logs.md). 
 
-## <a name="uses-for-monitoring-data"></a>Používá pro monitorování dat.
-Jakmile shromáždíte vaše data, můžete provést následující ho v Azure monitorování.
+## <a name="azure-monitor-sources---everything-else"></a>Prostředky Azure Monitoru – vše ostatní
+
+![Model pro monitorování a diagnostiku pro výpočetní prostředky](./media/monitoring-overview-azure-monitor/Monitoring_Azure_Resources-non-compute_v6.png)
+
+
+### <a name="resource---metrics-and-diagnostics-logs"></a>Prostředek – metriky a protokoly diagnostiky
+Metriky a protokoly diagnostiky, které lze shromažďovat, se liší v závislosti na typu prostředku. Služba Web Apps například poskytuje statistiky týkající se V/V disku a procent procesoru. Tyto metriky neexistují pro frontu služby Service Bus, která zase naopak poskytuje metriky jako velikost fronty a propustnost zpráv. Seznam metrik, které lze pro jednotlivé prostředky shromažďovat, je dostupný v tématu o [podporovaných metrikách](monitoring-supported-metrics.md). 
+
+### <a name="host-and-guest-vm-metrics"></a>Metriky virtuálního počítače hostitele a hosta
+Mezi vaším prostředkem a konkrétním virtuálním počítačem hostitele a hosta nemusí nutně existovat mapování 1:1, takže metriky nemusí být dostupné.
+
+### <a name="activity-log"></a>Protokol aktivit
+Protokol aktivit je stejný jako pro výpočetní prostředky.  
+
+## <a name="uses-for-monitoring-data"></a>Využití monitorování dat
+Když svoje data shromáždíte, můžete je v Azure Monitoru používat k následujícím činnostem.
 
 ### <a name="route"></a>Trasa
-Můžete Streamovat monitorování data do jiných umístění. 
+Můžete data monitorování streamovat do jiných umístění. 
 
 Příklady obsahují:
 
-- Odesílání Application Insights, abyste mohli používat širší nástroje vizualizaci a analýzu.
-- Odesílat do centra událostí, takže může směrovat nástroje třetích stran. 
+- Odesílání do Application Insights, abyste mohli používat nástroje pro podrobnější vizualizaci a analýzu
+- Odesílání do Event Hubs, aby se umožnilo směrování do nástrojů jiných výrobců 
 
-### <a name="store-and-archive"></a>Úložiště a archivu
-Některá data monitorování již uložené a k dispozici v monitorování Azure pro sadu časového intervalu. 
+### <a name="store-and-archive"></a>Uchovávání a archivace
+Některá data monitorování se už v Azure Monitoru uchovávají a jsou po určitou dobu dostupná. 
 - Metriky se uchovávají po dobu 90 dnů. 
-- Položky protokolu aktivity se uchovávají po dobu 90 dnů. 
-- Diagnostické protokoly nejsou uložené ve všech. 
+- Položky protokolu aktivit se uchovávají po dobu 90 dnů. 
+- Protokoly diagnostiky se neuchovávají vůbec. 
 
-Pokud chcete k ukládání dat delší než časová období uvedených výše, můžete použít úložiště Azure. Sledování dat je uložen v účtu úložiště na základě zásad uchovávání informací, že jste nastavili. Budete muset platit na místo, které zabírají data v úložišti Azure. 
+Pokud chcete data uchovávat déle než po dobu uvedenou výše, můžete použít úložiště Azure. Data monitorování se budou ve vašem účtu úložiště uchovávat podle zásad uchovávání informací, které jste nastavili. Za prostor, který tato data zaberou v úložišti Azure, budete muset zaplatit. 
 
-Několik způsobů, jak používat tato data:
+Několik způsobů, jak lze tato data používat:
 
-- Jakmile zapsána, můžete mít další nástroje v rámci nebo mimo Azure číst a zpracovávat.
-- Stáhněte si data místně pro místní archivaci nebo změňte vaše zásady uchovávání informací v cloudu a ponechat data pro dlouhou dobu.  
-- Ponechat data v Azure storage po neomezenou dobu pro účely archivu. 
+- Po zápisu dat je můžete číst a zpracovávat jinými nástroji v rámci Azure nebo mimo Azure.
+- Můžete si tato data stáhnout místně pro místní archivaci nebo můžete změnit zásady uchovávání informací v cloudu tak, aby se data uchovávala po delší dobu.  
+- Můžete ponechat tato data v úložišti Azure po neomezenou dobu pro účely archivace. 
 
 ### <a name="query"></a>Dotaz
-Monitorování REST API služby Azure, pro různé platformy příkazy rozhraní příkazového řádku (CLI), rutiny prostředí PowerShell nebo sady .NET SDK můžete použít pro přístup k datům v systému nebo úložiště Azure
+Pro přístup k datům v systému nebo úložišti Azure můžete použít rozhraní REST API Azure Monitoru, příkazy rozhraní příkazového řádku (CLI) pro různé platformy, rutiny PowerShellu nebo sadu .NET SDK.
 
 Příklady obsahují:
 
-* Získávání dat pro vlastní monitorování aplikací, který jste napsali
-* Vytváření vlastních dotazů a odesílání dat do aplikace třetích stran.
+* Získávání dat pro vlastní monitorovací aplikaci, kterou jste vytvořili
+* Vytváření vlastních dotazů a odesílání těchto dat do aplikace jiného výrobce
 
 ### <a name="visualize"></a>Vizualizace
-Vizualizace dat monitorování v grafy vám pomůže najít trendy rychlejší než vyhledávání prostřednictvím samotná data.  
+Vizualizace dat monitorování pomocí grafů a diagramů vám umožňuje rozpoznat trendy rychleji, než když prohlížíte samotná data.  
 
-Několik metod vizualizace patří:
+Mezi možné způsoby vizualizace patří:
 
 * Použití webu Azure Portal
-* Data trasy do služby Azure Application Insights
-* Data trasy k Microsoft PowerBI
-* Směrování dat na nástroj třetí strany vizualizaci pomocí buď živé streamování nebo tak, že nástroj pro čtení z archivu v úložišti Azure
+* Směrování dat do Azure Application Insights
+* Směrování dat do Microsoft PowerBI
+* Směrování dat do vizualizačního nástroje jiného výrobce pomocí živého streamování nebo tak, že necháte daný nástroj načítat data z archivu v úložišti Azure
 
 
 ### <a name="automate"></a>Automatizace
 > [!NOTE]
-> Jako součást probíhající vývoj výstrah v Microsoft Azure teď jednotné prostředí pro zobrazení výstrah je k dispozici. Další informace o [nové výstrahy Azure](monitoring-overview-unified-alerts.md)
+> V rámci průběžného vývoje upozornění v Microsoft Azure je teď k dispozici jednotné prostředí pro zobrazení upozornění. Další informace o [nových upozorněních Azure](monitoring-overview-unified-alerts.md)
 
-V Azure výstrahy můžete data monitorování výstrahy aktivační události nebo dokonce celé procesy. Příklady obsahují:
+V Azure můžete pomocí dat monitorování aktivovat upozornění nebo dokonce celé procesy. Příklady obsahují:
 
-* Data pro automatické škálování výpočetních instancích použijte nahoru nebo dolů podle zatížení aplikace.
-* Odesílání e-mailů na základě podmínek, Metrika nebo protokolu. 
-* Volání adresu URL webu (webhooku) k provedení akce v rámci systému mimo Azure
-* Spuštění sady runbook ve službě Azure automation k provedení jakékoli řadu úloh
+* Použití dat k automatickému škálování výpočetních instancí směrem nahoru nebo dolů podle zatížení aplikace
+* Odesílání e-mailů na základě podmínek metrik nebo protokolů 
+* Provedení akce v systému mimo Azure pomocí volání adresy URL webu (webhooku)
+* Provedení různých úloh pomocí spuštění runbooku ve službě Azure Automation
 
-## <a name="methods-of-accessing-azure-monitor"></a>Metody přístupu k Azure monitorování
-Obecně platí můžete upravit data sledování, směrování a načítání pomocí jedné z následujících metod. Ne všechny metody jsou k dispozici pro všechny akce nebo datové typy.
+## <a name="methods-of-accessing-azure-monitor"></a>Způsoby přístupu k Azure Monitoru
+Obecně platí, že k manipulaci se sledováním, směrováním a načítáním dat se dá použít některý z následujících způsobů. Některé způsoby ale nemusí být dostupné pro všechny akce nebo typy dat.
 
 * [Azure Portal](https://portal.azure.com)
 * [PowerShell](insights-powershell-samples.md)  
-* [Napříč platformami rozhraní příkazového řádku (CLI)](insights-cli-samples.md)
+* [Rozhraní příkazového řádku (CLI) pro různé platformy](insights-cli-samples.md)
 * [REST API](https://docs.microsoft.com/rest/api/monitor/)
 * [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
-## <a name="next-steps"></a>Další postup
-Další informace o
-- Je k dispozici na video s návodem právě Azure monitorování  
-[Začínáme s Azure monitorování](https://channel9.msdn.com/Blogs/Azure-Monitoring/Get-Started-with-Azure-Monitor). 
-- Video vysvětlením scénář, kde můžete použít Azure monitorování je k dispozici na [monitorování prozkoumat Microsoft Azure a Diagnostika](https://channel9.msdn.com/events/Ignite/2016/BRK2234) a [Azure monitorování v videa z Ignite 2016](https://myignite.microsoft.com/videos/4977).
-- Spuštění prostřednictvím rozhraní Azure monitorování v [Začínáme s Azure monitorování](monitoring-get-started.md)
-- Nastavit [rozšíření diagnostiky Azure](../azure-diagnostics.md) Pokud se pokoušíte diagnostikovat problémy s cloudové služby, virtuální počítač škálování virtuálního počítače nebo aplikace Service Fabric sady.
-- [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) Pokud se pokoušíte diagnostiky problémů v aplikaci služby webové aplikace.
-- [Řešení potíží s Azure Storage](../storage/common/storage-e2e-troubleshooting.md) při použití úložiště objektů BLOB, tabulek a front
+## <a name="next-steps"></a>Další kroky
+Další informace:
+- Video s návodem pro Azure Monitor:  
+[Zahájení práce s Azure Monitorem](https://channel9.msdn.com/Blogs/Azure-Monitoring/Get-Started-with-Azure-Monitor) 
+- Videa s vysvětlením scénářů, kde lze Azure Monitor použít: [Monitorování a diagnostika v Microsoft Azure](https://channel9.msdn.com/events/Ignite/2016/BRK2234) a [Azure Monitor ve videu z Ignite 2016](https://myignite.microsoft.com/videos/4977)
+- Projděte si rozhraní Azure Monitoru: [Začínáme se službou Azure Monitor](monitoring-get-started.md)
+- Nastavte [rozšíření Azure Diagnostics](../azure-diagnostics.md) – pokud se pokoušíte diagnostikovat problémy s cloudovou službou, virtuálním počítačem, škálovacími sadami virtuálních počítačů nebo aplikací Service Fabric
+- [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) – pokud se pokoušíte diagnostikovat problémy ve webové aplikaci App Service
+- [Řešení potíží s Azure Storage](../storage/common/storage-e2e-troubleshooting.md) – při používání objektů blob, tabulek nebo front služby Storage
 - [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/)

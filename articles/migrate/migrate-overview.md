@@ -4,15 +4,15 @@ description: Obsahuje přehled služby Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5c63d74158087d2011478d038d41fc1bae44190e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 68f335762e1fdd68296d7056ef5826f69c868d70
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202843"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236361"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -48,8 +48,8 @@ Posouzení pomáhá identifikovat vhodnost Azure pro místní virtuální počí
 **Vlastnost** | **Podrobnosti**
 --- | ---
 **Cílové umístění** | Umístění Azure, do kterého chcete migrovat.<br/><br/>Azure Migrate v současné době podporuje 30 oblastí, včetně oblastí Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Indie – střed, USA – střed, Čína – východ, Čína – sever, Východní Asie, USA – východ, Německo – střed, Německo – severovýchod, USA – východ 2, Japonsko – východ, Japonsko – západ, Korea – střed, Korea – jih, Střed USA – sever, Severní Evropa, Střed USA – jih, Jihovýchodní Asie, Indie – jih, Velká Británie – jih, Velká Británie – západ, US Gov – Arizona, US Gov – Texas, US Gov – Virginie, Střed USA – západ, Západní Evropa, Indie – západ, USA – západ a USA – západ 2. Cílové umístění je standardně nastavené na Západní USA 2.
-**Redundance úložiště** | Typ [redundance úložiště](https://docs.microsoft.com/azure/storage/common/storage-redundancy), který budou po migraci využívat virtuální počítače Azure. Výchozí je místně redundantní úložiště (LRS). Poznámka: Azure Migrate podporuje pouze posouzení založená na spravovaných discích a spravované disky podporují pouze LRS, proto má vlastnost v současné době pouze možnost LRS.
-**Kritérium určení velikosti** | Kritérium, podle kterého Azure Migrate určí správnou velikost virtuálních počítačů pro Azure. Velikost virtuálních počítačů pro Azure můžete určit na základě *historie výkonu* místních virtuálních počítačů nebo stejnou *jako u místních* virtuálních počítačů bez zohlednění historie výkonu. Výchozí hodnota je určení velikosti na základě výkonu.
+**Typ úložiště** | Můžete zadat typ disků, které chcete přidělit v Azure. Tuto vlastnost je možné použít, když je u kritéria nastavení velikosti vybraná možnost místní změny velikosti. Jako cílový typ disku můžete zadat Spravované disky úrovně Premium nebo Spravované disky úrovně Standard. Výchozí hodnota je Spravované disky úrovně Premium. Pro nastavení velikosti na základě výkonu se doporučení u disku vytváří automaticky na základě dat o výkonu virtuálních počítačů. Poznámka: Azure Migrate podporuje pro posouzení migrace jenom spravované disky.
+**Kritérium určení velikosti** | Kritérium, podle kterého Azure Migrate určí správnou velikost virtuálních počítačů pro Azure. Velikost virtuálních počítačů pro Azure můžete určit na základě *historie výkonu* místních virtuálních počítačů nebo stejnou *jako u místních* virtuálních počítačů bez zohlednění historie výkonu. Výchozí hodnota je místní nastavení velikosti.
 **Cenové plány** | Pro účely výpočtů nákladů posouzení zohledňuje, jestli máte program Software Assurance a jestli máte nárok na [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Zohledňuje také [Nabídky Azure](https://azure.microsoft.com/support/legal/offer-details/), které máte případně zaregistrované, a umožňuje zadat jakékoli slevy (%) specifické pro předplatné, na které máte nárok nad rámec nabídky.
 **Cenová úroveň** | Můžete zadat [cenovou úroveň (Basic nebo Standard)](../virtual-machines/windows/sizes-general.md) cílových virtuálních počítačů Azure. Pokud například plánujete migrovat produkční prostředí, měli byste zvážit úroveň Standard, která poskytuje virtuální počítače s nízkou latencí, ale může být dražší. Na druhou stranu, pokud máte prostředí pro vývoj a testování, měli byste zvážit úroveň Basic s virtuálními počítači s vyšší latencí, která je levnější. Ve výchozím nastavení se použije úroveň [Standard](../virtual-machines/windows/sizes-general.md).
 **Historie výkonu** | Azure Migrate ve výchozím nastavení vyhodnocuje výkon místních počítačů s využitím historie výkonu za poslední den a hodnoty 95. percentilu. Tyto hodnoty můžete upravit ve vlastnostech posouzení.
@@ -100,4 +100,6 @@ Po posouzení místních počítačů pro migraci pomocí služby Azure Migrate 
 
 
 ## <a name="next-steps"></a>Další kroky
-[Postupujte podle kurzu](tutorial-assessment-vmware.md) a vytvořte posouzení pro místní virtuální počítač VMware.
+
+- [Postupujte podle kurzu](tutorial-assessment-vmware.md) a vytvořte posouzení pro místní virtuální počítač VMware.
+- [Přečtěte si další informace](resources-faq.md) o nejčastějších dotazech k Azure Migrate

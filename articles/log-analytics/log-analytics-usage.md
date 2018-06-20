@@ -1,5 +1,5 @@
 ---
-title: Analýza využití dat v Log Analytics | Dokumentace Microsoftu
+title: Analýza využití dat v Log Analytics | Microsoft Docs
 description: Použijte řídicí panel Využití a odhad nákladů v Log Analytics k vyhodnocení objemu dat odesílaných do Log Analytics a identifikaci možných příčin jejich neočekávaných nárůstů.
 services: log-analytics
 documentationcenter: ''
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/29/2018
+ms.date: 06/05/2018
 ms.author: magoedte
-ms.openlocfilehash: 7e141dcf69c1a173c60cb96907cae2ba9f119b03
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: ed2e77553cc72caa6a7b48fe6fa6baab0ffafec5
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34802047"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analýza využití dat v Log Analytics
 Log Analytics obsahuje informace o objemu shromážděných dat, zdrojích odesílajících data a různých typech odesílaných dat.  Využití dat můžete zkontrolovat a analyzovat pomocí řídicího panelu **Využití Log Analytics**. Řídicí panel ukazuje, kolik dat shromažďují jednotlivá řešení a kolik dat odesílají vaše počítače.
@@ -116,7 +117,7 @@ Na následujícím snímku obrazovky odesílá z počítače nejvíce dat datov�
 
 Potom se vraťte na řídicí panel *Využití* a podívejte se na graf *Objem dat podle řešení*. Pokud chcete zobrazit počítače odesílající nejvíce dat pro řešení, klikněte na název řešení v seznamu. Klikněte na název prvního řešení v seznamu. 
 
-Na následujícím snímku obrazovky je potvrzení, že počítač *acmetomcat* odesílá nejvíce dat pro řešení Správa protokolů.<br><br> ![objem dat pro řešení](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
+Na následujícím snímku obrazovky je potvrzení, že počítač *mycon* odesílá nejvíce dat pro řešení Správa protokolů.<br><br> ![objem dat pro řešení](./media/log-analytics-usage/log-analytics-usage-data-volume-solution.png)<br><br>
 
 V případě potřeby proveďte další analýzy k identifikaci velkých objemů v rámci řešení nebo datového typu. Ukázky dotazů:
 

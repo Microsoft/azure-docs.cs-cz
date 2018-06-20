@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/08/2017
+ms.date: 06/06/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 0dc403d92855902daef09c91a5dd022beb23fd71
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4f1dedc83d0d7040a4f7b9760c567437f58dde54
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839652"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Kurz: Monitorování a aktualizace virtuálních počítačů s Linuxem v Azure
 
@@ -43,13 +44,13 @@ Pokud se rozhodnete nainstalovat a místně používat rozhraní příkazového 
 
 ## <a name="create-vm"></a>Vytvoření virtuálního počítače
 
-Pokud chcete vidět, jak funguje diagnostika a metriky, potřebujete virtuální počítač. Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroupMonitor* v umístění *eastus*.
+Pokud chcete vidět, jak funguje diagnostika a metriky, potřebujete virtuální počítač. Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků *myResourceGroupMonitor* v umístění *eastus*.
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-Teď pomocí příkazu [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) vytvořte virtuální počítač. Následující příklad vytvoří virtuální počítač *myVM*:
+Teď pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create) vytvořte virtuální počítač. Následující příklad vytvoří virtuální počítač *myVM*, a pokud klíče SSH ještě neexistují, vytvoří je v umístění *~/.ssh/*:
 
 ```azurecli-interactive
 az vm create \
@@ -64,7 +65,7 @@ az vm create \
 
 Při spouštění virtuálních počítačů s Linuxem zaznamenává diagnostické rozšíření výstup spouštění a uloží ho v úložišti Azure. Tato data můžete použít k odstraňování problémů při spouštění virtuálních počítačů. Po vytvoření virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure není diagnostika spouštění automaticky povolená.
 
-Před povolením diagnostiky spouštění je třeba vytvořit účet úložiště pro ukládání protokolů spouštění. Účty úložiště musí mít globální jedinečný název v rozmezí 3 až 24 znaků a musí obsahovat pouze čísla a malá písmena. Účet úložiště vytvoříte příkazem [az storage account create](/cli/azure/storage/account#az_storage_account_create). V tomto příkladu se k vytvoření jedinečného názvu účtu úložiště použil náhodný řetězec.
+Před povolením diagnostiky spouštění je třeba vytvořit účet úložiště pro ukládání protokolů spouštění. Účty úložiště musí mít globální jedinečný název v rozmezí 3 až 24 znaků a musí obsahovat pouze čísla a malá písmena. Účet úložiště vytvoříte příkazem [az storage account create](/cli/azure/storage/account#az-storage-account-create). V tomto příkladu se k vytvoření jedinečného názvu účtu úložiště použil náhodný řetězec.
 
 ```azurecli-interactive
 storageacct=mydiagdata$RANDOM
@@ -82,7 +83,7 @@ Při povolování diagnostiky spouštění je potřeba identifikátor URI pro ko
 bloburi=$(az storage account show --resource-group myResourceGroupMonitor --name $storageacct --query 'primaryEndpoints.blob' -o tsv)
 ```
 
-Teď povolte diagnostiku spouštění pomocí příkazu [az vm boot-diagnostics enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_enable). Hodnota `--storage` je identifikátor URI objektu blob získaný v předchozím kroku.
+Teď povolte diagnostiku spouštění pomocí příkazu [az vm boot-diagnostics enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az-vm-boot-diagnostics-enable). Hodnota `--storage` je identifikátor URI objektu blob získaný v předchozím kroku.
 
 ```azurecli-interactive
 az vm boot-diagnostics enable \
@@ -93,19 +94,19 @@ az vm boot-diagnostics enable \
 
 ## <a name="view-boot-diagnostics"></a>Zobrazení diagnostiky spouštění
 
-Pokud je povolená diagnostika spouštění, zapíše se při každém spuštění a vypnutí virtuálního počítače informace o procesu spouštění do souboru protokolu. V tomto příkladu nejprve zrušte přidělení virtuálního počítače příkazem [az OM deallocate](/cli/azure/vm#az_vm_deallocate) takto:
+Pokud je povolená diagnostika spouštění, zapíše se při každém spuštění a vypnutí virtuálního počítače informace o procesu spouštění do souboru protokolu. V tomto příkladu nejprve zrušte přidělení virtuálního počítače příkazem [az OM deallocate](/cli/azure/vm#az-vm-deallocate) takto:
 
 ```azurecli-interactive
 az vm deallocate --resource-group myResourceGroupMonitor --name myVM
 ```
 
-Nyní spusťte virtuální počítač pomocí příkazu [az vm start]( /cli/azure/vm#az_vm_stop) následujícím způsobem:
+Nyní spusťte virtuální počítač pomocí příkazu [az vm start]( /cli/azure/vm#az-vm-stop) následujícím způsobem:
 
 ```azurecli-interactive
 az vm start --resource-group myResourceGroupMonitor --name myVM
 ```
 
-Data diagnostiky spouštění pro *myVM* můžete získat pomocí příkazu [az vm boot-diagnostics get-boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_get_boot_log) takto:
+Data diagnostiky spouštění pro *myVM* můžete získat pomocí příkazu [az vm boot-diagnostics get-boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az-vm-boot-diagnostics-get-boot-log) takto:
 
 ```azurecli-interactive
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --name myVM
@@ -115,24 +116,18 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --na
 
 Virtuální počítač s Linuxem má vyhrazeného hostitele v Azure, který s ním komunikuje. Metriky se pro hostitele shromažďují automaticky a lze je zobrazit na portálu Azure Portal následujícím způsobem:
 
-1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
-1. Pokud chcete zjistit, jaký je výkon virtuálního počítače hostitele, klikněte na tlačítko **Metriky** v okně virtuálního počítače, pak vyberte některou z metrik *[hostitele]* v části **Dostupné metriky**.
+1. Na webu Azure Portal vyberte **Skupiny prostředků**, zvolte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
+1. Pokud chcete získat informace o výkonu virtuálního počítače hostitele, vyberte v okně virtuálního počítače **Metriky** a potom v části **Dostupné metriky** vyberte některou z metrik *[hostitele]*.
 
     ![Zobrazení metrik hostitele](./media/tutorial-monitoring/monitor-host-metrics.png)
 
 ## <a name="install-diagnostics-extension"></a>Instalace diagnostického rozšíření
 
-> [!IMPORTANT]
-> Tento dokument popisuje verzi 2.3 diagnostického rozšíření Linux, které je již zastaralé. Podpora verze 2.3 končí 30. června 2018.
->
-> Místo toho lze povolit diagnostické rozšíření Linux verze 3.0. Další informace najdete v [dokumentaci](./diagnostic-extension.md).
-
 Jsou k dispozici základní metriky hostitele, ale pokud chcete zobrazit podrobné metriky specifické pro virtuální počítač, musíte ve virtuálním počítači nainstalovat diagnostické rozšíření Azure. Diagnostické rozšíření Azure umožňuje načítání dalších monitorovacích a diagnostických dat z virtuálního počítače. Tyto metriky výkonu můžete zobrazit a vytvářet výstrahy na základě výkonnosti virtuálního počítače. Diagnostické rozšíření se instaluje prostřednictvím portálu Azure Portal následujícím způsobem:
 
-1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroup** a potom v seznamu prostředků vyberte **myVM**.
-1. Klikněte na **Nastavení diagnostiky**. V seznamu je vidět, že *Diagnostika spouštění* je již povolená z předchozí části. Zaškrtněte políčko *Základní metriky*.
-1. V části *Účet úložiště* vyhledejte a vyberte účet *mydiagdata [1234]* vytvořený v předchozí části.
-1. Klikněte na tlačítko **Uložit**.
+1. Na webu Azure Portal zvolte **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
+1. Vyberte **Nastavení diagnostiky**. Pokud ještě není v rozevírací nabídce *Výběr účtu úložiště* vybraný účet *mydiagdata[1234]* vytvořený v předchozí části, zvolte ho.
+1. Vyberte tlačítko **Povolit monitorování na úrovni hosta**.
 
     ![Zobrazení diagnostických metrik](./media/tutorial-monitoring/enable-diagnostics-extension.png)
 
@@ -140,8 +135,8 @@ Jsou k dispozici základní metriky hostitele, ale pokud chcete zobrazit podrobn
 
 Metriky virtuálního počítače lze zobrazit stejným způsobem jako metriky virtuálního počítače hostitele:
 
-1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroup** a potom v seznamu prostředků vyberte **myVM**.
-1. Pokud chcete zjistit, jaký je výkon virtuálního počítače, klikněte na tlačítko **Metriky** v okně virtuálního počítače a pak vyberte některou z diagnostických metrik v části **Dostupné metriky**.
+1. Na webu Azure Portal zvolte **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
+1. Pokud chcete získat informace o výkonu virtuálního počítače, vyberte v okně virtuálního počítače **Metriky** a potom v části **Dostupné metriky** vyberte některou z diagnostických metrik *[hosta]*.
 
     ![Zobrazení metrik virtuálního počítače](./media/tutorial-monitoring/monitor-vm-metrics.png)
 
@@ -151,12 +146,12 @@ Na základě konkrétních metrik výkonu můžete vytvořit výstrahy. Výstrah
 
 Následující příklad vytvoří výstrahu týkající se průměrného využití procesoru.
 
-1. Na portálu Azure Portal klikněte na tlačítko **Skupiny prostředků**, vyberte **myResourceGroup** a potom v seznamu prostředků vyberte **myVM**.
-2. Klikněte na tlačítko **Pravidla výstrah** v okně virtuálního počítače a potom na **Přidat upozornění metriky** v horní části okna výstrahy.
+1. Na webu Azure Portal zvolte **Skupiny prostředků**, vyberte **myResourceGroupMonitor** a potom v seznamu prostředků vyberte **myVM**.
+2. Vyberte **Upozornění (klasická)**, potom zvolte **Přidat upozornění metriky (klasické)**, které se přidá do horní části okna upozornění.
 3. Zadejte **Název** výstrahy, například *mojePravidloVystrahy*.
 4. Pokud chcete spustit výstrahu, pokud procento využití procesoru překročí hodnotu 1,0 po dobu pěti minut, ponechte výchozí výběr všech ostatních nastavení.
 5. Volitelně můžete zaškrtnutím políčka *Vlastníci, přispěvatelé a čtenáři e-mailů* odesílat oznámení e-mailem. Výchozí akce je zobrazení oznámení na portálu.
-6. Klikněte na tlačítko **OK**.
+6. Vyberte tlačítko **OK**.
 
 ## <a name="manage-package-updates"></a>Správa aktualizace balíčků
 
@@ -171,7 +166,7 @@ Povolení řešení Update Management pro virtuální počítač:
 
 1. Na levé straně obrazovky vyberte **Virtuální počítače**.
 2. V seznamu vyberte virtuální počítač.
-3. Na obrazovce virtuálního počítače v části **Operace** klikněte na **Update Management**. Otevře se obrazovka **Povolit řešení Update Management**.
+3. Na obrazovce virtuálního počítače v části **Operace** vyberte **Správa aktualizací**. Otevře se obrazovka **Povolit řešení Update Management**.
 
 Provede se ověření, pomocí kterého se určí, jestli je pro tento virtuální počítač povolené řešení Update Management.
 Toto ověření zahrnuje kontroly pracovního prostoru Log Analytics a propojeného účtu Automation a kontrolu, jestli se řešení nachází v tomto pracovním prostoru.
@@ -183,7 +178,7 @@ Pokud na virtuálních počítačích, které vyžadují aktualizace, chcete pro
 Proces ověřování také zkontroluje, jestli je virtuální počítač zřízený s agentem Microsoft Monitoring Agent (MMA) a hybridním pracovním procesem runbooku Automation.
 Agent slouží ke komunikaci s virtuálním počítačem a získávání informací o nainstalovaném softwaru.
 
-Zvolte pracovní prostor Log Analytics a účet Automation a kliknutím na **Povolit** povolte řešení. Povolení řešení trvá přibližně 15 minut.
+Zvolte pracovní prostor Log Analytics a účet služby Automation a vybráním možnosti **Povolit** řešení povolte. Povolení řešení trvá přibližně 15 minut.
 
 Pokud během připojování chyběla některá z následujících požadovaných součástí, automaticky se přidá:
 
@@ -191,7 +186,7 @@ Pokud během připojování chyběla některá z následujících požadovaných
 * [Automation](../../automation/automation-offering-get-started.md)
 * Povolený [hybridní pracovní proces runbooku](../../automation/automation-hybrid-runbook-worker.md) na virtuálním počítači
 
-Otevře se obrazovka řešení **Update Management**. Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
+Otevře se obrazovka řešení **Update Management**. Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a vyberte **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation.
 
 ![Povolení řešení Update Management](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
@@ -207,7 +202,7 @@ Po povolení **správy aktualizací** se zobrazí obrazovka **Správa aktualizac
 
 Pokud chcete nainstalovat aktualizace, naplánujte nasazení odpovídající vašemu plánu vydávání a časovému intervalu pro správu a údržbu. Můžete zvolit typy aktualizací, které budou součástí nasazení. Můžete například zahrnout důležité aktualizace nebo aktualizace zabezpečení a vyloučit kumulativní aktualizace.
 
-Naplánujte nové nasazení aktualizací pro virtuální počítač kliknutím na **Naplánovat nasazení aktualizace** v horní části obrazovky **Update Management**. Na obrazovce **Nové nasazení aktualizací** zadejte následující informace :
+Nové nasazení aktualizací pro virtuální počítač naplánujete vybráním **Naplánovat nasazení aktualizace** v horní části obrazovky **Správa aktualizací**. Na obrazovce **Nové nasazení aktualizací** zadejte následující informace :
 
 * **Název** – Zadejte jedinečný název pro identifikaci nasazení aktualizací.
 * **Klasifikace aktualizací** – Vyberte typy softwaru, které se zahrnou do nasazení aktualizací. Typy klasifikace jsou:
@@ -218,13 +213,13 @@ Naplánujte nové nasazení aktualizací pro virtuální počítač kliknutím n
   ![Obrazovka nastavení plánu aktualizací](./media/tutorial-monitoring/manage-updates-exclude-linux.png)
 
 * **Nastavení plánu** – Můžete přijmout výchozí datum a čas, což je 30 minut od aktuálního času, nebo zadat jiný čas.
-  Můžete také určit, jestli nasazení proběhne jednou, nebo nastavit plán opakování. Pokud chcete nastavit plán opakování, klikněte na možnost Opakovat v části Opakování.
+  Můžete také určit, jestli nasazení proběhne jednou, nebo nastavit plán opakování. Pokud chcete nastavit plán opakování, vyberte možnost Opakující se v části Opakování.
 
   ![Obrazovka nastavení plánu aktualizací](./media/tutorial-monitoring/manage-updates-schedule-linux.png)
 
 * **Časové období údržby (minuty)** – Zadejte časové období, ve kterém má dojít k nasazení aktualizací. Pomůžete tím zajistit, že se změny provedou v rámci vašich definovaných časových intervalů pro správu a údržbu.
 
-Jakmile dokončíte konfiguraci plánu, klikněte na tlačítko **Vytvořit** a vrátíte se na řídicí panel stavu.
+Jakmile dokončíte konfiguraci plánu, vyberte možnost **Vytvořit**, která vás vrátí na řídicí panel stavu.
 Všimněte si, že v tabulce **Naplánované** se zobrazí plán nasazení, který jste vytvořili.
 
 > [!WARNING]
@@ -235,7 +230,7 @@ Všimněte si, že v tabulce **Naplánované** se zobrazí plán nasazení, kter
 Po spuštění naplánovaného nasazení se stav tohoto nasazení zobrazí na kartě **Nasazení aktualizací** na obrazovce **Správa aktualizací**.
 Pokud je nasazení aktuálně spuštěno, jeho stav je **Probíhající**. Po úspěšném dokončení se změní na **Úspěch**.
 Pokud u jedné nebo více aktualizací v nasazení dojde k chybě, stav je **Částečné selhání**.
-Kliknutím na dokončené nasazení aktualizací zobrazíte řídicí panel pro toto nasazení aktualizací.
+Výběrem dokončeného nasazení aktualizací zobrazíte řídicí panel pro toto nasazení aktualizací.
 
 ![Řídicí panel stavu nasazování aktualizací pro konkrétní nasazení](./media/tutorial-monitoring/manage-updates-view-results.png)
 
@@ -246,11 +241,11 @@ V tabulce vpravo je podrobný rozpis všech aktualizací a výsledků instalace,
 * **Úspěch** – Aktualizace byla úspěšná.
 * **Neúspěch** – Aktualizace se nezdařila.
 
-Kliknutím na **Všechny protokoly** zobrazíte všechny položky protokolu, které toto nasazení vytvořilo.
+Výběrem možnosti **Všechny protokoly** zobrazíte všechny položky protokolu, které nasazení vytvořilo.
 
-Kliknutím na dlaždici **Výstup** zobrazíte datový proud úlohy runbooku zodpovědného za správu nasazení aktualizací na cílovém virtuálním počítači.
+Výběrem dlaždice **Výstup** zobrazíte datový proud úlohy runbooku zodpovědného za správu nasazení aktualizací na cílovém virtuálním počítači.
 
-Kliknutím na **Chyby** zobrazíte podrobné informace o případných chybách nasazení.
+Výběrem možnosti **Chyby** zobrazíte podrobné informace o případných chybách tohoto nasazení.
 
 ## <a name="monitor-changes-and-inventory"></a>Monitorování změn a inventáře
 
@@ -262,9 +257,9 @@ Povolení správy změn a inventáře pro virtuální počítač:
 
 1. Na levé straně obrazovky vyberte **Virtuální počítače**.
 2. V seznamu vyberte virtuální počítač.
-3. Na obrazovce virtuálního počítače v části **Operace** klikněte na **Inventory** nebo **Change Tracking**. Otevře se obrazovka **Povolit řešení Change Tracking a Inventory**.
+3. Na obrazovce virtuálního počítače v části **Operace** vyberte **Soupis** nebo **Sledování změn**. Otevře se obrazovka **Povolit řešení Change Tracking a Inventory**.
 
-Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a klikněte na **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation. I když jsou řešení v nabídce oddělená, stále se jedná o stejné řešení. Povolením jednoho se na virtuálním počítači povolí obě.
+Nakonfigurujte umístění, pracovní prostor Log Analytics a účet Automation, které se mají použít, a vyberte **Povolit**. Pokud se pole zobrazují šedě, znamená to, že pro daný virtuální počítač je povolené jiné řešení automatizace a musí se použít stejný pracovní prostor a účet Automation. I když jsou řešení v nabídce oddělená, stále se jedná o stejné řešení. Povolením jednoho se na virtuálním počítači povolí obě.
 
 ![Povolení sledování změn a inventáře](./media/tutorial-monitoring/manage-inventory-enable.png)
 
@@ -272,7 +267,7 @@ Po povolení řešení může shromažďování inventáře na virtuálním poč
 
 ### <a name="track-changes"></a>Sledování změn
 
-Na svém virtuálním počítači v části **OPERACE** vyberte **Change Tracking**. Klikněte na **Upravit nastavení** a zobrazí se stránka **Change Tracking**. Vyberte typ nastavení, které chcete sledovat, a kliknutím na **+ Přidat** nakonfigurujte nastavení. Pro Linux je k dispozici možnost **Soubory Linuxu**.
+Na svém virtuálním počítači v části **OPERACE** vyberte **Change Tracking**. Vyberte **Upravit nastavení** a zobrazí se stránka **Sledování změn**. Vyberte typ nastavení, které chcete sledovat, a vybráním možnosti **+ Přidat** nastavení nakonfigurujte. Pro Linux je k dispozici možnost **Soubory Linuxu**.
 
 Podrobné informace o řešení Change Tracking najdete v tématu [Řešení potíží se změnami na virtuálním počítači](../../automation/automation-tutorial-troubleshoot-changes.md).
 

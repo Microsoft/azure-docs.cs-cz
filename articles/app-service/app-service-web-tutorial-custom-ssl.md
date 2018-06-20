@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 11/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: b9adae07bc95e385e9932250f7eb91115396f275
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ec58b5ef2b9095ba420a4518b84c4e2e6200abc3
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34193450"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34714574"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Kurz: Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps
 
@@ -84,17 +84,17 @@ V levém navigačním panelu na stránce webové aplikace se posuňte do části
 
 ![Nabídka Vertikálně navýšit kapacitu](./media/app-service-web-tutorial-custom-ssl/scale-up-menu.png)
 
-Zkontrolujte, že vaše webová aplikace není na úrovni **Free** nebo **Standard**. Aktuální úroveň webové aplikace je zvýrazněná tmavě modrým rámečkem.
+Zkontrolujte, že vaše webová aplikace není na úrovni **F1** nebo **D1**. Aktuální úroveň webové aplikace je zvýrazněná tmavě modrým rámečkem.
 
 ![Kontrola cenové úrovně](./media/app-service-web-tutorial-custom-ssl/check-pricing-tier.png)
 
-Na úrovni **Free** a **Standard** se nepodporuje vlastní SSL. Pokud potřebujete vertikálně navýšit kapacitu, postupujte podle kroků v další části. Jinak zavřete stránku **Zvolte cenovou úroveň** a přeskočte k části [Nahrání a vytvoření vazby certifikátu SSL](#upload).
+Na úrovni **F1** a **D1** se nepodporuje vlastní SSL. Pokud potřebujete vertikálně navýšit kapacitu, postupujte podle kroků v další části. Jinak zavřete stránku **Vertikálně navýšit kapacitu** a přejděte k části [Nahrání a vytvoření vazby certifikátu SSL](#upload).
 
 ### <a name="scale-up-your-app-service-plan"></a>Vertikální navýšení kapacity plánu služby App Service
 
-Vyberte některou z úrovní **Basic**, **Standard** nebo **Premium**.
+Vyberte některou z placených úrovní (**B1**, **B2**, **B3** nebo kteroukoli úroveň v kategorii **Produkční**). Další možnosti se zobrazí po kliknutí na odkaz **Zobrazit další možnosti**.
 
-Klikněte na **Vybrat**.
+Klikněte na tlačítko **Použít**.
 
 ![Výběr cenové úrovně](./media/app-service-web-tutorial-custom-ssl/choose-pricing-tier.png)
 

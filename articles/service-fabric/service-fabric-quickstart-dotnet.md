@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace Service Fabric v .NET v Azure | Dokumentace Microsoftu
+title: Vytvoření aplikace Service Fabric v .NET v Azure | Microsoft Docs
 description: V tomto rychlém startu vytvoříte aplikaci .NET pro Azure s využitím ukázkové aplikace Service Fabric Reliable Services.
 services: service-fabric
 documentationcenter: .net
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 001488a8c7e22db595cd9f929bc0f3d631da0715
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e6e6464bd8c8174978eded1ed626ca32029b7fbc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207202"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643147"
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>Rychlý start: Vytvoření aplikace Service Fabric v .NET v Azure
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu škálovatelných a spolehlivých mikroslužeb a kontejnerů. 
@@ -175,7 +175,7 @@ Aplikace je teď připravená a přímo ze sady Visual Studio ji můžete nasadi
     ![Front-end aplikace](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Škálování aplikací a služeb v clusteru
-Služby Service Fabric je možné snadno škálovat napříč clusterem a vyřešit tak změny jejich zatížení. Služby se škálují změnou počtu instancí spuštěných v clusteru. Služby můžete škálovat několika způsoby – můžete použít skripty nebo příkazy v PowerShellu nebo Service Fabric CLI (sfctl). V tomto příkladu používáme Service Fabric Explorer.
+Služby Service Fabric je možné snadno škálovat napříč clusterem a vyřešit tak změny jejich zatížení. Služby se škálují změnou počtu instancí spuštěných v clusteru. Služby můžete škálovat několika způsoby – můžete použít skripty nebo příkazy v PowerShellu nebo Service Fabric CLI (sfctl). Tento příklad používá Service Fabric Explorer.
 
 Nástroj Service Fabric Explorer běží na všech clusterech Service Fabric a je přístupný z prohlížeče po přechodu na port HTTP pro správu clusteru (19080), například `https://zwin7fh14scd.westus.cloudapp.azure.com:19080`. 
 

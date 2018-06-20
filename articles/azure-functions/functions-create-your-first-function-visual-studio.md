@@ -1,6 +1,6 @@
 ---
-title: Vytvoření první funkce v Azure pomocí sady Visual Studio | Dokumentace Microsoftu
-description: Vytvořte a publikujte do Azure jednoduchou funkci aktivovanou protokolem HTTP pomocí Azure Functions Tools for Visual Studio.
+title: Vytvoření první funkce v Azure pomocí sady Visual Studio | Microsoft Docs
+description: Vytvořte v sadě Visual Studio funkci Azure Function aktivovanou protokolem HTTP a publikujte ji.
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -14,14 +14,15 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/13/2018
+ms.date: 05/22/2018
 ms.author: glenga
-ms.custom: mvc, devcenter
-ms.openlocfilehash: a1f0a022b4620b15e2d76a127ed48e5472e4a5bb
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.custom: mvc, devcenter, 23113853-34f2-4f
+ms.openlocfilehash: d815bf3fa4b63f12ac9f0d871e353e872a5aca25
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34699967"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Vytvoření první funkce pomocí sady Visual Studio
 
@@ -29,23 +30,17 @@ Služba Azure Functions umožňuje spuštění kódu v prostředí [bez serveru]
 
 V tomto článku se dozvíte, jak pomocí nástrojů sady Visual Studio 2017 pro službu Azure Functions místně vytvořit a otestovat funkci Hello World. Kód funkce potom publikujete do Azure. Tyto nástroje jsou dostupné jako součást sady funkcí Azure – vývoj v sadě Visual Studio 2017.
 
-![Kód služby Azure Functions v projektu sady Visual Studio](./media/functions-create-your-first-function-visual-studio/functions-vstools-intro.png)
-
 Toto téma obsahuje [video](#watch-the-video), které ilustruje stejný základní postup.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pro absolvování tohoto kurzu potřebujete:
 
-* Instalaci sady [Visual Studio 2017 verze 15.5](https://www.visualstudio.com/vs/) nebo novější včetně sady funkcí **Vývoj pro Azure**.
+* Nainstalujte [Visual Studio 2017](https://azure.microsoft.com/downloads/) a ujistěte se, že máte nainstalovanou i sadu funkcí **Azure Development**.
 
-    ![Instalace sady Visual Studio 2017 se sadou funkcí Vývoj pro Azure](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+* Přesvědčte se, že máte [nejnovější nástroje Azure Functions](functions-develop-vs.md#check-your-tools-version).
 
-    Pokud už máte sadu Visual Studio nainstalovanou, ujistěte se, že jste nainstalovali případné čekající aktualizace. 
-
-* Pokud jste nainstalovali sadu funkcí Vývoj pro Azure společně se sadou Visual Studio 2017 verze 15.4 nebo starší, možná bude také potřeba [aktualizovat nástroje Azure Functions](functions-develop-vs.md#check-your-tools-version). 
-    
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-function-app-project"></a>Vytvoření projektu aplikace funkcí
 
@@ -53,17 +48,15 @@ Pro absolvování tohoto kurzu potřebujete:
 
 Visual Studio vytvoří projekt a v něm třídu, která obsahuje často používaný kód pro zvolený typ funkce. Atribut **FunctionName** metody nastavuje název funkce. Atribut **HttpTrigger** určuje, že je funkce aktivována požadavkem HTTP. Často používaný kód odešle odpověď HTTP obsahující hodnotu z textu žádosti nebo řetězce dotazu. Použitím příslušných atributů pro metodu můžete přidat vstupní a výstupní vazbu funkce. Další informace najdete v části [Triggery a vazby](functions-dotnet-class-library.md#triggers-and-bindings) v [referenčních informacích pro vývojáře v jazyce C# v Azure Functions](functions-dotnet-class-library.md).
 
-![Soubor s kódem funkce](./media/functions-create-your-first-function-visual-studio/functions-code-page.png)
-
 Teď máte vytvořený projekt funkcí a funkci aktivovanou protokolem HTTP, takže ji můžete otestovat na místním počítači.
 
 ## <a name="test-the-function-locally"></a>Místní testování funkce
 
-Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na místním počítači pro vývoj. K instalaci těchto nástrojů budete vyzváni při prvním spuštění funkce ze sady Visual Studio.  
+Nástroje Azure Functions Core umožňují spouštět projekt Azure Functions na místním počítači pro vývoj. K instalaci těchto nástrojů budete vyzváni při prvním spuštění funkce ze sady Visual Studio.
 
 1. Pokud chcete funkci otestovat, stiskněte F5. Po výzvě přijměte požadavek ze sady Visual Studio na stažení a instalaci nástrojů Azure Functions Core (CLI). Může být také potřeba povolit výjimku brány firewall, aby nástroje mohly zpracovávat požadavky HTTP.
 
-2. Zkopírujte adresu URL vaší funkce z výstupu modulu runtime služby Azure Functions.  
+2. Zkopírujte adresu URL vaší funkce z výstupu modulu runtime služby Azure Functions.
 
     ![Místní modul runtime Azure](./media/functions-create-your-first-function-visual-studio/functions-vstools-f5.png)
 
@@ -89,7 +82,7 @@ Před publikováním projektu musíte mít v předplatném Azure aplikaci funkc�
 
         http://<functionappname>.azurewebsites.net/api/<functionname>?name=<yourname> 
 
-2. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Následuje ukázka odezvy na vzdálený požadavek GET vrácené funkcí v prohlížeči: 
+2. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Následuje ukázka odezvy na vzdálený požadavek GET vrácené funkcí v prohlížeči:
 
     ![Odezva funkce v prohlížeči](./media/functions-create-your-first-function-visual-studio/functions-test-remote-browser.png)
 
@@ -99,9 +92,8 @@ Před publikováním projektu musíte mít v předplatném Azure aplikaci funkc�
 
 ## <a name="next-steps"></a>Další kroky
 
-Pomocí sady Visual Studio jste vytvořili a publikovali aplikaci funkcí jazyka C# s jednoduchou funkcí aktivovanou protokolem HTTP. 
+Pomocí sady Visual Studio jste vytvořili a publikovali aplikaci funkcí jazyka C# s jednoduchou funkcí aktivovanou protokolem HTTP.
 
-+ Pokud chcete zjistit, jak nakonfigurovat projekt tak, aby podporoval další typy triggerů a vazeb, přečtěte si část [Konfigurace projektu pro místní vývoj](functions-develop-vs.md#configure-the-project-for-local-development) v tématu [Azure Functions Tools for Visual Studio](functions-develop-vs.md).
-+ Další informace o místním testování a ladění pomocí základních funkcí služby Azure Functions najdete v tématu [Místní kódování a testování služby Azure Functions](functions-run-local.md). 
-+ Další informace o vývoji funkcí jako knihoven tříd .NET najdete v tématu [Použití knihoven tříd .NET se službou Azure Functions](functions-dotnet-class-library.md). 
-
+* [Zjistěte, jak přidat vstupní a výstupní vazby, které se integrují s jinými službami.](functions-develop-vs.md#add-bindings)
+* [Získejte další informace o místním testování a ladění pomocí Azure Functions Core Tools.](functions-run-local.md#vs-debug)
+* [Získejte další informace o vývoji funkcí jako knihoven třídy .NET](functions-dotnet-class-library.md).

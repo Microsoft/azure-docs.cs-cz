@@ -12,14 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/20/2017
+ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9024036c5340e9afb2369feedde140d84e880265
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 035deabd04b8b838e0009f2cae96b0761733897f
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248237"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Kurz: Monitorování kontejnerů Windows na platformě Service Fabric pomocí Log Analytics
 
@@ -212,18 +213,14 @@ Kliknutím na jakýkoli z těchto panelů přejdete k dotazu Log Analytics, kter
 
 ## <a name="configure-oms-agent-to-pick-up-performance-counters"></a>Konfigurace agenta OMS ke sbírání čítačů výkonu
 
-Další výhodou používání agenta OMS je možnost změnit čítače výkonu, které chcete sbírat, přes uživatelské rozhraní OMS – nemusíte tak pokaždé konfigurovat agenta diagnostiky Azure ani provádět upgrade na základě šablony Resource Manageru. Provedete to tak, že kliknete na **Portál OMS** na cílové stránce vašeho řešení pro monitorování kontejnerů (nebo Service Fabric).
+Další výhodou používání agenta OMS je možnost změnit čítače výkonu, které chcete sbírat, přes uživatelské rozhraní OMS – nemusíte tak pokaždé konfigurovat agenta diagnostiky Azure ani provádět upgrade na základě šablony Resource Manageru. Provedete to tak, že kliknete na **Pracovní prostor OMS** na cílové stránce vašeho řešení pro monitorování kontejnerů (nebo Service Fabric).
 
-![Portál OMS](./media/service-fabric-tutorial-monitoring-wincontainers/oms-portal.png)
-
-Tím přejdete do svého pracovního prostoru na portálu OMS, kde můžete zobrazit svá řešení, vytvářet vlastní řídicí panely a také konfigurovat agenta OMS. 
-* Kliknutím na **ozubené kolečko** v pravém horním rohu obrazovky otevřete nabídku *Nastavení*.
+Tím přejdete do svého pracovního prostoru OMS, kde můžete zobrazit svá řešení, vytvářet vlastní řídicí panely a také konfigurovat agenta OMS. 
+* Klikněte na **Upřesnit nastavení** a otevřete tak nabídku Upřesnit nastavení.
 * Klikněte na **Připojené zdroje** > **Servery Windows** a ověřte, že máte *připojených 5 počítačů s Windows*.
-* Klikněte na **Data** > **Čítače výkonu Windows**, abyste mohli vyhledat a přidat nové čítače výkonu. Tady se zobrazí seznam doporučení z Log Analytics týkajících se čítačů výkonů, které můžete shromažďovat, a také možnost vyhledat jiné čítače. Kliknutím na **Přidat vybrané čítače výkonu** spustíte shromažďování navrhovaných metrik.
+* Klikněte na **Data** > **Čítače výkonu Windows**, abyste mohli vyhledat a přidat nové čítače výkonu. Tady se zobrazí seznam doporučení Log Analytics týkajících se čítačů výkonů, jejichž údaje můžete shromažďovat, a také možnost vyhledat jiné čítače. Ověřte, že se shromažďují informace z čítačů **Procesor(_Celkem)\%Čas procesoru** a **Paměť(*)\Dostupné MB**.
 
-    ![Čítače výkonu](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters.png)
-
-Vraťte se na web Azure Portal a po několika minutách **aktualizujte** své řešení pro monitorování kontejnerů. Měla by se zobrazit přicházející data o *výkonu počítačů*. Ta vám pomůžou porozumět využití vašich prostředků. Tyto metriky můžete využít také k přijímání patřičných rozhodnutí o škálování clusteru nebo k potvrzení, jestli cluster vyrovnává zatížení podle očekávání.
+Za několik minut **aktualizujte** řešení pro monitorování kontejnerů. Měla by se vám začít zobrazovat příchozí data o *výkonu počítačů*. Ta vám pomůžou porozumět využití vašich prostředků. Tyto metriky můžete využít také k přijímání patřičných rozhodnutí o škálování clusteru nebo k potvrzení, jestli cluster vyrovnává zatížení podle očekávání.
 
 *Poznámka: Abyste mohli využívat tyto metriky, ujistěte se, že máte správně nastavené filtry času.* 
 

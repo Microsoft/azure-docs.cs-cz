@@ -6,30 +6,31 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2018
+ms.date: 06/04/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f7722891af15111fd0151055c35bf24100ed79b1
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8a9b33469a439c9f99c80391bfeb1fb4040dbbc2
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34737591"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Příprava místních serverů VMware na zotavení po havárii do Azure
 
-V tomto kurzu se dozvíte, jak připravit místní infrastrukturu VMware v případě, že chcete replikovat virtuální počítače VMware do Azure. V tomto kurzu se naučíte:
+[Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR) tím, že zajišťuje provoz a dostupnost obchodních aplikací během plánovaných i neplánovaných výpadků. Site Recovery spravuje a orchestruje zotavení po havárii místních počítačů a virtuálních počítačů Azure, včetně replikace, převzetí služeb při selhání a zotavení.
+
+- Toto je druhý kurz řady, která ukazuje, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače VMware. V prvním kurzu jste [nastavili komponenty Azure](tutorial-prepare-azure.md) potřebné pro zotavení po havárii VMware.
+- Tyto kurzy demonstrují ten nejjednodušší způsob nasazení určitého scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. 
+
+V tomto článku si ukážeme, jak připravit místní prostředí VMware, pokud chcete replikovat virtuální počítače VMware v Azure pomocí Azure Site Recovery. Získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Příprava účtu na serveru vCenter nebo hostiteli vSphere ESXi pro automatizaci zjišťování virtuálních počítačů
 > * Příprava účtu pro automatickou instalaci služby Mobility na virtuální počítače VMware
-> * Kontrola požadavků na servery VMware
-> * Kontrola požadavků na virtuální počítače VMware
+> * Kontrola požadavků na servery a virtuální počítače VMware
+> * Příprava připojení k virtuálním počítačům Azure po převzetí služeb při selhání
 
-V této sérii kurzů ukazujeme, jak pomocí služby Azure Site Recovery replikovat jeden virtuální počítač. 
-
-Tento kurz je druhou částí série. Ujistěte se, že jste [nastavili komponenty Azure](tutorial-prepare-azure.md), jak je popsáno v předchozím kurzu.
-
-Pokud replikujete více virtuálních počítačů, stáhněte si [nástroj Plánovač nasazení](https://aka.ms/asr-deployment-planner) pro replikaci VMware. [Další informace](site-recovery-deployment-planner.md).
 
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>Příprava účtu pro automatické zjišťování
@@ -54,12 +55,17 @@ Vytvořte účet následujícím způsobem:
 
 ## <a name="prepare-an-account-for-mobility-service-installation"></a>Příprava účtu pro instalaci služby Mobility
 
-Na virtuálním počítači, který chcete replikovat, musí být nainstalovaná služba Mobility. Site Recovery tuto službu nainstaluje automaticky, když u virtuálního počítače povolíte replikaci. U automatické instalace musíte připravit účet, který služba Site Recovery použije k získání přístupu k virtuálnímu počítači. Tento účet zadáte při nastavování zotavení po havárii v konzole Azure.
+Na počítače, které chcete replikovat, bude nutné nainstalovat službu Mobility. Pokud povolíte replikaci počítače, může Site Recovery provést nabízenou instalaci této služby, nebo ji můžete nainstalovat ručně nebo pomocí instalačních nástrojů.
 
-1. Připravte účet domény nebo místní účet s oprávněními k instalaci na virtuální počítač.
-2. Pokud chcete instalaci provést na virtuální počítače s Windows a nepoužíváte účet domény, zakažte na místním počítači vzdálené řízení přístupu uživatele.
-   - V registru pod položku **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** přidejte položku DWORD **LocalAccountTokenFilterPolicy** s hodnotou 1.
-3. Pokud chcete instalaci provést na virtuální počítače s Linuxem, připravte na zdrojovém serveru s Linuxem kořenový účet.
+- V tomto kurzu provedeme instalaci služby Mobility pomocí nabízené instalace.
+- U nabízené instalace musíte připravit účet, který služba Site Recovery může použít k získání přístupu k virtuálnímu počítači. Tento účet zadáte při nastavování zotavení po havárii v konzole Azure.
+
+Připravte účet následujícím způsobem:
+
+Připravte účet domény nebo místní účet s oprávněními k instalaci na virtuální počítač.
+
+- **Virtuální počítače s Windows**: Pokud chcete instalaci provést na virtuální počítače s Windows a nepoužíváte účet domény, zakažte na místním počítači vzdálené řízení přístupu uživatele. Provedete to tak, že v registru **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** přidáte položku DWORD **LocalAccountTokenFilterPolicy** s hodnotou 1.
+- **Virtuální počítače s Linuxem**: Pokud chcete instalaci provést na virtuální počítače s Linuxem, připravte na zdrojovém serveru s Linuxem kořenový účet.
 
 
 ## <a name="check-vmware-requirements"></a>Kontrola požadavků na VMware
@@ -67,7 +73,7 @@ Na virtuálním počítači, který chcete replikovat, musí být nainstalovaná
 Ujistěte se, že servery a virtuální počítače VMware splňují požadavky.
 
 1. [Ověřte](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers) požadavky na servery VMware.
-2. V případě Linuxu [zkontrolujte](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) požadavky na systém souborů a úložiště. 
+2. V případě virtuálních počítačů s Linuxem [zkontrolujte](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage) požadavky na systém souborů a úložiště. 
 3. Zkontrolujte podporu místní [sítě](vmware-physical-azure-support-matrix.md#network) a [úložiště](vmware-physical-azure-support-matrix.md#storage). 
 4. Zkontrolujte podporované [sítě Azure](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover), [úložiště](vmware-physical-azure-support-matrix.md#azure-storage) a [výpočetní prostředí](vmware-physical-azure-support-matrix.md#azure-compute) po převzetí služeb při selhání.
 5. Místní virtuální počítače, které replikujete do Azure, musí splňovat [Požadavky na virtuální počítače Azure](vmware-physical-azure-support-matrix.md#azure-vm-requirements).
@@ -75,21 +81,31 @@ Ujistěte se, že servery a virtuální počítače VMware splňují požadavky.
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Příprava připojení k virtuálním počítačům Azure po převzetí služeb při selhání
 
-Ve scénáři převzetí služeb při selhání se možná budete chtít připojit ke svým replikovaným virtuálním počítačům v Azure ze své místní sítě.
+Po převzetí služeb při selhání se můžete k virtuálním počítačům Azure připojit z vaší místní sítě.
 
 Pokud se po převzetí služeb při selhání chcete připojit k virtuálním počítačům s Windows pomocí protokolu RDP, postupujte následovně:
 
-1. Pokud chcete mít přístup přes internet, před převzetím služeb při selhání povolte na místním virtuálním počítači protokol RDP. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je povolený protokol RDP pro všechny profily.
-2. Pokud chcete mít přístup přes síť VPN typu Site-to-Site, povolte na místním počítači protokol RDP. Protokol RDP musí být povolený v části **Brána Windows Firewall** -> **Povolené aplikace a funkce** pro **doménovou a privátní** síť.
-   Zkontrolujte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135). Při aktivaci převzetí služeb při selhání by na virtuálním počítači neměly být žádné čekající aktualizace Windows. Jinak se nebudete moci k virtuálnímu počítači přihlásit, dokud se aktualizace nedokončí.
-3. Po převzetí služeb při selhání na virtuálním počítači Azure s Windows zkontrolujte **diagnostiku spuštění**, kde se zobrazí snímek obrazovky virtuálního počítače. Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si tyto [tipy pro řešení potíží](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
+- **Přístup k internetu**. Před převzetím služeb při selhání povolte na místním virtuálním počítači protokol RDP. Ujistěte se, že jsou přidaná pravidla TCP a UDP pro **Veřejný** profil a že v části **Brána Windows Firewall** > **Povolené aplikace** je pro všechny profily povolený protokol RDP.
+- **Přístup k S2S (Site-to-site) VPN**:
+    - Před převzetím služeb při selhání povolte na místním počítači protokol RDP.
+    - Protokol RDP musí být povolený v části **Brána Windows Firewall** -> **Povolené aplikace a funkce** pro **doménovou a privátní** síť.
+    - Zkontrolujte, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135).
+- Při aktivaci převzetí služeb při selhání by na virtuálním počítači neměly být žádné čekající aktualizace Windows. Jinak se nebudete moci k virtuálnímu počítači přihlásit, dokud se aktualizace nedokončí.
+- Po převzetí služeb při selhání na virtuálním počítači Azure s Windows zkontrolujte **diagnostiku spuštění**, kde se zobrazí snímek obrazovky virtuálního počítače. Pokud se nemůžete připojit, zkontrolujte, že je virtuální počítač spuštěný, a přečtěte si tyto [tipy pro řešení potíží](http://social.technet.microsoft.com/wiki/contents/articles/31666.troubleshooting-remote-desktop-connection-after-failover-using-asr.aspx).
 
 Pokud se po převzetí služeb při selhání chcete připojit k virtuálním počítačům s Linuxem pomocí protokolu SSH, postupujte následovně:
 
-1. Před provedením převzetí služeb při selhání zkontrolujte, že je na místním počítači nastavené automatické spuštění služby Secure Shell při spuštění systému. Zkontrolujte, že pravidla brány firewall umožňují připojení SSH.
+- Před provedením převzetí služeb při selhání zkontrolujte, že je na místním počítači nastavené automatické spuštění služby Secure Shell při spuštění systému.
+- Zkontrolujte, že pravidla brány firewall umožňují připojení SSH.
+- Po převzetí služeb při selhání na virtuálním počítači Azure povolte příchozí připojení k portu SSH pro pravidla skupiny na virtuálním počítači, u kterého proběhlo převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený.
+- [Přidejte veřejnou IP adresu](site-recovery-monitoring-and-troubleshooting.md) pro tento virtuální počítač.
+- Můžete zkontrolovat **diagnostiku spuštění**, kde se zobrazí snímek obrazovky virtuálního počítače.
 
-2. Po převzetí služeb při selhání na virtuálním počítači Azure povolte příchozí připojení k portu SSH pro pravidla skupiny na virtuálním počítači, u kterého proběhlo převzetí služeb při selhání, a pro podsíť Azure, ke které je připojený.
-   [Přidejte veřejnou IP adresu](site-recovery-monitoring-and-troubleshooting.md) pro tento virtuální počítač. Můžete zkontrolovat **diagnostiku spuštění**, kde se zobrazí snímek obrazovky virtuálního počítače.
+## <a name="useful-links"></a>Užitečné odkazy
+
+Pokud replikujete více virtuálních počítačů, měli byste nejdřív naplánovat kapacitu a nasazení. [Další informace](site-recovery-deployment-planner.md).
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

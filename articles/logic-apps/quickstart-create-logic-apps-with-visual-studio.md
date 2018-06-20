@@ -1,29 +1,26 @@
 ---
-title: Automatizace úloh a procesů pomocí sady Visual Studio a Azure Logic Apps | Microsoft Docs
-description: V tomto rychlém startu se dozvíte, jak pomocí Azure Logic Apps v sadě Visual Studio vytvářet pracovní postupy automatizující úlohy a procesy.
-author: ecfan
-manager: SyntaxC4
-editor: ''
+title: Vytvoření aplikací logiky pro automatizaci pracovních postupů pomocí sady Visual Studio – Azure Logic Apps | Microsoft Docs
+description: Rychlý start pro automatizaci úloh, procesů a pracovních postupů pomocí Azure Logic Apps v sadě Visual Studio
 services: logic-apps
-documentationcenter: ''
-ms.assetid: ''
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.date: 03/15/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/15/2018
-ms.author: estfan; LADocs
-ms.openlocfilehash: 02e19de97654d751dc0cd557791a61a863a9a4e0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: a35c46bd67a157416844c4054b75f993304298b4
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300748"
 ---
-# <a name="quickstart-automate-tasks-and-processes-with-azure-logic-apps---visual-studio"></a>Rychlý start: Automatizace úloh a procesů pomocí Azure Logic Apps – Visual Studio
+# <a name="quickstart-create-and-automate-tasks-processes-and-workflows-with-azure-logic-apps---visual-studio"></a>Rychlý start: Vytvoření a automatizace úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio
 
-Díky [Azure Logic Apps](../logic-apps/logic-apps-overview.md) můžete vytvářet pracovní postupy automatizující úlohy a procesy pro integraci aplikací, dat, systémů a služeb napříč podniky a organizacemi. Tento rychlý start ukazuje, jak můžete navrhovat a sestavovat tyto pracovní postupy vytvářením aplikací logiky v sadě Visual Studio a nasazováním těchto aplikací do <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> v cloudu. A přestože můžete tyto úlohy provádět na webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sada Visual Studio umožňuje přidávat aplikace logiky do správy zdrojového kódu, publikovat různé verze a vytvářet šablony Azure Resource Manageru pro různá prostředí nasazení. 
+Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a sady Visual Studio můžete vytvářet pracovní postupy automatizující úlohy a procesy pro integraci aplikací, dat, systémů a služeb napříč podniky a organizacemi. Tento rychlý start ukazuje, jak můžete navrhovat a sestavovat tyto pracovní postupy vytvářením aplikací logiky v sadě Visual Studio a nasazováním těchto aplikací do <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> v cloudu. A přestože můžete tyto úlohy provádět na webu <a href="https://portal.azure.com" target="_blank">Azure Portal</a>, sada Visual Studio umožňuje přidávat aplikace logiky do správy zdrojového kódu, publikovat různé verze a vytvářet šablony Azure Resource Manageru pro různá prostředí nasazení. 
 
 Pokud s Azure Logic Apps teprve začínáte a zajímají vás pouze základní koncepty, vyzkoušejte [rychlý start k vytvoření aplikace logiky na webu Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md). Návrhář aplikace logiky na webu Azure Portal i v sadě Visual Studio funguje podobně. 
 
@@ -187,4 +184,5 @@ Pokud už je nepotřebujete, odstraňte skupinu prostředků, která obsahuje va
 V tomto článku jste pomocí sady Visual Studio sestavili, nasadili a spustili aplikaci logiky. Další informace o správě a provádění pokročilého nasazení aplikací logiky pomocí sady Visual Studio najdete v těchto článcích:
 
 > [!div class="nextstepaction"]
-> [Správa aplikací logiky s využitím sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
+> * [Správa aplikací logiky s využitím sady Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md)
+> * [Vytvoření šablon nasazení pro aplikace logiky pomocí sady Visual Studio](../logic-apps/logic-apps-create-deploy-template.md)

@@ -10,31 +10,28 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/09/2018
+ms.date: 05/30/2018
 ms.author: juliako
-ms.openlocfilehash: eefe59da69eb60f2ac9e266389fa7f68e6139215
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0216a95a5209f5545b34e446904b3215950c6fbc
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362191"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638105"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-apis"></a>Kurz: Nahrávání, kódování a streamování videí pomocí rozhraní API
 
-V tomto kurzu se dozvíte, jak nahrávat, kódovat a streamovat videosoubory pomocí služby Azure Media Services. Svůj obsah můžete streamovat i ve formátech Apple, jako je HLS, MPEG DASH nebo CMAF, takže půjde přehrávat v nejrůznějších přehrávačích a zařízeních. Video je před streamováním potřeba odpovídajícím způsobem zašifrovat a zabalit.
-
-Tento kurz vás provede kroky nahrání videa, ale můžete také zakódovat obsah, který přes adresu URL protokolu HTTPS zpřístupníte ve svém účtu Media Services.
+Služba Media Services umožňuje kódování souborů médií do formátů, které se dají přehrávat v nejrůznějších prohlížečích a zařízeních. Například můžete chtít svůj obsah streamovat ve formátu Apple HLS nebo MPEG DASH. Před streamováním je vhodné soubor digitálního média ve vysoké kvalitě zakódovat. Pokyny ke kódování najdete v tématu [Principy kódování](encoding-concept.md). V tomto kurzu se nahraje místní soubor videa a nahraný soubor se zakóduje. Můžete také zakódovat obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. Další informace najdete v článku o [vytvoření vstupu úlohy z adresy URL protokolu HTTP(S)](job-input-from-http-how-to.md).
 
 ![Přehrávání videa](./media/stream-files-tutorial-with-api/final-video.png)
 
 V tomto kurzu získáte informace o následujících postupech:    
 
 > [!div class="checklist"]
-> * Spuštění služby Azure Cloud Shell
 > * Vytvoření účtu Media Services
 > * Přístup k rozhraní API služby Media Services
 > * Konfigurace ukázkové aplikace
-> * Podrobné prozkoumání kódu
+> * Kontrola kódu, který provádí nahrávání, kódování a streamování
 > * Spuštění aplikace
 > * Testování adresy URL pro streamování
 > * Vyčištění prostředků
@@ -53,19 +50,31 @@ Pomocí následujícího příkazu naklonujte do svého počítače úložiště
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
 
+Ukázka se nachází ve složce [UploadEncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/UploadEncodeAndStreamFiles).
+
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
-## <a name="examine-the-code"></a>Kontrola kódu
+## <a name="examine-the-code-that-uploads-encodes-and-streams"></a>Kontrola kódu, který provádí nahrávání, kódování a streamování
 
 Tato část popisuje funkce definované v souboru [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs) projektu *UploadEncodeAndStreamFiles*.
 
+Tato ukázka provede následující akce:
+
+1. Vytvoří novou transformaci (nejprve zkontroluje, jestli zadaná transformace existuje). 
+2. Vytvoří výstupní prostředek, který se použije jako výstup úlohy kódování.
+3. Vytvoří vstupní prostředek a nahraje do něj zadaný místní soubor videa. Prostředek se použije jako vstup úlohy. 
+4. Pomocí vytvořeného vstupu a výstupu úlohu kódování odešle.
+5. Zkontroluje stav úlohy.
+6. Vytvoří streamovací lokátor (StreamingLocator).
+7. Vytvoří adresy URL pro streamování.
+
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>Začínáme s rozhraním API služby Media Services se sadou .NET SDK
 
-Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, musíte vytvořit objekt **AzureMediaServicesClient**. K vytvoření tohoto objektu, musíte zadat přihlašovací údaje, aby se klient mohl připojit k Azure pomocí Azure AD. Nejprve musíte získat token a potom z navráceného objektu vytvořit objekt **ClientCredential**. K získání tokenu slouží objekt **ArmClientCredential** v kódu, který jste naklonovali na začátku článku.  
+Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, musíte vytvořit objekt **AzureMediaServicesClient**. K vytvoření tohoto objektu, musíte zadat přihlašovací údaje, aby se klient mohl připojit k Azure pomocí Azure AD. V kódu, který jste naklonovali na začátku článku, vytvoří funkce **GetCredentialsAsync** objekt ServiceClientCredentials na základě pověření zadaných v místním konfiguračním souboru. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#CreateMediaServicesClient)]
 
@@ -96,7 +105,7 @@ Když kódujete nebo zpracováváte obsah v Media Services, kódování se obvyk
 
 Když vytváříte novou instanci [Transformace](https://docs.microsoft.com/rest/api/media/transforms), musíte určit, co má být jejím výstupem. Objekt **TransformOutput** v níže uvedeném kódu je povinný parametr. Každý objekt **TransformOutput** obsahuje **Předvolbu**. **Předvolba** popisuje podrobné pokyny operací zpracování videa nebo zvuku, které se používají ke generování požadovaného objektu **TransformOutput**. Ukázka popsaná v tomto článku používá předdefinovanou předvolbu s názvem **AdaptiveStreaming**. Tato předvolba zakóduje vstupní video na základě vstupního rozlišení a přenosové rychlosti do automaticky generované dvojice přenosová rychlost / rozlišení (tzv. bitrate ladder) a vytvoří soubory ISO MP4 s videem H.264 a zvukem AAC odpovídající jednotlivým dvojicím přenosová rychlost / rozlišení. Informace o této předvolbě najdete v tématu o [automatickém generování dvojic bitrate ladder](autogen-bitrate-ladder.md).
 
-Můžete použít předdefinovanou předvolbu EncoderNamedPreset, nebo si vytvořit vlastní. 
+Můžete použít předdefinovanou předvolbu EncoderNamedPreset, nebo si vytvořit vlastní. Další informace najdete v tématu o [postupu přizpůsobení předvoleb kodéru](customize-encoder-presets-how-to.md).
 
 Než začnete vytvářet [transformaci](https://docs.microsoft.com/rest/api/media/transforms), ověřte si nejdřív pomocí metody **Get**, jestli už neexistuje (viz kód níže).  Pokud entita v Media Services v3 neexistuje, metoda **Get** vrátí hodnotu **null** (v názvu se nerozlišují malá a velká písmena).
 
@@ -112,7 +121,7 @@ V tomto příkladu je vstupní video nahrané z místního počítače. Postup z
 
 ### <a name="wait-for-the-job-to-complete"></a>Čekání na dokončení úlohy
 
-Následující ukázka kódu je příkladem toho, jak se ve službě dotazovat na stav [úlohy](https://docs.microsoft.com/rest/api/media/jobs). Dotazování nepatří mezi doporučené postupy, jak sestavovat aplikace, protože může mít prodlevu. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid.
+Úloze chvíli trvá, než se dokončí, a když k tomu dojde, budete na to pravděpodobně chtít upozornit. Následující ukázka kódu je příkladem toho, jak se ve službě dotazovat na stav [úlohy](https://docs.microsoft.com/rest/api/media/jobs). Dotazování nepatří mezi doporučené postupy, jak sestavovat aplikace, protože může mít prodlevu. Pokud se dotazování u některého účtu používá nadměrně, je možné ho omezit. Místo dotazování by vývojáři měli používat službu Event Grid.
 
 Služba Event Grid je navržená pro vysokou dostupnost, konzistentní výkon a dynamické škálování. Díky službě Event Grid můžou vaše aplikace naslouchat událostem a reagovat na ně, ať už pocházejí z kterékoli služby Azure. Události můžou pocházet i z vlastních zdrojů. Jednoduché, reaktivní zpracování událostí založené na protokolu HTTP pomáhá sestavovat efektivní řešení prostřednictvím inteligentního filtrování a směrování událostí.  Další informace najdete v článku [Směrování událostí na vlastní webový koncový bod](job-state-events-cli-how-to.md).
 
@@ -126,7 +135,7 @@ Po dokončení kódování následuje zpřístupnění videa ve výstupním pros
 
 Proces vytváření **streamovacího lokátoru** označujeme jako publikování. Pokud nenakonfigurujete volitelný počáteční a koncový čas, je **streamovací lokátor** ve výchozím nastavení platný hned po zavolání rozhraní API a jeho platnost zrušíte až jeho odstraněním. 
 
-Když vytváříte [streamovací lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásad streamování (**StreamingPolicyName**). V tomto příkladu budete streamovat čistý nebo také nešifrovaný obsah, takže bude možné použít předdefinovanou zásadu čistého streamování **PredefinedStreamingPolicy.ClearStreamingOnly**.
+Když vytváříte [streamovací lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators), je potřeba zadat požadovaný název zásad streamování (**StreamingPolicyName**). V tomto příkladu budete streamovat čistý nebo také nešifrovaný obsah, takže použijete předdefinovanou zásadu čistého streamování **PredefinedStreamingPolicy.ClearStreamingOnly**.
 
 > [!IMPORTANT]
 > Pokud chcete definovat vlastní [zásady streamování](https://docs.microsoft.com/rest/api/media/streamingpolicies), doporučujeme navrhnout pro účet služby Media Service omezený počet takovýchto zásad a používat je opakovaně pro streamovací lokátory, kdykoli potřebujete stejné protokoly a možnosti šifrování. Počet záznamů StreamingPolicy je pro účty služby Media Service omezený kvótou. Neměli byste vytvářet samostatnou zásadu streamování pro každý streamovací lokátor.

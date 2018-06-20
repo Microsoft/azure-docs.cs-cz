@@ -1,5 +1,5 @@
 ---
-title: Shromažďování dat z místních počítačů s Windows pomocí Azure Log Analytics | Dokumentace Microsoftu
+title: Shromažďování dat z místních počítačů s Windows pomocí Azure Log Analytics | Microsoft Docs
 description: Zjistěte, jak nasadit agenta Log Analytics pro Windows na počítačích mimo Azure a povolit shromažďování dat pomocí Log Analytics.
 services: log-analytics
 documentationcenter: log-analytics
@@ -15,16 +15,17 @@ ms.topic: quickstart
 ms.date: 04/02/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: de94735676934af21dc08a0953987729fba756aa
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ec85f2c473fa0c4ac4d69599a24b878278309577
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637224"
 ---
 # <a name="collect-data-from-windows-computers-hosted-in-your-environment"></a>Shromažďování dat z počítačů s Windows hostovaných ve vašem prostředí
 [Azure Log Analytics](log-analytics-overview.md) může shromažďovat data přímo z fyzických nebo virtuálních počítačů s Windows a dalších prostředků ve vašem prostředí do jednoho úložiště pro účely podrobných analýz a korelace.  Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Windows a shromažďovat z něj data.  Informace týkající se virtuálních počítačů Azure s Windows najdete v tématu [Shromažďování dat o virtuálních počítačích Azure](log-analytics-quick-collect-azurevm.md).  
 
-V [požadavcích na operační systém Windows](log-analytics-concept-hybrid.md#prerequisites) najdete síťové a systémové požadavky pro nasazení agenta Windows.
+Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Windows](log-analytics-concept-hybrid.md#supported-windows-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-concept-hybrid.md#network-firewall-requirements).
  
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

@@ -10,11 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 0198614f34b5e4ad31d9cf19f6799913dc71e21f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7248e2477a217c769bd232b87a8e510fcfd59790
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34798436"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Zahájení monitorování webové aplikace v Javě
 
@@ -27,12 +28,14 @@ Tento rychlý start vás provede přidáním sady Application Insights SDK do ex
 K provedení kroků v tomto kurzu Rychlý start je potřeba:
 
 - Instalace JRE 1.7 nebo 1.8
-- Nainstalujte si [integrované vývojové prostředí Eclipse pro vývojáře na platformě Java EE](http://www.eclipse.org/downloads/). Tento rychlý start používá Eclipse Oxygen (4.7).
+- Nainstalujte si [integrované vývojové prostředí Eclipse pro vývojáře na platformě Java EE](http://www.eclipse.org/downloads/). Tento kurz Rychlý start používá Eclipse Oxygen (4.7).
 - Budete potřebovat předplatné Azure a dynamický webový projekt v Javě.
  
 Pokud dynamický webový projekt v Javě nemáte, můžete si ho vytvořit pomocí [rychlého startu pro vytvoření webové aplikace v Javě](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+
+Pokud dáváte přednost rozhraní Spring, zkuste [nakonfigurovat aplikaci Spring Boot Initializer, abyste mohli použít příručku ke službě Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights).
 
 ## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
 

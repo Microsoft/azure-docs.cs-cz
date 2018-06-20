@@ -1,98 +1,96 @@
 ---
-title: Úvod do Azure Cosmos DB Cassandra rozhraní API | Microsoft Docs
-description: Zjistěte, jak používat Azure Cosmos databázi do stávajících aplikací "navýšení a shift" a vytvářet nové aplikace pomocí rozhraní API Cassandra pomocí Cassandra ovladače a CQL jste již obeznámeni s.
+title: Úvod do rozhraní API Cassandra v Azure Cosmos DB | Microsoft Docs
+description: Zjistěte, jak se dá používat Azure Cosmos DB k rozšíření a posunutí stávajících aplikací dál a k vytváření nových aplikací s pomocí rozhraní API Cassandra s použitím ovladačů Cassandra a CQL, které už znáte.
 services: cosmos-db
 author: govindk
-manager: ''
-documentationcenter: ''
-ms.assetid: 73839abf-5af5-4ae0-a852-0f4159bc00a0
+manager: kfile
 ms.service: cosmos-db
-ms.workload: data-services
-ms.tgt_pltfrm: na
+ms.component: cosmosdb-cassandra
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 65ab01031ed0fe554ef162f0115bdda39fd1c80b
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
-ms.translationtype: MT
+ms.openlocfilehash: edc8ba7f8dd52a5facbfeb930a8660b082d72877
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34795267"
 ---
-# <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Úvod do Azure Cosmos DB: Apache Cassandra rozhraní API
+# <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Úvod do Azure Cosmos DB: rozhraní API pro Apache Cassandra
 
-Azure Cosmos DB poskytuje rozhraní API Cassandra (preview) pro aplikace, které jsou napsané pro Apache Cassandra, třeba možnosti premium jako:
+Azure Cosmos DB poskytuje rozhraní API Cassandra (preview) pro aplikace napsané pro Apache Cassandra, které vyžadují prémiové funkce, jako například:
 
-* [Velikost škálovatelné úložiště a propustnost](partition-data.md).
-* [Globální distribuční klíč](distribute-data-globally.md)
+* [Velikost škálovatelného úložiště a propustnost](partition-data.md)
+* [Globální distribuce na klíč](distribute-data-globally.md)
 * Latence v řádu milisekund na 99. percentilu.
-* [Pět dobře definované úrovně konzistence](consistency-levels.md)
-* [Automatické indexování dat](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) bez nutnosti zabývat Správa schématu a index. 
-* Zaručit vysoká dostupnost, všechny zálohovány pomocí [špičkový SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)
+* [Pět jasně definovaných voleb konzistence](consistency-levels.md)
+* [Automatické indexování dat](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) bez nutnosti zapojení správy schémat a indexů 
+* Garantovaná vysoká dostupnost, vše je podloženo [špičkovými smlouvami SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)
 
-## <a name="what-is-the-azure-cosmos-db-apache-cassandra-api"></a>Co je Azure Cosmos DB Apache Cassandra API?
+## <a name="what-is-the-azure-cosmos-db-apache-cassandra-api"></a>Co je rozhraní API pro Apache Cassandra v Azure Cosmos DB?
 
-Azure Cosmos DB lze použít jako úložiště dat pro aplikace napsané pro [Apache Cassandra](https://cassandra.apache.org/), pomocí rozhraní API Cassandra Apache. To znamená, že pomocí stávající [Apache licenci ovladače, které jsou kompatibilní s CQLv4](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver), vaše aplikace napsané pro Cassandra mohou komunikovat s Azure Cosmos DB Cassandra API. V mnoha případech můžete přepínat pomocí Apache Cassandra k používání Azure Cosmos DB Apache Cassandra rozhraní API, jednoduše změnou připojovací řetězec. Pomocí této funkce lze snadno vytvářet a spouštět aplikace rozhraní API Cassandra databáze ve službě Azure cloud s globální distribuční databázi Cosmos Azure a [komplexní SLA špičkový](https://azure.microsoft.com/support/legal/sla/cosmos-db), nadále používat známé dovedností a nástrojů pro Cassandra API.
+Azure Cosmos DB je možné použít jako úložiště dat pro aplikace napsané pro [Apache Cassandra](https://cassandra.apache.org/) s použitím rozhraní API pro Apache Cassandra. To znamená, že s použitím stávajících [ovladačů licencovaných pro Apache, které jsou kompatibilní s CQLv4](https://cassandra.apache.org/doc/latest/getting_started/drivers.html?highlight=driver), teď může vaše aplikace napsaná pro databázi Cassandra komunikovat s rozhraním API Cassandra v Azure Cosmos DB. V mnoha případech se dá přepínat mezi použitím Apache Cassandra a použitím rozhraní API Cassandra v Azure Cosmos DB jednoduše změnou připojovacího řetězce. Pomocí této funkce je možné jednoduše vytvářet a spouštět databázové aplikace rozhraní API Cassandra v cloudu Azure cloud s globální distribucí v Azure Cosmos DB a [komplexní špičkovou smlouvou SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) a současně dál používat známé dovednosti a nástroje pro rozhraní API Cassandra.
 
-![Rozhraní Cassandra API pro Azure Cosmos DB](./media/cassandra-introduction/cosmosdb-cassandra.png)
+![API Cassandra v Azure Cosmos DB](./media/cassandra-introduction/cosmosdb-cassandra.png)
 
-Rozhraní API Cassandra umožňuje pracovat s daty uloženými v databázi Cosmos Azure pomocí nástrojů Query Language Cassandra na základě (např. CQLSH) a ovladače klienta Cassandra jste již obeznámeni s. Další informace o ho v tomto videu Microsoft Mechanics s Kirill Gavrylyuk hlavní manažer inženýrství.
+Rozhraní API Cassandra umožňuje pracovat s daty uloženými v Azure Cosmos DB pomocí nástrojů založených na jazyku Cassandra Query Language (např. CQLSH) a ovladačů klienta Cassandra, které už znáte. Další informace získáte v tomto videu Microsoft Mechanics s hlavním manažerem pro engineering Kirillem Gavrylyukem.
 
 > [!VIDEO https://www.youtube.com/embed/1Sf4McGN1AQ]
 >
 
-## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Jaké jsou výhody používání Apache Cassandra rozhraní API pro Azure Cosmos DB?
+## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Jaké jsou výhody používání rozhraní rozhraní API pro Apache Cassandra pro Azure Cosmos DB?
 
-**Žádná operace správy**: jako skutečného plně spravované služby, Azure Cosmos DB zajistí, že správci Cassandra rozhraní API se starat o správu a monitorování řadu nastavení napříč operačního systému, JVM a yaml souborů a jejich vztahu. Azure Cosmos DB poskytuje sledování propustnosti, latenci, úložiště a dostupnosti a konfigurovat výstrahy. 
+**Žádná správa provozu**: Jako skutečně plně spravovaná služba zajišťuje Azure Cosmos DB, že se správci rozhraní API Cassandra nemusí starat o správu a monitorování celé řady nastavení napříč operačním systémem, JVM a soubory yaml a jejich vzájemné fungování. Azure Cosmos DB sleduje propustnost, latenci, úložiště a dostupnost a konfigurovatelná upozornění. 
 
-**Správa výkonu**: Azure Cosmos DB poskytuje SLA zálohovaný s nízkou latencí čte a zapisuje pro 99th percentil. Uživatelé se nemusíte starat o velké množství provozní režie poskytují dobrý číst a zapisovat SLA. Obvykle patří plánování způsobem vzniknou, Správa značek odstraněných položek, nastavení filtrů Standard a pomalou repliky. Azure Cosmos DB trvá ji okamžitě bez obav správy tyto problémy a vám umožní soustředit na výsledek aplikace.
+**Správa výkonu**: Azure Cosmos DB garantuje spolehlivost pro čtení a zápis s nízkou latencí na základě smlouvy SLA na úrovni 99. percentilu. Uživatelé můžou zajistit dobrou úroveň čtení a zápisu podloženou smlouvami SLA, aniž by se museli starat o značnou část provozní režie. Obvykle sem patří plánování komprimace, správa značek odstraněných položek, nastavení Bloomových filtrů a pomalé repliky. S Azure Cosmos DB se nemusíte starat o správu těchto problémů a můžete se soustředit na výsledky aplikací.
 
-**Automatické indexování**: Azure Cosmos DB automaticky indexuje všechny sloupce tabulky v databázi Cassandra rozhraní API. Azure Cosmos DB nevyžaduje vytváření sekundárních indexů pro urychlení dotazů. Nabízí nízkou latenci pro čtení a zápisu dochází přitom automatické indexování konzistentní. 
+**Automatické indexování**: Azure Cosmos DB automaticky indexuje všechny sloupce tabulky v databázi rozhraní API Cassandra. Azure Cosmos DB nevyžaduje vytváření sekundárních indexů pro urychlení dotazů. Nabízí nízkou latenci pro čtení a zápis a současně provádění automatického konzistentního indexování. 
 
-**Možnost využívat stávající kód a nástroje**: Azure Cosmos DB poskytuje přenosu protokolu úrovně kompatibility s existující sady SDK a nástroje. Tato kompatibilita zajišťuje, můžete použít stávající kód s Cassandra rozhraní API Cosmos Azure DB s trivial změny.
+**Možnost využívat stávající kód a nástroje**: Azure Cosmos DB poskytuje kompatibilitu na úrovni přenosového protokolu se stávajícími sadami SDK a nástroji. Tato kompatibilita zajišťuje, že můžete použít stávající základ kódu s rozhraním API Cassandra v Azure Cosmos DB s nepatrnými změnami.
 
-**Propustnost a úložiště pružnost**: Platforma Azure Cosmos poskytuje pružnost zaručenou propustnost v oblastech prostřednictvím jednoduchého portálu, prostředí PowerShell nebo rozhraní příkazového řádku operace. Je možné Elasticky škálovat Azure Cosmos DB tabulky s předvídatelným výkonem bezproblémově růstem vaší aplikace. Azure Cosmos DB podporuje rozhraní API Cassandra tabulky, které je možné škálovat na prakticky neomezené velikosti úložiště. 
+**Propustnost a pružnost úložiště**: Platforma Azure Cosmos poskytuje v oblastech pružnost se zaručenou propustností prostřednictvím jednoduchých operací portálu, PowerShellu nebo rozhraní příkazového řádku. S růstem vaší aplikace je možné Azure Cosmos DB Tables bezproblémově pružně škálovat s předvídatelným výkonem. Azure Cosmos DB podporuje tabulky rozhraní API Cassandra, které je možné škálovat na prakticky neomezené velikosti úložiště. 
 
-**Globální distribuce a dostupnosti**: Azure Cosmos DB umožňuje distribuci dat napříč oblastech Azure za účelem povolení uživatelé s nízkou latencí a prostředí při zajištění dostupnosti. Azure Cosmos DB poskytuje 99,99 % dostupnost v rámci oblasti a 99.999 % číst dostupnost v oblastech s režií žádné operace. Je k dispozici v 30 + Azure Cosmos DB [oblasti Azure](https://azure.microsoft.com/regions/services/). Další informace v [distribuci dat globálně](distribute-data-globally.md). 
+**Globální distribuce a dostupnost**: Azure Cosmos DB umožňuje distribuci dat napříč oblastmi Azure, která zajišťuje pro uživatele nízkou latenci při současné dostupnosti. Azure Cosmos DB zajišťuje dostupnost 99,99 % v rámci oblasti a dostupnost čtení 99,999 % napříč oblastmi při nulové režii provozu. Služba Azure Cosmos DB je dostupná ve více než 30 [oblastech Azure](https://azure.microsoft.com/regions/services/). Další informace najdete v části [Globální distribuce dat](distribute-data-globally.md). 
 
-**Volba konzistence**: Azure Cosmos DB poskytuje volba pět dobře definované úrovně konzistence pro dosažení optimálního poměru mezi konzistencí a výkonem. Silné a ohraničenou odolností, založenou relaci konzistentní předpona, jsou tyto úrovně konzistence a případnou. Tyto úrovně konzistence podrobné, dobře definované povolit developer, chcete-li zvolit vhodný poměr mezi konzistencí, dostupností a latencí. Další informace najdete v tématu popisujícím [využití úrovní konzistence pro maximalizaci dostupnosti a výkonu](consistency-levels.md). 
+**Výběr možností konzistence:** Pro dosažení optimálního poměru mezi konzistencí a výkonem si můžete u Azure Cosmos DB vybrat z pěti jasně definovaných úrovní konzistence. Úrovně konzistence jsou: silná, omezená neaktuálnost, relace, konzistentní předpona a případné. Tyto podrobné, dobře definované úrovně konzistence umožňují vývojáři zvolit vhodný poměr mezi konzistencí, dostupností a latencí. Další informace najdete v tématu popisujícím [využití úrovní konzistence pro maximalizaci dostupnosti a výkonu](consistency-levels.md). 
 
-**Podnikové úrovni**: zabezpečení a dodržování ve výchozím nastavení – Azure cosmos DB poskytuje [dodržování předpisů certifikace](https://www.microsoft.com/trustcenter) uživatelé mohli používat platformu, aniž byste museli řešit problémy s dodržováním předpisů. Azure Cosmos DB také poskytuje šifrování v klidovém stavu a v provozu, IP brány firewall a protokoly auditu a aktivity rovině řízení.  
+**Podniková úroveň**: V Azure Cosmos DB mají uživatelé k dispozici [certifikáty souladu](https://www.microsoft.com/trustcenter), které jim zajišťují bezpečné používání této platformy. Azure Cosmos DB také poskytuje šifrování v klidovém stavu a za provozu, firewall protokolu IP a protokoly auditu pro aktivity roviny řízení.  
 
 <a id="sign-up-now"></a>
 ## <a name="sign-up-now"></a>Zaregistrujte se 
 
-Pokud již máte předplatné Azure, můžete si zaregistrovat připojit se k programu Cassandra rozhraní API (preview) [portál Azure](https://aka.ms/cosmosdb-cassandra-signup).  Pokud jste Azure ještě nepoužívali, zaregistrujte si [bezplatnou zkušební verzi](https://azure.microsoft.com/free) kde získat dobu 12 měsíců volného přístupu k databázi Azure Cosmos. Proveďte následující kroky s požadavkem o přístup k programu Cassandra rozhraní API (preview).
+Pokud už máte předplatné Azure, můžete se na [portálu Azure Portal](https://aka.ms/cosmosdb-cassandra-signup) zaregistrovat a připojit se k programu rozhraní API Cassandra (preview).  Pokud ještě Azure nepoužíváte, zaregistrujte si [bezplatnou zkušební verzi](https://azure.microsoft.com/free), kde získáte 12 měsíců volného přístupu k Azure Cosmos DB. Pokud chcete požádat o přístup k programu API Cassandra (preview), postupujte podle následujících pokynů.
 
-1. V [portál Azure](https://portal.azure.com), klikněte na tlačítko **vytvořit prostředek** > **databáze** > **Azure Cosmos DB**. 
+1. Na [portálu Azure Portal](https://portal.azure.com) klikněte na **Vytvořit prostředek** > **Databáze** > **Azure Cosmos DB**. 
 
-2. Na stránce nový účet, vyberte **Cassandra** v poli rozhraní API. 
+2. Na stránce Nový účet, vyberte v poli rozhraní API **Cassandra**. 
 
-3. V **předplatné** vyberte předplatné Azure, kterou chcete použít pro tento účet.
+3. V poli **Předplatné** vyberte předplatné Azure, které chcete použít pro tento účet.
 
-4. Klikněte na tlačítko **zaregistrujte si verzi Preview ještě dnes**.
+4. Klikněte na **Zaregistrujte si verzi Preview ještě dnes**.
 
-    ![Rozhraní Cassandra API pro Azure Cosmos DB](./media/cassandra-introduction/cassandra-sign-up.png)
+    ![API Cassandra v Azure Cosmos DB](./media/cassandra-introduction/cassandra-sign-up.png)
 
-3. V registrace informací o dnešku podokně náhledu, klikněte na **OK**. 
+3. V podokně Zaregistrujte si verzi Preview ještě dnes klikněte na **OK**. 
 
-    Po odeslání žádosti se stav změní na **čekající na schválení** v podokně nový účet. 
+    Po odeslání žádosti se stav změní na **Čeká na schválení** v podokně Nový účet. 
 
-Po odeslání vaši žádost o počkejte e-mailové oznámení, že vaše žádost byla schválena. Kvůli velkému počtu požadavků měli byste obdržet oznámení do jednoho týdne. Není nutné vytvořit lístek podpory pro dokončení požadavku. V pořadí, ve kterém bylo přijato projde kontrolou požadavků. 
+Když žádost odešlete, počkejte na e-mailové oznámení o jejím schválení. Protože je požadavků hodně, měli byste oznámení obdržet do týdne. K dokončení žádosti není nutné vytvořit lístek podpory. Žádosti budeme vyřizovat v pořadí, v jakém je obdržíme. 
 
 ## <a name="how-to-get-started"></a>Jak začít
-Po připojení programu preview, postupujte podle rozhraní API Cassandra quickstarts k vytvoření aplikace pomocí rozhraní API Cassandra:
+Po připojení do programu preview, postupujte při vytvoření aplikace pomocí rozhraní API Cassandra podle pokynů v tématech „rychlý start“:
 
-* [Rychlý úvod: Sestavení Cassandra webové aplikace s Node.js a Azure Cosmos DB](create-cassandra-nodejs.md)
-* [Rychlý úvod: Sestavení Cassandra webovou aplikaci Java a Azure Cosmos DB](create-cassandra-java.md)
-* [Rychlý úvod: Sestavení Cassandra webové aplikace pomocí rozhraní .NET a Azure Cosmos DB](create-cassandra-dotnet.md)
-* [Rychlý úvod: Sestavení Cassandra webové aplikace Python a Azure Cosmos DB](create-cassandra-python.md)
+* [Rychlý start: Sestavení webové aplikace Cassandra pomocí Node.js a Azure Cosmos DB](create-cassandra-nodejs.md)
+* [Rychlý start: Sestavení webové aplikace Cassandra pomocí Javy a Azure Cosmos DB](create-cassandra-java.md)
+* [Rychlý start: Sestavení webové aplikace Cassandra pomocí .NET a Azure Cosmos DB](create-cassandra-dotnet.md)
+* [Rychlý start: Sestavení webové aplikace Cassandra pomocí Pythonu a Azure Cosmos DB](create-cassandra-python.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Informace o rozhraní API služby Azure DB Cosmos Cassandra je integrována do dokumentace se celkově Azure Cosmos DB, ale tady jsou na několik věcí, které vám pomůžou začít:
+Informace o rozhraní API Cassandra v Azure Cosmos DB jsou integrované do souhrnné dokumentace k Azure Cosmos DB, ale tady je několik připomínek, které vám pomůžou začít:
 
-* Postupujte podle [– elementy QuickStart](create-cassandra-nodejs.md) k vytvoření účtu a nové aplikace pomocí Git vzorku
-* Postupujte podle [kurzu](tutorial-develop-cassandra-java.md) k vytvoření nové aplikace prostřednictvím kódu programu.
-* Postupujte podle [kurzu data importovat Cassandra](cassandra-import-data.md) k importu existujících dat do Azure Cosmos DB.
-* Pro čtení [– nejčastější dotazy](faq.md#cassandra).
+* Při vytvoření účtu a nové aplikace pomocí ukázky Git postupujte podle pokynů v tématech [Rychlý start](create-cassandra-nodejs.md).
+* Při vytvoření nové aplikace prostřednictvím kódu programu postupujte podle pokynů v [kurzu](tutorial-develop-cassandra-java.md).
+* Při importu stávajících dat do Azure Cosmos DB postupujte podle [kurzu pro import dat Cassandra](cassandra-import-data.md).
+* Projděte si [nejčastější dotazy](faq.md#cassandra).

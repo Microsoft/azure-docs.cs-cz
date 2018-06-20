@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/07/2018
+ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: d0b3ce1fcabbc69c30e316a69e492da7c75d23ef
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 6fe314125440096d21a1276defd082c4e1997b8e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207481"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642678"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Kurz: Nasazení aplikace .NET v kontejneru Windows do Azure Service Fabricu
 
@@ -51,6 +51,8 @@ Ověřte, že se aplikace Fabrikam Fiber CallCenter sestavila a spustila bez chy
 
 ## <a name="containerize-the-application"></a>Kontejnerizace aplikace
 Klikněte pravým tlačítkem na projekt **FabrikamFiber.Web** > **Přidat** > **Podpora orchestrátoru kontejnerů**.  Vyberte **Service Fabric** jako orchestrátor kontejnerů a klikněte na **OK**.
+
+Kliknutím na **Ano** přepnete Docker na kontejnery Windows.
 
 V řešení se vytvoří nový projekt aplikace Service Fabric **FabrikamFiber.CallCenterApplication**.  Do existujícího projektu **FabrikamFiber.Web** se přidá soubor Docker.  Do projektu **FabrikamFiber.Web** se také přidá adresář **PackageRoot**, který obsahuje manifest služby a nastavení pro novou službu FabrikamFiber.Web. 
 
@@ -120,16 +122,17 @@ Vraťte se do projektu **FabrikamFiber.Web** a aktualizujte připojovací řetě
 >Pro účely místního ladění můžete použít jakýkoli SQL Server, kterému dáváte přednost, pokud je dostupný z vašeho hostitele. Nicméně **localdb** nepodporuje komunikaci `container -> host`. Pokud při sestavování vaší webové aplikace pro vydání chcete použít jinou databázi SQL, přidejte do souboru *web.release.config* další připojovací řetězec.
 
 ## <a name="run-the-containerized-application-locally"></a>Místní spuštění kontejnerizované aplikace
-Když stisknete klávesu **F5**, proběhne ladění a spuštění aplikace v kontejneru v místním vývojovém clusteru Service Fabricu.
+Když stisknete klávesu **F5**, proběhne ladění a spuštění aplikace v kontejneru v místním vývojovém clusteru Service Fabricu. Pokud se vám zobrazí okno se zprávou žádající o udělení oprávnění ke čtení a spouštění vašeho adresáře projektu sady Visual Studio pro skupinu ServiceFabricAllowedUsers, klikněte na **Ano**.
 
 ## <a name="create-a-container-registry"></a>Vytvoření registru kontejnerů
-Teď, když aplikace běží místně, začněte s přípravou nasazení do Azure.  Image kontejneru musí být uložené v registru kontejneru.  Pomocí následujícího skriptu vytvořte [registr kontejneru Azure](/azure/container-registry/container-registry-intro).  Než aplikaci nasadíte do Azure, odešlete do tohoto registru image kontejneru.  Jakmile je aplikace nasazená v clusteru v Azure, image kontejneru se z tohoto registru odebere.
+Teď, když aplikace běží místně, začněte s přípravou nasazení do Azure.  Image kontejneru musí být uložené v registru kontejneru.  Pomocí následujícího skriptu vytvořte [registr kontejneru Azure](/azure/container-registry/container-registry-intro). Název registru kontejneru mohou zobrazovat jiná předplatná Azure, a proto musí být jedinečný.
+Než aplikaci nasadíte do Azure, odešlete do tohoto registru image kontejneru.  Jakmile je aplikace nasazená v clusteru v Azure, image kontejneru se z tohoto registru odebere.
 
 ```powershell
 # Variables
 $acrresourcegroupname = "fabrikam-acr-group"
 $location = "southcentralus"
-$registryname="fabrikamregistry"
+$registryname="fabrikamregistry$(Get-Random)"
 
 New-AzureRmResourceGroup -Name $acrresourcegroupname -Location $location
 
@@ -143,7 +146,9 @@ Můžete:
 - Vytvořit testovací cluster v sadě Visual Studio. Tato možnost umožňuje vytvořit zabezpečený cluster přímo ze sady Visual Studio s použitím upřednostňované konfigurace. 
 - [Vytvořit zabezpečený cluster ze šablony](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
-Při vytváření clusteru zvolte skladovou položku, která podporuje spouštění kontejnerů (například Windows Server 2016 Datacenter s kontejnery). V tomto kurzu vytvoříte cluster v sadě Visual Studio, což je nejvhodnější scénář pro účely testování. Pokud vytvoříte cluster jiným způsobem nebo použijete existující cluster, můžete zkopírovat a vložit svůj koncový bod připojení nebo ho zvolit ze svého předplatného. 
+V tomto kurzu vytvoříte cluster v sadě Visual Studio, což je nejvhodnější scénář pro účely testování. Pokud vytvoříte cluster jiným způsobem nebo použijete existující cluster, můžete zkopírovat a vložit svůj koncový bod připojení nebo ho zvolit ze svého předplatného. 
+
+Při vytváření clusteru vyberte jednotku SKU, která podporuje spuštěné kontejnery. Operační systém Windows Server v uzlech clusteru musí být kompatibilní s operačním systémem Windows Server vašeho kontejneru. Další informace najdete v článku o [kompatibilitě operačního systému kontejneru a operačního systému hostitele s Windows Serverem](service-fabric-get-started-containers.md#windows-server-container-os-and-host-os-compatibility). Tento kurz ve výchozím nastavení vytvoří image Dockeru založenou na Windows Serveru 2016 LTSC. Kontejnery založené na této imagi budou fungovat v clusterech vytvořených pomocí edice Windows Server 2016 Datacenter s produktem Containers. Pokud ale vytvoříte cluster nebo použijete existující cluster založený na edici Windows Server Datacenter Core 1709 s produktem Containers, musíte změnit image operačního systému Windows Server, na které je kontejner založený. Otevřete soubor **Dockerfile** v projektu **FabrikamFiber.Web**, okomentujte stávající příkaz `FROM` (založený na `windowsservercore-ltsc`) a zrušte komentář u příkazu `FROM` založeného na `windowsservercore-1709`. 
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem na projekt aplikace **FabrikamFiber.CallCenterApplication** a zvolte **Publikovat**.
 

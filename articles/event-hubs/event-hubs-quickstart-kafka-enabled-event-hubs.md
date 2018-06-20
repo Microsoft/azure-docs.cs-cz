@@ -5,23 +5,22 @@ services: event-hubs
 documentationcenter: ''
 author: basilhariri
 manager: timlt
-editor: ''
-ms.assetid: ''
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/03/2018
+ms.date: 06/08/2018
 ms.author: bahariri
-ms.openlocfilehash: cabbb7ed6157a6c68530ab6b5f405aa67b31a1b2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 8ef6240d19ce1ac1b891c95ce525a8bd211a2900
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297219"
 ---
-# <a name="stream-into-event-hubs-for-kafka-ecosystem"></a>Streamování do služby Event Hubs pro ekosystém Kafka
+# <a name="stream-into-event-hubs-for-the-kafka-ecosystem"></a>Streamování do služby Event Hubs pro ekosystém Kafka
 
 > [!NOTE]
 > Tato ukázka je k dispozici na [GitHubu](https://github.com/Azure/azure-event-hubs).
@@ -44,7 +43,7 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
 
 2. Přejděte na adresu `azure-event-hubs/samples/kafka/quickstart/producer`.
 
-3. V souboru src/main/resources/producer.config aktualizujte podrobnosti konfigurace pro producenta, jak je vidět tady.
+3. Aktualizujte podrobnosti o konfiguraci producenta v `src/main/resources/producer.config` následujícím způsobem:
 
     ```xml
     bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -54,13 +53,13 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
     ```
 4. Spusťte kód producenta a streamování do služby Event Hubs s podporou Kafka.
    
-    ```java
+    ```shell
     mvn clean package
     mvn exec:java -Dexec.mainClass="TestProducer"                                    
     ```
-5. Přejděte na adresu azure-event-hubs/samples/kafka/quickstart/consumer.
+5. Přejděte na adresu `azure-event-hubs/samples/kafka/quickstart/consumer`.
 
-6. V souboru src/main/resources/consumer.config aktualizujte podrobnosti konfigurace pro příjemce, jak je vidět tady.
+6. Aktualizujte podrobnosti o konfiguraci příjemce v `src/main/resources/consumer.config` následujícím způsobem:
    
     ```xml
     bootstrap.servers={YOUR.EVENTHUBS.FQDN}:9093
@@ -76,10 +75,11 @@ Abyste mohli absolvovat tento rychlý start, ujistěte se, že máte následují
     mvn exec:java -Dexec.mainClass="TestConsumer"                                    
     ```
 
-Pokud váš cluster Event Hubs Kafka obsahuje ve frontě události od producenta, měli byste je teď začít přijímat od příjemce.
+Pokud váš cluster Event Hubs Kafka obsahuje události, začnete je teď přijímat od příjemce.
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Informace o službě Event Hubs pro ekosystém Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 * [Informace o službě Event Hubs](event-hubs-what-is-event-hubs.md)
-* Použití nástroje [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) k streamování událostí z místního systému Kafka do služby Event Hubs s podporou Kafka v cloudu](event-hubs-kafka-mirror-maker-tutorial.md)
+* [Informace o službě Event Hubs pro ekosystém Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+* Použití nástroje [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) ke [streamování událostí z místního systému Kafka do služby Event Hubs s podporou Kafka v cloudu.](event-hubs-kafka-mirror-maker-tutorial.md)
+* Přečtěte si, jak streamovat do služby Event Hubs s podporou Kafka pomocí [Apache Flinku](event-hubs-kafka-flink-tutorial.md) nebo [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md).

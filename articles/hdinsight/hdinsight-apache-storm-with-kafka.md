@@ -12,19 +12,20 @@ ms.devlang: java
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/06/2018
+ms.date: 05/21/2018
 ms.author: larryfr
-ms.openlocfilehash: 8baafd69e45210b74db8b0bf41b765067b1251a8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b973890caddf598d5ba4e96a04a18df46cdb5cf8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34626286"
 ---
 # <a name="tutorial-use-apache-storm-with-kafka-on-hdinsight"></a>Kurz: Použití Apache Stormu se systémem Kafka ve službě HDInsight
 
 V tomto kurzu se dozvíte, jak použít topologii Apache Storm ke čtení a zápisu dat s využitím systému Apache Kafka ve službě HDInsight. Kurz také předvádí, jak uložit data do úložiště kompatibilního s HDFS na clusteru Storm.
 
-V tomto kurzu se naučíte následující:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Storm a Kafka
@@ -34,7 +35,7 @@ V tomto kurzu se naučíte následující:
 > * Konfigurace topologie
 > * Vytvoření tématu Kafka
 > * Spuštění topologie
-> * Zastavení topologie
+> * Zastavení topologií
 > * Vyčištění prostředků
 
 ## <a name="prerequisites"></a>Požadavky
@@ -59,7 +60,7 @@ Když na svoji vývojářskou pracovní stanici nainstalujete Javu a JDK, mohou 
     * Adresář, kde je nainstalovaný Maven.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují skupinu prostředků Azure obsahující cluster Storm ve službě HDInsight i cluster Kafka ve službě HDInsight. Oba tyto clustery se nacházejí ve virtuální síti Azure, což umožňuje přímou komunikaci clusteru Spark s clusterem Kafka.
+> Kroky v tomto dokumentu vyžadují skupinu prostředků Azure obsahující cluster Storm ve službě HDInsight i cluster Kafka ve službě HDInsight. Oba tyto clustery se nacházejí ve službě Azure Virtual Network, což umožňuje přímou komunikaci clusteru Storm s clusterem Kafka.
 > 
 > Pro usnadnění práce tento dokument odkazuje na šablonu, která může vytvořit všechny požadované prostředky Azure. 
 >

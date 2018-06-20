@@ -1,5 +1,5 @@
 ---
-title: Nasazení aplikace Spring Boot do Azure Service Fabric | Dokumentace Microsoftu
+title: Nasazení aplikace Spring Boot do Azure Service Fabric | Microsoft Docs
 description: V tomto rychlém startu nasadíte aplikaci Spring Boot pro Azure Service Fabric s využitím ukázkové aplikace Spring Boot.
 services: service-fabric
 documentationcenter: java
@@ -15,17 +15,17 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 6c84b60018ec03b7f9bc572db9181b8a47a0c595
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 860d28cb6726a86194460977b822197a37ab7279
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365400"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642865"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-azure"></a>Rychlý start: Nasazení aplikace Spring Boot v Javě do Azure
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů. 
 
-Tento rychlý start ukazuje, jak pomocí vývojářského počítače se systémem Mac nebo Linux nasadit aplikaci Spring Boot do Service Fabric. Tento rychlý start využívá ukázku [Getting Started](https://spring.io/guides/gs/spring-boot/) z webu Spring. Pomocí známých nástrojů příkazového řádku vás tento rychlý start provede nasazením ukázky Spring Boot jako aplikace Service Fabric. Po dokončení budete mít funkční aplikaci Spring Boot Getting Started v Service Fabric. 
+Tento rychlý start vás pomocí známých nástrojů příkazového řádku provede postupem nasazení funkční aplikace Spring Boot na platformu Service Fabric na vývojářském počítači se systémem Mac nebo Linux s použitím ukázky [Getting Started](https://spring.io/guides/gs/spring-boot/) (Začínáme) na webu Spring.
 
 ![Snímek obrazovky aplikace](./media/service-fabric-quickstart-java-spring-boot/springbootsflocalhost.png)
 
@@ -246,7 +246,7 @@ Pokud chcete škálovat webovou front-end službu, postupujte následovně:
     sfctl cluster select --endpoint https://<ConnectionIPOrURL>:19080 --pem <path_to_certificate> --no-verify
 
     # Run Bash command to scale instance count for your service
-    sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted` --instance-count 3 --stateless 
+    sfctl service update --service-id 'SpringServiceFabric~SpringGettingStarted' --instance-count 3 --stateless 
     ``` 
 
 4. Ve stromovém zobrazení klikněte na uzel **fabric:/SpringServiceFabric/SpringGettingStarted** a rozbalte uzel oddílu (reprezentovaný identifikátorem GUID).

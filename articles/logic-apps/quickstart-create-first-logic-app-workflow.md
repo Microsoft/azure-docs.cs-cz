@@ -1,30 +1,26 @@
 ---
-title: Vytvoření prvního automatizovaného pracovního postupu – Azure Logic Apps | Dokumentace Microsoftu
-description: Tento rychlý start ukazuje, jak pomocí Azure Logic Apps automatizovat první pracovní postup pro scénáře systémové integrace a integrace podnikových aplikací (EAI), které integrují systémy a cloudové služby.
-author: ecfan
-manager: anneta
-editor: ''
+title: Vytvoření a automatizace prvního pracovního postupu – Azure Logic Apps | Microsoft Docs
+description: Rychlý start pro vytvoření první aplikace logiky, která slouží k automatizaci úloh, procesů a pracovních postupů pomocí Azure Logic Apps Vytváření aplikací logiky pro řešení systémové integrace a integrace podnikových aplikací (EAI) určená vašim systémům a cloudovým službám
 services: logic-apps
-keywords: workflows, cloud services, system integration, enterprise application integration, EAI
-documentationcenter: ''
-ms.assetid: ce3582b5-9c58-4637-9379-75ff99878dcd
 ms.service: logic-apps
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: ecfan
+ms.author: estfan
+manager: jeconnoc
+ms.date: 1/12/2018
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 1/12/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: ccd00fbb3c5dc0f78a31adcaed31bbe6e4a6e785
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.reviewer: klam, LADocs
+ms.suite: integration
+ms.openlocfilehash: 0a629deec0cc18f65dfe5e88a3eaea528636dd0f
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35300935"
 ---
-# <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>Rychlý start: Vytvoření prvního pracovního postupu aplikace logiky – Azure Portal
+# <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>Rychlý start: Vytvoření prvního automatizovaného pracovního postupu pomocí Azure Logic Apps – Azure Portal
 
-V tomto rychlém startu se seznámíte s vytvořením prvního automatizovaného pracovního postupu pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md). V tomto článku vytvoříte aplikaci logiky, která pravidelně kontrolujte nové položky v informačním kanálu RSS webu. Pokud se najdou nové položky, aplikace logiky za každou z nich odešle e-mail. Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat jako tento pracovní postup:
+V tomto rychlém startu se seznámíte se sestavením prvního automatizovaného pracovního postupu pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md). V tomto článku vytvoříte aplikaci logiky, která pravidelně kontrolujte nové položky v informačním kanálu RSS webu. Pokud se najdou nové položky, aplikace logiky za každou z nich odešle e-mail. Jakmile budete hotovi, vaše aplikace logiky bude na základní úrovni vypadat jako tento pracovní postup:
 
 ![Přehled – příklad aplikace logiky](./media/quickstart-create-first-logic-app-workflow/overview.png)
 

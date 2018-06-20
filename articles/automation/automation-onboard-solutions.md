@@ -7,13 +7,14 @@ author: eamonoreilly
 ms.author: eamono
 manager: carmonm
 ms.topic: tutorial
-ms.date: 03/16/2018
+ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 97db493b77483d68860c6124f1063bc4a743c3be
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5d03ec7c5e0aaa68c1db34fedbd428f264e49e43
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34830516"
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Začlenění řešení Update Management a Change Tracking do Azure Automation
 
@@ -36,7 +37,7 @@ K dokončení tohoto kurzu potřebujete následující:
 
 ## <a name="onboard-an-azure-vm"></a>Připojení virtuálního počítače Azure
 
-Počítače můžete připojit několika způsoby – můžete připojit řešení [z virtuálního počítače](automation-onboard-solutions-from-vm.md), [ze svého účtu Automation](automation-onboard-solutions-from-automation-account.md) nebo pomocí runbooku. Tento kurz vás provede povolením řešení Update Management prostřednictvím runbooku. Pokud chcete připojit virtuální počítače Azure ve velkém měřítku, stávající virtuální počítače se musí připojit s řešením Change Tracking nebo Update Management. V tomto kroku připojíte virtuální počítač s řešením Update Management a Change Tracking.
+Počítače můžete připojit několika způsoby – můžete připojit řešení [z virtuálního počítače](automation-onboard-solutions-from-vm.md), [z procházení více počítačů](automation-onboard-solutions-from-browse.md), [ze svého účtu Automation](automation-onboard-solutions-from-automation-account.md) nebo pomocí runbooku. Tento kurz vás provede povolením řešení Update Management prostřednictvím runbooku. Pokud chcete připojit virtuální počítače Azure ve velkém měřítku, stávající virtuální počítače se musí připojit s řešením Change Tracking nebo Update Management. V tomto kroku připojíte virtuální počítač s řešením Update Management a Change Tracking.
 
 ### <a name="enable-change-tracking-and-inventory"></a>Povolení řešení Change Tracking a Inventory
 

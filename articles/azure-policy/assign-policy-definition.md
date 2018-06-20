@@ -4,17 +4,17 @@ description: Tento článek vás provede postupem vytvoření definice zásady p
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 05/07/2018
+ms.date: 05/24/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 9b1cfd762d6f050994688d1cd6afd91f0e43bfc3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 43f069fbd8f4fcc13bbc4d9e75763fa98aec1065
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195773"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34601458"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Vytvoření přiřazení zásady pro identifikaci prostředků, které nedodržují předpisy, v prostředí Azure
 
@@ -49,7 +49,7 @@ V tomto rychlém startu vytvoříte přiřazení zásad a přiřadíte definici 
    - Použít značku a její hodnotu
    - Vyžadovat SQL Server verze 12.0
 
-    Úplný seznam všech dostupných předdefinovaných zásad najdete v tématu [Šablony zásad](json-samples.md).
+    Úplný seznam všech dostupných předdefinovaných zásad najdete v tématu týkajícím se [ukázek zásad](json-samples.md).
 
 7. Prohledejte seznam definic zásad a najděte definici *Audit virtuálních počítačů, které nepoužívají spravované disky*. Klikněte na tuto zásadu a potom na **Vybrat**.
 

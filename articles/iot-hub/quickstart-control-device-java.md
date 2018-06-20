@@ -1,23 +1,21 @@
 ---
 title: Rychlý start k řízení zařízení ze služby Azure IoT Hub (Java) | Microsoft Docs
 description: V tomto rychlém startu spustíte dvě ukázkové aplikace Java. První aplikace je back-endová aplikace, která může vzdáleně řídit zařízení připojená k vašemu centru. Druhá aplikace simuluje zařízení připojené k vašemu centru, které je možné řídit vzdáleně.
-services: iot-hub
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
 ms.date: 04/30/2018
 ms.author: dobett
-ms.openlocfilehash: 6dcbf954fdfd6f5b6f65b54edf33e9da234c7d0f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 5025eeda46f36982266a0bc3357b3d1e9249884a
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808202"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (Java)
 
@@ -99,7 +97,7 @@ Poznamenejte si připojovací řetězec služby, který vypadá nějak takto: `H
 
 Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT pro konkrétní zařízení, odešle simulovaná telemetrická data a z vašeho centra naslouchá voláním přímé metody. Volání přímé metody z centra v tomto rychlém startu nařídí zařízení, aby změnilo interval, ve kterém se odesílají telemetrická data. Simulované zařízení odešle po spuštění přímé metody zpět do centra potvrzení.
 
-1. V okně terminálu přejděte do kořenové složky ukázkového projektu Java. Pak přejděte do složky **Quickstarts\simulated-device-2**.
+1. V okně terminálu přejděte do kořenové složky ukázkového projektu Java. Potom přejděte do složky **iot-hub\Quickstarts\simulated-device-2**.
 
 1. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java**.
 
@@ -125,9 +123,9 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
 Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na straně služby. Aplikace provádí volání přímé metody na zařízení prostřednictvím centra IoT a čeká na potvrzení. Back-endová aplikace služby IoT Hub se obvykle spouští v cloudu.
 
-1. V jiném okně terminálu přejděte do kořenové složky ukázkového projektu Java. Pak přejděte do složky **Quickstarts\back-end-application**.
+1. V jiném okně terminálu přejděte do kořenové složky ukázkového projektu Java. Potom přejděte do složky **iot-hub\Quickstarts\back-end-application**.
 
-1. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java**.
+1. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java**.
 
     Hodnotu proměnné `iotHubConnectionString` nahraďte připojovacím řetězcem služby, který jste si předtím poznamenali. Změny pak uložte do souboru **BackEndApplication.java**.
 
@@ -164,4 +162,4 @@ V tomto rychlém startu jste volali přímou metodu na zařízení z back-endov�
 Informace o tom, jak směrovat zprávy typu zařízení-cloud do různých cílů v cloudu, najdete v dalším kurzu.
 
 > [!div class="nextstepaction"]
-> [Kurz: Směrování telemetrických dat do různých koncových bodů za účelem zpracování](iot-hub-java-java-process-d2c.md)
+> [Kurz: Směrování telemetrických dat do různých koncových bodů za účelem zpracování](tutorial-routing.md)

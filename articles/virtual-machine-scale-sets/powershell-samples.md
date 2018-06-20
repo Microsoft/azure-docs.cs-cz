@@ -16,11 +16,12 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3508631336ac322268f12ff97e35827767ae1bb9
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 27b8c9391de4014f45257e3808647b3e49c250b2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651943"
 ---
 # <a name="azure-powershell-samples-for-virtual-machine-scale-sets"></a>Ukázky Azure PowerShellu pro škálovací sady virtuálních počítačů
 
@@ -29,7 +30,8 @@ Následující tabulka obsahuje odkazy na skripty Bash vytvořené pomocí Azure
 | | |
 |---|---|
 |**Vytvoření a správa škálovací sady**||
-| [Vytvoření škálovací sady virtuálních počítačů](scripts/powershell-sample-create-simple-scale-set.md?toc=%2fpowershell%2fazure%2ftoc.json) | Vytvoří škálovací sadu virtuálních počítačů s minimální konfigurací. |
+| [Vytvoření jednoduché škálovací sady virtuálních počítačů](scripts/powershell-sample-create-simple-scale-set.md?toc=%2fpowershell%2fazure%2ftoc.json) | Vytvoří škálovací sadu virtuálních počítačů s minimální konfigurací. |
+| [Vytvoření úplné škálovací sady virtuálních počítačů](scripts/powershell-sample-create-complete-scale-set.md?toc=%2fpowershell%2fazure%2ftoc.json) | Vytvoří škálovací sadu virtuálních počítačů a souvisejících prostředků s konfiguračním souborem. |
 | [Vytvoření škálovací sady z vlastní image virtuálního počítače](scripts/powershell-sample-create-scale-set-from-custom-image.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Vytvoří škálovací sadu virtuálních počítačů, která používá vlastní image virtuálního počítače. |
 | [Instalace aplikací do škálovací sady](scripts/powershell-sample-install-apps.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Pomocí rozšíření vlastních skriptů Azure nainstaluje do škálovací sady základní webovou aplikaci. |
 |**Správa úložiště**||

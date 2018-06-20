@@ -1,5 +1,5 @@
 ---
-title: Seznámení se službou App Service v Linuxu | Dokumentace Microsoftu
+title: Seznámení se službou App Service v Linuxu | Microsoft Docs
 description: Seznamte se se službou Azure App Service v Linuxu.
 keywords: azure app service, linux, oss
 services: app-service
@@ -16,11 +16,12 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: c9c4cb42e6bf9f60c883242fad6963f72b772063
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: dab9e7b4ee62624ba32b7b6b41d0dee5ac01af09
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598313"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Seznámení se službou Azure App Service v Linuxu
 
@@ -75,7 +76,7 @@ Na webu Azure Portal se zobrazují pouze funkce, které jsou aktuálně funkčn�
 
 Některé funkce, například integrace virtuálních sítí, ověřování pomocí Azure Active Directory nebo prostřednictvím třetí strany nebo rozšíření webu Kudu, ještě nejsou dostupné. Jakmile budou tyto funkce dostupné, aktualizujeme naši dokumentaci a blog, abychom vás informovali o změnách.
 
-Služba App Service v Linuxu se podporuje pouze s plány služby úrovně [Basic a Standard](https://azure.microsoft.com/pricing/details/app-service/plans/), a neobsahuje úroveň [Free ani Shared](https://azure.microsoft.com/pricing/details/app-service/plans/). Službu Web App for Containers nemůžete vytvořit v plánu služby App Service, který už je hostitelem služby Web Apps mimo Linux.
+Služba App Service v Linuxu se podporuje pouze s plány služby úrovně [Basic a Standard](https://azure.microsoft.com/pricing/details/app-service/plans/), a neobsahuje úroveň [Free ani Shared](https://azure.microsoft.com/pricing/details/app-service/plans/). Web App for Containers nemůžete vytvořit v plánu služby App Service, který už hostuje webové aplikace jiného systému než Linux. Existují aktuální omezení týkající se také kombinování aplikací systému Windows a systému Linux ve stejné skupině prostředků.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
@@ -98,7 +99,7 @@ Následující odkazy vám pomůžou začít se službou App Service v Linuxu. O
 * [Azure App Service Web App for Containers – Nejčastější dotazy](app-service-linux-faq.md)
 * [Podpora SSH pro službu Azure App Service v Linuxu](app-service-linux-ssh-support.md)
 * [Nastavení přípravných prostředí ve službě Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Průběžné nasazování z Docker Hubu pomocí služby Web App for Containers](./app-service-linux-ci-cd.md)
+* [Průběžné nasazování z Centra Dockeru pomocí služby Web App for Containers](./app-service-linux-ci-cd.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

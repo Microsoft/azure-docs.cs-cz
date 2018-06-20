@@ -1,5 +1,5 @@
 ---
-title: Azure Site Recovery Deployment Planner pro nasazení VMware do Azure | Dokumentace Microsoftu
+title: Azure Site Recovery Deployment Planner pro nasazení VMware do Azure | Microsoft Docs
 description: Tento článek popisuje režim spuštění Plánovače nasazení služby Azure Site Recovery pro scénář nasazení VMware do Azure.
 services: site-recovery
 documentationcenter: ''
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/02/2018
 ms.author: nisoneji
-ms.openlocfilehash: 1d9fa845171ffa5a40ce569170dfbb577ea4e8c8
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 930cd3cc637c2c8286f8388b9f116b9ba33c3fc5
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236004"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Spuštění Plánovače nasazení služby Azure Site Recovery pro nasazení VMware do Azure
 Tento článek představuje uživatelskou příručku k nástroji Azure Site Recovery Deployment Planner pro produkční nasazení VMware do Azure.
@@ -85,7 +86,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 | -Password | (Volitelné) Heslo, které se použije pro připojení k serveru vCenter nebo hostiteli vSphere ESXi. Pokud heslo nezadáte teď, budete k tomu vyzváni při spuštění příkazu.|
 |-Port|(Volitelné) Číslo portu pro připojení k hostiteli vCenter/ESXi. Výchozí port je 443.|
 |-Protocol| (Volitelné) Určuje protokol (http nebo https) pro připojení k serveru vCenter. Výchozím protokolem je https.|
-| -StorageAccountName | (Volitelné) Název účtu úložiště, který se použije k zjištění dosažitelné propustnost pro replikaci místních dat do Azure. Nástroj vypočítává propustnost tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být verze 1 pro obecné účely nebo úložiště verze 2 (verze 2 pro obecné účely).|
+| -StorageAccountName | (Volitelné) Název účtu úložiště, který se použije k zjištění dosažitelné propustnost pro replikaci místních dat do Azure. Nástroj vypočítává propustnost tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být typu Univerzální v1 (GPv1). |
 | -StorageAccountKey | (Volitelné) Klíč účtu úložiště, který se použije pro přístup k účtu úložiště. Přejděte na Azure Portal > Účty úložiště > <*název účtu služby Storage*> > Nastavení > Přístupové klíče > Klíč1. |
 | -Environment | (Volitelné) Toto je vaše cílové prostředí účtu Azure Storage. Může to být jedna ze tří hodnot – AzureCloud, AzureUSGovernment a AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud vaší cílovou oblastí Azure jsou cloudy Azure US Government nebo Azure China. |
 
@@ -263,7 +264,7 @@ Otevřete konzolu příkazového řádku a přejděte do složky nástroje pro p
 | -Operation | GetThroughput |
 |-Virtualization|Určuje typ virtualizace (VMware nebo Hyper-V).|
 | -Directory | (Volitelné) Název UNC nebo cesta k místnímu adresáři, ve kterém jsou uložena profilovaná data (soubory vytvořené během profilace). Tato data jsou vyžadovaná k vygenerování sestavy. Pokud název adresáře není zadaný, použije se adresář ProfiledData. |
-| -StorageAccountName | Název účtu úložiště, který se použije k zjištění využité šířky pásma pro replikaci místních dat do Azure. Nástroj zjistí využitou šířku pásma tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být verze 1 pro obecné účely nebo úložiště verze 2 (verze 2 pro obecné účely).|
+| -StorageAccountName | Název účtu úložiště, který se použije k zjištění využité šířky pásma pro replikaci místních dat do Azure. Nástroj zjistí využitou šířku pásma tak, že do tohoto účtu úložiště nahrává testovací data. Účet úložiště musí být typu Univerzální v1 (GPv1).|
 | -StorageAccountKey | Klíč účtu úložiště, který se použije pro přístup k účtu úložiště. Přejděte na web Azure Portal > Účty úložiště > <*název účtu služby Storage*> > Nastavení > Přístupové klíče > Klíč1 (nebo primární přístupový klíč v případě klasického účtu úložiště). |
 | -VMListFile | Soubor se seznamem virtuálních počítačů určených k profilaci pro výpočet využité šířky pásma. Cesta k souboru může být absolutní nebo relativní. Soubor musí na každém řádku obsahovat jeden název nebo IP adresu virtuálního počítače. Názvy virtuálních počítačů zadané v souboru se musí shodovat s názvy virtuálních počítačů na serveru vCenter nebo hostiteli vSphere ESXi.<br>Například soubor VMList.txt obsahuje následující virtuální počítače:<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
 | -Environment | (Volitelné) Toto je vaše cílové prostředí účtu Azure Storage. Může to být jedna ze tří hodnot – AzureCloud, AzureUSGovernment a AzureChinaCloud. Výchozí hodnota je AzureCloud. Tento parametr použijte, pokud vaší cílovou oblastí Azure jsou cloudy Azure US Government nebo Azure China. |

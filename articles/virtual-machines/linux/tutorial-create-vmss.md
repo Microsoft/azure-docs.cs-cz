@@ -13,14 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 12/15/2017
+ms.date: 06/01/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 741cabd37a5a508257f0307dfec25b5bb2d25153
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 305c8b46f82409257061e1cb0ab79b3bf958384d
+ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34839601"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli-20"></a>Kurz: Vytvoření škálovací sady virtuálních počítačů a nasazení vysoce dostupné aplikace v Linuxu pomocí Azure CLI 2.0
 
@@ -49,7 +50,7 @@ Virtuální počítače se ve škálovací sadě vytvářejí podle potřeby. Pr
 ## <a name="create-an-app-to-scale"></a>Vytvoření aplikace určené ke škálování
 Pro produkční použití možná budete chtít [vytvořit vlastní image virtuálního počítače](tutorial-custom-images.md) obsahující vaši nainstalovanou a nakonfigurovanou aplikaci. Pro účely tohoto kurzu přizpůsobíme virtuální počítače při prvním spuštění, abychom rychle viděli škálovací sadu v akci.
 
-V předchozím kurzu jste zjistili, [jak přizpůsobit virtuální počítač s Linuxem při prvním spuštění](tutorial-automate-vm-deployment.md) pomocí cloud-init. Stejný konfigurační soubor cloud-init můžete použít k instalaci serveru NGINX a spuštění jednoduché aplikace Hello World v Node.js. 
+V předchozím kurzu jste zjistili, [jak přizpůsobit virtuální počítač s Linuxem při prvním spuštění](tutorial-automate-vm-deployment.md) pomocí cloud-init. Stejný konfigurační soubor cloud-init můžete použít k instalaci serveru NGINX a spuštění jednoduché aplikace Hello World v Node.js.
 
 V aktuálním prostředí vytvořte soubor *cloud-init.txt* a vložte do něj následující konfiguraci. Soubor vytvořte například v Cloud Shellu, pokud nepracujete na místním počítači. Zadáním příkazu `sensible-editor cloud-init.txt` soubor vytvořte a zobrazte seznam editorů k dispozici. Ujistěte se, že se celý soubor cloud-init zkopíroval správně, zejména první řádek:
 
@@ -97,15 +98,15 @@ runcmd:
 
 
 ## <a name="create-a-scale-set"></a>Vytvoření škálovací sady
-Než vytvoříte škálovací sadu, vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroupScaleSet* v umístění *eastus*:
+Než vytvoříte škálovací sadu, vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků *myResourceGroupScaleSet* v umístění *eastus*:
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroupScaleSet --location eastus
 ```
 
-Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss#az_vmss_create). Následující příklad vytvoří škálovací sadu *myScaleSet*, pomocí souboru cloud-init přizpůsobí virtuální počítač a vygeneruje klíče SSH, pokud ještě neexistují:
+Teď vytvořte škálovací sadu virtuálních počítačů pomocí příkazu [az vmss create](/cli/azure/vmss#az-vmss-create). Následující příklad vytvoří škálovací sadu *myScaleSet*, pomocí souboru cloud-init přizpůsobí virtuální počítač a vygeneruje klíče SSH, pokud ještě neexistují:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vmss create \
   --resource-group myResourceGroupScaleSet \
   --name myScaleSet \
@@ -122,9 +123,9 @@ Vytvoření a konfigurace všech prostředků škálovací sady a virtuálních 
 ## <a name="allow-web-traffic"></a>Povolení webového provozu
 Jako součást škálovací sady virtuálních počítačů se automaticky vytvořil nástroj pro vyrovnávání zatížení. Nástroj pro vyrovnávání zatížení s využitím pravidel nástroje pro vyrovnávání zatížení distribuuje provoz mezi sadu definovaných virtuálních počítačů. Další informace o konceptech a konfiguraci nástroje pro vyrovnávání zatížení najdete v dalším kurzu [Vyrovnávání zatížení virtuálních počítačů v Azure](tutorial-load-balancer.md).
 
-Pokud chcete webové aplikaci povolit příjem provozu, vytvořte pravidlo pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create). Následující příklad vytvoří pravidlo *myLoadBalancerRuleWeb*:
+Pokud chcete webové aplikaci povolit příjem provozu, vytvořte pravidlo pomocí příkazu [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create). Následující příklad vytvoří pravidlo *myLoadBalancerRuleWeb*:
 
-```azurecli-interactive 
+```azurecli-interactive
 az network lb rule create \
   --resource-group myResourceGroupScaleSet \
   --name myLoadBalancerRuleWeb \
@@ -137,9 +138,9 @@ az network lb rule create \
 ```
 
 ## <a name="test-your-app"></a>Testování aplikace
-Pokud chcete zobrazit svou aplikaci Node.js na webu, získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí příkazu [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Následující příklad získá IP adresu *myScaleSetLBPublicIP* vytvořenou jako součást škálovací sady:
+Pokud chcete zobrazit svou aplikaci Node.js na webu, získejte veřejnou IP adresu vašeho nástroje pro vyrovnávání zatížení pomocí příkazu [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Následující příklad získá IP adresu *myScaleSetLBPublicIP* vytvořenou jako součást škálovací sady:
 
-```azurecli-interactive 
+```azurecli-interactive
 az network public-ip show \
     --resource-group myResourceGroupScaleSet \
     --name myScaleSetLBPublicIP \
@@ -158,9 +159,9 @@ Pokud chcete vidět škálovací sadu v akci, můžete vynutit aktualizaci webov
 V průběhu životního cyklu škálovací sady možná budete potřebovat spustit jednu nebo více úloh správy. Kromě toho možná budete chtít vytvořit skripty pro automatizaci různých úloh souvisejících s životním cyklem. Azure CLI 2.0 nabízí rychlý způsob, jak tyto úlohy provést. Tady je několik běžných úloh.
 
 ### <a name="view-vms-in-a-scale-set"></a>Zobrazení virtuálních počítačů ve škálovací sadě
-Pokud chcete zobrazit seznam virtuálních počítačů spuštěných ve vaší škálovací sadě, použijte příkaz [az vmss list-instances](/cli/azure/vmss#az_vmss_list_instances) následujícím způsobem:
+Pokud chcete zobrazit seznam virtuálních počítačů spuštěných ve vaší škálovací sadě, použijte příkaz [az vmss list-instances](/cli/azure/vmss#az-vmss-list-instances) následujícím způsobem:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vmss list-instances \
   --resource-group myResourceGroupScaleSet \
   --name myScaleSet \
@@ -169,7 +170,7 @@ az vmss list-instances \
 
 Výstup se podobá následujícímu příkladu:
 
-```azurecli-interactive 
+```bash
   InstanceId  LatestModelApplied    Location    Name          ProvisioningState    ResourceGroup            VmId
 ------------  --------------------  ----------  ------------  -------------------  -----------------------  ------------------------------------
            1  True                  eastus      myScaleSet_1  Succeeded            MYRESOURCEGROUPSCALESET  c72ddc34-6c41-4a53-b89e-dd24f27b30ab
@@ -177,10 +178,10 @@ Výstup se podobá následujícímu příkladu:
 ```
 
 
-### <a name="increase-or-decrease-vm-instances"></a>Navýšení nebo snížení počtu instancí virtuálních počítačů
-Pokud chcete zobrazit počet instancí, které aktuálně máte ve škálovací sadě, použijte příkaz [az vmss show](/cli/azure/vmss#az_vmss_show) s dotazem na *sku.capacity*:
+### <a name="manually-increase-or-decrease-vm-instances"></a>Ruční zvýšení nebo snížení počtu instancí virtuálních počítačů
+Pokud chcete zobrazit počet instancí, které aktuálně máte ve škálovací sadě, použijte příkaz [az vmss show](/cli/azure/vmss#az-vmss-show) s dotazem na *sku.capacity*:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vmss show \
     --resource-group myResourceGroupScaleSet \
     --name myScaleSet \
@@ -188,93 +189,19 @@ az vmss show \
     --output table
 ```
 
-Pak můžete ručně navýšit nebo snížit počet virtuálních počítačů ve škálovací sadě pomocí příkazu [az vmss scale](/cli/azure/vmss#az_vmss_scale). Následující příklad nastaví počet virtuálních počítačů ve vaší škálovací sadě na *3*:
+Pak můžete ručně navýšit nebo snížit počet virtuálních počítačů ve škálovací sadě pomocí příkazu [az vmss scale](/cli/azure/vmss#az-vmss-scale). Následující příklad nastaví počet virtuálních počítačů ve vaší škálovací sadě na *3*:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vmss scale \
     --resource-group myResourceGroupScaleSet \
     --name myScaleSet \
     --new-capacity 3
 ```
 
-
-### <a name="configure-autoscale-rules"></a>Konfigurace pravidel automatického škálování
-Místo ručního škálování počtu instancí ve škálovací sadě můžete definovat pravidla automatického škálování. Tato pravidla monitorují instance ve vaší škálovací sadě a reagují odpovídajícím způsobem na základě metrik a prahových hodnot, které nadefinujete. Následující příklad horizontálně navýší kapacitu zvýšením počtu instancí o jednu v případě, že je průměrné zatížení procesoru vyšší než 60 % po dobu 5 minut. Pokud se pak průměrné zatížení procesoru sníží pod 30 % po dobu 5 minut, horizontálně se sníží kapacita snížením počtu instancí o jednu. K vytvoření identifikátorů URI prostředků pro různé komponenty škálovací sady se používá vaše ID předplatného. Pokud chcete vytvářet pravidla pomocí příkazu [az monitor autoscale-settings create](/cli/azure/monitor/autoscale-settings#az_monitor_autoscale_settings_create), zkopírujte a vložte následující profil příkazu pro automatické škálování:
-
-```azurecli-interactive 
-sub=$(az account show --query id -o tsv)
-
-az monitor autoscale-settings create \
-    --resource-group myResourceGroupScaleSet \
-    --name autoscale \
-    --parameters '{"autoscale_setting_resource_name": "autoscale",
-      "enabled": true,
-      "location": "East US",
-      "notifications": [],
-      "profiles": [
-        {
-          "name": "Auto created scale condition",
-          "capacity": {
-            "minimum": "2",
-            "maximum": "10",
-            "default": "2"
-          },
-          "rules": [
-            {
-              "metricTrigger": {
-                "metricName": "Percentage CPU",
-                "metricNamespace": "",
-                "metricResourceUri": "/subscriptions/'$sub'/resourceGroups/myResourceGroupScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet",
-                "metricResourceLocation": "eastus",
-                "timeGrain": "PT1M",
-                "statistic": "Average",
-                "timeWindow": "PT5M",
-                "timeAggregation": "Average",
-                "operator": "GreaterThan",
-                "threshold": 70
-              },
-              "scaleAction": {
-                "direction": "Increase",
-                "type": "ChangeCount",
-                "value": "1",
-                "cooldown": "PT5M"
-              }
-            },
-            {
-              "metricTrigger": {
-                "metricName": "Percentage CPU",
-                "metricNamespace": "",
-                "metricResourceUri": "/subscriptions/'$sub'/resourceGroups/myResourceGroupScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet",
-                "metricResourceLocation": "eastus",
-                "timeGrain": "PT1M",
-                "statistic": "Average",
-                "timeWindow": "PT5M",
-                "timeAggregation": "Average",
-                "operator": "LessThan",
-                "threshold": 30
-              },
-              "scaleAction": {
-                "direction": "Decrease",
-                "type": "ChangeCount",
-                "value": "1",
-                "cooldown": "PT5M"
-              }
-            }
-          ]
-        }
-      ],
-      "tags": {},
-      "target_resource_uri": "/subscriptions/'$sub'/resourceGroups/myResourceGroupScaleSet/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet"
-    }'
-```
-
-Pokud chcete profil automatického škálování používat opakovaně, můžete vytvořit soubor JSON (JavaScript Object Notation) a předat ho do příkazu `az monitor autoscale-settings create` v parametru `--parameters @autoscale.json`. Další informace o návrhu v souvislosti s používáním automatického škálování najdete v [osvědčených postupech pro automatické škálování](/azure/architecture/best-practices/auto-scaling).
-
-
 ### <a name="get-connection-info"></a>Získání informací o připojení
-Pokud chcete získat informace o připojení virtuálních počítačů ve škálovací sadě, použijte příkaz [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info). Tento příkaz pro všechny virtuální počítače vypíše veřejnou IP adresu a port, pomocí kterých se k nim můžete připojit přes SSH:
+Pokud chcete získat informace o připojení virtuálních počítačů ve škálovací sadě, použijte příkaz [az vmss list-instance-connection-info](/cli/azure/vmss#az-vmss-list-instance-connection-info). Tento příkaz pro všechny virtuální počítače vypíše veřejnou IP adresu a port, pomocí kterých se k nim můžete připojit přes SSH:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vmss list-instance-connection-info \
     --resource-group myResourceGroupScaleSet \
     --name myScaleSet
@@ -285,9 +212,9 @@ az vmss list-instance-connection-info \
 Můžete vytvořit datové disky a použít je se škálovacími sadami. V předchozím kurzu jste zjistili, jak [spravovat disky Azure](tutorial-manage-disks.md), a seznámili jste se s osvědčenými postupy a vylepšeními výkonu pro sestavování aplikací na datových discích místo disku s operačním systémem.
 
 ### <a name="create-scale-set-with-data-disks"></a>Vytvoření škálovací sady s datovými disky
-Pokud chcete vytvořit škálovací sadu a připojit k ní datové disky, přidejte do příkazu [az vmss create](/cli/azure/vmss#az_vmss_create) parametr `--data-disk-sizes-gb`. Následující příklad vytvoří škálovací sadu s *50GB* datovým diskem připojeným ke každé instanci:
+Pokud chcete vytvořit škálovací sadu a připojit k ní datové disky, přidejte do příkazu [az vmss create](/cli/azure/vmss#az-vmss-create) parametr `--data-disk-sizes-gb`. Následující příklad vytvoří škálovací sadu s *50GB* datovým diskem připojeným ke každé instanci:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vmss create \
     --resource-group myResourceGroupScaleSet \
     --name myScaleSetDisks \
@@ -302,9 +229,9 @@ az vmss create \
 Při odebírání instancí ze škálovací sady se odeberou také všechny připojené datové disky.
 
 ### <a name="add-data-disks"></a>Použití datových disků
-Pokud chcete k instancím ve škálovací sadě přidat datový disk, použijte příkaz [az vmss disk attach](/cli/azure/vmss/disk#az_vmss_disk_attach). Následující příklad přidá ke každé instanci *50*GB disk:
+Pokud chcete k instancím ve škálovací sadě přidat datový disk, použijte příkaz [az vmss disk attach](/cli/azure/vmss/disk#az-vmss-disk-attach). Následující příklad přidá ke každé instanci *50*GB disk:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vmss disk attach \
     --resource-group myResourceGroupScaleSet \
     --name myScaleSet \
@@ -313,9 +240,9 @@ az vmss disk attach \
 ```
 
 ### <a name="detach-data-disks"></a>Odpojení datových disků
-Pokud chcete z instancí ve škálovací sadě odebrat datový disk, použijte příkaz [az vmss disk detach](/cli/azure/vmss/disk#az_vmss_disk_detach). Následující příklad z každé instance odebere datový disk na logické jednotce *2*:
+Pokud chcete z instancí ve škálovací sadě odebrat datový disk, použijte příkaz [az vmss disk detach](/cli/azure/vmss/disk#az-vmss-disk-detach). Následující příklad z každé instance odebere datový disk na logické jednotce *2*:
 
-```azurecli-interactive 
+```azurecli-interactive
 az vmss disk detach \
     --resource-group myResourceGroupScaleSet \
     --name myScaleSet \

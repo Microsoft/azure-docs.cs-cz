@@ -11,11 +11,12 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 758906126b42c103853e0047bb19d2e96a84fae6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c5de0b1384958bc8553aa3722ad6a5829b69ab12
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35261317"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Vytvoření funkce v Linuxu pomocí vlastní image (verze Preview)
 
@@ -23,7 +24,7 @@ Služba Azure Functions umožňuje hostovat funkce v Linuxu ve vašem vlastním 
 
 V tomto kurzu se dozvíte, jak nasadit aplikaci Function App jako vlastní image Dockeru. Tento vzor je užitečný v případě, že potřebujete přizpůsobit vestavěnou image kontejneru služby App Service. Když vaše funkce vyžadují určitou jazykovou verzi nebo konkrétní závislost nebo konfiguraci, kterou vestavěná image neposkytuje, můžete chtít použít vlastní image.
 
-V tomto kurzu se dozvíte, jak pomocí služby Azure Functions vytvořit vlastní image a odeslat ji do Docker Hubu. Tuto image potom použijete jako zdroj nasazení aplikace Function App, která běží na systému Linux. Pomocí Dockeru tuto image sestavíte a odešlete. Pomocí rozhraní Azure CLI vytvoříte aplikaci Function App a nasadíte image z Docker Hubu. 
+V tomto kurzu se dozvíte, jak pomocí služby Azure Functions vytvořit vlastní image a odeslat ji do Centra Dockeru. Tuto image potom použijete jako zdroj nasazení aplikace Function App, která běží na systému Linux. Pomocí Dockeru tuto image sestavíte a odešlete. Pomocí rozhraní Azure CLI vytvoříte aplikaci Function App a nasadíte image z Centra Dockeru. 
 
 V tomto kurzu se naučíte:
 
@@ -32,7 +33,7 @@ V tomto kurzu se naučíte:
 > * Publikovat vlastní image do registru kontejneru 
 > * Vytvořit účet služby Azure Storage 
 > * Vytvořit plán služby App Service pro Linux 
-> * Nasadit aplikaci Function App z Docker Hubu
+> * Nasadit aplikaci Function App z Centra Dockeru
 > * Přidat do aplikace Function App nastavení aplikace 
 
 Následující kroky se podporují na počítačích se systémem Mac, Windows a Linux.  
@@ -43,8 +44,8 @@ Pro absolvování tohoto kurzu potřebujete:
 
 * [Git](https://git-scm.com/downloads)
 * Aktivní [předplatné Azure](https://azure.microsoft.com/pricing/free-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Docker](https://docs.docker.com/get-started/#setup)
-* [Účet Docker Hubu](https://docs.docker.com/docker-id/)
+* [Docker](https://docs.docker.com/install/)
+* [Účet Centra Dockeru](https://docs.docker.com/docker-id/)
 
 [!INCLUDE [Free trial note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -73,7 +74,7 @@ COPY . /home/site/wwwroot
 > Při hostování image v privátním registru kontejneru byste měli pomocí proměnných **ENV** v souboru Dockerfile přidat do aplikace Function App nastavení připojení. Jelikož tento kurz nemůže zaručit, že použijete privátní registr, nastavení připojení se v rámci osvědčeného postupu v oblasti zabezpečení [přidávají po nasazení pomocí rozhraní Azure CLI](#configure-the-function-app).   
 
 ### <a name="run-the-build-command"></a>Spuštění příkazu k sestavení
-Pokud chcete sestavit image Dockeru, spusťte příkaz `docker build` a zadejte název `mydockerimage` a značku `v1.0.0`. Položku `<docker-id>` nahraďte ID vašeho účtu Docker Hubu.
+Pokud chcete sestavit image Dockeru, spusťte příkaz `docker build` a zadejte název `mydockerimage` a značku `v1.0.0`. Položku `<docker-id>` nahraďte ID vašeho účtu Centra Dockeru.
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .
@@ -112,19 +113,19 @@ Když už v místním kontejneru Dockeru běží vlastní image, ověřte správ
 
 ![Místní testování aplikace Function App](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
-Po ověření aplikace Function App v kontejneru můžete aplikaci zastavit. Teď můžete vlastní image odeslat do svého účtu Docker Hubu.
+Po ověření aplikace Function App v kontejneru můžete aplikaci zastavit. Teď můžete vlastní image odeslat do svého účtu Centra Dockeru.
 
-## <a name="push-the-custom-image-to-docker-hub"></a>Odeslání vlastní image do Docker Hubu
+## <a name="push-the-custom-image-to-docker-hub"></a>Odeslání vlastní image do Centra Dockeru
 
-Registr je aplikace, která hostuje image a poskytuje image služeb a služby kontejneru. Pokud chcete svou image sdílet, musíte ji odeslat do registru. Docker Hub je registr pro image Dockeru, který umožňuje hostovat vlastní veřejná nebo privátní úložiště. 
+Registr je aplikace, která hostuje image a poskytuje image služeb a služby kontejneru. Pokud chcete svou image sdílet, musíte ji odeslat do registru. Centrum Dockeru je registr pro image Dockeru, který umožňuje hostovat vlastní veřejná nebo privátní úložiště. 
 
-Než budete moct odeslat image, musíte se přihlásit k Docker Hubu pomocí příkazu [docker login](https://docs.docker.com/engine/reference/commandline/login/). Položku `<docker-id>` nahraďte názvem svého účtu a po zobrazení výzvy zadejte do konzoly své heslo. Další možnosti hesla do Docker Hubu najdete v [dokumentaci k příkazu docker login](https://docs.docker.com/engine/reference/commandline/login/).
+Než budete moct odeslat image, musíte se přihlásit k Centru Dockeru pomocí příkazu [docker login](https://docs.docker.com/engine/reference/commandline/login/). Položku `<docker-id>` nahraďte názvem svého účtu a po zobrazení výzvy zadejte do konzoly své heslo. Další možnosti hesla do Centra Dockeru najdete v [dokumentaci k příkazu docker login](https://docs.docker.com/engine/reference/commandline/login/).
 
 ```bash
 docker login --username <docker-id> 
 ```
 
-Zpráva „login succeeded“ (Přihlášení proběhlo úspěšně) potvrzuje, že jste přihlášení. Po přihlášení odešlete image do Docker Hubu pomocí příkazu [docker push](https://docs.docker.com/engine/reference/commandline/push/).
+Zpráva „login succeeded“ (Přihlášení proběhlo úspěšně) potvrzuje, že jste přihlášení. Po přihlášení odešlete image do Centra Dockeru pomocí příkazu [docker push](https://docs.docker.com/engine/reference/commandline/push/).
 
 ```bash
 docker push <docker-id>/mydockerimage:v1.0.0
@@ -160,7 +161,7 @@ Plány Consumption v současné době nepodporují hostování služby Functions
 
 ## <a name="create-and-deploy-the-custom-image"></a>Vytvoření a nasazení vlastní image
 
-Aplikace Function App hostuje provádění vašich funkcí. Aplikaci Function App vytvoříte z image z Docker Hubu pomocí příkazu [az functionapp create](/cli/azure/functionapp#az_functionapp_create). 
+Aplikace Function App hostuje provádění vašich funkcí. Aplikaci Function App vytvoříte z image z Centra Dockeru pomocí příkazu [az functionapp create](/cli/azure/functionapp#az_functionapp_create). 
 
 V následujícím příkazu nahraďte zástupný symbol `<app_name>` jedinečným názvem vaší aplikace funkcí a `<storage_name>` názvem účtu úložiště. Jako výchozí doména DNS pro příslušnou aplikaci Function App se použije `<app_name>`, a proto musí být název mezi všemi aplikacemi v Azure jedinečný. Stejně jako předtím má váš účet Dockeru název `<docker-id>`.
 
@@ -188,7 +189,7 @@ Po vytvoření aplikace Function App se v Azure CLI zobrazí podobné informace 
 }
 ```
 
-Parametr _deployment-container-image-name_ určuje image hostovanou v Docker Hubu, která se má použít k vytvoření aplikace Function App. 
+Parametr _deployment-container-image-name_ určuje image hostovanou v Centru Dockeru, která se má použít k vytvoření aplikace Function App. 
 
 
 ## <a name="configure-the-function-app"></a>Konfigurace aplikace Function App
@@ -223,10 +224,10 @@ V tomto kurzu jste se naučili:
 > * Publikovat vlastní image do registru kontejneru 
 > * Vytvořit účet služby Azure Storage 
 > * Vytvořit plán služby App Service pro Linux 
-> * Nasadit aplikaci Function App z Docker Hubu
+> * Nasadit aplikaci Function App z Centra Dockeru
 > * Přidat do aplikace Function App nastavení aplikace
 
-Přečtěte si další informace o místním vývoji funkcí Azure Functions pomocí nástrojů Azure Functions Core.
+Zjistěte, jak povolit funkci průběžné integrace, která je integrovaná v základní platformě App Service. Aplikaci funkcí můžete nakonfigurovat tak, aby se při aktualizaci image v Centru Dockeru znovu nasadil kontejner.
 
 > [!div class="nextstepaction"] 
-> [Místní psaní kódu a testování funkcí Azure Functions](functions-run-local.md)
+> [Průběžné nasazování pomocí služby Web App for Containers](../app-service/containers/app-service-linux-ci-cd.md)

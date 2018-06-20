@@ -1,13 +1,13 @@
 ---
-title: "Ukázka odebrat Azure Service Fabric rozhraní příkazového řádku skriptu"
-description: "Odebrání aplikace z clusteru služby Azure Service Fabric pomocí rozhraní příkazového řádku Azure Service Fabric"
+title: Ukázka odebrání skriptu Azure Service Fabric CLI (sfctl)
+description: Odebrání aplikace z clusteru služby Azure Service Fabric pomocí rozhraní příkazového řádku Azure Service Fabric CLI
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: thraka
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
@@ -15,17 +15,18 @@ ms.topic: sample
 ms.date: 12/06/2017
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 95a6bac7ee79e3490584305e78d410104363b780
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
-ms.translationtype: MT
+ms.openlocfilehash: 83f2fc52debd24afd97a391466cb5a0b1a8cd93c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642712"
 ---
 # <a name="remove-an-application-from-a-service-fabric-cluster"></a>Odebrání aplikace z clusteru Service Fabric
 
-Tento ukázkový skript odstraní spuštěné instance aplikace Service Fabric, zrušení registrace typ a verze aplikace z clusteru.  Odstranění instance aplikace na také odstraní všechny spuštěné služby instance přidružené s touto aplikací. Soubory aplikace v dalším kroku se odstraní z úložiště bitových kopií. 
+Tento ukázkový skript odstraní běžící instance aplikace Service Fabric a potom zruší registraci typu a verze aplikace z clusteru.  Odstraněním instance aplikace dojde také k odstranění všech spuštěných instancí služby přidružených dané aplikaci. Soubory aplikace se pak odstraní z úložiště bitových kopií. 
 
-V případě potřeby nainstalujte [Service Fabric rozhraní příkazového řádku](../service-fabric-cli.md).
+V případě potřeby nainstalujte [Service Fabric CLI](../service-fabric-cli.md).
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -33,6 +34,6 @@ V případě potřeby nainstalujte [Service Fabric rozhraní příkazového řá
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace najdete v tématu [Service Fabric rozhraní příkazového řádku dokumentaci](../service-fabric-cli.md).
+Další informace najdete v [dokumentaci k rozhraní Service Fabric CLI](../service-fabric-cli.md).
 
-Další ukázky pro Service Fabric rozhraní příkazového řádku pro Azure Service Fabric najdete v [Service Fabric rozhraní příkazového řádku ukázky](../samples-cli.md).
+Další ukázky rozhraní Service Fabric CLI pro Azure Service Fabric najdete v [ukázkách rozhraní Service Fabric CLI](../samples-cli.md).

@@ -1,5 +1,5 @@
 ---
-title: Přehled virtuálních počítačů s Windows | Dokumentace Microsoftu
+title: Přehled virtuálních počítačů s Windows | Microsoft Docs
 description: Zjistěte, jak vytvářet a spravovat virtuální počítače s Windows v Azure.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,11 +16,12 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ff709d021c9d4201301edd9890f1e4a94f555313
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 105eb95ed28d9a278d60d538aabaadb412c16f4f
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35267107"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Přehled virtuálních počítačů s Windows v Azure
 
@@ -75,7 +76,7 @@ Vaše předplatné má nastavené výchozí [kvóty](../../azure-subscription-se
 ### <a name="operating-system-disks-and-images"></a>Disky a image operačních systémů
 Virtuální počítače používají [virtuální pevné disky (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json), na které ukládají svůj operační systém (OS) a data. Virtuální pevné disky se používají i pro image, ze kterých si můžete nainstalovat operační systém. 
 
-Azure poskytuje mnoho [imagí na webu Marketplace](https://azure.microsoft.com/marketplace/virtual-machines/) s různými verzemi a typy operačních systémů Windows Server, které můžete použít. Image pořízené na webu Marketplace jsou identifikované vydavatelem image, nabídkou, skladovou jednotkou (SKU) a verzí (verze je obvykle uvedena jako poslední). 
+Azure poskytuje mnoho [imagí na webu Marketplace](https://azure.microsoft.com/marketplace/virtual-machines/) s různými verzemi a typy operačních systémů Windows Server, které můžete použít. Image pořízené na webu Marketplace jsou identifikované vydavatelem image, nabídkou, skladovou jednotkou (SKU) a verzí (verze je obvykle uvedena jako poslední). Podporují se jen 64bitové operační systémy. Podrobnosti o podporovaných hostovaných operačních systémech, rolích a funkcích najdete v tématu věnovaném [podpoře serverového softwaru Microsoft pro virtuální počítače Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
 Tato tabulka ukazuje několik způsobů, jak můžete najít informace o imagi.
 

@@ -5,16 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/07/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 6a42f4b5b54056424bc3e2d865408ad6711403e0
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4a5e613169bf3173b7585b49803fc7ac7f5186ce
+ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35297967"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Aktivace účtů a předplatných Azure pomocí Azure Cost Managementu
 
@@ -35,7 +36,7 @@ Pokud je vašemu účtu přiřazena role **přispěvatele**, nemáte dostatečn�
 
 ### <a name="check-azure-active-directory-permissions"></a>Kontrola oprávnění Azure Active Directory
 
-1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
 2. Na portálu Azure Portal vyberte **Azure Active Directory**.
 3. V Azure Active Directory vyberte **Uživatelská nastavení**.
 4. Zkontrolujte nastavení **Registrace aplikací**.
@@ -59,7 +60,7 @@ Když přidáte účet nebo aktualizujete předplatné, povolíte službě Azure
 1. Pokud chcete aktualizovat _neaktivované_ předplatné, které už ve službě Azure Cost Management v nástroji pro správu účtů máte, klikněte na symbol tužky pro úpravy napravo od nadřazeného _identifikátoru GUID tenanta_. Předplatná jsou seskupená pod nadřazeným tenantem, neaktivujte je tedy jednotlivě.
     ![Opětovné zjištění předplatných](./media/activate-subs-accounts/existing-sub.png)
 2. Pokud je potřeba, zadejte ID tenanta. Jestliže ID tenanta neznáte, vyhledejte ho pomocí následujících kroků:
-    1. Přihlaste se na [Azure Portal](https://portal.azure.com).
+    1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
     2. Na portálu Azure Portal vyberte **Azure Active Directory**.
     3. K získání ID tenanta vyberte v tenantovi Azure AD možnost **Vlastnosti**.
     4. Zkopírujte GUID adresáře. Tato hodnota představuje ID tenanta.
@@ -72,7 +73,7 @@ Když přidáte účet nebo aktualizujete předplatné, povolíte službě Azure
 4. V dialogu pro přidání nového účtu nebo úpravu předplatného klikněte na **Save** (Uložit) nebo na **Next** (Další). Budete přesměrováni na Azure Portal.
 5. Přihlaste se k portálu. Kliknutím na **Accept** (Přijmout) udělíte kolektoru služby Azure Cost Management přístup k vašemu účtu Azure.
 
-    Budete přesměrováni na stránku pro správu účtů služby Azure Cost Management a vaše předplatné se aktualizuje se stavem účtu **active** (aktivní). Ve sloupci Resource Manager (Správce prostředku) by se mělo zobrazit zelené zatržítko.
+    Budete přesměrováni na stránku pro správu účtů služby Azure Cost Management a vaše předplatné se aktualizuje se stavem účtu **active** (aktivní). Ve sloupci Resource Manager (Správce prostředků) by se mělo zobrazit zelené zatržítko.
 
     Pokud u některých předplatných zelené zatržítko nevidíte, znamená to, že nemáte oprávnění vytvářet pro ně aplikaci čtečky (CloudynCollector). Je potřeba, aby tento proces zopakoval uživatel, který má k těmto předplatným vyšší oprávnění.
 
@@ -95,14 +96,39 @@ Tady je postup řešení těchto potíží:
 1. Váš prodejce musí pro váš účet povolit _revize_. Postup najdete v [pokynech k nepřímé registraci zákazníka](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 2. Vygenerujte klíč smlouvy Azure Enterprise pro použití se službou Azure Cost Management. Pokyny najdete v článku o [registraci smlouvy Azure Enterprise a zobrazení informací o nákladech](https://docs.microsoft.com/azure/cost-management/quick-register-ea).
 
-Službu Cost Management může povolit jenom správce služeb Azure. Oprávnění spolusprávce k tomu nestačí.
-
 Než budete moct vygenerovat klíč rozhraní API smlouvy Azure Enterprise k nastavení služby Azure Cost Management, musíte podle následujících pokynů povolit rozhraní API pro fakturaci Azure:
 
 - [Přehled rozhraní API pro vytváření sestav pro podnikové zákazníky](../billing/billing-enterprise-api.md)
 - [Rozhraní API pro vytváření sestav na podnikovém portálu Microsoft Azure](https://ea.azure.com/helpdocs/reportingAPI) v části o **povolení přístupu k datům pro rozhraní API**
 
 Také může být potřeba, abyste udělili oprávnění _zobrazovat poplatky_ v rozhraní API pro fakturaci správcům oddělení, vlastníkům účtů a podnikovým správcům.
+
+Službu Cost Management může povolit jenom správce služeb Azure. Oprávnění spolusprávce k tomu nestačí. Tento požadavek můžete nicméně obejít. Požádejte správce Azure Active Directory o udělení oprávnění k autorizaci aplikace **CloudynAzureCollector** skriptem PowerShellu. Níže uvedený skript udělí oprávnění k registraci aplikace **CloudynAzureCollector** instančního objektu služby Azure Active Directory.
+
+```
+#THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+#Tenant - enter your tenant ID or Name
+$tenant = "<ReplaceWithYourTenantID>"
+
+#Cloudyn Collector application ID
+$appId = "83e638ef-7885-479f-bbe8-9150acccdb3d"
+
+#URL to activate the consent screen
+$url = "https://login.windows.net/"+$tenant+"/oauth2/authorize?api-version=1&response_type=code&client_id="+$appId+"&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2FCloudynJava&prompt=consent"
+
+#Choose your browser, the default is Internet Explorer
+
+#Chrome
+#[System.Diagnostics.Process]::Start("chrome.exe", "--incognito $url")
+
+#Firefox
+#[System.Diagnostics.Process]::Start("firefox.exe","-private-window $url" )
+
+#IExplorer
+[System.Diagnostics.Process]::Start("iexplore.exe","$url -private" )
+
+```
 
 ## <a name="next-steps"></a>Další kroky
 

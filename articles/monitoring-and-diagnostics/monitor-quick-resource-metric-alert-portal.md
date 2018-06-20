@@ -1,20 +1,20 @@
 ---
-title: Přijímání oznámení, když hodnota metriky splní určitou podmínku | Dokumentace Microsoftu
+title: Přijímání oznámení, když hodnota metriky splní určitou podmínku
 description: Úvodní příručka, pomocí které můžou uživatelé vytvořit metriku pro aplikaci logiky.
 author: anirudhcavale
-manager: orenr
-services: monitoring-and-diagnostics
-documentationcenter: monitoring-and-diagnostics
-ms.service: monitoring-and-diagnostics
+services: azure-monitor
+ms.service: azure-monitor
 ms.topic: quickstart
 ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 0bbb7d7036c18675a64171a8bbf5c7fa46d53336
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: alerts
+ms.openlocfilehash: 01955ba7a61b3eb46be6bad72c7243c4918add12
+ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/11/2018
+ms.locfileid: "35263044"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>Přijímání oznámení, když hodnota metriky splní určitou podmínku
 
@@ -69,7 +69,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte kartu **Metriky** a jako **Předplatné**, **Skupina prostředků**, **Typ prostředku** a **Prostředek** vyplňte informace o vaší aplikaci logiky.
 
-3. Ze seznamu metrik vyberte **Spuštěné běhy**.
+3. Ze seznamu metrik vyberte **Neúspěšné běhy**.
 
 4. Upravte **Časový rozsah** grafu tak, aby zobrazoval data za poslední hodinu.
 

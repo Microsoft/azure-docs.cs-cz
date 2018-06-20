@@ -11,22 +11,23 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/21/2018
+ms.date: 05/21/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 154ba47881c65d963729f9074d93c7bb61020389
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: eec54e0074cbc00fb8c51cf28ba477ef75f99a3c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657236"
 ---
-# <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-powershell"></a>Kurz: Informace o řízení virtuálních počítačů Linux pomocí Azure PowerShellu
+# <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>Kurz: Informace o řízení virtuálních počítačů s Windows pomocí Azure PowerShellu
 
 [!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, přečtěte si článek o [instalaci Azure PowerShellu](/powershell/azure/install-azurerm-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzureRmAccount` pro vytvoření připojení k Azure. Pro místní instalace musíte také [stáhnout modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) k vytvoření nové skupiny Azure Active Directory.
+Příklady v tomto článku vyžadují prostředí Azure PowerShell verze 6.0 nebo novější. Pokud používáte prostředí PowerShell místně a nemáte verzi 6.0 nebo novější, [proveďte aktualizaci](/powershell/azure/install-azurerm-ps). Musíte také spustit příkaz `Connect-AzureRmAccount`, abyste vytvořili připojení k Azure. Pro místní instalace musíte také [stáhnout modul Azure AD PowerShell](https://www.powershellgallery.com/packages/AzureAD/) k vytvoření nové skupiny Azure Active Directory.
 
 ## <a name="understand-scope"></a>Orientace v oborech
 
@@ -196,13 +197,13 @@ Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentatio
 K vyhledání prostředků pomocí názvu značky a hodnoty použijte příkaz [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource):
 
 ```azurepowershell-interactive
-(Find-AzureRmResource -TagName Environment -TagValue Test).Name
+(Get-AzureRmResource -Tag @{ Environment="Test"}).Name
 ```
 
 Vrácené hodnoty můžete použít pro úlohy správy, jako je zastavení všech virtuálních počítačů s určitou hodnotou značky.
 
 ```azurepowershell-interactive
-Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
+Get-AzureRmResource -Tag @{ Environment="Test"} | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
 ```
 
 ### <a name="view-costs-by-tag-values"></a>Zobrazení nákladů podle hodnoty značky

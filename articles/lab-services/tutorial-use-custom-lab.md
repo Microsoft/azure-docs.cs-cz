@@ -1,5 +1,5 @@
 ---
-title: Přístup k vlastnímu testovacímu prostředí v Azure DevTest Labs | Microsoft Docs
+title: Přístup k testovacímu prostředí v Azure DevTest Labs | Microsoft Docs
 description: V tomto kurzu budete přistupovat k testovacímu prostředí vytvořenému pomocí služby Azure DevTest Labs, nárokovat virtuální počítače, používat je a potom je vracet.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
@@ -14,20 +14,20 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: be4bde6bd320e8af7cd3119ff4ccdabd942963ca
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: cd623767c9627810afb64ca9185c991c5c9f3858
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361834"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34638020"
 ---
-# <a name="tutorial-access-a-custom-lab-in-azure-devtest-labs"></a>Kurz: Přístup k vlastnímu testovacímu prostředí v Azure DevTest Labs
-V tomto kurzu použijete vlastní testovací prostředí vytvořené v tématu [Kurz: Vytvoření vlastní testovacího prostředí](tutorial-create-custom-lab.md).
+# <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>Kurz: Přístup k testovacímu prostředí v Azure DevTest Labs
+V tomto kurzu použijete testovací prostředí vytvořené v tématu [Kurz: Vytvoření testovacího prostředí v Azure DevTest Labs](tutorial-create-custom-lab.md).
 
 V tomto kurzu provedete následující akce:
 
 > [!div class="checklist"]
-> * Nárokování virtuálního počítače ve vlastním testovacím prostředí
+> * Nárokování virtuálního počítače v testovacím prostředí
 > * Připojení k virtuálnímu počítači
 > * Vrácení virtuálního počítače
 
@@ -70,8 +70,8 @@ Jakmile virtuální počítač přestanete používat, vraťte ho pomocí násle
 1. Po dokončení operace vrácení se virtuální počítač zobrazí dole v seznamu **Nárokovatelné virtuální počítače**. 
     
 ## <a name="next-steps"></a>Další kroky
-Tento kurz vám ukázal, jak přistupovat k vlastnímu testovacímu prostředí vytvořenému pomocí služby Azure DevTest Labs a jak ho používat. Další informace o přístupu k virtuálním počítačům a o jejich používání ve vlastním testovacím prostředí najdete v tématu 
+Tento kurz vám ukázal, jak přistupovat k testovacímu prostředí vytvořenému pomocí služby Azure DevTest Labs a jak ho používat. Další informace o přístupu k virtuálním počítačům a o jejich používání v testovacím prostředí najdete v tématu 
 
 > [!div class="nextstepaction"]
-> [Postupy: Použití virtuálních počítačů ve vlastním testovacím prostředí](devtest-lab-add-vm.md)
+> [Postupy: Použití virtuálních počítačů v testovacím prostředí](devtest-lab-add-vm.md)
 

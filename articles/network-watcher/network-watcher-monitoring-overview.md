@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 6b01a4c88f3dbb4d24566e514fd5989cda11005a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 47b3ca20b32188f3cf102934c7f21d6418f3c2f6
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639339"
 ---
 # <a name="what-is-azure-network-watcher"></a>Co je Azure Network Watcher?
 
@@ -48,11 +49,11 @@ Můžete si stáhnout upravitelnou verzi obrázku ve formátu SVG. Další infor
 
 ### <a name="diagnose-network-traffic-filtering-problems-to-or-from-a-vm"></a>Diagnostika problémů s filtrováními provozu do nebo z virtuálního počítače
 
-Když nasadíte virtuální počítač, Azure pro něj použije několik výchozích pravidel zabezpečení, která povolí nebo zakáží provoz do nebo z tohoto virtuálního počítače. Výchozí pravidla Azure můžete přepsat nebo můžete vytvořit další pravidla. V určitém okamžiku může virtuální počítač kvůli pravidlu zabezpečení ztratit schopnost komunikace s dalšími prostředky. Funkce *Ověření toku protokolu IP* umožňuje zadat zdrojovou a cílovou IPv4 adresu, port, protokol (TCP nebo UDP) a směr provozu (příchozí nebo odchozí). Ověření toku protokolu IP pak otestuje komunikaci a poskytne vám informace o úspěchu nebo selhání připojení. Pokud připojení selže, ověření toku protokolu IP vám poskytne informace o tom, které pravidlo zabezpečení komunikaci povolilo nebo zamítlo, abyste problém mohli vyřešit. Další informace o [ověření toku protokolu IP](network-watcher-ip-flow-verify-overview.md).
+Když nasadíte virtuální počítač, Azure pro něj použije několik výchozích pravidel zabezpečení, která povolí nebo zakáží provoz do nebo z tohoto virtuálního počítače. Výchozí pravidla Azure můžete přepsat nebo můžete vytvořit další pravidla. V určitém okamžiku může virtuální počítač kvůli pravidlu zabezpečení ztratit schopnost komunikace s dalšími prostředky. Funkce *Ověření toku protokolu IP* umožňuje zadat zdrojovou a cílovou IPv4 adresu, port, protokol (TCP nebo UDP) a směr provozu (příchozí nebo odchozí). Ověření toku protokolu IP pak otestuje komunikaci a poskytne vám informace o úspěchu nebo selhání připojení. Pokud připojení selže, ověření toku protokolu IP vám poskytne informace o tom, které pravidlo zabezpečení komunikaci povolilo nebo zamítlo, abyste problém mohli vyřešit. Další informace o ověření toku protokolu IP získáte tak, že si projdete kurz týkající se [diagnostiky potíží s filtrováním síťového provozu u virtuálního počítače](diagnose-vm-network-traffic-filtering-problem.md).
 
 ### <a name="diagnose-network-routing-problems-from-a-vm"></a>Diagnostika problémů se síťovým směrováním z virtuálního počítače
 
-Když vytvoříte virtuální síť, Azure vytvoří pro provoz několik výchozích odchozích tras. Odchozí provoz ze všech prostředků nasazených ve virtuální síti, jako jsou virtuální počítače, se směruje na základě výchozích tras Azure. Výchozí trasy Azure můžete přepsat nebo můžete vytvořit další trasy. Možná zjistíte, že virtuální počítač už kvůli určité trase nemůže komunikovat s dalšími prostředky. Funkce *dalšího segmentu směrování* umožňuje zadat zdrojovou a cílovou IPv4 adresu. Další segment směrování pak otestuje komunikaci a poskytne vám informace o použitém typu dalšího segmentu směrování ke směrování provozu. Problém se směrováním pak můžete vyřešit odebráním, změnou nebo přidáním trasy. Další informace o funkci [dalšího segmentu směrování](network-watcher-next-hop-overview.md?).
+Když vytvoříte virtuální síť, Azure vytvoří pro provoz několik výchozích odchozích tras. Odchozí provoz ze všech prostředků nasazených ve virtuální síti, jako jsou virtuální počítače, se směruje na základě výchozích tras Azure. Výchozí trasy Azure můžete přepsat nebo můžete vytvořit další trasy. Možná zjistíte, že virtuální počítač už kvůli určité trase nemůže komunikovat s dalšími prostředky. Funkce *dalšího segmentu směrování* umožňuje zadat zdrojovou a cílovou IPv4 adresu. Další segment směrování pak otestuje komunikaci a poskytne vám informace o použitém typu dalšího segmentu směrování ke směrování provozu. Problém se směrováním pak můžete vyřešit odebráním, změnou nebo přidáním trasy. Další informace o funkci [dalšího segmentu směrování](diagnose-vm-network-routing-problem.md).
 
 ### <a name="connection-troubleshoot"></a>Diagnostika odchozích připojení z virtuálního počítače
 
@@ -64,7 +65,7 @@ Rozšířené možnosti filtrování a jemně vyladěné ovládací prvky, jako 
 
 ### <a name="diagnose-problems-with-an-azure-virtual-network-gateway-and-connections"></a>Diagnostika problémů s bránou virtuální sítě Azure a připojeními
 
-Brány virtuální sítě zajišťují připojení mezi místními prostředky a virtuálními sítěmi Azure. Pro zajištění, aby nedošlo k přerušení komunikace, je důležité monitorovat brány a jejich připojení. Funkce *diagnostiky sítě VPN* poskytuje možnost diagnostikovat brány a připojení. Diagnostika sítě VPN diagnostikuje stav brány nebo připojení brány a poskytuje informace o dostupnosti brány nebo připojení brány. Pokud brána nebo připojení nejsou dostupné, diagnostika sítě VPN vám poskytne informace o příčině, abyste problém mohli vyřešit. Další informace o [diagnostice sítě VPN](network-watcher-troubleshoot-overview.md).
+Brány virtuální sítě zajišťují připojení mezi místními prostředky a virtuálními sítěmi Azure. Pro zajištění, aby nedošlo k přerušení komunikace, je důležité monitorovat brány a jejich připojení. Funkce *diagnostiky sítě VPN* poskytuje možnost diagnostikovat brány a připojení. Diagnostika sítě VPN diagnostikuje stav brány nebo připojení brány a poskytuje informace o dostupnosti brány nebo připojení brány. Pokud brána nebo připojení nejsou dostupné, diagnostika sítě VPN vám poskytne informace o příčině, abyste problém mohli vyřešit. Další informace o diagnostice sítě VPN získáte tak, že si projdete kurz týkající se [diagnostiky potíží s komunikací mezi sítěmi](diagnose-communication-problem-between-networks.md).
 
 ### <a name="determine-relative-latencies-between-azure-regions-and-internet-service-providers"></a>Určení relativních latencí mezi oblastmi Azure a poskytovateli internetových služeb
 
@@ -90,7 +91,7 @@ Skupiny zabezpečení sítě (NSG) povolují nebo zamítají příchozí nebo od
 
 ![Analýza provozu](./media/network-watcher-monitoring-overview/traffic-analytics.png)
 
-Další informace o [protokolech toků NSG](network-watcher-nsg-flow-logging-overview.md) a [analýze provozu](traffic-analytics.md).
+Další informace o protokolech toku NSG získáte tak, že si projdete kurz týkající se [protokolování síťového provozu do a z virtuálního počítače](network-watcher-nsg-flow-logging-portal.md) a způsobu implementace [analýzy provozu](traffic-analytics.md).
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Zobrazení diagnostických protokolů pro síťové prostředky
 

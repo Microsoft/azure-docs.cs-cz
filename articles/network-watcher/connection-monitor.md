@@ -16,11 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: bfd9552a0d7c3b1e631fcc1a25d240608754c6a3
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 9b13b8ae0b64dc84e476f5fc5da59ea30702fd8d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639023"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Kurz: Monitorování síťové komunikace mezi dvěma virtuálními počítači na webu Azure Portal
 
@@ -141,7 +142,7 @@ Azure ve výchozím nastavení umožňuje komunikaci mezi virtuálními počíta
 
 5. Monitorování připojení provádí testování v intervalech 60 sekund, a proto počkejte několik minut a pak na levé straně portálu vyberte **Network Watcher**, pak **Monitorování připojení** a pak znovu vyberte monitorování **myVm1-myVm2(22)**. Výsledky se teď liší, jak můžete vidět na následujícím obrázku:
 
-    ![Monitor details fault](./media/connection-monitor/vm-monitor-fault .png)
+    ![Chyba monitorování podrobností](./media/connection-monitor/vm-monitor-fault.png)
 
     Ve sloupci se stavem pro síťové rozhraní **myvm2529** se zobrazuje červený vykřičník.
 

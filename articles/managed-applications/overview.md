@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 04/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 643998921ec2ae4ec6737dc4ab88160e85007867
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: d87b27101b5bbb3fb589987865649e102d7835de
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34304993"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639203"
 ---
 # <a name="azure-managed-applications-overview"></a>Přehled spravovaných aplikací Azure
 
@@ -53,7 +53,9 @@ Informace o publikování spravovaných aplikací do Marketplace najdete v téma
 
 ## <a name="resource-groups-for-managed-applications"></a>Skupiny prostředků pro spravované aplikace
 
-Prostředky pro spravované aplikace se většinou nacházejí ve dvou skupinách prostředků. Jednu skupinu prostředků spravuje zákazník a druhou vydavatel. Při definování spravované aplikace určí vydavatel úrovně přístupu. Následující obrázek znázorňuje situaci, kdy vydavatel požaduje pro spravovanou skupinu prostředků roli vlastníka. Pro zákazníka nastavil vydavatel u této skupiny prostředků zámek jen pro čtení. Zámek se nevztahuje na identity vydavatelů s uděleným přístupem ke spravované skupině prostředků.
+Prostředky pro spravované aplikace se většinou nacházejí ve dvou skupinách prostředků. Jednu skupinu prostředků spravuje zákazník a druhou vydavatel. Při definování spravované aplikace určí vydavatel úrovně přístupu. Omezení přístupu pro [operace dat](../role-based-access-control/role-definitions.md) se momentálně nepodporuje pro všechny poskytovatele dat v Azure.
+
+Následující obrázek znázorňuje situaci, kdy vydavatel požaduje pro spravovanou skupinu prostředků roli vlastníka. Pro zákazníka nastavil vydavatel u této skupiny prostředků zámek jen pro čtení. Zámek se nevztahuje na identity vydavatelů s uděleným přístupem ke spravované skupině prostředků.
 
 ![Přístup ke skupině prostředků](./media/overview/access.png)
 

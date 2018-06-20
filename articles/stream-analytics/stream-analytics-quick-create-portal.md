@@ -9,11 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 86d4bab282db0ffc7b48813b9817eed0b45c3199
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 1e7245afe36d348b1cbd955900e34876b8e34511
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34651722"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure Portal
 
@@ -39,9 +40,9 @@ Než začnete definovat úlohu Stream Analytics, připravte si data nakonfigurov
      "hmdt": 44
    }
    ```
-2. Přihlaste se k portálu Azure.  
+2. Přihlaste se k portálu Azure Portal.  
 
-3. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Úložiště** > **Účet úložiště**. Vyplňte informace na stránce úlohy Účet úložiště a nastavte **Název** na „myasastorageaccount“, **Umístění** na „West US 2“, **Skupinu prostředků** na „MyRG“ (z důvodu zajištění vyššího výkonu se účet úložiště hostuje ve stejné skupině prostředků jako úloha streamování). Ostatní nastavení můžou zůstat na výchozích hodnotách.  
+3. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Úložiště** > **Účet úložiště**. Vyplňte informace na stránce úlohy Účet úložiště a nastavte **Název** na „asaquickstartstorage“, **Umístění** na „West US 2“, **Skupinu prostředků** na „asaquickstart-resourcegroup“ (kvůli zajištění vyššího výkonu se účet úložiště hostuje ve stejné skupině prostředků jako úloha streamování). Ostatní nastavení můžou zůstat na výchozích hodnotách.  
 
    ![Vytvoření účtu úložiště](./media/stream-analytics-quick-create-portal/create-a-storage-account.png)
 
@@ -61,15 +62,15 @@ Než začnete definovat úlohu Stream Analytics, připravte si data nakonfigurov
 
 2. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek**.  
 
-3. V seznamu výsledků vyberte **Data + analýzy** > **Úloha Stream Analytics**.  
+3. V seznamu výsledků vyberte **Data + analýzy** > **Úloha Stream Analytics job**.  
 
 4. Na stránce Úloha Stream Analytics zadejte následující informace:
 
    |**Nastavení**  |**Navrhovaná hodnota**  |**Popis**  |
    |---------|---------|---------|
-   |Název úlohy   |  myJob   |   Zadejte název pro identifikaci úlohy Stream Analytics. Název úlohy Stream Analytics může obsahovat jen alfanumerické znaky, spojovníky a podtržítka a musí být dlouhý 3 až 63 znaků. |
+   |Název úlohy   |  myasajob   |   Zadejte název pro identifikaci úlohy Stream Analytics. Název úlohy Stream Analytics může obsahovat jen alfanumerické znaky, spojovníky a podtržítka a musí být dlouhý 3 až 63 znaků. |
    |Předplatné  | \<Vaše předplatné\> |  Vyberte předplatné Azure, které chcete použít pro vaši úlohu. |
-   |Skupina prostředků   |   myResourceGroup  |   Vyberte**Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet. |
+   |Skupina prostředků   |   asaquickstart-resourcegroup  |   Vyberte**Vytvořit nový** a zadejte název nové skupiny prostředků pro váš účet. |
    |Umístění  |  \<Vyberte oblast nejbližší vašim uživatelům.\> | Vyberte zeměpisnou polohu, kde je možné hostovat úlohu Stream Analytics. V zájmu vyššího výkonu a nižších nákladů za přenos dat zvolte umístění co nejbližší vašim uživatelům. |
    |Jednotky streamování  | 1  |   Jednotky streamování představují výpočetní prostředky nutné k provedení úlohy. Ve výchozím nastavení je tato hodnota nastavená na 1. Podrobnosti o škálování jednotek streamování najdete v článku věnovaném [principům a úpravám jednotek streamování](stream-analytics-streaming-unit-consumption.md).   |
    |Hostitelské prostředí  |  Cloud  |   Úlohy Stream Analytics můžete nasadit do cloudu nebo do hraničního zařízení. Možnost Cloud umožňuje nasazení do Azure Cloud, možnost Edge do zařízení IoT Edge. |
@@ -116,7 +117,8 @@ V této části nakonfigurujete úložiště objektů blob jako vstup do úlohy 
    |Alias pro výstup |   BlobOutput   |   Zadejte název pro identifikaci výstupu úlohy. |
    |Předplatné  |  \<Vaše předplatné\>  |  Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného. |
    |Účet úložiště |  myasastorageaccount |   Vyberte nebo zadejte název účtu úložiště. Pokud jsou názvy vytvořeny v rámci stejného předplatného, zjišťují se automaticky.       |
-   |Kontejner |   container2  |  Vytvořte nový kontejner ve stejném účtu úložiště, jako jste použili pro vstup.   |
+   |Kontejner |   container1  |  Vyberte existující kontejner, který jste vytvořili v účtu úložiště.   |
+   |Vzor cesty |   output  |  Zadejte název, který bude sloužit jako cesta v rámci stávajícího kontejneru pro výstup.   |
 
 4. U ostatních možností ponechejte výchozí hodnoty a výběrem možnosti **Uložit** uložte nastavení.  
 
@@ -153,7 +155,7 @@ V této části nakonfigurujete úložiště objektů blob jako vstup do úlohy 
 
    ![Spuštění úlohy](./media/stream-analytics-quick-create-portal/start-the-job.png)
 
-3. Po několika minutách najděte na portálu účet úložiště a kontejner, které jste nakonfigurovali jako výstup úlohy. Soubor výstupu teď uvidíte v kontejneru. První spuštění úlohy trvá několik minut. Potom bude úloha dál běžet s tím, jak budou data přicházet.  
+3. Po několika minutách najděte na portálu účet úložiště a kontejner, které jste nakonfigurovali jako výstup úlohy. Vyberte výstupní cestu. Soubor výstupu teď uvidíte v kontejneru. První spuštění úlohy trvá několik minut. Potom bude úloha dál běžet s tím, jak budou data přicházet.  
 
    ![Transformovaný výstup](./media/stream-analytics-quick-create-portal/transformed-output.png)
 

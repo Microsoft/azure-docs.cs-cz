@@ -1,5 +1,5 @@
 ---
-title: Správa pracovních prostorů v Azure Log Analytics a na portálu OMS | Dokumentace Microsoftu
+title: Správa pracovních prostorů v Azure Log Analytics a na portálu OMS | Microsoft Docs
 description: Pracovní prostory můžete spravovat v Log Analytics a na portálu OMS pomocí různých úloh správy prováděných s uživateli, účty, pracovními prostory a účty Azure.
 services: log-analytics
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/16/2018
+ms.date: 05/17/2018
 ms.author: magoedte
-ms.openlocfilehash: d2480936ed54ec58ba289eae1ba605a16e27f0b3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 80ce7337717376b05dc9539abaf49b1a933a78f2
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271666"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637527"
 ---
 # <a name="manage-workspaces"></a>Správa pracovních prostorů
 
@@ -98,7 +98,7 @@ Následující aktivity také vyžadují oprávnění Azure:
 
 | Akce                                                          | Potřebná oprávnění Azure | Poznámky |
 |-----------------------------------------------------------------|--------------------------|-------|
-| Přidání a odebrání řešení pro správu                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
+| Přidání a odebrání řešení pro správu                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Tato oprávnění je potřeba udělit na úrovni skupiny prostředků nebo předplatného. |
 | Změna cenové úrovně                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
 | Zobrazení dat na dlaždicích řešení *Backup* a *Site Recovery* | Správce nebo spolusprávce | Má přístup k prostředkům nasazeným pomocí modelu nasazení Azure Classic. |
 | Vytvoření pracovního prostoru na webu Azure Portal                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
@@ -125,11 +125,14 @@ Azure má pro Log Analytics dvě předdefinované role uživatele:
 
 
 Členové role *Přispěvatel Log Analytics* můžou provádět:
-- Čtení všech dat monitorování 
-- Vytváření a konfigurace účtů služby Automation
-- Přidání a odebrání řešení pro správu
-- Čtení klíčů účtu úložiště 
-- Konfigurace shromažďování protokolů ze služby Azure Storage
+- Čtení všech dat monitorování  
+- Vytváření a konfigurace účtů služby Automation  
+- Přidání a odebrání řešení pro správu    
+    > [!NOTE] 
+    > Aby bylo možné tyto dvě akce úspěšně provést, musí být toto oprávnění uděleno na úrovni skupiny prostředků nebo předplatného.  
+
+- Čtení klíčů účtu úložiště   
+- Konfigurace shromažďování protokolů ze služby Azure Storage  
 - Úprava nastavení monitorování pro prostředky Azure, včetně
   - Přidání rozšíření virtuálního počítače na virtuální počítače
   - Konfigurace diagnostiky Azure pro všechny prostředky Azure
@@ -157,7 +160,7 @@ Pomocí těchto rolí můžete uživatelům udělit přístup v různých oborec
 - Skupina prostředků – Přístup ke všem pracovním prostorům v rámci skupiny prostředků
 - Prostředek – Přístup pouze k zadanému pracovnímu prostoru
 
-Pomocí [vlastních rolí](../active-directory/role-based-access-control-custom-roles.md) můžete vytvářet role s konkrétními požadovanými oprávněními.
+Doporučujeme provést přiřazení na úrovni prostředků (pracovního prostoru), abyste zajistili přesné řízení přístupu.  Pomocí [vlastních rolí](../active-directory/role-based-access-control-custom-roles.md) můžete vytvářet role s konkrétními požadovanými oprávněními.
 
 ### <a name="azure-user-roles-and-log-analytics-portal-user-roles"></a>Role uživatele Azure a role uživatele portálu Log Analytics
 Pokud máte k pracovnímu prostoru Log Analytics alespoň oprávnění Azure ke čtení, můžete otevřít portál Log Analytics kliknutím na úlohu **Portál OMS** při procházení pracovního prostoru Log Analytics.

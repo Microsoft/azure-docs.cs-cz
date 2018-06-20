@@ -1,22 +1,22 @@
 ---
-title: "Rychlý start – Průzkumník služby Azure Time Series Insights | Dokumentace Microsoftu"
-description: "V tomto rychlém startu se dozvíte, jak začít s vizualizací velkých objemů dat IoT pomocí průzkumníka služby Azure Time Series Insights ve webovém prohlížeči. Prohlédněte si klíčové funkce v ukázkovém prostředí."
-services: time-series-insights
+title: Rychlý start – Průzkumník služby Azure Time Series Insights | Microsoft Docs
+description: V tomto rychlém startu se dozvíte, jak začít s vizualizací velkých objemů dat IoT pomocí průzkumníka služby Azure Time Series Insights ve webovém prohlížeči. Prohlédněte si klíčové funkce v ukázkovém prostředí.
 ms.service: time-series-insights
+services: time-series-insights
 author: MarkMcGeeAtAquent
 ms.author: v-mamcge
 manager: jhubbard
-editor: MarkMcGeeAtAquent, jasonwhowell, kfile, MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc
 ms.date: 11/15/2017
-ms.openlocfilehash: a2f88ab65a8f9948b83f491896d53b34f162747c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: dbf0aef7a032c9b9808db14031555c7498874ac3
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34652113"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Rychlý start: Prozkoumání služby Azure Time Series Insights
 V tomto rychlém startu se dozvíte, jak začít s průzkumníkem služby Azure Time Series Insights v bezplatném ukázkovém prostředí. Zjistíte, jak pomocí webového prohlížeče vizualizovat velké objemy dat IoT a prohlédnete si klíčové funkce průzkumníka služby Time Series Insights. 

@@ -1,5 +1,5 @@
 ---
-title: Přehled zabezpečení sítě Azure | Dokumentace Microsoftu
+title: Přehled zabezpečení sítě Azure | Microsoft Docs
 description: Seznamte se s možnostmi zabezpečení pro řízení toku síťového provozu mezi prostředky Azure.
 services: virtual-network
 documentationcenter: na
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 618ed0f72886fff1c2de11e2fd856f6cc065a7b3
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 11178c574bcfa2224d15f81653f7d202ba88fb55
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34657583"
 ---
 # <a name="network-security"></a>Zabezpečení sítě
 
@@ -138,7 +139,7 @@ Výchozí pravidla nemůžete odebrat, ale můžete je přepsat vytvořením pra
 
 Skupiny zabezpečení aplikací umožňují konfigurovat zabezpečení sítě jako přirozené rozšíření struktury aplikace. Můžete seskupovat virtuální počítače a na základě těchto skupin definovat zásady zabezpečení sítě. Tato funkce umožňuje opakovaně používat škálované zásady zabezpečení bez potřeby ruční údržby explicitních IP adres. O složitost explicitních IP adres a několika skupin pravidel se stará platforma a vy se tak můžete zaměřit na obchodní logiku.
 
-Skupinu zabezpečení aplikace můžete zadat jako zdroj a cíl v pravidlu zabezpečení. Po definování zásady zabezpečení můžete vytvořit virtuální počítače a přiřadit jejich síťová rozhraní ke skupině zabezpečení aplikace. Zásada se použije na základě členství jednotlivých síťových rozhraní virtuálního počítače ve skupině zabezpečení aplikace. Následující příklad ukazuje, jak můžete použít skupinu zabezpečení aplikace pro všechny webové servery ve vašem předplatném:
+Jako zdroj a cíl můžete v pravidlu zabezpečení zadat jednu skupinu zabezpečení aplikace. Více skupin zabezpečení aplikace ve zdroji ani cíli zadat nemůžete. Po definování zásady zabezpečení můžete vytvořit virtuální počítače a přiřadit jejich síťová rozhraní ke skupině zabezpečení aplikace. Zásada se použije na základě členství jednotlivých síťových rozhraní virtuálního počítače ve skupině zabezpečení aplikace. Následující příklad ukazuje, jak můžete použít skupinu zabezpečení aplikace pro všechny webové servery ve vašem předplatném:
 
 1. Vytvořte skupinu zabezpečení aplikace *WebServers*.
 2. Vytvořte skupinu zabezpečení sítě *MyNSG*.
@@ -152,7 +153,7 @@ Další informace o omezeních při vytváření skupin zabezpečení aplikací 
 Pro skupiny zabezpečení aplikací platí následující omezení:
 
 -   Všechna síťová rozhraní přiřazená ke skupině zabezpečení aplikace musí existovat ve stejné virtuální síti jako první síťové rozhraní přiřazené ke skupině zabezpečení aplikace. Pokud se například první síťové rozhraní přiřazené ke skupině zabezpečení aplikace *ASG1* nachází ve virtuální síti *VNet1*, pak všechna další síťová rozhraní přiřazená ke skupině zabezpečení aplikace *ASG1* musí existovat ve virtuální síti *VNet1*. Do stejné skupiny zabezpečení aplikace nemůžete přidat síťová rozhraní z různých virtuálních sítí.
-- Pokud zadáte skupiny zabezpečení aplikací jako zdroj a cíl v pravidle zabezpečení, síťová rozhraní v obou skupinách zabezpečení aplikací musí existovat ve stejné virtuální síti. Kdyby například skupina ASG1 obsahovala síťová rozhraní z virtuální sítě VNet1 a skupina ASG2 obsahovala síťová rozhraní z virtuální sítě VNet2, nemohli byste v pravidle přiřadit skupinu ASG1 jako zdroj a skupinu ASG2 jako cíl, ale všechna síťová rozhraní by musela existovat ve virtuální síti VNet1.
+- Pokud zadáte skupinu zabezpečení aplikací jako zdroj a cíl v pravidle zabezpečení, síťová rozhraní v obou skupinách zabezpečení aplikací musí existovat ve stejné virtuální síti. Kdyby například skupina ASG1 obsahovala síťová rozhraní z virtuální sítě VNet1 a skupina ASG2 obsahovala síťová rozhraní z virtuální sítě VNet2, nemohli byste v pravidle přiřadit skupinu ASG1 jako zdroj a skupinu ASG2 jako cíl. Všechna síťová rozhraní musí existovat ve virtuální síti VNet1.
 
 ## <a name="azure-platform-considerations"></a>Důležité informace o platformě Azure
 

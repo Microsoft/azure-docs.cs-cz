@@ -12,25 +12,24 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/09/2018
 ms.author: juliako
-ms.openlocfilehash: 0fdc8c6dc9fae96a79e2ab2b05b7db3012834c1e
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: e81544d263bea3f367eaf2100ddb36a2835034c4
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34362290"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637908"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>Kurz: Analýza videa pomocí služby Azure Media Services 
 
-Tento kurz vám ukáže, jak analyzovat video pomocí služby Azure Media Services. Existuje mnoho případů, ve kterých můžete potřebovat získat podrobnější přehled o zaznamenaném video nebo audio obsahu. Pokud chtějí organizace například dosáhnout vyšší spokojeností zákazníků, mohou převést záznamy řeči zákaznické podpory na text a vytvořit prohledávatelný katalog s rejstříky a řídicími panely. Nebo mohou získat přehledy o svých podnicích, jako je třeba seznam častých stížností, zdroje těchto stížností atd.
+Tento kurz vám ukáže, jak analyzovat video pomocí služby Azure Media Services. Existuje mnoho případů, ve kterých můžete potřebovat získat podrobnější přehled o zaznamenaném video nebo audio obsahu. Pokud chtějí organizace například dosáhnout vyšší spokojenosti zákazníků, mohou převést záznamy řeči zákaznické podpory na text a vytvořit prohledávatelný katalog s rejstříky a řídicími panely. Nebo mohou získat přehledy o svých podnicích, jako je třeba seznam častých stížností, zdroje těchto stížností atd.
 
 V tomto kurzu získáte informace o následujících postupech:    
 
 > [!div class="checklist"]
-> * Spuštění služby Azure Cloud Shell
 > * Vytvoření účtu Media Services
 > * Přístup k rozhraní API služby Media Services
-> * Konfiguraci ukázkové aplikace
-> * Podrobné prozkoumání vzorového kódu
+> * Konfigurace ukázkové aplikace
+> * Kontrola kódu, který analyzuje dané video
 > * Spuštění aplikace
 > * Prozkoumání výstupu
 > * Vyčištění prostředků
@@ -49,23 +48,48 @@ Do svého počítače naklonujte pomocí následujícího příkazu úložiště
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
  ```
 
+Tato ukázka se nachází ve složce [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos).
+
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 [!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
-## <a name="examine-the-sample-code-in-detail"></a>Podrobné prozkoumání vzorového kódu
+## <a name="examine-the-code-that-analyzes-the-specified-video"></a>Kontrola kódu, který analyzuje dané video
 
 Tato část prozkoumává funkce definované v souboru [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/Program.cs) z projektu *AnalyzeVideos*.
 
-### <a name="start-using-media-services-apis-with-net-sdk"></a>Začínáme používat rozhraní Media Services API se sadou .NET SDK
+Tato ukázka provede následující akce:
 
-Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, musíte vytvořit objekt **AzureMediaServicesClient**. K vytvoření tohoto objektu, musíte zadat přihlašovací údaje, aby se klient mohl připojit k Azure pomocí Azure AD. Nejprve musíte získat token a potom z navráceného objektu vytvořit objekt **ClientCredential**. K získání tokenu slouží objekt **ArmClientCredential** v kódu, který jste naklonovali na začátku článku.  
+1. Vytvoří transformaci a úlohu analyzující vaše video.
+2. Vytvoří vstupní prostředek a nahraje do něj video. Prostředek se použije jako vstup úlohy.
+3. Vytvoří výstupní prostředek, který ukládá výstup úlohy. 
+4. Odešle úlohu.
+5. Zkontroluje stav úlohy.
+6. Stáhne soubory, které jsou výsledkem spuštění úlohy. 
+
+### <a name="start-using-media-services-apis-with-net-sdk"></a>Začínáme s rozhraním API služby Media Services se sadou .NET SDK
+
+Pokud chcete začít používat rozhraní Media Services API se sadou .NET SDK, musíte vytvořit objekt **AzureMediaServicesClient**. K vytvoření tohoto objektu, musíte zadat přihlašovací údaje, aby se klient mohl připojit k Azure pomocí Azure AD. V kódu, který jste naklonovali na začátku článku, vytvoří funkce **GetCredentialsAsync** objekt ServiceClientCredentials na základě pověření zadaných v místním konfiguračním souboru. 
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateMediaServicesClient)]
 
-### <a name="create-an-output-asset-to-store-the-result-of-a-job"></a>Vytvoření výstupního prostředku k uložení výsledku úlohy 
+### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Vytvoření vstupního prostředku a nahrání místního souboru do tohoto prostředku 
+
+Funkce **CreateInputAsset** vytvoří nový vstupní [prostředek](https://docs.microsoft.com/rest/api/media/assets) a nahraje do něj zadaný místní videosoubor. Tento prostředek se použije jako vstup ve vaší úloze kódování. Ve službě Media Services v3 můžete jako vstup úlohy použít buď prostředek, nebo obsah, který jste přes adresu URL protokolu HTTPS zpřístupnili ve svém účtu služby Media Services. Postup zakódování obsahu přes adresu URL protokolu HTTPS najdete v [tomto](job-input-from-http-how-to.md) článku.  
+
+Ve službě Media Services v3 slouží k nahrání souborů rozhraní API služby Azure Storage. Následující fragment kódu .NET vám ukáže, jak na to.
+
+Uvedená funkce provede následující akce:
+
+* Vytvoří prostředek. 
+* Získá [adresu SAS](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) [kontejneru v úložišti](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container) prostředku s možností zápisu.
+* Přes adresu SAS odešle soubor do kontejneru v úložišti.
+
+[!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateInputAsset)]
+
+### <a name="create-an-output-asset-to-store-the-result-of-the-job"></a>Vytvoření výstupního prostředku k uložení výsledku úlohy 
 
 Výstupní [prostředek](https://docs.microsoft.com/rest/api/media/assets) uloží výsledek vaší úlohy. Projekt definuje funkci **DownloadResults**, která stáhne výsledky z tohoto výstupního prostředku do výstupní složky, kde si je můžete zkontrolovat.
 
@@ -111,7 +135,7 @@ Následující funkce stáhne výsledky z výstupního [prostředku](https://doc
 
 ### <a name="clean-up-resource-in-your-media-services-account"></a>Vyčištění prostředků v účtu služby Media Services
 
-Obecně platí, že byste měli vyčistit všechno kromě objektů, které máte v plánu použít znovu, (obvykle jsou to transformace, streamovací lokátory apod.). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít. Následující kód například odstraní Úlohy.
+Obecně platí, že byste měli vyčistit všechno kromě objektů, které máte v plánu použít znovu (obvykle budete chtít znovu použít transformace a zachovat streamovací lokátory). Pokud chcete účet po experimentování vyčistit, měli byste odstranit prostředky, které nemáte v plánu znovu použít. Následující kód například odstraní Úlohy.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
 

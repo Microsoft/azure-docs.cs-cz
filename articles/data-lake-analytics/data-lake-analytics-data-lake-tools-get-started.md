@@ -1,34 +1,29 @@
 ---
-title: Začínáme s Azure Data Lake Analytics s využitím sady Visual Studio | Microsoft Docs
+title: Začínáme s Azure Data Lake Analytics s využitím sady Visual Studio
 description: Naučte se nainstalovat nástroje Data Lake pro Visual Studio a vyvíjet a testovat skripty U-SQL.
 services: data-lake-analytics
-documentationcenter: ''
-author: saveenr
-manager: jhubbard
-editor: cgronlun
-ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.service: data-lake-analytics
-ms.devlang: na
+author: saveenr
+ms.author: saveenr
+manager: kfile
+editor: jasonwhowell
+ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
 ms.date: 05/02/2018
-ms.author: saveenr, yanacai
-ms.openlocfilehash: d0974e3258e0def09fe12d348180dcedf216401c
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 0acaace474d62f18b9b6ca4aaae324405a2f43db
+ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34735789"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-
 Naučte se používat sadu Visual Studio k vytváření účtů Azure Data Lake Analytics, definování úloh v [U-SQL](data-lake-analytics-u-sql-get-started.md) a odesílání úloh do služby Data Lake Analytics. Další informace o Data Lake Analytics najdete v tématu [Přehled Azure Data Lake Analytics](data-lake-analytics-overview.md).
 
 >[!IMPORTANT]
->
->V rámci přípravy na nové nařízení GDPR (General Data Protection Regulation), které vstupuje v platnost 25. května 2018, doporučujeme uživatelům Nástrojů Azure Data Lake pro Visual Studio upgradovat na verzi 2.3.3000.4 nebo novější. Tato verze zahrnuje změny vycházející z nejnovějších požadavků na ochranu dat. Předchozí verze jsou zastaralé a nejsou k dispozici ke stažení. 
+> Microsoft doporučuje, abyste Nástroje Azure Data Lake pro Visual Studio upgradovali na verzi 2.3.3000.4 nebo novější. Předchozí verze jsou zastaralé a nejsou už k dispozici ke stažení. 
 >
 >**Co potřeba udělat?**
 >
@@ -52,19 +47,7 @@ Naučte se používat sadu Visual Studio k vytváření účtů Azure Data Lake 
 
 ## <a name="install-azure-data-lake-tools-for-visual-studio"></a>Instalace nástrojů Azure Data Lake pro Visual Studio
 
-### <a name="install-azure-data-lake-tools-for-visual-studio-2017"></a>Instalace nástrojů Azure Data Lake pro Visual Studio 2017
-
-Nástroje Azure Data Lake pro Visual Studio se podporují v sadě Visual Studio 2017 verze 15.3 nebo novější. Tento nástroj je součástí sad funkcí **Ukládání a zpracování dat** a **Vývoj pro Azure** v Instalačním programu pro Visual Studio. V rámci instalace sady Visual Studio povolte jednu z těchto dvou sad funkcí.  
-
-Sadu funkcí **Ukládání a zpracování dat** povolíte následujícím způsobem: ![Povolení sady funkcí Ukládání a zpracování dat](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-01.png)
-
-Sadu funkcí **Vývoj pro Azure** povolíte následujícím způsobem: ![Povolení sady funkcí Vývoj pro Azure](./media/data-lake-analytics-data-lake-tools-get-started/data-lake-tools-for-vs-2017-install-02.png)
-
-### <a name="install-azure-data-lake-tools-for-visual-studio-2013-and-2015"></a>Instalace nástrojů Azure Data Lake pro Visual Studio 2013 a 2015
-
-Stáhněte nástroje Azure Data Lake pro Visual Studio z webu [Download Center](http://aka.ms/adltoolsvs) a nainstalujte je. Po instalaci si všimněte, že:
-* Uzel **Průzkumník serveru** > **Azure** obsahuje uzel **Data Lake Analytics**. 
-* Nabídka **Nástroje** obsahuje položku **Data Lake**.
+Tento kurz vyžaduje, aby byly nainstalované Nástroje Data Lake pro Visual Studio. Postupujte podle [pokynů k instalaci](data-lake-analytics-data-lake-tools-install.md).
 
 ## <a name="connect-to-an-azure-data-lake-analytics-account"></a>Připojení k účtu Azure Data Lake Analytics
 

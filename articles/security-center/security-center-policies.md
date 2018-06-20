@@ -1,9 +1,9 @@
 ---
-title: Nastavení zásad zabezpečení ve službě Azure Security Center | Dokumentace Microsoftu
+title: Nastavení zásad zabezpečení ve službě Azure Security Center | Microsoft Docs
 description: Tento článek vám pomůže s konfigurací zásad zabezpečení ve službě Azure Security Center.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/05/2018
-ms.author: yurid
-ms.openlocfilehash: fed4a587d2258cdab35d09f5e3947a8cacade157
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.date: 06/05/2018
+ms.author: terrylan
+ms.openlocfilehash: f12cede430a94da937a874ade2e50e4ed9860da9
+ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364382"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34756987"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Nastavení zásad zabezpečení ve službě Azure Security Center
 Tento článek vám pomůže s konfigurací zásad zabezpečení ve službě Security Center.
@@ -28,7 +28,7 @@ Tento článek vám pomůže s konfigurací zásad zabezpečení ve službě Sec
 Security Center automaticky vytváří výchozí zásady zabezpečení pro každé z vašich předplatných Azure. Ve službě Security Center můžete zásady upravovat a monitorovat jejich dodržování.
 
 > [!NOTE]
-> Zásady služby Security Center teď můžete rozšířit pomocí služby Azure Policy, která je ve verzi Limited Preview. Pokud se chcete připojit k verzi Preview, přejděte na web [pro registraci do Azure Policy](https://aka.ms/getpolicy). Další informace najdete v tématu [Integrace zásad zabezpečení ve službě Security Center se službou Azure Policy](security-center-azure-policy.md).
+> Zásady služby Security Center teď můžete rozšířit o [Azure Policy](../azure-policy/azure-policy-introduction.md). Další informace najdete v tématu [Integrace zásad zabezpečení ve službě Security Center se službou Azure Policy](security-center-azure-policy.md).
 
 Požadavky na zabezpečení pro prostředky používané pro vývoj nebo testování se můžou lišit od požadavků pro prostředky, které se používají v produkčních aplikacích. Aplikace pracující s regulovanými daty, jako jsou identifikovatelné osobní údaje, můžou vyžadovat vyšší úroveň zabezpečení. Zásady zabezpečení povolené ve službě Azure Security Center mají vliv na doporučení zabezpečení a monitorování a pomohou vám najít potenciální nedostatky zabezpečení a zmírnit hrozby. Další informace o určení, která možnost je pro vás vhodná, najdete v tématu [Průvodce plánováním a provozem služby Azure Security Center](security-center-planning-and-operations-guide.md).
 
@@ -75,3 +75,5 @@ V tomto článku jste zjistili, jak ve službě Security Center konfigurovat zá
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Získejte odpovědi na nejčastější dotazy týkající se použití této služby.
 * [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/): Přečtěte si příspěvky o zabezpečení a dodržování předpisů Azure.
+
+Další informace o Azure Policy najdete v tématu [Co je Azure Policy](../azure-policy/azure-policy-introduction.md).

@@ -15,16 +15,17 @@ ms.topic: quickstart
 ms.date: 04/02/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 30bb21ebd6b19f4cc52e364039b9be8a9a7695e5
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: af385a7cbf97ff15156cc78c77f8b54e2f79badb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637629"
 ---
 # <a name="collect-data-from-linux-computer-hosted-in-your-environment"></a>Shromažďování dat z počítače s Linuxem hostovaného ve vašem prostředí
 [Azure Log Analytics](log-analytics-overview.md) může shromažďovat data přímo z fyzického nebo virtuálního počítače s Linuxem a dalších prostředků ve vašem prostředí do jednoho úložiště pro účely podrobných analýz a korelací.  Tento rychlý start ukazuje, jak v několik snadných krocích nakonfigurovat počítač s Linuxem a shromažďovat z něj data.  Informace týkající se virtuálních počítačů Azure s Linuxem najdete v tématu [Shromažďování dat o virtuálních počítačích Azure](log-analytics-quick-collect-azurevm.md).  
 
-V [požadavcích na operační systém Linux](log-analytics-concept-hybrid.md#prerequisites) najdete síťové a systémové požadavky pro nasazení linuxového agenta.
+Abyste lépe porozuměli podporované konfiguraci, přečtěte si o [podporovaných operačních systémech Linux](log-analytics-concept-hybrid.md#supported-linux-operating-systems) a [konfiguraci síťové brány firewall](log-analytics-concept-hybrid.md#network-firewall-requirements).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

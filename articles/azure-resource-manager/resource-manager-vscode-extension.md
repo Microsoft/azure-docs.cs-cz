@@ -1,5 +1,5 @@
 ---
-title: Šablona Azure Resource Manageru s rozšířením VS Code | Dokumentace Microsoftu
+title: Šablona Azure Resource Manageru s rozšířením VS Code | Microsoft Docs
 description: Při práci na šablonách Resource Manageru můžete použít rozšíření Nástroje Azure Resource Manageru.
 services: azure-resource-manager
 documentationcenter: ''
@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/06/2017
+ms.date: 05/22/2018
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: f05b0baee3f11f498976377c69c38b3118f3c922
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 190d4713f5c84281bc2637fc0d8323a2dabf6f21
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358655"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34603759"
 ---
 # <a name="use-visual-studio-code-extension-to-create-azure-resource-manager-template"></a>Použití rozšíření Visual Studio Code k vytvoření šablony Azure Resource Manageru
 Tento článek ukazuje výhody instalace a používání rozšíření Nástroje Azure Resource Manageru v editoru Visual Studio Code. Šablony Resource Manageru můžete ve VS Code vytvářet i bez tohoto rozšíření, poskytuje však možnosti automatického dokončování, které vývoj šablon zjednodušují. Navrhuje funkce šablon, parametry a proměnné, které jsou v šabloně dostupné.
@@ -171,7 +171,18 @@ Tento článek vychází ze šablony, kterou jste vytvořili v tématu [Vytvoře
 
    ![Zobrazení proměnných](./media/resource-manager-vscode-extension/show-variables.png) 
 
-10. Vyberte proměnnou **storageName**. Přidejte pravou závorku. Následující příklad ukazuje část outputs:
+10. Vyberte proměnnou **storageName**. Váš kód teď vypadá takto:
+
+   ```json
+   "storageUri": {
+      "type": "string",
+      "value": "[reference(variables('storageName'))"
+   }
+   ```
+   
+11. Předchozí kód nebude fungovat, protože `reference` vrátí objekt, ale hodnota výstupu nastavená na *řetězec*. U tohoto objektu je potřeba zadat jednu z hodnot. Funkci reference je možné použít s libovolným typem prostředku, VS Code proto nenavrhuje vlastnosti tohoto objektu. Můžete zjistit, že tato jedna hodnota [vrácená pro účet úložiště](/rest/api/storagerp/storageaccounts/getproperties) je `.primaryEndpoints.blob`. 
+
+   Tuto vlastnost přidejte za poslední závorku. Přidejte pravou závorku. Následující příklad ukazuje část outputs:
 
    ```json
    "outputs": { 
@@ -181,7 +192,7 @@ Tento článek vychází ze šablony, kterou jste vytvořili v tématu [Vytvoře
        },
        "storageUri": {
          "type": "string",
-         "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName'))).primaryEndpoints.blob]"
+         "value": "[reference(variables('storageName')).primaryEndpoints.blob]"
        }
    }
    ```
@@ -249,7 +260,7 @@ Finální šablona vypadá takto:
     },
     "storageUri": {
       "type": "string",
-      "value": "[reference(concat('Microsoft.Storage/storageAccounts/',variables('storageName'))).primaryEndpoints.blob]"
+      "value": "[reference(variables('storageName')).primaryEndpoints.blob]"
     }
   }
 }

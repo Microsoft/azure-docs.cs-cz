@@ -1,59 +1,131 @@
 ---
-title: "Přehled přenosu zpráv ve službě Azure Service Bus | Dokumentace Microsoftu"
-description: "Popis přenosu zpráv ve službě Service Bus a Azure Relay"
+title: Přehled přenosu zpráv ve službě Azure Service Bus | Microsoft Docs
+description: Popis zasílání zpráv služby Service Bus
 services: service-bus-messaging
-documentationcenter: .net
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
+editor: ''
 ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: multiple
-ms.topic: get-started-article
-ms.date: 12/21/2017
+ms.topic: overview
+ms.date: 05/22/2018
+ms.custom: mvc
 ms.author: sethm
-ms.openlocfilehash: e299ccfe587d37757cd67cb4367f019b21a09b4a
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 0357602e6085b25fc6d11363113ebc962dc4d008
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34643086"
 ---
-# <a name="service-bus-messaging-flexible-data-delivery-in-the-cloud"></a>Přenos zpráv ve službě Service Bus: flexibilní přenos dat v cloudu
+# <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
 
-Microsoft Azure Service Bus je spolehlivá služba pro přenos informací. Cílem této služby je usnadnění komunikace. Když si dvě nebo více stran chce vyměňovat informace, potřebují nějakého komunikačního zprostředkovatele. Služba Service Bus je mechanizmus pro komunikaci zprostředkovanou přes třetí stranu. Princip je podobný jako při používání poštovních a zásilkových služeb pro fyzickou poštu a zásilky. Díky poštovním službám můžeme do celého světa posílat nejrůznější dopisy a balíky, s určitými zárukami.
+Microsoft Azure Service Bus je plně spravovaný zprostředkovatel zpráv podnikové integrace. Service Bus se nejčastěji používá k vzájemnému oddělení aplikací a služeb a je spolehlivou a bezpečnou platformou pro přenos asynchronních dat a stavu. Data se mezi různými aplikacemi a službami přenáší pomocí *zpráv*. Zpráva je v binárním formátu, který může zahrnovat JSON, XML nebo jen text. 
 
-Podobně jako když poštovní služba doručuje dopisy, služba Service Bus nabízí flexibilní doručení informací od odesílatele i příjemce. Služba přenosu zpráv zajišťuje, aby se informace doručily i v případě, že obě strany nejsou online ve stejnou dobu nebo že nejsou dostupné ve stejnou dobu. V tomto ohledu je přenos zpráv podobný jako poslání dopisu, zatímco nezprostředkovaná komunikace je podobná telefonnímu hovoru (resp. tomu, jak telefonování vypadalo dřív – bez identifikace volajícího a bez čekání na to, až bude volané číslo dostupné, to už se totiž podobá spíš zprostředkovanému přenosu zpráv).
+Mezi běžné scénáře zasílání zpráv patří:
 
-Odesílatel zprávy taky může potřebovat nejrůznější charakteristiky dodání, třeba transakce, detekci duplikátů, časově omezené zprávy nebo dávkování. I tyto funkce mají předobraz v poště: opakované dodání, dodejka, změna adresy nebo odvolání.
+* Zasílání zpráv: umožňuje přenášení podnikových dat, jako jsou například prodeje nebo nákupní objednávky, deníky nebo přesuny zásob.
+* Oddělení aplikací: vylepšuje spolehlivost a škálovatelnost aplikací a služeb (klient a služba nemusí být online ve stejnou dobu).
+* Témata a předplatná: povoluje vztahy 1:*n* mezi vydavateli a odběrateli.
+* Relace zpráv: implementuje pracovní postupy, které vyžadují řazení zpráv nebo odložení zpráv.
 
-Service Bus podporuje dva rozdílné způsoby přenosu zpráv: *Azure Relay* a *zasílání zpráv Service Bus*.
+## <a name="namespaces"></a>Obory názvů
 
-## <a name="azure-relay"></a>Azure Relay
+Obor názvů je kontejner oboru pro všechny součásti zasílání zpráv. Součástí jednoho oboru názvů může být několik front a témat, přičemž obory názvů často slouží jako kontejnery aplikací.
 
-Komponenta [WCF Relay](../service-bus-relay/relay-what-is-it.md) služby Azure Relay je centralizovaná služba (ale s vysoce vyváženou zátěží), která podporuje různé přenosové protokoly a standardy webových služeb. Mezi ty patří SOAP, WS- * , a dokonce i REST. [Služba předávání](../service-bus-relay/service-bus-dotnet-how-to-use-relay.md) poskytuje množství různých možností předávání a může pomoct vyjednat přímé spojení typu peer-to-peer. Služba Service Bus je optimalizovaná pro vývojáře .NET, kteří používají WCF (Windows Communication Foundation) s ohledem na výkon a použitelnost, a poskytuje plný přístup ke své službě předávání přes rozhraní SOAP a REST. Díky tomu se jakékoli programovací prostředí SOAP nebo REST může integrovat se službou Service Bus.
+## <a name="queues"></a>Fronty
 
-Služba předávání podporuje tradiční jednosměrný přenos zpráv, přenos typu požadavek/odpověď a přenos zpráv typu peer-to-peer. Taky podporuje distribuci událostí na úrovni internetu, která umožňuje scénáře typu publikování+odběr a obousměrnou soketovou komunikací pro zvýšenou účinnost mezi body. V přenosu zpráv s předáváním se lokální služba připojí k předávací službě přes odchozí port a vytvoří obousměrný soket pro komunikaci vázanou na konkrétní potkávací adresu. Klient pak může komunikovat s lokální službou tak, že odešle zprávy do předávací služby s tím, že cílem je potkávací adresa. Předávací služba pak zprávy „předá“ lokální službě přes obousměrný soket, který je už vytvořený. Klient nepotřebuje přímé spojení s lokální službou, nemusí ani vědět, kde se služba nachází, a lokální služba nepotřebuje mít ve firewallu otevřené žádné příchozí porty.
+Zprávy se odesílají do *front* a přijímají se z nich. Fronty umožňují uložit zprávy, dokud není přijímající aplikace dostupná pro jejich příjem a zpracování.
 
-Propojení místní služby se službou Relay vytvoříte pomocí skupiny „předávacích“ vazeb WCF. Na pozadí se děje to, že předávací vazby mapují do elementů přenosové vazby určené k vytvoření komponentů kanálu WCF, které se integrují se službou Service Bus v cloudu.
+![Fronta](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-WCF Relay má spoustu výhod, ale aby se zprávy mohly posílat a přijímat, musí být server i klient online současně. Tento způsob není ideální pro komunikaci ve stylu HTTP, ve které požadavky nemívají dlouhou životnost, ani pro klienty, kteří se připojují jen občas, jako jsou prohlížeče, mobilní aplikace atd. Zprostředkované zasílání zpráv podporuje oddělenou komunikaci, která má sama o sobě svoje výhody– klienti a servery se například můžou spojit podle potřeby a provádět své operace asynchronním způsobem.
+Zprávy se ve frontách řadí a označují časovým razítkem při doručení. Jakmile je zpráva přijata, uchovává se bezpečně v redundantním úložišti. Zprávy se doručují v režimu *nabízení*, který doručuje zprávy na vyžádání.
 
-## <a name="brokered-messaging"></a>Zprostředkované zasílání zpráv
+## <a name="topics"></a>Témata
 
-Na rozdíl od přenosu zpráv přes službu Relay můžeme o zasílání zpráv Service Bus s [frontami, tématy a odběry](service-bus-queues-topics-subscriptions.md) mluvit jako o asynchronním nebo „časově odděleném“. Producenti (odesílatelé) a spotřebitelé (příjemci) nemusí být online ve stejnou dobu. Infrastruktura zasílání zpráv spolehlivě uloží zprávy do „zprostředkovatele“ (například fronty), dokud je příjemce nebude připravený přijmout. Díky tomu se komponenty distribuované aplikace můžou odpojit, například při údržbě nebo při selhání jedné z komponent, a přitom to nebude mít vliv na celý systém. Přijímající aplikaci navíc stačí být online jen v určitou dobu – například systém pro správu inventáře stačí spustit až na konci pracovního dne.
+K odesílání a přijímání zpráv můžete také použít *témata*. Zatímco fronta se často používá pro komunikaci point-to-point, témata jsou užitečná ve scénářích publikování nebo přihlášení k odběru.
 
-Základní komponenty infrastruktury zasílání zpráv Service Bus jsou fronty, témata a odběry. Hlavní rozdíl je v tom, že témata podporují funkce pbulikovat/odebírat, které se dají použít pro komplexní směrování a logiku odesílání obsahu, jako třeba odesílání několika příjemcům. Komponenty umožňují nové scénáře pro zasílání zpráv, jako je časové oddělení, publikování/odběr a vyvažování zátěže. Další informace o těchto entitách zasílání zpráv najdete v tématu [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md).
+![Téma](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
-Stejně jako v případě infrastruktury přenosu zpráv přes službu WCF Relay je funkce zprostředkovaného zasílání zpráv poskytována pro programátory v WCF a .NET Framework a také přes REST.
+Témata mohou mít několik nezávislých odběrů. Odběratel tématu může přijímat kopie všech zpráv zaslaných do daného tématu. Odběry jsou pojmenované entity, které jsou vytvořené jako trvalé, ale jejich platnost může vypršet nebo se mohou automaticky odstranit.
 
+V některých scénářích nemusíte chtít, aby jednotlivé odběry přijímaly všechny zprávy odeslané do tématu. Pokud tomu tak je, můžete použít [pravidla a filtry](topic-filters.md) a definovat podmínky, které vyvolají volitelné [akce](topic-filters.md#actions), filtrují zadané zprávy a nastavují nebo upravují vlastnosti zpráv.
+
+## <a name="advanced-features"></a>Pokročilé funkce
+
+Service Bus má také pokročilé funkce, které vám umožní řešit složitější problémy týkající se zasílání zpráv. Následující části popisují tyto klíčové funkce:
+
+### <a name="message-sessions"></a>Relace zpráv
+
+Pokud chcete ve službě Service Bus zajistit použití metody FIFO (first in first out), použijte relace. [Relace zpráv](message-sessions.md) umožňují společné a seřazené zpracování sekvencí souvisejících zpráv bez vazby. 
+
+### <a name="auto-forwarding"></a>Automatické přeposílání
+
+Funkce [automatického přeposílání](service-bus-auto-forwarding.md) umožňuje zřetězit frontu nebo odběr do jiné fronty nebo tématu, které jsou součástí stejného oboru názvů. Pokud je automatické přeposílání povoleno, Service Bus automaticky odebere zprávy, které jsou umístěné v první frontě nebo odběru (zdroj) a vloží je do druhé fronty nebo tématu (cíl).
+
+### <a name="dead-lettering"></a>Ukládání nedoručených zpráv
+
+Service Bus podporuje [frontu nedoručených zpráv](service-bus-dead-letter-queues.md) (DLQ) k ukládání zpráv, které nemohou být doručeny jakémukoli příjemci, nebo zpráv, které nejdou zpracovat. Zprávy pak můžete z DLQ odebrat a prozkoumat je.
+
+### <a name="scheduled-delivery"></a>Naplánované doručení
+
+Zprávy můžete odeslat do fronty nebo tématu [pro zpožděné zpracování](message-sequencing.md#scheduled-messages). Můžete třeba naplánovat úlohu, která bude systému pro zpracování dostupná v konkrétní čas.
+
+### <a name="message-deferral"></a>Odložení zpráv
+
+Pokud klient fronty nebo odběru přijme zprávu, kterou je ochoten zpracovat, ale jejíž zpracování momentálně není možné z důvodu zvláštních okolností v aplikaci, má entita možnost [odložit načtení zprávy](message-deferral.md) na pozdější čas. Zpráva zůstane ve frontě nebo odběru, ale odloží se bokem.
+
+### <a name="batching"></a>Dávkování
+
+[Dávkování na straně klienta](service-bus-performance-improvements.md#client-side-batching) umožňuje, aby klient fronty nebo tématu zpozdil odeslání zprávy po určené časové období. Pokud během tohoto časového období klient odešle další zprávy, přenese zprávy v jedné dávce. 
+
+### <a name="transactions"></a>Transakce
+
+Skupiny [transakcí](service-bus-transactions.md) seskupují dvě nebo více operací do rozsahu provádění. Service Bus podporuje operace seskupení u jedné entity zasílání zpráv (fronty, tématu, odběru) v rámci oboru transakce.
+
+### <a name="filtering-and-actions"></a>Filtrování a akce
+
+Odběratelé mohou definovat zprávy, které chtějí z tématu přijímat. Tyto zprávy se určují ve formě jednoho nebo více [pojmenovaných pravidel odběru](topic-filters.md). Pro každou odpovídající podmínku pravidla odběr vytvoří kopii zprávy, která může pro každé odpovídající pravidlo obsahovat jiné poznámky.
+
+### <a name="auto-delete-on-idle"></a>Automatické odstranění v případě nečinnosti
+
+[Automatické odstranění v případě nečinnosti](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle) umožňuje zadat interval nečinnosti, po jehož uplynutí se fronta automaticky odstraní. Minimální doba trvání je 5 minut.
+
+### <a name="duplicate-detection"></a>Vyhledávání duplicit
+
+Pokud dojde k chybě, která způsobí, že klient pochybuje o výsledku operace odeslání, [vyhledávání duplicit](duplicate-detection.md) odstraní nejistotu v těchto situacích tak, že odesílateli umožní odeslat stejnou zprávu a frontě nebo tématu umožní zahodit jakékoli duplicitní kopie.
+
+### <a name="sas-rbac-and-msi"></a>SAS, RBAC a MSI
+
+Service Bus podporuje protokoly zabezpečení, jako jsou [podpisy sdíleného přístupu](service-bus-sas.md) (SAS), [řízení přístupu na základě role](service-bus-role-based-access-control.md) (RBAC) a [identita spravované služby](service-bus-managed-service-identity.md) (MSI).
+
+### <a name="geo-disaster-recovery"></a>Geografické zotavení po havárii
+
+Pokud v oblastech nebo datových centrech Azure dojde k výpadku, [geografické zotavení po havárii](service-bus-geo-dr.md) umožní, aby zpracování dat pokračovalo v jiné oblasti nebo datovém centru.
+
+### <a name="security"></a>Zabezpečení
+
+Service Bus podporuje standardní protokoly [AMQP 1.0](service-bus-amqp-overview.md) a [HTTP/REST](/rest/api/servicebus/).
+
+## <a name="client-libraries"></a>Klientské knihovny
+
+Service Bus podporuje klientské knihovny pro [.NET](https://github.com/Azure/azure-service-bus-dotnet/tree/master), [Javu](https://github.com/Azure/azure-service-bus-java/tree/master), [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client).
+
+## <a name="integration"></a>Integrace
+
+Service Bus umožňuje úplnou integraci s následujícími službami Azure:
+
+- [Event Grid](https://azure.microsoft.com/services/event-grid/) 
+- [Logic Apps](https://azure.microsoft.com/services/logic-apps/) 
+- [Functions](https://azure.microsoft.com/services/functions/) 
+- [Dynamics 365](https://dynamics.microsoft.com)
+- [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)
+ 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud se o přenosu zpráv přes Service Bus chcete dozvědět víc, pročtěte si následující témata.
+Pokud chcete začít používat zasílání zpráv služby Service Bus, podívejte se na následující články:
 
-* [Základy služby Service Bus](service-bus-fundamentals-hybrid-solutions.md)
-* [Fronty, témata a odběry služby Service Bus](service-bus-queues-topics-subscriptions.md)
-* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
-* [Jak používat témata a odběry Service Bus](service-bus-dotnet-how-to-use-topics-subscriptions.md)
-
+* [Porovnání služeb Azure pro zasílání zpráv](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
+* Přečtěte si další informace o úrovních [Standard a Premium](https://azure.microsoft.com/pricing/details/service-bus/) služby Azure Service Bus a jejich cenách.
+* [Výkon a latence úrovně Premium služby Azure Service Bus](https://blogs.msdn.microsoft.com/servicebus/2016/07/18/premium-messaging-how-fast-is-it/)
+* Vyzkoušejte rychlé starty v [.NET](service-bus-quickstart-powershell.md), [Javě](service-bus-quickstart-powershell.md) nebo [JMS](service-bus-quickstart-powershell.md).

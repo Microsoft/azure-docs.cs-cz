@@ -1,22 +1,21 @@
 ---
-title: "Registrace zařízení X.509 do služby Azure Device Provisioning pomocí Javy | Dokumentace Microsoftu"
-description: "Rychlý start Azure – Registrace zařízení X.509 do služby Azure IoT Hub Device Provisioning pomocí sady SDK služby pro Javu"
-services: iot-dps
-keywords: 
+title: Registrace zařízení X.509 do služby Azure Device Provisioning pomocí Javy | Microsoft Docs
+description: Rychlý start Azure – Registrace zařízení X.509 do služby Azure IoT Hub Device Provisioning pomocí sady SDK služby pro Javu
 author: dsk-2015
 ms.author: dkshir
 ms.date: 12/20/2017
-ms.topic: hero-article
+ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: 
+services: iot-dps
 manager: timlt
-ms.devlang: na
+ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: b1d21278c821c4501c121266823e153490a50df5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: cea83fbe9c60bab687eb3d43fc269fa9f6bea325
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630455"
 ---
 # <a name="enroll-x509-devices-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Registrace zařízení X.509 do služby IoT Hub Device Provisioning pomocí sady SDK služby pro Javu
 

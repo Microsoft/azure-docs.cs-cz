@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: 4cf20dacf66ee334dcd455ce1770609c175d3b88
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 48dbd89216d27e9495a9129c6b873f86a9a23338
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34763251"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-resource-manager-template"></a>Rychlý start: Začínáme s Hadoopem a Hivem ve službě Azure HDInsight pomocí šablony Resource Manageru
 
@@ -57,8 +58,8 @@ V této části vytvoříte cluster Hadoop ve službě HDInsight pomocí šablon
     |**Umístění**     | Vyberte umístění Azure, ve kterém chcete cluster vytvořit.  Pro dosažení lepšího výkonu zvolte co nejbližší umístění. |
     |**Typ clusteru**     | Vyberte **hadoop**. |
     |**Název clusteru**     | Zadejte název clusteru Hadoop. Vzhledem k tomu, že všechny clustery ve službě HDInsight sdílejí stejný obor názvů DNS, musí být tento název jedinečný. Název může mít až 59 znaků a může obsahovat písmena, číslice a pomlčky. První a poslední znak názvu nemůže být pomlčka. |
-    |**Přihlašovací jméno a heslo clusteru**     | Výchozí přihlašovací jméno je **admin**. Heslo musí mít minimálně 10 znaků a musí obsahovat alespoň jedno číslo, jedno velké písmeno, jedno malé písmeno a jeden jiný než alfanumerický znak (kromě znaků ' " ` \). Ujistěte se, že **nezadáváte** běžné heslo, jako je například Pass@word1.|
-    |**Uživatelské jméno a heslo SSH**     | Výchozí uživatelské jméno je **sshuser**.  Uživatelské jméno SSH můžete změnit.  Pro heslo uživatele SSH platí stejné požadavky jako pro přihlašovací heslo clusteru.|
+    |**Přihlašovací jméno a heslo clusteru**     | Výchozí přihlašovací jméno je **admin** (správce). Heslo musí mít minimálně 10 znaků a musí obsahovat alespoň jedno číslo, jedno velké písmeno, jedno malé písmeno a jeden jiný než alfanumerický znak (kromě znaků ' " ` \). **Nezadávejte** běžné heslo, jako je „Pass@word1“.|
+    |**Uživatelské jméno a heslo SSH**     | Výchozí uživatelské jméno je **sshuser** (uživatelssh).  Uživatelské jméno SSH můžete změnit.  Pro heslo uživatele SSH platí stejné požadavky jako pro přihlašovací heslo clusteru.|
        
     Některé vlastnosti jsou v šabloně pevně kódované.  Takové hodnoty můžete konfigurovat v šabloně. Podrobnější vysvětlení těchto vlastností naleznete v tématu [Vytváření clusterů Hadoop ve službě HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
@@ -77,6 +78,110 @@ V této části vytvoříte cluster Hadoop ve službě HDInsight pomocí šablon
 > Další metody vytváření clusterů a principy vlastnosti používaných v tomto kurzu, naleznete v části [Vytváření clusterů HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).       
 > 
 >
+
+## <a name="use-vscode-to-run-hive-queries"></a>Použití VSCode ke spouštění dotazů Hive
+
+Informace o tom, jak získáte nástroje HDInsight ve VSCode, najdete v tématu [Použití nástrojů HDInsight Tools pro Visual Studio Code](../hdinsight-for-vscode.md).
+
+### <a name="submit-interactive-hive-queries"></a>Odesílání interaktivních dotazů Hive
+
+Pomocí nástrojů HDInsight Tools pro VSCode můžete odesílat interaktivní dotazy Hive do clusterů interaktivních dotazů HDInsight.
+
+1. Pokud ještě nemáte pracovní složku a soubor skriptu Hive, vytvořte nové.
+
+2. Pokud jste to ještě neudělali, připojte se k účtu Azure a pak nakonfigurujte výchozí cluster.
+
+3. Pak zkopírujte a vložte do souboru Hive následující kód a uložte ho.
+
+    ```hiveql
+    SELECT * FROM hivesampletable;
+    ```
+4. Klikněte pravým tlačítkem myši na editor skriptů a vyberte **HDInsight: Hive Interactive** (HDInsight: interaktivní Hive) a odešlete tak dotaz. Nástroje také umožňují odeslat pomocí místní nabídky místo celého souboru skriptu blok kódu. Brzy potom se na nové kartě zobrazí výsledky dotazu.
+
+   ![Výsledky interaktivního Hivu](./media/apache-hadoop-linux-tutorial-get-started/interactive-hive-result.png)
+
+    - Panel **RESULTS** (VÝSLEDKY): Celý výsledek můžete uložit do souboru CSV, JSON nebo Excel nebo můžete vybrat jenom několik řádků.
+
+    - Panel **MESSAGES** (ZPRÁVY): Když vyberete číslo řádku **Line**, přejdete na první řádek spuštěného skriptu.
+
+Spuštění interaktivního dotazu zabere mnohem kratší dobu než [spuštění dávkové úlohy Hive](#submit-hive-batch-scripts).
+
+### <a name="submit-hive-batch-scripts"></a>Odeslání skriptů dávky Hive
+
+1. Pokud ještě nemáte pracovní složku a soubor skriptu Hive, vytvořte nové.
+
+2. Pokud jste to ještě neudělali, připojte se k účtu Azure a pak nakonfigurujte výchozí cluster.
+
+3. Pak zkopírujte a vložte do souboru Hive následující kód a uložte ho.
+
+    ```hiveql
+    SELECT * FROM hivesampletable;
+    ```
+4. Klikněte pravým tlačítkem myši na editor skriptů a vyberte **HDInsight: Hive Batch** (HDInsight: Dávka Hive) a odešlete tak úlohu Hive. 
+
+5. Vyberte cluster, do kterého ji chcete odeslat.  
+
+    Po odeslání úlohy Hive se na panelu **OUTPUT** (VÝSTUP) zobrazí informace o úspěšném odeslání a ID úlohy. Úloha Hive otevře také **WEBOVÝ PROHLÍŽEČ**, ve kterém se zobrazí protokoly a stav úlohy v reálném čase.
+
+   ![odeslání výsledku úlohy Hive](./media/apache-hadoop-linux-tutorial-get-started/submit-Hivejob-result.png)
+
+[Odeslání interaktivních dotazů Hive](#submit-interactive-hive-queries) zabere mnohem kratší dobu než odeslání dávkové úlohy.
+
+## <a name="use-visualstudio-to-run-hive-queries"></a>Použití sady Visual Studio ke spuštění dotazů Hive
+
+Informace o tom, jak získáte nástroje HDInsight v sadě Visual Studiu, najdete v tématu [Použití nástrojů Data Lake Tools pro Visual Studio](./apache-hadoop-visual-studio-tools-get-started.md).
+
+### <a name="run-hive-queries"></a>Spuštění dotazů Hive
+
+Vytvářet a spouštět dotazy Hive můžete dvěma způsoby:
+
+* Vytváření dotazů ad-hoc
+* Vytvoření aplikace Hive
+
+Vytváření a spouštění dotazů ad hoc:
+
+1. V **Průzkumníku serveru** vyberte **Azure** > **Clustery HDInsight**.
+
+2. Klikněte pravým tlačítkem na cluster, ve kterém chcete spustit dotaz, a pak vyberte **Napsat dotaz Hive**.  
+
+3. Zadejte dotazy Hive. 
+
+    Editor Hive podporuje technologii IntelliSense. Nástroje Data Lake pro Visual Studio podporují načítání vzdálených metadat při úpravách skriptu Hive. Pokud například zadáte **SELECT * FROM**, IntelliSense vypíše všechny navrhované názvy tabulek. Pokud zadáte název tabulky, IntelliSense vypíše názvy sloupců. Nástroje podporují většinu příkazů DML Hive, poddotazů a integrovaných UDF.
+   
+    ![Snímek obrazovky s IntelliSense ve Visual Studio Tools pro HDInsight – příklad 1](./media/apache-hadoop-linux-tutorial-get-started/vs-intellisense-table-name.png "U-SQL IntelliSense")
+   
+    ![Snímek obrazovky s IntelliSense ve Visual Studio Tools pro HDInsight – příklad 2](./media/apache-hadoop-linux-tutorial-get-started/vs-intellisense-column-name.png "U-SQL IntelliSense")
+   
+   > [!NOTE]
+   > IntelliSense navrhuje pouze metadata clusteru vybraného na panelu nástrojů služby HDInsight.
+   > 
+   
+4. Vyberte **Odeslat** nebo **Odeslat (rozšířené)**. 
+   
+    ![Snímek odesílání dotazu Hive](./media/apache-hadoop-linux-tutorial-get-started/vs-batch-query.png)
+
+   Pokud jste použili možnost rozšířeného odeslání, nakonfigurujte pro skript **Název úlohy**, **Argumenty**, **Další konfigurace** a **Stavový adresář**:
+
+    ![Snímek obrazovky s dotazem Hive v HDInsight Hadoop](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.submit.jobs.advanced.png "Odeslání dotazů")
+
+   Spouštění interaktivních dotazů Hive
+
+   * Kliknutím na šipku dolů vyberte **interactive** (interaktivní). 
+   
+   * Klikněte na tlačítko **Spustit**.
+
+   ![Snímek spouštění interaktivních dotazů Hive](./media/apache-hadoop-linux-tutorial-get-started/vs-execute-hive-query.png)
+
+Vytvoření a spuštění řešení Hive:
+
+1. V nabídce **Soubor** vyberte **Nový** a pak vyberte **Projekt**.
+2. V levém podokně vyberte **HDInsight**. V prostředním podokně vyberte **Aplikace Hive**. Zadejte vlastnosti a pak vyberte **OK**.
+   
+    ![Snímek obrazovky s novým projektem Hive ve Visual Studio Tools pro HDInsight](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.new.hive.project.png "Vytvoření aplikací Hive v sadě Visual Studio")
+3. V **Průzkumníku řešení** dvojím kliknutím otevřete skript **Script.hql**.
+4. Zadejte dotazy Hive a odešlete je. (Podívejte se na pokyny v krocích 3 a 4 výše.)  
+
+
 
 ## <a name="run-hive-queries"></a>Spuštění dotazů Hive
 
@@ -127,13 +232,13 @@ Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se 
 Jakmile budete s článkem hotovi, můžete cluster odstranit. Pomocí HDInsight jsou vaše data uložena v Azure Storage, takže můžete clusteru bezpečně odstranit, pokud není používán. Za cluster služby HDInsight se účtují poplatky, i když se nepoužívá. Vzhledem k tomu, že poplatky za cluster představují několikanásobek poplatků za úložiště, dává ekonomický smysl odstraňovat clustery, které nejsou používány. 
 
 > [!NOTE]
-> Pokud *rovnou* pokračujete k dalšímu kurzu, ve kterém se dozvíte, jak spouštět operace ETL s využitím Hadoopu ve službě HDInsight, můžete cluster nechat spuštěný. To proto, že v kurzu musíte cluster Hadoop vytvořit znovu. Pokud však nebudete pokračovat dalším kurzem ihned, musíte teď cluster odstranit.
+> Pokud *rovnou* pokračujete k dalšímu kurzu, ve kterém se dozvíte, jak spouštět operace ETL s využitím Hadoopu ve službě HDInsight, můžete cluster nechat spuštěný. To proto, že v kurzu musíte cluster Hadoop vytvořit znovu. Pokud ale nebudete hned pokračovat dalším kurzem, musíte teď cluster odstranit.
 > 
 > 
 
 **Postup odstranění clusteru a/nebo výchozího účtu úložiště**
 
-1. Vraťte se na kartu prohlížeče s webem Azure Portal. Měli byste být na stránce s přehledem clusteru. Pokud chcete odstranit pouze cluster, ale zachovat výchozí účet úložiště, vyberte **Odstranit**.
+1. Vraťte se na kartu prohlížeče s webem Azure Portal. Měli byste být na stránce s přehledem clusteru. Pokud chcete odstranit jenom cluster, ale zachovat výchozí účet úložiště, vyberte **Odstranit**.
 
     ![Odstranění clusteru HDInsight](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-delete-cluster.png "Odstranění clusteru HDInsight")
 
@@ -158,7 +263,7 @@ Další informace o analýze dat pomocí HDInsight naleznete v následujících 
 * Další informace o jazyce Pig používaném k transformaci dat najdete v tématu [Použití Pigu se službou HDInsight](hdinsight-use-pig.md).
 * Další informace o MapReduce, způsobu psaní programů, které zpracovávají data v Hadoopu, najdete v tématu [Použití MapReduce se službou HDInsight](hdinsight-use-mapreduce.md).
 * Další informace o použití nástrojů HDInsight pro Visual Studio k analýze dat na HDInsight naleznete v části [Začněte používat nástroje Visual Studio Hadoop pro HDInsight](apache-hadoop-visual-studio-tools-get-started.md).
-
+* Informace o použití nástrojů HDInsight pro VSCode k analýze dat na HDInsight naleznete v části [Použití nástrojů HDInsight Tools pro Visual Studio Code](../hdinsight-for-vscode.md).
 
 
 Pokud potřebujete další informace o vytváření a správě clusteru HDInsight, přečtěte si následující články:

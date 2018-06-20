@@ -1,5 +1,5 @@
 ---
-title: Směrování provozu virtuální sítě Azure | Dokumentace Microsoftu
+title: Směrování provozu virtuální sítě Azure | Microsoft Docs
 description: Zjistěte, jak Azure směruje provoz virtuální sítě a jak můžete směrování Azure přizpůsobit.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 926f256de0974112c1571fe4d1d48b6e7f530362
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fc03fa2a12c9031d88404d5d8d9f821254b033bb
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211792"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34726325"
 ---
 # <a name="virtual-network-traffic-routing"></a>Směrování provozu virtuální sítě
 
@@ -167,7 +167,9 @@ Když přepíšete předponu adresy 0.0.0.0/0, kromě přenosu odchozího provoz
         - Být schopné překládat a předávat síťové adresy nebo předávat provoz přes proxy do cílového prostředku v podsíti a vracet provoz zpět do internetu. 
     - **Brána virtuální sítě:** Pokud je brána bránou virtuální sítě ExpressRoute, místní zařízení připojené k internetu musí být schopné překládat a předávat síťové adresy nebo předávat provoz přes proxy do cílového prostředku v podsíti přes [soukromý partnerský vztah](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering) ExpressRoute. 
 
-  V tématech [DMZ mezi Azure a místním datovým centrem](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) a [DMZ mezi Azure a internetem](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) najdete podrobné informace k implementaci při použití bran virtuálních sítí a virtuálních zařízení mezi internetem a Azure.
+Pokud je vaše virtuální síť připojená k Azure VPN gateway, nepřidružujte k [podsíti brány](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) směrovací tabulku, která má směrování s cílem 0.0.0.0/0. Mohli byste tím bráně znemožnit správné fungování.
+
+V tématech [DMZ mezi Azure a místním datovým centrem](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) a [DMZ mezi Azure a internetem](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) najdete podrobné informace k implementaci při použití bran virtuálních sítí a virtuálních zařízení mezi internetem a Azure.
 
 ## <a name="routing-example"></a>Příklad směrování
 
@@ -259,5 +261,5 @@ Směrovací tabulka pro podsíť *Subnet2* obsahuje všechny výchozí trasy a v
 - [Vytvoření směrovací tabulky definované uživatelem s trasami a virtuálními síťovými zařízeními](tutorial-create-route-table-portal.md)
 - [Konfigurace protokolu BGP pro Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Použití protokolu BGP s ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#route-aggregation-and-prefix-limits)
-- [Zobrazení všech tras pro podsíť](virtual-network-routes-troubleshoot-portal.md). Směrovací tabulka definovaná uživatelem zobrazuje pouze trasy definované uživatelem, a ne výchozí trasy ani trasy protokolu BGP pro podsíť. Při zobrazení všech tras se zobrazí výchozí trasy, trasy protokolu BGP a trasy definované uživatelem pro podsíť, ve které je síťové rozhraní.
+- [Zobrazení všech tras pro podsíť](diagnose-network-routing-problem.md). Směrovací tabulka definovaná uživatelem zobrazuje pouze trasy definované uživatelem, a ne výchozí trasy ani trasy protokolu BGP pro podsíť. Při zobrazení všech tras se zobrazí výchozí trasy, trasy protokolu BGP a trasy definované uživatelem pro podsíť, ve které je síťové rozhraní.
 - [Určení typu dalšího segmentu směrování](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mezi virtuálním počítačem a cílovou IP adresou. Funkce dalšího segmentu směrování ve službě Azure Network Watcher umožňuje určit, jestli provoz odchází z podsítě a směruje se tam, kam by podle vás měl.

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření první funkce v Azure pomocí Javy a Mavenu | Dokumentace Microsoftu
+title: Vytvoření první funkce v Azure pomocí Javy a Mavenu | Microsoft Docs
 description: Vytvořte a publikujte do Azure jednoduchou funkci aktivovanou protokolem HTTP pomocí Javy a Mavenu.
 services: functions
 documentationcenter: na
@@ -11,14 +11,15 @@ ms.devlang: java
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 04/02/2018
+ms.date: 05/15/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9cf1d485f32c861ac5b5720cd77a988eee624f4d
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f9b8046e0fb730f55dbdacf567869ae88df2a524
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34600591"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Vytvoření první funkce pomocí Javy a Mavenu (Preview)
 
@@ -43,23 +44,9 @@ K vývoji aplikace funkcí pomocí Javy potřebujete následující:
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalace nástrojů Azure Functions Core
 
-[Nástroje Azure Functions Core 2.0](https://www.npmjs.com/package/azure-functions-core-tools) poskytují místní vývojové prostředí pro psaní, spouštění a ladění funkcí Azure Functions. 
+Nástroje Azure Functions Core poskytují místní vývojové prostředí pro psaní, spouštění a ladění funkcí Azure Functions z terminálu nebo příkazového řádku. 
 
-Pokud je chcete nainstalovat, přejděte k části [Installing](https://github.com/azure/azure-functions-core-tools#installing) (Instalace) projektu nástrojů Azure Functions Core, kde najdete konkrétní pokyny pro váš operační systém.
-
-Můžete je nainstalovat také ručně pomocí správce balíčků [npm](https://www.npmjs.com/), který je součástí [Node.js](https://nodejs.org/). Před tím je však potřeba nainstalovat následující požadované součásti:
-
--  Nejnovější verzi [.NET Core](https://www.microsoft.com/net/core).
--  [Node.js](https://nodejs.org/download/) verze 8.6 nebo novější.
-
-Pokud chcete pokračovat v instalaci založené na npm, spusťte:
-
-```
-npm install -g azure-functions-core-tools@core
-```
-
-> [!NOTE]
-> Pokud máte potíže s instalací nástrojů Azure Functions Core verze 2.0, podívejte se na [Modul runtime verze 2.x](/azure/azure-functions/functions-run-local#version-2x-runtime).
+Než budete pokračovat, nainstalujte si v místním počítači [verzi 2 nástrojů Core](functions-run-local.md#v2).
 
 ## <a name="generate-a-new-functions-project"></a>Vygenerování nového projektu Functions
 

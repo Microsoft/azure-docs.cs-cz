@@ -6,21 +6,21 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 05/15/2018
+ms.date: 05/31/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: aec0d93cb9358e7654f8ee1a334b7529fbee604a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d52691dbec932a3515c90e757863be01ade086cc
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208834"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34715951"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>Replikace virtuálního počítače Azure do jiné oblasti Azure
 
 Služba [Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR) tím, že zajišťuje provoz a dostupnost obchodních aplikací během plánovaných i neplánovaných výpadků. Site Recovery spravuje a orchestruje zotavení po havárii místních počítačů a virtuálních počítačů Azure, včetně replikace, převzetí služeb při selhání a zotavení.
 
-Tento rychlý start popisuje, jak replikovat virtuální počítač Azure do jiné oblasti Azure. Replikace Azure do Azure je aktuálně ve verzi Preview.
+Tento rychlý start popisuje, jak replikovat virtuální počítač Azure do jiné oblasti Azure. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -47,7 +47,7 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 Po dokončení úlohy replikace můžete zkontrolovat stav replikace, upravit nastavení replikace a otestovat nasazení.
 
-1. V nabídce virtuálního počítače klikněte na **Zotavení po havárii (Preview)**.
+1. V nabídce virtuálního počítače klikněte na **Zotavení po havárii**.
 2. Můžete zkontrolovat stav replikace, vytvořené body obnovení a zdrojové a cílové oblasti na mapě.
 
    ![Stav replikace](media/azure-to-azure-quickstart/replication-status.png)

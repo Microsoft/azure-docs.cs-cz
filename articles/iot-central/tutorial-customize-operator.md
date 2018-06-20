@@ -1,21 +1,22 @@
 ---
 title: Přizpůsobení zobrazení operátora v Azure IoT Central | Microsoft Docs
 description: Jako tvůrce můžete přizpůsobit zobrazení operátora ve vaší aplikaci Azure IoT Central.
-services: iot-central
 author: sandeeppujar
 ms.author: sadeepu
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 3e0dfab05fc7972a055853af45f0d1b13d52c0a1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: ddb6e6d7859227b8eec7f13b95fab06b333dacda
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202318"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35235364"
 ---
-# <a name="3---customize-the-azure-iot-central-operators-view"></a>3. Přizpůsobení zobrazení Azure IoT Central pro operátora
+# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Kurz: Přizpůsobení zobrazení Azure IoT Central pro operátora
 
 Tento kurz vám jako tvůrci ukáže, jak přizpůsobit zobrazení vaší aplikace pro operátora. Když měníte aplikaci jako tvůrce, můžete zobrazit náhled zobrazení operátor v aplikaci Microsoft Azure IoT Central.
 
@@ -35,8 +36,8 @@ V tomto kurzu se naučíte:
 
 Než začnete, měli byste dokončit dva předchozí kurzy:
 
-1. [Definování nového typu zařízení v aplikaci Azure IoT Central](tutorial-define-device-type.md)
-1. [Konfigurace pravidel a akcí pro zařízení](tutorial-configure-rules.md)
+* [Definování nového typu zařízení v aplikaci Azure IoT Central](tutorial-define-device-type.md)
+* [Konfigurace pravidel a akcí pro zařízení](tutorial-configure-rules.md)
 
 ## <a name="configure-your-device-dashboard"></a>Konfigurace řídicího panelu zařízení
 
@@ -46,17 +47,17 @@ Jako tvůrce můžete definovat, které informace se zobrazí na řídicím pane
 
     ![Stránka Explorer (Průzkumník)](media/tutorial-customize-operator/explorer.png)
 
-1. Pokud chcete začít s přizpůsobováním řídicího panelu připojeného klimatizačního zařízení, vyberte šablonu zařízení **Connected Air Conditioner (1.0.0)**. Zvolte zařízení **Connected Air Conditioner-1**, které jste vytvořili v kurzu [Definování nového typu zařízení ve vaší aplikaci](tutorial-define-device-type.md):
+2. Pokud chcete začít s přizpůsobováním řídicího panelu připojeného klimatizačního zařízení, vyberte šablonu zařízení **Connected Air Conditioner (1.0.0)**. Zvolte zařízení **Connected Air Conditioner-1**, které jste vytvořili v kurzu [Definování nového typu zařízení ve vaší aplikaci](tutorial-define-device-type.md):
 
     ![Výběr připojeného klimatizačního zařízení](media/tutorial-customize-operator/selectdevice.png)
 
     Když provádíte změny zařízení, jako je třeba **Connected Air Conditioner-1**, měníte příslušnou šablonu. Další informace najdete v tématu [Vytvoření nové verze šablony zařízení](howto-version-devicetemplate.md).
 
-1. Pokud chcete upravit řídicí panel, zvolte **Dashboard** (Řídicí panel):
+3. Pokud chcete upravit řídicí panel, zvolte **Dashboard** (Řídicí panel):
 
     ![Stránka řídicího panelu šablony zařízení](media/tutorial-customize-operator/dashboard.png)
 
-1. Pokud chcete na řídicí panel přidat klíčový ukazatel výkonu, zvolte **KPI**:
+4. Pokud chcete na řídicí panel přidat klíčový ukazatel výkonu, zvolte **KPI**:
 
     ![Přidání KPI](media/tutorial-customize-operator/addkpi.png)
 
@@ -69,11 +70,11 @@ Jako tvůrce můžete definovat, které informace se zobrazí na řídicím pane
     | Agregace | Maximum |
     | Časové rozmezí  | Poslední 1 týden |
 
-1. Zvolte **Uložit**. Teď na řídicím panelu vidíte dlaždici KPI:
+5. Zvolte **Uložit**. Teď na řídicím panelu vidíte dlaždici KPI:
 
     ![Dlaždice KPI](media/tutorial-customize-operator/temperaturekpi.png)
 
-1. Pokud chcete přesunout dlaždici na řídicím panelu nebo změnit její velikost, přesuňte ukazatel myši na dlaždici. Dlaždici můžete přetáhnout na nové umístění nebo změnit její velikost:
+6. Pokud chcete přesunout dlaždici na řídicím panelu nebo změnit její velikost, přesuňte ukazatel myši na dlaždici. Dlaždici můžete přetáhnout na nové umístění nebo změnit její velikost:
 
     ![Úprava rozložení řídicího panelu](media/tutorial-customize-operator/dashboardlayout.png)
 
@@ -85,7 +86,7 @@ Jako tvůrce můžete také nakonfigurovat zobrazení nastavení zařízení pro
 
     ![Stránka Nastavení](media/tutorial-customize-operator/settings.png)
 
-1. Dlaždice nastavení můžete přesunout a můžete také upravit jejich velikost:
+2. Dlaždice nastavení můžete přesunout a můžete také upravit jejich velikost:
 
     ![Úprava rozložení nastavení](media/tutorial-customize-operator/settingslayout.png)
 
@@ -100,7 +101,7 @@ Kromě řídicího panelu a nastavení můžete zobrazení operátora nakonfigur
 
     ![Stránka Vlastnosti](media/tutorial-customize-operator/properties.png)
 
-1. Pole vlastností můžete přesunout a můžete také upravit jejich velikost:
+2. Pole vlastností můžete přesunout a můžete také upravit jejich velikost:
 
     ![Úprava rozložení vlastností](media/tutorial-customize-operator/propertieslayout.png)
 
@@ -113,17 +114,17 @@ V režimu **Design Mode** (Režim návrhu) můžete přizpůsobit řídicí pane
 
 1. Pokud chcete zobrazit připojené klimatizační zařízení jako operátor, musíte vypnout **Design Mode** (Režim návrhu). **Design Mode** můžete vypnout pomocí přepínače **Design Mode** v pravém horním rohu stránky.
 
-1. Pokud chcete aktualizovat sériové číslo tohoto zařízení, upravte hodnotu na dlaždici se sériovým číslem a potom zvolte **Save** (Uložit):
+2. Pokud chcete aktualizovat sériové číslo tohoto zařízení, upravte hodnotu na dlaždici se sériovým číslem a potom zvolte **Save** (Uložit):
 
     ![Úprava nastavení vlastnosti](media/tutorial-customize-operator/editproperty.png)
 
-1. Pokud chcete připojené klimatizaci odeslat nastavení, zvolte **Settings** (Nastavení),změňte hodnotu nastavení na dlaždici a potom zvolte **Update** (Aktualizovat):
+3. Pokud chcete připojené klimatizaci odeslat nastavení, zvolte **Settings** (Nastavení),změňte hodnotu nastavení na dlaždici a potom zvolte **Update** (Aktualizovat):
 
     ![Odesílání nastavení do zařízení](media/tutorial-customize-operator/sendsetting.png)
 
     Jakmile zařízení rozpozná změnu nastavení, nastavení se na dlaždici zobrazí jako **synced** (Synchronizováno).
 
-1. Jako operátor můžete zobrazit řídicí panel zařízení tak, jak ho nakonfiguroval tvůrce:
+4. Jako operátor můžete zobrazit řídicí panel zařízení tak, jak ho nakonfiguroval tvůrce:
 
     ![Zobrazení řídicího panelu zařízení pro operátora](media/tutorial-customize-operator/operatordashboard.png)
 
@@ -131,18 +132,18 @@ V režimu **Design Mode** (Režim návrhu) můžete přizpůsobit řídicí pane
 
 Když tvůrce nebo operátor přihlásí k aplikaci Azure IoT Central, uvidí domovskou stránku. Jako tvůrce můžete nakonfigurovat obsah této domovské stránky tak, aby zahrnovala obsah, který je pro operátory nejužitečnější a nejrelevantnější.
 
-1. Pokud chcete přizpůsobit výchozí domovskou stránku, přejděte na stránku **Home** a v pravé horní části stránky zapněte **Design Mode** (Režim návrhu). Při zapnutí režimu **Design Mode** (Režim návrhu) se zprava vysune seznam objektů, které můžete přidat na vaši domovskou stránku.
+1. Pokud chcete přizpůsobit výchozí domovskou stránku, přejděte na stránku **Home** a v pravé horní části stránky zapněte **Design Mode** (Režim návrhu). Po zapnutí režimu **Design Mode** (Režim návrhu) se zprava vysune seznam objektů, které můžete přidat na domovskou stránku.
 
     ![Stránka Application Builder (Tvůrce aplikací)](media/tutorial-customize-operator/builderhome.png)
 
-1. Pokud chcete přizpůsobit na domovskou stránku, přidejte dlaždice z **knihovny**. Zvolte **Link** (Odkaz) a přidejte podrobné informace o webu vaší organizace. Potom zvolte **Save** (Uložit):
+2. Pokud chcete přizpůsobit na domovskou stránku, přidejte dlaždice z **knihovny**. Zvolte **Link** (Odkaz) a přidejte podrobné informace o webu vaší organizace. Potom zvolte **Save** (Uložit):
 
     ![Přidání odkazu na domovskou stránku](media/tutorial-customize-operator/addlink.png)
 
     > [!NOTE]
     > Můžete také přidat odkazy na stránky ve vaší aplikaci Azure IoT Central. Můžete třeba přidat odkaz na řídicí panel zařízení nebo na stránku nastavení.
 
-1. Volitelně můžete zvolit **Image** (Obrázek) a nahrát obrázek, který se zobrazí na vaší domovské stránce. Obrázek může mít adresu URL, na kterou se přejde, když na něj kliknete:
+3. Volitelně můžete zvolit **Image** (Obrázek) a nahrát obrázek, který se zobrazí na vaší domovské stránce. Obrázek může mít adresu URL, na kterou přejdete po kliknutí na něj:
 
     ![Přidání obrázku na domovskou stránku](media/tutorial-customize-operator/addimage.png)
 

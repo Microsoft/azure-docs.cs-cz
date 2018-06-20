@@ -1,73 +1,71 @@
 ---
-title: "Použití Azure IoT Hub zřizování služby zařízení pro zřizování zařízení, mezi zatížení vyrovnáváním centra IoT | Microsoft Docs"
-description: "Zřizování automatické zařízení distribučních bodů mezi zatížení vyrovnáváním centra IoT na portálu Azure"
-services: iot-dps
-keywords: 
+title: Použití služby Azure IoT Hub Device Provisioning Service ke zřízení zařízení v několika centrech IoT s vyrovnáváním zatížení | Microsoft Docs
+description: Automatické zřízení zařízení služby DPS v několika centrech IoT s vyrovnáváním zatížení na webu Azure Portal
 author: sethmanheim
 ms.author: sethm
 ms.date: 09/05/2017
 ms.topic: tutorial
 ms.service: iot-dps
-documentationcenter: 
+services: iot-dps
 manager: timlt
-ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4842944cd0d980fb7e817165da23b9c3c4037e94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: MT
+ms.openlocfilehash: d0a3720fe729d5e260bbe5b0902460c8c7cfc7cb
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34629622"
 ---
-# <a name="provision-devices-across-load-balanced-iot-hubs"></a>Zřízení zařízení napříč Vyrovnávání zatížení sítě centra IoT
+# <a name="provision-devices-across-load-balanced-iot-hubs"></a>Zřízení zařízení v několika centrech IoT s vyrovnáváním zatížení
 
-Tento kurz ukazuje, jak zřídit zařízení ve více, Vyrovnávání zatížení sítě centra IoT pomocí služby pro zřizování zařízení (distribučních bodů). V tomto kurzu se naučíte:
+Tento kurz předvádí, jak zřídit zařízení pro více center IoT s vyrovnáváním zatížení pomocí služby Device Provisioning Service (DPS). V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Pomocí portálu Azure zřídit druhé zařízení do druhé služby IoT hub 
-> * Přidání položky seznamu registrace do druhého
-> * Nastavte zásady přidělení distribučních bodů na **i distribuce**
-> * Odkaz novou službu IoT hub do distribučních bodů
+> * Použít web Azure Portal ke zřízení druhého zařízení ve druhém centru IoT 
+> * Přidat položku seznamu registrací do druhého zařízení
+> * Nastavit zásady přidělování služby DPS na **rovnoměrnou distribuci**
+> * Propojit nové centrum IoT se službou DPS
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-V tomto kurzu vychází předchozí [zřízení zařízení k rozbočovači](tutorial-provision-device-to-hub.md) kurzu.
+Tento kurz je založený na předchozím kurzu týkajícím se [zřízení zařízení v centru](tutorial-provision-device-to-hub.md).
 
-## <a name="use-the-azure-portal-to-provision-a-second-device-to-a-second-iot-hub"></a>Pomocí portálu Azure zřídit druhé zařízení do druhé služby IoT hub
+## <a name="use-the-azure-portal-to-provision-a-second-device-to-a-second-iot-hub"></a>Použití webu Azure Portal ke zřízení druhého zařízení ve druhém centru IoT
 
-Postupujte podle kroků v [zřízení zařízení k rozbočovači](tutorial-provision-device-to-hub.md) kurzu ke zřízení druhé zařízení do jiné služby IoT hub.
+Postupujte podle kroků v kurzu týkajícím se [zřízení zařízení v centru](tutorial-provision-device-to-hub.md) a zřiďte druhé zařízení v jiném centru IoT.
 
-## <a name="add-an-enrollment-list-entry-to-the-second-device"></a>Přidání položky seznamu registrace do druhého
+## <a name="add-an-enrollment-list-entry-to-the-second-device"></a>Přidání položky seznamu registrací do druhého zařízení
 
-Registrace seznamu informuje distribučních bodů, jakou metodu ověření (metoda za potvrzení identity zařízení) používá se k zařízení. Dalším krokem je přidání položky seznamu registrace pro druhý zařízení. 
+Seznam registrací informuje službu DPS o tom, jaká metoda ověření identity (metoda potvrzení identity zařízení) se u zařízení používá. Dalším krokem je přidání položky seznamu registrací pro druhé zařízení. 
 
-1. Na stránce pro vaše distribučních bodů, klikněte na tlačítko **spravovat registrace**. **Přidat položku seznamu registrace** se zobrazí stránka. 
-2. V horní části stránky klikněte na tlačítko **přidat**.
-2. Vyplňte pole a pak klikněte na tlačítko **Uložit**.
+1. Na stránce pro službu DPS klikněte na **Spravovat registrace**. Zobrazí se stránka **Přidat položku seznamu registrací**. 
+2. V horní části stránky klikněte na **Přidat**.
+2. Vyplňte pole a pak klikněte na **Uložit**.
 
-## <a name="set-the-dps-allocation-policy"></a>Nastavit zásady přidělení distribučních bodů
+## <a name="set-the-dps-allocation-policy"></a>Nastavení zásad přidělování služby DPS
 
-Přidělení zásady je nastavení distribučních bodů, které určuje, jak jsou přiřazeny zařízení do služby IoT hub. Existují tři podporované přidělení zásady: 
+Zásady přidělování jsou nastavením služby DPS, které určuje způsob přiřazování zařízení k centru IoT. Existují tři podporované zásady přidělování: 
 
-1. **Nejnižší latenci**: zřízení zařízení do služby IoT hub podle centrem s nejnižší latencí do zařízení.
-2. **Rovnoměrně váha distribuce** (výchozí): propojené IoT hubs jsou stejně může mít zřízení k nim zařízení. Toto je výchozí nastavení. Pokud jsou zřizování zařízení, aby pouze jeden Centrum IoT, můžete ponechat toto nastavení. 
-3. **Konfigurace statické prostřednictvím seznamu registrace**: specifikace požadované služby IoT hub v seznamu registrace přednost zásada přidělování úrovni distribučních bodů.
+1. **Nejnižší latence:** Zařízení se zřizují v centru IoT, které má se zařízením nejnižší latenci.
+2. **Rovnoměrně vážená distribuce (výchozí):** Zařízení se zřizují se stejnou pravděpodobností ve všech propojených centrech IoT. Toto je výchozí nastavení. Pokud zřizujete zařízení pouze v jednom centru IoT, můžete nechat toto nastavení. 
+3. **Statická konfigurace prostřednictvím seznamu registrací:** Specifikace požadovaného centra IoT v seznamu registrací má přednost před zásadami přidělování na úrovni služby DPS.
 
-Postupujte podle těchto kroků můžete nastavte přidělení zásad:
+Postupujte podle těchto kroků k nastavení zásad přidělování:
 
-1. Nastavení zásad přidělení, klikněte na stránce distribučních bodů na **spravovat zásady přidělení**.
-2. Nastavení zásady přidělení pro **rovnoměrně váha distribuce**.
+1. Pokud chcete nastavit zásady přidělování, na stránce služby DPS klikněte na **Spravovat zásady přidělování**.
+2. Nastavte zásady přidělování na **Rovnoměrně vážená distribuce**.
 3. Klikněte na **Uložit**.
 
-## <a name="link-the-new-iot-hub-to-dps"></a>Odkaz novou službu IoT hub do distribučních bodů
+## <a name="link-the-new-iot-hub-to-dps"></a>Propojení nového centra IoT se službou DPS
 
-Propojte distribučních bodů a IoT hub, distribučních bodů můžete zaregistrovat zařízení na daném rozbočovači.
+Propojte službu DPS a centrum IoT, aby služba DPS mohla registrovat zařízení v tomto centru.
 
-1. V **všechny prostředky** klikněte na tlačítko distribučních bodů, jste předtím vytvořili.
-2. Na stránce distribučních bodů, klikněte na tlačítko **propojené IoT hubs**.
-3. Klikněte na tlačítko **Přidat**.
-4. V **odkaz Přidat do služby IoT hub** stránka, pomocí přepínačů, chcete-li určit, zda propojené služby IoT hub se nachází v aktuálním předplatném nebo v jiném předplatném. Zvolte název centra IoT z **služby IoT hub** pole.
+1. Na stránce **Všechny prostředky** klikněte na dříve vytvořenou službu DPS.
+2. Na stránce služby DPS klikněte na **Propojená centra IoT Hub**.
+3. Klikněte na tlačítko **Add** (Přidat).
+4. Na stránce **Přidat propojení s centrem IoT** pomocí přepínačů určete, jestli je propojené centrum IoT umístěné v aktuálním předplatném nebo v jiném předplatném. Pak v poli **Centrum IoT** zvolte název centra IoT.
 5. Klikněte na **Uložit**.
 
 ## <a name="next-steps"></a>Další kroky
@@ -75,10 +73,10 @@ Propojte distribučních bodů a IoT hub, distribučních bodů můžete zaregis
 V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
-> * Pomocí portálu Azure zřídit druhé zařízení do druhé služby IoT hub 
-> * Přidání položky seznamu registrace do druhého
-> * Nastavte zásady přidělení distribučních bodů na **i distribuce**
-> * Odkaz novou službu IoT hub do distribučních bodů
+> * Použít web Azure Portal ke zřízení druhého zařízení ve druhém centru IoT 
+> * Přidat položku seznamu registrací do druhého zařízení
+> * Nastavit zásady přidělování služby DPS na **rovnoměrnou distribuci**
+> * Propojit nové centrum IoT se službou DPS
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

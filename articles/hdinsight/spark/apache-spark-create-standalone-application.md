@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: jgao
-ms.openlocfilehash: c72f513c7134c556afa5fa5d0b94c17b1142be54
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ed90e50167f7e86c464b1571b91dc27435437e9b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627412"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-spark-in-hdinsight-using-intellij"></a>Kurz: Vytvoření aplikace Scala Maven pro Spark ve službě HDInsight pomocí IntelliJ
 
@@ -46,6 +47,41 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 * Cluster Apache Spark ve službě HDInsight. Pokyny najdete v tématu [Vytváření clusterů Apache Spark ve službě Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 * Sada Oracle Java Development Kit. Můžete si ji nainstalovat [odtud](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 * Prostředí Java IDE. V tomto článku se používá IntelliJ IDEA 18.1.1. Můžete si ho nainstalovat [odtud](https://www.jetbrains.com/idea/download/).
+
+## <a name="use-intellij-to-create-application"></a>Použití IntelliJ k vytvoření aplikace
+
+1. Spusťte IntelliJ IDEA a pak vytvořte projekt. V dialogovém okně **New Project** (Nový projekt) proveďte následující kroky: 
+
+   a. Vyberte **HDInsight** > **Spark on HDInsight (Scala)** (Spark v HDInsight (Scala)).
+
+   b. V seznamu **Build tool** (Nástroj sestavení) vyberte podle svých potřeb některý z následujících:
+
+      * **Maven** – pro podporu průvodce vytvořením projektu Scala
+      * **SBT** – pro správu závislostí a vytváření pro projekt Scala
+
+   ![Dialogové okno New Project (Nový projekt)](./media/apache-spark-create-standalone-application/create-hdi-scala-app.png)
+
+2. Vyberte **Next** (Další).
+
+3. Průvodce vytvořením projektu Scala automaticky zjistí, jestli jste nainstalovali modul plug-in Scala. Vyberte **Install** (Nainstalovat).
+
+   ![Kontrola modulu plug-in Scala](./media/apache-spark-create-standalone-application/Scala-Plugin-check-Reminder.PNG) 
+
+4. Pokud si chcete stáhnout modul plug-in Scala, vyberte **OK**. Postupujte podle pokynů pro restartování IntelliJ. 
+
+   ![Dialogové okno instalace modulu plug-in Scala](./media/apache-spark-create-standalone-application/Choose-Scala-Plugin.PNG)
+
+5. V okně **New Project** (Nový projekt) proveďte následující kroky:  
+
+    ![Výběr sady Spark SDK](./media/apache-spark-create-standalone-application/hdi-new-project.png)
+
+   a. Zadejte název a umístění projektu.
+
+   b. V rozevíracím seznamu **Project SDK** (SDK projektu) vyberte **Java 1.8** pro cluster Spark 2.x, nebo vyberte **Java 1.7** pro cluster Spark 1.x.
+
+   c. Pomocí rozevíracího seznamu **Spark version** (Verze clusteru Spark) průvodce vytvořením projektu Scala integruje správnou verzi pro sady Spark SDK a Scala SDK. Pokud je verze clusteru Spark nižší než 2.0, vyberte **Spark 1.x**. V opačném případě vyberte **Spark 2.x**. V tomto příkladu se používá **Spark 2.0.2 (Scala 2.11.8)**.
+
+6. Vyberte **Finish** (Dokončit).
 
 ## <a name="install-scala-plugin-for-intellij-idea"></a>Instalace modulu plug-in Scala pro IntelliJ IDEA
 Nainstalujte modul plug-in Scala pomocí následujících kroků:

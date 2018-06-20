@@ -1,31 +1,26 @@
 ---
 title: Konfigurace směrování zpráv s Azure IoT Hub (.NET) | Microsoft Docs
 description: Konfigurace směrování zpráv s Azure IoT Hub
-services: iot-hub
-documentationcenter: .net
 author: robinsh
 manager: timlt
-editor: tysonn
-ms.assetid: ''
 ms.service: iot-hub
-ms.devlang: dotnet
+services: iot-hub
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/01/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 0674ed033f77d7d2eca319d0b1e82171dfa4256d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ab354410ba3b0b37ae630a2b68daec63a9051555
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34700821"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Kurz: Konfigurace směrování zpráv s Azure IoT Hub
 
 Směrování zpráv umožňuje odesílání telemetrických dat ze zařízení IoT do koncových bodů kompatibilních s vestavěným centrem událostí nebo do vlastních koncových bodů, jako je například úložiště objektů blob, téma Service Bus a Event Hubs. Při konfiguraci směrování zpráv můžete vytvořit pravidla směrování pro přizpůsobení trasy, která odpovídá určitému pravidlu. Po nastavení se příchozí data automaticky přesměrují na koncové body pomocí služby IoT Hub. 
 
-V tomto kurzu se naučíte, jak nastavit a používat pravidla směrování s IoT Hub. Budete směrovat zprávy z IoT zařízení na jednu z několika služeb, včetně úložiště objektů blob a fronty Service Bus. Zprávy do fronty Service Bus budou vyzvednuty aplikací logiky a odeslány e-mailem. Zprávy, které nemají nastavené specifické směrování, se odešlou na výchozí koncový bod a zobrazí ve vizualizaci PowerBI.
+V tomto kurzu se naučíte, jak nastavit a používat pravidla směrování s IoT Hub. Budete směrovat zprávy z IoT zařízení na jednu z několika služeb, včetně úložiště objektů blob a fronty Service Bus. Zprávy do fronty Service Bus budou vyzvednuty aplikací logiky a odeslány e-mailem. Zprávy, které nemají nastavené specifické směrování, se odešlou na výchozí koncový bod a zobrazí se ve vizualizaci Power BI.
 
 V tomto kurzu provedete následující úlohy:
 
@@ -34,11 +29,11 @@ V tomto kurzu provedete následující úlohy:
 > * Konfigurace koncových bodů a trasy v centru IoT pro účet úložiště a frontu Service Bus.
 > * Vytvoření aplikace logiky, která se aktivuje a odešle e-mail, kdykoli se ve frontě Service Bus objeví nová zpráva.
 > * Stažení a spuštění aplikaci, která bude simulovat IoT zařízení odesílající zprávy do centra s různými možnosti směrování.
-> * Vytvoření vizualizace PowerBI pro data odesílaná výchozím koncovým bodem.
+> * Vytvoření vizualizace Power BI pro data odesílaná výchozím koncovým bodem.
 > * Zobrazení výsledků...
 > * ...ve frontě Service Bus a v e-mailech.
 > * ...v účtu úložiště.
-> * ...ve vizualizaci PowerBI.
+> * ...ve vizualizaci Power BI.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -46,7 +41,7 @@ V tomto kurzu provedete následující úlohy:
 
 - Nainstalujte sadu [Visual Studio pro Windows](https://www.visualstudio.com/). 
 
-- Účet Power BI pro analýzu streamu výchozího koncového bodu. ([Vyzkoušejte PowerBI zdarma](https://app.powerbi.com/signupredirect?pbi_source=web))
+- Účet Power BI pro analýzu streamu výchozího koncového bodu. ([Vyzkoušejte službu Power BI zdarma](https://app.powerbi.com/signupredirect?pbi_source=web).)
 
 - Účet Office 365 pro odesílání e-mailových oznámení. 
 
@@ -104,24 +99,24 @@ Nejjednodušší způsob, jak použít tento skript je zkopírovat ho a vložit 
 # You need it to create the device identity. 
 az extension add --name azure-cli-iot-ext
 
-# Set the values for the resource names.
+# Set the values for the resource names that don't have to be globally unique.
+# The resources that have to have unique names are named in the script below
+#   with a random number concatenated to the name so you can probably just
+#   run this script, and it will work with no conflicts.
 location=westus
 resourceGroup=ContosoResources
 iotHubConsumerGroup=ContosoConsumers
 containerName=contosoresults
 iotDeviceName=Contoso-Test-Device 
 
-# These resource names must be globally unique.
-# You might need to change these if they are already in use by someone else.
-iotHubName=ContosoTestHub 
-storageAccountName=contosoresultsstorage 
-sbNameSpace=ContosoSBNamespace 
-sbQueueName=ContosoSBQueue
-
 # Create the resource group to be used
 #   for all the resources for this tutorial.
 az group create --name $resourceGroup \
     --location $location
+
+# The IoT hub name must be globally unique, so add a random number to the end.
+iotHubName=ContosoTestHub$RANDOM
+echo "IoT hub name = " $iotHubName
 
 # Create the IoT hub.
 az iot hub create --name $iotHubName \
@@ -131,6 +126,10 @@ az iot hub create --name $iotHubName \
 # Add a consumer group to the IoT hub.
 az iot hub consumer-group create --hub-name $iotHubName \
     --name $iotHubConsumerGroup
+
+# The storage account name must be globally unique, so add a random number to the end.
+storageAccountName=contosostorage$RANDOM
+echo "Storage account name = " $storageAccountName
 
 # Create the storage account to be used as a routing destination.
 az storage account create --name $storageAccountName \
@@ -154,11 +153,19 @@ az storage container create --name $containerName \
     --account-key $storageAccountKey \
     --public-access off 
 
+# The Service Bus namespace must be globally unique, so add a random number to the end.
+sbNameSpace=ContosoSBNamespace$RANDOM
+echo "Service Bus namespace = " $sbNameSpace
+
 # Create the Service Bus namespace.
 az servicebus namespace create --resource-group $resourceGroup \
     --name $sbNameSpace \
     --location $location
     
+# The Service Bus queue name must be globally unique, so add a random number to the end.
+sbQueueName=ContosoSBQueue$RANDOM
+echo "Service Bus queue name = " $sbQueueName
+
 # Create the Service Bus queue to be used as a routing destination.
 az servicebus queue create --name $sbQueueName \
     --namespace-name $sbNameSpace \
@@ -183,23 +190,23 @@ Nejjednodušší způsob, jak použít tento skript, je otevřít [PowerShell IS
 # Log into Azure account.
 Login-AzureRMAccount
 
-# Set the values for the resource names.
+# Set the values for the resource names that don't have to be globally unique.
+# The resources that have to have unique names are named in the script below
+#   with a random number concatenated to the name so you can probably just
+#   run this script, and it will work with no conflicts.
 $location = "West US"
 $resourceGroup = "ContosoResources"
 $iotHubConsumerGroup = "ContosoConsumers"
 $containerName = "contosoresults"
 $iotDeviceName = "Contoso-Test-Device"
 
-# These resource names must be globally unique.
-# You might need to change these if they are already in use by someone else.
-$iotHubName = "ContosoTestHub"
-$storageAccountName = "contosoresultsstorage"
-$serviceBusNamespace = "ContosoSBNamespace"
-$serviceBusQueueName  = "ContosoSBQueue"
-
-# Create the resource group to be used  
+# Create the resource group to be used 
 #   for all resources for this tutorial.
 New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+
+# The IoT hub name must be globally unique, so add a random number to the end.
+$iotHubName = "ContosoTestHub$(Get-Random)"
+Write-Host "IoT hub name is " $iotHubName
 
 # Create the IoT hub.
 New-AzureRmIotHub -ResourceGroupName $resourceGroup `
@@ -213,6 +220,10 @@ Add-AzureRmIotHubEventHubConsumerGroup -ResourceGroupName $resourceGroup `
   -Name $iotHubName `
   -EventHubConsumerGroupName $iotHubConsumerGroup `
   -EventHubEndpointName "events"
+
+# The storage account name must be globally unique, so add a random number to the end.
+$storageAccountName = "contosostorage$(Get-Random)"
+Write-Host "storage account name is " $storageAccountName
 
 # Create the storage account to be used as a routing destination.
 # Save the context for the storage account 
@@ -228,10 +239,20 @@ $storageContext = $storageAccount.Context
 New-AzureStorageContainer -Name $containerName `
     -Context $storageContext
 
+# The Service Bus namespace must be globally unique,
+#   so add a random number to the end.
+$serviceBusNamespace = "ContosoSBNamespace$(Get-Random)"
+Write-Host "Service Bus namespace is " $serviceBusNamespace
+
 # Create the Service Bus namespace.
 New-AzureRmServiceBusNamespace -ResourceGroupName $resourceGroup `
     -Location $location `
     -Name $serviceBusNamespace 
+
+# The Service Bus queue name must be globally unique,
+#  so add a random number to the end.
+$serviceBusQueueName  = "ContosoSBQueue$(Get-Random)"
+Write-Host "Service Bus queue name is " $serviceBusQueueName 
 
 # Create the Service Bus queue to be used as a routing destination.
 New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
@@ -256,8 +277,6 @@ V dalším kroku vytvořte identitu zařízení a uložte její klíč pro pozd�
 
    ![Snímek obrazovky podrobností o zařízení včetně klíčů.](./media/tutorial-routing/device-details.png)
 
-
-
 ## <a name="set-up-message-routing"></a>Nastavení směrování zpráv
 
 Potřebujete směrovat zprávy do různých prostředků na základě vlastností, které ke zprávě připojilo simulované zařízení. Zprávy, které nejsou směrovány podle vlastních pravidel, se posílají na výchozí koncový bod (zprávy/události). 
@@ -266,7 +285,7 @@ Potřebujete směrovat zprávy do různých prostředků na základě vlastnost�
 |------|------|
 |level="storage" |Zapsat do úložiště Azure Storage.|
 |level="critical" |Zapsat do fronty Service Bus. Aplikace logiky načte zprávu z fronty a pomocí Office 365 ji odešle e-mailem.|
-|default |Data se zobrazí pomocí PowerBI.|
+|default |Zobrazte tato data pomocí Power BI.|
 
 ### <a name="routing-to-a-storage-account"></a>Směrování do účtu úložiště 
 
@@ -278,7 +297,7 @@ Nyní nastavte směrování pro účet úložiště. Definujte koncový bod a pa
    
    **Typ koncového bodu:** Vyberte z rozevíracího seznamu **Kontejner Azure Storage**.
 
-   Kliknutím na **Vybrat kontejner** zobrazíte seznam účtů úložiště. Vyberte svůj účet úložiště. Tento kurz používá **contosoresultsstorage**. Potom vyberte kontejner. Tento kurz používá **contosoresults**. Kliknutím na tlačítko **Vybrat** se vraťte do podokna Přidat koncový bod. 
+   Kliknutím na **Vybrat kontejner** zobrazíte seznam účtů úložiště. Vyberte svůj účet úložiště. Tento kurz používá **contosostorage**. Potom vyberte kontejner. Tento kurz používá **contosoresults**. Kliknutím na tlačítko **Vybrat** se vraťte do podokna **Přidat koncový bod**. 
    
    ![Snímek obrazovky zobrazující přidání koncového bodu.](./media/tutorial-routing/add-endpoint-storage-account.png)
    
@@ -342,7 +361,7 @@ Fronta Service Bus se použije pro příjem zpráv označených jako kritické. 
 
    **Název:** V tomto poli je název aplikace logiky. Tento kurz používá **ContosoLogicApp**. 
 
-   **Předplatné:** Vyberte své předplatné Azure.
+   **Předplatné**: Vyberte své předplatné Azure.
 
    **Skupina prostředků:** Klikněte na **Použít existující** a vyberte vaši skupinu prostředků. Tento kurz používá **ContosoResources**. 
 
@@ -390,7 +409,7 @@ Fronta Service Bus se použije pro příjem zpráv označených jako kritické. 
 
 ## <a name="set-up-azure-stream-analytics"></a>Nastavení služby Azure Stream Analytics
 
-Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Stream Analytics pro načítání dat. Mějte na paměti, že pouze zprávy, jejichž vlastnost **level** je **critical**, se odesílají výchozímu koncovému bodu a budou úlohou Stream Analytics vizualizovány v PowerBI.
+Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Stream Analytics pro načítání dat. Mějte na paměti, že pouze zprávy, jejichž vlastnost **level** je **normal**, se odesílají výchozímu koncovému bodu a budou úlohou Stream Analytics vizualizované v PowerBI.
 
 ### <a name="create-the-stream-analytics-job"></a>Vytvoření úlohy služby Stream Analytics
 
@@ -405,6 +424,8 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
    **Umístění:** Použijte stejné umístění, které používáte v instalačním skriptu. Tento kurz používá **Západ USA**. 
 
    ![Snímek obrazovky předvádějící vytvoření úlohy Stream Analytics.](./media/tutorial-routing/stream-analytics-create-job.png)
+
+3. Vytvořte úlohu kliknutím na **Vytvořit**. Zpět do úlohy se vrátíte kliknutím na **Skupiny prostředků**. Tento kurz používá **ContosoResources**. Vyberte skupinu prostředků a potom v seznamu prostředků klikněte na úlohu Stream Analytics. 
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Přidání vstupu úlohy Stream Analytics
 
@@ -434,7 +455,7 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 1. V části **Topologie úlohy** klikněte na **Výstupy**.
 
-2. V podokně **Výstupy** klikněte na **Přidat**a potom vyberte **PowerBI**. Na další obrazovce vyplňte následující pole:
+2. V podokně **Výstupy** klikněte na **Přidat** a potom vyberte **Power BI**. Na další obrazovce vyplňte následující pole:
 
    **Alias pro výstup:** Jedinečný alias pro výstup. Tento kurz používá **contosooutputs**. 
 
@@ -462,19 +483,19 @@ Pokud chcete zobrazit data ve vizualizaci Power BI, nejprve vytvořte úlohu Str
 
 4. Klikněte na **Uložit**.
 
-5. Zavřete podokno dotazu.
+5. Zavřete podokno dotazu. Tím se vrátíte k zobrazení prostředků ve Skupině prostředků. Klikněte na úlohu Stream Analytics. V tomto kurzu má název **contosoJob**.
 
 ### <a name="run-the-stream-analytics-job"></a>Spuštění úlohy Stream Analytics
 
 V úloze Stream Analytics klikněte na **Spustit** > **Nyní** > **Spustit**. Jakmile se úloha úspěšně spustí, stav úlohy se změní ze **Zastaveno** na **Spuštěno**.
 
-K vytvoření sestavy PowerBI potřebujete data, takže je třeba nastavit PowerBI po vytvoření zařízení a spuštění aplikace simulace zařízení.
+K vytvoření sestavy Power BI potřebujete data, takže Power BI je potřeba po vytvoření zařízení a spuštění aplikace simulace zařízení nastavit.
 
 ## <a name="run-simulated-device-app"></a>Spuštění aplikace simulovaného zařízení
 
 Dříve v části nastavení skriptu jste vytvořili zařízení pro simulaci pomocí zařízení IoT. V této části si stáhnete konzolovou aplikaci .NET, která simuluje zařízení odesílající zprávy typu zařízení-cloud do centra IoT. Tato aplikace odesílá zprávy pro každou z různých metod směrování. 
 
-Stažení řešení pro [Simulaci zařízení IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Tím stáhnete úložiště s několika aplikacemi. Řešení, které hledáte, je ve složce Tutorials/Routing/SimulatedDevice/.
+Stažení řešení pro [Simulaci zařízení IoT](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Tím stáhnete úložiště s několika aplikacemi. Řešení, které hledáte, je ve složce iot-hub/Tutorials/Routing/SimulatedDevice/.
 
 Dvojím kliknutím na soubor řešení (SimulatedDevice.sln) otevřete kód v sadě Visual Studio a otevřete Program.cs. Nahraďte `{iot hub hostname}` názvem hostitele centra IoT. Formát názvu hostitele centra IoT je **{iot-hub-name}.azure-devices.net**. V tomto kurzu je název hostitele centra **ContosoTestHub.azure-devices.net**. Dále nahraďte `{device key}` klíčem zařízení, který jste si předtím uložili při vytváření simulovaného zařízení. 
 
@@ -512,11 +533,11 @@ To znamená následující:
 
    * Směrování do účtu úložiště pracuje správně.
 
-Nyní se stále běžící aplikací vytvořte vizualizaci PowerBI pro zprávy přicházející přes výchozí směrování. 
+Nyní se stále běžící aplikací vytvořte vizualizaci Power BI pro zprávy přicházející přes výchozí směrování. 
 
-## <a name="set-up-the-powerbi-visualizations"></a>Vytvoření vizualizace PowerBI
+## <a name="set-up-the-power-bi-visualizations"></a>Nastavení vizualizací Power BI
 
-1. Přihlaste se do svého účtu [PowerBI](https://powerbi.microsoft.com/).
+1. Přihlaste se ke svému účtu [Power BI](https://powerbi.microsoft.com/).
 
 2. Přejděte na **Pracovní prostory** a vyberte pracovní prostor, který jste nastavili při vytváření výstupu pro úlohu služby Stream Analytics. Tento kurz používá **My Workspace**. 
 
@@ -526,7 +547,7 @@ Nyní se stále běžící aplikací vytvořte vizualizaci PowerBI pro zprávy p
 
 4. V části **AKCE** kliknutím na první ikonu vytvořte sestavu.
 
-   ![Snímek obrazovky pracovního prostoru PowerBI se zvýrazněnou položkou AKCE a ikonou sestavy.](./media/tutorial-routing/power-bi-actions.png)
+   ![Snímek obrazovky pracovního prostoru Power BI se zvýrazněnou položkou Akce a ikonou sestavy.](./media/tutorial-routing/power-bi-actions.png)
 
 5. Vytvořte spojnicový graf zobrazující v reálném čase vývoj teploty.
 
@@ -544,7 +565,7 @@ Nyní se stále běžící aplikací vytvořte vizualizaci PowerBI pro zprávy p
 
 7. Vytvořte jiný spojnicový graf zobrazující v reálném čase vývoj vlhkosti. Při vytváření druhého grafu postupujte stejně a přetáhněte **EventEnqueuedUtcTime** na osu x a **humidity** na osu y.
 
-   ![Snímek obrazovky předvádějící konečnou sestavu PowerBI se dvěma grafy.](./media/tutorial-routing/power-bi-report.png)
+   ![Snímek obrazovky předvádějící konečnou sestavu Power BI se dvěma grafy.](./media/tutorial-routing/power-bi-report.png)
 
 8. Kliknutím na **Uložit** sestavu uložte.
 
@@ -552,17 +573,17 @@ Nyní byste měli vidět příchozí data v obou grafech. To znamená následuj�
 
    * Směrování do výchozího koncového bodu pracuje správně.
    * Úloha Azure Stream Analytics správně streamuje.
-   * Vizualizace PowerBI byla správně vytvořena.
+   * Vizualizace Power BI je nastavená správně.
 
-Obnovením grafů kliknutím na tlačítko Aktualizovat nahoře v okně PowerBI zobrazíte nejnovější data. 
+Obnovením grafů zobrazíte nejnovější data. Stačí kliknout na tlačítko Aktualizovat nahoře v okně Power BI. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků 
 
 Pokud chcete odebrat všechny prostředky, které jste vytvořili, odstraňte skupinu prostředků. Tato akce odstraní všechny prostředky, které skupina obsahuje. V tomto případě se odebere centrum IoT, obor názvů a fronta Service Bus, aplikace logiky, účet úložiště i samotná skupina prostředků. 
 
-### <a name="clean-up-resources-in-the-powerbi-visualization"></a>Vyčištění prostředků ve vizualizaci PowerBI
+### <a name="clean-up-resources-in-the-power-bi-visualization"></a>Vyčištění prostředků ve vizualizaci Power BI
 
-Přihlaste se do svého účtu [PowerBI](https://powerbi.microsoft.com/). Přejděte do svého pracovního prostoru. Tento kurz používá **My Workspace**. Vizualizaci PowerBI odeberte tak, že přejdete do datových sad a kliknutím na ikonu koše datovou sadu odstraníte. Tento kurz používá **contosodataset**. Pokud datovou sadu odeberete, odebere se také sestava.
+Přihlaste se ke svému účtu [Power BI](https://powerbi.microsoft.com/). Přejděte do svého pracovního prostoru. Tento kurz používá **My Workspace**. Vizualizaci Power BI odeberete tak, že přejdete do datových sad a kliknutím na ikonu koše datovou sadu odstraníte. Tento kurz používá **contosodataset**. Pokud datovou sadu odeberete, odebere se také sestava.
 
 ### <a name="clean-up-resources-using-azure-cli"></a>Vyčištění prostředků pomocí Azure CLI
 
@@ -589,15 +610,15 @@ V tomto kurzu jste se naučili, jak používat směrování zpráv služby IoT H
 > * Konfigurace koncových bodů a trasy v centru IoT pro účet úložiště a frontu Service Bus.
 > * Vytvoření aplikace logiky, která se aktivuje a odešle e-mail, kdykoli se ve frontě Service Bus objeví nová zpráva.
 > * Stažení a spuštění aplikaci, která bude simulovat IoT zařízení odesílající zprávy do centra s různými možnosti směrování.
-> * Vytvoření vizualizace PowerBI pro data odesílaná výchozím koncovým bodem.
+> * Vytvoření vizualizace Power BI pro data odesílaná výchozím koncovým bodem.
 > * Zobrazení výsledků...
 > * ...ve frontě Service Bus a v e-mailech.
 > * ...v účtu úložiště.
-> * ...ve vizualizaci PowerBI.
+> * ...ve vizualizaci Power BI.
 
 V dalším kurzu se dozvíte, jak spravovat stav zařízení IoT. 
 
 > [!div class="nextstepaction"]
-[Začínáme s dvojčaty zařízení ve službě Azure IoT Hub](iot-hub-node-node-twin-getstarted.md)
+[Konfigurace zařízení z back-endové služby](tutorial-device-twins.md)
 
  <!--  [Manage the state of a device](./tutorial-manage-state.md) -->

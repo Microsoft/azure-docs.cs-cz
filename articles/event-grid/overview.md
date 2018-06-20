@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: overview
-ms.date: 04/27/2018
+ms.date: 06/01/2018
 ms.author: babanisa
-ms.openlocfilehash: f1d235fe431cfe14019ffef7c043dfbc367bb2bc
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 6d0f769d65bc8ed4f41469b96edf4f0595d994de
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34303973"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725237"
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Úvod k Azure Event Gridu
 
@@ -71,8 +71,6 @@ V současné době podporují zpracování událostí z Event Gridu následujíc
 * Queue Storage
 * Webhooky
 
-Pokud jako obslužnou rutinu používáte Azure Functions, použijte místo generických aktivačních událostí HTTP aktivační událost Event Gridu. Event Grid automaticky ověřuje aktivační události funkcí Event Grid. U obecných aktivačních událostí HTTP je potřeba implementovat [odpověď ověření](security-authentication.md#webhook-event-delivery).
-
 Odkazy na články, které ukazují, jak používat jednotlivé obslužné rutiny událostí, najdete v článku [Obslužné rutiny událostí ve službě Azure Event Grid](event-handlers.md).
 
 ## <a name="concepts"></a>Koncepty
@@ -80,7 +78,7 @@ Odkazy na články, které ukazují, jak používat jednotlivé obslužné rutin
 Azure Event Grid obsahuje pět konceptů, které vám pomůžou rychle začít s prací:
 
 * **Události** – to, co se stalo.
-* **Zdroje/vydavatelé událostí** – kde k události došlo.
+* **Zdroje událostí** – kde k události došlo.
 * **Témata** – koncový bod, kam vydavatelé odesílají události.
 * **Odběry událostí** – koncový bod nebo integrovaný mechanismus pro směrování událostí, někdy i do více obslužných rutin. Pomocí odběrů taky obslužné rutiny inteligentně filtrují příchozí události.
 * **Obslužné rutiny událostí** – aplikace nebo služba reagující na danou událost.
@@ -126,7 +124,7 @@ Event Grid propojuje vaši aplikaci s dalšími službami. Můžete třeba vytvo
 
 ## <a name="how-much-does-event-grid-cost"></a>Kolik stojí Event Grid?
 
-Azure Event Grid využívá model plateb za události, takže platíte jenom za to, co využijete. Prvních 100 000 operací za měsíc je zdarma. Operace jsou definované jako příchozí události, rozšířené porovnání, pokusy o doručení a volání správy. Podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/event-grid/).
+Azure Event Grid využívá model plateb za události, takže platíte jenom za to, co využijete. Prvních 100 000 operací za měsíc je zdarma. Operace jsou definované jako příchozí události, pokusy o doručení, volání správy a filtrování podle přípony předmětu. Podrobnosti najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/event-grid/).
 
 ## <a name="next-steps"></a>Další kroky
 

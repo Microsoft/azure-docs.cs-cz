@@ -1,6 +1,6 @@
 ---
 title: Rychlý start – rychlý start práce na portálu Azure s clusterem Kubernetes
-description: Rychle se naučíte, jak pomocí portálu Azure vytvořit cluster Kubernetes pro kontejnery Linuxu ve službě AKS.
+description: Rychle se naučíte, jak pomocí portálu Azure Portal vytvořit cluster Kubernetes pro kontejnery Linuxu ve službě AKS.
 services: container-service
 author: neilpeterson
 manager: jeconnoc
@@ -9,15 +9,16 @@ ms.topic: quickstart
 ms.date: 04/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: cd17d2732bf44e3f4b46878d6a416579b9e2f970
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8b9a9eddc6876451a75f0deae911d73b57198827
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597276"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster"></a>Rychlý start: Nasazení clusteru Azure Kubernetes Service (AKS)
 
-V tomto rychlém startu nasadíte cluster AKS pomocí portálu Azure. Následně se na tomto clusteru spustí vícekontejnerová aplikace skládající se z front-endu webu a instance Redis. Po dokončení bude aplikace přístupná přes internet.
+V tomto rychlém startu nasadíte cluster AKS pomocí portálu Azure Portal. Následně se na tomto clusteru spustí vícekontejnerová aplikace skládající se z front-endu webu a instance Redis. Po dokončení bude aplikace přístupná přes internet.
 
 ![Obrázek přechodu na aplikaci Azure Vote](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
@@ -31,7 +32,7 @@ Přihlaste se k webu Azure Portal na adrese http://portal.azure.com.
 
 ## <a name="create-aks-cluster"></a>Vytvoření clusteru AKS
 
-Zvolte **Vytvořit prostředek**, vyhledejte **Kubernetes** a vyberte **Azure Kubernetes Service (Preview)** > **Vytvořit**.
+Zvolte **Vytvořit prostředek**, vyhledejte **Kubernetes** a vyberte **Služba Kubernetes** > **Vytvořit**.
 
 Pod jednotlivými nadpisy formuláře pro vytvoření clusteru AKS proveďte následující kroky.
 
@@ -69,7 +70,7 @@ Po krátkém čekání se cluster AKS nasadí a je připravený k použití. Př
 
 Ke správě clusteru Kubernetes použijte klienta příkazového řádku Kubernetes [kubectl][kubectl]. Ve službě Azure Cloud Shell je předinstalovaný klient kubectl.
 
-Otevřete službu Cloud Shell pomocí tlačítka v pravém horním rohu portálu Azure.
+Otevřete službu Cloud Shell pomocí tlačítka v pravém horním rohu portálu Azure Portal.
 
 ![Cloud Shell](media/container-service-walkthrough-portal/kubectl-cs.png)
 
@@ -163,10 +164,10 @@ spec:
     app: azure-vote-front
 ```
 
-Pomocí příkazu [kubectl create][kubectl-create] spusťte aplikaci.
+Pomocí příkazu [kubectl apply][kubectl-apply] spusťte aplikaci.
 
 ```azurecli-interactive
-kubectl create -f azure-vote.yaml
+kubectl apply -f azure-vote.yaml
 ```
 
 Výstup:
@@ -244,7 +245,7 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
-[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [kubernetes-deployment]: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
@@ -254,7 +255,7 @@ Další informace o službě AKS a podrobné vysvětlení kompletního příklad
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
 [az-aks-delete]: /cli/azure/aks#az-aks-delete
-[aks-monitor]: ../log-analytics/log-analytics-containers.md
+[aks-monitor]: ../monitoring/monitoring-container-health.md
 [aks-network]: ./networking-overview.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
 [http-routing]: ./http-application-routing.md

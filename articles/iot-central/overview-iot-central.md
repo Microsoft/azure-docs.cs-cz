@@ -1,19 +1,20 @@
 ---
 title: Co je Azure IoT Central | Microsoft Docs
 description: Azure IoT Central je kompletní řešení SaaS, pomocí kterého můžete sestavit a spravovat vlastní řešení IoT. Tento článek obsahuje přehled funkcí Azure IoT Central.
-services: iot-central
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/30/2017
 ms.topic: overview
-ms.prod: microsoft-iot-central
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
 manager: timlt
-ms.openlocfilehash: 41eb9049b45c6835dd866c988af486a4975c4831
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8c369ab05059e57f2e2a98339052c27292ac7c0d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34201162"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34628772"
 ---
 <!---
 Purpose of an Overview article: 
@@ -109,7 +110,7 @@ Správci můžou spravovat přístup k aplikaci pomocí [uživatelských rolí a
 
 Přečetli jste si přehled Azure IoT Central a tady jsou doporučené další kroky:
 
-- Pochopte rozdíly mezi [Azure IoT Central a Azure IoT Suite](overview-iot-options.md).
+- Pochopte rozdíly mezi [Azure IoT Central a akcelerátory řešení Azure IoT](overview-iot-options.md).
 - Seznamte se s [uživatelským rozhraním Azure IoT Central](overview-iot-central-tour.md).
 - Začněte [vytvořením aplikace Azure IoT Central](quick-deploy-iot-central.md).
 - Projděte si několik kurzů, kde se dozvíte, jak provést následující kroky:

@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: e80fad4d0bddff89ff4dda7feed90fc622369ee9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 678ca45d12fd10a02d967cd32743b4d7b6ea26af
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642695"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster"></a>Kurz: Škálování clusteru Service Fabric
 
@@ -85,7 +86,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-Teď, když jste připojení, můžete pomocí příkazu získat stav každého uzlu v clusteru. Pro PowerShell použijte příkaz `Get-ServiceFabricClusterHealth` a pro **sfctl** použijte příkaz `sfctl cluster select`.
+Teď, když jste připojení, můžete pomocí příkazu získat stav každého uzlu v clusteru. Pro **PowerShell** použijte příkaz `Get-ServiceFabricClusterHealth` a pro **sfctl** použijte příkaz `sfctl cluster select`.
 
 ## <a name="scale-out"></a>Horizontální navýšení kapacity
 
@@ -131,15 +132,15 @@ Cluster Service Fabric potřebuje vědět, že tento uzel se odebere. Musíte pr
 
 1. Zakázat uzel, aby už nefungoval jako replika pro data.  
 PowerShell: `Disable-ServiceFabricNode`  
-sfcli: `sfctl node disable`
+sfctl: `sfctl node disable`
 
 2. Zastavit uzel tak, aby se řádně ukončil provoz Service Fabricu a vaše aplikace obdržela žádost o ukončení.  
 PowerShell: `Start-ServiceFabricNodeTransition -Stop`  
-sfcli: `sfctl node transition --node-transition-type Stop`
+sfctl: `sfctl node transition --node-transition-type Stop`
 
 2. Odebrat uzel z clusteru.  
 PowerShell: `Remove-ServiceFabricNodeState`  
-sfcli: `sfctl node remove-state`
+sfctl: `sfctl node remove-state`
 
 Jakmile na uzel aplikujete tyto tři kroky, může se odebrat ze škálovací sady. Pokud používáte nějakou jinou úroveň odolnosti než [bronzovou][durability], tyto kroky se provedou za vás při odebrání instance škálovací sady.
 

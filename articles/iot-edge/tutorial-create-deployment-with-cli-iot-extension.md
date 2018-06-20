@@ -1,54 +1,54 @@
 ---
-title: Nasazení modulů na IoT hraniční zařízení pomocí rozšíření IoT 2.0 rozhraní příkazového řádku Azure | Microsoft Docs
-description: Nasazení modulů na IoT hraniční zařízení pomocí IoT rozšíření pro Azure CLI 2.0
-services: iot-edge
-keywords: ''
+title: Nasazení modulů do zařízení IoT Edge pomocí rozšíření IoT pro Azure CLI 2.0 | Microsoft Docs
+description: Nasazení modulů do zařízení IoT Edge pomocí rozšíření IoT pro Azure CLI 2.0
 author: chrissie926
-manager: timlt
+manager: ''
 ms.author: menchi
 ms.date: 03/02/2018
-ms.topic: article
-ms.service: iot-edge
-ms.custom: ''
+ms.topic: tutorial
 ms.reviewer: kgremban
-ms.openlocfilehash: 7bc0d0706385f2f3e101d06be3a2837341c331b9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: MT
+ms.service: iot-edge
+services: iot-edge
+md.custom: mvc
+ms.openlocfilehash: deee54fe5d11d6d1cf5485357f853b1cb078f96d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34631577"
 ---
-# <a name="deploy-modules-to-an-iot-edge-device-using-iot-extension-for-azure-cli-20"></a>Nasazení modulů na IoT hraniční zařízení pomocí IoT rozšíření pro Azure CLI 2.0
+# <a name="deploy-modules-to-an-iot-edge-device-using-iot-extension-for-azure-cli-20"></a>Nasazení modulů do zařízení IoT Edge pomocí rozšíření IoT pro Azure CLI 2.0
 
 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) je open source nástroj příkazového řádku pro různé platformy určený ke správě prostředků Azure, jako je služba IoT Edge. Azure CLI 2.0 je k dispozici v systémech Windows, Linux a MacOS.
 
-Azure CLI 2.0 bez dalších úprav umožňuje spravovat prostředky služby Azure IoT Hub, instance služby Device Provisioning a propojená centra. Nové rozšíření IoT vylepšuje 2.0 rozhraní příkazového řádku Azure s funkcemi, jako je Správa zařízení a úplných možností IoT okraj.
+Azure CLI 2.0 bez dalších úprav umožňuje spravovat prostředky služby Azure IoT Hub, instance služby Device Provisioning a propojená centra. Nové rozšíření IoT vylepšuje rozhraní Azure CLI 2.0 o funkce, jako je správa zařízení a plně funkční IoT Edge.
 
-V tomto článku nastavíte 2.0 rozhraní příkazového řádku Azure a IoT rozšíření. Potom můžete naučit se nasazovat modulů na IoT hraniční zařízení pomocí dostupné příkazy rozhraní příkazového řádku.
+V tomto článku nastavíte Azure CLI 2.0 a rozšíření IoT. Pak se naučíte nasazovat moduly do zařízení IoT Edge příkazy dostupnými v CLI.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Účet Azure. Pokud nemáte ještě, můžete [vytvořit bezplatný účet](https://azure.microsoft.com/free/?v=17.39a) ještě dnes. 
+* Účet Azure. Pokud ještě nemáte účet Azure, můžete si ho ještě dnes [zdarma vytvořit](https://azure.microsoft.com/free/?v=17.39a). 
 
-* [Python 2.7 x nebo Python 3.x](https://www.python.org/downloads/).
+* [Python 2.7x nebo Python 3.x](https://www.python.org/downloads/).
 
 * [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) ve vašem prostředí. Vaše verze Azure CLI 2.0 musí být minimálně 2.0.24 nebo novější. Ke kontrole použijte příkaz `az –-version`. Tato verze podporuje příkazy rozšíření az a zavádí příkazové rozhraní Knack. Ve Windows můžete instalaci jednoduše provést stažením a instalací [MSI](https://aka.ms/InstallAzureCliWindows).
 
 * [Rozšíření IoT pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension):
    1. Spusťte `az extension add --name azure-cli-iot-ext`. 
-   2. Po instalaci pomocí `az extension list` ověření aktuálně nainstalovaná rozšíření nebo `az extension show --name azure-cli-iot-ext` zobrazíte podrobnosti o rozšíření IoT.
-   3. Chcete-li odebrat rozšíření, použijte `az extension remove --name azure-cli-iot-ext`.
+   2. Po instalaci použijte příkaz `az extension list` k ověření aktuálně nainstalovaných rozšíření nebo příkaz `az extension show --name azure-cli-iot-ext` k zobrazení podrobností o rozšíření IoT.
+   3. K odebrání rozšíření použijte příkaz `az extension remove --name azure-cli-iot-ext`.
 
 
-## <a name="create-an-iot-edge-device"></a>Vytvoření IoT hraniční zařízení
-Tento článek poskytuje pokyny pro vytvoření nasazení IoT okraj. V příkladu se dozvíte, jak přihlásit k účtu Azure, vytvořte skupinu prostředků Azure (kontejner, který obsahuje související prostředky pro řešení s Azure), vytvoření služby IoT Hub, vytvořit tři identitu zařízení IoT Edge, nastavte značky a potom vytvořit nasazení služby IoT Edge Cílem těchto zařízení. 
+## <a name="create-an-iot-edge-device"></a>Vytvoření zařízení IoT Edge
+V tomto článku najdete pokyny k vytvoření nasazeného IoT Edge. V tomto příkladu si ukážeme, jak se přihlásit k účtu Azure, vytvořit skupinu prostředků Azure (kontejner, ve kterém jsou prostředky související s řešením Azure), jak vytvořit IoT Hub, tři identity zařízení IoT Edge, jak nastavit značky a pak vytvořit nasazený IoT Edge určený pro tato zařízení. 
 
-Přihlaste se k účtu Azure. Když zadáte následující příkaz přihlášení se zobrazí výzva k použít webový prohlížeč k přihlášení pomocí jednorázové kódu: 
+Přihlaste se ke svému účtu Azure. Jakmile zadáte následující přihlašovací příkaz, zobrazí se výzva, abyste se přihlásili ve webovém prohlížeči zadáním jednorázového kódu: 
 
    ```cli
    az login
    ```
 
-Vytvořit novou skupinu prostředků s názvem **IoTHubCLI** v oblasti Východ USA: 
+Vytvořte novou skupinu prostředků s názvem **IoTHubCLI** ve východní oblasti USA: 
 
    ```cli
    az group create -l eastus -n IoTHubCLI
@@ -56,28 +56,28 @@ Vytvořit novou skupinu prostředků s názvem **IoTHubCLI** v oblasti Východ U
 
    ![Vytvoření skupiny prostředků][2]
 
-Vytvoření služby IoT hub názvem **CLIDemoHub** ve skupině pro nově vytvořený prostředek:
+V nově vytvořené skupině prostředků vytvořte IoT Hub pojmenovaný **CLIDemoHub**:
 
    ```cli
    az iot hub create --name CLIDemoHub --resource-group IoTHubCLI --sku S1
    ```
 
    >[!TIP]
-   >Každé předplatné je vymezena jeden bezplatné Centrum IoT. Pro vytvoření rozbočovač volné pomocí rozhraní příkazového řádku příkaz se nahradit hodnotu SKU `--sku F1`. Pokud již máte volné hub v rámci vašeho předplatného, budete se při pokusu o vytvoření druhá zobrazí chybové hlášení. 
+   >V každém předplatném smí být jenom jeden bezplatný IoT Hub. Pokud chcete vytvořit bezplatné centrum příkazem CLI, nahraďte hodnotu SKU hodnotou `--sku F1`. Pokud v předplatném máte bezplatné centrum, zobrazí se při pokusu o vytvoření druhého centra chybová zpráva. 
 
-Vytvořte IoT hraniční zařízení:
+Vytvoře zařízení IoT Edge:
 
    ```cli
-   az iot hub device-identity create --device-id edge001 -hub-name CLIDemoHub --edge-enabled
+   az iot hub device-identity create --device-id edge001 --hub-name CLIDemoHub --edge-enabled
    ```
 
    ![Vytvoření zařízení IoT Edge][4]
 
-## <a name="configure-the-iot-edge-device"></a>Nakonfigurujte hraniční IoT zařízení
+## <a name="configure-the-iot-edge-device"></a>Konfigurace zařízení IoT Edge
 
-Vytvořit šablonu JSON nasazení a uložte ho místně jako souboru txt. Když spustíte příkaz použít konfiguraci budete potřebovat cestu k souboru.
+Vytvořte nasazovanou šablonu JSON a uložte v místním počítači jako soubor TXT. Cestu k souboru budete potřebovat ke spuštění příkazu apply-configuration.
 
-Nasazení šablony JSON by měla obsahovat vždy dva systému moduly, edgeAgent a edgeHub. Tento soubor můžete použít k nasazení dalších modulů zařízení IoT Edge kromě těchto dvou. Použijte následující příklad konfigurace IoT hraniční zařízení s jeden modul tempSensor:
+Nasazené šablony JSON by měly vždy obsahovat dva systémové moduly: edgeAgent a edgeHub. Kromě těchto dvou modulů můžete soubor použít k nasazení dalších modulů do zařízení IoT Edge. Ke konfiguraci zařízení IoT Edge s jedním modulem tempSensor použijte následující ukázku:
 
    ```json
    {
@@ -140,13 +140,13 @@ Nasazení šablony JSON by měla obsahovat vždy dva systému moduly, edgeAgent 
    }
    ```
 
-Použít konfiguraci na IoT hraniční zařízení:
+Konfiguraci použijte pro zařízení IoT Edge:
 
    ```cli
    az iot hub apply-configuration --device-id edge001 --hub-name CLIDemoHub --content C:\<configuration.txt file path>
    ```
 
-Zobrazení modulů ve vašem zařízení IoT okraj:
+Zobrazení modulů v zařízení IoT Edge:
     
    ```cli
    az iot hub module-identity list --device-id edge001 --hub-name CLIDemoHub
@@ -154,9 +154,9 @@ Zobrazení modulů ve vašem zařízení IoT okraj:
 
    ![Seznam modulů][6]
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-* Zjistěte, jak [pomocí zařízení IoT okraj jako brána](how-to-create-transparent-gateway.md)
+* Naučte se [používat zařízení IoT Edge jako bránu](how-to-create-transparent-gateway.md).
 
 <!--Links-->
 [lnk-tutorial1-win]: tutorial-simulate-device-windows.md

@@ -15,11 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 407268299e77d771a53c49c11995dce1ada65112
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 375e0171f1a131ad95a9c6594cc0e05926e4dcc5
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642831"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster"></a>Kurz: Upgrade modulu runtime clusteru Service Fabric
 
@@ -97,7 +98,7 @@ Set-AzureRmServiceFabricUpgradeType -ResourceGroupName SFCLUSTERTUTORIALGROUP `
 > [!IMPORTANT]
 > Dokončení upgradu modulu runtime může trvat delší dobu. PowerShell je v průběhu upgradu blokovaný. Ke kontrole stavu upgradu můžete použít jinou relaci PowerShellu.
 
-Stav upgradu můžete monitorovat pomocí PowerShellu nebo rozhraní příkazového řádku `sfctl`.
+Stav upgradu můžete monitorovat pomocí PowerShellu nebo Azure Service Fabric CLI (sfctl).
 
 Nejprve se ke clusteru připojte pomocí certifikátu SSL vytvořeného v první části kurzu. Použijte k tomu rutinu `Connect-ServiceFabricCluster` nebo `sfctl cluster upgrade-status`.
 

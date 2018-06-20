@@ -14,11 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/28/2018
 ms.author: daveba
-ms.openlocfilehash: 3493c726b600c1fd70e0c6041ec57c8f0ba01c38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 851f788adee46436bd4286c803427f49ce0ed89a
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34724094"
 ---
 #  <a name="what-is-managed-service-identity-msi-for-azure-resources"></a>Co je Identita spravované služby (MSI) pro prostředky Azure?
 
@@ -26,12 +27,14 @@ ms.lasthandoff: 05/10/2018
 
 Běžnou výzvou při vytváření cloudových aplikací je, jak spravovat přihlašovací údaje, které je potřeba mít v kódu kvůli ověřování u cloudových služeb. Zajištění zabezpečení těchto přihlašovacích údajů je důležitý úkol. V ideálním případě by se nikdy neměly nacházet na vývojářských pracovních stanicích ani se vracet se změnami do správy zdrojového kódu. Azure Key Vault nabízí možnost bezpečného ukládání přihlašovacích údajů a dalších klíčů a tajných kódů, ale váš kód se musí ověřit ve službě Key Vault, aby je mohl načíst. Identita spravované služby (MSI) usnadňuje řešení tohoto problému tím, že poskytuje službám Azure automaticky spravovanou identitu v Azure Active Directory (Azure AD). Tuto identitu můžete použít k ověření pro jakoukoli službu, která podporuje ověřování Azure AD, včetně služby Key Vault, aniž byste ve vašem kódu museli mít přihlašovací údaje.
 
+Identita spravované služby je součástí Azure Active Directory Free, což je výchozí možnost pro předplatná Azure. Za Identitu spravované služby se neúčtují žádné další poplatky.
+
 ## <a name="how-does-it-work"></a>Jak to funguje?
 
 Existují dva typy Identit spravované služby: **přiřazená systémem** a **přiřazená uživatelem**.
 
 - **Identita přiřazená systémem** se povoluje přímo v instanci služby Azure. Když je povolená, Azure vytvoří identitu pro instanci služby v tenantovi Azure AD důvěryhodném pro předplatné instance služby. Po vytvoření identity se její přihlašovací údaje zřídí do instance služby. Životní cyklus identity přiřazené systémem je přímo svázaný s instancí služby Azure, pro kterou je povolená. Pokud se instance služby odstraní, Azure automaticky vyčistí přihlašovací údaje a identitu ve službě Azure AD.
-- **Identita přiřazená uživatelem** (Public Preview) se vytváří jako samostatný prostředek Azure. Prostřednictvím procesu vytvoření Azure vytvoří identitu v tenantovi Azure AD důvěryhodném pro použité předplatné. Po vytvoření identity je možné ji přiřadit k jedné nebo několika instancím služeb Azure. Životní cyklus identity přiřazené uživatelem se spravuje nezávisle na životním cyklu instancí služeb Azure, ke kterým je přiřazená.
+- **Identita přiřazená uživatelem** se vytváří jako samostatný prostředek Azure. Prostřednictvím procesu vytvoření Azure vytvoří identitu v tenantovi Azure AD důvěryhodném pro použité předplatné. Po vytvoření identity je možné ji přiřadit k jedné nebo několika instancím služeb Azure. Životní cyklus identity přiřazené uživatelem se spravuje nezávisle na životním cyklu instancí služeb Azure, ke kterým je přiřazená.
 
 To znamená, že váš kód může k vyžádání přístupových tokenů pro služby, které podporují ověřování Azure AD, použít identitu přiřazenou systémem nebo identitu přiřazenou uživatelem. Azure přitom zajišťuje vracení přístupových údajů, které instance služby používá.
 
@@ -103,17 +106,6 @@ Vyzkoušejte kurz Identity spravované služby a seznamte se s kompletními scé
 
 Spravované identity je možné použít k ověřování ve službách, které podporují ověřování Azure AD. Seznam služeb Azure, které podporují Identitu spravované služby, najdete v následujícím článku:
 - [Služby, které podporují Identitu spravované služby](services-support-msi.md)
-
-## <a name="how-much-does-managed-service-identity-cost"></a>Kolik stojí Identita spravované služby?
-
-Identita spravované služby je součástí Azure Active Directory Free, což je výchozí možnosti pro předplatná Azure. Za Identitu spravované služby se neúčtují žádné další poplatky.
-
-## <a name="support-and-feedback"></a>Podpora a zpětná vazba
-
-Rádi uslyšíme váš názor!
-
-* Dotazy k postupům můžete pokládat na Stack Overflow s použitím značky [azure-msi](http://stackoverflow.com/questions/tagged/azure-msi).
-* Požadavky na funkce nebo zpětnou vazbu můžete publikovat na [fóru zpětné vazby ke službě Azure AD pro vývojáře](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences).
 
 ## <a name="next-steps"></a>Další kroky
 

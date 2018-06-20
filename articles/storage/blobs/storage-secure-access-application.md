@@ -6,14 +6,15 @@ author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: tutorial
-ms.date: 03/06/2018
+ms.date: 05/30/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 09a229d93ee8d5fec36a0cfa765e87bebaafc24d
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: bfc5085374759290701f49cdf25698827c0779e7
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34650090"
 ---
 # <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Zabezpečený přístup k datům aplikace v cloudu
 
@@ -80,9 +81,6 @@ public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _stor
 
     // Get reference to the container
     CloudBlobContainer container = blobClient.GetContainerReference(_storageConfig.ThumbnailContainer);
-
-    // Set the permission of the container to public
-    await container.SetPermissionsAsync(new BlobContainerPermissions { PublicAccess = BlobContainerPublicAccessType.Blob });
 
     BlobContinuationToken continuationToken = null;
 

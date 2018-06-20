@@ -1,118 +1,146 @@
 ---
-title: "Účet úložiště Azure integrovat Azure CDN | Microsoft Docs"
-description: "Další informace o použití sítě doručování obsahu (CDN) Azure do poskytovat širokopásmového obsahu díky ukládání do mezipaměti objektů blob z úložiště Azure."
+title: Rychlý start – Integrace účtu služby Azure Storage s Azure CDN | Microsoft Docs
+description: Zjistěte, jak používat Azure Content Delivery Network (CDN) k doručování širokopásmového obsahu díky ukládání objektů blob ze služby Azure Storage do mezipaměti.
 services: cdn
-documentationcenter: 
-author: zhangmanling
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dksimpson
+manager: cfowler
+editor: ''
 ms.assetid: cbc2ff98-916d-4339-8959-622823c5b772
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/04/2018
-ms.author: mazha
-ms.openlocfilehash: 022071f7825cb9184bd4c815c09e1c202a0a6f91
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 05/24/2018
+ms.author: v-deasim
+ms.custom: mvc
+ms.openlocfilehash: 05ce8c932e9d3d812e34e23c082d459c3193ea40
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34608497"
 ---
-# <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>Účet úložiště Azure integrovat Azure CDN
-Azure sítě pro doručování obsahu (CDN) můžete povolit obsah do mezipaměti na úložiště Azure. Azure CDN nabízí vývojářům globální řešení pro doručování širokopásmového obsahu. Ho může ukládat do mezipaměti objektů BLOB a statického obsahu výpočetní instance na fyzických uzlech v USA, Evropa, Asie, Austrálie a Jižní Ameriky.
+# <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rychlý start: Integrace účtu služby Azure Storage s Azure CDN
+V tomto rychlém startu povolíte službě [Azure Content Delivery Network (CDN)](cdn-overview.md), aby obsah ze služby Azure Storage ukládala do mezipaměti. Azure CDN nabízí vývojářům globální řešení pro doručování širokopásmového obsahu. Do mezipaměti může ukládat objekty blob a statický obsah výpočetních instancí ve fyzických uzlech v USA, Evropě, Asii, Austrálii a Jižní Americe.
 
-## <a name="step-1-create-a-storage-account"></a>Krok 1: Vytvoření účtu úložiště
-Použijte následující postup k vytvoření nového účtu úložiště pro předplatné Azure. Účet úložiště poskytuje přístup ke službám Azure Storage. Účet úložiště představuje nejvyšší úroveň oboru názvů pro přístup k jednotlivých součástí služby Azure Storage: úložiště Azure Blob, fronty a tabulky. Další informace najdete v tématu [Úvod do Microsoft Azure Storage](../storage/common/storage-introduction.md).
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Pokud chcete vytvořit účet úložiště, musí být buď správce služby, nebo spolusprávce pro předplatné přidružený.
+## <a name="log-in-to-the-azure-portal"></a>Přihlášení k portálu Azure Portal
+Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého účtu Azure.
 
-> [!NOTE]
-> Chcete-li vytvořit účet úložiště, včetně portálu Azure a prostředí PowerShell můžete použít několik metod. Tento kurz ukazuje, jak pomocí portálu Azure.   
-> 
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
+Následující postup použijte k vytvoření nového účtu úložiště pro předplatné Azure. Účet úložiště poskytuje přístup ke službám Azure Storage. Účet úložiště představuje nejvyšší úroveň oboru názvů pro přístup k jednotlivým součástem služby Azure Storage: Azure Blob Storage, Azure Queue Storage a Azure Table Storage. Další informace najdete v tématu [Seznámení se službou Microsoft Azure Storage](../storage/common/storage-introduction.md).
 
-**Chcete-li vytvořit účet úložiště pro předplatné Azure**
+Pokud chcete vytvořit účet úložiště, musíte být buď správcem služby, nebo spolusprávcem přidruženého předplatného.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. V levém horním rohu vyberte **vytvořit prostředek**. V **nový** podokně, vyberte **úložiště**a potom vyberte **účet úložiště – objekt blob, soubor, tabulka, fronta**.
+K vytvoření účtu úložiště můžete použít několik metod, včetně webu Azure Portal a PowerShellu. Tento rychlý úvod ukazuje, jak použít web Azure Portal.   
+
+**Vytvoření účtu úložiště pro předplatné Azure**
+
+1. V levém horním rohu portálu Azure Portal vyberte **Vytvořit prostředek**. 
+
+    Otevře se podokno **Nový**.
+
+2. Vyberte **Úložiště** a pak vyberte **Účet úložiště – objekt blob, soubor, tabulka, fronta**.
     
-    **Vytvořit účet úložiště** podokně se zobrazí.   
+    ![Výběr prostředku úložiště](./media/cdn-create-a-storage-account-with-cdn/cdn-select-new-storage-account.png)
 
-    ![Vytvoření podokně účtu úložiště](./media/cdn-create-a-storage-account-with-cdn/cdn-create-new-storage-account.png)
+    Zobrazí se podokno **Vytvořit účet úložiště**.   
 
-3. V **název** zadejte název subdomény. Tato položka může obsahovat 3 až 24 malých písmen a číslic.
+    ![Podokno Vytvořit účet úložiště](./media/cdn-create-a-storage-account-with-cdn/cdn-create-new-storage-account.png)
+
+3. Do pole **Název** zadejte název subdomény. Tato položka může obsahovat 3 až 24 malých písmen a číslic.
    
-    Tato hodnota se změní na název hostitele v rámci identifikátoru URI, který se používá k řešení objektů blob, fronty nebo tabulky prostředky pro předplatné. Chcete-li vyřešit kontejner prostředku v úložišti objektů Blob, používání identifikátoru URI v následujícím formátu:
+    Tato hodnota se stane názvem hostitele v rámci identifikátoru URI, který se používá k adresování prostředků objektů blob, dotazů nebo tabulek daného předplatného. Pokud chcete adresovat prostředek kontejneru v úložišti Blob Storage, použijte identifikátor URI v následujícím formátu:
    
-    http://*&lt;StorageAcountLabel&gt;*.blob.core.windows.net/*&lt;mycontainer&gt;*
+    http://*&lt;popisek_účtu_úložiště&gt;*.blob.core.windows.net/*&lt;kontejner&gt;*
 
-    kde  *&lt;StorageAccountLabel&gt;*  odkazuje na hodnotu, která jste zadali v **název** pole.
+    kde *&lt;popisek_účtu_úložiště&gt;* odkazuje na hodnotu, kterou jste zadali do pole **Název**.
    
     > [!IMPORTANT]    
-    > Adresa URL popisku tvoří subdoménu dané účet úložiště URI a musí být jedinečný mezi všechny hostované služby v Azure.
+    > Popisek adresy URL tvoří subdoménu identifikátoru URI účtu úložiště a musí být mezi všemi hostovanými službami v Azure jedinečný.
    
-    Tato hodnota se používá jako název účtu úložiště na portálu, nebo když tento účet chcete získat přístup prostřednictvím kódu programu.
+    Tato hodnota se také používá jako název účtu úložiště na portálu nebo při přístupu k tomuto účtu prostřednictvím kódu programu.
     
-4. Použijte výchozí hodnoty pro **modelu nasazení**, **účet druhu**, **výkonu**, a **replikace**. 
-    
-5. Pro **předplatné**, vyberte předplatné pro použití s účtem úložiště.
-    
-6. Pro **skupiny prostředků**vyberte nebo vytvořte skupinu prostředků. Informace o skupinách prostředků najdete v tématu [přehled Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md#resource-groups).
-    
-7. Pro **umístění**, vyberte umístění vašeho účtu úložiště.
-    
-8. Vyberte **Vytvořit**. Proces vytvoření účtu úložiště může trvat několik minut na dokončení.
+4. Pro zbývající nastavení použijte hodnoty uvedené v následující tabulce:
 
-## <a name="step-2-enable-cdn-for-the-storage-account"></a>Krok 2: Povolení CDN pro účet úložiště
-
-Můžete povolit CDN pro váš účet úložiště přímo z vašeho účtu úložiště. 
-
-1. Vyberte účet úložiště z řídicího panelu a pak vyberte **Azure CDN** v levém podokně. Pokud **Azure CDN** není tlačítko okamžitě viditelné, můžete zadat CDN v **vyhledávání** pole v levém podokně.
+    | Nastavení  | Hodnota |
+    | -------- | ----- |
+    | **Model nasazení** | Použijte výchozí hodnotu. |
+    | **Druh účtu** | Použijte výchozí hodnotu. |
+    | **Umístění**    | V rozevíracím seznamu vyberte **Střed USA**. |
+    | **Replikace** | Použijte výchozí hodnotu. |
+    | **Výkon** | Použijte výchozí hodnotu. |
+    | **Vyžádání bezpečného přenosu** | Použijte výchozí hodnotu. |
+    | **Předplatné** | V rozevíracím seznamu vyberte předplatné Azure. |
+    | **Skupina prostředků** | Vyberte **Vytvořit nový** a jako název skupiny prostředků zadejte *my-resource-group-123*. Tento název musí být globálně jedinečný. Pokud už se používá, můžete zadat jiný název nebo můžete vybrat **Použít existující** a v rozevíracím seznamu zvolit **my-resource-group-123**. <br />Další informace o skupinách prostředků najdete v tématu s [přehledem Azure Resource Manageru](../azure-resource-manager/resource-group-overview.md#resource-groups).| 
+    | **Konfigurace virtuálních sítí** | Použijte výchozí hodnotu. |  
     
-    **Azure Content Delivery Network** podokně se zobrazí.
+5. Vyberte **Připnout na řídicí panel** a uložte účet úložiště na řídicí panel.
+    
+6. Vyberte **Vytvořit**. Dokončení vytvoření účtu úložiště může trvat několik minut.
+
+## <a name="enable-azure-cdn-for-the-storage-account"></a>Povolení Azure CDN pro účet úložiště
+
+Azure CDN můžete pro účet úložiště povolit přímo z vašeho účtu úložiště. Pokud chcete pro koncový bod CDN specifikovat pokročilá nastavení konfigurace, jako je například typ optimalizace, můžete místo toho použít [rozšíření Azure CDN](cdn-create-new-endpoint.md) a vytvořit profil CDN nebo koncový bod CDN.
+
+1. Na řídicím panelu vyberte účet úložiště a pak v levém podokně vyberte **Azure CDN**. Pokud tlačítko **Azure CDN** není okamžitě vidět, můžete do **vyhledávacího** pole v levém podokně zadat CDN a vyhledat ho.
+    
+    Zobrazí se stránka **Azure CDN**.
 
     ![Vytvoření koncového bodu CDN](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png)
     
-2. Vytvořte nový koncový bod tak, že zadáte požadované informace:
-    - **Profil CDN**: vytvoření nového profilu CDN nebo použít stávající profil CDN.
-    - **Cenová úroveň**: Vyberte cenovou úroveň, pouze v případě, že vytvoříte profil CDN.
-    - **Název koncového bodu CDN**: Zadejte název koncového bodu CDN.
+2. Nový koncový bod vytvořte zadáním požadovaných informací uvedených v následující tabulce:
 
-    > [!TIP]
-    > Ve výchozím nastavení používá nový koncový bod CDN název hostitele vašeho účtu úložiště jako zdrojový server.
+    | Nastavení  | Hodnota |
+    | -------- | ----- |
+    | **Profil CDN** | Vyberte **Vytvořit nový** a jako název profilu zadejte *my-cdn-profile-123*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název.  |
+    | **Cenová úroveň** | V rozevíracím seznamu vyberte **Verizon úrovně Standard**. |
+    | **Název koncového bodu CDN** | Jako název hostitele koncového bodu zadejte *my-endpoint-123*. Tento název musí být globálně jedinečný. Pokud se už používá, můžete zadat jiný název. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _&lt;název_koncového_bodu&gt;_.azureedge.net. Nový koncový bod CDN používá ve výchozím nastavení název hostitele vašeho účtu úložiště jako server původu.|
 
-3. Vyberte **Vytvořit**. Po vytvoření koncového bodu se zobrazí v seznamu koncových bodů.
+3. Vyberte **Vytvořit**. Koncový bod se po vytvoření zobrazí v seznamu koncových bodů.
 
-    ![Úložiště nový koncový bod CDN](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png)
+    ![Nový koncový bod CDN úložiště](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png)
 
-> [!NOTE]
-> Pokud chcete určit pokročilou konfiguraci nastavení pro koncový bod CDN, jako je například typ optimalizace, můžete místo toho použít [rozšíření Azure CDN](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint) k vytvoření koncového bodu CDN, nebo profil CDN.
 
-## <a name="step-3-enable-additional-cdn-features"></a>Krok 3: Povolení dalších funkcí CDN
-
-Z účtu úložiště **Azure CDN** podokně, vyberte ze seznamu a otevřete podokno CDN konfigurace koncového bodu CDN. Další funkce CDN můžete povolit pro doručení, například komprese, řetězec dotazu a geografická filtrování. Můžete také přidat mapování vlastní doménu pro koncový bod CDN a povolit HTTPS pro vlastní doménu.
+## <a name="enable-additional-cdn-features"></a>Povolení dalších funkcí CDN
+Na stránce **Azure CDN** účtu úložiště vyberte v seznamu koncový bod CDN a otevřete stránku konfigurace koncového bodu CDN. Na této stránce můžete povolit další funkce CDN pro doručení, jako je například [komprese](cdn-improve-performance.md), [ukládání řetězců dotazů do mezipaměti](cdn-query-string.md) a [geografické filtrování](cdn-restrict-access-by-country.md). 
     
 ![Konfigurace koncového bodu CDN úložiště](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png)
 
-## <a name="step-4-access-cdn-content"></a>Krok 4: Přístup k obsahu CDN
-Chcete-li získat přístup k obsahu v mezipaměti na CDN, použijte CDN adresy URL poskytnuté na portálu. Adresy pro v mezipaměti objektů blob má následující formát:
+## <a name="access-cdn-content"></a>Přístup k obsahu CDN
+Pokud chcete získat přístup k obsahu v mezipaměti ve službě CDN, použijte adresu URL CDN uvedenou na portálu. Adresa objektu blob uloženého v mezipaměti má následující formát:
 
-http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
+http://<*název_koncového_bodu*\>.azureedge.net/<*veřejný_kontejner*\>/<*název_objektu_blob*\>
 
 > [!NOTE]
-> Jakmile povolíte CDN přístup k účtu úložiště, jsou způsobilé pro ukládání do mezipaměti CDN edge všechny veřejně dostupné objekty. Pokud upravíte objekt, který je aktuálně uložené do mezipaměti v CDN, nový obsah nebudete mít k dispozici prostřednictvím CDN, dokud CDN aktualizuje svůj obsah po uplynutí období time to live pro obsah v mezipaměti.
+> Jakmile Azure CDN povolíte přístup k účtu úložiště, budou všechny veřejně dostupné objekty vhodné pro ukládání CDN POP do mezipaměti. Pokud upravíte objekt, který je momentálně uložený v mezipaměti v CDN, nebude nový obsah dostupný přes Azure CDN, dokud Azure CDN po uplynutí období TTL (time-to-live) pro obsah v mezipaměti neaktualizuje svůj obsah.
 
-## <a name="step-5-remove-content-from-the-cdn"></a>Krok 5: Odeberte obsah z CDN
-Pokud již nechcete ukládat do mezipaměti na objekt v Azure CDN, můžete provést jednu z následujících kroků:
+## <a name="remove-content-from-azure-cdn"></a>Odebrání obsahu z Azure CDN
+Pokud už nechcete objekt v Azure CDN ukládat do mezipaměti, můžete použít některý z následujících kroků:
 
-* Zkontrolujte kontejner privátní místo veřejné. Další informace najdete v tématu [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](../storage/blobs/storage-manage-access-to-resources.md).
-* Zakázat nebo odstranit koncový bod CDN pomocí portálu Azure.
-* Upravte vaší hostované služby už reagovat na požadavky pro objekt.
+* Nastavte kontejner jako privátní, nikoli veřejný. Další informace najdete v tématu [Správa anonymního přístupu pro čtení ke kontejnerům a objektům blob](../storage/blobs/storage-manage-access-to-resources.md).
+* Zakažte nebo odstraňte koncový bod CDN pomocí webu Azure Portal.
+* Upravte hostovanou službu tak, aby už nereagovala na žádosti tohoto objektu.
 
-Objekt, který je již uložené v mezipaměti v Azure CDN zůstává v mezipaměti, dokud neuplyne období time to live pro objekt, nebo dokud se vyprazdňují koncový bod. Když vyprší platnost období time to live, Azure CDN ověří, zda koncového bodu CDN je stále platný a je objekt stále anonymně přístupný. Pokud tomu tak není, objekt bude už do mezipaměti.
+Objekt, který už je v mezipaměti v Azure CDN uložený, tam zůstane uložený, dokud neuplyne období TTL (Time-To-Live) objektu nebo dokud se koncový bod [nevyprázdní](cdn-purge-endpoint.md). Když uplyne období TTL, Azure CDN určí, jestli je koncový bod stále platný a jestli je objekt stále anonymně přístupný. Pokud tomu tak není, objekt se už v mezipaměti ukládat nebude.
 
-## <a name="additional-resources"></a>Další zdroje informací:
-* [Přidání vlastní domény do koncového bodu CDN](cdn-map-content-to-custom-domain.md)
-* [Nakonfigurujte protokol HTTPS na vlastní domény služby Azure CDN](cdn-custom-ssl.md)
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+V předchozích krocích jste ve skupině prostředků vytvořili profil a koncový bod CDN. Pokud chcete přejít k části [Další kroky](#next-steps) a zjistit, jak do koncového bodu přidat vlastní doménu, uložte tyto prostředky. Pokud však předpokládáte, že už tyto prostředky nebudete používat, můžete je odstranit tak, že odstraníte skupinu prostředků, abyste se vyhnuli dalším poplatkům:
+
+1. Na webu Azure Portal v nabídce vlevo vyberte **Skupiny prostředků** a pak vyberte **my-resource-group-123**.
+
+2. Na stránce **Skupina prostředků** vyberte **Odstranit skupinu prostředků**, do textového pole zadejte *my-resource-group-123* a pak vyberte **Odstranit**.
+
+    Tato akce odstraní skupinu prostředků, profil a koncový bod, které jste vytvořili v rámci tohoto rychlého startu.
+
+3. Pokud chcete účet úložiště odstranit, vyberte ho na řídicím panelu a pak v horní nabídce vyberte **Odstranit**.
+
+## <a name="next-steps"></a>Další kroky
+Pokud chcete zjistit, jak do koncového bodu CDN přidat vlastní doménu, projděte si následující kurz:
+
+> [!div class="nextstepaction"]
+> [Kurz: Přidání vlastní domény do koncového bodu Azure CDN](cdn-map-content-to-custom-domain.md)
 

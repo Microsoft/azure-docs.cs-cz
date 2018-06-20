@@ -11,11 +11,12 @@ ms.topic: tutorial
 ms.date: 05/09/2018
 ms.author: bonova
 manager: craigg
-ms.openlocfilehash: 198a637fcfc2268e393a63b27a153b163dc4331e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e337a5c7c203e2e1048149dfeff71436a4d2752f
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34850606"
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Vytvoření Azure SQL Database Managed Instance na webu Azure Portal
 
@@ -161,16 +162,16 @@ Následující kroky ukazují, jak po schválení pro verzi Preview vytvořit Ma
 
    ![vytvoření Managed Instance](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
 
-3. Vyberte své předplatné a ověřte, že se u podmínek verze Perview zobrazuje **Přijato**.
+4. Vyberte své předplatné a ověřte, že se u podmínek verze Perview zobrazuje **Přijato**.
 
    ![přijaté podmínky verze Preview pro Managed Instance](./media/sql-database-managed-instance-tutorial/preview-accepted.png)
 
-4. Ve formuláři Managed Instance vyplňte požadované informace s použitím informací v následující tabulce:
+5. Ve formuláři Managed Instance vyplňte požadované informace s použitím informací v následující tabulce:
 
    | Nastavení| Navrhovaná hodnota | Popis |
    | ------ | --------------- | ----------- |
    |**Název spravované instance**|Libovolné platné jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).|
-   |**Přihlašovací jméno správce spravované instance**|Jakékoli platné uživatelské jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).| 
+   |**Přihlašovací jméno správce spravované instance**|Jakékoli platné uživatelské jméno|Platné názvy najdete v tématu [Pravidla a omezení pojmenování](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Nepoužívejte „serveradmin“, protože tento název je vyhrazená role na úrovni serveru.| 
    |**Heslo**|Libovolné platné heslo|Heslo musí obsahovat nejméně 16 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|
    |**Skupina prostředků**|Skupina prostředků, kterou jste vytvořili dříve||
    |**Umístění**|Umístění, které jste vybrali dříve|Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/).|
@@ -178,17 +179,17 @@ Následující kroky ukazují, jak po schválení pro verzi Preview vytvořit Ma
 
    ![formulář pro vytvoření Managed Instance](./media/sql-database-managed-instance-tutorial/managed-instance-create-form.png)
 
-5. Klikněte na **Cenová úroveň** a určete velikost výpočetních prostředků a prostředků úložiště a prohlédněte si možnosti cenové úrovně. Ve výchozím nastavení vaše instance získá bezplatně 32 GB prostoru úložiště, což pro vaše aplikace nemusí být dostatečné.
-6. Pomocí posuvník nebo textových polí zadejte velikost úložiště a počet virtuálních jader. 
-   ![formulář pro vytvoření Managed Instance](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
+6. Klikněte na **Cenová úroveň** a určete velikost výpočetních prostředků a prostředků úložiště a prohlédněte si možnosti cenové úrovně. Ve výchozím nastavení vaše instance získá bezplatně 32 GB prostoru úložiště, což pro vaše aplikace nemusí být dostatečné.
+7. Pomocí posuvník nebo textových polí zadejte velikost úložiště a počet virtuálních jader. 
+   ![spravovaná instance cenové úrovně](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
 
-7. Jakmile budete hotovi, kliknutím na **Použít** uložte provedený výběr.  
-8. Kliknutím na **Vytvořit** nasaďte Managed Instance.
-9. Kliknutím na ikonu **Oznámení** zobrazte stav nasazení.
+8. Jakmile budete hotovi, kliknutím na **Použít** uložte provedený výběr.  
+9. Kliknutím na **Vytvořit** nasaďte Managed Instance.
+10. Kliknutím na ikonu **Oznámení** zobrazte stav nasazení.
  
    ![průběh nasazení](./media/sql-database-managed-instance-tutorial/deployment-progress.png)
 
-9. Kliknutím na **Probíhá nasazení** otevřete okno Managed Instance, kde můžete dále monitorovat průběh nasazení.
+11. Kliknutím na **Probíhá nasazení** otevřete okno Managed Instance, kde můžete dále monitorovat průběh nasazení.
  
    ![průběh nasazení 2](./media/sql-database-managed-instance-tutorial/managed-instance.png)
 
@@ -248,18 +249,18 @@ Následující kroky ukazují, jak vytvořit virtuální počítač ve stejné v
 
    ![formulář pro vytvoření virtuálního počítače](./media/sql-database-managed-instance-tutorial/virtual-machine-create-form.png)
 
-3. Klikněte na **OK**.
-4. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. Pro účely tohoto kurzu vám stačí malý virtuální počítač.
+4. Klikněte na **OK**.
+5. Vyberte velikost virtuálního počítače. Pokud chcete zobrazit další velikosti, vyberte **Zobrazit všechny** nebo změňte filtr **Podporovaný typ disku**. Pro účely tohoto kurzu vám stačí malý virtuální počítač.
 
     ![Velikost virtuálních počítačů](./media/sql-database-managed-instance-tutorial/virtual-machine-size.png)  
 
-5. Klikněte na **Vybrat**.
-6. Ve formuláři **Nastavení** klikněte na **Podsíť** a pak vyberte **vm_subnet**. Nevybírejte podsíť, ve které je zřízená Managed Instance, ale jinou podsíť ve stejné virtuální síti.
+6. Klikněte na **Vybrat**.
+7. Ve formuláři **Nastavení** klikněte na **Podsíť** a pak vyberte **vm_subnet**. Nevybírejte podsíť, ve které je zřízená Managed Instance, ale jinou podsíť ve stejné virtuální síti.
 
     ![nastavení virtuálního počítače](./media/sql-database-managed-instance-tutorial/virtual-machine-settings.png)  
 
-7. Klikněte na **OK**.
-8. Na stránce Souhrn zkontrolujte podrobnosti o nabídce a pak kliknutím na **Vytvořit** spusťte nasazení virtuálního počítače.
+8. Klikněte na **OK**.
+9. Na stránce Souhrn zkontrolujte podrobnosti o nabídce a pak kliknutím na **Vytvořit** spusťte nasazení virtuálního počítače.
  
 ## <a name="connect-to-virtual-machine"></a>Připojení k virtuálnímu počítači
 

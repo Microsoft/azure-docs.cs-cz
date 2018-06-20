@@ -1,20 +1,21 @@
 ---
-title: Registrace aplikace – Azure Active Directory B2C
+title: Registrace aplikace v Azure Active Directory B2C | Microsoft Docs
 description: Postup registrace aplikace pomocí Azure Active Directory B2C
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: davidmu
-ms.openlocfilehash: 8ba511464f8ce0bef2a14706a272f6c09dfe5d07
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 354c5da815f19e4366a04c8c031fd9cbca6f060b
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34711854"
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: Registrace vaší aplikace
 

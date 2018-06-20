@@ -1,5 +1,5 @@
 ---
-title: Porovnání služeb Azure App Service, Virtual Machines, Service Fabric a Cloud Services | Dokumentace Microsoftu
+title: Porovnání služeb Azure App Service, Virtual Machines, Service Fabric a Cloud Services | Microsoft Docs
 description: Zjistěte, jak si pro hostování webových aplikací vybrat mezi službami Azure App Service, Virtual Machines, Service Fabric a Cloud Services.
 services: app-service\web, virtual-machines, cloud-services
 documentationcenter: ''
@@ -15,17 +15,18 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f930cec984a8b92e00ec613ce3bba91a40518911
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1f7396ac761ce5eeb5a671d3b04aabf944c361b8
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597922"
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Porovnání služeb App Service, Virtual Machines, Service Fabric a Cloud Services
 ## <a name="overview"></a>Přehled
 Azure nabízí několik způsobů hostování webů: [Azure App Service][Azure App Service], [Virtual Machines][Virtual Machines], [Service Fabric][Service Fabric] a [Cloud Services][Cloud Services]. Tento článek vám pomůže porozumět možnostem a učinit správnou volbu pro vaši webovou aplikaci.
 
-Azure App Service je nejlepší volbou pro většinu webových aplikací. Nasazování a správa jsou integrované přímo do platformy, weby se rychle škálují pro zvládnutí vysokého přenosového zatížení a integrované vyrovnávání zatížení a služba Traffic Manager zajišťují vysokou dostupnost. Do služby Azure App Service můžete snadno přesunout existující weby pomocí [online nástroje pro migraci](https://www.migratetoazure.net/), můžete použít open source aplikaci z galerie webových aplikací nebo vytvořit nový web pomocí rozhraní a nástrojů podle vašeho výběru. Díky funkci [WebJobs][WebJobs] můžete do své webové aplikace App Service snadno přidat zpracování úloh na pozadí.
+Azure App Service je nejlepší volbou pro většinu webových aplikací. Nasazování a správa jsou integrované přímo do platformy, weby se rychle škálují pro zvládnutí vysokého přenosového zatížení a integrované vyrovnávání zatížení a služba Traffic Manager zajišťují vysokou dostupnost. Do služby Azure App Service můžete snadno přesunout existující weby pomocí [online nástroje pro migraci][migrate-tool], můžete použít open source aplikaci z galerie webových aplikací nebo vytvořit nový web pomocí rozhraní a nástrojů podle vašeho výběru. Díky funkci [WebJobs][WebJobs] můžete do své webové aplikace App Service snadno přidat zpracování úloh na pozadí.
 
 Service Fabric je dobrou volbou v případě, že vytváříte novou aplikaci nebo přepisujete existující aplikaci pro využití architektury mikroslužeb. Aplikace spouštěné ve sdíleném fondu počítačů můžou začínat jako malé a podle potřeby se rozrůstat a masivně škálovat na stovky nebo tisíce počítačů. Stavové služby usnadňují konzistentní a spolehlivé ukládání stavu aplikace a Service Fabric automaticky spravuje dělení, škálování a dostupnost služeb za vás.  Service Fabric také podporuje webová rozhraní API s Open Web Interface pro .NET (OWIN) a ASP.NET Core.  V porovnání se službou App Service poskytuje Service Fabric také větší kontrolu nad základní infrastrukturou nebo přímý přístup k ní. Ke svým serverům se můžete vzdáleně připojit nebo na nich nakonfigurovat úlohy při spuštění. Služba Cloud Services je podobná Service Fabric, co se týče úrovně kontroly a snadnosti použití, ale už se jedná o starší službu a pro nová nasazení doporučujeme použít Service Fabric.
 
@@ -97,7 +98,7 @@ Azure App Service je skvělým řešením pro hostování podnikových webů. Um
 * Integrace se službou Active Directory
 
 ### <a id="iis6"></a>Mám aplikaci služby IIS6, která běží na Windows Serveru 2003
-Se službou Azure App Service se snadno vyhnete nákladům na infrastrukturu souvisejícím s migrací starších aplikací služby IIS6. Společnost Microsoft vytvořila [snadno použitelné nástroje pro migraci a podrobné doprovodné materiály k migraci](https://www.migratetoazure.net/), díky kterým můžete zkontrolovat kompatibilitu a identifikovat případné změny, které je potřeba provést. Integrace se sadou Visual Studio, Team Foundation Server a běžnými nástroji CMS usnadňuje nasazování aplikací služby IIS6 přímo do cloudu. Po nasazení najdete na webu Azure Portal robustní nástroje pro správu, pomocí kterých můžete vertikálně snížit kapacitu a snížit tak náklady, nebo podle potřeby vertikálně zvýšit kapacitu. Tento nástroj pro migraci umožňuje:
+Se službou Azure App Service se snadno vyhnete nákladům na infrastrukturu souvisejícím s migrací starších aplikací služby IIS6. Společnost Microsoft vytvořila [snadno použitelné nástroje pro migraci a podrobné doprovodné materiály k migraci][migrate-tool], díky kterým můžete zkontrolovat kompatibilitu a identifikovat případné změny, které je potřeba provést. Integrace se sadou Visual Studio, Team Foundation Server a běžnými nástroji CMS usnadňuje nasazování aplikací služby IIS6 přímo do cloudu. Po nasazení najdete na webu Azure Portal robustní nástroje pro správu, pomocí kterých můžete vertikálně snížit kapacitu a snížit tak náklady, nebo podle potřeby vertikálně zvýšit kapacitu. Tento nástroj pro migraci umožňuje:
 
 * Rychle a snadno migrovat starší verze webových aplikací z Windows Serveru 2003 do cloudu.
 * Rozhodnout se ponechat připojenou databázi SQL v místním prostředí a vytvořit hybridní aplikaci.
@@ -191,3 +192,4 @@ Následující materiály vám pomůžou začít s možnostmi, které jste pro s
 <!-- IMG List -->
 
 [ChoicesDiagram]: ./media/choose-web-site-cloud-service-vm/Websites_CloudServices_VMs_3.png
+[migrate-tool]: https://www.movemetothecloud.net/

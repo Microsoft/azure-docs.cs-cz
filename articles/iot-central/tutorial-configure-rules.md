@@ -1,21 +1,22 @@
 ---
 title: Konfigurace pravidel a akcí v Azure IoT Central | Microsoft Docs
 description: Tento kurz ukazuje, jak vy jako tvůrce nakonfigurujete v aplikaci Azure IoT Central pravidla a akce založené na telemetrii.
-services: iot-central
 author: ankitgupta
 ms.author: ankitgup
 ms.date: 04/16/2018
 ms.topic: tutorial
-ms.prod: microsoft-iot-central
-manager: timlt
-ms.openlocfilehash: 5ac19e0e25ea3e25ede4d87776c01f8bcaea4655
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.service: iot-central
+services: iot-central
+ms.custom: mvc
+manager: peterpr
+ms.openlocfilehash: af2aa8d7b01d973da400808fd3e97d0739693cd2
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34202233"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236327"
 ---
-# <a name="2---configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>2 – Konfigurace pravidel a akcí pro vaše zařízení v Azure IoT Central
+# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Kurz: Konfigurace pravidel a akcí pro vaše zařízení v Azure IoT Central
 
 Tento kurz ukazuje, jak vy jako tvůrce nakonfigurujete v aplikaci Microsoft Azure IoT Central pravidla a akce založené na telemetrii.
 
@@ -39,17 +40,17 @@ Než začnete, musíte dokončit kurz [definování nového typu zařízení ve 
 
     Zobrazí se šablona zařízení **Connected Air Conditioner (1.0.0)** a zařízení **Connected Air Conditioner-1**, které jste vytvořili v předchozím kurzu.
 
-1. Pokud chcete zahájit přizpůsobení zařízení připojené klimatizace, vyberte zařízení, které jste vytvořili v předchozím kurzu:
+2. Pokud chcete zahájit přizpůsobení zařízení připojené klimatizace, vyberte zařízení, které jste vytvořili v předchozím kurzu:
 
     ![Stránka připojené klimatizace](media/tutorial-configure-rules/builderdevicelist.png)
 
-1. Když chcete začít přidávat pravidla v zobrazení **Rules** (Pravidla), vyberte **Rules**:
+3. Když chcete začít přidávat pravidla v zobrazení **Rules** (Pravidla), vyberte **Rules**:
 
     ![Zobrazení pravidel](media/tutorial-configure-rules/builderrulesview.png)
 
-1. V tomto kurzu přidáte pravidlo založené na prahové hodnotě telemetrie. Chcete-li začít vytvářet pravidlo založené na prahové hodnotě, zvolte **New Rule** (Nové pravidlo) a pak **Telemetry** (Telemetrie).
+4. Jestliže chcete začít vytvářet pravidlo telemetrie založené na prahové hodnotě, zvolte **New Rule** (Nové pravidlo) a pak **Telemetry** (Telemetrie).
 
-1. Při definování pravidla použijte informace v následující tabulce:
+5. Při definování pravidla použijte informace v následující tabulce:
 
     | Nastavení     | Hodnota                          |
     | ----------- | ------------------------------ |
@@ -67,7 +68,7 @@ Když definujete pravidlo, také definujete akci, kterou chcete spustit, když j
 
     ![Akce pravidla teploty](media/tutorial-configure-rules/builderaddaction.png)
 
-1. Při definování akce použijte informace v následující tabulce:
+2. Při definování akce použijte informace v následující tabulce:
 
     | Nastavení   | Hodnota                          |
     | --------- | ------------------------------ |
@@ -79,7 +80,7 @@ Když definujete pravidlo, také definujete akci, kterou chcete spustit, když j
 
     ![Akce teploty Application Builder (Tvůrce aplikací)](media/tutorial-configure-rules/buildertemperatureaction.png)
 
-1. Zvolte **Uložit**. Pravidlo je uvedené na stránce **Rules** (Pravidla):
+3. Zvolte **Uložit**. Pravidlo je uvedené na stránce **Rules** (Pravidla):
 
     ![Pravidla Application Builder (Tvůrce aplikací)](media/tutorial-configure-rules/builderrules.png)
 

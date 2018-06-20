@@ -1,26 +1,22 @@
 ---
-title: "Rychlý start Azure – Zálohování virtuálního počítače pomocí webu Azure Portal | Dokumentace Microsoftu"
-description: "Zjistěte, jak zálohovat virtuální počítače pomocí webu Azure Portal."
+title: Rychlý start Azure – Zálohování virtuálního počítače pomocí webu Azure Portal
+description: Zjistěte, jak zálohovat virtuální počítače pomocí webu Azure Portal.
 services: backup
-documentationcenter: virtual-machines
 author: saurabhsensharma
 manager: shivamg
-editor: 
 tags: azure-resource-manager, virtual-machine-backup
-ms.assetid: 
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure
 ms.date: 2/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 60963553e012e6655e7ef9bf90d4ff6958427c9f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 19711fcac4bdcca93abb4dcbb830dd9869360362
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34609031"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Zálohování virtuálního počítače v Azure
 Zálohy Azure je možné vytvářet na webu Azure Portal. Tato metoda poskytuje uživatelské rozhraní v prohlížeči, pomocí kterého můžete vytvářet a konfigurovat zálohy Azure a všechny související prostředky. Svá data můžete chránit prováděním záloh v pravidelných intervalech. Azure Backup vytváří body obnovení, které je možné uchovávat v geograficky redundantních trezorech obnovení. Tento článek podrobně popisuje, jak zálohovat virtuální počítač pomocí webu Azure Portal. 

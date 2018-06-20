@@ -1,25 +1,24 @@
 ---
 title: Rychlý start k odesílání telemetrických dat do služby Azure IoT Hub | Microsoft Docs
 description: V tomto rychlém startu spustíte ukázkovou aplikaci pro iOS, která odesílá simulovaná telemetrická data do centra IoT a čte z centra IoT telemetrická data pro účely zpracování v cloudu.
-services: iot-hub
 author: kgremban
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: ''
+services: iot-hub
 ms.topic: quickstart
 ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: ns
-ms.date: 04/20//2018
+ms.date: 04/20/2018
 ms.author: kgremban
-ms.openlocfilehash: 0f1d3a5f714a2202836f477e78a30aa080947239
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 7b7f8e1805850861b30eb2a54991e5ab7fa96335
+ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34808175"
 ---
-# <a name="send-telemetry-from-a-device-to-an-iot-hub-swift"></a>Odesílání telemetrických dat ze zařízení do centra IoT (Swift)
+# <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT (iOS)
+
+[!INCLUDE [iot-hub-quickstarts-1-selector](../../includes/iot-hub-quickstarts-1-selector.md)]
 
 IoT Hub je služba Azure, která umožňuje ingestovat velké objemy telemetrických dat ze zařízení IoT do cloudu pro účely uložení nebo zpracování. V tomto článku budete do služby IoT Hub odesílat telemetrická data z aplikace simulovaného zařízení. Pak můžete data zobrazit v back-endové aplikaci. 
 
@@ -42,32 +41,8 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https
 
 ## <a name="create-an-iot-hub"></a>Vytvoření centra IoT
 
-Prvním krokem je vytvoření centra IoT ve vašem předplatném pomocí webu Azure Portal. Centrum IoT umožňuje ingestovat velké objemy telemetrických dat z řady zařízení do cloudu. Centrum pak umožní jedné nebo více back-endovým službám v cloudu tato telemetrická data číst a zpracovat.
+[!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
 
-1. Přihlaste se k [portálu Azure](http://portal.azure.com).
-
-1. Vyberte **Vytvořit prostředek** > **Internet věcí** > **IoT Hub**. 
-
-   ![Výběr instalace služby IoT Hub](media/quickstart-send-telemetry-ios/selectiothub.png)
-
-1. K vytvoření vlastního centra IoT použijte hodnoty v následující tabulce:
-
-    | Nastavení | Hodnota |
-    | ------- | ----- |
-    | Název | Jedinečný název vašeho centra |
-    | Cenová úroveň a úroveň škálování | F1 Free |
-    | Jednotky služby IoT Hub | 1 |
-    | Oddíly zařízení-cloud | 2 oddíly |
-    | Předplatné | Vaše předplatné Azure. |
-    | Skupina prostředků | Vytvořte novou. Zadejte název skupiny prostředků. |
-    | Umístění | Zvolte umístění, které je k vám nejblíže. |
-    | Připnutí na řídicí panel | Ano |
-
-1. Klikněte na možnost **Vytvořit**.  
-
-   ![Nastavení centra](media/quickstart-send-telemetry-ios/hubdefinition.png)
-
-1. Poznamenejte si názvy vašeho centra IoT a skupiny prostředků. Tyto hodnoty použijete později v tomto rychlém startu.
 
 ## <a name="register-a-device"></a>Registrování zařízení
 
@@ -168,10 +143,13 @@ Pokud už centrum IoT nepotřebujete, odstraňte ho společně se skupinou prost
 
 V tomto článku jste nastavili centrum IoT, zaregistrovali zařízení, odeslali do centra simulovaná telemetrická data ze zařízení iOS a četli telemetrická data z centra. 
 
-Další informace o tom, jak můžou zařízení iOS pracovat se službou IoT Hub, najdete v tématu [Posílání zpráv ve směru cloud-zařízení pomocí iOS (Swift)](iot-hub-ios-swift-c2d.md).
+Informace o tom, jak řídit simulované zařízení z back-endové aplikace, najdete v dalším rychlém startu.
+
+> [!div class="nextstepaction"]
+> [Rychlý start: Řízení zařízení připojeného k centru IoT](quickstart-control-device-node.md)
 
 <!-- Links -->
-[lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md
+[lnk-process-d2c-tutorial]: tutorial-routing.md
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-iot-edge]: ../iot-edge/tutorial-simulate-device-linux.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/

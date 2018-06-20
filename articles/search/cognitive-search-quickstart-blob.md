@@ -7,11 +7,12 @@ ms.service: search
 ms.topic: quickstart
 ms.date: 05/01/2018
 ms.author: heidist
-ms.openlocfilehash: 278fbd5d7f5925b802303910222c5a13379bfad6
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c5b6036efa4fcd6b7b8d756fa20d63952482518e
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34640257"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Rychlý start: Vytvoření kanálu kognitivního hledání pomocí dovedností a ukázkových dat
 
@@ -95,6 +96,8 @@ Jednou z výhod **Průvodce importem dat** je to, že může navíc vytvořit v�
 ### <a name="step-2-add-cognitive-skills"></a>Krok 2: Přidání kognitivních dovedností
 
 Jako další krok přidáte do kanálu indexování kroky pro rozšiřování. Portál nabízí předdefinované kognitivní dovednosti pro analýzu obrazu a textu. Na portálu sada dovedností pracuje s jedním polem zdroje. To může vypadat jako malý cíl, ale pro objekty blob služby Azure pole `content` obsahuje většinu dokumentu objektu blob (např. wordový dokument nebo powerpointovou sadu karet). Z toho důvodu je toto pole ideální vstup, protože je v něm veškerý obsah objektu blob.
+
+Občas můžete chtít extrahovat textovou reprezentaci ze souborů, které se převážně skládají z naskenovaných obrázků. Příkladem může být soubor PDF vygenerovaný skenerem. Služba Azure Search může automaticky extrahovat obsah z vložených obrázků v dokumentu. Pokud to chcete udělat, vyberte možnost **Povolit optické rozpoznávání znaků a sloučit veškerý text do pole merged_content**. Tím se automaticky vytvoří pole `merged_content`, které obsahuje text extrahovaný z dokumentu a také textovou reprezentaci obrázků vložených v tomto dokumentu. Když tuto možnost vyberete, `Source data field` se nastaví na `merged_content`.
 
 V části **Přidat kognitivní dovednosti** zvolte dovednosti, které zpracovávají přirozený jazyk. Pro tento rychlý start zvolte rozpoznávání entit pro lidi, organizace a lokality.
 

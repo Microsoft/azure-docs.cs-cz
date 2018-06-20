@@ -1,311 +1,278 @@
 ---
-title: "Použití Azure Redis Cache | Dokumentace Microsoftu"
-description: "Zjistěte, jak zlepšit výkon aplikací Azure pomocí Azure Redis Cache."
+title: Rychlý start k používání Azure Redis Cache s aplikacemi .NET | Microsoft Docs
+description: V tomto rychlém startu zjistíte, jak přistupovat k Azure Redis Cache z aplikací .NET.
 services: redis-cache,app-service
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: c502f74c-44de-4087-8303-1b1f43da12d5
 ms.service: cache
 ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 07/27/2017
+ms.topic: quickstart
+ms.date: 05/18/2018
 ms.author: wesmc
-ms.openlocfilehash: a9276eaa4c7d8b11891d7dfade475316ffac5f71
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.custom: mvc
+ms.openlocfilehash: 31d93fc8b2034152e61d24a789bba62bfd3b7892
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34639805"
 ---
-# <a name="how-to-use-azure-redis-cache"></a>Použití Azure Redis Cache
-> [!div class="op_single_selector"]
-> * [.NET](cache-dotnet-how-to-use-azure-redis-cache.md)
-> * [ASP.NET](cache-web-app-howto.md)
-> * [Node.js](cache-nodejs-get-started.md)
-> * [Java](cache-java-get-started.md)
-> * [Python](cache-python-get-started.md)
-> 
-> 
+# <a name="quickstart-use-azure-redis-cache-with-a-net-application"></a>Rychlý start: Použití Azure Redis Cache s aplikací .NET
 
-Tento průvodce vám ukáže, jak začít používat **Azure Redis Cache**. Microsoft Azure Redis Cache je založená na populární Open Source mezipaměti Redis Cache. Umožňuje vám přístup do zabezpečené, vyhrazené mezipaměti Redis spravované Microsoftem. Mezipaměť vytvořená pomocí Azure Redis Cache je přístupná ze všech aplikací v rámci Microsoft Azure.
 
-Microsoft Azure Redis Cache je dostupná na následujících úrovních:
 
-* **Basic** – jeden uzel. Více velikostí až do 53 GB.
-* **Standard** – dva uzly Primární/Replika. Více velikostí až do 53 GB. 99,9% SLA.
-* **Premium** – dva uzly Primární/Replika s až 10 horizontálními oddíly. Více velikostí od 6 GB do 530 GB. Všechny funkce úrovně Standard a navíc podpora [clusteru Redis](cache-how-to-premium-clustering.md), [trvalosti Redis](cache-how-to-premium-persistence.md) a [služby Azure Virtual Network](cache-how-to-premium-vnet.md). 99,9% SLA.
+Tento rychlý start vám ukáže, jak začít používat Microsoft Azure Redis Cache s .NET. Služba Microsoft Azure Redis Cache je založená na populární Open Source mezipaměti Redis Cache. Umožňuje vám přístup do zabezpečené, vyhrazené mezipaměti Redis spravované Microsoftem. Mezipaměť vytvořená pomocí Azure Redis Cache je přístupná ze všech aplikací v rámci Microsoft Azure.
 
-Každá úroveň se liší z hlediska funkcí a cen. Informace o cenách najdete na stránce [Podrobnosti o cenách Azure Redis Cache][Cache Pricing Details].
+V tomto rychlém startu budete používat klienta [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) s kódem jazyka C\# v aplikaci konzoly. Vytvoříte mezipaměť a nakonfigurujete klientskou aplikaci .NET. Potom v této mezipaměti provedete přidání a aktualizaci objektů. 
 
-Tento průvodce vám ukáže, jak použít klienta [StackExchange.Redis][StackExchange.Redis] pomocí kódu v C\#. Pokryté scénáře zahrnují **vytvoření a konfiguraci mezipaměti**, **konfiguraci klientů mezipaměti** a **přidávání a odebírání objektů z mezipaměti**. Další informace o používání Azure Redis Cache najdete v části [Další kroky][Next Steps]. Podrobný kurz vytvoření webové aplikace s Redis Cache pomocí ASP.NET MVC najdete v tématu [Vytvoření webové aplikace s Redis Cache](cache-web-app-howto.md).
+![Dokončená konzolová aplikace](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
 
-<a name="getting-started-cache-service"></a>
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="get-started-with-azure-redis-cache"></a>Začínáme s Azure Redis Cache
-Začít s Azure Redis Cache je jednoduché. Abyste mohli začít, zřídíte a nakonfigurujete mezipaměť. Dále nakonfigurujete klienty mezipaměti pro přístup do mezipaměti. Po nakonfigurování klientů mezipaměti s nimi můžete začít pracovat.
+## <a name="prerequisites"></a>Požadavky
 
-* [Vytvoření mezipaměti][Create the cache]
-* [Konfigurace klientů mezipaměti][Configure the cache clients]
-
-<a name="create-cache"></a>
+* [Visual Studio](https://www.visualstudio.com/downloads/)
+* Klient StackExchange.Redis vyžaduje [rozhraní .NET Framework 4 nebo vyšší](https://www.microsoft.com/net/download/dotnet-framework-runtime).
 
 ## <a name="create-a-cache"></a>Vytvoření mezipaměti
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
 
-### <a name="to-access-your-cache-after-its-created"></a>Přístup do vaší mezipaměti po jejím vytvoření
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-browse.md)]
+[!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Další informace o konfiguraci mezipaměti najdete v tématu [Konfigurace Azure Redis Cache](cache-configure.md).
+Vytvořte v počítači soubor s názvem *TajnéKódyMezipaměti.config* a uložte ho do umístění, které se nebude vracet se zdrojovým kódem této ukázkové aplikace. V tomto rychlém startu je soubor *TajnéKódyMezipaměti.config* umístěný zde: *C:\AppSecrets\TajnéKódyMezipaměti.config*.
 
-<a name="NuGet"></a>
+Upravte soubor *TajnéKódyMezipaměti.config* a přidejte do něj následující obsah:
 
-## <a name="configure-the-cache-clients"></a>Konfigurace klientů mezipaměti
-[!INCLUDE [redis-cache-configure](../../includes/redis-cache-configure-stackexchange-redis-nuget.md)]
+```xml
+<appSettings>
+    <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,password=<access-key>"/>
+</appSettings>
+```
 
-Po konfiguraci klientského projektu pro používání mezipaměti můžete pro práci s mezipamětí použít techniky popsané v následujících sekcích.
+`<cache-name>` nahraďte názvem hostitele mezipaměti.
 
-<a name="working-with-caches"></a>
+`<access-key>` nahraďte primárním klíčem mezipaměti.
 
-## <a name="working-with-caches"></a>Práce s mezipamětí
-Kroky v tomto oddílu popisují, jak provádět běžné úkoly s mezipamětí.
 
-* [Připojení k mezipaměti][Connect to the cache]
-* [Přidání objektů do mezipaměti a jejich načtení][Add and retrieve objects from the cache]
-* [Práce s objekty .NET v mezipaměti](#work-with-net-objects-in-the-cache)
+## <a name="create-a-console-app"></a>Vytvoření konzolové aplikace
 
-<a name="connect-to-cache"></a>
+V sadě Visual Studio klikněte na **Soubor** > **Nový** > **Projekt**.
+
+V části **Visual C#** klikněte na **Klasická plocha Windows** a pak klikněte na **Konzolová aplikace** a **OK**. Vytvoříte tak novou konzolovou aplikaci.
+
+
+<a name="configure-the-cache-clients"></a>
+
+## <a name="configure-the-cache-client"></a>Konfigurace klienta mezipaměti
+
+V této části nakonfigurujete konzolovou aplikaci, aby pro .NET používala klienta [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis).
+
+V sadě Visual Studio klikněte na **Nástroje** > **Správce balíčků NuGet** > **Konzola Správce balíčků** a spusťte následující příkaz z okna konzoly Správce balíčků.
+
+```powershell
+Install-Package StackExchange.Redis
+```
+
+Po dokončení instalace budete moct se svým projektem používat klienta mezipaměti *StackExchange.Redis*.
+
 
 ## <a name="connect-to-the-cache"></a>Připojení k mezipaměti
-Chcete-li pracovat s mezipamětí prostřednictvím kódu programu, potřebujete odkaz na mezipaměť. Přidejte následující řádek na začátek souboru, ve kterém chcete použít klienta StackExchange.Redis pro přístup do Azure Redis Cache.
 
-    using StackExchange.Redis;
+V sadě Visual Studio otevřete soubor *App.config* a aktualizujte ho tak, aby obsahoval atribut `appSettings` `file` odkazující na soubor *CacheSecrets.config*.
 
-> [!NOTE]
-> Klient StackExchange.Redis vyžaduje rozhraní .NET Framework 4 nebo vyšší.
-> 
-> 
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.1" />
+    </startup>
 
-Připojení k Azure Redis Cache spravuje třída `ConnectionMultiplexer`. Tato třída by se měla sdílet a opětovně používat v rámci klientské aplikace, a není nutné vytvářet ji pro každou operaci zvlášť. 
+    <appSettings file="C:\AppSecrets\CacheSecrets.config"></appSettings>  
 
-Chcete-li se připojit k Azure Redis Cache a vrátit instanci připojeného `ConnectionMultiplexer`, zavolejte statickou metodu `Connect` a předejte jí koncový bod mezipaměti a klíč. Jako parametr hesla použijte klíč vygenerovaný na webu Azure Portal.
+</configuration>
+```
 
-    ConnectionMultiplexer connection = ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
+V Průzkumníku řešení klikněte pravým tlačítkem myši na **Odkazy** a klikněte na **Přidat odkaz**. Přidejte odkaz na sestavení **System.Configuration**.
 
-> [!IMPORTANT]
-> Upozornění: Neuchovávejte přihlašovací údaje ve zdrojovém kódu. Pro zjednodušení této ukázku je ve zdrojovém kódu uvádíme. Informace o tom, jak ukládat přihlašovací údaje, najdete v tématu [Fungování řetězců aplikace a připojovacích řetězců][How Application Strings and Connection Strings Work].
-> 
-> 
+Do souboru *Program.cs* přidejte následující příkazy `using`:
 
-Nechcete-li používat protokol SSL, nastavte hodnotu `ssl=false` nebo vynechejte parametr `ssl`.
+```csharp
+using StackExchange.Redis;
+using System.Configuration;
+```
 
-> [!NOTE]
-> Port bez SSL je ve výchozím nastavení pro nové mezipaměti zakázán. Pokyny pro povolení portu bez SSL najdete v tématu [Přístupové porty](cache-configure.md#access-ports).
-> 
-> 
+Připojení k Azure Redis Cache spravuje třída `ConnectionMultiplexer`. Tato třída by se měla v rámci klientské aplikace sdílet a opakovaně používat. Nevytvářejte pro každou operaci nové připojení. 
 
-Jeden ze způsobů sdílení instance `ConnectionMultiplexer` v aplikaci je pomocí statické vlastnosti, která vrací připojenou instanci, podobně jako v následujícím příkladu.  Tento přístup poskytuje způsob inicializace jedné připojené instance `ConnectionMultiplexer`, který je bezpečný pro přístup z více vláken. V těchto příkladech je hodnota `abortConnect` nastavená na false, to znamená, že volání je úspěšné i v případě, že nedojde k vytvoření připojení k Azure Redis Cache. Klíčovou vlastností `ConnectionMultiplexer` je automatické obnovení připojení k mezipaměti po vyřešení problémů se sítí nebo jiných příčin.
+Neuchovávejte přihlašovací údaje ve zdrojovém kódu. Pro zjednodušení této ukázky používám pouze konfigurační soubor externích tajných kódů. Lepším přístupem může být použití řešení [Azure Key Vault s certifikáty](https://docs.microsoft.com/rest/api/keyvault/certificate-scenarios).
 
-    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-    {
-        return ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
-    });
+V souboru *Program.cs* přidejte k třídě `Program` konzolové aplikace následující členy:
 
-    public static ConnectionMultiplexer Connection
-    {
-        get
+```csharp
+        private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
         {
-            return lazyConnection.Value;
+            string cacheConnection = ConfigurationManager.AppSettings["CacheConnection"].ToString();
+            return ConnectionMultiplexer.Connect(cacheConnection);
+        });
+
+        public static ConnectionMultiplexer Connection
+        {
+            get
+            {
+                return lazyConnection.Value;
+            }
         }
-    }
+```
 
-Další informace o rozšířených možnostech konfigurace připojení najdete v tématu [Konfigurační model StackExchange.Redis][StackExchange.Redis configuration model].
 
-[!INCLUDE [redis-cache-create](../../includes/redis-cache-access-keys.md)]
+Tento přístup ke sdílení instance `ConnectionMultiplexer` v aplikaci používá statickou vlastnost, která vrací připojenou instanci. Tento kód poskytuje způsob inicializace pouze jedné připojené instance `ConnectionMultiplexer`, který je bezpečný pro přístup z více vláken. Hodnota `abortConnect` je nastavená na false, což znamená, že volání bude úspěšné i v případě, že nedojde k vytvoření připojení k Azure Redis Cache. Klíčovou vlastností `ConnectionMultiplexer` je automatické obnovení připojení k mezipaměti po vyřešení problémů se sítí nebo jiných příčin.
 
-Po vytvoření připojení vrátíte odkaz na databázi mezipaměti Redis zavoláním metody `ConnectionMultiplexer.GetDatabase`. Objekt vrácený metodou `GetDatabase` je prostý průchozí objekt a není nutné jej ukládat.
+Hodnota *CacheConnection* appSetting se používá k odkazování na připojovací řetězec mezipaměti z webu Azure Portal ve formě parametru hesla.
 
-    // Connection refers to a property that returns a ConnectionMultiplexer
-    // as shown in the previous example.
-    IDatabase cache = Connection.GetDatabase();
+## <a name="executing-cache-commands"></a>Provádění příkazů mezipaměti
 
-    // Perform cache operations using the cache object...
-    // Simple put of integral data types into the cache
-    cache.StringSet("key1", "value");
-    cache.StringSet("key2", 25);
+Pro proceduru `Main` třídy `Program` konzolové aplikace přidejte následující kód:
 
-    // Simple get of data types from the cache
-    string key1 = cache.StringGet("key1");
-    int key2 = (int)cache.StringGet("key2");
+```csharp
+        static void Main(string[] args)
+        {
+            // Connection refers to a property that returns a ConnectionMultiplexer
+            // as shown in the previous example.
+            IDatabase cache = lazyConnection.Value.GetDatabase();
 
-Mezipaměti Azure Redis Cache mají konfigurovatelný počet databází (výchozí je 16), který lze použít k logickému oddělení dat v rámci mezipaměti Redis. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration).
+            // Perform cache operations using the cache object...
 
-Nyní, když už víte, jak se připojit k instanci služby Azure Redis Cache a vrátit odkaz na databázi mezipaměti, se podíváme na práci s mezipamětí.
+            // Simple PING command
+            string cacheCommand = "PING";
+            Console.WriteLine("\nCache command  : " + cacheCommand);
+            Console.WriteLine("Cache response : " + cache.Execute(cacheCommand).ToString());
 
-<a name="add-object"></a>
+            // Simple get and put of integral data types into the cache
+            cacheCommand = "GET Message";
+            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
+            Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
-## <a name="add-and-retrieve-objects-from-the-cache"></a>Přidání objektů do mezipaměti a jejich načtení
-Položky lze ukládat a načítat z mezipaměti pomocí metod `StringSet``StringGet`
+            cacheCommand = "SET Message \"Hello! The cache is working from a .NET console app!\"";
+            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringSet()");
+            Console.WriteLine("Cache response : " + cache.StringSet("Message", "Hello! The cache is working from a .NET console app!").ToString());
 
-    // If key1 exists, it is overwritten.
-    cache.StringSet("key1", "value1");
+            // Demostrate "SET Message" executed as expected...
+            cacheCommand = "GET Message";
+            Console.WriteLine("\nCache command  : " + cacheCommand + " or StringGet()");
+            Console.WriteLine("Cache response : " + cache.StringGet("Message").ToString());
 
-    string value = cache.StringGet("key1");
+            // Get the client list, useful to see if connection list is growing...
+            cacheCommand = "CLIENT LIST";
+            Console.WriteLine("\nCache command  : " + cacheCommand);
+            Console.WriteLine("Cache response : \n" + cache.Execute("CLIENT", "LIST").ToString().Replace("id=", "id="));
+
+            lazyConnection.Value.Dispose();
+        }
+```
+
+Mezipaměti Azure Redis Cache mají konfigurovatelný počet databází (výchozí je 16), který lze použít k logickému oddělení dat v rámci mezipaměti Redis. Kód se připojí k výchozí databázi DB 0. Další informace najdete v tématu [Co jsou databáze Redis?](cache-faq.md#what-are-redis-databases) a [Výchozí konfigurace serveru Redis](cache-configure.md#default-redis-server-configuration).
+
+Položky v mezipaměti lze ukládat a načítat pomocí metod `StringSet` a `StringGet`.
 
 Redis ukládá většinu dat jako řetězce Redis, ale tyto řetězce mohou obsahovat mnoho typů dat, včetně serializovaných binárních dat, která lze použít při ukládání objektů .NET v mezipaměti.
 
-Při volání metody `StringGet` se vrátí objekt, pokud existuje, a hodnota `null` Pokud je vrácena hodnota `null`, můžete načíst hodnotu z požadovaného zdroje dat a uložit ji do mezipaměti pro pozdější použití. Tento způsob použití se označuje jako princip s doplňováním mezipaměti.
+Stisknutím kombinace kláves **Ctrl+F5** sestavíte a spustíte konzolovou aplikaci.
 
-    string value = cache.StringGet("key1");
-    if (value == null)
-    {
-        // The item keyed by "key1" is not in the cache. Obtain
-        // it from the desired data source and add it to the cache.
-        value = GetValueFromDataSource();
+V níže uvedeném příkladu můžete vidět, že klíč `Message` měl předtím hodnotu z mezipaměti, která byla nastavena pomocí konzoly Redis na webu Azure Portal. Aplikace tuto hodnotu z mezipaměti aktualizovala. Aplikace rovněž spustila příkazy `PING` a `CLIENT LIST`.
 
-        cache.StringSet("key1", value);
-    }
+![Částečně provedený kód konzolové aplikace](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-partial.png)
 
-Můžete použít také typ `RedisValue`, jak ukazuje následující příklad. Typ `RedisValue` má implicitní operátory pro práci s celočíselnými datovými typy a může být užitečný v případě, že očekávanou hodnotou pro položku v mezipaměti je `null`.
-
-
-    RedisValue value = cache.StringGet("key1");
-    if (!value.HasValue)
-    {
-        value = GetValueFromDataSource();
-        cache.StringSet("key1", value);
-    }
-
-
-Chcete-li zadat vypršení platnosti položky v mezipaměti, použijte parametr `TimeSpan` metody `StringSet`.
-
-    cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 
 ## <a name="work-with-net-objects-in-the-cache"></a>Práce s objekty .NET v mezipaměti
+
 Azure Redis Cache může do mezipaměti ukládat objekty .NET i primitivní datové typy. Objekty .NET je však nutné před uložením do mezipaměti serializovat. Serializaci objektů .NET má na starosti vývojář aplikace, kterému je tak poskytnuta flexibilita při výběru serializátoru.
 
-Jeden způsob, jak serializovat objekty, je použít metody serializace `JsonConvert` v balíčku [Newtonsoft.Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/8.0.1-beta1) a serializovat a deserializovat tak objekty do a z formátu JSON. Následující příklad ukazuje získání a nastavení pomocí instance objektu `Employee`
+Jeden snadný způsob, jak serializovat objekty, je použít metody serializace `JsonConvert` v balíčku [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) a serializovat tak objekty do a z formátu JSON. V této části přidáte do mezipaměti objekt .NET.
 
-    class Employee
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
+V sadě Visual Studio klikněte na **Nástroje** > **Správce balíčků NuGet** > **Konzola Správce balíčků** a spusťte následující příkaz z okna konzoly Správce balíčků.
 
-        public Employee(int EmployeeId, string Name)
+```powershell
+Install-Package Newtonsoft.Json
+```
+
+Na začátek souboru *Program.cs* přidejte následující příkaz `using`:
+
+```charp
+using Newtonsoft.Json;
+```
+
+Do souboru *Program.cs* přidejte následující definici třídy `Employee`:
+
+```csharp
+        class Employee
         {
-            this.Id = EmployeeId;
-            this.Name = Name;
+            public string Id { get; set; }
+            public string Name { get; set; }
+            public int Age { get; set; }
+
+            public Employee(string EmployeeId, string Name, int Age)
+            {
+                this.Id = EmployeeId;
+                this.Name = Name;
+                this.Age = Age;
+            }
         }
-    }
+```
 
-    // Store to cache
-    cache.StringSet("e25", JsonConvert.SerializeObject(new Employee(25, "Clayton Gragg")));
+Na konec procedury `Main()` a před volání metody `Dispose()` v souboru *Program.cs* přidejte do mezipaměti následující řádky kódu a získejte serializovaný objekt .NET:
 
-    // Retrieve from cache
-    Employee e25 = JsonConvert.DeserializeObject<Employee>(cache.StringGet("e25"));
+```csharp
+            // Store .NET object to cache
+            Employee e007 = new Employee("007", "Davide Columbo", 100);
+            Console.WriteLine("Cache response from storing Employee .NET object : " + 
+                cache.StringSet("e007", JsonConvert.SerializeObject(e007)));
+
+            // Retrieve .NET object from cache
+            Employee e007FromCache = JsonConvert.DeserializeObject<Employee>(cache.StringGet("e007"));
+            Console.WriteLine("Deserialized Employee .NET object :\n");
+            Console.WriteLine("\tEmployee.Name : " + e007FromCache.Name);
+            Console.WriteLine("\tEmployee.Id   : " + e007FromCache.Id);
+            Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
+```
+
+Stisknutím kombinace kláves **Ctrl+F5** sestavte a spusťte konzolovou aplikaci a otestujte serializaci objektů .NET. 
+
+![Dokončená konzolová aplikace](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-console-app-complete.png)
+
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud budete pokračovat k dalšímu kurzu, můžete prostředky vytvořené v tomto rychlém startu zachovat a znovu je použít.
+
+V opačném případě, pokud jste už s ukázkovou aplikací v tomto rychlém startu skončili, můžete prostředky Azure vytvořené v tomto rychlém startu odstranit, abyste se vyhnuli poplatkům. 
+
+> [!IMPORTANT]
+> Odstranění skupiny prostředků je nevratné a skupina prostředků včetně všech v ní obsažených prostředků bude trvale odstraněna. Ujistěte se, že nechtěně neodstraníte nesprávnou skupinu prostředků nebo prostředky. Pokud jste vytvořili prostředky pro hostování této ukázky ve stávající skupině prostředků obsahující prostředky, které chcete zachovat, můžete místo odstranění skupiny prostředků odstranit jednotlivé prostředky z jejich odpovídajících oken.
+>
+
+Přihlaste se na web [Azure Portal ](https://portal.azure.com) a klikněte na **Skupiny prostředků**.
+
+Do textového pole **Filtrovat podle názvu** zadejte název vaší skupiny prostředků. V pokynech v tomto článku se používala skupina prostředků *TestResources*. Ve výsledcích hledání klikněte na **...** u vaší skupiny prostředků a pak na **Odstranit skupinu prostředků**.
+
+![Odstranění](./media/cache-dotnet-how-to-use-azure-redis-cache/cache-delete-resource-group.png)
+
+Zobrazí se výzva k potvrzení odstranění skupiny prostředků. Potvrďte odstranění zadáním názvu vaší skupiny prostředků a klikněte na **Odstranit**.
+
+Po chvíli bude skupina prostředků včetně všech obsažených prostředků odstraněná.
+
+
 
 <a name="next-steps"></a>
 
 ## <a name="next-steps"></a>Další kroky
-Nyní, když jste se naučili základy, pokračujte následujícími odkazy a zjistěte více o Azure Redis Cache.
 
-* Prohlédněte si poskytovatele ASP.NET pro Azure Redis Cache.
-  * [Zprostředkovatel stavu relace Azure Redis](cache-aspnet-session-state-provider.md)
-  * [Poskytovatel výstupní mezipaměti ASP.NET služby Azure Redis Cache](cache-aspnet-output-cache-provider.md)
-* [Povolte diagnostiku mezipaměti](cache-how-to-monitor.md#enable-cache-diagnostics), abyste mohli [monitorovat](cache-how-to-monitor.md) stav svojí mezipaměti. Metriky lze zobrazit na webu Azure Portal a můžete je také [stáhnout a revidovat](https://github.com/rustd/RedisSamples/tree/master/CustomMonitoring) pomocí nástrojů dle vašeho výběru.
-* Prohlédněte si [dokumentaci ke klientu mezipaměti StackExchange.Redis][StackExchange.Redis cache client documentation].
-  * K Azure Redis Cache lze přistupovat z mnoha klientů Redis a programovacích jazyků. Další informace najdete na stránce [http://redis.io/clients][http://redis.io/clients].
-* Azure Redis Cache lze rovněž použít se službami a nástroji třetích stran, jako jsou Redsmin a Redis Desktop Manager.
-  * Další informace o nástroji Redsmin najdete v tématu [Načtení připojovacího řetězce Azure Redis a jeho použití s Redsmin][How to retrieve an Azure Redis connection string and use it with Redsmin].
-  * [RedisDesktopManager](https://github.com/uglide/RedisDesktopManager) umožňuje získat přístup k datům v Azure Redis Cache a zkoumat je pomocí grafického uživatelského rozhraní.
-* Prohlédněte si dokumentaci k [Redis][redis] a přečtěte si o [datových typech Redis][redis data types] a [15minutový úvod do datových typů Redis][a fifteen minute introduction to Redis data types].
+V tomto rychlém startu jste se naučili, jak používat službu Azure Redis Cache z aplikace .NET. V dalším rychlém startu se můžete naučit používat službu Redis Cache s webovou aplikací ASP.NET.
 
-<!-- INTRA-TOPIC LINKS -->
-[Next Steps]: #next-steps
-[Introduction to Azure Redis Cache (Video)]: #video
-[What is Azure Redis Cache?]: #what-is
-[Create an Azure Cache]: #create-cache
-[Which type of caching is right for me?]: #choosing-cache
-[Prepare Your Visual Studio Project to Use Azure Caching]: #prepare-vs
-[Configure Your Application to Use Caching]: #configure-app
-[Get Started with Azure Redis Cache]: #getting-started-cache-service
-[Create the cache]: #create-cache
-[Configure the cache]: #enable-caching
-[Configure the cache clients]: #NuGet
-[Working with Caches]: #working-with-caches
-[Connect to the cache]: #connect-to-cache
-[Add and retrieve objects from the cache]: #add-object
-[Specify the expiration of an object in the cache]: #specify-expiration
-[Store ASP.NET session state in the cache]: #store-session
-
-
-<!-- IMAGES -->
-
-
-[StackExchangeNuget]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-stackexchange-redis.png
-
-[NuGetMenu]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-manage-nuget-menu.png
-
-[CacheProperties]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-properties.png
-
-[ManageKeys]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-manage-keys.png
-
-[SessionStateNuGet]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-session-state-provider.png
-
-[BrowseCaches]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-browse-caches.png
-
-[Caches]: ./media/cache-dotnet-how-to-use-azure-redis-cache/redis-cache-caches.png
-
-
-
-
-
-
-
-<!-- LINKS -->
-[http://redis.io/clients]: http://redis.io/clients
-[Develop in other languages for Azure Redis Cache]: http://msdn.microsoft.com/library/azure/dn690470.aspx
-[How to retrieve an Azure Redis connection string and use it with Redsmin]: https://redsmin.uservoice.com/knowledgebase/articles/485711-how-to-connect-redsmin-to-azure-redis-cache
-[Azure Redis Session State Provider]: http://go.microsoft.com/fwlink/?LinkId=398249
-[How to: Configure a Cache Client Programmatically]: http://msdn.microsoft.com/library/windowsazure/gg618003.aspx
-[Session State Provider for Azure Cache]: http://go.microsoft.com/fwlink/?LinkId=320835
-[Azure AppFabric Cache: Caching Session State]: http://www.microsoft.com/showcase/details.aspx?uuid=87c833e9-97a9-42b2-8bb1-7601f9b5ca20
-[Output Cache Provider for Azure Cache]: http://go.microsoft.com/fwlink/?LinkId=320837
-[Azure Shared Caching]: http://msdn.microsoft.com/library/windowsazure/gg278356.aspx
-[Team Blog]: http://blogs.msdn.com/b/windowsazure/
-[Azure Caching]: http://www.microsoft.com/showcase/Search.aspx?phrase=azure+caching
-[How to Configure Virtual Machine Sizes]: http://go.microsoft.com/fwlink/?LinkId=164387
-[Azure Caching Capacity Planning Considerations]: http://go.microsoft.com/fwlink/?LinkId=320167
-[Azure Caching]: http://go.microsoft.com/fwlink/?LinkId=252658
-[How to: Set the Cacheability of an ASP.NET Page Declaratively]: http://msdn.microsoft.com/library/zd1ysf1y.aspx
-[How to: Set a Page's Cacheability Programmatically]: http://msdn.microsoft.com/library/z852zf6b.aspx
-[Configure a cache in Azure Redis Cache]: http://msdn.microsoft.com/library/azure/dn793612.aspx
-
-[StackExchange.Redis configuration model]: https://stackexchange.github.io/StackExchange.Redis/Configuration
-
-[Work with .NET objects in the cache]: http://msdn.microsoft.com/library/dn690521.aspx#Objects
-
-
-[NuGet Package Manager Installation]: http://go.microsoft.com/fwlink/?LinkId=240311
-[Cache Pricing Details]: http://www.windowsazure.com/pricing/details/cache/
-[Azure portal]: https://portal.azure.com/
-
-[Overview of Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=320830
-[Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=398247
-
-[Migrate to Azure Redis Cache]: http://go.microsoft.com/fwlink/?LinkId=317347
-[Azure Redis Cache Samples]: http://go.microsoft.com/fwlink/?LinkId=320840
-[Using Resource groups to manage your Azure resources]: ../azure-resource-manager/resource-group-overview.md
-
-[StackExchange.Redis]: http://github.com/StackExchange/StackExchange.Redis
-[StackExchange.Redis cache client documentation]: http://github.com/StackExchange/StackExchange.Redis#documentation
-
-[Redis]: http://redis.io/documentation
-[Redis data types]: http://redis.io/topics/data-types
-[a fifteen minute introduction to Redis data types]: http://redis.io/topics/data-types-intro
-
-[How Application Strings and Connection Strings Work]: http://azure.microsoft.com/blog/2013/07/17/windows-azure-web-sites-how-application-strings-and-connection-strings-work/
+> [!div class="nextstepaction"]
+> [Vytvořte webovou aplikaci ASP.NET, která používá službu Azure Redis Cache.](./cache-web-app-howto.md)
 
 

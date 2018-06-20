@@ -1,13 +1,13 @@
 ---
-title: "Ukázka nasazení skriptu rozhraní příkazového řádku Azure Service Fabric"
-description: "Vytvořte cluster Service Fabric Linux zabezpečení v Azure pomocí rozhraní příkazového řádku Azure Service Fabric."
+title: Ukázka nasazení skriptu Azure CLI
+description: Vytvořte zabezpečený cluster Service Fabric Linux v Azure s použitím rozhraní příkazového řádku Azure CLI.
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
@@ -15,15 +15,16 @@ ms.topic: sample
 ms.date: 01/18/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: d49383b4f7b3b13beb9ea36ae725938e17ef1456
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
-ms.translationtype: MT
+ms.openlocfilehash: 79125beac6ab34b88c951a2fb9c601b93ae36e20
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34642202"
 ---
-# <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>Vytvořit cluster Service Fabric Linux zabezpečení v Azure
+# <a name="create-a-secure-service-fabric-linux-cluster-in-azure"></a>Vytvoření zabezpečeného clusteru Service Fabric Linux v Azure
 
-Tento příkaz vytvoří certifikát podepsaný svým držitelem, přidá do trezoru klíčů a soubory ke stažení certifikátu místně.  Nový certifikát se používá k zabezpečení clusteru při nasazování.  Můžete také použít existující certifikát místo vytvoření nové.  V obou případech název subjektu certifikátu musí odpovídat domény, který používáte pro přístup ke clusteru Service Fabric. Toto porovnání je potřeba zadat protokolem SSL pro koncové body správy protokolu HTTPS a Service Fabric Explorer clusteru. Nelze získat od certifikační Autority pro certifikát SSL `.cloudapp.azure.com` domény. Je nutné získat vlastní název domény pro váš cluster. Pokud budete požadovat certifikát od certifikační Autority, název subjektu certifikátu musí odpovídat názvu vlastní domény, který používáte pro váš cluster.
+Tento příkaz vytvoří certifikát podepsaný svým držitelem (self-signed certificate), přidá ho do trezoru klíčů a stáhne certifikát místně.  Nový certifikát se použije k zabezpečení clusteru při nasazování.  Nemusíte vytvářet nový certifikát, místo toho můžete použít certifikát stávající.  V obou případech musí název subjektu certifikátu odpovídat doméně, kterou používáte pro přístup ke clusteru Service Fabric. Tato shoda se vyžaduje kvůli zajištění zabezpečení SSL pro koncové body správy prostřednictvím protokolu HTTPS a pro Service Fabric Explorer clusteru. Certifikát SSL nelze pro doménu `.cloudapp.azure.com` získat od certifikační autority. Pro svůj cluster musíte získat název vlastní domény. Pokud požádáte o certifikát od certifikační autority, musí název subjektu certifikátu odpovídat názvu vlastní domény, který používáte pro svůj cluster.
 
 V případě potřeby nainstalujte [Azure CLI 2.0](/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -33,7 +34,7 @@ V případě potřeby nainstalujte [Azure CLI 2.0](/en-us/cli/azure/install-azur
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
-Po spuštění ukázka skriptu, následující příkaz lze použít k odebrání skupiny prostředků clusteru a všechny související prostředky.
+Po spuštění ukázkového skriptu můžete pomocí následujícího příkazu odebrat skupinu prostředků, cluster a všechny související prostředky.
 
 ```azurecli
 ResourceGroupName = "aztestclustergroup"
@@ -42,12 +43,12 @@ az group delete --name $ResourceGroupName
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy. Každý příkaz v tabulce odkazy na dokumentaci konkrétní příkaz.
+Tento skript používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
-| [Vytvoření clusteru sf az](https://docs.microsoft.com/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) | Vytvoří nový cluster Service Fabric.  |
+| [az sf cluster create](https://docs.microsoft.com/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) | Vytvoří nový cluster Service Fabric.  |
 
 ## <a name="next-steps"></a>Další kroky
 
-Další ukázky pro Service Fabric rozhraní příkazového řádku pro Azure Service Fabric najdete v [Service Fabric rozhraní příkazového řádku ukázky](../samples-cli.md).
+Další ukázky rozhraní Service Fabric CLI pro Azure Service Fabric najdete v [ukázkách rozhraní Service Fabric CLI](../samples-cli.md).

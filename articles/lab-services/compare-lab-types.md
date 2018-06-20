@@ -1,6 +1,6 @@
 ---
 title: Porovnání různých typů testovacích prostředí v Azure Lab Services | Microsoft Docs
-description: Popisuje a porovnává různé typy testovacích prostředí, které můžete vytvořit pomocí Azure Lab Services (dříve DevTest Labs).
+description: Popisuje a porovnává různé typy testovacích prostředí, které můžete vytvořit pomocí Azure Lab Services.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 22a1c90dd1a1ca305431d91a801e5293a6d08703
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 7e86ba2b7fc729bd4663503282a936a5eaddf3ca
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361178"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34637869"
 ---
-# <a name="compare-managed-and-devtest-labs-in-azure-lab-services"></a>Porovnání spravovaných testovacích prostředí a DevTest Labs v Azure Lab Services
-Je možné vytvořit dva typy testovacích prostředí: **spravovaná testovací prostředí** v Azure Lab Services a **vlastní testovací prostředí** v Azure DevTest Labs. Pokud chcete jenom určit, co v testovacím prostředí potřebujete, a nechat příslušnou službu nastavit a spravovat infrastrukturu potřebnou pro dané testovací prostředí, vyberte některé **spravované testovací prostředí**. V současné době je jediným typem spravovaného testovacího prostředí, které lze vytvořit pomocí Azure Lab Services, **testovací prostředí v učebně**. Pokud chcete spravovat vlastní infrastrukturu, vytvořte pomocí Azure DevTest Labs **vlastní testovací prostředí**.
+# <a name="compare-managed-labs-in-azure-lab-services-and-devtest-labs"></a>Porovnání spravovaných testovacích prostředí v Azure Lab Services a DevTest Labs
+Je možné vytvořit dva typy testovacích prostředí: **spravovaná testovací prostředí** v Azure Lab Services a **vlastní testovací prostředí** v Azure DevTest Labs. Pokud chcete jenom určit, co v testovacím prostředí potřebujete, a nechat příslušnou službu nastavit a spravovat infrastrukturu potřebnou pro dané testovací prostředí, vyberte některé **spravované testovací prostředí**. V současné době je jediným typem spravovaného testovacího prostředí, které lze vytvořit pomocí Azure Lab Services, **testovací prostředí v učebně**. Pokud chcete spravovat vlastní infrastrukturu, vytvořte pomocí Azure DevTest Labs testovací prostředí.
 
 Následující části poskytují další podrobnosti o těchto testovacích prostředích. 
 
@@ -39,7 +39,7 @@ Tady je několik **případů použití pro spravovaná testovací prostředí**
 
 
 ## <a name="devtest-labs"></a>DevTest Labs
-Můžete mít scénáře, ve kterých chcete spravovat veškerou infrastrukturu a konfiguraci sami v rámci svého vlastního předplatného. Uděláte to tak, že vytvoříte vlastní testovací prostředí pomocí služby Azure DevTest Labs na webu Azure Portal. Pro tato testovací prostředí není nutné vytvořit účet testovacího prostředí. Tato testovací prostředí se nezobrazují v účtu testovacího prostředí (který se používá pro spravovaná testovací prostředí).  
+Můžete mít scénáře, ve kterých chcete spravovat veškerou infrastrukturu a konfiguraci sami v rámci svého vlastního předplatného. Uděláte to tak, že vytvoříte testovací prostředí pomocí služby Azure DevTest Labs na webu Azure Portal. Pro tato testovací prostředí není nutné vytvořit účet testovacího prostředí. Tato testovací prostředí se nezobrazují v účtu testovacího prostředí (který se používá pro spravovaná testovací prostředí).  
 
 Tady je několik **případů použití DevTest Labs**: 
 
@@ -64,5 +64,5 @@ Následující tabulka porovnává dva typy testovacích prostředí, které slu
 ## <a name="next-steps"></a>Další kroky
 Začínáme s nastavením testovacího prostředí pomocí Azure Lab Services:
 
-- [Nastavení testovacího prostředí v učebně](tutorial-setup-classroom-lab.md)
-- [Nastavení vlastního testovacího prostředí](tutorial-create-custom-lab.md)
+- [Nastavení testovacího prostředí v učebně](classroom-labs/tutorial-setup-classroom-lab.md)
+- [Nastavení testovacího prostředí](tutorial-create-custom-lab.md)

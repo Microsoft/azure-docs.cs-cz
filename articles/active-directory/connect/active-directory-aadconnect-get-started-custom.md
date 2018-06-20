@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Vlastní instalace | Dokumentace Microsoftu'
+title: 'Azure AD Connect: Vlastní instalace | Microsoft Docs'
 description: Tento dokument podrobně popisuje možnosti vlastní instalace Azure AD Connect. Použijte tyto pokyny, pokud chcete nainstalovat službu Active Directory přes Azure AD Connect.
 services: active-directory
 keywords: co je Azure AD Connect, instalace služby Active Directory, požadované součásti služby Azure AD
@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/02/2018
+ms.date: 06/07/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d7d1beff419ed2bf4c58f0646cd6c8aacf8e5e7b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: f40f2102729cc317f74bd5a91b17a349a7824476
+ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/07/2018
+ms.locfileid: "34849987"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Vlastní instalace služby Azure AD Connect
 **Vlastní nastavení** Azure AD Connect se používá, pokud chcete využít další možnosti instalace. Používá se, pokud máte víc doménových struktur, nebo pokud chcete nakonfigurovat volitelné funkce, které nejsou zahrnuty v rychlé instalaci. Používá se ve všech případech, kde možnost [**rychlá instalace**](active-directory-aadconnect-get-started-express.md) nevyhovuje nasazení nebo topologii.
@@ -214,12 +216,11 @@ Na počítači, který obsahuje Nástroje pro správu zásad skupiny:
 1.  Spusťte Nástroje pro správu zásad skupiny.
 2.  Upravte zásady skupiny, které se použijí na všechny uživatele. Například Výchozí zásady domény.
 3.  Přejděte do **Konfigurace uživatele\Šablony pro správu\Komponenty Windows\Internet Explorer\Ovládací panely – Internet\Stránka zabezpečení** a vyberte **Seznam zařazení serverů do zón**, jak je znázorněné na následujícím obrázku.
-4.  Povolte zásady a do dialogového okna zadejte tyto dvě položky.
+4.  Povolte zásadu a do dialogového okna zadejte následující položku.
 
         Value: `https://autologon.microsoftazuread-sso.com`  
         Data: 1  
-        Value: `https://aadg.windows.net.nsatc.net`  
-        Data: 1
+    
 
 5.  Mělo by to vypadat nějak takto:  
 ![Zóny intranetu](./media/active-directory-aadconnect-get-started-custom/sitezone.png)
@@ -227,7 +228,7 @@ Na počítači, který obsahuje Nástroje pro správu zásad skupiny:
 6.  Dvakrát klikněte na **OK**.
 
 ## <a name="configuring-federation-with-ad-fs"></a>Konfigurace federace se službou AD FS
-Konfigurace služby AD FS se službou Azure AD Connect je jednoduchá a dá se provést několika kliknutími. Před konfigurací jsou vyžadovány následující položky.
+Konfigurace služby AD FS se službou Azure AD Connect je jednoduchá a provedete ji několika kliknutími. Před konfigurací jsou vyžadovány následující položky.
 
 * Windows Server 2012 R2 nebo novější pro federační server s povolenou vzdálenou správou
 * Windows Server 2012 R2 nebo novější pro proxy server webové aplikace s povolenou vzdálenou správou
@@ -303,7 +304,7 @@ Při výběru domény k federaci služba Azure AD Connect poskytuje informace ne
 >
 
 ## <a name="configuring-federation-with-pingfederate"></a>Konfigurace federace s PingFederate
-Konfigurace PingFederate se službou Azure AD Connect je jednoduchá a dá se provést několika kliknutími. Před konfigurací jsou vyžadovány následující položky.  Vyžadují se však následující položky.
+Konfigurace služby PingFederate se službou Azure AD Connect je jednoduchá a provedete ji několika kliknutími. Musíte ale splňovat následující předpoklady.
 - PingFederate 8.4 nebo novější.  Další informace najdete v článku věnovaném [integraci PingFederate s Azure Active Directory a Office 365](https://docs.pingidentity.com/bundle/O365IG20_sm_integrationGuide/page/O365IG_c_integrationGuide.html).
 - Certifikát protokolu SSL pro název služby FS (Federation Service), který chcete použít (například sts.contoso.com)
 

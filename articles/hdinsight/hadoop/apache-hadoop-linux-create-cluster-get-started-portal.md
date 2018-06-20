@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: nitinme
-ms.openlocfilehash: 69c3ebf5a51151cd8e77c637ddd57eb18c8a9d15
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b9cf3ae3417b993cd721460484d6228daf7b283c
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34627343"
 ---
 # <a name="quickstart-get-started-with-hadoop-and-hive-in-azure-hdinsight-using-the-azure-portal"></a>Rychlý start: Začínáme s Hadoopem a Hivem v Azure HDInsight pomocí portálu Azure Portal
 
@@ -38,7 +39,7 @@ V této části vytvoříte cluster Hadoop v HDInsight pomocí portálu Azure Po
 
 1. Na portálu Azure Portal vyberte **Vytvořit prostředek** > **Data a analýzy** > **HDInsight**. 
 
-    ![Databricks na portálu Azure](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-hdinsight-on-portal.png "Databricks na portálu Azure")
+    ![Databricks na portálu Azure](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-hdinsight-on-portal.png "Databricks na portálu Azure Portal")
 
 2. V části **HDInsight** > **Rychle vytvořit** > **Základy** zadejte hodnoty podle tohoto snímku obrazovky:
 
@@ -65,7 +66,7 @@ V této části vytvoříte cluster Hadoop v HDInsight pomocí portálu Azure Po
     
     |Vlastnost  |Popis  |
     |---------|---------|
-    |**Typ clusteru**     | Zadejte název clusteru Hadoop. Vzhledem k tomu, že všechny clustery ve službě HDInsight sdílejí stejný obor názvů DNS, musí být tento název jedinečný. Název může mít až 59 znaků a může obsahovat písmena, číslice a pomlčky. První a poslední znak názvu nemůže být pomlčka. |
+    |**Typ clusteru**     | Vyberte **Hadoop** |
     |**Operační systém**     |  Vyberte své předplatné Azure. |
     |**Verze**     | Vyberte **Hadoop 2.7.3 (HDI 3.6)**|
 

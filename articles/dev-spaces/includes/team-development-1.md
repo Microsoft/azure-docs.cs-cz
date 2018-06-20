@@ -10,41 +10,42 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 404e238e51b7ac8b799f413965560a8d42ccc5df
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: MT
+ms.openlocfilehash: 41418cb908f2bf149a3d0087728652b44cd6b19e
+ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/06/2018
+ms.locfileid: "34825506"
 ---
-Pokud jste jste spuštěna kódu vaší aplikace, jako kdyby pouze vývojář pracující na aplikaci. V této části se dozvíte, jak prostory Dev Azure zjednodušuje vývoj v týmu:
-* Povolte tým práci ve stejném prostředí vývoj vývojářům.
-* Podporuje každý vývojář iterace na kód v izolaci a bez obav z nejnovější jiné.
-* Testování kódu klient server, před potvrzení kódu bez nutnosti vytvoření mocks nebo simulovat závislosti.
+Zatím jste kód aplikace spouštěli tak, jako byste byli jediným vývojářem, který na aplikaci pracuje. V této části se dozvíte, jak služba Azure Dev Spaces zjednodušuje týmový vývoj:
+* Umožňuje týmu vývojářů podle potřeby pracovat ve stejném prostředí, ať už ve sdíleném pracovním prostoru nebo v oddělených pracovních prostorech.
+* Podporuje iterace kódu každého vývojáře v izolaci a bez obav z narušování práce ostatních.
+* Umožňuje komplexní testování kódu před jeho potvrzením, bez nutnosti vytvářet napodobení nebo simulovat závislosti.
 
-## <a name="challenges-with-developing-microservices"></a>Problémy s vývojem mikroslužeb
-V tuto chvíli není velmi složité ukázkovou aplikaci. Ale v vývoj skutečných výzvy brzy vznikat, jak přidat další služby a zvětšování vývojový tým.
+### <a name="challenges-with-developing-microservices"></a>Problémy při vývoji mikroslužeb
+V tuto chvíli není ukázková aplikace moc složitá. Když ale při vývoji v reálném světě budete přidávat další služby a vývojový tým se bude zvětšovat, začnou brzy vznikat problémy.
 
-Obrázek sami práce na službě, která komunikuje s spoustě dalších služeb.
+Předpokládejme, že pracujete na službě, která komunikuje s řadou dalších služeb.
 
-- Může stát vzhledem ke spuštění všechno místně pro vývoj. Vývojářském počítači nemusí mít dostatek prostředků ke spuštění celé aplikace. Nebo možná vaše aplikace obsahuje koncové body, které musí být veřejně přístupný (například aplikace reaguje na webhook, jehož z aplikace SaaS).
+- Může se stát, že spouštění všech služeb místně nebude během vývoje reálné. Počítač používaný pro vývoj nemusí mít dostatek prostředků ke spuštění celé aplikace. Anebo třeba vaše aplikace obsahuje koncové body, které musí být veřejně dostupné (aplikace například odpovídá na webhook z aplikace SaaS).
 
-- Můžete zkusit spustit pouze služby, které závisí na, ale to znamená, že by potřebovat znát Úplné uzavření závislosti (například závislosti závislosti). Nebo, bude stačit není snadno zjistit, jak sestavit a spustit závislostmi, protože nebyla pracovat s nimi.
-- Někteří vývojáři uchýlit k simulaci nebo mocking si řadu závislé služby. Tento přístup může pomoci někdy ale Správa těchto mocks může trvat brzy na svůj vlastní náročnost vývoje. Navíc tento přístup vede k prostředí dev vyhledávání příliš neliší do produkčního prostředí a jemně chyby můžete ovládat.
-- Z toho vyplývá, že to libovolného typu klient server testování bude obtížné. Testování integrace může dojít pouze reálně po potvrzení, což znamená, že jste se zobrazit problémy, později v cyklu vývoje.
+- Můžete se pokusit spustit jenom služby, na kterých jste závislí, ale to znamená, že byste museli podrobně znát všechny závislosti (třeba i závislosti závislostí). Může také nastat situace, že vytvoření a spuštění vašich závislostí nebude snadné, protože jste na nich nepracovali.
+- Někteří vývojáři se uchylují k simulacím nebo napodobením řady závislostí svých služeb. Tento přístup někdy může pomoci, ale správa těchto napodobení může brzy vyžadovat svůj vlastní náročný vývoj. Navíc to vede k tomu, že vývojový prostor vypadá zcela jinak než produkční prostředí a můžou se tak vloudit drobné chyby.
+- Z toho vyplývá, že jakékoli komplexní testování kódu bude obtížné. Testování integrace se dá věrohodně provést až po potvrzení, což znamená, že se problémy projeví později ve vývojovém cyklu.
 
 ![](../media/common/microservices-challenges.png)
 
 
-## <a name="work-in-a-shared-development-environment"></a>Fungovaly v prostředí s sdílené vývoj
-Dev prostory Azure, můžete nastavit *sdílené* vývojového prostředí v Azure. Každý vývojář se můžou zaměřit na jejich součásti aplikace a můžete interaktivně vyvíjet *předem potvrdit kód* v prostředí, které již obsahuje všechny ostatní služby a cloudové prostředky, které jejich scénářů závisí na. Závislosti jsou vždy aktuální a vývojáři pracují způsobem, který odpovídá produkční.
+### <a name="work-in-a-shared-dev-space"></a>Práce ve sdíleném vývojovém prostoru
+Pomocí služby Azure Dev Spaces můžete nastavit *sdílený* vývojový prostor v Azure. Každý vývojář se může zaměřit jenom na svoji část aplikace a může iterativně vyvíjet *kód před potvrzením* ve vývojovém prostoru, který už obsahuje všechny ostatní služby a cloudové prostředky, na kterých jsou příslušné scénáře závislé. Závislosti jsou vždycky aktuální a vývojáři pracují způsobem, který odpovídá produkčnímu prostředí.
 
-## <a name="work-in-your-own-space"></a>Práce v vlastní místa
-Když budete vyvíjet kódu služby a předtím, než jste připraveni zkontrolujte ho v kódu často nebudou ve funkčním stavu. Můžete se pořád interaktivně službu shaping, jeho otestováním a experimentování se řešení. Azure prostory Dev nabízí koncepci **místo**, který umožňuje pracovat v izolaci a bez obavy z nejnovější členové týmu.
+### <a name="work-in-your-own-space"></a>Práce ve vašem vlastním prostoru
+Než je kód při vývoji pro vaši službu připravený k odevzdání, často není ve funkčním stavu. Pořád ho iterativně vytváříte, testujete ho a experimentujete s různými řešeními. Služba Azure Dev Spaces nabízí koncept **prostoru**, který umožňuje pracovat v izolaci a bez obav z narušení práce jiných členů vašeho týmu.
 
 > [!Note]
-> Než budete pokračovat, zavřete všechna okna VS Code pro obě služby a potom spusťte `azds up -d` v každé z kořenové složky služby. (Jedná se o omezení verze Preview.)
+> Než budete pokračovat, zavřete všechna okna VS Code u obou služeb a potom spusťte příkaz `azds up -d` ve všech kořenových složkách služby. (Toto je omezení verze Preview.)
 
-Podívejme bližší pohled na aktuálně spuštěným služeb. Spustit `azds list` příkaz a zobrazí se výstup podobný následujícímu:
+Podívejme se podrobněji na to, kde služby momentálně běží. Spusťte příkaz `azds list` a zobrazí se podobný výstup:
 
 ```
 Name         Space     Chart              Ports   Updated     Access Points
@@ -53,15 +54,15 @@ mywebapi     default  mywebapi-0.1.0     80/TCP  2m ago     <not attached>
 webfrontend  default  webfrontend-0.1.0  80/TCP  1m ago     http://webfrontend-contosodev.1234abcdef.eastus.aksapp.io
 ```
 
-Místo sloupci se zobrazuje, že obě služby jsou spuštěny v prostoru s názvem `default`. Každý, kdo otevře veřejnou adresu URL a přejde do webové aplikace se vyvolat cesty kódu, který jste napsali dříve používající prostřednictvím obě služby. Nyní předpokládejme, že chcete pokračovat ve vývoji `mywebapi`. Jak provádět změny kódu a otestovat je a není přerušení ostatní vývojáři, kteří používají vývojová prostředí? Kvůli tomu budete nastavit vlastní místa.
+Ve sloupci Space se zobrazuje, že obě služby běží v prostoru s názvem `default`. Kdokoli, kdo otevře veřejnou adresu URL a přejde k webové aplikaci, vyvolá zapsanou cestu kódu, která spouští obě služby. Nyní předpokládejme, že chcete pokračovat ve vývoji `mywebapi`. Jak provedete změny kódu a otestujete je bez toho, abyste přerušili práci ostatních vývojářů, kteří používají stejné vývojové prostředí? Vytvoříte si k tomu vlastní prostor.
 
-## <a name="create-a-space"></a>Vytvoření prostoru
-Ke spuštění svou vlastní verzi `mywebapi` v prostoru jinak než `default`, můžete vytvořit vlastní místo pomocí následujícího příkazu:
+### <a name="create-a-space"></a>Vytvoření prostoru
+Pokud chcete používat vlastní verzi `mywebapi` v jiném prostoru než `default`, můžete si vytvořit vlastní prostor pomocí následujícího příkazu:
 
 ``` 
 azds space create --name scott
 ```
 
-V příkladu nahoře tak, aby se osobní pro moje partnerské uzly, které je místo na práci v mé název pro nový prostor použitých, ale můžete ji volat nic jako a flexibilně o tom, co je, jako je 'sprint4' nebo "ukázku."
+V příkladu výše bylo pro nový prostor použito vlastní jméno, aby ostatní vývojáři věděli, že se jedná o prostor, ve kterém pracuje daný vývojář. Název si ale můžete zvolit podle toho, jak vám to vyhovuje a jak potřebujete, například „sprint4“ nebo „demo“.
 
-Spustit `azds space list` příkazu zobrazte seznam všechny mezery v prostředí vývojářů. Znak hvězdičky (*) se zobrazí vedle aktuálně vybraný prostor. Ve vašem případě byl místa s názvem 'scott' automaticky vybrán při byla vytvořena. Kdykoli se můžete vybrat jiné místo `azds space select` příkaz.
+Spuštěním příkazu `azds space list` zobrazíte seznam všech prostorů ve vývojovém prostředí. Vedle aktuálně vybraného prostoru se zobrazí hvězdička (*). V našem případě byl při vytvoření automaticky vybrán prostor s názvem „scott“. Kdykoli si můžete vybrat jiný prostor pomocí příkazu `azds space select`.

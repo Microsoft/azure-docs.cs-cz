@@ -16,11 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: a9f7cf8ba492004cb6d9e359bfb392448dfbe813
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4c409dfcfba14093d5e2cf28df4bb6c5d1bd9533
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34725968"
 ---
 # <a name="restart-vms"></a>Restartování virtuálních počítačů
 
@@ -42,7 +43,7 @@ Druhý příklad pomocí příkazu `az resouce list` získá označené virtuál
 az vm restart --ids $(az resource list --tag "restart-tag" --query "[?type=='Microsoft.Compute/virtualMachines'].id" -o tsv)
 ```
 
-Tato ukázka funguje v prostředí Bash. Možnosti spuštění skriptů Azure CLI na klientovi s Windows najdete v tématu věnovaném [spuštění Azure CLI ve Windows](../windows/cli-options.md).
+Tato ukázka funguje v prostředí Bash. Možnosti spouštění skriptů Azure CLI na klientovi s Windows najdete v tématu věnovaném [instalaci Azure CLI ve Windows](/cli/azure/install-azure-cli-windows).
 
 
 ## <a name="sample-script"></a>Ukázkový skript

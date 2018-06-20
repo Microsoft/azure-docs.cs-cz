@@ -8,18 +8,18 @@ ms.service: managed-applications
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: b7f8bbcad39000e7e71149824535a6a82b26c758
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 39d2979aad3aee80ba010d5fc3cf83ad486baf2d
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305306"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35247876"
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>Publikování spravované aplikace pro interní účely
 
-Můžete vytvořit a publikovat [spravovanou aplikaci](overview.md) Azure, která je určená pro členy vaší organizace. Oddělení IT může například publikovat spravované aplikace, které zajišťují dodržování standardů organizace. Tyto spravované aplikace jsou k dispozici prostřednictvím katalogu služeb, ne prostřednictvím Azure Marketplace.
+Můžete vytvořit a publikovat [spravovanou aplikaci](overview.md) Azure, která je určená pro členy vaší organizace. Oddělení IT může například publikovat spravované aplikace, které vyhovují standardům organizace. Tyto spravované aplikace jsou k dispozici prostřednictvím katalogu služeb, ne prostřednictvím Azure Marketplace.
 
 Pokud chcete publikovat spravovanou aplikaci pro katalog služeb, je třeba provést tyto kroky:
 
@@ -29,11 +29,13 @@ Pokud chcete publikovat spravovanou aplikaci pro katalog služeb, je třeba prov
 * Rozhodněte, který uživatel, skupina nebo aplikace potřebují přístup ke skupině prostředků v rámci předplatného uživatele.
 * Vytvořte definici spravované aplikace, která odkazuje na balíček ZIP a požaduje přístup pro příslušnou identitu.
 
-V tomto článku obsahuje spravovaná aplikace jenom účet úložiště. Je určená k ilustraci kroků publikování spravované aplikace. Úplné příklady najdete v tématu [Ukázkové projekty pro spravované aplikace Azure](sample-projects.md).
+V tomto článku má spravovaná aplikace jenom účet úložiště. Jejím cílem je ilustrovat postup publikování spravované aplikace. Úplné příklady najdete v tématu [Ukázkové projekty pro spravované aplikace Azure](sample-projects.md).
+
+Příklady PowerShellu v tomto článku vyžadují prostředí Azure PowerShell verze 6.2 nebo novější. V případě potřeby [aktualizujte verzi](/powershell/azure/install-azurerm-ps).
 
 ## <a name="create-the-resource-template"></a>Vytvoření šablony prostředků
 
-Každá definice spravované aplikace obsahuje soubor s názvem **mainTemplate.json**. V něm se definují prostředky Azure, které se mají zřídit. Šablona se nijak neliší od běžné šablony Resource Manageru.
+Každá definice spravované aplikace obsahuje soubor s názvem **mainTemplate.json**. V něm se definují prostředky Azure, které se mají nasadit. Šablona se nijak neliší od běžné šablony Resource Manageru.
 
 Vytvořte soubor s názvem **mainTemplate.json**. V názvu se rozlišují velká a malá písmena.
 
@@ -143,7 +145,7 @@ Uložte soubor createUiDefinition.json.
 
 ## <a name="package-the-files"></a>Zabalení souborů
 
-Přidejte oba soubory do souboru ZIP a s názvem app.zip. Oba soubory musí být na kořenové úrovni souboru ZIP. Pokud je umístíte do složky, při vytváření definice spravované aplikace se zobrazí chyba s informací, že požadované soubory nejsou k dispozici. 
+Přidejte oba soubory do souboru ZIP a s názvem app.zip. Oba soubory musí být na kořenové úrovni souboru ZIP. Pokud je umístíte do složky, zobrazí se při vytváření definice spravované aplikace chyba s informacemi, že požadované soubory nejsou k dispozici. 
 
 Nahrajte balíček do přístupného umístění, ze kterého je možné použít ho. 
 
@@ -187,7 +189,7 @@ $ownerID=(Get-AzureRmRoleDefinition -Name Owner).Id
 
 ### <a name="create-the-managed-application-definition"></a>Vytvoření definice spravované aplikace
 
-Pokud skupinu prostředků pro uložení definice spravované aplikace ještě nemáte, vytvořte ji:
+Pokud ještě nemáte skupinu prostředků pro uložení definice spravované aplikace, vytvořte ji:
 
 ```powershell
 New-AzureRmResourceGroup -Name appDefinitionGroup -Location westcentralus
@@ -208,6 +210,10 @@ New-AzureRmManagedApplicationDefinition `
   -Authorization "${groupID}:$ownerID" `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
+
+### <a name="make-sure-users-can-see-your-definition"></a>Je potřeba zajistit, že budou uživatelé vidět vaši definici.
+
+Máte přístup k definici spravované aplikace, ale je potřeba zajistit přístup i pro ostatní uživatele ve vaší organizaci. Udělte jim k definici alespoň přístup role Čtenář. Je možné, že tuto úroveň přístupu zdědili z předplatného nebo skupiny prostředků. Informace o tom, kdo má přístup k definici, a o přidání uživatelů nebo skupin najdete v tématu [Použití řízení přístupu na základě rolí ke správě přístupu k prostředkům předplatného Azure](../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="create-the-managed-application"></a>Vytvoření spravované aplikace
 
@@ -256,6 +262,16 @@ Teď použijeme k nasazení spravované aplikace portál. Zobrazí se uživatels
 1. Najděte spravovanou aplikaci, kterou chcete vytvořit ze seznamu dostupných řešení, a vyberte ji. Vyberte **Vytvořit**.
 
    ![Nalezení spravované aplikace](./media/publish-service-catalog-app/find-application.png)
+
+   Pokud nevidíte definici spravované aplikace na portálu, bude možná potřeba nastavení portálu změnit. Vyberte **Filtr adresářů a předplatných**.
+
+   ![Výběr filtru předplatného](./media/publish-service-catalog-app/select-filter.png)
+
+   Zkontrolujte, že filtr serverového odběru obsahuje předplatné, ve kterém je definice spravované aplikace.
+
+   ![Kontrola filtru předplatného](./media/publish-service-catalog-app/check-global-filter.png)
+
+   Po výběru předplatného začněte vytvářet spravovanou aplikaci katalogu služeb. Teď byste ji měli vidět.
 
 1. Zadejte základní informace, které jsou potřeba pro spravovanou aplikaci. Zadejte předplatné a novou skupinu prostředků, která má spravovanou aplikaci obsahovat. Jako umístění vyberte **USA – středozápad**. Až budete hotovi, vyberte **OK**.
 

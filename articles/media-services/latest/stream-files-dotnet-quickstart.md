@@ -13,18 +13,19 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/08/2018
 ms.author: juliako
-ms.openlocfilehash: 40759fc65caa181651de68756f4374f879fd9c9c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e17a800ff61822a5040737e479c3e1855eeb8893
+ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34701034"
 ---
 # <a name="quickstart-stream-video-files---net"></a>Rychlý start: Streamování videosouborů – .NET
 
 > [!NOTE]
 > Nejnovější verze služby Azure Media Services je ve verzi Preview a může být označována jako v3. Pokud chcete začít používat rozhraní API v3, měli byste vytvořit nový účet služby Media Services, jak je popsáno v tomto rychlém startu. 
 
-Tento rychlý start předvádí, jak je jednoduché začít se streamováním videí pomocí služby Azure Media Services v široké škále prohlížečů a zařízení. 
+Tento rychlý start předvádí, jak je jednoduché začít se streamováním videí pomocí služby Azure Media Services v široké škále prohlížečů a zařízení. Ukázka v tomto tématu kóduje obsah, který zpřístupníte prostřednictvím adresy URL protokolu HTTPS. 
 
 Na konci rychlého startu budete schopni streamovat video.  
 
@@ -43,6 +44,18 @@ Pomocí následujícího příkazu naklonujte do svého počítače úložiště
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts.git
  ```
+
+Ukázka se nachází ve složce [EncodeAndStreamFiles](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/tree/master/AMSV3Quickstarts/EncodeAndStreamFiles).
+
+Tato ukázka provede následující akce:
+
+1. Vytvoří transformaci (nejprve zkontroluje, jestli zadaná transformace existuje). 
+2. Vytvoří výstupní prostředek, který se použije jako výstup úlohy kódování.
+3. Na základě adresy URL protokolu HTTPS vytvoří vstup úlohy.
+4. Pomocí dříve vytvořeného vstupu a výstupu úlohu kódování odešle.
+5. Zkontroluje stav úlohy.
+6. Vytvoří streamovací lokátor (StreamingLocator).
+7. Vytvoří adresy URL pro streamování.
 
 Popisy týkající jednotlivých funkcí v ukázce najdete v kódu. Můžete se také podívat na komentáře v [tomto zdrojovém souboru](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs).
 
@@ -72,7 +85,7 @@ Ve [zdrojovém kódu](https://github.com/Azure-Samples/media-services-v3-dotnet-
 Tento článek používá k otestování streamu přehrávač Azure Media Player. 
 
 > [!NOTE]
-> Pokud se přehrávač hostuje na webu HTTPS, nezapomeňte adresu URL aktualizovat tak, aby obsahovala „https“.
+> Pokud se přehrávač hostuje na webu HTTPS, nezapomeňte adresu URL aktualizovat tak, aby obsahovala „https“. 
 
 1. Otevřete webový prohlížeč a přejděte na adresu [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
 2. Do pole **URL:** vložte jednu z hodnot adres URL pro streamování, které jste získali při spuštění aplikace. 

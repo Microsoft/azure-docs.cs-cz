@@ -1,22 +1,21 @@
 ---
 title: Zřízení simulovaného zařízení TPM pro službu Azure IoT Hub pomocí Pythonu | Microsoft Docs
 description: Rychlý start Azure – Vytvoření a zřízení simulovaného zařízení TPM pomocí sady Java SDK pro zařízení pro službu IoT Hub Device Provisioning
-services: iot-dps
-keywords: ''
 author: bryanla
-ms.author: v-masebo;bryanla
-ms.date: 04/09/2018
+ms.author: bryanla
+ms.date: 05/21/2018
 ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: ''
+services: iot-dps
 manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 5038a632bc88c7b44f275968779d9d7ca5044d38
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 52b94482e545418c36cfc2bc5c9a5e4ad7d22538
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34630737"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Vytvoření a zřízení simulovaného zařízení TPM pomocí sady Python SDK pro zařízení pro službu IoT Hub Device Provisioning
 
@@ -30,7 +29,7 @@ Pokud neznáte proces automatického zřizování, měli byste se seznámit tak�
 
 ## <a name="prepare-the-environment"></a>Příprava prostředí 
 
-1. Ujistěte se, že na svém počítači máte nainstalovanou sadu [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/) nebo [Visual Studio 2017](https://www.visualstudio.com/vs/). Pro vaši instalaci sady Visual Studio musíte mít povolenou sadu funkcí 	Vývoj desktopových aplikací pomocí C++.
+1. Ujistěte se, že na svém počítači máte nainstalovanou sadu [Visual Studio 2015](https://www.visualstudio.com/vs/older-downloads/) nebo [Visual Studio 2017](https://www.visualstudio.com/vs/). Pro vaši instalaci sady Visual Studio musíte mít povolenou sadu funkcí Vývoj desktopových aplikací pomocí C++.
 
 1. Stáhněte a nainstalujte [sestavovací systém CMake](https://cmake.org/download/).
 
@@ -109,7 +108,7 @@ Pokud neznáte proces automatického zřizování, měli byste se seznámit tak�
     cd azure-iot-sdk-python/provisioning_device_client/samples
     ```
 
-1. Pomocí svého integrovaného vývojového prostředí (IDE) pro Python upravte skript Pythonu **provisioning\_device\_client\_sample.py**. Proměnné _GLOBAL\_PROV\_URI_ a _ID\_SCOPE_ změňte na hodnoty, které jste si poznamenali dříve.
+1. Pomocí svého integrovaného vývojového prostředí (IDE) pro Python upravte skript Pythonu **provisioning\_device\_client\_sample.py**. Proměnné *GLOBAL\_PROV\_URI* a *ID\_SCOPE* změňte na hodnoty, které jste si poznamenali dříve. Ujistěte se také, že *SECURITY\_DEVICE\_TYPE* je nastaven na `ProvisioningSecurityDeviceType.TPM`.
 
     ```python
     GLOBAL_PROV_URI = "{globalServiceEndpoint}"
@@ -151,4 +150,4 @@ Pokud chcete pokračovat v práci s touto ukázkou klienta zařízení a jejím 
 V rámci tohoto rychlého startu jste na svém počítači vytvořili simulované zařízení TPM a pomocí služby IoT Hub Device Provisioning jste ho zřídili pro své centrum IoT. Pokud chcete zjistit, jak zaregistrovat zařízení TPM prostřednictvím kódu programu, pokračujte k rychlému startu pro registraci zařízení TPM prostřednictvím kódu programu. 
 
 > [!div class="nextstepaction"]
-> [Rychlý start Azure – Registrace zařízení TPM do služby Azure IoT Hub Device Provisioning](quick-enroll-device-tpm-java.md)
+> [Rychlý start Azure – Registrace zařízení TPM do služby Azure IoT Hub Device Provisioning](quick-enroll-device-tpm-python.md)

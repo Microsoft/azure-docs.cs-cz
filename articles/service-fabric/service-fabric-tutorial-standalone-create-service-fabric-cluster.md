@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 05/11/2018
 ms.author: dastanfo
 ms.custom: mvc
-ms.openlocfilehash: b9b9e08676228ddbdea8be91253b41dac8ef8fb8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 85e6efcc4e213da4d6c650f7543403dd52e8337c
+ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211731"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35248431"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Kurz: Instalace a vytvoření clusteru Service Fabric
 
@@ -69,7 +69,7 @@ Po aktualizaci připojovacího řetězce vytvořte složku.  Následující př�
 mkdir \\172.31.27.1\c$\DiagnosticsStore
 ```
 
-Nakonec v části `nodeTypes` v rámci přidávání konfigurace přidáním nové sekce namapujte dočasné porty, které bude systém Windows používat.  Konfigurační soubor by měl vypadat přibližně takto:
+Nakonec v části `nodeTypes` konfigurace přidejte novou sekci pro namapování dočasných portů, které bude používat systém Windows.  Konfigurační soubor by měl vypadat přibližně takto:
 
 ```json
 "applicationPorts": {
