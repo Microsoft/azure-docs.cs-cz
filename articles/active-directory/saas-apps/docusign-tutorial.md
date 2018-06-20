@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: a691288b-84c1-40fb-84bd-5b06878865f0
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 7b8c11a41ee0da5e65a89cfaefc35563eba81a06
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 027bf154fb57e8f324757fd6b32ea6c421bbc705
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903318"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229508"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-docusign"></a>Kurz: Azure Active Directory integrace s DocuSign
 

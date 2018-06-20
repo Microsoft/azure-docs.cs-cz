@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 791871fc3da98b380da9dbe32333a55f670c22e8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 541a8e83029fe1dc0ba386d1906b366e63041882
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638275"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268238"
 ---
 # <a name="assets"></a>Prostředky
 
@@ -88,7 +88,7 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 Stránkování se podporuje pro každé čtyři povoleno řazení. 
 
-Pokud odpověď na dotaz obsahuje mnoho (aktuálně přes 1000) položky, službu vrátí "@odata.nextLink" vlastnost k získání další stránky výsledků. Tímto lze na stránku prostřednictvím celou sadu výsledků. Velikost stránky není konfigurovatelná uživatelem. 
+Pokud odpověď na dotaz obsahuje mnoho (aktuálně přes 1000) položky, službu vrátí "\@odata.nextLink" vlastnost k získání další stránky výsledků. Tímto lze na stránku prostřednictvím celou sadu výsledků. Velikost stránky není konfigurovatelná uživatelem. 
 
 Pokud prostředky jsou vytvořené nebo odstraněné při stránkování prostřednictvím kolekce, změny se projeví do vrácených výsledků (pokud jsou takové změny v součástí kolekce, která nebyla stažena.) 
 
@@ -105,6 +105,21 @@ while (currentPage.NextPageLink != null)
 ```
 
 Příklady REST naleznete v tématu [prostředky – seznam](https://docs.microsoft.com/rest/api/media/assets/list)
+
+
+### <a name="storage-side-encryption"></a>Šifrování na straně úložiště
+
+Pokud chcete ochránit vaše prostředky v klidovém stavu, prostředky by měla šifrovat pomocí šifrování na straně úložiště. Následující tabulka ukazuje, jak funguje šifrování na straně úložiště ve službě Media Services:
+
+|možnost šifrování|Popis|Media Services v2|Media Services v3|
+|---|---|---|---|
+|Šifrování úložiště služby Media Services|AES 256 šifrování klíče spravované službou Media Services|Podporované<sup>(1)</sup>|Nepodporuje<sup>(2)</sup>|
+|[Šifrování služby úložiště pro Data v klidovém stavu](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|Šifrování na straně serveru, které nabízí Azure Storage, klíč spravovat Azure nebo zákazníka|Podporováno|Podporováno|
+|[Šifrování na straně klienta úložiště](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Šifrování na straně klienta nabízené úložiště Azure, klíč spravovaný zákazníkem v Key Vault|Nepodporuje se|Nepodporuje se|
+
+<sup>1</sup> při Media Services podporuje zpracování obsahu v nešifrované podobě/bez jakoukoli formu šifrování, to tak se nedoporučuje.
+
+<sup>2</sup> v3 Media Services, úložiště šifrování (AES 256 šifrování) je pouze podporována z důvodů zpětné kompatibility při vaše prostředky, které se vytvořily s v2 Media Services. Znamená v3 funguje s existující úložiště šifrovaný prostředky, ale neumožní vytváření nových databází.
 
 ## <a name="next-steps"></a>Další postup
 

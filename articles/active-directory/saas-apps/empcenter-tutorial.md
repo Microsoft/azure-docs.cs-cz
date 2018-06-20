@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: a00ecf6e-917a-4284-b998-41506931585e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 088a13675524e4e4bed4aea959f4e4e8f2923571
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 36ff091cc5a6b475482436b7b290398971883db7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903306"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225367"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-empcenter"></a>Kurz: Azure Active Directory integrace s EmpCenter
 

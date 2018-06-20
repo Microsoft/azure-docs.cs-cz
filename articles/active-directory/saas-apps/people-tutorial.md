@@ -7,18 +7,19 @@ author: jeevansd
 manager: femila
 ms.assetid: 7c9b6202-11dd-4bb6-a679-8fb0a7a0ef4e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: jeedes
-ms.openlocfilehash: f15fe6b1bf3652582f833889e1f38742b3f8b103
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 02759fd7206b4482305079e32ee1517e691e2f12
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903373"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224628"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-people"></a>Kurz: Azure Active Directory integrace s uživateli
 

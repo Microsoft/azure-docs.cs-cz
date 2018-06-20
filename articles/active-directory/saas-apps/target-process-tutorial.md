@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 7cb91628-e758-480d-a233-7a3caaaff50d
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 1f2cea7f68e991401f5efa1773e6c67685efde49
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 48c59a20a86bca5de8c3c4874f3f758fef92a124
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903388"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227577"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Kurz: Azure Active Directory integrace s TargetProcess
 

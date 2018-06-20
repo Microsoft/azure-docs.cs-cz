@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 399cecc3-aa62-4914-8b6c-5a35289820c1
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 59cb7bedb5873fad57c8e2cd927e549e0ab94550
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: f43a0270a1c9211c71f92311c3c024b14bd4e77a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903310"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230484"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-grovo"></a>Kurz: Azure Active Directory integrace s Grovo
 

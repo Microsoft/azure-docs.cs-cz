@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 790e3f1e-1591-4dd6-87df-590b7bf8b4ba
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: a08023e4853d999e5e339f6fd54fa9d968c4fec1
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 0bbab96988c801f4078fb3a543cbcc20b781a6ec
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899474"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218373"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>Kurz: Azure Active Directory integrace s ThousandEyes
 

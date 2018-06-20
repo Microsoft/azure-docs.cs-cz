@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: e14fc310-bac4-4f09-99ef-87e5c77288b6
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 26af31a889432287692b3c3f8e81bce93604ec3c
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: b29d8e9a8e8d63cdeacb8093935de5fba3b25170
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899348"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-citrix-sharefile"></a>Kurz: Azure Active Directory integrace s Citrix ShareFile
 

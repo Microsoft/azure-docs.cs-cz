@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: d437b5ab-4d71-4c13-96d0-79018cebbbd4
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 78dba504c332e20bfca913ae1d361deb633aa7fd
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: fe8dd3f0771a2692488ddea2000b06d0ed212faf
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901656"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36216442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Kurz: Azure Active Directory integrace s ClickTime
 

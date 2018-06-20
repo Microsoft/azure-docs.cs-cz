@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: a5a1a264-7497-47e7-b129-a1b5b1ebff5b
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8ed3342654b5229d0431edce1080c7771ca3778d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: fa11e2c527f870821565315de7a9e7e8a680e841
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903300"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214283"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>Kurz: Azure Active Directory integrace s ServiceNow
 

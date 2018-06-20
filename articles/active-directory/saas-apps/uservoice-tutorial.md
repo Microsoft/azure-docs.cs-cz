@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 684a405b-8932-46f6-b43a-4d97a42b6b87
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 12f5d9a01de0fc452006190f00cf9133f0e9a407
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 6d8562965a5616c39aab598d48046dc2362c3e67
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903372"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227798"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Kurz: Azure Active Directory integrace s UserVoice
 

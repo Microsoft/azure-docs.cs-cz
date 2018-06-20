@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: ba9f1b3d-a4a0-4ff7-b0e7-428e0ed92142
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 1f9c45cc4612c61afb2d89b06afbe30fa20114f6
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 4cf4e0ffc339bb90f013315a53025c83fcaad21f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901022"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217567"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Kurz: Azure Active Directory integrace s vyrovná se se zatížením pro správu vzdělávacího procesu
 

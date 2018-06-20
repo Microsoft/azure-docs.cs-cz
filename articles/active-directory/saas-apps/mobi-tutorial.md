@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: a410cabf-a47b-43fb-8c88-d45f5911e148
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 0e756a263b76fb518464624da14c3ad6923fa488
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: af89f063ae51b0ede26a56b5d165b1fd703edd3b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35912846"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36216214"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobi"></a>Kurz: Azure Active Directory integrace s MOBI
 

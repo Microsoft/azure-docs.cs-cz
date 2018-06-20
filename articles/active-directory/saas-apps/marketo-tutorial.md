@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: b88c45f5-d288-4717-835c-ca965add8735
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: ae9e64ae1341377d3a18f9b33e5931bf78a586b9
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e7ff12938ea66bc218f71018247e70f0ebc1400d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913513"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226805"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-marketo"></a>Kurz: Azure Active Directory integrace s Marketo
 

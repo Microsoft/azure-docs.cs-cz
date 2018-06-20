@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: d6e11639-6cea-48c9-b008-246cf686e726
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 6ea2465dfd3a2ecea161da143e301f5a73408a78
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: cdb59a7078b3bbce112356b61e19702fb6ed9df1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901728"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228719"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ilms"></a>Kurz: Azure Active Directory integrace s iLMS
 

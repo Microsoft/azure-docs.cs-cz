@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bb94c288-2ed4-4683-acde-62474292df29
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: ee08a3320867fe2e4918931bf907938402f56fea
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: a4798ca3664f0db1da51d8641b9f2e181e331eef
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899470"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222725"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercell"></a>Kurz: Azure Active Directory integrace s Mercell
 

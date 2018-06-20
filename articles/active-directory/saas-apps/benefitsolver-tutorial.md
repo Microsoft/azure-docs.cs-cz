@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 333394c1-b5a7-489c-8f7b-d1a5b4e782ea
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: jeedes
-ms.openlocfilehash: dba274ed66af2a4afde025a8020c26931627c01a
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d0256f18e8234f464cb7f612c8ec82f98558abed
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899357"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230365"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefitsolver"></a>Kurz: Azure Active Directory integrace s Benefitsolver
 

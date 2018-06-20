@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: e7b269d6-3c4e-4bc4-a55f-5071d1f52591
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 9652c6c9bb8d08ab449d0c738c7b02009251caee
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: db6fa96e713878c75fd6ebc6056ee825458e986b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904015"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231225"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-contractworks"></a>Kurz: Azure Active Directory integrace s ContractWorks
 

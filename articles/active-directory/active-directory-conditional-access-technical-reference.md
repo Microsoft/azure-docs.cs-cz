@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 0be34d3a0e9bccd6658b5285ddfe6da1e96ef19a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 239ece0f126e1c92c2e94206baa7026ac04d604f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724920"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227985"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Odkaz nastavení podmíněného přístupu Azure Active Directory
 
@@ -237,7 +237,7 @@ Toto nastavení platí pro následující aplikace klienta:
 
 ## <a name="next-steps"></a>Další postup
 
-- Přehled podmíněného přístupu najdete v tématu [podmíněného přístupu v Azure Active Directory](active-directory-conditional-access-azure-portal.md).
+- Přehled podmíněného přístupu najdete v tématu [co je podmíněného přístupu v Azure Active Directory?](active-directory-conditional-access-azure-portal.md)
 - Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu v prostředí, najdete v článku [doporučené postupy pro podmíněný přístup v Azure Active Directory](active-directory-conditional-access-best-practices.md).
 
 

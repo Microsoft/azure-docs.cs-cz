@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 5665c3ac-5689-4201-80fe-fcc677d4430d
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 7aa3309c48b56872df259d4383294e758ac9fc08
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: adbf9c18cecdec2fe65b29efe68177182ff5997d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899287"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Kurz: Azure Active Directory integrace s zástupce
 

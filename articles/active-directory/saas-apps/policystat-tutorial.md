@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: af5eb0f1-1c8e-4809-b0c4-8ccfb915ca42
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: d4ee17ef360012b0996d10155308a0732ff15f6c
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 8680f01e8c23ba8e164ec3da3ac116ced37a3c97
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899084"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219128"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Kurz: Azure Active Directory integrace s PolicyStat
 

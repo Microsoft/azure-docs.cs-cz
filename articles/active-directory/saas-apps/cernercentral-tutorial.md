@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: d2bc549d-d286-4679-854e-bb67c62b0475
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 2d5ddbbca47c091b60ee7dcfb46a1e8e28181bd7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e14a9fc822fa42ec12390d1ed4540b246802a990
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904023"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226370"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cerner-central"></a>Kurz: Azure Active Directory integrace s Cerner – střed
 

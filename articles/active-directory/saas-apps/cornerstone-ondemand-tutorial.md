@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: f57c5fef-49b0-4591-91ef-fc0de6d654ab
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 79ae29e8d922112ca5d351f331b841b74cec4cdd
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 6928242f39e079af0238b21f6e06c2afbb4eca22
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899029"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219400"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cornerstone-ondemand"></a>Kurz: Integrace Azure Active Directory se základním kamenem OnDemand
 

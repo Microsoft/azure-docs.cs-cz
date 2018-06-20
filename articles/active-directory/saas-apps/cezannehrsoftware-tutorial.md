@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 62b42e15-c282-492d-823a-a7c1c539f2cc
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: a1e7d2ee41c9334c5dc5c64014d5bb2946bfe865
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c44d1219c9f352a868aff3305372537ecd7a45b7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901019"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Kurz: Azure Active Directory integrace s Cezanne HR softwaru
 

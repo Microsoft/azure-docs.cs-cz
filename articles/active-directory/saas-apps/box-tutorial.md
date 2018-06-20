@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 3b565c8d-35e2-482a-b2f4-bf8fd7d8731f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 89e2ee866142685d999d9caa10673a8b4b8dece8
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c15894f8cd559a08a1d75e2ac29cc0da0fc9e963
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899453"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226574"
 ---
 # <a name="integrate-azure-active-directory-with-box"></a>Pole integrovat Azure Active Directory
 

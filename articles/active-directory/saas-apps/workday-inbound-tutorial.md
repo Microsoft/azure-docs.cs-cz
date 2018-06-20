@@ -7,18 +7,19 @@ documentationcenter: na
 manager: mtillman
 ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 8e1fb97d23c294d02341ac89120bbafefa4b0f77
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: df1981443d8c55f07f86394967e357a599a7b3a3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35897362"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213137"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro zřizování automatické uživatelů
 
@@ -367,9 +368,9 @@ V této části nakonfigurujete, jak jsou data uživatele z Workday do služby A
 | **LastName**   |   sn   |     |  Vytvoření + aktualizace |
 | **PreferredNameData**  |  displayName |     |   Vytvoření + aktualizace |
 | **Společnosti**         | Společnosti   |     |  Vytvoření + aktualizace |
-| **SupervisoryOrganization**  | Oddělení  |     |  Vytvoření + aktualizace |
+| **SupervisoryOrganization**  | oddělení  |     |  Vytvoření + aktualizace |
 | **ManagerReference**   | manažer  |     |  Vytvoření + aktualizace |
-| **BusinessTitle**   |  nadpis     |     |  Vytvoření + aktualizace | 
+| **BusinessTitle**   |  název     |     |  Vytvoření + aktualizace | 
 | **AddressLineData**    |  StreetAddress  |     |   Vytvoření + aktualizace |
 | **Okres**   |   l   |     | Vytvoření + aktualizace |
 | **CountryReferenceTwoLetter**      |   co |     |   Vytvoření + aktualizace |

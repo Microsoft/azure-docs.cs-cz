@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: dd4adfc7-e238-41d5-8b25-1811f08078b6
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: jeedes
-ms.openlocfilehash: f0dfdad16eab6dcedf05ff93130050021d065024
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d29904b58107e84744fb9469956e4b321bab4e88
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901118"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230467"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>Kurz: Azure Active Directory integrace s OpenAthens
 

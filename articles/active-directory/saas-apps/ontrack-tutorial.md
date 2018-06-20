@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: d2cafba2-3b4a-4471-ba34-80f6a96ff2b9
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 3ca248cad7fb33c887a6c9cc6a7430fc0d96bf57
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: aaf36af70b1d868589d52fd212beb5395202e972
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901116"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225724"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ontrack"></a>Kurz: Azure Active Directory integrace s OnTrack
 

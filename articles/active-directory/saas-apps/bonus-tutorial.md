@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 29fea32a-fa20-47b2-9e24-26feb47b0ae6
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: d396ccbd8594e525f9f0f9dc4dabc8805fa2364b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: adde08f7981e6e23ba5bf2601d2f019702d1d33c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903171"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231640"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Kurz: Azure Active Directory integrace s Bonusly
 

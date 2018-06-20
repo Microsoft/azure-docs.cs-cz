@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 2fb301c2-7d7a-4046-8ee1-7dc9e7684806
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e13e768ac4edee0f7edbf6937b05d80914b90c7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: b78b5b1880d1bfcb55b6736b1393dcadcf46c1ec
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901645"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215660"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-15five"></a>Kurz: Azure Active Directory integrace s 15Five
 

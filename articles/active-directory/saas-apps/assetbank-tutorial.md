@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 3006ad6e-8831-41cd-94aa-7e7ae770ce7b
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 1642a02d35efad945d6e9f6f86b3a13e7ba155c6
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ad5c69398adca79bc0666a400f964b78947ecf96
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901789"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222596"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>Kurz: Azure Active Directory integrace s Asset Bank
 

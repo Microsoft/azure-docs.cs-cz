@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: a9d0bbcb-ddb5-473f-a4aa-028ae88ced1a
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 5ed6ff9ad3a3358d6f14d6a615609728be5e4d80
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 39821146f953630a7722ff866c60cab8b7d46175
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904064"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220830"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Kurz: Azure Active Directory integrace s SkyDesk e-mailu
 

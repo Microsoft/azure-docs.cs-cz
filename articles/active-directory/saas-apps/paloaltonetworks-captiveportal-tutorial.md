@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 67a0b476-2305-4157-8658-2ec3625850d5
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 92e3acff68cba0874f0efc2942a4753f5fab3608
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d38d1bbd6ab047642f276ec78821380d7b9b0803
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901029"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214871"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---captive-portal"></a>Kurz: Azure Active Directory integrace se sítěmi Palo Alto - další zpracování portálu
 

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: bba95df3-75a4-4a93-8805-b3a8aa3d4861
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 38398b2499bb0605b7f82434a0c1209c02d73683
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 897db5a4d794c22f436fa074ec2c359edc5b590c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903284"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225054"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-collaborative-innovation"></a>Kurz: Azure Active Directory integrace s inovací spolupráce
 

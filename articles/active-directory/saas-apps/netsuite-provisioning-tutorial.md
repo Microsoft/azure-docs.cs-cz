@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 8a6d3994-ee33-4a6f-b0a2-9d0389467f16
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: c7d335df3509365954cc4b64c284d0460576e187
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c98781112db7cd91bdeebdaab461afd1f0ec3fbc
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35897317"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226619"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Kurz: Konfigurace Netsuite pro zřizování automatické uživatelů
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 773e7f7d-ec31-411b-860d-6a6633335d43
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 8b481aad4a56569fc39a5d853379d416f69dfc2d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ee38ea88ef5f74e4e5a9a78f5253812ecc27698f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899126"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224092"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>Kurz: Azure Active Directory integrace s Proofpoint na vyžádání
 

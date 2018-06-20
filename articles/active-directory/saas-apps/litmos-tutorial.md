@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: jeedes
 ms.assetid: cfaae4bb-e8e5-41d1-ac88-8cc369653036
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 8edf5d0661912050bd8366f38a2b6b75cb6fa819
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 786040054875d5e90b558ca1684d0ce657205cff
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901614"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219253"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-litmos"></a>Kurz: Azure Active Directory integrace s Litmos
 

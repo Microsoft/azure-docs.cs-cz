@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 76cccaa8-859c-4c16-9d1d-8a6496fc7520
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 3c355178f805b7e4a69ed17d50e58297b8e4da07
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 76a9bb2fed305cefe093dbeb126d6f78d6c8ec7c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899281"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231470"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-etouches"></a>Kurz: Azure Active Directory integrace s etouches
 

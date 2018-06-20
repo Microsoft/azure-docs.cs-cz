@@ -1,6 +1,6 @@
 ---
 title: Funkce Hybrid Runbook Worker služby Azure Automation v Linuxu
-description: Tento článek obsahuje informace o instalaci služby Azure Automation hybridní pracovní proces Runbooku umožňující spouštění sad runbook v počítačích se systémem Linux v místní datové centrum nebo cloudového prostředí.
+description: Tento článek obsahuje informace o instalaci Azure Automation Hybrid Runbook Worker, sady runbook můžete spustit v počítačích se systémem Linux v místní datové centrum nebo cloudového prostředí.
 services: automation
 ms.service: automation
 ms.component: process-automation
@@ -9,36 +9,39 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: aca68b6e8d0e6b80a1504b16b9b3462f20fdc6c4
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8507cf99ea22b24aa3026565cb7c4139e4c3742d
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268119"
 ---
-# <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>Postup nasazení Linux Hybrid Runbook Worker
+# <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Linux Hybrid Runbook Worker
 
-Funkce hybridní pracovní proces Runbooku automatizace Azure umožňuje spuštění sad runbook přímo na počítači, který hostuje roli a s prostředky v prostředí pro správu těchto místních prostředků. Linux Hybrid Runbook Worker spustí sady runbook jako zvláštního uživatele, který může být zvýšena pro spouštění příkazů, které je třeba zvýšení oprávnění. Sady Runbook jsou uložené a spravované ve službě Azure Automation a pak doručí jeden nebo více určenými počítači. To článku je popsáno, jak nainstalovat hybridní pracovní proces Runbooku na počítač s Linuxem.
+Ke spuštění sady runbook přímo na počítači, který je hostitelem role a s prostředky v prostředí pro správu těchto místních prostředků, můžete použít funkci hybridní pracovní proces Runbooku automatizace Azure. Linux Hybrid Runbook Worker spustí sady runbook jako speciální uživatel, který může být zvýšena pro spouštění příkazů, které je třeba zvýšení oprávnění. Sady Runbook jsou uložené a spravované ve službě Azure Automation a pak doručí jeden nebo více určenými počítači.
+
+Tento článek popisuje postup instalace hybridní pracovní proces Runbooku na počítač s Linuxem.
 
 ## <a name="supported-linux-operating-systems"></a>Podporované operační systémy Linux
 
-Následuje seznam distribucí Linux, které jsou podporovány:
+Funkce hybridní pracovní proces Runbooku podporuje následující distribuce:
 
-* Amazon Linux 2012.09--> 2015.09 (x86/x64)
+* Linux Amazon 2012.09 k 2015.09 (x86/x64)
 * CentOS Linux 5, 6 a 7 (x86/x64)
 * Oracle Linux 5, 6 a 7 (x86/x64)
-* Red Hat Enterprise Linux Server 5,6 a 7 (x86/x64)
+* Red Hat Enterprise Linux Server 5, 6 a 7 (x86/x64)
 * Debian GNU/Linux 6, 7 a 8 (x86/x64)
-* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
-* SUSE Linux rozlehlé sítě serveru 11 a 12 (x86/x64)
+* Ubuntu 12.04 LTS, 14.04 LTS a 16.04 LTS (x86/x64)
+* SUSE Linux Enterprise Server 11 a 12 (x86/x64)
 
-## <a name="installing-linux-hybrid-runbook-worker"></a>Instalace Linux hybridní pracovní proces Runbooku
+## <a name="installing-a-linux-hybrid-runbook-worker"></a>Instalace Linux Hybrid Runbook Worker
 
-K instalaci a konfiguraci Hybrid Runbook Worker ve vašem počítači Linux, postupujte podle dál přímo proces ručně nainstalujte a nakonfigurujte roli. Vyžaduje povolení **Automation Hybrid Worker** řešení v pracovní prostor analýzy protokolů a pak spustit sadu příkazů pro registraci počítače jako pracovní proces a přidejte ji do nové nebo existující skupiny.
+K instalaci a konfiguraci Hybrid Runbook Worker ve vašem počítači Linux, postupujte podle jednoduchý proces ručně nainstalovat a nakonfigurovat role. Vyžaduje povolení **Automation Hybrid Worker** řešení v pracovní prostor analýzy protokolů Azure a pak spustit sadu příkazů k registraci počítače jako pracovní proces a přidat do skupiny.
 
-Toto jsou minimální požadavky pro Linux Hybrid Runbook Worker:
+Jsou minimální požadavky pro Linux Hybrid Runbook Worker:
 
-* Minimálně dvě jádra
-* Minimálně 4 GB paměti RAM
+* Dvě jádra
+* 4 GB paměti RAM
 * Port 443 (odchozí)
 
 ### <a name="package-requirements"></a>Požadavky na balíček
@@ -50,35 +53,39 @@ Toto jsou minimální požadavky pro Linux Hybrid Runbook Worker:
 |Curl | cURL webového klienta | 7.15.5|
 |Python ctypes | |
 |PAM | Modulů PAM|
+| **Volitelné balíčku** | **Popis** | **Minimální verze**|
+| Základní prostředí PowerShell | Ke spuštění sad runbook prostředí PowerShell, najdete v prostředí PowerShell musí být nainstalovaný, [instalace jádra prostředí PowerShell v systému Linux](/powershell/scripting/setup/installing-powershell-core-on-linux) se dozvíte, jak ji nainstalovat.  | 6.0.0 |
 
-Než budete pokračovat, musíte svůj účet Automation je spojena se pracovní prostor analýzy protokolů a také primární klíč pro svůj účet Automation. Obě z portálu můžete najít a vyberete svůj účet Automation a vyberete **prostoru** pro dané ID pracovního prostoru a výběr **klíče** pro primární klíč. Informace o porty a adresy, které jsou potřebné pro hybridní pracovní proces Runbooku, najdete v části [konfigurace vaší sítě](automation-hybrid-runbook-worker.md#network-planning).
+### <a name="installation"></a>Instalace
 
-1. Povolte "Automation Hybrid Worker" řešení v Azure. To můžete provést buď:
+Než budete pokračovat, Všimněte si pracovní prostor analýzy protokolů, propojeném účtu Automation. Všimněte si také primární klíč pro svůj účet Automation. Můžete najít z portálu Azure tak, že vyberete vaší automatizace i účtu, výběru **prostoru** pro dané ID pracovního prostoru a výběr **klíče** pro primární klíč. Informace o porty a adresy, které potřebujete pro hybridní pracovní proces Runbooku, najdete v části [konfigurace vaší sítě](automation-hybrid-runbook-worker.md#network-planning).
 
-   1. Přidat **Automation Hybrid Worker** řešení k předplatnému pomocí postupu v [řešení pro správu přidat analýzy protokolů do pracovního prostoru](../log-analytics/log-analytics-add-solutions.md).
-   1. Spusťte následující rutinu:
+1. Povolit **Automation Hybrid Worker** řešení v Azure pomocí jedné z následujících metod:
+
+   * Přidat **Automation Hybrid Worker** řešení k předplatnému pomocí postupu v [řešení pro správu přidat analýzy protokolů do pracovního prostoru](../log-analytics/log-analytics-add-solutions.md).
+   * Spusťte následující rutinu:
 
         ```azurepowershell-interactive
          Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
         ```
 
-1. Nainstalovat agenta OMS pro Linux tak, že spustíte následující příkaz, nahraďte \<WorkspaceID\> a \<WorkspaceKey\> s příslušnými hodnotami z pracovního prostoru.
+1. Nainstalujte agenta OMS pro Linux tak, že spustíte následující příkaz. Nahraďte \<WorkspaceID\> a \<WorkspaceKey\> s příslušnými hodnotami z pracovního prostoru.
 
    ```bash
    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
    ```
 
-1. Spusťte následující příkaz, změna hodnot pro parametry *-w*, *-k*, *-g*, a *-e*. Pro *-g* parametr, nahraďte název skupiny hybridní pracovní proces Runbooku, které se musí připojit nový Linux Hybrid Runbook Worker hodnotu. Pokud název již neexistuje v účtu Automation, nové skupiny hybridní pracovní proces Runbooku se provádí s tímto názvem.
+1. Spusťte následující příkaz, změna hodnot pro parametry *-w*, *-k*, *-g*, a *-e*. Pro *-g* parametr, nahraďte název skupiny hybridní pracovní proces Runbooku, které se musí připojit nový Linux Hybrid Runbook Worker hodnotu. Pokud název neexistuje v účtu Automation, nové skupiny hybridní pracovní proces Runbooku se provádí s tímto názvem.
 
    ```bash
    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <LogAnalyticsworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
    ```
 
-1. Po dokončení příkazu skupinám Hybrid Worker stránky na portálu Azure se zobrazí nové skupiny a počet členů nebo existující skupiny, pokud se zvýší počet členů. Můžete vybrat skupinu ze seznamu na **skupinám Hybrid Worker** a vyberte **hybridní pracovní procesy** dlaždici. Na **hybridní pracovní procesy** stránky, uvidíte každého člena skupiny uvedené.
+1. Po dokončení příkazu **skupinám Hybrid Worker** stránky na webu Azure portal zobrazuje nové skupiny a počet členů. Pokud je existující skupiny, se zvýší počet členů. Můžete vybrat skupinu ze seznamu na **skupinám Hybrid Worker** a vyberte **hybridní pracovní procesy** dlaždici. Na **hybridní pracovní procesy** stránky, uvidíte každého člena skupiny uvedené.
 
 ## <a name="turning-off-signature-validation"></a>Vypnutí ověřování podpisu
 
-Ve výchozím nastavení Linux hybridní pracovní procesy Runbooku vyžadovat ověření podpisu. Pokud spustíte nepodepsaný runbook proti pracovní, zobrazí se chyba obsahující "Podpis ověření se nezdařilo". Chcete-li vypnout ověřování podpisu, spusťte následující příkaz, nahraďte druhý parametr vaše ID pracovního prostoru analýzy protokolů:
+Ve výchozím nastavení Linux hybridní pracovní procesy Runbooku vyžadovat ověření podpisu. Pokud spustíte nepodepsaný runbook proti pracovní, zobrazí chybu, která říká "podpis ověření se nezdařilo." Chcete-li vypnout ověřování podpisu, spusťte následující příkaz. Druhý parametr nahraďte vaše ID pracovního prostoru analýzy protokolů
 
  ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>
@@ -86,14 +93,17 @@ Ve výchozím nastavení Linux hybridní pracovní procesy Runbooku vyžadovat o
 
 ## <a name="supported-runbook-types"></a>Typy podporované runbooků
 
-Linux hybridní pracovní procesy Runbooku nepodporují úplnou sadu runbook typy, které se nacházejí v rámci Azure automation.
+Linux hybridní pracovní procesy Runbooku nepodporují kompletní typy runbooků ve službě Azure Automation.
 
 Následující typy runbook pracovat na hybridní pracovní proces Linux:
 
 * Python 2
 * PowerShell
 
-Následující typy runbook nefungují pro Linux Hybrid Worker:
+  > [!NOTE]
+  > Powershellové runbooky vyžadují základní prostředí PowerShell k instalaci na počítač s Linuxem. V tématu [instalace jádra prostředí PowerShell v systému Linux](/powershell/scripting/setup/installing-powershell-core-on-linux) se dozvíte, jak ji nainstalovat.
+
+Linux hybridního pracovního procesu nepodporují následující typy sady runbook:
 
 * Pracovní postup prostředí PowerShell
 * Grafické
@@ -101,11 +111,13 @@ Následující typy runbook nefungují pro Linux Hybrid Worker:
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-Linux hybridní pracovní proces Runbook závisí na OMS agenta pro Linux komunikovat s vaším účtem Automation registraci pracovního procesu, přijímat úlohy sady runbook a zprávy o stavu. Pokud pracovní proces registrace selže, zde jsou některé možné příčiny chyby:
+Linux hybridní pracovní proces Runbook závisí na OMS agenta pro Linux komunikovat s vaším účtem Automation registraci pracovního procesu, přijímat úlohy sady runbook a zprávy o stavu. Pokud pracovní proces registrace selže, tady jsou některé možné příčiny chyby.
 
-### <a name="the-oms-agent-for-linux-is-not-running"></a>Není spuštěn Agent OMS pro Linux
+### <a name="the-oms-agent-for-linux-isnt-running"></a>Není spuštěn Agent OMS pro Linux
 
-Pokud není spuštěn Agent OMS pro Linux, nebude Linux Hybrid Runbook Worker komunikaci se službou Azure Automation. Ověření agenta se službou a zadáte následující příkaz: `ps -ef | grep python`. Měli byste vidět výstup podobný následujícímu procesy python s **nxautomation** uživatelský účet. Pokud nejsou povolena řešení správy aktualizací nebo Azure Automation, žádný z těchto procesů bude spuštěna.
+Pokud není spuštěn Agent OMS pro Linux, Linux Hybrid Runbook Worker nemůže komunikovat s Azure Automation. Ověřte, zda je spuštěna agenta zadáním příkazu `ps -ef | grep python`. 
+
+Měli byste vidět výstup podobný následujícímu (Python zpracovává s **nxautomation** uživatelský účet). Pokud řešení správy aktualizací nebo Azure Automation není povolena, žádný z těchto procesů bude spuštěna.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -113,27 +125,27 @@ nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
 ```
 
-V následujícím seznamu jsou procesy, které jsou spuštěny pro Linux Hybrid Runbook Worker. Všechny jsou umístěny v `/var/opt/microsoft/omsagent/state/automationworker/` adresáře.
+Následující procesy jsou spuštěny pro Linux Hybrid Runbook Worker. Všechny se nachází v `/var/opt/microsoft/omsagent/state/automationworker/` adresáře.
 
-* **OMS.conf** -Toto je správce pracovního procesu, to je spuštěna přímo z DSC.
+* **OMS.conf**: Toto je správce pracovního procesu. Je spuštěno přímo z požadovaného stavu konfigurace (DSC).
 
-* **Worker.conf** -tento proces je automaticky zaregistrován hybridní pracovní proces, je spuštěno pomocí Správce pracovního procesu. Tento proces slouží pomocí správy aktualizací a je pro uživatele transparentní. Tento proces není být k dispozici, pokud není na počítači povolená řešení pro správu aktualizací.
+* **Worker.conf**: Toto je automaticky zaregistrován hybridní pracovní proces. Je spuštěno pomocí Správce pracovního procesu. Tento proces slouží pomocí správy aktualizací a je pro uživatele transparentní. Tento proces není k dispozici pouze v případě, že je na počítači povolená řešení pro správu aktualizací.
 
-* **diy/Worker.conf** -tento proces je DIY hybridní pracovní proces. DIY hybridní pracovní proces se používá ke spouštění sad runbook uživatele na hybridní pracovní proces Runbooku. Liší se pouze z automatického zaregistrován hybridní pracovní proces podrobně klíče, který se používá jinou konfiguraci. Tento proces není přítomen Azure Automation není povoleno řešení a DIY hybridní pracovní proces Linux, není-li zaregistrovat.
+* **diy/Worker.conf**: Jedná se o DIY hybridní pracovní proces. DIY hybridní pracovní proces se používá ke spouštění sad runbook uživatele na hybridní pracovní proces Runbooku. Se liší od automaticky zaregistrovat hybridní pracovní proces pouze v tom, že používá jinou konfiguraci. Tento proces je přítomen pouze v případě, že je povolená řešení služby Azure Automation a je zaregistrován DIY Linux hybridní pracovní proces.
 
 Pokud agenta OMS pro Linux neběží, spusťte následující příkaz pro spuštění služby: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
 
-### <a name="the-specified-class-does-not-exist"></a>Pro zadanou třídu neexistuje.
+### <a name="the-specified-class-doesnt-exist"></a>Pro zadanou třídu neexistuje.
 
-Pokud se zobrazí chyba **pro zadanou třídu neexistuje...** v `/var/opt/microsoft/omsconfig/omsconfig.log` pak OMS agenta pro Linux je nutné aktualizovat. Spusťte následující příkaz, který znovu nainstalovat agenta OMS:
+Pokud se zobrazí chyba "Zadaná třída neexistuje" v `/var/opt/microsoft/omsconfig/omsconfig.log`, OMS agenta pro Linux je nutné aktualizovat. Spusťte následující příkaz, který znovu nainstalujte agenta OMS:
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
 ```
 
-Další pokyny o tom, jak vyřešit problémy s správy aktualizací najdete v tématu [správy aktualizací – řešení potíží](automation-update-management.md#troubleshooting)
+Další pokyny o tom, jak vyřešit problémy s správy aktualizací najdete v tématu [správy aktualizací: řešení potíží s](automation-update-management.md#troubleshooting).
 
 ## <a name="next-steps"></a>Další postup
 
-* Zkontrolujte [spuštění sad runbook na hybridní pracovní proces Runbooku](automation-hrw-run-runbooks.md) se dozvíte, jak nakonfigurovat své sady runbook k automatizaci procesů ve své místní datové centrum nebo jiné cloudové prostředí.
-* Pokyny o tom, jak odebrat procesy Hybrid Runbook Worker najdete v tématu [odebrat Azure automatizace procesů Hybrid Runbook Worker](automation-hybrid-runbook-worker.md#removing-hybrid-runbook-worker)
+* Naučte se konfigurovat své sady runbook k automatizaci procesů ve své místní datové centrum nebo jiné cloudové prostředí, najdete v tématu [spuštění sad runbook na hybridní pracovní proces Runbooku](automation-hrw-run-runbooks.md).
+* Pokyny o tom, jak odebrat procesy Hybrid Runbook Worker najdete v tématu [odebrat Azure automatizace procesů Hybrid Runbook Worker](automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker).

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: e96aeecd-e113-454e-89c3-58c9f44cfd4c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 78f5d7cae6a827cf9883c3f4d52afd0ad60ba438
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 33eae0b2a7fe9e920ed1bd0e120d49ad090e2466
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899304"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223016"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>Kurz: Azure Active Directory integrace s SmartRecruiters
 

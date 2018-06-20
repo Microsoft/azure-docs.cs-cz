@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 95d8413f-db98-4e2c-8097-9142ef1af823
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 0d213c251a463406d50d442b7c78b5f819b8534e
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 5e77a8d557c44b76335ac4abab2cb19e099c7d8b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899475"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215915"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-officespace-software"></a>Kurz: Azure Active Directory integrace s OfficeSpace softwaru
 

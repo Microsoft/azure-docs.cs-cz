@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 60587ba3-1396-4b8a-9ac1-e22a98e5e0ac
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: a977320b3880d7b6529d68d09ae83d8cd5c2664d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1fd426a7d1adfa9a09a4b1f9c6580fcd35c9683c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899406"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226132"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Kurz: Azure Active Directory integrace s itslearning
 

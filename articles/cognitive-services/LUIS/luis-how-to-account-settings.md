@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 25989d07b7d879ac68283ee56a7ccb0c07e09623
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
-ms.translationtype: HT
+ms.openlocfilehash: 76300b307c8e87a3dd108fc53d3b30a53d3276dd
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35343913"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263920"
 ---
 # <a name="manage-your-luis-account"></a>Správa vašeho účtu LUIS
 Dvě důležité informace pro účet LUIS jsou uživatelský účet a pro tvorbu klíč. Vaše přihlašovací údaje je spravován na [account.microsoft.com](https://account.microsoft.com). Klíč pro vytváření obsahu je spravovat z [LUIS][LUIS] webu **nastavení** stránky. 
@@ -50,8 +50,12 @@ Pokud správce klienta nebude Přihlaste se k LUIS, můžete přístup správce 
 
 Pokud správce klienta chce pouze určitým uživatelům používat LUIS, podívejte se na to [identity blog](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/).
 
+### <a name="user-accounts-with-multiple-emails-for-collaborators"></a>Uživatelské účty s více e-mailů pro spolupracovníky
+Pokud přidáte spolupracovníci LEOŠ aplikaci, musíte zadat přesné e-mailovou adresu, musí používat LEOŠ jako spolupracovníka spolupracovníka. Přestože Azure Active Directory (Azure AD) umožňuje jenom jednoho konkrétního uživatele tak, aby měl více než jeden e-mailový účet používá zcela zaměnitelným významem, LEOŠ vyžaduje, aby uživatel k přihlášení pomocí e-mailová adresa zadaná v seznamu spolupracovníka. 
+
+
 ## <a name="next-steps"></a>Další postup
 
 Další informace o vaší [vytváření klíč](luis-concept-keys.md#authoring-key). 
 
-[LUIS]: luis-reference-regions.md
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

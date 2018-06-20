@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 828c981c-c3dd-4eb2-8699-0f732baa43f6
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 5e87c331161e299eeba88202e7c7e9882192d9de
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 04b9a34c355041b2c8e5ec0dcdb614fb2c713fee
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903213"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217704"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>Kurz: Integrace Azure Active Directory pomocí jednotného přihlašování SAML odznaky
 

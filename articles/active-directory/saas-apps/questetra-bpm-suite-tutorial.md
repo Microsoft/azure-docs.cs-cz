@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: fb6d5b73-e491-4dd2-92d6-94e5aba21465
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 3a9f8f860116b203740a65e7da9a5213ab8af68f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e9a4ab5bb262b274f4c53741f7a9ea1ce3956848
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899112"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220124"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-questetra-bpm-suite"></a>Kurz: Azure Active Directory integrace se sadou Questetra BPM Suite
 

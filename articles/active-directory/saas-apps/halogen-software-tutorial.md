@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 2ca2298d-9a0c-4f14-925c-fa23f2659d28
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 6342395aad48efce08b382bd546e746c7fa31c02
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7699eb4074d85768fa18f4739137ea8ad2b80ced
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903191"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215422"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halogen-software"></a>Kurz: Azure Active Directory integrace s Halogen softwaru
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 84e60fa4-36fb-49c4-a642-95538c78f926
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 329168f2c5212213ea50476c9865ec539d40026d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 5a50c578bd2b8a0479365f1543b9db741080f19f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903377"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228954"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Kurz: Azure Active Directory integrace s Ziflow
 

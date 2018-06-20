@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d8c4a97b-4de6-49d4-b64e-42222c2ec6c9
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2018
 ms.author: jeedes
-ms.openlocfilehash: b4a015a1fe101b32e30940789c9768685e52b21b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 488c9c62138cf9b042de749c35b8e8932b1da30f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903352"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226931"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qumu-cloud"></a>Kurz: Azure Active Directory integrace s Qumu cloudu
 

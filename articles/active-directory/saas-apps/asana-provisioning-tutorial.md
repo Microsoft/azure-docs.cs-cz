@@ -8,6 +8,7 @@ writer: asmalser-msft
 manager: sakula
 ms.assetid: 0b38ee73-168b-42cb-bd8b-9c5e5126d648
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 65501bff4ca6c13fe5951ebc260e3ec75514bc8f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2abd10f90d2e6d86d7f82aa43016a31bfdbd324b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899210"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231419"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Kurz: Konfigurace Asana pro zřizování automatické uživatelů
 

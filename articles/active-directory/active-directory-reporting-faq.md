@@ -3,24 +3,24 @@ title: Azure Active Directory, vytváření sestav – nejčastější dotazy | 
 description: Nejčastější dotazy týkající se vytváření sestav Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 ms.assetid: 534da0b1-7858-4167-9986-7a62fbd10439
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 05/10/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: bf253e0b8451b3798360a657485289f089239c70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2ceaf4ecf7da78377c52135b7de5191c1dc3dd28
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588586"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232296"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Nejčastější dotazy týkající se vytváření sestav Azure Active Directory.
 
@@ -72,7 +72,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy k Azure Active Direc
 
 **Otázka: počet záznamů, můžete stáhnout z portálu Azure?**
 
-**Odpověď:** až 120 kB záznamy si můžete stáhnout z portálu Azure. Záznamy jsou seřazené podle *nejnovější* a ve výchozím nastavení, můžete získat nejnovější záznamy 120 kB. 
+**Odpověď:** až 5000 záznamy si můžete stáhnout z portálu Azure. Záznamy jsou seřazené podle *nejnovější* a ve výchozím nastavení, můžete získat nejnovější 5000 záznamy. Pro větší než 5 000 záznamů velikosti, vyberte filtr podmínek a potom klikněte na *skriptu* tlačítko na portálu Azure. To se stáhnout skript prostředí PowerShell, který můžete spustit generovat soubor CSV všechny záznamy odpovídající filtr podmínek. Budete muset spustit skript prostředí PowerShell *režimu správce*. Další informace najdete v tématu [stahovat přihlašovací aktivity](active-directory-reporting-activity-sign-ins.md#download-sign-in-activities).
 
 ---
 
@@ -84,7 +84,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy k Azure Active Direc
 
 **Otázka: jak lze získat licenci premium?**
 
-**Odpověď:** najdete v části [Začínáme s Azure Active Directory Premium](active-directory-get-started-premium.md) pro odpověď na tuto otázku.
+**Odpověď:** najdete v části [Začínáme s Azure Active Directory Premium](fundamentals/active-directory-get-started-premium.md) pro odpověď na tuto otázku.
 
 ---
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: ea392d8c-c8aa-4475-99d0-b08524ef0f3a
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 9eb64777c6ddfbedd1716fa17946499c2556dcc8
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 07499d4eaefeb52cf399b839723a968ae45ba1c3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903182"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222949"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cylanceprotect"></a>Kurz: Azure Active Directory integrace s CylancePROTECT
 

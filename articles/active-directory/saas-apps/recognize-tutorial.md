@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: cfad939e-c8f4-45a0-bd25-c4eb9701acaa
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: f49fe131d29ab6d635fd79b56f3159d76a6e220a
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c33b066aa1ba627166021a648a548b9b39d54630
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899080"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219053"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-recognize"></a>Kurz: Azure Active Directory integrace s rozpoznávat
 

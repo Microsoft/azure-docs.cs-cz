@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 99042f39-0ab2-475b-8df8-3016d7f875e9
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 25713df2586a6de7e615b73d558aea93d50584e2
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 06bdb52664a5e47b8c2f9d775244816f9e2e5fe5
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901616"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224194"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redvector"></a>Kurz: Azure Active Directory integrace s RedVector
 

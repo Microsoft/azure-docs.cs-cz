@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 655c9ad3-2076-4e2c-8e47-9ed3bf04be56
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 970120b5bc3f3ccadf9f48b1a42e167b5998f1a7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 106eecd3d904603451f056ee356bb443cd4a7fcb
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903327"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219097"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-quickhelp"></a>Kurz: Azure Active Directory integrace s QuickHelp
 

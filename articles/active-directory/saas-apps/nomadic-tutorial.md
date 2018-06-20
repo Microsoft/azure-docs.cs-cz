@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 13d02b1c-d98a-40b1-824f-afa45a2deb6a
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: c542bbaec5c54e4542a84c2b3046159c6e9c6392
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 01669d55161d76a83bf578b5d45d0bcfd1c7652e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901673"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223072"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadic"></a>Kurz: Azure Active Directory integrace s Nomadic
 

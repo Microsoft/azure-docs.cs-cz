@@ -1,23 +1,25 @@
 ---
-title: "Sestava zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory | Dokumentace Microsoftu"
-description: "Přečtěte si o sestavě zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory"
+title: Sestava zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory | Microsoft Docs
+description: Přečtěte si o sestavě zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory
 services: active-directory
-author: MarkusVi
-manager: femila
+author: rolyon
+manager: mtillman
 ms.assetid: addd60fe-d5ac-4b8b-983c-0736c80ace02
 ms.service: active-directory
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/24/2017
-ms.author: markvi
+ms.component: compliance-reports
+ms.date: 05/23/2018
+ms.author: rolyon
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ed6201e9edcef39b14b948b6b2f6e0b5da01ec60
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 030a45335f06c4f15a5136842a7f6477bac8253b
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34588705"
 ---
 # <a name="remediate-users-flagged-for-risk-in-the-azure-active-directory-portal"></a>Oprava uživatelů označených příznakem rizika na portálu Azure Active Directory
 
@@ -29,12 +31,20 @@ Prioritou společnosti Microsoft je přispívat k udržení zabezpečení vašic
 Pokud dojde ke zjištění neobvyklých aktivit, které můžou značit neoprávněný přístup k účtům některých vašich uživatelů, obdržíte oznámení, abyste mohli zakročit. Poskytování oznámení neznamená jakékoli ohrožení vlastních systémů Microsoftu.
  
 
-## <a name="azure-active-directory-report-access"></a>Přístup k sestavě služby Azure Active Directory
+## <a name="access-the-users-flagged-for-risk-report"></a>Zpřístupnění sestavy uživatelů označených příznakem rizika
 
-Uživatele označené příznakem rizika můžete zkontrolovat prostřednictvím online sestavy služby Azure Active Directory. Pokud nejste předplatitelem Azure, můžete zdarma projít procesem vytvoření předplatného na adrese [http://aka.ms/AccessAAD](http://aka.ms/AccessAAD).  
-Jakmile budete hotovi, můžete pro přístup k Centru pro správu Azure použít své přihlašovací údaje Office 365. Mějte na paměti, že na úrovni předplatného Basic je k dispozici omezené množství podrobností. Pro předplatitele Azure na úrovni Premium jsou k dispozici další data a analýzy. Další informace najdete v tématu věnovaném [sestavě zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory](active-directory-reporting-security-user-at-risk.md).
+Uživatele označené příznakem rizika si můžete prohlédnout v související [sestavě](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk) ve službě Azure Active Directory (AD). Pokud nemáte předplatné služby Azure AD, můžete si ji zdarma jednorázově předplatit na adrese [https://aka.ms/AccessAAD](https://aka.ms/AccessAAD). V této sestavě můžete provádět různé akce, například:
 
-Po aktivaci přístupu ke službě Azure AD budete přesměrování na [Portál Azure AD](https://portal.azure.com). Pokud chcete přejít přímo k sestavě, přejděte na následující adresu URL: [https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UsersAtRisk).
+- Vygenerovat dočasné heslo
+- Vyžádat, aby si uživatel při příštím přihlášení bezpečně resetoval heslo
+- Zavřít riziko uživatele bez provedení nápravné akce
+
+Další informace najdete v tématu věnovaném [sestavě zabezpečení Uživatelé označení příznakem rizika na portálu Azure Active Directory](active-directory-reporting-security-user-at-risk.md).
+
+### <a name="azure-ad-subscription-for-office-365-customers"></a>Předplatné služby Azure AD pro zákazníky Office 365
+
+Jakmile budete hotovi, můžete pro přístup k Centru pro správu Azure použít své přihlašovací údaje Office 365. Po aktivaci přístupu ke službě Azure AD budete přesměrováni na portál služby Azure AD. Na úrovni základního předplatného je v sestavách uvedené omezené množství podrobností. Pro předplatitele Azure na úrovni Premium jsou k dispozici další data a analýzy.
+
 
 **Přístup k sestavám Uživatelé označení příznakem rizika v Centru pro správu Office 365:**
 
@@ -45,7 +55,7 @@ Po aktivaci přístupu ke službě Azure AD budete přesměrování na [Portál 
 4.  V navigační nabídce na levé straně klikněte na **Azure Active Directory**. 
 5.  V navigačním podokně v části **Zabezpečení** klikněte na **Uživatelé označení příznakem rizika**.
 
-Zkontrolujte informace, které se zde zobrazí. Pro všechny zde uvedené účty byste měli resetovat heslo. 
+Zkontrolujte informace, které se zde zobrazí. U všech uvedených účtů byste měli resetovat heslo. 
 
 ## <a name="remediation-actions"></a>Nápravné akce
 

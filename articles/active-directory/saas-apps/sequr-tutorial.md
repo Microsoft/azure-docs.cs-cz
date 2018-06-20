@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: a491e2ce-b4e8-41b8-8f4a-a2e263e462c3
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 1/8/2017
 ms.author: jeedes
-ms.openlocfilehash: c9a82e1c7e7d7c094f9edfd1b356faef0ae7d068
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 916b87dfe216f54f806c7866e327eac8f821992f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35897332"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224806"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sequr"></a>Kurz: Azure Active Directory integrace s Sequr
 

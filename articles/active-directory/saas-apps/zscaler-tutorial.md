@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 68c453f7-aff1-4614-92d3-9b86f3ad99dc
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: d201b51363f69f59923b022136c4482aef51c88b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: dbfe3ec8ab1df90941272810be4598dc27a6e76f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899471"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230195"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler"></a>Kurz: Azure Active Directory integrace s Zscaler
 

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 1d75560a-55b3-42e9-bda1-92b01c572d8e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 5e358044206b242fbb88b7ed3acef8b4102acbce
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 58cf30163837f6d3c327b7c0c6c2542ea294e8d6
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901014"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228991"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Kurz: Azure Active Directory integrace s Shmoop pro školy
 

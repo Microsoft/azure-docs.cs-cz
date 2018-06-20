@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: e28d6191-c375-43c6-b2df-22daa88d9939
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 65a117cfb9278f1d1e01e49c6ca4fb7af2de2a2c
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 20c9367be4a87ad2325e74176bbe6a987748ad23
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900964"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213848"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kronos"></a>Kurz: Azure Active Directory integrace s Kronos
 

@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 06/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 17fb10f4b39361a99d3f51ed753d333c6ec0bf15
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: febd43586ab3006303143ca04ce8a37941a6fd60
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618585"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268161"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Průběžnou integraci a nasazení v Azure Data Factory
 
@@ -89,42 +89,9 @@ Tady jsou kroky při nastavení vydání služby VSTS, abyste mohli automatizova
 
 4.  Zadejte název vašeho prostředí.
 
-5.  Přidejte artefaktů Git a vyberte stejném úložišti, které jsou nakonfigurované pomocí služby Data Factory. Zvolte `adf\_publish` jako výchozí větev s nejnovější verzí výchozí.
+5.  Přidejte artefaktů Git a vyberte stejném úložišti, které jsou nakonfigurované pomocí služby Data Factory. Zvolte `adf_publish` jako výchozí větev s nejnovější verzí výchozí.
 
     ![](media/continuous-integration-deployment/continuous-integration-image7.png)
-
-6.  Získání těchto tajných klíčů z Azure Key Vault. Existují dva způsoby, jak zpracovat těchto tajných klíčů:
-
-    a.  Přidání těchto tajných klíčů do souboru parametrů:
-
-       -   Vytvořit kopii souboru parametry, který je odeslat do větve publikování a nastavte hodnoty parametrů, které chcete získat z trezoru klíčů v následujícím formátu:
-
-        ```json
-        {
-            "parameters": {
-                "azureSqlReportingDbPassword": {
-                    "reference": {
-                        "keyVault": {
-                            "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
-                        },
-                        "secretName": " < secret - name > "
-                    }
-                }
-            }
-        }
-        ```
-
-       -   Pokud použijete tuto metodu, tajný klíč pocházejí z trezoru klíčů automaticky.
-
-       -   Soubor parametrů musí být ve větvi publikovat.
-
-    b.  Přidat [úlohy Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault):
-
-       -   Vyberte **úlohy** kartě, vytvořit nový úkol, vyhledejte **Azure Key Vault** a přidejte ji.
-
-       -   V úloze Key Vault, vyberte předplatné, ve které jste vytvořili trezor klíčů, zadejte přihlašovací údaje v případě potřeby a potom vyberte trezor klíčů.
-
-       ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 7.  Přidáte úloha nasazení Azure Resource Manager:
 
@@ -134,7 +101,7 @@ Tady jsou kroky při nastavení vydání služby VSTS, abyste mohli automatizova
 
     c.  Vyberte **vytvoření nebo aktualizace skupiny prostředků** akce.
 
-    d.  Vyberte **...** v "**šablony**" pole. Procházet šablony Resource Manageru (*ARMTemplateForFactory.json*), byl vytvořen akce Publikovat na portálu. Vyhledejte tento soubor do kořenové složky `adf\_publish` firemní pobočky.
+    d.  Vyberte **...** v **šablony** pole. Procházet šablony Resource Manageru (*ARMTemplateForFactory.json*), byl vytvořen akce Publikovat na portálu. Vyhledejte tento soubor ve složce `<FactoryName>` z `adf_publish` firemní pobočky.
 
     e.  To samé pro soubor parametrů. Vyberte správný soubor, v závislosti na tom, jestli jste vytvořili kopii nebo používáte výchozí soubor *ARMTemplateParametersForFactory.json*.
 
@@ -147,6 +114,43 @@ Tady jsou kroky při nastavení vydání služby VSTS, abyste mohli automatizova
 9.  Vytvořte novou verzi z této verze definice.
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
+
+### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Volitelné - získání těchto tajných klíčů z Azure Key Vault
+
+Pokud máte tajné klíče předávat šablonu Azure Resource Manager, doporučujeme používat Azure Key Vault ve verzi služby VSTS.
+
+Existují dva způsoby, jak zpracovat těchto tajných klíčů:
+
+1.  Přidejte do souboru parametrů těchto tajných klíčů. Další informace najdete v tématu [použití Azure Key Vault předejte hodnotu parametru zabezpečení při nasazení](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+
+    -   Vytvořit kopii souboru parametry, který je odeslat do větve publikování a nastavte hodnoty parametrů, které chcete získat z trezoru klíčů v následujícím formátu:
+
+    ```json
+    {
+        "parameters": {
+            "azureSqlReportingDbPassword": {
+                "reference": {
+                    "keyVault": {
+                        "id": "/subscriptions/<subId>/resourceGroups/<resourcegroupId> /providers/Microsoft.KeyVault/vaults/<vault-name> "
+                    },
+                    "secretName": " < secret - name > "
+                }
+            }
+        }
+    }
+    ```
+
+    -   Pokud použijete tuto metodu, tajný klíč pocházejí z trezoru klíčů automaticky.
+
+    -   Soubor parametrů musí být ve větvi publikovat.
+
+2.  Přidat [úlohy Azure Key Vault](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault) před nasazení Azure Resource Manager popsané v předchozí části:
+
+    -   Vyberte **úlohy** kartě, vytvořit nový úkol, vyhledejte **Azure Key Vault** a přidejte ji.
+
+    -   V úloze Key Vault, vyberte předplatné, ve které jste vytvořili trezor klíčů, zadejte přihlašovací údaje v případě potřeby a potom vyberte trezor klíčů.
+
+    ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-vsts-agent"></a>Udělení oprávnění pro agenta služby VSTS
 Nemusí se úloha Azure Key Vault poprvé s chyba přístup odepřen. Stažení protokolů pro tuto verzi a najděte `.ps1` souboru pomocí příkazu poskytnout oprávnění k agentovi služby VSTS. Příkaz můžete spustit přímo, nebo můžete zkopírovat Identifikátor objektu zabezpečení ze souboru a ručně přidat zásady přístupu na portálu Azure. (*Získat* a *seznamu* jsou minimální oprávnění potřebná).
@@ -161,14 +165,9 @@ Nasazení může selhat, pokud se pokusíte aktualizovat active aktivační udá
 3.  Zvolte **vloženého skriptu** jako skript zadejte a potom zadejte vašeho kódu. Následující příklad zastaví aktivačních událostí:
 
     ```powershell
-    $armTemplate="$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json"
+    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
 
-    $templateJson = Get-Content "$(env:System.DefaultWorkingDirectory)/Dev/ARMTemplateForFactory.json" | ConvertFrom-Json
-
-    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName
-    $DataFactoryName -ResourceGroupName $ResourceGroupName
-
-    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $\_.name -Force }
+    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)

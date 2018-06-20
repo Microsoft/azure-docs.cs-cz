@@ -8,19 +8,19 @@ manager: ''
 editor: ''
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: ergreenl
-ms.openlocfilehash: 2a677d66ebd999d1bcaa4e46eb5b64fef0da006f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9eefbdb8acd7dff14817c8358a05ae0f91e5eb11
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587424"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218873"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Služba Azure AD Domain Services – řešení výstrah
 Tento článek obsahuje řešení problémů s příručky pro všechny výstrahy, které mohou nastat ve vaší spravované domény.

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 34336386-998a-4d47-ab55-721d97708e5e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: f34ebde999b1dcd0e8ab3736e82520518d826ef0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: aefbdfff59f295f0a21c98671ce0c23a7006a91c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899280"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229649"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Kurz: Azure Active Directory integrace s potřebu brány
 

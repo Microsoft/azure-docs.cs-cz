@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: c2b947dc-e1a8-4f5f-b40e-2c5180648e4f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 3cc032a246a04dfa627f27b6661cdc540cf9e3b1
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3497bfd261ec46cd66eb4f0c904200732c168cbf
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901626"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231589"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Kurz: Azure Active Directory integrace s Kintone
 

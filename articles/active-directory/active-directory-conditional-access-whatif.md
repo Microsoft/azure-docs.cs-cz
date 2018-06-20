@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory podmíněný přístup jak postupovat, pokud nástroj - preview | Microsoft Docs
-description: Zjistěte, jak můžete otestovat konfiguraci zásad podmíněného přístupu Azure Active Directory.
+title: Co je co Pokud nástroje Azure Active Directory podmíněného přístupu? -preview | Microsoft Docs
+description: Zjistěte, jak můžete porozumět dopadu vaší zásady podmíněného přístupu na vašem prostředí.
 services: active-directory
 keywords: podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 2c4ca3685d15ddd2446590e1ef297362f9aa52ee
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 661ada8de8821d489732e1f36dc2406eaa0ee4a7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723826"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232279"
 ---
-# <a name="azure-active-directory-conditional-access-what-if-tool---preview"></a>Azure Active Directory podmíněný přístup jak postupovat, pokud nástroj - preview
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access---preview"></a>Co je co Pokud nástroje Azure Active Directory podmíněného přístupu? -preview
 
 [Podmíněný přístup](active-directory-conditional-access-azure-portal.md) je funkce služby Azure Active Directory (Azure AD), jak vám umožní řídit oprávnění uživatelům přístup cloudových aplikací. Jak poznáte, co mají očekávat formuláře zásady podmíněného přístupu v prostředí? Na tuto otázku odpovědět, můžete použít **podmíněný přístup jak postupovat, pokud nástroj**.
 
@@ -121,7 +121,7 @@ V seznamu zásad, které se nevztahují na uživatele můžete a také najít z 
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud chcete vědět, jak konfigurovat zásadu podmíněného přístupu, najdete v článku [Začínáme s podmíněným přístupem v Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md).
+- Pokud chcete vědět, jak konfigurovat zásadu podmíněného přístupu, najdete v článku [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
 
 - Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](active-directory-conditional-access-best-practices.md). 
 

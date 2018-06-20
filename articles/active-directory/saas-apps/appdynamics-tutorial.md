@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 25fd1df0-411c-4f55-8be3-4273b543100f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: aaecc09cfaf0d73d6ea4bd03679d81d2ccbeb55f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: eb79001f6c74526ec2470612adaf290230d2a017
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903151"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227560"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Kurz: Azure Active Directory integrace s AppDynamics
 

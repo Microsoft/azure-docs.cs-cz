@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 65bb5990-07ef-4244-9f41-cd28fc2cb5a2
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 534db1a1154baa31972f4df6aded2fb54c4a3e87
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1932980e1dd2f9de5ddb7ea3e77acb2a9f85fad5
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899389"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225343"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Kurz: Azure Active Directory integrace s předávání bitové kopie
 

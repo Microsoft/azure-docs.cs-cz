@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 8761f5ca-c57c-4a7e-bf14-ac0421bd3b5e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c799e59dca6d84ce526e29f7b5714a2a0d9da788
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 9263be24f883d8a02735e757f3ac02b54960f61f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899141"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227390"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>Kurz: Azure Active Directory integrace s Githubu
 

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: ba25fade-e152-42dd-8377-a30bbc48c3ed
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 7e6c3c217621a12e862167eac78e161db9fbc147
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d6cd215651dddf9ddd6d0bce17114ab0c0900da8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901030"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224211"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rally-software"></a>Kurz: Azure Active Directory integrace s technologie Rally softwaru
 

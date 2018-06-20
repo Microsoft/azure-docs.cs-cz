@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 4563fe94-a88f-4895-a07f-79df44889cf9
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 06d32ec6e4dc19f86627853acc5fc1ce583b6bce
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d977c0f014d38dbfdddeb9b544b52159905cff47
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898961"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228692"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-screensteps"></a>Kurz: Azure Active Directory integrace s ScreenSteps
 

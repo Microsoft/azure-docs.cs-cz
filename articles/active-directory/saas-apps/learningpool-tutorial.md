@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 51e8695f-31e1-4d09-8eb3-13241999d99f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: cab789c976fd84d941a8ae78d8757b8ca79cf320
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 278cd755898fa082ab8ae825a7cb6be300548eb4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899351"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226239"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Kurz: Azure Active Directory integrace s Learningpool Act
 

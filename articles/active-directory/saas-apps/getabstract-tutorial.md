@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 2b63d048-b529-4fad-9e90-f244323409dd
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 11226e9c6f757235bbc4a7ef02e98926dbe0a3e0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 0fcdfa2150e4b2341b878c6cd407bb4169fad4ab
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904009"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36216367"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>Kurz: Azure Active Directory integrace s Getabstract
 

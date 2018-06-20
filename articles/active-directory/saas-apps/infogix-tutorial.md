@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: aa3109b8-bdbe-45ae-933a-2eb4dc03855c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: c1fd1e5c83b311c4af23401aa85f25a4264216ba
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3acdfbc7665bec6cfb8821f33e642f29eec84be1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899040"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214912"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Kurz: Integrace Azure Active Directory se řídí Data3Sixty Infogix
 

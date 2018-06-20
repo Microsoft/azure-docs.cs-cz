@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: abb116b8-8024-4cc6-bc81-f32ef490ea17
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: jeedes
-ms.openlocfilehash: a87e59fbf32b9bccf2bcaa819379ce91e7a7b1a3
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 91dc9a813aa257bdc48ef135cf8e77aa1929465e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903277"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213912"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Kurz: Azure Active Directory integrace s TurboRater
 

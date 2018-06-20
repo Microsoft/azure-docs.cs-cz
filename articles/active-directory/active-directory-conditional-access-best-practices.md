@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c155e18ddc4f1713aa9c62a991f4e849e024c5da
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 88e6b1a64d4ceff64c1ee74a297e7af0c5a27379
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723656"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232332"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Osvědčené postupy pro podmíněný přístup v Azure Active Directory
 
@@ -31,7 +31,7 @@ S [podmíněného přístupu Azure Active Directory (Azure AD)](active-directory
 - Věcí, které byste měli vědět 
 - Co je by se to při konfiguraci zásad podmíněného přístupu. 
 
-Tento článek předpokládá, že jste obeznámeni pojmy a terminologii uvedených v [podmíněný přístup v Azure Active Directory](active-directory-conditional-access-azure-portal.md)
+Tento článek předpokládá, že jste obeznámeni pojmy a terminologii uvedených v [co je podmíněného přístupu v Azure Active Directory?](active-directory-conditional-access-azure-portal.md)
 
 
 
@@ -154,4 +154,4 @@ Další informace najdete v tématu [migraci na portálu Azure classic zásad](a
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud chcete vědět, jak konfigurovat zásadu podmíněného přístupu, najdete v článku [Začínáme s podmíněným přístupem v Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md).
+Pokud chcete vědět, jak konfigurovat zásadu podmíněného přístupu, najdete v článku [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).

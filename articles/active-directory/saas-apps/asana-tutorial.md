@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 837e38fe-8f55-475c-87f4-6394dc1fee2b
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: jeedes
-ms.openlocfilehash: d625d6df45f75df2932c737a99333be0247c626f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: b60f80353a6c2a67c5c1602987ba06aad8bd38e1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35912782"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224823"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Kurz: Azure Active Directory integrace s Asana
 

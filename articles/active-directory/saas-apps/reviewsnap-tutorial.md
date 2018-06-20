@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: b00fb373-2b31-4dcf-84ce-abc29e4c639c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8fd84618da13693ac8edacf2a1d817691843b8f7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 79bf58074b222d0a444560e15ba8db8dd934df07
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901754"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225292"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reviewsnap"></a>Kurz: Azure Active Directory integrace s Reviewsnap
 

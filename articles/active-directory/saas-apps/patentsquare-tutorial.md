@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5ab95cea-4839-4588-b2d0-c8b7066415a1
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 763dd73a65a6e459f334ed23401e4e0af187f5b3
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: a1e743f596423e155647a528b6ccadc6c14c61c4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901752"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214133"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-patentsquare"></a>Kurz: Azure Active Directory integrace s PatentSQUARE
 

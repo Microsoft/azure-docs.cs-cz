@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 1620fe80b032245c6ca19279c3981dcff4b9820f
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 31c101a23892df8599b8cdc0f67647fefb969490
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35343925"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265984"
 ---
 # <a name="prediction-score"></a>Předpověď skóre
 Skóre předpovědi označuje stupeň přitom jistotu, že má LEOŠ předpovědi výsledků. 
@@ -62,4 +62,4 @@ Pokud vaše chatbot vyžaduje konkrétní skóre LEOŠ udávajících důvěru z
 
 V tématu [přidat entity](luis-how-to-add-entities.md) Další informace o tom, jak přidat do aplikace LEOŠ entity.
 
-[LUIS]:luis-reference-regions.md
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

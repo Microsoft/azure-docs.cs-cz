@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: b465816821a491aa14df4e7224c23d805d4afc68
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e07e85e60c8a4b93e4b0fd7bf43f470c4e3acc61
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904010"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221185"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pingboard"></a>Kurz: Azure Active Directory integrace s Pingboard
 

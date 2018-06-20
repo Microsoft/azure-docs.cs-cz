@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 6b47d483-d3a3-442d-b123-171e3f0f7486
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 1cf3b5c5e623183a62817cbef2976607c7cb0cad
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 260656ed17fecb0cac30b7970e9a2b76be42d8ea
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903374"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>Kurz: Integrace Azure Active Directory pomocí jednotného přihlašování SAML pro soutoku podle řešení GmbH
 

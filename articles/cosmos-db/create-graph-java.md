@@ -2,23 +2,21 @@
 title: Vytvoření databáze grafu Azure Cosmos DB pomocí Javy | Dokumentace Microsoftu
 description: Představuje ukázku kódu Java, který můžete použít k připojení a dotazování dat grafu Azure Cosmos DB pomocí konzoly Gremlin.
 services: cosmos-db
-documentationcenter: ''
 author: luisbosquez
 manager: kfile
-ms.assetid: daacbabf-1bb5-497f-92db-079910703046
 ms.service: cosmos-db
+ms.component: cosmosdb-graph
 ms.custom: quick start connect, mvc
-ms.workload: ''
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: a7c86ab78704baf4048bc0415d89c1ab826e16bc
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ac9d0291b38e7a8679e9c6e7707e13a90554b914
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796175"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Vytvoření databáze grafu pomocí Javy a webu Azure Portal
 
@@ -85,7 +83,7 @@ Následující fragmenty kódu pocházejí ze souboru C:\git-samples\azure-cosmo
     client = cluster.connect();
     ```
 
-* Pomocí metody `client.submit` se provede série kroků konzoly Gremlin.
+* Pomocí metody `client.submit` se provede série kroků Gremlin.
 
     ```java
     ResultSet results = client.submit(gremlin);
@@ -113,7 +111,7 @@ Teď se vraťte na portál Azure, kde najdete informace o připojení, a zkop�
 
     `hosts: [test-graph.graphs.azure.com]`
 
-3. V `endpoint` změňte `graphs` na `gremlin.cosmosdb`. (Pokud jste účet databáze grafů vytvořili před 20. prosincem 2017, neprovádějte žádné změny hodnoty koncového bodu a pokračujte dalším krokem.)
+3. V `endpoint` změňte `graphs` na `gremlin.cosmosdb`. (Pokud jste účet databáze grafu vytvořili před 20. prosincem, 2017, neprovádějte žádné změny hodnoty koncového bodu a pokračujte dalším krokem.)
 
     Hodnota koncového bodu by teď měla vypadat takto:
 
@@ -172,7 +170,7 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
    ![Vytváření nových dokumentů v Průzkumníku dat na portálu Azure Portal](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
-2. V seznamu **Výsledky** si všimněte nových uživatelů přidaných do grafu. Vyberte uživatele **ben** a všimněte si, že je propojený s uživatelem robin. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
+2. V seznamu **Výsledky** si všimněte nových uživatelů přidaných do grafu. Vyberte **ben** a všimněte si, že tento uživatel je propojený s uživatelem robin. Vrcholy můžete přesouvat přetahováním, přibližovat a oddalovat můžete pomocí kolečka myši a zvětšit plochu grafu můžete pomocí obousměrné šipky. 
 
    ![Nové vrcholy v grafu v Průzkumníku dat na webu Azure Portal](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
 
@@ -191,7 +189,7 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
     tech (technologie) | java | 
 
     > [!NOTE]
-    > V tomto rychlém startu vytváříme kolekci bez oddílů. Pokud však vytvoříte dělenou kolekci zadáním klíče oddílu při vytváření kolekce, pak každý nový vrchol bude muset zahrnovat klíč oddílu jako klíč. 
+    > V tomto rychlém startu vytvoříte kolekci bez oddílů. Pokud však vytvoříte dělenou kolekci zadáním klíče oddílu při vytváření kolekce, pak každý nový vrchol bude muset zahrnovat klíč oddílu jako klíč. 
 
 6. Klikněte na **OK**. Možná bude nutné zvětšit obrazovku, aby se tlačítko **OK** zobrazilo v dolní části obrazovky.
 
@@ -213,11 +211,11 @@ Teď můžete přejít zpět do Průzkumníku dat a zobrazit vrcholy přidané d
 
     S přidáváním dalších dat můžete pomocí filtrů omezit výsledky. Průzkumník dat ve výchozím nastavení pomocí filtru `g.V()` načte všechny vrcholy v grafu. Můžete ho změnit na jiný [dotaz grafu](tutorial-query-graph.md), třeba `g.V().count()`, který vrátí počet všech vrcholů v grafu ve formátu JSON. Pokud jste filtr změnili, změňte ho zpátky na `g.V()`, klikněte na **Použít filtr** a znovu zobrazte všechny výsledky.
 
-12. Teď můžeme propojit uživatele rakesh a ashley. Ujistěte se, že v seznamu **Výsledky** je vybraný uživatel **ashley**, a potom klikněte na ![Změna cíle vrcholu v grafu](./media/create-graph-java/edit-pencil-button.png) vedle položky **Cíle** vpravo dole. Možná budete muset rozšířit okno, aby se tlačítko zobrazilo.
+12. Teď můžete propojit uživatele rakesh a ashley. Ujistěte se, že v seznamu **Výsledky** je vybraný uživatel **ashley**, a potom klikněte na ![Změna cíle vrcholu v grafu](./media/create-graph-java/edit-pencil-button.png) vedle položky **Cíle** vpravo dole. Možná budete muset rozšířit okno, aby se tlačítko zobrazilo.
 
    ![Změna cíle vrcholu v grafu](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
-13. Do pole **Cíl** zadejte *rakesh*, do pole **Popisek hrany** zadejte *knows* (zná) a potom klikněte na symbol zaškrtnutí.
+13. Do pole **Cíl** zadejte *rakesh*, do pole **Popisek hrany** zadejte *knows* (zná) a potom klikněte na zaškrtávací políčko.
 
    ![Přidání propojení mezi uživateli ashley a rakesh v Průzkumníku dat](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 

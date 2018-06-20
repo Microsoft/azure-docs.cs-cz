@@ -8,18 +8,19 @@ writer: zhchia
 manager: beatrizd-msft
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2018
 ms.author: v-ant
-ms.openlocfilehash: f66576946559caf99d9d9c5cd8590b3b43900d65
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d4fe2d14485207aae89c5f82d6c8eaf3ada7f28d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899279"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226526"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Kurz: Konfigurace BlueJeans pro zřizování automatické uživatelů
 

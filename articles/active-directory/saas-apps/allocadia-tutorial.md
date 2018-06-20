@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: c415fc55-6dc1-49f2-a8a2-2fc6e3790d65
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: jeedes
-ms.openlocfilehash: c90c355d39f23fcf84edc965e89115ea6f4a410b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 5aacb6a1df10b32fe5310138d19532eff249c677
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904042"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-allocadia"></a>Kurz: Azure Active Directory integrace s Allocadia
 

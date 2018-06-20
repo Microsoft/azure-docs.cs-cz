@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: ab92b600-1fea-4905-b1c7-ef8e4d8c495c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 65633fc083798157f949b90c8424e656fa27a2f5
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 8a274ea6a31c907060893fe128c1125b0072781e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901655"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229603"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>Kurz: Azure Active Directory integrace s Druva
 

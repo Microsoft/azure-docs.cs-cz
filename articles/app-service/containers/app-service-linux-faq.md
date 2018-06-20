@@ -13,20 +13,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2018
+ms.date: 06/18/2018
 ms.author: msangapu
-ms.openlocfilehash: 162f9e4a6ad18cc95ccc0b14ce5d8c6318b86ba5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5b3b3d3946b56ff53ad74c2ab93a646baa787d05
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294007"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222973"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>V systému Linux nejčastější dotazy týkající se služby Azure App Service
 
 S vydáním služby App Service v systému Linux pracujeme na přidání funkcí a vylepšení naše platforma provádění. Tento článek obsahuje odpovědi na otázky, aby naše zákazníky mít byla zprávu s požadavkem nedávno.
 
-Pokud máte dotazy, komentáře na článek a jsme budete nejdříve hovor.
+Pokud máte dotazy, komentář v tomto článku.
 
 ## <a name="built-in-images"></a>Předdefinované bitové kopie
 
@@ -54,13 +54,13 @@ Ano, můžete to udělat pomocí zdrojové lokality řízení správy (SCM).
 
 **Jak můžete vytvořit plán služby App Service Linux prostřednictvím sady SDK nebo šablonu Azure Resource Manager?**
 
-Je nutné nastavit **vyhrazené** pole aplikace služby k *true*.
+Měli byste nastavit **vyhrazené** pole aplikace služby k *true*.
 
 ## <a name="continuous-integration-and-deployment"></a>Průběžná integrace a nasazování
 
 **Webová aplikace se pořád používají staré obrázek kontejner Docker po aktualizovali bitovou kopii na úložiště Docker Hub. Podporujete průběžnou integraci a nasazení vlastních kontejnerů?**
 
-Nastavit průběžnou integraci a nasazení pro Azure kontejneru registru nebo DockerHub Image kontrolou v následujícím článku [průběžné nasazování s webovou aplikaci pro kontejnery](./app-service-linux-ci-cd.md). Pro privátní registrech můžete aktualizovat kontejneru zastavení a spuštění webové aplikace. Nebo můžete změnit nebo přidat nastavení fiktivní aplikace můžete vynutit aktualizaci vašeho kontejneru.
+Ano, nastavte průběžnou integraci a nasazení pro Azure kontejneru registru nebo DockerHub, tak následující [průběžné nasazování s webovou aplikaci pro kontejnery](./app-service-linux-ci-cd.md). Pro privátní registrech můžete aktualizovat kontejneru zastavení a spuštění webové aplikace. Nebo můžete změnit nebo přidat nastavení fiktivní aplikace můžete vynutit aktualizaci vašeho kontejneru.
 
 **Podporujete pracovní prostředí?**
 
@@ -70,15 +70,15 @@ Ano.
 
 Ano, je nutné nastavit aplikaci názvem `WEBSITE_WEBDEPLOY_USE_SCM` k *false*.
 
-**Nasazení Git Moje aplikace nezdaří, při použití Linux webové aplikace. Jak můžu alternativní řešení problému?**
+**Nasazení Git Moje aplikace nezdaří, při použití Linux webové aplikace. Jak je můžete problém vyřešit?**
 
-Pokud nasazení Git webové aplikace v systému Linux, je možné následující alternativní možnosti nasazení kódu aplikace:
+Pokud nasazení Git webové aplikace v systému Linux, vyberte jednu z následujících možností, které nasadíte tak svůj kód aplikace:
 
-- Použít funkci nastavené průběžné doručování (Preview): můžete ukládat zdrojového kódu vaší aplikace do úložiště Team Services Git nebo úložiště GitHub používat Azure nastavené průběžné doručování. Další podrobnosti najdete v tématu [postup konfigurace nastavené průběžné doručování pro webovou aplikaci Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- Použít funkci nastavené průběžné doručování (Preview): můžete ukládat zdrojového kódu vaší aplikace do úložiště Team Services Git nebo úložiště GitHub používat Azure nastavené průběžné doručování. Další informace najdete v tématu [postup konfigurace nastavené průběžné doručování pro webovou aplikaci Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
-- Použít [ZIP nasadit rozhraní API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): používat toto rozhraní API [SSH do vaší webové aplikace](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) a přejděte do složky, ve které chcete nasadit kód. Spusťte následující příkazy:
+- Použít [ZIP nasadit rozhraní API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): používat toto rozhraní API [SSH do vaší webové aplikace](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) a přejděte do složky, ve které chcete nasadit kód. Spusťte následující kód:
 
-   ```
+   ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
@@ -86,10 +86,11 @@ Pokud nasazení Git webové aplikace v systému Linux, je možné následující
 
 ## <a name="language-support"></a>Podpora jazyků
 
-**Chci používat objekty websockets v mé aplikaci Node.js, jakékoli speciální nastavení nebo konfigurace nastavení?**
+**Chcete použít objekty websocket v mé aplikaci Node.js, jakékoli speciální nastavení nebo konfigurace nastavení?**
 
-Ano, zakažte `perMessageDeflate` v kódu Node.js straně serveru. Například pokud používáte socket.io, postupujte takto:
-```
+Ano, zakažte `perMessageDeflate` ve vašem kódu Node.js na straně serveru. Například pokud používáte socket.io, použijte následující kód:
+
+```nodejs
 var io = require('socket.io')(server,{
   perMessageDeflate :false
 });
@@ -101,16 +102,16 @@ Ano.
 
 **Podporujete autora jako správce závislostí pro aplikace PHP?**
 
-Ano. Během nasazení Git Kudu by měl zjistit, že nasazujete aplikace PHP (díky přítomnost souboru composer.lock), a Kudu poté aktivuje autora instalace pro vás.
+Během nasazení Git, by měl Ano, Kudu zjistí, že nasazujete aplikace PHP (díky přítomnost souboru composer.lock), a Kudu poté spustí instalaci autora.
 
 ## <a name="custom-containers"></a>Vlastní kontejnery
 
 **Používám vlastní vlastní kontejner. Požadovaná platforma připojit k serveru SMB pro sdílení `/home/` adresáře.**
 
-Můžete to udělat nastavením `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace nastavte na *true* nebo zcela odeberete aplikaci nastavení. Mějte na paměti, že to způsobí, že kontejner restartování při úložiště platformy prochází změnu. 
+Můžete to udělat nastavením `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení aplikace nastavte na *true*. Mějte na paměti, které jsou restartuje kontejner to může způsobit, pokud úložiště platformy prochází změnu.
 
 >[!NOTE]
->Pokud `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení je *false*, `/home/` directory nebude sdílen napříč instancemi škálování a soubory, které jsou zapsány existuje nebude zachován po restartování.
+>Pokud `WEBSITES_ENABLE_APP_SERVICE_STORAGE` nastavení je tento parametr nezadáte, nebo nastavte *false*, `/home/` directory nebude sdílen napříč instancemi škálování a soubory, které jsou zapsány existuje nebude zachován po restartování.
 
 **Mé vlastní kontejner trvá dlouhou dobu spuštění a platformou restartuje kontejner před dokončením spuštění.**
 
@@ -162,6 +163,6 @@ Můžete odeslat si na [fóru pro zpětnou vazbu webové aplikace](https://aka.m
 
 ## <a name="next-steps"></a>Další postup
 
-* [Co je Azure App Service v systému Linux?](app-service-linux-intro.md)
-* [Nastavení přípravných prostředí ve službě Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Průběžné nasazování pomocí webové aplikace pro kontejnery](./app-service-linux-ci-cd.md)
+- [Co je Azure App Service v systému Linux?](app-service-linux-intro.md)
+- [Nastavení přípravných prostředí ve službě Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [Průběžné nasazování pomocí webové aplikace pro kontejnery](./app-service-linux-ci-cd.md)

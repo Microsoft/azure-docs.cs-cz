@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 6d5ab4b0-29bc-4b20-8536-d64db7530f32
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 3fe91df742ab09a95902a349e797eb89c9a84db1
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 69a9aa2ab6c1fd379d7f3421fc70cc8cffd1cb3a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901689"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214266"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-signalfx"></a>Kurz: Azure Active Directory integrace s SignalFx
 

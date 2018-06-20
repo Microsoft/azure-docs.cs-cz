@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: d4e2c6e1-ae5d-4d2c-8ffc-1b24534d376a
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 3b57cc4d1a5d9072f5e86968f76a5ad2e4712ca4
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 14ac5aab1488c86949f44f712d80966719f60c4c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903337"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231436"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intime"></a>Kurz: Azure Active Directory integrace s InTime
 

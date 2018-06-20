@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 4fe78050-cb6d-4db9-96ec-58cc0779167f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 3a6818c65b461dd989b1516191b845811642608d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: fe96581428b8a41219a4aff46ecc0316d97884ae
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901829"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veracode"></a>Kurz: Azure Active Directory integrace s Veracode
 

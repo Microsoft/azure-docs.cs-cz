@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 34123629-4ad5-465c-a4c1-8299f857e720
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 072f62fc353c7b41fed96abec1c1b21729206ecf
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1cd97a9f5cf06be73c866e40744401a7bc4ce157
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901631"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215762"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timelive"></a>Kurz: Azure Active Directory integrace s TimeLive
 

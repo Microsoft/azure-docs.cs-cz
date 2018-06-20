@@ -3,30 +3,30 @@ title: Zásady uchování sestav Azure Active Directory | Microsoft Docs
 description: Zásady uchovávání informací na data sestavy ve vašem Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
 ms.service: active-directory
 ms.devlang: ''
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/10/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: fac160d2d5916097afcbb9825bb82a52789e4a89
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8edce7d1a633148cf361deec0c3d09ef4c16ac9b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589191"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225174"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Zásady uchování sestav Azure Active Directory
 
 
-Toto téma poskytuje odpovědi na nejčastější dotazy ve spojení s uchovávání dat pro sestavy jinou aktivitu v Azure Active Directory. 
+Tento článek obsahuje odpovědi na nejčastější dotazy ve spojení s uchovávání dat pro sestavy jinou aktivitu v Azure Active Directory. 
 
 ### <a name="q-how-can-you-get-the-collection-of-activity-data-started"></a>Otázka: jak můžete získat shromažďování dat aktivity spustit?
 
@@ -34,7 +34,7 @@ Toto téma poskytuje odpovědi na nejčastější dotazy ve spojení s uchováv�
 
 | Edice Azure AD | Počáteční kolekce |
 | :--              | :--   |
-| Azure AD Premium P1 <br /> Azure AD Premium P2 | Při registraci pro předplatné |
+| Azure AD Premium P1 <br /> Azure AD Premium P2 | Když se zaregistrujete k předplatnému |
 | Azure AD Free | Při prvním spuštění [okno Azure Active Directory](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) nebo použít [reporting rozhraní API](https://aka.ms/aadreports)  |
 
 ---
@@ -42,8 +42,8 @@ Toto téma poskytuje odpovědi na nejčastější dotazy ve spojení s uchováv�
 
 **ODPOVĚĎ:**
 
-- **Okamžitě** – Pokud již pracujete s sestav na portálu Azure
-- **V rámci 2 hodiny** – Pokud jste nezapnuli generování sestav na portálu Azure
+- **Okamžitě** – Pokud již pracujete s sestav na portálu Azure.
+- **V rámci 2 hodiny** – Pokud jste nezapnuli vytváření sestav v portálu Azure.
 
 ---
 

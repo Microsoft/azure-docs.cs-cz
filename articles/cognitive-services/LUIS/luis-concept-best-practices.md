@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 729f510de59fe27761389fb1f6edb4025021565a
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: f68e05ba40827375fbd76448e38916c682075228
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35346003"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264005"
 ---
 # <a name="best-practices"></a>Osvědčené postupy
 K sestavení aplikace LEOŠ používáte aplikaci procesu vytváření. 
@@ -114,4 +114,5 @@ Přidejte 10 nebo 15 utterances před školení a publikování. Které umožňu
 ## <a name="next-steps"></a>Další postup
 
 * Zjistěte, jak [plánování aplikace](plan-your-app.md) ve vaší aplikaci LEOŠ.
-[LEOŠ]: # Leoš. odkaz na regions.md luis webu
+
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

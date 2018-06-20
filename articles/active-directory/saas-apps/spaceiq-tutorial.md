@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 5b55ae29-491f-401f-9299-d3a6b64a1b99
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: d09d2105258caed1e2f156ecb81c591292014bec
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d69a0f801f1bf3fbd44514289dff4b9a95305ba4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901109"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227917"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>Kurz: Azure Active Directory integrace s SpaceIQ
 

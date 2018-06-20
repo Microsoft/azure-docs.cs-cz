@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 725f32fd-d0ad-49c7-b137-1cc246bf85d7
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 1eae9989c920c39ab68a2771df032b57495d0075
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: b077c5529f08151359a3344ed2f983323fb7e14a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899345"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218573"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-line-works"></a>Kurz: Azure Active Directory integrace s řádku FUNGUJE
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 81866167-b163-4695-8978-fd29a25dac7a
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: c284c6c4f642759fd31bf723007bd02dcfa91ae7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2062ba20b09e8e42fd094fbff628f5e76b5ea00f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901756"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225785"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Kurz: Azure Active Directory integrace s Riskware
 

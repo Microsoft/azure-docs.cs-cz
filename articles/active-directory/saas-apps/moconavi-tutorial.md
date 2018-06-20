@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: e1916224-e1c2-426f-b233-0a2518fa41db
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 032a674662fb2c55ee9a16b406418367ee7c797d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3467b823e6c91d34ebd48c7f8bc29558a79c59e5
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899166"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229542"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moconavi"></a>Kurz: Azure Active Directory integrace s moconavi
 

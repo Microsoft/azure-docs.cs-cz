@@ -7,18 +7,19 @@ author: jeevansd
 manager: femila
 ms.assetid: a8a09b25-dfa5-4c31-aea2-53bf1853b365
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 93e50c1804e9e28bffca0bc5eb8fc3e4c8be07fa
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e1219134b398219d653a87b18aa9ed582f84a33d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904067"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226267"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>Kurz: Azure Active Directory integrace s virtuálními počítači IQNavigator
 

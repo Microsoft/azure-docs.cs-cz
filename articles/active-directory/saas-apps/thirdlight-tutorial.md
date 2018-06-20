@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 168aae9a-54ee-4c2b-ab12-650a2c62b901
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 960406b1a2d1610de9e78ba55814cf1d15bb3f66
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 42be83af52298e1fc6b01793b7692a3fcd7d6250
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35897318"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218250"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Kurz: Azure Active Directory integrace s ThirdLight
 

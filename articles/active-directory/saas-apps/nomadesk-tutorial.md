@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: d261b776-b48e-45f0-9722-0297adefabb8
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: df1b8325eafa05fc3c8a32b231ff095a4942f0f5
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: a8168362ad068aabe44d36f413fd43bb85761ee3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898985"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226098"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadesk"></a>Kurz: Azure Active Directory integrace s Nomadesk
 

@@ -3,21 +3,22 @@ title: Přizpůsobení nastavení pro modul runtime integrace Azure SSIS | Micro
 description: Tento článek popisuje, jak k instalaci dalších součástí nebo změnit nastavení použít rozhraní vlastní instalace pro modul runtime integrace Azure SSIS
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
-ms.author: douglasl
-ms.openlocfilehash: 7b6cae9eaa4674e60edfae13c571d89153c9b498
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+author: swinarko
+ms.author: sawinark
+ms.reviewer: douglasl
+manager: craigg
+ms.openlocfilehash: d724de8d5252318b37ae539ba2513faaf2313a76
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298388"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268126"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro modul runtime integrace Azure SSIS
 
@@ -30,13 +31,13 @@ Můžete nainstalovat součásti volné nebo bez licence i placené nebo licenco
 
 ## <a name="current-limitations"></a>Aktuální omezení
 
--   Pokud chcete použít `gacutil.exe` instalace sestavení v globální mezipaměti sestavení (GAC), budete muset poskytnout ho jako součást vašeho vlastní nastavení, nebo použijte kopie poskytnuté v kontejneru verzi Public Preview.
+-   Pokud chcete použít `gacutil.exe` instalace sestavení v globální mezipaměti sestavení (GAC), je třeba zadat `gacutil.exe` jako součást vlastní instalaci nebo použití kopie poskytnuté v kontejneru verzi Public Preview.
+
+-   Pokud chcete odkazovat na podsložku ve vašem skriptu, `msiexec.exe` nepodporuje `.\` zápis tak, aby odkazovaly do kořenové složky. Použijte příkaz jako `msiexec /i "MySubfolder\MyInstallerx64.msi" ...` místo `msiexec /i ".\MySubfolder\MyInstallerx64.msi" ...`.
 
 -   Pokud potřebujete připojení k vaší IR Azure SSIS s vlastní instalace k virtuální síti, podporuje se jenom virtuální síť Azure Resource Manager. Klasické virtuální sítě není podporován.
 
 -   Sdílená složka pro správu není aktuálně podporována u na infračerveného signálu Azure SSIS.
-
--   Pokud chcete namapovat sdílené složky na jednotku ve vašem vlastní nastavení `net use` příkaz není aktuálně podporován. V důsledku toho nelze použít příkaz jako `net use d: \\fileshareserver\sharename`. Místo toho použijte `cmdkey` příkaz – například `cmdkey /add:fileshareserver /user:yyy /pass:zzz` – Pokud chcete přístup `\\fileshareserver\folder` přímo ve vašich balíčcích.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -58,8 +59,7 @@ Chcete-li přizpůsobit vaší Azure SSIS reakcí na Incidenty, potřebujete ná
 
     1.  Musíte mít soubor skriptu s názvem `main.cmd`, což je vstupní bod vaše vlastní nastavení.
 
-    2.  Pokud chcete další protokolů generovaných v jiných nástrojích (například `msiexec.exe`) k odeslání do vašeho kontejneru, zadejte proměnnou prostředí předdefinované `CUSTOM_SETUP_SCRIPT_LOG_DIR` jako složka protokolu ve skriptech (například `msiexec /i xxx.msi /quiet
-        /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`).
+    2.  Pokud chcete další protokolů generovaných v jiných nástrojích (například `msiexec.exe`) k odeslání do vašeho kontejneru, zadejte proměnnou prostředí předdefinované `CUSTOM_SETUP_SCRIPT_LOG_DIR` jako složka protokolu ve skriptech (například `msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`).
 
 4.  Stáhnout, nainstalovat a spustit [Azure Storage Explorer](http://storageexplorer.com/).
 

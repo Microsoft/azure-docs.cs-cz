@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 4b663047-7f88-443b-97bd-54224b232815
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 6f7fe57360c4655d9b42ff8bdd09bf2bbf3bd5ba
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 9c43e887d66b1a0bec096810bcd899d907499c78
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899094"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230331"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>Kurz: Integrace Azure Active Directory pomocí jednotného přihlašování SAML JIRA společností Microsoft
 

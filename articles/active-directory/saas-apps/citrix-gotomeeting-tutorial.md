@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bcaf19f2-5809-4e1c-acbc-21a8d3498ccf
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: a4e7147d83e44286e81ecd0a902075aab4d0b3bb
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3573e846c5c7eea1f8c29ff4d7b2d1ab4683507d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899459"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>Kurz: Azure Active Directory integrace s GoToMeeting
 

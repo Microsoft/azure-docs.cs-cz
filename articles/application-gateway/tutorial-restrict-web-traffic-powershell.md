@@ -11,16 +11,16 @@ ms.workload: infrastructure-services
 ms.date: 3/22/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: a3bd3e772c6c80bb86af7f6aac6a578e857a3f2d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 0ef9ad7705c240e1c06c80ba3b765fa7aad8c70a
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356269"
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34598840"
 ---
-# <a name="restrict-web-traffic-with-a-web-application-firewall-using-azure-powershell"></a>Omezení webového provozu Firewallem webových aplikací pomocí Azure PowerShellu
+# <a name="enable-web-application-firewall-using-azure-powershell"></a>Povolení firewallu webových aplikací pomocí Azure PowerShellu
 
-Pomocí [Firewallu webových aplikací](overview.md) (WAF) můžete omezit provoz brány [Application Gateway](waf-overview.md). WAF používá k ochraně aplikace pravidla [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Tato pravidla zahrnují ochranu před útoky, jako je injektáž SQL, skriptování mezi weby a krádeže relací. 
+K omezení provozu [aplikační brány](overview.md) můžete použít [Firewall webových aplikací](waf-overview.md) (WAF). WAF používá k ochraně aplikace pravidla [OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project). Tato pravidla zahrnují ochranu před útoky, jako je injektáž SQL, skriptování mezi weby a krádeže relací. 
 
 V tomto kurzu se naučíte:
 
@@ -31,6 +31,8 @@ V tomto kurzu se naučíte:
 > * Vytvořit účet úložiště a nakonfigurovat diagnostiku
 
 ![Příklad firewallu webových aplikací](./media/tutorial-restrict-web-traffic-powershell/scenario-waf.png)
+
+Pokud chcete, můžete tento kurz dokončit pomocí [rozhraní příkazového řádku Azure](tutorial-restrict-web-traffic-cli.md).
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 

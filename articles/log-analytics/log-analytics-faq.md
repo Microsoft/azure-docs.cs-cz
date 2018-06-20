@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 33998d72ae2a57ae5226c2ec7a1d5dbcebef155e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9d34c06461ea5f264f762494d93d76f1dc1bcb3e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637170"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221531"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 Tato FAQ Microsoft je seznam často kladené otázky týkající se analýzy protokolů v Microsoft Azure. Pokud máte další dotazy o analýzy protokolů, přejděte k [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte svoje otázky. Dotaz je dotaz, často, přidáme ji k tomuto článku tak, aby se nachází snadno a rychle.
@@ -75,18 +75,21 @@ Následující tabulka popisuje důvody, které shromažďování dat zastaví a
 
 ### <a name="q-how-can-i-be-notified-when-data-collection-stops"></a>OTÁZKY. Jak můžete se upozornění, když se shromažďování dat zastaví?
 
-Odpověď: pomocí kroků popsaných v [vytvořit pravidlo výstrahy](log-analytics-alerts-creating.md#create-an-alert-rule) oznámení o shromažďování dat zastaví.
+Odpověď: pomocí kroků popsaných v [vytvořit novou výstrahu protokolu](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) oznámení o shromažďování dat zastaví.
 
 Při vytváření výstrahy pro při shromažďování dat zastaví, nastavte:
-- **Název** k *zastavit shromažďování dat*
-- **Závažnost** na *Upozornění*.
-- **Vyhledávací dotaz** na `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`.
-- **Časový interval** k *30 minut*.
-- **Výstrahy frekvence** ke každému *deset* minut.
-- **Generovat upozornění na základě** na *Počet výsledků*.
-- **Počet výsledků** na *Větší než 0*.
 
-Tato výstraha se aktivují, když dotaz vrátí výsledky pouze v případě, že máte prezenčního signálu pro více než 15 minut.  Pomocí kroků popsaných v tématu o [přidání akcí k pravidlům upozornění](log-analytics-alerts-actions.md) nakonfigurujte pro pravidlo upozornění akci e-mailu, webhooku nebo runbooku.
+- **Definovat výstrahy podmínku** zadejte pracovní prostor analýzy protokolů jako cíl prostředků.
+- **Výstrahy kritéria** zadejte následující:
+   - **Název signálu** vyberte **hledání protokolů vlastní**.
+   - **Vyhledávací dotaz** na `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`.
+   - **Výstrahy logiku** je **na základě** *počet výsledků* a **podmínku** je *větší než* **prahová hodnota**  z *0*
+   - **Časové období** z *30* minut a **výstrahy frekvence** ke každému *10* minut
+- **Zadejte podrobnosti výstrahy** zadejte následující:
+   - **Název** k *zastavit shromažďování dat*
+   - **Závažnost** na *Upozornění*.
+
+Zadejte existující, nebo vytvořte novou [akce skupiny](../monitoring-and-diagnostics/monitoring-action-groups.md) tak, aby při protokolu výstrahy odpovídající kritériím, budete upozorněni, pokud máte prezenční signál pro více než 15 minut.
 
 ## <a name="configuration"></a>Konfigurace
 ### <a name="q-can-i-change-the-name-of-the-tableblob-container-used-to-read-from-azure-diagnostics-wad"></a>OTÁZKY. Můžete změnit název tabulky nebo objekt blob kontejneru použít ke čtení z Azure Diagnostics (WAD)?

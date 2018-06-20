@@ -1,19 +1,17 @@
 ---
 title: Opětovným hostováním aplikaci aplikační Contoso Linux služby podpory k Azure a MySQL v Azure | Microsoft Docs
 description: Zjistěte, jak Contoso opětovném hostování aplikace Linux místní migrací virtuálních počítačích Azure a MySQL v Azure.
-services: site-recovery
 author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/10/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 4367bf7cb02bb6a1e343dc3fb171be731e15c32b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 15a429c033cfd1598dd01b5c8cd2743c397dacdb
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300707"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225513"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Migrace Contoso: opětovným hostováním místní aplikace Linux na virtuálních počítačích Azure a MySQL v Azure
 

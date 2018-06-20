@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: fc947df1-f24e-43ae-9a34-518293583d69
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 91767eb4aa93d7bf59cc263e2f2390ab6e49070e
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d18d41caf7a7fb3a821c388e786b3a45d30f4810
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901727"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Kurz: Integrace Azure Active Directory pomocí jednotného přihlašování SAML pro Bitbucket podle řešení GmbH
 

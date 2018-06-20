@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 2c7d200b-9242-44a5-ac8a-ab3214a78e41
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 4acc2e8993095ab339b5644f695fb4a55b294152
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e5bf26423f1a118e5a65b771659cf7bba1c5acc4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899265"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222868"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gigya"></a>Kurz: Azure Active Directory integrace s Gigya
 

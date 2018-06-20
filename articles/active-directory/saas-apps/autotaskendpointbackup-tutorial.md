@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 9f55319e-895b-4130-8460-71713f25ed04
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: jeedes
-ms.openlocfilehash: ef68047542e8d1f9f8cc1f997e5ceca2dfa84cef
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 0cbdb297f7f92c247295f11df459fe682ccebf47
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35912783"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220563"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-autotask-endpoint-backup"></a>Kurz: Azure Active Directory integrace s Autotask koncového bodu zálohy
 

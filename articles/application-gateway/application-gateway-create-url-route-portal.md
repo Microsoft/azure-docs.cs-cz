@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 4ffaeedf125b6f74aeb88e22248040c6c3ef001c
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 3fcbcbe5d5f8dab956f40cde112f3536e1ae668c
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34356167"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263988"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Vytvoření služby application gateway s cesta pravidla založená na směrování pomocí portálu Azure
 
@@ -141,8 +141,8 @@ V tomto příkladu můžete vytvořit tři virtuální počítače, který se m�
 
 1. Klikněte na tlačítko **pravidla** a pak klikněte na **na základě cesty**.
 2. Zadejte *rule2* pro název.
-3. Zadejte *bitové kopie* pro název první cesty. Zadejte */images/** pro cestu. Vyberte **imagesBackendPool** pro fond back-end.
-4. Zadejte *Video* pro název druhé cesty. Zadejte */video/** pro cestu. Vyberte **videoBackendPool** pro fond back-end.
+3. Zadejte *bitové kopie* pro název první cesty. Zadejte */images/* \* pro cestu. Vyberte **imagesBackendPool** pro fond back-end.
+4. Zadejte *Video* pro název druhé cesty. Zadejte */video/* \* pro cestu. Vyberte **videoBackendPool** pro fond back-end.
 
     ![Vytvoření pravidla, na základě cesty](./media/application-gateway-create-url-route-portal/application-gateway-route-rule.png)
 

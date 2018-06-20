@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: c5208b0d-66a3-49ed-9aad-70d21f54aee0
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 2370d1bc0f2a2f0f9e5111cfb75ac1fb65f8e3d5
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 85c8f58fecf2a652db73a44650d26a3c9faf33e2
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899192"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223089"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobbadmin"></a>Kurz: Azure Active Directory integrace s Jobbadmin
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: f363c52093e0ae8314e07e750eb4362f71e9a4b1
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: b2561f4b1b5ef27f389114c85f0646b968f7765e
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826510"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36269557"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Pomocí spravovaného disky v šablonách Azure Resource Manageru
 
@@ -256,4 +256,4 @@ K vyhledání úplné informace o specifikacích REST API, přečtěte si [vytvo
 * Přejděte [přehled disky spravované Azure](../articles/virtual-machines/windows/managed-disks-overview.md) dokumentu další informace o spravovaných disky.
 * Zkontrolujte šablonu referenční dokumentaci pro prostředky virtuálního počítače navštivte stránky [odkaz na šablonu Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines) dokumentu.
 * Zkontrolujte šablonu referenční dokumentaci pro prostředky disku navštivte stránky [odkaz na šablonu Microsoft.Compute/disks](/azure/templates/microsoft.compute/disks) dokumentu.
-* Informace o tom, jak používat spravovaného disky v sady škálování virtuálního počítače Azure, najdete v článku [datových disků pomocí sady škálování](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md) dokumentu.
+* Informace o tom, jak používat spravovaného disky v sady škálování virtuálního počítače Azure, najdete v článku [datových disků pomocí sady škálování](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks) dokumentu.

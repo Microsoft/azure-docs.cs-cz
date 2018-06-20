@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d8fac770-bb57-4e1f-b50b-9ffeae239d07
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: jeedes
-ms.openlocfilehash: bd1f4ed050a772e54c0d09e36fc18d19f160e103
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2d22720e71788493d3663524f2b70783ba26b84d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899212"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218159"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>Kurz: Azure Active Directory integrace s Fluxx Labs
 

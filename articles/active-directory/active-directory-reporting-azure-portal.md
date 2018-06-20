@@ -3,25 +3,25 @@ title: Generování sestav v Azure Active Directory | Dokumentace Microsoftu
 description: Poskytuje obecný přehled generování sestav v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 01/15/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 816caf0e65520c1f6fede55b522681ae0a46f955
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 1bcd7f9e0a134173a8942b71259428a720a3d076
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588552"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222497"
 ---
 # <a name="azure-active-directory-reporting"></a>Generování sestav v Azure Active Directory
 
@@ -104,7 +104,7 @@ Pro přístup k sestavě aktivit přihlašování musí mít váš tenant přiř
 Kromě uživatelského rozhraní nabízí generování sestav v Azure Active Directory také [programový přístup](active-directory-reporting-api-getting-started-azure-portal.md) k datům sestav. Data z těchto sestav můžou být velmi užitečná pro vaše aplikace, jako jsou systémy SIEM nebo nástroje pro auditování a business intelligence. Rozhraní API pro generování sestav v Azure AD poskytují programový přístup k těmto datům prostřednictvím sady rozhraní API založených na REST. Tato rozhraní API můžete volat z nejrůznějších programovacích jazyků a nástrojů. 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud se chcete dozvědět více o různých typech sestav v Azure Active Directory, přečtěte si:
 

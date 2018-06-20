@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 40d034ff-7394-4713-923d-1f8f2ed8bf36
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: df9b783465f1bd32b501c8378c68eacc545692b2
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ee97eaf4624b1a34dbc66d1d4e8febab761b7b09
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901678"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boomi"></a>Kurz: Azure Active Directory integrace s Boomi
 

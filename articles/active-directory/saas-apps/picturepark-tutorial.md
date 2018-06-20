@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 31c21cd4-9c00-4cad-9538-a13996dc872f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: jeedes
-ms.openlocfilehash: cd2caca48992d5fa3bec64004047ecd0fc2b2bfa
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 0809d672f44be2771dcb149bfafe682a31f17139
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901792"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Kurz: Azure Active Directory integrace s Picturepark
 

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 853d08c9-27b1-48d4-b8e7-3705140eb67f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 955fbbe56f2a15531edc863b214b382b52027855
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: a63ef3b089ec80da6a75aaaf8a4bb2454fec6cf7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904012"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224177"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Kurz: Azure Active Directory integrace s HR2day podle Merces
 

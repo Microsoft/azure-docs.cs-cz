@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0e573b4973ea30b990043b54c5cdcf0805135a40
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d6f7c924491614190952ce620f33572307a22c22
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764651"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265431"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Správa instancí trvanlivý funkcí (Azure Functions)
 
@@ -98,6 +98,24 @@ public static async Task Run(
 {
     var status = await client.GetStatusAsync(instanceId);
     // do something based on the current status.
+}
+```
+## <a name="querying-all-instances"></a>Dotaz na všechny instance
+
+Můžete použít `GetStatusAsync` metoda dotazovat stavy všech instancí orchestration. Neberou žádné parametry, nebo můžete předat `CancellationToken` objektu v případě, že chcete ho zrušit. Metoda vrátí objekty za použití stejných vlastností, jako `GetStatusAsync` metoda s parametry, s výjimkou ho nevrací historie. 
+
+```csharp
+[FunctionName("GetAllStatus")]
+public static async Task Run(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
+    [OrchestrationClient] DurableOrchestrationClient client,
+    TraceWriter log)
+{
+    IList<DurableOrchestrationStatus> instances = await starter.GetStatusAsync(); // You can pass CancellationToken as a parameter.
+    foreach (var instance in instances)
+    {
+        log.Info(JsonConvert.SerializeObject(instance));
+    };
 }
 ```
 

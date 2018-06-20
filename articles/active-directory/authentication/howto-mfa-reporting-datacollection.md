@@ -10,12 +10,12 @@ ms.service: multi-factor-authentication
 ms.workload: identity
 ms.topic: article
 ms.date: 05/01/2018
-ms.openlocfilehash: d28bb4b8e171ef6189f81acc337088b3c5499ccf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2281a35d1616aa88b0c646fb96cb9f95c3272536
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654769"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264364"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Shromažďování dat uživatele služby Azure Multi-Factor Authentication
 
@@ -151,39 +151,39 @@ Z příkazového řádku serveru MFA, spusťte následující příkaz Změna ce
 
 ## <a name="gather-data-from-nps-extension"></a>Shromažďování dat ze serveru NPS rozšíření
 
-Použití [portál Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) vytvořte žádost na pro Export.
+Použití [portál Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvořte žádost na pro Export.
 
 - MFA informace je obsažena v exportu, což může trvat hodiny nebo i dny.
 - Výskyty uživatelské jméno v AzureMfa/ověřovacího/AuthNOptCh, AzureMfa/AuthZ/AuthZAdminCh a protokoly událostí AzureMfa/AuthZ/AuthZOptCh jsou považovány za provozu a hromadnými na informacích uvedených v exportu.
 
 ## <a name="delete-data-from-nps-extension"></a>Odstranění dat z rozšíření serveru NPS
 
-Použití [portál Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) vytvořte žádost pro účet zavřít odstraníte všechny vícefaktorového ověřování cloudové služby informace shromážděné pro tohoto uživatele.
+Použití [portál Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvořte žádost pro účet zavřít odstraníte všechny vícefaktorového ověřování cloudové služby informace shromážděné pro tohoto uživatele.
 
 - Může trvat až 30 dnů dat na plně odeberou.
 
 ## <a name="gather-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Shromažďování dat ze systému Windows Server 2016 Azure MFA adaptér služby AD FS
 
-Použití [portál Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) vytvořte žádost na pro Export. 
+Použití [portál Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvořte žádost na pro Export. 
 
 - MFA informace je obsažena v exportu, což může trvat hodiny nebo i dny.
 - Výskyty uživatelské jméno v protokolech událostí AD FS trasování/Debug (Pokud je povoleno) se považují za provozu a hromadnými na informacích uvedených v exportu.
 
 ## <a name="delete-data-from-windows-server-2016-azure-mfa-ad-fs-adapter"></a>Odstranění dat z Windows serveru 2016 Azure MFA adaptér služby AD FS
 
-Použití [portál Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) vytvořte žádost pro účet zavřít odstraníte všechny vícefaktorového ověřování cloudové služby informace shromážděné pro tohoto uživatele.
+Použití [portál Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvořte žádost pro účet zavřít odstraníte všechny vícefaktorového ověřování cloudové služby informace shromážděné pro tohoto uživatele.
 
 - Může trvat až 30 dnů dat na plně odeberou.
 
 ## <a name="gather-data-for-azure-mfa"></a>Shromažďování dat pro Azure MFA
 
-Použití [portál Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) vytvořte žádost na pro Export.
+Použití [portál Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvořte žádost na pro Export.
 
 - MFA informace je obsažena v exportu, což může trvat hodiny nebo i dny.
 
 ## <a name="delete-data-for-azure-mfa"></a>Odstranit Data pro Azure MFA
 
-Použití [portál Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview.) vytvořte žádost pro účet zavřít odstraníte všechny vícefaktorového ověřování cloudové služby informace shromážděné pro tohoto uživatele.
+Použití [portál Microsoft o ochraně osobních údajů](https://portal.azure.com/#blade/Microsoft_Azure_Policy/UserPrivacyMenuBlade/Overview) vytvořte žádost pro účet zavřít odstraníte všechny vícefaktorového ověřování cloudové služby informace shromážděné pro tohoto uživatele.
 
 - Může trvat až 30 dnů dat na plně odeberou.
 

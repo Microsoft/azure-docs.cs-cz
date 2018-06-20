@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: dab8debd-3b7b-4656-9bf0-1963ad8fce05
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: jeedes
-ms.openlocfilehash: c9e54481557010d2064fa44a6dc5e9811e2dce2c
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 60deb440d339e5b7d1fb7fe9d9511a3a3331c17c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903319"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230280"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-manager"></a>Kurz: Azure Active Directory integrace s dovednosti Manager
 

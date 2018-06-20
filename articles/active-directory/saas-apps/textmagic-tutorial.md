@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 3e5b49d2-7096-46bc-a9ce-90e09177ba28
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: jeedes
-ms.openlocfilehash: ee86fa0f15b6324a3ef2c3c6f186a142fd6379f6
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: b7ef6d04fc775f4582d47db1d728bc1325f71184
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901610"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224144"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-textmagic"></a>Kurz: Azure Active Directory integrace s TextMagic
 

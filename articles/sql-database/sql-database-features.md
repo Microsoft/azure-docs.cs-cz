@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 09595c19622eaabe0838c52bc1226fcdfe60d4ba
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: d49cd0096eb173c0f483a7b7ab1f3def745f56a6
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248805"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231606"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database a SQL Server 
 
@@ -39,7 +39,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [Automatické zálohování](sql-database-automated-backups.md) | Ano | Ano |
 | [Automatické ladění (vynucení plánu)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ano](sql-database-automatic-tuning.md)| [Ano](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
 | [Automatické ladění (indexy)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [Ano](sql-database-automatic-tuning.md)| Ne |
-| [Soubor souboru BACPAC (exportovat)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ano – najdete v části [export databáze SQL](sql-database-export.md) | Ano |
+| [Soubor souboru BACPAC (exportovat)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | Ano – najdete v části [export databáze SQL](sql-database-export.md) | Ne |
 | [Soubor souboru BACPAC (Importovat)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | Ano – najdete v části [import databáze SQL](sql-database-import.md) | Ne |
 | [Příkaz BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | Ne, najdete v článku pouze spouštěná systému automatické zálohování - [automatizované zálohování](sql-database-automated-backups.md) | Spouštěná systému zálohy pro automatické a uživatel inicioval pouze kopie zálohy – viz [zálohování rozdíly](sql-database-managed-instance-transact-sql-information.md#backup) |
 | [Integrované funkce](https://docs.microsoft.com/sql/t-sql/functions/functions) | Většina - jednotlivých funkcí najdete v části | Ano – najdete v části [uložené procedury, funkce, aktivuje rozdíly](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |

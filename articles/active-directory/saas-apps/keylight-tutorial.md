@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 234a32f1-9f56-4650-9e31-7b38ad734b1a
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: fea5ebe8e1afd9abaa52a2d5a32603d78e40bfc9
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d7947a2a294b2232a69a403a765cc2cc29c43405
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901017"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218312"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>Kurz: Azure Active Directory integrace s LockPath Keylight
 

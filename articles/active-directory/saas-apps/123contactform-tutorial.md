@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 5211910a-ab96-4709-959a-524c4d57c43e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: ca54492fd1fa68a4b81eaea431375ff58623e68b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: fdcbf8efa9a8d77fba30c8cec3d8ee30506fe7d8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899464"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223224"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>Kurz: Azure Active Directory integrace s 123ContactForm
 

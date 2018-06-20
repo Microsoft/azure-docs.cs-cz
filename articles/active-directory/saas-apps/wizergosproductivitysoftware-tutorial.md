@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: acc04396-13c5-4c24-ab9a-30fbc9234ebd
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jeedes
-ms.openlocfilehash: c45e6d96edf067618fb2d7d434225b4609260efa
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7eeb843a44fde53e6146084055607fe1fd6fc57c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899138"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228413"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wizergos-productivity-software"></a>Kurz: Azure Active Directory integrace s Wizergos produktivitu softwaru
 

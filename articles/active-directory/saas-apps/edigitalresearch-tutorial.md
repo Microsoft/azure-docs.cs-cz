@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: c6b66ea0-16ba-45b4-b550-e81c56262b1f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: f838e26fcef6a72b87084212b28b8467a6b64e46
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 151a702f4f76f0b95f9c0e69cb3c77e3b5073036
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903205"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225911"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>Kurz: Azure Active Directory integrace s eDigitalResearch
 

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 3788b28c-49aa-4208-9acd-630362008e89
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: jeedes
-ms.openlocfilehash: d2d1a0c7bb132d8833699af38174c51a67ac3557
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 8d63bd83f35f6659ce0da6db2468e8e1676133d8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901010"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226166"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mercer-benefitscentral-mbc"></a>Kurz: Azure Active Directory integrace s BenefitsCentral Mercer (MBC)
 

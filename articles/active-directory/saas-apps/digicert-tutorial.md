@@ -7,18 +7,19 @@ author: jeevansd
 manager: femila
 ms.assetid: 646f3129-aa67-4875-9073-1d0b6a3173d9
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 92a2abf4be8aa9222dd9409dd41a910f139bb03c
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 9c8ecac3adc3ac06eed5c87c3e1c92c91ed67d70
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901753"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227155"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-digicert"></a>Kurz: Azure Active Directory integrace s DigiCert
 

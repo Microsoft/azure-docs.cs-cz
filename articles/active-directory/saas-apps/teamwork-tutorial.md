@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: bd4413c2-0d7c-41a7-aba4-b7a7a28c9448
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 2e5dade81571c5a8571e3d9922fe7b5706829f35
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 6cb1e569981f58325bad9b982c97310a81487960
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904065"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215286"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>Kurz: Azure Active Directory integrace s Teamwork.com
 

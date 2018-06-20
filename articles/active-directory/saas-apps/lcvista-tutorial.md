@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 8db80d6e-3275-419f-aa39-6115a7bc9800
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: d3ee3b11e32c308e22e08f1c9d954747fc3569fe
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1a82718b17c623a59b0ea03297f47d54ff49eced
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35912781"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225948"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>Kurz: Azure Active Directory integrace s LCVista
 

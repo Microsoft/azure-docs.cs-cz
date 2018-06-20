@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 4601c17d-ad93-4865-8885-b378c4bbe82b
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: f7feb4a3e8242acf5da316b584099ad9fefda686
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 374c4cb970c12ce9cd015f503b70e19fcfbe294b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903208"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228233"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-condeco"></a>Kurz: Azure Active Directory integrace s Condeco
 

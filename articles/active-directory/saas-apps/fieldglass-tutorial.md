@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 2510195f-d5b1-4684-b3da-283fb8619df2
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 5becf5aea7921277c9116de61a6e6907268dae68
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 5e7baee3c378d812717be0659cd407b3534fe0b2
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913486"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222686"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fieldglass"></a>Kurz: Azure Active Directory integrace s Fieldglass
 

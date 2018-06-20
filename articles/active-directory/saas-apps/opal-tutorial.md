@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 434fc204-e9f9-4678-ad5f-054d621bb2f9
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 6d2090bbb16001bf5522d3ee36efc9e44a5eaf84
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1f33d6338e00e6041c7b63776882c56566920990
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898989"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214395"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opal"></a>Kurz: Azure Active Directory integrace s Opal
 

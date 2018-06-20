@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 88270b6d-2571-434a-b139-b6ccc3a2b19f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: fb498e5cf2ffa8de8943de45b40b2fd291267793
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7d70a04535c769bc2fa754887d79f474bc4ced0c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898971"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214116"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Kurz: Azure Active Directory integrace s popředí
 

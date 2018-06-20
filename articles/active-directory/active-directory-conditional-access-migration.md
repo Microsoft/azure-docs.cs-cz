@@ -1,5 +1,5 @@
 ---
-title: Migraci na portálu Azure classic zásad | Microsoft Docs
+title: Co je migrace zásad podmíněného přístupu Azure Active Directory? | Dokumenty Microsoft
 description: Zjistěte, co potřebujete vědět o migraci na portálu Azure classic zásad.
 services: active-directory
 keywords: podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: b6285381833526cdbdd7c1392894458a47c1cf34
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4a9b3df66567c4170ba861d3e597261e37271bf1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723724"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232286"
 ---
-# <a name="migrate-classic-policies-in-the-azure-portal"></a>Migrace na portálu Azure classic zásady 
+# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Co je migrace zásad podmíněného přístupu Azure Active Directory? 
 
 
 [Podmíněný přístup](active-directory-conditional-access-azure-portal.md) je funkce služby Azure Active directory (Azure AD), jak vám umožní řídit oprávnění uživatelům přístup cloudových aplikací. Účelem je pořád stejné, má verzi na nový portál Azure zavedla významná vylepšení na tom, jak podmíněný přístup funguje.
@@ -85,11 +85,11 @@ Pomocí podmíněného přístupu na portálu Azure můžete spravovat všechny 
 
 Přečtěte si:
 
-- [Podmíněný přístup v Azure Active Directory](active-directory-conditional-access-azure-portal.md) Další informace o základních koncepcích a technologiím.
+- [Co je podmíněného přístupu v Azure Active Directory](active-directory-conditional-access-azure-portal.md) Další informace o základních koncepcích a technologiím.
 
 - [Osvědčené postupy pro podmíněný přístup v Azure Active Directory](active-directory-conditional-access-best-practices.md) získat některé pokyny k nasazení podmíněného přístupu ve vaší organizaci.
 
-- [Začínáme s podmíněným přístupem v Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md) Seznamte se s uživatelského rozhraní na portálu Azure.
+- [Vícefaktorové ověřování vyžadovat pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](active-directory-conditional-access-app-based-mfa.md) Seznamte se s uživatelského rozhraní na portálu Azure.
 
 
  
@@ -170,6 +170,6 @@ V nové zásady, budete muset vybrat možnost [platformy zařízení](active-dir
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud chcete vědět, jak konfigurovat zásadu podmíněného přístupu, najdete v článku [Začínáme s podmíněným přístupem v Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md).
+- Pokud chcete vědět, jak konfigurovat zásadu podmíněného přístupu, najdete v článku [GRequire MFA pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
 
 - Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](active-directory-conditional-access-best-practices.md). 

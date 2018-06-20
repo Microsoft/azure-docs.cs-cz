@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 81c50614-f49b-4bbc-97d5-3cf77154305f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 2f69e62c5af61d98bf389482a94be187247880ff
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ef80f7fab21e2b43d9b6b8da80d10d4d47a63dd3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898974"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214946"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-admin-console"></a>Kurz: Azure Active Directory integrace s Mimecast konzoly pro správu
 

@@ -3,17 +3,16 @@ title: Vyhodnocení místní úlohy pro migraci Contoso do Azure | Microsoft Doc
 description: Zjistěte, jak Contoso vyhodnocuje své místní počítače pro migraci do Azure s Azure migrace a migrace databáze
 services: site-recovery
 author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 8568668032a97e574a85758080818311839a9caa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fb987c95afc0f77386f4f78c44f3c6825f86ee43
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301129"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232329"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Migrace Contoso: vyhodnocení místní úlohy pro migraci na Azure
 
@@ -23,15 +22,15 @@ Tento dokument je třetí v řadě článků, které dokumentů, jak fiktivní s
 
 **Článek** | **Podrobnosti** | **Stav**
 --- | --- | ---
-Článek 1: Přehled | Poskytuje přehled strategie migrace společnosti Contoso, řady článku a ukázkových aplikací, které používáme. | K dispozici.
-Článek 2: Nasazení infrastruktury Azure | Popisuje, jak Contoso připraví jeho místní a infrastrukturu Azure pro migraci. Stejnou infrastrukturu se používá pro všechny scénáře migrace Contoso. | K dispozici.
-Článek 3: Vyhodnocení místních prostředků (v tomto článku) | Ukazuje, jak Contoso spouští posouzení své místní aplikace SmartHotel dvouvrstvá běžící ve VMware. Jejich vyhodnocení aplikace virtuálních počítačů s [Azure migrovat](migrate-overview.md) služby a aplikace databáze systému SQL Server s [Azure databáze migrace pomocníka](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | K dispozici.
-Článek 4: Refaktorovat (navýšení a shift) na virtuálních počítačích Azure a spravovat instanci SQL | Ukazuje, jak Contoso migruje SmartHotel aplikace do Azure. Jejich migraci virtuálních počítačů front-endu aplikace pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)a databáze aplikace pomocí [migrace databáze Azure](https://docs.microsoft.com/azure/dms/dms-overview) služby migrovat do spravované Instance SQL. | K dispozici.
-Článek 5: Refaktorovat (navýšení a shift) k virtuálním počítačům Azure | Ukazuje, jak Contoso migrovat své aplikace SmartHotel virtuální počítače pouze pomocí Site Recovery.
-Článek 6: Refaktorovat (navýšení a shift) na virtuálních počítačích Azure a skupin dostupnosti SQL Server | Ukazuje, jak Contoso migruje SmartHotel aplikace. Site Recovery používají k migraci aplikace virtuální počítače a migraci databáze službu, kterou chcete migrovat databázi aplikace do skupiny dostupnosti SQL Server. | K dispozici.
-Článek 7: Refaktorovat (navýšení a shift) na virtuálních počítačích Azure a MySQL serveru Azure | Ukazuje, jak Contoso migruje SmartHotel aplikace virtuálních počítačů pomocí Site Recovery a MySQL Workbench migrace (zálohování a obnovení) do instance serveru MySQL Azure. | K dispozici.
+[Článek 1: Přehled](contoso-migration-overview.md) | Poskytuje přehled strategie migrace společnosti Contoso, řady článku a ukázkových aplikací, které používáme. | K dispozici.
+[Článek 2: Nasazení infrastruktury Azure](contoso-migration-infrastructure.md) | Popisuje, jak Contoso připraví jeho místní a infrastrukturu Azure pro migraci. Stejnou infrastrukturu se používá pro všechny scénáře migrace Contoso. | K dispozici.
+Článek 3: Vyhodnocení místních prostředků (v tomto článku)  | Ukazuje, jak Contoso spouští posouzení své místní aplikace SmartHotel dvouvrstvá běžící ve VMware. Jejich vyhodnocení aplikace virtuálních počítačů s [Azure migrovat](migrate-overview.md) služby a aplikace databáze systému SQL Server s [Azure databáze migrace pomocníka](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017). | K dispozici.
+[Článek 4: Metody opětovného hostování virtuální počítače Azure a spravované Instance SQL](contoso-migration-rehost-vm-sql-managed-instance.md) | Ukazuje, jak Contoso migruje SmartHotel aplikace do Azure. Jejich migraci virtuálních počítačů front-endu aplikace pomocí [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)a databáze aplikace pomocí [migrace databáze Azure](https://docs.microsoft.com/azure/dms/dms-overview) služby migrovat do spravované Instance SQL. | K dispozici.
+[Článek 5: Pro virtuální počítače Azure opětovným hostováním](contoso-migration-rehost-vm.md) | Ukazuje, jak Contoso migrovat své aplikace SmartHotel virtuální počítače pouze pomocí Site Recovery.
+[Článek 6: Opětovným hostováním do Azure virtuálních počítačů a skupin dostupnosti SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Ukazuje, jak Contoso migruje SmartHotel aplikace. Site Recovery používají k migraci aplikace virtuální počítače a migraci databáze službu, kterou chcete migrovat databázi aplikace do skupiny dostupnosti SQL Server. | K dispozici.
+[Článek 7: Opětovným hostováním Linux aplikace pro virtuální počítače Azure](contoso-migration-rehost-linux-vm.md) | Ukazuje, jak Contoso migruje jejich osService Linux aplikace pomocí Azure Site Recovery.
+[Článek 8: Opětovným hostováním Linux aplikace pro virtuální počítače Azure a Azure MySQL Server](contoso-migration-rehost-linux-vm-mysql.md) | Ukazuje, jak Contoso migruje aplikace osService Linux, pomocí Site Recovery pro migraci virtuálních počítačů a MySQL Workbench migrace (do instance serveru MySQL Azure. | K dispozici.
 
-Pokud chcete použít ukázková aplikace používá v tomto článku, je dodáván jako s otevřeným zdrojem a si můžete stáhnout z [githubu](https://github.com/Microsoft/SmartHotel360).
 
 ## <a name="overview"></a>Přehled
 
@@ -41,7 +40,7 @@ Pokud chcete získat jejich wet nohou a lépe pochopit související se situací
 
 **Název aplikace** | **Platforma** | **Aplikace úrovně** | **Podrobnosti**
 --- | --- | --- | ---
-SmartHotel<br/><br/> Spravuje požadavky cesta Contoso | V systému Windows s databází systému SQL Server | Dvojúrovňová aplikace pomocí webu ASP.NET front-endu systémem jeden virtuální počítač (WEBVM) a SQL Server běžící na jiný virtuální počítač (SQLVM) | Virtuální počítače jsou VMware, spuštěná na hostiteli ESXi spravuje vCenter server.<br/><br/> Ukázková aplikace si můžete stáhnout z [githubu](https://github.com/Microsoft/SmartHotel360).
+SmartHotel<br/><br/> Spravuje požadavky cesta Contoso | V systému Windows s databází systému SQL Server | Dvojúrovňová aplikace pomocí webu ASP.NET front-endu systémem jeden virtuální počítač (WEBVM) a SQL Server běžící na jiný virtuální počítač (SQLVM) | Virtuální počítače jsou VMware, spuštěná na hostiteli ESXi spravuje vCenter server.<br/><br/> Ukázková aplikace si můžete stáhnout z [Githubu](https://github.com/Microsoft/SmartHotel360).
 OSTicket<br/><br/> Aplikace contoso služby podpory | Systémem Linux nebo Apache s MySQL PHP (svítilna). | Dvojúrovňová aplikaci s front-endu webu PHP na jeden virtuální počítač (OSTICKETWEB) a databáze MySQL, spuštěná na jiný virtuální počítač (OSTICKETMYSQL) | Aplikace se používá aplikace služby zákazníka ke sledování problémů pro interní zaměstnance a externí zákazníky.<br/><br/> Ukázková aplikace si můžete stáhnout z [Githubu](https://github.com/osTicket/osTicket).
 
 ## <a name="current-architecture"></a>Aktuální architektura
@@ -545,7 +544,7 @@ Toto zobrazení informuje o celkových nákladech na výpočetní kapacitu a úl
 - Po dokončení hodnocení Contoso zachová zařízení migrace Azure pro budoucí hodnocení.
 - Vypněte virtuální počítač VMware. Jejich budete spusťte ji znovu při vyhodnocují dalších virtuálních počítačů.
 - V Azure se budete pokračovat v projektu Contoso migrace.  Je aktuálně nasazená ve skupině prostředků ContosoFailoverRG nám Azure oblasti Východ.
--  Kolekce virtuálních počítačů má 180denní zkušební licence. Pokud tento limit vyprší jejich budete muset stáhnout a nastavit kolekce znovu.
+-  Kolekce virtuálních počítačů má 180denní zkušební licence. Pokud tento limit vyprší, se budete muset stáhnout a nastavit kolekce znovu.
 
 
 ## <a name="conclusion"></a>Závěr

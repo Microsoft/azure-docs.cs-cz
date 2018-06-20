@@ -10,13 +10,13 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 04/22/2018
-ms.openlocfilehash: b3fe97343d844eb5c030cf0aaa9da2a6f54a2472
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 06/19/2018
+ms.openlocfilehash: 3dc449724e405f83ce976b9f8b01a89c25d693fe
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168203"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221246"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Přehled požadavků na používání služby Azure databáze migrace
 Existuje několik předpokladů, vyžaduje se pro zajištění, že služba migrace databáze Azure běží bez problémů při provádění migrace databáze. Některé požadované součásti aplikaci ve všech scénářích (cílový Zdroj páry) podporována službou, zatímco jiné požadavky, které jsou jedinečné pro konkrétní scénář.
@@ -63,4 +63,4 @@ Při použití služby Azure Service migrace databáze k systému SQL Server do 
    > Úplný seznam požadovaných součástí pro používání služby Azure databáze migrace k provedení migrace ze systému SQL Server na instanci spravované databáze Azure SQL, najdete v části kurzu [migrace systému SQL Server na instanci spravované databáze Azure SQL ](https://aka.ms/migratetomiusingdms).
 
 ## <a name="next-steps"></a>Další postup
-Přehled služby Azure databáze migrace a místní dostupnosti během verzi Public Preview, najdete v článku [co je Azure databáze migrace služby Preview](dms-overview.md). 
+Přehled služby Azure databáze migrace a místní dostupnosti, najdete v článku [co je služba Azure databáze migrace](dms-overview.md). 

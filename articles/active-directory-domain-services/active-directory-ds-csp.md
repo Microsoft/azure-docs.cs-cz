@@ -8,19 +8,19 @@ manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 56ccb219-11b2-4e43-9f07-5a76e3cd8da8
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: maheshu
-ms.openlocfilehash: f8a6e73420f1b53b8c253842001e8227e48e7d4a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 362d7226434733ffeaa5be6f988afa4016a7c827
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589521"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213868"
 ---
 # <a name="azure-active-directory-ad-domain-services-for-azure-cloud-solution-providers-csp"></a>Doména služby Azure Active Directory (AD) pro poskytovatelů Azure Cloud Solution Providers (CSP)
 Tento článek vysvětluje, jak můžete použít Azure AD Domain Services v předplatné Azure CSP.

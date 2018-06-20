@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 73c970e1-f1ba-420b-b225-414fdf93b140
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: d73b3da52c7f6a8740cf740db886b5def57d6d85
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: b4a247c53277a26cb704b87e57e019b63967d8cf
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903202"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222742"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-synergi"></a>Kurz: Azure Active Directory integrace s Synergi
 

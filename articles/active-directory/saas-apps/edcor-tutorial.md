@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5b06f2d8-9cd7-498d-bdd6-88570a0a0a15
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: jeedes
-ms.openlocfilehash: e8e58ec37a8317dbebd99bff5dc0d3403c3d6196
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 43e4cb7bf14da604620d353d7420673ea830857e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899022"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edcor"></a>Kurz: Azure Active Directory integrace s Edcor
 

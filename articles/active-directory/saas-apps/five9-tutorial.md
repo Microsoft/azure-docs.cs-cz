@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 88dc82ab-be0b-4017-8335-c47d00775d7b
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 9313c6879496b0cb5383ef505e295ae572ec908f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1698a1fc6f9acc2815ae982e090651301d0a8bc5
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899048"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220603"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Kurz: Azure Active Directory integrace s Five9 Plus adaptér (CTI, obraťte se na centrum agentů)
 

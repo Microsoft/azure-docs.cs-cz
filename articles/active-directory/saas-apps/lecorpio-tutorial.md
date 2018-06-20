@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2017
 ms.author: jeedes
-ms.openlocfilehash: c98684fea60d762768d3dcaea6bd5d01af7ca76a
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3db0a4013c24c8e826eae50d8e9e09b999df9aa4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901769"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221123"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lecorpio"></a>Kurz: Azure Active Directory integrace s Lecorpio
 

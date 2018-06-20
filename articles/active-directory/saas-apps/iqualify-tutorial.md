@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 8a3caaff-dd8d-4afd-badf-a0fd60db3d2c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 2a49005ed72c4cb3699301aea1c72ba7a22103f7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 166dfa8c5b3456de59055e5f62a566064540db31
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904021"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225020"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Kurz: Azure Active Directory integrace s iQualify pro správu vzdělávacího procesu
 

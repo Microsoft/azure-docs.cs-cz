@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 0b6846a68806354a58516fcbc87913815af87343
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: eaf490979167ea5cbfe5846e62444526310452f8
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29958737"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36269540"
 ---
 Některé databáze úlohy, jako je SQL Server nebo Oracle vyžadují velkého množství paměti, úložiště a vstupně-výstupní šířky pásma, ale není počet vysoké jader. Řadu úloh databáze nejsou náročná na prostředky procesoru. Azure nabízí určité velikosti virtuálních počítačů, kde můžete omezit počet virtuálních procesorů virtuálních počítačů k snížit náklady na licencování softwaru při zachování stejné paměť, úložiště a vstupně-výstupní šířky pásma.
 
@@ -21,22 +21,28 @@ Může být omezen počet virtuálních procesorů na polovina nebo jeden čtvrt
 
 Například aktuální velikost virtuálního počítače Standard_GS5 se dodává s 32 Vcpu 448 GB paměti RAM, 64 disků (až 256 TB) a 80 000 IOPs, nebo 2 GB/s šířky pásma vstupně-výstupní operace. Nový virtuální počítač velikosti Standard_GS5 16 a Standard_GS5-8 dodává s 16 a 8 active Vcpu, při zachování zbytek specifikace Standard_GS5 paměti, úložiště a vstupně-výstupní šířky pásma.
 
-Licencování účtovat pro SQL Server nebo Oracle jsou omezené na počet virtuálních procesorů na nové, a další produkty by měly být účtovány poplatky podle počtu nových virtuálních procesorů. Výsledkem zvýšení 75 % na 50 % v poměru specifikace virtuálních počítačů do active Vcpu (fakturovatelný). Tyto nové velikosti virtuálních počítačů, které jsou dostupné jenom v Azure, povolení úlohy tak, aby nabízel vyšší využití procesoru za zlomek licencování (za jádra) náklady. V tuto chvíli na výpočetní náklady, což zahrnuje licencování operačního systému, zůstane stejný jeden jako původní velikost. Další informace najdete v tématu [velikostí virtuálních počítačů Azure pro další úlohy nákladově efektivní databáze](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
+Licencování účtovat pro SQL Server nebo Oracle jsou omezené na počet virtuálních procesorů na nové, a další produkty by měly být účtovány poplatky podle počtu nových virtuálních procesorů. Výsledkem zvýšení 75 % na 50 % v poměru specifikace virtuálních počítačů do active Vcpu (fakturovatelný). Tyto nové velikosti virtuálních počítačů, které jsou dostupné jenom v Azure, umožňují úlohám zajistit vyšší využití procesoru za zlomek ceny ve srovnání s náklady za licence na jádro. V tuto chvíli na výpočetní náklady, což zahrnuje licencování operačního systému, zůstane stejný jeden jako původní velikost. Další informace najdete v tématu [velikostí virtuálních počítačů Azure pro další úlohy nákladově efektivní databáze](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
 | Název                | Virtuální procesory | Specifikace           |
 |---------------------|------|-----------------|
-| Standard_M64-32ms   | 32   | Stejné jako M64ms   |
+| 2 Standard_M8 MS     | 2    | Stejné jako M8ms    |
+| Standard_M8 4ms     | 4    | Stejné jako M8ms    |
+| Standard_M16 4ms    | 4    | Stejné jako M16ms   |
+| Standard_M16 8ms    | 8    | Stejné jako M16ms   |
+| Standard_M32 8ms    | 8    | Stejné jako M32ms   |
+| Standard_M32 16ms   | 16   | Stejné jako M32ms   |
+| Standard_M64 32ms   | 32   | Stejné jako M64ms   |
 | Standard_M64 16ms   | 16   | Stejné jako M64ms   |
-| Standard_M128-64ms  | 64   | Stejné jako M128ms  |
-| Standard_M128-32ms  | 32   | Stejné jako M128ms  |
+| Standard_M128 64ms  | 64   | Stejné jako M128ms  |
+| Standard_M128 32ms  | 32   | Stejné jako M128ms  |
 | Standard_E4 2s_v3   | 2    | Stejné jako E4s_v3  |
-| Standard_E8-4s_v3   | 4    | Stejné jako E8s_v3  |
-| Standard_E8-2s_v3   | 2    | Stejné jako E8s_v3  |
-| Standard_E16-8s_v3  | 8    | Stejné jako E16s_v3 |
-| Standard_E16-4s_v3  | 4    | Stejné jako E16s_v3 |
+| Standard_E8 4s_v3   | 4    | Stejné jako E8s_v3  |
+| Standard_E8 2s_v3   | 2    | Stejné jako E8s_v3  |
+| Standard_E16 8s_v3  | 8    | Stejné jako E16s_v3 |
+| Standard_E16 4s_v3  | 4    | Stejné jako E16s_v3 |
 | Standard_E32 16_v3  | 16   | Stejné jako E32s_v3 |
-| Standard_E32-8s_v3  | 8    | Stejné jako E32s_v3 |
+| Standard_E32 8s_v3  | 8    | Stejné jako E32s_v3 |
 | Standard_E64 32s_v3 | 32   | Stejné jako E64s_v3 |
 | Standard_E64 16s_v3 | 16   | Stejné jako E64s_v3 |
 | Standard_GS4-8      | 8    | Stejné jako GS4     |

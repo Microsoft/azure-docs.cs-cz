@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 799a08b9-1ce6-46d1-9064-aa9f36f6604e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: jeedes
-ms.openlocfilehash: 4784b54d07c0515d61eefe94eb8e1f9fb246d472
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ad95ba02823dcaa61f5d5f0dfed7828491465828
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898987"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226907"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reflektive"></a>Kurz: Azure Active Directory integrace s Reflektive
 

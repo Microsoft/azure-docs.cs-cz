@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 539dc1f9-64c9-4dce-b259-2b0b49dcf857
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 918e574550bde3bb89e0cd64b30ea168e09b22f0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 8974bb30e77b0e1c725531410db873f258f4c20a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899179"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-voyance"></a>Kurz: Azure Active Directory integrace s Voyance
 

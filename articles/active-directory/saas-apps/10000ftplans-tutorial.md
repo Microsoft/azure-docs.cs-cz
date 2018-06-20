@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: b60c955e-8fa3-4872-a897-c4e81fd7beac
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 9dcfb6d8a27e418533670691c1d22ed4400204a9
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: cc6b1036d98aca62360ed8a935d2d1719c7f4069
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903167"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230348"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-10000ft-plans"></a>Kurz: Azure Active Directory integrace s 10 000 ft plány
 

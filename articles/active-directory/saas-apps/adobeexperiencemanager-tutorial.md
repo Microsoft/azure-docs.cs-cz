@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 88a95bb5-c17c-474f-bb92-1f80f5344b5a
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 4904d9b0fc0746bc915477bb0ac83a0083ca198f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 4279211d130c8fe00a6b89c66222071de480fc52
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901810"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36216255"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Kurz: Azure Active Directory integrace s nástrojem Adobe prostředí Manager
 

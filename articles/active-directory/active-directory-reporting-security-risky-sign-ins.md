@@ -2,24 +2,24 @@
 title: Sestavy rizikových přihlášení na portálu Azure Active Directory | Dokumentace Microsoftu
 description: Informace o sestavách rizikových přihlášení na portálu Azure Active Directory
 services: active-directory
-author: rolyon
+author: priyamohanram
 manager: mtillman
 ms.assetid: 7728fcd7-3dd5-4b99-a0e4-949c69788c0f
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 11/14/2017
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 16b0f9fd240f393c23bc33ac0c9f5d024c3cb42e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: b0fa40999e069a0d5947585d0dc9a96240eb8b61
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589419"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225809"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Sestavy rizikových přihlášení na portálu Azure Active Directory
 
@@ -133,7 +133,7 @@ Tím otevřete okno **Podrobnosti** pro tuto rizikovou událost. V okně **Podro
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o Azure Active Directory Identity Protection najdete v tématu [Azure Active Directory Identity Protection](active-directory-identityprotection.md).
 

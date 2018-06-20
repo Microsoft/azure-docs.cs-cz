@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 665b95aa-f7f5-4406-9e2a-6fc299a1599c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 4b022dda064a3279b2cef31015708f9c5894a1e0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 334dd3b2f126d42c9c71f5fabb3515a68eb52c57
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899278"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227315"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Kurz: Azure Active Directory integrace s Wikispaces
 

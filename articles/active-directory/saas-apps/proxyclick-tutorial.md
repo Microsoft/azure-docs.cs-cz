@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5c58a859-71c2-4542-ae92-e5f16a8e7f18
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: jeedes
-ms.openlocfilehash: 3fb6c034df38486dfefd0ffccc6e05db32d9087d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 6e0d8c5c178afc63c9c177d31d0a14104b127941
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899405"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213334"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>Kurz: Azure Active Directory integrace s Proxyclick
 

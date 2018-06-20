@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 69c6efc3-54c7-49ec-b827-33177c09aa13
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: cc58fa334140594fed0eae526d973a03de8b79af
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d8b95b74b026ca8dc7776bc4faccec867c5ee36f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899215"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230447"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-compliance-elf"></a>Kurz: Azure Active Directory integrace s ELF dodržování předpisů
 

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 8d5e5413-da4c-40d8-b1d0-f03ecfef030b
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: da608433e425a26abd6ab6026d47ee7cb25ab53b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 876d602366e5c14fa69a43a60581269b85c7abd8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904062"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229467"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Kurz: Azure Active Directory integrace s Kontiki
 

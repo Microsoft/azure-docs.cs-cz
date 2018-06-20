@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 345b22be-d87e-45a4-b4c0-70a67eaf9bfd
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: jeedes
-ms.openlocfilehash: a1c1f0a3f3a742c1aa5baa55db1796b3a2ae7802
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2380fec59e26ada57dac2134efc898d6d466bd57
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899211"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229610"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Kurz: Azure Active Directory integrace s Mimecast osobní portálu
 

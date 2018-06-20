@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: fae344b3-5bd9-40e2-9a1d-448dcd58155f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: jeedes
-ms.openlocfilehash: 9cd607e3c35ae0769c3959e8cf30a4a466f7e3c5
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1ce186978d910cfdae068e68b5f86a8ebd5fa712
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903343"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227417"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-elium"></a>Kurz: Azure Active Directory integrace s Elium
 

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 07c5de0d-90aa-43b3-b24e-0cc334b2f9b0
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: jeedes
-ms.openlocfilehash: eca1fce7d1f214230a146b180b14a795f466a707
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 803064033df63fb260319fc46c59f77ca7490ef4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913510"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225132"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-softeon-wms"></a>Kurz: Azure Active Directory integrace s Softeon WMS
 

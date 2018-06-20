@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 8e06ee33-18f9-4c05-9168-e6b162079d88
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: ca393279da44ab06077ecbb46a93b8f55222c0fa
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 132803377554ecb4494d8b4ca6db7aa2f5f3aff1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899382"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225224"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Kurz: Azure Active Directory integrace s TOPdesk - zabezpečení
 

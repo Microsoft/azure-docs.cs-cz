@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3db2588edefa2f07d22609d7c454367d5572d5e0
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 273fca51d83f25e2657b51b68179e46f4295f92b
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35343931"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263876"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>Robota webové aplikace pomocí šablony LEOŠ pro jazyk C#
 
@@ -80,7 +80,7 @@ Otevřete **nastavení aplikace** a upravit **LuisAppId** pole tak, aby obsahova
 > Pokud nemáte ID aplikace LEOŠ [Domů automatizace aplikace](luis-get-started-create-app.md), přihlaste se k [LEOŠ](luis-reference-regions.md) webu pomocí stejného účtu, který používáte k přihlášení do Azure. 
 > 1. Klikněte na **Moje aplikace**. 
 > 2. Najděte LEOŠ aplikaci, kterou jste dříve vytvořili, obsahující tříd Intent a entity z domény HomeAutomation.
-> 3. V **nastavení** stránku pro aplikaci LEOŠ, najít a zkopírovat ID aplikace. Zkontrolujte, zda je [trained](Train-Test.md) a [publikovaná](PublishApp.md). 
+> 3. V **nastavení** stránku pro aplikaci LEOŠ, najít a zkopírovat ID aplikace. Zkontrolujte, zda je [trained](interactive-test.md) a [publikovaná](PublishApp.md). 
 
     > [!WARNING]
     > If you delete your app ID or LUIS key, the bot will stop working.
@@ -145,7 +145,7 @@ Na portálu Azure klikněte na **testů ve webové Chat** k testování robota. 
    ![Testování HomeAutomation robota v webového chatu](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> Můžete přeučování LEOŠ aplikace bez nutnosti jakékoli úpravy kódu vaší robota. V tématu [přidat příklad utterances](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) a [trénování a testování aplikace s LEOŠ](https://docs.microsoft.com/azure/cognitive-services/LUIS/train-test). 
+> Můžete přeučování LEOŠ aplikace bez nutnosti jakékoli úpravy kódu vaší robota. V tématu [přidat příklad utterances](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) a [trénování a testování aplikace s LEOŠ](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test). 
 
 ## <a name="download-the-bot-to-debug"></a>Stáhnout robota k ladění
 Pokud vaše robota nefunguje, stáhněte projektu do místního počítače a pokračovat [ladění](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot). 
@@ -160,6 +160,8 @@ Přidejte LEOŠ záměry a robota služby dialogová okna pro zpracování **pom
 > [!div class="nextstepaction"]
 > [Přidat tříd Intent](./luis-how-to-add-intents.md)
 > [dočištění řeči](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)
+
+
 <!-- Links -->
 [Github-BotFramework-Emulator-Download]: https://aka.ms/bot-framework-emulator
 [Github-LUIS-Samples]: https://github.com/Microsoft/LUIS-Samples
@@ -168,7 +170,7 @@ Přidejte LEOŠ záměry a robota služby dialogová okna pro zpracování **pom
 [BFPortal]: https://dev.botframework.com/
 [RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
 [BotFramework]: https://docs.microsoft.com/bot-framework/
-[AssignedEndpointDoc]:https://docs.microsoft.com/azure/cognitive-services/LUIS/manage-keys
+[AssignedEndpointDoc]: https://docs.microsoft.com/azure/cognitive-services/LUIS/manage-keys
 [VisualStudio]: https://www.visualstudio.com/
-[LUIS]:luis-reference-regions.md
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 <!-- tested on Win10 -->

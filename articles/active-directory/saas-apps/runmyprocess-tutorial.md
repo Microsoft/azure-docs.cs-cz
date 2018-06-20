@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: d31f7395-048b-4a61-9505-5acf9fc68d9b
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 2533a09f4bfa3000ba3d3300978aefbaec742f09
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3f1932d02e6488d4ac4a447f187539ea15e328a1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901750"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215200"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-runmyprocess"></a>Kurz: Azure Active Directory integrace s RunMyProcess
 

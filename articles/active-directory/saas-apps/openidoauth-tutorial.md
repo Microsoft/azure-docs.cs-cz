@@ -7,18 +7,19 @@ author: jeevansd
 manager: femila
 ms.assetid: eedebb76-e78c-428f-9cf0-5891852e79fb
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: d7f0c348ec89348b5b03e34529c94268a1897ff3
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 176af41197810059a17daf5ab09d29e0169e9640
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899327"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225003"
 ---
 # <a name="steps-to-configure-an-openidoauth-application-from-azure-ad-app-gallery"></a>Kroky pro konfiguraci aplikace OpenID/OAuth z Galerie aplikace Azure AD
 

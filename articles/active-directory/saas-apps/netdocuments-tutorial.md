@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 1a47dc42-1a17-48a2-965e-eca4cfb2f197
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 0f359c0cb26f6d6903b890da7d11f64c92a1f51a
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 787a2794148cdcc27db7ec2da705944b60666762
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899330"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netdocuments"></a>Kurz: Azure Active Directory integrace s NetDocuments
 

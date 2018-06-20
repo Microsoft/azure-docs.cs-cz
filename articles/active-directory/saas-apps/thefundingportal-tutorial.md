@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 4663cc8a-976a-4c6c-b3b4-1e5df9b66744
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 9d287205907b716e22d9645e256b318ce35e7666
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 5e6707e8f537e173a851e575a5c32622951dda99
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899349"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222683"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>Kurz: Azure Active Directory integrace s aplikace Portal finančních prostředků
 

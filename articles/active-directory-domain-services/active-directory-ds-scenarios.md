@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: c5216ec9-4c4f-4b7e-830b-9d70cf176b20
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2017
 ms.author: maheshu
-ms.openlocfilehash: ae8485f94a8a86862f09c1776222cb6603967614
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: be8d565ea16849302b743e5619afd3f21703bd1e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587554"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218682"
 ---
 # <a name="deployment-scenarios-and-use-cases"></a>Scénáře nasazení a případy použití
 V této části se podíváme na několik scénářů a případy použití využívající Azure Active Directory (AD) Domain Services.

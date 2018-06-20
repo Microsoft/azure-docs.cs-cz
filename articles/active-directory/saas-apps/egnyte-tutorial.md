@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 8c2101d4-1779-4b36-8464-5c1ff780da18
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 0ea212677872ceba7e7c6d74d3db03ba10346a45
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 16e2e51e3ae8263773adec1151340103c720b3a5
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903245"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225554"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Kurz: Azure Active Directory integrace s Egnyte
 

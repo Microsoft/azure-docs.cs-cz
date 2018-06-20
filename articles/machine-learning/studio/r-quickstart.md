@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 57c0030ac613167dc3ed567c2876b8e2e110d47a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 97107bb5ca1a598906cac9adbf508b2d15668e7d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836371"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227236"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Stručný úvodní kurz k programovacímu jazyku R pro službu Azure Machine Learning
 
@@ -41,7 +41,7 @@ Prognózy je metoda analytical široce zaměstnání a velmi užitečné. Běžn
 
 V této příručce rychlý start jsme bude pracovat s produkční dojnic kalifornské a ceny data. Tato data zahrnují měsíční informace o provozní mléčných produktů a cenu mléka fat komoditním srovnávacího testu.
 
-Data použitá v tomto článku, spolu se skripty R, může být [stáhnout zde][download]. Tato data byla původně syntetizován z informací z univerzity Wisconsin v http://future.aae.wisc.edu/tab/production.html.
+Data použitá v tomto článku, spolu se skripty R, může být [stáhnout zde](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/blob/master/studio-samples/cadairydata.csv). Tato data byla původně syntetizován z informací z univerzity Wisconsin v https://dairymarkets.com.
 
 ### <a name="organization"></a>Organizace
 Jsme proběhne prostřednictvím několik kroků, jak zjistíte, jak k vytváření, testování a spouštění kódu manipulaci s R analytics a data v prostředí Azure Machine Learning.  
@@ -123,9 +123,9 @@ Azure Machine Learning se dodává s více než 350 předinstalované balíčky 
 Pokud nerozumíte poslední řádek tohoto kódu v okamžiku, přečtěte si. Ve zbývající části tohoto dokumentu hojně pojednává o využití R v prostředí Azure Machine Learning.
 
 ### <a name="introduction-to-rstudio"></a>Úvod do Rstudia
-Rstudia je často používaný IDE pro R. Pro úpravy, testování a ladění některé kód R použité v této úvodní příručce použiji Rstudia. Jakmile kódu jazyka R otestované a připravené, jednoduše kopírování a vkládání z editoru Rstudia do nástroje Machine Learning Studio [spustit skript jazyka R] [ execute-r-script] modulu.  
+Rstudia je často používaný IDE pro R. Pro úpravy, testování a ladění některé kód R používané v tomto průvodci rychlého startu použiji Rstudia. Jakmile kód R otestované a připravené, můžete jednoduše vyjmout a vložit do nástroje Machine Learning Studio z editoru Rstudia [spustit skript jazyka R] [ execute-r-script] modulu.  
 
-Pokud nemáte programovací jazyk R nainstalovaný na počítači klientů, doporučujeme, že udělejte to teď. Ke stažení zdarma jazyka R s otevřeným zdrojem jsou k dispozici na komplexní R archivu sítě (CRAN) v [ http://www.r-project.org/ ](http://www.r-project.org/). Nejsou k dispozici pro Windows, Mac OS a Linux a UNIX stáhne. Zvolte blízkým zrcadlení a postupujte podle pokynů ke stažení. Kromě toho CRAN obsahuje širokou řadu užitečné balíčky manipulaci s analytickými funkcemi a data.
+Pokud nemáte programovací jazyk R nainstalovaný na počítači klientů, doporučujeme, že udělejte to teď. Ke stažení zdarma open-source jazyk R jsou k dispozici na komplexní R archivu sítě (CRAN) v [ http://www.r-project.org/ ](http://www.r-project.org/). Nejsou k dispozici pro Windows, Mac OS a Linux a UNIX stáhne. Zvolte blízkým zrcadlení a postupujte podle pokynů ke stažení. Kromě toho CRAN obsahuje širokou řadu užitečné balíčky manipulaci s analytickými funkcemi a data.
 
 Pokud jste ještě Rstudia, by měl stáhněte a nainstalujte verzi pro stolní počítače. Můžete najít Rstudia soubory ke stažení pro Windows, Mac OS a Linux a UNIX v http://www.rstudio.com/products/RStudio/. Postupujte podle pokynů k instalaci Rstudia na stolního počítače.  
 
@@ -837,7 +837,7 @@ Spuštění tento kód vytvoří protokol znázorňuje obrázek 18.
 
 *Obrázek 18. Seznam PVJS objekty z pairwise korelace analýzy.*
 
-Je hodnota korelace pro každý prodleva. Žádná z těchto hodnot korelace není dostatečně velký pro za významný. Jsme proto uzavřít, že jsme každou proměnnou modelu nezávisle.
+Je hodnota korelace pro každý prodleva. Žádný z těchto hodnot korelace není dostatečně velký pro za významný. Jsme proto uzavřít, že jsme každou proměnnou modelu nezávisle.
 
 ### <a name="output-a-dataframe"></a>Výstup a dataframe
 Pairwise korelací jsme mít počítá jako seznam R PVJS objektů. To představuje bit problému jako výstupním portem datové sady výsledků skutečně vyžaduje dataframe. Navíc objekt PVJS je sám seznam a chceme, aby pouze hodnoty v první prvek seznamu, korelací v různých pomalou.

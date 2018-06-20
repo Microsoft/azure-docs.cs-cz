@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 6d54d20c-eca1-4fa6-b56a-4c3ed0593db0
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 5203904b1867710464d60674bb9b88997940f066
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 75a5713af0f5c6bbfca95bca2a345509cc154f4c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900960"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224952"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trisotech-digital-enterprise-server"></a>Kurz: Azure Active Directory integrace s Trisotech digitální Enterprise Server
 

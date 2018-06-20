@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 09992f08-ec50-4472-997f-ccbe719039e8
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 43dd672755d18bb4370589d713e3f9e4459dbbd6
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7c89d341cae88fbdbb1d711b22dbcc3e281ac7b5
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899199"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-postbeyond"></a>Kurz: Azure Active Directory integrace s PostBeyond
 

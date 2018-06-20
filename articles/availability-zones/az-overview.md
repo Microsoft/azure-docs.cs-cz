@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/21/2018
+ms.date: 06/08/2018
 ms.author: iainfou
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 9eb7105b2d1a95eb8ccfa96ea0bc5188aab1b4aa
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 7cfd3fba459f409079cb0c621edab3197070285e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164717"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232285"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Jaké jsou dostupnost zóny v Azure?
 Dostupnost zóny je vysoká dostupnost nabízející, které chrání vaše aplikace a data před selháním datového centra. Dostupnost zóny jsou jedinečné fyzické umístění v rámci oblasti Azure. Každé zóny se skládá z jedné nebo více datových centrech vybaven nezávislé napájení, chlazení a práci v síti. K zajištění odolnosti, je minimálně tři samostatné zóny ve všech oblastech povoleno. Fyzické oddělení dostupnost zóny v rámci oblasti chrání aplikace a data před selháním datového centra. Zónově redundantní služby replikaci mezi zón dostupnosti pro ochranu před jedním bodů z selháním aplikacím a datům. Dostupnost zón Azure nabízí odvětví nejlepší 99,99 % virtuálních počítačů smlouva SLA. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
+
+Dostupnosti zónu v oblasti Azure je kombinací domény selhání a aktualizaci domény. Například pokud vytvoříte tři nebo více virtuálních počítačů mezi tři zóny v oblasti Azure, virtuální počítače jsou efektivně rozloženy na tři domén selhání a tři domény aktualizace. Platformy Azure rozpozná této distribuce napříč doménami update a ujistěte se, že virtuální počítače v různých oblastech neaktualizují ve stejnou dobu.
 
 Sestavte vysokou dostupností do vaší aplikace architektury společné umísťování prostředkům výpočty, úložiště, sítě a data v rámci zóny a replikuje v jiných oblastech. Služby Azure, které podporují dostupnost zóny rozdělit do dvou kategorií:
 
@@ -58,7 +60,7 @@ Služby Azure, které podporují dostupnost zóny jsou:
 
 
 ## <a name="pricing"></a>Ceny
-Není k dispozici pro virtuální počítače nasazené v zóně dostupnosti bez dalších nákladů. 99,99 % SLA provozu virtuálního počítače je nabídnuta při nasazení dvou nebo více virtuálních počítačů mezi dva nebo víc zón dostupnosti v rámci oblasti Azure. Budou existovat další poplatky přenos dat mezi dostupnost zóny virtuálních počítačů VM. Další informace najdete v článku [šířky pásma ceny](https://azure.microsoft.com/pricing/details/bandwidth/) stránky.
+Není k dispozici pro virtuální počítače nasazené v zóně dostupnosti bez dalších nákladů. 99,99 % dostupnost virtuálních počítačů se SLA nabízí při nasazení dvou nebo více virtuálních počítačů mezi dva nebo víc zón dostupnosti v rámci oblasti Azure. Budou existovat další poplatky přenos dat mezi dostupnost zóny virtuálních počítačů VM. Další informace najdete v článku [šířky pásma ceny](https://azure.microsoft.com/pricing/details/bandwidth/) stránky.
 
 
 ## <a name="get-started-with-availability-zones"></a>Začínáme s dostupnost zóny

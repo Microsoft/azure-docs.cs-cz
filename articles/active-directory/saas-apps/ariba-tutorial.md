@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 45a8364c-55d1-4dc7-b079-9eb2a701842d
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2017
 ms.author: jeedes
-ms.openlocfilehash: dc75851d8894b93b52bd866ccaebe305f111a3ac
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ee43633068f7697ed31b2e29eb15563ecf016f85
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899214"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225877"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>Kurz: Azure Active Directory integrace s Ariba
 

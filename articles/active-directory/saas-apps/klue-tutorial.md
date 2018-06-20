@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 08341008-980b-4111-adb2-97bbabbf1e47
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.openlocfilehash: be5a5487fbaf751f1756f08e6c49d7b598e77766
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e2a625c733aac82b5db8529f2d770d31578a6246
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35897315"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220416"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-klue"></a>Kurz: Azure Active Directory integrace s Klue
 

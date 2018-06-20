@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 4c3f07d2-4e1f-4ea3-9025-c663f1f2b7b4
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 862f41c74b289bdf80746ed785883315fd08c3ad
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3deb7f23f6fb54cc832ec52fcdbe34aa58a24668
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899204"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227070"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>Kurz: Azure Active Directory integrace s Pluralsight
 

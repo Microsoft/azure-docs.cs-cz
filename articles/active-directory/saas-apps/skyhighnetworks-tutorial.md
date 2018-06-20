@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 48d6ddd1-4d3e-4019-8234-5e5212684d9c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jeedes
-ms.openlocfilehash: cdea99a7e2814673e5ba533fbfd58dbb01ad240b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 8f3f892d085c6fcea7d7891c16d7121a99cfe650
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904084"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214337"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skyhigh-networks"></a>Kurz: Azure Active Directory integrace se sítěmi Skyhigh
 

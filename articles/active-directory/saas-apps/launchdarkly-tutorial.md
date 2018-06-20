@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 0e9cb37e-16bf-493b-bfc8-8d9840545a1e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 1692b10074666be30e37da655220d9586ad366df
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 8653fe2053b2a49967b5b0f98654c20f8999d7ff
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898972"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217492"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Kurz: Azure Active Directory integrace s LaunchDarkly
 

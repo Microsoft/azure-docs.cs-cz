@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 420f268090dbcfcc4f2fa7383b8b8892952030ca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7cfcc5b907b28a877bea57ea869e17f01aae00cb
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343824"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265383"
 ---
 # <a name="glossary"></a>Glosář
 
@@ -179,7 +179,7 @@ Klíč předplatného je klíč přidružený k službě LEOŠ [jste vytvořili 
 
 ## <a name="test"></a>Test
 
-[Testování](train-test.md#test-your-app) LEOŠ aplikace znamená předání utterance LEOŠ a zobrazení JSON výsledků.
+[Testování](interactive-test.md#test-your-app) LEOŠ aplikace znamená předání utterance LEOŠ a zobrazení JSON výsledků.
 
 ## <a name="timezoneoffset"></a>Posun časového pásma
 
@@ -210,4 +210,4 @@ Utterance je přirozeného jazyka slovní spojení "kniha 2 lístky k webu Seatt
 
 LEOŠ [verze](luis-how-to-manage-versions.md) je model konkrétní data související s ID aplikace LEOŠ a publikovaná koncový bod. Každé LEOŠ aplikace má alespoň jednu verzi.
 
-[batch-testing]: train-test.md#batch-testing
+[batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/interactive-test#batch-testing

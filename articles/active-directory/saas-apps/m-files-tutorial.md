@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 4536fd49-3a65-4cff-9620-860904f726d0
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 72a04df6de4294dbfcba12ec28775c78c690ba47
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 26aabe7b3bfa328787b40e81471e235b2bf73765
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901623"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228070"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Kurz: Azure Active Directory integrace s M – soubory
 

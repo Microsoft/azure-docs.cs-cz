@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 59c8a112-41e1-4337-9ef3-3d7029780d61
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 50f384f23d9ebcad10f3d003f44bbaa66a959426
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 5a984c7955218e29e4a6f99c93e9336e88c9f63a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35912787"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225826"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-small-improvements"></a>Kurz: Azure Active Directory integrace s malé vylepšení
 

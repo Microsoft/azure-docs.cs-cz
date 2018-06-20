@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 6f7c0372ec53157d42a229feddb5b3fce92ff4cd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5b81a6d4bdda24208673e42757807aba60fea97
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587898"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263971"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí portálu Azure
 
@@ -72,6 +72,9 @@ Proces zřizování vaší spravované domény může trvat až jednu hodinu.
 4. Pokud spravované doméně plně zřízený, **přehled** kartě se zobrazují stav domény jako **systémem**.
 
     ![Domain Services – Karta Přehled po úplném zřízení](./media/getting-started/domain-services-provisioned.png)
+    >[!NOTE]
+    >Azure AD Domain Services během procesu zřizování, vytvoří podnikové aplikace s názvem "Služby řadiče domény" a "AzureActiveDirectoryDomainControllerServices" v adresáři. Tyto podnikové aplikace jsou potřebné k služby vaší spravované domény. Je nutné, aby tyto nebudou odstraněny kdykoli.
+    >
 
 5. Na **vlastnosti** kartě uvidíte dvě IP adresy, které jsou k dispozici pro virtuální síť řadiče.
 

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: e238b574-9e9b-43b7-ab98-d2a87ff89d48
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: d1571608c16710613ccc458c3fbfb519d395de1d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c31d1162c41ddb6d4728f74d91061f38dcfa68d8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900995"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228318"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>Kurz: Azure Active Directory integrace s Kantega jednotné přihlašování pro bambus
 

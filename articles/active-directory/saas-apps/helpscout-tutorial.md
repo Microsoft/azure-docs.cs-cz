@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 0aad9910-0bc1-4394-9f73-267cf39973ab
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 28611619340a0cf624c6ab841c6376a97325b2f8
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: bf3afa56aeb51d3bcdaa84c1c2d75c86ee764f7b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903338"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36216238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Kurz: Azure Active Directory integrace s pomůže Scout
 

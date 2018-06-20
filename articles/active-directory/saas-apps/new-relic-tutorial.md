@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 3186b9a8-f4d8-45e2-ad82-6275f95e7aa6
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: jeedes
-ms.openlocfilehash: cc624befc856ec13162d3eb3b3c07c888991d1e0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: a311a99522f5a47290cbf60993a2d1aa1997dcca
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901119"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215621"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>Kurz: Azure Active Directory integrace s New Relic.
 

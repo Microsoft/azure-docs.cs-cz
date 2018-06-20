@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: a0f55b6ee22b617372656584ed5ca505bddaffa7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 8505474687728f8dcf0927e4d2b7ce59e7a4c742
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913507"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231283"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Kurz: Azure Active Directory integrace s AnswerHub
 

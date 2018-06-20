@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: c489a7ab-6b1f-4efb-8a66-8bc13bca78c3
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 41635b3a93e0d75b5e3645ea91392dcffe77cde2
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 8bfb98dd3b97a306aae33c450cb19429fa135109
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899388"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219913"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Kurz: Azure Active Directory integrace s InsideView
 

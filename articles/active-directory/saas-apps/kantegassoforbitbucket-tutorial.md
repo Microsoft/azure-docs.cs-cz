@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: c41cdaaf-0441-493c-94c7-569615b7b1ab
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 80b9e9453edf72b91d8928f8ce6610b0897b065f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: dddf05946685b09500c74e9f678b638ee54870bb
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35897339"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223150"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>Kurz: Azure Active Directory integrace s Kantega jednotné přihlašování pro Bitbucket
 

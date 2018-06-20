@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 4d77390e-898c-4258-a562-a1181dfe2880
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 1735d859401982e494e0fcbb40f5b7a0ddaddfc7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2bd4b6ee8575c3e70276870ebf91b2b8cfa35dac
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903215"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226705"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>Kurz: Azure Active Directory integrace s nástrojem IMPAC riziko Manager
 

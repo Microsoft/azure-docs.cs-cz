@@ -2,23 +2,21 @@
 title: 'Rychlý start: Cassandra API s využitím Node.js – Azure Cosmos DB | Dokumentace Microsoftu'
 description: Tento rychlý start ukazuje, jak použít rozhraní Apache Cassandra API služby Azure Cosmos DB k vytvoření aplikace profilu pomocí Node.js.
 services: cosmos-db
-documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-ms.assetid: 4732e57d-32ed-40e2-b148-a8df4ff2630d
 ms.service: cosmos-db
+ms.component: cosmosdb-cassandra
 ms.custom: quick start connect, mvc
-ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: cc8fd5ef77407274187411da593be7b68ae114d7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 08ac75ca008f3054a85d9c90834720e26cefcfea
+ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34796447"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>Rychlý start: Sestavení aplikace Cassandra pomocí Node.js a Azure Cosmos DB
 
@@ -186,7 +184,7 @@ Teď se vraťte zpátky na portál Azure Portal, kde najdete informace o připo
     
 ## <a name="use-the-x509-certificate"></a>Použití certifikátu X509 
 
-1. Pokud potřebujete přidat certifikát Baltimore CyberTrust Root, jeho sériové číslo je 02:00:00:b9 a otisk SHA1 je d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74. Můžete ho stáhnout z adresy https://cacert.omniroot.com/bc2025.crt a uložit do místního souboru s příponou .cer. 
+1. Pokud potřebujete přidat kořenový certifikát Baltimore CyberTrust, má sériové číslo 02:00:00:b9 a otisk SHA1 d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74. Můžete ho stáhnout z adresy https://cacert.omniroot.com/bc2025.crt a uložit do místního souboru s příponou .cer. 
 
 2. Otevřete soubor uprofile.js a změňte cestu path\to\cert tak, aby odkazovala na váš nový certifikát. 
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 549e8810-1b3b-4351-bf4b-f07de98980d1
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 6b6f2176f415433699be48b091c0edada769c1f7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2491c0887cdcb47e6ce8f686835042bc23092df8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904047"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220460"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloudlock"></a>Kurz: Azure Active Directory integrace s Cisco Cloudlock
 

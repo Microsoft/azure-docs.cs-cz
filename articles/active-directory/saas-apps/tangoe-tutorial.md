@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 2b0b544c-9c2c-49cd-862b-ec2ee9330126
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 640fa2e781818bfa3cf952c1237118ab906383ab
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c87b90e82b1300e147533256e3286421a73f08d2
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903166"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218890"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Kurz: Azure Active Directory integrace s Tangoe příkaz Premium Mobile
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5f4b7830-6186-4d17-b77b-504d4192bfde
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: jeedes
-ms.openlocfilehash: 5cf217de4973fd06935d88381de86520df604c29
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e27bc853db6236165d77f2fb3418bab1170400b2
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901808"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227699"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>Kurz: Azure Active Directory integrace s předvídáte Suite CX
 

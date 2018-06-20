@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 643a45fb-d6fc-4b32-b721-68899f8c7d44
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeedes
-ms.openlocfilehash: cc63da64bee4ccd543d2f8f6a108b539967f1d38
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 4899c6d27c034ce3f92efc3b0ddfb8b3446a6115
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903193"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appneta-performance-monitor"></a>Kurz: Azure Active Directory integrace s AppNeta sledování výkonu
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 02a62f15-917c-417c-8d80-fe685e3fd601
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 430363dc4d489708f9fd2323c3a8689928d2d03a
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 70a67f5205ee9b1249d3db2cda3eb4af9acabe31
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899276"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230171"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-replicon"></a>Kurz: Azure Active Directory integrace s Replicon
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 508957f6-caa5-4234-a7f3-90015937e4eb
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 212d149224a3056ca5ea917faf31f832df6a4fa6
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3285376ce0e26c7f85681fca0ec0a261267a7055
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904060"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221065"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yardione"></a>Kurz: Azure Active Directory integrace s YardiOne
 

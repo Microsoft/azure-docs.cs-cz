@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 1c1320d1-7ba4-4b5f-926f-4996b44d9b5e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 388107e262f4780c6df307de51475b6bca3f5c2f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: dc62d7a24a53ffa04026c0f1a40b05b18e6db71d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899000"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231385"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform-identity-authentication"></a>Kurz: Azure Active Directory integrace s SAP cloudové platformy identitu ověřování
 

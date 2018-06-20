@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: d29b362d-e986-4f67-8ff2-e158e49353aa
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 012f97b94c1dda7f6a701489b86e8e9445291529
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c824c69f8dbc7e913cc61f945cdc0958359c4f9b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900967"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224058"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-easyterritory"></a>Kurz: Azure Active Directory integrace s EasyTerritory
 

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 9818edd3-48c0-411d-b05a-3ec805eafb2e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e6ea4103ce8c36a82f86c5b66eb8e519818023b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e96a34cf0e9fe4f4b0a35790089bda17ced5d818
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903149"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Kurz: Azure Active Directory integrace s Procore jednotného přihlašování
 

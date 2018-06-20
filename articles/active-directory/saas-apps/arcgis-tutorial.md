@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: a9e132a4-29e7-48bf-beb9-4148e617c8a9
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: jeedes
-ms.openlocfilehash: ed66161b72f92143d69297bebd6dfb519818dc20
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2b3fe6efc96b1cd65db42bab947a7499b3c97c8e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898963"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228342"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Kurz: Azure Active Directory integrace s ArcGIS Online
 

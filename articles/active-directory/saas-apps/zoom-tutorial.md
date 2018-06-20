@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 0ebdab6c-83a8-4737-a86a-974f37269c31
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 33b5c918fc5de301d0f6df73bda53e53c1446088
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ed0018277502d2689d28009e58cdffd39a02cee7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899412"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231174"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Kurz: Azure Active Directory integrace s přiblížení
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 1f56e612-728b-4203-a545-a81dc5efda00
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: e54eaec680ace9f74624c8ec29df62bfc9c1addb
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c718284ca65bc17990fb16b07a27787f28f362c2
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899021"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Kurz: Azure Active Directory integraci se službou správy návštěvnosti
 

@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: b1d0d01621769a6bfc0e14e703d7f988403703c6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e6e363649a0bdab5525de7b8e7abe9a53d14573
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343819"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36266018"
 ---
 # <a name="manage-your-luis-keys"></a>Spravovat klíče LEOŠ
 Klíč umožňuje vytvářet a publikovat aplikace LEOŠ nebo dotaz na koncový bod. 
@@ -73,4 +73,4 @@ Další informace o publikování [oblasti](luis-reference-regions.md) včetně 
 
 K publikování aplikace v používání vašeho klíče **publikovat aplikace** stránky. Pokyny k publikování, najdete v části [publikovat aplikace](PublishApp.md).
 
-[LUIS]: luis-reference-regions.md#luis-website
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

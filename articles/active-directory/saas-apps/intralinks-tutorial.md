@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 147f2bf9-166b-402e-adc4-4b19dd336883
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: f30f5619e71a529a5c9b321646ee7c6e0ffe79e8
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 613c1a0c9998d79961202beae4d7820bdaaf8c93
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901651"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227536"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intralinks"></a>Kurz: Azure Active Directory integrace s Intralinks
 

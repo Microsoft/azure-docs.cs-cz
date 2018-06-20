@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: a5ea18d3-3aaf-4bc6-957c-783e9371d0f1
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 0b8e5dd58736c0ad27ea45bd09e21acbdb0a27ac
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 07c0e5558a35d846f8d1333e110e73f6dd37dd58
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898988"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218227"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Kurz: Azure Active Directory integrace se sítěmi Palo Alto - otvoru
 

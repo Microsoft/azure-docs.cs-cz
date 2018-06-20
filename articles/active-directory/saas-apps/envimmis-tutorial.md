@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: ab89f8ee-2507-4625-94bc-b24ef3d5e006
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 008ba69384cd52d4d2d75978aec1602e1c2cce79
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d115a2640da7a23cc0e7744bbe79251afb9302a1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900969"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229232"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Kurz: Azure Active Directory integrace s Envi MMIS
 

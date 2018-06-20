@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 418d0601-6e7a-4997-a683-73fa30a2cfb5
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: b75c42f3cdba28140c5c1dd00ceeade3bbd58abc
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 729644e350e3c0ad4a5ea695d24ddaf4164952fc
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913508"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213973"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>Kurz: Azure Active Directory integrace s Promapp
 

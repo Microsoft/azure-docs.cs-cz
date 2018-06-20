@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 57537e54-9388-4272-a610-805ce45a451f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 1/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 8dcf30a5dc018b396501563044a8c1ca1cb3b7d9
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: bc867a0056f95cfcf4d3d6747b31c339432dafa5
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899262"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225894"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>Kurz: Azure Active Directory integrace s oblouk
 

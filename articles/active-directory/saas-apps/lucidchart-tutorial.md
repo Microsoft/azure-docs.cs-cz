@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 1068d364-11f3-43b5-bd6d-26f00ecd5baa
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: 5bf8d65834dd41646730dbcf2b8d2bcc441993e0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 15929f5ba8c19190a72344ecf70662d34f9f4454
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901007"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231691"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lucidchart"></a>Kurz: Azure Active Directory integrace s Lucidchart
 

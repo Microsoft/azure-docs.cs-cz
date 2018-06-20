@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: c7aac6da-f4bf-419e-9e1a-16b460641a52
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 0ef9c68c71f7c2d387fea6af22cc11d10b1b61c0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: bca5d5111f5cfc3bcf2720af855f44d1928bcfd6
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899451"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221012"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-kenexa-survey-enterprise"></a>Kurz: Azure Active Directory integrace s IBM Kenexa průzkum Enterprise
 

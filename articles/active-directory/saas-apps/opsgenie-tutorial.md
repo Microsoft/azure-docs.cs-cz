@@ -7,18 +7,19 @@ author: jeevansd
 manager: femila
 ms.assetid: 41b59b22-a61d-4fe6-ab0d-6c3991d1375f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 487d24c16a30c2d08180a7000dcee70326900ac8
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: f978644a9de2eb8bb1fd6f6b4f4b26e91c8e8187
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901780"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229083"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>Kurz: Azure Active Directory integrace s OpsGenie
 

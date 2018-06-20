@@ -8,6 +8,7 @@ writer: asmalser-msft
 manager: sakula
 ms.assetid: 0b38ee73-168b-42cb-bd8b-9c5e5126d648
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 0c135af0341e5f4644961b5859574b334048543e
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 6d9562697c8135ba4b92b1bbf304a41af8c426c0
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903183"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220379"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Kurz: Konfigurace Pingboard pro zřizování automatické uživatelů
 

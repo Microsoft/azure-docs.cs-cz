@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 32bd8898-c2d2-4aa7-8c46-f1f5c2aa05f1
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 87d32c2d5c7258000bd65fc03d3f3ab0523087d8
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: bf5fb050e81b59195d9bf9bfed9372e1fe8402ab
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901671"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231266"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>Kurz: Azure Active Directory integrace s SuccessFactors
 

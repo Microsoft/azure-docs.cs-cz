@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 71c2b6d0-3d28-4130-a2c8-1e72ab3d5814
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 05c6b11ce0be429da77a913acf6fa59bdb4951f9
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 744211174440b4bb60700f6d6d71cac289f7b56e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35912845"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230297"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onetrust-privacy-management-software"></a>Kurz: Azure Active Directory integrace s Software pro správu OneTrust ochrany osobních údajů
 

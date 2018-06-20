@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 896a3211-f368-46d7-95b8-e4768c23be08
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 65b58a1a995b09e3905962f41ccdaa6360692006
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: df0842c494fd69f41c97019c3ded9c2509c2463f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900990"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223813"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>Kurz: Azure Active Directory integrace s Syncplicity
 

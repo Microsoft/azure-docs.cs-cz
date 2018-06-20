@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: cb517134-0b34-4a74-b40c-5a3223ca81b6
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 7a08f544c0485387ffa68f9cea945966908f7a01
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e9d4d1c0d0ff629e6c0c2d0844b28725995eecd4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35912786"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215949"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-liquidfiles"></a>Kurz: Azure Active Directory integrace s LiquidFiles
 

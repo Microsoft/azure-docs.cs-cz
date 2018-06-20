@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 9df8d199-b955-483c-aa4e-cabad1a0b9d6
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c13e56d234de283347a337aaa2cd82d8c97e394e
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 07ed4d7e89e71ba04ad721a5f386e23c816612a8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898977"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228869"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spacio"></a>Kurz: Azure Active Directory integrace s Spacio
 

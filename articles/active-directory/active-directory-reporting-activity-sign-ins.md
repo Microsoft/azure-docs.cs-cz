@@ -3,25 +3,25 @@ title: Sestavy aktivit přihlašování na portálu Azure Active Directory | Dok
 description: Seznámení se sestavami aktivit přihlašování na portálu Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/17/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6414be82e57741bf2af1de3650a3d9a28c4d6427
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: d9c2f210204122947c24eb42f643450537f3b9a8
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588603"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232294"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -153,7 +153,7 @@ Pokud chcete pracovat s daty aktivit přihlašování mimo web Azure Portal, mů
 
 ![Stáhnout](./media/active-directory-reporting-activity-sign-ins/71.png "Stáhnout")
 
-Kliknutím na tlačítko **Stáhnout** vytvoříte soubor CSV s 5000 nejnovějších záznamů. Pokud potřebujete větší flexibilitu, můžete použít řešení se skriptem. Kliknutím na **Skript** vytvoříte skript, který zahrne všechny filtry, které jste nastavili. Kromě technické implementace je počet záznamů, které si můžete stáhnout, také omezený [zásadami uchování sestav Azure Active Directory](active-directory-reporting-retention.md).  
+Kliknutím na tlačítko **Stáhnout** vytvoříte soubor CSV s 5000 nejnovějších záznamů. Pokud potřebujete větší flexibilitu, můžete použít řešení se skriptem. Kliknutím na tlačítko **skriptu** vytvoří skript prostředí PowerShell, který obsahuje všechny filtry, které jste nastavili. Stáhněte a spusťte tento skript v **režimu správce** ke generování souboru CSV. Kromě technické implementace je počet záznamů, které si můžete stáhnout, také omezený [zásadami uchování sestav Azure Active Directory](active-directory-reporting-retention.md).  
 
 
 
@@ -245,7 +245,7 @@ Možnost **Přihlášení** poskytuje úplný přehled o všech událostech při
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokud se chcete dozvědět více o kódech chyb aktivit přihlašování, přečtěte si téma [Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory](active-directory-reporting-activity-sign-ins-errors.md).
 

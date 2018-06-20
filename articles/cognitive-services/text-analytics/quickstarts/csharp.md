@@ -9,12 +9,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: ashmaka
-ms.openlocfilehash: f46c5179fc245d84a72e038fe3870d2e6c990550
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: d9c61a83450844461f621ff16354881a029f7ad6
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "35343914"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36266290"
 ---
 # <a name="quickstart-for-text-analytics-api-with-c"></a>Rychlý start pro Analýza textu rozhraní API pomocí jazyka C# 
 <a name="HOLTop"></a>
@@ -41,8 +41,8 @@ Je také nutné mít [koncový bod a přístupový klíč](../How-tos/text-analy
 >  Když může zavolat [koncové body HTTP](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) přímo z C#, Microsoft.Azure.CognitiveServices.Language SDK je mnohem jednodušší volání služby bez nutnosti starat o serializaci a deserializaci JSON.
 >
 > Několik užitečné odkazy:
-> - [Stránka Nuget sady SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language)
-> - [Kód SDK ](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/Language)
+> - [Stránka Nuget sady SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> - [Kód SDK ](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
 
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>Volání rozhraní API Analýza textu pomocí sady SDK

@@ -3,17 +3,18 @@ title: Vytvoření skillset v kanálu kognitivní vyhledávání (Azure Search) 
 description: Definování dat extrakce, přirozeného jazyka zpracování, nebo použijte image analysis postup zlepšit komunikaci oddělení a extrahovat strukturovaných informace z vašich dat pro ve službě Azure Search.
 manager: pablocas
 author: luiscabrer
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: luisca
-ms.openlocfilehash: 816951ac128fb76d748262cfbc5f064a44e6376c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 997b106f748a2f18e8141f77f3b9ff8bb6b9d971
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640922"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268231"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Postup vytvoření skillset v kanálu obohacení
 
@@ -106,11 +107,11 @@ Content-Type: application/json
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       },
-      "context": "/document/content/organizations/*",
+      "context": "/document/organizations/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/content/organizations/*"
+          "source": "/document/organizations/*"
         }
       ],
       "outputs": [
@@ -210,11 +211,11 @@ Odvolat strukturu vlastní enricher vyhledávání entity Bing:
       "httpHeaders": {
           "Ocp-Apim-Subscription-Key": "foobar"
       }
-      "context": "/document/content/organizations/*",
+      "context": "/document/organizations/*",
       "inputs": [
         {
           "name": "query",
-          "source": "/document/content/organizations/*"
+          "source": "/document/organizations/*"
         }
       ],
       "outputs": [
@@ -228,9 +229,9 @@ Odvolat strukturu vlastní enricher vyhledávání entity Bing:
 
 Tato definice je vlastní odborností, která volá webové rozhraní API v rámci procesu obohacení. Pro každou organizaci identifikovaný rozpoznávání pojmenované entity tato odborností volá webové rozhraní API najít popis dané organizace. Orchestraci při volání webového rozhraní API a jak toku získané informace interně zpracovává obohacení modul. Inicializace potřebné pro volající toto rozhraní API vlastní však je třeba zadat ve formátu JSON (například identifikátor uri, httpHeaders a očekává vstupy). Pokyny při vytváření vlastní webové rozhraní API pro obohacení kanál najdete v tématu [jak definovat vlastní rozhraní](cognitive-search-custom-skill-interface.md).
 
-Všimněte si, že pole "context" je nastaveno ```"/document/content/organizations/*"``` s hvězdičkou, se nazývá znamená krok obohacení *pro každou* organizace v rámci ```"/document/content/organizations"```. 
+Všimněte si, že pole "context" je nastaveno ```"/document/organizations/*"``` s hvězdičkou, se nazývá znamená krok obohacení *pro každou* organizace v rámci ```"/document/organizations"```. 
 
-Výstup, v takovém případě popis společnosti, se generuje pro každou organizaci identifikovat. Při odkazování na popis v podřízené kroku (například v klíče frázi extrakce), by použijte cestu ```"/document/content/organizations/*/description"``` Uděláte to tak. 
+Výstup, v takovém případě popis společnosti, se generuje pro každou organizaci identifikovat. Při odkazování na popis v podřízené kroku (například v klíče frázi extrakce), by použijte cestu ```"/document/organizations/*/description"``` Uděláte to tak. 
 
 ## <a name="enrichments-create-structure-out-of-unstructured-information"></a>Enrichments vytvořit strukturu nestrukturovaných informací o
 

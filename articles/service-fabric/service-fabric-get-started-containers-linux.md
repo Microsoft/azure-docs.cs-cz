@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: a38eb1f291d00d942ff0a1579b20bca7e012991a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5f1d71db70bbaa6e569ad6f9a6f51bca4c5dc220
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642933"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213120"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
 > [!div class="op_single_selector"]
@@ -171,26 +171,12 @@ Vzhledem k tomu, že tato image má definovaný vstupní bod úloh, není potře
 
 Jako počet instancí zadejte 1.
 
+Zadejte mapování portů v příslušném formátu. V tomto článku, budete muset zadat ```80:4000``` jako mapování portů. Díky tomu, který jste nakonfigurovali všechny příchozí žádosti přicházející na port 4000 na hostitelském počítači zprávy jsou přesměrovány na port 80 v kontejneru.
+
 ![Generátor Service Fabric Yeoman pro kontejnery][sf-yeoman]
 
-## <a name="configure-port-mapping-and-container-repository-authentication"></a>Konfigurace mapování portů a ověřování úložiště kontejnerů
-Vaše kontejnerizovaná služba potřebuje koncový bod pro komunikaci. Nyní přidejte protokol, port a typ do části `Endpoint` v souboru ServiceManifest.xml pod značku Resources (Prostředky). Pro účely tohoto článku kontejnerizovaná služba naslouchá na portu 4000: 
-
-```xml
-
-<Resources>
-    <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
-           replicas of different partitions that are placed in your code. -->
-      <Endpoint Name="myServiceTypeEndpoint" UriScheme="http" Port="4000" Protocol="http"/>
-    </Endpoints>
-  </Resources>
- ```
- 
-Pokud zadáte `UriScheme`, koncový bod kontejneru se automaticky zaregistruje ve Službě pojmenování Service Fabric, aby byl zjistitelný. Úplný ukázkový soubor ServiceManifest.xml najdete na konci tohoto článku. 
-
-Nakonfigurujte v kontejneru mapování portů na hostitele určením zásady `PortBinding` v části `ContainerHostPolicies` souboru APplicationManifest.xml. Pro účely tohoto článku je `ContainerPort` nastaven na 80 (kontejner zpřístupňuje port 80, jak je zadáno v souboru Dockerfile) a `EndpointRef` je myserviceTypeEndpoint (koncový bod definovaný v manifestu služby). Příchozí požadavky na službu na portu 4000 se mapují na port 80 v kontejneru. Pokud se váš kontejner potřebuje ověřovat v privátním úložišti, přidejte `RepositoryCredentials`. Pro účely tohoto článku přidejte název a heslo účtu pro registr kontejneru myregistry.azurecr.io. Zajistěte, aby se zásada přidala pod značku ServiceManifestImport odpovídající správnému balíčku služby.
+## <a name="configure-container-repository-authentication"></a>Konfigurace ověřování kontejneru úložiště
+ Pokud se váš kontejner potřebuje ověřovat v privátním úložišti, přidejte `RepositoryCredentials`. Pro účely tohoto článku přidejte název a heslo účtu pro registr kontejneru myregistry.azurecr.io. Zajistěte, aby se zásada přidala pod značku ServiceManifestImport odpovídající správnému balíčku služby.
 
 ```xml
    <ServiceManifestImport>
@@ -227,14 +213,6 @@ Chování **HEALTHCHECK** pro jednotlivé kontejnery můžete nakonfigurovat zad
 Ve výchozím nastavení se *IncludeDockerHealthStatusInSystemHealthReport* nastaví na **true** a *RestartContainerOnUnhealthyDockerHealthStatus* se nastaví na **false**. Pokud je pro *RestartContainerOnUnhealthyDockerHealthStatus* nastavená hodnota **true**, kontejner, který je opakovaně nahlášený ve špatném stavu, se restartuje (potenciálně na jiných uzlech).
 
 Pokud chcete zakázat integraci **HEALTHCHECK** pro celý cluster Service Fabric, musíte nastavit [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) na **false**.
-
-## <a name="build-and-package-the-service-fabric-application"></a>Sestavení a zabalení aplikace Service Fabric
-Šablony Service Fabric Yeoman zahrnují skript sestavení pro [Gradle](https://gradle.org/), který můžete použít k sestavení aplikace z terminálu. Pokud chcete sestavit a zabalit aplikaci, spusťte následující:
-
-```bash
-cd mycontainer
-gradle
-```
 
 ## <a name="deploy-the-application"></a>Nasazení aplikace
 Jakmile je aplikace sestavená, můžete ji nasadit do místního clusteru pomocí rozhraní příkazového řádku Service Fabric.

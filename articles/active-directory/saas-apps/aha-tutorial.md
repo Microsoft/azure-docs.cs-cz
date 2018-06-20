@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: ad955d3d-896a-41bb-800d-68e8cb5ff48d
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 8b03982f557b7eb249e9a4463ae9ce1c03bcf404
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2a6c709944262e321997fe2d32e57726ee9f1242
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913489"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219869"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aha"></a>Kurz: Azure Active Directory integrace s Aha!
 

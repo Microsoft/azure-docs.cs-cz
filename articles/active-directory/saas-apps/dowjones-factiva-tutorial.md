@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: b36e97e8-37a6-4096-a894-530427ee1331
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 602824114c025ff91e97b1b29e14f4c424415c55
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 5157e12e2afd40b8cfbc948e984747274764a276
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901725"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218173"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dow-jones-factiva"></a>Kurz: Azure Active Directory integrace s Rdit Petr Factiva
 

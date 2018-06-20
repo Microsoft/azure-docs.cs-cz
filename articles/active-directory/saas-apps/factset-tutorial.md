@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: f41072d1-b2a4-4c4d-9deb-101b52e29096
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 8ff39f8e0b764d0b89a84de043b937cec04c586b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7a2f79ec7cde6bcc660508e1e3960ce233ea3be0
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901644"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222439"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-factset"></a>Kurz: Azure Active Directory integrace s FactSet
 

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 3e4bbd5b-290e-4951-971b-ec0c1c11aaa2
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/9/2017
 ms.author: jeedes
-ms.openlocfilehash: 90151e8b66b4592f95b0ae1c547633a5ee988b30
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3963928614f18b25d7e8bce4a8ece3b077863898
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899403"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Kurz: Azure Active Directory integrace s MobileIron
 

@@ -1,5 +1,5 @@
 ---
-title: Vytvoření několika služeb Azure AD s jednou službou AD FS | Microsoft Docs
+title: Vytvoření několika služeb Azure AD s jednou službou AD FS | Dokumentace Microsoftu
 description: V tomto dokumentu se naučíte vytvořit federaci několik služeb Azure AD s jednou službou AD FS.
 keywords: vytvoření federace, ADFS, AD FS, více klientů, jedna služba AD FS, jedna služba ADFS, federace s více klienty, ADFS s více doménovými strukturami, připojení AAD, federace, federace mezi klienty
 services: active-directory
@@ -14,12 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
+ms.component: hybrid
 ms.author: anandy; billmath
-ms.openlocfilehash: c55a4232c54308c5d000cfefc2c7dca2800b462c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f9a8abc6e5d66f31a59ba895250861708689aa6d
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34593101"
 ---
 # <a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>Vytvoření federace několika instancí Azure AD s jednou instancí AD FS
 
@@ -43,7 +45,7 @@ Aby služba AD FS v doméně contoso.com mohla ověřovat uživatele v doméně 
  
 ## <a name="step-2-modify-contosocom-federation-settings"></a>Krok 2: Úprava nastavení federace contoso.com 
  
-Výchozí vystavitel nastavený pro jednu doménu federovanou se službou AD FS je „http://plně_kvalifikovaný_název_domény_služby_AD_FS/adfs/services/trust“, například „http://fs.contoso.com/adfs/services/trust“. Azure Active Directory vyžaduje jedinečného vystavitele pro každou federovanou doménu. Vzhledem k tomu, že stejná služba AD FS bude federovat dvě domény, hodnota vystavitele musí být upravena, aby byla jedinečná pro každou doménu, kterou služba AD FS federuje s Azure Active Directory. 
+Výchozí vystavitel nastavený pro jednu doménu federovanou se službou AD FS je http://ADFSServiceFQDN/adfs/services/trust, například http://fs.contoso.com/adfs/services/trust. Azure Active Directory vyžaduje jedinečného vystavitele pro každou federovanou doménu. Vzhledem k tomu, že stejná služba AD FS bude federovat dvě domény, hodnota vystavitele musí být upravena, aby byla jedinečná pro každou doménu, kterou služba AD FS federuje s Azure Active Directory. 
  
 Na serveru AD FS otevřete prostředí Azure AD PowerShell a proveďte následující kroky:
  

@@ -8,22 +8,23 @@ manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: maheshu
-ms.openlocfilehash: ab2897eefd1c394ba0b10ba6fce3e11af4a0b2a5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 340193f191bbdbe658769f9265f9e63844481c32
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34587956"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265265"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Povolit Azure Active Directory Domain Services pomocí portálu Azure
 Tento článek ukazuje, jak povolit Azure Active Directory Domain Services (Azure AD DS) pomocí portálu Azure.
+
 
 ## <a name="before-you-begin"></a>Než začnete
 K dokončení úlohy uvedené v tomto článku, budete potřebovat:
@@ -35,6 +36,7 @@ K dokončení úlohy uvedené v tomto článku, budete potřebovat:
 
 
 ## <a name="enable-azure-ad-domain-services"></a>Povolení služby Azure AD Domain Services
+
 Ke spuštění **povolit Azure AD Domain Services** průvodce proveďte následující kroky:
 
 1. Přejděte na [portál Azure](https://portal.azure.com).

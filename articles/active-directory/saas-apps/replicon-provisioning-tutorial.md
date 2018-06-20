@@ -8,18 +8,19 @@ writer: zhchia
 manager: beatrizd-msft
 ms.assetid: na
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: v-ant
-ms.openlocfilehash: eb28e80cb01ca3134236efa8b40698fabffbdbb7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 0f71c449e2fb0ab8b26ee9ba68850cbf7fe03b28
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903331"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214742"
 ---
 # <a name="tutorial-configure-replicon-for-automatic-user-provisioning"></a>Kurz: Konfigurace Replicon pro zřizování automatické uživatelů
 

@@ -8,18 +8,19 @@ writer: asmalser-msft
 manager: mtillman
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: 5ed4384fb9ba678456545ec25f70be3640297ae5
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 544fcb2c10d2efc4ee02f9ce70c6ce06214c85cd
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903239"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215245"
 ---
 # <a name="tutorial-configure-linkedin-sales-navigator-for-automatic-user-provisioning"></a>Kurz: Konfigurace LinkedIn prodej navigátor pro zřizování automatické uživatelů
 

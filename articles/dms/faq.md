@@ -10,25 +10,25 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/08/2018
-ms.openlocfilehash: 0e10907ac3db2d792b73e0a37aa2d0f6a916d746
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.date: 06/19/2018
+ms.openlocfilehash: 2fd5049b8b65620087e3c1ec42b6a5dcb0e0741a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850068"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214099"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Nejčastější dotazy o použití služby Azure databáze migrace
 V tomto článku jsou uvedené nejčastější dotazy týkající se používání služby Azure databáze migrace společně s související odpovědi.
 
 ### <a name="q-what-is-azure-database-migration-service"></a>OTÁZKY. Co je služba migrace databáze Azure?
-Služba Azure databáze migrace je plně spravovaná služba navržených k povolení bezproblémové migrace z více zdrojů databáze do platformy Azure dat s minimálními výpadky. Služba je ve verzi Public Preview, se zaměřuje na úsilí vývoj aktuálně:
+Služba Azure databáze migrace je plně spravovaná služba navržených k povolení bezproblémové migrace z více zdrojů databáze do platformy Azure dat s minimálními výpadky. Služba je aktuálně všeobecně dostupná, s probíhající vývoj úsilí zaměřené na:
 - Spolehlivost a výkon.
 - Iterační přidání dvojic cílového zdroje.
 - Trvalá investice do bez třecí migrace.
 
 ### <a name="q-what-source-target-pairs-does-the-azure-database-migration-service-currently-support"></a>OTÁZKY. Jaké zdroje cíl páry služba migrace databáze Azure aktuálně podporuje?
-Služba ve verzi Public Preview aktuálně podporuje migrace ze systému SQL Server do Azure SQL Database a můžete přejít na portálu Azure nyní chcete začít používat službu Azure databáze migrace pro tento scénář. Další zdroje cíl páry, jako je například SQL Server na instanci spravované databáze Azure SQL Server a Oracle do Azure SQL Database jsou dostupné prostřednictvím omezené privátní Preview verzi. Pro možnost zapojit se do omezené privátní Preview verzi z těchto scénářů, zaregistrujte si [zde](https://sqldatabase-migrationpreview.azurewebsites.net/).
+Služba aktuálně podporuje migrace ze systému SQL Server do Azure SQL Database a můžete přejít na portálu Azure nyní chcete začít používat službu Azure databáze migrace pro tento scénář. Další páry cílového zdroje, jako je Oracle do Azure SQL Database jsou k dispozici prostřednictvím omezené privátní Preview verzi. Pro možnost zapojit se do omezené privátní Preview verzi z těchto scénářů, zaregistrujte si [zde](https://aka.ms/dms-preview/).
 
 ### <a name="q-how-does-the-azure-database-migration-service-compare-to-other-microsoft-database-migration-tools-such-as-the-database-migration-assistant-dma-or-sql-server-migration-assistant-ssma"></a>OTÁZKY. Jak služba Azure databáze migrace porovnat jiných nástrojů migrace databáze Microsoft, například databáze migrace Assistant (DMA) nebo SQL asistent migrace Server (SSMA)?
 Služba Azure databáze migrace je upřednostňovanou metodou pro migrace databáze do služby Microsoft Azure ve velkém měřítku. Další podrobnosti o tom, jak službu Azure databáze migrace porovnává dalšího softwaru společnosti Microsoft databáze nástroje pro migraci a doporučení o používání služby pro různé scénáře, najdete v blogu příspěvků [rozlišení Microsoft databáze Nástroje pro migraci a služby](https://blogs.msdn.microsoft.com/datamigration/2017/10/13/differentiating-microsofts-database-migration-tools-and-services/).
@@ -93,4 +93,4 @@ Pokud uživatel explicitně zastaví službu migrace databáze Azure (DMS) nebo 
 Chceme slyšet od vás. Pošlete prosím všechny zpětnou vazbu a / nápady máte o službě Azure databáze migrace prostřednictvím User Voice [zde](https://feedback.azure.com/forums/906100-azure-database-migration-service).
 
 ## <a name="next-steps"></a>Další postup
-Přehled služby Azure databáze migrace a místní dostupnosti během verzi Public Preview, najdete v článku [co je Azure databáze migrace služby Preview](dms-overview.md). 
+Přehled služby Azure databáze migrace a místní dostupnosti, najdete v článku [co je služba Azure databáze migrace](dms-overview.md). 

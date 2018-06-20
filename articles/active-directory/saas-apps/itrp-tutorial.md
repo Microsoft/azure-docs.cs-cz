@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: e09716a3-4200-4853-9414-2390e6c10d98
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 617ebeaff836b90125ccfd937d74ae2efee0f0ef
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 0834980cf4cba1e3b9eef3b8f938b67e61a8eafe
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899391"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218142"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Kurz: Azure Active Directory integrace s ITRP
 

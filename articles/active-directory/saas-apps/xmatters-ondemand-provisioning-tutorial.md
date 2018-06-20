@@ -8,18 +8,19 @@ writer: zhchia
 manager: beatrizd-msft
 ms.assetid: na
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: v-ant-msft
-ms.openlocfilehash: f9908d175ad21e452d97401bc2dc5f86ea2541c3
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: b5038d176c302a4a2f75e2dd5235ea8f4789f10b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900981"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222630"
 ---
 # <a name="tutorial-configure-xmatters-ondemand-for-automatic-user-provisioning"></a>Kurz: Konfigurace xMatters OnDemand pro zřizování automatické uživatelů
 

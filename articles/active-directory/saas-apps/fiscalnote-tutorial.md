@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 55274f26-be7e-4514-964c-7186ecb55c4a
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 72b2f53025bcc614605cb62f6e2d9895940dfd8c
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 0692c81577706b4d8cce64a912548feec4608f18
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913484"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231487"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fiscalnote"></a>Kurz: Azure Active Directory integrace s FiscalNote
 

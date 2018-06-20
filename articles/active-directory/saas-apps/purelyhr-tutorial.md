@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 86a9c454-596d-4902-829a-fe126708f739
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 657f6f55a319c1677e20422f43c78064bff421ae
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: b85a92e60bb897bfd5f1b1c7af6f724a6afd3340
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899325"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220239"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>Kurz: Azure Active Directory integrace s PurelyHR
 

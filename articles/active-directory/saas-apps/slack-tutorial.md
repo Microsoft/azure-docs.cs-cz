@@ -7,18 +7,19 @@ author: jeevansd
 manager: femila
 ms.assetid: ffc5e73f-6c38-4bbb-876a-a7dd269d4e1c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 9317db4401f42a4ae2d246cc6eba89adf6b5b019
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 5d16e633f29ca635a9b32118e699cb59d3896353
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901648"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221338"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Kurz: Azure Active Directory integrace s Slack
 

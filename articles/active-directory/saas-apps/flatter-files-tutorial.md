@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: f86fe5e3-0e91-40d6-869c-3df6912d27ea
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: e7c2d842a9e6ebe431577aa2ca133c9016f26812
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1189a60b33c385377767ea44877dd5fdf853f260
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904016"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221527"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Kurz: Azure Active Directory integrace s plošší soubory
 

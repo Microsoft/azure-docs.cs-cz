@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 863f7340-b065-4f59-b092-daa67da6f703
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2018
 ms.author: jeedes
-ms.openlocfilehash: ba9f17676afa96b4728e6e552dd19e5e56af00d9
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: bd99bb452f39bd99f0d92e478b21d7f3786ed785
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899096"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223707"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dynamic-signal"></a>Kurz: Azure Active Directory integrace s dynamické signál
 

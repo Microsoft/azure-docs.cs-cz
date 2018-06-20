@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: db1cea1d-ff0a-4f0d-b5fd-50ca32702d56
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c2d80f374b6e7e7c8d64a4a8940853f61e8bb5d7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7a0f9e54b920ee2c16a141ee62d22784f75c0af6
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900957"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224149"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>Kurz: Azure Active Directory integrace s Cisco cloudu
 

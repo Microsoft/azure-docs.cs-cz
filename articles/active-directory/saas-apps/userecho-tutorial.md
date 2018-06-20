@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: bedd916b-8f69-4b50-9b8d-56f4ee3bd3ed
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: f05189f70428eb3a3199870992956000dc55b954
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7fac8b99941122dec8849017ec1d125b01121c64
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903341"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217210"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-userecho"></a>Kurz: Azure Active Directory integrace s UserEcho
 

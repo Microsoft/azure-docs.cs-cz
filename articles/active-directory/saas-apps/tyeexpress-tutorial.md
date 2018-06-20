@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: B42374E5-2559-4309-8EF2-820BEE7EBB0C
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 51366a440f6ce67d232ae8a3cb46674b26443981
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3a9a2efffa057ee1e35e8074556043b8e515c39c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35897320"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224126"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Kurz: Azure Active Directory integrace s T & E Express
 

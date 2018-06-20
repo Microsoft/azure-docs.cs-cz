@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 65288c32-f7e6-4eb3-a6dc-523c3d748d1c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: e9611d5c8891d6d2e3570f84dc5621bb35d322ea
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1a9935dbb0ec43c1eb2ec78fdd7caa92b69e3784
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899318"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>Kurz: Azure Active Directory integrace s PerformanceCentre
 

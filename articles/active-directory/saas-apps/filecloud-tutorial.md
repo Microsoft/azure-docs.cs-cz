@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 2263e583-3eb2-4a06-982d-33f5f54858f4
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: jeedes
-ms.openlocfilehash: eaba0eefb0c003305daf77701952a1a657266210
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 724c572dcc4381b865da12b1a1efd1e1f99a7cfd
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899034"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226414"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Kurz: Azure Active Directory integrace s FileCloud
 

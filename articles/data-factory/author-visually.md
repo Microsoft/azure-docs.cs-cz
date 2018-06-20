@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2018
 ms.author: shlo
-ms.openlocfilehash: b588fd4b67dbed1e0dc3d4ad2cbd75b462ce311f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: a7efe75507fad8e0391f9ad433ba416ed771063b
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725138"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36265284"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visual vytváření obsahu v Azure Data Factory
 Azure Data Factory uživatelské rozhraní prostředí (UX) umožňuje vizuálně vytvořit a nasadit prostředky pro vytváření dat bez nutnosti psaní jakéhokoli kódu. Můžete přetáhněte na plátno kanálu aktivity, proveďte test spustí, interaktivně, ladění a nasadit a monitorovat běží vaše kanálu. Pro použití uživatelského k provedení visual vytváření dvěma způsoby:
@@ -63,11 +63,11 @@ V podokně se zobrazují následující kód služby VSTS nastavení úložišt�
 |:--- |:--- |:--- |
 | **Typ úložiště** | Typ úložiště služby VSTS kódu.<br/>**Poznámka:**: Githubu se aktuálně nepodporuje. | Visual Studio Team Services Git |
 | **Azure Active Directory** | Název vašeho klienta Azure AD. | <your tenant name> |
-| **Visual Studio Team Services účtu** | Název účtu služby VSTS. Můžete vyhledat název účtu služby VSTS v `https://{account name}.visualstudio.com`. Můžete [přihlásit ke svému účtu služby VSTS](https://www.visualstudio.com/team-services/git/) přístup váš profil Visual Studio a zobrazit projekty a úložiště. | \<název účtu > |
-| **ProjectName** | Služby VSTS název projektu. Můžete vyhledat název projektu služby VSTS v `https://{account name}.visualstudio.com/{project name}`. | \<služby VSTS název projektu > |
-| **RepositoryName** | Název vaší služby VSTS kód úložiště. Služby VSTS projekty obsahují úložiště Git ke správě zdrojového kódu s růstem projektu. Můžete vytvořit nové úložiště, nebo použití existující úložiště, který už v projektu. | \<název služby VSTS kód úložiště > |
-| **Větev spolupráce** | Větev vaší služby VSTS spolupráce, který se použije pro publikování. Ve výchozím nastavení, je `master`. Toto nastavení změňte v případě, že chcete publikovat prostředky z jiné větve. | \<název větve spolupráce > |
-| **Kořenová složka** | Kořenové složky v služby VSTS spolupráce větev. | \<název kořenové složky > |
+| **Visual Studio Team Services účtu** | Název účtu služby VSTS. Můžete vyhledat název účtu služby VSTS v `https://{account name}.visualstudio.com`. Můžete [přihlásit ke svému účtu služby VSTS](https://www.visualstudio.com/team-services/git/) přístup váš profil Visual Studio a zobrazit projekty a úložiště. | <your account name> |
+| **ProjectName** | Služby VSTS název projektu. Můžete vyhledat název projektu služby VSTS v `https://{account name}.visualstudio.com/{project name}`. | <your VSTS project name> |
+| **RepositoryName** | Název vaší služby VSTS kód úložiště. Služby VSTS projekty obsahují úložiště Git ke správě zdrojového kódu s růstem projektu. Můžete vytvořit nové úložiště, nebo použití existující úložiště, který už v projektu. | <your VSTS code repository name> |
+| **Větev spolupráce** | Větev vaší služby VSTS spolupráce, který se použije pro publikování. Ve výchozím nastavení, je `master`. Toto nastavení změňte v případě, že chcete publikovat prostředky z jiné větve. | <your collaboration branch name> |
+| **Kořenová složka** | Kořenové složky v služby VSTS spolupráce větev. | <your root folder name> |
 | **Import existujících prostředků pro vytváření dat do úložiště** | Určuje, zda chcete importovat existující objekt pro vytváření zdroje dat z uživatelského **vytváření plátno** do úložiště Git služby VSTS. Vyberte pole pro import vašich prostředků objekt pro vytváření dat do úložiště Git přidruženého ve formátu JSON. Tato akce exportuje každého prostředku jednotlivě (to znamená, propojené služby a datové sady exportují do samostatné JSONs). Pokud není toto políčko zaškrtnuto, nebudou importovány existující prostředky. | Vybrané (výchozí) |
 
 #### <a name="configuration-method-2-ux-authoring-canvas"></a>Metoda konfigurace 2: UX vytváření plátno

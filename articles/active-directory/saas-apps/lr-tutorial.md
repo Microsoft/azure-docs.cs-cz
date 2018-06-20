@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5715579e-598f-4d2e-970a-107b80b97be4
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2018
 ms.author: jeedes
-ms.openlocfilehash: e0299aea552d15b9c7d7bda7ab02dd5be36ce6a5
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: a408e9da1a5a4adfc67879b3d7ba40f01ca284dd
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35897321"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214320"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>Kurz: Azure Active Directory integrace s LoginRadius
 

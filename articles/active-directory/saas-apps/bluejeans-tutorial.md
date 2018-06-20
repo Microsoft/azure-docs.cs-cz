@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: e6addaeda5f7873a95386baf40ff4cd0c9726f1a
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1e6875fb3795d558afdf05b0a57c6c9d3bf9dc78
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903323"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36216425"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>Kurz: Azure Active Directory integrace s BlueJeans
 

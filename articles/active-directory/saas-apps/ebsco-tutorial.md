@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 144f7f65-69e9-4016-a151-fe1104fd6ba8
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 79ef1adf2989ed2982c9625cfa7e6421461b908f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 993d03e05c7d97634b7ed12c50d248643ce9e51d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899148"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221280"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Kurz: Azure Active Directory integrace s EBSCO
 

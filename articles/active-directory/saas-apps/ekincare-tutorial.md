@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 57f56d14-83cf-4cbb-b342-fac4fc60078f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 7ca22fb2a07c4dde22dfcb2f40eee9347672aae0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 413ae4197b95932321e29eb1662fe8168c77799a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903188"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36216935"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>Kurz: Azure Active Directory integrace s eKincare
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 89b5022c-0d5b-4103-9877-ddd32b6e1c02
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 5592a0f6c465d4057ad5e3ee217d7a93f75ef88f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 07cbc047179c3de19d6f648d0342d47970c81dbc
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901672"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231368"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Integrovat Azure Active Directory Remix vedoucí prodeje E
 

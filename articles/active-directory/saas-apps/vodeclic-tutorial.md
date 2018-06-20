@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: d77a0f53-e3a3-445e-ab3e-119cef6e2e1d
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2017
 ms.author: jeedes
-ms.openlocfilehash: fcb7483e714f721f61bf2170a75e06c0cf3de1ed
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 5627d0fa99cee4f289787e3fccf83a4c6fa228e0
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901617"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221263"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vodeclic"></a>Kurz: Azure Active Directory integrace s Vodeclic
 

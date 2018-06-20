@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 49384b8b-3836-4eb1-b438-1c46bb9baf6f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: e84624a11c400cad754b108e613cf10fcf145ba7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: be6e5fb83ea88ce30b64f5e1eb53422f0404410f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898982"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229617"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby Salesforce pro zřizování automatické uživatelů
 

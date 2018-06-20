@@ -8,6 +8,7 @@ writer: asmalser-msft
 manager: mtillman
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.reviewer: asmalser
-ms.openlocfilehash: e00b9b73d7668ccae9cec85bbde30b18af2474e6
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2fef141cada8faffc055571516ae4c899ae6dc42
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903163"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229440"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Kurz: Konfigurace Slack pro zřizování automatické uživatelů
 

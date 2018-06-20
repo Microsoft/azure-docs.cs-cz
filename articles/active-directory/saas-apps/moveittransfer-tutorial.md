@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 8ff7102d-be73-4888-ae81-d8e3d01dd534
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: jeedes
-ms.openlocfilehash: b43230ac8f4b8f6048319236adca56d0289bceb3
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: f35fbacd4eac39cd9931d4725ac9bb299986c934
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903214"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217244"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-moveit-transfer---azure-ad-integration"></a>Kurz: Azure Active Directory integrace s přenosy MOVEit – integrace Azure AD
 

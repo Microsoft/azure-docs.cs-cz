@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 691d0c43-3aa1-4220-9e46-e7a88db234ad
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 730fc5c67b4284123a7a03d5e7c76452727bb009
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 12e84c6789a84accee42c1ef7147647995da8e25
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899007"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222613"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-price-reporting"></a>Kurz: Azure Active Directory integrace s vytvářením sestav Predictix cena
 

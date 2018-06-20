@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 30f51b32-e55c-4c66-96e8-50a2f9c2194a
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 479c1c3563ef22b238fd0d72a7e9af356b19cda9
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 997a109f7b43b13acf39c122b55fb18980f9a2d6
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899037"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36216302"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscore"></a>Kurz: Azure Active Directory integrace s JobScore
 

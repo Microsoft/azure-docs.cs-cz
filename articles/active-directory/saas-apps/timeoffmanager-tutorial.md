@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 3685912f-d5aa-4730-ab58-35a088fc1cc3
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 613e0376799e3616a089c22905f18c49a50c9fad
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 4e92d1ba948626c05e7b66d2c0d469ac6c6571a2
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913512"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228182"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>Kurz: Azure Active Directory integrace s TimeOffManager
 

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 8cb31a4c-9309-469b-93ac-daf0d3c7a3e6
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 2e588e74eb687f121216b09bcd1fb17204fd8208
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c28a7257df1469c1c25baebd2abe7b52abad2542
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899030"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230246"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Kurz: Azure Active Directory integrace s EthicsPoint Incident správy (EPIM)
 

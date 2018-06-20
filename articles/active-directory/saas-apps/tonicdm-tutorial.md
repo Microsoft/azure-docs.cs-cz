@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 19ea9a07-9ecf-43dc-91ba-593ce3c00b01
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d1dfad0d80d1c73c8f3e39bc9b6e86f4c996b90
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 83402821d49c85849bce417615b04b0393cd061a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898959"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229396"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tonicdm"></a>Kurz: Azure Active Directory integrace s TonicDM
 

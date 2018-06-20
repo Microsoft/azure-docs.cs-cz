@@ -3,22 +3,22 @@ title: Naplánování runtime integrace Azure SSIS | Microsoft Docs
 description: Tento článek popisuje, jak naplánovat spuštění a zastavení z modulu runtime integrační služby SSIS Azure pomocí Azure Automation a Data Factory.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 06/01/2018
-ms.author: douglasl
-ms.openlocfilehash: 7bffc7aed0c06267a39e2b0a2ee178806c071ab8
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+author: swinarko
+ms.author: sawinark
+ms.reviewer: douglasl
+manager: craigg
+ms.openlocfilehash: 84d81dd9e1ef51a2a1705210cd7002a685bdf8fb
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297790"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36266817"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Postup spuštění a zastavení modulu runtime integrace Azure SSIS podle plánu
 Tento článek popisuje, jak naplánovat spuštění a zastavení z modulu runtime integrace Azure služby SSIS (IR) pomocí Azure Automation a Azure Data Factory. Spuštění modulu runtime integrace Azure služby SSIS (SQL Server Integration Services) (IR) má náklady s ním spojená. Proto chcete obvykle spustit IR pouze v případě potřeby pro spouštění balíčků SSIS v Azure a zastavit reakcí na Incidenty, když tomu tak není. Můžete použít uživatelské rozhraní objektu pro vytváření dat nebo prostředí Azure PowerShell [ruční spuštění nebo zastavení služby SSIS IR Azure](manage-azure-ssis-integration-runtime.md)).

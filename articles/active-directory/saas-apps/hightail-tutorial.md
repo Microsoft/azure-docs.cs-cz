@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: e15206ac-74b0-46e4-9329-892c7d242ec0
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.openlocfilehash: ebd264cc0d186cee754baa5e354df78a1b6813e8
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 6fe7cad2910bed2dc08180d28fdf1af1d6cffd9a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899139"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223412"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Kurz: Azure Active Directory integrace s Hightail
 

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 64c7ee45-ee8a-42f7-bf04-fd0e00833ea9
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: b0277fbdc599ad700c5ee7ea8de94a63e02a3290
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7cb925c3ed3cef1cd90cb5cb1835b047440c941d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904038"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228053"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-inkling"></a>Kurz: Azure Active Directory integrace s Inkling
 

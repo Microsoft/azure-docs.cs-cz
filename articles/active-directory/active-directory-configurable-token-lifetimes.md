@@ -16,12 +16,12 @@ ms.date: 04/19/2018
 ms.author: hirsin
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 086a2fde5905321da7d5689b6f1ee2f5139209ba
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 95a3c1d3effe6d4b73354fb3ef871aeb7767bfb4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588858"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228560"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Konfigurovat životnosti tokenu v Azure Active Directory (Public Preview)
 Můžete zadat dobu životnosti tokenem vydaným službou Azure Active Directory (Azure AD). Můžete nastavit životnosti tokenu pro všechny aplikace ve vaší organizaci, pro aplikaci víceklientské (více organizace) nebo pro objekt určité služby ve vaší organizaci.
@@ -335,7 +335,7 @@ V tomto příkladu můžete vytvořit několik zásady, se dozvíte, jak funguje
 
     Teď máte zásadu, která platí pro celou organizaci. Můžete chtít zachovat tuto zásadu 30denní pro objekt konkrétní služby, ale změnit výchozí zásady organizace na horní limit počtu "dokud odvolaný."
 
-    1.  Pokud chcete zobrazit všechna firemní objekty služby, se můžete dotazovat buď [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) nebo [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Navíc můžete otestovat v [Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/)a [program Průzkumník systému Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) pomocí účtu Azure AD.
+    1.  Pokud chcete zobrazit všechna firemní objekty služby, se můžete dotazovat buď [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) nebo [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity). Navíc můžete otestovat v [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/)a [program Průzkumník systému Microsoft Graph](https://developer.microsoft.com/graph/graph-explorer) pomocí účtu Azure AD.
 
     2.  Pokud máte **ObjectId** vaše služba objektu zabezpečení, spusťte následující příkaz:
 

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 72ab75ba-132b-4f83-a34b-d28b81b6d7bc
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: e2af6c947113b8b0089a07cacb63d6317542af50
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 9b46eaa83e8e3fab7ca4e2755c48074db1559760
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903403"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226965"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qprism"></a>Kurz: Azure Active Directory integrace s QPrism
 

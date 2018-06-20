@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: b23eba91-7698-47e7-ae75-0ceafd739965
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/6/2017
 ms.author: jeedes
-ms.openlocfilehash: 6f2827b7f41b5f5e152f9b7fb618c870e76286b7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: fd393107fa8e142f042b0bf1e4283b3cacd4050e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901670"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218210"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apptio"></a>Kurz: Azure Active Directory integrace s Apptio
 

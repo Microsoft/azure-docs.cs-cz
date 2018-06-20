@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: d2c965d1-666f-44c2-b08f-b73163096374
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 9e40a54e24d4cf316bba26a68045565c9925c27b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 67758e527549827b673d00ad82911d3114a44ca7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899016"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pantheon"></a>Kurz: Azure Active Directory integrace s Pantheon
 

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 2fe2f976-e97f-4368-9695-3e1624409e8b
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 01d3d315daa66e97f23e9c77a4b0bdfd568dc012
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d4b4832a0a69ab886529bf304a7a89768ccb830f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903351"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214191"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-ordering"></a>Kurz: Azure Active Directory integrace s Predictix řazení
 

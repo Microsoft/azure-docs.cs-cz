@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: c579c453-580e-417d-8a5e-9b6b352795c0
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: e3bb761008f4b9990dae1e9107e5b25683adbf88
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7f9c972e51b19d4cbac4650c662e3a6da538a5b9
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899450"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228903"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insperity-expensable"></a>Kurz: Azure Active Directory integrace s Insperity ExpensAble
 

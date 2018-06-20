@@ -4,15 +4,15 @@ description: Toto téma popisuje, jak zjistit místní virtuální počítače V
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 05/15/2018
+ms.date: 06/08/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 695298be6cb9f56de26b8682c556285aba22d4a6
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e8d4380087e826a4f1332c0a39670c2309a10861
+ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272059"
+ms.lasthandoff: 06/08/2018
+ms.locfileid: "35236140"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
 
@@ -118,29 +118,6 @@ Než nasadíte soubor .OVA, zkontrolujte, jestli je bezpečný.
     SHA1 | a2d8d496fdca4bd36bfa11ddf460602fa90e30be
     SHA256 | f3d9809dd977c689dda1e482324ecd3da0a6a9a74116c1b22710acc19bea7bb2  
 
-    Pro soubory OVA verze 1.0.8.59:
-
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | 71139e24a532ca67669260b3062c3dad
-    SHA1 | 1bdf0666b3c9c9a97a07255743d7c4a2f06d665e
-    SHA256 | 6b886d23b24c543f8fc92ff8426cd782a77efb37750afac397591bda1eab8656  
-
-    Pro soubory OVA verze 1.0.8.49:
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | cefd96394198b92870d650c975dbf3b8
-    SHA1 | 4367a1801cf79104b8cd801e4d17b70596481d6f
-    SHA256 | fda59f076f1d7bd3ebf53c53d1691cc140c7ed54261d0dc4ed0b14d7efef0ed9
-
-    Pro soubory OVA verze 1.0.8.40:
-
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | afbae5a2e7142829659c21fd8a9def3f
-    SHA1 | 1751849c1d709cdaef0b02a7350834a754b0e71d
-    SHA256 | d093a940aebf6afdc6f616626049e97b1f9f70742a094511277c5f59eacc41ad
-
 ## <a name="create-the-collector-vm"></a>Vytvoření virtuálního počítače kolektoru
 
 Importujte stažený soubor do vCenter Serveru.
@@ -162,7 +139,8 @@ Importujte stažený soubor do vCenter Serveru.
 1. V konzoli vSphere Client klikněte pravým tlačítkem na daný virtuální počítač a pak na **Open Console** (Otevřít konzolu).
 2. Nastavte pro zařízení preferovaný jazyk, časové pásmo a heslo.
 3. Na ploše klikněte na zástupce **Spustit kolektor**.
-4. Ve službě Azure Migrate Collector otevřete nabídku **Nastavit požadavky**.
+4. Klikněte na **Vyhledat aktualizace** v horním panelu uživatelského rozhraní kolektoru a ověřte, že používáte nejnovější verzi kolektoru. Pokud ne, můžete stáhnout balíček s nejnovějším upgradem z tohoto odkazu a kolektor aktualizovat.
+5. Ve službě Azure Migrate Collector otevřete nabídku **Nastavit požadavky**.
     - Přijměte licenční podmínky a přečtěte si informace třetích stran.
     - Kolektor zkontrolujte, jestli má virtuální počítač přístup k internetu.
     - Pokud má virtuální počítač přístup k internetu přes proxy server, klikněte na **Nastavení proxy**, zadejte adresu proxy serveru a nastavte naslouchající port. Pokud proxy server potřebuje přihlašovací údaje, zadejte je. Přečtěte si [další informace](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#internet-connectivity) o požadavcích na internetové připojení a o seznamu adres URL, ke kterým má kolektor přístup.
@@ -173,13 +151,13 @@ Importujte stažený soubor do vCenter Serveru.
     - Kolektor zkontroluje, jestli je spuštěná služba kolektoru. Ta je ve výchozím nastavení nainstalovaná na virtuálním počítači kolektoru.
     - Stáhněte a nainstalujte VMware PowerCLI.
 
-5. V části **Zadejte podrobnosti vCenter Serveru** udělejte toto:
+6. V části **Zadejte podrobnosti vCenter Serveru** udělejte toto:
     - Zadejte název (plně kvalifikovaný název domény) nebo IP adresu vCenter Serveru.
     - V části **Uživatelské jméno** a **Heslo** zadejte přihlašovací údaje k účtu pouze pro čtení, který kolektor použije ke zjištění virtuálních počítačů na vCenter Serveru.
     - V části **Rozsah kolekce** vyberte kolekci pro zjišťování virtuálních počítačů. Kolektor může vyhledat jen virtuální počítače v rámci zadaného rozsahu. Jako rozsah můžete vybrat konkrétní složku, datové centrum nebo cluster. Neměl by obsahovat víc než 1500 virtuálních počítačů. Přečtěte si [další informace](how-to-scale-assessment.md) o zjišťování větších prostředí.
 
-6. V části **Zadejte projekt migrace** zadejte ID projektu služby Azure Migrate a klíč, který jste zkopírovali z portálu. Pokud jste ho nezkopírovali, na virtuálním počítači kolektoru otevřete Azure Portal. Na stránce **Přehled** projektu klikněte na **Zjistit počítače** a zkopírujte příslušné hodnoty.  
-7. V části **Zobrazit průběh shromažďování** můžete sledovat zjišťování a kontrolovat, jestli metadata shromážděná z virtuálních počítačů patří do zadaného rozsahu. Kolektor vás informuje o tom, jak dlouho bude zjišťování přibližně trvat. Přečtěte si [další informace](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#what-data-is-collected) o datech, která shromažďuje kolektor Azure Migrate.
+7. V části **Zadejte projekt migrace** zadejte ID projektu služby Azure Migrate a klíč, který jste zkopírovali z portálu. Pokud jste ho nezkopírovali, na virtuálním počítači kolektoru otevřete Azure Portal. Na stránce **Přehled** projektu klikněte na **Zjistit počítače** a zkopírujte příslušné hodnoty.  
+8. V části **Zobrazit průběh shromažďování** můžete sledovat zjišťování a kontrolovat, jestli metadata shromážděná z virtuálních počítačů patří do zadaného rozsahu. Kolektor vás informuje o tom, jak dlouho bude zjišťování přibližně trvat. Přečtěte si [další informace](https://docs.microsoft.com/en-us/azure/migrate/concepts-collector#what-data-is-collected) o datech, která shromažďuje kolektor Azure Migrate.
 
 > [!NOTE]
 > Kolektor podporuje jako jazyk operačního systému a jazyk rozhraní kolektoru jen angličtinu (Spojené státy). Brzy bude k dispozici podpora pro další jazyky.
@@ -219,7 +197,7 @@ Zobrazení Připravenost pro Azure v posouzení zobrazuje stav připravenosti je
 - Nepřipraveno pro Azure
 - Připravenost neznámá
 
-U virtuálních počítačů, které jsou pro migraci vhodné, doporučí Azure Migrate velikost virtuálního počítače v Azure. Velikost doporučená službou Azure Migrate vychází z kritéria určení velikosti zadaného ve vlastnostech posouzení. Pokud je kritérium určení velikosti založené na výkonu, doporučená velikost bude vycházet z historie výkonu virtuálních počítačů. Pokud je kritérium určení velikosti „jako u místních“, doporučení velikosti virtuálního počítače v Azure se provede na základě velikosti místního virtuálního počítače (určí se stejná velikost). Data využití procesoru a paměti virtuálního počítače se při určování velikosti virtuálního počítače neberou v potaz. V případě určování velikosti „jako u místních“ se ale velikost disků určuje na základě dat výkonu.  [Další informace](concepts-assessment-calculation.md) o určování velikosti službou Azure Migrate.
+U virtuálních počítačů, které jsou pro migraci vhodné, doporučí Azure Migrate velikost virtuálního počítače v Azure. Velikost doporučená službou Azure Migrate vychází z kritéria určení velikosti zadaného ve vlastnostech posouzení. Pokud je kritérium velikosti založené na výkonu, doporučí se velikost zohledněním historie výkonu virtuálních počítačů (procesor a paměť) a disků (IOPS a propustnost). Pokud se používá kritérium velikosti „jako místní“, nebude Azure Migrate pro virtuální počítač a disky zohledňovat údaje o výkonu. Velikost virtuálního počítače v Azure se doporučí zjištěním velikosti místního virtuálního počítače a velikost disku se určí na základě typu úložiště určeného ve vlastnostech posouzení (výchozí jsou disky Premium). [Další informace](concepts-assessment-calculation.md) o určování velikosti službou Azure Migrate.
 
 U virtuálních počítačů, které pro Azure nejsou připravené nebo jsou připravené s podmínkou, vysvětlí Azure Migrate problémy s připraveností a nabídne kroky pro odstranění problémů.
 
@@ -244,7 +222,7 @@ Odhadované měsíční náklady na výpočetní kapacitu a úložiště jsou ag
 
 Ke každému posouzení ve službě Azure Migrate se přidruží hodnocení spolehlivosti v rozsahu od 1 do 5 hvězdiček (1 hvězdička znamená nejnižší a 5 hvězdiček nejvyšší spolehlivost). Hodnocení spolehlivosti se k posouzení přiřadí na základě dostupnosti datových bodů potřebných pro výpočet posouzení. Hodnocení spolehlivosti posouzení pomáhá odhadnout spolehlivost doporučení velikostí poskytovaných službou Azure Migrate.
 
-K určení velikosti virtuálního počítače na základě výkonu potřebuje Azure Migrate data o využití procesoru a paměti. Při určování velikosti jednotlivých disků připojených k virtuálnímu počítači také potřebuje informace o vstupně-výstupních operacích čtení a zápisu za sekundu a propustnosti. Podobně u každého síťového adaptéru připojeného k virtuálnímu počítači potřebuje Azure Migrate k určení velikosti na základě výkonu informace o síťových vstupech a výstupech. Pokud některá z výše uvedených čísel o využití nejsou v systému vCenter Server k dispozici, doporučení velikosti provedené službou Azure Migrate nemusí být spolehlivé. Tady je poskytnuté hodnocení spolehlivosti posouzení v závislosti na procentu dostupných datových bodů:
+Hodnocení spolehlivosti posouzení je užitečnější u posouzení s kritériem velikosti založeným na výkonu. K určení velikosti na základě výkonu potřebuje Azure Migrate data o využití procesoru a paměti virtuálního počítače. Pro každý disk připojený k virtuálnímu počítači navíc potřebuje IOPS a propustnost disku. Podobně u každého síťového adaptéru připojeného k virtuálnímu počítači potřebuje Azure Migrate k určení velikosti na základě výkonu informace o síťových vstupech a výstupech. Pokud některá z výše uvedených čísel o využití nejsou v systému vCenter Server k dispozici, doporučení velikosti provedené službou Azure Migrate nemusí být spolehlivé. Tady je poskytnuté hodnocení spolehlivosti posouzení v závislosti na procentu dostupných datových bodů:
 
    **Dostupnost datových bodů** | **Hodnocení spolehlivosti**
    --- | ---
@@ -269,3 +247,4 @@ Posouzení nemusí mít k dispozici všechny datové body z některého z násle
 - Zjistěte, jak vytvořit vysoce spolehlivé skupiny posouzení pomocí [mapování závislosti počítačů](how-to-create-group-machine-dependencies.md).
 - [Přečtěte si další informace](concepts-assessment-calculation.md) o tom, jak se v rámci posouzení počítají náklady.
 - [Přečtěte si](how-to-scale-assessment.md), jak zjistit a posoudit virtuální počítače v rozsáhlém prostředí VMware.
+- [Přečtěte si další informace](resources-faq.md) o nejčastějších dotazech k Azure Migrate.

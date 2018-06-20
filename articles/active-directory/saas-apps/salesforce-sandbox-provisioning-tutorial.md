@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: bab73fda-6754-411d-9288-f73ecdaa486d
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 1c0b39a73de21c6296f09dbedefc3c84d39dfeea
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7a6dbfbf071c0c760cb096d200cd39bfca3dfa2e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899264"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227900"
 ---
 # <a name="tutorial-configure-salesforce-sandbox-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby Salesforce izolovaného prostoru pro zřizování automatické uživatelů
 

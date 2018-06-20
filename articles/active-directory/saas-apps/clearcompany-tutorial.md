@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 2819da18-c7eb-43cf-aac3-1403a540bf6e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: jeedes
-ms.openlocfilehash: cf10c1b3bc1ff76a15ae3e73e2c8e5f045052ce1
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: fa6f7e601bf9734e0b15fd18f19a9db2f8ec866c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903335"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231555"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clearcompany"></a>Kurz: Azure Active Directory integrace s ClearCompany
 

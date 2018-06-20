@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: b2c8dccb-eeb0-4f4d-a24d-8320631ce819
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 8ff07d771085c6f51e3ebb81e9072683e1df3801
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 0a3d0fd8d6fda711608b40a975fd1f4bf1e88a7d
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35897336"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218060"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-yodeck"></a>Kurz: Azure Active Directory integrace s Yodeck
 

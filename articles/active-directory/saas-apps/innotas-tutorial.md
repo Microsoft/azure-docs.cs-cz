@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: eb9e9c2c-4b09-4177-bbab-423fd657448e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: ce7c49828c5a9a7b6445f83e39bf4136f8885c15
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 0fe1150763931f170d23565870a1b633e9c25c4e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901032"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227502"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-innotas"></a>Kurz: Azure Active Directory integrace s Innotas
 

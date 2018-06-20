@@ -1,6 +1,6 @@
 ---
-title: Podmínky v Azure Active Directory podmíněného přístupu | Microsoft Docs
-description: Zjistěte, jak používá přiřazení podmíněného přístupu Azure Active Directory k aktivaci zásadu.
+title: Jaké jsou podmínky v Azure Active Directory podmíněného přístupu? | Dokumenty Microsoft
+description: Zjistěte, jak používá podmínky podmíněného přístupu Azure Active Directory k aktivaci zásadu.
 services: active-directory
 keywords: podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/01/2018
+ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 5f0ff092a7535448d48642e972d1d36652f1b83f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 42792170593dbd94d0eae9b408c70f326891508a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34735137"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232305"
 ---
-# <a name="conditions-in-azure-active-directory-conditional-access"></a>Podmínky v Azure Active Directory podmíněného přístupu 
+# <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Jaké jsou podmínky v Azure Active Directory podmíněného přístupu? 
 
 S [podmíněného přístupu Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md), jak oprávněným uživatelům přístup můžete řídit cloudových aplikací. V zásadách podmíněného přístupu které definujete odpovědi ("to") důvod aktivován vaší zásady ("v takovém případě"). 
 
@@ -140,7 +140,7 @@ Běžné případy použití pro tuto podmínku jsou zásady, které:
 
 - Blokujte přístup pro uživatele, kteří používají službu z konkrétní zemích nebo oblastech. 
 
-Další informace najdete v tématu [podmínky umístění v Azure Active Directory podmíněného přístupu](active-directory-conditional-access-locations.md).
+Další informace najdete v tématu [co je podmínka umístění v Azure Active Directory podmíněného přístupu?](active-directory-conditional-access-locations.md)
 
 
 ## <a name="client-apps"></a>Klientské aplikace
@@ -241,7 +241,7 @@ Ne. Neexistuje žádná změna v chování výchozí zásady. Zásady pokračuje
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud chcete vědět, jak konfigurovat zásadu podmíněného přístupu, najdete v článku [Začínáme s podmíněným přístupem v Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md).
+- Pokud chcete vědět, jak konfigurovat zásadu podmíněného přístupu, najdete v článku [vyžadovat vícefaktorové ověřování pro konkrétní aplikace s podmíněným přístupem Azure Active Directory](active-directory-conditional-access-app-based-mfa.md).
 
 - Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro prostředí, najdete v článku [osvědčené postupy pro podmíněný přístup v Azure Active Directory](active-directory-conditional-access-best-practices.md). 
 

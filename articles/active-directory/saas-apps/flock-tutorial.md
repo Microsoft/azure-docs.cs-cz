@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7b2c3ac5-17f1-49a0-8961-c541b258d4b1
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 88dda054a252d28c15d628dafd79f86e4913e2e0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 633828cc7e244dca1e43c45852910211aeda68d9
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903153"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229491"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>Kurz: Azure Active Directory integrace s hejna
 

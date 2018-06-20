@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 5ff49168-ef81-4169-8e5e-dc86e24dd5e5
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 9636ed2c5586f906ed462bdce83fd4a428f2300c
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e316135dd9d989f214ddeb687d648fd724e214e7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901646"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213796"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>Kurz: Azure Active Directory integrace s prodejní informací – informace správy
 

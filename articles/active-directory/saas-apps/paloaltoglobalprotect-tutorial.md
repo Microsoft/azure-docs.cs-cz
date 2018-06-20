@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 03bef6f2-3ea2-4eaa-a828-79c5f1346ce5
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jeedes
-ms.openlocfilehash: 533571ae6d94255f94eadf086f27b7df085c0e36
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e840a8cbcbf03bf6a658047686f4d4a29994af09
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900993"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---globalprotect"></a>Kurz: Azure Active Directory integrace se sítěmi Palo Alto - GlobalProtect
 

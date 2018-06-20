@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 320b0daf-14be-4813-b59b-25a6a5070690
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 23d967e67a21c807b156e3f5766920ceeebc33d4
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 925d4b0d8c116887c14d22f821500273daefba40
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904061"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218590"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workpath"></a>Kurz: Azure Active Directory integrace s Workpath
 

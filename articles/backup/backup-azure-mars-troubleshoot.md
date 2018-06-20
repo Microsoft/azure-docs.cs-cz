@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/4/2017
 ms.author: saurse
-ms.openlocfilehash: aee0a3044ea4d1b9b867e795e94a37f8835ad212
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 89a39f6189367f91248b3868b1e1cb9f6abf0407
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605752"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228386"
 ---
 # <a name="troubleshoot-azure-backup-agent-configuration-and-registration-issues"></a>Řešení potíží s Azure Backup Agent konfigurace a registrace problémy
 ## <a name="recommended-steps"></a>Doporučené kroky
@@ -36,13 +36,19 @@ Naleznete v následujících tabulkách vyřešit chyby, které můžete narazit
 
 | Detaily chyby | Možné příčiny | Doporučené akce |
 | ---     | ---     | ---    |      
-| **Chyba** </br>*Nepodařilo se nastavit šifrovací klíč pro zabezpečené zálohy. Aktuální operace selhala kvůli vnitřní chyba: Neplatné vstupní chybě služby'. Opakujte operaci po určité době. Pokud potíže potrvají, kontaktujte prosím podporu společnosti Microsoft*. |Server je již zaregistrována k jiné trezoru.| Zrušte registraci serveru z trezoru a znovu zaregistrujte.
+| **Chyba** </br>*Nepodařilo se nastavit šifrovací klíč pro zabezpečené zálohy aktivace nebylo zcela úspěšné, ale šifrovací přístupové heslo byla uložena do následujícího souboru*. |<li>Server je již zaregistrována k jiné trezoru.<li>Během konfigurace byla poškozena heslo| Zrušte registraci serveru z trezoru a zaregistrovat znovu nové heslo.
 
 ## <a name="the-activation-did-not-complete-successfully-the-current-operation-failed-due-to-an-internal-service-error-0x1fc07"></a>Aktivace nebyla úspěšně dokončena. Aktuální operace selhala kvůli vnitřní chybě služby [0x1FC07]
 
 | Detaily chyby | Možné příčiny | Doporučené akce |
 | ---     | ---     | ---    |          
-| **Chyba** </br><ol><li>*Aktivace nebyla úspěšně dokončena. Aktuální operace selhala kvůli vnitřní chybě služby [0x1FC07]. Opakujte operaci po určité době. Pokud potíže potrvají, kontaktujte prosím podporu společnosti Microsoft* <li>*Došlo k chybě 34506. Šifrovací přístupové heslo uložené v tomto počítači není správně nakonfigurováno*. | <li> Pracovní složka je umístěna ve svazku, který nemá dostatek místa. <li> Pracovní složky přesunula nesprávně do jiného umístění. <li> OnlineBackup.KEK soubor nebyl nalezen. | <li>Přesuňte pomocné složku nebo umístění mezipaměti na svazek s ekvivalent hodnoty 5 až 10 % volného místa a celkové velikosti zálohovaná data. Správně přesunout umístění mezipaměti, naleznete postup v [dotazy týkající se Azure Backup Agent](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Ujistěte se, že je soubor OnlineBackup.KEK k dispozici. <br>*Výchozí umístění pro pomocné složka nebo cesta k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.
+| **Chyba** </br><ol><li>*Aktivace nebyla úspěšně dokončena. Aktuální operace selhala kvůli vnitřní chybě služby [0x1FC07]. Opakujte operaci po určité době. Pokud potíže potrvají, kontaktujte prosím podporu společnosti Microsoft*| <li> Pracovní složka je umístěna ve svazku, který nemá dostatek místa. <li> Pracovní složky přesunula nesprávně do jiného umístění. <li> OnlineBackup.KEK soubor nebyl nalezen. | <li>Upgradujte na [nejnovější verzi](http://aka.ms/azurebackup_agent) agenta MARS.<li>Přesuňte pomocné složku nebo umístění mezipaměti na svazek s ekvivalent hodnoty 5 až 10 % volného místa a celkové velikosti zálohovaná data. Správně přesunout umístění mezipaměti, naleznete postup v [dotazy týkající se Azure Backup Agent](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Ujistěte se, že je soubor OnlineBackup.KEK k dispozici. <br>*Výchozí umístění pro pomocné složka nebo cesta k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.
+  
+## <a name="error-34506-the-encryption-passphrase-stored-on-this-computer-is-not-correctly-configured"></a>Došlo k chybě 34506. Šifrovací přístupové heslo uložené v tomto počítači není správně nakonfigurováno.
+
+| Detaily chyby | Možné příčiny | Doporučené akce |
+| ---     | ---     | ---    |          
+| **Chyba** </br><ol><li>*Došlo k chybě 34506. Šifrovací přístupové heslo uložené v tomto počítači není správně nakonfigurováno*. | <li> Pracovní složka je umístěna ve svazku, který nemá dostatek místa. <li> Pracovní složky přesunula nesprávně do jiného umístění. <li> OnlineBackup.KEK soubor nebyl nalezen. | <li>Upgradujte na [nejnovější verzi](http://aka.ms/azurebackup_agent) agenta MARS.<li>Přesuňte pomocné složku nebo umístění mezipaměti na svazek s ekvivalent hodnoty 5 až 10 % volného místa a celkové velikosti zálohovaná data. Správně přesunout umístění mezipaměti, naleznete postup v [dotazy týkající se Azure Backup Agent](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq#backup).<li> Ujistěte se, že je soubor OnlineBackup.KEK k dispozici. <br>*Výchozí umístění pro pomocné složka nebo cesta k umístění mezipaměti je C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.  
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Kontaktování podpory
 Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém.

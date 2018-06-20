@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: cda8eba6-843f-4a09-8c55-0aaf6e593d75
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: d170cea82a0e2b5e0a2ba03461f4f5f94712831a
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: b45906c8ca22965865bc4bce5132677113bfb6db
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901758"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227747"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-360-online"></a>Kurz: Azure Active Directory integrace s 360 Online
 

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 12c1a4b2b1f3e433721b9c8a335c6b55de746643
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: ab053e9b132630c19b6966286035d38c71c6b4d9
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158145"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36268133"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Glosář vývojáře Azure Active Directory
 Tento článek obsahuje definice pro některé základní koncepty vývojáře Azure Active Directory (AD), což je užitečné při získávání informací o vývoj aplikací pro Azure AD.
@@ -45,7 +45,7 @@ Funkce poskytované [portál Azure][AZURE-portal], který vytvoří reprezentaci
 ## <a name="application-object"></a>objekt aplikace
 Pokud jste registrace nebo aktualizovat aplikaci v [portál Azure][AZURE-portal], portálu pro vytvoření nebo aktualizace objekt aplikace a odpovídající [objekt zabezpečení služby](#service-principal-object) pro tohoto klienta. Objekt aplikace *definuje* aplikace je konfigurace identity globálně (v rámci všech klientů kde má přístup), poskytuje šablony, ze kterého se odpovídající hlavní objekty služby  *odvozené* pro použití místně za běhu (v konkrétní klienta).
 
-V tématu [aplikací a hlavní objekty služeb] [ AAD-App-SP-Objects] Další informace.
+Další informace najdete v tématu [aplikací a hlavní objekty služeb][AAD-App-SP-Objects].
 
 ## <a name="application-registration"></a>registrace aplikace
 Aby bylo možné aplikaci do integrovat a delegovat mu funkce identita a správa přístupu ke službě Azure AD, je nutné jej zaregistrovat s Azure AD [klienta](#tenant). Při registraci vaší aplikace s Azure AD, tím konfigurace aplikace identity pro vaši aplikaci, díky kterému jej integraci se službou Azure AD a pomocí funkce, jako například:
@@ -132,7 +132,7 @@ Jako [obory](#scopes), role poskytují způsob, jak [server prostředků](#resou
 
 Role jsou definované prostředků řetězců (například "výdajů schvalovatel", "Jen pro čtení", "Directory.ReadWrite.All"), kterou spravuje v [portál Azure] [ AZURE-portal] prostřednictvím prostředku [aplikace manifest](#application-manifest)a uloženy v prostředku [appRoles vlastnost][AAD-Graph-Sp-Entity]. Portál Azure slouží také k přiřazení uživatele k rolím "user" a proveďte konfiguraci klienta [oprávnění aplikací](#permissions) pro přístup roli "aplikace".
 
-Podrobnou diskuzi o aplikační role vystavené Azure AD Graph API, najdete v části [obory oprávnění rozhraní API grafu][AAD-Graph-Perm-Scopes]. Implementace podrobný příklad najdete v tématu [řízení přístupu v cloudových aplikacích pomocí služby Azure AD na základě Role][Duyshant-Role-Blog].
+Podrobnou diskuzi o aplikační role vystavené Azure AD Graph API, najdete v části [obory oprávnění rozhraní API grafu][AAD-Graph-Perm-Scopes]. Implementace podrobný příklad najdete v tématu [Správa přístupu pomocí RBAC a webu Azure portal][AAD-RBAC].
 
 ## <a name="scopes"></a>Obory
 Jako [role](#roles), obory poskytují způsob, jak [server prostředků](#resource-server) které řídí přístup k jeho chráněným prostředkům. Obory slouží k implementaci [obor] [ OAuth2-Access-Token-Scopes] pro přístup k řízení, [klientská aplikace](#client-application) , nebyla zadána Delegovaný přístup k prostředku jeho vlastníka.
@@ -147,7 +147,7 @@ Podepsaný dokument obsahující deklarace identity, například tokenu OAuth2 n
 ## <a name="service-principal-object"></a>objekt zabezpečení služby
 Když jste registrace nebo aktualizovat aplikaci v [portál Azure][AZURE-portal], portálu pro vytvoření nebo aktualizace i [objektu application](#application-object) a odpovídající objekt zabezpečení služby pro tohoto klienta. Objekt aplikace *definuje* konfigurace identity aplikace globálně (v rámci všech klientů kde v přidružené aplikaci udělit přístup), a je šablona, ze kterého jeho odpovídající instančního objektu objekty jsou *odvozené* pro použití místně za běhu (v konkrétní klienta).
 
-V tématu [aplikací a hlavní objekty služeb] [ AAD-App-SP-Objects] Další informace.
+Další informace najdete v tématu [aplikací a hlavní objekty služeb][AAD-App-SP-Objects].
 
 ## <a name="sign-in"></a>přihlášení
 Proces [klientská aplikace](#client-application) inicializaci ověřování koncového uživatele a zaznamenávání související stav, za účelem získání [token zabezpečení](#security-token) a obor relace aplikace na tento stav. Stavu může obsahovat artefaktů, jako jsou informace o profilu uživatele a informace odvozené z tokenu deklarací identity.
@@ -155,7 +155,7 @@ Proces [klientská aplikace](#client-application) inicializaci ověřování kon
 Funkce přihlášení aplikace se obvykle používá k implementaci jednotného přihlašování (SSO). Ho může také předcházet "registrace" funkce, jako vstupní bod pro koncové uživatele k získání přístupu k aplikaci (při prvním přihlášení). Registrace funkce slouží ke shromažďování a zachovat další stav specifická pro uživatele a může vyžadovat [souhlas uživatele](#consent).
 
 ## <a name="sign-out"></a>adresa URL
-Proces zrušení ověřovací přidružené koncového uživatele, odpojení stavu uživatele [klientská aplikace](#client-application) během relaci [přihlášení](#sign-in)
+Přidružený proces unauthenticating koncového uživatele, odpojení stavu uživatele [klientská aplikace](#client-application) během relaci [přihlášení](#sign-in)
 
 ## <a name="tenant"></a>tenant
 Instance adresáře služby Azure AD se označuje jako klient služby Azure AD. Poskytuje několik funkcí, včetně:
@@ -170,18 +170,18 @@ Během registrace, poskytnete Správa identit a přístupu funkce pro předplatn
 Jeden z koncových bodů implementované [serveru ověřování](#authorization-server) podpory OAuth2 [autorizace uděluje](#authorization-grant). V závislosti na udělení, může být použitý k získání [přístupový token](#access-token) (a související token "aktualizovat") na [klienta](#client-application), nebo [ID token](#ID-token) při použití s [OpenID Připojit] [ OpenIDConnect] protokolu.
 
 ## <a name="user-agent-based-client"></a>Na základě uživatelského agenta klienta
-Typ [klientská aplikace](#client-application) zda stáhne kód z webového serveru a spustí v rámci uživatelského agenta (například webový prohlížeč), jako je například jedné stránce aplikace (SPA). Vzhledem k tomu, že veškerý kód se spustí na zařízení, bude považován za "veřejná" klienta z důvodu jeho nemohou k uložení pověření soukromě nebo jako s důvěrnými. V tématu [OAuth2 klienta typy a profily] [ OAuth2-Client-Types] další podrobnosti.
+Typ [klientská aplikace](#client-application) zda stáhne kód z webového serveru a spustí v rámci uživatelského agenta (například webový prohlížeč), jako je například jedné stránce aplikace (SPA). Vzhledem k tomu, že veškerý kód se spustí na zařízení, bude považován za "veřejná" klienta z důvodu jeho nemohou k uložení pověření soukromě nebo jako s důvěrnými. Další informace najdete v tématu [OAuth2 klienta typy a profily][OAuth2-Client-Types].
 
 ## <a name="user-principal"></a>hlavní název uživatele
 Podobně jako objekt zabezpečení služby se používá k reprezentaci instanci aplikace, je objekt zabezpečení uživatele jiný typ objektu, zabezpečení, který reprezentuje uživatele. Azure AD Graph [entitu uživatele] [ AAD-Graph-User-Entity] definuje schéma pro objekt uživatele, včetně vlastnosti související s uživatelem, například křestní jméno a příjmení, hlavní název uživatele, členství v rolích directory atd. To poskytuje konfigurace identity uživatele pro Azure AD k navázání hlavní název uživatele při spuštění. Hlavní název uživatele se používá k reprezentování ověřeného uživatele pro jednotné přihlašování, zaznamenávání [souhlas](#consent) delegování, provedení rozhodnutí o řízení přístupu, atd.
 
 ## <a name="web-client"></a>Webový klient
-Typ [klientská aplikace](#client-application) , která se spouští všechny kódu na webovém serveru a může fungovat jako "důvěrné informace" klienta bezpečně uloží pověření uživatele na serveru. V tématu [OAuth2 klienta typy a profily] [ OAuth2-Client-Types] další podrobnosti.
+Typ [klientská aplikace](#client-application) , která se spouští všechny kódu na webovém serveru a může fungovat jako "důvěrné informace" klienta bezpečně uloží pověření uživatele na serveru. Další informace najdete v tématu [OAuth2 klienta typy a profily][OAuth2-Client-Types].
 
 ## <a name="next-steps"></a>Další postup
-[Příručka vývojáře pro Azure AD] [ AAD-Dev-Guide] je cílová stránka pro použití při vývoji všechny Azure AD související témata, včetně přehledu [integraci aplikací] [ AAD-How-To-Integrate] a základní informace o [ověřování Azure AD a scénáře podporované ověřování][AAD-Auth-Scenarios]. Taky můžete najít ukázky kódu & kurzy o tom, jak získat rychle vytvořit a spustit na [Githubu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
+[Příručka vývojáře pro Azure AD] [ AAD-Dev-Guide] je cílová stránka pro všechny služby Azure AD vývoj související témata, včetně přehled [integraci aplikací] [ AAD-How-To-Integrate] a základní informace o [ověřování Azure AD a scénáře podporované ověřování][AAD-Auth-Scenarios]. Taky můžete najít ukázky kódu & kurzy o tom, jak získat rychle vytvořit a spustit na [Githubu](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
-Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah, včetně žádostí pro nové definice nebo aktualizuje existující!
+Použijte následující sekci komentáře k poskytnutí zpětné vazby a pomoci Upřesnit a utvářejí tohoto obsahu, včetně žádostí pro nové definice nebo aktualizuje existující!
 
 <!--Image references-->
 
@@ -194,7 +194,7 @@ Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozt
 [AAD-Graph-App-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity
 [AAD-Graph-Sp-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity
 [AAD-Graph-User-Entity]: https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity
-[AAD-How-Subscriptions-Assoc]: ../active-directory-how-subscriptions-associated-directory.md
+[AAD-How-Subscriptions-Assoc]:../fundamentals/active-directory-how-subscriptions-associated-directory.md
 [AAD-How-To-Integrate]: ./active-directory-how-to-integrate.md
 [AAD-How-To-Tenant]: active-directory-howto-tenant.md
 [AAD-Integrating-Apps]: ./active-directory-integrating-applications.md
@@ -202,7 +202,7 @@ Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozt
 [AAD-Security-Token-Claims]: ./active-directory-authentication-scenarios/#claims-in-azure-ad-security-tokens
 [AAD-Tokens-Claims]: ./active-directory-token-and-claims.md
 [AZURE-portal]: https://portal.azure.com
-[Duyshant-Role-Blog]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
+[AAD-RBAC]: ../../role-based-access-control/role-assignments-portal.md
 [JWT]: https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32
 [Microsoft-Graph]: https://graph.microsoft.io
 [O365-Perm-Ref]: https://msdn.microsoft.com/office/office365/howto/application-manifest

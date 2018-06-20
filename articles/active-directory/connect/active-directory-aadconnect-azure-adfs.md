@@ -1,5 +1,5 @@
 ---
-title: Služba AD FS (Active Directory Federation Services) v Azure | Microsoft Docs
+title: Služba AD FS (Active Directory Federation Services) v Azure | Dokumentace Microsoftu
 description: V tomto dokumentu se dozvíte, jak nasadit služby AD FS v Azure a zajistit vysokou dostupnost.
 keywords: nasazení AD FS v Azure, nasazení Azure AD FS, Azure AD FS, Azure ADFS, nasazení AD FS, nasazení AD FS, AD FS v Azure, nasazení ADFS v Azure, nasazení AD FS v Azure, AD FS Azure, úvod do služby AD FS, Azure, AD FS v Azure, IAAS, ADFS, přesunutí AD FS do Azure
 services: active-directory
@@ -14,13 +14,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
+ms.component: hybrid
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 76ed05d55389e2c05b38fe1f2c239f544c6a5d38
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: b5ac1e4c62242c088a0ac84fffc0211baf442b53
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34595195"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Nasazení služby AD FS (Active Directory Federation Service) v Azure
 Služby AD FS nabízí zjednodušené možnosti zabezpečené federace identit a jednotného přihlašování na webu (SSO). Federace pomocí Azure AD nebo O365 uživatelům umožňuje ověřování pomocí místních přihlašovacích údajů a přístup ke všem prostředkům v cloudu. V důsledku toho je důležité mít vysoce dostupnou infrastrukturu služby AD FS, která zajistí přístup k místním prostředkům i k prostředkům v cloudu. Nasazení služby AD FS v Azure může zajistit požadovanou vysokou dostupnost při minimálním úsilí.
@@ -188,7 +190,7 @@ Na panelu nástrojů pro vyrovnávání zatížení vyberte nově vytvořený n�
 Na panelu nastavení interního nástroje pro vyrovnávání zatížení vyberte Testy.
 
 1. Klikněte na Přidat.
-2. Zadejte podrobnosti testu. a. **Název**: Název testu. b. **Protokol**: TCP. c. **Port**: 443 (HTTPS). d. **Interval**: 5 (výchozí hodnota) – jedná se o interval, ve kterém bude interní nástroj pro vyrovnávání zatížení testovat počítače v back-endovém fondu. e. **Chybný limit prahové hodnoty**: 2 (výchozí hodnota) – jedná se o prahovou hodnotu po sobě jdoucích selhání testu, po kterých bude interní nástroj pro vyrovnávání zatížení deklarovat počítač v back-endovém fondu jako nereagující a přestane na něj směrovat provoz.
+2. Zadejte podrobnosti testu. a. **Název**: Název testu. b. **Protokol**: TCP. c. **Port**: 443 (HTTPS). d. **Interval**: 5 (výchozí hodnota) – jedná se o interval, ve kterém bude interní nástroj pro vyrovnávání zatížení testovat počítače v back-endovém fondu. e. **Limit prahové hodnoty špatného stavu**: 2 (výchozí hodnota) – jedná se o prahovou hodnotu po sobě jdoucích selhání testu, po kterých bude interní nástroj pro vyrovnávání zatížení deklarovat počítač v back-endovém fondu jako nereagující a přestane na něj směrovat provoz.
 
 ![Konfigurace testu interního nástroje pro vyrovnávání zatížení](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
 

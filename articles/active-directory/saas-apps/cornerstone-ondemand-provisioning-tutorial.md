@@ -8,18 +8,19 @@ writer: zhchia
 manager: beatrizd
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
-ms.openlocfilehash: d7da0c63d97a153e61f66b880b47bfcccff656c2
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 8e31400363800f557c6f7c81060c59ac3defb184
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899093"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215150"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Kurz: Konfigurace základním kamenem OnDemand pro zřizování automatické uživatelů
 

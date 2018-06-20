@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 6341e67e-8ce6-42dc-a4ea-7295904a53ef
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 40eee26e1cc685576c08a6bfef0fbe152916090e
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2b085d8b825055b5cb318da200eafb6d9000bf4b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904041"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213099"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Kurz: Konfigurace síti na pracovišti ve službě Facebook pro zřizování automatické uživatelů
 

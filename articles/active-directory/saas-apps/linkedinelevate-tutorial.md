@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 2ad9941b-c574-42c3-bd0f-5d6ec68537ef
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: f7c2f41f60123c8f99503e0a5977a9d137ca27dd
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 9f0d7b2a46cf99c6e1f772a91ed07f7ca91d77a7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903317"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227730"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-elevate"></a>Kurz: Azure Active Directory integrace s LinkedIn zvýšení oprávnění
 

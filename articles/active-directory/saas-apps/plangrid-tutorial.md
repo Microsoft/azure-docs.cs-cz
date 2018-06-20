@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 0ba72432-9b49-4358-b756-14c982422be8
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: jeedes
-ms.openlocfilehash: 0fa60ceb6a9e0a4fb0f390be99f52d9596ebf3a4
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 042a5cb65322ddfc13b60661fde6eba9e78a26df
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901684"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218246"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-plangrid"></a>Kurz: Azure Active Directory integrace s PlanGrid
 

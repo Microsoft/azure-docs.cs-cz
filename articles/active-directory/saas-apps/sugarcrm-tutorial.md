@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 3331b9fc-ebc0-4a3a-9f7b-bf20ee35d180
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 72da81d3b208fce6375bcafb66caac0124699507
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 99699161e8047932d27b4b124255701d13a4ec41
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901764"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36225860"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sugar-crm"></a>Kurz: Azure Active Directory integrace s Sugar CRM
 

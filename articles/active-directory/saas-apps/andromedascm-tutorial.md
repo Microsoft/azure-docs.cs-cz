@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 7a142c86-ca0c-4915-b1d8-124c08c3e3d8
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: jeedes
-ms.openlocfilehash: c43e1b2216fa90821f586d6eb55846ee6b11ef40
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 09f2f854e3b5a70938b6c47bb7dfb5fdf6d52df3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904017"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>Kurz: Azure Active Directory integrace s Andromeda
 

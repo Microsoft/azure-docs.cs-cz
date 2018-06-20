@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: v-geberr
-ms.openlocfilehash: bf131877080f46781e74991ef627922384cc4c08
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 70bca3b181e02f42da50e827154193936544131a
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343818"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36263814"
 ---
 # <a name="keys-in-luis"></a>Klíče v LEOŠ
 LEOŠ používá dva klíče: [vytváření](#programmatic-key) a [koncový bod](#endpoint-key). Vytváření klíč je vytvořen automaticky při vytvoření účtu LEOŠ. Až budete připraveni k publikování aplikace LEOŠ, budete muset [vytvořit klíč koncového bodu](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [ji přiřadit](Manage-keys.md#assign-endpoint-key) do vaší aplikace LEOŠ a [pomocí dotazu koncový bod](#use-endpoint-key-in-query). 
@@ -76,4 +76,4 @@ Pokud překročíte vaší za druhé kvótu, obdržíte chybu HTTP 429. Pokud p�
 
 * Další informace [koncepty](Manage-Keys.md#assign-endpoint-key) o vytváření a koncového bodu klíče.
 
-[LUIS]:luis-reference-regions.md#luis-website
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 26290c65-9aa3-42ab-8ba5-901b14dc8e73
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 00ab7d894c50a18cb27b3420b51fee38fcf8d58f
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c30da2ecebd7c46e8396351f7e7c5ee69c130e29
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35912820"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217030"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redbrick-health"></a>Kurz: Azure Active Directory integrace s RedBrick stavu
 

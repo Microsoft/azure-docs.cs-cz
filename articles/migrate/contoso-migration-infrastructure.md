@@ -3,17 +3,16 @@ title: Contoso-nastavení infrastruktury a migrace | Microsoft Docs
 description: Zjistěte, jak Contoso nastaví infrastruktury Azure pro migraci do Azure.
 services: azure-migrate
 author: rayne-wiselman
-manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 06/19/2018
 ms.author: raynew
-ms.openlocfilehash: 8b7f0675c1bbf378d02eb52843caf27a1dce2fb8
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: bf861dc6317a8cc3a3ed862dfd6c133a1dcbe685
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301197"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232300"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso – nasazení infrastruktury migrace
 
@@ -42,11 +41,12 @@ V tomto článku, který Contoso nastavit všechny prvky infrastruktury musí do
 
 Předtím, než se můžete migrovat do Azure, je velmi důležité, aby Contoso připravit infrastrukturu.  Obecně platí existují pět široký oblastí, které potřebují k vezměte v úvahu:
 
-1. **Předplatná Azure**: jak se budou nákupu Azure a komunikovat s platformy Azure a službami?
-2. **Hybridní identita**: jak se budou spravovat a řídit přístup k místním a prostředky Azure po migraci? Jak se rozšířit nebo přesunout do cloudu a správu identit?
-3. **Zotavení po havárii a odolnosti**: jak se zajistí jejich aplikace a infrastrukturu odolné Pokud dojde k výpadkům a havárií?
-4. **Sítě**: jak by se návrhu sítě infrastruktury a navázat připojení mezi jejich místního datového centra a Azure?
-5. **Zabezpečení a zásad správného řízení**: jak bude nemají zabezpečit jejich nasazení hybridní/Azure a udržovat v souladu s požadavky na zabezpečení a zásad správného řízení?
+**Krok 1: Předplatná Azure**: jak se budou nákupu Azure a komunikovat s platformy Azure a službami?  
+**Krok 2: Hybridní identita**: jak se budou spravovat a řídit přístup k místním a prostředky Azure po migraci? Jak se rozšířit nebo přesunout do cloudu a správu identit?  
+**Krok 3: Zotavení po havárii a odolnost proti**: jak se zajistí jejich aplikace a infrastrukturu odolné Pokud dojde k výpadkům a havárií?  
+**Krok 4: Sítě**: jak by se návrhu sítě infrastruktury a navázat připojení mezi jejich místního datového centra a Azure?  
+**Krok 5: Zabezpečení**: jak se budou zabezpečené jejich nasazení hybridní/Azure?  
+**Krok 6: Zásad správného řízení**: jak se uchová jejich nasazení, v souladu s požadavky na zabezpečení a zásad správného řízení?
 
 ## <a name="before-you-start"></a>Než začnete
 
@@ -780,4 +780,4 @@ Pomocí této infrastruktury na místě jsou připravení přesunout a vyzkouše
 
 ## <a name="next-steps"></a>Další postup
 
-Jako první scénář migrace budou Contoso migrovat své místní SmartHotel Dvojúrovňová aplikace běžící na virtuálních počítačích VMware do Azure. Jejich budete migrovat virtuální počítače aplikace na virtuálních počítačích Azure a databázi aplikace spravované Instance SQL Azure.
+Jako první scénář migrace, se chystáte Contoso [vyhodnocení jejich místní SmartHotel Dvojúrovňová aplikace pro migraci na Azure](contoso-migration-assessment.md). 

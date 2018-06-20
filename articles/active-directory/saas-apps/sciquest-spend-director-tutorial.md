@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 9fab641b-292e-4bef-91d1-8ccc4f3a0c1f
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 5b5e650dab3e45808ccbccab630509aa62a70c82
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2cfc6b2135b59862b75f6833555f6ec43a402db7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903209"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219002"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>Kurz: Azure Active Directory integrace s SciQuest tráví ředitel
 

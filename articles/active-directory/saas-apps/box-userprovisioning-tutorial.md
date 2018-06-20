@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 1c959595-6e57-4954-9c0d-67ba03ee212b
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: jeedes
-ms.openlocfilehash: 507492172673d69799d0e8d84163576dc19c1272
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2a2bb427e00e735e5f0dfaa0c85e60afbe890ea6
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899320"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230416"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Kurz: Konfigurace pole pro zřizování automatické uživatelů
 

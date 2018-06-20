@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 1d4b1149-ba3b-4f4e-8bce-9791316b730d
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 578805c11ea8c311033cf94201cd45c0eb1c1765
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 11edcfe1075d2afc6c62db5e125d2d150e8c7bfc
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899150"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>Kurz: Azure Active Directory integrace s Tableau Online
 

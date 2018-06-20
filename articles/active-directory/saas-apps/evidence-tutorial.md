@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: f9a7cb7c-ff67-40dc-872c-1fa35f9dd03b
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
-ms.openlocfilehash: 3727f35733c339ffc8f18fc9e31163ef65dce7f7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: a40ec6e8cea8515e84690e3f95c2b3440c359b55
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901654"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231623"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>Kurz: Azure Active Directory integrace s Evidence.com
 

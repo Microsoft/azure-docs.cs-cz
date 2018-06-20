@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 74d5dea5-2c48-464a-a7d0-cdd481c429d7
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 78af1a8453dcddee48002ec541c3dc40c86d6d35
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 91141a4aecfafa3b1806496207638c345a0a0ce0
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899018"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222256"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-openpages"></a>Kurz: Azure Active Directory integrace s IBM OpenPages
 

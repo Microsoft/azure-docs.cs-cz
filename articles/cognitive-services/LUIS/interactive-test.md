@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 760434253a3ece14352154a22cc68142ec2b0531
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: fb4c3bb117d1ea60c9cc28d2b193ee3c01f6c945
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35760212"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221627"
 ---
 # <a name="test-your-luis-app"></a>Testování aplikace s LEOŠ
 <a name="train-your-app"></a>
@@ -92,18 +92,23 @@ Pokud máte několik koncových bodů LEOŠ, použijte **další nastavení** od
 
 
 ### <a name="view-bing-spell-check-corrections-in-test-panel"></a>Zobrazení kontrolu pravopisu v Bingu oprav panelu testu
-Můžete zobrazit pravopisu poskytované [kontrola pravopisu Bing v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) rozhraní API v zobrazení JSON **publikováno** panelu testovací podokno. 
+Požadavky na zobrazení oprav pravopisu: 
 
-Chcete-li tuto funkci používat, musí jste publikovali aplikaci, a mít kontrolu pravopisu Bing [klíč služby](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). Klíč služby nejsou uloženy a je třeba obnovit pro každou relaci prohlížeče. 
+* Publikované aplikace
+* Kontrola pravopisu Bing [klíč služby](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api). Klíč služby nejsou uloženy a je třeba obnovit pro každou relaci prohlížeče. 
 
-Použijte následující používat klíč v7 služby Bing kontrola pravopisu v testovací podokno. 
+Pomocí následujícího postupu zahrnout [kontrola pravopisu Bing v7](https://azure.microsoft.com/services/cognitive-services/spell-check/) služby v podokně výsledků testů. 
 
-1. V panelu testu na **publikováno** podokně, vyberte **další nastavení**.
+1. V **Test** podokně zadejte utterance. Pokud je utterance předpovědět, vyberte **[kontroly](#inspect-score)** pod utterance jste zadali. 
 
-2. V dialogovém okně automaticky otevírané okno, zadejte vaše **kontrola pravopisu Bing** klíč služby. 
+2. Když **kontroly** panelu otevře, vyberte  **[porovnání s publikovanou](#compare-with-published-version)**. 
+
+3. Když **publikováno** panelu otevře, vyberte  **[další nastavení](#additional-settings-in-test-panel)**.
+
+4. V dialogovém okně automaticky otevírané okno, zadejte vaše **kontrola pravopisu Bing** klíč služby. 
     ![Zadejte klíč služby Bing kontrola pravopisu](./media/luis-how-to-interactive-test/interactive-with-spell-check-service-key.png)
 
-3. Zadejte dotaz s nesprávné pravopis například `book flite to seattle` a zadejte vyberte. Nesprávný znění slova `flite` je nahrazena v dotazu posílá LEOŠ a výsledný JSON zobrazuje obě původní dotaz, jako `query`a opravené pravopisu v dotazu, jako `alteredQuery`.
+5. Zadejte dotaz s nesprávné pravopis například `book flite to seattle` a zadejte vyberte. Nesprávný znění slova `flite` je nahrazena v dotazu posílá LEOŠ a výsledný JSON zobrazuje obě původní dotaz, jako `query`a opravené pravopisu v dotazu, jako `alteredQuery`.
 
     ![Opravě pravopis JSON](./media/luis-how-to-interactive-test/interactive-with-spell-check-results.png)
 

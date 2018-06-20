@@ -3,25 +3,25 @@ title: Sestavy aktivit auditu na portálu Azure Active Directory | Dokumentace M
 description: Seznámení se sestavami aktivit auditu na portálu Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: a1f93126-77d1-4345-ab7d-561066041161
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 04/19/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ae6e2b25ccc7b0d3f29b62e56279f60034ef728c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 2565f31bdac59c3fbbb1d9d9a516b7bbf31d4d4c
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588637"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222098"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit auditu na portálu Azure Active Directory 
 
@@ -185,7 +185,7 @@ Toto zobrazení je možné dál filtrovat až na samotné **skupiny** nebo **už
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Přehled generování sestav najdete v tématu [Generování sestav v Azure Active Directory](active-directory-reporting-azure-portal.md).
 

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: b5849e0b4d9b7fb1f681a52aef2c403031ff0144
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 513d4395b1d3e631855c2f6e132d54331b3ddf8d
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35343986"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36266341"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Použít Microsoft Azure Traffic Manager ke správě koncový bod kvóty napříč klíče
 Principy jazyka (LEOŠ) nabízí možnost o zvýšení kvóty požadavku koncového bodu nad rámec kvóty jeden klíč. K tomu je potřeba vytváření více klíčů pro LEOŠ a jejich přidáním do aplikace LEOŠ na **publikovat** stránku **prostředky a klíče** části. 
@@ -372,8 +372,8 @@ Zkontrolujte [middleware](https://docs.microsoft.com/azure/bot-service/bot-build
 
 [traffic-manager-marketing]: https://azure.microsoft.com/services/traffic-manager/
 [traffic-manager-docs]: https://docs.microsoft.com/azure/traffic-manager/
-[LUIS]:luis-reference-regions.md#luis-website
-[azure-portal]:https://portal.azure.com/
-[azure-storage]:https://azure.microsoft.com/services/storage/
-[routing-methods]:https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods
-[traffic-manager-endpoints]:https://docs.microsoft.com/azure/traffic-manager/traffic-manager-endpoint-types
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
+[azure-portal]: https://portal.azure.com/
+[azure-storage]: https://azure.microsoft.com/services/storage/
+[routing-methods]: https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods
+[traffic-manager-endpoints]: https://docs.microsoft.com/azure/traffic-manager/traffic-manager-endpoint-types

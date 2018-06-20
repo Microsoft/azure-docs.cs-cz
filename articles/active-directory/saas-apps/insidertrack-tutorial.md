@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 53b6a928-e8a4-4cf1-9952-50cd3f013b7c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2018
 ms.author: jeedes
-ms.openlocfilehash: 708ab9aa0160ead20ef1f1d64dc746d10f9ab056
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 9fdddd1b80fe7d374249b8baf490a9efe8d481f9
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35898993"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226948"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insider-track"></a>Kurz: Azure Active Directory integrace s vnitřními sledování
 

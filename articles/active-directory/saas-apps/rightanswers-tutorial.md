@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 7f09e25a-a716-41e1-8ca3-fd00e3d1b8cc
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 26235367303e42c757e892a774c01475174fccff
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 45912e3aa0621ea9bfd24202392eda1a53addf80
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35897328"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222415"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightanswers"></a>Kurz: Azure Active Directory integrace s RightAnswers
 

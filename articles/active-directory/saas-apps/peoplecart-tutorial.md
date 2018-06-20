@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: c83b5d9d-2638-4689-b9f0-f56a9159e7a0
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 03198d16bcb5ac074cc20caee0ab1c88d192012b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: aa7a97a7233e84e19671f77974495eedbe083177
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901667"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219818"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-peoplecart"></a>Kurz: Azure Active Directory integrace s Peoplecart
 

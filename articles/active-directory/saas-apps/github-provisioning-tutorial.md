@@ -8,18 +8,19 @@ writer: asmalser-msft
 manager: mtillman
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: a7f4077f243d8d09483e36a77d58d546a91f6498
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: d3b2f8860f5b8ddd2cc53d8805b7eace788e73a7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899008"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230535"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Kurz: Konfigurace GitHub pro zřizování automatické uživatelů
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 26704ca7-13ed-4261-bf24-fd6252e2072b
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: jeedes
-ms.openlocfilehash: a5039d8ede33d5dd5c712ea2cadb7d4efa7b05e0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 76980214daf6e7dd019c56db089095ae121b853f
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903347"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215347"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Kurz: Azure Active Directory integrace s Cisco Webex
 

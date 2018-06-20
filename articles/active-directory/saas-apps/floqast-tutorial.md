@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 013cb57d-567c-44d0-a119-e6ba6e607153
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: jeedes
-ms.openlocfilehash: d90698b5f7ec6589dced2095047f0acf27428806
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3898a9ffffede5d5b286f187d1ca8b663f322974
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904072"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222521"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-floqast"></a>Kurz: Azure Active Directory integrace s FloQast
 

@@ -8,18 +8,19 @@ writer: zhchia
 manager: beatrizd-msft
 ms.assetid: na
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant-msft
-ms.openlocfilehash: 794db2280f7db93781939b7d517c18fa82b61b96
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: fcb9e8b33e6e3b278b4a429772c0a3b107d8eba9
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901612"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227485"
 ---
 # <a name="tutorial-configure-clarizen-for-automatic-user-provisioning"></a>Kurz: Konfigurace Clarizen pro zřizování automatické uživatelů
 

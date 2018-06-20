@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: a2df26ef-d441-44ac-a9f3-b37bf9709bcb
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 3b2dfb5a464647048d18afee84f0681bd0a56263
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 0052abf3dc3aae6be51d66d86a71830547106a23
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899168"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226591"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mixpanel"></a>Kurz: Azure Active Directory integrace s Mixpanel
 

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: f6ee8bb3-df43-4c0d-bf84-89f18deac4b9
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 22198426fb692c1d0915453e2005c30a6ebc5805
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 948b55a4a72837c9fb6bdfbc0e45dc0c3ba81feb
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901832"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224748"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-statuspage"></a>Kurz: Azure Active Directory integrace s stránka se stavem
 

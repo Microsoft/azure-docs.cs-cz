@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 15ce27d4-0621-4103-8a34-e72c98d72ec3
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: c9f6e27d98c7fc6d4fa55628eeac8e9bacb080ef
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7010983d1b41589d3c0654ddd6362c80ca71a337
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901793"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223789"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Kurz: Azure Active Directory integrace s Jitbit Helpdesk
 

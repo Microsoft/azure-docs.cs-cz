@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: ac4298b6a386ca40d5fd054ba8712b45c61f653d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 0aadfd809fefa73af6869d496f6d88d6dc9df59e
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205616"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36269574"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Volání Microsoft Graph API z jednoho jazyka JavaScript stránky aplikace (SPA)
 
@@ -38,7 +38,7 @@ Ukázkové aplikace vytvořené v této příručce umožňuje SPA JavaScript do
 <!--end-collapse-->
 
 <!--start-collapse-->
-## <a name="libraries"></a>Knihovny
+### <a name="libraries"></a>Knihovny
 
 Tato příručka používá následující knihovny:
 

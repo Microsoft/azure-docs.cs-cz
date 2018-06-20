@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: bdf91993-aaaa-4598-89b7-77ef8ca065d5
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: 0e4b70fa81edc84efa22a2e2de1a4b65184c8e29
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 088b01a46c3927688d12e6aefc05d8b65d8cc79a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35912819"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227610"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Kurz: Azure Active Directory integrace s Mindflash
 

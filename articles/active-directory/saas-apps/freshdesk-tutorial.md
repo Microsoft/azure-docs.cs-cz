@@ -7,6 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.assetid: c2a3e5aa-7b5a-4fe4-9285-45dbe6e8efcc
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,12 +15,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: e92cb4257b5b1e2d39b07fa93088d6364fdc4c5d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 064f122deb6e53a33048d3159941a8b4dc5d0a9a
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901794"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228886"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Kurz: Azure Active Directory integrace s FreshDesk
 

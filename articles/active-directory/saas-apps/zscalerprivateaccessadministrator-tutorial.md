@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: c87392a7-e7fe-4cdc-a8e6-afe1ed975172
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 7888798fd80eb748c882861db5d552dc4b670823
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 25517f6f04b43152c72ad1f223e12456aac89a00
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913511"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221389"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>Kurz: Azure Active Directory integrace s Zscaler privátní přístup správce
 

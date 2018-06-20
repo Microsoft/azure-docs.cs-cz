@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 93ad629a-f516-4cac-bfe2-a77257e3a797
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 7ae781522bd60050c03bac78efa15b063b38fdfe
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 000f9b113d599181fe2e0cda10b39a2c4667a2ca
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899301"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36227883"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumtotalcentral"></a>Kurz: Azure Active Directory integrace s SumTotalCentral
 

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 3a8d376d-95fb-4dd7-832a-4fdd4dd7c87c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.openlocfilehash: af6b80b7b38a612ac21283991c601ebad72fecde
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: a78f3eb0de9fd874f8f90d3773355e59896a6bcd
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899079"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Kurz: Azure Active Directory integrace s Rightscale
 

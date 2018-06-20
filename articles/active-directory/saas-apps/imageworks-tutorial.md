@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 635d86a1-b512-442d-8851-3b18ec1a24a5
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: jeedes
-ms.openlocfilehash: 7b3819ddb0ddb2ac801412b1fd457fe3ab52cb33
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ca99710f814a0fe48809fecb3d564e7360314a30
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904025"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222851"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-works"></a>Kurz: Azure Active Directory integrace s FUNGUJE bitové kopie
 

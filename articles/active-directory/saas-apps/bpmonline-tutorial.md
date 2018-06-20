@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 052db91d-ccff-4098-8ae3-2f76eca90539
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: c4012a90b2327b4a5f487dbf5a7d7f6bad96cef5
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 1c71fa918e72ac08c653bc319e3d84e0cc4e0508
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903164"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217584"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bpmonline"></a>Kurz: Azure Active Directory integrace s Bpm'online
 

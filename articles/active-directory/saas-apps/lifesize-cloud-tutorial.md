@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 75fab335-fdcd-4066-b42c-cc738fcb6513
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: ea1faea5dae3f4f8a49b70a631d142ec00e035e7
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 287204afa7ace9e39507c9dc006549a731b3b992
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899420"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36230382"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Kurz: Azure Active Directory integrace s Lifesize cloudu
 

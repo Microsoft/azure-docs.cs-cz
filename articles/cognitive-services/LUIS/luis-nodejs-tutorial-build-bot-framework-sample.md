@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: 12cc84942c139d3c5e981aec902557201c9c8092
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d9b78977457f818b964adb16ebb5e9e5872aa2c
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343827"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264969"
 ---
 # <a name="integrate-luis-with-a-bot-using-the-bot-builder-sdk-for-nodejs"></a>Integrovat LEOŠ robotu pomocí robota Tvůrce SDK pro Node.js
 
@@ -235,15 +235,14 @@ Na portálu Azure vyberte na **testů ve webové Chat** k testování robota. Zk
    ![Testování HomeAutomation robota v webového chatu](./media/luis-tutorial-node-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> Pokud zjistíte, že vaše robota nerozpoznal vždy správné záměr nebo entity, zlepšit výkon aplikace LEOŠ tím, že je další příklad utterances ke cvičení ho. Můžete přeučování LEOŠ aplikace bez nutnosti jakékoli úpravy kódu vaší robota. V tématu [přidat příklad utterances](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) a [trénování a testování aplikace s LEOŠ](https://docs.microsoft.com/azure/cognitive-services/LUIS/train-test).
+> Pokud zjistíte, že vaše robota nerozpoznal vždy správné záměr nebo entity, zlepšit výkon aplikace LEOŠ tím, že je další příklad utterances ke cvičení ho. Můžete přeučování LEOŠ aplikace bez nutnosti jakékoli úpravy kódu vaší robota. V tématu [přidat příklad utterances](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) a [trénování a testování aplikace s LEOŠ](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test).
 
 ## <a name="learn-more-about-bot-framework"></a>Další informace o robota Framework
 Další informace o [robota Framework](https://dev.botframework.com/) a [3.x](https://github.com/Microsoft/BotBuilder) a [4.x](https://github.com/Microsoft/botbuilder-js) sady SDK.
 
 ## <a name="next-steps"></a>Další postup
 
-<!-- From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. Allowing and handling interruptions is a flexible design that accounts for what users really do. Learn more about the various actions you can associate with a recognized intent.-->
-Zkuste přidat jiné záměry, jako je Nápověda, zrušit a pozdravu, do LEOŠ aplikace. Pak přidejte dialogová okna pro novou tříd Intent a testování pomocí robota. 
+<!-- From trying the bot, you can see that the recognizer can trigger interruption of the currently active dialog. Allowing and handling interruptions is a flexible design that accounts for what users really do. Learn more about the various actions you can associate with a recognized intent.--> Zkuste přidat jiné záměry, jako je Nápověda, zrušit a pozdravu, do LEOŠ aplikace. Pak přidejte dialogová okna pro novou tříd Intent a testování pomocí robota. 
 
 <!-- 
 > [!NOTE] 
@@ -298,10 +297,10 @@ Zkuste přidat jiné záměry, jako je Nápověda, zrušit a pozdravu, do LEOŠ 
 <!-- Old Links -->
 [Github-BotFramework-Emulator-Download]: https://aka.ms/bot-framework-emulator
 [Github-LUIS-Samples]: https://github.com/Microsoft/LUIS-Samples
-[Github-LUIS-Samples-node-hotel-bot]:https://github.com/Microsoft/LUIS-Samples/tree/master/bot-integration-samples/hotel-finder/nodejs
+[Github-LUIS-Samples-node-hotel-bot]: https://github.com/Microsoft/LUIS-Samples/tree/master/bot-integration-samples/hotel-finder/nodejs
 [NodeJs]: https://nodejs.org/
 [BFPortal]: https://dev.botframework.com/
 [RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
 [BotFramework]: https://docs.microsoft.com/bot-framework/
-[LUIS]:luis-reference-regions.md
+[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 

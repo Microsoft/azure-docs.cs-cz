@@ -3,24 +3,24 @@ title: Získání dat pomocí rozhraní API pro generování sestav Azure AD s c
 description: Vysvětluje, jak používat rozhraní API pro generování sestav Azure AD s přihlašovacími údaji ve formě certifikátů k získání dat z adresářů bez zásahu uživatele.
 services: active-directory
 documentationcenter: ''
-author: ramical
-writer: v-lorisc
-manager: kannar
+author: priyamohanram
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 05/07/2018
-ms.author: ramical
-ms.openlocfilehash: 5ceb3d1ef99189e5b0cfcc48b38906ed28c07730
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.author: priyamo
+ms.reviewer: dhanyahk
+ms.openlocfilehash: aa0891126ad6fa05a39b9245e4fe85b61218ec40
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34588953"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222456"
 ---
 # <a name="get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Získání dat pomocí rozhraní API pro generování sestav Azure Active Directory s certifikáty
 
@@ -107,7 +107,7 @@ Teď můžete vytvořit skript. Dále je uvedený příklad používající ruti
 
 Nyní jste připraveni k exportu do souboru CSV a jeho uložení do systému SIEM. Můžete také zabalit váš skript do naplánované úlohy, abyste získávali data Azure AD z vašeho klienta pravidelně bez nutnosti ukládat klíče aplikace ve zdrojovém kódu. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Získejte představu o rozhraní API pro generování sestav](active-directory-reporting-api-getting-started-azure-portal.md#explore)
 

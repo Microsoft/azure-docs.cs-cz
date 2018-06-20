@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 99287e1f-4189-494a-97c8-e1c03d047fd3
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
-ms.openlocfilehash: c219d34f77346e0cfc4e57de8ba3fd52b06aaa91
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 71f3a850d4b60c9ca2e3742ea8c83587e04f1dca
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900966"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221457"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-abintegro"></a>Kurz: Azure Active Directory integrace s Abintegro
 

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: ca9d5e71-e429-4891-8d10-3498e7210e89
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: 47dac840cd4c9b76f5ae63681390c6e439518c92
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ba9aabf88597bc97bedec0b4edeca313727f14be
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899307"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36214215"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ca-ppm"></a>Kurz: Azure Active Directory integrace s správy Portfolia certifikační Autority
 

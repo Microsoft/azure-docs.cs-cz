@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 224939d8-2c9c-4561-968d-62722f5ab5ed
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: jeedes
-ms.openlocfilehash: 92decc9c304b76bf89b88fc564b79a9f845f644a
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: f9ada220a82a2cf9347f02960eeef9c211f37c67
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913503"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36226149"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aravo"></a>Kurz: Azure Active Directory integrace s Aravo
 

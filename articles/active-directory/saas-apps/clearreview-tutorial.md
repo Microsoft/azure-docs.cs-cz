@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 8264159a-11a2-4a8c-8285-4efea0adac8c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: jeedes
-ms.openlocfilehash: adbcc5251b4b405c432e2636f0120bb3e0a23e53
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: aa3514d348b812a96b55c4d47950cd064d391dc1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903169"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231538"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Kurz: Azure Active Directory integrace s zrušte revize
 

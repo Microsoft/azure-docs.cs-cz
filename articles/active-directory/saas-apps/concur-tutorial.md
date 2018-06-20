@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 1eee0a5d-24fa-4986-9aef-3c543cfe3296
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 56c7cdee3ab07c73ec7210ee1fe800f0fd3f04bd
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: b092b8fa5f3b410788ca56a0d1a43e27e3ac3e97
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35913479"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36216170"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-concur"></a>Kurz: Azure Active Directory integrace s Concur
 
