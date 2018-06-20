@@ -3,34 +3,28 @@ title: Najít sestavy aktivity uživatele Azure Active Directory na portálu Azu
 description: Zjistěte, kde jsou sestavy aktivity uživatele Azure Active Directory na portálu Azure.
 services: active-directory
 documentationcenter: ''
-author: curtand
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: users-groups-roles
 ms.date: 12/06/2017
-ms.author: curtand
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 985bdc3c00549844958c23a83496a019d7a31944
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f22219a0e2ff342e25a2efdeb319f389250ecfef
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36231317"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Najít sestavy aktivity na portálu Azure
 
 V tomto článku jsme popisují, jak najít sestavy aktivity uživatele Azure Active Directory na portálu Azure.
 
-## <a name="whats-new"></a>Co je nového
-
-Sestavy v portálu Azure classic byly rozdělené do kategorií:
-* Sestavy zabezpečení
-* Sestavy aktivit
-* Sestavy integrované aplikace
-
-### <a name="activity-and-integrated-app-reports"></a>Aktivity a integrované aplikace sestavy
+## <a name="activity-and-integrated-app-reports"></a>Aktivity a integrované aplikace sestavy
 
 Na základě kontextu vytváření sestav v portálu Azure, existující sestavy jsou sloučeny do jednoho zobrazení. Jedinou základní rozhraní API poskytuje data k zobrazení.
 
@@ -87,7 +81,7 @@ Chcete-li zobrazit podrobnosti o použití aplikací pro všechny aplikace nebo 
 
 #### <a name="azure-ad-anomalous-activity-reports"></a>Azure AD neobvyklé aktivity sestavy
 
-Zabezpečení Azure AD neobvyklé aktivity konsolidovaný sestavy z portálu Azure classic, kde přinášejí jedno, centrální zobrazení. Toto zobrazení uvádí všechny události související se zabezpečením riziko, že Azure AD můžete zjišťovat a tvorba sestav o.
+Zabezpečení Azure AD neobvyklé aktivity sestavy se konsolidují, kde přinášejí jedno centrální zobrazení. Toto zobrazení uvádí všechny události související se zabezpečením riziko, že Azure AD můžete zjišťovat a tvorba sestav o.
 
 Následující tabulka seznamy Azure AD neobvyklé aktivity zabezpečení sestavy a odpovídající typy událostí riziko na portálu Azure.
 
@@ -104,8 +98,6 @@ Následující zabezpečení Azure AD neobvyklé aktivity sestavy nejsou zahrnut
 
 * Přihlášení po několika neúspěších
 * Přihlášení z více geografických poloh
-
-Tyto sestavy jsou stále k dispozici na portálu Azure classic, ale přestanou někdy v budoucnu.
 
 Další informace najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](active-directory-identity-protection-risk-events.md).  
 
@@ -125,29 +117,10 @@ Další informace o zabezpečení najdete v tématu:
 - [Rizikové přihlášení sestav na portálu Azure Active Directory](active-directory-reporting-security-risky-sign-ins.md)
 
 
-## <a name="activity-reports-in-the-azure-classic-portal-vs-the-azure-portal"></a>Sestavy aktivit v portálu Azure classic oproti portálu Azure
-
-V tabulce v této části jsou uvedeny stávajících sestav na portálu Azure classic. Také popisuje, jak stejné informace můžete získat na portálu Azure.
-
-Pokud chcete zobrazit všechna data auditu, na **Azure Active Directory** okno, v části **aktivity**, přejděte na **protokoly auditu**.
-
-![Protokoly auditu](./media/active-directory-reporting-migration/61.png "Protokoly auditu")
-
-| klasický portál Azure                 | Najít na portálu Azure                                                         |
-| ---                                  | ---                                                                        |
-| Protokoly auditu                           | Pro **kategorie aktivity**, vyberte **základní Directory**.                       |
-| Aktivity resetování hesla              | Pro **kategorie aktivity**, vyberte **Samoobslužná správa hesel**. |
-| Registrace aktivita resetování hesla | Pro **kategorie aktivity**, vyberte **Samoobslužná správa hesel**.     |
-| Aktivita samoobslužných skupin         | Pro **kategorie aktivity**, vyberte **Samoobslužná správa skupiny**.        |
-| Účet zřizování aktivity        | Pro **kategorie aktivity**, vyberte **zřizování účtu uživatele**.         |
-| Stav Změna hesla             | Pro **kategorie aktivity**, vyberte **Automatická změna hesla aplikace**.      |
-| Chyby zřizování účtů          | Pro **kategorie aktivity**, vyberte **zřizování účtu uživatele**.        |
-| Změny názvu skupiny Office 365         | Pro **kategorie aktivity**, vyberte **Samoobslužná správa hesel**. Pro **typ prostředku aktivity**, vyberte **skupiny**. Pro **zdroj aktivity**, vyberte **O365 skupiny**.|
-
 Chcete-li zobrazit **využití aplikace** sestavy na **Azure Active Directory** okno v části **SPRAVOVAT**, vyberte **podnikové aplikace, které**a potom vyberte **přihlášení**.
 
 
-![Sestava podnikové aplikace přihlášení](./media/active-directory-reporting-migration/199.png "podnikové aplikace přihlášení sestavy")
+![Sestavy aplikace Enterprise přihlášení](./media/active-directory-reporting-migration/199.png)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 0c4acf6e8e236d46a9db2b4ab730b8333e4f6ca6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f07ce542c176f4038378d54497d7114109ac5bd3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648121"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215520"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Instance spravované (preview)?
 
@@ -39,7 +39,7 @@ Následující tabulka jsou podrobněji popsány dále klíčové rozdíly a př
 
 | | Scénáře použití | 
 | --- | --- | 
-|SQL Database Managed Instance |Pro zákazníky chtějí migrovat velký počet aplikací z místní nebo IaaS, samoobslužné vytvořen nebo ISV, které jsou k dispozici s navrhnout jako nízkou migrace úsilí co možná, spravované Instance. Pomocí plně automatického [služby migrace dat (DMS)](/sql/dma/dma-overview) v Azure, zákazníků navýšení a posunutí jejich místní SQL Server na spravované Instance, která nabízí kompatibilitu s místním SQL serverem a dokončení izolace instance zákazníků s nativní podporou virtuální sítě.  Pomocí programu Software Assurance, můžete vyměňovat své stávající licence pro zvýhodněné sazby na spravované Instance databáze SQL pomocí [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Spravované Instance databáze SQL je nejlepší cíl migrace v cloudu pro instance systému SQL Server, které vyžadují vysoké zabezpečení a bohaté programovatelnosti prostor. |
+|SQL Database Managed Instance |Pro zákazníky chtějí migrovat velký počet aplikací z místní nebo IaaS, samoobslužné vytvořen nebo ISV, které jsou k dispozici s navrhnout jako nízkou migrace úsilí co možná, spravované Instance. Pomocí plně automatického [služby migrace dat (DMS)](../dms/tutorial-sql-server-to-managed-instance.md#create-an-azure-database-migration-service-instance) v Azure, zákazníků navýšení a posunutí jejich místní SQL Server na spravované Instance, která nabízí kompatibilitu s místním SQL serverem a dokončení izolace instance zákazníků s nativní podporou virtuální sítě.  Pomocí programu Software Assurance, můžete vyměňovat své stávající licence pro zvýhodněné sazby na spravované Instance databáze SQL pomocí [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Spravované Instance databáze SQL je nejlepší cíl migrace v cloudu pro instance systému SQL Server, které vyžadují vysoké zabezpečení a bohaté programovatelnosti prostor. |
 |Azure SQL Database (jedna nebo fond) |**Elastické fondy**: pro zákazníky vývoj nové víceklientské aplikace SaaS nebo záměrně transformace své stávající místní aplikace do víceklientské aplikace SaaS, navrhnout elastické fondy. Výhody tohoto modelu: <br><ul><li>Převod modelu obchodní prodávané licencí, které chcete prodávané odběry služby (pro ISV)</li></ul><ul><li>Izolace snadný a odrážka ověření klienta</li></ul><ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul><ul><li>Mohlo škálování bez stiskne pevný mezní hodnoty</li></ul>**Jedna databáze**: pro zákazníky vývoji nových aplikací než SaaS více klientů, jejichž zatížení je stabilní a předvídatelné, navrhnout izolované databáze. Výhody tohoto modelu:<ul><li>Zjednodušená zaměřené na databázi programovací model</li></ul>  <ul><li>Předvídatelný výkon pro každou databázi</li></ul>|
 |Virtuální počítač SQL IaaS|Pro zákazníky museli přizpůsobení operačního systému nebo na serveru databáze, a také zákazníků, kterým se specifické požadavky z hlediska spouštění aplikací třetích stran stranou s SQL serverem (ve stejném virtuálním počítači), navrhnout virtuálním počítačům systému SQL nebo IaaS jako optimální řešení|
 |||
@@ -186,11 +186,10 @@ Služba Azure databáze migrace je plně spravovaná služba navržených k povo
 
 Postup migrace využívá zálohování SQL na úložiště objektů blob v Azure. Záloh uložených v objektu blob úložiště Azure můžete přímo obnovena do spravované Instance. Chcete-li obnovit existující databázi SQL do spravované instance, můžete:
 
-- Použití [služba migrace dat (DMS)](/sql/dma/dma-overview). Podívejte se kurz [migrací do Instance spravované pomocí služby pro migraci databáze Azure (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) obnovit ze záložního souboru databáze
+- Použití [služba migrace dat (DMS)](../dms/dms-overview.md). Podívejte se kurz [migrací do Instance spravované pomocí služby pro migraci databáze Azure (DMS)](../dms/tutorial-sql-server-to-managed-instance.md) obnovit ze záložního souboru databáze
 - Použití [příkaz RESTORE T-SQL](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql). 
   - Zobrazuje postup obnovení společnost Wide World Importers - záložní soubor standardní databáze, na adrese [obnovit záložní soubor do Instance spravované](sql-database-managed-instance-restore-from-backup-tutorial.md). Tento kurz ukazuje, že budete muset nahrát záložní soubor do úložiště Azure blog a zabezpečení pomocí klíč sdíleného přístupu podpis (SAS).
   - Informace o obnovení z adresy URL, najdete v článku [nativní obnovit z adresy URL](sql-database-managed-instance-migrate.md#native-restore-from-url).
-- [Import ze souboru BACPAC souboru](sql-database-import.md)
 
 ## <a name="sql-features-supported"></a>Funkce SQL podporované 
 
