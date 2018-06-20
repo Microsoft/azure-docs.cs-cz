@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: ffa17478-3ea1-4356-a289-545b5b9a4494
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 308420981aa2fc9581c07eb0794077e0f78d3a4d
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 5884978895d8cfe72c35a3879a2575d1b58077c7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899364"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36216880"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benselect"></a>Kurz: Azure Active Directory integrace s BenSelect
 

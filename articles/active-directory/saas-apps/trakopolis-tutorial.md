@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 73d67c3e-4b4b-4d3b-aa58-6699ea1ccea3
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: c121dba321750f0202c40362e3182512b3779618
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3d6d2d16ed0a6ebd5609d6797b81acdea1476d51
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903308"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36211097"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakopolis"></a>Kurz: Azure Active Directory integrace s Trakopolis
 

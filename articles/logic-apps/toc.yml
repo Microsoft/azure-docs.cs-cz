@@ -290,6 +290,13 @@
           href: logic-apps-enterprise-integration-b2b.md
 - name: Referenční informace
   items:
+    - name: Architekturální vzory
+      href: logic-apps-architectures-simple-enterprise-integration.md
+      items:
+        - name: Jednoduchá podniková integrace
+          href: logic-apps-architectures-simple-enterprise-integration.md
+        - name: Podniková integrace s využitím front a událostí
+          href: logic-apps-architectures-enterprise-integration-with-queues-events.md
     - name: 'Konektory: Úplné podrobnosti'
       href: 'https://docs.microsoft.com/connectors/'
     - name: Omezení a konfigurace

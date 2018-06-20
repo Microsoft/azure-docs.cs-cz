@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 2eb625c1-d3fc-4ae1-a304-6a6733a10e6e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 94a363be1fc2582fa66c8ed0247ad067d50526e0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: cea66f48d3ec1ab99b2b1e3dc40ab559e0ca55a5
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901630"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-igloo-software"></a>Kurz: Azure Active Directory integrace s Igloo softwaru
 

@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 1e761484-7a2f-4321-91f4-6d5d0b69344e
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/2/2017
 ms.author: jeedes
-ms.openlocfilehash: 56093b43bd3b3825f43e4c2310399889cea4fef1
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3b878a671a291ae44a251d3087ab4a431a7c7fed
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35903161"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217176"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>Kurz: Azure Active Directory integrace s Expensify
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 2ae30996-864d-4872-90bc-f770e1ea159a
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
-ms.openlocfilehash: dacbb40cb20cd6ab0d2e4a0c42d5e4995367e835
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 95e8199ab57bcc5ba617403f1551da21a7625885
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901018"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36221406"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Kurz: Azure Active Directory integrace s KnowledgeOwl
 

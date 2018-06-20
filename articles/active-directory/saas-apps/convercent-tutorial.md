@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: f9c9d290-0e13-490b-b559-0be772d6a690
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/02/2017
 ms.author: jeedes
-ms.openlocfilehash: c0fa4c3f76fa1ceaab6ec09f46d6a0f55391c1cc
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 7f2bb181b08720d096c5abf4e73b16de8306bd58
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899392"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218516"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>Kurz: Azure Active Directory integrace s Convercent
 

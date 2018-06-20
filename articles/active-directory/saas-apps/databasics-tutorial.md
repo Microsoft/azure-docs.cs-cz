@@ -8,18 +8,19 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: a37ded45-84c8-4e88-8d9b-c5b9443eb0d4
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: jeedes
-ms.openlocfilehash: 3efac0addf328942b06920c78ee6df3746442e26
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 3ac26fbe81a89f2054b7966df9a9aea5dcd16925
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899295"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36213222"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-databasics"></a>Kurz: Azure Active Directory integrace s DATABASICS
 

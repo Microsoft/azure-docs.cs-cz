@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 4069fe32-a452-463f-973e-7aa0baa4c2fa
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: 44aa042e8f2625ae92f0075b35e8566103beb7a4
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: c2b28d4f5d29855bf438f0e411bfb7c2fe82a6be
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899296"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224986"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-benefithub"></a>Kurz: Azure Active Directory integrace s BenefitHub
 

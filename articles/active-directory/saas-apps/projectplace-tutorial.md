@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 298059ca-b652-4577-916a-c31393d53d7a
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: 0709d599dfa862128722a1f66d554ac45d948f3a
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: f156f8dfdde5f9b13494d837c64c0f2117e4d1d7
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35904024"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36219019"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-projectplace"></a>Kurz: Azure Active Directory integrace s Projectplace
 

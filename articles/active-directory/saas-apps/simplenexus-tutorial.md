@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 89821a05-88e2-4579-b144-0123b2b9cb95
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 88f5b6fa1e3e1926cf16a1eb3906b12c5ff88207
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: a29ef6535d1d4e64df7b97fc7519e55f511df222
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901795"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36212168"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Kurz: Azure Active Directory integrace s SimpleNexus
 

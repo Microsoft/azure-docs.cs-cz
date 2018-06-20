@@ -11,14 +11,14 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 12/08/2017
+  ms.date: 06/18/2018
   ms.author: tamram
-  ms.openlocfilehash: de0672c3f4f06dd20081e401121f1cbbe2d77c9f
-  ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+  ms.openlocfilehash: 0e8c2b7048ff9e59612e13a87506bf1209036ca6
+  ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/05/2018
-  ms.locfileid: "34763166"
+  ms.lasthandoff: 06/19/2018
+  ms.locfileid: "36266667"
 abstract:
   description: Microsoft Azure Storage je cloudová služba spravovaná Microsoftem, která poskytuje vysoce dostupné, zabezpečené, odolné, škálovatelné a redundantní úložiště. Azure Storage se skládá ze služeb Blob Storage, File Storage a Queue Storage.  Prostřednictvím našich šablon Rychlý start a kurzů se naučíte využívat Azure Storage ve svých aplikacích.
 sections:
@@ -126,6 +126,6 @@ sections:
     - title: Příkazový řádek
       html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
     - title: Jazyky
-      html: <p><a href="/dotnet/api/">.NET</a></p><p><a href="/java/api/">Java</a></p><p><a href="/javascript/api/overview/azure/">Node.js</a></p><p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure-storage.readthedocs.io/en/latest/index.html">Python</a></p><p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
+      html: <p><a href="/dotnet/api/">.NET</a></p><p><a href="/java/api/">Java</a></p><p><a href="/javascript/api/overview/azure/">Node.js</a></p><p><a href="/python/api/overview/azure/storage">Python</a></p><p><a href="http://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="http://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="http://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="http://azure.github.io/azure-storage-android">Android</a></p>
     - title: REST
-      html: <p><a href="/rest/api/storageservices">Objekty blob, tabulky, fronty a soubory</a></p><p><a href="/rest/api/storagerp">Poskytovatel prostředků</a></p><p><a href="/rest/api/storageimportexport">Import/export</a></p>
+      html: <p><a href="/rest/api/storageservices">Rozhraní API pro objekty blob, tabulky, fronty a soubory</a></p><p><a href="/rest/api/storagerp">Rozhraní API pro poskytovatele prostředků úložiště</a></p><p><a href="/rest/api/storageimportexport">Rozhraní API pro službu importu a exportu</a></p>

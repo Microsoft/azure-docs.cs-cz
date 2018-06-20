@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 2f7555d3-e9ba-40b2-9b3a-2f0ab38a4c08
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: f70337b23c16cb292f06d06c28ef2e74367422d3
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e72429eb8aadb4749bc19a4536972bfe6006769b
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899251"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36229423"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tango-analytics"></a>Kurz: Azure Active Directory integrace s Tango Analytics
 

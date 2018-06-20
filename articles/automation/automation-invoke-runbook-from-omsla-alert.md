@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5a3b14bd8409226772d210f60dadd525960f7890
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0094362ee083511b05027f22b37ed62d56d68d41
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192658"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36217121"
 ---
 # <a name="call-an-azure-automation-runbook-from-a-log-analytics-alert"></a>Volání runbooku Azure Automation z upozornění Log Analytics
 
@@ -33,7 +33,7 @@ V konfiguraci upozornění existují dvě možnosti volání runbooku:
 
 ## <a name="calling-a-runbook-by-using-a-webhook"></a>Volání runbooku pomocí webhooku
 
-Webhook můžete použít ke spuštění konkrétního runbooku v Azure Automation prostřednictvím jednoho požadavku HTTP. Než nakonfigurujete [upozornění Log Analytics](../log-analytics/log-analytics-alerts.md#alert-rules), aby jako akci upozornění volalo runbook pomocí webhooku, je potřeba nejprve [vytvořit webhook](automation-webhooks.md#creating-a-webhook) pro runbook, který bude touto metodou volán. Nezapomeňte si poznamenat adresu URL webhooku, abyste na něj mohli odkazovat při konfiguraci pravidla upozornění.   
+Webhook můžete použít ke spuštění konkrétního runbooku v Azure Automation prostřednictvím jednoho požadavku HTTP. Před konfigurací [akce Webhooku pro výstrahy protokolu](../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md) volání sady runbook pomocí webhook, jehož jako výstrah akce, budete muset [vytvořit webhook, jehož](automation-webhooks.md#creating-a-webhook) pro sadu runbook, která je volána prostřednictvím této metody. Nezapomeňte si poznamenat adresu URL webhooku, abyste na něj mohli odkazovat při konfiguraci pravidla upozornění.   
 
 ## <a name="calling-a-runbook-directly"></a>Přímé volání runbooku
 
@@ -99,6 +99,6 @@ Nemáte účtu Automation propojit s pracovní prostor analýzy protokolů, kter
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o upozorněních v Log Analytics a jejich vytváření najdete v tématu [Upozornění v Log Analytics](../log-analytics/log-analytics-alerts.md).
+* Další informace o vytvoření služby Azure výstrah pomocí hledání protokolů najdete v tématu [protokolu výstrahy v Azure](../monitoring-and-diagnostics/monitor-alerts-unified-log.md).
 
 * Informace o tom, jak aktivovat runbooky pomocí webhooku, najdete v tématu [Webhooky Azure Automation](automation-webhooks.md).

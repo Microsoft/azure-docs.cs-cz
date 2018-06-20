@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: d5857070-bf79-4bd3-9a2a-4c1919a74946
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 8c507e7b411d0200ff5f8a7b12ab904d5ab63e90
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ffa689e9556e57560138d9629c616bd3a284f9b6
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35897326"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36222303"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>Kurz: Azure Active Directory integrace s LinkedIn Learning
 

@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: f3f19be6-6ee8-413c-919c-4884ffe685ca
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 64500520b22ac4ce06b6b3c054795c8375c58651
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ef1cdb51f10e834ef9f2d3dd4623db348db9483e
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900998"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215364"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>Kurz: Azure Active Directory integrace s ChronicX®
 

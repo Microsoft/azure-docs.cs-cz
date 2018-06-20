@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 5704d151-afb8-40a4-b286-8bacd4f279ee
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.openlocfilehash: dba830ea8ac187c5d533ac79a9e661b7fa5ab841
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e0c601b602d2c4fd495cb4f55cc44b2254fa70cf
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35901037"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>Kurz: Azure Active Directory integrace s CS hvězdičkami
 

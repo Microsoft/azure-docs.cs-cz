@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: dsc
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d01042a02f2339f039f23d4f6e021de503dc3815
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 822d0e285e6f1cc9907625d7928dff3d9bf66921
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195960"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36218951"
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-log-analytics"></a>Předávání data pro vytváření sestav k analýze protokolů Azure Automation DSC.
 
@@ -86,14 +86,14 @@ Také můžete zúžit dotaz podle názvu operaci. Například: ' typ = AzureDia
 
 Jednou z našich žádostem nejvyšší zákazníků je pro možnost odesílat e-mailem nebo jako text v případě problémů s konfigurací DSC.   
 
-Pokud chcete vytvořit pravidlo výstrahy, začněte vytvořením hledání protokolů pro záznamy sestavy DSC, které by měla vyvolat výstrahu.  Klikněte **výstraha** tlačítko Vytvořit a nakonfigurovat pravidlo výstrahy.
+Pokud chcete vytvořit pravidlo výstrahy, začněte vytvořením hledání protokolů pro záznamy sestavy DSC, které by měla vyvolat výstrahu.  Klikněte **+ nové pravidlo výstrahy** tlačítko Vytvořit a nakonfigurovat pravidlo výstrahy.
 
 1. Na stránce Přehled protokolu Analytics klikněte na tlačítko **hledání protokolů**.
 1. Vytvoření vyhledávací dotaz protokolu pro upozornění zadáním následujících hledání do pole dotazu:  `Type=AzureDiagnostics Category=DscNodeStatus NodeName_s=DSCTEST1 OperationName=DscNodeStatusData ResultType=Failed`
 
   Pokud jste nastavili protokolů z více než jeden účet Automation nebo odběr do pracovního prostoru, můžete je seskupovat vaše předplatné a účet Automation.  
   Název účtu Automation může být odvozen z pole prostředků do vyhledávání DscNodeStatusData.  
-1. Chcete-li otevřít **přidat pravidlo výstrahy** obrazovky, klikněte na tlačítko **výstrah** v horní části stránky. Další informace o možnostech konfigurace upozornění najdete v tématu [výstrahy v analýzy protokolů](../log-analytics/log-analytics-alerts.md#alert-rules).
+1. Chcete-li otevřít **vytvořit pravidlo** obrazovky, klikněte na tlačítko **+ nové pravidlo výstrahy** v horní části stránky. Další informace o možnostech konfigurace upozornění najdete v tématu [vytvoření výstrahy rulelert](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>Vyhledání chybných prostředky DSC pro všechny uzly
 

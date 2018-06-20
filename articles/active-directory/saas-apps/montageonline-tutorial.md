@@ -8,18 +8,19 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 5c5e8c6f-e4fb-43fe-8841-e371f568ebed
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 5c3f511b6ea3e44f485b5df1fc4f3eddba604e9b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 2ddc4b6f792aa02308a95aa5464f0506cbd5c2ec
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35912807"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36215262"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-montage-online"></a>Kurz: Azure Active Directory integrace se službou Fotomontáž Online
 

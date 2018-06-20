@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 3/27/2017
+ms.date: 06/12/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 7b3cb869f3c220c20db53216c96449d01c16eaf6
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 97eca81a8ddc2726bf5de0f4ad7ba0bdf1df1d05
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263173"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36220080"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Využívat monitorování dat z Azure
 
@@ -40,7 +40,7 @@ Na platformě Azure jsme přináší společně dat monitorování na jednom mí
 | Azure monitorování metriky výstrah | Oznámení | [Najdete zde seznamu](monitoring-supported-metrics.md) | <ul><li>**Webhooku:** [Azure metriky výstrahy](insights-webhooks-alerts.md)</li></ul> |
 | Azure výstrahy protokolu aktivity monitorování. | Oznámení | Všechny služby Azure | <ul><li>**Webhooku:** Azure protokol aktivit výstrahy</li></ul> |
 | Oznámení o automatickém škálování | Oznámení | [Najdete zde seznamu](monitoring-overview-autoscale.md#supported-services-for-autoscale) | <ul><li>**Webhooku:** [škálování oznámení webhooku datové části schématu](insights-autoscale-to-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| Přihlaste se výstrahy vyhledávací dotaz. | Oznámení | Log Analytics | <ul><li>**Webhooku:** [výstrahy analýzy protokolů](../log-analytics/log-analytics-alerts-actions.md#webhook-actions)</li></ul> |
+| Přihlaste se výstrahy vyhledávací dotaz. | Oznámení | Log Analytics | <ul><li>**Webhooku:** [akce Webhooku pro pravidla výstrah protokolu](../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md)</li></ul> |
 | Metriky výstrah statistiky aplikace | Oznámení | Application Insights | <ul><li>**Webhooku:** [Application Insights výstrahy](../application-insights/app-insights-alerts.md)</li></ul> |
 | Application Insights webové testy | Oznámení | Application Insights | <ul><li>**Webhooku:** [Application Insights výstrahy](../application-insights/app-insights-alerts.md)</li></ul> |
 

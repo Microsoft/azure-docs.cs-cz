@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: 0b8ca505-61ea-487c-9a3e-fa50c936df0c
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: jeedes
-ms.openlocfilehash: e88c7d2b7b55da8dbb458e4f381d4f968adf8a48
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 8c16e5d05378df9271b108eb93d36173672fc501
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35900968"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223660"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Kurz: Azure Active Directory integrace s další Tabule
 

@@ -7,18 +7,19 @@ author: jeevansd
 manager: mtillman
 ms.assetid: bfe1f14e-74e4-4680-ac9e-f7355e1c94cc
 ms.service: active-directory
+ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 5d46d56db2011660388e00068a4c6d8989cb9804
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 6377eeb06705528f567aaf6f29461db0023c27b4
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "35899457"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36223123"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloudpassage"></a>Kurz: Azure Active Directory integrace s CloudPassage
 
