@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 1d5b73657a00968ce073e1cb1ea72a716e6a2703
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4749e79b79cec7172ddd764593939d6f82f5f5ab
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615960"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295600"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopírovat data do nebo z úložiště objektů Blob v Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -83,11 +83,11 @@ Propojenou službu úložiště můžete vytvořit také pomocí sdíleného př
 
 Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Sdílený přístupový podpis můžete použít k udělení, že klient omezené oprávnění k objektům v účtu úložiště pro určitou dobu. Nemáte sdílet klíče pro přístup k účtu. Sdílený přístupový podpis je identifikátor URI, který zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště v jeho parametry dotazu. Pro přístup k prostředkům úložiště s sdílený přístupový podpis, klient pouze musí předat sdílený přístupový podpis metodu, nebo odpovídající konstruktor. Další informace o sdílených přístupových podpisů najdete v tématu [sdílené přístupové podpisy: pochopení modelu sdíleného přístupového podpisu](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-> [!IMPORTANT]
-> Objekt pro vytváření dat se teď podporuje pouze služby sdílené přístupové podpisy ale není účet sdílené přístupové podpisy. Další informace o těchto dvou typů a konstruování je najdete v tématu [druhy sdílených přístupových podpisů](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). Sdílený přístupový podpis adresa URL vygenerovat z portálu Azure nebo Azure Storage Explorer je sdílený přístupový podpis účet, který není podporován.
+> [!NOTE]
+> Objekt pro vytváření dat se teď podporuje služby sdílené přístupové podpisy a účet sdílené přístupové podpisy. Další informace o těchto dvou typů a konstruování je najdete v tématu [druhy sdílených přístupových podpisů](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). 
 
 > [!TIP]
-> Můžete spustit následující příkazy prostředí PowerShell vygenerovat sdílený přístupový podpis služby pro účet úložiště. Nahraďte zástupné symboly a udělení potřebných oprávnění.
+> Chcete-li vygenerovat sdílený přístupový podpis služby pro účet úložiště, můžete spustit následující příkazy prostředí PowerShell. Nahraďte zástupné symboly a udělení potřebných oprávnění.
 > `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 
@@ -136,7 +136,7 @@ Ke zkopírování dat do a z úložiště objektů Blob, nastavte vlastnost typu
 |:--- |:--- |:--- |
 | type | Vlastnost typu datové sady musí být nastavena na **AzureBlob**. |Ano |
 | folderPath | Cesta ke kontejneru a složce v úložišti objektů blob. Zástupný filtr není podporován. Příkladem je myblobcontainer/myblobfolder /. |Ano |
-| fileName | **Název nebo zástupný filtr** pro blob(s) pod zadanou "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny objekty BLOB ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (více znaků) a `?` (jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>-Příklad 2: `"fileName": "???20180427.txt"`<br/>Použití `^` abyste se vyhnuli, pokud jejich název zástupných znaků nebo tento řídicí znak uvnitř.<br/><br/>Pokud není zadán název souboru pro datovou sadu výstupů a **preserveHierarchy** není zadané v jímce aktivity aktivitě kopírování automaticky vygeneruje název objektu blob pomocí následující vzoru: "*Data. [[ Aktivita běžet id Identifikátor GUID.] [Identifikátor GUID Pokud FlattenHierarchy]. [Formát pokud nakonfigurovaný]. [Pokud nakonfigurovaný komprese]* ". Příkladem je "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Ne |
+| fileName | **Název nebo zástupný filtr** pro blob(s) pod zadanou "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny objekty BLOB ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (odpovídá žádnému nebo více znaků) a `?` (odpovídá nula nebo jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>-Příklad 2: `"fileName": "???20180427.txt"`<br/>Použití `^` abyste se vyhnuli, pokud jejich název zástupných znaků nebo tento řídicí znak uvnitř.<br/><br/>Pokud není zadán název souboru pro datovou sadu výstupů a **preserveHierarchy** není zadané v jímce aktivity aktivitě kopírování automaticky vygeneruje název objektu blob pomocí následující vzoru: "*Data. [ Aktivita běžet id Identifikátor GUID.] [Identifikátor GUID Pokud FlattenHierarchy]. [Formát pokud nakonfigurovaný]. [Pokud nakonfigurovaný komprese]* ". Příkladem je "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Ne |
 | Formát | Pokud chcete zkopírovat soubory, jako je mezi souborové úložiště (binární kopie), přejděte v části formátu v definicích vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat nebo vygenerování soubory s konkrétním formátu, jsou podporovány následující typy souboru formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a **ParquetFormat**. Nastavte **typ** vlastnost pod **formát** na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](supported-file-formats-and-compression-codecs.md#text-format), [formátu JSON](supported-file-formats-and-compression-codecs.md#json-format), [formát Avro](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátu](supported-file-formats-and-compression-codecs.md#orc-format), a [Parquet formát](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro scénář binární kopie) |
 | Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Podporované typy jsou **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Jsou podporované úrovně **Optimal** a **nejrychlejší**. |Ne |
 

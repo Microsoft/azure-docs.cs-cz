@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 59639b1bba80ccddb31826f1e3b283acb0a7eb07
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 12402ea30e44534734e0429f850772cbef2f7381
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616681"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287459"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Kopírovat data do nebo z Azure Data Lake Store pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -157,7 +157,7 @@ Chcete-li kopírovat data do/z Azure Data Lake Store, nastavte vlastnost typu da
 |:--- |:--- |:--- |
 | type | Vlastnost typu datové sady musí být nastavena na: **AzureDataLakeStoreFile** |Ano |
 | folderPath | Cesta ke složce v Data Lake Store. Zástupný filtr není podporován. Příklad: rootfolder nebo podsložku / |Ano |
-| fileName | **Název nebo zástupný filtr** pro soubory v zadané "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny soubory ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (více znaků) a `?` (jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>-Příklad 2: `"fileName": "???20180427.txt"`<br/>Použití `^` abyste se vyhnuli, pokud jejich název zástupných znaků nebo tento řídicí znak uvnitř.<br/><br/>Pokud není zadán název souboru pro datovou sadu výstupů a **preserveHierarchy** není zadané v jímce aktivity aktivitě kopírování automaticky vygeneruje název souboru v následujícím formátu: "*Data. [[ Aktivita běžet id Identifikátor GUID.] [Identifikátor GUID Pokud FlattenHierarchy]. [Formát pokud nakonfigurovaný]. [Pokud nakonfigurovaný komprese]* ". Příkladem je "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Ne |
+| fileName | **Název nebo zástupný filtr** pro soubory v zadané "folderPath". Pokud nezadáte hodnotu pro tuto vlastnost, datová sada odkazuje na všechny soubory ve složce. <br/><br/>Pro filtr, povoleny zástupné znaky jsou: `*` (odpovídá žádnému nebo více znaků) a `?` (odpovídá nula nebo jeden znak).<br/>– Příklad 1: `"fileName": "*.csv"`<br/>-Příklad 2: `"fileName": "???20180427.txt"`<br/>Použití `^` abyste se vyhnuli, pokud jejich název zástupných znaků nebo tento řídicí znak uvnitř.<br/><br/>Pokud není zadán název souboru pro datovou sadu výstupů a **preserveHierarchy** není zadané v jímce aktivity aktivitě kopírování automaticky vygeneruje název souboru v následujícím formátu: "*Data. [ Aktivita běžet id Identifikátor GUID.] [Identifikátor GUID Pokud FlattenHierarchy]. [Formát pokud nakonfigurovaný]. [Pokud nakonfigurovaný komprese]* ". Příkladem je "Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz". |Ne |
 | Formát | Pokud chcete **zkopírujte soubory jako-je** mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat nebo vygenerování soubory s konkrétním formátu, jsou podporovány následující typy souboru formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](supported-file-formats-and-compression-codecs.md#text-format), [formátu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro formát](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátu](supported-file-formats-and-compression-codecs.md#orc-format), a [Parquet formát](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro scénář binární kopie) |
 | Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Jsou podporované úrovně: **Optimal** a **nejrychlejší**. |Ne |
 

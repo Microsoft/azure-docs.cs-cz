@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/24/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 309bd35eabe1d5c4af9a35d5f2b879bce225a402
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 714afa1da5d2c8c5695dfe33edd0257f69af149d
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604365"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287700"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Zpřístupnit bitovou kopii virtuálního počítače v Azure zásobníku
 
@@ -207,7 +207,7 @@ Pokud již nepotřebujete bitovou kopii virtuálního počítače, který jste n
     Příklad: `1.0.0`  
     Verze bitové kopie virtuálního počítače, který uživatelé používají, když nasadí bitovou kopii virtuálního počítače. Tato verze je ve formátu  *\#.\#. \#*. Příkladem je **1.0.0**. V tomto poli nezahrnují mezery nebo speciální znaky.  
     
-    Další informace o rutině theRemove AzsPlatformImage, najdete v článku Microsoft PowerShell [dokumentaci modulu Azure zásobníku operátor](https://docs.microsoft.com/powershell/module/).
+    Další informace o rutině Remove-AzsPlatformImage najdete v tématu Microsoft PowerShell [dokumentaci modulu Azure zásobníku operátor](https://docs.microsoft.com/powershell/module/).
 
 ## <a name="next-steps"></a>Další postup
 
