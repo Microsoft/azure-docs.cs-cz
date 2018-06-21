@@ -205,6 +205,8 @@
           href: backup-azure-mars-troubleshoot.md
         - name: Sdílená složka Azure
           href: troubleshoot-azure-files.md
+        - name: SQL Server
+          href: backup-sql-server-azure-troubleshoot.md
 - name: Referenční informace
   items:
     - name: .NET

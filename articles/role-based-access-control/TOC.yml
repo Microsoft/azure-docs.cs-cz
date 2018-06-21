@@ -48,7 +48,7 @@
           href: role-assignments-powershell.md
         - name: REST
           href: role-assignments-rest.md
-    - name: Protokoly aktivit
+    - name: Zobrazení protokolů aktivit
       href: change-history-report.md
     - name: Zvýšení oprávnění přístupu pro globálního správce
       href: elevate-access-global-admin.md

@@ -4,15 +4,15 @@ description: Toto téma popisuje, jak zjistit místní virtuální počítače V
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 06/08/2018
+ms.date: 06/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e8d4380087e826a4f1332c0a39670c2309a10861
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 71d4bc0aa1ea2658c4cd40834a769eaaac649bc3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236140"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36228369"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Zjištění místních virtuálních počítačů VMware a posouzení vhodnosti jejich migrace do Azure
 
@@ -247,4 +247,4 @@ Posouzení nemusí mít k dispozici všechny datové body z některého z násle
 - Zjistěte, jak vytvořit vysoce spolehlivé skupiny posouzení pomocí [mapování závislosti počítačů](how-to-create-group-machine-dependencies.md).
 - [Přečtěte si další informace](concepts-assessment-calculation.md) o tom, jak se v rámci posouzení počítají náklady.
 - [Přečtěte si](how-to-scale-assessment.md), jak zjistit a posoudit virtuální počítače v rozsáhlém prostředí VMware.
-- [Přečtěte si další informace](resources-faq.md) o nejčastějších dotazech k Azure Migrate.
+- [Přečtěte si další informace](resources-faq.md) o nejčastějších dotazech k Azure Migrate

@@ -1,19 +1,19 @@
 ---
 title: Zkoumání javascriptové klientské knihovny pro službu Azure Time Series Insights
 description: Seznamte se s javascriptovou klientskou knihovnou pro službu Azure Time Series Insights a se souvisejícím programovacím modelem.
-author: BryanLa
+author: ashannon7
 manager: timlt
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: bryanla
-ms.openlocfilehash: 6bd8b10100f8cdabca5f87addfea1690dc5fac6c
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 70e29b1a6b8a4443ae6545ec7960f1d2370218e3
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809494"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295384"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Kurz: Zkoumání javascriptové klientské knihovny pro službu Azure Time Series Insights
 
@@ -94,7 +94,7 @@ Klientskou knihovnu pro TSI (**tsclient.js**) nebudeme podrobně popisovat, ale 
 
 Následující koncepty jsou univerzální a vztahují se obecně na všechna rozhraní API klientské knihovny pro TSI.
 
-### <a name="authentication"></a>Ověřování
+### <a name="authentication"></a>Authentication
 
 Jak jsme zmínili dříve, tato ukázka je jednostránková aplikace, která k ověřování uživatelů využívá podporu OAuth 2.0 v knihovně ADAL. Tady je několik zajímavých bodů v této části skriptu:
 
@@ -133,14 +133,14 @@ Naplňování a vykreslování ovládacích prvků grafů se řídí obecným vz
 
    | Parametr | Popis | Příklad |
    | --------- | ----------- | ------- |
-   | `predicateObject` | Výraz pro filtrování dat |`{predicateString: "Factory = 'Factory3'"}` |
+   | `predicateObject` | Výraz pro filtrování dat. |`{predicateString: "Factory = 'Factory3'"}` |
    | `measureObject`   | Název vlastnosti použité míry | `{property: 'Temperature', type: "Double"}` |
    | `measureTypes`    | Požadované agregace vlastnosti míry | `['avg', 'min']` |
-   | `searchSpan`      | Doba trvání a velikost intervalu agregačního výrazu | `{from: startDate, to: endDate, bucketSize: '2m'}` |
+   | `searchSpan`      | Doba trvání a velikost intervalu agregačního výrazu. | `{from: startDate, to: endDate, bucketSize: '2m'}` |
    | `splitByObject`   | Řetězcová vlastnost, podle které chcete provést rozdělení (volitelné – může být null) | `{property: 'Station', type: 'String'}` |
    | `color`         | Barva objektů, které chcete vykreslit | `'pink'` |
-   | `alias`           | Popisný název agregačního výrazu | `'Factory3Temperature'` |
-   | `contextMenuActions` | Pole akcí, které se navážou na objekty časové řady ve vizualizaci (volitelné) | Další informace najdete v části [Automaticky otevírané místní nabídky v oddílu Pokročilé funkce](#popup-context-menus). |
+   | `alias`           | Popisný název agregačního výrazu. | `'Factory3Temperature'` |
+   | `contextMenuActions` | Pole akcí, které se navážou na objekty časové řady ve vizualizaci (volitelné). | Další informace najdete v části [Automaticky otevírané místní nabídky v oddílu Pokročilé funkce](#popup-context-menus). |
 
 3. Vyžádejte agregovaná data zavoláním dotazu na TSI pomocí rozhraní API `TsiClient.Server`.
 

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.date: 2/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4caa4dfcfdc468c69241c5cf61d3c520609a088a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e52674014a888913e288f7b0749d9b2e05bedf45
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710257"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292782"
 ---
 # <a name="quickstart-set-up-sign-in-for-an-aspnet-application-using-azure-active-directory-b2c"></a>Rychlý start: Nastavení přihlášení pro aplikaci ASP.NET pomocí služby Azure Active Directory B2C
 
@@ -124,4 +124,4 @@ V tomto rychlém startu jste použili ukázkovou aplikaci ASP.NET s povolenou sl
 Pokračujte k dalšímu kurzu, kde se dozvíte, jak ukázku v ASP.NET nakonfigurovat tak, aby používala vašeho vlastního tenanta Azure AD B2C.
 
 > [!div class="nextstepaction"]
-> [Kurz: Ověřování uživatelů pomocí Azure Active Directory B2C ve webové aplikaci ASP.NET](active-directory-b2c-tutorials-web-app.md)
+> [Vytvoření tenanta Azure Active Directory B2C na webu Azure Portal](tutorial-create-tenant.md)
