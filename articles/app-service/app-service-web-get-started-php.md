@@ -1,5 +1,5 @@
 ---
-title: Vytvoření webové aplikace PHP ve službě Azure | Dokumentace Microsoftu
+title: Vytvoření webové aplikace PHP ve službě Azure | Microsoft Docs
 description: Během několika minut můžete nasadit svou první aplikaci PHP Hello World pomocí služby Azure App Service Web Apps.
 services: app-service\web
 documentationcenter: ''
@@ -15,11 +15,12 @@ ms.topic: quickstart
 ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: aaac2fa4d62fb02bf17342a0db27fad79e495693
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 4eaae22f1ccbcb73eb7244f55ea4629aae053171
+ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/01/2018
+ms.locfileid: "34597752"
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Vytvoření webové aplikace v PHP v Azure
 
@@ -104,7 +105,7 @@ Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujíc
 }
 ```
 
-Přejděte do vaší nově vytvořené webové aplikace. Nahraďte _&lt;app name>_ jedinečným názvem aplikace.
+Přejděte do vaší nově vytvořené webové aplikace. _&lt;Název aplikace>_ nahraďte jedinečným názvem aplikace, který jste vytvořili v předchozím kroku.
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -186,7 +187,7 @@ Zobrazí se stránka s přehledem vaší webové aplikace. Tady můžete provád
 
 ![Stránka služby App Service na webu Azure Portal](media/app-service-web-get-started-php/php-docs-hello-world-app-service-detail.png)
 
-Levá nabídka obsahuje odkazy na různé stránky pro konfiguraci vaší aplikace. 
+Levá nabídka obsahuje různé možnosti pro konfiguraci vaší aplikace. 
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 

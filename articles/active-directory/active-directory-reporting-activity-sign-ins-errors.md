@@ -1,27 +1,27 @@
 ---
-title: Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory | Microsoft Docs
+title: Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory | Dokumentace Microsoftu
 description: Referenční informace ke kódům chyb v sestavě aktivit přihlašování.
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/31/2018
-ms.author: rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cb636db4e6e2097f494fcbc7a6584f0172514b95
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: dc01a775579455ae24c95ecc6f3858ce28149dea
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698505"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36232293"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory
 
@@ -65,13 +65,13 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |40008|Vyskytl se problém s federovaným zprostředkovatelem identity. Pokud chcete tento problém vyřešit, obraťte se na svůj distribuční bod vydávání (IDP).|
 |40009|Vyskytl se problém s federovaným zprostředkovatelem identity. Pokud chcete tento problém vyřešit, obraťte se na svůj distribuční bod vydávání (IDP).|
 |40014|Vyskytl se problém s federovaným zprostředkovatelem identity. Pokud chcete tento problém vyřešit, obraťte se na svůj distribuční bod vydávání (IDP).|
-|50000|Došlo k problému s naší přihlašovací službou. Pokud chcete tento problém vyřešit, [otevřete požadavek na podporu](active-directory-troubleshooting-support-howto.md).|
+|50000|Došlo k problému s naší přihlašovací službou. Pokud chcete tento problém vyřešit, [otevřete požadavek na podporu](fundamentals/active-directory-troubleshooting-support-howto.md).|
 |50001|Hlavní název služby (SPN) nebyl v tomto tenantovi nalezen. Může k tomu dojít, když aplikaci nenainstaloval správce tenanta. Nebo V adresáři nebyl nalezen objekt prostředku nebo je neplatný.|
 |50002|Během přihlašování došlo k chybě kvůli omezenému přístupu proxy v tenantovi. Pokud jde o vaši vlastní zásadu tenanta, můžete problém vyřešit změnou nastavení omezeného přístupu.|
 |50003|Přihlášení se nezdařilo kvůli chybějícímu podpisovému klíči nebo certifikátu. Pravděpodobně v aplikaci není žádný klíč nakonfigurovaný. Podívejte se na řešení uvedená na adrese [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#certificate-or-key-not-configured). Pokud se vám přesto nedaří potíže vyřešit, kontaktujte vlastníka nebo správce aplikace.|
 |50005|Uživatel se pokusil přihlásit k zařízení z platformy, kterou aktuálně zásady podmíněného přístupu nepodporují.|
 |50006| Ověření podpisu se z důvodu neplatného podpisu nezdařilo. Podívejte se na řešení uvedené na adrese [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery). Pokud se vám přesto nedaří potíže vyřešit, kontaktujte vlastníka nebo správce aplikace.|
-|50007|Šifrovací certifikát třetí strany nebyl pro tuto aplikaci nalezen. Pokud chcete tento problém vyřešit, [otevřete u Microsoftu požadavek na podporu](active-directory-troubleshooting-support-howto.md).|
+|50007|Šifrovací certifikát třetí strany nebyl pro tuto aplikaci nalezen. Pokud chcete tento problém vyřešit, [otevřete u Microsoftu požadavek na podporu](fundamentals/active-directory-troubleshooting-support-howto.md).|
 |50008|V tokenu chybí nebo je špatně nakonfigurovaný kontrolní výraz SAML. Obraťte se na svého federačního zprostředkovatele.|
 |50010|Ověření identifikátoru URI cílové skupiny pro aplikaci se nezdařilo, protože nejsou nakonfigurované cílové skupiny tokenu. Obraťte se na vlastníka aplikace.|
 |50011|Adresa pro odpovědi chybí, je špatně nakonfigurována nebo neodpovídá adresám pro odpovědi, které jsou pro aplikaci nakonfigurované. Vyzkoušejte řešení uvedené na adrese [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application). Pokud se vám přesto nedaří potíže vyřešit, kontaktujte vlastníka nebo správce aplikace.|
@@ -114,8 +114,8 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |50133|Relace je neplatná z důvodu vypršení platnosti nebo nedávné změny hesla.|
 |50135|Účet je ohrožený, vyžaduje se změna hesla.|
 |50136|Přesměrování relace účtu spravované služby do aplikace – došlo k rozpoznání jediné relace účtu spravované služby. |
-|50140|K této chybě došlo kvůli přerušení operace „Zůstat přihlášeni“ během přihlašování. Více informací získáte, když [otevřete požadavek na podporu](active-directory-troubleshooting-support-howto.md) a odešlete ID korelace, ID požadavku a kód chyby. |
-|50143|Neshoda relace – relace je neplatná, protože se tenant uživatele kvůli jinému prostředku neshoduje s nápovědou domény. Více informací získáte, když [otevřete požadavek na podporu](active-directory-troubleshooting-support-howto.md) a odešlete ID korelace, ID požadavku a kód chyby.|
+|50140|K této chybě došlo kvůli přerušení operace „Zůstat přihlášeni“ během přihlašování. Více informací získáte, když [otevřete požadavek na podporu](fundamentals/active-directory-troubleshooting-support-howto.md) a odešlete ID korelace, ID požadavku a kód chyby. |
+|50143|Neshoda relace – relace je neplatná, protože se tenant uživatele kvůli jinému prostředku neshoduje s nápovědou domény. Více informací získáte, když [otevřete požadavek na podporu](fundamentals/active-directory-troubleshooting-support-howto.md) a odešlete ID korelace, ID požadavku a kód chyby.|
 |50144|Vypršela platnost hesla uživatele pro Active Directory. Vygenerujte uživateli nové heslo nebo koncového uživatele požádejte, ať se přihlásí pomocí nástroje pro samoobslužné resetování hesla.|
 |50146|Tato aplikace se musí nakonfigurovat pomocí podpisového klíče, který je specifický pro danou aplikaci. Buď není pomocí tohoto klíče nakonfigurovaná nebo klíči vypršela platnost nebo ještě klíč v platnost nevstoupil. Obraťte se na vlastníka aplikace.|
 |50148|Zadaný code_verifier neodpovídá přidruženému code_challenge, který byl dodán v žádosti o autorizaci pro PKCE. Obraťte se na vývojáře aplikace. |
@@ -150,7 +150,7 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |70007|Aplikace vrátila při žádosti o token nepodporovanou hodnotu „response_mode“. Obraťte se na vlastníka aplikace.|
 |70008|Poskytnutému autorizačnímu kódu nebo obnovovacímu tokenu vypršela platnost – odvoláno. Požádejte uživatele, aby se zkusil přihlásit znovu.|
 |70011|Rozsah požadovaný aplikací je neplatný. Obraťte se na vlastníka aplikace.|
-|70012|Při ověřování uživatele účtu spravované služby (příjemce) došlo k chybě serveru. Zkuste to prosím znovu. Pokud k chybě dochází opakovaně, [otevřete požadavek na podporu](active-directory-troubleshooting-support-howto.md). |
+|70012|Při ověřování uživatele účtu spravované služby (příjemce) došlo k chybě serveru. Zkuste to prosím znovu. Pokud k chybě dochází opakovaně, [otevřete požadavek na podporu](fundamentals/active-directory-troubleshooting-support-howto.md). |
 |70018|Neplatný ověřovací kód z důvodu zadání špatného uživatelského kódu pro tok kódu zařízení. Autorizace se neschválila.|
 |70019|Platnost ověřovacího kódu vypršela. Požádejte uživatele, aby se zkusil přihlásit znovu.|
 |70037|Odpověď na výzvu nebyla správná. Vzdálený přístup k relaci byl odepřen.|
@@ -161,20 +161,20 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |75011|Metoda ověřování, kterou uživatel provedl ověření se službou, se neshoduje s požadovanou metodou ověřování. Obraťte se na vlastníka aplikace.|
 |75016|Požadavek na ověření SAML2 má neplatný formát NameIdPolicy. Obraťte se na vlastníka aplikace.|
 |80001|Ověřovací agent se nemohl připojit k Active Directory. Přesvědčte se, že je ověřovací agent nainstalovaný na počítači s připojením k doméně a že počítač má na dohled datové centrum, které může vyřídit požadavek na přihlášení uživatele.|
-|80002|Vnitřní chyba. Vypršel časový limit žádosti o ověření hesla. Požadavek na ověření se nám nepodařilo interní hybridní službě identit odeslat. Pokud chcete získat o této chybě více informací, [otevřete požadavek na podporu](active-directory-troubleshooting-support-howto.md).|
-|80003|Ověřovací agent přijal neplatnou odpověď. Při pokusu o ověření pomocí místní služby Active Directory došlo k neznámé chybě. Pokud chcete získat o této chybě více informací, [otevřete lístek podpory](active-directory-troubleshooting-support-howto.md).|
-|80005|Ověřovací agent: během zpracování odpovědi od ověřovacího agenta došlo k neznámé chybě. Pokud chcete získat o této chybě více informací, [otevřete lístek podpory](active-directory-troubleshooting-support-howto.md).|
+|80002|Vnitřní chyba. Vypršel časový limit žádosti o ověření hesla. Požadavek na ověření se nám nepodařilo interní hybridní službě identit odeslat. Pokud chcete získat o této chybě více informací, [otevřete požadavek na podporu](fundamentals/active-directory-troubleshooting-support-howto.md).|
+|80003|Ověřovací agent přijal neplatnou odpověď. Při pokusu o ověření pomocí místní služby Active Directory došlo k neznámé chybě. Pokud chcete získat o této chybě více informací, [otevřete lístek podpory](fundamentals/active-directory-troubleshooting-support-howto.md).|
+|80005|Ověřovací agent: během zpracování odpovědi od ověřovacího agenta došlo k neznámé chybě. Pokud chcete získat o této chybě více informací, [otevřete lístek podpory](fundamentals/active-directory-troubleshooting-support-howto.md).|
 |80007|Ověřovací agent nebyl schopen ověřit heslo uživatele.|
 |80010|Ověřovací agent nebyl schopen dešifrovat heslo. |
 |80011|Ověřovacímu agentovi se nepodařilo získat šifrovací klíč.|
 |80012|Uživatelé se pokusili přihlásit mimo povolenou dobu (je určená v AD).|
 |80013|Pokus o ověření nebylo možné dokončit kvůli časovému posunu mezi počítačem, který má spuštěného ověřovacího agenta, a počítačem, který má spuštěnou službu AD. Opravte problémy se synchronizací času.|
-|80014|Ověřovacímu agentovi vypršel časový limit. Více informací o této chybě získáte, když [otevřete požadavek na podporu](active-directory-troubleshooting-support-howto.md) a odešlete kód chyby, ID korelace a datum a čas.|
+|80014|Ověřovacímu agentovi vypršel časový limit. Více informací o této chybě získáte, když [otevřete požadavek na podporu](fundamentals/active-directory-troubleshooting-support-howto.md) a odešlete kód chyby, ID korelace a datum a čas.|
 |81001|Lístek Kerberos uživatele je příliš velký. K tomu může dojít, když je uživatel členem příliš mnoha skupin a lístek Kerberos obsahuje příliš velký počet členství. Snižte počet členství uživatele ve skupinách a zkuste to znovu.|
 |81005|Ověřovací balíček není podporovaný.|
 |81007|Tenant není povolený pro bezproblémové jednotné přihlašování.|
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace najdete v tématu o [sestavách aktivit přihlašování na portálu Azure Active Directory](active-directory-reporting-activity-sign-ins.md).
