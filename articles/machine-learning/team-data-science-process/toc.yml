@@ -54,15 +54,17 @@
     - name: Azure Machine Learning
       href: walkthroughs-aml-with-tdsp.md
       items:
-        - name: Klasifikace mínění
+        - name: Klasifikace mínění s využitím nástrojů Keras a Scikit Learn
           href: predict-twitter-sentiment.md
+        - name: Klasifikace mínění s využitím balíčku AML pro analýzu textů
+          href: predict-twitter-sentiment-amltextpackage.md
         - name: Klasifikace příjmů v USA
           href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
           maintainContext: true
         - name: Rozpoznávání biomedicínských entit
           href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
           maintainContext: true
-        - name: Klasifikace snímků rakoviny kůže
+        - name: Klasifikace obrázků rakoviny kůže s využitím balíčku AML pro zpracování obrazu
           href: isic-image-classification.md
           maintainContext: true
     - name: Spark s PySparkem a Scalou

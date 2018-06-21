@@ -48,7 +48,7 @@
       items:
         - name: Přehled monitorování kontejnerů
           href: monitoring-container-overview.md
-        - name: Výkon kontejneru AKS
+        - name: AKS Container Health
           href: monitoring-container-health.md
         - name: Monitorování Dockeru a kontejnerů s Windows
           href: ../log-analytics/log-analytics-containers.md?toc=%2fazure%2fmonitoring%2ftoc.json

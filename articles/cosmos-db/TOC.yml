@@ -328,6 +328,8 @@ items:
                 href: mongodb-readpreference.md
               - name: Indexování
                 href: mongodb-indexing.md
+              - name: Hodnota TTL v MongoDB
+                href: mongodb-ttl.md
               - name: Vizualizace dat pomocí Power BI
                 href: powerbi-visualize.md
               - name: Správa s využitím Průzkumníka služby Azure Storage

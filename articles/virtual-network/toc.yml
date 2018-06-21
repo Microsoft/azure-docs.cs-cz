@@ -161,12 +161,8 @@
               href: virtual-networks-dmz-nsg.md
     - name: Konfigurace
       items:
-        - name: Virtuální počítače
-          items:
-            - name: Přidání nebo odebrání síťových rozhraní
-              href: virtual-network-network-interface-vm.md
-            - name: Překlad názvů pro virtuální počítače a cloudové služby
-              href: virtual-networks-name-resolution-for-vms-and-role-instances.md
+        - name: Překlad názvů pro virtuální počítače a cloudové služby
+          href: virtual-networks-name-resolution-for-vms-and-role-instances.md
         - name: Použití dynamického DNS s vlastním serverem DNS
           href: virtual-networks-name-resolution-ddns.md
         - name: Optimalizace propustnosti sítě
@@ -191,17 +187,16 @@
               href: virtual-network-nsg-manage-log.md
         - name: Směrovací tabulky
           href: manage-route-table.md
-        - name: Síťová rozhraní
-          href: virtual-network-network-interface.md
+        - name: Sítě virtuálních počítačů
           items:
-            - name: IP adresy
+            - name: Vytvoření nebo odstranění síťového rozhraní
+              href: virtual-network-network-interface.md
+            - name: Přidání nebo odebrání síťových rozhraní
+              href: virtual-network-network-interface-vm.md
+            - name: Přidání nebo odstranění IP adres
               href: virtual-network-network-interface-addresses.md
         - name: Veřejné IP adresy
           href: virtual-network-public-ip-address.md
-        - name: Virtuální počítače
-          items:
-            - name: Přesun virtuálního počítače do jiné podsítě
-              href: virtual-networks-move-vm-role-to-subnet.md
     - name: Řešení potíží
       items:
         - name: Skupiny zabezpečení sítě
@@ -277,6 +272,8 @@
                       href: ../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json
                     - name: Azure PowerShell
                       href: virtual-networks-acl-powershell.md
+                - name: Přesun virtuálního počítače do jiné podsítě
+                  href: virtual-networks-move-vm-role-to-subnet.md
         - name: Zabezpečení cloudové služby a sítě
           href: ../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json
           items:

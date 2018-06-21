@@ -16,8 +16,8 @@
       href: active-directory-b2c-quickstarts-spa.md
 - name: Kurzy
   items:
-    - name: 1 – Registrace aplikací
-      href: tutorial-register-applications.md
+    - name: 1 – Vytvoření tenanta B2C
+      href: tutorial-create-tenant.md
     - name: 2 – Ověření účtů
       items:
         - name: ASP.NET

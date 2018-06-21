@@ -268,14 +268,14 @@
       items:
         - name: Monitorování stavu aplikací logiky
           href: logic-apps-monitor-your-logic-apps.md
-        - name: Monitorování stavu aplikace logiky v OMS s využitím Log Analytics
+        - name: Monitorování stavu aplikace logiky s využitím Azure Log Analytics
           href: logic-apps-monitor-your-logic-apps-oms.md
         - name: Monitorování zpráv B2B
           href: logic-apps-monitor-b2b-message.md
           items:
-            - name: Sledování zpráv B2B v OMS
+            - name: Sledování zpráv B2B v Azure Log Analytics
               href: logic-apps-track-b2b-messages-omsportal.md
-            - name: Dotazování OMS na zprávy B2B
+            - name: Dotazování Azure Log Analytics na zprávy B2B
               href: logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md
     - name: 'Příklady, scénáře a názorné postupy'
       href: logic-apps-examples-and-scenarios.md

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 0c1cea1646c71698318e94932248e08955359b9e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 84bd2019e9586fa008560dba07119323ecb7f02e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234512"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293712"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurace webových aplikací v prostředí Azure App Service
 
@@ -46,7 +46,7 @@ Toto téma vysvětluje, jak nakonfigurovat webovou aplikaci pomocí [Azure Porta
 Technické z důvodů povolení pro aplikace Java zakáže možnosti .NET, PHP a Python.
 
 <a name="platform"></a>
-**Platforma**. Vybere, zda běží vaše webová aplikace v prostředí 32bitové nebo 64bitové verze. 64bitová verze prostředí vyžaduje režimu Basic nebo Standard. Uvolněte a režimy sdílené vždy spustit v prostředí 32-bit.
+**Platforma**. Vybere, zda běží vaše webová aplikace v prostředí 32bitové nebo 64bitové verze. 64bitová verze prostředí vyžaduje úroveň Basic nebo Standard. Uvolněte a vrstvy sdílené vždy spustit v prostředí 32-bit.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
@@ -56,6 +56,13 @@ Technické z důvodů povolení pro aplikace Java zakáže možnosti .NET, PHP a
 **Always On**. Ve výchozím nastavení jsou uvolněna webové aplikace, pokud jsou některé dobu nečinnosti. To umožňuje ušetřit prostředky systému. V režimu Basic nebo Standard, povolit **Always On** udržovat aplikaci načíst vždy. Pokud vaše aplikace běží nepřetržité webové úlohy nebo běží webové úlohy aktivaci pomocí výrazu CRON, měli byste povolit **Always On**, nebo nemusí spolehlivě spuštění webové úlohy.
 
 **Spravované verze kanálu**. Nastaví služby IIS [režim kanálů]. Pokud nemáte aplikaci ze starší verze, která vyžaduje starší verze služby IIS, ponechte této sady na integrovaný (výchozí).
+
+**Verzi protokolu HTTP**. Nastavte na **2.0** povolení podpory pro [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) protokolu. 
+
+> [!NOTE]
+> Většina moderních prohlížeče podporují protokol HTTP/2 přes TLS, zatímco bez šifrování přenosů používá protokol HTTP/1.1. Ujistěte se, že klient prohlížeče připojí k vaší aplikace pomocí protokolu HTTP nebo 2, buď [koupit certifikát služby aplikace](web-sites-purchase-ssl-web-site.md) pro vlastní doménu vaší aplikace nebo [navázat certifikát třetích stran](app-service-web-tutorial-custom-ssl.md).
+
+**Směrování žádostí na aplikace spřažení**. V aplikaci, která je škálovat na více systémů na více instancí virtuálního počítače, soubory cookie zaručit, že klient se směruje na stejnou instanci po dobu trvání relace spřažení směrování žádostí na aplikace. Chcete-li zlepšit výkon bezstavové aplikace, nastavte tuto možnost na **vypnout**.   
 
 **Automatické prohození**. Pokud povolíte automatické prohození pro slot nasazení, služby App Service automaticky Prohodit webové aplikace do produkčního prostředí, při nabízené aktualizace pro tento slot. Další informace najdete v tématu [nasadit do přípravné sloty pro webové aplikace v Azure App Service](web-sites-staged-publishing.md).
 

@@ -77,6 +77,8 @@
           href: edit-api.md
     - name: Zřizování a škálování
       items:
+        - name: Metrika kapacity
+          href: api-management-capacity.md
         - name: Upgrade a škálování
           href: upgrade-and-scale.md
         - name: Konfigurace vlastní domény
