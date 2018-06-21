@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a2a1c916543da07f25b2b9727e309709632afe00
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 3feed9c1c8903db66a0506f09161982dadaa79ba
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267267"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284960"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Spusťte skripty prostředí PowerShell v systému Windows virtuálního počítače se spustit příkaz
 
@@ -33,6 +33,7 @@ Při použití spustit příkaz platí následující omezení:
 * Minimální hodnota času spuštění skriptu je přibližně 20 sekund
 * Skripty spustit jako systému v systému Windows
 * Jeden skript současně může spustit.
+* Skripty, které výzvy informací (interaktivní režim) nejsou podporovány.
 * Nelze zrušit spouštění skriptu
 * Maximální doba spuštění skriptu je 90 minut, po který dojde k vypršení časového limitu
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 5eb56460356267d3676361797ed8eeff7aa57b80
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 01987f3a5f2a37d7cf2b16202310b7d442c9d7a8
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210288"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285827"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-neota-logic-studio"></a>Kurz: Azure Active Directory integrace s Neota logiku Studio
 
@@ -204,9 +204,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Klikněte na dlaždici Neota logiku Studio na přístupovém panelu, budete přesměrováni na stránku přihlášení organizace. Po úspěšném přihlášení můžete se být přihlášení k aplikaci logiky Studio Neota. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586).
-
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586). 
+Klikněte na dlaždici Neota logiku Studio na přístupovém panelu, budete přesměrováni na stránku přihlášení organizace. Po úspěšném přihlášení můžete se být přihlášení k aplikaci logiky Studio Neota. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

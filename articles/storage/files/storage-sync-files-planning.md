@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 160f01c3094548277e1f68e0002954ae63c79ce6
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 81b760e3a911bacb9c01106d59577d794788abe8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738326"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296173"
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Plánování nasazení synchronizace souboru Azure (preview)
 Pomocí synchronizace souboru Azure (preview) můžete centralizovat vaší organizace sdílené složky v souborech Azure, zatímco flexibilitu, výkonu a kompatibility pro místní souborový server. Synchronizace služby Azure souboru transformuje na rychlé mezipaměti Azure sdílené složky systému Windows Server. Můžete použít libovolný protokol, který je k dispozici v systému Windows Server pro přístup k datům místně, včetně protokolu SMB, systém souborů NFS a FTPS. Může mít libovolný počet mezipamětí, jako je třeba po celém světě.
@@ -145,6 +145,9 @@ Synchronizace souboru Azure a systému souborů DFS-R fungovat vedle sebe:
 
 Další informace najdete v tématu [Přehled replikace DFS](https://technet.microsoft.com/library/jj127250).
 
+### <a name="windows-search"></a>Windows Search
+Pokud cloudové vrstvení je povolená na koncový bod serveru, jsou soubory, které jsou už vás unavuje přeskočeny a není indexované podle Windows Search. Víceúrovňová bez soubory nejsou správně indexovány.
+
 ### <a name="antivirus-solutions"></a>Antivirových řešení
 Vzhledem k tomu, že antivirový funguje tak, že kontrola soubory pro známého škodlivého kódu, může způsobit antivirového produktu odvolání vrstvené souborů. Protože vrstvené soubory mají atribut "offline" nastaven, doporučujeme poradě s dodavatelem softwaru se dozvíte, jak nakonfigurovat své řešení tak, aby přeskočil čtení offline soubory. 
 
@@ -158,6 +161,11 @@ Následující řešení zaručeně podporují přeskočení offline soubory:
 
 ### <a name="backup-solutions"></a>Řešení zálohování
 Třeba antivirový řešení může dojít k řešení zálohování odvolání vrstvené souborů. Doporučujeme používat řešení cloudového zálohování k zálohování sdílenou složkou Azure místo produktu pro zálohování na místě.
+
+Pokud používáte zálohování v případě místních řešení, je třeba provést zálohování na serveru ve skupině synchronizace, která má cloud vrstvení zakázané. Při obnovování souborů v rámci umístění koncového bodu serveru, použijte možnost obnovení na úrovni souboru. Soubory obnovené se budou synchronizovat s všechny koncové body ve skupině synchronizace a nahradí existující soubory s verzí obnovena ze zálohy.
+
+> [!Note]  
+> Aplikace využívající technologii, možnosti obnovení úrovni svazku a úplné obnovení (BMR) může způsobit neočekávané výsledky a nejsou aktuálně podporovány. Obnovení, tyto možnosti budou podporované v budoucí verzi.
 
 ### <a name="encryption-solutions"></a>Řešení pro šifrování
 Podpora pro šifrování řešení závisí na tom, jak jsou implementované. Synchronizace služby Azure souboru je znám pracovat:
@@ -180,6 +188,7 @@ Synchronizace služby Azure souboru je k dispozici pouze v následujících obla
 | Oblast | Umístění datového centra |
 |--------|---------------------|
 | Austrálie – východ | Nový Jižní Wales |
+| Austrálie – jihovýchod | Victoria |
 | Střední Kanada | Toronto |
 | Východní Kanada | Québec |
 | Střed USA | Iowa |
@@ -189,6 +198,7 @@ Synchronizace služby Azure souboru je k dispozici pouze v následujících obla
 | Severní Evropa | Irsko |
 | Jihovýchodní Asie | Singapur |
 | Spojené království – jih | Londýn |
+| Spojené království – západ | Cardiff |
 | Západní Evropa | Nizozemsko |
 | Západní USA | Kalifornie |
 

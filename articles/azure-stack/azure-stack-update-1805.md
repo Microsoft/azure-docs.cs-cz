@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 06/20/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: cb6c4d5cd1d63403c102f7d09741eba4932a79bb
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 80ed0d2353fc6ea3a515c0d05475c713920abe46
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850504"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295742"
 ---
 # <a name="azure-stack-1805-update"></a>Azure aktualizace 1805 zásobníku
 
@@ -60,7 +60,7 @@ Tato aktualizace obsahuje následující vylepšení pro Azure zásobníku.
 ### <a name="fixed-issues"></a>Opravené problémy
 
 <!-- # - applicability -->
-
+- Vyřešili problém, který blokovaný [otevření nové žádosti o podporu z rozevíracího seznamu](azure-stack-manage-portals.md#quick-access-to-help-and-support) z portálu pro správu. Tato možnost teď funguje tak, jak má. 
 
 - **Různé opravy** pro výkon, stabilitu, zabezpečení a operační systém, který je používán zásobník Azure.
 
@@ -78,40 +78,46 @@ Tato aktualizace obsahuje následující vylepšení pro Azure zásobníku.
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace   
 - Během instalace aktualizace 1805, může se zobrazit výstrahy s nadpis *chyba – šablona pro FaultType UserAccounts.New chybí.*  Tyto výstrahy můžete bezpečně ignorovat. Tyto výstrahy se automaticky zavře po dokončení aktualizace 1805.   
 
-- <!-- 2489559 - IS --> Do not attempt to create virtual machines during the installation of this update. For more information about managing updates, see [Manage updates in Azure Stack overview](azure-stack-updates.md#plan-for-updates).
+- <!-- 2489559 - IS --> Nepokoušejte se vytvořit virtuální počítače při instalaci této aktualizace. Další informace o správě aktualizací, seSe [správě aktualizací v přehledu Azure zásobníku](azure-stack-updates.md#plan-for-updates).
 
 
 ### <a name="post-update-steps"></a>Postup po aktualizaci
-*Neexistují žádné kroky po aktualizaci pro aktualizaci 1805.*
+Po instalaci 1805 nainstalujte všechny použitelné opravy hotfix. Další informace naleznete v následujících článcích znalostní báze knowledge base, a také naše [obsluhy zásad](azure-stack-servicing-policy.md).  
+ - [KB 4340474 - oprava Hotfix Azure zásobníku 1.1805.4.53](https://support.microsoft.com/en-us/help/4340474).
 
 
 ## <a name="known-issues-post-installation"></a>Známé problémy (po instalaci)
 Dále jsou po instalaci Známé problémy pro tuto verzi sestavení.
 
 ### <a name="portal"></a>Portál  
-- <!-- 2551834 - IS, ASDK --> When you select **Overview** for a storage account in either the admin or user portals, the information from the *Essentials* pane does not display.  The Essentials pane displays information about the account like its *Resource group*, *Location*, and *Subscription ID*.  Other options for Overview  are accessible, like *Services* and *Monitoring*, as well as options to *Open in Explorer* or to *Delete storage account*. 
+- <!-- 2551834 - IS, ASDK --> Když vyberete **přehled** pro účet úložiště na portály na správce nebo uživatele, informace z *Essentials* podokně nezobrazí.  V podokně Essentials se zobrazí informace o účtu jako jeho *skupiny prostředků*, *umístění*, a *ID předplatného*.  Další možnosti pro přehled jsou dostupné, jako je *služby* a *monitorování*, stejně jako možnosti k *otevřít v Průzkumníkovi* nebo *odstranit účet úložiště* . 
 
   Chcete-li zobrazit informace k dispozici, použijte [Get azureRMstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/get-azurermstorageaccount?view=azurermps-6.2.0) rutiny prostředí PowerShell. 
 
-- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+- <!-- 2551834 - IS, ASDK --> Když vyberete **značky** pro účet úložiště na portály na správce nebo uživatele informace nepodaří načíst a nezobrazí.  
+
+  Chcete-li zobrazit informace k dispozici, použijte [Get-AzureRmTag](https://docs.microsoft.com/powershell/module/azurerm.tags/get-azurermtag?view=azurermps-6.2.0) rutiny prostředí PowerShell.
+
+
+- <!-- 2332636 - IS -->  Při použití služby AD FS pro systém identit Azure zásobníku a aktualizace na tuto verzi Azure zásobníku, výchozí vlastník předplatného výchozí zprostředkovatel se resetuje do vestavěné **CloudAdmin** uživatele.  
   Alternativní řešení: Chcete-li tento problém vyřešit, po instalaci této aktualizace, použijte krok 3 ze [automation aktivační události. ke konfiguraci vztahu důvěryhodnosti zprostředkovatele v zásobníku Azure deklarací](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) postup resetovat vlastníka předplatného výchozího zprostředkovatele.   
 
-- <!-- TBD - IS ASDK --> Some administrative subscription types are not available.  When you upgrade Azure Stack to this version, the two subscription types that were [introduced with version 1804](azure-stack-update-1804.md#new-features) are not visible in the console. This is expected. The unavailable subscription types are *Metering subscription*, and *Consumption subscription*. These subscription types are visible in new Azure Stack environments beginning with version 1804 but are not yet ready for use. You should continue to use the *Default Provider* subscription type.  
+- <!-- TBD - IS ASDK --> Některé typy pro správu předplatného nejsou k dispozici.  Když upgradujete zásobník Azure na tuto verzi, typy dvě předplatného, které byly [představený poprvé ve verzi 1804](azure-stack-update-1804.md#new-features) nejsou viditelné v konzole. To se očekává. Typy předplatné není k dispozici jsou *měření předplatné*, a *spotřeba předplatné*. Tyto typy předplatného jsou viditelné v nové prostředí zásobníku Azure od verze 1804 ale ještě nejsou připravené k použití. By měly být nadále používat *výchozí zprostředkovatel* typ předplatného.  
 
-- <!-- 2403291 - IS ASDK --> You might not have use of the horizontal scroll bar along the bottom of the admin and user portals. If you can’t access the horizontal scroll bar, use the breadcrumbs to navigate to a previous blade in the portal by selecting the name of the blade you want to view from the breadcrumb list found at the top left of the portal.
+- <!-- 2403291 - IS ASDK --> Nemusí mít použití vodorovného posuvníku podél dolního okraje portálů správců a uživatelů. Pokud máte přístup k vodorovného posuvníku, pomocí popisu cesty a přejděte do předchozího okna portálu výběrem název okna je chcete zobrazit ze seznamu s popisem cesty, které se nachází v horní levé části portálu.
   ![Popis cesty](media/azure-stack-update-1804/breadcrumb.png)
 
-- <!-- TBD - IS --> It might not be possible to view compute or storage resources in the administrator portal. The cause of this issue is an error during the installation of the update that causes the update to be incorrectly reported as successful. If this issue occurs, contact Microsoft Customer Support Services for assistance.
+- <!-- TBD - IS --> Nemusí být možné zobrazit úložiště nebo výpočetní prostředky na portálu správce. Příčinou tohoto problému je k chybě při instalaci aktualizace, která způsobí, že aktualizace, která se nesprávně hlásit jako úspěšné. Pokud chcete tento problém opakuje, obraťte se na technickou podporu společnosti Microsoft pro pomoc.
 
-- <!-- TBD - IS --> You might see a blank dashboard in the portal. To recover the dashboard, select the gear icon in the upper right corner of the portal, and then select **Restore default settings**.
+- <!-- TBD - IS --> Může se zobrazit prázdný řídicí panel portálu. Chcete-li obnovit řídicí panel, vyberte ikonu ozubené kolečko v pravém horním rohu portálu a pak vyberte **obnovit výchozí nastavení**.
 
-- <!-- TBD - IS ASDK --> Deleting user subscriptions results in orphaned resources. As a workaround, first delete user resources or the entire resource group, and then delete user subscriptions.
+- <!-- TBD - IS ASDK --> Odstranění odběrů uživatele za následek osamocené prostředky. Jako alternativní řešení nejprve odstraňte prostředky uživatele nebo skupinu celý prostředků a potom odstraňte odběry uživatele.
 
-- <!-- TBD - IS ASDK --> You cannot view permissions to your subscription using the Azure Stack portals. As a workaround, use PowerShell to verify permissions.
+- <!-- TBD - IS ASDK --> Nelze zobrazit oprávnění k vašemu předplatnému používání portálů zásobník Azure. Jako alternativní řešení ověřte oprávnění pomocí prostředí PowerShell.
 
 
 ### <a name="health-and-monitoring"></a>Sledování stavu a
-- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+- <!-- 1264761 - IS ASDK -->  Může se zobrazit výstrahy *stavu řadiče* součásti, které mají následující podrobnosti:  
 
    Výstrahy #1:
    - Název: Infrastruktury role není v pořádku
@@ -127,11 +133,11 @@ Dále jsou po instalaci Známé problémy pro tuto verzi sestavení.
 
   Obě výstrahy můžete bezpečně ignorovat a bude automaticky zavřete tak, aby v čase.  
 
-- <!-- 2368581 - IS. ASDK --> An Azure Stack operator, if you receive a low memory alert and tenant virtual machines fail to deploy with a *Fabric VM creation error*, it is possible that the Azure Stack stamp is out of available memory. Use the [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) to best understand the capacity available for your workloads. 
+- <!-- 2368581 - IS. ASDK --> Operátor zásobník Azure, pokud se zobrazí upozornění na nedostatek paměti a klientské virtuální počítače se nepodařilo nasadit s *Chyba při vytváření virtuálních počítačů Fabric*, je možné, že Azure zásobníku razítko nedostatek dostupné paměti. Použití [Azure zásobníku Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) nejlépe pochopit dostupné kapacity pro zatížení. 
 
 
 ### <a name="compute"></a>Compute
-- <!-- TBD - IS, ASDK --> When selecting a virtual machine size for a virtual machine deployment, some F-Series VM sizes are not visible as part of the size selector when you create a VM. The following VM sizes do not appear in the selector: *F8s_v2*, *F16s_v2*, *F32s_v2*, and *F64s_v2*.  
+- <!-- TBD - IS, ASDK --> Když vyberete velikost virtuálního počítače pro nasazení virtuálního počítače, některé velikosti virtuálních počítačů F-Series nejsou viditelné v rámci selektoru velikost, při vytváření virtuálního počítače. Následující velikosti virtuálních počítačů se nezobrazí v modulu pro výběr: *F8s_v2*, *F16s_v2*, *F32s_v2*, a *F64s_v2*.  
   Jako řešení použijte jednu z následujících metod nasazení virtuálního počítače. V každé metody je třeba zadat velikost virtuálního počítače, který chcete použít.
 
   - **Šablona Azure Resource Manageru:** při použití šablony, nastavte *vmSize* v šabloně na velikost virtuálního počítače, kterou chcete použít. Například následující položku slouží k nasazení virtuálního počítače, který používá *F32s_v2* velikost:  
@@ -147,46 +153,48 @@ Dále jsou po instalaci Známé problémy pro tuto verzi sestavení.
   - **Prostředí PowerShell:** pomocí prostředí PowerShell můžete použít [New-AzureRMVMConfig](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvmconfig?view=azurermps-6.0.0) s parametrem, který určuje velikost virtuálního počítače, podobně jako `-VMSize "Standard_F32s_v2"`.
 
 
-- <!-- TBD - IS ASDK --> Scaling settings for virtual machine scale sets are not available in the portal. As a workaround, you can use [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Because of PowerShell version differences, you must use the `-Name` parameter instead of `-VMScaleSetName`.
+- <!-- TBD - IS ASDK --> Nastavení škálování pro sady škálování virtuálního počítače nejsou k dispozici na portálu. Jako alternativní řešení, můžete použít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Z důvodu rozdílů verze prostředí PowerShell, je nutné použít `-Name` parametr místo `-VMScaleSetName`.
 
-- <!-- TBD - IS --> When you create an availability set in the portal by going to **New** > **Compute** > **Availability set**, you can only create an availability set with a fault domain and update domain of 1. As a workaround, when creating a new virtual machine, create the availability set by using PowerShell, CLI, or from within the portal.
+- <!-- TBD - IS --> Když vytvoříte sadu na portálu přejděte na dostupnosti **nový** > **výpočetní** > **sadu dostupnosti**, můžete vytvořit pouze skupiny dostupnosti s doména selhání a aktualizace domény 1. Jako řešení, při vytváření nového virtuálního počítače, vytvořte skupinu dostupnosti pomocí prostředí PowerShell, rozhraní příkazového řádku, nebo v portálu.
 
-- <!-- TBD - IS ASDK --> When you create virtual machines on the Azure Stack user portal, the portal displays an incorrect number of data disks that can attach to a DS series VM. DS series VMs can accommodate as many data disks as the Azure configuration.
+- <!-- TBD - IS ASDK --> Když vytvoříte virtuální počítače na portálu pro uživatele Azure zásobníku, portál zobrazí nesprávný počet datových disků, které můžete připojit k řady DS virtuálních počítačů. Řady DS virtuální počítače zvládne tolik datových disků jako konfiguraci Azure.
 
-- <!-- TBD - IS ASDK --> When a VM image fails to be created, a failed item that you cannot delete might be added to the VM images compute blade.
+- <!-- TBD - IS ASDK --> Když image virtuálního počítače se nepodaří vytvořit, položku se nezdařilo, nelze odstranit, mohou být přidány do okna výpočetní Image virtuálního počítače.
 
   Jako alternativní řešení, vytvořte novou bitovou kopii virtuálního počítače s fiktivní virtuální pevný disk vytvořený pomocí technologie Hyper-V (nový virtuální pevný disk-C:\dummy.vhd cesta-Fixed – SizeBytes 1 GB). Tento proces by měla potíže vyřešit, která zabraňuje odstranění položky se nezdařilo. Potom 15 minut po vytvoření fiktivní bitovou kopii, chcete-li úspěšně odstranit.
 
   Potom můžete zkusit redownload image virtuálního počítače, který předtím selhal.
 
-- <!-- TBD - IS ASDK --> If provisioning an extension on a VM deployment takes too long, users should let the provisioning time-out instead of trying to stop the process to deallocate or delete the VM.  
+- <!-- TBD - IS ASDK --> Pokud zřizování rozšíření na nasazení virtuálního počítače trvá příliš dlouho, uživatelé měli nechat zřizování časový limit namísto pokusu o zastavení procesu navrácení nebo odstranění virtuálního počítače.  
 
-- <!-- 1662991 IS ASDK --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings.  
+- <!-- 1662991 IS ASDK --> Diagnostika virtuálních počítačů Linux není podporována v zásobníku Azure. Při nasazení virtuálního počítače s Linuxem pomocí diagnostiky virtuálních počítačů, které jsou povolené, nasazení se nezdaří. Nasazení se také nezdaří, pokud povolíte základní metriky virtuálního počítače s Linuxem pomocí nastavení pro diagnostiku.  
 
 
 ### <a name="networking"></a>Sítě
-- <!-- 1766332 - IS ASDK --> Under **Networking**, if you click **Create VPN Gateway** to set up a VPN connection, **Policy Based** is listed as a VPN type. Do not select this option. Only the **Route Based** option is supported in Azure Stack.
+- <!-- TBD - IS ASDK --> Trasy definované uživatelem nelze vytvořit buď portálu správce nebo uživatele. Jako alternativní řešení použít [prostředí Azure PowerShell](https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell).
 
-- <!-- 2388980 - IS ASDK --> After a VM is created and associated with a public IP address, you can't disassociate that VM from that IP address. Disassociation appears to work, but the previously assigned public IP address remains associated with the original VM.
+- <!-- 1766332 - IS ASDK --> V části **sítě**, pokud kliknete na tlačítko **vytvořit bránu VPN** nastavit připojení k síti VPN **na základě zásad** je uveden jako typ sítě VPN. Nevybírejte tuto možnost. Pouze **na základě trasy** možnost je podporována v zásobníku Azure.
+
+- <!-- 2388980 - IS ASDK --> Po vytvoření virtuálního počítače a související s veřejnou IP adresu, nelze zrušit přidružení tohoto virtuálního počítače z této IP adresy. Zrušení pravděpodobně fungovat, ale pořád přidruženy původní virtuální počítač dříve přiřazenou veřejnou IP adresu.
 
   V současné době používejte pouze nové veřejné IP adresy pro nové virtuální počítače, které vytvoříte.
 
   K tomuto chování dochází i v případě, že je přiřadit IP adresu na nový virtuální počítač (obvykle označuje jako *prohození*). Všechny budoucí pokusy o připojení přes tuto IP adresu povede připojení do původní virtuální počítač a ne do nového.
 
-- <!-- 2292271 - IS ASDK --> If you raise a Quota limit for a Network resource that is part of an Offer and Plan that is associated with a tenant subscription, the new limit is not applied to that subscription. However, the new limit does apply to new subscriptions that are created after the quota is increased.
+- <!-- 2292271 - IS ASDK --> Pokud zvýšíte limit kvóty pro síťového prostředku, který je součástí služby nabídka a plán, který je přidružený k předplatnému klienta, nový limit neplatí pro toto předplatné. Nový limit však platí pro nové odběry, které jsou vytvořeny po kvótu vzroste.
 
   Chcete-li tento problém obejít, použijte plán rozšíření zvýšit kvótu sítě, pokud je již přidružena k odběru plánu. Další informace najdete v tématu Jak [zpřístupnit plán rozšíření](azure-stack-subscribe-plan-provision-vm.md#to-make-an-add-on-plan-available).
 
-- <!-- 2304134 IS ASDK --> You cannot delete a subscription that has DNS Zone resources or Route Table resources associated with it. To successfully delete the subscription, you must first delete DNS Zone and Route Table resources from the tenant subscription.
+- <!-- 2304134 IS ASDK --> Nelze odstranit odběr, který má zónu DNS prostředky nebo prostředky směrovací tabulku s ním spojená. Úspěšně odstraňte odběr, musíte nejprve odstranit zónu DNS a směrovací tabulku prostředky z předplatného klienta.
 
 
-- <!-- 1902460 - IS ASDK --> Azure Stack supports a single *local network gateway* per IP address. This is true across all tenant subscriptions. After the creation of the first local network gateway connection, subsequent attempts to create a local network gateway resource with the same IP address are blocked.
+- <!-- 1902460 - IS ASDK --> Azure zásobníku podporuje jediný *brány místní sítě* podle IP adresy. To platí ve všech předplatných klienta. Po vytvoření první místní síťové brány připojení, další pokusy o vytvoření prostředku brány místní sítě se stejnou adresou IP jsou blokovány.
 
-- <!-- 16309153 - IS ASDK --> On a Virtual Network that was created with a DNS Server setting of *Automatic*, changing to a custom DNS Server fails. The updated settings are not pushed to VMs in that Vnet.
+- <!-- 16309153 - IS ASDK --> Ve virtuální síti, který byl vytvořen s nastavením serveru DNS *automatické*, změna na vlastní selhání serveru DNS. Aktualizované nastavení nejsou nabídnutých do virtuálních počítačů v této virtuální sítě.
 
-- <!-- TBD - IS ASDK --> Azure Stack does not support adding additional network interfaces to a VM instance after the VM is deployed. If the VM requires more than one network interface, they must be defined at deployment time.
+- <!-- TBD - IS ASDK --> Azure zásobník nepodporuje přidávání dalších síťových rozhraní do instance virtuálního počítače po nasazení virtuálního počítače. Pokud virtuální počítač vyžaduje více než jedno síťové rozhraní, musí být definován v době nasazení.
 
-- <!-- 2096388 IS --> You cannot use the admin portal to update rules for a network security group.
+- <!-- 2096388 IS --> Portál pro správu nelze použít k aktualizaci pravidla pro skupinu zabezpečení sítě.
 
     Alternativní řešení pro službu App Service: Pokud potřebujete vzdálenou plochu instance řadiče, můžete upravit pravidla zabezpečení v rámci skupiny zabezpečení sítě pomocí prostředí PowerShell.  Následují příklady *povolit*a potom obnovte konfiguraci *Odepřít*:  
 
@@ -252,13 +260,13 @@ Dále jsou po instalaci Známé problémy pro tuto verzi sestavení.
 
 ### <a name="sql-and-mysql"></a>SQL a MySQL
 
-- <!-- TBD - IS --> Only the resource provider is supported to create items on servers that host SQL or MySQL. Items created on a host server that are not created by the resource provider might result in a mismatched state.  
+- <!-- TBD - IS --> Vytvoření položek na serverech, že hostitel SQL nebo MySQL je podporována pouze poskytovatele prostředků. Položky vytvořené na hostitelském serveru, které nebyly vytvořeny pomocí poskytovatele prostředků může mít za následek neodpovídající stavu.  
 
-- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** or **Tier** names when you create a SKU for the SQL and MySQL resource providers.
+- <!-- IS, ASDK --> Speciální znaky, včetně mezery a tečky, nejsou podporovány v **rodiny** nebo **vrstvy** názvy při vytváření SKU pro poskytovatele prostředků SQL a databáze MySQL.
 
 
 > [!NOTE]  
-> <!-- TBD - IS --> After you update to Azure Stack 1805, you can continue to use the SQL and MySQL resource providers that you previously deployed.  We recommend you update SQL and MySQL when a new release becomes available. Like Azure Stack, apply updates to SQL and MySQL resource providers sequentially. For example, if you use version 1803, first apply version 1804, and then update to 1805.      
+> <!-- TBD - IS --> Po provedení aktualizace na 1805 zásobník Azure, můžete nadále používat zprostředkovatele prostředků SQL a MySQL, které jste předtím nasadili.  Doporučujeme, abyste že aktualizujete SQL a MySQL, když je dostupná nová verze. Zásobník Azure, jako je aktualizace pro poskytovatele prostředků SQL a MySQL postupně. Pokud používáte verzi 1803, nejprve použít verzi 1804 a potom aktualizovat 1805.      
 >   
 > Instalace aktualizace 1805 nemá vliv na aktuální použití funkce SQL nebo MySQL poskytovatelů prostředků, které vaši uživatelé.
 > Bez ohledu na verzi poskytovateli prostředků, které používáte vaše data uživatelů v své databáze není dotyku a zůstávají dostupné.    
@@ -266,15 +274,15 @@ Dále jsou po instalaci Známé problémy pro tuto verzi sestavení.
 
 
 ### <a name="app-service"></a>App Service
-- <!-- 2352906 - IS ASDK --> Users must register the storage resource provider before they create their first Azure Function in the subscription.
+- <!-- 2352906 - IS ASDK --> Uživatelé musí registrovat poskytovatele prostředků úložiště, dřív, než vytvoří jejich první funkce Azure v rámci předplatného.
 
-- <!-- 2489178 - IS ASDK --> In order to scale out infrastructure (workers, management, front-end roles), you must use PowerShell as described in the release notes for Compute.
+- <!-- 2489178 - IS ASDK --> Aby bylo možné škálovat infrastrukturu (pracovních procesů, správy, front-end rolí), musíte použít PowerShell, jak je popsáno v poznámkách k verzi pro výpočet.
 
-- <!-- TBD - IS ASDK --> App Service can only be deployed into the *Default Provider subscription* at this time. In a future update, App Service will deploy into the new *Metering subscription* that was introduced in Azure Stack 1804. When Metering is supported for use, all existing deployments will be migrated to this new subscription type.
+- <!-- TBD - IS ASDK --> Aplikace služby lze nasadit pouze do *výchozí zprostředkovatel odběru* v tuto chvíli. V budoucí aktualizaci, bude do nové nasazení služby App Service *měření předplatné* která byla zavedena v zásobníku 1804 Azure. Při měření podporuje pro použití, všechna existující nasazení budou migrovány tento nový typ odběru.
 
 
 ### <a name="usage"></a>Využití  
-- <!-- TBD - IS ASDK --> Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can’t use this data to perform accurate accounting of public IP address usage.
+- <!-- TBD - IS ASDK --> Využití veřejné IP adresy využití měření data zobrazují stejné *EventDateTime* hodnotu pro každý záznam místo *TimeDate* razítka, který ukazuje vytvoření záznamu. Tato data v současné době nelze použít pro monitorování přesné veřejnou IP adresu využití.
 
 
 <!-- #### Identity -->

@@ -11,126 +11,82 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: c3060765022cabcb877041927886b59d6725c7cf
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 844a7ea1c2dd8f7dbb4984fc148575529ac154db
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204186"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292853"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Jak zabezpečit back endové služby pomocí klienta pro ověřování pomocí certifikátu ve službě Azure API Management
-API Management poskytuje možnost zabezpečený přístup ke službě back endové rozhraní API pomocí klientských certifikátů. Tato příručka ukazuje, jak ke správě certifikátů v rozhraní API portálu vydavatele a postup konfigurace rozhraní API používat certifikát pro přístup k jeho back endové službě.
+
+Správa API umožňuje zabezpečený přístup ke službě back endové rozhraní API pomocí klientských certifikátů. Tato příručka ukazuje, jak spravovat certifikáty v instanci služby Azure API Management na portálu Azure. Také vysvětluje, jak nakonfigurovat rozhraní API používat certifikát pro přístup k back endové službě.
 
 Informace o správě certifikátů pomocí rozhraní API REST API správy najdete v tématu <a href="https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">Azure API Management REST API certifikát entity</a>.
 
 ## <a name="prerequisites"> </a>Požadavky
-Tento průvodce vám ukáže, jak nakonfigurovat instanci služby API Management používat ověřování pomocí certifikátu klienta pro přístup k službě back-end pro rozhraní API. Před provedením postupu v tomto tématu, byste měli mít služby back-end, který je nakonfigurován pro ověřování pomocí certifikátu klienta ([konfigurace ověřování pomocí certifikátu v weby Azure najdete v tomto článku] [ to configure certificate authentication in Azure WebSites refer to this article]), a mít přístup k certifikátu a heslo pro certifikát pro odesílání v portál vydavatele služby API Management.
+
+Tento průvodce vám ukáže, jak nakonfigurovat instanci služby API Management používat ověřování pomocí certifikátu klienta pro přístup k službě back-end pro rozhraní API. Před provedením postupu v tomto článku, měli byste služby back-end, který je nakonfigurován pro ověřování pomocí certifikátu klienta ([konfigurace ověřování pomocí certifikátu v weby Azure najdete v tomto článku] [ to configure certificate authentication in Azure WebSites refer to this article]). Je nutné použít certifikát a heslo pro odesílání ve službě API Management.
 
 ## <a name="step1"> </a>Nahrajte certifikát klienta
-Začněte tak, že na webu Azure Portal dané služby API Management kliknete na **Portál vydavatele**. Tím přejdete na portál vydavatele služby API Management.
 
-![Portál vydavatele rozhraní API][api-management-management-console]
+![Přidat klientské certifikáty](media/api-management-howto-mutual-certificates/apim-client-cert.png)
 
-> Pokud jste instanci služby API Management ještě nevytvořili, přečtěte si téma [vytvoření instance API Management][Create an API Management service instance].
-> 
-> 
+Postupujte podle následujících kroků a nahrát nový klientský certifikát. Pokud jste dosud instanci služby API Management ještě nevytvořili, najdete v části kurzu [vytvoření instance API Management][Create an API Management service instance].
 
-Klikněte na tlačítko **zabezpečení** z **API Management** nabídky na levé straně a klikněte na **klientské certifikáty**.
+1. Přejděte na instanci služby Azure API Management na portálu Azure.
+2. Vyberte **klientské certifikáty** z nabídky.
+3. Klikněte **+ přidat** tlačítko.  
+    ![Přidat klientské certifikáty](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
+4. Vyhledejte certifikát, zadejte jeho ID a heslo.  
+5. Klikněte na možnost **Vytvořit**.
 
-![Klientské certifikáty][api-management-security-client-certificates]
-
-Chcete-li nahrát nový certifikát, klikněte na tlačítko **nahrání certifikátu**.
-
-![Nahrání certifikátu][api-management-upload-certificate]
-
-Přejděte na svůj certifikát a pak zadejte heslo pro certifikát.
-
+> [!NOTE]
 > Certifikát musí být v **.pfx** formátu. Certifikáty podepsané svým držitelem jsou povoleny.
-> 
-> 
 
-![Nahrání certifikátu][api-management-upload-certificate-form]
+Po nahrání certifikátu se zobrazí v **klientské certifikáty**.  Pokud máte velký počet certifikátů, poznamenejte si kryptografický otisk certifikátu požadované za účelem [konfigurace rozhraní API používat klientský certifikát pro ověřování brány][Configure an API to use a client certificate for gateway authentication].
 
-Klikněte na tlačítko **nahrát** na kterou odešlete certifikát.
-
-> V tuto chvíli je ověřit heslo certifikátu. Chybová zpráva se zobrazí, pokud je nesprávná.
-> 
-> 
-
-![Nahraný certifikát][api-management-certificate-uploaded]
-
-Po nahrání certifikátu se zobrazí na **klientské certifikáty** kartě. Pokud máte víc certifikátů, zajistěte, aby poznámku o předmět nebo poslední čtyři znaky kryptografický otisk, které se používají k výběru certifikátu, při konfiguraci rozhraní API používat certifikáty, jak je popsané v následující [konfigurace rozhraní API pro použití klientský certifikát pro ověřování brány] [ Configure an API to use a client certificate for gateway authentication] části.
-
+> [!NOTE]
 > Chcete-li vypnout ověřování řetězu certifikátů při použití, například certifikát podepsaný svým držitelem, postupujte podle kroků popsaných v této – nejčastější dotazy [položky](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end).
-> 
-> 
 
 ## <a name="step1a"> </a>Odstranit certifikát klienta
-Pokud chcete odstranit certifikát, klikněte na tlačítko **odstranit** vedle požadovaný certifikát.
 
-![Odstranit certifikát][api-management-certificate-delete]
+Pokud chcete odstranit certifikát, klikněte na tlačítko kontextovou nabídku **...**  a vyberte **odstranit** vedle certifikátu.
 
-Klikněte na tlačítko **Ano, odstraňte jej** k potvrzení.
+![Odstranění klientské certifikáty](media/api-management-howto-mutual-certificates/apim-client-cert-delete.png)
 
-![Potvrzení odstranění][api-management-confirm-delete]
+Pokud se certifikát používá rozhraní API, se zobrazí obrazovka upozornění. Pokud chcete odstranit certifikát, je nutno nejprve odstranit certifikát z všechny rozhraní API, které jsou nakonfigurovány pro použití.
 
-Pokud se certifikát používá rozhraní API, se zobrazí obrazovka upozornění. Chcete-li odstranit certifikát nutno nejprve odstranit certifikát z jakékoli rozhraní API, které jsou nakonfigurovány pro použití.
-
-![Potvrzení odstranění][api-management-confirm-delete-policy]
+![Odstraňte certifikáty klienta se nezdařilo](media/api-management-howto-mutual-certificates/apim-client-cert-delete-failure.png)
 
 ## <a name="step2"> </a>Konfigurace rozhraní API používat klientský certifikát pro ověřování brány
-Klikněte na tlačítko **rozhraní API** z **API Management** nabídky na levé straně klikněte na název požadované rozhraní API a klikněte na tlačítko **zabezpečení** kartě.
 
-![Zabezpečení rozhraní API][api-management-api-security]
+1. Klikněte na tlačítko **rozhraní API** z **API Management** nabídky na levé straně a přejděte do rozhraní API.  
+    ![Povolit klientské certifikáty](media/api-management-howto-mutual-certificates/apim-client-cert-enable.png)
 
-Vyberte **klientské certifikáty** z **s přihlašovacími údaji** rozevíracího seznamu.
+2. V **návrhu** klikněte na ikonu tužky z **back-end** části. 
+3. Změna **přihlašovací údaje brány** k **klientského certifikátu** a vyberte certifikát z rozevíracího seznamu.  
+    ![Povolit klientské certifikáty](media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png)
 
-![Klientské certifikáty][api-management-mutual-certificates]
+4. Klikněte na **Uložit**. 
 
-Vyberte požadovaný certifikát z **klientský certifikát** rozevíracího seznamu. Pokud máte víc certifikátů, že můžete se podívat na předmět nebo poslední čtyři znaky kryptografický otisk, jak je uvedeno v předchozí části zjistit správný certifikát.
-
-![Vybrat certifikát][api-management-select-certificate]
-
-Klikněte na tlačítko **Uložit** se uložit změnu konfigurace rozhraní API.
-
+> [!WARNING]
 > Tuto změnu je hned platná, a volání operace tohoto rozhraní API bude používat certifikát k ověření na serveru back-end.
-> 
-> 
 
-![Uložit změny rozhraní API][api-management-save-api]
 
+> [!TIP]
 > Pokud je zadán pro ověřování brány pro back endové službě rozhraní API, se stane součástí zásad pro toto rozhraní API a lze zobrazit v editoru zásad.
-> 
-> 
-
-![Zásady certifikátu][api-management-certificate-policy]
 
 ## <a name="self-signed-certificates"></a>Certifikáty podepsané svým držitelem
 
-Pokud používáte certifikáty podepsané svým držitelem, budete muset zakázat ověřování řetězu certifikátů v pořadí pro API Management ke komunikaci s back-end systému, jinak vrátí chybu 500 kódu. To můžete nakonfigurovat, můžete použít [ `New-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (pro nový back-end) nebo [ `Set-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (pro existující back-end) rutiny prostředí PowerShell a nastavte `-SkipCertificateChainValidation` parametru `True`.
+Pokud používáte certifikáty podepsané svým držitelem, musíte zakázat ověřování řetězu certifikátů v pořadí pro API Management ke komunikaci s back-end systému. V opačném případě vrátí kód chybu 500. To můžete nakonfigurovat, můžete použít [ `New-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (pro nový back-end) nebo [ `Set-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (pro existující back-end) rutiny prostředí PowerShell a nastavte `-SkipCertificateChainValidation` parametru `True`.
 
 ```
 $context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
 New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
-
-[api-management-management-console]: ./media/api-management-howto-mutual-certificates/api-management-management-console.png
-[api-management-security-client-certificates]: ./media/api-management-howto-mutual-certificates/api-management-security-client-certificates.png
-[api-management-upload-certificate]: ./media/api-management-howto-mutual-certificates/api-management-upload-certificate.png
-[api-management-upload-certificate-form]: ./media/api-management-howto-mutual-certificates/api-management-upload-certificate-form.png
-[api-management-certificate-uploaded]: ./media/api-management-howto-mutual-certificates/api-management-certificate-uploaded.png
-[api-management-api-security]: ./media/api-management-howto-mutual-certificates/api-management-api-security.png
-[api-management-mutual-certificates]: ./media/api-management-howto-mutual-certificates/api-management-mutual-certificates.png
-[api-management-select-certificate]: ./media/api-management-howto-mutual-certificates/api-management-select-certificate.png
-[api-management-save-api]: ./media/api-management-howto-mutual-certificates/api-management-save-api.png
-[api-management-certificate-policy]: ./media/api-management-howto-mutual-certificates/api-management-certificate-policy.png
-[api-management-certificate-delete]: ./media/api-management-howto-mutual-certificates/api-management-certificate-delete.png
-[api-management-confirm-delete]: ./media/api-management-howto-mutual-certificates/api-management-confirm-delete.png
-[api-management-confirm-delete-policy]: ./media/api-management-howto-mutual-certificates/api-management-confirm-delete-policy.png
-
-
 
 [How to add operations to an API]: api-management-howto-add-operations.md
 [How to add and publish a product]: api-management-howto-add-products.md
@@ -152,6 +108,3 @@ New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/mya
 [Configure an API to use a client certificate for gateway authentication]: #step2
 [Test the configuration by calling an operation in the Developer Portal]: #step3
 [Next steps]: #next-steps
-
-
-

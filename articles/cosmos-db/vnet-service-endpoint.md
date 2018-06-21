@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: aab2446a21739beb029b103241431fb9998e1861
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 0bd31270ca67dc993cc7ac72ab2bab9bf70005ca
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34735454"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293991"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Zabezpečený přístup k účtu Azure Cosmos DB pomocí koncový bod služby Azure Virtual Network
 
@@ -80,7 +80,7 @@ Po koncové body služby Azure Virtual Network jsou povolené pro databázový �
 
 Pokud váš účet Azure Cosmos DB používané jinými službami Azure, jako je Azure Search, nebo k němu přistupovat z Stream analytics nebo Power BI, povolíte přístup kontrolou **povolit přístup ke službám Azure**.
 
-Aby máte přístup k metrikám Azure Cosmos DB z portálu, musíte povolit **povolit přístup k portálu Azure** možnosti. Další informace o těchto možnostech najdete v tématu [připojení z portálu Azure](firewall-support.md#connections-from-the-azure-portal) a [připojení ze služeb Azure PaaS](firewall-support.md#connections-from-other-azure-paas-services) oddíly. Po výběru přístup, vyberte **Uložit** uložte nastavení.
+Aby máte přístup k metrikám Azure Cosmos DB z portálu, musíte povolit **povolit přístup k portálu Azure** možnosti. Další informace o těchto možnostech najdete v tématu [připojení z portálu Azure](firewall-support.md#connections-from-the-azure-portal) a [připojení ze služeb Azure PaaS](firewall-support.md#connections-from-public-azure-datacenters-or-azure-paas-services) oddíly. Po výběru přístup, vyberte **Uložit** uložte nastavení.
 
 ## <a name="remove-a-virtual-network-or-subnet"></a>Odebrat virtuální síť nebo podsíť 
 

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/22/2018
 ms.author: v-geberr
-ms.openlocfilehash: 918f5d9efa1163558e44c2c67028dbf802f479a5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ccb7269109309355e2af95f6fb2aa060c1998b22
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266783"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286014"
 ---
 # <a name="entities-in-luis"></a>Entity v LEOŠ
 
@@ -66,7 +66,7 @@ LEOŠ nabízí mnoho typů entit; Předkompilované entity vlastní počítače 
 | Název | Může označovat | Popis |
 | -- |--|--|
 | **Předkompilované** <br/>[Vlastní](#prebuilt)| |  **Definice**<br>Vestavěné typy, které představují běžné koncepty. <br><br>**seznam**<br/>číslo klíče frázi, pořadí, teploty, dimenze, peníze, stáří, procento, e-mailu, adresa URL, telefonní číslo a klíče frázi. <br><br>Předkompilované entity názvy jsou vyhrazené. <br><br>Všechny předem entity, které jsou přidány do aplikace jsou vrácena jako [koncový bod](luis-glossary.md#endpoint) dotazu. Další informace najdete v tématu [předem entity](./Pre-builtEntities.md). <br/><br/>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#prebuilt-entity-data)|
-|<!-- added week of 3/21/08 --> **Regulární výraz**<br/>[Regulární výraz](#regex)||**Definice**<br>Vlastní regulární výraz formátovaný text. Se ignoruje velikost písmen a ignoruje kulturního variant.  <br><br>Tato entita je vhodný pro hesla či fráze konzistentně formátovaných pomocí jakékoli změny, která je konzistentní.<br><br>Odpovídající regulární výraz se použije po změnách kontrolu pravopisu v podniku. <br><br>Pokud regulární výraz je příliš složitý, jako je třeba použití mnoha závorky, nejsou budete moct přidat výraz do modelu. <br><br>**Příklad**<br>`kb[0-9]{6,}` odpovídá kb123456.<br/><br/>[Rychlý start](luis-quickstart-intents-regex-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md)|
+|<!-- added week of 3/21/08 --> **Regulární výraz**<br/>[Regulární výraz](#regex)||**Definice**<br>Vlastní regulární výraz formátovaný nezpracovaná utterance textu. Se ignoruje velikost písmen a ignoruje kulturního variant.  <br><br>Tato entita je vhodný pro hesla či fráze konzistentně formátovaných pomocí jakékoli změny, která je konzistentní.<br><br>Odpovídající regulární výraz se použije po změnách kontrolu pravopisu v podniku. <br><br>Pokud regulární výraz je příliš složitý, jako je třeba použití mnoha závorky, nejsou budete moct přidat výraz do modelu. <br><br>**Příklad**<br>`kb[0-9]{6,}` odpovídá kb123456.<br/><br/>[Rychlý start](luis-quickstart-intents-regex-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md)|
 | **Jednoduché** <br/>[Naučili počítače](#machine-learned) | ✔ | **Definice**<br>Jednoduché entity je obecný entita, která popisuje jeden koncept a získané z počítače naučili kontextu. Kontext zahrnují volba word, word umístění a utterance délka.<br/><br/>Toto je dobré entity slova nebo fráze, které nejsou konzistentní formátovány ale indikovat samé. <br/><br/>[Rychlý start](luis-quickstart-primary-and-secondary-data.md)<br/>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#simple-entity-data)|  
 | **seznam** <br/>[Přesná shoda](#exact-match)|| **Definice**<br>Seznam entity představují sadu související slova spolu s jejich synoymns pevné, uzavřené v systému. <br><br>Každá entita seznamu může mít jeden nebo více formulářů. Nejvhodnější pro sadu varianty způsoby, jak představují stejný koncept známý.<br/><br/>LEOŠ nevyhledává další hodnoty pro seznam entity. Použití zobrazíte [sémantického slovník](luis-glossary.md#semantic-dictionary) najít návrhy nových slov podle aktuálního seznamu.<br/><br>Pokud existuje více než jedna entita seznamu se stejnou hodnotou, vrátí se v dotazu koncový bod každé entity. <br/><br/>[Rychlý start](luis-quickstart-intent-and-list-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#list-entity-data)| 
 | **Pattern.Any** <br/>[Ve smíšeném](#mixed) | ✔|**Definice**<br>Patterns.Any představuje proměnnou délkou použít pouze v utterance vzor šablony k označení, kde entity zahájení a ukončení.  <br><br>**Příklad**<br>Vzhledem utterance hledat podle názvu knihy, pattern.any extrahuje úplný název. Je utterance šablony pomocí pattern.any `Who wrote {BookTitle}[?]`.<br/><br/>[Kurz](luis-tutorial-pattern.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#composite-entity-data)|  

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f54f0fb16838b245ac09c08c7afd9e6a53449afc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59bc6652a61e0c61188bbfd09251161411923628
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594223"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287571"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizace Azure AD Connect: Konfigurace filtrování
 Pomocí filtrování můžete řídit objektů, které se zobrazí v Azure Active Directory (Azure AD) z vašeho místního adresáře. Výchozí konfigurace trvá všechny objekty ve všech doménách v doménové struktuře nakonfigurované. Obecně platí to je doporučená konfigurace. Uživatele, kteří používají úlohami Office 365, jako je Exchange Online a Skype pro firmy, těžit z úplný seznam globální adresy tak, aby jejich odeslání e-mailu a volání everyone. U výchozí konfigurace že by měla mít stejné prostředí, které se mají s implementace místní Exchange nebo Lync.
@@ -40,7 +40,7 @@ Tento článek popisuje postup konfigurace metod filtrování.
 ## <a name="basics-and-important-notes"></a>Základní informace a důležité poznámky
 Synchronizace Azure AD Connect můžete povolit filtrování kdykoli. Pokud spustíte s výchozí konfigurací synchronizace adresářů a pak nakonfigurujte filtrování, objekty, které jsou odfiltrována synchronizovány do Azure AD. Z důvodu této změny se odstraní všechny objekty ve službě Azure AD, které byly dříve synchronizovaných položek, ale pak byly filtrovány ve službě Azure AD.
 
-Než začnete, provedení změn filtrování, ujistěte se, že jste [zakázat naplánované úlohy](#disable-scheduled-task) tak nejsou omylem exportovat změny, které ještě nebyly ověřit správné.
+Než začnete, provedení změn filtrování, ujistěte se, že jste [zakázat naplánované úlohy](#disable-the-scheduled-task) tak nejsou omylem exportovat změny, které ještě nebyly ověřit správné.
 
 Protože filtrování můžete odebrat mnoho objektů ve stejnou dobu, budete chtít Ujistěte se, že nové filtry jsou správné, než začnete, export všechny změny do Azure AD. Po dokončení kroků konfigurace, důrazně doporučujeme, že [postup ověření](#apply-and-verify-changes) před exportovat a proveďte změny do Azure AD.
 

@@ -1,31 +1,39 @@
 ---
-title: Zabezpečení dat a operace ve službě Azure Search | Microsoft Docs
-description: Zabezpečení služby Azure Search podle SOC 2 dodržování předpisů, šifrování, ověřování a identita přístupu pomocí uživatele a skupiny identifikátory zabezpečení v Azure Search filtry.
+title: Zabezpečení a data o ochraně osobních údajů ve službě Azure Search | Microsoft Docs
+description: Služba Azure Search je kompatibilní s SOC 2, HIPAA a dalších certifikátů. Filtruje připojení a data šifrování, ověřování a identita přístupu pomocí uživatele a skupiny identifikátory zabezpečení ve službě Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: 7db1b6c6f72f3cea7446b5f96dac7cd6e9b4252d
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 888f7c3ced0ef48cff222bffdbf0f278fa5f42b3
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795795"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285725"
 ---
-# <a name="security-and-controlled-access-in-azure-search"></a>Zabezpečení a řízený přístup do služby Azure Search
+# <a name="security-and-data-privacy-in-azure-search"></a>Zabezpečení a data o ochraně osobních údajů ve službě Azure Search
 
-Služba Azure Search je [SOC 2 kompatibilní](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports), s komplexní zabezpečení architektura STA fyzické zabezpečení, šifrované přenosy, šifrované úložiště a ochrana softwaru celou platformu. Azure Search operačně přijímá pouze ověřené žádosti. Volitelně můžete přidat uživatelská řízení přístupu na obsah. Tento článek dotykem na zabezpečení v každé vrstvě, ale se zaměřuje především na tom, jak jsou zabezpečené data a operace ve službě Azure Search.
+Funkce komplexní zabezpečení a řízení přístupu jsou součástí Azure Search, ujistěte se, že privátní obsah zůstane tímto způsobem. Tento článek vytvoří výčet funkcí a standardy dodržování zabezpečení integrovaný do Azure Search.
 
-![Blokový diagram serveru vrstvy zabezpečení](media/search-security-overview/azsearch-security-diagram.png)
+Architektura zabezpečení služby Azure Search rozdělena na fyzické zabezpečení, šifrované přenosy, šifrované úložiště a dodržování standardů celou platformu. Azure Search operačně přijímá pouze ověřené žádosti. Volitelně můžete přidat uživatelská řízení přístupu na obsah prostřednictvím filtry zabezpečení. Tento článek dotykem na zabezpečení v každé vrstvě, ale se zaměřuje především na tom, jak jsou zabezpečené data a operace ve službě Azure Search.
 
-## <a name="physical-security"></a>Fyzické zabezpečení
+## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>Dodržování standardů: ISO 27001 SOC 2 HIPAA
 
-Datovými centry Microsoftu špičkový fyzické zabezpečení a jsou kompatibilní s rozsáhlé portfolií standardů a nařízení. Pokud chcete dozvědět víc, přejděte na [globálních datových centrech](https://www.microsoft.com/cloud-platform/global-datacenters) stránky nebo shlédnout krátké video na data center zabezpečení.
+Částečný seznam dodržování standardů zahrnuje SOC 2 typu 2 a HIPAA všeobecně dostupná funkcí. Funkce Preview jsou certifikovány jako součást obecné dostupnosti a nesmí se používat v řešeních s požadavky na konkrétní standardy. Dodržování předpisů certifikační je popsána v [dodržování předpisů přehled Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) a [Centrum zabezpečení](https://www.microsoft.com/en-us/trustcenter). 
 
-> [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
+Certifikace pro následující normy byl [oznámeno v červnu 2018](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/).
+
++ [ISO 27001: 2013](https://www.iso.org/isoiec-27001-information-security.html) 
++ [Dodržování předpisů 2 typ SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) úplné sestavy, přejděte na [Azure – a Azure Government SOC 2 typ II sestava](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
++ [Zdravotním pojištění a odpovědnosti za Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
++ [Predikativní (část 21 CFR 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
++ [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
++ [PCI DSS úrovně 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [Austrálie IRAP zjištění neklasifikovaného DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 ## <a name="encrypted-transmission-and-storage"></a>Šifrované přenosu a uložení
 
@@ -35,15 +43,14 @@ Datovými centry Microsoftu špičkový fyzické zabezpečení a jsou kompatibil
 |----------------|-------------|
 | Šifrování během přenosu | Služba Azure Search naslouchá na portu HTTPS 443. Na platformě jsou šifrované připojení ke službám Azure. |
 | Šifrování v klidovém stavu | Šifrování je plně internalized do procesu vytváření indexu se žádné měřitelný dopad na indexování čas dokončení nebo velikost indexu. Automaticky se objeví na všechny indexování, včetně přírůstkové aktualizace index, který není plně zašifrované (vytvořených před leden 2018).<br><br>Interně, je šifrování na základě [šifrování služby úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-service-encryption), pomocí 256 bitů [šifrování AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard).|
-| [Dodržování předpisů SOC 2](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) | Všechny služby vyhledávání jsou plně AICPA SOC 2 předpisy, na všech datových center, které poskytuje Azure Search. Chcete-li zkontrolovat úplná sestava, přejděte na [Azure – a Azure Government SOC 2 typ II sestava](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). |
 
 Šifrování je interní do služby Azure Search s certifikáty a šifrovacích klíčů interně spravuje Microsoft a použít univerzálně. Nelze zapnout šifrování nebo vypnout, spravovat nebo nahraďte váš vlastní klíče nebo zobrazit nastavení šifrování na portálu nebo prostřednictvím kódu programu. 
 
 Šifrování v klidovém stavu byl oznámen v 24 leden 2018 a platí pro všechny úrovně služeb, včetně sdílených služeb (zdarma), ve všech oblastech. Úplné šifrování musí být indexy vytvořené před tímto datem vyřadit a znovu sestavit v pořadí pro šifrování proběhnout. Jinak se šifrují jenom nová data přidány po leden 24.
 
-## <a name="azure-wide-logical-security"></a>Zabezpečení logické Azure
+## <a name="azure-wide-user-access-controls"></a>Řízení přístupu uživatele v celé Azure
 
-Několik mechanismů zabezpečení jsou dostupné přes zásobník Azure a proto automaticky dostupné pro prostředky Azure Search, které vytvoříte.
+Několik mechanismů zabezpečení jsou k dispozici Azure na úrovni a vytvoříte tedy automaticky dostupné pro prostředky Azure Search.
 
 + [Zámky na úrovni prostředků, aby se zabránilo odstranění nebo předplatné](../azure-resource-manager/resource-group-lock-resources.md)
 + [Na základě rolí řízení přístupu (RBAC) pro řízení přístupu k informacím a operace správy](../role-based-access-control/overview.md)
@@ -67,7 +74,7 @@ Na každý požadavek, kde každý požadavek se skládá z povinných klíč, o
 
 Ve službě Azure Search jednotlivé indexu není zabezpečitelných objektů. Místo toho přístup k indexu je určen ve vrstvě služby (přístup pro čtení nebo zápisu), spolu s kontext operace.
 
-V případě přístupem koncových uživatelů můžete struktury požadavků na dotazy v aplikaci a připojte se pomocí klíč dotazu, který vytvoří každá žádost jen pro čtení a zahrnovat konkrétního indexu používané vaší aplikace. V žádosti o dotaz neexistuje žádná koncepce připojení indexy nebo přístupu k nim více indexů současně, všechny požadavky cíle jeden index podle definice. Struktura dotaz na žádost (klíč a jeden cílový index) jako takový definuje hranice zabezpečení.
+Pro přístup koncových uživatelů můžete struktury požadavků na dotazy a připojte se pomocí klíč dotazu, který vytvoří každá žádost jen pro čtení a zahrnovat konkrétního indexu používané vaší aplikace. V žádosti o dotaz neexistuje žádná koncepce připojení indexy nebo přístupu k nim více indexů současně, všechny požadavky cíle jeden index podle definice. Vytváření dotazu na žádost (klíč a jeden cílový index) jako takový definuje hranice zabezpečení.
 
 Správce a vývojáře přístup k indexů je poskytujících blíže neurčené: obě potřebovat přístup pro zápis k vytvoření, odstranění a aktualizovat objekty spravované službou. Každý, kdo má klíč správce k službě můžou číst, upravit nebo odstranit žádný index v rámci stejné služby. Pro ochranu proti náhodnému nebo škodlivý odstranění indexů je vaše interní zdrojového kódu pro kód prostředky remedy zpětné nežádoucí index, odstranění nebo úpravy. Vyhledávání systému Azure má převzetí služeb při selhání v rámci clusteru, aby se zajistila dostupnost, ale nemá uložení nebo provést vlastní kódu umožňuje vytvořit nebo načíst indexy.
 
@@ -106,6 +113,12 @@ Následující tabulka shrnuje operace povolené ve službě Azure Search a kter
 | Dotaz na informace o systému, jako je například vrácení statistiky, počty a seznam objektů. | Klíč správce, RBAC na prostředku (vlastník, Přispěvatel, čtečky) |
 | Správa Správce klíčů | Klíč správce, RBAC vlastníkem nebo přispěvatelem u daného prostředku. |
 | Spravovat klíče dotazů |  Klíč správce, RBAC vlastníkem nebo přispěvatelem u daného prostředku.  |
+
+## <a name="physical-security"></a>Fyzické zabezpečení
+
+Datovými centry Microsoftu špičkový fyzické zabezpečení a jsou kompatibilní s rozsáhlé portfolií standardů a nařízení. Pokud chcete dozvědět víc, přejděte na [globálních datových centrech](https://www.microsoft.com/cloud-platform/global-datacenters) stránky nebo shlédnout krátké video na data center zabezpečení.
+
+> [!VIDEO https://www.youtube.com/embed/r1cyTL8JqRg]
 
 
 ## <a name="see-also"></a>Další informace najdete v tématech

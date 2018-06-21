@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: e47a3736e814229e881a314c7cb05054369db1f0
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 46b6d391d6a1ee569dc27c31a0718b23a120c632
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935241"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286714"
 ---
 # <a name="send-errors-to-stackify-for-logging"></a>Odeslání chyb při Stackify pro protokolování
 
@@ -28,7 +28,7 @@ Tento článek ukazuje ukázkové zásady správy rozhraní API služby Azure, k
 
 Vložte kód do **při chybě** bloku.
 
-[!code-xml[Main](../../../api-management-policy-samples/Snippets/Log errors to Stackify.policy.policy.xml)]
+[!code-xml[Main](../../../api-management-policy-samples/examples/Log errors to Stackify.policy.policy.xml)]
 
 ## <a name="next-steps"></a>Další postup
 

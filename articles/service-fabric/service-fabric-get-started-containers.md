@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 8511af935eb2427724ace1f39ec9948e3b0b5537
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f52861411a34d1fbff577fbbc37cf926151a97d8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643205"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294808"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 > [!div class="op_single_selector"]
@@ -40,17 +40,17 @@ Spuštění existující aplikace v kontejneru Windows v clusteru Service Fabric
   
   Pokud chcete zjistit verzi systému Windows Server s kontejnery, je nutné pro váš cluster, spusťte `ver` příkazu z příkazového řádku systému Windows na vývojovém počítači:
 
-  * Pokud verze obsahuje *x.x.14323.x*, pak [vytvoření clusteru s podporou](service-fabric-cluster-creation-via-portal.md) nezapomeňte vybrat *2016 Windows Server Datacenter s kontejnery* pro operační systém nebo [zkuste Service Fabric zdarma](https://aka.ms/tryservicefabric) s clusterem s podporou strany.
-  * Pokud verze obsahuje *x.x.16299.x*, pak [vytvoření clusteru s podporou](service-fabric-cluster-creation-via-portal.md) nezapomeňte vybrat *WindowsServerSemiAnnual Datacenter – základní –. 1709s kontejnery* pro operační systém. Nelze použít cluster strany.
+  * Pokud verze obsahuje *x.x.14323.x*, pak vyberte *2016 Windows Server Datacenter s kontejnery* pro operační systém při [vytváření clusteru s podporou](service-fabric-cluster-creation-via-portal.md). Můžete také [zkuste Service Fabric zdarma](https://aka.ms/tryservicefabric) s clusterem s podporou strany.
+  * Pokud verze obsahuje *x.x.16299.x*, pak vyberte *WindowsServerSemiAnnual Datacenter – základní –. 1709s kontejnery* pro operační systém při [vytvoření clusteru s podporou](service-fabric-cluster-creation-via-portal.md). Ale nemůžete použít cluster strany.
 
 * Registr ve službě Azure Container Registry – [Vytvořte registr kontejneru](../container-registry/container-registry-get-started-portal.md) ve svém předplatném Azure.
 
 > [!NOTE]
-> Nasazení kontejnerů do clusteru Service Fabric v systému Windows 10 nebo do clusteru s Dockerem CE se nepodporuje. Tento názorný průvodce spustí místní testy s využitím modulu Docker ve Windows 10 a nakonec kontejnerové služby nasadí do clusteru Windows Serveru v Azure se spuštěným Dockerem EE. 
+> Nasazení kontejnerů do clusteru Service Fabric na Windows 10 je podporována.  V tématu [v tomto článku](service-fabric-how-to-debug-windows-containers.md) informace o tom, jak nakonfigurovat Windows 10 ke spuštění Windows kontejnery.
 >   
 
 > [!NOTE]
-> Service Fabric verze 6.1 nabízí podporu verze Preview pro Windows Server verze 1709. Otevřené sítě a služba DNS Service Fabricu s Windows Serverem verze 1709 nefungují. 
+> Service Fabric verze 6.2 nebo novější podporují nasazení kontejnerů do clusterů se systémem Windows Server verze. 1709.  
 > 
 
 ## <a name="define-the-docker-container"></a>Definice kontejneru Dockeru

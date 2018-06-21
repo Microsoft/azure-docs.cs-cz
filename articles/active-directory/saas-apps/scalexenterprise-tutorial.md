@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 502531ef14858316df8fc7d92fab7ce9160efb20
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 18ac9fcf5a8b0c66d3c9e3d3b4e3064099e201c4
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210417"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287605"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Kurz: Azure Active Directory integrace s ScaleX Enterprise
 
@@ -255,7 +255,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Klikněte na dlaždici ScaleX Enterprise na přístupovém panelu, můžete se získat automaticky přihlášení k aplikaci ScaleX Enterprise. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586).
+Klikněte na dlaždici ScaleX Enterprise na přístupovém panelu, můžete se získat automaticky přihlášení k aplikaci ScaleX Enterprise. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
 
 
 ## <a name="additional-resources"></a>Další zdroje informací:

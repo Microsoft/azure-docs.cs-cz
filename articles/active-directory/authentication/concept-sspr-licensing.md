@@ -10,30 +10,32 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 78d4d721f2821a8365185c0bad6d795c67a75292
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b1cfb76c7e196441ebad3bcfcd1d788bd544ab74
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33864650"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292555"
 ---
 # <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetování licenční požadavky pro hesla pomocí samoobslužné služby Azure AD
 
-Aby funkce, pro vytvoření nového hesla Azure Active Directory (Azure AD) můžete *musí mít alespoň jednu licenci přiřazené ve vaší organizaci*. Jsme nevynucují licencování na vlastní uživatelské prostředí resetování hesla na uživatele. Řádná licence se požaduje, pokud uživatel přímo nebo nepřímo využívá výhod libovolné funkce, na kterou se tato licence vztahuje.
+Aby funkce, pro vytvoření nového hesla Azure Active Directory (Azure AD) můžete *musí mít alespoň jednu licenci přiřazené ve vaší organizaci* pro daného uživatele. Řádná licence se požaduje, pokud uživatel přímo nebo nepřímo využívá výhod libovolné funkce, na kterou se tato licence vztahuje.
 
 * **Uživatelé cloudové**: Office 365 žádné placené SKU nebo Azure AD Basic
 * **Cloud** nebo **místních uživatelů**: Azure AD Premium P1 nebo P2, Enterprise Mobility + Security (EMS) nebo Microsoft 365
 
-## <a name="licenses-required-for-password-writeback"></a>Licence potřebné pro zpětný zápis hesla
+## <a name="licensing-requirements-for-password-writeback"></a>Licenční požadavky pro zpětný zápis hesla
+
+**Samoobslužné služby heslo resetovat nebo změnit nebo odemčení s místními zpětný zápis je funkce služby Azure AD premium**. Další informace o licencování najdete v tématu [Azure Active Directory ceny lokality](https://azure.microsoft.com/pricing/details/active-directory/).
 
 Pokud chcete používat zpětný zápis hesla, musí mít jednu z následujících licencí přiřazených na vašeho klienta:
 
 * Azure AD Premium P1
 * Azure AD Premium P2
-* Enterprise Mobility + Security E3
-* Enterprise Mobility + Security E5
-* Microsoft 365 E3
-* Microsoft 365 E5
+* Enterprise Mobility + Security E3 nebo A3
+* Enterprise Mobility + Security E5 nebo A5
+* Microsoft 365 E3 nebo A3
+* Microsoft 365 E5 nebo A5
 * Microsoft 365 F1
 
 > [!WARNING]

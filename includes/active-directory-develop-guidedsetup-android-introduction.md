@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 536118c61fe204351374d2b5b3cbc0514f6cd435
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: e25c8d97698d7a61501094a457174202322d146f
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205650"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36297945"
 ---
-# <a name="sign-in-users-and-all-the-microsoft-graph-api-from-an-android-app"></a>Přihlášení uživatele a všechna rozhraní Microsoft Graph API z aplikace pro Android
+# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Přihlášení uživatele a volání rozhraní Microsoft Graph API z aplikace pro Android
 
 Tato příručka ukazuje, jak získat přístupový token a volání rozhraní Graph API Microsoft nebo jiná rozhraní API, které vyžadují přístupové tokeny z koncového bodu Azure Active Directory v2 nativní aplikace pro Android.
 

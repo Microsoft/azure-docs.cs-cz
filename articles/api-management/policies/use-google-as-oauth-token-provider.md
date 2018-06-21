@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: apimpm
-ms.openlocfilehash: 46ffe21b31597f889b411a40a9f3e1f2dd76f1ea
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 22aed976ef69288aa0e49215a739174786843527
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33933458"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284582"
 ---
 # <a name="authorize-access-using-google-oauth-token"></a>Autorizace přístupu pomocí token Google OAuth
 
@@ -28,7 +28,7 @@ Tento článek ukazuje Azure API management zásad ukázka, které ukazuje, jak 
 
 Vložte kód do **příchozí** bloku.
 
-[!code-xml[Main](../../../api-management-policy-samples/Snippets/Simple Google OAuth validate-jwt.policy.xml)]
+[!code-xml[Main](../../../api-management-policy-samples/examples/Simple Google OAuth validate-jwt.policy.xml)]
 
 ## <a name="next-steps"></a>Další postup
 

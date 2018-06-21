@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 22cf62f201b21f3035687b7f0f2ff07dc94f1a29
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: f2fe02a6e7e696fa2c0ab301e7469060d6bd4ab6
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658668"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295670"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Vytvoření, změnit nebo odstranit skupinu zabezpečení sítě
 
@@ -39,7 +39,7 @@ Musí mít účet přihlásit nebo připojit k Azure s přiřazenou k [Přispěv
 
 ## <a name="work-with-network-security-groups"></a>Práce se skupinami zabezpečení sítě
 
-Můžete vytvořit, [zobrazit všechny](#view-all-network-security-groups), [zobrazit podrobnosti o](#view-details-of-a-network-security-group), [změnit](#change-a-network-security-group), a [odstranit](#delete-a-network-security-group) skupinu zabezpečení sítě. Můžete také [přidružit nebo zrušit přidružení](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource) skupinu zabezpečení sítě z rozhraní sítě nebo podsítě.
+Můžete vytvořit, [zobrazit všechny](#view-all-network-security-groups), [zobrazit podrobnosti o](#view-details-of-a-network-security-group), [změnit](#change-a-network-security-group), a [odstranit](#delete-a-network-security-group) skupinu zabezpečení sítě. Můžete také [přidružit nebo zrušit přidružení](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface) skupinu zabezpečení sítě z rozhraní sítě nebo podsítě.
 
 ### <a name="create-a-network-security-group"></a>Vytvoření skupiny zabezpečení sítě
 
@@ -121,9 +121,9 @@ Je omezena na tom, kolik pravidel na skupinu zabezpečení sítě můžete vytvo
     
     |Nastavení  |Hodnota  |Podrobnosti  |
     |---------|---------|---------|
-    |Zdroj     | Vyberte **žádné**, **IP adresy**, nebo **služby značky**.        | Pokud vyberete **IP adresy**, pak musíte zadat **zdrojové IP adresy nebo CIDR rozsahy**. Můžete zadat jednu hodnotu nebo seznam oddělený čárkami obsahující více hodnot. Příkladem víc hodnot je 10.0.0.0/16, 192.188.1.1. Existují omezení počtu hodnot, které můžete zadat. V tématu [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) podrobnosti. Pokud vyberete **výrobní číslo**, pak je nutné vybrat jeden výrobní číslo. Výrobní číslo je identifikátor předdefinované kategorii IP adres. Další informace o dostupných služeb značky a co jednotlivé značky představuje, najdete v části [služby značky](security-overview.md#service-tags)        |
+    |Zdroj     | Vyberte **žádné**, **IP adresy**, nebo **služby značky**.        | Pokud vyberete **IP adresy**, pak musíte zadat **zdrojové IP adresy nebo CIDR rozsahy**. Můžete zadat jednu hodnotu nebo seznam oddělený čárkami obsahující více hodnot. Příkladem víc hodnot je 10.0.0.0/16, 192.188.1.1. Existují omezení počtu hodnot, které můžete zadat. V tématu [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) podrobnosti. Pokud vyberete **výrobní číslo**, pak je nutné vybrat jeden výrobní číslo. Výrobní číslo je identifikátor předdefinované kategorii IP adres. Další informace o dostupných služeb značky a co jednotlivé značky představuje, najdete v části [služby značky](security-overview.md#service-tags). Pokud IP adresu, kterou zadáte je přiřazen k virtuální počítač Azure, ujistěte se, že zadáváte privátní IP adresa není veřejnou IP adresu, pokud je k virtuálnímu počítači přiřazenou veřejnou IP adresu. Pravidla zabezpečení jsou zpracovávány po Azure překládá veřejnou IP adresu, která privátní IP adresy pro příchozí pravidla zabezpečení, a před Azure překládá privátní IP adresy na veřejné IP adresy pro odchozí pravidla. Další informace o veřejných a privátních IP adres v Azure najdete v tématu [typy IP adres](virtual-network-ip-addresses-overview-arm.md).        |
     |Rozsahy zdrojových portů     | Zadejte jediný port, jako třeba 80, rozsah portů, jako třeba 1024-65535, nebo seznamu jednoho porty a rozsahy portů, jako je například 80, 1024 až 65535. Zadejte hvězdičku umožnit provoz z jakéhokoli portu. | Porty a rozsahy zadejte, jaký provoz porty povolený nebo zakázaný pravidlem. Existují omezení počtu portů, které můžete zadat. V tématu [Azure omezuje](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) podrobnosti.  |
-    |Cíl     | Vyberte **žádné**, **IP adresy**, nebo **virtuální sítě**.        | Pokud vyberete **IP adresy**, pak musíte zadat **rozsahy cílové IP adresy nebo CIDR**. Podobně jako **zdroj** a **zdrojové IP adresy nebo CIDR rozsahy**, můžete zadat jeden nebo více adres nebo rozsahy a existují omezení počtu můžete zadat. Výběr **virtuální síť**, což je služba značku, znamená to, že provoz je povoleno pro všechny IP adresy v adresním prostoru virtuální sítě.        |
+    |Cíl     | Vyberte **žádné**, **IP adresy**, nebo **virtuální sítě**.        | Pokud vyberete **IP adresy**, pak musíte zadat **rozsahy cílové IP adresy nebo CIDR**. Podobně jako **zdroj** a **zdrojové IP adresy nebo CIDR rozsahy**, můžete zadat jeden nebo více adres nebo rozsahy a existují omezení počtu můžete zadat. Výběr **virtuální síť**, což je služba značku, znamená to, že provoz je povoleno pro všechny IP adresy v adresním prostoru virtuální sítě. Pokud IP adresu, kterou zadáte je přiřazen k virtuální počítač Azure, ujistěte se, že zadáváte privátní IP adresa není veřejnou IP adresu, pokud je k virtuálnímu počítači přiřazenou veřejnou IP adresu. Pravidla zabezpečení jsou zpracovávány po Azure překládá veřejnou IP adresu, která privátní IP adresy pro příchozí pravidla zabezpečení, a před Azure překládá privátní IP adresy na veřejné IP adresy pro odchozí pravidla. Další informace o veřejných a privátních IP adres v Azure najdete v tématu [typy IP adres](virtual-network-ip-addresses-overview-arm.md).        |
     |Rozsahy cílových portů     | Zadejte jednu hodnotu, nebo seznam hodnot oddělených čárkami. | Podobně jako **zdroje rozsahy portů**, můžete zadat jeden nebo více porty a rozsahy a existují omezení počtu můžete zadat. |
     |Protocol (Protokol)     | Vyberte **žádné**, **TCP**, nebo **UDP**.        |         |
     |Akce     | Vyberte **povolit** nebo **Odepřít**.        |         |

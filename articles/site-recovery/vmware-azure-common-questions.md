@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/15/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: 345b73db423c6e12b56bb3308f7700917a372dda
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1764f4ed9dfe73763c288844be85d4805401887e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30185216"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285963"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Časté otázky – VMware do Azure replikace
 
@@ -29,7 +29,7 @@ Během replikace data se replikují do úložiště Azure a platíte nemáte ž�
 
 ### <a name="what-can-i-do-with-vmware-to-azure-replication"></a>Jak se VMware do Azure replikace?
 - **Zotavení po havárii**: můžete nastavit zotavení po havárii úplné. V tomto scénáři replikovat místní virtuální počítače VMware do úložiště Azure. Poté Pokud není k dispozici na místní infrastrukturu, můžete selhání do Azure. Při selhání, jsou virtuální počítače Azure vytvořené pomocí replikovaná data. Aplikace a úlohy na virtuálních počítačích Azure, můžete přístup, dokud vašeho místního datového centra je opět k dispozici. Potom můžete může selhat zpět z Azure do místního webu.
-- **Migrace**: Site Recovery můžete migrovat místní virtuální počítače VMware do Azure. V tomto scénáři replikovat místní virtuální počítače VMware do úložiště Azure. Potom můžete převzetí služeb při selhání z místního Azure. Po převzetí služeb při selhání, jste aplikace a úlohy jsou k dispozici a spuštěné na virtuálních počítačích Azure.
+- **Migrace**: Site Recovery můžete migrovat místní virtuální počítače VMware do Azure. V tomto scénáři replikovat místní virtuální počítače VMware do úložiště Azure. Potom můžete převzetí služeb při selhání z místního Azure. Po převzetí služeb při selhání jsou aplikace a úlohy dostupné a spuštěné na virtuálních počítačích Azure.
 
 
 
@@ -41,7 +41,7 @@ Potřebujete předplatné Azure, trezoru služeb zotavení, účet úložiště 
 Budete potřebovat účet úložiště LRS nebo GRS. Doporučujeme účet úložiště GRS, aby byla zajištěna odolnost dat v případě oblastního výpadku nebo pokud není možné obnovit primární oblast. Storage úrovně Premium se podporuje.
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Potřebuje Můj účet Azure oprávnění k vytvoření virtuálních počítačů?
-Pokud jste správce předplatného, máte replikace oprávnění, které potřebujete. Pokud si nejste, potřebujete oprávnění k vytvoření virtuálního počítače Azure ve skupině prostředků a virtuální síť, kterou zadáte při konfiguraci lokality Reocvery a oprávnění k zápisu do vybraného úložiště účtu. [Další informace](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
+Pokud jste správci předplatného, máte replikace oprávnění, které potřebujete. Pokud si nejste, potřebujete oprávnění k vytvoření virtuálního počítače Azure ve skupině prostředků a virtuální síť, kterou zadáte při konfiguraci Site Recovery a oprávnění k zápisu do vybraného účtu úložiště. [Další informace](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 
 

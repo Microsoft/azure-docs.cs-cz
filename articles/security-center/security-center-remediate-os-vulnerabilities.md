@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
+ms.date: 06/19/2018
 ms.author: terrylan
-ms.openlocfilehash: 477973298d8cc9d99da78e36274933e0bb737c4f
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 3af8f211c19fde9d2fc79f41fc13009570a9b4de
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/25/2018
-ms.locfileid: "28103927"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285912"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Opravit konfigurace zabezpečení v Azure Security Center
 Azure Security Center analyzuje denně operační systém (OS) virtuálních počítačů (VM) a počítačů pro konfiguraci, které by mohly znamenat virtuálních počítačů a počítačů zranitelnější vůči útokům. Security Center doporučuje, když vaše konfigurace operačního systému neodpovídá pravidla konfigurace doporučené zabezpečení a doporučí změny konfigurace, které tyto nedostatky řeší chyby zabezpečení.
@@ -51,7 +51,7 @@ Tento příklad obsahuje doporučení "Opravit konfigurace zabezpečení" v čá
 
   - **CCEID**: The CCE jedinečný identifikátor pro pravidlo. Security Center používá společné konfigurace – výčet (CCE) k přiřazení jedinečné identifikátory konfigurační pravidla.
   - **Název**: název pravidla se nezdařila.
-  - **Typ pravidla**: *klíč registru*, *zásady zabezpečení*, nebo *zásady auditu* typ pravidla.
+  - **Typ pravidla**: *klíč registru*, *zásady zabezpečení*, *zásady auditu*, nebo *IIS* typ pravidla.
   - **Ne. virtuální počítače a počítače**: Celkový počet virtuálních počítačů a počítačů, které se nezdařilo pravidlo vztahuje.
   - **Pravidlo závažnost**: hodnota CCE *kritický*, *důležité*, nebo *upozornění*.
   - **Stav**: aktuální stav doporučení:
@@ -100,10 +100,10 @@ Konkrétní konfigurace, které jsou monitorovány najdete v tématu [seznam dop
 
 Další informace o službě Security Center, najdete v následujících zdrojích informací:
 
-* Seznam podporovaných Windows a virtuální počítače s Linuxem najdete v tématu [podporovaných platforem v Azure Security Center](security-center-os-coverage.md). 
-* Zjistěte, jak nakonfigurovat zásady zabezpečení pro skupiny prostředků a předplatná Azure, najdete v tématu [nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md). 
-* Další informace, jak vám doporučení pomáhají chránit prostředky v Azure najdete v tématu [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md). 
-* Naučte se monitorovat stav svých prostředků Azure, najdete v tématu [sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md). 
+* Seznam podporovaných Windows a virtuální počítače s Linuxem najdete v tématu [podporovaných platforem v Azure Security Center](security-center-os-coverage.md).
+* Zjistěte, jak nakonfigurovat zásady zabezpečení pro skupiny prostředků a předplatná Azure, najdete v tématu [nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md).
+* Další informace, jak vám doporučení pomáhají chránit prostředky v Azure najdete v tématu [Správa doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).
+* Naučte se monitorovat stav svých prostředků Azure, najdete v tématu [sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md).
 * Další informace o správě a reakce na výstrahy zabezpečení naleznete v tématu [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md).
 * Zjistěte, jak sledovat stav vašich partnerských řešení, najdete v tématu [sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md).
 * Odpovědi na nejčastější dotazy o použití této služby, naleznete v části [Azure Security Center – nejčastější dotazy](security-center-faq.md).

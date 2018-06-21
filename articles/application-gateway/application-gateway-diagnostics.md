@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/2/2018
+ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 982ae712320cb390b1822de6a7a3980ebfb6251e
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 256eac99feacc18a51e45c3f07cdceb7d687cacf
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30314044"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293617"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Stav back-end, diagnostické protokoly a metriky pro službu Application Gateway
 
@@ -36,7 +36,7 @@ Application Gateway poskytuje možnost pro sledování stavu jednotlivých člen
 Sestava stavu back-end odráží výstup test stavu Application Gateway na back-end instance. Při zjišťování úspěšné a back-end může přijímat provoz, bude považován za v pořádku. Jinak považuje není v pořádku.
 
 > [!IMPORTANT]
-> Pokud je skupina zabezpečení sítě (NSG) na podsíť aplikační bránu, otevřete rozsahy portů 65503 65534 na podsíť aplikační brány pro příchozí provoz. Tyto porty jsou povinné pro back-end stav rozhraní API pro práci.
+> Pokud je skupina zabezpečení sítě (NSG) na podsíť aplikační bránu, otevřete rozsahy portů 65503 65534 na podsíť aplikační brány pro příchozí provoz. Tento rozsah portů je vyžadována pro komunikaci infrastruktury Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nemohou externí entity, včetně zákazníků těchto bran, nebudete moci iniciovat žádné změny na těchto koncových bodů.
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>Zobrazit stav back-end prostřednictvím portálu
@@ -181,7 +181,7 @@ Přístup k protokolu se vygeneruje pouze v případě, že jste ho povolili ka�
 |ReceivedBytes     | Velikost paketu přijaté v bajtech.        |
 |SentBytes| Velikost paket odeslaný v bajtech.|
 |timeTaken| Délka dobu (v milisekundách), která je potřebná pro zpracování požadavku a odpovědi na odeslání. Počítá se jako interval od okamžiku, kdy Application Gateway přijímá první bajt požadavku HTTP na čas, kdy odpovědi odeslat dokončení operace. Je důležité si uvědomit, že pole Time-Taken obvykle zahrnuje čas, jsou pakety žádostí a odpovědí přenášeny po síti. |
-|sslEnabled| Jestli komunikaci s back endové fondy používat protokol SSL. Platné hodnoty jsou zapnout a vypnout.|
+|Protokol| Jestli komunikaci s back endové fondy používat protokol SSL. Platné hodnoty jsou zapnout a vypnout.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",

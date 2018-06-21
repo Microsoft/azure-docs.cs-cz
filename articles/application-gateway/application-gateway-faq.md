@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 6/19/2018
+ms.date: 6/20/2018
 ms.author: victorh
-ms.openlocfilehash: a2f664525235fa97b0694362d7dc82086e31f71d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 989ecf209dc5093b5e4c73f01f9e382fc1ad21e8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229331"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295524"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Nejčastější dotazy pro službu Application Gateway
 
@@ -115,7 +115,7 @@ Ne, ale můžete nasadit další application Gateway v podsíti.
 
 Skupiny zabezpečení sítě jsou podporovány v podsíti Application Gateway s následujícími omezeními:
 
-* Výjimky musíte umístit pro příchozí komunikaci na portech 65503 65534 pro back-end stavu fungovala správně.
+* Výjimky musíte umístit pro příchozí komunikaci na portech 65503 65534. Tento rozsah portů je vyžadována pro komunikaci infrastruktury Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nemohou externí entity, včetně zákazníků těchto bran, nebudete moci iniciovat žádné změny na těchto koncových bodů.
 
 * Odchozí připojení k Internetu, nejde blokovat.
 
@@ -159,7 +159,7 @@ Tento scénář lze provést pomocí skupin Nsg na podsítě brány aplikace. N�
 
 * Povolí příchozí provoz ze zdrojových rozsah IP/IP.
 
-* Povolit příchozí požadavky ze všech zdrojů na porty 65503 65534 [komunikace stavu back-end](application-gateway-diagnostics.md).
+* Povolit příchozí požadavky ze všech zdrojů na porty 65503 65534 [komunikace stavu back-end](application-gateway-diagnostics.md). Tento rozsah portů je vyžadována pro komunikaci infrastruktury Azure. Jsou chráněny (uzamknuty) s použitím certifikátů Azure. Bez správných certifikátů nemohou externí entity, včetně zákazníků těchto bran, nebudete moci iniciovat žádné změny na těchto koncových bodů.
 
 * Povolit příchozí nástroj pro vyrovnávání zatížení Azure sondy (značka AzureLoadBalancer) a příchozí přenosy virtuální sítě (virtuální síť značky) na [NSG](../virtual-network/security-overview.md).
 

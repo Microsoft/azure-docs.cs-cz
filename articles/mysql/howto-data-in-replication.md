@@ -8,17 +8,17 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 05/18/2018
-ms.openlocfilehash: f9517cb552130e340310abc4affdad8bdadc26fe
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/20/2018
+ms.openlocfilehash: e099597eae419653a2a40c7f01ee7abbbc4657f0
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265747"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294417"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace pro replikaci dat MySQL v Azure databáze
 
-V tomto článku se dozvíte, jak nastavit replikaci dat v databázi Azure pro službu MySQL podle konfigurace primárním serverem a serverem repliky.
+V tomto článku se dozvíte, jak nastavit replikaci dat v databázi Azure pro službu MySQL konfigurací serverů primárním serverem a repliky. Replikace dat v umožňuje synchronizovat data z primární databáze MySQL serveru se systémem na místních počítačích v virtuální počítače, nebo v databázi služby hostované jiných poskytovatelů cloudu do repliky v databázi Azure pro službu MySQL. 
 
 Tento článek předpokládá, že máte alespoň zkušenosti s MySQL servery a databáze.
 
@@ -29,7 +29,7 @@ Tento článek předpokládá, že máte alespoň zkušenosti s MySQL servery a 
    Vytvořit nový server databáze MySQL (např. "replica.mysql.database.azure.com"). Odkazovat na [vytvoření Azure databáze MySQL serveru pomocí portálu Azure](quickstart-create-mysql-server-database-using-azure-portal.md) pro vytvoření serveru. Tento server je v replikaci dat v serveru "replika".
 
    > [!IMPORTANT]
-   > Tento server musí být vytvořený v obecné účely nebo k paměťově optimalizovaným cenové úrovně.
+   > Databáze Azure pro MySQL serveru musí být vytvořeny v obecné účely nebo k paměťově optimalizovaným cenové úrovně.
    > 
 
 2. Vytvoření stejných uživatelských účtů a odpovídající oprávnění
@@ -37,6 +37,7 @@ Tento článek předpokládá, že máte alespoň zkušenosti s MySQL servery a 
    Uživatelské účty nejsou replikovány z primárního serveru na server repliky. Pokud plánujete poskytuje uživatelům přístup k serveru repliky, musíte ručně vytvořit všechny účty a odpovídající oprávnění v tomto nově vytvořený Azure databáze pro server databáze MySQL.
 
 ## <a name="configure-the-primary-server"></a>Konfigurace primárního serveru
+Následující kroky připravit a nakonfigurovat MySQL serveru hostované na místní, v virtuálního počítače, nebo databáze služba hostovaná společností jiných poskytovatelů cloudu pro replikaci dat v. Tento server je "primární" v dat v replikaci. 
 
 1. Zapnout binární protokolování
 
@@ -226,3 +227,6 @@ Pokud chcete přeskočit Chyba replikace a povolí replikaci, aby bylo možné p
 ```sql
 CALL mysql.az_replication_skip_counter;
 ```
+
+## <a name="next-steps"></a>Další postup
+- Další informace o [replikace dat v](concepts-data-in-replication.md) pro databázi Azure pro databázi MySQL. 

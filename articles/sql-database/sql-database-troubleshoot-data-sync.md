@@ -1,26 +1,26 @@
 ---
-title: Řešení potíží s synchronizaci dat Azure SQL (Preview) | Microsoft Docs
-description: Zjistěte, jak řešení běžných problémů s synchronizaci dat SQL Azure (Preview).
+title: Řešení potíží s synchronizaci dat Azure SQL | Microsoft Docs
+description: Zjistěte, jak řešení běžných problémů s synchronizaci dat SQL Azure.
 services: sql-database
-ms.date: 04/01/2018
+ms.date: 06/20/2018
 ms.topic: conceptual
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 8c3476a81c10c9e1754302da4ac5c703ce7375bc
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 43d230b013f95c56fb162be3e361a6b68d1b26fe
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757532"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296131"
 ---
-# <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>Řešení problémů s synchronizaci dat SQL (Preview)
+# <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení problémů s synchronizaci dat SQL
 
-Tento článek popisuje, jak řešení známých problémů s synchronizaci dat SQL Azure (Preview). Pokud dojde řešení problému, je tady uvedené.
+Tento článek popisuje, jak řešení známých problémů s synchronizaci dat SQL Azure. Pokud dojde řešení problému, je tady uvedené.
 
-Přehled synchronizaci dat SQL (Preview) najdete v tématu [synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure (Preview)](sql-database-sync-data.md).
+Přehled synchronizaci dat SQL najdete v tématu [synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure](sql-database-sync-data.md).
 
 ## <a name="sync-issues"></a>Nezdařené synchronizace
 
@@ -28,7 +28,7 @@ Přehled synchronizaci dat SQL (Preview) najdete v tématu [synchronizaci dat me
 
 #### <a name="description-and-symptoms"></a>Popis a symptomy
 
-Synchronizace se nezdaří na portál synchronizaci dat SQL (Preview) uživatelského rozhraní pro místní databáze, které jsou spojeny s agentem. V místním počítači, který je agent spuštěn zobrazí System.IO.IOException chyby v protokolu událostí. Chyby Řekněme, že na disku není dostatek místa.
+Synchronizace se nezdaří na portál synchronizaci dat SQL uživatelského rozhraní pro místní databáze, které jsou spojeny s agentem. V místním počítači, který je agent spuštěn zobrazí System.IO.IOException chyby v protokolu událostí. Chyby Řekněme, že na disku není dostatek místa.
 
 #### <a name="resolution"></a>Řešení
 
@@ -38,7 +38,7 @@ Vytvořte další místo na jednotku, na kterém se nachází adresáři % TEMP 
 
 #### <a name="description-and-symptoms"></a>Popis a symptomy
 
-Synchronizace skupiny v synchronizaci dat SQL (Preview) byla ve stavu zpracování po dlouhou dobu. Nebude reagovat na **Zastavit** příkazu a protokoly zobrazit žádné nové položky.
+Synchronizace skupiny v synchronizaci dat SQL byla ve stavu zpracování po dlouhou dobu. Nebude reagovat na **Zastavit** příkazu a protokoly zobrazit žádné nové položky.
 
 #### <a name="cause"></a>Příčina
 
@@ -48,14 +48,14 @@ Ve skupině synchronizace se zablokuje ve stavu zpracování může způsobit n�
 
 -   **Agenta klienta je odinstalovaný nebo chybí**. Pokud agenta klienta je odinstalovaný nebo jinak chybí:
 
-    1. Odeberte soubor XML agenta z instalační složky synchronizaci dat SQL (Preview), pokud soubor existuje.
+    1. Odeberte soubor XML agenta z instalační složky synchronizaci dat SQL, pokud soubor existuje.
     2. Nainstalujte agenta na místním počítači (může to být stejné nebo do jiného počítače). Potom odešlete klíč agenta, který se generuje na portálu pro agenta, který se zobrazuje v režimu offline.
 
 -   **Zastavení služby synchronizaci dat SQL**.
 
     1. V **spustit** nabídky, vyhledejte **služby**.
     2. Ve výsledcích hledání vyberte **služby**.
-    3. Najít **synchronizaci dat SQL (Preview)** služby.
+    3. Najít **synchronizaci dat SQL** služby.
     4. Pokud je stav služby **Zastaveno**, klikněte pravým tlačítkem na název služby a pak vyberte **spustit**.
 
 #### <a name="resolution"></a>Řešení
@@ -70,7 +70,7 @@ Pokud tabulky, které mají stejný název, ale jsou z jiné databázi schémata
 
 #### <a name="cause"></a>Příčina
 
-Zřizování synchronizaci dat SQL (Preview) používá stejné tabulky sledování pro tabulky, které mají stejný název, ale jsou v různých schématech. Z toho důvodu z obou tabulek se projeví ve stejné tabulce sledování. To způsobí, že změny chybné dat během synchronizace.
+Synchronizaci dat SQL zřizování používá stejné tabulky sledování pro tabulky, které mají stejný název, ale jsou v různých schématech. Z toho důvodu z obou tabulek se projeví ve stejné tabulce sledování. To způsobí, že změny chybné dat během synchronizace.
 
 #### <a name="resolution"></a>Řešení
 
@@ -109,10 +109,10 @@ Nejlepší je prevence. Ujistěte se, nemáte žádné cyklické odkazy v synchr
 ### <a name="i-see-this-message-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-it"></a>Tato zpráva: "nelze vložit hodnoty NULL do sloupce \<sloupec\>. Sloupec nepovoluje hodnoty Null." Co to znamená, a jak jej lze odstranit? 
 Tato chybová zpráva znamená, že mezi dvěma následující problémy došlo:
 -  Tabulka nemá primární klíč. Chcete-li tento problém vyřešit, přidáte do všech tabulek, které jste se synchronizuje se primární klíč.
--  Neexistuje klauzule WHERE v příkazu CREATE INDEX. Tato podmínka nemůže pracovat s synchronizaci dat (Preview). Chcete-li tento problém vyřešit, odeberte klauzuli WHERE nebo ručně změnit všechny databáze. 
+-  Neexistuje klauzule WHERE v příkazu CREATE INDEX. Synchronizaci dat nemůže pracovat s tuto podmínku. Chcete-li tento problém vyřešit, odeberte klauzuli WHERE nebo ručně změnit všechny databáze. 
  
-### <a name="how-does-data-sync-preview-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>Jak pracovat synchronizaci dat (Preview). cyklické odkazy? To znamená, když stejná data je synchronizovaný v několika skupinách pro synchronizaci a udržuje v důsledku změny?
-Synchronizaci dat (Preview) nemůže pracovat. cyklické odkazy. Ujistěte se, že je vyhnout. 
+### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>Jak synchronizaci dat zpracovat. cyklické odkazy? To znamená, když stejná data je synchronizovaný v několika skupinách pro synchronizaci a udržuje v důsledku změny?
+Synchronizaci dat nemůže pracovat. cyklické odkazy. Ujistěte se, že je vyhnout. 
 
 ## <a name="client-agent-issues"></a>Problémy s klientem agenta
 
@@ -131,27 +131,6 @@ Pokud chcete vyhledat konkrétní příčinu selhání, generovat a v protokolec
 
 Můžete také zapnout protokolování pro všechny instalace, které se provádí pomocí Instalační služby systému Windows. Článek znalostní báze Microsoft Knowledge Base [povolení protokolování Instalační služby systému Windows](https://support.microsoft.com/help/223300/how-to-enable-windows-installer-logging) poskytuje řešení jedním kliknutím zapnout protokolování pro Instalační služby systému Windows. Nabízí taky umístění protokolů.
 
-### <a name="my-client-agent-doesnt-work"></a>Moje Klientský agent nebude fungovat.
-
-#### <a name="description-and-symptoms"></a>Popis a symptomy
-
-Při pokusu o použití agenta klienta získáte následujících zpráv:
-
-"Synchronizace se nezdařila s výjimkou, ke které došlo k chybě při pokusu o deserializaci www.microsoft.com/.../05:GetBatchInfoResult parametr. Informace naleznete v části ve vlastnosti InnerException."
-
-"Zpráva o vnitřní výjimce: typ 'Microsoft.Synchronization.ChangeBatch' je neplatný typ kolekce, protože nemá výchozí konstruktor."
-
-#### <a name="cause"></a>Příčina
-
-Jedná se o známý problém s instalací synchronizaci dat SQL (Preview). Nejpravděpodobnější příčinou této zprávy je jedním z následujících akcí:
-
--   Se systémem Windows 8 Developer Preview.
--   Máte nainstalované rozhraní .NET Framework 4.5.
-
-#### <a name="resolution"></a>Řešení
-
-Ujistěte se, že instalujete agenta klienta na počítači se systémem Windows 8 Developer Preview, a že není nainstalováno rozhraní .NET Framework 4.5.
-
 ### <a name="my-client-agent-doesnt-work-after-i-cancel-the-uninstall"></a>Moje Klientský agent nefunguje po zruším odinstalace
 
 #### <a name="description-and-symptoms"></a>Popis a symptomy
@@ -160,7 +139,7 @@ Klientský agent nebude fungovat, i po zrušení jeho odinstalaci.
 
 #### <a name="cause"></a>Příčina
 
-K tomu dochází, protože klientský agent pro synchronizaci dat SQL (Preview) nepodporuje ukládat přihlašovací údaje.
+K tomu dochází, protože klientský agent pro synchronizaci dat SQL není ukládat přihlašovací údaje.
 
 #### <a name="resolution"></a>Řešení
 
@@ -215,18 +194,18 @@ Pravděpodobnou příčinou této chyby je, že vzhledem k tomu, že jste vytvo�
 
 Aktualizace agenta hesla pro vaše aktuální heslo serveru:
 
-1. Najděte agenta klienta Preview service synchronizaci dat SQL (Preview).  
+1. Vyhledejte službu pro agenta klienta synchronizaci dat SQL.  
     a. Vyberte **spustit**.  
     b. Do vyhledávacího pole zadejte **services.msc**.  
     c. Ve výsledcích hledání vyberte **služby**.  
-    d. V **služby** okno, přejděte k položce pro **synchronizaci dat SQL (Preview) agenta Preview**.  
-2. Klikněte pravým tlačítkem na **synchronizaci dat SQL (Preview) agenta Preview**a potom vyberte **Zastavit**.
-3. Klikněte pravým tlačítkem na **synchronizaci dat SQL (Preview) agenta Preview**a potom vyberte **vlastnosti**.
-4. Na **synchronizaci dat SQL (Preview) agenta Náhled Vlastnosti**, vyberte **přihlásit** kartě.
+    d. V **služby** okno, přejděte k položce pro **agenta synchronizace dat SQL**.  
+2. Klikněte pravým tlačítkem na **agenta synchronizace dat SQL**a potom vyberte **Zastavit**.
+3. Klikněte pravým tlačítkem na **agenta synchronizace dat SQL**a potom vyberte **vlastnosti**.
+4. Na **vlastnosti agenta synchronizace dat SQL**, vyberte **přihlásit** kartě.
 5. V **heslo** zadejte heslo.
 6. V **Potvrdit heslo** pole, zadejte znovu heslo.
 7. Vyberte **Apply** (Použít) a pak vyberte **OK**.
-8. V **služby** okna, klikněte pravým tlačítkem myši **Preview agenta synchronizaci dat SQL (Preview)** služby a potom klikněte na **spustit**.
+8. V **služby** okna, klikněte pravým tlačítkem myši **agenta synchronizace dat SQL** služby a potom klikněte na **spustit**.
 9. Zavřít **služby** okno.
 
 ### <a name="i-cant-submit-the-agent-key"></a>Mohu nelze odeslat klíč agenta
@@ -239,8 +218,8 @@ Po vytvoření nebo znovu vytvořte klíč pro agenta, pokusíte odeslat klíč 
 
 Než budete pokračovat, zkontrolujte následující podmínky:
 
--   Je spuštěna služba systému Windows pro synchronizaci dat SQL (Preview).  
--   Účet služby pro službu systému Windows verze Preview synchronizaci dat SQL (Preview) má přístup k síti.    
+-   Je spuštěna služba SQL Data synchronizace systému Windows.  
+-   Účet služby pro službu SQL Data synchronizace systému Windows má přístup k síti.    
 -   Odchozí port 1433 je otevřen v místní bráně firewall pravidla.
 -   Místní IP adresa se přidá k serveru nebo databáze pravidlo brány firewall pro databázi synchronizace metadat.
 
@@ -248,7 +227,7 @@ Než budete pokračovat, zkontrolujte následující podmínky:
 
 Klíč agenta jednoznačně identifikuje každého agenta na místní. Klíč musí splňovat dvě podmínky:
 
--   Klíč agenta klienta na serveru pro synchronizaci dat SQL (Preview) a místní počítač musí být identický.
+-   Klíč agenta klienta na synchronizaci dat SQL serveru a místní počítač musí být identický.
 -   Klíč agenta klienta lze použít pouze jednou.
 
 #### <a name="resolution"></a>Řešení
@@ -272,7 +251,7 @@ Chcete-li použít nový klíč k agentovi:
 
 #### <a name="description-and-symptoms"></a>Popis a symptomy
 
-Místní koncový bod (tj. databáze), je zaregistrován k synchronizaci dat SQL (Preview) Klientský agent přestane být nedostupný, nelze odstranit agenta klienta.
+Místní koncový bod (tj. databáze), je zaregistrován k synchronizaci dat SQL Klientský agent přestane být nedostupný, nelze odstranit agenta klienta.
 
 #### <a name="cause"></a>Příčina
 
@@ -295,8 +274,8 @@ Vyzkoušejte následující kroky:
 2. Otevření panelu součást služby.  
     a. Do vyhledávacího pole na hlavním panelu, zadejte **services.msc**.  
     b. Ve výsledcích hledání klikněte dvakrát na **služby**.  
-3. Zastavit **synchronizaci dat SQL (Preview) Preview** služby.
-4. Restartujte **synchronizaci dat SQL (Preview) Preview** služby.  
+3. Zastavit **synchronizaci dat SQL** služby.
+4. Restartujte **synchronizaci dat SQL** služby.  
 5. Aplikaci znovu otevřete.
 
 ## <a name="setup-and-maintenance-issues"></a>Problémy s instalací a údržby
@@ -335,12 +314,12 @@ Chcete-li vyřešit nepodařilo se odstranit skupinu synchronizace:
 
 -   Zkontrolujte, zda je klientský agent online a potom akci opakujte.
 -   Pokud agenta klienta je odinstalovaný nebo jinak chybí:  
-    a. Odeberte soubor XML agenta z instalační složky synchronizaci dat SQL (Preview), pokud soubor existuje.  
+    a. Odeberte soubor XML agenta z instalační složky synchronizaci dat SQL, pokud soubor existuje.  
     b. Nainstalujte agenta na místním počítači (může to být stejné nebo do jiného počítače). Potom odešlete klíč agenta, který se generuje na portálu pro agenta, který se zobrazuje v režimu offline.
--   Ujistěte se, zda je spuštěna služba synchronizaci dat SQL (Preview):  
+-   Ujistěte se, zda je spuštěna služba synchronizaci dat SQL:  
     a. V **spustit** nabídky, vyhledejte **služby**.  
     b. Ve výsledcích hledání vyberte **služby**.  
-    c. Najít **synchronizaci dat SQL (Preview) Preview** služby.  
+    c. Najít **synchronizaci dat SQL** služby.  
     d. Pokud je stav služby **Zastaveno**, klikněte pravým tlačítkem na název služby a pak vyberte **spustit**.
 -   Zkontrolujte, zda jsou všechny online databází SQL a databáze systému SQL Server.
 -   Počkejte na dokončení procesu zřizování nebo synchronizace a poté opakujte odstranění skupiny synchronizace.
@@ -361,7 +340,7 @@ Tato operace selže-li odebrat databázi ze skupiny synchronizace:
     a. Vyberte **spustit** nabídky.  
     b. Do vyhledávacího pole zadejte **services.msc**.  
     c. V **programy** části hledání výsledků podokně dvakrát klikněte na **služby**.  
-    d. Klikněte pravým tlačítkem myši **synchronizaci dat SQL (Preview)** služby.  
+    d. Klikněte pravým tlačítkem myši **synchronizaci dat SQL** služby.  
     e. Pokud je služba spuštěná, zastavte ji.  
     f. Klikněte pravým tlačítkem na službu a pak vyberte **spustit**.  
     g. Zkontrolujte, zda je databáze pořád zaregistrovaný. Pokud je již zaregistrován, jste hotovi. Jinak pokračujte dalším krokem.
@@ -391,7 +370,7 @@ Udělit protokolu na jako-service pověření pro uživatelský účet:
 
 #### <a name="cause"></a>Příčina
 
-Synchronizaci dat SQL (Preview) odebere databází, které byly offline ze služby pro 45 dnů a víc (jak je počítáno od okamžiku, kdy databázi přešel do režimu offline). Pokud databáze je v režimu offline pro 45 dnů nebo déle a pak přejde do režimu online, je její stav **zastaralé**.
+Synchronizaci dat SQL odebere databází, které byly offline ze služby pro 45 dnů a víc (jak je počítáno od okamžiku, kdy databázi přešel do režimu offline). Pokud databáze je v režimu offline pro 45 dnů nebo déle a pak přejde do režimu online, je její stav **zastaralé**.
 
 #### <a name="resolution"></a>Řešení
 
@@ -421,14 +400,14 @@ Pokud je stav skupiny synchronizace **zastaralé**, odstraňte skupinu synchroni
 
 #### <a name="description-and-symptoms"></a>Popis a symptomy
 
-Nelze odstranit skupinu synchronizace do tří minut po odinstalaci nebo zastavení přidružené Klientský agent pro synchronizaci dat SQL (Preview).
+Nelze odstranit skupinu synchronizace do tří minut po odinstalaci nebo zastavení přidružené Klientský agent pro synchronizaci dat SQL.
 
 #### <a name="resolution"></a>Řešení
 
 1. Odebrání skupiny pro synchronizaci agenty přidružené synchronizace jsou online (doporučeno).
-2. Pokud agenta je offline, ale je nainstalován, převeďte ho do online režimu v místním počítači. Počkejte stav agenta se objeví jako **Online** na portálu pro synchronizaci dat SQL (Preview). Potom odeberte synchronizace skupiny.
+2. Pokud agenta je offline, ale je nainstalován, převeďte ho do online režimu v místním počítači. Počkejte stav agenta se objeví jako **Online** na portálu pro synchronizaci dat SQL. Potom odeberte synchronizace skupiny.
 3. Pokud agenta je offline, protože byla odinstalována:  
-    a.  Odeberte soubor XML agenta z instalační složky synchronizaci dat SQL (Preview), pokud soubor existuje.  
+    a.  Odeberte soubor XML agenta z instalační složky synchronizaci dat SQL, pokud soubor existuje.  
     b.  Nainstalujte agenta na místním počítači (může to být stejné nebo do jiného počítače). Potom odešlete klíč agenta, který se generuje na portálu pro agenta, který se zobrazuje v režimu offline.  
     c. Pokuste se odstranit skupinu synchronizace.
 
@@ -437,16 +416,16 @@ Nelze odstranit skupinu synchronizace do tří minut po odinstalaci nebo zastave
 Pokud ke ztrátě nebo poškozená databáze obnovit ze zálohy, může být nonconvergence dat ve skupině synchronizace, ke které databáze patří.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o synchronizaci dat SQL (Preview) najdete v tématu:
+Další informace o synchronizaci dat SQL najdete v tématu:
 
--   [Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure (Preview)](sql-database-sync-data.md)  
--   [Nastavit synchronizaci dat SQL Azure (Preview)](sql-database-get-started-sql-data-sync.md)  
--   [Osvědčené postupy pro synchronizaci dat SQL Azure (Preview)](sql-database-best-practices-data-sync.md)  
--   [Synchronizaci dat Azure SQL (Preview) monitorování s analýzy protokolů](sql-database-sync-monitor-oms.md)  
--   Dokončete příklady prostředí PowerShell, které ukazují, jak nakonfigurovat synchronizaci dat SQL (Preview):  
+-   [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](sql-database-sync-data.md)  
+-   [Nastavení Synchronizace dat SQL Azure](sql-database-get-started-sql-data-sync.md)  
+-   [Osvědčené postupy pro Synchronizaci dat SQL Azure](sql-database-best-practices-data-sync.md)  
+-   [Monitorování Synchronizace dat SQL Azure s využitím Log Analytics](sql-database-sync-monitor-oms.md)  
+-   Úplné příklady PowerShellu ukazující konfiguraci Synchronizace dat SQL:  
     -   [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)  
--   [Stáhněte si dokumentaci rozhraní API REST synchronizaci dat SQL (Preview)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
+-   [Stažení dokumentace k rozhraní REST API Synchronizace dat SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
 Další informace o databázi SQL najdete v tématu:
 

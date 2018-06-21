@@ -3,17 +3,16 @@ title: Plánování kapacity a škálování replikace VMware do Azure s Azure S
 description: Použijte tento článek k plánování kapacity a škálování při replikaci virtuálních počítačů VMware do Azure s Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
-manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 02/27/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: rayne
-ms.openlocfilehash: dbaf1e29fbf4be8ef9432842b7ea4d6511b21cbb
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 30e4534fbc235a228ac887ddc3336f09909b4fa6
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29692194"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287350"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Plánování kapacity a škálování pro replikaci VMware s Azure Site Recovery
 
@@ -21,7 +20,7 @@ Pomocí tohoto článku a pokuste se zjistit plánování kapacity a škálován
 
 ## <a name="how-do-i-start-capacity-planning"></a>Jak spustit plánování kapacity?
 
-Shromážděte informace o prostředí replikace spuštěním [Azure Site Recovery nasazení Planner](https://aka.ms/asr-deployment-planner-doc) pro replikaci VMware. [Další informace](site-recovery-deployment-planner.md) o tomto nástroji. Budete shromažďovat informace o kompatibilní a nekompatibilní virtuálních počítačů, disků na virtuální počítač, a změn dat na disk. Tento nástroj pokrývá i požadavky na šířku pásma sítě a infrastrukturu Azure potřebnou k úspěšné replikaci a testovacímu převzetí služeb při selhání.
+Shromážděte informace o prostředí replikace spuštěním [Azure Site Recovery nasazení Planner](https://aka.ms/asr-deployment-planner-doc) pro replikaci VMware. [Přečtěte si další informace](site-recovery-deployment-planner.md) o tomto nástroji. Budete shromažďovat informace o kompatibilní a nekompatibilní virtuálních počítačů, disků na virtuální počítač, a změn dat na disk. Tento nástroj pokrývá i požadavky na šířku pásma sítě a infrastrukturu Azure potřebnou k úspěšné replikaci a testovacímu převzetí služeb při selhání.
 
 ## <a name="capacity-considerations"></a>Aspekty kapacity
 

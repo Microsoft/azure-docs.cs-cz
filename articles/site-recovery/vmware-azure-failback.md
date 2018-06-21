@@ -1,19 +1,17 @@
 ---
 title: Zpět z Azure se nepodařilo VMware s Azure Site Recovery | Microsoft Docs
 description: Po převzetí služeb při selhání virtuálních počítačů do Azure můžete spustit navrácení služeb po obnovení, aby virtuální počítače zpět do místní. Přečtěte si postup pro navrácení služeb po obnovení.
-services: site-recovery
 author: nsoneji
-manager: gauravd
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 05/20/2018
 ms.author: nisoneji
-ms.openlocfilehash: 8f580fa40bade2bf586dd116729881b249bbba88
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1e8e2384d6d5672e29e6d7bc28f0772cd5b78519
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29944003"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287513"
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Selhání zpět z Azure do místního serveru
 
@@ -99,7 +97,7 @@ Po dokončení navrácení služeb po obnovení a spustili potvrzení, se odstra
 > [!NOTE]
 > Poté, co se místní virtuální počítač se spustí, trvá delší dobu pro agenta k registraci zpět na konfigurační server (až 15 minut). Během této doby opětovné ochrany se nezdaří a vrátí chybovou zprávu s oznámením, že agent není nainstalovaný. Počkejte několik minut a pak zkuste znovu opětovné ochrany.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po dokončení úloh opětovné ochrany replikují virtuální počítač zpět do Azure a můžete provést [převzetí služeb při selhání](site-recovery-failover.md) znovu přesunout virtuální počítače do Azure.
 

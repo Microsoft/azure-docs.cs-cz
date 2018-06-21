@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 4cf4e0ffc339bb90f013315a53025c83fcaad21f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4aa2a2f41bcdd78991184e026f22f8e04754eccb
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217567"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286109"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Kurz: Azure Active Directory integrace s vyrovná se se zatížením pro správu vzdělávacího procesu
 
@@ -266,7 +266,7 @@ Pokud chcete přiřadit uživatele Britta Simon vyrovná se se zatížením pro 
 
 V této části otestovat vaše konfigurace Azure AD jeden přihlašování pomocí přístupového panelu.
 
-Na přístupovém panelu Výběr **vyrovná se se zatížením pro správu vzdělávacího procesu** dlaždice automaticky přihlásí vám do vaší aplikace vyrovná se se zatížením pro správu vzdělávacího procesu. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586).
+Na přístupovém panelu Výběr **vyrovná se se zatížením pro správu vzdělávacího procesu** dlaždice automaticky přihlásí vám do vaší aplikace vyrovná se se zatížením pro správu vzdělávacího procesu. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
@@ -288,4 +288,3 @@ Na přístupovém panelu Výběr **vyrovná se se zatížením pro správu vzdě
 [201]: ./media/absorblms-tutorial/tutorial_general_201.png
 [202]: ./media/absorblms-tutorial/tutorial_general_202.png
 [203]: ./media/absorblms-tutorial/tutorial_general_203.png
-

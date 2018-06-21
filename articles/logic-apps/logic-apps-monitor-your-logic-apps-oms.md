@@ -12,20 +12,20 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/9/2017
+ms.date: 06/19/2018
 ms.author: LADocs; divswa
-ms.openlocfilehash: 493d82f59600d83a083bb13cdd0a21b872d77a43
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 0dc7f28ebe3816ba317eb3a4e28fc640c8a12a4e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299939"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294570"
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Monitorovat a získat přehled o logiku aplikace běží s analýzy protokolů
 
 Pro monitorování a bohatší informace o ladění můžete zapnout analýzy protokolů ve stejnou dobu, po vytvoření aplikace logiky. Log Analytics poskytuje možnosti pro diagnostiku protokolování a monitorování pro svou aplikaci logiky spouští prostřednictvím portálu Azure. Když přidáte do řešení pro správu aplikace logiky, zobrazí agregovaný stav pro logiku aplikace běží a konkrétní podrobnosti, jako je stav, čas spuštění, opakované odeslání stavu a ID korelace.
 
-Toto téma ukazuje, jak zapnout analýzy protokolů, aby lze zobrazit události modulu runtime a spusťte data pro svou aplikaci logiky.
+Tento článek ukazuje, jak zapnout analýzy protokolů, aby lze zobrazit události modulu runtime a spusťte data pro svou aplikaci logiky.
 
  > [!TIP]
  > Pokud chcete sledovat existující aplikace logiky, použijte následující postup [zapnout protokolování diagnostiky a odesílání dat za běhu aplikace logiky k analýze protokolů](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
@@ -67,17 +67,17 @@ Pokud jste již zapnuli analýzy protokolů při vytvoření aplikace logiky, te
 
    ![Vyberte pracovní prostor analýzy protokolů](media/logic-apps-monitor-your-logic-apps-oms/select-logic-app.png)
 
-3. V části **správy**, zvolte **portálu OMS**.
+3. V části **správy**, zvolte **přehled**.
 
-   ![Zvolte "Portál OMS"](media/logic-apps-monitor-your-logic-apps-oms/oms-portal-page.png)
+   ![Zvolte "Portál OMS"](media/logic-apps-monitor-your-logic-apps-oms/ibiza-portal-page.png)
 
-4. V části **všechna řešení**, najít a vybrat na dlaždici **správy Logic Apps** řešení.
+4. Na stránce Přehled zvolte **přidat** otevřete dlaždici řešení pro správu. 
 
-   ![Zvolte "Správa aplikace logiky"](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-management-tile2.png)
+   ![Zvolte "Správa aplikace logiky"](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
 
-5. Chcete-li nainstalovat řešení v pracovním prostoru analýzy protokolů, zvolte **přidat**.
+5. Procházení seznamu **řešení pro správu**, zvolte **správy Logic Apps** řešení a zvolte **vytvořit** k instalaci na stránku Přehled.
 
-   ![Zvolte "Přidat" pro "Správa aplikace logiky"](media/logic-apps-monitor-your-logic-apps-oms/add-logic-apps-management-solution.png)
+   ![Zvolte "Přidat" pro "Správa aplikace logiky"](media/logic-apps-monitor-your-logic-apps-oms/create-logic-apps-management-solution.png)
 
 <a name="view-logic-app-runs-oms"></a>
 

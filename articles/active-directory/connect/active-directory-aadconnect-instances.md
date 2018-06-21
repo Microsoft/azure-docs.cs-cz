@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 06/18/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 158a0f6d948172ec7d986703e9fa95dd19bdde6a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 351f3e34f5050d922655a633ec89f51d191b946e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592258"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295614"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect: Zvláštní upozornění pro instance
 Azure AD Connect se nejčastěji používá s celosvětové instance služby Azure AD a Office 365. Ale existují také další instance a ty mají různé požadavky na adresy URL a další důležité.
@@ -38,8 +38,6 @@ Když se přihlásíte ke klientovi Azure AD, musíte použít účet v doméně
 
 Funkce aktuálně nejsou k dispozici v Německu cloudu společnosti Microsoft:
 
-* **Azure AD Connect Health** není k dispozici.
-* **Funkce Automatické aktualizace** není k dispozici.
 * **Zpětný zápis hesla** je k dispozici pro verzi preview verzí Azure AD Connect 1.1.570.0 a po.
 * Nejsou k dispozici další služby Azure AD Premium.
 
@@ -61,8 +59,6 @@ Tento cloud byl podporován ve starších verzích nástroje DirSync. Ze sestave
 
 Aktuálně nejsou k dispozici v cloudu Microsoft Azure Government funkce:
 
-* **Azure AD Connect Health** není k dispozici.
-* **Funkce Automatické aktualizace** není k dispozici.
 * **Zpětný zápis hesla** je k dispozici pro verzi preview verzí Azure AD Connect 1.1.570.0 a po.
 * Nejsou k dispozici další služby Azure AD Premium.
 

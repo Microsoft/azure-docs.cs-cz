@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: dc5a1e21dacff74394c2ce05ebb8013306bbc13c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2bc4f42b0a22ce804db9290728944575888f9c72
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211233"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-sales-navigator"></a>Kurz: Azure Active Directory integrace s LinkedIn prodej Navigátor
 
@@ -261,7 +261,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Když kliknete na dlaždici LinkedIn prodej Navigátor na přístupovém panelu, přesměrovat na organizační stránku, kde je nutné zadat osobní podrobnosti o účtu LinkedIn. Ho propojí s vaším účtem obchodní LinkedIn svůj osobní účet. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586). 
+Když kliknete na dlaždici LinkedIn prodej Navigátor na přístupovém panelu, přesměrovat na organizační stránku, kde je nutné zadat osobní podrobnosti o účtu LinkedIn. Ho propojí s vaším účtem obchodní LinkedIn svůj osobní účet. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

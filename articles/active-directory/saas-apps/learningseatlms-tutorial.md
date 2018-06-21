@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: jeedes
-ms.openlocfilehash: aee99add093a6da14a4d146ed29e48604eabfb1f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 96608c491fe4d62b6b4bdb48ee5386c9a72212cf
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229066"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286241"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Kurz: Azure Active Directory integrace s Learning stanici pro správu vzdělávacího procesu
 
@@ -207,7 +207,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu. 
 
-Klikněte na dlaždici Learning stanici pro správu vzdělávacího procesu na přístupovém panelu, můžete se být automaticky přihlášení k aplikaci pro správu vzdělávacího procesu Learning stanici. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586).
+Klikněte na dlaždici Learning stanici pro správu vzdělávacího procesu na přístupovém panelu, můžete se být automaticky přihlášení k aplikaci pro správu vzdělávacího procesu Learning stanici. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

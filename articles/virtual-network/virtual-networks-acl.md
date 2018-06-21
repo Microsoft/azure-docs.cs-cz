@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: f532ed9ad1254aa8082f212b8190f83bb71767e9
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 6265a7f9f60b60d7b79e15a04feb0ec76dc59f6d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363120"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293114"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Co je seznam řízení přístupu koncový bod?
 
 > [!IMPORTANT]
 > Azure má dva různé [modely nasazení](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) pro vytváření a práci s prostředky: Resource Manager a Klasický model. Tento článek se věnuje použití klasického modelu nasazení. Společnost Microsoft doporučuje, aby většina nových nasazení používala model nasazení Resource Manager. 
 
-Seznam řízení přístupu (ACL) koncového bodu je prvkem zvýšení zabezpečení, která je k dispozici pro vaše nasazení Azure. Seznam ACL umožňuje selektivně povolit nebo zakázat přenosů pro koncový bod virtuálního počítače. Tato funkce filtrování paketů poskytuje další úroveň zabezpečení. Můžete zadat sítě ACL pro koncové body pouze. Nelze zadat seznam ACL pro virtuální síť nebo podsíť konkrétní obsažené ve virtuální síti. Doporučujeme používat skupiny zabezpečení sítě (Nsg) namísto seznamy ACL, kdykoli je to možné. Další informace o skupinách Nsg najdete v tématu [přehled skupiny zabezpečení sítě](security-overview.md)
+Seznam řízení přístupu (ACL) koncového bodu je prvkem zvýšení zabezpečení, která je k dispozici pro vaše nasazení Azure. Seznam ACL umožňuje selektivně povolit nebo zakázat přenosů pro koncový bod virtuálního počítače. Tato funkce filtrování paketů poskytuje další úroveň zabezpečení. Můžete zadat sítě ACL pro koncové body pouze. Nelze zadat seznam ACL pro virtuální síť nebo podsíť konkrétní obsažené ve virtuální síti. Doporučujeme používat skupiny zabezpečení sítě (Nsg) namísto seznamy ACL, kdykoli je to možné. Pokud používáte skupiny Nsg, bude seznam řízení přístupu koncový bod nahradit a už nebudou vynucené. Další informace o skupinách Nsg najdete v tématu [přehled skupiny zabezpečení sítě](security-overview.md)
 
 Seznamy ACL můžete nakonfigurovat pomocí prostředí PowerShell nebo portálu Azure. Konfigurace sítě ACL pomocí prostředí PowerShell najdete v tématu [seznamy řízení přístupu pro správu pro koncové body pomocí prostředí PowerShell](virtual-networks-acl-powershell.md). Konfigurace sítě ACL pomocí portálu Azure najdete v tématu [jak nastavit koncové body k virtuálnímu počítači](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 

@@ -14,15 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 4555bc85489f557cf6b6b744df7063fc14b0602a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7147b282d9bcbf48391d60466c77d28eca396832
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590374"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294271"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
 Tým služby Azure Active Directory pravidelně aktualizuje Azure AD Connect Health se nové funkce a funkce. V tomto článku jsou uvedené verze a funkce, které byly vydány.
+
+## <a name="june-2018"></a>2018 června 
+**Nové funkce verze preview:** 
+* Azure AD Connect Health pro synchronizaci - diagnostikovat a opravit chyby synchronizace duplicitní atribut z portálu 
+
+**Aktualizace agenta:** 
+*   Agent Azure AD Connect Health pro službu AD FS (verze 3.1.2.0)  
+   1. Opravy chyb a zlepšování pro výstrahy 
+
 
 ## <a name="may-2018"></a>Květen 2018
 **Aktualizace agenta:**
@@ -35,7 +44,7 @@ Tým služby Azure Active Directory pravidelně aktualizuje Azure AD Connect Hea
  2. Agent ochrany osobních údajů zlepšování  
  3. Obecné vylepšení a opravy chyb
 
-* Agent Azure AD Connect Health pro synchronizaci (verze 3.0.244.0)
+* Agent Azure AD Connect Health pro synchronizaci (verze 3.0.164.0) vydané službou Azure AD Connect verze 1.1.819.0
  1. Agent ochrany osobních údajů zlepšování  
  2. Obecné vylepšení a opravy chyb
 
@@ -98,7 +107,7 @@ Tým služby Azure Active Directory pravidelně aktualizuje Azure AD Connect Hea
 ## <a name="october-2016"></a>Října 2016
 **Aktualizace agenta:**
 
-* Agent Azure AD Connect Health pro službu AD FS \(verze 2.6.408.0\)
+* Agent Azure AD Connect Health pro službu AD FS (verze 2.6.408.0)
 1. Vylepšení detekce klientských IP adres v žádosti o ověření
 2. Opravy chyb, které souvisí s výstrahami
 * Agent Azure AD Connect Health pro službu AD DS (verze 2.6.408.0)

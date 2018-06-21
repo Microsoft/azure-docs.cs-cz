@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: a57337acadafe40839e16d6a31861ff7c892c071
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9cfdd6828a6d7ec699501a485519f843c59d0422
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31602497"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295579"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Migrovat prostředky infrastruktury z klasického do Azure Resource Manageru pomocí prostředí Azure PowerShell
 Tyto kroky ukazují, jak používat příkazy Azure PowerShell k migraci infrastruktury jako služby (IaaS) prostředky z modelu nasazení classic do modelu nasazení Azure Resource Manager.
@@ -46,8 +46,6 @@ Tady je několik osvědčených postupů, které doporučujeme jak vyhodnotit mi
 > Application Gateway nejsou aktuálně podporovány pro migraci z classic do Resource Manager. Pokud chcete migrovat klasickou virtuální síť s aplikační brány, odstranění brány před spuštěním operace Příprava přesunout sítě. Po dokončení migrace znovu připojte bránu ve službě Správce prostředků Azure.
 >
 >Připojování k okruhy ExpressRoute v jiné předplatné brány ExpressRoute se nedají automaticky migrovat. V takových případech odebrat bránu ExpressRoute, migrujte virtuální sítě a znovu vytvořit bránu. Najdete v tématu [okruhy ExpressRoute migrovat a přidružené virtuální sítě z klasického modelu nasazení Resource Manager](../../expressroute/expressroute-migration-classic-resource-manager.md) Další informace.
->
->
 
 ## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>Krok 2: Nainstalujte nejnovější verzi prostředí Azure PowerShell
 Existují dvě hlavní možnosti nainstalujte prostředí Azure PowerShell: [Galerie prostředí PowerShell](https://www.powershellgallery.com/profiles/azure-sdk/) nebo [instalačního programu webové platformy (WebPI)](http://aka.ms/webpi-azps). WebPI obdrží měsíčních aktualizací. Galerie prostředí PowerShell získává aktualizace trvale. Tento článek je založená na prostředí Azure PowerShell verze 2.1.0.
@@ -90,8 +88,6 @@ Nastavte předplatné Azure pro aktuální relaci. Tento příklad nastaví výc
 > Registrace je jednorázové krok, ale musíte to provést jednou před pokusem o migraci. Bez registrace, zobrazí se následující chybová zpráva:
 >
 > *Struktura BadRequest: Předplatné není zaregistrované pro migraci.*
->
->
 
 Zaregistrovat u zprostředkovatele prostředků migrace pomocí následujícího příkazu:
 
@@ -137,12 +133,15 @@ Get-AzureRmVMUsage -Location "West US"
 ```
 
 ## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Krok 6: Spuštění příkazů pro migraci vašich prostředků IaaS
+* [Migrovat virtuální počítače v cloudové službě (ne ve virtuální síti)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
+* [Migrovat virtuální počítače ve virtuální síti](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
+* [Migraci účtu úložiště](#step-62-migrate-a-storage-account)
+
 > [!NOTE]
 > Všechny operace, které jsou zde popsané jsou idempotent. Pokud došlo k potížím. než nepodporované funkce nebo chyby v konfiguraci, doporučujeme zopakovat Příprava, zrušení nebo potvrzení operace. Platformu a potom se pokusí akci znovu.
->
->
 
-## <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Krok 6.1: Možnost 1 - migraci virtuálních počítačů v rámci cloudové služby (ne ve virtuální síti)
+
+### <a name="step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network"></a>Krok 6.1: Možnost 1 - migraci virtuálních počítačů v rámci cloudové služby (ne ve virtuální síti)
 Získání seznamu cloudových služeb pomocí následujícího příkazu a pak vyberte cloudovou službu, která chcete migrovat. Pokud jsou virtuální počítače v rámci cloudové služby ve virtuální síti nebo mají role web nebo worker, příkaz vrátí chybovou zprávu.
 
 ```powershell
@@ -169,7 +168,7 @@ Vypněte virtuální počítače v rámci cloudové služby pro migraci. Máte d
     $validate.ValidationMessages
     ```
 
-    Předchozí příkaz zobrazí všechny upozornění a chyb, které blokovat migrace. Pokud je ověření úspěšné, pak můžete přesunout **Příprava** kroku:
+    Následující příkaz zobrazí všechny upozornění a chyb, které blokovat migrace. Pokud je ověření úspěšné, pak můžete přesunout **Příprava** kroku:
 
     ```powershell
     Move-AzureService -Prepare -ServiceName $serviceName `
@@ -193,7 +192,7 @@ Vypněte virtuální počítače v rámci cloudové služby pro migraci. Máte d
     $validate.ValidationMessages
     ```
 
-    Předchozí příkaz zobrazí všechny upozornění a chyb, které blokovat migrace. Pokud je ověření úspěšné, pak můžete pokračovat následujícím přípravný krok:
+    Následující příkaz zobrazí všechny upozornění a chyb, které blokovat migrace. Pokud je ověření úspěšné, pak můžete pokračovat následujícím přípravný krok:
 
     ```powershell
         Move-AzureService -Prepare -ServiceName $serviceName -DeploymentName $deploymentName `
@@ -223,7 +222,7 @@ Pokud připravené konfigurací spokojeni, můžete přejít a potvrdit prostře
     Move-AzureService -Commit -ServiceName $serviceName -DeploymentName $deploymentName
 ```
 
-## <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Krok 6.1: Možnost 2 - migrovat virtuální počítače ve virtuální síti
+### <a name="step-61-option-2---migrate-virtual-machines-in-a-virtual-network"></a>Krok 6.1: Možnost 2 - migrovat virtuální počítače ve virtuální síti
 
 Pokud chcete migrovat virtuální počítače ve virtuální síti, migrujte virtuální sítě. Virtuální počítače migrovat automaticky pomocí virtuální sítě. Vyberte virtuální síť, která chcete migrovat.
 > [!NOTE]
@@ -241,8 +240,6 @@ Tento příklad nastaví název virtuální sítě na **myVnet**. Nahraďte náz
 
 > [!NOTE]
 > Pokud virtuální síť obsahuje webové nebo rolí pracovního procesu nebo virtuálních počítačů s nepodporované konfigurace, zobrazí chybovou zprávu ověření.
->
->
 
 Nejprve ověřte, jestli virtuální sítě můžete migrovat pomocí následujícího příkazu:
 
@@ -250,7 +247,7 @@ Nejprve ověřte, jestli virtuální sítě můžete migrovat pomocí následuj�
     Move-AzureVirtualNetwork -Validate -VirtualNetworkName $vnetName
 ```
 
-Předchozí příkaz zobrazí všechny upozornění a chyb, které blokovat migrace. Pokud je ověření úspěšné, pak můžete pokračovat následujícím přípravný krok:
+Následující příkaz zobrazí všechny upozornění a chyb, které blokovat migrace. Pokud je ověření úspěšné, pak můžete pokračovat následujícím přípravný krok:
 
 ```powershell
     Move-AzureVirtualNetwork -Prepare -VirtualNetworkName $vnetName
@@ -268,82 +265,85 @@ Pokud připravené konfigurací spokojeni, můžete přejít a potvrdit prostře
     Move-AzureVirtualNetwork -Commit -VirtualNetworkName $vnetName
 ```
 
-## <a name="step-62-migrate-a-storage-account"></a>Krok 6.2 migrací účtu úložiště
-Po dokončení migrace virtuálních počítačů, doporučujeme, migraci účtů úložiště.
+### <a name="step-62-migrate-a-storage-account"></a>Krok 6.2 migrací účtu úložiště
+Po dokončení migrace virtuálních počítačů, doporučujeme, proveďte následující kontroly předpokladů, před migrací účty úložiště.
 
-Před migrací účtu úložiště, proveďte předcházející kontrol požadovaných součástí:
+> [!NOTE]
+> Pokud žádné přidružené disky nebo data virtuálního počítače byla účtu úložiště, můžete přeskočit přímo na **ověření účtu úložiště a spustit migraci** části.
 
-* **Migrace klasické virtuální počítače, jejichž disky jsou uložené v účtu úložiště**
+* **Kontrola požadovaných součástí je-li migrovat všechny virtuální počítače nebo prostředky disku má váš účet úložiště**
+    * **Migrace klasické virtuální počítače, jejichž disky jsou uložené v účtu úložiště**
 
-    Předcházející příkaz vrátí RoleName a DiskName vlastnosti všechny klasické disky virtuálních počítačů v účtu úložiště. RoleName je název virtuálního počítače, ke kterému je disk připojen. Pokud předcházející příkaz vrátí disky pak se ujistěte, že jsou virtuální počítače, na které tyto disky připojené migrovány před migrací účtu úložiště.
+        Následující příkaz vrátí RoleName a DiskName vlastnosti všechny klasické disky virtuálních počítačů v účtu úložiště. RoleName je název virtuálního počítače, ke kterému je disk připojen. Pokud tento příkaz vrátí disky pak se ujistěte, že jsou virtuální počítače, na které tyto disky připojené migrovány před migrací účtu úložiště.
+        ```powershell
+         $storageAccountName = 'yourStorageAccountName'
+          Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
+          DiskName | Format-List -Property RoleName, DiskName
+
+        ```
+    * **Odstranit odpojit classic disky virtuálních počítačů uložených v účtu úložiště**
+
+        Najít odpojit classic disky virtuálních počítačů v úložišti účtu pomocí následující příkaz:
+
+        ```powershell
+            $storageAccountName = 'yourStorageAccountName'
+            Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Where-Object -Property AttachedTo -EQ $null | Format-List -Property DiskName  
+
+        ```
+        Pokud se výše příkaz vrátí disky pak odstraňte tyto disky pomocí následující příkaz:
+
+        ```powershell
+           Remove-AzureDisk -DiskName 'yourDiskName'
+        ```
+    * **Odstranit Image virtuálních počítačů uložených v účtu úložiště**
+
+        Následující příkaz vrátí všechny bitové kopie virtuálních počítačů s diskem operačního systému uložené v účtu úložiště.
+         ```powershell
+            Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
+                                    } | Select-Object -Property ImageName, ImageLabel
+         ```
+         Následující příkaz vrátí všechny bitové kopie virtuálního počítače s datovými disky uložené v účtu úložiště.
+         ```powershell
+
+            Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
+                                             -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
+                                            } | Select-Object -Property ImageName, ImageLabel
+         ```
+        Odstraňte všechny Image virtuálních počítačů vrácený výše příkazy použití tohoto příkazu:
+        ```powershell
+        Remove-AzureVMImage -ImageName 'yourImageName'
+        ```
+* **Ověření úložiště účtu a spustit migraci**
+
+    Pomocí následujícího příkazu ověřte každý účet úložiště pro migraci. V tomto příkladu je název účtu úložiště **Můj_účet_úložiště**. Příklad názvu nahraďte názvem účtu úložiště.
+
     ```powershell
-     $storageAccountName = 'yourStorageAccountName'
-      Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Select-Object -ExpandProperty AttachedTo -Property `
-      DiskName | Format-List -Property RoleName, DiskName
-
+        $storageAccountName = "myStorageAccount"
+        Move-AzureStorageAccount -Validate -StorageAccountName $storageAccountName
     ```
-* **Odstranit odpojit classic disky virtuálních počítačů uložených v účtu úložiště**
 
-    Najít odpojit classic disky virtuálních počítačů v úložišti účtu pomocí následující příkaz:
+    Dalším krokem je účet úložiště přípravy na migraci
 
     ```powershell
-        $storageAccountName = 'yourStorageAccountName'
-        Get-AzureDisk | where-Object {$_.MediaLink.Host.Contains($storageAccountName)} | Where-Object -Property AttachedTo -EQ $null | Format-List -Property DiskName  
-
+        $storageAccountName = "myStorageAccount"
+        Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
     ```
-    Pokud se výše příkaz vrátí disky pak odstraňte tyto disky pomocí následující příkaz:
+
+    Zkontrolujte konfiguraci pro účet připravený úložiště pomocí prostředí Azure PowerShell nebo portálu Azure. Pokud si nejste připravený pro migraci a chcete přejít zpět do původního stavu, použijte následující příkaz:
 
     ```powershell
-       Remove-AzureDisk -DiskName 'yourDiskName'
+        Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
     ```
-* **Odstranit Image virtuálních počítačů uložených v účtu úložiště**
 
-    Předcházející příkaz vrátí všechny bitové kopie virtuálních počítačů s diskem operačního systému uložené v účtu úložiště.
-     ```powershell
-        Get-AzureVmImage | Where-Object { $_.OSDiskConfiguration.MediaLink -ne $null -and $_.OSDiskConfiguration.MediaLink.Host.Contains($storageAccountName)`
-                                } | Select-Object -Property ImageName, ImageLabel
-     ```
-     Předcházející příkaz vrátí všechny bitové kopie virtuálního počítače s datovými disky uložené v účtu úložiště.
-     ```powershell
+    Pokud připravené konfigurací spokojeni, můžete přejít a potvrdit prostředky pomocí následujícího příkazu:
 
-        Get-AzureVmImage | Where-Object {$_.DataDiskConfigurations -ne $null `
-                                         -and ($_.DataDiskConfigurations | Where-Object {$_.MediaLink -ne $null -and $_.MediaLink.Host.Contains($storageAccountName)}).Count -gt 0 `
-                                        } | Select-Object -Property ImageName, ImageLabel
-     ```
-    Odstraňte všechny Image virtuálních počítačů vrácený výše příkazy předchozím příkazem:
     ```powershell
-    Remove-AzureVMImage -ImageName 'yourImageName'
+        Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
     ```
-
-Pomocí následujícího příkazu ověřte každý účet úložiště pro migraci. V tomto příkladu je název účtu úložiště **Můj_účet_úložiště**. Příklad názvu nahraďte názvem účtu úložiště.
-
-```powershell
-    $storageAccountName = "myStorageAccount"
-    Move-AzureStorageAccount -Validate -StorageAccountName $storageAccountName
-```
-
-Dalším krokem je účet úložiště přípravy na migraci
-
-```powershell
-    $storageAccountName = "myStorageAccount"
-    Move-AzureStorageAccount -Prepare -StorageAccountName $storageAccountName
-```
-
-Zkontrolujte konfiguraci pro účet připravený úložiště pomocí prostředí Azure PowerShell nebo portálu Azure. Pokud si nejste připravený pro migraci a chcete přejít zpět do původního stavu, použijte následující příkaz:
-
-```powershell
-    Move-AzureStorageAccount -Abort -StorageAccountName $storageAccountName
-```
-
-Pokud připravené konfigurací spokojeni, můžete přejít a potvrdit prostředky pomocí následujícího příkazu:
-
-```powershell
-    Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
-```
 
 ## <a name="next-steps"></a>Další postup
 * [Přehled platformy podporované migrace z klasického do Azure Resource Manageru prostředků IaaS](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [Technické podrobné informace o platformy podporované migrace z klasického do Azure Resource Manageru](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Podrobné technické informace o platformou podporované migraci z modelu Classic na Azure Resource Manager](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Plánování migrace prostředků IaaS z nasazení Classic do Azure Resource Manageru](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Pomocí rozhraní příkazového řádku můžete migrovat prostředky infrastruktury z classic do Azure Resource Manageru](../linux/migration-classic-resource-manager-cli.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Komunita nástroje asistence s migrace z klasického do Azure Resource Manageru prostředků IaaS](migration-classic-resource-manager-community-tools.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

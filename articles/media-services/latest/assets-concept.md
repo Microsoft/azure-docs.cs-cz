@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 541a8e83029fe1dc0ba386d1906b366e63041882
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 61555eb6cca6995215ce43051abbda9aa43539ec
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268238"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284834"
 ---
 # <a name="assets"></a>Prostředky
 
@@ -107,7 +107,7 @@ while (currentPage.NextPageLink != null)
 Příklady REST naleznete v tématu [prostředky – seznam](https://docs.microsoft.com/rest/api/media/assets/list)
 
 
-### <a name="storage-side-encryption"></a>Šifrování na straně úložiště
+## <a name="storage-side-encryption"></a>Šifrování na straně úložiště
 
 Pokud chcete ochránit vaše prostředky v klidovém stavu, prostředky by měla šifrovat pomocí šifrování na straně úložiště. Následující tabulka ukazuje, jak funguje šifrování na straně úložiště ve službě Media Services:
 

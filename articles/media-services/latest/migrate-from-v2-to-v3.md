@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 05/22/2018
+ms.date: 06/12/2018
 ms.author: juliako
-ms.openlocfilehash: 4e644db12a74d6ef132a0c8d64ef517a0c2253cc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: a382af644d30f9f0ebb586273c982ef1766f50b0
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654860"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295684"
 ---
 # <a name="migrate-from-media-services-v2-to-v3"></a>Migrace ze služby Media Services v2 v3
 
@@ -50,6 +50,10 @@ Tento článek popisuje změny, které byly zavedeny v Azure Media Services (AMS
 
 ## <a name="changes-from-v2"></a>Změny z v2
 
+* Ve službě Media Services v3, je šifrování úložiště (šifrování AES 256) pouze podporována z důvodů zpětné kompatibility při vaše prostředky, které se vytvořily s v2 Media Services. Znamená v3 funguje s existující úložiště šifrovaný prostředky, ale neumožní vytváření nových databází.
+
+    Pro prostředky vytvořena s v3, služba Media Services podporuje [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) šifrování úložiště na straně serveru.
+    
 * Media Services SDK odpojené od sady SDK úložiště, což dává větší kontrolu nad sady SDK úložiště používá a zabraňuje Správa verzí – potíže. 
 * V v3 kódování přenosové rychlosti jsou všechny bity za sekundu. To se liší od v2 REST, který nastaví aplikace Media Encoder Standard. Například přenosovou rychlostí v v2 by byl zadán jako 128, ale v v3 by bylo 128000. 
 * IngestManifests AssetFiles, AccessPolicies, nejsou k dispozici v v3.
@@ -141,7 +145,7 @@ new Job {Input = jobInput, Outputs = jobOutputs});
 1. Vytvoření zásad klíče k obsahu
 2. Vytvoření prostředku
 3. Nahrát obsah nebo jako JobOutput použít Asset
-4. Vytvořit lokátor
+4. Vytvoření StreamingLocator
 
 ## <a name="next-steps"></a>Další postup
 

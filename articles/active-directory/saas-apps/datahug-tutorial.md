@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: jeedes
-ms.openlocfilehash: e8295d7cba023697e803bce2d8a321a943761f2a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bb2d6194b5a515d89e3204679860ab19a052ba03
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222902"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285160"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Kurz: Azure Active Directory integrace s Datahug
 
@@ -240,7 +240,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
-Když kliknete na dlaždici Datahug na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Datahug. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586). 
+Když kliknete na dlaždici Datahug na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Datahug. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

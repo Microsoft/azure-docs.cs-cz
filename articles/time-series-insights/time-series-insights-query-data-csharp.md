@@ -3,7 +3,7 @@ title: Dotaz na data z prostředí Azure časové řady Statistika s použitím 
 description: Tento článek popisuje, jak dotazovat data z prostředí Statistika řady čas Azure pomocí kódování vlastní aplikaci napsanou v jazyce C# (C-ostrý) .NET.
 ms.service: time-series-insights
 services: time-series-insights
-author: ankryach
+author: ashannon7
 ms.author: ankryach
 manager: jhubbard
 reviewer: jasonwhowell, kfile, tsidocs
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 9eb11c4e5f0fcdb8429fe2d65e08ccb507c12c3b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 19531fc5bde1f833021cf5bd781e4811b2c23155
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653752"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293595"
 ---
 # <a name="query-data-from-the-azure-time-series-insights-environment-using-c"></a>Dotaz na data z prostředí Statistika řady čas Azure pomocí jazyka C#
 

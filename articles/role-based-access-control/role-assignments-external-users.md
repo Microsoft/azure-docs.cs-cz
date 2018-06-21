@@ -1,6 +1,6 @@
 ---
-title: Spravovat přiřazení rolí pro externí uživatele v Azure | Microsoft Docs
-description: Správa řízení přístupu na základě role (RBAC) pro uživatele mimo organizaci v Azure
+title: Spravovat přístup pro externí uživatele pomocí RBAC v Azure | Microsoft Docs
+description: Zjistěte, jak spravovat přístup pro uživatele mimo organizaci v Azure pomocí řízení přístupu na základě role (RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,13 +16,14 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 084594b637f813c110e4e0b2e9df2b9103d58efc
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 98eb104981051bd5e7440954470960977b38286d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296215"
 ---
-# <a name="manage-role-assignments-for-external-users"></a>Správa přiřazení rolí pro externí uživatele
+# <a name="manage-access-for-external-users-using-rbac"></a>Spravovat přístup pro externí uživatele pomocí RBAC
 
 Řízení přístupu na základě role (RBAC) umožňuje lepší zabezpečení správy pro velké organizace a pro SMB práce s externími spolupracovníky, dodavatele nebo freelancers, kteří potřebují přístup ke konkrétním prostředkům ve vašem prostředí, ale nemusí nutně prokázat na celou infrastruktura nebo všechny obory, týkající se fakturace. RBAC umožňuje flexibilitu vlastnící jedno předplatné, které spravuje správce účtu (role Správce služby na úrovni předplatného) a pro práci v rámci stejného předplatného, ale bez jakékoli práva správce pro ni pozvali více uživatelů .
 
@@ -43,10 +44,10 @@ Role RBAC lze udělit pouze systémem **vlastníky** předplatného. Proto sprá
 Z portálu Azure vyberte po přihlášení jako správce "Odběry" a vyberte požadované.
 ![okno odběru na portálu Azure](./media/role-assignments-external-users/0.png) ve výchozím nastavení, pokud uživatel s oprávněními správce koupil předplatné Azure, uživateli se zobrazí jako **správce účtu**, tím se roli předplatného. Další informace o rolích předplatného Azure najdete v tématu [přidání nebo změna role Správce služby Azure, které spravují předplatné nebo služby](../billing/billing-add-change-azure-subscription-administrator.md).
 
-V tomto příkladu uživatel "alflanigan@outlook.com" je **vlastníka** z "Bezplatnou zkušební verzi" předplatné v AAD klienta "Výchozí klienta Azure". Vzhledem k tomu, že je tento uživatel Tvůrce předplatného Azure se počáteční Account Microsoft "Outlook" (Account Microsoft = Outlook, Live atd.) bude výchozí název domény pro všechny uživatele přidán do tohoto klienta **"@alflaniganuoutlook.onmicrosoft.com"**. Návrh syntaxe nové domény je tvořen uvedení společně název uživatelské jméno a doménu uživatele, který vytvořil klienta a přidání rozšíření **". onmicrosoft.com"**.
+V tomto příkladu uživatel "alflanigan@outlook.com" je **vlastníka** z "Bezplatnou zkušební verzi" předplatné v AAD klienta "Výchozí klienta Azure". Vzhledem k tomu, že je tento uživatel Tvůrce předplatného Azure se počáteční Account Microsoft "Outlook" (Account Microsoft = Outlook, Live atd.) bude výchozí název domény pro všechny uživatele přidán do tohoto klienta **"\@ alflaniganuoutlook.onmicrosoft.com"**. Návrh syntaxe nové domény je tvořen uvedení společně název uživatelské jméno a doménu uživatele, který vytvořil klienta a přidání rozšíření **". onmicrosoft.com"**.
 Kromě toho uživatelé mohou přihlásit pomocí vlastního názvu domény v klientovi po přidání a ověření pro nového klienta. Další informace o tom, jak ověřit vlastní název domény v klienta služby Azure Active Directory najdete v tématu [přidání vlastního názvu domény do adresáře](/active-directory/active-directory-add-domain).
 
-V tomto příkladu adresáři "Výchozí klient Azure" obsahuje pouze uživatele s názvem domény "@alflanigan.onmicrosoft.com".
+V tomto příkladu adresáři "Výchozí klient Azure" obsahuje pouze uživatele s názvem domény "\@alflanigan.onmicrosoft.com".
 
 Po výběru předplatného, musíte kliknout na uživatel s oprávněními správce **řízení přístupu (IAM)** a potom **přidat novou roli**.
 
@@ -54,7 +55,7 @@ Po výběru předplatného, musíte kliknout na uživatel s oprávněními sprá
 
 ![Přidání nového uživatele v IAM funkce řízení přístupu na portálu Azure](./media/role-assignments-external-users/2.png)
 
-Dalším krokem je vybrat role, kterou chcete přiřadit a uživatel, kterému se přiřadí RBAC role. V **Role** rozevírací nabídce správce uživateli se zobrazí pouze integrované RBAC role, které jsou dostupné v Azure. Podrobné vysvětlení jednotlivých rolí a jejich přiřaditelnými obory, najdete v části [předdefinované role pro řízení přístupu](built-in-roles.md).
+Dalším krokem je vybrat role, kterou chcete přiřadit a uživatel, kterému se přiřadí RBAC role. V **Role** rozevírací nabídce správce uživateli se zobrazí pouze integrované RBAC role, které jsou dostupné v Azure. Podrobné vysvětlení jednotlivých rolí a jejich přiřaditelnými obory, najdete v části [předdefinované role](built-in-roles.md).
 
 Pak musí přidat e-mailovou adresu externího uživatele, uživatel s oprávněními správce. Očekávané chování je externí uživatel není zobrazena v existujícího klienta. Po pozval externí uživatel zadá budou viditelné v rámci **odběry > řízení přístupu (IAM)** s aktuálního uživatele, kteří jsou přiřazeny role RBAC v obor předplatného.
 

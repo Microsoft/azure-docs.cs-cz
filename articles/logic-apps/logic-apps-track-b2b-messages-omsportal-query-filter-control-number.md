@@ -12,14 +12,14 @@ ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 06/19/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 520a1212eaccc48f8b8b423f7dede9c16409220b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 48cca9919bd09906bdcc3faaaef186ec109c9169
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35300323"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294305"
 ---
 # <a name="query-for-as2-x12-and-edifact-messages-in-log-analytics"></a>Dotaz pro AS2, X 12 a EDIFACT zprávy v analýzy protokolů
 
@@ -53,41 +53,33 @@ Tento příklad ukazuje, jak můžete najít podle jejich výměnu řízení po�
 
    ![Vyberte pracovní prostor analýzy protokolů](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
 
-3. V části **správy**, zvolte **portálu OMS**.
+3. V části **správy**, zvolte **hledání protokolů**.
 
-   ![Zvolte portálu OMS](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/omsportalpage.png)
+   ![Zvolte u vyhledávání](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/azure-portal-page.png)
 
-4. Na domovské stránce, zvolte **hledání protokolů**.
-
-   ![Na domovské stránce zvolte "Hledání protokolů"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
-
-   -nebo-
-
-   ![V nabídce zvolte "Hledání protokolů"](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
-
-5. Do vyhledávacího pole zadejte pole, které chcete najít a stiskněte klávesu **Enter**. Když začnete psát, analýzy protokolů se dozvíte možné shody a operací, které můžete použít. Další informace o [vyhledávání dat v analýzy protokolů](../log-analytics/log-analytics-log-searches.md).
+4. Do vyhledávacího pole zadejte pole, které chcete najít a stiskněte klávesu **Enter**. Když začnete psát, analýzy protokolů se dozvíte možné shody a operací, které můžete použít. Další informace o [vyhledávání dat v analýzy protokolů](../log-analytics/log-analytics-log-searches.md).
 
    Tento příklad vyhledá pro události se **typ = AzureDiagnostics**.
 
    ![Začněte psát řetězec dotazu](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-start-query.png)
 
-6. V levém panelu vyberte časový rámec, který chcete zobrazit. Chcete-li přidat filtr do dotazu, zvolte **+ přidat**.
+5. V levém panelu vyberte časový rámec, který chcete zobrazit. Chcete-li přidat filtr do dotazu, zvolte **+ přidat**.
 
    ![Přidání filtru dotazu](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/query1.png)
 
-7. V části **přidat filtry**, zadejte název filtru filtr, který chcete vyhledávat. Vyberte filtr a vyberte **+ přidat**.
+6. V části **přidat filtry**, zadejte název filtru filtr, který chcete vyhledávat. Vyberte filtr a vyberte **+ přidat**.
 
    Číslo výměnu řízení najdete v tomto příkladu slovo "výměnu" vyhledá a vybere **event_record_messageProperties_interchangeControlNumber_s** jako filtr.
 
    ![Vyberte filtr](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-add-filter.png)
 
-9. V levém panelu, vyberte hodnota filtru, který chcete použít a vyberte **použít**.
+7. V levém panelu, vyberte hodnota filtru, který chcete použít a vyberte **použít**.
 
    Tento příklad vybere výměnu řízení číslo pro zprávy, které má být.
 
    ![Vyberte hodnotu filtru](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-select-filter-value.png)
 
-10. Nyní se vraťte na dotaz, který vytváříte. Dotaz se aktualizovala se vybraný filtr událostí a hodnotou. Předchozí výsledky jsou nyní příliš filtrovány.
+8. Nyní se vraťte na dotaz, který vytváříte. Dotaz se aktualizovala se vybraný filtr událostí a hodnotou. Předchozí výsledky jsou nyní příliš filtrovány.
 
     ![Vrátí do dotazu s filtrované výsledky.](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-filtered-results.png)
 

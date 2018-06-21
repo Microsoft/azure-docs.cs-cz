@@ -1,19 +1,17 @@
 ---
 title: Instalaci služby Mobility (VMware nebo fyzických do Azure) | Microsoft Docs
 description: Informace o instalaci služby Mobility agenta k ochraně místní virtuální počítače VMware a fyzické servery s Azure Site Recovery.
-services: site-recovery
 author: AnoopVasudavan
-manager: gauravd
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/05/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: anoopkv
-ms.openlocfilehash: 3279dbc2eeecd3a3f0f36a47d8dd51ef4f3f503f
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 7c292af91fea7f0e0d3b32412cfa9907560d68d9
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "33942131"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287775"
 ---
 # <a name="install-the-mobility-service"></a>Instalace služby Mobility 
 
@@ -30,7 +28,7 @@ Služba Mobility Azure Site Recovery je nainstalován na virtuální počítače
 >[!IMPORTANT]
 > Počínaje verzí 9.7.0.0, na virtuálních počítačích Windows, služba Mobility instalační program nainstaluje také k dispozici nejnovější [agenta virtuálního počítače Azure](../virtual-machines/extensions/features-windows.md#azure-vm-agent). Při počítače při selhání do Azure, že počítač splňuje instalace agenta požadované pro používání všech rozšíření virtuálního počítače.
 
-## <a name="prerequisites"></a>Požadované součásti
+## <a name="prerequisites"></a>Požadavky
 Než nainstalujete službu Mobility ručně na vašem serveru, proveďte následující požadované kroky:
 1. Přihlaste se k konfigurační server a pak otevřete okno příkazového řádku jako správce.
 2. Změňte adresář na složku Koš a pak vytvořte soubor přístupové heslo.

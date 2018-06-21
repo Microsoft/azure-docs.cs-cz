@@ -1,6 +1,6 @@
 ---
-title: Předdefinované role pro řízení přístupu na základě role (RBAC) v Azure | Microsoft Docs
-description: Popisuje předdefinované role pro řízení přístupu na základě role (RBAC) v Azure. Obsahuje seznam akcí a notActions.
+title: Předdefinované role v Azure | Microsoft Docs
+description: Popisuje předdefinované role pro řízení přístupu na základě role (RBAC) v Azure. Obsahuje seznam akcí, notActions, dataActions a notDataActions.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 06/06/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: cea928d5a4ea5cddaa9942c9535945e11f0f80ad
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 861b4ca360ef3fb9bc752d79009570ee2cfc9ade
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267369"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294492"
 ---
-# <a name="built-in-roles-for-azure-role-based-access-control"></a>Integrované role pro řízení přístupu na základě role Azure
+# <a name="built-in-roles-in-azure"></a>Předdefinované role v Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které můžete přiřadit uživatele, skupiny a objekty služby. Přiřazení role představují způsob, jak můžete řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují specifické požadavky vaší organizace, můžete vytvořit vlastní [vlastní role](custom-roles.md).
 
 Předdefinované role se vždycky vyvíjejí. Chcete-li získat nejnovější definice rolí, použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) nebo [seznamu definice role az](/cli/azure/role/definition#az-role-definition-list).

@@ -8,17 +8,17 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 05/18/2018
-ms.openlocfilehash: 14ed3ef57da28b6929115cf3e5746653d199b140
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/20/2018
+ms.openlocfilehash: 72f8211ecc0534b15402911de8fc0ec3d541a835
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263744"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294900"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replikaci dat do Azure databáze pro databázi MySQL
 
-Data v replikace funkce umožňuje synchronizovat data z databáze MySQL serveru se systémem na místních počítačích v virtuální počítače, nebo v databázi služby hostované jiných poskytovatelů cloudu do databáze Azure pro službu MySQL. Replikace dat v je založena na pozici, na základě replikace souborů binární protokol (binlog) nativní pro MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace binlog MySQL](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
+Replikace dat v umožňuje synchronizovat data z databáze MySQL serveru se systémem na místních počítačích v virtuální počítače, nebo v databázi služby hostované jiných poskytovatelů cloudu do databáze Azure pro službu MySQL. Data v replikace je založena na binární protokol (binlog) na základě pozice replikace souboru nativní pro MySQL. Další informace o replikaci binlog najdete v tématu [Přehled replikace binlog MySQL](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html). 
 
 ## <a name="when-to-use-data-in-replication"></a>Kdy použít replikační Data v
 Hlavní scénáře, zvažte možnost použití replikace dat v jsou:

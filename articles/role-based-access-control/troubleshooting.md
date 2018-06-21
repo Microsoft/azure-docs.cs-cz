@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží s řízení přístupu na základě role Azure RBAC | Microsoft Docs
-description: Získáte pomoc s problémy nebo dotazy týkající se řízení přístupu na základě Role prostředky.
+title: Řešení potíží s RBAC v Azure | Microsoft Docs
+description: Vyřešte problémy s řízení přístupu Azure na základě rolí (RBAC).
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -15,22 +15,22 @@ ms.date: 03/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 5ca43fe3a8ff27ff4a811aeb26abf4a6f26d8b35
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 557d3330ef155181c050a18b14d31b65ba1f2dcf
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267165"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295388"
 ---
-# <a name="troubleshooting-azure-role-based-access-control"></a>Řešení potíží s řízení přístupu Azure na základě rolí 
+# <a name="troubleshooting-rbac-in-azure"></a>Řešení potíží s RBAC v Azure
 
-Tento článek obsahuje odpovědi časté otázky týkající se konkrétní přístupová práva, kterým je uděleno oprávnění s rolemi, abyste věděli, co očekávat při použití role v portálu Azure a můžete je řešení problémů přístupem k. Tyto tři role popisuje všechny typy prostředků:
+Tento článek obsahuje odpovědi časté otázky týkající se řízení přístupu na základě role (RBAC), abyste věděli, co očekávat při použití role v portálu Azure a může poradce při potížích přístup. Tyto tři role popisuje všechny typy prostředků:
 
 * Vlastník  
 * Přispěvatel  
 * Čtenář  
 
-Vlastníci a přispěvatelé mají plný přístup k prostředí pro správu, ale Přispěvatel nelze poskytnout přístup k jiné uživatele nebo skupiny. Věcí získat něco zajímavějšího k roli čtečky tak, aby se, kde budete Věnujte nějaký čas. Najdete v článku [řízení přístupu na základě Role get-started článku](role-assignments-portal.md) podrobnosti o tom, jak udělit přístup.
+Vlastníci a přispěvatelé mají plný přístup k prostředí pro správu, ale Přispěvatel nelze udělit přístup k jiné uživatele nebo skupiny. Věcí získat něco zajímavějšího k roli čtečky tak, aby se, kde budete Věnujte nějaký čas. Informace o udělení přístupu, seee [Správa přístupu pomocí RBAC a webu Azure portal](role-assignments-portal.md).
 
 ## <a name="app-service"></a>App Service
 ### <a name="write-access-capabilities"></a>Možnosti přístup pro zápis
@@ -97,9 +97,7 @@ Vyžadují **zápisu** přístup do obou **virtuálního počítače**a **skupin
 
 Pokud nemůžete použít žádnou z těchto dlaždicích, požádejte správce pro přispěvatele přístup ke skupině prostředků.
 
-## <a name="see-more"></a>Přečíst si k tomu víc
-* [Řízení přístupu na základě role](role-assignments-portal.md): Začínáme s RBAC na portálu Azure.
-* [Předdefinované role](built-in-roles.md): získat tak podrobné údaje o rolích, které jsou v RBAC standardní.
-* [Vlastní role v Azure RBAC](custom-roles.md): Naučte se vytvářet vlastní role podle vašich potřeb přístup.
-* [Vytvoření sestavy historie změn přístupu](change-history-report.md): udržování přehledu o změně přiřazení rolí v RBAC.
+## <a name="next-steps"></a>Další postup
+* [Správa přístupu pomocí RBAC a portálu Azure](role-assignments-portal.md)
+* [Zobrazit protokoly aktivity pro RBAC změny](change-history-report.md)
 

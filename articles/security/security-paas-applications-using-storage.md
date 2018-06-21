@@ -12,39 +12,41 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 06/20/2018
 ms.author: TomShinder
-ms.openlocfilehash: 9d4251e61b60d8da6ce5072ba66aeaedb60cb33a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ffc04973a003c65f52f3387292f11fede65edce3
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31418216"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295291"
 ---
 # <a name="securing-paas-web-and-mobile-applications-using-azure-storage"></a>Zabezpečení PaaS webové a mobilní aplikace pomocí Azure Storage
+
 V tomto článku probereme kolekce Azure Storage osvědčené postupy zabezpečení pro zabezpečení vašich PaaS webové a mobilní aplikace. Tyto doporučené postupy jsou odvozeny od našich zkušeností s Azure a prostředí zákazníků jako sami.
 
 [Průvodce zabezpečením Azure Storage](../storage/common/storage-security-guide.md) je skvělým zdrojem pro podrobné informace o Azure Storage a zabezpečení.  Tento článek zaměřuje na vysoké úrovni některé koncepty, nalezených v příručce zabezpečení a odkazy na v příručce zabezpečení, jakož i jiných zdrojů, další informace.
 
 ## <a name="azure-storage"></a>Azure Storage
+
 Azure umožňuje nasadit a používat úložiště způsoby snadno dosažitelné místní. S Azure storage dosáhnout vysoké úrovně, škálovatelnost a dostupnost s relativně malým množstvím úsilí. Úložiště Azure nejen je základem pro systém Windows a Linux Azure Virtual Machines, může také podporovat velkých distribuovaných aplikací.
 
 Úložiště Azure nabízí tyto čtyři služby: úložiště Blob, úložiště Table, úložiště Queue, a úložiště File. Další informace najdete v tématu [Úvod do Microsoft Azure Storage](../storage/storage-introduction.md).
 
 ## <a name="best-practices"></a>Osvědčené postupy
+
 Tento článek řeší následující osvědčené postupy:
 
 - NAP:
    - Sdílené přístupové podpisy (SAS)
-   - Spravovaný disk
    - Řízení přístupu na základě role (RBAC)
 
 - Šifrování úložiště:
    - Šifrování na straně klienta pro cenných dat
-   - Azure Disk Encryption pro virtuální počítače (VM)
    - Storage Service Encryption
 
 ## <a name="access-protection"></a>NAP
+
 ### <a name="use-shared-access-signature-instead-of-a-storage-account-key"></a>Použití sdíleného přístupového podpisu místo klíče účtu úložiště.
 
 V řešení IaaS, obvykle systémem Windows Server nebo Linux virtuální počítače chráněné soubory z zpřístupnění a zneužitím ohrožení pomocí mechanismy řízení přístupu. V systému Windows byste použili [seznamy řízení (ACL) přístupu](../virtual-network/virtual-networks-acl.md) a v systému Linux, pravděpodobně použijete [chmod](https://en.wikipedia.org/wiki/Chmod). V podstatě jde přesně jaká by provést, pokud byly dnes Ochrana souborů na server v datovém centru.
@@ -66,12 +68,6 @@ SAS můžete sdílet obsah způsob, jakým chcete sdílet bez nutnosti poskytnut
 
 Další informace najdete v tématu [pomocí sdílené přístupové podpisy](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (SAS). Další informace o potenciální rizika a doporučení pro zmírnění najdete v tématu [osvědčených postupů při použití SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-### <a name="use-managed-disks-for-vms"></a>Používat spravované disky pro virtuální počítače
-
-Pokud vyberete [Azure spravované disky](../storage/storage-managed-disks-overview.md), spravuje účty úložiště, které používáte pro disky virtuálních počítačů Azure. Jediné, co musíte udělat je zvolit typ disku (Standard nebo Premium) a velikost disku; Úložiště Azure se postará o ostatní. Nemusíte si dělat starosti o limitech škálovatelnosti, které může mít jinak nezbytné pro vás k několika účtům úložiště.
-
-Další informace najdete v tématu [– nejčastější dotazy o spravovaných a nespravovaných prémiové disky](../storage/storage-faq-for-disks.md).
-
 ### <a name="use-role-based-access-control"></a>Pomocí řízení přístupu na základě rolí
 
 Výše jsme probrali udělit omezený přístup k objektům v účtu úložiště pro ostatní klienty bez vystavení klíč účtu úložiště účet pomocí sdíleného přístupového podpisu (SAS). Někdy rizika spojená s konkrétní operaci u vašeho účtu úložiště převažují nad přínosy SAS. Někdy je snazší správa přístupu k jiným způsobem.
@@ -89,6 +85,7 @@ Další informace o RBAC najdete v tématu:
 - [Průvodce zabezpečením služby Azure Storage](../storage/common/storage-security-guide.md) podrobnosti o tom, jak zabezpečit váš účet úložiště s RBAC
 
 ## <a name="storage-encryption"></a>Šifrování úložiště
+
 ### <a name="use-client-side-encryption-for-high-value-data"></a>Používat šifrování na straně klienta dat vysoké hodnoty
 
 Šifrování na straně klienta umožňuje prostřednictvím kódu programu šifrování přenášených dat před nahráním do úložiště Azure a prostřednictvím kódu programu dešifrování dat při načítání z úložiště.  To zajišťuje šifrování dat během přenosu, ale také poskytuje šifrování dat v klidovém stavu.  Šifrování na straně klienta je nejbezpečnější metodou šifrování dat, ale vyžaduje provedení programové změny do vaší aplikace a put procesy správy klíčů na místě.
@@ -97,15 +94,12 @@ Další informace o RBAC najdete v tématu:
 
 Šifrování na straně klienta jsou součástí jazyce Java a knihovny klienta úložiště .NET.  V tématu [šifrování na straně klienta a Azure Key Vault pro Microsoft Azure Storage](../storage/storage-client-side-encryption.md) informace o šifrování dat v rámci klientské aplikace a generování a správu šifrovacích klíčů.
 
-### <a name="azure-disk-encryption-for-vms"></a>Azure Disk Encryption pro virtuální počítače
-Azure Disk Encryption je funkce, která pomáhá šifrování disky virtuálního počítače s Windows a Linux IaaS. Azure Disk Encryption využívá funkci oborový standard BitLocker systému Windows a DM-Crypt funkce systému Linux zajistit šifrování svazku operačního systému a datové disky. Řešení jsou integrované s Azure Key Vault můžete řídit a spravovat šifrování disku klíče a tajné klíče v rámci vašeho předplatného trezoru klíčů. Řešení také zajistí, že všechna data na disky virtuálního počítače jsou zašifrovaná přinejmenším ve službě Azure storage.
-
-V tématu [Azure Disk Encryption pro systém Windows a virtuálních počítačů Linux IaaS](azure-security-disk-encryption.md).
-
 ### <a name="storage-service-encryption"></a>Storage Service Encryption
+
 Když [šifrování služby úložiště](../storage/storage-service-encryption.md) pro úložiště souborů je povoleno, data se šifrují automaticky pomocí šifrování AES-256. Microsoft zpracovává všechny šifrování, dešifrování a správu klíčů. Tato funkce je dostupná pro typy LRS a GRS redundance.
 
 ## <a name="next-steps"></a>Další postup
+
 Tento článek seznámili kolekce Azure Storage osvědčené postupy zabezpečení pro zabezpečení vašich PaaS webové a mobilní aplikace. Další informace o zabezpečení vašich PaaS nasazení najdete v tématu:
 
 - [Zabezpečení nasazení PaaS](security-paas-deployments.md)

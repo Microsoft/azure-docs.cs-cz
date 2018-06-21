@@ -15,18 +15,18 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
-ms.openlocfilehash: b59173259aa86a429b9f926a8e5ffbfd046451a1
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c5e4c1569464d2e204edf13fe7534d80780524e8
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294873"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294954"
 ---
 # <a name="migrate-to-the-updated-batch-ai-api"></a>Migrovat aktualizované Batch API AI
 
-V nadcházejících Batch AI REST API verze 2018-05-01 a související SDK služby Batch AI a nástroje jsou uvedena významné změny a nové funkce.
+V Batch AI REST API verze 2018-05-01 a související AI SDK služby Batch a nástroje byly zavedeny významné změny a nové funkce.
 
-Pokud jste použili předchozí verzi rozhraní API služby Batch AI, tento článek vysvětluje, jak upravit kód a skripty pro práci s novým rozhraním API. Tyto změny proveďte až po nové rozhraní API je k dispozici.
+Pokud jste použili předchozí verzi rozhraní API služby Batch AI, tento článek vysvětluje, jak upravit kód a skripty pro práci s novým rozhraním API. 
 
 ## <a name="whats-changing"></a>Co je změna?
 

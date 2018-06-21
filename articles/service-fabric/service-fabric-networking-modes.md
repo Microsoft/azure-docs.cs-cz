@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: f831c046bcf8f633841f9dc4a0fce6d1e419e6c2
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 869b87b8df3b1f532a33e943e728681b358ed8b4
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205650"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287622"
 ---
 # <a name="service-fabric-container-networking-modes"></a>Režimy sítě kontejneru Service Fabric
 
@@ -231,7 +231,23 @@ Pokud službu kontejneru restartuje nebo přesune do jiného uzlu v clusteru, zm
      </Endpoints>
    </Resources>
    ```
+   
+6. Pro systém Windows a restartování virtuálního počítače způsobí, že otevřete sítě znovu vytvořit. Toto je zmírnit základní problém v síťových protokolů. Výchozí chování je znovu vytvořit v síti. Pokud toto chování musí být vypnuté, následující konfigurace lze následuje konfigurace upgradu.
 
+```json
+"fabricSettings": [
+                {
+                    "name": "Setup",
+                    "parameters": [
+                    {
+                            "name": "SkipContainerNetworkResetOnReboot",
+                            "value": "true"
+                    }
+                    ]
+                }
+            ],          
+ ``` 
+ 
 ## <a name="next-steps"></a>Další postup
 * [Pochopení aplikačního modelu služby Service Fabric](service-fabric-application-model.md)
 * [Další informace o prostředky manifestu služby Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-manifest-resources)

@@ -3,19 +3,19 @@ title: Postup přidání referenční datové sady do prostředí Azure časové
 description: Tento článek popisuje postup přidání referenční datové sady k posílení dat ve vašem prostředí Statistika Azure časové řady.
 ms.service: time-series-insights
 services: time-series-insights
-author: jasonwhowell
+author: ashannon7
 ms.author: jasonh
 manager: kfile
 ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
-ms.openlocfilehash: 7da2393bb5114de20747581e366a8f416c9ff9a4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 962c3c8d439884cacf010b0bbcab03bd216dbd43
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653633"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294196"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Vytvořit odkaz na sadu dat pro vaše prostředí časové řady statistika pomocí portálu Azure
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 7a9ffacdcb871bcd79d937b9349d76b29681c77c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 12859384ce79a34dbdb437aa402189fbf039c44c
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225384"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285335"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bambu-by-sprout-social"></a>Kurz: Azure Active Directory integrace s Bambu podle Sprout sociálních
 
@@ -212,7 +212,7 @@ V této části povolíte Britta Simon používat tak, že udělíte přístup k
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Po kliknutí Bambu podle Sprout sociálních dlaždice na přístupovém panelu, jste měli získat automaticky přihlášení k vaší Bambu Sprout sociálních aplikací. Další podrobnosti o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586). 
+Po kliknutí Bambu podle Sprout sociálních dlaždice na přístupovém panelu, jste měli získat automaticky přihlášení k vaší Bambu Sprout sociálních aplikací. Další podrobnosti o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
@@ -234,4 +234,3 @@ Po kliknutí Bambu podle Sprout sociálních dlaždice na přístupovém panelu,
 [201]: ./media/bambubysproutsocial-tutorial/tutorial_general_201.png
 [202]: ./media/bambubysproutsocial-tutorial/tutorial_general_202.png
 [203]: ./media/bambubysproutsocial-tutorial/tutorial_general_203.png
-

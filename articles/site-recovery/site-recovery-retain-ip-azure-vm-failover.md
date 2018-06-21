@@ -1,25 +1,17 @@
 ---
 title: Zachovat IP adres při přebírání služeb při selhání virtuálních počítačích Azure jiné oblasti Azure | Microsoft Docs
 description: Popisuje, jak chcete zachovat IP adresy pro scénáře převzetí služeb při selhání Azure do Azure s Azure Site Recovery
-services: site-recovery
-documentationcenter: ''
-author: mayanknayar
-manager: rochakm
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 05/11/2018
+author: mayanknayar
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: manayar
-ms.openlocfilehash: 9a9c18bfe9073e5af94c7bd8f0fbb91651387731
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ec15456dcb80478e36560cde7ac0710ca8e6ca3b
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071660"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285103"
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Uchování IP adresu pro převzetí služeb při selhání virtuálního počítače Azure
 

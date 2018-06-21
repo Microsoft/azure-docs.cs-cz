@@ -1,6 +1,6 @@
 ---
-title: Synchronizaci dat Azure SQL (Preview) | Microsoft Docs
-description: Tento přehled zavádí synchronizaci dat SQL Azure (Preview)
+title: Synchronizaci dat Azure SQL | Microsoft Docs
+description: Tento přehled zavádí synchronizaci dat SQL Azure
 services: sql-database
 author: douglaslms
 manager: craigg
@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 18177e0671ddf36d0e02e6b943467d703f78ffd0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c31735719e559a25b53acf0bfcf1efff0cee4d5e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301044"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36296180"
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL (Preview)
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL
 
 Synchronizaci dat SQL je služba založená na Azure SQL Database, která umožňuje synchronizaci dat, kterou vyberete obousměrně napříč více databází SQL a instance systému SQL Server.
 
@@ -53,15 +53,15 @@ Synchronizace dat je užitečné v případech, kdy data musí být pořád aktu
 
 -   **Globálně distribuované aplikace:** mnoho firem rozmístěny v několika oblastech a i několika zemích. Chcete-li minimalizovat latence sítě, je vhodné vaše data v oblasti blízko vás. S synchronizaci dat se snadnou vejdou databází v oblastech po celém světě synchronizovány.
 
-Synchronizaci dat není vhodná pro následující scénáře:
+Synchronizaci dat není nejlepší řešení pro následující scénáře:
 
--   Zotavení po havárii
-
--   Škálování pro čtení
-
--   ETL (OLTP na OLAP)
-
--   Migrace ze systému SQL Server pro místní databáze Azure SQL
+| Scénář | Některé doporučené řešení |
+|----------|----------------------------|
+| Zotavení po havárii | [Zálohování Azure geograficky redundantní](sql-database-automated-backups.md) |
+| Škálování pro čtení | [Použít jen pro čtení repliky načíst vyrovnávat zatížení dotazu jen pro čtení (preview)](sql-database-read-scale-out.md) |
+| ETL (OLTP na OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) nebo [SQL Server Integration Services](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services?view=sql-server-2017) |
+| Migrace ze systému SQL Server pro místní databáze Azure SQL | [Služba Azure databáze migrace](https://azure.microsoft.com/services/database-migration/) |
+|||
 
 ## <a name="how-does-data-sync-work"></a>Jak funguje synchronizaci dat? 
 
@@ -83,7 +83,7 @@ Vzhledem k tomu, že synchronizace dat je na základě aktivační události, ne
 #### <a name="performance-impact"></a>Vliv na výkon
 Synchronizace dat se používají vložit, aktualizovat a odstranit aktivačních událostí ke sledování změn. Vytvoří straně tabulky v databázi uživatelů pro sledování změn. Tyto aktivity sledování změn mají vliv na vaše zatížení databáze. Vyhodnocení vašeho vrstvy služeb a upgradujte v případě potřeby.
 
-Zajišťování a rušení zajištění během vytváření skupiny synchronizace, aktualizace a odstranění může také mít vliv na výkon databáze. 
+Zajišťování a rušení zajištění během vytváření skupiny synchronizace, aktualizace a odstranění může ovlivnit výkon databáze. 
 
 ### <a name="general-requirements"></a>Obecné požadavky
 
@@ -127,13 +127,13 @@ Zajišťování a rušení zajištění během vytváření skupiny synchronizac
 
 ## <a name="faq-about-sql-data-sync"></a>Nejčastější dotazy o synchronizaci dat SQL
 
-### <a name="how-much-does-the-sql-data-sync-preview-service-cost"></a>Kolik službu synchronizaci dat SQL (Preview) stojí?
+### <a name="how-much-does-the-sql-data-sync-service-cost"></a>Kolik službu synchronizaci dat SQL stojí?
 
-Ve verzi Preview není nijak zpoplatněn pro samotnou službu synchronizaci dat SQL (Preview).  Však stále naběhnou první poplatky za přenos dat pro přesun dat do aplikace a z vaší instance databáze SQL. Další informace najdete v tématu [SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database/).
+Není nijak zpoplatněn pro samotnou službu synchronizaci dat SQL.  Však stále naběhnou první poplatky za přenos dat pro přesun dat do aplikace a z vaší instance databáze SQL. Další informace najdete v tématu [SQL Database – ceny](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ### <a name="what-regions-support-data-sync"></a>Které oblasti podporují synchronizaci dat?
 
-Synchronizaci dat SQL (Preview) je k dispozici ve všech oblastech veřejného cloudu.
+Synchronizace dat SQL je k dispozici ve všech oblastech veřejného cloudu.
 
 ### <a name="is-a-sql-database-account-required"></a>Je potřeba účet SQL Database? 
 
@@ -152,7 +152,7 @@ Ano. Vytvoření schématu ručně v nové databáze pomocí skriptování z pů
 
 ### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Musí používat synchronizaci dat SQL k zálohování a obnovení databází.?
 
-Není doporučeno používat synchronizaci dat SQL (Preview) k vytvoření zálohy, vaše data. Nelze zálohování a obnovení k určitému bodu v čase, protože synchronizace synchronizaci dat SQL (Preview) nejsou verzí. Kromě toho synchronizaci dat SQL (Preview) nezálohuje další SQL objekty, například uložené procedury a rychle neprovádí ekvivalent operaci obnovení.
+Není doporučeno používat synchronizaci dat SQL k vytvoření zálohy vaše data. Nelze zálohování a obnovení k určitému bodu v čase, protože synchronizace synchronizaci dat SQL nejsou verzí. Kromě toho synchronizaci dat SQL nezálohuje další SQL objekty, například uložené procedury a rychle neprovádí ekvivalent operaci obnovení.
 
 Pro jeden doporučuje zálohování techniku, najdete v části [zkopírujte Azure SQL database](sql-database-copy.md).
 
@@ -172,7 +172,7 @@ Ano. Synchronizaci dat SQL podporuje kolaci v následujících scénářích:
 
 ### <a name="is-federation-supported-in-sql-data-sync"></a>Je federation podporovaný v synchronizaci dat SQL?
 
-Kořenová databáze federace lze ve službě synchronizaci dat SQL (Preview) bez omezení. Koncový bod federované databázi nelze přidat do aktuální verze synchronizaci dat SQL (Preview).
+Kořenová databáze federace lze ve službě SQL Data synchronizace bez omezení. Koncový bod federované databázi nelze přidat do aktuální verze synchronizaci dat SQL.
 
 ## <a name="next-steps"></a>Další postup
 

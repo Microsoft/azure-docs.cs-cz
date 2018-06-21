@@ -3,8 +3,7 @@ title: Podporované prohlížeče a zařízení pro portálu Azure | Microsoft D
 description: Popisuje prohlížečích a zařízeních, na kterých bude fungovat na portálu Azure.
 services: azure-portal
 documentationcenter: ''
-author: flanakin
-writer: flanakin
+author: adamabmsft
 manager: lwelicki
 editor: ''
 ms.assetid: 35fa18ec-21d8-41bf-af2b-e5e92703401d
@@ -14,14 +13,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2018
-ms.author: micflan
+ms.author: adamab
 ms.custom: accessibility
-ms.openlocfilehash: d3964bcfc78fccbd949b30ebb09db44ec5fd5bde
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: ac1c4f4adaa1cb48ce632d36d408e112ba882cab
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34165107"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292440"
 ---
 # <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Podporovaných prohlížečích a zařízeních pro portál Azure
 Můžete spustit [portál Azure](https://portal.azure.com) na všechny plochy moderní, tablet zařízení a prohlížeče.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d6f7c924491614190952ce620f33572307a22c22
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 3c6602bdd90c82568a50ad7354d7abb7c6a472ae
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265431"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287744"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Správa instancí trvanlivý funkcí (Azure Functions)
 
@@ -216,6 +216,41 @@ V závislosti na čas potřebný k získat odpověď z orchestration instance js
 
 > [!NOTE]
 > Formát adresy URL webhooku se můžou lišit v závislosti na spuštěné verze hostitele Azure Functions. V předchozím příkladu je pro hostitele Azure funkce 2.0.
+
+## <a name="retrieving-http-management-webhook-urls"></a>Načítání adres URL Webhooku správy protokolu HTTP
+
+Externími systémy může komunikovat s trvanlivý funkce prostřednictvím adresy URL webhooku, které jsou součástí výchozí odpověď popsané v [zjišťování adresy URL protokolu HTTP rozhraní API](durable-functions-http-api.md). Ale adresy URL webhooku také je možné programově přistupovat v klientovi orchestration nebo v funkci aktivity prostřednictvím [CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_) metodu [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html)třídy. 
+
+[CreateHttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateHttpManagementPayload_) má jeden parametr:
+
+* **Identifikátor InstanceId**: jedinečné ID instance.
+
+Metoda vrací instanci třídy [HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) s následujícími vlastnostmi řetězec:
+
+* **ID**: instance ID orchestration (musí být stejná jako `InstanceId` vstupní).
+* **StatusQueryGetUri**: adresa URL stavu instance orchestration.
+* **SendEventPostUri**: "vyvolat událost" adresa URL instance orchestration.
+* **TerminatePostUri**: "ukončit" adresa URL instance orchestration.
+
+Aktivita funkce můžete odeslat instanci [HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) externích systémech monitorování nebo vyvolávání událostí k orchestration:
+
+```csharp
+#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
+
+public static void SendInstanceInfo(
+    [ActivityTrigger] DurableActivityContext ctx,
+    [OrchestrationClient] DurableOrchestrationClient client,
+    [DocumentDB(
+        databaseName: "MonitorDB",
+        collectionName: "HttpManagementPayloads",
+        ConnectionStringSetting = "CosmosDBConnection")]out dynamic document)
+{
+    HttpManagementPayload payload = client.CreateHttpManagementPayload(ctx.InstanceId);
+
+    // send the payload to Cosmos DB
+    document = new { Payload = payload, id = ctx.InstanceId };
+}
+```
 
 ## <a name="next-steps"></a>Další postup
 

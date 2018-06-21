@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 2/13/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5ea6b85803fdc5c768a23bf770b3646cc6add36b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ad9153b9b8d0235ad2cdc71b56f7b6179e98afdb
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711888"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293277"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-single-page-app-using-azure-active-directory-b2c"></a>Rychlý úvod: Nastavení přihlášení pro jednostránkové aplikace pomocí Azure Active Directory B2C
 
@@ -104,4 +104,4 @@ V tomto rychlém startu jste použili ukázkovou aplikaci ASP.NET s povolenou sl
 Dalším krokem je vytvoření vlastního tenanta Azure AD B2C a konfigurace ukázky tak, aby se spouštěla s použitím tohoto tenanta. 
 
 > [!div class="nextstepaction"]
-> [Vytvoření tenanta Azure Active Directory B2C na webu Azure Portal](active-directory-b2c-get-started.md)
+> [Vytvoření tenanta Azure Active Directory B2C na webu Azure Portal](tutorial-create-tenant.md)

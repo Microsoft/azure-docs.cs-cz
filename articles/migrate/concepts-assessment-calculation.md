@@ -4,14 +4,14 @@ description: Poskytuje přehled o vyhodnocení výpočtů ve službě Azure migr
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: ec8e026fc9bab192f6944e590fa703dbbd5772c0
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 6fd0af65e63e9fc1c09232cd1e002da105a9d086
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221355"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287884"
 ---
 # <a name="assessment-calculations"></a>Výpočty hodnocení
 
@@ -109,7 +109,7 @@ Pokud je toto nastavení velikosti kritérium *jako místní nastavení velikost
 
 Ke každému posouzení ve službě Azure Migrate se přidruží hodnocení spolehlivosti v rozsahu od 1 do 5 hvězdiček (1 hvězdička znamená nejnižší a 5 hvězdiček nejvyšší spolehlivost). Hodnocení spolehlivosti se k posouzení přiřadí na základě dostupnosti datových bodů potřebných pro výpočet posouzení. Hodnocení spolehlivosti posouzení pomáhá odhadnout spolehlivost doporučení velikostí poskytovaných službou Azure Migrate.
 
-Jistotou posouzení je užitečnější pro posuzování s kritériem pro změnu velikosti jako "nastavení velikosti na základě výkonu. Pro nastavení velikosti na základě výkonu, musí Azure migrovat data o využití pro procesor, paměť virtuálního počítače. Kromě toho pro každý disk připojený k virtuálnímu počítači, je disk IOPS a dat propustnosti. Podobně pro každý síťový adaptér připojený k virtuálnímu počítači Azure migrovat musí sítě a konec provést nastavení velikosti na základě výkonu. Pokud některá z výše uvedených čísel o využití nejsou v systému vCenter Server k dispozici, doporučení velikosti provedené službou Azure Migrate nemusí být spolehlivé. Tady je poskytnuté hodnocení spolehlivosti posouzení v závislosti na procentu dostupných datových bodů:
+Hodnocení spolehlivosti posouzení je užitečnější u posouzení s kritériem velikosti založeným na výkonu. K určení velikosti na základě výkonu potřebuje Azure Migrate data o využití procesoru a paměti virtuálního počítače. Pro každý disk připojený k virtuálnímu počítači navíc potřebuje IOPS a propustnost disku. Podobně u každého síťového adaptéru připojeného k virtuálnímu počítači potřebuje Azure Migrate k určení velikosti na základě výkonu informace o síťových vstupech a výstupech. Pokud některá z výše uvedených čísel o využití nejsou v systému vCenter Server k dispozici, doporučení velikosti provedené službou Azure Migrate nemusí být spolehlivé. Tady je poskytnuté hodnocení spolehlivosti posouzení v závislosti na procentu dostupných datových bodů:
 
    **Dostupnost datových bodů** | **Hodnocení spolehlivosti**
    --- | ---
@@ -132,7 +132,7 @@ Posouzení nemusí mít k dispozici všechny datové body z některého z násle
 
 Po dokončení nastavení velikosti doporučení se migrovat Azure vypočítá náklady na výpočetní a úložnou po migraci.
 
-- **Výpočetní náklady**: pomocí doporučená velikost virtuálního počítače Azure, Azure migrovat používá rozhraní API fakturace můžete vypočítat náklady na měsíční pro virtuální počítač. Výpočet trvá operačního systému, programu software assurance, umístění a nastavení měny v úvahu. Ji ve všech počítačích, chcete-li vypočítat celkové měsíční náklady na výpočetní agreguje náklady.
+- **Výpočetní náklady**: pomocí doporučená velikost virtuálního počítače Azure, Azure migrovat používá rozhraní API fakturace můžete vypočítat náklady na měsíční pro virtuální počítač. Výpočet trvá operačního systému, programu software assurance, vyhrazenou instancí, virtuálních počítačů provozu, umístění a nastavení měny v úvahu. Ji ve všech počítačích, chcete-li vypočítat celkové měsíční náklady na výpočetní agreguje náklady.
 - **Náklady na úložiště**: měsíční úložiště, náklady pro počítače s je vypočítána agregování měsíční náklady na všechny disky připojené k počítači. Azure migrací se vypočítává agregování náklady na úložiště všech počítačů celkové měsíční náklady na úložiště. V současné době výpočtu neberou nabízí uvedenou v nastavení assessment v úvahu.
 
 Náklady jsou zobrazeny v měny v nastavení hodnocení.

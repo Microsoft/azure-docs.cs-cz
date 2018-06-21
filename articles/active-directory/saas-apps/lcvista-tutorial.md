@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 1a82718b17c623a59b0ea03297f47d54ff49eced
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0cd42f5863293dfe5b52ab1fd99c2fc04aa9aeee
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225948"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285810"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>Kurz: Azure Active Directory integrace s LCVista
 
@@ -224,7 +224,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
     
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu. Klikněte na dlaždici LCVista na přístupovém panelu, budete přesměrováni na organizaci přihlašovací stránku. Po úspěšném přihlášení můžete se být přihlášení k aplikaci LCVista. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586).
+V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu. Klikněte na dlaždici LCVista na přístupovém panelu, budete přesměrováni na organizaci přihlašovací stránku. Po úspěšném přihlášení můžete se být přihlášení k aplikaci LCVista. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

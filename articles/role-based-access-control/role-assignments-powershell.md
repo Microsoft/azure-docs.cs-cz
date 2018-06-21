@@ -1,6 +1,6 @@
 ---
-title: Správa řízení přístupu na základě rolí (RBAC) pomocí prostředí Azure PowerShell | Microsoft Docs
-description: Jak spravovat RBAC pomocí Azure Powershellu, včetně obsahující seznam rolí, přiřazení rolí a odstraňovat přiřazení role.
+title: Správa přístupu pomocí RBAC a prostředí Azure PowerShell | Microsoft Docs
+description: Zjistěte, jak chcete spravovat přístup pro uživatele, skupiny a aplikace, pomocí řízení přístupu na základě role (RBAC) a prostředí Azure PowerShell. To zahrnuje výpis přístup, udělení přístupu a odebrání přístupu.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,27 +14,23 @@ ms.workload: identity
 ms.date: 04/17/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 00646187da1f93c01c3a57b50905239afd5e2bc8
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 231f7b915c324a5af91564c80d17bbad335d658d
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266794"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294765"
 ---
-# <a name="manage-role-based-access-control-with-azure-powershell"></a>Správa řízení přístupu na základě rolí pomocí Azure PowerShell
-> [!div class="op_single_selector"]
-> * [PowerShell](role-assignments-powershell.md)
-> * [Azure CLI](role-assignments-cli.md)
-> * [REST API](role-assignments-rest.md)
+# <a name="manage-access-using-rbac-and-azure-powershell"></a>Správa přístupu pomocí RBAC a prostředí Azure PowerShell
 
-Pomocí řízení přístupu na základě rolí (RBAC) kterou definujte přístupu pro uživatele, skupiny a objekty služby přiřazení rolí v určitém rozsahu. Tento článek popisuje, jak můžete spravovat přístup pomocí prostředí Azure PowerShell.
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, která můžete spravovat přístup k prostředkům v Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny a aplikace pomocí RBAC a prostředí Azure PowerShell.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Před prostředí PowerShell můžete použít ke správě RBAC, je třeba jeden z následujících akcí:
 
 * [Prostředí PowerShell v prostředí cloudu Azure](/azure/cloud-shell/overview)
-* [Prostředí Azure PowerShell 5.1.0 nebo novější](/powershell/azure/install-azurerm-ps)
+* [Azure PowerShell](/powershell/azure/install-azurerm-ps)
 
 ## <a name="list-roles"></a>Seznam rolí
 
@@ -146,9 +142,9 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 ...
 ```
 
-## <a name="see-who-has-access"></a>Zjistit, kdo má přístup
+## <a name="list-access"></a>Přístup k seznamu
 
-Přiřazení přístupu RBAC seznamu, použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
+V RBAC pro přístup k seznamu, můžete seznam přiřazení rolí.
 
 ### <a name="list-role-assignments-at-a-specific-scope"></a>Seznam přiřazení rolí na konkrétní rozsah
 
@@ -174,7 +170,7 @@ RoleDefinitionName : Virtual Machine Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales-projectforecast
 ```
 
-### <a name="list-roles-assigned-to-a-user"></a>Seznam rolí přiřazen k uživateli
+### <a name="list-role-assignments-for-a-user"></a>Seznam přiřazení role pro uživatele
 
 K zobrazení seznamu všech rolí, které jsou přiřazeny pro zadaného uživatele, použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
@@ -200,15 +196,17 @@ Get-AzureRmRoleAssignment -SignInName <user email> -ExpandPrincipalGroups
 Get-AzureRmRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroups | FL DisplayName, RoleDefinitionName, Scope
 ```
 
-### <a name="list-classic-service-administrator-and-coadmin-role-assignments"></a>Seznam přiřazení rolí správce a coadmin classic služby
+### <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Seznam přiřazení rolí pro správce classic služeb a spolusprávci
 
-Seznam přiřazení přístupu pro správce classic předplatného a spolusprávci, použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment):
+K přiřazení rolí pro správce classic předplatného a spolusprávci seznamu, použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment):
 
 ```azurepowershell
 Get-AzureRmRoleAssignment -IncludeClassicAdministrators
 ```
 
 ## <a name="grant-access"></a>Udělení přístupu
+
+V RBAC udělit přístup, můžete vytvořit přiřazení role.
 
 ### <a name="search-for-object-ids"></a>Vyhledejte ID objektů
 
@@ -228,7 +226,7 @@ ID objektu pro objekt zabezpečení služby Azure AD nebo aplikaci, použijte [G
 Get-AzureRmADServicePrincipal -SearchString <service name in quotes>
 ```
 
-### <a name="assign-a-role-to-an-application-at-the-subscription-scope"></a>Přiřazení role k aplikaci v oboru předplatného
+### <a name="create-a-role-assignment-for-an-application-at-a-subscription-scope"></a>Umožňuje vytvořit přiřazení role pro aplikaci na obor předplatného
 
 Pokud chcete udělit přístup k aplikaci v oboru předplatné, použijte [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment):
 
@@ -250,7 +248,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-### <a name="assign-a-role-to-a-user-at-the-resource-group-scope"></a>Přiřazení role uživatele v oboru skupiny prostředků
+### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Umožňuje vytvořit přiřazení role pro uživatele v obor skupiny prostředků
 
 Pokud chcete udělit přístup na uživatele v oboru skupiny prostředků, použijte [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment):
 
@@ -274,7 +272,7 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-### <a name="assign-a-role-to-a-group-at-the-resource-scope"></a>Přiřazení role do skupiny v oboru prostředků
+### <a name="create-a-role-assignment-for-a-group-at-a-resource-scope"></a>Umožňuje vytvořit přiřazení role pro skupinu v oboru prostředků
 
 Pokud chcete udělit přístup do skupiny v oboru prostředků, použijte [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment):
 
@@ -307,7 +305,7 @@ CanDelegate        : False
 
 ## <a name="remove-access"></a>Odebrat přístup
 
-Chcete-li odebrat přístup pro uživatele, skupiny a aplikace, použijte [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment):
+V RBAC, k odebrání přístupu, je odstranit přiřazení role pomocí [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment):
 
 ```azurepowershell
 Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription id>
@@ -581,7 +579,7 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="next-steps"></a>Další postup
 
 * [Použití Azure PowerShellu s Azure Resource Managerem](../azure-resource-manager/powershell-azure-resource-manager.md)
 

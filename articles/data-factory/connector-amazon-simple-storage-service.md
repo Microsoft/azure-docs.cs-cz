@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
-ms.openlocfilehash: 18276b5706caad854c0160044b7e0efff10bc280
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a809859e9f0c6e51247abc2d03af673a2850a87e
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616164"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284885"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopírování dat z Amazon jednoduché úložiště služby pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -95,7 +95,7 @@ Chcete-li kopírovat data z Amazonu S3, nastavte vlastnost typu datové sady, kt
 |:--- |:--- |:--- |
 | type | Vlastnost typu datové sady musí být nastavena na: **AmazonS3Object** |Ano |
 | bucketName | Název sady S3. Zástupný filtr není podporován. |Ano |
-| key | **Název nebo zástupný filtr** S3 objektu klíče v rámci zadané sady. Platí, pouze pokud není zadán vlastnost "předponu". <br/><br/>Zástupný filtr je podporována pouze pro část názvu souboru, ale není součástí složky. Povolené zástupné znaky jsou: `*` (více znaků) a `?` (jeden znak).<br/>– Příklad 1: `"key": "rootfolder/subfolder/*.csv"`<br/>-Příklad 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>Použití `^` abyste se vyhnuli, pokud jejich název zástupných znaků nebo tento řídicí znak uvnitř. |Ne |
+| key | **Název nebo zástupný filtr** S3 objektu klíče v rámci zadané sady. Platí, pouze pokud není zadán vlastnost "předponu". <br/><br/>Zástupný filtr je podporována pouze pro část názvu souboru, ale není součástí složky. Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znaků) a `?` (odpovídá nula nebo jeden znak).<br/>– Příklad 1: `"key": "rootfolder/subfolder/*.csv"`<br/>-Příklad 2: `"key": "rootfolder/subfolder/???20180427.txt"`<br/>Použití `^` abyste se vyhnuli, pokud jejich název zástupných znaků nebo tento řídicí znak uvnitř. |Ne |
 | Předpona | Předpona pro klíč objektu S3. Jsou vybrané objekty, jejichž klíče začít s touto předponou. Platí jenom v případě, že není zadána vlastnost "klíč". |Ne |
 | verze | Verze objektu S3, pokud je povolena Správa verzí S3. |Ne |
 | Formát | Pokud chcete **zkopírujte soubory jako-je** mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat nebo vygenerování soubory s konkrétním formátu, jsou podporovány následující typy souboru formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](supported-file-formats-and-compression-codecs.md#text-format), [formátu Json](supported-file-formats-and-compression-codecs.md#json-format), [Avro formát](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátu](supported-file-formats-and-compression-codecs.md#orc-format), a [Parquet formát](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne (pouze pro scénář binární kopie) |

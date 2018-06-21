@@ -9,12 +9,12 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: 062b5e48cfba5de64aa11f79629e82645df87f96
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 7e2eb9bad8c95e61d5b750cacd0724fc2536f2c5
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809256"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294103"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Vyberte způsob správné ověřování pro vaše řešení hybridní identity Azure Active Directory 
 
@@ -41,6 +41,8 @@ Organizace, které nemají existující místní adresář nároků nejsou fokus
 Vaše nové rovině řízení po hybridní řešení identit Azure AD ověřování je základ pro přístup do cloudu. Výběr správné metody ověřování je velmi důležitý první rozhodnutí v nastavení hybridní řešení identit Azure AD. Implementujte metodu ověřování, která je nakonfigurována pomocí Azure AD Connect, který také zřizuje uživatele v cloudu.
 
 Chcete-li zvolit metodu ověřování, je potřeba zvážit čas, stávající infrastruktury, složitost a náklady na implementaci vašeho výběru. Tyto faktory se liší pro každou organizaci a může časem změnit. 
+
+>[!VIDEO https://www.youtube.com/embed/YtW2cmVqSEw]
 
 Azure AD podporuje následující metody ověřování pro hybridních řešení identit.
 

@@ -1,6 +1,6 @@
 ---
 title: Použití emulátoru úložiště Azure pro vývoj a testování | Microsoft Docs
-description: Emulátor úložiště Azure poskytuje volné místní vývojové prostředí pro vývoj a testování aplikací s Azure Storage. Zjistěte, jak jsou žádosti o ověření, jak se připojit k emulátoru z vaší aplikace a jak pomocí nástroje příkazového řádku.
+description: Emulátor úložiště Azure poskytuje volné místní vývojové prostředí pro vývoj a testování aplikací s Azure Storage. Zjistěte, jak jsou žádosti o oprávnění, jak se připojit k emulátoru z vaší aplikace a jak pomocí nástroje příkazového řádku.
 services: storage
 author: tamram
 manager: jeconnoc
@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: tamram
-ms.openlocfilehash: c16bf1e750ea059e663e05c91835884eb0bc54a5
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
-ms.translationtype: HT
+ms.openlocfilehash: c6500cd1ddd31d789b8cd5d72d6e4614db3f88db
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34305102"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295586"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Použití emulátoru úložiště Azure pro vývoj a testování
 
@@ -46,7 +46,7 @@ Spusťte emulátor úložiště Azure:
 
 Když se spustí se emulátor úložiště, zobrazí se okno příkazového řádku. Toto okno konzoly můžete spustit a zastavit emulátor úložiště, vymazat data, získat stav a inicializace emulátor. Další informace najdete v tématu [odkaz na nástroj příkazového řádku emulátor úložiště](#storage-emulator-command-line-tool-reference) později v tomto článku.
 
-Když na emulátoru běží, se zobrazí na ikonu v oznamovací oblasti hlavního panelu Windows.
+Po spuštění emulátoru se v oznamovací oblasti hlavního panelu Windows zobrazí jeho ikona.
 
 Když zavřete okno příkazového řádku emulátor úložiště, emulátor úložiště bude nadále spouštět. Se znovu zprovoznit v okně konzoly emulátor úložiště, postupujte podle předchozích kroků, jako kdyby spouštění emulátor úložiště.
 
@@ -81,14 +81,14 @@ Další informace o těchto příkazech najdete v tématu [odkaz na nástroj př
 > Můžete použít [Microsoft SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) ke správě vaší instance systému SQL Server, včetně instalace LocalDB. V SMSS **připojit k serveru** dialogové okno, zadejte `(localdb)\MSSQLLocalDb` v **název serveru:** pole pro připojení k instanci LocalDB.
 
 ## <a name="authenticating-requests-against-the-storage-emulator"></a>Ověřování požadavků na emulátor úložiště
-Jakmile jste instalaci a spuštění emulátor úložiště, můžete otestovat svůj kód s ho. Stejně jako u Azure Storage v cloudu, musí být ověřeny všechny žádosti, které provedete emulátoru úložiště, pokud je požadavek anonymní. Požadavky na emulátoru úložiště pomocí ověřování sdílený klíč, nebo pomocí sdíleného přístupového podpisu (SAS), můžete ověřovat.
+Jakmile jste instalaci a spuštění emulátor úložiště, můžete otestovat svůj kód s ho. Stejně jako u Azure Storage v cloudu, musí být autorizován každého požadavku, které provedete emulátoru úložiště, pokud je požadavek anonymní. Můžete povolit požadavky na emulátoru úložiště pomocí ověřování sdílený klíč, nebo pomocí sdíleného přístupového podpisu (SAS).
 
-### <a name="authenticate-with-shared-key-credentials"></a>Ověření pomocí sdíleného klíče pověření
+### <a name="authorize-with-shared-key-credentials"></a>Autorizaci pomocí sdíleného klíče přihlašovacích údajů
 [!INCLUDE [storage-emulator-connection-string-include](../../../includes/storage-emulator-connection-string-include.md)]
 
 Další informace o připojovacích řetězcích najdete v tématu [připojovacích řetězců Azure Storage konfigurace](../storage-configure-connection-string.md).
 
-### <a name="authenticate-with-a-shared-access-signature"></a>Ověření pomocí sdíleného přístupového podpisu
+### <a name="authorize-with-a-shared-access-signature"></a>Autorizaci pomocí sdíleného přístupového podpisu
 Některé knihovny klienta úložiště Azure, jako je například knihovně Xamarin podporují jenom ověřování pomocí tokenu sdíleného přístupového podpisu (SAS). Můžete vytvořit token SAS, pomocí nástroje, například [Storage Explorer](http://storageexplorer.com/) nebo jiné aplikace, která podporuje ověření sdíleným klíčem.
 
 Můžete také vygenerovat SAS token pomocí prostředí Azure PowerShell. Následující příklad vytvoří SAS token s úplnými oprávněními na kontejner objektů blob:
@@ -163,7 +163,7 @@ Od verze 3.0 se do okna konzoly se zobrazí při spuštění emulátor úložiš
 `AzureStorageEmulator.exe [start] [stop] [status] [clear] [init] [help]`
 
 ### <a name="options"></a>Možnosti
-Chcete-li zobrazit seznam možností, zadejte `/help` na příkazovém řádku.
+Pokud chcete zobrazit seznam možností, na příkazovém řádku zadejte `/help`.
 
 | Možnost | Popis | Příkaz | Argumenty |
 | --- | --- | --- | --- |
@@ -204,12 +204,23 @@ Table Storage v emulátoru platí následující rozdíly:
 Konkrétní Queue Storage v emulátoru nejsou žádné rozdíly.
 
 ## <a name="storage-emulator-release-notes"></a>Poznámky k verzi emulátoru úložiště
+
+### <a name="version-55"></a>Verzi 5.5
+* Emulátor úložiště teď podporuje verze 2017-11-09 služby úložiště na koncové body služby objektů Blob, fronty a tabulky.
+* Byla přidána podpora pro tento objekt blob **vytvořená** vlastnosti, která vrátí čas vytvoření objektu blob.
+
+### <a name="version-54"></a>Verze 5.4
+Pro zlepšení stability instalace, emulátoru již nebude pokoušet o rezervaci portů v době instalace. Použijte v případě potřeby rezervace portu jsou *- reserveports* možnost **init** příkaz zadávat.
+
+### <a name="version-53"></a>Verze 5.3
+Emulátor úložiště teď podporuje verze 2017-07-29 služby úložiště na koncové body služby objektů Blob, fronty a tabulky.
+
 ### <a name="version-52"></a>Verze 5.2
 * Emulátor úložiště teď podporuje verze 2017-04-17 služby úložiště na koncové body služby objektů Blob, fronty a tabulky.
 * Opravit chyby, kde nebyly se správně kódovaný hodnoty vlastností tabulky.
 
 ### <a name="version-51"></a>Verze 5.1
-* Pevné chyby, kde byla vrácení emulátor úložiště `DataServiceVersion` záhlaví v některé odpovědí, pokud služba nebyla.
+Pevné chyby, kde byla vrácení emulátor úložiště `DataServiceVersion` záhlaví v některé odpovědí, pokud služba nebyla.
 
 ### <a name="version-50"></a>Verze 5.0
 * Instalační program emulátor úložiště už existující MSSQL kontroluje a nainstaluje rozhraní .NET Framework.

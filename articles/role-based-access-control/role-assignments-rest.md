@@ -1,6 +1,6 @@
 ---
-title: Řízení přístupu na základě role se zbytkem – Azure AD | Microsoft Docs
-description: Správa řízení přístupu na základě rolí pomocí rozhraní REST API
+title: Správa přístupu pomocí RBAC a rozhraní API REST - Azure | Microsoft Docs
+description: Zjistěte, jak chcete spravovat přístup pro uživatele, skupiny a aplikace, pomocí rozhraní REST API a řízení přístupu na základě rolí (RBAC). To zahrnuje výpis přístup, udělení přístupu a odebrání přístupu.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,25 +15,21 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f81c84f5db4b595acf851a315c03cd4189514afa
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fdf246ede9fd030c03a70a90b35d4dd1fb645df1
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267471"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294458"
 ---
-# <a name="manage-role-based-access-control-with-the-rest-api"></a>Správa řízení přístupu na základě rolí pomocí rozhraní REST API
-> [!div class="op_single_selector"]
-> * [PowerShell](role-assignments-powershell.md)
-> * [Azure CLI](role-assignments-cli.md)
-> * [REST API](role-assignments-rest.md)
+# <a name="manage-access-using-rbac-and-the-rest-api"></a>Správa přístupu pomocí RBAC a rozhraní REST API
 
-S na základě rolí řízení přístupu (RBAC), můžete definovat přístupu pro uživatele, skupiny a objekty služby podle přiřazení rolí v určitém rozsahu. Tento článek popisuje, jak můžete spravovat přístup pomocí rozhraní REST API.
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, která můžete spravovat přístup k prostředkům v Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny a aplikace s použitím RBAC a rozhraní REST API.
 
 ## <a name="list-all-role-assignments"></a>Zobrazí seznam všech přiřazení rolí
 Zobrazí seznam všech přiřazení role v zadaném oboru a subscopes.
 
-K přiřazení rolí seznamu je nutné mít přístup k `Microsoft.Authorization/roleAssignments/read` operace v oboru. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-assignments-portal.md).
+K přiřazení rolí seznamu je nutné mít přístup k `Microsoft.Authorization/roleAssignments/read` operace v oboru. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
 
 ### <a name="request"></a>Žádost
 Použití **získat** metoda s následující identifikátor URI:
@@ -83,7 +79,7 @@ Stavový kód: 200
 ## <a name="get-information-about-a-role-assignment"></a>Získat informace o přiřazení role
 Získá informace o přiřazení jedné role určeného identifikátor přiřazení role.
 
-Chcete-li získat informace o přiřazení role, musíte mít přístup k `Microsoft.Authorization/roleAssignments/read` operaci. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-assignments-portal.md).
+Chcete-li získat informace o přiřazení role, musíte mít přístup k `Microsoft.Authorization/roleAssignments/read` operaci. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
 
 ### <a name="request"></a>Žádost
 Použití **získat** metoda s následující identifikátor URI:
@@ -121,10 +117,10 @@ Stavový kód: 200
 
 ```
 
-## <a name="create-a-role-assignment"></a>Umožňuje vytvořit přiřazení Role
+## <a name="create-a-role-assignment"></a>Umožňuje vytvořit přiřazení role
 Vytvořte přiřazení role v zadaném oboru pro zadaný objekt zabezpečení udělení zadané roli.
 
-Pokud chcete vytvořit přiřazení role, musíte mít přístup k `Microsoft.Authorization/roleAssignments/write` operaci. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-assignments-portal.md).
+Pokud chcete vytvořit přiřazení role, musíte mít přístup k `Microsoft.Authorization/roleAssignments/write` operaci. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
 
 ### <a name="request"></a>Žádost
 Použití **PUT** metoda s následující identifikátor URI:
@@ -179,10 +175,10 @@ Stavový kód: 201
 
 ```
 
-## <a name="delete-a-role-assignment"></a>Umožňuje odstranit přiřazení Role
+## <a name="delete-a-role-assignment"></a>Umožňuje odstranit přiřazení role
 Umožňuje odstranit přiřazení role v zadaném oboru.
 
-Pokud chcete odstranit přiřazení role, musíte mít přístup k `Microsoft.Authorization/roleAssignments/delete` operaci. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-assignments-portal.md).
+Pokud chcete odstranit přiřazení role, musíte mít přístup k `Microsoft.Authorization/roleAssignments/delete` operaci. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
 
 ### <a name="request"></a>Žádost
 Použití **odstranit** metoda s následující identifikátor URI:
@@ -223,7 +219,7 @@ Stavový kód: 200
 ## <a name="list-all-roles"></a>Zobrazí seznam všech rolí
 Obsahuje seznam všech rolí, které jsou k dispozici pro přiřazení v zadaném oboru.
 
-Seznam rolí musíte mít přístup k `Microsoft.Authorization/roleDefinitions/read` operace v oboru. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-assignments-portal.md).
+Seznam rolí musíte mít přístup k `Microsoft.Authorization/roleDefinitions/read` operace v oboru. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
 
 ### <a name="request"></a>Žádost
 Použití **získat** metoda s následující identifikátor URI:
@@ -306,7 +302,7 @@ Stavový kód: 200
 ## <a name="get-information-about-a-role"></a>Získat informace o roli
 Získá informace o jedné role určeného identifikátor definice role. Chcete-li získat informace o jedné role pomocí názvu zobrazení, přečtěte si téma [seznam všech rolí](role-assignments-rest.md#list-all-roles).
 
-Chcete-li získat informace o roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/read` operaci. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-assignments-portal.md).
+Chcete-li získat informace o roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/read` operaci. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
 
 ### <a name="request"></a>Žádost
 Použití **získat** metoda s následující identifikátor URI:
@@ -386,7 +382,7 @@ Stavový kód: 200
 ## <a name="create-a-custom-role"></a>Vytvořit vlastní roli
 Vytvořte vlastní roli.
 
-Pokud chcete vytvořit vlastní roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/write` operaci na všech `AssignableScopes`. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-assignments-portal.md).
+Pokud chcete vytvořit vlastní roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/write` operaci na všech `AssignableScopes`. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
 
 ### <a name="request"></a>Žádost
 Použití **PUT** metoda s následující identifikátor URI:
@@ -486,10 +482,10 @@ Stavový kód: 201
 
 ```
 
-## <a name="update-a-custom-role"></a>Aktualizovat vlastní Role
+## <a name="update-a-custom-role"></a>Aktualizovat vlastní role
 Upravte vlastní roli.
 
-Pokud chcete upravit vlastní roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/write` operaci na všech `AssignableScopes`. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-assignments-portal.md).
+Pokud chcete upravit vlastní roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/write` operaci na všech `AssignableScopes`. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
 
 ### <a name="request"></a>Žádost
 Použití **PUT** metoda s následující identifikátor URI:
@@ -592,7 +588,7 @@ Stavový kód: 201
 ## <a name="delete-a-custom-role"></a>Odstranit vlastní roli
 Odstraňte vlastní roli.
 
-Chcete-li odstranit vlastní roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/delete` operaci na všech `AssignableScopes`. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu](role-assignments-portal.md).
+Chcete-li odstranit vlastní roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/delete` operaci na všech `AssignableScopes`. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
 
 ### <a name="request"></a>Žádost
 Použití **odstranit** metoda s následující identifikátor URI:

@@ -22,7 +22,7 @@ Tato část vás provede nastavení vývojového prostředí. To zahrnuje vytvo�
 
 2. V místní nabídce vyberte **přidat** > **připojení službě**.
 
-1. V **připojené služby** dialogové okno, vyberte **úložiště v cloudu s Azure Storage**a potom vyberte **konfigurace**.
+1. V **připojené služby** dialogové okno, vyberte **úložiště v cloudu s Azure Storage**.
 
     ![Dialogové okno snímek obrazovky připojení služby](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 

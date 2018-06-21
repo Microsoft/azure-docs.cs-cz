@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: bcd08ac8563edfaf4297e26ad42ed8bc62d86918
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: e226aadbe499d5905b1814bec5d042f67d898c18
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831631"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294845"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>Nasazení Azure Blockchain Workbench
 
@@ -48,7 +48,10 @@ Azure Blockchain Workbench potřeba splnit několik předpokladů před nasazen�
 
 ### <a name="blockchain-workbench-api-app-registration"></a>Registrace aplikací Blockchain Workbench API
 
-Nasazení Blockchain Workbench vyžaduje registraci aplikace Azure AD. Je nutné klienta služby Azure Active Directory (Azure AD) pro registraci aplikace. Můžete použít existujícího klienta nebo vytvořit nového klienta. Pokud používáte existujícího klienta Azure AD, je třeba dostatečná oprávnění k registraci aplikací v rámci klienta Azure AD. Registrace aplikace musí být v klientovi předplatné správce předplatného, které se nasadí Workbench. Další informace o klienty Azure AD najdete v tématu [jak získat klienta služby Active Directory](../active-directory/develop/active-directory-howto-tenant.md) a [integrace aplikací s Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
+Nasazení Blockchain Workbench vyžaduje registraci aplikace Azure AD. Je nutné klienta služby Azure Active Directory (Azure AD) pro registraci aplikace. Můžete použít existujícího klienta nebo vytvořit nového klienta. Pokud používáte existujícího klienta Azure AD, je třeba dostatečná oprávnění k registraci aplikací a udělte oprávnění rozhraní Graph API v rámci klienta Azure AD. Pokud nemáte dostatečná oprávnění v existujícího klienta Azure AD vytvořte nového klienta. 
+
+> [!IMPORTANT]
+> Workbench nemusí být nasazen ve stejném klientovi jako ten, který používáte pro registraci aplikace Azure AD. Workbench musí být nasazený v klientovi, kdy máte dostatečná oprávnění k nasazování prostředky. Další informace o klienty Azure AD najdete v tématu [jak získat klienta služby Active Directory](../active-directory/develop/active-directory-howto-tenant.md) a [integrace aplikací s Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte účet v pravém horním rohu a přepněte do požadovaného Azure AD klienta. Klient musí být správce předplatného klienta předplatného, kde je nasazená Workbench a máte dostatečná oprávnění k registraci aplikací.

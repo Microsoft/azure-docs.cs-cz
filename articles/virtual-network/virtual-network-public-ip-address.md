@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 3962b2e598f94767bd0fbbe990084875deec5e40
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 4345199ed952b6d0e044d4ac99c29c47c477780d
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266895"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287064"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Vytvoření, změnit nebo odstranit veřejnou IP adresu
 
@@ -92,6 +92,16 @@ Když na portál poskytuje možnost vytvořit dva veřejné IP adresy prostředk
 |Rozhraní příkazového řádku|[seznam veřejné ip sítě az](/cli/azure/network/public-ip#az-network-public-ip-list) do seznamu veřejné IP adresy, [az sítě veřejné ip zobrazit](/cli/azure/network/public-ip#az-network-public-ip-show) zobrazíte nastavení; [aktualizace veřejné ip sítě az](/cli/azure/network/public-ip#az-network-public-ip-update) aktualizovat; [odstranit veřejné sítě az-ip](/cli/azure/network/public-ip#az-network-public-ip-delete) odstranit|
 |PowerShell|[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) načíst objekt veřejných IP adres a zobrazit její nastavení [Set-AzureRmPublicIpAddress](/powershell/module/azurerm.network/set-azurermpublicipaddress) se aktualizovat nastavení; [Odebrat AzureRmPublicIpAddress](/powershell/module/azurerm.network/remove-azurermpublicipaddress) odstranit|
 
+## <a name="assign-a-public-ip-address"></a>Přiřadit veřejnou IP adresu
+
+Naučte se přiřazovat veřejnou IP adresu na následujících odkazech:
+
+- A [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálních počítačů (při vytváření), nebo [existující virtuální počítač](virtual-network-network-interface-addresses.md#add-ip-addresses)
+- [Nástroj pro vyrovnávání zatížení internetového](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Azure Application Gateway](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Připojení Site-to-site pomocí služby Azure VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Škálovací sadu virtuálních počítačů Azure](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+
 ## <a name="permissions"></a>Oprávnění
 
 K provádění úloh na veřejné IP adresy, musí mít váš účet přiřazenou k [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) rolí nebo [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) role, která je přiřazena příslušné akce uvedené v následující tabulce:
@@ -107,4 +117,3 @@ K provádění úloh na veřejné IP adresy, musí mít váš účet přiřazeno
 
 - Vytvoření veřejné IP adresy pomocí [prostředí PowerShell](powershell-samples.md) nebo [rozhraní příkazového řádku Azure](cli-samples.md) ukázkové skripty nebo pomocí Azure [šablony Resource Manageru](template-samples.md)
 - Vytvoření a použití [Azure zásad](policy-samples.md) pro veřejné IP adresy
-- Při vytváření přiřadit veřejné IP adresy [Windows](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nebo [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuálního počítače Azure, [nástroj pro vyrovnávání zatížení Azure internetové Azure](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Azure Aplikační brána](../application-gateway/application-gateway-create-gateway-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [připojení Site-to-site pomocí služby Azure VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json), nebo [sadu škálování virtuálního počítače Azure](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

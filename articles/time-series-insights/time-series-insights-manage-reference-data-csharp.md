@@ -3,7 +3,7 @@ title: Spravovat referenční data v prostředí Azure časové řady statistika
 description: Tento článek popisuje, jak spravovat referenčních dat pro prostředí Statistika řady čas Azure tak, že vytvoříte vlastní aplikaci napsanou v jazyce .NET (c ostrý) C#.
 ms.service: time-series-insights
 services: time-series-insights
-author: venkatgct
+author: ashannon7
 ms.author: venkatja
 manager: jhubbard
 ms.reviewer: jasonh, kfile, anshan
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/23/2018
-ms.openlocfilehash: 6cbc95f3af1fc65967248d0b1e8501498a4be68c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0bb216e8be98b0ee795176a6d3ca9ed73baad231
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652885"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294120"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Spravovat referenčních dat pro prostředí Statistika řady čas Azure pomocí jazyka C#
 

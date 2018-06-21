@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 51912bab0a038e99ecf77b8012c4087b029d4508
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9ade63c07003ead55e63093ae74e876589ec8d61
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264336"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287833"
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor"></a>Vytvoření, zobrazení a Správa výstrah pomocí Azure monitorování  
 
@@ -43,7 +43,7 @@ Další podrobné je podrobný návod, jak pomocí Azure výstrahy.
 
 3. V části Vytvoření upozornění se zobrazí se tří částí, který se skládá z: *definovat výstrahy podmínku*, *definovat podrobnosti výstrahy*, a *definovat akce skupiny*.
 
-    ![Vytvoření pravidla](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
+    ![Vytvořit pravidlo](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
 
 4.  Definovat podmínka upozornění pomocí **vyberte prostředek** odkaz a určení cílového výběrem prostředku. Filtrovat podle výběru * předplatného, * typ prostředku a nakonec vyberte požadované *prostředků*.
 
@@ -64,7 +64,7 @@ Další podrobné je podrobný návod, jak pomocí Azure výstrahy.
 
 5. * Metriky výstrahy: Zkontrolujte **typ prostředku** je vybrána s typem signál jako **metrika**, pak jednou odpovídající **prostředků** je zvolen klikněte na tlačítko *provádí*tlačítko se vrátíte k vytvoření výstrahy. Potom použít **přidat kritéria** tlačítko můžete vybrat ze seznamu možnosti signál, jejich monitorování služby a typ seznamu - určitý signál, které jsou k dispozici pro prostředek vybrali dříve.
 
-    ![Vyberte prostředek](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
+    ![Vybrat prostředek](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 
     > [!NOTE]
 
@@ -148,7 +148,13 @@ Pro **protokolu výstrahy** výstrahy může být založené na:
 2. **Řídicí panel výstrahy** se zobrazí – ve kterém jsou všechny výstrahy Azure unified a zobrazí v jednotném čísle Tabule ![výstrahy řídicí panel](./media/monitoring-alerts-unified-usage/alerts-preview-overview.png)
 3. Z horní části zleva doprava řídicího panelu ukazuje na první pohled, následující – které sloužící k najdete podrobné informace:
     - *Aktivováno výstrahy*: počet v současné době výstrahy, které se mají splněna logiku a v aktivováno stavu
-    - *Celkový počet pravidla výstrah*: číslo vytvořit pravidla výstrah a v subtext, číslo, které jsou nyní zapnuta
+    - *Celkový počet pravidla výstrah*: číslo vytvořit pravidla výstrah a v subtext, číslo, které jsou nyní zapnuta 
+    
+
+        > [!NOTE]
+        > K zajištění konzistentní řídicího panelu s podrobnostmi na všechny aktivní výstrahy, včetně protokolu výstrahy pro application insights a analýzy protokolů; [Rozšířené sjednocené výstraha (preview)](monitoring-overview-unified-alerts.md#enhanced-unified-alerts-public-preview) by měl být použit
+  
+  
 4. Se zobrazí seznam všechny aktivní výstrahy, které může uživatel kliknutím zobrazíte podrobnosti
 5. Pomoc v konkrétní hledání výstrah; možnosti rozevírací seznam v horní části jeden můžete použít pro filtrování konkrétní *předplatné, skupinu prostředků nebo prostředek*. Další pro žádné nevyřešené výstrahy, jedno použití *upozornění filtru* možnost Najít pro zadaný – klíčové slovo - konkrétní odpovídající výstrahy s *název, výstraha kritéria, skupinu prostředků a cílový prostředek*
 
@@ -164,7 +170,7 @@ Pro **protokolu výstrahy** výstrahy může být založené na:
 
 6. Pomocí horním panelu, změny výstrahy může být odrážející včetně: **Uložit** potvrzení změny provést s výstrahou, **zahodit** a vraťte se bez potvrzení změny provedené v výstrahy **zakázat**  deaktivovat výstrahu - po jejímž uplynutí ho už běží nebo se aktivuje žádnou akci. A nakonec **odstranit** trvale odeberete celý pravidlo výstrahy z Azure.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o nové [téměř v reálném čase metriky výstrahy](monitoring-near-real-time-metric-alerts.md)
 - Získat [přehled metriky kolekce](insights-how-to-customize-monitoring.md) zkontrolovat služby je k dispozici a dobře reagovaly.

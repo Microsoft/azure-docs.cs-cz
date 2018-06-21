@@ -15,16 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/28/2018
 ms.author: danlep
-ms.openlocfilehash: 885ee10bc63b65d936f5b433a18c4435b2503720
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 269d1392e00d02a79a360e3528fdde174563f2cf
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32313439"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295206"
 ---
 # <a name="how-to-find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Postup nalezení bitové kopie virtuálního počítače s Windows v Azure Marketplace s prostředím Azure PowerShell
 
 Tento článek popisuje, jak pomocí prostředí Azure PowerShell k vyhledání Image virtuálních počítačů v Azure Marketplace. Tyto informace slouží k určení image pořízenou prostřednictvím Marketplace, při vytváření virtuálního počítače prostřednictvím kódu programu v prostředí PowerShell šablony správce prostředků nebo jiných nástrojů.
+
+Také procházet dostupné obrázků a nabízí pomocí [Azure Marketplace](https://azuremarketplace.microsoft.com/) výkladní skříň, [portál Azure](https://portal.azure.com), nebo [rozhraní příkazového řádku Azure](../linux/cli-ps-findimage.md). 
 
 Ujistěte se, zda je nainstalován a nakonfigurován nejnovější [modul Azure PowerShell](/powershell/azure/install-azurerm-ps).
 

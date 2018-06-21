@@ -1,6 +1,6 @@
 ---
-title: Správa řízení přístupu na základě rolí (RBAC) pomocí rozhraní příkazového řádku Azure | Microsoft Docs
-description: Naučte se spravovat na základě rolí řízení přístupu (RBAC) pomocí rozhraní příkazového řádku Azure tak, že uvedete role a role akce a přiřazení rolí k oborům předplatné a aplikace.
+title: Správa přístupu pomocí RBAC a rozhraní příkazového řádku Azure | Microsoft Docs
+description: Zjistěte, jak chcete spravovat přístup pro uživatele, skupiny a aplikace, pomocí řízení přístupu na základě role (RBAC) a rozhraní příkazového řádku Azure. To zahrnuje výpis přístup, udělení přístupu a odebrání přístupu.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,30 +14,24 @@ ms.workload: identity
 ms.date: 04/03/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8b50d04bcbd067059bf4816468585e5d56a63d41
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 15ff519f5af7471d6adaae44e2af19422ad44fea
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266733"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294400"
 ---
-# <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Správa řízení přístupu na základě rolí pomocí rozhraní příkazového řádku Azure
+# <a name="manage-access-using-rbac-and-azure-cli"></a>Správa přístupu pomocí RBAC a rozhraní příkazového řádku Azure
 
-> [!div class="op_single_selector"]
-> * [PowerShell](role-assignments-powershell.md)
-> * [Azure CLI](role-assignments-cli.md)
-> * [REST API](role-assignments-rest.md)
-
-
-Pomocí řízení přístupu na základě rolí (RBAC) kterou definujte přístupu pro uživatele, skupiny a objekty služby přiřazení rolí v určitém rozsahu. Tento článek popisuje, jak spravovat přiřazení rolí pomocí rozhraní příkazového řádku Azure (CLI).
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, která můžete spravovat přístup k prostředkům v Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny a aplikace s použitím RBAC a rozhraní příkazového řádku Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Pokud chcete spravovat přiřazení rolí pomocí rozhraní příkazového řádku Azure, musíte mít následující požadavky:
 
-* [Azure CLI 2.0](/cli/azure). Můžete ho používat v prohlížeči přes [Azure Cloud Shell](../cloud-shell/overview.md) nebo si ho můžete [nainstalovat](/cli/azure/install-azure-cli) v systémech macOS, Linux nebo Windows a spouštět z příkazového řádku.
+* [Azure CLI](/cli/azure). Můžete ho používat v prohlížeči přes [Azure Cloud Shell](../cloud-shell/overview.md) nebo si ho můžete [nainstalovat](/cli/azure/install-azure-cli) v systémech macOS, Linux nebo Windows a spouštět z příkazového řádku.
 
-## <a name="list-role-definitions"></a>Definice rolí seznamu
+## <a name="list-roles"></a>Seznam rolí
 
 K zobrazení seznamu všech definic rolí k dispozici, použijte [seznamu definice role az](/cli/azure/role/definition#az-role-definition-list):
 
@@ -94,7 +88,7 @@ az role definition list --custom-role-only false --output json | jq '.[] | {"rol
 ...
 ```
 
-### <a name="list-actions-of-a-role-definition"></a>Seznam akcí definici role
+### <a name="list-actions-of-a-role"></a>Seznam akcí role
 
 K zobrazení seznamu akce definici role, použijte [seznamu definice role az](/cli/azure/role/definition#az-role-definition-list):
 
@@ -182,7 +176,9 @@ az role definition list --name "Virtual Machine Contributor" --output json | jq 
 ]
 ```
 
-## <a name="list-role-assignments"></a>Přiřazení rolí seznamu
+## <a name="list-access"></a>Přístup k seznamu
+
+V RBAC pro přístup k seznamu, můžete seznam přiřazení rolí.
 
 ### <a name="list-role-assignments-for-a-user"></a>Seznam přiřazení role pro uživatele
 
@@ -240,7 +236,9 @@ az role assignment list --resource-group pharma-sales-projectforecast --output j
 ...
 ```
 
-## <a name="create-role-assignments"></a>Vytvoření přiřazení role
+## <a name="grant-access"></a>Udělení přístupu
+
+V RBAC udělit přístup, můžete vytvořit přiřazení role.
 
 ### <a name="create-a-role-assignment-for-a-user"></a>Umožňuje vytvořit přiřazení role pro uživatele
 
@@ -290,9 +288,9 @@ Následující příklad přiřadí *Přispěvatel virtuálních počítačů* r
 az role assignment create --role "Virtual Machine Contributor" --assignee-object-id 44444444-4444-4444-4444-444444444444 --resource-group pharma-sales-projectforecast
 ```
 
-## <a name="remove-a-role-assignment"></a>Odebrat přiřazení role
+## <a name="remove-access"></a>Odebrat přístup
 
-Pokud chcete odstranit přiřazení role, použijte [odstranit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-delete):
+V RBAC, k odebrání přístupu, je odstranit přiřazení role pomocí [odstranit přiřazení role az](/cli/azure/role/assignment#az-role-assignment-delete):
 
 ```azurecli
 az role assignment delete --assignee <assignee> --role <role> --resource-group <resource_group>

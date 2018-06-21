@@ -3,15 +3,15 @@ title: VMware do Azure replikace architektury v Azure Site Recovery | Microsoft 
 description: Tento článek obsahuje přehled součásti a architektura použít při replikaci místní virtuální počítače VMware do Azure s Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.topic: article
-ms.date: 03/19/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: c1aa89f14edab7d0e560c20d6bc48480aff1631f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 61c283c178936c98a9a18509c1b46035e48f8f24
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30184577"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285266"
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>Z VMware do Azure replikace architektura
 
@@ -42,7 +42,7 @@ Obecné kroky pro nastavení VMware pro zotavení po havárii Azure nebo migrace
 3. **Nastavení replikace**. Vybrat místo chcete replikovat. Můžete nakonfigurovat prostředí replikace zdroje podle nastavení VMware jeden místní virtuální počítač (konfigurační server), který spouští všechny místní součásti Site Recovery, které potřebujete. Po dokončení instalace je počítač serveru konfigurace zaregistrovat v trezoru služeb zotavení. Potom vyberte nastavení cíle. [Další informace](vmware-azure-tutorial.md).
 4. **Vytvořte zásadu replikace**. Můžete vytvořit zásadu replikace, která určuje, jak by měla replikace provedena. 
     - **Prahová hodnota RPO**: Tato nastavení monitorování stavy, pokud replikace neprobíhá v zadané době, výstrahu (a volitelně e-mailu) se objeví. Například pokud nastavíte prahovou hodnotu RPO na 30 minut, a problém brání replikace nedocházelo 30 minut, je vygenerována událost. Toto nastavení nemá vliv replikace. Replikace je souvislý a body obnovení jsou vytvářeny každých několik minut
-    - **Uchování**: bod obnovení uchování Určuje, jak dlouho body obnovení, by měly být udržovány v Azure. Zadejte hodnotu mezi 0 a 24 hodin pro storage úrovně premium, nebo až 72 hodin pro standardní úložiště. Pokud nastavíte hodnotu vyšší než nula můžete převzetí služeb při selhání do nejnovějšího bodu obnovení, nebo uloženého bodu. Po interval uchovávání dat jsou vymazány body obnovení.
+    - **Uchování**: bod obnovení uchování Určuje, jak dlouho body obnovení, by měly být udržovány v Azure. Zadejte hodnotu mezi 0 a 24 hodin pro storage úrovně premium, nebo až 72 hodin pro standardní úložiště. Vám může převzetí služeb při selhání do nejnovějšího bodu obnovení, nebo uloženého bodu Pokud nastavíte hodnotu vyšší než nula. Po interval uchovávání dat jsou vymazány body obnovení.
     - **Snímky konzistentní při selhání**: ve výchozím nastavení, Site Recovery trvá snímky konzistentní při selhání a vytvoří body obnovení s nimi každých několik minut. Bod obnovení je konzistentní, pokud jsou všechny komponenty vzájemně související data konzistentní zápisu pořadí havárie, jako byly v okamžiku vytvoření bodu obnovení. Abyste lépe pochopili, představte si stav dat na pevném disku počítače po výpadku napájení nebo podobné události. Bod obnovení konzistentní při selhání je obvykle stačí, když vaše aplikace je obnovit z havárie bez nekonzistencím data.
     - **Snímky konzistentní aplikace**: není-li tuto hodnotu nula, pokusí se služba Mobility na virtuální počítač spuštěna generovat snímky konzistentní vzhledem k systému souborů a body obnovení. Pořízení snímku první po dokončení počáteční replikace. Potom pořizování snímků frekvencí, které zadáte. Bod obnovení je konzistentní s aplikací, pokud nejen zápisu pořadí konzistentní a spuštěné aplikace dokončit všechny činnosti a vyprázdní vyrovnávací paměti na disk (uvedení aplikace). Body obnovení konzistentní se doporučují pro databázové aplikace jako SQL, Oracle a Exchange. Pokud je dostatečná snímku konzistentní při selhání, můžete tato hodnota nastavena na hodnotu 0.  
     - **Konzistence pro víc Virtuálních**: Volitelně můžete vytvořit skupiny replikace. Když povolíte replikaci, je možné shromažďovat virtuálních počítačů do této skupiny. Virtuální počítače v replikační skupiny replikovat společně a mít sdílené body obnovení konzistentní při selhání a konzistentní při převzetí služeb při selhání. Tato možnost by měla použít pečlivě, protože může ovlivnit výkon zatížení jako snímky potřeba shromáždit napříč více počítačů. Uděláte to jenom, pokud virtuální počítače používají stejné úlohy a musí být konzistentní a virtuální počítače mají podobné konví. Až 8 virtuálních počítačů můžete přidat do skupiny. 

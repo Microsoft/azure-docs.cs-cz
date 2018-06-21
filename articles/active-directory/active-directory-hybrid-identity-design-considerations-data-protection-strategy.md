@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: d65e4c76d6c9bc0b1f6a9f2827a0ae2d7dec5d93
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
-ms.translationtype: HT
+ms.openlocfilehash: f0def105997213ae5d356de89e6189b6441facbd
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824164"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295572"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definování strategie ochrany dat pro vaše řešení hybridní identity
 V této úloze určíte strategie ochrany dat pro vaše řešení hybridní identity k splňovat obchodní požadavky definovaný v:
@@ -57,7 +57,7 @@ V závislosti na tom, jak jste odpověděli na otázky v [určení požadavků n
 >
 
 ## <a name="define-content-management-options"></a>Zadejte možnosti správy obsahu
-Jednou z výhod používání služby Azure AD spravovat hybridní infrastrukturu identit je, že proces je z hlediska koncového uživatele zcela transparentní. Uživatel se pokusí o přístup k sdílený prostředek, prostředek vyžaduje ověření, má uživatel k odeslání požadavku na ověření do služby Azure AD, aby bylo možné získat token a přístup k prostředku. Tento celý proces probíhá na pozadí bez zásahu uživatele. Je také možné udělit oprávnění k [skupiny](active-directory-manage-groups.md#getting-started-with-access-management) uživatelů, aby mohli provádět některé běžné akce.
+Jednou z výhod používání služby Azure AD spravovat hybridní infrastrukturu identit je, že proces je z hlediska koncového uživatele zcela transparentní. Uživatel se pokusí o přístup k sdílený prostředek, prostředek vyžaduje ověření, má uživatel k odeslání požadavku na ověření do služby Azure AD, aby bylo možné získat token a přístup k prostředku. Tento celý proces probíhá na pozadí bez zásahu uživatele. Je také možné udělit oprávnění k [skupiny](fundamentals/active-directory-manage-groups.md#getting-started-with-access-management) uživatelů, aby mohli provádět některé běžné akce.
 
 Organizace, které jsou starat o ochrany osobních údajů obvykle vyžadují klasifikace dat pro své řešení. Pokud své aktuální místní infrastrukturu se už používá klasifikaci dat, je možné použít Azure AD jako hlavní úložiště pro identitu uživatele. Nástroj běžné, že je použité místní pro klasifikaci dat se nazývá [sada nástrojů klasifikace dat](https://msdn.microsoft.com/library/Hh204743.aspx) pro Windows Server 2012 R2. Tento nástroj může pomoct určit, klasifikovat a chránit data na souborových serverech v privátním cloudu. Je také možné použít [automatickou klasifikaci souborů](https://technet.microsoft.com/library/hh831672.aspx) ve Windows serveru 2012 k provedení této úlohy.
 
@@ -131,12 +131,12 @@ Všechny interakce v diagramu vám obrázek X představuje jeden scénář říz
 
   3. Podmíněný přístup pro aplikace Office 365 s Microsoft Intune: správci IT mohou poskytnout zásady podmíněného přístupu zařízení kvůli zabezpečení prostředků podniku, zatímco ve stejnou dobu umožnili pracovníkům s vhodnými zařízeními přístup ke službám. Další informace najdete v tématu [Zásady podmíněného přístupu zařízení pro služby Office 365](active-directory-conditional-access-device-policies.md).
 
-  4. Podmíněný přístup pro aplikace Saas: [tuto funkci](http://blogs.technet.com/b/ad/archive/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work.aspx) umožňuje konfigurovat pravidla přístupu k jednotlivým aplikacím služby Multi-Factor authentication a možnost blokovat přístup pro uživatele není v důvěryhodné síti. Pravidla vícefaktorového ověřování můžete použít pro všechny uživatele, které jsou přiřazené k aplikaci nebo jenom pro uživatele v rámci určených skupinách zabezpečení. Uživatelé mohou být vyjmuty z požadavku vícefaktorového ověřování, pokud uživatelé přistupují aplikace z IP adresy, která v rámci organizace sítě.
+  4. Podmíněný přístup pro aplikace Saas: [tuto funkci](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/25/azure-ad-conditional-access-preview-update-more-apps-and-blocking-access-for-users-not-at-work/) umožňuje konfigurovat pravidla přístupu k jednotlivým aplikacím služby Multi-Factor authentication a možnost blokovat přístup pro uživatele není v důvěryhodné síti. Pravidla vícefaktorového ověřování můžete použít pro všechny uživatele, které jsou přiřazené k aplikaci nebo jenom pro uživatele v rámci určených skupinách zabezpečení. Uživatelé mohou být vyjmuty z požadavku vícefaktorového ověřování, pokud uživatelé přistupují aplikace z IP adresy, která v rámci organizace sítě.
 
 Vzhledem k tomu použít s vícevrstvých možnosti pro řízení přístupu, se nedají použít pro tuto úlohu porovnání mezi těmito možnostmi. Ujistěte se, že se využívá všechny možnosti, které jsou dostupné pro každý scénář, který vyžaduje, abyste řízení přístupu k prostředkům.
 
 ## <a name="define-incident-response-options"></a>Definování možností reakce na incidenty
-Azure AD může být užitečné tak identity potenciální rizika zabezpečení v prostředí podle sledování činnosti uživatelů. IT můžete použít Azure AD přístup a použití sestav získat přehled o integrity a zabezpečení adresáři vaší organizace. Tyto informace a správce IT pomohou určit, kde může být bezpečnostním rizikům, tak, aby adekvátní můžete naplánovat zmírnění.  [Předplatné Azure AD Premium](active-directory-get-started-premium.md) obsahuje sadu sestavy zabezpečení, které můžete povolit tak získal tyto informace. [Azure AD sestavy](active-directory-view-access-usage-reports.md) jsou rozdělené takto:
+Azure AD může být užitečné tak identity potenciální rizika zabezpečení v prostředí podle sledování činnosti uživatelů. IT můžete použít Azure AD přístup a použití sestav získat přehled o integrity a zabezpečení adresáři vaší organizace. Tyto informace a správce IT pomohou určit, kde může být bezpečnostním rizikům, tak, aby adekvátní můžete naplánovat zmírnění.  [Předplatné Azure AD Premium](fundamentals/active-directory-get-started-premium.md) obsahuje sadu sestavy zabezpečení, které můžete povolit tak získal tyto informace. [Azure AD sestavy](active-directory-view-access-usage-reports.md) jsou rozdělené takto:
 
 * **Sestavy anomálií**: obsahovat přihlášení události, které mají neobvyklé. Cílem je mít budete vědět, tyto aktivity a vám umožní provádět rozhodnutí o tom, jestli je podezřelé události.
 * **Integrované sestavy aplikace**: poskytuje přehled o tom, jak cloudové aplikace jsou používány ve vaší organizaci. Azure Active Directory umožňuje integraci s tisíci cloudových aplikací.
@@ -145,9 +145,9 @@ Azure AD může být užitečné tak identity potenciální rizika zabezpečení
 * **Protokoly aktivity**: obsahovat záznam všech auditované události v posledních 24 hodin, posledních 7 dnů, nebo posledních 30 dní, a také změny aktivity skupiny a aktivita resetování a registraci hesla.
 
 > [!TIP]
-> Je jinou sestavu, který může také pomoct týmem reakcí na incidenty práci na případu [uživatele s uniklé přihlašovací údaje](http://blogs.technet.com/b/ad/archive/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials.aspx) sestavy. Tato sestava zobrazí všechny shody mezi seznamu uniklé přihlašovací údaje a vašeho klienta.
+> Je jinou sestavu, který může také pomoct týmem reakcí na incidenty práci na případu [uživatele s uniklé přihlašovací údaje](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/15/azure-active-directory-premium-reporting-now-detects-leaked-credentials/) sestavy. Tato sestava zobrazí všechny shody mezi seznamu uniklé přihlašovací údaje a vašeho klienta.
 >
->
+
 
 Další důležité předdefinovaných sestav ve službě Azure AD, který se dá použít během šetření reakcí na incidenty a jsou:
 

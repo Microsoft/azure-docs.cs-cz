@@ -16,15 +16,17 @@ ms.workload: infrastructure
 ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c65ebbc8a61c13b96364dadde45bd4bca828e337
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 53e5100023fb76b4daf468d3f2027f2b5c7f31d7
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/02/2018
-ms.locfileid: "29740879"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292955"
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Postup nalezení bitové kopie virtuálního počítače s Linuxem v Azure Marketplace pomocí Azure CLI
 Toto téma popisuje, jak pomocí Azure CLI 2.0 najít Image virtuálních počítačů v Azure Marketplace. Tyto informace slouží k určení image pořízenou prostřednictvím Marketplace, při vytváření virtuálního počítače programově pomocí rozhraní příkazového řádku šablony správce prostředků nebo jiných nástrojů.
+
+Také procházet dostupné obrázků a nabízí pomocí [Azure Marketplace](https://azuremarketplace.microsoft.com/) výkladní skříň, [portál Azure](https://portal.azure.com), nebo [prostředí Azure PowerShell](../windows/cli-ps-findimage.md). 
 
 Ujistěte se, že jste nainstalovali nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) a jsou přihlášení k účtu Azure (`az login`).
 

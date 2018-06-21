@@ -1,20 +1,17 @@
 ---
 title: Instalovat hlavní cílový server Linux převzetí služeb při selhání z Azure do místní | Microsoft Docs
 description: Před opětovnou ochranu virtuální počítač s Linuxem, potřebujete hlavní cílový server Linux. Zjistěte, jak k jeho instalaci.
-services: site-recovery
-documentationcenter: ''
 author: nsoneji
-manager: gauravd
 ms.service: site-recovery
-ms.topic: article
-ms.date: 05/08/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: nisoneji
-ms.openlocfilehash: 4d28a9a840b25ea415021da149ab145836cbed28
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 338a104de6fadeff842e6e135db395758c8f8dce
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802506"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285929"
 ---
 # <a name="install-a-linux-master-target-server"></a>Instalovat hlavní cílový server Linux
 Po selhání virtuálních počítačů do Azure, můžete můžete navrácení služeb po obnovení virtuálních počítačů k místní lokalitě. Chcete-li navrácení služeb po obnovení, je potřeba znovu nastavte ochranu virtuálního počítače z Azure do místní lokality. Pro tento proces budete potřebovat místní hlavní cílový server příjem provozu. 

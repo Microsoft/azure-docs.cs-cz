@@ -8,18 +8,24 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 06/20/2018
 ms.author: heidist
-ms.openlocfilehash: 4215795b7cd2a25427a3ce9b3cde16bfc69cb009
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2ec720f26cfbadb9963ff3991ad1795c9b30c136
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32185939"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284977"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>Vytvářet a spravovat klíče api Key pro službu Azure Search
 
-Všechny žádosti o službu vyhledávání potřebovat rozhraní api klíč, který byl vygenerován speciálně pro vaši službu. Tento klíč rozhraní api se jedná o jedinou mechanismus pro ověřování přístupu do vašeho koncového bodu služby vyhledávání. 
+Všechny žádosti o službu vyhledávání třeba jen pro čtení rozhraní api – klíč, který byl vygenerován speciálně pro vaši službu. Klíč rozhraní api se jedná o jedinou mechanismus pro ověřování přístupu do vašeho koncového bodu služby vyhledávání a musí být obsaženy na každý požadavek. V [REST řešení](search-get-started-nodejs.md#update-the-configjs-with-your-search-service-url-and-api-key), klíč rozhraní api se obvykle zadává v hlavičce žádosti. V [.NET řešení](search-howto-dotnet-sdk.md#core-scenarios), je často zadaný jako nastavení konfigurace a pak předá jako klíč [pověření](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.credentials) (klíč správce) nebo [SearchCredentials](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.searchcredentials) (klíč) na [SearchServiceClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient).
+
+Klíče jsou vytvořeny pomocí služby search během zajišťování služby. Můžete zobrazit a získat hodnoty klíče v [portál Azure](https://portal.azure.com).
+
+![Stránky portálu, nastavení klíče oddílu](media/search-manage/azure-search-view-keys.png)
+
+## <a name="what-is-an-api-key"></a>Co je klíč rozhraní api
 
 Klíč rozhraní api je řetězec tvořený náhodně generované číslic a písmen. Prostřednictvím [oprávnění na základě rolí](search-security-rbac.md), můžete odstranit nebo čtení klíčů, ale nelze nahradit klíč uživatelské heslo nebo použít služby Active Directory jako primární ověřování metody pro přístup k operace hledání. 
 

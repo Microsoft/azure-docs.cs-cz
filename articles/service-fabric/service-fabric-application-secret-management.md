@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: vturecek
-ms.openlocfilehash: fa79d50d6ef2899dcaf4116dcfe8ac7fae077959
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 85eb1cd40986bd6fb83c80a274046bbae3756b7e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212683"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295449"
 ---
 # <a name="manage-secrets-in-service-fabric-applications"></a>Spravovat tajných klíčů v aplikace Service Fabric
 Tento průvodce vás provede kroky správy tajných klíčů v aplikace Service Fabric. Tajné klíče může být žádné citlivé informace, jako je například úložiště připojovací řetězce, hesla nebo jiné hodnoty, které by neměly být zpracovány v prostém textu.
@@ -43,7 +43,7 @@ Certifikát šifrování dat se používají výhradně pro šifrování a deši
 Tento certifikát musí být nainstalován na každém uzlu v clusteru. Použije se v době běhu k dešifrování hodnot uložených v souborech Settings.xml služby. V tématu [postup vytvoření clusteru s podporou pomocí Azure Resource Manager] [ service-fabric-cluster-creation-via-arm] pokyny pro instalaci. 
 
 ## <a name="encrypt-application-secrets"></a>Šifrování tajné klíče aplikace
-Pokud nasazujete aplikaci, šifrování tajný hodnoty s certifikátem a jejich vložení do služby souborech Settings.xml konfigurační soubor. Sada Service Fabric SDK obsahuje vestavěné tajný šifrování a dešifrování funkce. Tajný hodnoty může být v vytvořené čas zašifrované dešifrovat a čtení prostřednictvím kódu programu v kódu služby. 
+Pokud nasazujete aplikaci, šifrování tajný hodnoty s certifikátem a jejich vložení do služby souborech Settings.xml konfigurační soubor. Sada Service Fabric SDK obsahuje vestavěné tajný šifrování a dešifrování funkce. Tajný hodnoty může být zašifrované v čase vytvoření buildu dešifrovat a čtení prostřednictvím kódu programu v kódu služby. 
 
 Následující příkaz prostředí PowerShell se používá k šifrování tajného klíče. Tento příkaz šifruje pouze hodnotu parametru. provede **není** přihlásit šifrovaný text. Je nutné použít stejný certifikát šifrování, který je nainstalován v clusteru k vytvoření ciphertext tajný hodnoty:
 

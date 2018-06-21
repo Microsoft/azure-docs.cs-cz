@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 63d22a3213e7a3d8d2f8bf7714eb5bc8f3f0f477
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ee9c1494cb2bca4193bfe8b16b72ba5d317f9f3e
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212634"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295466"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>Kurz: Azure Active Directory integrace s Wingspan eTMF
 
@@ -204,7 +204,7 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu. 
 
-Klikněte na dlaždici Wingspan eTMF na přístupovém panelu, budete přesměrováni na organizaci přihlašovací stránku. Po úspěšném přihlášení můžete se být přihlášení k aplikaci eTMF Wingspan. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586).
+Klikněte na dlaždici Wingspan eTMF na přístupovém panelu, budete přesměrováni na organizaci přihlašovací stránku. Po úspěšném přihlášení můžete se být přihlášení k aplikaci eTMF Wingspan. Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

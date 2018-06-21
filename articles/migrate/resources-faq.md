@@ -4,14 +4,14 @@ description: Nejčastější dotazy na migraci Azure adresy
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 06/20/2018
 ms.author: snehaa
-ms.openlocfilehash: a18cab73a019039bf5e5829ad1faa4b8f1a70391
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: db47f774dd4f73692d0b6ab2c4a511f687864e37
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209941"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285701"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure migrovat – nejčastější dotazy (FAQ)
 
@@ -21,7 +21,7 @@ Tento článek obsahuje nejčastější dotazy týkající se migrace Azure. Pok
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery"></a>Jak se migrovat Azure liší od Azure Site Recovery?
 
-Azure migrace je assessment služba, která vám pomůže odhalovat vaše místní úlohy a plánování migrace do Azure. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure), nejen pro řešení zotavení po havárii, umožňuje migrovat místní úlohy virtuálních počítačů IaaS v Azure. 
+Azure migrace je assessment služba, která vám pomůže odhalovat vaše místní úlohy a plánování migrace do Azure. [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure), nejen pro řešení zotavení po havárii, umožňuje migrovat místní úlohy virtuálních počítačů IaaS v Azure.
 
 ### <a name="how-is-azure-migrate-different-from-azure-site-recovery-deployment-planner"></a>Jak se migrovat Azure liší od Azure Site Recovery nasazení Planner?
 
@@ -36,6 +36,10 @@ Nástroje pro plánování migrace je Azure migrací a Azure Site Recovery nasaz
 ### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>VCenter Server za účelem zjištění prostředí VMware musí migrovat Azure?
 
 Ano, Azure migrace vyžaduje vCenter Server za účelem zjištění prostředí VMware. Nepodporuje zjišťování hostitelích ESXi, které nejsou spravované přes vCenter Server.
+
+### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Které oblasti Azure podporuje migraci Azure?
+
+Azure migrací teď podporuje Východ USA a západní centrální USA jako umístění projektu. Všimněte si, že i když migrace projekty může vytvořit pouze ve – Západ střední USA a Východ USA, můžete stále vyhodnotit, s vašich počítačů pro [více cílových míst](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties). Umístění projektu slouží pouze k uložení zjištěná data.
 
 ## <a name="discovery"></a>Zjišťování
 

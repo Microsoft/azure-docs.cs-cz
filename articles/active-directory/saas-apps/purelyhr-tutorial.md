@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: b85a92e60bb897bfd5f1b1c7af6f724a6afd3340
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ba24422f7ff5759153a6e067cc61251b43a7a091
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220239"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286928"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-purelyhr"></a>Kurz: Azure Active Directory integrace s PurelyHR
 
@@ -228,7 +228,7 @@ V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci 
 
 Klikněte na dlaždici vyrovná se se zatížením pro správu vzdělávacího procesu na přístupovém panelu, můžete získat automaticky přihlášení k aplikaci vyrovná se se zatížením pro správu vzdělávacího procesu.
 
-Další informace o na přístupovém panelu najdete v tématu. [Úvod do přístupového panelu](https://msdn.microsoft.com/library/dn308586).
+Další informace o na přístupovém panelu najdete v tématu. [Úvod do přístupového panelu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 

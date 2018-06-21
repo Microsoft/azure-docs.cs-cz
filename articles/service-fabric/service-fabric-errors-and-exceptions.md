@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/18/2017
+ms.date: 06/20/2018
 ms.author: ryanwi
-ms.openlocfilehash: 31defde289643b2adfd6e15bb8417b5498ba65d1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e854ed42b6af8bc090950e8399e3229e202a2ed0
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212496"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293408"
 ---
 # <a name="common-exceptions-and-errors-when-working-with-the-fabricclient-apis"></a>Běžné výjimek a chyb při práci s rozhraními API sady FabricClient
 [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient#System_Fabric_FabricClient) rozhraní API umožňují cluster a aplikace správcům umožňuje provádět úlohy správy na aplikace, služby nebo clusteru Service Fabric. Například nasazení aplikace, upgrade a odebrání, kontrola stavu clusteru nebo testování služby. Vývojáři aplikací a Správce clusteru můžete použít rozhraní API FabricClient vyvíjet nástroje pro správu clusteru Service Fabric a aplikace.

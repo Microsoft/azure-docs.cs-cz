@@ -3,7 +3,7 @@ title: Pro odeslání události do prostředí Azure časové řady Insights | M
 description: Tento kurz vysvětluje, jak vytvořit a nakonfigurovat Centrum událostí a spustíte ukázkovou aplikaci nabízená události zobrazený v Azure časové řady přehledy.
 ms.service: time-series-insights
 services: time-series-insights
-author: venkatgct
+author: ashannon7
 ms.author: venkatja
 manager: jhubbard
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: db528f5a02d90e7e1e2e2cd3da30f04755575777
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fb550942debf26691a0deac2a1ad8093128e4e63
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657784"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36294509"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Odesílání událostí do prostředí Time Series Insights pomocí centra událostí
 Tento článek vysvětluje, jak vytvořit a nakonfigurovat Centrum událostí a spusťte ukázkové aplikace nabízené události. Pokud máte existující centra událostí s událostmi ve formátu JSON, přeskočte tento kurz a zobrazit prostředí v [časové řady Insights](https://insights.timeseries.azure.com).

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: apimpm
-ms.openlocfilehash: cce2376c440c233d81198d903709867c5fdca7ec
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7d172a40f2aad65b595026fc656634060a1f7193
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839854"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36284868"
 ---
 # <a name="authorize-requests-using-external-authorizer"></a>Autorizaci požadavků na používání externí prvek authorizer
 
@@ -28,7 +28,7 @@ Tento článek ukazuje rozhraní API služby Azure správy zásad vzorku, který
 
 Vložte kód do **příchozí** bloku.
 
-[!code-xml[Main](../../../api-management-policy-samples/Snippets/Authorize requests using external authorizer.policy.xml)]
+[!code-xml[Main](../../../api-management-policy-samples/examples/Authorize requests using external authorizer.policy.xml)]
 
 ## <a name="next-steps"></a>Další postup
 

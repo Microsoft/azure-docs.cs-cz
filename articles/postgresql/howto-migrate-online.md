@@ -1,6 +1,6 @@
 ---
 title: Minimální dobou výpadku migrace do databáze Azure pro PostgreSQL
-description: Tento článek popisuje, jak provést migraci minimální dobou výpadku extrahujte databázi PostgreSQL do souboru výpisu, obnovení databáze PostgreSQL ze souboru archivu vytvořené pg_dump v databázi Azure pro PostgreSQL a nastavení počáteční zatížení a synchronizaci průběžné dat ze zdrojové databáze na cílovou databázi pomocí společnosti Attunity replikace pro Migrations společnosti Microsoft.
+description: Tento článek popisuje, jak provést minimální dobou výpadku migraci databáze PostgreSQL do databáze Azure pro PostgreSQL pomocí služby Azure databáze migrace.
 services: postgresql
 author: HJToland3
 ms.author: jtoland
@@ -8,32 +8,24 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 48cf460405ae3985553f9bff29f4fd7abb008196
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 06/21/2018
+ms.openlocfilehash: 9ab5d4615a8baf763d0b7ee47bf0890124f8665c
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29692085"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36292538"
 ---
 # <a name="minimal-downtime-migration-to-azure-database-for-postgresql"></a>Minimální dobou výpadku migrace do databáze Azure pro PostgreSQL
-Existující databáze PostgreSQL můžete migrovat do databáze Azure pro PostgreSQL pomocí společnosti Attunity replikace pro Migrations společnosti Microsoft. Společnosti Attunity replikace je společné nabídky od společnosti Attunity a společnosti Microsoft. Společně se službou migrace databáze Azure je zahrnuta bez dalších poplatků zákazníkům společnosti Microsoft. 
+Můžete provést PostgreSQL migrací databáze Azure pro PostgreSQL s minimálními výpadky pomocí nově přináší **průběžné synchronizace schopností** pro [služba migrace databáze Azure](https://aka.ms/get-dms) (DMS) . Tato funkce omezí doba výpadku, který je spojené s prováděním.
 
-Replikovat společnosti Attunity pomáhá minimalizovat prostoje během migrace databáze, a udržuje provozní v celém procesu zdrojové databáze.
+## <a name="overview"></a>Přehled
+Služba DMS provede počáteční zatížení místní databázi Azure pro PostgreSQL a pak nepřetržitě synchronizuje všechny nové transakce do Azure aplikace bez přerušení chodu. Po data zachytí na cíli Azure straně, zastavte aplikaci na chvíli stručný (minimální výpadek), počkat na poslední dávku dat (od času zastavte aplikaci, dokud nebude aplikace efektivně provést jakékoli nové přenosy dat k dispozici) pro zachycení až na cíli a aktualizujte připojovací řetězec tak, aby odkazoval na Azure. Jakmile budete hotovi, bude vaše aplikace za provozu v Azure!
 
-Společnosti Attunity replikace je nástroj replikace dat, která umožňuje synchronizaci dat mezi různé zdroje a cíle. Se rozšíří schéma vytváření skriptu a data související s každou databázové tabulky. Replikovat společnosti Attunity nešířily všechny artefakty (například SP, triggery, funkce a tak dále) nebo převést, například, kód PL/SQL, který je hostován v artefaktům T-SQL.
+![Průběžné synchronizace se službou Azure databáze migrace](./media/howto-migrate-online/ContinuousSync.png)
 
-> [!NOTE]
-> I když společnosti Attunity replikovat podporuje širokou škálu scénářů migrace, se zaměřuje na podporu pro určitou dílčí sadu párů zdroj a cíl.
+Migrace DMS PostgreSQL zdrojů je aktuálně ve verzi preview. Pokud chcete vyzkoušet službu, kterou chcete migrovat úlohy PostgreSQL, zaregistrujte si prostřednictvím Azure DMS [stránku s náhledem](https://aka.ms/dms-preview) vyjádřit váš zájem. Vaše zpětná vazba je neocenitelnou pomocí v dále zlepšit služby.
 
-Přehled procesu k provedení migrace minimální dobou výpadku zahrnuje:
-
-* **Migraci schématu zdroje PostgreSQL** k databázi Azure pro databázi PostgreSQL pomocí [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) příkazu s parametrem - n a potom pomocí [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) příkaz.
-
-* **Nastavení počáteční zatížení a synchronizaci průběžné dat ze zdrojové databáze na cílovou databázi** pomocí společnosti Attunity replikace pro Migrations společnosti Microsoft. Díky tomu minimalizuje čas, který zdrojové databáze musí být nastavena jen pro čtení během přípravy k přepínač aplikace na cílovou databázi PostgreSQL na Azure.
-
-Další informace o společnosti Attunity replikace pro Microsoft Migrations nabídky najdete v následujících zdrojích informací:
- - Přejděte na [společnosti Attunity replikace pro Microsoft Migrations](https://aka.ms/attunity-replicate) webovou stránku.
- - Stáhněte si [společnosti Attunity replikace pro Microsoft migrace](http://discover.attunity.com/download-replicate-microsoft-lp6657.html).
- - Přejděte na [společnosti Attunity replikovat komunity](https://aka.ms/attunity-community/) úvodní příručku, kurzy a podporu.
- - Podrobné pokyny k používání společnosti Attunity replikovat při migraci z PostgreSQL do databáze Azure pro PostgreSQL najdete v tématu [příručka k migraci databáze](https://datamigration.microsoft.com/scenario/postgresql-to-azurepostgresql).
+## <a name="next-steps"></a>Další postup
+- Zobrazit na video [modernizace aplikaci s Microsoft Azure](https://medius.studios.ms/Embed/Video/BRK2102?sid=BRK2102), který obsahuje ukázku znázorňující způsob migrace PostgreSQL aplikace do databáze Azure pro PostgreSQL.
+- Zaregistrujte si omezené preview minimální dobou výpadku migrace PostgreSQL do databáze Azure pro PostgreSQL prostřednictvím Azure DMS [stránku s náhledem](https://aka.ms/dms-preview).

@@ -3,7 +3,7 @@ title: Vytváření řídicích panelů Azure prostřednictvím kódu programu |
 description: Tento článek vysvětluje, jak programově vytváření řídicích panelů Azure.
 services: azure-portal
 documentationcenter: ''
-author: adamab
+author: adamabmsft
 manager: dougeby
 editor: tysonn
 ms.service: azure-portal
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: d3a59c2d9b62bdbde75c54347ce9117fc9114cd6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dafada5cecbc6345da46bc3a32fc3b91eb72313a
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220012"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36295507"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Vytváření řídicích panelů Azure prostřednictvím kódu programu
 

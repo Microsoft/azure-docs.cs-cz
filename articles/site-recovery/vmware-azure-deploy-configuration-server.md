@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 05/06/2018
+ms.topic: conceptual
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: 3e7a9196d928fb8a5d12647e1916b046ebedd261
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 4d944bec9d1cf73263d9deb54d0d9b3f6fc5532f
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267505"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285029"
 ---
 # <a name="deploy-a-configuration-server"></a>Nasazení konfiguračního serveru
 
@@ -31,7 +31,7 @@ Doporučujeme nasadit jako vysoce dostupný virtuální počítač VMware konfig
 
 MySQL musí být nainstalován na konfiguračním serveru. To provedete pomocí jedné z následujících metod:
 
-- Let – Site Recovery, stáhněte a nainstalujte ho při, když spustí Průvodce konfigurací serveru správy. Není nutné provádět žádnou zvláštní akci.
+- Umožní Site Recovery, stáhněte a nainstalujte ho při spuštění Průvodce konfigurací serveru správy. Není nutné provádět žádnou zvláštní akci.
 - Ručně stáhnout MySQL a umístěte jej do složky C:\Temp\ASRSetup. Spusťte instalaci. Site Recovery rozpozná, že je nainstalováno, když spustíte průvodce.
 - Ručně stáhnout MySQL a umístěte jej do složky C:\Temp\ASRSetup. Když spustíte Průvodce bude Najděte instalační soubor a nainstalujte ji z tohoto umístění. 
 

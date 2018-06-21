@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 06/12/2018
+ms.date: 06/20/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 7c7540a650d8726fb0a376788073968af6b48834
-ms.sourcegitcommit: 5821eef990c26fa045e4beacce39f6b02b83156b
+ms.openlocfilehash: b9e06865b4a401cd925cce564b9c30594c912bae
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/15/2018
-ms.locfileid: "35683028"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36297962"
 ---
 <a name="virtual-networking-limits-classic"></a>Následující omezení platí pouze pro síťové prostředky spravované přes model nasazení Classic na předplatné. Zjistěte, jak [zobrazení vašeho aktuálního využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md).
 
@@ -25,7 +25,7 @@ ms.locfileid: "35683028"
 | Privátní IP adresy na virtuální síť |4 096 |4 096 |
 | Souběžné TCP nebo UDP toků na síťový adaptér virtuálního počítače nebo role instance |500 000 |500 000 |
 | Skupiny zabezpečení sítě (NSG) |100 |200 |
-| Počet pravidel NSG na skupinu NSG |200 |400 |
+| Počet pravidel NSG na skupinu NSG |200 |1000 |
 | Směrovací tabulky definované uživatelem |100 |200 |
 | Trasy definované uživatelem na směrovací tabulku |100 |400 |
 | Veřejné IP adresy (dynamické) |5 |kontaktovat podporu |
@@ -64,6 +64,7 @@ Následující omezení platí pouze pro síťové prostředky spravované přes
 ** Tyto výchozí omezení se vztahují na odběry, které předtím nebyl dříve tyto limity zvýšit prostřednictvím podpory
 
 #### <a name="load-balancer"></a>Omezení nástroje pro vyrovnávání zatížení
+Následující omezení platí pouze pro síťové prostředky spravované přes Azure Resource Manager na oblast a předplatné. Zjistěte, jak [zobrazení vašeho aktuálního využití prostředků pro vaše předplatné omezení](../articles/networking/check-usage-against-limits.md)
 
 | Prostředek | Výchozí omezení | Maximální omezení |
 | --- | --- | --- |

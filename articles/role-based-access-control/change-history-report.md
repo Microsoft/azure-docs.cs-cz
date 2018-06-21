@@ -1,6 +1,6 @@
 ---
 title: Zobrazit protokoly aktivity pro RBAC změny v Azure | Microsoft Docs
-description: Zobrazit protokoly aktivity pro změny řízení přístupu na základě rolí za posledních 90 dnů.
+description: Zobrazit aktivitu protokoly pro řízení přístupu na základě role (RBAC) změny za posledních 90 dnů.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 03961de233861baf923402cc96ab8174b3233bd0
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: c82c24c6d652a65f5ba851de66a1f2fe595a46a5
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266644"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293383"
 ---
-# <a name="view-activity-logs-for-role-based-access-control-changes"></a>Zobrazit protokoly aktivity pro změny řízení přístupu na základě rolí
+# <a name="view-activity-logs-for-rbac-changes"></a>Zobrazit protokoly aktivity pro RBAC změny
 
 Někdy musíte informace o změnách přístupu na základě rolí k řízení (RBAC), například pro auditování nebo účely odstraňování potíží. Vždy, když někdo nějaký provádí změny v přiřazení role nebo definice rolí v rámci vašich předplatných, změny se budou protokolovat [protokol činnosti Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Můžete zobrazit protokoly aktivity zobrazíte všechny změny RBAC za posledních 90 dnů.
 

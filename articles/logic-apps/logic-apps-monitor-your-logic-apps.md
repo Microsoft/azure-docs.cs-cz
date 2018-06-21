@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 061269050ad598e1877c3b7bc6745d4095816020
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f11db2009328118dda036057918ba853f5032200
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301214"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293519"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Monitorování stavu, nastavit protokolování diagnostiky a zapnutí výstrah pro Azure Logic Apps
 
@@ -118,19 +118,11 @@ Vyhledat a zobrazit události ve vaší aplikaci logiky, jako například aktivo
 
    ![Vyberte pracovní prostor analýzy protokolů](media/logic-apps-monitor-your-logic-apps/selectla.png)
 
-3. V části **správy**, zvolte **portálu OMS**.
+3. V části **správy**, zvolte **hledání protokolů**.
 
-   ![Zvolte "Portál OMS"](media/logic-apps-monitor-your-logic-apps/omsportalpage.png)
+   ![Zvolte "Hledání protokolů"](media/logic-apps-monitor-your-logic-apps/log-search.png)
 
-4. Na domovské stránce, zvolte **hledání protokolů**.
-
-   ![Na domovské stránce zvolte "Hledání protokolů"](media/logic-apps-monitor-your-logic-apps/logsearch.png)
-
-   -nebo-
-
-   ![V nabídce zvolte "Hledání protokolů"](media/logic-apps-monitor-your-logic-apps/logsearch-2.png)
-
-5. Do vyhledávacího pole zadejte pole, které chcete najít a stiskněte klávesu **Enter**. Když začnete psát, zobrazí možné shody a operací, které můžete použít. 
+4. Do vyhledávacího pole zadejte pole, které chcete najít a stiskněte klávesu **Enter**. Když začnete psát, zobrazí možné shody a operací, které můžete použít. 
 
    Například pokud chcete najít prvních 10 události, které se stalo, zadejte a vyberte tento vyhledávací dotaz: **hledání kategorie == "Runtime pracovního postupu" | omezit 10**
 
@@ -138,27 +130,27 @@ Vyhledat a zobrazit události ve vaší aplikaci logiky, jako například aktivo
 
    Další informace o [vyhledávání dat v analýzy protokolů](../log-analytics/log-analytics-log-searches.md).
 
-6. Na stránce výsledky v levém panelu, vyberte časový rámec, který chcete zobrazit.
+5. Na stránce výsledky v levém panelu, vyberte časový rámec, který chcete zobrazit.
 Chcete-li upřesněte dotaz přidáním filtru, zvolte **+ přidat**.
 
    ![Vyberte časový rámec pro výsledky dotazu](media/logic-apps-monitor-your-logic-apps/query-results.png)
 
-7. V části **přidat filtry**, zadejte název filtru filtr, který chcete vyhledávat. Vyberte filtr a vyberte **+ přidat**.
+6. V části **přidat filtry**, zadejte název filtru filtr, který chcete vyhledávat. Vyberte filtr a vyberte **+ přidat**.
 
    Tento příklad používá slovo "status" k vyhledání chybných události **AzureDiagnostics**.
    Zde filtr pro **status_s** je již vybrána.
 
    ![Vyberte filtr](media/logic-apps-monitor-your-logic-apps/log-search-add-filter.png)
 
-8. V levém panelu, vyberte hodnota filtru, který chcete použít a vyberte **použít**.
+7. V levém panelu, vyberte hodnota filtru, který chcete použít a vyberte **použít**.
 
    ![Vyberte hodnotu filtru, zvolte "Použít"](media/logic-apps-monitor-your-logic-apps/log-search-apply-filter.png)
 
-9. Nyní se vraťte na dotaz, který vytváříte. Dotaz se aktualizuje se vybraný filtr a hodnotou. Předchozí výsledky jsou nyní příliš filtrovány.
+8. Nyní se vraťte na dotaz, který vytváříte. Dotaz se aktualizuje se vybraný filtr a hodnotou. Předchozí výsledky jsou nyní příliš filtrovány.
 
    ![Vrátí do dotazu s filtrované výsledky.](media/logic-apps-monitor-your-logic-apps/log-search-query-filtered-results.png)
 
-10. Pokud chcete uložit dotazu pro budoucí použití, zvolte **Uložit**. Další informace [jak uložit dotazu](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query).
+9. Pokud chcete uložit dotazu pro budoucí použití, zvolte **Uložit**. Další informace [jak uložit dotazu](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md#save-oms-query).
 
 <a name="extend-diagnostic-data"></a>
 

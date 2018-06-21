@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: jeedes
-ms.openlocfilehash: e96a34cf0e9fe4f4b0a35790089bda17ced5d818
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 380b7e8fc48b88449cf43fda92af7f9503771777
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231242"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287220"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Kurz: Azure Active Directory integrace s Procore jednotného přihlašování
 
@@ -254,7 +254,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Pokud chcete testovat vaše nastavení jednotného přihlašování, otevřete Panel přístupu. Další podrobnosti o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](https://msdn.microsoft.com/library/dn308586). Když kliknete na dlaždici Procore jednotného přihlašování na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Procore jednotné přihlašování.
+Pokud chcete testovat vaše nastavení jednotného přihlašování, otevřete Panel přístupu. Další podrobnosti o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). Když kliknete na dlaždici Procore jednotného přihlašování na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci Procore jednotné přihlašování.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
