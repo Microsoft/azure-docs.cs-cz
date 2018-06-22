@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 7285cf47c3a5ec731cd9cfe311053e9d19886f1d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 522ece2528e43c1037dc6bb707201ecda8074dd9
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29400235"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301382"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Připojit k virtuálnímu počítači serveru SQL v Azure
 
@@ -139,7 +139,7 @@ Následující tabulka uvádí požadavky na připojení k SQL Server běžící
 | [Vytvořit přihlašovací jméno SQL](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Pokud používáte ověřování SQL, potřebujete přihlašovací jméno SQL pomocí uživatelského jména a hesla, která má také oprávnění k cílové databázi. |
 | [Povolit protokol TCP/IP](#manualTCP) | SQL Server musí umožňovat připojení přes protokol TCP. |
 | [Povolit pravidlo brány firewall pro port serveru SQL Server](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | V bráně firewall na virtuální počítač musí umožňovat příchozí komunikaci na portu systému SQL Server (standardně 1433). |
-| [Vytvořit pravidlo pro skupinu zabezpečení sítě pro TCP 1433](../../../virtual-network/virtual-networks-create-nsg-arm-pportal.md#create-rules-in-an-existing-nsg) | Virtuální počítač přijímat přenosy na portu systému SQL Server (standardně 1433), pokud se chcete připojit přes internet, musíte povolit. Místní a virtuální sítě pouze připojení nevyžadují, aby to. Toto je jediný krok vyžadovaný na portálu Azure. |
+| [Vytvořit pravidlo pro skupinu zabezpečení sítě pro TCP 1433](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) | Virtuální počítač přijímat přenosy na portu systému SQL Server (standardně 1433), pokud se chcete připojit přes internet, musíte povolit. Místní a virtuální sítě pouze připojení nevyžadují, aby to. Toto je jediný krok vyžadovaný na portálu Azure. |
 
 > [!TIP]
 > Kroky v předchozí tabulce jsou u můžete provést při konfiguraci připojení k portálu. Tyto kroky použijte pouze potvrzení konfiguraci nebo ručně nastavit připojení k systému SQL Server.
