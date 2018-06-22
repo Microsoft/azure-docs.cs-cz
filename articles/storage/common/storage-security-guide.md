@@ -6,22 +6,23 @@ author: craigshoemaker
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 05/31/2018
 ms.author: cshoe
-ms.openlocfilehash: 4145f7edb93801aa6f98df7e9cff34ae7370fc52
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: ba008a86f76a526967bb9dab6ba37043a85f5cf3
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304525"
 ---
 # <a name="azure-storage-security-guide"></a>Průvodce zabezpečením služby Azure Storage
-
-## <a name="overview"></a>Přehled
 
 Úložiště Azure poskytuje komplexní sadu funkcí zabezpečení, které společně umožňují vývojářům vytvářet aplikace zabezpečené:
 
 - Všechna data zapsaná do služby Azure Storage se automaticky šifruje pomocí [šifrování služby úložiště (SSE)](storage-service-encryption.md). Další informace najdete v tématu [uvedení výchozí šifrování pro Azure BLOB, soubory, Table a Queue Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/).
-- Účet úložiště, samotné lze zabezpečit pomocí řízení přístupu na základě Role a Azure Active Directory. 
+- Azure Active Directory (Azure AD) a řízení přístupu na základě Role (RBAC) jsou podporovány pro Azure Storage pro operace správy prostředků a data operací, následujícím způsobem:   
+    - Můžete přiřadit role RBAC obor k účtu úložiště pro objekty zabezpečení a používání Azure AD k autorizaci operace správy prostředků, například správu klíčů.
+    - Integrace se službou Azure AD se podporuje ve verzi preview pro operace dat na služby objektů Blob a fronty. Můžete přiřadit role RBAC omezená na předplatné, skupinu prostředků, účet úložiště, nebo jednotlivé kontejneru nebo fronty pro objekt zabezpečení nebo identita spravované služby. Další informace najdete v tématu [ověření přístupu k úložišti Azure pomocí služby Azure Active Directory (Preview)](storage-auth-aad.md).   
 - Data byla zabezpečená během přenosu mezi aplikací a Azure pomocí [šifrování na straně klienta](../storage-client-side-encryption.md), HTTPS nebo SMB 3.0.  
 - Operačního systému a datové disky, které jsou používané virtuální počítače Azure se dá zašifrovat pomocí [Azure Disk Encryption](../../security/azure-security-disk-encryption.md). 
 - Delegovaný přístup k datové objekty ve službě Azure Storage můžete udělit pomocí [sdílené přístupové podpisy](../storage-dotnet-shared-access-signature-part-1.md).
@@ -38,7 +39,7 @@ Zde jsou témata, která má být v tomto článku:
   V této části se podíváme povolení přístupu k objektům skutečná data ve vašem účtu úložiště, jako jsou objekty BLOB, soubory, fronty a tabulky, pomocí uložené zásady přístupu a podpisy sdíleného přístupu. Vám nabídneme SAS úrovně služby a SAS účtu úrovni. Dozvíte se jsme taky, jak omezit přístup ke konkrétní IP adresu (nebo rozsah IP adres), jak omezit protokol použitý k HTTPS a postup odvolat sdíleného přístupového podpisu bez čekání na vypršení platnosti.
 * [Šifrování během přenosu](#encryption-in-transit)
 
-  Tato část popisuje, jak k zabezpečení dat při přenosu do nebo z Azure Storage. Budeme mluvit o doporučené použití protokolu HTTPS a šifrování používá protokol SMB 3.0 pro sdílené složky Azure File. Také jsme bude trvat podívejte se na straně klienta šifrování, které vám umožní šifrování dat před přenosu do úložiště v aplikaci klienta a k dešifrování dat po se přenáší z úložiště.
+  Tato část popisuje, jak k zabezpečení dat při přenosu do nebo z Azure Storage. Budeme mluvit o doporučené použití protokolu HTTPS a šifrování používá protokol SMB 3.0 pro sdílené složky Azure. Také jsme bude trvat podívejte se na straně klienta šifrování, které vám umožní šifrování dat před přenosu do úložiště v aplikaci klienta a k dešifrování dat po se přenáší z úložiště.
 * [Šifrování v klidovém stavu](#encryption-at-rest)
 
   Mluvíme o úložiště služby šifrování (SSE), který je teď automaticky povolené pro účty úložiště nových nebo stávajících. Podíváme se také na tom, jak můžete použít Azure Disk Encryption a prozkoumat základní rozdíly a případů šifrování disku versus SSE versus šifrování na straně klienta. Podíváme se stručně na soulad se standardem FIPS pro USA Počítače, Government.
@@ -100,7 +101,7 @@ Zde jsou hlavní body, které potřebujete vědět o použití RBAC pro přístu
 * [Referenci rozhraní API REST poskytovatele prostředků úložiště Azure](https://msdn.microsoft.com/library/azure/mt163683.aspx)
 
   Tento referenční dokumentace rozhraní API popisuje rozhraní API můžete použít ke správě vašeho účtu úložiště prostřednictvím kódu programu.
-* [Příručka pro vývojáře k ověření s rozhraním API pro Azure Resource Manager](http://www.dushyantgill.com/blog/2015/05/23/developers-guide-to-auth-with-azure-resource-manager-api/)
+* [Ověřování pomocí Správce prostředků rozhraní API pro odběry přístup](../../azure-resource-manager/resource-manager-api-authentication.md)
 
   Tento článek ukazuje, jak chcete ověřit pomocí rozhraní API Resource Manager.
 * [Řízení přístupu na základě role pro Microsoft Azure z Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
@@ -108,7 +109,7 @@ Zde jsou hlavní body, které potřebujete vědět o použití RBAC pro přístu
   Odkaz na video na Channel 9 z konference MS Ignite 2015. Na tomto sezení se hovoří o možnostech správy přístupu a generování sestav v Azure a probírají se osvědčené postupy pro zabezpečení přístupu k předplatným Azure pomocí Azure Active Directory.
 
 ### <a name="managing-your-storage-account-keys"></a>Správa klíčů k účtu úložiště
-Klíče účtu úložiště jsou 512 bitů řetězce vytvořené Azure, které společně s názvem účtu úložiště je možné získat přístup k objektům data uložená v účtu úložiště, například, objekty BLOB, entit v rámci tabulky, fronty zpráv a soubory ve sdílené složce Azure File. Řízení přístupu k úložiště účet klíče řídí přístup k rovině data pro tento účet úložiště.
+Klíče účtu úložiště jsou vytvořené Azure, který spolu s názvem účtu úložiště může být použita pro přístup k objektům data uložená v účtu úložiště, například, objekty BLOB, entit v rámci tabulky, fronty zpráv a souborů na sdílenou složku Azure řetězce 512 bitů. Řízení přístupu k úložiště účet klíče řídí přístup k rovině data pro tento účet úložiště.
 
 Každý účet úložiště obsahuje dva klíče, označuje jako "Klíč 1" a "Klíčem 2" v [portál Azure](http://portal.azure.com/) a rutiny prostředí PowerShell. To je možné znovu generovat ručně pomocí několika metod, včetně, mimo jiné pomocí [portál Azure](https://portal.azure.com/), prostředí PowerShell, rozhraní příkazového řádku Azure nebo programově pomocí klientské knihovny .NET úložiště nebo služby Azure Storage ROZHRANÍ REST API.
 
@@ -160,12 +161,15 @@ Poznámka: doporučujeme používat pouze jeden z klíčů ve všech aplikací v
 ## <a name="data-plane-security"></a>Zabezpečení dat roviny
 Zabezpečení dat roviny odkazuje na metodu sloužící k zabezpečení datové objekty uložené ve službě Azure Storage – objekty BLOB, fronty, tabulky a soubory. Jsme viděli metody k šifrování dat a zabezpečení během přenosu dat, ale jak tedy můžete o řízení přístupu k objektům?
 
-Existují dvě metody pro ověřování přístupu k objektům data sami. Ty zahrnují řízení přístupu ke klíči účtu úložiště a pomocí podpisy sdíleného přístupu k udělení přístupu k konkrétní datové objekty pro konkrétní množství času.
+Máte tři možnosti pro ověřování přístupu k objektům dat ve službě Azure Storage, včetně:
+
+- Pomocí služby Azure AD k autorizaci přístupu ke kontejnerům a front (Preview). Azure AD poskytuje výhod oproti další metody ověřování, včetně odpadá nutnost ukládat tajné klíče v kódu. Další informace najdete v tématu [ověření přístupu k úložišti Azure pomocí služby Azure Active Directory (Preview)](storage-auth-aad.md). 
+- Autorizace přístupu pomocí sdíleného klíče pomocí klíče účtu úložiště. Ověřování pomocí sdíleného klíče vyžaduje ukládání klíče účtu úložiště ve vaší aplikaci, aby společnost Microsoft doporučuje používat Azure AD místo, kde je to možné. Aplikacích v produkčním prostředí, nebo pro ověřování přístupu do tabulek Azure a soubory používat sdílený klíč při integraci služby Azure AD ve verzi preview.
+- Používá sdílené přístupové podpisy udělit řízené oprávnění pro konkrétní datové objekty pro konkrétní množství času.
 
 Kromě toho pro úložiště objektů Blob, můžete povolit veřejný přístup do objektů BLOB podle nastavení úrovně přístupu pro kontejner, který obsahuje objekty BLOB odpovídajícím způsobem. Pokud jste nastavili přístup pro kontejner objektů Blob nebo kontejner, vám umožní veřejný přístup pro čtení pro objekty BLOB v tomto kontejneru. To znamená, že každý, kdo má URL ukazující na objekt blob v tomto kontejneru ho otevřete v prohlížeči bez pomocí sdíleného přístupového podpisu nebo s klíče účtu úložiště.
 
 Kromě omezení přístupu prostřednictvím autorizace, můžete také použít [brány firewall a virtuální sítě](storage-network-security.md) omezit přístup k účtu úložiště na základě pravidel sítě.  Tento přístup umožňuje odepřít přístup k veřejné internetové přenosy a udělit přístup jenom ke konkrétním virtuálních sítí Azure nebo veřejného Internetu rozsahy IP adres.
-
 
 ### <a name="storage-account-keys"></a>Klíče účtu úložiště
 Klíče účtu úložiště jsou 512 bitů řetězce vytvořené Azure, který společně s názvem účtu úložiště můžete použít pro přístup k objektům data uložená v účtu úložiště.
@@ -205,7 +209,7 @@ http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
 &sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D (signature used for the authentication of the SAS)
 ```
 
-#### <a name="how-the-shared-access-signature-is-authenticated-by-the-azure-storage-service"></a>Jak službu Azure Storage ověřit podpis sdíleného přístupu
+#### <a name="how-the-shared-access-signature-is-authorized-by-the-azure-storage-service"></a>Jak je sdíleného přístupového podpisu povolení služby Azure Storage
 Když službu úložiště obdrží žádost, používá parametry vstupní dotaz a vytvoří podpis stejným způsobem jako volací program. Pak porovná dvě podpisů. Pokud souhlasí, službu úložiště můžete zkontrolovat verze služby úložiště Ujistěte se, že je platný, ověřte, zda jsou v rámci zadané okno aktuální datum a čas, ujistěte se, že požadovaný přístup odpovídá požadavek atd.
 
 Například s naše uvedenou adresu URL, pokud adresa URL byla odkazující na soubor namísto objektu blob, tento požadavek by nezdaří, protože se určuje, že sdíleného přístupového podpisu je pro objekt blob. Pokud byl příkaz REST volané aktualizovat objekt blob, by se nezdařila, protože podpis sdíleného přístupu určuje, že jsou povoleny pouze přístup pro čtení.
@@ -263,22 +267,10 @@ Pokud chcete, aby zabezpečenou komunikaci, byste měli vždycky používat prot
 
 Můžete vynutit používání protokolu HTTPS, při volání rozhraní REST API pro přístup k objekty v účtech úložiště, povolením [zabezpečení přenosu požadované](../storage-require-secure-transfer.md) pro účet úložiště. Připojení pomocí protokolu HTTP bude odmítnuto, když je tato možnost povolena.
 
-### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Pomocí šifrování během přenosu se sdílenými složkami Azure
-Soubory Azure podporuje protokol HTTPS, když pomocí rozhraní REST API, ale je víc často používá jako sdílené složky SMB připojený k virtuálnímu počítači. SMB 2.1 nepodporuje šifrování, takže připojení jsou povoleny pouze v rámci stejné oblasti v Azure. Ale protokolu SMB 3.0 podporuje šifrování a je k dispozici v systému Windows Server 2012 R2, Windows 8, Windows 8.1 a Windows 10, povolení přístupu mezi oblastmi i přístup na ploše.
+### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Šifrování během přenosu pomocí sdílené složky Azure
+[Soubory Azure](../files/storage-files-introduction.md) podporuje šifrování pomocí protokolu SMB 3.0 a s protokolem HTTPS, při použití souboru REST API. Při připojení mimo oblast Azure, Azure sdílené složky se nachází v, jako jsou místní nebo v jiné oblasti Azure, je vždy vyžadováno pomocí šifrování protokolu SMB 3.0. SMB 2.1 nepodporuje šifrování, takže ve výchozím nastavení připojení jsou povoleny pouze v rámci stejné oblasti v Azure, ale můžete vynutit pomocí šifrování protokolu SMB 3.0 [nutnosti bezpečnému přenosu](../storage-require-secure-transfer.md) pro účet úložiště.
 
-I když se systémem Unix můžete použít sdílené složky Azure File, klient Linux SMB ještě nepodporuje šifrování, takže přístup je povoleno pouze v rámci oblasti Azure. Podpora šifrování pro Linux je plánovaná Linux vývojářů zodpovědná za funkce protokolu SMB. Při přidávání šifrování, máte stejné možnosti pro přístup k Azure sdílenou v systému Linux, jako je tomu u systému Windows.
-
-Můžete vynutit šifrování se službou Azure Files povolením [zabezpečení přenosu požadované](../storage-require-secure-transfer.md) pro účet úložiště. Pokud používáte rozhraní API REST, je požadován protokol HTTPs. Pouze připojení protokolu SMB, která podporují šifrování protokolu SMB, bude připojovat úspěšně.
-
-#### <a name="resources"></a>Zdroje a prostředky
-* [Soubory Azure Úvod](../files/storage-files-introduction.md)
-* [Začínáme s Azure soubory v systému Windows](../files/storage-how-to-use-files-windows.md)
-
-  Tento článek nabízí přehled Azure sdílené složky a jak připojit a používat je v systému Windows.
-
-* [Jak používat Soubory Azure s Linuxem](../files/storage-how-to-use-files-linux.md)
-
-  Tento článek ukazuje, jak se připojit Azure sdílenou složkou na Linux systému a nahrávání nebo stahování souborů.
+Je k dispozici v protokolu SMB 3.0 se šifrováním [všechny podporované operační systémy Windows a Windows Server](../files/storage-how-to-use-files-windows.md) s výjimkou Windows 7 a Windows Server 2008 R2, které podporují pouze SMB 2.1. Protokol SMB 3.0 je podporováno také v [systému macOS](../files/storage-how-to-use-files-mac.md) a na distribuce [Linux](../files/storage-how-to-use-files-linux.md) používání jádra Linux 4.11 a vyšší. Podpora šifrování pro protokol SMB 3.0, musí být také přeneseny zpět ke starším verzím jádra Linux pomocí několika Linuxových distribucích najdete [požadavky na klienta SMB Principy](../files/storage-how-to-use-files-linux.md#smb-client-reqs).
 
 ### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>K zabezpečení dat, který odešlete do úložiště pomocí šifrování na straně klienta
 Jinou možnost, která vám pomůže zajistit, aby vaše data byla zabezpečené při přenášení mezi klientskou aplikaci a úložiště je šifrování na straně klienta. Data se šifrují před přenášením do úložiště Azure. Při načítání dat z Azure Storage, data se dešifrují po přijetí na straně klienta. I když jsou data zašifrována, přejdete v síti, doporučujeme také používat protokol HTTPS, protože má kontrolu integrity dat součástí, které zmírnění chyby sítě by to ovlivnilo integritu dat.
@@ -412,11 +404,11 @@ Je zobrazeno v seznamu prostředků nižší, než je článek poskytuje seznam 
 
 ![Snímek polí v souboru protokolu](./media/storage-security-guide/image3.png)
 
-Zajímají nás položky pro getblob – a jak jsou ověřeni, takže je třeba vyhledejte položky s typ operace "Get-Blob" a zkontrolujte stav žádosti o (čtvrté</sup> sloupec) a typ autorizace (osmého</sup> sloupce).
+Zajímají nás položky pro getblob – a jak se mají oprávnění, takže je třeba vyhledejte položky s typ operace "Get-Blob" a zkontrolujte stav žádosti o (čtvrté</sup> sloupec) a typ autorizace (osmého</sup> sloupce).
 
-Například v několik prvních řádků v seznamu nahoře, je stav žádosti o "ÚSPĚCH" a typ autorizace je "ověřit". To znamená, že požadavek se ověřila pomocí klíče účtu úložiště.
+Například v několik prvních řádků v seznamu nahoře, je stav žádosti o "ÚSPĚCH" a typ autorizace je "ověřit". To znamená, že žádost byla oprávnění pomocí klíče účtu úložiště.
 
-#### <a name="how-are-my-blobs-being-authenticated"></a>Jak jsou ověřovaného Moje objekty BLOB?
+#### <a name="how-is-access-to-my-blobs-being-authorized"></a>Jak je přístup k mé objekty BLOB autorizaci?
 Máme tři případů, které jsme zájem.
 
 1. Objekt blob je veřejná a je přístupný pomocí adresy URL bez sdíleného přístupového podpisu. V tomto případě stav žádosti o je "AnonymousSuccess" a "anonymní" je typ autorizace.
@@ -513,8 +505,7 @@ Další informace o CORS a jak ji povolit projděte si tyto prostředky.
 
    Microsoft nechávají každého zákazníka můžete rozhodnout, jestli chcete povolit režim FIPS. Věříme, že neexistuje žádný důvod poutavé pro zákazníky, kteří nejsou v souladu government předpisy a povolení režimu FIPS ve výchozím nastavení.
 
-   **Prostředky**
-
+### <a name="resources"></a>Zdroje a prostředky
 * [Proč se není doporučujeme "Režimu FIPS" už](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
   Tento článek na blogu shrnovat standardu FIPS a vysvětluje, proč nemáte umožňují režimu FIPS ve výchozím nastavení.
