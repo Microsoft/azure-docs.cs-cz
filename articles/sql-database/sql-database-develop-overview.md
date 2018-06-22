@@ -8,14 +8,14 @@ ms.reviewer: genemi
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/20/2018
 ms.author: sstein
-ms.openlocfilehash: aee8f8c830ac504b6688c02c2b262a0d87bc5278
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2194293d23e5db277f2ff7aa207c298533f74571
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646622"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308862"
 ---
 # <a name="sql-database-application-development-overview"></a>Přehled vývoje aplikace SQL Database
 V tomto článku se seznámíte se základními předpoklady, které by měl mít vývojář na zřeteli při zapisování kódu pro připojení ke službě Azure SQL Database.
@@ -33,9 +33,12 @@ K dispozici jsou ukázky kódu pro různé programovací jazyky a platformy. Odk
 Můžete využít open source nástroje, jako je [gepard](https://github.com/wunderlist/cheetah), [rozhraní příkazového řádku sql](https://www.npmjs.com/package/sql-cli), [VS Code](https://code.visualstudio.com/). Kromě toho Azure SQL Database pracuje s nástroji Microsoftu jako [Visual Studio](https://www.visualstudio.com/downloads/) a [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).  Můžete taky použít Portál pro správu Azure, PowerShell a rozhraní REST API, které vám pomůžou získat další produktivitu.
 
 ## <a name="resource-limitations"></a>Omezení prostředků
-Azure SQL Database spravuje prostředky dostupné pro databázi pomocí dvou různých mechanismů: řízení prostředků a vynucení limitů.
+Spravuje dostupné k databázi pomocí dvou mechanismů různé prostředky Azure SQL Database: prostředky zásad správného řízení a vynucení omezení. Další informace naleznete v tématu:
 
-* Další informace: [limitů modelu na základě DTU databáze SQL Azure prostředků](sql-database-dtu-resource-limits.md) a [limitů modelu na základě vCore prostředků Azure SQL Database (preview)](sql-database-vcore-resource-limits.md).
+- [Limitů modelu na základě DTU prostředků - jedné databáze](sql-database-dtu-resource-limits-elastic-pools.md)
+- [Limitů modelu na základě DTU prostředků - jedné databáze](sql-database-dtu-resource-limits-elastic-pools.md)
+- [omezení zdrojů na základě vCore - izolované databáze](sql-database-vcore-resource-limits-single-databases.md)
+- [omezení zdrojů na základě vCore - elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md)
 
 ## <a name="security"></a>Zabezpečení
 Azure SQL Database poskytuje prostředky pro omezení přístupu, ochranu dat a sledování aktivit služby SQL Database.

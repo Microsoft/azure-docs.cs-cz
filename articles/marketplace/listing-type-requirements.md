@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: dbb14854f00fb133c3604a1dd529d42120371fd2
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 07a62dfa2d7e1c71daf547c5aa7c8c7d15830bfd
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825094"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309312"
 ---
 # <a name="requirements-by-listing-type"></a>Požadavky tak, že uvedete typu  
 Obsahu požadavky na technické a marketing se liší podle výkladní skříň, typ nabídky a výpis typu. Zkontrolujte následující specifikace k ověření vaší shody.  
 1. StoreFront požadavky:  
-    *   [AppSource](#storefront-requirements:-appSource)  
-    *   [Azure Marketplace](#storefront-requirements:-azure-marketplace)  
+    *   [AppSource](#storefront-requirements-appSource)  
+    *   [Azure Marketplace](#storefront-requirements-azure-marketplace)  
 2. Výpis typu a požadavky na typ nabídky.  
     *   Další informace o seznamu typy a typy nabídek, navštivte určete typ výpis pro vaše řešení stránky umístěné v [docs.microsoft.com/azure/marketplace/determine-your-listing-type](./determine-your-listing-type.md).  
 
@@ -62,10 +62,10 @@ V seznamu typ seznamu zahrnuje následující typy nabídka na obchodní poutač
 
 | Typ nabídky | Prodejní místo | Podrobnosti |  
 |:---        |:---        |:---     |  
-| Konzultační služby | AppSource | [Požadavky na: AppSource: seznam: konzultační služby](#requirements:-appsource:-list:-consulting-services) |  
-| Konzultační služby | Azure Marketplace | [Požadavky na: Azure Marketplace: seznam: konzultační služby](#requirements:-azure-marketplace:-list:-consulting-services) |  
+| Konzultační služby | AppSource | [Požadavky na: AppSource: seznam: konzultační služby](#requirements-appsource-list-consulting-services) |  
+| Konzultační služby | Azure Marketplace | [Požadavky na: Azure Marketplace: seznam: konzultační služby](#requirements-azure-marketplace-list-consulting-services) |  
 | Kontaktujte mě | AppSource | [](#) |  
-| Kontaktujte mě | Azure Marketplace | [Požadavky na: AppSource: seznam: mě](#requirements:-azure-marketplace:-list:-contact-me) |  
+| Kontaktujte mě | Azure Marketplace | [Požadavky na: AppSource: seznam: mě](#requirements-azure-marketplace-list-contact-me) |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>Požadavky na: AppSource: seznam: konzultace ohledně služby  
 
@@ -89,12 +89,12 @@ V seznamu typ seznamu zahrnuje následující typy nabídka na obchodní poutač
 
 | Typ nabídky | Prodejní místo | Podrobnosti |  
 |:---        |:---        |:---     |  
-| Volné nebo zkušební verze SaaS | AppSource | [Výpis požadavky na typ: zkušební verze](#listing-type-requirements:-trial) |  
-| Volné nebo zkušební verze SaaS | Azure Marketplace | [Požadavky na: Azure Marketplace: zkušební verze: bezplatnou zkušební verzi nebo zkušební verze SaaS](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) |  
-| Interaktivní ukázka | AppSource | [Výpis požadavky na typ: zkušební verze](#listing-type-requirements:-trial) |  
-| Interaktivní ukázka | Azure Marketplace | [Požadavky na: Azure Marketplace: zkušební verze: Interaktivní demo](#requirements:-azure-marketplace:-trial:-interactive-demo) |  
-| Testovací verze | AppSource | [Výpis požadavky na typ: zkušební verze](#listing-type-requirements:-trial) |  
-| Testovací verze | Azure Marketplace | [Požadavky na: Azure Marketplace: zkušební verze: Vyzkoušejte](#requirements:-azure-marketplace:-trial:-test-drive) |  
+| Volné nebo zkušební verze SaaS | AppSource | [Výpis požadavky na typ: zkušební verze](#listing-type-requirements-trial) |  
+| Volné nebo zkušební verze SaaS | Azure Marketplace | [Požadavky na: Azure Marketplace: zkušební verze: bezplatnou zkušební verzi nebo zkušební verze SaaS](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
+| Interaktivní ukázka | AppSource | [Výpis požadavky na typ: zkušební verze](#listing-type-requirements-trial) |  
+| Interaktivní ukázka | Azure Marketplace | [Požadavky na: Azure Marketplace: zkušební verze: Interaktivní demo](#requirements-azure-marketplace-trial-interactive-demo) |  
+| Testovací verze | AppSource | [Výpis požadavky na typ: zkušební verze](#listing-type-requirements-trial) |  
+| Testovací verze | Azure Marketplace | [Požadavky na: Azure Marketplace: zkušební verze: Vyzkoušejte](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>Požadavky na: Azure Marketplace: zkušební verze  
 
@@ -131,11 +131,11 @@ V seznamu typ seznamu zahrnuje následující typy nabídka na obchodní poutač
 
 | Typ nabídky | Prodejní místo | Podrobnosti |   
 |:---        |:---        | :--- |  
-| Aplikace Azure: spravované aplikace | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: aplikace Azure: spravované aplikace](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  
-| Aplikace Azure: řešení šablony | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: aplikace Azure: řešení šablony](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  
-| Containers | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: kontejneru](#requirements:-azure-marketplace:-transact:-container) |  
-| Aplikace SaaS  | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: SaaS aplikace](#requirements:-azure-marketplace:-transact:-saas-app) |  
-| Virtuální počítač | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: virtuálního počítače](#requirements:-azure-marketplace:-transact:-virtual-machine) |  
+| Aplikace Azure: spravované aplikace | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: aplikace Azure: spravované aplikace](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
+| Aplikace Azure: řešení šablony | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: aplikace Azure: řešení šablony](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Containers | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: kontejneru](#requirements-azure-marketplace-transact-container) |  
+| Aplikace SaaS  | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: SaaS aplikace](#requirements-azure-marketplace-transact-saas-app) |  
+| Virtuální počítač | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: virtuálního počítače](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 <!-- #### Requirements: Azure Marketplace: Transact: Azure apps: Managed app  
 

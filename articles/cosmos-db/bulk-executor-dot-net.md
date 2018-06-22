@@ -1,6 +1,6 @@
 ---
-title: Pomocí knihovny BulkExecutor .NET provádět hromadné operace v Azure Cosmos DB | Microsoft Docs
-description: Použijte knihovnu Azure Cosmos DB BulkExecutor .NET pro hromadný import a aktualizaci dokumenty do kolekcí Azure Cosmos DB.
+title: Pomocí knihovny .NET vykonavatele hromadné provádět hromadné operace v Azure Cosmos DB | Microsoft Docs
+description: Pomocí knihovny .NET vykonavatele hromadné Azure Cosmos DB hromadný import a aktualizace dokumentů pro Azure Cosmos DB kolekce.
 keywords: Hromadné vykonavatele rozhraní .net
 services: cosmos-db
 author: tknandu
@@ -10,16 +10,16 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 0e8c5f9a848eaa1543ce9d58895b035e23d9f335
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b09fd415c442c1e605987a6b25fd938ce04ce5c1
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611156"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300767"
 ---
-# <a name="using-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Pomocí knihovny BulkExecutor .NET provádět hromadné operace v Azure Cosmos DB
+# <a name="using-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Pomocí knihovny .NET vykonavatele hromadné provádět hromadné operace v Azure Cosmos DB
 
-V tomto kurzu poskytuje pokyny k používání knihovny BulkExecutor .NET Azure Cosmos DB importovat a aktualizovat dokumenty do kolekcí Azure Cosmos DB. Další informace o BulkExecutor knihovny a jak ho pomáhá využívat obrovskou propustnost a úložiště najdete v tématu [přehled knihovny BulkExecutor](bulk-executor-overview.md) článku. Tento kurz vás provede ukázkové aplikace .NET, která hromadné importy náhodně vygenerované dokumenty do kolekci Azure Cosmos DB. Po importu, ukazuje, jak můžete hromadně aktualizujete importovaných dat zadáním opravy jako operace provést na pole konkrétní dokumentu.
+V tomto kurzu poskytuje pokyny k používání Azure Cosmos DB hromadné vykonavatele knihovny .NET importovat a aktualizovat dokumenty do kolekcí Azure Cosmos DB. Další informace o hromadné vykonavatele knihovny a jak ho pomáhá využívat obrovskou propustnost a úložiště najdete v tématu [přehled knihovny vykonavatele hromadné](bulk-executor-overview.md) článku. Tento kurz vás provede ukázkové aplikace .NET, která hromadné importy náhodně vygenerované dokumenty do kolekci Azure Cosmos DB. Po importu, ukazuje, jak můžete hromadně aktualizujete importovaných dat zadáním opravy jako operace provést na pole konkrétní dokumentu.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -27,7 +27,7 @@ V tomto kurzu poskytuje pokyny k používání knihovny BulkExecutor .NET Azure 
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete. 
 
-* [Službu Azure Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků. Nebo můžete použít [emulátoru DB Cosmos Azure](https://docs.microsoft.com/azure/cosmos-db/local-emulator) s `https://localhost:8081` identifikátor URI. Primární klíč je k dispozici v [ověřování požadavků](local-emulator.md#authenticating-requests).
+* [Službu Azure Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků. Nebo můžete použít [emulátoru DB Cosmos Azure](https://docs.microsoft.com/azure/cosmos-db/local-emulator) s `https://localhost:8081` identifikátor URI. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).
 
 * Vytvoření účtu Azure Cosmos DB SQL API pomocí kroků popsaných v [vytvoření databázového účtu](create-sql-api-dotnet.md#create-a-database-account) v rozhraní .NET rychlý start článku. 
 
@@ -166,7 +166,7 @@ Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumen
     
 ## <a name="performance-tips"></a>Tipy pro zvýšení výkonu 
 
-Při použití knihovny BulkExecutor, zvažte následující body pro dosažení vyššího výkonu:
+Zvažte následující pro lepší výkon při použití hromadné vykonavatele knihovny:
 
 * Pro nejlepší výkon spusťte aplikaci z Azure virtuálního počítače, který je ve stejné oblasti jako zápisu oblast účtu Cosmos DB.  
 
@@ -196,4 +196,4 @@ Při použití knihovny BulkExecutor, zvažte následující body pro dosažení
 ```
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o podrobnosti balíčku Nuget a knihovny BulkExecutor .net poznámky k verzi, přečtěte si téma[BulkExecutor SDK podrobnosti](sql-api-sdk-bulk-executor-dot-net.md). 
+* Další informace o podrobnosti balíčku Nuget a knihovny .net vykonavatele hromadné poznámky k verzi, přečtěte si téma[hromadné vykonavatele SDK podrobnosti](sql-api-sdk-bulk-executor-dot-net.md). 

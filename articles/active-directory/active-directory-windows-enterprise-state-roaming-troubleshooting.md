@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 25660eef50a0a18d4f404944daeb443133424897
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b5ade0f3a6590832b6717bbb5f91a4d62cdc9e0c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261147"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309039"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Řešení potíží s Enterprise State Roaming nastavení ve službě Azure Active Directory
 
@@ -178,7 +178,7 @@ Postupujte podle kroků uvedených [KB3196528](https://support.microsoft.com/kb/
 
 ## <a name="next-steps"></a>Další postup
 
-- Použití [User Voice fórum](https://feedback.azure.com/forums/169401-azure-active-directory/category/158658-enterprise-state-roaming) poskytnout zpětnou vazbu a zaslat návrhy pro zlepšení Enterprise State Roaming.
+- Použití [User Voice fórum](https://social.technet.microsoft.com/Forums/windows/en-US/f51c856c-db92-4cf7-a497-720da21d7d31/enterprise-state-roaming) poskytnout zpětnou vazbu a zaslat návrhy pro zlepšení Enterprise State Roaming.
 
 - Další informace najdete v tématu [Enterprise State Roaming přehled](active-directory-windows-enterprise-state-roaming-overview.md). 
 

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 06/20/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 027a10e687673bdeedf2858b4c23ff459df61b70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ad4725ff6871ef489c6a10656af9a76e588edfa1
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649104"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308417"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Obnovit pomocí zálohy automatizované databáze Azure SQL database
 SQL Database nabízí tyto možnosti pro databázi pomocí obnovení [automatizované zálohování databáze](sql-database-automated-backups.md) a [záloh v dlouhodobé uchovávání](sql-database-long-term-retention.md). Můžete obnovit ze zálohy databáze pro:
@@ -32,7 +32,7 @@ Obnovené databáze způsobuje náklady na úložiště navíc za následující
 - Obnovení P11 – P15 S4 S12 nebo P1 – P6 pokud maximální velikost databáze je větší než 500 GB.
 - Obnovení P1 – P6 k S4 S12 pokud maximální velikost databáze je větší než 250 GB.
 
-Nadbytečné není náklady, protože maximální velikost obnovené databáze je větší než velikost úložiště, které jsou zahrnuté pro úrovně výkonu a je velmi účtovat žádné dodatečné úložiště zřízený výše zahrnuté množství.  Ceny navíc úložiště, najdete v článku [SQL Database stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/).  Pokud skutečná velikost využitého místa je menší než velikost úložiště, které jsou zahrnuty, pak tato zpoplatněné se vyhnout snížením maximální velikost databáze na zahrnuté množství. Další informace o velikosti úložiště databáze a Změna maximální velikosti databáze najdete v tématu [jednotné limitů prostředků na základě DTU databáze](sql-database-dtu-resource-limits.md#single-database-storage-sizes-and-performance-levels) a [jednotné limitů databáze prostředků na základě vCore](sql-database-vcore-resource-limits.md#single-database-storage-sizes-and-performance-levels).  
+Nadbytečné není náklady, protože maximální velikost obnovené databáze je větší než velikost úložiště, které jsou zahrnuté pro úrovně výkonu a je velmi účtovat žádné dodatečné úložiště zřízený výše zahrnuté množství.  Ceny navíc úložiště, najdete v článku [SQL Database stránce s cenami](https://azure.microsoft.com/pricing/details/sql-database/).  Pokud skutečná velikost využitého místa je menší než velikost úložiště, které jsou zahrnuty, pak tato zpoplatněné se vyhnout snížením maximální velikost databáze na zahrnuté množství.  
 
 > [!NOTE]
 > [Automatizované zálohování databáze](sql-database-automated-backups.md) se používají při vytváření [kopírování databáze](sql-database-copy.md). 

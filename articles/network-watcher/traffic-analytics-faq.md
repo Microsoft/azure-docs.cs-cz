@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 99b1e39b764f27d4638e8bb0f0d210043fde8643
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: de85e4295a59c54cb68306bf0cbc516bf5e1f8e2
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236395"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313294"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analýza provozu nejčastější dotazy
 
@@ -28,17 +28,25 @@ ms.locfileid: "35236395"
 
     - Sledovací proces sítě povolené předplatné
     - Tok protokolů NSG pro skupiny Nsg, kterou chcete sledovat povoleno
-    - Účet úložiště Azure pro uložení nezpracovaná flog protokoly
+    - Účet služby Azure Storage k ukládání protokolů nezpracovaná toku
     - Pracovní prostor analýzy protokolů (OMS) s oprávnění ke čtení a zápisu
     - Uživatel musí mít přiřazenou s jednu z následujících rolí na úrovni předplatného:
     
-            All permissions *
-            All Read permissions */read
-            All network permissions Microsoft.Network/*
-            All network read permissions Microsoft.Network/*/read
+    1.  Musí být některého z následujících klasického správce
+    
+        - Správce účtu
+        - Správce služeb 
+        - Spolusprávce
+        
+    2.  Váš účet musí mít jednu z následujících rolí pro RBAC v oboru předplatného
+    
+        - Vlastník
+        - Přispěvatel
+        - Čtenář
+        - Přispěvatel sítě
 
-    Nebo, uživatel musí mít přiřazenou následující všech rolí na úrovni předplatného: 
-
+    3. Váš účet musí mít všechny vlastní role RBAC s oprávněním pro všechny z následujících uvedených akcí na úrovni předplatného
+            
         - Microsoft.Network/applicationGateways/read
         - Microsoft.Network/connections/read
         - Microsoft.Network/loadBalancers/read 
@@ -50,22 +58,22 @@ ms.locfileid: "35236395"
         - Microsoft.Network/virtualNetworkGateways/read 
         - Microsoft.Network/virtualNetworks/read
         
-Pokud chcete zkontrolovat role přiřazené uživateli pro předplatné, postupujte podle níže kroky:
+    Pokud chcete zkontrolovat role přiřazené uživateli pro předplatné, postupujte podle níže kroky:
 
-Přihlášení k Azure pomocí Login-AzureRmAccount 
+    Přihlášení k Azure pomocí **Login-AzureRmAccount** 
 
-Vyberte požadované předplatné pomocí Select-AzureRmSubscription 
+    Vyberte požadované předplatné pomocí **Select-AzureRmSubscription** 
 
-Teď k zobrazení seznamu všech rolí, které jsou přiřazeny pro zadaného uživatele, použijte Get-AzureRmRoleAssignment - SignInName <user email> - IncludeClassicAdministrators 
+    Teď k zobrazení seznamu všech rolí, které jsou přiřazeny pro zadaného uživatele, použijte **Get-AzureRmRoleAssignment - SignInName <user email> - IncludeClassicAdministrators** 
 
-Pokud nevidíte žádný výstup po provedení uděluje pochvalu pak kontaktujte příslušného správce předplatného, získat přístup k spuštěním příkazů.  
+    Pokud nevidíte žádný výstup po provedení uděluje pochvalu pak kontaktujte příslušného správce předplatného, získat přístup k spuštěním příkazů.  
 
-Pro další podrobnosti naleznete v [Správa řízení přístupu na základě rolí pomocí Azure PowerShell](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell)
+    Pro další podrobnosti naleznete v [Správa řízení přístupu na základě rolí pomocí Azure PowerShell](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell)
 
 
 2.  Které oblasti jsou k dispozici v provozu analytics?
 
-    Ve verzi preview, můžete použít pro skupiny Nsg v některém z následujících Analýza provozu **podporované oblasti**: – Západ střední USA, Východ USA, Východ USA 2, – Sever střední USA, Jižní střední USA, střed USA, západ USA, západní USA 2, západní Evropa, Severní Evropa , Spojené království – Západ, Spojené království – Jih, Austrálie – východ a Austrálie – jihovýchod. Pracovní prostor analýzy protokolů musí existovat v – Západ střední USA, Východ USA, západní Evropa, Austrálie – jihovýchod nebo oblasti Spojené království – jih.
+    Ve verzi preview, můžete použít pro skupiny Nsg v některém z následujících Analýza provozu **podporované oblasti**: – Západ střední USA, Východ USA, Východ USA 2, – Sever střední USA, Jižní střední USA, střed USA, západ USA, západní USA 2, západní Evropa, Severní Evropa, Spojené království – Západ, Spojené království – Jih, Austrálie – východ, Austrálie – jihovýchod a jihovýchodní Asie. Pracovní prostor analýzy protokolů musí existovat v – Západ střední USA, Východ USA, západní Evropa, Spojené království – Jih, Austrálie – jihovýchod nebo jihovýchodní Asie.
 
 3.  Můžete povolit toku skupin Nsg protokoly pro nacházet v různých oblastech než pracovní prostor OMS?
 
@@ -127,11 +135,11 @@ Pro další podrobnosti naleznete v [Správa řízení přístupu na základě r
 
 14. Můžete nakonfigurovat analytics provozu pomocí prostředí PowerShell nebo šablonu Azure Resource Manager?
 
-Ano, konfigurace analýzy provozu pomocí windows powershell je podporována verze 6.2.1 a vyšší, ale není k dispozici v podpora šablony Azure Resource Manager k dispozici. Další informace, jak lze pomocí prostředí PowerShell nakonfigurovat provoz analytics naleznete v následujících [dokumentaci](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.2.0). 
+        Yes, traffic analytics configuration using windows powershell is supported from version 6.2.1 onwards, however Azure Resource Manager template support is not available at present. To learn more, how PowerShell can be used to configure traffic analytics please refer following [documentation](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog?view=azurermps-6.2.0). 
 
 15.  Jak je cenově Analýza provozu?
 
-Analýza provozu je – měření podle objemu dat protokolu toku zpracovaných službou a ukládání resulted rozšířené protokolů v pracovním prostoru analýzy protokolů. Další informace o cenách plán prosím vědět [, klikněte sem](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) 
+        Analýza provozu je – měření podle objemu dat protokolu toku zpracovaných službou a ukládání resulted rozšířené protokolů v pracovním prostoru analýzy protokolů. Další informace o cenách plán prosím vědět [, klikněte sem](https://azure.microsoft.com/en-us/pricing/details/network-watcher/) 
 
 16.  Jak můžete přejít pomocí klávesnice v zobrazení mapy geograficky?
 
@@ -162,3 +170,47 @@ Analýza provozu je – měření podle objemu dat protokolu toku zpracovaných 
         - `ESC` Sbalí rozšířený výběr.
         - `UP Arrow` Klíč provede stejnou akci, jako `ESC`. `Down arrow` Klíč provede stejnou akci, jako `Enter`.
         - Použití `Shift+Plus` v, a `Shift+Minus` zvětšit.
+
+17. Jak můžete přejít pomocí klávesnice v zobrazení topologie virtuální sítě?
+
+    Tato stránka topologie virtuální sítě obsahuje dvě hlavní části:
+    
+    - **Hlavička**: Hlavička umístěny v horní části virtuální topologie sítě poskytuje schopnost vyberte filtry distribuce přenosů prostřednictvím tlačítka jako připojené virtuální sítě nebo odpojeno virtuální sítě nebo aktivní nebo neaktivní nebo na-místní/Azure oblast nebo veřejné IP adresy nebo Těžký/střední nebo Nízká nebo povolené nebo blokované a informace legendy. Na výběr definované tlačítka se na topologii, například pokud uživatel vybere "Aktivní" tlačítko filtru v informační zprávě, pak topologii označuje "Aktivní" virtuální sítě ve vašem nasazení použije příslušný filtr.
+    - **Topologie**: v části The topologie umístit pod Banner informující o zobrazují distribuce přenosů mezi virtuálními sítěmi.
+    
+    **Navigace klávesnice na hlavičku**
+    
+    - Ve výchozím nastavení je výběr na stránce topologie virtuální sítě na hlavičku filtr tlačítko "Připojené virtuální sítě".
+    - Přejděte na další tlačítko filtry, můžete použít `Tab` klíč přesunout na další. Přesun zpět, použijte `Shift+Tab` klíč. Předat dál navigační směr přednost zleva doprava, následuje horní dolů.
+    - Stiskněte `Enter` klávesy ŠIPKA použít vybraný filtr. Na základě výběru filtru a nasazení, jsou vyznačené jeden nebo více uzlů (VNet) v části topologie.
+        - Chcete-li přepnout mezi **Banner** a **topologie**, stiskněte klávesu `Ctrl+F6`.
+        
+    **Navigace na topologii pomocí klávesnice**
+    
+    - Jakmile vybraný libovolný filtr na informační zprávě a stisknutí `Ctrl+F6`, se aktivuje jeden zvýrazněný uzel (**virtuální síť**) v zobrazení topologie.
+    - Přejděte na další zvýrazněná uzlů v zobrazení topologie, můžete použít `Shift+Right arrow` klíče pro posunování vpřed. 
+    - Na zvýrazněných uzly, se aktivuje **informace nástroj pole** pro uzel. Ve výchozím nastavení, se aktivuje tlačítko "Další informace" **informace nástroj pole**. Dále přejděte v **pole** zobrazit, použijte `Right` a `Left arrow` klíče přesunout vpřed a zpět, v uvedeném pořadí. Stisknutím `Enter` má stejný účinek jako výběr cílených tlačítka na **informace nástroj pole**.
+    - Na výběr všechny tyto uzly, jeho všechna připojení můžete návštěvy, po jednom stisknutím `Shift+Left arrow` klíč. Se aktivuje **informace nástroj pole** daného připojení. V libovolném bodě můžete fokus zapuštěno zpět do uzlu stisknutím `Shift+Right arrow` znovu.
+    
+
+18. Jak můžete přejít pomocí klávesnice v zobrazení topologie podsíť?
+
+    Tato stránka virtuální podsítě topologie obsahuje dvě hlavní části:
+    
+    - **Hlavička**: Hlavička umístěny v horní části virtuální topologii podsítě poskytuje schopnost vyberte filtry distribuce přenosů prostřednictvím tlačítka jako aktivní nebo neaktivní nebo externí připojení nebo na-místní/Azure oblast nebo veřejné IP adresy/toků aktivní / Těžký/střední nebo Nízká nebo škodlivé provoz nebo povolené nebo blokované, podsítě brány podsítě/back-end a podsítě front-endu. Na výběr definované tlačítka se na topologii, například pokud uživatel vybere "Aktivní" tlačítko filtru v informační zprávě, pak topologii označuje "Aktivní" virtuálních podsítí ve vašem nasazení použije příslušný filtr.
+    - **Topologie**: v části The topologie umístit pod Banner informující o zobrazují distribuce přenosů mezi virtuální podsítě.
+    
+    **Navigace klávesnice na hlavičku**
+    
+    - Ve výchozím nastavení je výběr na stránce virtuální topologii podsítě Banner informující o filtr tlačítko "Podsítě".
+    - Přejděte na další tlačítko filtry, můžete použít `Tab` klíč přesunout na další. Přesun zpět, použijte `Shift+Tab` klíč. Předat dál navigační směr přednost zleva doprava, následuje horní dolů.
+    - Stiskněte `Enter` klávesy ŠIPKA použít vybraný filtr. Na základě výběru filtru a nasazení, jsou vyznačené jeden nebo více uzlů (podsítě) v části topologie.
+        - Chcete-li přepnout mezi **Banner** a **topologie**, stiskněte klávesu `Ctrl+F6`.
+        
+    **Navigace na topologii pomocí klávesnice**
+    
+    - Jakmile vybraný libovolný filtr na informační zprávě a stisknutí `Ctrl+F6`, se aktivuje jeden zvýrazněný uzel (**podsíť**) v zobrazení topologie.
+    - Přejděte na další zvýrazněná uzlů v zobrazení topologie, můžete použít `Shift+Right arrow` klíče pro posunování vpřed. 
+    - Na zvýrazněných uzly, se aktivuje **informace nástroj pole** pro uzel. Ve výchozím nastavení, se aktivuje tlačítko "Další informace" **informace nástroj pole**. Dále přejděte v **pole** zobrazit, použijte `Right` a `Left arrow` klíče přesunout vpřed a zpět, v uvedeném pořadí. Stisknutím `Enter` má stejný účinek jako výběr cílených tlačítka na **informace nástroj pole**.
+    - Na výběr všechny tyto uzly, jeho všechna připojení můžete návštěvy, po jednom stisknutím `Shift+Left arrow` klíč. Se aktivuje **informace nástroj pole** daného připojení. V libovolném bodě můžete fokus zapuštěno zpět do uzlu stisknutím `Shift+Right arrow` znovu.    
+

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: 489e7eb35352e2e8fd3d159381c2177098a90399
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4086ef6ce2a95e0467eda61116ac002cf53610b5
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198119"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300790"
 ---
 # <a name="access-azure-data-lake-store-from-vms-within-an-azure-vnet"></a>Přístup k Azure Data Lake Store z virtuálních počítačů v rámci síť Azure
 Azure Data Lake Store je PaaS služba, která běží na veřejné internetové IP adresy. Jakýkoli server, který se může připojit k veřejnému Internetu může obvykle připojit k Azure Data Lake Store také koncové body. Ve výchozím nastavení všechny virtuální počítače, které jsou v sítě Azure Vnet můžete přístup k Internetu a proto můžete přístup k Azure Data Lake Store. Nicméně je možné nakonfigurovat virtuální počítače ve virtuální síti není mít přístup k Internetu. Pro tyto virtuální počítače přístup k Azure Data Lake Store je omezený také. Blokování veřejný přístup k Internetu pro virtuální počítače ve virtuálních sítí Azure lze provést pomocí kteréhokoli z následujících postupů:
@@ -42,7 +42,7 @@ Výstup vypadá přibližně takto. Hodnota proti **adresu** vlastnost je IP adr
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>Povolení připojení z virtuálních počítačů omezený pomocí NSG
-Pokud pravidlo NSG se používá k blokování přístupu k Internetu, můžete vytvořit další NSG, která umožňuje přístup k IP adrese Data Lake Store. Další informace o pravidla NSG najdete v tématu [přehled skupin zabezpečení sítě](../virtual-network/security-overview.md). Pokyny o tom, jak vytvářet skupiny Nsg najdete v tématu [Správa skupin Nsg pomocí portálu Azure](../virtual-network/virtual-networks-create-nsg-arm-pportal.md).
+Pokud pravidlo NSG se používá k blokování přístupu k Internetu, můžete vytvořit další NSG, která umožňuje přístup k IP adrese Data Lake Store. Další informace o pravidla NSG najdete v tématu [přehled skupin zabezpečení sítě](../virtual-network/security-overview.md). Pokyny o tom, jak vytvářet skupiny Nsg najdete v tématu [jak vytvořit skupinu zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md).
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>Povolení připojení z virtuálních počítačů omezený pomocí UDR nebo ExpressRoute
 Pokud trasy, udr nebo trasy protokolu BGP vyměňují se používá k blokování přístupu k Internetu, je potřeba nakonfigurovat tak, aby virtuální počítače v těchto podsítích přístup koncových bodů Data Lake Store speciální trasy. Další informace najdete v tématu [trasy definované uživatelem přehled](../virtual-network/virtual-networks-udr-overview.md). Pokyny pro vytvoření udr, najdete v části [udr vytvořit ve službě Správce prostředků](../virtual-network/tutorial-create-route-table-powershell.md).

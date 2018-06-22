@@ -3,17 +3,18 @@ title: Kognitivní hledat data extrakce, přirozeného jazyka zpracování ve sl
 description: Extrakce dat, zpracování přirozeného jazyka (NLP) a zpracovávání obrázků k vytvoření s možností vyhledávání obsahu ve službě Azure Search pomocí kognitivní dovednosti indexování.
 manager: cgronlun
 author: HeidiSteen
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: heidist
-ms.openlocfilehash: ca6c285348208a7ad24faf966073d641810039fc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 64b4c0a315e206cd260f2f1108362e92f55d1843
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641107"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304630"
 ---
 # <a name="what-is-cognitive-search"></a>Co je kognitivní hledání?
 
@@ -25,12 +26,12 @@ AI integrace se prostřednictvím *kognitivní dovednosti* který zlepšit komun
 
 Dovednosti použít během indexování mohou být předdefinované nebo vlastní:
 
-+ [Prefined dovednosti](cognitive-search-predefined-skills.md) jsou založené na stejné AI algoritmy používané v kognitivní rozhraní API služby: [s názvem rozpoznávání Entity](cognitive-search-skill-named-entity-recognition.md), [klíč frázi extrakce](cognitive-search-skill-keyphrases.md), a [rozpoznávání znaků](cognitive-search-skill-ocr.md) jsou několika. 
++ [Předdefinované dovednosti](cognitive-search-predefined-skills.md) jsou založené na stejné AI algoritmy používané v kognitivní rozhraní API služby: [s názvem rozpoznávání Entity](cognitive-search-skill-named-entity-recognition.md), [klíč frázi extrakce](cognitive-search-skill-keyphrases.md), a [rozpoznávání znaků](cognitive-search-skill-ocr.md)jsou několika. 
 
 + [Vlastní dovednosti](cognitive-search-create-custom-skill-example.md) mohou být vytvořeny vámi pro žádné speciální zpracování, které požadujete. Příklady vlastní dovednosti může být vlastní entity modulu nebo dokumentu třídění cílení na konkrétní doméně, jako je třeba finanční, vědecké publikace nebo lékařství.
 
 > [!NOTE]
-> Kognitivní vyhledávání je ve verzi Public Preview a využití jeho dovedností se momentálně nabízí zdarma. Cenu této funkce oznámíme později.
+> Kognitivní vyhledávání je ve verzi public preview a spuštění skillset aktuálně nabízí zadarmo. Cenu této funkce oznámíme později.
 
 ## <a name="components-of-cognitive-search"></a>Součástí kognitivní vyhledávání
 

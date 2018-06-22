@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: be6e5fb83ea88ce30b64f5e1eb53422f0404410f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bbf4e2a35667484fea66a1888cdfc0184a806583
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229617"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308312"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Kurz: Konfigurace služby Salesforce pro zřizování automatické uživatelů
 
@@ -95,7 +95,7 @@ Cílem této části se popisují postup povolení zřizování uživatelů slu�
 
 10. Zkopírujte token, přejděte do okna vaší služby Azure AD a vložte ji do **tajný klíč tokenu** pole.
 
-11. **URL klienta** musí být zadán, pokud je instance služby Salesforce na Cloud vlády Salesforce. Jinak je volitelné. Zadejte adresu URL klienta pomocí formátu https://your-instance.my.salesforce.com, nahraďte názvem vaší instance služby Salesforce vaše instance.
+11. **URL klienta** musí být zadán, pokud je instance služby Salesforce na Cloud vlády Salesforce. Jinak je volitelné. Zadejte adresu URL klienta pomocí formát "https://\<vaše instance\>. my.salesforce.com," nahraďte \<vaše instance\> s názvem vaší instance služby Salesforce.
 
 12. Na portálu Azure klikněte na tlačítko **Test připojení** zajistit Azure AD může připojit k aplikaci Salesforce.
 

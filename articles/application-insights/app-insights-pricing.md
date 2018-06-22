@@ -10,14 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 04/02/2018
+ms.topic: conceptual
+ms.reviewer: Dale.Koetke
+ms.date: 06/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 22c8616c1585e3f728a03a794c527cb34fc0c4eb
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: a401bc3ed68dc9273ac14cfd357b9c05111dd54c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309852"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Správa svazku ceny a data ve službě Application Insights
 
@@ -88,7 +90,7 @@ Objem dat, která posíláte je omezena třemi způsoby:
 
     Pozor použijte, pokud nastavíte denního limitu. Vašich představ by měla být k *nikdy dosáhl denního limitu*. Při dosažení denního limitu, dojde ke ztrátě dat pro zbývající část dne, a nelze monitorovat aplikace. Můžete změnit denní zakončení **denního limitu svazku** možnost. Této možnosti v můžete přistupovat **využití a odhadované náklady** podokně (to je podrobněji popsané v dále v tomto článku).
     Odebrali jsme omezení na některé typy předplatné, které mají kreditu, který nelze použít pro službu Application Insights. Dříve Pokud předplatné má limitu útraty a automaticky, dialogu denního limitu obsahuje pokyny k odstranění limitu útraty a povolit denního limitu má být aktivována nad rámec 32,3 MB a den.
-* **Omezení**: omezení rychlost přenosu dat do 32 000 událostí za sekundu, průměr více než 1 minuta.
+* **Omezení**: omezení rychlost přenosu dat do 32 000 událostí za sekundu, průměr za klíč instrumentace více než 1 minuta.
 
 *Co se stane, když aplikace my překračuje míru omezení?*
 

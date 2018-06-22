@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/18/2018
+ms.date: 06/20/2018
 ms.author: sngun
-ms.openlocfilehash: 4b12652783c94d132a5c1f4d4aa352d4e2318edf
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e4a3b3a482f56065c54525a4d9cd7971f50f5b2a
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797664"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300675"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB asynchronní Java SDK pro rozhraní API pro SQL: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -53,6 +53,16 @@ SQL API asynchronní Java SDK se liší od Java SDK pro rozhraní API SQL tím, 
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+* Nahrazuje org.json závislostí jackson kvůli z důvodů výkonu a licencování ([githubu #29](https://github.com/Azure/azure-cosmosdb-java/issues/29)).
+* Odebrat nepoužívané OfferV2 třídy.
+* Přidání přístupového objektu metoda nabídka třídu pro obsah propustnost.
+* Všechny metody v dokumentu nebo prostředků vrácení org.json typy změnit tak, aby vrátit jackson typ objektu.
+* Metoda getObject(.) tříd, které rozšíření JsonSerializable změnit tak, aby vrátit jackson ObjectNode typu.
+* Metoda getCollection(.) změnit tak, aby vrátí kolekci ObjectNode.
+* Odebrané JsonSerializable podtřídy konstruktory s org.json.JSONObject arg.
+* JsonSerializable.toJson (SerializationFormattingPolicy.Indented) teď používá dva prostory pro odsazení.
+  
 ### <a name="a-name102102"></a><a name="1.0.2"/>1.0.2
 * Přidaná podpora pro jedinečný Index zásad.
 * Přidaná podpora pro omezení velikosti odpovědi token pokračování v možnostech informačního kanálu.
@@ -89,6 +99,7 @@ Každá žádost o DB Cosmos pomocí vyřazeno sady SDK budou odmítnuty službo
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [2.0.0](#2.0.0) |20 června 2018|--- |
 | [1.0.2](#1.0.2) |18 může 2018|--- |
 | [1.0.1](#1.0.1) |20 duben 2018|--- |
 | [1.0.0](#1.0.0) |27. února 2018|--- |

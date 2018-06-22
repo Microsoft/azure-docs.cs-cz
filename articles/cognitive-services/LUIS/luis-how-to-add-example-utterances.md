@@ -10,21 +10,21 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 12cbffdbd9ab299d4405aa50c0e49db9c20ab0fa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 74a4b77bd9823e5462eecd438cf4c1d863e79892
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343823"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300634"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>Přidat příklad utterances a popisek s entitami
 
-Utterances jsou příklady uživatele dotazy nebo příkazy. Pokud chcete naučit jazyk Principy (LEOŠ), je potřeba přidat [příklad utterances](luis-concept-utterance.md) k [záměr](luis-concept-intent.md).
+Příklad utterances jsou příklady text otázky uživatelského nebo příkazy. Pokud chcete naučit jazyk Principy (LEOŠ), je potřeba přidat [příklad utterances](luis-concept-utterance.md) k [záměr](luis-concept-intent.md).
 
-Obecně platí nejprve přidejte utterance, a pak vytvořte entity a označovat utterances na stránce záměrné. Pokud byste místo entity nejprve vytvořte, přečtěte si téma [přidat entity](luis-how-to-add-entities.md).
+Obecně platí nejprve přidat utterance příklad záměrem a pak vytvořit entity a utterances popisek na stránce záměrné. Pokud byste místo entity nejprve vytvořte, přečtěte si téma [přidat entity](luis-how-to-add-entities.md).
 
 ## <a name="add-an-utterance"></a>Přidat utterance
-Na stránku záměrné zadejte příslušné utterance očekávat od uživatelů, jako například `book 2 adult business tickets to Paris tomorrow on Air France` do textového pole pod záměrné název a potom stiskněte klávesu Enter. 
+Na stránku záměrné zadejte příslušné příklad utterance, očekávat od uživatelů, jako například `book 2 adult business tickets to Paris tomorrow on Air France` do textového pole pod záměrné název a potom stiskněte klávesu Enter. 
  
 >[!NOTE]
 >LEOŠ převede všechny utterances na malá písmena.
@@ -32,6 +32,9 @@ Na stránku záměrné zadejte příslušné utterance očekávat od uživatelů
 ![Stránka Podrobnosti snímek záměry, s utterance zvýrazněná](./media/luis-how-to-add-example-utterances/add-new-utterance-to-intent.png) 
 
 Utterances se přidají do seznamu utterances pro aktuální záměr. 
+
+## <a name="ignoring-words-and-punctuation"></a>Bez ohledu na slova a interpunkce
+Pokud chcete ignorovat konkrétní slova nebo interpunkční znaménka v příkladu utterance, použijte [vzor](luis-concept-patterns.md#pattern-syntax) s _Ignorovat_ syntaxe. 
 
 ## <a name="add-simple-entity-label"></a>Přidání popisku jednoduché entity
 V následujícím postupu vytvoření a označovat vlastní entity v rámci následující utterance na stránce záměrné:

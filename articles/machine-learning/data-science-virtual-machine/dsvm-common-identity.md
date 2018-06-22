@@ -1,6 +1,6 @@
 ---
-title: Instalační program společnou identitu pro datové vědy virtuálního počítače – Azure | Microsoft Docs
-description: Instalační program v prostředích enterprise team DSVM společnou identitu.
+title: Nastavit společnou identitu pro datové vědy virtuálního počítače – Azure | Microsoft Docs
+description: Nastavte společnou identitu v prostředích DSVM enterprise týmu.
 keywords: přímý učení AI datové vědy nástroje, data vědecké účely virtuální počítač, geoprostorové analýzy, proces team dat vědecké účely
 services: machine-learning
 documentationcenter: ''
@@ -15,68 +15,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 70c6b8cd147cefaa3128bc1e6a414a6fa61dba6d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
-ms.translationtype: HT
+ms.openlocfilehash: d6235f3a425481a13e627d683bb4c3943b473b40
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830890"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309824"
 ---
-# <a name="setup-common-identity-on-the-data-science-vm"></a>Instalační program společnou identitu ve virtuálním počítači Data vědecké účely
+# <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Nastavit společnou identitu na Data virtuálního počítače vědecké účely
 
-Ve výchozím nastavení na virtuálním počítači Azure včetně místního uživatele datové vědy virtuálních počítačů (DSVM) účty jsou vytvořeny při zřizování virtuálního počítače a uživatele ověřovat na virtuální počítač pomocí těchto přihlašovacích údajů. Pokud máte více virtuálních počítačů, které potřebujete získat přístup, tento postup můžete rychle získat komplikované ke správě přihlašovacích údajů. Běžné uživatelské účty a správu pomocí zprostředkovatele identity založených na standardech umožňuje používat jedinou sadu pověření pro přístup k více prostředkům v Azure, včetně více DSVMs. 
+Na virtuální počítač Azure (VM), včetně na datové vědě virtuálního počítače (DSVM) vytvořte místní uživatelské účty při zřizování virtuálního počítače. Uživatelé pak ověřit, aby virtuální počítač pomocí těchto přihlašovacích údajů. Pokud máte více virtuálních počítačů, které potřebujete získat přístup, tento postup můžete rychle získat komplikované při správě přihlašovacích údajů. Běžné uživatelské účty a správu prostřednictvím poskytovatele identity založených na standardech umožňují používat jedinou sadu pověření pro přístup k více prostředkům v Azure, včetně více DSVMs. 
 
-Active Directory (AD) je zprostředkovatele oblíbených identity a je podporovaná i v Azure jako služba, jakož i místní. Můžete využít k ověření uživatelů na samostatný počítač vědecké účely dat (DSVM) nebo cluster DSVM na sadu škálování virtuálního počítače Azure AD ani Azure AD. K tomu je potřeba DSVM instance připojení k doméně AD. Pokud již máte služby Active Directory ke správě identit, můžete ho použít jako běžné zprostředkovatele identity. V případě, že jste AD, můžete spustit spravované AD v Azure pomocí služby názvem [Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/)(Azure AD DS). 
+Služby Active Directory je zprostředkovatele oblíbených identity a je podporovaná v Azure jako službu a místní. Můžete použít Azure Active Directory (Azure AD) nebo místní služby Active Directory k ověřování uživatelů na samostatnou DSVM nebo cluster DSVMs sady škálování virtuálního počítače Azure. To provedete DSVM instance připojení k doméně služby Active Directory. 
 
-V dokumentaci k [Azure Active directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/) poskytuje podrobné [pokyny](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity) spravovat služby active directory včetně připojení k místní adresář Azure AD, pokud nemáte. 
+Pokud již máte služby Active Directory ke správě identit, můžete ho použít jako běžné zprostředkovatele identity. Pokud nemáte služby Active Directory, můžete spustit spravované instance služby Active Directory v Azure pomocí služby názvem [Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS). 
 
-Zbývající část tohoto článku popisuje kroky, jak nastavit prostřednictvím plně spravované domény služby AD v Azure pomocí služby Azure AD DS a připojení k vaší DSVMs k spravované doméně AD povolit uživatelům přístup k fondu DSVMs (a dalším prostředkům služby Azure) pomocí společného uživatelského účtu a přihlašovací údaje. 
+V dokumentaci k [Azure AD](https://docs.microsoft.com/azure/active-directory/) poskytuje podrobné [správu pokyny](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity), včetně připojení k místní adresář Azure AD, pokud nemáte. 
 
-##  <a name="set-up-a-fully-managed-active-directory-domain-on-azure"></a>Nastavení plně spravované domény služby Active Directory v Azure
+Tento článek popisuje kroky pro nastavení plně spravovaná služba domény služby Active Directory v Azure pomocí služby Azure AD DS. Vaše DSVMs může potom připojí k spravované doméně služby Active Directory umožňuje uživatelům přístup k fondu DSVMs (a dalším prostředkům služby Azure) pomocí společného uživatelského účtu a přihlašovací údaje. 
 
-Azure AD DS můžete snadno spravovat identity vašich tím, že poskytuje plně spravované služby v Azure. V této doméně služby Active directory se spravují uživatelé a skupiny.  Postup nastavení Azure hostované AD domény a uživatelské účty ve vašem adresáři:
+## <a name="set-up-a-fully-managed-active-directory-domain-on-azure"></a>Nastavení plně spravované domény služby Active Directory v Azure
 
-1. Přidání uživatele do služby Active directory na portálu. 
+Azure AD DS můžete snadno spravovat identity vašich tím, že poskytuje plně spravované služby v Azure. V této doméně služby Active Directory můžete spravovat uživatele a skupiny. Postup nastavení hostované v Azure Active Directory doménu a uživatelské účty ve vašem adresáři jsou:
 
-    a. Přihlaste se k [centra pro správu Azure Active Directory](https://aad.portal.azure.com) pomocí účtu, který je globální správce adresáře.
+1. Na portálu Azure přidejte uživatele do služby Active Directory: 
+
+   a. Přihlaste se k [centra pro správu Azure Active Directory](https://aad.portal.azure.com) pomocí účtu, který je globální správce adresáře.
     
-    b. Vyberte **Azure Active Directory** a potom **uživatelů a skupin**.
+   b. Vyberte **Azure Active Directory** a potom **uživatelů a skupin**.
     
-    c. Na **uživatelů a skupin**, vyberte **všichni uživatelé**a potom vyberte **nového uživatele**.
+   c. Na **uživatelů a skupin**, vyberte **všichni uživatelé**a potom vyberte **nového uživatele**.
    
-   ![Použití příkazu Přidat](./media/add-user.png)
+      **Uživatele** otevře se podokno.
+      
+      ![V podokně "User"](./media/add-user.png)
     
-    d. Zadejte podrobnosti pro uživatele, jako například **název** a **uživatelské jméno**. Část názvu domény uživatelského jména musí buď musí být počáteční výchozí domény název "[název domény].onmicrosoft.com" nebo ověřené, nefederovaných [vlastní název domény](../../active-directory/add-custom-domain.md) například "contoso.com".
+   d. Zadejte podrobnosti pro uživatele, jako například **název** a **uživatelské jméno**. Část názvu domény uživatelské jméno musí být buď výchozí počáteční domény název "[název domény].onmicrosoft.com" nebo ověřené, nefederovaných [vlastní název domény](../../active-directory/add-custom-domain.md) například "contoso.com".
     
-    e. Zkopírujte nebo jinak Poznámka: hesla generovaného uživatele tak, aby ji mohli nabídnout uživatele po dokončení tohoto procesu.
+   e. Zkopírujte nebo jinak Poznámka: hesla generovaného uživatele tak, aby ji mohli nabídnout uživatele po dokončení tohoto procesu.
     
-    f. Volitelně můžete otevřít a vyplňte informace v **profil**, **skupiny**, nebo **Directory role** pro uživatele. 
+   f. Volitelně můžete otevřít a vyplňte informace v **profil**, **skupiny**, nebo **Directory role** pro uživatele. 
     
-    g. Na **uživatele**, vyberte **vytvořit**.
+   g. Na **uživatele**, vyberte **vytvořit**.
     
-    h. Bezpečně distribuujte vygenerované heslo pro nového uživatele tak, aby uživatel moct přihlásit.
+   h. Bezpečně distribuujte vygenerované heslo pro nového uživatele tak, aby uživatel moct přihlásit.
 
-2.  Vytvoření služby Azure AD Domain Services
+2. Vytvoření instance služby Azure AD DS. Postupujte podle pokynů v článku [povolit Azure Active Directory Domain Services pomocí webu Azure portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (úloh 1 až 5). Je potřeba aktualizovat stávající hesla uživatele ve službě Active Directory tak, aby se synchronizuje hesla ve službě Azure AD DS. Je také důležité přidat DNS ve službě Azure AD DS, jak je popsáno v článku úloha 4. 
 
-    Chcete-li vytvořit přidá Azure, postupujte podle pokynů v článku "[povolit Azure Active Directory Domain Services pomocí webu Azure portal](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started)" (úloh 1 až 5 úloh). Je důležité, aby stávající hesla uživatele ve službě Active directory jsou aktualizovány tak, aby je synchronizována hesla ve službě Azure AD DS. Také je potřeba přidat DNS do Azure AD DS, jak je uvedeno v úloh č. 4 výše článku. 
+3. Vytvořte samostatnou podsíť DSVM ve virtuální síti vytvořené v úloze 2 v předchozím kroku.
+4. Vytvořte jeden nebo více instancí vědecké účely Data virtuálního počítače v podsíti DSVM. 
+5. Postupujte podle [pokyny](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm ) přidání DSVM do služby Active Directory. 
+6. Připojení Azure Files složky pro hostování adresáře home nebo poznámkového bloku povolit připojení pracovního prostoru na libovolném počítači. (Pokud budete potřebovat úzkou oprávnění na úrovni souborů, budete potřebovat systém souborů NFS spuštěné na jeden nebo více virtuálních počítačů.)
 
-3.  Vytvořit samostatnou podsíť DSVM ve virtuální síti vytvořené v úloze 2 # předcházející kroku
-4.  Vytvořte jeden nebo více instancí vědecké účely Data virtuálního počítače v podsíti DSVM 
-5.  Postupujte podle [pokyny](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-join-ubuntu-linux-vm ) přidat DSVM do služby AD. 
-6.  Připojte další sdílené soubory Azure k hostování adresáře home nebo poznámkového bloku povolit připojení pracovního prostoru na libovolném počítači. (Pokud budete potřebovat oprávnění na úrovni souborů úzkou budete potřebovat systému souborů NFS spuštěna na jeden nebo více virtuálních počítačů)
-
-    a. [Vytvořte sdílenou složku Azure](../../storage/files/storage-how-to-create-file-share.md)
+   a. [Vytvoření složky Azure Files](../../storage/files/storage-how-to-create-file-share.md).
     
-    b. Připojte je na Linux DSVM. Když kliknete na tlačítko "Připojit" pro soubory Azure ve vašem účtu úložiště na portálu Azure, se zobrazí příkaz ke spuštění v prostředí bash na Linux DSVM. Příkaz bude vypadat takto:
-```
-sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
-```
-7.  Řekněme, připojené soubory Azure v /data/workspace. Teď vytvořte adresáře pro každý z vašich uživatelů ve sdílené složce. /data/Workspace/user1, /data/workspace/user2 a tak dále. Vytvoření ```notebooks``` adresář v prostoru pro každého uživatele. 
-8. Vytvoření symbolické odkazy ```notebooks``` v ```$HOME/userx/notebooks/remote```.   
+   b. Připojte je na Linux DSVM. Když vyberete **Connect** tlačítko pro sdílení souborů Azure ve vašem účtu úložiště na portálu Azure, příkaz ke spuštění v Bash prostředí Linux DSVM se zobrazí. Příkaz vypadá takto:
+   
+   ```
+   sudo mount -t cifs //[STORAGEACCT].file.core.windows.net/workspace [Your mount point] -o vers=3.0,username=[STORAGEACCT],password=[Access Key or SAS],dir_mode=0777,file_mode=0777,sec=ntlmssp
+   ```
+7. Předpokládejme třeba připojit vaše soubory Azure sdílenou složku v /data/workspace. Teď vytvořte adresáře pro každý z vašich uživatelů ve sdílené složce: /data/workspace/user1, /data/workspace/user2 a tak dále. Vytvoření `notebooks` adresář v prostoru pro každého uživatele. 
+8. Vytvoření symbolické odkazy pro `notebooks` v `$HOME/userx/notebooks/remote`.   
 
-Nyní máte uživatele ve vašem active directory, které jsou hostované v Azure a moct přihlásit k žádné DSVM (SSH, Jupyterhub), který je připojen k Azure AD DS pomocí přihlašovacích údajů, AD. Vzhledem k tomu, že prostoru uživatele je na sdílené soubory Azure, bude mít uživatel přístup k jejich poznámkových bloků a další pracovní z jakékoli DSVM při použití Jupyterhub. 
+Nyní máte uživatele ve vaší instanci Active Directory, které jsou hostované v Azure. Pomocí pověření služby Active Directory, uživatelé mohou přihlásit k žádné DSVM (SSH nebo JupyterHub), který je připojený ke službě Azure AD DS. Protože prostoru uživatele je ve sdílené složce souborů Azure, uživatelé mají přístup k jejich poznámkových bloků a další pracovní z jakékoli DSVM, když používají JupyterHub. 
 
-Pro automatické škálování můžete použít k vytvoření fondu virtuálních počítačů, které jsou připojené k doméně tímto způsobem a pomocí sdíleného disku, které jsou připojené sad škálování virtuálního počítače. Uživatelé přihlášení k žádnému počítači k dispozici v sadě škálování virtuálního počítače a mít přístup k sdíleného disku, kam se ukládají jejich poznámkových bloků. 
+Pro automatické škálování můžete použít k vytvoření fondu virtuálních počítačů, které jsou připojené k doméně tímto způsobem a pomocí sdíleného disku připojené škálování virtuálního počítače. Uživatelé přihlášení k žádnému počítači k dispozici v sadě škálování virtuálního počítače a mít přístup k sdíleného disku, kam se ukládají jejich poznámkových bloků. 
 
 ## <a name="next-steps"></a>Další postup
 

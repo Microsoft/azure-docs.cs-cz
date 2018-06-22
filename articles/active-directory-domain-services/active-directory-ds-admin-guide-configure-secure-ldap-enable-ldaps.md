@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: maheshu
-ms.openlocfilehash: 81986fdd9cbfbeb41c794e2364bf7bfea1069742
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4263034408de059880b91e8106f6832ccacc6085
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211250"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300964"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurace zabezpečeného LDAP (LDAPS) pro spravované doméně služby Azure AD Domain Services
 
@@ -131,4 +131,4 @@ Pokud máte potíže s připojením k spravované doméně pomocí zabezpečený
 * [Správa spravované domény služby Azure AD Domain Services](active-directory-ds-admin-guide-administer-domain.md)
 * [Správa zásad skupiny na spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Skupiny zabezpečení sítě](../virtual-network/security-overview.md)
-* [Vytvořit skupinu zabezpečení sítě](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+* [Vytvořit skupinu zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md)

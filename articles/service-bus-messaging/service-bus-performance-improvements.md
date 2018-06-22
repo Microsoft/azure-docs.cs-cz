@@ -5,27 +5,22 @@ services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: ''
-ms.assetid: e756c15d-31fc-45c0-8df4-0bca0da10bb2
 ms.service: service-bus-messaging
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 06/05/2018
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: e6762d988da7d34893852505d8ce0fd30622eaaf
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: e168dcab182f9eb30291b58bdde252ec66d18e8c
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802540"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301797"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Osvědčené postupy pro zlepšení výkonu pomocí zasílání zpráv Service Bus
 
 Tento článek popisuje, jak používat Azure Service Bus za účelem optimalizace výkonu při výměně zprostředkované zprávy. První část tohoto článku popisuje různé mechanismy, které nabízí za účelem zvýšení výkonu. Druhá část obsahuje pokyny k použití služby Service Bus tak, že můžete nabídnout nejlepší výkon v daném scénáři.
 
-V tomto tématu se pojem "client" představuje Každá entita, která přistupuje k Service Bus. Klient může trvat roli odesílatele nebo příjemce. Termín "sender" se používá pro Service Bus fronta nebo téma klienta, který odesílá zprávy do předplatného fronta nebo téma sběrnice. Termín "příjemce" odkazuje na Service Bus fronty nebo předplatného klienta, který přijímá zprávy z fronty Service Bus nebo předplatné.
+V tomto článku termín "client" odkazuje na všechny entity, který přistupuje k Service Bus. Klient může trvat roli odesílatele nebo příjemce. Termín "sender" se používá pro Service Bus fronta nebo téma klienta, který odesílá zprávy do předplatného fronta nebo téma sběrnice. Termín "příjemce" odkazuje na Service Bus fronty nebo předplatného klienta, který přijímá zprávy z fronty Service Bus nebo předplatné.
 
 Tyto části seznámí několik konceptů, které používá Service Bus, které pomáhají výkonu.
 
@@ -37,7 +32,7 @@ Service Bus umožní klientům posílat a přijímat zprávy přes jeden ze tř�
 2. Sběrnice zpráv protokolu (SBMP)
 3. HTTP
 
-Protokoly AMQP a SBMP jsou efektivnější, protože udržují připojení k Service Bus, dokud existuje objekt pro vytváření zpráv. Také implementuje dávkování a prefetching. Pokud není výslovně uvedeno, veškerý obsah v tomto tématu se předpokládá použití AMQP nebo SBMP.
+Protokoly AMQP a SBMP jsou efektivnější, protože udržují připojení k Service Bus, dokud existuje objekt pro vytváření zpráv. Také implementuje dávkování a prefetching. Pokud není výslovně uvedeno, veškerý obsah v tomto článku předpokládá použití AMQP nebo SBMP.
 
 ## <a name="reusing-factories-and-clients"></a>Opětovné použití objektů Factory a klientů
 
@@ -45,13 +40,13 @@ Service Bus klient objekty, jako například [QueueClient] [ QueueClient] nebo [
 
 ## <a name="concurrent-operations"></a>Souběžných operací
 
-Provádění operace (odesílání, příjem, odstranit, apod) nějakou dobu trvá. Tentokrát zahrnuje zpracování operace služby Service Bus kromě latence požadavku a odpovědi. Pokud chcete zvýšit počet operací za čas, musí současně provést operace. Tento souhlas můžete dosáhnout různými způsoby:
+Provádění operace (odesílání, příjem, odstranit, apod) nějakou dobu trvá. Tentokrát zahrnuje zpracování operace služby Service Bus kromě latence požadavku a odpovědi. Pokud chcete zvýšit počet operací za čas, musí současně provést operace. 
 
-* **Asynchronní operace**: klient plány operations provedením asynchronní operace. Další požadavek je spuštěn před dokončením předchozí požadavek. Následující fragment kódu je příklad operace asynchronní odesílání:
+Klient naplánuje souběžných operací provedením asynchronní operace. Další požadavek je spuštěn před dokončením předchozí požadavek. Následující fragment kódu je příklad operace asynchronní odesílání:
   
  ```csharp
-  BrokeredMessage m1 = new BrokeredMessage(body);
-  BrokeredMessage m2 = new BrokeredMessage(body);
+  Message m1 = new BrokeredMessage(body);
+  Message m2 = new BrokeredMessage(body);
   
   Task send1 = queueClient.SendAsync(m1).ContinueWith((t) => 
     {
@@ -65,25 +60,14 @@ Provádění operace (odesílání, příjem, odstranit, apod) nějakou dobu trv
   Console.WriteLine("All messages sent");
   ```
   
-  Následující kód je příkladem asynchronní operace příjmu:
+  Následující kód je příkladem asynchronní operace příjmu. Viz úplný program [sem](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.Azure.ServiceBus/SendersReceiversWithQueues):
   
   ```csharp
-  Task receive1 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
-  Task receive2 = queueClient.ReceiveAsync().ContinueWith(ProcessReceivedMessage);
-  
-  Task.WaitAll(receive1, receive2);
-  Console.WriteLine("All messages received");
-  
-  async void ProcessReceivedMessage(Task<BrokeredMessage> t)
-  {
-    BrokeredMessage m = t.Result;
-    Console.WriteLine("{0} received", m.Label);
-    await m.CompleteAsync();
-    Console.WriteLine("{0} complete", m.Label);
-  }
-  ```
+  var receiver = new MessageReceiver(connectionString, queueName, ReceiveMode.PeekLock);
+  var doneReceiving = new TaskCompletionSource<bool>();
 
-* **Více objektů Factory**: Všichni klienti (odesílatelé kromě příjemců), které jsou vytvořené pomocí stejné objekty Factory sdílet jedno připojení TCP. Zpráva maximální propustnost je omezen počet operací, které můžete přejít přes toto připojení TCP. Propustnost, kterou lze získat pomocí jednoho factory se výrazně liší podle doby odezvy TCP a velikost zprávy. Chcete-li dosáhnout vyšší propustnosti, použijte více objektů Factory zasílání zpráv.
+  receiver.RegisterMessageHandler(
+  ```
 
 ## <a name="receive-mode"></a>Zobrazí režim
 
@@ -95,7 +79,7 @@ Service Bus nepodporuje transakce pro operace přijímat a odstranění. Kromě 
 
 ## <a name="client-side-batching"></a>Dávkování na straně klienta
 
-Dávkování na straně klienta umožňuje klientovi fronta nebo téma do prodleva odesílání zprávy pro určitou dobu. Pokud klient pošle další zprávy během tohoto období, přenáší zprávy v jedné dávce. Dávkování na straně klienta rovněž způsobí, že fronta nebo předplatného klienta tak, aby dávky více **Complete** požadavky do jedné žádosti. Dávkování je dostupná jenom pro asynchronní **odeslat** a **Complete** operace. Synchronní operace se okamžitě odesílají do služby Service Bus. Dávkování dojít k funkce Náhled nebo přijímat operace, ani dávkování dojde k do klientů.
+Dávkování na straně klienta umožňuje klientovi fronta nebo téma do prodleva odesílání zprávy pro určitou dobu. Pokud během tohoto časového období klient odešle další zprávy, přenese zprávy v jedné dávce. Dávkování na straně klienta rovněž způsobí, že fronta nebo předplatného klienta tak, aby dávky více **Complete** požadavky do jedné žádosti. Dávkování je dostupná jenom pro asynchronní **odeslat** a **Complete** operace. Synchronní operace se okamžitě odesílají do služby Service Bus. Dávkování dojít k funkce Náhled nebo přijímat operace, ani dávkování dojde k do klientů.
 
 Ve výchozím nastavení používá klienta s intervalem batch 20 ms. Batch interval, můžete změnit nastavením [BatchFlushInterval] [ BatchFlushInterval] vlastnost před vytvořením objektu pro vytváření zpráv. Toto nastavení ovlivní všechny klienty, které jsou vytvořené pomocí tento objekt pro vytváření.
 
@@ -108,7 +92,7 @@ mfs.NetMessagingTransportSettings.BatchFlushInterval = TimeSpan.FromSeconds(0.05
 MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ```
 
-Dávkování nemá vliv na počet operací fakturovatelný zasílání zpráv a je dostupná jenom pro protokol klienta služby Service Bus. Protokol HTTP nepodporuje dávkování.
+Dávkování nemá vliv na počet operací fakturovatelný zasílání zpráv a je dostupná jenom pro protokol klienta služby Service Bus používá [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) knihovny. Protokol HTTP nepodporuje dávkování.
 
 ## <a name="batching-store-access"></a>Dávkování přístup k úložišti
 
@@ -135,7 +119,7 @@ Dávkové úložiště přístup nemá vliv na počet operací fakturovatelný z
 
 Když je prefetched zprávy, se prefetched zpráva jen uzamkne službu. S zámek nemůže přijímat prefetched zpráva jiný příjemce. Pokud příjemce nemůže dokončit zprávu, než vyprší platnost zámek, k dispozici pro ostatní příjemce zprávy. Prefetched kopie zprávy zůstává v mezipaměti. Příjemce, který využívá vypršenou platností v mezipaměti kopie dostanou výjimku při pokusu o dokončení této zprávě. Ve výchozím nastavení zámek zprávy vyprší po 60 sekund. Tuto hodnotu lze rozšířit na 5 minut. Pokud chcete zabránit spotřeby zprávy s vypršenou platností, by měla být velikost mezipaměti vždy menší než počet zpráv, které mohou být využívány službou klienta v určeném časovém limitu uzamčení.
 
-Při použití výchozí zámku vypršení platnosti 60 sekund, správné hodnoty pro [SubscriptionClient.PrefetchCount] [ SubscriptionClient.PrefetchCount] je 20krát maximální počet zpracovaných položek všechny přijímačů objektu pro vytváření. Například objekt factory vytvoří tři příjemci a každý příjemce může zpracovat až 10 zpráv za sekundu. Předběžné načtení počet nesmí být delší než 20 × 3 × 10 = 600. Ve výchozím nastavení [QueueClient.PrefetchCount] [ QueueClient.PrefetchCount] je nastaven na hodnotu 0, což znamená, že žádné další zprávy jsou načtených ze služby.
+Při použití výchozí zámku vypršení platnosti 60 sekund, správné hodnoty pro [PrefetchCount] [ SubscriptionClient.PrefetchCount] je 20krát maximální počet zpracovaných položek všechny přijímačů objektu pro vytváření. Například objekt factory vytvoří tři příjemci a každý příjemce může zpracovat až 10 zpráv za sekundu. Předběžné načtení počet nesmí být delší než 20 × 3 × 10 = 600. Ve výchozím nastavení [PrefetchCount] [ QueueClient.PrefetchCount] je nastaven na hodnotu 0, což znamená, že žádné další zprávy jsou načtených ze služby.
 
 Prefetching zprávy zvyšuje celkovou propustnost pro fronty nebo předplatného, protože snižuje celkový počet zpráv operace nebo zpátečních cest. Načítání první zprávu, ale bude trvat déle (z důvodu velikost vyšší zprávy). Přijímání zpráv prefetched bude rychlejší, protože tyto zprávy již byly staženy klientem.
 
@@ -158,12 +142,12 @@ Pokud expresní entity odeslání zprávu, která obsahuje důležité informace
 > [!NOTE]
 > Expresní entity nepodporují transakce.
 
-## <a name="use-of-partitioned-queues-or-topics"></a>Použití oddílů fronty nebo témata
+## <a name="partitioned-queues-or-topics"></a>Oddílů fronty nebo témata
 
 Interně Service Bus používá stejný uzel a zasílání zpráv uložení ke zpracování a ukládání všechny zprávy pro entity přenosu zpráv (fronty nebo tématu). A [oddílů fronta nebo téma](service-bus-partitioning.md), na druhé straně je distribuované ve více uzlech a úložiště pro zasílání zpráv. Oddílů fronty a témata nejen poskytne vyšší výkon než regulární fronty a témata, budou také vykazovat vyšší dostupnosti. Chcete-li vytvořit dělené entity, nastavte [enablepartitioning je] [ EnablePartitioning] vlastnost **true**, jak je znázorněno v následujícím příkladu. Další informace o dělené entity najdete v tématu [segmentované entity zasílání zpráv][Partitioned messaging entities].
 
 > [!NOTE]
-> Dělené entity již nejsou podporovány v [skladová položka Premium](service-bus-premium-messaging.md). 
+> Dělené entity nejsou podporovány v [skladová položka Premium](service-bus-premium-messaging.md). 
 
 ```csharp
 // Create partitioned queue.
@@ -172,7 +156,7 @@ qd.EnablePartitioning = true;
 namespaceManager.CreateQueue(qd);
 ```
 
-## <a name="use-of-multiple-queues"></a>Použití více front
+## <a name="multiple-queues"></a>Více front
 
 Pokud není možné použít oddílů fronta nebo téma nebo očekávané zátěže nelze zpracovat pomocí jednoho oddílů fronta nebo téma, je nutné použít více entit pro zasílání zpráv. Pokud používáte více entit, vytvořte vyhrazený klienta pro každou entitu, místo použití stejného klienta pro všechny entity.
 

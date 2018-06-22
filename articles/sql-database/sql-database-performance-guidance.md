@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 613fc4d914635f46d09552858706975006fcbff6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2956dfab3b9c1e6e8de54648dae9d2be99788ac2
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650464"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309210"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Ladění výkonu v Azure SQL Database
 
@@ -25,7 +25,7 @@ Ve službě nemáte žádná doporučení použít a máte problémy s výkonem,
 - Ladění aplikace a použít některé osvědčené postupy, které může zlepšit výkon. 
 - Optimalizujte databázi změnou indexy a dotazy efektivněji pracovat s daty.
 
-Tyto jsou ruční metody, protože je potřeba rozhodnout se, jak [limitů prostředků na základě DTU modelu](sql-database-dtu-resource-limits.md) a [limitů prostředků na základě vCore modelu (preview)](sql-database-vcore-resource-limits.md) podle svých potřeb. Jinak potřebovali byste přepisování aplikace nebo kódu databáze a nasazení změn.
+Tyto jsou ruční metody, protože je třeba určit množství prostředků splňují vašim potřebám. Jinak potřebovali byste přepisování aplikace nebo kódu databáze a nasazení změn.
 
 ## <a name="increasing-performance-tier-of-your-database"></a>Zvýšení úrovně výkonu databáze
 
@@ -271,8 +271,8 @@ Některé aplikace jsou náročné na zápis. Někdy můžete snížit celkové 
 Některé databázových aplikací mít úlohy náročné na čtení. Ukládání do mezipaměti vrstvy může vést ke snížení zatížení databáze a může potenciálně snížit úroveň výkonu, které jsou potřebné k podpoře databáze pomocí Azure SQL Database. S [Azure Redis Cache](https://azure.microsoft.com/services/cache/), pokud máte úlohy náročné na čtení, můžete číst data jednou (nebo případně jednou za aplikační vrstvy počítače, v závislosti na tom, jak je nakonfigurovaná) a potom tato data mimo vaší databázi SQL. Toto je způsob, jak snížit zatížení databáze (procesoru a vstupů/výstupů pro čtení), ale není vliv na transakční konzistence, protože data se načten z mezipaměti může být synchronizována s daty v databázi. V mnoha aplikacích určité úrovně, ke kterému je přijatelné, není, platí pro všechny úlohy. Všechny požadavky aplikace byste měli plně rozumět před implementací strategie pro ukládání do mezipaměti aplikační vrstvy.
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o úrovních služeb na základě DTU najdete v tématu [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) a [limitů prostředků na základě DTU modelu](sql-database-dtu-resource-limits.md)
-* Další informace o úrovních služeb na základě vCore najdete v tématu [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md) a [limitů prostředků na základě vCore (preview)](sql-database-vcore-resource-limits.md)
+* Další informace o úrovních služeb na základě DTU najdete v tématu [na základě DTU nákupní model](sql-database-service-tiers-dtu.md).
+* Další informace o úrovních služeb na základě vCore najdete v tématu [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md).
 * Další informace o elastické fondy najdete v tématu [co je Azure elastickém fondu?](sql-database-elastic-pool.md)
 * Informace o výkonu a Elastická fondy najdete v tématu [při vzít v úvahu fondu elastické databáze](sql-database-elastic-pool-guidance.md)
 

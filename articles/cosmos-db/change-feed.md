@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 2600565493a334c7227e5c0d67a5808f30751108
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 8475c79782730e989f9590566c31ccd50af9f144
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261063"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302042"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Práce se změnami kanálu podpory v Azure Cosmos DB
 
@@ -219,138 +219,253 @@ Abyste pochopili, jak tyto čtyři prvky změnu kanálu procesoru pracovní spol
 
 Před instalací změnu kanálu balíček NuGet procesoru, nejprve nainstalujte: 
 
-* Microsoft.Azure.DocumentDB, verze 1.13.1 nebo novější 
-* Newtonsoft.Json, verze 9.0.1 nebo novější
+* Microsoft.Azure.DocumentDB, nejnovější verzi.
+* Newtonsoft.Json, nejnovější verze
 
 Poté nainstalujte [balíček Microsoft.Azure.DocumentDB.ChangeFeedProcessor Nuget](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/) a její zahrnutí jako odkaz.
 
 K implementaci knihovna informačního kanálu procesoru změn, je nutné provést následující:
 
 1. Implementace **DocumentFeedObserver** objekt, který implementuje **IChangeFeedObserver**.
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Documents;
+    using Microsoft.Azure.Documents.ChangeFeedProcessor.FeedProcessing;
+    using Microsoft.Azure.Documents.Client;
 
-2. Implementace **DocumentFeedObserverFactory**, který implementuje **IChangeFeedObserverFactory**.
-
-3. V **CreateObserver** metodu **DocumentFeedObserverFacory**, vytváření instancí **ChangeFeedObserver** který jste vytvořili v kroku 1 a obnoví v něm.
-
-    ```
-    public IChangeFeedObserver CreateObserver()
+    /// <summary>
+    /// This class implements the IChangeFeedObserver interface and is used to observe 
+    /// changes on change feed. ChangeFeedEventHost will create as many instances of 
+    /// this class as needed. 
+    /// </summary>
+    public class DocumentFeedObserver : IChangeFeedObserver
     {
-              DocumentFeedObserver newObserver = new DocumentFeedObserver(this.client, this.collectionInfo);
-              return newObserver;
+    private static int totalDocs = 0;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DocumentFeedObserver" /> class.
+        /// Saves input DocumentClient and DocumentCollectionInfo parameters to class fields
+        /// </summary>
+        /// <param name="client"> Client connected to destination collection </param>
+        /// <param name="destCollInfo"> Destination collection information </param>
+        public DocumentFeedObserver()
+        {
+            
+        }
+
+        /// <summary>
+        /// Called when change feed observer is opened; 
+        /// this function prints out observer partition key id. 
+        /// </summary>
+        /// <param name="context">The context specifying partition for this observer, etc.</param>
+        /// <returns>A Task to allow asynchronous execution</returns>
+        public Task OpenAsync(IChangeFeedObserverContext context)
+        {
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("Observer opened for partition Key Range: {0}", context.PartitionKeyRangeId);
+            return Task.CompletedTask;
+        }
+
+        /// <summary>
+        /// Called when change feed observer is closed; 
+        /// this function prints out observer partition key id and reason for shut down. 
+        /// </summary>
+        /// <param name="context">The context specifying partition for this observer, etc.</param>
+        /// <param name="reason">Specifies the reason the observer is closed.</param>
+        /// <returns>A Task to allow asynchronous execution</returns>
+        public Task CloseAsync(IChangeFeedObserverContext context, ChangeFeedObserverCloseReason reason)
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("Observer closed, {0}", context.PartitionKeyRangeId);
+            Console.WriteLine("Reason for shutdown, {0}", reason);
+            return Task.CompletedTask;
+        }
+
+        public Task ProcessChangesAsync(IChangeFeedObserverContext context, IReadOnlyList<Document> docs, CancellationToken cancellationToken)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Change feed: PartitionId {0} total {1} doc(s)", context.PartitionKeyRangeId, Interlocked.Add(ref totalDocs, docs.Count));
+            foreach (Document doc in docs)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine(doc.Id.ToString());
+            }
+
+            return Task.CompletedTask;
+        }
     }
     ```
 
-4. Vytvoření instance **DocumentObserverFactory**.
-
-5. Vytváření instancí **ChangeFeedEventHost**:
-
+2. Implementace **DocumentFeedObserverFactory**, který implementuje **IChangeFeedObserverFactory**.
     ```csharp
-    ChangeFeedEventHost host = new ChangeFeedEventHost(
-                     hostName,
-                     documentCollectionLocation,
-                     leaseCollectionLocation,
-                     feedOptions,
-                     feedHostOptions);
+     using Microsoft.Azure.Documents.ChangeFeedProcessor.FeedProcessing;
+
+    /// <summary>
+    /// Factory class to create instance of document feed observer. 
+    /// </summary>
+    public class DocumentFeedObserverFactory : IChangeFeedObserverFactory
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="DocumentFeedObserverFactory" /> class.
+        /// Saves input DocumentClient and DocumentCollectionInfo parameters to class fields
+        /// </summary>
+        public DocumentFeedObserverFactory()
+        {
+        }
+
+        /// <summary>
+        /// Creates document observer instance with client and destination collection information
+        /// </summary>
+        /// <returns>DocumentFeedObserver with client and destination collection information</returns>
+        public IChangeFeedObserver CreateObserver()
+        {
+            DocumentFeedObserver newObserver = new DocumentFeedObserver();
+            return newObserver as IChangeFeedObserver;
+        }
+    }
     ```
 
-6. Zaregistrovat **DocumentFeedObserverFactory** s hostitelem.
+3. Definování *CancellationTokenSource* a *ChangeFeedProcessorBuilder*
 
-Kód pro kroky 4 až 6 je: 
+    ```csharp
+    private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+    private readonly ChangeFeedProcessorBuilder builder = new ChangeFeedProcessorBuilder();
+    ```
 
-```
-ChangeFeedOptions feedOptions = new ChangeFeedOptions();
-feedOptions.StartFromBeginning = true;
+5. sestavení **ChangeFeedProcessorBuilder** po definování relevantní objekty 
 
-ChangeFeedHostOptions feedHostOptions = new ChangeFeedHostOptions();
- 
-// Customizing lease renewal interval to 15 seconds.
-// Can customize LeaseRenewInterval, LeaseAcquireInterval, LeaseExpirationInterval, FeedPollDelay
-feedHostOptions.LeaseRenewInterval = TimeSpan.FromSeconds(15);
- 
-using (DocumentClient destClient = new DocumentClient(destCollInfo.Uri, destCollInfo.MasterKey))
-{
-        DocumentFeedObserverFactory docObserverFactory = new DocumentFeedObserverFactory(destClient, destCollInfo);
-        ChangeFeedEventHost host = new ChangeFeedEventHost(hostName, documentCollectionLocation, leaseCollectionLocation, feedOptions, feedHostOptions);
-        await host.RegisterObserverFactoryAsync(docObserverFactory);
-        await host.UnregisterObserversAsync();
-}
-```
+    ```csharp
+            string hostName = Guid.NewGuid().ToString();
+      
+            // monitored collection info 
+            DocumentCollectionInfo documentCollectionInfo = new DocumentCollectionInfo
+            {
+                Uri = new Uri(this.monitoredUri),
+                MasterKey = this.monitoredSecretKey,
+                DatabaseName = this.monitoredDbName,
+                CollectionName = this.monitoredCollectionName
+            };
+            
+            DocumentCollectionInfo leaseCollectionInfo = new DocumentCollectionInfo
+                {
+                    Uri = new Uri(this.leaseUri),
+                    MasterKey = this.leaseSecretKey,
+                    DatabaseName = this.leaseDbName,
+                    CollectionName = this.leaseCollectionName
+                };
+            DocumentFeedObserverFactory docObserverFactory = new DocumentFeedObserverFactory();
+            ChangeFeedOptions feedOptions = new ChangeFeedOptions();
 
-Je to. Po provedení těchto kroků několik spustí dokumenty, než dorazí do **DocumentFeedObserver ProcessChangesAsync** metoda. Výše uvedený kód v [úložiště GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor)
+            /* ie customize StartFromBeginning so change feed reads from beginning
+                can customize MaxItemCount, PartitonKeyRangeId, RequestContinuation, SessionToken and StartFromBeginning
+            */
 
-## <a name="faq"></a>Nejčastější dotazy
+            feedOptions.StartFromBeginning = true;
+        
+            ChangeFeedProcessorOptions feedProcessorOptions = new ChangeFeedProcessorOptions();
 
-### <a name="what-are-the-different-ways-you-can-read-change-feed-and-when-to-use-each-method"></a>Jaké jsou různé způsoby, můžete si přečíst změnu kanálu? a kdy používat jednotlivé metody?
+            // ie. customizing lease renewal interval to 15 seconds
+            // can customize LeaseRenewInterval, LeaseAcquireInterval, LeaseExpirationInterval, FeedPollDelay 
+            feedProcessorOptions.LeaseRenewInterval = TimeSpan.FromSeconds(15);
 
-Existují tři možnosti, vám umožní číst informační kanál změn:
+            this.builder
+                .WithHostName(hostName)
+                .WithFeedCollection(documentCollectionInfo)
+                .WithLeaseCollection(leaseCollectionInfo)
+                .WithProcessorOptions (feedProcessorOptions)
+                .WithObserverFactory(new DocumentFeedObserverFactory());               
+                //.WithObserver<DocumentFeedObserver>();  If no factory then just pass an observer
 
-* **[Pomocí Azure Cosmos DB SQL rozhraní API .NET SDK](#sql-sdk)**
+            var result =  await this.builder.BuildAsync();
+            await result.StartAsync();
+            Console.Read();
+            await result.StopAsync();    
+            ```
+
+That’s it. After these few steps documents will start showing up into the **DocumentFeedObserver.ProcessChangesAsync** method.
+
+Above code is for illustration purpose to show different kind of objects and their interaction. You have to define proper variables and initiate them with correct values. You can get the complete code used in this article from the [GitHub repo](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples/ChangeFeedProcessor).
+
+> [!NOTE]
+> You should never have a master key in your code or in config file as shown in above code. Please see [how to use Key-Vault to retrive the keys](https://sarosh.wordpress.com/2017/11/23/cosmos-db-and-key-vault/).
+
+
+## FAQ
+
+### What are the different ways you can read Change Feed? and when to use each method?
+
+There are three options for you to read change feed:
+
+* **[Using Azure Cosmos DB SQL API .NET SDK](#sql-sdk)**
    
-   Pomocí této metody získáte nízkou úroveň ovládacího prvku na změnu informačního kanálu. Můžete spravovat kontrolního bodu, má přístup konkrétní oddíl klíče atd. Pokud máte více čtenářů, můžete použít [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) čtení rozdělovat do různých vláknech nebo různých klientů. .
+   By using this method, you get low level of control on change feed. You can manage the checkpoint, you can access a particular partition key etc. If you have multiple readers, you can use [ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) to distribute read load to different threads or different clients. .
 
-* **[Pomocí Azure Cosmos DB změnu kanálu procesoru knihovny](#change-feed-processor)**
+* **[Using the Azure Cosmos DB change feed processor library](#change-feed-processor)**
 
-   Pokud chcete využít spoustu složitosti změnu kanálu k můžete změnit informačního kanálu procesoru knihovny. Tato knihovna skryje spoustu složitost, ale stále nabízí úplnou kontrolu na změnit informačního kanálu. Tato knihovna používá [vzor pozorovatel](https://en.wikipedia.org/wiki/Observer_pattern), volá funkci pro zpracování sady SDK. 
+   If you want to outsource lot of complexity of change feed then you can use change feed processor library. This library hides lot of complexity, but still gives you complete control on change feed. This library follows an [observer pattern](https://en.wikipedia.org/wiki/Observer_pattern), your processing function is called by the SDK. 
 
-   Pokud máte vysoké propustnosti změnu kanálu, můžete vytvořit instanci více klientů ke čtení změnu informačního kanálu. Vzhledem k tomu, že používáte "Změna knihovny informačního kanálu procesor", ho bude automaticky rozdělit zatížení mezi různých klientů. Nemusíte provádět žádné kroky. Zpracovává všechny složitost sady SDK. Ale pokud budete chtít mít vlastní nástroj pro vyrovnávání zatížení, potom můžete implementovat IParitionLoadBalancingStrategy pro vlastní oddíl strategie. Implementujte IPartitionProcessor – vlastní zpracování změny na oddíl. Sada SDK a může zpracovat rozsahu oddílu ale pokud chcete zpracovat klíč oddílu konkrétní pak budete muset použít sady SDK pro rozhraní API pro SQL.
+   If you have a high throughput change feed, you can instantiate multiple clients to read the change feed. Because you are using “change feed processor library”, it will automatically divide the load among different clients. You do not have to do anything. All the complexity is handled by SDK. However, if you want to have your own load balancer, then you can implement IParitionLoadBalancingStrategy for custom partition strategy. Implement IPartitionProcessor – for custom processing changes on a partition. However, with SDK, you can process a partition range but if you want to process a particular partition key then you have to use SDK for SQL API.
 
-* **[Pomocí Azure Functions](#azure-functions)** 
+* **[Using Azure Functions](#azure-functions)** 
    
-   Poslední možnost Funkce Azure je nejjednodušší možnost. Doporučujeme používat tuto možnost. Když vytvoříte aktivační procedury Azure Cosmos DB v aplikaci Azure Functions, vyberte kolekci Azure Cosmos DB pro připojení k a funkce se aktivuje vždy, když ke změně do kolekce. sledování [obrazovky přetypování](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s) používání Azure fungovat a změňte informačního kanálu
+   The last option Azure Function is the simplest option. We recommend using this option. When you create an Azure Cosmos DB trigger in an Azure Functions app, you select the Azure Cosmos DB collection to connect to and the function is triggered whenever a change to the collection is made. watch a [screen cast](https://www.youtube.com/watch?v=Mnq0O91i-0s&t=14s) of using Azure function and change feed
 
-   Aktivační události lze vytvořit na portálu Azure Functions na portálu Azure Cosmos DB nebo prostřednictvím kódu programu. Visual Studio a VS Code má podpory pro zápis funkce Azure. Můžete napsat a ladění kódu na pracovní ploše a pak nasadit funkci s jedním kliknutím. Další informace najdete v tématu [Cosmos databázi Azure: bez serveru databáze computing pomocí Azure Functions](serverless-computing-database.md) článku.
+   Triggers can be created in the Azure Functions portal, in the Azure Cosmos DB portal, or programmatically. Visual Studio and VS Code has great support to write Azure Function. You can write and debug the code on your desktop, and then deploy the function with one click. For more information, see [Azure Cosmos DB: Serverless database computing using Azure Functions](serverless-computing-database.md) article.
 
-### <a name="what-is-the-sort-order-of-documents-in-change-feed"></a>Co je řazení dokumentů v kanálu změn?
+### What is the sort order of documents in change feed?
 
-Změna kanálu dokumenty se dodává v pořadí podle jejich čas změny. Toto pořadí řazení záruku, že se jenom na jeden oddíl.
+Change feed documents comes in order of their modification time. This sort order is guaranteed only per partition.
 
-### <a name="for-a-multi-region-account-what-happens-to-the-change-feed-when-the-write-region-fails-over-does-the-change-feed-also-failover-would-the-change-feed-still-appear-contiguous-or-would-the-fail-over-cause-change-feed-to-reset"></a>Pro účet služby oblast co se stane změnou kanálu když selže převzetí oblasti zápisu? Změnu kanálu také převzetí služeb při selhání? Změna kanálu stále objeví souvislý nebo příčina selhání změní informačního kanálu resetovat?
+### For a multi-region account, what happens to the change feed when the write-region fails-over? Does the change feed also failover? Would the change feed still appear contiguous or would the fail-over cause change feed to reset?
 
-Ano, změna kanálu bude fungovat na všech operaci ruční převzetí služeb při selhání a je souvislý.
+Yes, change feed will work across the manual failover operation and it will be contiguous.
 
-### <a name="how-long-change-feed-persist-the-changed-data-if-i-set-the-ttl-time-to-live-property-for-the-document-to--1"></a>Jak dlouho změnu kanálu zachovat změněných dat. Pokud vlastnost TTL (Time to Live) pro dokument lze nastavit na hodnotu -1?
+### How long change feed persist the changed data if I set the TTL (Time to Live) property for the document to -1?
 
-Změna kanálu se uchová navždy. Pokud data nejsou odstraněna, zůstane v kanálu změnu.
+Change feed will persist forever. If data is not deleted, it will remain in change feed.
 
-### <a name="how-can-i-configure-azure-functions-to-read-from-a-particular-region-as-change-feed-is-available-in-all-the-read-regions-by-default"></a>Jak můžete nakonfigurovat Azure functions číst z konkrétní oblasti, jak změnit kanálu je k dispozici ve všech oblastech čtení ve výchozím nastavení?
+### How can I configure Azure functions to read from a particular region, as change feed is available in all the read regions by default?
 
-Aktuálně není možné konfigurovat Azure Functions číst z konkrétní oblasti. V úložišti Azure Functions k nastavení upřednostňovaných oblasti všechny aktivační události a vazeb Azure Cosmos DB není problém Githubu.
+Currently it’s not possible to configure Azure Functions to read from a particular region. There is a GitHub issue in the Azure Functions repo to set the preferred regions of any Azure Cosmos DB binding and trigger.
 
-Azure Functions využívá výchozí zásady připojení. Režim připojení můžete nakonfigurovat v Azure Functions a ve výchozím nastavení, z oblasti zápisu přečte proto je vhodné společné umísťování Azure Functions na stejné oblasti.
+Azure Functions uses the default connection policy. You can configure connection mode in Azure Functions and by default, it reads from the write region, so it is best to co-locate Azure Functions on the same region.
 
-### <a name="what-is-the-default-size-of-batches-in-azure-functions"></a>Co je výchozí velikost dávky v Azure Functions?
+### What is the default size of batches in Azure Functions?
 
-100 dokumenty v každé vyvolání Azure Functions. Toto číslo je však konfigurovat v souboru function.json. Tady je kompletní [seznam možností konfigurace](../azure-functions/functions-run-local.md). Pokud vyvíjíte místně, aktualizovat nastavení aplikace v rámci [local.settings.json](../azure-functions/functions-run-local.md) souboru.
+100 documents at every invocation of Azure Functions. However, this number is configurable within the function.json file. Here is complete [list of configuration options](../azure-functions/functions-run-local.md). If you are developing locally, update the application settings within the [local.settings.json](../azure-functions/functions-run-local.md) file.
 
-### <a name="i-am-monitoring-a-collection-and-reading-its-change-feed-however-i-see-i-am-not-getting-all-the-inserted-document-some-documents-are-missing-what-is-going-on-here"></a>Sledování kolekce a čtení změn kanálu, ale zobrazuje, že se nezobrazují se všechna vloženého dokumentu, chybí některé dokumenty. Co se děje tady?
+### I am monitoring a collection and reading its change feed, however I see I am not getting all the inserted document, some documents are missing. What is going on here?
 
-Přesvědčte se, že neexistuje žádná funkce, které čtení stejné kolekce ke stejné kolekci zapůjčení. Se stalo s mi a později realizována, že chybí dokumenty se zpracovávají Moje jiné Azure funkce, která rovněž používá stejný zapůjčení.
+Please make sure that there is no other function reading the same collection with the same lease collection. It happened to me, and later I realized the missing documents are processed by my other Azure functions, which is also using the same lease.
 
-Proto pokud vytváříte několik Azure Functions číst stejné změnit informačního kanálu, pak se musí použít jiný zapůjčení kolekce nebo použít nastavení "leasePrefix" sdílet stejné kolekci. Při použití knihovna informačního kanálu procesoru změn můžete spustit více instancí funkce a SDK bude dělit dokumenty mezi různými instancemi automaticky za vás.
+Therefore, if you are creating multiple Azure Functions to read the same change feed then they must use different lease collection or use the “leasePrefix” configuration to share the same collection. However, when you use change feed processor library you can start multiple instances of your function and SDK will divide the documents between different instances automatically for you.
 
-### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>Dokument se aktualizují každou sekundu a nezobrazují se všechny změny v Azure Functions naslouchá. Chcete-li změnit informačního kanálu.
+### My document is updated every second, and I am not getting all the changes in Azure Functions listening to change feed.
 
-Změna hlasování Azure funkce informačního kanálu pro každých 5 sekund, budou ztraceny všechny změny provedené mezi 5 sekund. Azure Cosmos DB ukládá jenom jednu verzi pro každých 5 sekund, zobrazí se 5. Změna na dokumentu. Ale pokud chcete přejít níže 5 sekund a chcete dotazování změnu kanálu za sekundu, můžete nakonfigurovat čas dotazování "feedPollTime", najdete v části [Azure Cosmos DB vazby](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). Je definována v milisekundách výchozí hodnota je 5000. Pod 1 sekunda je možné, ale není vhodné, jak se spustí, zápis víc Procesorových.
+Azure Functions polls change feed for every 5 seconds, so any changes made between 5 seconds are lost. Azure Cosmos DB stores just one version for every 5 seconds so you will get the 5th change on the document. However, if you want to go below 5 second, and want to poll change Feed every second, You can configure the polling time “feedPollTime”, see [Azure Cosmos DB bindings](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration). It is defined in milliseconds with a default of 5000. Below 1 second is possible but not advisable, as you will start burning more CPU.
 
-### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>Po vložení dokumentu v kolekci Mongo rozhraní API, ale při doručení dokumentu v kanálu změnu, zobrazuje hodnotu jiné id. Co je problém tady?
+### I inserted a document in the Mongo API collection, but when I get the document in change feed, it shows a different id value. What is wrong here?
 
-Kolekce je kolekce Mongo rozhraní API. Pamatujte si, že změna kanálu je pro čtení pomocí klienta SQL a serializuje položky do formátu JSON. Z důvodu JSON formátování, MongoDB, bude mít klienti ve formátu neshody mezi dokumenty formátu BSON a JSON změnu informačního kanálu. Vidíte je reprezentace BSON dokument ve formátu JSON. Pokud používáte binárních atributů v účtech Mongo, jsou převést na JSON.
+Your collection is Mongo API collection. Remember, change feed is read using the SQL client and serializes items into JSON format. Because of the JSON formatting, MongoDB clients will experience a mismatch between BSON formatted documents and the JSON formatted change feed. You are seeing is the representation of a BSON document in JSON. If you use binary attributes in a Mongo accounts, they are converted to JSON.
 
-### <a name="is-there-a-way-to-control-change-feed-for-updates-only-and-not-inserts"></a>Existuje způsob, jak řídit změnu kanálu jen pro aktualizace a není vloží?
+### Is there a way to control change feed for updates only and not inserts?
 
-Není v současné době ale tato funkce je na plán. V současné době můžete přidat softwarové značky na dokumentu pro aktualizace.
+Not today, but this functionality is on roadmap. Today, you can add a soft marker on the document for updates.
 
-### <a name="is-there-a-way-to-get-deletes-in-change-feed"></a>Existuje způsob, jak získat odstranění v kanálu změny?
+### Is there a way to get deletes in change feed?
 
-Změna kanálu není aktuálně protokolu odstraní. Změna kanálu průběžně zlepšují a tato funkce je na plán. V současné době můžete přidat softwarové značky na dokumentu pro odstranění. Přidání atributu na dokumentu názvem "odstraněné" a nastavte na hodnotu "true" a nastavte hodnotu TTL na dokumentu tak, aby mohl být odstraněn automaticky.
+Currently change feed doesn’t log deletes. Change feed is continuously improving, and this functionality is on roadmap. Today, you can add a soft marker on the document for delete. Add an attribute on the document called “deleted” and set it to “true” and set a TTL on the document so that it can be automatically deleted.
 
-### <a name="can-i-read-change-feed-for-historic-documentsfor-example-documents-that-were-added-5-years-back-"></a>Může číst změnu kanálu pro historické dokumentů (například dokumenty, které byly přidány zpět 5 let)?
+### Can I read change feed for historic documents(for example, documents that were added 5 years back) ?
 
-Ano, pokud se neodstraní dokumentu si můžete přečíst změnu informačního kanálu, pokud je to počátek vaší kolekce.
+Yes, if the document is not deleted you can read the change feed as far as the origin of your collection.
 
-### <a name="can-i-read-change-feed-using-javascript"></a>Může číst informační kanál změn pomocí jazyka JavaScript
+### Can I read change feed using JavaScript?
 
-Ano, Node.js SDK počáteční podpora pro změnu kanálu nedávno přidali. Lze použít, jak je znázorněno v následujícím příkladu prosím aktualizace documentdb modul na aktuální verzi před spuštěním kódu:
+Yes, Node.js SDK initial support for change feed is recently added. It can be used as shown in the following example, please update documentdb module to current version before you run the code:
 
 ```js
 
@@ -422,6 +537,7 @@ V případě, že chyby by neměl rewind kontrolní bod zpět na začátku jinak
 
 Jak zachovat opravě kódu, bude brzy najít žádné dokumenty na frontu nedoručených zpráv.
 Azure Functions je automaticky volána informačního kanálu systémem změny a kontrolní bod atd se spravuje interně pomocí funkce Azure. Pokud chcete vrátit zpět kontrolní bod a řídit všechny aspekty, měli byste zvážit, že pomocí změnu kanálu procesoru SDK.
+
 
 ## <a name="next-steps"></a>Další postup
 

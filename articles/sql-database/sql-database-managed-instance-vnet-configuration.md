@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 45b645fe556d1f9630ee15b1f2f605bbaf3f87f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a51923738642b0e6a8ffd420b3cf433f7e869f59
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648060"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309329"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurace virtuální sítě pro spravované Instance databáze Azure SQL
 
 SQL databáze spravované Instance Azure (preview) musí být nasazený v rámci Azure [virtuální síť (VNet)](../virtual-network/virtual-networks-overview.md). Toto nasazení umožňuje následující scénáře: 
-- Připojení k instanci spravované přímo formuláři do místní sítě 
+- Připojení k instanci spravované přímo z místní sítě 
 - Připojení k odkazovaný server nebo jinou instanci a spravovat místní úložiště dat 
 - Připojení do Instance spravované prostředky Azure  
 

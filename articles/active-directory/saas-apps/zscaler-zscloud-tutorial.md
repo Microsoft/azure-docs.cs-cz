@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 1ccd0048eb2f1ab32e9fbf403b65f68b07ada480
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4fbb0e5512511842e020e5670f1290c6b6359305
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36227373"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308726"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Kurz: Azure Active Directory integrace s Zscaler ZSCloud
 
@@ -116,7 +116,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
      V **přihlašovací adresa URL** textové pole, zadejte adresu URL používá uživatelům přihlášení do aplikace ZScaler ZSCloud.
     
     > [!NOTE] 
-    > Budete muset aktualizovat tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Zscaler ZSCloud klienta](https://support.zscaler.com/hc/articles/210172606-Zscaler-is-Expanding-Its-Zscloud-Global-Footprint) získat tuto hodnotu. 
+    > Budete muset aktualizovat tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Zscaler ZSCloud klienta](https://help.zscaler.com/zia) získat tuto hodnotu. 
  
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 

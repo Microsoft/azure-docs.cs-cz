@@ -7,20 +7,22 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 06/20/2018
 ms.author: jodebrui
-ms.openlocfilehash: aff0f82f07e9129c8f7c131f055447ad578ad15b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f74c9bf06cad8b84d08baf7a0a0504b9cb729bf4
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647336"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308675"
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>Monitorování OLTP v paměti úložiště
-Při použití [OLTP v paměti](sql-database-in-memory.md), data v paměťově optimalizované tabulky a proměnných tabulek, které se nachází v úložišti OLTP v paměti. Má maximální velikost úložiště OLTP v paměti, která je popsána v jednotlivých úrovních služby Premium a kritické obchodní [limitů prostředků na základě DTU](sql-database-dtu-resource-limits.md) a [limitů prostředků na základě vCore](sql-database-vcore-resource-limits.md). Po překročení tohoto limitu vložení a aktualizace operace může spustit došlo k chybě 41823 pro samostatné databáze a chyba 41840 pro elastické fondy. V tomto okamžiku je nutné odstranit data získat paměť, nebo upgradovat úroveň výkonu databáze.
+Při použití [OLTP v paměti](sql-database-in-memory.md), data v paměťově optimalizované tabulky a proměnných tabulek, které se nachází v úložišti OLTP v paměti. Každé úrovni služeb Premium a kritické obchodní má maximální velikost úložiště OLTP v paměti. V tématu [limitů prostředků na základě DTU - jedné databáze](sql-database-dtu-resource-limits-single-databases.md), [limitů prostředků na základě DTU - elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[limitů prostředků na základě vCore - izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [limitů prostředků na základě vCore - elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).
+
+Po překročení tohoto limitu vložení a aktualizace operace může spustit došlo k chybě 41823 pro samostatné databáze a chyba 41840 pro elastické fondy. V tomto okamžiku je nutné odstranit data získat paměť, nebo upgradovat úroveň výkonu databáze.
 
 ## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Určete, zda vyhovuje data v rámci limitu úložiště OLTP v paměti
-Určete úložiště CAP vrstvy jinou službu. V tématu [limitů prostředků na základě DTU](sql-database-dtu-resource-limits.md) a [limitů prostředků na základě vCore](sql-database-vcore-resource-limits.md).
+Určete úložiště CAP vrstvy jinou službu. V tématu [limitů prostředků na základě DTU - jedné databáze](sql-database-dtu-resource-limits-single-databases.md), [limitů prostředků na základě DTU - elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[limitů prostředků na základě vCore - izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [limitů prostředků na základě vCore - elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Odhadnout požadavky na paměť pro paměťově optimalizované tabulky funguje pro SQL Server stejným způsobem jako se nepodporuje v Azure SQL Database. Trvat několik minut, přečtěte si tento článek na [MSDN](https://msdn.microsoft.com/library/dn282389.aspx).
 

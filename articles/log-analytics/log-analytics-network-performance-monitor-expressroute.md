@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9610a8b37ead976cfdfa2fed81d4d3932055ddcc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d97e380f83cc4e5e5a2d9686a7ac8426967f4b93
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237779"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302195"
 ---
 # <a name="expressroute-manager"></a>Správce ExpressRoute
 
@@ -29,7 +29,7 @@ Můžete použít funkce Azure ExpressRoute Manager v [sledování výkonu sít�
 - Sledování využití šířky pásma, ztráta a latence v okruhu, vztahy a úroveň Azure Virtual Network pro ExpressRoute.
 - Zjišťování topologie sítě vaší okruhy ExpressRoute.
 
-![Monitorování ExpressRoute](media/log-analytics-network-performance-monitor/expressroute-intro.png)
+![ExpressRoute Monitor](media/log-analytics-network-performance-monitor/expressroute-intro.png)
 
 ## <a name="configuration"></a>Konfigurace 
 Chcete-li spustit nástroj konfigurace pro sledování výkonu sítě, otevřete [řešení pro sledování výkonu sítě](log-analytics-network-performance-monitor.md) a vyberte **konfigurace**.
@@ -37,7 +37,7 @@ Chcete-li spustit nástroj konfigurace pro sledování výkonu sítě, otevřete
 ### <a name="configure-network-security-group-rules"></a>Konfigurace pravidel skupiny zabezpečení sítě 
 Pro servery v Azure, které se používají pro monitorování pomocí sledování výkonu sítě nakonfigurujte pravidla skupiny (NSG) zabezpečení sítě tak, aby umožnila přenosy TCP na portu, používá nástroj Sledování výkonu sítě pro syntetické transakce. Výchozí port je 8084. Tato konfigurace umožňuje nainstalován na virtuálních počítačích Azure ke komunikaci s místní agent Operations Management Suite monitoring agent. 
 
-Další informace o NSG najdete v tématu [skupin zabezpečení sítě](../virtual-network/virtual-networks-create-nsg-arm-pportal.md). 
+Další informace o skupinách Nsg najdete v tématu [skupin zabezpečení sítě](../virtual-network/manage-network-security-group.md). 
 
 >[!NOTE]
 > Předtím, než budete pokračovat v tomto kroku, nainstalujte agenta na místní server a Azure server agenta a spusťte skript prostředí PowerShell EnableRules.ps1. 

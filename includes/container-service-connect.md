@@ -19,7 +19,7 @@ Podle následujícího postupu nainstalujete a nakonfigurujete `kubectl` ve vaš
 > 
 
 ### <a name="install-kubectl"></a>Instalace kubectl
-Jedním ze způsobů, jak tento nástroj nainstalovat, je použít nástroj příkazového řádku Azure 2.0 `az acs kubernetes install-cli`. Pokud chcete spustit tento příkaz, ujistěte se, že jste [nainstalovali](/cli/azure/install-az-cli2) nejnovější příkazový řádek Azure CLI 2.0 a jste přihlášení k účtu Azure (`az login`).
+Jedním ze způsobů, jak tento nástroj nainstalovat, je použít nástroj příkazového řádku Azure 2.0 `az acs kubernetes install-cli`. Pokud chcete spustit tento příkaz, ujistěte se, že jste [nainstalován](/cli/azure/install-az-cli2) nejnovější Azure CLI 2.0 a přihlášeného k účtu Azure (`az login`).
 
 ```azurecli
 # Linux or macOS
@@ -40,7 +40,7 @@ az acs kubernetes get-credentials --resource-group=<cluster-resource-group> --na
 
 Tento příkaz stáhne přihlašovací údaje clusteru do složky `$HOME/.kube/config`, kde `kubectl` očekává, že je najde.
 
-Případně můžete použít `scp` a bezpečně zkopírovat soubor ze složky `$HOME/.kube/config` na hlavním virtuálním počítači do svého místního počítače. Například:
+Případně můžete použít `scp` a bezpečně zkopírovat soubor ze složky `$HOME/.kube/config` na hlavním virtuálním počítači do svého místního počítače. Příklad:
 
 ```bash
 mkdir $HOME/.kube
@@ -145,7 +145,7 @@ Nastavte proměnnou prostředí DOCKER_HOST na místní port, který jste nakonf
 export DOCKER_HOST=:2375
 ```
 
-Spusťte příkazy Dockeru, které vytvoří tunel ke clusteru Docker Swarm. Například:
+Spusťte příkazy Dockeru, které vytvoří tunel ke clusteru Docker Swarm. Příklad:
 
 ```bash
 docker info
@@ -193,7 +193,7 @@ Až bude tunel pro DC/OS nakonfigurovaný, budete mít k příslušným koncový
 
 Po dokončení konfigurace tunelu pro Docker Swarm otevřete nastavení systému Windows a nastavte proměnnou prostředí `DOCKER_HOST` na hodnotu `:2375`. Pak budete mít přístup ke clusteru Swarm přes příkazový řádek Dockeru.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Nasazení a správa kontejnerů ve vašem clusteru:
 
 * [Práce s Azure Container Service a Kubernetes](../articles/container-service/kubernetes/container-service-kubernetes-ui.md)

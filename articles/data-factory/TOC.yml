@@ -356,6 +356,8 @@
           href: monitor-visually.md
         - name: Monitorování pomocí služby Azure Monitor
           href: monitor-using-azure-monitor.md
+        - name: Monitorování pomocí OMS
+          href: data-factory-monitor-oms.md
         - name: Monitorování pomocí sad SDK
           href: monitor-programmatically.md
         - name: Monitorování prostředí Integration Runtime

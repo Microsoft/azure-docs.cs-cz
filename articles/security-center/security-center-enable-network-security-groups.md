@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 3c0ad4a0e1a5f4f2fd6def4f29599e2e55eb1a9d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fe75781629e8d6416405cc9eec9ce14e61a00b14
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364450"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301423"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Povolit skupin zabezpečení sítě v Azure Security Center
 Azure Security Center doporučuje, abyste povolili skupinu zabezpečení sítě (NSG), pokud ještě není povolené. Skupiny Nsg obsahují seznam pravidel seznamu řízení přístupu (ACL), která povolují nebo odpírají síťový provoz instancím virtuálních počítačů ve virtuální síti. Skupiny NSG můžou být přidružené buď k podsítím, nebo k jednotlivým instancím virtuálních počítačů v této podsíti. Pokud je skupina zabezpečení sítě přidružená k podsíti, pravidla seznamu ACL platí pro všechny instance virtuálních počítačů v této podsíti. Kromě toho je možné omezit provoz do konkrétního virtuálního počítače další tím, že přidružíte skupinu NSG přímo do tohoto virtuálního počítače. Další informace najdete v další [co je skupina zabezpečení sítě (NSG)?](../virtual-network/security-overview.md)
@@ -43,7 +43,7 @@ Pokud nemáte skupiny Nsg povoleno, Security Center nabízí dva doporučení v�
 
    ![Vyberte skupinu zabezpečení sítě][4]
 
-Pokud vytvoříte skupinu NSG, postupujte podle kroků v [Správa skupin Nsg pomocí portálu Azure](../virtual-network/virtual-networks-create-nsg-arm-pportal.md) vytvořit skupinu NSG a nastavit pravidla zabezpečení.
+Pokud vytvoříte skupinu NSG, postupujte podle kroků v [spravovat skupinu zabezpečení sítě](../virtual-network/manage-network-security-group.md) vytvořit skupinu NSG a nastavit pravidla zabezpečení.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 Tento článek ukázal, jak implementovat Security Center doporučení "Povolit skupin zabezpečení sítě" pro podsítě nebo virtuální počítače. Další informace o povolení skupin Nsg, naleznete v následujících tématech:

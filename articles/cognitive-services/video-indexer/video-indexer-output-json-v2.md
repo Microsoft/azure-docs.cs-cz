@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: juliako
-ms.openlocfilehash: 6c410b054ba98961d15a4db0ff7eaa2804245cb0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 87301e4ce3c5b7db054b3dd86e8ee1ac5d90d3ca
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343861"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309056"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Vyhledejte ve výstupu videa Indexer vytvořeného rozhraním v2 API
 
@@ -493,8 +493,8 @@ Firmy a produktu brand názvy v převod řeči na text přepis nebo Video rozpoz
 |---|---|
 |id|ID značky.|
 |jméno|Název značky.|
-|wikiId | Přípona adresy URL wikipedia značky. Například "Target_Corporation" se o příponu [ https://en.wikipedia.org/wiki/Target_Corporation ](https://en.wikipedia.org/wiki/Target_Corporation).
-|wikiUrl | Značku je Wikipedia adresu url, pokud existuje. Příklad: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
+|ID reference | Přípona adresy URL wikipedia značky. Například "Target_Corporation" se o příponu [ https://en.wikipedia.org/wiki/Target_Corporation ](https://en.wikipedia.org/wiki/Target_Corporation).
+|referenceUrl | Značku je Wikipedia adresu url, pokud existuje. Příklad: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |description|Popis značky.|
 |tags|Seznam předdefinovaných značky, které byly přidruženy k této značky.|
 |Spolehlivosti|Hodnota spolehlivosti detektor brand Video Indexer (0-1).|
@@ -522,8 +522,8 @@ Firmy a produktu brand názvy v převod řeči na text přepis nebo Video rozpoz
 {
     "id": 1,
     "name": "Microsoft",
-    "wikiId": "Microsoft",
-    "wikiUrl": "http: //en.wikipedia.org/wiki/Microsoft",
+    "referenceId": "Microsoft",
+    "referenceUrl": "http: //en.wikipedia.org/wiki/Microsoft",
     "description": "Microsoft Corporation is...",
     "tags": [
     "competitors",

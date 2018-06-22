@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 06/20/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19cdf81a355bae4d59cb49c1c588b995b040309b
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 12880ba3aa918873343ee8eb98e92130106e8362
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32310532"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304448"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -51,14 +51,10 @@ Pokud jste vytvořili účet Batch se režim přidělení fondu nastavený na **
 | [Souběžné úlohy](batch-parallel-node-tasks.md) na výpočetním uzlu |4 x počet jader na uzel |
 | [Aplikace](batch-application-packages.md) na účtu Batch |20 |
 | Balíčky aplikací na jednu aplikaci |40 |
-| Velikost balíčku aplikace, (všechny) |Poli 195GB<sup>1</sup> |
-| Velikost maximální spuštění úloh | 32768 znaků<sup>2</sup> |
-| Úloha maximální doba platnosti | 7 dní<sup>3</sup> |
+| Úloha maximální doba platnosti | 7 dní<sup>1</sup> |
 | Výpočetní uzly ve fondu komunikaci mezi uzly povolena | 100 |
 
-<sup>1</sup> azure Storage limit pro velikost objektu blob maximální bloku<br />
-<sup>2</sup> zahrnuje soubory prostředků a proměnných prostředí<br />
-<sup>3</sup> maximální životnost úlohy, když je přidán do úlohy po dokončení, je 7 dní. Dokončené úkoly se zachovávají po neomezenou dobu; data pro úkoly, které se nedokončí v rámci maximální doby života, nejsou dostupná.
+<sup>1</sup> maximální životnost úlohy, když je přidán do úlohy po dokončení, je 7 dní. Dokončené úkoly se zachovávají po neomezenou dobu; data pro úkoly, které se nedokončí v rámci maximální doby života, nejsou dostupná.
 
 
 ## <a name="view-batch-quotas"></a>Zobrazení dávky kvóty

@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/11/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4b7d861ee0207c6a16c83e23d259411f7e874354
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e40b3a9f1454e892e07f7749ba900cd74c42c339
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823380"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309227"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Průvodce AppSource vydavatele a Azure Marketplace  
 
@@ -118,7 +118,7 @@ Každý výkladní skříň poskytuje specializované možnosti můžete maximal
 ---   
 
 ## <a name="how-to-publish-in-the-storefronts-on-the-marketplace"></a>Jak publikovat na prodejních místech na marketplace  
-V následujících částech vám pomohla při orientaci možnosti publikování ve AppSource a Azure Marketplace.  
+Na následujících stránkách vám pomohla při orientaci možnosti publikování ve AppSource a Azure Marketplace.  
 
 Stát vydavatele v obchodní poutače na webu marketplace v tří jednoduché kroky.  
 1.  Přejděte [určit typ výpis pro vaše řešení](./determine-your-listing-type.md) stránky.  
@@ -135,7 +135,6 @@ Stát vydavatele v obchodní poutače na webu marketplace v tří jednoduché kr
 ---  
 
 ## <a name="support"></a>Podpora  
-
 *   Přejděte [podporu pro AppSource](./support-appsource.md) stránky.  
 *   Přejděte [podpora pro Azure Marketplace](./support-azure-marketplace.md) stránky.  
 
@@ -147,6 +146,7 @@ Stát vydavatele v obchodní poutače na webu marketplace v tří jednoduché kr
 
 ## <a name="guidelines"></a>Pokyny  
 *   Přejděte [pokyny](./guidelines.md) stránky.  
+    *   Přejděte [pokyny pro vytváření a ID Microsoft ke správě účtu webu marketplace](./guidelines.md#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) části.  
 *   Přejděte [zaregistrovat na Dev Center](./register-dev-center.md) stránky.  
 *   Přejděte [přidat Bank a daň informace](./add-bank-tax-info.md) stránky.  
 *   Přejděte [povolit zkušební verze pomocí služby Azure AD](./enable-trial-using-azure-ad.md) stránky.  

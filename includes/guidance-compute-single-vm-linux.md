@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: iainfou
 ms.custom: include file
-ms.openlocfilehash: 08b0cd35294a6cd4086fd5640b09d944ed361c41
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ba7a13a94d01de9d284282cbed25c873778e46e0
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34367133"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309565"
 ---
 Tento článek popisuje sadu osvědčených postupů pro spuštění linuxového virtuálního počítače v Azure, s důrazem na škálovatelnost, dostupnost, možnosti správy a zabezpečení. Azure podporuje spouštění různých oblíbených linuxových distribucí, mezi které patří CentOS, Debian, Red Hat Enterprise, Ubuntu a FreeBSD. Další informace najdete v tématu [Azure a Linux][azure-linux].
 
@@ -139,7 +139,7 @@ K uvolnění virtuálního počítače použijte tento příkaz rozhraní přík
 azure vm deallocate <resource-group> <vm-name>
 ```
 
-Virtuální počítač můžete uvolnit pomocí tlačítka **Stop** na webu Azure Portal. Pokud ale virtuální počítač vypnete pomocí operačního systému, když jste přihlášení, zastaví se, ale *neuvolní*, takže se vám bude nadále účtovat.
+Virtuální počítač můžete uvolnit pomocí tlačítka **Stop** na webu Azure Portal. Ale pokud vypnete prostřednictvím operačního systému při přihlášení, virtuální počítač je zastavena, ale *není* navrácena, takže vám bude dál účtovat poplatek.
 
 **Odstranění virtuálního počítače:** Pokud odstraníte virtuální počítač, virtuální pevné disky se odstraní. To znamená, že virtuální počítač můžete bezpečně odstranit bez obav ze ztráty dat. Bude se vám ale účtovat poplatek za úložiště. Pokud chcete odstranit virtuální pevný disku, odstraňte příslušný soubor z [úložiště objektů blob][blob-storage].
 

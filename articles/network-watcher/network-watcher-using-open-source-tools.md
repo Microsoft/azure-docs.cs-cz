@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 61abda6053fe743e294f309df3a6e1041052ec6e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b1e1383e8e244a7cdb30be1e08514a6a4dd7b14
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23864011"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302229"
 ---
-# <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Vizualizace vzorky síťového provozu do a z virtuálních počítačů pomocí nástroje s otevřeným zdrojem
+# <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>Vizualizace vzorky síťového provozu do a z virtuálních počítačů pomocí nástroje open source
 
-Zachycení paketu obsahovat dat sítě, která vám umožní provádět forenzní sítě a hloubkové kontroly paketů. Existuje mnoho otevře source nástroje, které můžete použít k analýze paketu zachycení a získáte přehled o vaší síti. Jeden takový nástroj je CapAnalysis, nástroj vizualizace zachytávání paketů na s otevřeným zdrojem. Vizualizace dat zachytávání paketů je cenné způsob, jak rychle odvozena Statistika na vzory a anomálie v rámci vaší sítě. Vizualizace také umožňují sdílení tyto přehledy snadné použití způsobem.
+Zachycení paketu obsahovat dat sítě, která vám umožní provádět forenzní sítě a hloubkové kontroly paketů. Existuje mnoho otevře source nástroje, které můžete použít k analýze paketu zachycení a získáte přehled o vaší síti. Jeden takový nástroj je CapAnalysis, nástroj pro vizualizaci zachycení na open source paketů. Vizualizace dat zachytávání paketů je cenné způsob, jak rychle odvozena Statistika na vzory a anomálie v rámci vaší sítě. Vizualizace také umožňují sdílení tyto přehledy snadné použití způsobem.
 
-Sledovací proces sítě Azure poskytuje možnost pro zachycení tato data cenné tím, že můžete provádět zachycení paketů ve vaší síti. V tomto článku jsme poskytují návod, jak vizualizovat a získáte přehled o z paketu zaznamená CapAnalysis pomocí sledovací proces sítě.
+Sledovací proces sítě Azure poskytuje možnost pro zachycení dat tím, že můžete provádět zachycení paketů ve vaší síti. Tento článek poskytuje procházení prostřednictvím jak vizualizovat a získáte přehled o z paketu zaznamená CapAnalysis pomocí sledovací proces sítě.
 
 ## <a name="scenario"></a>Scénář
 
-Můžete mít jednoduché webové aplikace nasazené na virtuálním počítači v Azure Pokud chcete vizualizovat jeho síťový provoz pro rychlou identifikaci vzorů toku a možné anomálie pomocí nástroje s otevřeným zdrojem. S sledovací proces sítě můžete získat zachytáváním paketů prostředí sítě a uložte ho přímo na vašem účtu úložiště. CapAnalysis můžete ingestování zachytáváním paketů přímo z storage blob a vizualizovat její obsah.
+Můžete mít jednoduché webové aplikace nasazené na virtuálním počítači v Azure chcete použít open source nástroje, která bude vizualizovat jeho síťový provoz pro rychlou identifikaci vzorů toku a možné anomálie. S sledovací proces sítě můžete získat zachytáváním paketů prostředí sítě a uložte ho přímo na vašem účtu úložiště. CapAnalysis můžete ingestování zachytáváním paketů přímo z storage blob a vizualizovat její obsah.
 
 ![scénář][1]
 
@@ -37,19 +37,19 @@ Můžete mít jednoduché webové aplikace nasazené na virtuálním počítači
 
 ### <a name="install-capanalysis"></a>Nainstalujte CapAnalysis
 
-K instalaci CapAnalysis na virtuálním počítači, najdete zde oficiální pokyny https://www.capanalysis.net/ca/how-to-install-capanalysis.
-V pořadí přístup CapAnalysis vzdáleně, je potřeba otevřít port 9877 na vašem virtuálním počítači tak, že přidáte nové pravidlo příchozí zabezpečení. Další informace o vytváření pravidla ve skupinách zabezpečení sítě, naleznete [vytvořit pravidla v existující skupině](../virtual-network/virtual-networks-create-nsg-arm-pportal.md#create-rules-in-an-existing-nsg). Jakmile pravidlo byl úspěšně přidán, byste měli mít přístup k CapAnalysis z`http://<PublicIP>:9877`
+K instalaci CapAnalysis na virtuálním počítači, můžete odkazovat na oficiální pokynů https://www.capanalysis.net/ca/how-to-install-capanalysis.
+V pořadí CapAnalysis vzdálený přístup, musíte otevřít port 9877 na vašem virtuálním počítači tak, že přidáte nové pravidlo příchozí zabezpečení. Další informace o vytváření pravidla ve skupinách zabezpečení sítě, naleznete [vytvořit pravidla v existující skupině](../virtual-network/manage-network-security-group.md#create-a-security-rule). Jakmile pravidlo byl úspěšně přidán, byste měli mít přístup k CapAnalysis z `http://<PublicIP>:9877`
 
 ### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>Sledovací proces sítě Azure použijte pro spuštění relace zachytávání paketů
 
-Sledovací proces sítě umožňuje zaznamenat pakety sledovat provoz do/z virtuálního počítače. Můžete se podívat do postupujte podle pokynů v [zachytávali sledovací proces sítě spravovat pakety](network-watcher-packet-capture-manage-portal.md) pro spuštění relace zachytávání paketů. Tato zachytáváním paketů mohou být uloženy v blob storage CapAnalysis přístup.
+Sledovací proces sítě umožňuje zaznamenat pakety sledovat provoz do/z virtuálního počítače. Můžete se podívat do postupujte podle pokynů v [zachytávali sledovací proces sítě spravovat pakety](network-watcher-packet-capture-manage-portal.md) pro spuštění relace zachytávání paketů. Zachytáváním paketů mohou být uloženy v blob storage CapAnalysis přístup.
 
 ### <a name="upload-a-packet-capture-to-capanalysis"></a>Nahrajte do CapAnalysis zachytávání paketů
 Můžete nahrát přímo zachytáváním paketů, provedenou sledovací proces sítě pomocí kartě "Import z adresy URL" a použít odkaz na objekt blob úložiště, kde je uložený zachytáváním paketů.
 
-Pokud poskytuje odkaz na CapAnalysis, ujistěte se, že jste připojení SAS token na adresu URL úložiště objektů blob.  To uděláte, přejděte do sdíleného přístupového podpisu z účtu úložiště, určit povolené oprávnění a klikněte na tlačítko Generovat SAS vytvořit token. Tento token SAS můžete pak připojí k adresu URL paketu zachycení úložiště objektů blob.
+Pokud poskytuje odkaz na CapAnalysis, ujistěte se, že jste připojení SAS token na adresu URL úložiště objektů blob.  To uděláte, přejděte do sdíleného přístupového podpisu z účtu úložiště, určit povolené oprávnění a klikněte na tlačítko Generovat SAS vytvořit token. Pak můžete připojit SAS token na adresu URL objektu blob úložiště zachytávání paketů.
 
-Výsledná adresa URL bude vypadat přibližně takto: http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
+Výsledná adresa URL bude vypadat podobně jako následující adresu URL: http://storageaccount.blob.core.windows.net/container/location?addSASkeyhere
 
 
 ### <a name="analyzing-packet-captures"></a>Analýza paketů zaznamená
@@ -84,15 +84,15 @@ CapAnalysis nabízí různé možnosti pro vizualizaci zachytáváním paketů, 
 
     CapAnalysis poskytuje sadu filtrů pro rychlou analýzu konkrétní paketů. Můžete například filtrovat data podle protokolu a získáte přehled o konkrétní na tuto podmnožinu provozu.
 
-    ![filtry][11]
+    ![Filtry][11]
 
-    Navštivte [https://www.capanalysis.net/ca/#about](https://www.capanalysis.net/ca/#about) Další informace o všech CapAnalysis možnosti.
+    Navštivte [ https://www.capanalysis.net/ca/#about ](https://www.capanalysis.net/ca/#about) Další informace o všech CapAnalysis možnosti.
 
 ## <a name="conclusion"></a>Závěr
 
-Funkce zachytávání paketů sledovací proces sítě umožňuje zaznamenat data potřebná k provedení forenzních sítě a až lépe porozumíte síťový provoz. V tomto scénáři jsme vám ukázal, jak paketu obrazovek z sledovací proces sítě lze snadno integrovat s otevřeným zdrojem vizualizace nástroje. Pomocí nástroje s otevřeným zdrojem, jako je CapAnalysis k vizualizaci pakety zachycení, můžete provádění hloubkové kontroly paketů a rychlou identifikaci trendů v rámci síťového provozu.
+Funkce zachytávání paketů sledovací proces sítě umožňuje zaznamenat data potřebná k provedení forenzních sítě a až lépe porozumíte síťový provoz. V tomto scénáři jsme vám ukázal, jak paketu obrazovek z sledovací proces sítě lze snadno integrovat s open-source vizualizace nástroje. S využitím open source nástroje, jako je například CapAnalysis k vizualizaci pakety zachycení, můžete provádění hloubkové kontroly paketů a rychlou identifikaci trendů v rámci síťového provozu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o toku protokolů NSG, navštivte [protokolů NSG toku](network-watcher-nsg-flow-logging-overview.md)
 

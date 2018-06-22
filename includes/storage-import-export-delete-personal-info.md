@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
-ms.openlocfilehash: 3d85208096b1300904e1cc1f59c45dd4dd5713a3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34684417"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313876"
 ---
 ## <a name="deleting-personal-information"></a>Odstranění osobní údaje
 
@@ -40,7 +40,7 @@ Osobní kontaktní údaje budou odstraněny následujícími způsoby:
 - Data uložena do úlohy se odstraní pomocí úlohy. Uživatele můžete ručně odstranit úlohy a dokončené úlohy jsou automaticky odstraněny po 90 dnech. Můžete ručně odstranit úlohy prostřednictvím rozhraní API REST nebo portálu Azure. Chcete-li odstranit tuto úlohu na portálu Azure, přejděte na úlohu importu a exportu a klikněte na *odstranit* z řádku nabídek. Podrobnosti o tom, jak odstranit úlohu importu a exportu přes rozhraní REST API, [odstranit úlohu importu a exportu](../articles/storage/common/storage-import-export-cancelling-and-deleting-jobs.md).
 
 - Kontaktní informace uložené v nastavení portálu může odebrat odstraněním nastavení portálu. Nastavení portálu můžete odstranit pomocí následujících kroků:
-  - Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+  - Přihlaste se k webu [Azure Portal](https://portal.azure.com).
   - Klikněte na *nastavení* ikonu ![ikonu nastavení Azure](media/storage-import-export-delete-personal-info/azure-settings-icon.png)
   - Klikněte na tlačítko *exportovat všechna nastavení* (uložit stávající nastavení `.json` souboru).
   - Klikněte na tlačítko *odstranit všechna nastavení a privátní řídicí panely* odstranit všechna nastavení, včetně uložené kontaktní informace.

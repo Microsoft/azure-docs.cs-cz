@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 23abf13aca84bde3a9e4a82722051689cc177a2b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ab668a905b435287a4eaf96ff04b2fa5b54deb1d
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371265"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313509"
 ---
 Při nesmí začínat ani připojit k aplikaci spuštěné v Azure virtuální počítač (VM) se z různých důvodů. Z těchto důvodů aplikace není spuštěna nebo naslouchá na očekávaných portech, port pro naslouchání blokované nebo sítě pravidla není správně předávání provoz do aplikace. Tento článek popisuje metodický přístup k vyhledání a odstranění problému.
 
@@ -32,7 +32,7 @@ Pokud máte potíže s připojením k aplikaci, vyzkoušejte následující obec
 
 * Restartujte virtuální počítač
 * Znovu vytvořte koncový bod / pravidla brány firewall / sítě pravidel zabezpečení skupiny (NSG)
-  * [Model Resource Manager - spravovat skupiny zabezpečení sítě](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [Model Resource Manager - spravovat skupiny zabezpečení sítě](../articles/virtual-network/manage-network-security-group.md)
   * [Klasického modelu – koncové body spravovat cloudové služby](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
 * Připojení z různých umístění, jako je například jinou virtuální síť Azure
 * Znovu nasadit virtuální počítač
@@ -93,7 +93,7 @@ Pokud máte přístup k aplikaci, ověřte následující nastavení:
 * Zjišťování neoprávněných vniknutí nebo monitorování softwaru na cílovém virtuálním počítači spuštěna sítě umožňuje provoz.
 * Koncové body cloudové služby nebo skupiny zabezpečení sítě stále umožňují provoz:
   * [Klasického modelu – koncové body spravovat cloudové služby](../articles/cloud-services/cloud-services-enable-communication-role-instances.md)
-  * [Model Resource Manager - spravovat skupiny zabezpečení sítě](../articles/virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+  * [Model Resource Manager - spravovat skupiny zabezpečení sítě](../articles/virtual-network/manage-network-security-group.md)
 * Samostatná komponenta běžících ve vašem virtuálním počítači v cestě mezi testovací virtuální počítač a virtuální počítač, jako je nástroj pro vyrovnávání zatížení nebo brány firewall, je povolení provoz.
 
 Na virtuálním počítači systému Windows pomocí brány Windows Firewall s pokročilým zabezpečením k určení, zda pravidla brány firewall vyloučit příchozí a odchozí provoz vaší aplikace.

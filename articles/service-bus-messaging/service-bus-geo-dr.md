@@ -2,23 +2,18 @@
 title: Azure Service Bus Geo-havárii | Microsoft Docs
 description: Jak používat zeměpisné oblasti převzetí služeb při selhání a proveďte obnovení po havárii v Azure Service Bus
 services: service-bus-messaging
-documentationcenter: ''
-author: christianwolf42
+author: sethmanheim
 manager: timlt
-editor: ''
 ms.service: service-bus-messaging
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 652adcf78add8ae699a7f827a915e90ce1694c61
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: b43c5bd6ff6b386e1a2ee0b5e3ae8ec8fa61fb4b
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237341"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301515"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus Geo-havárii
 
@@ -68,7 +63,7 @@ Je možné automatizovat převzetí služeb při selhání s monitorováním sys
 
 Pokud spustíte převzetí služeb při selhání, dva kroky jsou povinné:
 
-1. Pokud jiný výpadku, chcete mít možnost převzetí služeb při selhání znovu. Proto nastavit jiný obor názvů pasivní a aktualizujte párování. 
+1. Pokud dojde k výpadku jiná, budete chtít moci znovu převzetí služeb při selhání. Proto nastavit jiný obor názvů pasivní a aktualizujte párování. 
 
 2. Jakmile je opět k dispozici pro vyžádání obsahu zprávy z předchozí primární oboru názvů. Potom použít tento obor názvů pro regulární zasílání zpráv mimo vašeho nastavení geografické obnovení nebo odstraňte starý primární oboru názvů.
 
@@ -89,7 +84,7 @@ Pokud máte scénář, ve kterém nelze změnit připojení producenti a spotře
 
 [Ukázky z webu GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/) ukazují, jak nastavit a zahájit převzetí služeb při selhání. Tyto ukázky ukazují následující koncepty:
 
-- Ukázka rozhraní .net a nastavení potřebné v Azure Active Directory pomocí Azure Resource Manageru službou Service Bus instalační program a povolení geograficky havárii.
+- Ukázka rozhraní .NET a nastavení, které jsou potřeba v Azure Active Directory pomocí Azure Resource Manageru službou Service Bus, nastavit a zapnout geograficky havárii.
 - Kroky potřebné k provedení ukázkový kód.
 - Jak používat existujícího oboru názvů jako alias.
 - Kroky, případně aby geograficky havárii pomocí prostředí PowerShell nebo rozhraní příkazového řádku.
@@ -107,6 +102,17 @@ Pozorně si projděte následující informace v této verzi nezapomeňte:
 
 4. Synchronizace entit může trvat delší dobu, přibližně 50 až 100 entit za minutu. Odběry a pravidla se také počítají jako entity. 
 
+## <a name="availability-zones-preview"></a>Dostupnost zóny (preview)
+
+Skladová položka Service Bus Premium podporuje také [dostupnost zóny](../availability-zones/az-overview.md), poskytuje odolnost izolované umístění v rámci oblasti Azure. 
+
+> [!NOTE]
+> Ve verzi preview dostupnosti zón je podporována pouze v **střed USA**, **východní USA 2**, a **Francie centrální** oblasti.
+
+Dostupnost zóny můžete povolit na nové obory názvů pouze pomocí portálu Azure. Service Bus nepodporuje migraci z existujících oborů názvů. Po povolení na oboru názvů nelze zakázat zálohování zóny.
+
+![3][]
+
 ## <a name="next-steps"></a>Další postup
 
 - Najdete v části geografická havárii [zde odkazu k REST API](/rest/api/servicebus/disasterrecoveryconfigs).
@@ -123,3 +129,4 @@ Další informace o zasílání zpráv Service Bus, najdete v následujících �
 
 [1]: ./media/service-bus-geo-dr/geo1.png
 [2]: ./media/service-bus-geo-dr/geo2.png
+[3]: ./media/service-bus-geo-dr/az.png

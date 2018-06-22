@@ -14,16 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: 184faa0f6171ff00ab3c2398f693e9c7ad015d33
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 49d9b5306a0fcf51cc0de036c725fca8345cd0ec
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839584"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302178"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Analýza události a vizualizace s analýzy protokolů
-
-Analýzy protokolů, také známé jako OMS (Operations Management Suite), je kolekce služby správy, které pomáhají s monitorování a Diagnostika pro aplikace a služby hostované v cloudu. Tento článek ukazuje, jak je ke spouštění dotazů v analýzy protokolů a získáte přehled o řešení potíží s co se děje v clusteru. Následující běžné otázky se podrobněji:
+Analýzy protokolů shromažďuje a analyzuje příchozí telemetrická data z aplikace a služby hostované v cloudu a poskytuje nástrojů pro analýzu můžete maximalizovat jejich dostupnost a výkon. Tento článek ukazuje, jak je ke spouštění dotazů v analýzy protokolů a získáte přehled o řešení potíží s co se děje v clusteru. Následující běžné otázky se podrobněji:
 
 * Jak odstranit události stavu?
 * Jak poznám, kdy uzlu přestane fungovat?
@@ -37,15 +36,15 @@ Po přijetí dat podle analýzy protokolů Azure má několik *řešení pro spr
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Přístup k řešení Service Fabric Analytics
 
-1. V portálu Azure přejděte do skupiny prostředků, ve které jste vytvořili řešení Service Fabric analýzy.
+1. Na portálu Azure přejděte do skupiny prostředků, ve které jste vytvořili řešení Service Fabric analýzy.
 
 2. Vyberte prostředek **ServiceFabric\<nameOfOMSWorkspace\>**.
 
 2. V souhrnu uvidíte dlaždice ve formě grafu pro každou z řešení povoleno, včetně jeden pro Service Fabric. Klikněte **Service Fabric** graf (první obrázek níže) nadále řešení Service Fabric analýzy (druhý obrázek níže).
 
-    ![OMS SF řešení](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
+    ![Řešení Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-    ![OMS SF řešení](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
+    ![Řešení Service Fabric](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
 Na obrázku výše je domovské stránce řešení Service Fabric analýzy. Toto je snímek zobrazení co se děje v clusteru. Pokud jste povolili diagnostiky při vytváření clusteru, zobrazí se události pro 
 
@@ -60,11 +59,11 @@ Na obrázku výše je domovské stránce řešení Service Fabric analýzy. Toto
 
 1. Na stránce služby Fabric Analytics klikněte na graf pro **události služby Fabric**.
 
-    ![Provozní kanál OMS SF řešení](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
+    ![Provozní kanál řešení služby prostředků infrastruktury](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events_selection.png)
 
 2. Klikněte na tlačítko **seznamu** k zobrazení událostí, v seznamu. Jakmile se v tomto poli se zobrazí všechny události systému, které byly shromážděny. Pro odkaz jedná se o z WADServiceFabricSystemEventsTable v účtu úložiště Azure a podobně reliable services a aktéři události, které se zobrazí vedle jsou z těchto příslušných tabulek.
     
-    ![Provozní kanál OMS dotazu](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
+    ![Provozní kanál dotazu](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_events.png)
 
 Můžete případně klikněte na tlačítko lupy na levé straně a použít Kusto dotazovací jazyk najít, co hledáte. Například pokud chcete vyhledat všechny akce prováděné na uzlech v clusteru, můžete použít následující dotaz. ID událostí použít níže se nacházejí v [reference pro provozní kanál události](service-fabric-diagnostics-event-generation-operational.md).
 
@@ -79,11 +78,11 @@ Můžete zadat dotaz na mnoho další pole, jako je například konkrétním uzl
 
 1. Na stránce služby Fabric Analytics klikněte na graf pro **spolehlivé služby**.
 
-    ![OMS SF řešení spolehlivé služby](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
+    ![Služba Fabric řešení spolehlivé služby](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_services_events_selection.png)
 
 2. Klikněte na tlačítko **seznamu** k zobrazení událostí, v seznamu. Zde můžete zobrazit události z spolehlivé služby. Různé událostí pro můžete zobrazit, když runasync služby je spuštěno a dokončeno, což obvykle se odehrává na nasazení a upgrady. 
 
-    ![OMS dotaz spolehlivé služby](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
+    ![Spolehlivé služby dotazu](media/service-fabric-diagnostics-event-analysis-oms/oms_reliable_service_events.png)
 
 Spolehlivé objektu actor události lze zobrazit podobným způsobem. Ke konfiguraci podrobnější události reliable actors, budete muset změnit `scheduledTransferKeywordFilter` v konfiguraci rozšíření diagnostiky (zobrazené dole). Podrobnosti na hodnoty pro tyto jsou v [spolehlivé aktéři události odkaz](service-fabric-reliable-actors-diagnostics.md#keywords).
 
@@ -101,12 +100,12 @@ Spolehlivé objektu actor události lze zobrazit podobným způsobem. Ke konfigu
 
 Dotazovací jazyk Kusto je výkonný. Jiné cenné dotaz, který můžete spustit je a zjistěte, uzlů, které generují nejvíce událostem. Dotaz na tomto snímku obrazovky zobrazuje provozní události Service Fabric agregovat pomocí konkrétní službu a uzel.
 
-![Události OMS dotaz na uzel](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
+![Události dotaz na uzel](media/service-fabric-diagnostics-event-analysis-oms/oms_kusto_query.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* Pokud chcete povolit sledování tj čítače výkonu infrastruktury, přejděte na [Přidání agenta OMS](service-fabric-diagnostics-oms-agent.md). Agent shromažďuje čítače výkonu a přidá je do vaší stávající pracovního prostoru.
-* Pro místní clusterů nabízí OMS brány (dál server Proxy protokolu HTTP), který slouží k odesílání dat do OMS. Další informace o v [propojíte počítače bez připojení k Internetu pomocí brány OMS OMS](../log-analytics/log-analytics-oms-gateway.md)
-* Konfigurace OMS nastavit [automatizované výstrahy](../log-analytics/log-analytics-alerts.md) pro usnadnění detekce a Diagnostika
+* Pokud chcete povolit sledování tj čítače výkonu infrastruktury, přejděte na [Přidání agenta analýzy protokolů](service-fabric-diagnostics-oms-agent.md). Agent shromažďuje čítače výkonu a přidá je do vaší stávající pracovního prostoru.
+* Pro místní clusterů analýzy protokolů nabízí brány (dál server Proxy protokolu HTTP), který slouží k odesílání dat k analýze protokolů. Další informace o v [propojení počítačů bez připojení k Internetu k analýze protokolů pomocí brány OMS](../log-analytics/log-analytics-oms-gateway.md)
+* Konfigurace [automatizované výstrahy](../log-analytics/log-analytics-alerts.md) pro usnadnění detekce a Diagnostika
 * Získat familiarized s [vyhledávání a dotazování protokolu](../log-analytics/log-analytics-log-searches.md) funkcím poskytovaným jako součást analýzy protokolů
 * Získat podrobnější přehled analýzy protokolů a co nabízí, přečtěte si [co je Log Analytics?](../operations-management-suite/operations-management-suite-overview.md)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: jeedes
-ms.openlocfilehash: 4e92d1ba948626c05e7b66d2c0d469ac6c6571a2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4813c492ba25b0d6dd524e2c0b4b5b6e8c2a2bfa
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36228182"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308237"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timeoffmanager"></a>Kurz: Azure Active Directory integrace s TimeOffManager
 
@@ -112,7 +112,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://www.timeoffmanager.com/cpanel/sso/consume.aspx?company_id=<companyid>`
 
     > [!NOTE] 
-    > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL odpovědi. Můžete získat tuto hodnotu z **jednotného přihlašování na stránce nastavení** kterého se vysvětluje dále v kurzu nebo kontaktujte [tým podpory TimeOffManager](http://www.timeoffmanager.com/contact-us.aspx).
+    > Tato hodnota není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL odpovědi. Můžete získat tuto hodnotu z **jednotného přihlašování na stránce nastavení** kterého se vysvětluje dále v kurzu nebo kontaktujte [tým podpory TimeOffManager](https://www.purelyhr.com/contact-us).
  
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 

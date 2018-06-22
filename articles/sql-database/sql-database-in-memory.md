@@ -9,12 +9,12 @@ ms.custom: develop databases
 ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: jodebrui
-ms.openlocfilehash: 89e5497c10f3e24dd84333f095a9bd7c0017ea88
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a21ce5c9cbf5517733a6b491124e51b163f6c2b9
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647863"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309295"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimalizace výkonu pomocí technologie v paměti v databázi SQL
 
@@ -72,7 +72,7 @@ Podrobný videa o technologiích:
 
 OLTP v paměti obsahuje paměťově optimalizované tabulky, které se používají k ukládání dat uživatele. Tyto tabulky musí nevejdou se do paměti. Vzhledem k tomu, že budete spravovat paměti přímo ve službě SQL Database, máme koncept kvótu pro data uživatelů. Toto je vhodné se označuje jako *OLTP v paměti úložiště*.
 
-Každý podporovaný samostatná databáze cenová úroveň a každý elastického fondu cenová úroveň zahrnuje množství OLTP v paměti úložiště. V tématu [limitů prostředků na základě DTU](sql-database-dtu-resource-limits.md) a [limitů prostředků na základě vCore](sql-database-vcore-resource-limits.md).
+Každý podporovaný samostatná databáze cenová úroveň a každý elastického fondu cenová úroveň zahrnuje množství OLTP v paměti úložiště. V tématu [limitů prostředků na základě DTU - jedné databáze](sql-database-dtu-resource-limits-single-databases.md), [limitů prostředků na základě DTU - elastické fondy](sql-database-dtu-resource-limits-elastic-pools.md),[limitů prostředků na základě vCore - izolované databáze](sql-database-vcore-resource-limits-single-databases.md) a [limitů prostředků na základě vCore - elastické fondy](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Následující položky započítávat vašeho úložiště cap OLTP v paměti:
 

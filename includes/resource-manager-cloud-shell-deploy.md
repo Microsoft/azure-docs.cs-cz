@@ -2,7 +2,7 @@
 
 K nasazení šablony můžete použít [Cloud Shell](../articles/cloud-shell/overview.md). Ale je nutné nejdřív načíst vaše šablona do účtu úložiště pro své cloudové prostředí. Pokud jste ještě službu Cloud Shell nepoužívali, přečtěte si téma [Přehled služby Azure Cloud Shell](../articles/cloud-shell/overview.md), kde najdete informace o jejím nastavení.
 
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Vyberte vaši skupinu prostředků služby Cloud Shell. Vzor názvů je `cloud-shell-storage-<region>`.
 

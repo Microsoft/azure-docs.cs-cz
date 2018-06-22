@@ -11,14 +11,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 203e12ddc220651653625fc596eafa2e8365e4c1
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 5f2bc50a59219a38c2fcf4d501de4d8a11f6fbf1
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34797739"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300750"
 ---
-# <a name="net-bulkexecutor-library-download-information"></a>Knihovna .NET BulkExecutor: informace o stažení 
+# <a name="net-bulk-executor-library-download-information"></a>Knihovny .NET hromadné vykonavatele: informace o stažení 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
@@ -31,12 +31,12 @@ ms.locfileid: "34797739"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
-> * [BulkExecutor - rozhraní .NET](sql-api-sdk-bulk-executor-dot-net.md)
-> * [BulkExecutor - Java](sql-api-sdk-bulk-executor-java.md)
+> * [hromadné vykonavatele - rozhraní .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [hromadné vykonavatele - Java](sql-api-sdk-bulk-executor-java.md)
 
 <table>
 
-<tr><td>**Popis**</td><td>Knihovna BulkExecutor umožňuje klientským aplikacím v Azure Cosmos DB účty provádět hromadné operace. Hromadný import, poskytuje knihovna BulkExecutor a BulkUpdate obory názvů. Hromadný import, které můžete hromadně modulu ingestování dokumenty optimálního tak, aby se využívá pro kolekci zřízené propustnosti na maximální velikost. BulkUpdate, které můžete hromadně modulu aktualizovat existující data v Azure Cosmos DB kontejnery jako opravy.</td></tr>
+<tr><td>**Popis**</td><td>Knihovna vykonavatele hromadné umožňuje klientské aplikace v Azure Cosmos DB účty provádět hromadné operace. hromadné vykonavatele knihovna obsahuje hromadný import a BulkUpdate obory názvů. Hromadný import, které můžete hromadně modulu ingestování dokumenty optimálního tak, aby se využívá pro kolekci zřízené propustnosti na maximální velikost. BulkUpdate, které můžete hromadně modulu aktualizovat existující data v Azure Cosmos DB kontejnery jako opravy.</td></tr>
 
 <tr><td>**Stažení sady SDK**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/)</td></tr>
 
@@ -44,7 +44,7 @@ ms.locfileid: "34797739"
 
 <tr><td>**Dokumentaci k rozhraní API**</td><td>[Referenční dokumentace rozhraní API .net](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)</td></tr>
 
-<tr><td>**Začínáme**</td><td>[Začínáme s knihovnou BulkExecutor .NET SDK](bulk-executor-dot-net.md)</td></tr>
+<tr><td>**Začínáme**</td><td>[Začínáme s knihovnou vykonavatele hromadné sady .NET SDK](bulk-executor-dot-net.md)</td></tr>
 
 <tr><td>**Aktuální podporovaných prostředí**</td><td><ul><li>[Microsoft.Azure.DocumentDB](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)(verze > = 1.21.1)</li><li>
 [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/)(verze > = 10.0.2)

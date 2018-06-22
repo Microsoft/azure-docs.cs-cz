@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: ''
-ms.openlocfilehash: 4da1ed4e9424950c39f3eb255ead2b39094597fd
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: a4895c0c58d1cdb0430b7418ba24dd85157ecdd3
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725441"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308155"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Aktivační událost časovače pro Azure Functions 
 
@@ -280,6 +280,10 @@ Pokud účet úložiště můžete sdílet mezi více aplikacemi funkce, ujistě
 ## <a name="retry-behavior"></a>Postup opakování
 
 Na rozdíl od frontě aktivační události není aktivační událost časovače opakujte po selhání funkce. Pokud se nezdaří funkce, není volán znovu až po příštím podle plánu.
+
+## <a name="troubleshooting"></a>Řešení potíží
+
+Informace o tom, co dělat, pokud je aktivační událost časovače nebude fungovat podle očekávání, najdete v článku [Investigating a hlášení problémů s časovačem aktivuje funkce se nespustí,](https://github.com/Azure/azure-functions-host/wiki/Investigating-and-reporting-issues-with-timer-triggered-functions-not-firing).
 
 ## <a name="next-steps"></a>Další postup
 

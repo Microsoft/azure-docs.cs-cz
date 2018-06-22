@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 135f934cd6b352dad9e4cea5a14406804f31b66b
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 4da6f5c4513477d1adbf4d7645a66de112eeab23
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825081"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307481"
 ---
 # <a name="guidelines"></a>Pokyny  
 
@@ -35,7 +35,7 @@ Pokud víc než jedna osoba vyžaduje přístup ke stejným ID Microsoft použí
 
 >[!IMPORTANT]
 >K autorizaci několika uživatelům přístup k účtu Microsoft Developer Center (Dev Center), Microsoft doporučuje, že používáte Azure Active Directory (Azure AD) k přiřazení rolí pro jednotlivé uživatele. Každý uživatel musí přístup k účtu po přihlášení pomocí individuální přihlašovací údaje Azure AD. Vytvoření ID služeb Microsoft pomocí e-mailovou adresu v doméně zaregistrován pro vaši společnost Microsoft naznačuje, že e-mailu, nelze ho přiřadit až k jednotlivcům. Příklad: `windowsapps@fabrikam.com`.  
->*   Další informace najdete v článku [problém: ID společnosti Microsoft ve službě Azure AD Federovaná domény](#issue:-microsoft-id-in-an-azure-ad-federated-domain) části.  
+>*   Další informace najdete v článku [problém: ID společnosti Microsoft ve službě Azure AD Federovaná domény](#issue-microsoft-id-in-an-azure-ad-federated-domain) části.  
 
 *   Omezit přístup k Microsoft ID, který má nejmenší možný počet vývojáři. 
 *   Nastavení podnikových e-mailů distribučního seznamu (DL), který zahrnuje všechny uživatele, kteří musí přístup k vašemu účtu Dev Center. E-mailovou adresu DL přidáte do vašich bezpečnostních údajů. DL umožňuje všichni zaměstnanci v seznamu můžete získat zabezpečovací kódy vyžádání a spravovat informace o zabezpečení Microsoft ID. Nastavení distribučního seznamu není vhodná, vlastník jednotlivé e-mailového účtu musí být k dispozici pro přístup k a sdílet bezpečnostní kód po zobrazení výzvy.  

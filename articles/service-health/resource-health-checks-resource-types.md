@@ -14,15 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 3b4d99fe883cf52ca7f1ef98e70b7f3a1bccd5ae
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 831383ffa3aa3464f3d62da4e1609cf3f1a4707e
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795941"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309592"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a stav kontrol ve stavu prostředků Azure.
 Níže je úplný seznam všechny kontroly provedené prostřednictvím stav prostředku pro typy prostředků.
+
+## <a name="microsoftanalysisservicesservers"></a>Microsoft.AnalysisServices/servers
+|Spuštění kontroly|
+|---|
+|<ul><li>Server je spuštěný a funkční?</li><li>Má server nedostatek paměti?</li><li>Je spuštění serveru?</li><li>Obnovení serveru</li></ul>|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 |Spuštění kontroly|
@@ -105,6 +110,11 @@ Níže je úplný seznam všechny kontroly provedené prostřednictvím stav pro
 |Spuštění kontroly|
 |---|
 |<ul><li> Existuje byli přihlášení k databázi?</li></ul>|
+
+## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
+|Spuštění kontroly|
+|---|
+|<ul><li>Se žádostí o čtení dat z účtu úložiště nedaří kvůli problémům s platformy Azure Storage?</li><li>Neúspěšné žádosti o zápisu dat do účtu úložiště kvůli problém s platformou Azure Storage?</li><li>Cluster úložiště, které se nachází účet úložiště není k dispozici?</li></ul>|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 |Spuštění kontroly|

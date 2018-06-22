@@ -11,37 +11,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 06/21/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: b1cc1fad6b0831bcf0bab5ba4f37b753c3cf33ca
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 55d0e51606e8768a01c0b5a7766dbafe24d97a0d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206808"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307821"
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Databáze SQL pro použití v zásobníku Microsoft Azure
-Používat adaptér zprostředkovatele prostředků systému SQL Server jako službu vystavit databází SQL [zásobník Azure](azure-stack-poc.md). Po instalaci poskytovatele prostředků a připojte ho k jedné nebo více instancí systému SQL Server, můžete vytvořit vás a uživatele:
-- Databáze pro nativní cloudové aplikace.
-- Weby, které jsou založené na SQL.
-- Úlohy, které jsou založené na SQL.
-Nemáte pokaždé, když zřízení virtuálního počítače (VM) který je hostitelem systému SQL Server.
 
-Zprostředkovatel prostředků nepodporuje všechny možnosti správy databáze z [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Například fondů elastické databáze a schopnost vytočit výkonu databáze nahoru a dolů automaticky nejsou k dispozici. Však nepodporuje Podpora zprostředkovatele prostředků podobné vytvářet, číst, aktualizovat a odstranit operace. Rozhraní API není kompatibilní s databází SQL.
+Použití systému SQL Server prostředků zprostředkovatele adaptéru rozhraní API ke zveřejnění databází SQL jako službu [zásobník Azure](azure-stack-poc.md). Po instalaci poskytovatele prostředků a připojte ho k jedné nebo více instancí systému SQL Server, můžete vytvořit vás a uživatele:
+
+- Databáze pro nativní cloudové aplikace.
+- Weby, které používají SQL.
+- Úlohy, které používají SQL.
+
+Zprostředkovatel prostředků neposkytuje všechny databáze schopnosti správy [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). Například elastické fondy, které automaticky přidělit prostředky nejsou podporovány. Ale podporuje zprostředkovatele prostředků, podobně jako vytvářet, číst, aktualizovat a odstranit operace v databázi systému SQL Server. Další informace o poskytovateli prostředků rozhraní API najdete v tématu [Windows Azure Pack SQL serveru prostředků zprostředkovatele REST referenční dokumentace rozhraní API](https://msdn.microsoft.com/library/dn528529.aspx).
+
+>[!NOTE]
+Zprostředkovatel prostředků systému SQL Server rozhraní API není kompatibilní s Azure SQL Database.
 
 ## <a name="sql-resource-provider-adapter-architecture"></a>Architektura adaptér zprostředkovatele prostředků SQL
-Zprostředkovatel prostředků se skládá ze tří součástí:
 
-- **Adaptér pro poskytovatele prostředků SQL virtuálních počítačů**, což je virtuální počítač Windows, který spouští služby poskytovatele.
-- **Zprostředkovatel prostředků samotné**, která zpracovává požadavky pro zřizování a zpřístupňuje databáze prostředků.
+Zprostředkovatel prostředků se skládá z následujících součástí:
+
+- **SQL prostředků zprostředkovatele adaptér virtuálního počítače (VM)**, což je virtuální počítač Windows serveru, který spouští služby poskytovatele.
+- **Zprostředkovatel prostředků**, který zpracovává žádosti a databázi prostředkům přistupuje.
 - **Servery, které jsou hostiteli systému SQL Server**, které poskytují kapacitu pro databáze názvem hostitelskými servery.
 
-Musíte vytvořit jednu (nebo více) instance systému SQL Server nebo poskytovat přístup k externí instance systému SQL Server.
+Musíte vytvořit aspoň jednu instanci systému SQL Server nebo poskytovat přístup k externí instance systému SQL Server.
 
 > [!NOTE]
-> Hostitelské servery, které jsou nainstalovány v Azure zásobníku integrované systémy musí být vytvořeny z předplatného klienta. Nemohou být vytvářeny z předplatného výchozího zprostředkovatele. Musí být vytvořený z portálu klienta nebo z relace prostředí PowerShell příslušné přihlášení. Všechny hostitelské servery jsou fakturovatelné virtuální počítače a musí mít příslušnou licenci. Správce služby můžete být vlastníkem předplatného klienta.
-
+> Hostitelské servery, které jsou nainstalovány v Azure zásobníku integrované systémy musí být vytvořeny z předplatného klienta. Nemohou být vytvářeny z předplatného výchozího zprostředkovatele. Musí se vytvořit z klienta portálu nebo pomocí prostředí PowerShell s odpovídající přihlášení. Všechny hostitelské servery jsou fakturovatelné virtuální počítače a musí mít licenci. Správce služby můžete být vlastníkem předplatného klienta.
 
 ## <a name="next-steps"></a>Další postup
 

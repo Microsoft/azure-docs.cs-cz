@@ -6,14 +6,14 @@ author: mmacy
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/15/2018
 ms.author: marsma
-ms.openlocfilehash: d6f42a5f3ce907fdb759bef29ca25bdc7fe365d9
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 207accc30e10c4e2bed5b713fc59e2f9ad86a876
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757004"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309845"
 ---
 # <a name="network-configuration-in-azure-kubernetes-service-aks"></a>Konfigurace sítě v Azure Kubernetes služby (AKS)
 
@@ -28,7 +28,7 @@ Uzly v clusteru služby AKS nakonfigurovaný na používání základní sítě 
 ## <a name="advanced-networking"></a>Pokročilé vytváření sítí.
 
 **Rozšířené** sítě umístí vaší pracovními stanicemi soustředěnými kolem virtuální síť Azure (VNet), který konfigurujete, poskytovat jim automatické připojení k prostředkům sítě VNet a nastavte integrace s bohaté možnosti nabídky této virtuální sítě.
-Pokročilé sítě je nyní k dispozici pouze při nasazení AKS clusterů v [portál Azure] [ portal] nebo pomocí šablony Resource Manageru.
+Pokročilé sítě je k dispozici, pokud nasazení AKS clustery s [portál Azure][portal], rozhraní příkazového řádku Azure, nebo pomocí šablony Resource Manageru.
 
 Uzly v clusteru služby AKS nakonfigurována pro použití pokročilých síťových [Azure kontejneru síťové rozhraní (CNI)] [ cni-networking] Kubernetes modulu plug-in.
 
@@ -47,7 +47,7 @@ Pokročilé sítě poskytuje následující výhody:
 * Pracovními stanicemi soustředěnými kolem mají přístup k prostředkům na veřejného Internetu. Také funkce základní sítě.
 
 > [!IMPORTANT]
-> Každý uzel v clusteru služby AKS konfigurován pro pokročilé sítě může být hostitelem maximálně **30 pracovními stanicemi soustředěnými kolem**. Každý virtuální sítě zřízené pro použití s modul plug-in Azure CNI je omezeno na **4096 konfigurované IP adresy**.
+> Každý uzel v clusteru služby AKS konfigurován pro pokročilé sítě může být hostitelem maximálně **30 pracovními stanicemi soustředěnými kolem** při konfiguraci pomocí portálu Azure.  Maximální hodnota může změnit pouze úpravou vlastností maxPods při nasazování clusteru pomocí šablony Resource Manageru. Každý virtuální sítě zřízené pro použití s modul plug-in Azure CNI je omezeno na **4096 konfigurované IP adresy**.
 
 ## <a name="advanced-networking-prerequisites"></a>Rozšířené síťové požadavky
 
@@ -75,19 +75,47 @@ Plán IP adresu pro cluster služby AKS se skládá z virtuální sítě, alespo
 
 Jak je uvedeno nahoře, každý virtuální sítě zřízené pro použití s modul plug-in Azure CNI je omezeno na **4096 konfigurované IP adresy**. Každý uzel v clusteru nakonfigurované pro pokročilé sítě může být hostitelem maximálně **30 pracovními stanicemi soustředěnými kolem**.
 
-## <a name="configure-advanced-networking"></a>Nakonfigurujte pokročilé vytváření sítí.
+## <a name="deployment-parameters"></a>Parametry nasazení
 
-Pokud jste [vytvořit AKS cluster](kubernetes-walkthrough-portal.md) na portálu Azure, se dají konfigurovat pro pokročilé sítě následující parametry:
+Při vytváření clusteru služby AKS, tyto parametry se dají konfigurovat pro pokročilé sítě:
 
 **Virtuální síť**: virtuální sítě, do které chcete nasadit Kubernetes clusteru. Pokud chcete vytvořit novou virtuální síť pro váš cluster, vyberte *vytvořit nový* a postupujte podle kroků v *vytvořit virtuální síť* části.
 
 **Podsíť**: podsítí v rámci virtuální sítě, ve které chcete nasadit cluster. Pokud chcete vytvořit novou podsíť ve virtuální síti pro váš cluster, vyberte *vytvořit nový* a postupujte podle kroků v *vytvořit podsíť* části.
 
-**Rozsah adres služby Kubernetes**: rozsah IP adres pro službu clusteru Kubernetes IP adresy. Tento rozsah nesmí být v rozsahu adres virtuální sítě IP clusteru.
+**Rozsah adres služby Kubernetes**: *Kubernetes služby rozsah adres* je rozsah IP adres ze které jsou přiřazené adresy Kubernetes služby v clusteru (Další informace o Kubernetes služby najdete v tématu [ Služby] [ services] v dokumentaci k Kubernetes).
+
+Kubernetes služby rozsah IP adres:
+
+* Nesmí být v rozsahu adres virtuální sítě IP clusteru
+* Se nesmí překrývat s jiných se kterým partnerský vztah clusteru virtuální sítě virtuálních sítí
+* Se nesmí překrývat s všechny IP adresy na místě
+
+Pokud používají překrývající se rozsahy IP adres, může způsobit nepředvídatelné chování. Například pokud pod pokusí o přístup k IP adresy mimo cluster a které IP dochází také být služby IP, může se zobrazit nepředvídatelné chování a selhání.
 
 **IP adresa pro službu Kubernetes DNS**: IP adresa pro službu DNS do clusteru. Tato adresa musí být v rámci *Kubernetes služby rozsah adres*.
 
 **Most docker adresu**: IP adresa a síťová maska přiřadit Docker most. Tato IP adresa nesmí být v rozsahu adres virtuální sítě IP clusteru.
+
+## <a name="configure-networking---cli"></a>Konfigurace sítí - rozhraní příkazového řádku
+
+Při vytváření clusteru služby AKS pomocí rozhraní příkazového řádku Azure, můžete také nakonfigurovat pokročilé sítě. Použijte následující příkazy k vytvoření nového clusteru AKS s pokročilé síťovými funkcemi, které jsou povolené.
+
+Nejdřív získáte ID prostředku podsítě pro existující podsíť, do které bude připojené k AKS clusteru:
+
+```console
+$ az network vnet subnet list --resource-group myVnet --vnet-name myVnet --query [].id --output tsv
+
+/subscriptions/d5b9d4b7-6fc1-46c5-bafe-38effaed19b2/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
+```
+
+Použití [vytvořit az aks] [ az-aks-create] s `--network-plugin azure` argument k vytvoření clusteru s pokročilé sítě. Aktualizace `--vnet-subnet-id` hodnotu s ID podsítě shromážděných v předchozím kroku:
+
+```azurecli
+az aks create --resource-group myAKSCluster --name myAKSCluster --network-plugin azure --vnet-subnet-id <subnet-id> --docker-bridge-address 172.17.0.1/16 --dns-service-ip 10.2.0.10 --service-cidr 10.2.0.0/24
+```
+
+## <a name="configure-networking---portal"></a>Konfigurace sítí - portálu
 
 Z portálu Azure následující snímek obrazovky ukazuje příklad konfigurace těchto nastavení při vytváření clusteru AKS:
 
@@ -143,7 +171,9 @@ Podporovat Kubernetes clustery, které jsou vytvořené pomocí modulu služby A
 [acs-engine]: https://github.com/Azure/acs-engine
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
+[services]: https://kubernetes.io/docs/concepts/services-networking/service/
 [portal]: https://portal.azure.com
 
 <!-- LINKS - Internal -->
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az-aks-create
 [aks-ssh]: aks-ssh.md

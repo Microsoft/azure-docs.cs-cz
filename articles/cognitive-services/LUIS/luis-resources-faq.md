@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 9804b9d5187637fe509d79134f93280d93daca76
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b6b333937e7c88f566fc401967b26cbd31ca158b
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266137"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301498"
 ---
 # <a name="language-understanding-faq"></a>Nejčastější dotazy k pochopení jazyka
 
@@ -49,6 +49,9 @@ Předchozí **vzorová funkce** je aktuálně nepoužívané, nahrazuje  **[vzor
 
 ### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>Jak použít entitu vysunout správná data? 
 V tématu [entity](luis-concept-entity-types.md) a [extrakce dat](luis-concept-data-extraction.md).
+
+### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Variace utterance příkladu by měla obsahovat interpunkce? 
+Přidejte různých změn jako příklad utterances k záměr nebo vzor utterance příklad s [syntaxe Ignorovat](luis-concept-patterns.md#pattern-syntax) znaky interpunkce. 
 
 ## <a name="luis-endpoint"></a>Koncový bod LEOŠ
 

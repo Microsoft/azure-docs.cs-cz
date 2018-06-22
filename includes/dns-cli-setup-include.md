@@ -9,7 +9,7 @@ Před zahájením konfigurace ověřte, zda máte následující.
 
 ### <a name="sign-in-to-your-azure-account"></a>Přihlášení k účtu Azure
 
-Otevřete okno konzoly a proveďte ověření pomocí svých přihlašovacích údajů. Další informace najdete v tématu [Přihlášení k Azure z rozhraní příkazového řádku Azure](/cli/azure/authenticate-azure-cli).
+Otevřete okno konzoly a proveďte ověření pomocí svých přihlašovacích údajů. Další informace najdete v tématu [přihlaste k Azure z rozhraní příkazového řádku Azure](/cli/azure/authenticate-azure-cli)
 
 ```azurecli
 azure login

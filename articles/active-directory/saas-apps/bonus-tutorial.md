@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: adde08f7981e6e23ba5bf2601d2f019702d1d33c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d06f8e148e382c44b8858cc2f149f5851198d0d5
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36231640"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308104"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Kurz: Azure Active Directory integrace s Bonusly
 
@@ -112,7 +112,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://Bonus.ly/saml/<tenant-name>`
 
     > [!NOTE] 
-    > Hodnota není skutečné. Aktualizujte hodnotu s skutečná adresa URL odpovědi. Obraťte se na [tým podpory Bonusly](https://Bonusly/contact) k získání hodnoty.
+    > Hodnota není skutečné. Aktualizujte hodnotu s skutečná adresa URL odpovědi. Obraťte se na [tým podpory Bonusly](https://bonus.ly/contact) k získání hodnoty.
  
 4. Na **SAML podpisový certifikát** část, zkopírujte **kryptografický OTISK** hodnotu z certifikátu.
 

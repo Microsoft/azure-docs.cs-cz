@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.openlocfilehash: c87b90e82b1300e147533256e3286421a73f08d2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 42d1b40e01653e8fb5fa5bf118c65de758832f4d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218890"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308604"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Kurz: Azure Active Directory integrace s Tangoe příkaz Premium Mobile
 
@@ -114,7 +114,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://sso.tangoe.com/sp/ACS.saml2`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečná adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory Tangoe příkaz Premium mobilního klienta](https://www.tangoe.com/contact-2/) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečná adresa URL odpovědi a přihlašovací adresa URL. Obraťte se na [tým podpory Tangoe příkaz Premium mobilního klienta](https://www.tangoe.com/contact-us/) k získání těchto hodnot. 
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
@@ -128,7 +128,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Tangoe příkaz Premium mobilní konfigurační oddíl](./media/tangoe-tutorial/tutorial_tangoe_configure.png) 
 
-7. Chcete-li získat jednotné přihlašování, které jsou nakonfigurované pro vaše aplikace, obraťte se na vaše [tým podpory Tangoe příkaz Premium mobilního klienta](https://www.tangoe.com/contact-2/) a zadejte následující:
+7. Chcete-li získat jednotné přihlašování, které jsou nakonfigurované pro vaše aplikace, obraťte se na vaše [tým podpory Tangoe příkaz Premium mobilního klienta](https://www.tangoe.com/contact-us/) a zadejte následující:
 
    - Soubor stažený metadat
    - **SAML Entity ID**
@@ -174,7 +174,7 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
 
 V této části vytvoříte uživatele názvem Britta Simon v Tangoe příkaz Premium Mobile. 
 
-Tangoe příkaz Premium mobilní aplikace, musí všichni uživatelé zřídit v aplikaci před provedením jednotné přihlašování. Proto prosím práci s [tým podpory Tangoe příkaz Premium mobilního klienta](https://www.tangoe.com/contact-2/) ke zřízení tito uživatelé do aplikace. 
+Tangoe příkaz Premium mobilní aplikace, musí všichni uživatelé zřídit v aplikaci před provedením jednotné přihlašování. Proto prosím práci s [tým podpory Tangoe příkaz Premium mobilního klienta](https://www.tangoe.com/contact-us/) ke zřízení tito uživatelé do aplikace. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 

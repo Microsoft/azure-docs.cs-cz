@@ -1,6 +1,6 @@
 ---
-title: Rozšíření virtuálního počítače OMS Azure pro Linux | Microsoft Docs
-description: Nasaďte agenta OMS na virtuální počítač s Linuxem pomocí rozšíření virtuálního počítače.
+title: Rozšíření virtuálního počítače Azure analýzy protokolů pro Linux | Microsoft Docs
+description: Nasaďte agenta analýzy protokolů na virtuální počítač s Linuxem pomocí rozšíření virtuálního počítače.
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/21/2018
 ms.author: danis
-ms.openlocfilehash: f0d8224e5578a5ae46245e6c70792e962a44c933
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cc8b3f6a4ff6b683fc4ed2777adf6ab0b17f05be
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652851"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301481"
 ---
-# <a name="oms-virtual-machine-extension-for-linux"></a>OMS rozšíření virtuálního počítače pro Linux
+# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Protokolu analýzy rozšíření virtuálního počítače pro Linux
 
 ## <a name="overview"></a>Přehled
 
-Log Analytics poskytuje možnosti nápravy monitorování, výstrahy a výstrahy v cloudové a místní prostředky. Rozšíření virtuálního počítače OMS agenta pro Linux je publikována a společnost Microsoft podporuje. Rozšíření nainstaluje agenta OMS na virtuálních počítačích Azure a zaregistruje virtuální počítače do existující pracovní prostor analýzy protokolů. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření virtuálního počítače OMS pro Linux.
+Log Analytics poskytuje možnosti nápravy monitorování, výstrahy a výstrahy v cloudové a místní prostředky. Rozšíření virtuálního počítače Agent analýzy protokolů pro Linux je publikována a společnost Microsoft podporuje. Rozšíření nainstaluje agenta analýzy protokolů na virtuálních počítačích Azure a zaregistruje virtuální počítače do existující pracovní prostor analýzy protokolů. Tento dokument podrobně popisuje podporované platformy, konfigurace a možnosti nasazení pro rozšíření virtuálního počítače analýzy protokolů pro Linux.
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření agenta OMS se může spouštět na těchto Linuxových distribucích.
+Rozšíření agenta analýzy protokolů se může spouštět na těchto Linuxových distribucích.
 
 | Distribuce | Verze |
 |---|---|
@@ -44,9 +44,9 @@ Rozšíření agenta OMS se může spouštět na těchto Linuxových distribucí
 | SUSE Linux Enterprise Server | 11 a 12 (x86/x64) |
 
 ### <a name="agent-and-vm-extension-version"></a>Verze agenta a rozšíření virtuálního počítače
-Následující tabulka obsahuje mapování verze virtuálního počítače OMS rozšíření a OMS Agent sady pro jednotlivé verze. Je k dispozici odkaz na poznámky k verzi sady agenta OMS. Poznámky k verzi obsahují podrobnosti na oprav chyb a nových funkcí dostupných pro daného agenta verze.  
+Následující tabulka poskytuje mapování verzi rozšíření virtuálního počítače analýzy protokolů a sady Agent analýzy protokolů pro jednotlivé verze. Odkaz na poznámky k verzi sady agenta analýzy protokolů je zahrnuta. Poznámky k verzi obsahují podrobnosti na oprav chyb a nových funkcí dostupných pro daného agenta verze.  
 
-| Verze rozšíření virtuálního počítače s Linuxem OMS | Verze agenta OMS sady | 
+| Verze rozšíření virtuálního počítače s Linuxem analýzy protokolů | Verze sady agenta analýzy protokolů | 
 |--------------------------------|--------------------------|
 | 1.6.42.0 | [1.6.0-42](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.6.0-42)| 
 | 1.4.60.2 | [1.4.4-210](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_GA_v1.4.4-210)| 
@@ -62,15 +62,15 @@ Následující tabulka obsahuje mapování verze virtuálního počítače OMS r
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Azure Security Center automaticky zřídí agenta OMS a připojí ho do pracovního prostoru analýzy protokolů výchozí vytvořené ASC ve vašem předplatném Azure. Pokud používáte Azure Security Center, se nespustí provede kroky v tomto dokumentu. To přepíše nakonfigurované prostoru a dělí připojení ke službě Azure Security Center.
+Azure Security Center automaticky zřídí agenta analýzy protokolů a připojí ho do pracovního prostoru analýzy protokolů výchozí vytvořené ASC ve vašem předplatném Azure. Pokud používáte Azure Security Center, se nespustí provede kroky v tomto dokumentu. To přepíše nakonfigurované prostoru a dělí připojení ke službě Azure Security Center.
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
-Rozšíření OMS agenta pro Linux vyžaduje, aby cílový virtuální počítač je připojený k Internetu. 
+Rozšíření agenta analýzy protokolů pro Linux vyžaduje, aby cílový virtuální počítač je připojený k Internetu. 
 
 ## <a name="extension-schema"></a>Schéma rozšíření
 
-Následujícím kódu JSON znázorňuje schéma pro rozšíření agenta OMS. Rozšíření vyžaduje ID a klíč pracovního prostoru z cílového pracovního prostoru analýzy protokolů; Tyto hodnoty mohou být [nalezen v pracovním prostoru analýzy protokolů](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) na portálu Azure. Vzhledem k tomu, že klíč pracovního prostoru by měl být považován za citlivá data, by měly být uložené v chráněném nastavení konfigurace. Data Azure nastavení rozšíření chráněný virtuální počítač je zašifrovaná a dešifrovat jenom na cílový virtuální počítač. Všimněte si, že **workspaceId** a **workspaceKey** malých a velkých písmen.
+Následujícím kódu JSON znázorňuje schéma pro rozšíření agenta analýzy protokolů. Rozšíření vyžaduje ID a klíč pracovního prostoru z cílového pracovního prostoru analýzy protokolů; Tyto hodnoty mohou být [nalezen v pracovním prostoru analýzy protokolů](../../log-analytics/log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key) na portálu Azure. Vzhledem k tomu, že klíč pracovního prostoru by měl být považován za citlivá data, by měly být uložené v chráněném nastavení konfigurace. Data Azure nastavení rozšíření chráněný virtuální počítač je zašifrovaná a dešifrovat jenom na cílový virtuální počítač. Všimněte si, že **workspaceId** a **workspaceKey** malých a velkých písmen.
 
 ```json
 {
@@ -109,7 +109,7 @@ Následujícím kódu JSON znázorňuje schéma pro rozšíření agenta OMS. Ro
 
 ## <a name="template-deployment"></a>Nasazení šablon
 
-Rozšíření virtuálního počítače Azure se dá nasadit pomocí šablon Azure Resource Manager. Šablony jsou ideální, pokud nasazujete jednu nebo více virtuálních počítačů, které vyžadují konfiguraci nasazení post jako je registrace k analýze protokolů. Ukázka šablonu Resource Manager, která obsahuje rozšíření virtuálního počítače agenta OMS naleznete na [Azure rychlý Start Galerie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
+Rozšíření virtuálního počítače Azure se dá nasadit pomocí šablon Azure Resource Manager. Šablony jsou ideální, pokud nasazujete jednu nebo více virtuálních počítačů, které vyžadují konfiguraci nasazení post jako je registrace k analýze protokolů. Šablonu Resource Manager ukázka, která zahrnuje rozšíření protokolu analýzy agenta virtuálního počítače naleznete na [Azure rychlý Start Galerie](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
 Konfigurace JSON pro rozšíření virtuálního počítače můžete vnořit prostředek virtuálního počítače nebo umístěn na kořenový server WSUS nebo nejvyšší úrovně šablony JSON Resource Manager. Umístění konfigurace JSON ovlivňuje hodnota název prostředku a typem. Další informace najdete v tématu [nastavte název a typ pro podřízené prostředky](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources). 
 
@@ -165,7 +165,7 @@ Při vkládání rozšíření JSON v kořenovém adresáři šablony, názvu pr
 
 ## <a name="azure-cli-deployment"></a>Nasazení Azure CLI
 
-Rozhraní příkazového řádku Azure můžete použít k nasazení rozšíření virtuálního počítače agenta OMS na existující virtuální počítač. Nahraďte *workspaceId* a *workspaceKey* s těmi, která z pracovního prostoru analýzy protokolů. 
+Rozhraní příkazového řádku Azure můžete použít k nasazení rozšíření protokolu analýzy agenta virtuálního počítače do existujícího virtuálního počítače. Nahraďte *workspaceId* a *workspaceKey* s těmi, která z pracovního prostoru analýzy protokolů. 
 
 ```azurecli
 az vm extension set \

@@ -7,14 +7,14 @@ manager: carmonm
 keywords: zálohování; zálohování;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 3/1/2018
+ms.date: 6/21/2018
 ms.author: markgal
-ms.openlocfilehash: 3727fab8f5d19e8f9178c9029177a2c1479422ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5aa07d7861413fa0ddc0d5af7aefe828df412b4d
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606632"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309142"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Příprava prostředí pro zálohování virtuálních počítačů s nasazením Resource Manageru
 
@@ -34,11 +34,14 @@ Před chránit (nebo zálohování) virtuálních počítačů nasazených Resou
 Pokud tyto podmínky se již existují ve vašem prostředí, pokračujte [zálohování virtuálních počítačů](backup-azure-arm-vms.md) článku. Pokud potřebujete nastavit nebo zkontrolujte jakýkoliv z těchto předpokladů, tento článek vás provede kroky.
 
 ## <a name="supported-operating-systems-for-backup"></a>Podporované operační systémy pro zálohování
- * **Linux**: Azure Backup podporuje [seznam distribuce, které Azure nezodpovídá](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), s výjimkou jádro operačního systému Linux. 
- 
+
+ * **Linux**: Azure Backup podporuje [seznam distribuce, které Azure nezodpovídá](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), s výjimkou jádro operačního systému Linux. Seznam operačních systémů Linux, které podporují obnovení souborů najdete v tématu [obnovit soubory ze zálohy virtuálního počítače](backup-azure-restore-files-from-vm.md#for-linux).
+
     > [!NOTE] 
     > Další přineste vaše – vlastní Linuxových distribucích může fungovat, dokud agent virtuálního počítače je k dispozici na virtuálním počítači a podpora pro Python existuje. Tyto distribuce ale podporované nejsou.
- * **Windows Server**: Verze starší než Windows Server 2008 R2 nejsou podporovány.
+    >
+ * **Windows Server**, **klienta Windows**: verze starší než Windows Server 2008 R2 nebo Windows 7, nejsou podporovány.
+
 
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Omezení při zálohování a obnovení virtuálních počítačů
 Než se připravíte prostředí, ujistěte se, že jste pochopili tato omezení:

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 6d43e446d1ee1ed4dafc63481b4c874d994896d3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: fc8918ed2901d2f443b94bac8587e24c3f04eeec
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230263"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308743"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vxmaintain"></a>Kurz: Azure Active Directory integrace s vxMaintain
 
@@ -111,7 +111,7 @@ V této části můžete povolit jednotné přihlašování Azure AD na portálu
     b. V **adresa URL odpovědi** zadejte adresu URL, která má následující syntaxi: `https://<company name>.verisae.com/DataNett/action/ssoConsume/mobile?_log=true`
 
     > [!NOTE] 
-    > Předchozí hodnoty nejsou skutečné. Je aktualizovat skutečným identifikátorem a adresa URL odpovědi. Chcete-li získat hodnoty, obraťte se [tým podpory vxMaintain](http://www.verisae.com/contact-us).
+    > Předchozí hodnoty nejsou skutečné. Je aktualizovat skutečným identifikátorem a adresa URL odpovědi. Chcete-li získat hodnoty, obraťte se [tým podpory vxMaintain](https://www.hubspot.com/company/contact).
  
 4. V části **SAML podpisový certifikát**, vyberte **soubor XML s metadaty**a potom uložte soubor metadat pro váš počítač.
 
@@ -121,7 +121,7 @@ V této části můžete povolit jednotné přihlašování Azure AD na portálu
 
     ![Tlačítko Uložit](./media/vxmaintain-tutorial/tutorial_general_400.png)
 
-6. Ke konfiguraci **vxMaintain** jednotné přihlašování, odesílání stažené **soubor XML s metadaty** do souboru [tým podpory vxMaintain](http://www.verisae.com/contact-us).
+6. Ke konfiguraci **vxMaintain** jednotné přihlašování, odesílání stažené **soubor XML s metadaty** do souboru [tým podpory vxMaintain](https://www.hubspot.com/company/contact).
 
 > [!TIP]
 > Jak nastavit aplikaci si můžete přečíst stručným verzi podle předchozích pokynů v [portál Azure](https://portal.azure.com). Po přidání aplikace z **služby Active Directory** > **podnikové aplikace, které** vyberte **jednotné přihlašování** kartě a potom přejdete embedded dokumentace z **konfigurace** části. 
@@ -161,7 +161,7 @@ V této části vytvoříte testovacího uživatele Britta Simon na portálu Azu
  
 ### <a name="create-a-vxmaintain-test-user"></a>Vytvoření zkušebního uživatele vxMaintain
 
-V této části vytvoříte testovacího uživatele Britta Simon v vxMaintain. Přidat uživatele v platformě vxMaintain, pracovat [tým podpory vxMaintain](http://www.verisae.com/contact-us). Před použitím jednotného přihlašování k vytvoření a aktivace uživatele.
+V této části vytvoříte testovacího uživatele Britta Simon v vxMaintain. Přidat uživatele v platformě vxMaintain, pracovat [tým podpory vxMaintain](https://www.hubspot.com/company/contact). Před použitím jednotného přihlašování k vytvoření a aktivace uživatele.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 

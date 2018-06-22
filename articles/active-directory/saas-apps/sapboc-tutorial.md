@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: jeedes
-ms.openlocfilehash: 4848132254736aca12be5e31325d98a936754af2
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 42eb1c8332a29ff07c83b962aaa8f8e2f04fd07b
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220630"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308295"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>Kurz: Azure Active Directory integrace s SAP Business objektu cloudu
 
@@ -129,7 +129,7 @@ Nastavení Azure AD jednotné přihlašování s SAP Business objektu cloudu:
     ![Adresy URL stránky SAP Business objekt cloudové domény a adresy URL](./media/sapboc-tutorial/tutorial_sapboc_url.png)
  
     > [!NOTE] 
-    > Hodnoty v těchto adres URL jsou pouze jako ukázka. Aktualizujte hodnoty se skutečné přihlašovací adresa URL a identifikátoru adresy URL. Chcete-li získat adresu URL přihlašování, obraťte se [tým podpory SAP Business objektu cloudu klienta](https://www.sap.com/product/analytics/cloud-analytics.support.html). Identifikátoru adresy URL můžete získat tak, že stáhnete SAP Business objektu cloudu metadat z konzoly správce. To se vysvětluje dále v tomto kurzu. 
+    > Hodnoty v těchto adres URL jsou pouze jako ukázka. Aktualizujte hodnoty se skutečné přihlašovací adresa URL a identifikátoru adresy URL. Chcete-li získat adresu URL přihlašování, obraťte se [tým podpory SAP Business objektu cloudu klienta](https://help.sap.com/viewer/product/SAP_BusinessObjects_Cloud/release/en-US). Identifikátoru adresy URL můžete získat tak, že stáhnete SAP Business objektu cloudu metadat z konzoly správce. To se vysvětluje dále v tomto kurzu. 
 
 4. V části **SAML podpisový certifikát**, vyberte **soubor XML s metadaty**. Uložte soubor metadat ve vašem počítači.
 

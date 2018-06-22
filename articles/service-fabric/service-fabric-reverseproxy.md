@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 21e1e3041d7b1f4dc205355f6c0b8d4fd2e82775
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a72873678323d31181654923caf07ba509c9ab81
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212271"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301576"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Reverzní proxy server v Azure Service Fabric
 Reverzní proxy server, které jsou součástí Azure Service Fabric pomáhá mikroslužeb spuštění v clusteru Service Fabric zjistit a komunikovat s jinými službami, které mají koncových bodů protokolu http.
@@ -57,8 +57,13 @@ Namísto konfigurace port jednotlivé služby nástroji pro vyrovnávání zatí
 ![Externí komunikace][0]
 
 > [!WARNING]
-> Při konfiguraci portu reverzní proxy server v nástroj pro vyrovnávání zatížení, všechny mikroslužeb v clusteru, které zveřejňují koncový bod protokolu HTTP jsou adresovatelné z mimo cluster.
+> Při konfiguraci portu reverzní proxy server v nástroj pro vyrovnávání zatížení, všechny mikroslužeb v clusteru, které zveřejňují koncový bod protokolu HTTP jsou adresovatelné z mimo cluster. To znamená, že mikroslužeb, měl by být interní může být zjistitelný uživatelem se zlými úmysly určené. Tato potenially uvede závažné ohrožení zabezpečení, která mohou být odhalena; například:
 >
+> * Uživatel se zlými úmysly může zahájit útok útok opakovaně voláním interní služby, který nemá dostatečně posílené útok.
+> * Uživatel se zlými úmysly může poskytovat chybně formovaným paketům interní službě výsledkem nežádoucí chování.
+> * Služby, měl by být interní může vrátit privátní nebo citlivé informace, které nejsou určeny mají být exponovány ke službám mimo cluster, proto vystavení tento citlivé informace, které uživatel se zlými úmysly. 
+>
+> Zajistěte, aby plně pochopit a zmírnit potenciální následky zabezpečení pro váš cluster a aplikace spuštěná, před prováděním veřejný port reverzní proxy server. 
 >
 
 

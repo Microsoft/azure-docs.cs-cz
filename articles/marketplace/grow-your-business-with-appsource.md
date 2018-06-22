@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: d93f66282e3f735565389904c65436ed2ad79480
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 11a4fe4cd7b4b08b4468e08bba754518d27abb99
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825095"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309534"
 ---
 # <a name="grow-your-business-with-appsource"></a>Růst společnosti s AppSource  
 Použít AppSource při zaujmout obchodní zákazníkům najít, zkuste a get-obchodní software jako služba (SaaS) aplikace a implementaci služby Nápověda jednotky obchodní výsledky a zkrátit čas na hodnotu.  
@@ -32,8 +32,7 @@ Použít AppSource při zaujmout obchodní zákazníkům najít, zkuste a get-ob
 | ***Aplikacemi a pomáhá zvýšit produktivitu, efektivitu a podnikových statistik*** | Poskytuje aplikace pro odvětví podnikání, včetně služeb zákazníkům, oddělení lidských zdrojů, operace a další |  
 | ***Implementace zkušeného partnera k přizpůsobí aplikace jedinečný situaci pro vaše zákazníky*** | Nabízí katalog služby Consulting Services nabídek pro řešení založená na Dynamics 365, Power BI, PowerApps a partnerských aplikací pomáhá podnikovým uživatelům poskytovat předvídatelný výstupy |  
 
-<!-- # Grow your business with AppSource  -->
-Azure Marketplace i AppSource jsou spuštění body pro společné aktivity, přejděte na trh se společností Microsoft a setrvačníku pro růst podniku. Pomocí spuštění povýšení, generování vyžádání a joint prodeje a marketingu, lze vaši nabídku marketplace základnu vaší firmy stroje cloudu. Neexistují žádné poplatky za účasti. Zákazníci společnosti Microsoft, navštivte obchodní poutače na marketplace každý den se najít správné aplikace a služby, které pomohou zvýšit firmy pro vaše zákazníky. Cílem společnosti Microsoft je připojení organizace s řešeními a služeb od společnosti Microsoft a Microsoft partnery.  
+<!-- # Grow your business with AppSource  --> Azure Marketplace i AppSource jsou spuštění body pro společné aktivity, přejděte na trh se společností Microsoft a setrvačníku pro růst podniku. Pomocí spuštění povýšení, generování vyžádání a joint prodeje a marketingu, lze vaši nabídku marketplace základnu vaší firmy stroje cloudu. Neexistují žádné poplatky za účasti. Zákazníci společnosti Microsoft, navštivte obchodní poutače na marketplace každý den se najít správné aplikace a služby, které pomohou zvýšit firmy pro vaše zákazníky. Cílem společnosti Microsoft je připojení organizace s řešeními a služeb od společnosti Microsoft a Microsoft partnery.  
 
 ## <a name="business-benefits-of-joining-a-cloud-marketplace"></a>Obchodní výhody propojení na trhu cloudu  
 Existuje mnoho pádných důvodů, proč připojovat obchodní poutače na webu marketplace. Zde jsou výhody určený speciálně pro výpis vaší nabídky na AppSource můžete růst společnosti:  
@@ -53,7 +52,7 @@ Existuje mnoho pádných důvodů, proč připojovat obchodní poutače na webu 
 *   **Seznam konzultační služby nabídkami**  
     Podnikoví uživatelé hledají zkušeného partnery můžete začít pracovat s jistotou prostřednictvím nabídky kvality konzultační služby navržený tak, aby předvídatelný výstupy zákazníka. Zobrazí seznam konzultační služby nabídkami pomohou podnikoví uživatelé najít nabízí pomohou zákazník rychle začít.  
 *   **Začínáme s jistotou**  
-    Tým Microsoft AppSource se zde a poskytuje prostředí bezproblémové registrace. Týmem AppSource se zde můžete každý krok způsob – jestli ho pracuje na zkušební verzi nebo testování jednotky zkušenosti, vám pomáhá splňují kritéria výpis a další.  
+    Tým Microsoft AppSource se zde a poskytuje prostředí bezproblémové registrace. Tým služby AppSource se zde můžete každý krok procesu; jestli ho pracuje na zkušební verzi nebo testování jednotky zkušenosti, vám pomáhá splňují kritéria výpis a další.  
 *   **Přizpůsobení seznamu stránku aplikace**  
     Budete mít flexibilitu při rozhodování o při rozhodování o tom, jak jste chtěli na trhu aplikací na AppSource. Zadejte, video, datové listy, dokumentace a podrobný popis. Microsoft spolupracuje s prezentovat vaší aplikace na AppSource poutavé způsobem.  
 *   **Získání prakticky uplatnitelných informací**  
@@ -112,7 +111,7 @@ V následujících tabulkách jsou upřesněny každého kroku vyplníte vaše n
 | StoreFront nastavení | Osvědčené postupy | 
 |:---------------------------------------- |:----------------------------------------------------- |
 | **Název nabídky** | Na stránce vyhledávání nabídku v galerii AppSource domovské stránky a aplikace se zobrazí souhrn nabídky. Hledaná klíčová slova zahrňte do vaší nabídky shrnutí k vylepšení hodnocení aplikace do výsledků vyhledávacích webů. |
-| **Popis nabídky** | **Zadejte popis, dobrý nabídka**<br />Jasně popisují nabízená hodnota nabídky v první několik věty vaší popisu. Uvědomte si, že první několik věty mohou být zobrazeny ve výsledcích vyhledávání.<br />Nespoléhejte na prvky a funkce prodeji určitého produktu. Místo toho se zaměřit na hodnotu, kterou můžete poskytovat. Pomocí termínů průmyslové nebo na základě benefit slov co nejvíc.<br />Základní součásti služby vaší nabízená hodnota by měla obsahovat informace o:<br />•What je produktu<br />Získá •WHO z něj nejvíc<br />Třeba •What nebo problémové dělá adresu.<br />Řekněte zákazníkům, jak své firmy nebo pracovní dobu životnosti se může lišit po používají řešení.<br />Začlenit hledaná klíčová slova a variace – klíčové slovo v popisu nabídka k vylepšení pořadí vaši nabídku do výsledků vyhledávacích webů.<br />Zadejte popis nabídky pomocí jednoduchého HTML.<br />Tady je příklad jednoduchého nabídka výpis stránky (jak je znázorněno v výše uvedený příklad výpis), která poskytuje nabídka souhrn, za nímž následuje seznam funkcí, klíče. Maximální počet znaků je 3 000.<br />_Ukázka HTML_<br /><p>Statistika organizace pro Dynamics 365 (online) poskytuje důležité využití a přijetí metriky pro vaši organizaci Dynamics 365 a nástroje umožňující předcházení problémů výkonu a podporu.</p> <ul><li><strong>Přizpůsobit řídicí panely</strong><br /> Nastavení řídicího panelu zajistit na základě bohatých zkušeností uživatelů a snímky důležitá data.<ul> <li><strong>Monitorování přijetí a použít:</strong> identifikaci vašich nejaktivnějších uživatelů, počet žádostí stránek, nejpoužívanějším entity, pracovní postupy a další.</li> </ul><p>Minimální podporovaná verze platformy: 8.1.1</p> |
+| **Popis nabídky** | **Zadejte popis, dobrý nabídka**<br />Jasně popisují nabízená hodnota nabídky v první několik věty vaší popisu. Uvědomte si, že první několik věty mohou být zobrazeny ve výsledcích vyhledávání.<br />Nespoléhejte na prvky a funkce prodeji určitého produktu. Místo toho se zaměřit na hodnotu, kterou můžete poskytovat. Pomocí termínů průmyslové nebo na základě benefit slov co nejvíc.<br />Základní součásti služby vaší nabízená hodnota by měla obsahovat informace o:<ul> <li>Novinky produktu</li>  <li>Kdo získá z něj nejvíc</li> <li>Jaké nutné nebo problémové ho adres.</li> </ul>Řekněte zákazníkům, jak své firmy nebo pracovní dobu životnosti se může lišit po používají řešení.<br />Začlenit hledaná klíčová slova a variace – klíčové slovo v popisu nabídka k vylepšení pořadí vaši nabídku do výsledků vyhledávacích webů.<br />Zadejte popis nabídky pomocí jednoduchého HTML.<br />Tady je příklad jednoduchého nabídka výpis stránky (jak je znázorněno v výše uvedený příklad výpis), která poskytuje nabídka souhrn, za nímž následuje seznam funkcí, klíče. Maximální počet znaků je 3 000.<br />*Ukázka HTML*<br />Statistika organizace pro Dynamics 365 (online) poskytuje důležité využití a přijetí metriky pro vaši organizaci Dynamics 365 a nástroje umožňující předcházení problémů výkonu a podporu. <ul> <li>**Přizpůsobit řídicí panely**<br />Nastavení řídicího panelu zajistit na základě bohatých zkušeností uživatelů a snímky důležitá data.<ul> <li>**Monitorování přijetí a použití**<br />Identifikaci vašich nejaktivnějších uživatelů, počet žádostí stránek, nejpoužívanějším entity, pracovní postupy a další.</li> </ul></li> </ul>Minimální podporované platformy verze: `8.1.1` |
 
 **StoreFront podrobnosti - výpis podrobnosti**  
 
@@ -134,7 +133,7 @@ V následujících tabulkách jsou upřesněny každého kroku vyplníte vaše n
 | **Snímky obrazovky** | Přidat až pět snímků obrazovky, začlenit klíče hledaná slova v názvech. |
 
 ### <a name="promote-the-availability-of-your-offer-on-appsource"></a>Zvýšení úrovně dostupnost vaši nabídku na AppSource  
-Když vaši nabídku uveden v AppSource, získaly práva k zobrazení oznámení "K dispozici na AppSource" na stránku. 
+Když vaši nabídku uveden v AppSource, získali jste práva k zobrazení ***k dispozici na AppSource*** oznámení "BADGE" na stránku. 
 
  ![Oznámení "BADGE" AppSource](./media/marketplace-appsource/appsourcebadge.png)
     

@@ -1,33 +1,22 @@
 ---
-title: Vytvořit a spravovat servery Azure SQL & databáze | Microsoft Docs
-description: Informace o serveru Azure SQL Database a databázových koncepcí a o vytváření a správě serverů a databází.
+title: Logické servery Azure SQL a izolované databáze | Microsoft Docs
+description: Další informace o logického serveru Azure SQL Database a koncepty jedné databáze a jejich prostředky.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 2600e39dec91fc6916fa7bbd02e318d33cfa3c99
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 505fd88959feb1c84abc53c6435776a5c5b4123c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649053"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309176"
 ---
-# <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Vytvářet a spravovat servery Azure SQL Database a databáze
-
-SQL Database nabízí tři typy databází:
-
-- Vytvořit v rámci jedné databáze [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s [kombinaci sadu výpočetní a úložnou kapacitu](sql-database-service-tiers-dtu.md) nebo [nezávislé škálování výpočetní a úložnou kapacitu](sql-database-service-tiers-vcore.md). Azure SQL database je přidružen logického serveru Azure SQL Database, která je vytvořena v rámci konkrétní oblasti Azure.
-- Databáze vytvořené jako součást [fond databází](sql-database-elastic-pool.md) v rámci [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s [kombinaci sadu výpočetní a úložnou kapacitu (založené na DTU)](sql-database-service-tiers-dtu.md) nebo [nezávislé škálování výpočetní a úložnou kapacitu (vCore na základě)](sql-database-service-tiers-vcore.md) , jsou sdílena mezi všemi databází ve fondu. Azure SQL database je přidružen logického serveru Azure SQL Database, která je vytvořena v rámci konkrétní oblasti Azure.
-- [Instance systému SQL server](sql-database-managed-instance.md) (spravované instanci) vytvořen v rámci [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s definovanou sadu výpočetní a úložnou kapacitu pro všechny databáze v instanci serveru. Spravované instance obsahuje systém a uživatele databáze. Spravované Instance vytvořené za účelem povolení databáze navýšení a posunu plně spravovaná PaaS, bez přepracování aplikace. Spravované Instance poskytuje vysokou kompatibilitu s programovací model místní systém SQL Server a podporuje velká většina funkcí systému SQL Server a doprovodné nástroje a služby.  
-
-Microsoft Azure SQL Database podporuje tabular data stream (TDS) protokol klienta verze 7.3 nebo novější a umožňuje šifrované připojení TCP/IP.
-
-> [!IMPORTANT]
-> Instance databáze serveru SQL spravované, aktuálně ve verzi public preview, nabízí jedné vrstvy služby obecné účely. Další informace najdete v tématu [SQL Database Managed Instance](sql-database-managed-instance.md). Zbývající část tohoto článku se nevztahuje na spravované Instance.
+# <a name="azure-sql-database-logical-servers-and-single-databases-and-their-resources"></a>Logické servery Azure SQL Database a izolovaných databází a jejich prostředků.
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Co je logickému serveru Azure SQL?
 
@@ -59,6 +48,20 @@ Logický server Azure Database:
 - Hlavní přihlášení na úrovni serveru můžou spravovat všechny databáze na serveru.
 - Může obsahovat přihlašovací údaje podobné těm, která se místně používají v instancích SQL Serveru, a udělit jim přístup k jedné nebo několika databázím na serveru spolu s omezenými právy pro správu. Další informace najdete v tématu [Přihlašovací údaje](sql-database-manage-logins.md).
 - Výchozí kolaci pro všechny uživatele databáze vytvořené na logickém serveru je `SQL_LATIN1_GENERAL_CP1_CI_AS`, kde `LATIN1_GENERAL` je angličtina (Spojené státy), `CP1` je znaková stránka 1252, `CI` nerozlišuje, a `AS` je diakritikou.
+
+## <a name="logical-servers-and-databases"></a>Logické servery a databáze
+
+Na logickém serveru můžete vytvořit:
+
+- Vytvořit v rámci jedné databáze [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s [kombinaci sadu výpočetní a úložnou kapacitu](sql-database-service-tiers-dtu.md) nebo [nezávislé škálování výpočetní a úložnou kapacitu](sql-database-service-tiers-vcore.md). Azure SQL database je přidružen logického serveru Azure SQL Database, která je vytvořena v rámci konkrétní oblasti Azure.
+- Databáze vytvořené jako součást [fond databází](sql-database-elastic-pool.md) v rámci [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s [kombinaci sadu výpočetní a úložnou kapacitu (založené na DTU)](sql-database-service-tiers-dtu.md) nebo [nezávislé škálování výpočetní a úložnou kapacitu (vCore na základě)](sql-database-service-tiers-vcore.md) , jsou sdílena mezi všemi databází ve fondu. Azure SQL database je přidružen logického serveru Azure SQL Database, která je vytvořena v rámci konkrétní oblasti Azure.
+
+> [!IMPORTANT]
+> SQL databáze spravované Instance aktuálně ve verzi public preview, je [instance systému SQL server](sql-database-managed-instance.md) (spravované instanci) vytvořen v rámci [skupina prostředků Azure](../azure-resource-manager/resource-group-overview.md) s definovanou sadu výpočetního prostředí a úložiště prostředky pro všechny databáze v instanci serveru. Spravované instance obsahuje systém a uživatele databáze. Spravované Instance vytvořené za účelem povolení databáze navýšení a posunu plně spravovaná PaaS, bez přepracování aplikace. Spravované Instance poskytuje vysokou kompatibilitu s programovací model místní systém SQL Server a podporuje velká většina funkcí systému SQL Server a doprovodné nástroje a služby. Další informace najdete v tématu [SQL Database Managed Instance](sql-database-managed-instance.md). Zbývající část tohoto článku se nevztahuje na spravované Instance.
+
+## <a name="tds-and-tcpip-connections"></a>Připojení TDS a protokolu TCP/IP
+
+Microsoft Azure SQL Database podporuje tabular data stream (TDS) protokol klienta verze 7.3 nebo novější a umožňuje šifrované připojení TCP/IP.
 
 ## <a name="azure-sql-databases-protected-by-sql-database-firewall"></a>Chráněné bránou firewall databáze SQL Azure databáze SQL
 
@@ -109,7 +112,7 @@ Chcete-li vytvořit a spravovat server Azure SQL, databáze a brány firewall po
 |[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|Získá jednu nebo více databází|
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|Nastaví vlastnosti pro databázi nebo přesune existující databáze do pružného fondu|
 |[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|Odebere databáze|
-|[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|Vytvoří skupinu prostředků.]
+|[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)|Vytvoří skupinu prostředků.|
 |[New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver)|Vytvoří serveru|
 |[Get-AzureRmSqlServer](/powershell/module/azurerm.sql/get-azurermsqlserver)|Vrátí informace o serverech|
 |[Set-AzureRmSqlServer](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlserver)|Upraví vlastnosti serveru|

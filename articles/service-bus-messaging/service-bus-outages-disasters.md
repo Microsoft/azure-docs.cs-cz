@@ -6,18 +6,18 @@ author: sethmanheim
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 38aaf6d7ddad1527e113efa502ae47b82165b079
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 1d960349b50e2618365fd085cba7b3e55fa53874
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802302"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301712"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Osvědčené postupy pro izolační aplikace proti výpadkům Service Bus a havárií
 
-Kritické aplikace musí fungovat nepřetržitě, ani za přítomnosti neplánované výpadky nebo havárie. Toto téma popisuje postupy, pomocí nichž můžete použít k ochraně aplikací Service Bus proti potenciální výpadek služby nebo po havárii.
+Kritické aplikace musí fungovat nepřetržitě, ani za přítomnosti neplánované výpadky nebo havárie. Tento článek popisuje techniky, které můžete použít k ochraně aplikací Service Bus proti potenciální výpadek služby nebo po havárii.
 
 Výpadek je definován jako dočasné nedostupnosti Azure Service Bus. Se výpadek může ovlivnit některé součásti Service Bus, jako je zasílání zpráv úložiště nebo i celého datového centra. Po napravení problému, Service Bus opět k dispozici. Výpadek obvykle nezpůsobí ztrátě zpráv nebo jiná data. Je například selhání součásti nedostupnost konkrétní úložišti pro přenos zpráv. Příkladem výpadku celou datacenter je výpadku napájení datovém centru nebo vadný datacenter síťový přepínač. Výpadek může trvat několik minut na několik dní.
 
@@ -78,6 +78,17 @@ Při použití pasivní replikace, v následujících scénářích zprávy mů�
 
 Service Bus podporuje havárii geografické obnovení a geografická replikace, na úrovni oboru názvů. Další informace najdete v tématu [Azure Service Bus Geo-havárii](service-bus-geo-dr.md). Po havárii funkci obnovení, k dispozici pro [skladová položka Premium](service-bus-premium-messaging.md) pouze implementuje zotavení po havárii metadata a spoléhá na obory názvů pro zotavení po havárii primární a sekundární.
 
+## <a name="availability-zones-preview"></a>Dostupnost zóny (preview)
+
+Skladová položka Service Bus Premium podporuje [dostupnost zóny](../availability-zones/az-overview.md), poskytuje odolnost izolované umístění v rámci oblasti Azure. 
+
+> [!NOTE]
+> Ve verzi preview dostupnosti zón je podporována pouze v **střed USA**, **východní USA 2**, a **Francie centrální** oblasti.
+
+Dostupnost zóny můžete povolit na nové obory názvů pouze pomocí portálu Azure. Service Bus nepodporuje migraci z existujících oborů názvů. Po povolení na oboru názvů nelze zakázat zálohování zóny.
+
+![1][]
+
 ## <a name="next-steps"></a>Další postup
 Další informace o zotavení po havárii, najdete v těchto článcích:
 
@@ -93,3 +104,5 @@ Další informace o zotavení po havárii, najdete v těchto článcích:
 [Geo-replication with Service Bus Brokered Messages]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
 [Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
 [Azure resiliency technical guidance]: /azure/architecture/resiliency
+
+[1]: ./media/service-bus-outages-disasters/az.png

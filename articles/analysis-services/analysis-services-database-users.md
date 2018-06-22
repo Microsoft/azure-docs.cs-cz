@@ -5,19 +5,19 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 06/20/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8a2338045c43f9eb240ce55fd1ec31a4db40fd4e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8870c4199d5f24d1e8d07bc97d61a09c07052c1e
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598347"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307975"
 ---
 # <a name="manage-database-roles-and-users"></a>Spravovat role databáze a uživatele
 
-Na úrovni databáze modelu všichni uživatelé musí patřit roli. Role definují uživatelé s konkrétní oprávnění pro model databáze. Každý uživatel nebo skupina zabezpečení přidaný k roli musí mít účet v klient služby Azure AD ve stejném předplatném jako server.
+Na úrovni databáze modelu všichni uživatelé musí patřit roli. Role definují uživatelé s konkrétní oprávnění pro model databáze. Každý uživatel nebo skupina zabezpečení přidaný k roli musí mít účet v klient služby Azure AD ve stejném předplatném jako server. 
 
 Jak definovat role se liší v závislosti na tom, které můžete použít nástroj, ale účinek je stejný.
 
@@ -27,6 +27,9 @@ Oprávnění role patří:
 *  **Čtení** -uživatelů můžete použít klientskou aplikaci pro připojení k a analyzovat data databáze modelu.
 
 Při vytváření projektu tabulkového modelu, můžete vytvořit role a přidat uživatele nebo skupiny do těchto rolí pomocí Správce rolí v sadě SSDT. Při nasazení na server, můžete pomocí aplikace SSMS, [rutiny prostředí PowerShell Analysis Services](https://msdn.microsoft.com/library/hh758425.aspx), nebo [tabulkový Model skriptovací jazyk](https://msdn.microsoft.com/library/mt614797.aspx) (TMSL) můžete přidat nebo odebrat role a uživatele členy.
+
+> [!NOTE]
+> Skupiny zabezpečení musí mít `MailEnabled` vlastnost nastavena na hodnotu `True`.
 
 ## <a name="to-add-or-manage-roles-and-users-in-ssdt"></a>Přidat nebo správě rolí a uživatelů v rozšíření SSDT  
   

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/28/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 8452708ef6b3d1944495c3c2c152c1e753a9cebf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f237e2b25089e4f89ddda2d37a7aa4019befe0da
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34599894"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302072"
 ---
 # <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Příchozí přenos HTTPS pro službu Azure Kubernetes (AKS)
 
@@ -33,13 +33,19 @@ K instalaci řadičem NGINX příjem příchozích dat použijte Helm. Viz řadi
 Aktualizujte graf úložiště.
 
 ```console
-helm repo update
+$ helm repo update
 ```
 
-Nainstalujte řadiče příjem příchozích dat NGINX. Tento příklad nainstaluje řadič v `kube-system` obor názvů, lze upravit k oboru názvů podle svého výběru.
+Nainstalujte řadiče příjem příchozích dat NGINX. Tento příklad nainstaluje řadič v `kube-system` obor názvů (za předpokladu, že RBAC je *není* povolené), toto nastavení můžete upravit do oboru názvů podle svého výběru.
 
+```console
+$ helm install stable/nginx-ingress --namespace kube-system --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
 ```
-helm install stable/nginx-ingress --namespace kube-system --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
+
+**Poznámka:** Pokud RBAC *je* povoleno v clusteru kubernetes, výše uvedeném příkazu bude řadiči příchozího nedostupný. Zkuste místo toho následující:
+
+```console
+$ helm install stable/nginx-ingress --namespace kube-system --set rbac.create=true --set rbac.createRole=true --set rbac.createClusterRole=true
 ```
 
 Během instalace se vytvoří Azure veřejnou IP adresu pro příjem příchozích dat řadič. Chcete-li získat veřejnou IP adresu, použijte příkaz kubectl get service. Může trvat nějakou dobu IP adresu pro přiřazení ke službě.

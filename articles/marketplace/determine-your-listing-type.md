@@ -12,35 +12,35 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: f9793156b3728f617b92624651ff89ab2665c061
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 1c7fd3ac1a4cf62dd8f909acc26615ea5f96f32c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235803"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309094"
 ---
 # <a name="determine-the-listing-type-for-your-solution"></a>Určuje typ výpis pro vaše řešení  
 Obchodní poutače podporují mnoho možností publikování: výpis typy a typy nabízet. Vyberte typ nabídky, který nejlépe představuje podrobností o řešení a služby. Všechny možnosti publikování poskytují že přístup k vést sdílení.   
 
 | Prodejní místo | Typ seznamu | Typ aplikace | Technické pokyny |  
 |:--- |:--- |:--- |:--- |  
-| AppSource | [seznam](#list) | [Konzultační služby](#requirements:-appSource:-list:-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
-| Azure Marketplace | [seznam](#list) | [Konzultační služby](#requirements:-azure-marketplace:-list:-consulting-service) | [](#) |  
-| Azure Marketplace | [seznam](#list) | [Obraťte se na mě](#requirements:-azure-marketplace:-list:-contact-me) | [](#) |  
-| Azure Marketplace | [Zkušební verze](#trial) | [Bezplatná zkušební verze nebo zkušební verze SaaS](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) | [](#) |  
+| AppSource | [seznam](#list) | [Konzultační služby](#requirements-appSource-list-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
+| Azure Marketplace | [seznam](#list) | [Konzultační služby](#requirements-azure-marketplace-list-consulting-service) | [](#) |  
+| Azure Marketplace | [seznam](#list) | [Obraťte se na mě](#requirements-azure-marketplace-list-contact-me) | [](#) |  
+| Azure Marketplace | [Zkušební verze](#trial) | [Bezplatná zkušební verze nebo zkušební verze SaaS](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) | [](#) |  
 | AppSource |  | Cortana Intelligence | [docs.microsoft.com/Azure/Machine-Learning/Team-data-Science-Process/cortana-Intelligence-appsource-Publishing-Guide](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide) |  
 | AppSource |  |Dynamics 365 pro zákaznické Engagement | [docs.microsoft.com/dynamics365/Customer-engagement/Developer/Publish-App-appsource](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource) |  
 | AppSource |  | Dynamics 365 Finance a operace | [docs.microsoft.com/dynamics365/Unified-Operations/dev-ITPro/LCS-Solutions/LCS-Solutions-App-Source](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) |  
-| Azure Marketplace | [Zkušební verze](#trial) | [Interaktivní demo](#requirements:-azure-marketplace:-trial:-interactive-demo) | [](#) |  
-| Azure Marketplace | [Zkušební verze](#trial) | [Vyzkoušejte](#requirements:-azure-marketplace:-trial:-test-drive) | [](#) |  
+| Azure Marketplace | [Zkušební verze](#trial) | [Interaktivní demo](#requirements-azure-marketplace-trial-interactive-demo) | [](#) |  
+| Azure Marketplace | [Zkušební verze](#trial) | [Vyzkoušejte](#requirements-azure-marketplace-trial-test-drive) | [](#) |  
 | AppSource |  | Office 365 | [docs.microsoft.com/Office/dev/Store/Submit-to-the-Office-Store](https://docs.microsoft.com/office/dev/store/submit-to-the-office-store) |  
-| AppSource |  | Power BI | [docs.microsoft.com/Power-BI/Developer/Office-Store](https://docs.microsoft.com/power-bi/developer/office-store) | | Azure Marketplace | [Příkaz Transact](#transact) | [Aplikace Azure: spravované aplikace](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  [docs.microsoft.com/Azure/Managed-Applications/Overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
-| Azure Marketplace | [Příkaz Transact](#transact) | [Aplikace Azure: řešení šablony](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  [](#) |  
-| Azure Marketplace | [Příkaz Transact](#transact) | [kontejner](#requirements:-azure-marketplace:-transact:-container) |  [](#) |  
-| Azure Marketplace | [Příkaz Transact](#transact) | [Aplikace SaaS](#requirements:-azure-marketplace:-transact:-saas-app) |  [](#) |  
-| Azure Marketplace | [Příkaz Transact](#transact) | [Virtuální počítač](#requirements:-azure-marketplace:-transact:-virtual-machine) |  [](#) |   
+| AppSource |  | Power BI | [docs.microsoft.com/Power-BI/Developer/Office-Store](https://docs.microsoft.com/power-bi/developer/office-store) | | Azure Marketplace | [Příkaz Transact](#transact) | [Aplikace Azure: spravované aplikace](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  [docs.microsoft.com/Azure/Managed-Applications/Overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
+| Azure Marketplace | [Příkaz Transact](#transact) | [Aplikace Azure: řešení šablony](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  [](#) |  
+| Azure Marketplace | [Příkaz Transact](#transact) | [kontejner](#requirements-azure-marketplace-transact-container) |  [](#) |  
+| Azure Marketplace | [Příkaz Transact](#transact) | [Aplikace SaaS](#requirements-azure-marketplace-transact-saas-app) |  [](#) |  
+| Azure Marketplace | [Příkaz Transact](#transact) | [Virtuální počítač](#requirements-azure-marketplace-transact-virtual-machine) |  [](#) |   
 
 ## <a name="azure-certified-program"></a>Azure Certified programu  
 Program Azure certifikované jsou testovány všechny virtuální počítače (VM) publikované v Azure Marketplace.  
@@ -58,7 +58,7 @@ Následující tabulka obsahuje další informace o požadavcích na konkrétní
 
 | Typ seznamu | Typ aplikace | Technické pokyny |  
 |:--- |:--- |:--- |  
-| [seznam](#list) | [Konzultační služby](#requirements:-appSource:-list:-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
+| [seznam](#list) | [Konzultační služby](#requirements-appSource-list-consulting-service) | [smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf) |  
 |  | Cortana Intelligence | [docs.microsoft.com/Azure/Machine-Learning/Team-data-Science-Process/cortana-Intelligence-appsource-Publishing-Guide](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-intelligence-appsource-publishing-guide) |  
 |  |Dynamics 365 pro zákaznické Engagement | [docs.microsoft.com/dynamics365/Customer-engagement/Developer/Publish-App-appsource](https://docs.microsoft.com/dynamics365/customer-engagement/developer/publish-app-appsource) |  
 |  | Dynamics 365 Finance a operace | [docs.microsoft.com/dynamics365/Unified-Operations/dev-ITPro/LCS-Solutions/LCS-Solutions-App-Source](https://docs.microsoft.com/dynamics365/unified-operations/dev-itpro/lcs-solutions/lcs-solutions-app-source) |  
@@ -68,20 +68,23 @@ Následující tabulka obsahuje další informace o požadavcích na konkrétní
 ---   
 
 ## <a name="azure-marketplace-publishing-by-product"></a>Azure Marketplace publikování produktu  
+
+![](./media/marketplace-publishers-guide/workflow-azure-marketplace.png)  
+
 Následující tabulka poskytuje že další informace o specifické požadavky pro Azure Marketplace nabízí.  
 
 | Typ seznamu | Typ nabídky |  Technické pokyny |  
 |:--- |:--- |:--- |  
-| [seznam](#list) | [Konzultační služby](#requirements:-azure-marketplace:-list:-consulting-service) | [](#) |  
-| [seznam](#list) | [Obraťte se na mě](#requirements:-azure-marketplace:-list:-contact-me) | [](#) |  
-| [Zkušební verze](#trial) | [Bezplatná zkušební verze nebo zkušební verze SaaS](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) | [](#) |  
-| [Zkušební verze](#trial) | [Interaktivní demo](#requirements:-azure-marketplace:-trial:-interactive-demo) | [](#) |  
-| [Zkušební verze](#trial) | [Vyzkoušejte](#requirements:-azure-marketplace:-trial:-test-drive) | [](#) |  
-| [Příkaz Transact](#transact) | [Aplikace Azure: spravované aplikace](#requirements:-azure-marketplace:-transact:-azure-apps:-managed-app) |  [docs.microsoft.com/Azure/Managed-Applications/Overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
-| [Příkaz Transact](#transact) | [Aplikace Azure: řešení šablony](#requirements:-azure-marketplace:-transact:-azure-apps:-solution-template) |  [](#) |  
-| [Příkaz Transact](#transact) | [kontejner](#requirements:-azure-marketplace:-transact:-container) |  [](#) |  
-| [Příkaz Transact](#transact) | [Aplikace SaaS](#requirements:-azure-marketplace:-transact:-saas-app) |  [](#) |  
-| [Příkaz Transact](#transact) | [Virtuální počítač](#requirements:-azure-marketplace:-transact:-virtual-machine) |  [](#) |  
+| [seznam](#list) | [Konzultační služby](#requirements-azure-marketplace-list-consulting-service) | [](#) |  
+| [seznam](#list) | [Obraťte se na mě](#requirements-azure-marketplace-list-contact-me) | [](#) |  
+| [Zkušební verze](#trial) | [Bezplatná zkušební verze nebo zkušební verze SaaS](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) | [](#) |  
+| [Zkušební verze](#trial) | [Interaktivní demo](#requirements-azure-marketplace-trial-interactive-demo) | [](#) |  
+| [Zkušební verze](#trial) | [Vyzkoušejte](#requirements-azure-marketplace-trial-test-drive) | [](#) |  
+| [Příkaz Transact](#transact) | [Aplikace Azure: spravované aplikace](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  [docs.microsoft.com/Azure/Managed-Applications/Overview](https://docs.microsoft.com/azure/managed-applications/overview) |  
+| [Příkaz Transact](#transact) | [Aplikace Azure: řešení šablony](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  [](#) |  
+| [Příkaz Transact](#transact) | [kontejner](#requirements-azure-marketplace-transact-container) |  [](#) |  
+| [Příkaz Transact](#transact) | [Aplikace SaaS](#requirements-azure-marketplace-transact-saas-app) |  [](#) |  
+| [Příkaz Transact](#transact) | [Virtuální počítač](#requirements-azure-marketplace-transact-virtual-machine) |  [](#) |  
 
 ---   
 
@@ -93,10 +96,10 @@ V seznamu typ seznamu zahrnuje následující typy nabídka na obchodní poutač
 
 | Typ nabídky | Prodejní místo | Podrobnosti |  
 |:---        |:---        |:---     |  
-| Konzultační služby | AppSource | [Požadavky na: AppSource: seznam: konzultační služby](#requirements:-appsource:-list:-consulting-service) |  
-| Konzultační služby | Azure Marketplace | [Požadavky na: Azure Marketplace: seznam: konzultační služby](#requirements:-azure-marketplace:-list:-consulting-service) |  
+| Konzultační služby | AppSource | [Požadavky na: AppSource: seznam: konzultační služby](#requirements-appsource-list-consulting-service) |  
+| Konzultační služby | Azure Marketplace | [Požadavky na: Azure Marketplace: seznam: konzultační služby](#requirements-azure-marketplace-list-consulting-service) |  
 | Kontaktujte mě | AppSource | [](#) |  
-| Kontaktujte mě | Azure Marketplace | [Požadavky na: AppSource: seznam: mě](#requirements:-azure-marketplace:-list:-contact-me) |  
+| Kontaktujte mě | Azure Marketplace | [Požadavky na: AppSource: seznam: mě](#requirements-azure-marketplace-list-contact-me) |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>Požadavky na: AppSource: seznam: konzultace ohledně služby  
 Když nabídku se primárně skládá z profesionální služby, například hodnocení, implementace, pracovní konference, použijte typ nabídky konzultace ohledně služby.  
@@ -130,12 +133,12 @@ Zkušební verze typ seznamu zahrnuje následující typy nabídka na obchodní 
 
 | Typ nabídky | Prodejní místo | Podrobnosti |  
 |:---        |:---        |:---     |  
-| Volné nebo zkušební verze SaaS | AppSource | [Výpis požadavky na typ: zkušební verze](#Listing-Type-Requirements:-trial) |  
-| Volné nebo zkušební verze SaaS | Azure Marketplace | [Požadavky na: Azure Marketplace: zkušební verze: bezplatnou zkušební verzi nebo zkušební verze SaaS](#requirements:-azure-marketplace:-trial:-free-trial-/-saas-trial) |  
-| Interaktivní ukázka | AppSource | [Výpis požadavky na typ: zkušební verze](#Listing-Type-Requirements:-trial) |  
-| Interaktivní ukázka | Azure Marketplace | [Požadavky na: Azure Marketplace: zkušební verze: Interaktivní demo](#requirements:-azure-marketplace:-trial:-interactive-demo) |  
-| Testovací verze | AppSource | [Výpis požadavky na typ: zkušební verze](#Listing-Type-Requirements:-trial) |  
-| Testovací verze | Azure Marketplace | [Požadavky na: Azure Marketplace: zkušební verze: Vyzkoušejte](#requirements:-azure-marketplace:-trial:-test-drive) |  
+| Volné nebo zkušební verze SaaS | AppSource | [Výpis požadavky na typ: zkušební verze](#listing-type-requirements-trial) |  
+| Volné nebo zkušební verze SaaS | Azure Marketplace | [Požadavky na: Azure Marketplace: zkušební verze: bezplatnou zkušební verzi nebo zkušební verze SaaS](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
+| Interaktivní ukázka | AppSource | [Výpis požadavky na typ: zkušební verze](#listing-type-requirements-trial) |  
+| Interaktivní ukázka | Azure Marketplace | [Požadavky na: Azure Marketplace: zkušební verze: Interaktivní demo](#requirements-azure-marketplace-trial-interactive-demo) |  
+| Testovací verze | AppSource | [Výpis požadavky na typ: zkušební verze](#listing-type-requirements-trial) |  
+| Testovací verze | Azure Marketplace | [Požadavky na: Azure Marketplace: zkušební verze: Vyzkoušejte](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>Požadavky na: Azure Marketplace: zkušební verze  
 
@@ -177,11 +180,11 @@ Typ seznamu Transact zahrnuje následující typy nabídka na obchodní poutače
 
 | Typ nabídky | Prodejní místo | Podrobnosti |   
 |:---        |:---        | :--- |  
-| Aplikace Azure: spravované aplikace | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: aplikace Azure: spravované aplikace](#requirements:-azure-marketplace:-transact:-Azure-apps:-Managed-app) |  
-| Aplikace Azure: řešení šablony | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: aplikace Azure: řešení šablony](#requirements:-azure-marketplace:-transact:-Azure-apps:-Solution-template) |  
-| Containers | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: kontejneru](#requirements:-azure-marketplace:-transact:-Container) |  
-| Aplikace SaaS  | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: SaaS aplikace](#requirements:-azure-marketplace:-transact:-SaaS-app) |  
-| Virtuální počítač | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: virtuálního počítače](#requirements:-azure-marketplace:-transact:-Virtual-Machine) |  
+| Aplikace Azure: spravované aplikace | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: aplikace Azure: spravované aplikace](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
+| Aplikace Azure: řešení šablony | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: aplikace Azure: řešení šablony](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Containers | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: kontejneru](#requirements-azure-marketplace-transact-container) |  
+| Aplikace SaaS  | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: SaaS aplikace](#requirements-azure-marketplace-transact-saas-app) |  
+| Virtuální počítač | Azure Marketplace | [Požadavky na: Azure Marketplace: Transact: virtuálního počítače](#requirements-azure-marketplace-transact-virtual-machine) |  
 
 #### <a name="requirements-azure-marketplace-transact-azure-apps-managed-app"></a>Požadavky na: Azure Marketplace: Transact: aplikace Azure: spravované aplikace  
 Používat aplikaci Azure: Správa typ nabídky aplikace, když tyto podmínky se vyžadují.  
@@ -209,11 +212,10 @@ Společnost Microsoft podporuje aktuálně volné a přineste si vlastníte lice
 
 | Požadavek | Podrobnosti |  
 |:--- |:--- |  
-|Fakturace a měření  |  Vaše kontejneru musí podporovat buď uvolněte nebo Bring Your Own License modely fakturace.       |  
-|Bitové kopie z soubor Docker   |   Kontejner Image musí být založený na specifikaci Docker bitové kopie a z soubor Docker musí být sestaven. Další informace o vytváření bitových kopií docker [sem]. (https://docs.docker.com/engine/reference/builder/#usage)
-|Hostování v ACR   |   Kontejner imagí musí být hostované v úložišti Azure kontejneru registru (ACR). Další informace o práci s ACR [sem]. (https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-portal)     
-|Označování bitové kopie   |   Kontejner imagí musí obsahovat alespoň 1 značky (maximální značky: 16). Další informace o označování bitovou kopii [sem]. (https://docs.docker.com/engine/reference/commandline/tag/)     | 
-
+| Fakturace a měření | Podpora buď volné nebo fakturační model BYOL. |  
+| Bitové kopie z soubor Docker | Kontejner Image musí být založený na specifikaci Docker bitové kopie a z soubor Docker musí být sestaven.<ul> <li>Další informace o vytváření bitových kopií docker, naleznete v části využití nacházející se v [docs.docker.com/engine/reference/builder/#usage](https://docs.docker.com/engine/reference/builder/#usage).</li> </ul> |  
+| Hostování v ACR | Kontejner imagí musí být hostované v úložišti Azure kontejneru registru (ACR).<ul> <li>Další informace o práci s ACR najdete rychlý start: vytvoření kontejneru registru pomocí Azure stránky portálu nacházející se v [docs.microsoft.com/azure/container-registry/container-registry-get-started-portal](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal).</li> </ul> |  
+| Označování bitové kopie | Kontejner imagí musí obsahovat alespoň 1 značky (maximální značky: 16).<ul> <li>Další informace o označování bitovou kopii, najdete na stránce značky docker nacházející se v [docs.docker.com/engine/reference/commandline/tag](https://docs.docker.com/engine/reference/commandline/tag).</li> </ul> |  
 
 
 #### <a name="requirements-azure-marketplace-transact-saas-app"></a>Požadavky na: Azure Marketplace: Transact: SaaS aplikace  
@@ -225,12 +227,10 @@ Microsoft je hostitelem transakce commerce. Microsoft bills zákazníkovi vaší
 
 | Požadavek | Podrobnosti |  
 |:--- |:--- |  
-|Fakturace a měření   |   Vaši nabídku je cenově paušálně měsíční. V tuto chvíli nejsou podporovány na základě využití ceny a na základě využití možnosti "true-up".      |  
-|Zrušení  |   Kdykoli je možné zrušit zákazník vaši nabídku.      |  
-|Cílová stránka transakce   |   Hostujete stránku cílová Azure související transakci, kde uživatelé mohou vytvářet a spravovat své účty služby SaaS.      |   
-|Předplatné rozhraní API    |   Vystavit služby, které mohou komunikovat s předplatným SaaS vytvářet, aktualizovat a odstraňovat plán uživatelského účtu a služby. Důležité změny rozhraní API musí podporovat do 24 hodin. Méně závažné změny rozhraní API, budou vydané pravidelně.      | 
-
-
+|Fakturace a měření | Vaši nabídku je cenově paušálně měsíční. V tuto chvíli nejsou podporovány na základě využití ceny a na základě využití možnosti "true-up". |  
+|Zrušení | Kdykoli je možné zrušit zákazník vaši nabídku. |  
+|Cílová stránka transakce | Hostujete stránku cílová Azure související transakci, kde uživatelé mohou vytvářet a spravovat své účty služby SaaS. |   
+| Předplatné rozhraní API | Vystavit služby, které mohou komunikovat s předplatným SaaS vytvářet, aktualizovat a odstraňovat plán uživatelského účtu a služby. Důležité změny rozhraní API musí podporovat do 24 hodin. Méně závažné změny rozhraní API, budou vydané pravidelně. |  
 
 #### <a name="requirements-azure-marketplace-transact-virtual-machine"></a>Požadavky na: Azure Marketplace: Transact: virtuálního počítače  
 Typ nabídky virtuálního počítače můžete používejte při nasazování virtuálního zařízení k předplatnému přidružené vašich zákazníků. Virtuální počítače jsou plně obchodování povolit pomocí průběžné platby nebo Bring vaše vlastníte-licenci (BYOL) licencování modely. Společnost Microsoft je hostitelem transakce obchodování a bills zákazníkovi vaším jménem. Můžete využívat výhody používání upřednostňované platebních vztah mezi vašeho zákazníka a společnosti Microsoft, včetně veškeré smlouvy Enterprise.  

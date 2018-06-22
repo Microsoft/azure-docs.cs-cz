@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 9bb79a2054a0e51ce435f51a52f964062427cea4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2aff7d98fde50c89e637572437a7c572911bce76
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647992"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309125"
 ---
 # <a name="sql-database-faq"></a>SQL Database – Nejčastější dotazy
 
@@ -24,9 +24,9 @@ Je aktuální verze databáze SQL verze 12. Verze 11 verze byla vyřazena.
 ## <a name="what-is-the-sla-for-sql-database"></a>Co je smlouvě SLA pro databázi SQL?
 Nemůžeme zaručit alespoň 99,99 % času, máte připojení mezi vaší Microsoft Azure SQL Database a naše internetovou bránu, bez ohledu na vaše vrstvy služeb. Další informace najdete v tématu [SLA](http://azure.microsoft.com/support/legal/sla/).
 
-## <a name="whatis-the-new-vcore-based-purchasing-model-preview-for-azure-sql-database"></a>Whatis nový na základě vCore nákupní model (preview) pro Azure SQL Database?
+## <a name="what-is-the-new-vcore-based-purchasing-model-preview-for-azure-sql-database"></a>Co je nového na základě vCore nákupu modelu (preview) pro Azure SQL Database?
 
-Nový model nákupu je kromě existujícího modelu na základě DTU. Model na základě vCore je navržená tak získali zákazníkům flexibilitu, řízení, průhlednost a snadný způsob, jak převede místní požadavků na zatížení do cloudu. Také to umožňuje zákazníkům škálování výpočetní kapacity a úložiště podle jejich potřeb pracovního vytížení. Izolované databáze a možnosti elastického fondu pomocí modelu vCore jsou také vhodné pro až na 30 procent úspor s [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). V tématu [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) a [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md) Další informace. 
+Nový nákupní model doplňuje stávající model založený na DTU. Model na základě vCore je navržená tak získali zákazníkům flexibilitu, řízení, průhlednost a snadný způsob, jak převede místní požadavků na zatížení do cloudu. Také to umožňuje zákazníkům škálovat své výpočetní a úložnou rsources podle jejich potřeb pracovního vytížení. Izolované databáze a možnosti elastického fondu pomocí modelu vCore jsou také vhodné pro až na 30 procent úspor s [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md). V tématu [na základě DTU nákupní model](sql-database-service-tiers-dtu.md) a [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md) Další informace. 
 
 ## <a name="what-is-a-vcore"></a>Co je virtuální jádro? 
 Virtuální základní představuje logický procesor nabízí s možností si vybrat mezi generací hardwaru. Gen 4 logické procesory jsou založené na Intel E5-2673 v3 procesory 2,4 GHz (Haswell) a logických procesorů 5 generace jsou založené na Intel E5-2673 v4 procesory 2.3 GHz (Broadwell).
@@ -36,7 +36,7 @@ Ne, zavedení modelu na základě vCore do elastického fondu a možnostmi nasaz
 
 V mnoha případech může aplikace využít jednoduchost předkonfigurované sady prostředků. Proto jsme nadále nabízejí a podporovat tyto volby na základě DTU pro naše zákazníky. Pokud je používáte a splňuje požadavky vaší organizace, by měly být nadále učinit.
 
-Modely založené na DTU a na virtuálních jádrech budou i nadále koexistovat. Model založený na virtuálních jádrech uvádíme na trh v reakci na požadavky zákazníků o zajištění větší transparentnosti databázových prostředků a možnosti nezávislého škálování výpočetních prostředků a úložiště. Model na základě vCore taky umožňuje dalším úsporám plynoucím pro zákazníky s active Software Assurance prostřednictvím Benefit hybridní Azure pro systém SQL Server.
+Modely založené na DTU a na virtuálních jádrech budou i nadále koexistovat. Jsme se spouští na základě vCore modelu v reakci na požadavky zákazníků další transparentnosti kolem jejich prostředky databáze a schopnost škálovat své výpočetní a úložnou kapacitu nezávisle. Model na základě vCore taky umožňuje dalším úsporám plynoucím pro zákazníky s active Software Assurance prostřednictvím Benefit hybridní Azure pro systém SQL Server.
 
 ## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model-preview"></a>Jak mám zvolit mezi vs na základě DTU nákupní model nákupní model (preview) na základě vCore? 
 Jednotka přenosu dat (DTU) se měří na základě výkonu procesoru, paměti a operací čtení a zápisu. Úrovně výkonu založené na DTU představují předem nakonfigurované sady prostředků pro zajištění různých úrovní výkonu aplikací. Zákazníci, kteří nechcete starat o základních prostředků a raději jednoduchost předkonfigurované sady při platícího pevná každý měsíc možná modelu na základě DTU vhodnější pro své potřeby. Pro zákazníky, kteří potřebují další aspekty příslušných prostředků nebo potřebujete škálování je nezávisle na nástroji k dosažení optimálního výkonu, ale modelu na základě vCore bude nejlepší volbou.  Kromě toho pokud zákazník má aktivní Software Assurance (SA) pro systém SQL Server, mohou využívat své stávající investice a uložit až 30 % [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Možnosti v rámci každé nákupu modely poskytují výhody plně spravované služby, jako je automatické zálohování, softwarové aktualizace a opravy. 
@@ -49,10 +49,10 @@ Máte 180 dnů dvojí použití práv licenčních zajistit, že migrace běží
 
 
 ## <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>Jak se liší Azure hybridní Benefit pro SQL Server a mobilita licencí?
-V současné době nabízíme zákazníci SQL serveru s licencí programu Software Assurance mobility výhody, které umožňuje opětovné přiřazení jejich licencí, které chcete sdílené servery třetích stran. Tuto výhodu lze použít v Azure IaaS a AWS EC2.
+V současné době nabízíme licence mobility výhody zákazníkům systému SQL Server pomocí programu Software Assurance, který umožňuje opětovné přiřazení jejich licencí, které chcete sdílené servery třetích stran. Tuto výhodu lze použít v Azure IaaS a AWS EC2.
 Azure Benefit hybridní pro SQL Server se liší od mobilita licencí v dvě klíčové oblasti:
 - Poskytuje hospodářského výhody pro přesun vysoce virtualizované úlohy do Azure. Zákazníci SQL EE můžete získat 4 jádra v Azure v obecné účely SKU pro každý základní vlastní místní pro vysoce virtualizované aplikace. Mobilita licencí nepovoluje žádné speciální nákladů pro přesun virtualizovaných úloh do cloudu.
-- Poskytuje pro cíl PaaS v Azure, který je vysoce kompatibilní s systému SQL Server – místní – spravované Instance databáze SQL.
+- Poskytuje pro cíl PaaS v Azure (Instance databáze serveru SQL spravované), který je vysoce kompatibilní s místním SQL serverem
 
 ## <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Jaké jsou konkrétní práva benefitu hybridní Azure pro systém SQL Server?
 Databáze SQL zákazníkům bude nemá následující oprávnění přidružené Benefit hybridní Azure pro systém SQL Server:
@@ -70,7 +70,7 @@ Databáze SQL zákazníkům bude nemá následující oprávnění přidružené
 Náklady na výpočetní odráží celkový výpočetní kapacitu, který je zajištěný pro aplikaci. V rámci firmy kritické úrovně služby můžeme automaticky přidělit minimálně 3 repliky Always ON. Cena vCore tak, aby odrážela tuto další přidělení výpočetní prostředky, je vyšší v kritické obchodní přibližně 2.7 x. Ze stejného důvodu odráží vyšší úložiště cena za GB v kritické obchodní vrstvu vysoké vstupně-výstupní operace a nízká latence úložiště SSD. Ve stejnou dobu náklady na úložiště zálohy není jiný, protože v obou případech používáme třídu úložiště standard Storage.
 
 ## <a name="how-am-i-charged-for-storage---based-on-what-i-configure-upfront-or-on-what-the-database-uses"></a>Jak se účtovat pro úložiště - založené na je možné nakonfigurovat předem nebo databáze používá?
-Různé typy úložiště se fakturují jinak. Pro úložiště dat jsou účtovat pro zřízené úložiště na základě maximální databáze nebo velikost fondu, které vyberete. Náklady na nezmění, pokud snížit nebo zvýšit maximální. Úložiště zálohování je přidružené k automatickým zálohám vaší instance. Prodloužení doby uchovávání záloh zvyšuje požadavky na úložiště zálohování vaší instance. Za úložiště zálohování do 100 % celkového zajišťovaného úložiště serveru se neplatí žádné dodatečné poplatky. Další spotřeba úložiště zálohy je účtován v GB za měsíc. Když například máte databázové úložiště velikosti 100 GB, získáte 100 GB úložiště zálohování zdarma. Ale pokud je záloha 110 GB, platíte za dalších 10 GB.
+Různé typy úložiště se fakturují jinak. Pro úložiště dat budou se vám účtovat pro zřízené úložiště na základě maximální velikost databáze nebo fondu, které vyberete. Náklady na nezmění, pokud snížit nebo zvýšit maximální. Úložiště zálohování je přidružené k automatickým zálohám vaší instance. Prodloužení doby uchovávání záloh zvyšuje požadavky na úložiště zálohování vaší instance. Za úložiště zálohování do 100 % celkového zajišťovaného úložiště serveru se neplatí žádné dodatečné poplatky. Další spotřeba úložiště zálohy je účtován v GB za měsíc. Když například máte databázové úložiště velikosti 100 GB, získáte 100 GB úložiště zálohování zdarma. Ale pokud je záloha 110 GB, platíte za dalších 10 GB.
 
 Pro úložiště záloh služby jedné databáze budou se účtovat na základě poměrné pro úložiště, který byl přidělen zálohy databáze minus velikosti databáze. Pro zálohování úložiště elastického fondu budou se účtovat na základě poměrné pro úložiště, který byl přidělen zálohy databáze všech databází ve fondu minus maximální velikost dat elastického fondu. Všechny nárůst velikosti databáze nebo elastického fondu nebo zvyšte v rychlost transakcí, vyžaduje další úložiště a proto zvyšuje vaše faktura úložiště záloh.  Pokud zvýšíte maximální velikost dat, je toto nové množství odečtena od velikost fakturovaná úložiště záloh.
 
@@ -90,18 +90,18 @@ Ano, můžete nezávisle vybrat úroveň výpočetní aplikace potřebuje a pone
 Můžete nakonfigurovat uchovávání záloh pro možnosti PITR mezi 7 až 35 dnů. Úložiště zálohování bude vám účtována samostatně podle spotřeby skutečné úložiště, pokud přesahuje množství úložiště, která je rovna maximální velikost dat. Ve verzi preview ve výchozím nastavení Doba uchování možnosti PITR nastavení je to 7 dní. V mnoha případech je maximální velikost dat dostatečná pro ukládání záloh 7 dní.
 
 ## <a name="why-do-you-allow-selection-of-the-hardware-generation-for-compute"></a>Proč vám umožní výběr generování hardwaru pro výpočet?
-Naším cílem je umožnit maximální flexibilitu, aby mohli vybrat konfigurace výkonu, který přesně odpovídá potřebám aplikace. Výše uvedené tabulce jsou uvedeny rozdíly mezi Gen4 a Gen5. Konkrétně Gen4 hardwaru nabízí podstatně více paměti za vCore. Ale Gen5 hardwaru můžete škálovat výpočetní mnohem vyšší. Chceme mít tyto rozdíly transparentní, tak, aby poměr optimální ceny a výkonu můžete dosáhnout pro vaši aplikaci.
+Naším cílem je umožnit maximální flexibilitu, aby mohli vybrat konfigurace výkonu, který přesně odpovídá potřebám aplikace. Výše uvedené tabulce jsou uvedeny rozdíly mezi Gen4 a Gen5. Konkrétně Gen4 hardwaru nabízí podstatně více paměti za vCore. Ale Gen5 hardwaru můžete škálovat výpočetní prostředky mnohem vyšší. Chceme mít tyto rozdíly transparentní, tak, aby poměr optimální ceny a výkonu můžete dosáhnout pro vaši aplikaci.
 
 ## <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Je potřeba provést Moje aplikace do režimu offline převést z databáze na základě DTU do vrstvy služeb na základě vCore? 
-Nové úrovně služeb nabízejí jednoduchý způsob online převodu, který je obdobou stávajícího procesu upgradu databází z úrovně služeb Standard na Premium (a naopak). K tomuto převodu můžete využít portál, ARM, PowerShell, Azure CLI nebo T-SQL. V tématu [spravovat izolované databáze](sql-database-single-database-resources.md) a [spravovat elastické fondy](sql-database-elastic-pool.md).
+Nové úrovně služeb nabízejí jednoduchý způsob online převodu, který je obdobou stávajícího procesu upgradu databází z úrovně služeb Standard na Premium (a naopak). Tento převod lze inicializovat pomocí portálu Azure, PowerShell, rozhraní příkazového řádku Azure, T-SQL nebo rozhraní REST API. V tématu [spravovat izolované databáze](sql-database-single-database-scale.md) a [spravovat elastické fondy](sql-database-elastic-pool.md).
 
 ## <a name="can-i-convert-a-database-from-a-vcore-based-service-tier-to-a-dtu-based-one"></a>Můžete převést databázi z vrstvy služeb na základě vCore do dalšího na základě DTU? 
-Ano, můžete snadno převést databázi do jakéhokoli cíle podporované výkonu pomocí portálu nebo programově pomocí portálu, ARM, prostředí PowerShell, rozhraní příkazového řádku Azure nebo T-SQL. V tématu [spravovat izolované databáze](sql-database-single-database-resources.md) a [spravovat elastické fondy](sql-database-elastic-pool.md).
+Ano, můžete snadno převést databázi do jakéhokoli cíle podporované výkonu pomocí portálu Azure, PowerShell, rozhraní příkazového řádku Azure, T-SQL nebo rozhraní REST API. V tématu [spravovat izolované databáze](sql-database-single-database-scale.md) a [spravovat elastické fondy](sql-database-elastic-pool.md).
 
 ## <a name="can-i-upgrade-or-downgrade-between-the-general-purpose-and-business-critical-service-tiers"></a>Můžete upgradovat nebo starší verzi mezi obecné účely a kritické obchodní úrovně služeb? 
 Ano, s určitými omezeními. Cíl SKU musí splňovat maximální databáze nebo velikost elastického fondu, které jste nakonfigurovali pro vaše stávající nasazení. Pokud používáte [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md), SKU kritické obchodní dostupný jen pro zákazníky s licencí Enterprise Edition. Pouze zákazníci, kteří migrované z místní pro obecné účely pomocí Azure hybridní výhody pro SQL Server Enterprise Edition licence můžete upgradovat na obchodní kritický. Podrobnosti najdete v tématu [jaké jsou konkrétní práva výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md)?
 
-Tento převod nevede výpadky a lze inicializovat pomocí portálu, ARM, prostředí PowerShell, rozhraní příkazového řádku Azure nebo T-SQL. V tématu [spravovat izolované databáze](sql-database-single-database-resources.md) a [spravovat elastické fondy](sql-database-elastic-pool.md).
+Tento převod nevede výpadky a lze inicializovat pomocí portálu Azure, PowerShell, rozhraní příkazového řádku Azure, T-SQL nebo rozhraní REST API. V tématu [spravovat izolované databáze](sql-database-single-database-scale.md) a [spravovat elastické fondy](sql-database-elastic-pool.md).
 
 ## <a name="i-am-using-a-premium-rs-database-that-will-not-be-generally-available---can-i-upgrade-it-to-a-new-tier-and-achieve-a-similar-priceperformance-benefit"></a>Používám Premium RS databázi, která nebude obecně dostupná – lze upgradovat na novou vrstvu a dosáhnout podobné výhody ceny a výkonu?
 Vzhledem k modelu vCore umožňuje nezávislé ovládat velikost zřízeného výpočetních operací a úložiště, můžete efektivněji spravovat výsledné náklady, což atraktivní cíl pro databáze Premium RS. Kromě toho [výhody použití hybridní Azure pro systém SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) poskytuje výrazně slevu, pokud na základě vCore model se používá. 
@@ -193,3 +193,4 @@ V [portál Azure](https://portal.azure.com), klikněte na tlačítko **databáz�
 
 ## <a name="to-move-a-database-between-subscriptions"></a>Přesunutí databáze mezi předplatnými
 V [portál Azure](https://portal.azure.com), klikněte na tlačítko **servery SQL** a pak vyberte server, který je hostitelem databáze ze seznamu. Klikněte na tlačítko **přesunout**a pak vyberte zdroje, které chcete přesunout a předplatné pro přesun do.
+

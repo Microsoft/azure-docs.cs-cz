@@ -15,12 +15,12 @@ ms.prod: vs-devops-alm
 ms.date: 03/02/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 3e37edbf8d29441541e77ed0660dc9a71618fdee
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 7809e0b9265ec62bded67d0b0ed851ee0ba98315
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894237"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301695"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio bitové kopie v Azure
 V předkonfigurovaných Azure virtuálního počítače (VM) pomocí sady Visual Studio je rychlý a snadný způsob, jak přechod od nic k prostředí vývoj nahoru a spuštěna. Bitové kopie systému s různými konfiguracemi sady Visual Studio jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
@@ -32,8 +32,8 @@ Bitové kopie pro nejnovější hlavní verze, Visual Studio 2017 a Visual Studi
 
 | Prodejní verze                                              | Edice                     |     Verze produktu     |
 |:------------------------------------------------------------:|:----------------------------:|:-----------------------:|
-| Visual Studio 2017: Nejnovější (verze 15.7)                    |    Enterprise, komunity     |      Verze 15.7.0     |
-| Visual Studio 2017: Nejnovější verze Preview (verze 15.8 Preview 1) |    Enterprise, komunity     |      Verze 15.8.1     |
+| Visual Studio 2017: Nejnovější (verze 15.7)                    |    Enterprise, komunity     |      Verze 15.7.3     |
+| Visual Studio 2017: Nejnovější verze Preview (verze 15.8 Preview 2) |    Enterprise, komunity     |      Verze 15.8.2     |
 |         Visual Studio 2017: RTW                              |    Enterprise, komunity     |      Verze 15.0.13    |
 |   Visual Studio 2015: Nejnovější (Update 3)                      |    Enterprise, komunity     |  Verze 14.0.25431.01  |
 |         Visual Studio 2015: RTW                              |             Žádný             | (Jeho platnost pro obsluhu) |

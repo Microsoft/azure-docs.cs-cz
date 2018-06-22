@@ -6,8 +6,8 @@ Před zápisem kódu správy CDN, musíte udělat některé přípravy povolit k
 * Použití oprávnění ke skupině prostředků, takže jenom autorizovaným uživatelům z vašeho klienta Azure AD mohou komunikovat s profil CDN
 
 ### <a name="creating-the-resource-group"></a>Vytvoření skupiny prostředků
-1. Přihlaste se [portál Azure](https://portal.azure.com).
-2. Klikněte na tlačítko **vytvořit prostředek**.
+1. Přihlaste se k [Portálu Azure](https://portal.azure.com).
+2. Klikněte na **Vytvořit prostředek**.
 3. Vyhledejte **skupiny prostředků** a v podokně skupiny prostředků, klikněte na tlačítko **vytvořit**.
 
     ![Vytvoření nové skupiny prostředků](./media/cdn-app-dev-prep/cdn-new-rg-1-include.png)

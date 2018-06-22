@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
-ms.openlocfilehash: 22de973ae00c93f82b274c0b833149b9fe494a7f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: a62a6b334fd58ce360d932cdc4a8f04f36e3232d
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36209846"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302025"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>Kurz: Azure Active Directory integrace s ServiceChannel
 
@@ -126,7 +126,7 @@ V této části můžete povolit Azure AD jednotné přihlašování v portálu 
     ![Konfigurovat jednotné přihlašování](./media/servicechannel-tutorial/tutorial_servicechannel_attribute.png)
 
     > [!NOTE] 
-    > Kliknutím na [sem](http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/) vědět, jak nakonfigurovat **Role** ve službě Azure AD
+    > V tématu [Správa přístupu pomocí RBAC a webu Azure portal](../../role-based-access-control/role-assignments-portal.md) se dozvíte, jak nakonfigurovat **Role** ve službě Azure AD.
 
 5. V **uživatelské atributy** klikněte na tlačítko **zobrazit a upravit všechny ostatní atributy uživatele** a nastavit atributy.
 

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: dacoulte
-ms.openlocfilehash: d19d33d7d8d19923e814b8685c3e56553f85850d
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 8d1e8b4d529936a2401c734b2eff1f0c02dae352
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012474"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307862"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Požadovaný stav konfigurace rozšíření s šablon Azure Resource Manageru
 
@@ -65,7 +65,7 @@ Další informace najdete v tématu [VirtualMachineExtension třída](https://do
                         }
                     },
                     {
-                        "RegistrationUrl": "registrationUrl",
+                        "RegistrationUrl": "registrationUrl"
                     },
                     {
                         "NodeConfigurationName": "nodeConfigurationName"
@@ -115,7 +115,7 @@ Další informace najdete v tématu [VirtualMachineScaleSetExtension třída](/d
                             },
                         },
                         {
-                            "RegistrationUrl": "registrationUrl",
+                            "RegistrationUrl": "registrationUrl"
                         },
                         {
                             "NodeConfigurationName": "nodeConfigurationName"
@@ -203,9 +203,9 @@ Skript DSC rozšíření výchozí konfigurace můžete použít ke konfiguraci 
 | settings.configurationArguments.ConfigurationMode |řetězec |Určuje režim pro LCM. Platné možnosti zahrnují **ApplyOnly**, **ApplyandMonitor**, a **ApplyandAutoCorrect**.  Výchozí hodnota je **ApplyandMonitor**. |
 | settings.configurationArguments.RefreshFrequencyMins | UInt32 | Určuje, jak často se pokusí LCM obraťte se na účtu Automation aktualizací.  Výchozí hodnota je **30**.  Minimální hodnota je **15**. |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | UInt32 | Určuje, jak často LCM ověří aktuální konfiguraci. Výchozí hodnota je **15**. Minimální hodnota je **15**. |
-| settings.configurationArguments.RebootNodeIfNeeded | boolean | Určuje, zda uzel může automaticky restartovat, pokud operace DSC požaduje. Výchozí hodnota je **false**. |
+| settings.configurationArguments.RebootNodeIfNeeded | Boolean | Určuje, zda uzel může automaticky restartovat, pokud operace DSC požaduje. Výchozí hodnota je **false**. |
 | settings.configurationArguments.ActionAfterReboot | řetězec | Určuje, co se stane po restartování systému při aplikování konfigurace. Platné možnosti jsou **ContinueConfiguration** a **StopConfiguration**. Výchozí hodnota je **ContinueConfiguration**. |
-| settings.configurationArguments.AllowModuleOverwrite | boolean | Určuje, zda LCM přepíše existující modulů na uzlu. Výchozí hodnota je **false**. |
+| settings.configurationArguments.AllowModuleOverwrite | Boolean | Určuje, zda LCM přepíše existující modulů na uzlu. Výchozí hodnota je **false**. |
 
 ## <a name="settings-vs-protectedsettings"></a>Nastavení vs. ProtectedSettings
 

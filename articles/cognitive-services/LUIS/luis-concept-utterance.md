@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7c2cd84df8f1eccbd30a7c8054ec8d06336cf2dd
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 66a23876eebe177c767b20f60f86891c35da3385
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264642"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301858"
 ---
 # <a name="utterances-in-luis"></a>Utterances v LEOŠ
 
@@ -52,6 +52,9 @@ V každé iteraci modelu nepřidávejte velké množství utterances. Přidáte 
 LEOŠ vytvoří efektivní modely utterances, které jsou vybrány pečlivě. Přidání příliš mnoho utterances není cenné, protože by to zavedlo nejasnostem.  
 
 Je lepší začínat několik utterances, pak [zkontrolujte koncový bod utterances](label-suggested-utterances.md) pro správné záměrné předpovědi a entity extrakci.
+
+## <a name="ignoring-words-and-punctuation"></a>Bez ohledu na slova a interpunkce
+Pokud chcete ignorovat konkrétní slova nebo interpunkční znaménka v příkladu utterance, použijte [vzor](luis-concept-patterns.md#pattern-syntax) s _Ignorovat_ syntaxe. 
 
 ## <a name="training-utterances"></a>Školení utterances
 Školení je Nedeterministický: utterance předpovědi může mírně lišit mezi verzemi nebo aplikace.

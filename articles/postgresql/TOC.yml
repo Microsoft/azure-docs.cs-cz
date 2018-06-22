@@ -169,5 +169,7 @@
       href: 'https://azure.microsoft.com/support/options/'
     - name: Příběhy zákazníků
       href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20PostgreSQL"'
+    - name: Partneři
+      href: partners-migration-postgresql.md
     - name: Průvodce migrací databází
       href: 'https://datamigration.microsoft.com/'

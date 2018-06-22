@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 04/02/2018
+ms.topic: conceptual
+ms.date: 06/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6df013506e4541fee7850850776d26e5c69a799d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 65307eab0bf1b5f502f11c14c369826cd12e0966
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309831"
 ---
 # <a name="enterprise-plan-details"></a>Podrobnosti plánu Enterprise
 
@@ -26,6 +27,9 @@ Azure Application Insights obsahuje dvě cenovou plány: Basic a Enterprise. [Z�
 Plánu podnikového má poplatků za uzlu a každý uzel dostane denní příspěvek data. V podnikové síti ceny plán, budeme vám účtovat data požity výše zahrnuté povoleného užívání. Pokud používáte služby Operations Management Suite, měli byste vybrat plán Enterprise. 
 
 Aktuální ceny měny a oblasti, najdete v části [Application Insights ceny](http://azure.microsoft.com/pricing/details/application-insights/).
+
+> [!NOTE]
+> V dubnu 2018 jsme [zavedená](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/) nový cenový model pro Azure monitorování. Tento model přijme jednoduchého modelu "průběžnými platbami" v celém portfoliu kompletní monitorování služby. Další informace o [nový cenový model](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs), jak k [posoudit dopad přesun k tomuto modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#assessing-the-impact-of-the-new-pricing-model) na základě vaší způsobů využití a [postupy, který se přidá do nového modelu](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-usage-and-estimated-costs#moving-to-the-new-pricing-model)
 
 ## <a name="how-the-enterprise-plan-works"></a>Jak funguje plánu podnikového
 

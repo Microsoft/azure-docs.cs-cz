@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: 78cff3ba5bd2f8bc80f302a232e45864159ca88f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a5046a5e3771e95d76bb6edc7987a1e3176abeb0
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641879"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309411"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Aspekty plánování kapacity služby cluster Service Fabric
 Pro všechna produkční nasazení plánování kapacity je důležitý krok. Zde jsou některé položky, které je nutné zvážit jako součást tohoto procesu.
@@ -46,6 +46,8 @@ Určete počet typy uzlů, které cluster potřebuje začít s.  Každý typ uzl
 Každý typ uzlu je odlišné škálování nastavit a je možné škálovat nebo dolů nezávisle, mají různé sady porty otevřené a mají různé kapacity metriky. Další informace o vztahy mezi typy uzlů a sady škálování virtuálního počítače, jak pro připojení RDP jedna z instancí, jak otevřít nové porty a tak dále, najdete v tématu [typy uzlů clusteru Service Fabric](service-fabric-cluster-nodetypes.md).
 
 Cluster Service Fabric se může skládat z více než jeden typ uzlu. V takovém případě se skládá z jednoho typu primárního uzlu clusteru a jeden nebo více typů uzel není primární.
+
+Jeden uzel typu nesmí překročit jednoduše 100 uzlů na škálovací sadu virtuálních počítačů. Budete muset přidat sadách škálování virtuálních počítačů k dosažení cílové škálování a automatické škálování nelze automagically přidání sady škálování virtuálního počítače. Přidání místní sadách škálování virtuálních počítačů do clusteru s podporou za provozu je náročné úlohy a běžně výsledkem uživatelé zřizování nových clusterů s typy odpovídající uzlů, které jsou zřízené v okamžiku vytvoření. 
 
 ### <a name="primary-node-type"></a>Typ primárního uzlu
 
@@ -188,7 +190,7 @@ V tomto návodu bezstavových úloh, které běží na neprimární nodetype.
 
 **Počet instancí virtuálního počítače:** pro produkční zatížení, které jsou bezstavové, je velikost písma minimální podporované jiný primární uzlem 2. Umožňuje vám spustit dvě instance bezstavové aplikace a povolení služby zůstanou platné i po ztrátě instance virtuálního počítače. 
 
-**Virtuální počítač SKU:** Toto je typ uzlu spuštěným aplikační služby, takže SKU virtuálního počítače jste vybrali pro, musí vzít v úvahu zátěž ve špičce plánujete umístit do každého uzlu. Kapacita potřebám nodetype, je dáno zatížení, které chcete spustit v clusteru, takže jsme nemůže poskytovat vám kvalitativní pokyny pro konkrétní úlohy, ale tady najdete obecné pokyny vám pomohou začít
+**Virtuální počítač SKU:** Toto je typ uzlu spuštěným aplikační služby, takže SKU virtuálního počítače jste vybrali pro, musí vzít v úvahu zátěž ve špičce plánujete umístit do každého uzlu. Požadavků na kapacitu typu node, je dáno zatížení, které chcete spustit v clusteru, takže jsme nemůže poskytovat vám kvalitativní pokyny pro konkrétní úlohy, ale tady najdete obecné pokyny vám pomohou začít
 
 Pro produkční zatížení 
 

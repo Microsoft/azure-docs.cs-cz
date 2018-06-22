@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8a1b88621feaaaff3f787cca8c4b4e45d4974931
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: b0772e3186c86239c773222a2b2e8d602a46aa52
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34807471"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300590"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Spravovat zařízení v aplikaci Azure IoT centrální
 
@@ -49,7 +49,7 @@ Přidání zařízení do Azure IoT centrální aplikace:
 1. Zvolte **skutečné** nebo **Simulated**. Skutečné zařízení je pro fyzické zařízení, které můžete připojit k Azure IoT centrální aplikace. Simulované zařízení má vygenerované pomocí Azure IoT centrální ukázková data. Tento příklad používá skutečné zařízení. Zvolte **skutečné** přejděte na **podrobnosti o zařízení** stránku pro nové zařízení.
 
 
-## <a name="bulk-import-devices"></a>Zařízení hromadného importu
+## <a name="import-devices"></a>Import zařízení
 
 Pro připojení k vaší aplikaci, Azure IoT centrální velkého počtu zařízení nabízí hromadně import zařízení pomocí souboru CSV. 
 
@@ -65,9 +65,12 @@ Pro hromadné registrace zařízení ve vaší aplikaci:
 
 1. Na levém panelu vyberte šablonu zařízení, pro které chcete k hromadné vytvoření zařízení.
 
-1. Zvolte **nový** a vyberte **hromadným importem**.
+ >   [!NOTE] 
+    Pokud nemáte šablonu zařízení ještě můžete importovat zařízení v části **zrušeno přiřazení zařízení** a registrovat bez žádné šablony. Po importu zařízení, můžete pak přidružit je šablonu jako další krok.
 
-    [![Hromadný Import akce](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
+1. Klikněte na **Importovat**.
+
+    [![Importovat akce](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
 
 1. Vyberte soubor CSV, který obsahuje seznam identifikátorů zařízení určených k importu.
 
@@ -75,9 +78,25 @@ Pro hromadné registrace zařízení ve vaší aplikaci:
 
 1. Po dokončení importu se zobrazí zpráva o úspěšném provedení na zařízení mřížky.
 
-    [![Hromadný Import úspěch](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
+    [![Import úspěch](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
 Pokud zařízení import operace selže, zobrazí se chybová zpráva na zařízení mřížky. Soubor protokolu zaznamenávání všechny chyby se generuje a můžete stáhnout kliknutím chybovou zprávu.
+
+
+**Přidružení zařízení k šablonu**
+
+Pokud zařízení zaregistrujete spuštěním import pod **zrušeno přiřazení zařízení**, pak zařízení jsou vytvořeny bez přidružení šablony jakékoli zařízení. Zařízení musí být přidružena k šabloně chcete dynamicky prozkoumávat data a další podrobnosti o zařízení. Postupujte podle těchto kroků zařízení přidružit šablonu:
+1. Zvolte **Explorer** v levé navigační nabídce.
+1. Na levém panelu, vyberte **zrušeno přiřazení zařízení**.
+    [![Nepřidružený zařízení](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
+1. Vyberte zařízení, které chcete přidružit šablonu.
+1. Klikněte na tlačítko **přidružit** možnost.
+    [![Přidružení zařízení](./media/howto-manage-devices/UnassociatedDevices2.png)](./media/howto-manage-devices/UnassociatedDevices2.png#lightbox)
+1. Vyberte šablonu ze seznamu dostupných šablon a klikněte na **přidružit** tlačítko.
+1. Vybraná zařízení budou přesunuty v šabloně, příslušné zařízení.
+
+ >   [!NOTE] 
+    Jakmile zařízení už není přidružena k šabloně nelze změnit ani spojené s jinou šablonu.
 
 ## <a name="export-devices"></a>Export zařízení
 
@@ -86,7 +105,7 @@ Zřízení zařízení pro připojení k centrální IoT, budete potřebovat ře
 Chcete-li hromadně export zařízení z vaší aplikace:
 1. Zvolte **Explorer** v levé navigační nabídce.
 
-1. Na levém panelu zvolením šablona zařízení, pro který chcete exportovat zařízení.
+1. Na levém panelu zvolte šablonu zařízení, pro který chcete exportovat zařízení.
 
 1. Vyberte zařízení, která chcete exportovat a klikněte **exportovat** akce.
 

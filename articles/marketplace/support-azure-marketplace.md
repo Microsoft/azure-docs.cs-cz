@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: 6ad1c226246bc1523daca84235591afc27a3b132
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: a2962f50258bb3f65f574882ce2ea46ff006aac3
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825087"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309346"
 ---
 # <a name="support-for-azure-marketplace"></a>Podpora pro Azure Marketplace  
 Možnosti podpory pro Azure Marketplace.  
@@ -50,7 +50,7 @@ Možnosti podpory pro Azure Marketplace.
 |:--- |:--- |  
 | Slack: [join.marketplace.azure.com](https://join.marketplace.azure.com) | Slack prostředí pro podporu partnery s technické problémy. Zde o 350 + partnery právě v tomto prostředí pracuje. |  
 | Fórech MSDN: Marketplace nacházející se v [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Fórum Microsoft Developer Network. |  
-| Přetečení zásobníku: Azure nacházející se v [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow prostředí získat řešení a klást otázky týkající se všechno související s Azure Marketplace.<ul> <li>Přetečení zásobníku: Azure Marketplace se nachází v [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Přetečení zásobníku: Azure Resource Manager nachází v [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Přetečení zásobníku: Virtuální počítače Azure se nachází v [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li><li>[Kontejnery v Azure](https://stackoverflow.com/search?q=azure+container)</li></ul> |
+| Přetečení zásobníku: Azure nacházející se v [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stack Overflow prostředí získat řešení a klást otázky týkající se všechno související s Azure Marketplace.<ul> <li>Přetečení zásobníku: Azure Marketplace se nachází v [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Přetečení zásobníku: Azure Resource Manager nachází v [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Přetečení zásobníku: virtuální počítače na platformě Azure nacházející se v [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Přetečení zásobníku: Kontejnerů v Azure nacházející se v [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 
 ## <a name="marketing-resources"></a>Prostředky marketing  
 

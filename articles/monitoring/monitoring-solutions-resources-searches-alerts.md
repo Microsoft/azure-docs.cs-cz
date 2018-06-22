@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/16/2018
+ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b16c88b5ec45dec7bf0fe40da24e817ae325a3e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c29d6cb0da2e394912a2584b0d3c3cedf13f054c
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887913"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36304483"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Přidání analýzy protokolů uložit výstrahy a hledání řešení pro správu (Preview)
 
@@ -44,16 +44,13 @@ Název pracovního prostoru je názvu každého prostředku analýzy protokolů.
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
 ## <a name="log-analytics-api-version"></a>Verze rozhraní API analýzy protokolů
-Všechny prostředky analýzy protokolů, které jsou definované v šabloně Resource Manager mít vlastnost **apiVersion** verzi rozhraní API by měl použít na prostředek, který definuje.  Tato verze je pro prostředky, které používají jiné [starší verze a upgradovaný dotazovací jazyk](../log-analytics/log-analytics-log-search-upgrade.md).  
+Všechny prostředky analýzy protokolů, které jsou definované v šabloně Resource Manager mít vlastnost **apiVersion** verzi rozhraní API by měl použít na prostředek, který definuje.   
 
- Následující tabulka obsahuje verze rozhraní API analýzy protokolů pro uložená hledání ve starší verzi a upgradovali pracovních prostorů: 
+Následující tabulka uvádí verze rozhraní API pro prostředek použité v tomto příkladu.
 
-| Verze pracovního prostoru | Verze API | Dotaz |
+| Typ prostředku | Verze API | Dotaz |
 |:---|:---|:---|
-| V1 (starší)   | 2015-11-01-preview | Starší verze formátu.<br> Příklad: Zadejte = událostí EventLevelName = chyby  |
-| v2 (upgradu) | 2015-11-01-preview | Starší verze formátu.  Převedeny na formát upgradované na instalaci.<br> Příklad: Zadejte = událostí EventLevelName = chyby<br>Převést na: událost &#124; kde EventLevelName == "Error.  |
-| v2 (upgradu) | 2017-03-03-preview | Upgrade formátu. <br>Příklad: Událost &#124; kde EventLevelName == "Error.  |
-
+| savedSearches | 2017-03-15-preview | Událost &#124; kde EventLevelName == "Error.  |
 
 
 ## <a name="saved-searches"></a>Uložená hledání
@@ -90,7 +87,7 @@ Každou vlastnost uloženého hledání je popsané v následující tabulce.
 > Musíte použít řídicí znaky v dotazu, pokud obsahuje znaky, které je možné interpretovat jako JSON.  Například, pokud se dotaz **typu: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, by měly být zapsány v souboru řešení jako **typu: AzureActivity OperationName:\" Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Výstrahy
-[Protokolu analýzy výstrahy](../log-analytics/log-analytics-alerts.md) jsou vytvořené pomocí pravidla výstrah, které běží uloženého hledání v pravidelných intervalech.  Pokud výsledky dotazu odpovídal zadaná kritéria, se vytvoří záznam výstrah a spouštějí jednu nebo více akcí.  
+[Azure výstrahy protokolu](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) jsou vytvořené pomocí Azure výstrah pravidla, která spustí zadaný protokolu dotazy v pravidelných intervalech.  Pokud výsledky dotazu odpovídá zadaným kritériím, je vytvořen záznam výstrah a jeden nebo více akce jsou spuštěny pomocí [skupiny akcí](../monitoring-and-diagnostics/monitoring-action-groups.md).  
 
 > [!NOTE]
 > Od 14 může 2018 všechny výstrahy v pracovním prostoru se začnou automaticky rozšířit do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Pro uživatele, které rozšiřují výstrahy do Azure jsou nyní akce řídí ve službě Azure akce skupiny. Při jeho výstrahy a pracovního prostoru jsou rozšířené a Azure, můžete načíst nebo přidání akcí pomocí [akce skupiny - šablony Azure Resource Manageru](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
@@ -196,10 +193,10 @@ Vlastnosti výstrah akce prostředky jsou popsané v následujících tabulkách
 | Typ | Ano | Typ akce.  Toto je **výstraha** pro akce výstrah. |
 | Název | Ano | Zobrazovaný název výstrahy.  Toto je název, který se zobrazí v konzole pro pravidlo výstrahy. |
 | Popis | Ne | Volitelný popis výstrahy. |
-| Závažnost | Ano | Závažnost výstrahy záznam z následujících hodnot:<br><br> **Kritické**<br>**Upozornění**<br>**Informační**
+| Severity | Ano | Závažnost výstrahy záznam z následujících hodnot:<br><br> **Kritické**<br>**Upozornění**<br>**Informační**
 
 
-#### <a name="threshold"></a>Mezní hodnota
+#### <a name="threshold"></a>Prahová hodnota
 Tento oddíl je povinný.  Definuje vlastnosti prahové hodnoty pro výstrahu.
 
 | Název elementu | Požaduje se | Popis |
@@ -338,11 +335,12 @@ Příklad používá [standardní řešení parametry]( monitoring-solutions-sol
           "SolutionPublisher": "Contoso",
           "ProductName": "SampleSolution",
     
-          "LogAnalyticsApiVersion": "2015-03-20",
-    
+          "LogAnalyticsApiVersion-Search": "2017-03-15-preview",
+              "LogAnalyticsApiVersion-Solution": "2015-11-01-preview",
+
           "MySearch": {
             "displayName": "Error records by hour",
-            "query": "Type=MyRecord_CL | measure avg(Rating_d) by Instance_s interval 60minutes",
+            "query": "MyRecord_CL | summarize AggregatedValue = avg(Rating_d) by Instance_s, bin(TimeGenerated, 60m)",
             "category": "Samples",
             "name": "Samples-Count of data"
           },
@@ -350,7 +348,7 @@ Příklad používá [standardní řešení parametry]( monitoring-solutions-sol
             "Name": "[toLower(concat('myalert-',uniqueString(resourceGroup().id, deployment().name)))]",
             "DisplayName": "My alert rule",
             "Description": "Sample alert.  Fires when 3 error records found over hour interval.",
-            "Severity": "Critical",
+            "Severity": "critical",
             "ThresholdOperator": "gt",
             "ThresholdValue": 3,
             "Schedule": {
@@ -378,7 +376,7 @@ Příklad používá [standardní řešení parametry]( monitoring-solutions-sol
             "location": "[parameters('workspaceRegionId')]",
             "tags": { },
             "type": "Microsoft.OperationsManagement/solutions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Solution')]",
             "dependsOn": [
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches', parameters('workspacename'), variables('MySearch').Name)]",
               "[resourceId('Microsoft.OperationalInsights/workspaces/savedSearches/schedules', parameters('workspacename'), variables('MySearch').Name, variables('MyAlert').Schedule.Name)]",
@@ -406,7 +404,7 @@ Příklad používá [standardní řešení parametry]( monitoring-solutions-sol
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [ ],
             "tags": { },
             "properties": {
@@ -419,7 +417,7 @@ Příklad používá [standardní řešení parametry]( monitoring-solutions-sol
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/', variables('MyAlert').Schedule.Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [
               "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/', variables('MySearch').Name)]"
             ],
@@ -433,7 +431,7 @@ Příklad používá [standardní řešení parametry]( monitoring-solutions-sol
           {
             "name": "[concat(parameters('workspaceName'), '/', variables('MySearch').Name, '/',  variables('MyAlert').Schedule.Name, '/',  variables('MyAlert').Name)]",
             "type": "Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions",
-            "apiVersion": "[variables('LogAnalyticsApiVersion')]",
+            "apiVersion": "[variables('LogAnalyticsApiVersion-Search')]",
             "dependsOn": [
               "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'), '/savedSearches/',  variables('MySearch').Name, '/schedules/', variables('MyAlert').Schedule.Name)]"
             ],

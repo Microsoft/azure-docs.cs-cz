@@ -5,18 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 06/20/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 59aaf07edf387d40f47d7d82dcb116802a003dc1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ec1630f4de70f77c13e335c68aff16180e524c12
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596164"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36307804"
 ---
 # <a name="manage-server-administrators"></a>Spravovat správce serveru
-Správci serveru musí být platný uživatel nebo skupina ve službě Azure Active Directory (Azure AD) pro klienta, ve kterém se nachází server. Můžete použít **Analysis Services Admins** pro váš server v portálu Azure nebo vlastnosti serveru v aplikaci SSMS ke správě správci serveru. 
+Správci serveru musí být platný uživatel nebo novou skupinu zabezpečení ve službě Azure Active Directory (Azure AD) pro klienta, ve kterém se nachází server. Můžete použít **Analysis Services Admins** pro váš server v portálu Azure nebo vlastnosti serveru v aplikaci SSMS ke správě správci serveru. 
+
+> [!NOTE]
+> Skupiny zabezpečení musí mít `MailEnabled` vlastnost nastavena na hodnotu `True`.
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Přidat správce serveru pomocí portálu Azure
 1. V portálu pro váš server, klikněte na tlačítko **Analysis Services Admins**.

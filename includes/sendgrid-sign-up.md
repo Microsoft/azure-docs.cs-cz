@@ -1,7 +1,7 @@
 Zákazníci Azure můžou každý měsíc odemknout 25 000 bezplatných e-mailů. Těchto 25 000 bezplatných e-mailů měsíčně vám poskytne přístup k rozšířené tvorbě sestav, rozšířeným analýzám a [všem rozhraním API][all APIs] (Web, SMTP, Event, Parse a další). Informace o dalších službách, které SendGrid poskytuje, najdete na stránce [SendGrid Solutions][SendGrid Solutions] (Řešení SendGrid).
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>Registrace účtu SendGrid
-1. Přihlaste se k [portál Azure][Azure portal].
+1. Přihlaste se na web [Azure Portal][Azure portal].
 2. V nabídce na levé straně klikněte na tlačítko **vytvořit prostředek**.
 
     ![command-bar-new][command-bar-new]

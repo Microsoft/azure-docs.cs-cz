@@ -1,6 +1,6 @@
 ---
-title: Použití knihovny BulkExecutor Java provádět hromadné operace v Azure Cosmos DB | Microsoft Docs
-description: Pomocí knihovny Azure Cosmos DB BulkExecutor Java hromadný import a aktualizace dokumenty do kolekcí Azure Cosmos DB.
+title: Pomocí hromadné vykonavatele Java knihovna k provedení hromadné operace v Azure Cosmos DB | Microsoft Docs
+description: Použijte databázi Cosmos Azure hromadné vykonavatele Java knihovnu pro hromadný import a aktualizaci dokumenty do kolekcí Azure Cosmos DB.
 keywords: Hromadné vykonavatele Java
 services: cosmos-db
 author: tknandu
@@ -10,22 +10,22 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 77135ec5f62636d1dd634361da345b00d98ad918
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f241a98cdcc847ddb579b86b51034d1438ee1395
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34610238"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300709"
 ---
-# <a name="use-bulkexecutor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny BulkExecutor Java hromadné operace v Azure Cosmos DB dat
+# <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Java vykonavatele hromadné hromadné operace v Azure Cosmos DB dat
 
-V tomto kurzu poskytuje pokyny k používání Azure Cosmos DB hromadné vykonavatele Java knihovny importu a aktualizaci dokumentů Azure Cosmos DB. Další informace o BulkExecutor knihovny a jak ho pomáhá využívat obrovskou propustnost a úložiště najdete v tématu [přehled knihovny BulkExecutor](bulk-executor-overview.md) článku. V tomto kurzu vytvoříte aplikaci Java, která generuje náhodné dokumenty a jsou hromadně importovat kolekci Azure Cosmos DB. Po importu, hromadně aktualizovat některé vlastnosti dokumentu. 
+V tomto kurzu poskytuje pokyny k používání Azure Cosmos DB hromadné vykonavatele Java knihovny importu a aktualizaci dokumentů Azure Cosmos DB. Další informace o hromadné vykonavatele knihovny a jak ho pomáhá využívat obrovskou propustnost a úložiště najdete v tématu [hromadné přehled knihovny vykonavatele](bulk-executor-overview.md) článku. V tomto kurzu vytvoříte aplikaci Java, která generuje náhodné dokumenty a jsou hromadně importovat kolekci Azure Cosmos DB. Po importu, hromadně aktualizovat některé vlastnosti dokumentu. 
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.  
 
-* [Službu Azure Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků. Nebo můžete použít [emulátoru DB Cosmos Azure](https://docs.microsoft.com/azure/cosmos-db/local-emulator) s `https://localhost:8081` identifikátor URI. Primární klíč je k dispozici v [ověřování požadavků](local-emulator.md#authenticating-requests).  
+* [Službu Azure Cosmos DB můžete vyzkoušet zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, poplatků a závazků. Nebo můžete použít [emulátoru DB Cosmos Azure](https://docs.microsoft.com/azure/cosmos-db/local-emulator) s `https://localhost:8081` identifikátor URI. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).  
 
 * [Java Development Kit (JDK) 1.7+](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)  
   - Na Ubuntu nainstalujte sadu JDK spuštěním příkazu `apt-get install default-jdk`.  
@@ -197,7 +197,7 @@ Pomocí rozhraní API BulkUpdateAsync můžete aktualizovat existující dokumen
 
 ## <a name="performance-tips"></a>Tipy pro zvýšení výkonu 
 
-Při použití knihovny BulkExecutor, zvažte následující body pro dosažení vyššího výkonu:
+Zvažte následující pro lepší výkon při použití hromadné vykonavatele knihovny:
 
 * Pro nejlepší výkon spusťte aplikaci z virtuálního počítače Azure ve stejné oblasti jako zápisu oblast účtu Cosmos DB.  
 * K dosažení vyšší propustnost:  
@@ -211,6 +211,6 @@ Při použití knihovny BulkExecutor, zvažte následující body pro dosažení
 
     
 ## <a name="next-steps"></a>Další postup
-* Další informace o podrobnosti balíčku maven a poznámky k BulkExecutor Java knihovny verzi najdete v tématu[BulkExecutor SDK podrobnosti](sql-api-sdk-bulk-executor-java.md).
+* Další informace o podrobnosti balíčku maven a poznámky k hromadné vykonavatele Java knihovny verzi najdete v tématu[hromadné vykonavatele SDK podrobnosti](sql-api-sdk-bulk-executor-java.md).
 
 

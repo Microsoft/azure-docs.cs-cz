@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 06/14/2018
 ms.author: sethm
-ms.openlocfilehash: 237b0639be75e12cff56f40ac76426aba7a8a701
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 0192f65f394a3bb6d5cffc90639966b5f913b291
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/16/2017
-ms.locfileid: "26745890"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36302109"
 ---
 # <a name="azure-event-hubs-geo-disaster-recovery"></a>Azure Event Hubs Geo-havárii
 
@@ -58,7 +58,7 @@ V následující části je přehled procesu převzetí služeb při selhání a
 
 Můžete nejprve vytvořit nebo použijte existujícího oboru názvů primární a sekundární nový obor názvů, a spárujte dva. Tato párování vám dává alias, který můžete použít pro připojení. Vzhledem k tomu, že používáte alias, nemáte změnit připojovací řetězce. Pouze nové obory názvů mohou být přidány do vaší párování převzetí služeb při selhání. Nakonec je nutné přidat, některá monitorování pro zjištění, pokud je nutné použít převzetí služeb při selhání. Ve většině případů služby je jednou ze součástí velké ekosystému, proto jsou automatické převzetí služeb při selhání zřídka možné, jako je velmi často převzetí služeb při selhání musíte provádět synchronizována s zbývající subsystému nebo infrastruktury.
 
-### <a name="example"></a>Příklad
+### <a name="example"></a>Příklad:
 
 V příkladem tohoto scénáře zvažte bodu prodej (POS) řešení, které vysílá zprávy nebo události. Služba Event Hubs předává tyto události některé mapování nebo přeformátování řešení, které pak předá namapované data do jiného systému pro další zpracování. V tomto bodě všech těchto systémech může být hostovaná ve stejné oblasti Azure. Rozhodnutí o a jaká část k převzetí služeb při selhání závisí na toku dat ve vaší infrastruktuře. 
 
@@ -101,7 +101,18 @@ Pozorně si projděte následující informace v této verzi nezapomeňte:
 
 4. Synchronizace entit může trvat delší dobu, přibližně 50 až 100 entit za minutu.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="availability-zones-preview"></a>Dostupnost zóny (preview)
+
+Standardní SKU centra událostí taky podporuje [dostupnost zóny](../availability-zones/az-overview.md), poskytuje odolnost izolované umístění v rámci oblasti Azure. 
+
+> [!NOTE]
+> Ve verzi preview dostupnosti zón je podporována pouze v **střed USA**, **východní USA 2**, a **Francie centrální** oblasti.
+
+Dostupnost zóny můžete povolit na nové obory názvů pouze pomocí portálu Azure. Služba Event Hubs nepodporuje migraci z existujících oborů názvů. Po povolení na oboru názvů nelze zakázat zálohování zóny.
+
+![3][]
+
+## <a name="next-steps"></a>Další postup
 
 * [Ukázku na Githubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) provede jednoduché pracovní postup, který vytvoří geograficky párování a zahájí převzetí služeb při selhání pro scénáře zotavení po havárii.
 * [Odkazu k REST API](/rest/api/eventhub/disasterrecoveryconfigs) popisuje rozhraní API pro provádění konfigurace obnovení Geo-po havárii.
@@ -114,3 +125,4 @@ Další informace o službě Event Hubs naleznete pod těmito odkazy:
 
 [1]: ./media/event-hubs-geo-dr/geo1.png
 [2]: ./media/event-hubs-geo-dr/geo2.png
+[3]: ./media/event-hubs-geo-dr/eh-az.png

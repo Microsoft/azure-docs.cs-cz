@@ -15,12 +15,12 @@ ms.date: 10/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a39e454bd0993f07efd1168404df453f3013e0fa
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 2d719a31700e8d693dd7edb7de603682daae14ea
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34341002"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308530"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Postup nasazení rozšíření Panel přístupu pro Internet Explorer pomocí zásad skupiny
 Tento kurz ukazuje, jak provést vzdálenou instalaci rozšíření Panel přístupu pro Internet Explorer na počítačích uživatelů pomocí zásad skupiny. Toto rozšíření je pro Internet Explorer uživatelů, kteří potřebují pro přihlášení do aplikace, které jsou nakonfigurované pomocí [založené na heslech jednotné přihlašování](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on).
@@ -44,7 +44,7 @@ Balíček Instalační služby musíte nejprve umístit na umístění v síti, 
    
     ![Otevřené soubory a služby úložiště](./media/active-directory-saas-ie-group-policy/shares.png)
 4. Dokončení **Průvodce vytvořením nové sdílené složky** a nastavit oprávnění a ujistěte se, že byla přístupná z vašich uživatelů počítačů. [Další informace o sdílených složek.](https://technet.microsoft.com/library/cc753175.aspx)
-5. Stáhněte si následující balíček Instalační služby systému Windows (soubor MSI): [Extension.msi Panel přístupu](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access Panel Extension.msi)
+5. Stáhněte si následující balíček Instalační služby systému Windows (soubor MSI): [Extension.msi Panel přístupu](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)
 6. Zkopírujte instalační balíček do požadovaného umístění na sdílené složky.
    
     ![Zkopírujte soubor .msi ke sdílené složce.](./media/active-directory-saas-ie-group-policy/copy-package.png)

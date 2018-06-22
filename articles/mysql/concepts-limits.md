@@ -2,19 +2,19 @@
 title: Omezení v Azure databáze pro databázi MySQL
 description: Tento článek popisuje omezení v Azure Database pro databázi MySQL, jako je například počet připojení a možnosti úložiště modul.
 services: mysql
-author: kamathsun
-ms.author: sukamat
+author: ajlam
+ms.author: andrela
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/04/2018
-ms.openlocfilehash: 3ec78b9aad45500a92a8f46f4bb2e654f97da8cb
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 06/21/2018
+ms.openlocfilehash: 2fc224445f89a0b0b4afdc0ef1d0eb1b25b45f36
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264880"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309922"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Omezení v Azure databáze pro databázi MySQL
 Následující části popisují kapacity, modul úložiště s podporou, oprávnění podpory, podpora příkaz manipulaci dat a funkční omezení ve službě databázového. Viz také [obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) vztahuje k modulu databáze MySQL.
@@ -60,29 +60,29 @@ Při připojení přesahuje limit, může se zobrazit chybová zpráva:
 ## <a name="data-manipulation-statement-support"></a>Podpora příkaz manipulace dat
 
 ### <a name="supported"></a>Podporováno
-- DATA VSTUPNÍ_SOUBOR zatížení - podporována, ale musíte zadat parametr [místní], který směřuje na cestu UNC (úložiště Azure připojené prostřednictvím XSMB).
+- `LOAD DATA INFILE` je podporováno, ale `[LOCAL]` parametr musí být zadán a směrované na cestu UNC (úložiště Azure připojené prostřednictvím protokolu SMB).
 
 ### <a name="unsupported"></a>Nepodporovaný
-- VYBERTE... DO VÝSTUPNÍ_SOUBOR
+- `SELECT ... INTO OUTFILE`
 
 ## <a name="functional-limitations"></a>Funkční omezení
 
 ### <a name="scale-operations"></a>Operace škálování
-- Dynamické škálování serverů napříč cenové úrovně se aktuálně nepodporuje. To znamená přepínání mezi Basic, obecné účely a paměťově optimalizované cenové úrovně.
+- Dynamické škálování do a z základní cenové úrovně se aktuálně nepodporuje.
 - Zmenšuje velikost úložiště serveru není podporována.
 
 ### <a name="server-version-upgrades"></a>Upgrady verze serveru
 - Automatické migrace mezi verzemi modul hlavní databáze není aktuálně podporována.
 
 ### <a name="point-in-time-restore"></a>Obnovení do bodu v čase
-- Obnovení na jinou službu vrstvy nebo výpočetní jednotky a velikost úložiště není povoleno.
+- Když používáte funkci Možnosti PITR, se vytvoří nový server s stejné konfigurace jako u serveru, který je založen na.
 - Obnovení odstraněného server není podporováno.
 
 ### <a name="subscription-management"></a>Správa předplatného
 - Dynamicky přesunutí předem vytvořené serverů mezi předplatné a skupina prostředků není aktuálně podporováno.
 
 ## <a name="current-known-issues"></a>Aktuální známé problémy
-- Instance serveru MySQL zobrazí verze nesprávný serveru po navázání připojení. Správný server verze instance, použijte vyberte version(); příkaz příkazového řádku MySQL.
+- Instance serveru MySQL zobrazí verze nesprávný serveru po navázání připojení. Serveru správná verze modulu instance, použijte `select version();` příkaz.
 
 ## <a name="next-steps"></a>Další postup
 - [Co je dostupné na jednotlivých úrovních služby](concepts-pricing-tiers.md)

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: a82db16f2012672f6e2669f2fd8198b177f501f3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 56d21b76268f94f4254985a6924c4ca2d778a9cd
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264178"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300812"
 ---
 # <a name="create-sql-databases"></a>Vytvoření databáze SQL
 
@@ -27,7 +27,7 @@ Můžete vytvořit a spravovat databáze samoobslužné služby v portálu user 
 
 1. Přihlaste se k [zásobník Azure](azure-stack-poc.md) portálu user portal.
 
-2. Vyberte **+ nový** &gt; **Data + úložiště "** &gt; **databáze systému SQL Server** &gt; **přidat**.
+2. Vyberte **+ nový** &gt; **Data + úložiště** &gt; **databáze systému SQL Server** &gt; **přidat**.
 
 3. V části **Create Database**, zadejte požadované informace, jako například **název databáze** a **maximální velikost v MB**.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: c8b0529b0ae45d7bcee5574991551a424c13ba70
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 60b77f5956cb627905eb955995652098337c4dea
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713860"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309859"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory nejčastější dotazy ke správě zařízení
 
@@ -44,7 +44,7 @@ ms.locfileid: "34713860"
 **Otázka: I nedávno zaregistrovaná zařízení. Proč nevidím zařízení v části Moje informace o uživateli na portálu Azure?**
 
 **Odpověď:** zařízení s Windows 10, které jsou připojené k Azure AD hybridní není zobrazí na zařízení uživatelů.
-Budete muset použít PowerShell zobrazíte všechna zařízení. 
+Budete muset použít zobrazení všech zařízení na portálu Azure. Můžete taky použít PowerShell [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) rutiny.
 
 Následující zařízení jsou uvedené v části zařízení uživatelů:
 
@@ -52,25 +52,24 @@ Následující zařízení jsou uvedené v části zařízení uživatelů:
 - Všechny bez – Windows 10 nebo Windows Server 2016 zařízení.
 - Všechna zařízení jiný systém než Windows 
 
----
-
-**Otázka: Proč nevidím všechna zařízení zaregistrované v Azure Active Directory na portálu Azure?** 
-
-**Odpověď:** se nyní zobrazí je v části adresář Azure AD -> všechny nabídky zařízení. Prostředí Azure PowerShell můžete taky najít všechna zařízení. Další podrobnosti najdete v tématu [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) rutiny.
-
 --- 
 
 **Otázka: Jak poznám, jaký je stav registrace zařízení klienta?**
 
-**Odpověď:** pro Windows 10 a Windows Server 2016 nebo novější zařízení, spusťte/dsregcmd.exe status.
+**Odpověď:** můžete pomocí portálu Azure, přejděte na všechna zařízení a vyhledejte zařízení pomocí ID zařízení. Zkontrolujte hodnotu ve sloupci Typ spojení.
 
-Verze operačního systému nižší úrovně spusťte "%programFiles%\Microsoft síti na pracovišti Join\autoworkplace.exe"
+Pokud chcete zkontrolovat stav registrace místní zařízení z registrovaných zařízení:
+
+- Pro Windows 10 a Windows Server 2016 nebo novější zařízení spusťte/dsregcmd.exe status.
+- Verze operačního systému nižší úrovně spusťte "%programFiles%\Microsoft síti na pracovišti Join\autoworkplace.exe"
 
 ---
 
-**Otázka: Proč je zařízení odstraněný na portálu Azure nebo pomocí prostředí Windows PowerShell pořád objevuje as registrované?**
+**Otázka: I odstranili na portálu Azure nebo pomocí prostředí Windows PowerShell, ale místní stavu v zařízení uvádí, že je pořád zaregistrovaný?**
 
-**Odpověď:** toto chování je záměrné. Zařízení nebude mít přístup k prostředkům v cloudu. Pokud chcete znovu zaregistrovat znovu, musí být manuální akce mají být provedeny v zařízení. 
+**Odpověď:** toto chování je záměrné. Zařízení nebude mít přístup k prostředkům v cloudu. 
+
+Pokud chcete znovu zaregistrovat znovu, musí být manuální akce mají být provedeny v zařízení. 
 
 Vymazat stav spojení z Windows 10 a Windows Server 2016, které jsou místní AD připojený k doméně:
 
@@ -85,6 +84,13 @@ Verze operačního systému Windows nižší úrovně, které jsou místní AD p
 1.  Otevřete příkazový řádek jako správce.
 2.  Zadejte `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`.
 3.  Zadejte `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`.
+
+---
+** Otázka: Jak I zrušení služby Azure AD připojení k zařízení se systémem místně na zařízení?
+**ODPOVĚĎ:** 
+- Pro zařízení, hybridní připojení k Azure AD Ujistěte se, chcete-li vypnout automatické registrace tak, aby se naplánovaná úloha není zařízení znovu zaregistrovat. Dále otevřete příkazový řádek jako správce a zadejte `dsregcmd.exe /debug /leave`. Alternativně můžete tento příkaz Spustit jako skript v různých zařízeních zrušení připojení k hromadně.
+
+- Pro čistá připojení k Azure AD zařízení, ujistěte se, máte offline místní správce účtu nebo vytvořit, protože nebude možné se přihlásit pomocí všechny přihlašovací údaje uživatele Azure AD. Potom přejděte na **nastavení** > **účty** > **přístup k práci nebo ve škole**. Vyberte svůj účet a klikněte na **odpojení**. Postupujte podle výzev a zadejte přihlašovací údaje místního správce po zobrazení výzvy. Restartování zařízení dokončete proces odpojení.
 
 ---
 
@@ -119,7 +125,7 @@ Verze operačního systému Windows nižší úrovně, které jsou místní AD p
 ---
 
 
-**Otázka: I najdete v části zařízení záznam zařízení v části informace o uživateli na webu Azure portal a můžete zobrazit stav as registrované na straně klienta. Se, že správně nastavit pro použití podmíněného přístupu?**
+**Otázka: I najdete v části zařízení záznam zařízení v části informace o uživateli na webu Azure portal a můžete zobrazit stav as registrované v zařízení. Se, že správně nastavit pro použití podmíněného přístupu?**
 
 **Odpověď:** stavu připojení k zařízení, projeví podle ID zařízení, musí shodovat s třídou na Azure AD a musí splňovat všechny vyhodnocení kritérií pro podmíněný přístup. Další podrobnosti najdete v tématu [Začínáme s Azure Active Directory Device Registration](active-directory-device-registration.md).
 
@@ -137,6 +143,8 @@ Verze operačního systému Windows nižší úrovně, které jsou místní AD p
 
 - Federované přihlášení vyžaduje federačním serveru pro podporu WS-Trust aktivní koncový bod. 
 
+- Jste povolili předávání ověřování a uživatel má dočasné heslo, které je potřeba změnit na přihlášení.
+
 ---
 
 **Otázka: Proč se zobrazuje "Oops... došlo k chybě!" dialogové okno, když se Pokouším se Azure AD join Můj počítač?**
@@ -147,7 +155,7 @@ Verze operačního systému Windows nižší úrovně, které jsou místní AD p
 
 **Otázka: Proč moje pokus o připojení k počítači nezdaří i když se mi nepřišel. veškeré informace o chybě?**
 
-**Odpověď:** pravděpodobnou příčinou je, že je uživatel přihlášen do zařízení pomocí předdefinovaného účtu správce. Před použitím Azure Active Directory Join k dokončení instalace vytvořte jiný místní účet. 
+**Odpověď:** pravděpodobnou příčinou je, že je uživatel přihlášen do zařízení pomocí místní předdefinovaný účet správce. Před použitím Azure Active Directory Join k dokončení instalace vytvořte jiný místní účet. 
 
 ---
 

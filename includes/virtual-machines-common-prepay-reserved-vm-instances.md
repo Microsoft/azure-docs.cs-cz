@@ -1,11 +1,11 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 99eaa667e4c6a9d63b4cc43ada8c6e36f7365610
-ms.sourcegitcommit: 39f4911b5933f7062dcf5d57af94eab8a0740b2b
+ms.openlocfilehash: 32fdc23aded78ca491fbde2ef5c76247c56d0c4c
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/16/2018
-ms.locfileid: "35683045"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36313740"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Předem pro virtuální počítače s instancemi Azure vyhrazené virtuálních počítačů
 
@@ -24,7 +24,7 @@ Musí používat jednu z metod popsaných níže k identifikaci správně veliko
 2. Můžete také získat přesné informace o velikosti virtuálních počítačů pomocí prostředí Powershell, Azure Resource Manager nebo z virtuálního počítače podrobnosti na portálu Azure.
 
 ## <a name="buy-a-reserved-virtual-machine-instance"></a>Kupte si Instance vyhrazený virtuální počítač
-1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **všechny služby** > **rezervace**.
 3. Vyberte **přidat** přikoupení novou vyhrazenou instanci.
 4. Vyplňte požadovaná pole. Spuštění virtuálního počítače instancí, které odpovídají vybrané atributy jsou způsobilé pro získání slevu vyhrazenou instanci. Skutečný počet instancím virtuálních počítačů získávající slevy závisí na oboru a množství vybranou.
