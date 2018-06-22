@@ -7,17 +7,17 @@ manager: craigg
 ms.service: sql-database
 ms.custom: migrate
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 06/20/2018
 ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: e0c849efa402bdfcf3ed6091cccf47ca722f23d7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2a0a411d5f2b19eda844cba160429ecfe958c45e
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650107"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36309609"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – správu databáze v databázi SQL Azure
 
@@ -31,7 +31,6 @@ Tento článek popisuje některé základní charakteristiky databáze SQL Azure
 - Zabezpečení a dodržování předpisů
 - Inteligentní databáze monitorování a údržby
 - Přesuny dat
-
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Obchodní kontinuitu a zotavení po havárii (BCDR)
 Obchodní kontinuitu a po havárii obnovení dalo umožňují pokračovat vaší firmě obvyklým způsobem, v případě havárie. Po havárii může být událostí na úrovni databáze (například někdo omylem zahodí zásadní tabulku) nebo datové centrum událostí na úrovni (místní katastrofická, například tsunami). 
@@ -235,7 +234,7 @@ SQL Database nabízí různé úrovně služeb Basic, Standard a Premium. Každ�
 
 Pro zajištění, že jste na úroveň výkonu správné, můžete monitorovat vaší spotřeby prostředků dotazu a databáze prostřednictvím jednoho z výše uvedených způsobů, jak v "Jak můžu monitorování využití výkonu a prostředků v databázi SQL". By měl můžete zjistit, že vaše dotazy databáze běží konzistentně aktivní na využití procesoru nebo paměti atd. můžete zvážit vertikálním navýšení kapacity na vyšší úroveň výkonu. Podobně pokud jste Všimněte si, že i vaše dobu ve špičce, můžete nevypadají využívat požadované prostředky co nejvíc; Vezměte v úvahu škálování z aktuální úroveň výkonu. 
 
-Pokud máte vzor pro aplikace SaaS nebo scénáři databáze konsolidace, zvažte použití fondu elastické databáze pro optimalizaci nákladů. Elastický fond je skvělým způsobem, jak databázi konsolidace a optimalizaci nákladů. Další informace o správě více databází pomocí elastického fondu, najdete v části: [spravovat fondy a databází](sql-database-elastic-pool.md#manage-elastic-pools-and-databases-using-the-azure-portal). 
+Pokud máte vzor pro aplikace SaaS nebo scénáři databáze konsolidace, zvažte použití fondu elastické databáze pro optimalizaci nákladů. Elastický fond je skvělým způsobem, jak databázi konsolidace a optimalizaci nákladů. Další informace o správě více databází pomocí elastického fondu, najdete v části: [spravovat fondy a databází](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases). 
 
 ### <a name="how-often-do-i-need-to-run-database-integrity-checks-for-my-database"></a>Jak často je potřeba spustit kontroly integrity databáze pro databázi?
 Databáze SQL používá některé inteligentní technik, které mohla zpracovávat určité třídy poškození dat, automaticky a bez ztráty dat. Tyto postupy jsou součástí služby a jsou využity službou když třeba nastane. V pravidelných intervalech jsou testovány záloh databáze napříč službou, je obnovení a spuštěním příkazu DBCC CHECKDB na něm. Pokud dojde k problémům, databáze SQL je proaktivně řeší. [Oprava automatické stránky](/sql/sql-server/failover-clusters/automatic-page-repair-availability-groups-database-mirroring) využívaná opravě stránek, které jsou poškozené nebo mít problémy s integritou dat. Na stránkách databáze jsou vždy ověřuje s výchozím nastavením kontrolního SOUČTU, která ověřuje integritu stránky. Databáze SQL proaktivně monitoruje a zkontroluje integritu dat databáze a, pokud k nim dojde, je adresy s nejvyšší prioritou. Kromě toho můžete případně spustit vlastní kontroly integrity na vaše bude.  Další informace najdete v tématu [integritu dat v databázi SQL](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)
