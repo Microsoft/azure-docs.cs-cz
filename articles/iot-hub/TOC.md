@@ -259,6 +259,7 @@
 ## [Centrum pro vývojáře Azure IoT](https://azure.microsoft.com/develop/iot/)
 ## [Požadavky na zákaznická data](iot-hub-customer-data-requests.md)
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/?category=internet-of-things)
+## [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
 ## [Nástroj DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)
 ## [Nástroj iothub-diagnostics](https://github.com/Azure/iothub-diagnostics)
 ## [Nástroj iothub-explorer](https://github.com/Azure/iothub-explorer)

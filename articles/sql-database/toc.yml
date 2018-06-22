@@ -1,10 +1,10 @@
 - name: Dokumentace k databázi SQL
   href: index.yml
-- name: Přehled
+- name: Služba SQL Database
   items:
     - name: Informace o databázi SQL
       href: sql-database-technical-overview.md
-    - name: PaaS nebo IaaS
+    - name: Volba verze Azure SQL
       href: sql-database-paas-vs-sql-server-iaas.md
 - name: Šablony Rychlý start
   expanded: true
@@ -48,20 +48,22 @@
   items:
     - name: 1. Návrh databáze pomocí SSMS
       href: sql-database-design-first-database.md
-    - name: 1. Návrh databáze pomocí .NET
+    - name: 2. Návrh databáze pomocí .NET
       href: sql-database-design-first-database-csharp.md
-    - name: 2. Migrace do databáze SQL Serveru s využitím DMS
+    - name: 3. Migrace do databáze SQL Serveru s využitím DMS
       href: sql-database-migrate-your-sql-server-database.md
-    - name: 3. Zabezpečení databáze SQL
+    - name: 4. Zabezpečení databáze SQL
       href: sql-database-security-tutorial.md
-    - name: 4. Implementace geograficky distribuované databáze
+    - name: 5. Implementace geograficky distribuované databáze
       href: sql-database-implement-geo-distributed-database.md
-    - name: 5. Vytvoření spravované Instance
+    - name: 6. Vytvoření spravované instance
       href: sql-database-managed-instance-create-tutorial-portal.md
-    - name: 6. Obnovení zálohy do spravované instance
+    - name: 7. Obnovení zálohy do spravované instance
       href: sql-database-managed-instance-restore-from-backup-tutorial.md
-    - name: 7. Migrace do spravované instance s využitím DMS
+    - name: 8. Migrace do spravované instance s využitím DMS
       href: ../dms/tutorial-sql-server-to-managed-instance.md
+    - name: 9. Nastavení synchronizace dat SQL v Azure
+      href: sql-database-get-started-sql-data-sync.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
@@ -72,186 +74,334 @@
       href: sql-database-powershell-samples.md
 - name: Koncepty
   items:
-    - name: Servery a databáze
-      href: sql-database-servers-databases.md
-    - name: Spravovaná instance
-      href: sql-database-managed-instance.md
-    - name: Úrovně služeb na základě DTU
-      href: sql-database-service-tiers-dtu.md
-    - name: Úrovně služeb na základě virtuálních jader
-      href: sql-database-service-tiers-vcore.md
-    - name: Škálování čtení na více instancí
-      href: sql-database-read-scale-out.md
-    - name: Omezení prostředků na základě DTU
-      href: sql-database-dtu-resource-limits.md
-    - name: Omezení prostředků na základě virtuálních jader
-      href: sql-database-vcore-resource-limits.md
-    - name: Izolované databáze
-      href: sql-database-single-database-resources.md
-    - name: Elastické fondy
-      href: sql-database-elastic-pool.md
-    - name: Architektura připojení
-      href: sql-database-connectivity-architecture.md
-    - name: Jednotky DTU a eDTU
-      href: sql-database-what-is-a-dtu.md
-    - name: Srovnávací test DTU
-      href: sql-database-benchmark-overview.md
-    - name: Běžné funkce SQL Serveru
-      href: sql-database-features.md
+    - name: Úrovně služeb a prostředky
+      items:
+        - name: Úrovně služby
+          href: sql-database-service-tiers.md
+        - name: Model na základě virtuálních jader
+          href: sql-database-service-tiers-vcore.md
+        - name: Model na základě DTU
+          href: sql-database-service-tiers-dtu.md
+        - name: Omezení prostředků
+          href: sql-database-resource-limits.md
     - name: Vysoká dostupnost
       href: sql-database-high-availability.md
+    - name: Logické servery a izolované databáze
+      items:
+        - name: Logické servery a izolované databáze
+          href: sql-database-servers-databases.md
+        - name: Správa serverů a izolovaných databází
+          href: sql-database-servers-databases-manage.md
+        - name: Omezení prostředků na základě virtuálních jader
+          href: sql-database-vcore-resource-limits-single-databases.md
+        - name: Omezení prostředků na základě DTU
+          href: sql-database-dtu-resource-limits-single-databases.md
+        - name: Škálování prostředků izolovaných databází
+          href: sql-database-single-database-scale.md
+        - name: Elastické fondy a databáze ve fondu
+          items:
+            - name: Elastické fondy a databáze ve fondu
+              href: sql-database-elastic-pool.md
+            - name: Správa fondů a databází ve fondu
+              href: sql-database-elastic-pool-manage.md
+            - name: Omezení prostředků na základě virtuálních jader
+              href: sql-database-vcore-resource-limits-elastic-pools.md
+            - name: Omezení prostředků na základě DTU
+              href: sql-database-dtu-resource-limits-elastic-pools.md
+        - name: Škálování prostředků elastického fondu
+          href: sql-database-elastic-pool-scale.md
+        - name: Architektura připojení
+          href: sql-database-connectivity-architecture.md
+        - name: Rozdíly v jazyce T-SQL
+          href: sql-database-transact-sql-information.md
+    - name: Spravované instance
+      items:
+        - name: Spravované instance
+          href: sql-database-managed-instance.md
+        - name: Konfigurace virtuální sítě
+          href: sql-database-managed-instance-vnet-configuration.md
+        - name: Vlastní DNS
+          href: sql-database-managed-instance-custom-dns.md
+        - name: Synchronizace konfigurace sítě
+          href: sql-database-managed-instance-sync-network-configuration.md
+        - name: Připojení aplikací
+          href: sql-database-managed-instance-connect-app.md
+        - name: Rozdíly v jazyce T-SQL
+          href: sql-database-managed-instance-transact-sql-information.md
+    - name: Běžné funkce SQL Serveru
+      href: sql-database-features.md
     - name: Zabezpečení
       items:
-        - name: Přehled
+        - name: Zabezpečení
           href: sql-database-security-overview.md
         - name: Rozšířená ochrana před internetovými útoky
-          href: sql-advanced-threat-protection.md
-        - name: Zjišťování a klasifikace dat
-          href: sql-database-data-discovery-and-classification.md
-        - name: Posouzení ohrožení zabezpečení
-          href: sql-vulnerability-assessment.md
-        - name: Detekce hrozeb – SQL Database
-          href: sql-database-threat-detection.md
-        - name: Detekce hrozeb – MI
-          href: sql-database-managed-instance-threat-detection.md
+          items:
+            - name: Rozšířená ochrana před internetovými útoky
+              href: sql-advanced-threat-protection.md
+            - name: Zjišťování a klasifikace dat
+              href: sql-database-data-discovery-and-classification.md
+            - name: Posouzení ohrožení zabezpečení
+              href: sql-vulnerability-assessment.md
+            - name: Detekce hrozeb – SQL Database
+              href: sql-database-threat-detection.md
+            - name: Detekce hrozeb – MI
+              href: sql-database-managed-instance-threat-detection.md
         - name: Pravidla brány firewall
-          href: sql-database-firewall-configure.md
-        - name: Pravidla virtuální sítě brány firewall
-          href: sql-database-vnet-service-endpoint-rule-overview.md
+          items:
+            - name: Přehled
+              href: sql-database-firewall-configure.md
+            - name: Koncové body virtuální sítě
+              href: sql-database-vnet-service-endpoint-rule-overview.md
+            - name: Koncové body virtuální sítě – PowerShell
+              href: sql-database-vnet-service-endpoint-rule-powershell.md
         - name: Řízení přístupu
-          href: sql-database-control-access.md
-        - name: Azure AD
-          href: sql-database-aad-authentication.md
-        - name: Přihlášení a uživatelé
-          href: sql-database-manage-logins.md
-        - name: Vícefaktorové ověřování
-          href: sql-database-ssms-mfa-authentication.md
-        - name: Auditování – SQL Database
-          href: sql-database-auditing.md
-        - name: Auditování – spravovaná instance
-          href: sql-database-managed-instance-auditing.md
-        - name: TDS a auditování tabulek
-          href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
+          items:
+            - name: Řízení přístupu
+              href: sql-database-control-access.md
+            - name: Přihlášení a uživatelé
+              href: sql-database-manage-logins.md
+        - name: Ověřování Azure AD
+          items:
+            - name: Ověřování Azure AD
+              href: sql-database-aad-authentication.md
+            - name: Konfigurace ověřování Azure AD
+              href: sql-database-aad-authentication-configure.md
+            - name: Podmíněný přístup
+              href: sql-database-conditional-access.md
+            - name: Vícefaktorové ověřování
+              href: sql-database-ssms-mfa-authentication.md
+            - name: Konfigurace vícefaktorového ověřování
+              href: sql-database-ssms-mfa-authentication-configure.md
+        - name: Auditování
+          items:
+            - name: 'Auditování – servery, fondy a databáze'
+              href: sql-database-auditing.md
+            - name: Auditování – spravovaná instance
+              href: sql-database-managed-instance-auditing.md
+            - name: Auditování tabulek (zastaralé)
+              href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: Dynamické maskování dat
-          href: sql-database-dynamic-data-masking-get-started.md
+          items:
+            - name: Dynamické maskování dat
+              href: sql-database-dynamic-data-masking-get-started.md
+            - name: Konfigurace maskování
+              href: sql-database-dynamic-data-masking-get-started-portal.md
+        - name: Funkce Always Encrypted
+          items:
+            - name: Použití úložiště certifikátů
+              href: sql-database-always-encrypted.md
+            - name: Použití trezoru klíčů Azure
+              href: sql-database-always-encrypted-azure-key-vault.md
     - name: Kontinuita podnikových procesů
       items:
-        - name: Přehled
+        - name: Kontinuita podnikových procesů
           href: sql-database-business-continuity.md
         - name: Zálohování databáze
           href: sql-database-automated-backups.md
         - name: Dlouhodobé uchovávání záloh
-          href: sql-database-long-term-retention.md
-        - name: Skupiny převzetí služeb při selhání
-          href: sql-database-geo-replication-overview.md
+          itmes:
+            - name: Dlouhodobé uchovávání záloh
+              href: sql-database-long-term-retention.md
+            - name: Konfigurace dlouhodobého uchovávání záloh – úložiště SQL
+              href: sql-database-long-term-backup-retention-configure.md
+            - name: Konfigurace dlouhodobého uchovávání záloh – trezor Azure (zastaralé)
+              href: sql-database-long-term-backup-retention-configure-vault.md
+        - name: Skupiny převzetí služeb při selhání a geografická replikace
+          items:
+            - name: Skupiny převzetí služeb při selhání a geografická replikace
+              href: sql-database-geo-replication-overview.md
+            - name: Konfigurace geografické replikace – portál
+              href: sql-database-geo-replication-portal.md
+            - name: Konfigurace zabezpečení pro repliky
+              href: sql-database-geo-replication-security-config.md
         - name: Obnovení databáze
-          href: sql-database-recovery-using-backups.md
-        - name: Konfigurace zabezpečení
-          href: sql-database-geo-replication-security-config.md
-        - name: Návrh aplikací a obnovení
-          href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
-        - name: Návrh aplikací a fondy
-          href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
-        - name: Návrh aplikací a upgrady aplikací
-          href: sql-database-manage-application-rolling-upgrade.md
-        - name: Zotavení z výpadku
-          href: sql-database-disaster-recovery.md
-        - name: Provedení postupu zotavení
-          href: sql-database-disaster-recovery-drills.md
+          items:
+            - name: Obnovení databáze
+              href: sql-database-recovery-using-backups.md
+            - name: Zotavení z výpadku
+              href: sql-database-disaster-recovery.md
+            - name: Provedení postupu zotavení
+              href: sql-database-disaster-recovery-drills.md
+        - name: Návrh aplikací
+          items:
+            - name: Návrh pro zotavení po havárii
+              href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
+            - name: Návrh pro elastické fondy
+              href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
+            - name: Návrh pro upgrady aplikací
+              href: sql-database-manage-application-rolling-upgrade.md
     - name: Migrace do služby SQL Database
       items:
         - name: Migrace do služby SQL Database
           href: sql-database-cloud-migrate.md
         - name: Migrace do MI
           href: sql-database-managed-instance-migrate.md
-        - name: Podrobnosti k SQL Database T-SQL
-          href: sql-database-transact-sql-information.md
-        - name: Podrobnosti k MI T-SQL
-          href: sql-database-managed-instance-transact-sql-information.md
         - name: Správa SQL Database po migraci
           href: sql-database-manage-after-migration.md
-    - name: Načítání a přesun dat
+    - name: Načtení a přesun dat
       items:
-        - name: Kopírování databáze
+        - name: Kopírování databáze v rámci Azure
           href: sql-database-copy.md
-        - name: Import databáze
+        - name: Import databáze z BACPAC
           href: sql-database-import.md
-        - name: Export databáze
+        - name: Export databáze do BACPAC
           href: sql-database-export.md
         - name: Synchronizace dat
-          href: sql-database-sync-data.md
+          items:
+            - name: Synchronizace dat SQL
+              href: sql-database-sync-data.md
+            - name: Replikace změn schématu
+              href: sql-database-update-sync-schema.md
+            - name: Monitorování pomocí OMS
+              href: sql-database-sync-monitor-oms.md
+            - name: Osvědčené postupy pro synchronizaci dat
+              href: sql-database-best-practices-data-sync.md
+            - name: Řešení potíží se synchronizací dat
+              href: sql-database-troubleshoot-data-sync.md
+        - name: Načítání dat pomocí BCP
+          href: sql-database-load-from-csv-with-bcp.md
+        - name: Načítání dat pomocí ADF
+          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
     - name: Monitorování a ladění
       items:
-        - name: Přehled
+        - name: Monitorování a ladění
           href: sql-database-troubleshoot-performance.md
         - name: Monitorování výkonu
           href: sql-database-single-database-monitor.md
         - name: Doporučení k výkonu
           href: sql-database-advisor.md
         - name: Automatické ladění
-          href: sql-database-automatic-tuning.md
+          items:
+            - name: Automatické ladění
+              href: sql-database-automatic-tuning.md
+            - name: Povolení automatického ladění
+              href: sql-database-automatic-tuning-enable.md
+            - name: Povolení e-mailových oznámení
+              href: sql-database-automatic-tuning-email-notifications.md
         - name: Užitečné přehledy
-          href: sql-database-intelligent-insights.md
-        - name: Diagnostické protokoly Intelligence Insights
-          href: sql-database-intelligent-insights-use-diagnostics-log.md
+          items:
+            - name: Užitečné přehledy
+              href: sql-database-intelligent-insights.md
+            - name: Protokolování diagnostiky
+              href: sql-database-metrics-diag-logging.md
+            - name: Použití protokolu diagnostiky
+              href: sql-database-intelligent-insights-use-diagnostics-log.md
+            - name: Řešení potíží s výkonem
+              href: sql-database-intelligent-insights-troubleshoot-performance.md
+        - name: Doporučení k výkonu
+          href: sql-database-performance.md
+        - name: Použití nástroje Query Performance Insight
+          href: sql-database-query-performance.md
+        - name: Použití doporučení k výkonu
+          href: sql-database-advisor-portal.md
         - name: Ruční ladění
-          href: sql-database-performance-guidance.md
-        - name: Provozování úložiště dotazů
-          href: sql-database-operate-query-store.md
-        - name: Rozšířené události
-          href: sql-database-xevent-db-diff-from-svr.md
+          items:
+            - name: Ruční ladění
+              href: sql-database-performance-guidance.md
+            - name: Monitorování výkonu pomocí zobrazení dynamické správy
+              href: sql-database-monitoring-with-dmvs.md
+            - name: Provozování úložiště dotazů
+              href: sql-database-operate-query-store.md
         - name: Monitorování v paměti
           href: sql-database-in-memory-oltp-monitoring.md
-    - name: Úlohy elastické databáze
-      items:
-        - name: Přehled
-          href: elastic-jobs-overview.md
-        - name: Vytvoření a správa (PowerShell)
-          href: elastic-jobs-powershell.md
-        - name: Vytvoření a správa (T-SQL)
-          href: elastic-jobs-tsql.md
-        - name: Migrace (z původních elastických úloh)
-          href: elastic-jobs-migrate.md
-        - name: Elastické úlohy (zastaralé)
+        - name: Rozšířené události
           items:
-            - name: Přehled (zastaralé)
-              href: sql-database-elastic-jobs-overview.md
-            - name: Instalace elastických úloh (zastaralé)
-              href: sql-database-elastic-jobs-service-installation.md
-            - name: Vytvoření úlohy – portál (zastaralé)
-              href: sql-database-elastic-jobs-create-and-manage.md
-            - name: Vytvoření úlohy – Azure PowerShell (zastaralé)
-              href: sql-database-elastic-jobs-powershell.md
-            - name: Vytvoření úlohy – ukázková aplikace (zastaralé)
-              href: sql-database-elastic-jobs-getting-started.md
-            - name: Odinstalace elastické úlohy (zastaralé)
-              href: sql-database-elastic-jobs-uninstall.md
+            - name: Rozšířené události
+              href: sql-database-xevent-db-diff-from-svr.md
+            - name: Rozšířené události – soubor událostí
+              href: sql-database-xevent-code-event-file.md
+            - name: Rozšířené události – cyklická vyrovnávací paměť
+              href: sql-database-xevent-code-ring-buffer.md
+        - name: Vytváření upozornění
+          href: sql-database-insights-alerts-portal.md
+        - name: Řešení potíží s připojením
+          href: sql-database-troubleshoot-common-connection-issues.md
+        - name: Azure Automation
+          href: sql-database-manage-automation.md
     - name: Horizontální navýšení kapacity
       items:
-        - name: Přehled
-          href: sql-database-elastic-scale-introduction.md
-        - name: Knihovna elastických klientů
-          href: sql-database-elastic-database-client-library.md
+        - name: Škálování čtení na více instancí
+          href: sql-database-read-scale-out.md
+        - name: Sharding databází
+          items:
+            - name: Sharding databází
+              href: sql-database-elastic-scale-introduction.md
+            - name: Knihovna elastických klientů – konsolidace
+              href: sql-database-elastic-database-client-library.md
+            - name: Upgrade klientské knihovny služby Elastic Database
+              href: sql-database-elastic-scale-upgrade-client-library.md
+            - name: Mapy horizontálních oddílů
+              href: sql-database-elastic-scale-shard-map-management.md
+            - name: Směrování dotazů
+              href: sql-database-elastic-scale-data-dependent-routing.md
+            - name: Správa přihlašovacích údajů
+              href: sql-database-elastic-scale-manage-credentials.md
+            - name: Dotazování horizontálních oddílů
+              href: sql-database-elastic-scale-multishard-querying.md
+            - name: Elastické nástroje
+              href: sql-database-elastic-scale-glossary.md
+            - name: Přesun horizontálně dělených dat
+              href: sql-database-elastic-scale-overview-split-and-merge.md
+            - name: Knihovna elastických klientů – Dapper
+              href: sql-database-elastic-scale-working-with-dapper.md
+            - name: Elastické nástroje – nejčastější dotazy
+              href: sql-database-elastic-scale-faq.md
+            - name: Vytvoření horizontálně dělené aplikace
+              href: sql-database-elastic-scale-get-started.md
+            - name: Dotazování na horizontálně dělená data
+              href: sql-database-elastic-query-getting-started.md
+            - name: Přesun horizontálně dělených dat
+              href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
+            - name: Konfigurace zabezpečení
+              href: sql-database-elastic-scale-split-merge-security-configuration.md
+            - name: Přidání horizontálního oddílu
+              href: sql-database-elastic-scale-add-a-shard.md
+            - name: Odstraňování problémů s horizontálními oddíly mapy
+              href: sql-database-elastic-database-recovery-manager.md
+            - name: Migrace horizontálně dělené databáze
+              href: sql-database-elastic-convert-to-use-elastic-tools.md
+            - name: Vytvoření čítačů
+              href: sql-database-elastic-database-perf-counters.md
+            - name: Použití Entity Frameworku
+              href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
+    - name: Mezidatabázové operace
+      items:
+        - name: Úlohy elastické databáze
+          items:
+            - name: Úlohy elastické databáze
+              href: elastic-jobs-overview.md
+            - name: Vytvoření a správa (PowerShell)
+              href: elastic-jobs-powershell.md
+            - name: Vytvoření a správa (T-SQL)
+              href: elastic-jobs-tsql.md
+            - name: Migrace (z původních elastických úloh)
+              href: elastic-jobs-migrate.md
+            - name: Elastické úlohy (zastaralé)
+              items:
+                - name: Elastické úlohy (zastaralé)
+                  href: sql-database-elastic-jobs-overview.md
+                - name: Instalace elastických úloh (zastaralé)
+                  href: sql-database-elastic-jobs-service-installation.md
+                - name: Vytvoření úlohy – portál (zastaralé)
+                  href: sql-database-elastic-jobs-create-and-manage.md
+                - name: Vytvoření úlohy – Azure PowerShell (zastaralé)
+                  href: sql-database-elastic-jobs-powershell.md
+                - name: Vytvoření úlohy – ukázková aplikace (zastaralé)
+                  href: sql-database-elastic-jobs-getting-started.md
+                - name: Odinstalace elastické úlohy (zastaralé)
+                  href: sql-database-elastic-jobs-uninstall.md
         - name: Elastické dotazy
-          href: sql-database-elastic-query-overview.md
+          items:
+            - name: Elastické dotazy
+              href: sql-database-elastic-query-overview.md
+            - name: Dotazování na vertikálně dělená data
+              href: sql-database-elastic-query-getting-started-vertical.md
+            - name: Vytváření sestav napříč datovou vrstvou s horizontálním navýšením kapacity
+              href: sql-database-elastic-query-horizontal-partitioning.md
+            - name: Dotazování přes tabulky s různými schématy
+              href: sql-database-elastic-query-vertical-partitioning.md
         - name: Elastické transakce
           href: sql-database-elastic-transactions-overview.md
-        - name: Mapy horizontálních oddílů
-          href: sql-database-elastic-scale-shard-map-management.md
-        - name: Směrování dotazů
-          href: sql-database-elastic-scale-data-dependent-routing.md
-        - name: Správa přihlašovacích údajů
-          href: sql-database-elastic-scale-manage-credentials.md
-        - name: Dotazování horizontálních oddílů
-          href: sql-database-elastic-scale-multishard-querying.md
-        - name: Elastické nástroje
-          href: sql-database-elastic-scale-glossary.md
-        - name: Přesun horizontálně dělených dat
-          href: sql-database-elastic-scale-overview-split-and-merge.md
-        - name: Knihovna elastických klientů – Dapper
-          href: sql-database-elastic-scale-working-with-dapper.md
-        - name: Elastické nástroje – nejčastější dotazy
-          href: sql-database-elastic-scale-faq.md
     - name: Víceklientský software jako služba (SaaS)
       items:
         - name: Způsoby návrhu SaaS
@@ -262,7 +412,7 @@
           href: saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
     - name: Vývoj databází
       items:
-        - name: Přehled
+        - name: Vývoj databází
           href: sql-database-develop-overview.md
         - name: Data JSON
           href: sql-database-json-features.md
@@ -278,6 +428,8 @@
       items:
         - name: Připojení
           href: sql-database-libraries.md
+        - name: Použití konektoru Spark
+          href: sql-database-spark-connector.md
         - name: Ověření aplikace
           href: sql-database-client-id-keys.md
         - name: Chybové zprávy
@@ -286,123 +438,19 @@
           href: sql-database-use-batching-to-improve-performance.md
         - name: Pokyny pro připojení
           href: sql-database-connectivity-issues.md
-        - name: Alias DNS – přehled
+        - name: Aliasy DNS
           href: dns-alias-overview.md
         - name: Alias DNS – PowerShell
           href: dns-alias-powershell.md
         - name: Porty – ADO.NET
           href: sql-database-develop-direct-route-ports-adonet-v12.md
+        - name: C a C ++
+          href: sql-database-develop-cplusplus-simple.md
+        - name: Excel
+          href: sql-database-connect-excel.md
 - name: Návody
   items:
-    - name: Funkce služby
-      items:
-        - name: Upgrade klientské knihovny služby Elastic Database
-          href: sql-database-elastic-scale-upgrade-client-library.md
-        - name: Dotazování na vertikálně dělená data
-          href: sql-database-elastic-query-getting-started-vertical.md
-        - name: Vytváření sestav napříč datovou vrstvou s horizontálním navýšením kapacity
-          href: sql-database-elastic-query-horizontal-partitioning.md
-        - name: Dotazování přes tabulky s různými schématy
-          href: sql-database-elastic-query-vertical-partitioning.md
-    - name: MI
-      items:
-        - name: Konfigurace virtuální sítě
-          href: sql-database-managed-instance-vnet-configuration.md
-        - name: Vlastní DNS
-          href: sql-database-managed-instance-custom-dns.md
-        - name: Připojení aplikací
-          href: sql-database-managed-instance-connect-app.md
-        - name: Synchronizace konfigurace sítě
-          href: sql-database-managed-instance-sync-network-configuration.md
-    - name: Zabezpečení
-      items:
-        - name: Konfigurace ověřování Azure AD
-          href: sql-database-aad-authentication-configure.md
-        - name: Podmíněný přístup
-          href: sql-database-conditional-access.md
-        - name: Úložiště certifikátů s funkcí Always Encrypted
-          href: sql-database-always-encrypted.md
-        - name: Trezor klíčů s funkcí Always Encrypted
-          href: sql-database-always-encrypted-azure-key-vault.md
-        - name: Konfigurace maskování
-          href: sql-database-dynamic-data-masking-get-started-portal.md
-        - name: Konfigurace vícefaktorového ověřování
-          href: sql-database-ssms-mfa-authentication-configure.md
-        - name: Pravidla virtuálních sítí s využitím PowerShellu
-          href: sql-database-vnet-service-endpoint-rule-powershell.md
-    - name: Kontinuita podnikových procesů
-      items:
-        - name: Geografická replikace – Portál
-          href: sql-database-geo-replication-portal.md
-        - name: Konfigurace dlouhodobého uchovávání záloh – úložiště SQL
-          href: sql-database-long-term-backup-retention-configure.md
-        - name: Konfigurace dlouhodobého uchovávání záloh – trezor Azure
-          href: sql-database-long-term-backup-retention-configure-vault.md
-    - name: Načítání a přesun dat
-      items:
-        - name: Načítání dat pomocí BCP
-          href: sql-database-load-from-csv-with-bcp.md
-        - name: Načítání dat pomocí ADF
-          href: ../data-factory/connector-azure-sql-database.md?toc=/azure/sql-database/toc.json
-        - name: Synchronizace dat
-          href: sql-database-get-started-sql-data-sync.md
-        - name: Replikace změn schémat pro synchronizaci dat SQL
-          href: sql-database-update-sync-schema.md
-        - name: Monitorování Synchronizace dat SQL s využitím OMS Log Analytics
-          href: sql-database-sync-monitor-oms.md
-        - name: Osvědčené postupy pro synchronizaci dat SQL
-          href: sql-database-best-practices-data-sync.md
-        - name: Řešení potíží se synchronizací dat SQL
-          href: sql-database-troubleshoot-data-sync.md
-    - name: Monitorování a ladění
-      items:
-        - name: Monitorování a zvýšení výkonu
-          href: sql-database-performance.md
-        - name: Použití nástroje Query Performance Insight
-          href: sql-database-query-performance.md
-        - name: Použití doporučení k výkonu
-          href: sql-database-advisor-portal.md
-        - name: Povolení automatického ladění
-          href: sql-database-automatic-tuning-enable.md
-        - name: E-mailová oznámení pro automatické ladění
-          href: sql-database-automatic-tuning-email-notifications.md
-        - name: Řešení potíží s výkonem Intelligent Insights
-          href: sql-database-intelligent-insights-troubleshoot-performance.md
-        - name: Monitorování výkonu pomocí zobrazení dynamické správy
-          href: sql-database-monitoring-with-dmvs.md
-        - name: Vytváření upozornění
-          href: sql-database-insights-alerts-portal.md
-        - name: Rozšířené události – soubor událostí
-          href: sql-database-xevent-code-event-file.md
-        - name: Rozšířené události – cyklická vyrovnávací paměť
-          href: sql-database-xevent-code-ring-buffer.md
-        - name: Protokolování diagnostiky
-          href: sql-database-metrics-diag-logging.md
-        - name: Řešení potíží s připojením
-          href: sql-database-troubleshoot-common-connection-issues.md
-        - name: Azure Automation
-          href: sql-database-manage-automation.md
-    - name: Horizontální navýšení kapacity
-      items:
-        - name: Vytvoření horizontálně dělené aplikace
-          href: sql-database-elastic-scale-get-started.md
-        - name: Dotazování na horizontálně dělená data
-          href: sql-database-elastic-query-getting-started.md
-        - name: Přesun horizontálně dělených dat
-          href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
-        - name: Konfigurace zabezpečení
-          href: sql-database-elastic-scale-split-merge-security-configuration.md
-        - name: Přidání horizontálního oddílu
-          href: sql-database-elastic-scale-add-a-shard.md
-        - name: Odstraňování problémů s horizontálními oddíly mapy
-          href: sql-database-elastic-database-recovery-manager.md
-        - name: Migrace horizontálně dělené databáze
-          href: sql-database-elastic-convert-to-use-elastic-tools.md
-        - name: Vytvoření čítačů
-          href: sql-database-elastic-database-perf-counters.md
-        - name: Použití Entity Frameworku
-          href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
-    - name: Víceklientský software jako služba (SaaS)
+    - name: Referenční víceklientská architektura SaaS
       items:
         - name: Ukázka lístků Wingtip
           href: saas-tenancy-welcome-wingtip-tickets-app.md
@@ -456,14 +504,6 @@
               href: saas-multitenantdb-schema-management.md
             - name: ETL pro analýzu
               href: saas-multitenantdb-tenant-analytics.md
-    - name: Vývoj aplikací
-      items:
-        - name: C a C ++
-          href: sql-database-develop-cplusplus-simple.md
-        - name: Excel
-          href: sql-database-connect-excel.md
-        - name: Použití konektoru Spark
-          href: sql-database-spark-connector.md
 - name: Referenční informace
   items:
     - name: Azure PowerShell

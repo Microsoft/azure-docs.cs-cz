@@ -417,6 +417,7 @@
 #### Kurzy
 ##### [Migrace klasických zásad MFA](active-directory-conditional-access-migration-mfa.md)
 #### Koncepty
+##### [Základní ochrana](active-directory-conditional-access-baseline-protection.md)
 ##### [Podmínky](active-directory-conditional-access-conditions.md)
 ##### [Podmínky umístění](active-directory-conditional-access-locations.md)
 ##### [Ovládací prvky](active-directory-conditional-access-controls.md)
