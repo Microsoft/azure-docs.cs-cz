@@ -3,22 +3,23 @@ title: K vyplnění konkrétních polí pro aplikaci zákaznických | Microsoft 
 description: Pokyny k vyplnění konkrétních polí při registraci vlastní aplikace vyvinuté pomocí Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: cd4313efb5d08842ba12ec00e6e5160214800d56
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.author: barbkess
+ms.openlocfilehash: c6f6b0685c83d9305c62f121aec562d2afedae21
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34055613"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335713"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Postup vyplňte konkrétní pole vyvinul vlastní aplikace
 

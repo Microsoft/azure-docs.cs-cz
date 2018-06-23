@@ -8,19 +8,18 @@ manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 0410456a-76f7-42a7-9bb5-f767de75a0e0
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 37409ee72591d943a834ff38f077a002a1724ab9
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 18c3dbdcf85c5b06b4f0f20c85b9fe751a3719fe
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215388"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Kurz: Azure Active Directory integrace s PagerDuty
 
@@ -60,14 +59,14 @@ Při konfiguraci integrace PagerDuty do služby Azure AD musíte přidat do sezn
 
 **Pokud chcete přidat PagerDuty z galerie, proveďte následující kroky:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory][1]
 
 2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
-    
+
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Tlačítko nové aplikace][3]
@@ -102,8 +101,8 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurace propojení přihlášení][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+1. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+
     ![Jediné přihlášení dialogové okno](./media/pagerduty-tutorial/tutorial_pagerduty_samlbase.png)
 
 3. Na **PagerDuty domény a adresy URL** část, proveďte následující kroky:
@@ -114,12 +113,12 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tenant-name>.pagerduty.com`
 
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory PagerDuty klienta](https://www.pagerduty.com/support/) k získání těchto hodnot. 
+    > [!NOTE]
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory PagerDuty klienta](https://www.pagerduty.com/support/) k získání těchto hodnot.
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
 
-    ![Odkaz ke stažení certifikátu](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png) 
+    ![Odkaz ke stažení certifikátu](./media/pagerduty-tutorial/tutorial_pagerduty_certificate.png)
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
@@ -127,34 +126,33 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
 6. Na **PagerDuty konfigurace** klikněte na tlačítko **konfigurace PagerDuty** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL a SAML jeden přihlašování služby URL** z **Stručná referenční příručka části.**
 
-    ![Konfigurace PagerDuty](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png) 
+    ![Konfigurace PagerDuty](./media/pagerduty-tutorial/tutorial_pagerduty_configure.png)
 
 7. V okně prohlížeče jiný web Přihlaste se jako správce k serveru vaší společnosti Pagerduty.
 
 8. V nabídce v horní části, klikněte na tlačítko **nastavení účtu**.
-   
+
     ![Nastavení účtu](./media/pagerduty-tutorial/ic778535.png "nastavení účtu")
 
 9. Klikněte na tlačítko **jednotného přihlašování**.
-   
+
     ![Jednotné přihlašování](./media/pagerduty-tutorial/ic778536.png "jednotného přihlašování")
 
 10. Na **povolit jednotné přihlašování (SSO)** proveďte následující kroky:
-   
+
     ![Povolit jednotné přihlašování](./media/pagerduty-tutorial/ic778537.png "povolit jednotné přihlašování")
-   
+
     a. Otevření kódovaného certifikátu kódování base-64 stáhli z portálu Azure v programu Poznámkový blok, zkopírujte obsah ho do schránky a vložte jej do **certifikát X.509** textbox
   
     b. V **přihlašovací adresa URL** textovému poli, vložte **SAML jeden přihlašování adresa URL služby** který jste zkopírovali z portálu Azure.
   
     c. V **adresy URL odhlašovací** textovému poli, vložte **Sign-Out URL** který jste zkopírovali z portálu Azure.
- 
-    d. Vyberte **zapnout Single Sign-on**.
- 
-    e. Klikněte na tlačítko **uložit změny**.
 
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+    d. Vyberte **přihlašovací uživatelské jméno a heslo povolit**.
+
+    e. Vyberte **vyžadují přesně porovnání kontext ověřování** zaškrtávací políčko.
+
+    f. Klikněte na tlačítko **uložit změny**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -262,8 +260,6 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-
-
 <!--Image references-->
 
 [1]: ./media/pagerduty-tutorial/tutorial_general_01.png
@@ -277,4 +273,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/pagerduty-tutorial/tutorial_general_201.png
 [202]: ./media/pagerduty-tutorial/tutorial_general_202.png
 [203]: ./media/pagerduty-tutorial/tutorial_general_203.png
-

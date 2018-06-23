@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 57bf8b81d8d7fee6eaee216b9a2e0c52aa625257
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: a4a882781562ae71ad6c578577a9f9cd9096ef36
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868326"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331785"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Stávající infrastruktury serveru NPS integrovat Azure Multi-Factor Authentication
 
@@ -82,7 +82,7 @@ NPS server se připojuje k Azure Active Directory a ověřuje požadavky vícefa
 1. Na serveru, otevřete **Průvodce přidáním rolí a funkcí** v nabídce rychlý start správce serveru.
 2. Zvolte **instalace na základě rolí nebo na základě funkcí** pro váš typ instalace.
 3. Vyberte **služba síťové zásady a přístup** role serveru. O požadované funkce pro tuto roli spouštět může překryvné okno.
-4. Postupujte podle pokynů Průvodce až potvrzovací stránku. Vyberte **nainstalovat**.
+4. Postupujte podle pokynů Průvodce až potvrzovací stránku. Vyberte **Install** (Nainstalovat).
 
 Nyní když máte server určený pro server NPS, byste měli nakonfigurovat tento server zpracovávat příchozí požadavky protokolu RADIUS z daného řešení VPN.
 
@@ -172,7 +172,7 @@ Tato část obsahuje důležité informace o návrhu a návrhy pro úspěšné n
 ### <a name="configuration-limitations"></a>Konfigurace omezení
 
 - Server NPS rozšíření pro Azure MFA nezahrnuje nástroje pro migraci uživatelů a nastavení z MFA serveru do cloudu. Z tohoto důvodu doporučujeme pomocí rozšíření pro nová nasazení, nikoli stávajícího nasazení. Pokud používáte rozšíření na stávajícího nasazení, uživatelé musí provést výš znovu k naplnění jejich podrobnosti MFA v cloudu.  
-- Rozšíření serveru NPS používá název UPN z místní služby Active directory k identifikaci uživatele v Azure MFA pro provádění sekundární umožňuje Rozšíření lze nakonfigurovat k využívání jiný identifikátor jako alternativního přihlašovacího ID nebo vlastních polí služby Active Directory než UPN. V tématu [rozšířených možnostech konfigurace pro NPS rozšíření pro službu Multi-Factor Authentication](howto-mfaserver-nps-vpn.md) Další informace.
+- Rozšíření serveru NPS používá název UPN z místní služby Active directory k identifikaci uživatele v Azure MFA pro provádění sekundární umožňuje Rozšíření lze nakonfigurovat k využívání jiný identifikátor jako alternativního přihlašovacího ID nebo vlastních polí služby Active Directory než UPN. V tématu [rozšířených možnostech konfigurace pro NPS rozšíření pro službu Multi-Factor Authentication](howto-mfa-nps-extension-advanced.md) Další informace.
 - Ne všechny protokoly šifrování podporují všechny metody ověřování.
    - **PAP** podporuje telefonní hovor, jednosměrné textová zpráva, oznámení mobilní aplikace a kód ověření mobilní aplikace
    - **CHAPV2** a **EAP** podporují telefonní hovory a oznámení mobilní aplikace

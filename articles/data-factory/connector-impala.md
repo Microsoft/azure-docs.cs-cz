@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z Impala pomocí Azure Data Factory (beta) | Microsoft Docs
+title: Kopírování dat z Impala pomocí Azure Data Factory (Preview) | Microsoft Docs
 description: Postup kopírování dat z Impala do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanálu data factory.
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 73987d03cb96fa421d193504fe6eaf6c3b5ddb18
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 49e9c338128cc857347bbf052c19dc34dd08f9c6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618765"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337615"
 ---
-# <a name="copy-data-from-impala-by-using-azure-data-factory-beta"></a>Kopírování dat z Impala pomocí Azure Data Factory (beta)
+# <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Kopírování dat z Impala pomocí Azure Data Factory (Preview)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Impala. Vychází [aktivity kopírování přehled](copy-activity-overview.md) článek, který představuje obecný přehled o aktivitě kopírování.
 
@@ -28,7 +28,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory
 > Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 objektu pro vytváření dat, která je obecně k dispozici, najdete v části [aktivity kopírování v verze 1](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
-> Tento konektor je aktuálně ve verzi beta. Můžete si vyzkoušet a poskytnout zpětnou vazbu. Nepoužívejte ji v produkčním prostředí.
+> Tento konektor je aktuálně ve verzi preview. Můžete si vyzkoušet a poskytnout zpětnou vazbu. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -38,7 +38,7 @@ Data můžete zkopírovat z Impala do úložiště dat žádné podporované jí
 
 ## <a name="get-started"></a>Začínáme
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Následující části obsahují podrobnosti o vlastnosti, které slouží k určení konkrétní entity služby Data Factory ke konektoru Impala.
 

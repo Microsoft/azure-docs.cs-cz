@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: f45a9dfaf2863b81083fbfb647f420d9a4baed5a
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 58bfae51fda10d14d9b1c4ea34cc10345d9a90ac
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264659"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318054"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
 Vzory jsou navrženy a zvyšte tak přesnost při několik utterances jsou velmi podobné. Poskytnutím vzor pro utterance může obsahovat LEOŠ vysoce důvěryhodných předpovědi. 
@@ -50,7 +50,9 @@ Zadané dostatek utterances příklad, budou moci zvýšit důvěru předpovědi
 Vzor je nalezena shoda podle nejprve zjišťování entit uvnitř vzor, pak ověření zbytek slova a word pořadí vzoru. Ve vzoru pro vzor tak, aby odpovídaly se vyžadují entity. 
 
 ## <a name="pattern-syntax"></a>Vzor syntaxe
-Entity v vzory jsou obklopená složené závorky. Vzory může obsahovat entity a entity role. Pattern.any je používáno pouze pro vzorce entity. Syntaxe pro každou z nich je vysvětlené v následujících částech.
+Vzor syntaxe je šablona pro utterance. Šablona musí obsahovat slova a entity, které chcete porovnat a také slova nebo interpunkční znaménka, které chcete ignorovat. Je **není** regulární výraz. 
+
+Entity v vzory jsou obklopená složené závorky, `{}`. Vzory může obsahovat entity a entity role. Pattern.any je používáno pouze pro vzorce entity. Syntaxe je vysvětlené v následujících částech.
 
 ### <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Syntaxe pro přidání entity do šablony vzor
 Pokud chcete přidat entitu do šablony vzor, uzavřete název entity s složené závorky, `Who does {Employee} manage?`. 
@@ -90,7 +92,7 @@ Předpokládejme například, máte vzor obsahující obě volitelné syntaxe `[
 
 Vezměte v úvahu vzoru '[vyhledá] e-mailů o {subjektu} [{osoba}]'. V následující utterances **subjektu** a **osoba** entity se extrahují správně a nesprávně:
 
-|Utterance|Entita|Správné extrakce|
+|utterance|Entita|Správné extrakce|
 |--|--|:--:|
 |e-mailu o PSI z Jan|předmět = PSI<br>osoba = Jan|✔|
 |e-mailu o man z La Mancha|předmět = na man<br>osoba = La Mancha|X|
@@ -109,7 +111,7 @@ Označit volitelné textu v utterance pomocí syntaxe regulárního výrazu hran
 Interpunkční znaménka, například `.`, `!`, a `?` můžete ignorovat pomocí hranaté závorky. Chcete-li ignorovat tyto značky, každý značky musí být v samostatné vzoru. Volitelné syntaxe aktuálně nepodporuje ignoruje položku v seznamu několik položek.
 
 ## <a name="patterns-only"></a>Vzory pouze
-LEOŠ umožňuje aplikaci, bez jakékoli utterances příklad v záměr. To je povoleno pouze v případě, že se nepoužívají vzory. Vzory vyžadují minimálně jednu entitu v každé vzoru. Pro aplikaci jen vzor vzoru nesmí obsahovat naučili počítač entity, protože ty vyžadují utterances příklad. 
+LEOŠ umožňuje aplikaci, bez jakékoli utterances příklad v záměr. Toto použití je povoleno pouze v případě, že se nepoužívají vzory. Vzory vyžadují minimálně jednu entitu v každé vzoru. Pro aplikaci jen vzor vzoru nesmí obsahovat naučili počítač entity, protože ty vyžadují utterances příklad. 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 Další informace [osvědčené postupy](luis-concept-best-practices.md).

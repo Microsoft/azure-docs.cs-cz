@@ -3,20 +3,20 @@ title: Kopírování dat nástroje Azure Data Factory | Microsoft Docs
 description: Poskytuje informace o nástroji pro kopírování dat v Azure Data Factory uživatelského rozhraní
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.author: jingwang
-ms.openlocfilehash: 5180a490a543b6cfc2a8129423f0e663de2e06e1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 06/18/2018
+ms.author: yexu
+ms.openlocfilehash: 8941ec26cef5e3dc2f17faf0d7eb843b76f8926f
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619418"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331833"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Nástroj pro kopírování dat v Azure Data Factory
 Nástroj Azure Data Factory kopírování dat usnadňuje a optimalizuje proces příjem dat do úložiště data lake, což je většinou první krok v případě integrace pomocí dat začátku do konce.  Ho šetří čas, zejména při použití Azure Data Factory pro načítání dat ze zdroje dat pro první. Některé z výhod použití tohoto nástroje jsou:

@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: juliako
-ms.openlocfilehash: 804a418f6ee88974d6e74a2c18bc5d01b6adf838
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c488060b9db0ba482d12eee2394e5149b918950e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788750"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331516"
 ---
 # <a name="media-intelligence"></a>Inteligentní funkce médií
 
@@ -50,8 +50,8 @@ Výstup obsahuje soubor JSON (insights.json) s všechny přehledy, které nebyly
 |Název|Popis|
 |---|---|
 |id|Identifikátor řádku.|
-|Text|Přepis, sám sebe.|
-|Jazyk|Přepis jazyk. Určená pro podporu přepis, kde každý řádek může mít jiný jazyk.|
+|text|Přepis, sám sebe.|
+|jazyk|Přepis jazyk. Určená pro podporu přepis, kde každý řádek může mít jiný jazyk.|
 |instance|Seznam časových rozsahů, kde se objevil tohoto řádku. Pokud je instance přepis, bude mít pouze 1 instancí.|
 
 Příklad:
@@ -83,14 +83,14 @@ Příklad:
 ] 
 ```
 
-### <a name="ocr"></a>Rozpoznávání znaků
+### <a name="ocr"></a>rozpoznávání znaků
 
 |Název|Popis|
 |---|---|
-|id|Identifikátor řádku rozpoznávání znaků.|
-|Text|Text rozpoznávání znaků.|
+|id|ID rozpoznávání znaků řádku.|
+|text|Text rozpoznávání znaků.|
 |Spolehlivosti|Rozpoznávání spolehlivosti.|
-|Jazyk|Jazyk rozpoznávání znaků.|
+|jazyk|Jazyk rozpoznávání znaků.|
 |instance|Seznam časových rozsahů, kde se objevil tento rozpoznávání znaků (stejné rozpoznávání znaků může objevit vícekrát).|
 
 ```json
@@ -126,14 +126,14 @@ Příklad:
   ],
 ```
 
-### <a name="keywords"></a>Klíčová slova
+### <a name="keywords"></a>klíčová slova
 
 |Název|Popis|
 |---|---|
-|id|Id – klíčové slovo.|
-|Text|Text – klíčové slovo.|
+|id|ID – klíčové slovo|
+|text|Text – klíčové slovo.|
 |Spolehlivosti|– Klíčové slovo rozpoznávání spolehlivosti.|
-|Jazyk|Jazyk – klíčové slovo (při překladu).|
+|jazyk|Jazyk – klíčové slovo (při překladu).|
 |instance|Seznam časových rozsahů, kde se toto klíčové slovo objevil (klíčové slovo může objevit vícekrát).|
 
 ```json
@@ -174,20 +174,20 @@ Příklad:
 
 ```
 
-### <a name="faces"></a>řezy
+### <a name="faces"></a>Řezy
 
 |Název|Popis|
 |---|---|
-|id|Id řez.|
+|id|ID řez.|
 |jméno|Název řez. Může být "Neznámý #0", zjištěné celebrit nebo osoby vyškolení zákazníka.|
 |Spolehlivosti|Identifikace spolehlivosti řez.|
-|description|V případě celebrit, jeho popis ("Satya Nadella se narodila v..."). |
+|description|V případě celebrit, její popis. |
 |thumbnalId|Id miniaturu této řez.|
-|knownPersonId|V případě známé osoba, jeho interní id.|
-|ID reference|V případě celebrit Bing jeho id Bing.|
+|knownPersonId|V případě známé osoby, jeho interní ID.|
+|ID reference|V případě celebrit Bing, jeho ID Bing.|
 |referenceType.|Aktuálně právě Bing.|
 |název|V případě celebrit, její název (například "ředitel společnosti Microsoft").|
-|ImageUrl|V případě celebrit, jeho adresa url obrázku.|
+|imageUrl|V případě celebrit, jeho adresa url obrázku.|
 |instance|Toto jsou instancí z kde tučné zobrazovaly v daném časovém rozsahu. Každá instance má také thumbnailsId. |
 
 ```json
@@ -219,13 +219,13 @@ Příklad:
 }]
 ```
 
-### <a name="labels"></a>Popisky
+### <a name="labels"></a>popisky
 
 |Název|Popis|
 |---|---|
-|id|id popisku.|
+|id|ID popisku.|
 |jméno|Název popisku (například "Počítač", 'TV').|
-|Jazyk|Popisek názvu jazyk (při překladu). BCP 47|
+|jazyk|Popisek názvu jazyk (při překladu). BCP 47|
 |instance|Seznam časových rozsahů, kde tento popisek zobrazovaly (štítek může objevit vícekrát). Každá instance obsahuje pole, spolehlivosti. |
 
 
@@ -282,8 +282,8 @@ Příklad:
 
 |Název|Popis|
 |---|---|
-|id|Identifikátor snímek.|
-|klíčových snímků|Seznam klíčových snímků v rámci snímek (každá má Id a seznam instancí časových rozsahů).|
+|id|Snímek ID.|
+|klíčových snímků|Seznam klíčových snímků v rámci snímek (každá má ID a seznam instancí časových rozsahů).|
 |instance|Seznam časových rozsahů tento snímek (snímky máte pouze 1 instancí).|
 
 ```json
@@ -331,35 +331,8 @@ Příklad:
   ]
 ```
 
-### <a name="audioeffects"></a>audioEffects
 
-|Název|Popis|
-|---|---|
-|id|ID zvuk vliv.|
-|type|Zvuk vliv typ (například Clapping, rozpoznávání řeči, ticho).|
-|instance|Seznam časových rozsahů, kde zobrazovaly tento zvuk vliv.|
-
-```json
-"audioEffects": [
-{
-    "id": 0,
-    "type": "Clapping",
-    "instances": [
-    {
-        "start": "00:00:00",
-        "end": "00:00:03"
-    },
-    {
-        "start": "00:01:13",
-        "end": "00:01:21"
-    }
-    ]
-}
-]
-```
-
-
-### <a name="sentiments"></a>chráněny
+### <a name="sentiments"></a>Chráněny
 
 Jsou chráněny agregován podle jejich sentimentType pole (neutrální/kladné nebo záporné). Například 0,1 0, 0,1 0,2.
 

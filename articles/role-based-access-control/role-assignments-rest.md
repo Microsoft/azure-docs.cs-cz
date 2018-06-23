@@ -1,6 +1,6 @@
 ---
 title: Správa přístupu pomocí RBAC a rozhraní API REST - Azure | Microsoft Docs
-description: Zjistěte, jak chcete spravovat přístup pro uživatele, skupiny a aplikace, pomocí rozhraní REST API a řízení přístupu na základě rolí (RBAC). To zahrnuje výpis přístup, udělení přístupu a odebrání přístupu.
+description: Zjistěte, jak chcete spravovat přístup pro uživatele, skupiny a aplikace, pomocí rozhraní REST API a řízení přístupu na základě rolí (RBAC). To zahrnuje jak přístup, udělení přístupu a odebrání přístupu.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -12,639 +12,109 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fdf246ede9fd030c03a70a90b35d4dd1fb645df1
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cfcb87fdff8105b25d4f7e63b775aaf9243d2a90
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294458"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317003"
 ---
 # <a name="manage-access-using-rbac-and-the-rest-api"></a>Správa přístupu pomocí RBAC a rozhraní REST API
 
 [Řízení přístupu na základě role (RBAC)](overview.md) je způsob, která můžete spravovat přístup k prostředkům v Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny a aplikace s použitím RBAC a rozhraní REST API.
 
-## <a name="list-all-role-assignments"></a>Zobrazí seznam všech přiřazení rolí
-Zobrazí seznam všech přiřazení role v zadaném oboru a subscopes.
+## <a name="list-access"></a>Přístup k seznamu
 
-K přiřazení rolí seznamu je nutné mít přístup k `Microsoft.Authorization/roleAssignments/read` operace v oboru. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
+V RBAC pro přístup k seznamu, můžete seznam přiřazení rolí. Chcete-li seznam přiřazení rolí, použijte jednu z [přiřazení rolí - seznamu](/rest/api/authorization/roleassignments/list) rozhraní REST API. Upřesňující výsledky, zadejte obor a volitelný filtr. Pro volání rozhraní API, musíte mít přístup k `Microsoft.Authorization/roleAssignments/read` operace v zadaném oboru. Několik [předdefinované role](built-in-roles.md) mají udělen přístup k této operaci.
 
-### <a name="request"></a>Žádost
-Použití **získat** metoda s následující identifikátor URI:
+1. Můžete začít s následující požadavek:
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version={api-version}&$filter={filter}
+    ```http
+    GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter={filter}
+    ```
 
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
+1. V rámci identifikátoru URI, nahraďte *{oboru}* s oborem, pro které chcete zobrazit seznam přiřazení rolí.
 
-1. Nahraďte *{oboru}* s oborem, pro který chcete zobrazit seznam přiřazení rolí. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
+    | Rozsah | Typ |
+    | --- | --- |
+    | `subscriptions/{subscriptionId}` | Předplatné |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
 
-   * Předplatné: /subscriptions/ {id předplatného}  
-   * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{api-version}* s 2015-07-01.
-3. Nahraďte *{filtru}* s podmínku, kterou chcete použít pro filtrování seznamu přiřazení role:
+1. Nahraďte *{filtru}* s podmínku, kterou chcete použít pro filtrování seznamu přiřazení role.
 
-   * Seznam přiřazení rolí pro pouze zadaný obor, není včetně přiřazení rolí v subscopes: `atScope()`    
-   * Seznam přiřazení rolí pro konkrétního uživatele, skupinu nebo aplikaci: `principalId%20eq%20'{objectId of user, group, or service principal}'`  
-   * Seznam přiřazení rolí pro konkrétního uživatele, včetně těch, které jsou zděděno od skupiny | `assignedTo('{objectId of user}')`
+    | Filtr | Popis |
+    | --- | --- |
+    | `$filter=atScope()` | Zobrazí seznam přiřazení rolí pro pouze zadaný obor, není včetně přiřazení rolí v subscopes. |
+    | `$filter=principalId%20eq%20'{objectId}'` | Zobrazí seznam přiřazení rolí pro zadaného uživatele, skupiny nebo objektu služby. |
+    | `$filter=assignedTo('{objectId}')` | Zobrazí seznam přiřazení rolí pro zadaného uživatele, včetně těch, které jsou zděděno od skupiny. |
 
-### <a name="response"></a>Odpověď
-Stavový kód: 200
+## <a name="grant-access"></a>Udělení přístupu
 
-```
-{
-  "value": [
+V RBAC udělit přístup, můžete vytvořit přiřazení role. Chcete-li vytvořit přiřazení role, použijte [vytvořit přiřazení Role -](/rest/api/authorization/roleassignments/create) REST API a zadejte objekt zabezpečení, definice role a obor. Toto rozhraní API volat, musí mít přístup k `Microsoft.Authorization/roleAssignments/write` operaci. Z předdefinovaných rolí pouze [vlastníka](built-in-roles.md#owner) a [správce přístupu uživatelů](built-in-roles.md#user-access-administrator) mají udělen přístup k této operaci.
+
+1. Použití [definice rolí - seznamu](/rest/api/authorization/roledefinitions/list) REST API nebo najdete [předdefinované role](built-in-roles.md) získat identifikátor pro definici role, kterou chcete přiřadit.
+
+1. Generovat jedinečný identifikátor, který se použije pro identifikátor přiřazení role pomocí nástroje identifikátor GUID. Identifikátor má formát: `00000000-0000-0000-0000-000000000000`
+
+1. Můžete začít s následující žádosti a text:
+
+    ```http
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
+    ```
+
+    ```json
     {
       "properties": {
-        "roleDefinitionId": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
-        "principalId": "2f9d4375-cbf1-48e8-83c9-2a0be4cb33fb",
-        "scope": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-        "createdOn": "2015-10-08T07:28:24.3905077Z",
-        "updatedOn": "2015-10-08T07:28:24.3905077Z",
-        "createdBy": "877f0ab8-9c5f-420b-bf88-a1c6c7e2643e",
-        "updatedBy": "877f0ab8-9c5f-420b-bf88-a1c6c7e2643e"
-      },
-      "id": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleAssignments/baa6e199-ad19-4667-b768-623fde31aedd",
-      "type": "Microsoft.Authorization/roleAssignments",
-      "name": "baa6e199-ad19-4667-b768-623fde31aedd"
+        "roleDefinitionId": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}",
+        "principalId": "{principalId}"
+      }
     }
-  ],
-  "nextLink": null
-}
+    ```
+    
+1. V rámci identifikátoru URI, nahraďte *{oboru}* s oborem pro přiřazení role.
 
-```
+    | Rozsah | Typ |
+    | --- | --- |
+    | `subscriptions/{subscriptionId}` | Předplatné |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
 
-## <a name="get-information-about-a-role-assignment"></a>Získat informace o přiřazení role
-Získá informace o přiřazení jedné role určeného identifikátor přiřazení role.
+1. Nahraďte *{roleAssignmentName}* s identifikátorem GUID přiřazení role.
 
-Chcete-li získat informace o přiřazení role, musíte mít přístup k `Microsoft.Authorization/roleAssignments/read` operaci. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
+1. V těle žádosti nahradit *{subscriptionId}* s ID vašeho předplatného.
 
-### <a name="request"></a>Žádost
-Použití **získat** metoda s následující identifikátor URI:
+1. Nahraďte *{hodnoty vlastnosti roleDefinitionId}* s identifikátorem definici role.
 
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
+1. Nahraďte *{principalId}* s identifikátor objektu uživatele, skupiny nebo instanční objekt, který se přiřadí role.
 
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
+## <a name="remove-access"></a>Odebrat přístup
 
-1. Nahraďte *{oboru}* s oborem, pro který chcete zobrazit seznam přiřazení rolí. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
+V RBAC k odebrání přístupu, odeberete přiřazení role. Pokud chcete odstranit přiřazení role, použijte [odstranit přiřazení Role -](/rest/api/authorization/roleassignments/delete) REST API. Toto rozhraní API volat, musí mít přístup k `Microsoft.Authorization/roleAssignments/delete` operaci. Z předdefinovaných rolí pouze [vlastníka](built-in-roles.md#owner) a [správce přístupu uživatelů](built-in-roles.md#user-access-administrator) mají udělen přístup k této operaci.
 
-   * Předplatné: /subscriptions/ {id předplatného}  
-   * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role přiřazení}* s identifikátorem GUID přiřazení role.
-3. Nahraďte *{api-version}* s 2015-07-01.
+1. Získáte přiřazení role identifikátor (GUID). Tento identifikátor je vrácena, pokud nejprve vytvořit přiřazení role nebo je můžete získat tak, že uvedete přiřazení rolí.
 
-### <a name="response"></a>Odpověď
-Stavový kód: 200
+1. Můžete začít s následující požadavek:
 
-```
-{
-  "properties": {
-    "roleDefinitionId": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
-    "principalId": "672f1afa-526a-4ef6-819c-975c7cd79022",
-    "scope": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e",
-    "createdOn": "2015-10-05T08:36:26.4014813Z",
-    "updatedOn": "2015-10-05T08:36:26.4014813Z",
-    "createdBy": "877f0ab8-9c5f-420b-bf88-a1c6c7e2643e",
-    "updatedBy": "877f0ab8-9c5f-420b-bf88-a1c6c7e2643e"
-  },
-  "id": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleAssignments/196965ae-6088-4121-a92a-f1e33fdcc73e",
-  "type": "Microsoft.Authorization/roleAssignments",
-  "name": "196965ae-6088-4121-a92a-f1e33fdcc73e"
-}
+    ```http
+    DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
+    ```
 
-```
+1. V rámci identifikátoru URI, nahraďte *{oboru}* s oborem pro odebrání přiřazení role.
 
-## <a name="create-a-role-assignment"></a>Umožňuje vytvořit přiřazení role
-Vytvořte přiřazení role v zadaném oboru pro zadaný objekt zabezpečení udělení zadané roli.
+    | Rozsah | Typ |
+    | --- | --- |
+    | `subscriptions/{subscriptionId}` | Předplatné |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Skupina prostředků |
+    | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1/ providers/Microsoft.Web/sites/mysite1` | Prostředek |
 
-Pokud chcete vytvořit přiřazení role, musíte mít přístup k `Microsoft.Authorization/roleAssignments/write` operaci. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
-
-### <a name="request"></a>Žádost
-Použití **PUT** metoda s následující identifikátor URI:
-
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
-
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
-
-1. Nahraďte *{oboru}* k oboru, ve kterém chcete vytvořit přiřazení role. Když vytvoříte přiřazení role v nadřazeném oboru, všechny podřízené obory dědí stejné přiřazení role. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
-
-   * Předplatné: /subscriptions/ {id předplatného}  
-   * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1   
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role přiřazení}* s nový identifikátor GUID, který se stane identifikátor GUID nové přiřazení role.
-3. Nahraďte *{api-version}* s 2015-07-01.
-
-Tělo žádosti zadejte hodnoty v následujícím formátu:
-
-```
-{
-  "properties": {
-    "roleDefinitionId": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network/providers/Microsoft.Network/virtualNetworks/EASTUS-VNET-01/subnets/Devices-Engineering-ProjectRND/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
-    "principalId": "5ac84765-1c8c-4994-94b2-629461bd191b"
-  }
-}
-
-```
-
-| Název elementu | Požaduje se | Typ | Popis |
-| --- | --- | --- | --- |
-| hodnoty vlastnosti roleDefinitionId |Ano |Řetězec |Identifikátor role. Formát identifikátoru je: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
-| principalId |Ano |Řetězec |objectId přiřazenou roli hlavního Azure AD (uživatele, skupinu nebo objekt služby). |
-
-### <a name="response"></a>Odpověď
-Stavový kód: 201
-
-```
-{
-  "properties": {
-    "roleDefinitionId": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
-    "principalId": "5ac84765-1c8c-4994-94b2-629461bd191b",
-    "scope": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network/providers/Microsoft.Network/virtualNetworks/EASTUS-VNET-01/subnets/Devices-Engineering-ProjectRND",
-    "createdOn": "2015-12-16T00:27:19.6447515Z",
-    "updatedOn": "2015-12-16T00:27:19.6447515Z",
-    "createdBy": null,
-    "updatedBy": "877f0ab8-9c5f-420b-bf88-a1c6c7e2643e"
-  },
-  "id": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network/providers/Microsoft.Network/virtualNetworks/EASTUS-VNET-01/subnets/Devices-Engineering-ProjectRND/providers/Microsoft.Authorization/roleAssignments/2e9e86c8-0e91-4958-b21f-20f51f27bab2",
-  "type": "Microsoft.Authorization/roleAssignments",
-  "name": "2e9e86c8-0e91-4958-b21f-20f51f27bab2"
-}
-
-```
-
-## <a name="delete-a-role-assignment"></a>Umožňuje odstranit přiřazení role
-Umožňuje odstranit přiřazení role v zadaném oboru.
-
-Pokud chcete odstranit přiřazení role, musíte mít přístup k `Microsoft.Authorization/roleAssignments/delete` operaci. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
-
-### <a name="request"></a>Žádost
-Použití **odstranit** metoda s následující identifikátor URI:
-
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{role-assignment-id}?api-version={api-version}
-
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
-
-1. Nahraďte *{oboru}* k oboru, ve kterém chcete vytvořit přiřazení role. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
-
-   * Předplatné: /subscriptions/ {id předplatného}  
-   * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role přiřazení}* s id přiřazení role identifikátor GUID.
-3. Nahraďte *{api-version}* s 2015-07-01.
-
-### <a name="response"></a>Odpověď
-Stavový kód: 200
-
-```
-{
-  "properties": {
-    "roleDefinitionId": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
-    "principalId": "5ac84765-1c8c-4994-94b2-629461bd191b",
-    "scope": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network/providers/Microsoft.Network/virtualNetworks/EASTUS-VNET-01/subnets/Devices-Engineering-ProjectRND",
-    "createdOn": "2015-12-17T23:21:40.8921564Z",
-    "updatedOn": "2015-12-17T23:21:40.8921564Z",
-    "createdBy": "877f0ab8-9c5f-420b-bf88-a1c6c7e2643e",
-    "updatedBy": "877f0ab8-9c5f-420b-bf88-a1c6c7e2643e"
-  },
-  "id": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network/providers/Microsoft.Network/virtualNetworks/EASTUS-VNET-01/subnets/Devices-Engineering-ProjectRND/providers/Microsoft.Authorization/roleAssignments/5eec22ee-ea5c-431e-8f41-82c560706fd2",
-  "type": "Microsoft.Authorization/roleAssignments",
-  "name": "5eec22ee-ea5c-431e-8f41-82c560706fd2"
-}
-
-```
-
-## <a name="list-all-roles"></a>Zobrazí seznam všech rolí
-Obsahuje seznam všech rolí, které jsou k dispozici pro přiřazení v zadaném oboru.
-
-Seznam rolí musíte mít přístup k `Microsoft.Authorization/roleDefinitions/read` operace v oboru. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
-
-### <a name="request"></a>Žádost
-Použití **získat** metoda s následující identifikátor URI:
-
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?api-version={api-version}&$filter={filter}
-
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
-
-1. Nahraďte *{oboru}* s oborem, pro který chcete zobrazit seznam rolí. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
-
-   * Předplatné: /subscriptions/ {id předplatného}  
-   * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * /Subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1 prostředků  
-2. Nahraďte *{api-version}* s 2015-07-01.
-3. Nahraďte *{filtru}* s podmínku, kterou chcete použít pro filtrování seznamu rolí:
-
-   * Seznam rolí, které jsou k dispozici pro přiřazení v zadaném oboru a všechny její podřízené obory: `atScopeAndBelow()`
-   * Vyhledejte roli pomocí přesný zobrazovaný název: `roleName%20eq%20'{role-display-name}'`. Pomocí formuláře kódovaná adresou URL přesný zobrazovaného názvu role. Pro instanci, `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
-
-### <a name="response"></a>Odpověď
-Stavový kód: 200
-
-```
-{
-  "value": [
-    {
-      "properties": {
-        "roleName": "Virtual Machine Contributor",
-        "type": "BuiltInRole",
-        "description": "Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they\u2019re connected to.",
-        "assignableScopes": [
-          "/"
-        ],
-        "permissions": [
-          {
-            "actions": [
-              "Microsoft.Authorization/*/read",
-              "Microsoft.Compute/availabilitySets/*",
-              "Microsoft.Compute/locations/*",
-              "Microsoft.Compute/virtualMachines/*",
-              "Microsoft.Compute/virtualMachineScaleSets/*",
-              "Microsoft.Insights/alertRules/*",
-              "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
-              "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
-              "Microsoft.Network/loadBalancers/inboundNatPools/join/action",
-              "Microsoft.Network/loadBalancers/inboundNatRules/join/action",
-              "Microsoft.Network/loadBalancers/read",
-              "Microsoft.Network/locations/*",
-              "Microsoft.Network/networkInterfaces/*",
-              "Microsoft.Network/networkSecurityGroups/join/action",
-              "Microsoft.Network/networkSecurityGroups/read",
-              "Microsoft.Network/publicIPAddresses/join/action",
-              "Microsoft.Network/publicIPAddresses/read",
-              "Microsoft.Network/virtualNetworks/read",
-              "Microsoft.Network/virtualNetworks/subnets/join/action",
-              "Microsoft.Resources/deployments/*",
-              "Microsoft.Resources/subscriptions/resourceGroups/read",
-              "Microsoft.Storage/storageAccounts/listKeys/action",
-              "Microsoft.Storage/storageAccounts/read",
-              "Microsoft.Support/*"
-            ],
-            "notActions": []
-          }
-        ],
-        "createdOn": "2015-06-02T00:18:27.3542698Z",
-        "updatedOn": "2015-12-08T03:16:55.6170255Z",
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "id": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
-      "type": "Microsoft.Authorization/roleDefinitions",
-      "name": "9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
-    }
-  ],
-  "nextLink": null
-}
-
-```
-
-## <a name="get-information-about-a-role"></a>Získat informace o roli
-Získá informace o jedné role určeného identifikátor definice role. Chcete-li získat informace o jedné role pomocí názvu zobrazení, přečtěte si téma [seznam všech rolí](role-assignments-rest.md#list-all-roles).
-
-Chcete-li získat informace o roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/read` operaci. Mezi integrované role mají přístup k této operace. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
-
-### <a name="request"></a>Žádost
-Použití **získat** metoda s následující identifikátor URI:
-
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
-
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
-
-1. Nahraďte *{oboru}* s oborem, pro který chcete zobrazit seznam přiřazení rolí. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
-
-   * Předplatné: /subscriptions/ {id předplatného}  
-   * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role definice}* s identifikátorem GUID definice role.
-3. Nahraďte *{api-version}* s 2015-07-01.
-
-### <a name="response"></a>Odpověď
-Stavový kód: 200
-
-```
-{
-  "value": [
-    {
-      "properties": {
-        "roleName": "Virtual Machine Contributor",
-        "type": "BuiltInRole",
-        "description": "Lets you manage virtual machines, but not access to them, and not the virtual network or storage account they\u2019re connected to.",
-        "assignableScopes": [
-          "/"
-        ],
-        "permissions": [
-          {
-            "actions": [
-              "Microsoft.Authorization/*/read",
-              "Microsoft.Compute/availabilitySets/*",
-              "Microsoft.Compute/locations/*",
-              "Microsoft.Compute/virtualMachines/*",
-              "Microsoft.Compute/virtualMachineScaleSets/*",
-              "Microsoft.Insights/alertRules/*",
-              "Microsoft.Network/applicationGateways/backendAddressPools/join/action",
-              "Microsoft.Network/loadBalancers/backendAddressPools/join/action",
-              "Microsoft.Network/loadBalancers/inboundNatPools/join/action",
-              "Microsoft.Network/loadBalancers/inboundNatRules/join/action",
-              "Microsoft.Network/loadBalancers/read",
-              "Microsoft.Network/locations/*",
-              "Microsoft.Network/networkInterfaces/*",
-              "Microsoft.Network/networkSecurityGroups/join/action",
-              "Microsoft.Network/networkSecurityGroups/read",
-              "Microsoft.Network/publicIPAddresses/join/action",
-              "Microsoft.Network/publicIPAddresses/read",
-              "Microsoft.Network/virtualNetworks/read",
-              "Microsoft.Network/virtualNetworks/subnets/join/action",
-              "Microsoft.Resources/deployments/*",
-              "Microsoft.Resources/subscriptions/resourceGroups/read",
-              "Microsoft.Storage/storageAccounts/listKeys/action",
-              "Microsoft.Storage/storageAccounts/read",
-              "Microsoft.Support/*"
-            ],
-            "notActions": []
-          }
-        ],
-        "createdOn": "2015-06-02T00:18:27.3542698Z",
-        "updatedOn": "2015-12-08T03:16:55.6170255Z",
-        "createdBy": null,
-        "updatedBy": null
-      },
-      "id": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
-      "type": "Microsoft.Authorization/roleDefinitions",
-      "name": "9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
-    }
-  ],
-  "nextLink": null
-}
-
-```
-
-## <a name="create-a-custom-role"></a>Vytvořit vlastní roli
-Vytvořte vlastní roli.
-
-Pokud chcete vytvořit vlastní roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/write` operaci na všech `AssignableScopes`. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
-
-### <a name="request"></a>Žádost
-Použití **PUT** metoda s následující identifikátor URI:
-
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
-
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
-
-1. Nahraďte *{oboru}* s prvním *AssignableScope* vlastní role. Následující příklady ukazují, jak lze určit obor pro různé úrovně.
-
-   * Předplatné: /subscriptions/ {id předplatného}  
-   * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role definice}* s nový identifikátor GUID, který se stane identifikátor GUID novou vlastní roli.
-3. Nahraďte *{api-version}* s 2015-07-01.
-
-Tělo žádosti zadejte hodnoty v následujícím formátu:
-
-```
-{
-  "name": "7c8c8ccd-9838-4e42-b38c-60f0bbe9a9d7",
-  "properties": {
-    "roleName": "Virtual Machine Operator",
-    "description": "Lets you monitor virtual machines and restart them.",
-    "type": "CustomRole",
-    "permissions": [
-      {
-        "actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.Compute/*/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Network/*/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Storage/*/read",
-          "Microsoft.Support/*",
-          "Microsoft.Compute/virtualMachines/start/action",
-          "Microsoft.Compute/virtualMachines/restart/action"
-        ],
-        "notActions": []
-      }
-    ],
-    "assignableScopes": [
-      "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"
-    ]
-  }
-}
-
-```
-
-| Název elementu | Požaduje se | Typ | Popis |
-| --- | --- | --- | --- |
-| jméno |Ano |Řetězec |Identifikátor GUID vlastní role. |
-| properties.roleName |Ano |Řetězec |Zobrazovaný název vlastní role. Maximální velikost 128 znaků. |
-| Properties.Description |Ne |Řetězec |Popis vlastní role. Maximální velikost 1024 znaků. |
-| properties.type |Ano |Řetězec |Nastavte na "CustomRole." |
-| Properties.Permissions.Actions |Ano |řetězec] |Pole řetězců akce zadání operace udělit pomocí vlastní role. |
-| properties.permissions.notActions |Ne |řetězec] |Pole řetězců akce zadání operace, které chcete vyloučit z operace udělit pomocí vlastní role. |
-| properties.assignableScopes |Ano |řetězec] |Pole obory, kde můžete použít vlastní role. |
-
-### <a name="response"></a>Odpověď
-Stavový kód: 201
-
-```
-{
-  "properties": {
-    "roleName": "Virtual Machine Operator",
-    "type": "CustomRole",
-    "description": "Lets you monitor virtual machines and restart them.",
-    "assignableScopes": [
-      "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"
-    ],
-    "permissions": [
-      {
-        "actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.Compute/*/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Network/*/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Storage/*/read",
-          "Microsoft.Support/*",
-          "Microsoft.Compute/virtualMachines/start/action",
-          "Microsoft.Compute/virtualMachines/restart/action"
-        ],
-        "notActions": []
-      }
-    ],
-    "createdOn": "2015-12-18T00:10:51.4662695Z",
-    "updatedOn": "2015-12-18T00:10:51.4662695Z",
-    "createdBy": "877f0ab8-9c5f-420b-bf88-a1c6c7e2643e",
-    "updatedBy": "877f0ab8-9c5f-420b-bf88-a1c6c7e2643e"
-  },
-  "id": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleDefinitions/7c8c8ccd-9838-4e42-b38c-60f0bbe9a9d7",
-  "type": "Microsoft.Authorization/roleDefinitions",
-  "name": "7c8c8ccd-9838-4e42-b38c-60f0bbe9a9d7"
-}
-
-```
-
-## <a name="update-a-custom-role"></a>Aktualizovat vlastní role
-Upravte vlastní roli.
-
-Pokud chcete upravit vlastní roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/write` operaci na všech `AssignableScopes`. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
-
-### <a name="request"></a>Žádost
-Použití **PUT** metoda s následující identifikátor URI:
-
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
-
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
-
-1. Nahraďte *{oboru}* s prvním *AssignableScope* vlastní role. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
-
-   * Předplatné: /subscriptions/ {id předplatného}  
-   * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role definice}* s identifikátorem GUID vlastní role.
-3. Nahraďte *{api-version}* s 2015-07-01.
-
-Tělo žádosti zadejte hodnoty v následujícím formátu:
-
-```
-{
-  "name": "7c8c8ccd-9838-4e42-b38c-60f0bbe9a9d7",
-  "properties": {
-    "roleName": "Virtual Machine Operator",
-    "description": "Lets you monitor virtual machines and restart them.",
-    "type": "CustomRole",
-    "permissions": [
-      {
-        "actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.Compute/*/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Network/*/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Storage/*/read",
-          "Microsoft.Support/*",
-          "Microsoft.Compute/virtualMachines/start/action",
-          "Microsoft.Compute/virtualMachines/restart/action"
-        ],
-        "notActions": []
-      }
-    ],
-    "assignableScopes": [
-      "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"
-    ]
-  }
-}
-
-```
-
-| Název elementu | Požaduje se | Typ | Popis |
-| --- | --- | --- | --- |
-| jméno |Ano |Řetězec |Identifikátor GUID vlastní role. |
-| properties.roleName |Ano |Řetězec |Zobrazovaný název aktualizované vlastní role. |
-| Properties.Description |Ne |Řetězec |Popis aktualizované vlastní role. |
-| properties.type |Ano |Řetězec |Nastavte na "CustomRole." |
-| Properties.Permissions.Actions |Ano |řetězec] |Pole řetězců akce zadání operací, u kterých aktualizované vlastní role uděluje přístup. |
-| properties.permissions.notActions |Ne |řetězec] |Pole určující operace, které chcete vyloučit z operací, které aktualizované vlastní role uděluje řetězce akce. |
-| properties.assignableScopes |Ano |řetězec] |Pole obory, ve kterých lze použít aktualizované vlastní role. |
-
-### <a name="response"></a>Odpověď
-Stavový kód: 201
-
-```
-{
-  "properties": {
-    "roleName": "Virtual Machine Operator",
-    "type": "CustomRole",
-    "description": "Lets you monitor virtual machines and restart them.",
-    "assignableScopes": [
-      "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"
-    ],
-    "permissions": [
-      {
-        "actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.Compute/*/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Network/*/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Storage/*/read",
-          "Microsoft.Support/*",
-          "Microsoft.Compute/virtualMachines/start/action",
-          "Microsoft.Compute/virtualMachines/restart/action"
-        ],
-        "notActions": []
-      }
-    ],
-    "createdOn": "2015-12-18T00:10:51.4662695Z",
-    "updatedOn": "2015-12-18T00:10:51.4662695Z",
-    "createdBy": "877f0ab8-9c5f-420b-bf88-a1c6c7e2643e",
-    "updatedBy": "877f0ab8-9c5f-420b-bf88-a1c6c7e2643e"
-  },
-  "id": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleDefinitions/7c8c8ccd-9838-4e42-b38c-60f0bbe9a9d7",
-  "type": "Microsoft.Authorization/roleDefinitions",
-  "name": "7c8c8ccd-9838-4e42-b38c-60f0bbe9a9d7"
-}
-
-```
-
-## <a name="delete-a-custom-role"></a>Odstranit vlastní roli
-Odstraňte vlastní roli.
-
-Chcete-li odstranit vlastní roli, musíte mít přístup k `Microsoft.Authorization/roleDefinitions/delete` operaci na všech `AssignableScopes`. Z předdefinovaných rolí pouze *vlastníka* a *správce přístupu uživatelů* mají udělen přístup k této operaci. Další informace o přiřazení rolí a správu přístupu k prostředkům Azure najdete v tématu [řízení přístupu Azure na základě rolí](role-assignments-portal.md).
-
-### <a name="request"></a>Žádost
-Použití **odstranit** metoda s následující identifikátor URI:
-
-    https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}?api-version={api-version}
-
-V rámci identifikátoru URI proveďte následující náhradu k přizpůsobení vaší žádosti:
-
-1. Nahraďte *{oboru}* s oborem, na které chcete odstranit definici role. Následující příklady ukazují, jak lze určit obor pro různé úrovně:
-
-   * Předplatné: /subscriptions/ {id předplatného}  
-   * Skupina prostředků: /subscriptions/ {id předplatného} / Skupinyprostředků/myresourcegroup1  
-   * Prostředek: /subscriptions/{subscription-id}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1  
-2. Nahraďte *{id role definice}* s id definice role GUID vlastní role.
-3. Nahraďte *{api-version}* s 2015-07-01.
-
-### <a name="response"></a>Odpověď
-Stavový kód: 200
-
-```
-{
-  "properties": {
-    "roleName": "Virtual Machine Operator",
-    "type": "CustomRole",
-    "description": "Lets you monitor virtual machines and restart them.",
-    "assignableScopes": [
-      "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"
-    ],
-    "permissions": [
-      {
-        "actions": [
-          "Microsoft.Authorization/*/read",
-          "Microsoft.Compute/*/read",
-          "Microsoft.Insights/alertRules/*",
-          "Microsoft.Network/*/read",
-          "Microsoft.Resources/subscriptions/resourceGroups/read",
-          "Microsoft.Storage/*/read",
-          "Microsoft.Support/*",
-          "Microsoft.Compute/virtualMachines/start/action",
-          "Microsoft.Compute/virtualMachines/restart/action"
-        ],
-        "notActions": []
-      }
-    ],
-    "createdOn": "2015-12-16T00:07:02.9236555Z",
-    "updatedOn": "2015-12-16T00:07:02.9236555Z",
-    "createdBy": "877f0ab8-9c5f-420b-bf88-a1c6c7e2643e",
-    "updatedBy": "877f0ab8-9c5f-420b-bf88-a1c6c7e2643e"
-  },
-  "id": "/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/providers/Microsoft.Authorization/roleDefinitions/0bd62a70-e1b8-4e0b-a7c2-75cab365c95b",
-  "type": "Microsoft.Authorization/roleDefinitions",
-  "name": "0bd62a70-e1b8-4e0b-a7c2-75cab365c95b"
-}
-
-```
+1. Nahraďte *{roleAssignmentName}* s identifikátorem GUID přiřazení role.
 
 ## <a name="next-steps"></a>Další postup
 
-[!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
+- [Nasazení prostředků pomocí šablon Resource Manageru a jeho rozhraní REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [Referenční dokumentace rozhraní API Azure REST](/rest/api/azure/)
+- [Vytvoření vlastních rolí pomocí rozhraní REST API](custom-roles-rest.md)

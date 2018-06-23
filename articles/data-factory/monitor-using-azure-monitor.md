@@ -11,22 +11,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: 234dacca152dca6e8e212a86f3921c9355f640e4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e60f368115e91cbd8972af8dfa7f0f3d6ea8765b
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620336"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337594"
 ---
-# <a name="monitor-data-factories-using-azure-monitor"></a>Monitorovat pomocí monitorování Azure data Factory  
+# <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Výstrahy a monitorovat pomocí monitorování Azure data Factory
 Cloudové aplikace jsou komplexní s mnoha přesunutí částmi. Monitorování poskytuje data a ujistěte se, že vaše aplikace zůstává nahoru a spuštěna v dobrém stavu. Také pomáhá stave vypnout potenciální problémy nebo vyřešit potíže s uplynulou těch, které jsou. Kromě toho můžete data monitorování a získáte přehled o hloubkové o vaší aplikaci. Tato znalostní báze můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
 
-Monitorování Azure poskytuje základní úroveň infrastruktura metriky a protokoly pro většina služeb v Microsoft Azure. Podrobnosti najdete v tématu [Přehled monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Azure diagnostické protokoly jsou protokoly vygenerované prostředek, které poskytují bohatou a často data o operaci prostředku. Objekt pro vytváření dat výstupy diagnostické protokoly v nástroji Sledování Azure. 
+Monitorování Azure poskytuje základní úroveň infrastruktura metriky a protokoly pro většina služeb v Microsoft Azure. Podrobnosti najdete v tématu [Přehled monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Azure diagnostické protokoly jsou protokoly vygenerované prostředek, které poskytují bohatou a často data o operaci prostředku. Objekt pro vytváření dat výstupy diagnostické protokoly v nástroji Sledování Azure.
 
 > [!NOTE]
 > Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [monitorování a Správa kanálů v objektu pro vytváření dat version1](v1/data-factory-monitor-manage-pipelines.md).
+
+## <a name="persist-data-factory-data"></a>Zachovat Data objektu pro vytváření dat
+Objekt pro vytváření dat ukládá jenom kanálu spouští dat 45 dní. Pokud chcete zachovat kanálu spouští dat pro více než 45 dnů pomocí monitorování Azure, nemůžete provádět směrování pouze diagnostických protokolů pro analýzu, vám může zachovat do účtu úložiště a, abyste získali informace o vytváření po dobu trvání vaší chossing.
 
 ## <a name="diagnostic-logs"></a>Diagnostické protokoly
 
@@ -101,18 +104,18 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
             ]
     },
     "location": ""
-} 
+}
 ```
 
 | Vlastnost | Typ | Popis |
 | --- | --- | --- |
-| StorageAccountId |Řetězec | ID prostředku účtu úložiště, do kterého chcete odesílání diagnostických protokolů |
-| serviceBusRuleId |Řetězec | Sběrnice služby pravidlo ID oboru názvů sběrnice služby, ve kterém chcete mít centra událostí vytvořit pro streamování diagnostické protokoly. Pravidlo ID je ve formátu: {service bus ID prostředku} /authorizationrules/ {název klíče}.|
+| storageAccountId |Řetězec | ID prostředku účtu úložiště, do kterého chcete odesílání diagnostických protokolů |
+| serviceBusRuleId |Řetězec | Sběrnice služby pravidlo ID oboru názvů sběrnice služby, ve kterém chcete mít centra událostí vytvořit pro streamování diagnostické protokoly. Pravidlo ID je ve formátu: "{service bus ID prostředku} /authorizationrules/ {název klíče}".|
 | ID pracovního prostoru | Komplexní typ | Pole zrna metriky čas a jejich zásady uchovávání informací. V současné době je tato vlastnost prázdná. |
-|Průzkumníku metrik| Hodnoty parametru kanálu spustit mají být předány vyvolaná kanálu| Objekt JSON mapování názvy parametrů pro argument hodnoty | 
+|Průzkumníku metrik| Hodnoty parametru kanálu spustit mají být předány vyvolaná kanálu| Objekt JSON mapování názvy parametrů pro argument hodnoty |
 | Protokoly| Komplexní typ| Název kategorie protokolů diagnostiky pro typ prostředku. Pokud chcete získat seznam kategorií protokolů diagnostiky pro prostředek, nejprve proveďte nastavení pro diagnostiku operaci GET. |
 | category| Řetězec| Pole kategorií protokolu a jejich zásady uchovávání informací |
-| Časovými úseky | Řetězec | Členitost metriky, které jsou ukládány do formátu ISO 8601 doba trvání. Musí být PT1M (jedné minuty)|
+| časovými úseky | Řetězec | Členitost metriky, které jsou ukládány do formátu ISO 8601 doba trvání. Musí být PT1M (jedné minuty)|
 | povoleno| Logická hodnota | Určuje, zda je povoleno kolekci této kategorie metrika nebo protokolu pro tento prostředek|
 | retentionPolicy| Komplexní typ| Popisuje zásady uchovávání informací pro kategorii metrika nebo protokolu. Použít pro pouze možnost účet úložiště.|
 | dny| Int| Počet dní, které chcete zachovat metriky nebo protokoly. Hodnota 0 uchovává protokoly bez omezení. Použít pro pouze možnost účet úložiště. |
@@ -231,14 +234,14 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-[Další informace v tomto poli](https://msdn.microsoft.com/library/azure/dn931932.aspx)
+[Další informace v tomto poli](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings)
 
 ## <a name="schema-of-logs--events"></a>Schéma protokoly a události
 
 ### <a name="activity-run-logs-attributes"></a>Aktivita spustit protokoly atributy
 
 ```json
-{  
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -252,7 +255,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
    "activityName":"",
    "start":"",
    "end":"",
-   "properties:" 
+   "properties:"
        {
           "Input": "{
               "source": {
@@ -294,7 +297,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ### <a name="pipeline-run-logs-attributes"></a>Atributy protokoly spuštění kanálu
 
 ```json
-{  
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -307,7 +310,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
    "start":"",
    "end":"",
    "status":"",
-   "properties": 
+   "properties":
     {
       "Parameters": {
         "<parameter1Name>": "<parameter1Value>"
@@ -340,7 +343,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ### <a name="trigger-run-logs-attributes"></a>Spustit aktivační událost zaznamená atributy
 
 ```json
-{ 
+{
    "Level": "",
    "correlationId":"",
    "time":"",
@@ -362,7 +365,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
       },
       "SystemParameters": {}
     }
-} 
+}
 
 ```
 
@@ -388,7 +391,7 @@ Azure monitorování umožňuje využívat telemetrie a získáte přehled o vý
 
 ADFV2 vysílá následující metriky
 
-| **Metrika**           | **Metriky zobrazovaný název**         | **jednotka** | **Typ agregace** | **Popis**                                       |
+| **Metrika**           | **Metriky zobrazovaný název**         | **Jednotka** | **Typ agregace** | **Popis**                                       |
 |----------------------|---------------------------------|----------|----------------------|-------------------------------------------------------|
 | PipelineSucceededRun | Úspěšné metriky spuštění kanálu | Počet    | Celkem                | Celkový počet kanálů spustí úspěšně v rámci časového období minut |
 | PipelineFailedRuns   | Metriky spustí kanálu se nezdařilo    | Počet    | Celkem                | Celkový počet kanálů běží v rámci minutu okna se nezdařila    |
@@ -397,7 +400,7 @@ ADFV2 vysílá následující metriky
 | TriggerSucceededRuns | Aktivační událost metriky spustí bylo úspěšné  | Počet    | Celkem                | Celkový aktivační událost spustí úspěšně v rámci časového období minut   |
 | TriggerFailedRuns    | Aktivační událost metriky spuštění se nezdařilo     | Počet    | Celkem                | Celkový počet aktivační událost běží v rámci okno minut se nezdařilo      |
 
-Pro přístup k metriky, postupujte podle pokynů v článku – https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics 
+Pro přístup k metriky, postupujte podle pokynů v článku – https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics
 
 ## <a name="alerts"></a>Výstrahy
 
@@ -407,7 +410,7 @@ Můžete zvýšit výstrahy na podporované metriky v datové továrně. Klikně
 
 Tím přejdete **výstrahy** stránky.
 
-![stránka výstrah](media/monitor-using-azure-monitor/alerts_image2.png)
+![Stránka výstrah](media/monitor-using-azure-monitor/alerts_image2.png)
 
 Můžete také přihlásit k portálu Azure a klikněte na tlačítko **monitorování –&gt; výstrahy** k dosažení **výstrahy** stránky přímo.
 
@@ -417,7 +420,7 @@ Můžete také přihlásit k portálu Azure a klikněte na tlačítko **monitoro
 
 1.  Klikněte na tlačítko **+ nové pravidlo výstrahy** vytvořit nové oznámení.
 
-    ![nové pravidlo výstrahy](media/monitor-using-azure-monitor/alerts_image4.png)
+    ![Nové pravidlo výstrahy](media/monitor-using-azure-monitor/alerts_image4.png)
 
 2.  Definování **výstrahy podmínku**.
 
@@ -445,4 +448,4 @@ Můžete také přihlásit k portálu Azure a klikněte na tlačítko **monitoro
     ![Akce skupiny, obrazovky 4 4](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>Další postup
-V tématu [monitorování a Správa kanálů prostřednictvím kódu programu](monitor-programmatically.md) článku se dozvíte o monitorování a Správa kanálů spuštěním. 
+V tématu [monitorování a Správa kanálů prostřednictvím kódu programu](monitor-programmatically.md) článku se dozvíte o monitorování a Správa kanálů spuštěním.

@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2017
 ms.author: celested
-ms.reviewer: dastrock
+ms.reviewer: hirsin, jmprieur, elisol, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 0fde3cb77389994352b62f06d370c709fa115749
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 1c91c1ed8358f58ab7a4d9a697ec2d7933c4f137
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34155336"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316734"
 ---
 # <a name="sign-in-microsoft-account-and-azure-active-directory-users-in-a-single-application"></a>Přihlaste se uživatelům v jedné aplikaci Microsoft Account a Azure Active Directory
 V minulosti bylo integrovat dvou samostatných systémech vývojáři aplikací podporují i osobní účty Microsoft a pracovní účty ze služby Azure Active Directory. Koncový bod v2.0 Azure Active Directory (Azure AD) představuje novou verzi ověřování rozhraní API, která zjednodušuje tento proces. Koncový bod v2.0 Azure AD umožňuje přihlášení z obou typů účty pomocí jednoho integrace. Aplikace, které používají koncového bodu Azure AD v2.0 můžete také používat rozhraní REST API z [Microsoft Graph API](https://graph.microsoft.io) pomocí buď typ účtu.

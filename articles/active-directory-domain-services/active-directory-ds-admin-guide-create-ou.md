@@ -13,17 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 1facce770ca2b106d2e3113bb6d1a754ecb9376b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 15bd837149b9856897eb83f86052a26b24a21fb0
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211709"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334305"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Vytvoření organizační jednotce (OU) na spravované doméně služby Azure AD Domain Services
 Azure AD Domain Services spravovaných domén obsahovat dvě předdefinované kontejnery označované jako 'AADDC počítače' a 'AADDC uživatele'. Kontejner 'AADDC počítače, má objektů počítače pro všechny počítače, které jsou připojeny k spravované doméně. Kontejner 'AADDC uživatele' obsahuje uživatele a skupiny v klientovi Azure AD. V některých případech může být nutné vytvořit účty služeb na spravované domény k nasazení úloh. Pro tento účel můžete vytvořit vlastní organizační jednotce (OU) ve spravované doméně a vytvořte účty služby v rámci dané organizační jednotce. Tento článek ukazuje, jak vytvořit organizační jednotku ve vaší spravované domény.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Chcete-li provést úkoly vypsané v tomto článku, je třeba:

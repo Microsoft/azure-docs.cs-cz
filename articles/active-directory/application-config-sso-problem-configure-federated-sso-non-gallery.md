@@ -3,22 +3,23 @@ title: Problém konfigurace federované jednotné přihlašování pro aplikace 
 description: Adresa některé běžné problémy, ke kterým může dojít při konfiguraci federované jednotné přihlašování k vaší vlastní aplikaci SAML, která není uvedena v galerii aplikací Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 1990f6595be86d7f3a50f6c764a855aedf2cbcbf
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.author: barbkess
+ms.openlocfilehash: 36262320a5a8457b22cbe9fe9d902fda26b6609c
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34052554"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331100"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>Problém konfigurace federované jednotné přihlašování pro aplikace bez Galerie
 

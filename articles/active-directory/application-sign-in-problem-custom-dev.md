@@ -3,22 +3,24 @@ title: Potíže při přihlašování k aplikaci zákaznických | Microsoft Docs
 description: Běžné rrors, které by mohlo být příčinou vám nebudou moci přihlásit k aplikaci jste si vytvořili s Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 57b620f45d1985351064020e122c088584bcdcf5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 3cbc9f981ab528efe2d739022c674cef48dfeb51
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26614135"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330882"
 ---
 # <a name="problems-signing-in-to-an-custom-developed-application"></a>Přihlášení k aplikaci zákaznických problémů
 
@@ -32,7 +34,7 @@ Existuje několik chyb, které by mohlo být příčinou vám nebudou moci přih
 
 * V tématu [Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory) všechny podobné chyby nebo problémy.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Příručka vývojáře pro službu Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)<br>
 

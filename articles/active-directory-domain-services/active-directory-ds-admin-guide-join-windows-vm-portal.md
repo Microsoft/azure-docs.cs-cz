@@ -13,20 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 06/21/2018
 ms.author: maheshu
-ms.openlocfilehash: 408d86d2d79e827da654ad71f66972fe76fc2431
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2929f85b738171f7fb7f5b66af90e4e2ab54f5d0
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212491"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317166"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Připojení virtuálního počítače Windows Server ke spravované doméně
 Tento článek ukazuje, jak nasazení virtuálního počítače s Windows serverem pomocí portálu Azure. Potom ukazuje, jak připojit virtuální počítač k spravované doméně služby Azure Active Directory Domain Services (Azure AD DS).
 
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+
 ## <a name="step-1-create-a-windows-server-virtual-machine"></a>Krok 1: Vytvoření virtuálního počítače s Windows serverem
-K vytvoření virtuálního počítače s Windows, který je připojen k virtuální síti, ve kterém jste povolili službu Azure AD DS, postupujte takto:
+K vytvoření virtuálního počítače s Windows, který je připojen k virtuální síti, ve kterém jste povolili službu Azure AD DS, proveďte následující kroky:
 
 1. Přihlaste se k [portálu Azure](http://portal.azure.com).
 2. V horní části levého podokna, vyberte **nový**.
@@ -68,29 +70,29 @@ K vytvoření virtuálního počítače s Windows, který je připojen k virtuá
 ## <a name="step-2-connect-to-the-windows-server-virtual-machine-by-using-the-local-administrator-account"></a>Krok 2: Připojení k virtuálnímu počítači Windows serveru pomocí účtu místního správce
 V dalším kroku připojte k nově vytvořený virtuální počítač Windows serveru pro připojení k doméně. Použijte přihlašovací údaje místního správce, kterou jste zadali při vytváření virtuálního počítače.
 
-Pro připojení k virtuálnímu počítači, postupujte takto:
+Pro připojení k virtuálnímu počítači, proveďte následující kroky:
 
 1. V **přehled** podokně, vyberte **Connect**.  
     Soubor Remote Desktop Protocol (.rdp) je vytvořen a stáhli.
 
     ![Připojení k systému Windows virtuálního počítače](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
 
-2. Chcete-li se připojit k virtuálnímu počítači, otevřete stažený soubor protokolu RDP. Pokud se zobrazí výzva, vyberte **Connect**.
-3. V okně pro přihlášení, zadejte vaše **přihlašovací údaje místního správce**, který jste zadali při vytváření virtuálního počítače (například *localhost\mahesh*).
-4. Pokud se zobrazí varování týkající se certifikátu během procesu přihlášení, pokračovat v připojení výběrem **Ano** nebo **pokračovat**.
+2. Chcete-li se připojit k virtuálnímu počítači, otevřete stažený soubor protokolu RDP. Pokud se zobrazí výzva, vyberte **Připojit**.
+3. Zadejte vaše **přihlašovací údaje místního správce**, který jste zadali při vytváření virtuálního počítače (například *localhost\mahesh*).
+4. Pokud se zobrazí varování týkající se certifikátu během procesu přihlášení, vyberte **Ano** nebo **pokračovat** pro připojení.
 
 V tomto okamžiku jste by měl být přihlášeni na nově vytvořený virtuální počítač Windows pomocí svých přihlašovacích údajů místního správce. Dalším krokem je připojení virtuálního počítače k doméně.
 
 
 ## <a name="step-3-join-the-windows-server-virtual-machine-to-the-azure-ad-ds-managed-domain"></a>Krok 3: Připojení virtuálního počítače Windows serveru do Azure AD DS spravovat domény
-Pokud chcete připojit k Azure AD DS spravované domény virtuálního počítače Windows serveru, postupujte takto:
+Pokud chcete připojit k Azure AD DS spravované domény virtuálního počítače Windows serveru, proveďte následující kroky:
 
 1. Připojit k virtuální počítač Windows serveru, jak je znázorněno v "Krok 2." Na **spustit** obrazovce otevřete **správce serveru**.
 2. V levém podokně **správce serveru** vyberte **místní Server**.
 
     ![Okna Správce serveru na virtuálním počítači](./media/active-directory-domain-services-admin-guide/join-domain-server-manager.png)
 
-3. V části **vlastnosti**, vyberte **pracovní skupiny**. 
+3. V části **vlastnosti**, vyberte **pracovní skupiny**.
 4. V **vlastnosti systému** vyberte **změnu** pro připojení k doméně.
 
     ![Okno Vlastnosti systému](./media/active-directory-domain-services-admin-guide/join-domain-system-properties.png)
@@ -99,7 +101,7 @@ Pokud chcete připojit k Azure AD DS spravované domény virtuálního počíta�
 
     ![Určení domény pro připojení](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-domain.png)
 
-6. Zobrazí se výzva k zadání pověření pro připojení k doméně. Zadejte přihlašovací údaje *uživatele, který patří do skupiny správců Azure řadič domény AD*. Pouze členové této skupiny mají oprávnění k připojení počítačů k spravované doméně.
+6. Budete vyzváni k zadání pověření pro připojení k doméně. Použít přihlašovací údaje *uživatele, který patří do skupiny správců Azure řadič domény AD*. Pouze členové této skupiny mají oprávnění k připojení počítačů k spravované doméně.
 
     ![Okno zabezpečení systému Windows pro zadání přihlašovacích údajů](./media/active-directory-domain-services-admin-guide/join-domain-system-properties-specify-credentials.png)
 
@@ -115,7 +117,7 @@ Pokud chcete připojit k Azure AD DS spravované domény virtuálního počíta�
      > Pokud uživatele (UPN) předpona je příliš dlouhý (například *joehasareallylongname*), SAMAccountName může být automaticky generovaný. Pokud máte více uživatelů stejnou předponou hlavní název uživatele (například *bob*) v klientovi služby Azure AD může být automaticky vygenerované službou jejich SAMAccountName formátu. V těchto případech formát UPN lze spolehlivě se přihlásit k doméně.
      >
 
-8. Po úspěšném připojení k doméně, se následující zpráva vás vítá do domény.
+8. Poté, co jste úspěšně připojila k doméně, se následující zpráva vás vítá do domény.
 
     ![Vítejte v doméně](./media/active-directory-domain-services-admin-guide/join-domain-done.png)
 
@@ -123,30 +125,30 @@ Pokud chcete připojit k Azure AD DS spravované domény virtuálního počíta�
 
 ## <a name="troubleshoot-joining-a-domain"></a>Řešení potíží s připojením k doméně
 ### <a name="connectivity-issues"></a>Problémy s připojením
-Pokud je virtuální počítač se nepodařilo najít doménu, zkuste jeden nebo více následujících akcí:
+Pokud je virtuální počítač se nepodařilo najít doménu, zkuste následující kroky řešení potíží:
 
-* Ujistěte se, že virtuální počítač je připojený ke stejné virtuální síti jako ten, který jste povolili službu Azure AD DS v. Pokud není připojený, virtuální počítač se nemůže připojit k doméně a proto se nepodařilo připojit k doméně.
+* Ověřte, zda že virtuální počítač je připojený ke stejné virtuální síti Azure AD DS je povolena v. Virtuální počítač, jinak se nepodařilo připojit k serveru nebo připojení k doméně.
 
-* Zajistěte, aby byl virtuální počítač na virtuální síť, která je pak připojen k virtuální síti, ve kterém jste povolili službu Azure AD DS.
+* Ověřte, zda že je virtuální počítač na virtuální síť, která je pak připojen k virtuální síti Azure AD DS je povolena v.
 
-* Zkuste příkazem ping otestovat doménu pomocí názvu domény spravované domény (například *příkaz ping contoso100.com*). Pokud jste to možné, zkuste příkazem ping otestovat IP adresy pro doménu, která se zobrazí na stránce, kde jste povolili službu Azure AD DS (například *příkaz ping 10.0.0.4*). Pokud budete moct odeslat příkaz ping IP adresu, ale nikoli domény, můžou být nesprávně nakonfigurované DNS. Zkontrolujte, zda jsou IP adresy domény nakonfigurovány jako servery DNS pro virtuální síť.
+* Zkuste příkazem ping otestovat název domény DNS spravované doméně (například *příkaz ping contoso100.com*). Pokud jste to možné, zkuste příkazem ping otestovat IP adresy pro doménu, která se zobrazí na stránce, kde jste povolili službu Azure AD DS (například *příkaz ping 10.0.0.4*). Pokud IP adresa, ale nikoli doménu může odeslat příkaz ping, DNS je pravděpodobně nesprávně nakonfigurována. Zkontrolujte, zda jsou IP adresy domény nakonfigurovány jako servery DNS pro virtuální síť.
 
 * Zkuste to, abyste vyprázdnili mezipaměť Překladač DNS na virtuálním počítači (*ipconfig/flushdns*).
 
 Pokud se zobrazí okno, která požaduje zadání pověření pro připojení k doméně, nemáte problémy s připojením.
 
 ### <a name="credentials-related-issues"></a>Problémy související s přihlašovací údaje
-Pokud máte problémy s přihlašovacími údaji a nelze k připojení k doméně, zkuste jeden nebo více následujících akcí:
+Pokud máte problémy s přihlašovacími údaji a nelze k připojení k doméně, zkuste následující kroky řešení potíží:
 
-* Použijte formát UPN a zadejte přihlašovací údaje. Pokud existuje více uživatelů se stejnou předponou UPN v klientovi nebo pokud vaši předponu UPN je příliš dlouhý, může být automaticky generovaný SAMAccountName pro váš účet. Proto SAMAccountName formát pro váš účet může lišit od co můžete očekávat, nebo použít v místní doméně.
+* Použijte formát UPN a zadejte přihlašovací údaje. Pokud existuje řada uživatelů se stejnou předponou UPN v klientovi nebo pokud vaši předponu UPN je příliš dlouhý, může být automaticky generovaný SAMAccountName pro váš účet. V těchto případech SAMAccountName formát pro váš účet může lišit od co můžete očekávat, nebo použít v místní doméně.
 
 * Zkuste použít přihlašovací údaje uživatelského účtu, který patří do *AAD řadič domény správci* skupiny.
 
-* Ujistěte se, že máte [povolena synchronizace hesel](active-directory-ds-getting-started-password-sync.md) podle kroků uvedených v Průvodci získávání spuštěna.
+* Zkontrolujte, zda máte [povolena synchronizace hesel](active-directory-ds-getting-started-password-sync.md) k vaší spravované domény.
 
-* Zkontrolujte, jestli hlavní název uživatele uživatele používají jako nakonfigurovaný v Azure AD (například *bob@domainservicespreview.onmicrosoft.com*) pro přihlášení.
+* Zkontrolujte, že jste použili (UPN) uživatele jako nakonfigurovaný v Azure AD (například *bob@domainservicespreview.onmicrosoft.com*) pro přihlášení.
 
-* Ujistěte se, že jste čekali dost dlouho kvůli synchronizaci hesel dokončeno, jak je uvedeno v Příručka Začínáme.
+* Počkejte na dostatečně dlouhé heslo synchronizace možné dokončit, jak je uvedeno v Příručka Začínáme.
 
 ## <a name="related-content"></a>Související obsah
 * [Azure AD DS Příručka Začínáme](active-directory-ds-getting-started.md)

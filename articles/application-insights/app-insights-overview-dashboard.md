@@ -10,28 +10,25 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
-ms.date: 05/10/2018
+ms.topic: conceptual
+ms.date: 06/22/2018
 ms.author: mbullwin
-ms.openlocfilehash: 0be54c47965c6a27c3506fd37a7bf67e4b2b7924
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 4a639b51fd930c5c74ee78b37fbe8e97e39dbc32
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337559"
 ---
-# <a name="application-insights-overview-dashboard-preview"></a>Řídicí panel aplikací – přehled Insights (preview)
+# <a name="application-insights-overview-dashboard"></a>Řídicí panel aplikací – přehled statistiky
 
-Application Insights vždy poskytl přehled souhrnu podokně umožňuje rychlý a na přehled vyhodnocení stavu a výkonu vaší aplikace. Nové řídicí panel Přehled preview poskytuje rychlejší pružnější možnosti.
+Application Insights vždy poskytl přehled souhrnu podokně umožňuje rychlý a na přehled vyhodnocení stavu a výkonu vaší aplikace. Nové řídicí panel Přehled poskytuje rychlejší pružnější možnosti.
 
 ## <a name="how-do-i-test-out-the-new-experience"></a>Jak otestovat na nové prostředí?
 
- Ve službě Application Insights v části: _přehled_, vyberte _zkuste to prosím nový přehled předtím, než je výchozí metodou_.
+Nové řídicí panel Přehled nyní ve výchozím nastavení spustí:
 
-![Přehled Preview](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-01.png)
-
-Tím se spustí novou výchozí přehled řídicí panel:
-
-![Přehled podokna náhledu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-02.png)
+![Přehled podokna náhledu](.\media\app-insights-overview-dashboard\overview-0001.png)
 
 ## <a name="better-performance"></a>Lepší výkon
 
@@ -39,7 +36,7 @@ Výběr časového rozsahu zjednodušenou jednoduché rozhraní jedním kliknut�
 
 ![Časové rozmezí](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-03.png)
 
-Celkový výkon značně zvýšilo. Každý výchozí dynamicky aktualizuje klíčového ukazatele výkonu dlaždice se propojí odpovídající funkci Application Insights. Například výběr neúspěšných požadavků se spustí _selhání_ podokně:
+Celkový výkon značně zvýšilo. Máte přístup jedním kliknutím k oblíbených funkcí, jako je **vyhledávání** a **Analytics**. Každý výchozí dynamicky aktualizuje klíčového ukazatele výkonu dlaždice poskytuje přehled o odpovídající funkce Application Insights. Na další informace o neúspěšné požadavky vyberte **selhání** pod **prošetření** hlavičky:
 
 ![Počet selhání](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-04.png)
 
@@ -51,11 +48,11 @@ Pro přístup k výchozí řídicí panel select _řídicí panel aplikací_ v l
 
 ![Zobrazení řídicího panelu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-05.png)
 
-Toto je poprvé přístup k řídicím panelu se spustí výchozí zobrazení:
+Pokud je to poprvé přístup k řídicím panelu, spustí výchozí zobrazení:
 
 ![Zobrazení řídicího panelu](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-06.png)
 
-Zatímco můžete ponechat výchozí zobrazení, pokud ho chcete, můžete také přidat a odstranit z řídicího panelu na nejvhodnější podle potřeb vašeho týmu.
+Pokud ho chcete, můžete ponechat výchozí zobrazení. Nebo můžete také přidat a odstranit z řídicího panelu aby co nejlépe vyhovovaly potřebám vašeho týmu.
 
 > [!NOTE]
 > Všichni uživatelé s přístupem k prostředku Application Insights sdílí stejné prostředí pro řídicí panel aplikací. Změny prováděné jedním uživatelem upraví zobrazení pro všechny uživatele.
@@ -63,6 +60,12 @@ Zatímco můžete ponechat výchozí zobrazení, pokud ho chcete, můžete také
 Přejděte zpět na právě vyberte Přehled prostředí:
 
 ![Tlačítko – Přehled](.\media\app-insights-overview-dashboard\app-insights-overview-dashboard-07.png)
+
+## <a name="access-the-classic-overview-dashboard"></a>Přístup k řídicímu panelu Classic – přehled
+
+Pokud přeskočíte staré přehled, zvolte **Classic přehled**.
+
+![Classic – přehled](.\media\app-insights-overview-dashboard\overview-classic.png)
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: d8fac770-bb57-4e1f-b50b-9ffeae239d07
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 2d22720e71788493d3663524f2b70783ba26b84d
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0b5fb84f8d8fbed7e1d4112e96b00af3e460661a
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36218159"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317098"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fluxx-labs"></a>Kurz: Azure Active Directory integrace s Fluxx Labs
 
@@ -67,7 +66,7 @@ Při konfiguraci integrace Fluxx Labs do služby Azure AD potřebujete přidat F
 2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
-    
+
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Tlačítko nové aplikace][3]
@@ -103,7 +102,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurace propojení přihlášení][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Jediné přihlášení dialogové okno](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_samlbase.png)
 
 3. Na **Fluxx Labs domény a adresy URL** část, proveďte následující kroky:
@@ -123,8 +122,8 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     |-------------|------------|
     | Výroba | `https://<subdomain>.fluxx.io/auth/saml/callback` |
     | Předvýroba | `https://<subdomain>.preprod.fluxxlabs.com/auth/saml/callback`|
-        
-    > [!NOTE] 
+
+    > [!NOTE]
     > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory Fluxx Labs](mailto:travis@fluxxlabs.com) k získání těchto hodnot.
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
@@ -135,7 +134,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/fluxxlabs-tutorial/tutorial_general_400.png)
 
-6. Na **Fluxx Labs konfigurace** klikněte na tlačítko **konfigurace Labs Fluxx** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML Entity ID a SAML jeden přihlašování adresu URL služby** z **Stručná referenční příručka části.**
+6. Na **Fluxx Labs konfigurace** klikněte na tlačítko **konfigurace Labs Fluxx** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
     ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/tutorial_fluxxlabs_configure.png)
 
@@ -148,9 +147,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 9. V panelu Správce vyberte **moduly plug-in** > **integrace** a pak vyberte **SAML SSO-(Disabled)**
 
     ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config2.png)
-    
+
 10. V části atribut proveďte následující kroky:
-    
+
     ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config3.png)
 
     a. Vyberte **jednotné přihlašování SAML** zaškrtávací políčko.
@@ -159,15 +158,17 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     c. V **cesta zpětné volání** textovému poli, typ **/auth/saml/callback**.
 
-    d. V **Assertion příjemce služby Url(Single Sign-On URL)** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
+    d. V **Assertion příjemce služby Url(Single Sign-On URL)** textovému poli, zadejte **adresa URL odpovědi** hodnotu, kterou jste zadali v portálu Azure.
 
-    e. V **cílová skupina (SP Entity ID)** textovému poli, vložte hodnotu **SAML Entity ID**, který jste zkopírovali z portálu Azure.
+    e. V **cílová skupina (SP Entity ID)** textovému poli, zadejte **identifikátor** hodnotu, kterou jste zadali v portálu Azure.
 
-    f. V poznámkovém bloku otevřete váš kódování base-64 kódovaného certifikátu, zkopírujte obsah ho do schránky a vložte jej do **certifikát zprostředkovatele Identity** textové pole.
+    f. V **cílová adresa URL pro jednotné přihlašování zprostředkovatele Identity** textovému poli, Vložit **SAML jeden přihlašování adresa URL služby** hodnotu, kterou jste zkopírovali z portálu Azure.
 
-    g. V **identifikátor název formátu** textovému poli, zadejte hodnotu `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`.
+    g. V poznámkovém bloku otevřete váš kódování base-64 kódovaného certifikátu, zkopírujte obsah ho do schránky a vložte jej do **certifikát zprostředkovatele Identity** textové pole.
 
-    h. Klikněte na **Uložit**.
+    h. V **identifikátor název formátu** textovému poli, zadejte hodnotu `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`.
+
+    i. Klikněte na **Uložit**.
 
     > [!NOTE]
     > Jakmile obsah uložit, zobrazí toto pole prázdné, zabezpečení, ale hodnota byla uložena v konfiguraci.
@@ -221,7 +222,7 @@ Pokud chcete povolit uživatelům Azure AD přihlášení k testovacímu prostř
     ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config4.png)
 
 4. Na **nové osoby** část, proveďte následující kroky:
-    
+
     ![Konfigurace Fluxx Labs](./media/fluxxlabs-tutorial/config5.png)
 
     a. Fluxx Labs použijte e-mailu jako jedinečný identifikátor pro přihlášení SSO. Naplnění **jednotné přihlašování UID** pole s e-mailovou adresu uživatele, který odpovídá e-mailovou adresu, která používají jako přihlašovací údaje pomocí jednotného přihlašování.
@@ -232,7 +233,7 @@ Pokud chcete povolit uživatelům Azure AD přihlášení k testovacímu prostř
 
 V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu k testovacímu prostředí Fluxx.
 
-![Přiřadit role uživatele][200] 
+![Přiřadit role uživatele][200]
 
 **Pokud chcete přiřadit Britta Simon Fluxx Labs, proveďte následující kroky:**
 
@@ -257,7 +258,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
-    
+
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.

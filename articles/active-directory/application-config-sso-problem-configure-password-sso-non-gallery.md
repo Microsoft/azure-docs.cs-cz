@@ -3,22 +3,23 @@ title: Problém konfigurace hesla jednotné přihlašování pro aplikace bez Ga
 description: Pochopení tučné osoby běžné problémy při konfiguraci hesla jednotné přihlašování pro vlastní aplikace bez galerie, které nejsou uvedené v galerii aplikací Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 7b671089bfac04b359717874928d6a342c44b3d4
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.author: barbkess
+ms.openlocfilehash: 69a2bf6e622cd2338d57e62ed82951cb2385edd6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34069670"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334903"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Problém konfigurace hesla jednotné přihlašování pro aplikace bez Galerie
 
@@ -142,7 +143,7 @@ Pokud narazíte na některý z těchto problémů zkontrolujte následující:
 
 -   Pokud proces ruční zachycení zdá se, že zablokuje nebo na přihlašovací stránce neprovádí proces ruční zachycení nic (případě 3 výše), opakujte akci. Ale tentokrát po dokončení procesu, stiskněte **F12** tlačítko otevřete konzolu pro vývojáře v prohlížeči. Jednou existuje, otevřete **konzoly** a typ **window.location= "&lt;zadejte přihlašovací adresu url jste zadali při konfiguraci aplikace&gt;"** a potom stiskněte klávesu **Enter** . Vynutí přesměrování stránky, která ukončí proces zachycení a uloží pole, která byla zachycena.
 
-Pokud žádný z těchto postupů fungovat pro vás, může přispět podpora. Otevření případu podpory podrobnosti co jste se pokusili, a také informace shromážděné ve [postup najdete v části Podrobnosti o portálu oznámení](#i-cannot-manually-detect-sign-in-fields-for-my-application) a [jak získat nápovědu zasláním oznámení podrobnosti pracovníkovi podpory](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) částech (pokud existuje).
+Pokud žádný z těchto postupů fungovat pro vás, může přispět podpora. Otevření případu podpory podrobnosti co jste se pokusili, a také informace shromážděné ve [postup najdete v části Podrobnosti o portálu oznámení](#i-cannot-manually-detect-sign-in-fields-for-my-application) a [jak získat nápovědu poslat podrobnosti oznámení na pracovníka podpory ](#how-to-get-help-by-sending-notification-details-to-a-support-engineer) částech (pokud existuje).
 
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>Postup instalace rozšíření přístup k panelu prohlížeče
 
