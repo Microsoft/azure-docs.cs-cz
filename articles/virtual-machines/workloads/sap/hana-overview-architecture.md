@@ -11,21 +11,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/04/2018
+ms.date: 06/19/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfcab5a84d9e8b0bf164c666162636ede2e1b06f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 18b6aaf7396c16714370435d2ee6d3a4960ecf21
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763778"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337972"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Přehled SAP HANA (velké instance) a architektura v Azure
 
 ## <a name="what-is-sap-hana-on-azure-large-instances"></a>Co je SAP HANA v Azure (velké instance)?
 
-SAP HANA v Azure (velké instance) je jedinečné řešení do Azure. Kromě zajištění virtuálních počítačů pro nasazení a spuštění SAP HANA, Azure nabízí možnost spuštění a nasazení SAP HANA na úplné obnovení serverů, které jsou vyhrazené pro vás. SAP HANA v Azure (velké instance) řešení je založena na nesdílené serveru nebo úplné obnovení hardware, který je přiřazen. Hardware serveru je součástí větší razítek, které obsahují výpočty a serveru, sítě a infrastruktury úložiště. V kombinaci je HANA přizpůsobit integrace center dat (TDI) certifikaci. SAP HANA v Azure (velké instance) nabízí SKU jiný server nebo velikosti. Jednotky mají 72 procesory a 768 GB paměti a přejděte do jednotky, které mají 960 procesory a 20 TB paměti.
+SAP HANA v Azure (velké instance) je jedinečné řešení do Azure. Kromě zajištění virtuálních počítačů pro nasazení a spuštění SAP HANA, Azure nabízí možnost spuštění a nasazení SAP HANA na úplné obnovení serverů, které jsou vyhrazené pro vás. SAP HANA v Azure (velké instance) řešení je založena na nesdílené serveru nebo úplné obnovení hardware, který je přiřazen. Hardware serveru je součástí větší razítek, které obsahují výpočty a serveru, sítě a infrastruktury úložiště. V kombinaci je HANA přizpůsobit integrace center dat (TDI) certifikaci. SAP HANA v Azure (velké instance) nabízí SKU jiný server nebo velikosti. Jednotky může mít 36 jader procesoru Intel a 768 GB paměti a přejděte až jednotky, které mají do 480 jader procesoru Intel a až 24 TB paměti.
 
 Izolace zákazníka v rámci infrastruktury razítko se provádí v klientech, který vypadá takto:
 
@@ -80,9 +80,9 @@ Kromě toho na certifikaci NetWeaver SAP vyžaduje speciální certifikační pr
 
 Jádro Poznámka SAP na NetWeaver a pro SAP HANA stupeň certifikační [SAP Poznámka #1928533 – SAP aplikace v Azure: podporované produkty a virtuální počítač Azure typy](https://launchpad.support.sap.com/#/notes/1928533).
 
-[SAP Poznámka #2316233 - SAP HANA v Microsoft Azure (velké instance)](https://launchpad.support.sap.com/#/notes/2316233/E) je také důležité. Vysvětluje řešení popsané v tomto průvodci. Kromě toho jsou podporovány ke spuštění SAP HANA v typu GS5 virtuálních počítačů Azure. Informace o tomto případě je publikována na [webu SAP](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
+Zaznamenává certifikační pro SAP HANA na jednotkách Azure (velké instance) najdete v [SAP HANA certifikované platformy IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) lokality. 
 
-SAP HANA na řešení Azure (velké instance) uvedené v 2316233 # Poznámka SAP poskytuje zákazníkům společnosti Microsoft a SAP schopnost nasadit velké SAP Business Suite SAP BW, S/4 HANA BW/4HANA nebo jiných SAP HANA úlohy v Azure. Řešení je založena na značce SAP HANA certifikovaných vyhrazený hardware ([SAP HANA přizpůsobit integrace center dat – TDI](https://scn.sap.com/docs/DOC-63140)). Pokud spustíte SAP HANA TDI nakonfigurované řešení, všechny aplikace na základě SAP HANA (například SAP Business Suite na SAP HANA, SAP BW SAP HANA, S4/HANA a BW4/HANA) funguje na hardware infrastruktury.
+SAP HANA na typech Azure (velké instance), uvedené v SAP HANA certifikované platformy IaaS lokality poskytuje Microsoft a SAP zákazníkům schopnost nasadit velké SAP Business Suite SAP BW, S/4 HANA BW/4HANA nebo jiných SAP HANA úlohy v Azure. Řešení je založena na značce SAP HANA certifikovaných vyhrazený hardware ([SAP HANA přizpůsobit integrace center dat – TDI](https://scn.sap.com/docs/DOC-63140)). Pokud spustíte SAP HANA TDI nakonfigurované řešení, všechny aplikace na základě SAP HANA (například SAP Business Suite na SAP HANA, SAP BW SAP HANA, S4/HANA a BW4/HANA) funguje na hardware infrastruktury.
 
 Porovnání se spouštěním SAP HANA ve virtuálních počítačích, toto řešení obsahuje výhody. Poskytuje pro mnohem větší objemy paměti. Chcete-li povolit toto řešení, je potřeba pochopit následující klíčové aspekty:
 
@@ -132,7 +132,9 @@ Stejně jako u virtuálních počítačů, SAP HANA v Azure (velké instance) je
 
 Stejně jako, můžete si vybrat mezi různé typy virtuálních počítačů s virtuálními počítači Azure, můžete z různých SKU z HANA velké instanci, která jsou vytvořena speciálně pro různé zatížení typy SAP HANA. SAP platí poměr paměti na procesor soketu pro různou zátěží podle generace procesor Intel. Následující tabulka uvádí typy SKU nabízí.
 
-Od července 2017 je k dispozici v několika konfigurace v oblasti USA – západ USA – východ, Austrálie – východ, Austrálie – jihovýchod, západní Evropa, a Severní Evropa SAP HANA v Azure (velké instance).
+SAP HANA ve službě Azure (velké instance) je k dispozici v několika konfigurace v oblasti USA – západ USA – východ, Austrálie – východ, Austrálie – jihovýchod, západní Evropa, Severní Evropa, Japonsko – východ, a Japonsko – západ.
+
+[SAP HANA certifikované velké instance SKU HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) seznamu jako:
 
 | Řešení SAP | Procesor | Memory (Paměť) | Úložiště | Dostupnost |
 | --- | --- | --- | --- | --- |
@@ -148,17 +150,31 @@ Od července 2017 je k dispozici v několika konfigurace v oblasti USA – zápa
 |---| Na Azure S576m SAP HANA<br /> – Procesor Intel Xeon® x 12 E7 8890 v4<br /> 288 jader procesoru a 576 procesoru vláken |  12.0 TB |  28 TB | K dispozici. |
 |---| Na Azure S768m SAP HANA<br /> – Procesor Intel Xeon® x 16 E7 8890 v4<br /> 384 jader procesoru a 768 procesoru vláken |  16.0 TB |  36 TB | K dispozici. |
 |---| Na Azure S960m SAP HANA<br /> – 20 procesor Intel Xeon® x E7 8890 v4<br /> 480 jader procesoru a 960 procesoru vláken |  20.0 TB |  46 TB | K dispozici. |
-| Optimalizovaná pro OLTP **TDIv5**: SAP Business Suite<br /> na SAP HANA nebo S nebo 4HANA (OLTP)<br /> Obecné OLTP | Na Azure S192xm SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v4<br /> 96 jader procesoru a 192 procesoru vláken |  6.0 TB |  16 TB | K dispozici. |
-|---| Na Azure S384xxm SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  12.0 TB |  28 TB | K dispozici. |
-|---| Na Azure S576xm SAP HANA<br /> – Procesor Intel Xeon® x 12 E7 8890 v4<br /> 288 jader procesoru a 576 procesoru vláken |  18.0 TB |  41 TB | K dispozici. |
-|---| Na Azure S768xm SAP HANA<br /> – Procesor Intel Xeon® x 16 E7 8890 v4<br /> 384 jader procesoru a 768 procesoru vláken |  24,0 TB |  56 TB | K dispozici. |
+
+
+V části SAP HANA TDIv5 umožňuje SAP zákaznické dimenzování a zákaznické projekty, které může vést k konfigurace serveru, které nejsou na seznamu jako certifikované v:
+
+- [SAP HANA certifikovaná zařízení](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/appliances.html)
+- [Certifikované platformy IaaS SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
+
+V mnoha případech tyto konfigurace serveru zákaznické provádění více paměti, než server jednotky certifikaci s SAP. Při práci s SAP, zákazníci mít možnost získat podporu SAP a certifikaci pro jejich konfigurace zákaznické velikostí serverů. V Azure následující standardní SKU HANA velké Instance jsou k dispozici a Microsoft v cena seznamu pro takové TDIv5 velikosti zákaznické projekty.
+
+
+| Původní SKU, který může být <br /> Rozšířené v paměti | Procesor | Memory (Paměť) | Úložiště | Dostupnost |
+| --- | --- | --- | --- | --- |
+| S192m lze rozšířit na | Na Azure S192xm SAP HANA<br /> – Procesor Intel Xeon® x 4 E7 8890 v4<br /> 96 jader procesoru a 192 procesoru vláken |  6.0 TB |  16 TB | K dispozici. |
+| S384xm lze rozšířit na | Na Azure S384xxm SAP HANA<br /> – 8 procesor Intel Xeon® x E7 8890 v4<br /> 192 jader procesoru a 384 procesoru vláken |  12.0 TB |  28 TB | K dispozici. |
+| S576m lze rozšířit na | Na Azure S576xm SAP HANA<br /> – Procesor Intel Xeon® x 12 E7 8890 v4<br /> 288 jader procesoru a 576 procesoru vláken |  18.0 TB |  41 TB | K dispozici. |
+| S768m lze rozšířit na | Na Azure S768xm SAP HANA<br /> – Procesor Intel Xeon® x 16 E7 8890 v4<br /> 384 jader procesoru a 768 procesoru vláken |  24,0 TB |  56 TB | K dispozici. |
+
 - Jader procesoru = součet jiný-technologie hyper-threaded jader procesoru součtu procesorů jednotky serverů.
-- Vláken procesoru = součet výpočetní vláken poskytované technologie hyper-threaded jader procesoru součtu procesorů jednotky serverů. Všechny jednotky jsou nakonfigurované ve výchozím nastavení používají technologii Hyper-Threading.
+- Vláken procesoru = součet výpočetní vláken poskytované technologie hyper-threaded jader procesoru součtu procesorů jednotky serverů. Většina jednotky jsou nakonfigurované ve výchozím nastavení používají technologii Hyper-Threading.
+- Na základě dodavatele doporučení S768m, S768xm a S960m nejsou nakonfigurovaná pro použití technologie Hyper-Threading pro spuštění SAP HANA.
 
 
 Konkrétní konfigurace vybrali jsou závislé na zatížení, prostředky procesoru a požadovanou paměť. Je možné pro pracovní vytížení OLTP používat SKU, které jsou optimalizované pro pracovní vytížení OLAP. 
 
-Všechny nabídky základní hardware jsou certifikované SAP HANA TDI. Dvěma různými třídami hardwaru dělí SKU do:
+Hardware základní nabídky, s výjimkou jednotky pro nastavení velikosti zákaznické projekty jsou certifikované SAP HANA TDI. Dvěma různými třídami hardwaru dělí SKU do:
 
 - S72 S72m, S144, S144m, S192, S192m a S192xm, které jsou označovány jako "Typ I třídy" z jednotky SKU.
 - S384, S384m, S384xm, S384xxm, S576m, S576xm S768m, S768xm a S960m, které se označují jako "Typ třídy II" z jednotky SKU.
@@ -296,7 +312,7 @@ Tento seznam sestaví požadavky na spuštění SAP HANA v Azure (větší insta
    > Operační systém dodaných společností Microsoft není registrován u SUSE. Není připojen k instanci nástroj pro správu předplatného.
 
 - SUSE Linux předplatné nástroj pro správu nasazené v Azure na virtuálním počítači. Tento nástroj poskytuje možnost pro SAP HANA v Azure (velké instance) pro zápis a SUSE aktualizován v uvedeném pořadí. (Není žádný přístup k Internetu v rámci datového centra velké Instance HANA.) 
-- Licence pro Red Hat Enterprise Linux 6.7 nebo 7.2 pro SAP HANA.
+- Licence pro Red Hat Enterprise Linux 6.7 nebo 7.x pro SAP HANA.
 
    > [!NOTE]
    > Operační systém dodaných společností Microsoft není registrován u Red Hat. Není připojen k instanci Red Hat odběr Manager.
@@ -347,7 +363,7 @@ Viz následující tabulka uvádí přidělení úložiště. V tabulce jsou uve
 | S72m | 3,328 GB | 768 GB |1,280 GB | 768 GB |
 | S192 | 4 608 GB | 1024 GB | 1 536 GB | 1024 GB |
 | S192m | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
-| S192xm |  12 000 GB |  2 050 GB |  2 050 GB |  2.040 GB |
+| S192xm |  11,520 GB |  1 536 GB |  1,792 GB |  1 536 GB |
 | S384 | 11,520 GB | 1 536 GB | 1,792 GB | 1 536 GB |
 | S384m | 12 000 GB | 2 050 GB | 2 050 GB | 2,040 GB |
 | S384xm | 16 000 GB | 2 050 GB | 2 050 GB | 2,040 GB |
@@ -480,9 +496,7 @@ Pro více škálovatelná architektura sítě:
 
 ![Nasazení SAP aplikační vrstvu přes více virtuálních sítí](./media/hana-overview-architecture/image4-networking-architecture.png)
 
-Obrázek zobrazuje SAP aplikační vrstvu nebo součásti, které jsou nasazené v více virtuálních sítí. Tato konfigurace se zavedl nevyhnutelné latence režie, které došlo při komunikaci mezi aplikacemi hostované v těchto virtuálních sítí. Ve výchozím nastavení síťový provoz mezi virtuálními počítači, které jsou umístěné v různých virtuálních sítích směrovat přes hraniční směrovače enterprise v této konfiguraci. Od září 2016 se dají optimalizovat tento směrování. 
-
-Způsob, jak optimalizovat a omezit latence při komunikaci mezi dvěma virtuálními sítěmi je partnerského vztahu virtuálních sítí ve stejné oblasti. Tato metoda funguje, i když tyto virtuální sítě jsou v různých předplatných. Partnerský vztah virtuální sítě, komunikace mezi virtuálními počítači ve dvou různých virtuálních sítích pomocí páteřní síti Azure přímou komunikaci mezi sebou. Latence ukazuje, jak je, pokud jsou virtuální počítače ve stejné virtuální síti. Provoz, který řeší rozsahy IP adres, které jsou připojené přes bránu virtuální sítě Azure je směrován přes bránu virtuální sítě jednotlivé virtuální sítě. 
+Obrázek zobrazuje SAP aplikační vrstvu nebo součásti, které jsou nasazené v více virtuálních sítí. Tato konfigurace se zavedl nevyhnutelné latence režie, které došlo při komunikaci mezi aplikacemi hostované v těchto virtuálních sítí. Ve výchozím nastavení síťový provoz mezi virtuálními počítači, které jsou umístěné v různých virtuálních sítích směrovat přes hraniční směrovače enterprise v této konfiguraci. Způsob, jak optimalizovat a omezit latence při komunikaci mezi dvěma virtuálními sítěmi je partnerského vztahu virtuálních sítí ve stejné oblasti. Tato metoda funguje, i když tyto virtuální sítě jsou v různých předplatných. Partnerský vztah virtuální sítě, komunikace mezi virtuálními počítači ve dvou různých virtuálních sítích pomocí páteřní síti Azure přímou komunikaci mezi sebou. Latence ukazuje, jak je, pokud jsou virtuální počítače ve stejné virtuální síti. Provoz, který řeší rozsahy IP adres, které jsou připojené přes bránu virtuální sítě Azure je směrován přes bránu virtuální sítě jednotlivé virtuální sítě. 
 
 Další informace o partnerském vztahu virtuální sítě najdete v tématu [partnerský vztah virtuální sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 

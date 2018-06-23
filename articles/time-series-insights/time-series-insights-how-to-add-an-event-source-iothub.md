@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: b970d01c586e016d47b0f0480d73f06211969814
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1cc8518e84bd9fe7a1f03a2f5d6ccdbac8fb78e3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294876"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330590"
 ---
 # <a name="how-to-add-an-iot-hub-event-source-to-time-series-insights-environment"></a>Postup přidání zdroje událostí služby IoT Hub časové řady Přehled prostředí
 Tento článek popisuje, jak pomocí portálu Azure přidejte zdroje událostí, který čte data ze služby IoT Hub do vašeho prostředí Statistika časové řady.
@@ -25,6 +25,22 @@ Tento článek popisuje, jak pomocí portálu Azure přidejte zdroje událostí,
 - Vytvoření služby IoT Hub. Další informace o centra IoT najdete v tématu [vytvoření služby IoT Hub pomocí portálu Azure](../iot-hub/iot-hub-create-through-portal.md)
 - IoT Hub musí mít aktivní zpráva události odesílány ve.
 - Vytvořte vyhrazenou skupinu spotřebitelů IoT hub pro prostředí časové řady přehledy využívat z. Každý zdroj události Statistika časové řady musí mít svůj vlastní vyhrazenou skupinu spotřebitelů která není sdílena s dalšími uživateli. Pokud více čtečky přijímat události z stejnou skupinu uživatelů, budou pravděpodobně najdete v části selhání všechny nástroje pro čtení. Podrobnosti najdete v tématu [Příručka vývojáře pro službu IoT Hub](../iot-hub/iot-hub-devguide.md).
+
+### <a name="add-a-consumer-group-to-your-iot-hub"></a>Přidat skupinu uživatelů do služby IoT Hub
+Skupiny uživatelů slouží aplikace k načítání dat z Azure IoT Hubs. Zadejte vyhrazenou skupinu spotřebitelů, použijte tento čas řady Statistika prostředí pouze spolehlivě číst data ze služby IoT Hub.
+
+Chcete-li přidat novou skupinu uživatelů do služby IoT Hub, postupujte takto:
+1. Na portálu Azure vyhledejte a otevřete své služby IoT Hub.
+
+2. V části **zasílání zpráv** záhlaví, vyberte **koncové body**. 
+
+   ![Přidat skupinu uživatelů](media/time-series-insights-how-to-add-an-event-source-iothub/5-add-consumer-group.png)
+
+3. Vyberte **události** koncovému bodu a **vlastnosti** otevře se stránka.
+
+4. V části **skupiny příjemců** záhlaví, zadejte nový jedinečný název pro skupinu příjemců. Používejte tento stejný název v prostředí Statistika řady čas při vytváření nový zdroj událostí.
+
+5. Vyberte **Uložit** uložit do nové skupiny příjemců.
 
 ## <a name="add-a-new-event-source"></a>Přidat nový zdroj událostí
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
@@ -73,27 +89,13 @@ Tento článek popisuje, jak pomocí portálu Azure přidejte zdroje událostí,
    | Formát serializace události | JSON je k dispozici pouze serializace v současné době. Zprávy událostí musí být ve formátu, nebo žádná data lze číst. |
    | Název vlastnosti časové razítko | Chcete-li tuto hodnotu určit, je potřeba pochopit formát zprávy zpráva dat odesílaných do služby IoT Hub. Tato hodnota je **název** vlastnosti konkrétní události v daty zprávy, kterou chcete použít jako události časové razítko. Hodnota je malá a velká písmena. Pokud je ponecháno prázdné, **zařazování čas události** v rámci události zdroj se používá jako časové razítko události. |
 
-10. Vyberte **vytvořit** přidat nový zdroj událostí.
+10. Přidejte vyhrazený název TSI příjemce skupiny, které jste přidali do služby IoT Hub.
+
+11. Vyberte **vytvořit** přidat nový zdroj událostí.
 
    ![Kliknutí na Vytvořit](media/time-series-insights-how-to-add-an-event-source-iothub/4-create-button.png)
 
    Po vytvoření zdroje událostí začne Time Series Insights automaticky streamovat data do vašeho prostředí.
-
-### <a name="add-a-consumer-group-to-your-iot-hub"></a>Přidat skupinu uživatelů do služby IoT Hub
-Skupiny uživatelů slouží aplikace k načítání dat z Azure IoT Hubs. Zadejte vyhrazenou skupinu spotřebitelů, použijte tento čas řady Statistika prostředí pouze spolehlivě číst data ze služby IoT Hub.
-
-Chcete-li přidat novou skupinu uživatelů do služby IoT Hub, postupujte takto:
-1. Na portálu Azure vyhledejte a otevřete své služby IoT Hub.
-
-2. V části **zasílání zpráv** záhlaví, vyberte **koncové body**. 
-
-   ![Přidat skupinu uživatelů](media/time-series-insights-how-to-add-an-event-source-iothub/5-add-consumer-group.png)
-
-3. Vyberte **události** koncovému bodu a **vlastnosti** otevře se stránka.
-
-4. V části **skupiny příjemců** záhlaví, zadejte nový jedinečný název pro skupinu příjemců. Používejte tento stejný název v prostředí Statistika řady čas při vytváření nový zdroj událostí.
-
-5. Vyberte **Uložit** uložit do nové skupiny příjemců.
 
 ## <a name="next-steps"></a>Další postup
 - [Definovat zásady přístupu k datům](time-series-insights-data-access.md) zabezpečit data.

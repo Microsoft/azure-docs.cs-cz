@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: bwren
-ms.openlocfilehash: cb48d6f61991fd16112b3507a413946ec01b4871
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 1e0fd56b6e420103b4f786985f71a84737db642d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34851252"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333628"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Běžné otázky pro přechod z portálu OMS na portál Azure pro uživatele, analýzy protokolů
 Vlastní portál označuje portál OMS analýzy protokolů původně použitý ke správě konfigurace a analýza shromážděná data.  Všechny funkce z tohoto portálu byl přesunut do portálu Azure kde bude pokračovat na.
@@ -39,7 +39,7 @@ Ze seznamu pracovní prostory v portálu Azure, klikněte na tlačítko **přida
 ![Stránka s přehledem](media/log-analytics-new-portal/new-workspace.png)
 
 ## <a name="where-is-my-overview-page"></a>Kde je stránka Moje přehled?
-Hlavní obrazovky na portálu OMS zobrazí dlaždice pro řešení správy nainstalovat v žádné vlastní zobrazení, které jste vytvořili a pracovního prostoru. Na portálu Azure, to se označuje jako **přehled** stránky. Z pracovního prostoru na portálu Azure, buď vyberte **přehled** v nabídce nebo kliknutím **přehled** tlačítko na hlavní stránce.
+Hlavní obrazovky na portálu OMS zobrazí dlaždice pro řešení správy nainstalovat v žádné vlastní zobrazení, které jste vytvořili a pracovního prostoru. Toto stejné zobrazení je k dispozici na portálu Azure. Z pracovního prostoru vyberte **prostoru Souhrn**.
 
 ![Stránka s přehledem](media/log-analytics-new-portal/overview.png)
 
@@ -87,10 +87,10 @@ Spravovat většinu nastavení dat v **upřesňující nastavení** nabídky pro
 
 | Nastavení na portálu OMS | Ekvivalent v portálu Azure |
 |:---|:---|
-| Protokoly událostí systému Windows           | **Upřesňující nastavení** nabídky pro pracovní prostor. |
+| Protokoly událostí Windows           | **Upřesňující nastavení** nabídky pro pracovní prostor. |
 | Čítače výkonu systému Windows | **Upřesňující nastavení** nabídky pro pracovní prostor. |
 | Čítače výkonu systému Linux   | **Upřesňující nastavení** nabídky pro pracovní prostor. |
-| Protokoly služby IIS                     | **Upřesňující nastavení** nabídky pro pracovní prostor. |
+| Protokoly IIS                     | **Upřesňující nastavení** nabídky pro pracovní prostor. |
 | Vlastní pole                | **Upřesňující nastavení** nabídky pro pracovní prostor. |
 | Vlastní protokoly                  | **Upřesňující nastavení** nabídky pro pracovní prostor. |
 | Syslog                       | **Upřesňující nastavení** nabídky pro pracovní prostor. |

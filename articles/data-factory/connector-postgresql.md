@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/23/2018
 ms.author: jingwang
-ms.openlocfilehash: 7b75bd5987ccf89c77509d0f2b4d8def5583e928
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a4f300666d0ab5345274d69d9ad6ad6871ce85e3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617429"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334036"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopírování dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,10 +39,9 @@ Konkrétně tento konektor PostgreSQL podporuje PostgreSQL **verze 7.4 a vyšš�
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li použít tento konektor PostgreSQL, budete muset:
+Pokud databázi PostgreSQL není veřejně přístupná, budete muset nastavit Self-hosted integrace Runtime. Další informace o vlastním hostováním integrační moduly Runtime najdete v tématu [Self-hosted integrace Runtime](create-self-hosted-integration-runtime.md) článku. Modul Runtime integrace poskytuje ovladač předdefinované PostgreSQL od verze 3.7, proto nemusíte ručně nainstalovat všechny ovladače.
 
-- Nastavte Self-hosted integrace Runtime. V tématu [Self-hosted integrace Runtime](create-self-hosted-integration-runtime.md) článku.
-- Nainstalujte [Ngpsql zprostředkovatele dat pro PostgreSQL](http://go.microsoft.com/fwlink/?linkid=282716) s verzí mezi 2.0.12 a 3.1.9 na počítači integrace modulu Runtime.
+Self-hosted IR verze nižší než 3.7, je potřeba nainstalovat [Ngpsql zprostředkovatele dat pro PostgreSQL](http://go.microsoft.com/fwlink/?linkid=282716) s verzí mezi 2.0.12 a 3.1.9 na počítači integrace modulu Runtime.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -57,14 +56,36 @@ Pro PostgreSQL propojené služby jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavena na: **PostgreSql** | Ano |
-| server | Název serveru PostgreSQL. |Ano |
-| databáze | Název databáze PostgreSQL. |Ano |
-| Schéma | Název schématu v databázi. Název schématu rozlišuje velká a malá písmena. |Ne |
-| uživatelské jméno | Zadejte uživatelské jméno pro připojení k databázi PostgreSQL. |Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Modul Runtime Self-hosted integrace se vyžaduje, jak je uvedeno v [požadavky](#prerequisites). |Ano |
+| připojovací řetězec | Řetězec připojení rozhraní ODBC pro připojení k databázi Azure pro PostgreSQL. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace Azure nebo Self-hosted integrace Runtime. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
+
+Typické připojovací řetězec je `Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>`. Další vlastnosti, které můžete nastavit na váš případ:
+
+| Vlastnost | Popis | Možnosti | Požaduje se |
+|:--- |:--- |:--- |:--- |:--- |
+| EncryptionMethod (EM)| Metoda ovladače se používá k šifrování dat odesílaných mezi ovladače a databázový server. Například `ValidateServerCertificate=<0/1/6>;`| 0 (žádné šifrování) **(výchozí)** nebo 1 (SSL) / 6 (RequestSSL) | Ne |
+| ValidateServerCertificate (virtuální čipové karty) | Určuje, jestli ovladač ověří certifikátu, která je odeslána na databázovém serveru, pokud je povolené šifrování SSL (metoda šifrování = 1). Například `ValidateServerCertificate=<0/1>;`| 0 (zakázáno) **(výchozí)** nebo 1 (povoleno) | Ne |
 
 **Příklad:**
+
+```json
+{
+    "name": "PostgreSqlLinkedService",
+    "properties": {
+        "type": "PostgreSql",
+        "typeProperties": {
+            "connectionString": {
+                 "type": "SecureString",
+                 "value": "Server=<server>;Database=<database>;Port=<port>;UID=<username>;Password=<Password>"
+            }
+        }
+    }
+}
+```
+
+Pokud jste používali PostgreSQL propojené služby s následující datové části, je stále podporovány jako-se, když jsou navrhované používat novým do budoucna.
+
+**Předchozí datové části:**
 
 ```json
 {

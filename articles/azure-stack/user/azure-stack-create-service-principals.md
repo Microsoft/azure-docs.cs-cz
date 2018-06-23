@@ -11,13 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/27/2018
+ms.date: 06/21/2018
 ms.author: mabrigg
-ms.openlocfilehash: de5712fd7b48a759b366f5b9808bbbefc6e305cd
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.reviewer: thoroet
+ms.openlocfilehash: 3c9f114c2844021d515765888aa19f18a0adc10b
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36320755"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Poskytnutí aplikace přístup k prostředkům Azure zásobníku vytvořením objekty služby
 
@@ -57,7 +59,7 @@ Pokud vaše zásobník Azure používá jako úložiště identit Azure AD, mů�
 >[!NOTE]
 Zkontrolujte, zda máte [požadovaná oprávnění Azure AD](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions) před zahájením vytváření objektu služby.
 
-### <a name="create-service-principal"></a>Vytvořit instanční objekt
+### <a name="create-service-principal"></a>Vytvoření instančního objektu
 
 Chcete-li vytvořit objekt služby pro aplikaci:
 
@@ -93,54 +95,7 @@ Pokud jste nasadili zásobník Azure pomocí služby AD FS jako úložiště ide
 * Přiřazení objektu služby roli.
 * Přihlaste se pomocí identit instanční objekt.
 
-### <a name="before-you-begin"></a>Než začnete
-
-[Stáhněte požadované nástroje Azure zásobníku do místního počítače.](azure-stack-powershell-download.md)
-
-### <a name="import-the-identity-powershell-module"></a>Naimportujte modul Powershellu Identity
-
-Přejděte ke složce pro stažení nástroje Azure zásobníku a importujte modul Identity PowerShell pomocí následujícího příkazu:
-
-```PowerShell
-Import-Module .\Identity\AzureStack.Identity.psm1
-```
-
-Při importu modulu Identity, může získat tato chybová zpráva: "AzureStack.Connect.psm1 není digitálně podepsán. Skript nebude spustit v systému".
-
-Chcete-li tento problém vyřešit, musíte nakonfigurovat zásady spouštění umožnit spouštění skriptu. Pokud chcete nastavit zásady spouštění, spusťte následující příkaz v relaci prostředí PowerShell zvýšenými oprávněními:
-
-```PowerShell
-Set-ExecutionPolicy Unrestricted
-```
-
-### <a name="create-the-service-principal"></a>Vytvoření instančního objektu
-
-Můžete vytvořit objekt služby tak, že spustíte následující příkaz, a zkontrolujte, zda aktualizace **DisplayName** parametr:
-
-```powershell
-$servicePrincipal = New-AzSADGraphServicePrincipal `
- -DisplayName "<YourServicePrincipalName>" `
- -AdminCredential $(Get-Credential) `
- -AdfsMachineName "AZS-ADFS01" `
- -Verbose
-
-```
-
-### <a name="assign-a-role"></a>Přiřazení role
-
-Po vytvoření objektu služby, je nutné [přiřadit roli](azure-stack-create-service-principals.md#assign-role-to-service-principal).
-
-### <a name="sign-in-using-powershell"></a>Přihlaste se pomocí prostředí PowerShell
-
-Můžete přihlásit k Azure zásobníku tak, že spustíte následující příkaz, a zkontrolujte, zda aktualizace **EnvironmentName** parametr s názvem vaší aplikace:
-
-```powershell
-Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
- -ServicePrincipal `
- -CertificateThumbprint $servicePrincipal.Thumbprint `
- -ApplicationId $servicePrincipal.ApplicationId `
- -TenantId $directoryTenantId
-```
+Podrobnosti o tom, jak vytvořit objekt služby najdete v tématu [vytvořit objekt služby pro službu AD FS](../azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).
 
 ## <a name="assign-the-service-principal-to-a-role"></a>Přiřazení objektu služby roli
 

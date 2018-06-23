@@ -1,5 +1,5 @@
 ---
-title: Síťová topologie pro Azure SQL DB spravované Instance migrace pomocí služby Azure databáze migrace | Microsoft Docs
+title: Síťová topologie pro Azure SQL Database spravované Instance migrace pomocí služby Azure databáze migrace | Microsoft Docs
 description: Další konfigurace zdrojové a cílové služby migrace databáze.
 services: database-migration
 author: HJToland3
@@ -10,16 +10,16 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/06/2018
-ms.openlocfilehash: 5904864ffba656dab17e1549ed9832be4258a67f
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.date: 06/21/2018
+ms.openlocfilehash: 9fcee103854209016d73e29b598c9f33d35c4b6c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30235396"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316863"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Síťové topologie pro Azure SQL DB spravované Instance migrace pomocí služby Azure databáze migrace
-V tomto článku se dozvíte o různé topologie sítě, které služba Azure databáze migrace můžete pracovat a poskytuje prostředí bezproblémovou migraci z místních SQL serverů do Azure SQL Database spravované Instance.
+Tento článek popisuje různé topologie sítě, které služba Azure databáze migrace můžete pracovat a poskytuje prostředí komplexní migrace z místních SQL serverů do Azure SQL Database spravované Instance.
 
 ## <a name="azure-sql-database-managed-instance-configured-for-hybrid-workloads"></a>Azure SQL spravované Instance databáze nakonfigurované pro hybridní úlohy 
 Tato topologie použijte, pokud vaše Azure SQL Database spravované Instance je připojen k síti na pracovišti. Tento přístup poskytuje nejvíc zjednodušené směrování sítě a výsledkem propustnost maximální dat během migrace.
@@ -40,7 +40,7 @@ Tato topologie sítě použijte, pokud vaše prostředí vyžaduje jeden nebo v�
 
 **Požadavky**
 - Virtuální síť, který používá služba migrace databáze Azure pro tento scénář musí být taky připojen k místní síti pomocí (https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
-- Je nutné nastavit [partnerský vztah sítě VNET](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) mezi virtuální sítě používá pro Azure spravované Instance databáze SQL a službu Azure databáze migrace.
+- Nastavit [partnerský vztah sítě VNET](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) mezi virtuální sítě používá pro Azure spravované Instance databáze SQL a službu Azure databáze migrace.
 
 
 ## <a name="cloud-to-cloud-migrations-shared-vnet"></a>Migrace cloudu cloudu: sdílené virtuální sítě
@@ -62,7 +62,7 @@ Tato topologie sítě použijte, pokud vaše prostředí vyžaduje jeden nebo v�
 ![Topologie sítě pro Cloud-Cloud migrace s izolované virtuální sítě](media\resource-network-topologies\cloud-to-cloud-isolated.png)
 
 **Požadavky**
-- Je nutné nastavit [partnerský vztah sítě VNET](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) mezi virtuální sítě používá pro Azure spravované Instance databáze SQL a službu Azure databáze migrace.
+- Nastavit [partnerský vztah sítě VNET](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) mezi virtuální sítě používá pro Azure spravované Instance databáze SQL a službu Azure databáze migrace.
 
 
 ## <a name="see-also"></a>Viz také

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/12/2015
 ms.author: rasquill
-ms.openlocfilehash: 19c704d965ff3e2fc9ac8c5b623aeb386cb0b974
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: be5089b825a873006696eb074ed4355f415e680b
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/16/2018
-ms.locfileid: "23886180"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319521"
 ---
 ## <a name="setting-up-powershell"></a>Nastavení prostředí PowerShell
 Než budete moct použít Azure PowerShell, postupujte podle těchto kroků.
@@ -56,7 +56,7 @@ Pokyny a odkaz na nejnovější verzi naleznete v tématu [postup instalace a ko
 ### <a name="set-your-azure-account-and-subscription"></a>Nastavení předplatného a účtu Azure
 Pokud nemáte předplatné Azure, můžete si aktivovat vaší [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
-Otevřete příkazový řádek prostředí Azure PowerShell a přihlaste se k Azure pomocí tohoto příkazu.
+Otevřete příkazový řádek prostředí Azure PowerShell a přihlášení do Azure pomocí tohoto příkazu.
 
     Add-AzureAccount
 

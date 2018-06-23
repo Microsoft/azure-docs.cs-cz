@@ -3,22 +3,23 @@ title: Jak zjistit, jaké jednotného přihlašování metodu použít | Microso
 description: Pochopit režimy jeden přihlašování podporované službou Azure AD a jak vybrat volbě pro aplikace, které vás zajímají.
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 52f4045ebb30bf32989e9f7b946fd03d468a9de2
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.author: barbkess
+ms.openlocfilehash: 79fe30fbe0baed9d62e6bc3328e754958516ef70
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34070664"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335403"
 ---
 # <a name="how-to-determine-what-single-sign-on-method-to-use"></a>Jak zjistit, jaké jednotného přihlašování metoda se má použít
 

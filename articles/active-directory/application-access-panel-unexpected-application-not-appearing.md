@@ -3,23 +3,24 @@ title: Přiřazená aplikace se nezobrazují na přístupovém panelu | Microsof
 description: Poradce při potížích se aplikace nejsou zobrazeny na přístupovém panelu
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
+ms.author: barbkess
 ms.reviwer: japere
-ms.openlocfilehash: 5cb8b600f77c5b7dae91204126e64ec7b9a861ae
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e67f64a40d99bdced79f37cd206a048ee60cfbfb
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29384112"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333431"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>Přiřazená aplikace se nezobrazují přístupového panelu
 

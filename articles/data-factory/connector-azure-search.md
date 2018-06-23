@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 280c91d6a871984959d587e9895166853e89cc45
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 85c854e697e7178bbdb3429c5384d67731770117
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615678"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335508"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Kopírování dat do indexu Azure Search pomocí Azure Data Factory
 
@@ -37,7 +37,7 @@ Jakékoli úložiště podporované zdroje dat může kopírovat data do indexu 
 
 ## <a name="getting-started"></a>Začínáme
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Následující části obsahují podrobnosti o vlastnosti, které se používají k definování entit služby Data Factory, které jsou specifické pro konektor Azure Search.
 
@@ -117,7 +117,7 @@ Chcete-li kopírovat data do Azure Search, nastavte typ zdroje v aktivitě kopí
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **AzureSearchIndexSink** | Ano |
-| WriteBehavior | Určuje, jestli se má sloučit nebo nahradit, pokud již dokument v indexu existuje. Najdete v článku [WriteBehavior vlastnost](#writebehavior-property).<br/><br/>Povolené hodnoty jsou: **sloučení** (výchozí), a **nahrát**. | Ne |
+| writeBehavior | Určuje, jestli se má sloučit nebo nahradit, pokud již dokument v indexu existuje. Najdete v článku [WriteBehavior vlastnost](#writebehavior-property).<br/><br/>Povolené hodnoty jsou: **sloučení** (výchozí), a **nahrát**. | Ne |
 | writeBatchSize | Ukládání dat do indexu Azure Search, když velikost vyrovnávací paměti dosáhne writeBatchSize. Najdete v článku [WriteBatchSize vlastnost](#writebatchsize-property) podrobnosti.<br/><br/>Povolené hodnoty jsou: číslo 1 do 1000; Výchozí hodnota je 1 000. | Ne |
 
 ### <a name="writebehavior-property"></a>Vlastnost WriteBehavior

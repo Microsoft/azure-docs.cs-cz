@@ -3,22 +3,23 @@ title: Postup konfigurace samoobslužné služby aplikace přiřazení | Microso
 description: Povolit přístup k aplikaci Samoobslužné služby umožnit uživatelům najít vlastní aplikace
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2018
-ms.author: asteen
-ms.openlocfilehash: cf70da4933f5513b75f84aef01dec1ef902eab85
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.author: barbkess
+ms.openlocfilehash: 359640384891ebdf66345d3f5664db1cbefbde77
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30833094"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333741"
 ---
 # <a name="how-to-configure-self-service-application-assignment"></a>Postup konfigurace samoobslužné služby aplikace přiřazení
 

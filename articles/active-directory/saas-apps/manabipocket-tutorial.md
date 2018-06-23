@@ -8,19 +8,18 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 8e521099-bf7d-43ab-a0e0-86aa1c9e577e
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 44b34c20c8b21b58ef67beedc1074f0664048b90
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: f4ef40ea5e3d68ed8c04dc2a67042abd74df42aa
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212366"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>Kurz: Azure Active Directory integrace s Manabi Pocket
 
@@ -101,35 +100,29 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurace propojení přihlášení][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Jediné přihlášení dialogové okno](./media/manabipocket-tutorial/tutorial_manabipocket_samlbase.png)
 
-3. Na **Manabi Pocket domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
+3. Na **Manabi Pocket domény a adresy URL** část, proveďte následující kroky:
 
     ![Manabi Pocket domény a adresy URL jednotné přihlašování informace](./media/manabipocket-tutorial/tutorial_manabipocket_url.png)
 
-    a. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
-    
-    b. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/assertion_post`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL: `https://ed-cl.com/`
+
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<SERVER-NAME>.ed-cl.com/<TENANT-ID>/idp/provider`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory Manabi Pocket klienta](mailto:info-ed-cl@ntt.com) k získání těchto hodnot.
+    > Hodnota identifikátoru není skutečné. Aktualizujte tato hodnota se skutečným identifikátorem. Obraťte se na [tým podpory Manabi Pocket klienta](mailto:info-ed-cl@ntt.com) získat tuto hodnotu.
 
-4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
-
-    ![Manabi Pocket domény a adresy URL jednotné přihlašování informace](./media/manabipocket-tutorial/tutorial_manabipocket_url1.png)
-
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL: `https://ed-cl.com/`
-
-5. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
     ![Odkaz ke stažení certifikátu](./media/manabipocket-tutorial/tutorial_manabipocket_certificate.png) 
 
-6. Klikněte na tlačítko **Uložit** tlačítko.
+5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/manabipocket-tutorial/tutorial_general_400.png)
 
-7. Konfigurace jednotného přihlašování na **Manabi Pocket** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory Manabi Pocket](mailto:info-ed-cl@ntt.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+6. Konfigurace jednotného přihlašování na **Manabi Pocket** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory Manabi Pocket](mailto:info-ed-cl@ntt.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -196,7 +189,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
-    
+
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
@@ -222,4 +215,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/manabipocket-tutorial/tutorial_general_201.png
 [202]: ./media/manabipocket-tutorial/tutorial_general_202.png
 [203]: ./media/manabipocket-tutorial/tutorial_general_203.png
-

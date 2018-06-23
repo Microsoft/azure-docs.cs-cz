@@ -17,12 +17,12 @@ ms.date: 04/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0f535e8a74822319d472c62fe1b65e5145e58a74
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f85b97791c9e2d17417f82dae05d27838be63703
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261640"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319009"
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Scénáře ověřování pro Azure AD
 
@@ -208,7 +208,7 @@ Pokud používáte knihovny ověřování AD, jsou zpracovávány většinu podr
 
 1. Pomocí prohlížeče automaticky otevírané okno, že nativní aplikace odešle požadavek na koncový bod autorizace ve službě Azure AD. Tato žádost obsahuje ID aplikace a identifikátor URI nativní aplikace přesměrování, jak je znázorněno v portálu Azure a identifikátor ID URI aplikace pro webové rozhraní API. Pokud uživatel nebyl ještě přihlášeni, budou vyzváni k přihlášení znovu
 1. Azure AD ověřuje uživatele. Pokud je víceklientské aplikace a je požadován k používání aplikace souhlas, uživatel bude nutné nutné vyjádřit souhlas. Pokud se tak již neučinili. Po udělení souhlasu a po úspěšném ověření Azure AD vydá autorizační kód odpověď zpět identifikátor URI přesměrování klienta aplikace.
-1. Pokud Azure AD vydá autorizační kód odpověď zpět identifikátor URI přesměrování, klientská aplikace přestane interakce prohlížeče a extrahuje autorizační kód z odpovědi. Pomocí tohoto kódu autorizace, klientská aplikace odešle požadavek na token koncový bod Azure AD, která zahrnuje autorizační kód, podrobnosti o aplikaci klienta (ID aplikace a identifikátor URI pro přesměrování) a požadovaný prostředek (aplikace identifikátor ID URI pro webové rozhraní API).
+1. Pokud Azure AD vydá autorizační kód odpověď zpět identifikátor URI přesměrování, klientská aplikace přestane interakce prohlížeče a extrahuje autorizační kód z odpovědi. Pomocí tohoto kódu autorizace, klientská aplikace odešle požadavek na token koncového bodu Azure AD, které zahrnuje autorizační kód, podrobnosti o aplikaci klienta (ID aplikace a identifikátor URI pro přesměrování) a požadovaný prostředek (identifikátor ID URI aplikace pro webové rozhraní API).
 1. Autorizační kód a informace o rozhraní API pro aplikace a webové klient se ověří pomocí Azure AD. Po úspěšném ověření Azure AD vrátí dva tokeny: přístupový token JWT a obnovovací token JWT. Kromě toho Azure AD vrátí základní informace o uživateli, jako jejich zobrazovaný název a klienta ID.
 1. Přes protokol HTTPS klientská aplikace používá přístupový token vrácená JWT k přidání JWT řetězec s označením "Nosiče" v hlavičce autorizace požadavku do webové rozhraní API. Webové rozhraní API pak ověří JWT token a pokud je ověření úspěšné, vrátí požadovaného prostředku.
 1. Když vyprší platnost přístupového tokenu, klientská aplikace obdrží chybu, která označuje, že uživatel musí provést ověření znovu. Pokud aplikace má platný obnovovací token, můžete použít k získání nového tokenu přístupu bez výzvy pro uživatele se znovu přihlásit. Pokud token obnovení vyprší, aplikace bude nutné znovu interaktivně ověření uživatele.
@@ -255,7 +255,7 @@ Identita aplikace i delegovaný uživatel identity typy jsou popsané v následu
 ##### <a name="delegated-user-identity-with-openid-connect"></a>Identita uživatele delegovaný s OpenID Connect
 
 1. Uživatel je přihlášený k webové aplikaci pomocí služby Azure AD (najdete v článku [webový prohlížeč k webové aplikaci](#web-browser-to-web-application) část výše). Pokud uživatel webové aplikace nebyla dosud dá souhlas, povolení k volání webového rozhraní API jeho jménem webové aplikace, uživatel bude muset souhlas. Aplikace se zobrazí oprávnění, která vyžaduje, a pokud některá z těchto oprávnění na úrovni správce, nebude možné souhlas normální uživatele v adresáři. Tento proces souhlasu platí jenom pro víceklientské aplikace, aplikace nejsou jednoho klienta, aplikace bude již mít nezbytná oprávnění. Při přihlášení uživatele přijat webové aplikace token ID s informacemi o uživateli, jakož i autorizační kód.
-1. Pomocí autorizační kód vydané službou Azure AD, webové aplikace odešle požadavek na token koncový bod Azure AD, která zahrnuje autorizační kód, podrobnosti o aplikaci klienta (ID aplikace a identifikátor URI pro přesměrování) a požadovaný prostředek (aplikace identifikátor ID URI pro webové rozhraní API).
+1. Pomocí autorizační kód vydané službou Azure AD, webové aplikace odešle požadavek na token koncový bod Azure AD, který zahrnuje autorizační kód, podrobnosti o aplikaci klienta (ID aplikace a identifikátor URI pro přesměrování) a požadovaný prostředek (ID aplikace Identifikátor URI pro webové rozhraní API).
 1. Autorizační kód a informace o webové aplikace a webového rozhraní API se ověří pomocí Azure AD. Po úspěšném ověření Azure AD vrátí dva tokeny: přístupový token JWT a obnovovací token JWT.
 1. Přes protokol HTTPS webová aplikace používá přístupový token vrácená JWT přidat řetězec JWT s označením "Nosiče" v hlavičce autorizace požadavku do webové rozhraní API. Webové rozhraní API pak ověří JWT token a pokud je ověření úspěšné, vrátí požadovaného prostředku.
 
@@ -265,7 +265,7 @@ Identita aplikace i delegovaný uživatel identity typy jsou popsané v následu
 1. Webové aplikace vyžaduje autorizační kód získat přístupový token, takže ho vydává požadavek prostřednictvím prohlížeče pro koncový bod autorizace Azure AD, poskytuje ID aplikace a identifikátor URI přesměrování pro webovou aplikaci po úspěšném ověření. Uživatel se přihlásí ke službě Azure AD.
 1. Pokud uživatel webové aplikace nebyla dosud dá souhlas, povolení k volání webového rozhraní API jeho jménem webové aplikace, uživatel bude muset souhlas. Aplikace se zobrazí oprávnění, která vyžaduje, a pokud některá z těchto oprávnění na úrovni správce, nebude možné souhlas normální uživatele v adresáři. Svůj souhlas se vztahuje na jeden a více klientů aplikace. V případě jednoho klienta může správce provést správce souhlas k souhlasu jménem uživatelů. To lze provést pomocí `Grant Permissions` v tlačítko [portálu Azure](https://portal.azure.com). 
 1. Poté, co uživatel souhlasí, webová aplikace přijímá autorizační kód, který musí získat přístupový token.
-1. Pomocí autorizační kód vydané službou Azure AD, webové aplikace odešle požadavek na token koncový bod Azure AD, která zahrnuje autorizační kód, podrobnosti o aplikaci klienta (ID aplikace a identifikátor URI pro přesměrování) a požadovaný prostředek (aplikace identifikátor ID URI pro webové rozhraní API).
+1. Pomocí autorizační kód vydané službou Azure AD, webové aplikace odešle požadavek na token koncový bod Azure AD, který zahrnuje autorizační kód, podrobnosti o aplikaci klienta (ID aplikace a identifikátor URI pro přesměrování) a požadovaný prostředek (ID aplikace Identifikátor URI pro webové rozhraní API).
 1. Autorizační kód a informace o webové aplikace a webového rozhraní API se ověří pomocí Azure AD. Po úspěšném ověření Azure AD vrátí dva tokeny: přístupový token JWT a obnovovací token JWT.
 1. Přes protokol HTTPS webová aplikace používá přístupový token vrácená JWT přidat řetězec JWT s označením "Nosiče" v hlavičce autorizace požadavku do webové rozhraní API. Webové rozhraní API pak ověří JWT token a pokud je ověření úspěšné, vrátí požadovaného prostředku.
 

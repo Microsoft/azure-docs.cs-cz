@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 4be591a15c7ba2c6deaa17f1847233f409179472
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e80c69657dfb7cbab7d29c94d3dd3c56574de7b7
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "35343953"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36321992"
 ---
 # <a name="speech-service-rest-apis"></a>REST API služby řeči
 
@@ -31,11 +31,14 @@ Východní Asie| `https://eastasia.stt.speech.microsoft.com/speech/recognition/c
 Severní Evropa| `https://northeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1`
 
 > [!NOTE]
-> Pokud jste si přizpůsobili akustickými model nebo model jazyk nebo výslovnosti, použijte místo toho svůj vlastní koncový bod.
+> Musíte připojit požadovaný jazyk v identifikátoru URI, aby se zabránilo chyby protokolu http 401. Pro en US tak správný identifikátor URI by byl: https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
 
 Převod řeči na Text rozhraní API je jinak podobná [REST API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) pro předchozí řeči API.
 
 Převod řeči na Text REST API podporuje pouze krátké utterances. Žádosti o může obsahovat až 10 sekund zvuk a naposledy maximálně celkové 14 sekund. Rozhraní REST API vrátí pouze poslední výsledky, částečné nebo dočasné výsledky.
+
+> [!NOTE]
+> Pokud jste si přizpůsobili akustickými model nebo model jazyk nebo výslovnosti, použijte místo toho svůj vlastní koncový bod.
 
 ## <a name="text-to-speech"></a>Převod textu na řeč
 
@@ -143,7 +146,7 @@ C# třída níže ukazuje, jak získat přístupový token. Předejte svůj klí
     public class Authentication
     {
         public static readonly string FetchTokenUri =
-            "https://westus.api.cognitive.microsoft.com/sts/v1.0";
+            "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
         private string subscriptionKey;
         private string token;
 
@@ -164,7 +167,6 @@ C# třída níže ukazuje, jak získat přístupový token. Předejte svůj klí
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 UriBuilder uriBuilder = new UriBuilder(fetchUri);
-                uriBuilder.Path += "/issueToken";
 
                 var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
                 Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
@@ -210,7 +212,7 @@ Jako dříve, zkontrolujte `FetchTokenUri` hodnota odpovídá oblasti vašeho p�
     public class Authentication
     {
         public static readonly string FetchTokenUri = 
-            "https://westus.api.cognitive.microsoft.com/sts/v1.0";
+            "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
         private string subscriptionKey;
         private string token;
         private Timer accessTokenRenewer;
@@ -270,7 +272,6 @@ Jako dříve, zkontrolujte `FetchTokenUri` hodnota odpovídá oblasti vašeho p�
             {
                 client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 UriBuilder uriBuilder = new UriBuilder(fetchUri);
-                uriBuilder.Path += "/issueToken";
 
                 var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
                 Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
@@ -279,3 +280,8 @@ Jako dříve, zkontrolujte `FetchTokenUri` hodnota odpovídá oblasti vašeho p�
         }
     }
 ```
+
+## <a name="next-steps"></a>Další postup
+
+* [Získat zkušební verze předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)
+* [Zjistit, jak přizpůsobit rozpoznávání řeči modelu](how-to-customize-speech-models.md)

@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
-ms.date: 05/17/2018
+ms.date: 06/21/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d9c2f210204122947c24eb42f643450537f3b9a8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 3c3737d3a98093f752c1248460a8084436e60941
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232294"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333594"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Sestavy aktivit přihlašování na portálu Azure Active Directory
 
@@ -41,7 +41,7 @@ V toto tématu najdete přehled aktivit přihlašování.
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="who-can-access-the-data"></a>Kdo má přístup k datům?
-* Uživatelé v roli Správce zabezpečení, Čtenář zabezpečení nebo Čtenář sestav
+* Uživatelé v roli zabezpečení Správce zabezpečení čtečky, sestava čtečky nebo správce aplikací
 * Globální správci
 * Každý uživatel (bez oprávnění správce) může přistupovat k vlastnímu přihlašování. 
 
@@ -63,16 +63,14 @@ Váš první vstupní bod pro všechna data aktivit přihlašování je **Přihl
 ![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/61.png "Aktivita přihlašování")
 
 
-Protokol přihlášení má výchozí zobrazení seznamu, které obsahuje následující položky:
+Protokol auditu má výchozí zobrazení seznamu, které obsahuje následující položky:
 
-- Datum přihlášení
-- Související uživatel
-- Aplikace, ke které se uživatel přihlásil
-- Stav přihlášení
-- Stav detekce rizik
-- Stav požadavku na vícefaktorové ověřování (MFA) 
+- související uživatel
+- aplikace, ke které se uživatel přihlásil
+- stav přihlášení
+- čas přihlášení
 
-![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/01.png "Aktivita přihlašování")
+![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/41.png "Aktivita přihlašování")
 
 Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástrojů.
 
@@ -80,94 +78,58 @@ Zobrazení seznamu můžete upravit kliknutím na **Sloupce** na panelu nástroj
 
 To umožňuje zobrazit další pole, nebo odebrat pole, která jsou už zobrazená.
 
-![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/02.png "Aktivita přihlašování")
+![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/42.png "Aktivita přihlašování")
 
-Kliknutím na položku v zobrazení seznamu k ní zobrazíte všechny dostupné podrobnosti ve vodorovném zobrazení.
+Kliknutím na položku v zobrazení seznamu k ní zobrazíte všechny dostupné podrobnosti.
 
-![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/03.png "Aktivita přihlašování")
+![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/43.png "Aktivita přihlašování")
 
 
-## <a name="filter-sign-in-activities"></a>Filtrování aktivit přihlašování
+## <a name="filtering-sign-in-activities"></a>Filtrování aktivit přihlašování
 
-Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete filtrovat data přihlašování s využitím následujících výchozích polí:
+Abyste omezili zobrazovaná data na úroveň, která vám vyhovuje, můžete filtrovat data přihlašování s využitím následujících polí:
 
+- Časový interval
 - Uživatel
 - Aplikace
+- Klient
 - Stav přihlášení
-- Stav detekce rizik
-- Datum
+
+![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/44.png "Aktivita přihlašování")
 
 
-![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/04.png "Aktivita přihlašování")
-
-Filtr **Uživatel** umožňuje určit jméno nebo hlavní název uživatele (UPN) pro uživatele, o kterého vám jde. 
-
-Filtr **Aplikace** umožňuje určit název aplikace, o kterou vám jde.  
-
-Filtr **Stav přihlášení** umožňuje vybrat jednu z následujících možností:
-
-- Vše 
-- Úspěch
-- Selhání
-
-Filtr **Detekované riziko** umožňuje vybrat jednu z následujících možností:
-
-- Vše
-- Ano
-- Ne 
-
-
-Filtr **Datum** umožňuje definovat časový rámec pro vracená data.  
+Filtr pro **časový interval** umožňuje zadat časový rámec pro vracená data.  
 Možné hodnoty:
 
 - 1 měsíc
 - 7 dní
 - 24 hodin
-- Vlastní časový interval
+- Vlastní
 
 Když vyberete vlastní časový rámec, můžete nakonfigurovat počáteční a koncový čas.
 
-Pokud do svého zobrazení přihlášení přidáte další pole, tato pole se automaticky přidají do seznamu filtrů. Například přidáním pole **Klientská aplikace** do vašeho seznamu získáte také další možnost filtru, která vám umožní nastavit následující filtry:
+Filtr pro **uživatele** umožňuje určit jméno nebo hlavní název uživatele (UPN) pro uživatele, o kterého vám jde.
 
-- Prohlížeč      
-- Exchange ActiveSync (podporované)               
-- Exchange ActiveSync (nepodporované)
-- Ostatní klienti               
-    - IMAP
-    - MAPI
-    - Starší klienti Office
-    - POP
-    - SMTP
+Filtr pro **aplikaci** umožňuje určit název aplikace, o kterou vám jde.
 
+Filtr pro **klienta** umožňuje určit informace o zařízení, o které vám jde.
 
-![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/12.png "Aktivita přihlašování")
+Filtr pro **stav přihlášení** umožňuje vybrat jeden z následujících filtrů:
 
-
-> [!TIP] 
-> Kromě výchozích filtrů se stanou pole filtru ze všech dalších polí, která přidáte do zobrazení přihlášení.
-
-
-## <a name="download-sign-in-activities"></a>Stažení aktivit přihlašování
-
-Pokud chcete pracovat s daty aktivit přihlašování mimo web Azure Portal, můžete si je stáhnout. Kromě tlačítka pro stahování máte také na webu Azure Portal možnost vygenerovat skript, který data stáhne.  
-
-![Stáhnout](./media/active-directory-reporting-activity-sign-ins/71.png "Stáhnout")
-
-Kliknutím na tlačítko **Stáhnout** vytvoříte soubor CSV s 5000 nejnovějších záznamů. Pokud potřebujete větší flexibilitu, můžete použít řešení se skriptem. Kliknutím na tlačítko **skriptu** vytvoří skript prostředí PowerShell, který obsahuje všechny filtry, které jste nastavili. Stáhněte a spusťte tento skript v **režimu správce** ke generování souboru CSV. Kromě technické implementace je počet záznamů, které si můžete stáhnout, také omezený [zásadami uchování sestav Azure Active Directory](active-directory-reporting-retention.md).  
-
+- Vše
+- Úspěch
+- Selhání
 
 
 ## <a name="sign-in-activities-shortcuts"></a>Zkratky pro aktivity přihlašování
 
 Kromě Azure Active Directory poskytuje web Azure Portal dva další vstupní body k datům aktivit přihlašování:
 
-- Přehled ochrany zabezpečení identit
-- Uživatelé
-- Skupiny
+- Uživatelé a skupiny
 - Podnikové aplikace
 
 
-### <a name="users-sign-ins-activities"></a>Aktivity přihlašování uživatelů
+### <a name="users-and-groups-sign-ins-activities"></a>Aktivity přihlašování uživatelů a skupin
 
 Na základě informací poskytnutých sestavou přihlašování uživatelů najdete odpovědi na otázky tohoto typu:
 
@@ -177,39 +139,29 @@ Na základě informací poskytnutých sestavou přihlašování uživatelů najd
 
 
 
-Vaším vstupním bodem k těmto datům je graf přihlašování uživatelů na stránce přehledu **ochrany zabezpečení identit**. V grafu přihlašování uživatelů jsou znázorněny týdenní agregace přihlášení všech uživatelů za dané časové období. Výchozí časové období je 30 dnů.
+Vaším vstupním bodem pro tato data je graf přihlašování uživatelů v oddílu **Přehled** v části **Uživatelé a skupiny**.
 
-![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/06.png "Aktivita přihlašování")
+![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/45.png "Aktivita přihlašování")
 
-Když v grafu přihlašování kliknete na konkrétní den, zobrazí se přehled aktivit přihlašování pro tento den.
+V grafu přihlašování uživatelů jsou znázorněny týdenní agregace přihlášení všech uživatelů za dané časové období. Výchozí časové období je 30 dnů.
 
+![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/46.png "Aktivita přihlašování")
 
-Na každém řádku v seznamu aktivit přihlašování se zobrazí:
+Když v grafu přihlašování kliknete na konkrétní den, zobrazí se pro tento den podrobný seznam aktivit přihlašování.
+
+![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/41.png "Aktivita přihlašování")
+
+Každý řádek v seznamu aktivit přihlašování obsahuje podrobné informace o vybraném přihlášení. Příklad:
 
 * Kdo se přihlásil?
+* Jaký byl související hlavní název uživatele (UPN)?
 * Která aplikace byla cílem přihlášení?
-* Jaký je stav přihlášení?
-* Jaký je stav MFA přihlášení?
+* Jaká je IP adresa přihlášení?
+* Jaký byl stav přihlášení?
 
-Kliknutím na položku zobrazíte další podrobnosti o přihlašovací operaci:
+Možnost **Přihlášení** poskytuje úplný přehled o všech přihlášeních uživatelů.
 
-- ID uživatele
-- Uživatel
-- Uživatelské jméno
-- ID aplikace
-- Aplikace
-- Klient
-- Umístění
-- IP adresa
-- Datum
-- Vyžaduje se MFA
-- Stav přihlášení
-
- 
-Na stránce **Uživatelé** zobrazíte úplný přehled všech přihlášení uživatelů kliknutím na **Přihlášení** v části **Aktivita**.
-
-![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/08.png "Aktivita přihlašování")
-
+![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/51.png "Aktivita přihlašování")
 
 
 
@@ -221,9 +173,9 @@ S použitím zobrazení dat přihlašování zaměřeného na aplikace můžete 
 * Které jsou 3 nejpoužívanější aplikace v organizaci?
 * Nedávno jsem zpřístupnil aplikaci. Jak to s ní vypadá?
 
-Vaším vstupním bodem k těmto datům je sestava *3 nejpoužívanějších aplikací ve vaší organizaci za posledních 30 dnů* v části **Přehled** na stránce **Podnikové aplikace**.
+Vaším vstupním bodem k těmto datům jsou 3 nejpoužívanější aplikace v organizaci v rámci sestavy za posledních 30 dnů v oddílu **Přehled** v části **Podnikové aplikace**.
 
-![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/10.png "Aktivita přihlašování")
+![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/64.png "Aktivita přihlašování")
 
 Graf využívání aplikací s týdenními agregacemi přihlašování pro 3 nejpoužívanější aplikace v daném časovém období. Výchozí časové období je 30 dnů.
 
@@ -237,11 +189,12 @@ Pokud chcete, můžete se zaměřit na konkrétní aplikaci.
 Když v grafu využívání aplikací kliknete na konkrétní den, zobrazí se podrobný seznam aktivit přihlašování.
 
 
+![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/48.png "Aktivita přihlašování")
 
 
 Možnost **Přihlášení** poskytuje úplný přehled o všech událostech přihlašování pro vaše aplikace.
 
-![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/11.png "Aktivita přihlašování")
+![Aktivita přihlašování](./media/active-directory-reporting-activity-sign-ins/49.png "Aktivita přihlašování")
 
 
 

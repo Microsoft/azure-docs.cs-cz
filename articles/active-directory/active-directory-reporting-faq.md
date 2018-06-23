@@ -15,12 +15,12 @@ ms.component: compliance-reports
 ms.date: 05/10/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2ceaf4ecf7da78377c52135b7de5191c1dc3dd28
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 8d627abfe7b686eeeb5a65c4515e184f4ce62f4e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232296"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335053"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Nejčastější dotazy týkající se vytváření sestav Azure Active Directory.
 
@@ -72,7 +72,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy k Azure Active Direc
 
 **Otázka: počet záznamů, můžete stáhnout z portálu Azure?**
 
-**Odpověď:** až 5000 záznamy si můžete stáhnout z portálu Azure. Záznamy jsou seřazené podle *nejnovější* a ve výchozím nastavení, můžete získat nejnovější 5000 záznamy. Pro větší než 5 000 záznamů velikosti, vyberte filtr podmínek a potom klikněte na *skriptu* tlačítko na portálu Azure. To se stáhnout skript prostředí PowerShell, který můžete spustit generovat soubor CSV všechny záznamy odpovídající filtr podmínek. Budete muset spustit skript prostředí PowerShell *režimu správce*. Další informace najdete v tématu [stahovat přihlašovací aktivity](active-directory-reporting-activity-sign-ins.md#download-sign-in-activities).
+**Odpověď:** až 5000 záznamy si můžete stáhnout z portálu Azure. Záznamy jsou seřazené podle *nejnovější* a ve výchozím nastavení, můžete získat nejnovější 5000 záznamy.
 
 ---
 

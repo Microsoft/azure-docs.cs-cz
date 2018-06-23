@@ -35,7 +35,7 @@ Obě tyto funkce jsou podporované pro virtuální počítače, které jsou ve v
 
 2. V **nastavení**, povolte **spouštění diagnostiky**a potom vyberte účet úložiště, které chcete umístit tyto diagnostické soubory.
  
-    ![Vytvořit virtuální počítač](./media/virtual-machines-common-boot-diagnostics/create-storage-account.png)
+    ![Vytvoření virtuálního počítače](./media/virtual-machines-common-boot-diagnostics/create-storage-account.png)
 
     > [!NOTE]
     > Spouštění diagnostiky funkce nepodporuje prémiový účet úložiště. Pokud používáte prémiový účet úložiště pro Diagnostika spouštění, může zobrazit chyba StorageAccountTypeNotSupported při spuštění virtuálního počítače.

@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z Eloqua Oracle pomocí Azure Data Factory (Beta) | Microsoft Docs
+title: Kopírování dat z Eloqua Oracle pomocí Azure Data Factory (Preview) | Microsoft Docs
 description: Postup kopírování dat z Oracle Eloqua do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 7fa26e71651f0b13da97653e998974c6fd39fe3f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8edab4a27966a0bdb278007c0d030fe43a126a35
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617191"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36320601"
 ---
-# <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-beta"></a>Kopírování dat z Eloqua Oracle pomocí Azure Data Factory (Beta)
+# <a name="copy-data-from-oracle-eloqua-using-azure-data-factory-preview"></a>Kopírování dat z Eloqua Oracle pomocí Azure Data Factory (Preview)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Oracle Eloqua. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
 
@@ -28,7 +28,7 @@ Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory
 > Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aktivitu kopírování v V1](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
-> Tento konektor je aktuálně ve verzi Beta. Můžete si vyzkoušet a poskytnout zpětnou vazbu. Nepoužívejte ji v produkčním prostředí.
+> Tento konektor je aktuálně ve verzi preview. Můžete si vyzkoušet a poskytnout zpětnou vazbu. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -49,8 +49,8 @@ Pro Oracle Eloqua propojené služby jsou podporovány následující vlastnosti
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavena na: **Eloqua** | Ano |
-| endpoint | Koncový bod serveru Eloqua. (to znamená, eloqua.example.com)  | Ano |
-| uživatelské jméno | Název lokality a uživatelské jméno účtu Eloqua ve tvaru: lokality název nebo uživatelské jméno. (Eloqua/Alice)  | Ano |
+| endpoint | Koncový bod serveru Eloqua. Eloqua podporuje víc datových center, chcete-li zjistit koncový bod, přihlášení k https://login.eloqua.com s svoje přihlašovací údaje, zkopírujte **základní adresa URL** část z přesměrované adresy URL s vzor `xxx.xxx.eloqua.com`. | Ano |
+| uživatelské jméno | Název lokality a uživatelské jméno účtu Eloqua ve tvaru: `SiteName\Username` například `Eloqua\Alice`.  | Ano |
 | heslo | Heslo odpovídající uživatelské jméno. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat jsou šifrované pomocí protokolu HTTPS. Výchozí hodnota je true.  | Ne |
 | useHostVerification | Určuje, jestli chcete vyžadovat názvu hostitele v certifikátu serveru, aby odpovídal názvu hostitele serveru při připojení přes protokol SSL. Výchozí hodnota je true.  | Ne |
@@ -64,8 +64,8 @@ Pro Oracle Eloqua propojené služby jsou podporovány následující vlastnosti
     "properties": {
         "type": "Eloqua",
         "typeProperties": {
-            "endpoint" : "eloqua.example.com",
-            "username" : "Eloqua/Alice",
+            "endpoint" : "<base URL e.g. xxx.xxx.eloqua.com>",
+            "username" : "<site name>\\<user name e.g. Eloqua\\Alice>",
             "password": {
                  "type": "SecureString",
                  "value": "<password>"
