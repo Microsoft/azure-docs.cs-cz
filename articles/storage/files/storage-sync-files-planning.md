@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 81b760e3a911bacb9c01106d59577d794788abe8
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 1927ab29e82836c60b2ba36c3eec0acf49778082
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36296173"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335835"
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Plánování nasazení synchronizace souboru Azure (preview)
 Pomocí synchronizace souboru Azure (preview) můžete centralizovat vaší organizace sdílené složky v souborech Azure, zatímco flexibilitu, výkonu a kompatibility pro místní souborový server. Synchronizace služby Azure souboru transformuje na rychlé mezipaměti Azure sdílené složky systému Windows Server. Můžete použít libovolný protokol, který je k dispozici v systému Windows Server pro přístup k datům místně, včetně protokolu SMB, systém souborů NFS a FTPS. Může mít libovolný počet mezipamětí, jako je třeba po celém světě.
@@ -144,6 +144,9 @@ Synchronizace souboru Azure a systému souborů DFS-R fungovat vedle sebe:
 2. Koncové body serveru by se neměla konfigurovat na složky jen pro čtení replikace DFS-R.
 
 Další informace najdete v tématu [Přehled replikace DFS](https://technet.microsoft.com/library/jj127250).
+
+### <a name="sysprep"></a>Nástroj Sysprep
+Pomocí nástroje sysprep na serveru, který má nainstalovaného agenta Azure souboru synchronizace není podporována a může vést k neočekávaným výsledkům. Registrace agenta se instalace a server by měl následovat po nasazení bitové kopie serveru a dokončení zkrácené instalace nástroje sysprep.
 
 ### <a name="windows-search"></a>Windows Search
 Pokud cloudové vrstvení je povolená na koncový bod serveru, jsou soubory, které jsou už vás unavuje přeskočeny a není indexované podle Windows Search. Víceúrovňová bez soubory nejsou správně indexovány.

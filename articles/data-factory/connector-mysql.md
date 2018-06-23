@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/06/2018
+ms.date: 06/23/2018
 ms.author: jingwang
-ms.openlocfilehash: 4c9c97f30801ff901677156b0ea37c1eeb348502
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 43a27b98d8b53523bee8694ed3071e65a03355a6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808719"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335869"
 ---
 # <a name="copy-data-from-mysql-using-azure-data-factory"></a>Kopírování dat z databáze MySQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,13 +38,9 @@ Konkrétně tento konektor MySQL podporuje MySQL **verze 5.1 a vyšší**.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li použít tento konektor MySQL, budete muset:
+Pokud databáze MySQL není veřejně přístupná, budete muset nastavit Self-hosted integrace Runtime. Další informace o vlastním hostováním integrační moduly Runtime najdete v tématu [Self-hosted integrace Runtime](create-self-hosted-integration-runtime.md) článku. Modul Runtime integrace poskytuje integrované ovladače MySQL od verze 3.7, proto nemusíte ručně nainstalovat všechny ovladače.
 
-- Nastavte Self-hosted integrace Runtime. V tématu [Self-hosted integrace Runtime](create-self-hosted-integration-runtime.md) článku.
-- Nainstalujte [MySQL Connector/Net pro Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) verze mezi 6.6.5 a 6.10.7 na počítači integrace modulu Runtime. Tento ovladač 32bitové je kompatibilní s 64bitové infračerveného signálu.
-
-> [!TIP]
-> Jestli jste nedosáhli chyba "Ověřování se nezdařilo, protože je uzavřený vzdálené strany přenosu datového proudu.", zvažte MySQL Connector/Net upgradu na vyšší verzi.
+Self-hosted IR verze nižší než 3.7, je potřeba nainstalovat [MySQL Connector/Net pro Microsoft Windows](https://dev.mysql.com/downloads/connector/net/) verze mezi 6.6.5 a 6.10.7 na počítači integrace modulu Runtime. Tento ovladač 32bitové je kompatibilní s 64bitové infračerveného signálu.
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -59,14 +55,40 @@ Pro službu MySQL propojené jsou podporovány následující vlastnosti:
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavena na: **MySql** | Ano |
-| server | Název serveru databáze MySQL. | Ano |
-| databáze | Název databáze MySQL. | Ano |
-| Schéma | Název schématu v databázi. | Ne |
-| uživatelské jméno | Zadejte uživatelské jméno pro připojení k databázi MySQL. | Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Modul Runtime Self-hosted integrace se vyžaduje, jak je uvedeno v [požadavky](#prerequisites). |Ano |
+| připojovací řetězec | Zadejte informace potřebné pro připojení k databázi Azure pro instanci databáze MySQL. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Můžete použít Self-hosted integrace Runtime (Pokud je vaše úložiště dat se nachází v privátní síti) nebo modul Runtime integrace Azure. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
+
+Typické připojovací řetězec je `Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>`. Další vlastnosti, které můžete nastavit na váš případ:
+
+| Vlastnost | Popis | Možnosti | Požaduje se |
+|:--- |:--- |:--- |:--- |:--- |
+| SSLMode | Tato možnost určuje, jestli ovladač používá šifrování SSL a ověření při připojování k MySQL. Například `SSLMode=<0/1/2/3/4>`| ZAKÁZÁNO (0) / upřednostňované (1) **(výchozí)** / požadované (2) / VERIFY_CA (3) / VERIFY_IDENTITY (4) | Ne |
+| useSystemTrustStore | Tato možnost určuje, jestli se má použít certifikát Certifikační autority z úložiště důvěryhodnosti systému, nebo z určeného souboru PEM. Například `UseSystemTrustStore=<0/1>;`| (1) povoleno nebo zakázáno (0) **(výchozí)** | Ne |
 
 **Příklad:**
+
+```json
+{
+    "name": "MySQLLinkedService",
+    "properties": {
+        "type": "MySql",
+        "typeProperties": {
+            "connectionString": {
+                 "type": "SecureString",
+                 "value": "Server=<server>;Port=<port>;Database=<database>;UID=<username>;PWD=<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+Pokud používáte službu MySQL propojené s následující datové části, je stále podporovány jako-se, když jsou navrhované používat novým do budoucna.
+
+**Předchozí datové části:**
 
 ```json
 {
