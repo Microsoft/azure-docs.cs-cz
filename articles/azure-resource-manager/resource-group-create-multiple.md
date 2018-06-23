@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2017
+ms.date: 06/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: ce442793a9917320b6b2b0a7014a20f885c3720c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 580ecc98913dc35e2d1e21f1dcfa19936bb59826
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337958"
 ---
-# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Nasazení více instancí prostředek nebo vlastnost v šablonách Azure Resource Manager
+# <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Nasazení více instancí prostředek nebo vlastnost v šablonách Azure Resource Manageru
 Tento článek ukazuje, jak podmíněně nasazení prostředku a jak k iteraci v šablony Azure Resource Manager vytvořit více instancí prostředku.
 
 ## <a name="conditionally-deploy-resource"></a>Podmíněná nasazení prostředků
@@ -127,9 +128,9 @@ Vytvoří tyto názvy:
 * storagefabrikam
 * storagecoho
 
-Ve výchozím nastavení vytvoří Resource Manager prostředky paralelně. Proto není zaručena pořadí, ve které byly vytvořeny. Můžete však zadat, aby byly prostředky nasazené v pořadí. Například při aktualizaci provozním prostředí, můžete tak rozložte aktualizací jenom několik jsou aktualizovány v daném okamžiku.
+Ve výchozím nastavení vytvoří Resource Manager prostředky paralelně. Proto není zaručena pořadí, ve které jste vytvořili. Můžete však zadat, aby byly prostředky nasazené v pořadí. Například při aktualizaci provozním prostředí, můžete tak rozložte aktualizací jenom několik jsou aktualizovány v daném okamžiku.
 
-Sériově nasadit více instancí prostředku, nastavte `mode` k **sériové** a `batchSize` na počet instancí pro nasazení v čase. Sériového portu v režimu Resource Manager vytvoří závislost na dřívější instancí ve smyčce, tak nespustí jeden batch, dokud se nedokončí předchozí dávka.
+Sériově nasadit více instancí prostředku, nastavte `mode` k **sériové** a `batchSize` na počet instancí pro nasazení v čase. Sériového portu v režimu Resource Manager vytvoří závislost na dřívější instancí ve smyčce, tak až po dokončení předchozí dávka jeden batch nespustí.
 
 Například sériově nasadit účty úložiště, dva v čase, použijte:
 
@@ -222,6 +223,34 @@ Správce prostředků rozšíří `copy` pole během nasazení. Název pole bude
       ...
 ```
 
+Element kopie je pole, takže můžete zadat více než jednu vlastnost pro prostředek. Přidejte objekt pro každou vlastnost k vytvoření.
+
+```json
+{
+    "name": "string",
+    "type": "Microsoft.Network/loadBalancers",
+    "apiVersion": "2017-10-01",
+    "properties": {
+        "copy": [
+          {
+              "name": "loadBalancingRules",
+              "count": "[length(parameters('loadBalancingRules'))]",
+              "input": {
+                ...
+              }
+          },
+          {
+              "name": "probes",
+              "count": "[length(parameters('loadBalancingRules'))]",
+              "input": {
+                ...
+              }
+          }
+        ]
+    }
+}
+```
+
 Iterace prostředků a vlastnosti můžete použít společně. Odkaz na vlastnost iterace podle názvu.
 
 ```json
@@ -307,6 +336,27 @@ Chcete-li vytvořit více instancí proměnné, použijte `copy` element v sekci
     }
   }
 }
+```
+
+S buď přístup je element kopírování pole, takže můžete určit více než jednu proměnnou. Přidejte objekt pro každou proměnnou pro vytvoření.
+
+```json
+"copy": [
+  {
+    "name": "first-variable",
+    "count": 5,
+    "input": {
+      "demoProperty": "[concat('myProperty', copyIndex('first-variable'))]",
+    }
+  },
+  {
+    "name": "second-variable",
+    "count": 3,
+    "input": {
+      "demoProperty": "[concat('myProperty', copyIndex('second-variable'))]",
+    }
+  },
+]
 ```
 
 ## <a name="depend-on-resources-in-a-loop"></a>Závisí na prostředky ve smyčce
@@ -409,7 +459,7 @@ Následující příklady ukazují běžné scénáře pro vytvoření více pro
 |[Virtuální počítač s nový nebo existující virtuální sítě, úložiště a veřejné IP adresy](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions) |Podmíněná nasadí nový nebo existující prostředky s virtuálním počítačem. |
 |[Nasazení virtuálního počítače s proměnný počet datových disků](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Nasadí více datových disků s virtuálním počítačem. |
 |[Zkopírujte proměnné](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Ukazuje různé způsoby iterace v proměnné. |
-|[Víc pravidel zabezpečení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Nasadí víc pravidel zabezpečení do skupiny zabezpečení sítě. Vytvoří z parametr pravidla zabezpečení. |
+|[Víc pravidel zabezpečení](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Nasadí víc pravidel zabezpečení do skupiny zabezpečení sítě. Vytvoří z parametr pravidla zabezpečení. Parametr, najdete v části [více soubor parametrů NSG](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>Další postup
 * Pokud chcete další informace o části šablony, najdete v části [vytváření šablon Azure Resource Manager](resource-group-authoring-templates.md).

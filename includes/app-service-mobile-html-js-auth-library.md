@@ -2,11 +2,11 @@
 Pokud chcete, aby funkce Mobile Apps spravovala proces ověřování ve vaší aplikaci, je třeba aplikaci zaregistrovat u vašeho zprostředkovatele identity. Potom je nutné ve službě Azure App Service nakonfigurovat ID aplikace a tajný klíč, který vám poskytne zprostředkovatel.
 Další informace najdete v kurzu [Přidání ověřování do aplikace](../articles/app-service-mobile/app-service-mobile-cordova-get-started-users.md).
 
-Jakmile budete zaregistrováni u zprostředkovatele identity, zavolejte metodu `.login()` s názvem vašeho zprostředkovatele. Například pro přihlášení přes Facebook použijte následující kód:
+Jakmile budete zaregistrováni u zprostředkovatele identity, zavolejte metodu `.login()` s názvem vašeho zprostředkovatele. Chcete-li například Přihlaste se pomocí sítě Facebook použijte následující kód:
 
 ```
 client.login("facebook").done(function (results) {
-     alert("You are now logged in as: " + results.userId);
+     alert("You are now signed in as: " + results.userId);
 }, function (err) {
      alert("Error: " + err);
 });
@@ -17,7 +17,7 @@ Platné hodnoty pro zprostředkovatele jsou „aad“, „facebook“, „google
 > [!NOTE]
 > Ověřování Google přes tok na straně serveru aktuálně nefunguje.  K ověřování Google je třeba použít [metodu toku na straně klienta](#client-auth).
 
-V tomto případě služba Azure App Service spravuje tok ověřování OAuth 2.0.  Zobrazí přihlašovací stránku vybraného zprostředkovatele a po úspěšném přihlášení pomocí zprostředkovatele identity vygeneruje ověřovací token služby App Service. Funkce login po dokončení vrátí objekt JSON, který vystaví ID uživatele a ověřovací token služby App Service v polích userId a authenticationToken. Tento token se může uložit do mezipaměti a znovu požívat do vypršení platnosti.
+V tomto případě služba Azure App Service spravuje tok ověřování OAuth 2.0.  Zobrazí na přihlašovací stránku vybraného zprostředkovatele a vygeneruje ověřovací token služby App Service po úspěšném přihlášení pomocí zprostředkovatele identity. Funkce login po dokončení vrátí objekt JSON, který vystaví ID uživatele a ověřovací token služby App Service v polích userId a authenticationToken. Tento token se může uložit do mezipaměti a znovu požívat do vypršení platnosti.
 
 ###<a name="client-auth"></a>Postup: Ověřování pomocí zprostředkovatele (tok na straně klienta)
 
@@ -32,7 +32,7 @@ client.login(
      "facebook",
      {"access_token": token})
 .done(function (results) {
-     alert("You are now logged in as: " + results.userId);
+     alert("You are now signed in as: " + results.userId);
 }, function (err) {
      alert("Error: " + err);
 });
@@ -50,7 +50,7 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
             "microsoftaccount",
             {"authenticationToken": result.session.authentication_token})
       .done(function(results){
-            alert("You are now logged in as: " + results.userId);
+            alert("You are now signed in as: " + results.userId);
       },
       function(error){
             alert("Error: " + err);

@@ -3,22 +3,23 @@ title: Problém, přidání aplikace Galerie Azure AD | Microsoft Docs
 description: Pochopení tučné osoby běžné problémy při přidávání aplikací Galerie Azure AD a jak je vyřešit
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 5cb43976c17bfd46d1f16f0bdaff1c164bdc0fb6
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.author: barbkess
+ms.openlocfilehash: 906a089417cefab72e036dbf1e5650285c7440bc
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34053755"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334981"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Problém, přidání aplikace Galerie Azure AD
 

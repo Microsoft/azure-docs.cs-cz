@@ -117,6 +117,22 @@
       href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
     - name: Kontaktování podpory
       href: ../azure-supportability/how-to-create-azure-support-request.md
+- name: Ukázky
+  items:
+    - name: REST API
+      items:
+        - name: Kontrola podnikových nákladů
+          href: billing-review-enterprise-billing.md
+        - name: Kontrola využití předplatného
+          href: billing-review-subscription-billing.md
+    - name: Ukázky .NET
+      items:
+        - name: Vzorový kód pro rozhraní API pro faktury
+          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+        - name: Vzorový kód pro rozhraní API služby Usage
+          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+        - name: Vzorový kód pro rozhraní API služby RateCard
+          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
 - name: Referenční informace
   items:
     - name: Scénáře automatizace služby Billing
@@ -142,11 +158,3 @@
       items:
         - name: Rozhraní REST API služby Enterprise Reporting
           href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'
-    - name: Vzorové kódy pro fakturaci
-      items:
-        - name: Vzorový kód pro rozhraní API pro faktury
-          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
-        - name: Vzorový kód pro rozhraní API služby Usage
-          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
-        - name: Vzorový kód pro rozhraní API služby RateCard
-          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'

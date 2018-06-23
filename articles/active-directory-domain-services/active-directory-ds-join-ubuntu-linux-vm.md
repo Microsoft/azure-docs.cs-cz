@@ -13,18 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 5cbed14553462d8aff16304e52b66da7ad2652e3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d9f4dc0883ced599dd13d0c5d52ff865e03b73ed
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217227"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332907"
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Připojení virtuálního počítače Ubuntu v Azure ke spravované doméně
 Tento článek ukazuje, jak propojit virtuálního počítače Ubuntu Linux k spravované doméně služby Azure AD Domain Services.
 
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Chcete-li provést úkoly vypsané v tomto článku, je třeba:  
@@ -122,17 +123,17 @@ Teď, když požadované balíčky jsou nainstalovány na virtuální počítač
     sudo realm discover CONTOSO100.COM
     ```
 
-   > [!NOTE] 
+   > [!NOTE]
    > **Řešení potíží:** Pokud *zjišťování sféry* se nepodařilo najít vaší spravované domény:
      * Ujistěte se, že doména je dostupný z virtuálního počítače (zkuste ping).
      * Zkontrolujte, že virtuální počítač skutečně byla nasazena do stejné virtuální síti, ve kterém je k dispozici spravované domény.
      * Zkontrolujte, zda jste aktualizovali nastavení serveru DNS virtuální sítě tak, aby odkazoval na řadičích domény, spravované domény.
    >
 
-2. Inicializace protokolu Kerberos. V terminálu SSH zadejte následující příkaz: 
+2. Inicializace protokolu Kerberos. V terminálu SSH zadejte následující příkaz:
 
-    > [!TIP] 
-    > * Ujistěte se, že zadáváte uživatel, který patří do skupiny "Administrators AAD řadič domény. 
+    > [!TIP]
+    > * Ujistěte se, že zadáváte uživatel, který patří do skupiny "Administrators AAD řadič domény.
     > * Zadejte název domény velkými písmeny, else kinit selže.
     >
 
@@ -140,9 +141,9 @@ Teď, když požadované balíčky jsou nainstalovány na virtuální počítač
     kinit bob@CONTOSO100.COM
     ```
 
-3. Připojení počítače k doméně. V terminálu SSH zadejte následující příkaz: 
+3. Připojení počítače k doméně. V terminálu SSH zadejte následující příkaz:
 
-    > [!TIP] 
+    > [!TIP]
     > Pomocí stejného uživatelského účtu, který jste zadali v předchozím kroku (kinit).
     >
 
@@ -175,7 +176,7 @@ Pokud chcete povolit automatické vytváření domovský adresář po přihláš
 ```
 sudo vi /etc/pam.d/common-session
 ```
-    
+
 Přidejte následující řádek v tomto souboru pod čarou 'volitelné pam_sss.so relace a uložte jej:
 ```
 session required pam_mkhomedir.so skel=/etc/skel/ umask=0077

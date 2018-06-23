@@ -1,4 +1,4 @@
-## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Knihovna ověřování společnosti Microsoft (MSAL) použít k přihlášení uživatele
+## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Přihlášení uživatele pomocí knihovny ověřování společnosti Microsoft (MSAL)
 
 1.  Vytvořte soubor s názvem `app.js`. Pokud používáte Visual Studio, vyberte projekt (projektu do kořenové složky), klikněte pravým tlačítkem a vyberte: `Add`  >  `New Item`  >  `JavaScript File`:
 2.  Přidejte následující kód do vaší `app.js` souboru:
@@ -50,7 +50,7 @@ function callGraphApi() {
         userInfoElement.parentElement.classList.remove("hidden");
         userInfoElement.innerHTML = JSON.stringify(user, null, 4);
 
-        // Show Sign-Out button
+        // Show sign-off button
         document.getElementById("signOutButton").classList.remove("hidden");
 
         // Now Call Graph API to show the user profile information:
@@ -81,7 +81,7 @@ function callGraphApi() {
 /**
  * Callback method from sign-in: if no errors, call callGraphApi() to show results.
  * @param {string} errorDesc - If error occur, the error message
- * @param {object} token - The token received from login
+ * @param {object} token - The token received from sign-in
  * @param {object} error - The error string
  * @param {string} tokenType - The token type: For loginRedirect, tokenType = "id_token". For acquireTokenRedirect, tokenType:"access_token".
  */
@@ -119,16 +119,16 @@ SPA generované tímto průvodcem neprovede používat přímo z tokenu ID – m
 
 #### <a name="getting-a-user-token-interactively"></a>Získání tokenu uživatele interaktivně
 
-Po počáteční přihlášení, nechcete požádejte uživatele k novému ověření pokaždé, když potřebují k vyžádání tokenu pro přístup k prostředkům – tak *acquireTokenSilent* se používá ve většině případů k získávat tokeny. Existují však situace, které potřebujete vynutit uživatelům interakci s koncovým bodem v2 Azure Active Directory – mezi příklady patří:
--   Uživatelé možná muset znovu zadat své přihlašovací údaje, protože vypršela platnost hesla
--   Vaše aplikace požaduje přístup k prostředku, který uživatel musí souhlasit s
--   Není třeba dvoufaktorové ověřování
+Po počáteční přihlášení, nechcete požádejte uživatele k novému ověření pokaždé, když potřebují k vyžádání tokenu pro přístup k prostředkům – tak *acquireTokenSilent* se používá ve většině případů k získávat tokeny. Existují však situace, budete muset vynutit uživatelům interakci s koncovým bodem v2 Azure Active Directory – mezi příklady patří:
+- Uživatelé možná muset znovu zadat své přihlašovací údaje, protože vypršela platnost hesla
+- Vaše aplikace požaduje přístup k prostředku, který uživatel musí souhlasit s
+- Není třeba dvoufaktorové ověřování
 
-Volání *acquireTokenRedirect(scope)* mít za následek uživatele přesměrují na koncový bod služby Azure Active Directory v2 (nebo *acquireTokenPopup(scope)* výsledek v automaticky otevíraném okně) kdy je potřeba interakci uživatelů s ověřením, jejich přihlašovacích údajů, udělení souhlasu pro požadovaný prostředek, nebo dokončení dvoufaktorové ověřování.
+Volání *acquireTokenRedirect(scope)* mít za následek uživatele přesměrují na koncový bod služby Azure Active Directory v2 (nebo *acquireTokenPopup(scope)* výsledek v automaticky otevíraném okně) kdy je potřeba interakci uživatelů potvrzení jejich přihlašovacích údajů, udělení souhlasu pro požadovaný prostředek, nebo dokončení dvoufaktorové ověřování.
 
 #### <a name="getting-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 ` acquireTokenSilent` Metoda zpracovává tokenu pořízení a obnovení bez nutnosti zásahu uživatele. Po `loginRedirect` (nebo `loginPopup`) se spustí poprvé, `acquireTokenSilent` je metoda běžně používají k získání tokeny použít přístup k chráněným prostředkům pro následující volání - volání na vyžádání nebo obnovení tokeny jsou vytvářeny bezobslužně.
-`acquireTokenSilent`může dojít k selhání v některých případech – třeba hesla vypršela. Aplikace může zpracovat výjimku dvěma způsoby:
+`acquireTokenSilent` může dojít k selhání v některých případech – třeba hesla vypršela. Aplikace může zpracovat výjimku dvěma způsoby:
 
 1.  Ujistěte se, volání `acquireTokenRedirect` okamžitě, výsledkem výzvy pro uživatele k přihlášení. Tento vzor se často používá v online aplikace tam, kde není žádná neověřené obsah v aplikaci k dispozici pro uživatele. Ukázka generované touto s průvodcem instalací používá tento vzor.
 
@@ -198,13 +198,13 @@ V ukázkové aplikaci vytvořit v této příručce `callWebApiWithToken()` meto
 
 <!--end-collapse-->
 
-## <a name="add-a-method-to-sign-out-the-user"></a>Přidání metody se odhlásit uživatele
+## <a name="add-a-method-to-sign-off-the-user"></a>Přidejte metodu k odhlaste uživatele
 
 Přidejte následující kód do vaší `app.js` souboru:
 
 ```javascript
 /**
- * Sign-out the user
+ * Sign off the user
  */
 function signOut() {
     userAgentApplication.logout();

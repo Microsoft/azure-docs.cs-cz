@@ -1,110 +1,103 @@
 ---
-title: Postup ladění na základě SAML jednotného přihlašování k aplikacím v Azure Active Directory | Microsoft Docs
-description: 'Zjistěte, jak ladit na základě SAML jednotného přihlašování k aplikacím v Azure Active Directory '
+title: Ladění na základě SAML jednotné přihlašování – Azure Active Directory | Microsoft Docs
+description: Ladění na základě SAML jednotného přihlašování k aplikacím v Azure Active Directory.
 services: active-directory
 author: CelesteDG
 documentationcenter: na
 manager: mtillman
-ms.assetid: edbe492b-1050-4fca-a48a-d1fa97d47815
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/20/2017
+ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: dastrock; smalser
-ms.openlocfilehash: 1a33b5ab9e26ed497e3be2d430f66ef41402733d
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: hirsin, dastrock, smalser
+ms.openlocfilehash: d0c006b21e00693fe6c8b35237d4ce55f67c0f75
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157890"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36320594"
 ---
-# <a name="how-to-debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Postup ladění na základě SAML jednotného přihlašování k aplikacím v Azure Active Directory
+# <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění na základě SAML jednotného přihlašování k aplikacím v Azure Active Directory
 
-Při ladění aplikace založené na SAML integrace, je často vhodné použít nástroj, jako je [Fiddler](http://www.telerik.com/fiddler) SAML požadavek a odpověď SAML, které obsahují token SAML, který byl vydán pro aplikaci. 
+Zjistěte, jak najít a opravit [jednotného přihlašování](../manage-apps/what-is-single-sign-on.md) problémy pro aplikace v Azure Active Directory (Azure AD), které podporují [zabezpečení kontrolního výrazu SAML (Markup Language) 2.0](https://en.wikipedia.org/wiki/Security_Assertion_Markup_Language). 
 
-![Fiddler][1]
+## <a name="before-you-begin"></a>Než začnete
+Doporučujeme nainstalovat [Moje aplikace zabezpečené přihlašování rozšíření](../active-directory-saas-access-panel-user-help.md#i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension). Toto rozšíření prohlížeče lze snadno získat žádost SAML a SAML odpovědi informace, které potřebujete pro řešení problémů s jednotné přihlašování. V případě, že nemůžete instalovat rozšíření, tento článek ukazuje, jak řešit problémy s i bez rozšíření nainstalovat.
 
-Tyto problémy jsou často související s nesprávnou konfiguraci v Azure Active Directory nebo na straně aplikace. V závislosti na tom, kde se zobrazí chyba je nutné zkontrolovat SAML požadavku nebo odpovědi:
+Stáhnout a nainstalovat rozšíření Moje aplikace zabezpečené přihlašování, použijte jednu z následujících odkazů.
 
-- Zobrazuje chybu ve společnosti přihlašovací stránka Moje [odkazy na části]
-- Zobrazuje chybu na stránce aplikace po přihlášení [odkazy na části]
-
-## <a name="i-see-an-error-in-my-company-sign-in-page"></a>V mé přihlašovací stránku společnosti se zobrazují k chybě.
-
-Můžete najít mapování 1: 1 mezi kód chyby a postup řešení v [potíže při přihlašování do Galerie aplikace nakonfigurovaná pro federované jednotné přihlašování](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML).
-
-Pokud uvidíte chybu v přihlašovací stránku vaší společnosti, budete potřebovat chybová zpráva a žádost SAML k ladění problém.
-
-### <a name="how-can-i-get-the-error--message"></a>Načtení chybová zpráva
-
-K získání chybové zprávy, podívejte se na pravém dolním rohu stránky. Zobrazí chybu, která zahrnuje:
-
-- CorrelationID
-- Časovým razítkem
-- Zpráva
-
-![Chyba][2] 
-
- 
-Id korelace a časové razítko tvoří jedinečný identifikátor, který můžete použít k vyhledání protokolů back-end přidružené k chybě přihlášení. Tyto hodnoty jsou důležité, když vytvoříte případu podpory se společností Microsoft, protože pomáhají technici zajistit rychlejší řešení svých problémů.
-
-Zpráva je hlavní příčinou problému přihlášení. 
+- [Chrome](https://go.microsoft.com/fwlink/?linkid=866367)
+- [Edge](https://go.microsoft.com/fwlink/?linkid=845176)
+- [Firefox](https://go.microsoft.com/fwlink/?linkid=866366)
 
 
-### <a name="how-can-i-review-the-saml-request"></a>Jak můžete zkontrolovat žádost SAML?
+## <a name="test-saml-based-single-sign-on"></a>Test na základě SAML jednotné přihlašování
 
-SAML požadavek odeslaný aplikací do Azure Active Directory je obvykle poslední odpověď HTTP 200 [ https://login.microsoftonline.com ](https://login.microsoftonline.com).
- 
-Pomocí Fiddleru, můžete zobrazit žádost SAML výběrem tohoto řádku a potom výběrem **inspektoři > WebForms** kartě v pravém panelu. Klikněte pravým tlačítkem myši **SAMLRequest** hodnotu a pak vyberte **poslat TextWizard**. Potom vyberte **z formátu Base64** z **transformace** nabídky k dekódování tokenu a zobrazit jeho obsah. 
+K testování na základě SAML jednotné přihlašování mezi AAD a cílová aplikace:
 
-Navíc můžete kopírovat hodnota SAMLrequest a použít jiný decoder Base64.
+1.  Přihlaste se k [portál Azure](https://portal.azure.com) jako globální správce nebo jiný správce, který má oprávnění ke správě aplikací.
+2.  V levém okně klikněte na **Azure Active Directory**a potom klikněte na **podnikové aplikace, které**. 
+3.  Ze seznamu podnikové aplikace, klikněte na aplikaci, pro který chcete testovat jednotné přihlašování a potom z možností na levém kliknutím **jednotného přihlašování**.
+4.  Otevřete základě SAML jeden testování přihlašování, **domény a adresy URL** části klikněte na tlačítko **nastavení testu SAML**. Pokud je tlačítko Nastavení testu SAML šedá, musíte nejprve vyplňte a uložte povinné atributy.
+5.  V **Test jednotného přihlašování** okně používat svoje podnikové přihlašovací údaje pro přihlášení do cílové aplikace. Můžete přihlásit jako aktuální uživatel, nebo jako jiný uživatel. Pokud se přihlásit jako jiný uživatel, výzva vás vyzve k ověření.
 
-    <samlp:AuthnRequest
-    xmlns="urn:oasis:names:tc:SAML:2.0:metadata"
-    ID="id6c1c178c166d486687be4aaf5e482730"
-    Version="2.0" IssueInstant="2013-03-18T03:28:54.1839884Z"
-    Destination=https://login.microsoftonline.com/<Tenant-ID>/saml2
-    AssertionConsumerServiceURL="https://contoso.applicationname.com/acs"
-    xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
-    <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://www.contoso.com</Issuer>
-    </samlp:AuthnRequest>
+Pokud jste úspěšně přihlášeni, test byla úspěšná. V takovém případě Azure AD vystaví token SAML odpovědi do aplikace. Aplikace používá SAML token se úspěšně vás přihlásit.
 
-S žádostí SAML, dekódovat zkontrolujte následující položky:
-
-1. **Cílový** v žádosti SAML odpovídají SAML jeden přihlašování adresa URL služby získané z Azure Active Directory.
- 
-2. **Vystavitel** v SAML požadavku je stejný **identifikátor** jste nakonfigurovali pro aplikaci v Azure Active Directory. Azure AD používá vystavitele najít aplikaci ve vašem adresáři.
-
-3. **AssertionConsumerServiceURL** je, kde se předpokládá, že aplikace přijímat tokenu SAML z Azure Active Directory. Tuto hodnotu můžete nakonfigurovat v Azure Active Directory, ale není povinný, pokud je součástí žádost SAML.
+Pokud máte chybu na přihlašovací stránce společnosti nebo aplikace, použijte jednu z následujících částech vyřešit chyby.
 
 
-## <a name="i-see-an-error-on-the-applications-page-after-signing-in"></a>I po přihlášení na stránce aplikace zobrazí chyba
+## <a name="resolve-a-sign-in-error-on-your-company-sign-in-page"></a>Vyřešte chyby přihlášení na přihlašovací stránku společnosti
 
-V tomto scénáři aplikace nepřijímá odpovědi vydané službou Azure AD. Je důležité, abyste ověřili odpověď z Azure AD, který obsahuje token SAML se na dodavatele aplikace a zjistit, co je chybí nebo je nesprávný. 
+Při pokusu o přihlášení může se zobrazit chyba na přihlašovací stránku vaší společnosti. 
 
-### <a name="how-can-i-get-and-review-the-saml-response"></a>Jak můžete získat a zkontrolujte odpověď SAML?
+![Chyba přihlášení](media/active-directory-saml-debugging/error.png)
 
-Odpověď z Azure AD, který obsahuje SAML token je obvykle ten, který se nachází za přesměrování HTTP 302 z https://login.microsoftonline.com a je odeslána do konfigurovaného **adresa URL odpovědi** aplikace. 
+Ladění této chyby, budete potřebovat chybovou zprávu a žádost SAML. Rozšíření Moje aplikace zabezpečené přihlašování automaticky shromažďuje tyto informace a zobrazí pokyny řešení v Azure AD. 
 
-Můžete zobrazit výběrem tohoto řádku a potom výběrem tokenu SAML **inspektoři > WebForms** kartě v pravém panelu. Zde, klikněte pravým tlačítkem myši **SAMLResponse** hodnotu a vyberte **poslat TextWizard**. Potom vyberte **z formátu Base64** z **transformace** nabídky k dekódování tokenu a zobrazte její obsah, použijte jiný decoder Base64. 
+Chcete-li vyřešit chyby přihlášení s MyApps zabezpečení nainstalované rozšíření pro přihlášení:
 
-Můžete také zkopírovat hodnotu v **SAMLrequest** a použít jiný decoder Base64.
+1.  Když dojde k chybě, rozšíření vás přesměruje zpět do Azure Ad **Test jednotného přihlašování** okno. 
+2.  Na **Test jednotného přihlašování** okně klikněte na tlačítko **stáhnout žádost SAML**. 
+3.  Měli byste vidět konkrétní řešení pokyny podle chyba a hodnotami ve žádost SAML. Přečtěte si pokyny.
 
-Navštivte [chyby na stránce aplikace po přihlášení](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML) řešení potíží s pokyny pro další informace o co může být chybějící nebo nesprávný v odpovědi SAML.
+Chcete-li vyřešit chyby bez instalace MyApps zabezpečené přihlašování rozšíření:
 
-Informace o tom, jak zkontrolovat SAML odpovědi najdete v článku [protokolu SAML přihlašování](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference?/?WT.mc_id=DOC_AAD_How_to_Debug_SAML#response).
+1. Zkopírujte chybová zpráva v pravém dolním rohu stránky. Obsahuje chybovou zprávu:
+    - CorrelationID a časové razítko. Tyto hodnoty jsou důležité, když vytvoříte případu podpory se společností Microsoft, protože pomáhají technici identifikovat problém a následně přesné řešení vašeho problému.
+    - Příkaz identifikace příčiny problému.
+2.  Přejděte zpět na Azure AD a najděte **Test jednotného přihlašování** okno.
+3.  V textovém poli výše **získat pokyny řešení**, vložte chybovou zprávu.
+3.  Klikněte na tlačítko **získat pokyny řešení** zobrazíte kroky vedoucí k vyřešení problému. Pokyny mohou vyžadovat informace z SAML požadavek nebo odpověď SAML. Pokud nepoužíváte rozšíření MyApps zabezpečené přihlašování, bude pravděpodobně nutné nástroj, jako [Fiddler](http://www.telerik.com/fiddler) načíst SAML žádostí a odpovědí.
+4.  Ověřte, že cíl v žádosti SAML odpovídá SAML jeden přihlašování adresa URL služby získané z Azure Active Directory
+5.  Ověřte, že vystavitel v žádosti SAML je stejný identifikátor, který jste nakonfigurovali pro aplikaci v Azure Active Directory. Azure AD používá vystavitele najít aplikaci ve vašem adresáři.
+6.  Ověřte, že AssertionConsumerServiceURL je, kde se předpokládá, že aplikace přijímat tokenu SAML z Azure Active Directory. Tuto hodnotu můžete nakonfigurovat v Azure Active Directory, ale není povinný, pokud je součástí žádost SAML.
 
 
-## <a name="related-articles"></a>Související články
-* [Rejstřík článků o správě aplikací ve službě Azure Active Directory](../active-directory-apps-index.md)
-* [Konfigurace jednotného přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
-* [Postup přizpůsobení deklarace identity vystavené v tokenu SAML pro předběžně integrované aplikace](active-directory-saml-claims-customization.md)
+## <a name="resolve-a-sign-in-error-on-the-application-page"></a>Vyřešte chyby přihlášení na stránce aplikace
 
-<!--Image references-->
-[1]: ../media/active-directory-saml-debugging/fiddler.png
-[2]: ../media/active-directory-saml-debugging/error.png
+Můžete úspěšně přihlásit a pak na stránce aplikace najdete v části k chybě. K tomu dochází, když Azure AD vystaví token do aplikace, ale aplikace nepřijímá odpovědi.   
+
+Chcete-li vyřešit chyby:
+
+1. Pokud je aplikace v galerii Azure AD, ověřte, že jste provedli všechny kroky pro integraci aplikace s Azure AD. Pokyny k integraci pro vaši aplikaci, najdete v tématu [seznam kurzů integraci aplikací SaaS](../saas-apps/tutorial-list.md).
+2. Načtěte odpověď SAML.
+    - Pokud je nainstalovaná rozšíření Moje aplikace zabezpečené přihlašování, z **Test jednotného přihlašování** okně klikněte na tlačítko **stáhnout odpověď SAML**.
+    - Pokud není nainstalovaná rozšíření, použijte nástroj, jako [Fiddler](http://www.telerik.com/fiddler) načíst odpověď SAML. 
+3. Všimněte si tyto prvky v odpovědi tokenu SAML:
+    - Jedinečný identifikátor uživatele NameID hodnotu a formátu
+    - Deklarace identity vystavené v tokenu
+    - Certifikát používaný k podepisování token. Informace o tom, jak zkontrolovat odpověď SAML najdete v tématu [protokolu SAML přihlašování](active-directory-single-sign-on-protocol-reference.md).
+4. Další informace o odpověď SAML, najdete v části [protokolu SAML přihlašování](active-directory-single-sign-on-protocol-reference.md).
+5. Teď, když jste si prohlédli odpověď SAML, najdete v části [chyby na stránce aplikace po přihlášení](../application-sign-in-problem-application-error.md) pokyny k vyřešení problému. 
+6. Pokud jste stále nemůžete úspěšně přihlásit, požádejte dodavatele aplikace co chybí odpověď SAML.
+
+
+## <a name="next-steps"></a>Další postup
+Teď, když jednotné přihlašování funguje do vaší aplikace, může [automatizace zřizování uživatelů a rušení zajištění pro aplikace SaaS](../active-directory-saas-app-provisioning.md), nebo [Začínáme s podmíněným přístupem](../active-directory-conditional-access-azure-portal-get-started.md).
+
+

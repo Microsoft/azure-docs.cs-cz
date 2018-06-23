@@ -9,10 +9,10 @@ ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 2c1a4a1931bc2e38b0bee5f90518b01fdf4767a1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
+ms.lasthandoff: 06/23/2018
 ms.locfileid: "30196761"
 ---
 Pokud pracujete s modelem nasazení Resource Manager, můžete změnit na nový SKU brány. Když změníte ze starší verze skladová položka brány na nové SKU, odstraňte existující bránu VPN a vytvořte novou bránu VPN.

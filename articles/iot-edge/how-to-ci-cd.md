@@ -8,12 +8,12 @@ ms.date: 04/30/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a8b58eae9aa08d8f6539370fa6e78a7a4813c18f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5fbac725894d01b2dc622d3542f865a66b240743
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631016"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333772"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge---preview"></a>Průběžnou integraci a průběžné nasazování pro Azure IoT okraj – náhled
 Tento kurz ukazuje, jak můžete použít průběžnou integraci a funkcí průběžného nasazování Visual Studio Team Services (VSTS) a Microsoft Team Foundation Server (TFS), pokud chcete vytvořit, otestovat a nasadit aplikace rychle a efektivně do vaší Azure IoT okraj. 
@@ -33,7 +33,7 @@ To bude trvat 30 minut k dokončení tohoto kurzu.
 
 V této části vytvoříte ukázkové IoT Edge řešení obsahujícího testy jednotek, které můžete provést v rámci procesu sestavení. Než následující pokyny v této části, proveďte kroky v [vyvíjet IoT řešení s více modulů v aplikaci Visual Studio Code](tutorial-multiple-modules-in-vscode.md).
 
-1. V příkazu palety VS Code, zadejte a spusťte příkaz **Edge: nové IoT řešení**. Pak vyberte pracovní prostor složce, zadejte název řešení (výchozí název je **EdgeSolution**) a vytvořte modul C# (**FilterModule**) jako první modul uživatele v tomto řešení. Budete taky muset zadat úložiště imagí Dockeru pro první modul. Výchozí úložiště bitové kopie je založena na místním registru Docker (`localhost:5000/filtermodule`). Budete muset změnit do registru kontejner Azure (`<your container registry address>/filtermodule`) nebo úložiště Docker Hub další nepřetržité integrace.
+1. V příkazu palety VS Code, zadejte a spusťte příkaz **Edge: nové IoT řešení**. Pak vyberte pracovní prostor složce, zadejte název řešení (výchozí název je **EdgeSolution**) a vytvořte modul C# (**FilterModule**) jako první modul uživatele v tomto řešení. Bude také nutné zadat úložiště imagí Dockeru pro první modul. Výchozí úložiště bitové kopie je založena na místním registru Docker (`localhost:5000/filtermodule`). Budete muset změnit do registru kontejner Azure (`<your container registry address>/filtermodule`) nebo úložiště Docker Hub další nepřetržité integrace.
 
     ![Instalační program ACR](./media/how-to-ci-cd/acr.png)
 
@@ -390,7 +390,7 @@ V této části vytvoříte definice buildu, která je nakonfigurována na autom
 
 1. Klikněte na tlačítko **+** na pravé straně **fáze 1** přidat úloha do fáze. Pak vyhledejte a vyberte **.Net Core**a klikněte na tlačítko **přidat** přidat tuto úlohu na fázi.
 
-    ![test DotNet.](./media/how-to-ci-cd/add-dot-net-core.png)
+    ![Test DotNet.](./media/how-to-ci-cd/add-dot-net-core.png)
 
 1. Aktualizace **zobrazovaný název** k **dotnet test**a v **příkaz** rozevíracího seznamu vyberte **testování**. Přidat následující cestu k **cestu k projekty**.
 
@@ -452,7 +452,7 @@ Ano při nasazování do zařízení IoT Edge, existují tři hlavní prostřed�
 Tento kurz ukazuje, jak můžete použít průběžnou integraci a funkcí průběžného nasazování služby VSTS nebo TFS. 
 
 * Pochopení IoT Edge nasazení v [pochopit IoT Edge nasazení jednoho zařízení nebo ve velkém měřítku](module-deployment-monitoring.md)
-* Provede kroky k vytvoření, aktualizace nebo odstranění nasazení v [nasadit a monitorovat moduly IoT Edge ve velkém měřítku] [how-k-nasazení monitor.md].
+* Provede kroky k vytvoření, aktualizace nebo odstranění nasazení v [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md).
 
 
 

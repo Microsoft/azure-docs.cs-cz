@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 0e87243b4b6e8362cb840a6510c175d2712b8a1a
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 93972c88676cceef07b39b4a4ed34bab5b74cbd3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285752"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334869"
 ---
 # <a name="run-shell-scripts-in-your-linux-vm-with-run-command"></a>Spusťte prostředí skripty ve virtuálním počítačům s Linuxem se spustit příkaz
 
@@ -23,7 +23,7 @@ Spusťte příkaz používá ke spouštění skriptů prostředí v rámci virtu
 
 Nejsou k dispozici více možností, které slouží k přístupu k virtuálním počítačům. Spusťte příkaz může spouštět skripty na virtuální počítače vzdáleně pomocí agenta virtuálního počítače. Spusťte příkaz lze použít prostřednictvím portálu Azure [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [rozhraní příkazového řádku Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), nebo [prostředí PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
 
-Tato možnost je užitečná ve všech scénářích, kdy chcete spustit skript witin virtuální počítače a jeden jediný způsob, jak vyřešit a opravte virtuální počítač, který nemá protokol RDP nebo SSH port otevřít z důvodu nesprávné sítě nebo správce konfigurace.
+Tato možnost je užitečná ve všech scénářích, kdy chcete spustit skript v rámci virtuálních počítačů a jeden jediný způsob, jak vyřešit a opravte virtuální počítač, který nemá protokol RDP nebo SSH port otevřít z důvodu nesprávné sítě nebo správce konfigurace.
 
 ## <a name="restrictions"></a>Omezení
 

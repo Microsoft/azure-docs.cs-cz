@@ -3,7 +3,7 @@ title: Spravovat federačních certifikátů ve službě Azure AD | Microsoft Do
 description: Zjistěte, jak přizpůsobit datum vypršení platnosti federačních certifikátů a jak obnovit certifikáty, jejichž platnost brzy vyprší.
 services: active-directory
 documentationcenter: ''
-author: jeevansd
+author: barbkess
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2017
-ms.author: jeedes
-ms.openlocfilehash: c4d812db6371a4cd1fcc701f7eae2c913c29fb6b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.author: barbkess
+ms.reviewer: jeedes
+ms.openlocfilehash: 5b4e2694a9b7e67643cb1e3b3cbc99fab940bd9d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303298"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337797"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Spravovat certifikáty pro federované jednotné přihlašování v Azure Active Directory
 Tento článek popisuje běžné otázky a informace související s certifikáty, které vytvoří Azure Active Directory (Azure AD) k vytvoření federovaného jednotného přihlašování (SSO) do aplikací SaaS. Přidáte aplikace v galerii aplikací Azure AD nebo pomocí šablony aplikace bez galerie. Konfigurace aplikace s použitím možnosti federované jednotné přihlašování.
@@ -84,7 +85,7 @@ Následující kroky obnovení musí mít za následek žádné významné výpa
     ![Vygenerovat nový certifikát](./media/manage-certificates-for-federated-single-sign-on/new_certificate_download.png)
 
 ## <a name="related-articles"></a>Související články
-* [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](../active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS v Azure Active Directory](../saas-apps/tutorial-list.md)
 * [Rejstřík článků o správě aplikací ve službě Azure Active Directory](../active-directory-apps-index.md)
 * [Přístup k aplikaci a jednotné přihlašování s Azure Active Directory](what-is-single-sign-on.md)
 * [Řešení potíží s na základě SAML jednotné přihlašování](../develop/active-directory-saml-debugging.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: f7dfdc4319e50e7a6c1c6032c27de5c76397e8de
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f1ce47874b759748f4a2e2ce1fb438b394443058
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603072"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334794"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Pochopit strukturu a syntaxe šablon Azure Resource Manageru
 Tento článek popisuje strukturu šablony Azure Resource Manager. Představuje různé části šablony a vlastnosti, které jsou k dispozici v těchto částech. Šablona se skládá z JSON a výrazy, které můžete použít k vytvoření hodnot pro vaše nasazení. Podrobný kurz k vytvoření šablony, najdete v části [vytvoření vaší první šablony Azure Resource Manager](resource-manager-create-first-template.md).
@@ -214,6 +214,7 @@ V rámci šablony můžete vytvořit své vlastní funkce. Tyto funkce jsou k di
 Při definování uživatele funkce, platí určitá omezení:
 
 * Funkce nemá přístup k proměnné.
+* Funkci nelze volat další uživatelem definované funkce.
 * Funkci nelze použít [odkazu funkci](resource-group-template-functions-resource.md#reference).
 * Parametry pro funkci nemůžou mít výchozí hodnoty.
 

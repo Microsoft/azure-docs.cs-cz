@@ -1,93 +1,57 @@
 ---
-title: Přidejte disk do virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure | Microsoft Docs
-description: Zjistěte, jak přidat trvalé disk k virtuálním počítačům s Linuxem pomocí Azure CLI 1.0 a 2.0.
-keywords: virtuální počítač Linux, přidejte disk prostředků
+title: Přidat datový disk do virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: Zjistěte, jak přidat trvalé datový disk k virtuálním počítačům s Linuxem pomocí Azure
 services: virtual-machines-linux
 documentationcenter: ''
-author: rickstercdn
+author: cynthn
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 3005a066-7a84-4dc5-bdaa-574c75e6e411
 ms.service: virtual-machines-linux
 ms.topic: article
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.date: 02/02/2017
-ms.author: rclaus
+ms.date: 06/13/2018
+ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3d3e3468b491f366473899f5d073704ea9a95ea
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: c41090943e4053ddf0ea46e9da1b3b5c7dbbf132
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30837002"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331219"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Přidání disku do virtuálního počítače s Linuxem
 Tento článek ukazuje, jak připojit trvalé disk k virtuálnímu počítači tak, aby můžete zachovat data - i v případě, že virtuální počítač je znovu poskytnuto z důvodu údržby nebo změnou velikosti. 
 
 
-## <a name="use-managed-disks"></a>Používat spravované disky
-Služba Azure Managed Disks zjednodušuje správu pro virtuální počítače Azure, neboť spravuje účty úložiště přidružené k diskům virtuálních počítačů. Stačí jenom zadat typ (Premium nebo Standard) a velikosti disku, který potřebujete, a Azure ho vytvoří a bude spravovat za vás. Další informace najdete v tématu [spravované disky přehled](managed-disks-overview.md).
+## <a name="attach-a-new-disk-to-a-vm"></a>Připojit nový disk k virtuálnímu počítači
 
-
-### <a name="attach-a-new-disk-to-a-vm"></a>Připojit nový disk k virtuálnímu počítači
-Pokud potřebujete pouze nový disk na vašem virtuálním počítači, použijte [připojit disk virtuálního počítače az](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) s `--new` parametr. Pokud virtuální počítač je v zóně dostupnosti, disk je automaticky vytvořen ve stejné zóny jako virtuální počítač. Další informace najdete v tématu [přehled dostupnosti zón](../../availability-zones/az-overview.md). Následující příklad vytvoří disk s názvem *myDataDisk* tedy *50*Gb velikost:
+Pokud chcete přidat nový, prázdný datový disk na vašem virtuálním počítači, použijte [připojit disk virtuálního počítače az](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) s `--new` parametr. Pokud virtuální počítač je v zóně dostupnosti, disk je automaticky vytvořen ve stejné zóny jako virtuální počítač. Další informace najdete v tématu [přehled dostupnosti zón](../../availability-zones/az-overview.md). Následující příklad vytvoří disk s názvem *myDataDisk* tedy 50 Gb velikost:
 
 ```azurecli
-az vm disk attach -g myResourceGroup --vm-name myVM --disk myDataDisk \
-  --new --size-gb 50
+az vm disk attach \
+   -g myResourceGroup \
+   --vm-name myVM \
+   --disk myDataDisk \
+   --new \
+   --size-gb 50
 ```
 
-### <a name="attach-an-existing-disk"></a>Připojení stávajícího disku 
-V mnoha případech. připojíte disky, které již byly vytvořeny. Připojit stávající disk, vyhledejte ID disku a předejte ID, který má [připojit disk virtuálního počítače az](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) příkaz. Následující příklad dotazy pro disk s názvem *myDataDisk* v *myResourceGroup*, připojí jej k virtuálnímu počítači s názvem *Můjvp*:
+## <a name="attach-an-existing-disk"></a>Připojení stávajícího disku 
+
+Připojit stávající disk, vyhledejte ID disku a předejte ID, který má [připojit disk virtuálního počítače az](/cli/azure/vm/disk?view=azure-cli-latest#az_vm_disk_attach) příkaz. Následující příklad dotazy pro disk s názvem *myDataDisk* v *myResourceGroup*, připojí jej k virtuálnímu počítači s názvem *Můjvp*:
 
 ```azurecli
-# find the disk id
 diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
+
 az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
-```
-
-Výstup bude vypadat nějak takto (můžete použít `-o table` možnost k libovolnému příkazu k formátování výstupu v):
-
-```json
-{
-  "accountType": "Standard_LRS",
-  "creationData": {
-    "createOption": "Empty",
-    "imageReference": null,
-    "sourceResourceId": null,
-    "sourceUri": null,
-    "storageAccountId": null
-  },
-  "diskSizeGb": 50,
-  "encryptionSettings": null,
-  "id": "/subscriptions/<guid>/resourceGroups/rasquill-script/providers/Microsoft.Compute/disks/myDataDisk",
-  "location": "westus",
-  "name": "myDataDisk",
-  "osType": null,
-  "ownerId": null,
-  "provisioningState": "Succeeded",
-  "resourceGroup": "myResourceGroup",
-  "tags": null,
-  "timeCreated": "2017-02-02T23:35:47.708082+00:00",
-  "type": "Microsoft.Compute/disks"
-}
-```
-
-
-## <a name="use-unmanaged-disks"></a>Použití nespravovaného disky
-Nespravované disky se vyžaduje další režii k vytváření a správě základní účty úložiště. Nespravované disky jsou vytvořeny ve stejném účtu úložiště jako disk s operačním systémem. Chcete-li vytvořit a připojit nespravované disk, použijte [nespravované virtuální počítač az-disk připojit](/cli/azure/vm/unmanaged-disk?view=azure-cli-latest#az_vm_unmanaged_disk_attach) příkaz. Následující příklad se připojí *50*GB místa na disku nespravované na virtuální počítač s názvem *Můjvp* ve skupině prostředků s názvem *myResourceGroup*:
-
-```azurecli
-az vm unmanaged-disk attach -g myResourceGroup -n myUnmanagedDisk --vm-name myVM \
-  --new --size-gb 50
 ```
 
 
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Připojit k virtuálnímu počítači Linux připojit nový disk
-K oddílu, formátování a připojte nový disk, virtuálním počítačům s Linuxem můžete použít ho SSH do svého virtuálního počítače Azure. Další informace najdete v tématu [Jak použít SSH s Linuxem v Azure](mac-create-ssh-keys.md). V následujícím příkladu se připojuje k virtuálnímu počítači pomocí veřejné položka DNS *mypublicdns.westus.cloudapp.azure.com* k uživatelskému jménu *azureuser*: 
+K oddílu, formátování a připojte nový disk, virtuálním počítačům s Linuxem můžete použít ho SSH ke svému virtuálnímu počítači. Další informace najdete v tématu [Jak použít SSH s Linuxem v Azure](mac-create-ssh-keys.md). V následujícím příkladu se připojuje k virtuálnímu počítači pomocí veřejné položka DNS *mypublicdns.westus.cloudapp.azure.com* k uživatelskému jménu *azureuser*: 
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
@@ -115,7 +79,7 @@ Zde *sdc* je na disk, který má být. Rozdělit disk s `fdisk`proveďte primár
 sudo fdisk /dev/sdc
 ```
 
-Výstup se podobá následujícímu příkladu:
+Použití `n` příkazu přidáte nový oddíl. V tomto příkladu jsme také zvolit `p` pro primárního oddílu a přijměte ostatní výchozí hodnoty. Výstup bude vypadat podobně jako v následujícím příkladu:
 
 ```bash
 Device contains neither a valid DOS partition table, nor Sun, SGI or OSF disklabel
@@ -137,7 +101,7 @@ Last sector, +sectors or +size{K,M,G} (2048-10485759, default 10485759):
 Using default value 10485759
 ```
 
-Vytvořte oddíl zadáním `p` řádku následujícím způsobem:
+Tisk v tabulce oddílu zadáním `p` a pak použijte `w` zápis tabulky na disku a ukončíte. Výstup by měl vypadat podobně jako v následujícím příkladu:
 
 ```bash
 Command (m for help): p
@@ -225,7 +189,7 @@ Dále otevřete */etc/fstab* soubor v textovém editoru následujícím způsobe
 sudo vi /etc/fstab
 ```
 
-V tomto příkladu používáme hodnota identifikátoru UUID */dev/sdc1* zařízení, který byl vytvořen v předchozích krocích a přípojný bod systému */datadrive*. Přidejte následující řádek na konec */etc/fstab* souboru:
+V tomto příkladu použijte hodnotu identifikátoru UUID */dev/sdc1* zařízení, který byl vytvořen v předchozích krocích a přípojný bod systému */datadrive*. Přidejte následující řádek na konec */etc/fstab* souboru:
 
 ```bash
 UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail   1   2
@@ -266,7 +230,6 @@ Existují dva způsoby, jak povolit TRIM podporují ve virtuálním počítačů
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>Další postup
-* Mějte na paměti, že nový disk není k dispozici pro virtuální počítač, pokud dojde k restartování Pokud napíšete tyto informace k vaší [fstab](http://en.wikipedia.org/wiki/Fstab) souboru.
 * Aby systém Linux virtuálního počítače je správně nakonfigurovaná, zkontrolujte [optimalizovat výkon počítače Linux](optimization.md) doporučení.
 * Rozbalte vaše kapacita úložiště přidáním dalších disků a [konfigurace RAID](configure-raid.md) další výkonu.
 

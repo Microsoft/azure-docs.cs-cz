@@ -1,6 +1,6 @@
 ---
-title: Úrovně služeb Azure SQL Database | Microsoft Docs
-description: Další informace o úrovních služeb pro jeden a zadejte velikost úložiště a úrovně výkonu databáze fondu.
+title: Zakoupení modely Azure SQL Database | Microsoft Docs
+description: Informace o zakoupení modelu pro databázi SQL Azure.
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 6ca78596ad6c4ed2e14b127fe55a70bd2f55411a
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 0b38054ec623dc34daa3d18612e3356475655f35
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309887"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331321"
 ---
-# <a name="service-tier-purchasing-models-and-resources"></a>Vrstvy služeb nákupu modely a prostředky 
+# <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database zakoupení modely a prostředky 
 
 Logické servery v [Azure SQL Database](sql-database-technical-overview.md) nabízí dva modely nákupu pro výpočty, úložiště a vstupně-výstupní operace prostředky: nákupní model na základě DTU a nákupní model (preview) na základě vCore. 
 
@@ -30,8 +30,8 @@ Následující tabulku a graf porovnání a porovnejte tyto dva modely nákupu.
 
 |**Nákupní model**|**Popis**|**Nejvhodnější pro**|
 |---|---|---|
-|Na základě DTU modelu|Tento model je založen na připojené měření výpočty, úložiště a vstupně-výstupní operace prostředky. Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o Dtu a Edtu najdete v tématu [co jsou Dtu a Edtu](sql-database-what-is-a-dtu.md)?|Nejvhodnější pro zákazníky, kteří chtějí možnosti jednoduchý, předem nakonfigurovaných prostředků.| 
-|na základě vCore modelu|Tento model můžete nezávisle škálovat výpočetní a úložnou kapacitu. Také umožňuje použít k získání úsporu nákladů Benefit hybridní Azure pro systém SQL Server.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a průhlednost.|
+|Model na základě DTU|Tento model je založen na připojené měření výpočty, úložiště a vstupně-výstupní operace prostředky. Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o Dtu a Edtu najdete v tématu [co jsou Dtu a Edtu](sql-database-what-is-a-dtu.md)?|Nejvhodnější pro zákazníky, kteří chtějí možnosti jednoduchý, předem nakonfigurovaných prostředků.| 
+|Model na základě virtuálních jader|Tento model můžete nezávisle škálovat výpočetní a úložnou kapacitu. Také umožňuje použít k získání úsporu nákladů Benefit hybridní Azure pro systém SQL Server.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a průhlednost.|
 ||||  
 
 ![cenový model](./media/sql-database-service-tiers/pricing-model.png)

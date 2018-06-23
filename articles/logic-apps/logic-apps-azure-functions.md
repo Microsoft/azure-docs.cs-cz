@@ -15,12 +15,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: befdd7af0a91623af4c5ea0fd957141cad84eb53
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d8d07e2ba58b7067d59baf5f0a4ea3228d6aabbc
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297865"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331168"
 ---
 # <a name="add-and-run-custom-code-for-logic-apps-through-azure-functions"></a>Přidejte a spuštění vlastní kód pro logic apps prostřednictvím Azure Functions
 
@@ -35,7 +35,7 @@ Spustit vlastní fragmenty kódu C# nebo node.js v aplikace logiky, můžete vyt
 
 Doporučujeme vytvořit funkce na portálu Azure Functions z **obecný Webhook - uzlu** nebo **obecný Webhook - C#** šablony. Výsledek vytvoří automaticky vyplněna šablonu, která přijímá `application/json` z aplikace logiky. Funkce, které můžete vytvořit z těchto šablon se automaticky zjišťují a zobrazí v návrháři aplikace logiky v rámci **Azure Functions v mojí oblasti.**
 
-Na portálu Azure na **integrací** v podokně funkce, vaše šablona by měla ukazují, že **režimu** nastavena na **Webhooku** a **Webhooku typ** je nastaven na **obecné JSON**. 
+Na portálu Azure na **integrací** v podokně funkce, vaše šablona by měla ukazují, že **režimu** nastavena na **Webhooku** a **Webhooku typ**je nastaven na **obecné JSON**. 
 
 Funkce Webhooku žádost o přijmout a předejte ji do metody prostřednictvím `data` proměnné. Máte přístup k vlastnosti vaše datové části pomocí zápisu s tečkou jako `data.function-name`. Například jednoduché funkce JavaScript, která převede hodnotu data a času na datum řetězec vypadá jako v následujícím příkladu:
 
@@ -62,7 +62,7 @@ Můžete aktivovat aplikaci logiky z uvnitř funkce. V tématu [Logic apps jako 
 
 ### <a name="create-a-function-from-logic-app-designer"></a>Vytvoření funkce z návrháře aplikace logiky
 
-Můžete také vytvořit funkci webhooku node.js z návrháře. Nejdřív vyberte **Azure Functions v mojí oblasti** a potom vyberte kontejner pro funkce. Pokud ještě nemáte kontejner, budete muset vytvořit z [portálu Azure Functions](https://functions.azure.com/signin). Potom vyberte **vytvořit nový**.  
+Můžete také vytvořit funkci webhooku node.js z návrháře. Nejdřív vyberte **Azure Functions v mojí oblasti** a potom vyberte kontejner pro funkce. Pokud ještě nemáte kontejner, budete muset vytvořit z [portálu Azure Functions](https://functions.azure.com/). Potom vyberte **vytvořit nový**.  
 
 Chcete-li vygenerovat šablony založené na datech, které chcete vypočítat, zadejte objektu context, který chcete předat do funkce. Tento objekt musí být objekt JSON. Například pokud předáte obsah souboru z akce FTP, datové části kontextu vypadá v tomto příkladu:
 

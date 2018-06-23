@@ -21,7 +21,7 @@ Do textového pole pro vyhledávání zadejte **StackExchange.Redis** nebo **Sta
 Balíček NuGet se stáhne a přidá klientským aplikacím požadované odkazy na sestavení pro přístup do Azure Redis Cache pomocí klienta mezipaměti StackExchange.Redis.
 
 > [!NOTE]
-> Pokud jste dříve nakonfigurovali projekt pro použití StackExchange.Redis, můžete zkontrolovat aktualizace do balíčku ze **Správce balíčků NuGet**. Chcete-li kontrolovat a instalovat aktualizované verze balíčku StackExchange.Redis NuGet, klikněte na tlačítko **Aktualizace** v okně **Správce balíčků NuGet**. Pokud je k dispozici aktualizace pro balíček StackExchange.Redis NuGet, můžete aktualizovat projekt pro použití aktualizované verze.
+> Pokud jste dříve nakonfigurovali projekt pro použití StackExchange.Redis, můžete zkontrolovat aktualizace do balíčku ze **Správce balíčků NuGet**. Chcete-li kontrolovat a instalovat aktualizované verze balíčku StackExchange.Redis NuGet, klikněte na tlačítko **aktualizace** v **Správce balíčků NuGet** okno. Pokud je k dispozici aktualizace pro balíček StackExchange.Redis NuGet, můžete aktualizovat projekt pro použití aktualizované verze.
 > 
 > 
 

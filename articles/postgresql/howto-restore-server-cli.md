@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 04/01/2018
-ms.openlocfilehash: 5c5cc1fdbe48fb93eea204e4619038052e685f1f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4e745a5de8000e0f26491c9f4f236f7f8a735ae9
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411494"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319637"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Postup zálohování a obnovení serveru v databázi Azure pro PostgreSQL pomocí rozhraní příkazového řádku Azure
 
@@ -32,32 +32,6 @@ Chcete-li provést tento postup průvodce, je třeba:
 
 > [!IMPORTANT]
 > Postupy: Průvodce vyžaduje, že používáte Azure CLI verze 2.0 nebo novější. Chcete-li ověřit verzi příkazového řádku Azure CLI zadejte `az --version`. K instalaci nebo upgradu, najdete v části [nainstalovat Azure CLI 2.0]( /cli/azure/install-azure-cli).
-
-## <a name="add-the-extension"></a>Přidání rozšíření
-Přidejte aktualizované rozšíření pro správu služby Azure Database for PostgreSQL pomocí následujícího příkazu:
-```azurecli-interactive
-az extension add --name rdbms
-``` 
-
-Zkontrolujte, že máte nainstalovanou správnou verzi rozšíření. 
-```azurecli-interactive
-az extension list
-```
-
-Vrácený kód JSON by měl obsahovat následující: 
-```json
-{
-    "extensionType": "whl",
-    "name": "rdbms",
-    "version": "0.0.5"
-}
-```
-
-Pokud se nevrátí verze 0.0.5, spuštěním následujícího příkazu rozšíření aktualizujte: 
-```azurecli-interactive
-az extension update --name rdbms
-```
-
 
 ## <a name="set-backup-configuration"></a>Konfigurace zálohování sady
 

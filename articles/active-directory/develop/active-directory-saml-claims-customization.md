@@ -17,12 +17,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 485e4c52751b390ebd440718e7a55de7b5b5ffd7
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: db529bf1e8ea4363c84cb365444ca367d428b162
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156904"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318416"
 ---
 # <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Přizpůsobení deklarace identity vystavené v tokenu SAML pro podnikové aplikace v Azure Active Directory
 Dnes Azure Active Directory podporuje jednotného přihlašování na s většinou podnikových aplikací, včetně obě aplikace předem integrovaných v galerii aplikací Azure AD a také vlastních aplikací. Když se uživatel přihlásí k aplikaci prostřednictvím služby Azure AD pomocí protokolu SAML 2.0, Azure AD odešle token do aplikace (přes HTTP POST). A pak aplikaci ověří a použije token k přihlásit uživatele místo výzvy k zadání uživatelského jména a hesla. Tyto tokeny SAML obsahují informace o uživateli známé jako "deklarace identity".

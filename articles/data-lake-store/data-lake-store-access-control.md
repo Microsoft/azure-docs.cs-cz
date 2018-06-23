@@ -9,16 +9,15 @@ editor: cgronlun
 ms.assetid: d16f8c09-c954-40d3-afab-c86ffa8c353d
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 8fd8bd81191d2019d5fa41ce1b6a029f3587adfd
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.openlocfilehash: afe1a784ecc0a8f8846a71d21cc7ca8eb76078ec
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337678"
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Řízení přístupu v Azure Data Lake Store
 
@@ -326,7 +325,7 @@ Ne, ale výchozí seznamy ACL je možné použít k nastavení seznamů ACL pro 
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>Kde najdu další informace o modelu řízení přístupu POSIX?
 
-* [POSIX Access Control Lists on Linux (Seznamy řízení přístupu v rámci specifikace POSIX v Linuxu)](http://www.vanemery.com/Linux/ACL/POSIX_ACL_on_Linux.html)
+* [POSIX Access Control Lists on Linux (Seznamy řízení přístupu v rámci specifikace POSIX v Linuxu)](https://www.linux.com/news/posix-acls-linux)
 
 * [HDFS Permissions Guide (Průvodce oprávněními v HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
 
@@ -342,6 +341,6 @@ Ne, ale výchozí seznamy ACL je možné použít k nastavení seznamů ACL pro 
 
 * [ACL: Using Access Control Lists on Linux (Seznamy ACL: Používání seznamů řízení přístupu v Linuxu)](http://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Přehled Azure Data Lake Storu](data-lake-store-overview.md)

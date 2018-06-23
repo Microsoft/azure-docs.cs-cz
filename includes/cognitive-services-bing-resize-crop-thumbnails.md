@@ -1,67 +1,76 @@
-Some Bing responses include URLs to thumbnail images served by Bing. You may resize and crop the thumbnail images. 
+Některé Bing odpovědí zahrnout adres URL na miniatury obsloužených Bing. Můžete změnit velikost a oříznout miniatury. 
 
 > [!NOTE]
-> Ensure the size and cropping of the thumbnail provide a search scenario and respect third party rights, as required by [Search API Use and Display Requirements](/useanddisplayrequirements.md).
+> Zajistěte, aby velikost a oříznutí miniatury nabízí scénáři vyhledávání a respektují práva třetích stran, podle potřeby pomocí rozhraní API pro Bing hledání a zobrazit požadavky.
 
 
-To resize an image, include the w (width) and h (height) query parameters in the thumbnail’s URL. Specify the width and height in pixels. For example:  
+Ke změně velikosti obrázku, zahrnují w (šířka) a (výška) parametrů v adrese URL na miniaturu dotazu. Zadejte šířku a výšku v pixelech. Příklad:  
   
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=200&h=200`  
   
-If you resize the image, its aspect ratio is maintained. To maintain the aspect ratio, white padding may be added to the boarder of the image. For example, if you resize a 480x359 image to 200x200 without cropping, the full width contains the image but the height contains 25 pixels of white padding at the top and bottom of the image. The same would be true if the image was 359x480 except the left and right boarders would contain white padding. If you crop the image, white padding is not added.  
-  
-The following picture shows the original size of a thumbnail image (480x300).  
-  
-![Original landscape image](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape.PNG)  
-  
-The following picture shows the image resized to 200x200. The aspect ratio is maintained and the top and bottom boarders are padded with white (the black boarder is included to show the padding).  
-  
-![Resized landscape image](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape-resized.PNG)  
-  
-If you specify dimensions that are greater than the image’s original width and height, the image is padded with white on the left and top boarders.  
-  
-To crop an image, include the c (crop) query parameter. The following are the possible values that you may specify.  
-  
-- 4&mdash;Blind Ratio  
-- 7&mdash;Smart Ratio  
-  
-If you request Smart Ratio cropping (c=7), the image is cropped from the center of the image’s region of interest outward while maintaining the image’s aspect ratio. The region of interest is the area of the image that Bing determines contains the most import parts. The following shows an example region of interest.  
-  
-![Region of interest](./media/cognitive-services-bing-resize-crop/bing-resize-crop-regionofinterest.PNG)
+Pokud změníte velikost obrázku, se zachová poměr stran. Pokud chcete zachovat poměr, bílé odsazení mohou být přidány do ohraničení obrázku. Například pokud změníte velikost bitové kopie 480 x 359 na 200 x 200 bez oříznutí, celou šířku obsahuje bitovou kopii ale výška obsahuje 25 pixelů white odsazení v horní a dolní části bitovou kopii. Stejné by mít hodnotu true, pokud image byla 359 x 480 s výjimkou doleva a pravého ohraničení by obsahovat bílé odsazení. Pokud oříznete bitovou kopii, přidat není bílé odsazení.  
 
-If you resize an image and request Smart Ratio cropping, the image is reduced to the requested size while maintaining the aspect ratio. The image is then cropped based on the resized dimensions. For example, if the resized width is less than or equal to the height, the image is cropped to the left and right of the center of the region of interest. Otherwise, the image is cropped to the top and bottom of the center of the region of interest.  
+ 
+Následující obrázek znázorňuje původní velikost miniatur bitové kopie (480 x 300).  
   
-The following shows the image reduced to 200x200 using Smart Ratio cropping.  
+![Původní bitové kopie na šířku](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape.PNG)  
   
-![Landscape image cropped to 200x200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape200x200c7.PNG)
+Následující obrázek znázorňuje obrázek změně velikosti 200 x 200. Je zachován poměr stran a horní a dolní ohraničení se vyplní s bílou (černý okraj je součástí zobrazíte odsazení).  
   
-The following shows the image reduced to 200x100 using Smart Ratio cropping.  
+![Změněnou šířku obrázku](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape-resized.PNG)  
+
+
+
+Pokud zadáte dimenzí, které jsou větší než původní šířky a výšky na bitovou kopii, bitovou kopii doplněno bílé na levého a horního ohraničení.  
+  
+Oříznutí obrázku, zahrňte c (ořezové) parametr dotazu. Toto jsou možné hodnoty, které můžete určit.  
+  
+- 4&mdash;nevidomí poměr  
+- 7&mdash;inteligentní poměr  
+  
+Pokud si vyžádáte oříznutí inteligentní poměr (c = 7), bitovou kopii je oříznutý z centra oblasti obrázku, v pasivním při zachování poměru stran obrázku. Oblast zájmu je oblast bitové kopie Bingu určuje obsahuje většinu části import. Následující obrázek znázorňuje oblast příkladu, které vás zajímají.  
+  
+![Oblast zájmu](./media/cognitive-services-bing-resize-crop/bing-resize-crop-regionofinterest.PNG)
+
+Změní velikost obrázku a požadavku oříznutí inteligentní poměr, bitovou kopii sníží na požadovanou velikost při zachování poměru stran. Obrázek je pak oříznout podle změněnou dimenzí. Například pokud je šířka změněnou velikostí menší než nebo rovna hodnotě výška, bitovou kopii je oříznutý vlevo a vpravo od středu oblast zájmu. Bitovou kopii, jinak hodnota je oříznutý pro horní a dolní Center oblasti zájmu.  
+  
+ 
+Následující obrázek znázorňuje obrázek snížen na 200 x 200 pomocí inteligentní poměr oříznutí.  
+  
+![Na šířku obrázku oříznout na 200 x 200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape200x200c7.PNG)
+  
+Následující obrázek znázorňuje obrázek snížen na 200 × 100 pomocí inteligentní poměr oříznutí.  
    
-![Landscape image cropped to 200x100](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape200x100c7.PNG)
+![Na šířku obrázku muset oříznout, aby 200 × 100](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape200x100c7.PNG)
   
-The following shows the image reduced to 100x200 using Smart Ratio cropping.  
+Následující obrázek znázorňuje obrázek snížen na 100 x 200 pomocí inteligentní poměr oříznutí.  
   
-![Landscape image cropped to 100x200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape100x200c7.PNG)
+![Na šířku obrázku oříznout na 100 x 200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-landscape100x200c7.PNG)
+
+
+
+Pokud Bing nemůže určit oblasti obrázku, v, Bing používá skrytá poměr oříznutí.  
   
-If Bing cannot determine the image’s region of interest, Bing uses Blind Ratio cropping.  
+Pokud si vyžádáte oříznutí skrytá poměr (c = 4), Bing používá následující pravidla oříznout bitovou kopii.  
   
-If you request Blind Ratio cropping (c=4), Bing uses the following rules to crop the image.  
+- Pokud (původní šířku obrázku nebo původní výška obrázku) < (požadovanou šířku obrázku / požadovaná výška obrázku), bitovou kopii se měří z horní části levého horního rohu a oříznout dole.  
+- Pokud (původní šířku obrázku nebo původní výška obrázku) > (požadovanou šířku obrázku / požadovaná výška obrázku), bitové kopie se měří z centra a oříznout doleva a doprava.  
+
+
+
+Následující příklad zobrazuje na výšku obrázku, který je 225 x 300.  
   
-- If (Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height), the image is measured from top left corner and cropped at the bottom.  
-- If (Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height), the image is measured from the center and cropped to the left and right.  
+![Původní slunečnicová image](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower.PNG)
   
-The following shows a portrait image that’s 225x300.  
+Následující obrázek znázorňuje obrázek snížen na 200 x 200 pomocí skrytá poměr oříznutí. Obrázek se měří od levého horního rohu výsledná v dolní části obrázku se vyhnete.  
   
-![Original sunflower image](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower.PNG)
+![Slunečnicová image oříznout na 200 x 200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower200x200c4.PNG)
   
-The following shows the image reduced to 200x200 using Blind Ratio cropping. The image is measured from the top left corner resulting in the bottom part of the image being cropped.  
+Následující obrázek znázorňuje obrázek snížen na 200 × 100 pomocí skrytá poměr oříznutí. Obrázek se měří od levého horního rohu výsledná v dolní části obrázku se vyhnete.  
   
-![Sunflower image cropped to 200x200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower200x200c4.PNG)
+![Slunečnicová image muset oříznout, aby 200 × 100](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower200x100c4.PNG)
   
-The following shows the image reduced to 200x100 using Blind Ratio cropping. The image is measured from the top left corner resulting in the bottom part of the image being cropped.  
+Následující obrázek znázorňuje obrázek snížen na 100 x 200 pomocí skrytá poměr oříznutí. Obrázek se měří z centra, což vede k levé a pravé části bitovou kopii se vyhnete.  
   
-![Sunflower image cropped to 200x100](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower200x100c4.PNG)
-  
-The following shows the image reduced to 100x200 using Blind Ratio cropping. The image is measured from the center resulting in the left and right parts of the image being cropped.  
-  
-![Sunflower image cropped to 100x200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower100x200c4.PNG)
+![Slunečnicová obrázek oříznut na 100 x 200](./media/cognitive-services-bing-resize-crop/bing-resize-crop-sunflower100x200c4.PNG)
+

@@ -16,20 +16,22 @@ ms.workload: identity
 ms.date: 04/18/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: c9ebfcba59e3f46fb30f4cd2402ec4ebb606f6d0
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: elisol, lenalepa
+ms.openlocfilehash: 5c8ae9534e79b8dc801262f85d8a007e050f4da7
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156166"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316955"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Jak a proč se aplikace přidávají do služby Azure AD
+
 Existují dvě reprezentace aplikací ve službě Azure AD: 
-* [Objekty aplikací](active-directory-application-objects.md#application-object) – i když jsou [výjimky](#notes-and-exceptions), tyto lze považovat za definici aplikace.
-* [Služba objektů](active-directory-application-objects.md#service-principal-object) -tyto lze považovat za instance aplikace. Objekty služby obecně odkazují na objekt, aplikace a jeden objekt aplikace lze odkazovat pomocí více objekty služby ve adresářích.
+* [Objekty aplikací](active-directory-application-objects.md#application-object) – i když jsou [výjimky](#notes-and-exceptions), objekty aplikací lze považovat za definici aplikace.
+* [Služba objektů](active-directory-application-objects.md#service-principal-object) -lze považovat za instance aplikace. Objekty služby obecně odkazují na objekt, aplikace a jeden objekt aplikace lze odkazovat pomocí více objekty služby ve adresářích.
 
 ## <a name="what-are-application-objects-and-where-do-they-come-from"></a>Co jsou objekty aplikací a kde do které pocházejí z?
-[Objekty aplikací](active-directory-application-objects.md#application-object) (který můžete spravovat na portálu Azure pomocí [registrace aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade) prostředí) popisují aplikace do služby Azure AD a lze považovat za definici aplikace, umožňuje Služba vědět, jak vydat tokeny na základě nastavení aplikace. Objekt aplikace bude existovat pouze v jeho domovského adresáře, i když je víceklientské aplikaci, která podporuje objekty služby v jiných adresářích. Objekt aplikace může obsahovat žádné z těchto (jako zde nejsou uvedeny další informace o):
+Můžete spravovat [objekty aplikací](active-directory-application-objects.md#application-object) na portálu Azure pomocí [registrace aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ApplicationsListBlade) prostředí. Objekty aplikací popisují aplikace do služby Azure AD a lze považovat za definici aplikace a umožňuje službu, kterou chcete vědět, jak mají vystavovat tokeny pro aplikaci na základě nastavení. Objekt aplikace bude existovat pouze v jeho domovského adresáře, i když je víceklientské aplikaci, která podporuje objekty služby v jiných adresářích. Objekt aplikace může obsahovat žádné z těchto (jako zde nejsou uvedeny další informace o):
 * Název, loga a vydavatel
 * Adresy URL odpovědí
 * Tajné klíče (symetrické nebo asymetrické klíče, které slouží k ověření aplikace)
@@ -43,12 +45,12 @@ Existují dvě reprezentace aplikací ve službě Azure AD:
 Objekty aplikací lze vytvořit pomocí několika způsoby, včetně:
 * Registrace aplikace na portálu Azure
 * Vytvoření nové aplikace pomocí sady Visual Studio a nakonfigurovat jej pro používání ověřování Azure AD
-* Když správce přidá aplikaci z Galerie aplikací (tím se také vytvoří objekt služby)
+* Když správce přidá aplikaci z Galerie aplikace (které také vytvoří službu objektu zabezpečení)
 * Chcete-li vytvořit novou aplikaci pomocí Microsoft Graph API, Azure AD Graph API nebo prostředí PowerShell
 * Mnoho dalších včetně různé možnosti pro vývojáře v Azure a rozhraní API Průzkumníka prostředí napříč centra pro vývojáře
 
 ## <a name="what-are-service-principals-and-where-do-they-come-from"></a>Co jsou objekty služby a kde do které pocházejí z?
-[Objekty služby](active-directory-application-objects.md#service-principal-object) (který můžete spravovat prostřednictvím [podnikové aplikace, které](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) prostředí) jsou ve skutečnosti co řídit aplikaci připojení ke službě Azure AD a lze považovat za instance aplikace vaší adresář. Pro dané aplikaci může mít maximálně jednu aplikaci (která je registrována v adresáři, "home") a jeden nebo více služby hlavní objekty představující instancí aplikace v každém adresáři, ve kterém funguje. 
+Můžete spravovat [služby objekty](active-directory-application-objects.md#service-principal-object) na portálu Azure pomocí [podnikové aplikace, které](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) prostředí. Objekty služby jsou co řídit aplikaci připojení ke službě Azure AD a lze považovat za instanci aplikace ve vašem adresáři. Pro dané aplikaci může mít maximálně jednu aplikaci (která je registrována v adresáři, "home") a jeden nebo více služby hlavní objekty představující instancí aplikace v každém adresáři, ve kterém funguje. 
 
 Objekt služby mohou zahrnovat:
 
@@ -66,13 +68,13 @@ Objekt služby mohou zahrnovat:
 Podobně jako objekty aplikací mohou být také vytvořeny objekty služby prostřednictvím několika způsoby, včetně:
 
 * Když se uživatel přihlásí k aplikaci jiného výrobce integrované s Azure AD
-  * Během přihlášení uživatelé vyzváni k zadání oprávnění k aplikaci pro přístup k jejich profil a další oprávnění. První osoba, která vyjádřit svůj souhlas způsobí, že objekt služby, který představuje aplikaci, která má být přidán do adresáře.
+  * Při přihlašování uživatelé vyzváni k zadání oprávnění k aplikaci pro přístup k jejich profil a další oprávnění. První osoba, která vyjádřit svůj souhlas způsobí, že objekt služby, který představuje aplikaci, která má být přidán do adresáře.
 * Když se uživatelé přihlašují k online službám společnosti Microsoft, jako [Office 365](http://products.office.com/)
   * Při přihlášení k odběru Office 365 nebo začít se zkušební verzí, vytvoří se jeden nebo více služby objekty v adresáři představující různé služby, které se používají k zajišťování všechny funkce související s Office 365.
   * Některé služby Office 365, jako je SharePoint vytvořit objekty služby průběžně zabezpečené komunikaci mezi součástmi, včetně pracovních postupů.
 * Když správce přidá aplikaci z Galerie aplikací (tím se také vytvoří základní objekt aplikace)
 * Přidat aplikace pro použití [proxy aplikace služby Azure AD](https://msdn.microsoft.com/library/azure/dn768219.aspx)
-* Připojení aplikace pro jednotné přihlašování pomocí SAML nebo heslo jednotné přihlašování (SSO)
+* Připojení aplikace pro jednotné přihlašování na použití SAML a hesla jednotné přihlašování (SSO)
 * Programově pomocí rozhraní Azure AD Graph API nebo prostředí PowerShell
 
 ## <a name="how-are-application-objects-and-service-principals-related-to-each-other"></a>Jak jsou objekty aplikací a objekty služby související se vzájemně k sobě?
@@ -108,7 +110,7 @@ Aplikace byla přidána do služby Azure AD můžete využít jeden nebo více s
 * Uživatel ověřování a autorizace
 * Jednotné přihlašování pomocí federace nebo hesla
 * Zřizování uživatelů a synchronizace
-* Řízení přístupu na základě role - použití adresář k definování role aplikací k provádění rolí na základě kontroly autorizace v aplikaci
+* Řízení přístupu na základě role - kontroluje adresáři použijte k definování role aplikaci k provedení ověření na základě role v aplikaci
 * Služby autorizace OAuth - používá Office 365 a jiných aplikací společnosti Microsoft k autorizaci přístupu k rozhraní API nebo prostředky
 * Publikování aplikací a proxy - publikovat aplikaci z privátní sítě k Internetu
 
@@ -130,7 +132,8 @@ Pokud stále chcete zabránit uživatelům ve vašem adresáři z registrace apl
 * Chcete-li zabránit uživatelům v souhlas pro aplikace na jejich vlastní účet:
   1. V portálu Azure přejděte do [uživatelská nastavení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/) části v rámci podnikové aplikace.
   2. Změna **uživatelů můžete souhlas aplikace přístup k datům společnosti jejich jménem** k **ne**. 
-     *Všimněte si, že pokud se rozhodnete vypnout souhlas uživatele, správce bude nutné nutné souhlas žádné nové aplikace, které uživatel potřebuje používat.*
+      > [!NOTE]
+      > Pokud se rozhodnete vypnout souhlas uživatele, budou muset souhlasit s žádné nové aplikace, které uživatel potřebuje používat správce.    
 * Chcete-li zabránit uživatelům v registraci svých vlastních aplikacích:
   1. V portálu Azure přejděte do [uživatelská nastavení](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) části v rámci Azure Active Directory
   2. Změna **uživatelé mohou registrovat aplikace** k **ne**.

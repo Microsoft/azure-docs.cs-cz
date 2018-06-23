@@ -13,20 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 20f6c95deb78c04668c484a20abcf41a58130847
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d8559df366bdd9c1439f2ff8c7b7ebc1a7c66960
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36211362"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334186"
 ---
 # <a name="administer-dns-on-an-azure-ad-domain-services-managed-domain"></a>Spravovat DNS na spravované doméně služby Azure AD Domain Services
 Azure Active Directory Domain Services zahrnuje server DNS (překlad názvu domény), který poskytuje překlad názvů DNS pro spravovanou doménu. V některých případech může musíte nakonfigurovat DNS na spravované domény. Musíte vytvořit záznamy DNS pro počítače, které nejsou připojené k doméně, nakonfigurujte virtuální IP adresy pro vyrovnávání zatížení nebo nastavit externí servery DNS pro předávání. Z toho důvodu jsou uživatelé, kteří patří do skupiny "Administrators AAD řadič domény, udělena oprávnění správy DNS na spravované domény.
 
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+
 ## <a name="before-you-begin"></a>Než začnete
-Chcete-li provést úkoly vypsané v tomto článku, je třeba:
+K dokončení úlohy uvedené v tomto článku, budete potřebovat:
 
 1. Platná **předplatné**.
 2. **Adresář Azure AD** – buď synchronizovány s místní adresář nebo výhradně cloudový adresář.
@@ -36,12 +38,12 @@ Chcete-li provést úkoly vypsané v tomto článku, je třeba:
 
 <br>
 
-## <a name="task-1---provision-a-domain-joined-virtual-machine-to-remotely-administer-dns-for-the-managed-domain"></a>Úloha 1 – zřídit virtuální počítač připojený k doméně ke vzdálené správě DNS pro spravovanou doménu
+## <a name="task-1---create-a-domain-joined-virtual-machine-to-remotely-administer-dns-for-the-managed-domain"></a>Úloha 1 – Vytvoření virtuálního počítače připojené k doméně ke vzdálené správě DNS pro spravovanou doménu
 Spravované domény služby Azure AD Domain Services můžete spravovat vzdáleně pomocí známých nástrojů pro správu služby Active Directory jako správy Center Active Directory (ADAC) nebo AD PowerShell. Podobně DNS pro spravovanou doménu lze spravovat vzdáleně pomocí nástrojů pro správu serveru DNS.
 
-Správci v adresáři služby Azure AD nemají oprávnění pro připojení k řadiče domény na spravované domény přes vzdálenou plochu. Členové skupiny 'Administrators AAD řadič domény, mohou spravovat DNS pro spravované domény vzdáleně pomocí nástrojů DNS serveru z počítače systému Windows Server nebo klienta, který je připojen k spravované doméně. Jako součást volitelná funkce vzdálenou správu serveru (RSAT) na Windows serveru a klientské počítače připojené k spravované doméně může být nainstalované nástroje serveru DNS.
+Správci v adresáři služby Azure AD nemají oprávnění pro připojení k řadiče domény na spravované domény přes vzdálenou plochu. Členové skupiny 'Administrators AAD řadič domény, mohou spravovat DNS pro spravované domény vzdáleně pomocí nástrojů DNS serveru z počítače systému Windows Server nebo klienta, který je připojen k spravované doméně. Nástroje serveru DNS jsou součástí volitelná funkce vzdálenou správu serveru (RSAT).
 
-Prvním krokem je zřízení virtuálního počítače s Windows Server, který je připojen k spravované doméně. Pokyny naleznete v článku s názvem [připojení virtuálního počítače s Windows serverem k spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md).
+První úlohou je vytvoření virtuálního počítače Windows serveru, který je připojen k spravované doméně. Pokyny naleznete v článku s názvem [připojení virtuálního počítače s Windows serverem k spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md).
 
 ## <a name="task-2---install-dns-server-tools-on-the-virtual-machine"></a>Úloha 2 – nástroje pro instalaci serveru DNS na virtuálním počítači
 Proveďte následující kroky k instalaci nástroje pro správu DNS na virtuální počítač připojený k doméně. Další informace o [instalaci a použití nástrojů pro vzdálenou správu serveru](https://technet.microsoft.com/library/hh831501.aspx), najdete v článku webu Technet.
@@ -50,7 +52,7 @@ Proveďte následující kroky k instalaci nástroje pro správu DNS na virtuál
 2. Klikněte **Connect** tlačítko na kartě Přehled. Soubor Remote Desktop Protocol (.rdp) je vytvořen a stáhli.
 
     ![Připojení k systému Windows virtuálního počítače](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. Chcete-li se připojit k virtuálnímu počítači, otevřete stažený soubor protokolu RDP. Pokud se zobrazí výzva, klikněte na **Připojit**. Do příkazového řádku přihlášení pomocí přihlašovacích údajů uživatele, které patří do skupiny "Správci AAD řadič domény. Například používáme 'bob@domainservicespreview.onmicrosoft.com' v našem případě. Během procesu přihlášení se může zobrazit upozornění certifikátu. Klikněte na tlačítko Ano nebo můžete dál pokračovat v připojení.
+3. Chcete-li se připojit k virtuálnímu počítači, otevřete stažený soubor protokolu RDP. Pokud se zobrazí výzva, klikněte na **Připojit**. Použijte přihlašovací údaje uživatele, které patří do skupiny 'AAD řadič domény správci'. Například 'bob@domainservicespreview.onmicrosoft.com'. Během procesu přihlášení se může zobrazit upozornění certifikátu. Klikněte na tlačítko Ano nebo pokračovat v připojení.
 
 4. Na úvodní obrazovce otevřete **správce serveru**. Klikněte na tlačítko **přidat role a funkce** ve středovém podokně okna Správce serveru.
 
@@ -64,7 +66,7 @@ Proveďte následující kroky k instalaci nástroje pro správu DNS na virtuál
 7. Na **výběr serveru** vyberte aktuální virtuální počítač z fondu serverů a klikněte na tlačítko **Další**.
 
     ![Stránka Výběr serveru](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. Na **role serveru** klikněte na tlačítko **Další**. Tuto stránku jsme vynechat, protože jsme se neinstalují žádné role na serveru.
+8. Na **role serveru** klikněte na tlačítko **Další**.
 9. Na **funkce** stránky, klikněte na tlačítko rozšířit **nástrojů pro vzdálenou správu serveru** uzel a potom kliknutím rozbalte položku **nástroje pro správu rolí** uzlu. Vyberte **nástroje serveru DNS** funkci ze seznamu nástroje pro správu rolí.
 
     ![Stránka funkce](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-tools.png)
@@ -73,7 +75,7 @@ Proveďte následující kroky k instalaci nástroje pro správu DNS na virtuál
     ![Stránka potvrzení](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-dns-confirmation.png)
 
 ## <a name="task-3---launch-the-dns-management-console-to-administer-dns"></a>Úloha 3: Spusťte konzolu pro správu služby pro správu DNS
-Teď, když funkce nástroje serveru DNS nainstalovaná v doméně virtuálního počítače, nástroje DNS jsme můžete použít ke správě DNS na spravované domény.
+Teď můžete DNS systému Windows Server nástroje pro správu DNS na spravované doméně.
 
 > [!NOTE]
 > Musíte být členem skupiny 'správci AAD řadič domény, ke správě DNS na spravované domény.
@@ -84,7 +86,7 @@ Teď, když funkce nástroje serveru DNS nainstalovaná v doméně virtuálního
 
     ![Nástroje pro správu - konzolu DNS](./media/active-directory-domain-services-admin-guide/install-rsat-dns-tools-installed.png)
 2. Klikněte na tlačítko **DNS** spusťte konzolu pro správu DNS.
-3. V **připojit k serveru DNS** dialogové okno, klikněte na možnost s názvem **následující počítače**a zadejte název domény DNS spravované domény (například "contoso100.com").
+3. V **připojit k serveru DNS** dialogové okno, klikněte na tlačítko **následující počítače**a zadejte název domény DNS spravované domény (například "contoso100.com").
 
     ![Konzolu DNS - připojit k doméně](./media/active-directory-domain-services-admin-guide/dns-console-connect-to-domain.png)
 4. Připojí se k spravované doméně konzolu DNS.
@@ -97,7 +99,7 @@ Teď, když funkce nástroje serveru DNS nainstalovaná v doméně virtuálního
 >
 >
 
-Najdete v článku [nástrojů DNS článku na webu Technet](https://technet.microsoft.com/library/cc753579.aspx) pro další informace o správě DNS.
+Další informace o správě DNS, najdete v článku [nástrojů DNS článku na webu Technet](https://technet.microsoft.com/library/cc753579.aspx).
 
 ## <a name="related-content"></a>Související obsah
 * [Azure AD Domain Services – Příručka Začínáme](active-directory-ds-getting-started.md)

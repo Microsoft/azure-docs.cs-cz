@@ -3,25 +3,27 @@ title: Podívejte se, kdy budou mít přístup k aplikaci konkrétního uživate
 description: Jak zjistit, kdy je zásadní význam uživatel bude moci získat přístup k aplikaci, kterou jste nakonfigurovali pro zřizování uživatelů s Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 42c305ad48e6994b1d2c729b849acf665e575807
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: a97e898c503a1078c5bae8ba45f0dcd49627aee8
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26613618"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330754"
 ---
 # <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>Zjistit, kdy konkrétní uživatel bude mít přístup k aplikaci
-Při použití zřizování automatické uživatelů s aplikací, Azure AD automaticky zřizovat a aktualizace uživatelské účty v aplikaci na základě třeba [přiřazení uživatelů a skupin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) v pravidelném plánovaném časovém intervalu, obvykle každých 10 minut.
+Při použití zřizování automatické uživatelů s aplikací, Azure AD automaticky zřizovat a aktualizace uživatelské účty v aplikaci na základě třeba [přiřazení uživatelů a skupin](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) při pravidelném plánovaném časový interval, obvykle každých 10 minut.
 
 ## <a name="how-long-does-it-take"></a>Jak dlouho to trvá?
 
@@ -37,7 +39,7 @@ A zjistit stav zřizování pro vybraného uživatele, najdete v protokolech aud
 
 Zřizování protokolů auditu na portálu Azure v přístupné **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt; protokolech auditování** kartě. Filtrovat protokoly **zřizování účtu** kategorii zobrazíte jen zřizování události pro tuto aplikaci. Můžete vyhledat uživatele podle "Odpovídající ID" nakonfigurovaný pro ně v mapování atributů. 
 
-Například, pokud jste nakonfigurovali "hlavní název uživatele" nebo "e-mailovou adresu" jako odpovídající atribut na straně Azure AD a uživatel není zřizování má hodnotu "audrey@contoso.com", pak vyhledejte v protokolech auditu "audrey@contoso.com" a kontrola a vrácena žádná položka.
+Například, pokud jste nakonfigurovali "hlavní název uživatele" nebo "e-mailovou adresu" jako odpovídající atribut na straně Azure AD a uživatel není zřizování má hodnotu "audrey@contoso.com", pak vyhledejte v protokolech auditu "audrey@contoso.com" a pak zkontrolujte položky Vrátí.
 
 Zřizování protokoly auditu zaznamenejte všechny operace, které provádí službu zřizování, včetně:
 
@@ -46,5 +48,5 @@ Zřizování protokoly auditu zaznamenejte všechny operace, které provádí sl
 * Porovnávání uživatelských objektů mezi systémem
 * Přidání, aktualizace nebo deaktivace uživatelský účet v cílovém systému podle porovnání
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning):

@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: celested
-ms.reviewer: hirsin; nacanuma
+ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2bb0d10fee04c4ee48344695769fa7768b0f3a85
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: e8957db002dd6fdeaf6da03b02e518e3e423539d
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823862"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317727"
 ---
 # <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>Služby volání služby s využitím delegované identity uživatele v tok On-Behalf-Of
 OAuth 2.0 On-Behalf-Of (OBO) toku slouží případ použití, kde aplikace volá služby nebo webové rozhraní API, který se pak musí volat jiné služby nebo webové rozhraní API. Cílem je potřebný k šíření identity delegované uživatele a oprávnění pomocí řetězce požadavků. Pro službu střední vrstvy provést ověřené žádosti o připojení ke službě podřízené potřebuje přístupový token zabezpečení ze služby Azure Active Directory (Azure AD) jménem uživatele.
@@ -83,7 +83,7 @@ Pokud používáte sdílený tajný klíč, žádosti o token přístupu service
 | Parametr |  | Popis |
 | --- | --- | --- |
 | grant_type |povinné | Typ požadavku na token. Pro žádost o pomocí token JWT, hodnota musí být **urn: ietf:params:oauth:grant – typ: jwt-nosiče**. |
-| Kontrolní výraz |povinné | Hodnota tokenu používaného v požadavku. |
+| kontrolní výraz |povinné | Hodnota tokenu používaného v požadavku. |
 | client_id |povinné | ID aplikace přiřazené ke službě volání během registrace s Azure AD. Chcete-li najít ID aplikace v portálu pro správu Azure, klikněte na tlačítko **služby Active Directory**, klikněte na adresář a potom klikněte na název aplikace. |
 | tajný klíč client_secret |povinné | Klíč registrován pro volání služby ve službě Azure AD. Tato hodnota by měla mít poznamenat v době registrace. |
 | prostředek |povinné | Identifikátor ID URI aplikace služby přijímající (zabezpečené prostředků). Chcete-li najít identifikátor ID URI aplikace v portálu pro správu Azure, klikněte na tlačítko **služby Active Directory**, klikněte na adresář, klikněte na název aplikace, klikněte na **všechna nastavení** a pak klikněte na tlačítko **vlastnosti**. |
@@ -115,7 +115,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 | Parametr |  | Popis |
 | --- | --- | --- |
 | grant_type |povinné | Typ požadavku na token. Pro žádost o pomocí token JWT, hodnota musí být **urn: ietf:params:oauth:grant – typ: jwt-nosiče**. |
-| Kontrolní výraz |povinné | Hodnota tokenu používaného v požadavku. |
+| kontrolní výraz |povinné | Hodnota tokenu používaného v požadavku. |
 | client_id |povinné | ID aplikace přiřazené ke službě volání během registrace s Azure AD. Chcete-li najít ID aplikace v portálu pro správu Azure, klikněte na tlačítko **služby Active Directory**, klikněte na adresář a potom klikněte na název aplikace. |
 | client_assertion_type |povinné |Hodnota musí být `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |povinné | (Webového tokenu JSON) kontrolní výraz, který potřebujete k vytvoření a podepsání s certifikátem, můžete zaregistrovat jako přihlašovací údaje pro vaši aplikaci. Přečtěte si informace o [certifikát přihlašovacích údajů](active-directory-certificate-credentials.md) Další informace o registraci vašeho certifikátu a formát kontrolní výraz.|

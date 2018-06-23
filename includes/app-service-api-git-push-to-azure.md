@@ -10,7 +10,7 @@ Nakonfigurujte místní nasazení z Gitu tak, aby bylo možné ho uložit do vzd
 git remote add azure <URI from previous step>
 ```
 
-Nasaďte aplikaci do vzdáleného úložiště Azure. Zobrazí se výzva k zadání hesla, které jste zadali dříve při vytváření uživatele nasazení. Dejte pozor na to, abyste zadali heslo, které jste si vytvořili dříve v rychlém startu, a ne heslo, se kterým se přihlašujete k portálu Azure Portal.
+Nasaďte aplikaci do vzdáleného úložiště Azure. Zobrazí se výzva k zadání hesla, které jste zadali dříve při vytváření uživatele nasazení. Ujistěte se, abyste zadali heslo, které jste vytvořili v dříve v rychlé spuštění a není heslo, které používáte pro přihlášení k portálu Azure.
 
 ```bash
 git push azure master

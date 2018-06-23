@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 12422a1123673feac1977fa5f52f49b2cdfda777
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fa3ab6df9b471a596cc229edf5fb555009c3101d
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621342"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318389"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Pro vytváření dat Azure – nejčastější dotazy
 > [!NOTE]
@@ -41,7 +41,7 @@ V tématu [stránku Podrobnosti o cenách na Data Factory] [ adf-pricing-details
 * Kurz o tom, jak **zkopírovat nebo přesunout data** pomocí aktivity kopírování, najdete v tématu [kopírování dat z Azure Blob Storage do Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 * Kurz o tom, jak **transformovat data** pomocí aktivity HDInsight Hive. V tématu [zpracování dat pomocí skriptu Hive v clusteru Hadoop](data-factory-build-your-first-pipeline.md)
 
-### <a name="what-is-the-data-factorys-region-availability"></a>Co je dostupnost služby Data Factory v oblastech s?
+### <a name="what-is-the-data-factorys-region-availability"></a>Co je dostupnost služby Data Factory v oblastech?
 Objekt pro vytváření dat je k dispozici v **USA – západ** a **Severní Evropa**. Výpočetní a úložné služby používá objekty pro vytváření dat může být v jiných oblastech. V tématu [podporované oblasti](data-factory-introduction.md#supported-regions).
 
 ### <a name="what-are-the-limits-on-number-of-data-factoriespipelinesactivitiesdatasets"></a>Jaká jsou omezení počtu data Factory/kanálů nebo aktivity nebo datových sad?

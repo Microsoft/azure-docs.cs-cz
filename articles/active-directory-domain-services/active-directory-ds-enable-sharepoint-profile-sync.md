@@ -13,19 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: e1162a3f87c9242e7366109302b3bd807b1fdcc8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 9e21547f6e1088677bb5699d17d81d170b4cab3d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214371"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332129"
 ---
 # <a name="configure-a-managed-domain-to-support-profile-synchronization-for-sharepoint-server"></a>Konfigurace spravované doméně kvůli podpoře synchronizace profilu pro SharePoint Server
 SharePoint Server obsahuje služba profilu uživatele, který je používán k synchronizaci profilu uživatele. Pokud chcete nastavit službu profilu uživatele, nutné příslušná oprávnění udělit v doméně služby Active Directory. Další informace najdete v tématu [udělení oprávnění služby Active Directory Domain Services pro profil synchronizace SharePoint Server 2013](https://technet.microsoft.com/library/hh296982.aspx).
 
 Tento článek vysvětluje způsob konfigurace Azure AD Domain Services spravovaných domén na nasazení služby synchronizace profilů uživatelů serveru SharePoint.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="the-aad-dc-service-accounts-group"></a>Účty AAD řadič domény služby skupiny
 Skupina zabezpečení s názvem "**účty řadiče domény služby AAD**' je k dispozici v rámci organizační jednotky, uživatele' na vaší spravované domény. Zobrazí se v této skupině **Active Directory Users and Computers** modul snap-in konzoly MMC na vaší spravované domény.

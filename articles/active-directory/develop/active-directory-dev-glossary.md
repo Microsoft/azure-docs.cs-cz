@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 11/16/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: ab053e9b132630c19b6966286035d38c71c6b4d9
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.reviewer: elisol
+ms.openlocfilehash: d9379a54258b33277904d88b62dfdd7dfdec59a0
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268133"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317744"
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Glosář vývojáře Azure Active Directory
 Tento článek obsahuje definice pro některé základní koncepty vývojáře Azure Active Directory (AD), což je užitečné při získávání informací o vývoj aplikací pro Azure AD.
@@ -39,15 +40,15 @@ V tématu [odkaz tokenu Azure AD] [ AAD-Tokens-Claims] další podrobnosti.
 ## <a name="application-id-client-id"></a>id aplikace (id klienta)
 Jedinečný identifikátor Azure AD problémy k registraci aplikace, který identifikuje konkrétní aplikace a související konfigurace. Toto id aplikace ([id klienta](https://tools.ietf.org/html/rfc6749#page-15)) se používá při provádění ověřování požadavků a je uvedené do knihoven ověřování v okamžiku vývoje. Id aplikace (id klienta) není tajný klíč. 
 
-## <a name="application-manifest"></a>Manifest aplikace
+## <a name="application-manifest"></a>manifest aplikace
 Funkce poskytované [portál Azure][AZURE-portal], který vytvoří reprezentaci JSON konfigurace identity aplikace, používá jako mechanismus pro aktualizaci přidružené [ Aplikace] [ AAD-Graph-App-Entity] a [ServicePrincipal] [ AAD-Graph-Sp-Entity] entity. V tématu [pochopení manifest aplikace Azure Active Directory] [ AAD-App-Manifest] další podrobnosti.
 
-## <a name="application-object"></a>objekt aplikace
+## <a name="application-object"></a>Objekt aplikace
 Pokud jste registrace nebo aktualizovat aplikaci v [portál Azure][AZURE-portal], portálu pro vytvoření nebo aktualizace objekt aplikace a odpovídající [objekt zabezpečení služby](#service-principal-object) pro tohoto klienta. Objekt aplikace *definuje* aplikace je konfigurace identity globálně (v rámci všech klientů kde má přístup), poskytuje šablony, ze kterého se odpovídající hlavní objekty služby  *odvozené* pro použití místně za běhu (v konkrétní klienta).
 
 Další informace najdete v tématu [aplikací a hlavní objekty služeb][AAD-App-SP-Objects].
 
-## <a name="application-registration"></a>registrace aplikace
+## <a name="application-registration"></a>Registrace aplikace
 Aby bylo možné aplikaci do integrovat a delegovat mu funkce identita a správa přístupu ke službě Azure AD, je nutné jej zaregistrovat s Azure AD [klienta](#tenant). Při registraci vaší aplikace s Azure AD, tím konfigurace aplikace identity pro vaši aplikaci, díky kterému jej integraci se službou Azure AD a pomocí funkce, jako například:
 
 * Robustní správu z jednotného přihlašování pomocí Azure AD Identity Management a [OpenID Connect] [ OpenIDConnect] implementace protokolu
@@ -65,10 +66,10 @@ V rámci udělení hlavní oprávnění ověření zabezpečení něco udělat. 
 * Během [udělení autorizace OAuth2](#authorization-grant) toku: při [vlastník prostředku](#resource-owner) uděluje oprávnění pro [klientská aplikace](#client-application), a umožnil tak klientovi přístup k prostředku prostředky vlastníka.
 * Během přístupu k prostředkům klienta: jak je implementované [server prostředků](#resource-server)pomocí [deklarace identity](#claim) hodnoty k dispozici v [přístupový token](#access-token) aby rozhodnutí o řízení přístupu podle nich.
 
-## <a name="authorization-code"></a>Autorizační kód
+## <a name="authorization-code"></a>autorizační kód
 Zkrátí "token" poskytované [klientská aplikace](#client-application) pomocí [koncový bod autorizace](#authorization-endpoint), v rámci toku "autorizační kód", jeden z čtyři OAuth2 [autorizací udělí](#authorization-grant). Kód se vrátí do klientské aplikace v reakci na ověřování [vlastník prostředku](#resource-owner), označující vlastníka prostředku má delegovaná oprávnění pro přístup k požadované prostředky. V rámci toku kód později uplatněný pro [přístupový token](#access-token).
 
-## <a name="authorization-endpoint"></a>Koncový bod autorizace
+## <a name="authorization-endpoint"></a>koncový bod autorizace
 Jeden z koncových bodů implementované [serveru ověřování](#authorization-server)používané pro interakci s [vlastník prostředku](#resource-owner) Chcete-li poskytovat [udělení autorizace](#authorization-grant) během OAuth2 tok poskytování autorizačních. V závislosti na toku udělení autorizace používá, skutečný grant zadat se může lišit, včetně [autorizační kód](#authorization-code) nebo [token zabezpečení](#security-token).
 
 Najdete v OAuth2 specifikaci [typy udělení autorizace] [ OAuth2-AuthZ-Grant-Types] a [koncový bod autorizace] [ OAuth2-AuthZ-Endpoint] části a [OpenIDConnect specifikace] [ OpenIDConnect-AuthZ-Endpoint] další podrobnosti.
@@ -76,7 +77,7 @@ Najdete v OAuth2 specifikaci [typy udělení autorizace] [ OAuth2-AuthZ-Grant-Ty
 ## <a name="authorization-grant"></a>udělení autorizace
 Přihlašovací údaje představující [vlastník prostředku](#resource-owner) [autorizace](#authorization) přístup k jeho chráněným prostředkům udělit [klientská aplikace](#client-application). Klientská aplikace můžete použít jednu z [čtyři typy definované rozhraní autorizace OAuth2 udělení] [ OAuth2-AuthZ-Grant-Types] získat udělení, v závislosti na typu nebo požadavky na klienta: "udělení autorizačního kódu", "klienta přihlašovací údaje umožní","implicitní grant"a"udělit oprávnění hesla vlastníka prostředku". Přihlašovací údaje vrácen do klienta je buď [přístupový token](#access-token), nebo [autorizační kód](#authorization-code) (vyměňují později pro přístupový token), v závislosti na typu udělení autorizace používá.
 
-## <a name="authorization-server"></a>Autorizace serveru
+## <a name="authorization-server"></a>autorizace serveru
 Podle definice [OAuth2 autorizace Framework][OAuth2-Role-Def], příslušné k udělování přístupu serveru tokenů se má [klienta](#client-application) po úspěšném ověření [vlastník prostředku](#resource-owner) a získání jeho povolení. A [klientská aplikace](#client-application) komunikuje se serverem autorizace za běhu prostřednictvím jeho [autorizace](#authorization-endpoint) a [tokenu](#token-endpoint) koncových bodů, v souladu s OAuth2 definované [autorizace uděluje](#authorization-grant).
 
 V případě integrace aplikací Azure AD, Azure AD implementuje roli serveru autorizace pro aplikace Azure AD a služby Microsoft rozhraní API, například [Microsoft Graph API][Microsoft-Graph].
@@ -91,7 +92,7 @@ Podle definice [Framework ověřování OAuth2][OAuth2-Role-Def], aplikace, kter
 
 Klientská aplikace požaduje [autorizace](#authorization) od vlastníka prostředku se účastnit [udělení autorizace OAuth2](#authorization-grant) toku a může získat přístup k rozhraní API nebo data jménem vlastníka prostředku. Rozhraní Framework ověřování OAuth2 [definuje dva typy klientů][OAuth2-Client-Types], "důvěrné informace" a "veřejná", podle schopnost klienta zachovávat mlčenlivost o svoje přihlašovací údaje. Aplikace můžete implementovat [webového klienta (důvěrné)](#web-client) na webovém serveru, která se spouští [nativního klienta (veřejných)](#native-client) instalovat na zařízení, nebo [klienta na základě uživatelského agenta (veřejných)](#user-agent-based-client)která se spouští v prohlížeči zařízení.
 
-## <a name="consent"></a>Vyjádřit souhlas.
+## <a name="consent"></a>vyjádřit souhlas.
 Proces [vlastník prostředku](#resource-owner) registraci [klientská aplikace](#client-application), přístup k chráněným prostředkům v rámci konkrétní [oprávnění](#permissions), jménem vlastník prostředku. Záviset na oprávněních, kterou klient požaduje správce nebo uživatel se vyzve k vyjádření souhlasu pro povolení přístupu k datům jejich organizace nebo jednotlivce v uvedeném pořadí. Poznámka: v [víceklientské](#multi-tenant-application) scénář, aplikace [instanční objekt](#service-principal-object) je také zaznamenávají v klientovi consenting uživatele.
 
 ## <a name="id-token"></a>ID tokenu
@@ -134,7 +135,7 @@ Role jsou definované prostředků řetězců (například "výdajů schvalovate
 
 Podrobnou diskuzi o aplikační role vystavené Azure AD Graph API, najdete v části [obory oprávnění rozhraní API grafu][AAD-Graph-Perm-Scopes]. Implementace podrobný příklad najdete v tématu [Správa přístupu pomocí RBAC a webu Azure portal][AAD-RBAC].
 
-## <a name="scopes"></a>Obory
+## <a name="scopes"></a>obory
 Jako [role](#roles), obory poskytují způsob, jak [server prostředků](#resource-server) které řídí přístup k jeho chráněným prostředkům. Obory slouží k implementaci [obor] [ OAuth2-Access-Token-Scopes] pro přístup k řízení, [klientská aplikace](#client-application) , nebyla zadána Delegovaný přístup k prostředku jeho vlastníka.
 
 Obory jsou definované prostředků řetězců (například "Mail.Read", "Directory.ReadWrite.All"), spravovat [portál Azure] [ AZURE-portal] prostřednictvím prostředku [manifest aplikace](#application-manifest)a uloženy v prostředku [oauth2Permissions vlastnost][AAD-Graph-Sp-Entity]. Portál Azure také slouží ke konfiguraci klienta aplikace [delegovaná oprávnění](#permissions) pro přístup k oboru.
@@ -144,7 +145,7 @@ Nejlepší postup zásady vytváření názvů, je použití formátu "resource.
 ## <a name="security-token"></a>token zabezpečení
 Podepsaný dokument obsahující deklarace identity, například tokenu OAuth2 nebo kontrolního výrazu SAML 2.0. Pro OAuth2 [udělení autorizace](#authorization-grant), [přístupový token](#access-token) (OAuth2) a [ID Token](http://openid.net/specs/openid-connect-core-1_0.html#IDToken) jsou typy tokenů zabezpečení, které jsou implementované jako [JSON Web Token (JWT)][JWT].
 
-## <a name="service-principal-object"></a>objekt zabezpečení služby
+## <a name="service-principal-object"></a>Objekt zabezpečení služby
 Když jste registrace nebo aktualizovat aplikaci v [portál Azure][AZURE-portal], portálu pro vytvoření nebo aktualizace i [objektu application](#application-object) a odpovídající objekt zabezpečení služby pro tohoto klienta. Objekt aplikace *definuje* konfigurace identity aplikace globálně (v rámci všech klientů kde v přidružené aplikaci udělit přístup), a je šablona, ze kterého jeho odpovídající instančního objektu objekty jsou *odvozené* pro použití místně za běhu (v konkrétní klienta).
 
 Další informace najdete v tématu [aplikací a hlavní objekty služeb][AAD-App-SP-Objects].
@@ -166,7 +167,7 @@ Instance adresáře služby Azure AD se označuje jako klient služby Azure AD. 
 
 Během registrace, poskytnete Správa identit a přístupu funkce pro předplatné jsou klienty Azure AD vytvořené nebo přidružit k předplatnému Azure a Office 365. Správci předplatného Azure můžete vytvořit také další služby Azure AD tenantů prostřednictvím portálu Azure. V tématu [postup získání klienta Azure Active Directory] [ AAD-How-To-Tenant] podrobnosti o různých způsobech získáte přístup do klienta. V tématu [asociování předplatných Azure se službou Azure Active Directory] [ AAD-How-Subscriptions-Assoc] podrobnosti o vztahu mezi předplatnými a klient služby Azure AD.
 
-## <a name="token-endpoint"></a>Koncový bod tokenu
+## <a name="token-endpoint"></a>koncový bod tokenu
 Jeden z koncových bodů implementované [serveru ověřování](#authorization-server) podpory OAuth2 [autorizace uděluje](#authorization-grant). V závislosti na udělení, může být použitý k získání [přístupový token](#access-token) (a související token "aktualizovat") na [klienta](#client-application), nebo [ID token](#ID-token) při použití s [OpenID Připojit] [ OpenIDConnect] protokolu.
 
 ## <a name="user-agent-based-client"></a>Na základě uživatelského agenta klienta

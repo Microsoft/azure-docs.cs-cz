@@ -3,22 +3,24 @@ title: Potíže při přihlašování do Galerie aplikace nakonfigurovaná pro f
 description: Pokyny pro konkrétní chyby při přihlášení k aplikaci, kterou jste nakonfigurovali pro na základě SAML federované jednotné přihlašování s Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: fa1387c3eb11899bb74418b2ff1af4a5d22a73d9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: f8c17b8c14b63007c3b623e5ffb60c0a2567cb72
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "29384833"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333645"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Potíže při přihlašování do Galerie aplikace nakonfigurovaná pro federované jednotné přihlašování
 
@@ -38,7 +40,7 @@ Chcete-li vyřešit problém, musíte ověřit konfiguraci aplikace ve službě 
 
 Vystavitel, který odešle atribut z aplikace do služby Azure AD v žádosti SAML neodpovídá identifikátoru hodnotu nakonfigurovanou v aplikaci Azure AD.
 
-**Řešení**
+**řešení**
 
 Ujistěte se, že vystavitel atribut v požadavku SAML ho je odpovídající identifikátor hodnotu nakonfigurovanou v Azure AD:
 
@@ -70,7 +72,7 @@ Jakmile jste aktualizovali hodnota identifikátoru ve službě Azure AD a odešl
 
 Hodnota AssertionConsumerServiceURL v žádosti SAML neodpovídá hodnotu adresa URL odpovědi nebo vzor nakonfigurovat ve službě Azure AD. Hodnota AssertionConsumerServiceURL v žádosti SAML je adresa URL se zobrazí v chybě.
 
-**Řešení**
+**řešení**
 
 Ujistěte se, že hodnota AssertionConsumerServiceURL v žádosti SAML ho je adresa URL odpovědi odpovídající hodnotu nakonfigurovanou v Azure AD.
 
@@ -103,7 +105,7 @@ Poté, co jste aktualizovali hodnota adresa URL odpovědi ve službě Azure AD a
 
 Uživateli nebyl udělen přístup k aplikaci ve službě Azure AD.
 
-**Řešení**
+**řešení**
 
 Jeden nebo více uživatelů přiřadit přímo k aplikaci, postupujte podle následujících kroků:
 
@@ -147,13 +149,13 @@ Po krátké době uživatele, které jste vybrali moci spustit tyto aplikace pom
 
 **Možná příčina**
 
-Azure AD nepodporuje SAML požadavků odeslaných aplikací pro jednotné přihlašování. Jsou některé běžné problémy:
+Azure AD nepodporuje požadavek SAML, který aplikace odeslala pro jednotné přihlášení. Jsou některé běžné problémy:
 
 -   Chybí povinná pole v požadavku SAML
 
 -   Metoda požadavku kódovaný SAML
 
-**Řešení**
+**řešení**
 
 1.  Zaznamenejte žádost SAML. postupujte podle kurzu [ladění na základě SAML jednotného přihlašování k aplikacím v Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) se dozvíte, jak chcete zaznamenat žádost SAML.
 
@@ -232,7 +234,7 @@ Pokud možnost 1 výše pro vás nefunguje, zkuste odebrat aplikaci z adresáře
 
 Objekt aplikace je poškozený a Azure AD nerozpoznal certifikát nakonfigurovaný pro aplikaci.
 
-**Řešení**
+**řešení**
 
 Pokud chcete odstranit a vytvořit nový certifikát, postupujte podle následujících kroků:
 

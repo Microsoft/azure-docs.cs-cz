@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: a94d97fb90e65fd569047a3d55945437002d97ab
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 9537380daab80529c3ba6307f1b2cd82a8c0ca41
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867387"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334665"
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Upgrade na nejnovější Azure Multi-Factor Authentication Server
 
@@ -48,21 +48,12 @@ Pokud provádíte upgrade z verze 6.x nebo starší na v7.x nebo novější, zm�
 
 Pokud máte portálu User Portal na více serverech, opakujte instalaci na všechny z nich. 
 
-
 ## <a name="upgrade-the-mobile-app-web-service"></a>Upgrade služby Mobile App Web
 
-1. Vytvořte záložní kopii souboru web.config, který je ve virtuálním adresáři umístění instalace webové služby mobilní aplikace (například C:\inetpub\wwwroot\app nebo C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService).
-2. Zkopírujte soubor MultiFactorAuthenticationMobileAppWebServiceSetup64.msi z umístění instalace serveru MFA a umístí jej do mobilní aplikace registrace webový server.
-3. Spusťte instalační program. 
-
-  Pokud dojde k chybě s oznámením, že Microsoft Visual C++ 2015 Redistributable Update 1 nebo vyšší není vyžadováno, stáhněte a nainstalujte nejnovější balíček aktualizace z [Microsoft Download Center](https://www.microsoft.com/download/). Nainstalujte x86 a x64 verze.
-
-4. Po instalaci aktualizovaný software webové služby mobilní aplikace porovnejte souboru web.config, který byl zálohován v kroku 1 pomocí nového souboru web.config. Pokud neexistují žádné nové atributy do nového souboru Web.config, můžete zkopírovat uloženého souboru web.config zpět do virtuálního adresáře a přepsat novým. Další možností je zkopírujte a vložte hodnoty appSettings a adresu URL sady SDK webové služby ze záložního souboru do nového souboru web.config.
-
-Pokud máte webové služby mobilní aplikace na více serverech, opakujte instalaci na všechny z nich. 
+> [!NOTE]
+> Při upgradu z verze nástroje Azure MFA serveru starší než 8.0 na 8.0 +, webové služby mobilní aplikace, můžou se odinstalovat po upgradu
 
 ## <a name="upgrade-the-ad-fs-adapters"></a>Upgrade adaptéry AD FS
-
 
 ### <a name="if-mfa-runs-on-different-servers-than-ad-fs"></a>Pokud vícefaktorové ověřování běží na různých serverech než služba AD FS
 

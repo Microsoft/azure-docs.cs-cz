@@ -2,9 +2,9 @@
 Po vytvoření trezoru služeb zotavení, nainstalujte agenta zálohování na jednotlivých počítačů systému Windows (Windows Server, klient systému Windows, server System Center Data Protection Manager nebo počítače serveru Azure Backup) použít k zálohování dat do Azure.
 
 1. Otevřít vaše předplatné v [portálu Azure](https://ms.portal.azure.com/).
-2. V levé nabídce vyberte **všechny služby** a v seznamu služeb zadejte **služeb zotavení**. Klikněte na tlačítko **trezory služeb zotavení**.
+2. V nabídce vlevo vyberte **Všechny služby** a v seznamu služeb zadejte **Recovery Services**. Klikněte na **Trezory služby Recovery Services**.
 
-   ![Otevřený trezor služeb zotavení](../articles/backup/media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
+   ![otevření trezoru služby Recovery Services](../articles/backup/media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 3. Na stránce Rychlý Start klikněte na **klienta pro systém Windows Server nebo System Center Data Protection Manager nebo Windows** možnost pod **stáhnout agenta**. Klikněte na tlačítko **Uložit** a zkopírujte ho do místního počítače.
    
     ![Uložit agenta](./media/backup-install-agent/agent.png)
@@ -18,7 +18,7 @@ Po vytvoření trezoru služeb zotavení, nainstalujte agenta zálohování na j
    
     ![Přihlašovací údaje trezoru](./media/backup-install-agent/vc.png)
    
-    Soubor s přihlašovacími údaji je platná pouze pro 48 hodin (po jeho stažení z portálu). Pokud dojde k chybě v této plánováním obrazovce (například "soubor s přihlašovacími údaji poskytuje vypršela"), přihlášení k portálu Azure a znovu stáhnout soubor s přihlašovacími údaji.
+    Soubor s přihlašovacími údaji je platná pouze pro 48 hodin (po jeho stažení z portálu). Pokud narazíte na chyby na této obrazovce (například "přihlašovací údaje trezoru poskytnuté souboru vypršela platnost"), přihlaste se k portálu Azure a znovu stáhnout soubor s přihlašovacími údaji.
    
     Zkontrolujte, zda instalační program aplikace mohou přistupovat k souboru s přihlašovacími údaji. Pokud narazíte na chyby týkající se přístupu, zkopírujte soubor s přihlašovacími údaji do dočasného umístění v místním počítači a operaci opakujte.
    

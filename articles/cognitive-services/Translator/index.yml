@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/30/2017
   ms.author: v-jansko
-  ms.openlocfilehash: 55ec3147a07c5c76fe1f1b356d633a9afeb783cc
-  ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+  ms.openlocfilehash: 1995f8d58c47b8e098022ca672c7889195dd5328
+  ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/20/2018
-  ms.locfileid: "36286904"
+  ms.lasthandoff: 06/22/2018
+  ms.locfileid: "36319176"
 abstract:
   description: Microsoft Translator Text API je cloudová služba pro strojový překlad. Pomocí tohoto rozhraní API můžete překládat texty z libovolné aplikace nebo služby téměř v reálném čase, a to pomocí jednoduchého volání rozhraní REST API. Rozhraní API využívá nejmodernější technologie neuronového strojového překladu a nabízí také i technologie statistického strojového překladu. Seznam podporovaných jazyků pro neuronový i statistický strojový překlad najdete v části věnované <a href="languages.md">podporovaným jazykům</a>.
 sections:
@@ -46,26 +46,26 @@ sections:
       values:
       - href: quickstart-csharp-translate
       - href: quickstart-java-translate
-      - href: 
-      - href: 
+      - href: quickstart-nodejs-translate
+      - href: quickstart-python-translate
     - title: Převod textu z jednoho skriptu do druhého
       values:
       - href: quickstart-csharp-transliterate
       - href: quickstart-java-transliterate
-      - href: 
-      - href: 
+      - href: quickstart-nodejs-transliterate
+      - href: quickstart-python-transliterate
     - title: Identifikace jazyka textu
       values:
       - href: quickstart-csharp-detect
       - href: quickstart-java-detect
-      - href: 
-      - href: 
+      - href: quickstart-nodejs-detect
+      - href: quickstart-python-detect
     - title: Získání alternativních překladů a využití
       values:
       - href: quickstart-csharp-dictionary
       - href: quickstart-java-dictionary
-      - href: 
-      - href: 
+      - href: quickstart-nodejs-dictionary
+      - href: quickstart-python-dictionary
 - title: Referenční informace
   items:
   - type: paragraph

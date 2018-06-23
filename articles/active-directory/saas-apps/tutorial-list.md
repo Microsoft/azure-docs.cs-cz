@@ -16,12 +16,12 @@ ms.date: 06/18/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 9aa060c6f28adb8361fcb9267ea658fda27b442c
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 193be37f4c804d087bf404f14bc60e27349038ad
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223446"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319033"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>Integraci aplikací SaaS s Azure Active Directory
 
@@ -137,7 +137,7 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/tutorial-list/active-directory-saas-ciscocloud-tutorial.png)| [Cisco cloudu](ciscocloud-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-ciscocloudlock-tutorial.png)| [Cisco Cloudlock](ciscocloudlock-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-cisco-spark-tutorial.png)| [Cisco Spark](cisco-spark-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|[Cisco Webex - zřizování uživatelů](cisco-webex-provisioning-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-sharefile-tutorial.png)| [Citrix ShareFile](sharefile-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-clarizen-tutorial.png)| [Clarizen](clarizen-tutorial.md)|[Clarizen - zřizování uživatelů](clarizen-provisioning-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-clearreview-tutorial.png)| [Clear – kontrola](clearreview-tutorial.md)|
@@ -224,7 +224,7 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/tutorial-list/active-directory-saas-freshgrade-tutorial.png)| [FreshGrade](freshgrade-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-freshservice-tutorial.png)| [Freshservice](freshservice-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-front-tutorial.png)| [Přední](front-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-fuse-tutorial.png)| [pojistka](fuse-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-fuse-tutorial.png)| [Pojistka](fuse-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-fuze-tutorial.png)| [Fuze](fuze-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-google-apps-tutorial.png)| [G Suite](google-apps-tutorial.md)|[G Suite - zřizování uživatelů](google-apps-provisioning-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-gaggleamp-tutorial.png)| [GaggleAMP](gaggleamp-tutorial.md)|
@@ -302,7 +302,7 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/tutorial-list/active-directory-saas-kantegassoforjira-tutorial.png)| [Jednotné přihlašování Kantega pro JIRA](kantegassoforjira-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-keeperpasswordmanager-tutorial.png)| [Správce hesel držitel & digitální trezoru](keeperpasswordmanager-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-kindling-tutorial.png)| [Kindling](kindling-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-kintone-tutorial.png)| [kintone](kintone-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-kintone-tutorial.png)| [Kintone](kintone-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-kiteworks-tutorial.png)| [Kiteworks](kiteworks-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-klue-tutorial.png)| [Klue](klue-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-knowbe4-tutorial.png)| [KnowBe4 zabezpečení sledování školení](knowbe4-tutorial.md)|
@@ -403,7 +403,7 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/tutorial-list/active-directory-saas-pantheon-tutorial.png)| [Pantheon](pantheon-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-patentsquare-tutorial.png)| [PatentSQUARE](patentsquare-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-pegasystems-tutorial.png)| [Pega systémy](pegasystems-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-people-tutorial.png)| [Osoby](people-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-people-tutorial.png)| [osoby](people-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-peoplecart-tutorial.png)| [Peoplecart](peoplecart-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-perceptionunitedstates-tutorial.png)| [Dojem USA (bez UltiPro)](perceptionunitedstates-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-performancecentre-tutorial.png)| [PerformanceCentre](performancecentre-tutorial.md)|

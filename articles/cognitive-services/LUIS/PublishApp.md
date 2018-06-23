@@ -10,17 +10,17 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 056608e7843c8feab28359de5f2762164287f09d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 12a63e65a739be08d436f8f1b53df566255b1fb1
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35343933"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36322055"
 ---
 # <a name="publish-your-trained-app"></a>Publikování vyškolení aplikace
 Po dokončení vytváření a testování vaší aplikace LEOŠ ji publikujte. Po publikování aplikace, na stránce publikování se zobrazí všechny související HTTP [koncové body](luis-glossary.md#endpoint). Tyto koncové body na [oblast](luis-reference-regions.md) a za [klíč](Manage-Keys.md), pak jsou integrované do libovolné aplikace klienta, chatbot nebo back-end. 
 
-Vždy můžete [testování](train-test.md) aplikace před publikováním. 
+Vždy můžete [testování](interactive-test.md) aplikace před publikováním. 
 
 ## <a name="production-and-staging-slots"></a>Produkční a pracovní sloty
 Můžete publikovat aplikaci, kterou chcete **pracovní pozici** nebo **produkční Slot**. Pomocí dvou publikování sloty, můžete tak mít dvě různé verze pomocí publikovaných koncových bodů nebo stejnou verzi na dva různé koncové body. 
@@ -138,12 +138,12 @@ Následující parametrů řetězce dotazu lze použít s adresou URL koncového
 
 |Řetězec dotazu|Typ|Příklad hodnoty|Účel|
 |--|--|--|--|
-|Verbose|Boolean|true (pravda)|Zahrnout [všechny záměrné skóre](#include-all-predicted-intent-scores) pro utterance|
-|timezoneOffset|číslo (jednotka je minut)|60|Nastavit [posun časového pásma](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) pro [datetimeV2 předem entity](luis-reference-prebuilt-entities.md#builtindatetimev2)|
+|verbose|Boolean|true (pravda)|Zahrnout [všechny záměrné skóre](#include-all-predicted-intent-scores) pro utterance|
+|timezoneOffset|číslo (jednotka je minut)|60|Nastavit [posun časového pásma](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) pro [datetimeV2 předem entity](luis-reference-prebuilt-datetimev2.md)|
 |Kontrola pravopisu|Boolean|true (pravda)|[Opravte pravopis](#enable-bing-spell-checker) z utterance – používá ve spojení s parametr řetězce dotazu bing pravopisu – kontrola subscription-key|
 |Bing pravopisu – kontrola subscription-key|ID předplatného||používá ve spojení s parametr řetězce dotazu kontrola pravopisu|
-|Pracovní|Boolean|false (nepravda)|Vyberte pracovním nebo produkčním koncový bod|
-|Protokolu|Boolean|true (pravda)|Přidání dotazu a výsledky do protokolu|
+|pracovní|Boolean|false (nepravda)|Vyberte pracovním nebo produkčním koncový bod|
+|protokolu|Boolean|true (pravda)|Přidání dotazu a výsledky do protokolu|
 
 
 ## <a name="test-your-published-endpoint-in-a-browser"></a>Testování publikované koncový bod v prohlížeči
@@ -154,4 +154,4 @@ Testování publikované koncový bod výběrem adresu URL v **koncový bod** sl
 ## <a name="next-steps"></a>Další postup
 
 * V tématu [Správa klíčů](./Manage-Keys.md) přidání klíče do LEOŠ aplikace a další informace o mapování klíče do oblasti.
-* V tématu [Train a testování aplikace](Train-Test.md) pokyny k testování publikované aplikace v konzole nástroje test.
+* V tématu [Train a testování aplikace](interactive-test.md) pokyny k testování publikované aplikace v konzole nástroje test.

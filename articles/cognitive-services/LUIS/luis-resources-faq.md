@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: b6b333937e7c88f566fc401967b26cbd31ca158b
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: fd63ffd312e3ac17a6376eb3c9bef8f1978e3935
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301498"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333611"
 ---
 # <a name="language-understanding-faq"></a>Nejčastější dotazy k pochopení jazyka
 
@@ -127,7 +127,9 @@ Přenos LEOŠ aplikace do jiného předplatného Azure, aplikaci LEOŠ export a 
 Ve výchozím nastavení zaznamená aplikace LEOŠ utterances od uživatelů. Chcete-li stáhnout protokolu utterances, které uživatelé odeslat do aplikace LEOŠ, přejděte na **Moje aplikace**a klikněte na se třemi tečkami (***...*** ) v seznamu pro vaši aplikaci. Pak klikněte na tlačítko **exportovat protokoly koncový bod**. V protokolu je naformátován jako soubor s oddělovači (CSV).
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Jak lze vypnout protokolování utterances?
-Protokolování utterances uživatele můžete vypnout pomocí nastavení `log=false` adresu URL koncového bodu, která klientské aplikace používá k dotazování LEOŠ. Vypnutí protokolování ale zakáže aplikaci LEOŠ možnost navrhnout utterances nebo zvýšit výkon, která je založená na dotazech uživatele. Pokud nastavíte `log=false` kvůli riziko z hlediska ochrany osobních údajů, nelze z LEOŠ stahovat záznam utterances tyto uživatele, nebo použít tyto utterances ke zlepšení aplikace.
+Protokolování utterances uživatele můžete vypnout pomocí nastavení `log=false` adresu URL koncového bodu, která klientské aplikace používá k dotazování LEOŠ. Vypnutí protokolování ale zakáže aplikaci LEOŠ možnost navrhnout utterances nebo zvýšit výkon, který je založen na [active learning](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Pokud nastavíte `log=false` kvůli riziko z hlediska ochrany osobních údajů, nelze z LEOŠ stahovat záznam utterances tyto uživatele, nebo použít tyto utterances ke zlepšení aplikace.
+
+Protokolování je pouze úložiště utterances. 
 
 ### <a name="why-dont-i-want-all-my-endpoint-utterances-logged"></a>Proč nechcete všechna Moje utterances koncový bod protokolují?
 Pokud používáte protokol pro analýzu předpovědi, není zachytit utterances testu v protokolu.

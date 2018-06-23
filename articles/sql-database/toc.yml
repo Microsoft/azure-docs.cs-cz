@@ -98,22 +98,22 @@
           href: sql-database-dtu-resource-limits-single-databases.md
         - name: Škálování prostředků izolovaných databází
           href: sql-database-single-database-scale.md
-        - name: Elastické fondy a databáze ve fondu
-          items:
-            - name: Elastické fondy a databáze ve fondu
-              href: sql-database-elastic-pool.md
-            - name: Správa fondů a databází ve fondu
-              href: sql-database-elastic-pool-manage.md
-            - name: Omezení prostředků na základě virtuálních jader
-              href: sql-database-vcore-resource-limits-elastic-pools.md
-            - name: Omezení prostředků na základě DTU
-              href: sql-database-dtu-resource-limits-elastic-pools.md
-        - name: Škálování prostředků elastického fondu
-          href: sql-database-elastic-pool-scale.md
         - name: Architektura připojení
           href: sql-database-connectivity-architecture.md
         - name: Rozdíly v jazyce T-SQL
           href: sql-database-transact-sql-information.md
+    - name: Elastické fondy a databáze ve fondu
+      items:
+        - name: Elastické fondy a databáze ve fondu
+          href: sql-database-elastic-pool.md
+        - name: Správa fondů a databází ve fondu
+          href: sql-database-elastic-pool-manage.md
+        - name: Omezení prostředků na základě virtuálních jader
+          href: sql-database-vcore-resource-limits-elastic-pools.md
+        - name: Omezení prostředků na základě DTU
+          href: sql-database-dtu-resource-limits-elastic-pools.md
+        - name: Škálování prostředků elastického fondu
+          href: sql-database-elastic-pool-scale.md
     - name: Spravované instance
       items:
         - name: Spravované instance

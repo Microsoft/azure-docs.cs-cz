@@ -3,22 +3,24 @@ title: Potíže při přihlašování k aplikaci Microsoft | Microsoft Docs
 description: Řešení běžných potíží potýkají při přihlašování k Applications Microsoft první strany pomocí služby Azure AD (např. Office 365)
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 1dc727f46785d2896544d8ef9098259f9ab994d1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 4053c272fe78647ac646e0feefa884cf014a6b72
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29384207"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334220"
 ---
 ## <a name="problems-signing-in-to-a-microsoft-application"></a>Potíže při přihlašování k aplikaci Microsoft
 
@@ -32,7 +34,7 @@ Existují tři hlavní způsoby, že uživatel může získat přístup k aplika
 
 -   Pro aplikace, které společnost Microsoft nebo 3rd strany publikuje pro všechny volně, uživatelé také udělit přístup přes **souhlas správce**. To znamená, že správce zjistí, že aplikace může být používán všichni uživatelé v organizaci, takže se přihlásit k aplikaci pomocí účtu globálního správce a udělit přístup všem uživatelům v organizaci.
 
-Chcete-li vyřešit problém, můžete začít s [obecné problémových oblastí aplikace přístup k zvažte](#general-problem-areas-with-application-access-to-consider) a přečtěte si [návod: postup řešení potíží s přístupem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access) získat na podrobné informace.
+Chcete-li vyřešit problém, můžete začít s [obecné problémových oblastí aplikace přístup k zvažte](#general-problem-areas-with-application-access-to-consider) a přečtěte si [návod: postup řešení potíží s přístupem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access) nahrát do Podrobnosti.
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>Obecné problémových oblastí aplikace přístup ke zvážení
 
@@ -76,7 +78,7 @@ Toto jsou některé běžné problémy, které zaměstnance spustit do, když u�
 
    * Pokud je licence **přiřazené** **dynamická skupina**, ujistěte se, že **je dynamická skupina pravidlo správně nastavené**. [Zkontrolujte kritéria členství dynamické skupiny](#check-a-dynamic-groups-membership-criteria)
 
-   * Pokud je licence **přiřazené** **dynamická skupina**, zkontrolujte, zda dynamická skupina má **bylo dokončeno zpracování** jeho členství a že **uživatel je členem** (to může trvat nějakou dobu). [Zkontrolujte členství uživatele ve skupinách](#check-a-users-group-memberships)
+   * Pokud je licence **přiřazené** **dynamická skupina**, zkontrolujte, zda dynamická skupina má **bylo dokončeno zpracování** jeho členství a že **uživatel je členem**  (to může trvat nějakou dobu). [Zkontrolujte členství uživatele ve skupinách](#check-a-users-group-memberships)
 
    *  Jakmile budete mít jistotu, je přiřazena licence, zkontrolujte, zda je licence **nevypršela**.
 
@@ -86,7 +88,7 @@ Toto jsou některé běžné problémy, které zaměstnance spustit do, když u�
 
    * Pokud aplikace požaduje **oprávnění na úrovni uživatele** (například "přístup k poštovní schránka tohoto uživatele"), ujistěte se, že uživatel přihlásí k aplikaci a byla provedena **individuální souhlasu operaci** umožníte přístup k jeho data aplikace.
 
-   * Pokud aplikace požaduje **oprávnění na úrovni správce** (například "přístup k poštovním schránkám všechny uživatelské"), ujistěte se, že byla provedena globálního správce **operace na úrovni správce souhlas jménem všichni uživatelé** v organizaci.
+   * Pokud aplikace požaduje **oprávnění na úrovni správce** (například "přístup k poštovním schránkám všechny uživatelské"), ujistěte se, že byla provedena globálního správce **operace správce úroveň souhlasu s jménem všech uživatelů** v organizaci.
 
 ## <a name="problems-with-the-users-account"></a>Problémy s uživatelského účtu
 
@@ -509,15 +511,15 @@ Přístup k aplikaci můžete blokovat, protože nedošlo k operaci souhlasu př
 
 ### <a name="perform-administrator-level-consent-operation-for-any-application"></a>Provedení operace správce úroveň souhlasu pro žádnou aplikaci.
 
--   Pro **jenom aplikace vyvinuté pomocí aplikačního modelu V1**, můžete vynutit této úrovně souhlasu správce proběhnout přidáním "**? řádku = správce\_souhlas**" na konec přihlašovací adresa URL aplikace.
+-   Pro **jenom aplikace vyvinuté pomocí aplikačního modelu V1**, můžete vynutit této úrovně souhlasu správce proběhnout přidáním "**? řádku = správce\_souhlas**" na konec objektu Přihlašovací adresa URL aplikace.
 
--   Pro **všechny aplikace vyvinuté pomocí aplikačního modelu V2**, můžete vynutit svůj souhlas úrovni správce proběhnout podle pokynů v části **oprávnění požádat správce directory** části [pomocí koncový bod admin souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   Pro **všechny aplikace vyvinuté pomocí aplikačního modelu V2**, můžete vynutit svůj souhlas úrovni správce proběhnout podle pokynů v části **požádat správce directoryoprávnění** části [pomocí koncový bod admin souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-single-tenant-application"></a>Provést na úrovni správce souhlasu pro jednoho klienta aplikace
 
 -   Pro **jednoho klienta aplikace** , žádostí o oprávnění (jako jsou ty, které jste vývoji nebo vlastní ve vaší organizaci), můžete provést **správu úroveň souhlasu** operace jménem všechny uživatelé přihlášení jako globální správce a kliknutím na **udělit oprávnění** tlačítka v horní části **aplikace registru -&gt; všechny aplikace -&gt; vyberte aplikaci -&gt; Požadovaná oprávnění** podokně.
 
--   Pro **všechny aplikace vyvinuté pomocí aplikačního modelu V1 nebo V2**, můžete vynutit svůj souhlas úrovni správce proběhnout podle pokynů v části **oprávnění požádat správce directory** části [pomocí koncový bod admin souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
+-   Pro **všechny aplikace vyvinuté pomocí aplikačního modelu V1 nebo V2**, můžete vynutit svůj souhlas úrovni správce proběhnout podle pokynů v části **požádat správce directory oprávnění**  části [pomocí koncový bod admin souhlasu](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint).
 
 ### <a name="perform-administrator-level-consent-for-a-multi-tenant-application"></a>Provést na úrovni správce souhlasu pro víceklientské aplikace
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 3f4da70d94d28496f5b08035ead0ef7acf1ca3bc
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 2334aefdfb442054226ef6d7d55a8c097a433565
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29969593"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316319"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak zapisovat do protokolu událostí Azure Event Hubs ve službě Azure API Management
 Vysoce škálovatelná služba Azure Event Hubs slouží ke zpracování příchozích dat. Dokáže přijímat miliony událostí za sekundu a umožňuje zpracovávat a analyzovat masivní objemy dat vytvářených zařízeními a aplikacemi připojenými k vaší síti. Služba Event Hubs slouží jako "přední dveře" pro kanál událostí, a jakmile jsou data shromážděna do centra událostí, lze je transformovat a uložené pomocí kteréhokoli poskytovatele služeb, analýzu v reálném čase nebo adaptérů pro dávkování či ukládání. Event Hubs oddělí vytvoření proudu událostí od spotřeby těchto události, aby spotřebitelé událostí mohli k událostem přistupovat podle svého vlastního plánu.
@@ -79,7 +79,7 @@ Jakmile vaše protokoly nakonfigurovaný ve službě API Management, můžete na
 1. Přejděte k vaší instanci APIM.
 2. Vyberte kartu rozhraní API.
 3. Vyberte rozhraní API, do které chcete přidat zásadu. V tomto příkladu je právě přidávána zásadu, která **Echo API** v **neomezený** produktu.
-4. Vyberte **všechny operace**.
+4. Vyberte **Všechny operace**.
 5. Nahoře na obrazovce vyberte kartu Návrh.
 6. V okně zpracování příchozí nebo odchozí klepněte na trojúhelník (vedle tužky).
 7. Vyberte editoru kódu. Další informace najdete v tématu [jak nastavit nebo upravit zásady](set-edit-policies.md).
@@ -105,7 +105,8 @@ Klikněte na tlačítko **Uložit** aktualizované zásady konfiguraci uložíte
 * Další informace o integraci API Management a služby Event Hubs
   * [Odkaz na entitu protokolovacího nástroje](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
   * [referenční informace o protokolu eventhub zásad](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
-  * [Sledovat vaše rozhraní API s Azure API Management, Event Hubs a Runscope](api-management-log-to-eventhub-sample.md)    
+  * [Sledovat vaše rozhraní API s Azure API Management, Event Hubs a Runscope](api-management-log-to-eventhub-sample.md)  
+* Další informace o [integraci s Azure Application Insights](api-management-howto-app-insights.md)
 
 [publisher-portal]: ./media/api-management-howto-log-event-hubs/publisher-portal.png
 [create-event-hub]: ./media/api-management-howto-log-event-hubs/create-event-hub.png

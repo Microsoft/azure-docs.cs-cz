@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: b2c564e8d49e39d9cdc09d3fe168388d579de70e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 01b0717660265b28d4ea7d804a761e7e425c997c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29812653"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319596"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>Nastavení zdrojové prostředí pro VMware do Azure replikace
 
@@ -30,7 +30,7 @@ Tento článek popisuje, jak nastavit místní vaše zdrojové prostředí pro r
 ## <a name="choose-your-protection-goals"></a>Volba cílů ochrany
 
 1. V portálu Azure přejděte do **služeb zotavení** okno trezoru a vyberte svůj trezor.
-2. V nabídce prostředků úložiště, přejděte na **Začínáme** > **Site Recovery** > **krok 1: připravte infrastrukturu** > **cíl ochrany**.
+2. V nabídce prostředků úložiště, přejděte na **Začínáme** > **Site Recovery** > **krok 1: připravte infrastrukturu**  >  **Cíl ochrany**.
 
     ![Zvolte cíle.](./media/vmware-azure-set-up-source/choose-goals.png)
 3. V **cíl ochrany**, vyberte **do Azure**a zvolte **Ano, s hypervisoru VMware vSphere**. Pak klikněte na **OK**.
@@ -39,12 +39,12 @@ Tento článek popisuje, jak nastavit místní vaše zdrojové prostředí pro r
 
 ## <a name="set-up-the-configuration-server"></a>Nastavení konfigurace serveru
 
-Nastavení konfigurace serveru jako místní virtuálních počítačů VMware, použijte šablonu otevřete virtualizace formát OVF (). [Další informace](concepts-vmware-to-azure-architecture.md) o součástech, které se nainstalují na virtuální počítač VMware. 
+Prostřednictvím šablonu otevřete virtualizace aplikace (vajíčka) můžete nastavit konfigurační server jako místní virtuálních počítačů VMware. [Další informace](concepts-vmware-to-azure-architecture.md) o součástech, které se nainstalují na virtuální počítač VMware.
 
 1. Další informace o [požadavky](vmware-azure-deploy-configuration-server.md#prerequisites) pro nasazení konfiguračního serveru.
 2. [Zkontrolujte kapacitu čísla](vmware-azure-deploy-configuration-server.md#capacity-planning) pro nasazení.
-3. [Stáhněte si](vmware-azure-deploy-configuration-server.md#download-the-template) a [importovat](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) OVF šablony (how-k-nasazení konfigurace server.md) nastavit VMware místní virtuální počítač, který běží na konfiguračním serveru.
-4. Zapnout virtuální počítač VMware a [registraci](vmware-azure-deploy-configuration-server.md#register-the-configuration-server) v služeb zotavení trezoru.
+3. [Stáhněte si](vmware-azure-deploy-configuration-server.md#download-the-template) a [importovat](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) šabloně vajíčka nastavit VMware místní virtuální počítač, který běží na konfiguračním serveru. Licence, které jsou součástí šablony je o licenci vyhodnocení a je platné po dobu 180 dnů. Po této doby zákazník musí aktivovat systém windows s opatřené licencí.
+4. Zapnout virtuální počítač VMware a [registraci](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) v služeb zotavení trezoru.
 
 
 ## <a name="add-the-vmware-account-for-automatic-discovery"></a>Přidejte účet VMware pro automatické zjišťování

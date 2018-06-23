@@ -5,36 +5,37 @@ services: data-factory
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 05/16/2018
+ms.date: 06/20/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 63653795ad8c52e2743fb02fa804dd2edbf0d2ab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d65c75a9b4f308ddd1bb6a6bff28c52c946e4f05
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371316"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36320028"
 ---
 Objekt pro vytváření dat je víceklientské služby, který má následující výchozí omezení na místě a ujistěte se, že předplatná zákazníka jsou chráněny z druhé strany úlohy. Mnoho omezení lze snadno zvýšit pro vaše předplatné až do maximálního limitu kontaktováním podpory.
 
 ### <a name="version-2"></a>Verze 2
 
-| Prostředek | Výchozí omezení | Maximální omezení | 
-| -------- | ------------- | ------------- | 
-| datové továrny v předplatné Azure | 50 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| kanály v rámci objekt pro vytváření dat | 2500 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| datové sady v rámci objekt pro vytváření dat | 2500 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Aktivační události v rámci objekt pro vytváření dat | 2500 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Propojené služby v rámci objekt pro vytváření dat | 2500 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Integrační moduly Runtime v rámci služby data factory <sup>4</sup> | 2500 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Prostředek | Výchozí omezení | Maximální omezení |
+| -------- | ------------- | ------------- |
+| Datové továrny v předplatné Azure | 50 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Celkový počet entit (kanál, datové sady, aktivační události, propojené služby, integrační moduly Runtime) v rámci objekt pro vytváření dat | 5000 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Celkový počet jader procesoru pro Azure SSIS Runtime(s) integrace v rámci jednoho předplatného | 100 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Souběžné kanál spustí na každou kanálu | 100 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Maximální počet aktivit na kanálu | 20 | 40 |
-| Parametry maximální za kanálu | 20 | 30 |
+| Souběžné kanál se spustí na objekt pro vytváření dat | 10 000  | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Maximální počet aktivit na kanálu (obsahuje vnitřní aktivity pro kontejnery) | 40 | 40 |
+| Parametry maximální za kanálu | 50 | 50 |
+| Foreach – položky | 100,000 | 100,000 |
+| ForEach paralelismus | 20 | 50 |
+| Znaků na jednu výraz | 8 192 | 8 192 |
+| Minimální interval Přeskakujícího okna aktivační události | 15 minut | 15 minut |
+| Maximální časový limit pro běh aktivit kanálu | 7 dní | 7 dní |
 | Počet bajtů za objektu pro objekty kanálu <sup>1</sup> | 200 KB | 200 KB |
 | Počet bajtů za pro datovou sadu a propojené služby objekty <sup>1</sup> | 100 KB | 2000 KB |
 | Cloud jednotek přesun dat na aktivity při spuštění <sup>3</sup> | 256 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Pro běh aktivit kanálu počet opakování | 1 day(timeout) | 1 den (časový limit) |
 | Zápis volání rozhraní API | 2 500/hod.<br/><br/> Toto omezení je dáno pomocí Azure Resource Manager, není Azure Data Factory. | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Volání rozhraní API pro čtení | 12 500/hod.<br/><br/> Toto omezení je dáno pomocí Azure Resource Manager, není Azure Data Factory. | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 
@@ -43,10 +44,10 @@ Objekt pro vytváření dat je víceklientské služby, který má následujíc�
 
 | **Prostředek** | **Výchozí omezení** | **Maximální omezení** |
 | --- | --- | --- |
-| datové továrny v předplatné Azure |50 |[Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| kanály v rámci objekt pro vytváření dat |2500 |[Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| datové sady v rámci objekt pro vytváření dat |5000 |[Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| souběžné řezy za datové sady |10 |10 |
+| Datové továrny v předplatné Azure |50 |[Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Kanály v rámci objekt pro vytváření dat |2500 |[Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Datové sady v rámci objekt pro vytváření dat |5000 |[Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Souběžné řezy za datové sady |10 |10 |
 | Počet bajtů za objektu pro objekty kanálu <sup>1</sup> |200 KB |200 KB |
 | Počet bajtů za pro datovou sadu a propojené služby objekty <sup>1</sup> |100 KB |2000 KB |
 | HDInsight na vyžádání clusteru jader v rámci předplatného <sup>2</sup> |60 |[Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |

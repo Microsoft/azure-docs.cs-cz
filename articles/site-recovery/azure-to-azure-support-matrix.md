@@ -7,20 +7,20 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 06/22/2018
 ms.author: sujayt
-ms.openlocfilehash: 19c439e1182086b91d05f8bb23bc6c07c34a12a2
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 7f0011172185f13f51bcea8061b36012aa5da33b
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34716308"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36321196"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Podporu pro replikaci z jedné oblasti Azure do jiného
 
 
 
-Tento článek shrnuje podporované konfigurace a součásti služby Azure Site Recovery při replikaci a obnovení virtuálních počítačů Azure z jedné oblasti do jiné oblasti.
+Tento článek shrnuje podporované konfigurace a součásti při replikaci a obnovení virtuálních počítačů Azure z jedné oblasti do jiné oblasti, pomocí [Azure Site Recovery](site-recovery-overview.md) služby.
 
 ## <a name="user-interface-options"></a>Možnosti uživatelského rozhraní
 
@@ -79,9 +79,10 @@ Níže podpora je dostupná pro jakoukoli úlohu spuštěnou na uvedených opera
 - Ubuntu 16.04 LTS Server [ (podporované verze jádra)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Debian 7 [ (podporované verze jádra)](#supported-debian-kernel-versions-for-azure-virtual-machines)
 - Debian 8 [ (podporované verze jádra)](#supported-debian-kernel-versions-for-azure-virtual-machines)
-- Oracle Enterprise Linux 6.4, 6.5 systémem Red Hat kompatibilní jádra nebo nedělitelné Enterprise jádra verze 3 (UEK3)
+- SUSE Linux Enterprise Server 12 SP1 SP2, SP3 [ (podporované verze jádra)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 - SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 11 SP4
+- Oracle Enterprise Linux 6.4, 6.5 systémem Red Hat kompatibilní jádra nebo nedělitelné Enterprise jádra verze 3 (UEK3)
 
 (Upgrade replikaci počítačů z SLES 11 SP3 na SLES 11 SP4 není podporována. Pokud replikovaného počítače z SLES 11SP3 byl upgradován na verzi SLES 11 SP4, budete muset zakázat replikaci a chránit počítač znovu po upgradu.)
 
@@ -93,22 +94,32 @@ Níže podpora je dostupná pro jakoukoli úlohu spuštěnou na uvedených opera
 
 **Verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-14.04 LTS | 9.13 | 3.13.0-24-Generic k 3.13.0-137-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-104-generic |
-14.04 LTS | 9.14 | 3.13.0-24-Generic k 3.13.0-141-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-112-generic |
-14.04 LTS | 9.15. | 3.13.0-24-Generic k 3.13.0-143-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-116-generic |
+14.04 LTS | 9.17 | 3.13.0-24-Generic k 3.13.0-147-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-124-generic |
 14.04 LTS | 9.16 | 3.13.0-24-Generic k 3.13.0-144-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-119-generic |
-16.04 LTS | 9.13 | 4.4.0-21-Generic k 4.4.0-104-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic |
-16.04 LTS | 9.14 | 4.4.0-21-Generic k 4.4.0-112-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-32-generic,<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1009-azure |
-16.04 LTS | 9.15. | 4.4.0-21-Generic k 4.4.0-116-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-37-generic,<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1012-azure |
+14.04 LTS | 9.15. | 3.13.0-24-Generic k 3.13.0-143-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-116-generic |
+14.04 LTS | 9.14 | 3.13.0-24-Generic k 3.13.0-141-generic,<br/>3.16.0-25-Generic k 3.16.0-77-generic,<br/>3.19.0-18-Generic k 3.19.0-80-generic,<br/>4.2.0-18-Generic k 4.2.0-42-generic,<br/>4.4.0-21-Generic k 4.4.0-112-generic |
+|||
+16.04 LTS | 9.17 | 4.4.0-21-Generic k 4.4.0-124-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-41-generic,<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1016-azure |
 16.04 LTS | 9.16 | 4.4.0-21-Generic k 4.4.0-119-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-38-generic,<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1012-azure |
+16.04 LTS | 9.15. | 4.4.0-21-Generic k 4.4.0-116-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-37-generic,<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1012-azure |
+16.04 LTS | 9.14 | 4.4.0-21-Generic k 4.4.0-112-generic,<br/>4.8.0-34-Generic k 4.8.0-58-generic,<br/>4.10.0-14-Generic k 4.10.0-42-generic,<br/>4.11.0-13-Generic k 4.11.0-14-generic,<br/>4.13.0-16-Generic k 4.13.0-32-generic,<br/>4.11.0-1009-Azure k 4.11.0-1016-azure,<br/>4.13.0-1005-Azure k 4.13.0-1009-azure |
 
 
 ### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Podporované verze Debian jádra pro virtuální počítače Azure
 
 **Verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
+Debian 7 | 9.17 | 3.2.0-4-amd64 k 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 Debian 7 | 9.14, 9.16 a 9.15. | 3.2.0-4-amd64 k 3.2.0-5-amd64, 3.16.0-0.bpo.4-amd64 |
+|||
+Debian 8 | 9.17 | 3.16.0-4-amd64 k 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.6-amd64 |
 Debian 8 | 9.14, 9.16 a 9.15. | 3.16.0-4-amd64 k 3.16.0-5-amd64, 4.9.0-0.bpo.4-amd64 k 4.9.0-0.bpo.5-amd64 |
+
+### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Podporované verze SUSE Linux Enterprise Server 12 jádra pro virtuální počítače Azure
+
+**Verze** | **Verze služby mobility** | **Verze jádra** |
+--- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP3 SP1 a SP2) | 9.17 | SP1 3.12.49-11-default k 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default k 3.12.74-60.64.88-default</br></br> SP2 4.4.21-69-default k 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>4.4.73-5-default SP3 na 4.4.126-94.22-default |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>Podporované souborové systémy a konfigurace úložiště hosta na virtuálních počítačích Azure spuštěn operační systém Linux.
 
@@ -162,7 +173,7 @@ Disky na prémiové účty úložiště | Podporováno | Pokud virtuální poč�
 Standardní disky spravované | Podporované v oblastech Azure, ve kterých je Azure Site Recovery podporována. Cloud vlády nejsou aktuálně podporovány.  |  
 Pro prémiové disky spravované | Podporované v oblastech Azure, ve kterých je Azure Site Recovery podporována. Cloud vlády nejsou aktuálně podporovány. |
 Prostory úložiště | Podporováno |         
-Šifrování v klidovém stavu (SSE) | Podporováno | Pro účty úložiště mezipaměti a cíle můžete vybrat účet úložiště SSE povolena.     
+Šifrování v klidovém stavu (SSE) | Podporováno | SSE je výchozí nastavení u účtů úložiště.   
 Azure Disk Encryption (ADE) | Nepodporuje se |
 Přidat nebo odebrat aktivní disku | Nepodporuje se | Je-li přidat nebo odebrat datový disk ve virtuálním počítači, musíte zakázat replikaci a zapnout replikaci pro virtuální počítač znovu.
 Vyloučení disku | Nepodporuje se|   Ve výchozím nastavení je vyloučen dočasné disku.

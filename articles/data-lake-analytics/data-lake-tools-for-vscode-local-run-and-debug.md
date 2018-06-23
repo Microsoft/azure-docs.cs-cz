@@ -10,21 +10,21 @@ editor: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: de41120a3a9d399dafecde4225d56767efcd9f38
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 850b13becb2137c9e881b2d6a657bbd06216e96e
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624825"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317142"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>Spuštění U-SQL a ladění místně v kódu Visual Studio
 Tento článek popisuje, jak spustit úlohy U-SQL na místním vývojovém počítači pro urychlení časná kódování fáze nebo pokud chcete ladit kód místně v kódu Visual Studio. Pokyny nástroj Azure Data Lake pro Visual Studio Code, najdete v části [nástrojů pomocí Azure Data Lake pro Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md). 
 
 ## <a name="set-up-the-u-sql-local-run-environment"></a>Nastavení prostředí pro místní spuštění U-SQL
 
-1. Vyberte Ctrl + Shift + P otevřete paletu příkaz, a potom zadejte **ADL: stažení závislostí místní spuštění** stáhnout balíčky.  
+1. Vyberte Ctrl + Shift + P otevřete paletu příkaz, a potom zadejte **ADL: Stáhněte si balíček místní spuštění** stáhnout balíčky.  
 
-   ![Stáhnout balíčky ADL LocalRun závislostí](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/DownloadLocalRun.png)
+   ![Stáhnout balíčky ADL LocalRun závislostí](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/downloadtheadllocalrunpackage.png)
 
 2. Vyhledejte závislosti balíčků z cesty uvedené v **výstup** podokně a pak nainstalujte BuildTools a Win10SDK 10240. Tady je příklad cesty:  
 `C:\Users\xxx\AppData\Roaming\LocalRunDependency` 
@@ -44,7 +44,7 @@ Tento článek popisuje, jak spustit úlohy U-SQL na místním vývojovém poč�
 
 
 ## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>Spusťte službu místní spuštění a odeslání úlohy U-SQL pro místní účet 
-U prvního uživatele, použijte **ADL: stažení závislostí místní spuštění** stáhnout místní spuštění balíčky, pokud máte není [nastavení prostředí pro místní spuštění U-SQL](#set-up-the-u-sql-local-run-environment).
+U prvního uživatele, použijte **ADL: Stáhněte si balíček místní spuštění** stáhnout místní spuštění balíčky, pokud máte není [nastavení prostředí pro místní spuštění U-SQL](#set-up-the-u-sql-local-run-environment).
 
 1. Vyberte Ctrl + Shift + P otevřete paletu příkaz, a potom zadejte **ADL: spustit místní spustit službu**.   
 2. Vyberte **přijmout** poprvé přijmout licenční podmínky pro Software společnosti Microsoft. 
@@ -65,7 +65,7 @@ U prvního uživatele, použijte **ADL: stažení závislostí místní spuště
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>Spustit místní ladění pro projekt U-SQL  
 Pro první uživatel:
 
-1. Použití **ADL: stažení závislostí místní spuštění** stáhnout místní spuštění balíčky, pokud máte není [nastavení prostředí pro místní spuštění U-SQL](#set-up-the-u-sql-local-run-environment).
+1. Použití **ADL: Stáhněte si balíček místní spuštění** stáhnout místní spuštění balíčky, pokud máte není [nastavení prostředí pro místní spuštění U-SQL](#set-up-the-u-sql-local-run-environment).
 2. Nainstalujte rozhraní .NET Core SDK 2.0 jako navrhované v okně, pokud není nainstalovaná.
  
   ![připomenutí nainstaluje Dotnet.](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)

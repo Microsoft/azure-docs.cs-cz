@@ -3,7 +3,7 @@ title: Automatizovat zřizování aplikací v Azure Active Directory pomocí SCI
 description: Azure Active Directory, mohou automaticky poskytovat uživatelé a skupiny do aplikace nebo identity úložiště, který je přední stěnou webovou službou pomocí rozhraní definované v specifikace protokolu SCIM
 services: active-directory
 documentationcenter: ''
-author: asmalser-msft
+author: barbkess
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
-ms.author: asmalser
+ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 2bbea8f082e482ec5f5a08ce9978940e05c2325b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 40fa7959fc27692489a6317df0eddb9208c57bd6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35303342"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337965"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Pomocí systému pro napříč doménami Identity Management (SCIM) pro automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím
 
@@ -357,7 +357,7 @@ Skupiny prostředků jsou identifikovány identifikátor schématu http://schema
 | TelephoneNumber faxu |.value phoneNumbers [typ eq "fax"] |
 | givenName |name.givenName |
 | pracovní funkce |název |
-| E-mailu |.value e-mailů [typ eq "práce"] |
+| e-mailu |.value e-mailů [typ eq "práce"] |
 | mailNickname |externalId |
 | manažer |manažer |
 | mobilní |.value phoneNumbers [eq typ "mobilní"] |
@@ -365,16 +365,16 @@ Skupiny prostředků jsou identifikovány identifikátor schématu http://schema
 | PSČ |adresy [typ eq "práce"] .postalCode |
 | proxy adresy |[Zadejte eq "ostatní"] e-mailů. Hodnota |
 | fyzický. doručení OfficeName |adresy [Zadejte eq "ostatní"]. Formátu |
-| StreetAddress |adresy [typ eq "práce"] .streetAddress |
+| streetAddress |adresy [typ eq "práce"] .streetAddress |
 | Příjmení |name.familyName |
 | telefonní číslo |.value phoneNumbers [typ eq "práce"] |
-| user-PrincipalName |Uživatelské jméno |
+| user-PrincipalName |uživatelské jméno |
 
 ### <a name="table-2-default-group-attribute-mapping"></a>Tabulka 2: Výchozí skupiny mapování atributů
 | Skupina Azure Active Directory | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
 | --- | --- |
 | displayName |externalId |
-| E-mailu |.value e-mailů [typ eq "práce"] |
+| e-mailu |.value e-mailů [typ eq "práce"] |
 | mailNickname |displayName |
 | členové |členové |
 | objectId |ID |
@@ -697,7 +697,7 @@ Následující obrázek znázorňuje zprávy, že Azure AcD odešle SCIM služb�
 * [Zapisují se výrazy pro mapování atributů](../active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Filtry pro zřizování uživatelů oborů](../active-directory-saas-scoping-filters.md)
 * [Účet zřizování oznámení](../active-directory-saas-app-provisioning.md)
-* [Seznam kurzů k integraci aplikací SaaS](../active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS](../saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [0]: ./media/use-scim-to-provision-users-and-groups/scim-figure-1.png

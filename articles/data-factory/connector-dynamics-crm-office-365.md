@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: jingwang
-ms.openlocfilehash: 848b571dd2664d4910d669faa4dce1aad16cd528
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 2078fd3d23891a471d34de89b8e068ae896f8eb2
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808423"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332299"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (běžných dat služby) nebo Dynamics CRM pomocí Azure Data Factory
 
@@ -50,7 +50,7 @@ Jiná aplikace typy, např. operace a Finance, talentu, nejsou podporována atd.
 
 ## <a name="get-started"></a>Začínáme
 
-[!INCLUDE [data-factory-v2-connector-get-started-2](../../includes/data-factory-v2-connector-get-started-2.md)]
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Následující části obsahují podrobnosti o vlastnosti, které se používají k definování entit služby Data Factory, které jsou specifické pro Dynamics.
 
@@ -110,9 +110,9 @@ Následující vlastnosti jsou podporovány pro Dynamics propojené služby.
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavená na **Dynamics**. | Ano |
 | deploymentType | Typ nasazení Dynamics instance. Musí být **"OnPremisesWithIfd"** pro Dynamics místně s IFD.| Ano |
-| Název hostitele | Název hostitele serveru Dynamics místně. | Ano |
+| název hostitele | Název hostitele serveru Dynamics místně. | Ano |
 | port | Port serveru Dynamics místně. | Ne, výchozí hodnota je 443 |
-| Název organizace | Název organizace Dynamics instance. | Ano |
+| název organizace | Název organizace Dynamics instance. | Ano |
 | authenticationType. | Typ ověřování pro připojení k serveru Dynamics. Zadejte **"Ifd"** pro Dynamics místně s IFD. | Ano |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k aplikaci Dynamics. | Ano |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Můžete zvolit označit toto pole jako SecureString bezpečně uložit v ADF nebo uložení hesla v Azure Key Vault a nechat aktivitě kopírování načítat z ní při kopírování dat – Další informace z [ukládat přihlašovací údaje v Key Vault](store-credentials-in-key-vault.md). | Ano |
@@ -272,7 +272,7 @@ Ke zkopírování dat do Dynamics, nastavte typ jímky v aktivitě kopírování
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typ jímky aktivity kopírování musíte nastavit **DynamicsSink**. | Ano |
-| WriteBehavior | Chování zápisu operace.<br/>Povolená hodnota je **"Upsert"**. | Ano |
+| writeBehavior | Chování zápisu operace.<br/>Povolená hodnota je **"Upsert"**. | Ano |
 | writeBatchSize | Počet řádků dat zapsaných na Dynamics v každé dávce. | Ne (výchozí hodnota je 10) |
 | ignoreNullValues | Označuje, zda Ignorovat hodnoty null ze vstupních dat (s výjimkou polí s klíči) během operace zápisu.<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE,**: ponechejte data v cílovém objektu beze změny, když provedete upsert nebo aktualizovat operace. Při operaci vložení, vložte definované výchozí hodnotu.<br/>- **False**: aktualizovat data v cílovém objektu na hodnotu NULL, když provedete upsert nebo aktualizovat operace. Při operaci vložení, vložte hodnotu NULL. | Ne (výchozí hodnota je false) |
 

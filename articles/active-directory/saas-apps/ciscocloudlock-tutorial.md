@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Cisco Cloudlock | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Cisco Cloudlock.
+title: 'Kurz: Azure Active Directory integrace s prostředky v cloudu zabezpečení infrastruktury | Microsoft Docs'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a v cloudu zabezpečení prostředků infrastruktury.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -8,38 +8,37 @@ manager: femila
 ms.reviewer: joflore
 ms.assetid: 549e8810-1b3b-4351-bf4b-f07de98980d1
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 2491c0887cdcb47e6ce8f686835042bc23092df8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5ec729c6f82cec503cae2fa057f5842849004ac7
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220460"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318241"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cisco-cloudlock"></a>Kurz: Azure Active Directory integrace s Cisco Cloudlock
+# <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>Kurz: Azure Active Directory integrace s prostředky v cloudu zabezpečení infrastruktury
 
-V tomto kurzu zjistěte, jak integrovat Cisco Cloudlock s Azure Active Directory (Azure AD).
+V tomto kurzu zjistěte, jak integrovat zabezpečení infrastruktury cloudu s Azure Active Directory (Azure AD).
 
-Integrace Cisco Cloudlock s Azure AD poskytuje následující výhody:
+Integrace zabezpečení infrastruktury cloudu s Azure AD poskytuje následující výhody:
 
-- Můžete ovládat ve službě Azure AD, který má přístup k Cisco Cloudlock.
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Cisco Cloudlock (jednotné přihlášení) s jejich účty Azure AD.
+- Můžete ovládat ve službě Azure AD, který má přístup k prostředkům v cloudu zabezpečení infrastruktury.
+- Můžete povolit uživatelům, aby automaticky získat přihlášeného k prostředku infrastruktury cloudu zabezpečení (jednotné přihlášení) s jejich účty Azure AD.
 - Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure.
 
 Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Konfigurace integrace Azure AD s Cisco Cloudlock, potřebujete následující položky:
+Ke konfiguraci integrace služby Azure AD s prostředky v cloudu zabezpečení infrastruktury, potřebujete následující položky:
 
 - Předplatné služby Azure AD
-- Cisco Cloudlock jednotné přihlašování povolené předplatné
+- Cloudových prostředků infrastruktury zabezpečení jednotné přihlašování povolené předplatné
 
 > [!NOTE]
 > K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
@@ -52,13 +51,13 @@ Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
 ## <a name="scenario-description"></a>Popis scénáře
 V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání Cisco Cloudlock z Galerie
+1. Přidání v cloudu zabezpečení prostředků infrastruktury z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-cisco-cloudlock-from-the-gallery"></a>Přidání Cisco Cloudlock z Galerie
-Při konfiguraci integrace Cisco Cloudlock do služby Azure AD potřebujete přidat Cisco Cloudlock z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-the-cloud-security-fabric-from-the-gallery"></a>Přidání v cloudu zabezpečení prostředků infrastruktury z Galerie
+Konfigurace integrace zabezpečení infrastruktury cloudu do služby Azure AD, potřebujete přidat cloudových zabezpečení prostředků infrastruktury z Galerie si na seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Cisco Cloudlock z galerie, proveďte následující kroky:**
+**Pokud chcete přidat cloudových zabezpečení prostředků infrastruktury z galerie, postupujte takto:**
 
 1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
 
@@ -72,41 +71,41 @@ Při konfiguraci integrace Cisco Cloudlock do služby Azure AD potřebujete při
 
     ![Tlačítko nové aplikace][3]
 
-4. Do vyhledávacího pole zadejte **Cisco Cloudlock**, vyberte **Cisco Cloudlock** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
+4. Do vyhledávacího pole zadejte **cloudových prostředků infrastruktury zabezpečení**, vyberte **cloudových prostředků infrastruktury zabezpečení** z panelu výsledků klikněte **přidat** tlačítko Přidat aplikaci.
 
-    ![Cisco Cloudlock v seznamu výsledků](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_addfromgallery.png)
+    ![Zabezpečení infrastruktury cloudu v seznamu výsledků](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurace a otestování Azure AD jednotné přihlašování
 
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s Cisco Cloudlock podle testovacího uživatele názvem "Britta Simon".
+V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s zabezpečení infrastruktury cloudu podle testovacího uživatele názvem "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Cisco Cloudlock je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Cisco Cloudlock musí navázat.
+Azure AD pro jednotné přihlašování pro práci, musí vědět, co příslušného uživatele v cloudových prostředků infrastruktury zabezpečení je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v prostředí prostředků infrastruktury zabezpečení v cloudu, je nutné stanovit.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Cisco Cloudlock, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s prostředky v cloudu zabezpečení infrastruktury, je třeba dokončit následující stavební bloky:
 
 1. **[Konfigurovat Azure AD jednotné přihlašování](#configure-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
 2. **[Vytvořit testovací uživatele Azure AD](#create-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Cisco Cloudlock](#create-a-cisco-cloudlock-test-user)**  – Pokud chcete mít protějšek Britta Simon v Cloudlock Cisco, propojené služby Azure AD reprezentace daného uživatele.
+3. **[Vytvoření zkušebního uživatele cloudových prostředků infrastruktury zabezpečení](#create-a-the-cloud-security-fabric-test-user)**  – Pokud chcete mít protějšek Britta Simon v v cloudu zabezpečení Fabric, která je propojený s Azure AD reprezentace daného uživatele.
 4. **[Přiřadit testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
 5. **[Test jednotného přihlašování](#test-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurovat Azure AD jednotné přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Cisco Cloudlock.
+V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci cloudových zabezpečení prostředků infrastruktury.
 
-**Ke konfiguraci Azure AD jednotné přihlašování s Cisco Cloudlock, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s infrastruktury zabezpečení v cloudu, proveďte následující kroky:**
 
-1. Na portálu Azure na **Cisco Cloudlock** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na portálu Azure na **cloudových prostředků infrastruktury zabezpečení** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
 
     ![Konfigurace propojení přihlášení][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+1. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+
     ![Jediné přihlášení dialogové okno](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_samlbase.png)
 
-3. Na **Cisco Cloudlock domény a adresy URL** část, proveďte následující kroky:
+3. Na **doméně prostředků infrastruktury zabezpečení cloudu a adresy URL** část, proveďte následující kroky:
 
-    ![Cisco Cloudlock domény a adresy URL jednotné přihlašování informace](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
+    ![Domény prostředků infrastruktury zabezpečení cloudu a adresy URL jednotné přihlašování informace](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_url.png)
 
     a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL:
     | |
@@ -114,28 +113,24 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | `https://platform.cloudlock.com` |
     | `https://app.cloudlock.com` |
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: 
+    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce:
     | |
     |--|
     | `https://platform.cloudlock.com/gate/saml/sso/<subdomain>` |
     | `https://app.cloudlock.com/gate/saml/sso/<subdomain>` |
 
-    > [!NOTE] 
-    > Hodnota identifikátoru není skutečné. Aktualizujte hodnotu skutečným identifikátorem. Obraťte se na [tým podpory Cisco Cloudlock klienta](mailto:support@cloudlock.com) k získání hodnoty. 
- 
+    > [!NOTE]
+    > Hodnota identifikátoru není skutečné. Aktualizujte hodnotu skutečným identifikátorem. Obraťte se na [tým podpory klient prostředků infrastruktury cloudu zabezpečení](mailto:support@cloudlock.com) k získání hodnoty. 
+
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
-    ![Odkaz ke stažení certifikátu](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_certificate.png) 
+    ![Odkaz ke stažení certifikátu](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_certificate.png)
 
 5. Klikněte na tlačítko **Uložit** tlačítko.
 
     ![Nakonfigurujte jeden přihlašování uložit tlačítko](./media/ciscocloudlock-tutorial/tutorial_general_400.png)
 
-6. Konfigurace jednotného přihlašování na **Cisco Cloudlock** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory Cisco Cloudlock](mailto:support@cloudlock.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+6. Konfigurace jednotného přihlašování na **cloudových prostředků infrastruktury zabezpečení** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory cloudových prostředků infrastruktury zabezpečení](mailto:support@cloudlock.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -168,26 +163,26 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
- 
-### <a name="create-a-cisco-cloudlock-test-user"></a>Vytvoření zkušebního uživatele Cisco Cloudlock
 
-V této části vytvoříte uživatele volal Britta Simon v Cisco Cloudlock. Práce s [tým podpory Cisco Cloudlock](mailto:support@cloudlock.com) přidat uživatele do platformy Cisco Cloudlock. Uživatelé musí být vytvořen a aktivovat dříve, než použijete jednotné přihlašování. 
+### <a name="create-a-the-cloud-security-fabric-test-user"></a>Vytvoření zkušebního uživatele zabezpečení infrastruktury cloudu
+
+V této části vytvoříte uživatele volat Britta Simon v prostředí prostředků infrastruktury zabezpečení v cloudu. Práce s [tým podpory cloudových prostředků infrastruktury zabezpečení](mailto:support@cloudlock.com) přidat uživatele do platformy cloudových zabezpečení prostředků infrastruktury. Uživatelé musí být vytvořen a aktivovat dříve, než použijete jednotné přihlašování. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Cisco Cloudlock.
+V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu k prostředkům v cloudu zabezpečení infrastruktury.
 
-![Přiřadit role uživatele][200] 
+![Přiřadit role uživatele][200]
 
-**Pokud chcete přiřadit Britta Simon Cisco Cloudlock, proveďte následující kroky:**
+**Pokud chcete přiřadit Britta Simon Fabric zabezpečení v cloudu, proveďte následující kroky:**
 
 1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
-    ![Přiřadit uživatele][201] 
+    ![Přiřadit uživatele][201]
 
-2. V seznamu aplikací vyberte **Cisco Cloudlock**.
+2. V seznamu aplikací vyberte **cloudových prostředků infrastruktury zabezpečení**.
 
-    ![V seznamu aplikací na odkaz Cisco Cloudlock](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_app.png)  
+    ![Odkaz cloudových zabezpečení prostředků infrastruktury v seznamu aplikací](./media/ciscocloudlock-tutorial/tutorial_ciscocloudlock_app.png)  
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
@@ -202,20 +197,18 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
-    
+
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Když kliknete na dlaždici Cisco Cloudlock na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Cisco Cloudlock.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Když kliknete na dlaždici cloudových prostředků infrastruktury zabezpečení na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci v cloudu zabezpečení infrastruktury.
+Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 
@@ -230,4 +223,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/ciscocloudlock-tutorial/tutorial_general_201.png
 [202]: ./media/ciscocloudlock-tutorial/tutorial_general_202.png
 [203]: ./media/ciscocloudlock-tutorial/tutorial_general_203.png
-

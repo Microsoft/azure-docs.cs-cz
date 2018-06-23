@@ -13,19 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: fc4e738e95799838c5761e8b1ee5973aefea7dc6
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 4c6e25972b47edf67dac8557e1925bb44463f4d6
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213834"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331025"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>Nakonfigurujte omezené delegování protokolu Kerberos (použitím KCD) na spravované doméně
 Mnoho aplikací potřebovat přístup k prostředkům v kontextu uživatele. Služba Active Directory podporuje mechanismus delegování protokolu Kerberos, která umožňuje tento případ použití volat. Navíc můžete omezit delegování tak, aby se dalo přistupovat pouze konkrétní prostředky v kontextu uživatele. Spravované domény služby Azure AD Domain Services se liší od tradiční domén služby Active Directory, vzhledem k tomu, že jsou zamčené bezpečněji dolů.
 
 Tento článek ukazuje, jak nakonfigurovat omezené delegování protokolu Kerberos na spravované doméně služby Azure AD Domain Services.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="kerberos-constrained-delegation-kcd"></a>Omezené delegování protokolu Kerberos (použitím KCD)
 Delegování protokolu Kerberos umožňuje účet zosobnění jiný objekt zabezpečení (například uživatel) pro přístup k prostředkům. Vezměte v úvahu webové aplikace, který přistupuje k back endové webové rozhraní API v kontextu uživatele. V tomto příkladu webové aplikace (spuštěn v kontextu účtu služby nebo účet počítače) zosobňuje uživatele při přístupu k prostředku (back endové webové rozhraní API). Delegování protokolu Kerberos je nezabezpečené, protože se neomezuje z prostředků, které vydává za jiný účet přístup v kontextu uživatele.

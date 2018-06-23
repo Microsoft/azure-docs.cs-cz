@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6933d9f9951925888c92e35f6b1e2962cc29b0ce
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 74051ae8ad4ca7065561607feb13a2b98094fffc
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801775"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333178"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Použít poskytovatele 2.0 Identity SAML (IdP) pro jednotné přihlašování na
 
@@ -47,7 +47,7 @@ Tento dokument obsahuje podrobné požadavky na protokol a zpráva formátován�
 
 Je doporučeno, ujistěte se svého poskytovatele identity SAML 2.0 výstup zprávy byl podobná trasování zadaný vzorek nejvíc. Také použít konkrétní atribut hodnoty ze zadaných metadat Azure AD kde je to možné. Jakmile vyhovují zprávy si výstup, můžete otestovat připojení analyzátorem Microsoft jak je popsáno níže.
 
-Azure AD metadata si můžete stáhnout z této adresy URL: [ https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml ](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
+Azure AD metadata si můžete stáhnout z této adresy URL: [ https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml ](https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml).
 Pro zákazníkům v Číně pomocí Číně konkrétní instanci Office 365, je třeba použít následující koncový bod federation: [ https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml ](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml).
 
 ## <a name="saml-protocol-requirements"></a>Požadavky protokolu SAML

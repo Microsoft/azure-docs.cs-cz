@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/22/2018
+ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7d10f4bc772382f0ea48d32e7493be496946c455
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: a12ac87eba14db4ff13868446cf8d14b10d1f5fb
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801860"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317822"
 ---
 # <a name="azure-ad-token-reference"></a>Odkaz tokenu Azure AD
 Azure Active Directory (Azure AD) vysílá několik typů tokenů zabezpečení ve zpracování každý tok ověřování. Tento dokument popisuje formát, zabezpečení vlastnosti a obsah každého typu token. 
@@ -113,7 +113,8 @@ Tokeny vydané službou Azure AD přihlášení pomocí odvětví standardní as
 {
   "typ": "JWT",
   "alg": "RS256",
-  "x5t": "kriMPdmBvx68skT8-mPAB3BseeA"
+  "x5t": "iBjL1Rcqzhiy4fpxIxdZqohM2Yk"
+  "kid": "iBjL1Rcqzhiy4fpxIxdZqohM2Yk"
 }
 ```
 
@@ -129,12 +130,13 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 
 > [!TIP]
 > Vyzkoušejte tuto adresu URL v prohlížeči.
-> 
-> 
 
 Tento dokument metadat je objekt JSON obsahující několik užitečné informací, jako je například umístění různých koncových bodů, které jsou potřebné pro provedení ověřování OpenID Connect. 
 
 Zahrnuje také `jwks_uri`, což dává umístění sady veřejných klíčů, které se používá k podepisování tokenů. Nacházející se v dokumentu JSON `jwks_uri` obsahuje všechny informací veřejného klíče používaných na konkrétní v daném časovém okamžiku. Aplikace můžete použít `kid` deklarací identity v hlavičce JWT vybrat, které veřejný klíč v tomto dokumentu jsou využívány k podepsání konkrétní token. Pak můžete provádět ověřování podpisu pomocí správný veřejný klíč a algoritmus uvedené.
+
+> [!NOTE]
+> Vrátí koncový bod verze 1.0, i `x5t` a `kid` deklarací identity. `x5t` V2.0 tokeny chybí deklarace identity. Koncový bod v2.0 odpoví `kid` deklarací identity. Do budoucna, vám doporučujeme používat `kid` deklarace identity k ověření tokenu.
 
 Provádění ověřování podpisu je mimo rámec tohoto dokumentu – mnoho opensourcové knihovny jsou k dispozici pro pomoc, můžete to provést v případě potřeby.
 

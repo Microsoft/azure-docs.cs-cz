@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 85919ccdc13ab363b32e593159abe54498ca98c9
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 314920d4aae2bd364ea93451fcbda2034a36cc7e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34702029"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332095"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, jejich změny nebo odstranění virtuální sítě partnerského vztahu
 
@@ -117,7 +117,7 @@ Pokud chcete, aby virtuální sítě pro komunikaci někdy, ale ne vždy místo 
     - Prostředky v jednu virtuální síť nemůže komunikovat s IP adresu k nástroji pro vyrovnávání zatížení Azure interní peered virtuální sítě. Nástroje pro vyrovnávání zatížení a prostředky, které komunikují s ním musí být ve stejné virtuální síti.
     - Nelze použít vzdálené Gateway nebo povolit přenosu brány. Používat vzdálený brány nebo povolit přenosu brány, obě virtuální sítě v partnerském vztahu musí existovat ve stejné oblasti. 
     - Komunikace mezi globálně peered virtuální sítě pomocí následujících typů virtuálních počítačů není podporována: [vysokovýkonné výpočetní](../virtual-machines/windows/sizes-hpc.md) a [GPU](../virtual-machines/windows/sizes-gpu.md). To zahrnuje H, NC, VS, NCv2, NCv3 a ND řady virtuálních počítačů.
-- Virtuální sítě může být ve stejné nebo různých předplatných. Když virtuální sítě jsou v různých předplatných, musí být oba odběry přidruženy ke stejné klienta Azure Active Directory. Pokud ještě nemáte klient služby AD, můžete rychle [vytvořit](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Můžete použít [brány VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) připojení dvě virtuální sítě, které existují v různých předplatných, které jsou přidružené k různými klienty služby Active Directory.
+- Virtuální sítě může být ve stejné nebo různých předplatných. Když jste partnerský uzel virtuálních sítí v různých předplatných, musí být oba odběry přidruženy ke stejné klienta Azure Active Directory. Pokud ještě nemáte klient služby AD, můžete rychle [vytvořit](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant). Můžete použít [brány VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) připojení dvě virtuální sítě, které existují v různých předplatných, které jsou přidružené k různými klienty služby Active Directory.
 - Virtuální sítě, ke kterým jste partnerský uzel musí mít-překrývající se adresní prostory IP adres.
 - Nelze přidat rozsahy adres k, nebo odstraňte rozsahy adres z adresního prostoru virtuální sítě, jakmile je peered virtuální sítě s jinou virtuální sítí. Přidat nebo odebrat rozsahy adres, odstranit partnerský vztah, přidat nebo odebrat rozsahy adres, potom je znovu vytvořte partnerského vztahu. Rozsahy adres, které chcete přidat nebo odebrat rozsahy adres virtuální sítě, najdete v tématu [spravovat virtuální sítě](manage-virtual-network.md).
 - Mohou párově dvě virtuální sítě nasazené prostřednictvím Resource Manager nebo virtuální síť s virtuální sítí nasazené prostřednictvím modelu nasazení classic nasazení prostřednictvím Resource Manager. Nelze peer dvě virtuální sítě vytvořené pomocí modelu nasazení classic. Pokud si nejste obeznámeni s modelech nasazení Azure, přečtěte si [modelech nasazení Azure pochopit](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) článku. K propojení dvou virtuálních sítí vytvořených prostřednictvím modelu nasazení Classic můžete použít službu [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V).

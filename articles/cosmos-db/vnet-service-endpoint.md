@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: 76387733b1511593280f4a9439f5ddbf12d60975
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: de52521824c146f63fb16e2690e2a24167ae2efe
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301998"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333908"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Zabezpečený přístup k účtu Azure Cosmos DB pomocí koncový bod služby Azure Virtual Network
 
@@ -80,7 +80,7 @@ Po koncové body služby Azure Virtual Network jsou povolené pro databázový �
 
 Pokud váš účet Azure Cosmos DB používané jinými službami Azure, jako je Azure Search, nebo k němu přistupovat z Stream analytics nebo Power BI, povolíte přístup kontrolou **povolit přístup ke službám Azure**.
 
-Aby máte přístup k metrikám Azure Cosmos DB z portálu, musíte povolit **povolit přístup k portálu Azure** možnosti. Další informace o těchto možnostech najdete v tématu [připojení z portálu Azure](firewall-support.md#connections-from-the-azure-portal) a [připojení ze služeb Azure PaaS](firewall-support.md#connections-from-public-azure-datacenters-or-azure-paas-services) oddíly. Po výběru přístup, vyberte **Uložit** uložte nastavení.
+Aby máte přístup k metrikám Azure Cosmos DB z portálu, musíte povolit **povolit přístup k portálu Azure** možnosti. Další informace o těchto možnostech najdete v tématu [připojení z portálu Azure](firewall-support.md#connections-from-the-azure-portal) a [připojení ze služeb Azure PaaS](firewall-support.md#connections-from-global-azure-datacenters-or-azure-paas-services) oddíly. Po výběru přístup, vyberte **Uložit** uložte nastavení.
 
 ## <a name="remove-a-virtual-network-or-subnet"></a>Odebrat virtuální síť nebo podsíť 
 
@@ -145,11 +145,20 @@ Konfigurace koncového bodu služby k účtu Azure Cosmos DB pomocí prostředí
 
    ```powershell
    $locations = @(@{})
+
+   <# If you have read regions in addition to a write region, use the following code to set the $locations variable instead.
+
+   $locations = @(@{"locationName"="<Write location>"; 
+                 "failoverPriority"=0}, 
+               @{"locationName"="<Read location>"; 
+                  "failoverPriority"=1}) #>
+
    $consistencyPolicy = @{}
    $cosmosDBProperties = @{}
 
    $locations[0]['failoverPriority'] = $cosmosDBConfiguration.Properties.failoverPolicies.failoverPriority
    $locations[0]['locationName'] = $cosmosDBConfiguration.Properties.failoverPolicies.locationName
+
    $consistencyPolicy = $cosmosDBConfiguration.Properties.consistencyPolicy
 
    $accountVNETFilterEnabled = $True

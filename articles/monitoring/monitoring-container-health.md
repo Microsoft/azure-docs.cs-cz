@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2018
+ms.date: 06/22/2018
 ms.author: magoedte
-ms.openlocfilehash: 7c4294947cba72b1638e77c2dd8de1f5ee37b62a
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 23109a74fa707759cc3300896392dcc129f3e28c
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285982"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335750"
 ---
 # <a name="monitor-azure-kubernetes-service-aks-container-health-preview"></a>Sledování stavu kontejneru Azure Kubernetes služby (AKS) (Preview)
 
@@ -37,7 +37,7 @@ Pokud vás zajímá v monitorování a správu Docker a Windows hostitele kontej
 ## <a name="requirements"></a>Požadavky 
 Než začnete, zkontrolujte následující podrobnosti, můžete pochopit požadavky, podporované.
 
-- Podporovány jsou následující verze AKS clusteru: 1.7.7 na otázku 1.9.6.
+- Nový nebo existující cluster AKS
 - Kontejnerizované agenta OMS pro Linux verze microsoft / oms:ciprod04202018 a novější. Tento agent je automaticky nainstalován během registrace stavu kontejneru.  
 - Pracovní prostor Log Analytics.  Když povolíte monitorování nového clusteru AKS, nebo můžete vytvořit jeden prostřednictvím dá vytvořit [Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md), [prostředí PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), nebo z [portál Azure](../log-analytics/log-analytics-quick-create-workspace.md).
 - Člen role Přispěvatel analýzy protokolů, chcete-li povolit monitorování kontejneru.  Další informace o tom, jak řídit přístup k pracovní prostor analýzy protokolů najdete v tématu [spravovat pracovní prostory](../log-analytics/log-analytics-manage-access.md).
@@ -244,7 +244,7 @@ Pokud jste se rozhodli používat rozhraní příkazového řádku Azure, musít
 Jakmile je zapnuté monitorování, může trvat přibližně 15 minut, než se budete moci zobrazit provozních dat pro cluster.  
 
 ## <a name="verify-agent-deployed-successfully"></a>Ověření úspěšné nasazení agenta
-Pokud chcete ověřit agenta OMS správně nasazená, spusťte následující příkaz: ` kubectl get ds omsagent --namespace=kube-system`.
+Pokud chcete ověřit agenta OMS správně nasazená, spusťte následující příkaz: `kubectl get ds omsagent --namespace=kube-system`.
 
 Výstup by měl vypadat následující označující, které správně nasadit:
 

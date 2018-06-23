@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 06/21/2018
 ms.author: v-deasim
-ms.openlocfilehash: ea779f4f809e51b57d36cd44f9c6674340d665a2
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 15a4e0a8d62b38fa7aa542d95e53d29621965666
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261164"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316564"
 ---
 # <a name="using-azure-cdn-with-sas"></a>Pomocí SAS Azure CDN
 
@@ -41,7 +41,7 @@ Po vygenerování tokenu SAS, můžete přístup k souboru úložiště objektů
  
 Příklad:
  ```
-https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-04-17&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
+https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&ss=b&srt=co&sp=r&se=2038-01-02T21:30:49Z&st=2018-01-02T13:30:49Z&spr=https&sig=QehoetQFWUEd1lhU5iOMGrHBmE727xYAbKJl5ohSiWI%3D
 ```
 
 Další informace o nastavení parametrů najdete v tématu [SAS parametr aspekty](#sas-parameter-considerations) a [parametry podpis sdíleného přístupu](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1#shared-access-signature-parameters).
@@ -62,7 +62,7 @@ Tato možnost je nejjednodušší a používá jeden token SAS, která je předa
 
    Příklad:   
    ```
-   https://demoendpoint.azureedge.net/container1/demo.jpg/?sv=2017-04-17&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
+   https://demoendpoint.azureedge.net/container1/demo.jpg/?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
    
 3. Upřesnit dobu uložení do mezipaměti pomocí pravidel pro ukládání do mezipaměti nebo přidáním `Cache-Control` hlavičky na původním serveru. Protože Azure CDN považuje za řetězec dotazu prostý tokenu SAS, jako osvědčený postup měli byste nastavit ukládání do mezipaměti Doba trvání, kdy vyprší platnost času vypršení platnosti SAS nebo před ním. Jinak soubor je uložen v mezipaměti delší dobu, než je aktivní SAS, soubor může být přístupný ze serveru původu Azure CDN po uplynutí doby vypršení platnosti SAS. Pokud k této situaci dochází, a chcete si být nedostupné vaší souborů uložených v mezipaměti, je nutné provést operaci vyprázdnění souboru vymazat z mezipaměti. Informace o nastavení dobu uložení do mezipaměti na Azure CDN najdete v tématu [Azure CDN ovládacího prvku s ukládáním do mezipaměti pravidla chování ukládání do mezipaměti](cdn-caching-rules.md).
@@ -80,14 +80,14 @@ Tato možnost je dostupná pouze pro **Azure CDN Premium od společnosti Verizon
    Následující ukázka pravidla přepisování adres URL používá vzor regulárního výrazu s skupinu zachycení a koncový bod s názvem *storagedemo*:
    
    Zdroj:   
-   `(/test/.*)`
+   `(\/container1\/.*)`
    
    Cíl:   
    ```
-   $1?sv=2017-04-17&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
+   $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-
-   ![Přepisování adres URL CDN pravidlo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-2.png)
+   ![Přepisování adres URL CDN pravidlo – vlevo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+   ![pravidlo přepisování adres URL CDN – vpravo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-2.png)
 
 2. Po aktivaci nové pravidlo, každý, kdo přístup k souborům v zadaném kontejneru na koncový bod CDN bez ohledu na to, jestli používají SAS token v adrese URL. Tady je ve formátu: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
@@ -118,14 +118,14 @@ Chcete-li použít ověření tokenu zabezpečení Azure CDN, musíte mít **Azu
    Následující ukázka pravidla přepisování adres URL používá vzor regulárního výrazu s skupinu zachycení a koncový bod s názvem *storagedemo*:
    
    Zdroj:   
-   `(/test/.*)`
+   `(\/container1\/.*)`
    
    Cíl:   
    ```
-   $1&sv=2017-04-17&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
+   $1&sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-
-   ![Přepisování adres URL CDN pravidlo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-3.png)
+   ![Přepisování adres URL CDN pravidlo – vlevo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+   ![pravidlo přepisování adres URL CDN – vpravo](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-3.png)
 
 3. Pokud obnovíte SAS, ujistěte se aktualizovat pravidlo přepisování adres Url s nový token SAS. 
 
@@ -140,7 +140,10 @@ Protože SAS parametry nejsou viditelné pro Azure CDN, Azure CDN nelze změnit 
 | Povolené IP adresy | Volitelné. Pokud používáte **Azure CDN společnosti Verizon**, tento parametr můžete nastavit na rozsahy definované v [Azure CDN společnosti Verizon hraniční Server rozsahy IP adres](https://msdn.microsoft.com/library/mt757330.aspx). Pokud používáte **Azure CDN společnosti Akamai**, nelze nastavit parametr rozsahy IP, protože nejsou statické IP adresy.|
 | Povolené protokoly | Protokol povolenou pro požadavek pomocí SAS účtu. Nastavení protokolu HTTPS se doporučuje.|
 
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="next-steps"></a>Další postup
+
+Další informace o tokenu SAS naleznete v následujících článcích:
 - [Použití sdílených přístupových podpisů (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 - [Sdílené přístupové podpisy, část 2: Vytvoření a použití SAS s úložištěm Blob](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2)
-- [Zabezpečení prostředků Azure Content Delivery Network pomocí tokenu ověřování](https://docs.microsoft.com/azure/cdn/cdn-token-auth)
+
+Další informace o nastavení ověření pomocí tokenu najdete v tématu [zabezpečení Azure Content Delivery Network prostředky pomocí ověřování tokenem](https://docs.microsoft.com/azure/cdn/cdn-token-auth).

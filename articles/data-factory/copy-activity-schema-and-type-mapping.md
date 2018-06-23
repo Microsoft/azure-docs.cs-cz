@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: dbfbafccc1bc735927535a5ee0f8d232be355dca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e3c4ec0062b6a155d0f4b11da1c699a0906c442
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618619"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318224"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schéma mapování v aktivitě kopírování
 Tento článek popisuje, jak funguje Azure Data Factory aktivity kopírování schéma mapování a mapování datového typu od zdrojových dat za účelem jímky dat při kopírování dat provádění.
@@ -128,11 +128,18 @@ Následující kód JSON určuje aktivitu kopírování v kanálu. Sloupce ze zd
         "translator":
         {
             "type": "TabularTranslator",
-            "ColumnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"
+            "columnMappings": 
+            {
+                "UserId": "MyUserId",
+                "Group": "MyGroup",
+                "Name": "MyName"
+            }
         }
     }
 }
 ```
+
+Pokud jste používali syntaxe `"columnMappings": "UserId: MyUserId, Group: MyGroup, Name: MyName"` pro určení mapování sloupců, je stále podporovány jako-je.
 
 **Tok mapování sloupců:**
 

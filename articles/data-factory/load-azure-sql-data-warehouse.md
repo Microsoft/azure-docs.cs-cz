@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/17/2018
+ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: c7549297f040e251f3c0109debf757c28750d0a0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b035141c443c3dad18c3e9bfbc53581a7d180e5a
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619265"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333823"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Načtení dat do Azure SQL Data Warehouse pomocí Azure Data Factory
 
@@ -75,47 +75,72 @@ Tento článek ukazuje, jak používat nástroj Data Factory kopírovat Data k _
 2. V **vlastnosti** zadejte **CopyFromSQLToSQLDW** pro **název úlohy** pole a vyberte možnost **Další**:
 
     ![Stránka Vlastnosti](./media/load-azure-sql-data-warehouse/copy-data-tool-properties-page.png)
-3. V **zdrojového úložiště dat** vyberte **Azure SQL Database**a vyberte **Další**:
 
-    ![Stránka Zdrojové úložiště dat](./media/load-azure-sql-data-warehouse/specify-source.png)
-4. Na stránce **Zadejte databázi SQL Azure** proveďte následující kroky: 
-   1. Jako **Název serveru** vyberte váš server SQL Azure.
-   2. Jako **Název databáze** vyberte vaši databázi SQL Azure.
-   3. Jako **Uživatelské jméno** zadejte jméno uživatele.
-   4. Zadejte heslo uživatele pro **heslo**.
-   5. Vyberte **Next** (Další).
+3. V **zdrojového úložiště dat** proveďte následující kroky:
+
+    a. Klikněte na tlačítko **+ vytvořit nové připojení**:
+
+    ![Stránka Zdrojové úložiště dat](./media/load-azure-sql-data-warehouse/new-source-linked-service.png)
+
+    b. Vyberte **Azure SQL Database** z galerie a vyberte **pokračovat**. "SQL" můžete zadat do pole hledání k filtrování konektory.
+
+    ![Vyberte databázi Azure SQL](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
+
+    c. V **Nová propojená služba** z rozevíracího seznamu vyberte název serveru a název databáze a zadejte uživatelské jméno a passworkd. Klikněte na tlačítko **testovací připojení** Pokud chcete ověřit nastavení, pak vyberte **Dokončit**.
    
-   ![Zadejte databáze Azure SQL](./media/load-azure-sql-data-warehouse/specify-source-connection.png)
-5. V **vyberte tabulky, ze kterého chcete zkopírovat data nebo použít vlastní dotaz** zadejte **SalesLT** vyfiltrujete tabulky. Vyberte **(Vybrat vše)** používat všechny tabulky kopie a poté vyberte **Další**: 
+    ![Konfigurace Azure SQL DB](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
+
+    d. Vyberte nově vytvořenou propojené služby jako zdroj a pak klikněte na tlačítko **Další**.
+
+    ![Zvolit zdroj propojené služby](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
+
+4. V **vyberte tabulky, ze kterého chcete zkopírovat data nebo použít vlastní dotaz** zadejte **SalesLT** vyfiltrujete tabulky. Vyberte **(Vybrat vše)** používat všechny tabulky kopie a poté vyberte **Další**: 
 
     ![Vyberte zdrojové tabulky](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
-6. V **cílového úložiště dat** vyberte **Azure SQL Data Warehouse**a vyberte **Další**:
+6. V **cílového úložiště dat** proveďte následující kroky:
 
-    ![Stránka Cílové úložiště dat](./media/load-azure-sql-data-warehouse/specify-sink.png)
-7. V **zadejte Azure SQL Data Warehouse** proveďte následující kroky: 
+    a. Klikněte na tlačítko **+ vytvořit nové připojení** přidat připojení
 
-   1. Jako **Název serveru** vyberte váš server SQL Azure.
-   2. Vyberte datový sklad SQL Azure pro **název databáze**.
-   3. Jako **Uživatelské jméno** zadejte jméno uživatele.
-   4. Zadejte heslo uživatele pro **heslo**.
-   5. Vyberte **Next** (Další).
+    ![Jímky stránka úložiště dat](./media/load-azure-sql-data-warehouse/new-sink-linked-service.png)
+
+    b. Vyberte **Azure SQL Data Warehouse** z galerie a vyberte **Další**.
+
+    ![Vyberte datového skladu Azure SQL](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
+
+    c. V **Nová propojená služba** z rozevíracího seznamu vyberte název serveru a název databáze a zadejte uživatelské jméno a passworkd. Klikněte na tlačítko **testovací připojení** Pokud chcete ověřit nastavení, pak vyberte **Dokončit**.
    
-   ![Zadejte Azure SQL Data Warehouse](./media/load-azure-sql-data-warehouse/specify-sink-connection.png)
-8. V **mapování tabulky** , zkontrolujte obsah a vyberte **Další**. Mapování u inteligentního tabulky zobrazí. Zdrojové tabulky jsou namapované na cílové tabulky podle názvů tabulek. Pokud zdrojová tabulka neexistuje v cílovém, Azure Data Factory vytvoří cílové tabulky se stejným názvem ve výchozím nastavení. Zdrojová tabulka můžete také mapovat existující cílové tabulky. 
+    ![Konfigurace datového skladu Azure SQL](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
+
+    d. Vyberte nově vytvořenou propojené služby jako jímku a pak klikněte na tlačítko **Další**.
+
+    ![Vyberte jímky propojené služby](./media/load-azure-sql-data-warehouse/select-sink-linked-service.png)
+
+6. V **mapování tabulky** , zkontrolujte obsah a vyberte **Další**. Mapování u inteligentního tabulky zobrazí. Zdrojové tabulky jsou namapované na cílové tabulky podle názvů tabulek. Pokud zdrojová tabulka neexistuje v cílovém, Azure Data Factory vytvoří cílové tabulky se stejným názvem ve výchozím nastavení. Zdrojová tabulka můžete také mapovat existující cílové tabulky. 
 
    > [!NOTE]
    > Vytvoření automatického tabulky pro jímku SQL Data Warehouse použitelná v případě systému SQL Server nebo Azure SQL Database je zdrojem. Při kopírování dat z jiného zdrojového úložiště dat, musíte před provedením kopírování dat předem vytvořit schéma v jímce Azure SQL Data Warehouse.
 
-   ![Stránka Mapování tabulek](./media/load-azure-sql-data-warehouse/specify-table-mapping.png)
+   ![Stránka Mapování tabulek](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
 9. V **schéma mapování** , zkontrolujte obsah a vyberte **Další**. Mapování inteligentního tabulky je založen na názvu sloupce. Pokud necháte Data Factory automaticky vytvářet tabulky, převod typů dat může dojít, když došlo k problémům s kompatibilitou mezi zdrojovým a cílovým úložiště. Pokud konverzi nepodporovaný datový typ mezi zdrojovým a cílovým sloupcem se zobrazí chybová zpráva vedle odpovídající tabulky.
 
-    ![Stránka Mapování schématu](./media/load-azure-sql-data-warehouse/specify-schema-mapping.png)
+    ![Stránka Mapování schématu](./media/load-azure-sql-data-warehouse/schema-mapping.png)
 
-11. V **nastavení** vyberte účet úložiště Azure ve **název účtu úložiště** rozevíracího seznamu. Účet se používá pro přípravu dat, než se načte do SQL Data Warehouse pomocí PolyBase. Po dokončení kopírování průběžných dat ve službě Azure Storage je automaticky vyčištěna. V části **upřesňující nastavení**, zrušte výběr **použít výchozí typ** možnost:
+11. V **nastavení** proveďte následující kroky:
 
-    ![Stránka Nastavení](./media/load-azure-sql-data-warehouse/copy-settings.png)
+    a. V **pracovní nastavení** klikněte na tlačítko **+ nový** do nové pracovní úložiště. Úložiště se používá pro přípravu dat, než se načte do SQL Data Warehouse pomocí PolyBase. Po dokončení kopírování průběžných dat ve službě Azure Storage je automaticky vyčištěna. 
+
+    ![Konfigurovat pracovní](./media/load-azure-sql-data-warehouse/configure-staging.png)
+
+    b. V **Nová propojená služba** , vyberte svůj účet úložiště a vyberte **Dokončit**.
+   
+    ![Konfigurace úložiště Azure](./media/load-azure-sql-data-warehouse/configure-blob-storage.png)
+
+    c. V **upřesňující nastavení** část, zrušte výběr **použít výchozí typ** možnost a pak vyberte **Další**.
+
+    ![Konfigurace funkcí PolyBase](./media/load-azure-sql-data-warehouse/configure-polybase.png)
+
 12. V **Souhrn** , zkontrolujte nastavení a vyberte **Další**:
 
     ![Stránka souhrnu](./media/load-azure-sql-data-warehouse/summary-page.png)
@@ -124,10 +149,10 @@ Tento článek ukazuje, jak používat nástroj Data Factory kopírovat Data k _
     ![Stránka Nasazení](./media/load-azure-sql-data-warehouse/deployment-page.png)
 14. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. **Akce** sloupec obsahuje odkazy, chcete-li zobrazit podrobnosti o spuštění aktivity a znovu spusťte kanál: 
 
-    ![Monitorování spuštění kanálu](./media/load-azure-sql-data-warehouse/monitor-pipeline-run.png)
-15. Chcete-li zobrazit běh aktivit, které jsou spojené s kanálu spustit, vyberte **zobrazení aktivity spouští** odkaz v **akce** sloupce. Jsou 10 kopie aktivity v kanálu a každá aktivita zkopíruje jednu tabulku dat. Chcete-li přepnout zpět do kanálu spustí zobrazení, vyberte **kanály** odkaz v horní části. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**. 
+    ![Monitorování spuštění kanálu](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)
+15. Chcete-li zobrazit běh aktivit, které jsou spojené s kanálu spustit, vyberte **zobrazení aktivity spouští** odkaz v **akce** sloupce. Chcete-li přepnout zpět do kanálu spustí zobrazení, vyberte **kanály** odkaz v horní části. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**. 
 
-    ![Monitorování spuštění aktivit](./media/load-azure-sql-data-warehouse/monitor-activity-run.png)
+    ![Monitorování spuštění aktivit](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
 16. Ke sledování provádění podrobnosti pro každou aktivitu kopírování, vyberte **podrobnosti** v části **akce** v aktivitě zobrazení monitorování. Dokáže monitorovat podrobné údaje, jako objem dat zkopíruje ze zdroje jímka, propustnost dat, provádění kroky s odpovídající doba trvání a použít konfigurace:
 

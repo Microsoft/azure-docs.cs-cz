@@ -2,13 +2,13 @@ Můžete snadno [automaticky škálovat](../articles/monitoring-and-diagnostics/
 
 ## <a name="horizontal-or-vertical-scaling"></a>Vodorovné nebo svislé škálování
 
-Funkce škálování Azure monitorování pouze škáluje vodorovně, která je zvýšení ("na") nebo snížení počtu virtuálních počítačů ("v"). Vodorovné škálování je flexibilnější v situaci, cloud jako umožňuje spustit potenciálně tisíce virtuálních počítačů pro zpracování zátěže. Můžete škálovat horizontálně automaticky nebo ručně změnou kapacity (nebo počet instancí) z sadě škálování. 
+Funkce škálování Azure monitorování pouze škáluje vodorovně, která je zvýšení ("na") nebo snížení počtu virtuálních počítačů ("v"). Vodorovné škálování je flexibilnější v situaci, cloud jako umožňuje spustit potenciálně tisíce virtuálních počítačů pro zpracování zátěže. Můžete škálovat horizontálně automaticky nebo ručně změnou kapacity (nebo počet instancí) byly sadou škálování. 
 
 Svislé škálování udržuje stejný počet virtuálních počítačů, ale umožňuje virtuální počítače, další ("nahoru") nebo méně ("dolů") výkonné. Výkon se měří v atributy, jako je například paměť, rychlost procesoru nebo místa na disku. Svislé škálování je závislý na dostupnosti větší hardware, který rychle dotkne horní limit a můžete se liší podle oblasti. Svislé škálování také obvykle vyžaduje virtuální počítač zastavit a restartovat. Můžete škálovat svisle nastavením novou velikost v konfiguraci virtuálních počítačů v sadě škálování.
 
 Používání sad runbook v [Azure Automation](../articles/automation/automation-intro.md), můžete snadno [škálování virtuální počítače ve škálovací sadě](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-vertical-scale-reprovision.md) nahoru nebo dolů.
 
-## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření sady škálování virtuálního počítače
+## <a name="create-a-virtual-machine-scale-set"></a>Vytvoření škálovací sady virtuálních počítačů
 
 Sady škálování usnadnit nasadit a spravovat virtuální počítače stejná jako sada. Můžete vytvořit Linux nebo Windows škálování nastaví pomocí [portál Azure](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md), [prostředí Azure PowerShell](../articles/virtual-machines/windows/tutorial-create-vmss.md), nebo [rozhraní příkazového řádku Azure](../articles/virtual-machines/linux/tutorial-create-vmss.md). Můžete také vytvořit a spravovat sady škálování s sady SDK, jako [Python](/develop/python) nebo [Node.js](/nodejs/azure), nebo přímo pomocí [rozhraní REST API](/rest/api/compute/virtualmachinescalesets). Použitím metriky a pravidla do sady škálování se provádí automatické škálování virtuálních počítačů.
 
@@ -40,17 +40,17 @@ Můžete [nastavit aktivace](../articles/monitoring-and-diagnostics/insights-aut
 
 ## <a name="manually-scale-vms-in-a-scale-set"></a>Ručně škálovat, virtuální počítače ve škálovací sadě
 
-### <a name="horizontal"></a>vodorovné
+### <a name="horizontal"></a>Horizontálně
 
 Můžete přidat nebo odebrat tak, že změníte kapacitu škálovací sady virtuálních počítačů. Na portálu Azure, můžete snížit nebo zvýšit počet virtuálních počítačů (zobrazené jako **instance počet**) v škálování, která nastavuje klouzavé panelu podmínku přepsání na obrazovce škálování doleva nebo doprava.
 
 Pomocí Azure PowerShell, které je potřeba získat objekt nastavení škálování pomocí [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss). Pak můžete nastavit **sku.capacity** vlastnosti tak, aby počet virtuálních počítačů, které chcete a aktualizace měřítka nastavit s [aktualizace AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss). Použití Azure CLI, změníte kapacitu s **– nové kapacity** parametr pro [az vmss škálování](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) příkaz.
 
-### <a name="vertical"></a>Svislý
+### <a name="vertical"></a>Svisle
 
 Můžete ručně změnit velikost na portálu Azure na velikost obrazovky pro škálovací sadu virtuálních počítačů. Můžete použít Azure PowerShell s Get-AzureRmVmss, vlastnost sku referenční bitové kopie a používat [aktualizace AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) a [aktualizace AzureRmVmssInstance](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmssinstance).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o sadách škálování v [aspekty návrhu pro sadách škálování](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview.md).
 

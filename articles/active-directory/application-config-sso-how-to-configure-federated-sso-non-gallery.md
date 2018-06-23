@@ -3,21 +3,23 @@ title: Postup konfigurace federované jednotné přihlašování pro aplikace be
 description: Postup konfigurace federované jednotné přihlašování pro vlastní aplikace bez galerie, která chcete integrovat se službou Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 65df07b6fca62476953ad98dc9e17d9a82c97a53
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: barbkess
+ms.openlocfilehash: 916261de1f53c7b859378e83e423dea44b58af9b
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331938"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Postup konfigurace federované jednotné přihlašování pro aplikace bez Galerie
 
@@ -136,7 +138,7 @@ Chcete-li stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte po
 
 8.  Přejděte na **SAML podpisový certifikát** části a pak klikněte na **Stáhnout** hodnota sloupce. V závislosti na tom, jaké aplikace vyžaduje konfiguraci jednotné přihlašování uvidíte buď možnost Stáhnout soubor XML s metadaty nebo certifikát.
 
-Azure AD neposkytuje adresu URL se získat metadata. Metadata mohou být načteny pouze jako soubor XML.
+Azure AD poskytuje také adresu URL se získat metadata. Postupujte podle tohoto vzoru získat adresu URL metadat specifické pro aplikaci: https://login.microsoftonline.com/ <Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>.
 
 ## <a name="assign-users-to-the-application"></a>Přiřazení uživatelů k aplikaci
 

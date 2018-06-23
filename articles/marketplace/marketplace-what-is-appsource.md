@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: ellacroi
-ms.openlocfilehash: 5f963e9ef6f0a19599f372b196dc75a327b92b5a
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 7da3ae1ca0fc59b0d606a22e9c00b8e7b58674ba
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "32178232"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335087"
 ---
 # <a name="what-is-appsource"></a>Co je AppSource
 AppSource umožňuje partnerům Microsoftu zjistitelnost své technologie a služby zákazníkům prostřednictvím podporovaných Microsoft online výkladní skříň. Jako vydavatel AppSource můžete zaujmout uživatele obchodní na AppSource najít, zkuste a get-obchodní aplikace SaaS, jakož i služby implementace pomoct jednotky obchodní výsledky a snižte hodnotu doby: 
@@ -76,7 +76,7 @@ Některé aplikace storefront AppSource nutných k integraci se službou Azure A
 | Aplikace SaaS (dříve webové aplikace) | Upřednostňovaný | Azure AD je osvědčeným postupem zajistit bezproblémové zákazníka, zkušeností a jednotky, které vede nejvyšší kvality |
 ###### <a name="table-appsource-offerings-that-require-azure-active-directory-integration"></a>Tabulky: AppSource nabídky, které vyžadují Azure integrace služby Active Directory
 
-Původně, doporučujeme, aby **nastavení odběru vyhrazené pro publikování vašeho webu Azure Marketplace*** umožňuje izolovat práci z vaší jiné iniciativy. Kromě toho pokud jste ještě nenainstalovali následující nástroje, pak doporučujeme následující nástroje se přidat do vývojového prostředí: 
+Původně, doporučujeme, aby **nastavení odběru vyhrazené pro publikování vašeho webu Azure Marketplace** \* umožňuje izolovat práci z vaší jiné iniciativy. Kromě toho pokud jste ještě nenainstalovali následující nástroje, pak doporučujeme následující nástroje se přidat do vývojového prostředí: 
 *   [Rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest "Azure – rozhraní příkazového řádku")
 *   [Prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0 "PowerShell – Azure")
 *   Zkontrolujte nástroje dostupné v aplikaci [nástroje pro vývojáře Azure](https://azure.microsoft.com/tools/ "Azure – nástroje pro vývojáře") stránky

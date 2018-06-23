@@ -13,17 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 56e22877b48788bfb15bd2fb85caa08015665732
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 85dd7e73afe4558e58084cc133e3cfdc93e4088d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36217972"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333553"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Připojení virtuálního počítače Windows serveru ke spravované doméně pomocí šablony Resource Manageru
 Tento článek ukazuje, jak připojit virtuální počítač Windows serveru k spravované doméně služby Azure AD Domain Services pomocí šablony Resource Manageru.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Chcete-li provést úkoly vypsané v tomto článku, je třeba:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
-ms.openlocfilehash: 9f70cb03a26fd5bea7e1e034c653ece8e0b8c349
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 25601b01489b95de0e86b314b4b934d3cffd38c2
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363685"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330736"
 ---
 # <a name="add-a-next-generation-firewall-in-azure-security-center"></a>Přidat Brána Firewall příští generace v Azure Security Center
 Azure Security Center může doporučujeme, abyste přidali brána firewall příští generace (NGFW) od partnera Microsoftu ke zvýšení ochrany vaší zabezpečení. Tento dokument vás příklad toho, jak to udělat provede.
@@ -58,7 +58,7 @@ Vraťte se na **doporučení** okno. Nový záznam vygenerovalo po přidání NG
 Tento dokument vám ukázal, jak provést doporučení Security Center "Přidat Brána Firewall příští generace". Další informace o NGFWs a kontrolní bod partnerského řešení, naleznete v následujících tématech:
 
 * [Brána Firewall příští generace](https://en.wikipedia.org/wiki/Next-Generation_Firewall)
-* [Kontrolní bod vSEC](https://azure.microsoft.com/marketplace/partners/checkpoint/check-point-r77-10/)
+* [Kontrolní bod vSEC](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/checkpoint.vsec)
 
 Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: barbkess
-ms.reviewer: harshja
-ms.openlocfilehash: 9f6c45f548b69ed71215593d52cff9b1e42852c4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: asteen
+ms.openlocfilehash: bc1ed4a0b49588bd9828bd64508caa50e92c304a
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34589725"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335668"
 ---
 # <a name="how-to-open-the-firewall-ports-required-for-an-application-proxy-application"></a>Jak otevřít porty brány firewall, které jsou potřebné pro aplikaci Proxy aplikace
 
@@ -36,7 +36,7 @@ Pokud chcete mít jistotu, že tento nástroj vám dává správné výsledky, n
 
 -   Otevřete nástroj v prohlížeči ze serveru, kam jste nainstalovali konektor.
 
--   Zajistěte, aby všechny proxy nebo brány firewall pro vaše konektor jsou také aplikováno na tuto stránku. To lze provést v aplikaci Internet Explorer tak, že přejdete do **nastavení**  - &gt; **Možnosti Internetu**  - &gt; **připojení**  - &gt; **nastavení místní sítě**. Na této stránce se zobrazí pole "Použití Proxy serveru pro vaše místní sítě". Zaškrtněte toto políčko a uveďte adresu proxy serveru do pole "Adresa".
+-   Zajistěte, aby všechny proxy nebo brány firewall pro vaše konektor jsou také aplikováno na tuto stránku. To lze provést v aplikaci Internet Explorer tak, že přejdete do **nastavení**  - &gt; **Možnosti Internetu**  - &gt; **připojení**  - &gt; **Nastavení místní sítě**. Na této stránce se zobrazí pole "Použití Proxy serveru pro vaše místní sítě". Zaškrtněte toto políčko a uveďte adresu proxy serveru do pole "Adresa".
 
 ## <a name="next-steps"></a>Další postup
 [Pochopení konektory proxy aplikace služby Azure AD](manage-apps/application-proxy-connectors.md)

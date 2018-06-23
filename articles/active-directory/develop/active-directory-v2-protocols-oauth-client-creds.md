@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: celested
-ms.reviewer: dastrock
+ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 892cf2cfc93c86b9196000d94f976407156ec248
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b71cac474c915d0ebcc9beed29551fbce8b515ea
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34594274"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318992"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 a tok přihlašovacích údajů klienta OAuth 2.0
 Můžete použít [udělení pověření klienta OAuth 2.0](http://tools.ietf.org/html/rfc6749#section-4.4) zadaný v dokumentu RFC 6749, někdy označuje jako *s rameny dva OAuth*, přístup k prostředkům hostované webové pomocí identity aplikace. Tento typ udělení běžně se používá pro interakce serveru na server, které musí spustit na pozadí bez okamžitou interakce s uživatelem. Tyto typy aplikací, často se označují jako *démoni* nebo *účtům služby*.

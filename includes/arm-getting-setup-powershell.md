@@ -24,7 +24,7 @@ Ověřte, zda hodnota **PSVersion** je 3.0 nebo 4.0. Pokud ne, najdete v části
 ### <a name="set-your-azure-account-and-subscription"></a>Nastavení předplatného a účtu Azure
 Pokud nemáte předplatné Azure, můžete si aktivovat vaší [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
 
-Otevřete příkazový řádek prostředí Azure PowerShell a přihlaste se k Azure pomocí tohoto příkazu.
+Otevřete příkazový řádek prostředí Azure PowerShell a přihlášení do Azure pomocí tohoto příkazu.
 
     Connect-AzureRmAccount
 

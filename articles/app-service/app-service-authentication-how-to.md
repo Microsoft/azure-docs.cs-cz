@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: cephalin
-ms.openlocfilehash: c41cb3ef2939fe7271b1f8738fcf0cb95c4b1111
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 688ea090384755b9a6d60a4968d958678edc27ad
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763138"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337853"
 ---
 # <a name="customize-authentication-and-authorization-in-azure-app-service"></a>Přizpůsobení ověřování a autorizace ve službě Azure App Service
 
@@ -89,11 +89,11 @@ Když vyprší platnost přístupového tokenu svého poskytovatele, musíte k n
 
 - **Google**: připojení `access_type=offline` parametr řetězce k dotazu vaše `/.auth/login/google` volání rozhraní API. Pokud používáte sadu SDK Mobile Apps, můžete přidat parametr do jednoho z `LogicAsync` přetížení (najdete v části [Google aktualizovat tokeny](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: neposkytuje obnovovacích tokenů. Dlouhodobé tokeny vyprší za 60 dnů (najdete v části [vypršení platnosti Facebook a rozšíření přístupové tokeny](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **Twitter**: přístupové tokeny nevyprší (najdete v části [Twitter – nejčastější dotazy OAuth](https://developer.twitter.com/docs/basics/authentication/guides/oauth-faq)).
+- **Twitter**: přístupové tokeny nevyprší (najdete v části [Twitter – nejčastější dotazy OAuth](https://developer.twitter.com/en/docs/basics/authentication/guides/oauth-faq)).
 - **Microsoft Account**: když [konfiguraci nastavení ověřování účtu Microsoft](app-service-mobile-how-to-configure-microsoft-authentication.md), vyberte `wl.offline_access` oboru.
 - **Azure Active Directory**: V [ https://resources.azure.com ](https://resources.azure.com), proveďte následující kroky:
     1. V horní části stránky, vyberte **pro čtení a zápis**.
-    1. V levém prohlížeče, přejděte na **odběry** > **_\<předplatné\_název_**   >  **Skupinyprostředků** > _**\<prostředků\_skupiny\_name >**_   >  **zprostředkovatelé** > **Microsoft.Web** > **lokality** > _**\<aplikace \_name >**_ > **konfigurace** > **authsettings**. 
+    1. In the left browser, navigate to **subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings**. 
     1. Klikněte na **Upravit**.
     1. Upravte následující vlastnosti. Nahraďte  _\<aplikace\_id >_ s ID aplikace Azure Active Directory, služby, které chcete získat přístup.
 
@@ -103,7 +103,7 @@ Když vyprší platnost přístupového tokenu svého poskytovatele, musíte k n
 
     1. Klikněte na tlačítko **Put**. 
 
-Jakmile poskytovatel nakonfigurovaný, uvidíte Pokud tokeny obnovení jsou v úložišti tokenu voláním `/.auth/me`. 
+Jakmile poskytovatel nakonfigurovaný, můžete [najít tokenu obnovení a dobu vypršení platnosti přístupového tokenu](#retrieve-tokens-in-app-code) v úložišti tokenu. 
 
 Pokud chcete v kdykoli aktualizovat přístupový token, stačí zavolat `/.auth/refresh` v libovolném jazyce. Následující fragment kódu používá jQuery aktualizovat vaše přístupové tokeny z klienta JavaScript.
 
@@ -140,7 +140,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Account Microsoft a Azure Active Directory umožňuje přihlášení z několika domén. Umožňuje například Account Microsoft _outlook.com_, _live.com_, a _hotmail.com_ účty. Azure Active Directory umožňuje libovolný počet vlastních domén pro účty přihlášení. Toto chování může být žádoucí pro interní aplikace, které nechcete, aby každý, kdo má _outlook.com_ účet přístup. Chcete-li omezit názvu domény účtů přihlásit, postupujte takto.
 
-V [ https://resources.azure.com ](https://resources.azure.com), přejděte na **odběry** > **_\<předplatné\_název_**   >  **Skupinyprostředků** > _**\<prostředků\_skupiny\_name >**_   >  **zprostředkovatelé** > **Microsoft.Web** > **lokality**  >    _**\<aplikace\_name >**_ > **konfigurace** > **authsettings**. 
+In [https://resources.azure.com](https://resources.azure.com), navigate to **subscriptions** > **_\<subscription\_name_** > **resourceGroups** > _**\<resource\_group\_name>**_ > **providers** > **Microsoft.Web** > **sites** > _**\<app\_name>**_ > **config** > **authsettings**. 
 
 Klikněte na tlačítko **upravit**, upravte vlastnost následující a pak klikněte na tlačítko **Put**. Nezapomeňte nahradit  _\<domény\_name >_ s doménou, které chcete.
 

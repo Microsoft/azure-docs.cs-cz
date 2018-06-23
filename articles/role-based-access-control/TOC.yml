@@ -27,8 +27,6 @@
       href: role-definitions.md
     - name: Vestavěné role
       href: built-in-roles.md
-    - name: Vlastní role
-      href: custom-roles.md
     - name: Operace poskytovatele prostředků
       href: resource-provider-operations.md
     - name: Privileged Identity Management (PIM) pro RBAC
@@ -42,12 +40,21 @@
       items:
         - name: Portál
           href: role-assignments-portal.md
-        - name: Azure CLI
-          href: role-assignments-cli.md
         - name: PowerShell
           href: role-assignments-powershell.md
-        - name: REST
+        - name: Azure CLI
+          href: role-assignments-cli.md
+        - name: REST API
           href: role-assignments-rest.md
+    - name: Vlastní role
+      href: custom-roles.md
+      items:
+        - name: PowerShell
+          href: custom-roles-powershell.md
+        - name: Azure CLI
+          href: custom-roles-cli.md
+        - name: REST API
+          href: custom-roles-rest.md
     - name: Zobrazení protokolů aktivit
       href: change-history-report.md
     - name: Zvýšení oprávnění přístupu pro globálního správce

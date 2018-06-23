@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 3feed9c1c8903db66a0506f09161982dadaa79ba
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: ddbac24020110e32792286a1ac64070316cfb081
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284960"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332710"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Spusťte skripty prostředí PowerShell v systému Windows virtuálního počítače se spustit příkaz
 
@@ -23,7 +23,7 @@ Spusťte příkaz používá agent virtuálního počítače ke spouštění skr
 
 Nejsou k dispozici více možností, které slouží k přístupu k virtuálním počítačům. Spusťte příkaz může spouštět skripty na virtuální počítače vzdáleně pomocí agenta virtuálního počítače. Spusťte příkaz lze použít prostřednictvím portálu Azure [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [rozhraní příkazového řádku Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), nebo [prostředí PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
 
-Tato možnost je užitečná ve všech scénářích, kdy chcete spustit skript witin virtuální počítače a jeden jediný způsob, jak vyřešit a opravte virtuální počítač, který nemá protokol RDP nebo SSH port otevřít z důvodu nesprávné sítě nebo správce konfigurace.
+Tato možnost je užitečná ve všech scénářích, kdy chcete spustit skript v rámci virtuálních počítačů a jeden jediný způsob, jak vyřešit a opravte virtuální počítač, který nemá protokol RDP nebo SSH port otevřít z důvodu nesprávné sítě nebo správce konfigurace.
 
 ## <a name="restrictions"></a>Omezení
 
@@ -33,9 +33,10 @@ Při použití spustit příkaz platí následující omezení:
 * Minimální hodnota času spuštění skriptu je přibližně 20 sekund
 * Skripty spustit jako systému v systému Windows
 * Jeden skript současně může spustit.
-* Skripty, které výzvy informací (interaktivní režim) nejsou podporovány.
 * Nelze zrušit spouštění skriptu
 * Maximální doba spuštění skriptu je 90 minut, po který dojde k vypršení časového limitu
+
+**PermissionsConfig-OrchestratorUsersGroup***GroupName***-OrchestratorUser***UserName***\-remote** 
 
 ## <a name="run-a-command"></a>Spuštění příkazu
 

@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 3/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a1a5d6d455086ee34767e92b277936840717bcd6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 910a5c85d16cb46465598a77d5321cc0eed99744
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33933769"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319244"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Použijte Vyrovnávání zatížení interní s Azure Kubernetes služby (AKS)
 
-Vyrovnávání zatížení pro vnitřní zpřístupní Kubernetes služby k aplikacím spuštěným ve stejné virtuální síti jako Kubernetes cluster. Tento dokument údaje vytváření interní nástroj s Azure Kubernetes služby (AKS).
+Vyrovnávání zatížení pro vnitřní zpřístupní Kubernetes služby k aplikacím spuštěným ve stejné virtuální síti jako Kubernetes cluster. Tento dokument údaje vytváření interní nástroj s Azure Kubernetes služby (AKS). Azure nástroj pro vyrovnávání zatížení je k dispozici ve dvou SKU: Basic a Standard. AKS používá základní SKU.
 
 ## <a name="create-internal-load-balancer"></a>Vytvoření interní zátěže.
 

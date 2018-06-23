@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.openlocfilehash: c180dcf5d769245f3fa2485ccee2cbc18ecf5f67
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 9220eb3800cd1b7b46e276bbda5bb88fc06d5e54
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763488"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337825"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
@@ -79,11 +79,11 @@ Služby App Service používá [Federovaná identita](https://en.wikipedia.org/w
 
 | Poskytovatel | Koncový bod přihlášení |
 | - | - |
-| [Azure Active Directory](../active-directory/active-directory-whatis.md) | `/.auth/login/aad` |
+| [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
 | [Účet Microsoft](../active-directory/develop/active-directory-appmodel-v2-overview.md) | `/.auth/login/microsoft` |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/+/web/api/rest/oauth) | `/.auth/login/google` |
-| [Twitter](https://developer.twitter.com/docs/basics/authentication) | `/.auth/login/twitter` |
+| [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
 
 Pokud povolíte ověřování a autorizace pomocí jednoho z těchto poskytovatelů, jeho koncový bod přihlášení je k dispozici pro ověřování uživatelů a pro ověření ověřovací tokeny od zprostředkovatele. Zajistíte uživatelům snadno s libovolným počtem tyto možnosti přihlašování. Můžete také integrovat jiného poskytovatele identity nebo [řešení vlastní identitu][custom-auth].
 

@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 10/19/2017
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: e8e693355fb9b30e1a69b49f20d5044c531e2fcd
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: elisol
+ms.openlocfilehash: d7194846dbeab2a5da8a8ceaa5a1040f33e8d515
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34155615"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317125"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory-azure-ad"></a>Aplikace a služby hlavní objekty ve službě Azure Active Directory (Azure AD)
 Někdy význam "aplikace" může být nesprávně pochopeny, pokud se používá v kontextu služby Azure AD. Cílem tohoto článku je vysvětlení koncepční a konkrétní aspekty integrace aplikace Azure AD, s ilustraci registrace a pro svůj souhlas [víceklientské aplikace](active-directory-dev-glossary.md#multi-tenant-application).
@@ -29,13 +30,13 @@ Někdy význam "aplikace" může být nesprávně pochopeny, pokud se používá
 ## <a name="overview"></a>Přehled
 Aplikace, která byla integrována se službou Azure AD má důsledky, které jdou nad rámec aspekt softwaru. "Aplikace" se často používá jako koncepční termín, odkazující na nejen aplikačním softwaru, ale také jeho registrace Azure AD a role v ověřování/autorizace služby "konverzace" za běhu. Podle definice aplikace, můžou fungovat v [klienta](active-directory-dev-glossary.md#client-application) role (využívání prostředku), [server prostředků](active-directory-dev-glossary.md#resource-server) role (zpřístupňuje rozhraní API pro klienty), nebo dokonce i. Protokol konverzace je definované [toku OAuth 2.0 Authorization Grant](active-directory-dev-glossary.md#authorization-grant), povolení klienta nebo prostředků přístupu nebo ochrany zdroje dat v uvedeném pořadí. Nyní přejdeme na podrobnější úrovni a v tématu jak aplikačního modelu služby Azure AD, představuje v době návrhu a spuštění aplikace. 
 
-## <a name="application-registration"></a>Registrace aplikace
+## <a name="application-registration"></a>Registrace aplikací
 Když se zaregistrujete aplikaci v Azure AD [portál Azure][AZURE-Portal], jsou dva objekty vytvořené v klientovi Azure AD: objekt aplikace a objektu zabezpečení služby.
 
-#### <a name="application-object"></a>objekt aplikace
+#### <a name="application-object"></a>Objekt aplikace
 Aplikaci Azure AD je definována pouze objekt aplikace, který se nachází v klientovi Azure AD, kde byla aplikace registrovaná, a jeho jedna označuje jako "home" klienta aplikace. Azure AD Graph [aplikace entity] [ AAD-Graph-App-Entity] definuje schéma vlastností objektu application. 
 
-#### <a name="service-principal-object"></a>objekt zabezpečení služby
+#### <a name="service-principal-object"></a>Objekt zabezpečení služby
 Pro zpřístupnění prostředků, které jsou zabezpečeny klient služby Azure AD, musí být typ entity, která vyžaduje přístup reprezentována objekt zabezpečení. To platí pro uživatele (uživatel hlavní) i aplikace (instanční objekt). Objekt zabezpečení definuje zásady přístupu a oprávnění pro uživatele nebo aplikace v něm. To umožňuje hlavní funkce, jako je například ověřování uživatele nebo aplikace během přihlašování a autorizaci při přístupu k prostředkům.
 
 Když aplikace uděleno oprávnění pro přístup k prostředkům ve klienta (při registraci nebo [souhlas](active-directory-dev-glossary.md#consent)), je vytvořen objekt zabezpečení služby. Azure AD Graph [ServicePrincipal entity] [ AAD-Graph-Sp-Entity] definuje schéma pro hlavní objekt služby vlastnosti. 

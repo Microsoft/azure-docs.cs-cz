@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: a929149f115d716bf7f9d850abe5ba97bd5a8189
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: a79184a5e08aa43a4675194adf5f10b9807418db
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30198090"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36329548"
 ---
 ### <a name="gwipnoconnection"></a> Chcete-li upravit IP adresu brány místní sítě – žádné připojení brány
 
@@ -23,7 +23,7 @@ Pomocí tohoto příkladu upravte bránu místní sítě, která nemá připojen
 2. V **IP adresu** pole, je třeba změnit IP adresu.
 3. Kliknutím na **Uložit** nastavení uložte.
 
-### <a name="gwipwithconnection"></a>Chcete-li upravit místní síťová brána brány IP adresa - existující připojení brány
+### <a name="gwipwithconnection"></a>Chcete-li upravit místní síťová brána IP adresa - existující připojení brány
 
 Pokud chcete upravit bránu místní sítě, který má připojení, musíte nejdříve odebrat připojení. Po odebrání připojení můžete upravit IP adresu brány a vytvořit nové připojení. Můžete také zároveň upravit předpony adresy. Způsobí to určitý výpadek připojení VPN. Při upravování IP adresy brány není potřeba odstraňovat bránu VPN. Stačí jenom odebrat připojení.
  

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: sngun
-ms.openlocfilehash: 0407d3c58fa63a11c8391f069039f7c35a15ceb7
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: c55f90b944038a0e4ca216a357fc30f4cf6a6ddc
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294733"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317282"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Podpora brány firewall Azure Cosmos DB
 Zabezpečení dat uložených v databázi účet Azure Cosmos DB, Azure Cosmos DB poskytl podporu pro tajný klíč na základě [modelu autorizace](https://msdn.microsoft.com/library/azure/dn783368.aspx) , využívá ověřovací kód silné Hash-based zprávy (HMAC). Teď kromě tajný autorizace založené na modelu Azure Cosmos DB podporuje zásady řízené řízení přístupu na základě IP pro podporu brány firewall pro příchozí. Tento model je podobná pravidla brány firewall systému tradiční databází a poskytuje další úroveň zabezpečení pro databázový účet Azure Cosmos DB. Pomocí tohoto modelu teď můžete konfigurovat účet Azure Cosmos DB databáze tak, aby byla přístupná jenom z schválené sadu počítačů nebo cloudových služeb. Přístup k prostředkům Azure Cosmos DB z tyto schválené sady počítačů a služeb stále vyžadují volajícího, aby k dispozici platný autorizační token.
@@ -56,10 +56,10 @@ Ve výchozím nastavení je povolen přístup na portál Azure, když změníte 
 
 ![Snímek obrazovky ukazující, jak povolit Azure přístup k portálu](./media/firewall-support/enable-azure-portal.png)
 
-## <a name="connections-from-public-azure-datacenters-or-azure-paas-services"></a>Připojení z veřejné datových centrech Azure nebo Azure PaaS služeb
+## <a name="connections-from-global-azure-datacenters-or-azure-paas-services"></a>Připojení z datových center globální Azure nebo Azure PaaS služeb
 V Azure služby PaaS, jako je Azure Stream analytics, funkce Azure a Azure App Service se používají ve spojení s Azure Cosmos DB. Účet databáze z těchto služeb, jejichž IP adresy nejsou snadno dostupné pro povolení přístupu k databázi Azure Cosmos přidat IP adresu 0.0.0.0 do seznamu povolených IP adres, které jsou spojené s vaším účtem Azure Cosmos DB databáze prostřednictvím kódu programu. 
 
-Přístup k připojení ze v rámci veřejného datových centrech Azure je ve výchozím nastavení povoleno, když změníte nastavení brány Firewall pro **vybrané sítě** na portálu Azure. 
+Přístup k připojení ze v rámci globálních datových centrech Azure je ve výchozím nastavení povoleno, když změníte nastavení brány Firewall pro **vybrané sítě** na portálu Azure. 
 
 ![Snímek obrazovky ukazující, jak chcete otevřít stránku brány Firewall na portálu Azure](./media/firewall-support/enable-azure-services.png)
 
@@ -72,14 +72,14 @@ Chcete-li aktuální IP, vyberte **přidat Moje aktuální IP**, který přidá 
 ![Snímek obrazovky ukazující, jak nakonfigurovat nastavení brány firewall pro aktuální IP adresu](./media/firewall-support/enable-current-ip.png)
 
 ## <a name="connections-from-cloud-services"></a>Připojení z cloudové služby
-Cloudové služby v Azure, jsou běžné způsob, jak hostování logikou střední úrovně služby pomocí Azure Cosmos DB. Pokud chcete umožnit přístup k účtu Azure Cosmos DB databáze z cloudové služby, veřejnou IP adresu cloudové služby musíte přidat do seznamu povolených IP adres, které jsou spojené s vaším účtem Azure Cosmos DB databáze pomocí [konfigurace zásad řízení přístupu IP](#configure-ip-policy). To zajistí, že všechny instance rolí, služeb cloud mít přístup ke svému účtu databáze Azure Cosmos DB. IP adresy můžete načíst pro vaše cloudové služby na portálu Azure, jak je znázorněno na následujícím snímku obrazovky:
+Cloudové služby v Azure, jsou běžné způsob, jak hostování logikou střední úrovně služby pomocí Azure Cosmos DB. Pokud chcete umožnit přístup k účtu Azure Cosmos DB databáze z cloudové služby, veřejnou IP adresu cloudové služby musíte přidat do seznamu povolených IP adres, které jsou spojené s vaším účtem Azure Cosmos DB databáze pomocí [konfiguraci přístupu IP řízení zásad](#configure-ip-policy). To zajistí, že všechny instance rolí, služeb cloud mít přístup ke svému účtu databáze Azure Cosmos DB. IP adresy můžete načíst pro vaše cloudové služby na portálu Azure, jak je znázorněno na následujícím snímku obrazovky:
 
 ![Snímek obrazovky s veřejnou IP adresu pro cloudové služby zobrazí na portálu Azure](./media/firewall-support/public-ip-addresses.png)
 
 Při škálování cloudové služby tak, že přidáte další role instance tyto nové instance automaticky mít přístup k účtu Azure Cosmos DB databáze, protože jsou součástí stejné cloudové služby.
 
 ## <a name="connections-from-virtual-machines"></a>Připojení z virtuálních počítačů
-[Virtuální počítače](https://azure.microsoft.com/services/virtual-machines/) nebo [sady škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) lze také použít k hostování střední vrstvy služeb pomocí Azure Cosmos DB.  Jak nakonfigurovat účet Azure Cosmos DB databáze pro povolení přístupu z virtuálních počítačů, veřejné IP adresy virtuálního počítače nebo škálovací sadu virtuálních počítačů musí být nakonfigurován jako jednu z povolených IP adres pro váš účet Azure Cosmos DB databáze pomocí [konfigurace zásad řízení přístupu IP](#configure-ip-policy). IP adresy pro virtuální počítače na portálu Azure můžete načíst, jak je znázorněno na následujícím snímku obrazovky.
+[Virtuální počítače](https://azure.microsoft.com/services/virtual-machines/) nebo [sady škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) lze také použít k hostování střední vrstvy služeb pomocí Azure Cosmos DB.  Jak nakonfigurovat účet Azure Cosmos DB databáze pro povolení přístupu z virtuálních počítačů, veřejné IP adresy virtuálního počítače nebo virtuálního počítače škálovací sadu musí být nastaveny jako jednu z povolených IP adres pro databázový účet Azure Cosmos DB [konfigurace zásad řízení přístupu IP](#configure-ip-policy). IP adresy pro virtuální počítače na portálu Azure můžete načíst, jak je znázorněno na následujícím snímku obrazovky.
 
 ![Snímek obrazovky s veřejnou IP adresu pro virtuální počítač, který se zobrazí na portálu Azure](./media/firewall-support/public-ip-addresses-dns.png)
 
@@ -87,6 +87,25 @@ Když přidáte instance dalších virtuálních počítačů do skupiny, jsou a
 
 ## <a name="connections-from-the-internet"></a>Připojení z Internetu
 Při přístupu k účtu Azure Cosmos DB databáze z počítače na Internetu, musí být IP adresa klienta nebo rozsah IP adres počítače přidány do seznamu povolených IP adresy pro účet Azure Cosmos DB databáze. 
+
+## <a name="using-azure-resource-manager-template-to-set-up-the-ip-access-control"></a>Nastavení řízení přístupu IP pomocí šablony Azure Resource Manageru
+
+Nastavit řízení přístupu IP do šablony přidáte následujícím kódu JSON. Šablony Resource Manageru pro účet, bude mít ipRangeFilter atribut, který je seznam rozsahů IP adres, které by měl být seznam povolených adres.
+
+```json
+   {
+     "apiVersion": "2015-04-08",
+     "type": "Microsoft.DocumentDB/databaseAccounts",
+     "kind": "GlobalDocumentDB",
+     "name": "[parameters('databaseAccountName')]",
+     "location": "[resourceGroup().location]",
+     "properties": {
+     "databaseAccountOfferType": "Standard",
+     "name": "[parameters('databaseAccountName')]",
+     "ipRangeFilter":"10.0.0.1,10.0.0.2,183.240.196.255"
+   }
+   }
+```
 
 ## <a name="troubleshooting-the-ip-access-control-policy"></a>Řešení potíží s zásad řízení přístupu IP
 ### <a name="portal-operations"></a>Operace portálu

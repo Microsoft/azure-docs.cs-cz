@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/22/2018
+ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d7b9ad5c76b0e20a3c58bddcc4947482b237fb8f
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: 93d551bcc6e517702c064ec0bdf6be61d3230cb3
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34164454"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316664"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Přehled v2.0 tokeny služby Azure Active Directory
 Koncový bod v2.0 Azure Active Directory (Azure AD) vysílá několik typů tokeny zabezpečení v každé [tok ověřování](active-directory-v2-flows.md). Tento odkaz popisuje formát, zabezpečení vlastnosti a obsah každého typu token.
@@ -95,8 +95,7 @@ Když uplatnit obnovovací token pro nový přístupový token (a pokud byl udě
 ## <a name="validating-tokens"></a>Ověřování tokenů
 V současné době pouze tokenu ověření, které vaše aplikace by měly splnit ověřuje tokeny typu ID. K ověření tokenu ID, aplikace by měl ověřit ID token podpisu a deklarace identity v ID tokenu.
 
-<!-- TODO: Link -->
-Společnost Microsoft poskytuje knihovny a ukázky kódu, které ukazují, jak snadno zpracovat ověření tokenu. V následujících částech kterou jsou popsané v podkladovém procesu. Několik knihovny open-source třetí strany jsou také k dispozici pro ověřování JWT. Není k dispozici nejméně jedna knihovna možnost pro téměř každé platformě a jazyk.
+<!-- TODO: Link --> Společnost Microsoft poskytuje knihovny a ukázky kódu, které ukazují, jak snadno zpracovat ověření tokenu. V následujících částech kterou jsou popsané v podkladovém procesu. Několik knihovny open-source třetí strany jsou také k dispozici pro ověřování JWT. Není k dispozici nejméně jedna knihovna možnost pro téměř každé platformě a jazyk.
 
 ### <a name="validate-the-signature"></a>Ověření podpisu
 Token JWT obsahuje tři segmenty, které jsou odděleny `.` znak. První segment se označuje jako *záhlaví*, druhý segment *textu*, a třetí segment *podpis*. Segment podpis slouží k ověření pravosti tokenu ID tak, aby důvěryhodné aplikace.
@@ -113,7 +112,7 @@ ID tokeny jsou podepsány pomocí standardní asymetrických šifrovacích algor
 
 `alg` Deklarace identity Určuje algoritmus, který se použil k podepsání token. `kid` Deklarace identity označuje veřejný klíč, který se použil k podepsání token.
 
-V každém okamžiku může koncový bod v2.0 podepsat ID token pomocí kterékoli z konkrétní sadu páry klíčů veřejný soukromý. Koncový bod v2.0 pravidelně otočí možné sada klíčů, tak vaše aplikace by měly být zapsány pro zpracování těchto změn klíče automaticky. Přiměřené frekvence ke kontrole aktualizací do veřejných klíčů používaných koncového bodu v2.0 je každých 24 hodin.
+Koncový bod v2.0 podepisuje ID a přístupové tokeny pomocí jedné konkrétní sadu páry klíčů veřejný soukromý. Koncový bod v2.0 pravidelně otočí možné sada klíčů, tak vaše aplikace by měly být zapsány pro zpracování těchto změn klíče automaticky. Přiměřené frekvence ke kontrole aktualizací do veřejných klíčů používaných koncového bodu v2.0 je každých 24 hodin.
 
 Můžete získat podpisového klíče dat, která je nutné ověřit podpis pomocí dokument metadat OpenID Connect, který se nachází v:
 
@@ -123,10 +122,11 @@ https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 
 > [!TIP]
 > Vyzkoušejte adresu URL v prohlížeči.
->
->
 
 Tento dokument metadat je objekt JSON, který má několik užitečné informací, jako je například umístění různých koncových bodů, které jsou požadované pro ověřování OpenID Connect. Také obsahuje dokument *jwks_uri*, což dává umístění sady veřejných klíčů, které se používá k podepisování tokenů. Na jwks_uri dokumentu JSON má všechny veřejné klíče informace, které se právě používá. Aplikace můžete použít `kid` deklarací identity v hlavičce JWT vybrat, které veřejný klíč v tomto dokumentu jsou využívány k podepsání token. Potom provede ověření podpisu pomocí správný veřejný klíč a algoritmus uvedené.
+
+> [!NOTE]
+> `x5t` Deklarace identity se již nepoužívá v koncového bodu v2.0. Doporučujeme používat `kid` deklarace identity k ověření tokenu.
 
 Provádění ověřování podpisu je mimo rámec tohoto dokumentu. Mnoho knihovny open-source jsou k dispozici vám pomůžou.
 
@@ -142,7 +142,7 @@ Pokud vaše aplikace obdrží token ID při přihlášení uživatele, má také
 
 Podrobnosti o očekávaných hodnot pro tyto deklarace identity jsou součástí [tokeny typu ID](# ID tokens) části.
 
-## <a name="token-lifetimes"></a>Doby života tokenů
+## <a name="token-lifetimes"></a>Životnost tokenů
 Poskytujeme následující životnosti tokenu pro vás pouze informační charakter. Informace vám můžou pomoct při vývoji a ladění aplikací. Aplikace nemá zapisovat očekávat některé z těchto životnosti nezměnila. Token může životnosti a bude kdykoli změnit.
 
 | Podpisový | Doba platnosti | Popis |

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/21/2018
 ms.author: barbkess
-ms.reviewer: harshja
-ms.openlocfilehash: 953d3399012b92442c0dcb4c0db717f2bf273f1b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: asteen
+ms.openlocfilehash: 97795593ecc83a0b15f018861f5cd9139d26443b
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591792"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335104"
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>Problém s vytvořením aplikace Proxy aplikace 
 

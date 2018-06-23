@@ -13,20 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 4ee07d8b9180c04c714476da845ceffaa4388bee
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 43b43be154756838d8c130b2ec1a0dbc40405422
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36229525"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332350"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Nasazení Azure AD Application Proxy na spravované doméně služby Azure AD Domain Services
 Proxy aplikace služby Azure Active Directory (AD) umožňuje podporují zaměstnanci na vzdálených pracovištích a publikování aplikací místní přístup přes internet. S Azure AD Domain Services můžete nyní navýšení a shift starší aplikace spuštěné místně službám infrastruktury Azure. Potom můžete publikovat tyto aplikace pomocí Azure AD Application Proxy poskytnout zabezpečený vzdálený přístup na uživatele ve vaší organizaci.
 
 Pokud jste ještě Azure AD Application Proxy, další informace o této funkci se v následujícím článku: [jak poskytnout zabezpečený vzdálený přístup k místním aplikacím](../active-directory/manage-apps/application-proxy.md).
 
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Chcete-li provést úkoly vypsané v tomto článku, je třeba:

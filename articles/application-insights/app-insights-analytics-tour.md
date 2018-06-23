@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 01a34eed3ea073deaaf449d28d7f8462f12b5a33
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8295abfae8d82a7c7762c6b27a8bac7487f6afff
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294305"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335277"
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Prohlídka Analytics ve službě Application Insights
 [Analýza](app-insights-analytics.md) je výkonný vyhledávání funkcí [Application Insights](app-insights-overview.md). Tyto stránek popisují dotazovací jazyk analýzy protokolů.
@@ -180,7 +180,7 @@ Další příklady:
 
 
 ## <a name="projecthttpsdocsloganalyticsiodocslanguage-referencetabular-operatorsproject-operator-select-rename-and-compute-columns"></a>[Projekt](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator): vyberte, přejmenování a výpočetní sloupců
-Použití [ `project` ](https://docs.loganalytics.io/queryLanguage/query_language_projectoperator.html) k výběru pouze sloupce, které chcete:
+Použití [ `project` ](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/project-operator) k výběru pouze sloupce, které chcete:
 
 ```AIQL
 
@@ -203,7 +203,7 @@ Také můžete přejmenovat sloupce a definovat nové:
             ['time of day'] = floor(timestamp % 1d, 1s)
 ```
 
-![výsledek](./media/app-insights-analytics-tour/270.png)
+![Výsledek](./media/app-insights-analytics-tour/270.png)
 
 * Názvy sloupců může obsahovat mezery nebo symboly v případě jejich jsou v závorkách, jako to: `['...']` nebo `["..."]`
 * `%` je obvyklé Operátor modulo.
@@ -433,7 +433,7 @@ Pomocí výše uvedeném dotazu, ale nahraďte poslední řádek:
 
 Také jsme odebrali horní limit v where klauzule, aby bylo možné získat správné údaje včetně všechny relace s více než jeden požadavek:
 
-![výsledek](./media/app-insights-analytics-tour/180.png)
+![Výsledek](./media/app-insights-analytics-tour/180.png)
 
 Odkud jsme uvidíte, že:
 
@@ -525,7 +525,7 @@ Použití *Let* definice funkce:
 ## <a name="accessing-nested-objects"></a>Přístup k vnořených objektů
 Vnořených objektů lze snadno přistupovat. V datovém proudu výjimky, můžete například zjistit strukturovaných objekty takto:
 
-![výsledek](./media/app-insights-analytics-tour/520.png)
+![Výsledek](./media/app-insights-analytics-tour/520.png)
 
 Můžete ho vyrovnání výběrem vlastnosti, které vás zajímají:
 

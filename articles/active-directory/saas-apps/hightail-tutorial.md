@@ -7,19 +7,18 @@ author: jeevansd
 manager: mtillman
 ms.assetid: e15206ac-74b0-46e4-9329-892c7d242ec0
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/21/2017
+ms.date: 06/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 6fe7cad2910bed2dc08180d28fdf1af1d6cffd9a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 7267f8fa1ed900d1bac58b4fa61f076e5949d712
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36223412"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319101"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Kurz: Azure Active Directory integrace s Hightail
 
@@ -105,31 +104,29 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurovat jednotné přihlašování][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/tutorial_hightail_samlbase.png)
 
-3. Na **Hightail domény a adresy URL** část, proveďte následující kroky:
+3. Na **Hightail domény a adresy URL** část, proveďte následující kroky, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
 
     ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/tutorial_hightail_url.png)
 
-     V **adresa URL odpovědi** textovému poli, zadejte adresu URL jako: `https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
+    V **adresa URL odpovědi** textovému poli, zadejte adresu URL jako: `https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
 
-    > [!NOTE] 
-    > Předchozí hodnota není skutečné hodnoty. Hodnota bude aktualizován skutečná adresa URL odpovědi, který je vysvětlen později v tomto kurzu.
- 
-4. Na **Hightail domény a adresy URL** část, pokud chcete nakonfigurovat aplikace **SP iniciované režimu**, proveďte následující kroky:
-    
+    > [!NOTE]
+    > Adresa URL odpovědi hodnota není skutečné hodnoty. Adresa URL odpovědi hodnota bude aktualizován skutečná adresa URL odpovědi, který je vysvětlen později v tomto kurzu.
+
+4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL** a provést následující krok, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
+
     ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/tutorial_hightail_url1.png)
 
-    a. Klikněte **zobrazit upřesňující nastavení adresy URL**.
-
-    b. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako: `https://www.hightail.com/loginSSO`
+    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL jako: `https://www.hightail.com/loginSSO`
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **certifikátu (Base64)** a potom uložte soubor certifikátu v počítači.
 
     ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/tutorial_hightail_certificate.png) 
 
-5. Hightail aplikace očekává SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z **"Atrribute"** aplikace. Následující snímek obrazovky ukazuje příklad pro tento. 
+5. Hightail aplikace očekává SAML kontrolní výrazy ve specifickém formátu. Nakonfigurujte následující deklarace identity pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z **"Atribut"** aplikace. Následující snímek obrazovky ukazuje příklad pro tento. 
 
     ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/tutorial_hightail_attribute.png) 
 
@@ -153,7 +150,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     c. Z **hodnotu** seznamu, zadejte hodnotu atributu, který je uvedený na příslušném řádku.
 
     d. Ponechte **Namespace** prázdné.
-    
+
     e. Klikněte na tlačítko **OK**.
 
 7. Klikněte na tlačítko **Uložit** tlačítko.
@@ -162,41 +159,32 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
 8. Na **Hightail konfigurace** klikněte na tlačítko **konfigurace Hightail** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
 
-    ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/tutorial_hightail_configure.png) 
+    ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/tutorial_hightail_configure.png)
 
-    >[!NOTE] 
+    >[!NOTE]
     >Před konfigurací jednotné přihlašování v aplikaci Hightail, prosím seznamu povolených vaše e-mailovou doménu s Hightail týmu, aby všichni uživatelé, kteří používají tuto doménu můžete použít funkci jednotného přihlašování.
 
+9. V jiném okně prohlížeče, otevřete **Hightail** portál pro správu.
 
-9. Pokud chcete získat jednotné přihlašování, které jsou nakonfigurované pro vaši aplikaci, musíte k přihlašování ke klientovi Hightail jako správce.
-   
-    a. V nabídce v horní části, klikněte **účet** a vyberte **konfigurace SAML**.
- 
-    ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/tutorial_hightail_001.png) 
+10. Klikněte na **uživatele ikona** z pravém horním rohu stránky. 
 
-    b. Zaškrtněte políčko z **povolit ověřování SAML**.
+    ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/configure1.png)
 
-    ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/tutorial_hightail_002.png) 
+11. Klikněte na tlačítko **zobrazení konzoly pro správu** kartě.
 
-    c. Otevření kódovaného certifikátu kódování base-64 v poznámkovém bloku stáhli z portálu Azure, zkopírujte obsah ho do schránky a vložte jej do **SAML podpisový certifikát tokenů** textové pole.
+    ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/configure2.png)
 
-    ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/tutorial_hightail_003.png) 
+12. V nabídce v horní části, klikněte **SAML** kartě a proveďte následující kroky:
 
-    d. V **autority SAML (zprostředkovatele Identity)** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby** zkopírovaných z portálu Azure.
+    ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/configure3.png)
 
-    ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/tutorial_hightail_004.png)
+    a. V **přihlašovací adresa URL** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby** zkopírovaných z portálu Azure.
 
-    e. Pokud chcete nakonfigurovat aplikace **IDP iniciované režimu** vyberte **"Zprostředkovatele Identity (IdP) iniciované přihlášení"**. Pokud **SP iniciované režimu** vyberte **"Přihlášení iniciované poskytovatelem služeb (SP)"**.
+    b. Otevření kódovaného certifikátu kódování base-64 v poznámkovém bloku stáhli z portálu Azure, zkopírujte obsah ho do schránky a vložte jej do **certifikátu SAML** textové pole.
 
-    ![Konfigurovat jednotné přihlašování](./media/hightail-tutorial/tutorial_hightail_006.png)
+    c. Klikněte na tlačítko **kopie** zkopírujte adresu URL příjemce SAML pro vaše instance a vložte jej do **adresa URL odpovědi** textového pole v **Hightail domény a adresy URL** části na portálu Azure.
 
-    f. Zkopírujte adresu URL příjemce SAML pro vaše instance a vložte jej do **adresa URL odpovědi** textového pole v **Hightail domény a adresy URL** části na portálu Azure.
-    
-    g. Klikněte na **Uložit**.
-
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    d. Klikněte na tlačítko **konfigurace uložíte**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -256,7 +244,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Přiřadit uživatele][202] 
+    ![Přiřadit uživatele][202]
 
 4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
 
@@ -267,7 +255,7 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
-    
+
 ### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
 
 Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.
@@ -279,8 +267,6 @@ Když kliknete na dlaždici Hightail na přístupovém panelu, jste měli získa
 
 * [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 

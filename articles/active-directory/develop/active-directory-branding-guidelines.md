@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/27/2017
 ms.author: celested
-ms.reviewer: arielgo; skwan
+ms.reviewer: arielgo, skwan
 ms.custom: aaddev
-ms.openlocfilehash: 22d10dfc87777746182068ce9a8162420c0c95d4
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 97ae16e21e0771c89b1c878c3cabaeab25bcee4b
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713309"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318598"
 ---
 # <a name="branding-guidelines-for-applications"></a>Branding pokyny pro aplikace
 

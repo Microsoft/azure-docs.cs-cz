@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: be7dec07597b0a82633d330a72274a94dbb9bf67
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: b59d86ddb8422108ece66eb1a7bbea808620d063
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34156040"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319538"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integrace se službou Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]

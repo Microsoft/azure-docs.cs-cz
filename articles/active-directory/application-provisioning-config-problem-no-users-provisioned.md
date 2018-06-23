@@ -3,22 +3,24 @@ title: Žádní uživatelé jsou se zřídí k aplikaci Galerie Azure AD | Micro
 description: Postup řešení běžných problémů s potýkají při nevidíte uživatelé zobrazovaných v na Azure AD Application Gallery jste nakonfigurovali pro zřizování uživatelů s Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: asteen
-ms.openlocfilehash: a36d60b8915ae0b46226bb2127829a8f1767daba
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 394e8642c177312c8990ea211f77fb802d4228fd
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26616289"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332405"
 ---
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Žádní uživatelé jsou se zřídí k aplikaci Galerie Azure AD
 
@@ -45,7 +47,7 @@ Níže je seznam obecné problémových oblastí, které můžete rozbalit Pokud
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>Zřizování služby nezobrazí spuštění
 
-Pokud nastavíte **Stav zřizování** být **na** v **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt;zřizování** části portálu Azure. Ale žádné další podrobnosti o stavu jsou zobrazena na této stránce po následné znovu načte, je pravděpodobné, že služba běží, avšak nedokončil ještě počáteční synchronizaci. Zkontrolujte **protokoly auditu** popsáno výše, a určit, jakým operacím služby provádí, a pokud nejsou žádné chyby.
+Pokud nastavíte **Stav zřizování** být **na** v **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt;Zřizování** části portálu Azure. Ale žádné další podrobnosti o stavu jsou zobrazena na této stránce po následné znovu načte, je pravděpodobné, že služba běží, avšak nedokončil ještě počáteční synchronizaci. Zkontrolujte **protokoly auditu** popsáno výše, a určit, jakým operacím služby provádí, a pokud nejsou žádné chyby.
 
 >[!NOTE]
 >Počáteční synchronizace může trvat od 20 minut několik hodin v závislosti na velikosti adresáře služby Azure AD a počet uživatelů v oboru pro zřizování. Následné synchronizace po počáteční synchronizace je rychlejší, jako službu zřizování ukládá vodoznaky, které představují stav obou systémů po počáteční synchronizaci. To zvyšuje výkon následné synchronizace.
@@ -64,6 +66,6 @@ Když uživatel se zobrazí jako "přeskočen" v protokolech auditu, je velmi d�
 
   * **Mapování pro skupiny atributů:** zřizování název skupiny a údaje skupiny, kromě členy, pokud pro některé aplikace podporován. Můžete povolit nebo zakázat tuto funkci povolením nebo zakázáním **mapování** pro objekty skupiny ukazuje **zřizování** kartě. Pokud je povoleno zřizování skupiny, nezapomeňte si projít mapování atributů k zajištění, že na odpovídající pole je používána pro "Odpovídající ID". Může to být alias zobrazovaný název nebo e-mailu), protože skupiny a její členy nelze zřídit Pokud odpovídající vlastnost je prázdná nebo není vyplněná skupiny ve službě Azure AD.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Synchronizace Azure AD Connect: Principy deklarativní zřizování](active-directory-aadconnectsync-understanding-declarative-provisioning.md)
 

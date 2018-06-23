@@ -13,12 +13,12 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 9f9099c0ebd65ba84e171314e6f04d858648a805
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 905cedd6ee781ca163731a6f71b083acfc11b5eb
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29800733"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332367"
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft hybridních řešení identit
 [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) hybridních řešení identit umožňují synchronizovat místní adresáře objekty s Azure AD při nadále spravuje uživatele místní. První rozhodnutí při plánování vaší místní Windows Server Active Directory synchronizovat s Azure AD je, jestli chcete používat identity synchronizovaných nebo federovaných identit. Synchronizované identity a volitelně hodnot hash hesel, povolte uživatelům používat stejné heslo pro přístup k místní i cloudové prostředkům organizace. Pro pokročilejší scénáře požadavky, například jednotného přihlašování (SSO) nebo místní vícefaktorové ověřování musíte k nasazení služby Active Directory Federation Services (AD FS) pro vytvoření federace identit. 
@@ -53,7 +53,7 @@ S Azure AD Connect, který používá jednoduchý místní agent, který naslouc
 - Připojený k doméně v doménové struktuře, pomocí kterého se uživatelé ověřují
 
 ## <a name="federated-identity-ad-fs"></a>Federované identity (AD FS)
-Pro větší kontrolu nad přístup uživatelů k Office 365 a jiných cloudových služeb, můžete nastavit synchronizace adresáře se jednotné přihlašování (SSO) pomocí [Active Directory Federation Services (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server-2016). Přihlášení uživatele se službou AD FS pro federaci deleguje ověřování na místním serveru, která ověřuje přihlašovací údaje uživatele. V tomto modelu jsou pověření služby Active Directory v místě nikdy předán do služby Azure AD.
+Pro větší kontrolu nad přístup uživatelů k Office 365 a jiných cloudových služeb, můžete nastavit synchronizace adresáře se jednotné přihlašování (SSO) pomocí [Active Directory Federation Services (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server). Přihlášení uživatele se službou AD FS pro federaci deleguje ověřování na místním serveru, která ověřuje přihlašovací údaje uživatele. V tomto modelu jsou pověření služby Active Directory v místě nikdy předán do služby Azure AD.
 
 ![Federované identity](./media/choose-hybrid-identity-solution/federated-identity.png)
 

@@ -3,7 +3,7 @@ title: Azure jednotné přihlašování SAML protokol | Microsoft Docs
 description: Tento článek popisuje jeden protokol SAML Sign-Out v Azure Active Directory
 services: active-directory
 documentationcenter: .net
-author: priyamohanram
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 0e4aa75d-d1ad-4bde-a94c-d8a41fb0abe6
@@ -14,21 +14,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
-ms.author: priyamo
+ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 9ec99ffc64138cf1cd94e0f11077cdc5d86dbc57
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: hirsin
+ms.openlocfilehash: c8373df67adbb93e25ab5a31a254efe70581d32d
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34155493"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317673"
 ---
 # <a name="single-sign-out-saml-protocol"></a>Protokol jeden odhlašování SAML
-Azure Active Directory (Azure AD) podporuje SAML 2.0 webové prohlížeče jediného odhlašování profilu. Pro jeden odhlašování fungovala správně **LogoutURL** pro aplikace, musí být explicitně zaregistrované v Azure AD při registraci aplikace. Azure AD se používá LogoutURL přesměrovat uživatele, jakmile se odhlásili.
 
-Tento diagram zobrazuje pracovním procesu jeden odhlašování Azure AD.
+Azure Active Directory (Azure AD) podporuje SAML 2.0 webové prohlížeče jediného odhlašování profilu. Pro jeden odhlašování fungovala správně **LogoutURL** pro aplikace, musí být explicitně zaregistrované v Azure AD při registraci aplikace. Azure AD se používá LogoutURL přesměrovat uživatele po jste odhlášení.
 
-![Jednotné přihlašování se pracovní postup](media/active-directory-single-sign-out-protocol-reference/active-directory-saml-single-sign-out-workflow.png)
+Následující diagram znázorňuje pracovní postup procesu jeden odhlašování Azure AD.
+
+![Azure AD jednoho odhlásit pracovního postupu](media/active-directory-single-sign-out-protocol-reference/active-directory-saml-single-sign-out-workflow.png)
 
 ## <a name="logoutrequest"></a>LogoutRequest
 Odešle služba cloudu `LogoutRequest` zprávy do služby Azure AD, která označuje, že relace byla ukončena. Následující výpis zobrazí ukázku `LogoutRequest` elementu.
@@ -43,9 +45,9 @@ Odešle služba cloudu `LogoutRequest` zprávy do služby Azure AD, která ozna�
 ### <a name="logoutrequest"></a>LogoutRequest
 `LogoutRequest` Prvek odeslaných do služby Azure AD vyžaduje následující atributy:
 
-* `ID` : Toto identifikuje odhlašování žádosti. Hodnota `ID` nesmí začínat číslem. Typické postupem je připojit **id** k řetězcovou reprezentaci identifikátor GUID.
-* `Version` : Nastavte hodnotu pro tento element **2.0**. Tato hodnota se vyžaduje.
-* `IssueInstant` : Toto je `DateTime` řetězec s hodnotou koordinaci světový čas (UTC) a [odezvy formátu ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává hodnotu typu, ale nedokáže vynutit.
+* `ID` -Identifikuje odhlašování žádosti. Hodnota `ID` nesmí začínat číslem. Typické postupem je připojit **id** k řetězcovou reprezentaci identifikátor GUID.
+* `Version` – Nastavte hodnotu pro tento element **2.0**. Tato hodnota se vyžaduje.
+* `IssueInstant` -Toto je `DateTime` řetězec s hodnotou koordinaci světový čas (UTC) a [odezvy formátu ("o")](https://msdn.microsoft.com/library/az4se3k1.aspx). Azure AD očekává hodnotu typu, ale není vynutit.
 
 ### <a name="issuer"></a>Vystavitel
 `Issuer` Element v `LogoutRequest` musí přesně shodovat s jedním z **ServicePrincipalNames** v rámci cloudové služby ve službě Azure AD. Je standardně nastavena **identifikátor ID URI aplikace** , který je určen při registraci aplikace.

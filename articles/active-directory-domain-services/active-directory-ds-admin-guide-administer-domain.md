@@ -13,20 +13,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 6a4e25dd3f819ad4f0fee7846e87df2202f5227f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 2ee5250147a82199057a3bf6f043627616e7443d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36210614"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333682"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Správa spravované domény služby Azure Active Directory Domain Services
 Tento článek ukazuje, jak spravovat spravované doméně služby Azure Active Directory (AD) Domain Services.
 
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
+
 ## <a name="before-you-begin"></a>Než začnete
-Chcete-li provést úkoly vypsané v tomto článku, je třeba:
+K dokončení úlohy uvedené v tomto článku, budete potřebovat:
 
 1. Platná **předplatné**.
 2. **Adresář Azure AD** – buď synchronizovány s místní adresář nebo výhradně cloudový adresář.
@@ -37,7 +39,7 @@ Chcete-li provést úkoly vypsané v tomto článku, je třeba:
 <br>
 
 ## <a name="administrative-tasks-you-can-perform-on-a-managed-domain"></a>Úlohy správy, které můžete provádět na spravované doméně
-Členové skupiny "Správci AAD řadič domény, jsou udělena oprávnění na spravované domény, které umožňují provádět úlohy, jako je:
+Členové skupiny "Správci AAD řadič domény, jsou udělena oprávnění na spravované domény, které umožňují provádění úloh, jako je:
 
 * Připojení počítače k spravované doméně.
 * Konfigurace integrovaného objektu zásad skupiny pro kontejnery Počítače AADDC a Uživatelé AADDC ve spravované doméně.
@@ -46,15 +48,15 @@ Chcete-li provést úkoly vypsané v tomto článku, je třeba:
 * Získání přístupu pro správu k počítačům připojeným ke spravované doméně.
 
 ## <a name="administrative-privileges-you-do-not-have-on-a-managed-domain"></a>Oprávnění správce nemáte na spravované doméně
-Domény spravuje Microsoft, včetně aktivit, jako je například opravy, monitorování a provádění zálohování. Proto je uzamčené domény a nemáte oprávnění k provádění určitých úloh správy v doméně. Níže jsou příklady úloh, které nelze provést.
+Domény spravuje Microsoft, včetně aktivit, jako je například opravy, monitorování a umožňoval vytvářet zálohy. Doména je uzamčené a nemáte oprávnění provést některé úlohy správy v doméně. Níže jsou příklady úlohy, které nelze provést.
 
-* Nejsou udělena oprávnění správce domény nebo správce podnikové sítě pro spravovanou doménu.
+* Nemáte oprávnění správce domény nebo správce podnikové sítě pro spravovanou doménu.
 * Nelze rozšířit schéma spravované domény.
 * Nemůžete se připojit k řadičům domény k spravované doméně pomocí vzdálené plochy.
 * Řadiče domény nelze přidat k spravované doméně.
 
-## <a name="task-1---provision-a-domain-joined-windows-server-virtual-machine-to-remotely-administer-the-managed-domain"></a>Úloha 1 - zřídit virtuální počítač připojený k doméně systému Windows Server pro vzdálenou správu spravované doméně
-Spravované domény služby Azure AD Domain Services můžete spravovat pomocí známých nástrojů pro správu služby Active Directory jako správy Center Active Directory (ADAC) nebo AD PowerShell. Správci klientů nemají oprávnění pro připojení k řadiče domény na spravované domény přes vzdálenou plochu. Členové skupiny 'Administrators AAD řadič domény, proto mohou spravovat spravovaných domén vzdáleně pomocí nástroje pro správu AD z počítače systému Windows Server nebo klienta, který je připojen k spravované doméně. Nástroje pro správu služby AD může být nainstalován jako součást volitelné funkce vzdálenou správu serveru (RSAT) na Windows Server a klientských počítačů, které jsou připojené k spravované doméně.
+## <a name="task-1---create-a-domain-joined-windows-server-virtual-machine-to-remotely-administer-the-managed-domain"></a>Úloha 1 – vytvoření připojených k doméně systému Windows Server virtuálního počítače pro vzdálenou správu spravované doméně
+Spravované domény služby Azure AD Domain Services můžete spravovat pomocí známých nástrojů pro správu služby Active Directory jako správy Center Active Directory (ADAC) nebo AD PowerShell. Správci klientů nemají oprávnění pro připojení k řadiče domény na spravované domény přes vzdálenou plochu. Členové skupiny 'správci AAD řadič domény, můžete spravovat vzdáleně pomocí nástroje pro správu AD z počítače systému Windows Server nebo klienta, který je připojen k spravované doméně spravovaných domén. Nástroje pro správu služby AD může být nainstalován jako součást volitelné funkce vzdálenou správu serveru (RSAT) na Windows Server a klientských počítačů, které jsou připojené k spravované doméně.
 
 Prvním krokem je nastavení virtuálního počítače Windows serveru, který je připojen k spravované doméně. Pokyny naleznete v článku s názvem [připojení virtuálního počítače s Windows serverem k spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-join-windows-vm.md).
 
@@ -70,7 +72,7 @@ Proveďte následující kroky k instalaci nástrojů pro správu služby Active
 2. Klikněte **Connect** tlačítko na kartě Přehled. Soubor Remote Desktop Protocol (.rdp) je vytvořen a stáhli.
 
     ![Připojení k systému Windows virtuálního počítače](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-3. Chcete-li se připojit k virtuálnímu počítači, otevřete stažený soubor protokolu RDP. Pokud se zobrazí výzva, klikněte na **Připojit**. Do příkazového řádku přihlášení pomocí přihlašovacích údajů uživatele, které patří do skupiny "Správci AAD řadič domény. Například používáme 'bob@domainservicespreview.onmicrosoft.com' v našem případě. Během procesu přihlášení se může zobrazit upozornění certifikátu. Klikněte na tlačítko Ano nebo můžete dál pokračovat v připojení.
+3. Chcete-li se připojit k virtuálnímu počítači, otevřete stažený soubor protokolu RDP. Pokud se zobrazí výzva, klikněte na **Připojit**. Použijte přihlašovací údaje uživatele, které patří do skupiny 'AAD řadič domény správci'. Například 'bob@domainservicespreview.onmicrosoft.com'. Během procesu přihlášení se může zobrazit upozornění certifikátu. Klikněte na tlačítko Ano nebo můžete dál pokračovat v připojení.
 4. Na úvodní obrazovce otevřete **správce serveru**. Klikněte na tlačítko **přidat role a funkce** ve středovém podokně okna Správce serveru.
 
     ![Spusťte správce serveru na virtuálním počítači](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
@@ -83,7 +85,7 @@ Proveďte následující kroky k instalaci nástrojů pro správu služby Active
 7. Na **výběr serveru** vyberte aktuální virtuální počítač z fondu serverů a klikněte na tlačítko **Další**.
 
     ![Stránka Výběr serveru](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-server.png)
-8. Na **role serveru** klikněte na tlačítko **Další**. Tuto stránku jsme vynechat, protože jsme se neinstalují žádné role na serveru.
+8. Na **role serveru** klikněte na tlačítko **Další**.
 9. Na **funkce** stránky, klikněte na tlačítko rozšířit **nástrojů pro vzdálenou správu serveru** uzel a potom kliknutím rozbalte položku **nástroje pro správu rolí** uzlu. Vyberte **služby AD DS a AD LDS nástroje** funkci ze seznamu nástroje pro správu rolí.
 
     ![Stránka funkce](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-ad-tools.png)
@@ -92,7 +94,7 @@ Proveďte následující kroky k instalaci nástrojů pro správu služby Active
     ![Stránka potvrzení](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager-add-roles-confirmation.png)
 
 ## <a name="task-3---connect-to-and-explore-the-managed-domain"></a>Úloha 3 – připojit a zkoumat spravované doméně
-Teď, když jsou nainstalovány nástroje pro správu AD v doméně virtuálního počítače, jsme můžete pomocí těchto nástrojů můžete prozkoumat a správa spravované domény.
+Teď můžete nástroje pro správu systému Windows Server AD prozkoumat a správa spravované domény.
 
 > [!NOTE]
 > Musíte být členem skupiny 'správci AAD řadič domény, ke správě spravované domény.

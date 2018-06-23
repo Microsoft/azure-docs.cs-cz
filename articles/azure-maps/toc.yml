@@ -79,17 +79,17 @@
     - name: REST
       items:
         - name: Služba Render
-          href: 'https://docs.microsoft.com/en-us/rest/api/maps/renderservice'
+          href: 'https://docs.microsoft.com/rest/api/maps/render'
         - name: Služba Route
-          href: 'https://docs.microsoft.com/en-us/rest/api/maps/routeservice'
+          href: 'https://docs.microsoft.com/rest/api/maps/route'
         - name: Služba Search
-          href: 'https://docs.microsoft.com/en-us/rest/api/maps/searchservice'
+          href: 'https://docs.microsoft.com/rest/api/maps/search'
         - name: Služba Timezone
-          href: 'https://docs.microsoft.com/en-us/rest/api/maps/timezoneservice'
+          href: 'https://docs.microsoft.com/rest/api/maps/timezone'
         - name: Služba Traffic
-          href: 'https://docs.microsoft.com/en-us/rest/api/maps/trafficservice'
+          href: 'https://docs.microsoft.com/rest/api/maps/traffic'
         - name: Správa účtů služby Maps
-          href: 'https://docs.microsoft.com/en-us/rest/api/maps-management'
+          href: 'https://docs.microsoft.com/rest/api/maps-management'
     - name: JavaScript
       items:
         - name: Mapový ovládací prvek

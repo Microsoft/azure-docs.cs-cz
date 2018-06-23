@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 06/22/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: f7f459404b5a759bef9eb8f37141bbd4c9eae3e5
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: a74e77f84aa70519015a589cbc6e7478c0c41592
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849619"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318805"
 ---
 # <a name="azure-stack-1803-update"></a>Azure aktualizace 1803 zásobníku
 
@@ -54,45 +54,40 @@ Tento článek popisuje vylepšení a opravy v balíčku aktualizace 1803, znám
   
   Na rozdíl od aktualizace zásobníku Azure instalací této aktualizace se nemění verzi Azure zásobníku. Pokud chcete potvrdit, instalaci této aktualizace, zobrazí se seznam **nainstalované aktualizace**.
 
-### <a name="post-update-steps"></a>Postup po aktualizaci
-- Po instalaci 1803 nainstalujte všechny použitelné opravy hotfix. Další informace naleznete v následujících článcích znalostní báze knowledge base, a také naše [obsluhy zásad](azure-stack-servicing-policy.md).
 
-  - [KB 4294441 - operace u klienta, které prostředky se nezdaří a neočekávané Sdílené složky jsou vytvořené na stejném tenantovi nebo svazek infrastruktury](https://support.microsoft.com/en-us/help/4294441)
-
-- Po instalaci této aktualizace, zkontrolujte konfiguraci brány firewall zajistit [nezbytné porty](azure-stack-integrate-endpoints.md) jsou otevřené. Například tato aktualizace zavádí monitorování Azure, která zahrnuje změnu protokolů auditu na protokoly aktivity. Díky této změně portu 13012 se teď používá a je třeba také otevřít.  
 
 ### <a name="new-features"></a>Nové funkce 
 Tato aktualizace zahrnuje následující vylepšení a opravy pro Azure zásobníku.
 
 - **Aktualizace zásobníku Azure tajné klíče** – (účty a certifikáty). Další informace o správě tajných klíčů najdete v tématu [otočit tajné klíče v Azure zásobníku](azure-stack-rotate-secrets.md). 
 
-- <!-- 1914853 --> **Automatic redirect to HTTPS** when you use HTTP to access the administrator and user portals. This improvement was made based on [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) feedback for Azure Stack. 
+- <!-- 1914853 --> **Automatické přesměrování na HTTPS** při použití protokolu HTTP pro přístup na portály správce a uživatele. Toto vylepšení byla provedena na základě [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) zpětnou vazbu pro Azure zásobníku. 
 
-- <!-- 2202621  --> **Access the Marketplace** – You can now open the Azure Stack Marketplace by using the [+New](https://ms.portal.azure.com/#create/hub) option from within the admin and user portals the same way you do in the Azure portals.
+- <!-- 2202621  --> **Přístup na webu Marketplace** – nyní lze otevřít v Azure Marketplace zásobníku pomocí [+ nový](https://ms.portal.azure.com/#create/hub) možnost z v rámci portálů správců a uživatelů stejným způsobem jako v Azure portálů.
  
-- <!-- 2202621 --> **Azure Monitor** - Azure Stack adds [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) to the admin and user portals. This includes new explorers for metrics and activity logs. To access this Azure Monitor from external networks, port **13012** must be open in firewall configurations. For more information about ports required by Azure Stack, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md).
+- <!-- 2202621 --> **Azure monitorování** – zásobník Azure přidává [Azure monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) na portály správců a uživatelů. To zahrnuje nové průzkumníci pro protokoly metriky a aktivity. Toto monitorování Azure přístup z externí sítě, port **13012** musí být otevřený v konfiguraci brány firewall. Další informace o porty vyžadované službou Azure zásobníku najdete v tématu [zásobník Azure datacenter integrace - Publikování koncové body](azure-stack-integrate-endpoints.md).
 
    Také jako součást tohoto změnit, v části **další služby**, *protokoly auditu* nyní se zobrazí jako *protokoly aktivity*. Funkce je nyní konzistentní s portálem Azure. 
 
-- <!-- 1664791 --> **Sparse files** -  When you add a New image to Azure Stack, or add an image through marketplace syndication, the image is converted to a sparse file. Images that were added prior to using Azure Stack version 1803 cannot be converted. Instead, you must use marketplace syndication to resubmit those images to take advantage of this feature. 
+- <!-- 1664791 --> **Zhuštěné soubory** – když přidáte novou bitovou kopii do protokolů Azure nebo přidat bitovou kopii prostřednictvím marketplace syndikace bitovou kopii je převeden do zhuštěného souboru. Bitové kopie, které byly přidány před použitím Azure zásobníku verze 1803 nelze převést. Místo toho musíte použít marketplace syndikace odeslat znovu tyto bitové kopie využít této funkce. 
  
    Zhuštěné soubory jsou efektivní formátu použít ke snížení využití prostoru úložiště a zlepšit vstupně-výstupní operace.  Další informace najdete v tématu [Fsutil zhuštěných](https://docs.microsoft.com/windows-server/administration/windows-commands/fsutil-sparse) pro systém Windows Server. 
 
 ### <a name="fixed-issues"></a>Opravené problémy
 
-- <!-- 1739988 --> Internal Load Balancing (ILB) now properly handles MAC addresses for back-end VMs, which causes ILB to drop packets to the back-end network when using Linux instances on the back-end network. ILB works fine with Windows instances on the back-end network. 
+- <!-- 1739988 --> Interní Vyrovnávání zatížení (ILB) nyní správně zpracovává adresy MAC u virtuálních počítačů v back-end, což způsobí, že ILB odpojení pakety na back endovou síť při použití instance systému Linux na síť back-end. ILB funguje bez problémů s instancí systému Windows na back endovou síť. 
 
-- <!-- 1805496 --> An issue where VPN Connections between Azure Stack would become disconnected due to Azure Stack using different settings for the IKE policy than Azure. The values for SALifetime (Time) and SALiftetime (Bytes) were not compatible with Azure and have changed in 1803 to match the Azure settings. The value for SALifetime (Seconds) prior to 1803 was 14,400 and now changes to 27,000 in 1803. The value for SALifetime (Bytes) prior to 1803 was 819,200 and changes to 33,553,408 in 1803.
+- <!-- 1805496 --> Problém kde by se připojení VPN mezi Azure zásobníku odpojeny z důvodu zásobník Azure pomocí různých nastavení pro IKE zásady než Azure. Hodnoty SALifetime (čas) a SALiftetime (bajty) není kompatibilní s Azure a změnily v 1803 tak, aby odpovídaly nastavení Azure. Hodnota SALifetime (v sekundách) před 1803 bylo v 1803 14 400 baudů a nyní změny 27 000. Hodnota pro SALifetime (bajty) před 1803 byla 819,200 a změny 33,553,408 v 1803.
 
-- <!-- 2209262 --> The IP issue where VPN Connections was previously visible in the portal; however enabling or toggling IP Forwarding has no effect. The feature is turned on by default and the ability to change this not yet supported.  The control has been removed from the portal. 
+- <!-- 2209262 --> Problém IP, kde je připojení k síti VPN dříve viditelné v portálu. povolení nebo nastavením předávání IP adres ale nemá žádný vliv. Tato funkce zapnutá ve výchozím nastavení a umožňuje změnit to není dosud podporován.  Ovládací prvek byla odebrána z portálu. 
 
-- <!-- 1766332 --> Azure Stack does not support Policy Based VPN Gateways, even though the option appears in the Portal.  The option has been removed from the Portal. 
+- <!-- 1766332 --> Azure zásobník nepodporuje zásady na základě brány sítě VPN, i když možnost se zobrazí na portálu.  Možnost byla odebrána z portálu. 
 
-- <!-- 1868283 --> Azure Stack now prevents resizing of a virtual machine that is created with dynamic disks. 
+- <!-- 1868283 --> Azure zásobníku teď zabraňuje, změnu velikosti virtuálního počítače, který je vytvořen s dynamickými disky. 
 
-- <!-- 1756324 --> Usage data for virtual machines is now separated at hourly intervals. This is consistent with Azure. 
+- <!-- 1756324 --> Data o využití pro virtuální počítače je teď oddělená v hodinových intervalech. To je konzistentní s Azure. 
 
-- <!--  2253274 --> The issue where in the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet to view and manage this information.
+- <!--  2253274 --> Problém kde v portálů správců a uživatelů v okně nastavení pro virtuální síť podsítě nepodaří načíst. Jako alternativní řešení, pomocí prostředí PowerShell a [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) rutiny zobrazit a spravovat tyto informace.
 
 - Když vytvoříte virtuální počítač, zprávu *nejde zobrazit ceny* už se zobrazí při výběru velikost pro velikost virtuálního počítače.
 
@@ -104,20 +99,29 @@ Tato aktualizace zahrnuje následující vylepšení a opravy pro Azure zásobn�
 
 
 ### <a name="known-issues-with-the-update-process"></a>Známé problémy s proces aktualizace    
-<!-- 2328416 --> During installation of the 1803 update, there can be downtime of the blob service and internal services that use blob service. This includes some virtual machine operations. This down time can cause failures of tenant operations or alerts from services that can’t access data. This issue resolves itself when the update completes installation. 
+<!-- 2328416 --> Během instalace aktualizace 1803 může být výpadek služby objektů blob a interních služeb, které používají služby objektů blob. To zahrnuje některé operace virtuálního počítače. To výpadek může způsobit chyby klienta operace nebo výstrahy ze služeb, které nelze získat přístup k datům. Tento problém vyřeší sám po dokončení instalace aktualizace. 
+
+
+
+### <a name="post-update-steps"></a>Postup po aktualizaci
+- Po instalaci 1803 nainstalujte všechny použitelné opravy hotfix. Další informace naleznete v následujících článcích znalostní báze knowledge base, a také naše [obsluhy zásad](azure-stack-servicing-policy.md).
+
+  - [KB 4341390 - oprava Hotfix Azure zásobníku 1.0.180424.12](https://support.microsoft.com/en-us/help/4341390).
+
+- Po instalaci této aktualizace, zkontrolujte konfiguraci brány firewall zajistit [nezbytné porty](azure-stack-integrate-endpoints.md) jsou otevřené. Například tato aktualizace zavádí *Azure monitorování* který zahrnuje změnu protokolů auditu na protokoly aktivity. Díky této změně portu 13012 se teď používá a je třeba také otevřít.  
 
 
 ### <a name="known-issues-post-installation"></a>Známé problémy (po instalaci)
 Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 
 #### <a name="portal"></a>Portál
-- <!-- 2332636 - IS -->  When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
+- <!-- 2332636 - IS -->  Při použití služby AD FS pro systém identit Azure zásobníku a aktualizace na tuto verzi Azure zásobníku, výchozí vlastník předplatného výchozí zprostředkovatel se resetuje do vestavěné **CloudAdmin** uživatele.  
   Alternativní řešení: Chcete-li tento problém vyřešit, po instalaci této aktualizace, použijte krok 3 ze [automation aktivační události. ke konfiguraci vztahu důvěryhodnosti zprostředkovatele v zásobníku Azure deklarací](azure-stack-integrate-identity.md#trigger-automation-to-configure-claims-provider-trust-in-azure-stack-1) postup resetovat vlastníka předplatného výchozího zprostředkovatele.   
 
 - Možnost [otevřete novou žádost o podporu z rozevíracího seznamu](azure-stack-manage-portals.md#quick-access-to-help-and-support) z v rámci správce portálu není k dispozici. Místo toho použijte následující odkaz:     
     - Pro Azure zásobníku integrované systémy, používat https://aka.ms/newsupportrequest.
 
-- <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.
+- <!-- 2050709 --> V portálu pro správu není možné upravit úložiště metriky pro služby objektů Blob, tabulka služby nebo služby front. Přejděte do úložiště, a potom vyberte objekt blob, tabulka nebo fronty služby dlaždice, otevře se nové okno zobrazující graf metriky pro tuto službu. Pokud pak vyberte Úpravy z horní části dlaždici grafu metriky, v okně upravit graf otevře, ale nezobrazí možnost upravit metriky.
 
 - Nemusí být možné zobrazit úložiště nebo výpočetní prostředky na portálu správce. Příčinou tohoto problému je k chybě při instalaci aktualizace, která způsobí, že aktualizace, která se nesprávně hlásit jako úspěšné. Pokud chcete tento problém opakuje, obraťte se na technickou podporu společnosti Microsoft pro pomoc.
 
@@ -136,7 +140,7 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 
 
 #### <a name="health-and-monitoring"></a>Sledování stavu a
-- <!-- 1264761 - IS ASDK -->  You might see alerts for the *Health controller* component that have the following details:  
+- <!-- 1264761 - IS ASDK -->  Může se zobrazit výstrahy *stavu řadiče* součásti, které mají následující podrobnosti:  
 
    Výstrahy #1:
    - Název: Infrastruktury role není v pořádku
@@ -173,7 +177,7 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 
 -  Pokud zřizování rozšíření na nasazení virtuálního počítače trvá příliš dlouho, uživatelé měli nechat zřizování časový limit namísto pokusu o zastavení procesu navrácení nebo odstranění virtuálního počítače.  
 
-- <!-- 1662991 --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings.  
+- <!-- 1662991 --> Diagnostika virtuálních počítačů Linux není podporována v zásobníku Azure. Při nasazení virtuálního počítače s Linuxem pomocí diagnostiky virtuálních počítačů, které jsou povolené, nasazení se nezdaří. Nasazení se také nezdaří, pokud povolíte základní metriky virtuálního počítače s Linuxem pomocí nastavení pro diagnostiku.  
 
 
 #### <a name="networking"></a>Sítě
@@ -191,7 +195,7 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 
 - Azure zásobník nepodporuje přidávání dalších síťových rozhraní do instance virtuálního počítače po nasazení virtuálního počítače. Pokud virtuální počítač vyžaduje více než jedno síťové rozhraní, musí být definován v době nasazení.
 
-- <!-- 2096388 --> You cannot use the admin portal to update rules for a network security group. 
+- <!-- 2096388 --> Portál pro správu nelze použít k aktualizaci pravidla pro skupinu zabezpečení sítě. 
 
     Alternativní řešení pro službu App Service: Pokud potřebujete vzdálenou plochu instance řadiče, můžete upravit pravidla zabezpečení v rámci skupiny zabezpečení sítě pomocí prostředí PowerShell.  Následují příklady *povolit*a potom obnovte konfiguraci *Odepřít*:  
     
@@ -262,7 +266,7 @@ Toto jsou známé problémy po instalaci pro sestavení **20180323.2**.
 
 - Vytvoření položek na serverech, že hostitel SQL nebo MySQL je podporována pouze poskytovatele prostředků. Položky vytvořené na hostitelském serveru, které nebyly vytvořeny pomocí poskytovatele prostředků může mít za následek neodpovídající stavu.  
 
-- <!-- IS, ASDK --> Special characters, including spaces and periods, are not supported in the **Family** name when you create a SKU for the SQL and MySQL resource providers.
+- <!-- IS, ASDK --> Speciální znaky, včetně mezery a tečky, nejsou podporovány v **rodiny** název při vytváření SKU pro poskytovatele prostředků SQL a databáze MySQL.
 
 > [!NOTE]  
 > Po provedení aktualizace na 1803 zásobník Azure, můžete nadále používat zprostředkovatele prostředků SQL a MySQL, které jste předtím nasadili.  Doporučujeme, abyste že aktualizujete SQL a MySQL, když je dostupná nová verze. Zásobník Azure, jako je aktualizace pro poskytovatele prostředků SQL a MySQL postupně.  Pokud používáte verzi 1711, nejprve použít verzi 1712 pak 1802 a potom aktualizovat 1803.      

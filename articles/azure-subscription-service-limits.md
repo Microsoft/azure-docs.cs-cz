@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2018
 ms.author: byvinyal
-ms.openlocfilehash: 9e4ea16193824e63298b19d4401c110385fa7feb
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 1d67266bf599a4dc57fc2e9e0d1c5f9f2562346c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700188"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36318958"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity, kvóty a omezení předplatného a služeb Azure
 Tento dokument uvádí některé z nejběžnějších omezení Microsoft Azure, což se taky někdy označují jako kvóty. Tento dokument nepokrývá aktuálně všech služeb Azure. V čase v seznamu rozbalit a aktualizovat tak, aby pokrývalo více platformou.
@@ -40,8 +40,7 @@ V níže uvedené limity se přidal nové tabulky, aby odrážela případné ro
 
 > [!NOTE]
 > Je nutné zdůraznit, že jsou na oblast přístupný pro vaše předplatné kvóty pro prostředky ve skupinách prostředků Azure a nejsou za předplatné, jako jsou kvóty správy služby. Jako příklad použijeme kvóty virtuální procesory. Pokud potřebujete požádat o zvýšení kvóty s podporou pro Vcpu, musíte se rozhodnout, kolik Vcpu, kterou chcete použít v oblasti, které a pak proveďte konkrétního požadavku pro skupiny prostředků Azure virtuální procesor kvóty pro částky a oblastí, které chcete. Proto pokud budete muset použít 30 Vcpu v oblasti západní Evropa spusťte aplikaci existuje, měli byste požádat o konkrétně 30 Vcpu v oblasti západní Evropa. Ale nebudete mít virtuální procesory kvótu zvýšit v jiné oblasti – pouze západní Evropa budou mít kvótu 30-virtuální procesory.
-> <!-- -->
-> V důsledku toho může být vhodné vzít v úvahu při rozhodování o tom, co kvóty vaší skupiny prostředků Azure musí být pro úlohy v libovolné oblasti jeden a požadovat tato částka v každé oblasti, do kterého uvažujete o nasazení. V tématu [potíží s nasazením](resource-manager-common-deployment-errors.md) další pomoc zjišťování vaše aktuální kvóty pro konkrétní oblasti.
+> <!-- --> V důsledku toho může být vhodné vzít v úvahu při rozhodování o tom, co kvóty vaší skupiny prostředků Azure musí být pro úlohy v libovolné oblasti jeden a požadovat tato částka v každé oblasti, do kterého uvažujete o nasazení. V tématu [potíží s nasazením](resource-manager-common-deployment-errors.md) další pomoc zjišťování vaše aktuální kvóty pro konkrétní oblasti.
 >
 >
 
@@ -325,7 +324,7 @@ Další informace o omezeních na podrobnější úrovni, jako je například ve
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>Omezení databáze SQL
-Omezení SQL Database, najdete v části [limitů prostředků databáze SQL](sql-database/sql-database-resource-limits.md).
+Omezení SQL Database, najdete v části [limitů prostředků databáze SQL pro izolované databáze](sql-database/sql-database-vcore-resource-limits-single-databases.md) a [limitů prostředků databáze SQL pro elastické fondy a databází ve fondu](sql-database/sql-database-vcore-resource-limits-elastic-pools.md).
 
 ### <a name="sql-data-warehouse-limits"></a>Omezení SQL Data Warehouse
 Omezení SQL Data Warehouse, najdete v části [SQL Data Warehouse prostředků omezení](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
