@@ -3,22 +3,24 @@ title: Problém konfiguraci zřizování uživatelů k aplikaci Galerie Azure AD
 description: Postup řešení běžných problémů s potýkají při konfiguraci zřizování uživatelů na aplikaci již uveden v galerii aplikací Azure AD
 services: active-directory
 documentationcenter: ''
-author: ajamess
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 9fcfee9cbbeb01422e7d9e92d90b908e054f96da
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: barbkess
+ms.reviewer: asteen
+ms.openlocfilehash: 637a2af17cf3b36392e0a694df8c10a55d616675
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30160327"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333019"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Problém konfiguraci zřizování uživatelů k aplikaci Galerie Azure AD
 
@@ -44,7 +46,7 @@ Níže je seznam obecné problémových oblastí, které můžete rozbalit Pokud
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>Zřizování služby nezobrazí spuštění
 
-Pokud nastavíte **Stav zřizování** být **na** v **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt;zřizování** části portálu Azure. Žádné další podrobnosti o stavu se ale zobrazují na této stránce po následné znovu načte. Je pravděpodobné, že služba běží, avšak nedokončil ještě počáteční synchronizaci. Zkontrolujte **protokoly auditu** popsáno výše, a určit, jakým operacím služby provádí, a pokud nejsou žádné chyby.
+Pokud nastavíte **Stav zřizování** být **na** v **Azure Active Directory &gt; podnikové aplikace &gt; \[název aplikace\] &gt;Zřizování** části portálu Azure. Žádné další podrobnosti o stavu se ale zobrazují na této stránce po následné znovu načte. Je pravděpodobné, že služba běží, avšak nedokončil ještě počáteční synchronizaci. Zkontrolujte **protokoly auditu** popsáno výše, a určit, jakým operacím služby provádí, a pokud nejsou žádné chyby.
 
 >[!NOTE]
 >Počáteční synchronizace může trvat od 20 minut několik hodin v závislosti na velikosti adresáře služby Azure AD a počet uživatelů v oboru pro zřizování. Následné synchronizace po počáteční synchronizace být rychlejší jako službu zřizování ukládá vodoznaky, které představují stav obou systémů po počáteční synchronizaci, zvýšení výkonu následné synchronizace.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c2209a06921ffd6a8efb6fc38dacfa88fc87fa05
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 840d3737efe4314359ba3a3bf0f5c4f888f92567
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29958720"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36329565"
 ---
 Úložiště nabízejí disku vysoké propustnosti a vstupně-výstupní operace optimalizované velikosti virtuálních počítačů a jsou ideální pro velké objemy dat, SQL a NoSQL databáze. Tento článek obsahuje informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro každou velikost v této skupině. 
 
@@ -31,7 +31,7 @@ ACU: 180–240
 | Standard_L32s <sup>1</sup> | 32   | 256  | 5,630 | 64   | 160,000 / 1,600   | 40 000 / 1 000     | 8 / 20,000 | 
  
 
-Maximální propustnost disku dostupná pro virtuální počítače řady Ls-series může být omezená počtem, velikostí a prokládáním připojených disků. Podrobnosti viz článek [Storage úrovně Premium: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md). 
+Možné s virtuálními počítači Ls-series disku maximální propustnost může být omezené počet, velikost a proložení všech připojenými disky. Podrobnosti viz článek [Premium Storage: Vysoce výkonné úložiště pro virtuální počítače Azure](../articles/virtual-machines/windows/premium-storage.md). Virtuální počítače ls-series se budou zaměřovat na úlohy s použitím vysoké místní úložiště a obvykle jen je neúčinná v těchto případech Ls-series nepodporuje použití připojené disky pro počáteční načítání a protokolování, jako ukládání do mezipaměti hostitele ukládání do mezipaměti pro připojené disky, musí být připojené disky v režimu bez vyrovnávací paměti. 
 
 <sup>1</sup> instance je izolovaný hardware vyhrazený pro jednoho zákazníka.
 

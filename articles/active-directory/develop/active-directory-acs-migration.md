@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
 ms.author: celested
-ms.reviewer: dastrock
-ms.openlocfilehash: c1c86f21d5a99cf251b0b83f41576c2cdaf96dfb
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.reviewer: hirsin, dastrock
+ms.openlocfilehash: 0b3e7d9b7a01767e44c7c59c7250808290a03c30
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34157601"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36319220"
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Migrace ze služby Řízení přístupu Azure
 
@@ -292,7 +292,7 @@ Můžete také použít Azure AD pro ověřování serveru na server pomocí Azu
 | ---------- | ----------- | ---------------- |
 | Postup registrace webové služby | Vytvoření předávající strany v portálu pro správu řízení přístupu | Vytvoření webové aplikace služby Azure AD na portálu Azure |
 | Postup registrace klienta | Vytvoření identity služby v portálu pro správu řízení přístupu | Vytvořit jinou webovou aplikaci Azure AD na portálu Azure |
-| Protokol použitý |-Protokol OAuth WRAP<br />-Udělení pověření klienta 13 koncept OAuth 2.0 | Udělení pověření klienta OAuth 2.0 |
+| Protokol použitý |-Protokol OAuth WRAP<br />-Udělení pověření klienta 13 koncept OAuth 2.0 | Udělení přihlašovacích údajů klienta OAuth 2.0 |
 | Metody ověřování klientů |-Jednoduché heslo<br />-Podepsaný SWT<br />-SAML token od zprostředkovatele federovaných identit |-Jednoduché heslo<br />-Podepsaný token JWT |
 | Token formáty |- JWT<br />-SAML 1.1<br />-SAML 2.0<br />-SWT<br /> | Pouze JWT |
 | Token transformace |-Přidat vlastní deklarace<br />-Jednoduché pak v případě deklarace identity logiku vystavení | Přidat vlastní deklarace | 

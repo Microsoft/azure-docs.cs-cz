@@ -10,12 +10,12 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/21/2017
-ms.openlocfilehash: 780a7cb3035dbe19c45b5fe9c6dfae54fccafd03
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 8b1fe447cb673b9bc1f4fe4e73f7412a21f701a5
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293644"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330858"
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>Postup přidání zdroje událostí centra událostí do časové řady Přehled prostředí
 
@@ -26,6 +26,22 @@ Tento článek popisuje, jak pomocí portálu Azure přidejte zdroje událostí,
 - Vytvoření centra událostí Další informace o službě Event Hubs naleznete v tématu [vytvořit obor názvů Event Hubs a centra událostí pomocí portálu Azure](../event-hubs/event-hubs-create.md)
 - Centra událostí musí mít aktivní zpráva události odesílány ve. Další informace najdete v tématu [odesílat události do centra událostí Azure pomocí rozhraní .NET Framework](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
 - V Centru událostí pro prostředí časové řady přehledy využívat z vytvořte vyhrazenou skupinu spotřebitelů. Každý zdroj události Statistika časové řady musí mít svůj vlastní vyhrazenou skupinu spotřebitelů která není sdílena s dalšími uživateli. Pokud více čtečky přijímat události z stejnou skupinu uživatelů, budou pravděpodobně najdete v části selhání všechny nástroje pro čtení. Všimněte si, že také maximální počet 20 skupiny příjemců za centra událostí. Podrobnosti najdete v tématu [Průvodce programováním centra událostí](../event-hubs/event-hubs-programming-guide.md).
+
+### <a name="add-a-consumer-group-to-your-event-hub"></a>Přidat skupinu uživatelů do vašeho centra událostí
+Skupiny uživatelů slouží aplikace k načítání dat z Azure Event Hubs. Zadejte vyhrazenou skupinu spotřebitelů, použijte tento čas řady Statistika prostředí pouze spolehlivě číst data z vašeho centra událostí.
+
+Chcete-li přidat novou skupinu uživatelů ve službě Event Hub, postupujte takto:
+1. Na portálu Azure vyhledejte a otevřete Centrum událostí.
+
+2. V části **entity** záhlaví, vyberte **skupiny příjemců**.
+
+   ![Centra událostí - přidat skupinu uživatelů](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
+
+3. Vyberte **+ skupiny příjemců** přidat nové skupiny příjemců. 
+
+4. Na **skupiny příjemců** zadejte nový jedinečný **název**.  Při vytváření nový zdroj událostí v prostředí časové řady Insights, použijte tento stejný název.
+
+5. Vyberte **vytvořit** k vytvoření nové skupiny příjemců.
 
 ## <a name="add-a-new-event-source"></a>Přidat nový zdroj událostí
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
@@ -78,29 +94,14 @@ Tento článek popisuje, jak pomocí portálu Azure přidejte zdroje událostí,
    | Formát serializace události | JSON je k dispozici pouze serializace v současné době. Zprávy událostí musí být ve formátu, nebo žádná data lze číst. |
    | Název vlastnosti časové razítko | Chcete-li tuto hodnotu určit, je potřeba pochopit formát zprávy zpráva dat odesílaných do centra událostí. Tato hodnota je **název** vlastnosti konkrétní události v daty zprávy, kterou chcete použít jako události časové razítko. Hodnota je malá a velká písmena. Pokud je ponecháno prázdné, **zařazování čas události** v rámci události zdroj se používá jako časové razítko události. |
 
+10. Přidejte vyhrazený název TSI příjemce skupiny, které jste přidali do vašeho centra událostí.
 
-10. Vyberte **vytvořit** přidat nový zdroj událostí.
+11. Vyberte **vytvořit** přidat nový zdroj událostí.
    
    ![Kliknutí na Vytvořit](media/time-series-insights-how-to-add-an-event-source-eventhub/4-create-button.png)
 
    Po vytvoření zdroje událostí začne Time Series Insights automaticky streamovat data do vašeho prostředí.
 
-
-### <a name="add-a-consumer-group-to-your-event-hub"></a>Přidat skupinu uživatelů do vašeho centra událostí
-Skupiny uživatelů slouží aplikace k načítání dat z Azure Event Hubs. Zadejte vyhrazenou skupinu spotřebitelů, použijte tento čas řady Statistika prostředí pouze spolehlivě číst data z vašeho centra událostí.
-
-Chcete-li přidat novou skupinu uživatelů ve službě Event Hub, postupujte takto:
-1. Na portálu Azure vyhledejte a otevřete Centrum událostí.
-
-2. V části **entity** záhlaví, vyberte **skupiny příjemců**.
-
-   ![Centra událostí - přidat skupinu uživatelů](media/time-series-insights-how-to-add-an-event-source-eventhub/5-event-hub-consumer-group.png)
-
-3. Vyberte **+ skupiny příjemců** přidat nové skupiny příjemců. 
-
-4. Na **skupiny příjemců** zadejte nový jedinečný **název**.  Při vytváření nový zdroj událostí v prostředí časové řady Insights, použijte tento stejný název.
-
-5. Vyberte **vytvořit** k vytvoření nové skupiny příjemců.
 
 ## <a name="next-steps"></a>Další postup
 - [Definovat zásady přístupu k datům](time-series-insights-data-access.md) zabezpečit data.

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/21/2018
-ms.openlocfilehash: 2a71e405c36c632b7c396e2f06564aa4be9d1464
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: c1597f16dda8544908bbefaf39e75e667d38b22c
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313301"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36316464"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure databáze pro databázi MySQL cenové úrovně
 
@@ -68,6 +68,7 @@ Výpočetní prostředky jsou k dispozici jako vCores, která představují logi
 | Indie – jih |  | X |
 | Japonsko – východ | X | X |
 | Japonsko – západ | X | X |
+| Korea – střed |  | X |
 | Korea – jih |  | X |
 
 ## <a name="storage"></a>Úložiště
