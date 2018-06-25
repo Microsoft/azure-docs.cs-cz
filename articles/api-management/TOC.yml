@@ -177,6 +177,8 @@
           href: api-management-howto-deploy-multi-region.md
         - name: Protokolování událostí ve službě Azure Event Hubs
           href: api-management-howto-log-event-hubs.md
+        - name: Protokolování žádostí s Azure Application Insights
+          href: api-management-howto-app-insights.md
         - name: Nastavení zotavení po havárii pomocí zálohování a obnovení
           href: api-management-howto-disaster-recovery-backup-restore.md
         - name: Správa uživatelských účtů
