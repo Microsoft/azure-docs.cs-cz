@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: badd2d63ffaf8e88ff672087783f2bce150bc7c3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ad26772650cf052926a2534d343f64765f47b78f
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264986"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333390"
 ---
 # <a name="traffic-analytics"></a>Analýza provozu
 
@@ -267,9 +267,9 @@ Některé statistiky, které chcete získat konfigurován plně Analýza provozu
 
 **Hledat**
 
-- Distribuce přenosů na podsíť, topologie, hlavní zdroje provoz do podsítě, sítě nejvyšší rouge konverzaci podsítě a horní konverzaci protokoly aplikací.
+- Provoz distribuční na podsíť, topologie, hlavní zdroje provoz do podsítě, sítě nejvyšší podvodný konverzaci podsítě a horní konverzaci protokoly aplikací.
     - Zároveň budete vědět, které podsíť je konverzaci které podsíti. Pokud se zobrazí neočekávané konverzace, můžete vyřešit konfiguraci.
-    - Pokud rouge sítě jsou konverzaci s podsítí, budete moci opravte nakonfigurováním NSG pravidla pro blokování podvodný sítě.
+    - Pokud podvodný sítě jsou konverzaci s podsítí, budete moci opravte nakonfigurováním NSG pravidla pro blokování podvodný sítě.
 - Topologie podsítě zobrazuje nejvyšší pásu karet pro výběr parametry, například podsítě, externí připojení, aktivní toky a škodlivý toky podsítě aktivní nebo neaktivní.
 - Topologie podsítě zobrazuje distribuce přenosů k virtuální síti s ohledem na toků (povolené nebo blokované nebo příchozí nebo odchozí nebo Benign nebo škodlivé), protokol aplikací a skupin Nsg, například:
 
@@ -277,10 +277,10 @@ Některé statistiky, které chcete získat konfigurován plně Analýza provozu
 
 **Hledat**
 
-Distribuce přenosů na aplikační brány & nástroj pro vyrovnávání zatížení, topologie, hlavní zdroje přenosů dat, nejvyšší červená sítě konverzaci aplikační brány & nástroj pro vyrovnávání zatížení a horní konverzaci protokoly aplikací. 
+Distribuce přenosů na aplikační brány & nástroj pro vyrovnávání zatížení, topologie, hlavní zdroje přenosů dat, nejvyšší podvodné sítě konverzaci aplikační brány & nástroj pro vyrovnávání zatížení a horní konverzaci protokoly aplikací. 
     
  - Zároveň budete vědět, které podsíť je konverzaci které aplikační bránu nebo nástroj pro vyrovnávání zatížení. Pokud zjistíte neočekávané konverzace, můžete vyřešit konfiguraci.
- - Pokud rouge sítě jsou konverzaci s aplikační bránu nebo nástroj pro vyrovnávání zatížení, budete moci opravte nakonfigurováním NSG pravidla pro blokování podvodný sítě. 
+ - Pokud podvodný sítě jsou konverzaci s aplikační bránu nebo nástroj pro vyrovnávání zatížení, budete moci opravte nakonfigurováním NSG pravidla pro blokování podvodný sítě. 
 
     ![Subnet-Topology-showcasing-Traffic-Distribution-to-a-Application-Gateway-Subnet-with-regards-to-flows](./media/traffic-analytics/subnet-topology-showcasing-traffic-distribution-to-a-application-gateway-subnet-with-regards-to-flows.png)
 

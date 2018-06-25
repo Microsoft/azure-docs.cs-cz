@@ -5,7 +5,7 @@
 
 1. Pomocí přihlašovacích údajů účtu Microsoft se přihlaste na webu [Azure Portal](https://portal.azure.com/).
 
-2. Na portálu Azure klikněte na tlačítko **vytvořit prostředek** a na webu Marketplace, klikněte na tlačítko **zobrazit všechny**.
+2. Na webu Azure Portal klikněte na **Vytvořit prostředek** a na Marketplace potom klikněte na **Zobrazit vše**.
 
     ![Vytvoření Správce zařízení StorSimple](./media/storsimple-8000-create-new-service/createssdevman1.png)
 

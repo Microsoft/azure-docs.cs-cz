@@ -13,17 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 3f49e4ac0073c81a6e55e6653acc7c6531989379
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: ea7aa6c9dbde9a161567a815870b05da06cc82c8
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36212236"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331707"
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Správa zásad skupiny na spravované doméně služby Azure AD Domain Services
 Azure Active Directory Domain Services zahrnuje předdefinované objekty zásad skupiny (GPO) pro kontejnery 'AADDC uživatele' a "AADDC počítače". Můžete přizpůsobit těchto předdefinovaných objektů zásad skupiny ke konfigurování zásad skupiny na spravované domény. Kromě toho členy skupiny "Správci AAD řadič domény, můžete vytvořit své vlastní vlastní organizačních jednotek ve spravované doméně. Můžete také vytvořit vlastní objekty zásad skupiny a propojit je s těmito vlastní organizační jednotky. Uživatelé, kteří patří do skupiny "Administrators AAD řadič domény, jsou udělena oprávnění správy zásad skupiny na spravované domény.
+
+[!INCLUDE [active-directory-ds-prerequisites.md](../../includes/active-directory-ds-prerequisites.md)]
 
 ## <a name="before-you-begin"></a>Než začnete
 Chcete-li provést úkoly vypsané v tomto článku, je třeba:

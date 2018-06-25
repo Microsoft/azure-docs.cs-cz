@@ -2,8 +2,8 @@ Pokud chcete začít používat entity zasílání zpráv služby Service Bus v 
 
 Vytvoření oboru názvů:
 
-1. Přihlaste se k webu [Azure Portal][Azure portal].
-2. V levém navigačním podokně portálu klikněte na **+ vytvořit prostředek**, pak klikněte na tlačítko **Enterprise integrace**a potom klikněte na **Service Bus**.
+1. Přihlaste se na web [Azure Portal][Azure portal].
+2. V levém navigačním podokně portálu klikněte na **+ Vytvořit prostředek**, potom klikněte na **Podniková integrace** a pak na **Service Bus**.
 3. V dialogovém okně **Vytvořit obor názvů** zadejte název oboru názvů. Systém okamžitě kontroluje, jestli je název dostupný.
 4. Po kontrole, že je název oborů názvů k dispozici, zvolte cenovou úroveň (Basic, Standard nebo Premium).
 5. V poli **Předplatné** zvolte předplatné Azure, ve které chcete vytvořit obor názvů.
@@ -14,14 +14,14 @@ Vytvoření oboru názvů:
 8. Klikněte na možnost **Vytvořit**. Systém teď vytvoří obor názvů a povolí ho. Pravděpodobně budete muset několik minut počkat, než systém zřídí prostředky pro váš účet.
 
 ### <a name="obtain-the-management-credentials"></a>Získání přihlašovacích údajů pro správu
-Vytvoření nového oboru názvů automaticky generuje pravidlo počáteční sdíleného přístupového podpisu (SAS) k přidružené dvojice primární a sekundární klíče, aby každý udělte oprávnění úplného řízení nad všemi aspekty oboru názvů. V tématu [Service Bus ověřování a autorizace](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) informace o tom, jak vytvořit další pravidla pomocí více omezené oprávnění pro regulární odesílateli a příjemci. Pokud chcete zkopírovat počáteční pravidlo, postupujte následovně: 
+Vytvořením nového oboru názvů se automaticky vygeneruje počáteční pravidlo sdíleného přístupového podpisu (SAS) s přidruženým párem primárního a sekundárního klíče, které udělují úplnou kontrolu nad všemi aspekty tohoto oboru názvů. V článku [Ověřování a autorizace Service Bus](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) najdete informace o vytvoření dalších pravidel s omezenějšími oprávněními pro běžné odesílatele a příjemce. Pokud chcete zkopírovat počáteční pravidlo, postupujte následovně: 
 
-1.  Klikněte na tlačítko **všechny prostředky**, pak klikněte na nově vytvořený obor názvů.
-2. V okně obor názvů, klikněte na **zásady sdíleného přístupu**.
-3. V **zásady sdíleného přístupu** obrazovky, klikněte na tlačítko **RootManageSharedAccessKey**.
+1.  Klikněte na **Všechny prostředky** a pak klikněte na název nově vytvořeného oboru názvů.
+2. V okně oboru názvů klikněte na **Zásady sdíleného přístupu**.
+3. Na obrazovce **Zásady sdíleného přístupu** klikněte na **RootManageSharedAccessKey**.
    
     ![connection-info][connection-info]
-4. V **zásady: RootManageSharedAccessKey** okna, klikněte na tlačítko Další kopie **připojovací řetězec – primární klíč**, zkopírujte připojovací řetězec do schránky pro pozdější použití. Vložte tuto hodnotu do Poznámkového bloku nebo jiného dočasného umístění.
+4. V okně **Zásada: RootManageSharedAccessKey** klikněte na tlačítko pro kopírování vedle položky **Připojovací řetězec – primární klíč** a zkopírujte připojovací řetězec do schránky k pozdějšímu použití. Vložte tuto hodnotu do Poznámkového bloku nebo jiného dočasného umístění.
    
     ![connection-string][connection-string]
 

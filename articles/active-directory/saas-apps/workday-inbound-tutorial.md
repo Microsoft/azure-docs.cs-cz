@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: df1981443d8c55f07f86394967e357a599a7b3a3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 262c864a9e580ab5e2ebb0d4fc1e6ec16adeacb3
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213137"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36334322"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Kurz: Konfigurace Workday pro zřizování automatické uživatelů
 
@@ -60,6 +60,8 @@ Tento uživatel Workday zřizování řešení je v současné době ve verzi pu
 * Organizace, které vyžadují připojení, přesunutí, a ponechat uživatelům synchronizovat s nejméně jedné doménové struktury, domény a organizační jednotky pouze na základě změnit informace o uživateli v modulu Workday HCM (viz [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html))
 
 * Organizace v Office 365 e-mailu
+
+[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]
 
 ## <a name="planning-your-solution"></a>Plánování řešení
 
@@ -362,16 +364,16 @@ V této části nakonfigurujete, jak jsou data uživatele z Workday do služby A
 | **WorkerID**  |  Číslo zaměstnance | **Ano** | Zapisovat pouze na vytvoření |
 | **UserId**    |  CN    |   |   Zapisovat pouze na vytvoření |
 | **Připojení k ("@", [UserID] "contoso.com")**   | userPrincipalName     |     | Zapisovat pouze na vytvoření 
-| **Nahraďte (Mid (Nahraďte (\[UserID\],, "(\[ \\ \\ / \\ \\ \\ \\ \\ \\ \[ \\\\\]\\\\:\\\\;\\ \\|\\\\=\\\\,\\\\+\\\\\*\\ \\? \\ \\ &lt; \\ \\ &gt; \]) "," ",), 1, 20)," ([\\\\.) \* \$] (file:///\\.) *$)", , "", , )**      |    Název účtu SAM            |     |         Zapisovat pouze na vytvoření |
-| **Přepínače (\[Active\],, "0", "True", "1")** |  AccountDisabled      |     | Vytvoření + aktualizace |
+| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    název účtu SAM            |     |         Zapisovat pouze na vytvoření |
+| **Přepínače (\[Active\],, "0", "True", "1")** |  accountDisabled      |     | Vytvoření + aktualizace |
 | **FirstName**   | givenName       |     |    Vytvoření + aktualizace |
 | **LastName**   |   sn   |     |  Vytvoření + aktualizace |
 | **PreferredNameData**  |  displayName |     |   Vytvoření + aktualizace |
-| **Společnosti**         | Společnosti   |     |  Vytvoření + aktualizace |
+| **Společnosti**         | společnosti   |     |  Vytvoření + aktualizace |
 | **SupervisoryOrganization**  | oddělení  |     |  Vytvoření + aktualizace |
 | **ManagerReference**   | manažer  |     |  Vytvoření + aktualizace |
 | **BusinessTitle**   |  název     |     |  Vytvoření + aktualizace | 
-| **AddressLineData**    |  StreetAddress  |     |   Vytvoření + aktualizace |
+| **AddressLineData**    |  streetAddress  |     |   Vytvoření + aktualizace |
 | **Okres**   |   l   |     | Vytvoření + aktualizace |
 | **CountryReferenceTwoLetter**      |   co |     |   Vytvoření + aktualizace |
 | **CountryReferenceTwoLetter**    |  c  |     |         Vytvoření + aktualizace |
@@ -380,7 +382,7 @@ V této části nakonfigurujete, jak jsou data uživatele z Workday do služby A
 | **PSČ**  |   PSČ  |     | Vytvoření + aktualizace |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | Vytvoření + aktualizace |
 | **Fax**      | facsimileTelephoneNumber     |     |    Vytvoření + aktualizace |
-| **mobilní**  |    mobilní       |     |       Vytvoření + aktualizace |
+| **Mobile**  |    mobilní       |     |       Vytvoření + aktualizace |
 | **LocalReference** |  preferredLanguage  |     |  Vytvoření + aktualizace |                                               
 | **Přepínače (\[okres\], "organizační jednotky standardní uživatelé, OU = Uživatelé, OU = výchozí, OU = umístění, DC = = contoso, DC = com", "Dallas", "organizační jednotky standardní uživatelé, OU = Uživatelé, OU = Dallas, OU = umístění, DC = = contoso, DC = com", "Austinu", "organizační jednotky standardní uživatelé, OU = Uživatelé, OU = Austinu, OU = umístění, DC = = contoso, DC = com ","Seattle"," organizační jednotky standardní uživatelé, OU = Uživatelé, OU = Seattle, OU = umístění, DC = = contoso, DC = com ","Praha"," organizační jednotky standardní uživatelé, OU = = oj uživatelé Londýn, OU = umístění, DC = = contoso, DC = com ")**  | parentDistinguishedName     |     |  Vytvoření + aktualizace |
   
@@ -543,14 +545,13 @@ Následující části popisují nastavení připojení mezi Workday a Azure AD 
 
    * Pokud je test připojení úspěšný, klikněte na tlačítko **Uložit** tlačítka v horní části. Pokud se nezdaří, zkontrolujte, zda jsou platná ve Workday Workday URL a pověření.
 
-
 ### <a name="part-2-configure-attribute-mappings"></a>Část 2: Konfigurace mapování atributů 
 
 V této části nakonfigurujete uživatelská data tok z Workday do Azure Active Directory pro uživatele jenom pro cloud.
 
-1.  Na kartě zřizování pod **mapování**, klikněte na tlačítko **pracovníci synchronizovat do Azure AD**.
+1. Na kartě zřizování pod **mapování**, klikněte na tlačítko **pracovníci synchronizovat do Azure AD**.
 
-2.   V **zdrojového objektu oboru** pole, můžete vybrat, které skupiny uživatelů v Workday by měla být v oboru pro zřizování do služby Azure AD, definováním sadu filtrů založená na atributu. Výchozí obor je "všichni uživatelé v Workday". Příklad filtrů:
+2. V **zdrojového objektu oboru** pole, můžete vybrat, které skupiny uživatelů v Workday by měla být v oboru pro zřizování do služby Azure AD, definováním sadu filtrů založená na atributu. Výchozí obor je "všichni uživatelé v Workday". Příklad filtrů:
 
    * Příklad: Obor pro uživatele s ID pracovní mezi 1000000 a 2000000
 
@@ -566,9 +567,9 @@ V této části nakonfigurujete uživatelská data tok z Workday do Azure Active
 
       * Operátor: Není NULL.
 
-3.  V **cílový objekt akce** pole, můžete globálně filtrovat, které akce budou moci provést na Azure AD. **Vytvoření** a **aktualizace** jsou nejběžnější.
+3. V **cílový objekt akce** pole, můžete globálně filtrovat, které akce budou moci provést na Azure AD. **Vytvoření** a **aktualizace** jsou nejběžnější.
 
-4.  V **mapování atributů** části, můžete definovat, jak jednotlivé Workday mapování atributů pro atributy služby Active Directory.
+4. V **mapování atributů** části, můžete definovat, jak jednotlivé Workday mapování atributů pro atributy služby Active Directory.
 
 5. Klikněte na existující mapování atributů jej aktualizovat, nebo klikněte na tlačítko **přidat nové mapování** v dolní části obrazovky pro přidání nových mapování. Mapování u jednotlivých atribut podporuje tyto vlastnosti:
 
@@ -602,7 +603,7 @@ V této části nakonfigurujete uživatelská data tok z Workday do Azure Active
 ### <a name="part-3-start-the-service"></a>Část 3: Spuštění služby
 Jakmile částí 1 – 2 byly dokončeny, můžete spustit službu zřizování.
 
-1.  V **zřizování** nastavte **Stav zřizování** k **na**.
+1. V **zřizování** nastavte **Stav zřizování** k **na**.
 
 2. Klikněte na **Uložit**.
 
@@ -612,7 +613,6 @@ Jakmile částí 1 – 2 byly dokončeny, můžete spustit službu zřizování.
 
 5. Byla dokončena, bude zapisovat souhrnné zprávy o auditu **zřizování** kartě, jak je uvedeno níže.
 
-
 ## <a name="configuring-writeback-of-email-addresses-to-workday"></a>Konfigurace e-mailové adresy k Workday zpětný zápis
 Postupujte podle těchto pokynů můžete nakonfigurovat zpětný zápis e-mailové adresy uživatele ze služby Azure Active Directory k Workday.
 
@@ -620,21 +620,21 @@ Postupujte podle těchto pokynů můžete nakonfigurovat zpětný zápis e-mailo
 
 **Postup konfigurace Workday zřízení služby Active Directory:**
 
-1.  Přejděte na <https://portal.azure.com>.
+1. Přejděte na <https://portal.azure.com>.
 
-2.  V levém navigačním panelu, vyberte **Azure Active Directory**
+2. V levém navigačním panelu, vyberte **Azure Active Directory**
 
-3.  Vyberte **podnikové aplikace, které**, pak **všechny aplikace**.
+3. Vyberte **podnikové aplikace, které**, pak **všechny aplikace**.
 
-4.  Vyberte **přidat aplikaci**, vyberte **všechny** kategorie.
+4. Vyberte **přidat aplikaci**, vyberte **všechny** kategorie.
 
-5.  Vyhledejte **zpětný zápis Workday**a přidejte tuto aplikaci z galerie.
+5. Vyhledejte **zpětný zápis Workday**a přidejte tuto aplikaci z galerie.
 
-6.  Po přidání aplikace a obrazovce s podrobnostmi aplikace je uvedené, vyberte **zřizování**
+6. Po přidání aplikace a obrazovce s podrobnostmi aplikace je uvedené, vyberte **zřizování**
 
-7.  Změna **zřizování** **režimu** k **automatické**
+7. Změna **zřizování** **režimu** k **automatické**
 
-8.  Dokončení **přihlašovací údaje správce** části následujícím způsobem:
+8. Dokončení **přihlašovací údaje správce** části následujícím způsobem:
 
    * **Uživatelské jméno správce** – zadejte uživatelské jméno účtu systému integrace Workday, s připojeným názvem domény klienta. By měl vypadat podobně jako: username@contoso4
 
@@ -646,24 +646,22 @@ Postupujte podle těchto pokynů můžete nakonfigurovat zpětný zápis e-mailo
 
    * Klikněte **Test připojení** tlačítko. Pokud je test připojení úspěšný, klikněte na tlačítko **Uložit** tlačítka v horní části. Pokud se nezdaří, zkontrolujte, zda jsou platná ve Workday Workday URL a pověření.
 
-
 ### <a name="part-2-configure-attribute-mappings"></a>Část 2: Konfigurace mapování atributů 
-
 
 V této části nakonfigurujete, jak jsou data uživatele z Workday do služby Active Directory.
 
-1.  Na kartě zřizování pod **mapování**, klikněte na tlačítko **synchronizaci Azure AD uživatelům Workday**.
+1. Na kartě zřizování pod **mapování**, klikněte na tlačítko **synchronizaci Azure AD uživatelům Workday**.
 
-2.  V **zdrojového objektu oboru** pole, můžete volitelně filtrovat, které skupiny uživatelů v Azure Active Directory musí mít své e-mailové adresy zapisovat zpátky do Workday. Výchozí obor je "všichni uživatelé ve službě Azure AD". 
+2. V **zdrojového objektu oboru** pole, můžete volitelně filtrovat, které skupiny uživatelů v Azure Active Directory musí mít své e-mailové adresy zapisovat zpátky do Workday. Výchozí obor je "všichni uživatelé ve službě Azure AD". 
 
-3.  V **mapování atributů** části, můžete definovat, jak jednotlivé Workday mapování atributů pro atributy služby Active Directory. Existuje mapování pro e-mailovou adresu ve výchozím nastavení. Odpovídající ID však musí aktualizovat pro vyhledání uživatelů ve službě Azure Active Directory s jejich odpovídající položky Workday. Oblíbené odpovídající metoda je synchronizovat s ID pracovní Workday nebo ID zaměstnance na extensionAttribute1 15 ve službě Azure AD a pak pomocí tohoto atributu ve službě Azure AD pro vyhledání uživatelů zpět v Workday.
+3. V **mapování atributů** části, můžete definovat, jak jednotlivé Workday mapování atributů pro atributy služby Active Directory. Existuje mapování pro e-mailovou adresu ve výchozím nastavení. Odpovídající ID však musí aktualizovat pro vyhledání uživatelů ve službě Azure Active Directory s jejich odpovídající položky Workday. Oblíbené odpovídající metoda je synchronizovat s ID pracovní Workday nebo ID zaměstnance na extensionAttribute1 15 ve službě Azure AD a pak pomocí tohoto atributu ve službě Azure AD pro vyhledání uživatelů zpět v Workday.
 
-4.  Chcete-li uložit vaše mapování, klikněte na tlačítko **Uložit** v horní části mapování atributů.
+4. Chcete-li uložit vaše mapování, klikněte na tlačítko **Uložit** v horní části mapování atributů.
 
 ### <a name="part-3-start-the-service"></a>Část 3: Spuštění služby
 Jakmile částí 1 – 2 byly dokončeny, můžete spustit službu zřizování.
 
-1.  V **zřizování** nastavte **Stav zřizování** k **na**.
+1. V **zřizování** nastavte **Stav zřizování** k **na**.
 
 2. Klikněte na **Uložit**.
 
@@ -672,7 +670,6 @@ Jakmile částí 1 – 2 byly dokončeny, můžete spustit službu zřizování.
 4. Jednotlivé synchronizační události lze zobrazit v **protokoly auditu** kartě. **[Naleznete v Průvodci zřizování generování sestav pro podrobné pokyny o tom, jak číst protokoly auditu](../active-directory-saas-provisioning-reporting.md)**
 
 5. Byla dokončena, bude zapisovat souhrnné zprávy o auditu **zřizování** kartě, jak je uvedeno níže.
-
 
 ## <a name="customizing-the-list-of-workday-user-attributes"></a>Přizpůsobení seznamu Workday uživatelské atributy
 Workday zřizování aplikací pro služby Active Directory a Azure AD oba obsahují výchozí seznam atributů uživatele Workday můžete vybrat z. Tyto seznamy však nejsou komplexní. WORKDAY podporuje mnoho stovky uživatelské atributy, které mohou být buď standardní nebo jedinečné pro vašeho klienta Workday. 
@@ -799,15 +796,9 @@ Chcete-li to provést, musíte použít [Workday Studio](https://community.workd
 
 * Předchozí problém s protokoly auditu nejsou uvedena v klienty Azure AD, které jsou umístěné v Evropské unie byl vyřešen. Konfigurace dalších agenta je však nutná pro klienty Azure AD v EU. Podrobnosti najdete v tématu [část 3: Konfigurace agenta synchronizace na místě](#Part 3: Configure the on-premises synchronization agent)
 
-
 ## <a name="managing-personal-data"></a>Správa osobní data
 
 Workday zřizování řešení pro službu Active Directory vyžaduje, aby byl nainstalován na serveru připojeném k doméně agent synchronizace, a Tento agent vytváří protokoly v protokolu událostí systému Windows, která může obsahovat identifikovatelné osobní údaje.
-
-[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-hybrid-note.md)]  kde... / Reference odpovídající strukturu hierarchie váš článek
-
-> [!NOTE]
-> Pokud vás zajímá zobrazení nebo odstranění osobních údajů, přečtěte si pokyny společnosti Microsoft v [Windows dat subjektu požadavky pro GDPR](https://review.docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-windows) lokality. Pokud hledáte obecné informace o GDPR, přečtěte si téma [GDPR části portálu vztah důvěryhodnosti služby](https://servicetrust.microsoft.com/ViewPage/GDPRGetStarted).
 
 ## <a name="next-steps"></a>Další postup
 
