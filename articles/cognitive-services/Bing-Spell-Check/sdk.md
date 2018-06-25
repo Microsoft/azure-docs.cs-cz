@@ -15,7 +15,7 @@ ms.openlocfilehash: 47326538146b328096dd4bb107057f97a36f70a3
 ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
+ms.lasthandoff: 06/25/2018
 ms.locfileid: "35342689"
 ---
 # <a name="bing-spell-check-sdk-samples"></a>Ukázky SDK kontrola pravopisu Bing

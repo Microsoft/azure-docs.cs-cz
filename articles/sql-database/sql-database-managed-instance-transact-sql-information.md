@@ -6,15 +6,16 @@ author: jovanpop-msft
 ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
-ms.topic: article
-ms.date: 04/10/2018
+ms.topic: conceptual
+ms.date: 06/22/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: b36099c6fd2deb6b627c8ccd7cc9e13c328f54e3
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 95eca05d695e039f59b71caa4d730f4e1f84fc97
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36337944"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database spravované Instance T-SQL rozdíly v systému SQL Server 
 
@@ -146,7 +147,7 @@ Kolace serveru `SQL_Latin1_General_CP1_CI_AS` a nelze je změnit. V tématu [kol
 
 Následují `CREATE DATABASE` omezení: 
 - Soubory a skupiny souborů nelze definovat.  
-- `CONTAINMENT` Možnost není podporována.  
+- `CONTAINMENT` možnost není podporována.  
 - `WITH`možnosti nejsou podporovány.  
    > [!TIP]
    > Jako alternativní řešení, použít `ALTER DATABASE` po `CREATE DATABASE` nastavit možnosti databáze pro přidání souborů nebo nastavit členství ve skupině.  
@@ -206,6 +207,10 @@ Nezdokumentovaný DBCC příkazy, které jsou povolené v systému SQL Server ne
 - `Trace Flags` nejsou podporovány. V tématu [příznaky trasování](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - `DBCC TRACEOFF` není podporována. V tématu [příkaz DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql).
 - `DBCC TRACEON` není podporována. V tématu [DBCC TRACEON](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql).
+
+### <a name="distributed-transactions"></a>Distribuované transakce
+
+Ani jedna služba MSDTC ani [elastické transakce](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-transactions-overview) jsou aktuálně podporovány ve spravované Instance.
 
 ### <a name="extended-events"></a>Rozšířené události 
 
@@ -375,12 +380,10 @@ Informace o vytváření a změny tabulek najdete v tématu [CREATE TABLE](https
  
 Následující proměnné, funkce a zobrazení vrátí odlišné výsledky:  
 - `SERVERPROPERTY('EngineEdition')` Vrátí hodnotu 8. Tato vlastnost jednoznačně identifikuje spravované Instance. V tématu [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')` Vrátí instance krátký název, například myserver. V tématu [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')` Vrátí hodnotu NULL, protože koncept instance, protože existuje pro nevztahuje se na spravované Instance systému SQL Server. V tématu [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
 - `@@SERVERNAME` Vrátí úplný, umožňující připojení, název DNS, například Moje instance.wcus17662feb9ce98.database.windows.net spravované. V tématu [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql).  
 - `SYS.SERVERS` -Vrátí úplné, umožňující připojení, název DNS, jako například `myinstance.domain.database.windows.net` pro vlastnosti 'name' a 'data_source'. V tématu [SYS. SERVERY](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql). 
-- `@@SERVERNAME` Vrátí úplný, umožňující připojení, název DNS, jako například `my-managed-instance.wcus17662feb9ce98.database.windows.net`. V tématu [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql).  
-- `SYS.SERVERS` -Vrátí úplné, umožňující připojení, název DNS, jako například `myinstance.domain.database.windows.net` pro vlastnosti 'name' a 'data_source'. V tématu [SYS. SERVERY](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql). 
-- `@@SERVICENAME` Vrátí hodnotu NULL, protože nemá smysl v prostředí spravované Instance. V tématu [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).   
+- `@@SERVICENAME` Vrátí hodnotu NULL, protože koncept služby, protože existuje pro nevztahuje se na spravované Instance systému SQL Server. V tématu [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).   
 - `SUSER_ID` je podporováno. Vrátí hodnotu NULL, pokud není v sys.syslogins AAD přihlášení. V tématu [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql).  
 - `SUSER_SID` není podporována. Vrátí chybná data (dočasný známý problém). V tématu [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql). 
 - `GETDATE()` a další funkce integrované datum a čas vždy vrátí čas v časovém pásmu UTC. V tématu [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).

@@ -13,7 +13,7 @@ ms.openlocfilehash: 3286da6e38f0fba02386d877a835fb694ed0fdec
 ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
+ms.lasthandoff: 06/25/2018
 ms.locfileid: "35342720"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Vytvořit video přepis recenze pomocí rozhraní .NET
