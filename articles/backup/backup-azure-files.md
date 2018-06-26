@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 40c57a00363d3952f85a053724ab7dbec257670d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9697bd5a55a5cfcdcd6958f8baff85e55c880c87
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606456"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287656"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 Tento článek vysvětluje, jak pomocí webu Azure Portal zálohovat a obnovovat [sdílené složky Azure](../storage/files/storage-files-introduction.md).
@@ -28,17 +28,21 @@ V této příručce se naučíte:
 > * Odstranění zálohovaných dat
 
 ## <a name="prerequisites"></a>Požadavky
-Než budete moct zálohovat sdílenou složku Azure, ujistěte se, že se nachází v jednom z [podporovaných typů účtu úložiště](troubleshoot-azure-files.md#preview-boundaries). Po ověření můžete chránit své sdílené složky.
+Než budete moct zálohovat sdílenou složku Azure, ujistěte se, že se nachází v jednom z [podporovaných typů účtu úložiště](backup-azure-files.md#limitations-for-azure-file-share-backup-during-preview). Po ověření můžete chránit své sdílené složky.
 
 ## <a name="limitations-for-azure-file-share-backup-during-preview"></a>Omezení zálohování sdílených složek Azure během období Preview
-Zálohování sdílených složek Azure je ve verzi Preview. Během využívání verze Preview mějte na paměti následující omezení:
-- Nemůžete chránit sdílené složky Azure v účtech úložiště s replikací do [zónově redundantního úložiště (ZRS)](../storage/common/storage-redundancy-zrs.md) nebo [geograficky redundantního úložiště jen pro čtení (RA-GRS)](../storage/common/storage-redundancy-grs.md).
-- Nemůžete chránit sdílené složky Azure v účtech úložiště s povolenými virtuálními sítěmi.
-- PowerShell ani CLI nejsou pro ochranu souborů Azure dostupné.
+Zálohování sdílených složek Azure je ve verzi Preview. Následující scénáře zálohování se nepodporují u sdílených složek Azure:
+- Nemůžete chránit sdílené složky Azure v účtech úložiště s replikací do [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy-grs.md) (RA-GRS)*.
+- Nemůžete chránit sdílené složky Azure v účtech úložiště s povolenými virtuálními sítěmi nebo bránou firewall.
+- Pro ochranu souborů Azure pomocí služby Azure Backup není k dispozici PowerShell ani rozhraní příkazového řádku.
 - Maximální počet plánovaných záloh je jedna za den.
 - Maximální počet záloh na vyžádání jsou čtyři za den.
 - Používejte v účtu úložiště [zámky prostředků](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest), abyste zabránili nechtěnému odstranění záloh v trezoru služby Recovery Services.
-- Neodstraňujte snímky vytvořené službou Azure Backup. Odstranění snímků může způsobit ztrátu bodů obnovení nebo selhání obnovení. 
+- Neodstraňujte snímky vytvořené službou Azure Backup. Odstranění snímků může způsobit ztrátu bodů obnovení nebo selhání obnovení.
+
+\*Sdílené složky Azure v účtech úložiště s funkcí replikace do [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy-grs.md) (RA-GRS) jako GRS a účtované za ceny GRS
+
+Zálohování pro sdílené složky Azure v účtech úložiště s replikací do [zónově redundantního úložiště](../storage/common/storage-redundancy-zrs.md) (ZRS) je aktuálně k dispozici jenom v oblastech Střed USA (CUS) a USA – východ 2 (EUS2)
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurace zálohování sdílené složky Azure
 Veškerá zálohovaná data se ukládají v trezorech služby Recovery Services. Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Zálohování sdílené složky Azure:
@@ -151,7 +155,7 @@ Pokud se rozhodnete zastavit ochranu sdílené složky Azure, zobrazí se výzva
 - Zastavit všechny budoucí úlohy zálohování a odstranit všechny body obnovení, nebo
 - zastavit všechny budoucí úlohy zálohování, ale ponechat body obnovení.
 
-S ponecháním bodů obnovení v úložišti můžou být spojené náklady, protože se zachovají základní snímky vytvořené službou Azure Backup. Výhodou ponechání bodů obnovení však je, že v případě potřeby můžete později sdílenou složku obnovit. Informace o nákladech na ponechání bodů obnovení najdete v podrobnostech o cenách. Pokud se rozhodnete odstranit všechny body obnovení, nebudete moci sdílenou složku obnovit.
+S ponecháním bodů obnovení v úložišti můžou být spojené náklady, protože se zachovají základní snímky vytvořené službou Azure Backup. Výhodou ponechání bodů obnovení však je, že v případě potřeby můžete později sdílenou složku obnovit. Informace o nákladech na ponechání bodů obnovení najdete v podrobnostech o cenách. Pokud se rozhodnete odstranit všechny body obnovení, nebudete moct sdílenou složku obnovit.
 
 Zastavení ochrany sdílené složky Azure:
 

@@ -1,41 +1,41 @@
 ---
-title: Ukázek Azure sestavy API přihlašovací aktivita služby Active Directory | Microsoft Docs
-description: Jak začít pracovat s Azure Active Directory Reporting API
+title: Ukázky rozhraní API pro sestavy aktivit přihlašování do Azure Active Directory | Microsoft Docs
+description: Jak začít s rozhraním API pro generování sestav Azure Active Directory
 services: active-directory
 documentationcenter: ''
-author: rolyon
+author: priyamohanram
 manager: mtillman
 editor: ''
 ms.assetid: c41c1489-726b-4d3f-81d6-83beb932df9c
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: compliance-reports
 ms.date: 05/31/2018
-ms.author: dhanyahk;rolyon
+ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 466755d7d1cc7fbf4006826ac849b74ba306bae9
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: MT
+ms.openlocfilehash: 52d49770014a5fb6a5eec644868e702c8a8d9ef3
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34698573"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36224894"
 ---
-# <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Ukázek Azure sestavy API přihlašovací aktivita služby Active Directory
-Tento článek je součástí kolekce článků o službě Azure Active Directory, vytváření sestav rozhraní API.  
-Generování sestav služby Azure AD poskytuje rozhraní API, která umožňuje přístup k datům přihlašovací aktivita pomocí kódu nebo související nástroje.  
-Rámec tohoto článku je poskytnout ukázkový kód pro **aktivity API přihlášení**.
+# <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Ukázky rozhraní API pro sestavy aktivit přihlašování do Azure Active Directory
+Tento článek je součástí kolekce článků o rozhraní API pro generování sestav Azure Active Directory.  
+Generování sestav Azure AD poskytuje rozhraní API, které umožňuje přistupovat k datům aktivit přihlašování pomocí kódu nebo souvisejících nástrojů.  
+Účelem tohoto článku je poskytnout vám vzorový kód pro **rozhraní API pro aktivity přihlašování**.
 
 Přečtěte si:
 
-* [Protokoly auditu](active-directory-reporting-azure-portal.md#activity-reports) další koncepční informace
-* [Začínáme s Azure Active Directory Reporting API](active-directory-reporting-api-getting-started.md) Další informace o rozhraní API pro generování sestav.
+* Další koncepční informace v tématu věnovaném [protokolům auditu](active-directory-reporting-azure-portal.md#activity-reports).
+* Další informace o rozhraní API pro generování sestav v tématu [Začínáme s rozhraním API pro generování sestav Azure Active Directory](active-directory-reporting-api-getting-started.md).
 
 
 ## <a name="prerequisites"></a>Požadavky
-Před použitím ukázky v tomto článku, je potřeba provést [požadavky pro přístup k Azure AD reporting rozhraní API](active-directory-reporting-api-prerequisites.md).  
+Než budete moct použít ukázky v tomto článku, musíte dokončit [požadavky pro přístup k rozhraní API pro generování sestav Azure AD](active-directory-reporting-api-prerequisites.md).  
 
 ## <a name="powershell-script"></a>Skript PowerShellu
 
@@ -91,13 +91,13 @@ if ($oauth.access_token -ne $null) {
 
 
 
-## <a name="executing-the-script"></a>Provádění skriptu
-Se vrátí po ukončení úprav skript, spouštět a ověřte, že očekávaná data z přihlášení protokoluje sestavy.
+## <a name="executing-the-script"></a>Spuštění skriptu
+Jakmile dokončíte úpravy skriptu, spusťte ho a ověřte, že se ze sestavy protokolů přihlašování vracejí očekávaná data.
 
-Skript vrátí výstupní ze sestavy přihlášení ve formátu JSON. Vytvoří také `SignIns.json` soubor s stejný výstup. Můžete experimentovat změnou skript, který chcete vrátit data z jiných sestavy a komentář výstupní formáty, které nepotřebujete.
+Skript vrátí výstup ze sestavy přihlašování ve formátu JSON. Vytvoří také soubor `SignIns.json` se stejným výstupem. Můžete experimentovat tím, že skript upravíte, aby vracel data z jiných sestav, a okomentujete formáty výstupu, které nepotřebujete.
 
 ## <a name="next-steps"></a>Další kroky
-* Chcete přizpůsobit ukázky v tomto článku? Podívejte se [referenční dokumentace rozhraní API služby Azure Active Directory přihlašovací aktivita](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). 
-* Pokud chcete zobrazit úplný přehled pomocí Azure Active Directory, vytváření sestav rozhraní API, najdete v části [Začínáme s Azure Active Directory, vytváření sestav rozhraní API](active-directory-reporting-api-getting-started.md).
-* Pokud chcete získat další informace o vytváření sestav Azure Active Directory, přečtěte si téma [Azure Active Directory průvodce vytvářením sestav](active-directory-reporting-guide.md).  
+* Chcete si přizpůsobit ukázky v tomto článku? Přečtěte si [referenční informace k rozhraní API pro aktivity přihlašování do Azure Active Directory](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/signin). 
+* Úplný přehled použití rozhraní API pro generování sestav Azure Active Directory najdete v tématu [Začínáme s rozhraním API pro generování sestav Azure Active Directory](active-directory-reporting-api-getting-started.md).
+* Další informace o generování sestav Azure Active Directory najdete v tématu [Průvodce generováním sestav Azure Active Directory](active-directory-reporting-guide.md).  
 

@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/30/2018
+ms.date: 06/15/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: df455f46e5fbc6bc1a4a7f0c30eac1bb185dea3d
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: a1197277b97c14e95bdab67f7c3d00b75a841f22
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312691"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36267570"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Kurz: Vytvoření a nasazení aplikace s front-end službou webového rozhraní API pro ASP.NET Core a stavovou back-end službou
 Tento kurz je první částí série.  Dozvíte se, jak vytvořit aplikaci Azure Service Fabric s front-endem webového rozhraní API pro ASP.NET Core a stavovou back-end službou pro ukládání dat. Až budete hotovi, budete mít hlasovací aplikaci s webovým front-endem v ASP.NET Core, která ukládá výsledky hlasování do stavové back-end služby v clusteru. Pokud nechcete hlasovací aplikaci vytvářet ručně, můžete si [stáhnout zdrojový kód](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) dokončené aplikace a přeskočit k části [Prohlídka ukázkové hlasovací aplikace](#walkthrough_anchor).  Pokud chcete, můžete se podívat na [video s průvodcem](https://channel9.msdn.com/Events/Connect/2017/E100) tímto kurzem.
@@ -74,9 +74,21 @@ Nejprve vytvořte webový front-end hlasovací aplikace pomocí ASP.NET Core. AS
    ![Průzkumník řešení po vytvoření aplikace se službou webového rozhraní API pro ASP.NET Core]( ./media/service-fabric-tutorial-create-dotnet-app/solution-explorer-aspnetcore-service.png)
 
 ### <a name="add-angularjs-to-the-votingweb-service"></a>Přidání AngularJS do služby VotingWeb
-Přidejte do své služby [AngularJS](http://angularjs.org/) pomocí [podpory Bower](/aspnet/core/client-side/bower). Nejprve do projektu přidejte konfigurační soubor Bower.  V Průzkumníku řešení klikněte pravým tlačítkem na **VotingWeb** a vyberte **Přidat -> Nová položka**. Vyberte **Web** a pak **Konfigurační soubor Bower**.  Vytvoří se soubor *bower.json*.
+Přidejte do své služby [AngularJS](http://angularjs.org/) pomocí [podpory Bower](/aspnet/core/client-side/bower). Nejprve do projektu přidejte konfigurační soubor *.bowerrc*.  V Průzkumníku řešení klikněte pravým tlačítkem na **VotingWeb** a vyberte **Přidat -> Nová položka**. Vyberte **Jazyk C#** a pak **Soubor JSON**.  Do pole *Název* zadejte **.bowerrc** a klikněte na **Přidat**.
 
-Otevřete soubor *bower.json*, přidejte položky pro angular a angular-bootstrap a pak uložte provedené změny.
+Otevřete soubor *.bowerrc* a nahraďte jeho obsah následujícím kódem, který určuje, že Bower nainstaluje prostředky balíčku do adresáře *wwwroot/lib*.
+
+```json
+{
+ "directory": "wwwroot/lib"
+}
+```
+
+Uložte provedené změny souboru *.bowerrc*.  Tím se ve vašem projektu vytvoří soubor *.bowerrc*.  
+
+Dále do projektu přidejte konfigurační soubor Bower.  V Průzkumníku řešení klikněte pravým tlačítkem na **VotingWeb** a vyberte **Přidat -> Nová položka**. Vyberte **Jazyk C#** a pak **Soubor JSON**.  Do pole *Název* zadejte **bower.json** a klikněte na **Přidat**.
+
+Otevřete soubor *bower.json*, nahraďte jeho obsah následujícími položkami pro angular a angular-bootstrap a pak uložte provedené změny.
 
 ```json
 {
@@ -92,7 +104,8 @@ Otevřete soubor *bower.json*, přidejte položky pro angular a angular-bootstra
   }
 }
 ```
-Po uložení souboru *bower.json* se Angular nainstaluje do složky *wwwroot/lib* vašeho projektu. Kromě toho je uvedený také ve složce *Dependencies/Bower*.
+
+Po uložení souboru *bower.json* podpora Bower v sadě Visual Studio nainstaluje Angular do složky *wwwroot/lib* vašeho projektu. Kromě toho je uvedený také ve složce *Dependencies/Bower*.
 
 ### <a name="update-the-sitejs-file"></a>Aktualizace souboru site.js
 Otevřete soubor *wwwroot/js/site.js*.  Nahraďte jeho obsah kódem JavaScriptu, který používají zobrazení Home:

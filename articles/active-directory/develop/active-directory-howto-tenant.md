@@ -16,12 +16,12 @@ ms.topic: hero-article
 ms.date: 03/23/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 26d336c9d896859d8012b1eaad1a16d0cbd9b628
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7ed0103b8ad8f23cd45a3a9ee94e01ce69e1e45b
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596205"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287253"
 ---
 # <a name="how-to-get-an-azure-active-directory-tenant"></a>Získání klienta Azure Active Directory
 

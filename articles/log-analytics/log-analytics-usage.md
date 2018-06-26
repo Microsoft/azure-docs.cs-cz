@@ -1,5 +1,5 @@
 ---
-title: Analýza využití dat v Log Analytics | Microsoft Docs
+title: Analýza využití dat v Log Analytics | Dokumentace Microsoftu
 description: Použijte řídicí panel Využití a odhad nákladů v Log Analytics k vyhodnocení objemu dat odesílaných do Log Analytics a identifikaci možných příčin jejich neočekávaných nárůstů.
 services: log-analytics
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/05/2018
+ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: ed2e77553cc72caa6a7b48fe6fa6baab0ffafec5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 2ceb350883bc6f2b40d88d5cf595b06b074013d1
+ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802047"
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36209812"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analýza využití dat v Log Analytics
 Log Analytics obsahuje informace o objemu shromážděných dat, zdrojích odesílajících data a různých typech odesílaných dat.  Využití dat můžete zkontrolovat a analyzovat pomocí řídicího panelu **Využití Log Analytics**. Řídicí panel ukazuje, kolik dat shromažďují jednotlivá řešení a kolik dat odesílají vaše počítače.
@@ -59,7 +59,9 @@ Tato část popisuje postup vytvoření upozornění v těchto případech:
 - Objem dat překračuje zadanou velikost.
 - Očekává se, že objem dat překročí zadanou velikost.
 
-[Upozornění](log-analytics-alerts-creating.md) v Log Analytics používají vyhledávací dotazy. Následující dotaz vrátí výsledek, pokud se za posledních 24 hodin shromáždilo více než 100 GB dat:
+Upozornění Azure podporují [upozornění protokolu](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) využívající vyhledávací dotazy. 
+
+Následující dotaz vrátí výsledek, pokud se za posledních 24 hodin shromáždilo více než 100 GB dat:
 
 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
 
@@ -69,27 +71,35 @@ Následující dotaz pomocí jednoduchého vzorce předvídá, jestli dojde k od
 
 Pokud chcete upozornit na jiný objem dat, změňte v dotazech hodnotu 100 na počet GB, na který chcete upozornit.
 
-Pokud chcete být upozorňováni při větším než očekávaném shromažďování dat, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření pravidla upozornění](log-analytics-alerts-creating.md#create-an-alert-rule).
+Pokud chcete být upozorňováni při větším než očekávaném shromažďování dat, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
 
 Při vytváření upozornění pro první dotaz (více než 100 GB dat během 24 hodin) nastavte:  
-- **Název** na *Větší objem dat než 100 GB během 24 hodin*.  
-- **Závažnost** na *Upozornění*.  
-- **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`.   
-- **Časový interval** na *24 hodin*.
-- **Četnosti upozornění** na 1 hodinu, protože se data o využití aktualizují pouze jednou za hodinu.
-- **Generovat upozornění na základě** na *Počet výsledků*.
-- **Počet výsledků** na *Větší než 0*.
 
-Pomocí kroků popsaných v tématu o [přidání akcí k pravidlům upozornění](log-analytics-alerts-actions.md) nakonfigurujte pro pravidlo upozornění akci e-mailu, webhooku nebo runbooku.
+- **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor Log Analytics.
+- **Kritéria upozornění** – Zadejte následující:
+   - **Název signálu** – Vyberte **Vlastní prohledávání protokolu**.
+   - **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`.
+   - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než* **Prahová hodnota** *0*.
+   - **Časové období** na *1440* minut a **Frekvenci upozornění** na každých *60* minut, protože se data o využití aktualizují pouze jednou za hodinu.
+- **Definujte podrobnosti upozornění** – Zadejte následující:
+   - **Název** na *Větší objem dat než 100 GB během 24 hodin*.
+   - **Závažnost** na *Upozornění*.
+
+Zadejte existující nebo vytvořte novou [Skupinu akcí](../monitoring-and-diagnostics/monitoring-action-groups.md), abyste dostali upozornění, když upozornění protokolu splní kritéria.
 
 Při vytváření upozornění pro druhý dotaz (předpověď, že během 24 hodin bude shromážděno více než 100 GB dat) nastavte:
-- **Název** na *Očekávaný větší objem dat než 100 GB během 24 hodin*.
-- **Závažnost** na *Upozornění*.
-- **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`.
-- **Časový interval** na *3 hodiny*.
-- **Četnosti upozornění** na 1 hodinu, protože se data o využití aktualizují pouze jednou za hodinu.
-- **Generovat upozornění na základě** na *Počet výsledků*.
-- **Počet výsledků** na *Větší než 0*.
+
+- **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor Log Analytics.
+- **Kritéria upozornění** – Zadejte následující:
+   - **Název signálu** – Vyberte **Vlastní prohledávání protokolu**.
+   - **Vyhledávací dotaz** na `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`.
+   - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než* **Prahová hodnota** *0*.
+   - **Časové období** na *180* minut a **Frekvenci upozornění** na každých *60* minut, protože se data o využití aktualizují pouze jednou za hodinu.
+- **Definujte podrobnosti upozornění** – Zadejte následující:
+   - **Název** na *Očekávaný větší objem dat než 100 GB během 24 hodin*.
+   - **Závažnost** na *Upozornění*.
+
+Zadejte existující nebo vytvořte novou [Skupinu akcí](../monitoring-and-diagnostics/monitoring-action-groups.md), abyste dostali upozornění, když upozornění protokolu splní kritéria.
 
 Pokud obdržíte upozornění, pomocí kroků v následující části můžete řešit potíže způsobující větší využití, než se čekalo.
 
@@ -155,11 +165,10 @@ Kliknutím na **Zobrazit všechno...** zobrazte úplný seznam počítačů odes
 
 Použijte [cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
 
-
 ## <a name="next-steps"></a>Další kroky
 * V tématu [Prohledávání protokolů v Log Analytics](log-analytics-log-searches.md) zjistíte, jak používat jazyk vyhledávání. Pomocí vyhledávacích dotazů můžete na datech o využití provádět další analýzy.
-* Pokud chcete být upozorňováni při splnění kritéria vyhledávání, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření pravidla upozornění](log-analytics-alerts-creating.md#create-an-alert-rule).
-* Použijte [cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) a shromažďujte data jenom z požadované skupiny počítačů.
+* Pokud chcete být upozorňováni při splnění kritérií vyhledávání, postupujte podle kroků popsaných v tématu týkajícím se [vytvoření nového upozornění protokolu](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+* Použijte [cílení na řešení](../operations-management-suite/operations-management-suite-solution-targeting.md) a shromažďujte data pouze z požadované skupiny počítačů.
 * Pokud chcete nakonfigurovat efektivní zásadu shromažďování událostí zabezpečení, přečtěte si téma popisující [zásady filtrování v Azure Security Center](../security-center/security-center-enable-data-collection.md).
 * Změňte [konfiguraci čítačů výkonu](log-analytics-data-sources-performance-counters.md).
 * Pokud chcete upravit nastavení shromažďování událostí, přečtěte si téma popisující [konfiguraci protokolu událostí](log-analytics-data-sources-windows-events.md).

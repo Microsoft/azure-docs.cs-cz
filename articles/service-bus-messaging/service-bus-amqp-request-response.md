@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2018
 ms.author: sethm
-ms.openlocfilehash: 847fe0c08d442388cfa506042272bb358058cb4c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: cda313085d197558e969309eaed928421b0b1924
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194684"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752900"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 v Microsoft Azure Service Bus: na základě požadavku odpověď operace
 
 Tento článek definuje seznam operací založené na požadavku nebo odpovědi Microsoft Azure Service Bus. Tyto informace jsou založeny na koncept pracovní AMQP správu verze 1.0.  
   
-Podrobné úroveň protokolu AMQP 1.0 protokol průvodce, která vysvětluje, jak Service Bus implementuje a je založený na technické specifikace OASIS AMQP, najdete v článku [protokolu AMQP 1.0 v příručce protokol Azure Service Bus a Event Hubs][Průvodce protokolem AMQP 1.0].  
+Podrobné úroveň protokolu AMQP 1.0 protokol průvodce, která vysvětluje, jak Service Bus implementuje a je založený na technické specifikace OASIS AMQP, najdete v článku [protokolu AMQP 1.0 v příručce protokol Azure Service Bus a Event Hubs][průvodce protokolem amqp 1.0].  
   
 ## <a name="concepts"></a>Koncepty  
   
@@ -118,8 +118,8 @@ Entit služby Service Bus je potřeba řešit následujícím způsobem:
   
 |Typ entity|Adresa|Příklad:|  
 |-----------------|-------------|-------------|  
-|Fronty|`<queue_name>`|`“myQueue”`<br /><br /> `“site1/myQueue”`|  
-|Téma|`<topic_name>`|`“myTopic”`<br /><br /> `“site2/page1/myQueue”`|  
+|fronta|`<queue_name>`|`“myQueue”`<br /><br /> `“site1/myQueue”`|  
+|téma|`<topic_name>`|`“myTopic”`<br /><br /> `“site2/page1/myQueue”`|  
 |předplatné|`<topic_name>/Subscriptions/<subscription_name>`|`“myTopic/Subscriptions/MySub”`|  
   
 ## <a name="message-operations"></a>Operace zpráv  
@@ -175,7 +175,7 @@ Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|`from-sequence-number`|dlouhá|Ano|Pořadové číslo, od kterého má začít funkce Náhled.|  
+|`from-sequence-number`|zem. šířka|Ano|Pořadové číslo, od kterého má začít funkce Náhled.|  
 |`message-count`|celá čísla|Ano|Maximální počet zpráv, které mají prohlížet.|  
   
 #### <a name="response"></a>Odpověď  
@@ -330,7 +330,7 @@ Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|číslo od pořadí|dlouhá|Ano|Pořadové číslo, od kterého má začít funkce Náhled.|  
+|číslo od pořadí|zem. šířka|Ano|Pořadové číslo, od kterého má začít funkce Náhled.|  
 |počet zpráv|celá čísla|Ano|Maximální počet zpráv, které mají prohlížet.|  
 |id relace|řetězec|Ano|ID relace.|  
   
@@ -437,7 +437,7 @@ Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **
 |---------|----------------|--------------|--------------------|  
 |last-updated-time|časové razítko|Ano|Filtrovat, aby obsahovaly pouze relace aktualizován po daném okamžiku.|  
 |Přeskočit|celá čísla|Ano|Přeskočte určitý počet relací.|  
-|Horní|celá čísla|Ano|Maximální počet relací.|  
+|horní|celá čísla|Ano|Maximální počet relací.|  
   
 #### <a name="response"></a>Odpověď  
 
@@ -453,7 +453,7 @@ Zpráva odpovědi musí obsahovat **amqp hodnotu** obsahující části **mapy**
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |Přeskočit|celá čísla|Ano|Počet přeskočených relace, pokud se stavovým kódem 200.|  
-|ID relace|Pole řetězců.|Ano|Pole ID, pokud je stavový kód 200 relací.|  
+|ID relace|pole řetězců.|Ano|Pole ID, pokud je stavový kód 200 relací.|  
   
 ## <a name="rule-operations"></a>Pravidla operací  
   
@@ -473,21 +473,21 @@ Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
 |Název pravidla|řetězec|Ano|Název pravidla není včetně předplatného a tématu.|  
-|Popis pravidla|mapy|Ano|Popis pravidla uvedeného v další části.|  
+|Popis pravidla|Mapy|Ano|Popis pravidla uvedeného v další části.|  
   
 **Popis pravidla** mapy musí zahrnovat následující položky, kde **sql filtru** a **korelace filtru** se vzájemně vylučují:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|Filtr SQL|mapy|Ano|`sql-filter`, jak je uvedeno v následující části.|  
-|korelace filtru|mapy|Ano|`correlation-filter`, jak je uvedeno v následující části.|  
-|Akce pravidla SQL|mapy|Ano|`sql-rule-action`, jak je uvedeno v následující části.|  
+|Filtr SQL|Mapy|Ano|`sql-filter`, jak je uvedeno v následující části.|  
+|korelace filtru|Mapy|Ano|`correlation-filter`, jak je uvedeno v následující části.|  
+|Akce pravidla SQL|Mapy|Ano|`sql-rule-action`, jak je uvedeno v následující části.|  
   
 Mapy filtru sql musí zahrnovat následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|výraz|řetězec|Ano|Výraz filtru SQL.|  
+|Výraz|řetězec|Ano|Výraz filtru SQL.|  
   
 **Korelace filtru** mapa musí obsahovat alespoň jeden z následujících položek:  
   
@@ -497,17 +497,17 @@ Mapy filtru sql musí zahrnovat následující položky:
 |id zprávy|řetězec|Ne||  
 |na|řetězec|Ne||  
 |odpověď pro|řetězec|Ne||  
-|Popisek|řetězec|Ne||  
+|label|řetězec|Ne||  
 |id relace|řetězec|Ne||  
 |odpověď k relaci id|řetězec|Ne||  
 |Typ obsahu|řetězec|Ne||  
-|properties|mapy|Ne|Mapuje sběrnice [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties).|  
+|properties|Mapy|Ne|Mapuje sběrnice [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Properties).|  
   
 **Akce pravidla sql** mapy musí zahrnovat následující položky:  
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|výraz|řetězec|Ano|Výraz akce SQL.|  
+|Výraz|řetězec|Ano|Výraz akce SQL.|  
   
 #### <a name="response"></a>Odpověď  
 
@@ -559,7 +559,7 @@ Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|Horní|celá čísla|Ano|Počet pravidel načíst na stránce.|  
+|horní|celá čísla|Ano|Počet pravidel načíst na stránce.|  
 |Přeskočit|celá čísla|Ano|Počet pravidel tak, aby přeskočil. Definuje počáteční index (+ 1) v seznamu pravidel. | 
 
 #### <a name="response"></a>Odpověď
@@ -684,11 +684,11 @@ Musí obsahovat text zprávy požadavku **amqp hodnotu** obsahující části **
   
 |Klíč|Typ hodnoty|Požaduje se|Hodnota obsahu|  
 |---------|----------------|--------------|--------------------|  
-|Stav dispozice|řetězec|Ano|dokončené<br /><br /> opuštění<br /><br /> pozastaveno|  
+|Stav dispozice|řetězec|Ano|Byla dokončena<br /><br /> opuštění<br /><br /> Pozastaveno|  
 |Zámek tokeny|pole identifikátoru uuid|Ano|Tokeny zámku zpráva se bude aktualizovat stav dispozice.|  
 |Důvod nedoručených zpráv|řetězec|Ne|Může být nastaven, pokud je nastaven stav dispozice **pozastaveno**.|  
 |Popis nedoručených zpráv|řetězec|Ne|Může být nastaven, pokud je nastaven stav dispozice **pozastaveno**.|  
-|vlastnosti upravit|mapy|Ne|Seznam Service Bus zprostředkované vlastnosti zprávy, které chcete upravit.|  
+|vlastnosti upravit|Mapy|Ne|Seznam Service Bus zprostředkované vlastnosti zprávy, které chcete upravit.|  
   
 #### <a name="response"></a>Odpověď  
 
@@ -709,4 +709,4 @@ Další informace o AMQP a Service Bus, najdete na následujících odkazech:
 
 [Přehled protokolu AMQP Service Bus]: service-bus-amqp-overview.md
 [Průvodce protokolem AMQP 1.0]: service-bus-amqp-protocol-guide.md
-[AMQP v Service Bus pro systém Windows Server]: https://msdn.microsoft.com/library/dn574799.asp
+[AMQP v Service Bus pro systém Windows Server]: https://docs.microsoft.com/previous-versions/service-bus-archive/dn282144(v=azure.100)

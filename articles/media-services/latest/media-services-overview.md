@@ -13,14 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/27/2018
+ms.date: 06/14/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c5c719d484684c0efff87671ba7e012d9bd7699e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 489801852202163ef40d57da0082e39793196d85
+ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 06/19/2018
+ms.locfileid: "36264090"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Co jsou Azure Media Services v3?
 
@@ -49,7 +50,9 @@ Ve službě Media Services můžete vytvářet různé pracovní postupy pro pr�
 
 ## <a name="v3-capabilities"></a>Možnosti v3
 
-V3 používá prostor Unified API, který zpřístupňuje funkce pro správu i provoz založené na **Azure Resource Manageru**. V této verzi jsou k dispozici následující funkce:  
+V3 používá prostor Unified API, který zpřístupňuje funkce pro správu i provoz založené na Azure Resource Manageru. 
+
+V této verzi jsou k dispozici následující funkce:  
 
 * **Transformace** – umožňují definovat jednoduché pracovní úlohy zpracování médií a analýzy. Transformace usnadňují zpracování videosouborů a zvukových souborů. Můžete je opakovaně použít ke zpracování všech souborů v knihovně obsahu – stačí odeslat úlohu k transformaci.
 * **Úlohy** na zpracování videí (zakódování nebo analýzu). Vstupní obsah se dá v úloze specifikovat jako HTTP, URL, SAS nebo cesta k souboru v úložišti objektů Blob Azure. 
@@ -58,34 +61,29 @@ V3 používá prostor Unified API, který zpřístupňuje funkce pro správu i p
 * **Řízení přístupu na základě role** – dá se nastavit na úrovni prostředku, a umožňuje tak uzamknout přístup ke konkrétním prostředkům, jako jsou transformace, kanály a další.
 * **Klientské sady SDK** v různých jazycích: .NET, .NET Core, Python, Go, Java a Node.js.
 
+## <a name="naming-conventions"></a>Zásady vytváření názvů
+
+Na názvy prostředků služby Azure Media Services v3 (například prostředky, úlohy, transformace) se vztahují omezení vytváření názvů Azure Resource Manageru. V souladu s Azure Resource Managerem jsou názvy prostředků vždy jedinečné. Jako názvy prostředků tedy můžete použít jakékoli řetězce jedinečného identifikátoru (například identifikátory GUID). 
+
+Názvy prostředků služby Media Services nemůže obsahovat znaky <, >, %, &, :, &#92;, ?, /, *, +, ., jednoduché uvozovky ani žádné řídicí znaky. Všechny ostatní znaky jsou povolené. Maximální délka názvu prostředku je 260 znaků. 
+
+Další informace o vytváření názvů Azure Resource Manageru najdete v tématech věnovaných [požadavkům na vytváření názvů](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) a [zásadám vytváření názvů](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
+
 ## <a name="how-can-i-get-started-with-v3"></a>Jak začít s v3?
 
-Jako vývojáři můžete používat [rozhraní REST API](https://go.microsoft.com/fwlink/p/?linkid=873030) služby Media Services nebo klientské knihovny, které rozhraní REST API podporují, a snadno tak vytvářet, spravovat a udržovat vlastní pracovní postupy spojené s mediálním obsahem. Microsoft generuje a podporuje následující klientské knihovny: 
+Jako vývojáři můžete používat [rozhraní REST API](https://go.microsoft.com/fwlink/p/?linkid=873030) služby Media Services nebo klientské knihovny, které rozhraní REST API podporují, a snadno tak vytvářet, spravovat a udržovat vlastní pracovní postupy spojené s mediálním obsahem. Příklad REST Postman najdete [tady](https://github.com/Azure-Samples/media-services-v3-rest-postman). Můžete použít také [rozhraní REST API založené na Azure Resource Manageru](https://github.com/Azure-Samples/media-services-v3-arm-templates).
 
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* [Jazyky .NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)
-* [.NET Core](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0) (zvolte kartu **.NET CLI**)
-* Java
+Microsoft generuje a podporuje následující klientské knihovny: 
 
-  Přidejte do svého projektu následující závislost:
-  
-  ```
-  <dependency>
-    <groupId>com.microsoft.azure.media-2018-03-30-preview</groupId>
-    <artifactId>azure-mgmt- media</artifactId>
-    <version>0.0.1-beta</version>
-  </dependency> 
-  ```
-* Node.js 
-
-  Použijte následující příkaz:
-  
-  ```
-  npm install azure-arm-mediaservices
-  ```
-  
-* [Python](https://pypi.org/project/azure-mgmt-media/1.0.0rc1/)
-* [Go](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/mediaservices/mgmt/2018-03-30-preview/media)
+|Klientská knihovna|Ukázky|
+|---|---|
+|[Azure CLI SDK](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)|[Ukázky Azure CLI](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)|
+|[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0)|[Ukázky .NET](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)|
+|[.NET Core SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Media/1.0.0) (zvolte kartu **.NET CLI**)|[Ukázky .NET Core](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)|
+|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/mediaservices)||
+|[Node.js SDK](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest)|[Ukázky Node.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials)|
+|[Python SDK](https://pypi.org/project/azure-mgmt-media/1.0.0rc1/)||
+|[Go SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/preview/mediaservices/mgmt/2018-03-30-preview/media)||
 
 Služba Media Services poskytuje [soubory Swagger](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media), pomocí kterých můžete generovat sady SDK pro vámi upřednostňovaný jazyk a technologii.  
 

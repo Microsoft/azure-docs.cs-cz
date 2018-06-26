@@ -5,38 +5,39 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 06/04/2018
+ms.date: 06/20/2018
 ms.author: raynew
-ms.openlocfilehash: d1b6dec122672e4f6260105f7b50af2cd7369947
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: c706474018bd0751872381c6d28f0ad579ba772b
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737101"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286575"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Spuštění postupu zotavení po havárii do Azure
 
-[Azure Site Recovery](site-recovery-overview.md) přispívá ke strategii provozní kontinuity a zotavení po havárii (BCDR) tím, že zajišťuje provoz a dostupnost obchodních aplikací během plánovaných i neplánovaných výpadků. Site Recovery spravuje a orchestruje zotavení po havárii místních počítačů a virtuálních počítačů Azure, včetně replikace, převzetí služeb při selhání a zotavení.
+V tomto článku se dozvíte, jak pro místní počítač spustit postup zotavení po havárii do Azure s využitím testovacího převzetí služeb při selhání. Postup ověří vaši strategii replikace bez ztráty dat.
 
-- Toto je čtvrtý kurz řady, která ukazuje, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače VMware. Předpokládá se, že jste dokončili předchozí kurzy:
+Toto je čtvrtý kurz řady, která ukazuje, jak nastavit zotavení po havárii do Azure pro místní virtuální počítače VMware.
+
+V tomto kurzu se předpokládá, že jste dokončili první tři kurzy: 
     - V [prvním kurzu](tutorial-prepare-azure.md) jste nastavili komponenty Azure potřebné pro zotavení po havárii VMware.
     - Ve [druhém kurzu](vmware-azure-tutorial-prepare-on-premises.md) jste připravili místní komponenty pro zotavení po havárii a zkontrolovali požadované součásti.
     - Ve [třetím kurzu](vmware-azure-tutorial.md) jste nastavili a povolili replikaci vašich místních virtuálních počítačů VMware.
-- Tyto kurzy demonstrují ten nejjednodušší způsob nasazení určitého scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. 
+- Tyto kurzy demonstrují ten nejjednodušší způsob nasazení určitého scénáře. V rámci možností používají jen výchozí možnosti a neuvádějí všechny varianty nastavení ani všechny cesty. Ve všech kurzech se služba Site Recovery nastavuje s nejjednodušším nastavením a kde je to vhodné, používají se výchozí hodnoty. Podrobnější informace ke krokům testovacího převzetí služeb při selhání najdete v [tomto průvodci](site-recovery-test-failover-to-azure.md).
 
-
-V tomto článku se dozvíte, jak pro místní počítač spustit postup zotavení po havárii do Azure s využitím testovacího převzetí služeb při selhání. Postup ověří vaši strategii replikace bez ztráty dat. Naučte se:
+V tomto kurzu získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Nastavení izolované sítě pro testovací převzetí služeb při selhání
 > * Příprava připojení k virtuálnímu počítači Azure po převzetí služeb při selhání
 > * Spuštění testovacího převzetí služeb při selhání pro jeden počítač
 
-Tento kurz demonstruje nejjednodušší způsob, jak nastavit zotavení po havárii VMware do Azure. Podrobnější informace ke krokům testovacího převzetí služeb při selhání najdete v [tomto průvodci](site-recovery-test-failover-to-azure.md).
+V tomto kurzu:
 
 ## <a name="verify-vm-properties"></a>Ověření vlastností virtuálního počítače
 
-Před spuštěním testovacího převzetí služeb při selhání ověřte vlastnosti virtuálního počítače VMware a ujistěte se, že virtuální počítač Hyper-V[hyper-v-azure-support-matrix.md#replicated-vms], [fyzický server nebo virtuální počítač VMware](vmware-physical-azure-support-matrix.md#replicated-machines) splňuje požadavky Azure.
+Před spuštěním testovacího převzetí služeb při selhání ověřte vlastnosti virtuálního počítače VMware a ujistěte se, že [virtuální počítač Hyper-V](hyper-v-azure-support-matrix.md#replicated-vms) nebo [fyzický server nebo virtuální počítač VMware](vmware-physical-azure-support-matrix.md#replicated-machines) splňuje požadavky Azure.
 
 1. V části **Chráněné položky** klikněte na **Replikované položky** a pak na virtuální počítač.
 2. V podokně **Replikovaná položka** se zobrazí souhrn informací o virtuálním počítači, jeho stav a nejnovější dostupné body obnovení. Kliknutím na **Vlastnosti** zobrazíte další podrobnosti.

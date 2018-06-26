@@ -1,5 +1,5 @@
 ---
-title: Vytvoření účtu Batch na webu Azure Portal | Microsoft Docs
+title: Vytvoření účtu Batch na webu Azure Portal | Dokumentace Microsoftu
 description: Naučte se vytvořit účet Azure Batch na webu Azure Portal, abyste mohli spouštět velké paralelní úlohy v cloudu.
 services: batch
 documentationcenter: ''
@@ -12,23 +12,17 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/15/2018
+ms.date: 06/18/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83d97d9ed9c51d59500115c4ee3896d471024999
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8e179e2af3ee7a19c39a2f2c688e0eb25a0c02ca
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359753"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36287530"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Vytvoření účtu Batch pomocí webu Azure Portal
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](batch-account-create-portal.md)
-> * [Knihovna Batch Management .NET](batch-management-dotnet.md)
->
->
 
 Naučte se vytvořit účet Azure Batch na webu [Azure Portal][azure_portal] a zvolit vlastnosti účtu odpovídající výpočetnímu scénáři. Zjistěte, kde najít důležité vlastnosti účtu, jako jsou přístupové klíče a adresy URL účtu.
 
@@ -40,7 +34,7 @@ Informace o scénářích a účtech Batch najdete v [přehledu funkcí](batch-a
 
 1. Přihlaste se na web [Azure Portal][azure_portal].
 
-2. Klikněte na **Nový** > **Compute** > **Batch Service**.
+2. Vyberte **Vytvořit prostředek** > **Compute** > **Služba Batch**.
 
     ![Batch na webu Marketplace][marketplace_portal]
 
@@ -62,24 +56,24 @@ Informace o scénářích a účtech Batch najdete v [přehledu funkcí](batch-a
 
     f. **Režim přidělování fondů**: Pro většinu scénářů potvrďte výchozí **službu Batch**.
 
-4. Kliknutím na **Vytvořit** vytvořte účet.
+4. Výběrem možnosti **Vytvořit** vytvořte účet.
 
 
 
 ## <a name="view-batch-account-properties"></a>Zobrazení vlastností účtu Batch
-Po vytvoření účtu na něj klikněte pro přístup k jeho nastavením a vlastnostem. Všechna nastavení a vlastnosti účtu jsou přístupná pomocí nabídky vlevo.
+Po vytvoření účtu ho vyberte pro přístup k jeho nastavením a vlastnostem. Všechna nastavení a vlastnosti účtu jsou přístupná pomocí nabídky vlevo.
 
 ![Stránka účtu Batch na webu Azure Portal][account_blade]
 
 * **Název účtu Batch, URL a klíče**: K vývoji aplikace pomocí [rozhraní API služby Batch](batch-apis-tools.md#azure-accounts-for-batch-development) potřebujete URL a klíč účtu pro přístup k prostředkům služby Batch. (Batch podporuje také ověřování pomocí Azure Active Directory.)
 
-    Pokud chcete zobrazit informace pro přístup k účtu Batch, klikněte na **Klíče**.
+    Pokud chcete zobrazit informace pro přístup k účtu Batch, vyberte **Klíče**.
 
     ![Klíče účtu Batch na webu Azure Portal][account_keys]
 
-* Pokud se chcete podívat na název a klíče účtu úložiště přidruženého k účtu Batch, klikněte na **Účet úložiště**.
+* Pokud chcete zobrazit název a klíče účtu úložiště přidruženého k účtu Batch, vyberte **Účet úložiště**.
 
-* Pokud se chcete podívat na kvóty prostředků, které platí pro účet Batch, klikněte na **Kvóty**. Podrobnosti najdete v článku o [kvótách a omezeních služby Batch](batch-quota-limit.md).
+* Pokud chcete zobrazit kvóty prostředků, které platí pro účet Batch, vyberte **Kvóty**. Podrobnosti najdete v článku o [kvótách a omezeních služby Batch](batch-quota-limit.md).
 
 
 ## <a name="additional-configuration-for-user-subscription-mode"></a>Další konfigurace pro režim předplatného uživatele
@@ -91,9 +85,13 @@ Při vytváření prvního účtu Batch v režimu předplatného uživatele mus�
 
 1. Přihlaste se na web [Azure Portal][azure_portal].
 
-2. Klikněte na **Další služby** > **Předplatné** a klikněte na předplatné, které chcete pro účet Batch použít.
+2. Vyberte **Všechny služby** > **Předplatná** a vyberte předplatné, které chcete pro účet Batch použít.
 
-3. Na stránce **Předplatné** klikněte na **Řízení přístupu (IAM)** > **Přidat**.
+3. Na stránce **Předplatné** vyberte **Poskytovatelé prostředků** a vyhledejte **Microsoft.Batch**. Zkontrolujte, že je v předplatném zaregistrovaný poskytovatel prostředků **Microsoft.Batch**. Pokud není zaregistrovaný, vyberte odkaz **Zaregistrovat**.
+
+    ![Registrace poskytovatele Microsoft.Batch][register_provider]
+
+3. Na stránce **Předplatné** vyberte **Řízení přístupu (IAM)** > **Přidat**.
 
     ![Řízení přístupu pro předplatné][subscription_access]
 
@@ -102,16 +100,16 @@ Při vytváření prvního účtu Batch v režimu předplatného uživatele mus�
     2. **Microsoft Azure Batch**. Novější tenanti služby Azure AD mohou používat tento název.
     3. **ddbf3205-c6bd-46ae-8127-60eb93363864** je ID rozhraní API služby Batch. 
 
-5. Jakmile najdete rozhraní API služby Batch, vyberte ho a klikněte na **Uložit**.
+5. Jakmile najdete rozhraní API služby Batch, vyberte ho a pak vyberte **Uložit**.
 
     ![Přidání oprávnění pro službu Batch][add_permission]
 
 ### <a name="create-a-key-vault"></a>Vytvořte trezor klíčů
 V režimu předplatného uživatele je vyžadován trezor klíčů Azure, který patří do stejné skupiny prostředků jako účet Batch, který se má vytvořit. Ověřte, že se skupina prostředků nachází v oblasti, kde je služba Batch [k dispozici](https://azure.microsoft.com/regions/services/) a která podporuje vaše předplatné.
 
-1. Na webu [Azure Portal][azure_portal] klikněte na **Nový** > **Zabezpečení** > **Key Vault**.
+1. Na webu [Azure Portal][azure_portal] vyberte **Nový** > **Zabezpečení** > **Key Vault**.
 
-2. Na stránce **Vytvořit trezor klíčů** zadejte název pro trezor klíčů a vytvořte skupinu prostředků v oblasti, kterou chcete použít pro účet Batch. Pro zbývající nastavení ponechejte výchozí hodnoty a pak klikněte na **Vytvořit**.
+2. Na stránce **Vytvořit trezor klíčů** zadejte název pro trezor klíčů a vytvořte skupinu prostředků v oblasti, kterou chcete použít pro účet Batch. Pro zbývající nastavení ponechte výchozí hodnoty a pak vyberte **Vytvořit**.
 
 K vytvoření účtu Batch v režimu předplatného uživatele použijte skupinu prostředků Key Vault, jako režim přidělování fondů vyberte **Předplatné uživatele** a vyberte Key Vault.
 
@@ -137,4 +135,5 @@ K vytváření a správě účtů Batch můžete kromě webu Azure Portal použ�
 [storage_account]: ./media/batch-account-create-portal/storage_account.png
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png
+[register_provider]: ./media/batch-account-create-portal/register_provider.png
 

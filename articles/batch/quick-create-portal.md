@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f6b2cc8f3e27b65f225014ec92a7e99851eac743
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: de8b53756c64867c9b24bcd609e5b994e870da9f
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31514539"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36285579"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rychlý start: Spuštění první úlohy služby Batch na webu Azure Portal
 
@@ -32,7 +32,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 Pomocí těchto kroků si vytvořte ukázkový účet Batch pro účely testování. Účet Batch budete potřebovat k vytváření fondů a úloh. Jak vidíte, účet Batch můžete propojit s účtem Azure Storage. I když to k tomuto rychlému startu není nutné, účet úložiště je užitečný při nasazování aplikací a ukládání vstupních a výstupních dat ve většině reálných způsobů využití.
 
 
-1. Klikněte na **Nový** > **Compute** > **Batch Service**. 
+1. Vyberte **Vytvořit prostředek** > **Compute** > **Služba Batch**. 
 
   ![Batch na webu Marketplace][marketplace_portal]
 
@@ -40,7 +40,7 @@ Pomocí těchto kroků si vytvořte ukázkový účet Batch pro účely testová
 
 3. V **Účtu úložiště** vyberte stávající účet úložiště nebo vytvořte nový.
 
-4. U ostatních nastavení nechejte výchozí hodnoty a kliknutím na **Vytvořit** vytvořte účet.
+4. U ostatních nastavení ponechte výchozí hodnoty a výběrem možnosti **Vytvořit** vytvořte účet.
 
   ![Vytvoření účtu Batch][account_portal]  
 
@@ -51,7 +51,7 @@ Po zobrazení zprávy **Nasazení bylo úspěšné** přejděte na portálu do �
 Teď máte účet Batch a můžete pro testovací účely vytvořit ukázkový fond výpočetních uzlů s Windows. V tomto rychlém příkladu fond obsahuje 2 uzly se spuštěnou imagí systému Windows Server 2012 R2 z Azure Marketplace.
 
 
-1. V účtu Batch klikněte na **Fondy** > **Přidat**.
+1. V účtu Batch vyberte **Fondy** > **Přidat**.
 
 2. Jako **ID fondu** zadejte *mypool*. 
 
@@ -75,21 +75,21 @@ Teď máte účet Batch a můžete pro testovací účely vytvořit ukázkový f
 
   ![Výběr velikosti fondu][pool_size] 
 
-5. U ostatních nastavení nechejte výchozí hodnoty a kliknutím na **OK** vytvořte fond.
+5. U ostatních nastavení ponechte výchozí hodnoty a výběrem možnosti **OK** vytvořte fond.
 
 Služba Batch vytvoří fond okamžitě, ale přidělení a spuštění uzlů úložiště bude několik minut trvat. Během této doby bude mít položka **Stav přidělení** fondu hodnotu **Změna velikosti**. Během změny velikosti můžete pokračovat vytvořením úlohy a úkolů. 
 
 ![Fond ve stavu změny velikosti][pool_resizing]
 
-Po několika minutách se stav fondu změní na hodnotu **Stabilní** a uzly se spustí. Kliknutím na **Uzly** můžete zkontrolovat stav uzlů. Když má některý uzel stav **Nečinný**, znamená to, že je připravený spouštět úkoly. 
+Po několika minutách se stav fondu změní na hodnotu **Stabilní** a uzly se spustí. Vyberte **Uzly** a zkontrolujte stav uzlů. Když má některý uzel stav **Nečinný**, znamená to, že je připravený spouštět úkoly. 
 
 ## <a name="create-a-job"></a>Vytvoření úlohy
 
 Teď máte vytvořený fond a můžete vytvořit úlohu, která se v něm bude spouštět. Úloha služby Batch je logická skupina jednoho nebo víc úkolů. Úloha zahrnuje nastavení společná všem úkolům, jako je priorita a fond, ve kterém se mají úkoly spouštět. Na začátku úloha neobsahuje žádné úkoly. 
 
-1. V zobrazení účtu Batch klikněte na **Úlohy** > **Přidat**. 
+1. V zobrazení účtu Batch vyberte **Úlohy** > **Přidat**. 
 
-2. Jako **ID úlohy** zadejte *myjob*. U položky **Fond** vyberte *mypool*. U ostatních nastavení nechejte výchozí hodnoty a klikněte na **OK**.
+2. Jako **ID úlohy** zadejte *myjob*. U položky **Fond** vyberte *mypool*. U ostatních nastavení ponechte výchozí hodnoty a vyberte **OK**.
 
   ![Vytvoření úlohy][job_create]
 
@@ -103,11 +103,11 @@ Při použití služby Batch se aplikace nebo skript zadávají právě na pří
 
 Vytvoření prvního úkolu:
 
-1. Klikněte na tlačítko **Add** (Přidat).
+1. Vyberte **Přidat**.
 
 2. Jako **ID úkolu** zadejte *mytask*. 
 
-3. V okně **Příkazový řádek** zadejte `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`. U ostatních nastavení nechejte výchozí hodnoty a klikněte na **OK**.
+3. V okně **Příkazový řádek** zadejte `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`. U ostatních nastavení ponechte výchozí hodnoty a vyberte **OK**.
 
   ![Vytvoření úkolu][task_create]
 
@@ -117,7 +117,7 @@ Pokud chcete vytvořit druhý úkol, vraťte se ke kroku 1. Zadejte jiné **ID �
 
 ## <a name="view-task-output"></a>Zobrazení výstupu úkolu
 
-Předchozí příklady úkolů se dokončí během pár minut. Pokud chcete zobrazit výstup dokončeného úkolu, klikněte na **Soubory v uzlu** a vyberte soubor `stdout.txt`. Tento soubor obsahuje standardní výstup úkolu. Obsah by měl vypadat zhruba takto:
+Předchozí příklady úkolů se dokončí během pár minut. Pokud chcete zobrazit výstup dokončeného úkolu, vyberte **Soubory v uzlu** a vyberte soubor `stdout.txt`. Tento soubor obsahuje standardní výstup úkolu. Obsah by měl vypadat zhruba takto:
 
 ![Zobrazení výstupu úkolu][task_output]
 
@@ -127,9 +127,9 @@ Obsah zahrnuje proměnné prostředí služby Azure Batch nastavené v uzlu. Př
 
 Pokud chcete pokračovat v prohlížení kurzů a ukázek služby Batch, použijte účet Batch a propojený účet úložiště, které jste vytvořili v tomto rychlém startu. Za samotný účet Batch se neúčtují žádné poplatky.
 
-Poplatky se účtují za fond, ve kterém jsou spuštěné uzly, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. V zobrazení účtu klikněte na **Fondy** a název fondu. Potom klikněte na **Odstranit**.  Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. 
+Poplatky se účtují za fond, ve kterém jsou spuštěné uzly, i když nejsou naplánované žádné úlohy. Až fond nebudete potřebovat, odstraňte ho. V zobrazení účtu vyberte **Fondy** a název fondu. Vyberte **Odstranit**.  Při odstranění fondu se odstraní veškeré výstupy úkolů v uzlech. 
 
-Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků účtu Batch a kliknete na **Odstranit skupinu prostředků**.
+Pokud už je nepotřebujete, odstraňte skupinu prostředků, účet Batch a všechny související prostředky. Provedete to tak, že vyberete skupinu prostředků účtu Batch a vyberete **Odstranit skupinu prostředků**.
 
 ## <a name="next-steps"></a>Další kroky
 

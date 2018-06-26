@@ -8,12 +8,12 @@ ms.date: 2/21/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: f6dcaee1ac328a9bafce0561f421b772b7e1d119
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7429516538c892bea04d38a98abcfb13ba960d22
+ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605164"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36286395"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Dotazy týkající se zálohování Souborů Azure
 V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování Souborů Azure. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -23,7 +23,7 @@ K rychlému procházení částmi tohoto článku použijte odkazy vpravo v čá
 ## <a name="configuring-the-backup-job-for-azure-files"></a>Konfigurace úlohy zálohování pro Soubory Azure
 
 ### <a name="why-cant-i-see-some-of-my-storage-accounts-i-want-to-protect-that-contain-valid-azure-file-shares-br"></a>Proč se nezobrazují některé účty úložiště, které chci chránit a které obsahují platné sdílené složky Azure? <br/>
-Během období Preview nepodporuje zálohování sdílených složek Azure všechny typy účtů úložiště. Seznam podporovaných účtů úložiště najdete [tady](troubleshoot-azure-files.md#preview-boundaries). Je taky možné, že účet úložiště, který hledáte, se už chrání nebo je zaregistrovaný v jiném trezoru. Pokud chcete účet úložiště najít v jiných trezorech, abyste ho mohli chránit, [zrušte registraci](troubleshoot-azure-files.md#configuring-backup) v trezoru.
+Během období Preview nepodporuje zálohování sdílených složek Azure všechny typy účtů úložiště. Seznam podporovaných účtů úložiště najdete [tady](troubleshoot-azure-files.md#limitations-for-azure-file-share-backup-during-preview). Je taky možné, že účet úložiště, který hledáte, se už chrání nebo je zaregistrovaný v jiném trezoru. Pokud chcete účet úložiště najít v jiných trezorech, abyste ho mohli chránit, [zrušte registraci](troubleshoot-azure-files.md#configuring-backup) v trezoru.
 
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>Proč se nezobrazují některé sdílené složky Azure v účtu úložiště, když se pokouším nakonfigurovat zálohování? <br/>
 Zkontrolujte, jestli už příslušná sdílená složka Azure není chráněná ve stejném trezoru služby Recovery Services nebo jestli nebyla nedávno odstraněna.
@@ -39,13 +39,13 @@ Ano. Budete však muset [zastavit ochranu](backup-azure-files.md#stop-protecting
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>Ve kterých zeměpisných oblastech můžu zálohovat sdílené složky Azure? <br/>
 Zálohování sdílených složek Azure je aktuálně ve verzi Preview a je k dispozici pouze v následujících zeměpisných oblastech: 
--   Austrálie – jihovýchod (ASE) 
+-   Austrálie – východ (AE) 
+- Austrálie – jihovýchod (ASE) 
 - Brazílie – jih (BRS)
 - Kanada – střed (CNC)
 -   Kanada – východ (CE)
 -   USA – střed (CUS)
 -   Východní Asie (EA)
--   Východní Austrálie (AE) 
 -   USA – východ (EUS)
 -   USA – východ 2 (EUS2)
 - Japonsko – východ (JPE)

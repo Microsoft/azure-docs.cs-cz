@@ -10,11 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 45183e51e9071647e07cfd0738522f0dfa28bd7b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: efdef681dd94cdb97d84de657668c49022b72d95
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751492"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Možnosti zasílání zpráv o správou hesel Azure AD
 
@@ -53,25 +54,6 @@ V portálu Azure prostředí jsme vylepšili způsobu, jakým resetování hesla
 6. Chcete-li filtrovat toto zobrazení zobrazí se pouze události související s hesly resetování, vyberte **filtru** tlačítka v horní části podokna.
 7. Z **filtru** nabídce vyberte možnost **kategorie** rozevírací seznam a změňte ji na **Samoobslužná správa hesel** typ kategorie.
 8. Volitelně můžete dál filtrovat seznam výběrem konkrétní **aktivity** vás zajímá.
-
-## <a name="how-to-retrieve-password-management-events-from-the-azure-ad-reports-and-events-api"></a>Jak načíst heslo správy události z sestav Azure AD a události rozhraní API
-
-Sestavy služby Azure AD a události rozhraní API podporuje načtení všechny informace, které jsou součástí resetování hesla a zprávy o registraci pro resetování hesla. Když použijete toto rozhraní API, můžete stáhnout události registrace resetování jednotlivých heslo pro resetování a heslo a integrovat technologie vytváření sestav podle svého výběru.
-
-> [!IMPORTANT]
-> V současné době sestav Azure AD a rozhraní API událostí načte až *než 75 000 jednotlivé události* z [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) a [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) typy. Rozhraní API zahrnuje za posledních 30 dní.
-> 
-> Pokud budete potřebovat načíst nebo ukládání dat nad rámec tohoto okna, doporučujeme ho uchování v externí databáze pomocí rozhraní API k dotazování rozdílů, kterých se. Doporučujeme vám, že začnete tato data načíst, když spustíte pomocí SSPR ve vaší organizaci. Zachovat ho externě a poté pokračujte ke sledování se rozdíly od tohoto okamžiku.
->
-
-### <a name="how-to-get-started-with-the-reporting-api"></a>Jak začít pracovat s rozhraním API pro generování sestav
-
-Pro přístup k těmto datům, budete muset zápisu malých aplikace nebo skriptu, který ji načíst z našich serverech. Další informace najdete v tématu [Začínáme s Azure AD reporting rozhraní API](../active-directory-reporting-api-getting-started-azure-portal.md).
-
-Až budete mít skript práci, budete chtít Zkontrolujte heslo resetování a registraci události, které můžete načíst ke splnění scénářů:
-
-* [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent): seznam sloupců, které jsou k dispozici pro resetování hesla události.
-* [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): seznam sloupců, které jsou k dispozici pro události registrace pro resetování hesla.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Popis sloupce sestavy na portálu Azure
 

@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: 3fe783f8b5a7955ebe117df02edcdc6aafeff4f8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dbb4ce971e6504f33de82e31cf289a42a1640952
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636847"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293165"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-c"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT a čtení telemetrických dat z centra pomocí back-endové aplikace (C#)
 
@@ -60,7 +60,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Pokud si zvolíte jiný název zařízení, změňte ho také v ukázkových aplikacích, než je spustíte.
 
-1. Spuštěním následujícího příkazu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+2. Spuštěním následujícího příkazu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
@@ -68,7 +68,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto: `Hostname=...=`. Tuto hodnotu použijete později v tomto rychlém startu.
 
-1. Dále potřebujete _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_ a _primární klíč vlastníka centra IoT_ z centra IoT, abyste umožnili back-endové aplikaci připojit se k centru IoT a načíst zprávy. Následující příkazy načtou tyto hodnoty pro centrum IoT:
+3. Dále potřebujete _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_ a _primární klíč vlastníka centra IoT_ z centra IoT, abyste umožnili back-endové aplikaci připojit se k centru IoT a načíst zprávy. Následující příkazy načtou tyto hodnoty pro centrum IoT:
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
@@ -86,17 +86,17 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centr
 
 1. V okně terminálu přejděte do kořenové složky ukázkového projektu C#. Pak přejděte do složky **iot-hub\Quickstarts\simulated-device**.
 
-1. V libovolném textovém editoru otevřete soubor **SimulatedDevice.cs**.
+2. V libovolném textovém editoru otevřete soubor **SimulatedDevice.cs**.
 
     Hodnotu proměnné `connectionString` nahraďte připojovacím řetězcem zařízení, který jste si předtím poznamenali. Změny pak uložte do souboru **SimulatedDevice.cs**.
 
-1. V okně terminálu spusťte následující příkazy pro instalaci požadovaných balíčků pro aplikaci simulovaného zařízení:
+3. V okně terminálu spusťte následující příkazy pro instalaci požadovaných balíčků pro aplikaci simulovaného zařízení:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. V okně terminálu spusťte následující příkazy pro sestavení a spuštění aplikace simulovaného zařízení:
+4. V okně terminálu spusťte následující příkazy pro sestavení a spuštění aplikace simulovaného zařízení:
 
     ```cmd/sh
     dotnet run
@@ -112,21 +112,21 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
 1. V jiném okně terminálu přejděte do kořenové složky ukázkového projektu C#. Potom přejděte ke složce **iot-hub\Quickstarts\read-d2c-messages**.
 
-1. V libovolném textovém editoru otevřete soubor **ReadDeviceToCloudMessages.cs**.
+2. V libovolném textovém editoru otevřete soubor **ReadDeviceToCloudMessages.cs**. Aktualizujte následující proměnné a uložte provedené změny souboru.
 
-    Hodnotu proměnné `eventHubsCompatibleEndpoint` nahraďte koncovým bodem kompatibilním s Event Hubs, který jste si předtím poznamenali.
+    | Proměnná | Hodnota |
+    | -------- | ----------- |
+    | `eventHubsCompatibleEndpoint` | Hodnotu proměnné nahraďte koncovým bodem kompatibilním s Event Hubs, který jste si předtím poznamenali. |
+    | `eventHubsCompatiblePath`     | Hodnotu proměnné nahraďte cestou kompatibilní s Event Hubs, kterou jste si předtím poznamenali. |
+    | `iotHubSasKey`                | Hodnotu proměnné nahraďte primárním klíčem vlastníka centra IoT, který jste si předtím poznamenali. |
 
-    Hodnotu proměnné `eventHubsCompatiblePath` nahraďte cestou kompatibilní s Event Hubs, kterou jste si předtím poznamenali.
-
-    Hodnotu proměnné `iotHubSasKey` nahraďte primárním klíčem vlastníka centra IoT, který jste si předtím poznamenali. Změny potom uložte do souboru **ReadDeviceToCloudMessages.cs**.
-
-1. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven pro back-endovou aplikaci:
+3. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven pro back-endovou aplikaci:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. V okně terminálu spusťte následující příkazy pro sestavení a spuštění back-endové aplikace:
+4. V okně terminálu spusťte následující příkazy pro sestavení a spuštění back-endové aplikace:
 
     ```cmd/sh
     dotnet run
@@ -138,9 +138,7 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud si chcete projít další rychlý start, zachovejte skupinu prostředků a centrum IoT pro pozdější použití.
-
-Pokud už centrum IoT nepotřebujete, odstraňte ho společně se skupinou prostředků na portálu. Provedete to výběrem skupiny prostředků **qs-iot-hub-rg**, která obsahuje vaše centrum IoT, a kliknutím na **Odstranit**.
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

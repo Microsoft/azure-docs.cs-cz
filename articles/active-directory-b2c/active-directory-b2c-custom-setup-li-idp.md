@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Přidejte LinkedIn jako zprostředkovatel identity OAuth2 pomocí vlastních zásad'
-description: 'Postupy: článek o nastavení aplikace LinkedIn pomocí OAuth2 protokol a vlastní zásady'
+title: Přidejte LinkedIn jako zprostředkovatel identity OAuth2 pomocí vlastních zásad v Azure Active Directory B2C | Microsoft Docs
+description: Článek s postupy, jak nastavit aplikace LinkedIn pomocí OAuth2 protokol a vlastní zásady.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: davidmu
-ms.openlocfilehash: 9e5235739abcfbee1e530685890098a45a1b093d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 889264dc06d1a6f10713ff5fcd7ff644c113bb45
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752312"
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Přidejte LinkedIn jako zprostředkovatel identity pomocí vlastních zásad
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -26,7 +26,7 @@ Tento článek ukazuje, jak povolit přihlášení pro uživatele účtu LinkedI
 Proveďte kroky v [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md) článku.
 
 ## <a name="step-1-create-a-linkedin-account-application"></a>Krok 1: Vytvoření aplikace účet LinkedIn
-Použít LinkedIn jako poskytovatel identit v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci LinkedIn a zadat se správné parametry. Můžete zaregistrovat aplikaci LinkedIn přechodem na [stránku pro přihlášení LinkedIn](https://LinkedIn.com/signup).
+Použít LinkedIn jako poskytovatel identit v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci LinkedIn a zadat se správné parametry. Můžete zaregistrovat aplikaci LinkedIn přechodem na [stránku pro přihlášení LinkedIn](https://www.linkedin.com/start/join).
 
 1. Přejděte na [Správa aplikací LinkedIn](https://www.linkedin.com/secure/developer?newapp=) web, přihlaste se pomocí přihlašovacích údajů účtu LinkedIn a pak vyberte **vytvořit aplikaci**.
 

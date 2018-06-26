@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 11/30/2017
+ms.date: 06/19/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ec58b5ef2b9095ba420a4518b84c4e2e6200abc3
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9ba8eae0fe9e68e4931bcdda989e59c59fd65edd
+ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714574"
+ms.lasthandoff: 06/20/2018
+ms.locfileid: "36293325"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>Kurz: Vytvoření vazby existujícího vlastního certifikátu SSL k Azure Web Apps
 
@@ -32,9 +32,11 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Upgrade cenové úrovně aplikace
-> * Vytvoření vazby vlastního certifikátu SSL ke službě App Service
-> * Vynucování HTTPS pro aplikaci
-> * Automatizace vytváření vazeb certifikátů SSL pomocí skriptů
+> * Vytvoření vazby vlastního certifikátu ke službě App Service
+> * Obnovení certifikátů
+> * Vynucení HTTPS
+> * Vynucení protokolu TLS 1.1/1.2
+> * Automatizace správy protokolu TLS pomocí skriptů
 
 > [!NOTE]
 > V případě potřeby můžete vlastní certifikát SSL získat přímo na webu Azure Portal a vytvořit jeho vazbu ke své webové aplikaci. Postupujte podle [kurzu Certifikáty App Service](web-sites-purchase-ssl-web-site.md).
@@ -213,6 +215,14 @@ Teď už zbývá jen ověřit, že HTTPS na vaší vlastní doméně funguje. V 
 
 <a name="bkmk_enforce"></a>
 
+## <a name="renew-certificates"></a>Obnovení certifikátů
+
+Vaše příchozí IP adresa se může změnit při odstranění vazby, a to i v případě, že tato vazba je založená na protokolu IP. To je zvlášť důležité při obnovení certifikátu, který už vazbu založenou na protokolu IP má. Pokud chcete zabránit změně IP adresy vaší aplikace IP, postupujte podle těchto kroků v uvedeném pořadí:
+
+1. Nahrajte nový certifikát.
+2. Vytvořte vazbu nového certifikátu k požadované vlastní doméně. Starý certifikát neodstraňujte. Tato akce nahradí tuto vazbu (místo aby odebrala vazbu původní).
+3. Odstraňte starý certifikát. 
+
 ## <a name="enforce-https"></a>Vynucení HTTPS
 
 Ve výchozím nastavení mají všichni stále přístup k vaší webové aplikaci pomocí HTTP. Všechny požadavky HTTP můžete přesměrovat na port HTTPS.
@@ -236,14 +246,6 @@ V levém navigačním panelu na stránce vaší webové aplikace vyberte **Nasta
 ![Vynucení protokolu TLS 1.1 nebo 1.2](./media/app-service-web-tutorial-custom-ssl/enforce-tls1.2.png)
 
 Po dokončení operace bude vaše aplikace odmítat všechna připojení využívající nižší verze protokolu TLS.
-
-## <a name="renew-certificates"></a>Obnovení certifikátů
-
-Vaše příchozí IP adresa se může změnit při odstranění vazby, a to i v případě, že tato vazba je založená na protokolu IP. To je zvlášť důležité při obnovení certifikátu, který už vazbu založenou na protokolu IP má. Pokud chcete zabránit změně IP adresy vaší aplikace IP, postupujte podle těchto kroků v uvedeném pořadí:
-
-1. Nahrajte nový certifikát.
-2. Vytvořte vazbu nového certifikátu k požadované vlastní doméně. Starý certifikát neodstraňujte. Tato akce nahradí tuto vazbu (místo aby odebrala vazbu původní).
-3. Odstraňte starý certifikát. 
 
 ## <a name="automate-with-scripts"></a>Automatizace pomocí skriptů
 
@@ -273,6 +275,15 @@ az webapp config ssl bind \
     --ssl-type SNI \
 ```
 
+Následující příkaz vynutí minimální verzi protokolu TLS 1.2.
+
+```bash
+az webapp config set \
+    --name <app_name> \
+    --resource-group <resource_group_name>
+    --min-tls-version 1.2
+```
+
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 Následující příkaz nahraje exportovaný soubor PFX a přidá vazbu SSL na základě SNI.
@@ -297,9 +308,11 @@ V tomto kurzu jste se naučili:
 
 > [!div class="checklist"]
 > * Upgrade cenové úrovně aplikace
-> * Vytvoření vazby vlastního certifikátu SSL ke službě App Service
-> * Vynucování HTTPS pro aplikaci
-> * Automatizace vytváření vazeb certifikátů SSL pomocí skriptů
+> * Vytvoření vazby vlastního certifikátu ke službě App Service
+> * Obnovení certifikátů
+> * Vynucení HTTPS
+> * Vynucení protokolu TLS 1.1/1.2
+> * Automatizace správy protokolu TLS pomocí skriptů
 
 V dalším kurzu se dozvíte, jak používat službu Azure Content Delivery Network.
 
