@@ -10,12 +10,12 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: v-daljep
-ms.openlocfilehash: 68ccf6f64f90200359322f35ca081aa6b53493f9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bcc33eb7e5050c991c89b7f0998eec3707f62ebb
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648264"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751339"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Řešení potíží s výkonem databáze SQL Azure s inteligentního statistiky
 
@@ -235,7 +235,7 @@ Další informace najdete v tématu [Úvod k paměťově optimalizované tabulky
 
 Tento vzor rozpoznat výkonu označuje snížení v aktuální zatížení výkonu databáze porovnání se směrným plánem posledních sedmi dnů. Je z důvodu nedostatku dostupné Dtu ve fondu elastické vašeho předplatného. 
 
-Prostředky v databázi SQL se obvykle označují jako [DTU prostředky](sql-database-what-is-a-dtu.md), které zahrnují kombinaci měření prostředků procesoru a vstupů/výstupů (dat a transakční protokol vstupů/výstupů). [Prostředky Azure elastický fond](sql-database-elastic-pool.md) slouží jako fond prostředky k dispozici eDTU, které jsou sdílené mezi více databází pro účely škálování. Pokud nejsou k dispozici eDTU prostředky ve vašem fondu elastické dostatečně velký pro podporu všechny databáze ve fondu, je zjištěna problém výkonu nedostatku DTU elastického fondu v systému.
+Prostředky v databázi SQL se obvykle označují jako [DTU prostředky](sql-database-service-tiers.md#what-are-database-transaction-units-dtus), které zahrnují kombinaci měření prostředků procesoru a vstupů/výstupů (dat a transakční protokol vstupů/výstupů). [Prostředky Azure elastický fond](sql-database-elastic-pool.md) slouží jako fond prostředky k dispozici eDTU, které jsou sdílené mezi více databází pro účely škálování. Pokud nejsou k dispozici eDTU prostředky ve vašem fondu elastické dostatečně velký pro podporu všechny databáze ve fondu, je zjištěna problém výkonu nedostatku DTU elastického fondu v systému.
 
 ### <a name="troubleshooting"></a>Řešení potíží
 

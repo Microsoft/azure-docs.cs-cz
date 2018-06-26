@@ -15,20 +15,20 @@ ms.date: 01/20/2018
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c115414fc6ae599342192196e256597c28e5aa6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: aeb67a73a69684b89609c6b04160357b244f62b7
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293190"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754447"
 ---
 # <a name="configure-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurovat jednotné přihlašování k aplikacím, které nejsou v galerii aplikací Azure Active Directory
 
-Tento článek se týká funkce, která umožňuje správci nakonfigurovat jednotné přihlašování k aplikacím, které nejsou k dispozici v galerii aplikací Azure Active Directory *bez nutnosti psaní kódu*. Tato funkce byla vydána z 18. listopadu 2015 technical preview a je součástí [Azure Active Directory Premium](active-directory-whatis.md). Pokud místo toho hledáte Průvodce pro vývojáře o tom, jak integrovat vlastních aplikací s Azure AD prostřednictvím kódu, přečtěte si téma [scénáře ověřování pro Azure AD](active-directory-authentication-scenarios.md).
+Tento článek se týká funkce, která umožňuje správci nakonfigurovat jednotné přihlašování k aplikacím, které nejsou k dispozici v galerii aplikací Azure Active Directory *bez nutnosti psaní kódu*. Tato funkce byla vydána z 18. listopadu 2015 technical preview a je součástí [Azure Active Directory Premium](fundamentals/active-directory-whatis.md). Pokud místo toho hledáte Průvodce pro vývojáře o tom, jak integrovat vlastních aplikací s Azure AD prostřednictvím kódu, přečtěte si téma [scénáře ověřování pro Azure AD](active-directory-authentication-scenarios.md).
 
 Poskytuje seznam aplikací, které jsou známé pro podporu forma jednotné přihlašování s Azure Active Directory, jak je popsáno v galerii aplikací Azure Active Directory [v tomto článku](manage-apps/what-is-single-sign-on.md). Jakmile (jako IT specialista nebo systémový integrátor ve vaší organizaci) naleznete na aplikaci, kterou chcete připojit, můžete začít používat podle podrobné pokyny uvedené na portálu Azure umožňující jednotného přihlašování.
 
-Zákazníci s [Azure Active Directory Premium](active-directory-whatis.md) licenci získat také tyto další funkce:
+Zákazníci s [Azure Active Directory Premium](fundamentals/active-directory-whatis.md) licenci získat také tyto další funkce:
 
 * Samoobslužné integrace každou aplikaci, která podporuje poskytovatele identity SAML 2.0 (spouštěná SP nebo spouštěná IdP)
 * Samoobslužné integrace webové aplikace, který má k HTML na přihlašovací stránce pomocí [jednotné přihlašování založené na heslech](manage-apps/what-is-single-sign-on.md#password-based-single-sign-on)
@@ -37,7 +37,7 @@ Zákazníci s [Azure Active Directory Premium](active-directory-whatis.md) licen
 
 To může zahrnovat pouze aplikace SaaS, které můžete použít, ale nebyly dosud byl na zahrnuté pro galerii aplikací Azure AD, ale třetí strany webových aplikací, které vaše organizace má nasazené servery, které řídíte, buď v cloudu nebo místně.
 
-Tyto možnosti, také známé jako *šablony integrace aplikace*, poskytovat založených na standardech spojovací body pro aplikace, které podporují SAML, SCIM nebo ověřování pomocí formulářů a zahrnuje nastavení pro kompatibilitu s mnoho aplikací a flexibilní možnosti. 
+Tyto možnosti, také známé jako *šablony integrace aplikace*, poskytovat založených na standardech spojovací body pro aplikace, které podporují SAML, SCIM nebo ověřování pomocí formulářů a zahrnují flexibilní možnosti a nastavení pro Kompatibilita s široký počet aplikací. 
 
 ## <a name="adding-an-unlisted-application"></a>Přidání aplikace neuvedené
 K připojení aplikace pomocí šablony integrace aplikaci, přihlaste se k portálu Azure pomocí účtu správce služby Azure Active Directory. Vyhledejte **služby Active Directory > podnikové aplikace, které > novou aplikaci > Non Galerie aplikace** vyberte **přidat**a potom **přidat aplikaci z Galerie** .
@@ -148,18 +148,7 @@ Přiřazení uživatele vám umožní vystavit token pro uživatele Azure AD. Ta
 
 ### <a name="test-the-saml-application"></a>Testování aplikace SAML
 
-Před testováním aplikace SAML, musíte mít nastavení aplikace s Azure AD a přiřadit uživatele nebo skupiny do aplikace.
-
-  ![Testování](./media/active-directory-saas-custom-apps/testing.png)
-
-Na jedné stránce přihlášení, klikněte na **SAML testovací nastavení** části domény a adresy URL. Otevře se podokno obsahu s pokyny k testování aplikace.
-
-1. Přihlaste se k aplikaci. Pokud aplikace je nakonfigurovaná jako Služba spouštěná zprostředkovatele jednotné přihlašování, budete přesměrováni na adresy jednotného přihlašování kde můžete zahájit přihlášení. Pokud aplikace je nakonfigurovaná jako identity spouštěná zprostředkovatele jednotné přihlašování, pak jste jsou přihlášeného k aplikaci.
-2.  Pokud se zobrazí chyby v přihlašovací stránku vaší společnosti, zkopírujte chyba a vraťte se ke službě Azure AD testování jedné přihlašování v podokně obsahu. Chyba vložte do pole a klikněte na **získat kroky řešení**. Pokud na stránce aplikace se chyba, budete muset kontaktovat dodavatele aplikace a sdílet vaši konfiguraci v Azure AD ověřit hodnoty. 
-3.  Podle toho, chyba, Azure AD obsahuje konkrétní kroky k vyřešení problému.
-
-Další informace najdete v tématu [ladění na základě SAML jednotného přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-saml-debugging/?WT.mc_id=DMC_AAD_?WT.mc_id=UI_AAD_Configure_NonGalleryApps)
-
+Před testováním aplikace SAML, musíte mít nastavení aplikace s Azure AD a přiřadit uživatele nebo skupiny do aplikace. K otestování aplikace SAML, najdete v části [ladění na základě SAML jednotného přihlašování k aplikacím v Azure Active Directory](develop/active-directory-saml-debugging.md).
 
 ## <a name="password-single-sign-on"></a>Heslo jednotné přihlašování
 

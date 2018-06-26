@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: b21b33a265d499136dbe3e72538923d8295e9876
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a47c0e2f655f51444dc586f696c26caa63ab6cac
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852230"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937578"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Postup instalace a konfigurace MongoDB na virtuální počítač s Linuxem
-[MongoDB](http://www.mongodb.org) je Oblíbené databáze NoSQL open source a vysoce výkonné. Tento článek ukazuje, jak nainstalovat a nakonfigurovat MongoDB na virtuální počítač s Linuxem pomocí Azure CLI 2.0. K provedení těchto kroků můžete také využít [Azure CLI 1.0](install-mongodb-nodejs.md). Příklady jsou uvedeny této podrobnosti o tom, jak na:
+[MongoDB](http://www.mongodb.org) je Oblíbené databáze NoSQL open source a vysoce výkonné. Tento článek ukazuje, jak nainstalovat a nakonfigurovat MongoDB na virtuální počítač s Linuxem pomocí Azure CLI 2.0. Příklady jsou uvedeny této podrobnosti o tom, jak na:
 
 * [Ručně nainstalujte a nakonfigurujte základní instance MongoDB](#manually-install-and-configure-mongodb-on-a-vm)
 * [Vytvořte základní instance MongoDB pomocí šablony Resource Manageru](#create-basic-mongodb-instance-on-centos-using-a-template)
@@ -118,7 +118,7 @@ sudo chkconfig mongod on
 ## <a name="create-basic-mongodb-instance-on-centos-using-a-template"></a>Vytvořte základní instance MongoDB na CentOS pomocí šablony
 Na jednom virtuálním počítači CentOS pomocí následující šablony Azure rychlý start z Githubu, můžete vytvořit základní instance MongoDB. Tato šablona používá k přidání rozšíření vlastních skriptů pro Linux **yum** úložiště pro vaše nově vytvořený CentOS virtuálních počítačů a potom nainstalujte MongoDB.
 
-* [Základní instance MongoDB na CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) -https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
+* [Základní instance MongoDB na CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
 K vytvoření tohoto prostředí, je třeba nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login). Nejdřív vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az_group_create). Následující příklad vytvoří skupinu prostředků *myResourceGroup* v umístění *eastus*:
 
@@ -166,7 +166,7 @@ test
 ## <a name="create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template"></a>Vytvořit Cluster horizontálně dělené komplexní MongoDB na CentOS pomocí šablony
 Můžete vytvořit komplexní MongoDB horizontálně dělené clusteru pomocí následující šablony Azure rychlý start z Githubu. Tato šablona odpovídá [MongoDB horizontálně dělené clusteru osvědčené postupy](https://docs.mongodb.com/manual/core/sharded-cluster-components/) zajistit redundanci a vysokou dostupnost. Šablona vytvoří dvě horizontálních oddílů, se tři uzly v každé sady replik. Jeden konfigurace serveru repliky s tři uzly se také vytvoří plus dva **mongos** směrovač servery k zajištění konzistence k aplikacím z v horizontálních oddílů.
 
-* [MongoDB horizontálního dělení clusteru na CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) -https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
+* [MongoDB horizontálního dělení clusteru na CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
 
 > [!WARNING]
 > Nasazení tohoto komplexní horizontálně dělené clusteru MongoDB vyžaduje víc než 20 jádra, což obvykle představuje výchozí počet jader na oblast pro předplatné. Otevřete zvýšení počtu vaše základní požadavek podporu Azure.

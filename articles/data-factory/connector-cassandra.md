@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 94312edaa97a5d9a7502eed4c0551151ce2a06cc
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: bc260c747d5c6f3c4e3f955b1bbd93d22f9234d1
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235273"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753332"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopírování dat z Cassandra pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -138,7 +138,7 @@ Ke zkopírování dat z Cassandra, nastavte typ zdroje v aktivitě kopírování
 |:--- |:--- |:--- |
 | type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **CassandraSource** | Ano |
 | query |Čtení dat pomocí vlastního dotazu. |Dotaz SQL 92 nebo CQL dotazu. V tématu [CQL odkaz](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Při použití příkazu jazyka SQL, zadejte **keyspace name.table název** představují tabulky, které mají být zobrazeny. |Ne (pokud jsou zadané "tableName" a "keyspace" v datové sadě). |
-| consistencyLevel |Úroveň konzistence Určuje, kolik repliky musí odpovědět na požadavek čtení před vrácením dat do klientské aplikace. Cassandra ověří zadaný počet replik pro data, aby pokryl požadavek na čtení. V tématu [konfigurace konzistenci dat](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) podrobnosti.<br/><br/>Povolené hodnoty jsou: **jeden**, **dva**, **tři**, **KVORA**, **všechny**, **LOCAL_ KVORA**, **EACH_QUORUM**, a **LOCAL_ONE**. |Ne (výchozí hodnota je `ONE`) |
+| consistencyLevel |Úroveň konzistence Určuje, kolik repliky musí odpovědět na požadavek čtení před vrácením dat do klientské aplikace. Cassandra ověří zadaný počet replik pro data, aby pokryl požadavek na čtení. V tématu [konfigurace konzistenci dat](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) podrobnosti.<br/><br/>Povolené hodnoty jsou: **jeden**, **dva**, **tři**, **KVORA**, **všechny**, **LOCAL_ KVORA**, **EACH_QUORUM**, a **LOCAL_ONE**. |Ne (výchozí hodnota je `ONE`) |
 
 **Příklad:**
 

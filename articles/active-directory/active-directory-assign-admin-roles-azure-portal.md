@@ -14,12 +14,12 @@ ms.date: 06/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 0bb4a57bcc31cffba3c0e7dc50d0e2b214c50838
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1de2482b7795bbed82874b6eea29f89f1ff52560
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260409"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938382"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Přiřazení rolí správce v Azure Active Directory
 
@@ -29,12 +29,18 @@ Pomocí služby Azure Active Directory (Azure AD), můžete určit samostatné s
 Globální správce má přístup ke všem funkcím pro správu. Ve výchozím nastavení osoba, která se zaregistruje pro předplatné služby Azure má přiřazenou roli globálního správce pro adresář. Jenom globální správci můžete přiřadit další role správců.
 
 ## <a name="assign-or-remove-administrator-roles"></a>Přiřazení nebo odebrání role správce
-Naučte se přiřazovat správní role pro uživatele v Azure Active Directory, najdete v tématu [přiřazení uživatele k rolí správce ve službě Azure Active Directory](active-directory-users-assign-role-azure-portal.md).
+Naučte se přiřazovat správní role pro uživatele v Azure Active Directory, najdete v tématu [přiřazení uživatele k rolí správce ve službě Azure Active Directory](fundamentals/active-directory-users-assign-role-azure-portal.md).
 
 ## <a name="available-roles"></a>Dostupné role
 Následující role správce jsou k dispozici:
 
+* **Správce aplikací**: uživatelé v této roli mohou vytvářet a spravovat všechny aspekty podnikové aplikace, registrace aplikací a nastavení proxy aplikace. Tato role také uděluje souhlas přidělená oprávnění a oprávnění aplikací, s výjimkou Microsoft Graph a Azure AD Graph možnost. Členové této role nebyly přidány jako vlastníci při vytváření nové registrace aplikace nebo podnikové aplikace.
+
+* **Vývojář aplikace**: uživatelé v této roli mohou vytvářet aplikace registrace při "Uživatelé mohou registrovat aplikace" nastavení je Ne. Tato role také umožňuje členům souhlas jménem své vlastní při "Uživatelé mohou souhlas k aplikacím přístup k datům společnosti jejich jménem" nastavení je Ne. Členové této role jsou přidány jako vlastníky při vytváření nové registrace aplikace nebo podnikové aplikace.
+
 * **Správce fakturace**: může dělat nákupy, spravovat předplatná, spravovat lístky žádostí o podporu a sledovat stav služeb.
+
+* **Správce cloudu aplikace**: uživatelům v této roli mají stejná oprávnění jako roli Správce aplikací, s výjimkou schopnost spravovat proxy aplikace. Tato role poskytuje možnost vytvářet a spravovat všechny aspekty podnikové aplikace a aplikace registrace. Tato role také uděluje souhlas přidělená oprávnění a oprávnění aplikací, s výjimkou Microsoft Graph a Azure AD Graph možnost. Členové této role nebyly přidány jako vlastníci při vytváření nové registrace aplikace nebo podnikové aplikace.
 
 * **Správce dodržování předpisů**: uživatelé s touto rolí mají oprávnění pro správu v rámci v Office 365 zabezpečení & centru dodržování předpisů a Centrum pro správu Exchange. Další informace "[o rolích správce Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)."
 
@@ -42,7 +48,7 @@ Následující role správce jsou k dispozici:
   > [!NOTE]
   > Nasadit zásady podmíněného přístupu Exchange ActiveSync v Azure, uživatel musí být také globálního správce.
   
-* **Správci zařízení**: Tato role je k dispozici pro přiřazení pouze jako další místní správce v [nastavení zařízení](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Uživatelé s touto rolí se na všech zařízeních s Windows 10, která jsou připojená k Azure Active Directory, stávají správci místních počítačů. Nemají možnost spravovat objekty zařízení v Azure Active Directory.
+* **Správci zařízení**: Tato role je k dispozici pro přiřazení pouze jako další místní správce v [nastavení zařízení](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Uživatelé s touto rolí stát správci místního počítače na všech zařízeních Windows 10, které jsou připojeny k Azure Active Directory. Nemají možnost spravovat objekty zařízení v Azure Active Directory.
 
 * **Directory čtečky**: to je starší verze role, která má být přiřazena k aplikacím, které nepodporují [souhlas Framework](active-directory-integrating-applications.md). Neměla být přiřazena pro všechny uživatele.
 
@@ -107,11 +113,29 @@ Následující role správce jsou k dispozici:
 
 ## <a name="administrator-permissions"></a>Oprávnění správce
 
+### <a name="application-administrator"></a>Správce aplikací
+
+| Můžete provést | Nelze provést |
+| --- | --- |
+| Čtení všech informací adresáře<br>Vytvořit aplikaci registrace<br>Aktualizovat vlastnosti registrace aplikace<br>Získání podnikových aplikací<br>Správa oprávnění k registraci aplikace<br>Odstranit registrace aplikace<br>Správa podnikových jeden přihlašování v nastavení aplikace<br>Spravovat nastavení pro vytváření podniková aplikace<br>Správa nastavení aplikace Samoobslužné služby enterprise<br>Správa nastavení oprávnění aplikace enterprise<br>Spravovat přístup k aplikaci<br>Spravovat nastavení zřizování<br>Odstranit podnikové aplikace<br>Souhlas jménem everyone pro všechny požadavky delegovaná oprávnění<br>Souhlas jménem everyone pro všechny požadavky aplikace oprávnění, kromě Azure AD Graph nebo Microsoft Graph<br>Správa nastavení proxy aplikace<br>Nastavení služby přístupu<br>Monitorování stavu služby<br>Spravovat lístky žádostí o podporu<br>Členství ve skupině pro čtení, skryté | Vytvářet, upravovat a odstraňovat skupiny<br>Spravovat uživatelské licence<br>Používat synchronizaci adresářů<br>Protokoly auditu a zobrazovat sestavy přihlášení | 
+
+### <a name="application-developer"></a>Vývojář aplikace
+
+| Můžete provést | Nelze provést |
+| --- | --- |
+| Čtení všech informací adresáře<br>Vytvořit aplikaci registrace<br>Souhlas jménem vlastní | Zobrazit přihlášení a protokoly auditu<br>Členství ve skupině pro čtení, skryté |
+
 ### <a name="billing-administrator"></a>Správce fakturace
 
 | Můžete provést | Nelze provést |
 | --- | --- |
-|<p>Zobrazení informací o společnosti a uživatele</p><p>Spravovat lístky žádostí o podporu Office</p><p>Provádět operace fakturace a nákupu produktů Office</p> |<p>Resetovat uživatelská hesla</p><p>Vytvoření a Správa zobrazení uživatele</p><p>Vytvářet, upravovat a odstraňovat uživatele a skupiny a spravovat uživatelské licence</p><p>Spravovat domény</p><p>Spravovat informace o společnosti</p><p>Delegovat role správců jiným uživatelům</p><p>Používat synchronizaci adresářů</p><p>Zobrazení protokolů auditování</p>|
+|<p>Zobrazení informací o společnosti a uživatele</p><p>Spravovat lístky žádostí o podporu Office</p><p>Provádět operace fakturace a nákupu produktů Office</p> |<p>Resetovat uživatelská hesla</p><p>Vytvoření a Správa zobrazení uživatele</p><p>Vytvářet, upravovat a odstraňovat uživatele a skupiny a spravovat uživatelské licence</p><p>Spravovat domény</p><p>Spravovat informace o společnosti</p><p>Delegovat role správců jiným uživatelům</p><p>Používat synchronizaci adresářů</p><p>Zobrazení protokolů auditování</p> |
+
+### <a name="cloud-application-administrator"></a>Správce cloudových aplikací
+
+| Můžete provést | Nelze provést |
+| --- | --- |
+| Čtení všech informací adresáře<br>Vytvořit aplikaci registrace<br>Aktualizovat vlastnosti registrace aplikace<br>Získání podnikových aplikací<br>Správa oprávnění k registraci aplikace<br>Odstranit registrace aplikace<br>Správa podnikových jeden přihlašování v nastavení aplikace<br>Spravovat nastavení pro vytváření podniková aplikace<br>Správa nastavení aplikace Samoobslužné služby enterprise<br>Správa nastavení oprávnění aplikace enterprise<br>Spravovat přístup k aplikaci<br>Spravovat nastavení zřizování<br>Odstranit podnikové aplikace<br>Souhlas jménem everyone pro všechny požadavky delegovaná oprávnění<br>Souhlas jménem everyone pro všechny požadavky aplikace oprávnění, kromě Azure AD Graph nebo Microsoft Graph<br>Nastavení služby přístupu<br>Monitorování stavu služby<br>Spravovat lístky žádostí o podporu<br>Členství ve skupině pro čtení, skryté | Správa nastavení proxy aplikace<br>Vytvářet, upravovat a odstraňovat skupiny<br>Spravovat uživatelské licence<br>Používat synchronizaci adresářů<br>Protokoly auditu a zobrazovat sestavy přihlášení |
 
 ### <a name="conditional-access-administrator"></a>Správce podmíněného přístupu
 
@@ -129,12 +153,12 @@ Následující role správce jsou k dispozici:
 | --- | --- |
 | <p>Zobrazení informací o společnosti a uživatele</p><p>Spravovat lístky žádostí o podporu Office</p><p>Změna hesla pro uživatele a další technickou podporu správci</p>|<p>Provádět operace fakturace a nákupu produktů Office</p><p>Vytvoření a Správa zobrazení uživatele</p><p>Vytvářet, upravovat a odstraňovat uživatele a skupiny a spravovat uživatelské licence</p><p>Spravovat domény</p><p>Spravovat informace o společnosti</p><p>Delegovat role správců jiným uživatelům</p><p>Používat synchronizaci adresářů</p><p>Zobrazení sestav</p>|
 
-### <a name="information-protection-administrator"></a>Správce Information Protection
+### <a name="information-protection-administrator"></a>Správce informačních ochrany
 V | Můžete provést
 -------- | ---------
 Azure Information Protection | <li>Konfigurace nastavení a popisky v zásadách globální a oboru<li>Konfigurovat a spravovat šablony ochrany<li>Aktivace nebo deaktivace ochrany--
  
-### <a name="reports-reader"></a>Čtenář sestav 
+### <a name="reports-reader"></a>Čtečka sestavy 
 Můžete provést | Nelze provést
 ------ | ----------
 Zobrazení Azure AD přihlášení sestavy a protokoly auditu<br>Zobrazení informací o společnosti a uživatele<br>Přístup k Office 365 použití řídicího panelu | Vytvoření a Správa zobrazení uživatele<br>Vytvářet, upravovat a odstraňovat uživatele a skupiny a spravovat uživatelské licence<br>Delegovat role správců jiným uživatelům<br>Spravovat informace o společnosti
@@ -146,7 +170,7 @@ Zobrazení Azure AD přihlášení sestavy a protokoly auditu<br>Zobrazení info
 | Privileged Identity Management |<p>Má přístup jen pro čtení ke všem informacím prezentované v Azure AD PIM: zásady a sestav pro Azure AD přiřazení rolí zabezpečení zkontroluje a v budoucnu přístup pro čtení k zásad datům a sestavám pro scénáře kromě přiřazení role Azure AD.<p>**Nelze** registrace pro Azure AD PIM nebo proveďte změny. PIM na portálu nebo pomocí prostředí PowerShell někdo v této roli můžete aktivovat další role (například globální správce nebo správce privilegovaných rolí), pokud je uživatel kandidátem pro ně. |
 | <p>Monitorování stavu služby Office 365</p><p>Centru dodržování předpisů a zabezpečení Office 365</p> |<ul><li>Číst a spravovat výstrahy<li>Zásady zabezpečení pro čtení<li>Číst analýzou hrozeb, Cloud App Discovery a karantény v hledání a prošetřit<li>Číst všechny sestavy |
 
-### <a name="security-administrator"></a>Správce zabezpečení
+### <a name="security-administrator"></a>Správce zabezpečení.
 | V | Můžete provést |
 | --- | --- |
 | Centrum Identity Protection |<ul><li>Všechna oprávnění role zabezpečení čtečky.<li>Kromě toho možnost provádět všechny operace IPC s výjimkou resetování hesla. |
@@ -169,30 +193,32 @@ Zobrazení Azure AD přihlášení sestavy a protokoly auditu<br>Zobrazení info
 
    ![Otevření centra pro správu azure AD](./media/active-directory-assign-admin-roles-azure-portal/active-directory-admin-center.png)
 
-2. Vyberte **uživatelů a skupin &gt; všichni uživatelé**
+2. Vyberte **uživatelé** > **všichni uživatelé**.
 
-3. Vyhledejte uživatele, které chcete označit jako globální správce a otevřete okno pro daného uživatele.
+3. Otevřete stránku pro uživatele, kterého chcete určit jako globální správce.
 
-4. V okně uživatele vyberte **Directory role**.
- 
-5. V okně role adresáře vyberte **globálního správce** role a uložte.
+4. Na panelu příkazů vyberte **Directory role**.
+
+5. Vyberte **přidat roli**.
+
+6. Na stránce role adresář, vyberte **globálního správce** role a pak klikněte na tlačítko **vyberte** uložit.
 
 ## <a name="deprecated-roles"></a>Nepoužívané role
 
-Následující role není vhodné používat. Budou se nepoužívá a bude odebrána z Azure AD v budoucnu.
+Následující role není vhodné používat. Tyto jsou zastaralé a bude odebrána z Azure AD v budoucnu.
 
 * Správce ad hoc licencí
-* Tvůrce uživatelů ověřovaných na základě e-mailu
+* Tvůrce uživatele ověřený e-mailem
 * Připojení zařízení k
-* Správci zařízení
+* Správce zařízení.
 * Uživatelé zařízení
-* Připojení pracovních zařízení
+* Připojení zařízení k síti na pracovišti
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace o tom, jak změnit správce pro předplatné služby Azure naleznete v tématu [Postup přidání nebo změna role správce služby Azure](../billing-add-change-azure-subscription-administrator.md)
+* Další informace o tom, jak změnit správce pro předplatné Azure, najdete v části [přidat nebo změnit správce předplatného Azure](../billing-add-change-azure-subscription-administrator.md)
 * Další informace o tom, jak se přístup k prostředkům řídí ve službě Microsoft Azure, najdete v části [Principy přístupu k prostředkům ve službě Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* Další informace o tom, jak Azure Active Directory má vztah k předplatnému Azure, najdete v části [asociování předplatných Azure se službou Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)
+* Další informace o tom, jak Azure Active Directory má vztah k předplatnému Azure, najdete v části [asociování předplatných Azure se službou Azure Active Directory](fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Správa uživatelů](active-directory-create-users.md)
 * [Správa hesel](active-directory-manage-passwords.md)
-* [Správa skupin](active-directory-manage-groups.md)
+* [Správa skupin](fundamentals/active-directory-manage-groups.md)

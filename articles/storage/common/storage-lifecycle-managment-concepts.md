@@ -9,12 +9,12 @@ ms.workload: storage
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
-ms.openlocfilehash: bd36cfd0cd03592396a2aa9a977124880f47ec90
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 9721935f005bbd9a5dc261fe801ecc14744b004f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248465"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752788"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Správa životního cyklu úložiště objektů Blob v Azure (Preview)
 
@@ -190,7 +190,7 @@ Ve verzi preview Správa životního cyklu podporuje tvorbu vrstev a odstraněn�
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | Podpora objektů BLOB aktuálně na aktivní vrstvy         | Nepodporuje se |
 | tierToArchive | Podpora objektů BLOB aktuálně při horká nebo nástrojů vrstvy | Nepodporuje se |
-| odstraňovat        | Podporováno                                   | Podporováno     |
+| delete        | Podporováno                                   | Podporováno     |
 
 >[!NOTE] 
 Pokud na stejný objekt blob je definováno více než jednu akci, Správa životního cyklu platí nejlevnější akce na objekt blob. (například akce `delete` je levnější než akce `tierToArchive`. Akce `tierToArchive` je levnější než akce `tierToCool`.)
@@ -265,7 +265,7 @@ Některá data se po uložení v cloudu využívají zřídka, pokud vůbec něk
 
 ### <a name="expire-data-based-on-age"></a>Vypršení platnosti dat založených na stáří
 
-Očekává se, že některá data vypršení platnosti dnů nebo měsíců po vytvoření snižovaly náklady nebo dodržovat předpisy government. K zásadě správy životního cyklu můžete nastavit tak, aby vyprší na stáří dat na základě data pomocí odstranění. Následující příklad ukazuje zásadu, která odstraňuje všechny objekty BLOB bloku (s žádná předpona zadaná) starší než 365 dní.
+Očekává se, že některá data vypršení platnosti dnů nebo měsíců po vytvoření snižovaly náklady nebo dodržovat předpisy government. Pomocí odstranění podle stáří dat je můžete vyprší platnost dat nastavit zásadu správy životního cyklu. Následující příklad ukazuje zásadu, která odstraňuje všechny objekty BLOB bloku (s žádná předpona zadaná) starší než 365 dní.
 
 ```json
 {

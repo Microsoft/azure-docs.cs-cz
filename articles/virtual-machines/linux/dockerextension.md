@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 1e5a4fcfd758c12213d6de7d0f5cfcc78531ee97
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 6cf77a6fa5e2cb7f9ce349e72444e76d4c687f49
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30240904"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937648"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Vytvořte prostředí Docker v Azure pomocí rozšíření virtuálního počítače Docker
-Docker je Oblíbené kontejner správy a vytváření bitové kopie platforma, která umožňuje rychle pracovat s kontejnery v systému Linux. V Azure existují různé způsoby, které můžete nasadit Docker podle svých potřeb. Tento článek se zaměřuje na rozšíření virtuálního počítače Docker a šablon Azure Resource Manageru pomocí Azure CLI 2.0. K provedení těchto kroků můžete také využít [Azure CLI 1.0](dockerextension-nodejs.md).
+Docker je Oblíbené kontejner správy a vytváření bitové kopie platforma, která umožňuje rychle pracovat s kontejnery v systému Linux. V Azure existují různé způsoby, které můžete nasadit Docker podle svých potřeb. Tento článek se zaměřuje na rozšíření virtuálního počítače Docker a šablon Azure Resource Manageru pomocí Azure CLI 2.0. 
 
 > [!WARNING]
 > Rozšíření virtuálního počítače Azure Docker pro Linux je zastaralá a vyřadí listopadu 2018.

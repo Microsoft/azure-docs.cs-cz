@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: 8b007c4658d3ca168c4c1a86a72a737c75ca33db
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 629cdf3907f45419ecfa5fce59430a163767c8fb
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34371333"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943262"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Platforma podporovaná migrace z klasického do Azure Resource Manageru prostředků IaaS
-V tomto článku jsme popisují, jak jsme se povolení migrace infrastruktury jako služby (IaaS) prostředky z klasického modely nasazení Resource Manager. Další informace o [funkce služby Správce prostředků Azure a výhody](../articles/azure-resource-manager/resource-group-overview.md). Jsme podrobnosti o tom, jak připojit prostředky z modelů dvě nasazení, které společně existovat ve vašem předplatném pomocí brány virtuální sítě site-to-site.
+Tento článek popisuje, jak migrovat infrastrukturu jako službu (IaaS) prostředky z klasického na modelech nasazení Resource Manager a podrobnosti o tom, jak připojit prostředky z modelů dvě nasazení, které společně existovat ve vašem předplatném pomocí virtuální sítě brány Site-to-site. Další informace o [funkce služby Správce prostředků Azure a výhody](../articles/azure-resource-manager/resource-group-overview.md). 
 
 ## <a name="goal-for-migration"></a>Cíl pro migraci
 Resource Manager umožňuje nasazení složitých aplikací prostřednictvím šablon, nakonfiguruje virtuální počítače pomocí rozšíření virtuálního počítače a zahrnuje správu přístupu a označování. Azure Resource Manager zahrnuje škálovatelné a paralelní nasazení pro virtuální počítače do skupiny dostupnosti. Nový model nasazení také poskytuje správu životního cyklu výpočty, síť a úložiště nezávisle. Nakonec je zaměřená na povolení zabezpečení ve výchozím nastavení s vynucení virtuální počítače ve virtuální síti.
@@ -38,12 +38,12 @@ Při migraci jsou podporovány tyto klasické prostředky IaaS
 * Vyhrazené IP adresy
 
 ## <a name="supported-scopes-of-migration"></a>Podporované obory migrace
-K dokončení migrace výpočty, síť a úložiště prostředků 4 různými způsoby. Jedná se o
+Dokončení migrace výpočty, síť a úložiště prostředků čtyři různými způsoby:
 
-* Migrace virtuálních počítačů (ne ve virtuální síti)
-* Migrace virtuálních počítačů (ve virtuální síti)
-* Migrace účtů úložiště
-* Odpojit prostředky (skupiny zabezpečení sítě, směrovací tabulky a vyhrazené IP adresy)
+* [Migrace virtuálních počítačů (ne ve virtuální síti)](#migration-of-virtual-machines-not-in-a-virtual-network)
+* [Migrace virtuálních počítačů (ve virtuální síti)](#migration-of-virtual-machines-in-a-virtual-network)
+* [Migrace účtů úložiště](#migration-of-storage-accounts)
+* [Migrace odpojit prostředků](#migration-of-unattached-resources)
 
 ### <a name="migration-of-virtual-machines-not-in-a-virtual-network"></a>Migrace virtuálních počítačů (ne ve virtuální síti)
 V modelu nasazení Resource Manager zabezpečení je vynucené pro vaše aplikace ve výchozím nastavení. Všechny virtuální počítače musí být ve virtuální síti v modelu Resource Manager. Restartování platformy Azure (`Stop`, `Deallocate`, a `Start`) jako součást migrace virtuálních počítačů. Máte dvě možnosti pro virtuální sítě, které virtuální počítače se budou migrovat do:
@@ -53,7 +53,6 @@ V modelu nasazení Resource Manager zabezpečení je vynucené pro vaše aplikac
 
 > [!NOTE]
 > V tomto rozsahu migrace operations management roviny a datové roviny operace nemusí mít pro určitou dobu během migrace.
->
 >
 
 ### <a name="migration-of-virtual-machines-in-a-virtual-network"></a>Migrace virtuálních počítačů (ve virtuální síti)
@@ -67,23 +66,25 @@ Následující konfigurace nejsou aktuálně podporovány. Pokud dojde k přidá
 > [!NOTE]
 > Roviny správy pro určitou dobu během migrace nemusí být povoleno v tomto rozsahu migrace. Pro některé konfigurace jak bylo popsáno výše, datové roviny nastane.
 >
->
 
-### <a name="storage-accounts-migration"></a>Migrace účtů úložiště
+### <a name="migration-of-storage-accounts"></a>Migrace účtů úložiště
 Povolit bezproblémové migrace, můžete nasadit virtuální počítače správce prostředků v účtu úložiště classic. Díky této funkci výpočetní a síťové prostředky můžete a mají být migrovány nezávisle na účty úložiště. Po migraci přes virtuální počítače a virtuální sítě, budete muset migrovat přes účty úložiště pro dokončení procesu migrace.
+
+Pokud váš účet úložiště nemá žádné přidružené disků nebo virtuálních počítačů data a má jenom objekty BLOB, soubory, tabulky a fronty lze jako samostatná migrace bez závislosti provést migraci na Azure Resource Manager.
 
 > [!NOTE]
 > Model nasazení Resource Manager nemá koncept Classic Image a disky. Pokud účet úložiště je migrované, Classic Image a disky nejsou viditelné v zásobníku Resource Manager ale základní virtuální pevné disky zůstávají v účtu úložiště.
 >
->
 
-### <a name="unattached-resources-network-security-groups-route-tables--reserved-ips"></a>Odpojit prostředky (skupiny zabezpečení sítě, směrovací tabulky a vyhrazené IP adresy)
-Skupiny zabezpečení sítě, směrovací tabulky a vyhrazené IP adresy, které nejsou připojeny žádné virtuální počítače a virtuální sítě se dají migrovat nezávisle.
+### <a name="migration-of-unattached-resources"></a>Migrace odpojit prostředků
+Účty úložiště bez přidružených disků nebo virtuálních počítačů data může migrovat nezávisle.
+
+Skupiny zabezpečení sítě, směrovací tabulky a vyhrazené IP adresy, které nejsou připojeny žádné virtuální počítače a virtuální sítě můžete také migrovat nezávisle.
 
 <br>
 
 ## <a name="unsupported-features-and-configurations"></a>Nepodporované funkce a konfigurace
-Nepodporujeme aktuálně některé funkce a konfigurace. Následující části popisují Naše doporučení je obcházet.
+Některé funkce a konfigurace nejsou aktuálně podporovány; Následující části popisují Naše doporučení je obcházet.
 
 ### <a name="unsupported-features"></a>Nepodporované funkce
 Aktuálně nejsou podporovány následující funkce. Volitelně můžete tato nastavení odebrat, migrovat virtuální počítače a pak znovu povolte nastavení v modelu nasazení Resource Manager.
@@ -109,10 +110,10 @@ Následující konfigurace nejsou aktuálně podporovány.
 | Compute |Diagnostika spouštění Storage úrovně Premium |Zakážete funkci Diagnostika spouštění pro virtuální počítače před pokračováním migrace. Diagnostika spouštění v zásobníku Resource Manager můžete znovu povolit po dokončení migrace. Kromě toho objekty BLOB, které jsou používány pro snímek obrazovky a sériové protokoly měla by být odstraněna, jsou už účtovat poplatek za tyto objekty BLOB. |
 | Compute | Cloudové služby, které obsahují webové/role pracovního procesu | Tato možnost není aktuálně podporována. |
 | Compute | Cloudové služby, které obsahují více než jeden dostupnosti nastavit nebo nastaví více dostupnosti. |Tato možnost není aktuálně podporována. Přesuňte virtuální počítače na stejné dostupnosti nastavit před migrací. |
-| Compute | Virtuální počítač s rozšíření Azure Security Center | Rozšíření Azure Security Center automaticky nainstaluje na virtuálních počítačích vyvolat výstrahy a sledovat jejich zabezpečení. Tato rozšíření obvykle získat nainstalovat automaticky, pokud Azure Security Center je povolena v předplatném. K migraci virtuálních počítačů, zakažte nastavení zásad zabezpečení center na předplatné, což způsobí odebrání Security Center monitorování rozšíření z virtuálních počítačů. |
+| Compute | Virtuální počítač s rozšíření Azure Security Center | Rozšíření Azure Security Center automaticky nainstaluje na virtuálních počítačích vyvolat výstrahy a sledovat jejich zabezpečení. Tato rozšíření obvykle získat nainstalovat automaticky, pokud Azure Security Center je povolena v předplatném. Pokud chcete migrovat virtuální počítače, zakažte center zásad zabezpečení v odběru, což způsobí odebrání Security Center monitorování rozšíření z virtuálních počítačů. |
 | Compute | Virtuální počítač s rozšíření zálohování nebo snímek | Tato rozšíření jsou nainstalovány na virtuálním počítači nakonfigurovaná služba Azure Backup. Při migraci těchto virtuálních počítačů není podporována, postupujte podle pokynů [sem](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault) zachovat zálohování, které byly provedeny před migrací.  |
 | Síť |Virtuální sítě, které obsahují virtuální počítače a webové/role pracovního procesu |Tato možnost není aktuálně podporována. Před migrací přesuňte role Web nebo Worker ke své vlastní virtuální síti. Jakmile je migrován klasickou virtuální síť, migrované virtuální sítě Azure Resource Manager můžete peered s klasickou virtuální síť, zajistit podobnou konfiguraci jako předtím.|
-| Síť | Classic okruhy Expressroute |Tato možnost není aktuálně podporována. Tyto okruhy se musí migrovat na Azure Resource Manager před zahájením migrace IaaS. Další informace o této najdete [okruhy ExpressRoute přesouvání z klasického modelu nasazení Resource Manager](../articles/expressroute/expressroute-move.md).|
+| Síť | Classic okruhy Expressroute |Tato možnost není aktuálně podporována. Tyto okruhy se musí migrovat na Azure Resource Manager před zahájením migrace IaaS. Další informace najdete v tématu [okruhy ExpressRoute přesouvání z klasického modelu nasazení Resource Manager](../articles/expressroute/expressroute-move.md).|
 | Azure App Service |Virtuální sítě, které obsahují služby App Service Environment |Tato možnost není aktuálně podporována. |
 | Azure HDInsight |Virtuální sítě, které obsahují služby HDInsight |Tato možnost není aktuálně podporována. |
 | Služby životního cyklu aplikace Microsoft Dynamics |Virtuální sítě, které obsahují virtuální počítače, které jsou spravovány nástrojem služby Dynamics životního cyklu |Tato možnost není aktuálně podporována. |

@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: b4fba492a57471df737896956e0b37e3da772cce
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 501e28cf3d01385d65a2308db06702d2db0d91ee
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262371"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937909"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostics 1.3 a novější schéma konfigurace
 > [!NOTE]
@@ -362,7 +362,7 @@ PublicConfig a PrivateConfig jsou oddělené, protože ve většině případů 
  Značky následující jsou přibližně v pořadí uvedeném v předchozím příkladu.  Pokud nevidíte úplný popis kde očekáváte, vyhledejte stránce elementu nebo atributu.  
 
 ## <a name="common-attribute-types"></a>Běžné typy atributů  
- **scheduledTransferPeriod** atributu se zobrazí v několika elementy. Je interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp)
+ **scheduledTransferPeriod** atributu se zobrazí v několika elementy. Je interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/xml/schema_dtypes_date.asp)
 
 
 ## <a name="diagnosticsconfiguration-element"></a>DiagnosticsConfiguration Element  
@@ -415,11 +415,11 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
 |**CrashDumps**|Na této stránce najdete v popisu jinde.|  
-|**DiagnosticInfrastructureLogs**|Povolte shromažďování protokolů generovaných Azure Diagnostics. Infrastruktura diagnostické protokoly jsou užitečné pro řešení potíží s samotného systému diagnostiky. Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -nakonfiguruje závažnost minimální úroveň shromážděné protokoly.<br /><br /> - **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
+|**DiagnosticInfrastructureLogs**|Povolte shromažďování protokolů generovaných Azure Diagnostics. Infrastruktura diagnostické protokoly jsou užitečné pro řešení potíží s samotného systému diagnostiky. Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -nakonfiguruje závažnost minimální úroveň shromážděné protokoly.<br /><br /> - **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**Adresáře**|Na této stránce najdete v popisu jinde.|  
 |**EtwProviders**|Na této stránce najdete v popisu jinde.|  
 |**Metriky**|Na této stránce najdete v popisu jinde.|  
-|**čítače výkonu**|Na této stránce najdete v popisu jinde.|  
+|**Čítače výkonu**|Na této stránce najdete v popisu jinde.|  
 |**WindowsEventLog**|Na této stránce najdete v popisu jinde.| 
 |**DockerSources**|Na této stránce najdete v popisu jinde. | 
 
@@ -488,8 +488,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Nakonfiguruje kolekce událostí generovaných [EventSource – třída](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Požadovaný atribut:<br /><br /> **Zprostředkovatel** -název třídy událostí EventSource.<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -úroveň závažnosti minimální přenést do účtu úložiště.<br /><br /> - **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
-|**EtwManifestProviderConfiguration**|Požadovaný atribut:<br /><br /> **Zprostředkovatel** -GUID zprostředkovatele událostí<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -úroveň závažnosti minimální přenést do účtu úložiště.<br /><br /> - **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
+|**EtwEventSourceProviderConfiguration**|Nakonfiguruje kolekce událostí generovaných [EventSource – třída](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Požadovaný atribut:<br /><br /> **Zprostředkovatel** -název třídy událostí EventSource.<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -úroveň závažnosti minimální přenést do účtu úložiště.<br /><br /> - **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**EtwManifestProviderConfiguration**|Požadovaný atribut:<br /><br /> **Zprostředkovatel** -GUID zprostředkovatele událostí<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -úroveň závažnosti minimální přenést do účtu úložiště.<br /><br /> - **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
 
 
@@ -524,7 +524,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Podřízené elementy|Popis|  
 |--------------------|-----------------|  
-|**MetricAggregation**|Požadovaný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp) |  
+|**MetricAggregation**|Požadovaný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 
 
 
@@ -553,7 +553,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Podřízený Element|Popis|  
 |-------------------|-----------------|  
-|**zdroj dat**|Protokol událostí systému Windows ke shromažďování. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému windows, které se mají shromažďovat. Příklad:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Ke shromažďování všech událostí, zadejte "*"|  
+|**Zdroj dat**|Protokol událostí systému Windows ke shromažďování. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému windows, které se mají shromažďovat. Příklad:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> Ke shromažďování všech událostí, zadejte "*"|  
 
 
 
@@ -568,7 +568,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |Atribut|Typ|Popis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**celé číslo bez znaménka**|Volitelné. Určuje maximální množství úložiště systému souboru, který je k dispozici pro zadaná data.<br /><br /> Výchozí hodnota je 0.|  
-|**scheduledTransferLogLevelFilterr**|**Řetězec**|Volitelné. Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí podle nejvíc minimálně informace) jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
+|**scheduledTransferLogLevelFilterr**|**Řetězec**|Volitelné. Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí podle nejvíc minimálně informace) jsou **podrobné**, **informace**, **upozornění**, **chyba**a **Kritické**.|  
 |**scheduledTransferPeriod**|**Doba trvání**|Volitelné. Určuje interval mezi naplánované přenosů dat, zaokrouhlený nahoru na nejbližší minutu.<br /><br /> Výchozí hodnota je PT0S.|  
 |**jímky** přidali v 1.5|**Řetězec**|Volitelné. Bodů na jímka umístění a také posílat diagnostická data. Například Application Insights.|  
 
@@ -588,7 +588,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Název elementu|Popis|  
 |------------------|-----------------|  
-|**podřízený**|Na této stránce najdete v popisu jinde.|  
+|**Podřízený**|Na této stránce najdete v popisu jinde.|  
 
 ## <a name="sink-element"></a>Jímky – Element
  *Strom: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - jímka*
@@ -626,7 +626,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Atributy|Typ|Popis|  
 |----------------|----------|-----------------|  
-|**LogLevel**|**Řetězec**|Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí podle nejvíc minimálně informace) jsou **podrobné**, **informace**, **upozornění**, **chyba**, a **kritický**.|  
+|**logLevel**|**Řetězec**|Určuje úroveň závažnosti minimální pro položky protokolu, které se přenáší. Výchozí hodnota je **Undefined**, která přenáší všechny protokoly. Další možné hodnoty (v pořadí podle nejvíc minimálně informace) jsou **podrobné**, **informace**, **upozornění**, **chyba**a **Kritické**.|  
 |**Jméno**|**Řetězec**|Jedinečný název kanálu k odkazování na|  
 
 

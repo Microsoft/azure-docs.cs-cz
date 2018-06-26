@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 23bbbe9cf86268f93ae1f8fcec9303efa8a673de
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 1566cf2b61749121c4eaff5a32b0a940f3341f7e
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796712"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751774"
 ---
 # <a name="understanding-policy-effects"></a>Principy účinky zásad
 
@@ -90,7 +90,7 @@ Příklad 3: Jeden **pole/hodnota** párovat pomocí [alias](policy-definition.m
 "then": {
     "effect": "append",
     "details": [{
-        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]",
+        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
         "value": [{
             "action": "Allow",
             "value": "134.5.0.0/21"
@@ -160,7 +160,7 @@ AuditIfNotExists spustí po poskytovatel prostředků má zpracovat žádost o v
 - **Typ** [vyžaduje]
   - Určuje typ souvisejících prostředků tak, aby odpovídaly.
   - Spustí na pokusu o načtení prostředku pod **Pokud** podmínku prostředků a potom dotazů v rámci stejné skupině prostředků jako **Pokud** podmínky prostředků.
-- **název** (volitelné)
+- **Název** (volitelné)
   - Určuje přesný název prostředku tak, aby odpovídaly a způsobí, že zásady tak, aby načtení jedné konkrétní prostředek místo všechny prostředky zadaného typu.
 - **Název skupiny prostředků** (volitelné)
   - Umožňuje shodu související prostředek pocházet z jiné skupině prostředků.
@@ -227,7 +227,7 @@ Cyklu hodnocení definice zásady s DeployIfNotExists vliv odpovídající prost
 - **Typ** [vyžaduje]
   - Určuje typ souvisejících prostředků tak, aby odpovídaly.
   - Spustí na pokusu o načtení prostředku pod **Pokud** podmínku prostředků a potom dotazů v rámci stejné skupině prostředků jako **Pokud** podmínky prostředků.
-- **název** (volitelné)
+- **Název** (volitelné)
   - Určuje přesný název prostředku tak, aby odpovídaly a způsobí, že zásady tak, aby načtení jedné konkrétní prostředek místo všechny prostředky zadaného typu.
 - **Název skupiny prostředků** (volitelné)
   - Umožňuje shodu související prostředek pocházet z jiné skupině prostředků.
@@ -304,7 +304,7 @@ Příklad: Vyhodnotí databáze systému SQL Server k určení, zda je povoleno 
 
 ## <a name="layering-policies"></a>Rozvrstvení zásady
 
-Prostředek může být ovlivněno více přiřazení. Tato přiřazení může být ve stejném oboru (konkrétní zdroj, skupinu prostředků, předplatné nebo skupinu pro správu) nebo na různých místech. Každá z těchto přiřazení je pravděpodobně jiný dopad definované. Bez ohledu na to podmínku a vliv pro každou zásadu (přiřazen přímo, nebo jako součást initiative) nezávisle vyhodnotí. Například pokud má zásada 1 podmínku, která omezuje umístění pro předplatné A z vytváří v 'westus' s efekt Odepřít a zásad 2, které omezují prostředky v prostředku skupiny B (což je v rámci předplatného A) z vytváří v 'eastus' s auditu vliv obě přidělenou, bude výsledný výsledek:
+Prostředek může být ovlivněno více přiřazení. Tato přiřazení může být ve stejném oboru (konkrétní zdroj, skupinu prostředků, předplatné nebo skupinu pro správu) nebo na různých místech. Každá z těchto přiřazení je pravděpodobně jiný dopad definované. Bez ohledu na to podmínku a vliv pro každou zásadu (přiřazen přímo, nebo jako součást initiative) nezávisle vyhodnotí. Například pokud má zásada 1 podmínku, která omezuje umístění prostředku pro předplatné A lze vytvořit pouze v 'westus' s účinek Odepřít a zásada 2 má podmínku, která omezuje umístění prostředku pro skupinu prostředků B (což je v rámci předplatného A) pro pouze být vytvořené v 'eastus' s účinek auditu jsou obě přiřazen, výsledná výsledek bude::
 
 - Všechny prostředek už ve skupině prostředků B v 'eastus' je vyhovující zásadám 2, ale označena jako nevyhovující zásady 1.
 - Jakémukoli prostředku, už ve skupině prostředků B není v 'eastus, budou označeny jako nevyhovující zásady 2 a by také být označeny není kompatibilní pro zásady 1, pokud ne, westus'.
@@ -324,4 +324,4 @@ Protože každé přiřazení jednotlivě vyhodnotí, není k dispozici možnost
 
 Teď, když máte lepší představu o důsledcích definice zásady, projděte si ukázky zásad:
 
-- Přečtěte si další příklady v [ukázky zásad Azure](json-samples.md).
+- Další příklady najdete v [Ukázkách Azure Policy](json-samples.md).

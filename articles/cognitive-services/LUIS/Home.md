@@ -7,36 +7,35 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/22/2017
+ms.date: 06/22/2017
 ms.author: v-geberr
-ms.openlocfilehash: c40c643abefa609017ef76209ecc0d20a636f71b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: bbd0a532e54f9b221739c8ae9ff097fe44fdc4df
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266088"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751591"
 ---
 # <a name="what-is-language-understanding-luis"></a>Co je jazyk Principy (LEOŠ)?
-Principy jazyka (LEOŠ) je Cloudová služba, která se použije vlastní strojové učení na uživatele konverzačního, přirozeného jazyka text k předvídání celkový význam a relevantní, podrobné informace pro vyžádání obsahu. 
+Principy jazyka (LEOŠ) je Cloudová služba, která se vztahuje na uživatele konverzačního, přirozeného jazyka text k předvídání celkový význam nebo vysunout relevantní, podrobné informace vlastní strojové učení. 
 
 Klientská aplikace pro LEOŠ může být jakékoli konverzačního aplikace, která komunikuje s uživatelem v přirozeném jazyce k dokončení úlohy. Příklady klientských aplikací: aplikace sociálních médií, chatbots a podporou rozpoznávání řeči aplikací klasické pracovní plochy.  
 
 ![Koncepčního obrázku 3 aplikací napájení informace info LEOŠ](./media/luis-overview/luis-entry-point.png)
 
-Klientské aplikace (například chatbot) odešle text uživatele co uživatel chce v vlastní slova LEOŠ v požadavku HTTP. LEOŠ zjištěné modelu se vztahuje na přirozeného jazyka, který má smysl vstupu uživatele a vrátí odpověď formátu JSON. Klientské aplikace používá JSON odpovědi ke splnění požadavků na uživatele. 
+## <a name="what-is-a-luis-app"></a>Co je aplikace LEOŠ?
+LEOŠ aplikaci, která obsahuje model specifické pro doménu přirozeného jazyka, který návrhu. Spusťte aplikaci LEOŠ s modelem předem domény, sestavení vlastní nebo přizpůsobte kusy předem domény s vlastními vlastní informace.
+
+[Předkompilované domény modely](luis-how-to-use-prebuilt-domains.md) zahrnout tyto údaje a jsou skvělý způsob, jak začít používat LEOŠ rychle.
+
+Aplikace LEOŠ také obsahuje nastavení integrace [spolupracovníci](luis-concept-collaborator.md), a [verze](luis-concept-version.md).
+
+## <a name="using-a-luis-app"></a>Pomocí aplikace LEOŠ
+<a name="Accessing-LUIS"></a> Po publikování aplikace LEOŠ klientské aplikace odesílá utterances LEOŠ [koncový bod rozhraní API] [ endpoint-apis] a přijímá výsledky předpovědi jako JSON odpovědi.
+
+V následujícím diagramu nejprve chatbot váš klient odešle text uživatele co uživatel chce v vlastní slova LEOŠ v požadavku HTTP. Druhý LEOŠ zjištěné modelu se vztahuje na přirozeného jazyka, který má smysl vstupu uživatele a vrátí odpověď formátu JavaScript Object Notation (JSON). Váš klient chatbot třetí, používá JSON odpovědi ke splnění požadavků na uživatele. 
 
 ![Koncepční obrazů LEOŠ práce s Chatbot](./media/luis-overview/luis-overview-process-2.png)
-
-## <a name="what-is-a-luis-app"></a>Co je aplikace LEOŠ?
-LEOŠ aplikace je model jazyka domény, které návrhu. Spusťte aplikaci s modelem předem domény, sestavení vlastní nebo přizpůsobte kusy předem domény s vlastními vlastní informace.
-
-Model začíná seznam obecných uživatelských záměry, nazývá _záměry_, jako je například "Cestě adresáře" nebo "Obraťte se na technickou podporu." Zadejte uživatele příklad frází, názvem _utterances_ pro záměry. Potom označit významné slova nebo fráze v utterance, nazývá _entity_.
-
-[Předkompilované domény modely] [ prebuilt-domains] zahrnují tyto údaje pro vás a jsou skvělý způsob, jak začít používat LEOŠ rychle.
-
-<a name="Accessing-LUIS"></a>
-
-Jakmile modelu je vytvořená a publikovaná, klientské aplikace odesílá utterances LEOŠ [koncový bod rozhraní API] [ endpoint-apis] a přijímá výsledky předpovědi jako JSON odpovědi.
 
 ### <a name="example-of-json-endpoint-response"></a>Příklad odpovědi JSON koncového bodu
 
@@ -62,30 +61,33 @@ Odpovědi JSON koncového bodu, minimálně obsahuje utterance dotazu a horní v
 ```
 
 <a name="Key-LUIS-concepts"></a>
+<a name="what-is-a-luis-model"></a>
+## <a name="what-is-a-natural-language-model"></a>Co je model přirozeného jazyka?
+Model začíná seznam obecných uživatelských záměry, nazývá _záměry_, jako je například "Cestě adresáře" nebo "Obraťte se na technickou podporu." Zadejte text příklad uživatele, nazývá _příklad utterances_ pro záměry. Potom označit významné slova nebo fráze v utterance, nazývá _entity_.
 
-## <a name="what-is-a-luis-model"></a>Co je model LEOŠ?
-LEOŠ model zahrnuje:
+
+Model zahrnuje:
 
 * **[záměry](#intents)**: kategorie uživatele záměry (zamýšlenou akci nebo výsledek)
 * **[entity](#entities)**: konkrétní typy dat v utterances jako číslo, e-mailu nebo název
-* **[Příklad utterances](#example-utterances)**: Příklad text uživatel zadá do klientské aplikace
+* **[Příklad utterances](#example-utterances)**: Příklad text uživatel zadá klientské aplikace
 
 ### <a name="intents"></a>Záměry 
-[Záměr][add-intents], zkratka pro _záměr_, je účelem nebo cílem vyjádřené v utterance uživatele, například rezervace letu, platícího faktury nebo hledání článku zprávy. Můžete vytvořit záměrem pro každou akci. Cesta aplikace může definovat záměrem s názvem "BookFlight." Klientské aplikace můžete použít horní vyhodnocování záměr k aktivaci akce. Například pokud je záměr "BookFlight" vrácené z LEOŠ, klientskou aplikaci může spustit volání rozhraní API na externí službu pro rezervace rovinu lístku.
+[Záměr](luis-how-to-add-intents.md), zkratka pro _záměr_, je účelem nebo cílem vyjádřené v utterance uživatele, například rezervace letu, platícího faktury nebo hledání článku zprávy. Můžete vytvořit záměrem pro každou akci. Cesta aplikace na LEOŠ může definovat záměrem s názvem "BookFlight." Klientské aplikace můžete použít horní vyhodnocování záměr k aktivaci akce. Například pokud je záměr "BookFlight" vrácené z LEOŠ, klientskou aplikaci může spustit volání rozhraní API na externí službu pro rezervace rovinu lístku.
 
 ### <a name="entities"></a>Entity
-[Entity] [ add-entities] představuje podrobné informace o se nacházejí v rámci utterance, které se týkají žádost uživatele. Například v utterance "Kniha lístek do Paříž", je požadován jeden lístek a "Paříž" je umístění. Dvě entity nebyly nalezeny "lístek" znamenající jednoho lístku a "Paříž" označující cíl. 
+[Entity](luis-how-to-add-entities.md) představuje podrobné informace o se nacházejí v rámci utterance, které se týkají žádost uživatele. Například v utterance "Kniha lístek do Paříž", je požadován jeden lístek a "Paříž" je umístění. Dvě entity nebyly nalezeny "lístek" znamenající jednoho lístku a "Paříž" označující cíl. 
 
-Po LEOŠ vrací entity v utterance uživatele nalezen, klientské aplikace můžete použít seznam entity jako parametry pro spuštěná akce. Například rezervace letu vyžaduje entity jako cíl cesty, datum a letecká společnost.
+Po LEOŠ vrací entity, najít v utterance uživatele, klientská aplikace můžete použít seznam entity jako parametry pro spuštění akce. Například rezervace letu vyžaduje entity jako cíl cesty, datum a letecká společnost.
 
 LEOŠ poskytuje několik způsobů, jak identifikovat a kategorizace entity.
 
-* **Předkompilované entity** LEOŠ má mnoho modely předem domény včetně záměry, utterances, a [předem entity][prebuilt-entities]. Můžete vytvořit předem entity bez nutnosti použití tříd Intent a utterances předem modelu. Předkompilované entity ušetřit čas.
+* **Předkompilované entity** LEOŠ má mnoho modely předem domény včetně záměry, utterances, a [předem entity](pre-builtentities.md). Můžete vytvořit předem entity bez nutnosti použití tříd Intent a utterances předem modelu. Předkompilované entity ušetřit čas.
 
-* **Vlastní entity** LEOŠ poskytuje několik způsobů, jak identifikovat vlastní vlastní [entity] [ entity-concept] včetně naučili počítač entity, konkrétní nebo literál entity a kombinaci naučili počítače a literálu.
+* **Vlastní entity** LEOŠ poskytuje několik způsobů, jak identifikovat vlastní vlastní [entity](luis-concept-entity-types.md) včetně naučili počítač entity, konkrétní nebo literál entity a kombinace naučili počítače a literálu.
 
 ### <a name="example-utterances"></a>Příklad utterances
-Příklad [utterance] [ add-example-utterances] text vstup od uživatele, který vaše aplikace, musí porozumět. To může být věty, jako je "Lístek se sešit do Paříž" nebo fragment věty, jako je "Rezervace" nebo "Paříž let." Utterances nejsou vždy ve správném formátu a může být mnoho variant utterance pro zvláštní zájem. Přidejte do každého záměr utterances příklad 10 až 20 a označte entity v každé utterance.
+Příklad [utterance](luis-how-to-add-example-utterances.md) text vstup od uživatele, který klientská aplikace je potřeba pochopit. To může být věty, jako je "Lístek se sešit do Paříž" nebo fragment věty, jako je "Rezervace" nebo "Paříž let." Utterances nejsou vždy ve správném formátu a může být mnoho variant utterance pro zvláštní zájem. Přidejte do každého záměr utterances příklad 10 až 20 a označte entity v každé utterance.
 
 |Příklad utterance uživatele|Záměr|Entity|
 |-----------|-----------|-----------|
@@ -94,52 +96,48 @@ Příklad [utterance] [ add-example-utterances] text vstup od uživatele, který
 |"Naplánování schůzky na __13: 00__ s __Bob__ rozdělení"|ScheduleMeeting|: 00, Roberta|
 
 ## <a name="improve-prediction-accuracy"></a>Zvyšte přesnost předpovědi
-Jakmile aplikace je publikována a obdrží utterances reálný uživatel, LEOŠ poskytuje několik metod a zvyšte tak přesnost předpovědi: [active learning](#active-learning) z koncového bodu utterances [fráze seznamy](#phrase-lists) pro zahrnutí word domény, a [vzory](#patterns) a snížit počet utterances potřeby.
+Po aplikaci LEOŠ je publikována a přijímá utterances reálný uživatel, LEOŠ poskytuje několik metod a zvyšte tak přesnost předpovědi: [active learning](#active-learning) z koncového bodu utterances [fráze seznamy](#phrase-lists) pro doménu aplikace Word zahrnutí, a [vzory](#patterns) a snížit počet utterances potřeby.
 
 ### <a name="active-learning"></a>Aktivní vzdělávání
-V [active learning](label-suggested-utterances.md) procesu LEOŠ vám umožní přizpůsobit aplikaci reálného utterances výběrem utterances obdržel na koncový bod pro zkontrolovali. Můžete přijmout nebo opravte předpovědi koncový bod, obsloužených a opakované publikování. LEOŠ zjišťuje rychle se v tomto procesu iterativní trvá minimální množství čas a úsilí. 
+V [active learning](label-suggested-utterances.md) procesu LEOŠ vám umožní přizpůsobit aplikaci LEOŠ reálného utterances výběrem utterances obdržel na koncový bod pro zkontrolovali. Můžete přijmout nebo opravte předpovědi koncový bod, obsloužených a opakované publikování. LEOŠ zjišťuje rychle se v tomto procesu iterativní trvá minimální množství čas a úsilí. 
 
 ### <a name="phrase-lists"></a>Seznamy fráze 
 Poskytuje LEOŠ [slovní spojení seznamy](luis-concept-feature.md) , můžete určit důležité slova nebo fráze k vaší doméně modelu. LEOŠ používá tyto seznamy k přidání dalších násobek do těchto slova a slovní spojení, které by jinak nacházejí v modelu.
 
 ### <a name="patterns"></a>Vzory 
-Vzory vám umožňují zjednodušit záměr utterance kolekce do běžné [šablony] [ patterns] word výběr a pořadí slov. To umožňuje LEOŠ další rychlejší podle nutnosti méně utterances příklad pro záměry. Vzorky se systém hybridní regulární výrazy a výrazy naučili počítače. 
+Vzory vám umožňují zjednodušit záměr utterance kolekce do běžné [šablony](luis-concept-patterns.md) word výběr a pořadí slov. To umožňuje LEOŠ další rychlejší podle nutnosti méně utterances příklad pro záměry. Vzorky se systém hybridní regulární výrazy a výrazy naučili počítače. 
 
-## <a name="using-luis"></a>Pomocí LEOŠ
-Můžete vytvořit aplikaci LEOŠ z [www.luis.ai](http://www.luis.ai) web nebo můžete sestavit aplikace programově pomocí [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API. Přístup k publikované aplikaci LEOŠ dotazem [koncový bod](https://aka.ms/luis-endpoint-apis). 
+<a name="using-luis"></a>
+
+## <a name="authoring-and-accessing-luis"></a>Vytváření obsahu a přístup k LEOŠ
+Sestavení LEOŠ aplikace z webu LEOŠ nebo prostřednictvím kódu programu se [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API, nebo použijte podle potřeb pro vytváření obsahu. Přístup k publikované aplikaci LEOŠ dotazem [koncový bod](https://aka.ms/luis-endpoint-apis). 
+
+LEOŠ poskytuje tři weby po celém světě, v závislosti na vaší oblasti pro vytváření obsahu. Vytváření oblast určuje oblast Azure, kde můžete publikovat aplikaci LEOŠ.
+<!--
+|Authoring region|Publishing region(s)|
+|--|--|
+|[www.luis.ai](https://www.luis.ai)|**U.S.**<br>West US<br>West US 2<br>East US<br>East US 2<br>South Central US<br>West Central US<br><br>**Asia**<br>Southeast Asia<br>East Asia<br><br>**South America**<br>Brazil South |
+|[au.luis.ai](https://au.luis.ai)|Australia East|
+|[eu.luis.ai](https://eu.luis.ai)|West Europe<br>North Europe|
+-->
+
+Další informace [Další](luis-reference-regions.md) o vytváření a publikování oblasti.
 
 ## <a name="what-technologies-work-with-luis"></a>Jaké technologie pracovat LEOŠ?
 Několik technologiích společnosti Microsoft ve spolupráci s LEOŠ:
 
-* [Kontrola pravopisu Bing-API] [ bing-spell-check-api] poskytuje oprava textu před předpovědi. 
+* [Kontrola pravopisu Bing-API](../bing-spell-check/proof-text.md) poskytuje oprava textu před předpovědi. 
 * [Framework robota] [ bot-framework] umožňuje chatbot komunikovat s uživatelem prostřednictvím zadávání textu. Vyberte [3.x](https://github.com/Microsoft/BotBuilder) nebo [4.x](https://github.com/Microsoft/botbuilder-dotnet) SDK pro dokončení robota prostředí.
 * [QnA Maker] [ qnamaker] umožňuje několik typů text, který má sloučit ve znalostní bázi otázku a odpověď.
-* [Rozpoznávání řeči] [ speech] převede mluvené jazykové požadavky na text. Jakmile převést na text, LEOŠ zpracovává požadavky. V tématu [řeči SDK](https://aka.ms/csspeech) Další informace.
-* [Analýza textu] [ text-analytics] poskytuje extrakce dat frázi postojích pro analýzu a klíč.
+* [Rozpoznávání řeči](../Speech/home.md) převede mluvené jazykové požadavky na text. Jakmile převést na text, LEOŠ zpracovává požadavky. V tématu [řeči SDK](https://aka.ms/csspeech) Další informace.
+* [Analýza textu](../text-analytics/overview.md) poskytuje extrakce dat frázi postojích pro analýzu a klíč.
 
 ## <a name="next-steps"></a>Další postup
-Vytvoření [novou aplikaci LEOŠ](LUIS-get-started-create-app.md).
+Vytvořit novou aplikaci LEOŠ s [předem](luis-get-started-create-app.md) nebo [vlastní](luis-quickstart-intents-only.md) domény.
 
 <!-- Reference-style links -->
-[create-app]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app
-[azure-portal]: https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account
-[publish-app]: https://docs.microsoft.com/azure/cognitive-services/luis/PublishApp#test-your-published-endpoint-in-a-browser
-[luis-concept-entity-types]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-entity-types
-[add-example-utterances]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-add-example-utterances
-[prebuilt-entities]: https://docs.microsoft.com/azure/cognitive-services/luis/pre-builtentities
-[prebuilt-domains]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-use-prebuilt-domains
-[label-suggested-utterances]: https://docs.microsoft.com/azure/cognitive-services/luis/label-suggested-utterances
-[intro-video]: https://aka.ms/LUIS-Intro-Video
 [bot-framework]: https://docs.microsoft.com/bot-framework/
-[speech]: https://docs.microsoft.com/azure/cognitive-services/Speech/index.md
 [flow]: https://docs.microsoft.com/connectors/luis/
-[entity-concept]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-entity-types
-[add-intents]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-add-intents
-[add-entities]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-add-entities
 [authoring-apis]: https://aka.ms/luis-authoring-api
 [endpoint-apis]: https://aka.ms/luis-endpoint-apis
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
-[text-analytics]: https://azure.microsoft.com/services/cognitive-services/text-analytics/
-[patterns]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-patterns
-[bing-spell-check-api]: https://azure.microsoft.com/services/cognitive-services/spell-check/
 [qnamaker]: https://qnamaker.ai/

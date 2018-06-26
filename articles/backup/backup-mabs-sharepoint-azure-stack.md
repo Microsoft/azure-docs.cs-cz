@@ -1,5 +1,5 @@
 ---
-title: Zálohování farmy služby SharePoint v zásobníku Azure do Azure
+title: Zálohování farmy služby SharePoint v Azure zásobníku
 description: Zálohování a obnovení dat služby SharePoint v zásobníku Azure pomocí serveru Azure Backup. Tento článek obsahuje informace pro konfiguraci farmy služby SharePoint tak, že požadovaná data se uloží v Azure. Chráněná data služby SharePoint můžete obnovit z disku nebo z Azure.
 services: backup
 author: pvrk
@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: da8421441863c8d7f840630614f4f35c16f184d5
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 309e817426fff1eb877ab02ae9aa16ddc8f5cf16
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35249257"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751893"
 ---
-# <a name="back-up-a-sharepoint-farm-on-azure-stack-to-azure"></a>Zálohování farmy služby SharePoint v zásobníku Azure do Azure
+# <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Zálohování farmy služby SharePoint v Azure zásobníku
 Můžete zálohovat farmy služby SharePoint v zásobníku Azure do služby Microsoft Azure pomocí služby Microsoft Azure Backup Server (MABS) v mnohem stejným způsobem, který zálohujete jiných zdrojů dat. Azure Backup poskytuje flexibilitu při plán zálohování k vytvoření denní, týdenní, měsíční nebo roční zálohu odkazuje a poskytuje možnosti zásad uchovávání informací pro různé body zálohy. Poskytuje taky možnost k uložení kopie místního disku pro rychlé cíle doba obnovení (RTO) a slouží k uložení kopie do Azure pro ekonomické, dlouhodobé uchovávání.
 
 ## <a name="sharepoint-supported-versions-and-related-protection-scenarios"></a>Podporované verze služby SharePoint a související scénáře ochrany
-Zálohování Azure pro DPM podporuje následující scénáře:
+Zálohování Azure pro MABS podporuje následující scénáře:
 
 | Úloha | Verze | Nasazení služby SharePoint | Ochrana a obnovení |
 | --- | --- | --- | --- | --- | --- |
@@ -41,9 +41,6 @@ Pro každých 10 milionů položek ve farmě musí být alespoň 2 GB místa na 
 Azure Backup Server se spouští jako účet LocalSystem. Zálohování databází systému SQL Server, musí MABS oprávnění sysadmin na tento účet pro server, který se systémem SQL Server. Nastavte NT AUTHORITY\SYSTEM na *sysadmin* na serveru, který je spuštěn SQL Server předtím, než ho zálohovat.
 
 Pokud farmy služby SharePoint databáze systému SQL Server, které jsou nakonfigurovány s aliasy systému SQL Server, nainstalujte komponenty klienta systému SQL Server na front-end webovém serveru, který bude chránit MABS.
-
-### <a name="sharepoint-server"></a>SharePoint Server
-Při výkonu závislá na mnoha faktorech, jako je například velikost farmy služby SharePoint, jako obecné pokyny jeden MABS můžete chránit 25 TB farmu služby SharePoint.
 
 ### <a name="whats-not-supported"></a>Co není podporováno
 * MABS, který chrání farmy služby SharePoint nechrání indexy hledání nebo databáze aplikace služby. Musíte konfigurovat ochranu pro tyto databáze samostatně.

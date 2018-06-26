@@ -3,7 +3,7 @@ title: Jak používat PerfInsights v Microsoft Azure | Microsoft Docs
 description: Zjišťuje použití PerfInsights k řešení potíží s výkonem virtuálního počítače s Windows.
 services: virtual-machines-windows'
 documentationcenter: ''
-author: genlin
+author: anandhms
 manager: cshepard
 editor: na
 tags: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: cac17b5f3ee730bf1f56dbfd05b6c6d3b02c891f
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 2f496f906eef416b35e2e59b2db93481ce65acb1
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160654"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36946448"
 ---
-# <a name="how-to-use-perfinsights"></a>Jak používat PerfInsights 
+# <a name="how-to-use-perfinsights"></a>Jak používat PerfInsights
 
 [PerfInsights](http://aka.ms/perfinsightsdownload) je nástroj pro diagnostiku návody pro Svépomocné řešení, který shromažďuje a analyzuje diagnostických dat a poskytuje sestavy k řešení potíží s výkonem virtuálního počítače Windows v Azure. PerfInsights lze spustit na virtuálních počítačích jako samostatný nástroj, nebo přímo z portálu nainstalováním [rozšíření virtuálního počítače diagnostiky výkonu Azure](performance-diagnostics-vm-extension.md).
 
@@ -31,7 +31,7 @@ Pokud dochází k problémům s výkonem s virtuálními počítači, než se ob
 
 PerfInsights můžete shromažďovat a analyzovat několik druhů informace. Následující části se věnují běžné scénáře.
 
-### <a name="collect-basic-configuration"></a>Shromažďovat základní konfigurace 
+### <a name="quick-performance-analysis"></a>Analýza rychlé výkonu
 
 Tento scénář shromažďuje konfigurace disku a další důležité informace, včetně:
 
@@ -64,11 +64,11 @@ Tento scénář běží [Diskspd](https://github.com/Microsoft/diskspd) srovnáv
 > Tento scénář může mít vliv na systém a nesmí se spouštět na systému za provozu produkční. V případě potřeby spusťte tento scénář v vyhrazené údržby vyhnuli potížím. Zvýšit zatížení, která je způsobena trasování nebo srovnávacího testu testovací může nepříznivě ovlivnit výkon virtuálního počítače.
 >
 
-### <a name="slow-vm-analysis"></a>Pomalé analysis virtuálních počítačů 
+### <a name="slow-vm-analysis"></a>Analýza pomalé virtuálních počítačů
 
 Tento scénář spustí [čítače výkonu](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) trasování pomocí čítačů, které jsou určené v souboru RuleEngineConfig.json. Pokud virtuální počítač se identifikuje jako server, který se systémem SQL Server, je spustit trasování čítače výkonu. Dělá to tak pomocí čítačů, které se nacházejí v souboru RuleEngineConfig.json. Tento scénář také zahrnuje diagnostická data výkonu.
 
-### <a name="azure-files-analysis"></a>Azure analysis soubory 
+### <a name="azure-files-analysis"></a>Soubory Azure Analysis
 
 Tento scénář se spustí zachycení čítače výkonu speciální společně s provést síťové trasování. Zachytávání zahrnuje všechny čítače sdílené složky Server Message Block (SMB) klienta. Tady jsou některé klíčové SMB klienta sdílenou složku čítače výkonu, které jsou součástí zachytávání:
 
@@ -90,9 +90,9 @@ Tento scénář se spustí zachycení čítače výkonu speciální společně s
 |              | Střední Délka fronty zápisu       |
 |              | Střední Délka fronty dat        |
 
-### <a name="custom-slow-vm-analysis"></a>Vlastní pomalé analysis virtuálních počítačů 
+### <a name="advanced-slow-vm-analysis"></a>Pokročilé analýzy pomalé virtuálních počítačů
 
-Pokud spustíte vlastní pomalé analysis virtuálních počítačů, můžete vybrat trasování do souběžně. Pokud chcete, můžete je spustit všechny (čítače výkonu, Xperf, sítě a StorPort).  
+Při spuštění rozšířené pomalé analýzu virtuálních počítačů, vyberete trasování do souběžně. Pokud chcete, můžete je spustit všechny (čítače výkonu, Xperf, sítě a StorPort).  
 
 > [!Note]
 > Tento scénář může mít vliv na systém a nesmí se spouštět na systému za provozu produkční. V případě potřeby spusťte tento scénář v vyhrazené údržby vyhnuli potížím. Zvýšit zatížení, která je způsobena trasování nebo srovnávacího testu testovací může nepříznivě ovlivnit výkon virtuálního počítače.
@@ -104,7 +104,7 @@ Zaznamená informace o virtuální počítač s Windows, disky nebo konfigurace 
 
 |Data shromážděná                              |  |  | Scénáře výkonu |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                               | Shromažďovat základní konfigurace | Srovnávací testy | Pomalé analysis virtuálních počítačů | Azure analysis soubory | Vlastní pomalé analysis virtuálních počítačů |
+|                               | Analýza rychlé výkonu | Srovnávací testy | Analýza pomalé virtuálních počítačů | Soubory Azure Analysis | Pokročilé analýzy pomalé virtuálních počítačů |
 | Informace z protokolů událostí       | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Informace o systému                | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
 | Svazek mapy                        | Ano                        | Ano                                | Ano                      | Ano                  | Ano                  |
@@ -171,9 +171,9 @@ Zatížení testy Diskspd vstupně-výstupních operací (Disk s operačním sys
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>Možné problémy při spuštění nástroje na produkční virtuální počítače
 
--  Pro scénář testu typovou úlohou nebo scénář "Vlastní pomalé analysis virtuálního počítače", který je nakonfigurovaný na použití Xperf nebo nástroje Diskspd nástroj může nepříznivě ovlivnit výkon virtuálního počítače. Tyto scénáře by neměla běžet v provozním prostředí.
+-  Pro scénář testu typovou úlohou nebo "Advanced pomalé virtuálních počítačů Analysis" scénář, který je nakonfigurovaný na použití Xperf nebo nástroje Diskspd nástroj může nepříznivě ovlivnit výkon virtuálního počítače. Tyto scénáře by neměla běžet v provozním prostředí.
 
--  Pro scénář testu typovou úlohou nebo scénář "Vlastní pomalé analysis virtuálního počítače", který je nakonfigurovaný na použití nástroje Diskspd Ujistěte se, že žádné další aktivita na pozadí naruší vstupně-výstupní úlohy.
+-  Pro scénář testu typovou úlohou nebo "Advanced pomalé virtuálních počítačů Analysis" scénář, který je nakonfigurovaný na použití nástroje Diskspd Ujistěte se, že žádné další aktivita na pozadí naruší vstupně-výstupní úlohy.
 
 -  Ve výchozím nastavení používá nástroj pro shromažďování dat jednotky dočasné úložiště. Pokud trasování zůstane povolena delší dobu, může být množství dat, které jsou shromážděny relevantní. To může snížit dostupnost místa na disku dočasné a proto může ovlivnit všechny aplikace, které jsou závislé na této jednotce.
 
@@ -218,10 +218,16 @@ Chcete-li spustit nástroj PerfInsights, postupujte takto:
     PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics
     ```
 
-    V následujícím příkladu můžete použít ke spuštění vlastní scénáře s Xperf a výkonu čítač trasování pro 5 minut:
+    Následující příklad můžete spouštět složitější scénář s Xperf a výkonu čítač trasování pro 5 minut:
     
     ```
-    PerfInsights /run custom xp /d 300 /AcceptDisclaimerAndShareDiagnostics
+    PerfInsights /run advanced xp /d 300 /AcceptDisclaimerAndShareDiagnostics
+    ```
+
+    Můžete použít následujícím příkladu spustit pomalé scénář virtuálních počítačů pro 5 minut a nahrajte soubor zip výsledek na účet úložiště:
+    
+    ```
+    PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics /sa <StorageAccountName> /sk <StorageAccountKey>
     ```
 
     Můžete vyhledat všechny dostupné scénáře a možnosti pomocí **/list** příkaz:
@@ -237,7 +243,7 @@ Chcete-li spustit nástroj PerfInsights, postupujte takto:
     >
     >Ve výchozím nastavení PerfInsights to samotný aktualizaci na nejnovější verzi, pokud je k dispozici. Použití **/SkipAutoUpdate** nebo **/sau** parametru pro přeskočení automatické aktualizace.  
     >
-    >Pokud doba trvání přepínač **/d** není zadán, PerfInsights vás vyzve nepodařilo potíže při spouštění vmslow, azurefiles a vlastní scénáře. 
+    >Pokud doba trvání přepínač **/d** není zadán, PerfInsights vás vyzve nepodařilo potíže při spouštění vmslow azurefiles a pokročilých scénářích. 
 
 Po dokončení trasování nebo operace se zobrazí ve stejné složce jako PerfInsights nový soubor. Název souboru je **CollectedData\_rrrr MM-dd\_hh-mm-ss-fff.zip.** Můžete odeslat tento soubor do agenta podporu pro analýzu nebo otevřete sestavu v souboru zip ke kontrole zjištění a doporučení.
 
@@ -251,9 +257,9 @@ Vyberte **zjištění** kartě.
 ![snímek sestavy PerfInsights](media/how-to-use-perfInsights/findings.PNG)
 
 > [!NOTE] 
-> Zjištění, které jsou klasifikovány jako kritické známé problémy, které by mohly způsobit problémy s výkonem. Zjištění klasifikovány jako důležité představují-optimální konfigurace, které nutně nezpůsobí problémy s výkonem. Zjištění, které jsou klasifikovány jako informační jsou pouze informativní příkazy.
+> Zjištění, které jsou klasifikovány jako vysoké známé problémy, které by mohly způsobit problémy s výkonem. Zjištění kategorizována jako střední představují-optimální konfigurace, které nutně nezpůsobí problémy s výkonem. Zjištění, které jsou klasifikovány jako nízkou jsou pouze informativní příkazy.
 
-Zkontrolujte doporučení a odkazy na všechny výsledky kritická a důležitá. Informace o tom, jak může ovlivnit výkon a také o osvědčených postupech pro výkonu optimalizované konfigurace.
+Zkontrolujte doporučení a odkazy na všechny výsledky vysoké a střední. Informace o tom, jak může ovlivnit výkon a také o osvědčených postupech pro výkonu optimalizované konfigurace.
 
 ### <a name="storage-tab"></a>Karta úložiště
 

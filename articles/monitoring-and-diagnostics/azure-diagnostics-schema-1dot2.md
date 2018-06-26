@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 32fcd3171f1adcfd565c38ca1191342e7afaf5a9
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 8c3980231404e5c8068dbd011d20759f207d7fff
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267692"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937950"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Schéma konfigurace Azure Diagnostics 1.2
 > [!NOTE]
@@ -109,12 +109,12 @@ Definuje nastavení konfigurace pro telemetrická data, které se mají shromaž
 |------------------|-----------------|  
 |**DiagnosticMonitorConfiguration**|Povinná hodnota. Volitelné atributy jsou:<br /><br /> -                     **overallQuotaInMB** -maximální množství místa na místní disk, který může být využívány službou různé typy diagnostických dat shromažďovaných Azure Diagnostics. Výchozí nastavení je 5 120 MB.<br /><br /> -                     **useProxyServer** -konfigurovat Azure Diagnostics chcete použít nastavení proxy serveru jako sada v nastavení aplikace Internet Explorer.|  
 |**CrashDumps**|Povolte shromažďování výpisy stavu systému. Volitelné atributy jsou:<br /><br /> -                     **containerName** -název kontejneru objektů blob v účtu úložiště Azure, který se má použít k uložení výpisy stavu systému.<br /><br /> -                     **crashDumpType** -nakonfiguruje Azure Diagnostics ke shromažďování havárií malé nebo úplné výpisy paměti.<br /><br /> -                     **directoryQuotaPercentage**-nakonfiguruje procento **overallQuotaInMB** jako vyhrazené pro výpisů stavu systému ve virtuálním počítači.|  
-|**DiagnosticInfrastructureLogs**|Povolte shromažďování protokolů generovaných Azure Diagnostics. Infrastruktura diagnostické protokoly jsou užitečné pro řešení potíží s samotného systému diagnostiky. Volitelné atributy jsou:<br /><br /> -                     **scheduledTransferLogLevelFilter** -nakonfiguruje závažnost minimální úroveň shromážděné protokoly.<br /><br /> -                     **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
-|**Adresáře**|Povoluje shromažďování obsah adresáře, protokoly žádost o přístup služby IIS se nezdařilo nebo protokoly služby IIS. Volitelný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
+|**DiagnosticInfrastructureLogs**|Povolte shromažďování protokolů generovaných Azure Diagnostics. Infrastruktura diagnostické protokoly jsou užitečné pro řešení potíží s samotného systému diagnostiky. Volitelné atributy jsou:<br /><br /> -                     **scheduledTransferLogLevelFilter** -nakonfiguruje závažnost minimální úroveň shromážděné protokoly.<br /><br /> -                     **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**Adresáře**|Povoluje shromažďování obsah adresáře, protokoly žádost o přístup služby IIS se nezdařilo nebo protokoly služby IIS. Volitelný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datového typu."](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**EtwProviders**|Nakonfiguruje shromažďování událostí trasování událostí pro Windows z EventSource nebo Manifest trasování událostí pro Windows na základě zprostředkovatele.|  
 |**Metriky**|Tento element umožňuje generovat tabulku čítače výkonu, která je optimalizovaná pro rychlé dotazy. Jednotlivých čítačů výkonu, která je definována v **čítače výkonu** element je uložené v tabulce metriky kromě tabulky čítače výkonu. Požadovaný atribut:<br /><br /> **resourceId** – to je ID prostředku nasazujete Azure Diagnostics do virtuálního počítače. Získat **resourceID** z [portál Azure](https://portal.azure.com). Vyberte **Procházet** -> **skupiny prostředků** -> **< název\>**. Klikněte **vlastnosti** dlaždici a zkopírujte hodnotu z **ID** pole.|  
-|**čítače výkonu**|Povoluje shromažďování čítačů výkonu. Volitelný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datový typ".](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
-|**WindowsEventLog**|Umožňuje kolekce protokoly událostí systému Windows. Volitelný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datový typ".](http://www.w3schools.com/schema/schema_dtypes_date.asp)|  
+|**Čítače výkonu**|Povoluje shromažďování čítačů výkonu. Volitelný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datový typ".](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**WindowsEventLog**|Umožňuje kolekce protokoly událostí systému Windows. Volitelný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [XML "Doba trvání datový typ".](http://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 
 ## <a name="crashdumps-element"></a>CrashDumps Element  
  Umožňuje kolekce výpisy stavu systému. Následující tabulka popisuje podřízených elementů:  
@@ -154,8 +154,8 @@ Definuje nastavení konfigurace pro telemetrická data, které se mají shromaž
 
 |Název elementu|Popis|  
 |------------------|-----------------|  
-|**EtwEventSourceProviderConfiguration**|Nakonfiguruje kolekce událostí generovaných [EventSource – třída](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Požadovaný atribut:<br /><br /> **Zprostředkovatel** -název třídy událostí EventSource.<br /><br /> Volitelné atributy jsou:<br /><br /> -                     **scheduledTransferLogLevelFilter** -úroveň závažnosti minimální přenést do účtu úložiště.<br /><br /> -                     **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [datový typ XML trvání](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
-|**EtwManifestProviderConfiguration**|Požadovaný atribut:<br /><br /> **Zprostředkovatel** -GUID zprostředkovatele událostí<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -úroveň závažnosti minimální přenést do účtu úložiště.<br /><br /> -                     **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [datový typ XML trvání](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
+|**EtwEventSourceProviderConfiguration**|Nakonfiguruje kolekce událostí generovaných [EventSource – třída](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Požadovaný atribut:<br /><br /> **Zprostředkovatel** -název třídy událostí EventSource.<br /><br /> Volitelné atributy jsou:<br /><br /> -                     **scheduledTransferLogLevelFilter** -úroveň závažnosti minimální přenést do účtu úložiště.<br /><br /> -                     **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [datový typ XML trvání](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
+|**EtwManifestProviderConfiguration**|Požadovaný atribut:<br /><br /> **Zprostředkovatel** -GUID zprostředkovatele událostí<br /><br /> Volitelné atributy jsou:<br /><br /> - **scheduledTransferLogLevelFilter** -úroveň závažnosti minimální přenést do účtu úložiště.<br /><br /> -                     **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [datový typ XML trvání](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration Element  
  Nakonfiguruje kolekce událostí generovaných [EventSource – třída](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx). Následující tabulka popisuje podřízených elementů:  
@@ -178,7 +178,7 @@ Definuje nastavení konfigurace pro telemetrická data, které se mají shromaž
 
 |Název elementu|Popis|  
 |------------------|-----------------|  
-|**MetricAggregation**|Požadovaný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [datový typ XML trvání](http://www.w3schools.com/schema/schema_dtypes_date.asp).|  
+|**MetricAggregation**|Požadovaný atribut:<br /><br /> **scheduledTransferPeriod** -interval mezi naplánované přenosy do úložiště zaokrouhlený nahoru na nejbližší minutu. Hodnota je [datový typ XML trvání](http://www.w3schools.com/xml/schema_dtypes_date.asp).|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters – Element  
  Povoluje shromažďování čítačů výkonu. Následující tabulka popisuje podřízených elementů:  
@@ -199,4 +199,4 @@ Definuje nastavení konfigurace pro telemetrická data, které se mají shromaž
 
 |Název elementu|Popis|  
 |------------------|-----------------|  
-|**zdroj dat**|Protokol událostí systému Windows ke shromažďování. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému windows, které se mají shromažďovat. Příklad:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Ke shromažďování všech událostí, zadejte "*".|
+|**Zdroj dat**|Protokol událostí systému Windows ke shromažďování. Požadovaný atribut:<br /><br /> **název** – dotaz XPath popisující události systému windows, které se mají shromažďovat. Příklad:<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> Ke shromažďování všech událostí, zadejte "*".|

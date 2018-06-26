@@ -1,6 +1,6 @@
 ---
-title: Povolit šifrování disku pro clustery Windows fabric služby | Microsoft Docs
-description: Tento článek popisuje, jak povolit šifrování disku pro uzly clusteru Service Fabric v Azure pomocí Azure Resource Manager, Azure Key Vault.
+title: Povolit šifrování disku u clusterů Service Fabric Windows | Microsoft Docs
+description: Tento článek popisuje, jak povolit šifrování disku pro uzly clusteru Service Fabric v Azure pomocí Azure Resource Manager a Azure Key Vault.
 services: service-fabric
 documentationcenter: .net
 author: v-viban
@@ -13,46 +13,52 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/23/2018
 ms.author: v-viban
-ms.openlocfilehash: 0b84d270cc50888822b8463df2b95aedaa34ee9a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 58f9481fa27f44de30fd80fe52e9b6d06d341b41
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654999"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750889"
 ---
-# <a name="enable-disk-encryption-for-service-fabric-windows-cluster-nodes"></a>Povolit šifrování disku pro uzly clusteru Windows service fabric 
+# <a name="enable-disk-encryption-for-service-fabric-windows-cluster-nodes"></a>Povolit šifrování disku pro uzly clusteru Service Fabric Windows 
 > [!div class="op_single_selector"]
 > * [Šifrování disku pro Windows](service-fabric-enable-azure-disk-encryption-windows.md)
 > * [Šifrování disku pro Linux](service-fabric-enable-azure-disk-encryption-linux.md)
 >
 >
 
-Použijte následující postup pro zapnutí šifrování disku na uzly clusteru Windows Service Fabric. Musíte provést tyto pro jednotlivé sady škálování uzlu typy nebo virtuální počítače. Pro šifrování uzly, jsme bude využívat možnosti Azure Disk Encryption na sady škálování virtuálního počítače.
+Pomocí následujících kroků povolte šifrování disku na uzly clusteru Azure Service Fabric Windows. Budete muset provést tyto pro jednotlivé typy uzlů nebo sady škálování virtuálního počítače. K šifrování uzly, budete používat funkce Azure Disk Encryption na sady škálování virtuálního počítače.
 
 Průvodce zahrnuje následující postupy:
 
-* Klíčové koncepty, které potřebujete k mějte vypnuto povolit šifrování disku na škálování virtuálních počítačů Service Fabric Windows Cluster nastavit.
-* Předpoklady postup provést před povolením šifrování disku na škálovací sadu virtuálních počítačů služby Cluster Windows Fabric.
-* Postup pro povolení šifrování disku na škálování virtuálních počítačů Service Fabric Windows Cluster nastavit.
+* Klíčové koncepty pro povolení šifrování disku na sady škálování virtuálního počítače pro clustery služby Windows Fabric.
+* Požadovaných kroků dříve než povolíte šifrování disku na virtuálním počítači škálovat sady pro správu a údržbu prostředků infrastruktury clustery.
+* Postup povolení a zákaz disku šifrování u sady škálování virtuálního počítače pro clustery služby Windows Fabric.
 
 
 ## <a name="prerequisites"></a>Požadavky
-1. **Vlastní registraci** – Pokud chcete použít, virtuální počítač škálování sadu disku šifrování preview vyžaduje vlastní registraci
-2. Vaše předplatné mohou registrovat spuštěním následující kroky: 
-```Powershell
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
-```
-3. Počkejte přibližně 10 minut, dokud se stav jako "Registrovaná". Stav můžete zkontrolovat spuštěním následujícího příkazu: 
-```Powershell
-Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
-```
-4. **Azure Key Vault** -vytvořit KeyVault ve stejném předplatném, oblasti měřítka nastavit a nastavit zásady přístupu, EnabledForDiskEncryption' na KeyVault pomocí jeho PS rutiny. Můžete také nastavit zásady, pomocí uživatelského rozhraní KeyVault na portálu Azure: 
-```Powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
-```
-5. Nainstalujte nejnovější [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) , který má nové příkazy šifrování.
-6. Nainstalujte nejnovější verzi [Azure SDK z prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases) verzi. Následují ADE rutiny povolit nastavení škálování virtuálních počítačů ([nastavit](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmssdiskencryptionextension?view=azurermps-4.4.1)) šifrování, načíst ([získat](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmssvmdiskencryption?view=azurermps-4.4.1)) stav šifrování a odebrat ([zakázat](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/disable-azurermvmssdiskencryption?view=azurermps-4.4.1)) šifrování v sadě škálování instance.
+1. Registrovat předplatné tak, že zadáte následující příkaz:
+
+   ```PowerShell
+   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
+   ```
+   
+   Počkejte přibližně 10 minut, dokud je stav `Registered`. Stav můžete zkontrolovat spuštěním následujících příkazů:
+
+   ```PowerShell
+   Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+   ```
+
+2. Vytvoření trezoru klíčů ve stejném předplatném, oblasti jako sada škálování. Nastavit zásady přístupu `EnabledForDiskEncryption` na trezor klíčů pomocí jeho rutiny prostředí PowerShell. Zásady můžete vytvořit také pomocí rozhraní Azure Key Vault na portálu Azure.
+
+   ```PowerShell
+   Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncryption
+   ```
+
+3. Nainstalujte [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest), která obsahuje nejnovější příkazy šifrování.
+
+4. Nainstalujte nejnovější verzi [Azure SDK z prostředí Azure PowerShell](https://github.com/Azure/azure-powershell/releases). Povolit pomocí následující rutiny ([nastavit](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/set-azurermvmssdiskencryptionextension?view=azurermps-4.4.1)) šifrování, načíst ([získat](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmssvmdiskencryption?view=azurermps-4.4.1)) stav šifrování a odebrat ([zakázat](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/disable-azurermvmssdiskencryption?view=azurermps-4.4.1)) šifrování na škále nastavit instanci:
 
 | Příkaz | Verze |  Zdroj  |
 | ------------- |-------------| ------------|
@@ -65,18 +71,18 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -EnabledForDiskEncrypti
 
 
 ## <a name="supported-scenarios-for-disk-encryption"></a>Podporované scénáře pro šifrování disku
-* Šifrovací sady škálování virtuálního počítače je podporována pouze pro sady škálování vytvořit s disky, spravované a nejsou podporovány pro sady škálování nativní (nebo nespravovaný) disku.
-* Šifrovací sady škálování virtuálního počítače je podporována pro svazky operačního systému a dat pro Windows VMSS. Zakázat šifrování je podporováno pro operační systém a datové svazky pro škálovací sadu Windows.
-* Sady škálování virtuálního počítače znovu přeinstalovat image virtuálních počítačů a operace upgradu nejsou podporovány v aktuální verzi preview.
+* Šifrovací sady škálování virtuálního počítače je podporována pouze pro škálování sady vytvořené pomocí spravovaného disky. Není podporováno pro sady škálování nativní (nebo nespravovaný) disku.
+* Šifrovací sady škálování virtuálního počítače je podporováno pro operační systém a datové svazky pro sady škálování virtuálního počítače Windows. Můžete povolit a zakázat šifrování.
+* Obnovení z Image virtuálního počítače sady škálování virtuálního počítače a operace upgradu nejsou podporovány v aktuální verzi preview.
 
 
-### <a name="create-new-cluster-and-enable-disk-encryption"></a>Vytvoření nového clusteru a povolení šifrování disku
+## <a name="create-a-windows-cluster"></a>Vytvoření clusteru se systémem Windows
 
-Použijte následující příkazy k vytvoření clusteru a povolení šifrování disku pomocí šablony Azure Resource Manager & vlastního certifikátu podepsaného držitelem.
+Použijte následující příkazy k vytvoření clusteru a povolení šifrování disku pomocí šablonu Azure Resource Manager a certifikát podepsaný svým držitelem.
 
 ### <a name="log-in-to-azure"></a>Přihlášení k Azure 
 
-```Powershell
+```PowerShell
 
 Login-AzureRmAccount
 Set-AzureRmContext -SubscriptionId <guid>
@@ -90,13 +96,13 @@ az account set --subscription $subscriptionId
 
 ```
 
-#### <a name="use-the-custom-template-that-you-already-have"></a>Použít vlastní šablonu, kterou už máte 
+### <a name="use-a-custom-template"></a>Použít vlastní šablonu 
 
-Pokud potřebujete vytvořit vlastní šablonu, aby vyhovovala vašim potřebám, důrazně doporučujeme začínat jednu z šablon, které jsou dostupné na [ukázky šablony služby azure service fabric](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master). Postupujte podle pokynů a vysvětlení [přizpůsobení šablony clusteru] [přizpůsobit si cluster šablony] části.
+Pokud potřebujete vytvořit vlastní šablonu, aby vyhovovala vašim potřebám, doporučujeme spuštění s jedním z [ukázky šablony Azure Service Fabric](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master).
 
-Pokud již máte vlastní šablony a poté se ujistěte se, zda Překontrolujte, že jsou všechny tři související s certifikátem parametry v šabloně i v souboru parametrů takto pojmenované a hodnoty mají hodnotu null následujícím způsobem.
+Pokud již máte vlastní šablonu, ujistěte se, že jsou všechny tři související s certifikátem parametry v šabloně i v souboru parametrů pojmenované následujícím způsobem. Ujistěte se, že hodnoty jsou null následující také.
 
-```Json
+```JSON
    "certificateThumbprint": {
       "value": ""
     },
@@ -109,7 +115,7 @@ Pokud již máte vlastní šablony a poté se ujistěte se, zda Překontrolujte,
 ```
 
 
-```Powershell
+```PowerShell
 
 
 $resourceGroupLocation="westus"
@@ -145,13 +151,14 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
 
 ```
 
-#### <a name="deploy-application-to-windows-service-fabric-cluster"></a>Nasazení aplikací do clusteru Windows Service Fabric
-Postupujte podle kroků a pokyny, které [nasazení aplikací do clusteru](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-deploy-remove-applications)
+### <a name="deploy-an-application-to-the-windows-service-fabric-cluster"></a>Nasazení aplikace do clusteru Windows Service Fabric
+Postupujte podle kroků a pokyny, které [nasazení aplikace do clusteru](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-deploy-remove-applications).
 
 
-#### <a name="enable-disk-encryption-for-service-fabric-cluster-virtual-machine-scale-set-created-above"></a>Povolit šifrování disku pro vytvořili výše škálovací sadu virtuálních počítačů pro Service Fabric Cluster
+## <a name="enable-disk-encryption-for-a-virtual-machine-scale-set"></a>Povolit šifrování disku pro sadu škálování virtuálního počítače
+Povolte šifrování disku pro škálovací sadu virtuálních počítačů, které jste dříve vytvořili pro cluster služby Windows Fabric.
  
-```Powershell
+```PowerShell
 
 $VmssName = "nt1vm"
 $vaultName = "mykeyvault"
@@ -171,11 +178,10 @@ az vmss encryption enable -g <resourceGroupName> -n <VMSS name> --disk-encryptio
 ```
 
 
-#### <a name="validate-if-disk-encryption-enabled-for-windows-virtual-machine-scale-set"></a>Ověřte, jestli nastavení pro škálování virtuálních počítačů Windows, zapnuté šifrování disku.
-Získáte stav sadu škálování celý virtuální počítač nebo jakoukoli instanci v sadě škálování. Najdete v níže uvedené příkazy.
-Kromě toho můžete uživatele přihlásit k virtuálnímu počítači v sadě škálování a ujistěte se, že jsou zašifrované jednotky
+## <a name="validate-that-disk-encryption-is-enabled-for-a-virtual-machine-scale-set"></a>Ověřte, že disk je povolené šifrování pro sadu škálování virtuálního počítače
+Použijte následující příkazy a získat stav sadu škálování celý virtuální počítač nebo jakoukoli instanci virtuálního počítače ve škálovací sadě. Můžete také přihlásit k virtuálnímu počítači v sadě škálování a ujistěte se, že jsou zašifrované jednotky.
 
-```Powershell
+```PowerShell
 
 $VmssName = "nt1vm"
 $resourceGroupName = "mycluster"
@@ -192,10 +198,11 @@ az vmss encryption show -g <resourceGroupName> -n <VMSS name>
 ```
 
 
-#### <a name="disable-disk-encryption-for-service-fabric-cluster-virtual-machine-scale-set"></a>Zakázat šifrování disku pro škálovací sadu virtuálních počítačů Service Fabric Cluster 
-Zakázat šifrování disku se vztahuje k sadě škálování celý virtuální počítač a není instancí 
+## <a name="disable-disk-encryption-for-a-virtual-machine-scale-set"></a>Zakázat šifrování disku pro sadu škálování virtuálního počítače 
+Pokud je nutné zakázat šifrování disku pro škálování virtuálního počítače nastavit pro cluster Service Fabric Windows, použijte následující příkazy. Zakázáním šifrování disku se vztahuje k sadě škálování celý virtuální počítač a není instancí. 
 
-```Powershell
+
+```PowerShell
 
 $VmssName = "nt1vm"
 $resourceGroupName = "mycluster"
@@ -211,5 +218,5 @@ az vmss encryption disable -g <resourceGroupName> -n <VMSS name>
 
 
 ## <a name="next-steps"></a>Další postup
-V tuto chvíli máte zabezpečené clusteru se povolení a zakázání šifrování disku pro škálovací sadu virtuálních počítačů Service Fabric Cluster. Dále [disku šifrování pro Linux](service-fabric-enable-azure-disk-encryption-linux.md) 
+V tuto chvíli máte cluster zabezpečené a víte, jak povolit a zakázat šifrování disku pro cluster s podporou služby Windows Fabric. V dalším kroku Další informace o [šifrování disku pro Linux](service-fabric-enable-azure-disk-encryption-linux.md). 
 

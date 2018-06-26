@@ -5,7 +5,7 @@
 > 
 > 
 
-1. Přejděte do [konzoly Firebase](https://console.firebase.google.com/) a přihlaste se pomocí svých přihlašovacích údajů k účtu Google.
+1. Přejděte na [Firebase konzoly](https://console.firebase.google.com/) a přihlaste se pomocí svých přihlašovacích údajů účtu Google.
 2. Kliknutím na tlačítko **Vytvořit nový projekt** vytvořte nový projekt. Případně můžete také naimportovat existující projekt kliknutím na **Importovat projekt Google**. 
 3. Pokud jste se rozhodli vytvořit nový projekt, zadejte **Název projektu** a zvolte **Zemi/oblast**.
 4. Na stránce projektu klikněte v horní levé části na ozubené kolečko **Nastavení**. V nabídce klikněte na **Nastavení projektu**.  

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/26/2018
+ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 80cec0bc8136142f30ea7b957de819379b1bb139
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d9061e12ac9fe0b9d858690897e582acab5169e
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619129"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754448"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Důležité informace o zabezpečení pro přesun dat v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,7 +32,7 @@ Tento článek popisuje základní zabezpečení infrastrukturu, která pomocí 
 
 V řešení Data Factory vytváříte jeden nebo více datových [kanálů](concepts-pipelines-activities.md). Kanál je logické seskupení aktivit, které dohromady provádějí určitou úlohu. Tyto kanály nacházet v oblasti, kde byl vytvořen služby data factory. 
 
-I když Data Factory je dostupná jenom v Východ USA, Východ USA 2 a oblasti západní Evropa (preview verze 2), je k dispozici služba pro přesun dat [globálně v několika oblastech](concepts-integration-runtime.md#azure-ir). Pokud ještě není nasazený služba pro přesun dat do této oblasti, služba Data Factory zajistí, že data, nenechává zeměpisná oblast nebo oblasti Pokud dáte pokyn explicitně službu na používání alternativního oblast. 
+I když Data Factory je dostupná jenom v několika oblastech, služba pro přesun dat je [k dispozici globálně](concepts-integration-runtime.md#integration-runtime-location) zajistit dodržování předpisů data efektivitu a snížené sítě výstupních náklady. 
 
 Azure Data Factory neukládá všechna data s výjimkou pověření propojené služby pro cloudové úložiště dat, které jsou zašifrované pomocí certifikátů. Pomocí služby Data Factory vytvořit pracovních řízené daty k orchestraci přesouvání dat mezi [podporovanými úložišti dat](copy-activity-overview.md#supported-data-stores-and-formats)a zpracování dat pomocí [výpočetní služby](compute-linked-services.md) v jiných oblastech nebo v v místním prostředí. Můžete také sledovat a spravovat workflowy pomocí sady SDK a monitorování Azure.
 
@@ -42,7 +42,7 @@ Přesun dat pomocí služby Data Factory certifikovala pro:
 -   [ISO/IEC 27018](https://www.microsoft.com/en-us/trustcenter/Compliance/ISO-IEC-27018)
 -   [CSA HVĚZDIČKOU](https://www.microsoft.com/en-us/trustcenter/Compliance/CSA-STAR-Certification)
 
-Pokud vás zajímá Azure dodržování předpisů a jak Azure zabezpečuje svou vlastní infrastrukturu, navštivte [Microsoft Trust Center](https://www.microsoft.com/trustcenter).
+Pokud vás zajímá Azure dodržování předpisů a jak Azure zabezpečuje svou vlastní infrastrukturu, navštivte [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 V tomto článku jsme zkontrolujte důležité informace o zabezpečení v následujících scénářích přesun dvě dat: 
 

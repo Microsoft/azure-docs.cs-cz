@@ -11,25 +11,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2018
+ms.date: 06/25/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 8643e75a24ff7840b71dfaceae9934cdda566d30
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: e1505761a0bd1ea9dabdd0b2cbab7af902198311
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604416"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938328"
 ---
-# <a name="use-sql-databases-on-microsoft-azure-stack"></a>Databáze SQL pro použití v zásobníku Microsoft Azure
-Pomocí zprostředkovatele prostředků Azure zásobníku SQL serveru ke zveřejnění databází SQL jako služba Azure zásobníku. Služba zprostředkovatele prostředků SQL běží na poskytovateli prostředků SQL virtuální počítač, který je virtuálního počítače jádra serveru systému Windows.
+# <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>Nasazení systému SQL Server zprostředkovatel prostředků v Azure zásobníku
+
+Pomocí zprostředkovatele prostředků Azure zásobníku SQL Server lze zobrazit SQL databáze jako služba Azure zásobníku. Zprostředkovatel prostředků SQL je spuštěna jako služba na virtuálním počítači (VM) Windows serveru 2016 Server Core.
 
 ## <a name="prerequisites"></a>Požadavky
-Existuje několik předpokladů, které musí být splněné před nasazením poskytovatel prostředků Azure SQL zásobníku. V počítači, který přístup privilegované koncový bod virtuálního počítače, proveďte následující kroky:
 
-- Pokud jste zatím žádný nevytvořili, [zaregistrovat Azure zásobníku](.\azure-stack-registration.md) s Azure tak, aby si můžete stáhnout položky Azure marketplace.
-- Přidejte požadované jádra serveru systému Windows virtuálního počítače do zásobníku Azure marketplace stažením **jádra Windows Server 2016 serveru** bitové kopie. Pokud potřebujete nainstalovat aktualizace, můžete umístit jedné. Balíček MSU v cestě místní závislostí. Pokud je více než jeden. MSU nalezeno, instalace zprostředkovatele prostředků SQL se nezdaří.
-- Zprostředkovatel prostředků SQL binární stažení a spuštění Self-Extractor extrahujte obsah do dočasného adresáře. Poskytovatel prostředků má minimální odpovídající Azure zásobníku sestavení. Ujistěte se, že jste stáhnout správné binární pro verzi Azure zásobníku, kterou používáte:
+Existuje několik předpokladů, které musí být splněné před nasazením poskytovatel prostředků Azure SQL zásobníku. Pro splnění těchto požadavků, proveďte následující kroky v počítači, který přístup privilegované koncový bod virtuálního počítače:
+
+- Pokud jste zatím žádný nevytvořili, [zaregistrovat Azure zásobníku](.\azure-stack-registration.md) s Azure, takže si můžete stáhnout položky Azure marketplace.
+- Přidejte požadované jádra serveru systému Windows virtuálního počítače do zásobníku Azure marketplace stažením **Windows Server 2016 Datacenter - jádra serveru** bitové kopie. Skript můžete také použít k vytvoření [bitové kopie systému Windows Server 2016](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image). Ujistěte se, zda že jste vybrali možnost jádra při spuštění skriptu.
+
+  >[!NOTE]
+  >Pokud potřebujete nainstalovat aktualizace, můžete umístit jeden balíček MSU v cestě místní závislostí. Pokud je nalezen více než jeden soubor MSU, instalace zprostředkovatele prostředků SQL se nezdaří.
+
+- Stáhnout poskytovatele prostředků SQL binární a pak spusťte Self-Extractor extrahujte obsah do dočasného adresáře. Poskytovatel prostředků má minimální odpovídající Azure zásobníku sestavení. Zajistěte, aby že si stáhnout správné binární verze zásobník Azure, který používáte.
 
     |Verze Azure zásobníku|Verze SQL RP|
     |-----|-----|
@@ -37,38 +43,41 @@ Existuje několik předpokladů, které musí být splněné před nasazením po
     |Verze 1802 (1.0.180302.1)|[SQL RP verze 1.1.18.0](https://aka.ms/azurestacksqlrp1802)|
     |Verze 1712 (1.0.180102.3, 1.0.180103.2 nebo 1.0.180106.1 (integrované systémy))|[SQL RP verze 1.1.14.0](https://aka.ms/azurestacksqlrp1712)|
     |     |     |
-- Integrované systémy jenom pro instalace, musíte zadat certifikát SQL PaaS PKI, jak je popsáno v části volitelné certifikáty PaaS z [požadavky na Azure zásobníku nasazení infrastruktury veřejných KLÍČŮ](.\azure-stack-pki-certs.md#optional-paas-certificates), umístěním soubor .pfx do umístění specifikace **DependencyFilesLocalPath** parametr.
+
+### <a name="certificates"></a>Certifikáty
+
+Integrované systémy jenom pro instalace. Je nutné zadat certifikát SQL PaaS PKI, který je popsaný v části volitelné certifikáty PaaS z [požadavky na Azure zásobníku nasazení infrastruktury veřejných KLÍČŮ](.\azure-stack-pki-certs.md#optional-paas-certificates). Umístěte soubor .pfx do umístění, které **DependencyFilesLocalPath** parametr.
 
 ## <a name="deploy-the-sql-resource-provider"></a>Nasazení poskytovatele prostředků SQL
-Jakmile úspěšně dokončíte přípravu na nainstalovat poskytovatele prostředků SQL tak, že splňuje všechny požadavky, teď můžete spustit **DeploySqlProvider.ps1** skriptu pro nasazení poskytovatele prostředků SQL. DeploySqlProvider.ps1 skript se extrahuje jako součást poskytovatele prostředků SQL binární, který jste si stáhli odpovídající vaší verzí zásobník Azure. 
+
+Jakmile máte k dispozici všechny požadované součásti nainstalované, spusťte **DeploySqlProvider.ps1** skriptu pro nasazení poskytovatele prostředků SQL. Skript DeploySqlProvider.ps1 se extrahuje jako součást binární zprostředkovatele prostředků SQL, který jste stáhli pro vaši verzi Azure zásobníku.
 
 > [!IMPORTANT]
-> Systém, kde je spuštěn skript musí být systém Windows 10 nebo Windows Server 2016 na nejnovější verzi modulu runtime rozhraní .NET nainstalované.
+> Systém, který používáte skript na musí být systém Windows 10 nebo Windows Server 2016 na nejnovější verzi modulu runtime rozhraní .NET nainstalované.
 
+Chcete-li nasadit poskytovatele prostředků SQL, otevřete **nové** zvýšenými PowerShell okně konzoly a přejděte do adresáře, které jste extrahovali binární soubory zprostředkovatele prostředků SQL. Doporučujeme používat nové okno prostředí PowerShell, aby nedocházelo k problémům způsobené moduly Powershellu, které již byly načteny.
 
-Abyste mohli nasadit poskytovatele prostředků SQL, otevřete nové zvýšenými oprávněními (správce) konzolu PowerShell a přejděte do adresáře, které jste extrahovali binární soubory zprostředkovatele prostředků SQL.
+Spusťte skript DeploySqlProvider.ps1, který dokončí následující úkoly:
+
+- Ukládání certifikáty a další artefakty na účet úložiště v Azure zásobníku.
+- Publikuje Galerie balíčky, abyste mohli nasadit pomocí Galerie databází SQL.
+- Publikuje balíček Galerie pro nasazení hostitelskými servery.
+- Nasadí virtuálního počítače pomocí bitové kopie k jádra systému Windows Server 2016 jste stáhli a poté nainstaluje poskytovatele prostředků SQL.
+- Zaregistruje místní záznam DNS, který se mapuje na zprostředkovateli prostředků virtuálních počítačů.
+- Zaregistruje poskytovatel prostředků s místní správce prostředků Azure, pro operátor a uživatelské účty.
+- V případě potřeby nainstaluje jednu aktualizaci Windows Server během instalace zprostředkovatele prostředků.
 
 > [!NOTE]
-> Aby nedocházelo k problémům, které by mohly nastat z nesprávné modulů prostředí PowerShell, které jsou již načtena v systému pomocí nového okna prostředí PowerShell.
-
-Spusťte skript DeploySqlProvider.ps1, který provede následující kroky:
-- Ukládání certifikáty a další artefakty na účet úložiště v Azure zásobníku.
-- Publikuje Galerie balíčky, abyste mohli nasadit databází SQL v galerii.
-- Publikuje balíček Galerie pro nasazení hostitelskými servery.
-- Virtuální počítač se nasadí pomocí bitové kopie systému Windows Server 2016, který byl vytvořen v kroku 1 a poté nainstaluje poskytovatele prostředků.
-- Zaregistruje místní záznam DNS, který se mapuje na zprostředkovateli prostředků virtuálních počítačů.
-- Zaregistruje poskytovatel prostředků s místní Azure Resource Manager (uživatele a správce).
-- Během instalace RP volitelně nainstaluje jednu aktualizaci systému Windows.
-
-Nasazení zprostředkovatele prostředků SQL začne a vytvoří skupinu prostředků system.local.sqladapter. To může trvat až 75 minut na dokončení čtyři požadovaná nasazení do této skupiny prostředků.
+> Při spuštění nasazení zprostředkovatele prostředků SQL, **system.local.sqladapter** po vytvoření skupiny prostředků. To může trvat až 75 minut na dokončení čtyři požadovaná nasazení do této skupiny prostředků.
 
 ### <a name="deploysqlproviderps1-parameters"></a>Parametry DeploySqlProvider.ps1
-Tyto parametry můžete zadat na příkazovém řádku. Pokud ho použít nechcete, nebo pokud žádné parametr ověření selže, zobrazí se výzva k zadání požadované parametry.
+
+Můžete zadat následující parametry z příkazového řádku. Pokud to neuděláte, nebo pokud žádné ověření parametru selže, se zobrazí výzva k poskytování požadované parametry.
 
 | Název parametru | Popis | Komentář nebo výchozí hodnotu |
 | --- | --- | --- |
 | **CloudAdminCredential** | Přihlašovací údaje pro správce cloudu potřebné pro přístup k privilegované koncový bod. | _Požadované_ |
-| **AzCredential** | Přihlašovací údaje pro účet správce služby Azure zásobníku. Pomocí stejných přihlašovacích údajů jako používat pro nasazování Azure zásobníku. | _Požadované_ |
+| **AzCredential** | Přihlašovací údaje pro účet správce služby Azure zásobníku. Pomocí stejných přihlašovacích údajů, které jste použili pro nasazení Azure zásobníku. | _Požadované_ |
 | **VMLocalCredential** | Přihlašovací údaje pro účet místního správce zprostředkovatele prostředků SQL virtuálních počítačů. | _Požadované_ |
 | **PrivilegedEndpoint** | IP adresa nebo název DNS privilegované koncového bodu. |  _Požadované_ |
 | **DependencyFilesLocalPath** | Soubor .pfx certifikátu musí být umístěny v tomto adresáři také. | _Volitelné_ (_povinné_ pro integrované systémy) |
@@ -79,11 +88,11 @@ Tyto parametry můžete zadat na příkazovém řádku. Pokud ho použít nechce
 | **Režim DebugMode** | Brání automatické čištění při selhání. | Ne |
 
 >[!NOTE]
-> SKU může trvat až jednu hodinu, mají být zobrazeny v portálu. Databázi nelze vytvořit, dokud nebude vytvořen verze SKU.
-
+> SKU může trvat až jednu hodinu, mají být zobrazeny v portálu. Databázi nelze vytvořit, dokud nebude verze SKU nasazené a spuštěná.
 
 ## <a name="deploy-the-sql-resource-provider-using-a-custom-script"></a>Nasazení pomocí vlastního skriptu poskytovatele prostředků SQL
-Abyste se vyhnuli, při spuštění skriptu DeploySqlProvider.ps1 ručním zadáním požadované informace, můžete přizpůsobit následující ukázkový skript změnou výchozí informace o účtu a hesla podle potřeby:
+
+K vyloučení jakékoli ruční konfigurace při nasazování poskytovatele prostředků, můžete upravit následující skript. Podle potřeby pro vaše nasazení Azure zásobníku, změňte výchozí informace o účtu a hesla.
 
 ```powershell
 # Install the AzureRM.Bootstrapper module and set the profile.
@@ -99,45 +108,48 @@ $privilegedEndpoint = "AzS-ERCS01"
 # Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\SQLRP'
 
-# The service admin account (can be Azure Active Directory or Active Directory Federation Services).
+# The service admin account can be Azure Active Directory or Active Directory Federation Services.
 $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set credentials for the new resource provider VM local administrator account
+# Set credentials for the new resource provider VM local administrator account.
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
 
-# And the cloudadmin credential that's required for privileged endpoint access.
+# Add the cloudadmin credential that's required for privileged endpoint access.
 $CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
 
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
-# Change directory to the folder where you extracted the installation files.
+# Change to the directory If folder where you extracted the installation files.
 # Then adjust the endpoints.
-$tempDir\DeploySQLProvider.ps1 `
+. $tempDir\DeploySQLProvider.ps1 `
     -AzCredential $AdminCreds `
     -VMLocalCredential $vmLocalAdminCreds `
     -CloudAdminCredential $cloudAdminCreds `
     -PrivilegedEndpoint $privilegedEndpoint `
     -DefaultSSLCertificatePassword $PfxPass `
     -DependencyFilesLocalPath $tempDir\cert
+
  ```
 
-## <a name="verify-the-deployment-using-the-azure-stack-portal"></a>Ověření nasazení pomocí portálu Azure zásobníku
-Postup v této části lze zajistit, že poskytovatele prostředků SQL byl úspěšně nasazen.
+Po dokončení skriptu instalace zprostředkovatele prostředků, aktualizujte webový prohlížeč, abyste měli jistotu, že vidíte nejnovější aktualizace.
 
-> [!NOTE]
->  Po dokončení skriptu instalace bude nutné aktualizovat na portálu zobrazit položky správce okno a Galerie.
+## <a name="verify-the-deployment-using-the-azure-stack-portal"></a>Ověření nasazení pomocí portálu Azure zásobníku
+
+Můžete použít následující kroky ověřte, zda je poskytovatel prostředků SQL úspěšně nasazeny.
 
 1. Přihlaste se k portálu pro správu jako správce služeb.
-
-2. Ověřte, zda nasazení proběhla úspěšně. Přejděte na **skupiny prostředků**. Vyberte **systému.\< umístění\>.sqladapter** skupinu prostředků. Ověřte, zda všechny čtyři nasazení proběhla úspěšně.
+2. Vyberte **skupiny prostředků**.
+3. Vyberte **systému.\< umístění\>.sqladapter** skupinu prostředků.
+4. Zprávy v části **nasazení**, znázorňuje následující snímek obrazovky, by měla být **4 úspěšné**.
 
       ![Ověření nasazení poskytovatele prostředků SQL](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
 
+5. Můžete získat podrobnější informace o nasazení zprostředkovatele prostředků v části **nastavení**. Vyberte **nasazení** například získat informace o: stav, časové razítko a dobu trvání pro každé nasazení.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b0772e3186c86239c773222a2b2e8d602a46aa52
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: cf803c03d266f2a400e47fc551dea62936456177
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300590"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937614"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Spravovat zařízení v aplikaci Azure IoT centrální
 
@@ -96,7 +96,7 @@ Pokud zařízení zaregistrujete spuštěním import pod **zrušeno přiřazení
 1. Vybraná zařízení budou přesunuty v šabloně, příslušné zařízení.
 
  >   [!NOTE] 
-    Jakmile zařízení už není přidružena k šabloně nelze změnit ani spojené s jinou šablonu.
+    Jakmile zařízení už není přidružena k šabloně nemůže být zrušeno přiřazení nebo související s jinou šablonu.
 
 ## <a name="export-devices"></a>Export zařízení
 

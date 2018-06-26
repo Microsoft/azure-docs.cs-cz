@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 66423fecce92cd933cc8680810aa2abe5e25a90d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b87838a80c7c7706b9af2bd4ea274335d04a5c52
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153578"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751509"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [Azure App Service](app-service-web-overview.md) umožňuje snadno vytvářet zálohy aplikaci ručně nebo podle plánu. Aplikace můžete obnovit do snímku do předchozího stavu pomocí přepsal stávající aplikace nebo při obnovování jiné aplikaci. 
@@ -38,7 +38,7 @@ Služby App Service můžete zálohovat následující informace na účtu úlo�
 Funkce zálohování podporuje následující databáze řešení: 
    - [SQL Database](https://azure.microsoft.com/services/sql-database/)
    - [Azure databáze pro databázi MySQL (Preview)](https://azure.microsoft.com/services/mysql)
-   - [Azure databázi PostgreSQL (Preview)](https://azure.microsoft.com/services/postgres)
+   - [Azure databázi PostgreSQL (Preview)](https://azure.microsoft.com/services/postgresql)
    - [MySQL v aplikaci](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
  
 

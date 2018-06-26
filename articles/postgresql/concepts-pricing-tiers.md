@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/21/2018
-ms.openlocfilehash: f4fe04b972cdd3d4f78a139ce5554ee7b6774d8a
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: fc7a2316b5b006cbbf8a237c6a95a71b6489932b
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319312"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753400"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure databázi PostgreSQL cenové úrovně
 
@@ -81,13 +81,13 @@ Výpočetní prostředky jsou k dispozici jako vCores, která představují logi
 | Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
 | Velikost úložiště přírůstku | 1 GB | 1 GB | 1 GB |
-| IOPS | Proměnná |3 IOPS/GB<br/>Min 100 IOPS<br/>Maximální IOPS 7500 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maximální IOPS 7500 |
+| IOPS | Proměnná |3 IOPS/GB<br/>Min 100 IOPS<br/>Maximální IOPS 6000 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maximální IOPS 6000 |
 
 Další úložiště kapacity můžete přidat během a po vytvoření serveru. Základní vrstvě neposkytuje záruku IOPS. V obecné účely a paměťově optimalizované cenové úrovně IOPS škálování se velikost zřízeného úložiště v poměru 3:1.
 
 Můžete monitorovat vaší spotřeby vstupně-výstupních operací na portálu Azure nebo pomocí rozhraní příkazového řádku Azure. Metriku relevantní pro monitorování jsou [limit úložiště, procento úložiště, používá úložiště a vstupně-výstupní operace procent](concepts-monitoring.md).
 
-### <a name="reaching-the-store-limit"></a>Dosažení limitu úložiště
+### <a name="reaching-the-storage-limit"></a>Dosažení limitu úložiště
 
 Server je označen jen pro čtení, když velikost volného místa dosáhne menší než 5 GB nebo zřízené úložiště % 5, podle toho, která je menší. Například, pokud máte zřízen 100 GB úložiště, a skutečné využití prochází přes 95 GB, server je označen jen pro čtení. Alternativně zřízením 5 GB úložiště, server je označen jen pro čtení Pokud volný úložný prostor dosáhne méně než 250 MB.  
 

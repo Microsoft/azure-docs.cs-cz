@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 580ecc98913dc35e2d1e21f1dcfa19936bb59826
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ee32f6459cf7673f6bb633e12776ec3c40eb13e1
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337958"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753417"
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Nasazení více instancí prostředek nebo vlastnost v šablonách Azure Resource Manageru
 Tento článek ukazuje, jak podmíněně nasazení prostředku a jak k iteraci v šablony Azure Resource Manager vytvořit více instancí prostředku.
@@ -257,7 +257,7 @@ Iterace prostředků a vlastnosti můžete použít společně. Odkaz na vlastno
 {
     "type": "Microsoft.Network/virtualNetworks",
     "name": "[concat(parameters('vnetname'), copyIndex())]",
-    "apiVersion": "2016-06-01",
+    "apiVersion": "2018-04-01",
     "copy":{
         "count": 2,
         "name": "vnetloop"

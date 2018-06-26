@@ -10,21 +10,21 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 84734b89aeb95745d237c062e5654afc4d49f966
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: 00f1dc8c9cffbff240f96fed3d2f09888c041301
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711140"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754451"
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Přizpůsobení uživatelského rozhraní (UI) Azure AD B2C
 
 Činnost koncového uživatele je prvořadá v zákazníků, kterým čelí aplikace.  Růst zákazníkovi základní tím, že vytvoří koncových uživatelů s vzhledu a chování vaší značkou. Azure Active Directory B2C (Azure AD B2C) umožňuje přizpůsobit profil registrace, přihlášení, úpravy a resetování hesla stránky s ovládacím prvkem dokonalou pixelů.
 
 > [!NOTE]
-> Funkce přizpůsobení uživatelského rozhraní stránky popsané v tomto článku se nevztahuje pouze zásad přihlašování, jeho doprovodné stránku pro reset hesla a ověření e-mailů.  Tyto funkce používají [firemního brandingu funkce](../active-directory/customize-branding.md) místo.
+> Funkce přizpůsobení uživatelského rozhraní stránky popsané v tomto článku se nevztahuje pouze zásad přihlašování, jeho doprovodné stránku pro reset hesla a ověření e-mailů.  Tyto funkce používají [firemního brandingu funkce](../active-directory/fundamentals/customize-branding.md) místo.
 >
-> Podobně pokud uživatel intiates zásadu upravit profil *před* přihlášení, uživatel bude přesměrován na stránku, kterou lze přizpůsobit pomocí [firemního brandingu funkce](../active-directory/customize-branding.md).
+> Podobně pokud uživatel intiates zásadu upravit profil *před* přihlášení, uživatel bude přesměrován na stránku, kterou lze přizpůsobit pomocí [firemního brandingu funkce](../active-directory/fundamentals/customize-branding.md).
 
 Tento článek obsahuje následující témata:
 
@@ -214,7 +214,7 @@ Tato stránka obsahuje formulář založený na e-mailovou adresu nebo uživatel
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-social-account-sign-up-page"></a>Fragment vloženy do "" sociálních účet stránku pro přihlášení"
+### <a name="fragment-inserted-into-the-social-account-sign-up-page"></a>Fragment vloženy do "sociálních účet stránku pro přihlášení"
 
 Tato stránka se mohou objevit při registraci pomocí existujícího účtu od poskytovatele identity sociálních třeba Facebook nebo Google +.  Používá se při dalších informace musí být shromažďovány z koncového uživatele pomocí registračního formuláře. Tato stránka je podobný na místní účet stránku pro přihlášení (zobrazené v předchozí části) s výjimkou pole pro zadání hesla.
 
@@ -315,7 +315,7 @@ Na této stránce si uživatelé mohli ověřit jejich telefonních čísel (pom
 </div>
 ```
 
-### <a name="fragment-inserted-into-the-error-page"></a>Fragment vloženy do "" chybové stránky"
+### <a name="fragment-inserted-into-the-error-page"></a>Fragment vloženy do "chybová stránka"
 
 ```HTML
 <div id="api" class="error-page-content" data-name="GlobalException">

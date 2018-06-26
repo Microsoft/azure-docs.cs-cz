@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 5d01f2e402e4b793274761703ec3ca1ea3ff8164
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 10d4779d05d95822ffd487db1ce8992d199c495f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30185975"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753437"
 ---
-# <a name="verifying-expressroute-connectivity"></a>Ověření připojení ExpressRoute
+# <a name="verifying-expressroute-connectivity"></a>Ověření možností připojení ExpressRoute
 ExpressRoute, které zasahuje do místní sítě do cloudu Microsoftu přes privátní připojení, které usnadňují poskytovatele připojení, zahrnuje následující tři odlišné sítě zóny:
 
 -   Své sítě.
@@ -174,7 +174,7 @@ Po dokončení zřizování okruh ExpressRoute poskytovatele služeb konfigurace
 ### <a name="verification-via-the-azure-portal"></a>Ověření prostřednictvím portálu Azure
 
 >[!NOTE]
->Pokud vrstvy 3 je poskytované poskytovatelem služby a partnerských vztahů jsou prázdné na portálu, aktualizujte konfiguraci okruh pomocí tlačítka Aktualizovat na protal. Tato operace platí správné konfigurace směrování na váš okruh. 
+>Pokud vrstvy 3 je poskytované poskytovatelem služby a partnerských vztahů jsou prázdné na portálu, aktualizujte konfiguraci okruh pomocí tlačítka Aktualizovat na portálu. Tato operace platí správné konfigurace směrování na váš okruh. 
 >
 >
 

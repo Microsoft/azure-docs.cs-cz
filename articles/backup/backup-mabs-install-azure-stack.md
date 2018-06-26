@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: f39f8571d4256a14f64ee2a66788cac8fa524eec
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: c9dd6a1818b0afeb5e577724568a8254a70c8228
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248890"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753349"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalace Azure Backup Serveru v Azure Stacku
 
@@ -42,18 +42,9 @@ Azure Backup Server chrání následující úlohy virtuálního počítače Azu
 | SQL Server 2016 | Databáze |
 | SQL Server 2014 | Databáze |
 | SQL Server 2012 SP1 | Databáze |
+| SharePoint 2016 | Farma, databáze, front-endu, webový server |
 | SharePoint 2013 | Farma, databáze, front-endu, webový server |
 | SharePoint 2010 | Farma, databáze, front-endu, webový server |
-
-
-### <a name="host-vs-guest-backup"></a>Hostování vs hosta zálohování
-
-Azure Backup Server provede hostitele nebo zálohování na úrovni hosta virtuálních počítačů. Na úrovni hostitele agenta Azure Backup je nainstalována na virtuálním počítači nebo v clusteru a chrání celý virtuální počítač a datových souborů na hostiteli spuštěna. Na úrovni hosta agenta Azure Backup je nainstalován na každém virtuálním počítači a chrání úlohy na tomto počítači.
-
-Obě metody mají jejich výhody a nevýhody:
-
-   * Zálohování na úrovni hostitele pracovat, bez ohledu na to operačního systému spuštěné na hostované počítače a nevyžadují agenta Azure Backup nainstalují na jednotlivé virtuální počítače. Pokud nasadíte na úrovni hostitele zálohy obnovit celý virtuální počítač, soubory a složky (obnovení na úrovni položek).
-   * Zálohování na úrovni hosta je užitečné pro ochranu konkrétní zátěže spuštěné ve virtuálním počítači. Na úrovni hostitele můžete obnovit celý virtuální počítač nebo konkrétních souborů, ale jeho nepodporuje obnovení dat v rámci konkrétní aplikace. Pokud chcete obnovit konkrétní soubory služby SharePoint z chráněného virtuálního počítače, je nutné chránit virtuální počítač na úrovni hosta. Pokud chcete chránit data uložená na průchozí disky, musíte použít zálohování na úrovni hosta. Průchozí umožňuje přímý přístup k zařízení úložiště virtuálního počítače a data virtuálního svazku nejsou uložena v souboru VHD.
 
 ## <a name="prerequisites-for-the-azure-backup-server-environment"></a>Předpoklady pro prostředí serveru Azure Backup
 
@@ -84,13 +75,10 @@ Ukládání zálohovaných dat v Azure snižuje infrastruktury zálohování v z
 
 K uložení zálohy dat v Azure, vytvořte nebo použijte trezoru služeb zotavení. Při přípravě k zálohování zatížení serveru Azure Backup můžete [konfigurace trezor služeb zotavení](backup-azure-microsoft-azure-backup.md#create-a-recovery-services-vault). Po nakonfigurování pokaždé, když úloha zálohování se spustí, je bod obnovení vytvořen v trezoru. Každý trezor služeb zotavení obsahuje až 9999 body obnovení. V závislosti na počtu body obnovení vytvořené a jak dlouho jsou uchovávány můžete zachovat zálohovaná data mnoho let. Například může vytvořit měsíční body obnovení a uchovávány pět let.
  
-### <a name="using-sql-server"></a>Pomocí SQL serveru
-Pokud chcete použít vzdálený SQL Server pro databázi serveru Azure Backup, vyberte pouze zásobník virtuálního počítače Azure systémem SQL Server.
-
 ### <a name="scaling-deployment"></a>Škálování nasazení
 Pokud chcete změnit měřítko nasazení, máte následující možnosti:
   - Vertikální navýšení kapacity – zvýšíte velikost virtuálního počítače serveru Azure Backup z řady pro řadu D a místní úložiště [podle pokynů virtuálního počítače Azure zásobníku](../azure-stack/user/azure-stack-manage-vm-disks.md).
-  - Datové – odešlete starší data do serveru Azure Backup a zachovat pouze nejnovější data v úložišti připojeném k serveru Azure Backup.
+  - Datové – odešlete starší data do Azure a zachovat pouze nejnovější data v úložišti připojeném k serveru Azure Backup.
   - Horizontální navýšení kapacity – přidat další servery zálohování Azure k ochraně úloh.
 
 ### <a name="net-framework"></a>.NET Framework
@@ -216,7 +204,7 @@ V předchozím kroku jste klikli na **Dokončit** ukončete fázi extrakce, a sp
 
 ![Průvodce instalací zálohování Microsoft Azure](./media/backup-mabs-install-azure-stack/mabs-install-wizard-local-5.png)
 
-Azure Backup Server sdílí kód s aplikací Data Protection Manager. Zobrazí se odkazy na Data Protection Manager a aplikace DPM v instalačním programu serveru Azure Backup. I když jsou samostatné produkty serveru Azure Backup a Data Protection Manager, jsou úzce související tyto produkty. V dokumentaci k serveru Azure Backup všechny odkazy na Data Protection Manager a aplikace DPM použít server Azure Backup.
+Azure Backup Server sdílí kód s aplikací Data Protection Manager. Zobrazí se odkazy na Data Protection Manager a aplikace DPM v instalačním programu serveru Azure Backup. I když jsou samostatné produkty serveru Azure Backup a Data Protection Manager, jsou úzce související tyto produkty.
 
 1. Chcete-li spustit Průvodce instalací, klikněte na tlačítko **Microsoft Azure Backup Server**.
 
@@ -322,7 +310,7 @@ Azure Backup Server sdílí kód s aplikací Data Protection Manager. Zobrazí s
 
 ## <a name="add-backup-storage"></a>Přidání úložiště záloh
 
-První záložní kopie se ukládají na úložiště připojená k počítači Azure Backup Server. Další informace o přidávání disků, najdete v tématu [nakonfigurujte fondy úložiště a disk úložiště](https://technet.microsoft.com/library/hh758075.aspx).
+První záložní kopie se ukládají na úložiště připojená k počítači Azure Backup Server. Další informace o přidávání disků, najdete v tématu [úložiště přidat moderní záloh](https://docs.microsoft.com/en-us/system-center/dpm/add-storage?view=sc-dpm-1801).
 
 > [!NOTE]
 > Je nutné přidat úložiště záloh, i v případě, že chcete odesílat data do Azure. V architektuře Azure Backup Server trezoru služeb zotavení blokování *druhý* kopie dat, zatímco místní úložiště obsahuje záložní kopie první (a povinné).
@@ -372,10 +360,10 @@ Můžete se také podívat na [nejčastější dotazy týkající se Azure Backu
 
 ## <a name="next-steps"></a>Další postup
 
-V článku [Příprava prostředí pro aplikaci DPM](https://technet.microsoft.com/library/hh758176.aspx), obsahuje informace o podporovaných konfiguracích serveru Azure Backup.
+V článku [Příprava prostředí pro aplikaci DPM](https://docs.microsoft.com/en-us/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801), obsahuje informace o podporovaných konfiguracích serveru Azure Backup.
 
 V následujících článcích můžete získat lepší představu o ochrana pracovního vytížení pomocí serveru služby Microsoft Azure Backup.
 
-- [Zálohování serveru SQL Server](backup-azure-backup-sql.md)
-- [Zálohování serveru SharePoint](backup-azure-backup-sharepoint.md)
+- [Zálohování serveru SQL Server](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
+- [Zálohování serveru SharePoint](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
 - [Alternativní server zálohování](backup-azure-alternate-dpm-server.md)

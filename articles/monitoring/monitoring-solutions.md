@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2018
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 0df54d1758693bce5fb5fd74c3be9c4cfd7dccb6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 3377a0b4e6440d83962d103b3e1770ccf43bd785
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33885264"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752917"
 ---
 # <a name="management-solutions-in-azure"></a>Řešení pro správu v Azure
 Řešení pro správu využívají služby v Azure a poskytnout další aspekty operaci určitá aplikace nebo služby. Tento článek poskytuje stručný přehled řešení pro správu ve službě Azure a podrobnosti o používání a nainstalujete.
@@ -52,21 +52,17 @@ Klikněte na název řešení otevřete stránku s jeho souhrnu. Tato stránka z
 ![Vlastnosti řešení](media/monitoring-solutions/solution-properties.png)
 
 
-## <a name="find-management-solutions"></a>Najít řešení pro správu
-Můžete procházet a instalovat řešení pro správu k dispozici od společnosti Microsoft a partnery v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace). Provedení [vyhledejte *řešení pro správu* ](https://azuremarketplace.microsoft.com/marketplace/apps/category/monitoring-management?page=1&subcategories=management-solutions) k filtrování pro řešení pro správu a potom kliknutím na jakoukoli položku pro více podrobností.
-
-![Marketplace](media/monitoring-solutions/marketplace.png)
 
 ## <a name="install-a-management-solution"></a>Nainstalujte řešení pro správu
+Řešení pro správu od společnosti Microsoft a partneři jsou k dispozici na [Azure Marketplace](https://azuremarketplace.microsoft.com). Můžete vyhledat dostupná řešení a nainstalujete pomocí následujícího postupu.
 
-### <a name="install-a-management-solution-from-the-azure-marketplace"></a>Nainstalujte řešení pro správu z Azure Marketplace
-Najděte a spusťte instalaci řešení pro správu můžete použít některou z následujících metod.
+1. Z [seznam řešení pro vaše předplatné](#list-installed-management-solutions), klikněte na tlačítko **přidat**. 
+1. Napravo od **řešení pro správu**, klikněte na tlačítko **Další**. 
+1. Vyhledejte řešení pro správu chcete a pročtěte jeho popis.
+1. Klikněte na tlačítko **vytvořit** ke spuštění procesu instalace.
+1. Při spuštění procesu instalace se zobrazí výzva k poskytování požadované konfigurace, který se liší pro každé řešení. Všechny z nich vyžadují, abyste vyberte pracovní prostor analýzy protokolů nainstalovanou řešení a kde budou shromažďovány jeho data. 
 
-- Klikněte na tlačítko **ho získat** v rámci řešení pro správu v [Azure Marketplace](#find-management-solutions).
-- Z [seznam řešení pro vaše předplatné](#list-installed-management-solutions), klikněte na tlačítko **přidat**. Napravo od **řešení pro správu**, klikněte na tlačítko **Další**. Vyhledejte řešení pro správu a klikněte na tlačítko **vytvořit**.
-- Na portálu Azure vyberte **vytvořit prostředek** > **monitorování + správu** > **zobrazit všechny**. Napravo od **řešení pro správu**, klikněte na tlačítko **Další**. Vyhledejte řešení pro správu a klikněte na tlačítko **vytvořit**.
-
-Při spuštění procesu instalace se zobrazí výzva k poskytování požadované konfigurace, který se liší pro každé řešení. Všechny z nich vyžadují, abyste vyberte pracovní prostor analýzy protokolů nainstalovanou řešení a kde budou shromažďovány jeho data. Budete také muset [zadejte účet služby Automation](#log-analytics-workspace-and-automation-account) Pokud vyžaduje řešení.
+![Instalaci řešení](media/monitoring-solutions/install-solution.png)
 
 ### <a name="install-a-solution-from-the-community"></a>Instalace řešení od komunity
 Členové komunity můžete odeslat řešení pro správu šablon Azure rychlý start. Můžete nainstalovat těmito řešeními přímo nebo je stáhnout šablony pro pozdější instalaci.

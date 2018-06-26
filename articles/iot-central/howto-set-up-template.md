@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bda056a75ae9d696dab389b85fe1bfb2935ee1a8
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0bef8722ee51c916652e6964305f324341052341
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261980"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754496"
 ---
 # <a name="set-up-a-device-template"></a>Nastavit šablonu zařízení
 
@@ -38,19 +38,19 @@ Tvůrce můžete například vytvořit šablonu zařízení pro připojené vent
 Z této šablony zařízení můžete vytvořit a připojit zařízení skutečné ventilátor s názvy, jako operátor **ventilátor-1** a **ventilátor 2**. Všechny tyto ventilátory mít pravidla měření, nastavení a vlastnosti a řídicí panel, který uživatelé vaší aplikace můžete sledovat a spravovat.
 
 > [!NOTE]
-Pouze počítačů a správce můžete vytvořit, upravit a odstranit zařízení šablony. Kterýkoli uživatel může vytvářet zařízení **Explorer zařízení** stránky ze stávajících šablon zařízení.
+> Pouze počítačů a správce můžete vytvořit, upravit a odstranit zařízení šablony. Kterýkoli uživatel může vytvářet zařízení **Explorer zařízení** stránky ze stávajících šablon zařízení.
 
 ## <a name="create-a-new-device-template"></a>Vytvoření nové šablony zařízení
 
 1. Přejděte na **Tvůrce aplikací** stránky.
 
-1. Chcete-li vytvořit prázdnou šablonou, zvolte **vytvořit šablonu zařízení**a potom zvolte **vlastní**.
+2. Chcete-li vytvořit prázdnou šablonou, zvolte **vytvořit šablonu zařízení**a potom zvolte **vlastní**.
 
-1. Zadejte název pro novou šablonu zařízení a zvolte **vytvořit**.
+3. Zadejte název pro novou šablonu zařízení a zvolte **vytvořit**.
 
     ![Stránka Podrobnosti zařízení](./media/howto-set-up-template/devicedetailspage.png)
 
-1. Nyní jste na **podrobnosti o zařízení** stránky nového simulovaného zařízení. Simulované zařízení se automaticky vytvoří za vás, když vytvoříte novou šablonu zařízení. To sestavy dat a lze řídit stejně jako skutečné zařízení.
+4. Nyní jste na **podrobnosti o zařízení** stránky nového simulovaného zařízení. Simulované zařízení se automaticky vytvoří za vás, když vytvoříte novou šablonu zařízení. To sestavy dat a lze řídit stejně jako skutečné zařízení.
 
 Nyní podívejte se na každé kartě **podrobnosti o zařízení** stránky.
 
@@ -133,8 +133,7 @@ Například můžete přidat nové nastavení rychlosti ventilátor:
 
 Po výběru **Uložit**, **ventilátor rychlost** nastavení se zobrazí jako dlaždici a je připravená pro a použít ke změně rychlosti ventilátor zařízení.
 
-> [!NOTE]
-> Po vytvoření nová dlaždice můžete vyzkoušet nové nastavení. Nejprve vypnout režimu návrhu v horní pravé části obrazovky:
+Po vytvoření nová dlaždice můžete vyzkoušet nové nastavení. Nejprve vypnout režimu návrhu v horní pravé části obrazovky.
 
 ![Nastavení dlaždice](./media/howto-set-up-template/settingstile.png)
 
@@ -168,51 +167,70 @@ Existují dva typy vlastností umístění, které lze přidat:
 - **Umístění jako vlastnost aplikací** kterém bude uložena výhradně v aplikaci. Zařízení nemá žádné informace o vlastnosti aplikace.
 - **Umístění jako vlastnost zařízení** které se ohlásí zařízení.
 
-####<a name="adding-location-as-an-application-property"></a>Přidání umístění jako vlastnost aplikací 
+#### <a name="adding-location-as-an-application-property"></a>Přidání umístění jako vlastnost aplikací 
+
 Můžete vytvořit umístění vlastnost jako vlastnost aplikací pomocí Azure mapuje v Azure IoT centrální aplikaci. Například můžete přidat adresu instalace zařízení. 
 
 1. Přejděte na kartu vlastností zařízení; Zkontrolujte, zda že je zapnutý režim návrhu.
 
-![Vlastnost umístění](./media/howto-set-up-template/locationcloudproperty1.png)
+   ![Vlastnost umístění](./media/howto-set-up-template/locationcloudproperty1.png)
 
 2. Na kartě vlastností klikněte na umístění.
 3. Volitelně můžete nakonfigurujte zobrazované jméno, název pole a počáteční hodnota umístění. 
 
-![Umístění vlastnosti formuláře](./media/howto-set-up-template/locationcloudproperty2.png)
+   ![Umístění vlastnosti formuláře](./media/howto-set-up-template/locationcloudproperty2.png)
 
-Existují dvě podporované formáty přidat umístění:
-- **Umístění jako adresa**
-- **Umístění jako souřadnice** 
+   Existují dvě podporované formáty přidat umístění:
+   - **Umístění jako adresa**
+   - **Umístění jako souřadnice** 
 
-4. Klikněte na tlačítko Uložit. 
+4.  Klikněte na **Uložit**. 
 
-![Pole vlastnosti umístění](./media/howto-set-up-template/locationcloudproperty3.png)
+    ![Pole vlastnosti umístění](./media/howto-set-up-template/locationcloudproperty3.png)
 
 Operátor teď můžete aktualizovat hodnotu umístění ve formě pole umístění. 
 
-####<a name="adding-location-as-a-device-property"></a>Přidání umístění jako vlastnost zařízení 
+#### <a name="adding-location-as-a-device-property"></a>Přidání umístění jako vlastnost zařízení 
 
 Vytvořit vlastnost umístění jako vlastnosti zařízení, který je hlášen zařízení.
 Například chcete sledovat umístění zařízení.
 
 1.  Přejděte na kartu vlastností zařízení; Zkontrolujte, zda že je zapnutý režim návrhu.
+
 2.  Klikněte na tlačítko Vlastnosti zařízení z knihovny.
 
-![Pole vlastnosti umístění](./media/howto-set-up-template/locationdeviceproperty1.png)
+    ![Pole vlastnosti umístění](./media/howto-set-up-template/locationdeviceproperty1.png)
 
 3.  Nakonfigurujte zobrazovaného jména, názvu pole a zvolte "umístění" jako datový typ. 
 
-> [!NOTE]
-Název pole musí přesně shodovat na název vlastnosti zařízení sestavy. 
+    > [!NOTE]
+    > Název pole musí přesně shodovat na název vlastnosti zařízení sestavy. 
 
-![Pole vlastnosti umístění](./media/howto-set-up-template/locationdeviceproperty2.png)
+    ![Pole vlastnosti umístění](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-![Zobrazení operátora vlastnost umístění](./media/howto-set-up-template/locationdeviceproperty2.png)
+    ![Zobrazení operátora vlastnost umístění](./media/howto-set-up-template/locationdeviceproperty2.png)
 
-Teď, když jste nakonfigurovali vaší vlastnost umístění, budete moci přidat mapu, která bude vizualizovat umístění v řídicím panelu zařízení. V tématu Jak [přidat umístění Azure mapy na řídicím panelu](howto-set-up-template.md).
+Teď, když jste nakonfigurovali vaší vlastnost umístění, budete moci přidat mapu, která bude vizualizovat umístění v řídicím panelu zařízení. V tématu Jak [přidat umístění Azure mapy na řídicím panelu](howto-set-up-template.md#add-location-azure-map-in-dashboard).
 
+## <a name="commands"></a>Příkazy
 
+Příkazy se používají k vzdáleně spravovat zařízení. Umožňují operátory aplikace okamžitě spouštět příkazy na zařízení. Můžete přidat více příkazů do šablony zařízení, která se zobrazují jako dlaždice na **příkazy** kartě operátorů sloužící k použití. Jako tvůrce zařízení, máte možnost definovat příkazu podle vašich požadavků.
 
+Jak je **příkaz** liší od **nastavení**? 
+
+* Nastavení: Je konfigurace, které chcete použít pro zařízení, a chcete zařízení uchová tuto konfiguraci, dokud ho změnit. Například můžete chtít nastavit teplota mrazničce a chcete toto nastavení i v případě, že mrazírenských restartovat. 
+
+* Příkaz: Můžete použít příkazy okamžitě spustit příkaz na zařízení vzdáleně z IoTCentral, pokud zařízení není připojené potom časový limit příkazů a selže. Například chcete restartování nebo restartování zařízení.  
+
+Příkazy při spuštění může být v jednom ze tří stavů, v závislosti na tom, jestli zařízení přijat příkaz. 
+
+Například můžete přidat nový příkaz echo:
+
+![Příkazy formuláře](./media/howto-set-up-template/commandsecho.png)
+
+Po výběru **Uložit**, **Echo** příkazu se zobrazí jako dlaždici a je připravený pro které bude použito ke odezvu zařízení.
+
+Po vytvoření nová dlaždice můžete vyzkoušet nový příkaz.
 
 ## <a name="rules"></a>Pravidla
 
@@ -234,28 +252,27 @@ Nyní když operátor zobrazení řídicího panelu, uvidí tuto dlaždici, kter
 
 ### <a name="add-location-azure-map-in-dashboard"></a>Přidat umístění Azure mapy ve řídicí panel
 
-Pokud jste nakonfigurovali vlastnost umístění jako kroky [vytvoření vlastnosti umístění používá technologii Azure Maps]((howto-set-up-template.md), bude možné vizualizovat umístění pomocí mapy přímo na řídicím panelu zařízení.
+Pokud jste nakonfigurovali vlastnost umístění jako kroky [vytvořit vlastnost umístění používá technologii Azure mapy](howto-set-up-template.md), bude možné vizualizovat umístění pomocí mapy přímo na řídicím panelu zařízení.
 
 1.  Přejděte na kartu řídicí panel zařízení; Zkontrolujte, zda že je zapnutý režim návrhu.
+
 2.  Na řídicím panelu zařízení vyberte mapování z knihovny. 
 
-![Vyberte řídicí panel Azure Mapa umístění](./media/howto-set-up-template/locationcloudproperty4map.png)
+    ![Vyberte řídicí panel Azure Mapa umístění](./media/howto-set-up-template/locationcloudproperty4map.png)
 
 3.  Zadejte název a zvolte vlastnost umístění, které jste dříve nakonfigurovali jako součást vlastností vaše zařízení.
 
-![Konfigurace Azure Mapa umístění řídicího panelu](./media/howto-set-up-template/locationcloudproperty5map.png)
+    ![Konfigurace Azure Mapa umístění řídicího panelu](./media/howto-set-up-template/locationcloudproperty5map.png)
 
 4.  Uložit a zobrazí mapy dlaždici zobrazení umístění, které jste vybrali. 
 
-![Řídicí panel umístění vizualizovat Azure mapy](./media/howto-set-up-template/locationcloudproperty6map.png) 
+    ![Řídicí panel umístění vizualizovat Azure mapy](./media/howto-set-up-template/locationcloudproperty6map.png) 
 
-Bude moct změnit velikost mapy požadovaná velikost.
+    Bude moct změnit velikost mapy požadovaná velikost.
 
-Nyní když operátor zobrazení řídicího panelu, uvidí tento všechny řídicí panel dlaždice jste nakonfigurovali, včetně umístění mapy!
+    Nyní když operátor zobrazení řídicího panelu, uvidí tento všechny řídicí panel dlaždice jste nakonfigurovali, včetně umístění mapy!
 
-![Řídicí panel Azure Mapa umístění řídicí panel](./media/howto-set-up-template/locationcloudproperty7map.png) 
-
-
+    ![Řídicí panel Azure Mapa umístění řídicí panel](./media/howto-set-up-template/locationcloudproperty7map.png) 
 
 ## <a name="next-steps"></a>Další postup
 

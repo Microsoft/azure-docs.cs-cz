@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 3cf78369a7177eb3b2e384af0cc81563f6806137
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 6806b0c5b5e5ac5e1189f628786f0c8f9b223395
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309985"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750947"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Omezení prostředků Azure SQL Database – přehled 
 
@@ -72,5 +72,5 @@ Při zjištění vysoké využití relace nebo pracovního procesu, možnosti om
 
 - V tématu [nejčastější dotazy k databázi SQL](sql-database-faq.md) odpovědi na nejčastější dotazy.
 - Informace o obecných omezeních Azure najdete v tématu [předplatného Azure a omezení služby, kvóty a omezení](../azure-subscription-service-limits.md).
-- Informace o Dtu a Edtu najdete v tématu [Dtu a Edtu](sql-database-what-is-a-dtu.md).
+- Informace o Dtu a Edtu najdete v tématu [Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
 - Informace o databázi tempdb velikosti omezení naleznete v tématu https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database.

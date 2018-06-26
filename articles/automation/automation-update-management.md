@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8013a221f818b2aca8163e5f5195cae17c8a6a95
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: c6ec168332d8a655d78c3deffe89f51f7d75a840
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232297"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751876"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
@@ -263,21 +263,217 @@ Další informace o portech, které vyžaduje hybridní pracovní proces Runbook
 
 ## <a name="search-logs"></a>Protokoly vyhledávání
 
-Kromě podrobností, které jsou k dispozici na portálu Azure můžete provést hledání na protokoly. V **sledování změn** podokně, vyberte **analýzy protokolů**. **Hledání protokolů** otevře se podokno.
+Kromě podrobností, které jsou k dispozici na portálu Azure můžete provést hledání na protokoly. Na stránkách řešení, vyberte **analýzy protokolů**. **Hledání protokolů** otevře se podokno.
+
+Můžete také zjistěte, jak přizpůsobit dotazy nebo používat z různých klientů a víc navštívíte: [analýzy protokolů vyhledávací rozhraní API dokumentaci](
+https://dev.loganalytics.io/).
 
 ### <a name="sample-queries"></a>Ukázkové dotazy
 
-Následující tabulka obsahuje ukázkové protokolu vyhledá aktualizace záznamů, které byly shromážděny sadou tohoto řešení:
+V následujících částech najdete ukázkové protokolu dotazy na záznamy aktualizace, které jsou shromážděny prostřednictvím tohoto řešení:
 
-| Dotaz | Popis |
-| --- | --- |
-|Aktualizace</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false</br>&#124;Počítače, název, KBID, klasifikace, PublishedDate projektu |Všechny počítače s chybějícími aktualizacemi</br>Přidejte jednu z těchto omezit operačního systému:</br>OSType! = "Linux"</br>OSType == "Linux" |
-| Aktualizace</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false</br>&#124;kde počítač == "ContosoVM1.contoso.com"</br>&#124;Počítače, název, KBID, produktu, PublishedDate projektu |Chybějící aktualizace v určitém počítači (nahraďte hodnotu názvem svého počítače)|
-| Událost</br>&#124;kde EventLevelName == "Chyba" a každý počítač v ((aktualizace &#124; where (klasifikace == "Aktualizace zabezpečení" nebo klasifikaci == "Kritické aktualizace")</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false </br>&#124;DISTINCT Computer)) |Chybové události pro počítače s chybějícími požadovanými důležitými aktualizacemi nebo aktualizacemi zabezpečení |
-| Aktualizace</br>&#124;kde UpdateState == "Potřebné" a volitelné hodnotu false</br>&#124;odlišné název |Konkrétní chybějící aktualizace ve všech počítačích |
-| UpdateRunProgress</br>&#124;kde InstallationStatus == "se nezdařilo" </br>&#124;shrnout AggregatedValue = count() pomocí počítače, název, UpdateRunName |Počítače s aktualizacemi, které se nezdařilo spustit aktualizaci</br>Přidejte jednu z těchto omezit operačního systému:</br>OSType = "Windows"</br>OSType == "Linux" |
-| Aktualizace</br>&#124;kde OSType == "Linux"</br>&#124;kde UpdateState! = "Není skutečně potřeba" a (klasifikace == "Kritické aktualizace" nebo klasifikaci == "Aktualizace zabezpečení")</br>&#124;shrnout AggregatedValue = count() počítačem. |Seznam všechny počítače se systémem Linux, které mají k dispozici aktualizace balíčku, který řeší chybu zabezpečení, důležité aktualizace nebo zabezpečení |
-| UpdateRunProgress</br>&#124;kde UpdateRunName == "DeploymentName"</br>&#124;shrnout AggregatedValue = count() počítačem.|Počítače aktualizované při této hromadné postupné aktualizaci (nahraďte hodnotu názvem vašeho nasazení aktualizací) |
+#### <a name="single-azure-vm-assessment-queries-windows"></a>Jeden dotazy hodnocení virtuálního počítače Azure (Windows)
+
+Nahraďte hodnotu VMUUID identifikátor GUID virtuálního počítače, který se dotazuje virtuálního počítače. Můžete najít VMUUID, který se má použít spuštěním následujícího dotazu v analýzy protokolů: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+
+##### <a name="missing-updates-summary"></a>Chybějící aktualizace souhrnu
+
+```
+Update
+| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and VMUUID=~"b08d5afa-1471-4b52-bd95-a44fea6e4ca8"
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Approved) by Computer, SourceComputerId, UpdateID
+| where UpdateState=~"Needed" and Approved!=false
+| summarize by UpdateID, Classification
+| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security"
+```
+
+##### <a name="missing-updates-list"></a>Seznam chybějících aktualizací
+
+```
+Update
+| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and VMUUID=~"8bf1ccc6-b6d3-4a0b-a643-23f346dfdf82"
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Title, KBID, PublishedDate, Approved) by Computer, SourceComputerId, UpdateID
+| where UpdateState=~"Needed" and Approved!=false
+| project-away UpdateState, Approved, TimeGenerated
+| summarize computersCount=dcount(SourceComputerId, 2), displayName=any(Title), publishedDate=min(PublishedDate), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(UpdateID, "_", KBID), classification=Classification, InformationId=strcat("KB", KBID), InformationUrl=iff(isnotempty(KBID), strcat("https://support.microsoft.com/kb/", KBID), ""), osType=2
+| sort by ClassificationWeight desc, computersCount desc, displayName asc
+| extend informationLink=(iff(isnotempty(InformationId) and isnotempty(InformationUrl), toobject(strcat('{ "uri": "', InformationUrl, '", "text": "', InformationId, '", "target": "blank" }')), toobject('')))
+| project-away ClassificationWeight, InformationId, InformationUrl
+```
+
+#### <a name="single-azure-vm-assessment-queries-linux"></a>Dotazy assessment jeden virtuální počítač Azure (Linux)
+
+U některých distribucích systému Linux, je [endianitou](https://en.wikipedia.org/wiki/Endianness) neshoda s VMUUID hodnotu, která pochází z Azure Resource Manager a co je uložená v analýzy protokolů. Následující dotaz kontroluje shoda s buď endianitou. Nahraďte hodnoty VMUUID big endian a little endian formát identifikátor GUID do správně vrátí výsledky. Můžete najít VMUUID, který se má použít spuštěním následujícího dotazu v analýzy protokolů: `Update | where Computer == "<machine name>"
+| summarize by Computer, VMUUID`
+
+##### <a name="missing-updates-summary"></a>Chybějící aktualizace souhrnu
+
+```
+Update
+| where TimeGenerated>ago(5h) and OSType=="Linux" and (VMUUID=~"625686a0-6d08-4810-aae9-a089e68d4911" or VMUUID=~"a0865662-086d-1048-aae9-a089e68d4911")
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification) by Computer, SourceComputerId, Product, ProductArch
+| where UpdateState=~"Needed"
+| summarize by Product, ProductArch, Classification
+| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security")
+```
+
+##### <a name="missing-updates-list"></a>Seznam chybějících aktualizací
+
+```
+Update
+| where TimeGenerated>ago(5h) and OSType=="Linux" and (VMUUID=~"625686a0-6d08-4810-aae9-a089e68d4911" or VMUUID=~"a0865662-086d-1048-aae9-a089e68d4911")
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, BulletinUrl, BulletinID) by Computer, SourceComputerId, Product, ProductArch
+| where UpdateState=~"Needed"
+| project-away UpdateState, TimeGenerated
+| summarize computersCount=dcount(SourceComputerId, 2), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(Product, "_", ProductArch), displayName=Product, productArch=ProductArch, classification=Classification, InformationId=BulletinID, InformationUrl=tostring(split(BulletinUrl, ";", 0)[0]), osType=1
+| sort by ClassificationWeight desc, computersCount desc, displayName asc
+| extend informationLink=(iff(isnotempty(InformationId) and isnotempty(InformationUrl), toobject(strcat('{ "uri": "', InformationUrl, '", "text": "', InformationId, '", "target": "blank" }')), toobject('')))
+| project-away ClassificationWeight, InformationId, InformationUrl
+
+```
+
+#### <a name="multi-vm-assessment-queries"></a>Dotazy assessment více virtuálních počítačů
+
+##### <a name="computers-summary"></a>Shrnutí počítačů
+
+```
+Heartbeat
+| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId
+| join kind=leftouter
+(
+    Update
+    | where TimeGenerated>ago(14h) and OSType!="Linux"
+    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Approved, Optional, Classification) by SourceComputerId, UpdateID
+    | distinct SourceComputerId, Classification, UpdateState, Approved, Optional
+    | summarize WorstMissingUpdateSeverity=max(iff(UpdateState=~"Needed" and (Optional==false or Classification has "Critical" or Classification has "Security") and Approved!=false, iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1)), 0)) by SourceComputerId
+)
+on SourceComputerId
+| extend WorstMissingUpdateSeverity=coalesce(WorstMissingUpdateSeverity, -1)
+| summarize computersBySeverity=count() by WorstMissingUpdateSeverity
+| union (Heartbeat
+| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId
+| join kind=leftouter
+(
+    Update
+    | where TimeGenerated>ago(5h) and OSType=="Linux"
+    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification) by SourceComputerId, Product, ProductArch
+    | distinct SourceComputerId, Classification, UpdateState
+    | summarize WorstMissingUpdateSeverity=max(iff(UpdateState=~"Needed", iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1)), 0)) by SourceComputerId
+)
+on SourceComputerId
+| extend WorstMissingUpdateSeverity=coalesce(WorstMissingUpdateSeverity, -1)
+| summarize computersBySeverity=count() by WorstMissingUpdateSeverity)
+| summarize assessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity>-1), notAssessedComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==-1), computersNeedCriticalUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==4), computersNeedSecurityUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==2), computersNeeedOtherUpdatesCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==1), upToDateComputersCount=sumif(computersBySeverity, WorstMissingUpdateSeverity==0)
+| summarize assessedComputersCount=sum(assessedComputersCount), computersNeedCriticalUpdatesCount=sum(computersNeedCriticalUpdatesCount),  computersNeedSecurityUpdatesCount=sum(computersNeedSecurityUpdatesCount), computersNeeedOtherUpdatesCount=sum(computersNeeedOtherUpdatesCount), upToDateComputersCount=sum(upToDateComputersCount), notAssessedComputersCount=sum(notAssessedComputersCount)
+| extend allComputersCount=assessedComputersCount+notAssessedComputersCount
+
+
+```
+
+##### <a name="missing-updates-summary"></a>Chybějící aktualizace souhrnu
+
+```
+Update
+| where TimeGenerated>ago(5h) and OSType=="Linux" and SourceComputerId in ((Heartbeat
+| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification) by Computer, SourceComputerId, Product, ProductArch
+| where UpdateState=~"Needed"
+| summarize by Product, ProductArch, Classification
+| union (Update
+| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and SourceComputerId in ((Heartbeat
+| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Approved) by Computer, SourceComputerId, UpdateID
+| where UpdateState=~"Needed" and Approved!=false
+| summarize by UpdateID, Classification )
+| summarize allUpdatesCount=count(), criticalUpdatesCount=countif(Classification has "Critical"), securityUpdatesCount=countif(Classification has "Security"), otherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security"
+```
+
+##### <a name="computers-list"></a>Seznam počítačů
+
+```
+Heartbeat
+| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions, Computer, ResourceId, ComputerEnvironment, VMUUID) by SourceComputerId
+| where Solutions has "updates"
+| extend vmuuId=VMUUID, azureResourceId=ResourceId, osType=1, environment=iff(ComputerEnvironment=~"Azure", 1, 2), scopedToUpdatesSolution=true, lastUpdateAgentSeenTime=""
+| join kind=leftouter
+(
+    Update
+    | where TimeGenerated>ago(5h) and OSType=="Linux" and SourceComputerId in ((Heartbeat
+    | where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+    | summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+    | where Solutions has "updates"
+    | distinct SourceComputerId))
+    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Product, Computer, ComputerEnvironment) by SourceComputerId, Product, ProductArch
+    | summarize Computer=any(Computer), ComputerEnvironment=any(ComputerEnvironment), missingCriticalUpdatesCount=countif(Classification has "Critical" and UpdateState=~"Needed"), missingSecurityUpdatesCount=countif(Classification has "Security" and UpdateState=~"Needed"), missingOtherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security" and UpdateState=~"Needed"), lastAssessedTime=max(TimeGenerated), lastUpdateAgentSeenTime="" by SourceComputerId
+    | extend compliance=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0, 2, 1)
+    | extend ComplianceOrder=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0 or missingOtherUpdatesCount > 0, 1, 3)
+)
+on SourceComputerId
+| project id=SourceComputerId, displayName=Computer, sourceComputerId=SourceComputerId, scopedToUpdatesSolution=true, missingCriticalUpdatesCount=coalesce(missingCriticalUpdatesCount, -1), missingSecurityUpdatesCount=coalesce(missingSecurityUpdatesCount, -1), missingOtherUpdatesCount=coalesce(missingOtherUpdatesCount, -1), compliance=coalesce(compliance, 4), lastAssessedTime, lastUpdateAgentSeenTime, osType=1, environment=iff(ComputerEnvironment=~"Azure", 1, 2), ComplianceOrder=coalesce(ComplianceOrder, 2)
+| union(Heartbeat
+| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions, Computer, ResourceId, ComputerEnvironment, VMUUID) by SourceComputerId
+| where Solutions has "updates"
+| extend vmuuId=VMUUID, azureResourceId=ResourceId, osType=2, environment=iff(ComputerEnvironment=~"Azure", 1, 2), scopedToUpdatesSolution=true, lastUpdateAgentSeenTime=""
+| join kind=leftouter
+(
+    Update
+    | where TimeGenerated>ago(14h) and OSType!="Linux" and SourceComputerId in ((Heartbeat
+    | where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+    | summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+    | where Solutions has "updates"
+    | distinct SourceComputerId))
+    | summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Title, Optional, Approved, Computer, ComputerEnvironment) by Computer, SourceComputerId, UpdateID
+    | summarize Computer=any(Computer), ComputerEnvironment=any(ComputerEnvironment), missingCriticalUpdatesCount=countif(Classification has "Critical" and UpdateState=~"Needed" and Approved!=false), missingSecurityUpdatesCount=countif(Classification has "Security" and UpdateState=~"Needed" and Approved!=false), missingOtherUpdatesCount=countif(Classification !has "Critical" and Classification !has "Security" and UpdateState=~"Needed" and Optional==false and Approved!=false), lastAssessedTime=max(TimeGenerated), lastUpdateAgentSeenTime="" by SourceComputerId
+    | extend compliance=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0, 2, 1)
+    | extend ComplianceOrder=iff(missingCriticalUpdatesCount > 0 or missingSecurityUpdatesCount > 0 or missingOtherUpdatesCount > 0, 1, 3)
+)
+on SourceComputerId
+| project id=SourceComputerId, displayName=Computer, sourceComputerId=SourceComputerId, scopedToUpdatesSolution=true, missingCriticalUpdatesCount=coalesce(missingCriticalUpdatesCount, -1), missingSecurityUpdatesCount=coalesce(missingSecurityUpdatesCount, -1), missingOtherUpdatesCount=coalesce(missingOtherUpdatesCount, -1), compliance=coalesce(compliance, 4), lastAssessedTime, lastUpdateAgentSeenTime, osType=2, environment=iff(ComputerEnvironment=~"Azure", 1, 2), ComplianceOrder=coalesce(ComplianceOrder, 2) )
+| order by ComplianceOrder asc, missingCriticalUpdatesCount desc, missingSecurityUpdatesCount desc, missingOtherUpdatesCount desc, displayName asc
+| project-away ComplianceOrder
+```
+
+##### <a name="missing-updates-list"></a>Seznam chybějících aktualizací
+
+```
+Update
+| where TimeGenerated>ago(5h) and OSType=="Linux" and SourceComputerId in ((Heartbeat
+| where TimeGenerated>ago(12h) and OSType=="Linux" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, BulletinUrl, BulletinID) by SourceComputerId, Product, ProductArch
+| where UpdateState=~"Needed"
+| project-away UpdateState, TimeGenerated
+| summarize computersCount=dcount(SourceComputerId, 2), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(Product, "_", ProductArch), displayName=Product, productArch=ProductArch, classification=Classification, InformationId=BulletinID, InformationUrl=tostring(split(BulletinUrl, ";", 0)[0]), osType=1
+| union(Update
+| where TimeGenerated>ago(14h) and OSType!="Linux" and (Optional==false or Classification has "Critical" or Classification has "Security") and SourceComputerId in ((Heartbeat
+| where TimeGenerated>ago(12h) and OSType=~"Windows" and notempty(Computer)
+| summarize arg_max(TimeGenerated, Solutions) by SourceComputerId
+| where Solutions has "updates"
+| distinct SourceComputerId))
+| summarize hint.strategy=partitioned arg_max(TimeGenerated, UpdateState, Classification, Title, KBID, PublishedDate, Approved) by Computer, SourceComputerId, UpdateID
+| where UpdateState=~"Needed" and Approved!=false
+| project-away UpdateState, Approved, TimeGenerated
+| summarize computersCount=dcount(SourceComputerId, 2), displayName=any(Title), publishedDate=min(PublishedDate), ClassificationWeight=max(iff(Classification has "Critical", 4, iff(Classification has "Security", 2, 1))) by id=strcat(UpdateID, "_", KBID), classification=Classification, InformationId=strcat("KB", KBID), InformationUrl=iff(isnotempty(KBID), strcat("https://support.microsoft.com/kb/", KBID), ""), osType=2)
+| sort by ClassificationWeight desc, computersCount desc, displayName asc
+| extend informationLink=(iff(isnotempty(InformationId) and isnotempty(InformationUrl), toobject(strcat('{ "uri": "', InformationUrl, '", "text": "', InformationId, '", "target": "blank" }')), toobject('')))
+| project-away ClassificationWeight, InformationId, InformationUrl
+```
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrace se System Center Configuration Managerem
 

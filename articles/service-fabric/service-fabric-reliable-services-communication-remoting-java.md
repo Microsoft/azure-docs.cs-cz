@@ -1,6 +1,6 @@
 ---
-title: Vzdálená komunikace služby v Azure Service Fabric | Microsoft Docs
-description: Vzdálená komunikace Service Fabric umožňuje služby a klienti komunikovat se službami s použitím vzdálené volání procedury.
+title: Vzdálená komunikace služby používání Javy v Azure Service Fabric | Microsoft Docs
+description: Vzdálená komunikace Service Fabric umožňuje služby a klienti komunikovat se službami Java pomocí vzdáleného volání procedur.
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 074c428662abb5c3acf86835f6fedbf3f8791acf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3215ee4adf907524626b4919b637ce23b9e0e782
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212972"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750176"
 ---
-# <a name="service-remoting-with-reliable-services"></a>Služba vzdálené komunikace se službami Reliable Services
+# <a name="service-remoting-in-java-with-reliable-services"></a>Vzdálená komunikace služby v jazyce Java se službami Reliable Services
 > [!div class="op_single_selector"]
 > * [C# v systému Windows](service-fabric-reliable-services-communication-remoting.md)
 > * [Java v Linuxu](service-fabric-reliable-services-communication-remoting-java.md)
 >
 >
 
-Spolehlivé služby framework poskytuje mechanismus vzdálenou komunikaci rychle a snadno nastavit vzdáleného volání procedur pro služby.
+Pro služby, které nejsou svázané s konkrétní komunikační protokol nebo zásobníku, například WebAPI, Windows Communication Foundation (WCF) nebo jiné spolehlivé služby framework poskytuje mechanismus vzdálenou komunikaci rychle a snadno nastavit vzdálených volání procedur pro služby.  Tento článek popisuje postup nastavení vzdálených volání procedur pro služby, které jsou napsané v jazyce Java.
 
 ## <a name="set-up-remoting-on-a-service"></a>Nastavování vzdálené komunikace na službě
 Nastavení vzdálené komunikace pro služby se provádí ve dvou jednoduchých kroků:
@@ -88,7 +88,7 @@ CompletableFuture<String> message = helloWorldClient.helloWorldAsync();
 Vzdálená komunikace framework rozšíří výjimek vyvolaných ve službách do klienta. Logika tak výjimek na straně klienta pomocí `ServiceProxyBase` můžete přímo zpracování výjimek, které vyvolá službu.
 
 ## <a name="service-proxy-lifetime"></a>Doby platnosti Proxy služby
-Vytvoření ServiceProxy je lightweight operace, takže uživatel může vytvořit tolik, jako je potřebují. Proxy server služby lze znovu použít, dokud ho uživatel potřebovat. Uživatel může znovu použít stejné proxy serveru v případě výjimky. Každý ServiceProxy obsahuje komunikace klienta používá k odeslání zprávy prostřednictvím sítě. Při volání rozhraní API, máme interní zkontrolujte, jestli je komunikace klienta použít platný. Podle toho, že výsledků, znovu vytvoříme komunikace klienta. Uživatel proto není potřeba znovu vytvořit serviceproxy v případě výjimky.
+Vytvoření ServiceProxy je lightweight operace, takže si můžete vytvořit libovolný počet. je nutné. Instance Proxy služby lze znovu použít, dokud jsou potřeba. Pokud vzdálené volání procedury, vyvolá výjimku, stále můžete opakovaně použít stejnou instanci proxy serveru. Každý ServiceProxy obsahuje komunikace klienta používá k odeslání zprávy prostřednictvím sítě. Při volání vzdáleného volání, budou provedeny interní kontroly k určení, jestli komunikace klienta je platný. Na základě výsledků z těchto kontrol komunikace klienta je znovu vytvořit v případě potřeby. Proto pokud dojde k výjimce, není nutné znovu vytvořit `ServiceProxy`.
 
 ### <a name="serviceproxyfactory-lifetime"></a>Doba platnosti ServiceProxyFactory
 [FabricServiceProxyFactory](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.client._fabric_service_proxy_factory) je objekt factory, který vytvoří proxy server pro různé vzdálené komunikace rozhraní. Pokud používáte rozhraní API `ServiceProxyBase.create` k vytváření proxy serveru, pak framework vytvoří `FabricServiceProxyFactory`.
@@ -102,7 +102,7 @@ Všechny vzdálené výjimky vyvolané rozhraní API služby, se odesílají zp�
 ServiceProxy zpracovávat všechny výjimky převzetí služeb při selhání pro oddíl služby, kterou je vytvořeno. Znovu přeloží koncových bodů při převzetí služeb při selhání Exceptions(Non-Transient Exceptions) a opakuje volání s správný koncový bod. Počet opakovaných pokusů pro převzetí služeb při selhání výjimka je neomezené.
 V případě TransientExceptions se pouze pokusí volání.
 
-Výchozí parametry opakování se poskytují podle [OperationRetrySettings]. (https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings) Uživatel může konfigurovat tyto hodnoty pomocí předání objektu OperationRetrySettings ServiceProxyFactory konstruktor.
+Výchozí parametry opakování se poskytují podle [OperationRetrySettings]. (https://docs.microsoft.com/java/api/microsoft.servicefabric.services.communication.client._operation_retry_settings) Tyto hodnoty můžete nakonfigurovat pomocí předání objektu OperationRetrySettings ServiceProxyFactory konstruktor.
 
 ## <a name="next-steps"></a>Další postup
-* [Zabezpečení komunikace pro spolehlivé služby](service-fabric-reliable-services-secure-communication.md)
+* [Zabezpečení komunikace pro spolehlivé služby](service-fabric-reliable-services-secure-communication-java.md)

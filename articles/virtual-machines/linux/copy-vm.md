@@ -1,6 +1,6 @@
 ---
-title: Kopírování virtuálního počítače s Linuxem pomocí Azure CLI 2.0 | Microsoft Docs
-description: Naučte se vytvořit kopii virtuálním počítačům s Linuxem Azure pomocí Azure CLI 2.0 a spravované disky.
+title: Kopírování virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure | Microsoft Docs
+description: Naučte se vytvořit kopii virtuálního počítače Azure Linux pomocí příkazového řádku Azure CLI a spravované disky.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,17 +14,17 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: cynthn
-ms.openlocfilehash: 66f2789d717816f5be3fd8b298819825f8cd87f7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8d250f1289c3757d5ea862a1c195dde6f8efb0eb
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30905006"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938260"
 ---
-# <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-20-and-managed-disks"></a>Vytvoří kopii virtuálního počítače s Linuxem pomocí Azure CLI 2.0 a spravované disky
+# <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Vytvoří kopii virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure a spravovat disky
 
 
-Tento článek ukazuje, jak vytvořit kopii Azure virtuálního počítače (VM) s Linuxem pomocí Azure CLI 2.0 a modelu nasazení Azure Resource Manager. K provedení těchto kroků můžete také využít [Azure CLI 1.0](copy-vm-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Tento článek ukazuje, jak vytvořit kopii Azure virtuálního počítače (VM) s Linuxem pomocí Azure CLI 2.0 a modelu nasazení Azure Resource Manager. 
 
 Můžete také [odesílání a vytvoření virtuálního počítače z disku VHD](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 

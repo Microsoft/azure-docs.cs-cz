@@ -6,46 +6,30 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 04/28/2018
+ms.date: 06/25/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f237e2b25089e4f89ddda2d37a7aa4019befe0da
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: fcf0b6f3b7f6d75006d8c10aab041c25fc0d8c39
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36302072"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751281"
 ---
 # <a name="https-ingress-on-azure-kubernetes-service-aks"></a>Příchozí přenos HTTPS pro službu Azure Kubernetes (AKS)
 
 Řadič příjem příchozích dat je softwarového produktu, které poskytuje reverzní proxy server, směrování provozu konfigurovatelné a ukončení TLS pro Kubernetes služby. Prostředky Kubernetes příjem příchozích dat se používají ke konfiguraci směrování pro jednotlivé služby Kubernetes a příchozího pravidla. Pomocí řadič příjem příchozích dat a příchozího pravidla, jedna externí adresa slouží ke směrování provozu na více služeb v clusteru s podporou Kubernetes.
 
-Tento dokument vás provede ukázkové nasazení [NGINX příjem příchozích dat řadič] [ nginx-ingress] v clusteru služby Azure Kubernetes služby (AKS). Kromě toho [KUBE LEGO] [ kube-lego] projektu se používá k automatickému generování a konfigurace [umožňuje šifrování] [ lets-encrypt] certifikáty. Nakonec několik aplikací se spouštějí v clusteru AKS, z nichž každý je přístupný prostřednictvím jednu adresu.
-
-## <a name="prerequisite"></a>Požadavek
-
-Instalace rozhraní příkazového řádku Helm – viz rozhraní příkazového řádku Helm [dokumentace] [ helm-cli] postup instalace.
+Tento dokument vás provede ukázkové nasazení [NGINX příjem příchozích dat řadič] [ nginx-ingress] v clusteru služby Azure Kubernetes služby (AKS). Kromě toho [cert manager] [ cert-manager] projektu se používá k automatickému generování a konfigurace [umožňuje šifrování] [ lets-encrypt] certifikáty. Nakonec několik aplikací se spouštějí v clusteru AKS, z nichž každý je přístupný prostřednictvím jednu adresu.
 
 ## <a name="install-an-ingress-controller"></a>Nainstalovat řadič příjem příchozích dat
 
 K instalaci řadičem NGINX příjem příchozích dat použijte Helm. Viz řadič příjem příchozích dat NGINX [dokumentace] [ nginx-ingress] nasazení podrobné informace.
 
-Aktualizujte graf úložiště.
+Tento příklad nainstaluje řadič v `kube-system` obor názvů, lze upravit k oboru názvů podle svého výběru. Pokud váš cluster AKS není RBAC povoleno, přidejte `--set rbac.create=false` k příkazu. Další informace najdete v tématu [nginx příjem příchozích dat grafu][nginx-ingress].
 
-```console
-$ helm repo update
-```
-
-Nainstalujte řadiče příjem příchozích dat NGINX. Tento příklad nainstaluje řadič v `kube-system` obor názvů (za předpokladu, že RBAC je *není* povolené), toto nastavení můžete upravit do oboru názvů podle svého výběru.
-
-```console
-$ helm install stable/nginx-ingress --namespace kube-system --set rbac.create=false --set rbac.createRole=false --set rbac.createClusterRole=false
-```
-
-**Poznámka:** Pokud RBAC *je* povoleno v clusteru kubernetes, výše uvedeném příkazu bude řadiči příchozího nedostupný. Zkuste místo toho následující:
-
-```console
-$ helm install stable/nginx-ingress --namespace kube-system --set rbac.create=true --set rbac.createRole=true --set rbac.createClusterRole=true
+```bash
+helm install stable/nginx-ingress --namespace kube-system
 ```
 
 Během instalace se vytvoří Azure veřejnou IP adresu pro příjem příchozích dat řadič. Chcete-li získat veřejnou IP adresu, použijte příkaz kubectl get service. Může trvat nějakou dobu IP adresu pro přiřazení ke službě.
@@ -66,7 +50,7 @@ Protože žádná pravidla příjem příchozích dat byly vytvořeny, pokud př
 
 Protože se používají certifikáty protokolu HTTPS, musíte nakonfigurovat název plně kvalifikovaný název domény pro příjem příchozích dat řadiče IP adresu. V tomto příkladu se vytvoří plně kvalifikovaný název domény Azure pomocí Azure CLI. Aktualizujte skript s IP adresou řadiče pro příjem příchozích dat a název, který chcete používat ve plně kvalifikovaný název domény.
 
-```
+```bash
 #!/bin/bash
 
 # Public IP address
@@ -84,19 +68,73 @@ az network public-ip update --ids $PUBLICIPID --dns-name $DNSNAME
 
 Příjem příchozích dat řadiče by teď měly být přístupné prostřednictvím plně kvalifikovaný název domény.
 
-## <a name="install-kube-lego"></a>Nainstalujte KUBE LEGO
+## <a name="install-cert-manager"></a>Instalace certifikátu Správce
 
-Příjem příchozích dat řadičem NGINX podporuje TLS ukončení. Existuje několik způsobů, jak načíst a nakonfigurovat certifikáty pro protokol HTTPS, tento dokument ukazuje, jak pomocí [KUBE LEGO][kube-lego], který poskytuje automatické [umožňuje šifrování] [ lets-encrypt] funkce generování a správu certifikátů.
+Příjem příchozích dat řadičem NGINX podporuje TLS ukončení. Existuje několik způsobů, jak načíst a nakonfigurovat certifikáty pro protokol HTTPS, tento dokument ukazuje, jak pomocí [cert manager][cert-manager], který poskytuje automatické [umožňuje šifrování] [ lets-encrypt] funkce generování a správu certifikátů.
 
-Instalace řadiče KUBE LEGO, následujícím příkazem Helm instalace. Aktualizujte e-mailovou adresu s jedním z vaší organizace.
+Instalace certifikátu správce řadiče, následujícím příkazem Helm instalace.
 
-```
-helm install stable/kube-lego \
-  --set config.LEGO_EMAIL=user@contoso.com \
-  --set config.LEGO_URL=https://acme-v01.api.letsencrypt.org/directory
+```bash
+helm install stable/cert-manager --set ingressShim.defaultIssuerName=letsencrypt-prod --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
-Další informace o konfiguraci KUBE LEGO, najdete v článku [KUBE LEGO dokumentaci][kube-lego].
+Pokud váš cluster není RBAC povolit, použijte tento příkaz.
+
+```bash
+helm install stable/cert-manager \
+  --set ingressShim.defaultIssuerName=letsencrypt-prod \
+  --set ingressShim.defaultIssuerKind=ClusterIssuer \
+  --set rbac.create=false \
+  --set serviceAccount.create=false
+```
+
+Další informace o konfiguraci správce certifikátu, najdete v článku [cert manager projektu][cert-manager].
+
+## <a name="create-ca-cluster-issuer"></a>Vytvoření clusteru vystavitele certifikační Autority
+
+Před vydáním certifikátů, správce certifikátů vyžaduje [vystavitele] [ cert-manager-issuer] nebo [ClusterIssuer] [ cert-manager-cluster-issuer] prostředků. Prostředky jsou identické ve funkcích ale `Issuer` funguje v jeden obor názvů kde `ClusterIssuer` funguje napříč všech oborů názvů. Další informace najdete v tématu [vystavitele certifikátu manager] [ cert-manager-issuer] dokumentaci.
+
+Vytvořte pomocí následujících manifestu clusteru vystavitele. Aktualizujte e-mailová adresa platnou adresou z vaší organizace.
+
+```yaml
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: user@contoso.com
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    http01: {}
+```
+
+## <a name="create-certificate-object"></a>Vytvořit objekt certifikátu
+
+Dále musí být vytvořený prostředek certifikátu. Prostředek certifikátu definuje požadovaný certifikát X.509. Další informace najdete v tématu, [cert správce certifikátů][cert-manager-certificates].
+
+Vytvořte prostředek certifikátu s následující manifestu.
+
+```yaml
+apiVersion: certmanager.k8s.io/v1alpha1
+kind: Certificate
+metadata:
+  name: tls-secret
+spec:
+  secretName: tls-secret
+  dnsNames:
+  - demo-aks-ingress.eastus.cloudapp.azure.com
+  acme:
+    config:
+    - http01:
+        ingressClass: nginx
+      domains:
+      - demo-aks-ingress.eastus.cloudapp.azure.com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+```
 
 ## <a name="run-application"></a>Spuštění aplikace
 
@@ -106,13 +144,13 @@ V tomto příkladu Helm slouží ke spouštění více instancí aplikace jednod
 
 Než spustíte aplikaci, přidejte úložiště Helm ukázek Azure ve vývojovém systému.
 
-```
+```bash
 helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 ```
 
- Spusťte grafu AKS hello world pomocí následujícího příkazu:
+Spusťte grafu AKS hello world pomocí následujícího příkazu:
 
-```
+```bash
 helm install azure-samples/aks-helloworld
 ```
 
@@ -120,7 +158,7 @@ Nyní instalaci druhé instance aplikace hello world.
 
 Pro druhou instanci zadejte nový název tak, aby dvě možná využití jsou vizuálně jedinečné. Budete taky muset zadat jedinečný název služby. Tyto konfigurace můžete vidět v následujícím příkazu.
 
-```console
+```bash
 helm install azure-samples/aks-helloworld --set title="AKS Ingress Demo" --set serviceName="ingress-demo"
 ```
 
@@ -132,13 +170,14 @@ Vytvořte název souboru `hello-world-ingress.yaml` a zkopírujte následující
 
 Všimněte si, že provoz na adresu `https://demo-aks-ingress.eastus.cloudapp.azure.com/` se směruje na služby s názvem `aks-helloworld`. Provoz na adresu `https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two` se směruje na `ingress-demo` služby.
 
-```
+```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
   annotations:
-    kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-prod
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
@@ -185,10 +224,13 @@ Další informace o softwaru ukázáno v tomto dokumentu.
 
 - [Helm rozhraní příkazového řádku][helm-cli]
 - [Řadič NGINX příjem příchozích dat][nginx-ingress]
-- [KUBE-LEGO][kube-lego]
+- [Správce certifikátů][cert-manager]
 
 <!-- LINKS - external -->
 [helm-cli]: https://docs.microsoft.com/azure/aks/kubernetes-helm#install-helm-cli
-[kube-lego]: https://github.com/jetstack/kube-lego
+[cert-manager]: https://github.com/jetstack/cert-manager
+[cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html
+[cert-manager-cluster-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/clusterissuers.html
+[cert-manager-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/issuers.html
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx

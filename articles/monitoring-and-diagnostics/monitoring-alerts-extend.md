@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: c01f986bfe3e6a3162988056a268423e07f429bf
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6484142eafa8388117c1e96ab31eefeab188e488
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301146"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750268"
 ---
 # <a name="extend-log-analytics-alerts-to-azure-alerts"></a>Rozšíření výstrahy analýzy protokolů Azure výstrah
-Dokud nedávno Azure Log Analytics zahrnuty vlastní výstrah funkce, které může proaktivně oznámíme vám podmínek založených na protokolu analytická data. Spravovat pravidla výstrah v [portál Microsoft Operations Management Suite](../operations-management-suite/operations-management-suite-overview.md). Nové prostředí výstrahy má teď integrované výstrahy mezi různé služby ve službě Microsoft Azure. Tato možnost je dostupná jako **výstrahy** v části monitorování Azure na portálu Azure a podporuje výstrahy z aktivity protokoly, metriky a protokoly od analýzy protokolů a Azure Application Insights. 
+Dokud nedávno Azure Log Analytics zahrnuty vlastní výstrah funkce, které může proaktivně oznámíme vám podmínek založených na protokolu analytická data. Můžete spravovat pravidla výstrah na portálu Microsoft Operations Management Suite. Nové prostředí výstrahy má teď integrované výstrahy mezi různé služby ve službě Microsoft Azure. Tato možnost je dostupná jako **výstrahy** v části monitorování Azure na portálu Azure a podporuje výstrahy z aktivity protokoly, metriky a protokoly od analýzy protokolů a Azure Application Insights. 
 
 ## <a name="benefits-of-extending-your-alerts"></a>Výhody rozšíření upozornění
 Existuje několik výhod při vytváření a Správa výstrah v portálu Azure, jako například:

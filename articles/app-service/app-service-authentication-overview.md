@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.openlocfilehash: 9220eb3800cd1b7b46e276bbda5bb88fc06d5e54
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6b536ba7792e66fe09ba2cc8a631dc5e934faaea
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337825"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937971"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Ověřování a autorizace v prostředí Azure App Service
 
@@ -80,7 +80,7 @@ Služby App Service používá [Federovaná identita](https://en.wikipedia.org/w
 | Poskytovatel | Koncový bod přihlášení |
 | - | - |
 | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) | `/.auth/login/aad` |
-| [Účet Microsoft](../active-directory/develop/active-directory-appmodel-v2-overview.md) | `/.auth/login/microsoft` |
+| [Účet Microsoft](../active-directory/develop/active-directory-appmodel-v2-overview.md) | `/.auth/login/microsoftaccount` |
 | [Facebook](https://developers.facebook.com/docs/facebook-login) | `/.auth/login/facebook` |
 | [Google](https://developers.google.com/+/web/api/rest/oauth) | `/.auth/login/google` |
 | [Twitter](https://developer.twitter.com/en/docs/basics/authentication) | `/.auth/login/twitter` |
@@ -103,7 +103,7 @@ Následující tabulka uvádí kroky tok ověřování.
 | Krok | Bez poskytovatele sady SDK | U poskytovatele sady SDK |
 | - | - | - |
 | 1. Přihlášení uživatele v | Přesměruje klienta na `/.auth/login/<provider>`. | Kód klienta přihlásí uživatel přímo s poskytovatele sady SDK a přijímá ověřovací token. Informace najdete v dokumentaci poskytovatele. |
-| 2. Následné ověření | Zprostředkovatel přesměruje klienta na `/.auth/login/<provider>/callback`. | Kód klienta odešle token od zprostředkovatele na `/.auth/login/<provider>` pro ověření. |
+| 2. Následné ověřování | Zprostředkovatel přesměruje klienta na `/.auth/login/<provider>/callback`. | Kód klienta odešle token od zprostředkovatele na `/.auth/login/<provider>` pro ověření. |
 | 3. Vytvoření ověřená relace | Služby App Service přidá ověření souboru cookie odpovědi. | Služby App Service vrátí vlastní ověřovací token do kódu klienta. |
 | 4. Poskytovat ověřené obsah | Klient zahrne soubor cookie pro ověřování v následných žádostí (automaticky zpracovávat prohlížeče). | Kód klienta představuje ověřovací token v `X-ZUMO-AUTH` hlavičky (automaticky zpracovává klientem Mobile Apps sady SDK). |
 

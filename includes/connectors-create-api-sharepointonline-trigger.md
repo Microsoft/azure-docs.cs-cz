@@ -1,12 +1,12 @@
 V tomto příkladu I vám ukáže, jak používat **SharePoint Online - při vytvoření nové položky** aktivační událost zahájíte pracovní postup aplikace logiky při vytvoření nové položky v seznamu SharePoint Online.
 
 > [!NOTE]
-> Zobrazí získat výzva k přihlášení k účtu služby SharePoint, pokud jste ještě nevytvořili *připojení* ke službě SharePoint Online.  
+> Získat zobrazí výzva k přihlášení k účtu služby SharePoint, pokud jste ještě nevytvořili *připojení* ke službě SharePoint Online.  
 > 
 > 
 
 1. Zadejte *sharepoint* do vyhledávacího pole v designeru aplikace logiky zvolte **SharePoint Online - při vytvoření nové položky** aktivační události.  
-   ![SharePoint online aktivace image](./media/connectors-create-api-sharepointonline/trigger-1.png)  
+   ![SharePoint online aktivace image ](./media/connectors-create-api-sharepointonline/trigger-1.png)  
 2. **Při vytvoření nové položky** ovládací prvek je zobrazen.  
    ![SharePoint online aktivace obrázek 2](./media/connectors-create-api-sharepointonline/trigger-2.png)   
 3. Vyberte **URL webu**. Toto je web služby SharePoint online, kterou chcete sledovat pro nové položky se spustit pracovní postup.  

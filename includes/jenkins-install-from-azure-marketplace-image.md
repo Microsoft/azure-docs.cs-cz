@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2018
 ms.author: tarcher
 ms.custom: Jenkins
-ms.openlocfilehash: 552e93e9bd1b17c73fb1638fbae2ac30b051c261
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d5a832909f060ad8c8b3f0e7c7ea4504e5e5aadb
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29957545"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943466"
 ---
 1. V prohlížeči otevřete [Azure Marketplace bitovou kopii pro volaných](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview).
 
@@ -33,7 +33,7 @@ ms.locfileid: "29957545"
 1. V **Základy** kartě, zadejte následující hodnoty:
 
     - **Název** -zadejte `Jenkins`.
-    - **Uživatelské jméno** -zadejte uživatelské jméno pro použití při přihlašování do virtuálního počítače, na kterém je spuštěn volaných. Uživatelské jméno musí splňovat [určité požadavky](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm).
+    - **Uživatelské jméno** -zadejte uživatelské jméno pro použití při přihlášení k virtuálnímu počítači, na kterém je spuštěn volaných. Uživatelské jméno musí splňovat [určité požadavky](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm).
     - **Typ ověřování** – vyberte **veřejný klíč SSH**.
     - **Veřejný klíč SSH** -kopírování a vkládání veřejného klíče RSA ve formátu jeden řádek (počínaje `ssh-rsa`) nebo formátu PEM víceřádkový. Můžete vygenerovat klíče SSH pomocí ssh-keygen na Linuxu a systému macOS nebo PuTTYGen ve Windows. Další informace o klíčů SSH a Azure, najdete v článku [jak klíče použití SSH se systémem Windows v Azure](/azure/virtual-machines/linux/ssh-from-windows).
     - **Předplatné** -vyberte předplatné Azure, do kterého chcete nainstalovat volaných.

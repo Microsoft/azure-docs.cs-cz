@@ -1,7 +1,7 @@
 - name: Dokumentace ke službě Data Factory V1
   href: null
 - name: Přepnout na aktuální verzi dokumentaci
-  href: ../index.yml
+  href: ../introduction.md
 - name: Přehled
   items:
     - name: Úvod do Azure Data Factory

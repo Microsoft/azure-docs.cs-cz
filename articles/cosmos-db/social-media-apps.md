@@ -1,7 +1,7 @@
 ---
 title: 'Vzor návrhu Azure Cosmos DB: sociálních médií aplikace | Microsoft Docs'
 description: Další informace o vzoru návrhu pro sociální sítě s využitím flexibilitu úložiště Azure Cosmos DB a jinými službami Azure.
-keywords: Aplikace v sociálních sítích
+keywords: aplikace v sociálních sítích
 services: cosmos-db
 author: ealsur
 manager: kfile
@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2017
 ms.author: maquaran
-ms.openlocfilehash: f03b2f3d295ed7d3986c45ecb80078190a2cd935
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 977ca57fdb2bcc0c9eaaa33eee06c1d8ae8e39ab
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613879"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754453"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Budete sociálních s Azure Cosmos DB
 Žijí v společnosti massively propojeny znamená, že v určitém okamžiku v životnosti stane součástí **sociálních sítí**. Pro komunikaci s kolegy přátel, rodiny nebo někdy nasdílejte naše nadšení pro osoby s společné zájmy používáme sociálních sítí.
@@ -150,7 +150,7 @@ Podívejme se na informace o uživateli, jako například:
         "address":"742 Evergreen Terrace",
         "birthday":"1983-05-07",
         "email":"john@doe.com",
-        "twitterHandle":"@john",
+        "twitterHandle":"\@john",
         "username":"johndoe",
         "password":"some_encrypted_phrase",
         "totalPoints":100,
@@ -175,7 +175,7 @@ Proč by jsme rozdělit uživatele a i tyto informace ukládaly na různých mí
         "surname":"Doe",
         "username":"johndoe"
         "email":"john@doe.com",
-        "twitterHandle":"@john"
+        "twitterHandle":"\@john"
     }
 
 A bude vypadat příspěvku na:
@@ -212,7 +212,7 @@ Ale co jsme další? Několik snadno příklady [postojích analysis](https://en
 
 Teď, když se zobrazí chybové jste připojili, budete pravděpodobně domníváte, že budete potřebovat některé aplikace PhotoDraw ve vědě matematické extrahovat tyto vzory a informace o jednoduché databáze a soubory, ale by být nesprávné.
 
-[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), jsou součástí [Cortana Intelligence Suite](https://www.microsoft.com/en/server-cloud/cortana-analytics-suite/overview.aspx), je plně spravovaná Cloudová služba, která umožňuje vytvářet pracovní postupy pomocí algoritmů v jednoduché rozhraní přetahování myší, kód vlastní algoritmy v [R](https://en.wikipedia.org/wiki/R_\(programming_language\)) nebo používat některé z už sestavené a připravené k použití rozhraní API, jako například: [Analýza textu](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [obsahu moderátora](https://www.microsoft.com/moderator) nebo [doporučení](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2).
+[Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/), jsou součástí [Cortana Intelligence Suite](https://social.technet.microsoft.com/wiki/contents/articles/36688.introduction-to-cortana-intelligence-suite.aspx), je plně spravovaná Cloudová služba, která umožňuje vytvořit pracovní postupy pomocí algoritmů v jednoduché rozhraní přetahování myší, kód vlastní algoritmy v [ R](https://en.wikipedia.org/wiki/R_\(programming_language\)) nebo používat některé z už sestavené a připravené k použití rozhraní API, jako například: [Analýza textu](https://gallery.cortanaanalytics.com/MachineLearningAPI/Text-Analytics-2), [obsahu moderátora](https://www.microsoft.com/moderator) nebo [doporučení](https://gallery.cortanaanalytics.com/MachineLearningAPI/Recommendations-2).
 
 K dosažení těchto scénářů Machine Learning, můžeme použít [Azure Data Lake](https://azure.microsoft.com/services/data-lake-store/) ingestování informace z různých zdrojů a používat [U-SQL](https://azure.microsoft.com/documentation/videos/data-lake-u-sql-query-execution/) zpracovat informace a generovat výstup, který můžete pomocí Azure Machine Learning zpracovat.
 

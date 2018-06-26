@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: b59d86ddb8422108ece66eb1a7bbea808620d063
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: b6de3094e903c3584aa4a57e7792e4b07711f74a
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319538"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937134"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integrace se službou Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -44,7 +44,7 @@ Existuje několik způsobů pro vaši aplikaci pro integraci s Azure AD. Využij
 
 **Pomocí Azure AD určí, kdo má přístup k vaší aplikaci.**  Správci a vlastníci aplikace ve službě Azure AD můžete přiřadit přístup k aplikacím u konkrétních uživatelů a skupin. Pomocí rozhraní Graph API, můžete tento seznam číst a používat k řízení zřizování a jeho rušení prostředků a přístup v rámci vaší aplikace.
 
-**Řízení přístupu na základě rolí pomocí Azure AD.**  Správci a vlastníci aplikace můžete přiřadit uživatele a skupiny s rolemi, které definujete při registraci aplikace ve službě Azure AD. Informace o rolích je odeslán do vaší aplikace v přihlášení tokeny a můžete také načíst pomocí rozhraní Graph API. Další informace o [pomocí služby Azure AD pro autorizaci](http://blogs.technet.com/b/ad/archive/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles.aspx).
+**Řízení přístupu na základě rolí pomocí Azure AD.**  Správci a vlastníci aplikace můžete přiřadit uživatele a skupiny s rolemi, které definujete při registraci aplikace ve službě Azure AD. Informace o rolích je odeslán do vaší aplikace v přihlášení tokeny a můžete také načíst pomocí rozhraní Graph API. Další informace o [pomocí služby Azure AD pro autorizaci](https://cloudblogs.microsoft.com/enterprisemobility/2014/12/18/azure-active-directory-now-with-group-claims-and-application-roles/).
 
 ### <a name="get-access-to-users-profile-calendar-email-contacts-files-and-more"></a>Získat přístup k profilu uživatele, kalendář, e-mailu, kontakty, soubory a další
 **Azure AD je serveru ověřování pro Office 365 a jiné obchodní služby společnosti Microsoft.**  Pokud podporujete Azure AD pro přihlášení k aplikaci nebo podporu propojení vaše aktuální uživatelské účty s Azure AD uživatelské účty pomocí OAuth 2.0, může požádat o oprávnění ke čtení a zápisu do uživatelského profilu, kalendář, e-mailu, kontakty, soubory a další informace. Můžete bez problémů zapsat události do kalendáře uživatele a číst nebo zapisovat soubory na OneDrive. Další informace o [přístup k rozhraní API Office 365](https://msdn.microsoft.com/office/office365/howto/platform-development-overview).

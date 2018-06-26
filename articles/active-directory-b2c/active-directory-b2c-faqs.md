@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1b56cdd119bac28eec819dbf38afcd2be5aaf907
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: e16130dc41418b22f2dea4ceae5e0a90ed963161
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710728"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938378"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy (FAQ) 
 Tato stránka odpovědi časté otázky o Azure Active Directory (Azure AD) B2C. Kontrolovat zpět aktualizací.
@@ -56,7 +56,7 @@ Ne, je možné hostovat aplikace kdekoli (v cloudu nebo místní). Všechny pot�
 Před otevřením v levé nabídce portálu Azure, Azure AD B2C', je nutné přepnout do adresáře, které chcete spravovat.  Přepněte adresáře kliknutím na vaši identitu v pravém horním rohu stránky na portálu Azure, a potom vyberte, že adresář v rozevíracím seznamu, který se zobrazí.  Krok za krokem s obrázky, naleznete v části [přejděte do nastavení Azure AD B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Jak přizpůsobit ověřovacích e-mailů (obsah a "z:" pole) poslal Azure AD B2C?
-Můžete použít [firemního brandingu funkce](../active-directory/customize-branding.md) přizpůsobit obsah ověřovacích e-mailů. Konkrétně lze přizpůsobit tyto dva prvky e-mailu:
+Můžete použít [firemního brandingu funkce](../active-directory/fundamentals/customize-branding.md) přizpůsobit obsah ověřovacích e-mailů. Konkrétně lze přizpůsobit tyto dva prvky e-mailu:
 
 * **Banner s logem**: zobrazí vpravo dole.
 * **Barva pozadí**: zobrazeny nahoře.
@@ -86,10 +86,10 @@ Ne, Azure AD Connect není určená pro práci s Azure AD B2C. Zvažte použití
 Ne, z důvodů zabezpečení Azure AD B2C stránky nelze otevřít v rámci elementu iFrame.  Naše služba komunikuje s prohlížečem, který se má vložené rámce.  Komunita zabezpečení v obecné vlastnosti a specifikace OAUTH2 se nedoporučujeme používání prvky IFrame pro činnosti identity z důvodu riziko opěry pro klikněte na tlačítko.
 
 ### <a name="does-azure-ad-b2c-work-with-crm-systems-such-as-microsoft-dynamics"></a>Funguje s CRM systémů, jako jsou Microsoft Dynamics Azure AD B2C?
-Integrace s Microsoft Dynamics 365 Portal je k dispozici.  V tématu [konfigurace portálu 365 Dynamics pro ověřování pomocí Azure AD B2C](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c).
+Integrace s Microsoft Dynamics 365 Portal je k dispozici.  V tématu [konfigurace Dynamics 365 portál pro ověřování pomocí Azure AD B2C](https://docs.microsoft.com/dynamics365/customer-engagement/portals/azure-ad-b2c).
 
 ### <a name="does-azure-ad-b2c-work-with-sharepoint-on-premises-2016-or-earlier"></a>Nemá Azure AD B2C práce s místní SharePoint 2016 nebo starší?
-Azure AD B2C není určena pro SharePoint externí sdílení partnera scénář; v tématu [Azure AD B2B](http://blogs.technet.com/b/ad/archive/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview.aspx) místo.
+Azure AD B2C není určena pro SharePoint externí sdílení partnera scénář; v tématu [Azure AD B2B](https://cloudblogs.microsoft.com/enterprisemobility/2015/09/15/learn-all-about-the-azure-ad-b2b-collaboration-preview/) místo.
 
 ### <a name="should-i-use-azure-ad-b2c-or-b2b-to-manage-external-identities"></a>Použít Azure AD B2C nebo B2B ke správě externí identity?
 Přečtěte si tento článek o [externí identity](../active-directory/active-directory-b2b-compare-external-identities.md) Další informace o použití funkce vhodné pro vaše scénáře externí identity.

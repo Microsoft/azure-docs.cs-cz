@@ -10,18 +10,18 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: bc24465fa0efc9c473a78503d18200ea5b361920
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d8e260b8dabb4c6823d59374a7b8661e024f1b3d
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644602"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752267"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Sledování a správa výkonu databáze Azure SQL a fondy v aplikaci SaaS více klientů
 
 V tomto kurzu jsou prozkoumali několik klíčových scénářů správy používány aplikací SaaS. Pomocí generátoru zatížení simulovat aktivity mezi všechny databáze klienta, integrované monitorování a výstrah funkce SQL Database a elastické fondy je ukázán.
 
-Adresář Wingtip lístky SaaS databáze za klienta aplikace používá klienta jeden datový model, kde každý místo (klient) má své vlastní databázi. Stejně jako u většiny aplikací SaaS je předpokládaný vzorek úloh tenanta nepředvídatelný a sporadický. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. Abyste mohli využít výhod tohoto typického vzoru používání databáze, databáze tenantů se nasazují do elastických databázových fondů. Elastické fondy optimalizují náklady na řešení prostřednictvím sdílení prostředků mezi mnoha databázemi. S tímto typem vzorců je důležité monitorovat využití databáze a prostředků fondu k zajištění, že jsou přiměřeně vyvážená přetížení mezi jednotlivými fondy. Je také potřeba zajistit, že jednotlivé databáze mají adekvátní prostředky a že fondy nedosahují limitů [eDTU](sql-database-what-is-a-dtu.md). Tento kurz se věnuje způsobům monitorování a správy databází a fondů a uvádí, jak se provádějí nápravné akce v reakci na variace v úloze.
+Adresář Wingtip lístky SaaS databáze za klienta aplikace používá klienta jeden datový model, kde každý místo (klient) má své vlastní databázi. Stejně jako u většiny aplikací SaaS je předpokládaný vzorek úloh tenanta nepředvídatelný a sporadický. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. Abyste mohli využít výhod tohoto typického vzoru používání databáze, databáze tenantů se nasazují do elastických databázových fondů. Elastické fondy optimalizují náklady na řešení prostřednictvím sdílení prostředků mezi mnoha databázemi. S tímto typem vzorců je důležité monitorovat využití databáze a prostředků fondu k zajištění, že jsou přiměřeně vyvážená přetížení mezi jednotlivými fondy. Je také potřeba zajistit, že jednotlivé databáze mají adekvátní prostředky a že fondy nedosahují limitů [eDTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus). Tento kurz se věnuje způsobům monitorování a správy databází a fondů a uvádí, jak se provádějí nápravné akce v reakci na variace v úloze.
 
 V tomto kurzu se naučíte:
 
@@ -42,7 +42,7 @@ Předpokladem dokončení tohoto kurzu je splnění následujících požadavků
 
 Správa výkonu databáze sestává z kompilování a analýz dat výkonu a následného reagování na tato data prostřednictvím úpravy parametrů pro řízení přijatelné doby odezvy na aplikaci. Při hostování více tenantů představují fondy elastické databáze nenákladný způsob zajištění a správy prostředků pro skupinu databází s nepředvídatelnými úlohami. Při určitých vzorcích úloh může být správa ve fondu užitečná pro pouhé dvě databáze S3.
 
-![Diagram aplikace](./media/saas-dbpertenant-performance-monitoring/app-diagram.png)
+![diagram aplikace](./media/saas-dbpertenant-performance-monitoring/app-diagram.png)
 
 Fondy a databází ve fondech, je potřeba sledovat zajistit, že zůstanou v rámci přijatelné rozsahů výkonu. Vyladění konfigurace fondu podle potřeb pracovního vytížení agregační všech databází, zajistíte, že Edtu fondu jsou vhodné pro celkové zatížení. Upravte maximální a minimální hodnoty eDTU jednotlivých databází na vhodné hodnoty pro vaše konkrétní aplikační požadavky.
 

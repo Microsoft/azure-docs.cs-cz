@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/14/2018
+ms.date: 06/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2326f37afcb845b8c484bdf57db0876026f8e8a1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7bee84e1ce473c27730b3fe84aa0a580baeba7c2
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34602716"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938401"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Přesunutím prostředků do nové skupiny prostředků nebo předplatného
 
@@ -27,7 +27,7 @@ Tento článek ukazuje, jak k přesunu prostředků do nového předplatného ne
 
 Při přesouvání prostředků, skupině zdrojové a cílové skupiny jsou zamčené během operace. Zápis a operace odstranění jsou zablokované na skupiny prostředků, až po dokončení přesunu. Tato Zámek znamená nelze přidat, aktualizovat nebo odstranit prostředky ve skupině prostředků, ale neznamená, že zmrazené prostředky. Pokud přesunete SQL Server a jeho databáze do nové skupiny prostředků, například aplikace, která používá databázi vyskytne nedojde k žádnému výpadku. Můžete dál číst a zapisovat do databáze.
 
-Nelze změnit umístění prostředku. Přesunutí prostředku přesouvá pouze ji do nové skupiny prostředků. Nové skupiny prostředků může mít jiné umístění, ale které nelze změnit umístění prostředku.
+Nelze změnit umístění prostředku. Přesunutí prostředku přesouvá pouze ji do nové skupiny prostředků. Nové skupiny prostředků může mít jiné umístění, ale který nemění umístění prostředku.
 
 > [!NOTE]
 > Tento článek popisuje postup přesunutí prostředků v Azure existující účet nabízení. Pokud skutečně chcete změnit účtu Azure nabídky (například upgrade z průběžné platby předem věnovat) přitom dál pracovat se stávajícími prostředky, najdete v článku [vašeho předplatného Azure přepnout na jinou nabídku](../billing/billing-how-to-switch-azure-offer.md).
@@ -57,7 +57,7 @@ Před přesunutím prostředku je nutné provést několik důležitých kroků.
   Pokud klient ID pro zdrojové a cílové předplatné nejsou stejné, použijte následující metody sjednotit klienta ID:
 
   * [Přenos vlastnictví předplatného služby Azure na jiný účet](../billing/billing-subscription-transfer.md)
-  * [Postup přidružení nebo přidat předplatné Azure do Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md)
+  * [Postup přidružení nebo přidat předplatné Azure do Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 
 2. Služba musí umožňovat operaci přesouvání prostředků. V tomto článku jsou uvedené služby, které Povolit přesunutí prostředků a služby, které nepovolíte přesunutí prostředků.
 3. Cílové předplatné musí být registrováno pro poskytovatele přesouvaného prostředku. Pokud ne, se zobrazí chybová zpráva s informacemi, které **předplatné není zaregistrované pro typ prostředku**. K problému může dojít, pokud přesouváte prostředek do nového předplatného, ale toto předplatné nebylo pro příslušný typ prostředku nikdy použito.
@@ -93,6 +93,8 @@ Před přesunutím prostředku je nutné provést několik důležitých kroků.
    * **Microsoft.Resources/subscriptions/resourceGroups/moveResources/action** na zdrojové skupiny prostředků.
    * **Microsoft.Resources/subscriptions/resourceGroups/write** v cílové skupině prostředků.
 
+5. Před přesunutím prostředků, zkontrolujte předplatné kvót pro předplatné, který přesouváte prostředky do. Pokud přesunutí prostředků znamená, že předplatné překročí jeho omezení, musíte zkontrolovat, jestli můžete požádat o zvýšení kvóty. Seznam omezení a jak požádat o zvýšení, naleznete v části [předplatného Azure a omezení služby, kvóty a omezení](../azure-subscription-service-limits.md).
+
 5. Pokud je to možné, zalomení velké přesune do samostatné Přesunutí operací. Správce prostředků se okamžitě nezdaří pokusy o přesunout více než 800 prostředky v rámci jedné operace. Ale přesun menší než 800 prostředků může také selhat podle vypršení časového limitu.
 
 ## <a name="when-to-call-support"></a>Při volání podpory
@@ -115,6 +117,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Aplikace služby App Service (webové aplikace) – viz [omezení služby App Service](#app-service-limitations)
 * Certifikáty App Service
 * Application Insights
+* Analysis Services
 * Automation
 * Azure Cosmos DB
 * Azure Relay
@@ -153,7 +156,8 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 * Úložiště
 * Najdete v části úložiště (klasické) - [omezení nasazení Classic](#classic-deployment-limitations)
 * Stream Analytics - Stream Analytics úlohy nelze přesunout, při spuštění ve stavu.
-* Databáze SQL server – databáze a server se musí nacházet ve stejné skupině prostředků. Když přesouváte systému SQL server, budou přesunuty také všechny její databáze. Toto chování se vztahuje na databáze Azure SQL Database a Azure SQL Data Warehouse. 
+* Databáze SQL server – databáze a server se musí nacházet ve stejné skupině prostředků. Když přesouváte systému SQL server, budou přesunuty také všechny její databáze. Toto chování se vztahuje na databáze Azure SQL Database a Azure SQL Data Warehouse.
+* Time Series Insights
 * Traffic Manager
 * Nelze přesunout virtuální počítače – virtuální počítače s spravované disky. V tématu [omezení virtuální počítače](#virtual-machines-limitations)
 * Virtuální počítače (klasické) - najdete v části [omezení nasazení Classic](#classic-deployment-limitations)
@@ -164,7 +168,7 @@ Služby, které umožňují přesun na novou skupinu prostředků a předplatné
 
 ## <a name="services-that-cannot-be-moved"></a>Služby, které nelze přesunout.
 
-Služby, které aktuálně nepovolujte přesunutí prostředku jsou:
+Služby, které aktuálně nepovolíte přesunutí prostředku jsou:
 
 * AD Domain Services
 * Hybridní AD Health Service
@@ -174,6 +178,7 @@ Služby, které aktuálně nepovolujte přesunutí prostředku jsou:
 * Azure Migrate
 * BizTalk Services
 * Certifikáty – App Service Certificate lze přesunout, ale mají nahrané certifikáty [omezení](#app-service-limitations).
+* Container Service
 * DevTest Labs – přesunout do nové skupiny prostředků v rámci stejného předplatného je povoleno, ale přesunutí křížové předplatného není povolená.
 * Dynamics LCS
 * ExpressRoute
@@ -182,7 +187,7 @@ Služby, které aktuálně nepovolujte přesunutí prostředku jsou:
 * Managed Applications
 * Najdete v části spravované disky - [omezení virtuální počítače](#virtual-machines-limitations)
 * Veřejná IP adresa - najdete v části [omezení veřejnou IP adresu](#pip-limitations)
-* Trezor služeb zotavení – také proveďte není přesunout prostředky výpočty, síť a úložiště přidružený k trezoru služeb zotavení, najdete v části [služeb zotavení omezení](#recovery-services-limitations).
+* Trezor služeb zotavení – také nemáte přesunout prostředky výpočty, síť a úložiště přidružený k trezoru služeb zotavení, najdete v části [služeb zotavení omezení](#recovery-services-limitations).
 * Zabezpečení
 * Správce zařízení StorSimple
 * Najdete v části virtuální sítě (klasické) - [omezení nasazení Classic](#classic-deployment-limitations)
@@ -218,7 +223,7 @@ Virtuální síť nemůžete přesunout do jiného předplatného, pokud virtuá
 
 ## <a name="app-service-limitations"></a>Omezení služby App Service
 
-Omezení pro přesun prostředků služby App Service se liší v závislosti na tom, jestli jsou přesun prostředků v rámci předplatného nebo do nového předplatného.
+Omezení pro přesun prostředků služby App Service se liší v závislosti na tom, jestli při přesouvání prostředků v rámci předplatného nebo do nového předplatného.
 
 Omezení popsaná v těchto částech platí pro nahraném certifikáty, není služby App Service Certificate. Služby App Service Certificate můžete přesunout do nové skupiny prostředků nebo předplatného bez omezení. Pokud máte více webových aplikací, které používají stejný certifikát služby aplikace, nejprve přesunout všechny webové aplikace, pak přesuňte certifikát.
 
@@ -246,7 +251,7 @@ Při přesunu webové aplikace _ve předplatných_, platí následující omezen
 
 ## <a name="classic-deployment-limitations"></a>Omezení nasazení Classic
 
-Možnosti pro přesun prostředků nasazené pomocí klasického modelu se liší v závislosti na tom, jestli jsou přesun prostředků v rámci předplatného nebo do nového předplatného.
+Možnosti pro přesun prostředků nasazené pomocí klasického modelu se liší v závislosti na tom, jestli při přesouvání prostředků v rámci předplatného nebo do nového předplatného.
 
 ### <a name="same-subscription"></a>Stejného předplatného.
 
@@ -330,7 +335,7 @@ Operaci může běžet několik minut.
 
 ## <a name="recovery-services-limitations"></a>Omezení služby obnovení
 
-Přesunutí není povolen pro úložiště, sítě, nebo výpočetní prostředky, které jsou používána k nastavení zotavení po havárii s Azure Site Recovery.
+Přesunutí není povoleno pro úložiště, sítě nebo výpočetní prostředky, které jsou používána k nastavení zotavení po havárii s Azure Site Recovery.
 
 Předpokládejme například, jste nastavili replikaci počítačů na místě na účet úložiště (Storage1) a chcete chráněného počítače přijít po převzetí služeb při selhání do Azure jako virtuální počítač (VM1) připojených k virtuální síti (Network1). Některé z těchto prostředků Azure - Storage1, VM1 a Network1 - nelze přesunout skupiny prostředků v rámci stejného předplatného nebo pro odběry.
 
@@ -365,9 +370,9 @@ Standardní SKU veřejné IP nelze přesunout.
 
 Chcete-li přesunout prostředky, vyberte skupinu prostředků obsahující tyto prostředky a pak vyberte **přesunout** tlačítko.
 
-![Přesunutí prostředků](./media/resource-group-move-resources/select-move.png)
+![přesunout prostředky](./media/resource-group-move-resources/select-move.png)
 
-Vyberte, jestli přecházíte prostředky na novou skupinu prostředků nebo nové předplatné.
+Vyberte, zda přesouváte prostředky pro novou skupinu prostředků nebo nové předplatné.
 
 Vyberte zdroje, které chcete přesunout a cílové skupiny prostředků. Na vědomí, že budete muset aktualizovat skripty pro tyto prostředky a vyberte **OK**. Pokud jste v předchozím kroku vybrali na ikonu pro úpravu předplatné, musíte také vybrat cílového odběru.
 
@@ -377,7 +382,7 @@ V **oznámení**, uvidíte, že je spuštěna operaci přesunutí.
 
 ![Zobrazit stav přesunutí](./media/resource-group-move-resources/show-status.png)
 
-Pokud ho dokončit, zobrazí se zpráva výsledku.
+Po jeho dokončení se zobrazují výsledek.
 
 ![Zobrazit přesunout výsledků](./media/resource-group-move-resources/show-result.png)
 

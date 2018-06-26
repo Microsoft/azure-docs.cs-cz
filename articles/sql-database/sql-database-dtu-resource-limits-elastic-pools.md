@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: adf0cd8fb8511b01d2c8e773444b0af128102ad1
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 08dabf1ad66f69c5e0f55aedbc2a4d0bb265a0bd
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309866"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752227"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu na základě DTU nákupu 
 
@@ -126,5 +126,5 @@ Následující tabulka popisuje vlastnosti pro databáze ve fondu.
 
 - V tématu [nejčastější dotazy k databázi SQL](sql-database-faq.md) odpovědi na nejčastější dotazy.
 - Informace o obecných omezeních Azure najdete v tématu [předplatného Azure a omezení služby, kvóty a omezení](../azure-subscription-service-limits.md).
-- Informace o Dtu a Edtu najdete v tématu [Dtu a Edtu](sql-database-what-is-a-dtu.md).
+- Informace o Dtu a Edtu najdete v tématu [Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
 - Informace o databázi tempdb velikosti omezení naleznete v tématu https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database.

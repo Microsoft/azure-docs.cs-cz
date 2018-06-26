@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 57d14b6aa6caca0cc9b075723d4c350b0a50c9f8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0165de82850c0c80052564c5f31a5e5cf5effb11
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29117533"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938304"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložte a konfiguraci konfigurace služby API Management pomocí Git
 
@@ -95,7 +95,7 @@ Pokud se zobrazí všechny chyby, zkuste upravit vaše `git clone` příkazu zah
 git clone https://username:password@bugbashdev4.scm.azure-api.net/
 ```
 
-Pokud to poskytuje k chybě, zkuste URL kódování heslo část příkazu. Jeden rychlý způsob, jak to udělat je otevřete Visual Studio a vydejte následující příkaz v **hodnot proměnných**. Chcete-li otevřít **hodnot proměnných**, otevřete jakékoli řešení nebo produktu project v sadě Visual Studio (nebo vytvořte novou prázdnou konzolovou aplikaci) a zvolte **Windows**, **Immediate** z **ladění** nabídky.
+Pokud to poskytuje k chybě, zkuste URL kódování heslo část příkazu. Jeden rychlý způsob, jak to udělat je otevřete Visual Studio a vydejte následující příkaz v **hodnot proměnných**. Otevřete **hodnot proměnných**, otevřete jakékoli řešení nebo produktu project v sadě Visual Studio (nebo vytvořte novou prázdnou konzolovou aplikaci) a zvolte **Windows**, **Immediate** z **Ladění** nabídky.
 
 ```
 ?System.NetWebUtility.UrlEncode("password from the Azure portal")
@@ -161,10 +161,10 @@ Každé složky může obsahovat jeden nebo více souborů a v některých pří
 
 | Typ souboru | Účel |
 | --- | --- |
-| JSON |Informace o konfiguraci o odpovídající entity |
-| html |Popisy o entitě, často zobrazeny v portálu pro vývojáře |
+| json |Informace o konfiguraci o odpovídající entity |
+| HTML |Popisy o entitě, často zobrazeny v portálu pro vývojáře |
 | xml |Příkazy zásad |
-| css |Šablony stylů pro přizpůsobení portálu pro vývojáře |
+| šablon stylů CSS |Šablony stylů pro přizpůsobení portálu pro vývojáře |
 
 Tyto soubory lze vytvořit, odstranit, upravit a spravovat v místním systému souborů a nasazení změn zpět do instanci služby API Management.
 
@@ -219,41 +219,41 @@ Nastavení konečného `$ref-policy`, se mapuje na soubor globální zásady př
 ### <a name="apis-folder"></a>rozhraní API složky
 `apis` Složka obsahuje složku pro každé rozhraní API v instanci služby, který obsahuje následující položky.
 
-* `apis\<api name>\configuration.json`-Toto je konfigurace pro rozhraní API a obsahuje informace o adresu URL back-end služby a činnosti. Toto je stejné informace, které by byla vrácena, pokud byste chtěli volání [získat konkrétní rozhraní API](https://msdn.microsoft.com/library/azure/dn781423.aspx#GetAPI) s `export=true` v `application/json` formátu.
-* `apis\<api name>\api.description.html`-Toto je popis rozhraní API a odpovídá `description` vlastnost [rozhraní API entity](https://msdn.microsoft.com/library/azure/dn781423.aspx#EntityProperties).
-* `apis\<api name>\operations\`– Tato složka obsahuje `<operation name>.description.html` soubory, které se mapují na operace v rozhraní API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje na `description` vlastnost [operaci entity](https://msdn.microsoft.com/library/azure/dn781423.aspx#OperationProperties) v rozhraní REST API.
+* `apis\<api name>\configuration.json` -Toto je konfigurace pro rozhraní API a obsahuje informace o adresu URL back-end služby a činnosti. Toto je stejné informace, které by byla vrácena, pokud byste chtěli volání [získat konkrétní rozhraní API](https://docs.microsoft.com/en-us/rest/api/apimanagement/api/get) s `export=true` v `application/json` formátu.
+* `apis\<api name>\api.description.html` -Toto je popis rozhraní API a odpovídá `description` vlastnost [rozhraní API entity](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.table._entity_property).
+* `apis\<api name>\operations\` – Tato složka obsahuje `<operation name>.description.html` soubory, které se mapují na operace v rozhraní API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje na `description` vlastnost [operaci entity](https://docs.microsoft.com/en-us/rest/api/visualstudio/operations/list#operationproperties) v rozhraní REST API.
 
 ### <a name="groups-folder"></a>složka skupiny
 `groups` Složka obsahuje složku pro každou skupinu definované v instanci služby.
 
-* `groups\<group name>\configuration.json`-jedná o konfiguraci pro skupinu. Toto je stejné informace, které by byla vrácena, pokud byste chtěli volání [získat určité skupiny](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup) operaci.
-* `groups\<group name>\description.html`-Toto je popis skupiny a odpovídá `description` vlastnost [skupiny entity](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties).
+* `groups\<group name>\configuration.json` -jedná o konfiguraci pro skupinu. Toto je stejné informace, které by byla vrácena, pokud byste chtěli volání [získat určité skupiny](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup) operaci.
+* `groups\<group name>\description.html` -Toto je popis skupiny a odpovídá `description` vlastnost [skupiny entity](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties).
 
 ### <a name="policies-folder"></a>Složka zásad
 `policies` Složka obsahuje příkazy zásad pro instanci služby.
 
-* `policies\global.xml`-obsahuje zásady definované v globálním oboru pro instanci služby.
-* `policies\apis\<api name>\`– Pokud máte jakékoli zásady definované v oboru rozhraní API, jsou obsažené v této složce.
-* `policies\apis\<api name>\<operation name>\`Složka – Pokud máte jakékoli zásady definované v oboru operaci, jsou obsažené v této složce v `<operation name>.xml` soubory, které jsou mapovány na příkazy zásad pro každou operaci.
-* `policies\products\`– Pokud máte jakékoli zásady definované v produktu oboru, jsou obsažené v této složce, která obsahuje `<product name>.xml` soubory, které jsou mapovány na příkazy zásad pro jednotlivé produkty.
+* `policies\global.xml` -obsahuje zásady definované v globálním oboru pro instanci služby.
+* `policies\apis\<api name>\` – Pokud máte jakékoli zásady definované v oboru rozhraní API, jsou obsažené v této složce.
+* `policies\apis\<api name>\<operation name>\` Složka – Pokud máte jakékoli zásady definované v oboru operaci, jsou obsažené v této složce v `<operation name>.xml` soubory, které jsou mapovány na příkazy zásad pro každou operaci.
+* `policies\products\` – Pokud máte jakékoli zásady definované v produktu oboru, jsou obsažené v této složce, která obsahuje `<product name>.xml` soubory, které jsou mapovány na příkazy zásad pro jednotlivé produkty.
 
 ### <a name="portalstyles-folder"></a>portalStyles složky
 `portalStyles` Složka obsahuje konfiguraci a stylu stylů pro vývojáře přizpůsobení portálu pro instance služby.
 
-* `portalStyles\configuration.json`-obsahuje názvy stylů používá portál pro vývojáře
-* `portalStyles\<style name>.css`-Každý `<style name>.css` soubor obsahuje styly pro portál pro vývojáře (`Preview.css` a `Production.css` ve výchozím nastavení).
+* `portalStyles\configuration.json` -obsahuje názvy stylů používá portál pro vývojáře
+* `portalStyles\<style name>.css` -Každý `<style name>.css` soubor obsahuje styly pro portál pro vývojáře (`Preview.css` a `Production.css` ve výchozím nastavení).
 
 ### <a name="products-folder"></a>produkty složky
 `products` Složka obsahuje složku pro každý produkt definované v instanci služby.
 
-* `products\<product name>\configuration.json`-Toto je konfigurace produktu. Toto je stejné informace, které by byla vrácena, pokud byste chtěli volání [získat určitý produkt](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct) operaci.
-* `products\<product name>\product.description.html`-Toto je popis produktu a odpovídá `description` vlastnost [entity produktu](https://msdn.microsoft.com/library/azure/dn776336.aspx#Product) v rozhraní REST API.
+* `products\<product name>\configuration.json` -Toto je konfigurace produktu. Toto je stejné informace, které by byla vrácena, pokud byste chtěli volání [získat určitý produkt](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct) operaci.
+* `products\<product name>\product.description.html` -Toto je popis produktu a odpovídá `description` vlastnost [entity produktu](https://msdn.microsoft.com/library/azure/dn776336.aspx#Product) v rozhraní REST API.
 
 ### <a name="templates"></a>šablony
 `templates` Složka obsahuje konfiguraci [e-mailových šablon](api-management-howto-configure-notifications.md) instance služby.
 
-* `<template name>\configuration.json`-Toto je konfigurace pro e-mailové šablony.
-* `<template name>\body.html`-Toto je text šablony e-mailu.
+* `<template name>\configuration.json` -Toto je konfigurace pro e-mailové šablony.
+* `<template name>\body.html` -Toto je text šablony e-mailu.
 
 ## <a name="next-steps"></a>Další postup
 Informace o jiných způsobech spravovat instanci služby najdete v tématu:

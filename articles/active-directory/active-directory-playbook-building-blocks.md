@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: ed64c9df6fcca8f85b200c5f738c2009ea7ae0a5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: 056821bd26e9c6c110b23a048df4aa13bc4ab8fa
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293105"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754500"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o koncept playbook: stavební bloky
 
@@ -100,10 +100,10 @@ Přibližná doba na dokončeno: 15 minut
 | Krok | Zdroje a prostředky |
 | --- | --- |
 | Přejděte na portál pro správu Azure AD | [Portál pro správu Azure AD - firemního brandingu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
-| Nahrajte prostředků pro přihlašovací stránku (nejdůležitější logo, malé logo, popisky, atd.). Případně pokud máte služby AD FS, zarovnejte stejné prostředky s přihlašovací stránky služby AD FS | [Přidání firemního brandingu na vaše přihlášení a přístupový Panel stránky: přizpůsobitelné prvky](customize-branding.md) |
+| Nahrajte prostředků pro přihlašovací stránku (nejdůležitější logo, malé logo, popisky, atd.). Případně pokud máte služby AD FS, zarovnejte stejné prostředky s přihlašovací stránky služby AD FS | [Přidání firemního brandingu na vaše přihlášení a přístupový Panel stránky: přizpůsobitelné prvky](fundamentals/customize-branding.md) |
 | Počkejte několik minut, aby tato změna se plně projeví |  |
 | Přihlaste se pomocí přihlašovacích údajů uživatele POC do https://myapps.microsoft.com |  |
-| Potvrďte vzhledu a chování v prohlížeči | [Přidání firemního brandingu na vaše přihlášení a přístupový Panel stránky](customize-branding.md) |
+| Potvrďte vzhledu a chování v prohlížeči | [Přidání firemního brandingu na vaše přihlášení a přístupový Panel stránky](fundamentals/customize-branding.md) |
 | Volitelně můžete potvrďte vzhledu a chování v jiných zařízení |  |
 
 ### <a name="considerations"></a>Požadavky
@@ -118,7 +118,7 @@ Přibližná doba na dokončeno: 10 minut
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Všichni uživatelé POC jsou součástí skupiny zabezpečení (cloudové nebo místní) | [Vytvořte skupinu a přidejte členy v Azure Active Directory](active-directory-groups-create-azure-portal.md) |
+| Všichni uživatelé POC jsou součástí skupiny zabezpečení (cloudové nebo místní) | [Vytvořte skupinu a přidejte členy v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 
 ### <a name="steps"></a>Kroky
 
@@ -140,16 +140,16 @@ Přibližná doba na dokončeno: 60 minut
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
 | Testovací prostředí aplikace SaaS, která je k dispozici. V této příručce použijeme ServiceNow jako příklad.<br/>Důrazně doporučujeme používat testovací instance minimalizovat tření na navigace existující data kvality a mapování. | Přejděte na https://developer.servicenow.com/app.do#! / domácí zahájíte proces získávání testovací instance |
-| Přístup správce ke konzole pro správu ServiceNow | [Kurz: Azure Active Directory integrace s ServiceNow](active-directory-saas-servicenow-tutorial.md) |
+| Přístup správce ke konzole pro správu ServiceNow | [Kurz: Azure Active Directory integrace s ServiceNow](saas-apps/servicenow-tutorial.md) |
 | Cíl nastaví uživatelů přiřazení aplikace k. Skupinu zabezpečení obsahující uživatele PoC se doporučuje. <br/>Pokud vytváření skupiny není vhodná, přiřadíte přímo k aplikaci ve fázi poc pak uživatelům | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Sdílet kurzu pro všechny účastníky z Documentation společnosti Microsoft  | [Kurz: Azure Active Directory integrace s ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Nastavit pracovní schůzku a postupujte podle kroků kurzu s každou objektu actor. | [Kurz: Azure Active Directory integrace s ServiceNow](active-directory-saas-servicenow-tutorial.md) |
-| Přiřadíte skupinu určené v požadavky aplikace. Pokud ve fázi POC podmíněného přístupu v oboru, můžete později, pokroku a přidat vícefaktorového ověřování a podobné. <br/>Všimněte si, že to bude nové proces zajišťování (Pokud je nakonfigurováno) |  [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) <br/>[Vytvořte skupinu a přidejte členy v Azure Active Directory](active-directory-groups-create-azure-portal.md) |
+| Sdílet kurzu pro všechny účastníky z Documentation společnosti Microsoft  | [Kurz: Azure Active Directory integrace s ServiceNow](saas-apps/servicenow-tutorial.md) |
+| Nastavit pracovní schůzku a postupujte podle kroků kurzu s každou objektu actor. | [Kurz: Azure Active Directory integrace s ServiceNow](saas-apps/servicenow-tutorial.md) |
+| Přiřadíte skupinu určené v požadavky aplikace. Pokud ve fázi POC podmíněného přístupu v oboru, můžete později, pokroku a přidat vícefaktorového ověřování a podobné. <br/>Všimněte si, že to bude nové proces zajišťování (Pokud je nakonfigurováno) |  [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) <br/>[Vytvořte skupinu a přidejte členy v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 | Pomocí Azure AD management Portal můžete přidat ServiceNow aplikace z Galerie| [Správa služby Azure AD portál: podnikové aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Co je nového v nástroji Správa podniková aplikace v Azure Active Directory](active-directory-enterprise-apps-whats-new-azure-portal.md) |
 | V okně "Jednotného přihlašování" aplikace ServiceNow povolte "na základě SAML přihlašování" |  |
 | Vyplňte pole "Přihlašovací adresa URL" a "Identifikátor" s ServiceNow adresu URL<br/>Zaškrtněte políčko "Aktivujte nový certifikát"<br/>a uložte nastavení |  |
@@ -163,7 +163,7 @@ Přibližná doba na dokončeno: 60 minut
 
 ### <a name="considerations"></a>Požadavky
 
-1. Výše [kurzu](active-directory-saas-servicenow-tutorial.md) odkazuje na staré Azure prostředí pro správu AD. Ale PoC je založena na [rychlý Start](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away) prostředí.
+1. Výše [kurzu](saas-apps/servicenow-tutorial.md) odkazuje na staré Azure prostředí pro správu AD. Ale PoC je založena na [rychlý Start](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away) prostředí.
 2. Pokud cílová aplikace se nenachází v galerii, můžete použít, "Přineste vlastní aplikace". Další informace: [co je nového v nástroji Správa podniková aplikace v Azure Active Directory: Přidat vlastní aplikace z jednoho místa](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
 
 ## <a name="saas-password-sso-configuration"></a>Konfigurace jednotného přihlašování k SaaS heslo
@@ -242,7 +242,7 @@ Přibližná doba na dokončeno: 20 minut
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Microsoft Azure AD basic nebo předplatné premium a adresář Azure AD, u kterého jste globální správce | [Edice služby Azure Active Directory](active-directory-whatis.md) |
+| Microsoft Azure AD basic nebo předplatné premium a adresář Azure AD, u kterého jste globální správce | [Edice služby Azure Active Directory](fundamentals/active-directory-whatis.md) |
 | Webové aplikace hostované místní, které chcete nakonfigurovat pro vzdálený přístup |  |
 | Serveru se systémem Windows Server 2012 R2 nebo Windows 8.1 nebo vyšší, na který nainstalujete konektor Proxy aplikace | [Pochopení konektory proxy aplikace služby Azure AD](manage-apps/application-proxy-connectors.md) |
 | Pokud v cestě je brána firewall, ujistěte se, že je otevřete tak, aby konektor můžete provést požadavky HTTPS (TCP) proxy aplikace | [Povolení Proxy aplikace na portálu Azure: požadavky na Proxy aplikace](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
@@ -306,8 +306,8 @@ Přibližná doba na dokončeno: 10 minut
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
 | Již nakonfigurována aplikace SaaS (Federovanému nebo heslo jednotné přihlašování) | Stavební blok: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) |
-| Skupina cloudu, kterému je přiřazen přístup k aplikaci v #1 je určena | Stavební blok: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) <br/>[Vytvořte skupinu a přidejte členy v Azure Active Directory](active-directory-groups-create-azure-portal.md) |
-| Přihlašovací údaje pro vlastník skupiny jsou k dispozici | [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](active-directory-manage-groups.md) |
+| Skupina cloudu, kterému je přiřazen přístup k aplikaci v #1 je určena | Stavební blok: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) <br/>[Vytvořte skupinu a přidejte členy v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
+| Přihlašovací údaje pro vlastník skupiny jsou k dispozici | [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](fundamentals/active-directory-manage-groups.md) |
 | Byla zjištěna přihlašovací údaje pro přístup aplikace k pracovníkovi s informacemi | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
 
 
@@ -315,8 +315,8 @@ Přibližná doba na dokončeno: 10 minut
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Identifikovat skupinu, kterému byla udělena přístup k aplikaci a nakonfigurovat vlastník daného skupiny| [Spravovat nastavení pro skupinu v Azure Active Directory ](active-directory-groups-settings-azure-portal.md) |
-| Přihlaste se jako vlastník skupiny, najdete v části členství ve skupině skupiny kartě přístupového panelu | [Stránky Azure Active Directory, Správa skupin](https://account.activedirectory.windowsazure.com/r/#/groups) |
+| Identifikovat skupinu, kterému byla udělena přístup k aplikaci a nakonfigurovat vlastník daného skupiny| [Spravovat nastavení pro skupinu v Azure Active Directory ](fundamentals/active-directory-groups-settings-azure-portal.md) |
+| Přihlaste se jako vlastník skupiny, najdete v části členství ve skupině skupiny kartě přístupového panelu | [Stránky Azure Active Directory, Správa skupin](https://account.activedirectory.windowsazure.com/r#/groups) |
 | Přidat pracovník s informacemi, které chcete testovat |  |
 | Přihlaste se jako pracovník, potvrďte, že dlaždice je k dispozici | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
 
@@ -331,7 +331,7 @@ Pokud má aplikace zřizování povolené, může budete muset Počkejte několi
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
 | Již nakonfigurována aplikace SaaS (Federovanému nebo heslo jednotné přihlašování) | Stavební blok: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) |
-| Skupina cloudu, kterému je přiřazen přístup k aplikaci v #1 je určena | Stavební blok: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) <br/>[Vytvořte skupinu a přidejte členy v Azure Active Directory](active-directory-groups-create-azure-portal.md) |
+| Skupina cloudu, kterému je přiřazen přístup k aplikaci v #1 je určena | Stavební blok: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) <br/>[Vytvořte skupinu a přidejte členy v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 | Byla zjištěna přihlašovací údaje pro přístup aplikace k pracovníkovi s informacemi | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
 
 
@@ -339,7 +339,7 @@ Pokud má aplikace zřizování povolené, může budete muset Počkejte několi
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Odeberte uživatele ze skupiny, které aplikace je přiřazena k | [Správa členství ve skupině pro uživatele v klientovi služby Azure Active Directory](active-directory-groups-members-azure-portal.md) |
+| Odeberte uživatele ze skupiny, které aplikace je přiřazena k | [Správa členství ve skupině pro uživatele v klientovi služby Azure Active Directory](fundamentals/active-directory-groups-members-azure-portal.md) |
 | Počkejte několik minut, než jeho rušení | [Automatické zřizování uživatelů aplikace SaaS ve službě Azure AD: Jak funguje automatické zřizování?](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
 | Na relace samostatné prohlížeče Přihlaste se jako pracovník Moje aplikace portál a potvrďte, že dlaždice chybí | http://myapps.microsoft.com |
 

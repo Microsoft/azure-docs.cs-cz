@@ -12,25 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2017
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: 5c2201292eb085dcc043e4257580c7971dbaffbd
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 21b54f60286e25c410b9d51de8be122c450080d3
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "23945881"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752771"
 ---
 # <a name="filters-in-log-analytics-views"></a>Filtry v zobrazení analýzy protokolů
 A **filtru** v [zobrazení analýzy protokolů](log-analytics-view-designer.md) umožňuje uživatelům filtrování dat v zobrazení hodnotou určité vlastnosti beze změny samotném zobrazení.  Můžete například povolit uživatelům zobrazení filtrovat zobrazení pro data pouze z určitého počítače nebo sadu počítačů.  V rámci jednoho zobrazení umožníte uživatelům filtrovat podle více vlastností můžete vytvořit více filtrů.  Tento článek popisuje, jak používat filtr a přidat vlastní zobrazení.
 
 ## <a name="using-a-filter"></a>Pomocí filtru.
-Klikněte na tlačítko **filtru** otevřete podokno filtru pro zobrazení.  To umožňuje vybrat časové rozmezí a hodnoty pro všechny filtry, které jsou k dispozici pro zobrazení.  Když vyberete filtr, zobrazí seznam dostupných hodnot.  Můžete vybrat jednu nebo více hodnot, nebo zadejte je do. Zobrazení se automaticky aktualizuje a filtrovat podle hodnoty, které zadáte. 
+Klikněte na tlačítko časové rozmezí dat v horní části zobrazení otevřete rozevírací nabídky, kde můžete změnit časový rozsah dat pro zobrazení.
 
-Pokud není vybrána žádná hodnota pro filtr, není tento filtr použít u zobrazení.  Pokud odeberete všechny hodnoty pro filtr, pak tento filtr se už použijí.
+![Příklad filtru](media/log-analytics-view-designer/filters-example-time.png)
+
+Klikněte **+** chcete přidat filtr pomocí vlastní filtry, které jsou definovány pro zobrazení. Buď vyberte hodnotu pro filtr z rozevíracího seznamu nebo zadejte hodnotu. Pokračujte pro přidání filtry kliknutím **+**. 
 
 
-![Příklad filtru](media/log-analytics-view-designer/filters-example.png)
+![Příklad filtru](media/log-analytics-view-designer/filters-example-custom.png)
+
+Pokud odeberete všechny hodnoty pro filtr, pak tento filtr se už použijí.
 
 
 ## <a name="creating-a-filter"></a>Vytváření filtrů
@@ -54,9 +58,9 @@ Následující tabulka obsahuje několik příkladů běžných filtrů.
 | Název pole | Dotaz pro hodnoty | Značka |
 |:--|:--|:--|
 | Počítač   | Prezenční signál &#124; distinct Computer &#124; řazení podle počítače asc | Počítače |
-| EventLevelName | Event &#124; distinct EventLevelName | Závažnost |
-| Úroveň závažnosti | Syslog &#124; odlišné úroveň závažnosti | Závažnost |
-| SvcChangeType | Změnakonfigurace &#124; odlišné svcChangeType | ChangeType |
+| EventLevelName | Událost &#124; odlišné EventLevelName | Severity |
+| Úroveň závažnosti | Syslog &#124; odlišné úroveň závažnosti | Severity |
+| SvcChangeType | Změnakonfigurace &#124; odlišné svcChangeType | ChangeType – |
 
 
 ## <a name="modify-view-queries"></a>Upravit zobrazení dotazů

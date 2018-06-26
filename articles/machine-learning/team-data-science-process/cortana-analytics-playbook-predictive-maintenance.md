@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 50338e05241be9ce573ff3dd3bb99711cbf15b28
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: ff2e1660ffcc1f397697b27084e000371c7c84f3
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248533"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938005"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI Příručka pro řešení prediktivní údržby
 
@@ -255,7 +255,7 @@ Tato část popisuje hlavní modelování techniky pro PdM problémy, spolu s je
 > Volba štítky pro případy selhání a označování strategie  
 > je třeba určovat konzultaci s doménou odborné.
 
-### <a name="binary-classification"></a>binární klasifikace
+### <a name="binary-classification"></a>Binární klasifikace
 Binární klasifikace se používá ke _předpovědi pravděpodobnost, že zařízení, selže a v budoucích časovém intervalu_ – zavolat _budoucí horizon období X_. X je určen podle obchodního problému a data, ve spolupráci s odborné domény. Mezi příklady patří:
 - _minimální doba realizace_ potřeby nahradit součásti nasazení údržby prostředků, provedení údržby, aby nedošlo k problému, který může dojít v tomto období.
 - _minimální počet událostí_ , může dojít předtím, než dojde k potížím.
@@ -350,7 +350,7 @@ V klasifikaci problémy, pokud existují další příklady jednu třídu než o
 Mnoho problémů PdM čelí takové imbalanced datové sady, kde je jedna třída vážně underrepresented ve srovnání s další třídu nebo třídy. V některých situacích může představovat třídě menšinových pouze 0,001 % celkový počet datových bodů. Třída nevyváženosti není jedinečný pro PdM. Jiných domén, kdy jsou chyby a anomálie výjimečných výskytů čelí podobný problém, příklady, odhalování podvodů a narušení sítě. Tyto chyby tvoří příklady menšinových tříd.
 
 Pomocí třídy nevyváženosti v datech výkon většinu standardních algoritmů učení v ohrožení, vzhledem k tomu, že jejich cílem minimalizovat míra celkové chyb. Pro datovou sadu s 99 % záporné a kladné příklady 1 % lze zobrazit modelu tak, aby měl 99 % přesnost pomocí označování všechny instance jako záporné. Ale modelu bude nemá klasifikovat všechny kladné příklady; takže i v případě jeho přesnost je vysoká, algoritmus není užitečné. V důsledku toho konvenční vyhodnocení metriky jako _celkové přesnost na míra chyb_ není k dispozici dostatek imbalanced informací. Pokud potýkají s imbalanced datové sady, se použijí jiné metriky pro vyhodnocení modelu:
-- přesnost
+- Přesnost
 - Svolat
 - F1 skóre
 - Náklady na upravena ROC (provozní vlastnosti příjemce)
@@ -434,7 +434,7 @@ Microsoft Azure nabízí bezplatné obsah a školení na obecné koncepty AI a p
 |:-------------------|--------------|
 | [AI vývojáře v Azure](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
 | [Školní Microsoft AI](http://aischool.microsoft.com/learning-paths) | Public |
-| [Learning Azure AI z Githubu](http://azure.github.io/learnanalytics/public) | Public |
+| [Learning Azure AI z Githubu](https://github.com/Azure/connectthedots/blob/master/readme.md) | Public |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | Public |
 | [Microsoft AI Youtube Webináře](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
 | [Zobrazit Microsoft AI](http://channel9.msdn.com/Shows/AI-Show) | Public |

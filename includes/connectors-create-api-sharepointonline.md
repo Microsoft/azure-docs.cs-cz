@@ -2,7 +2,7 @@
 
 Aby bylo možné připojit k **SharePoint Online**, budete muset zadat svou identitu (uživatelského jména a hesla, čipové karty přihlašovací údaje, atd.) ke službě SharePoint Online. Jakmile jste jste ověřena, můžete pokračovat k používání konektoru služby SharePoint Online v aplikaci logiky. 
 
-Při na návrháře aplikace logiky, postupujte podle těchto kroků pro přihlášení do služby SharePoint k vytvoření **připojení** pro použití v aplikaci logiky:
+Při na návrháře aplikace logiky, postupujte podle těchto kroků k přihlášení do služby SharePoint k vytvoření **připojení** pro použití v aplikaci logiky:
 
 1. Zadejte do pole vyhledávání služby SharePoint a počkat na hledání vrátí všechny aktivační události a akcí souvisejících k SharePoint Online:   
    ![Konfigurace služby SharePoint][1]  

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: c10a6367f07bf66f7a0a8968022881b3c616fb74
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: bfdc89d9bc5d5a07c04e857c1a46e4b988c125ab
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205599"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943551"
 ---
 ## <a name="test-your-code"></a>Otestujte svůj kód
 
@@ -71,7 +71,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 <!--end-collapse-->
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Omezit, kdo může přihlásit k aplikaci
-Ve výchozím nastavení při sestavování aplikace vytvořené v této příručce, vaše aplikace bude přijmout sign in osobní účty (včetně live.com, outlook.com a dalších) a také pracovní a školní účty z jakékoli společnost nebo organizace, který se má integrovat s Azure Active Directory. Toto je doporučená možnost pro SaaS aplikace.
+Ve výchozím nastavení při sestavování aplikace vytvořené v této příručce, aplikace bude přijímat přihlášení osobní účty (včetně live.com, outlook.com a dalších) a také pracovní a školní účty z jakékoli společnost nebo organizace, který se má integrovat s Azure Active Directory. Toto je doporučená možnost pro SaaS aplikace.
 
 Pokud chcete omezit přístup přihlášení uživatelů pro vaši aplikaci, jsou k dispozici několik možností:
 

@@ -7,7 +7,7 @@ Nejdřív je potřeba mít nejnovější [prostředí Azure PowerShell](http://m
 > 
 > 
 
-Spustit [ **Connect-AzureRmAccount** ](http://msdn.microsoft.com/library/mt619267.aspx) rutiny a zobrazí se přihlašovací obrazovka, zadat přihlašovací údaje. Použijte stejné přihlašovací údaje, pomocí kterých se přihlašujete na portál Azure.
+Spustit [ **Connect-AzureRmAccount** ](http://msdn.microsoft.com/library/mt619267.aspx) rutiny a zobrazí se obrazovka přihlášení k zadání pověření. Použijte stejné přihlašovací údaje, pomocí kterých se přihlašujete na portál Azure.
 
     Connect-AzureRmAccount
 

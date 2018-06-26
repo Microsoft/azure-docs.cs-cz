@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 06/20/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 18b385edc7efed20d940be96670b8c40ce66ddfd
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 806ebe80ad49f2f908bf46549bb4abc533a6d516
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264319"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936696"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Datový proud Azure diagnostických protokolů do centra událostí
 **[Azure diagnostické protokoly](monitoring-overview-of-diagnostic-logs.md)**  Streamovat skoro v reálném čase pro žádnou aplikaci pomocí předdefinované možnosti "Export do služby Event Hubs" na portálu nebo povolením ID události rozbočovače autorizační pravidla v nastavení diagnostiky prostřednictvím Azure Rutiny prostředí PowerShell nebo Azure CLI 2.0.
@@ -75,7 +75,7 @@ Obor názvů služby Event Hubs nemusí být ve stejném předplatném jako pros
 
    ![Přidat nastavení diagnostiky - stávající nastavení](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-configure.png)
 
-   Obor názvů vybrané bude kde vytvoření (pokud to vaše první čas diagnostické protokoly streamování) nebo prostřednictvím datového proudu do centra událostí (Pokud již existují prostředky, které jsou streamování této kategorie protokolu na tento obor názvů), a definuje zásady oprávnění, která má streamování mechanismus. V současné době streamování do centra událostí vyžadují oprávnění spravovat, odeslání a naslouchání. Můžete vytvářet nebo upravovat Event Hubs obor názvů sdílených zásad přístupu na portálu na kartě Konfigurace oboru názvů. Pokud chcete aktualizovat jednu z těchto nastavení diagnostiky, klient musí mít oprávnění ListKey na autorizační pravidlo Event Hubs. Volitelně můžete zadat název centra událostí. Pokud zadáte název centra událostí, protokoly jsou směrovány do tohoto centra událostí a nikoli k rozbočovači nově vytvořený událostí podle kategorie protokolu.
+   Obor názvů vybrané bude kde vytvoření (pokud to vaše první čas diagnostické protokoly streamování) nebo prostřednictvím datového proudu do centra událostí (Pokud již existují prostředky, které jsou streamování této kategorie protokolu na tento obor názvů), a definuje zásady oprávnění, streamování mechanismus má. V současné době streamování do centra událostí vyžadují oprávnění spravovat, odeslání a naslouchání. Můžete vytvářet nebo upravovat Event Hubs obor názvů sdílených zásad přístupu na portálu na kartě Konfigurace oboru názvů. Pokud chcete aktualizovat jednu z těchto nastavení diagnostiky, klient musí mít oprávnění ListKey na autorizační pravidlo Event Hubs. Volitelně můžete zadat název centra událostí. Pokud zadáte název centra událostí, protokoly jsou směrovány do tohoto centra událostí a nikoli k rozbočovači nově vytvořený událostí podle kategorie protokolu.
 
 4. Klikněte na **Uložit**.
 
@@ -93,7 +93,7 @@ ID události rozbočovače autorizační pravidlo je řetězec s Tento formát: 
 
 ### <a name="via-azure-cli-20"></a>Via Azure CLI 2.0
 
-Povolit vysílání datového proudu prostřednictvím [Azure CLI 2.0](insights-cli-samples.md), můžete použít [vytvořit az monitorování diagnostiky – nastavení](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) příkaz.
+Povolit vysílání datového proudu prostřednictvím [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest), můžete použít [vytvořit az monitorování diagnostiky – nastavení](https://docs.microsoft.com/en-us/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) příkaz.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

@@ -10,22 +10,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 06/25/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: 3c80ce6e221acb8905c00e6178dd2fec1f8816af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: eb01d31d00177560aca3aa71750cd2d1ec096f8f
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938379"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Rozhraní API verze profilů pomocí Azure CLI 2.0 v Azure zásobníku
 
-V tomto článku jsme vás provede procesem pomocí rozhraní příkazového řádku Azure (CLI) ke správě prostředků Azure zásobníku Development Kit ze systému Linux a Mac klientských platforem. 
+Můžete provést kroky v tomto článku nastavte Azure rozhraní příkazového řádku (CLI) ke správě prostředků Azure zásobníku Development Kit z klientské platformy Linux, Mac a Windows.
 
 ## <a name="install-cli"></a>Instalace rozhraní příkazového řádku
 
-V dalším Přihlaste se k vaší pracovní stanici a nainstalovat rozhraní příkazového řádku. Azure zásobníku vyžaduje 2.0 verzi rozhraní příkazového řádku Azure. Můžete nainstalovat pomocí kroků popsaných v [nainstalovat Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) článku. Pokud chcete ověřit, pokud byla instalace úspěšná, otevřete okno příkazového řádku nebo terminál a spusťte následující příkaz:
+Přihlaste se k vaší pracovní stanici a nainstalovat rozhraní příkazového řádku. Azure zásobníku vyžaduje 2.0 verzi rozhraní příkazového řádku Azure. Můžete nainstalovat pomocí kroků popsaných v [nainstalovat Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) článku. Pokud chcete ověřit, pokud byla instalace úspěšná, otevřete okno příkazového řádku nebo terminál a spusťte následující příkaz:
 
 ```azurecli
 az --version
@@ -35,27 +36,47 @@ Měli byste vidět verzi rozhraní příkazového řádku Azure a další závis
 
 ## <a name="trust-the-azure-stack-ca-root-certificate"></a>Důvěřovat certifikátu kořenové certifikační Autority Azure zásobníku
 
-Získání certifikátu kořenové certifikační Autority zásobník Azure z operátor zásobník Azure a důvěřujete mu. Chcete-li důvěryhodný kořenový certifikát certifikační Autority zásobník Azure, připojte ji existující certifikát Python. Pokud používáte rozhraní příkazového řádku z počítače systému Linux, který je vytvořen v prostředí Azure zásobníku, spusťte následující příkaz bash:
+1. Získání certifikátu kořenové certifikační Autority zásobník Azure z [vaše zásobník Azure operátor](..\azure-stack-cli-admin.md#export-the-azure-stack-ca-root-certificate) a důvěřujete mu. Chcete-li důvěryhodný kořenový certifikát certifikační Autority zásobník Azure, připojte ji existující certifikát Python.
+
+2. Vyhledejte umístění certifikátu v počítači. Umístění se může lišit v závislosti na tom, kde je instalována Python. Budete muset mít [pip](https://pip.pypa.io) a [osobní](https://pypi.org/project/certifi/) modul nainstalovaný. Můžete použít následující příkaz z příkazového řádku bash Python:
+
+  ```bash  
+    python -c "import certifi; print(certifi.where())"
+  ```
+
+  Poznamenejte si umístění certifikátu. Například, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Konkrétní cestu závisí na operačním systému a verzi jazyka Python, který jste nainstalovali.
+
+### <a name="set-the-path-for-a-development-machine-inside-the-cloud"></a>Nastavit cestu pro vývojovém počítači, v cloudu
+
+Pokud používáte rozhraní příkazového řádku z počítače systému Linux, který je vytvořen v prostředí Azure zásobníku, spusťte následující příkaz bash s cestou k certifikátu.
 
 ```bash
-sudo cat /var/lib/waagent/Certificates.pem >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
+sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
 ```
 
-Pokud používáte rozhraní příkazového řádku z počítače mimo prostředí výběrové potvrzování Azure, musíte nejprve nastavit [připojení VPN do Azure zásobníku](azure-stack-connect-azure-stack.md). Nyní zkopírujte certifikát PEM, který jste dříve exportovali na stanici vývoje a spusťte následující příkazy, v závislosti na vaší pracovní stanici operačního systému.
+### <a name="set-the-path-for-a-development-machine-outside-the-cloud"></a>Nastavit cestu pro vývojovém počítači mimo cloudu
 
-### <a name="linux"></a>Linux
+Pokud používáte rozhraní příkazového řádku z počítače **mimo** prostředí Azure zásobníku:  
+
+1. Je nutné nastavit [připojení VPN do Azure zásobníku](azure-stack-connect-azure-stack.md).
+
+2. Zkopírujte certifikát PEM, který jste získali z Azure zásobníku operátor a poznamenejte si umístění souboru (PATH_TO_PEM_FILE).
+
+3. Spusťte následující příkazy, v závislosti na stanici vývoje OS koncová.
+
+#### <a name="linux"></a>Linux
 
 ```bash
-sudo cat PATH_TO_PEM_FILE >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
+sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 ```
 
-### <a name="macos"></a>macOS
+#### <a name="macos"></a>macOS
 
 ```bash
-sudo cat PATH_TO_PEM_FILE >> ~/lib/azure-cli/lib/python2.7/site-packages/certifi/cacert.pem
+sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
 ```
 
-### <a name="windows"></a>Windows
+#### <a name="windows"></a>Windows
 
 ```powershell
 $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
@@ -181,14 +202,14 @@ Pokud skupina prostředků je úspěšně vytvořil, předchozí příkaz výstu
 ## <a name="known-issues"></a>Známé problémy
 Existují některé známé problémy, které je potřeba vědět, když pomocí rozhraní příkazového řádku v zásobníku Azure:
 
-* Jednofaktorovému interaktivním režimu rozhraní příkazového řádku `az interactive` příkaz není dosud podporován v zásobníku Azure.
-* Seznam dostupných v zásobníku Azure bitové kopie virtuálních počítačů, použijte `az vm images list --all` příkaz místo `az vm image list` příkaz. Určení `--all` možnost zajišťuje, že odpovědi vrátí pouze obrázky, které jsou k dispozici ve vašem prostředí Azure zásobníku. 
-* Aliasy bitové kopie virtuálního počítače, které jsou k dispozici v Azure nemusí být k dispozici do protokolů Azure. Pokud pomocí bitové kopie virtuálních počítačů, je nutné použít parametr celý název URN (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) namísto alias bitové kopie. Tento název URN musí odpovídat specifikace bitové kopie, odvozené z `az vm images list` příkaz.
-* Ve výchozím nastavení používá rozhraní příkazového řádku 2.0 "Standard_DS1_v2" jako výchozí velikost bitové kopie virtuálního počítače. Ale ještě tato velikost není k dispozici v Azure zásobníku, takže budete muset zadat `--size` parametr explicitně při vytváření virtuálního počítače. Můžete získat seznam velikostí virtuálních počítačů, které jsou k dispozici v zásobníku Azure pomocí `az vm list-sizes --location <locationName>` příkaz.
-
+ - Jednofaktorovému interaktivním režimu rozhraní příkazového řádku `az interactive` příkaz není dosud podporován v zásobníku Azure.
+ - Seznam dostupných v zásobníku Azure bitové kopie virtuálních počítačů, použijte `az vm images list --all` příkaz místo `az vm image list` příkaz. Určení `--all` možnost zajišťuje, že odpovědi vrátí pouze obrázky, které jsou k dispozici ve vašem prostředí Azure zásobníku.
+ - Aliasy bitové kopie virtuálního počítače, které jsou k dispozici v Azure nemusí být k dispozici do protokolů Azure. Pokud pomocí bitové kopie virtuálních počítačů, je nutné použít parametr celý název URN (Canonical: UbuntuServer:14.04.3-LTS:1.0.0) namísto alias bitové kopie. Tento název URN musí odpovídat specifikace bitové kopie, odvozené z `az vm images list` příkaz.
 
 ## <a name="next-steps"></a>Další postup
 
 [Nasazení šablon pomocí rozhraní příkazového řádku Azure](azure-stack-deploy-template-command-line.md)
+
+[Povolit rozhraní příkazového řádku Azure pro uživatele Azure zásobníku (operátor)](..\azure-stack-cli-admin.md)
 
 [Správa uživatelských oprávnění](azure-stack-manage-permissions.md)

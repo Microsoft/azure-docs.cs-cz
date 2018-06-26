@@ -3,8 +3,8 @@ title: Konfigurace mapy služeb v Azure | Microsoft Docs
 description: Service Map je řešení v Azure, které automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi těmito službami. Tento článek obsahuje podrobné informace pro nasazení mapy služeb ve vašem prostředí a jejich použití v různých scénářů.
 services: monitoring
 documentationcenter: ''
-author: daveirwin1
-manager: jwhit
+author: mgoedtel
+manager: carmonm
 editor: tysonn
 ms.assetid: d3d66b45-9874-4aad-9c00-124734944b2e
 ms.service: monitoring
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/18/2016
-ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: aa85f06355ad5afc8e67ff4bace3b0ed471dc703
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.date: 06/22/2018
+ms.author: daseidma;bwren
+ms.openlocfilehash: 872d5f05e4d607c9445d1af5cc9b9cb984c19e11
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204188"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752570"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurace mapy služeb v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Můžete ji zobrazit vaše servery co možná z nich – jako vzájemně propojena systémy, které doručují důležité služby. Mapy služeb zobrazí připojení mezi servery, procesy a porty mezi všechny architektura připojení TCP se žádná konfigurace vyžaduje, než instalace agenta.
@@ -49,7 +49,7 @@ V systému Windows, Microsoft Monitoring Agent (MMA) se používá System Center
 
 V systému Linux, OMS agenta pro Linux shromáždí a odesílá data k analýze protokolů monitorování. Mapa služeb můžete použít na serverech s agenty přímé OMS nebo na servery, které jsou připojené k analýze protokolů prostřednictvím skupin pro správu System Center Operations Manager.  
 
-V tomto článku budeme označovat všechny agenty – jestli Linux nebo Windows, zda připojené ke skupině pro správu System Center Operations Manager nebo přímo k Log Analytics – jako "OMS Agent." Konkrétní název nasazení agenta použijeme jen v případě, kdy to bude zapotřebí kvůli kontextu.
+V tomto článku budeme označovat všechny agenty – jestli Linux nebo Windows, zda připojené ke skupině pro správu System Center Operations Manager nebo přímo k Log Analytics – jako *agenta OMS*. Konkrétní název nasazení agenta použijeme jen v případě, kdy to bude zapotřebí kvůli kontextu.
 
 Mapa služeb agenta nepřenáší samotná data a nevyžaduje žádné změny brány firewall nebo porty. Data v mapy služeb vždy přenášená agentem OMS k analýze protokolů, buď přímo nebo prostřednictvím brány OMS.
 
@@ -60,12 +60,12 @@ Pokud jste zákazník s System Center Operations Manager s skupiny pro správu p
 - Pokud agenty nástroje System Center Operations Manager můžete získat přístup k Internetu, aby se připojení k analýze protokolů, žádná další konfigurace se nevyžaduje.  
 - Pokud agenty nástroje System Center Operations Manager nemůže získat přístup k analýze protokolů přes Internet, budete muset nakonfigurovat bránu OMS pro práci s nástrojem System Center Operations Manager.
   
-Pokud používáte přímé agenta OMS, musíte nakonfigurovat agenta OMS připojit se k analýze protokolů nebo k bráně OMS. Bránu OMS si můžete stáhnout z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Pokud používáte přímé agenta OMS, musíte nakonfigurovat agenta OMS připojit se k analýze protokolů nebo k bráně OMS. Bránu OMS si můžete stáhnout z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666). Další informace o tom, jak nasadit a nakonfigurovat bránu OMS najdete v tématu [připojte počítače bez přístupu k Internetu pomocí brány OMS](../log-analytics/log-analytics-oms-gateway.md).  
 
 ### <a name="management-packs"></a>Sady Management Pack
 Po aktivaci mapy služeb v pracovním prostoru analýzy protokolů 300 KB management pack je odeslány na všechny servery Windows v něm. Pokud používáte System Center Operations Manager agentů v [připojené skupiny pro správu](../log-analytics/log-analytics-om-agents.md), z System Center Operations Manager je nasazena sada management pack mapy služeb. Pokud jsou agenti připojení přímo, doručí sadu Management Pack služba Log Analytics.
 
-Tato sada Management Pack má název Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Je zapsán do %Programfiles%\Microsoft monitorování Agent\Agent\Health služby State\Management Packs\. Zdroje dat, který používá sada management pack je % Program files%\Microsoft monitorování Agent\Agent\Health služby State\Resources\<AutoGeneratedID > \Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
+Tato sada Management Pack má název Microsoft.IntelligencePacks.ApplicationDependencyMonitor. Je zapsán do %Programfiles%\Microsoft monitorování Agent\Agent\Health služby State\Management Packs\. Zdroje dat, který používá sada management pack je % Program files%\Microsoft monitorování Agent\Agent\Health služby State\Resources\<AutoGeneratedID > \ Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
 ## <a name="installation"></a>Instalace
 ### <a name="install-the-dependency-agent-on-microsoft-windows"></a>Instalace agenta závislostí v systému Microsoft Windows
@@ -75,7 +75,7 @@ Na počítačích s Windows pomocí InstallDependencyAgent Windows.exe je nainst
 
 Nainstalujte agenta závislost na každém počítači s Windows pomocí následujících kroků:
 
-1.  Nainstalovat agenta OMS pomocí pokynů v [počítače se systémem Windows se připojit ke službě Analýza protokolů v Azure](../log-analytics/log-analytics-windows-agent.md).
+1.  Nainstalovat agenta OMS jednu z metod popsaných v následující [shromažďovat data z počítačů ve vašem prostředí s analýzy protokolů](../log-analytics/log-analytics-concept-hybrid.md).
 2.  Stáhnout agenta pro Windows a spusťte jej pomocí následujícího příkazu: <br>`InstallDependencyAgent-Windows.exe`
 3.  Pomocí průvodce agenta nainstalujte.
 4.  Pokud se závislého agenta nepodaří spustit, najdete podrobné informace o chybě v protokolech. Na agenty se systémem Windows k adresáři protokolu není %Programfiles%\Microsoft Agent\logs závislostí. 
@@ -99,7 +99,7 @@ Závislý agent se do linuxových počítačů instaluje příkazem InstallDepen
  
 Následujícím postupem nainstalujte závislého agenta na jednotlivé počítače s Linuxem:
 
-1.  Nainstalovat agenta OMS pomocí pokynů v [shromažďování a správě dat z počítače se systémem Linux](https://technet.microsoft.com/library/mt622052.aspx).
+1.  Nainstalovat agenta OMS jednu z metod popsaných v následující [shromažďovat data z počítačů ve vašem prostředí s analýzy protokolů](../log-analytics/log-analytics-concept-hybrid.md).
 2.  Nainstalujte agenta závislostí Linux jako kořenového adresáře pomocí následujícího příkazu:<br>`sh InstallDependencyAgent-Linux64.bin`
 3.  Pokud se závislého agenta nepodaří spustit, najdete podrobné informace o chybě v protokolech. V agentech Linux k adresáři protokolu není /var/opt/microsoft/dependency-agent/log.
 
@@ -143,6 +143,7 @@ sudo sh InstallDependencyAgent-Linux64.bin -s
 Můžete snadno nasadit agenta závislostí k virtuálním počítačům Azure pomocí [rozšíření virtuálního počítače Azure](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features).  Pomocí rozšíření virtuálního počítače Azure můžete nasadit agenta závislost na virtuální počítače pomocí skriptu prostředí PowerShell nebo přímo v šabloně Virtuálního počítače Azure Resource Manager.  Rozšíření není k dispozici pro Windows (DependencyAgentWindows) i Linux (DependencyAgentLinux).  Pokud nasazujete prostřednictvím rozšíření virtuálního počítače Azure, můžete agenty automaticky aktualizují na nejnovější verzi.
 
 Pokud chcete nasadit rozšíření virtuálního počítače Azure pomocí prostředí PowerShell, můžete v následujícím příkladu:
+
 ```PowerShell
 #
 # Deploy the Dependency Agent to every VM in a Resource Group
@@ -169,7 +170,8 @@ ForEach-Object {
 }
 ```
 
-Zajistěte, aby byl Agent závislost na všech virtuálních počítačů i jednodušší je do šablony Azure Resource Manager zahrňte agenta.  Všimněte si, že Agent závislostí stále závisí na agenta OMS, proto [rozšíření virtuálního počítače agenta OMS](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-vm-extension) musí být nejprve nasazený.  Následující fragment JSON jde přidat do *prostředky* část šablony.
+Zajistěte, aby byl Agent závislost na všech virtuálních počítačů i jednodušší je do šablony Azure Resource Manager zahrňte agenta.  Všimněte si, že Agent závislostí stále závisí na agenta OMS, proto [rozšíření virtuálního počítače agenta OMS](../virtual-machines/extensions/oms-linux.md) musí být nejprve nasazený.  Následující fragment JSON jde přidat do *prostředky* část šablony.
+
 ```JSON
 "type": "Microsoft.Compute/virtualMachines/extensions",
 "name": "[concat(parameters('vmName'), '/DependencyAgent')]",
@@ -190,6 +192,7 @@ Zajistěte, aby byl Agent závislost na všech virtuálních počítačů i jedn
 
 ## <a name="desired-state-configuration"></a>Konfigurace požadovaného stavu
 K nasazení závislého agenta prostřednictvím konfigurace požadovaného stavu můžete použít modul xPSDesiredStateConfiguration a několik následujících řádků kódu:
+
 ```
 configuration ServiceMap {
 
@@ -231,10 +234,13 @@ Správce může závislého agenta odinstalovat také spuštěním souboru %Prog
 ### <a name="uninstall-the-dependency-agent-on-linux"></a>Odinstalace závislého agenta v Linuxu
 Pomocí následujícího příkazu můžete odinstalovat agenta závislostí ze systému Linux.
 <br>RHEL, CentOs nebo Oracle:
+
 ```
 sudo rpm -e dependency-agent
 ```
+
 Ubuntu:
+
 ```
 sudo apt -y purge dependency-agent
 ```
@@ -242,7 +248,7 @@ sudo apt -y purge dependency-agent
 Pokud máte potíže s instalaci nebo spuštění mapy služeb, v této části vám může pomoct. Pokud stále nemůžete vyřešit problém, kontaktujte prosím Microsoft Support.
 
 ### <a name="dependency-agent-installation-problems"></a>Problémy instalace agenta závislostí
-#### <a name="installer-asks-for-a-reboot"></a>Instalační program požádá o restartování
+#### <a name="installer-prompts-for-a-reboot"></a>Instalační program zobrazí výzvu k restartování
 Agent závislostí *obecně* nevyžaduje restartování instalace nebo odinstalace. Ale v některých výjimečných případech, Windows Server vyžaduje restart pokračujte s instalací. To se stane, když závislost, obvykle Microsoft Visual C++ Redistributable, vyžaduje restartování počítače z důvodu uzamčení souborů.
 
 #### <a name="message-unable-to-install-dependency-agent-visual-studio-runtime-libraries-failed-to-install-code--codenumber-appears"></a>Zpráva "nelze pro instalaci agenta závislost: Visual Studio Runtime knihovny se nepodařilo nainstalovat (kód = [číslo_účtu])" se zobrazí
@@ -272,7 +278,7 @@ Pokud vaše Agent služby Dependency instalace proběhla úspěšně, ale nevid�
 
         * Computer="<your computer name here>" | measure count() by Type
         
-  Obdrželi jste celou řadu událostí ve výsledcích? Je poslední data? Pokud ano, je agenta OMS fungování a komunikaci s analýzy protokolů. Pokud ne, vyhledejte agenta OMS na serveru: [řešení potíží s agentem OMS pro systém Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot- monitoring-onboarding-issues) nebo [agenta OMS pro řešení potíží s Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md).
+  Obdrželi jste celou řadu událostí ve výsledcích? Je poslední data? Pokud ano, je agenta OMS fungování a komunikaci s analýzy protokolů. Pokud ne, vyhledejte agenta OMS na serveru: [řešení potíží s agentem OMS pro systém Windows](https://support.microsoft.com/help/3126513/how-to-troubleshoot-monitoring-onboarding-issues) nebo [agenta OMS pro řešení potíží s Linux](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md).
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Server se zobrazí v mapy služeb, ale nemá žádné procesy
 Pokud se zobrazí váš server v mapy služeb, ale nemá žádná data procesu nebo připojení, určující, že Agent závislostí je nainstalovaná a spuštěná, ale nebyla načíst ovladač jádra. 

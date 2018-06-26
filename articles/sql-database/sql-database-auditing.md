@@ -2,19 +2,19 @@
 title: Začínáme s auditování databáze Azure SQL | Microsoft Docs
 description: Auditování databáze Azure SQL použijte ke sledování databáze události do protokolu auditování.
 services: sql-database
-author: giladm
+author: giladmit
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/24/2018
 ms.author: giladm
-ms.openlocfilehash: 62c6e576a5ef7fa953618dcba4ddd158df131148
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0646667caab594556cc3c2043bc36905acef6e54
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644585"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751039"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 Auditování databáze SQL Azure sleduje události databáze a zápisu, které mají auditu přihlášení účtu úložiště Azure. Auditování také:
@@ -200,12 +200,17 @@ Příklad skriptu najdete v tématu [konfigurace auditování a zjišťování h
 
 **REST API – auditování objektů Blob**:
 
-* [Vytvořit nebo aktualizovat zásady auditování Blob databáze](https://msdn.microsoft.com/library/azure/mt695939.aspx)
-* [Vytvořit nebo aktualizovat Server Blob zásady auditování](https://msdn.microsoft.com/library/azure/mt771861.aspx)
-* [Získání objektu Blob databáze zásady auditování](https://msdn.microsoft.com/library/azure/mt695938.aspx)
-* [Získání objektu Blob serveru zásady auditování](https://msdn.microsoft.com/library/azure/mt771860.aspx)
+* [Vytvořit nebo aktualizovat zásady auditování Blob databáze](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/createorupdate)
+* [Vytvořit nebo aktualizovat Server Blob zásady auditování](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
+* [Získání objektu Blob databáze zásady auditování](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
+* [Získání objektu Blob serveru zásady auditování](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
 * [Získání objektu Blob serveru auditování výsledek operace](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
+Rozšířené zásady s kde klauzule podpory pro další filtrování:
+* [Vytvoření nebo aktualizace databáze *rozšířené* Blob zásad auditu](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+* [Vytvořit nebo aktualizovat Server *rozšířené* Blob zásad auditu](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
+* [Získat databáze *rozšířené* Blob zásad auditu](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/get)
+* [Získat serveru *rozšířené* Blob zásad auditu](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

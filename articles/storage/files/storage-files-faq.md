@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 05/31/2018
 ms.author: renash
-ms.openlocfilehash: 9121726cc8500da87cf71cb1ca3035e6cc5a303b
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: c78138fa06da4d83774f9a2270263a48d404b17a
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294086"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751851"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Časté otázky (FAQ) k Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes oborových standardů [zpráva bloku protokol Server (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete ke cloudu nebo na místní nasazení systému Windows, Linux a systému macOS připojit současně. Také můžete mezipaměti Azure sdílené složky na počítačích systému Windows Server pomocí synchronizace souboru Azure (preview) pro rychlý přístup blízko kde data se používají.
@@ -227,7 +227,7 @@ Tento článek obsahuje odpovědi na časté otázky týkající se Azure soubor
 
 * <a id="data-compliance-policies"></a>
 **Jaké zásady dodržování předpisů dat podporuje soubory Azure?**  
-   Soubory Azure běží nad stejnou architekturu úložiště, který se používá v jiné služby úložiště ve službě Azure Storage. Soubory Azure platí stejné zásady dodržování předpisů dat, které se používají v jiných služeb úložiště Azure. Další informace o dodržování předpisů dat úložiště Azure, můžete stáhnout a odkazovat [dokumentu Microsoft Azure Data Protection](http://go.microsoft.com/fwlink/?LinkID=398382&clcid=0x409)a přejděte na [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx).
+   Soubory Azure běží nad stejnou architekturu úložiště, který se používá v jiné služby úložiště ve službě Azure Storage. Soubory Azure platí stejné zásady dodržování předpisů dat, které se používají v jiných služeb úložiště Azure. Další informace o dodržování předpisů dat úložiště Azure, můžete stáhnout a odkazovat [dokumentu Microsoft Azure Data Protection](http://go.microsoft.com/fwlink/?LinkID=398382&clcid=0x409)a přejděte na [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx).
 
 ## <a name="on-premises-access"></a>Místní přístup
 * <a id="expressroute-not-required"></a>

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/18/2018
 ms.author: kirpas;iainfou;sewhee
 ms.custom: include file
-ms.openlocfilehash: c8b48c9b3ebd6b40640a744f00673158c07cdc3a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: ab4d5326fc06cc8676ea93ed529315cc47651e26
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35323795"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36943449"
 ---
 ## <a name="overview"></a>Přehled
 Při vytváření nového virtuálního počítače (VM) ve skupině prostředků nasazením bitové kopie z [Azure Marketplace](https://azure.microsoft.com/marketplace/), výchozí jednotce operačního systému je často 127 GB (některé obrázky, mívají menší velikost disku operačního systému ve výchozím nastavení). I když je možné k virtuálnímu počítači přidat datové disky (počet závisí na zvolené skladové položce) a navíc se na tyto dodatečné disky doporučuje instalovat aplikace a úlohy náročné na procesor, zákazníci často potřebují rozšířit jednotku operačního systému pro zajištění podpory určitých scénářů, jako jsou například tyto:
@@ -36,7 +36,7 @@ V tomto článku provedeme změnu velikosti jednotky operačního systému pomoc
 
 Otevřete integrované skriptovací prostředí (ISE) v prostředí PowerShell nebo okno PowerShellu v režimu správy a postupujte podle následujících kroků:
 
-1. Přihlaste se ke svému účtu Microsoft Azure v režimu správy prostředků a následujícím způsobem vyberte své předplatné:
+1. Přihlaste se k účtu Microsoft Azure v režimu správy prostředků a vybrat své předplatné následujícím způsobem:
    
    ```Powershell
    Connect-AzureRmAccount
@@ -79,7 +79,7 @@ Otevřete integrované skriptovací prostředí (ISE) v prostředí PowerShell n
 
 Otevřete integrované skriptovací prostředí (ISE) v prostředí PowerShell nebo okno PowerShellu v režimu správy a postupujte podle následujících kroků:
 
-1. Přihlaste se ke svému účtu Microsoft Azure v režimu správy prostředků a následujícím způsobem vyberte své předplatné:
+1. Přihlaste se k účtu Microsoft Azure v režimu správy prostředků a vybrat své předplatné následujícím způsobem:
    
    ```Powershell
    Connect-AzureRmAccount

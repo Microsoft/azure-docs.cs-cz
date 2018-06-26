@@ -8,12 +8,12 @@ ms.date: 05/24/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 320ca0da946a0f04517c9ed4e8a61a868d2bb27c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 2f756d65fa167b3812772088aec7232d08b04b9f
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260477"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937328"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -27,7 +27,7 @@ JSON použijete k vytvoření definice zásady. Definice zásad obsahuje prvky p
 - parameters
 - Zobrazovaný název
 - description
-- Pravidlo zásad
+- pravidlo zásad
   - logické vyhodnocení
   - Platnost
 
@@ -192,7 +192,8 @@ Podmínka vyhodnocena jako jestli **pole** splňuje určitá kritéria. Jsou pod
 - `"notContainsKey": "keyName"`
 - `"exists": "bool"`
 
-Při použití **jako** a **notLike** podmínky, můžete zadat zástupný znak (*) v hodnotě. Hodnota nesmí obsahovat více než 1 zástupný znak (*).
+Při použití **jako** a **notLike** podmínky, můžete zadat zástupný znak `*` v hodnotě.
+Hodnota nesmí obsahovat více než jeden zástupný znak `*`.
 
 Při použití **odpovídat** a **notMatch** podmínky, poskytují `#` představují číslice, `?` pro písmeno a libovolný znak představují tento skutečný znak. Příklady najdete v tématu [povolit více vzory názvů](scripts/allow-multiple-name-patterns.md).
 
@@ -316,7 +317,7 @@ Seznam aliasy vždy roste. Chcete-li zjistit, jaké aliasy jsou aktuálně podpo
 
 ## <a name="initiatives"></a>Iniciativy
 
-Povolit iniciativy seskupit několik související definice zásad ke zjednodušení přiřazení a správy, protože pracujete s skupinu jako jednu položku. Například můžete seskupit všechny související označování definice zásady v jednom iniciativy. Přiřazovat jednotlivě každou zásadu, můžete použít iniciativa zaměřená.
+Iniciativy umožňují seskupit několik definice související zásad ke zjednodušení přiřazení a správy, protože pracujete s skupinu jako jednu položku. Například můžete seskupit všechny související označování definice zásady v jednom iniciativy. Přiřazovat jednotlivě každou zásadu, můžete použít iniciativa zaměřená.
 
 Následující příklad ukazuje, jak vytvořit initiative pro zpracování dvě značky: `costCenter` a `productName`. Chcete-li použít výchozí hodnota značky používá dvě předdefinované zásady.
 
@@ -394,4 +395,4 @@ Následující příklad ukazuje, jak vytvořit initiative pro zpracování dvě
 
 ## <a name="next-steps"></a>Další postup
 
-- Přečtěte si další příklady v [ukázky zásad Azure](json-samples.md).
+- Další příklady najdete v [Ukázkách Azure Policy](json-samples.md).

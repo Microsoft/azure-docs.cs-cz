@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 06/04/2018
+ms.date: 06/21/2018
 ms.author: douglasl
-ms.openlocfilehash: 5fce1a3b8370ce49a522f41749795362e1bf1f9b
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 93d3e25957fb1f04400fa78423a5658d32f7d5fd
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757273"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36749714"
 ---
 # <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>Povolení ověřování Azure Active Directory pro modul runtime integrace Azure SSIS
 
@@ -53,7 +53,7 @@ Můžete použít existující skupinu pro Azure AD, nebo vytvořte novou pomoc�
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Přidejte soubor MSI objekt pro vytváření dat do skupiny. Můžete postupovat podle [identita služby Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity) získat ID identity služby (například 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc).
+3.  Přidejte soubor MSI objekt pro vytváření dat do skupiny. Můžete postupovat podle [identita služby Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-service-identity) získat ID objektu zabezpečení IDENTITY služby (například 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale pro tento účel nepoužívejte ID aplikace IDENTITY služby).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -97,7 +97,7 @@ Pro tento další krok, je nutné [Microsoft SQL Server Management Studio](https
 
 4.  V **uživatelské jméno** pole, zadejte název účtu Azure AD, které jste nastavili jako správce serveru – například testuser@xxxonline.com.
 
-5.  Vyberte **připojit**. Dokončete proces přihlášení.
+5.  Vyberte **Connect**. Dokončete proces přihlášení.
 
 6.  V **Průzkumník objektů**, rozbalte **databáze** -> složku systémové databáze.
 

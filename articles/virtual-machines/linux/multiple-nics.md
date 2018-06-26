@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 1968222940888c1e5399e257a9694d47adce2e45
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 2ad04b17fc4c5bafb7fa0b7eea946832430a4f17
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525178"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936747"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Vytvoření virtuální počítač s Linuxem v Azure s více síťových karet
 Virtuální počítač (VM) můžete vytvořit v Azure, který má více rozhraní virtuální sítě (NIC) je připojený. Obvyklým scénářem je mít různé podsítě pro připojení front-end a back-end nebo síť vyhrazený pro řešení monitorování nebo zálohování. Tento článek podrobně popisuje postup vytvoření virtuálního počítače s více síťovými kartami k němu připojen a postup přidání nebo odebrání síťové adaptéry ze stávajícího virtuálního počítače. Různé [velikosti virtuálních počítačů](sizes.md) podporu různých počet síťových adaptérů, takže odpovídajícím způsobem upravit velikost virtuálního počítače.
 
-Tento článek podrobně popisuje postup vytvoření virtuálního počítače s více síťovými kartami s Azure CLI 2.0. K provedení těchto kroků můžete také využít [Azure CLI 1.0](multiple-nics-nodejs.md).
+Tento článek podrobně popisuje postup vytvoření virtuálního počítače s více síťovými kartami s Azure CLI 2.0. 
 
 
 ## <a name="create-supporting-resources"></a>Vytvoření doprovodné materiály

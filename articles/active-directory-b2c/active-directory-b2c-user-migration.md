@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7c78cb13f9028b2be527794751d5f8ced9bff171
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: f1c417624b2950790dba54c4278e6109fa70610b
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711337"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752974"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Migrace uživatelů
 Když migrujete zprostředkovatele identity do Azure Active Directory B2C (Azure AD B2C), možná budete také muset migrovat uživatelský účet. Tento článek vysvětluje, jak migrovat existující uživatelské účty z kteréhokoli zprostředkovatele identity do Azure AD B2C. Článek by neměl být doporučený, ale místo toho popisuje několik scénářů. Vývojář je zodpovědná za vhodnosti obou těchto přístupů.
@@ -365,7 +365,7 @@ Další informace najdete v tématu [streamování protokoly a konzole][AppServi
 Po dokončení [začít pracovat s vlastními zásadami] [ B2C-GetStartedCustom] návod, doporučujeme vám vytvořit váš scénář pomocí vlastních zásad pro soubory. Pro vaši informaci uvádíme [ukázkové soubory zásad][UserMigrationSample].
 
 [AD-PasswordPolicies]: https://docs.microsoft.com/azure/active-directory/active-directory-passwords-policy
-[AD-Powershell]: https://docs.microsoft.com/azure/active-directory/install-adv2
+[AD-Powershell]: https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2
 [AppService-Deploy]: https://docs.microsoft.com/aspnet/core/tutorials/publish-to-azure-webapp-using-vs
 [AppService-Log]: https://docs.microsoft.com/azure/active-directory-b2c/app-service-web/web-sites-streaming-logs-and-console
 [B2C-AppRegister]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration

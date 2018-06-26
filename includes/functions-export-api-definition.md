@@ -2,11 +2,11 @@
 Máte definici OpenAPI pro funkci, z [vytvořit definici OpenAPI pro funkci](../articles/azure-functions/functions-openapi-definition.md). Další krok v tomto procesu je exportovat definice rozhraní API, tak, aby PowerApps a Flow Microsoft můžete použít v vlastní rozhraní API.
 
 > [!IMPORTANT]
-> Mějte na paměti, že jste přihlášení do Azure se stejnými pověřeními, které používáte pro vaše PowerApps a Microsoft Flow klienty. To umožňuje Azure a vytvořte vlastní rozhraní API a zpřístupní ji pro PowerApps a Flow společnosti Microsoft.
+> Mějte na paměti, že vám musí být podepsané do Azure se stejnými pověřeními, které používáte pro vaše PowerApps a Microsoft Flow klienty. To umožňuje Azure a vytvořte vlastní rozhraní API a zpřístupní ji pro PowerApps a Flow společnosti Microsoft.
 
 1. V [portál Azure](https://portal.azure.com), klikněte na název aplikace – funkce (jako **funkce. ukázku energie**) > **funkce** > **definice rozhraní API** .
 
-    ![Definice rozhraní API.](media/functions-export-api-definition/api-definition.png)
+    ![Definice rozhraní API](media/functions-export-api-definition/api-definition.png)
 
 1. Klikněte na tlačítko **exportovat do PowerApps + toku**.
 

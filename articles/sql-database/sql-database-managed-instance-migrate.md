@@ -11,12 +11,12 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: 8f666bc352dc1706da4812590f85adc7695e2f13
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a5a81279726e5c221d9ae4734466a04ae5912af6
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647658"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936798"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance systému SQL Server na instanci spravované databáze Azure SQL
 
@@ -78,7 +78,6 @@ Spravované Instance podporuje následující možnosti migrace databáze (aktu�
 
 - Služba Azure migrace databáze - migrace s téměř nulové výpadek
 - Nativní obnovení z adresy URL - využívá nativní zálohy z SQL serveru a vyžaduje výpadky
-- Migrace pomocí souboru BACPAC souboru – používá soubor souboru BACPAC z SQL serveru nebo v databázi SQL a vyžaduje výpadky
 
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
@@ -107,10 +106,6 @@ Následující tabulka obsahuje další informace o metodě, které můžete pou
 > Obnovení databází systému není podporována. Pokud chcete migrovat instance objektů úrovně (uložené v databázi master a databázi msdb databázích), doporučujeme je skriptování a spouštění skriptů T-SQL v cílové instanci.
 
 Úplné kurz, který zahrnuje obnovení ze zálohy databáze do Instance spravované pomocí pověření SAS, najdete v části [obnovit ze zálohy do Instance spravované](sql-database-managed-instance-restore-from-backup-tutorial.md).
-
-### <a name="migrate-using-bacpac-file"></a>Migrace pomocí souboru BACPAC souboru
-
-Můžete importovat do Azure SQL Database a spravované Instance z vytvořit kopii původní databáze, s daty v souboru BACPAC souboru. V tématu [importovat soubor souboru BACPAC pro novou databázi SQL Azure](sql-database-import.md).
 
 ## <a name="monitor-applications"></a>Monitorování aplikací
 

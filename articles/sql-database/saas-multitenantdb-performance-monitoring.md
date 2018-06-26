@@ -10,18 +10,18 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 22a3c5b2c7c4676c9c05c7cc67f30108a5dfbe5b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 75431715b5948525e92c99b778842d26a684da82
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644677"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753438"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Sledování a správa výkonu horizontálně dělené víceklientské Azure SQL database v aplikaci SaaS více klientů
 
 V tomto kurzu jsou prozkoumali několik klíčových scénářů správy používány aplikací SaaS. Pomocí generátoru zatížení simulovat aktivity mezi databázemi horizontálně dělené víceklientské, integrované monitorování a výstrah funkcí služby SQL Database je ukázán.
 
-Adresář Wingtip lístky SaaS víceklientské databáze aplikace používá horizontálně dělená data víceklientského modelu, kde je distribuován místo (klient) dat podle ID klienta do potenciálně více databází. Stejně jako u většiny aplikací SaaS je předpokládaný vzorek úloh tenanta nepředvídatelný a sporadický. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. Abyste mohli využívat tohoto vzoru využití typické databáze, je možné databáze rozšířit nahoru a dolů optimalizovat náklady na řešení. S tímto typem vzor je důležité monitorovat využití prostředků databáze k zajištění, že zatížení jsou to bude přiměřeně vyvážená potenciálně více databází. Musíte také zajistěte, aby jednotlivé databáze mít dostatečné zdroje a nejsou stiskne jejich [DTU](sql-database-what-is-a-dtu.md) omezení. V tomto kurzu prozkoumá způsoby, jak sledovat a spravovat databáze a postupy k provedení nápravné akce v reakci na rozdíly v zatížení.
+Adresář Wingtip lístky SaaS víceklientské databáze aplikace používá horizontálně dělená data víceklientského modelu, kde je distribuován místo (klient) dat podle ID klienta do potenciálně více databází. Stejně jako u většiny aplikací SaaS je předpokládaný vzorek úloh tenanta nepředvídatelný a sporadický. Jinými slovy to znamená, že prodej lístků může probíhat kdykoli. Abyste mohli využívat tohoto vzoru využití typické databáze, je možné databáze rozšířit nahoru a dolů optimalizovat náklady na řešení. S tímto typem vzor je důležité monitorovat využití prostředků databáze k zajištění, že zatížení jsou to bude přiměřeně vyvážená potenciálně více databází. Musíte také zajistěte, aby jednotlivé databáze mít dostatečné zdroje a nejsou stiskne jejich [DTU](sql-database-service-tiers.md#what-are-database-transaction-units-dtus) omezení. V tomto kurzu prozkoumá způsoby, jak sledovat a spravovat databáze a postupy k provedení nápravné akce v reakci na rozdíly v zatížení.
 
 V tomto kurzu se naučíte:
 

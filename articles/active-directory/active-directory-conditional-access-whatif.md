@@ -1,5 +1,5 @@
 ---
-title: Co je co Pokud nástroje Azure Active Directory podmíněného přístupu? -preview | Microsoft Docs
+title: Co je co Pokud nástroje Azure Active Directory podmíněného přístupu?
 description: Zjistěte, jak můžete porozumět dopadu vaší zásady podmíněného přístupu na vašem prostředí.
 services: active-directory
 keywords: podmíněný přístup k aplikacím, podmíněného přístupu s Azure AD, zabezpečený přístup k prostředkům společnosti, zásady podmíněného přístupu
@@ -17,14 +17,14 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 661ada8de8821d489732e1f36dc2406eaa0ee4a7
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 897f1b96f0861fb13ba0e6c2427b621ea6a12a06
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232279"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750078"
 ---
-# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access---preview"></a>Co je co Pokud nástroje Azure Active Directory podmíněného přístupu? -preview
+# <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Co je co Pokud nástroje Azure Active Directory podmíněného přístupu?
 
 [Podmíněný přístup](active-directory-conditional-access-azure-portal.md) je funkce služby Azure Active Directory (Azure AD), jak vám umožní řídit oprávnění uživatelům přístup cloudových aplikací. Jak poznáte, co mají očekávat formuláře zásady podmíněného přístupu v prostředí? Na tuto otázku odpovědět, můžete použít **podmíněný přístup jak postupovat, pokud nástroj**.
 

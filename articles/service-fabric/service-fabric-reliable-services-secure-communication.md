@@ -1,6 +1,6 @@
 ---
-title: Zabezpečená komunikace vzdálené komunikace služby v Azure Service Fabric | Microsoft Docs
-description: Zjistěte, jak k zabezpečení komunikace služby Vzdálená komunikace na základě spolehlivé služby, které jsou spuštěny v clusteru služby Azure Service Fabric.
+title: Zabezpečená komunikace služby vzdálené komunikace pomocí C# v Azure Service Fabric | Microsoft Docs
+description: Zjistěte, jak k zabezpečení komunikace služby Vzdálená komunikace na základě jazyka C# spolehlivé služby, které jsou spuštěny v clusteru služby Azure Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: cd7211ecda61ab2cca0f97e292d9ce2c47ed6933
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d185be26633178d8b3f147453b4c48eb77d7e425
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210269"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753519"
 ---
-# <a name="secure-service-remoting-communications-for-a-service"></a>Zabezpečená komunikace vzdálené komunikace služby pro službu
+# <a name="secure-service-remoting-communications-in-a-c-service"></a>Zabezpečená komunikace vzdálené komunikace služby ve službě C#
 > [!div class="op_single_selector"]
 > * [C# v systému Windows](service-fabric-reliable-services-secure-communication.md)
 > * [Java v Linuxu](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní spolehlivé služby poskytuje několik předem komunikace zásobníky a nástroje, které můžete použít k vylepšení zabezpečení. Tento článek pojednává o tom, jak zlepšit zabezpečení, když používáte vzdálené komunikace služby.
+Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní spolehlivé služby poskytuje několik předem komunikace zásobníky a nástroje, které můžete použít k vylepšení zabezpečení. Tento článek popisuje, jak zlepšit zabezpečení, pokud používáte vzdálenou komunikaci služby ve službě C#. Vychází z existující [příklad](service-fabric-reliable-services-communication-remoting.md) to vysvětluje, jak nastavit vzdálenou komunikaci pro spolehlivé služby, které jsou napsané v C#. 
 
-Používáme existující [příklad](service-fabric-reliable-services-communication-remoting.md) to vysvětluje, jak nastavit vzdálenou komunikaci pro spolehlivé služby. Chcete-li pomoc se zabezpečením služby, pokud používáte vzdálenou komunikaci služby, postupujte takto:
+Chcete-li pomoc se zabezpečením služby, pokud používáte vzdálenou komunikaci služby službou C#, postupujte takto:
 
 1. Vytvořit rozhraní, `IHelloWorldStateful`, který definuje metody, které budou k dispozici pro vzdálené volání procedury vaší služby. Bude vaše služba používat `FabricTransportServiceRemotingListener`, kterého je deklarovaná v `Microsoft.ServiceFabric.Services.Remoting.FabricTransport.Runtime` oboru názvů. Jedná se `ICommunicationListener` implementace, která poskytuje funkce vzdálené komunikace.
 
@@ -57,7 +57,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
     ```
 2. Přidejte nastavení naslouchacího procesu a zabezpečovací pověření.
 
-    Ujistěte se, že certifikát, který chcete použít k zabezpečení komunikace vaší služby je nainstalována na všech uzlech v clusteru. Zadejte nastavení naslouchacího procesu a zabezpečovací pověření dvěma způsoby:
+    Ujistěte se, že certifikát, který chcete použít k zabezpečení komunikace vaší služby je nainstalován na všech uzlech v clusteru. Zadejte nastavení naslouchacího procesu a zabezpečovací pověření dvěma způsoby:
 
    1. Poskytněte přímo v kódu služby:
 
@@ -94,7 +94,7 @@ Používáme existující [příklad](service-fabric-reliable-services-communica
        ```
    2. Poskytněte pomocí [konfigurační balíček](service-fabric-application-and-service-manifests.md):
 
-       Přidat `TransportSettings` v souborech settings.xml souboru.
+       Přidat pojmenovaná `TransportSettings` v souborech settings.xml souboru.
 
        ```xml
        <Section Name="HelloWorldStatefulTransportSettings">

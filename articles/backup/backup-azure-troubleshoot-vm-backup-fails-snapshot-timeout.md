@@ -7,14 +7,14 @@ manager: cshepard
 keywords: Zálohování Azure; Agent virtuálního počítače; Připojení k síti;
 ms.service: backup
 ms.topic: troubleshooting
-ms.date: 01/09/2018
+ms.date: 06/25/2018
 ms.author: genli
-ms.openlocfilehash: 63cded007af499455e7bb4fc23d26d56caf96678
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09cfda3c2c790297b0961ecac92cba61c9e6de6f
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606354"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754452"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Řešení potíží s Azure Backup selhání: problémy s agenta nebo rozšíření
 
@@ -84,15 +84,15 @@ Po registraci a naplánovat virtuálního počítače pro službu Azure zálohov
 ### <a name="the-vm-has-no-internet-access"></a>Virtuální počítač nemá přístup k Internetu
 Virtuální počítač na požadavcích nasazení nemá přístup k Internetu. Nebo může mít omezení, která umožňují přístup na infrastrukturu Azure.
 
-Správné fungování rozšíření Backup vyžaduje připojení k veřejným IP adresám Azure. Rozšíření odešle příkazy do úložiště Azure koncový bod (adresa URL protokolu HTTP) ke správě snímky virtuálního počítače. Pokud rozšíření nemá přístup do veřejného Internetu, zálohování se nakonec nezdaří.
+Správné fungování rozšíření Backup vyžaduje připojení k veřejným IP adresám Azure. Rozšíření odešle příkazy do úložiště Azure koncový bod (adresy URL HTTPs) ke správě snímky virtuálního počítače. Pokud rozšíření nemá přístup do veřejného Internetu, zálohování se nakonec nezdaří.
 
 Je možné nasadit proxy server směrovat přenosy virtuálních počítačů.
-##### <a name="create-a-path-for-http-traffic"></a>Vytvoření cesty pro provoz protokolu HTTP
+##### <a name="create-a-path-for-https-traffic"></a>Vytvoření cesty pro komunikaci přes protokol HTTPs
 
-1. Pokud máte omezení síťového na místě (například skupinu zabezpečení sítě), nasazení proxy server HTTP směrovat provoz.
-2. Povolit přístup k Internetu prostřednictvím serveru proxy protokolu HTTP, přidejte pravidla na skupinu zabezpečení sítě, pokud nemáte.
+1. Pokud máte omezení síťového na místě (například skupinu zabezpečení sítě), nasaďte HTTPs proxy server směrovat provoz.
+2. Povolit přístup k Internetu prostřednictvím serveru proxy protokolu HTTPs, přidejte pravidla na skupinu zabezpečení sítě, pokud nemáte.
 
-Další informace o nastavení proxy serveru HTTP pro zálohování virtuálních počítačů naleznete v tématu [Příprava prostředí pro zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
+Pokud chcete dozvědět, jak nastavit server proxy protokolu HTTPs pro zálohování virtuálních počítačů, přečtěte si téma [Příprava prostředí pro zálohování virtuálních počítačů Azure](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 Zálohovaná virtuálního počítače nebo serveru proxy, přes který se směruje provoz vyžaduje přístup k Azure veřejné IP adresy
 
@@ -121,7 +121,7 @@ Agent virtuálního počítače může dojít k poškození nebo služba může 
 2. Pokud není viditelná v služby v Ovládacích panelech službu agenta hosta Windows přejděte do **programy a funkce** k určení, zda je nainstalována služba Windows agenta hosta.
 4. Pokud se zobrazí v agentovi hosta Windows **programy a funkce**, odinstalujte agenta hosta systému Windows.
 5. Stáhněte a nainstalujte [nejnovější verzi MSI agenta](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Musí mít oprávnění správce k dokončení instalace.
-6. Ověřte, že služby systému Windows agenta hosta se zobrazí v služby.
+6. Ověřte, že služby agenta hosta Windows zobrazují v služby.
 7. Spusťte zálohu na vyžádání: 
     * Na portálu, vyberte **zálohovat nyní**.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a748cb0e2a08ed5e8ada5db171d5ef12b2fe121e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9e8c930acd12b5197238be48722947dac5380be6
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32170723"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751407"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Shromažďovat protokoly služby Azure a metriky pro použití v analýzy protokolů
 
@@ -35,7 +35,7 @@ Existují čtyři různé způsoby shromažďování protokolů a metriky pro sl
 | Služba                 | Typ prostředku                           | Logs        | Metriky     | Řešení |
 | --- | --- | --- | --- | --- |
 | Application Gateway    | Microsoft.Network/applicationGateways   | Diagnostika | Diagnostika | [Analýza brány Azure aplikace](log-analytics-azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-log-analytics) |
-| Application Insights    |                                         | Konektor   | Konektor   | [Konektor služby Statistika aplikace](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (Preview) |
+| Application Insights    |                                         | Spojovací čára   | Spojovací čára   | [Konektor služby Statistika aplikace](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/) (Preview) |
 | Účty Automation     | Microsoft.Automation/AutomationAccounts | Diagnostika |             | [Další informace](../automation/automation-manage-send-joblogs-log-analytics.md)|
 | Účty Batch          | Microsoft.Batch/batchAccounts           | Diagnostika | Diagnostika | |
 | Classic cloudové služby  |                                         | Úložiště     |             | [Další informace](log-analytics-azure-storage-iis-table.md) |
@@ -57,7 +57,7 @@ Existují čtyři různé způsoby shromažďování protokolů a metriky pro sl
 | Virtuální počítače        | Microsoft.Compute/virtualMachines       | Linka   | Linka <br> Diagnostika  | |
 | Sady škálování virtuálních počítačů | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | Diagnostika | |
 | Webové serverové farmy        | Microsoft.Web/serverfarms               |             | Diagnostika | |
-| Weby               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | Diagnostika | [Službě Azure Web Apps Analytics (Preview)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) |
+| Weby               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | Diagnostika | [Službě Azure Web Apps Analytics (Preview)](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-web-apps-analytics) |
 
 
 > [!NOTE]
@@ -71,7 +71,7 @@ Mnoho prostředků Azure jsou schopni zapisovat diagnostické protokoly a metrik
 Prostředky Azure, které podporují [Azure monitorování](../monitoring-and-diagnostics/monitoring-overview.md) může poslat jejich protokoly a metriky přímo k Log Analytics.
 
 > [!NOTE]
-> Odesílání vícerozměrných metriky k analýze protokolů prostřednictvím nastavení diagnostiky se aktuálně nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
+> Odesílání vícedimenzionálních metrik do Log Analytics přes nastavení diagnostiky se v současné době nepodporuje. Metriky s dimenzemi se exportují jako ploché jednodimenzionální metriky agregované napříč hodnotami dimenzí.
 >
 > *Příklad:* Metriku Příchozí zprávy v centru událostí je možné zkoumat a převést na graf na úrovni jednotlivých front. Ale při exportu prostřednictvím nastavení pro diagnostiku metrika je reprezentována jako všechny příchozí zprávy napříč všemi fronty události rozbočovače.
 >

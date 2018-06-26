@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 152cf0c8504205e09b075714a58811d240ab431c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d4b84904db703d1e8e78240cb971250672ef9615
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598296"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753281"
 ---
 # <a name="restore-an-app-in-azure"></a>Obnovení aplikace v Azure
 Tento článek ukazuje, jak obnovit aplikace v [Azure App Service](../app-service/app-service-web-overview.md) který jste dříve zálohovali (viz [zálohování aplikace v Azure](web-sites-backup.md)). Podle potřeby můžete obnovit aplikaci s připojenými databázemi do předchozího stavu nebo podle záloh původní aplikace vytvořit novou aplikaci. Aplikační služba Azure podporuje následující databáze pro zálohování a obnovení:
 - [SQL Database](https://azure.microsoft.com/services/sql-database/)
 - [Azure Database for MySQL](https://azure.microsoft.com/services/mysql)
-- [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgres)
+- [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql)
 - [MySQL v aplikaci](https://blogs.msdn.microsoft.com/appserviceteam/2017/03/06/announcing-general-availability-for-mysql-in-app)
 
 Obnovení ze zálohy je k dispozici pro aplikace běžící **standardní** a **Premium** vrstvy. Informace o vertikálním navýšení kapacity aplikace naleznete v tématu [škálování aplikace v Azure](web-sites-scale.md). **Premium** úroveň umožňuje větší počet denní zálohování než **standardní** vrstvy.

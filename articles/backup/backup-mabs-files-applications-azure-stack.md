@@ -1,5 +1,5 @@
 ---
-title: Zálohování Azure zásobníku souborů a aplikací
+title: Zálohování souborů v zásobníku virtuálních počítačích Azure.
 description: Zálohování a obnovení zásobník Azure souborů a aplikací pro vaše prostředí zásobníku Azure pomocí Azure Backup.
 services: backup
 author: adiganmsft
@@ -8,26 +8,26 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: 7baaa29d205c09daaeeebf44a4bad338913dcad9
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 2fb3bad56de781dd81d4c5f82b734c9420c75dee
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248856"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751700"
 ---
-# <a name="back-up-files-and-applications-on-azure-stack"></a>Zálohování souborů a aplikací v Azure zásobníku
-Azure Backup můžete použít k ochraně (nebo zálohování) souborům a aplikacím v Azure zásobníku. K zálohování souborů a aplikací, nainstalujte Microsoft Azure Backup Server jako virtuální počítač spuštěný v Azure zásobníku. Všechny aplikace spuštěné na jakýkoli server zásobník Azure ve stejné virtuální síti můžete chránit. Po instalaci Azure Backup Server, přidejte disky Azure zvýšit místní úložiště, které jsou k dispozici pro krátkodobé zálohování. Azure Backup Server používá úložiště Azure pro dlouhodobé uchovávání.
+# <a name="back-up-files-on-azure-stack"></a>Zálohování souborů v Azure zásobníku
+Azure Backup můžete použít k ochraně (nebo zálohování) souborům a aplikacím v Azure zásobníku. K zálohování souborů a aplikací, nainstalujte Microsoft Azure Backup Server jako virtuální počítač spuštěný v Azure zásobníku. Můžete chránit soubory na libovolném serveru zásobník Azure ve stejné virtuální síti. Po instalaci Azure Backup Server, přidejte disky Azure zvýšit místní úložiště, které jsou k dispozici pro krátkodobé zálohování. Azure Backup Server používá úložiště Azure pro dlouhodobé uchovávání.
 
 > [!NOTE]
 > I když jsou podobné serveru Azure Backup a System Center Data Protection Manager (DPM), aplikace DPM není podporována pro použití s Azure zásobníku.
 >
 
-Tento článek nepopisuje instalace serveru Azure Backup v prostředí Azure zásobníku. K instalaci serveru Azure Backup v zásobníku Azure, najdete v článku [Příprava zálohování úloh pomocí serveru Azure Backup](backup-mabs-install-azure-stack.md).
+Tento článek nepopisuje instalace serveru Azure Backup v prostředí Azure zásobníku. K instalaci serveru Azure Backup v zásobníku Azure, najdete v článku [instalaci serveru Azure Backup](backup-mabs-install-azure-stack.md).
 
 
-## <a name="back-up-azure-stack-vm-file-data-to-azure"></a>Virtuální počítač Azure zásobníku souboru data zálohovat na Azure
+## <a name="back-up-files-and-folders-in-azure-stack-vms-to-azure"></a>Zálohování souborů a složek ve virtuálních počítačích Azure zásobníku do Azure
 
-Konfigurace serveru Azure Backup chránit virtuální počítače IaaS, otevřete konzolu serveru Azure Backup. Použijete konzolu ke konfiguraci skupin ochrany a k ochraně dat na virtuálních počítačích.
+Konfigurace serveru Azure Backup při ochraně souborů ve virtuálních počítačích Azure zásobníku virtuálních počítačích, otevřete konzolu serveru Azure Backup. Použijete konzolu ke konfiguraci skupin ochrany a k ochraně dat na virtuálních počítačích.
 
 1. V konzole serveru Azure Backup, klikněte na **ochrany** a na panelu nástrojů klikněte na tlačítko **nový** otevřete **vytvořením nové skupiny ochrany** průvodce.
 
@@ -49,13 +49,13 @@ Konfigurace serveru Azure Backup chránit virtuální počítače IaaS, otevřet
 
     ![Otevře se Průvodce novou skupinou ochrany](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    Společnost Microsoft doporučuje, třeba umisťovat všechny virtuální počítače, které budou sdílet zásady ochrany, do skupiny ochrany jeden. Úplné informace o plánování a nasazení skupin ochrany, najdete v článku System Center DPM [nasazení skupin ochrany](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
+    Společnost Microsoft doporučuje uvedení všechna data, která budou sdílet zásady ochrany, do skupiny ochrany jeden. Úplné informace o plánování a nasazení skupin ochrany, najdete v článku System Center DPM [nasazení skupin ochrany](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
 
 4. V **vyberte způsob ochrany dat** obrazovky, zadejte název pro skupinu ochrany. Zaškrtněte políčko **chci krátkodobou ochranu pomocí:** a **chci online ochranu**. Klikněte na **Další**.
 
     ![Otevře se Průvodce novou skupinou ochrany](./media/backup-mabs-files-applications-azure-stack/6-select-data-protection-method.png)
 
-    Chcete-li vybrat **chci online ochranu**, musíte nejdřív vybrat **chci krátkodobou ochranu pomocí:** disku. Azure Backup Server nelze chránit na pásku, aby disk je pouze volbu pro krátkodobou ochranu.
+    Chcete-li vybrat **chci online ochranu**, musíte nejdřív vybrat **chci krátkodobou ochranu pomocí:** disku. Azure Backup Server neposkytuje ochranu na pásku, tak, aby disk pouze volbu pro krátkodobou ochranu.
 
 5. V **zadat krátkodobé cíle** obrazovky, určit, jak dlouho chcete zachovat body obnovení, které jsou uloženy na disk a kdy se mají ukládat přírůstkové zálohy. Klikněte na **Další**.
 
@@ -73,7 +73,7 @@ Konfigurace serveru Azure Backup chránit virtuální počítače IaaS, otevřet
 
     **Celková velikost dat** je velikost dat, které chcete zálohovat a **místo, které se má zřídit na disku** na serveru Azure Backup je doporučené místo pro skupinu ochrany. Azure Backup Server zvolí ideální zálohování svazku, na základě nastavení. Však můžete upravit možnosti zálohování svazku v podrobnostech přidělení disku. Pro úlohy v rozevírací nabídce vyberte upřednostňovaný úložiště. Vaše úpravy změnit hodnoty pro celkové úložiště a volný úložný prostor v podokně dostupné úložiště disku. Underprovisioned prostor je velikost úložiště, které serveru Azure Backup naznačuje, že přidáte do svazku, chcete-li pokračovat pomocí zálohování bez problémů v budoucnu.
 
-7. V **vyberte způsob vytvoření repliky**vyberte, jak chcete zpracovat počáteční úplná data replikace. Pokud se rozhodnete replikaci přes síť, Azure doporučuje že vybrat dobu mimo špičku. Pro velké objemy dat nebo ne úplně optimální síťové podmínky zvažte replikaci dat offline pomocí vyměnitelného média.
+7. V **vyberte způsob vytvoření repliky**vyberte, jak chcete zpracovat počáteční úplná data replikace. Pokud se rozhodnete replikaci přes síť, Azure doporučuje že vybrat dobu mimo špičku. Pro velké objemy dat nebo ne úplně optimální síťové podmínky zvažte replikaci dat pomocí vyměnitelného média.
 
 8. V **zvolte možnosti kontroly konzistence**vyberte, jak chcete automatizovat kontroly konzistence. Povolení kontroly konzistence se spustit pouze v případě, že nekonzistentní replikaci dat nebo podle plánu. Pokud nechcete konfigurovat automatickou kontrolu konzistence, spusťte ruční kontrolu kdykoli podle:
     * V **ochrany** serveru Azure Backup konzoly, klikněte pravým tlačítkem na skupinu ochrany a vyberte **provést kontrolu konzistence**.
@@ -87,8 +87,6 @@ Konfigurace serveru Azure Backup chránit virtuální počítače IaaS, otevřet
 11. V **zadejte zásady online uchovávání dat.**, zadejte v Azure jsou uchovány jak body obnovení vytvořené ze zálohy denně nebo týdně nebo měsíčně nebo ročně.
 
 12. V **zvolte online replikace**, zadejte, jak proběhne počáteční úplná replikace dat. 
-
-    Můžete replikovat přes síť, nebo proveďte offline zálohování (offline synchronizace replik indexů). Zálohování offline používá [funkce Import úložiště Azure](./backup-azure-backup-import-export.md).
 
 13. Na **Souhrn**, zkontrolujte nastavení. Když kliknete na tlačítko **vytvořit skupinu**, dojde k počáteční replikaci dat. Po replikaci dat dokončení, na **stav** stránky, zobrazuje stav skupiny ochrany jako **OK**. Úlohu prvotního zálohování se provede záloha podle ochranu skupiny nastavení.
 
@@ -116,7 +114,6 @@ Můžete obnovit data do virtuálního počítače pomocí serveru Azure Backup 
     * Pro **chování obnovení existující verze**, vyberte **vytvořit kopii**, **přeskočit**, nebo **přepsat**. Přepsání je dostupná až po obnovení do původního umístění.
     * Pro **obnovit zabezpečení**, zvolte **použít nastavení cílového počítače** nebo **použít nastavení zabezpečení verze bodu obnovení**.
     * Pro **omezení využití šířky pásma**, klikněte na tlačítko **upravit** povolit omezení využití šířky pásma.
-    * Vyberte **založené na síti SAN povolit obnovení pomocí snímků hardwaru** použít snímky hardwaru založené na síti SAN pro rychlejší obnovení. Tato možnost je platná pouze v případě, že máte síť SAN, kde se zapnutou funkcí snímků hardwaru. Chcete-li zapisovatelné bodu obnovení, musí být schopna vytvářet klony a rozdělovat je síť SAN. Chráněný virtuální počítač a Azure Backup Server musí být připojen k téže síti SAN.
     * **Oznámení** klikněte na tlačítko **odeslat e-mail po dokončení obnovení**, a zadejte příjemce, kteří budou obdrží oznámení. E-mailové adresy oddělujte čárkami.
     * Po provedení výběr, klikněte na **další**
 
@@ -132,16 +129,13 @@ Pokud používáte moderní zálohování úložiště (MB), se nepodporuje obno
 
 2. Na **vlastnosti** nabídky, klikněte na tlačítko **předchozí verze** a vyberte verzi, kterou chcete obnovit.
 
-
-
-## <a name="register-azure-backup-server-with-a-vault"></a>Zaregistrujte Azure Backup Server k trezoru
-Zadejte kroky pro znázorňující postup:
-
+## <a name="view-azure-backup-server-with-a-vault"></a>Zobrazení serveru Azure Backup k trezoru
+Zobrazit serveru Azure Backup entity v portálu Azure, může pomocí následujících kroků:
 1. Otevřete trezor služeb zotavení.
 2. Klikněte na tlačítko infrastruktury zálohování.
 3. Servery pro správu zálohování zobrazení.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 Informace o používání serveru Azure Backup k ochraně jiné úlohy najdete v následujících článcích:
-- [Zálohování farmy služby SharePoint](backup-azure-backup-sharepoint-mabs.md)
-- [Zálohování serveru SQL](backup-azure-sql-mabs.md)
+- [Zálohování farmy služby SharePoint](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [Zálohování serveru SQL](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)

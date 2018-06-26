@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/21/2018
-ms.openlocfilehash: c1597f16dda8544908bbefaf39e75e667d38b22c
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 93665ab075de539f98eebe34c2229870bd5a1a6e
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316464"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750234"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure databáze pro databázi MySQL cenové úrovně
 
@@ -41,7 +41,7 @@ Po vytvoření serveru, číslo vCores, generování hardwaru a cenovou úroveň
 
 ## <a name="compute-generations-and-vcores"></a>Výpočetní generace a vCores
 
-Výpočetní prostředky jsou k dispozici jako vCores, která představují logické procesoru základní hardware. V současné době můžete ze dvou generací výpočetní Gen 4 a 5. generace. Gen 4 logické procesory jsou založené na v3 Intel E5-2673 2,4 GHz procesorů (Haswell). Gen 5 logické procesory jsou založené na Intel E5-2673 v4 procesory 2.3 GHz (Broadwell). Gen 4 a 5 generace jsou k dispozici v následujících oblastech ("X" označuje k dispozici). 
+Výpočetní prostředky jsou k dispozici jako vCores, která představují logické procesoru základní hardware. V současné době můžete ze dvou generací výpočetní Gen 4 a 5. generace. Gen 4 logické procesory jsou založené na v3 Intel E5-2673 2,4 GHz procesorů (Haswell). Gen 5 logické procesory jsou založené na Intel E5-2673 v4 procesory 2.3 GHz (Broadwell). Gen 4 a 5 generace jsou k dispozici v následujících oblastech ("X" označuje k dispozici).
 
 | **Oblast Azure** | **Gen 4** | **Gen 5** |
 |:---|:----------:|:--------------------:|
@@ -80,7 +80,7 @@ Výpočetní prostředky jsou k dispozici jako vCores, která představují logi
 | Typ úložiště | Úložiště Azure úrovně Standard | Azure Premium Storage | Azure Premium Storage |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 4 TB | 5 GB až 4 TB |
 | Velikost úložiště přírůstku | 1 GB | 1 GB | 1 GB |
-| IOPS | Proměnná |3 IOPS/GB<br/>Min 100 IOPS<br/>Maximální IOPS 7500 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maximální IOPS 7500 |
+| IOPS | Proměnná |3 IOPS/GB<br/>Min 100 IOPS<br/>Maximální IOPS 6000 | 3 IOPS/GB<br/>Min 100 IOPS<br/>Maximální IOPS 6000 |
 
 Další úložiště kapacity můžete přidat během a po vytvoření serveru. Základní vrstvě neposkytuje záruku IOPS. V obecné účely a paměťově optimalizované cenové úrovně IOPS škálování se velikost zřízeného úložiště v poměru 3:1.
 

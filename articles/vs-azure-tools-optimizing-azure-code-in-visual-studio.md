@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: cawa
-ms.openlocfilehash: a606c8e7d8b730b67bd8481656e099900eb39fbc
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 3ee2cc3ac5098ebf205331167faffa2b5f9b6d56
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/17/2017
-ms.locfileid: "23890835"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937553"
 ---
 # <a name="optimizing-your-azure-code"></a>Optimalizace Azure kódu
 Pokud jste programování aplikací, které používají Microsoft Azure, nejsou některé osvědčených kódovacích postupů, které byste měli postupovat, abyste se vyhnuli problémy s aplikací, škálovatelnost, chování a výkonu v cloudovém prostředí. Společnost Microsoft poskytuje nástroj pro analýzu kódu Azure, rozpozná a identifikuje některé z těchto problémů obvykle došlo a můžete je vyřešit. Můžete stáhnout nástroj v sadě Visual Studio prostřednictvím balíčku NuGet.
@@ -99,7 +99,7 @@ Pomocí sdíleného přístupového podpisu (SAS) pro ověřování. Služby Ř�
 Prosím sdílet své myšlenky a zpětnou vazbu na [zpětnou vazbu analýza kódu Azure](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Důvod
-Pro zvýšení zabezpečení Azure Active Directory nahrazuje ověřování služby ACS se ověřování SAS. V tématu [Azure Active Directory je budoucí ACS](http://blogs.technet.com/b/ad/archive/2013/06/22/azure-active-directory-is-the-future-of-acs.aspx) informace o plánu přechodu.
+Pro zvýšení zabezpečení Azure Active Directory nahrazuje ověřování služby ACS se ověřování SAS. V tématu [Azure Active Directory je budoucí ACS](https://cloudblogs.microsoft.com/enterprisemobility/2013/06/22/azure-active-directory-is-the-future-of-acs/) informace o plánu přechodu.
 
 ### <a name="solution"></a>Řešení
 Používejte ověřování SAS ve svých aplikacích. Následující příklad ukazuje, jak používat existující tokenu SAS pro přístup k oboru názvů service bus nebo entity.
@@ -364,7 +364,7 @@ Následující fragment kódu ukazuje opravu kód pro tento problém. Nahradit
 
 `var settings = ConfigurationManager.AppSettings["mySettings"];`
 
-S
+with
 
 `var settings = CloudConfigurationManager.GetSetting("mySettings");`
 
@@ -411,7 +411,7 @@ Namísto konfigurace nastavení diagnostiky ve vašem kódu, například pomocí
 Prosím sdílet své myšlenky a zpětnou vazbu na [zpětnou vazbu analýza kódu Azure](http://go.microsoft.com/fwlink/?LinkId=403771).
 
 ### <a name="reason"></a>Důvod
-Předtím, než pomocí několika různých metod se daly konfigurovat Azure SDK 2.5, (která používá Azure diagnostics 1.3), Azure Diagnostics (WAD): přidání do objektu blob konfigurace v úložišti pomocí imperativní kódu, deklarativní konfigurace nebo výchozí konfigurace. Upřednostňovaný způsob konfigurace diagnostiky je však můžete použít soubor XML konfigurace (diagnostics.wadcfg nebo diagnositcs.wadcfgx pro sadu SDK, 2.5 a novější) v projektu aplikace. V tomto přístupu soubor diagnostics.wadcfg úplně definuje konfiguraci a lze aktualizovat a znovu nasazena na bude. Kombinování použití konfiguračního souboru diagnostics.wadcfg pomocí programový metod nastavení konfigurace pomocí [DiagnosticMonitor](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.diagnosticmonitor.aspx)nebo [RoleInstanceDiagnosticManager](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.management.roleinstancediagnosticmanager.aspx)třídy může vést k nejasnostem. V tématu [inicializovat nebo změna konfigurace diagnostiky Azure](https://msdn.microsoft.com/library/azure/hh411537.aspx) Další informace.
+Před 2.5 Azure SDK, (která používá Azure diagnostics 1.3), Azure Diagnostics (WAD) může nakonfigurovat pomocí několika různými způsoby: pomocí imperativní kódu, deklarativní konfigurace nebo výchozí ho přidáte do objektu blob konfigurace v úložišti konfigurace. Upřednostňovaný způsob konfigurace diagnostiky je však můžete použít soubor XML konfigurace (diagnostics.wadcfg nebo diagnositcs.wadcfgx pro sadu SDK, 2.5 a novější) v projektu aplikace. V tomto přístupu soubor diagnostics.wadcfg úplně definuje konfiguraci a lze aktualizovat a znovu nasazena na bude. Kombinování použití konfiguračního souboru diagnostics.wadcfg pomocí programový metod nastavení konfigurace pomocí [DiagnosticMonitor](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.diagnosticmonitor.aspx)nebo [RoleInstanceDiagnosticManager](https://msdn.microsoft.com/library/microsoft.windowsazure.diagnostics.management.roleinstancediagnosticmanager.aspx)můžete třídy vést k záměně. V tématu [inicializovat nebo změna konfigurace diagnostiky Azure](https://msdn.microsoft.com/library/azure/hh411537.aspx) Další informace.
 
 Počínaje WAD 1.3 (zahrnutá v Azure SDK 2.5), je již nebude možné použít ke konfiguraci diagnostiky kódu. V důsledku toho můžete zadat pouze při použití nebo aktualizaci rozšíření diagnostiky konfigurace.
 
@@ -465,5 +465,5 @@ public class BlogsController : Controller
     }
 ```
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Další informace o optimalizaci a řešení potíží s aplikací Azure najdete v tématu [řešení potíží s webovou aplikaci v Azure App Service pomocí sady Visual Studio](app-service/web-sites-dotnet-troubleshoot-visual-studio.md).

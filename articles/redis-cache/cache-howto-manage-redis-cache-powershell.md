@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 38b2f57811b0e952d3020c06d39350918f2f0391
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: fcadac344e2e05c3f6cdd9003b87b819d7933fba
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31599318"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937430"
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Spravovat mezipaměť Redis systému Azure pomocí Azure Powershellu
 > [!div class="op_single_selector"]
@@ -337,7 +337,7 @@ Příkaz aktualizuje maxmemory zásady pro Redis Cache s názvem myCache.
 > * Nelze škálovat od **Premium** dolů do mezipaměti **standardní** nebo **základní** mezipaměti.
 > * Nelze škálovat od **standardní** dolů do mezipaměti **základní** mezipaměti.
 > * Je možné škálovat od **základní** mezipaměti tak, aby **standardní** mezipaměti, ale nemůže změnit velikost ve stejnou dobu. Pokud potřebujete jinou velikost, můžete provést následující operaci škálování na požadovanou velikost.
-> * Nelze škálovat od **základní** přímo do mezipaměti **Premium** mezipaměti. Musí škálování z **základní** k **standardní** v rámci jedné operace škálování a potom z **standardní** k **Premium** v následných operaci škálování.
+> * Nelze škálovat od **základní** přímo do mezipaměti **Premium** mezipaměti. Musí škálování z **základní** k **standardní** v rámci jedné operace škálování a potom z **standardní** k **Premium** v následných škálování operace.
 > * Nelze škálovat z větší velikost dolů na **C0 (250 MB)** velikost.
 > 
 > Další informace najdete v tématu [postup škálování Azure Redis Cache](cache-how-to-scale.md).
@@ -783,7 +783,7 @@ Další informace o používání prostředí Windows PowerShell s Azure, najdet
 * [Azure Redis Cache rutiny dokumentaci na webu MSDN](https://msdn.microsoft.com/library/azure/mt634513.aspx)
 * [Rutiny Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkID=394765): Naučte se používat rutiny v modulu Azure Resource Manager.
 * [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-template-deploy-portal.md): Naučte se vytvářet a spravovat skupiny prostředků na portálu Azure.
-* [Azure blog](http://blogs.msdn.com/windowsazure): Další informace o nových funkcích v Azure.
+* [Azure blog](https://azure.microsoft.com/en-us/blog/): Další informace o nových funkcích v Azure.
 * [Blogu o prostředí Windows PowerShell](http://blogs.msdn.com/powershell): Další informace o nové funkce v prostředí Windows PowerShell.
 * ["Hey, Scripting Guy!" Blog](http://blogs.technet.com/b/heyscriptingguy/): získat reálného tipy a triky od komunity prostředí Windows PowerShell.
 

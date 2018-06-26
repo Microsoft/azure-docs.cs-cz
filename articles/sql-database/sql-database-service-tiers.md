@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 0b38054ec623dc34daa3d18612e3356475655f35
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: dda37600dffaf1e8e1c85c9757696f2d8219febb
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331321"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751666"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database zakoupení modely a prostředky 
 
@@ -30,7 +30,7 @@ Následující tabulku a graf porovnání a porovnejte tyto dva modely nákupu.
 
 |**Nákupní model**|**Popis**|**Nejvhodnější pro**|
 |---|---|---|
-|Model na základě DTU|Tento model je založen na připojené měření výpočty, úložiště a vstupně-výstupní operace prostředky. Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o Dtu a Edtu najdete v tématu [co jsou Dtu a Edtu](sql-database-what-is-a-dtu.md)?|Nejvhodnější pro zákazníky, kteří chtějí možnosti jednoduchý, předem nakonfigurovaných prostředků.| 
+|Model na základě DTU|Tento model je založen na připojené měření výpočty, úložiště a vstupně-výstupní operace prostředky. Úrovně výkonu se vyjadřují v jednotkách transakcí databáze (DTU) pro samostatné databáze a jednotkách transakcí elastické databáze (eDTU) pro elastické fondy. Další informace o Dtu a Edtu najdete v tématu [co jsou Dtu a Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?|Nejvhodnější pro zákazníky, kteří chtějí možnosti jednoduchý, předem nakonfigurovaných prostředků.| 
 |Model na základě virtuálních jader|Tento model můžete nezávisle škálovat výpočetní a úložnou kapacitu. Také umožňuje použít k získání úsporu nákladů Benefit hybridní Azure pro systém SQL Server.|Nejvhodnější pro zákazníky, kteří hodnota flexibilitu, řízení a průhlednost.|
 ||||  
 

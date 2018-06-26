@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: singhkay
-ms.openlocfilehash: 6bd039225062ac6010d432b930f601fe4678ed2c
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: eca03a221014aafe89f07842b5ba9cfed0176faf
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30907147"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936505"
 ---
 # <a name="how-to-set-up-key-vault-for-virtual-machines-with-the-azure-cli-20"></a>Jak nastavit Key Vault pro virtuální počítače s 2.0 rozhraní příkazového řádku Azure
 
-V zásobníku Azure Resource Manager tajných klíčů nebo certifikáty jsou modelovat jako prostředky, které jsou poskytovány Key Vault. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../../key-vault/key-vault-whatis.md) V pořadí pro Key Vault, který se má použít s virtuálními počítači Azure Resource Manager *EnabledForDeployment* vlastnost v Key Vault musí být nastavena na hodnotu true. Tento článek ukazuje, jak nastavit Key Vault pro použití s Azure virtuální počítače (VM) pomocí Azure CLI 2.0. K provedení těchto kroků můžete také využít [Azure CLI 1.0](key-vault-setup-cli-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+V zásobníku Azure Resource Manager tajných klíčů nebo certifikáty jsou modelovat jako prostředky, které jsou poskytovány Key Vault. Další informace o Azure Key Vault najdete v tématu [co je Azure Key Vault?](../../key-vault/key-vault-whatis.md) V pořadí pro Key Vault, který se má použít s virtuálními počítači Azure Resource Manager *EnabledForDeployment* vlastnost v Key Vault musí být nastavena na hodnotu true. Tento článek ukazuje, jak nastavit Key Vault pro použití s Azure virtuální počítače (VM) pomocí Azure CLI 2.0. 
 
 K provedení těchto kroků, budete potřebovat nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login).
 

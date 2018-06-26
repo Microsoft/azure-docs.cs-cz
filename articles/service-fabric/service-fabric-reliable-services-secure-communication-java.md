@@ -1,6 +1,6 @@
 ---
-title: Pomůže zabezpečené komunikace pro služby v Azure Service Fabric | Microsoft Docs
-description: Přehled o tom, jak pomoci zabezpečenou komunikaci pro spolehlivé služby, které jsou spuštěny v clusteru služby Azure Service Fabric.
+title: Zabezpečená komunikace služby vzdálené komunikace s Java v Azure Service Fabric | Microsoft Docs
+description: Zjistěte, jak k zabezpečení komunikace služby Vzdálená komunikace na základě Java spolehlivé služby, které jsou spuštěny v clusteru služby Azure Service Fabric.
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
@@ -13,22 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: 624d9d358145fb8b41013d686821cb157693d3c6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1843720b9700e66af8ee84766cf7d63ac62e6283
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207991"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36749908"
 ---
-# <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>Nápověda zabezpečené komunikace pro služby v Azure Service Fabric
+# <a name="secure-service-remoting-communications-in-a-java-service"></a>Zabezpečená komunikace vzdálené komunikace služby ve službě Java
 > [!div class="op_single_selector"]
 > * [C# v systému Windows](service-fabric-reliable-services-secure-communication.md)
 > * [Java v Linuxu](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
 
-## <a name="help-secure-a-service-when-youre-using-service-remoting"></a>Pomoc se zabezpečením služby, pokud používáte vzdálenou komunikaci služby
-Budeme používat existující [příklad](service-fabric-reliable-services-communication-remoting-java.md) to vysvětluje, jak nastavit vzdálenou komunikaci pro spolehlivé služby. Chcete-li pomoc se zabezpečením služby, pokud používáte vzdálenou komunikaci služby, postupujte takto:
+Zabezpečení je jedním z nejdůležitějších aspektů komunikace. Rozhraní spolehlivé služby poskytuje několik předem komunikace zásobníky a nástroje, které můžete použít k vylepšení zabezpečení. Tento článek popisuje, jak zlepšit zabezpečení, pokud používáte vzdálenou komunikaci služby ve službě Java. Vychází z existující [příklad](service-fabric-reliable-services-communication-remoting-java.md) to vysvětluje, jak nastavit vzdálenou komunikaci pro spolehlivé služby napsanou v jazyce Java. 
+
+K zajištění služby, pokud používáte vzdálenou komunikaci služby službou Java, postupujte takto:
 
 1. Vytvořit rozhraní, `HelloWorldStateless`, který definuje metody, které budou k dispozici pro vzdálené volání procedury vaší služby. Bude vaše služba používat `FabricTransportServiceRemotingListener`, kterého je deklarovaná v `microsoft.serviceFabric.services.remoting.fabricTransport.runtime` balíčku. Jedná se `CommunicationListener` implementace, která poskytuje funkce vzdálené komunikace.
 
@@ -54,11 +55,11 @@ Budeme používat existující [příklad](service-fabric-reliable-services-comm
     ```
 2. Přidejte nastavení naslouchacího procesu a zabezpečovací pověření.
 
-    Ujistěte se, že certifikát, který chcete použít k zabezpečení komunikace vaší služby je nainstalována na všech uzlech v clusteru. Zadejte nastavení naslouchacího procesu a zabezpečovací pověření dvěma způsoby:
+    Ujistěte se, že certifikát, který chcete použít k zabezpečení komunikace vaší služby je nainstalován na všech uzlech v clusteru. Zadejte nastavení naslouchacího procesu a zabezpečovací pověření dvěma způsoby:
 
    1. Poskytněte pomocí [konfigurační balíček](service-fabric-application-and-service-manifests.md):
 
-       Přidat `TransportSettings` v souborech settings.xml souboru.
+       Přidat pojmenovaná `TransportSettings` v souborech settings.xml souboru.
 
        ```xml
        <!--Section name should always end with "TransportSettings".-->

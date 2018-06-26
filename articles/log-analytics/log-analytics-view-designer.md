@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: d63d47c39054230307416e24ed1c8295fbf68d93
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 91d4efcd7fabc2f284078d752ea68778a9bd8d86
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29939865"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752035"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Vytváření vlastních pohledů pomocí návrháře zobrazení v analýzy protokolů
 Pomocí zobrazení návrhu v [Azure Log Analytics](log-analytics-overview.md), různých vlastních zobrazení můžete vytvořit na portálu Azure, který můžete vizualizovat data v pracovním prostoru analýzy protokolů. Tento článek obsahuje přehled Návrhář zobrazení a postupy pro vytváření a úpravy vlastních zobrazení.
@@ -55,13 +55,14 @@ Tyto možnosti jsou popsány v následující tabulce:
 |:--|:--|
 | Obnovení   | Aktualizuje zobrazení s nejnovější data. | 
 | Analýzy | Otevře se [Advanced Analytics portál](log-analytics-log-search-portals.md#advanced-analytics-portal) k analýze dat pomocí protokolu hledání. |
-| Filtr    | Nastaví filtr času pro data, která je zahrnuta v zobrazení. |
-| Upravit      | Otevře zobrazení v Návrháři zobrazení, chcete-li upravit jeho obsah a konfiguraci.  |
-| Klon     | Vytvoří nové zobrazení a otevře ji v Návrháři zobrazení. Název nového zobrazení je stejný jako původní název, ale s *kopie* přidá se k němu. |
+| Upravit       | Otevře zobrazení v Návrháři zobrazení, chcete-li upravit jeho obsah a konfiguraci.  |
+| Klon      | Vytvoří nové zobrazení a otevře ji v Návrháři zobrazení. Název nového zobrazení je stejný jako původní název, ale s *kopie* přidá se k němu. |
+| Rozsah dat | Nastavte datum a čas rozsah filtr pro data, která je zahrnuta v zobrazení. |
+| +          | Definujte vlastní filtr, který je definována pro zobrazení. |
 
 
 ## <a name="create-a-new-view"></a>Vytvoření nového zobrazení
-Můžete vytvořit nové zobrazení v Návrháři zobrazení tak, že vyberete **Návrhář zobrazení** na dlaždici **přehled** stránka pracovní prostor analýzy protokolů.
+Můžete vytvořit nové zobrazení v Návrháři zobrazení tak, že vyberete **Návrhář zobrazení** v nabídce pracovního prostoru analýzy protokolů.
 
 ![Dlaždice Návrhář zobrazení](media/log-analytics-view-designer/view-designer-tile.png)
 
@@ -104,7 +105,6 @@ Možnosti práce se zobrazeními v režimu úprav jsou popsány v následující
 | Export      | Exportuje zobrazení tak, aby [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) který můžete importovat do jiného pracovního prostoru. Název souboru je název zobrazení, a má *omsview* rozšíření. |
 | Import      | Importy *omsview* soubor, který jste exportovali z jiného pracovního prostoru. Tato akce přepíše konfiguraci existující zobrazení. |
 | Klon       | Vytvoří nové zobrazení a otevře ji v Návrháři zobrazení. Název nového zobrazení je stejný jako původní název, ale s *kopie* přidá se k němu. |
-| Publikování     | Exportuje zobrazení do souboru JSON, který můžete vložit do [řešení pro správu](../operations-management-suite/operations-management-suite-solutions-resources-views.md). Název souboru je stejný jako název zobrazení, ale *json* rozšíření. Druhý soubor, který je vytvořen s *resjson* rozšíření, obsahuje hodnoty pro prostředky, které jsou definovány v souboru JSON.
 
 ## <a name="next-steps"></a>Další postup
 * Přidat [dlaždice](log-analytics-view-designer-tiles.md) do vlastních zobrazení.

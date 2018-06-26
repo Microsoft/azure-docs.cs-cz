@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6cc5ff1c532d67c48beac1a2a10d034f5d9d7501
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 32dd295132e26e46d64b01b194b557cae26575ad
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343788"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750790"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Začínáme se sadou SDK řeči zařízení
 
@@ -41,7 +41,7 @@ Před zahájením vývoj pomocí sady SDK zařízení rozpoznávání řeči, sh
 
 * Pokud chcete použít záměrné rozpoznávání řeči služby, přihlášení k odběru [znalosti jazyka služby](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) (LEOŠ) a [získat klíč předplatného](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/azureibizasubscription). 
 
-    Mohou [vytvoření jednoduchého modelu LEOŠ](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) nebo použijte ukázku, LEOŠ modelu `LUIS-example.json`, k dispozici ze sady SDK zařízení řeči [ke stažení](https://shares.datatransfer.microsoft.com/). Nahrát soubor JSON váš model do [LEOŠ portál](https://www.lui.ai/applications) kliknutím **novou aplikaci Import** a výběr souboru JSON.
+    Mohou [vytvoření jednoduchého modelu LEOŠ](https://docs.microsoft.com/en-us/azure/cognitive-services/luis/) nebo použijte ukázku, LEOŠ modelu `LUIS-example.json`, k dispozici ze sady SDK zařízení řeči [ke stažení](https://shares.datatransfer.microsoft.com/). Nahrát soubor JSON váš model do [LEOŠ portál](https://www.luis.ai/home) kliknutím **novou aplikaci Import** a výběr souboru JSON.
 
 ## <a name="set-up-the-development-kit"></a>Nastavit development kit
 

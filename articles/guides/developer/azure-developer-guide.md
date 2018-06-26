@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: e0a04d44edf39c90533c59d67ea2dfce69f092cd
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 3d4b93a604170cb3b8396562a15483923330f467
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33771088"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754502"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Úvodní příručka pro vývojáře v Azure
 
@@ -205,7 +205,7 @@ Jednou z výhod používání Azure je, že můžete nasadit aplikace do různý
 
 I když je nepravděpodobné, není znemožňuje, aby celého datového centra pro přechod offline z důvodu událost například přírodní katastrofě nebo selhání Internetu. Je osvědčeným postupem důležitá obchodní aplikace hostitele ve více než jeden datovém centru k dosažení maximální dostupnosti. Použití více oblastí může také snížit latenci pro globální uživatele a poskytují další možnosti flexibilitu při aktualizaci aplikace.
 
-Některé služby, jako je virtuální počítač a aplikační služby, použijte [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) povolení podpory více oblasti s převzetí služeb při selhání mezi oblastmi k podpoře vysoké dostupnosti podnikové aplikace. Příklad, naleznete v části [Azure referenční architektura: webové aplikace s vysokou dostupností](../../guidance/guidance-web-apps-multi-region.md).
+Některé služby, jako je virtuální počítač a aplikační služby, použijte [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md) povolení podpory více oblasti s převzetí služeb při selhání mezi oblastmi k podpoře vysoké dostupnosti podnikové aplikace. Příklad, naleznete v části [Azure referenční architektura: spustit webovou aplikaci v několika oblastech](https://docs.microsoft.com/azure/architecture/reference-architectures/app-service-web-app/multi-region).
 
 >**Kdy použít**: Pokud máte enterprise a vysoká dostupnost aplikací využívajících replikaci a převzetí služeb při selhání.
 
@@ -263,9 +263,9 @@ Jako vývojáři rádi pusťte do kód a zkuste začít co nejrychleji s provede
 
 Abyste mohli vytvořit nebo pracovat s předplatné Azure, musíte mít účet Azure. Účet Azure je jednoduše identity ve službě Azure AD nebo v adresáři, jako je například pracovní nebo školní organizace, která je důvěryhodná Azure AD. Pokud jste nepatří do této organizace, můžete vždy vytvořit odběr pomocí Account Microsoft, který je důvěryhodný pro Azure AD. Další informace o integraci místního systému Windows Server Active Directory s Azure AD najdete v tématu [integrace místních identit s Azure Active Directory](../../active-directory/active-directory-aadconnect.md).
 
-Každé předplatné služby Azure má vztah důvěryhodnosti s instancí služby Azure AD. To znamená, že tomuto adresáři svěřuje ověřování uživatelů, služeb i zařízení. Několik předplatných může důvěřovat stejnému adresáři, ale jedno předplatné důvěřuje pouze jednomu adresáři. Další informace najdete v tématu [asociování předplatných Azure se službou Azure Active Directory](../../active-directory/active-directory-how-subscriptions-associated-directory.md).
+Každé předplatné služby Azure má vztah důvěryhodnosti s instancí služby Azure AD. To znamená, že tomuto adresáři svěřuje ověřování uživatelů, služeb i zařízení. Několik předplatných může důvěřovat stejnému adresáři, ale jedno předplatné důvěřuje pouze jednomu adresáři. Další informace najdete v tématu [asociování předplatných Azure se službou Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-Kromě jednotlivých Azure definováním účet identity, označované taky jako *uživatelé*, můžete také definovat *skupiny* ve službě Azure AD. Vytvoření skupiny uživatelů je dobrý způsob, jak spravovat přístup k prostředkům v předplatném pomocí řízení přístupu na základě role (RBAC). Naučte se vytvářet skupiny, najdete v tématu [vytvořte skupinu ve verzi preview služby Azure Active Directory](../../active-directory/active-directory-groups-create-azure-portal.md). Můžete také vytvořit a spravovat skupiny s [pomocí prostředí PowerShell](../../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
+Kromě jednotlivých Azure definováním účet identity, označované taky jako *uživatelé*, můžete také definovat *skupiny* ve službě Azure AD. Vytvoření skupiny uživatelů je dobrý způsob, jak spravovat přístup k prostředkům v předplatném pomocí řízení přístupu na základě role (RBAC). Naučte se vytvářet skupiny, najdete v tématu [vytvořte skupinu ve verzi preview služby Azure Active Directory](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md). Můžete také vytvořit a spravovat skupiny s [pomocí prostředí PowerShell](../../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md).
 
 ### <a name="manage-your-subscriptions"></a>Správa předplatných
 

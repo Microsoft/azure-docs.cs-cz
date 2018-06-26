@@ -15,15 +15,15 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 5c5c9894127386a05da9825435cfe5ca07b01542
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: ccdeb2e57d8e2f8fc7ad2fa5e76726b90c0c8a50
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30911977"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936815"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Nahrání a vytvoření virtuálního počítače s Linuxem z vlastní disk s 2.0 rozhraní příkazového řádku Azure
-Tento článek ukazuje, jak nahrát virtuální pevný disk (VHD) pro účet úložiště Azure s Azure CLI 2.0 a vytvořit virtuální počítače s Linuxem z tento vlastní disk. K provedení těchto kroků můžete také využít [Azure CLI 1.0](upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Tato funkce umožňuje instalovat a konfigurovat Linux distro svých požadavků a použije tento virtuální pevný disk k rychlému vytvoření Azure virtuální počítače (VM).
+Tento článek ukazuje, jak nahrát virtuální pevný disk (VHD) pro účet úložiště Azure s Azure CLI 2.0 a vytvořit virtuální počítače s Linuxem z tento vlastní disk. Tato funkce umožňuje instalovat a konfigurovat Linux distro svých požadavků a použije tento virtuální pevný disk k rychlému vytvoření Azure virtuální počítače (VM).
 
 Toto téma používá účty úložiště pro poslední virtuální pevné disky, ale můžete také provést tyto kroky, pomocí [discích spravovaných](upload-vhd.md). 
 
@@ -116,7 +116,7 @@ Azure podporuje různé Linuxových distribucích (viz [distribuce schválené](
 Viz také **[poznámky k instalaci Linux](create-upload-generic.md#general-linux-installation-notes)** Příprava bitové kopie systému Linux na Azure další Obecné tipy pro.
 
 > [!NOTE]
-> [Platformy Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) se vztahují na virtuální počítače se systémem Linux jenom v případě, že jeden z potvrzená distribuce se používá s podrobností konfigurace uvedeného v části "podporované verze [Linux na Azure-Endorsed distribuce](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+> [Platformy Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) se vztahují na virtuální počítače se systémem Linux jenom v případě, že jeden z potvrzená distribuce se používá s podrobností konfigurace uvedeného v části "podporované verze [Linux na schválené pro Azure Distribuce](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 > 
 > 
 

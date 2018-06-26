@@ -7,13 +7,13 @@ ms.author: jtoland
 manager: craigg
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: a118f930688571e980c3a2cc2f5b3b804bfdc3f8
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.date: 06/25/2018
+ms.openlocfilehash: ced008022ce022dc3f6d95d0270728e4b0abb728
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304609"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753072"
 ---
 # <a name="azure-database-for-postgresql-migration-partners"></a>Databáze Azure pro partnery PostgreSQL migrace
 Chcete-li široce podporovat vaší databázi Azure pro řešení PostgreSQL, zvolte z širokou škálu špičkový partnery a nástroje. Tento článek označuje partnerských společností Microsoft s řešeními migrace podpoře Azure databáze pro PostgreSQL.
@@ -21,7 +21,7 @@ Chcete-li široce podporovat vaší databázi Azure pro řešení PostgreSQL, zv
 ## <a name="migration-partners"></a>Migrace partnery
 | Partner | Popis | Odkazy | Videa |
 | --- | --- | --- | --- |
-| ![SNP technologie][1] |**SNP technologie**<br>Technologie SNP je poskytovatel cloudové služby, vytváření zabezpečený a spolehlivý řešení pro firmy budoucí. Společnost dochází k závěru, při generování skutečné hodnoty pro vaši organizaci. Z myšlenku k provádění SNP technologie sdílí společné účel s klienty, chcete-li jejich investic do několik výhod.|[OCP katalogu][snp_ocp_catalog]<br>[Web][snp_website]<br>[Twitter][snp_twitter]<br>[Obraťte se na][snp_contact] | |
+| ![SNP technologie][1] |**SNP technologie**<br>Technologie SNP je poskytovatel cloudové služby, vytváření zabezpečený a spolehlivý řešení pro firmy budoucí. Společnost dochází k závěru, při generování skutečné hodnoty pro vaši organizaci. Z myšlenku k provádění SNP technologie sdílí společné účel s klienty, chcete-li jejich investic do několik výhod.|[Web][snp_website]<br>[Twitter][snp_twitter]<br>[Obraťte se na][snp_contact] | |
 | ![DB nejlepší technologií, LLC][2] |**DB nejlepší technologií, LLC**<br>DB nejlepší pomáhá zákazníkům využít spravované Azure databáze služby maximum. Společnost nabízí několik způsobů, abyste mohli začít, včetně [budoucí stavu návrhem](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Ffuture-state-architectural-design%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261194557&sdata=SCr3kseFvcU7mI1%2FZt7K2elXAqLY%2FyL6AO944QiWoLg%3D&reserved=0), [optimalizace správy dat pro datová platforma Microsoft](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Fdata-management-optimization-for-microsoft-data-platform%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261204561&sdata=DYF9EeMaMdKZP%2FJ9d3mw%2F67hUAxWmINcI1rMbEQZ1DM%3D&reserved=0), [Microsoft Azure Plánování služby nasazení](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Fmicrosoft-azure-deployment-planning-services%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261214574&sdata=Q%2FNJaHWXrrln6eXaVmU1iVb4tJCoKVgSA8cEBQiZaDk%3D&reserved=0), a [školení připravenosti platformy Azure Data](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fwww.dbbest.com%2Fservices%2Fazure-data-platform-readiness-training%2F&data=02%7C01%7Cjtoland%40microsoft.com%7C7311aa2024894a80eff208d5cfd45696%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636643433261214574&sdata=dX%2BBGSCyq4x9ZPkTN74Y%2FUgHJ%2FqtsNgwEFDJft%2FTkc0%3D&reserved=0).|[Web][dbbest_website]<br>[Twitter][dbbest_twitter]<br>[YouTube][dbbest_youtube]<br>[Obraťte se na][dbbest_contact] | |
 | ![Protokol funguje][3] |**Protokol funguje**<br>Protokol funguje je školení a konzultace ohledně společnosti přímý odborného správu dat a výkonu, Business Intelligence, velké objemy dat, Power BI a Azure, zaměření na optimalizaci data a zvýšení efektivity systému SQL Server a cloudové správy.|[Web][pragmatic-works_website]<br>[Twitter][pragmatic-works_twitter]<br>[YouTube][pragmatic-works_youtube]<br>[Obraťte se na][pragmatic-works_contact] | |
 | ![Infosys][4] |**Infosys**<br>Infosys je globálním poskytovatelem v nejnovější verzi služby digitální a konzultace ohledně. S více než tří desetiletí prostředí Správa systémů globální podniků Infosys odborně voly klienti prostřednictvím digitální cestě povolením organizace základní technologii AI pomohou určit priority provádění změn. Infosys také poskytuje firmách s agilní digitální škálované k poskytování nebývalá úrovně výkonu a štěstím zákazníka.|[Web][infosys_website]<br>[Twitter][infosys_twitter]<br>[YouTube][infosys_youtube]<br>[Obraťte se na][infosys_contact] | |
@@ -44,7 +44,6 @@ Další informace o některých dalších partnery Microsoftu, najdete v článk
 <!--Get Started Links-->
 <!--Datasheet Links-->
 <!--Marketplace Links -->
-[snp_ocp_catalog]:https://msgtm.azurewebsites.net/en-US/Solutions/Solution/8272182d-e372-e711-80f1-3863bb3c06a0/c5ea0afd-84af-e711-80fb-3863bb3ce590
 
 <!--Press links-->
 

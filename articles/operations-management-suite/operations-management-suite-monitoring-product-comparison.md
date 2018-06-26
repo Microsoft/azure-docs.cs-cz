@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
-ms.openlocfilehash: b4201f105a87b0a41059c061eb37fb35d4514e02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6da876a0e6c1e98683caa864a4a2bcf85195cd10
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23866314"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36753315"
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Porovnání monitorování produktů společnosti Microsoft
 Tento článek obsahuje porovnání mezi službou System Center Operations Manager (SCOM) a analýzy protokolů v Operations Management Suite (OMS) z hlediska jejich architektury, logiku, jak je i sledování prostředků, a jak budou provádět analýzy dat, která se budou shromažďovat .  Toto je získáte základní přehled o jejich rozdíly a relativní síly.  
 
 ## <a name="basic-architecture"></a>Základní architektura
 ### <a name="system-center-operations-manager"></a>System Center Operations Manager
-Všechny součásti SCOM jsou nainstalovány ve vašem datovém centru.  [Jsou nainstalováni agenti](http://technet.microsoft.com/library/hh551142.aspx) na počítačích systému Windows a Linux, které jsou spravovány nástrojem SCOM.  Agenti připojit k [servery pro správu](https://technet.microsoft.com/library/hh301922.aspx) který komunikovat s SCOM databáze a datový sklad.  Agentů závisí na ověřování pro připojení na servery pro správu v doméně.  Ty mimo důvěryhodnou doménu můžete provádět ověřování pomocí certifikátu nebo se připojit k [Server brány](https://technet.microsoft.com/library/hh212823.aspx).
+Všechny součásti SCOM jsou nainstalovány ve vašem datovém centru.  [Jsou nainstalováni agenti](https://docs.microsoft.com/system-center/scom/manage-deploy-windows-agent-console) na počítačích systému Windows a Linux, které jsou spravovány nástrojem SCOM.  Agenti připojit k [servery pro správu](https://technet.microsoft.com/library/hh301922.aspx) který komunikovat s SCOM databáze a datový sklad.  Agentů závisí na ověřování pro připojení na servery pro správu v doméně.  Ty mimo důvěryhodnou doménu můžete provádět ověřování pomocí certifikátu nebo se připojit k [Server brány](https://technet.microsoft.com/library/hh212823.aspx).
 
 SCOM vyžaduje dvě databáze SQL, jednu pro provozních dat a jiné datového skladu pro podporu analýzy dat a generování sestav.  A [serveru sestav](https://technet.microsoft.com/library/hh298611.aspx) spouštět služby SQL Reporting Services tak, aby odesílaly data z datového skladu. 
 

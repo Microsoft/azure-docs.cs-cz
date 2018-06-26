@@ -14,15 +14,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 16493d7ecdec0ec1464820be7668dfa19ec1b13c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 77e4744d43aa4e71e6cdbbe2364149465a5aeae1
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366507"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936611"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otevřete porty a koncové body pro virtuální počítač s Linuxem pomocí rozhraní příkazového řádku Azure
-Otevření portu nebo vytvořte koncového bodu, virtuální počítač (VM) v Azure vytvořením filtr sítě na podsíť nebo rozhraní sítě virtuálních počítačů. Tyto filtry, které řídí příchozí a odchozí přenosy, můžete umístit na skupinu zabezpečení sítě, který je připojen k prostředku, který přijímá provoz. Použijeme Běžným příkladem webové přenosy na portu 80. Tento článek ukazuje, jak otevřít port pro virtuální počítač s Azure CLI 2.0. K provedení těchto kroků můžete také využít [Azure CLI 1.0](nsg-quickstart-nodejs.md).
+Otevření portu nebo vytvořte koncového bodu, virtuální počítač (VM) v Azure vytvořením filtr sítě na podsíť nebo rozhraní sítě virtuálních počítačů. Tyto filtry, které řídí příchozí a odchozí přenosy, můžete umístit na skupinu zabezpečení sítě, který je připojen k prostředku, který přijímá provoz. Použijeme Běžným příkladem webové přenosy na portu 80. Tento článek ukazuje, jak otevřít port pro virtuální počítač s Azure CLI 2.0. 
 
 Chcete-li vytvořit skupinu zabezpečení sítě a pravidel, je třeba nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login).
 

@@ -15,12 +15,12 @@ ms.date: 06/15/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin, dastrock, smalser
-ms.openlocfilehash: d0c006b21e00693fe6c8b35237d4ce55f67c0f75
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8bb0df567fbac6e8f8a2e2f64f868b4f219e05ac
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36320594"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751390"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Ladění na základě SAML jednotného přihlašování k aplikacím v Azure Active Directory
 
@@ -45,6 +45,9 @@ K testování na základě SAML jednotné přihlašování mezi AAD a cílová a
 3.  Ze seznamu podnikové aplikace, klikněte na aplikaci, pro který chcete testovat jednotné přihlašování a potom z možností na levém kliknutím **jednotného přihlašování**.
 4.  Otevřete základě SAML jeden testování přihlašování, **domény a adresy URL** části klikněte na tlačítko **nastavení testu SAML**. Pokud je tlačítko Nastavení testu SAML šedá, musíte nejprve vyplňte a uložte povinné atributy.
 5.  V **Test jednotného přihlašování** okně používat svoje podnikové přihlašovací údaje pro přihlášení do cílové aplikace. Můžete přihlásit jako aktuální uživatel, nebo jako jiný uživatel. Pokud se přihlásit jako jiný uživatel, výzva vás vyzve k ověření.
+
+    ![Zkušební stránku SAML](media/active-directory-saml-debugging/testing.png)
+
 
 Pokud jste úspěšně přihlášeni, test byla úspěšná. V takovém případě Azure AD vystaví token SAML odpovědi do aplikace. Aplikace používá SAML token se úspěšně vás přihlásit.
 

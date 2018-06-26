@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: c3e9b27784a1c0671ca3c87f9a7c55a288362299
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 2916252c08c599d2e528595a8cdf2abca8ea89a3
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248380"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36938380"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technické příručce k šabloně Cortana Intelligence řešení pro prediktivní údržby v letecký a jiné firmy
 
@@ -54,14 +54,14 @@ Následující oddíly popisují části řešení.
 ### <a name="synthetic-data-source"></a>Zdroj dat syntetického
 U této šablony se zdroj dat používaný generují z plochy aplikace, která můžete stáhnout a spustit místně po úspěšné nasazení.
 
-Pokyny ke stažení a instalaci této aplikace, vyberete prvního uzlu generátor dat prediktivní údržby, v diagramu šablonu řešení. Pokyny naleznete v panelu Vlastnosti. Tuto aplikaci kanály [centra událostí Azure](#azure-event-hub) služby s datových bodů nebo události, použité ve zbývající části toku řešení. Tento zdroj dat je odvozený od veřejně dostupnými daty z [datové úložiště NASA](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/) pomocí [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan).
+Pokyny ke stažení a instalaci této aplikace, vyberete prvního uzlu generátor dat prediktivní údržby, v diagramu šablonu řešení. Pokyny naleznete v panelu Vlastnosti. Tuto aplikaci kanály [centra událostí Azure](#azure-event-hub) služby s datových bodů nebo události, použité ve zbývající části toku řešení. Tento zdroj dat je odvozený od veřejně dostupnými daty z [datové úložiště NASA](https://c3.nasa.gov/dashlink/resources/139/) pomocí [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan).
 
-Aplikace generování událostí naplní centra událostí Azure pouze tehdy, když je prováděna v počítači.
+Aplikace generování událostí naplní centra událostí Azure pouze tehdy, když je prováděna v počítači.  
 
-### <a name="azure-event-hub"></a>Centrum událostí Azure
+### <a name="azure-event-hub"></a>Centrum událostí Azure  
 [Centra událostí Azure](https://azure.microsoft.com/services/event-hubs/) příjemce vstup syntetické zdroj dat je služba.
 
-## <a name="data-preparation-and-analysis"></a>Příprava dat a analýzy
+## <a name="data-preparation-and-analysis"></a>Příprava dat a analýzy  
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
 Použití [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) k poskytování téměř v reálném čase analýzy vstupního datového proudu z [centra událostí Azure](#azure-event-hub) služby. Potom publikovat výsledky do [Power BI](https://powerbi.microsoft.com) řídicí panel i archivu všechny nezpracované příchozí události [Azure Storage](https://azure.microsoft.com/services/storage/) služby pro pozdější zpracování pomocí [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)služby.
 
@@ -110,14 +110,14 @@ Informace o vytváření dotazů Azure Stream Analytics najdete v [referenční 
 
 Dotazy v tomto řešení výstupní tři datové sady s téměř v reálném čase analytics informace o příchozí datový proud na řídicí panel Power BI, který je dodáván jako součást této šablony řešení. Protože se nachází implicitní znalosti o příchozí data formátu, tyto dotazy musí být změněn podle vaší formát data.
 
-Dotaz v druhé úloze Stream Analytics **maintenancesa02asablob** jednoduše všechny výstupy [centra událostí](https://azure.microsoft.com/services/event-hubs/) události [Azure Storage](https://azure.microsoft.com/services/storage/) a proto vyžaduje žádné změnou bez ohledu na formát vaše data, protože informace o úplné události je streamování na úložiště.
+Dotaz v druhé úloze Stream Analytics **maintenancesa02asablob** jednoduše všechny výstupy [centra událostí](https://azure.microsoft.com/services/event-hubs/) události [Azure Storage](https://azure.microsoft.com/services/storage/) a proto vyžaduje žádné změnou bez ohledu na formát vaše data jako úplné událostí je Streamovat informace do úložiště.
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
-[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) služeb orchestruje přesouvání a zpracování dat. V prediktivní Údržba leteckých šablony řešení, objektu pro vytváření dat se skládá ze tří [kanály](../../data-factory/v1/data-factory-create-pipelines.md) , přesunout a zpracování dat pomocí různých technologií.  Přístup k objektu pro vytváření dat otevřením uzlu služby Data Factory v dolní části diagram řešení šablony vytvořené pomocí nasazení řešení. Chyby v části vaše datové jsou z důvodu objekt pro vytváření dat se nasazené, než generátor dat byla spuštěna. Tyto chyby můžete ignorovat a nezabrání vaší služby data factory funguje
+[Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/) služeb orchestruje přesouvání a zpracování dat. V prediktivní Údržba leteckých šablony řešení, objektu pro vytváření dat se skládá ze tří [kanály](../../data-factory/concepts-pipelines-activities.md) , přesunout a zpracování dat pomocí různých technologií.  Přístup k objektu pro vytváření dat otevřením uzlu služby Data Factory v dolní části diagram řešení šablony vytvořené pomocí nasazení řešení. Chyby v části vaše datové jsou z důvodu objekt pro vytváření dat se nasazené, než generátor dat byla spuštěna. Tyto chyby můžete ignorovat a nezabrání vaší služby data factory funguje
 
 ![Chyby datové sady objektu pro vytváření dat](./media/cortana-analytics-technical-guide-predictive-maintenance/data-factory-dataset-error.png)
 
-Tato část popisuje nezbytné [kanály](../../data-factory/v1/data-factory-create-pipelines.md) a [aktivity](../../data-factory/v1/data-factory-create-pipelines.md) součástí [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/). Zde je zobrazení diagramu řešení.
+Tato část popisuje nezbytné [kanály a aktivity](../../data-factory/concepts-pipelines-activities.md) součástí [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/). Zde je zobrazení diagramu řešení.
 
 ![Azure Data Factory](./media/cortana-analytics-technical-guide-predictive-maintenance/azure-data-factory.png)
 
@@ -126,22 +126,22 @@ Dva kanály tento objekt pro vytváření obsahovat [Hive](http://blogs.msdn.com
 Podobně jako [Azure Stream Analytics](#azure-stream-analytics-1) dotazy, [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skripty mají implicitní znalosti o příchozí formátu data a musí být změněn podle vaší formát data.
 
 #### <a name="aggregateflightinfopipeline"></a>*AggregateFlightInfoPipeline*
-To [kanálu](../../data-factory/v1/data-factory-create-pipelines.md) obsahuje jediné aktivity – [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) aktivity pomocí [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , která se spouští [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript k oddílu dat umístit do [Azure Storage](https://azure.microsoft.com/services/storage/) během [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) úlohy.
+To [kanálu](../../data-factory/concepts-pipelines-activities.md) obsahuje jediné aktivity – [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) aktivity pomocí [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , která se spouští [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript k oddílu dat umístit do [Azure Storage](https://azure.microsoft.com/services/storage/) během [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) úlohy.
 
 [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript pro toto rozdělení úloh je ***AggregateFlightInfo.hql***
 
 #### <a name="mlscoringpipeline"></a>*MLScoringPipeline*
-To [kanálu](../../data-factory/v1/data-factory-create-pipelines.md) obsahuje několik aktivit, jejichž konečným výsledkem je, že scored předpověď z [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentu přidružená k této šabloně řešení.
+To [kanálu](../../data-factory/concepts-pipelines-activities.md) obsahuje několik aktivit, jejichž konečným výsledkem je, že scored předpověď z [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentu přidružená k této šabloně řešení.
 
 Aktivity, které jsou zahrnuty jsou:
 
-* [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) aktivity pomocí [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , která se spouští [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript k provádění agregací a konstruování potřebné pro [počítače Azure Učení](https://azure.microsoft.com/services/machine-learning/) experiment.
+* [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) aktivity pomocí [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) , která se spouští [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript k provádění agregací a konstruování potřebné pro [počítače Azure Učení](https://azure.microsoft.com/services/machine-learning/) experiment.
   [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) skript pro toto rozdělení úloh je ***PrepareMLInput.hql***.
-* [Kopírování](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivity, která přemísťuje výsledků [HDInsightHive](../../data-factory/v1/data-factory-hive-activity.md) aktivity na jednu [Azure Storage](https://azure.microsoft.com/services/storage/) blob přístup [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) aktivita.
+* [Kopírování](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivity, která přemísťuje výsledků [HDInsightHive](../../data-factory/transform-data-using-hadoop-hive.md) aktivity na jednu [Azure Storage](https://azure.microsoft.com/services/storage/) blob přístup [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) aktivita.
 * [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) aktivity volání [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentu s výsledky umístit do jednoho [Azure Storage](https://azure.microsoft.com/services/storage/) objektů blob.
 
 #### <a name="copyscoredresultpipeline"></a>*CopyScoredResultPipeline*
-To [kanálu](../../data-factory/v1/data-factory-create-pipelines.md) obsahuje jediné aktivity - [kopie](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivity, která přemísťuje výsledky [Azure Machine Learning](#azure-machine-learning) experimentovat z  ***MLScoringPipeline*** k [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) zřízený jako součást instalace šablony řešení.
+To [kanálu](../../data-factory/concepts-pipelines-activities.md) obsahuje jediné aktivity - [kopie](https://msdn.microsoft.com/library/azure/dn835035.aspx) aktivity, která přemísťuje výsledky [Azure Machine Learning](#azure-machine-learning) experimentovat z  ***MLScoringPipeline*** k [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) zřízený jako součást instalace šablony řešení.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
 [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) experimentovat použité pro tuto šablonu řešení poskytuje zbývající doby životnosti (RUL) leteckého motoru. Experimentu je specifický pro datové sady spotřebované a vyžaduje úpravu nebo v místním nahrazení specifické pro data.
@@ -184,10 +184,10 @@ Následující kroky vás o tom, jak připojit soubor pbix k databázi SQL, kter
    * Ve složce, které jste stáhli a unzipped soubor generátor, dvakrát klikněte **PowerBI\\PredictiveMaintenanceAerospace.pbix** souboru. Pokud se při otevření souboru se zobrazí všechny zprávy upozornění, je ignorujte. Nahoře soubor, klikněte na **'upravit dotazy**.
      
      ![Úpravy dotazů](./media/cortana-analytics-technical-guide-predictive-maintenance/edit-queries.png)
-   * Uvidíte dvě tabulky **RemainingUsefulLife** a **PMResult**. Vyberte první tabulky a klikněte na ![ikona nastavení dotazu](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png) vedle **'Source'** v části **"použít postup** na pravé straně **'Nastavení dotazu'** panelu. Ignorujte všechny zprávy upozornění, které se zobrazují.
+   * Uvidíte dvě tabulky **RemainingUsefulLife** a **PMResult**. Vyberte první tabulky a klikněte na ![ikona nastavení dotazu](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-query-settings.png) vedle **'Source'** pod **"použít postup** na pravé straně **'Nastavení dotazu'** panely. Ignorujte všechny zprávy upozornění, které se zobrazují.
    * V okně pop, nahraďte **"Server"** a **'Databázi'** s vlastními názvy serveru a databáze a pak klikněte na **"OK"**. Pro název serveru, je nutné zadat port 1433 (**YourSoutionName.database.windows.net, 1433**). Ponechat toto pole databáze jako **pmaintenancedb**. Ignorujte upozornění, které se zobrazují na obrazovce.
-   * V dalším okně pop, uvidíte dvě možnosti, v levém podokně (**Windows** a **databáze**). Klikněte na tlačítko **'Databázi'**, vyplňte vaše **'Uživatelského jména'** a **'Password'** (Toto je uživatelské jméno a heslo, které jste zadali při prvním nasazení řešení a vytvoření Azure SQL database). V ***vyberte, kterou úroveň použít tato nastavení***, zkontrolujte úrovně možnost databáze. Pak klikněte na tlačítko **"Připojit"**.
-   * Klikněte na druhé tabulky **PMResult** klikněte ![navigační ikonu](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png) vedle **'Source'** v části **"použít postup** na pravé straně **'Nastavení dotazu'** panelu a aktualizovat název serveru a databáze jako výše uvedené kroky a klikněte na tlačítko OK.
+   * V dalším okně pop, uvidíte dvě možnosti, v levém podokně (**Windows** a **databáze**). Klikněte na tlačítko **'Databázi'**, vyplňte vaše **'Uživatelského jména'** a **'Password'** (Toto je uživatelské jméno a heslo, které jste zadali při prvním nasazení řešení a vytvořit Azure Databáze SQL). V ***vyberte, kterou úroveň použít tato nastavení***, zkontrolujte úrovně možnost databáze. Pak klikněte na tlačítko **"Připojit"**.
+   * Klikněte na druhé tabulky **PMResult** klikněte ![navigační ikonu](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-navigation.png) vedle **'Source'** pod **"použít postup** na pravé straně **'Nastavení dotazu'** panelu a aktualizovat název serveru a databáze jako výše uvedené kroky a klikněte na tlačítko OK.
    * Jakmile jste se na základě zpět na předchozí stránku, zavřete okno. Zobrazí se zpráva – klikněte na tlačítko **použít**. Nakonec kliknutím **Uložit** tlačítko a uložte změny. Souboru Power BI je nyní navázat připojení k serveru. Pokud vaše vizualizace jsou prázdná, zkontrolujte, zda že vymazat výběry na vizualizaci, která bude vizualizovat všechna data kliknutím na ikonu mazání v pravém horním rohu legend. Použijte tlačítko Aktualizovat, aby odpovídala nová data v vizualizacemi. Na začátku jenom zobrazit počáteční hodnoty data na vaše vizualizace jako objekt pro vytváření dat je naplánovaná aktualizace každých 3 hodiny. Po 3 hodiny zobrazí se nové předpovědi promítnuta vaší vizualizace při aktualizaci data.
 3. (Volitelné) Publikovat k řídicímu neaktivní trase [Power BI online](http://www.powerbi.com/). Všimněte si, že tento krok vyžaduje účet Power BI (nebo účtu Office 365).
    

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: magoedte
-ms.openlocfilehash: e46ae3af3a718703f9e1d6b847b2342469bf3a1e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 52c3914cc1b51bf7c2a6d0fbf28dc0bf7756e749
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31517219"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751441"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Vyhledávání prostředků mezi protokolu v analýzy protokolů  
 
 Dříve s Azure Log Analytics může pouze analyzujete data přímo z aktuální pracovní prostor a je omezený možnost dotazu napříč více pracovní prostory definované v rámci vašeho předplatného.  Kromě toho může vyhledávat pouze položky telemetrie získané z vaší webové aplikace pomocí Application Insights přímo ve službě Application Insights, nebo ze sady Visual Studio.  To rovněž se data aplikací a výzvu k analýze nativně provozní společně.   
 
-Teď se můžete dotazovat nejen napříč více analýzy protokolů pracovních prostorů, ale také data z konkrétní aplikaci Application Insights ve stejné skupině prostředků, jiné skupině prostředků nebo jiné předplatné. To poskytuje systémová zobrazení vaše data.  Můžete provést pouze tyto typy dotazů v [pokročilé portál](log-analytics-log-search-portals.md#advanced-analytics-portal), není v portálu Azure.  
+Teď se můžete dotazovat nejen napříč více analýzy protokolů pracovních prostorů, ale také data z konkrétní aplikaci Application Insights ve stejné skupině prostředků, jiné skupině prostředků nebo jiné předplatné. To poskytuje systémová zobrazení vaše data.  Můžete provést pouze tyto typy dotazů v [pokročilé portál](log-analytics-log-search-portals.md#advanced-analytics-portal), není v portálu Azure. Počet prostředků (pracovní prostory analýzy protokolů a aplikace Application Insights), které lze zahrnout v jednom dotazu je omezeno na 100. 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Dotazování napříč pracovních prostorů analýzy protokolů a z Application Insights
 Chcete-li jiný pracovní prostor v dotazu, použijte [ *prostoru* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace()) identifikátor a pro aplikace z Application Insights, použijte [ *aplikace* ](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())identifikátor.  

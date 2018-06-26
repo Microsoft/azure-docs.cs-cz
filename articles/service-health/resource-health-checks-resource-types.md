@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 831383ffa3aa3464f3d62da4e1609cf3f1a4707e
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: e37266f2438f9c6bc9de2d01624bda77f9d6ee8a
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309592"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945869"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a stav kontrol ve stavu prostředků Azure.
 Níže je úplný seznam všechny kontroly provedené prostřednictvím stav prostředku pro typy prostředků.
@@ -62,13 +62,13 @@ Níže je úplný seznam všechny kontroly provedené prostřednictvím stav pro
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft.datalakeanalytics/accounts
 |Spuštění kontroly|
 |---|
-|<ul><li>Mohou uživatelé odeslání úloh Data Lake Analytics v oblasti?</li><li>Proveďte základní úlohy spustit a úspěšně dokončit v oblasti?</li><li>Uživatelé, můžete seznam položek katalogu v oblasti?</li>|
+|<ul><li>Mít uživatelé zkušeného problémy při odesílání nebo výpis jejich úloh Data Lake Analytics?</li><li>Nedaří úloh Data Lake Analytics k dokončení chyby systému?</li></ul>|
 
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.datalakestore/accounts
 |Spuštění kontroly|
 |---|
-|<ul><li>Můžete uživatelům odesílání dat do Data Lake Store v oblasti?</li><li>Mohou uživatelé stáhnout dat z Data Lake Store v oblasti?</li></ul>|
+|<ul><li>Mají uživatelé došlo k potížím, nahrávání dat do Data Lake Store?</li><li>Mají uživatelé došlo k potížím, stahování dat z Data Lake Store?</li></ul>|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
 

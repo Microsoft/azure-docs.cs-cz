@@ -1,7 +1,7 @@
 V tohoto návodu se dozvíte, jak používat **Salesforce – když je vytvořen objekt** aktivační událost zahájíte pracovní postup aplikace logiky po nové zájemce ve vaší služby Salesforce.
 
 > [!NOTE]
-> Můžete získat vyzve k přihlásit ke svému účtu Salesforce, pokud jste ještě nevytvořili *připojení* do služby Salesforce.  
+> Získat zobrazí výzva k přihlášení ke svému účtu Salesforce, pokud jste ještě nevytvořili *připojení* do služby Salesforce.  
 > 
 > 
 

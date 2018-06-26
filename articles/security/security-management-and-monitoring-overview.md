@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: terrylan
-ms.openlocfilehash: 1e48131ff784ba5bb8d5a7dfffe8afb5ce8bb4c1
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 9e538ac39af5b6df44860a4a70b0fd1e058c060c
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364365"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752284"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Přehled monitorování a správu zabezpečení Azure
 Azure nabízí mechanismy zabezpečení, které pomáhají při správy a monitorování cloudových služeb Azure a virtuálních počítačů (VM). Tento článek obsahuje přehled těchto klíčových funkcí zabezpečení a služeb. Jsou uvedeny odkazy na články, které poskytují podrobnosti o jednotlivých tak další informace.
@@ -39,7 +39,7 @@ Další informace o správě zabezpečení najdete v tématu [Správa zabezpeče
 
 Další informace:
 
-* [Blog týmu Active Directory na RBAC](http://i1.blogs.technet.com/b/ad/archive/2015/10/12/azure-rbac-is-ga.aspx)
+* [Blog týmu Active Directory na RBAC](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
 * [Řízení přístupu Azure na základě rolí](../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Antimalware

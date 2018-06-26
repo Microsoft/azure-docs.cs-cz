@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/07/2017
 ms.author: bharatn
-ms.openlocfilehash: f5ca579b446e5d3608d53cea73fa9392cd00db06
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4c45bc76c176ce9f2476f6a666afda1daf4cd9c5
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212220"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36749925"
 ---
 # <a name="wcf-based-communication-stack-for-reliable-services"></a>Komunikace na základě WCF zásobníku pro spolehlivé služby
 Spolehlivé služby framework umožňuje autorům služby vyberte komunikačního balíku, který chtějí používat pro své služby. Můžete zařadit komunikačního balíku libovolný prostřednictvím **ICommunicationListener** vrácená z [CreateServiceReplicaListeners nebo CreateServiceInstanceListeners](service-fabric-reliable-services-communication.md) metody. Rozhraní framework poskytuje implementaci komunikačního balíku založené na Windows Communication Foundation (WCF) pro autory služby, které chtějí využívat komunikace na základě WCF.
@@ -91,7 +91,7 @@ public class WcfCommunicationClient : ServicePartitionClient<WcfCommunicationCli
 
 ```
 
-Kód klienta můžete použít **WcfCommunicationClientFactory** spolu s **WcfCommunicationClient** které implementuje **ServicePartitionClient** zjistit koncový bod služby a komunikovat se službou.
+Kód klienta můžete použít **WcfCommunicationClientFactory** spolu s **WcfCommunicationClient** které implementuje **ServicePartitionClient** k určení koncový bod služby a komunikovat se službou.
 
 ```csharp
 // Create binding
@@ -126,5 +126,5 @@ var result = calculatorServiceCommunicationClient.InvokeWithRetryAsync(
 ## <a name="next-steps"></a>Další postup
 * [Vzdálené volání procedur u vzdálené komunikace spolehlivé služby](service-fabric-reliable-services-communication-remoting.md)
 * [Webové rozhraní API s OWIN v spolehlivé služby](service-fabric-reliable-services-communication-webapi.md)
-* [Zabezpečení komunikace pro spolehlivé služby](service-fabric-reliable-services-secure-communication.md)
+* [Zabezpečení komunikace pro spolehlivé služby](service-fabric-reliable-services-secure-communication-wcf.md)
 

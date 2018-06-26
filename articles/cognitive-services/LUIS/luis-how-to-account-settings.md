@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: v-geberr
-ms.openlocfilehash: 76300b307c8e87a3dd108fc53d3b30a53d3276dd
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 1f22112a38bf32af03ffaf0493db16839b3fe794
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263920"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36749959"
 ---
 # <a name="manage-your-luis-account"></a>Správa vašeho účtu LUIS
 Dvě důležité informace pro účet LUIS jsou uživatelský účet a pro tvorbu klíč. Vaše přihlašovací údaje je spravován na [account.microsoft.com](https://account.microsoft.com). Klíč pro vytváření obsahu je spravovat z [LUIS][LUIS] webu **nastavení** stránky. 
@@ -46,7 +46,9 @@ Nejprve uživatel přihlásí do LUIS a vidí v místním dialogovém okně, kte
 
 Druhý správce klienta do LUIS přihlásí a zobrazí automaticky otevíraný dialog toku souhlasu. Toto je dialogové okno Správce musí udělit oprávnění pro uživatele. Jakmile správce přijímá oprávnění, uživatel je moci pokračovat s LUIS.
 
-Pokud správce klienta nebude Přihlaste se k LUIS, můžete přístup správce [souhlas](https://account.activedirectory.windowsazure.com/Consent.aspx?ClientID=65920ba3-ab61-4a9b-9b10-505e5ce61b58) pro LUIS. 
+Pokud správce klienta nebude Přihlaste se k LUIS, můžete přístup správce [souhlas](https://account.activedirectory.windowsazure.com/r#/applications) pro LUIS. 
+
+![Oprávnění služby Azure active directory web app](./media/luis-how-to-account-settings/tenant-permissions.png)
 
 Pokud správce klienta chce pouze určitým uživatelům používat LUIS, podívejte se na to [identity blog](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/).
 

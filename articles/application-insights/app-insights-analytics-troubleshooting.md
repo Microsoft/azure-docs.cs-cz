@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2016
 ms.author: mbullwin
-ms.openlocfilehash: c479298187cfc4af6d9b33d9bd3839e8fa579566
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: eeda0fa6ad8faa05baf0a9344e958d298fb80d8e
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294155"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936679"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Řešení potíží s analýzami v nástroji Application Insights
 Problémy s [Application Insights Analytics](app-insights-analytics.md)? Začněte tady. Analytics je nástroj výkonné vyhledávání systému Azure Application Insights.
@@ -57,7 +57,7 @@ Došlo k chybě související s ověřováním (během ověřování nebo při g
 4. Otevře další okno (obyčejnou) prohlížeče a přejděte na [Azure](https://portal.azure.com). Odhlaste se. Pak otevřete svůj odkaz a přihlaste se pomocí správných přihlašovacích údajů.
 5. Uživatelům používajícím Microsoft Edge a Internet Explorer se tato chyba může zobrazit i v případě, že nejsou podporována nastavení důvěryhodné zóny.
    
-    Ověřte obě [portálu analýza](https://analytics.applicationinsights.io) a [portál Azure Active Directory](https://portal.azure.com) jsou ve stejné zóny zabezpečení:
+    Ověřte obě [portálu analýza](https://portal.azure.com) a [portál Azure Active Directory](https://portal.azure.com) jsou ve stejné zóny zabezpečení:
    
    * V Internet Exploreru otevřete **Možnosti Internetu**, **zabezpečení**, **Důvěryhodné servery**, **lokality**:
      

@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2017
 ms.author: cherylmc
-ms.openlocfilehash: b2d702ecdd5e1fca342e7c84c6e75339097f0bcd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 037c1c7dd73f668bd8ad95568743b223b1e11c79
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23884129"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750193"
 ---
 # <a name="verify-a-vpn-gateway-connection"></a>Ověření připojení brány sítě VPN
 
 Tento článek ukazuje, jak ověřit připojení k bráně VPN pro classic a modelech nasazení Resource Manager.
 
-## <a name="azure-portal"></a>portál Azure
+## <a name="azure-portal"></a>Azure Portal
 
 [!INCLUDE [Azure portal](../../includes/vpn-gateway-verify-connection-portal-rm-include.md)]
 
@@ -49,10 +49,10 @@ Chcete-li ověřit připojení k bráně VPN pro model nasazení Resource Manage
 
 ## <a name="powershell-classic"></a>PowerShell (Classic)
 
-Chcete-li ověřit připojení brány VPN pro model nasazení classic pomocí prostředí PowerShell, nainstalujte nejnovější verzi rutin prostředí Azure PowerShell. Nezapomeňte si stáhněte a nainstalujte [Service Management](https://docs.microsoft.com/powershell/azure/install-azure-ps?view=azuresmps-3.7.0) modulu. 'Add-AzureAccount, použijte k přihlášení do modelu nasazení classic.
+Chcete-li ověřit připojení brány VPN pro model nasazení classic pomocí prostředí PowerShell, nainstalujte nejnovější verzi rutin prostředí Azure PowerShell. Nezapomeňte si stáhněte a nainstalujte [Service Management](https://docs.microsoft.com/en-us/powershell/azure/servicemanagement/install-azure-ps?view=azuresmps-4.0.0#azure-service-management-cmdlets) modulu. 'Add-AzureAccount, použijte k přihlášení do modelu nasazení classic.
 
 [!INCLUDE [Classic PowerShell](../../includes/vpn-gateway-verify-connection-ps-classic-include.md)]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Do virtuálních sítí můžete přidat virtuální počítače. Kroky jsou uvedeny v tématu [Vytvoření virtuálního počítače](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

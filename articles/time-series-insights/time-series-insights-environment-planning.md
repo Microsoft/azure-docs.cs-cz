@@ -1,6 +1,6 @@
 ---
 title: Plánování rozsahu prostředí Azure časové řady Insights | Microsoft Docs
-description: Tento článek popisuje, jak postupovat podle osvědčených postupů při plánování prostředí Azure časové řady statistiky, včetně kapacitu úložiště, uchovávání dat, kapacity příjem příchozích dat a monitorování.
+description: Tento článek popisuje, jak postupovat podle osvědčených postupů při plánování prostředí Azure časové řady statistiky, včetně kapacitu úložiště, uchovávání dat, kapacity příjem příchozích dat, monitorování a obchodní zotavení po havárii (BCDR).
 services: time-series-insights
 ms.service: time-series-insights
 author: ashannon7
@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 49842f971645f97d954451ff6755294dc3c5a40f
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: f0f414e43231fc6d873d639902fd4f71e48f1002
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293260"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751165"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Plánování prostředí Statistika Azure časové řady
 
@@ -94,8 +94,18 @@ Referenční datové sady je kolekce položek, které posílení události ze zd
 
 Poznámka: referenční data není zpětně připojena. To znamená, že pouze aktuálních a budoucích příchozí přenos dat je shodná a připojený k sadu referenční data, jakmile byla nakonfigurována a nahrát.  Pokud budete chtít poslat TSI velký počet historických dat a nemáte nahrát nebo nejprve vytvořit referenční data v TSI pak budete muset znovu práci (pomocného parametru, není fun).  
 
-Další informace o tom, jak vytvářet, odeslání a odkaz na data v TSI spravovat, přejděte na našem *referenční data* dokumentace [dokumentace] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Další informace o tom, jak vytvářet, odeslání a odkaz na data v TSI spravovat, přejděte na našem *referenční data* dokumentace [dokumentaci](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
+## <a name="business-disaster-recovery"></a>Obchodní zotavení po havárii
+Jako služba Azure časové řady statistika poskytuje vysokou dostupnost (HA) pomocí redundance na úrovni oblasti Azure bez další zátěže vyžadují řešení. Platforma Microsoft Azure také obsahuje funkce, které pomáhají při vytváření řešení pomocí možnosti zotavení po havárii nebo mezi oblastmi dostupnosti. Pokud chcete zajistit globální, mezi oblastmi vysoká dostupnost pro zařízení nebo uživatelů, využít výhod těchto funkcí Azure zotavení po Havárii. Článek [Azure obchodní kontinuity technické pokyny](../resiliency/resiliency-technical-guidance.md) popisuje integrované funkce v Azure pro provozní kontinuitu a zotavení po Havárii. [Zotavení po havárii a vysoká dostupnost pro aplikace Azure] [zotavení po havárii a vysoká dostupnost pro aplikace Azure] dokument obsahuje pokyny k architektura s strategie pro aplikace Azure a dosáhnout HA a zotavení po Havárii.
+
+Statistika časové řady nemá předdefinované obchodní zotavení po havárii (BCDR).  Zákazníci, kteří vyžadují BCDR však můžete implementovat stále strategie obnovení. Vytvořte druhé časové řady Statistika prostředí v oblasti zálohování Azure a odesílání událostí do prostředí tohoto sekundární ze zdroje primární událostí, využití druhý vyhrazenou skupinu spotřebitelů a pokyny pro tento zdroj události BCDR.  
+
+1.  Vytvoření prostředí v druhé oblasti.  Další informace o vytváření prostředí časové řady Insights [zde](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-get-started).
+2.  Vytvořte druhý vyhrazenou skupinu spotřebitelů zdroje událostí a připojit tento zdroj událostí do nového prostředí.  Nezapomeňte určit skupinu druhý, vyhrazené příjemců.  Další informace o to pomocí následujících buď [dokumentace IoT Hub](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) nebo [dokumentace centra událostí](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access).
+3.  Pokud primární oblasti přejděte během incident po havárii, přepínače přes operací zálohování prostředí Statistika časové řady.  
+
+Další informace o zásadách BCDR IoT Hub, head [zde](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-ha-dr).  Další informace o zásadách BCDR centra událostí, head [zde](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-geo-dr).  
 
 ## <a name="next-steps"></a>Další postup
 - [Postup přidání zdroje událostí centra událostí](time-series-insights-how-to-add-an-event-source-eventhub.md)

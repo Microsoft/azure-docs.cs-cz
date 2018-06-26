@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.openlocfilehash: a8866385c682e86e889ddf171cc640fe0bb8252d
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 1e2c2dc45f2cb91ca225bf183ddde5fa2d1123c4
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737465"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936985"
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>Použití Azure CLI 1.0 s Azure Storage
 
@@ -41,9 +41,9 @@ Tato příručka předpokládá, že chápete základní koncepty Azure Storage.
 ## <a name="get-started-with-azure-storage-and-the-azure-cli-in-5-minutes"></a>Začínáme s Azure Storage a rozhraní příkazového řádku Azure během 5 minut
 Tato příručka používá Ubuntu příklady, ale jiné platformy operačního systému proveďte podobně.
 
-**Nové do Azure:** získat předplatné Microsoft Azure a účet Microsoft přidružené k tomuto předplatnému. Informace o možnostech nákupu Azure najdete v tématu [bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/), [zakoupit možnosti](https://azure.microsoft.com/pricing/purchase-options/), a [člen nabízí](https://azure.microsoft.com/pricing/member-offers/) (pro členy MSDN, BizSpark, Microsoft Partner Network, a další programy společnosti Microsoft).
+**Nové do Azure:** získat předplatné Microsoft Azure a účet Microsoft přidružené k tomuto předplatnému. Informace o možnostech nákupu Azure najdete v tématu [bezplatné zkušební verze](https://azure.microsoft.com/pricing/free-trial/), [zakoupit možnosti](https://azure.microsoft.com/pricing/purchase-options/), a [člen nabízí](https://azure.microsoft.com/pricing/member-offers/) (pro členy MSDN, Microsoft Partner Network a BizSpark, a Další programy společnosti Microsoft).
 
-V tématu [přiřazení rolí správce v Azure Active Directory (Azure AD)](https://msdn.microsoft.com/library/azure/hh531793.aspx) Další informace o předplatných Azure.
+V tématu [přiřazení rolí správce v Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal) Další informace o předplatných Azure.
 
 **Po vytvoření odběru služby Microsoft Azure a účet:**
 

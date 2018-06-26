@@ -8,21 +8,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 06/21/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d724de8d5252318b37ae539ba2513faaf2313a76
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 76308bbb06d6bf1cdc9147258f7c26babae371a9
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268126"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36750481"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro modul runtime integrace Azure SSIS
 
-Vlastní instalace rozhraní pro modul Runtime integrace Azure SSIS poskytuje rozhraní pro přidání kroků vlastní instalační program během zřizování nebo rekonfigurace vaší Azure SSIS infračerveného signálu. Vlastní instalace vám umožňuje změnit výchozí operační konfigurace nebo prostředí (například spustit další služby systému Windows) nebo nainstalovat další součásti (například sestavení, ovladače nebo rozšíření) na každém uzlu vaší Azure SSIS infračerveného signálu.
+Vlastní instalace rozhraní pro modul Runtime integrace Azure SSIS poskytuje rozhraní pro přidání kroků vlastní instalační program během zřizování nebo rekonfigurace vaší Azure SSIS infračerveného signálu. Vlastní instalace vám umožňuje změnit výchozí operační konfigurace nebo prostředí (například spustit další služby systému Windows nebo zachovat přihlašovací údaje pro sdílené složky) nebo nainstalovat další součásti (například sestavení, ovladače nebo rozšíření) na každém uzlu vaší Azure SSIS infračerveného signálu.
 
 Konfigurujete vlastní instalace a příprava skript a jeho přidružené soubory a uložte je do kontejneru objektů blob v účtu úložiště Azure. Zadejte sdíleného přístupového podpisu (SAS) identifikátor URI (Uniform Resource) pro váš kontejner při zřízení nebo změnit konfiguraci vašeho Azure SSIS infračerveného signálu. Každý uzel vaší Azure SSIS IR potom stáhne skript a jeho přidružené soubory z vašeho kontejneru a spustí vlastní instalace se zvýšenými oprávněními. Po dokončení vlastní instalace ukládání každý uzel ve standardním výstupu spouštění a další protokoly do vašeho kontejneru.
 
@@ -87,7 +87,10 @@ Chcete-li přizpůsobit vaší Azure SSIS reakcí na Incidenty, potřebujete ná
 
        ![Získání sdíleného přístupového podpisu kontejneru](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
-    7.  Vytvořit identifikátor URI SAS pro váš kontejner s dobou vypršení platnosti dostatečně dlouhý a čtení + zápis + seznamu oprávnění. Budete potřebovat identifikátor URI SAS ke stažení a spuštění vlastní instalační skript a jeho přidružené soubory pokaždé, když je obnovit z libovolného uzlu vaší Azure SSIS IR Image. Potřebujete oprávnění nahrát protokoly spuštění instalace zapisovat.
+    7.  Vytvořit identifikátor URI SAS pro váš kontejner s dobou vypršení platnosti dostatečně dlouhý a čtení + zápis + seznamu oprávnění. Budete potřebovat identifikátor URI SAS ke stažení a spuštění vlastní instalační skript a jeho přidružené soubory vždy, když je libovolného uzlu vaší Azure SSIS IR obnovit z Image nebo restartovat. Potřebujete oprávnění nahrát protokoly spuštění instalace zapisovat.
+
+        > [!IMPORTANT]
+        > Ujistěte se, že identifikátor URI SAS, nemá prošlou platnost a vlastní instalace prostředky jsou vždy k dispozici během celý životní cyklus vaší Azure SSIS IR, od vytvoření k odstranění, zejména v případě, že pravidelně zastavení a spuštění vaší Azure SSIS IR během této doby.
 
        ![Vygenerování sdíleného přístupového podpisu kontejneru](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image7.png)
 
@@ -124,7 +127,7 @@ Chcete-li přizpůsobit vaší Azure SSIS reakcí na Incidenty, potřebujete ná
 
     c. Vyberte kontejner připojené verzi Public Preview a dvakrát klikněte na `CustomSetupScript` složky. V této složce jsou následující položky:
 
-       1. A `Sample` složky, která obsahuje vlastní instalační program a nainstalujte základní úkolů na každém uzlu vaší Azure SSIS infračerveného signálu. Úloha se nic nestane. ale režimu spánku na několik sekund. Složka také obsahuje `gacutil` složky, která obsahuje `gacutil.exe`.
+       1. A `Sample` složky, která obsahuje vlastní instalační program a nainstalujte základní úkolů na každém uzlu vaší Azure SSIS infračerveného signálu. Úloha se nic nestane. ale režimu spánku na několik sekund. Složka také obsahuje `gacutil` složky, která obsahuje `gacutil.exe`. Kromě toho `main.cmd` obsahuje komentáře k uchování přihlašovací údaje pro sdílené složky.
 
        2. A `UserScenarios` složky, která obsahuje některá vlastní nastavení pro reálný uživatel scénáře.
 
@@ -138,7 +141,7 @@ Chcete-li přizpůsobit vaší Azure SSIS reakcí na Incidenty, potřebujete ná
 
        3. `EXCEL` Složky, která obsahuje vlastní instalační program a nainstalujte open-source sestavení (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, a `ExcelDataReader.dll`) na každém uzlu vaší Azure SSIS infračerveného signálu.
 
-       4. `MSDTC` Složky, která obsahuje vlastní instalace k úpravě konfigurace sítě a zabezpečení pro instanci Microsoft Distributed Transaction Coordinator služba MSDTC () na každém uzlu vaší Azure SSIS infračerveného signálu.
+       4. `MSDTC` Složky, která obsahuje vlastní instalace k úpravě konfigurace sítě a zabezpečení pro službu Microsoft Distributed Transaction Coordinator služba MSDTC () na každém uzlu vaší Azure SSIS infračerveného signálu. Aby se zajistilo, že je spuštěna služba MSDTC, přidejte úlohy spustit proces na začátku toku řízení ve vašich balíčcích na spusťte následující příkaz: `%SystemRoot%\system32\cmd.exe /c powershell -Command "Start-Service MSDTC"` 
 
        5. `ORACLE ENTERPRISE` Složky, která obsahuje vlastní instalační skript (`main.cmd`) a konfigurační soubor bezobslužné instalace (`client.rsp`) k instalaci ovladačů Oracle OCI na každém uzlu vaší Azure SSIS IR Enterprise Edition. Tato instalace vám umožní používat Správce připojení Oracle, zdroj a cíl. Nejdřív, například stáhnout nejnovější verzi klienta Oracle - `winx64_12102_client.zip` – [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html) a nahrajte ji společně s `main.cmd` a `client.rsp` do vašeho kontejneru. Používáte-li se připojit k Oracle TNS, budete také muset stáhnout `tnsnames.ora`, upravovat a nahrajte ho do kontejneru, takže je možné zkopírovat do instalační složky Oracle během instalace.
 

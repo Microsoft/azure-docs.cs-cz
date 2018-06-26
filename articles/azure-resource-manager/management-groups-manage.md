@@ -10,18 +10,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/15/2018
+ms.date: 06/22/2018
 ms.author: rithorn
-ms.openlocfilehash: 822a2df113b848f07e616f155881f345028cee1d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 0a13627232904f4b14cdb5cbf5c3ca927d9ea167
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36754497"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Spravovat prostředky s skupin pro správu 
 Skupiny pro správu jsou kontejnery, které vám pomůžou spravovat přístup, zásady a dodržování předpisů v rámci více předplatných. Můžete změnit, odstranit a správě těchto kontejnerů do mají hierarchie, které lze použít s [zásad Azure](../azure-policy/azure-policy-introduction.md) a [Azure Role přístupu na základě ovládacích prvků (RBAC)](../role-based-access-control/overview.md). Další informace o skupinách správy najdete v tématu [uspořádání prostředků se skupinami pro správu Azure ](management-groups-overview.md).
 
-Funkce skupiny správy je dostupná ve verzi public preview. Pokud chcete začít používat správu skupin, přihlášení k [portál Azure](https://portal.azure.com) nebo můžete použít [prostředí Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), nebo [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) na Spravujte skupiny pro správu.
+Funkce skupiny správy je dostupná ve verzi public preview. K použití skupin pro správu, přihlaste se k [portál Azure](https://portal.azure.com) nebo můžete použít [prostředí Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM.ManagementGroups/0.0.1-preview), [rozhraní příkazového řádku Azure](https://docs.microsoft.com/cli/azure/extension?view=azure-cli-latest#az_extension_list_available), nebo [REST API](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/managementgroups/resource-manager/Microsoft.Management/preview/2018-01-01-preview) na Spravujte skupiny pro správu.
 
 Změnit skupinu pro správu, musí mít roli vlastníka nebo přispěvatele skupiny pro správu. Chcete-li zjistit, jaká oprávnění mají, vyberte skupinu pro správu a pak vyberte **IAM**. Další informace o rolích RBAC najdete v tématu [spravovat oprávnění a přístupová práva pomocí RBAC](../role-based-access-control/overview.md).
 
@@ -55,8 +56,8 @@ C:\> Update-AzureRmManagementGroup -GroupName ContosoIt -DisplayName "Contoso Gr
 
 Pokud používáte Azure CLI použijte příkaz aktualizace. 
 
-```azure-cli
-C:\> az account management-group update --group-name Contoso --display-name "Contoso Group" 
+```azurecli-interactive
+az account management-group update --name Contoso --display-name "Contoso Group" 
 ```
 
 ---
@@ -74,12 +75,12 @@ Pokud chcete odstranit skupinu pro správu, musí být splněny následující p
 2. Vyberte **všechny služby** > **skupin pro správu**  
 3. Vyberte skupinu pro správu, které chcete odstranit. 
     
-    ![Odstranit skupinu](media/management-groups/delete.png)
+    ![Odstranění skupiny](media/management-groups/delete.png)
 4. Vyberte **Odstranit**. 
     - Pokud je zakázána na ikonu, vaše myši pro výběr ukazatele myši na ikonu se dozvíte z důvodu. 
 5. Je okno, které se otevře, potvrzení, že chcete odstranit skupinu pro správu. 
 
-    ![Odstranit skupinu](media/management-groups/delete_confirm.png) 
+    ![Odstranění skupiny](media/management-groups/delete_confirm.png) 
 6. Vyberte **Ano** 
 
 
@@ -94,8 +95,8 @@ Remove-AzureRmManagementGroup -GroupName Contoso
 ### <a name="delete-in-azure-cli"></a>Odstranění v Azure CLI
 Pomocí rozhraní příkazového řádku Azure použijte příkaz az účet skupiny pro správu odstraňte. 
 
-```azure-cli
-C:\> az account management-group delete --group-name Contoso
+```azurecli-interactive
+az account management-group delete --name Contoso
 ```
 ---
 
@@ -105,7 +106,7 @@ Můžete zobrazit všechny skupiny pro správu, které máte přímý nebo zděd
 ### <a name="view-in-the-portal"></a>Zobrazit na portálu
 1. Přihlaste se [portálu Azure](https://portal.azure.com)
 2. Vyberte **všechny služby** > **skupin pro správu** 
-3. Hierarchie skupiny pro správu stránky zatížení, kde můžete prozkoumat všechny skupiny pro správu a odběry, které máte přístup. Výběr názvu skupiny přejdete dolů úrovně v hierarchii. Navigačním funguje stejně jako soubor explorer. 
+3. Hierarchie skupiny správy stránky zatížení, kde můžete prozkoumat všechny skupiny pro správu a odběry, které máte přístup. Výběr názvu skupiny přejdete dolů úrovně v hierarchii. Navigačním funguje stejně jako soubor explorer. 
     ![Main](media/management-groups/main.png)
 4. Pokud chcete zobrazit podrobnosti o skupině pro správu, vyberte **(podrobnosti)** odkaz vedle názvu skupiny pro správu. Pokud tento odkaz není dostupná, nemáte oprávnění k zobrazení této skupiny pro správu.  
 
@@ -124,13 +125,13 @@ Get-AzureRmManagementGroup -GroupName Contoso
 ### <a name="view-in-azure-cli"></a>Zobrazení v rozhraní příkazového řádku Azure
 Můžete použít příkaz seznamu načíst všechny skupiny.  
 
-```azure-cli
+```azurecli-interactive
 az account management-group list
 ```
 Pro skupinu správy informace použijte příkaz Zobrazit
 
-```azurepowershell-interactive
-az account management-group show --group-name Contoso
+```azurecli-interactive
+az account management-group show --name Contoso
 ```
 ---
 
@@ -148,9 +149,9 @@ Chcete-li zjistit, jaká oprávnění mají, vyberte skupinu pro správu a pak v
 **Přidat existujícímu předplatnému do skupiny pro správu**
 1. Přihlaste se [portálu Azure](https://portal.azure.com)
 2. Vyberte **všechny služby** > **skupin pro správu** 
-3. Vyberte skupinu pro správu, které máte v úmyslu být nadřazená.      
+3. Vyberte skupinu pro správu, které chcete být nadřazená.      
 5. V horní části stránky, vyberte **přidat existující**. 
-6. V nabídce, která otevřít, vyberte **typ prostředku** položky, které chcete přesunout, což je **předplatné**.
+6. V nabídce, která otevřít, vyberte **typ prostředku** položky, které se pokoušíte přesunout, což je **předplatné**.
 7. Vyberte odběr, v seznamu se správné ID. 
 
     ![Podřízená položka](media/management-groups/add_context_2.png)
@@ -159,7 +160,7 @@ Chcete-li zjistit, jaká oprávnění mají, vyberte skupinu pro správu a pak v
 **Odebrat předplatné ze skupiny pro správu**
 1. Přihlaste se [portálu Azure](https://portal.azure.com)
 2. Vyberte **všechny služby** > **skupin pro správu** 
-3. Vyberte skupinu pro správu jsou tedy plánování aktuální nadřazené.  
+3. Vyberte plánování tedy nadřazenou skupinu pro správu.  
 4. Vyberte v seznamu, který chcete přesunout se třemi tečkami na konci řádku pro předplatné.
 
     ![Přesunout](media/management-groups/move_small.png)
@@ -185,14 +186,14 @@ Remove-AzureRmManagementGroupSubscription -GroupName Contoso -SubscriptionId 123
 ### <a name="move-subscriptions-in-azure-cli"></a>Přesunout odběry v rozhraní příkazového řádku Azure
 Pokud chcete přesunout předplatné v rozhraní příkazového řádku, můžete použít příkaz Přidat. 
 
-```azure-cli
-C:\> az account management-group add --group-name Contoso --subscription 12345678-1234-1234-1234-123456789012
+```azurecli-interactive
+az account management-group subscription add --name Contoso --subscription 12345678-1234-1234-1234-123456789012
 ```
 
 Odebrat ze skupiny pro správu předplatného, použijte příkaz remove předplatné.  
 
-```azure-cli
-C:\> az account management-group remove --group-name Contoso --subscription 12345678-1234-1234-1234-123456789012
+```azurecli-interactive
+az account management-group subscription remove --name Contoso --subscription 12345678-1234-1234-1234-123456789012
 ```
 
 ---
@@ -204,9 +205,9 @@ Když přesunete nadřazenou skupinu pro správu, všechny podřízené prostře
 
 1. Přihlaste se [portálu Azure](https://portal.azure.com)
 2. Vyberte **všechny služby** > **skupin pro správu** 
-3. Vyberte skupinu pro správu, které máte v úmyslu být nadřazená.      
+3. Vyberte skupinu pro správu, které chcete být nadřazená.      
 5. V horní části stránky, vyberte **přidat existující**.
-6. V nabídce, která otevřít, vyberte **typ prostředku** položky, které chcete přesunout, což je **skupiny pro správu**.
+6. V nabídce, která otevřít, vyberte **typ prostředku** položky, které se pokoušíte přesunout, což je **skupiny pro správu**.
 7. Vyberte skupinu pro správu s správné ID a název.
 
     ![Přesunutí](media/management-groups/add_context.png)
@@ -216,13 +217,13 @@ Když přesunete nadřazenou skupinu pro správu, všechny podřízené prostře
 Použijte příkaz Update-AzureRmManagementGroup v prostředí PowerShell přesunout skupinu pro správu v rámci jiné skupiny.  
 
 ```powershell
-C:\> Update-AzureRmManagementGroup -GroupName Contoso  -ParentName ContosoIT
+Update-AzureRmManagementGroup -GroupName Contoso  -ParentName ContosoIT
 ```  
 ### <a name="move-management-groups-in-azure-cli"></a>Přesunutí skupin pro správu v rozhraní příkazového řádku Azure
 Použijte příkaz update přesunout skupinu pro správu pomocí rozhraní příkazového řádku Azure. 
 
-```azure-cli
-C:/> az account management-group udpate --group-name Contoso --parent-id "Contoso Tenant" 
+```azurecli-interactive
+az account management-group update --name Contoso --parent "Contoso Tenant" 
 ``` 
 
 ---

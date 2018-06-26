@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: d1282fa005d609394dacc818c2cb729f580bc3fc
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d48828c8d2ec439f389fe4eddabb59599cc1680b
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263486"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752822"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archivovat Azure diagnostických protokolů
 
@@ -70,11 +70,11 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
 | ID prostředku |Ano |ID prostředku prostředku, na kterém chcete nastavit nastavení diagnostiky. |
-| StorageAccountId |Ne |ID prostředku účtu úložiště, který má být uložen diagnostické protokoly. |
+| storageAccountId |Ne |ID prostředku účtu úložiště, který má být uložen diagnostické protokoly. |
 | Kategorie |Ne |Čárkami oddělený seznam kategorií protokolu povolit. |
 | Povoleno |Ano |Logická hodnota, která určuje, zda diagnostiky jsou zapnutá nebo vypnutá u tohoto prostředku. |
 | RetentionEnabled |Ne |Logická hodnota, která udává, pokud jsou zásady uchovávání informací na tento prostředek povolené. |
-| retentionInDays |Ne |Počet dní, pro které by měl být zachován události od 1 do 2147483647. Hodnota nula ukládá protokoly bez omezení. |
+| RetentionInDays |Ne |Počet dní, pro které by měl být zachován události od 1 do 2147483647. Hodnota nula ukládá protokoly bez omezení. |
 
 ## <a name="archive-diagnostic-logs-via-the-azure-cli-20"></a>Archiv diagnostických protokolů pomocí Azure CLI 2.0
 
@@ -100,7 +100,7 @@ Přidáním dalších kategorií do protokolů diagnostiky tak, že přidáte do
 
 ## <a name="archive-diagnostic-logs-via-the-rest-api"></a>Diagnostické protokoly archivu přes REST API
 
-[Najdete v tomto dokumentu](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings) informace o tom, jak můžete nastavit pomocí rozhraní REST API Azure monitorování diagnostické nastavení.
+[Najdete v tomto dokumentu](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings) informace o tom, jak můžete nastavit pomocí rozhraní REST API Azure monitorování diagnostické nastavení.
 
 ## <a name="schema-of-diagnostic-logs-in-the-storage-account"></a>Schéma diagnostických protokolů v účtu úložiště
 

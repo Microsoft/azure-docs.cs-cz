@@ -3,8 +3,8 @@ title: Pomocí mapy služeb řešení v Azure | Microsoft Docs
 description: Service Map je řešení v Azure, které automaticky zjišťuje komponenty aplikací v systémech Windows a Linux a mapuje komunikace mezi těmito službami. Tento článek obsahuje podrobné informace pro nasazení mapy služeb ve vašem prostředí a jejich použití v různých scénářů.
 services: monitoring
 documentationcenter: ''
-author: daveirwin1
-manager: jwhit
+author: mgoedtel
+manager: carmonm
 editor: tysonn
 ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
 ms.service: monitoring
@@ -12,20 +12,33 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/22/2016
-ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: aa9a6b54576ce8399471891c9ab5b80216f00ee1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.date: 06/22/2018
+ms.author: daseidma;bwren
+ms.openlocfilehash: 812137a8320634364a7d91fd2e61cd3e9d15fc12
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887906"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751424"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Pomocí mapy služeb řešení v Azure
 Service Map automaticky rozpozná komponenty aplikace v systémech Windows a Linux a mapuje komunikaci mezi službami. Pomocí mapy služeb, můžete zobrazit vaše servery ve způsobu, jakým se domníváte, že z nich: jako vzájemně propojena systémy, které doručují důležité služby. Mapy služeb zobrazí připojení mezi servery, procesy, a vyžaduje porty mezi žádné připojení TCP architektura žádnou konfiguraci, jiné než instalaci agenta.
 
-Tento článek popisuje podrobnosti o pomocí mapy služeb. Informace o konfiguraci mapy služeb a agentů registrace najdete v tématu [mapy služeb konfigurace řešení v Azure]( monitoring-service-map-configure.md).
+Tento článek popisuje podrobnosti registrace a pomocí mapy služeb. Informace o konfiguraci mapy služeb a agentů registrace najdete v tématu [mapy služeb konfigurace řešení v Azure]( monitoring-service-map-configure.md).
 
+## <a name="sign-in-to-azure"></a>Přihlášení k Azure
+Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
+
+## <a name="enable-service-map"></a>Povolit mapy služeb
+1. Na portálu Azure klikněte na tlačítko **+ vytvořit prostředek**.
+2. V panelu vyhledávání, zadejte **mapy služeb** a stiskněte klávesu **Enter**.
+3. V stránky s výsledky hledání marketplace, vyberte **mapy služeb** ze seznamu.<br><br> ![Vyberte z Azure Marketplace výsledky hledání řešení mapy služeb](./media/monitoring-service-map/marketplace-search-results.png)<br>
+4. Na **mapy služeb** podokně přehled, zkontrolujte podrobnosti o řešení a potom klikněte na **vytvořit** chcete zahájit proces registrace do pracovního prostoru analýzy protokolů.<br><br> ![Zařadit řešení mapy služeb](./media/monitoring-service-map/service-map-onboard.png).
+5. V **konfigurace řešení** podokně, vyberte existující, nebo vytvořte nový pracovní prostor analýzy protokolů.  Další informace o tom, jak vytvořit nový pracovní prostor najdete v tématu [na portálu Azure vytvořit pracovní prostor analýzy protokolů](../log-analytics/log-analytics-quick-create-workspace.md). Po zadání požadovaných informací, klikněte na tlačítko **vytvořit**.  
+
+Při ověření informací a je řešení nasazeno, můžete sledovat průběh v části **oznámení** z nabídky. 
+
+Přístup k mapy služeb na portálu Azure z pracovního prostoru analýzy protokolů a vyberte možnost **řešení** v levém podokně.<br><br> ![Vyberte možnost řešení v prostoru](./media/monitoring-service-map/select-solution-from-workspace.png).<br> Ze seznamu řešení, vyberte **ServiceMap(workspaceName)** a v seznamu mapy služeb řešení Přehled stránky klikněte na dlaždici souhrnu mapy služeb.<br><br> ![Dlaždice souhrnu mapy služeb](./media/monitoring-service-map/service-map-summary-tile.png).
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>Případy použití: Ujistěte se, IT procesy závislostí clustery
 
@@ -44,9 +57,10 @@ Pokud používáte Azure Site Recovery a potřebovat pomoc definování posloupn
 ### <a name="patch-management"></a>Opravy správy
 Mapa služeb vylepšuje používání vyhodnocení aktualizací systému ukazuje, který ostatními týmy a servery závisí na službě, tak můžete upozornit předem před vypnout vaše systémy pro opravy. Mapy služeb taky zlepšuje správu oprava ukazuje, zda jsou k dispozici a správně připojené po vaší služby jsou opravit a restartovat.
 
-
 ## <a name="mapping-overview"></a>Přehled mapování
-Mapy služeb agenty shromažďovat informace o všech procesů připojení protokolu TCP na server, kam jste nainstalován a podrobnosti o příchozí a odchozí připojení pro jednotlivé procesy. V seznamu v levém podokně můžete vybrat počítače nebo skupiny, které mají mapy služeb agentů k vizualizaci závislé v zadaném časovém období. Počítač závislostí mapuje zaměřit na konkrétní počítač a zobrazují všechny počítače, které jsou přímé TCP klientů nebo serverů tohoto počítače.  Mapování skupin počítačů zobrazit sady serverů a jejich závislosti.
+Mapy služeb agenty shromažďovat informace o všech procesů připojení protokolu TCP na server, kam jste nainstalován a podrobnosti o příchozí a odchozí připojení pro jednotlivé procesy.
+
+Ze seznamu v levém podokně můžete vybrat počítače nebo skupiny, které mají mapy služeb agentů k vizualizaci závislé v zadaném časovém období. Počítač závislostí mapuje zaměřit na konkrétní počítač a zobrazují všechny počítače, které jsou přímé TCP klientů nebo serverů tohoto počítače.  Mapování skupin počítačů zobrazit sady serverů a jejich závislosti.
 
 ![Přehled mapy služeb](media/monitoring-service-map/service-map-overview.png)
 
@@ -143,10 +157,10 @@ Neúspěšné připojení jsou zobrazeny v rámci služby maps mapy služeb pro 
 
 Seznámení se nezdařilo připojení může pomoci při řešení, ověření migrace, analýzu zabezpečení a porozumění celkového architektury. Neúspěšné připojení jsou někdy neškodné, ale jejich často přejděte přímo k problému, jako je například prostředí převzetí služeb při selhání najednou stane nedostupný, nebo dvě úrovně aplikace není schopen komunikovat po migraci cloudu.
 
-## <a name="client-groups"></a>Skupin klientů
+## <a name="client-groups"></a>Skupiny klientů
 Skupin klientů jsou polí na mapě, která představují klientské počítače, které nemají závislostí agenty. Jedné skupiny klientů reprezentuje klienty pro jednotlivé procesu nebo počítače.
 
-![Skupin klientů](media/monitoring-service-map/client-groups.png)
+![Skupiny klientů](media/monitoring-service-map/client-groups.png)
 
 Pokud chcete zobrazit IP adresy serverů ve skupině pro klienta, vyberte skupinu. Obsah skupiny jsou uvedeny v **vlastnosti skupiny klienta** podokně.
 
@@ -187,16 +201,13 @@ Podrobnosti o procesu můžete shromáždit z operačního systému metadata o s
 ![Podokno Souhrn procesu](media/monitoring-service-map/process-summary.png)
 
 ## <a name="alerts-integration"></a>Integrace výstrah
-Mapa služeb se integruje s výstrahami v analýzy protokolů pro zobrazení aktivní výstrahy pro vybraný server v vybraný časový rozsah. Server Pokud aktuální výstrahy, zobrazí ikonu a **počítač výstrahy** podokně zobrazí výstrahy.
+Mapa služeb se integruje s Azure výstrahy k zobrazení aktivní výstrahy pro vybraný server v vybraný časový rozsah. Server Pokud aktuální výstrahy, zobrazí ikonu a **počítač výstrahy** podokně zobrazí výstrahy.
 
 ![Počítač podokně výstrahy](media/monitoring-service-map/machine-alerts.png)
 
 Pokud chcete povolit mapy služeb zobrazíte příslušné výstrahy, vytvořte pravidlo výstrahy, která aktivuje se v určitém počítači. Pokud chcete vytvořit správné výstrahy:
 - Obsahovat klauzuli do skupiny podle počítače (například **počítače interval 1 minuta**).
 - Zvolte výstrahy podle metriky měření.
-
-![Konfigurace upozornění](media/monitoring-service-map/alert-configuration.png)
-
 
 ## <a name="log-events-integration"></a>Integrace protokolu událostí
 Mapa služeb se integruje s protokolu hledání a zobrazit počet všechny dostupné protokolu události pro vybraný server během vybraný časový rozsah. Můžete kliknout na všechny řádek v seznamu událostí počty přejít na hledání protokolů a zobrazte jednotlivé protokolu události.
@@ -224,7 +235,7 @@ Integrace mapy služeb s sledování změn je automaticky, pokud obě řešení 
 
 Na následujícím obrázku je podrobný přehled o ConfigurationChange událost, která může dojít po výběru **zobrazit v analýzy protokolů**.
 
-![Změnakonfigurace událostí](media/monitoring-service-map/configuration-change-event.png)
+![Změnakonfigurace událostí](media/monitoring-service-map/configuration-change-event-01.png)
 
 
 ## <a name="performance-integration"></a>Integrace výkonu
@@ -254,7 +265,6 @@ Integrace mapy služeb se zabezpečení a Audit je automatické, pokud obě ře�
 **Zabezpečení počítače** podokně se zobrazují data z řešení zabezpečení a auditu pro vybraný server. V podokně obsahuje souhrnný seznam všechny zbývající bezpečnostní problémy pro server během vybraný časový rozsah. Kliknutím na některé z projde problémy zabezpečení dolů do hledání protokolů podrobnosti o nich.
 
 ![Podokno zabezpečení počítače](media/monitoring-service-map/machine-security.png)
-
 
 ## <a name="updates-integration"></a>Integrace aktualizací
 Mapy služeb integrace se Správa aktualizací je automatické, pokud obě řešení jsou povolené a nakonfigurované v pracovním prostoru Anlaytics protokolu.
@@ -368,7 +378,7 @@ ServiceMapComputer_CL | kde OperatingSystemFullName_s contains_cs "CentOS" | odl
 Všechna data serveru, proces a závislostí v mapy služeb je k dispozici prostřednictvím [rozhraní API REST služby mapy](https://docs.microsoft.com/rest/api/servicemap/).
 
 
-## <a name="diagnostic-and-usage-data"></a>data o využití a Diagnostika
+## <a name="diagnostic-and-usage-data"></a>Diagnostická data a data použití
 Microsoft automaticky shromažďuje data o využití a výkonu prostřednictvím používání služby mapy služeb. Tato data Microsoft používá k poskytování a zlepšování kvality, zabezpečení a integrity služby mapy služeb. Pokud chcete zadat přesné a efektivní možnosti pro odstraňování potíží, data zahrnují informace o konfiguraci vašeho softwaru, jako je operační systém a verze, IP adresu, název DNS a název pracovní stanice. Společnost Microsoft neshromažďuje jména, adresy ani jiné kontaktní informace.
 
 Další informace o shromažďování a používání dat najdete v tématu [prohlášení o ochraně osobních údajů služeb Microsoft Online](https://go.microsoft.com/fwlink/?LinkId=512132).

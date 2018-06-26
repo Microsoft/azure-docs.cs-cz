@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 1a7cb6c5d9c3383b127ce38ae21bb2dc811e1f2e
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 32970ff37d202cc73e7ab7aa1bf3d737dae895c1
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31529482"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936713"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Kontrolní bod a opětovného přehrání koncepty v úlohy Azure Stream Analytics
 Tento článek popisuje interní kontrolní bod a opětovného přehrání koncepty v Azure Stream Analytics a dopad na těch, které mít na úlohu obnovení. Při každém spuštění úlohy Stream Analytics informace o stavu zachovaný interně. Aby se informace o stavu pravidelně uloží do kontrolní bod. V některých scénářích kontrolního bodu informace slouží pro úlohy obnovení, pokud dojde k selhání úlohy nebo upgradu. Za jiných okolností kontrolní bod nelze použít pro obnovení a je nezbytné přehrání.
@@ -48,7 +48,7 @@ Microsoft příležitostně upgraduje binární soubory, které spouštějí úl
 
 V současné době není mezi upgrady zachován formát kontrolního bodu obnovení. V důsledku toho se streamování dotazu musí být obnovit stav zcela pomocí opětovného přehrání techniky. Chcete-li povolit úlohy Stream Analytics opakování přesně stejný vstup z před je důležité nastavit zásady uchovávání informací pro zdroj dat na alespoň okna velikostí v dotazu. Tak neučiníte může vést k nesprávné nebo částečné výsledky během upgradu služby, vzhledem k tomu, že zdrojová data nemusí být zachováno dostatečně zpět zahrnout velikost celé okno.
 
-Obecně platí množství opětovného přehrání potřeby je úměrná velikosti okna násobí hodnotou průměrný počet událostí. Jako příklad pro úlohu s vstupní počet 1000 událostí za sekundu velikost okna, která je větší než jedna hodina je považován za velikost velké opětovného přehrání. Pro dotazy s velikostí velkých opakování můžete pozorovat zpožděné výstup (žádný výstup) některé delší dobu. 
+Obecně platí množství opětovného přehrání potřeby je úměrná velikosti okna násobí hodnotou průměrný počet událostí. Jako příklad pro úlohu s vstupní počet 1000 událostí za sekundu velikost okna, která je větší než jedna hodina je považován za velikost velké opětovného přehrání. Až jednu hodinu dat může musí být znovu spuštěna k chybě při inicializaci stav tak, aby vytvořil úplné a správné výsledky, které může způsobit zpoždění výstup (žádný výstup) některé delší dobu. Dotazy s žádné windows nebo jiné dočasné operátory jako `JOIN` nebo `LAG`, by měla mít nulový počet opakování.
 
 ## <a name="estimate-replay-catch-up-time"></a>Odhad opětovného přehrání opravný času
 Chcete-li odhadnout délka zpoždění kvůli upgradu služby, proveďte tento postup:

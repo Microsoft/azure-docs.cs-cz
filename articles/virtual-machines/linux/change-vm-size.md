@@ -16,16 +16,16 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b5c396ad047567799b7541c1a125de0c1c51c39e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 900c45713541825ea36fe0b2d8684863b8138507
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32185990"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36936638"
 ---
 # <a name="resize-a-linux-virtual-machine-using-cli-20"></a>Změnit velikost virtuální počítač s Linuxem pomocí rozhraní příkazového řádku 2.0
 
-Po zřízení virtuálního počítače (VM) virtuálního počítače můžete škálovat nahoru nebo dolů, můžete změnit [velikost virtuálního počítače][vm-sizes]. V některých případech se musí nejprve navrácení virtuálního počítače. Budete muset zrušit přidělení virtuálního počítače, pokud požadovaná velikost není k dispozici na hardwaru clusteru, který je hostitelem virtuálního počítače. Tento článek podrobné informace o tom, jak změnit velikost virtuálního počítače s Linuxem pomocí Azure CLI 2.0. K provedení těchto kroků můžete také využít [Azure CLI 1.0](change-vm-size-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Po zřízení virtuálního počítače (VM) virtuálního počítače můžete škálovat nahoru nebo dolů, můžete změnit [velikost virtuálního počítače][vm-sizes]. V některých případech se musí nejprve navrácení virtuálního počítače. Budete muset zrušit přidělení virtuálního počítače, pokud požadovaná velikost není k dispozici na hardwaru clusteru, který je hostitelem virtuálního počítače. Tento článek podrobné informace o tom, jak změnit velikost virtuálního počítače s Linuxem pomocí Azure CLI 2.0. 
 
 ## <a name="resize-a-vm"></a>Změna velikosti virtuálního počítače
 Chcete-li změnit velikost virtuálního počítače, je třeba nejnovější [Azure CLI 2.0](/cli/azure/install-az-cli2) nainstalován a přihlášení k účtu Azure pomocí [az přihlášení](/cli/azure/reference-index#az_login).

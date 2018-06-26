@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2018
 ms.author: jomolesk
-ms.openlocfilehash: 03f13c0b1ae209cc3da211a252a9a735faad34d0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 223829df11bb1c9add811b40b55e47ee1fbb1fe4
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301367"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751834"
 ---
 # <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure zabezpečení a dodržování předpisů plán, podle kterého - vyhovující PCI DSS zpracování platebních prostředí
 
@@ -298,7 +298,7 @@ Výchozí nasazení slouží jako základní úroveň center doporučení zabezp
 
 ## <a name="deploy-the-solution"></a>Nasazení řešení
 
-Součásti pro nasazení tohoto řešení jsou k dispozici v [kód úložišti PCI plán, podle kterého] [kódu úložišti]. Nasazení základní architektury vyžaduje několik kroků proveden prostřednictvím v5 Microsoft PowerShell. Pro připojení k webu, zadejte vlastní název domény (například contoso.com). Je to určeno, pomocí `-customHostName` přepínače v kroku 2. Další informace najdete v tématu [koupit vlastní název domény pro Azure Web Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Vlastní název domény není nutné úspěšně nasadit a provozovat řešení, ale bude možné připojit se k webu pro demonstrační účely.
+Součásti pro nasazení tohoto řešení jsou k dispozici [úložiště kódu PCI plán, podle kterého](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms). Nasazení základní architektury vyžaduje několik kroků proveden prostřednictvím v5 Microsoft PowerShell. Pro připojení k webu, zadejte vlastní název domény (například contoso.com). To se specifikuje prostřednictvím s průvodcem uživatelskou výzvou ve skriptu primární nasazení v kroku 2. Další informace najdete v tématu [koupit vlastní název domény pro Azure Web Apps](/azure/app-service-web/custom-dns-web-site-buydomains-web-app). Vlastní název domény není nutné úspěšně nasadit a provozovat řešení, ale bude možné připojit se k webu pro demonstrační účely.
 
 Skripty přidávat uživatele domény klienta služby Azure AD, který určíte. Doporučujeme vytvořit nový klient Azure AD, které chcete použít jako testu.
 
@@ -323,19 +323,17 @@ Důrazně doporučujeme, aby čistou instalaci prostředí PowerShell použít k
  
     ```powershell
     .\1-DeployAndConfigureAzureResources.ps1 
-        -resourceGroupName contosowebstore
-        -globalAdminUserName adminXX@contosowebstore.com 
-        -globalAdminPassword **************
-        -azureADDomainName contosowebstore.com 
-        -subscriptionID XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
-        -suffix PCIcontosowebstore
-        -customHostName contosowebstore.com
-        -sqlTDAlertEmailAddress edna@contosowebstore.com 
-        -enableSSL
-        -enableADDomainPasswordPolicy 
     ```
     
-    Podrobné informace o použití pokyny najdete v tématu [pokyny skriptu – nasazení a konfigurace prostředků Azure](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md).
+    Podrobné informace o použití pokyny najdete v tématu [pokyny skriptu – nasazení a konfigurace prostředků Azure](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Tento skript lze použít pro podporu ukázku úložiště Web společnosti Contoso nebo počáteční kroky nasazení prostředí pro podporu soulad s normami PCI pilotní nasazení. 
+    
+    ```PowerShell
+    .\1A-ContosoWebStoreDemoAzureResources.ps1
+    ```
+    
+    Podrobné pokyny k použití pro podporu nasazení ukázkové úložiště Web společnosti Contoso, najdete v části [skriptu pokyny – prostředky Azure Contoso webové úložiště ukázkové](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1A-ContosoWebStoreDemoAzureResources.md). Tento skript lze použít k nasazení infrastruktury ukázku úložiště Web společnosti Contoso. 
+    
+    Tyto skripty jsou určena pro použití nezávisle na sobě navzájem. Zjistit, co nejlépe řešení, se doporučuje k dokončení nasazení ukázkové pro identifikaci potřebné prostředky Azure potřebné pro podporu řešení. 
     
 3. Protokolování a monitorování. Po nasazení řešení můžete otevřít pracovní prostor analýzy protokolů a ukázkové šablony součástí řešení úložiště může sloužit k objasnění, jak lze nakonfigurovat monitorování řídicí panel. Ukázkové šablony naleznete [omsDashboards složky](https://github.com/Azure/pci-paas-webapp-ase-sqldb-appgateway-keyvault-oms/blob/master/1-DeployAndConfigureAzureResources.md). Všimněte si, že data se shromažďují ve analýzy protokolů pro šablony nasazení správně. To může trvat až hodinu nebo déle v závislosti na aktivitě lokality.
  
