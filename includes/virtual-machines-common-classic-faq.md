@@ -48,7 +48,7 @@ Pro virtuální počítače vytvořené v modelu nasazení Classic můžete pomo
 Při vytváření virtuálního počítače budete muset určit síť, do které má patřit. Existující virtuální počítač není možné připojit k virtuální síti. Můžete to však obejít tak, že z existujícího virtuálního počítače odpojíte virtuální pevný disk (VHD) a použijete ho k vytvoření nového virtuálního počítače s požadovanou konfigurací sítě.
 
 ## <a name="how-can-i-access--my-virtual-machine"></a>Jak můžu přistupovat k virtuálnímu počítači?
-Pokud se chcete přihlásit k virtuálnímu počítači, je potřeba navázat vzdálené připojení pomocí Připojení ke vzdálené ploše pro virtuální počítač s Windows nebo protokolu Secure Shell (SSH) pro virtuální počítače s Linuxem. Pokyny najdete tady:
+Budete muset vytvořit vzdálené připojení k přihlášení k virtuálnímu počítači pomocí připojení ke vzdálené ploše pro virtuální počítač s Windows nebo Secure Shell (SSH) pro virtuální počítač s Linuxem. Pokyny najdete tady:
 
 * [Jak se přihlásit k virtuálnímu počítači s Windows Serverem](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Podporují se maximálně 2 souběžná připojení, pokud server není nakonfigurovaný jako hostitel relace vzdálené plochy.  
 * [Jak se přihlásit k virtuálnímu počítači s Linuxem](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). SSH ve výchozím nastavení umožňuje maximálně 10 souběžných připojení. Toto číslo můžete navýšit upravením konfiguračního souboru.
@@ -78,7 +78,7 @@ Termín upgrade obecně znamená přesun na aktuálnější verzi operačního s
 Obecné podrobnosti o nástrojích a postupech pro migraci Windows Serveru najdete v tématu [Migrace rolí a funkcí na Windows Server](http://go.microsoft.com/fwlink/p/?LinkId=396940).
 
 ## <a name="whats-the-default-user-name-and-password-on-the-virtual-machine"></a>Jaké je výchozí uživatelské jméno a heslo na virtuálním počítači?
-Image poskytované Azure nemají předkonfigurované uživatelské jméno a heslo. Při vytváření virtuálního počítače pomocí některé z takových imagí budete muset zadat uživatelské jméno a heslo, které budete používat k přihlášení k tomuto virtuálnímu počítači.
+Image poskytované Azure nemají předkonfigurované uživatelské jméno a heslo. Když vytvoříte virtuální počítač pomocí jedné z těchto obrázků, budete muset zadat uživatelské jméno a heslo, které budete používat k přihlášení k virtuálnímu počítači.
 
 Pokud jste uživatelské jméno nebo heslo zapomněli a máte nainstalovaného agenta virtuálního počítače, můžete nainstalovat rozšíření [VMAccess](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) a použít ho k opravení problému.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 6fc4fefe6eaaf48061ea05bdbc087288ada35838
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b6639ecc6fbd36df29458532d555b68b50b0a19c
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264564"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018973"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Sledování aktivity předplatné s protokol činnosti Azure
 
@@ -136,16 +136,16 @@ Get-AzureRmLogProfile
 #### <a name="add-a-log-profile"></a>Přidat profil protokolu
 
 ```
-Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
+Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
 ```
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
 | Název |Ano |Název vašeho profilu protokolu. |
-| StorageAccountId |Ne |ID prostředku účtu úložiště, který má být uložen v protokolu aktivit. |
+| storageAccountId |Ne |ID prostředku účtu úložiště, který má být uložen v protokolu aktivit. |
 | serviceBusRuleId |Ne |ID pravidla sběrnice služby pro chcete mít centra událostí, které jsou vytvořené v oboru názvů Service Bus. Je řetězec s Tento formát: `{service bus resource ID}/authorizationrules/{key name}`. |
 | Umístění |Ano |Seznam oddělený čárkami oblastí, pro které chcete shromažďovat aktivity protokolu události. |
-| retentionInDays |Ano |Počet dní pro události, které by měl být zachován, od 1 do 2147483647. Hodnota nula ukládá protokoly bez omezení (navždy). |
+| RetentionInDays |Ano |Počet dní pro události, které by měl být zachován, od 1 do 2147483647. Hodnota nula ukládá protokoly bez omezení (navždy). |
 | Kategorie |Ne |Seznam oddělený čárkami kategorií událostí, které by měl být shromážděny. Možné hodnoty jsou zápisu, odstranění a akce. |
 
 #### <a name="remove-a-log-profile"></a>Odebrat profil protokolu

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 176af41197810059a17daf5ab09d29e0169e9640
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 69e9d66458409bbc744416a58ceb508349418a76
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225003"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019549"
 ---
 # <a name="steps-to-configure-an-openidoauth-application-from-azure-ad-app-gallery"></a>Kroky pro konfiguraci aplikace OpenID/OAuth z Galerie aplikace Azure AD
 
@@ -42,7 +42,7 @@ ms.locfileid: "36225003"
     ![Přidává se aplikace](./media/openidoauth-tutorial/addfromgallery.png)
 
     > [!NOTE]
-    > Pro aplikace Open ID Connect a OAuth přidat tlačítko ve výchozím nastavení vypnutá. V tomto poli musí správce klienta klikněte na **registrace** tlačítko a zadejte souhlas k aplikaci. S třídou, že aplikace bude se přidají do klienta zákazníka, není nutné explicitně, přidat a proveďte konfiguraci.
+    > Pro aplikace Open ID Connect a OAuth přidat tlačítko ve výchozím nastavení vypnutá. V tomto poli musí správce klienta klikněte na **registrace** tlačítko a zadejte souhlas k aplikaci. Aplikace s, bude se přidají do klienta zákazníka, není nutné explicitně, přidejte a proveďte konfiguraci.
 
     ![Tlačítko Přidat](./media/openidoauth-tutorial/addbutton.png)
 
@@ -70,7 +70,7 @@ Tým služby Azure AD ve výchozím nastavení podporuje víceklientské aplikac
 
 Rozhraní Azure AD souhlasu usnadňuje vývoj víceklientské web a nativní klientské aplikace. Tyto aplikace povolí přihlášení uživatelské účty z tenanta služby Azure AD, liší od verze, kde je registrovaná aplikace. Také budou potřebovat pro přístup k webové rozhraní API, jako je například Microsoft Graph API (pro přístup k Azure Active Directory, Intune a službám Office 365) a rozhraní API jiných služeb společnosti Microsoft, kromě vlastní webové rozhraní API. Rozhraní je založena na uživatele nebo správce udělení souhlasu k aplikaci, která požaduje být registrováno v jejich adresáři, který může zahrnovat přístup k datům adresáře. Po lze souhlasu, nebudou klientská aplikace volání rozhraní Microsoft Graph API jménem uživatele, a podle potřeby použijte informace.
 
-[Microsoft Graph API](https://graph.microsoft.io/) poskytuje přístup k datům v Office 365 (jako je například kalendáře a zprávy z Exchange, weby a seznamy ze služby SharePoint, dokumenty z Onedrivu, poznámkových bloků z aplikace OneNote, úlohy z Planner, sešity z aplikace Excel, atd.), a také uživatelé a skupiny z Azure AD a jiných datových objektů z více cloudových služeb Microsoftu.
+[Microsoft Graph API](https://graph.microsoft.io/) poskytuje přístup k datům v Office 365 (jako je například kalendáře a zprávy z Exchange, weby a seznamy ze služby SharePoint, dokumenty z Onedrivu, poznámkových bloků z aplikace OneNote, úlohy z Planner sešity z aplikace Excel, atd.), a také uživatelé a skupiny z Azure AD a jiných datových objektů z více cloudových služeb Microsoftu.
 
 Následující kroky vám ukážou, jak souhlasu prostředí funguje pro vývojáře aplikací a uživatele.
 

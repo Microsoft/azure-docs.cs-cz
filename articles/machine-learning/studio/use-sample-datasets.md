@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 63f079f6c8e584ff3a89503104060daf056763ed
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 5e225a16baef53c12a5d0a719c36a2042d391c7f
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836296"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959098"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Použití vzorových datových sad v Azure Machine Learning Studiu
 [top]: #machine-learning-sample-datasets
@@ -340,7 +340,7 @@ Hodinové hodnoty na základě krajině počasí s NOAA (<a href="http://cdo.ncd
   <li>ID stanice počasí byly mapovány na odpovídající letiště ID</li>
   <li>Stanice počasí nejsou přidružené 70 letiště nejvytíženější byly vyfiltrovány.</li>
   <li>Sloupce s datem byl rozdělen do samostatných sloupců rok, měsíc a den</li>
-  <li>Nebyly vybrány následující sloupce: AirportID, rok, měsíc, den, čas, časové pásmo, SkyCondition, viditelnost, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, větru, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, výškoměru</li>
+  <li>Nebyly vybrány následující sloupce: AirportID, rok, měsíc, den, čas, časové pásmo, SkyCondition, viditelnost, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, Rychlost, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, RecordType, HourlyPrecip, výškoměru</li>
 </ul>
   </td>
 </tr>
@@ -403,7 +403,7 @@ Téma přiřazení pro články s příspěvky v datové sadě RCV1 V2 Reuters z
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Tato data pocházejí z výzvy vyhodnocení výkonu KDD Cup 2010 Student (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">vyhodnocení výkonu student</a>). Data použitá je sada školení Algebra_2008_2009 (Stamper, J., Niculescu-Mizil, S. A. Ritter, Gordon, G.J. & Koedinger, k. r. (2010). Algebra I 2008-2009. Výzvy datové sady z KDD Cup 2010 výukových Data Mining výzvu. Najít v <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a> nebo <a href="http://www.kdd.org/sites/default/files/kddcup/site/2010/files/algebra_2008_2009.zip">algebra_2008_2009.zip</a>.
+Tato data pocházejí z výzvy vyhodnocení výkonu KDD Cup 2010 Student (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">vyhodnocení výkonu student</a>). Data použitá je sada školení Algebra_2008_2009 (Stamper, J., Niculescu-Mizil, S. A. Ritter, Gordon, G.J. & Koedinger, k. r. (2010). Algebra I 2008-2009. Výzvy datové sady z KDD Cup 2010 výukových Data Mining výzvu. Najít v <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
 <p></p>
 Datová sada byla stažena a uložená v úložišti objektů Blob v Azure (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) a obsahuje soubory protokolů z student soukromé vyučování/doučování systému. Zadaná funkce zahrnují ID problému a jeho stručný popis, student ID, časové razítko a počet pokusů o student provedené před správné způsobem řešení tohoto problému. Původní datové sady obsahuje záznamy 8,9 M; Tato datová sada byl vzorkovat dolů na první řádky 100 kB. Datová sada má 23 tabulátorem sloupce různé typy: číselné literály, kategorií a časové razítko.
   </td>

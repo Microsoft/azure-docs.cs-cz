@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 339864f6261d031a21b138f880654bcd6ef51855
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0f6c0e9206d9e056ee0496b6cc515625b08b1e4a
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32177797"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959912"
 ---
 # <a name="canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>Lesknice verze mikroslužeb s Vamp v clusteru Azure Container Service DC/OS
 
@@ -293,5 +293,5 @@ Můžeme také dotýkal na některé výkonné funkce Vamp: slučování hodnotu
 
 * Skripty pro automatizaci Vamp v Node.js sestavit a spustit je jako [Vamp pracovních](http://vamp.io/documentation/tutorials/create-a-workflow/).
 
-* Další informace najdete v [VAMP kurzy](http://vamp.io/documentation/tutorials/overview/).
+* Další informace najdete v [VAMP kurzy](http://vamp.io/documentation/tutorials/).
 

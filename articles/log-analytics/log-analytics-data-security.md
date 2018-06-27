@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: magoedte
-ms.openlocfilehash: f14b96b88a96f4bef24602bb9338a77352fbf375
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8558b3b1f5a9036f1134ddce3302211b41f57c05
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025726"
 ---
 # <a name="log-analytics-data-security"></a>Protokolu zabezpečení analýzy dat
 Tento dokument je určený k poskytování Azure Log Analytics konkrétní informace, které doplňují informace na [Centrum zabezpečení Azure](../security/security-microsoft-trust-center.md).  
@@ -32,7 +33,7 @@ Službu analýzy protokolů bezpečně spravuje vaše data založená na cloudu 
 * Fyzické zabezpečení
 * Správa incidentů
 * Dodržování předpisů
-* certifikace standardy zabezpečení
+* Certifikace standardy zabezpečení
 
 Kontaktujte nás s dotazy, návrhy nebo problémy k libovolnému následující informace, včetně naše zásady zabezpečení v [možnosti Azure podpory](http://azure.microsoft.com/support/options/).
 
@@ -67,7 +68,7 @@ V následující tabulce jsou uvedeny příklady typů dat:
 | Stav |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fyzické zabezpečení
-Službu analýzy protokolů je spravovat zaměstnanců společnosti Microsoft a všechny aktivity se zaznamenávají a je možné je auditovat. Analýzy protokolů je provozována jako služba Azure a splňuje všechny požadavky na zabezpečení a dodržování předpisů Azure. Podrobnosti o fyzické zabezpečení prostředků Azure lze zobrazit na stránce 18 [Přehled zabezpečení Microsoft Azure](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Pro každý, kdo již nemá odpovědnost za OMS služby, včetně přenosu a ukončení jsou fyzické přístupová práva k zabezpečení oblasti změnit do jednoho pracovního dne. Další informace o globální fyzické infrastruktuře používáme v [Microsoft Datacenters](https://www.microsoft.com/server-cloud/cloud-os/global-datacenters.aspx).
+Službu analýzy protokolů je spravovat zaměstnanců společnosti Microsoft a všechny aktivity se zaznamenávají a je možné je auditovat. Analýzy protokolů je provozována jako služba Azure a splňuje všechny požadavky na zabezpečení a dodržování předpisů Azure. Podrobnosti o fyzické zabezpečení prostředků Azure lze zobrazit na stránce 18 [Přehled zabezpečení Microsoft Azure](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Pro každý, kdo již nemá odpovědnost za OMS služby, včetně přenosu a ukončení jsou fyzické přístupová práva k zabezpečení oblasti změnit do jednoho pracovního dne. Další informace o globální fyzické infrastruktuře používáme v [Microsoft Datacenters](https://azure.microsoft.com/en-us/global-infrastructure/).
 
 ## <a name="incident-management"></a>Správa incidentů
 OMS má proces správy incidentů, které splňovat všechny služby společnosti Microsoft. To Shrneme, jsme:
@@ -91,10 +92,10 @@ OMS má proces správy incidentů, které splňovat všechny služby společnost
 
 Pokud dojde ke ztrátě všech datech zákazníků, upozorníme každého zákazníka a to během jednoho dne. Ale zákazníka došlo ke ztrátě dat. nikdy se službou. 
 
-Další informace o tom, jak Microsoft odpoví na bezpečnostní incidenty v najdete v tématu [odpověď zabezpečení společnosti Microsoft Azure v cloudu](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/1/Microsoft Azure Security Response in the cloud.pdf).
+Další informace o tom, jak Microsoft odpoví na bezpečnostní incidenty v najdete v tématu [odpověď zabezpečení společnosti Microsoft Azure v cloudu](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
 
 ## <a name="compliance"></a>Dodržování předpisů
-Analýzy protokolů softwaru vývoj a služby týmu informace o zabezpečení a zásad správného řízení programu podporuje požadavky na jeho firmy a dodržuje zákonů a nařízení, jak je popsáno v [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) a [ Centrum zabezpečení Microsoft dodržování předpisů](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Jak vytváří požadavky na zabezpečení analýzy protokolů, identifikuje ovládací prvky zabezpečení, spravuje a monitoruje rizika jsou také popsány existuje. Ročně, jsme zkontrolujte zásady, standardy, postupy a pokyny.
+Analýzy protokolů softwaru vývoj a služby týmu informace o zabezpečení a zásad správného řízení programu podporuje požadavky na jeho firmy a dodržuje zákonů a nařízení, jak je popsáno v [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) a [ Centrum zabezpečení Microsoft dodržování předpisů](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx). Jak vytváří požadavky na zabezpečení analýzy protokolů, identifikuje ovládací prvky zabezpečení, spravuje a monitoruje rizika jsou také popsány existuje. Ročně, jsme zkontrolujte zásady, standardy, postupy a pokyny.
 
 Každý člen týmu vývoj obdrží formální aplikace bezpečnostního školení. Interně používáme systém správy verzí pro vývoj softwaru. Každý projekt softwaru je chráněn systém správy verzí.
 
@@ -112,10 +113,10 @@ Azure Log Analytics splňuje následující požadavky:
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
 * [Platebních karet (PCI kompatibilní) Data zabezpečení Standardní (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) Radou standardy PCI zabezpečení.
 * [Typ služby organizace ovládacích prvků (SOC) 1 1 a 1 typ SOC 2](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) kompatibilní
-* [HIPAA a HITECH](https://www.microsoft.com/TrustCenter/Compliance/HIPAA) pro společnosti, které mají HIPAA obchodní přidružit smlouvu
+* [HIPAA a HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) pro společnosti, které mají HIPAA obchodní přidružit smlouvu
 * Společná kritéria technikům Windows
 * Microsoft Trustworthy Computing
-* Jako služba Azure součásti, které využívá analýzy protokolů splňovat požadavky na Azure dodržování předpisů. Další informace v [dodržování předpisů Center důvěřovat Microsoft](https://www.microsoft.com/TrustCenter/Compliance/default.aspx).
+* Jako služba Azure součásti, které využívá analýzy protokolů splňovat požadavky na Azure dodržování předpisů. Další informace v [dodržování předpisů Center důvěřovat Microsoft](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).
 
 > [!NOTE]
 > V některých osvědčení služby nebo atestace podle, analýzy protokolů je uveden v části jeho starší název *Statistika provozu*.
@@ -130,8 +131,8 @@ Následující diagram znázorňuje Architektura zabezpečení cloud jako toku i
 ## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. Zaregistrujte si analýzy protokolů a shromažďování dat
 Pro vaši organizaci k odesílání dat k analýze protokolů dokončení konfigurace agenta systému Windows nebo Linux spuštěné na virtuálních počítačích Azure nebo na virtuální nebo fyzické počítače v prostředí nebo ostatní poskytovatele cloudových služeb.  Pokud používáte nástroj Operations Manager, ze skupiny pro správu můžete nakonfigurovat agenta nástroje Operations Manager. Uživatelé (které mohou být můžete, ostatní jednotlivé uživatele nebo skupinu uživatelů) vytvořit jeden nebo více pracovních prostorů analýzy protokolů a zaregistrujte agenty pomocí jedné z těchto účtů:
 
-* [ID organizace](../active-directory/sign-up-organization.md)
-* [Účet Microsoft - Outlook, Office Live, MSN](http://www.microsoft.com/account/default.aspx)
+* [ID organizace](../active-directory/fundamentals/sign-up-organization.md)
+* [Účet Microsoft - Outlook, Office Live, MSN](https://account.microsoft.com/account)
 
 Pracovní prostor analýzy protokolů je, kde se data shromažďují, agregován, analyzovat a zobrazovat. Pracovní prostor slouží především jako prostředek k oddílu dat a každý pracovního prostoru není jedinečný. Například můžete chtít mít vaše produkční data spravovaná pomocí jednoho pracovního prostoru a testovací data spravovaná pomocí jiného pracovního prostoru. Pracovní prostory také pomoci správci řídit uživatel přístup k datům. Každém pracovním prostoru může mít víc uživatelských účtů s ním spojená, a všechny uživatelské účty, můžete přístup k více analýzy protokolů pracovních prostorů. Můžete vytvořit na základě datacenter oblasti pracovních prostorů. Každý pracovní prostor se replikují do jiných datových centrech v oblasti, především pro dostupnost služeb analýzy protokolů.
 

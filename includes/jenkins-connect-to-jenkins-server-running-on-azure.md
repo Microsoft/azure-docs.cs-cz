@@ -10,7 +10,7 @@
     ssh -L 127.0.0.1:8080:localhost:8080 <username>@<domain>.eastus.cloudapp.azure.com
     ```
 
-1. Postupujte podle `ssh` výzev k přihlášení do volaných virtuálního počítače.
+1. Postupujte podle `ssh` výzev k přihlášení k virtuálnímu počítači volaných.
 
 1. Zadejte následující příkaz k načtení počáteční hesla pro odemknutí volaných.
 

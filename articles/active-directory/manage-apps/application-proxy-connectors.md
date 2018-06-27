@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 06/28/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: dfbabb3bc2702e7c6ab5d0ba5c809a1bd04d0bbc
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 74e6428cf0536a7c8016be6cdf29071128bf4a3b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293003"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025685"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Pochopení konektory proxy aplikace služby Azure AD
 
@@ -92,7 +92,6 @@ Konektory odeslat pouze odchozí požadavky. Odchozí přenosy se odesílají se
 
 Další informace o konfiguraci odchozí pravidla brány firewall najdete v tématu [pracují se stávající místní proxy servery](application-proxy-configure-connectors-with-proxy-servers.md).
 
-Použití [Azure AD Application proxy serveru konektoru porty nástroj pro testování](https://aadap-portcheck.connectorporttest.msappproxy.net/) k ověření, že vaše konektoru může kontaktovat službu Proxy aplikace. Minimálně Ujistěte se, že oblasti střed USA a oblasti nejblíže k vám mají všechny zelené značky zaškrtnutí. Kromě toho další zelené značky zaškrtnutí znamená větší odolnost proti chybám. 
 
 ## <a name="performance-and-scalability"></a>Výkon a škálovatelnost
 
@@ -104,7 +103,7 @@ Výkon konektoru je svázaná s procesoru a sítě. Výkon procesorů je potřeb
 
 Naproti tomu paměti je menší problém pro konektory. Velká část zpracování a veškerý provoz neověřené postará online služby. Vše, co můžete udělat v cloudu se provádí v cloudu. 
 
-Vyrovnávání zatížení se stane mezi konektory skupiny daný konektor. Provedeme varianta kruhové dotazování k určení, které konektor ve skupině slouží určité žádosti. Po výběru tento konektor, uchováváme spřažení relace mezi tohoto uživatele a aplikací po dobu trvání relace. Pokud z jakéhokoli důvodu, že konektor nebo počítači k dispozici, provoz začne, přejdete na jiný konektor ve skupině. Tato odolnosti je také proč doporučujeme mít více konektorů.
+Vyrovnávání zatížení se stane mezi konektory skupiny daný konektor. Provedeme varianta kruhové dotazování k určení, které konektor ve skupině slouží určité žádosti. Pokud z nějakého důvodu nedostupný konektor nebo počítač, provoz se začne přejdete na jiný konektor ve skupině. Tato odolnosti je také proč doporučujeme mít více konektorů.
 
 Dalším faktorem, který ovlivňuje výkon je kvality sítě mezi konektorů, včetně: 
 

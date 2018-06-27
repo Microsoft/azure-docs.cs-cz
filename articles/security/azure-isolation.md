@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 6f01c2938462f3912928e183fcec215a52a3ee48
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: b112eee0e33654657bc6a57eec528c8a93bb077a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010876"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018405"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolace ve veřejném cloudu Azure
 ##  <a name="introduction"></a>Úvod
@@ -39,7 +39,7 @@ Pokud sestavení nebo IT prostředky se mají migrovat, poskytovatele služeb ve
 
 Infrastruktura Azure je od zařízení až po aplikace navržena tak, aby umožňovala hostování milionů zákazníků současně a poskytovala důvěryhodný základ pro splnění potřeb zabezpečení jednotlivých podniků. Azure navíc poskytuje širokou škálu konfigurovatelných možností zabezpečení a umožňuje jejich nastavování, takže můžete zabezpečení přizpůsobit jedinečným požadavkům svého nasazení. Tento dokument vám tyto požadavky splňují pomůže.
 
-### <a name="abstract"></a>Abstraktní
+### <a name="abstract"></a>abstraktní
 
 Microsoft Azure umožňuje spouštění aplikací a virtuální počítače (VM) na sdílený fyzické infrastruktuře. Jeden z prvotní hospodářského motivace pro spuštění aplikace v prostředí cloudu je schopnost distribuovat náklady na sdílených prostředků mezi více zákazníků. Tento postup víceklientský ke zlepšení efektivity multiplexní prostředky mezi různorodých zákazníků s nízkými náklady. Bohužel se také zavádí riziko sdílení fyzických serverů a spuštění citlivých aplikací a virtuálních počítačů, které může patřit k libovolné a potenciálně škodlivého uživatelský jiných prostředků infrastruktury.
 
@@ -121,7 +121,7 @@ Služby pro firmy s auditované certifikace například ISO/IEC 27001 jsou pravi
 
 Pokud odstraníte všechna data, odstraní Microsoft Azure data, včetně všech v mezipaměti nebo záložní kopie. Pro služby ve oboru, které do 90 dnů po skončení období uchování dojde k odstranění. (V oboru služby jsou definovány v části podmínky pro zpracování dat naše [Online služby podmínky](http://aka.ms/Online-Services-Terms).)
 
-Pokud je disk disková jednotka používané pro úložiště vyskytne selhání hardwaru, je bezpečně [vymazat nebo zničeno](https://www.microsoft.com/trustcenter/Privacy/You-own-your-data) než Microsoft vrátí ji do výrobce pro nahrazení nebo oprava. Data na jednotce se přepíšou zajistit, že data nelze obnovit a to jakýmkoli způsobem.
+Pokud je disk disková jednotka používané pro úložiště vyskytne selhání hardwaru, je bezpečně [vymazat nebo zničeno](https://microsoft.com/en-us/trustcenter/privacy/you-own-your-data) než Microsoft vrátí ji do výrobce pro nahrazení nebo oprava. Data na jednotce se přepíšou zajistit, že data nelze obnovit a to jakýmkoli způsobem.
 
 ## <a name="compute-isolation"></a>Výpočetní izolace
 Microsoft Azure poskytuje různé cloudové výpočetní služby, které zahrnují široký výběr výpočetních instancích & služby, které je možné škálovat nahoru či dolů automaticky podle potřeb vaší aplikace nebo enterprise. Tyto instance výpočetní a služby nabízejí izolace na více úrovních k zabezpečení dat, aniž by došlo ke ztrátě flexibilitu při konfiguraci této poptávky zákazníků.

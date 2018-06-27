@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/26/2018
 ms.author: magoedte
-ms.openlocfilehash: c44546ffe65a0849b485fb0d2dd169e4216ae80a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 5426c9c5727d76d401c00b6e7338688b8f064ad0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261364"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021233"
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>Zobrazení analýzy dat pro metriky mezi všechny prostředky webové aplikace Azure
 
@@ -57,8 +57,7 @@ Na rozdíl od většině ostatních řešení pro analýzu protokolu není data 
 
 Proveďte následující postup pro konfiguraci Azure Web Apps Analytics řešení pro vaše pracovní prostory.
 
-1. Povolit řešení Azure Web Apps Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureWebAppsAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
-2. [Povolit protokolování metriky prostředků Azure k analýze protokolů pomocí prostředí PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
+1. [Povolit protokolování metriky prostředků Azure k analýze protokolů pomocí prostředí PowerShell](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell).
 
 Řešení Azure Web Apps analýzy shromažďuje dvě sady metriky z Azure:
 
@@ -89,7 +88,7 @@ Když přidáte řešení Azure Web Apps analýzy do pracovního prostoru **Azur
 
 ### <a name="view-azure-web-apps-analytics-information"></a>Zobrazit informace o Azure Web Apps Analytics
 
-Klikněte **Azure Web Apps Analytics** dlaždici otevřete **Azure Web Apps Analytics** řídicí panel. Řídicí panel obsahuje okna v následující tabulce. Každý okno uvádí až deset položky odpovídající kritériím tohoto okna pro zadaný obor a časový rozsah. Můžete spustit vyhledávání protokolu, který vrátí všechny záznamy kliknutím **zobrazit všechny** v dolní části okna, nebo kliknutím na záhlaví okna.
+Klikněte **Azure Web Apps Analytics** dlaždici otevřete **Azure Web Apps Analytics** řídicí panel. Tento řídicí panel obsahuje okna popsaná v následující tabulce. Každý okno uvádí až deset položky odpovídající kritériím tohoto okna pro zadaný obor a časový rozsah. Kliknutím na **Zobrazit vše** v dolní části okna nebo na záhlaví okna můžete spustit hledání v protokolu, které vrátí všechny záznamy.
 
 
 | Sloupec | Popis |
@@ -120,7 +119,7 @@ Hlavním důvodem pro zobrazující, že data jsou tak, aby mohli identifikovat 
 
 V následující protokolu vyhledávání obrázek příkladu, můžete uvidíte, že *anugup3* webové aplikace měla dobou odezvy mnohem vyšší než jiné webové aplikace.
 
-![Příklad protokolu vyhledávání](./media/log-analytics-azure-web-apps-analytics/web-app-search-example.png)
+![Příklad prohledávání protokolu](./media/log-analytics-azure-web-apps-analytics/web-app-search-example.png)
 
 ### <a name="app-service-plans"></a>Plány služby App Service
 

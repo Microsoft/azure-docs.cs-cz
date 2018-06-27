@@ -8,14 +8,14 @@ manager: kamran.iqbal
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/26/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 6f2bf2ae454d5af1bba0c176940db1820268a129
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b8a2c0dbadb0124b9250849a0260f5b34d38a5c3
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266273"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021659"
 ---
 # <a name="integrate-speech-service"></a>Integrace služby řeči
 [Řeči služby](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje používat jeden požadavek na obdrží zvuk a vrátí LEOŠ předpovědi objekty JSON.
@@ -23,6 +23,9 @@ ms.locfileid: "36266273"
 V tomto článku můžete stáhnout a používat projektu C# v sadě Visual Studio řeči utterance do mikrofonu a přijímat informace LEOŠ předpovědi. Projekt využívá Řeč [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) balíčku, které jsou již zahrnuty jako odkaz. 
 
 V tomto článku budete potřebovat bezplatný [LEOŠ] [ LUIS] účtu webu, aby bylo možné importovat aplikaci.
+
+## <a name="create-luis-endpoint-key"></a>Vytvořte klíč LEOŠ koncového bodu
+Na portálu Azure [vytvořit](luis-how-to-azure-subscription.md#create-luis-endpoint-key) **znalosti jazyka** klíč (LEOŠ). 
 
 ## <a name="import-human-resources-luis-app"></a>Import lidských zdrojů LEOŠ aplikace
 Záměry a utterances pro tento článek se z lidských zdrojů LEOŠ aplikace dostupná z [LEOŠ-Samples](https://github.com/Microsoft/LUIS-Samples) úložiště Github. Stažení [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) soubor, uložte ji s příponou *.json a [importovat](create-new-app.md#import-new-app) do LEOŠ. 
@@ -40,11 +43,22 @@ Do I have any paid time off?
 Po importu aplikace, vyberte **entity**, pak **spravovat předem entity**. Přidat **KeyPhrase** entity. Entita KeyPhrase extrahuje tematických klíče z utterance.
 
 ## <a name="train-and-publish-the-app"></a>Trénování a publikování aplikace
-Trénování a publikování aplikace. Na **publikovat** stránky, shromažďování ID aplikace, publikujte oblast a ID předplatného. Budete muset upravit kód, který použije tyto hodnoty později v tomto článku. 
+1. V horní, pravé navigačním panelu, vyberte **cvičení** tlačítko ke cvičení LEOŠ aplikace.
 
-Tyto hodnoty jsou zahrnuty v adrese URL koncového bodu v dolní části **publikovat** stránky. 
+2. Vyberte **publikovat** přejděte na stránku publikovat. 
 
-https://**oblast**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**? klíč předplatného =**LUISKEY**& q =
+3. V dolní části **publikovat** přidejte LEOŠ klíče vytvořeného v [klíč koncového bodu vytvořit LEOŠ](#create-luis-endpoint-key) části.
+
+4. Publikování aplikace LEOŠ výběrem **publikovat** tlačítko napravo od pozice publikovat. 
+
+  Na **publikovat** stránky, shromažďování ID aplikace, publikujte oblast a ID předplatného LEOŠ klíče vytvořené v [klíč koncového bodu vytvořit LEOŠ](#create-luis-endpoint-key) části. Budete muset upravit kód, který použije tyto hodnoty později v tomto článku. 
+
+  Tyto hodnoty jsou zahrnuty v adrese URL koncového bodu v dolní části **publikovat** stránky pro klíč, který jste vytvořili. Proveďte **není** pomocí volné starter klíče pro toto cvičení. 
+
+  https://**oblast**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**? klíč předplatného =**LUISKEY**& q =
+
+## <a name="audio-device"></a>Zvukového zařízení
+Tento článek používá zvukového zařízení ve vašem počítači. Který může být mikrofonem s mikrofon nebo integrované zvukového zařízení. Zkontrolujte vstupní úrovně hlasitosti chcete zobrazit, pokud jste měli řeči hlasitost než za normálních okolností byste mít řeč zjištěný zvukového zařízení. 
 
 ## <a name="download-the-luis-sample-project"></a>Stáhnout LEOŠ ukázkového projektu
  Klonovat nebo stáhnout [LEOŠ-Samples](https://github.com/Microsoft/LUIS-Samples) úložiště. Otevřete [převod řeči na záměrné projektu](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/tutorial-speech-intent-recognition) pomocí sady Visual Studio a obnovování balíčků NuGet. Soubor řešení VS je.\LUIS-Samples-master\documentation-samples\tutorial-speech-intent-recognition\csharp\csharp_samples.sln.
@@ -108,7 +122,7 @@ Recognition done. Your Choice:
 
 ```
 
-Správné záměr **GetEmployeeOrgChart**, byl nalezen s jistotou 61 %. Byl vrácen keyphrase entity. 
+Správné záměr **GetEmployeeOrgChart**, byl nalezen s jistotou 61 %. Byl vrácen keyPhrase entity. 
 
 Sada SDK řeči vrátí celé LEOŠ odpovědi. 
 

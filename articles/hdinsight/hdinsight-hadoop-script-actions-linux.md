@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: larryfr
-ms.openlocfilehash: d5df67021e997df3a6344701f50be4871a11386d
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9ca8be3066254ade37c858bd62f9ce6a2e2be902
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406026"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018377"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Vývoj akcí skriptů v prostředí HDInsight
 
 Zjistěte, jak přizpůsobit pomocí skriptů Bash clusteru HDInsight. Akce skriptů jsou způsob, jak přizpůsobit HDInsight během nebo po vytvoření clusteru.
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="what-are-script-actions"></a>Jaké jsou akce skriptu
 
@@ -377,5 +377,5 @@ Nahraďte `INFILE` v souboru s Kusovníku. `OUTFILE` musí být nový název sou
 ## <a name="seeAlso"></a>Další kroky
 
 * Zjistěte, jak [clusterů HDInsight přizpůsobit pomocí akce skriptu](hdinsight-hadoop-customize-cluster-linux.md)
-* Použití [referenční informace sady SDK rozhraní .NET HDInsight](https://msdn.microsoft.com/library/mt271028.aspx) Další informace o vytváření aplikací rozhraní .NET, které spravují HDInsight
+* Použití [referenční informace sady SDK rozhraní .NET HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight) Další informace o vytváření aplikací rozhraní .NET, které spravují HDInsight
 * Použít [HDInsight REST API](https://msdn.microsoft.com/library/azure/mt622197.aspx) se dozvíte, jak provádět akce správy v clusterech prostředí HDInsight pomocí REST.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 3d98ed2be7a040ad889d1d504f303569c265360b
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 170d1d9bca8ffa788560c6a015f41062dd4ed40f
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271587"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018659"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Co jsou komponent systému Hadoop a verze, které jsou k dispozici v prostředí HDInsight?
 
@@ -29,7 +29,7 @@ Další informace o součásti ekosystém Apache Hadoop a verzí v Microsoft Azu
 Každá verze HDInsight je distribuce cloudu verze Hortonworks Data Platform (HDP).
 
 ## <a name="hadoop-components-available-with-different-hdinsight-versions"></a>Hadoop součásti, které jsou k dispozici s různými verzemi HDInsight
-Azure HDInsight podporuje více verzích clusterů Hadoop, které lze nasadit kdykoli. Každou verzi volbu vytvoří na konkrétní verzi distribuce softwaru HDP a sadu součástí, které jsou obsaženy v rámci této distribuce. Od 17. února 2017 je výchozí verze clusteru používá Azure HDInsight je 3.5 a je založená na softwaru HDP 2.5.
+Azure HDInsight podporuje více verzích clusterů Hadoop, které lze nasadit kdykoli. Každou verzi volbu vytvoří na konkrétní verzi distribuce softwaru HDP a sadu součástí, které jsou obsaženy v rámci této distribuce. Od verze 4. dubna 2017 je výchozí verze clusteru používá Azure HDInsight je 3.6 a je založená na softwaru HDP 2.6.
 
 Verze součástí přidružené verze clusteru HDInsight jsou uvedené v následující tabulce: 
 
@@ -213,7 +213,7 @@ Tato část poskytuje odkazy na poznámky k verzi pro distribuce softwaru Horton
   * [Apache Hive poznámky k verzi](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12332384&styleName=Text&projectId=12310843) jsou k dispozici na webu Apache.
 * Verze clusteru HDInsight 3.2 používá distribuce Hadoop, která je založena na [Hortonworks Data Platform 2.2][hdp-2-2].
 
-  * Poznámky k verzi pro konkrétní Apache součásti jsou k dispozici následující: [Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [běžné](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112), a [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
+  * Release notes for specific Apache components are available as follows: [Hive 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310843&version=12326450), [Pig 0.14](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310730&version=12326954), [HBase 0.98.4](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310753&version=12326810), [Phoenix 4.2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12315120&version=12327581), [M/R 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310941&version=12327180), [HDFS 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310942&version=12327181), [YARN 2.6](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12313722&version=12327197), [Common](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12310240&version=12327179), [Tez 0.5.2](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314426&version=12328742), [Ambari 2.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12312020&version=12327486), [Storm 0.9.3](https://issues.apache.org/jira/secure/ReleaseNote.jspa?projectId=12314820&version=12327112), and [Oozie 4.1.0](https://issues.apache.org/jira/secure/ReleaseNote.jspa?version=12324960&projectId=12311620).
 * Verze clusteru HDInsight verze 3.1 používá distribuce Hadoop, která je založena na [softwaru Hortonworks Data Platform 2.1.7][hdp-2-1-7]. Clustery HDInsight 3.1 vytvořené před listopadu, 7, 2014, jsou založeny na [softwaru Hortonworks Data Platform 2.1.1][hdp-2-1-1].
 * Verze clusteru HDInsight 3.0 používá distribuce Hadoop, která je založena na [Hortonworks Data Platform 2.0][hdp-2-0-8].
 * Verze clusteru HDInsight 2.1 používá distribuce Hadoop, která je založena na [Hortonworks Data Platform 1.3][hdp-1-3-0].

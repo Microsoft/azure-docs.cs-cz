@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jgao
-ms.openlocfilehash: 1372dab2685d62a12d0d1fb186c803f8906156b1
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 41c568191ab47faba8f67e855f0a52d5d97ffc6b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200669"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020643"
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>Spouštění dotazů Hive pomocí sady .NET SDK HDInsight
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -145,7 +145,7 @@ V tomto článku jste se naučili několik způsobů, jak vytvořit cluster slu�
 * [Začínáme s Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md)
 * [Vytvoření clusterů systému Hadoop v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md)
 * [Správa clusterů systému Hadoop v HDInsight pomocí portálu Azure](../hdinsight-administer-use-management-portal.md)
-* [Referenční informace sady SDK rozhraní .NET HDInsight](https://msdn.microsoft.com/library/mt271028.aspx)
+* [Referenční informace sady SDK rozhraní .NET HDInsight](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
 * [Použití Pigu se službou HDInsight](hdinsight-use-pig.md)
 * [Použití nástroje Sqoop s HDInsight](apache-hadoop-use-sqoop-mac-linux.md)
 * [Vytvoření aplikací .NET HDInsight pro neinteraktivní ověřování](../hdinsight-create-non-interactive-authentication-dotnet-applications.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: c9920857f7d1910921b4bb3771e770fb4c3a42c3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4377e9902696a4ee3b5bbb5fcb44d972ec14f822
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31389708"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958721"
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Operace v Azure Active Directory Connect Health
 Toto téma popisuje různé operace, které můžete provádět pomocí Azure Active Directory (Azure AD) Connect Health.
@@ -122,7 +122,7 @@ Povolit přístup uživatele na *všech instancí služby* úrovně v rámci Azu
 
 #### <a name="step-2-add-users-and-groups-and-assign-roles"></a>Krok 2: Přidání uživatelů a skupin a přiřadit role
 1. Z **konfigurace** klikněte na tlačítko **uživatelé**.<br>
-   ![Snímek obrazovky Azure AD připojit RBAC stavu hlavním okně, s uživateli zvýrazněná](./media/active-directory-aadconnect-health/RBAC_main_blade.png)
+   ![Snímek obrazovky Azure AD Connect Health prostředků bočním panelu](./media/active-directory-aadconnect-health/startRBAC.png)
 2. Vyberte **Přidat**.
 3. V **vyberte roli** podokně, vyberte roli (například **vlastníka**).<br>
    ![Snímek Azure AD Connect Health RBAC uživatelé okno](./media/active-directory-aadconnect-health/RBAC_add.png)

@@ -13,14 +13,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: traffic-manager
-ms.date: 07/07/2017
+ms.date: 06/26/2018
 ms.author: kumud
-ms.openlocfilehash: 38d0f55c266a77e6b786c483d6acdf62c50aab6f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 48d265cd42954018d3482b74daf64ccf4d1b40cc
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29847348"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958978"
 ---
 # <a name="route-traffic-for-high-availability-of-applications"></a>Směrovat provoz pro vysokou dostupnost aplikací
 
@@ -46,14 +46,14 @@ az group delete --name myResourceGroup2 --yes
 
 ## <a name="script-explanation"></a>Vysvětlení skriptu
 
-Tento skript používá následující příkazy k vytvoření skupiny prostředků, webové aplikace, profil správce provozu a všechny související prostředky. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
+Tento skript k vytvoření skupiny prostředků, webové aplikace, profilu služby Traffic Manager a všech souvisejících prostředků používá následující příkazy. Každý příkaz v tabulce odkazuje na příslušnou část dokumentace.
 
 | Příkaz | Poznámky |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Vytvoří skupinu prostředků, ve které se ukládají všechny prostředky. |
 | [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Vytvoří plán služby App Service. Toto je jako serverové farmy pro Azure webové aplikace. |
-| [vytvoření služby App Service web az](https://docs.microsoft.com/cli/azure/appservice/web#az_appservice_web_create) | Vytvoří webové aplikace Azure v rámci plánu služby App Service. |
-| [Vytvoření profilu Správce provozu sítě az](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile#az_network_traffic_manager_profile_create) | Vytvoří profilu Azure Traffic Manageru. |
+| [az webapp create](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Vytvoří webové aplikace Azure v rámci plánu služby App Service. |
+| [Vytvoření profilu Správce provozu sítě az](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile#az_network_traffic_manager_profile_create) | Vytvoří profil služby Azure Traffic Manager. |
 | [vytvořit koncový bod správce provozu sítě az](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_create) | Koncový bod se přidá do profilu Azure Traffic Manager. |
 
 ## <a name="next-steps"></a>Další postup

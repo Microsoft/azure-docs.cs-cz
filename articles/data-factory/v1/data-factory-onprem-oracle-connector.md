@@ -10,15 +10,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 01/10/2018
+ms.topic: conceptual
+ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 64e8a20f72d451908c12751c0f8062bf4ae86370
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 0e9ed70de6d72026b8e3469417c53d6923a8a85e
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021470"
 ---
 # <a name="copy-data-tofrom-on-premises-oracle-using-azure-data-factory"></a>Kopírování dat z místní Oracle pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -41,7 +42,7 @@ Může kopírovat data z následujících datových úložišť **k databázi Or
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 ## <a name="prerequisites"></a>Požadavky
-Objekt pro vytváření dat podporuje připojení k místním zdrojům Oracle pomocí Brána pro správu dat. V tématu [Brána pro správu dat](data-factory-data-management-gateway.md) článku se dozvíte o Brána pro správu dat a [přesun dat z lokálního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md) podrobné pokyny o nastavení brány datovém kanálu pro přesun dat najdete v článku.
+Objekt pro vytváření dat podporuje připojení k místním zdrojům Oracle pomocí Brána pro správu dat. V tématu [Brána pro správu dat](data-factory-data-management-gateway.md) článku se dozvíte o Brána pro správu dat a [přesun dat z lokálního prostředí do cloudu](data-factory-move-data-between-onprem-and-cloud.md) článku podrobné pokyny k nastavení brány datovém kanálu pro Přesun dat.
 
 Vyžaduje se brána, i když Oracle je hostovaná ve virtuálním počítači Azure IaaS. Bránu můžete nainstalovat na stejný virtuální počítač IaaS jako úložiště dat nebo na jiný virtuální počítač, dokud brána se může připojit k databázi.
 
@@ -57,6 +58,9 @@ Tento konektor Oracle podporují dvě verze ovladače:
     - R1 Oracle 10g, R2 (10,1, 10.2)
     - Oracle 9i R1, R2 (9.0.1, 9.2)
     - Oracle 8i R3 (8.1.7)
+
+> [!NOTE]
+> Oracle proxy serveru není podporována.
 
 > [!IMPORTANT]
 > Ovladač Microsoft pro Oracle aktuálně podporuje jenom kopírování dat z Oracle, ale není zápis do databáze Oracle. A Všimněte si, že testovací připojení možnosti na kartě diagnostiku brány správy dat nepodporuje tento ovladač. Alternativně můžete použít Průvodce kopírováním k ověření připojení.
@@ -75,7 +79,7 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z databáz
 
 Nejjednodušší způsob, jak vytvořit kanál je použití **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený:
 
@@ -96,7 +100,7 @@ Následující tabulka obsahuje popis JSON elementy, které jsou specifické pro
 | type |Vlastnost typu musí být nastavena na: **OnPremisesOracle** |Ano |
 | driverType | Určete, který ovladač použít ke zkopírování dat z/do databáze Oracle. Povolené hodnoty jsou **Microsoft** nebo **ODP** (výchozí). V tématu [podporované verze a instalace](#supported-versions-and-installation) části na podrobnosti o ovladači. | Ne |
 | připojovací řetězec | Zadejte informace potřebné pro připojení k instanci databáze Oracle pro vlastnost connectionString. | Ano |
-| gatewayName | Název brány, aby se používá pro připojení k místnímu serveru Oracle |Ano |
+| gatewayName | Název brány, který se používá pro připojení k místnímu serveru Oracle |Ano |
 
 **Příklad: pomocí ovladače Microsoft:**
 ```json
@@ -160,7 +164,7 @@ Při aktivitě kopírování, pokud je zdroj typu **OracleSource** následujíc�
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Počkejte, než čas na dokončení předtím, než vyprší časový limit operace dávkové vložení. |Časový interval<br/><br/> Příklad: 00:30:00 (30 minut). |Ne |
+| writeBatchTimeout |Počkejte, než čas na dokončení předtím, než vyprší časový limit operace dávkové vložení. |časový interval<br/><br/> Příklad: 00:30:00 (30 minut). |Ne |
 | writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne writeBatchSize. |Celé číslo (počet řádků) |Ne (výchozí: 100) |
 | sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování provést tak, aby se vyčistit data určitý řez. |Příkaz dotazu. |Ne |
 | sliceIdentifierColumnName |Zadejte název sloupce pro aktivitu kopírování vyplníte identifikátor automaticky generovány řez, který se používá k vyčištění dat určitý řez při spusťte znovu. |Název sloupce sloupce s datovým typem binary(32). |Ne |
@@ -544,7 +548,7 @@ Najdete zde **chybová zpráva**:
 1. Pokud jste nenainstalovali poskytovatele .NET pro Oracle, [ji nainstalovat](http://www.oracle.com/technetwork/topics/dotnet/downloads/) a opakujte tento scénář.
 2. Pokud se zobrazí chybová zpráva i po instalaci poskytovatele, proveďte následující kroky:
    1. Otevřete ve složce Konfigurace počítače rozhraní .NET 2.0: <system disk>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-   2. Vyhledejte **poskytovatele dat Oracle pro .NET**, a mělo by být schopna nalézt položku, jak znázorňuje následující ukázka v části **system.data** -> **DbProviderFactories**: "<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="poskytovatele dat Oracle pro .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />”
+   2. Vyhledejte **poskytovatele dat Oracle pro .NET**, a mělo by být schopna nalézt položku, jak znázorňuje následující ukázka v části **system.data** -> **DbProviderFactories**: "<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Poskytovatele dat oracle pro .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />”
 3. Zkopírujte tento záznam do souboru machine.config v následující složce v4.0: <system disk>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config a změňte na verzi 4.xxx.x.x.
 4. Instalace "< cesta instalace ODP.NET > \11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll" do globální mezipaměti sestavení (GAC) spuštěním `gacutil /i [provider path]`. ## Tipy pro odstraňování potíží
 
@@ -571,22 +575,22 @@ Při přesouvání dat z databáze Oracle, se používají následující mapov�
 
 | Oracle datový typ | Datový typ rozhraní .NET framework |
 | --- | --- |
-| BFILE |Byte[] |
-| OBJEKT BLOB |Byte[]<br/>(podporovány pouze na Oracle 10g a vyšší, kdy pomocí ovladače Microsoft) |
+| BFILE |Byte] |
+| OBJEKT BLOB |Byte]<br/>(podporovány pouze na Oracle 10g a vyšší, kdy pomocí ovladače Microsoft) |
 | CHAR – |Řetězec |
 | DATOVÝ TYP CLOB |Řetězec |
 | DATE (Datum) |DateTime |
 | PLOVOUCÍ DESETINNÁ ČÁRKA |Decimal, řetězec (Pokud přesnost > 28) |
 | CELÉ ČÍSLO |Decimal, řetězec (Pokud přesnost > 28) |
 | INTERVAL ROK, MĚSÍC |Int32 |
-| DENNÍ INTERVAL SEKUNDY. |TimeSpan |
+| DENNÍ INTERVAL SEKUNDY. |Časový interval |
 | DLOUHÁ |Řetězec |
-| DLOUHO NEZPRACOVANÁ |Byte[] |
+| DLOUHO NEZPRACOVANÁ |Byte] |
 | NCHAR |Řetězec |
 | NCLOB |Řetězec |
 | ČÍSLO |Decimal, řetězec (Pokud přesnost > 28) |
 | NVARCHAR2 |Řetězec |
-| NEZPRACOVANÁ |Byte[] |
+| NEZPRACOVANÁ |Byte] |
 | ID ŘÁDKU |Řetězec |
 | ČASOVÉ RAZÍTKO |DateTime |
 | ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÉM PÁSMU |DateTime |

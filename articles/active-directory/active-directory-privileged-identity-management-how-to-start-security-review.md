@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: protection
-ms.date: 05/04/2017
+ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 699076a8e651dd8dbbab08b518d7be7e60a0ac47
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: a4ef91f7055db8f202e3a4e48375427c85964781
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233668"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020943"
 ---
 # <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Spuštění kontrola přístupu v Azure AD Privileged Identity Management
-Přiřazení rolí stát "zastaralé", když uživatelé mají privilegovaný přístup, které už nepotřebují. Chcete-li snížit riziko spojené s přiřazení těchto zastaralých rolí, správci privilegované role by pravidelně zkontrolovat role, které mají uživatelé. Tento dokument popisuje kroky pro spuštění kontrola přístupu v Azure AD Privileged Identity Management (PIM).
+Přiřazení rolí stát "zastaralé", když uživatelé mají privilegovaný přístup, které už nepotřebují. Chcete-li snížit riziko spojené s těchto zastaralých role přiřazení privilegované role by měl správci nebo globální správci pravidelné vytváření přístup recenze požádat správcům revizi rolí, které mají uživatelé. Tento dokument popisuje kroky pro spuštění kontrola přístupu v Azure AD Privileged Identity Management (PIM).
 
 ## <a name="start-an-access-review"></a>Spustit revizi přístupu
 > [!NOTE]

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/02/2017
 ms.author: sumukhs
-ms.openlocfilehash: c5aaf9869326f2de86d3bff33f36e8f967f3e6fa
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3e058242840a3fa8b86c9ae9d5a0940cc02f04d2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34209997"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020385"
 ---
 # <a name="configure-stateful-reliable-services"></a>Konfigurovat stavová spolehlivé služby
 Existují dvě sady nastavení konfigurace pro spolehlivé služby. Jedna sada je globální pro všechny spolehlivé služby v clusteru, zatímco druhá sada je specifická pro konkrétní službu spolehlivé.
@@ -82,6 +82,11 @@ Ve výchozím modulu runtime Azure Service Fabric předdefinované části z ná
 
 ### <a name="replicator-security-configuration"></a>Konfigurace zabezpečení replikátoru
 Konfigurace zabezpečení Replikátor slouží k zabezpečení komunikačního kanálu, který se používá během replikace. To znamená, služby nebudou moci zobrazit vzájemně provoz replikace, zajišťující, že data, která vysokou dostupnost, je také zabezpečené. Ve výchozím nastavení zabraňuje konfigurační oddíl prázdný zabezpečení zabezpečení replikace.
+
+> [!IMPORTANT]
+> Certifikáty na uzly Linux musí být ve formátu PEM. Další informace o vyhledání a konfigurace certifikátů pro Linux najdete v tématu [konfigurace certifikátů pro systémy Linux](./service-fabric-configure-certificates-linux.md). 
+> 
+> 
 
 ### <a name="default-section-name"></a>Výchozí název oddílu
 ReplicatorSecurityConfig

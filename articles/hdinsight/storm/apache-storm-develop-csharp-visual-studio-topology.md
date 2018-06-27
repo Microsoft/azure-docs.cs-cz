@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e35d795fb65c837f7a4152920f701da5bf8f506
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 7eae8aa25546fb94bbf7d006063f44f3b6e51a15
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31421426"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018791"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Vývoj topologie C# pro Apache Storm pomocí nástrojů Data Lake pro Visual Studio
 
@@ -47,9 +47,9 @@ Pokud chcete používat topologie C# s clusterem se systémem Linux, je třeba a
 
 Pomocí jedné z následujících verzí sady Visual Studio můžete vyvíjet topologie C# s SCP.NET:
 
-* Visual Studio 2012 s [aktualizací 4](http://www.microsoft.com/download/details.aspx?id=39305)
+* Visual Studio 2012 s aktualizací 4
 
-* Visual Studio 2013 s [aktualizací 4](http://www.microsoft.com/download/details.aspx?id=44921) nebo [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
+* Visual Studio 2013 s aktualizací 4 nebo [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
 
 * Visual Studio 2015 nebo [Visual Studio 2015 Community](https://go.microsoft.com/fwlink/?LinkId=532606)
 
@@ -534,14 +534,14 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 Poslední verze SCP.NET podporovat upgrade balíčku prostřednictvím balíčku NuGet. Když je k dispozici nové aktualizace, zobrazí se oznámení o upgradu. Ručně zkontrolujte upgrade, postupujte takto:
 
-1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet**.
+1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Správa balíčků NuGet**.
 
 2. Správce balíčků, vyberte **aktualizace**. Pokud je k dispozici aktualizace, je uvedena. Klikněte na tlačítko **aktualizace** pro balíček k její instalaci.
 
 > [!IMPORTANT]
 > Pokud projekt byla vytvořena pomocí dřívější verzi SCP.NET, který NuGet nepoužili, musíte provést následující kroky k aktualizaci na novější verzi:
 >
-> 1. V **Průzkumníku řešení**, klikněte pravým tlačítkem na projekt a vyberte **spravovat balíčky NuGet**.
+> 1. V **Průzkumníku řešení** klikněte pravým tlačítkem na požadovaný projekt a vyberte **Správa balíčků NuGet**.
 > 2. Pomocí **vyhledávání** pole, vyhledejte a pak přidejte, **Microsoft.SCP.Net.SDK** do projektu.
 
 ## <a name="troubleshoot-common-issues-with-topologies"></a>Řešení běžných problémů s topologie

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/23/2018
+ms.date: 06/26/2018
 ms.author: sashan
-ms.openlocfilehash: 8de70c01f4c04d6df85c2f5acfe9efe18ff59c0b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fb6e8f4420b739b5ac84f1d5c185fddc740c551a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649682"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018509"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Použít jen pro čtení repliky načíst vyrovnávat zatížení dotazu jen pro čtení (preview)
 
@@ -65,6 +65,7 @@ Můžete ověřit, zda jste připojeni k repliku jen pro čtení spuštěním n�
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
 
+
 ## <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Povolení a zákaz čtení Škálováním na více systémů pomocí prostředí Azure PowerShell
 
 Správa čtení Škálováním na více systémů v prostředí Azure PowerShell vyžaduje 2016 prosinec verzi prostředí Azure PowerShell nebo novější. V nejnovější verzi prostředí PowerShell [prostředí Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
@@ -106,6 +107,14 @@ Body:
 ```
 
 Další informace najdete v tématu [databází - vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate).
+
+## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Čtení Škálováním na více systémů pomocí geograficky replikované databáze
+
+Pokud vaše jsou pomocí čtení horizontální načíst Vyrovnávání zatížení jen pro čtení v databázi, která je geograficky replikované (např. jako člen skupiny převzetí služeb při selhání), ujistěte se, že čtení Škálováním na více systémů je povolena na primárním serverem a geograficky replikované sekundární databáze. Tím bude zajištěno stejného efektu Vyrovnávání zatížení, když se aplikace připojí k nové primární po převzetí služeb při selhání. Pokud se připojujete k geograficky replikované sekundární databáze s měřítku pro čtení povolené, vaše relace s `ApplicationIntent=ReadOnly` , budou směrovány na jednu z replik stejným způsobem jako jsme směrovat připojení na primární databáze.  Relace bez `ApplicationIntent=ReadOnly` , budou směrovány na primární repliku geograficky replikované sekundární, což je také jen pro čtení. 
+
+> [!NOTE]
+> Během ve verzi preview jsme nebude provádět pomocí kruhového dotazování nebo jiné zatížení vyrovnáváním směrování mezi místní repliky sekundární databázi. 
+
 
 ## <a name="next-steps"></a>Další postup
 

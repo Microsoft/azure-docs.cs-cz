@@ -9,19 +9,19 @@ ms.component: emotion-api
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: d36a191d3589702d676e694715f34ea1c924e2d3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a7ca2cac718797462bb4dc889b3f1361b252435e
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342699"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021094"
 ---
 # <a name="emotion-api-curl-quick-start"></a>Rozpoznávání emocí úrovně rozhraní API cURL rychlý Start
 
 > [!IMPORTANT]
 > 30. října 2017 ukončen video Preview rozhraní API. Vyzkoušet nový [Preview rozhraní API Indexer Video](https://azure.microsoft.com/services/cognitive-services/video-indexer/) k snadno rozbalte statistiky z videa a vylepšení možnosti zjišťování obsahu, jako je například výsledky hledání, pomocí zjišťování mluvené slovo, řezy, znaků a emoce. [Další informace](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
 
-Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat [rozpoznávání emocí úrovně rozhraní API rozpoznat metoda](https://dev.projectoxford.ai/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) s cURL rozpoznat emoce vyjádřená jeden nebo více osob v obraze. 
+Tento článek obsahuje informace a ukázky kódu, které vám pomohou rychle začít používat [rozpoznávání emocí úrovně rozhraní API rozpoznat metoda](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) s cURL rozpoznat emoce vyjádřená jeden nebo více osob v obraze. 
 
 ## <a name="prerequisite"></a>Požadavek
 * Získat klíč bezplatné předplatné [sem](https://azure.microsoft.com/try/cognitive-services/)

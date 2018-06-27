@@ -1,25 +1,25 @@
 ---
-title: Osvědčené postupy pro synchronizaci dat SQL Azure (Preview) | Microsoft Docs
-description: Další informace o osvědčené postupy pro konfiguraci a spuštění synchronizaci dat SQL Azure (Preview).
+title: Osvědčené postupy pro synchronizaci dat SQL Azure | Microsoft Docs
+description: Další informace o osvědčené postupy pro konfiguraci a spuštění synchronizaci dat SQL Azure.
 services: sql-database
 ms.date: 04/01/2018
 ms.topic: conceptual
 ms.service: sql-database
-author: douglaslMS
-ms.author: douglasl
+author: allenwux
+ms.author: xiwu
 manager: craigg
-ms.openlocfilehash: 683cf1426f01b3ab495b2380612dbf37342fc27a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b53c72f1df4f2fc2509d91220d08aff4682b6620
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646003"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025681"
 ---
-# <a name="best-practices-for-sql-data-sync-preview"></a>Osvědčené postupy pro synchronizaci dat SQL (Preview) 
+# <a name="best-practices-for-sql-data-sync"></a>Osvědčené postupy pro synchronizaci dat SQL 
 
-Tento článek popisuje osvědčené postupy pro synchronizaci dat SQL Azure (Preview).
+Tento článek popisuje osvědčené postupy pro synchronizaci dat SQL Azure.
 
-Přehled synchronizaci dat SQL (Preview) najdete v tématu [synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure (Preview)](sql-database-sync-data.md).
+Přehled synchronizaci dat SQL najdete v tématu [synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure](sql-database-sync-data.md).
 
 ## <a name="security-and-reliability"></a> Zabezpečení a spolehlivost
 
@@ -50,10 +50,10 @@ Azure SQL Database podporuje pouze jedinou sadu přihlašovacích údajů. Aby b
 
 #### <a name="sql-database-instance-size"></a>Velikost instance databáze SQL
 
-Když vytvoříte novou instanci databáze SQL, nastavte maximální velikost tak, aby vždycky je větší než databázi, kterou nasazujete. Pokud nemáte nastavit maximální velikost na větší než nasazené databáze, synchronizace se nezdaří. I když synchronizaci dat SQL (Preview) nenabízí automatického zvětšování, můžete spustit `ALTER DATABASE` příkaz pro zvětšení velikosti databáze po jeho vytvoření. Zajistěte, abyste zůstat v rámci omezení velikosti instance databáze SQL.
+Když vytvoříte novou instanci databáze SQL, nastavte maximální velikost tak, aby vždycky je větší než databázi, kterou nasazujete. Pokud nemáte nastavit maximální velikost na větší než nasazené databáze, synchronizace se nezdaří. I když synchronizaci dat SQL, nenabízí automatického zvětšování, můžete spustit `ALTER DATABASE` příkaz pro zvětšení velikosti databáze po jeho vytvoření. Zajistěte, abyste zůstat v rámci omezení velikosti instance databáze SQL.
 
 > [!IMPORTANT]
-> Synchronizaci dat SQL (Preview) ukládá další metadata s každou databázi. Ujistěte se, když vypočítat místo potřeby účtu pro tato metadata. Množství přidat režijní náklady související s šířku tabulky (například úzké tabulky vyžadují další režii) a objemu provozu.
+> Synchronizaci dat SQL ukládá další metadata s každou databázi. Ujistěte se, když vypočítat místo potřeby účtu pro tato metadata. Množství přidat režijní náklady související s šířku tabulky (například úzké tabulky vyžadují další režii) a objemu provozu.
 
 ### <a name="table-considerations-and-constraints"></a> Aspekty tabulky a omezení
 
@@ -63,19 +63,19 @@ Nemusíte zahrnovat všechny tabulky, které jsou v databázi ve skupině pro sy
 
 #### <a name="primary-keys"></a>Primární klíče
 
-Každá tabulka ve skupině synchronizace musí mít primární klíč. Službu synchronizaci dat SQL (Preview) se nemůže synchronizovat tabulku, která nemá primární klíč.
+Každá tabulka ve skupině synchronizace musí mít primární klíč. Službu synchronizaci dat SQL se nemůže synchronizovat tabulku, která nemá primární klíč.
 
-Než začnete používat synchronizaci dat SQL (Preview) v provozním prostředí, testování výkonu počátečních a pokračujících synchronizace.
+Než začnete používat synchronizaci dat SQL v produkčním prostředí, testování výkonu počátečních a pokračujících synchronizace.
 
 ### <a name="provisioning-destination-databases"></a> Zřizování cílové databáze
 
-Náhled synchronizaci dat SQL (Preview) poskytuje autoprovisioning databáze basic.
+Synchronizaci dat SQL poskytuje autoprovisioning databáze basic.
 
-Tato část popisuje omezení zřizování v synchronizaci dat SQL (Preview).
+Tato část popisuje omezení zřizování v synchronizaci dat SQL.
 
 #### <a name="autoprovisioning-limitations"></a>Omezení Autoprovisioning
 
-Synchronizaci dat SQL (Preview) má následující omezení na autoprovisioning:
+Synchronizaci dat SQL má následující omezení na autoprovisioning:
 
 -   Vyberte pouze sloupce, které jsou vytvořeny v cílové tabulky.  
     Všech sloupců, které nejsou součástí skupiny synchronizace nebyly zřízené v cílových tabulkách.
@@ -88,7 +88,7 @@ Synchronizaci dat SQL (Preview) má následující omezení na autoprovisioning:
 
 #### <a name="recommendations"></a>Doporučení
 
--   Jenom v případě, že se pokoušíte na službu, použijte možnost autoprovisioning synchronizaci dat SQL (Preview).  
+-   Jenom v případě, že se pokoušíte na službu, použijte možnost autoprovisioning synchronizaci dat SQL.  
 -   V produkčním prostředí zřídit schéma databáze.
 
 ### <a name="locate-hub"></a> Umístění databáze rozbočovače
@@ -114,7 +114,7 @@ V této části probereme počáteční synchronizace synchronizace skupiny. Zji
 
 #### <a name="how-initial-sync-works"></a>Jak počáteční synchronizace funguje
 
-Když vytvoříte skupinu synchronizace, spusťte s daty v pouze jednu databázi. Pokud máte data ve více databází, synchronizaci dat SQL (Preview). každý řádek považuje za konflikt, který musí být vyřešen. Toto řešení konfliktů způsobí, že počáteční synchronizace přejdete pomalu. Pokud máte data ve více databází, počáteční synchronizace může trvat několik dní až několik měsíců, v závislosti na velikosti databáze.
+Když vytvoříte skupinu synchronizace, spusťte s daty v pouze jednu databázi. Pokud máte data ve více databází, synchronizaci dat SQL zpracovává každý řádek jako konflikt, který musí být vyřešen. Toto řešení konfliktů způsobí, že počáteční synchronizace přejdete pomalu. Pokud máte data ve více databází, počáteční synchronizace může trvat několik dní až několik měsíců, v závislosti na velikosti databáze.
 
 Pokud jsou databáze v různých datových centrech, musí každý řádek přenosu mezi různých datových centrech. Tím se zvyšuje náklady na počáteční synchronizaci.
 
@@ -209,16 +209,16 @@ Místo toho odeberte nejprve databázi ze skupiny pro synchronizaci. Potom nasa�
 Pokud se pokusíte odebrat databázi a pak upravte skupinu synchronizace bez nasazení první z nich změny, jeden nebo jiná operace selže. Rozhraní portálu, mohou být nekonzistentní. Pokud k tomu dojde, aktualizujte stránku k obnovení stavu.
 
 ## <a name="next-steps"></a>Další postup
-Další informace o synchronizaci dat SQL (Preview) najdete v tématu:
+Další informace o synchronizaci dat SQL najdete v tématu:
 
--   [Synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure (Preview)](sql-database-sync-data.md)
--   [Nastavit synchronizaci dat SQL Azure (Preview)](sql-database-get-started-sql-data-sync.md)
--   [Synchronizaci dat Azure SQL (Preview) monitorování s analýzy protokolů](sql-database-sync-monitor-oms.md)
--   [Řešení problémů s synchronizaci dat SQL Azure (Preview)](sql-database-troubleshoot-data-sync.md)  
--   Dokončete příklady prostředí PowerShell, které ukazují, jak nakonfigurovat synchronizaci dat SQL (Preview):  
+-   [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](sql-database-sync-data.md)
+-   [Nastavení Synchronizace dat SQL Azure](sql-database-get-started-sql-data-sync.md)
+-   [Monitorování Synchronizace dat SQL Azure s využitím Log Analytics](sql-database-sync-monitor-oms.md)
+-   [Řešení potíží se Synchronizací dat SQL Azure](sql-database-troubleshoot-data-sync.md)  
+-   Úplné příklady PowerShellu ukazující konfiguraci Synchronizace dat SQL:  
     -   [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)  
     -   [Použití PowerShellu k synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru](scripts/sql-database-sync-data-between-azure-onprem.md)  
--   [Stáhněte si dokumentaci rozhraní API REST synchronizaci dat SQL (Preview)](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
+-   [Stažení dokumentace k rozhraní REST API Synchronizace dat SQL](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)  
 
 Další informace o databázi SQL najdete v tématu:
 

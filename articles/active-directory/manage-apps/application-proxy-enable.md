@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 58bcb3cbdf389393beb58a9f50b3e77aa2b3aae8
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
-ms.translationtype: HT
+ms.openlocfilehash: 0ac14f792c63ea06a484eb5b522c4d33958538ed
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34158417"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025722"
 ---
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>Začínáme s Proxy aplikace a nainstalujte konektor
 Tento článek vás provede postupem, který umožňuje povolit proxy aplikace u cloudového adresáře služby Microsoft Azure AD.
@@ -30,7 +30,7 @@ Pokud si nejste ještě vědět, zabezpečení a produktivitu výhody přináš�
 ## <a name="application-proxy-prerequisites"></a>Požadavky na proxy aplikace
 Předtím, než budete moct povolit a používat služby proxy aplikace, musíte mít:
 
-* [Základní nebo prémiové předplatné služby Microsoft Azure AD](../active-directory-whatis.md) a adresář služby Azure AD, u kterého jste globální správce.
+* [Základní nebo prémiové předplatné služby Microsoft Azure AD](../fundamentals/active-directory-whatis.md) a adresář služby Azure AD, u kterého jste globální správce.
 * Serveru se systémem Windows Server 2012 R2 nebo 2016, na který nainstalujete konektor Proxy aplikace. Server musí být možné se připojit k službám Proxy aplikace v cloudu a místní aplikace, které jsou publikování.
   * Pro jednotné přihlašování pro vaše publikované aplikace pomocí omezené delegování Kerberos tento počítač by měl být-připojené do domény ve stejné doméně AD jako aplikace, které jsou publikování. Informace najdete v tématu [použitím KCD pro jednotné přihlašování pomocí Proxy aplikace](application-proxy-configure-single-sign-on-with-kcd.md).
 
@@ -64,7 +64,6 @@ Při přípravě svého prostředí pro Azure AD Application Proxy, musíte nejp
 
 4. Vaše konektor potřebuje přístup k login.windows.net a login.microsoftonline.com pro proces registrace.
 
-5. Použití [Azure AD Application proxy serveru konektoru porty nástroj pro testování](https://aadap-portcheck.connectorporttest.msappproxy.net/) k ověření, že vaše konektoru může kontaktovat službu Proxy aplikace. Minimálně Ujistěte se, že oblasti střed USA a oblasti nejblíže k vám mají všechny zelené značky zaškrtnutí. Kromě toho další zelené značky zaškrtnutí znamená větší odolnost proti chybám.
 
 ## <a name="install-and-register-a-connector"></a>Instalace a registrace konektoru
 1. Přihlaste se jako správce v [portál Azure](https://portal.azure.com/).

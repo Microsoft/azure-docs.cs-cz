@@ -2,24 +2,22 @@
 title: Použití pracovních postupů Hadoop Oozie v HDInsight se systémem Linux Azure | Microsoft Docs
 description: Použijte Hadoop Oozie v HDInsight se systémem Linux. Zjistěte, jak definovat pracovním postupu Oozie a odeslat úlohu Oozie.
 services: hdinsight
-documentationcenter: ''
-author: Blackmist
+author: omidm1
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
 ms.assetid: d7603471-5076-43d1-8b9a-dbc4e366ce5d
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/23/2018
-ms.author: larryfr
-ms.openlocfilehash: 8a25507ab076c4eecccea4e8a503d68ff1441ae5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.date: 06/26/2018
+ms.author: omidm
+ms.openlocfilehash: a1fd33ec83208dfd5d90a0fb11557c72a5f02e88
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32179074"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019267"
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Použití Oozie se systémem Hadoop k definování a spuštění workflowu v Azure HDInsight se systémem Linux
 
@@ -37,15 +35,13 @@ Můžete taky Oozie při plánování úloh, které jsou specifické pro systém
 > [!NOTE]
 > Další možností k definování pracovních postupů v prostředí HDInsight je pomocí Azure Data Factory. Další informace o Data Factory najdete v tématu [použijte Pig a Hive pomocí služby Data Factory][azure-data-factory-pig-hive].
 
-> [!IMPORTANT]
-> Oozie není povoleno v doméně HDInsight.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Cluster služby HDInsight**: najdete v části [Začínáme s prostředím HDInsight v Linuxu](/hadoop/apache-hadoop-linux-tutorial-get-started.md)
 
 > [!IMPORTANT]
-> Kroky v tomto dokumentu vyžadují clusteru služby HDInsight, který používá Linux. Linux je jenom operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Kroky v tomto dokumentu vyžadují cluster HDInsight s Linuxem. Linux je jenom operační systém používaný v HDInsight verze 3.4 nebo novější. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 ## <a name="example-workflow"></a>Příklad pracovního postupu
 
@@ -78,7 +74,7 @@ Oozie se očekává, že budete ukládat všechny prostředky potřebné pro úl
     ssh sshuser@clustername-ssh.azurehdinsight.net
     ```
 
-    Nahraďte `sshuser` s uživatelským jménem SSH pro cluster. Nahraďte `clustername` s názvem clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
+    `sshuser` nahraďte uživatelským jménem SSH pro cluster. Nahraďte `clustername` s názvem clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Chcete-li vytvořit adresář, použijte následující příkaz:
 
@@ -240,7 +236,7 @@ Pokud chcete vytvořit databázi SQL, postupujte podle kroků v [vytvoření dat
 ### <a name="create-the-table"></a>Vytvoření tabulky
 
 > [!NOTE]
-> Pro připojení k databázi SQL a vytvořte tabulku mnoha způsoby. Následující postup použijte [FreeTDS](http://www.freetds.org/) z clusteru HDInsight.
+> Pro připojení k databázi SQL a vytvořte tabulku mnoha způsoby. V následujících krocích se používá [FreeTDS](http://www.freetds.org/) z clusteru HDInsight.
 
 
 1. Použijte následující příkaz k instalaci FreeTDS v clusteru HDInsight:
@@ -263,7 +259,7 @@ Pokud chcete vytvořit databázi SQL, postupujte podle kroků v [vytvoření dat
         Default database being set to oozietest
         1>
 
-3. Na `1>` výzva, zadejte následující řádky:
+3. Na příkazovém řádku `1>` zadejte následující řádky:
 
     ```sql
     CREATE TABLE [dbo].[mobiledata](
@@ -274,7 +270,7 @@ Pokud chcete vytvořit databázi SQL, postupujte podle kroků v [vytvoření dat
     GO
     ```
 
-    Když `GO` příkaz je zadán, jsou vyhodnocovány předchozí příkazy. Tyto příkazy vytvořit tabulku, s názvem **mobiledata**, který se používá v tomto pracovním postupu.
+    Po zadání příkazu `GO` se vyhodnotí předchozí příkazy. Tyto příkazy vytvořit tabulku, s názvem **mobiledata**, který se používá v tomto pracovním postupu.
 
     Pokud chcete ověřit, zda byl vytvořen v tabulce, použijte následující příkazy:
 
@@ -535,7 +531,7 @@ Pro přístup k Oozie webového uživatelského rozhraní, proveďte následují
 
 3. Na levé straně stránky vyberte **Oozie** > **rychlé odkazy** > **Oozie webového uživatelského rozhraní**.
 
-    ![obrázek v nabídkách](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
+    ![Obrázek v nabídkách](./media/hdinsight-use-oozie-linux-mac/ooziewebuisteps.png)
 
 4. Chcete-li zobrazit spuštěné úlohy pracovního postupu výchozí nastavení Oozie webového uživatelského rozhraní. Pokud chcete zobrazit všechny úlohy pracovního postupu, vyberte **všechny úlohy**.
 

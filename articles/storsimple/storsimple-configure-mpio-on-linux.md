@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 2fbae15c1c6a9ec886f57f9df903612ae10d8e12
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: df9f53694cd72a700d593550bfde13a4f25180db
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27779087"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021749"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>Konfigurace funkce MPIO na StorSimple hostitele se systémem CentOS
 Tento článek vysvětluje kroky nutné ke konfiguraci více cest vstupně-výstupní operace (MPIO) na serveru hostitele Centos 6.6. Hostitelský server je připojená k zařízení s Microsoft Azure StorSimple pro vysokou dostupnost prostřednictvím iniciátory iSCSI. Je podrobně popisuje automatické zjišťování vícenásobný zařízení a konkrétní nastavení pouze pro svazky zařízení StorSimple.
@@ -120,7 +120,7 @@ Tato část podrobně popisuje požadavky konfigurace pro CentOS server a zaří
    4. K zajištění, že vaše iniciátor iSCSI je povolena při spuštění, použijte `chkconfig` příkaz, který povolí službu.
       
        `chkconfig iscsi on`
-   5. Pokud chcete ověřit, aby byla správně nastavit, spusťte příkaz:
+   5. Chcete-li ověřit, že byla správně instalační program, spusťte příkaz:
       
        `chkconfig --list | grep iscsi`
       
@@ -438,7 +438,7 @@ Další informace, přejděte na [použít řešení potíží s interaktivního
 | &nbsp; |`chkconfig multipathd on` </br> NEBO </br> `mpathconf –with_chkconfig y` |Povolení funkce multipath démon spustit při spuštění |
 | &nbsp; |`multipathd –k` |Spusťte interaktivní konzolu pro řešení potíží |
 | &nbsp; |`multipath –l` |Připojení více cest seznamu a zařízení |
-| &nbsp; |`mpathconf --enable` |Vytvořte soubor ukázka mulitpath.conf v`/etc/mulitpath.conf` |
+| &nbsp; |`mpathconf --enable` |Vytvořte soubor ukázka mulitpath.conf v `/etc/mulitpath.conf` |
 |  | | |
 
 ## <a name="next-steps"></a>Další postup

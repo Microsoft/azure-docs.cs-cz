@@ -10,24 +10,21 @@ ms.assetid: 7dc6847d-10d4-4b5c-9c83-cc513cf91965
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/30/2018
+ms.date: 06/26/2018
 ms.author: omidm
-ms.openlocfilehash: 6c5e32f0ed39ce2e8c1e412dcfc6c04fb0f8bd7a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3fd3a4b8982fe2170726df03bdc884e658d0b0c2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715254"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019484"
 ---
 # <a name="an-introduction-to-hadoop-security-with-domain-joined-hdinsight-clusters"></a>Úvod do Hadoop zabezpečení s clustery HDInsight připojený k doméně
 
 Služba Azure HDInsight až doteď podporovala jako místního správce pouze jednoho uživatele. To dobře fungovalo pro menší aplikace, týmy nebo oddělení. Jako Hadoop založené na úlohy, které získávají další oblíbenosti v odvětví enterprise potřebu s podnikovými úrovni jako je ověřování active directory na základě se stala stále důležité podporu více uživatelů a řízení přístupu na základě rolí. Pomocí clusterů HDInsight připojených k doméně můžete vytvořit cluster HDInsight připojený k doméně služby Active Directory a nakonfigurovat seznam zaměstnanců podniku, kteří se pro přihlášení ke clusteru mohou ověřovat prostřednictvím služby Azure Active Directory. Nikdo jiný mimo podnik se ke clusteru HDInsight nemůže přihlásit ani připojit. Správce podnikové sítě můžete konfigurovat řízení přístupu na základě role pomocí Hive zabezpečení [Apache škálu](http://hortonworks.com/apache/ranger/), proto omezuje přístup k datům jenom tolik, podle potřeby. Kromě toho může správce také provádět audit přistupování k datům zaměstnanci a jakýchkoli změn provedených v zásadách řízení přístupu. Tím dosáhne vysokého stupně dohledu nad firemními prostředky.
 
 > [!NOTE]
-> Nové funkce popsané v tomto článku jsou dostupné ve verzi preview pouze na následující typy clusteru: Hadoop, Spark a interaktivní dotazu.
-
-> [!IMPORTANT]
-> Oozie není povoleno v doméně HDInsight.
+> Nové funkce popsané v tomto článku jsou dostupné ve verzi preview pouze na následující typy clusteru: Hadoop, Spark a interaktivní dotazu. Oozie je teď povolené na clusterech připojený k doméně. Chcete-li přístup Oozie webového uživatelského rozhraní uživatelé měli povolit [tunelové propojení](../hdinsight-linux-ambari-ssh-tunnel.md)
 
 ## <a name="benefits"></a>Výhody
 Podnikové zabezpečení obsahuje čtyři hlavní pilíře – hraniční zabezpečení, ověřování, ověřování a šifrování.

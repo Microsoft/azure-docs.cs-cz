@@ -1,28 +1,28 @@
 ---
-title: Nastavit synchronizaci dat SQL Azure (Preview) | Microsoft Docs
-description: V tomto kurzu se dozvíte, jak nastavit synchronizaci dat SQL Azure (Preview)
+title: Nastavit synchronizaci dat SQL Azure | Microsoft Docs
+description: V tomto kurzu se dozvíte, jak nastavit synchronizaci dat SQL Azure
 services: sql-database
-author: douglaslms
+author: allenwux
 manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
 ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: douglasl
+ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 7598484a20d2d719c84e1789664ac2b40c2d0639
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: df7ca91d403374e8d320822f5fa384a866fac0ae
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647846"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025725"
 ---
-# <a name="set-up-sql-data-sync-preview"></a>Nastavit synchronizaci dat SQL (Preview)
+# <a name="set-up-sql-data-sync"></a>Nastavit synchronizaci dat SQL
 V tomto kurzu zjistěte, jak nastavit synchronizaci dat SQL Azure tak, že vytvoříte skupinu hybridních synchronizace, která obsahuje instance Azure SQL Database a SQL Server. Do nové skupiny synchronizace plně konfigurována a synchronizuje podle plánu, který nastavíte.
 
 Tento kurz předpokládá, že máte alespoň zkušenosti s SQL Database a SQL Server. 
 
-Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure (Preview)](sql-database-sync-data.md).
+Přehled synchronizaci dat SQL najdete v tématu [synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure](sql-database-sync-data.md).
 
 Pro dokončení příklady prostředí PowerShell, které ukazují, jak nakonfigurovat synchronizaci dat SQL, najdete v následujících článcích:
 -   [Synchronizace mezi několika databázemi SQL Azure pomocí PowerShellu](scripts/sql-database-sync-data-between-sql-databases.md)
@@ -199,7 +199,7 @@ Minimální frekvence se každých pět minut.
 
 ### <a name="does-sql-data-sync-fully-create-and-provision-tables"></a>Synchronizaci dat SQL plně vytvořit a zřídit tabulky?
 
-Pokud schéma tabulky synchronizace nejsou už vytvořené v cílové databázi, vytvoří synchronizaci dat SQL (Preview) je s sloupce, které jste vybrali. Ale toto chování neměla za následek úplnou věrnosti schématu, z následujících důvodů:
+Pokud schéma tabulky synchronizace nejsou už vytvořené v cílové databázi, vytvoří jejich synchronizaci dat SQL s sloupce, které jste vybrali. Ale toto chování neměla za následek úplnou věrnosti schématu, z následujících důvodů:
 
 -   Pouze sloupce, které jste vybrali jsou vytvořeny v cílové tabulce. Pokud některé sloupce ve zdrojové tabulky není součástí skupiny sync, tyto sloupce nejsou zřízené v cílových tabulkách.
 
@@ -215,7 +215,7 @@ Pokud schéma tabulky synchronizace nejsou už vytvořené v cílové databázi,
 
 Z důvodu tato omezení doporučujeme následující akce:
 -   Pro produkční prostředí zřídit schéma úplné věrnosti sami.
--   Pro vyzkoušení služby, funguje dobře funkci Automatické zřizování synchronizaci dat SQL (Preview).
+-   Pro vyzkoušení služby, funguje dobře funkci Automatické zřizování synchronizaci dat SQL.
 
 ### <a name="why-do-i-see-tables-that-i-did-not-create"></a>Proč se zobrazuje, tabulky, které I nevytvořila?  
 Synchronizaci dat vytváří straně tabulky v databázi pro sledování změn. Neodstraňujte ho nebo synchronizaci dat přestane fungovat.
@@ -246,7 +246,7 @@ Po exportu databáze jako `.bacpac` souboru a importovat soubor k vytvoření no
 
 ### <a name="why-do-i-need-a-client-agent"></a>Proč musím Klientský agent?
 
-Synchronizaci dat SQL (Preview) služba komunikuje s databází serveru SQL Server prostřednictvím agenta klienta. Tato funkce zabezpečení zabraňuje přímé komunikaci s databází za bránou firewall. Při synchronizaci dat SQL (Preview) služby komunikuje s agentem, ho nemá, takže pomocí šifrované připojení a jedinečný token nebo *klíč agenta*. Databáze systému SQL Server ověření agenta pomocí připojovací řetězec a agent klíče. Tento návrh poskytuje vysokou úroveň zabezpečení pro vaše data.
+Synchronizaci dat SQL služba komunikuje s databází systému SQL Server prostřednictvím agenta klienta. Tato funkce zabezpečení zabraňuje přímé komunikaci s databází za bránou firewall. Při synchronizaci dat SQL služby komunikuje s agentem, ho nemá, takže pomocí šifrované připojení a jedinečný token nebo *klíč agenta*. Databáze systému SQL Server ověření agenta pomocí připojovací řetězec a agent klíče. Tento návrh poskytuje vysokou úroveň zabezpečení pro vaše data.
 
 ### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>Kolik instancí místní agent uživatelského rozhraní lze spustit?
 
@@ -258,7 +258,7 @@ Po instalaci agenta klienta, je jediným způsobem, jak změnit účet služby o
 
 ### <a name="how-do-i-change-my-agent-key"></a>Změna Moje klíč agenta
 
-Klíčem agent může být agentem použit pouze jednou. Nemůže být znovu při odebrání pak znovu nainstalujte nového agenta, ani lze ji použít více agenty. Pokud potřebujete vytvořit nový klíč pro existujícího agenta, musí být jisti, že se stejným klíčem zaznamenává s klientským agentem a se službou synchronizaci dat SQL (Preview).
+Klíčem agent může být agentem použit pouze jednou. Nemůže být znovu při odebrání pak znovu nainstalujte nového agenta, ani lze ji použít více agenty. Pokud potřebujete vytvořit nový klíč pro existujícího agenta, musí být jisti, že se stejným klíčem zaznamenává s klientským agentem a se službou synchronizaci dat SQL.
 
 ### <a name="how-do-i-retire-a-client-agent"></a>Jak vyřazení z provozu Klientský agent?
 
@@ -270,7 +270,7 @@ Pokud chcete spustit místní agent z jiného počítače, než je aktuálně v,
 
 1. Nainstalujte agenta na požadované počítače.
 
-2. Přihlaste se k portálu pro synchronizaci dat SQL (Preview) a znovu vygenerovat klíč pomocí agenta pro nového agenta.
+2. Přihlaste se k portálu pro synchronizaci dat SQL a znovu vygenerovat klíč pomocí agenta pro nového agenta.
 
 3. Použijte uživatelské rozhraní nového agenta odeslat nový klíč agenta.
 

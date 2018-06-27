@@ -2,7 +2,7 @@
 
 #### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>Instalace adaptéru StorSimple pro službu SharePoint
 1. Zkopírujte instalační program na serveru web front end (WFE), který je také nakonfigurovaná pro spuštění webové aplikace Centrální správa SharePoint. 
-2. Použijte účet s oprávněním správce k přihlášení na serveru WFE.
+2. Použijte účet s oprávněním správce pro přihlášení k serveru WFE.
 3. Klikněte dvakrát na Instalační služby. Spustí adaptér StorSimple pro Průvodce instalací služby SharePoint. Klikněte na tlačítko **Další** zahájíte instalaci.
    
     ![StorSimple adaptér instalace úvodní stránky](./media/storsimple-install-sharepoint-adapter/HCS_SSASP_Setup1-include.png)

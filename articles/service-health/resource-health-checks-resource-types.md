@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: e37266f2438f9c6bc9de2d01624bda77f9d6ee8a
-ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
+ms.openlocfilehash: 35eedb170e1c79f4d282f71608b456a271c4d59b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36945869"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018214"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy prostředků a stav kontrol ve stavu prostředků Azure.
 Níže je úplný seznam všechny kontroly provedené prostřednictvím stav prostředku pro typy prostředků.
@@ -80,6 +80,11 @@ Níže je úplný seznam všechny kontroly provedené prostřednictvím stav pro
 |Spuštění kontroly|
 |---|
 |<ul><li>Existuje byly všechny databáze nebo kolekce žádosti není zpracovat z důvodu nedostupnosti služby databázi Cosmos Azure?</li><li>Existuje byly všechny žádosti dokument není zpracovat z důvodu nedostupnosti služby databázi Cosmos Azure?</li></ul>|
+
+## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
+|Spuštění kontroly|
+|---|
+|<ul><li>Neúspěšné žádosti o trezoru klíčů kvůli problém s platformou Azure KeyVault?</li><li>Jsou požadavky na trezor klíčů omezené z důvodu příliš mnoho požadavků provedených zákazníkem?</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.Network/Connections
 |Spuštění kontroly|

@@ -4,7 +4,7 @@
 
 Provedením následujících kroků si stáhněte aktualizace softwaru z Katalogu služby Microsoft Update.
 
-1. Spusťte Internet Explorer a přejděte na [http://catalog.update.microsoft.com](http://catalog.update.microsoft.com).
+1. Spusťte Internet Explorer a přejděte do [ http://catalog.update.microsoft.com ](http://catalog.update.microsoft.com).
 2. Pokud na tomto počítači používáte Katalog služby Microsoft Update poprvé, po zobrazení výzvy k instalaci doplňku Katalog služby Microsoft Update klikněte na **Nainstalovat**.
 
     ![Instalace katalogu](./media/storsimple-install-update2-hotfix/HCS_InstallCatalog-include.png)
@@ -28,7 +28,7 @@ Provedením následujících kroků si stáhněte aktualizace softwaru z Katalog
 Provedením následujících kroků nainstalujte a ověřte opravy hotfix běžného režimu. Pokud jste již nainstalovali pomocí portálu Azure, přeskočit na [instalaci a ověření opravy hotfix režimu údržby](#to-install-and-verify-maintenance-mode-hotfixes).
 
 1. Pokud chcete nainstalovat opravy hotfix, v konzole sériového portu zařízení StorSimple spusťte rozhraní Windows PowerShell. Postupujte podle podrobných pokynů v článku [Připojení ke konzole sériového portu pomocí klienta PuTTy](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). Na příkazovém řádku stiskněte **Enter**.
-2. Vyberte **Možnost 1** a přihlaste se k zařízení s úplným přístupem. Doporučujeme opravu hotfix nejprve nainstalovat na pasivním kontroleru.
+2. Vyberte možnost 1, **přihlásit úplný přístup**. Doporučujeme opravu hotfix nejprve nainstalovat na pasivním kontroleru.
 3. Pokud chcete nainstalovat opravu hotfix, na příkazovém řádku zadejte:
    
     `Start-HcsHotfix -Path <path to update file> -Credential <credentials in domain\username format>`
@@ -164,7 +164,7 @@ Pokud chcete nainstalovat aktualizace firmwaru disku, postupujte podle následuj
         [Y] Yes [N] No (Default is "Y"): Y
         WARNING: Installation is currently in progress. This operation can take several minutes to complete.
 3. Průběh instalace můžete sledovat pomocí příkazu `Get-HcsUpdateStatus`. Když se `RunInProgress` změní na `False`, aktualizace je dokončena.
-4. Po dokončení instalace se kontroler, na který se instalovala oprava hotfix režimu údržby, restartuje. Přihlaste se jako Možnost 1 s úplným přístup a zkontrolujte verzi firmwaru disku. Zadejte:
+4. Po dokončení instalace se kontroler, na který se instalovala oprava hotfix režimu údržby, restartuje. Přihlášení v možnost 1, **přihlásit úplný přístup**a ověřit verzi firmwaru disku. Zadejte:
    
    `Get-HcsFirmwareVersion`
    

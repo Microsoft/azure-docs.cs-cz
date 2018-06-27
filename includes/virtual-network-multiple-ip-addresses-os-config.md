@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 70762b720dcd55679d02de8e5064dc99353e06cb
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: ec1727926f6dbfeead9932004715a8bb1dfbb0cd
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36206094"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36964531"
 ---
 ## <a name="os-config"></a>Přidání IP adres do operačního systému virtuálního počítače
 
-Připojte a přihlaste se k virtuálnímu počítači, který jste vytvořili s více privátními IP adresami. Je třeba ručně přidat všechny privátní IP adresy (včetně primární), které jste přidali do virtuálního počítače. Proveďte kroky tohoto následující pro operační systém virtuálního počítače.
+Připojte se a přihlaste se k virtuálnímu počítači jste vytvořili pomocí více privátních IP adres. Je třeba ručně přidat všechny privátní IP adresy (včetně primární), které jste přidali do virtuálního počítače. Proveďte kroky tohoto následující pro operační systém virtuálního počítače.
 
 ### <a name="windows"></a>Windows
 

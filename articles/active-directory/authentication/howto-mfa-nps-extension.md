@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: a4a882781562ae71ad6c578577a9f9cd9096ef36
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2b08c3adb0c638cdfa0ccd9ae4c5beacac822eb4
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331785"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018294"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Stávající infrastruktury serveru NPS integrovat Azure Multi-Factor Authentication
 
@@ -222,7 +222,7 @@ Platný-z a platné – dokud časová razítka, které jsou v podobě čitelný
 Tato chyba může být způsobeno jedním z několika důvodů. Tyto kroky použijte k řešení:
 
 1. Restartujte NPS server.
-2. Ověřte, zda je tento certifikát klienta nainstalovány podle očekávání.
+2. Ověřte, že tento certifikát klienta je nainstalována podle očekávání.
 3. Ověřte, zda je certifikát přidružený vašeho klienta na Azure AD.
 4. Ověřte, že https://login.microsoftonline.com/ je přístupná ze serveru s příponou.
 

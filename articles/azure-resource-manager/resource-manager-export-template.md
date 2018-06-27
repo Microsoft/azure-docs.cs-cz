@@ -6,19 +6,19 @@ documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 5f5ca940-eef8-4125-b6a0-f44ba04ab5ab
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/23/2018
+ms.date: 06/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 14aa54277cac3369df739a1d84580624f2d3b401
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 3e1dd8ad49ceb126a14070ed641146d91419640a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025678"
 ---
 # <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>Vyexportování šablony Azure Resource Manageru z existujících prostředků
 V tomto článku se naučíte, jak exportovat šablonu Resource Manageru z existujících prostředků ve vašem předplatném. Tuto vygenerovanou šablonu můžete použít k lepšímu pochopení syntaxe šablon.
@@ -26,7 +26,7 @@ V tomto článku se naučíte, jak exportovat šablonu Resource Manageru z exist
 Existují dva způsoby, jak exportovat šablonu:
 
 * Můžete exportovat **skutečnou šablonu použitou k nasazení**. Exportovaná šablona zahrnuje všechny parametry a proměnné přesně tak, jak jsou uvedeny v původní šabloně. Tento přístup je užitečný, pokud jste nasadili prostředky prostřednictvím portálu a chcete vidět šablonu, která tyto prostředky vytvoří. Tato šablona je ihned použitelná. 
-* Můžete exportovat **vygenerovanou šablonu, která představuje aktuální stav skupiny prostředků**. Exportovaná šablona není založena na žádné šabloně, kterou jste použili k nasazení. Místo toho vytvoří šablonu, která je "snímek" nebo "zálohování" skupiny prostředků. Exportovaná šablona má řadu pevně definovaných hodnot a pravděpodobně méně parametrů, než byste obvykle definovali. Tuto možnost použijte k opětovnému nasazení prostředků do stejné skupiny prostředků. Chcete-li tuto šablonu použít pro jiné skupině prostředků, může mít to výrazně změnit.
+* Můžete exportovat **vygenerovanou šablonu, která představuje aktuální stav skupiny prostředků**. Vyexportované šablony není založena na všechny šablony, který jste použili pro nasazení. Místo toho vytvoří šablonu, která je "snímek" nebo "zálohování" skupiny prostředků. Exportovaná šablona má řadu pevně definovaných hodnot a pravděpodobně méně parametrů, než byste obvykle definovali. Tuto možnost použijte k opětovnému nasazení prostředků do stejné skupiny prostředků. Chcete-li tuto šablonu použít pro jiné skupině prostředků, může mít to výrazně změnit.
 
 Tento článek ukazuje obou přístupů prostřednictvím portálu.
 
@@ -38,11 +38,11 @@ Začněme tím, že do Azure nasadíme prostředky, které můžete použít k e
       ![Vyberte nový](./media/resource-manager-export-template/new.png)
 2. Vyhledejte řešení **Webová aplikace a SQL** a vyberte ho z dostupných možností.
    
-      ![hledání webové aplikace a SQL](./media/resource-manager-export-template/webapp-sql.png)
+      ![Hledání webové aplikace a SQL](./media/resource-manager-export-template/webapp-sql.png)
 
 3. Vyberte **Vytvořit**.
 
-      ![Vyberte možnost vytvořit](./media/resource-manager-export-template/create.png)
+      ![Výběr možnosti vytvoření](./media/resource-manager-export-template/create.png)
 
 4. Zadejte požadované hodnoty pro webovou aplikaci a databázi SQL. Vyberte **Vytvořit**.
 
@@ -56,16 +56,15 @@ Nasazení může trvat minutu. Po dokončení nasazení vaše předplatné obsah
       ![Skupina prostředků](./media/resource-manager-export-template/select-deployment.png)
 2. Zobrazí se vám historie nasazení pro skupinu. Ve vašem případě portálu pravděpodobně uvádí jenom jedno nasazení. Vyberte ho.
    
-     ![poslední nasazení](./media/resource-manager-export-template/select-history.png)
+     ![Poslední nasazení](./media/resource-manager-export-template/select-history.png)
 3. Na portálu zobrazí shrnutí nasazení. Souhrn obsahuje stav nasazení a jeho operací a také hodnoty, které jste zadali pro parametry. Pokud chcete zobrazit šablonu, kterou jste použili k nasazení, vyberte možnost **Zobrazit šablonu**.
    
-     ![zobrazení souhrnu nasazení](./media/resource-manager-export-template/view-template.png)
+     ![Zobrazení souhrnu nasazení](./media/resource-manager-export-template/view-template.png)
 4. Resource Manager pro vás načte následujících sedm souborů:
    
    1. **Template** - Šablona, která definuje infrastrukturu pro vaše řešení. Když jste prostřednictvím portálu vytvářeli účet úložiště, Resource Manager k jeho nasazení použil šablonu a tuto šablonu uložil pro budoucí použití.
    2. **Parameters** - Soubor s parametry, který slouží k předávání hodnot během nasazení. Obsahuje hodnoty, které jste zadali při prvním nasazení. Kteroukoli z těchto hodnot můžete při opětovném nasazování šablony změnit.
-   3. **CLI** - Soubor skriptu rozhraní příkazového řádku Azure CLI, který můžete použít k nasazení šablony.
-   3. **CLI 2.0** – Soubor skriptu rozhraní příkazového řádku Azure CLI, který můžete použít k nasazení šablony
+   3. **Rozhraní příkazového řádku** -souboru skriptu rozhraní příkazového řádku Azure, který můžete použít k nasazení šablony.
    4. **PowerShell** - Soubor skriptu Azure PowerShellu, který můžete použít k nasazení šablony.
    5. **.NET** - Třída .NET, kterou můžete použít k nasazení šablony.
    6. **Ruby** - Třída Ruby, kterou můžete použít k nasazení šablony.
@@ -93,7 +92,7 @@ Pokud jste ručně změnili vašich prostředků nebo přidat prostředky do ví
    
 3. Máte pár možností, jak s touto šablonou dále pracovat. Šablonu si můžete stáhnout a pracovat na ní místně v editoru JSON nebo si ji můžete uložit do knihovny a pracovat s ní prostřednictvím portálu.
    
-     Pokud se vám s editorem JSON, jako je [VS Code](https://code.visualstudio.com/) nebo [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md), dobře pracuje, můžete si ji stáhnout místně a použít tento editor. Pokud chcete pracovat místně, vyberte **Stáhnout**.
+     Pokud vám vyhovuje, pomocí editoru JSON jako [VS Code](https://code.visualstudio.com/) nebo [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md), můžete preferovat stahování šablony místně a pomocí tohoto editoru. Pokud chcete pracovat místně, vyberte **Stáhnout**.
    
       ![Stažení šablony](./media/resource-manager-export-template/download-template.png)
    
@@ -103,10 +102,10 @@ Pokud jste ručně změnili vašich prostředků nebo přidat prostředky do ví
    
      Při přidávání šablonu do knihovny, dáváte šablonu název a popis. Potom vyberte **Uložit**.
    
-     ![nastavené hodnoty šablony](./media/resource-manager-export-template/save-library-template.png)
+     ![Nastavené hodnoty šablony](./media/resource-manager-export-template/save-library-template.png)
 4. Pokud chcete šablonu uloženou v knihovně zobrazit, vyberte **Další služby**, napište **Šablony**, abyste vyfiltrovali výsledky, a vyberte **Šablony**.
    
-      ![najít šablony](./media/resource-manager-export-template/find-templates.png)
+      ![Najít šablony](./media/resource-manager-export-template/find-templates.png)
 5. Vyberte šablonu s názvem, který jste uložili.
    
       ![Vyberte šablonu](./media/resource-manager-export-template/select-saved-template.png)
@@ -120,7 +119,7 @@ Vyexportovaná šablona funguje správně, pokud chcete vytvořit stejnou webovo
 2. Vyberte šablonu.
    
      ![Upravit šablonu](./media/resource-manager-export-template/select-added-template.png)
-3. Abyste mohli předat hodnoty, které byste mohli chtít zadat během nasazování, přidejte následující dva parametry do části **parameters** v šabloně:
+3. Chcete-li předat hodnoty, které můžete chtít zadat během nasazování, přidejte následující dva parametry, které chcete **parametry** oddílu v šabloně:
 
    ```json
    "administratorLogin": {
@@ -151,7 +150,7 @@ Vyexportovaná šablona funguje správně, pokud chcete vytvořit stejnou webovo
    },
    ```
 
-6. Po dokončení úprav šablony vyberte **OK**.
+6. Vyberte **OK** po dokončení úprav šablony.
 7. Uložte změny šablony kliknutím na **Uložit**.
    
      ![Uložení šablony](./media/resource-manager-export-template/save-template.png)
@@ -162,12 +161,11 @@ Vyexportovaná šablona funguje správně, pokud chcete vytvořit stejnou webovo
 
 
 ## <a name="fix-export-issues"></a>Oprava problémů s exportem
-Ne všechny typy prostředků podporují funkci exportu šablony. Tento problém můžete vyřešit ručním přidáním chybějících prostředků zpět do šablony. Chybová zpráva obsahuje typy prostředků, které se nedají exportovat. Vyhledejte tyto typy prostředků v [referenčních informacích k šablonám](/azure/templates/). Pokud například chcete ručně přidat bránu virtuální sítě, přečtěte si [referenční informace k šablonám o prostředku Microsoft.Network/virtualNetworkGateways](/azure/templates/microsoft.network/virtualnetworkgateways).
+Ne všechny typy prostředků podporují funkci exportu šablony. Zobrazí jenom tehdy, export problémy při exportu ze skupiny prostředků spíše než z historii nasazení. Pokud vaše poslední nasazení přesně reprezentuje aktuální stav skupiny prostředků, měli byste šablonu exportovat z historie nasazení, ne ze skupiny zdrojů. Exportujte pouze ze skupiny prostředků po provedení změny do skupiny prostředků, které nejsou definovány v jediné šabloně.
 
-> [!NOTE]
-> K problémům s exportem může dojít pouze při exportu ze skupiny prostředků, ne z historie nasazení. Pokud vaše poslední nasazení přesně reprezentuje aktuální stav skupiny prostředků, měli byste šablonu exportovat z historie nasazení, ne ze skupiny zdrojů. Ze skupiny zdrojů exportujte pouze tehdy, pokud jste ve skupině prostředků provedli změny, které nejsou definovány v jedné šabloně.
-> 
-> 
+K vyřešení problémů s export ručně přidejte chybějící prostředky, které zpět do šablony. Chybová zpráva obsahuje typy prostředků, které nelze exportovat. Vyhledejte tyto typy prostředků v [referenčních informacích k šablonám](/azure/templates/). Pokud například chcete ručně přidat bránu virtuální sítě, přečtěte si [referenční informace k šablonám o prostředku Microsoft.Network/virtualNetworkGateways](/azure/templates/microsoft.network/virtualnetworkgateways). Odkaz na šablonu vám dává JSON pro daný prostředek přidejte do šablony.
+
+Po získání formátu JSON pro prostředek, potřebujete získat hodnoty prostředků. Hodnoty prostředku můžete zobrazit pomocí operaci GET v rozhraní REST API pro typ prostředku. Například pro získání hodnoty pro bránu virtuální sítě, najdete v části [získat brány virtuální sítě -](/rest/api/network-gateway/virtualnetworkgateways/get).
 
 ## <a name="next-steps"></a>Další postup
 

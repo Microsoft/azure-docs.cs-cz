@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2018
+ms.date: 06/26/2018
 ms.author: asmalser
-ms.openlocfilehash: fce7ea66f5e10aae4f1a0a3f0ed92ca57e6112c7
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: c7a18132a797bd7411487c233fc41647cc20dfb4
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293292"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025703"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatizovat uživatele zajišťování a rušení zajištění pro aplikace SaaS ve službě Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co je automatické zřizování uživatelů pro aplikace SaaS?
@@ -50,7 +50,6 @@ Některé běžné motivace pro použití této funkce patří:
 * Snadno importovat velký počet uživatelů do určité aplikaci SaaS nebo systému.
 * Abyste mohli využívat s jedinou sadu zásady určující, který je zřízený a který můžete přihlásit k aplikaci.
 
-
 ## <a name="how-does-automatic-provisioning-work"></a>Jak funguje automatické zřizování
     
 **Zřizování služby Azure AD** zřídí uživatelům aplikace SaaS a dalšími systémy připojením ke koncovým bodům uživatelské rozhraní API pro správu poskytnutý dodavatelem každé aplikace. Rozhraní API koncových bodů pro tyto uživatele správu povolit službě Azure AD prostřednictvím kódu programu vytvářet, aktualizovat a odebírat uživatele. Pro vybrané aplikace, zřizování služby mohou také vytvářet aktualizovat a odebírat další spojené s objekty, například skupin a rolí. 
@@ -69,15 +68,17 @@ Některé běžné motivace pro použití této funkce patří:
 
 Funkce Azure AD předem integrované podpory pro různé oblíbených aplikací SaaS a systémy lidských zdrojů, jakož i obecné podporu pro aplikace, které implementují konkrétní části standardní SCIM 2.0.
 
-Seznam všech aplikací, pro kterou Azure AD podporuje předem integrovaných zřizování konektor, naleznete [seznam kurzů aplikace pro zřizování uživatelů](active-directory-saas-tutorial-list.md).
+### <a name="pre-integrated-applications"></a>Předem integrovaných aplikací
+Seznam všech aplikací, pro kterou Azure AD podporuje předem integrovaných zřizování konektor, naleznete [seznam kurzů aplikace pro zřizování uživatelů](saas-apps/tutorial-list.md).
 
-Informace o tom, jak přidat podporu pro Azure AD zřizování uživatelů k aplikaci najdete v tématu [pomocí SCIM pro automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím](manage-apps/use-scim-to-provision-users-and-groups.md).
-
-Kontaktujte Azure AD technickému týmu požádat o zřizování podporu dalších aplikací, odeslání zprávy prostřednictvím [fóru pro zpětnou vazbu Azure Active Directory](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).    
+Kontaktujte Azure AD technickému týmu požádat o zřizování podporu dalších aplikací, odeslání zprávy prostřednictvím [fóru pro zpětnou vazbu Azure Active Directory](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035).
 
 > [!NOTE]
 > Aby aplikace pro podporu zřizování automatizované uživatelů se musí nejprve poskytování správy potřebné uživatelské rozhraní API umožňující pro externí programy automatizovat vytváření, údržbu a odebírání uživatelů. Ne všechny aplikace SaaS jsou proto kompatibilní s touto funkcí. Pro aplikace, které podporují rozhraní API správy uživatelů technický tým služby Azure AD bude moct vytvářet zřizování konektor pro tyto aplikace a činnost prioritu podle potřeb aktuální a potenciální zákazníky. 
-    
+
+### <a name="connecting-applications-that-support-scim-20"></a>Připojení aplikace, které podporují SCIM 2.0
+Informace o tom, jak obecně připojit aplikace, které implementují SCIM 2.0 - Správa na základě uživatelského rozhraní API, najdete v části [pomocí SCIM pro automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím](manage-apps/use-scim-to-provision-users-and-groups.md).
+
     
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Jak je nastavit automatické zřizování pro aplikace?
 
@@ -85,7 +86,7 @@ Kontaktujte Azure AD technickému týmu požádat o zřizování podporu další
 
 Konfigurace služby Azure AD pro vybrané aplikace se spustí v zřizování služby  **[portál Azure](https://portal.azure.com)**. V **Azure Active Directory > podnikové aplikace, které** vyberte **přidat**, pak **všechny**a poté přidejte následující v závislosti na vašem scénáři:
 
-* Všechny aplikace v **vybrané aplikace** části Podpora automatické zřizování. Najdete v článku [seznam kurzů aplikace pro zřizování uživatelů](active-directory-saas-tutorial-list.md) pro další pravidla.
+* Všechny aplikace v **vybrané aplikace** části Podpora automatické zřizování. Najdete v článku [seznam kurzů aplikace pro zřizování uživatelů](saas-apps/tutorial-list.md) pro další pravidla.
 
 * Pomocí možnosti "bez Galerie aplikace" pro zákaznických SCIM integrace
 
@@ -152,7 +153,7 @@ Po počáteční synchronizaci budou všechny následné synchronizace:
 >[!NOTE]
 > Volitelně můžete zakázat vytvoření, aktualizace a operacemi odstranění pomocí **cíle akce objektu** zaškrtávací políčka v [mapování atributů](active-directory-saas-customizing-attribute-mappings.md) části. Logika pro zakázání uživatele během aktualizace se také řídí prostřednictvím mapování atributů z pole, jako je například "accountEnabled".
 
-Zřizování služby bude dál běžet back-to-back přírůstkové synchronizace dobu neurčitou, v intervalech definovaných v [kurzu specifické pro každou aplikaci](active-directory-saas-tutorial-list.md), dokud nenastane některá z následujících událostí:
+Zřizování služby bude dál běžet back-to-back přírůstkové synchronizace dobu neurčitou, v intervalech definovaných v [kurzu specifické pro každou aplikaci](saas-apps/tutorial-list.md), dokud nenastane některá z následujících událostí:
 
 * Je služba ručně zastavená pomocí webu Azure portal nebo použitím příkazu příslušné rozhraní Graph API 
 * Nové počáteční synchronizace se aktivuje pomocí **Vymazat stav a restartujte** možnost na webu Azure portal nebo použitím příkazu příslušné rozhraní Graph API. To vymaže všechny uložené vodoznak a způsobí, že všem objektům zdrojové vyhodnocované znovu.
@@ -167,7 +168,7 @@ Pokud jednotlivého uživatele nelze přidat, aktualizovat nebo odstranit v cíl
 
 Tyto chyby lze vyřešit nastavením hodnoty atributu pro ovlivněného uživatele ve zdrojovém systému, nebo úpravě mapování atributů není způsobit konflikty.   
 
-### <a name="quarantine"></a>Umístění do karantény
+### <a name="quarantine"></a>Karanténa
 Pokud většinu nebo všechny z volání směřovaný na cílovém systému konzistentně nezdaří z důvodu chyby (například jako v případě přihlašovací údaje správce neplatný), pak úlohy zřizování přejde do stavu "umístit do karantény". To je uvedené v [zřizování souhrnnou sestavu](active-directory-saas-provisioning-reporting.md)a prostřednictvím e-mailu, pokud e-mailová oznámení byly nakonfigurované na webu Azure portal. 
 
 Když do karantény, četnost přírůstkové synchronizace postupně snížena jednou za den. 
@@ -216,33 +217,31 @@ Souhrn faktorů, které ovlivňují doby potřebné k dokončení **počátečn�
 * Požádat o omezení přenosové rychlosti a omezování implementována cílovým systémem. Některé cílové systémy implementují omezení míry požadavků a omezení, což může ovlivnit výkon při velkých synchronizační operace. Za těchto podmínek aplikaci, která obdrží příliš rychlé příliš mnoho žádostí o mohou zpomalit jeho rychlost odezvy nebo ukončení připojení. Pokud chcete zvýšit výkon, je potřeba upravit pomocí není rychleji, než aplikace dokáže zpracovat zasílání požadavků aplikace konektor. Zřizování konektory vytvořené Microsoft učinit této úpravy. 
 
 * Počet a velikost přiřazených skupin. Synchronizuje se přiřazeny skupiny trvá déle než synchronizaci uživatelů. Počet a velikost přiřazené skupiny dopad na výkon. Pokud má aplikace [mapování povolena pro skupinu objekt synchronizace](active-directory-saas-customizing-attribute-mappings.md#editing-group-attribute-mappings), vlastnosti skupiny jako názvy skupin a členství ve skupinách se synchronizují kromě uživatelů. Tyto další synchronizace bude trvat déle než jenom synchronizaci uživatelských objektů.
- 
 
-## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-**Jak můžete sledovat průběh úlohy aktuální zřizování?**
+##<a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>Jak poznám, pokud uživatelé jsou zřizovaný správně?
 
-Najdete v článku [zřizování průvodce vytvářením sestav](active-directory-saas-provisioning-reporting.md).
+Všechny operace provedené uživatelem zřizování služby se zaznamenávají do Azure AD protokoly auditu. To zahrnuje všechny operacích provedené zdrojové a cílové systémy, jaká data uživatele byl číst nebo zapisovat během každé operace čtení a zápisu.
 
-**Jak poznám, že pokud uživatelům nedaří získat zřízený správně?**
+Informace o tom, jak čtení auditu protokoly na portálu Azure, najdete v článku [zřizování průvodce vytvářením sestav](active-directory-saas-provisioning-reporting.md).
 
-Všechny chyby se zaznamenávají do Azure AD protokoly auditu. Další informace najdete v tématu [zřizování průvodce vytvářením sestav](active-directory-saas-provisioning-reporting.md).
 
-**Tom, jak můžete sestavit aplikace, která spolupracuje se službou zřizování?**
+##<a name="how-do-i-troubleshoot-issues-with-user-provisioning"></a>Jak odstranit problémy s zřizování uživatelů?
 
-V tématu [pomocí SCIM pro automatické zřizování uživatelů a skupin ze služby Azure Active Directory k aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning).
+Na základě scénáře pokyny, jak řešit zřizování automatické uživatelů najdete v tématu [problémy konfigurace a zřizování uživatelů k aplikaci](active-directory-application-provisioning-content-map.md).
 
-**Jak mohu odeslat zpětnou vazbu technickému týmu?**
 
-Kontaktujte nás prostřednictvím [fóru pro zpětnou vazbu Azure Active Directory](https://feedback.azure.com/forums/169401-azure-active-directory/).
+##<a name="what-are-the-best-practices-for-rolling-out-automatic-user-provisioning"></a>Jaké jsou doporučené postupy pro nasazení zřizování automatické uživatelů?
+
+> [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
+
+Plán služby příklad podrobný postup nasazení pro zřizování odchozí uživatelů na aplikaci, najdete v článku [Identity Deployment Guide pro zřizování uživatelů](https://aka.ms/userprovisioningdeploymentplan)/
 
 
 ## <a name="related-articles"></a>Související články
-* [Seznam kurzů k integraci aplikací SaaS](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS](saas-apps/tutorial-list.md)
 * [Přizpůsobení mapování atributů pro zřizování uživatelů](active-directory-saas-customizing-attribute-mappings.md)
 * [Zapisují se výrazy pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Filtry pro zřizování uživatelů oborů](active-directory-saas-scoping-filters.md)
 * [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Přehled synchronizace rozhraní API služby Azure AD](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
-* [Podrobný postup nasazení plán pro zřizování odchozí uživatelů aplikace](https://aka.ms/userprovisioningdeploymentplan)
-

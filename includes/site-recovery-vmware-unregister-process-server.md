@@ -12,7 +12,7 @@ Postup zrušení registrace procesového serveru se liší v závislosti na jeho
 > [!WARNING]
 > Uvedené pokyny by se měly použít, pokud neexistuje žádný způsob jak oživit virtuální počítač, na kterém byl nainstalován na procesní server.
 
-1. Přihlaste se ke konfiguračnímu serveru jako správce.
+1. Přihlaste se k serveru configuration jako správce.
 2. Otevřete příkazový řádek pro správu a přejděte do adresáře `%ProgramData%\ASR\home\svsystems\bin`.
 3. Nyní spusťte příkaz.
 

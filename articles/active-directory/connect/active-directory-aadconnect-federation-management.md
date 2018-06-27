@@ -17,12 +17,12 @@ ms.date: 07/18/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 276e53784b30c2196ad7455cf9fd801a103fdc30
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 719506e35e6abe5ac573c7ceedc1668fd2704bd4
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590850"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961685"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Spravovat a přizpůsobit Active Directory Federation Services přes Azure AD Connect
 Tento článek popisuje, jak spravovat a přizpůsobit Active Directory Federation Services (AD FS) pomocí služby Azure Active Directory (Azure AD) připojit. Zahrnuje také dalších běžných úkolů služby AD FS, které možná budete muset udělat pro celou konfiguraci farmy služby AD FS.
@@ -209,7 +209,7 @@ Následující části popisují, jak můžete napsat vlastní pravidla pro něk
 ### <a name="immutable-id-conditional-on-a-value-being-present-in-the-attribute"></a>Neměnné ID podmíněného na hodnotu, která se nachází v atributu
 Azure AD Connect umožňuje zadat atribut má být použit jako zdrojové ukotvení při objekty se synchronizují do Azure AD. Pokud hodnota ve vlastním atributu není prázdná, můžete vydat deklaraci identity neměnné ID.
 
-Například můžete vybrat **ms-ds-consistencyguid** jako atribut pro zdrojové ukotvení a problém **ImmutableID** jako **ms-ds-consistencyguid** v případě, že atribut má hodnotu před ním. Pokud není žádná hodnota pro atribut, **objectGuid** jako neměnné ID. Můžete vytvořit sadu pravidel vlastních deklarací identity, jak je popsáno v následující části.
+Například můžete vybrat **ms-ds-consistencyguid** jako atribut pro zdrojové ukotvení a problém **ImmutableID** jako **ms-ds-consistencyguid** v případě, že atribut obsahuje hodnotu před ním. Pokud není žádná hodnota pro atribut, **objectGuid** jako neměnné ID. Můžete vytvořit sadu pravidel vlastních deklarací identity, jak je popsáno v následující části.
 
 **Pravidlo 1: Atributy dotazu**
 
@@ -246,31 +246,8 @@ V tomto pravidle, se jednoduše kontrola příznak dočasné **idflag**. Můžet
 > Pořadí těchto pravidel je důležité.
 
 ### <a name="sso-with-a-subdomain-upn"></a>Jednotné přihlašování s subdoména UPN
-Můžete přidat více než jedné domény na federovanou pomocí Azure AD Connect, jak je popsáno v [přidání nové federované domény](active-directory-aadconnect-federation-management.md#addfeddomain). Deklarace hlavní název (UPN) uživatele musí změnit tak, aby ID vystavitele odpovídá kořenové domény a není subdomény, protože federované kořenové domény platí i pro podřízený objekt.
 
-Ve výchozím nastavení je jako sady pravidel deklarací identity pro vystavitele s ID:
-
-    c:[Type
-    == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
-
-![Deklarace ID výchozí vystavitele](media/active-directory-aadconnect-federation-management/issuer_id_default.png)
-
-Výchozí pravidlo jednoduše trvá příponu UPN a používá je v deklarace ID vystavitele. Například Jan je uživatel v sub.contoso.com a je contoso.com sdružených se službou Azure AD. Jan zadá john@sub.contoso.com jako uživatelské jméno při přihlášení k Azure AD. Výchozí pravidlo deklarace identity ID vystavitele ve službě AD FS ji zpracovává následujícím způsobem:
-
-    c:[Type
-    == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(john@sub.contoso.com, “.+@(?<domain>.+)“, “http://${domain}/adfs/services/trust/“));
-
-**Hodnota deklarace identity:**  http://sub.contoso.com/adfs/services/trust/
-
-Pokud chcete, aby kořenové domény v hodnotě vystavitele deklarace, změňte pravidlo deklarace identity tak, aby odpovídala následující:
-
-    c:[Type == “http://schemas.xmlsoap.org/claims/UPN“]
-
-    => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “^((.*)([.|@]))?(?<domain>[^.]*[.].*)$”, “http://${domain}/adfs/services/trust/“));
+Můžete přidat více než jedné domény na federovanou pomocí Azure AD Connect, jak je popsáno v [přidání nové federované domény](active-directory-aadconnect-federation-management.md#addfeddomain). Verze služby Azure AD Connect 1.1.553.0 a nejnovější vytvoří pravidlo správné deklarace identity pro issuerID automaticky. Pokud nemůžete použít Azure AD Connect verze 1.1.553.0 nebo nejnovější, doporučujeme [pravidla deklarací identity RTP – Azure AD](https://aka.ms/aadrptclaimrules) nástroj se používá ke generování a nastavit pravidla správné deklarací pro vztah důvěryhodnosti předávající strany služby Azure AD.
 
 ## <a name="next-steps"></a>Další postup
 Další informace o [možnosti přihlášení uživatele](active-directory-aadconnect-user-signin.md).

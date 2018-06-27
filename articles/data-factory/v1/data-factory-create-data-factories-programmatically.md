@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 25bb16ebda29722fc8200ece525e870f6c85ef7d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dcfd24d3d0122f664655f6085bbd58bc0bfe9718
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621951"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018484"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Vytvoření, sledovat a spravovat Azure data Factory pomocí .NET SDK služby Azure Data Factory
 > [!NOTE]
@@ -425,7 +425,7 @@ Aktivita kopírování provádí přesun dat ve službě Azure Data Factory. Akt
     Console.WriteLine("\nPress any key to exit.");
     Console.ReadKey();
     ```
-14. Do třídy **Program** přidejte následující pomocnou metodu, kterou používá metoda **Main**. Tato metoda otevře dialogové okno, který umožňuje zadat **uživatelské jméno** a **heslo** který používáte k přihlášení k portálu Azure.
+14. Do třídy **Program** přidejte následující pomocnou metodu, kterou používá metoda **Main**. Tato metoda otevře dialogové okno vám umožňuje zadat **uživatelské jméno** a **heslo** který používáte k přihlášení k portálu Azure.
 
     ```csharp
     public static async Task<string> GetAuthorizationHeader()

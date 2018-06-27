@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: d185be26633178d8b3f147453b4c48eb77d7e425
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: be5dab7b9714f13a4bd30e6ab33a5a0e2016212d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753519"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020015"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>Zabezpečená komunikace vzdálené komunikace služby ve službě C#
 > [!div class="op_single_selector"]
@@ -57,7 +57,12 @@ Chcete-li pomoc se zabezpečením služby, pokud používáte vzdálenou komunik
     ```
 2. Přidejte nastavení naslouchacího procesu a zabezpečovací pověření.
 
-    Ujistěte se, že certifikát, který chcete použít k zabezpečení komunikace vaší služby je nainstalován na všech uzlech v clusteru. Zadejte nastavení naslouchacího procesu a zabezpečovací pověření dvěma způsoby:
+    Ujistěte se, že certifikát, který chcete použít k zabezpečení komunikace vaší služby je nainstalován na všech uzlech v clusteru. 
+    
+    > [!NOTE]
+    > Na uzlech Linux musí být certifikát formátu PEM souborů */var/lib/sfcerts* adresáře. Další informace najdete v tématu [umístění a formátu X.509 – certifikáty na uzly Linux](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes). 
+
+    Zadejte nastavení naslouchacího procesu a zabezpečovací pověření dvěma způsoby:
 
    1. Poskytněte přímo v kódu služby:
 
@@ -202,5 +207,6 @@ Chcete-li pomoc se zabezpečením služby, pokud používáte vzdálenou komunik
     string message = await client.GetHelloWorld();
 
     ```
+
 
 Jako další krok, přečtěte si [webového rozhraní API s OWIN v spolehlivé služby](service-fabric-reliable-services-communication-webapi.md).

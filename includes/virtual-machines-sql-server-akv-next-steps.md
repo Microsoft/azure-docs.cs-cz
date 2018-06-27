@@ -26,7 +26,7 @@ CREATE CREDENTIAL sysadmin_ekm_cred
 FOR CRYPTOGRAPHIC PROVIDER AzureKeyVault_EKM_Prov;
 
 
---Map the credential to a SQL login that have sysadmin permissions, this will allows the SQL login to access the key vault when creating the asymmetric key in the next step.
+--Map the credential to a SQL login that has sysadmin permissions. This allows the SQL login to access the key vault when creating the asymmetric key in the next step.
 ALTER LOGIN [SQL_Login]
 ADD CREDENTIAL sysadmin_ekm_cred;
 
@@ -129,7 +129,7 @@ SELECT CONVERT(VARCHAR, DECRYPTBYKEY(@DATA));
 CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 ```
 
-## <a name="additional-resources"></a>Další materiály
+## <a name="additional-resources"></a>Další zdroje informací:
 
 Další informace o tom, jak používat tyto funkce šifrování najdete v tématu [pomocí EKM pomocí funkcí šifrování SQL serveru](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
 

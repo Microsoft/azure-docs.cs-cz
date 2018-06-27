@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 06/26/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: bc17045106b2656cdeb5f51037b3138aeac9ee0f
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: 08a300d0e2d1565428f282a2073d91b5dd08c060
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757463"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016995"
 ---
 # <a name="azure-stack-registration"></a>Registrace Azure zásobníku
 Instalace služby Azure zásobníku Development Kit (ASDK) můžete zaregistrovat s Azure můžete stáhnout z Azure marketplace položky a nastavit obchodování při generování sestav dat zpět do společnosti Microsoft. Registrace je vyžadována pro podporu plnou funkčnost zásobník Azure, včetně syndikace marketplace. Registrace je doporučená, protože umožňuje otestovat důležité funkce Azure zásobníku jako syndikace marketplace a vytváření sestav využití. Po registraci Azure zásobníku využití oznamovány obchodu Spojených států v Azure. Zobrazí se v rámci předplatného, které jste použili pro registraci. Uživatelé ASDK však nejsou účtovat žádné využití, které patří.
@@ -83,4 +83,4 @@ Následujícím postupem ověřte, že registrace ASDK pomocí Azure bylo úspě
     ![](media/asdk-register/3.PNG)
 
 ## <a name="next-steps"></a>Další postup
-[Přidání položky zásobníku Azure marketplace.](asdk-marketplace-item.md)
+[Přidání položky zásobníku Azure marketplace.](.\.\azure-stack-marketplace.md)

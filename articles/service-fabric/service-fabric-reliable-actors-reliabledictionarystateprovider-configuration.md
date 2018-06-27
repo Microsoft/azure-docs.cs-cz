@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 00ae5db5fc7a327ae19e64c3d8adf653afd12677
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1c7e31f9da2b2f9fe7a3a7c64cd6927224cb9fa1
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213108"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017891"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Konfigurace Reliable Actors – ReliableDictionaryActorStateProvider
 Výchozí konfigurace ReliableDictionaryActorStateProvider můžete upravit změnou souboru souborech settings.xml vygenerované zadaného objektu actor v kořenu balíčku sady Visual Studio ve složce Konfigurace.
@@ -68,6 +68,10 @@ SharedLogSizeInMB určuje množství místa na disku pro předběžné přiděle
 ## <a name="replicator-security-configuration"></a>Konfigurace zabezpečení replikátoru
 Konfigurace zabezpečení Replikátor slouží k zabezpečení komunikačního kanálu, který se používá během replikace. To znamená, že služby nelze vzájemně provoz replikace, zajištění, že data, která je vysoké dostupnosti je také zabezpečené.
 Ve výchozím nastavení zabraňuje konfigurační oddíl prázdný zabezpečení zabezpečení replikace.
+
+> [!IMPORTANT]
+> Certifikáty na uzly Linux musí být ve formátu PEM. Další informace o vyhledání a konfigurace certifikátů pro Linux najdete v tématu [konfigurace certifikátů pro systémy Linux](./service-fabric-configure-certificates-linux.md). 
+> 
 
 ### <a name="section-name"></a>Název oddílu
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig

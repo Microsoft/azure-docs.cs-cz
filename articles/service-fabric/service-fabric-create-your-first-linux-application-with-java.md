@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 16c99c2c5524a321616ac9f0975f0c9b4255ca94
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 07f739243b80230fbf4914535ea65183c3590937
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215850"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020437"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Vytvoření první aplikace Service Fabric Reliable Actors v Javě v Linuxu
 > [!div class="op_single_selector"]
@@ -219,6 +219,10 @@ Parametry těchto příkazů najdete v generovaných manifestech uvnitř balíč
 Jakmile je aplikace nasazená, otevřete prohlížeč a přejděte k nástroji [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) na adrese [http://localhost:19080/Explorer](http://localhost:19080/Explorer).
 Pak rozbalte uzel **Aplikace** a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
+> [!IMPORTANT]
+> K nasazení aplikace do zabezpečené cluster s Linuxem v Azure, budete muset nakonfigurovat certifikát k ověření vaší aplikace pomocí modulu runtime Service Fabric. Díky tomu vaše služby Reliable Actors ke komunikaci s základní modulu runtime Service Fabric rozhraní API. Další informace najdete v tématu [konfigurovat spolehlivé služby aplikaci spustit v clusterech Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+>
+
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Spuštění klienta testování a převzetí služeb při selhání
 Samotné objekty actor nic nedělají – vyžadují, aby jim jiná služba nebo klient posílali zprávy. Šablona actor zahrnuje jednoduchý testovací skript, který můžete použít k interakci se službou actor.
 
@@ -226,6 +230,14 @@ Samotné objekty actor nic nedělají – vyžadují, aby jim jiná služba nebo
 > Testovací klient používá třídu ActorProxy ke komunikaci s aktéři, které musí spustit ve stejném clusteru jako u služby objektu actor nebo sdílet stejnou adresní prostor IP adres.  Testovacího klienta můžete spustit na stejném počítači jako místní vývojový cluster.  Ke komunikaci s aktéři v clusteru s podporou vzdálený, ale musíte nasadit bránu na clusteru, který zpracovává externí komunikaci s aktéři.
 
 1. Spusťte skript pomocí pomocného sledovacího programu a prohlédněte si výstup služby actor.  Testovací skript volá metodu `setCountAsync()` objektu actor pro zvýšení čítače a metodu `getCountAsync()` objektu actor pro získání nové hodnoty čítače, kterou zobrazí v konzole.
+
+   V případě MAC OS X budete muset zkopírujte složku HelloWorldTestClient do některé umístění uvnitř kontejneru spuštěním následujících příkazů Další.    
+    
+    ```bash
+     docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
+     docker exec -it [first-four-digits-of-container-ID] /bin/bash
+     cd /home
+     ```
 
     ```bash
     cd HelloWorldActorTestClient
@@ -257,8 +269,8 @@ Podpora Service Fabric Reliable Actor pro vaši aplikaci.
   ```XML
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
-      <artifactId>sf-actors-preview</artifactId>
-      <version>0.12.0</version>
+      <artifactId>sf-actors</artifactId>
+      <version>1.0.0</version>
   </dependency>
   ```
 
@@ -267,7 +279,7 @@ Podpora Service Fabric Reliable Actor pro vaši aplikaci.
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-actors-preview:0.12.0'
+      compile 'com.microsoft.servicefabric:sf-actors:1.0.0'
   }
   ```
 
@@ -278,8 +290,8 @@ Podpora Service Fabric Reliable Services pro vaši aplikaci.
   ```XML
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
-      <artifactId>sf-services-preview</artifactId>
-      <version>0.12.0</version>
+      <artifactId>sf-services</artifactId>
+      <version>1.0.0</version>
   </dependency>
   ```
 
@@ -288,7 +300,7 @@ Podpora Service Fabric Reliable Services pro vaši aplikaci.
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-services-preview:0.12.0'
+      compile 'com.microsoft.servicefabric:sf-services:1.0.0'
   }
   ```
 
@@ -300,8 +312,8 @@ Podpora přenosové vrstvy pro aplikace Service Fabric Java. Pokud neprogramujet
   ```XML
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
-      <artifactId>sf-transport-preview</artifactId>
-      <version>0.12.0</version>
+      <artifactId>sf-transport</artifactId>
+      <version>1.0.0</version>
   </dependency>
   ```
 
@@ -310,7 +322,7 @@ Podpora přenosové vrstvy pro aplikace Service Fabric Java. Pokud neprogramujet
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-transport-preview:0.12.0'
+      compile 'com.microsoft.servicefabric:sf-transport:1.0.0'
   }
   ```
 
@@ -321,8 +333,8 @@ Podpora na úrovni systému pro Service Fabric, která komunikuje s modulem runt
   ```XML
   <dependency>
       <groupId>com.microsoft.servicefabric</groupId>
-      <artifactId>sf-preview</artifactId>
-      <version>0.12.0</version>
+      <artifactId>sf</artifactId>
+      <version>1.0.0</version>
   </dependency>
   ```
 
@@ -331,7 +343,7 @@ Podpora na úrovni systému pro Service Fabric, která komunikuje s modulem runt
       mavenCentral()
   }
   dependencies {
-      compile 'com.microsoft.servicefabric:sf-preview:0.12.0'
+      compile 'com.microsoft.servicefabric:sf:1.0.0'
   }
   ```
 

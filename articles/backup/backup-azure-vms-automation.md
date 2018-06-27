@@ -6,15 +6,15 @@ author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 12/20/2017
+ms.date: 6/26/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d3c0d08b2a34313c10ab89f2972894ffabe19d2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 977413b700dace3e38874d7a41cbc1e16ae0bec4
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606235"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018807"
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Pomocí rutin AzureRM.RecoveryServices.Backup zálohování virtuálních počítačů
 
@@ -503,6 +503,7 @@ Po obnovení disky, tyto kroky použijte k vytvoření a konfiguraci virtuální
     PS C:\> $nicName="p1234"
     PS C:\> $pip = New-AzureRmPublicIpAddress -Name $nicName -ResourceGroupName "test" -Location "WestUS" -AllocationMethod Dynamic
     PS C:\> $vnet = Get-AzureRmVirtualNetwork -Name "testvNET" -ResourceGroupName "test"
+    PS C:\> $subnetindex=0
     PS C:\> $nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName "test" -Location "WestUS" -SubnetId $vnet.Subnets[$subnetindex].Id -PublicIpAddressId $pip.Id
     PS C:\> $vm=Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
     ```

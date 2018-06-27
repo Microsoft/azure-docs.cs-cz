@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 9f37547b4b183594410b4e16b872645407ff4a6f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 64281215d139731b61365936bc1b837798ad8fbf
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35343960"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016830"
 ---
 # <a name="quickstart-recognize-speech-using-the-cognitive-services-speech-c-sdk"></a>Rychlý úvod: Rozpoznávat řeč pomocí kognitivní služby řeči C# sady SDK
 
@@ -33,7 +33,7 @@ V tomto článku zjistěte, jak k vytvoření konzolové aplikace jazyka C# v sy
 
     ![Vytvoření aplikace konzoly Visual C# (rozhraní .NET Framework)](media/sdk/speechsdk-05-vs-cs-new-console-app.png "Vytvořte konzolovou aplikaci Visual C#")
 
-2. Nainstalujte a odkazují na balíček NuGet sady SDK pro rozpoznávání řeči. V Průzkumníku řešení klikněte pravým tlačítkem na řešení a vyberte **spravovat balíčky NuGet pro řešení**.
+2. Instalace a odkazovat [balíček NuGet sady SDK řeči](https://aka.ms/csspeech/nuget). V Průzkumníku řešení klikněte pravým tlačítkem na řešení a vyberte **spravovat balíčky NuGet pro řešení**.
 
     ![Pravým tlačítkem klikněte na spravovat balíčky NuGet pro řešení](media/sdk/speechsdk-06-vs-cs-manage-nuget-packages.png "spravovat balíčky NuGet pro řešení")
 

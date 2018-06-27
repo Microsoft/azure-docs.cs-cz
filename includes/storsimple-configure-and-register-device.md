@@ -7,7 +7,7 @@
 3. Budete vyzváni k volbě jazyka, který chcete pro zařízení nastavit. Zadejte jazyk a stiskněte Enter. 
    
     ![Konfigurace a registrace zařízení StorSimple 1](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice1-include.png)
-4. V zobrazené nabídce konzoly sériového portu se výběrem možnosti 1 přihlaste s oprávněním k úplnému přístupu. 
+4. V nabídce konzoly sériového portu, který se zobrazí, zvolte možnost 1, **přihlásit úplný přístup**. 
    
     ![Registrace zařízení StorSimple 2](./media/storsimple-configure-and-register-device/HCS_RegisterYourDevice2-include.png)
    

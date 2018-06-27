@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/13/2018
 ms.author: juliako
-ms.openlocfilehash: f0241278343ba4383caef5bb52bc4f1ece2bec7e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 53ccd4dc40136ada30a0e230d526414b567919c7
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790528"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960453"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Začínáme s doručováním obsahu na vyžádání pomocí REST
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
@@ -267,11 +267,9 @@ Adresa URL typu SAS má následující formát:
 
 Musí být splněny určité předpoklady:
 
-* Nemůže mít více než pět jedinečný lokátory spojené s danou Asset najednou. Další informace najdete v tématu lokátoru.
+* Nemůže mít více než pět jedinečný lokátory spojené s danou Asset najednou. 
 * Pokud potřebujete k nahrání souborů okamžitě, byste měli nastavit vaše hodnoty StartTime 5 minut před aktuálním časem. Je to proto, že je možné, hodiny zkosení mezi klientský počítač a služba Media Services. V následujícím formátu data a času musí být také hodnota pro čas spuštění: rrrr-MM-ddTHH (například "2014-05-23T17:53:50Z").    
-* Může být druhý 30-40 zpoždění po vytvoření lokátoru k případě, že je k dispozici pro použití. Tento problém se vztahuje na SAS adresa URL a lokátory původu.
-
-Další informace o tokenu SAS najdete v části lokátory [to](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) blogu.
+* Může být druhý 30-40 zpoždění po vytvoření lokátoru k případě, že je k dispozici pro použití. Tento problém platí pro obě [SAS URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) a původu.
 
 Následující příklad ukazuje, jak vytvořit lokátor SAS adresa URL, podle definice vlastnost typu v textu požadavku ("1" pro Lokátor SAS) a "2" pro Lokátor původ na vyžádání. **Cesta** vlastnost vrátil obsahuje adresu URL, kterou musíte použít k odeslání souboru.
 
@@ -694,7 +692,7 @@ Následující kód ukazuje, jak požádat o výstupní asset ID.
 
 ## <a id="publish_get_urls"></a>Publikování prostředku a get streamování a progresivního stahování adresy URL pomocí rozhraní REST API
 
-Pokud chcete prostředek streamovat nebo stáhnout, musíte ho nejdřív „publikovat“ vytvořením lokátoru. Lokátory zajišťují přístup k souborům, které jsou obsaženy v assetu. Služba Media Services podporuje dva typy lokátorů: lokátor OnDemandOrigin, používaný ke streamování médií (například MPEG DASH, HLS nebo technologie Smooth Streaming), a lokátor s přístupovým podpisem (SAS), používaný ke stahování mediálních souborů. Další informace o tokenu SAS najdete v části lokátory [to](http://southworks.com/blog/2015/05/27/reusing-azure-media-services-locators-to-avoid-facing-the-5-shared-access-policy-limitation/) blogu.
+Pokud chcete prostředek streamovat nebo stáhnout, musíte ho nejdřív „publikovat“ vytvořením lokátoru. Lokátory zajišťují přístup k souborům, které jsou obsaženy v assetu. Služba Media Services podporuje dva typy lokátorů: lokátor OnDemandOrigin, používaný ke streamování médií (například MPEG DASH, HLS nebo technologie Smooth Streaming), a lokátor s přístupovým podpisem (SAS), používaný ke stahování mediálních souborů. 
 
 Po vytvoření lokátorů můžete sestavit adresy URL, které se používají ke streamování a stahování souborů.
 

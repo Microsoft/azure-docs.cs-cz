@@ -9,19 +9,19 @@ ms.component: emotion-api
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: 64a5c4e761653748c4328e310f9a399fe62f9149
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0e7d3991b195a83a8b87e306b3b34fbed2098581
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342702"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018022"
 ---
 # <a name="emotion-api-java-for-android-quick-start"></a>Java rozpoznávání emocí úrovně rozhraní API pro Android rychlý Start
 
 > [!IMPORTANT]
 > 30. října 2017 ukončen video Preview rozhraní API. Vyzkoušet nový [Preview rozhraní API Indexer Video](https://azure.microsoft.com/services/cognitive-services/video-indexer/) k snadno rozbalte statistiky z videa a vylepšení možnosti zjišťování obsahu, jako je například výsledky hledání, pomocí zjišťování mluvené slovo, řezy, znaků a emoce. [Další informace](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview).
 
-Tento článek obsahuje informace a ukázku kódu můžete rychle začít pracovat s [rozpoznávání emocí úrovně rozpoznat metoda](https://dev.projectoxford.ai/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) v knihovně klienta rozpoznávání emocí úrovně rozhraní API systému Android. Ukázka ukazuje, jak můžete použít Java rozpoznat emoce vyjádřená osoby. 
+Tento článek obsahuje informace a ukázku kódu můžete rychle začít pracovat s [rozpoznávání emocí úrovně rozpoznat metoda](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) v knihovně klienta rozpoznávání emocí úrovně rozhraní API systému Android. Ukázka ukazuje, jak můžete použít Java rozpoznat emoce vyjádřená osoby. 
 
 ## <a name="prerequisites"></a>Požadavky
 * Získat Java rozpoznávání emocí úrovně rozhraní API pro Android SDK [sem](https://github.com/Microsoft/Cognitive-emotion-android)

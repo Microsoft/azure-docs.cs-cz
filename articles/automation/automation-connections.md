@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ee866248ae7f0c1f1c49c449b777c2b68d884c5b
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 88baa1385bfd64cab08299bc31a6f003f6b87e48
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34257675"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019297"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Assety připojení v Azure Automation.
 
@@ -80,7 +80,7 @@ $ConnectionFieldValues = @{"ApplicationId" = $Application.ApplicationId; "Tenant
 New-AzureRmAutomationConnection -ResourceGroupName $ResourceGroup -AutomationAccountName $AutomationAccountName -Name $ConnectionAssetName -ConnectionTypeName AzureServicePrincipal -ConnectionFieldValues $ConnectionFieldValues 
 ```
 
-Budete moci vytvořit prostředek připojení, protože při vytváření účtu Automation, automaticky obsahuje několik globální modulů ve výchozím nastavení společně s typem připojení pomocí tohoto skriptu **AzurServicePrincipal** na Vytvořte **AzureRunAsConnection** asset připojení.  To je důležité mějte na paměti, protože při pokusu o vytvoření nového prostředku připojení pro připojení k službě nebo aplikaci pomocí metody různá ověřovací ho selže, protože typ připojení není již definována v účtu Automation.  Další informace o tom, jak vytvořit vlastní typ připojení pro váš vlastní nebo modul z [Galerie prostředí PowerShell](https://www.powershellgallery.com), najdete v části [moduly integrace](automation-integration-modules.md)
+Budete moci vytvořit prostředek připojení, protože při vytváření účtu Automation, automaticky obsahuje několik globální modulů ve výchozím nastavení společně s typem připojení pomocí tohoto skriptu **AzureServicePrincipal** na Vytvořte **AzureRunAsConnection** asset připojení.  To je důležité mějte na paměti, protože při pokusu o vytvoření nového prostředku připojení pro připojení k službě nebo aplikaci pomocí metody různá ověřovací ho selže, protože typ připojení není již definována v účtu Automation.  Další informace o tom, jak vytvořit vlastní typ připojení pro váš vlastní nebo modul z [Galerie prostředí PowerShell](https://www.powershellgallery.com), najdete v části [moduly integrace](automation-integration-modules.md)
   
 ## <a name="using-a-connection-in-a-runbook-or-dsc-configuration"></a>Použití připojení v runbooku nebo konfigurace DSC
 

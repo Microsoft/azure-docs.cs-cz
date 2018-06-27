@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: d0afc8b6f8e0b7ef73e5d1c3cbabf2e1542f47f4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5a3070582a32adeda45dff233782c3a971885c14
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234511"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018451"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme s Azure WebJobs SDK pro zpracování na pozadí založeného na událostech
 
@@ -66,6 +66,9 @@ Tento článek předpokládá, že máte [účet Azure](https://azure.microsoft.
 2. Vyberte **klasický desktopový Windows > konzoly aplikace (rozhraní .NET Framework)**.
 
    Vytvoření projektu 3.x, vyberte **.NET Core > konzolové aplikace (.NET Core)**.
+   
+   > [!NOTE]
+   > 3.x je stále ve verzi preview a je ve vývoji. 3.x pokyny v tomto článku jsou neúplné; nejnovější informace najdete v tématu Githubu problémy v dolní části stránky.
 
 3. Název projektu *WebJobsSDKSample*a potom vyberte **OK**.
 
@@ -320,7 +323,7 @@ V této části proveďte následující úkoly nastavení Application Insights 
 
 4. V **připojovací řetězce** pole, přidejte následující položku.
 
-   |Název  |Připojovací řetězec  |Typ databáze|
+   |Název  |připojovací řetězec  |Typ databáze|
    |---------|---------|------|
    |AzureWebJobsStorage | {{Úložiště připojovací řetězec, který jste zkopírovali dříve}|Vlastní|
    

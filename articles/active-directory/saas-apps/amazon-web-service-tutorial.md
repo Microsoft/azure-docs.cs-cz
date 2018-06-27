@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 6dae715343a082b56e74bc2be0ee7b2353485e75
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 884e07880b76ec1ff53071d03d0ce340188586e3
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36230501"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Kurz: Azure Active Directory integrace s Amazon Web Services (AWS)
 
@@ -340,6 +340,10 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Přidání uživatele](./media/amazon-web-service-tutorial/provisioning2.png)
 
+> [!Note]
+> Pokud chcete integrovat více účtů AWS k jednomu účtu Azure pro jednotné přihlašování v, naleznete [to](https://docs.microsoft.com/azure/active-directory/active-directory-saas-aws-multi-accounts-tutorial) článku. 
+
+
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -410,8 +414,7 @@ V této části povolíte Britta Simon chcete použít Azure jednotného přihla
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
-Když kliknete na dlaždici Amazon Web Services (AWS) na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Amazon Web Services (AWS).
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Když kliknete na dlaždici Amazon Web Services (AWS) na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Amazon Web Services (AWS). Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
@@ -452,4 +455,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [39]: ./media/amazon-web-service-tutorial/tutorial_amazonwebservices_provisioning_automatic.png
 [40]: ./media/amazon-web-service-tutorial/tutorial_amazonwebservices_provisioning_testconnection.png
 [41]: ./media/amazon-web-service-tutorial/tutorial_amazonwebservices_provisioning_on.png
-

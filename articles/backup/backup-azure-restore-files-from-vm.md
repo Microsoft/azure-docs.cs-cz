@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: pullabhk
-ms.openlocfilehash: e9d1c79d6485764f4b671ad529e0812b49df34b1
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 4be1ffcabed6667ab76ec790326a687d75c8b125
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737014"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958616"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Obnovit soubory ze zálohy virtuálního počítače Azure
 
@@ -173,7 +173,7 @@ V následující tabulce jsou uvedeny kompatibilitu mezi serverem a počítačem
 | Windows Server 2012    | Windows 8  |
 | Windows Server 2008 R2 | Windows 7   |
 
-### <a name="for-linux"></a>Pro Linux
+### <a name="for-linux-os"></a>Pro Linux operačního systému
 
 V systému Linux musí podporovat operačního systému počítače použitého k obnovení souborů systému souborů chráněného virtuálního počítače. Když vyberete počítač pro spuštění skriptu, zkontrolujte na počítači má kompatibilní operační systém a používá jednu z verzí identifikovat v následující tabulce:
 
@@ -191,7 +191,7 @@ Skript také vyžaduje Python a bash komponent ke spouštění a bezpečně při
 
 |Komponenta | Verze  |
 | --------------- | ---- |
-| Bash | 4 a novější |
+| bash | 4 a novější |
 | python | 2.6.6 a vyšší  |
 | TLS | 1.2 by podporovat.  |
 

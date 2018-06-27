@@ -14,25 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: faccaa4496eb1deda23bbfcf335088a023d229d6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e2ab7efdec326a7f1a2c7f3e7b7d0f379efa8606
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293173"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025680"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: Generování sestav na uživatele automatické zřizování účtu
 
 
-Azure Active Directory zahrnuje [uživatelský účet zřizování služby](active-directory-saas-app-provisioning.md) která pomáhá automatizovat zřizování zrušte zřizování uživatelské účty v aplikace SaaS a dalšími systémy, pro účely identity začátku do konce – Správa životního cyklu. Azure AD podporuje zřizování konektory pro všechny aplikace a systémy v části "Doporučený" předem integrovaných uživatelů [galerii aplikací Azure AD](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
+Azure Active Directory zahrnuje [uživatelský účet zřizování služby](active-directory-saas-app-provisioning.md) která pomáhá automatizovat zřizování zrušte zřizování uživatelské účty v aplikace SaaS a dalšími systémy, pro účely identity začátku do konce cyklu Správa. Azure AD podporuje zřizování konektory pro všechny aplikace a systémy v části "Doporučený" předem integrovaných uživatelů [galerii aplikací Azure AD](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
 
 Tento článek popisuje, jak zkontrolovat stav zajišťování úlohy po byly nastaveny a řešení potíží s zřizování jednotlivých uživatelů a skupin.
 
 ## <a name="overview"></a>Přehled
 
-Zřizování konektory jsou primárně nastavit a konfigurovat pomocí [portál pro správu Azure](https://portal.azure.com), pomocí následujících [poskytuje dokumentaci](active-directory-saas-tutorial-list.md) pro aplikaci, kde je žádoucí zřizování účtu uživatele. Jakmile nakonfigurovaná a spuštěná, mohou být zřizování úlohy pro aplikaci oznámeny na pomocí jedné ze dvou způsobů:
+Zřizování konektory jsou nastavit a konfigurovat pomocí [portál Azure](https://portal.azure.com), pomocí následujících [poskytuje dokumentaci](saas-apps/tutorial-list.md) pro daná podporovaná aplikace. Jakmile nakonfigurovaný a spuštěný, mohou být zřizování úlohy oznámeny na pomocí jedné ze dvou způsobů:
 
-* **Portál pro správu Azure** – Tento článek popisuje především načítání informací ze sestavy z [portál pro správu Azure](https://portal.azure.com), která nabízí zřizování souhrnnou sestavu jak podrobné zřizování auditu protokoly pro danou aplikaci.
+* **Portál pro správu Azure** – Tento článek popisuje především načítání informací ze sestavy z [portál Azure](https://portal.azure.com), který poskytuje protokoly pro auditu zřizování souhrnnou sestavu jak podrobné zřizování dané aplikaci.
 
 * **Audit rozhraní API** – Azure Active Directory také poskytuje rozhraní API auditu, který umožňuje programový načtení podrobné zřizování protokoly auditu. V tématu [auditování Azure Active Directory referenční dokumentace rozhraní API](active-directory-reporting-api-audit-reference.md) pro dokumentaci týkající se použití toto rozhraní API. Když tento článek nepopisuje používání rozhraní API konkrétně, podrobnosti typy zřizování události, které se zaznamenávají v protokolu auditu.
 
@@ -54,28 +54,28 @@ Chcete-li získat zřizování informací sestavy pro danou aplikaci, spusťte s
 Tady souhrnnou sestavu zřizování a zřizování protokoly auditu jsou k dispozici, i popsané dole.
 
 
-### <a name="provisioning-summary-report"></a>Zřizování souhrnnou sestavu
+## <a name="provisioning-summary-report"></a>Zřizování souhrnnou sestavu
 
-Zřizování souhrnnou sestavu se zobrazí na **zřizování** kartě pro danou aplikaci. Je umístěn v oddílu podrobnosti synchronizace pod **nastavení**a obsahuje následující informace:
+Zřizování souhrnnou sestavu se zobrazí na **zřizování** kartě pro danou aplikaci. Nachází se ve **podrobnosti synchronizace** části pod **nastavení**a obsahuje následující informace:
 
-* Celkový počet uživatelů a / skupiny, byly synchronizované a jsou momentálně v oboru pro zřizování mezi systémem zdrojového a cílového systému.
+* Celkový počet uživatelů a / skupiny, byly synchronizované a jsou momentálně v oboru pro zřizování mezi systémem zdrojovém a cílovém systému
 
-* Čas poslední synchronizace byla spuštěna. Synchronizace většinou dochází každých 20 40 minut, po dokončení úplné synchronizace.
+* Čas poslední synchronizace byla spuštěna. Synchronizace většinou dochází každých 20 40 minut po [počáteční synchronizace](active-directory-saas-app-provisioning.md#what-happens-during-provisioning) byla dokončena.
 
-* Zda byla dokončena počáteční úplná synchronizace.
+* Jestli [počáteční synchronizace](active-directory-saas-app-provisioning.md#what-happens-during-provisioning) byla dokončena
 
-* Proces zřizování, jestli má byly umístěny do karantény a co důvod stavu umístění do karantény je třeba (Chyba ke komunikaci s cílovým systémem z důvodu neplatné správce přihlašovacích údajů)
+* Proces zřizování, jestli má byly umístěny do karantény a Důvod stavu umístění do karantény je (například selhání ke komunikaci s cílovým systémem z důvodu neplatné správce přihlašovacích údajů)
 
 Zřizování souhrnnou sestavu musí být první vzhledu místní správci zkontrolovat na provozní stav úlohy zřizování.
 
  ![Souhrnná sestava](./media/active-directory-saas-provisioning-reporting/summary_report.PNG)
 
-### <a name="provisioning-audit-logs"></a>Protokoly auditu a zřizování
+## <a name="provisioning-audit-logs"></a>Protokoly auditu a zřizování
 Všechny aktivity provedené zřizování služby se zaznamenávají do protokolů auditu Azure AD, které lze zobrazit v **protokoly auditu** v části **zřizování účtu** kategorie. Typy událostí protokolu aktivit patří:
 
 * **Import události** – událost "import" se zaznamenává pokaždé, když zřizování služby Azure AD načte informace o jednotlivé uživatele nebo skupinu ze zdrojového systému nebo cílového systému. Při synchronizaci uživatelů se načítají ze zdrojového systému nejprve s výsledky zaznamenávají jako "import" události. Odpovídající ID načtené uživatelů jsou potom dotaz proti cílovém systému, aby zaškrtněte, pokud existují, s výsledky taky zaznamená jako "importovat" události. Tyto události zaznamenejte všechny atributy mapovat uživatele a jejich hodnoty, které se zobrazily službou Azure AD zřizování služby v době události. 
 
-* **Události pravidlo synchronizace** – tyto události sestav o výsledcích pravidla mapování atributů a žádné nakonfigurované oboru filtrů, po importu a vyhodnocují na základě zdrojové a cílové systémy dat uživatele. Například pokud je uživatel ve zdrojovém systému zjistí, že se v oboru pro zřizování a zjistí, že neexistuje v cílovém systému, pak tato událost zaznamenává, který se zřídí uživatele v cílovém systému. 
+* **Události pravidlo synchronizace** – tyto události sestav o výsledcích pravidel mapování atributů a žádné nakonfigurované oboru filtrů, po importu a vyhodnocují na základě zdrojové a cílové systémy dat uživatele. Například pokud je uživatel ve zdrojovém systému zjistí, že se v oboru pro zřizování a zjistí, že neexistuje v cílovém systému, pak tato událost zaznamenává, který se zřídí uživatele v cílovém systému. 
 
 * **Export události** -"export" událost se zaznamená pokaždé, když zřizování služby Azure AD zapíše objekt uživatelského účtu nebo skupiny do cílového systému. Tyto události zaznamenejte všechny atributy uživatelů a jejich hodnoty, které byly napsané pomocí Azure AD zřizování služby v době události. Pokud došlo k chybě při zápisu objektu účet nebo skupinu uživatele do cílového systému, zobrazí se zde.
 
@@ -87,9 +87,9 @@ Při pohledu zřizování události pro jednotlivé uživatele, dochází k udá
 
 2. Import událostí: cílovém systému je dotazován Zkontrolujte existenci načtené uživatele.
 
-3. Událost pravidlo synchronizace: uživatelská data ze zdrojové a cílové systémy jsou porovnán s nakonfigurovaných atributů mapování pravidla a filtry k určení, jaké akce, pokud existuje, je třeba provést oborů.
+3. Událost pravidlo synchronizace: uživatelská data ze zdrojové a cílové systémy jsou vyhodnotit na základě nakonfigurovaná pravidla mapování atributů a oboru filtrů určit, jaké akce, pokud existuje, je třeba provést.
 
-4. Export událostí: Pokud událost pravidlo synchronizace závisí, že má být akce provést (např. přidat, Update, Delete), pak výsledky akce se zaznamenávají v události Export.
+4. Export událostí: Pokud událost pravidlo synchronizace závisí, že má být akce provést (přidání, aktualizaci, odstranění), pak výsledky akce se zaznamenávají v události Export.
 
 ![Vytváření testovacího uživatele Azure AD](./media/active-directory-saas-provisioning-reporting/audit_logs.PNG)
 
@@ -104,7 +104,7 @@ Nejběžnější případ použití pro zřizování protokoly auditu je zkontro
 
 3. V **rozsah** nabídce vyberte rozsah dat, kterou chcete vyhledat,
 
-4. V **vyhledávání** panel, zadejte ID uživatele chcete hledat uživatele. Formát hodnoty ID by měl odpovídat ať jste vybrali jako primární odpovídající ID v mapování atributů (například userPrincipalName nebo ID číslo zaměstnance). Na požadovanou hodnotu ID se nebude zobrazovat ve sloupci cíle (cílů).
+4. V **vyhledávání** panel, zadejte ID uživatele chcete hledat uživatele. Formát hodnoty ID by měl odpovídat ať jste vybrali jako primární odpovídající ID v konfiguraci mapování atributů (například userPrincipalName nebo ID číslo zaměstnance). Na požadovanou hodnotu ID se nebude zobrazovat ve sloupci cíle (cílů).
 
 5. Stiskněte klávesu Enter pro vyhledávání. Zřizování nejaktuálnějších událostí, bude vrácena jako první.
 

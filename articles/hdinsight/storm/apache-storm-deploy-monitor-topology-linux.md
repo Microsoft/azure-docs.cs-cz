@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 9dd63e1f3ec381dd99495ebc6193198611c76c88
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8b4584e9ccd17eba385f2068709f5bbaea6df20b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31417032"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019951"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Nasazení a správa topologií Apache Storm v HDInsight
 
@@ -40,9 +40,9 @@ V tomto dokumentu seznámíte se základy správy a monitorování topologií St
 
     Jedna z následujících verzí sady Visual Studio:
 
-  * Visual Studio 2012 s [aktualizací 4](http://www.microsoft.com/download/details.aspx?id=39305)
+  * Visual Studio 2012 s aktualizací 4
 
-  * Visual Studio 2013 s [aktualizací 4](http://www.microsoft.com/download/details.aspx?id=44921) nebo [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
+  * Visual Studio 2013 s aktualizací 4 nebo [Visual Studio 2013 Community](http://go.microsoft.com/fwlink/?LinkId=517284)
   * [Visual Studio 2015](https://www.visualstudio.com/downloads/)
 
   * Visual Studio 2015 (všechny edice)
@@ -64,7 +64,7 @@ Nástroje HDInsight slouží k odeslání jazyka C# nebo hybridní topologie pro
 
 3. V **nový projekt** dialogové okno, rozbalte seznam **nainstalovaná** > **šablony**a potom vyberte **HDInsight**. V seznamu šablon vyberte **Storm ukázka**. V dolní části dialogových oken zadejte název aplikace.
 
-    ![Bitové kopie](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
+    ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
 
 4. V **Průzkumníku řešení**, klikněte pravým tlačítkem na projekt a vyberte **odeslání do Storm v HDInsight**.
 
@@ -103,7 +103,7 @@ Při odeslání topologii pomocí sady Visual Studio **topologie Storm** zobraze
 ![monitorování v sadě Visual studio](./media/apache-storm-deploy-monitor-topology-linux/vsmonitor.png)
 
 > [!NOTE]
-> Můžete také zobrazit **topologie Storm** z **Průzkumníka serveru** rozšířením **Azure** > **HDInsight**a potom kliknete pravým tlačítkem cluster Storm v HDInsight a výběr **topologie Storm zobrazení**.
+> Můžete také zobrazit **topologie Storm** z **Průzkumníka serveru** rozšířením **Azure** > **HDInsight**a potom pravým tlačítkem myši cluster Storm v HDInsight a výběr **topologie Storm zobrazení**.
 
 Vyberte tvar funkcích spouts nebo funkce bolts zobrazíte informace o těchto součástí. Otevře se nové okno pro každé vybrané položky.
 

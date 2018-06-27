@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: ce894f775614c5be7413a004d2237f6a5cf00926
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59dc090053c78dbddc1854f21db39f66df7bc91c
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642406"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020541"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Vytvoření první aplikace Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -108,11 +108,23 @@ Parametry těchto příkazů najdete v generovaných manifestech uvnitř balíč
 
 Jakmile je aplikace nasazená, otevřete prohlížeč a přejděte k nástroji [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) na adrese [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Pak rozbalte uzel **Aplikace** a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
+> [!IMPORTANT]
+> K nasazení aplikace do zabezpečené cluster s Linuxem v Azure, budete muset nakonfigurovat certifikát k ověření vaší aplikace pomocí modulu runtime Service Fabric. Díky tomu spolehlivé služby pro komunikaci s základní modulu runtime Service Fabric rozhraní API. Další informace najdete v tématu [konfigurovat spolehlivé služby aplikaci spustit v clusterech Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+>
+
 ## <a name="start-the-test-client-and-perform-a-failover"></a>Spuštění klienta testování a převzetí služeb při selhání
 Projekty Actor samy o sobě nedělají nic. Vyžadují, aby jim jiná služba nebo klient posílali zprávy. Šablona actor zahrnuje jednoduchý testovací skript, který můžete použít k interakci se službou actor.
 
 1. Spusťte skript pomocí pomocného sledovacího programu a prohlédněte si výstup služby actor.
 
+   V případě MAC OS X budete muset zkopírujte složku myactorsvcTestClient do některé umístění uvnitř kontejneru spuštěním následujících příkazů Další.
+    
+    ```bash
+    docker cp  [first-four-digits-of-container-ID]:/home
+    docker exec -it [first-four-digits-of-container-ID] /bin/bash
+    cd /home
+    ```
+    
     ```bash
     cd myactorsvcTestClient
     watch -n 1 ./testclient.sh

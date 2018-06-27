@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: 69f5e29be77f25d649ce357dae6e3905ab2bf6b8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 99d09455ed73b366fb3acfb414b9bd095df6319b
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425329"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961922"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač konzoly sériového portu (preview) 
 
@@ -32,6 +32,7 @@ Konzole sériového portu virtuálního počítače na platformě Azure poskytuj
 
 ## <a name="prerequisites"></a>Požadavky 
 
+* Musí používat model nasazení prostředků správy. Nasazení Classic nejsou podporovány. 
 * Virtuální počítač musí mít [spouštění diagnostiky](boot-diagnostics.md) povoleno 
 * Účet, pomocí konzoly sériového portu, musí mít [role Přispěvatel](../../role-based-access-control/built-in-roles.md) pro virtuální počítač a [spouštění diagnostiky](boot-diagnostics.md) účet úložiště. 
 * Nastavení specifická pro Linux distro, najdete v části [přístup ke konzole sériového portu pro Linux](#accessing-serial-console-for-linux)
@@ -90,8 +91,8 @@ Interakci s zaváděcí program pro spouštění | Přístup GRUB/BCD prostředn
 ## <a name="accessing-serial-console-for-linux"></a>Přístup k konzoly sériového portu pro Linux
 Aby konzoly sériového portu fungovat správně je třeba číst a zapisovat zprávy konzoly sériového portu hostovaného operačního systému. Většina [schváleného Azure Linuxových distribucích](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) mít konzoly sériového portu, který je ve výchozím nastavení nakonfigurované. Jednoduše kliknutím na portálu v části konzoly sériového portu, bude poskytovat přístup ke konzole. 
 
-### <a name="access-for-redhat"></a>Přístup pro RedHat 
-RedHat Imagím v Azure mají přístup ke konzole ve výchozím nastavení povolené. Režimu jednoho uživatele v Red Hat vyžaduje kořenový uživatel povolit, který je ve výchozím nastavení zakázaný. Pokud máte třeba povolit režimu jednoho uživatele, postupujte podle následujících pokynů:
+### <a name="access-for-red-hat"></a>Přístup pro Red Hat 
+Red Hat Imagím v Azure mají přístup ke konzole ve výchozím nastavení povolené. Režimu jednoho uživatele v Red Hat vyžaduje kořenový uživatel povolit, který je ve výchozím nastavení zakázaný. Pokud máte třeba povolit režimu jednoho uživatele, postupujte podle následujících pokynů:
 
 1. Přihlaste se k systému Red Hat prostřednictvím SSH.
 2. Povolit heslo pro kořenového uživatele 

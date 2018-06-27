@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 5ba13aeb63a72b738aac435b63ebbcfd4eeb7fa9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f196859500d5de883a4de3f21b803c8f83e2f0b2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213210"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021408"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurace nastavení FabricTransport Reliable actors
 
@@ -51,6 +51,10 @@ Následující příklad ukazuje, jak změnit výchozí hodnotu FabricTransport 
 ## <a name="config-package"></a>Konfigurační balíček
 
 Můžete použít [konfigurační balíček](service-fabric-application-and-service-manifests.md) Chcete-li změnit výchozí konfiguraci.
+
+> [!IMPORTANT]
+> Certifikáty na uzly Linux musí být ve formátu PEM. Další informace o vyhledání a konfigurace certifikátů pro Linux najdete v tématu [konfigurace certifikátů pro systémy Linux](./service-fabric-configure-certificates-linux.md). 
+> 
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Konfigurace nastavení FabricTransport služby objektu actor
 

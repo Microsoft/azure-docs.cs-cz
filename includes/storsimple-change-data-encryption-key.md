@@ -39,7 +39,7 @@ Tento krok se provádí v prostředí Windows PowerShell pro rozhraní StorSimpl
 Pokud používáte konzole sériového portu zařízení pro připojení k rozhraní Windows PowerShell, proveďte následující kroky.
 
 #### <a name="to-initiate-the-service-data-encryption-key-change"></a>Zahajte změnu klíče šifrování dat služby
-1. Výběrem možnosti 1 přihlaste s úplným přístupem.
+1. Vyberte možnost 1, **přihlásit úplný přístup**.
 2. Na příkazovém řádku zadejte:
    
      `Invoke-HcsmServiceDataEncryptionKeyChange`
@@ -60,7 +60,7 @@ Tyto kroky je potřeba provést v prostředí Windows PowerShell rozhraní zař�
 Proveďte následující kroky k aktualizaci šifrování dat služby ve vašem zařízení.
 
 #### <a name="to-update-the-service-data-encryption-key"></a>Chcete-li aktualizovat šifrovacího klíče dat služby
-1. Pomocí Windows Powershellu pro StorSimple pro připojení ke konzole. Výběrem možnosti 1 přihlaste s úplným přístupem.
+1. Pomocí Windows Powershellu pro StorSimple pro připojení ke konzole. Vyberte možnost 1, **přihlásit úplný přístup**.
 2. Na příkazovém řádku zadejte:
    
     `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`

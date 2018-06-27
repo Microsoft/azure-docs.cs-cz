@@ -6,7 +6,7 @@ Když použijete aktualizace režimu údržby pro zařízení StorSimple, jsou p
 > * Před přechodem do režimu údržby, ověřte, zda jsou oba řadiče zařízení na portálu Azure v pořádku. Pokud není v pořádku, řadičem [obraťte se na podporu společnosti Microsoft](../articles/storsimple/storsimple-8000-contact-microsoft-support.md) pro další kroky.
 > * Pokud jste v režimu údržby, je potřeba nejdřív aktualizovat jeden řadič a pak jiný řadič.
 
-1. Použití klienta PuTTY k připojení ke konzole sériového portu. Postupujte podle podrobných pokynů v článku [Připojení ke konzole sériového portu pomocí klienta PuTTy](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). Na příkazovém řádku stiskněte **Enter**. Vyberte možnost 1 pro přihlášení k zařízení s úplným přístupem.
+1. Použití klienta PuTTY k připojení ke konzole sériového portu. Postupujte podle podrobných pokynů v článku [Připojení ke konzole sériového portu pomocí klienta PuTTy](../articles/storsimple/storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). Na příkazovém řádku stiskněte **Enter**. Vyberte možnost 1, **přihlásit úplný přístup**.
 
 2. Chcete-li kontroler převeďte do režimu údržby, zadejte:
     
@@ -30,7 +30,7 @@ Když použijete aktualizace režimu údržby pro zařízení StorSimple, jsou p
 
     `Get-HcsFirmwareVersion`
    
-    Verze firmwaru očekávané disku jsou:`XMGJ, XGEG, KZ50, F6C2, VR08, N003, 0107`
+    Verze firmwaru očekávané disku jsou:  `XMGJ, XGEG, KZ50, F6C2, VR08, N003, 0107`
 
 6. Ukončete režim údržby. Zadejte následující příkaz pro každý řadič zařízení:
 

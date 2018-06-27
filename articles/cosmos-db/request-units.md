@@ -2,19 +2,19 @@
 title: Požadované jednotky a odhadnout propustnost - Azure Cosmos DB | Microsoft Docs
 description: Další informace o tom, jak porozumět, zadejte a odhadnout požadavky na jednotky žádosti v Azure Cosmos DB.
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
-ms.openlocfilehash: 16ccda120aef0aa892bf365403f3f0bdc1209ca3
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 9021d0c3f650d64480f2881508d456ce98beab2a
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823719"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961931"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Požadované jednotky v Azure Cosmos DB
 
@@ -111,7 +111,7 @@ Použití nástroje:
 > 
 
 ### <a name="use-the-azure-cosmos-db-request-charge-response-header"></a>Použití hlavičku odpovědi Azure Cosmos DB požadavek zdarma
-Každou odpověď ze služby Azure Cosmos DB obsahuje vlastní hlavičky (`x-ms-request-charge`) obsahující jednotek žádosti využité pro daný požadavek. Tuto hlavičku můžete také přistupovat prostřednictvím sady SDK Azure Cosmos DB. V sadě SDK .NET **RequestCharge** je vlastnost **ResourceResponse** objektu. Pro dotazy obsahuje Průzkumníku dat Azure Cosmos DB na portálu Azure požadavek poplatků informace o spuštění dotazů.
+Každou odpověď ze služby Azure Cosmos DB obsahuje vlastní hlavičky (`x-ms-request-charge`) obsahující jednotek žádosti využité pro daný požadavek. Tuto hlavičku můžete také přistupovat prostřednictvím sady SDK Azure Cosmos DB. V sadě SDK .NET **RequestCharge** je vlastnost **ResourceResponse** objektu. Pro dotazy obsahuje Průzkumníku dat Azure Cosmos DB na portálu Azure požadavek poplatků informace o spuštění dotazů. Další informace o tom, jak získat a propustnost sady pomocí různých více modelu rozhraní API najdete v části [nastavování a získávání propustnost v Azure Cosmos DB](set-throughput.md) článku.
 
 Jednou z možností k odhadování množství vyhrazenou propustností požadované aplikací je záznam zřizování jednotky žádosti přidružené spuštěným typických operací pro reprezentativní položky, které používá vaše aplikace. Potom odhadněte počet operací, které předpokládáte provést každou sekundu. Nezapomeňte také měřit a zahrnují typické dotazy a použití skriptu Azure Cosmos DB.
 

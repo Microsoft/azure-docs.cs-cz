@@ -1,26 +1,26 @@
 ---
-title: Monitorování synchronizaci dat Azure SQL (Preview) s Log Analytics | Microsoft Docs
-description: Naučte se monitorovat synchronizaci dat SQL Azure (Preview) pomocí analýzy protokolů
+title: Monitorování synchronizaci dat Azure SQL s Log Analytics | Microsoft Docs
+description: Naučte se monitorovat synchronizaci dat SQL Azure s využitím analýzy protokolů
 services: sql-database
 ms.date: 04/01/2018
 ms.topic: conceptual
 ms.service: sql-database
-author: douglaslMS
-ms.author: douglasl
+author: allenwux
+ms.author: xiwu
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: 4c684337a904fe6984e6b5cd5cf88ef8eb976cb6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9b64a5e913748cda7927877c50a964ede587ae30
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650243"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025697"
 ---
-# <a name="monitor-sql-data-sync-preview-with-log-analytics"></a>Synchronizaci dat SQL (Preview) monitorování s analýzy protokolů 
+# <a name="monitor-sql-data-sync-with-log-analytics"></a>Synchronizaci dat SQL monitorování s analýzy protokolů 
 
 Zkontrolujte protokol aktivit synchronizaci dat SQL a zjištění chyby a upozornění, dříve bylo nutné ručně zkontrolujte synchronizaci dat SQL na portálu Azure nebo pomocí Powershellu nebo rozhraní REST API. Postupujte podle kroků v tomto článku nakonfigurovat vlastní řešení, který zlepšuje synchronizaci dat možností monitorování. Toto řešení vyhovovat vašemu scénáři můžete přizpůsobit.
 
-Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure (Preview)](sql-database-sync-data.md).
+Přehled synchronizaci dat SQL najdete v tématu [synchronizaci dat mezi několika databází cloudu a místně s synchronizaci dat SQL Azure](sql-database-sync-data.md).
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Řídicí panel monitorování pro všechny skupiny pro synchronizaci 
 

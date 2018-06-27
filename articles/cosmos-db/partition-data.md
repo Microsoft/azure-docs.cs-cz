@@ -2,7 +2,7 @@
 title: Vytváření oddílů a horizontální škálování v Azure Cosmos DB | Microsoft Docs
 description: Další informace o tom, jak rozdělení funguje v Azure Cosmos DB, jak nakonfigurovat, vytváření oddílů a oddílu klíče a jak vybrat klíč správné oddílu pro vaši aplikaci.
 services: cosmos-db
-author: SnehaGunda
+author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: rimman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d083181b379301ae80e6577ccc3ac8f142767db3
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 046e45978d401e05d0ab8154aff994052f5d7717
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261074"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960368"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Oddíl a škálování v Azure Cosmos DB
 
@@ -56,8 +56,8 @@ Sémantika pro klíče oddílů je mírně odlišný tak, aby odpovídaly séman
 | Rozhraní API | Klíč oddílu | Klíč řádku |
 | --- | --- | --- |
 | SQL | Cesta klíče vlastní oddíl | Oprava `id` | 
-| MongoDB | vlastní horizontálních klíč  | Oprava `_id` | 
-| Gremlin | klíčovou vlastností vlastní oddíl | Oprava `id` | 
+| MongoDB | Vlastní horizontálních klíč  | Oprava `_id` | 
+| Gremlin | Klíčovou vlastností vlastní oddíl | Oprava `id` | 
 | Table | Oprava `PartitionKey` | Oprava `RowKey` | 
 
 Azure Cosmos DB používá algoritmus HMAC rozdělení do oddílů. Při zápisu položky Azure Cosmos DB hashuje hodnotu klíče oddílu a hash výsledek používá k určení oddíl, který k uložení položky v. Azure Cosmos DB ukládá všechny položky se stejným klíčem oddílu v jednom fyzickém oddílu. 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 603ce00a036822fd0c7411b47cf3fe630671cc5a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 736d0394b61bd2830a155d6ad714a2a8d19af82b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628119"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017505"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>Nasazení pomocí rozhraní příkazového řádku akcelerátoru řešení vzdáleného monitorování
 
@@ -68,7 +68,7 @@ Vytvoření základní řešení, bude mít za následek následující služby 
 | Počet | Prostředek                       | Typ         | Použít pro |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Virtuální počítač Linux](https://azure.microsoft.com/services/virtual-machines/) | Standardní D1 V2  | Hostování mikroslužeb |
-| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – základní vrstvě | Správa zařízení a komunikace |
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – úrovně Standard | Správa zařízení a komunikace |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | Standard        | Ukládání konfiguračních dat a zařízení telemetrie jako pravidel, výstrahy a zpráv |  
 | 1     | [Účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | Standard        | Úložiště pro virtuální počítač a vysílání datového proudu kontrolní body |
 | 1     | [Webové aplikace](https://azure.microsoft.com/services/app-service/web/)        |                 | Hostování front-endové webové aplikace |
@@ -82,7 +82,7 @@ Vytváření standardní řešení, bude mít za následek následující služb
 |-------|----------------------------------------------|-----------------|----------|
 | 4     | [Virtuální počítače s Linuxem](https://azure.microsoft.com/services/virtual-machines/)   | Standardní D2 V2  | hlavní 1 a 3 agentů pro hostování mikroslužeb s nadbytečností |
 | 1     | [Azure Container Service](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) orchestrator |
-| 1     | [Azure IoT Hub] [https://azure.microsoft.com/services/iot-hub/]                     | S1 – základní vrstvě | Správa zařízení, příkazy a ovládání |
+| 1     | [Azure IoT Hub] [https://azure.microsoft.com/services/iot-hub/]                     | S2 – úrovně Standard | Správa zařízení, příkazy a ovládání |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | Standard        | Ukládání konfiguračních dat a zařízení telemetrie jako pravidel, výstrahy a zpráv |
 | 5     | [Účty úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | Standard        | 4 pro úložiště virtuálního počítače a 1 pro streamování kontrolní body |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | Aplikační brána přes protokol SSL |

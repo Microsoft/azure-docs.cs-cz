@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/05/2018
 ms.author: harijay
-ms.openlocfilehash: e891e9c9fd87f370f0c98639ff0c6fc5b8cc81af
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 8e9e98a0c9f1db805d62cdee038fb4754ff047e2
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194399"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960436"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Virtuální počítač konzoly sériového portu (preview) 
 
@@ -33,6 +33,7 @@ Konzole sériového portu virtuálního počítače na platformě Azure poskytuj
 
 ## <a name="prerequisites"></a>Požadavky 
 
+* Musí používat model nasazení prostředků správy. Nasazení Classic nejsou podporovány. 
 * Virtuální počítač musí mít [spouštění diagnostiky](boot-diagnostics.md) povoleno 
 * Účet, pomocí konzoly sériového portu, musí mít [role Přispěvatel](../../role-based-access-control/built-in-roles.md) pro virtuální počítač a [spouštění diagnostiky](boot-diagnostics.md) účet úložiště. 
 
@@ -159,7 +160,7 @@ Mezeru po požadované symbolem rovná se.
 nebo
 
 `sc start termservice`
-#### <a name="stop-service"></a>Zastavení služby
+#### <a name="stop-service"></a>Zastavit službu
 `net stop termservice`
 
 nebo
@@ -373,7 +374,7 @@ Při použití účtu služby jiné než `NT AUTHORITY\LocalService`, `NT AUTHOR
 `Set-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\TermService' -Name DependOnService -Value @('RPCSS','TermDD')`
 #### <a name="start-service"></a>Spuštění služby
 `start-service termservice`
-#### <a name="stop-service"></a>Zastavení služby
+#### <a name="stop-service"></a>Zastavit službu
 `stop-service termservice`
 ### <a name="manage-networking-features"></a>Spravovat funkce sítě
 #### <a name="show-nic-properties"></a>Zobrazit vlastnosti síťový adaptér

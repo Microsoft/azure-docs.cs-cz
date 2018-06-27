@@ -7,14 +7,14 @@ manager: shreeshd
 keywords: zálohování a zotavení po havárii; služba zálohování
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/18/2017
+ms.date: 6/25/2018
 ms.author: trinadhk
-ms.openlocfilehash: 4234b76c192ba3bbeaca9593250cc855c073e380
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac6d2a8a152f3c6e22be962b867ef58421eda47b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605527"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016483"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Dotazy týkající se agenta Azure Backup
 Tento článek obsahuje odpovědi na běžné dotazy, které vám pomůžou rychle porozumět komponentám agenta Azure Backup. Některé odpovědi zahrnují odkazy na články obsahující komplexní informace. Otázky týkající se služby Azure Backup můžete také publikovat na [diskusním fóru](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -58,7 +58,7 @@ Jistě. Azure Backup poskytuje zálohování na úrovni virtuálních počítač
 Ano. Nainstalujte agenta Azure Backup na hostovaný operační systém Windows a zálohujte soubory a složky do dočasného úložiště. Jakmile dojde k vymazání dat na dočasném úložišti, úlohy zálohování selžou. Navíc pokud dojde k vymazání dat na dočasném úložišti, budete moci provést obnovení pouze na stálé úložiště.
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>Jaký je požadavek na minimální velikost složky mezipaměti? <br/>
-Velikost složky mezipaměti určuje množství dat, která zálohujete. Složka mezipaměti by měla zabírat 5 % požadovaného místa pro úložiště dat.
+Velikost složky mezipaměti určuje množství dat, která zálohujete. Objem složka mezipaměti by měla být alespoň 5 až 10 % volného místa, v porovnání se celková velikost zálohovaných dat. Pokud svazek obsahuje méně než 5 % volné místo, buď zvětšete velikost svazku nebo [přesuňte složku mezipaměti na svazek s dostatečným volným místem](backup-azure-file-folder-backup-faq.md#backup).
 
 ### <a name="how-do-i-register-my-server-to-another-datacenterbr"></a>Jak mohu zaregistrovat svůj server k jinému datovému centru?<br/>
 Zálohovaná data se odesílají do datového centra trezoru, ke kterému je agent registrován. Nejjednodušší způsob, jak změnit datové centrum, je odinstalování agenta a jeho přeinstalování a zaregistrování k novému trezoru, který patří k požadovanému datovému centru.

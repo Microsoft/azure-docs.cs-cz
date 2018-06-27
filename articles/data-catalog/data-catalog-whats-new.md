@@ -1,25 +1,24 @@
 ---
-title: "Co je nového v Azure Data Catalog | Microsoft Docs"
-description: "Tento článek obsahuje přehled nových funkcí, které jsou přidány do Azure Data Catalog."
+title: Co je nového v Azure Data Catalog | Microsoft Docs
+description: Tento článek obsahuje přehled nových funkcí, které jsou přidány do Azure Data Catalog.
 services: data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: steelanddata
 manager: NA
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 1201f8d4-6f26-4182-af3f-91e758a12303
 ms.service: data-catalog
 ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-catalog
 ms.date: 01/18/2018
 ms.author: maroche
-ms.openlocfilehash: 9fb7814a8412200f6d31cfb9dcaee4663d7cea97
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 780ab56df19e8d6761fcf88fa7fbed3e8002fbe8
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025683"
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Co je nového v Azure Data Catalog
 Aktualizace **Azure Data Catalog** jsou vydávány pravidelně. Ne každý verze obsahuje nové funkce zobrazující se uživatelům, jako některých vydání se zaměřuje na funkce back endové službě. Tato stránka označuje nové funkce uživatelsky orientovaný přidán do služby Azure Data Catalog.
@@ -99,7 +98,7 @@ Následující funkce jsou od ledna 2017 přidané do Azure Data Catalog:
 
 ## <a name="whats-new-for-december-2016"></a>Co je nového pro prosinec 2016
 Od prosince 2016 jsou následující možnosti přidané do Azure Data Catalog:
-*   Azure Data Catalog je nyní [HIPAA](https://www.microsoft.com/trustcenter/Compliance/HIPAA) a [modelové doložky EU](https://www.microsoft.com/TrustCenter/Compliance/EU-Model-Clauses) kompatibilní.
+*   Azure Data Catalog je nyní [HIPAA](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) a [modelové doložky EU](https://www.microsoft.com/en-us/TrustCenter/Compliance/EU-Model-Clauses) kompatibilní.
 *   Podpora pro úpravy informace o připojení zdroje dat. Vlastníci asset data a Data Catalog správci nyní můžete upravit informace o připojení zdroje dat registrované bez nutnosti znovu registrace zdrojů dat.
 *   Podpora pro zdroje dat Salesforce.com. Uživatelé teď můžete registrovat a zjišťovat objekty služby Salesforce.
 
@@ -246,7 +245,7 @@ Od září 2015 následující funkce jsou přidané do Azure Data Catalog:
 * Nová "Začínáme" data source práci s funkcí zjišťování v portálu Azure Data Catalog. Když uživatelé zadají "objevit" stránky portálu Azure Data Catalog bez zadávání hledaný termín, zobrazí se přehled katalogu obsah, včetně nejčastěji používaných značky, odborníky, typy zdrojů dat a typy objektů.
 * Podpora pro registraci a zjišťování objektů Azure SQL datového skladu a databází. Další informace o Azure SQL Data Warehouse, najdete v části [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/).
 * Podpora pro registraci a zjišťování servery SQL Server Reporting Services jako kontejnery a modely služby SQL Server Analysis Services. Při registraci služby SSAS a SSRS objekty, Azure Data Catalog vytvoří položku pro model služby SSAS nebo serveru služby SSRS a pro sestavy a další objekty. Kontejnery můžete zjistit a opatřeny poznámkami pomocí portálu Azure Data Catalog. Uživatelé mohou také hledání a filtrování obsahu modelu nebo server kromě vyhledávání a filtrování obsahu katalogu.
-* Podpora pro registraci a zjišťování objektů SQL Server Analysis Services přes HTTP nebo HTTPS. Uživatelé můžou teď připojit k serverům služby SSAS pomocí adresy URL (například https://servername/olap/msmdpump.dll) namísto název serveru a můžete použít základní ověřování a anonymní připojení kromě ověřování systému Windows. Další informace o připojení protokolu HTTP nebo HTTPS k SSAS najdete v tématu [HTTP konfigurovat přístup ke službě Analysis Services](https://msdn.microsoft.com/library/gg492140.aspx).
+* Podpora pro registraci a zjišťování objektů SQL Server Analysis Services přes HTTP nebo HTTPS. Uživatelé mohou teď připojit k serverům služby SSAS pomocí adresy URL (například https://servername/olap/msmdpump.dll) místo serveru název a mohou použít základní ověřování a anonymní připojení kromě ověřování systému Windows. Další informace o připojení protokolu HTTP nebo HTTPS k SSAS najdete v tématu [HTTP konfigurovat přístup ke službě Analysis Services](https://msdn.microsoft.com/library/gg492140.aspx).
 * Podpora pro zdroje dat Hive v HDInsight. Uživatelé teď můžete registrovat a zjišťovat tabulek Hive pro Apache Hive v Hadoop v HDInsight datové zdroje. Další informace o Hive v HDInsight, najdete v článku [centru dokumentace HDInsight](../hdinsight/hadoop/hdinsight-use-hive.md).
 * Podpora pro registraci a zjišťování Oracle – databáze a clustery HDFS jako kontejnery. Při registraci Oracle tabulek a zobrazení nebo HDFS, Azure Data Catalog vytvoří záznam pro databáze, tabulky a zobrazení. Databáze může být zjištěn a pomocí portálu Azure Data Catalog. Uživatelé mohou také hledání a filtrování obsahu databáze nebo clusteru kromě vyhledávání a filtrování obsahu katalogu.
 * Podpora pro ruční registraci typy zdrojů dat je neznámý. Uživatele můžete ručně zadat informace o zdroji dat pomocí portálu Azure Data Catalog, aby zdroje dat nepodporuje nástroj registrace zdroje dat není explicitně mohli opatřeny poznámkami a zjistit.

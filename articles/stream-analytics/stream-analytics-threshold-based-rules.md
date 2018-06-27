@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 1c131c2c9ca12556c1d2cd52e7976d2f4272a0c8
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 802be1ad5b1029add249430ee7760002407c4641
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32767937"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021621"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Proces konfigurovatelná pravidla na základě prahové hodnoty v Azure Stream Analytics
 Tento článek popisuje postup používání referenčních dat. k dosažení výstrahy řešení, které využívá konfigurovatelná pravidla na základě prahové hodnoty v Azure Stream Analytics.
@@ -45,7 +45,7 @@ Referenční data tento příklad ukazuje, jak může být reprezentován pravid
 - Příklad pravidlo se používá k reprezentování upravit výstrahu, pokud využití procesoru překročí (průměr je větší než nebo rovno) hodnotu `90` procent. `value` Pole se dá konfigurovat podle potřeby.
 - Všimněte si, má pravidlo **operátor** pole, která dynamicky interpretována v syntaxi dotazu později na `AVGGREATEROREQUAL`. 
 - Pravidlo filtruje data na určité dimenze klíč `2` s hodnotou `C1`. Ostatní pole jsou prázdný řetězec, označující není pro filtrování podle těchto událostí polí vstupního datového proudu. Může nastavit další pravidla procesoru chcete filtrovat další odpovídající pole, podle potřeby.
-- Ne všechny sloupce mají být zahrnuty v události výstrah výstup. V takovém případě `includedDim` klíče číslo `2` zapnutý `TRUE` představují, že číslo pole 2 dat událostí v datovém proudu bude součástí určení výstupní události. V ostatních polích nejsou součástí výstrahy výstup, ale lze upravit seznam polí.
+- Ne všechny sloupce mají být zahrnuty v události výstrah výstup. V takovém případě `includedDim` klíče číslo `2` zapnutý `TRUE` představují, že číslo pole 2 dat událostí v datovém proudu budou zahrnuty do opravňující výstupních událostech. V ostatních polích nejsou součástí výstrahy výstup, ale lze upravit seznam polí.
 
 
 ```json

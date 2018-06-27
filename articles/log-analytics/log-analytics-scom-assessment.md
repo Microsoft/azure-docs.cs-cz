@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/27/2017
+ms.date: 06/25/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86484ca2bc7dc14035f48b8f7b1514a4fc471b74
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 493fb0295c1d760bb7de13ae1b703b3636750612
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29180032"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018708"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimalizace prostředí s nástrojem System Center Operations Manager Health kontrolovat (Preview) řešení
 
@@ -44,7 +44,7 @@ Poté, co jste přidali řešení a posouzení se provádí, souhrnné informace
 
 Toto řešení funguje s Microsoft systému Operations Manager 2012 Service Pack (SP) 1 a 2012 R2.
 
-Použijte následující informace k instalaci a konfiguraci řešení.
+K instalaci a konfiguraci řešení můžete použít následující informace.
 
  - Než v analýzy protokolů můžete použít kontrolu stavu řešení, musíte mít nainstalován řešení. Instalaci řešení z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SCOMAssessmentOMS?tab=Overview).
 
@@ -212,14 +212,14 @@ Každé doporučení obsahuje pokyny o tom, proč je důležité. Tyto pokyny sl
 
 ## <a name="use-health-check-focus-area-recommendations"></a>Použití stavu zkontrolujte fokus oblasti doporučení
 
-Než v analýzy protokolů můžete použít řešení kontrolu stavu, musíte mít nainstalován řešení. Další informace o instalaci řešení, najdete v části [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md). Po instalaci, zobrazí se souhrn doporučení pomocí System Center Operations Manager Health kontrolovat dlaždice na stránce Přehled na portálu OMS.
+Než v analýzy protokolů můžete použít řešení kontrolu stavu, musíte mít nainstalován řešení. Další informace o instalaci řešení, najdete v části [instalaci řešení správy](log-analytics-add-solutions.md). Po instalaci, můžete zobrazit souhrn doporučení pomocí System Center Operations Manager Health kontrolovat dlaždice **přehled** stránky vašeho pracovního prostoru na portálu Azure.
 
 Zobrazte vyhodnocování souhrnné dodržování předpisů pro infrastrukturu a potom přejít k podrobnostem doporučení.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Proveďte opravné akce a zobrazit doporučení pro oblastí zájmu
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
 2. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
-3. V podokně odběry analýzy protokolů vyberte pracovní prostor a klikněte **portálu OMS** dlaždici.  
+3. V podokně odběry analýzy protokolů vyberte pracovní prostor a klikněte **prostoru Souhrn** položku nabídky.  
 4. Na **přehled** klikněte na tlačítko **System Center Operations Manager Health kontrolovat** dlaždici.
 5. Na **System Center Operations Manager Health kontrolovat** zkontrolujte souhrnné informace v jednom z okna oblasti fokus a pak klikněte na jednu zobrazíte doporučení pro tuto oblast fokus.
 6. Na všech stránkách oblasti fokus můžete zobrazit seřazený podle priority doporučení, která se pro vaše prostředí. Klikněte na tlačítko doporučení v části **vliv na objekty** Chcete-li zobrazit podrobnosti, proč se provádí doporučení.<br><br> ![oblastí zájmu](./media/log-analytics-scom-assessment/log-analytics-scom-healthcheck-dashboard-02.png)<br>
@@ -232,7 +232,7 @@ Pokud máte doporučení, které chcete ignorovat, můžete vytvořit textový s
 [!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>K identifikaci doporučení, které chcete ignorovat
-1. Na stránce pracovní prostor analýzy protokolů pro vaši vybranou pracovní prostor na portálu Azure, klikněte na tlačítko **hledání protokolů** dlaždici.
+1. Na stránce pracovní prostor analýzy protokolů pro vaši vybranou pracovní prostor na portálu Azure, klikněte na tlačítko **hledání protokolů** položku nabídky.
 2. Pro počítače ve vašem prostředí použijte následující dotaz, který seznam doporučení, které selhaly.
 
     ```

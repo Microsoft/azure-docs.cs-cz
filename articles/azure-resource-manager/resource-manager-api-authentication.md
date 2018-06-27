@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/15/2017
 ms.author: dugill
-ms.openlocfilehash: 1dea8d173432b05a72de72e8b17db4c97ea7924d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ba2466f58b3af0ef208474adb3e4c7ff184ceccc
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359858"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37018642"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Ověřování pomocí Správce prostředků rozhraní API pro odběry přístup
 ## <a name="introduction"></a>Úvod
@@ -204,7 +204,7 @@ Příklad odpovědi a získejte oprávnění uživatele na základě předplatn�
 
     {"value":[{"actions":["*"],"notActions":["Microsoft.Authorization/*/Write","Microsoft.Authorization/*/Delete"]},{"actions":["*/read"],"notActions":[]}]}
 
-Oprávnění rozhraní API vrátí více oprávnění. Každé oprávnění se skládá z povolených akcí (**akce**) a zakázané akce (**notactions**). Pokud je přítomen v povolených akcí všechna oprávnění a nejsou k dispozici v nepovoleném akce tohoto oprávnění, má uživatel k provedení této akce. **Microsoft.Authorization/RoleAssignments/Write** je akce, který uděluje přístup práva pro správu. Aplikace musí analyzovat výsledek oprávnění pro hledání shody regex na tento řetězec akce v **akce** a **notactions** jednotlivých oprávnění.
+Oprávnění rozhraní API vrátí více oprávnění. Každé oprávnění se skládá z povolených akcí (**akce**) a zakázané akce (**notactions**). Pokud je přítomen v povolených akcí všechna oprávnění a nejsou k dispozici v nepovoleném akce tohoto oprávnění, má uživatel k provedení této akce. **Microsoft.Authorization/RoleAssignments/Write** je akce uděluje oprávnění správy. Aplikace musí analyzovat výsledek oprávnění pro hledání shody regex na tento řetězec akce v **akce** a **notactions** jednotlivých oprávnění.
 
 ## <a name="get-app-only-access-token"></a>Získání tokenu přístupu jen aplikace
 Teď víte, pokud uživatele lze přiřadit přístup k předplatnému Azure. Další kroky jsou:

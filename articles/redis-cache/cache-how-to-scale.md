@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: wesmc
-ms.openlocfilehash: 9ef988ccdcca921c0285bf983125483a38a07678
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: d88fcea4a41d8402cc25a1623727284afb0e9088
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30240220"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959378"
 ---
 # <a name="how-to-scale-azure-redis-cache"></a>Postup škálování Azure Redis Cache
 Azure Redis Cache má jiný mezipaměti nabídky, které poskytují flexibilitu při výběru velikost mezipaměti a funkce. Po vytvoření mezipaměti je možné škálovat na velikost a cenovou úroveň mezipaměti, pokud se změní požadavky vaší aplikace. Tento článek ukazuje, jak se škálovat mezipaměti pomocí portálu Azure a nástroje, jako je Azure PowerShell a rozhraní příkazového řádku Azure.
@@ -154,7 +154,7 @@ I když Standard a Premium mezipamětí má SLA 99,9 % dostupnosti, není žádn
 * **Základní** mezipamětí jsou offline během změny měřítka na jinou velikost operací. Základní mezipamětí zůstanou dostupné, když škálování z **základní** k **standardní** ale může dojít k blip malé připojení. Pokud dojde k připojení blip, klienti redis byste měli mít okamžitě znovu navázat připojení.
 
 
-### <a name="scaling-limitations-with-geo-relication"></a>Omezení s relication geografické škálování
+### <a name="scaling-limitations-with-geo-replication"></a>Škálování omezení s geografickou replikací
 
 Po přidání geografická replikace propojení mezi dvěma mezipamětí, budete moci zahájit škálování operaci nebo změňte počet horizontálních oddílů v clusteru. Je nutné zrušit mezipaměti vystavit tyto příkazy. Další informace najdete v tématu [geografická replikace konfigurovat](cache-how-to-geo-replication.md).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 48546e84b94ad0c11a159b2f88f7e21f7eb6ae0e
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7e83f141791bb49130f7cf01086537f8ae08c406
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208297"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019691"
 ---
 # <a name="get-started-with-reliable-services"></a>Začínáme s Reliable Services
 > [!div class="op_single_selector"]
@@ -116,10 +116,10 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 }
 ```
 
-V tomto kurzu budeme soustředit se na `runAsync()` metody vstupní bod. Toto je, kde můžete okamžitě začít kód spuštěný.
+Tento kurz se zaměřuje na `runAsync()` metody vstupní bod. Toto je, kde můžete okamžitě začít kód spuštěný.
 
 ### <a name="runasync"></a>RunAsync
-Platforma volá tuto metodu, když je umístěný a připravené ke spuštění instance služby. Bezstavové služby, která jednoduše znamená, když je otevřen v instanci služby. Token zrušení je k dispozici pro koordinaci při instanci služby musí být uzavřen. V Service Fabric tento cyklus otevření nebo uzavření instance služby může docházet k tolikrát, kolikrát za dobu existence služby jako celek. Toto může nastat z různých důvodů, včetně:
+Platforma volá tuto metodu, když je umístěný a připravené ke spuštění instance služby. Bezstavové služby, to znamená, když je otevřen v instanci služby. Token zrušení je k dispozici pro koordinaci při instanci služby musí být uzavřen. V Service Fabric tento cyklus otevření nebo uzavření instance služby může docházet k tolikrát, kolikrát za dobu existence služby jako celek. Toto může nastat z různých důvodů, včetně:
 
 * Systém přesune vaší instance služby pro vyrovnávání prostředků.
 * K chybám dochází v kódu.
@@ -201,16 +201,16 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
 ```
 
-[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) je implementace slovník, který můžete použít k spolehlivě uložení stavu ve službě. Service Fabric a spolehlivé Hashmaps můžete uložit data přímo ve službě bez nutnosti externí trvalého úložiště. Spolehlivé Hashmaps dají vašim datům vysoce dostupný. Service Fabric dosahuje tak, že vytváření a správu více *repliky* služby za vás. Také poskytuje rozhraní API, které abstrahuje rychle složitosti správy tyto repliky a jejich přechodů mezi stavy.
+[ReliableHashMap](https://docs.microsoft.com/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) je implementace slovník, který můžete použít k spolehlivě uložení stavu ve službě. Service Fabric a spolehlivé HashMaps můžete uložit data přímo ve službě bez nutnosti externí trvalého úložiště. Spolehlivé HashMaps dají vašim datům vysoce dostupný. Service Fabric dosahuje tak, že vytváření a správu více *repliky* služby za vás. Také poskytuje rozhraní API, které abstrahuje rychle složitosti správy tyto repliky a jejich přechodů mezi stavy.
 
 Spolehlivé kolekce můžete ukládat jakýkoli typ Java, včetně vlastních typů, pomocí několika upozornění:
 
-* Service Fabric umožňuje vašemu stavu vysoce dostupné podle *replikace* stav napříč uzly a spolehlivé Hashmap ukládá data na místní disk na jednotlivé repliky. To znamená, že musí být vše, co je uložen v spolehlivé Hashmaps *serializovatelný*. 
-* Pokud provedete transakce na spolehlivé Hashmaps, replikují se objekty pro zajištění vysoké dostupnosti. Objekty uložené v spolehlivé Hashmaps udržovaly v místní paměti ve službě. To znamená, že máte místní odkaz na objekt.
+* Service Fabric umožňuje vašemu stavu vysoce dostupné podle *replikace* stav napříč uzly a spolehlivé HashMap ukládá data na místní disk na jednotlivé repliky. To znamená, že musí být vše, co je uložen v spolehlivé HashMaps *serializovatelný*. 
+* Pokud provedete transakce na spolehlivé HashMaps, replikují se objekty pro zajištění vysoké dostupnosti. Objekty uložené v spolehlivé HashMaps udržovaly v místní paměti ve službě. To znamená, že máte místní odkaz na objekt.
   
-   Je důležité, neprovádějte místní instancí těchto objektů bez provádění operace aktualizace na kolekci spolehlivé v transakci. To je proto nebude automaticky replikovat změny místní instance objektů. Musíte znovu vložit objekt zpět do slovníku nebo použijte jednu z *aktualizace* metody ve slovníku.
+   Je důležité, neprovádějte místní instancí těchto objektů bez provádění operace aktualizace na kolekci spolehlivé v transakci. To je proto nebude automaticky replikovat změny místní instance objektů. Musíte obnovení připojení objekt slovníku nebo použijte jednu z *aktualizace* metody ve slovníku.
 
-Správce spolehlivé stavu spravuje spolehlivé Hashmaps za vás. Můžete jednoduše pokládat spolehlivé správce stavu pro kolekci spolehlivé podle názvu kdykoli a kdekoli v službě. Spolehlivé správce stavu zajišťuje, získejte odkaz na zpět. Doporučujeme si uložit odkazy na spolehlivé kolekci instancí v člen třídy, proměnné nebo vlastnosti. Musí dát zvláštní pozor zajistit, že je odkaz nastavený na instanci za všech okolností v průběhu životního cyklu služby. Spolehlivé správce stavu zpracuje tato práce pro uživatele a je optimalizovaný pro opakování návštěvách.
+Správce spolehlivé stavu spravuje spolehlivé HashMaps za vás. Požádejte spolehlivé správce stavu pro kolekci spolehlivé podle názvu kdykoli a kdekoli v službě. Spolehlivé správce stavu zajišťuje, získejte odkaz na zpět. Nedoporučujeme uložit odkazy na spolehlivé kolekci instancí třídy členské proměnné nebo vlastnosti. Musí dát zvláštní pozor zajistit, že je odkaz nastavený na instanci za všech okolností v průběhu životního cyklu služby. Spolehlivé správce stavu zpracuje tato práce pro uživatele a je optimalizovaný pro opakování návštěvách.
 
 
 ### <a name="transactional-and-asynchronous-operations"></a>Transakční a asynchronní operace
@@ -231,12 +231,12 @@ return map.computeAsync(tx, "counter", (k, v) -> {
 });
 ```
 
-Operace na spolehlivé Hashmaps jsou asynchronní. Je to proto, že operace zápisu ke kolekcím, spolehlivé provádění vstupně-výstupních operací se budou replikovat a zachovat data na disk.
+Operace na spolehlivé HashMaps jsou asynchronní. Je to proto, že operace zápisu ke kolekcím, spolehlivé provádění vstupně-výstupních operací se budou replikovat a zachovat data na disk.
 
-Spolehlivé Hashmap operace jsou *transakcí*, takže můžete zachovat stav konzistentní napříč více spolehlivé Hashmaps a operace. Může například získat pracovní položky ze slovníku jeden spolehlivé, proveďte operaci na něm a uložit výsledek anoter spolehlivé Hashmap, vše v rámci jedné transakce. To je považován za atomická operace, a zaručuje, že buď celé operace proběhne úspěšně, nebo celou operaci vrátíte zpět. Pokud dojde k chybě po dequeue položku, ale před uložením výsledek, celá transakce bude vrácena zpět a položka zůstane ve frontě pro zpracování.
+Spolehlivé HashMap operace jsou *transakcí*, takže můžete zachovat stav konzistentní napříč více spolehlivé HashMaps a operace. Může například získat pracovní položky ze slovníku jeden spolehlivé, proveďte operaci na něm a uložit výsledek jiné spolehlivé HashMap, vše v rámci jedné transakce. To je považován za atomická operace, a zaručuje, že buď celé operace proběhne úspěšně, nebo celou operaci vrátíte zpět. Pokud dojde k chybě po dequeue položku, ale před uložením výsledek, celá transakce bude vrácena zpět a položka zůstane ve frontě pro zpracování.
 
 
-## <a name="run-the-application"></a>Spuštění aplikace
+## <a name="build-the-application"></a>Sestavení aplikace
 
 Yeoman generování uživatelského rozhraní obsahuje skript gradle sestavení aplikace a skripty pro nasazení a odeberte aplikaci bash. Ke spuštění aplikace, nejprve sestavte aplikaci s gradlem:
 
@@ -246,13 +246,31 @@ $ gradle
 
 Tímto se vytvoří balíček aplikace Service Fabric, které se dá nasadit pomocí Service Fabric rozhraní příkazového řádku.
 
-### <a name="deploy-with-service-fabric-cli"></a>Nasazení pomocí Service Fabric rozhraní příkazového řádku
+## <a name="deploy-the-application"></a>Nasazení aplikace
 
-Install.sh skript obsahuje potřebné příkazy Service Fabric rozhraní příkazového řádku pro nasazení balíčku aplikace. Spusťte skript install.sh k nasazení aplikace.
+Jakmile je aplikace sestavená, můžete ji nasadit do místního clusteru.
 
-```bash
-$ ./install.sh
-```
+1. Připojte se k místnímu clusteru služby Service Fabric.
+
+    ```bash
+    sfctl cluster select --endpoint http://localhost:19080
+    ```
+
+2. Spuštěním instalačního skriptu, který je součástí šablony, zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte její instanci.
+
+    ```bash
+    ./install.sh
+    ```
+
+Nasazení sestavené aplikace je stejné jako u všech ostatních aplikací Service Fabric. Podrobné pokyny najdete v dokumentaci s popisem [správy aplikace Service Fabric pomocí Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md).
+
+Parametry těchto příkazů najdete v generovaných manifestech uvnitř balíčku aplikace.
+
+Jakmile je aplikace nasazená, otevřete prohlížeč a přejděte k nástroji [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) na adrese [http://localhost:19080/Explorer](http://localhost:19080/Explorer). Pak rozbalte uzel **Aplikace** a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
+
+> [!IMPORTANT]
+> K nasazení aplikace do zabezpečené cluster s Linuxem v Azure, budete muset nakonfigurovat certifikát k ověření vaší aplikace pomocí modulu runtime Service Fabric. Díky tomu spolehlivé služby pro komunikaci s základní modulu runtime Service Fabric rozhraní API. Další informace najdete v tématu [konfigurovat spolehlivé služby aplikaci spustit v clusterech Linux](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).  
+>
 
 ## <a name="next-steps"></a>Další postup
 

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 06/25/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2dbe14f6c7f8f9f1dcfaf733dc884df5adf919aa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f721c371687addfe48d753e7289df78c2be1f3c7
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593167"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36957996"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Funkce služby Azure AD Connect sync
 Funkce synchronizace služby Azure AD Connect má dvě součásti:
@@ -58,7 +58,8 @@ Následující nastavení jsou nakonfigurované přes Azure AD Connect a nelze z
 | DeviceWriteback |[Azure AD Connect: Povolení zpětného zápisu zařízení](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Synchronizace Azure AD Connect: rozšíření adresáře](active-directory-aadconnectsync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Umožňuje atributu umístí do karantény, pokud je duplicitní jiného objektu, nikoli celý objekt selhání během exportu. |
-| PasswordSync |[Implementace synchronizaci hodnoty hash hesla s synchronizace Azure AD Connect](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
+| Synchronizace hodnoty hash hesel |[Implementace synchronizaci hodnoty hash hesla s synchronizace Azure AD Connect](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
+|Předávací ověřování|[Přihlášení uživatele pomocí ověřování Azure Active Directory průchozí](active-directory-aadconnect-pass-through-authentication.md)|
 | UnifiedGroupWriteback |[Ve verzi Preview: Zpětný zápis skupin](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |Není aktuálně podporováno. |
 

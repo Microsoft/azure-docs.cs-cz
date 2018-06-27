@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: d81f7889122bcf887676496a056df2148cdff6e9
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 35f8937ddef54d407a6e3c83566225ca8ede8bd9
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31593708"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960123"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>Analýza dat Twitteru pomocí Hive v HDInsight
 Sociální weby jsou jedním z hlavních řízení vynutí pro velké objemy dat přijetí. Veřejná rozhraní API poskytované lokality jako Twitter jsou užitečné zdroje dat pro analýzu a pochopení oblíbených trendy.
@@ -68,7 +68,7 @@ V tomto kurzu budete používat [Twitter streamování rozhraní API][twitter-st
 > [!NOTE]
 > Soubor obsahující 10 000 tweetů a soubor skriptu Hive (popsaná v další části) byly odeslány ve veřejném kontejneru Blob. Pokud chcete použít odeslané soubory, můžete tuto část přeskočit.
 
-[Tweetů data](https://dev.twitter.com/docs/platform-objects/tweets) je uložený ve formátu JavaScript Object Notation (JSON), která obsahuje komplexní vnořené struktury. Místo psaní velkého počtu řádků kódu s použitím konvenční programovací jazyk, můžete převést tuto strukturu vnořené do tabulky Hive, tak, aby může být dotazován podle jazyka SQL (Structured Query) – jako jazyka nazývaného HiveQL.
+Tweetů data se ukládají ve formátu JavaScript Object Notation (JSON), která obsahuje komplexní vnořené struktury. Místo psaní velkého počtu řádků kódu s použitím konvenční programovací jazyk, můžete převést tuto strukturu vnořené do tabulky Hive, tak, aby může být dotazován podle jazyka SQL (Structured Query) – jako jazyka nazývaného HiveQL.
 
 K poskytování autorizovaný přístup k jeho API používá Twitter OAuth. OAuth je ověřovací protokol, který umožňuje uživatelům schválit aplikace tak, aby fungoval na ně bez sdílení své heslo. Další informace najdete na [oauth.net](http://oauth.net/) nebo vynikající [Průvodce začátečníka OAuth](http://hueniverse.com/oauth/) z Hueniverse.
 
@@ -536,7 +536,7 @@ Write-Host "==================================" -ForegroundColor Green
 > [!NOTE]
 > V tabulce Hive \001 používá jako oddělovač polí. Oddělovač, který není viditelný ve výstupu.
 
-Po výsledky analýzy byly umístěny do úložiště objektů Blob v Azure, můžete exportovat data na Azure SQL database nebo SQL server, export dat do aplikace Excel pomocí doplňku Power Query nebo připojení aplikace k datům pomocí ovladače ODBC Hive. Další informace najdete v tématu [Sqoop použití s HDInsight][hdinsight-use-sqoop], [analýza letu zpoždění dat pomocí HDInsight][hdinsight-analyze-flight-delay-data], [připojení aplikace Excel do prostředí HDInsight pomocí doplňku Power Query][hdinsight-power-query], a [připojení aplikace Excel do HDInsight pomocí ovladače ODBC Microsoft Hive][hdinsight-hive-odbc].
+Po výsledky analýzy byly umístěny do úložiště objektů Blob v Azure, můžete exportovat data na Azure SQL database nebo SQL server, export dat do aplikace Excel pomocí doplňku Power Query nebo připojení aplikace k datům pomocí ovladače ODBC Hive. Další informace najdete v tématu [Sqoop použití s HDInsight][hdinsight-use-sqoop], [analýza letu zpoždění dat pomocí HDInsight][hdinsight-analyze-flight-delay-data], [ Připojení Excelu k prostředí HDInsight pomocí doplňku Power Query][hdinsight-power-query], a [připojení aplikace Excel do HDInsight pomocí ovladače ODBC Microsoft Hive][hdinsight-hive-odbc].
 
 ## <a name="next-steps"></a>Další postup
 V tomto kurzu jsme viděli, jak k transformaci datové sadě služby nestrukturovaných JSON do strukturovaných tabulku Hive k dotazování, prozkoumejte a analýze dat z Twitteru pomocí HDInsight v Azure. Další informace naleznete v tématu:
@@ -545,7 +545,7 @@ V tomto kurzu jsme viděli, jak k transformaci datové sadě služby nestrukturo
 * [Analýza dat zpoždění letu pomocí HDInsight][hdinsight-analyze-flight-delay-data]
 * [Připojení Excelu k prostředí HDInsight pomocí doplňku Power Query][hdinsight-power-query]
 * [Připojení aplikace Excel do HDInsight pomocí ovladače ODBC Microsoft Hive][hdinsight-hive-odbc]
-* [Použití nástroje Sqoop s HDInsight][hdinsight-use-sqoop]
+* [Použití Sqoopu se službou HDInsight][hdinsight-use-sqoop]
 
 [curl]: http://curl.haxx.se
 [curl-download]: http://curl.haxx.se/download.html

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: f29754c73db74f02214522a4de15904e65df0e98
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: c01bcfecea8d79784b764e715f077c76e7d4be45
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208256"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37017643"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurace Reliable Actors – KVSActorStateProvider
 Výchozí konfigurace KVSActorStateProvider můžete upravit změnou souborech settings.xml souboru, který se vygeneruje v kořenu balíčku Microsoft Visual Studio ve složce Konfigurace pro zadaný objekt actor.
@@ -34,6 +34,10 @@ Modul runtime Azure Service Fabric předdefinované části z názvů v souboru 
 ## <a name="replicator-security-configuration"></a>Konfigurace zabezpečení replikátoru
 Konfigurace zabezpečení Replikátor slouží k zabezpečení komunikačního kanálu, který se používá během replikace. To znamená, že služby nelze vzájemně provoz replikace, zajišťující, že data, která vysokou dostupnost, je také zabezpečené.
 Ve výchozím nastavení zabraňuje konfigurační oddíl prázdný zabezpečení zabezpečení replikace.
+
+> [!IMPORTANT]
+> Certifikáty na uzly Linux musí být ve formátu PEM. Další informace o vyhledání a konfigurace certifikátů pro Linux najdete v tématu [konfigurace certifikátů pro systémy Linux](./service-fabric-configure-certificates-linux.md). 
+> 
 
 ### <a name="section-name"></a>Název oddílu
 &lt;ActorName&gt;ServiceReplicatorSecurityConfig
@@ -50,7 +54,7 @@ Výchozí konfigurace je generován šablony sady Visual Studio a měla by stač
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekundy |0.015 |Časové období, pro které Replikátor na sekundární počká po přijetí operace před odesláním zpět na primární potvrzení. Další potvrzení k odeslání pro operace zpracování v rámci tohoto intervalu se odesílají jako jedna odpověď. |
 | ReplicatorEndpoint |neuvedeno |Žádná výchozí hodnota – povinný parametr |IP adresa a port, který Replikátor primární a sekundární bude používat pro komunikaci s další replikátory na replice nastavit. To by měl odkazovat koncový bod TCP prostředků v service manifest. Odkazovat na [manifestu prostředky služby](service-fabric-service-manifest-resources.md) Další informace o definování koncový bod prostředků v service manifest. |
-| RetryInterval |Sekundy |5 |Časové období, po které Replikátor znovu odesílá zprávy neobdrží potvrzení operace. |
+| retryInterval |Sekundy |5 |Časové období, po které Replikátor znovu odesílá zprávy neobdrží potvrzení operace. |
 | Maxreplicationmessagesize. |B |50 MB |Maximální velikost data replikace, která mohou být přenesena do jedné zprávy. |
 | MaxPrimaryReplicationQueueSize |Počet operací |1024 |Maximální počet operací ve frontě primární. Operace uvolněno po primární Replikátor obdrží potvrzení ze sekundární replikátory. Tato hodnota musí být větší než 64 a druhou mocninou 2. |
 | MaxSecondaryReplicationQueueSize |Počet operací |2 048 |Maximální počet operací v sekundární fronty. Operace uvolněno po provedení vysoce dostupný prostřednictvím trvalost stavu. Tato hodnota musí být větší než 64 a druhou mocninou 2. |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: f0f3311f35f954f81560cad21e7f0e3bc850a094
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 59dbc4134ee11999e54d2eba51804939e7e14229
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28030689"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020726"
 ---
 # <a name="custom-fields-in-log-analytics"></a>Vlastní pole v analýzy protokolů
 **Vlastní pole** funkce analýzy protokolů můžete rozšířit existující záznamy v analýzy protokolů přidat vlastní prohledávatelné pole.  Vlastní pole se vyplní automaticky ze dat extrahovaných z dalších vlastností ve stejném záznamu.
@@ -79,7 +79,7 @@ Můžete zobrazit seznam všech vlastních polí ve vaší skupině pro správu 
 ## <a name="removing-a-custom-field"></a>Odebrání vlastního pole
 Existují dva způsoby, jak odebrat vlastní pole.  První je **odebrat** možnost pro každé pole při zobrazení seznamu dokončení, jak je popsáno výše.  Další metodou je načíst záznam a klikněte na tlačítko vlevo od pole.  V nabídce bude mít možnost odebrat vlastní pole.
 
-## <a name="sample-walkthrough"></a>Ukázka návod
+## <a name="sample-walkthrough"></a>Ukázkový názorný postup
 V následující části vás provede kompletní příklad, jak vytváření vlastních polí.  Tento příklad extrahuje názvu služby v systému Windows události, které označují změna stavu služby.  To závisí na události vytvořené pomocí Správce řízení služeb v protokolu systému na počítačích se systémem Windows.  Pokud chcete v tomto příkladu, musí být [shromažďování událostí informace v systémovém protokolu](log-analytics-data-sources-windows-events.md).
 
 Jsme zadejte následující dotaz, který vrátí všechny události ze Správce řízení služeb s ID události z 7036, které je událost, která označuje, spuštění nebo zastavení služby.
@@ -130,7 +130,7 @@ Jsme uvidíte, že **Service_CF** je vytvořen, ale ještě není přidáno žá
 
 ![Počáteční počet](media/log-analytics-custom-fields/initial-count.png)
 
-Po určité době uplynutí tak nové události jsou shromažďovány, jsme uvidíte, že, **Service_CF** pole teď se přidává do záznamy, které odpovídají naše kritériím.
+Po určité době uplynutí tak nové události se mají shromažďovat, uvidíte, který **Service_CF** pole teď se přidává do záznamy, které odpovídají naše kritériím.
 
 ![Konečné výsledky](media/log-analytics-custom-fields/final-results.png)
 

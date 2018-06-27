@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 77326832f42cc1ef74ae7a380f4e38d3c67d17b7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c07cc3e434a178a5f6a1ea10f7dc630c3d0d548d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775107"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019274"
 ---
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Řešení VMware monitorování (Preview) v analýzy protokolů
 
@@ -33,7 +33,7 @@ ms.locfileid: "33775107"
 Toto řešení využívá funkce nativní syslog hostitele ESXi a nabízí data na cíl, virtuální počítač, který má OMS Agent. Toto řešení však není zapisovat soubory do protokolu syslog v cílovém virtuálním počítači. OMS agent otevře port 1514 a naslouchá na to. Jakmile obdrží data, OMS agent doručí data do analýzy protokolů.
 
 ## <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
-Použijte následující informace k instalaci a konfiguraci řešení.
+K instalaci a konfiguraci řešení můžete použít následující informace.
 
 * Přidat řešení VMware monitorování k předplatnému pomocí procesu popsaného v tématu [přidat řešení pro správu](log-analytics-add-solutions.md#add-a-management-solution).
 
@@ -54,7 +54,7 @@ Vytvořte operační systém Linux virtuálního počítače z hostitele ESXi p�
     ![vspherefw](./media/log-analytics-vmware/vsphere2.png)  
 
     ![vspherefwproperties](./media/log-analytics-vmware/vsphere3.png)  
-4. Zkontrolujte vSphere konzoly ověřte, zda tento syslog správně nastavená. Potvrďte na hostiteli ESXI tento port **1514** je nakonfigurovaný.
+4. Zkontrolujte vSphere konzoly ověřte, že je správně nastavený tento syslog. Potvrďte na hostiteli ESXI tento port **1514** je nakonfigurovaný.
 5. Stáhněte a nainstalujte agenta OMS pro Linux na Linux server. Další informace najdete v tématu [dokumentace pro OMS agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux).
 6. Po instalaci agenta OMS pro Linux, přejděte do adresáře /etc/opt/microsoft/omsagent/sysconf/omsagent.d a zkopírujte soubor vmware_esxi.conf adresáři /etc/opt/microsoft/omsagent/conf/omsagent.d a změna vlastníka nebo skupiny a oprávnění souboru. Příklad:
 
@@ -87,7 +87,7 @@ Následující tabulka uvádí metody shromažďování dat a další podrobnost
 
 Následující tabulka obsahuje příklady datová pole shromážděných řešením pro monitorování VMware:
 
-| Název pole | description |
+| název pole | description |
 | --- | --- |
 | Device_s |Zařízení úložiště VMware |
 | ESXIFailure_s |selhání typy |
@@ -111,7 +111,7 @@ Následující tabulka obsahuje příklady datová pole shromážděných řeše
 ## <a name="vmware-monitoring-solution-overview"></a>Přehled řešení VMware monitorování
 V pracovním prostoru analýzy protokolů se zobrazí na dlaždici VMware. Poskytuje podrobný pohled případných selhání. Když kliknete na dlaždici, přejděte do zobrazení řídicího panelu.
 
-![Dlaždice](./media/log-analytics-vmware/tile.png)
+![dlaždice](./media/log-analytics-vmware/tile.png)
 
 #### <a name="navigate-the-dashboard-view"></a>Přejděte zobrazení řídicího panelu
 V **VMware** zobrazení řídicího panelu okna jsou uspořádané podle:
@@ -155,7 +155,7 @@ Pokud chcete zobrazit další data vytvoření virtuálního počítače hostite
 
 [!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
-![Dotazy](./media/log-analytics-vmware/queries.png)
+![dotazy](./media/log-analytics-vmware/queries.png)
 
 
 #### <a name="save-queries"></a>Uložení dotazů

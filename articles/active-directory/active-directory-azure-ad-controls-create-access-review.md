@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.component: compliance-reports
-ms.date: 05/14/2018
+ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: 6a1d4a55074630cc20c98202d2e94ec682c323f4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2c4e26bb6f2cd144d00d9e4ada92d756fe68418b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234069"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37020402"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Vytvoření kontrola přístupu členů skupiny nebo přístup k aplikaci s Azure AD
 
@@ -26,7 +26,7 @@ Přiřazení přístupu stát "zastaralé", když uživatelé mají přístup, k
 
 ## <a name="create-an-access-review"></a>Vytvořit kontrolu přístupu
 
-1. Jako globální správce, přejděte na [přístupu zkontroluje stránky](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)a vyberte **programy**.
+1. Jako globální správce nebo správce účtu uživatele, přejděte na [přístupu zkontroluje stránky](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)a vyberte **programy**.
 
 2. Vyberte program, který obsahuje zkontrolujte řízení přístupu, kterou chcete vytvořit. **Výchozí Program** je vždy k dispozici, nebo můžete vytvořit v jiné aplikaci. Například můžete mít jeden program pro každou initiative dodržování předpisů nebo obchodní cíle.
 
@@ -38,7 +38,7 @@ Přiřazení přístupu stát "zastaralé", když uživatelé mají přístup, k
 
 6. Aby opakovaného zkontrolujte přístup, změnit frekvenci z jednou týdně, měsíčně, čtvrtletně nebo ročně a definovat, jak dlouho bude každý zkontrolujte řady opakovaných otevřené pro vstup z kontroloři pomocí posuvníku nebo textové pole. Maximální délka trvání pro lze nastavit pro měsíční kontrolu je například 27 dnů překrývající se recenze. 
 
-7.  Řada opakovaných kontrola přístupu můžete ukončit způsoby 3: běží nepřetržitě zahájíte recenze po neomezenou dobu, až do určitého data, nebo po dokončení definovaný počet výskytů. Vy nebo jiný globální správce můžete zastavit řady po vytvoření změnou datum v nastavení tak, aby ho končí na datum.
+7.  Řada opakovaných kontrola přístupu můžete ukončit způsoby 3: běží nepřetržitě zahájíte recenze po neomezenou dobu, až do určitého data, nebo po dokončení definovaný počet výskytů. Můžete, jiný správce účtu uživatele nebo jiného globálního správce můžete zastavit řady po vytvoření změnou datum v nastavení tak, aby ho končí na datum.
 
 8. Recenze přístup může být pro členy skupiny nebo pro uživatele, kteří byly přiřazené k aplikaci. Můžete vytvořit další obor přístupu zkontrolujte kontrola pouze uživatele typu Host kdo jsou členy (nebo přiřazené k aplikaci), namísto kontroly všech uživatelů, kteří jsou členy, nebo kteří mají přístup k aplikaci.
 

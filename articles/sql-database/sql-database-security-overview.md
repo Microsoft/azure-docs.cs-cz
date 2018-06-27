@@ -10,12 +10,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: giladm
-ms.openlocfilehash: a40ca715c15540bf7048fae8b5dde152890eb1c1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 929c05901c54ef0e7fe0d4af28c5ba45c92091f0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648322"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021136"
 ---
 # <a name="securing-your-sql-database"></a>Zabezpečení SQL Database
 
@@ -79,7 +79,7 @@ Auditování služby SQL Database sleduje databázové aktivity a pomáhá dodr�
 Detekce hrozeb doplňuje auditování, tím, že poskytuje další vrstvu zabezpečení intelligence integrovaný do služby Azure SQL Database, která upozorní na neobvyklé a potenciálně škodlivé pokusy přístup nebo využívat databáze. Upozorní o podezřelých aktivit, potenciální ohrožení zabezpečení a prostřednictvím injektáže SQL, jakož i nezvyklé databázové přístupové vzorce. Můžete prohlížet výstrah o zjištěných hrozbách [Azure Security Center](https://azure.microsoft.com/services/security-center/) a zadejte podrobnosti podezřelých aktivit a doporučujeme akce o tom, jak prozkoumat a zmírnit riziko. Detekce hrozeb stojí $15, počet serverů za měsíc. Je bezplatná pro prvních 60 dní. Další informace najdete v článku [Začínáme zjišťovat hrozby ve službě SQL Database](sql-database-threat-detection.md).
  
 ## <a name="compliance"></a>Dodržování předpisů
-Kromě výše uvedeného funkce a funkce, které mohou pomoci aplikace splňovat různé požadavky na zabezpečení, Azure SQL Database také účastní pravidelné audity a certifikovala proti počet standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://azure.microsoft.com/support/trust-center/), kde také najdete nejnovější seznam [certifikátů služby SQL Database v oblasti dodržování předpisů](https://www.microsoft.com/trustcenter/compliance/complianceofferings/).
+Kromě výše uvedeného funkce a funkce, které mohou pomoci aplikace splňovat různé požadavky na zabezpečení, Azure SQL Database také účastní pravidelné audity a certifikovala proti počet standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://azure.microsoft.com/support/trust-center/), kde také najdete nejnovější seznam [certifikátů služby SQL Database v oblasti dodržování předpisů](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings).
 
 
 ## <a name="security-management"></a>Správa zabezpečení

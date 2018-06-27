@@ -35,7 +35,7 @@ Můžete si sice vytvořit virtuální počítač v [portálu pro správu Azure]
      Pokud jste webu MSDN odběratele se Visual Studio na úrovni předplatného, můžete vytvořit předem připravené Azure virtuální počítač, který obsahuje sady Visual Studio, jakož i několik dalších bitové kopie. Další informace najdete v tématu [vytvoření virtuálního počítače v sadě Visual Studio pomocí bitové kopie Visual Studio 2013 Galerie obrázek pro předplatitele MSDN](http://visualstudio2013msdngalleryimage.azurewebsites.net) a [předplatné MSDN](https://www.visualstudio.com/products/msdn-subscriptions-vs). |
 5. Na **základní nastavení virtuálního počítače** stránky, zadejte název počítače a poté přidejte specifikace pro virtuální počítač, včetně velikosti a uživatelské jméno a heslo. Když jste hotovi, klikněte na tlačítko **Další**.
    
-    Nové jméno a heslo budete používat pro přihlášení k počítači pomocí vzdálené plochy, takže je vhodné k zápisu v případě, že byste zapomněli. Po vytvoření virtuálního počítače Azure v sadě Visual Studio, můžete změnit jeho velikost a další nastavení v [portálu pro správu Azure](http://go.microsoft.com/fwlink/?LinkID=253103).
+    Nové jméno a heslo budete používat k přihlášení k počítači pomocí vzdálené plochy, takže je vhodné k zápisu v případě, že byste zapomněli. Po vytvoření virtuálního počítače Azure v sadě Visual Studio, můžete změnit jeho velikost a další nastavení v [portálu pro správu Azure](http://go.microsoft.com/fwlink/?LinkID=253103).
    
    > [!NOTE]
    > Pokud si zvolíte větší velikosti pro virtuální počítač, další poplatky. V tématu [podrobnosti o cenách virtuálních počítačů](https://azure.microsoft.com/pricing/details/virtual-machines/) Další informace.
@@ -68,7 +68,7 @@ Můžete si sice vytvořit virtuální počítač v [portálu pro správu Azure]
     
      ![Protokol aktivit virtuálního počítače – byla dokončena.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744139.png)
     
-     Pokud po úspěšném dokončení operace nového virtuálního počítače se objeví pod uzlem **virtuální počítače** uzlu v Průzkumníku serveru. Může přihlásit k ho kliknutím **připojit pomocí vzdálené plochy** zástupce.
+     Pokud po úspěšném dokončení operace nového virtuálního počítače se objeví pod uzlem **virtuální počítače** uzlu v Průzkumníku serveru. Přihlaste se k němu kliknutím **připojit pomocí vzdálené plochy** zástupce.
     
      ![Virtuální počítač, které jsou uvedeny v Průzkumníku serveru.](./media/virtual-machines-common-classic-create-manage-visual-studio/IC744140.png)
 

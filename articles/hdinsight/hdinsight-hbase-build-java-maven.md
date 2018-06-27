@@ -14,17 +14,17 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 84facb99b2264b48ede7306ae87a79605e6e8bed
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: f5a8c33f2bd3c89b1049435f15d7bf2020248afa
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31597084"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019308"
 ---
 # <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>Používání Maven k sestavení aplikací Java, které používají HBase s HDInsight se systémem Windows (Hadoop)
 Zjistěte, jak vytvořte a sestavte [Apache HBase](http://hbase.apache.org/) aplikace v jazyce Java pomocí Apache Maven. Pak použijete aplikaci s Azure HDInsight (Hadoop).
 
-[Maven](http://maven.apache.org/) je software projektu správy a míru porozumění nástroj, který umožňuje vytvářet softwaru, dokumentace a sestav pro projekty Java. V tomto článku zjistěte, jak použít jej k vytvořit základní aplikaci Java, která, které vytváří, dotazy a odstraní tabulky HBase v clusteru Azure HDInsight.
+[Maven](http://maven.apache.org/) je software projektu správy a míru porozumění nástroj, který umožňuje vytvářet softwaru, dokumentace a sestav pro projekty Java. V tomto článku se dozvíte, způsobu jeho použití k vytvoření základní aplikace Java, která vytvoří, dotazy a odstraní tabulky HBase v clusteru Azure HDInsight.
 
 > [!IMPORTANT]
 > Kroky v tomto dokumentu vyžadují clusteru HDInsight se systémem Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -135,7 +135,7 @@ Zjistěte, jak vytvořte a sestavte [Apache HBase](http://hbase.apache.org/) apl
     To `<plugins>` části nakonfiguruje [modulu plug-in kompilátoru Maven](http://maven.apache.org/plugins/maven-compiler-plugin/) a [modulu plug-in stín Maven](http://maven.apache.org/plugins/maven-shade-plugin/). Modul plug-in kompilátoru se používá ke kompilaci topologii. Modul plug-in stín se používá při prevenci licence duplikace v JAR balíček, který je sestavena Maven. Používá se důvodem je, že duplicitní licenčních souborů dojít k chybě za běhu v clusteru HDInsight. Používání maven stín – modul plug-in s `ApacheLicenseResourceTransformer` implementace brání této chybě.
 
     Plugin stín maven také vytváří uber jar (nebo fat jar), který obsahuje všechny závislosti, které jsou požadované aplikací.
-4. Uložit **pom.xml** souboru.
+4. Uložte soubor **pom.xml**.
 5. Vytvořte nový adresář s názvem **conf** v **hbaseapp** adresáře. V **conf** adresáře, vytvořte soubor s názvem **hbase-site.xml**. Použijte následující postupy jako obsah souboru:
 
         <?xml version="1.0"?>
