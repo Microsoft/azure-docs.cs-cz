@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: 6f1a95e52def9154253192ab9d43d1e7d621cee7
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c8204e204978a9fd7cda2e9c02be0c70722b01bb
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31425608"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021356"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>SQL Server Business Intelligence v Azure Virtual Machines
 > [!IMPORTANT] 
@@ -34,7 +34,7 @@ Existují dva způsoby, jak licenci SQL serveru ve virtuálních počítačích 
 1. Výhody mobility licencí, které jsou součástí programu Software Assurance. Další informace najdete v tématu [mobilitou licencí v rámci programu Software Assurance na Azure](https://azure.microsoft.com/pricing/license-mobility/).
 2. Platba za hodinu míra Azure virtuálních počítačů s nainstalovaným serverem SQL. Najdete v části "SQL Server" v [ceny služeb Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/#Sql).
 
-Další informace o licencování a aktuální míry najdete v tématu [virtuální počítače nejčastější dotazy ohledně licencování](https://azure.microsoft.com/pricing/licensing-faq/%20/).
+Další informace o licencování a aktuální míry najdete v tématu [virtuální počítače nejčastější dotazy ohledně licencování](https://azure.microsoft.com/pricing/licensing-faq/).
 
 ## <a name="sql-server-images-available-in-azure-virtual-machine-gallery"></a>SQL Server bitové kopie k dispozici v galerii virtuálních počítačů Azure
 Virtuální počítač Microsoft Azure galerie obsahuje několik imagí, které obsahují Microsoft SQL Server. Software nainstalovaný v Image virtuálních počítačů se liší podle verze operačního systému a verzi systému SQL Server. V seznamu bitových kopií k dispozici v galerii virtuálních počítačů Azure se často mění.
@@ -172,7 +172,7 @@ V **systému Windows Server 2008 R2**:
 3. Klikněte na tlačítko **konfigurační nástroje**.
 4. Klikněte pravým tlačítkem na **Správce konfigurace služby Reporting Services** a klikněte na tlačítko **spustit jako správce**.
 
-nebo:
+Nebo:
 
 1. Klikněte na tlačítko **spustit**.
 2. V **Prohledat programy a soubory** typ dialogu **služby reporting services**. Pokud virtuální počítač se systémem Windows Server 2012, zadejte **služby reporting services** na obrazovce Start systému Windows Server 2012.
