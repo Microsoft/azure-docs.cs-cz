@@ -35,6 +35,62 @@
           href: quickstart-java-languages.md
         - name: Zjištění délky vět v textu
           href: quickstart-java-sentences.md
+    - name: Node.js
+      items:
+        - name: Přeložení textu
+          href: quickstart-nodejs-translate.md
+        - name: Převod textového skriptu
+          href: quickstart-nodejs-transliterate.md
+        - name: Identifikace jazyka z textu
+          href: quickstart-nodejs-detect.md
+        - name: Získání alternativních překladů
+          href: quickstart-nodejs-dictionary.md
+        - name: Zjištění podporovaných jazyků
+          href: quickstart-nodejs-languages.md
+        - name: Zjištění délky vět v textu
+          href: quickstart-nodejs-sentences.md
+    - name: PHP
+      items:
+        - name: Přeložení textu
+          href: quickstart-php-translate.md
+        - name: Převod textového skriptu
+          href: quickstart-php-transliterate.md
+        - name: Identifikace jazyka z textu
+          href: quickstart-php-detect.md
+        - name: Získání alternativních překladů
+          href: quickstart-php-dictionary.md
+        - name: Zjištění podporovaných jazyků
+          href: quickstart-php-languages.md
+        - name: Zjištění délky vět v textu
+          href: quickstart-php-sentences.md
+    - name: Python
+      items:
+        - name: Přeložení textu
+          href: quickstart-python-translate.md
+        - name: Převod textového skriptu
+          href: quickstart-python-transliterate.md
+        - name: Identifikace jazyka z textu
+          href: quickstart-python-detect.md
+        - name: Získání alternativních překladů
+          href: quickstart-python-dictionary.md
+        - name: Zjištění podporovaných jazyků
+          href: quickstart-python-languages.md
+        - name: Zjištění délky vět v textu
+          href: quickstart-python-sentences.md
+    - name: Ruby
+      items:
+        - name: Přeložení textu
+          href: quickstart-ruby-translate.md
+        - name: Převod textového skriptu
+          href: quickstart-ruby-transliterate.md
+        - name: Identifikace jazyka z textu
+          href: quickstart-ruby-detect.md
+        - name: Získání alternativních překladů
+          href: quickstart-ruby-dictionary.md
+        - name: Zjištění podporovaných jazyků
+          href: quickstart-ruby-languages.md
+        - name: Zjištění délky vět v textu
+          href: quickstart-ruby-sentences.md
 - name: Koncepty
   items:
     - name: Podporované jazyky
@@ -55,18 +111,8 @@
       href: word-alignment.md
     - name: Použití funkce dynamického slovníku
       href: dynamic-dictionary.md
-    - name: Použití rozhraní Translator Text API
-      items:
-        - name: Node.js
-          href: quickstarts/nodejs.md
-        - name: PHP
-          href: quickstarts/php.md
-        - name: Python
-          href: quickstarts/python.md
-        - name: Ruby
-          href: quickstarts/ruby.md
-        - name: Vytvoření aplikace Translator Text s využitím WPF
-          href: tutorial-wpf-translation-csharp.md
+    - name: Vytvoření aplikace Translator Text s využitím WPF
+      href: tutorial-wpf-translation-csharp.md
 - name: Referenční informace
   items:
     - name: Referenční informace k rozhraní Translator Text API v3

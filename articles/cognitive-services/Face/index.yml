@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/31/2018
   ms.author: nolachar
-  ms.openlocfilehash: fa3c2bd2a089d72b758968f58634a5c119259f77
-  ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+  ms.openlocfilehash: a2eef70e2c20201ef08a4b491765c662efc81e25
+  ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/11/2018
-  ms.locfileid: "35356998"
+  ms.lasthandoff: 06/25/2018
+  ms.locfileid: "36749598"
 abstract:
   description: Cloudové rozhraní API pro rozpoznávání tváře poskytuje vývojářům přístup k pokročilým algoritmům pro rozpoznávání tváře. Algoritmy služby Microsoft Face umožňují detekovat atributy tváří a rozpoznávat jednotlivé tváře. Pomocí rychlých zprovoznění, kurzů a ukázek se naučíte různými způsoby analyzovat obsah.
 sections:
@@ -35,6 +35,10 @@ sections:
       text: C&#35;
       href: QuickStarts/CSharp
     - image:
+        src: media/index/logo_go.svg
+      text: Přejít
+      href: QuickStarts/Go
+    - image:
         src: media/index/logo_java.svg
       text: Java
       href: QuickStarts/Java
@@ -46,10 +50,6 @@ sections:
         src: media/index/logo_python.svg
       text: Python
       href: QuickStarts/Python
-    - image:
-        src: media/index/logo_ruby.svg
-      text: Ruby
-      href: QuickStarts/Ruby
 - title: Referenční informace
   items:
   - type: list
@@ -59,4 +59,4 @@ sections:
     - title: Rozhraní API
       html: <p><a href="APIReference">Rozhraní API pro rozpoznávání tváře</a></p>
     - title: Sady SDK
-      html: <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest">Node.js</a></p><p><a href="https://github.com/Microsoft/Cognitive-Face-Python">Python</a></p><p><a href="https://github.com/Microsoft/Cognitive-Face-Windows">Windows</a></p><p><a href="https://github.com/Microsoft/Cognitive-Face-Android">Android</a></p><p><a href="https://github.com/Microsoft/Cognitive-Face-iOS">iOS</a></p>
+      html: <p><a href="https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face">Go</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules">Node.js</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-Python">Python</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-Windows">Windows</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-Android">Android</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-iOS">iOS</a></p>
