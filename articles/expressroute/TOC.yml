@@ -89,6 +89,8 @@
       href: expressroute-howto-move-arm.md
     - name: Migrace přidružených virtuálních sítí z modelu nasazení Classic do Resource Manageru
       href: expressroute-migration-classic-resource-manager.md
+    - name: Vytvoření zónově redundantní brány virtuální sítě v zónách dostupnosti Azure
+      href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Konfigurace směrovače pro ExpressRoute
       items:
         - name: Konfigurace směrovače

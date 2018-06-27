@@ -49,8 +49,8 @@
       href: functions-openapi-definition.md
     - name: Změna velikosti obrázků s využitím služby Event Grid
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
-    - name: Vytvoření webové aplikace bez serveru se službou Functions jako rozhraním API
-      href: 'https://docs.microsoft.com/learn/build-serverless-app/index'
+    - name: Vytvoření webové aplikace bez serveru
+      href: 'https://docs.microsoft.com/azure/functions/tutorial-static-website-serverless-api-with-database'
     - name: Služba Functions v Linuxu
       items:
         - name: Vlastní image

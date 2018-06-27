@@ -333,6 +333,8 @@
       href: storage-custom-domain-name.md
     - name: Prohledávání Blob Storage pomocí služby Azure Search
       href: ../../search/search-blob-storage-integration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+    - name: Hostování statického webu
+      href: storage-blob-static-website.md
     - name: Přenos dat
       items:
         - name: AzCopy ve Windows

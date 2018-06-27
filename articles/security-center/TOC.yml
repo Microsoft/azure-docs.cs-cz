@@ -48,6 +48,8 @@
           href: security-center-customize-os-security-config.md
         - name: Zásady zabezpečení s využitím zásad Azure
           href: security-center-azure-policy.md
+        - name: Viditelnost v rámci celého tenanta
+          href: security-center-management-groups.md
     - name: Implementace doporučení pro zabezpečení
       href: security-center-recommendations.md
     - name: Monitorování stavu zabezpečení

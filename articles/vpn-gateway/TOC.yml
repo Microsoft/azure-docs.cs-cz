@@ -106,6 +106,8 @@
       items:
         - name: Azure PowerShell
           href: vpn-gateway-activeactive-rm-powershell.md
+    - name: Vytvoření zónově redundantní brány virtuální sítě v zónách dostupnosti Azure
+      href: create-zone-redundant-vnet-gateway.md
     - name: 'Směrování, BGP a VNet Peering'
       items:
         - name: Konfigurace BGP pro bránu VPN
