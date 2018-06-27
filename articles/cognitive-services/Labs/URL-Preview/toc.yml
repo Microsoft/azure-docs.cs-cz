@@ -1,0 +1,28 @@
+- name: Dokumentace ke službě Project URL Preview
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je Project URL Preview?
+      href: overview.md
+    - name: Koncový bod URL Preview
+      href: endpoint.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: 'C#'
+      href: csharp.md
+    - name: Java
+      href: java-quickstart.md
+    - name: JavaScript
+      href: javascript.md
+    - name: Node
+      href: node-quickstart.md
+    - name: Python
+      href: python-quickstart.md
+- name: Referenční informace
+  expanded: true
+  items:
+    - name: Požadavky na zobrazení a použití
+      href: use-display-requirements.md
+    - name: Referenční informace k URL Preview
+      href: url-preview-reference.md

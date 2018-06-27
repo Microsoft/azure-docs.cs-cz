@@ -1,0 +1,62 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace k počítačovému zpracování obrazu
+metadata:
+  title: Dokumentace k počítačovému zpracování obrazu – rychlá zprovoznění, kurzy, reference k rozhraní API – Azure Cognitive Services | Microsoft Docs
+  description: Naučte se využívat k počítačové zpracování obrazu ke zpracování obrázků a vrácení informací. Kurzy vám ukážou, jak vytvářet aplikace, které toto rozhraní API používají.
+  services: cognitive-services
+  author: noellelacharite
+  manager: nolachar
+  ms.service: cognitive-services
+  ms.component: computer-vision
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/29/2018
+  ms.author: nolachar
+  ms.openlocfilehash: e19407db53c9964bcdeb5bd0d36814f52eaacad1
+  ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 06/07/2018
+  ms.locfileid: "35356986"
+abstract:
+  description: Cloudové rozhraní API pro počítačové zpracování obrazu poskytuje vývojářům přístup k pokročilým algoritmům pro zpracování obrázků a vrácení informací. Na základě nahrání obrázku nebo zadání adresy URL obrázku mohou algoritmy Microsoftu pro počítačové zpracování obrazu různými způsoby analyzovat vizuální obsah, a to v závislosti na vstupech a volbách uživatelů. Pomocí rychlých zprovoznění, kurzů a ukázek se naučíte různými způsoby analyzovat vizuální obsah.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Analýza obrázků, vytváření miniatur a extrakce textu z obrázku pomocí technologie:'
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/logo_Csharp.svg
+      text: C&#35;
+      href: QuickStarts/CSharp-analyze
+    - image:
+        src: media/index/logo_java.svg
+      text: Java
+      href: QuickStarts/java-analyze
+    - image:
+        src: media/index/logo_nodejs.svg
+      text: Node.js
+      href: QuickStarts/node-analyze
+    - image:
+        src: media/index/logo_python.svg
+      text: Python
+      href: QuickStarts/python-analyze
+    - image:
+        src: media/index/logo_ruby.svg
+      text: Ruby
+      href: QuickStarts/ruby-analyze
+- title: Referenční informace
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Rozhraní API
+      html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44">Rozhraní API pro počítačové zpracování obrazu v2.0</a></p><p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739">Rozhraní API pro počítačové zpracování obrazu v1.0</a></p>
+    - title: Sady SDK
+      html: <p><a href="https://github.com/Microsoft/Cognitive-vision-android">Android</a></p><p><a href="https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK">Swift</a></p><p><a href="https://github.com/Microsoft/Cognitive-vision-windows">Windows</a></p>

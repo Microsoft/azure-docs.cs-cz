@@ -1,0 +1,41 @@
+- name: Dokumentace ke službě Azure Cognitive Services
+  href: index.yml
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je služba Cognitive Services?
+      href: Welcome.md
+- name: Šablony Rychlý start
+  items:
+    - name: Vytvoření účtu
+      href: cognitive-services-apis-create-account.md
+    - name: Vytvoření klasifikátoru obrázků
+      href: ./custom-vision-service/getting-started-build-a-classifier.md
+    - name: Sestavení aplikace pro domácí automatizaci
+      href: ./luis/luis-get-started-create-app.md
+    - name: Vytvoření aplikace pro textovou analýzu v .NET
+      href: ./text-analytics/quickstarts/csharp.md
+- name: Kurzy
+  items:
+    - name: Webová stránka pro vlastní vyhledávání
+      href: ./bing-custom-search/tutorials/custom-search-web-page.md
+    - name: Aplikace Language Understanding
+      href: ./luis/luis-nodejs-tutorial-build-bot-framework-sample.md
+    - name: Zvýšení přesnosti záměrů pro příkazy
+      href: ./luis/luis-tutorial-batch-testing.md
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Videa
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
+    - name: Pravidla chování
+      href: 'http://go.microsoft.com/fwlink/?LinkId=698895'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase'

@@ -1,0 +1,15 @@
+- name: Dokumentace k rozhraní Web Language Model API
+- name: Přehled
+  items:
+    - name: Co je rozhraní Web Language Model API?
+      href: Home.md
+- name: Referenční informace
+  items:
+    - name: Rozhraní Web Language Model API
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51'
+    - name: Sada SDK pro Windows
+      href: 'https://github.com/Microsoft/Cognitive-WebLM-Windows'
+- name: Zdroje a prostředky
+  items:
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555943-web-language-model-api'

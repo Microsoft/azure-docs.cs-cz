@@ -1,0 +1,29 @@
+- name: Dokumentace ke službě Project Answer Search
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je Project Answer Search?
+      href: overview.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: 'C#'
+      href: c-sharp-quickstart.md
+    - name: Java
+      href: java-quickstart.md
+    - name: Node
+      href: node-quickstart.md
+    - name: Python
+      href: python-quickstart.md
+- name: Koncepty
+  items:
+    - name: Dotazy na fakta
+      href: fact-queries.md
+    - name: Dotazy na entity
+      href: entity-queries.md
+- name: Referenční informace
+  items:
+    - name: Požadavky na zobrazení a použití
+      href: use-display-requirements.md
+    - name: Referenční informace ke službě Project Answer Search
+      href: reference.md

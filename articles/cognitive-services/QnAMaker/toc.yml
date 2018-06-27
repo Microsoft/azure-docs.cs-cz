@@ -1,0 +1,118 @@
+- name: Co je QnA Maker?
+  href: Overview/overview.md
+- name: Přehled
+  items:
+    - name: Podporované jazyky
+      href: Overview/languages-supported.md
+- name: Šablony Rychlý start
+  items:
+    - name: Vytvoření nové znalostní báze
+      items:
+        - name: 'C#'
+          href: Quickstarts/create-new-kb-csharp.md
+        - name: Java
+          href: Quickstarts/create-new-kb-java.md
+        - name: Přejít
+          href: Quickstarts/create-new-kb-go.md
+        - name: Node.js
+          href: Quickstarts/create-new-kb-nodejs.md
+        - name: Python
+          href: Quickstarts/create-new-kb-python.md
+    - name: Aktualizace znalostní báze
+      items:
+        - name: 'C#'
+          href: Quickstarts/update-kb-csharp.md
+        - name: Java
+          href: Quickstarts/update-kb-java.md
+        - name: Přejít
+          href: Quickstarts/update-kb-go.md
+        - name: Node.js
+          href: Quickstarts/update-kb-nodejs.md
+        - name: Python
+          href: Quickstarts/update-kb-python.md
+- name: Koncepty
+  items:
+    - name: Znalostní báze
+      href: Concepts/knowledge-base.md
+    - name: Životní cyklus vývoje znalostní báze
+      href: Concepts/development-lifecycle-knowledge-base.md
+    - name: Skóre spolehlivosti
+      href: Concepts/confidence-score.md
+    - name: Podporované zdroje dat
+      href: Concepts/data-sources-supported.md
+- name: Návody
+  items:
+    - name: Vytvoření služby QnA Maker
+      href: How-To/set-up-qnamaker-service-azure.md
+    - name: Vytvoření a publikování znalostní báze
+      href: Quickstarts/create-publish-knowledge-base.md
+    - name: Vytvoření znalostní báze
+      href: How-To/create-knowledge-base.md
+    - name: Použití metadat s rozhraním GenerateAnswer API
+      href: How-To/metadata-generateanswer-usage.md
+    - name: Migrace znalostní báze z verze Preview
+      href: Tutorials/migrate-knowledge-base.md
+    - name: Úprava znalostní báze
+      href: How-To/edit-knowledge-base.md
+    - name: Spolupráce na znalostní bázi
+      href: How-To/collaborate-knowledge-base.md
+    - name: Testování znalostní báze
+      href: How-To/test-knowledge-base.md
+    - name: Publikování znalostní báze
+      href: How-To/publish-knowledge-base.md
+    - name: Získání analýz pro znalostní bázi
+      href: How-To/get-analytics-knowledge-base.md
+    - name: Správa klíčů
+      href: How-To/key-management.md
+    - name: Vytvoření znalostní báze v jiném jazyce
+      href: How-To/language-knowledge-base.md
+    - name: Vytvoření robota QnA s využitím Azure Bot Service
+      href: Tutorials/create-qna-bot.md
+    - name: Integrace QnA Makeru a LUIS
+      href: Tutorials/integrate-qnamaker-luis.md
+    - name: Vytvoření plánu kontinuity podnikových procesů pro QnA Maker
+      href: How-To/business-continuity-plan.md
+    - name: Volba kapacity pro nasazení QnA Makeru
+      href: Tutorials/choosing-capacity-qnamaker-deployment.md
+    - name: Upgrade služby QnA Maker
+      href: How-To/upgrade-qnamaker-service.md
+    - name: Řešení potíží a aktualizace modulu runtime QnAMaker
+      href: How-To/troubleshooting-runtime.md
+    - name: Použití rozhraní API služby QnA Maker
+      items:
+        - name: 'C#'
+          href: Quickstarts/csharp.md
+        - name: Java
+          href: Quickstarts/java.md
+        - name: Node.js
+          href: Quickstarts/nodejs.md
+        - name: Python
+          href: Quickstarts/python.md
+        - name: Přejít
+          href: Quickstarts/go.md
+- name: Referenční informace
+  items:
+    - name: Referenční materiály k rozhraní API
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff'
+    - name: Nejčastější dotazy
+      href: faqs.md
+    - name: Osvědčené postupy
+      href: Concepts/best-practices.md
+    - name: Omezení
+      href: limits.md
+    - name: Glosář
+      href: glossary.md
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Ceny
+      href: 'https://aka.ms/qnamaker-pricing'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/QnAMaker'
+    - name: UserVoice
+      href: 'https://aka.ms/qnamaker-uservoice'
+    - name: Search
+      href: 'https://docs.microsoft.com/en-us/search/index?search=QnAMaker'
+    - name: Blog
+      href: 'https://blog.botframework.com/category/QnAMaker/'

@@ -1,0 +1,17 @@
+- name: Dokumentace ke spojování entit
+- name: Přehled
+  href: Home.md
+- name: Začínáme
+  href: GettingStarted.md
+- name: Referenční informace
+  items:
+    - name: API – referenční informace
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56f0eabfca730713cc392442/operations/56f0eabfca73070e44d0f39c'
+    - name: Referenční informace k rozhraní API pro Labs
+      href: 'https://dev.labs.cognitive.microsoft.com/docs/services/56f0eabfca730713cc392442/operations/56f0eabfca73070e44d0f39c'
+    - name: Sada SDK pro Windows
+      href: 'https://github.com/Microsoft/Cognitive-EntityLinking-Windows'
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'

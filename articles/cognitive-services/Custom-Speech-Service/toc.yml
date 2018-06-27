@@ -1,0 +1,39 @@
+- name: Dokumentace ke službě Custom Speech Service
+- name: Přehled
+  items:
+    - name: Co je Custom Speech Service?
+      href: cognitive-services-custom-speech-home.md
+- name: Kurzy
+  items:
+    - name: Vytvoření vlastního akustického modelu
+      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-acoustic-model.md
+    - name: Vytvoření vlastního jazykového modelu
+      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-language-model.md
+- name: Koncepty
+  items:
+    - name: Prozkoumání hlavních funkcí
+      href: cognitive-services-custom-speech-get-started.md
+    - name: 'Měřiče, kvóty a škálování'
+      href: cognitive-services-custom-speech-meters.md
+- name: Návody
+  items:
+    - name: Přizpůsobení výslovnosti podle vlastních potřeb
+      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-custom-pronunciation.md
+    - name: Vytvoření vlastního koncového bodu pro převod řeči na text
+      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md
+    - name: Použití vlastního koncového bodu pro převod řeči na text
+      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md
+    - name: Získání klíčů předplatného
+      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-subscribe.md
+    - name: Migrace na novou cenovou úroveň
+      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-migrate-tiers.md
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Pokyny pro přepis
+      href: CustomSpeech-How-to-Topics/cognitive-services-custom-speech-transcription-guidelines.md
+    - name: Nejčastější dotazy
+      href: cognitive-services-custom-speech-faq.md
+    - name: Glosář
+      href: cognitive-services-custom-speech-glossary.md

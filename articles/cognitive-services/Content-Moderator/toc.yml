@@ -1,0 +1,131 @@
+- name: Dokumentace ke Content Moderatoru
+- name: Přehled
+  items:
+    - name: Co je Content Moderator?
+      href: overview.md
+- name: Ukázky
+  items:
+    - name: Ukázky .NET SDK
+      href: samples-dotnet.md
+    - name: 'Ukázky REST API v C#'
+      href: samples-rest.md
+- name: Koncepty
+  items:
+    - name: Moderování obrázků
+      href: image-moderation-api.md
+    - name: Moderování textu
+      href: text-moderation-api.md
+    - name: Moderování textu – jazyky
+      href: Text-Moderation-API-Languages.md
+    - name: Moderování videa
+      href: video-moderation-human-review.md
+    - name: Úlohy a revize
+      href: review-api.md
+    - name: Pracovní postupy
+      href: workflow-api.md
+- name: Návody
+  items:
+    - name: Vyzkoušejte si Content Moderator
+      items:
+        - name: Začínáme s Content Moderatorem
+          href: quick-start.md
+        - name: Rozhraní API pro moderování
+          items:
+            - name: Pomocná knihovna – .NET
+              href: content-moderator-helper-quickstart-dotnet.md
+            - name: Obrázky – konzola API
+              href: try-image-api.md
+            - name: Obrázky – .NET
+              href: image-moderation-quickstart-dotnet.md
+            - name: Vlastní obrázky – konzola API
+              href: try-image-list-api.md
+            - name: Vlastní obrázky – .NET
+              href: image-lists-quickstart-dotnet.md
+            - name: Text – konzola API
+              href: try-text-api.md
+            - name: Text – .NET
+              href: text-moderation-quickstart-dotnet.md
+            - name: Vlastní termíny – konzola API
+              href: try-terms-list-api.md
+            - name: Vlastní termíny – .NET
+              href: term-lists-quickstart-dotnet.md
+            - name: Videa – .NET
+              href: video-moderation-api.md
+        - name: Recenze rozhraní API
+          items:
+            - name: Úlohy – konzola API
+              href: try-review-api-job.md
+            - name: Úlohy – .NET
+              href: moderation-jobs-quickstart-dotnet.md
+            - name: Revize – konzola API
+              href: try-review-api-review.md
+            - name: Revize –.NET
+              href: moderation-reviews-quickstart-dotnet.md
+            - name: Revize videa –.NET
+              href: video-reviews-quickstart-dotnet.md
+            - name: Revize přepisu videa – .NET
+              href: video-transcript-reviews-quickstart-dotnet.md
+            - name: Pracovní postupy – konzola API
+              href: try-review-api-workflow.md
+    - name: První aplikace Content Moderatoru
+      items:
+        - name: Moderování obsahu pro Facebook
+          href: facebook-post-moderation.md
+        - name: Moderování obrázků pro elektronické obchodování
+          href: ecommerce-retail-catalog-moderation.md
+        - name: Moderování přepisu a videa
+          href: video-transcript-moderation-review-tutorial-dotnet.md
+    - name: Nástroj pro revize
+      items:
+        - name: Zapojení lidí
+          href: Review-Tool-User-Guide/human-in-the-loop.md
+        - name: Použití nastavení
+          href: Review-Tool-User-Guide/Configure.md
+        - name: Správa týmu
+          href: Review-Tool-User-Guide/SubTeams.md
+        - name: Použití značek
+          href: Review-Tool-User-Guide/Tags.md
+        - name: Recenze obrázků
+          href: Review-Tool-User-Guide/Review-Moderated-Images.md
+        - name: Recenze textu
+          href: Review-Tool-User-Guide/Text-Reviews.md
+        - name: Správa přihlašovacích údajů
+          href: Review-Tool-User-Guide/Credentials.md
+        - name: Použití konektorů
+          href: Review-Tool-User-Guide/Connectors.md
+        - name: Použití pracovních postupů
+          href: Review-Tool-User-Guide/Workflows.md
+        - name: Zobrazení řídicího panelu
+          href: Review-Tool-User-Guide/View-Dashboard.md
+- name: Referenční informace
+  items:
+    - name: Rozhraní API Content Moderatoru
+      href: api-reference.md
+    - name: Sady SDK
+      items:
+        - name: Java
+          href: 'https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-cognitiveservices-contentmoderator%22'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python'
+        - name: .NET
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator'
+- name: Zdroje a prostředky
+  items:
+    - name: Nejčastější dotazy
+      href: FAQs.md
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
+    - name: Export nebo odstranění dat účtu
+      href: ./export-delete-data.md
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/559960-content-moderator'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: Webinář na vyžádání
+      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'

@@ -1,0 +1,65 @@
+- name: Dokumentace k Automatickým návrhům Bingu
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co jsou Automatické návrhy Bingu?
+      href: get-suggested-search-terms.md
+- name: Rychlá zprovoznění pro REST API
+  expanded: true
+  items:
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
+- name: Kurzy
+  items:
+    - name: Jednostránková webová aplikace
+      href: tutorials/autosuggest.md
+    - name: Jednostránková webová aplikace (zdrojový kód)
+      href: tutorials/autosuggest-source.md
+- name: Návody
+  items:
+    - name: Požadavky na zobrazení a použití
+      href: UseAndDisplayRequirements.md
+    - name: Upgrade z v5 na v7
+      href: bing-autosuggest-upgrade-guide-v5-to-v7.md
+- name: Referenční informace
+  items:
+    - name: Rozhraní API pro automatické návrhy Bingu v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference'
+    - name: Rozhraní API pro automatické návrhy Bingu v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v5-reference'
+- name: Zdroje a prostředky
+  items:
+    - name: Nejčastější dotazy
+      href: bing-autosuggest-resource-faq.md
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/autosuggest-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598198-bing-autosuggest'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+autosuggest'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: Získání klíče rozhraní API
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=autosuggest-api'
+    - name: Vyzkoušejte si to!
+      href: 'https://azure.microsoft.com/services/cognitive-services/autosuggest/'
+    - name: Koncový bod Automatických návrhů Bingu
+      href: autosuggest-endpoint.md
+    - name: Podporované jazyky
+      href: bing-autosuggest-supported-languages.md
+    - name: Analýzy pro rozhraní API pro automatické návrhy Bingu
+      href: bing-autosuggest-stats.md

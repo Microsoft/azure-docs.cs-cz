@@ -1,0 +1,29 @@
+- name: Dokumentace k rozhraní API pro jazykovou analýzu
+- name: Přehled
+  items:
+    - name: Co je rozhraní API pro jazykovou analýzu?
+      href: Home.md
+- name: Postup
+  items:
+    - name: Názvy analyzátorů
+      href: Analyzer-Names.md
+    - name: Analýza cílových skupin
+      href: Constituency-Parsing.md
+    - name: Označování částí řeči
+      href: POS-tagging.md
+    - name: Věty a tokeny
+      href: Sentences-and-Tokens.md
+    - name: Metoda Analyze
+      href: AnalyzeMethod.md
+    - name: Metoda Analyzers
+      href: AnalyzersMethod.md
+- name: Referenční informace
+  items:
+    - name: Rozhraní API pro jazykovou analýzu
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/56ea598f778daf01942505ff/operations/56ea5a1cca73071fd4b102bb'
+    - name: Sada SDK pro Windows
+      href: 'https://github.com/Microsoft/Cognitive-linguisticanalysis-windows'
+- name: Zdroje a prostředky
+  items:
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555928-linguistic-analysis-api'

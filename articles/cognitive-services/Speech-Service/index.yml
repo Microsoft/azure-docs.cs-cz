@@ -1,0 +1,189 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace ke službě Speech (Preview)
+metadata:
+  title: Dokumentace ke službě Speech – kurzy, rychlá zprovoznění, reference k rozhraní API – Cognitive Services | Microsoft Docs
+  meta.description: Speech SDK provides developers an easy way to create powerful speech-enabled features in their applications, such as voice command control and dialog, using natural speech conversation, speech transcription and dictation, and speech translation.
+  services: cognitive-services
+  author: noellelacharite
+  manager: nolachar
+  layout: LandingPage
+  ms.service: cognitive-services
+  ms.component: speech-service
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 05/01/2018
+  ms.author: nolachar
+  ms.openlocfilehash: ae9c5a62dd4f1b83f4d1317b54e5766b80d14245
+  ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 06/11/2018
+  ms.locfileid: "35357006"
+abstract:
+  description: Microsoft Speech Service SDK poskytuje vývojářům snadný způsob vytváření výkonných funkcí s podporou řeči, jako je řízení pomocí hlasových příkazů, přepis a diktování. Stejnou technologii používají Cortana, Microsoft Office a další. Hlavní odlišností služby Microsoft Speech je možnost přizpůsobit akustické a jazykové modely převodu <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-speech-models">řeči na text</a>, aby vyhovovaly specializovaným slovníkům, hlučným prostředím a různým způsobům řeči. Ve skutečnosti je k dispozici také přizpůsobený <a href="http://aka.ms/customvoice">převod řeči na text</a> a <a href="http://aka.ms/customtranslator">překlad řeči</a>.<br/><br/>Naše sada Speech SDK je k dispozici na několika platformách v několika programovacích jazycích, takže se můžete postarat o správu živých mikrofonů, streamování v reálném čase nebo souborovou komunikaci po dávkách v závislosti na tom, co vaše aplikace potřebuje.
+sections:
+- title: Zprovoznění během 10 minut – nové sady SDK
+  items:
+  - type: paragraph
+    text: 'Naše rychlá zprovoznění vám ukážou, jak nainstalovat a využívat Speech SDK:'
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+    - image:
+        src: media/index/logo_cplusplus.svg
+    - image:
+        src: media/index/logo_java.jpg
+    rows:
+    - title: Windows
+      values:
+      - href: quickstart-csharp-windows
+      - href: cpp-windows
+      - href: 
+    - title: Linux
+      values:
+      - href: 
+      - href: cpp-linux
+      - href: 
+    - title: Devices SDK (Android)
+      values:
+      - href: 
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk
+- title: Ukázky a reference
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Příklady
+      html: <ul><li><a href="speech-to-text-sample.md">Rozpoznávání řeči</a></li><li><a href="intent.md">Rozpoznávání záměru</a></li><li><a href="translation.md">Překlad</a></li></ul>
+    - title: Referenční materiály k rozhraní API
+      html: <ul><li><a href="https://aka.ms/csspeech/csharpref">Rozhraní API C#</a></li><li><a href="https://aka.ms/csspeech/cppref">Rozhraní API C++</a></li><li><a href="https://aka.ms/csspeech/javaref">Rozhraní API Javy (Devices SDK)</a></li></ul>
+- title: Řeč na text
+  items:
+  - type: paragraph
+    text: Naše sada Speech SDK podporuje převod <b>řeči na text</b> (Speech-to-Text, STT), nebo rozpoznání řeči.  Speech SDK přepisuje zvukové streamy do textové podoby, kterou vaše aplikace může přijmout jako vstup. Vaše aplikace potom může například zadat tento text do dokumentu nebo ho zpracovat jako příkaz.
+  - type: paragraph
+    text: Toto jsou běžné příklady použití převodu <b>řeči na text</b> prostřednictvím Speech SDK&#58;
+  - type: list
+    style: unordered
+    items:
+    - text: Rozpoznání krátké promluvy, jako je třeba příkaz, bez přechodných výsledků
+    - text: Přepis dlouhé předem zaznamenané promluvy, jako je třeba zpráva hlasové pošty
+    - text: Přepis streamované řeči v reálném čase s částečnými výsledky pro účely diktování
+    - text: Určení, co uživatel chce dělat, na základě mluveného požadavku v přirozeném jazyce
+  - type: paragraph
+    text: Speech SDK podporuje interaktivní přepis řeči s průběžným <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-speech-models">převodem řeči na text</a> v reálném čase a s průběžnými výsledky. Podporuje také detekci konce řeči, volitelné automatické použití velkých a malých písmen a interpunkce, maskování vulgarismů a normalizaci textu.
+  - type: paragraph
+    text: Hlavní odlišností služby Microsoft Speech je možnost přizpůsobit akustické a jazykové modely převodu <a href="http://aka.ms/customspeech">řeči na text</a>, aby vyhovovaly specializovaným slovníkům, hlučným prostředím a různým způsobům řeči.
+- title: Překlad řeči
+  items:
+  - type: paragraph
+    text: Speech SDK se dá také využít pro <a href="https://azure.microsoft.com/services/cognitive-services/speech-translation">překlad řeči</a>.  Díky streamování <b>překladu řeči</b> prostřednictvím Speech SDK tato služba vrací průběžné výsledky, které je možné zobrazovat uživateli jako indikátor průběhu překladu. Výsledky se dají vrátit v textové nebo hlasové podobě.
+  - type: paragraph
+    text: Mezi případy použití pro <b>překlad řeči</b> prostřednictvím Speech SDK patří&#58;
+  - type: list
+    style: unordered
+    items:
+    - text: Implementace zařízení nebo mobilní aplikace pro překlad konverzací pro cestovatele
+    - text: Zajištění automatického překladu pro titulky zvukových a obrazových záznamů
+  - type: paragraph
+    text: Modely <b>překladu řeči</b> se také dají <a href="http://aka.ms/customtranslator">přizpůsobit</a>.
+- title: Převod textu na řeč
+  items:
+  - type: paragraph
+    text: V současnosti se <a href="https://azure.microsoft.com/services/cognitive-services/text-to-speech">převod textu na řeč</a> (TTS) neboli syntéza řeči podporuje prostřednictvím rozhraní REST API, které převádí prostý text na přirozeně znějící řeč, která se do vašich aplikací dodává ve zvukovém souboru. Pro řadu jazyků je k dispozici několik hlasů, které se liší pohlavím nebo přízvukem.
+  - type: paragraph
+    text: Naše sada Speech SDK poskytuje přístup k převodu řeči na text a překladu řeči. Převod textu na řeč využívá volání REST POST přes HTTP.
+  - type: paragraph
+    text: Rozhraní REST API pro <b>převod textu na řeč</b> podporuje značky <b>SSML (Speech-Synthesis-Markup-Language)</b>, takže můžete zadat přesnou fonetickou výslovnost problematických slov. SSML může také přímo v textu indikovat řečové charakteristiky (včetně důrazu, rychlosti, hlasitosti, pohlaví a výšky).
+  - type: paragraph
+    text: Pokud chcete pro vaši aplikaci využít nepodporovaný dialekt nebo jedinečný hlas, můžete si na základě vlastních ukázek řeči vytvořit <a href="http://aka.ms/customvoice">vlastní hlasová písma</a>.
+  - type: paragraph
+    text: Toto jsou běžné příklady použití rozhraní REST API pro převod <b>textu na řeč</b>&#58;
+  - type: list
+    style: unordered
+    items:
+    - text: Hlasový výstup jako alternativní obrazovkový výstup pro uživatele se zrakovým postižením.
+    - text: Hlasové výzvy pro aplikace v automobilech, jako je navigace
+    - text: Konverzační uživatelská rozhraní spolupracující s rozhraním API pro převod <b>řeči na text</b>
+- title: Speech Devices SDK
+  items:
+  - type: paragraph
+    text: Díky zavedení unifikované služby Speech Service teď Microsoft a jeho partneři nabízejí integrovanou hardwarovou/softwarovou platformu, která je optimalizovaná pro vývoj zařízení s podporou řeči&#58; <b>Speech Devices SDK</b>. Tato sada SDK je vhodná pro vývoj inteligentních hlasových zařízení pro všechny typy použití.
+  - type: paragraph
+    text: Sada <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk">Speech Devices SDK</a> vám umožní vytvořit vlastní ambientní zařízení s individuálním aktivačním slovem, které je jedinečné pro vaši značku a aktivuje zachytávání zvuku. Poskytuje také špičkové zpracování zvuku z vícekanálových zdrojů pro přesnější rozpoznávání řeči, včetně potlačení šumu, a technologií Far-Field Voice a Beamforming.
+- title: Starší sady SDK
+  items:
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/uwp.jpg
+    - image:
+        src: media/index/logo_java.jpg
+    - image:
+        src: media/index/logo_objc.jpg
+    - image:
+        src: media/index/logo_js.svg
+    - image:
+        src: media/index/logo_rest_sr.svg
+    - image:
+        src: media/index/logo_rest_tts.svg
+    rows:
+    - title: Windows
+      values:
+      - href: https://docs.microsoft.com/windows/uwp/design/input/speech-recognition
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+    - title: Android
+      values:
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedjavaandroid
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+    - title: iOS
+      values:
+      - href: 
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/get-started-objectivec-ios
+      - href: 
+      - href: 
+      - href: 
+    - title: Web
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedjswebsockets
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest?tabs=Powershell
+      - href: https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput
+- title: Zohledňované sady SDK
+  items:
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_python.svg
+    - image:
+        src: media/index/logo_swift.jpg
+    - image:
+        src: media/index/logo_gopher.svg
+    - image:
+        src: media/index/c.jpg
+    rows:
+    - title: Sada SDK
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 

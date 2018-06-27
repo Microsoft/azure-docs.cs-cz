@@ -1,0 +1,68 @@
+- name: Dokumentace se službě Conversation Learner
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je Conversation Learner?
+      href: overview.md
+    - name: Podporované jazyky
+      href: languages-supported.md
+- name: Koncepty
+  items:
+    - name: Tok řízení
+      href: control-flow.md
+    - name: Výchozí hodnoty a hranice
+      href: cl-values-and-boundaries.md
+- name: Návody
+  items:
+    - name: Začínáme se službou Conversation Learner
+      href: quickstart.md
+    - name: Hello World
+      href: tutorials/1-hello-world.md
+    - name: Akce pro čekání a nečekání
+      href: tutorials/2-wait-vs-nonwait-actions.md
+    - name: Seznámení s entitami
+      href: tutorials/3-introduction-to-entities.md
+    - name: Očekávaná entita
+      href: tutorials/4-expected-entity.md
+    - name: Entity s možností negace
+      href: tutorials/5-negatable-entities.md
+    - name: Entity s více hodnotami
+      href: tutorials/6-multi-value-entities.md
+    - name: Předdefinované entity
+      href: tutorials/7-built-in-entities.md
+    - name: Alternativní vstupy
+      href: tutorials/8-alternative-inputs.md
+    - name: Protokolování dialogových oken
+      href: tutorials/9-log-dialogs.md
+    - name: Zpětné volání detekce entity
+      href: tutorials/10-entity-detection-callback.md
+    - name: Zpětná volání relací
+      href: tutorials/11-session-callbacks.md
+    - name: Volání rozhraní API
+      href: tutorials/12-api-calls.md
+    - name: 'Karty, část 1'
+      href: tutorials/13-cards-1.md
+    - name: 'Karty, část 2'
+      href: tutorials/14-cards-2.md
+    - name: Vytváření větví a vracení zpět
+      href: tutorials/15-branching-and-undo.md
+    - name: Správa verzí a označování
+      href: tutorials/16-versioning-and-tagging.md
+    - name: Ukázka – resetování hesel
+      href: tutorials/demo-password-reset.md
+    - name: Ukázka – objednávka pizzy
+      href: tutorials/demo-pizza-order.md
+    - name: Ukázka – spouštěč aplikací VR
+      href: tutorials/demo-vr-app-launcher.md
+    - name: Nasazení robota služby Conversation Learner
+      href: deploy-to-bf.md
+    - name: Výuka s využitím služby Conversation Learner
+      href: how-to-teach-cl.md
+    - name: Správa uživatelských dat
+      href: managing-data.md
+- name: Zdroje a prostředky
+  items:
+    - name: Ukázkový robot služby Conversation Learner
+      href: 'https://github.com/Microsoft/ConversationLearner-Samples'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'

@@ -1,0 +1,20 @@
+- name: Dokumentace k rozpoznávání mluvčího
+- name: Přehled
+  items:
+    - name: Další informace o rozpoznávání mluvčího
+      href: Home.md
+- name: Referenční informace
+  items:
+    - name: Referenční materiály k rozhraní API
+      href: 'https://westus.dev.cognitive.microsoft.com/docs/services/563309b6778daf02acc0a508/operations/5645c3271984551c84ec6797'
+      items:
+        - name: Sady SDK
+          items:
+            - name: Android
+              href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Android'
+            - name: Windows
+              href: 'https://github.com/Microsoft/Cognitive-SpeakerRecognition-Windows'
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'

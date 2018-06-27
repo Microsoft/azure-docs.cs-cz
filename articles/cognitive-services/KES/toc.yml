@@ -1,0 +1,35 @@
+- name: Dokumentace ke službě Knowledge Exploration Service
+- name: Přehled
+  expanded: true
+  items:
+    - name: Další informace o službě Knowledge Exploration Service
+      href: Overview.md
+- name: Začínáme
+  items:
+    - name: Vytvoření back-endového stroje
+      href: GettingStarted.md
+    - name: Příkazový řádek
+      href: CommandLine.md
+    - name: Formát schémat
+      href: SchemaFormat.md
+    - name: Formát dat
+      href: DataFormat.md
+    - name: Formát gramatiky
+      href: GrammarFormat.md
+    - name: Sémantická interpretace
+      href: SemanticInterpretation.md
+    - name: Webové rozhraní API
+      href: WebAPI.md
+      items:
+        - name: Výpočet histogramu
+          href: calchistogramMethod.md
+        - name: Vyhodnocení
+          href: evaluateMethod.md
+        - name: Interpretace
+          href: interpretMethod.md
+    - name: Výrazy strukturovaných dotazů
+      href: Expressions.md
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'

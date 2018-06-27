@@ -1,0 +1,43 @@
+- name: Dokumentace ke Custom Decision Service
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Custom Decision Service?
+      href: custom-decision-service-overview.md
+    - name: Pracovní postup Custom Decision Service
+      href: custom-decision-service-workflow.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Registrace vaší aplikace
+      href: custom-decision-service-get-started-register.md
+    - name: Volání rozhraní API z prohlížeče
+      href: custom-decision-service-get-started-browser.md
+    - name: Volání rozhraní API z aplikace
+      href: custom-decision-service-get-started-app.md
+- name: Kurzy
+  items:
+    - name: Personalizace článků
+      href: custom-decision-service-tutorial-news.md
+    - name: Strojové učení
+      href: custom-decision-service-tutorial-ml.md
+- name: Referenční informace
+  items:
+    - name: Rozhraní API
+      href: custom-decision-service-api-reference.md
+    - name: Experimentování
+      href: custom-decision-service-experimentation-reference.md
+    - name: LogDownloader
+      href: custom-decision-service-log-downloader-reference.md
+- name: Zdroje a prostředky
+  items:
+    - name: Ceny (zdarma)
+      href: 'https://azure.microsoft.com/en-us/pricing/details/cognitive-services/custom-decision-service/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598138-custom-decision-service'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'

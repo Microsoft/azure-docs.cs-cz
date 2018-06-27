@@ -1,0 +1,49 @@
+- name: Přehled
+  href: Home.md
+- name: Začínáme
+  expanded: true
+  href: GetStarted/GetStarted.md
+  items:
+    - name: REST
+      href: GetStarted/GetStartedREST.md
+    - name: Klientské knihovny
+      href: GetStarted/GetStartedClientLibraries.md
+      items:
+        - name: 'Knihovna C# pro počítače'
+          href: GetStarted/GetStartedCSharpDesktop.md
+        - name: 'Knihovna C# pro služby'
+          href: GetStarted/GetStartedCSharpServiceLibrary.md
+        - name: Knihovna JavaScript
+          href: GetStarted/GetStartedJSWebsockets.md
+        - name: Knihovna Java pro Android
+          href: GetStarted/GetStartedJavaAndroid.md
+        - name: Knihovna Objective-C pro iOS
+          href: GetStarted/Get-Started-ObjectiveC-iOS.md
+- name: Ukázky
+  href: samples.md
+- name: Koncepty
+  href: concepts.md
+- name: Návody
+  items:
+    - name: Ověřování pro použití služby
+      href: How-to/how-to-authentication.md
+    - name: Volba režimu rozpoznávání
+      href: How-to/how-to-choose-recognition-mode.md
+    - name: Přenos bloků dat zvukového streamu
+      href: How-to/how-to-chunked-transfer.md
+- name: Referenční informace
+  items:
+    - name: Protokol Websocket služby Microsoft Speech
+      href: API-Reference-REST/websocketprotocol.md
+    - name: Referenční informace k rozhraní API pro převod textu na řeč
+      href: API-Reference-REST/BingVoiceOutput.md
+    - name: Podporované jazyky
+      href: API-Reference-REST/supportedlanguages.md
+- name: Řešení potíží
+  href: troubleshooting.md
+- name: Zdroje a prostředky
+  items:
+    - name: Podpora
+      href: support.md
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127980-bing-speech'

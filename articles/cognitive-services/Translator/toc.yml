@@ -1,0 +1,111 @@
+- name: Dokumentace k rozhraní Translator Text API
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Translator Text API?
+      href: translator-info-overview.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: 'C#'
+      items:
+        - name: Přeložení textu
+          href: quickstart-csharp-translate.md
+        - name: Převod textového skriptu
+          href: quickstart-csharp-transliterate.md
+        - name: Identifikace jazyka z textu
+          href: quickstart-csharp-detect.md
+        - name: Získání alternativních překladů
+          href: quickstart-csharp-dictionary.md
+        - name: Zjištění podporovaných jazyků
+          href: quickstart-csharp-languages.md
+        - name: Zjištění délky vět v textu
+          href: quickstart-csharp-sentences.md
+    - name: Java
+      items:
+        - name: Přeložení textu
+          href: quickstart-java-translate.md
+        - name: Převod textového skriptu
+          href: quickstart-java-transliterate.md
+        - name: Identifikace jazyka z textu
+          href: quickstart-java-detect.md
+        - name: Získání alternativních překladů
+          href: quickstart-java-dictionary.md
+        - name: Zjištění podporovaných jazyků
+          href: quickstart-java-languages.md
+        - name: Zjištění délky vět v textu
+          href: quickstart-java-sentences.md
+- name: Koncepty
+  items:
+    - name: Podporované jazyky
+      href: languages.md
+    - name: Přizpůsobení a vylepšení překladů textu
+      href: customization.md
+    - name: Jak rozhraní API počítá znaky
+      href: character-counts.md
+- name: Návody
+  items:
+    - name: Registrace k rozhraní Translator Text API
+      href: translator-text-how-to-signup.md
+    - name: Migrace na Text API v3
+      href: migrate-to-v3.md
+    - name: Přidání filtrování vulgárních výrazů
+      href: profanity-filtering.md
+    - name: Získání informací o přidružení slov
+      href: word-alignment.md
+    - name: Použití funkce dynamického slovníku
+      href: dynamic-dictionary.md
+    - name: Použití rozhraní Translator Text API
+      items:
+        - name: Node.js
+          href: quickstarts/nodejs.md
+        - name: PHP
+          href: quickstarts/php.md
+        - name: Python
+          href: quickstarts/python.md
+        - name: Ruby
+          href: quickstarts/ruby.md
+        - name: Vytvoření aplikace Translator Text s využitím WPF
+          href: tutorial-wpf-translation-csharp.md
+- name: Referenční informace
+  items:
+    - name: Referenční informace k rozhraní Translator Text API v3
+      href: reference/v3-0-reference.md
+      items:
+        - name: Jazyky
+          href: reference/v3-0-languages.md
+        - name: Překlad
+          href: reference/v3-0-translate.md
+        - name: Transliterace
+          href: reference/v3-0-transliterate.md
+        - name: Zjišťování
+          href: reference/v3-0-detect.md
+        - name: BreakSentence
+          href: reference/v3-0-break-sentence.md
+        - name: Slovníkové vyhledávání
+          href: reference/v3-0-dictionary-lookup.md
+        - name: Příklady slovníku
+          href: reference/v3-0-dictionary-examples.md
+    - name: Referenční informace k rozhraní Translator Text API v2 (zastaralé)
+      href: reference/v2-0-reference.md
+      items:
+        - name: Transformace textu
+          href: transform-text.md
+        - name: Jak použít vytváření sestav CTF (Collaborative Translation Framework)
+          href: ctf-reporting.md
+        - name: Vracení N nejvhodnějších překladů
+          href: return-n-best-translations.md
+- name: Zdroje a prostředky
+  items:
+    - name: Nejčastější dotazy
+      href: 'https://www.microsoft.com/translator/faq.aspx'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/558796-translator'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
+    - name: Vzorový kód na GitHubu
+      href: 'https://aka.ms/TranslatorGitHub'

@@ -1,0 +1,11 @@
+- name: Dokumentace ke službě Project Personality Chat
+- name: Přehled
+  expanded: true
+  items:
+    - name: Co je Project Personality Chat?
+      href: overview.md
+- name: Zdroje a prostředky
+  expanded: true
+  items:
+    - name: Nejčastější dotazy
+      href: faq.md

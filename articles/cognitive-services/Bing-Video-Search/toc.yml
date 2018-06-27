@@ -1,0 +1,87 @@
+- name: Dokumentace k Vyhledávání videí Bingu
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Vyhledávání videí Bingu?
+      href: search-the-web.md
+- name: Rychlá zprovoznění pro REST API
+  expanded: true
+  items:
+    - name: Začínáme
+      href: quick-start.md
+    - name: 'C#'
+      href: csharp.md
+    - name: Java
+      href: java.md
+    - name: Node.js
+      href: nodejs.md
+    - name: PHP
+      href: php.md
+    - name: Python
+      href: python.md
+    - name: Ruby
+      href: ruby.md
+- name: Rychlá zprovoznění pro SDK
+  items:
+    - name: Přehled ukázek SDK
+      href: sdk.md
+    - name: 'Rychlé zprovoznění sady SDK pro Vyhledávání videí v C#'
+      href: video-search-sdk-quickstart.md
+    - name: Rychlé zprovoznění sady SDK pro Vyhledávání videí v Node
+      href: video-search-sdk-node-quickstart.md
+    - name: Rychlé zprovoznění sady SDK pro Vyhledávání videí v Pythonu
+      href: video-sdk-python-quickstart.md
+    - name: Rychlé zprovoznění sady SDK pro Vyhledávání videí v Javě
+      href: video-sdk-java-quickstart.md
+- name: Kurzy
+  items:
+    - name: Jednostránková webová aplikace
+      href: tutorial-bing-video-search-single-page-app.md
+    - name: Jednostránková webová aplikace (zdrojový kód)
+      href: tutorial-bing-video-search-single-page-app-source.md
+- name: Ukázky
+  items:
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Video+Search'
+- name: Návody
+  items:
+    - name: Požadavky na zobrazení a použití
+      href: UseAndDisplayRequirements.md
+    - name: Získání přehledů videí
+      href: video-insights.md
+    - name: 'Získání videí, která jsou v kurzu'
+      href: trending-videos.md
+    - name: Stránkování videí
+      href: paging-videos.md
+    - name: Změna velikosti a oříznutí miniatur
+      href: resize-and-crop-thumbnails.md
+    - name: Upgrade z v5 na v7
+      href: bing-video-upgrade-guide-v5-to-v7.md
+- name: Referenční informace
+  items:
+    - name: Rozhraní API Bingu pro vyhledávání videí v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference'
+    - name: Rozhraní API Bingu pro vyhledávání videí v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference'
+- name: Zdroje a prostředky
+  items:
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/video/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/911452-bing-video-search-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+video+search'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: Získání klíče rozhraní API
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api'
+    - name: Vyzkoušejte si to!
+      href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f3ccf5ff8098cef3809/operations/58113fe5e31dac0a1ce6b0a8'
+    - name: Koncové body Vyhledávání videí Bingu
+      href: video-search-endpoints.md
+    - name: Analýzy pro rozhraní API Bingu pro vyhledávání videí
+      href: bing-video-stats.md

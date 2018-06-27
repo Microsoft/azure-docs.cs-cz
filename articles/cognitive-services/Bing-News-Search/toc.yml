@@ -1,0 +1,91 @@
+- name: Dokumentace k Vyhledávání zpráv Bingu
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Co je Vyhledávání zpráv Bingu?
+      href: search-the-web.md
+- name: Rychlá zprovoznění pro REST API
+  expanded: true
+  items:
+    - name: Začínáme
+      href: quickstart.md
+    - name: 'C#'
+      href: csharp.md
+    - name: Java
+      href: java.md
+    - name: Node.js
+      href: nodejs.md
+    - name: PHP
+      href: php.md
+    - name: Python
+      href: python.md
+    - name: Ruby
+      href: ruby.md
+- name: Rychlá zprovoznění pro SDK
+  items:
+    - name: Přehled ukázek SDK
+      href: sdk.md
+    - name: 'Rychlé zprovoznění sady SDK pro Vyhledávání zpráv v C#'
+      href: news-search-sdk-quickstart.md
+    - name: Rychlé zprovoznění sady SDK pro Vyhledávání zpráv v Node.js
+      href: news-search-sdk-node-quickstart.md
+    - name: Rychlé zprovoznění sady SDK pro Vyhledávání zpráv v Pythonu
+      href: news-sdk-python-quickstart.md
+    - name: Rychlé zprovoznění sady SDK pro Vyhledávání zpráv v Javě
+      href: news-sdk-java-quickstart.md
+- name: Kurzy
+  items:
+    - name: Jednostránková webová aplikace
+      href: tutorial-bing-news-search-single-page-app.md
+    - name: Jednostránková webová aplikace (zdrojový kód)
+      href: tutorial-bing-news-search-single-page-app-source.md
+- name: Ukázky
+  items:
+    - name: Ukázky kódů
+      href: 'https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+News+Search'
+- name: Návody
+  items:
+    - name: Požadavky na zobrazení a použití
+      href: UseAndDisplayRequirements.md
+    - name: Zpracování zvýrazňování nalezených položek
+      href: hit-highlighting.md
+    - name: Stránkování novinek
+      href: paging-news.md
+    - name: Změna velikosti a oříznutí miniatur
+      href: resize-and-crop-thumbnails.md
+    - name: Upgrade z v5 na v7
+      href: bing-news-upgrade-guide-v5-to-v7.md
+    - name: Práce se sadou Visual Studio
+      items:
+        - name: Použití připojené služby Vyhledávání zpráv Bingu
+          href: vs-bing-news-search-connected-service.md
+- name: Referenční informace
+  items:
+    - name: Rozhraní API Bingu pro vyhledávání zpráv v7
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference'
+    - name: Rozhraní API Bingu pro vyhledávání zpráv v5
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference'
+- name: Zdroje a prostředky
+  items:
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/search-api/news/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/911449-bing-news-search-api'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/search?q=bing+news+search'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest'
+    - name: Získání klíče rozhraní API
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api'
+    - name: Vyzkoušejte si to!
+      href: 'https://dev.cognitive.microsoft.com/docs/services/56b43f72cf5ff8098cef380a/operations/56f02400dbe2d91900c68553'
+    - name: Koncové body Vyhledávání zpráv Bingu
+      href: endpoint-news.md
+    - name: Podporované země a trhy
+      href: supported-countries-markets.md
+    - name: Analýzy pro rozhraní API Bingu pro vyhledávání zpráv
+      href: bing-news-stats.md

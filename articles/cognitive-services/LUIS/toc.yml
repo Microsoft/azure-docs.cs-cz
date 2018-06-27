@@ -1,0 +1,303 @@
+- name: Dokumentace k LUIS
+  href: index.yml
+- name: Přehled
+  items:
+    - name: Další informace o službě Language Understanding
+      href: Home.md
+    - name: Podporované jazyky
+      href: luis-supported-languages.md
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Vytvoření modelu aplikace
+      items:
+        - name: Použití předem připravené domény
+          href: luis-get-started-create-app.md
+        - name: Použití vlastní domény
+          href: luis-quickstart-intents-only.md
+- name: Kurzy
+  items:
+    - name: Přidání předem připravených záměrů a entit
+      href: luis-tutorial-prebuilt-intents-entities.md
+    - name: Získání dat z entity
+      items:
+        - name: Jednoduchá entita
+          href: luis-quickstart-primary-and-secondary-data.md
+        - name: Hierarchická entita
+          href: luis-quickstart-intent-and-hier-entity.md
+        - name: Entita seznamu
+          href: luis-quickstart-intent-and-list-entity.md
+        - name: Entita regulárního výrazu
+          href: luis-quickstart-intents-regex-entity.md
+        - name: Entita klíčové fráze
+          href: luis-quickstart-intent-and-key-phrase.md
+        - name: Analýza mínění
+          href: luis-quickstart-intent-and-sentiment-analysis.md
+    - name: Zlepšení předpovědi
+      items:
+        - name: S využitím vzorů
+          href: luis-tutorial-pattern.md
+        - name: S využitím seznamu frází
+          href: luis-tutorial-interchangeable-phrase-list.md
+    - name: Použití rozhraní API
+      items:
+        - name: Získání předpovědi promluvy s využitím dotazu na koncový bod
+          items:
+            - name: 'C#'
+              href: luis-get-started-cs-get-intent.md
+            - name: Java
+              href: luis-get-started-java-get-intent.md
+            - name: JavaScript
+              href: luis-get-started-js-get-intent.md
+            - name: Node.js
+              href: luis-get-started-node-get-intent.md
+            - name: Python
+              href: luis-get-started-python-get-intent.md
+            - name: PHP
+              href: luis-get-started-php-get-intent.md
+            - name: Ruby
+              href: luis-get-started-ruby-get-intent.md
+        - name: Přidání promluvy do záměru a trénování aplikace
+          items:
+            - name: 'C#'
+              href: luis-get-started-cs-add-utterance.md
+            - name: Java
+              href: luis-get-started-java-add-utterance.md
+            - name: JavaScript
+              href: luis-get-started-javascript-add-utterance.md
+            - name: Node.js
+              href: luis-get-started-node-add-utterance.md
+            - name: Python
+              href: luis-get-started-python-add-utterance.md
+            - name: PHP
+              href: luis-get-started-php-add-utterance.md
+            - name: Ruby
+              href: luis-get-started-ruby-add-utterance.md
+- name: Ukázky
+  items:
+    - name: Ukázky kódů
+      href: 'https://github.com/Microsoft/LUIS-Samples'
+- name: Koncepty
+  items:
+    - name: Osvědčené postupy
+      href: luis-concept-best-practices.md
+    - name: Vytváření aplikací
+      items:
+        - name: Cyklus vytváření
+          href: luis-concept-app-iteration.md
+        - name: Spolupráce
+          href: luis-concept-collaborator.md
+        - name: Správa verzí
+          href: luis-concept-version.md
+    - name: Model návrhu
+      items:
+        - name: Záměry
+          href: luis-concept-intent.md
+        - name: Entity
+          href: luis-concept-entity-types.md
+        - name: Projevy
+          href: luis-concept-utterance.md
+        - name: Role
+          href: luis-concept-roles.md
+    - name: Zvýšení výkonu aplikací
+      items:
+        - name: Skóre předpovědi
+          href: luis-concept-prediction-score.md
+        - name: Kontrola promluv koncového bodu
+          href: luis-concept-review-endpoint-utterances.md
+        - name: Seznamy frází
+          href: luis-concept-feature.md
+        - name: Vzory
+          href: luis-concept-patterns.md
+    - name: Správa dat
+      items:
+        - name: Změna dat
+          href: luis-concept-data-alteration.md
+        - name: Převod dat
+          href: luis-concept-data-conversion.md
+        - name: Extrakce dat
+          href: luis-concept-data-extraction.md
+        - name: Úložiště dat
+          href: luis-concept-data-storage.md
+    - name: Test
+      items:
+        - name: Interaktivní testování
+          href: luis-concept-test.md
+        - name: Dávkové testování
+          href: luis-concept-batch-test.md
+    - name: Enterprise
+      items:
+        - name: Strategie návrhu
+          href: luis-concept-enterprise.md
+    - name: Zabezpečení
+      items:
+        - name: Přístup k aplikacím
+          href: luis-concept-security.md
+        - name: Vytváření a klíče koncových bodů
+          href: luis-concept-keys.md
+- name: Návody
+  items:
+    - name: Plánování aplikace
+      href: Plan-your-app.md
+    - name: Vytvoření nové aplikace
+      href: Create-new-app.md
+    - name: Vytvoření modelu
+      items:
+        - name: Přidání záměrů
+          href: luis-how-to-add-intents.md
+        - name: Přidání projevů
+          href: luis-how-to-add-example-utterances.md
+        - name: Přidání entit
+          href: luis-how-to-add-entities.md
+        - name: Použití složené entity k extrakci seskupených dat
+          href: luis-tutorial-composite-entity.md
+        - name: Použití entity seznamu k hledání přesné shody textu s využitím Node.js
+          href: luis-tutorial-list-entity.md
+        - name: Programové sestavení aplikace s využitím Node.js
+          href: luis-tutorial-node-import-utterances-csv.md
+    - name: Integrace
+      items:
+        - name: Oprava pravopisu pomocí rozhraní API Bingu pro kontrolu pravopisu v7
+          href: luis-tutorial-bing-spellcheck.md
+        - name: S využitím služby Speech
+          href: luis-tutorial-speech-to-intent.md
+        - name: S využitím robotu
+          items:
+            - name: Robot webové aplikace
+              items:
+                - name: Node.js
+                  href: luis-nodejs-tutorial-build-bot-framework-sample.md
+                - name: 'C#'
+                  href: luis-csharp-tutorial-build-bot-framework-sample.md
+            - name: Application Insights
+              items:
+                - name: Node.js
+                  href: luis-tutorial-function-appinsights.md
+                - name: 'C#'
+                  href: luis-tutorial-bot-csharp-appinsights.md
+    - name: Zlepšení přesnosti předpovědi
+      items:
+        - name: Kontrola promluv koncového bodu
+          href: Label-Suggested-Utterances.md
+        - name: Přidání seznamu frází
+          href: luis-how-to-add-features.md
+        - name: Přidání vzorů
+          href: luis-how-to-model-intent-pattern.md
+    - name: Trénování
+      href: luis-how-to-train.md
+    - name: Test
+      items:
+        - name: Interaktivní testování
+          href: interactive-test.md
+        - name: Dávkové testování
+          href: luis-how-to-batch-test.md
+        - name: Zlepšení přesnosti s využitím dávkového testování
+          href: luis-tutorial-batch-testing.md
+    - name: Publikování aplikace
+      href: PublishApp.md
+    - name: Použití předem připravených modelů
+      items:
+        - name: Použití předem připravených entit
+          href: Pre-builtEntities.md
+        - name: Použití předem připravených domén
+          href: luis-how-to-use-prebuilt-domains.md
+        - name: Použití předem připravené aplikace Cortana
+          href: Cortana-Prebuilt-App.md
+    - name: Správa aplikace LUIS
+      items:
+        - name: S využitím řídicího panelu
+          href: luis-how-to-use-dashboard.md
+        - name: Vytvoření klíčů
+          href: luis-how-to-azure-subscription.md
+        - name: Přidání klíčů v LUIS
+          href: Manage-Keys.md
+        - name: Zobrazení využití koncového bodu s využitím PowerShellu
+          href: luis-how-to-manage-from-cloud-shell.md
+        - name: Správa verzí
+          href: luis-how-to-manage-versions.md
+        - name: Spolupráce s ostatními autory
+          href: luis-how-to-collaborate.md
+        - name: Rozložení kvóty koncových bodů napříč klíči s využitím Traffic Manageru
+          href: traffic-manager.md
+    - name: Správa účtu LUIS
+      href: luis-how-to-account-settings.md
+    - name: Migrace na API V2
+      href: migration-v1-to-v2.md
+    - name: Vyhledání oblasti prostřednictvím kódu programu
+      items:
+        - name: 'Pomocí C#'
+          href: find-region-csharp.md
+        - name: Pomocí Node.js
+          href: find-region-nodejs.md
+- name: Referenční informace
+  items:
+    - name: Ochrana osobních údajů uživatele
+      href: luis-reference-gdpr.md
+    - name: Oblasti
+      href: luis-reference-regions.md
+    - name: Hranice
+      href: luis-boundaries.md
+    - name: Referenční informace k předem připraveným entitám
+      href: luis-reference-prebuilt-entities.md
+    - name: Referenční informace k předem připraveným doménám
+      href: luis-reference-prebuilt-domains.md
+    - name: Referenční informace k předem připraveným aplikacím Cortana
+      href: luis-reference-cortana-prebuilt.md
+    - name: Vytváření rozhraní API V2
+      href: 'https://aka.ms/luis-authoring-apis'
+    - name: Rozhraní API V2 koncového bodu
+      href: 'https://aka.ms/luis-endpoint-apis'
+    - name: Kódy HTTP
+      href: luis-reference-response-codes.md
+    - name: Azure CLI 2.0
+      href: 'https://aka.ms/az-cli-cognitiveservices'
+    - name: Azure RM PowerShell
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: Sady SDK
+      items:
+        - name: Android
+          href: 'https://github.com/Microsoft/Cognitive-LUIS-Android'
+        - name: Node.js
+          href: 'https://github.com/Microsoft/Cognitive-LUIS-Node.js'
+        - name: Python
+          href: 'https://github.com/Microsoft/Cognitive-LUIS-Python'
+        - name: Koncový bod .Net
+          href: 'https://aka.ms/luis-endpoint-sdk'
+        - name: Vytváření v .Net
+          href: 'https://aka.ms/luis-authoring-sdk'
+- name: Související
+  items:
+    - name: Architektura robotů
+      href: 'https://dev.botframework.com/'
+    - name: 'Bot Builder 3.x SDK C#'
+      href: 'https://github.com/Microsoft/BotBuilder'
+    - name: 'Bot Builder 4.x SDK C#'
+      href: 'https://github.com/Microsoft/botbuilder-dotnet'
+    - name: QnA Maker
+      href: 'https://qnamaker.ai/'
+    - name: Rozhraní API pro zpracování řeči Bingu
+      href: 'https://azure.microsoft.com/services/cognitive-services/speech/'
+    - name: Rozhraní API pro kontrolu pravopisu Bingu
+      href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+    - name: Analýza textu
+      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://aka.ms/luis-roadmap'
+    - name: Glosář
+      href: luis-glossary.md
+    - name: Nejčastější dotazy
+      href: luis-resources-faq.md
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/LUIS'
+    - name: UserVoice
+      href: 'https://aka.ms/luis-uservoice-forum'
+    - name: Search
+      href: 'https://docs.microsoft.com/en-us/search/index?search=LUIS'
+    - name: Blog
+      href: 'https://blog.botframework.com/category/luis/'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service'
