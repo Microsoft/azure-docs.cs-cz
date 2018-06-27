@@ -1,24 +1,19 @@
 ---
 title: Azure IoT Hub Glosář termínů | Microsoft Docs
 description: Příručka vývojáře – Glosář běžných termínů týkající se Azure IoT Hub.
-services: iot-hub
-documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: ''
-ms.assetid: 16ef29ea-a185-48c3-ba13-329325dc6716
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: aae72618da42db53304075506b4969945ff0165f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 69bc7d71e804ca33b984699ee30a44774542803f
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960487"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glosář termínů služby IoT Hub
 V tomto článku jsou uvedeny některé z běžných termínů používaných v článcích IoT Hub.
@@ -110,11 +105,8 @@ Odkazuje na informace o stavu zařízení, jako je například metoda připojen�
 ## <a name="device-data"></a>Data v zařízení
 Data zařízení odkazuje na zařízení data uložená ve službě IoT Hub [registru identit](#identity-registry). Je možné importovat a exportovat tato data.
 
-## <a name="device-explorer"></a>Průzkumník zařízení
+## <a name="device-explorer"></a>Device Explorer
 [Explorer zařízení](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) je nástroj, který běží v systému Windows a umožňuje je spravovat zařízení pomocí [registru identit](#identity-registry). Tento nástroj může také odesílat a přijímat zprávy do zařízení.
-
-## <a name="device-identities-rest-api"></a>Rozhraní REST API identit zařízení
-[Zařízení identity REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) umožňuje spravovat vaše zařízení registrovaná v [registru identit](#identity-registry) pomocí rozhraní REST API. Obvykle, měli byste použít jeden z vyšší úrovni [služby sady SDK](#azure-iot-service-sdks) jak je znázorněno v kurzech IoT Hub.
 
 ## <a name="device-identity"></a>Identita zařízení
 Identita zařízení je jedinečný identifikátor přiřazený k každé zařízení registrovaná v [registru identit](#identity-registry).
@@ -128,8 +120,8 @@ Správa zařízení zahrnuje celý životní spojené se správou zařízení ve
 ## <a name="device-management-patterns"></a>Schémata správy zařízení
 [Centrum IoT](#iot-hub) umožňuje běžné způsoby správy zařízení včetně restartování, provádění obnovení továrního nastavení a provádění aktualizace firmwaru v zařízení.
 
-## <a name="device-messaging-rest-api"></a>Rozhraní REST API zasílání zpráv zařízení
-Můžete použít [rozhraní API REST pro zasílání zpráv zařízení](https://docs.microsoft.com/rest/api/iothub/httpruntime) ze zařízení k odesílání zpráv typu zařízení cloud do služby IoT hub a příjmu [cloud zařízení](#cloud-to-device) zpráv ze služby IoT hub. Obvykle, měli byste použít jeden z vyšší úrovni [sady SDK pro zařízení](#azure-iot-device-sdks) jak je znázorněno v kurzech IoT Hub.
+## <a name="device-rest-api"></a>Zařízení rozhraní REST API
+Můžete použít [zařízení REST API](https://docs.microsoft.com/rest/api/iothub/device/device) ze zařízení k odesílání zpráv typu zařízení cloud do služby IoT hub a příjmu [cloud zařízení](#cloud-to-device) zpráv ze služby IoT hub. Obvykle, měli byste použít jeden z vyšší úrovni [sady SDK pro zařízení](#azure-iot-device-sdks) jak je znázorněno v kurzech IoT Hub.
 
 ## <a name="device-provisioning"></a>Zřizování zařízení
 Zřizování zařízení je proces přidávání počáteční [data zařízení](#device-data) do úložišť ve vašem řešení. Pokud chcete povolit nové zařízení pro připojení do vašeho centra, musíte přidat ID zařízení a klíče do služby IoT Hub [registru identit](#identity-registry). Jako součást procesu zřizování může být potřeba inicializovat data specifická pro zařízení v jiné řešení úložiště.
@@ -141,10 +133,7 @@ A [dvojče zařízení](iot-hub-devguide-device-twins.md) je dokument JSON, kter
 Podobně jako u dvojče zařízení, modul twin je dokument JSON, který ukládá informace o stavu modulu například metadata, konfigurace a podmínky. IoT Hub trvá twin modulu pro každou identitu modulu, který zřídíte pod identitou zařízení ve službě IoT hub. Modul dvojčata umožňují synchronizovat modul podmínky a konfigurací mezi modul a back-end řešení. Modul dvojčata vyhledat konkrétní moduly a dotaz na stav dlouhotrvající operace se můžete dotazovat.
 
 ## <a name="twin-queries"></a>Dotazy Twin
-[Zařízení a modul dotazů twin](iot-hub-devguide-query-language.md) použít k načtení informací z dvojčata zařízení nebo modul dvojčata dotazovacího jazyka SQL jako IoT Hub. Stejný dotaz jazyk IoT Hub můžete použít k načtení informací o [úlohy](#job) spuštěná ve službě IoT hub.
-
-## <a name="device-twin-rest-api"></a>Rozhraní API REST Twin zařízení
-Můžete použít [zařízení Twin REST API](https://docs.microsoft.com/rest/api/iothub/devicetwinapi) z řešení back-end ke správě vašeho dvojčata zařízení. Rozhraní API umožňuje načíst a aktualizovat [dvojče zařízení](#device-twin) vlastnosti a vyvolání [přímé metody](#direct-method). Obvykle, měli byste použít jeden z vyšší úrovni [služby sady SDK](#azure-iot-service-sdks) jak je znázorněno v kurzech IoT Hub.
+[Zařízení a modul dotazů twin](iot-hub-devguide-query-language.md) použít k načtení informací z dvojčata zařízení nebo modul dvojčata dotazovacího jazyka SQL jako IoT Hub. Stejný dotaz jazyk IoT Hub můžete použít k načtení informací o [ ](#job) spuštěná ve službě IoT hub.
 
 ## <a name="twin-synchronization"></a>Synchronizace Twin
 Twin synchronizace používá [potřeby vlastnosti](#desired-properties) v dvojčata zařízení nebo modul dvojčata ke konfiguraci zařízení nebo moduly a načíst [hlášené vlastnosti](#reported-properties) z nich uložit twin.
@@ -185,22 +174,19 @@ Back-end řešení IoT Hub je plně spravovaná služba Azure, která umožňuje
 [IoT Hub metriky](iot-hub-metrics.md) poskytují údaje o stavu služby IoT hubs ve vaší [předplatného Azure](#subscription). IoT Hub metriky umožňují posouzení celkového stavu služby a zařízení k němu připojená. IoT Hub metriky můžete zobrazit, co se děje službou IoT hub a zkoumání příčin problémů bez nutnosti požádejte podporu Azure.
 
 ## <a name="iot-hub-query-language"></a>IoT Hub dotazovací jazyk
-[IoT Hub dotazovací jazyk](iot-hub-devguide-query-language.md) je podobné jazyku SQL jazyk, který vám umožňuje dotazu vaše [úlohy](#job) a dvojčata zařízení.
+[IoT Hub dotazovací jazyk](iot-hub-devguide-query-language.md) je podobné jazyku SQL jazyk, který vám umožňuje dotazu vaše [ ](#job) a dvojčata zařízení.
 
-## <a name="iot-hub-resource-provider-rest-api"></a>Zprostředkovatel prostředků služby IoT Hub rozhraní REST API
-Můžete použít [IoT Hub prostředků zprostředkovatele REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) ke správě centra IoT v vaše [předplatného Azure](#subscription) provádění operací, jako je například vytváření, aktualizace a odstranění rozbočovače.
+## <a name="iot-hub-resource-rest-api"></a>REST API služby IoT Hub prostředků
+Můžete použít [IoT Hub prostředek REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) ke správě centra IoT v vaše [předplatného Azure](#subscription) provádění operací, jako je například vytváření, aktualizace a odstranění rozbočovače.
 
-## <a name="iot-solution-accelerators"></a>Akcelerátorů řešení IoT
-Azure IoT řešení akcelerátorů balíček společně více služeb Azure do řešení. Tato řešení umožňují rychle začít používat začátku do konce implementace běžné scénáře IoT. Další informace najdete v tématu [co jsou akcelerátorů řešení Azure IoT?](../iot-suite/iot-suite-overview.md)
+## <a name="iot-solution-accelerators"></a>Akcelerátory řešení IoT
+Azure IoT řešení akcelerátorů balíček společně více služeb Azure do řešení. Tato řešení umožňují rychle začít používat začátku do konce implementace běžné scénáře IoT. Další informace najdete v tématu [co jsou akcelerátorů řešení Azure IoT?](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md)
 
 ## <a name="the-iot-extension-for-azure-cli-20"></a>Rozšíření IoT pro Azure CLI 2.0
 [Rozšíření IoT pro Azure CLI 2.0](https://github.com/Azure/azure-iot-cli-extension) je nástroj pro různé platformy, příkazového řádku. Tento nástroj umožňuje spravovat zařízení pomocí [registru identit](#identity-registry), odesílání a příjem zpráv a soubory z vašich zařízení a sledovat vaše operace centra IoT.
 
 ## <a name="job"></a>Úloha
-Můžete použít váš back-end řešení [úlohy](iot-hub-devguide-jobs.md) k plánování a sledování činností na sadu zařízení registrovaná službou IoT hub. Aktivity zahrnují aktualizace dvojče zařízení [potřeby vlastnosti](#desired-properties), aktualizuje dvojče zařízení [značky](#tags)a vyvolání [přímé metody](#direct-method). [IoT Hub](#iot-hub) také používá úloh [pro import a export](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) z [registru identit](#identity-registry).
-
-## <a name="jobs-rest-api"></a>Úlohy rozhraní REST API
-[Úloh REST API](https://docs.microsoft.com/rest/api/iothub/jobapi) umožňuje spravovat [úlohy](#job) spuštěná ve službě IoT hub.
+Můžete použít váš back-end řešení [úlohy](iot-hub-devguide-jobs.md) k plánování a sledování činností na sadu zařízení registrovaná službou IoT hub. Aktivity zahrnují aktualizace dvojče zařízení [potřeby vlastnosti](#desired-properties), aktualizuje dvojče zařízení [značky](#tags)a vyvolání [přímé metody](#direct-method). [IoT Hub](#iot-hub) používá také k [pro import a export](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) z [registru identit](#identity-registry).
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) je jedním z zasílání zpráv protokoly, které [IoT Hub](#iot-hub) podporuje pro komunikaci se zařízeními. Další informace o zasílání zpráv protokolů, které podporuje Centrum IoT najdete v tématu [odesílat a přijímat zprávy službou IoT Hub](iot-hub-devguide-messaging.md).
@@ -237,6 +223,9 @@ Nakonfigurujete [pravidla směrování](iot-hub-devguide-messages-read-custom.md
 
 ## <a name="sasl-plain"></a>PROSTÝ SASL
 PROSTÝ SASL je protokol, který [AMQP](#advanced-message-queue-protocol) protokol používá k přenosu tokeny zabezpečení.
+
+## <a name="service-rest-api"></a>Rozhraní API služby REST
+Můžete použít [rozhraní API REST služby](https://docs.microsoft.com/rest/api/iothub/service/service) z řešení back-end ke správě svých zařízení. Rozhraní API umožňuje načíst a aktualizovat [dvojče zařízení](#device-twin) vyvolání vlastností [přímé metody](#direct-method)a plán [úlohy](#job). Obvykle, měli byste použít jeden z vyšší úrovni [služby sady SDK](#azure-iot-service-sdks) jak je znázorněno v kurzech IoT Hub.
 
 ## <a name="shared-access-signature"></a>Sdílený přístupový podpis
 Podpisy sdíleného přístupu (SAS) se mechanismus ověřování na základě zabezpečeného hodnoty hash SHA-256 nebo identifikátory URI. Ověřování SAS má dvě součásti: _zásada sdíleného přístupu_ a _sdíleného přístupového podpisu_ (často říká token). Zařízení používá SAS k ověření pomocí služby IoT hub. [Back-end aplikace](#back-end-app) také použít SAS k ověření koncových bodů služby orientovaný na služby IoT hub. Obvykle zahrnují tokenu SAS v [připojovací řetězec](#connection-string) , některá aplikace používá k navázání připojení do služby IoT hub.

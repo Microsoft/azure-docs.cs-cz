@@ -23,6 +23,8 @@
       href: quickstart-ruby.md
     - name: Vytvoření aplikace v Dockeru/Go
       href: quickstart-docker-go.md
+    - name: Vytvoření vícekontejnerové aplikace
+      href: quickstart-multi-container.md
 - name: Kurzy
   items:
     - name: Aplikace s DB

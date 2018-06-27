@@ -3,6 +3,7 @@
 ## [Certifikace](sap-certifications.md)
 # SAP HANA v Azure (velké instance)
 ## [Přehled a architektura](hana-overview-architecture.md)
+### [Podporované scénáře HLI](hana-supported-scenario.md)
 ## [Infrastruktura a možnosti připojení](hana-overview-infrastructure-connectivity.md)
 ## [Instalace SAP HANA](hana-installation.md)
 ## [Vysoká dostupnost a zotavení po havárii](hana-overview-high-availability-disaster-recovery.md)

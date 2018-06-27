@@ -250,7 +250,7 @@
 #### [Pokročilé podepisování certifikátů pro aplikace SAML](manage-apps/certificate-signing-options.md)
 #### [Skrytí aplikace v uživatelském prostředí](manage-apps/hide-application-from-user-portal.md)
 ### [Konfigurace automatického zrychlení přihlašování pomocí zásad HRD](manage-apps/configure-authentication-for-federated-users-portal.md)
-### [Migrace aplikací AD FS do Azure AD](migrate-adfs-apps-to-azure.md) 
+### [Migrace aplikací AD FS do Azure AD](manage-apps/migrate-adfs-apps-to-azure.md) 
 ### [Správa přístupu k aplikacím](manage-apps/what-is-access-management.md)
 #### [Přístup s jednotným přihlašováním](manage-apps/what-is-single-sign-on.md)
 #### [Certifikáty pro jednotné přihlašování](manage-apps/manage-certificates-for-federated-single-sign-on.md)
@@ -386,13 +386,10 @@
 
 ## Delegování přístupu k prostředkům
 ### [Role správce](active-directory-assign-admin-roles-azure-portal.md)
-#### [Přiřazení role správce uživateli](fundamentals/active-directory-users-assign-role-azure-portal.md) 
-#### [Porovnání oprávnění pro členy a uživatele typu host](fundamentals/users-default-permissions.md) 
-### [Zabezpečení privilegovaného přístupu](admin-roles-best-practices.md)  
-### [Vytvoření účtů pro správu pro nouzový přístup](active-directory-admin-manage-emergency-access-accounts.md) 
-
-
-#### [Výchozí uživatelská oprávnění](fundamentals/users-default-permissions.md)
+#### [Přiřazení role správce uživateli](fundamentals/active-directory-users-assign-role-azure-portal.md)
+#### [Porovnání oprávnění pro členy a uživatele typu host](fundamentals/users-default-permissions.md)
+### [Zabezpečení rolí správce](admin-roles-best-practices.md)  
+#### [Vytvoření účtů správce pro nouzový přístup](active-directory-admin-manage-emergency-access-accounts.md)
 ### [Jednotky pro správu](active-directory-administrative-units-management.md)
 ### [Konfigurace životnosti tokenů](active-directory-configurable-token-lifetimes.md)
 ### [Zabezpečení privilegovaných rolí](admin-roles-best-practices.md)

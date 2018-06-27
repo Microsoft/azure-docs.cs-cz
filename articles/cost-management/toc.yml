@@ -45,6 +45,8 @@
       href: use-reports.md
     - name: Použití řídicích panelů
       href: dashboards.md
+    - name: Správa rozpočtů
+      href: manage-budgets.md
 - name: Zdroje a prostředky
   items:
     - name: Videa ke správě nákladů

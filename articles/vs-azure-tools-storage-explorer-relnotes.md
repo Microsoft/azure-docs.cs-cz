@@ -12,55 +12,58 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/31/2017
+ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 2878fb737f5daa875b91aefc77c6b8bc495f917e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59415941172fab06b3e86ef4d34d464cf359ce8f
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657566"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37025700"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Poznámky k verzi Microsoft Azure Storage Explorer
 
-Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi, a také poznámky k verzi pro předchozí verze.
+Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.2.0 verzi, a také poznámky k verzi pro předchozí verze.
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) je samostatná aplikace, která umožňuje snadno pracovat s daty Azure Storage ve Windows, systému macOS a Linux.
 
-## <a name="version-110"></a>Verze 1.1.0
-05/09/2018
+## <a name="version-120"></a>Verze 1.2.0
+12/06/2018
 
-### <a name="download-azure-storage-explorer-110"></a>Stažení Azure Storage Explorer 1.1.0
-- [Azure Storage Explorer 1.1.0 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage Explorer 1.1.0 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage Explorer 1.1.0 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-120"></a>Stažení Azure Storage Explorer 1.2.0
+- [Azure Storage Explorer 1.2.0 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage Explorer 1.2.0 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage Explorer 1.2.0 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Nová
-* Storage Explorer teď podporuje použití Azurite. Poznámka: připojení k Azurite je pevně zakódované do jsou výchozí koncové body vývoj.
-* Storage Explorer teď podporuje úrovní přístupu pro objekt Blob pouze účty a účty úložiště GPV2. Další informace o úrovních přístupu [zde](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers).
-* Čas spuštění se už nevyžaduje při generování SAS.
+* Pokud Storage Explorer se nepodaří načíst odběry z jenom podmnožinu vašich klientů, pak všechny úspěšně načíst předplatná se zobrazí spolu s chybovou zprávou speciálně pro klienty, kteří se nezdařilo. [#159](https://github.com/Microsoft/AzureStorageExplorer/issues/159)
+* V systému Windows Pokud je aktualizace k dispozici, teď můžete "Aktualizovat na Zavřít". Pokud tato možnost je vybráno, instalační program aktualizace se spustí po zavření Storage Explorer. [#21](https://github.com/Microsoft/AzureStorageExplorer/issues/21)
+* Obnovení snímku přidala do kontextové nabídky editoru sdílené složky souborů při zobrazení snímku sdílené složky souborů. [#131](https://github.com/Microsoft/AzureStorageExplorer/issues/131)
+* Nyní je vždy povolena na tlačítko Vymazat fronty. [#135](https://github.com/Microsoft/AzureStorageExplorer/issues/135)
+* Podpora pro přihlášení do služby AD FS Azure zásobníku byl znovu zapnout. Vyžaduje se Azure zásobníku verze 1804 nebo novější. [#150](https://github.com/Microsoft/AzureStorageExplorer/issues/150)
 
 ### <a name="fixes"></a>Opravy
-* Načítání z předplatných pro účty US Government bylo přerušeno. To byl opraven. [#61](https://github.com/Microsoft/AzureStorageExplorer/issues/61)
-* Čas vypršení platnosti pro zásady přístupu nebyl uložen správně. To byl opraven. [#50](https://github.com/Microsoft/AzureStorageExplorer/issues/50)
-* Při generování adresy URL SAS pro položku v kontejneru, název položky nebyla je připojena k adrese URL. To byl opraven. [#44](https://github.com/Microsoft/AzureStorageExplorer/issues/44)
-* Při vytváření SAS, časy vypršení platnosti, které jsou v minulosti by někdy výchozí hodnota. Důvodem byla Storage Explorer pomocí poslední čas spuštění a vypršení platnosti použita jako výchozí hodnoty. Nyní při každém otevření dialogu SAS se generuje novou sadu výchozích hodnot. [#35](https://github.com/Microsoft/AzureStorageExplorer/issues/35)
-* Při kopírování souborů mezi účty úložiště, se vygeneruje SAS 24 hodin. Pokud bude pro kopii už bylo víc než 24 hodin, kopie selže. Zvětšili jsme SAS na na poslední 1 týden může snížit pravděpodobnost kopii neúspěšné kvůli vypršela platnost SAS. [#62](https://github.com/Microsoft/AzureStorageExplorer/issues/62)
-* U některých aktivit, kliknutím na "Zrušit" by vždy fungovat. To byl opraven. [#125](https://github.com/Microsoft/AzureStorageExplorer/issues/125)
-* U některých aktivit rychlost přenosu je nesprávná. To byl opraven. [#124](https://github.com/Microsoft/AzureStorageExplorer/issues/124)
-* Pravopisu "Předchozí" v nabídce zobrazení je nesprávná. Je nyní správně zadána. [#71](https://github.com/Microsoft/AzureStorageExplorer/issues/71)
-* Na poslední stránku Instalační služby systému Windows bylo tlačítko "Další". Změnil se na tlačítko "Dokončit". [#70](https://github.com/Microsoft/AzureStorageExplorer/issues/70)
-* Karta fokus nebyla viditelné pro tlačítek v dialogových oknech, při použití HC černé motivu. Teď je viditelné. [#64](https://github.com/Microsoft/AzureStorageExplorer/issues/64)
-* Malá a velká písmena "Automaticky vyřešit" pro akce v protokolu aktivit je nesprávná. Nyní je správná. [#51](https://github.com/Microsoft/AzureStorageExplorer/issues/51)
-* Při odstraňování entity z tabulky, dialogovém okně s dotazem na potvrzení zobrazí ikona chyby. Dialogové okno teď používá ikona upozornění. [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
+* Pokud jste si zobrazili snímky pro sdílení souborů, jejichž název byl předponu jiné sdílené složky ve stejném účtu úložiště, by uvedené také tento snímky pro sdílené složky. Tento problém byl opraven. [#255](https://github.com/Microsoft/AzureStorageExplorer/issues/255)
+* Když připojených přes SAS, obnovení souboru ze sdílené složky snímku souboru by způsobilo chybu. Tento problém byl opraven. [#211](https://github.com/Microsoft/AzureStorageExplorer/issues/211)
+* Při zobrazení snímků pro objekt blob, akce povýšit snímku byla povolena, pokud byly vybraná základní objekt blob a jeden snímek. Akci nyní povolen pouze pokud je vybraný jeden snímek. [#230](https://github.com/Microsoft/AzureStorageExplorer/issues/230)
+* Pokud jednu úlohu (jako je například stahování binární rozsáhlý objekt) byla spuštěna a později se nezdařilo, se nebude opakujte automaticky dokud spuštěna jiná úloha stejného typu. Všechny úlohy by měl nyní automaticky opakovat, bez ohledu na to, kolik úloh mít zařazených do fronty.
+* Editory otevřen pro nově vytvořený objekt blob kontejnery v GPV2 a účty úložiště objektů Blob neobsahuje sloupec úroveň přístupu. Tento problém byl opraven. [#109](https://github.com/Microsoft/AzureStorageExplorer/issues/109)
+* Sloupec úroveň přístupu by se někdy ale při účet úložiště nebo kontejner objektů blob byla připojených přes SAS. Sloupce vždy budou zobrazeny, ale s prázdnou hodnotu, pokud není nastaven úroveň přístupu. [#160](https://github.com/Microsoft/AzureStorageExplorer/issues/160)
+* Nastavení úrovně přístupu objektu blob nově nahraném bloku byl zakázán. Tento problém byl opraven. [#171](https://github.com/Microsoft/AzureStorageExplorer/issues/171)
+* Pokud je tlačítko "Zachovat karta otevřít" byla vyvolána pomocí klávesnice, by dojít ke ztrátě fokus klávesnice. Nyní pak se fokus přesune na kartě, který byl zůstat otevřené. [#163](https://github.com/Microsoft/AzureStorageExplorer/issues/163)
+* Pro vytvoření dotazu v Tvůrce dotazů nebyl VoiceOver udávající použitelné popis aktuální operátor. Je nyní konkrétnější. [#207](https://github.com/Microsoft/AzureStorageExplorer/issues/207)
+* Odkazy stránkování pro různé editory nebylo popisný. Nebyly změněny být konkrétnější. [#205](https://github.com/Microsoft/AzureStorageExplorer/issues/205)
+* V dialogovém okně Přidat entitu nebyl VoiceOver uvedení, jaké sloupec input element byl součástí. Název aktuální sloupec je nyní zahrnutá v popisu elementu. [#206](https://github.com/Microsoft/AzureStorageExplorer/issues/206)
+* Přepínací tlačítka a zaškrtávací políčka viditelné ohraničení při zaměřuje neměl. Tento problém byl opraven. [#237](https://github.com/Microsoft/AzureStorageExplorer/issues/237)
 
 ### <a name="known-issues"></a>Známé problémy
+* Při použití emulátorů, například emulátoru úložiště Azure nebo Azurite, musíte mít je přijímat připojení na jejich výchozí porty. Storage Explorer, jinak nebudou moci připojit se k nim.
 * Pokud používáte VS pro počítače Mac a někdy vytvořili vlastní konfiguraci AAD, nebudete možná moct přihlásit. Chcete-li tento problém obejít, odstranit obsah ~ /. IdentityService/AadConfigurations. Pokud to není blokování můžete, zadejte komentář na [tento problém](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
 * Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může existovat neočekávaným chybám nebo chování při použití Azurite pro vývoj úložiště.
 * Ve výjimečných případech můžou uváznout stromu zaměřit na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
 * Odesílání ze složky OneDrive nefunguje, pokud je z důvodu chyby v NodeJS. Chybě byla pevné, ale ještě nebyla integrována do elektronovým.
 * Pokud je cílem zásobník Azure, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko Storno"na úlohu, může trvat nějakou dobu tuto úlohu zrušit. Důvodem je, že používáme popsané řešení filtru Storno [zde](https://github.com/Azure/azure-storage-node/issues/317). 
+* Po kliknutí na tlačítko Storno"na úlohu, může trvat nějakou dobu tuto úlohu zrušit. Důvodem je, že používáme popsané řešení filtru Storno [zde](https://github.com/Azure/azure-storage-node/issues/317).
 * Pokud si zvolíte nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby bylo možné používat Storage Explorer zapomněli rozhodnutí.
 * Přejmenování objekty BLOB (samostatně nebo v kontejneru objektů blob přejmenovat) nezachovává snímky. Během přejmenovat se zachovají všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity.
 * I když zásobník Azure aktuálně nepodporuje sdílených složek, sdílených složek uzel se objeví stále v připojené účtu úložiště Azure zásobníku.
@@ -86,8 +89,16 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
     sudo apt-get install libgconf-2-4
     ```
 
+
+
+
+
+
+
+
 ## <a name="previous-releases"></a>Předchozí verze
 
+* [Verze 1.1.0](#version-110)
 * [Verze 1.0.0](#version-100)
 * [Verze 0.9.6](#version-096)
 * [Verze 0.9.5](#version-095)
@@ -112,13 +123,64 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
 * [Verze 0.7.20160105.0](#version-07201601050)
 * [Verze 0.7.20151116.0](#version-07201511160)
 
+
+## <a name="version-110"></a>Verze 1.1.0
+05/09/2018
+
+### <a name="new"></a>Nová
+* Storage Explorer teď podporuje použití Azurite. Poznámka: připojení k Azurite je pevně zakódované do jsou výchozí koncové body vývoj.
+* Storage Explorer teď podporuje úrovní přístupu pro objekt Blob pouze účty a účty úložiště GPV2. Další informace o úrovních přístupu [zde](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers).
+* Čas spuštění se už nevyžaduje při generování SAS.
+
+### <a name="fixes"></a>Opravy
+* Načítání z předplatných pro účty US Government bylo přerušeno. Tento problém byl opraven. [#61](https://github.com/Microsoft/AzureStorageExplorer/issues/61)
+* Čas vypršení platnosti pro zásady přístupu nebyl uložen správně. Tento problém byl opraven. [#50](https://github.com/Microsoft/AzureStorageExplorer/issues/50)
+* Při generování adresy URL SAS pro položku v kontejneru, název položky nebyla je připojena k adrese URL. Tento problém byl opraven. [#44](https://github.com/Microsoft/AzureStorageExplorer/issues/44)
+* Při vytváření SAS, časy vypršení platnosti, které jsou v minulosti by někdy výchozí hodnota. Důvodem byla Storage Explorer pomocí poslední čas spuštění a vypršení platnosti použita jako výchozí hodnoty. Nyní při každém otevření dialogu SAS se generuje novou sadu výchozích hodnot. [#35](https://github.com/Microsoft/AzureStorageExplorer/issues/35)
+* Při kopírování souborů mezi účty úložiště, se vygeneruje SAS 24 hodin. Pokud bude pro kopii už bylo víc než 24 hodin, kopie selže. Zvětšili jsme SAS na na poslední 1 týden může snížit pravděpodobnost kopii neúspěšné kvůli vypršela platnost SAS. [#62](https://github.com/Microsoft/AzureStorageExplorer/issues/62)
+* U některých aktivit, kliknutím na "Zrušit" by vždy fungovat. Tento problém byl opraven. [#125](https://github.com/Microsoft/AzureStorageExplorer/issues/125)
+* U některých aktivit rychlost přenosu je nesprávná. Tento problém byl opraven. [#124](https://github.com/Microsoft/AzureStorageExplorer/issues/124)
+* Pravopisu "Předchozí" v nabídce zobrazení je nesprávná. Je nyní správně zadána. [#71](https://github.com/Microsoft/AzureStorageExplorer/issues/71)
+* Na poslední stránku Instalační služby systému Windows bylo tlačítko "Další". Změnil se na tlačítko "Dokončit". [#70](https://github.com/Microsoft/AzureStorageExplorer/issues/70)
+* Karta fokus nebyla viditelné pro tlačítek v dialogových oknech, při použití HC černé motivu. Teď je viditelné. [#64](https://github.com/Microsoft/AzureStorageExplorer/issues/64)
+* Malá a velká písmena "Automaticky vyřešit" pro akce v protokolu aktivit je nesprávná. Nyní je správná. [#51](https://github.com/Microsoft/AzureStorageExplorer/issues/51)
+* Při odstraňování entity z tabulky, dialogovém okně s dotazem na potvrzení zobrazí ikona chyby. Dialogové okno teď používá ikona upozornění. [#148](https://github.com/Microsoft/AzureStorageExplorer/issues/148)
+
+### <a name="known-issues"></a>Známé problémy
+* Pokud používáte VS pro počítače Mac a někdy vytvořili vlastní konfiguraci AAD, nebudete možná moct přihlásit. Chcete-li tento problém obejít, odstranit obsah ~ /. IdentityService/AadConfigurations. Pokud to není blokování můžete, zadejte komentář na [tento problém](https://github.com/Microsoft/AzureStorageExplorer/issues/97).
+* Azurite nebyla ještě implementována plně všechna rozhraní API úložiště. Z toho důvodu může existovat neočekávaným chybám nebo chování při použití Azurite pro vývoj úložiště.
+* Ve výjimečných případech můžou uváznout stromu zaměřit na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
+* Odesílání ze složky OneDrive nefunguje, pokud je z důvodu chyby v NodeJS. Chybě byla pevné, ale ještě nebyla integrována do elektronovým.
+* Pokud je cílem zásobník Azure, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
+* Po kliknutí na tlačítko Storno"na úlohu, může trvat nějakou dobu tuto úlohu zrušit. Důvodem je, že používáme popsané řešení filtru Storno [zde](https://github.com/Azure/azure-storage-node/issues/317).
+* Pokud si zvolíte nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby bylo možné používat Storage Explorer zapomněli rozhodnutí.
+* Přejmenování objekty BLOB (samostatně nebo v kontejneru objektů blob přejmenovat) nezachovává snímky. Během přejmenovat se zachovají všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity.
+* I když zásobník Azure aktuálně nepodporuje sdílených složek, sdílených složek uzel se objeví stále v připojené účtu úložiště Azure zásobníku.
+* Prostředí elektronovým používáno Průzkumníkem úložiště má potíže s hardwarovou akceleraci některé grafický procesor (grafický procesor). Pokud Storage Explorer je zobrazení prázdné hlavní okno (prázdná), můžete zkusit spustit Průzkumníka úložiště z příkazového řádku a zákaz akcelerace GPU přidáním `--disable-gpu` přepínače:
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Pro uživatele, Linux, budete muset nainstalovat [.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x).
+* Pro uživatele v Ubuntu 14.04, budete muset zajistit RSZ je aktuální – tento krok můžete provést spuštěním následujících příkazů a restartujte svůj počítač:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Pro uživatele v Ubuntu č. 17.04 budete muset nainstalovat GConf – to můžete provést spuštěním následujících příkazů a restartujte svůj počítač:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+
 ## <a name="version-100"></a>Verze 1.0.0
 16/04/2018
-
-### <a name="download-azure-storage-explorer-100"></a>Stažení Azure Storage Explorer 1.0.0
-- [Azure Storage Explorer 1.0.0 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage Explorer 1.0.0 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage Explorer 1.0.0 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Nová
 * Vylepšené ověřování, které umožňuje Storage Explorer chcete použít stejný účet úložiště jako Visual Studio 2017. Chcete-li tuto funkci použít, musíte znovu přihlášení k vašemu účtům a znovu nastavit filtrované předplatných.
@@ -135,28 +197,28 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
 * Metoda použitá k šifrování citlivých dat došlo ke změně. To může vést k některé z položek rychlý přístup museli jej znovu přidat, nebo někteří z vás připojit prostředky museli být znovu připojit.
 
 ### <a name="fixes"></a>Opravy
-* Někteří uživatelé za proxy podléhaly skupiny objektů blob nahrávání nebo stahování přerušeny 'Nelze přeložit' chybová zpráva. To byl opraven.
-* Podle potřeby přihlášení se při použití přímý odkaz, kliknutím na řádku "Přihlásit" by místní prázdné dialogové okno. To byl opraven.
+* Někteří uživatelé za proxy podléhaly skupiny objektů blob nahrávání nebo stahování přerušeny 'Nelze přeložit' chybová zpráva. Tento problém byl opraven.
+* Podle potřeby přihlášení se při použití přímý odkaz, kliknutím na řádku "Přihlášení" by místní prázdné dialogové okno. Tento problém byl opraven.
 * V systému Linux, pokud se nepodařilo spustit z důvodu selhání procesu GPU Storage Explorer zobrazí teď zpráva havárie, vás vyzval k použití ' – zakázat gpu, přepínače a Storage Explorer se automaticky restartuje s přepínačem povolena.
 * Zásady přístupu neplatný byly těžko identity v dialogovém okně zásad přístupu. Zásady přístupu neplatné ID jsou nyní červeně pro větší přehled.
-* Protokol aktivit by měla mít někdy velké oblasti mezery mezi různé části aktivity. To byl opraven.
+* Protokol aktivit by měla mít někdy velké oblasti mezery mezi různé části aktivity. Tento problém byl opraven.
 * V editoru dotazů tabulky pokud zbývající klauzuli časové razítko v neplatném stavu a pak se pokusila upravit jinou klauzuli editoru ukotvením. Editor obnoví klauzuli časové razítko poslední platný stav při zjištění změny v jiné klauzuli.
 * Pokud jste pozastaví při psaní do vyhledávacího dotazu ve stromovém zobrazení, se začne hledání a fokus by odcizení v textovém poli. Nyní je třeba explicitně spustit hledání po stisknutí klávesy, zadejte"nebo kliknutím na tlačítko start vyhledávání.
-* Příkaz získat podpis sdíleného přístupu by se někdy zakázáno, pokud kliknete pravým tlačítkem na soubor do sdílené složky. To byl opraven.
+* Příkaz získat podpis sdíleného přístupu by se někdy zakázáno, pokud kliknete pravým tlačítkem na soubor do sdílené složky. Tento problém byl opraven.
 * Pokud uzel stromu prostředků s fokusem byl filtrovány při hledání, nelze kartě do stromu prostředků a použijte klávesy se šipkami přejděte stromu prostředků. Nyní Pokud uzel stromu cílených prostředků skryt, první uzel ve stromu prostředků bude automaticky zaměřit.
-* Navíc oddělovače by se někdy zobrazovat v panelu nástrojů editoru. To byl opraven.
-* Textové pole s popisem cesty někdy k přetečení. To byl opraven.
-* Editory objektů Blob a sdílenou složku by někdy neustále aktualizovat při nahrávání mnoho souborů najednou. To byl opraven.
+* Navíc oddělovače by se někdy zobrazovat v panelu nástrojů editoru. Tento problém byl opraven.
+* Textové pole s popisem cesty někdy k přetečení. Tento problém byl opraven.
+* Editory objektů Blob a sdílenou složku by někdy neustále aktualizovat při nahrávání mnoho souborů najednou. Tento problém byl opraven.
 * Funkci "Složky statistika" měl žádný účel v zobrazení Správa snímky sdílené složky souborů. Teď byl zakázán.
-* Nabídka soubor v systému Linux, se neobjevil. To byl opraven.
+* Nabídka soubor v systému Linux, se neobjevil. Tento problém byl opraven.
 * Při nahrávání složku pro sdílenou složku, ve výchozím nastavení, byly nahrát obsah složky. Výchozí chování je nyní nahrát obsah složky do odpovídající složky ve sdílené složce.
-* Uspořádání tlačítek v dialogových oknech několik měl obrácený. To byl opraven.
+* Uspořádání tlačítek v dialogových oknech několik měl obrácený. Tento problém byl opraven.
 * Různé zabezpečení související s opravy.
 
 ### <a name="known-issues"></a>Známé problémy
 * Ve výjimečných případech můžou uváznout stromu zaměřit na rychlý přístup. Chcete-li unstick fokus, můžete aktualizovat vše.
 * Pokud je cílem zásobník Azure, odesílání určité soubory jako doplňovací objekty BLOB může selhat.
-* Po kliknutí na tlačítko Storno"na úlohu, může trvat nějakou dobu tuto úlohu zrušit. To je proto zde používáme popsané řešení filtru Storno. 
+* Po kliknutí na tlačítko Storno"na úlohu, může trvat nějakou dobu tuto úlohu zrušit. To je proto zde používáme popsané řešení filtru Storno.
 * Pokud si zvolíte nesprávný certifikát PIN kód nebo čipová karta, je potřeba restartovat, aby bylo možné používat Storage Explorer zapomněli rozhodnutí.
 * Přejmenování objekty BLOB (samostatně nebo v kontejneru objektů blob přejmenovat) nezachovává snímky. Během přejmenovat se zachovají všechny ostatní vlastnosti a metadat pro objekty BLOB, soubory a entity.
 * I když zásobník Azure aktuálně nepodporuje sdílených složek, sdílených složek uzel se objeví stále v připojené účtu úložiště Azure zásobníku.
@@ -185,14 +247,9 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
 ## <a name="version-096"></a>Verze 0.9.6
 02/28/2018
 
-### <a name="download-azure-storage-explorer-096-preview"></a>Stažení Azure Storage Explorer 0.9.6 (Preview)
-- [Azure Storage Explorer (Preview) 0.9.6 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage Explorer (Preview) 0.9.6 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage Explorer (Preview) 0.9.6 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
-
 ### <a name="fixes"></a>Opravy
-* Problém zabránila očekávané objektů BLOB nebo soubory není uvedena v editoru. To byl opraven.
-* Problém způsobila přepínání mezi snímku pohledů pro zobrazení položek nesprávně. To byl opraven.
+* Problém zabránila očekávané objektů BLOB nebo soubory není uvedena v editoru. Tento problém byl opraven.
+* Problém způsobila přepínání mezi snímku pohledů pro zobrazení položek nesprávně. Tento problém byl opraven.
 
 ### <a name="known-issues"></a>Známé problémy
 * Storage Explorer nepodporuje účty služby AD FS.
@@ -225,11 +282,6 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
 
 ## <a name="version-095"></a>Verze 0.9.5
 02/06/2018
-
-### <a name="download-azure-storage-explorer-095-preview"></a>Stažení Azure Storage Explorer 0.9.5 (Preview)
-- [Azure Storage Explorer (Preview) 0.9.5 pro Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage Explorer (Preview) 0.9.5 pro Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage Explorer (Preview) 0.9.5 pro Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>Nová
 
@@ -280,11 +332,6 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
 ## <a name="version-094-and-093"></a>Verze 0.9.4 a 0.9.3
 01/21/2018
 
-### <a name="download-azure-storage-explorer-094-preview"></a>Stažení Azure Storage Explorer 0.9.4 (Preview)
-* [Stažení Azure Storage Explorer (Preview) 0.9.4 pro Windows](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [Stažení Azure Storage Explorer (Preview) 0.9.4 pro Mac](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [Stažení Azure Storage Explorer (Preview) 0.9.4 pro Linux](https://go.microsoft.com/fwlink/?LinkId=809308)
-
 ### <a name="new"></a>Nová
 * Vaše stávající okno Průzkumníka úložiště bude znovu použít při:
     * Otevírání přímé odkazy vygenerovaných Storage Explorer.
@@ -295,9 +342,9 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
     * Pro počítače Mac je možnost "nové okno, v nabídce aplikace.
 
 ### <a name="fixes"></a>Opravy
-* Vyřešený problém zabezpečení. Proveďte upgrade 0.9.4 na vám nejdřívější pohodlí.
+* Vyřešený problém zabezpečení. Proveďte upgrade 0.9.4 na nejbližší usnadnění práce.
 * Původní aktivity nebyly se odpovídajícím způsobem vyčistit. To vliv na výkon dlouhotrvající úlohy. Že jsou teď ještě čistí správně.
-* Akce zahrnující velkého počtu souborů a adresářů by způsobilo příležitostně Storage Explorer chcete ukotvit. Požadavky na Azure pro sdílené složky jsou nyní trottled k omezení využití prostředků systému.
+* Akce zahrnující velkého počtu souborů a adresářů by způsobilo příležitostně Storage Explorer chcete ukotvit. Požadavky na Azure pro sdílené složky jsou nyní omezena k omezení využití prostředků systému.
 
 ### <a name="known-issues"></a>Známé problémy
 * Storage Explorer nepodporuje účty služby AD FS.
@@ -332,7 +379,7 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
 
 ### <a name="hotfixes"></a>Opravy hotfix
 * Při úpravě hodnoty Edm.DateTime pro entity tabulky v závislosti na místní časové pásmo nebyly možné změny neočekávaná data. Editor teď používá pole prostý text, poskytuje přesné a konzistentní kontrolu nad Edm.DateTime hodnoty.
-* Nahrávání nebo stahování skupinu objektů BLOB při připojené k název a klíč se nespustí. To byl opraven.
+* Nahrávání nebo stahování skupinu objektů BLOB při připojené k název a klíč se nespustí. Tento problém byl opraven.
 * Dříve Storage Explorer by pouze vyzve k novému ověření starý účet, pokud jeden nebo více odběrů na účet byl vybrán. Nyní Storage Explorer zobrazí výzvu i v případě, že účet je plně odfiltrována.
 * V doméně koncové body Azure US Government byla chybná. Byl opraven.
 * Tlačítko použít na panelu Spravovat účty se někdy těžko klikněte na tlačítko. K tomu by už dojít.
@@ -357,7 +404,7 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
 
 ### <a name="fixes"></a>Opravy
 * Pokud jste se pokusili otevřít nebo stažení objektů blob s neplatným názvem souboru systému Windows, operace selže. Storage Explorer bude nyní zjistí, jestli název objektu blob je neplatný a požádejte, pokud chcete zakódovat je nebo přeskočit objektu blob. Storage Explorer taky bude zjišťovat, pokud název souboru zdá být zakódován a zeptá, pokud chcete dekódovat před nahráním.
-* Během nahrávání objekt blob se editor pro cílový kontejner objektu blob nebude někdy aktualizovat správně. To byl opraven.
+* Během nahrávání objekt blob se editor pro cílový kontejner objektu blob nebude někdy aktualizovat správně. Tento problém byl opraven.
 * Který poklesl podporu pro několik formy připojovací řetězce a identifikátory URI SAS. Jsme vyřešili všechny známé problémy, ale odešlete názor, pokud dojde k další problémy.
 * Oznámení o aktualizaci bylo přerušeno pro některé uživatele v 0.9.0. Tento problém byl opraven a u uživatelů, vliv chyb, můžete ručně stáhnout nejnovější verzi Storage Explorer [zde](https://azure.microsoft.com/features/storage-explorer/).
 
@@ -411,7 +458,7 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
 
 ### <a name="fixes"></a>Opravy
 * Pokud jste se pokusili otevřít nebo stažení objektů blob s neplatným názvem souboru systému Windows, operace selže. Storage Explorer bude nyní zjistí, jestli název objektu blob je neplatný a požádejte, pokud chcete zakódovat je nebo přeskočit objektu blob. Storage Explorer taky bude zjišťovat, pokud název souboru zdá být zakódován a zeptá, pokud chcete dekódovat před nahráním.
-* Během nahrávání objekt blob se editor pro cílový kontejner objektu blob nebude někdy aktualizovat správně. To byl opraven.
+* Během nahrávání objekt blob se editor pro cílový kontejner objektu blob nebude někdy aktualizovat správně. Tento problém byl opraven.
 * Který poklesl podporu pro několik formy připojovací řetězce a identifikátory URI SAS. Jsme vyřešili všechny známé problémy, ale odešlete názor, pokud dojde k další problémy.
 * Oznámení o aktualizaci bylo přerušeno pro některé uživatele v 0.9.0. Tento problém byl opraven a u uživatelů, vliv chyb, můžete ručně stáhnout nejnovější verzi Storage Explorer [sem](https://azure.microsoft.com/features/storage-explorer/)
 
@@ -521,7 +568,7 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
 #### <a name="fixes"></a>Opravy
 
 * Pevná: Odeslání souboru měl vysokou možnost, že nedostatku paměti
-* Opravené: Můžete teď přihlásit pomocí PIN kódu nebo čipová karta
+* Pevná: Můžete teď přihlášení s PIN kód nebo čipová karta
 * Pevná: Otevřete portálu teď funguje s Azure China, Azure v Německu, Azure US Government a Azure zásobníku
 * Pevná: Při odesílání do složky na kontejner objektů blob, "Neplatnou operaci" by někdy dojde k chybě
 * Pevná: Vybrat vše zakázal při správě snímků
@@ -896,7 +943,7 @@ Tento článek obsahuje poznámky k verzi pro Azure Storage Explorer 1.0.0 verzi
 #### <a name="new"></a>Nová
 
 * systému macOS a verze systému Windows
-* Přihlaste se k zobrazení účtů úložiště – pomocí účtu organizace, Microsoft Account, 2FA atd.
+* Přihlaste se do zobrazení účtů úložiště – pomocí účtu organizace, Microsoft Account, 2FA atd.
 * Vývoj pro místní úložiště (pomocí emulátoru úložiště pouze pro systém Windows)
 * Azure Resource Manager a klasický podporu prostředků
 * Vytvářet a odstraňovat objekty BLOB, fronty nebo tabulky

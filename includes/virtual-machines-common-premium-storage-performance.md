@@ -14,10 +14,10 @@ Tento článek vám pomůže odpovědí následující běžné otázky o optima
 
 Uvádíme těchto pokynů speciálně pro Storage úrovně Premium, protože úlohy běžící na Storage úrovně Premium jsou vysoce citlivých výkonu. Kde je to vhodné uvádíme příklady. Některé z těchto pokynů můžete použít k aplikacím spuštěným na virtuální počítače IaaS s disky úložiště Standard Storage.
 
-Než začnete, pokud začínáte používat úložiště úrovně Premium, nejdřív přečíst [úložiště Premium: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md) a [a cíle výkonnosti služby Azure Storage Scalability](../articles/storage/common/storage-scalability-targets.md) články.
+Než začnete, pokud začínáte používat úložiště úrovně Premium, nejdřív přečíst [úložiště Premium: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md) a [Azure úložiště škálovatelnost a cíle výkonnosti](../articles/storage/common/storage-scalability-targets.md)články.
 
 ## <a name="application-performance-indicators"></a>Ukazatele výkonu aplikace
-Jsme vyhodnocení, zda aplikace pracuje správně nebo není pomocí, jako jsou ukazatele výkonu, jak rychle aplikace je zpracování požadavku uživatele, kolik dat aplikace zpracovává každý požadavek, kolik požadavků je aplikaci zpracování v určitou dobu dobu, jak dlouho má uživatel k čekat na odpověď po odeslání žádosti. Technické podmínky pro tyto ukazatele výkonu jsou IOP, propustnosti nebo šířky pásma a latence.
+Jsme vyhodnocení, zda aplikace pracuje správně nebo není pomocí, jako jsou ukazatele výkonu, jak rychle aplikace je zpracování požadavku uživatele, kolik dat aplikace zpracovává každý požadavek, kolik požadavků aplikace zpracovává v konkrétní dobu, jak dlouho má uživatel k čekat na odpověď po odeslání žádosti. Technické podmínky pro tyto ukazatele výkonu jsou IOP, propustnosti nebo šířky pásma a latence.
 
 V této části se budeme zabývat běžné ukazatele výkonu v rámci služby Storage úrovně Premium. V následující části, shromažďování požadavky na aplikace, se dozvíte, jak k měření tyto ukazatele výkonu pro vaši aplikaci. Později v optimalizace výkonu aplikací se dozvíte o faktorů, které ovlivňují tyto ukazatele výkonu a doporučení k optimalizaci je.
 
@@ -162,7 +162,7 @@ Když spustíte navrhování aplikace, jeden z nejdůležitějších věcí, kte
 
 Vysoká škálování virtuálních počítačů jsou k dispozici v různých velikostech s různým počtem jader procesoru, paměti, operačního systému a velikost dočasné disku. Každý velikost virtuálního počítače má také maximální počet datových disků, které lze připojit k virtuálnímu počítači. Proto zvolené velikost virtuálního počítače bude mít vliv na tom, kolik zpracování, paměti, a kapacitu úložiště je k dispozici pro vaši aplikaci. Taky ovlivňuje výpočetní a náklady na úložiště. V následující tabulce jsou specifikace největší velikost virtuálního počítače v řady DS, DSv2 series a GS řady:
 
-| Velikost virtuálního počítače | Procesorová jádra | Memory (Paměť) | Velikosti disků virtuálních počítačů | Max. Datové disky | Velikost mezipaměti | IOPS | Omezení šířky pásma vstupně-výstupní mezipaměti |
+| Velikost virtuálního počítače | Procesorová jádra | Memory (Paměť) | Velikosti disků virtuálních počítačů | Max. datové disky | Velikost mezipaměti | IOPS | Omezení šířky pásma vstupně-výstupní mezipaměti |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Standard_DS14 |16 |112 GB |OPERAČNÍHO SYSTÉMU = 1023 GB <br> Místní SSD = 224 GB |32 |576 GB |50 000 IOPS <br> 512 MB za sekundu |4000 IOPS a 33 MB za sekundu |
 | Standard_GS5 |32 |448 GB |OPERAČNÍHO SYSTÉMU = 1023 GB <br> Místní SSD = 896 GB |64 |4224 GB |80 000 IOPS <br> 2 000 MB za sekundu |5 000 IOPS a 50 MB za sekundu |
@@ -239,14 +239,14 @@ Je potřeba povolit mezipaměť na správnou sadu disků. Tom, jestli by měl po
 | **Typ disku** | **Výchozí nastavení mezipaměti** |
 | --- | --- |
 | Disk OS |ReadWrite |
-| Datový disk |Žádný |
+| Datový disk |Jen pro čtení |
 
 Následují nastavení mezipaměti doporučené disku pro datové disky
 
 | **Nastavení ukládání do mezipaměti na disku** | **Doporučení ohledně použití tohoto nastavení** |
 | --- | --- |
 | Žádný |Konfigurace mezipaměti hostitele jako None jen pro zápis a zápis náročné disků. |
-| ReadOnly |Konfigurace mezipaměti hostitele jako jen pro čtení pro disky jen pro čtení a zápisu pro čtení. |
+| Jen pro čtení |Konfigurace mezipaměti hostitele jako jen pro čtení pro disky jen pro čtení a zápisu pro čtení. |
 | ReadWrite |Konfigurace mezipaměti hostitele jako ReadWrite pouze v případě, že vaše aplikace zpracovává správně zápis data uložená v mezipaměti do trvalé disků v případě potřeby. |
 
 *Jen pro čtení*  
@@ -569,8 +569,7 @@ Získat maximální kombinovat pro čtení a zápisu propustnosti, použít vět
 ## <a name="next-steps"></a>Další kroky
 Další informace o službě Azure Premium Storage:
 
-* 
-  [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md)  
+* [Premium Storage: Vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure](../articles/virtual-machines/windows/premium-storage.md)  
 
 Pro uživatele systému SQL Server, přečtěte si článek na nejlepší postupy z hlediska výkonu pro SQL Server:
 

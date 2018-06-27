@@ -1,3 +1,20 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: storage
+author: ramankumarlive
+ms.service: storage
+ms.topic: include
+ms.date: 06/05/2018
+ms.author: ramankum
+ms.custom: include file
+ms.openlocfilehash: 5cbe6f1f8f15e9da8e1fe6961d3da9b9e2a31e4b
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34806379"
+---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Vysoce výkonné úložiště Premium a spravované disky pro virtuální počítače
 Azure Premium Storage nabízí podporu vysoce výkonné, nízkou latencí disku pro virtuální počítače (VM) s vstupní a výstupní (I/O)-zatížení s intenzivním. Disky virtuálních počítačů, které používají úložiště Premium ukládat data do disků SSD (Solid-State Drive). Pokud chcete využít výhod rychlosti a výkonu prémiové disky úložiště, můžete migrovat existující disky virtuálních počítačů do úložiště úrovně Premium.
 
@@ -61,7 +78,7 @@ Zde jsou některé funkce úložiště Premium Storage:
 
 ## <a name="supported-vms"></a>Podporované virtuální počítače
 
-Premium Storage podporuje B-series, DS-series, DSv2-series, DSv3-series, GS-series, Ls-series, M-series a virtuálních počítačů služby Fs-series. Můžete použít úložiště standard a premium disků s těmito typy virtuálních počítačů. Disky úložiště premium nelze použít s řadou virtuálních počítačů, které nejsou Premium úložiště kompatibilní.
+Premium Storage podporuje B-series, DS-series, DSv2-series, DSv3-series, Esv3-series, GS-series, Ls-series, M-series a virtuálních počítačů služby Fs-series. Můžete použít úložiště standard a premium disků s těmito typy virtuálních počítačů. Disky úložiště premium nelze použít s řadou virtuálních počítačů, které nejsou Premium úložiště kompatibilní.
 
 
 Informace o typech a velikostech virtuálních počítačů v Azure pro Windows najdete v tématu věnovaném [velikostem virtuálních počítačů s Windows](../articles/virtual-machines/windows/sizes.md). Informace o typech a velikostech virtuálních počítačů v Azure pro Linux najdete v tématu věnovaném [velikostem virtuálních počítačů s Linuxem](../articles/virtual-machines/linux/sizes.md).
@@ -85,7 +102,7 @@ Toto jsou některé funkce služby DS-series, DSv2-series, GS-series, Ls-series 
     >
     > 
 
-* **Cache**
+* **Mezipaměti**
 
     Virtuální počítače v velikost řady, která podporují službu Premium Storage mít jedinečné funkce ukládání do mezipaměti pro vysoké úrovně propustnosti a latence. Ukládání do mezipaměti schopností překračuje základní výkon disku úložiště premium. Můžete nastavit zásady na prémiové disky úložiště pro ukládání do mezipaměti disku **jen pro čtení**, **ReadWrite**, nebo **žádné**. Disk výchozí zásady ukládání do mezipaměti je **jen pro čtení** pro všechny datové disky premium a **ReadWrite** pro disky operačního systému. Pro optimální výkon pro vaši aplikaci použijte nastavení správné mezipaměti. Například pro náročné pro čtení nebo jen pro čtení datových disků, jako je například datové soubory SQL serveru, nastavte disku zásady ukládání do mezipaměti **jen pro čtení**. Pro náročné zápisu nebo pouze pro zápis datových disků, jako jsou soubory protokolu serveru SQL Server, nastavte disku ukládání do mezipaměti zásady **žádné**. Další informace o optimalizaci návrhu s Premium Storage najdete v tématu [návrh z hlediska výkonu Storage úrovně Premium](../articles/virtual-machines/windows/premium-storage-performance.md).
 

@@ -20,9 +20,158 @@
     - name: Seznámení s Azure Policy (praktická cvičení)
       href: 'https://www.microsoft.com/handsonlabs/SelfPacedLabs/?storyId=story://Content-Private/content/sp-azuregovernance/1-azpolicy/a-policy'
 - name: Ukázky
+  href: json-samples.md
   items:
-    - name: Ukázky Azure Policy
-      href: json-samples.md
+    - name: Obecné
+      items:
+        - name: Pojmenování
+          items:
+            - name: Povolení více vzorů s názvy
+              href: scripts/allow-multiple-name-patterns.md
+            - name: Vyžadování vzoru s podmínkou like
+              href: scripts/enforce-like-pattern.md
+            - name: Vyžadování shody se vzorem
+              href: scripts/enforce-match-pattern.md
+            - name: Vyžadování shody značky se vzorem
+              href: scripts/enforce-tag-match-pattern.md
+        - name: Značky
+          items:
+            - name: Zavedení značky a její výchozí hodnoty
+              href: scripts/apply-tag-def-val.md
+            - name: Iniciativa zásad fakturačních značek
+              href: scripts/billing-tags-policy-init.md
+            - name: Vynucovat použití značky a její hodnoty
+              href: scripts/enforce-tag-val.md
+            - name: Vynucení značky a její hodnoty ve skupinách prostředků
+              href: scripts/enforce-tag-rg.md
+        - name: Umístění
+          items:
+            - name: Povolená umístění
+              href: scripts/allowed-locs.md
+        - name: Typy prostředků
+          items:
+            - name: Povolené typy prostředků
+              href: scripts/allowed-res-types.md
+            - name: Nepovolené typy prostředků
+              href: scripts/not-allowed-res-type.md
+    - name: Compute
+      items:
+        - name: Virtuální počítače
+          items:
+            - name: Povolení vlastní image virtuálního počítače ze skupiny prostředků
+              href: scripts/allow-custom-vm-image.md
+            - name: Povolené skladové položky účtů úložišť a virtuálních počítačů
+              href: scripts/allowed-skus-storage.md
+            - name: Schválené image virtuálních počítačů
+              href: scripts/allowed-custom-images.md
+            - name: 'Auditování, když neexistuje rozšíření'
+              href: scripts/audit-ext-not-exist.md
+            - name: Nepovolená rozšíření virtuálního počítače
+              href: scripts/not-allowed-vm-ext.md
+        - name: Škálovací sady virtuálních počítačů
+          items:
+            - name: 'Audit virtuálního počítače, který nepoužívá spravovaný disk'
+              href: scripts/create-vm-managed-disk.md
+            - name: 'Vytvoření virtuálního počítače, který používá spravovaný disk'
+              href: scripts/use-managed-disk-vm.md
+            - name: Odepření zvýhodněného hybridního využití
+              href: scripts/deny-hybrid-use.md
+            - name: Povolení jenom určité image platformy virtuálního počítače
+              href: scripts/allow-certain-vm-image.md
+    - name: Data Lake
+      items:
+        - name: Vynucení šifrování Data Lake Store
+          href: scripts/enforce-datalakestore-encryption.md
+    - name: Monitorování
+      items:
+        - name: Auditování nastavení diagnostiky
+          href: scripts/audit-diag-setting.md
+    - name: Síť
+      items:
+        - name: Síťová rozhraní
+          items:
+            - name: NSG X ve všech síťových rozhraních
+              href: scripts/nsg-on-nic.md
+            - name: Použití schválené podsítě pro síťová rozhraní virtuálních počítačů
+              href: scripts/use-approved-subnet-vm-nics.md
+            - name: Použití schválené virtuální sítě pro síťová rozhraní virtuálních počítačů
+              href: scripts/use-approved-vnet-vm-nics.md
+        - name: Virtuální sítě
+          items:
+            - name: Povolené skladové položky aplikační brány
+              href: scripts/allowed-app-gate-sku.md
+            - name: Blokování partnerských vztahů se sítí ER
+              href: scripts/no-peering-er-net.md
+            - name: Bez tabulky směrování definované uživatelem
+              href: scripts/no-user-def-route-table.md
+            - name: NSG X ve všech podsítích
+              href: scripts/nsg-on-subnet.md
+            - name: Použití schválené podsítě pro síťová rozhraní virtuálních počítačů
+              href: scripts/use-approved-subnet-vm-nics.md
+            - name: Použití schválené virtuální sítě pro síťová rozhraní virtuálních počítačů
+              href: scripts/use-approved-vnet-vm-nics.md
+        - name: Skupiny zabezpečení sítě
+          items:
+            - name: NSG X ve všech síťových rozhraních
+              href: scripts/nsg-on-nic.md
+            - name: NSG X ve všech podsítích
+              href: scripts/nsg-on-subnet.md
+        - name: ExpressRoute
+          items:
+            - name: Povolená šířka pásma pro ExpressRoute
+              href: scripts/allowed-er-band.md
+            - name: Povolené skladové položky Express Route
+              href: scripts/allowed-er-skus.md
+            - name: Povolené umístění partnerského vztahu pro Express Route
+              href: scripts/allowed-peering-er.md
+        - name: Sledovací procesy sítě
+          items:
+            - name: 'Provedení auditu, pokud oblast nemá povolenou službu Network Watcher'
+              href: scripts/net-watch-not-enabled.md
+        - name: Application Gateway
+          items:
+            - name: Povolené skladové položky aplikační brány
+              href: scripts/allowed-app-gate-sku.md
+    - name: SQL
+      items:
+        - name: SQL Servery
+          items:
+            - name: 'Auditování, když není žádný správce Azure Active Directory'
+              href: scripts/audit-no-aad-admin.md
+            - name: Audit nastavení detekce hrozeb na úrovni serveru
+              href: scripts/audit-sql-ser-threat-det-setting.md
+            - name: Audit nastavení auditování SQL Serveru
+              href: scripts/sql-server-audit.md
+            - name: Audit nastavení auditování na úrovni SQL Serveru
+              href: scripts/audit-sql-ser-leve-audit-setting.md
+            - name: Vyžadovat SQL Server verze 12.0
+              href: scripts/req-sql-12.md
+        - name: Databáze SQL
+          items:
+            - name: Povolené skladové položky pro databáze SQL
+              href: scripts/allowed-sql-db-skus.md
+            - name: Audit nastavení detekce hrozeb na úrovni databáze SQL
+              href: scripts/audit-db-threat-det-setting.md
+            - name: Audit šifrování databáze SQL
+              href: scripts/sql-database-encryption-audit.md
+            - name: Audit nastavení auditování na úrovni databáze SQL
+              href: scripts/audit-sql-db-audit-setting.md
+            - name: Auditování stavu transparentního šifrování dat
+              href: scripts/audit-trans-data-enc-status.md
+    - name: Úložiště
+      items:
+        - name: Povolené skladové položky pro účet úložiště a virtuální počítače
+          href: scripts/allowed-skus-storage.md
+        - name: Povolené skladové položky účtu úložiště
+          href: scripts/allowed-stor-acct-skus.md
+        - name: Odepření studených úrovní přístupu pro účty úložiště
+          href: scripts/deny-cool-access-tiering.md
+        - name: Zajištění výhradně provozu HTTPS pro účet úložiště
+          href: scripts/ensure-https-stor-acct.md
+        - name: Zajištění šifrování souborů úložiště
+          href: scripts/ensure-store-file-enc.md
+        - name: Povinné šifrování účtu úložiště
+          href: scripts/req-store-acct-enc.md
 - name: Koncepty
   items:
     - name: Struktura definic Azure Policy

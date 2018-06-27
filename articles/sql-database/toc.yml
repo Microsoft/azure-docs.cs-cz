@@ -74,9 +74,9 @@
       href: sql-database-powershell-samples.md
 - name: Koncepty
   items:
-    - name: Úrovně služeb a prostředky
+    - name: Prostředky a model nákupu
       items:
-        - name: Úrovně služby
+        - name: Modely nákupu
           href: sql-database-service-tiers.md
         - name: Model na základě virtuálních jader
           href: sql-database-service-tiers-vcore.md

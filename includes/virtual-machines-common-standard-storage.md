@@ -1,22 +1,39 @@
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: storage
+author: yuemlu
+ms.service: storage
+ms.topic: include
+ms.date: 06/05/2018
+ms.author: yuemlu
+ms.custom: include file
+ms.openlocfilehash: 4e62342a32456787863da775ea98df178ab1d559
+ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/05/2018
+ms.locfileid: "34806294"
+---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Nákladově efektivní úložiště Standard a nespravované a spravované disky virtuálních počítačů Azure
 
-Azure Standard Storage nabízí podporu spolehlivou a cenově disků pro virtuální počítače spuštěné úlohy kterému latence nevadí. Podporuje také objekty BLOB, tabulky, fronty a soubory. S použitím standardního úložiště jsou data uložena v pevných disků (HDD). Při práci s virtuálními počítači, můžete použít disky standardní úložiště pro scénáře vývoje/testování a méně důležité úlohy a prémiové disky úložiště pro kritické výrobní aplikace. Standardní úložiště je k dispozici ve všech oblastech Azure. 
+Azure Standard Storage nabízí podporu spolehlivou a cenově disků pro virtuální počítače spuštěné úlohy kterému latence nevadí. Podporuje také objekty BLOB, tabulky, fronty a soubory. S použitím standardního úložiště jsou data uložena v pevných disků (HDD). Při práci s virtuálními počítači, můžete použít standardní disky SSD a HDD pro scénáře vývoje/testování a méně důležité úlohy a prémiové disky SSD pro kritické výrobní aplikace. Standardní úložiště je k dispozici ve všech oblastech Azure. 
 
-Tento článek se zaměřuje na použití standardního úložiště pro disky virtuálních počítačů. Další informace o použití úložiště s objekty BLOB, tabulky, fronty a soubory, naleznete [Úvod do Storage](../articles/storage/common/storage-introduction.md).
+Tento článek se týká, používat standardní disky SSD a HDD. Další informace o použití úložiště s objekty BLOB, tabulky, fronty a souborů najdete v tématu [Úvod do Storage](../articles/storage/common/storage-introduction.md).
 
 ## <a name="disk-types"></a>Typy disků
 
 Existují dva způsoby, jak vytvořit standardní disky pro virtuální počítače Azure:
 
-**Nespravované disky**: Toto je původní metody, kde budete spravovat účty úložiště používá k ukládání souborů virtuálního pevného disku, které odpovídají disky virtuálních počítačů. Soubory VHD jsou uloženy jako objekty BLOB stránky v účtech úložiště. Nespravované disky lze připojit k libovolné velikosti virtuálního počítače Azure, včetně virtuálních počítačů, které především používat úložiště úrovně Premium, jako je například DSv2 a GS řady. Virtuální počítače Azure podporují připojení několik standardní disky, což až 256 TB úložiště na virtuální počítač.
+**Nespravované disky**: Tento typ disku je původní metody, kde budete spravovat účty úložiště používá k ukládání souborů virtuálního pevného disku, které odpovídají disky virtuálních počítačů. Soubory VHD jsou uloženy jako objekty BLOB stránky v účtech úložiště. Nespravované disky lze připojit k libovolné velikosti virtuálního počítače Azure, včetně virtuálních počítačů, které především používat úložiště úrovně Premium, jako je například DSv2 a GS řady. Virtuální počítače Azure podporují připojení několik standardní disky, což až 256 TB úložiště na virtuální počítač.
 
-[**Disky systému Azure spravované**](../articles/virtual-machines/windows/managed-disks-overview.md): Tato funkce spravuje účty úložiště pro vás použil pro disky virtuálních počítačů. Zadejte typ (Standard nebo Premium) a velikost disku je nutné, a Azure vytváří a spravuje disku za vás. Nemusíte si dělat starosti o uvedení disky napříč více účtů úložiště, aby se zajistilo, zůstat v limitech škálovatelnosti pro účty úložiště – Azure zpracovává, který pro vás.
+[**Disky systému Azure spravované**](../articles/virtual-machines/windows/managed-disks-overview.md): Tato funkce spravuje účty úložiště pro vás použil pro disky virtuálních počítačů. Zadejte typ (Premium SSD, standardní SSD nebo standardní HDD) a velikost disku je nutné, a Azure vytváří a spravuje disku za vás. Nemusíte si dělat starosti o uvedení disky napříč více účtů úložiště, aby se zajistilo, zůstat v limitech škálovatelnosti pro účty úložiště – Azure zpracovává, který pro vás.
 
 Přestože oba typy disků jsou k dispozici, doporučujeme používat spravované disky využívat výhod jejich řadu funkcí.
 
 Chcete-li začít s Azure Standard Storage, navštivte [začněte zadarmo](https://azure.microsoft.com/pricing/free-trial/). 
 
-Informace o tom, jak vytvořit virtuální počítač s spravované disky najdete v tématu jednu z následujících článků.
+Informace o tom, jak vytvořit virtuální počítač s spravované disky najdete v jednom z následujících článků.
 
 * [Vytvoření virtuálního počítače pomocí Resource Manageru a PowerShellu](../articles/virtual-machines/windows/quick-create-powershell.md)
 * [Vytvoření virtuálního počítače s Linuxem pomocí rozhraní příkazového řádku Azure CLI 2.0](../articles/virtual-machines/linux/quick-create-cli.md)
@@ -27,7 +44,9 @@ Podívejme se na některé funkce úložiště Standard Storage. Další podrobn
 
 **Standardní úložiště**: Azure Standard Storage podporuje disky Azure, objektů BLOB služby Azure, Azure Files, Azure tabulek a front Azure. Použít službu pro standardní úložiště, začínat [vytvoření účtu úložiště Azure](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account).
 
-**Disky úložiště Standard storage:** disky standardní úložiště lze připojit ke všem virtuálním počítačům Azure včetně velikost řady virtuálních počítačů použít s Storage úrovně Premium například DSv2 a GS řady. Standardní úložiště disku lze připojit pouze pro jeden virtuální počítač. Můžete však připojit nejméně jeden z těchto disků pro virtuální počítač, až počet maximální disků, které jsou definované pro velikost tohoto virtuálního počítače. V následující části na standardní úložiště škálovatelnost a cíle výkonnosti jsme popisují specifikace podrobněji. 
+**Standardní disky SSD:** standardní SSD disků poskytují větší spolehlivost výkon než standardní HDD disky a jsou nyní k dispozici ve verzi preview. Další informace o dostupnosti oblast standardní SSD disků najdete v tématu [dostupnost v oblastech standardní SSD disků (Preview)](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
+
+**Standardní disky HDD:** standardní HDD disky lze připojit ke všem virtuálním počítačům Azure včetně velikost řady virtuálních počítačů použít s Storage úrovně Premium například DSv2 a GS řady. Standardní HDD disku lze připojit pouze pro jeden virtuální počítač. Můžete však připojit nejméně jeden z těchto disků pro virtuální počítač, až počet maximální disků, které jsou definované pro velikost tohoto virtuálního počítače. V následující části na standardní úložiště škálovatelnost a cíle výkonnosti jsme popisují specifikace podrobněji.
 
 **Objekt blob stránky standardní**: objekty BLOB standardní stránky jsou používané pro udržení trvalé disky pro virtuální počítače a také být přístup přímo prostřednictvím REST podobně jako ostatní typy objektů BLOB Azure. [Objekty BLOB stránek](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) jsou kolekce 512 bajtů stránky optimalizované pro náhodné čtení a zápisu operace. 
 
@@ -93,7 +112,7 @@ Pokud se spravovaným diskem je připojen k virtuálnímu počítači, některé
 Při použití standardní úložiště, platí následující fakturace aspekty:
 
 * Velikost úložiště Standard storage nespravované disky nebo dat 
-* Standardní disky spravované
+* Spravované disky úrovně Standard
 * Standardní úložiště snímků
 * Přenosy odchozích dat
 * Transakce
@@ -120,11 +139,11 @@ Virtuální počítače s nespravované disky lze zálohovat pomocí služby Azu
 
 K vytvoření úlohy zálohování se zálohy založené na čase, snadno obnovení virtuálních počítačů a zásady uchovávání záloh můžete použít taky služba Azure Backup s spravované disky. Můžete získat další informace v [služby pomocí zálohování Azure pro virtuální počítače s spravované disky](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* [Úvod do Azure Storage](../articles/storage/common/storage-introduction.md)
+* [Seznámení se službou Azure Storage](../articles/storage/common/storage-introduction.md)
 
-* [Vytvoření účtu úložiště](../articles/storage/common/storage-create-storage-account.md)
+* [vytvořit účet úložiště](../articles/storage/common/storage-create-storage-account.md)
 
 * [Přehled služby Managed Disks](../articles/virtual-machines/linux/managed-disks-overview.md)
 

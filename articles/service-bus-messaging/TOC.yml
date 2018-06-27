@@ -6,6 +6,7 @@
       href: service-bus-messaging-overview.md
     - name: Porovnání služeb zasílání zpráv
       href: ../event-grid/compare-messaging-services.md
+      maintainContext: true
 - name: Šablony Rychlý start
   items:
     - name: Odeslání zpráv – PowerShell

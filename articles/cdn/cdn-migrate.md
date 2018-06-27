@@ -15,33 +15,29 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: v-deasim
 ms.custom: ''
-ms.openlocfilehash: 615f35c602f9a086bdc5c32b04a97efa368411a3
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 074dbb094e7ae2cd1f1719016928bd7348da3949
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308121"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958050"
 ---
 # <a name="migrate-an-azure-cdn-profile-from-standard-verizon-to-premium-verizon"></a>Migrace profilem Azure CDN společnosti Standard Verizon do Premium Verizon
 
-Azure Content Delivery Network (CDN) nabízí čtyři různých produktů, z nichž každý nabízí jiné funkce: 
-- **Azure CDN Standard od společnosti Microsoft**
-- **Standardní Azure CDN společnosti Akamai**
-- **Azure CDN Standard od společnosti Verizon**
-- **Azure CDN Premium od společnosti Verizon**.
+Když vytvoříte profil aplikace Azure Content Delivery Network (CDN) ke správě koncových bodů, Azure CDN nabízí čtyři různé produkty můžete vybírat. Informace o různých produktů a jejich funkce. k dispozici, najdete v článku [funkce produktu porovnat Azure CDN](cdn-features.md).
 
-Pokud používáte **Azure CDN Standard od společnosti Verizon** profilu spravovat koncové body CDN, máte možnost ho upgradovat na **Azure CDN Premium od společnosti Verizon** profilu a zároveň zachovat všechna vaše data.
-
-K upgradu **Azure CDN Standard od společnosti Verizon** profilu, kontaktujte [Microsoft Support](https://azure.microsoft.com/support/options/).
+Pokud jste vytvoříte **Azure CDN Standard od společnosti Verizon** profilu a používáte ke správě koncové body CDN, máte možnost ho upgradovat na **Azure CDN Premium od společnosti Verizon** profilu. Při upgradu, koncové body CDN a všechna vaše data se zachovají. 
 
 > [!IMPORTANT]
 > Jakmile jste jste upgradovali na **Azure CDN Premium od společnosti Verizon** profilu, není možné později ho převést zpět **Azure CDN Standard od společnosti Verizon** profilu.
 > 
 
+K upgradu **Azure CDN Standard od společnosti Verizon** profilu, kontaktujte [Microsoft Support](https://azure.microsoft.com/support/options/).
+
 ## <a name="profile-comparison"></a>Porovnání profilu
 **Azure CDN Premium od společnosti Verizon** profily mají následující klíčové rozdíly proti **Azure CDN Standard od společnosti Verizon** profily:
-- Pro určité funkce Azure CDN, jako [komprese](cdn-improve-performance.md), pravidla pro ukládání do mezipaměti a [geograficky filtrování](cdn-restrict-access-by-country.md), nemůžete použít rozhraní Azure CDN, musíte použít portálu Verizon prostřednictvím **spravovat**tlačítko.
-- Rozhraní API: Na rozdíl od Standard Verizon, nemůžete použít rozhraní API k ovládání těchto funkcí, které jsou přístupné z portálu Premium Verizon. Můžete však použít rozhraní API pro řízení další běžné funkce, například vytvoření nebo odstranění koncový bod, vyprazdňování/načítání prostředků v mezipaměti a povolení nebo zákaz vlastní doménu.
+- Pro určité funkce Azure CDN, jako [komprese](cdn-improve-performance.md), [ukládání do mezipaměti pravidla](cdn-caching-rules.md), a [geograficky filtrování](cdn-restrict-access-by-country.md), nemůžete použít rozhraní Azure CDN, musíte použít portálu Verizon prostřednictvím **Spravovat** tlačítko.
+- Rozhraní API: Na rozdíl od s Standard Verizon, nemůžete použít rozhraní API k ovládání těchto funkcí, které jsou přístupné z portálu Premium Verizon. Můžete však použít rozhraní API pro řízení další běžné funkce, například vytvoření nebo odstranění koncový bod, vyprazdňování/načítání prostředků v mezipaměti a povolení nebo zákaz vlastní doménu.
 - Ceny: Premium Verizon má jinou cenovou strukturu pro přenosy dat než Standard Verizon. Další informace najdete v tématu [Content Delivery Network ceny](https://azure.microsoft.com/pricing/details/cdn/).
 
 **Azure CDN Premium od společnosti Verizon** profily mají následující funkce:
@@ -54,7 +50,5 @@ K upgradu **Azure CDN Standard od společnosti Verizon** profilu, kontaktujte [M
 
 
 ## <a name="next-steps"></a>Další postup
-Podrobné porovnání funkcí produktu Azure CDN najdete v tématu [funkce Azure CDN produktu](Compare Azure CDN product features).
-
 Další informace o stroj pravidel najdete v tématu [odkaz na modul Azure CDN pravidla](cdn-rules-engine-reference.md).
 

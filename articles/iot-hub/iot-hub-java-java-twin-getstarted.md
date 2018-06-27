@@ -1,23 +1,20 @@
 ---
 title: Začínáme s Azure IoT Hub dvojčata zařízení (Java) | Microsoft Docs
 description: Jak používat dvojčata zařízení Azure IoT Hub přidat značky a pak použijte dotaz služby IoT Hub. Použití zařízení Azure IoT SDK pro jazyk Java k implementaci aplikace zařízení a sady SDK pro jazyk Java k implementaci aplikační služby, které přidá značky a spustí dotaz IoT Hub služby Azure IoT.
-services: iot-hub
-documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: dobett
-ms.openlocfilehash: 8611b55f6e4f33f8946d8c7c481163166d24049c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 96cad0fc7f387c5f0cb14996ae6ac015c104b81d
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016695"
 ---
 # <a name="get-started-with-device-twins-java"></a>Začínáme s dvojčata zařízení (Java)
 
@@ -26,7 +23,7 @@ ms.lasthandoff: 05/07/2018
 V tomto kurzu vytvoříte dvě aplikace konzoly v jazyce Java:
 
 * **Přidání dotazu značky**, back-end aplikaci Java, která přidá značky a dotazuje dvojčata zařízení.
-* **simulated-device**, zařízení aplikaci Java, která které připojuje ke službě IoT hub a jeho připojení sestavy podmínek použití hlášené vlastnost.
+* **simulated-device**, zařízení aplikaci Java, která se připojuje ke službě IoT hub a sestav stavu připojení při používání hlášené vlastnosti.
 
 > [!NOTE]
 > Článek [SDK služby Azure IoT](iot-hub-devguide-sdks.md) poskytuje informace o SDK služby Azure IoT, můžete použít k tvorbě aplikací, zařízení a back-end.
