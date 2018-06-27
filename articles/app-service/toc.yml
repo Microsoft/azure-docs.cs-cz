@@ -168,6 +168,8 @@
           href: app-service-configure-premium-tier.md
         - name: Horizontální navýšení kapacity na několik instancí
           href: ../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json
+        - name: Hostování s vysokou hustotou
+          href: app-service-high-density-hosting.md
     - name: Monitorování aplikace
       items:
         - name: Kvóty a výstrahy

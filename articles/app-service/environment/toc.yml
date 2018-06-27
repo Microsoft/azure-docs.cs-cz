@@ -64,8 +64,6 @@
           href: app-service-app-service-environment-network-architecture-overview.md
         - name: Vytvoření webové aplikace v ASEv1
           href: app-service-web-how-to-create-a-web-app-in-an-ase.md
-        - name: Hostování s vysokou hustotou
-          href: app-service-high-density-hosting.md
         - name: Připojení k back-endu
           href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
         - name: Konfigurace ExpressRoute
