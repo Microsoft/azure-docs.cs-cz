@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: fd610af3d1b29b78ef89b8f523ef880696031bf2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9cd23b0930accd23ba88be03bfed099aa3fc672e
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637646"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36333988"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-java"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT a čtení telemetrických dat z centra pomocí back-endové aplikace (Java)
 
@@ -68,7 +68,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Pokud si zvolíte jiný název zařízení, změňte ho také v ukázkových aplikacích, než je spustíte.
 
-1. Spuštěním následujícího příkazu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+2. Spuštěním následujícího příkazu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
@@ -76,7 +76,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Poznamenejte si připojovací řetězec zařízení, který vypadá nějak takto: `Hostname=...=`. Tuto hodnotu použijete později v tomto rychlém startu.
 
-1. Dále potřebujete _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_ a _primární klíč vlastníka centra IoT_ z centra IoT, abyste umožnili back-endové aplikaci připojit se k centru IoT a načíst zprávy. Následující příkazy načtou tyto hodnoty pro centrum IoT:
+3. Dále potřebujete _koncový bod kompatibilní s Event Hubs_, _cestu kompatibilní s Event Hubs_ a _primární klíč vlastníka centra IoT_ z centra IoT, abyste umožnili back-endové aplikaci připojit se k centru IoT a načíst zprávy. Následující příkazy načtou tyto hodnoty pro centrum IoT:
 
     ```azurecli-interactive
     az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
@@ -94,17 +94,17 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centr
 
 1. V okně terminálu přejděte do kořenové složky ukázkového projektu Java. Pak přejděte do složky **iot-hub\Quickstarts\simulated-device**.
 
-1. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java**.
+2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java**.
 
     Hodnotu proměnné `connString` nahraďte připojovacím řetězcem zařízení, který jste si předtím poznamenali. Změny pak uložte do souboru **SimulatedDevice.java**.
 
-1. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a sestavení aplikace simulovaného zařízení:
+3. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a sestavení aplikace simulovaného zařízení:
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. V okně terminálu spusťte následující příkazy pro spuštění aplikace simulovaného zařízení:
+4. V okně terminálu spusťte následující příkazy pro spuštění aplikace simulovaného zařízení:
 
     ```cmd/sh
     java -jar target/simulated-device-1.0.0-with-deps.jar
@@ -120,21 +120,22 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
 1. V jiném okně terminálu přejděte do kořenové složky ukázkového projektu Java. Potom přejděte ke složce **iot-hub\Quickstarts\read-d2c-messages**.
 
-1. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java**.
+2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java**. Aktualizujte následující proměnné a uložte provedené změny souboru.
 
-    Hodnotu proměnné `eventHubsCompatibleEndpoint` nahraďte koncovým bodem kompatibilním s Event Hubs, který jste si předtím poznamenali.
+    | Proměnná | Hodnota |
+    | -------- | ----------- |
+    | `eventHubsCompatibleEndpoint` | Hodnotu proměnné nahraďte koncovým bodem kompatibilním s Event Hubs, který jste si předtím poznamenali. |
+    | `eventHubsCompatiblePath`     | Hodnotu proměnné nahraďte cestou kompatibilní s Event Hubs, kterou jste si předtím poznamenali. |
+    | `iotHubSasKey`                | Hodnotu proměnné nahraďte primárním klíčem vlastníka centra IoT, který jste si předtím poznamenali. |
 
-    Hodnotu proměnné `eventHubsCompatiblePath` nahraďte cestou kompatibilní s Event Hubs, kterou jste si předtím poznamenali.
 
-    Hodnotu proměnné `iotHubSasKey` nahraďte primárním klíčem vlastníka centra IoT, který jste si předtím poznamenali. Změny potom uložte do souboru **ReadDeviceToCloudMessages.java**.
-
-1. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a sestavení back-endové aplikace:
+3. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a sestavení back-endové aplikace:
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. V okně terminálu spusťte následující příkazy pro spuštění back-endové aplikace:
+4. V okně terminálu spusťte následující příkazy pro spuštění back-endové aplikace:
 
     ```cmd/sh
     java -jar target/read-d2c-messages-1.0.0-with-deps.jar
@@ -146,9 +147,7 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud si chcete projít další rychlý start, zachovejte skupinu prostředků a centrum IoT pro pozdější použití.
-
-Pokud už centrum IoT nepotřebujete, odstraňte ho společně se skupinou prostředků na portálu. Provedete to výběrem skupiny prostředků **qs-iot-hub-rg**, která obsahuje vaše centrum IoT, a kliknutím na **Odstranit**.
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

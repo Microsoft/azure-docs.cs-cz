@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 5754a537b8a0bf0a93d6d54ba0ba78e5957ac87f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7bdc692104194bff4a25e6974ba72971af543cbf
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777470"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028995"
 ---
 # <a name="tutorial-push-notifications-to-chrome-apps-with-azure-notification-hubs"></a>Kurz: Zasílání nabízených oznámení aplikacím pro Chrome službou Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -400,7 +400,7 @@ Pro účely testování pošlete nabízené oznámení Chrome pomocí konzolové
    
         Install-Package Microsoft.Azure.NotificationHubs
    
-   Do projektu se <a href="http://nuget.org/packages/  WindowsAzure.ServiceBus/">balíčkem NuGet WindowsAzure.ServiceBus automaticky přidá odkaz na sadu Azure Service Bus SDK</a>.
+   Do projektu se <a href="http://nuget.org/packages/WindowsAzure.ServiceBus/">balíčkem NuGet WindowsAzure.ServiceBus automaticky přidá odkaz na sadu Azure Service Bus SDK</a>.
 4. Otevřete `Program.cs` a přidejte následující příkaz `using`:
    
         using Microsoft.Azure.NotificationHubs;
@@ -438,7 +438,7 @@ Pro účely testování pošlete nabízené oznámení Chrome pomocí konzolové
 V tomto kurzu jste poslali oznámení všem klientům registrovaným back-endem. Pokud se chcete naučit posílat nabízená oznámení určitým zařízením, pokračujte následujícím kurzem: 
 
 > [!div class="nextstepaction"]
->[Zasílání nabízených oznámení určitým zařízením](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
+>[Zasílání nabízených oznámení do konkrétních zařízení](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
 
 <!-- Images. -->
 [3]: ./media/notification-hubs-chrome-get-started/EnableGCM.png

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: c24c311f6ee446122fea7fd7699b34ab2ae8510c
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 0bb27c23850384501afec733d24f824346b8416b
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292836"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335471"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (.NET)
 
@@ -67,7 +67,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Pokud si zvolíte jiný název zařízení, změňte ho také v ukázkových aplikacích, než je spustíte.
 
-1. Spuštěním následujícího příkazu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+2. Spuštěním následujícího příkazu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
@@ -91,17 +91,17 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
 1. V okně terminálu přejděte do kořenové složky ukázkového projektu C#. Potom přejděte do složky **iot-hub\Quickstarts\simulated-device-2**.
 
-1. V libovolném textovém editoru otevřete soubor **SimulatedDevice.cs**.
+2. V libovolném textovém editoru otevřete soubor **SimulatedDevice.cs**.
 
-    Hodnotu proměnné `connectionString` nahraďte připojovacím řetězcem zařízení, který jste si předtím poznamenali. Změny pak uložte do souboru **SimulatedDevice.cs**.
+    Hodnotu proměnné `s_connectionString` nahraďte připojovacím řetězcem zařízení, který jste si předtím poznamenali. Změny pak uložte do souboru **SimulatedDevice.cs**.
 
-1. V okně terminálu spusťte následující příkazy pro instalaci požadovaných balíčků pro aplikaci simulovaného zařízení:
+3. V okně terminálu spusťte následující příkazy pro instalaci požadovaných balíčků pro aplikaci simulovaného zařízení:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. V okně terminálu spusťte následující příkazy pro sestavení a spuštění aplikace simulovaného zařízení:
+4. V okně terminálu spusťte následující příkazy pro sestavení a spuštění aplikace simulovaného zařízení:
 
     ```cmd/sh
     dotnet run
@@ -117,17 +117,17 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
 
 1. V jiném okně terminálu přejděte do kořenové složky ukázkového projektu C#. Potom přejděte do složky **iot-hub\Quickstarts\back-end-application**.
 
-1. V libovolném textovém editoru otevřete soubor **BackEndApplication.cs**.
+2. V libovolném textovém editoru otevřete soubor **BackEndApplication.cs**.
 
-    Hodnotu proměnné `connectionString` nahraďte připojovacím řetězcem služby, který jste si předtím poznamenali. Změny pak uložte do souboru **BackEndApplication.cs**.
+    Hodnotu proměnné `s_connectionString` nahraďte připojovacím řetězcem služby, který jste si předtím poznamenali. Změny pak uložte do souboru **BackEndApplication.cs**.
 
-1. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven pro back-endovou aplikaci:
+3. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven pro back-endovou aplikaci:
 
     ```cmd/sh
     dotnet restore
     ```
 
-1. V okně terminálu spusťte následující příkazy pro sestavení a spuštění back-endové aplikace:
+4. V okně terminálu spusťte následující příkazy pro sestavení a spuštění back-endové aplikace:
 
     ```cmd/sh
     dotnet run

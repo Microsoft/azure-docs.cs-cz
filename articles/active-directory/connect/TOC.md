@@ -47,7 +47,6 @@
 ##### [Aktuální omezení](active-directory-aadconnect-pass-through-authentication-current-limitations.md)
 ##### [Jak to funguje?](active-directory-aadconnect-pass-through-authentication-how-it-works.md)
 ##### [Upgrade agentů Preview](active-directory-aadconnect-pass-through-authentication-upgrade-preview-authentication-agents.md)
-##### [Inteligentní uzamčení](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [Nejčastější dotazy](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [Řešení problémů](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
 ##### [Podrobné informace o zabezpečení](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)

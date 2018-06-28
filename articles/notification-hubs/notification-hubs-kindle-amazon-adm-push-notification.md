@@ -15,19 +15,19 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: af2619a403046bd4f064b958df225e4d42a205f4
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 41319ba446994da1669e58e33008a943e74ab417
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776827"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331386"
 ---
 # <a name="get-started-with-notification-hubs-for-kindle-apps"></a>Začínáme s použitím Notification Hubs pro aplikace Kindle
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 V tomto kurzu zjistíte, jak používat Azure Notification Hubs k odesílání nabízených oznámení do aplikace Kindle. Vytvoříte prázdnou aplikaci pro Kindle, která přijímá nabízená oznámení službou ADM (Amazon Device Messaging).
 
-V tomto kurzu provedete následující úkoly, kterými vytvoříte/aktualizujete kód: 
+V tomto kurzu vytvoříte nebo aktualizujete kód tak, aby prováděl následující úlohy: 
 
 > [!div class="checklist"]
 > * Přidejte novou aplikaci do portálu pro vývojáře
@@ -42,7 +42,7 @@ V tomto kurzu provedete následující úkoly, kterými vytvoříte/aktualizujet
 ## <a name="prerequisites"></a>Požadavky
 
 * Potřebujete získat sadu Android SDK (za předpokladu, že používáte Eclipse) z <a href="http://go.microsoft.com/fwlink/?LinkId=389797">webu Androidu</a>.
-* Postupujte podle kroků v <a href="https://developer.amazon.com/appsandservices/resources/development-tools/ide-tools/tech-docs/01-setting-up-your-development-environment">Nastavení vašeho vývojového prostředí</a> pro nastavení vývojového prostředí pro Kindle.
+* Postupujte podle kroků v <a href="https://developer.amazon.com/docs/fire-tablets/ft-set-up-your-development-environment.html">Nastavení vašeho vývojového prostředí</a> pro nastavení vývojového prostředí pro Kindle.
 
 ## <a name="add-a-new-app-to-the-developer-portal"></a>Přidejte novou aplikaci do portálu pro vývojáře
 1. Nejprve vytvořte aplikaci na [portálu pro vývojáře Amazon].
@@ -290,7 +290,7 @@ static void Main(string[] args)
 V tomto kurzu jste poslali vysílané oznámení všem zařízením Kindle registrovaných back-endem. Pokud se chcete naučit posílat nabízená oznámení jenom určitým zařízením Kindle, pokračujte následujícím kurzem. V něm se dozvíte, jak posílat nabízená oznámení určitým zařízením s Androidem, ale stejnou logiku můžete použít i k zasílání nabízených oznámení určitým zařízením Kindle. 
 
 > [!div class="nextstepaction"]
->[Zasílání nabízených oznámení určitým zařízením](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
+>[Zasílání nabízených oznámení do konkrétních zařízení](notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md)
 
 <!-- URLs. -->
 [portálu pro vývojáře Amazon]: https://developer.amazon.com/home.html

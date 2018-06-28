@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: dbb4ce971e6504f33de82e31cf289a42a1640952
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 501a8f2dad0537f0288dfd6a6d7bedcac054ab86
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293165"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36332282"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-c"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT a čtení telemetrických dat z centra pomocí back-endové aplikace (C#)
 
@@ -88,7 +88,7 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu vašeho centr
 
 2. V libovolném textovém editoru otevřete soubor **SimulatedDevice.cs**.
 
-    Hodnotu proměnné `connectionString` nahraďte připojovacím řetězcem zařízení, který jste si předtím poznamenali. Změny pak uložte do souboru **SimulatedDevice.cs**.
+    Hodnotu proměnné `s_connectionString` nahraďte připojovacím řetězcem zařízení, který jste si předtím poznamenali. Změny pak uložte do souboru **SimulatedDevice.cs**.
 
 3. V okně terminálu spusťte následující příkazy pro instalaci požadovaných balíčků pro aplikaci simulovaného zařízení:
 
@@ -116,9 +116,9 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
     | Proměnná | Hodnota |
     | -------- | ----------- |
-    | `eventHubsCompatibleEndpoint` | Hodnotu proměnné nahraďte koncovým bodem kompatibilním s Event Hubs, který jste si předtím poznamenali. |
-    | `eventHubsCompatiblePath`     | Hodnotu proměnné nahraďte cestou kompatibilní s Event Hubs, kterou jste si předtím poznamenali. |
-    | `iotHubSasKey`                | Hodnotu proměnné nahraďte primárním klíčem vlastníka centra IoT, který jste si předtím poznamenali. |
+    | `s_eventHubsCompatibleEndpoint` | Hodnotu proměnné nahraďte koncovým bodem kompatibilním s Event Hubs, který jste si předtím poznamenali. |
+    | `s_eventHubsCompatiblePath`     | Hodnotu proměnné nahraďte cestou kompatibilní s Event Hubs, kterou jste si předtím poznamenali. |
+    | `s_iotHubSasKey`                | Hodnotu proměnné nahraďte primárním klíčem vlastníka centra IoT, který jste si předtím poznamenali. |
 
 3. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven pro back-endovou aplikaci:
 
