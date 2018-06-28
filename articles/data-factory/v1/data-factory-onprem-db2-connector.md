@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fc4ce0a2ae33e99ecede371d9f17fb9a63851f64
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 88e56f522545f9c1f38bf0d0fdbcebdc171c294b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622019"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046526"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Přesun dat z DB2 pomocí Azure Data Factory kopie aktivity
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-onprem-db2-connector.md)
-> * [Verze 2 – Preview](../connector-db2.md)
+> * [Verze 1](data-factory-onprem-db2-connector.md)
+> * [Verze 2 (aktuální verze)](../connector-db2.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [DB2 konektoru V2](../connector-db2.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [DB2 konektoru V2](../connector-db2.md).
 
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z databáze DB2 místně do úložiště dat. Můžete zkopírovat data do jakékoli úložiště, která je uvedena jako podporovaných jímku v [aktivity přesunu dat pro vytváření dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) článku. Toto téma je založený na článku objekt pro vytváření dat, která zobrazí přehled o přesun dat pomocí aktivity kopírování a jsou uvedeny kombinace podporované datové úložiště. 
@@ -88,7 +88,7 @@ Následující tabulka uvádí vlastnosti JSON, které jsou specifické pro DB2 
 | **schema** |Název schématu v databázi DB2. Tato vlastnost je malá a velká písmena. |Ne |
 | **authenticationType.** |Typ ověřování, který se používá k připojení k databázi DB2. Možné hodnoty jsou: anonymní, základní a systému Windows. |Ano |
 | **Uživatelské jméno** |Název pro uživatelský účet, pokud používáte ověřování Basic nebo Windows. |Ne |
-| **Heslo** |Heslo pro uživatelský účet. |Ne |
+| **heslo** |Heslo pro uživatelský účet. |Ne |
 | **gatewayName** |Název brány, kterou služba Data Factory měla použít pro připojení k místní databázi DB2. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
@@ -107,7 +107,7 @@ Pro aktivitu kopírování, pokud je zdroj typu **RelationalSource** (která zah
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| **Dotaz** |Pomocí vlastního dotazu přečíst data. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
+| **dotaz** |Pomocí vlastního dotazu přečíst data. |Řetězec dotazu SQL. Příklad: `"query": "select * from "MySchema"."MyTable""` |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
 
 > [!NOTE]
 > Schéma a tabulku názvy rozlišují malá a velká písmena. V příkazu dotazu, uzavřete názvy vlastností pomocí "" (dvojité uvozovky).

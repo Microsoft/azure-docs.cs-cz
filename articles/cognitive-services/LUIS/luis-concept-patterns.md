@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr
-ms.openlocfilehash: 58bfae51fda10d14d9b1c4ea34cc10345d9a90ac
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: c3c0d12bbbeec85d2cbf0daead49ee16ca7728fb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318054"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046254"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Vzory zvyšte přesnost předpovědi
 Vzory jsou navrženy a zvyšte tak přesnost při několik utterances jsou velmi podobné. Poskytnutím vzor pro utterance může obsahovat LEOŠ vysoce důvěryhodných předpovědi. 
@@ -42,6 +42,9 @@ Vzory použít kombinaci technologie předpovědi. Nastavení pro šablony utter
 
 ## <a name="patterns-do-not-improve-entity-detection"></a>Vzory pro zlepšení detekce entity
 Zatímco vzory vyžadují entity, vzor nepomůže, zjišťovat entity. Vzor je určená jenom pomohou předpovědi pomocí tříd Intent a rolí.  
+
+## <a name="patterns-use-entity-roles"></a>Vzory použít entity role
+Pokud souvisejí kontextově dvě nebo více entit ve tvaru, použijte vzorce entity [role](luis-concept-roles.md) extrahovat kontextové informace o entitách. To je ekvivalentní podřízených objektů hierarchické entity, ale je **pouze** k dispozici v vzory. 
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>Skóre předpovědi s i bez vzory
 Zadané dostatek utterances příklad, budou moci zvýšit důvěru předpovědi bez vzory LEOŠ. Vzory zvýšit důvěru skóre bez nutnosti poskytnout tolik utterances.  

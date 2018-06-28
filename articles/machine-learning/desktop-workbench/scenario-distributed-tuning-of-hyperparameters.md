@@ -4,19 +4,19 @@ description: Tento scénář popisuje, jak to provést, distribuované ladění 
 services: machine-learning
 author: pechyony
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: c6eccda4329572a181b6a7e7e3870ace4bfac13b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6347500b8968394a922969dd3dd2f00dd51cb6dd
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832743"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035800"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Distribuované ladění z hyperparameters pomocí Azure Machine Learning Workbench
 
@@ -157,9 +157,9 @@ Potom vyberte datovou sadu kontejneru ze seznamu a klikněte na tlačítko Nahr�
 
 Nahrávání souborů trvá několik minut, v závislosti na připojení k Internetu. 
 
-V našem kódu používáme [sada SDK úložiště Azure](https://azure-storage.readthedocs.io/en/latest/) ke stažení datové sady z úložiště objektů blob pro aktuální prováděcí prostředí. Stahování se provádí v zatížení\_data() funkce ze souboru load_data.py. Pokud chcete použít tento kód, je třeba nahradit < ACCOUNT_NAME > a < ACCOUNT_KEY > zadejte název a primární klíč účtu úložiště, který je hostitelem datovou sadu. Zobrazí se název účtu v levém horním rohu stránky účtu úložiště Azure. Chcete-li získat účet klíč, vyberte přístupové klíče v Azure stránce úložiště účet (viz první snímek obrazovky v části přijímání dat) a poté zkopírujte dlouhý řetězec v prvním řádku sloupce klíče:
+V našem kódu používáme [sada SDK úložiště Azure](https://docs.microsoft.com/en-us/python/azure/) ke stažení datové sady z úložiště objektů blob pro aktuální prováděcí prostředí. Stahování se provádí v zatížení\_data() funkce ze souboru load_data.py. Pokud chcete použít tento kód, je třeba nahradit < ACCOUNT_NAME > a < ACCOUNT_KEY > zadejte název a primární klíč účtu úložiště, který je hostitelem datovou sadu. Zobrazí se název účtu v levém horním rohu stránky účtu úložiště Azure. Chcete-li získat účet klíč, vyberte přístupové klíče v Azure stránce úložiště účet (viz první snímek obrazovky v části přijímání dat) a poté zkopírujte dlouhý řetězec v prvním řádku sloupce klíče:
  
-![Přístupový klíč](media/scenario-distributed-tuning-of-hyperparameters/access_key.png)
+![přístupový klíč](media/scenario-distributed-tuning-of-hyperparameters/access_key.png)
 
 Následující kód z funkce load_data() stáhne do jednoho souboru:
 
@@ -213,7 +213,7 @@ Xgboost má osm hyperparameters, popsané [sem](https://github.com/dmlc/xgboost/
 * learning_rate
 * colsample\_by_level
 * dílčí
-* Cíl  
+* cíl  
  
 Na začátku použít vzdálené DSVM a ladit hyperparameters z malých mřížky candidate hodnot:
 

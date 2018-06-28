@@ -1,24 +1,26 @@
 ---
-title: Osvědčené postupy pro používání Azure Data Lake Store | Microsoft Docs
-description: Další informace o přijímání dat, datum zabezpečení a výkonu související s použitím Azure Data Lake Store doporučené postupy
+title: Osvědčené postupy pro používání Azure Data Lake Storage Gen1 | Microsoft Docs
+description: Další informace osvědčené postupy týkající se přijímání dat, datum zabezpečení a výkonu související s použitím Azure Data Lake Storage Gen1 (dříve označované jako Azure Data Lake Store)
 services: data-lake-store
 documentationcenter: ''
 author: sachinsbigdata
 manager: jhubbard
-editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2018
+ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 9fd6b72a7d09f85f7a6e60e5af4035ffc3862d2c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 00eb2b6b60aa6c3224b58556f6dad64d4294c308
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625334"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035785"
 ---
-# <a name="best-practices-for-using-azure-data-lake-store"></a>Doporučené postupy pro používání Azure Data Lake Store
+# <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>Doporučené postupy pro používání Azure Data Lake Storage Gen1
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 V tomto článku se dozvíte o osvědčených postupech a důležité informace týkající se práce s Azure Data Lake Store. Tento článek obsahuje informace o zabezpečení, výkonu, odolnost proti chybám a monitorování pro Data Lake Store. Před Data Lake Store práci s skutečně velkých objemů dat v služby, jako je Azure HDInsight byl složitý. Bylo sdílení dat mezi více účtů úložiště Blob tak, aby bylo možné dosáhnout petabajty úložiště a optimální výkon v tomto měřítku. S Data Lake Store jsou odstraněna většina pevných limitů pro velikost a výkon. Existují však stále některé aspekty, které tento článek se týká, abyste měli k dosažení nejlepšího výkonu s Data Lake Store. 
 
 ## <a name="security-considerations"></a>Aspekty zabezpečení
@@ -114,7 +116,7 @@ Kopírování úlohy můžete spustit pomocí Apache Oozie workflowů pomocí fr
 
 ### <a name="use-azure-data-factory-to-schedule-copy-jobs"></a>Plánování úloh kopírování pomocí Azure Data Factory 
 
-Azure Data Factory slouží také k plánování úloh kopírování pomocí **aktivity kopírování**a můžete nastavit i na frekvenci prostřednictvím **Průvodce kopírováním**. Mějte na paměti, že Azure Data Factory může mít jednotky přesun dat cloudu (DMUs) a nakonec caps propustnost nebo výpočetní pro velká data úlohy. Kromě toho Azure Data Factory aktuálně nenabízí aktualizace rozdílů mezi účty Data Lake Store, takže složky, například tabulek Hive by vyžadovalo kompletní kopie k replikaci. Odkazovat [aktivity kopírování vyladění průvodce](../data-factory/v1/data-factory-copy-activity-performance.md) Další informace o kopírování pomocí služby Data Factory. 
+Azure Data Factory slouží také k plánování úloh kopírování pomocí **aktivity kopírování**a můžete nastavit i na frekvenci prostřednictvím **Průvodce kopírováním**. Mějte na paměti, že Azure Data Factory může mít jednotky přesun dat cloudu (DMUs) a nakonec caps propustnost nebo výpočetní pro velká data úlohy. Kromě toho Azure Data Factory aktuálně nenabízí aktualizace rozdílů mezi účty Data Lake Store, takže složky, například tabulek Hive by vyžadovalo kompletní kopie k replikaci. Odkazovat [aktivity kopírování vyladění průvodce](../data-factory/copy-activity-performance.md) Další informace o kopírování pomocí služby Data Factory. 
 
 ### <a name="adlcopy"></a>AdlCopy
 

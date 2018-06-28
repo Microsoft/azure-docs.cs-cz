@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d28d25b74ce46c0323b01670bfdb639c02b92d8a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 67b8e35f0ddafd0a39bf29757927f4ace6230547
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335801"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048913"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [hostovanou na vlastním integrace runtime v verze 2](../create-self-hosted-integration-runtime.md). 
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [hostovanou na vlastním integrace runtime v](../create-self-hosted-integration-runtime.md). 
 
 > [!NOTE]
 > Brána pro správu dat má nyní byl přejmenované jako Self-hosted integrace Runtime.  
@@ -288,12 +288,12 @@ Je možné zapnout/vypnout funkci Automatické aktualizace provedením následuj
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on  
     ```
-[Pro více uzly vysoce dostupnou a škálovatelnou brány (preview)](data-factory-data-management-gateway-high-availability-scalability.md)
+[Pro bránu vysoce dostupnou a škálovatelnou několika uzly](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Spusťte prostředí Windows PowerShell v počítači s bránou.
 2. Přejděte do složky C:\Program Files\Microsoft integrace Runtime\3.0\PowerShellScript\.
 3. Spusťte následující příkaz, který zapnout automatickou aktualizaci funkci vypnout (zakázat).   
 
-    Pro bránu s funkci vysoké dostupnosti (preview) se vyžaduje navíc AuthKey param.
+    Pro bránu s funkci vysoké dostupnosti je vyžadován navíc AuthKey param.
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
     ```

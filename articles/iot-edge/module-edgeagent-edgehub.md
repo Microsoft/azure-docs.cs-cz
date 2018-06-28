@@ -8,18 +8,18 @@ ms.date: 03/14/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0b9e7421bb09e619b4a820910db5faa9edfcc5d5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2858179d42ebf51cbb24d95d2e0093f8577bacef
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632903"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030559"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Vlastnosti agenta okraj a okraj rozbočovače modul dvojčata
 
 Agent okraj a okraj centra jsou dva moduly, které tvoří runtime IoT okraj. Další informace o jaké povinností každý modul provádí najdete v tématu [pochopit modulu runtime Azure IoT okraj a jeho architektura](iot-edge-runtime.md). 
 
-Tento článek obsahuje požadované vlastnosti a vlastnosti hlášené dvojčata modulu runtime. V tématu [nasazení a monitorování] [ lnk-deploy] Další informace o tom, jak nasadit modulů na IoT hraniční zařízení.
+Tento článek obsahuje požadované vlastnosti a vlastnosti hlášené dvojčata modulu runtime. Další informace o tom, jak nasadit modulů na IoT hraniční zařízení najdete v tématu [nasazení a monitorování][lnk-deploy].
 
 ## <a name="edgeagent-desired-properties"></a>Vlastnosti EdgeAgent potřeby
 
@@ -31,22 +31,25 @@ Je volána twin modulu pro agenta hraniční `$edgeAgent` a koordinuje komunikac
 | Runtime.Type | Musí být "docker" | Ano |
 | runtime.settings.minDockerVersion | Nastavte na tento – manifest nasazení požadavek na minimální verzi Docker | Ano |
 | runtime.settings.loggingOptions | Stringified JSON obsahující možnosti protokolování pro kontejner agenta okraj. [Možnosti protokolování docker][lnk-docker-logging-options] | Ne |
+| runtime.settings.registryCredentials<br>. {registryId} .username | Uživatelské jméno registru kontejneru. Pro kontejner registru Azure uživatelské jméno je obvykle název registru.<br><br> Registru přihlašovací údaje jsou nezbytné pro všechny Image modulu, které nejsou veřejná. | Ne |
+| runtime.settings.registryCredentials<br>. {registryId} .password | Heslo pro kontejner registru. | Ne |
+| runtime.settings.registryCredentials<br>. {registryId} xlDown | Adresa kontejneru registru. Pro kontejner registru Azure, je obvykle adresu *{registryname}.azurecr.io*. | Ne |  
 | systemModules.edgeAgent.type | Musí být "docker" | Ano |
 | systemModules.edgeAgent.settings.image | Identifikátor URI bitovou kopii agenta okraj. Edge agent v současné době není možné aktualizovat sám sebe. | Ano |
-| systemModules.edgeAgent.settings.createOptions | Stringified JSON obsahující možnosti pro vytvoření kontejneru agenta okraj. [Možnosti vytvoření docker][lnk-docker-create-options] | Ne |
-| systemModules.edgeAgent.configuration.id | ID nasazení, které tento modul pro nasazení. | Centrum IoT hub je nastavena v případě použije tento manifestu pomocí nasazení. Není součástí manifest nasazení. |
+| systemModules.edgeAgent.settings<br>.createOptions | Stringified JSON obsahující možnosti pro vytvoření kontejneru agenta okraj. [Možnosti vytvoření docker][lnk-docker-create-options] | Ne |
+| systemModules.edgeAgent.configuration.id | ID nasazení, které tento modul pro nasazení. | Tato vlastnost nastavena službou IoT Hub, při použití tohoto manifestu pomocí nasazení. Není součástí manifest nasazení. |
 | systemModules.edgeHub.type | Musí být "docker" | Ano |
 | systemModules.edgeHub.status | Musí být "spuštění" | Ano |
 | systemModules.edgeHub.restartPolicy | Musí být "vždy" | Ano |
 | systemModules.edgeHub.settings.image | Identifikátor URI bitovou kopii Edge rozbočovače. | Ano |
-| systemModules.edgeHub.settings.createOptions | Stringified JSON obsahující možnosti pro vytvoření kontejneru Edge rozbočovače. [Možnosti vytvoření docker][lnk-docker-create-options] | Ne |
-| systemModules.edgeHub.configuration.id | ID nasazení, které tento modul pro nasazení. | Centrum IoT hub je nastavena v případě použije tento manifestu pomocí nasazení. Není součástí manifest nasazení. |
+| systemModules.edgeHub.settings<br>.createOptions | Stringified JSON obsahující možnosti pro vytvoření kontejneru Edge rozbočovače. [Možnosti vytvoření docker][lnk-docker-create-options] | Ne |
+| systemModules.edgeHub.configuration.id | ID nasazení, které tento modul pro nasazení. | Tato vlastnost nastavena službou IoT Hub, při použití tohoto manifestu pomocí nasazení. Není součástí manifest nasazení. |
 | moduly. {moduleId} .version | Uživatelem definované řetězec představující verze tohoto modulu. | Ano |
 | modules.{moduleId}.type | Musí být "docker" | Ano |
 | moduly. {moduleId} .restartPolicy | {"nikdy" \| "na-se nezdařilo" \| "na-není v pořádku" \| "vždy"} | Ano |
 | modules.{moduleId}.settings.image | Identifikátor URI pro image modulu. | Ano |
 | modules.{moduleId}.settings.createOptions | Stringified JSON obsahující možnosti pro vytvoření kontejneru modulu. [Možnosti vytvoření docker][lnk-docker-create-options] | Ne |
-| modules.{moduleId}.configuration.id | ID nasazení, které tento modul pro nasazení. | Centrum IoT hub je nastavena v případě použije tento manifestu pomocí nasazení. Není součástí manifest nasazení. |
+| modules.{moduleId}.configuration.id | ID nasazení, které tento modul pro nasazení. | Tato vlastnost nastavena službou IoT Hub, při použití tohoto manifestu pomocí nasazení. Není součástí manifest nasazení. |
 
 ## <a name="edgeagent-reported-properties"></a>EdgeAgent hlášené vlastnosti
 
@@ -59,7 +62,7 @@ Edge agent oznámil, že vlastnosti zahrnují tři hlavní údaje:
 Tento poslední část informace je užitečné v případě, že nejsou úspěšně použít nejnovější požadované vlastností modulem runtime a zařízení stále běží předchozí manifest nasazení.
 
 > [!NOTE]
-> Hlášené vlastnosti agenta hraniční jsou užitečné, protože může být dotazován s [IoT Hub dotazovací jazyk] [ lnk-iothub-query] prozkoumat stav nasazení ve velkém měřítku. Odkazovat na [nasazení] [ lnk-deploy] Další informace o tom, jak tuto funkci používat.
+> Hlášené vlastnosti agenta hraniční jsou užitečné, protože může být dotazován s [IoT Hub dotazovací jazyk] [ lnk-iothub-query] prozkoumat stav nasazení ve velkém měřítku. Další informace o tom, jak pomocí vlastnosti Edge agenta stavu najdete v tématu [pochopit IoT Edge nasazení jednoho zařízení nebo škálované][lnk-deploy].
 
 V následující tabulce nezahrnuje informace, které budou zkopírována z požadované vlastnosti.
 
@@ -68,7 +71,7 @@ V následující tabulce nezahrnuje informace, které budou zkopírována z pož
 | lastDesiredVersion | Toto celé číslo odkazuje na poslední verzi požadované vlastnosti zpracovat agentem okraj. |
 | lastDesiredStatus.code | Toto je kód stavu odkazující na poslední požadované vlastnosti kontaktu s agentem okraj. Povolené hodnoty: `200` úspěch, `400` neplatná konfigurace `412` neplatné schéma verze `417` požadované vlastnosti jsou prázdná, `500` se nezdařilo |
 | lastDesiredStatus.description | Textový popis stavu |
-| DeviceHealth | `healthy` Pokud je stav modulu runtime všechny moduly, buď `running` nebo `stopped`, `unhealthy` jinak |
+| deviceHealth | `healthy` Pokud je stav modulu runtime všechny moduly, buď `running` nebo `stopped`, `unhealthy` jinak |
 | configurationHealth. {deploymentId} .health | `healthy` Pokud stav modulu runtime všechny moduly nastavit nasazení {deploymentId} je buď `running` nebo `stopped`, `unhealthy` jinak |
 | runtime.platform.OS | Vytváření sestav operačního systému spuštěné na zařízení |
 | Runtime.Platform.Architecture | Vytváření sestav architekturu procesoru na zařízení |

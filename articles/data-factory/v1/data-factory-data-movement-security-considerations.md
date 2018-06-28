@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 2ca39490174047d83968561da98409ade2832253
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 222558a6596c676034e52812d3b2dd0c77e1466b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752611"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046897"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - důležité informace o zabezpečení pro přesun dat
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [aspekty zabezpečení přesunu dat pro datovou továrnu verze 2](../data-movement-security-considerations.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [aspekty zabezpečení přesunu dat pro objekt pro vytváření dat](../data-movement-security-considerations.md).
 
 ## <a name="introduction"></a>Úvod
 Tento článek popisuje základní zabezpečení infrastrukturu, která pomocí služby pro přesun dat v Azure Data Factory zabezpečit data. Správa prostředků Azure Data Factory jsou postaveny na infrastrukturu zabezpečení Azure a použít všechny možné bezpečnostní opatření, které nabízí Azure.

@@ -12,18 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 6f3259170a1b3fe0bbd33899a74863f5e71a49f6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 832e4672a15368768977feedade83707a26b9965
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618449"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048784"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak vytvořit a nakonfigurovat Self-hosted integrace Runtime
 Integrační modul Runtime (IR) je na výpočetní infrastruktuře používá k zajištění funkce integrace dat různých prostředích sítě Azure Data Factory. Podrobnosti o IR najdete v tématu [Přehled integrace modulu Runtime](concepts-integration-runtime.md).
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), prostudujte si [dokumentaci služby Data Factory verze 1](v1/data-factory-introduction.md).
 
 Runtime vlastním hostováním integrace je schopen spuštění aktivity kopírování mezi daty cloudové úložiště a úložiště dat v privátní síti a odeslání aktivit transformace výpočetní prostředky v místní nebo Azure Virtual Network. Potřeb runtime vlastním hostováním integrace nainstalujte na virtuální počítač v privátní síti nebo na místním počítači.  
 

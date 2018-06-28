@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6575a68423df97d7727401b79ded44545a43afca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4538e5b49b161f22ba6d5979234786a58cae5783
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621101"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047722"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Kurz: Kopírování dat z úložiště objektů Blob do SQL Database pomocí objektu pro vytváření dat
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "34621101"
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verzi 2 služby Data Factory, který je ve verzi Preview, přečtěte si [kurz aktivity kopírování v dokumentaci verze 2](../quickstart-create-data-factory-dot-net.md). 
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [kurzu aktivity kopírování](../quickstart-create-data-factory-dot-net.md). 
 
 V tomto kurzu vytvoříte objekt pro vytváření dat kanál ke zkopírování dat z úložiště objektů Blob do databáze SQL.
 

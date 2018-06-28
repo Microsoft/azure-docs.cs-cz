@@ -12,19 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 659005bb01672ea6e63d965f89af23024ba53544
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6daa9288da20c7def04242419fab20efeca52f09
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619486"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052524"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Ukázek Azure PowerShell pro Azure Data Factory
 
 Následující tabulka obsahuje odkazy na ukázkové skripty prostředí Azure PowerShell pro Azure Data Factory.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [ukázky pro vytváření dat version1](v1/data-factory-samples.md).
 
 | |  |
 |---|---|

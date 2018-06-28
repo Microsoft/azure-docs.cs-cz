@@ -9,14 +9,14 @@ ms.component: face-api
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: bb3ee9431f24a51dfd3877f1c4d621f7ba633b96
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fb1d14ff80bf53adc3008d79cc998739ffffde1b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342728"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048665"
 ---
-# <a name="what-is-face-api"></a>Co je řez API?
+# <a name="what-is-face-api"></a>Co je rozhraní API pro rozpoznávání tváře?
 
 Vítá vás Microsoft vzhled rozhraní API, Cloudová služba, která poskytuje nejmodernější algoritmy vzhled. Vzhled rozhraní API má dvě hlavní funkce: čelí detekce s atributy a čelí rozpoznávání.
 
@@ -85,6 +85,8 @@ Následující kurzy ukazují základní funkce rozhraní API vzhled a odběry p
 
 Podívejte se na tyto ukázkové aplikace, které využívají rozhraní API řez.
 
+- [Microsoft vzhled rozhraní API: Klientská knihovna pro Windows & Ukázka](https://github.com/Microsoft/Cognitive-Face-Windows)
+  - WPF ukázkovou aplikaci, která demonstruje několik scénáře vzhled zjišťování, analýze a identifikaci.
 - [Aplikace pro UPW FamilyNotes](https://github.com/Microsoft/Windows-appsample-familynotes)
   - Univerzální platformu Windows (UWP) ukázkové aplikace, který ukazuje použití rozpoznávání řeči, Cortana, rukopisu a fotoaparát prostřednictvím rodina Poznámka: sdílení scénář.
 - [Ukázkové video rámce analýzy](https://github.com/microsoft/cognitive-samples-videoframeanalysis)

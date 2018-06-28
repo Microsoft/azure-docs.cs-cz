@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: b48bfcd5057dcdcce921a56e664d5bc3506585c1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 995bf4586b88671c65077d965b0588de8de74e5c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36335903"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048930"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Kopírování dat z tabulky webové pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-web-table-connector.md)
-> * [Verze 2 – Preview](connector-web-table.md)
+> * [Verze 1](v1/data-factory-web-table-connector.md)
+> * [Aktuální verze](connector-web-table.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z tabulky databáze webové. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [konektor webové tabulky v V1](v1/data-factory-web-table-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 

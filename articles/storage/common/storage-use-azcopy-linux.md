@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: seguler
-ms.openlocfilehash: 80b112de1fd8417dd64d9d95b7a037ec876d18c7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3ed449912df1e16b5c8f1dfa3c83b81eaf635227
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32194664"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035799"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Přenos dat pomocí nástroje AzCopy v systému Linux
 
@@ -35,7 +35,9 @@ Existují dvě verze nástroje AzCopy, které si můžete stáhnout. AzCopy v sy
 ### <a name="installation-on-linux"></a>Instalace v systému Linux
 
 > [!NOTE]
-> Možná budete muset nainstalovat rozhraní .NET Core 2.1 závislosti zvýrazněných v tomto [článku .NET Core předpoklady](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) v závislosti na vaší distribuce. Pro všeobecně distribuce jako Ubuntu 16.04 a RHEL 7 Toto není obvykle nutné.
+> Možná budete muset nainstalovat rozhraní .NET Core 2.1 závislosti zvýrazněných v tomto [článku .NET Core předpoklady](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) v závislosti na vaší distribuce. 
+>
+> Pro RHEL 7 distribuce instalace ICU a libunwind závislosti: ```yum install -y libunwind icu```
 
 Instalace nástroje AzCopy v systému Linux (v7.2 nebo novější) je stejně snadná jako extrahování balíčku vkládání a spuštění skriptu install. 
 
@@ -723,4 +725,3 @@ Další informace o službě Azure Storage a AzCopy najdete v následujících z
 * [AzCopy: Přenos dat pomocí režimu s možností restartování a tokenu SAS](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
 * [AzCopy: Objekt Blob kopírování mezi účet pomocí](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 * [AzCopy: Nahrávání nebo stahování souborů pro objekty BLOB Azure](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
-

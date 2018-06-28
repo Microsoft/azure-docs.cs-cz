@@ -1,6 +1,6 @@
 ---
 title: Skript aktivity v Azure Data Factory | Microsoft Docs
-description: Zjistěte, jak můžete pomocí SQL Server aktivity uložené procedury vyvolat uloženou proceduru v databázi SQL Azure nebo Azure SQL Data Warehouse z objektu pro vytváření dat kanál.
+description: Zjistěte, jak můžete pomocí aktivity skriptu vyvolání skriptu z objektu pro vytváření dat kanál.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,17 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: a6b5c6f4b74bb78bdfe737af21f689e4ab5980bf
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 47151fde09dd2a67c6a321e438d7b1b98ff1aca3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618993"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049902"
 ---
 # <a name="script-activity-in-azure-data-factory"></a>Aktivita skriptu v Azure Data Factory
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [Data Factory V1 dokumentaci](v1/data-factory-introduction.md).
 
 ## <a name="next-steps"></a>Další postup
 Najdete v části Další aktivity toku řízení podporovaných službou Data Factory: 

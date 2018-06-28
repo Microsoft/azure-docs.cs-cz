@@ -3,18 +3,18 @@ title: Sestavení a nasazení modelu prognózy lze pomocí Azure Machine Learnin
 description: Zjistěte, jak pro vytváření, trénování, otestovat a nasadit model prognózy lze pomocí Azure Machine Learning balíčku pro vytváření prognóz.
 services: machine-learning
 ms.service: machine-learning
-ms.component: service
+ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: mattcon
 author: matthewconners
 ms.date: 05/07/2018
-ms.openlocfilehash: 0891f49da479b4209c305ebb532b053d85a7b2a6
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 320a7cf4a34657138c9096cdc4b573170be376e9
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833525"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035861"
 ---
 # <a name="build-and-deploy-forecasting-models-with-azure-machine-learning"></a>Vytváření a nasazování modelů prognózy lze pomocí Azure Machine Learning
 
@@ -336,7 +336,7 @@ print('{} time series in the data frame.'.format(nseries))
 
 Data obsahují přibližně 250 různé kombinace úložiště a brand datové rámce. Každé kombinaci definuje vlastní časové řady prodeje. 
 
-Můžete použít [TimeSeriesDataFrame](https://docs.microsoft.com/python/api/ftk.dataframets.timeseriesdataframe) třídy pohodlně více řad pomocí struktura single – datový model _intervalem_. Je zadána intervalem `store` a `brand` sloupce.
+Můžete použít [TimeSeriesDataFrame](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest) třídy pohodlně více řad pomocí struktura single – datový model _intervalem_. Je zadána intervalem `store` a `brand` sloupce.
 
 Rozdíl mezi _intervalem_ a _skupiny_ je, že intervalem je vždy fyzicky smysluplný v praxi, a když skupina nemá být. Funkce vnitřní balíček použít skupinu k sestavení jeden model z několika časovými řadami, pokud uživatel dochází k závěru, že toto seskupení pomáhá zlepšit výkon modelu. Ve výchozím nastavení skupina nastavení rovnat intervalem a jeden model sestavuje pro každý intervalem. 
 
@@ -498,7 +498,7 @@ whole_tsdf.loc[pd.IndexSlice['1990-06':'1990-09', 2, 'dominicks'], ['Quantity']]
 
 
 
-[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframets.timeseriesdataframe#ts-report) funkce generuje komplexní zprávu časový interval, data řady. Sestava obsahuje popis obecné data jak statistiky, které jsou specifické pro data časové řady. 
+[TimeSeriesDataFrame.ts_report](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#ts-report) funkce generuje komplexní zprávu časový interval, data řady. Sestava obsahuje popis obecné data jak statistiky, které jsou specifické pro data časové řady. 
 
 
 ```python
@@ -887,14 +887,14 @@ whole_tsdf.head()
 
 ## <a name="preprocess-data-and-impute-missing-values"></a>Předzpracování dat a dává chybějící hodnoty
 
-Začněte tím, že rozdělení dat do trénovací sady a testování s [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/python/api/ftk.tsutils) nástroj funkce. Výsledná sada testování obsahuje poslední 40 připomínky každé časové řady. 
+Začněte tím, že rozdělení dat do trénovací sady a testování s [ftk.tsutils.last_n_periods_split](https://docs.microsoft.com/en-us/python/api/ftk.ts_utils?view=azure-ml-py-latest) nástroj funkce. Výsledná sada testování obsahuje poslední 40 připomínky každé časové řady. 
 
 
 ```python
 train_tsdf, test_tsdf = last_n_periods_split(whole_tsdf, 40)
 ```
 
-Základní časové řady modely vyžadují souvislý časové řady. Zkontrolujte, jestli jsou řady pravidelné, což znamená, že mají indexem čas odebírána data v pravidelných intervalech, pomocí [check_regularity_by_grain](https://docs.microsoft.compython/api/ftk.dataframets.timeseriesdataframe) funkce.
+Základní časové řady modely vyžadují souvislý časové řady. Zkontrolujte, jestli jsou řady pravidelné, což znamená, že mají indexem čas odebírána data v pravidelných intervalech, pomocí [check_regularity_by_grain](https://docs.microsoft.com/en-us/python/api/ftk.dataframe_ts.timeseriesdataframe?view=azure-ml-py-latest#check-regularity-by-grain) funkce.
 
 
 ```python
@@ -969,7 +969,7 @@ print(ts_regularity[ts_regularity['regular'] == False])
     [213 rows x 2 columns]
     
 
-Uvidíte, že většina řady (213 mimo 249) jsou nestandardní. [Imputace transformace](https://docs.microsoft.com/python/api/ftk.transforms.tsimputer.timeseriesimputer) se vyžaduje k doplnění chybějících hodnot prodejní množství. Existuje řada možností imputace, používá následující vzorový kód lineární interpolace.
+Uvidíte, že většina řady (213 mimo 249) jsou nestandardní. [Imputace transformace](https://docs.microsoft.com/en-us/python/api/ftk.transforms.ts_imputer?view=azure-ml-py-latest) se vyžaduje k doplnění chybějících hodnot prodejní množství. Existuje řada možností imputace, používá následující vzorový kód lineární interpolace.
 
 
 ```python
@@ -1035,7 +1035,7 @@ arima_model = Arima(oj_series_freq, arima_order)
 
 ### <a name="combine-multiple-models"></a>Kombinovat více modelů
 
-[ForecasterUnion](https://docs.microsoft.com/python/api/ftk.models.forecasterunion.forecasterunion) odhadu můžete kombinovat více odhadů a přizpůsobit a prognózu s nimi pomocí jeden řádek kódu.
+[ForecasterUnion](https://docs.microsoft.com/en-us/python/api/ftk.models.forecaster_union.forecasterunion?view=azure-ml-py-latest) odhadu můžete kombinovat více odhadů a přizpůsobit a prognózu s nimi pomocí jeden řádek kódu.
 
 
 ```python
@@ -1249,7 +1249,7 @@ print(train_feature_tsdf.head())
 
  **RegressionForecaster**
 
-[RegressionForecaster](https://docs.microsoft.com/python/api/ftk.models.regressionforecaster.regressionforecaster) funkce zabalí sklearn regrese odhadů tak, aby může být trénink na TimeSeriesDataFrame. Zabalená uživatel také umístí každou skupinu v tomto úložišti případu do stejného modelu. Uživatel další jeden model pro skupinu série, která se považuje podobné a můžete ve fondu společně. Data z řady delší jeden model pro skupinu řady často používá ke zlepšení prognózy pro krátké řady. Můžete nahradit tyto modely pro všechny ostatní modely v knihovně, které podporují regrese. 
+[RegressionForecaster](https://docs.microsoft.com/en-us/python/api/ftk.models.regression_forecaster.regressionforecaster?view=azure-ml-py-latest) funkce zabalí sklearn regrese odhadů tak, aby může být trénink na TimeSeriesDataFrame. Zabalená uživatel také umístí každou skupinu v tomto úložišti případu do stejného modelu. Uživatel další jeden model pro skupinu série, která se považuje podobné a můžete ve fondu společně. Data z řady delší jeden model pro skupinu řady často používá ke zlepšení prognózy pro krátké řady. Můžete nahradit tyto modely pro všechny ostatní modely v knihovně, které podporují regrese. 
 
 
 ```python

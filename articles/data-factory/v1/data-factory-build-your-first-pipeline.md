@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0c115cce7659fe1f10e8d3d9c988748151916ce0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 951756d57441d175ccf8bab44bf00c3cb542f1b9
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620737"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050042"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Kurz: Sestavení svůj první kanál, který umožňuje transformovat data pomocí clusteru Hadoop
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "34620737"
 
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verzi 2 služby Data Factory, který je ve verzi Preview, přečtěte si [Rychlý start: Vytvoření datové továrny pomocí Azure Data Factory verze 2](../quickstart-create-data-factory-dot-net.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [rychlý start: Vytvořte objekt pro vytváření dat pomocí Azure Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 V tomto kurzu vytvoříte vaše první pro vytváření dat Azure s datovém kanálu. Kanál transformuje vstupní data pomocí skriptu Hive v clusteru Azure HDInsight (Hadoop) nevytvořila výstupní data.  
 

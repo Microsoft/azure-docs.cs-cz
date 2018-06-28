@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: fa25f16d3ef7ee8c7ec4c0c9ee17ccc89e8c52a2
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 64e505889ef9472603471d67a961985c1290663a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321852"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045839"
 ---
 # <a name="custom-speech-service-frequently-asked-questions"></a>Vlastní rozpoznávání řeči služby nejčastější dotazy
 
@@ -88,7 +88,7 @@ Pokud požadujete vyšší škálování, kontaktujte nás.
 
 **Otázka**: uvádí sestavu dat došlo k selhání utterances. Co je problém?
 
-**Odpověď**: selhání nahrát 100 % utterences v souboru se nejedná o problém.
+**Odpověď**: selhání nahrát 100 % utterances v souboru se nejedná o problém.
 Nastaveného valná většina utterances ve model acoustic nebo jazyk data (například > 95 %) úspěšně importovat, datová sada může být použitelná. Doporučuje se však pokusí pochopit, proč se nepodařilo utterances a opravit problémy. Nejběžnější problémy, například chyby, formátování lze snadno opravit. 
 
 ## <a name="creating-am"></a>Vytváření AM
@@ -148,7 +148,7 @@ Zaměřena porazit modelu směrného plánu aby smysl přizpůsobení
 **Otázka**: Mohu právě načíst seznam slov?
 
 **Odpověď**: odesílání seznam slov bude získat slova do slovníku ale není naučit systému obvykle použití slova.
-Tím, že poskytuje úplné nebo částečné utterances (věty či fráze věcí, které budou uživatelé k vyslovení) jazykový model další nové slova a jak, se používají. Vlastní jazyk modelu je vhodný, nejen pro získávání nových slov v systému, ale také pro úpravu pravděpodobnost známé slova pro vaši aplikaci. Poskytování úplné utterances pomáhá další ebtter systému. 
+Tím, že poskytuje úplné nebo částečné utterances (věty či fráze věcí, které budou uživatelé k vyslovení) jazykový model další nové slova a jak, se používají. Vlastní jazyk modelu je vhodný, nejen pro získávání nových slov v systému, ale také pro úpravu pravděpodobnost známé slova pro vaši aplikaci. Poskytování úplné utterances pomáhá systém další lépe. 
 
 ## <a name="next-steps"></a>Další postup
 

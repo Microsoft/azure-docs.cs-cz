@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f5af46017dede0deac92ff5a7f35f17e083590d6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9934e9757b5def444afb39d110e490aa6516521f
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618602"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045071"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-sap-business-warehouse-connector.md)
-> * [Verze 2 – Preview](connector-sap-business-warehouse.md)
+> * [Verze 1](v1/data-factory-sap-business-warehouse-connector.md)
+> * [Aktuální verze](connector-sap-business-warehouse.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z SAP Business Warehouse (BW). Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [SAP BW konektoru V1](v1/data-factory-sap-business-warehouse-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -66,7 +63,7 @@ Pro SAP Business Warehouse (BW) propojené služby jsou podporovány následují
 | server | Název serveru, na kterém se nachází instance SAP BW. | Ano |
 | systemNumber | Číslo systému SAP BW systému.<br/>Povolené hodnoty: letopočty řetězec desetinné číslo. | Ano |
 | clientId | ID klienta v systému SAP W klienta.<br/>Povolené hodnoty: třímístné řetězec desetinné číslo. | Ano |
-| Uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP. | Ano |
+| uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP. | Ano |
 | heslo | Heslo pro uživatele. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Modul Runtime Self-hosted integrace se vyžaduje, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
@@ -175,7 +172,7 @@ Při kopírování dat z SAP BW, se používají následující mapování z typ
 | CUKY | Řetězec |
 | DEC | Decimal |
 | FLTP | Double |
-| INT1 | Bajtů |
+| INT1 | Bajt |
 | INT2 | Int16 |
 | INT4 | Int |
 | JAZYK | Řetězec |

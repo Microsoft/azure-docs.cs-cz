@@ -6,18 +6,19 @@ author: Jann-Skotdal
 manager: chriswendt1
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
-ms.date: 10/30/2017
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: f388e9e39809774f307c0d1752e29f34b041ed13
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 5542c1c0eee5e4c7c85c566908dc8999b118f06e
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35346005"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37032448"
 ---
-# <a name="supported-languages-in-the-microsoft-translator-text-api"></a>Podporované jazyky v rozhraní API služby Microsoft překladač textu 
-Rozhraní API služby Microsoft překladač Text podporuje následující jazyky pro překlad text na text. Neuronové strojový překlad (NMT) je novým standardem pro vysoce kvalitní AI zapnutý počítač překlady a je k dispozici jako výchozí používá V3 rozhraní API Text překladač neuronové systému je k dispozici. Neuronové strojový překlad, je k dispozici v V2 pomocí kategorie "generalnn". 
+# <a name="supported-languages-in-the-microsoft-translator-text-api"></a>Podporované jazyky v rozhraní API služby Microsoft překladač textu
+
+Rozhraní API služby Microsoft překladač Text podporuje následující jazyky pro překlad text na text. Neuronové strojový překlad (NMT) je novým standardem pro vysoce kvalitní AI zapnutý počítač překlady a je k dispozici jako výchozí používá V3 rozhraní API Text překladač neuronové systému je k dispozici. Neuronové strojový překlad, je k dispozici v V2 pomocí kategorie "generalnn".
 
 [Další informace o tom, jak funguje strojový překlad](https://www.microsoft.com/translator/mt.aspx)
 
@@ -25,6 +26,7 @@ Rozhraní API služby Microsoft překladač Text podporuje následující jazyky
 |:----------- |:-------:|:-------------:|
 | Afrikánština      | Statistické |`af`          |
 | arabština      | Neuronové | `ar`          |
+| Arabština, Levantine    | Neuronové | `apc`
 | Bengálština      | Neuronové |`bn`          |
 | Bosenština (latinka)      | Statistické |`bs`          |
 | Bulharština     |  Neuronové |`bg`          |
@@ -116,7 +118,7 @@ Metoda Transliterate podporuje následující jazyky. V "do/z" "<>--" znamená, 
 
 ## <a name="dictionary"></a>Slovník
 
-Adresář podporuje tyto jazyky do nebo z angličtina pomocí metody vyhledávání a příklady. 
+Adresář podporuje tyto jazyky do nebo z angličtina pomocí metody vyhledávání a příklady.
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|
@@ -173,12 +175,12 @@ Adresář podporuje tyto jazyky do nebo z angličtina pomocí metody vyhledává
 
 ## <a name="languages-detected-by-the-detect-method"></a>Jazyky zjistil metodou rozpoznat
 
-Následující jazyky lze zjistit metodou rozpoznat. Zjišťování může zjišťovat jazyky, které Microsoft Translator nelze přeložit. 
+Následující jazyky lze zjistit metodou rozpoznat. Zjišťování může zjišťovat jazyky, které Microsoft Translator nelze přeložit.
 
-| Jazyk    | 
+| Jazyk    |
 |:----------- |
 | Afrikánština |
-| Albánština | 
+| Albánština |
 | arabština |
 | Baskičtina |
 | Běloruština |
@@ -248,7 +250,7 @@ Následující jazyky lze zjistit metodou rozpoznat. Zjišťování může zjiš
 
 Seznam podporovaných jazyků, programově pomocí jazyků operace rozhraní API Text V3.0 můžete přistupovat. V angličtině nebo jiné podporované jazykové můžete zobrazit v seznamu funkcí, kód jazyka, jakož i název jazyka. Tento seznam je automaticky aktualizovat pomocí služby Microsoft Translator dostupná nové jazyky.
 
-[Zobrazit jazyky operaci referenční dokumentaci k nástroji](/reference/languages.md)
+[Zobrazit jazyky operaci referenční dokumentaci k nástroji](reference/v3-0-languages.md)
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>Přístup k seznamu na webu Microsoft Translator
 

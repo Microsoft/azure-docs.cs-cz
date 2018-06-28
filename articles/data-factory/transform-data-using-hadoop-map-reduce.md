@@ -12,24 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: be925521178bba0ae4ae9820e78042509b2f1741
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cb7009d0e7f31b2f503ac51d378fd117fff9f9b2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620999"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049947"
 ---
 # <a name="transform-data-using-hadoop-mapreduce-activity-in-azure-data-factory"></a>Transformace dat pomocí činnost MapReduce s Hadoop v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-map-reduce.md)
-> * [Verze 2 – Preview](transform-data-using-hadoop-map-reduce.md)
-
+> * [Verze 1](v1/data-factory-map-reduce.md)
+> * [Aktuální verze](transform-data-using-hadoop-map-reduce.md)
 
 Činnost HDInsight MapReduce v datové továrně [kanálu](concepts-pipelines-activities.md) vyvolá MapReduce program na [vlastní](compute-linked-services.md#azure-hdinsight-linked-service) nebo [na vyžádání](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) clusteru HDInsight. Tento článek vychází [aktivit transformace dat](transform-data.md) článek, který poskytne Obecné přehled o transformaci dat a aktivity podporované transformace.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [činnost MapReduce v V1](v1/data-factory-map-reduce.md).
-
 
 Pokud jste nový do Azure Data Factory, pročtěte [Úvod do Azure Data Factory](introduction.md) a proveďte kurz: [kurz: transformovat data](tutorial-transform-data-spark-powershell.md) před přečtení tohoto článku. 
 
@@ -77,7 +72,7 @@ V tématu [Pig](transform-data-using-hadoop-pig.md) a [Hive](transform-data-usin
 | jarFilePath       | Zadejte cestu k souborům Jar uložené ve službě Azure Storage, na které odkazuje jarLinkedService. Název souboru je malá a velká písmena. | Ano      |
 | jarlibs           | Pole cesty k souborům knihovny Jar odkazuje úlohu ve službě Azure Storage definované v jarLinkedService řetězec. Název souboru je malá a velká písmena. | Ne       |
 | getdebuginfo –      | Určuje, kdy soubory protokolu se zkopírují do úložiště Azure používaný v clusteru HDInsight (a) zadaný ve jarLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádné. | Ne       |
-| Argumenty         | Určuje pole argumentů pro úlohy Hadoop. Argumenty, které jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
+| argumenty         | Určuje pole argumentů pro úlohy Hadoop. Argumenty, které jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
 | definuje           | Zadejte parametry pro odkazování v rámci skriptu Hive jako páry klíč/hodnota. | Ne       |
 
 

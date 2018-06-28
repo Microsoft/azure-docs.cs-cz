@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 44abf7a4fc24893146179b34d3357f54450decab
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 27f6ccadaa89042ebced759ac3040b5b79e1f8f8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34365140"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051521"
 ---
 # <a name="azure-database-security-overview"></a>Přehled zabezpečení databáze Azure
 
@@ -69,7 +69,7 @@ Může trvat několik opatření pro zvýšení zabezpečení databáze. Napří
 
 Jedno řešení je pro šifrování citlivých dat v databázi a ochranu klíčů, které se používají k šifrování dat pomocí certifikátu. Toto řešení osobě bez klíče bránit v použití data, ale musí být plánované takovou ochranu.
 
-Chcete-li vyřešit tento problém, SQL Server a SQL Database podporu [transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/securityrecryption/transparent-data-encryption-tde). Transparentní šifrování dat šifruje systému SQL Server a SQL Database datových souborů, označuje jako šifrování dat v klidovém stavu.
+Chcete-li vyřešit tento problém, SQL Server a SQL Database podporu [transparentní šifrování dat](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current&viewFallbackFrom=sql-server-2017). Transparentní šifrování dat šifruje systému SQL Server a SQL Database datových souborů, označuje jako šifrování dat v klidovém stavu.
 
 Transparentní šifrování dat pomáhá chránit před ohrožením škodlivých aktivit. Provede v reálném čase šifrování a dešifrování databáze, přidružených záloh a souborů protokolů transakci bez nutnosti změny aplikace.  
 

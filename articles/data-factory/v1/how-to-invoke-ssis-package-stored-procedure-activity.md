@@ -13,26 +13,26 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 9608af734d39627435a81e1d853c2546eabcdb0f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bf91b1cb1e764c1350cead0c5dfb109b73e9dad3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34623430"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052711"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Vyvolání balíčku služby SSIS pomocí aktivity uložené procedury v Azure Data Factory
 Tento článek popisuje, jak má být vyvolán balíčku služby SSIS z kanál služby Azure Data Factory pomocí aktivity uložené procedury. 
 
 > [!NOTE]
-> Tento článek se týká verze 1 objektu pro vytváření dat, která je obvykle dostupná. Pokud používáte verze 2 služby Data Factory, který je ve verzi Public Preview, najdete v části [balíčky SSIS vyvolání pomocí aktivity uložené procedury v verze 2](../how-to-invoke-ssis-package-stored-procedure-activity.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [balíčky SSIS vyvolání pomocí aktivity uložené procedury v](../how-to-invoke-ssis-package-stored-procedure-activity.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 ### <a name="azure-sql-database"></a>Azure SQL Database 
-Návod v tomto článku používá databázi Azure SQL, který je hostitelem služby SSIS katalogu. Můžete také použít Azure spravované Instance SQL (Preview).
+Návod v tomto článku používá databázi Azure SQL, který je hostitelem služby SSIS katalogu. Můžete také použít Azure SQL Database spravované Instance (Preview).
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Vytvoření prostředí Azure-SSIS Integration Runtime
-Vytvoření modulu runtime integrace Azure SSIS, pokud nemáte dodržením podrobných pokynů v [kurz: balíčky nasazení SSIS](../tutorial-create-azure-ssis-runtime-portal.md). Je nutné vytvořit objekt pro vytváření dat verze 2: vytvoření modulu runtime integrace Azure SSIS. 
+Vytvoření modulu runtime integrace Azure SSIS, pokud nemáte dodržením podrobných pokynů v [kurz: balíčky nasazení SSIS](../tutorial-create-azure-ssis-runtime-portal.md). Objekt pro vytváření dat verze 1 nelze použít k vytvoření modulu runtime integrace Azure SSIS. 
 
 ## <a name="azure-portal"></a>Azure Portal
 V této části použijte portál Azure k vytvoření objektu pro vytváření dat kanál s aktivitou uložené procedury, která volá balíčku služby SSIS.

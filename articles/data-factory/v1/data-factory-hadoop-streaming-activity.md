@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e405f99388f699b3f1e88b9e84f52f9a4380228c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3d5832f63a3ebe7583d18fcd863c8cc60b9b045d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621968"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048760"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí streamované aktivitě Hadoop v Azure Data Factory
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -35,7 +35,7 @@ ms.locfileid: "34621968"
 > * [Vlastní aktivity rozhraní .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [transformace dat pomocí aktivit v datové továrně verze 2 streamování Hadoop](../transform-data-using-hadoop-streaming.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [transformace dat pomocí aktivit v datové továrně streamování Hadoop](../transform-data-using-hadoop-streaming.md).
 
 
 Můžete použít HDInsightStreamingActivity aktivity vyvolání úlohu streamování Hadoop z kanál služby Azure Data Factory. Následující fragment kódu JSON ukazuje syntaxi pro použití HDInsightStreamingActivity v souboru JSON kanálu. 

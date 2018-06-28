@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 996b1e5cbc477bf8a67a8cbb118961aaedf151fd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3a24e919f1bbde6188e3655399f1ef843fbec23b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621502"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052986"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Přesun dat do a z Azure Table pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-azure-table-connector.md)
-> * [Verze 2 – Preview](../connector-azure-table-storage.md)
+> * [Verze 1](data-factory-azure-table-connector.md)
+> * [Verze 2 (aktuální verze)](../connector-azure-table-storage.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [konektor Azure Table Storage v V2](../connector-azure-table-storage.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [konektor Azure Table Storage v V2](../connector-azure-table-storage.md).
 
 Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat z úložiště tabulek Azure. Vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování. 
 
@@ -38,7 +38,7 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z Azure Ta
 
 Nejjednodušší způsob, jak vytvořit kanál je použití **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
 Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený: 
 
@@ -104,9 +104,9 @@ Pokud sloupec tabulky Azure je typu datum a čas:
 | azureTableDefaultPartitionKeyValue |Výchozí hodnotu klíče oddílu, mohou být využívána jímky. |Hodnotu řetězce. |Ne |
 | azureTablePartitionKeyName |Zadejte název sloupce, jejichž hodnoty se používají jako klíče oddílů. Pokud není zadaný, použije se AzureTableDefaultPartitionKeyValue jako klíč oddílu. |Název sloupce. |Ne |
 | azureTableRowKeyName |Zadejte název sloupce, jejichž hodnoty sloupce jsou použity jako klíč řádku. Pokud není zadaný, použijte identifikátor GUID pro každý řádek. |Název sloupce. |Ne |
-| azureTableInsertType |Režim vložení dat do tabulky Azure.<br/><br/>Tato vlastnost určuje, jestli mají existující řádky v tabulce output s odpovídajícím klíče oddílu a řádku jejich hodnoty nahradit nebo sloučit. <br/><br/>Další informace o tom, jak tato nastavení (sloučení a nahraďte) fungují, najdete v části [vložení nebo sloučení Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx) a [vložení nebo nahrazení Entity](https://msdn.microsoft.com/library/azure/hh452242.aspx) témata. <br/><br> Toto nastavení se vztahuje na úrovni řádků, není úrovni tabulky a ani možnost odstraní řádků do výstupní tabulky, které nejsou k dispozici ve vstupu. |Merge (výchozí)<br/>Nahradit |Ne |
+| azureTableInsertType |Režim vložení dat do tabulky Azure.<br/><br/>Tato vlastnost určuje, jestli mají existující řádky v tabulce output s odpovídajícím klíče oddílu a řádku jejich hodnoty nahradit nebo sloučit. <br/><br/>Další informace o tom, jak tato nastavení (sloučení a nahraďte) fungují, najdete v části [vložení nebo sloučení Entity](https://msdn.microsoft.com/library/azure/hh452241.aspx) a [vložení nebo nahrazení Entity](https://msdn.microsoft.com/library/azure/hh452242.aspx) témata. <br/><br> Toto nastavení se vztahuje na úrovni řádků, není úrovni tabulky a ani možnost odstraní řádků do výstupní tabulky, které nejsou k dispozici ve vstupu. |Merge (výchozí)<br/>nahradit |Ne |
 | writeBatchSize |Když je dosaženo writeBatchSize nebo writeBatchTimeout vkládá data do tabulky Azure. |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
-| writeBatchTimeout |Když je dosaženo writeBatchSize nebo writeBatchTimeout vkládá data do tabulky Azure |Časový interval<br/><br/>Příklad: "00:20:00" (20 minut) |Ne (výchozí nastavení časového limitu výchozí úložiště klienta hodnotu 90 sekundu) |
+| writeBatchTimeout |Když je dosaženo writeBatchSize nebo writeBatchTimeout vkládá data do tabulky Azure |časový interval<br/><br/>Příklad: "00:20:00" (20 minut) |Ne (výchozí nastavení časového limitu výchozí úložiště klienta hodnotu 90 sekundu) |
 
 ### <a name="azuretablepartitionkeyname"></a>azureTablePartitionKeyName
 Zdrojový sloupec namapujte na cílový sloupec pomocí překladač JSON vlastnost, abyste mohli používat jako azureTablePartitionKeyName cílový sloupec.

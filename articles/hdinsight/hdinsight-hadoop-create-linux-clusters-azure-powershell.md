@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 57ae7c3cab6c0084bb43585f65d79ae6cc265356
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 11e98117a93f541f6f88b213f59dcf4aba3e7f36
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400448"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045207"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-azure-powershell"></a>Vytvořit clustery se systémem Linux v HDInsight pomocí Azure PowerShell
 
@@ -63,7 +63,7 @@ Hodnoty, které zadáte pro uživatele SSH se používají k vytvoření uživat
 > [!IMPORTANT]
 > Pokud máte v plánu používat více než 32 uzlů pracovního procesu (buď při vytváření clusteru, nebo po vytvoření škálování clusteru), musíte také zadat velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti RAM.
 >
-> Další informace o velikosti uzlu a souvisejících nákladů, najdete v části [HDInsight ceny](https://azure.microsoft.com/pricing/details/hdinsight/).
+> Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 To může trvat až 20 minut pro vytvoření clusteru.
 
@@ -71,7 +71,7 @@ To může trvat až 20 minut pro vytvoření clusteru.
 
 Můžete taky vytvořit objekt konfigurace HDInsight pomocí `New-AzureRmHDInsightClusterConfig` rutiny. Poté můžete upravit tento objekt konfigurace povolit další možnosti konfigurace pro váš cluster. Nakonec použijte `-Config` parametr `New-AzureRmHDInsightCluster` rutiny používají konfiguraci.
 
-Tento skript vytvoří objekt konfigurace ke konfiguraci serveru R na typ clusteru HDInsight. Konfigurace umožňuje hraniční uzel, Rstudia a účet úložiště.
+Tento skript vytvoří objekt konfigurace ke konfiguraci služby ML na typ clusteru HDInsight. Konfigurace umožňuje hraniční uzel, Rstudia a účet úložiště.
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/create-cluster/create-cluster-with-config.ps1?range=59-98)]
 

@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: df8fe611c762421f3a963340b24df74a80a20160
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 678913796edafe86e19d8907e3a2e29ec15ffa90
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621730"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047073"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Data Warehouse pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-azure-sql-data-warehouse-connector.md)
-> * [Verze 2 – Preview](../connector-azure-sql-data-warehouse.md)
+> * [Verze 1](data-factory-azure-sql-data-warehouse-connector.md)
+> * [Verze 2 (aktuální verze)](../connector-azure-sql-data-warehouse.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [konektor Azure SQL Data Warehouse v V2](../connector-azure-sql-data-warehouse.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [konektor Azure SQL Data Warehouse v V2](../connector-azure-sql-data-warehouse.md).
 
 Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat z Azure SQL Data Warehouse. Vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování.  
 
@@ -54,7 +54,7 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z Azure SQ
 
 Nejjednodušší způsob, jak vytvořit kanál, který kopíruje data z Azure SQL Data Warehouse je pomocí Průvodce kopírováním data. V tématu [kurz: načtení dat do SQL Data Warehouse pomocí služby Data Factory](../../sql-data-warehouse/sql-data-warehouse-load-with-data-factory.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený:
 
@@ -154,7 +154,7 @@ GO
 | rejectSampleValue |Určuje počet řádků k načtení předtím, než PolyBase přepočítá procento odmítnutých řádků. |1, 2, … |Ano, pokud **rejectType** je **procento** |
 | useTypeDefault |Určuje způsob zpracování chybějící hodnoty v textových souborů s oddělovači, když PolyBase načítá data z textového souboru.<br/><br/>Další informace o této vlastnosti v části argumenty [vytvořit EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx). |Hodnota TRUE, False (výchozí) |Ne |
 | writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne writeBatchSize |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
-| writeBatchTimeout |Počkejte, než čas na dokončení předtím, než vyprší časový limit operace dávkové vložení. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
+| writeBatchTimeout |Počkejte, než čas na dokončení předtím, než vyprší časový limit operace dávkové vložení. |časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
 
 #### <a name="sqldwsink-example"></a>Příklad SqlDWSink
 
@@ -229,10 +229,10 @@ Pokud požadavky nejsou splněny, zkontroluje nastavení Azure Data Factory a au
 Pokud vaše zdrojová data nesplňuje kritéria byla zavedená v předchozí části, můžete povolit kopírování dat prostřednictvím dočasné pracovní Azure Blob Storage (úložiště úrovně Premium nemůže být). V takovém případě Azure Data Factory automaticky provede transformace na data, která mají požadavkům data formátu PolyBase, potom použijte PolyBase k načtení dat do SQL Data Warehouse a v poslední čištění dočasná data z úložiště objektů Blob. V tématu [připravený kopie](data-factory-copy-activity-performance.md#staged-copy) informace o tom, jak kopírování dat prostřednictvím pracovní objektů Blob v Azure funguje obecně.
 
 > [!NOTE]
-> Při kopírování dat z data místní ukládání do Azure SQL Data Warehouse pomocí PolyBase a pracovní, pokud vaše verze brány pro správu dat je menší než 2.4, prostředí JRE (prostředí Java Runtime) se vyžaduje na počítači brány, který slouží k transformaci zdrojová data na správný formát. Naznačují, že upgrade brány na nejnovější předejdete této závislosti.
+> Při kopírování dat z data místní ukládání do Azure SQL Data Warehouse pomocí PolyBase a pracovní, pokud vaše verze brány pro správu dat je menší než 2.4, prostředí JRE (prostředí Java Runtime) se vyžaduje na počítači brány, který se používá k transformaci zdrojová data do správný formát. Naznačují, že upgrade brány na nejnovější předejdete této závislosti.
 >
 
-Chcete-li tuto funkci používat, vytvořte [propojená služba Azure Storage](data-factory-azure-blob-connector.md#azure-storage-linked-service) který odkazuje na účet úložiště Azure, který má dočasné objektu blob úložiště, zadejte `enableStaging` a `stagingSettings` vlastnosti pro aktivitu kopírování, jak je znázorněno v následujícím kódu:
+Chcete-li tuto funkci používat, vytvořte [propojená služba Azure Storage](data-factory-azure-blob-connector.md#azure-storage-linked-service) který odkazuje na účet úložiště Azure, který má dočasné objektu blob úložiště, zadejte `enableStaging` a `stagingSettings` vlastnosti pro aktivitu kopírování, jak je znázorněno v Následující kód:
 
 ```json
 "activities":[  
@@ -297,7 +297,7 @@ All columns of the table must be specified in the INSERT BULK statement.
 Hodnota NULL je speciální forma výchozí hodnotu. Pokud je sloupec s možnou hodnotou Null, vstupní data (v objektu blob) pro tento sloupec může být prázdná (nelze chybí vstupní datové sady). PolyBase vloží NULL u nich v Azure SQL Data Warehouse.  
 
 ## <a name="auto-table-creation"></a>Automaticky vytvářené tabulky
-Pokud použijete Průvodce kopírováním ke zkopírování dat z SQL serveru nebo databáze SQL Azure do Azure SQL Data Warehouse a tabulky, která odpovídá zdrojová tabulka neexistuje v cílové úložiště, Data Factory můžete automaticky vytvořit v tabulce v datovém skladu pomocí schématu zdrojové tabulky.
+Pokud použijete Průvodce kopírováním ke zkopírování dat z SQL serveru nebo databáze SQL Azure do Azure SQL Data Warehouse a tabulky, která odpovídá zdrojová tabulka neexistuje v cílové úložiště, Data Factory můžete automaticky vytvořit v tabulce v datovém skladu u SING – schéma zdrojové tabulky.
 
 Data Factory vytvoří v cílové úložiště se stejným názvem tabulky v zdrojového úložiště dat v tabulce. Datové typy pro sloupce jsou zvolen v závislosti na následující mapování typu. V případě potřeby provede převody typů opravit všechny problémům s kompatibilitou mezi zdrojovým a cílovým úložišti. Používá také distribuce kruhové dotazování tabulky.
 
@@ -347,7 +347,7 @@ Mapování je stejné jako [mapování datového typu aplikace SQL Server pro te
 | Typ databázového stroje SQL Server | Typ rozhraní .NET framework |
 | --- | --- |
 | bigint |Int64 |
-| Binární |Byte] |
+| binární |Byte] |
 | Bit |Logická hodnota |
 | Char |Řetězec, Char] |
 | datum |DateTime |
@@ -357,7 +357,7 @@ Mapování je stejné jako [mapování datového typu aplikace SQL Server pro te
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte] |
 | Float |Double |
-| Bitové kopie |Byte] |
+| image |Byte] |
 | celá čísla |Int32 |
 | peníze |Decimal |
 | nchar |Řetězec, Char] |
@@ -373,7 +373,7 @@ Mapování je stejné jako [mapování datového typu aplikace SQL Server pro te
 | text |Řetězec, Char] |
 | time |Časový interval |
 | časové razítko |Byte] |
-| tinyint |Bajtů |
+| tinyint |Bajt |
 | Typ UniqueIdentifier |Guid |
 | varbinary |Byte] |
 | varchar |Řetězec, Char] |

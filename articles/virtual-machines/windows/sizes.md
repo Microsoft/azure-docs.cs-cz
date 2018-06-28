@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/22/2018
 ms.author: jonbeck
 ms.openlocfilehash: d4e1b56ba695f3305d1be023c4352a3c4bcfe27d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
+ms.lasthandoff: 06/27/2018
 ms.locfileid: "34658345"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Velikosti pro virtuální počítače s Windows v Azure

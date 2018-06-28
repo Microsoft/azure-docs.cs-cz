@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7003e68fcbceb4e45477f4f13dfa75b920405ace
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: df45613105c8fb005fc8ba0c796ef768e293c57e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617650"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052428"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopírování dat z cloudu SAP pro zákazníka (C4C) pomocí Azure Data Factory
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z/do cloudu SAP pro zákazníka (C4C). Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aktivitu kopírování v V1](v1/data-factory-data-movement-activities.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -160,7 +157,7 @@ Ke zkopírování dat do cloudu SAP pro zákazníka, nastavte typ jímky v aktiv
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavena na: **SapCloudForCustomerSink**  | Ano |
-| WriteBehavior | Chování zápisu operace. Může být "Vložit", "Update". | Ne. Výchozí "Insert". |
+| writeBehavior | Chování zápisu operace. Může být "Vložit", "Update". | Ne. Výchozí "Insert". |
 | writeBatchSize | Velikost dávky zápisu operace. Velikost dávky získat nejlepší výkon se může lišit pro jinou tabulku nebo server. | Ne. Výchozí hodnota je 10. |
 
 **Příklad:**
@@ -188,7 +185,7 @@ Ke zkopírování dat do cloudu SAP pro zákazníka, nastavte typ jímky v aktiv
                 "writeBatchSize": 30
             },
             "parallelCopies": 10,
-            "cloudDataMovementUnits": 4,
+            "dataIntegrationUnits": 4,
             "enableSkipIncompatibleRow": true,
             "redirectIncompatibleRowSettings": {
                 "linkedServiceName": {

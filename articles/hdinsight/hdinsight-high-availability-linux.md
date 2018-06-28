@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 974ed70fbda88dfcb775e021474583f7afb0576b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 835e649959164aee5cc8edb1f2e34170d8a321f1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31404956"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046675"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Dostupnost a spolehlivost clusterů Hadoop ve službě HDInsight
 
@@ -38,7 +38,7 @@ Uzly v clusteru HDInsight se implementují pomocí virtuálních počítačů Az
 > [!NOTE]
 > Ne všechny typy uzlů se používají pro typ clusteru. Typ clusteru Hadoop například nemá žádné uzly Nimbus. Další informace o uzlech používá typy clusterů HDInsight, najdete v části typy clusteru [vytvořit systémem Linux Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md#cluster-types) dokumentu.
 
-### <a name="head-nodes"></a>hlavních uzlech
+### <a name="head-nodes"></a>Hlavní uzly
 
 Zajistit vysokou dostupnost služeb Hadoop HDInsight nabízí dva uzly head. Obě hlavních uzlech současně jsou aktivní a spuštěné v rámci clusteru HDInsight. Některé služby, jako je například HDFS nebo YARN, jsou pouze aktivní jeden hlavního uzlu v daném okamžiku. Dalšími službami, například HiveServer2 nebo Metaúložiště Hive jsou aktivní v obou uzlech head ve stejnou dobu.
 
@@ -51,7 +51,7 @@ Uzly HEAD (a jiné uzly v HDInsight) mít číselnou hodnotu v rámci uzlu náze
 
 Jsou k dispozici u clusterů Storm uzly nimbus. Uzly Nimbus poskytují podobné funkce jako Hadoop jobtracker distribuci a monitorování zpracování napříč uzly pracovního procesu. HDInsight nabízí dva uzly Nimbus pro clustery Storm
 
-### <a name="zookeeper-nodes"></a>Uzly zookeeper
+### <a name="zookeeper-nodes"></a>Uzly Zookeeper
 
 [ZooKeeper](http://zookeeper.apache.org/) uzlech se používají pro vedoucí volba hlavní služeb v hlavních uzlech. Používají se také zajistit, aby služby, datové (pracovník) uzly a brány věděli, jaké hlavního uzlu hlavní služby na aktivní. Ve výchozím nastavení HDInsight poskytuje tři uzly ZooKeeper.
 
@@ -63,9 +63,9 @@ Pracovní uzly provádět analýzy skutečná data, když je úloha odeslána do
 
 Hraniční uzel není součástí aktivně analýzu dat v rámci clusteru. Používá se vývojáři nebo datových vědců při práci s Hadoop. Hraničního uzlu je umístěn ve stejné virtuální síti Azure jako ostatní uzly v clusteru a přímý přístup k jiné uzly. Hraničního uzlu lze použít bez nutnosti převádět prostředky z úlohy analýzy nebo důležité služby Hadoop.
 
-V současné době R serverem v HDInsight je pouze typ clusteru, který poskytuje hraniční uzel ve výchozím nastavení. Pro R serverem v HDInsight, se používá hraničního uzlu testovací R kód místně na uzlu před odesláním do clusteru pro distribuované zpracování.
+V současné době ML služby v HDInsight je pouze typ clusteru, který poskytuje hraniční uzel ve výchozím nastavení. Pro ML služby v HDInsight, se používá hraničního uzlu testovací R kód místně na uzlu před odesláním do clusteru pro distribuované zpracování.
 
-Informace o používání hraniční uzel s typy clusteru než R Server najdete v tématu [používají uzly okraj v HDInsight](hdinsight-apps-use-edge-node.md) dokumentu.
+Informace o používání hraniční uzel s jinými typy clusteru najdete v tématu [používají uzly okraj v HDInsight](hdinsight-apps-use-edge-node.md) dokumentu.
 
 ## <a name="accessing-the-nodes"></a>Přístup k uzlu
 
@@ -213,7 +213,7 @@ Webové uživatelské rozhraní Ambari vyberte službu, kterou chcete zobrazit p
 
 Velikost uzlu lze vybrat pouze při vytváření clusteru. Můžete najít seznam různých velikosti virtuálních počítačů, která je k dispozici pro HDInsight na [HDInsight stránce s cenami](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Při vytváření clusteru, můžete zadat velikost uzlů. Následující informace poskytují pokyny o tom, jak určit velikost pomocí [portál Azure][preview-portal], [prostředí Azure PowerShell][azure-powershell]a [rozhraní příkazového řádku Azure][azure-cli]:
+Při vytváření clusteru, můžete zadat velikost uzlů. Následující informace poskytují pokyny o tom, jak určit velikost pomocí [portál Azure][preview-portal], [prostředí Azure PowerShell][azure-powershell]a [Rozhraní příkazového řádku azure][azure-cli]:
 
 * **Portál Azure**: při vytváření clusteru, můžete nastavit velikost uzlů používaný v clusteru:
 

@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 5d9061e12ac9fe0b9d858690897e582acab5169e
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: c0a07cb872ec87bbf39237b74990a1fc7a74e9e8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754448"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053251"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Důležité informace o zabezpečení pro přesun dat v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-data-movement-security-considerations.md)
-> * [Verze 2 – Preview](data-movement-security-considerations.md)
+> * [Verze 1](v1/data-factory-data-movement-security-considerations.md)
+> * [Aktuální verze](data-movement-security-considerations.md)
 
 Tento článek popisuje základní zabezpečení infrastrukturu, která pomocí služby pro přesun dat v Azure Data Factory pomáhají zabezpečit vaše data. Data Factory správu prostředky jsou postaveny na infrastrukturu zabezpečení Azure a použít všechny možné bezpečnostní opatření, které nabízí Azure.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aspekty zabezpečení přesunu dat pro datovou továrnu verze 1](v1/data-factory-data-movement-security-considerations.md).
 
 V řešení Data Factory vytváříte jeden nebo více datových [kanálů](concepts-pipelines-activities.md). Kanál je logické seskupení aktivit, které dohromady provádějí určitou úlohu. Tyto kanály nacházet v oblasti, kde byl vytvořen služby data factory. 
 

@@ -14,19 +14,19 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c56501deaf4d30374690a112b1ba11eaa9344cdb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 417425a6982ca92e486ccfb578131ebc898a0466
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622359"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046084"
 ---
 # <a name="azure-data-factory---samples"></a>Pro vytváření dat Azure – ukázky
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [ukázky prostředí PowerShell v datové továrně verze 2](../samples-powershell.md) a [ukázky v galerii ukázky kódu Azure kódu](https://azure.microsoft.com/resources/samples/?service=data-factory).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [ukázky prostředí PowerShell v datové továrně](../samples-powershell.md) a [ukázky v galerii ukázky kódu Azure kódu](https://azure.microsoft.com/resources/samples/?service=data-factory).
 
 
-## <a name="samples-on-github"></a>Ukázky z webu GitHub
+## <a name="samples-on-github"></a>Ukázky na GitHubu
 [Úložiště GitHub Azure-DataFactory](https://github.com/azure/azure-datafactory) obsahuje několik vzorků, které vám pomohou rychle doba přípravy službou Azure Data Factory (nebo) upravit skripty a použít ho v vlastní aplikace. Složka Samples\JSON obsahuje fragmenty kódu JSON pro běžné scénáře.
 
 | Ukázka | Popis |

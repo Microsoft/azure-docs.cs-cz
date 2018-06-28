@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6bddb3d5beca57852ef62361b278ec1fa8961f45
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: edbef08eaa100248368d7f0b23171f15b52ec56a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621254"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050943"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>Vyvolání MapReduce programy z objektu pro vytváření dat
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -35,7 +35,7 @@ ms.locfileid: "34621254"
 > * [Vlastní aktivity rozhraní .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [transformace dat pomocí činnost MapReduce v datové továrně verze 2](../transform-data-using-hadoop-map-reduce.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [transformace dat pomocí činnost MapReduce v datové továrně](../transform-data-using-hadoop-map-reduce.md).
 
 
 Činnost HDInsight MapReduce v datové továrně [kanálu](data-factory-create-pipelines.md) provede MapReduce programy na [vlastní](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) nebo [na vyžádání](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) clusteru HDInsight se systémem Windows nebo Linux. Tento článek vychází [aktivit transformace dat](data-factory-data-transformation-activities.md) článek, který poskytne Obecné přehled o transformaci dat a aktivity podporované transformace.
@@ -189,7 +189,7 @@ Kanál v tomto příkladu má jenom jedna aktivita, která je typu: HDInsightMap
 | Název třídy |Název třídy je: **wordcount** |
 | jarFilePath |Cesta k soubor jar obsahující třídy. Pokud jste zkopírujte a vložte následující kód, nezapomeňte změnit název clusteru. |
 | jarLinkedService |Propojená služba, která obsahuje soubor jar Azure Storage. Tato propojená služba odkazuje na úložiště, které je přidružené ke clusteru HDInsight. |
-| Argumenty |Wordcount program přebírá dva argumenty, vstup a výstup. Vstupní soubor je soubor davinci.txt. |
+| argumenty |Wordcount program přebírá dva argumenty, vstup a výstup. Vstupní soubor je soubor davinci.txt. |
 | frequency/interval |Hodnoty těchto vlastností odpovídat výstupní datovou sadu. |
 | linkedServiceName |odkazuje propojená služba HDInsight, které jste vytvořili dříve. |
 

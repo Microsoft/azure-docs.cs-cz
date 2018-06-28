@@ -8,14 +8,14 @@ manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 47527087dc008c201949524f193820e636a8744f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 38f7f038a803546adb83245519efc5de0c0d1599
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "35343956"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045006"
 ---
 # <a name="sample-for-intent-recognition"></a>Ukázka pro záměrné rozpoznávání
 
@@ -23,7 +23,7 @@ ms.locfileid: "35343956"
 > Pokyny ke stažení této ukázce a ostatní uživatele najdete v tématu [ukázky pro rozpoznávání řeči SDK](samples.md).
 
 > [!NOTE]
-> Nejdřív získejte klíč předplatného. Na rozdíl od jiných služeb nepodporuje kognitivní řeči SDK služby služby rozpoznávání záměr vyžaduje konkrétní subscribtion klíč. [Zde](https://www.luis.ai) můžete najít další informace o technologii záměrné rozpoznávání a také informace o tom, jak získat klíč předplatného. Nahraďte klíč předplatného, oblasti služby, a také AppId záměrné modelu na příslušné místo v ukázky.
+> Nejdřív získejte klíč předplatného. Na rozdíl od jiných služeb nepodporuje kognitivní řeči SDK služby služby rozpoznávání záměr vyžaduje klíč konkrétní předplatné. [Zde](https://www.luis.ai) můžete najít další informace o technologii záměrné rozpoznávání a také informace o tom, jak získat klíč předplatného. Nahraďte klíč předplatného, oblasti služby a AppId na příslušné místo v ukázkách záměrné modelu.
 
 > [!NOTE]
 > Pro všechny ukázky níže následující nejvyšší úrovně deklarace musí být k dispozici:
@@ -54,7 +54,7 @@ Následující fragment kódu rozpozná záměr z zvukový soubor ve výchozím 
 
 [!include[Sample Audio](includes/sample-audio.md)]
 
-[!code-cpp[Intent Recognition From a File](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp?IntentRecognitionWithFile)]
+[!code-cpp[Intent Recognition From a File](~/samples-cognitive-services-speech-sdk/Windows/cxx_samples/intent_recognition_samples.cpp#IntentRecognitionWithFile)]
 
 - - -
 

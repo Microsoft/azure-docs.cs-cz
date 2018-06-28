@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a70f02fca5ebf575bc009623c3af648a5a80fd70
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 358827722e8d77cd91410fae842ad2ba99967d98
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32153740"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028893"
 ---
 # <a name="use-a-linux-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Používat pro přístup k Azure Data Lake Store Linux virtuálního počítače spravované služby Identity (MSI)
 
@@ -190,7 +190,7 @@ Blahopřejeme!  Jste ověřeni pro systém souborů Data Lake Store pomocí MSI 
 - Přehled MSI najdete v tématu [identita spravované služby přehled](msi-overview.md).
 - Pro správu operations Data Lake Store využívá Azure Resource Manager.  Další informace o používání virtuálních počítačů MSI k ověření do Resource Manager, najdete v tématu [používat Linux virtuálního počítače spravované služby Identity (MSI) pro přístup k Resource Manager](../managed-service-identity/msi-tutorial-linux-vm-access-arm.md).
 - Další informace o [ověřování s Data Lake Store pomocí Azure Active Directory](~/articles/data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md).
-- Další informace o [operací systému souborů v Azure Data Lake Store pomocí rozhraní REST API](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md) nebo [rozhraní API webhdfs, které FileSystem](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis.md).
+- Další informace o [operací systému souborů v Azure Data Lake Store pomocí rozhraní REST API](~/articles/data-lake-store/data-lake-store-data-operations-rest-api.md) nebo [rozhraní API webhdfs, které FileSystem](https://docs.microsoft.com/rest/api/datalakestore/webhdfs-filesystem-apis).
 - Další informace o [řízení přístupu v Data Lake Store](~/articles/data-lake-store/data-lake-store-access-control.md).
 
 Použijte následující sekci komentáře k poskytnutí zpětné vazby a Pomozte nám vylepšit a utvářejí náš obsah.

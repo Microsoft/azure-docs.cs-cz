@@ -13,20 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 1cadcdd45e648f315e292bbc806abc9337725670
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b577c276627c3a187215cd0da551428fbb32791f
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619214"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050902"
 ---
 # <a name="encrypt-credentials-for-on-premises-data-stores-in-azure-data-factory"></a>Šifrovat přihlašovací údaje pro místní úložiště dat v Azure Data Factory
 Můžete šifrovat a ukládat přihlašovací údaje pro vaše místní data úložiště (propojené služby s citlivými informacemi) na počítači s vlastním hostováním integrace modulu runtime. 
 
 Předat definice soubor JSON s přihlašovacími údaji na <br/>[**Nové AzureRmDataFactoryV2LinkedServiceEncryptedCredential** ](https://docs.microsoft.com/powershell/module/azurerm.datafactoryv2/New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential?view=azurermps-4.4.0) rutiny k vytvoření souboru výstup JSON definice zašifrované přihlašovací údaje. Poté použijte aktualizované definice JSON pro vytvoření propojené služby.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), prostudujte si [dokumentaci služby Data Factory verze 1](v1/data-factory-introduction.md).
 
 ## <a name="author-sql-server-linked-service"></a>Služba SQL Server propojené Autor
 Vytvořte soubor JSON s názvem **SqlServerLinkedService.json** v libovolné složky s následujícím obsahem:  

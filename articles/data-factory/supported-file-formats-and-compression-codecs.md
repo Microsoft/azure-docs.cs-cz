@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: jingwang
-ms.openlocfilehash: c96d8b273a0e74ced5b121d19e1c3e5343a754b4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 534df0dfef1f69297c5728ed892a5457944e4468
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621815"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052286"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Podporované formáty souborů a komprese kodeky v Azure Data Factory
 
@@ -27,9 +27,6 @@ Pokud chcete **zkopírujte soubory jako-je** mezi souborové úložiště (biná
 * [Formát Avro](#avro-format)
 * [Formát ORC](#orc-format)
 * [Formát parquet](#parquet-format)
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [podporované formáty souborů a komprese v objektu pro vytváření dat version1](v1//data-factory-supported-file-and-compression-formats.md).
 
 > [!TIP]
 > Zjistěte, jak aktivity kopírování mapuje zdroje dat, aby se jímky z [schéma mapování v aktivitě kopírování](copy-activity-schema-and-type-mapping.md), včetně toho, jak metadat je určené na základě svého nastavení formátu souboru a tipů. když chcete zadat [datovou sadu `structure` ](concepts-datasets-linked-services.md#dataset-structure) části.
@@ -450,8 +447,8 @@ Je třeba počítat s následujícím:
 | Typ průběžných dat objektu pro vytváření dat | Typy ORC |
 |:--- |:--- |
 | Logická hodnota | Logická hodnota |
-| SByte – | Bajtů |
-| Bajtů | Krátké |
+| SByte – | Bajt |
+| Bajt | Krátké |
 | Int16 | Krátké |
 | UInt16 | Int |
 | Int32 | Int |
@@ -495,7 +492,7 @@ Je třeba počítat s následujícím:
 |:--- |:--- |:--- |:--- |
 | Logická hodnota | Logická hodnota | neuvedeno | neuvedeno |
 | SByte – | Int32 | int8 | int8 |
-| Bajtů | Int32 | UInt8 | Int16 |
+| Bajt | Int32 | UInt8 | Int16 |
 | Int16 | Int32 | Int16 | Int16 |
 | UInt16 | Int32 | UInt16 | Int32 |
 | Int32 | Int32 | Int32 | Int32 |

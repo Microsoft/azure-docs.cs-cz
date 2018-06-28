@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5731e4249c94e77846f07870e4bba28aab70682e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7ece34809734478ddb52c12d5dbd92291231f439
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619520"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045683"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Přesun dat z Amazon Redshift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-amazon-redshift-connector.md)
-> * [Verze 2 – Preview](../connector-amazon-redshift.md)
+> * [Verze 1](data-factory-amazon-redshift-connector.md)
+> * [Verze 2 (aktuální verze)](../connector-amazon-redshift.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [Amazon Redshift konektoru V2](../connector-amazon-redshift.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [Amazon Redshift konektoru V2](../connector-amazon-redshift.md).
 
 Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat z Amazon Redshift. Článek vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování. 
 
@@ -68,7 +68,7 @@ Následující tabulka obsahuje popis elementy JSON, které jsou specifické pro
 | **port** |Číslo portu TCP, který používá server Amazon Redshift naslouchat pro připojení klientů. |Ne (výchozí hodnota je 5439) |
 | **database** |Název databáze Amazon Redshift. |Ano |
 | **Uživatelské jméno** |Jméno uživatele, který má přístup k databázi. |Ano |
-| **Heslo** |Heslo pro uživatelský účet. |Ano |
+| **heslo** |Heslo pro uživatelský účet. |Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
@@ -88,7 +88,7 @@ Pro aktivitu kopírování, pokud je zdroj typu **AmazonRedshiftSource**, násle
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| **Dotaz** | Pomocí vlastního dotazu přečíst data. |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
+| **dotaz** | Pomocí vlastního dotazu přečíst data. |Ne (Pokud **tableName** je zadána vlastnost datové sady) |
 | **redshiftUnloadSettings** | Obsahuje vlastnost skupiny při použití Redshift **uvolnění** příkaz. | Ne |
 | **s3LinkedServiceName** | Amazon S3 používat jako dočasné úložiště. Propojené služby je zadán pomocí Azure Data Factory název typu **AwsAccessKey**. | Při použití vyžaduje **redshiftUnloadSettings** vlastnost |
 | **bucketName** | Označuje sady Amazon S3 používat k uložení dočasné data. Pokud není tato vlastnost k dispozici, aktivity kopírování automaticky generuje blok. | Při použití vyžaduje **redshiftUnloadSettings** vlastnost |
@@ -97,7 +97,7 @@ Alternativně můžete použít **RelationalSource** typu, který zahrnuje Amazo
 
 | Vlastnost | Popis | Požaduje se |
 | --- | --- | --- |
-| **Dotaz** |Pomocí vlastního dotazu přečíst data. | Ne (Pokud **tableName** je zadána vlastnost datové sady) |
+| **dotaz** |Pomocí vlastního dotazu přečíst data. | Ne (Pokud **tableName** je zadána vlastnost datové sady) |
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>UVOLNĚNÍ použít ke zkopírování dat z Amazon Redshift
 

@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f80a22c39608a9d9c67977f2d0493af7300f475b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09fd2f38c3746cf92d576325058dc36221ae50cd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622702"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052483"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-create-pipelines.md)
-> * [Verze 2 – Preview](../concepts-pipelines-activities.md)
+> * [Verze 1](data-factory-create-pipelines.md)
+> * [Verze 2 (aktuální verze)](../concepts-pipelines-activities.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [kanály v V2](../concepts-pipelines-activities.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [kanály v V2](../concepts-pipelines-activities.md).
 
 Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a naučit se je používat k sestavení kompletních pracovních postupů založených na datech pro potřeby přesunů a zpracování dat.  
 
@@ -102,7 +102,7 @@ Teď se blíže podíváme na to, jak se kanál definuje ve formátu JSON. Obecn
 | konec | Koncové datum a čas pro kanál. Pokud zadaný, musí být ve formátu ISO. Příklad: `2016-10-14T17:32:41Z` <br/><br/>Je možné zadat místní čas, například Odhadovaný čas. Tady je příklad: `2016-02-27T06:00:00-05:00`, což je odhadované AM 6<br/><br/>Chcete-li kanál spouštět bez omezení, zadejte jako hodnotu pro vlastnost end 9999-09-09. <br/><br/> Kanál je aktivní jenom mezi její počáteční čas a koncový čas. Nebude provedena před časem zahájení nebo po koncovém čase. Když je pozastavená kanálu, se nebudou provedeny bez ohledu na jeho počáteční a koncový čas. Pro kanál ke spuštění by neměl být pozastavena. V tématu [plánování a provádění](data-factory-scheduling-and-execution.md) pochopit, jak funguje plánování a provádění v Azure Data Factory. |Ne <br/><br/>Pokud zadáte hodnotu pro vlastnost spustit, musíte zadat hodnotu pro vlastnost end.<br/><br/>Naleznete v poznámkách k **spustit** vlastnost. |
 | isPaused | Pokud je nastaven na hodnotu true, kanál nejde spustit. Je v pozastaveném stavu. Výchozí hodnota = false. Tato vlastnost slouží k povolení nebo zakázání kanálu. |Ne |
 | pipelineMode | Metoda pro naplánování spuštění pro kanál. Povolené hodnoty jsou: naplánované (výchozí), jednorázově.<br/><br/>"Pravidelnou" udává, že kanál spouští v zadaném časovém intervalu podle jeho aktivní období (počáteční a koncový čas). 'Jednorázově' udává, že kanál spouští jenom jednou. Po vytvoření jednorázově kanály nelze aktuálně upravit nebo aktualizovat. V tématu [Onetime kanálu](#onetime-pipeline) podrobnosti o jednorázově nastavení. |Ne |
-| ExpirationTime | Doba, po vytvoření, pro kterou [jednorázového kanálu](#onetime-pipeline) je platná a by měla zůstat zřízené. Pokud nemá žádné aktivní, se nezdařilo, nebo až spuštění kanálu je automaticky odstraněna po dorazí čas vypršení platnosti. Výchozí hodnota: `"expirationTime": "3.00:00:00"`|Ne |
+| expirationTime | Doba, po vytvoření, pro kterou [jednorázového kanálu](#onetime-pipeline) je platná a by měla zůstat zřízené. Pokud nemá žádné aktivní, se nezdařilo, nebo až spuštění kanálu je automaticky odstraněna po dorazí čas vypršení platnosti. Výchozí hodnota: `"expirationTime": "3.00:00:00"`|Ne |
 | Datové sady |Seznam datových sad má být používána aktivity definované v kanálu. Tuto vlastnost lze použít k definování datových sad, které jsou specifické pro tento kanál a není definován v rámci služby data factory. Datové sady definované v rámci tohoto kanálu lze použít pouze tento kanál a nesmí se sdílet. V tématu [obor datové sady](data-factory-create-datasets.md#scoped-datasets) podrobnosti. |Ne |
 
 ## <a name="activity-json"></a>Zápis JSON aktivity
@@ -149,11 +149,11 @@ Zásady ovlivňují chování běhu aktivity, konkrétně při zpracování řez
 
 | Vlastnost | Povolené hodnoty | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
-| Souběžnosti |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet spuštění paralelní aktivity, které se může stát při jiné řezy. Například pokud aktivitu musí projít, velké sady dostupných dat, mají větší hodnotu souběžnosti urychluje zpracování dat. |
+| souběžnosti |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet spuštění paralelní aktivity, které se může stát při jiné řezy. Například pokud aktivitu musí projít, velké sady dostupných dat, mají větší hodnotu souběžnosti urychluje zpracování dat. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí datové řezy, které jsou zpracovávány.<br/><br/>Pokud máte 2 řezy (jeden situaci ve 4 a další v 17: 00) a jsou obě čekající na zpracování. Pokud jste nastavili executionPriorityOrder být NewestFirst, je nejprve zpracování řezu v 17: 00. Podobně pokud nastavíte executionPriorityORder být OldestFIrst, pak ve 4 zpracování řezu se. |
 | retry |Integer<br/><br/>Maximální hodnota může být 10 |0 |Počet opakování, než se zpracování dat pro řez je označen jako selhání. Provedení aktivity pro datový řez je opakovat až zadaný počet. Opakovaném provádí co nejdříve po selhání. |
 | timeout |Časový interval |00:00:00 |Časový limit aktivity. Příklad: 00:10:00 (znamená časový limit 10 minut)<br/><br/>Pokud hodnota není zadána nebo je 0, časový limit je nekonečno.<br/><br/>Pokud bude čas zpracování dat na řez překročí hodnota časového limitu, se zruší a systém se pokusí opakujte zpracování. Počet pokusů, závisí na vlastnost opakování. Když dojde k vypršení časového limitu, je stav nastaven na TimedOut. |
-| Zpoždění |Časový interval |00:00:00 |Zadejte zpoždění před zpracování dat řezu spustí.<br/><br/>Provádění aktivity pro datový řez se spustí po zpoždění očekávaný čas spuštění.<br/><br/>Příklad: 00:10:00 (znamená zpoždění 10 minut) |
+| zpoždění |Časový interval |00:00:00 |Zadejte zpoždění před zpracování dat řezu spustí.<br/><br/>Provádění aktivity pro datový řez se spustí po zpoždění očekávaný čas spuštění.<br/><br/>Příklad: 00:10:00 (znamená zpoždění 10 minut) |
 | opakování po delší době |Integer<br/><br/>Maximální hodnota: 10 |1 |Počet dlouho opakování pokusů, než řez spuštění se nezdařilo.<br/><br/>pokusy o opakování po delší době jsou rozmístěny ve longRetryInterval. Takže pokud je třeba zadat čas mezi pokusy o opakování, použijte opakování po delší době. Pokud jsou zadané opakování a opakování po delší době, jednotlivé pokusy o opakování po delší době zahrnuje opakovaných pokusů a je maximální počet pokusů o opakování * opakování po delší době.<br/><br/>Například, pokud bychom měli následující nastavení v zásadách aktivit:<br/>Opakujte: 3<br/>opakování po delší době: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládá se jenom jeden řez provést (stav Čeká) a provedení aktivity pokaždé, když dojde k chybě. Nejdřív by 3 provádění po sobě jdoucích pokusů. Po každém pokusu o stav řezu bude opakovat. Po první 3 pokusy jsou přes, bude stav řezu opakování po delší době.<br/><br/>Po hodině (který je na longRetryInteval hodnota) bude další sadu 3 provádění po sobě jdoucích pokusů. Poté stav řezu by se nezdařilo a by se pokus o žádné další opakování. Proto celkové 6 pokusy byly provedeny.<br/><br/>Pokud žádné spuštění úspěšné, stav řezu by mít připravené a jsou pokus o žádné další opakování.<br/><br/>opakování po delší době je možné použít situace, kdy závislé data dorazí na Nedeterministický časy nebo je v nestabilním stavu v rámci které zpracování dat dojde celém prostředí. V takových případech to, které opakování, jedna po druhé nemusí být úspěšná a díky tomu v intervalech čas má za následek požadované výstup.<br/><br/>Word varování: nenastavujte vysoké hodnoty pro opakování po delší době nebo longRetryInterval. Vyšší hodnoty obvykle implikují dalších systémových otázek. |
 | longRetryInterval |Časový interval |00:00:00 |Prodleva mezi pokusy o opakování dlouho |
 

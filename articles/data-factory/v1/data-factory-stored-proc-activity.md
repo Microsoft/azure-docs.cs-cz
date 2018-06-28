@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 3a0d6998671df7f05d7077da6fffc20a5bf27e8a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b10fbd953eb9ca904043973ebc1f7c6adb9f9abc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622495"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047383"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Systému SQL Server uložené procedury aktivity
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -35,7 +35,7 @@ ms.locfileid: "34622495"
 > * [Vlastní aktivity rozhraní .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Azure Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [transformace dat pomocí aktivity uložené procedury v datové továrně verze 2](../transform-data-using-stored-procedure.md).
+> Tento článek se týká verze 1 Azure Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [transformace dat pomocí aktivity uložené procedury v datové továrně](../transform-data-using-stored-procedure.md).
 
 ## <a name="overview"></a>Přehled
 Pomocí aktivit transformace dat v datové továrně [kanálu](data-factory-create-pipelines.md) k transformaci a zpracování nezpracovaných dat do předpovědi a statistiky. Aktivita uložené procedury je jedním z aktivit transformace, které podporuje služby Data Factory. Tento článek vychází [aktivit transformace dat](data-factory-data-transformation-activities.md) článek, který představuje Obecné přehled o transformaci dat a aktivity podporované transformace v datové továrně.
@@ -153,7 +153,7 @@ I když uloženou proceduru neobsahuje žádná data, je nutné zadat výstupní
     ```
 3. Chcete-li nasadit datovou sadu, klikněte na tlačítko **nasadit** na panelu příkazů. Zkontrolujte, jestli datové sady ve stromovém zobrazení.
 
-    ![Zobrazení stromu s propojenými službami](media/data-factory-stored-proc-activity/tree-view-2.png)
+    ![zobrazení stromu s propojenými službami](media/data-factory-stored-proc-activity/tree-view-2.png)
 
 ### <a name="create-a-pipeline-with-sqlserverstoredprocedure-activity"></a>Vytvoření kanálu s aktivitou SqlServerStoredProcedure
 Teď umožňuje vytvoření kanálu s aktivitou uložené procedury. 
@@ -203,13 +203,13 @@ Všimněte si následujících vlastností:
 ### <a name="monitor-the-pipeline"></a>Monitorování kanálu
 1. Kliknutím na **X** zavřete editor služby Data Factory a vrátíte se zpátky do okna Objekt pro vytváření dat. Tam klikněte na **Diagram**.
 
-    ![Dlaždice diagram](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
+    ![dlaždice diagram](media/data-factory-stored-proc-activity/data-factory-diagram-tile.png)
 2. V **Zobrazení diagramu** uvidíte přehled kanálů a datové sady použité v tomto kurzu.
 
-    ![Dlaždice diagram](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
+    ![dlaždice diagram](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
 3. V zobrazení diagramu dvakrát klikněte na datovou sadu `sprocsampleout`. Zobrazí řezy ve stavu Připraveno. Měla by existovat pět řezy protože řez se vytvářejí každou hodinu mezi počáteční čas a koncový čas z formátu JSON.
 
-    ![Dlaždice diagram](media/data-factory-stored-proc-activity/data-factory-slices.png)
+    ![dlaždice diagram](media/data-factory-stored-proc-activity/data-factory-slices.png)
 4. Pokud je řez v **připraven** stavu, spusťte `select * from sampletable` dotaz proti dané databázi Azure SQL, chcete-li ověřit, že data byla vložena v do tabulky pomocí uložené procedury.
 
    ![Výstupní data](./media/data-factory-stored-proc-activity/output.png)

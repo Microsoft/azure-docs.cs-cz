@@ -15,27 +15,27 @@ ms.topic: article
 ms.date: 03/13/2018
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 565394664ab59ef5186503f708502eacc040321f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 7dad9f3e688c43de3eabd430bf5618ad4632ca3d
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295621"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035804"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Přizpůsobení mapování atributů zřizování pro aplikace SaaS ve službě Azure Active Directory uživatelů
-Microsoft Azure AD poskytuje podporu pro zřizování uživatelů pro aplikace SaaS jiných výrobců jako Salesforce, Google Apps a dalších. Pokud máte uživatele zřizování pro aplikace SaaS třetích stran povoleno, portálu Azure prvky jeho hodnot atributů v podobě konfigurace s názvem "mapování atributů."
+Microsoft Azure AD poskytuje podporu pro zřizování uživatelů pro aplikace SaaS jiných výrobců jako Salesforce, Google Apps a dalších. Pokud máte zřizování uživatelů pro aplikace SaaS třetích stran povoleno, portálu Azure prvky jeho hodnot atributů v podobě mapování atributů.
 
-Existuje předem nakonfigurovaná sada atributů a atributů mapování mezi objekty uživatele Azure AD a každá aplikace SaaS uživatelské objekty. Některé aplikace spravovat jiné typy objektů, kromě uživatele, například skupin. <br> 
+Existuje předem nakonfigurovaná sada atributů a mapování atributů mezi objekty uživatele Azure AD a každá aplikace SaaS uživatelské objekty. Některé aplikace spravovat jiné typy objektů, kromě uživatele, například skupin. <br> 
  Mapování atributů výchozí můžete přizpůsobit podle obchodních potřeb. To znamená, můžete změnit nebo odstranit existující mapování atributů nebo vytvořte nové mapování atributů.
  
-## <a name="editing-user-attribute-mappings"></a>Mapování atributů úpravy uživatele
+## <a name="editing-user-attribute-mappings"></a>Úpravy atribut mapování uživatelů
 
 Na portálu Azure AD, dostanete tuto funkci kliknutím **mapování** konfigurace v **zřizování** v **spravovat** části  **Podniková aplikace**.
 
 
 ![Salesforce][5] 
 
-Kliknutím **mapování** otevření související konfigurace, **mapování atributů** obrazovky. Existují mapování atributů vyžadované aplikací SaaS fungovat správně. Pro povinné atributy **odstranit** funkce není dostupná.
+Kliknutím **mapování** konfigurace, otevře se související **mapování atributů** obrazovky. Nejsou mapování atributů vyžadované aplikací SaaS fungovat správně. Pro povinné atributy **odstranit** funkce není dostupná.
 
 
 ![Salesforce][6]  
@@ -56,12 +56,12 @@ S mapování atributů řídit, jak jsou naplněny atributy v aplikaci SaaS jin�
   Další informace najdete v tématu [zápis výrazy pro mapování atributů v Azure Active Directory](active-directory-saas-writing-expressions-for-attribute-mappings.md).
 * **Žádný** -cílový atribut je ponechán beze změny. Ale pokud cílový atribut je někdy prázdná, je naplněna s výchozí hodnotou, který určíte.
 
-Kromě těchto čtyř typů mapování základní atribut mapování vlastních atributů podporují koncept volitelný **výchozí** přiřazení hodnoty. Přiřazení hodnoty výchozí zajistí, že atribut target je vyplněný s hodnotou, když není ani jedna hodnota ve službě Azure AD ani v cílovém objektu. Nejběžnější konfigurace je nechte pole prázdné.
+Kromě tyto čtyři základní typy vlastní mapování atributů podporují koncept volitelný **výchozí** přiřazení hodnoty. Přiřazení hodnoty výchozí zajistí, že atribut target je vyplněný s hodnotou, když není ani jedna hodnota ve službě Azure AD ani v cílovém objektu. Nejběžnější konfigurace je nechte pole prázdné.
 
 
 ### <a name="understanding-attribute-mapping-properties"></a>Principy vlastnosti mapování atributů
 
-V předchozí části je již byly zavedeny na vlastnost typu mapování atributů.
+V předchozí části které již byly zavedeny pro vlastnost type mapování atributů.
 Kromě tato vlastnost mapování atributů také podporují následující atributy:
 
 - **Zdrojový atribut** -atribut uživatele ze zdrojového systému (Příklad: Azure Active Directory).
@@ -73,13 +73,13 @@ Kromě tato vlastnost mapování atributů také podporují následující atrib
     - **Pouze během vytváření** -použít toto mapování pouze na akcí vytvoření uživatele
 
 
-## <a name="editing-group-attribute-mappings"></a>Mapování atributů úpravu skupiny
+## <a name="editing-group-attribute-mappings"></a>Úprava skupiny-mapování atributů
 
 Vybraný počet aplikací, jako je například ServiceNow, pole a Google Apps, podporují možnost pro zřízení objektů skupiny kromě uživatelských objektů. Objekty skupiny může obsahovat vlastnosti skupiny, jako je například zobrazované názvy a e-mailu aliasy, kromě členy skupiny.
 
 ![ServiceNow][8]  
 
-Zřizování skupiny můžete volitelně můžete povolit nebo zakázat tak, že vyberete mapování skupin v rámci **mapování**a nastavení **povoleno** na požadovanou možnost v **mapování atributů** obrazovky.
+Zřizování skupiny můžete volitelně můžete povolit nebo zakázat tak, že vyberete mapování skupin v rámci **mapování**a nastavení **povoleno** na požadovanou možnost v **mapováníatributů** obrazovky.
 
 Atributy zřízené v rámci skupiny objektů můžete přizpůsobit stejným způsobem jako uživatelské objekty, popsané. 
 
@@ -91,15 +91,14 @@ Atributy zřízené v rámci skupiny objektů můžete přizpůsobit stejným zp
 
 Uživatelské atributy podporované pro danou aplikaci jsou předem nakonfigurovaná. Rozhraní API správy uživatelů většinu aplikací nepodporují zjišťování schématu, proto není schopen dynamicky generovat seznam podporovaných atributů volání do aplikace Azure AD zřizováním služby. 
 
-Ale některé aplikace podporují vlastní atributy. Aby zřizování služby Azure AD mohli číst a zapisovat do vlastních atributů, je třeba zadat jejich definice do Azure pomocí portálu **zobrazit rozšířené možnosti** políčko v dolní části  **Atribut mapování** obrazovky.
+Ale některé aplikace podporují vlastní atributy. Aby zřizování služby Azure AD mohli číst a zapisovat do vlastních atributů, je třeba zadat jejich definice do Azure pomocí portálu **zobrazit rozšířené možnosti** políčko v dolní části  **Mapování atributů** obrazovky.
 
 Aplikace a systémy, které podporují přizpůsobení seznamu atributů patří:
 
 * Salesforce
 * ServiceNow
 * WORKDAY
-* Azure Active Directory
-* V místní službě Active Directory (jako součást Workday uživatele zřizování konektoru)
+* Azure Active Directory ([Azure AD Graph API výchozí atributy](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) a jsou podporovány vlastní adresář rozšíření)
 * Aplikace, které podporují [SCIM 2.0](https://tools.ietf.org/html/rfc7643), kde atributy definované v [základní schématu](https://tools.ietf.org/html/rfc7643) třeba přidat
 
 >[!NOTE]
@@ -140,7 +139,7 @@ Výběrem této možnosti bude efektivně vynutit opětovnou synchronizaci všec
 
 * Microsoft Azure AD poskytuje efektivní implementaci procesu synchronizace. V prostředí inicializovaného jsou zpracovány pouze objekty, které vyžadují aktualizace při synchronizační cyklus. 
 
-* Aktualizace mapování atributů má vliv na výkon synchronizační cyklus. Aktualizace mapování atributů vyžaduje všechny spravované objekty do znovu vyhodnocena. 
+* Aktualizace mapování atributů má vliv na výkon synchronizační cyklus. Aktualizace konfigurace mapování atributů vyžaduje všechny spravované objekty do znovu vyhodnocena. 
 
 * Je součástí osvědčeného postupu udrželi počet po sobě jdoucích změn na vaše mapování atributů minimálně.
 
@@ -151,7 +150,7 @@ Výběrem této možnosti bude efektivně vynutit opětovnou synchronizaci všec
 * [Zapisují se výrazy pro mapování atributů](active-directory-saas-writing-expressions-for-attribute-mappings.md)
 * [Filtry pro zřizování uživatelů oborů](active-directory-saas-scoping-filters.md)
 * [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
-* [Seznam kurzů k integraci aplikací SaaS](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS](saas-apps/tutorial-list.md)
 
 <!--Image references-->
 [5]: ./media/active-directory-saas-customizing-attribute-mappings/21.png

@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c06e8c1a64f6f784f106c9b925f698b33c196320
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e75573513f107977e1d5fe62fbae89cb4439e0e9
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621832"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048947"
 ---
 # <a name="invoke-stored-procedure-from-copy-activity-in-azure-data-factory"></a>Vyvolat uloženou proceduru z aktivity kopírování v Azure Data Factory
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [transformace dat pomocí aktivity uložené procedury v datové továrně verze 2](../transform-data-using-stored-procedure.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [transformace dat pomocí aktivity uložené procedury v datové továrně](../transform-data-using-stored-procedure.md).
 
 
 Při kopírování dat do [systému SQL Server](data-factory-sqlserver-connector.md) nebo [Azure SQL Database](data-factory-azure-sql-connector.md), můžete nakonfigurovat **SqlSink** v aktivitě kopírování vyvolat uloženou proceduru. Můžete chtít použít uložené procedury provést žádné další zpracování (slučování sloupců, vyhledávání hodnot, vložení do více tabulek, atd.) je vyžadována před vkládání dat v cílové tabulky. Tato funkce využívá [zavolat parametry](https://msdn.microsoft.com/library/bb675163.aspx). 

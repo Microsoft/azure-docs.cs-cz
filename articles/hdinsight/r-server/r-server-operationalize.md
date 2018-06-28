@@ -1,6 +1,6 @@
 ---
-title: Zprovoznit R serverem v HDInsight - Azure | Microsoft Docs
-description: Informace o zprovoznění R Server v Azure HDInsight.
+title: Zprovoznění služby ML v HDInsight - Azure | Microsoft Docs
+description: Informace o zprovoznění ML služby v Azure HDInsight.
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -10,28 +10,31 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
 ms.topic: conceptual
-ms.date: 03/23/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 6de6e78d9b4ad68d268b59cff18c75fbdd7be757
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: caefe30ff567a5e24e1f4c3a11309bd35e06190c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412837"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046135"
 ---
-# <a name="operationalize-r-server-cluster-on-azure-hdinsight"></a>Zprovoznit cluster R serverem v Azure HDInsight
+# <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>Zprovoznění služby ML clusteru v Azure HDInsight
 
-Po použití cluster R serverem v HDInsight dokončete data modelování, můžete zprovoznit model, který má provádět předpovědi. Tento článek obsahuje pokyny k provedení této úlohy.
+Po použití clusteru služby ML v HDInsight dokončete data modelování, můžete zprovoznit model, který má provádět předpovědi. Tento článek obsahuje pokyny k provedení této úlohy.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* **Cluster služby R serverem v HDInsight**: pokyny najdete v tématu [začít pracovat s R serverem v HDInsight](r-server-get-started.md).
+* **Cluster služby ML služby v HDInsight**: pokyny najdete v tématu [Začínáme se službou ML v HDInsight](r-server-get-started.md).
 
 * **Klient Secure Shell (SSH):** Klient SSH slouží k vzdálenému připojení ke clusteru HDInsight a spouštění příkazů přímo v clusteru. Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-## <a name="operationalize-r-server-cluster-with-one-box-configuration"></a>Zprovoznit R Server clusteru s jedním pole Konfigurace
+## <a name="operationalize-ml-services-cluster-with-one-box-configuration"></a>Zprovoznění služby ML cluster s konfigurací jedné pole
 
-1. Připojte se přes SSH k hraničnímu uzlu.  
+> [!NOTE]
+> Následující postup platí pro R Server 9.0 a 9.1 ML serveru. ML 9.3 serveru, najdete v části [použití nástroje pro správu ke správě konfigurace operationalization](https://docs.microsoft.com/machine-learning-server/operationalize/configure-admin-cli-launch).
+
+1. Připojte se přes SSH k hraničnímu uzlu.
 
         ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
@@ -39,7 +42,7 @@ Po použití cluster R serverem v HDInsight dokončete data modelování, může
 
 2. Změňte adresář pro příslušné verze a sudo net dll tečkou: 
 
-    - Pro Microsoft R Server 9.1:
+    - Server Microsoft ML 9.1:
 
             cd /usr/lib64/microsoft-r/rserver/o16n/9.1.0
             sudo dotnet Microsoft.RServer.Utils.AdminUtil/Microsoft.RServer.Utils.AdminUtil.dll
@@ -49,11 +52,11 @@ Po použití cluster R serverem v HDInsight dokončete data modelování, může
             cd /usr/lib64/microsoft-deployr/9.0.1
             sudo dotnet Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. Zobrazí se s možnostmi můžete vybírat. Zvolte první možnost, jak je znázorněno na následujícím snímku obrazovky na **konfigurace R Server pro Operationalization**.
+3. Zobrazí se s možnostmi můžete vybírat. Zvolte první možnost, jak je znázorněno na následujícím snímku obrazovky na **ML konfigurovat Server pro Operationalization**.
 
     ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/admin-util-one-box-1.png)
 
-4. Nyní se zobrazí možnost vyberte, jakým způsobem chcete zprovoznit R Server. Z možností vidění, zvolte první z nich tak, že zadáte **A**.
+4. Nyní se zobrazí možnost vyberte, jakým způsobem chcete zprovoznit ML serveru. Z možností vidění, zvolte první z nich tak, že zadáte **A**.
 
     ![jednotná konfigurace operacionalizace](./media/r-server-operationalize/admin-util-one-box-2.png)
 
@@ -99,7 +102,7 @@ Pokud dochází k dlouhým zpožděním při pokusech o využívání webové sl
 
 V této fázi je konfigurace operacionalizace dokončena. Nyní můžete pomocí `mrsdeploy` balíček na vaše RClient pro připojení k operationalization na hraniční uzel a začít používat jeho funkce, jako jsou [vzdálené spuštění](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely) a [webové služby](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services). V závislosti na tom, jestli je váš cluster nastavený ve virtuální síti, může být potřeba nastavit přesměrování portu tunelovým propojením přes přihlášení SSH. Následující části vysvětlují, jak tento tunel nastavit.
 
-### <a name="r-server-cluster-on-virtual-network"></a>R Server clusteru ve virtuální síti
+### <a name="ml-services-cluster-on-virtual-network"></a>ML služby clusteru ve virtuální síti
 
 Ověřte, že je na hraničním uzlu povolený provoz přes port 12800. Tímto způsobem můžete hraniční uzel použít pro připojení k funkci operacionalizace.
 
@@ -115,7 +118,7 @@ Ověřte, že je na hraničním uzlu povolený provoz přes port 12800. Tímto z
 
 Pokud se metoda `remoteLogin()` nemůže připojit k hraničnímu uzlu, ale můžete se k němu připojit přes SSH, budete muset ověřit, jestli je správně nastavené pravidlo pro povolení provozu na portu 12800. Pokud bude tento problém přetrvávat, můžete jako alternativní řešení použít nastavení přesměrování portu tunelovým propojením přes SSH. Pokyny najdete v následující části:
 
-### <a name="r-server-cluster-not-set-up-on-virtual-network"></a>R Server clusteru nejsou nastaveny ve virtuální síti
+### <a name="ml-services-cluster-not-set-up-on-virtual-network"></a>ML služby clusteru nejsou nastaveny ve virtuální síti
 
 Pokud váš cluster není nastavený ve virtuální síti nebo máte potíže s připojením přes virtuální síť, můžete použít přesměrování portu tunelovým propojením přes SSH:
 
@@ -139,7 +142,7 @@ Jakmile máte aktivní relaci SSH, provoz z portu 12800 vašeho počítače se p
 
 ### <a name="step-1-decommission-the-worker-nodes"></a>Krok 1: Vyřazení z provozu uzlů pracovního procesu
 
-R Server clusteru není spravován pomocí YARN. Pokud pracovní uzly nejsou vyřazení, YARN Resource Manager nefunguje podle očekávání, protože nemá žádné informace o prostředky se zabírá serverem. Abyste této situaci zabránili, doporučujeme před horizontálním navýšením kapacity výpočetních uzlů vyřadit z provozu pracovní uzly.
+ML služby clusteru není spravován pomocí YARN. Pokud pracovní uzly nejsou vyřazení, YARN Resource Manager nefunguje podle očekávání, protože nemá žádné informace o prostředky se zabírá serverem. Abyste této situaci zabránili, doporučujeme před horizontálním navýšením kapacity výpočetních uzlů vyřadit z provozu pracovní uzly.
 
 Postupujte podle těchto kroků vyřazení z provozu uzlů pracovního procesu:
 
@@ -163,11 +166,11 @@ Postupujte podle těchto kroků vyřazení z provozu uzlů pracovního procesu:
 
 1. Přihlaste se přes SSH do každého vyřazeného pracovního uzlu.
 
-2. Spusťte nástroj Správce pomocí příslušných knihovny DLL pro cluster R serverem, který máte. R Server 9.1 Spusťte následující příkaz:
+2. Spusťte nástroj Správce pomocí příslušných knihovny DLL pro cluster ML služby, ke které máte. Pro ML Server 9.1, spusťte následující příkaz:
 
         dotnet /usr/lib64/microsoft-deployr/9.0.1/Microsoft.DeployR.Utils.AdminUtil/Microsoft.DeployR.Utils.AdminUtil.dll
 
-3. Zadejte **1** a vyberte možnost **konfigurace R Server pro Operationalization**.
+3. Zadejte **1** a vyberte možnost **ML konfigurovat Server pro Operationalization**.
 
 4. Zadejte **C** a vyberte možnost `C. Compute node`. Tím se na pracovním uzlu nakonfiguruje výpočetní uzel.
 
@@ -175,7 +178,7 @@ Postupujte podle těchto kroků vyřazení z provozu uzlů pracovního procesu:
 
 ### <a name="step-3-add-compute-nodes-details-on-web-node"></a>Krok 3: Přidání výpočetní uzly podrobnosti na uzel webového
 
-Jakmile se všechny uzly pracovního procesu vyřazení jsou nakonfigurovány na spuštění výpočetního uzlu, vraťte se na uzlu edge a přidejte vyřazení pracovní uzly IP adresy v konfiguraci uzlu serveru R webové:
+Jakmile všechny uzly pracovního procesu vyřazení jsou nakonfigurovány na spuštění výpočetního uzlu, vraťte se na uzlu edge a přidejte vyřazení pracovní uzly IP adresy v konfiguraci uzlu serveru ML web:
 
 1. Připojte se přes SSH k hraničnímu uzlu.
 
@@ -192,6 +195,6 @@ Jakmile se všechny uzly pracovního procesu vyřazení jsou nakonfigurovány na
 
 ## <a name="next-steps"></a>Další postup
 
-* [Správa clusteru R Serveru v HDInsight](r-server-hdinsight-manage.md)
-* [Možnosti výpočetního kontextu pro cluster R Serveru v HDInsight](r-server-compute-contexts.md)
-* [Možnosti služby Azure Storage pro cluster R Serveru v HDInsight](r-server-storage.md)
+* [Správa služby ML clusteru v HDInsight](r-server-hdinsight-manage.md)
+* [Výpočetní kontextu možnosti pro cluster služby ML v HDInsight](r-server-compute-contexts.md)
+* [Azure možnosti úložiště pro cluster služby ML v HDInsight](r-server-storage.md)

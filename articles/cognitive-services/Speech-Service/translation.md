@@ -8,14 +8,14 @@ manager: onano
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: a02a89de1d05ec5388a92f14a0fd206e0ee966a6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1151628ed695e74e2196c20b08e33fa5eaf33282
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343777"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028383"
 ---
 # <a name="sample-for-translation"></a>Ukázka pro překlad
 
@@ -56,4 +56,4 @@ Nejnovější verze ukázek a i pokročilejší ukázky jsou vyhrazená [úloži
 
 - [Rozpoznávání řeči](./speech-to-text-sample.md)
 
-- [Záměrné rozpoznávání](./intent.md)
+- [Rozpoznávání záměru](./intent.md)

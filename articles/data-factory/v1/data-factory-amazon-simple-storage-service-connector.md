@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8f73643d25dbcb507e3660a726516d69b7151ecb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d895dcdf9eefac01790aab6dc3f36a3feb0a8b12
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619894"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051146"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Přesun dat ze služby Amazon jednoduché úložiště pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-amazon-simple-storage-service-connector.md)
-> * [Verze 2 – Preview](../connector-amazon-simple-storage-service.md)
+> * [Verze 1](data-factory-amazon-simple-storage-service-connector.md)
+> * [Verze 2 (aktuální verze)](../connector-amazon-simple-storage-service.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [Amazon S3 konektoru V2](../connector-amazon-simple-storage-service.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [Amazon S3 konektoru V2](../connector-amazon-simple-storage-service.md).
 
 Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat ze služby úložiště jednoduché Amazon (S3). Vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování.
 
@@ -46,7 +46,7 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z zdroje A
 
 Nejjednodušší způsob, jak vytvořit kanál je použití **Průvodce kopírováním**. Rychlé návod najdete v tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. Podrobné pokyny k vytvoření kanálu s aktivitou kopírování najdete v tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený:
 
@@ -99,7 +99,7 @@ Oddíly jako je například struktura, dostupnost a zásady jsou podobné pro v�
 | key |Klíč objektu S3. |Řetězec |Ne |
 | Předpona |Předpona pro klíč objektu S3. Jsou vybrané objekty, jejichž klíče začít s touto předponou. Platí pouze v případě, klíč je prázdný. |Řetězec |Ne |
 | verze |Verze objektu S3, pokud je povolena Správa verzí S3. |Řetězec |Ne |
-| Formát | Jsou podporovány následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátu](data-factory-supported-file-and-compression-formats.md#orc-format), a [Parquet formát](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete zkopírovat soubory jako-je mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady. |Ne | |
+| Formát | Jsou podporovány následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátu](data-factory-supported-file-and-compression-formats.md#orc-format), a [Parquet formátu ](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete zkopírovat soubory jako-je mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady. |Ne | |
 | Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne | |
 
 
@@ -176,7 +176,7 @@ Totéž proveďte pro **předponu** vlastnost datové sadě služby Amazon S3. S
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| Rekurzivní |Určuje, jestli k rekurzivnímu seznamu S3 objekty v adresáři. |hodnotu true nebo false |Ne |
+| rekurzivní |Určuje, jestli k rekurzivnímu seznamu S3 objekty v adresáři. |hodnotu true nebo false |Ne |
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>Příklad JSON: kopírování dat z Amazonu S3 do úložiště objektů Blob v Azure
 Tento příklad ukazuje, jak zkopírovat data z Amazonu S3 do Azure Blob storage. Ale data se dají zkopírovat přímo na [žádné jímky, které jsou podporovány](data-factory-data-movement-activities.md#supported-data-stores-and-formats) pomocí aktivity kopírování v datové továrně.

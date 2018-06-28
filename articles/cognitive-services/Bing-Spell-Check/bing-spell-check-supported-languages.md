@@ -9,16 +9,18 @@ ms.component: bing-spell-check
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: nolachar
-ms.openlocfilehash: e33fe5a30d154e8396c17d01487ef4420313527d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7cab8e0471151cd2ae7c2e31406f2460fdff6a0b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343482"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050382"
 ---
 # <a name="supported-language-list-and-status"></a>Seznam podporovaných jazyků a stav
 
-Podporuje tyto jazyky rozhraním API kontrola pravopisu Bing.
+Tyto jazyky jsou podporovány rozhraním API kontrola pravopisu Bing (pouze v `spell` režim). 
+
+Pamatujte, že pro práci s jakéhokoli jiného jazyka než `en-US`, `mkt` by mělo být nastavené a buď `Accept-Language` nebo `setLang` by měla být nastavena, jako je popsán v [API kontrola pravopisu v7 – referenční informace](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
 
 | Jazyk    | Kód jazyka |
 |:----------- |:-------------:|

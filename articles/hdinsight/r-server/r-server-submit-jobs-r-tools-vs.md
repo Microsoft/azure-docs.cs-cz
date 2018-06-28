@@ -11,14 +11,14 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/11/2018
+ms.date: 06/27/2018
 ms.author: maxluk
-ms.openlocfilehash: c6f6e691ef4b317854aef1d7397d5fb840d25ff2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: eb7b538737e54b2c3d8a32e2ba65f7e0762a302c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409318"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047152"
 ---
 # <a name="submit-jobs-from-r-tools-for-visual-studio"></a>Odesílání úloh z Nástrojů R pro Visual Studio
 
@@ -37,7 +37,7 @@ RTVS vylepšuje pracovní postup R prostřednictvím nabídky Nástroje, jako [R
 3. Je potřeba mít veřejné a soukromé klíče pro ověřování SSH.
 <!-- {TODO tbd, no such file yet}[use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-windows.md) -->
 
-4. Nainstalujte [R Server](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) na váš počítač. R Server poskytuje [ `RevoScaleR` ](https://msdn.microsoft.com/microsoft-r/scaler/scaler) a `RxSpark` funkce.
+4. Nainstalujte [ML serveru](https://msdn.microsoft.com/microsoft-r/rserver-install-windows) na váš počítač. ML Server poskytuje [ `RevoScaleR` ](https://msdn.microsoft.com/microsoft-r/scaler/scaler) a `RxSpark` funkce.
 
 5. Nainstalujte [PuTTY](http://www.putty.org/) zajistit výpočetní kontext spuštění `RevoScaleR` funkce z místního klienta ke svému clusteru HDInsight.
 
@@ -53,7 +53,7 @@ RTVS vylepšuje pracovní postup R prostřednictvím nabídky Nástroje, jako [R
 
 ## <a name="execute-local-r-methods"></a>Spustit místní metody R
 
-1. Vytvoření vaší [clusteru HDInsight serveru R](r-server-get-started.md).
+1. Vytvoření vaší [clusteru služby HDInsight ML](r-server-get-started.md).
 2. Nainstalujte [RTVS rozšíření](https://docs.microsoft.com/visualstudio/rtvs/installation).
 3. Stažení [soubor zip ukázky](https://github.com/Microsoft/RTVS-docs/archive/master.zip).
 4. Otevřete `examples/Examples.sln` spustíte řešení v sadě Visual Studio.
@@ -66,11 +66,11 @@ RTVS vylepšuje pracovní postup R prostřednictvím nabídky Nástroje, jako [R
 
     ![Nastavení dat vědecké účely...](./media/r-server-submit-jobs-r-tools-vs/workspace.png)
 
-## <a name="submit-jobs-to-an-hdinsight-r-cluster"></a>Odesílání úloh do clusteru služby HDInsight R
+## <a name="submit-jobs-to-an-hdinsight-ml-services-cluster"></a>Odesílání úloh do clusteru služby HDInsight ML
 
-Pomocí klienta Microsoft R Server nebo Microsoft R z Windows počítače vybavené PuTTY, můžete vytvořit výpočetní kontext, který se spustí distribuované `RevoScaleR` funkce z místního klienta ke svému clusteru HDInsight. Použití `RxSpark` vytvořit výpočetní kontext, vaše uživatelské jméno, clusteru Hadoop hraniční uzel, přepínače SSH a tak dále.
+Pomocí klienta Microsoft ML Server nebo Microsoft R z Windows počítače vybavené PuTTY, můžete vytvořit výpočetní kontext, který se spustí distribuované `RevoScaleR` funkce z místního klienta ke svému clusteru HDInsight. Použití `RxSpark` vytvořit výpočetní kontext, vaše uživatelské jméno, clusteru Hadoop hraniční uzel, přepínače SSH a tak dále.
 
-1. Chcete-li najít název hostitele hraniční uzel, otevřete podokno clusteru vaší HDInsight R v Azure a pak vyberte **Secure Shell (SSH)** v horní nabídce v podokně přehled.
+1. Chcete-li najít název hostitele hraniční uzel, otevřete podokno clusteru vaší ML služby HDInsight v Azure a poté vyberte **Secure Shell (SSH)** v horní nabídce v podokně přehled.
 
     ![Secure Shell (SSH)](./media/r-server-submit-jobs-r-tools-vs/ssh.png)
 
@@ -122,7 +122,7 @@ Pomocí klienta Microsoft R Server nebo Microsoft R z Windows počítače vybave
 
 5. Ověřte, zda `rxHadoopCopy` úspěšně zkopírovaný `people.json` soubor ze složky dat příklad nově vytvořený `/user/RevoShare/newUser` složky:
 
-    1. Z podokna clusteru HDInsight R v Azure, vyberte **účty úložiště** z nabídky na levé straně.
+    1. Z podokna clusteru služby HDInsight ML v Azure, vyberte **účty úložiště** z nabídky na levé straně.
 
         ![Účty úložiště](./media/r-server-submit-jobs-r-tools-vs/storage-accounts.png)
 
@@ -144,6 +144,6 @@ Pomocí klienta Microsoft R Server nebo Microsoft R z Windows počítače vybave
 
 ## <a name="next-steps"></a>Další postup
 
-* [Možnosti výpočetního kontextu pro R Server ve službě HDInsight](r-server-compute-contexts.md)
+* [Výpočetní kontextu možnosti pro ML služby v HDInsight](r-server-compute-contexts.md)
 * [Kombinování ScaleR a SparkR](../hdinsight-hadoop-r-scaler-sparkr.md) poskytuje příklad letecká společnost letu zpoždění předpovědi.
 <!-- * You can also submit R jobs with the [R Studio Server](hdinsight-submit-jobs-from-r-studio-server.md) -->

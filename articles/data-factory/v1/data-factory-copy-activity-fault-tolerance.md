@@ -13,21 +13,21 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d0826db686b7fdea8389944b4b56f549ea03f751
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5cfab02fc248139c76bd6123ac942832f8e1a21a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621043"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052507"
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>Přidání odolnost proti chybám v aktivitě kopírování přeskočení nekompatibilní řádků
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-copy-activity-fault-tolerance.md)
-> * [Verze 2 – Preview](../copy-activity-fault-tolerance.md)
+> * [Verze 1](data-factory-copy-activity-fault-tolerance.md)
+> * [Verze 2 (aktuální verze)](../copy-activity-fault-tolerance.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [odolnost proti chybám při aktivitě kopírování objektu pro vytváření dat verze 2](../copy-activity-fault-tolerance.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [odolnost proti chybám při aktivitě kopírování objektu pro vytváření dat](../copy-activity-fault-tolerance.md).
 
 Azure Data Factory [aktivity kopírování](data-factory-data-movement-activities.md) nabízí dva způsoby, jak zpracovat nekompatibilní řádků při kopírování dat mezi zdroj a jímka úložišti dat:
 

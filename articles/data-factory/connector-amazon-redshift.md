@@ -13,23 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 5787f944211c5dd6c0c83e7dc10170d8a0cd9a23
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6d36733b63645fd86580ccdc5af756739f77338c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616606"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048141"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Kopírování dat z Amazon Redshift pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-amazon-redshift-connector.md)
-> * [Verze 2 – Preview](connector-amazon-redshift.md)
+> * [Verze 1](v1/data-factory-amazon-redshift-connector.md)
+> * [Aktuální verze](connector-amazon-redshift.md)
 
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Redshift Amazon. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [connnector Amazon Redshift v V1](v1/data-factory-amazon-redshift-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -201,7 +198,7 @@ Pro tuto ukázku případy použití, zkopírujte data aktivity uvolní z Amazon
                 "linkedServiceName": "AzureStorageLinkedService",
                 "path": "adfstagingcopydata"
             },
-            "cloudDataMovementUnits": 32
+            "dataIntegrationUnits": 32
         }
     }
 ]

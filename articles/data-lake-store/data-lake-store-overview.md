@@ -1,26 +1,26 @@
 ---
-title: Přehled Azure Data Lake Storu | Dokumentace Microsoftu
-description: Seznámení se službou Azure Data Lake Store a jejími výhodami oproti jiným úložištím dat
+title: Přehled Azure Data Lake Storage Gen1 | Microsoft Docs
+description: Pochopit, jaké Gen1 úložiště Data Lake je (dříve označované jako Azure Data Lake Store) a hodnota, kterou poskytuje oproti jiným úložištím dat
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: b3475057-9427-4492-a3af-25a802a23a79
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/26/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 111906bc9e7e85e30a879d7bacff37edb4b204ac
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: HT
+ms.openlocfilehash: 4dff8f4ff9fc324d48391c0399677b64824493c6
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035806"
 ---
-# <a name="overview-of-azure-data-lake-store"></a>Přehled Azure Data Lake Store
+# <a name="overview-of-azure-data-lake-storage-gen1"></a>Přehled Azure Data Lake Storage Gen1
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 Azure Data Lake Store je celopodnikové, flexibilně škálovatelné úložiště pro analytické úlohy s velkými objemy dat. Azure Data Lake umožňuje zaznamenávat data libovolné velikosti, typu a rychlosti příjmu do jediného místa pro účely provozní a zjišťovací analýzy.
 
 > [!TIP]
@@ -81,24 +81,8 @@ Služba Data Lake Store umožňuje přístup prostřednictvím nového systému 
 
 K datům v Data Lake Store můžete přistupovat pomocí `adl://<data_lake_store_name>.azuredatalakestore.net`. Další informace o přístupu k datům v Data Lake Store najdete v tématu [Zobrazení vlastností uložených dat](data-lake-store-get-started-portal.md#properties)
 
-## <a name="how-do-i-start-using-azure-data-lake-store"></a>Jak můžu začít používat Azure Data Lake Store?
-Informace o tom, jak zřídit Data Lake Store pomocí webu Azure Portal, najdete v tématu [Začínáme s Data Lake Store pomocí webu Azure Portal](data-lake-store-get-started-portal.md). Po zřízení Azure Data Lake můžete zjistit, jak používat nabídky velkých objemů dat, například Azure Data Lake Analytics nebo Azure HDInsight, se službou Data Lake Store. Můžete taky vytvořit aplikaci .NET, která vytvoří účet Azure Data Lake Store a bude provádět operace jako nahrávání dat, stahování dat atd.
+## <a name="next-steps"></a>Další postup
 
-* [Začínáme s Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Použití Azure HDInsight se službou Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Začínáme s Data Lake Store pomocí portálu Azure](data-lake-store-get-started-portal.md)
 * [Začínáme s Azure Data Lake Storem pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
-
-## <a name="data-lake-store-videos"></a>Videa Data Lake Store
-Pokud se raději učíte při sledování videa, služba Data Lake Store nabízí videa pro celou řadu funkcí.
-
-* [Vytvoření účtu Azure Data Lake Store](https://mix.office.com/watch/1k1cycy4l4gen)
-* [Použití Průzkumníku dat ke správě dat v Azure Data Lake Storu](https://mix.office.com/watch/icletrxrh6pc)
-* [Připojení Azure Data Lake Analytics k Azure Data Lake Storu](https://mix.office.com/watch/qwji0dc9rx9k)
-* [Přístup k Azure Data Lake Storu prostřednictvím Data Lake Analytics](https://mix.office.com/watch/1n0s45up381a8)
-* [Připojení Azure HDInsight k Azure Data Lake Storu](https://mix.office.com/watch/l93xri2yhtp2)
-* [Přístup k Azure Data Lake Storu prostřednictvím aplikací Hive a Pig](https://mix.office.com/watch/1n9g5w0fiqv1q)
-* [Použití DistCp (Hadoop Distributed Copy) ke kopírování dat z/do Azure Data Lake Storu](https://mix.office.com/watch/1liuojvdx6sie)
-* Použití Apache Sqoop k přesouvání dat [mezi relačními zdroji a Azure Data Lake Storem](https://mix.office.com/watch/1butcdjxmu114)
-* [Orchestrace dat pomocí Azure Data Factory pro Azure Data Lake Store](https://mix.office.com/watch/1oa7le7t2u4ka)
-* [Zabezpečení dat v Azure Data Lake Storu](https://mix.office.com/watch/1q2mgzh9nn5lx)
-
+* [Použití Azure HDInsight se službou Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)

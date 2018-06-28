@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nitinme
-ms.openlocfilehash: b80c49b67c7cca835ae08346561984e168e3df4e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 6ccdb1fff5ecdcb61beedf1b12904d3785d4921d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31392166"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048496"
 ---
 # <a name="machine-learning-on-hdinsight"></a>Strojového učení v HDInsight
 
@@ -33,13 +33,13 @@ Knihovna Microsoft Machine Learning pro Apache Spark je [MMLSpark](https://githu
 
 ## <a name="r"></a>R
 
-[R](https://www.r-project.org/) právě nejoblíbenější statistické programovací jazyk na světě. Je nástroj pro vizualizaci dat s otevřeným zdrojem s komunitou uživatelů přes 2,5 milionu a rozšiřujících se. S jeho thriving uživatelské základny a více než 8000 přidružených balíčků R je pravděpodobně volbou pro mnoho společností, kteří potřebují strojové učení. Cluster služby HDInsight můžete vytvořit s R Server připravený k použití s velkých datových sad a modely. Tato funkce poskytuje datových vědců a statistikami s známé rozhraní R, který můžete škálovat na vyžádání prostřednictvím HDInsight, bez nutnosti instalace a údržby.
+[R](https://www.r-project.org/) právě nejoblíbenější statistické programovací jazyk na světě. Je nástroj pro vizualizaci dat s otevřeným zdrojem s komunitou uživatelů přes 2,5 milionu a rozšiřujících se. S jeho thriving uživatelské základny a více než 8000 přidružených balíčků R je pravděpodobně volbou pro mnoho společností, kteří potřebují strojové učení. Můžete vytvořit cluster služby HDInsight službou ML připravené pro použití s velkých datových sad a modely. Tato funkce poskytuje datových vědců a statistikami s známé rozhraní R, který můžete škálovat na vyžádání prostřednictvím HDInsight, bez nutnosti instalace a údržby.
 
 ![Školení pro předpovědi s R server](./media/hdinsight-machine-learning-overview/r-training.png)
 
 Hraničního uzlu clusteru poskytuje vhodné místo pro připojení ke clusteru a spustit skripty R.  Máte také možnost spouštět skripty R mezi uzly clusteru pomocí ScaleR na Hadoop mapy snížit nebo výpočetní kontexty Spark.
 
-S R serverem v HDInsight pomocí Spark můžete pomocí kontextu výpočtů Spark paralelní školení mezi uzly clusteru. Skripty R můžete spustit přímo v uzlu edge pomocí všechny dostupné jader paralelně, podle potřeby. Alternativně můžete spustit kód z uzlu edge na ji zpracování, který je distribuován do všech uzlů v clusteru. R serverem v HDInsight pomocí Spark paralelního funkce z balíčků R s otevřeným zdrojem, taky umožňuje v případě potřeby.
+S ML služeb v prostředí HDInsight pomocí Spark vám může paralelními školení mezi uzly clusteru s podporou pomocí kontextu výpočtů Spark. Skripty R můžete spustit přímo v uzlu edge pomocí všechny dostupné jader paralelně, podle potřeby. Alternativně můžete spustit kód z uzlu edge na ji zpracování, který je distribuován do všech uzlů v clusteru. ML služeb v prostředí HDInsight pomocí Spark paralelního funkce z balíčků R s otevřeným zdrojem, taky umožňuje v případě potřeby.
 
 ## <a name="azure-machine-learning-and-hive"></a>Azure Machine Learning a Hive
 

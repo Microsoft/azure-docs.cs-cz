@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/10/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 65c7262916219a74dcd6bdab487306b5bd5f709f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1882207207327214ee6519a98715d06a7e32ab93
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299092"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045598"
 ---
 # <a name="logic-apps-b2b-cross-region-disaster-recovery"></a>Zotavení po havárii mezi oblastmi B2B aplikace logiky
 
@@ -85,7 +85,7 @@ K návratu do primární oblasti případě, že je k dispozici, postupujte takt
 Kontinuita podnikových procesů pro EDI X 12 dokumentů je založena na ovládací prvek čísla:
 
 > [!TIP]
-> Můžete také [X12 rychlý start šablony](https://azure.microsoft.com/documentation/templates/201-logic-app-x12-disaster-recovery-replication/) k vytvoření aplikace logiky. Vytváření primární a sekundární integrace účty jsou nezbytné požadavky pro použití šablony. Šablona pomůže vytvořit dvě logiku aplikace, jednu pro čísla přijaté řízení a druhou pro generovaný řízení čísla. Příslušné triggery a akce se vytvoří v aplikace logiky, připojení k účtu primární integrace a akce účet sekundární integrace aktivační událost.
+> Můžete také [X12 rychlý start šablony](https://azure.microsoft.com/resources/templates/201-logic-app-b2b-disaster-recovery-replication/) k vytvoření aplikace logiky. Vytváření primární a sekundární integrace účty jsou nezbytné požadavky pro použití šablony. Šablona pomůže vytvořit dvě logiku aplikace, jednu pro čísla přijaté řízení a druhou pro generovaný řízení čísla. Příslušné triggery a akce se vytvoří v aplikace logiky, připojení k účtu primární integrace a akce účet sekundární integrace aktivační událost.
 
 **Požadavky**
 

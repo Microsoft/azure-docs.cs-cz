@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 380c585f57737c0aa4ec99303c52d4567500b5f4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4d6c819f03034703314593f3e19392a580036039
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343288"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029141"
 ---
 # <a name="customize-speech-to-text-models-using-speech-service"></a>Přizpůsobit pomocí služby řeči modely "Řeči na Text"
 
@@ -122,13 +122,13 @@ Jako součást procesu vytváření modelu můžete otestovat váš model proti 
 
 Jakmile vytvoříte vlastní akustickými modely nebo modely jazyk, je můžete nasadit do vlastní **řeči na Text** koncový bod. Pouze účet, který je vytvořen koncový bod je povoleno provádět volání do ní.
 
-Chcete-li vytvořit koncový bod, zvolte **nasazení** z **vlastní řeči** nabídce v horní části stránky. **Nasazení** stránka obsahuje tabulku aktuální vlastní koncové body, pokud jste vytvořili žádné. Klikněte na tlačítko **vytvořit nový** k vytvoření nového koncového bodu.
+Chcete-li vytvořit koncový bod, zvolte **koncové body** z **vlastní řeči** nabídce v horní části stránky. **Koncové body** stránka obsahuje tabulku aktuální vlastní koncové body, pokud jste vytvořili žádné. Klikněte na tlačítko **vytvořit nový** k vytvoření nového koncového bodu.
 
 Vyberte modely, které chcete použít v **akustickými modelu** a **jazykový Model** uvádí. Dostupné možnosti, vždy zahrňte základní modely společnosti Microsoft. Nesmí kombinovat konverzačního modely s vyhledávání a modely, určují, takže volba akustickými modelu omezuje modely k dispozici jazyk a naopak. Můžete použít stejné modely v libovolný počet koncových bodů.
 
 Klikněte na tlačítko **vytvořit** po výběru modely. Zřídit nový koncový bod může trvat až 30 minut.
 
-Pokud váš koncový bod je připraven, vyberte ho v **nasazení** tabulce najdete ID URI a nasazení Můžete použít vlastní koncové body pomocí [Rest API](rest-apis.md#speech-to-text) a [řeči SDK](speech-sdk.md). [Ukázky kódu jsou](samples.md) zahrnují příklad použití vlastní převod řeči na Text koncový bod.
+Pokud váš koncový bod je připraven, vyberte ho v **koncové body** tabulce najdete ID URI a nasazení Můžete použít vlastní koncové body pomocí [Rest API](rest-apis.md#speech-to-text) a [řeči SDK](speech-sdk.md). [Ukázky kódu jsou](samples.md) zahrnují příklad použití vlastní převod řeči na Text koncový bod.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: 06fd2f3ef4a17c5626afc95ed8ae5999778ebda6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 24b20766997a9a41956f575f6cab8ee5ef0d9e25
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293156"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035811"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Zapisují se výrazy pro mapování atributů v Azure Active Directory
 Při konfiguraci zřizování k aplikaci SaaS, je jeden z typů mapování atributů, které můžete zadat mapování u výrazu. Pro tyto musíte napsat skript jako výraz, který umožňuje transformovat data uživatelů do formátů, které jsou více přijatelné pro aplikace SaaS.
@@ -37,7 +37,7 @@ Syntaxe pro výrazy pro mapování atributů je připomínající jazyka Visual 
 * Pro řetězcové konstanty Pokud potřebujete zpětné lomítko (\) nebo uvozovky (") v řetězci, ho, je nutné uvést symbolem zpětné lomítko (\). Například: "název společnosti: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Seznam funkcí
-[Připojit](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [připojení](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; [není](#not) &nbsp; &nbsp; &nbsp; &nbsp; [Nahradit](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [přepínače](#switch)
+[Připojit](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [připojení](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [není](#not) &nbsp; &nbsp; &nbsp; &nbsp; [nahradit](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Přepínače](#switch)
 
 - - -
 ### <a name="append"></a>Připojit
@@ -50,7 +50,7 @@ Syntaxe pro výrazy pro mapování atributů je připomínající jazyka Visual 
 | Název | Požadované / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu, ze zdrojového objektu |
-| **Přípona** |Požaduje se |Řetězec |Řetězec, který má být připojen na konec zdrojové hodnoty. |
+| **přípona** |Požaduje se |Řetězec |Řetězec, který má být připojen na konec zdrojové hodnoty. |
 
 - - -
 ### <a name="formatdatetime"></a>FormatDateTime
@@ -96,7 +96,19 @@ Pokud je jedna z hodnot zdroj vícehodnotový atribut, pak každá hodnota v ten
 | **Délka** |Požaduje se |integer |Délka dílčí řetězec. Pokud délka skončí mimo **zdroj** řetězec, funkce vrátí dílčí řetězec z **spustit** indexu do konce **zdroj** řetězec. |
 
 - - -
-### <a name="not"></a>není
+### <a name="normalizediacritics"></a>NormalizeDiacritics
+**Funkce:**<br> NormalizeDiacritics(source)
+
+**Popis:**<br> Vyžaduje jeden argument řetězec. Vrátí řetězec, ale s znaky diakritická nahradit ekvivalentní-diakritických znaků. Obvykle používá pro převod názvy první a poslední názvy diakritických znaků (diakritiku) do platné hodnoty, které lze použít v různých identifikátory uživatel například hlavních názvů uživatelů, názvy účtů SAM a e-mailové adresy.
+
+**Parametry:**<br> 
+
+| Název | Požadované / s opakováním | Typ | Poznámky |
+| --- | --- | --- | --- |
+| **Zdroj** |Požaduje se |Řetězec | Obvykle křestní jméno nebo poslední atribut name. |
+
+- - -
+### <a name="not"></a>Není
 **Funkce:**<br> Not(Source)
 
 **Popis:**<br> Převrátí logickou hodnotu **zdroj**. Pokud **zdroj** hodnota je "*True*", vrátí "*False*". Jinak vrátí "*True*".
@@ -129,7 +141,6 @@ Nahradí hodnoty v řetězci. Funguje jinak v závislosti na parametry zadané:
   * Pokud **zdroj** má hodnotu, používá **regexPattern** a **regexGroupName** extrahovat nahrazující hodnotou z vlastnost s **replacementPropertyName** . Nahrazující hodnotou se vrátí jako výsledek
 
 **Parametry:**<br> 
-
 | Název | Požadované / s opakováním | Typ | Poznámky |
 | --- | --- | --- | --- |
 | **Zdroj** |Požaduje se |Řetězec |Obvykle název atributu, ze zdrojového objektu. |
@@ -144,7 +155,7 @@ Nahradí hodnoty v řetězci. Funguje jinak v závislosti na parametry zadané:
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Funkce:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
-**Popis:**<br> Vrátí jeden appRoleAssignment ze seznamu všechny appRoleAssignments přiřazen k uživateli pro danou aplikaci. Tato funkce je potřeba převést objekt appRoleAssignments do jedné role název řetězce. Všimněte si, že osvědčený postup je zajistit appRoleAssignment pouze jeden je přiřazen jednomu uživateli současně a pokud víc rolí přiřazené role řetězec vrácený nemusí být předvídatelný.
+**Popis:**<br> Vyžaduje jeden argument řetězec. Vrátí řetězec, ale žádné repalced diakritických znaků s ekvivalentní-diakritických znaků.
 
 **Parametry:**<br> 
 
@@ -215,16 +226,16 @@ Budete muset vygenerovat uživatele alias provedením nejprve 3 písmena křestn
 * **VSTUP** (Přezdívka): "Doe"
 * **VÝSTUP**: "JohDoe"
 
-### <a name="remove-diacritics-from-a-string-and-convert-to-lowercase"></a>Odeberte z řetězce diakritiky a převeden na malá písmena
-Budete muset odeberte speciální znaky v řetězci a převést velká písmena na malá písmena.
+### <a name="remove-diacritics-from-a-string"></a>Odebrat znaky s diakritikou z řetězce
+Potřebujete nahradit znaků obsahující značky zvýraznění s ekvivalentní znaky, které neobsahují žádný značky zvýraznění.
 
 **Výraz:** <br>
-`Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace([givenName], , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , )`
+NormalizeDiacritics([givenName])
 
 **Ukázka vstupu a výstupu:** <br>
 
 * **VSTUP** (givenName): "Zoë"
-* **VÝSTUP**: "zoe"
+* **VÝSTUP**: "Zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Výstupní data jako řetězec v určitém formátu
 Chcete odesílat data do aplikace SaaS v určitém formátu. <br>
@@ -259,5 +270,5 @@ Pokud kód stavu neodpovídá žádné předdefinované možnosti, použijte vý
 * [Filtry pro zřizování uživatelů oborů](active-directory-saas-scoping-filters.md)
 * [Zapnutí automatického zřizování uživatelů a skupin ze služby Azure Active Directory do aplikací pomocí SCIM](manage-apps/use-scim-to-provision-users-and-groups.md)
 * [Účet zřizování oznámení](active-directory-saas-account-provisioning-notifications.md)
-* [Seznam kurzů k integraci aplikací SaaS](active-directory-saas-tutorial-list.md)
+* [Seznam kurzů k integraci aplikací SaaS](saas-apps/tutorial-list.md)
 

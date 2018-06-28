@@ -4,28 +4,28 @@ description: Přehled průběžnou integraci a průběžné nasazování pro Azu
 author: shizn
 manager: ''
 ms.author: xshi
-ms.date: 04/30/2018
+ms.date: 06/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5fbac725894d01b2dc622d3542f865a66b240743
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 62d8d770f6b4c3a62a2395eb8c1505dbc3835c28
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333772"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047451"
 ---
-# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge---preview"></a>Průběžnou integraci a průběžné nasazování pro Azure IoT okraj – náhled
-Tento kurz ukazuje, jak můžete použít průběžnou integraci a funkcí průběžného nasazování Visual Studio Team Services (VSTS) a Microsoft Team Foundation Server (TFS), pokud chcete vytvořit, otestovat a nasadit aplikace rychle a efektivně do vaší Azure IoT okraj. 
+# <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Průběžnou integraci a průběžné nasazování okraj Azure IoT
 
-V tomto kurzu se naučíte, jak:
-> [!div class="checklist"]
-> * Vytvoření a zkontrolujte v ukázce jednotku obsahující řešení IoT Edge testy.
-> * Nainstalujte rozšíření Azure IoT Edge pro vaše služby VSTS.
-> * Nakonfigurujte průběžnou integraci (CI) vytvářet řešení a spouštění testování částí.
-> * Nakonfigurujte průběžné nasazování (CD) k nasazení řešení a zobrazování odpovědí.
+Tento článek ukazuje, jak můžete použít průběžnou integraci a funkcí průběžného nasazování Visual Studio Team Services (VSTS) a Microsoft Team Foundation Server (TFS) pro vytvoření, testování a nasazení aplikace rychle a efektivně do vaší Azure Okraj IoT. 
 
-To bude trvat 30 minut k dokončení tohoto kurzu.
+V tomto článku se dozvíte, jak:
+* Vytvoření a zkontrolujte v ukázce jednotku obsahující řešení IoT Edge testy.
+* Nainstalujte rozšíření Azure IoT Edge pro vaše služby VSTS.
+* Nakonfigurujte průběžnou integraci (CI) vytvářet řešení a spouštění testování částí.
+* Nakonfigurujte průběžné nasazování (CD) k nasazení řešení a zobrazování odpovědí.
+
+To bude trvat 30 minut na dokončení kroků v tomto článku.
 
 ![Položky konfigurace a disku CD](./media/how-to-ci-cd/cd.png)
 
@@ -82,13 +82,7 @@ V této části vytvoříte ukázkové IoT Edge řešení obsahujícího testy j
 
             static void Main(string[] args)
             {
-                // The Edge runtime gives us the connection string we need -- it is injected as an environment variable
-                string connectionString = Environment.GetEnvironmentVariable("EdgeHubConnectionString");
-
-                // Cert verification is not yet fully functional when using Windows OS for the container
-                bool bypassCertVerification = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-                if (!bypassCertVerification) InstallCert();
-                Init(connectionString, bypassCertVerification).Wait();
+                Init().Wait();
 
                 // Wait until the app unloads or is cancelled
                 var cts = new CancellationTokenSource();
@@ -108,94 +102,55 @@ V této části vytvoříte ukázkové IoT Edge řešení obsahujícího testy j
             }
 
             /// <summary>
-            /// Add certificate in local cert store for use by client for secure connection to IoT Edge runtime
-            /// </summary>
-            static void InstallCert()
-            {
-                string certPath = Environment.GetEnvironmentVariable("EdgeModuleCACertificateFile");
-                if (string.IsNullOrWhiteSpace(certPath))
-                {
-                    // We cannot proceed further without a proper cert file
-                    Console.WriteLine($"Missing path to certificate collection file: {certPath}");
-                    throw new InvalidOperationException("Missing path to certificate file.");
-                }
-                else if (!File.Exists(certPath))
-                {
-                    // We cannot proceed further without a proper cert file
-                    Console.WriteLine($"Missing path to certificate collection file: {certPath}");
-                    throw new InvalidOperationException("Missing certificate file.");
-                }
-                X509Store store = new X509Store(StoreName.Root, StoreLocation.CurrentUser);
-                store.Open(OpenFlags.ReadWrite);
-                store.Add(new X509Certificate2(X509Certificate2.CreateFromCertFile(certPath)));
-                Console.WriteLine("Added Cert: " + certPath);
-                store.Close();
-            }
-            /// <summary>
-            /// Initializes the DeviceClient and sets up the callback to receive
+            /// Initializes the ModuleClient and sets up the callback to receive
             /// messages containing temperature information
             /// </summary>
-            static async Task Init(string connectionString, bool bypassCertVerification = false)
+            static async Task Init()
             {
-                Console.WriteLine("Connection String {0}", connectionString);
-
                 MqttTransportSettings mqttSetting = new MqttTransportSettings(TransportType.Mqtt_Tcp_Only);
-                // During dev you might want to bypass the cert verification. It is highly recommended to verify certs systematically in production
-                if (bypassCertVerification)
-                {
-                    mqttSetting.RemoteCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) => true;
-                }
                 ITransportSettings[] settings = { mqttSetting };
 
                 // Open a connection to the Edge runtime
-                DeviceClient ioTHubModuleClient = DeviceClient.CreateFromConnectionString(connectionString, settings);
+                ModuleClient ioTHubModuleClient = await ModuleClient.CreateFromEnvironmentAsync(settings);
                 await ioTHubModuleClient.OpenAsync();
                 Console.WriteLine("IoT Hub module client initialized.");
 
                 // Register callback to be called when a message is received by the module
-                // await ioTHubModuleClient.SetImputMessageHandlerAsync("input1", PipeMessage, iotHubModuleClient);
-
-                // Read TemperatureThreshold from Module Twin Desired Properties
-                var moduleTwin = await ioTHubModuleClient.GetTwinAsync();
-                var moduleTwinCollection = moduleTwin.Properties.Desired;
-                try {
-                    temperatureThreshold = moduleTwinCollection["TemperatureThreshold"];
-                } catch(ArgumentOutOfRangeException) {
-                    Console.WriteLine("Proerty TemperatureThreshold not exist");
-                }
-
-                // Attach callback for Twin desired properties updates
-                await ioTHubModuleClient.SetDesiredPropertyUpdateCallbackAsync(onDesiredPropertiesUpdate, null);
-
-                // Register callback to be called when a message is received by the module
-                await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessages, ioTHubModuleClient);
+                await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessage, ioTHubModuleClient);
             }
 
-            static Task onDesiredPropertiesUpdate(TwinCollection desiredProperties, object userContext)
+            /// <summary>
+            /// This method is called whenever the module is sent a message from the EdgeHub. 
+            /// It just pipe the messages without any change.
+            /// It prints all the incoming messages.
+            /// </summary>
+            static async Task<MessageResponse> FilterMessage(Message message, object userContext)
             {
-                try
+                int counterValue = Interlocked.Increment(ref counter);
+
+                var moduleClient = userContext as ModuleClient;
+                if (moduleClient == null)
                 {
-                    Console.WriteLine("Desired property change:");
-                    Console.WriteLine(JsonConvert.SerializeObject(desiredProperties));
-
-                    if (desiredProperties["TemperatureThreshold"] != null)
-                        temperatureThreshold = desiredProperties["TemperatureThreshold"];
-
+                    throw new InvalidOperationException("UserContext doesn't contain " + "expected values");
                 }
-                catch (AggregateException ex)
+
+                byte[] messageBytes = message.GetBytes();
+                string messageString = Encoding.UTF8.GetString(messageBytes);
+                Console.WriteLine($"Received message: {counterValue}, Body: [{messageString}]");
+
+                var filteredMessage = filter(message);
+
+                if (filteredMessage != null && !string.IsNullOrEmpty(messageString))
                 {
-                    foreach (Exception exception in ex.InnerExceptions)
+                    var pipeMessage = new Message(messageBytes);
+                    foreach (var prop in message.Properties)
                     {
-                        Console.WriteLine();
-                        Console.WriteLine("Error when receiving desired property: {0}", exception);
+                        pipeMessage.Properties.Add(prop.Key, prop.Value);
                     }
+                    await moduleClient.SendEventAsync("output1", pipeMessage);
+                    Console.WriteLine("Received message sent");
                 }
-                catch (Exception ex)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Error when receiving desired property: {0}", ex.Message);
-                }
-                return Task.CompletedTask;
+                return MessageResponse.Completed;
             }
 
             public static Message filter(Message message)
@@ -223,42 +178,6 @@ V této části vytvoříte ukázkové IoT Edge řešení obsahujícího testy j
                     return filteredMessage;
                 }
                 return null;
-            }
-
-            static async Task<MessageResponse> FilterMessages(Message message, object userContext)
-            {
-                try
-                {
-                    DeviceClient deviceClient = (DeviceClient)userContext;
-
-                    var filteredMessage = filter(message);
-                    if (filteredMessage != null)
-                    {
-                        await deviceClient.SendEventAsync("output1", filteredMessage);
-                    }
-
-                    // Indicate that the message treatment is completed
-                    return MessageResponse.Completed;
-                }
-                catch (AggregateException ex)
-                {
-                    foreach (Exception exception in ex.InnerExceptions)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine("Error in sample: {0}", exception);
-                    }
-                    // Indicate that the message treatment is not completed
-                    var deviceClient = (DeviceClient)userContext;
-                    return MessageResponse.Abandoned;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine();
-                    Console.WriteLine("Error in sample: {0}", ex.Message);
-                    // Indicate that the message treatment is not completed
-                    DeviceClient deviceClient = (DeviceClient)userContext;
-                    return MessageResponse.Abandoned;
-                }
             }
         }
     }
@@ -404,7 +323,7 @@ V této části vytvoříte definice buildu, která je nakonfigurována na autom
 
     ![IoT Edge](./media/how-to-ci-cd/add-azure-iot-edge.png)
 
-1. V první úloze Azure IoT Edge, aktualizovat **zobrazovaný název** k **modul sestavení a nabízených**a v **akce** rozevíracího seznamu vyberte **sestavení a Push**. V **Module.json souboru** textovému poli, do něj přidejte následující cesty. Zvolte **typ kontejneru registru**, ujistěte se, nakonfigurujte a vyberte stejný registru do vašeho kódu. Tato úloha bude sestavovat a push všechny moduly v řešení a publikovat do registru kontejneru, který jste zadali. 
+1. V první úloze Azure IoT Edge, aktualizovat **zobrazovaný název** k **modul sestavení a nabízených**a v **akce** rozevíracího seznamu vyberte **sestavení a Push**. V **Module.json souboru** textovému poli, do něj přidejte následující cesty. Zvolte **typ kontejneru registru**, ujistěte se, nakonfigurujte a vyberte stejný registru do vašeho kódu. Tato úloha bude sestavovat a push všechny moduly v řešení a publikovat do registru kontejneru, který jste zadali. Pokud moduly se vloží do různých registrech, můžete mít více **modul sestavení a nabízených** úlohy.
 
     ```
     **/module.json
@@ -449,16 +368,5 @@ Ano při nasazování do zařízení IoT Edge, existují tři hlavní prostřed�
 
 ## <a name="next-steps"></a>Další postup
 
-Tento kurz ukazuje, jak můžete použít průběžnou integraci a funkcí průběžného nasazování služby VSTS nebo TFS. 
-
 * Pochopení IoT Edge nasazení v [pochopit IoT Edge nasazení jednoho zařízení nebo ve velkém měřítku](module-deployment-monitoring.md)
 * Provede kroky k vytvoření, aktualizace nebo odstranění nasazení v [nasadit a monitorovat moduly IoT Edge ve velkém měřítku](how-to-deploy-monitor.md).
-
-
-
-
-
-
-
-
-

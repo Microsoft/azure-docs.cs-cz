@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f1ab981247191db0abebd67701b07bf48b934292
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 26a1448ddf3f7ffb08ab581b1dad1abfd3ca8e12
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617106"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045139"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Kopírování dat z a do úložiště dat rozhraní ODBC pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-odbc-connector.md)
-> * [Verze 2 – Preview](connector-odbc.md)
+> * [Verze 1](v1/data-factory-odbc-connector.md)
+> * [Aktuální verze](connector-odbc.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z a k úložišti dat ODBC. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [ODBC konektoru V1](v1/data-factory-odata-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -58,7 +55,7 @@ Pro ODBC propojené služby jsou podporovány následující vlastnosti:
 | type | Vlastnost typu musí být nastavena na: **rozhraní Odbc** | Ano |
 | připojovací řetězec | Připojovací řetězec, s výjimkou části přihlašovací údaje. Můžete zadat připojovací řetězec pomocí vzoru jako `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"`, nebo pomocí systému DSN (název zdroje dat), nastavení na počítači Runtime integrace s `"DSN=<name of the DSN on IR machine>;"` (třeba stále zadáte části přihlašovací údaje v propojené službě odpovídajícím způsobem).<br>Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md).| Ano |
 | authenticationType. | Typ ověřování používaný pro připojení k úložišti dat ODBC.<br/>Povolené hodnoty jsou: **základní** a **anonymní**. | Ano |
-| Uživatelské jméno | Pokud používáte základní ověřování, zadejte uživatelské jméno. | Ne |
+| uživatelské jméno | Pokud používáte základní ověřování, zadejte uživatelské jméno. | Ne |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | pověření | Část přístup přihlašovacích údajů z připojovacího řetězce zadaného ve formátu ovladačem vlastnost hodnota. Příklad: `"RefreshToken=<secret refresh token>;"`. Toto pole můžete označte jako SecureString. | Ne |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Modul Runtime Self-hosted integrace se vyžaduje, jak je uvedeno v [požadavky](#prerequisites). |Ano |

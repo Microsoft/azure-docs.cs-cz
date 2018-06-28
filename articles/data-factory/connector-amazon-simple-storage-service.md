@@ -10,22 +10,19 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
-ms.openlocfilehash: a809859e9f0c6e51247abc2d03af673a2850a87e
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 3635e8bf1d9ba4061da5b8f416a3b755f7064000
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284885"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045632"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopírování dat z Amazon jednoduché úložiště služby pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-amazon-simple-storage-service-connector.md)
-> * [Verze 2 – Preview](connector-amazon-simple-storage-service.md)
+> * [Verze 1](v1/data-factory-amazon-simple-storage-service-connector.md)
+> * [Aktuální verze](connector-amazon-simple-storage-service.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Amazon S3. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [Amazon S3 connnector v V1](v1/data-factory-amazon-simple-storage-service-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -172,7 +169,7 @@ Pokud chcete zkopírovat data z Amazonu S3, nastavit typ zdroje v aktivitě kop�
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **FileSystemSource** |Ano |
-| Rekurzivní | Označuje, zda je data načíst rekurzivně z dílčí složky nebo pouze do zadané složky. Poznámka: když rekurzivní nastavena na hodnotu true a jímka je na základě souborů úložiště, prázdné složky nebo dílčí-folder nebudou zkopírovat nebo vytvořit v jímky.<br/>Povolené hodnoty jsou: **true** (výchozí), **false** | Ne |
+| rekurzivní | Označuje, zda je data načíst rekurzivně z dílčí složky nebo pouze do zadané složky. Poznámka: když rekurzivní nastavena na hodnotu true a jímka je na základě souborů úložiště, prázdné složky nebo dílčí-folder nebudou zkopírovat nebo vytvořit v jímky.<br/>Povolené hodnoty jsou: **true** (výchozí), **false** | Ne |
 
 **Příklad:**
 

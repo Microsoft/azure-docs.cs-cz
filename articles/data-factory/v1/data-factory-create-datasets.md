@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6a3401f620f7dfe8b42bad9ed1a3981325b2ce1e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f33ff3f588dac49e295a5aa96d71557d32407e46
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620475"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046982"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datové sady ve službě Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-create-datasets.md)
-> * [Verze 2 – Preview](../concepts-datasets-linked-services.md)
+> * [Verze 1](data-factory-create-datasets.md)
+> * [Verze 2 (aktuální verze)](../concepts-datasets-linked-services.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [datové sady v V2](../concepts-datasets-linked-services.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [datové sady v V2](../concepts-datasets-linked-services.md).
 
 Tento článek popisuje, jaké datové sady se, jak jsou definovány ve formátu JSON, a způsobu jejich použití v Azure Data Factory kanálů. Poskytuje podrobnosti o jednotlivých částech (například struktura, dostupnost a zásad) v definici JSON datové sady. Tento článek také poskytuje příklady pro použití **posun**, **anchorDateTime**, a **styl** vlastnosti v definici JSON datové sady.
 
@@ -197,7 +197,7 @@ Každý sloupec ve struktuře obsahuje následující vlastnosti:
 | --- | --- | --- |
 | jméno |Název sloupce. |Ano |
 | type |Datový typ sloupce.  |Ne |
-| Jazyková verze |. Na základě NET jazykovou verzi, která se použije, když je typ typ formátu .NET: `Datetime` nebo `Datetimeoffset`. Výchozí hodnota je `en-us`. |Ne |
+| jazyková verze |. Na základě NET jazykovou verzi, která se použije, když je typ typ formátu .NET: `Datetime` nebo `Datetimeoffset`. Výchozí hodnota je `en-us`. |Ne |
 | Formát |Řetězec, který se má použít, když je typ typ formátu .NET formátu: `Datetime` nebo `Datetimeoffset`. |Ne |
 
 Následující pokyny vám pomohou určit, kdy se mají zahrnout informace o struktuře a co mají být zahrnuty **struktura** části.
@@ -322,7 +322,7 @@ Pokud datové sady je vytvářen službou Data Factory, by měl být označen ja
 | Název | Popis | Požaduje se | Výchozí hodnota |
 | --- | --- | --- | --- |
 | dataDelay |Doba zpoždění kontroly na dostupnost externích dat pro danou řez. Můžete například zpoždění hodinové kontroly pomocí tohoto nastavení.<br/><br/>Toto nastavení platí jenom pro aktuální čas.  Například pokud je 1:00 PM hned teď a tato hodnota je 10 minut, ověření se spustí: 10: 00.<br/><br/>Všimněte si, že toto nastavení neovlivňuje řezy v minulosti. Řezy s **řez koncový čas** + **dataDelay** < **nyní** jsou zpracovávány bez jakéhokoli zpoždění.<br/><br/>Časy větší než 23:59 hodin by měl být určena pomocí `day.hours:minutes:seconds` formátu. Například pokud chcete zadat 24 hodin, nepoužívejte 24:00:00. Místo toho použijte 1.00:00:00. Pokud používáte 24:00:00, bude považován za 24 dní (24.00:00:00). 1 den a 4 hodiny zadejte 1:04:00:00. |Ne |0 |
-| RetryInterval |Doba čekání mezi selhání a další pokus. Toto nastavení platí pro aktuální čas. Pokud předchozí zkuste se nezdařila, je dalším pokusu o po **retryInterval** období. <br/><br/>Pokud je 1:00 PM nyní, můžeme začít prvního pokusu. Pokud doba trvání dokončení první kontrola ověření je 1 minuta a operace se nezdařila, další pokus proběhne v 1:00 + 1 min (doba trvání) + 1min (interval opakování) = 1:02 PM. <br/><br/>Řezy v minulosti není k dispozici žádné zpoždění není. Opakovaném dojde okamžitě. |Ne |00:01:00 (1 min) |
+| retryInterval |Doba čekání mezi selhání a další pokus. Toto nastavení platí pro aktuální čas. Pokud předchozí zkuste se nezdařila, je dalším pokusu o po **retryInterval** období. <br/><br/>Pokud je 1:00 PM nyní, můžeme začít prvního pokusu. Pokud doba trvání dokončení první kontrola ověření je 1 minuta a operace se nezdařila, další pokus proběhne v 1:00 + 1 min (doba trvání) + 1min (interval opakování) = 1:02 PM. <br/><br/>Řezy v minulosti není k dispozici žádné zpoždění není. Opakovaném dojde okamžitě. |Ne |00:01:00 (1 min) |
 | retryTimeout |Časový limit pro jednotlivé pokusy o opakování.<br/><br/>Pokud je tato vlastnost nastavená na 10 minut, by se během deseti minut dokončit ověření. Pokud trvá déle než 10 minut, aby k ověření, opakovaném časového limitu.<br/><br/>Pokud všechny pokusy o ověření časový limit řez je označen jako **TimedOut**. |Ne |00:10:00 (10 minut) |
 | maximumRetry |Stanovený počet zkontrolujte dostupnost externí data. Maximální povolená hodnota je 10. |Ne |3 |
 

@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: dcfd24d3d0122f664655f6085bbd58bc0bfe9718
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: de892afee57b9a39b841f6cfc93f8470d831c2a6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018484"
+ms.locfileid: "37045928"
 ---
 # <a name="create-monitor-and-manage-azure-data-factories-using-azure-data-factory-net-sdk"></a>Vytvoření, sledovat a spravovat Azure data Factory pomocí .NET SDK služby Azure Data Factory
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verzi 2 služby Data Factory, který je ve verzi Preview, přečtěte si [kurz aktivity kopírování v dokumentaci verze 2](../quickstart-create-data-factory-dot-net.md). 
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [kurzu aktivity kopírování](../quickstart-create-data-factory-dot-net.md). 
 
 ## <a name="overview"></a>Přehled
 Můžete vytvořit, sledovat a spravovat Azure data Factory programově pomocí .NET SDK služby Data Factory. Tento článek obsahuje návod, který můžete přejít k vytvoření ukázkové aplikace konzoly .NET, která vytvoří a sleduje služby data factory. 

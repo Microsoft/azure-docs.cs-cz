@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 038a9be813367d130dd8bb02b24879d1e2e573b5
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 2d7ee7050f430efea64d9988adf4f5a603128de2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072245"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053445"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Příprava systému Windows VHD nebo VHDX, který chcete nahrát do Azure
 Před nahráním Windows virtuální počítače (VM) z místní do služby Microsoft Azure, musíte připravit virtuální pevný disk (VHD nebo VHDX). Azure podporuje jenom virtuální počítače generace 1, které jsou ve formátu souboru virtuálního pevného disku a mají pevnou velikostí disku. Maximální velikost povolenou pro virtuální pevný disk je 1,023 GB. Můžete převést generace 1 virtuální počítač z je disk VHDX souborů systému na virtuální pevný disk a z dynamicky se zvětšující disk do pevnou velikostí. Ale generaci Virtuálního počítače nelze změnit. Další informace najdete v tématu [měli vytvořit generace 1 nebo 2 virtuálních počítačů Hyper-v](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -119,7 +119,7 @@ Set-Service -Name RemoteRegistry -StartupType Auto
 Zkontrolujte, že následující nastavení jsou správně nakonfigurovány pro připojení ke vzdálené ploše:
 
 >[!Note] 
->Při spuštění, může se zobrazit chybová zpráva **Set-ItemProperty-cesta ' HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal služby - název &lt;název objektu&gt; &lt;hodnotu&gt;**  v těchto krocích. Chybová zpráva můžete bezpečně ignorovat. Znamená jen, že doména není vkládání tato konfigurace prostřednictvím objektu zásad skupiny.
+>Při spuštění, může se zobrazit chybová zpráva **Set-ItemProperty-cesta ' HKLM:\SOFTWARE\Policies\Microsoft\Windows NT\Terminal služby - název &lt;název objektu&gt; &lt;hodnotu&gt;** v těchto krocích. Chybová zpráva můžete bezpečně ignorovat. Znamená jen, že doména není vkládání tato konfigurace prostřednictvím objektu zásad skupiny.
 >
 >
 
@@ -367,7 +367,7 @@ Pokud místo toho chcete jenom pro účely vytvoření jeden virtuální počít
 Další informace o tom, jak vytvořit virtuální počítač z specializované disku najdete v tématu:
 
 - [Vytvoření virtuálního počítače z specializované disku](create-vm-specialized.md)
-- [Vytvoření virtuálního počítače z specializované disku VHD](https://azure.microsoft.com/resources/templates/201-vm-specialized-vhd/)
+- [Vytvoření virtuálního počítače z specializované disku VHD](https://review.docs.microsoft.com/en-us/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
 Pokud chcete vytvořit bitovou kopii zobecněný, budete muset spustit nástroj sysprep. Další informace o nástroji Sysprep najdete v tématu [postup použití nástroje Sysprep: Úvod](http://technet.microsoft.com/library/bb457073.aspx). 
 
@@ -381,7 +381,7 @@ Ne každý role nebo aplikace, který je nainstalován na počítači se systém
 1. Přihlaste se k systému Windows virtuálního počítače.
 2. Spustit **příkazového řádku** jako správce. 
 3. Změňte adresář na: **%windir%\system32\sysprep**a poté spusťte **sysprep.exe**.
-3. V **nástroj pro přípravu systému** dialogové okno, vyberte **prostředí Out-of-Box zadejte systému (při prvním zapnutí)** a ujistěte se, že **generalizace** je zaškrtnuté políčko.
+3. V dialogovém okně **Nástroj pro přípravu systému** vyberte **Zobrazit prostředí prvního spuštění počítače** a ujistěte se, že je zaškrtnuté políčko **Generalizovat**.
 
     ![Nástroj pro přípravu systému](media/prepare-for-upload-vhd-image/syspre.png)
 4. V **možnosti vypnutí**, vyberte **vypnutí**.

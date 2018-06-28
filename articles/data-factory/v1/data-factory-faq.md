@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fa3ab6df9b471a596cc229edf5fb555009c3101d
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 1db10a1578133021b976231a66aee6b550d71faf
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318389"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046750"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Pro vytváření dat Azure – nejčastější dotazy
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [často kladené otázky - Data Factory verze 2](../frequently-asked-questions.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [často kladené otázky - Data Factory](../frequently-asked-questions.md).
 
 ## <a name="general-questions"></a>Obecné otázky
 ### <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?

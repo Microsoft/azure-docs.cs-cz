@@ -8,14 +8,14 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 60c2c17d7a5cca66a6323f43e1ab2662afff54ee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9c196ec92fc7997617fa464d676dc93ca9fe84f0
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630832"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029084"
 ---
-# <a name="understand-azure-iot-edge-modules---preview"></a>Pochopení moduly Azure IoT Edge – náhled
+# <a name="understand-azure-iot-edge-modules"></a>Pochopení moduly Azure IoT Edge
 
 Azure IoT Edge umožňuje nasadit a spravovat obchodní logiky hranu ve formě *moduly*. Azure IoT Edge moduly jsou nejmenší jednotka výpočtu spravuje IoT okraj a může obsahovat služby Azure (například Azure Stream Analytics) nebo vlastního kódu pro konkrétní řešení. Chcete-li pochopit, jak jsou moduly vyvinuté, nasadit a udržovat, je dobré se zamyslet nad čtyři koncepční částí, které tvoří modul:
 
@@ -60,6 +60,17 @@ await client.OpenAsync();
 // Get the model twin 
 Twin twin = await client.GetTwinAsync(); 
 ```
+
+## <a name="offline-capabilities"></a>Offline funkcí
+
+Azure IoT Edge podporuje offline operace na zařízení IoT okraj. Tyto možnosti jsou omezené jenom prozatím a další scénáře jsou vyvíjených. 
+
+Moduly IoT Edge může být offline delší dobu, dokud jsou splněny následující požadavky: 
+
+* **Zpráva time to live (TTL) jestli nevypršela platnost**. Výchozí hodnota TTL zprávy je o dvě hodiny, ale může být změněné vyšší nebo nižší v úložišti a předávat konfigurace v IoT Edge hub nastavení. 
+* **Moduly nepotřebujete k novému ověření, s centrem IoT Edge v režimu offline**. Moduly, můžete ověřovat pouze s centry Edge, které mají aktivní připojení službou IoT hub. Moduly muset znovu provést ověření, pokud se restartování z jakéhokoli důvodu. Moduly může i dál posílat zprávy do centra Edge po vypršení platnosti tokenu SAS. Při obnovení připojení k centru Edge vyžádá nový token z modulu a ověří službou IoT hub. V případě úspěšného předává Edge rozbočovače modul zprávy, které jsou uloženy i zprávy, které byly odeslány při modulu tokenu vypršela. 
+* **Modul, který odeslané zprávy při offline je funkční při obnovení připojení k**. Při opětovném připojení ke službě IoT Hub, je potřeba ověření nový token modulu (Pokud je předchozí jeho platnost), než může předávat zprávy modulu Edge rozbočovače. Pokud modul není k dispozici pro zadejte nový token, rozbočovače Edge nemůže fungovat na modulu uložené zprávy. 
+* **Rozbočovače hraniční má místa na disku pro uložení zpráv**. Ve výchozím nastavení zprávy jsou uloženy v kontejneru rozbočovače Edge systému souborů. Neexistuje parametr konfigurace pro specifikování připojený svazek pro uložení zpráv místo. V obou případech je potřeba místa pro ukládání zpráv pro odložené odeslání do služby IoT Hub.  
 
 ## <a name="next-steps"></a>Další postup
  - [Pochopení modulu runtime Azure IoT okraj a jeho architektura][lnk-runtime]

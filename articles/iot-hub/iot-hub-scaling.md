@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: kgremban
-ms.openlocfilehash: b7751bd1b309333d5ef40530b0fa499a42a57cd1
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: d77953100bb7007553cf1c5ab00b9cdafea281e9
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752244"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030433"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>Vyberte správné úroveň služby IoT Hub pro vaše řešení
 
@@ -43,7 +43,7 @@ Po vytvoření služby IoT hub můžete upgradovat ze základní vrstvě do vrst
 | [Monitorování a Diagnostika](iot-hub-monitor-resource-health.md) | Ano | Ano |
 | [Zasílání zpráv typu cloud zařízení](iot-hub-devguide-c2d-guidance.md) |   | Ano |
 | [Dvojčata zařízení](iot-hub-devguide-device-twins.md), [modulu dvojčata](iot-hub-devguide-module-twins.md) a [Správa zařízení](iot-hub-device-management-overview.md) |   | Ano |
-| [Azure IoT Edge](../iot-edge/how-iot-edge-works.md) |   | Ano |
+| [Azure IoT Edge](../iot-edge/about-iot-edge.md) |   | Ano |
 
 Centrum IoT také nabízí volné vrstvy, která je určená pro testování a vyhodnocení. Obsahuje všechny funkce úrovně standard, ale omezená přídavky zasílání zpráv. Nelze upgradovat z úroveň free na basic nebo standard. 
 
@@ -59,9 +59,9 @@ Podporované schopnosti rozdíl mezi úrovně basic a standard IoT Hub znamená,
 | Získat modul | Ano | Ano |
 | [Získat statistiku registru](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getdeviceregistrystatistics) | Ano | Ano |
 | [Získat statistiku služeb](https://docs.microsoft.com/en-us/rest/api/iothub/service/service/getservicestatistics) | Ano | Ano |
-| [Umístit zařízení](https://docs.microsoft.com/rest/api/iothub/deviceapi/putdevice) | Ano | Ano |
+| [Vytvořit nebo aktualizovat zařízení](https://docs.microsoft.com/rest/api/iothub/service/service/createorupdatedevice) | Ano | Ano |
 | Vložení modulu | Ano | Ano |
-| [Dotaz zařízení](https://docs.microsoft.com/rest/api/iothub/deviceapi/querydevices) | Ano | Ano |
+| [Dotaz na centrum IoT](https://docs.microsoft.com/rest/api/iothub/service/service/queryiothub) | Ano | Ano |
 | Moduly dotazu | Ano | Ano |
 | [Vytvoření nahrávání souborů identifikátor URI pro SAS](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/createfileuploadsasuri) | Ano | Ano |
 | [Vázaný oznámení](https://docs.microsoft.com/en-us/rest/api/iothub/device/device/receivedeviceboundnotification) | Ano | Ano |

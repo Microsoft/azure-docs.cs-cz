@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: aa51073395a1049cd78f13ba185119707a787b29
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: afa00a81738563ec3c5b4b168f533b732c263825
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622291"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045615"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformace dat v Azure Data Factory
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "34622291"
 
 ## <a name="overview"></a>Přehled
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [aktivit transformace dat v datové továrně verze 2](../transform-data.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [aktivit transformace dat v datové továrně](../transform-data.md).
 
 Tento článek vysvětluje aktivit transformace dat v Azure Data Factory můžete použít k transformaci a zpracuje nezpracovaná data do předpovědi a statistiky. Transformace aktivity spustí výpočetní prostředí jako je cluster Azure HDInsight nebo Azure Batch. Poskytuje odkazy na články s podrobné informace o každé aktivity transformace.
 

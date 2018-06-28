@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dddb29d2a796449d6a2c9b68e01e94f32d3022e4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 98f7494c87683eda858da5970e12073ce2204303
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621985"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048283"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Přesun dat ze služby Salesforce pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-salesforce-connector.md)
-> * [Verze 2 – Preview](../connector-salesforce.md)
+> * [Verze 1](data-factory-salesforce-connector.md)
+> * [Verze 2 (aktuální verze)](../connector-salesforce.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [konektor služby Salesforce v V2](../connector-salesforce.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [konektor služby Salesforce v V2](../connector-salesforce.md).
 
 
 Tento článek popisuje, jak pomocí aktivity kopírování v objektu pro vytváření dat Azure ke kopírování dat ze služby Salesforce do jakékoli úložiště dat, která je uvedena ve sloupci jímka v [podporované zdroje a jímky](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Tento článek vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který uvádí obecný přehled přesun dat s aktivitou kopírování a kombinace podporované datové úložiště.
@@ -54,7 +54,7 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data ze služby
 
 Nejjednodušší způsob, jak vytvořit kanál je použití **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
 Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený: 
 
@@ -288,7 +288,7 @@ V tématu [vlastnosti typu RelationalSource](#copy-activity-properties) pro sezn
 | Typ Salesforce | . Na základě NET typu |
 | --- | --- |
 | Automatické číslování |Řetězec |
-| Zaškrtávací políčko |Logická hodnota |
+| zaškrtávací políčko |Logická hodnota |
 | Měna |Double |
 | Datum |DateTime |
 | Datum/čas |DateTime |

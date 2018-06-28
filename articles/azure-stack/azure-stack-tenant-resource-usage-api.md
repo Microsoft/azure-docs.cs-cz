@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/26/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: bc0b9993119342f07c28ed0384c11ae0f15bc439
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8472d8ce733c07641a7fa6d53aeb6909cd709990
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/12/2018
-ms.locfileid: "29873483"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048386"
 ---
 # <a name="tenant-resource-usage-api"></a>Využití prostředků rozhraní API klienta
 
@@ -34,12 +34,12 @@ Požadavek získá spotřeba podrobnosti pro požadované předplatné a pro po�
 
 | **– Metoda** | **Identifikátor URI požadavku** |
 | --- | --- |
-| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce/usageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&api-version=2015-06-01-preview&continuationToken={token-value} |
+| GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce/usageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&api-version= 2015-06-01-preview & continuationToken = {{hodnota tokenu} |
 
 ### <a name="arguments"></a>Argumenty
 | **Argument** | **Popis** |
 | --- | --- |
-| *armendpoint* |Azure Resource Manager koncový bod vašeho prostředí Azure zásobníku. Konvence zásobník Azure je, že název koncového bodu Azure Resource Manager je ve formátu `https://management.{domain-name}`. Například pro development kit je název domény local.azurestack.external a pak je koncový bod správce prostředků `https://management.local.azurestack.external`. |
+| *Armendpoint* |Azure Resource Manager koncový bod vašeho prostředí Azure zásobníku. Konvence zásobník Azure je, že název koncového bodu Azure Resource Manager je ve formátu `https://management.{domain-name}`. Například pro development kit je název domény local.azurestack.external a pak je koncový bod správce prostředků `https://management.local.azurestack.external`. |
 | *subId* |ID předplatného uživatele, který je uskutečněním hovoru. Toto rozhraní API jenom pro dotaz můžete použít pro použití v rámci jednoho předplatného. Zprostředkovatelé můžete použít rozhraní API poskytovatele prostředků využití dotazu využití pro všechny klienty. |
 | *reportedStartTime* |Spuštění dotazu. Hodnota *data a času* by měl být ve formátu UTC a na začátku hodinu, například 13:00. Pro denní agregace nastavte tuto hodnotu půlnoci času UTC. Formát je *uvozený* ISO 8601, například 2015-06-16T18 % 3a53 % 3a11 % 2b00 % 3a00Z, kde je k % 3a uvozené dvojtečkou a plus je uvozena k % 2b tak, aby se identifikátor URI popisný. |
 | *reportedEndTime* |Koncový čas dotazu. Omezení, která se týkají *reportedStartTime* platí také pro tento argument. Hodnota *reportedEndTime* nemůže být v budoucnu. |
@@ -48,7 +48,7 @@ Požadavek získá spotřeba podrobnosti pro požadované předplatné a pro po�
 | *continuationToken* |Token načíst z posledního volání poskytovatele rozhraní API využití. Tento token je potřeba, když je větší než 1 000 řádků odpověď a funguje jako záložku v průběhu. Pokud není přítomný, od začátku den jsou načtena data nebo předaná hodinu, podle členitost. |
 
 ### <a name="response"></a>Odpověď
-GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&api-version=1.0
+ZÍSKAT /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00 & reportedEndTime = 2015-06-01T00 % 3a00 % 3a00 % 2b00 % 3a00 & aggregationGranularity = denně & verze api-version = 1.0
 
 ```json
 {
@@ -77,14 +77,14 @@ GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedSta
 ### <a name="response-details"></a>Podrobnosti o odpovědi
 | **Argument** | **Popis** |
 | --- | --- |
-| *id* |Jedinečné ID využití agregace |
-| *name* |Název využití agregace |
-| *Typ* |Definice prostředků |
-| *subscriptionId* |Identifikátor předplatného Azure uživatele |
+| *ID* |Jedinečné ID využití agregace |
+| *Jméno* |Název využití agregace |
+| *type* |Definice prostředků |
+| *ID předplatného* |Identifikátor předplatného Azure uživatele |
 | *usageStartTime* |Počáteční čas využití sady, do které patří tato agregace využití UTC |
 | *usageEndTime* |Koncový čas UTC využití sady, do které patří tato agregace využití |
 | *instanceData* |Páry klíč hodnota podrobností instance (v novém formátu):<br>  *resourceUri*: plně kvalifikovaný ID prostředku, včetně skupiny prostředků a název instance <br>  *umístění*: oblast, ve které byla tato služba spuštěna <br>  *značky*: značky prostředku, které určuje uživatele <br>  *additionalInfo*: více podrobností o prostředku, který byl zpracován, například typ verzí nebo bitovou kopii operačního systému |
-| *Množství* |Množství spotřeby prostředků, které došlo v této časového rámce |
+| *množství* |Množství spotřeby prostředků, které došlo v této časového rámce |
 | *meterId* |Jedinečné ID pro prostředek, která se spotřebovala (také nazývané *ResourceID*) |
 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: cephalin
-ms.openlocfilehash: 92b6945ad13842e926d53be6dcc0d21554485ff3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0626b958a9b822569f4d3b6d27f3395bed853174
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32151004"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030049"
 ---
 # <a name="os-and-runtime-patching-in-azure-app-service"></a>Operační systém a opravy chyb za běhu v Azure App Service
 
@@ -74,31 +74,31 @@ az webapp config set --python-version 3.4 --resource-group <groupname> --name <a
 az webapp config set --java-version 1.8 --java-container Tomcat --java-container-version 9.0 --resource-group <groupname> --name <appname>
 ```
 
-### <a name="deprecated-versions"></a>Nepoužívané verze
+### <a name="deprecated-versions"></a>Nepoužívané verze  
 
 Když je zastaralý starší verze, datum odebrání je oznámeno tak, aby vám podle toho naplánovat upgrade verze modulu runtime. 
 
-## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Jak můžete dotazovat stav aktualizace operačního systému a za běhu na instance Moje?
+## <a name="how-can-i-query-os-and-runtime-update-status-on-my-instances"></a>Jak můžete dotazovat stav aktualizace operačního systému a za běhu na instance Moje?  
 
 Při důležitých informací operačního systému je uzamčené před přístupem (najdete v části [funkce operačního systému v Azure App Service](web-sites-available-operating-system-functionality.md)), [Kudu konzoly](https://github.com/projectkudu/kudu/wiki/Kudu-console) umožňuje dotazování vaše instance služby App Service týkající se operačního systému verze a verze modulu runtime. 
 
 Následující tabulka ukazuje postup verzí systému Windows a language runtime, které se spouští vaše aplikace:
 
-| Informace | Kde je najít |
+| Informace | Kde je najít | 
 |-|-|
 | Verze systému Windows | V tématu `https://<appname>.scm.azurewebsites.net/Env.cshtml` (v části informace systému) |
 | Verze rozhraní .NET | V `https://<appname>.scm.azurewebsites.net/DebugConsole`, v příkazovém řádku spusťte následující příkaz: <br>`powershell -command "gci 'Registry::HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Net Framework Setup\NDP\CDF'"` |
 | Verze .NET core | V `https://<appname>.scm.azurewebsites.net/DebugConsole`, v příkazovém řádku spusťte následující příkaz: <br> `dotnet --version` |
 | Verze PHP | V `https://<appname>.scm.azurewebsites.net/DebugConsole`, v příkazovém řádku spusťte následující příkaz: <br> `php --version` |
 | Výchozí verze Node.js | V [cloudové prostředí](../cloud-shell/overview.md), spusťte následující příkaz: <br> `az webapp config appsettings list --resource-group <groupname> --name <appname> --query "[?name=='WEBSITE_NODE_DEFAULT_VERSION']"` |
-| Verze Pythonu | V `https://<appname>.scm.azurewebsites.net/DebugConsole`, v příkazovém řádku spusťte následující příkaz: <br> `python --version` |
+| Verze Pythonu | V `https://<appname>.scm.azurewebsites.net/DebugConsole`, v příkazovém řádku spusťte následující příkaz: <br> `python --version` |  
 
-> [!NOTE]
+> [!NOTE]  
 > Přístup k umístění v registru `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Component Based Servicing\Packages`, kde informace o ["KB" opravy]((https://docs.microsoft.com/security-updates/SecurityBulletins/securitybulletins)) je uložen, je uzamčené.
 >
 >
 
 ## <a name="more-resources"></a>Další zdroje informací
 
-[Centrum zabezpečení: zabezpečení](https://www.microsoft.com/TrustCenter/Security/default.aspx)  
+[Centrum zabezpečení: zabezpečení](https://www.microsoft.com/en-us/trustcenter/security)  
 [64bitový ASP.NET Core v Azure App Service](https://gist.github.com/glennc/e705cd85c9680d6a8f1bdb62099c7ac7)

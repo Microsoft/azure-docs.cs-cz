@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 4360ff12a435afc4347fa97bba4506ccd81618aa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a2928b202f56674c69e6431201db6d846a9feb9a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618976"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045751"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Kopírování dat z Teradata pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-onprem-teradata-connector.md)
-> * [Verze 2 – Preview](connector-teradata.md)
+> * [Verze 1](v1/data-factory-onprem-teradata-connector.md)
+> * [Aktuální verze](connector-teradata.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z databáze Teradata. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [Teradata konektoru V1](v1/data-factory-onprem-teradata-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -169,7 +166,7 @@ Při kopírování dat z Teradata, se používají následující mapování Ter
 |:--- |:--- |
 | BigInt |Int64 |
 | Objekt blob |Byte] |
-| Bajtů |Byte] |
+| Bajt |Byte] |
 | ByteInt |Int16 |
 | Char |Řetězec |
 | Datový typ CLOB |Řetězec |

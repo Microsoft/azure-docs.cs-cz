@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/17/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 700569684888428032997dd81c10023c6fd5a7d8
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f293aab67fb5e952dc32e20a6370d45cded682b5
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823301"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "35761993"
 ---
 # <a name="run-pig-jobs-from-a-remote-desktop-connection"></a>Spuštění úlohy Pig z připojení vzdálené plochy
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
@@ -78,6 +78,7 @@ Povolení vzdálené plochy pro HDInsight cluster a pak připojit pomocí pokyn�
     <td>VÝSLEDEK = pořadí FREKVENCÍ podle počtu desc;</td><td>Řadí úrovní záznamu do protokolu podle počtu (sestupně) a ukládá do výsledku</td>
     </tr>
 </table>
+
 6. Můžete také uložit výsledky transformace pomocí `STORE` příkaz. Například následující příkaz uloží `RESULT` k **/example/data/pigout** adresář ve výchozím kontejneru úložiště pro cluster:
 
         STORE RESULT into 'wasb:///example/data/pigout'
@@ -86,6 +87,7 @@ Povolení vzdálené plochy pro HDInsight cluster a pak připojit pomocí pokyn�
    > Jsou data uložena v adresáři zadané v souborech s názvem **část nnnnn**. Pokud adresář již existuje, zobrazí se chybová zpráva.
    >
    >
+   
 7. Chcete-li ukončit řádku grunt, zadejte následující příkaz.
 
         QUIT;

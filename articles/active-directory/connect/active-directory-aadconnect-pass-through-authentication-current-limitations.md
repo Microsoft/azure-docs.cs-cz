@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ebfbb972d567963b6c302b7e6151f73165c4a87b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8bdf1e3a46b6b03a7472bd2330b0a97429917122
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34590670"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028910"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure předávací ověřování služby Active Directory: Aktuální omezení
 
@@ -59,7 +59,7 @@ Povolení synchronizaci hodnoty hash hesla nabízí možnost převzetí služeb 
 
 ## <a name="next-steps"></a>Další postup
 - [Rychlý start](active-directory-aadconnect-pass-through-authentication-quick-start.md): zprovoznění s Azure AD předávací ověřování.
-- [Inteligentní uzamčení](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Zjistěte, jak nakonfigurovat možnosti inteligentního uzamčení na vašeho klienta k ochraně uživatelské účty.
+- [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): Zjistěte, jak nakonfigurovat možnosti inteligentního uzamčení na vašeho klienta k ochraně uživatelské účty.
 - [Podrobné technické informace](active-directory-aadconnect-pass-through-authentication-how-it-works.md): pochopit, jak funguje funkci předávací ověřování.
 - [Nejčastější dotazy](active-directory-aadconnect-pass-through-authentication-faq.md): Vyhledejte odpovědi na nejčastější dotazy o funkci předávací ověřování.
 - [Řešení potíží s](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Přečtěte si o řešení běžných problémů s funkcí předávací ověřování.

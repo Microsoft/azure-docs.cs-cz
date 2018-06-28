@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mabrigg
-ms.openlocfilehash: 446df7922422ccfcf3fbb92ecf153c6dec2f6197
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e20670476f4549a06d80d5f85e2ebd8ab1f50b05
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26640374"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047237"
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Sledování stavu a výstrahy v Azure zásobníku
 
@@ -32,6 +32,17 @@ Azure Stack zahrnuje možnosti, které vám umožní zobrazit stav a výstrahy p
  ## <a name="understand-health-in-azure-stack"></a>Pochopení stavu v Azure zásobníku
 
  Stav a výstrahy spravuje poskytovatel prostředků stavu. Součásti infrastruktury Azure zásobníku zaregistrovat u zprostředkovatele stavu prostředků během nasazení Azure zásobníku a konfigurace. Tato registrace umožňuje zobrazení stavu a výstrahy pro každou součást. Stav v zásobníku Azure je jednoduchý koncept. Pokud existují výstrahy pro registrovanou instanci součásti, stav této součásti odráží nejhorší active závažnost výstrahy; upozornění nebo kritickou.
+
+## <a name="alert-severity-definition"></a>Definice závažnost výstrahy
+
+V zásobníku Azure jsou vyvolány výstrahy s pouze dvěma závažnosti: **upozornění** a **kritické**.
+
+**upozornění**  
+Operátor můžete vyřešit výstražné upozornění naplánované způsobem. Výstraha obvykle nemá negativní vliv na zatížení uživatele.
+
+**Kritické**  
+Operátor je potřeba se naléhavost vyřešit kritickou výstrahu. Toto jsou problémy, které aktuálně ovlivnit nebo brzy ovlivní uživatele Azure zásobníku. 
+
  
  ## <a name="view-and-manage-component-health-state"></a>Zobrazit a spravovat stav součásti
  
@@ -71,7 +82,7 @@ Můžete kliknout na konkrétní výstrahu a prohlédněte si podrobnosti výstr
 
 Po instance role infrastruktury je zpět do režimu online, tato výstraha se automaticky zavře. Mnoho, ale ne každá výstraha automaticky zavře základní problém nebude vyřešen. Doporučujeme vám, že jste vybrali **zavřít výstrahu** po provedení kroků nápravu. Pokud potíže potrvají, zásobník Azure generuje novou výstrahu. Pokud problém vyřešit, výstrahu zůstává uzavřený a nevyžaduje žádné další akce.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 [Správa aktualizací v Azure zásobníku](azure-stack-updates.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z Impala pomocí Azure Data Factory (Preview) | Microsoft Docs
+title: Kopírování dat z Impala pomocí Azure Data Factory | Microsoft Docs
 description: Postup kopírování dat z Impala do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanálu data factory.
 services: data-factory
 documentationcenter: ''
@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 49e9c338128cc857347bbf052c19dc34dd08f9c6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 366d0945bfac8546aa757648b6f797c2605a43ea
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337615"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045863"
 ---
-# <a name="copy-data-from-impala-by-using-azure-data-factory-preview"></a>Kopírování dat z Impala pomocí Azure Data Factory (Preview)
+# <a name="copy-data-from-impala-by-using-azure-data-factory"></a>Kopírování dat z Impala pomocí Azure Data Factory
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Impala. Vychází [aktivity kopírování přehled](copy-activity-overview.md) článek, který představuje obecný přehled o aktivitě kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 objektu pro vytváření dat, která je obecně k dispozici, najdete v části [aktivity kopírování v verze 1](v1/data-factory-data-movement-activities.md).
 
 > [!IMPORTANT]
 > Tento konektor je aktuálně ve verzi preview. Můžete si vyzkoušet a poskytnout zpětnou vazbu. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).

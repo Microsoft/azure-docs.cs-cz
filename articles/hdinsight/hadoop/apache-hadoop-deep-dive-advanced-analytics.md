@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: f121a1f95eed04bf8086c03a5d4406c092dc9445
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: ea6ffa9d07be719c43ca33cfca76876c161d69bc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400669"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048467"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Podrobné informace - pokročilou analýzu
 
@@ -61,7 +61,7 @@ Společně s výběrem nejlepší těsně algoritmy, budete muset zvážit, jest
 HDInsight má několik strojového učení možnosti pracovním postupu pokročilou analýzu:
 
 * [Machine Learning a Spark](#machine-learning-and-spark)
-* [R a R Server](#r-and-r-server)
+* [R a ML služby](#r-and-r-server)
 * [Azure Machine Learning a Hive](#azure-machine-learning-and-hive)
 * [Spark a hloubkové učení](#spark-and-deep-learning)
 
@@ -75,9 +75,9 @@ Existují tři knihovny learning škálovatelné počítače, které uvede algor
 * [**SparkML** ](https://spark.apache.org/docs/1.2.2/ml-guide.html) -SparkML je novější balíček, který poskytuje vyšší úrovně rozhraní API pro vytváření kanálů ML postavená na Spark DataFrames.
 * [**MMLSpark** ](https://github.com/Azure/mmlspark) – Microsoft Machine Learning knihovny pro Apache Spark (MMLSpark) je navržený tak, aby datových vědců zvýšit produktivitu na Spark, pokud chcete zvýšit počet experimentování a využívá nejmodernější machine learning techniky, včetně hloubkové learning na velmi rozsáhlých datových sad. Knihovna MMLSpark zjednodušuje běžné úlohy modelování pro vytváření modelů v PySpark. 
 
-### <a name="r-and-r-server"></a>R a R Server
+### <a name="r-and-ml-services"></a>R a ML služby
 
-Jako součást HDInsight, můžete vytvořit cluster služby HDInsight s [R Server](../r-server/r-server-overview.md) připravené pro použití s velkých datových sad a modely. Tato nová funkce nabízí datových vědců a statistikami s známé rozhraní R, který můžete škálovat na vyžádání prostřednictvím HDInsight, bez nutnosti instalace a údržby.
+Jako součást HDInsight, můžete vytvořit cluster služby HDInsight s [ML služby](../r-server/r-server-overview.md) připravené pro použití s velkých datových sad a modely. Tato nová funkce nabízí datových vědců a statistikami s známé rozhraní R, který můžete škálovat na vyžádání prostřednictvím HDInsight, bez nutnosti instalace a údržby.
 
 ### <a name="azure-machine-learning-and-hive"></a>Azure Machine Learning a Hive
 

@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: ebd8abf8c34be1fa6fcd282c9bfbc63d81a56239
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6330854f4ee9b2db1597d916c815bb6646da6a29
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621128"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052745"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Průvodce kopírováním služby Azure Data Factory
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). 
+> Tento článek se týká verze 1 služby Data Factory. 
 
 Průvodce kopírováním Azure Data Factory usnadňuje proces příjem dat, což je většinou první krok v případě integrace pomocí dat začátku do konce. Při průchodu přes Průvodce kopírováním Azure Data Factory, není potřeba pochopit žádné definice JSON propojené služby, datové sady a kanály. Průvodce automaticky vytvoří kanál ke zkopírování dat z vybraného zdroje dat do vybraného cílového umístění. Kromě toho Průvodce kopírováním vám pomůže ověřit data se požity v době vytváření obsahu. Tím ušetříte čas, zvláště když je jsou příjem dat první ze zdroje dat. Chcete-li spustit Průvodce kopírováním, klikněte na tlačítko **kopírování dat** na domovské stránce objektu pro vytváření dat dlaždici.
 
@@ -33,7 +33,7 @@ Průvodce kopírováním Azure Data Factory usnadňuje proces příjem dat, což
 ## <a name="designed-for-big-data"></a>Určená pro velké objemy dat
 Tento průvodce umožňuje snadno přesunout data z různých zdrojů a cílů v minutách. Po projít průvodce kanál s aktivitou kopírování automaticky vytvoří za vás, společně s závislé entity služby Data Factory (propojené služby a datové sady). Žádné další kroky jsou nutné k vytvoření kanálu.   
 
-![Vyberte zdroj dat](./media/data-factory-copy-wizard/select-data-source-page.png)
+![Výběr zdroje dat](./media/data-factory-copy-wizard/select-data-source-page.png)
 
 > [!NOTE]
 > Podrobné pokyny k vytvoření ukázkový kanál ke zkopírování dat z Azure blob do tabulky Azure SQL Database, najdete v článku [Průvodce kopírováním kurzu](data-factory-copy-data-wizard-tutorial.md).
@@ -67,7 +67,7 @@ Následující snímek obrazovky ukazuje dotaz SQL pomocí `Text.Format` funkce 
 ![Ověření výrazy](./media/data-factory-copy-wizard/validate-expressions.png)
 
 ### <a name="filtering-of-data-in-an-azure-blob-folder"></a>Filtrování dat v Azure blob složce
-Proměnné v cestě ke složce můžete použít ke zkopírování dat z složku, která je určena za běhu na základě [systémové proměnné](data-factory-functions-variables.md#data-factory-system-variables). Podporované proměnné jsou: **{year}**, **{month}**, **{day}**, **{hodinu}**, **{minutu}**, a **{vlastní}**. Příklad: inputfolder / {year} / {month} / {day}.
+Proměnné v cestě ke složce můžete použít ke zkopírování dat z složku, která je určena za běhu na základě [systémové proměnné](data-factory-functions-variables.md#data-factory-system-variables). Podporované proměnné jsou: **{year}**, **{month}**, **{day}**, **{hodinu}**, **{minutu}** a **{{vlastní}**. Příklad: inputfolder / {year} / {month} / {day}.
 
 Předpokládejme, že máte vstupní složky v následujícím formátu:
 
@@ -76,7 +76,7 @@ Předpokládejme, že máte vstupní složky v následujícím formátu:
     2016/03/01/03
     ...
 
-Klikněte na tlačítko **Procházet** tlačítko pro **souboru nebo složky**, přejděte do jednoho z těchto složek (například 2016 -> 03 -> 01 -> 02) a klikněte na tlačítko **zvolte**. Měli byste vidět `2016/03/01/02` v textovém poli. Nyní, nahraďte **2016** s **{year}**, **03** s **{month}**, **01** s **{day}**, a **02** s **{hodinu}** a stiskněte klávesu **kartě** klíč. Měli byste vidět rozevíracích seznamech vyberte formát pro tyto čtyři proměnné:
+Klikněte na tlačítko **Procházet** tlačítko pro **souboru nebo složky**, přejděte do jednoho z těchto složek (například 2016 -> 03 -> 01 -> 02) a klikněte na tlačítko **zvolte**. Měli byste vidět `2016/03/01/02` v textovém poli. Nyní, nahraďte **2016** s **{year}**, **03** s **{month}**, **01** s **{day}** , a **02** s **{hodinu}** a stiskněte klávesu **kartě** klíč. Měli byste vidět rozevíracích seznamech vyberte formát pro tyto čtyři proměnné:
 
 ![Pomocí systémové proměnné](./media/data-factory-copy-wizard/blob-standard-variables-in-folder-path.png)   
 

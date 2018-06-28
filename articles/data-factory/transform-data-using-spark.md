@@ -12,22 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/31/2018
 ms.author: douglasl
-ms.openlocfilehash: 525ad1c83a1982ae5b954b900c5a6c7086544c66
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: abe2fabc505f94f19d4b15a406fc59bf6d6e7ac1
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700532"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050331"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity Spark v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-spark.md)
-> * [Verze 2 – Preview](transform-data-using-spark.md)
+> * [Verze 1](v1/data-factory-spark.md)
+> * [Aktuální verze](transform-data-using-spark.md)
 
 Aktivita Spark v datové továrně [kanálu](concepts-pipelines-activities.md) spustí Spark program na [vlastní](compute-linked-services.md#azure-hdinsight-linked-service) nebo [na vyžádání](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) clusteru HDInsight. Tento článek vychází [aktivit transformace dat](transform-data.md) článek, který poskytne Obecné přehled o transformaci dat a aktivity podporované transformace. Při použití služby na vyžádání Spark propojené služby Data Factory automaticky vytvoří cluster Spark pro můžete v běhu při zpracování dat a poté odstraní clusteru po dokončení zpracování. 
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aktivity Spark v V1](v1/data-factory-spark.md).
 
 > [!IMPORTANT]
 > Aktivita Spark nepodporuje clustery HDInsight Spark, které používají Azure Data Lake Store jako primární úložiště.
@@ -74,7 +71,7 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON:
 | rootPath              | Kontejner objektů Blob v Azure a složky, která obsahuje soubor Spark. Název souboru je malá a velká písmena. Struktura složek najdete části (další části) Další informace o struktuře této složky. | Ano      |
 | entryFilePath         | Relativní cesta ke kořenové složce Spark kódu nebo balíčku. Vstupní soubor musí být soubor Python nebo souboru .jar. | Ano      |
 | Název třídy             | Hlavní třídy aplikace Java/Spark      | Ne       |
-| Argumenty             | Seznam argumentů příkazového řádku pro Spark program. | Ne       |
+| argumenty             | Seznam argumentů příkazového řádku pro Spark program. | Ne       |
 | proxyUser             | Uživatelský účet zosobnění spuštění programu Spark | Ne       |
 | sparkConfig           | Zadejte hodnoty pro vlastnosti konfigurace Spark vypsané v tomto tématu: [Spark konfigurace – vlastnosti aplikace](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Ne       |
 | getdebuginfo –          | Určuje, kdy soubory protokolu Spark se zkopírují do úložiště Azure používá HDInsight cluster (nebo) zadaný ve sparkJobLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádné. | Ne       |

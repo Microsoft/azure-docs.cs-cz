@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d22829217209b7d0b1b5690d6a864b58bf102e3c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e775798dbaaf93d5a9b497323a3b2fa365820550
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622274"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046458"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Vyvolání Spark programy z kanálů služby Azure Data Factory
 
@@ -37,7 +37,7 @@ ms.locfileid: "34622274"
 > * [Vlastní aktivita .NET](data-factory-use-custom-activities.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Azure Data Factory, která je všeobecně dostupná. Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [transformace dat pomocí aktivity Apache Spark v datové továrně verze 2](../transform-data-using-spark.md).
+> Tento článek se týká verze 1 služby Azure Data Factory, která je všeobecně dostupná. Pokud používáte aktuální verze služby Data Factory, najdete v části [transformace dat pomocí aktivity Apache Spark v datové továrně](../transform-data-using-spark.md).
 
 ## <a name="introduction"></a>Úvod
 Aktivita Spark je jedním z [aktivit transformace dat](data-factory-data-transformation-activities.md) podporovaných službou Data Factory. Tato aktivita běží zadaný program Spark na váš cluster Spark v Azure HDInsight. 
@@ -268,8 +268,7 @@ V tomto kroku vytvoříte kanál s aktivitou HDInsightSpark. V současnosti urč
 
     ![Výsledky dotazu Jupyter](media/data-factory-spark/jupyter-notebook-results.png)
 
-<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
-Podrobné pokyny najdete v části [spuštění dotazů Spark SQL](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
+<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article --> Podrobné pokyny najdete v části [spuštění dotazů Spark SQL](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md). 
 
 ### <a name="troubleshooting"></a>Řešení potíží
 Vzhledem k tomu, že nastavíte getdebuginfo – na **vždy**, najdete v části protokolu podsložky ve složce pyFiles v kontejnerech objektů blob. Další informace najdete v souboru protokolu ve složce protokolů. Tento soubor protokolu je obzvláště užitečná, když dojde k chybě. V produkčním prostředí, můžete chtít nastavit na **selhání**.
@@ -337,7 +336,7 @@ Následující tabulka popisuje vlastnostech JSON použitých v definici JSON.
 | rootPath | Kontejner objektů blob a složky, která obsahuje soubor Spark. Název souboru je malá a velká písmena. | Ano |
 | entryFilePath | Relativní cesta ke kořenové složce Spark kódu nebo balíčku. | Ano |
 | Název třídy | Hlavní třídy aplikace Java/Spark. | Ne |
-| Argumenty | Seznam argumentů příkazového řádku pro Spark program. | Ne |
+| argumenty | Seznam argumentů příkazového řádku pro Spark program. | Ne |
 | proxyUser | Uživatelský účet zosobnění spuštění programu Spark. | Ne |
 | sparkConfig | Zadejte hodnoty pro vlastnosti konfigurace Spark uvedené v [konfigurace Spark: vlastnosti aplikace](https://spark.apache.org/docs/latest/configuration.html#available-properties). | Ne |
 | getdebuginfo – | Určuje, kdy se soubory protokolu Spark zkopírují do úložiště používaný v clusteru HDInsight (nebo) zadaný ve sparkJobLinkedService. Povolené hodnoty jsou None, vždy nebo selhání. Výchozí hodnota je None. | Ne |

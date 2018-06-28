@@ -1,26 +1,23 @@
 ---
-title: "Použití rozhraní příkazového řádku Azure CLI 2.0 k zahájení práce s Azure Data Lake Store | Dokumentace Microsoftu"
-description: "Použití multiplatformního rozhraní příkazového řádku Azure 2.0 k vytvoření účtu Data Lake Store a provádění základních operací"
+title: Pomocí příkazového řádku Azure 2.0 rozhraní začít s Azure Data Lake Storage Gen1 | Microsoft Docs
+description: Použití multiplatformního rozhraní příkazového řádku Azure 2.0 k vytvoření účtu Data Lake Store a provádění základních operací
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 4ffa0f4a-1cca-46ac-803d-1fc8538c685b
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: b93b9a801b3e5e1fd869cda7f3d67554e2d03195
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
-ms.translationtype: HT
+ms.openlocfilehash: acd1182fdc66374e9abbc4964207417a7de3aadb
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035840"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Začínáme s Azure Data Lake Store s použitím rozhraní příkazového řádku Azure CLI 2.0
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-cli-20"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí Azure CLI 2.0
 > [!div class="op_single_selector"]
 > * [Azure Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -28,7 +25,9 @@ ms.lasthandoff: 03/09/2018
 >
 > 
 
-Naučte se používat rozhraní příkazového řádku Azure CLI 2.0 k vytvoření účtu Azure Data Lake Store a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace týkající se Data Lake Store najdete v tématu [Přehled Data Lake Store](data-lake-store-overview.md).
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
+Naučte se používat rozhraní příkazového řádku Azure CLI 2.0 k vytvoření účtu Azure Data Lake Store a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace o Data Lake Store najdete v tématu [přehled o Data Lake Storage Gen1](data-lake-store-overview.md).
 
 Rozhraní příkazového řádku Azure CLI 2.0 představuje nové prostředí příkazového řádku Azure pro správu prostředků Azure. Je možné používat ho v systémech macOS, Linux a Windows. Další informace najdete v [přehledu rozhraní příkazového řádku Azure CLI 2.0](https://docs.microsoft.com/cli/azure). Můžete si také prostudovat [referenční informace k rozhraní příkazového řádku Azure Data Lake Store CLI 2.0](https://docs.microsoft.com/cli/azure/dls) obsahující úplný seznam příkazů a syntaxi.
 
@@ -53,7 +52,7 @@ Tento článek využívá jednodušší přístup ověřování ve službě Data
     az login
     ```
 
-    Obdržíte kód pro použití v dalším kroku. Ve webovém prohlížeči otevřete stránku https://aka.ms/devicelogin a zadejte kód pro ověření. Zobrazí se výzva k přihlášení pomocí vašich přihlašovacích údajů.
+    Obdržíte kód pro použití v dalším kroku. Použít webový prohlížeč otevře se stránka https://aka.ms/devicelogin a zadejte kód pro ověření. Zobrazí se výzva k přihlášení pomocí vašich přihlašovacích údajů.
 
 2. Po přihlášení se v okně zobrazí všechna předplatná Azure, která jsou přidružena k vašemu účtu. Chcete-li používat konkrétní předplatné, použijte následující příkaz.
    
@@ -232,7 +231,7 @@ az dls account delete --account mydatalakestore
 
 Po zobrazení výzvy zadejte **Y**, a účet tak odstraňte.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Použití Azure Data Lake Store pro potřeby velkého objemu dat](data-lake-store-data-scenarios.md) 
 * [Zabezpečení dat ve službě Data Lake Store](data-lake-store-secure-data.md)
 * [Použití Azure Data Lake Analytics se službou Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

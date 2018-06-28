@@ -10,25 +10,23 @@ ms.service: multiple
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/27/2018
+ms.topic: conceptual
+ms.date: 05/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 58e1c88629c21940e09efd6832d536c0b2b47ace
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 92b45c1038fd099926360dc80802ababf0e8ee93
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052762"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Kopírovat data z databáze Cosmos Azure pomocí Azure Data Factory
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-azure-documentdb-connector.md)
-> * [Verze 2 – Preview](connector-azure-cosmos-db.md)
+> * [Verze 1](v1/data-factory-azure-documentdb-connector.md)
+> * [Aktuální verze](connector-azure-cosmos-db.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z a do Azure Cosmos databáze (SQL API). Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [connnector Azure Cosmos DB v V1](v1/data-factory-azure-documentdb-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -111,8 +109,8 @@ Ke zkopírování dat z/do Azure Cosmos DB, nastavte vlastnost typu datové sady
 
 Aktivita kopírování pro data bez schémat úložiště, jako je například Azure Cosmos DB, odvodí schéma v jednom z následujících způsobů. Proto pokud nechcete [importu a exportu dokumentů JSON jako-je](#importexport-json-documents), osvědčeným postupem je určit strukturu dat v **struktura** části.
 
-1. Pokud zadáte strukturu dat pomocí **struktura** vlastnost v definici datové sady, služba Data Factory ctí tato struktura jako schéma. V takovém případě Pokud řádek neobsahuje hodnotu pro sloupec, bude poskytnuta hodnota null pro ni.
-2. Pokud nezadáte strukturu dat pomocí **struktura** vlastnost v definici datové sady, služba Data Factory odvodí schématu pomocí prvního řádku v datech. V takovém případě pokud první řádek neobsahuje úplnou schéma, některé sloupce budou chybět ve výsledku operace kopírování.
+*. Pokud zadáte strukturu dat pomocí **struktura** vlastnost v definici datové sady, služba Data Factory ctí tato struktura jako schéma. V takovém případě Pokud řádek neobsahuje hodnotu pro sloupec, bude poskytnuta hodnota null pro ni.
+*. Pokud nezadáte strukturu dat pomocí **struktura** vlastnost v definici datové sady, služba Data Factory odvodí schématu pomocí prvního řádku v datech. V takovém případě pokud první řádek neobsahuje úplnou schéma, některé sloupce budou chybět ve výsledku operace kopírování.
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
@@ -210,8 +208,8 @@ Pomocí tohoto konektoru Cosmos DB, můžete snadno
 
 K dosažení taková vázané na schéma kopie:
 
-- V databázi Cosmos datových sad, nezadávejte v části "struktura"; a v aktivitě kopírování Cosmos DB zdroj/jímka, nezadávejte vlastnost "nestingSeparator".
-- Při importu ze / export do formátu JSON souborů v sadě odpovídající soubor úložiště dat, zadejte typ formátu jako "JsonFormat" a konfigurace "filePattern" správně (najdete v části [formátu JSON](supported-file-formats-and-compression-codecs.md#json-format) podrobnosti), pak nezadávejte strukturu" "tématu a přeskočit nastavení formátu rest.
+* Pokud používáte nástroj pro kopírování dat, zkontrolujte **"exportovat jako-soubory JSON nebo kolekce Cosmos DB"** možnost.
+* Když pomocí aktivity pro tvorbu, nezadávejte v části "struktura" (neboli schéma) v datových sad Cosmos DB ani vlastnost "nestingSeparator" na Cosmos DB zdroj/jímka v aktivitě kopírování. Při importu ze / export do formátu JSON souborů v sadě odpovídající soubor úložiště dat, zadejte typ formátu jako "JsonFormat" a konfigurace "filePattern" správně (najdete v části [formátu JSON](supported-file-formats-and-compression-codecs.md#json-format) podrobnosti), pak nezadávejte strukturu" "(neboli schéma) části a přeskočit nastavení formátu rest.
 
 ## <a name="next-steps"></a>Další postup
 Seznam úložišť dat jako zdroje a jímky nepodporuje aktivitu kopírování v Azure Data Factory najdete v tématu [podporovanými úložišti dat](copy-activity-overview.md##supported-data-stores-and-formats).

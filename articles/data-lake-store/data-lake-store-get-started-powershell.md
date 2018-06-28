@@ -1,26 +1,23 @@
 ---
-title: Začínáme s Azure Data Lake Store pomocí PowerShellu | Dokumentace Microsoftu
+title: Začínáme s Azure Data Lake Storage Gen1 pomocí prostředí PowerShell | Microsoft Docs
 description: Použití prostředí Azure PowerShell k vytvoření účtu Data Lake Store a provádění základních operací
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: bf85f369-f9aa-4ca1-9ae7-e03a78eb7290
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 57b7755bda499cd7113f84d9950b1b06175e11b7
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: HT
+ms.openlocfilehash: f208722d768e2bccf2e5b4d7b4543f8cbba4f185
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035852"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-azure-powershell"></a>Začínáme s Azure Data Lake Store pomocí Azure PowerShell
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí Azure PowerShell
 > [!div class="op_single_selector"]
 > * [Azure Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -28,7 +25,9 @@ ms.lasthandoff: 04/19/2018
 >
 >
 
-Naučte se používat Azure PowerShell k vytvoření účtu Azure Data Lake Store a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace týkající se Data Lake Store najdete v tématu [Přehled Data Lake Store](data-lake-store-overview.md).
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
+Naučte se používat Azure PowerShell k vytvoření účtu Azure Data Lake Store a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace o Data Lake Store najdete v tématu [přehled o Data Lake Storage Gen1](data-lake-store-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -119,7 +118,7 @@ Následujícím příkazem odstraňte účet Data Lake Store.
 
 Po zobrazení výzvy zadejte **Y**, a účet tak odstraňte.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Průvodce laděním výkonu pro použití PowerShellu se službou Azure Data Lake Store](data-lake-store-performance-tuning-powershell.md)
 * [Použití Azure Data Lake Store pro potřeby velkého objemu dat](data-lake-store-data-scenarios.md) 
 * [Zabezpečení dat ve službě Data Lake Store](data-lake-store-secure-data.md)

@@ -12,27 +12,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: ffa65e542b83bccf1629674a0a4860e236401605
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 87a71cff07d18dde25fa5c58b3718e7a57e3ce8d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621519"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046009"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytvořit prediktivní kanály pomocí Azure Machine Learning a Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-azure-ml-batch-execution-activity.md)
-> * [Verze 2 – Preview](transform-data-using-machine-learning.md)
+> * [Verze 1](v1/data-factory-azure-ml-batch-execution-activity.md)
+> * [Aktuální verze](transform-data-using-machine-learning.md)
 
 [Azure Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/) umožňuje vytvářet, testovat a nasazovat řešení prediktivní analýzy. Z vysoké úrovně hlediska se provádí v tři kroky:
 
 1. **Vytvoření experimentu školení**. Tento krok se provádí pomocí nástroje Azure ML Studio. ML studio se spolupráce vizuální vývojové prostředí, které používáte a natrénuje a otestuje model prediktivní analýzy pomocí Cvičná data.
 2. **Převést na prediktivní experiment**. Jakmile model byl vyzkoušen s existujícími daty a budete chtít použít skóre pro nová data, připravte a zjednodušit experimentu pro vyhodnocování.
 3. **Nasadit jako webovou službu**. Vyhodnocování experimentu můžete publikovat jako Azure webové služby. Můžete posílat data do modelu přes tento koncový bod webové služby a přijímat výsledek předpovědi z modelu.  
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aktivita provedení dávky Machine Learning v V1](v1/data-factory-azure-ml-batch-execution-activity.md).
-
 
 ### <a name="data-factory-and-machine-learning-together"></a>Objekt pro vytváření dat a strojové učení společně
 Azure Data Factory můžete snadno vytvořit kanály, které používají publikované [Azure Machine Learning] [azure machine learning] webové služby pro prediktivní analýzy. Pomocí **aktivita provedení dávky** v kanál služby Azure Data Factory můžete vyvolat webové služby Azure ML provádět předpovědi na datech v dávce. 

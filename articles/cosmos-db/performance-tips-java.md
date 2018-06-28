@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 92a7ed065b2ab29037e8c2467e210e7fd0ba3a07
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2c0290ef160283f5aef8b1a4a5f67e69222aec0e
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613172"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029352"
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
@@ -36,8 +36,8 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
 
     Jak se klient připojí k databázi Cosmos Azure má důležité dopady na výkon, hlavně z hlediska zjištěnou latence klienta. Jeden klíč konfigurace nastavení pro konfiguraci klienta k dispozici [ConnectionPolicy](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_policy) – [ConnectionMode](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode).  Dvě dostupné ConnectionModes jsou:
 
-   1. [Brána (výchozí)](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode.gateway)
-   2. [DirectHttps](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._connection_mode.directhttps)
+   1. [Brána (výchozí)](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._connection_mode)
+   2. [DirectHttps](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.documentdb._connection_mode)
 
     Režim brány je podporovaná na všech platformách SDK a je nakonfigurované výchozí.  Pokud vaše aplikace běží v rámci podnikové sítě s omezeními striktní brány firewall, brána je nejlepší volbou, protože používá standardní port HTTPS a jeden koncový bod. Kompromis výkonu, je ale, že brány režimu zahrnuje směrování další síti pokaždé, když je číst nebo zapisovat do databáze Cosmos Azure data. Z toho důvodu režimu DirectHttps nabízí lepší výkon z důvodu méně síťové směrování. 
 

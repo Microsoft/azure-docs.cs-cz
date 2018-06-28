@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e80c69657dfb7cbab7d29c94d3dd3c56574de7b7
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a25c2b7ea7fdfcc6bcaa10baff3a5ae14ae9753b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36321992"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37044815"
 ---
 # <a name="speech-service-rest-apis"></a>REST API služby řeči
 
@@ -24,14 +24,7 @@ Rozhraní REST API služby jednotná řeči jsou podobná rozhraní API poskytov
 
 V převod řeči na Text rozhraní API pouze koncových bodů použitých liší od předchozí řeči služby API pro rozpoznávání řeči. Nové koncové body jsou uvedeny v následující tabulce. Použijte ten, který odpovídá oblasti vašeho předplatného.
 
-Oblast| Převod řeči na Text koncový bod
--|-
-Západní USA| `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1`
-Východní Asie| `https://eastasia.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1`
-Severní Evropa| `https://northeurope.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1`
-
-> [!NOTE]
-> Musíte připojit požadovaný jazyk v identifikátoru URI, aby se zabránilo chyby protokolu http 401. Pro en US tak správný identifikátor URI by byl: https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US
+[!include[](includes/endpoints-speech-to-text.md)]
 
 Převod řeči na Text rozhraní API je jinak podobná [REST API](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) pro předchozí řeči API.
 
@@ -62,14 +55,7 @@ cs-CZ  | Čeština | Muž   | "Microsoft Server řeči Text na hlas rozpoznává
 
 Níže jsou koncové body REST pro jednotná převod služby textu na řeč rozhraní API. Pomocí koncového bodu, který odpovídá oblasti vašeho předplatného.
 
-Oblast| Převod textu na řeč koncový bod
--|-
-Západní USA|    `https://westus.tts.speech.microsoft.com/cognitiveservices/v1`
-Východní Asie|  `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1`
-Severní Evropa|   `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1`
-
-> [!NOTE]
-> Pokud jste vytvořili vlastní hlasové písmo, použijte místo toho svůj vlastní koncový bod.
+[!include[](includes/endpoints-text-to-speech.md)]
 
 Zachovat tyto rozdíly v paměti, jako jste odkazovat [dokumentace k REST API](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) pro předchozí řeči API.
 
@@ -77,11 +63,7 @@ Zachovat tyto rozdíly v paměti, jako jste odkazovat [dokumentace k REST API](h
 
 Odesílání požadavku do rozhraní API REST služby řeči vyžaduje přístupový token. Získat token tím, že poskytuje svůj klíč předplatného v místní službě řeči `issueToken` koncový bod, uvedené v následující tabulce. Pomocí koncového bodu, který odpovídá oblasti vašeho předplatného.
 
-Oblast| Koncový bod služby tokenu
--|-
-Západní USA|    `https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-Východní Asie|  `https://eastasia.api.cognitive.microsoft.com/sts/v1.0/issueToken`
-Severní Evropa|   `https://northeurope.api.cognitive.microsoft.com/sts/v1.0/issueToken`
+[!include[](includes/endpoints-token-service.md)]
 
 Každý přístupový token je platný 10 minut. Můžete kdykoli získat nový token – včetně, pokud chcete, těsně před každým požadavkem řeči REST API. Chcete-li minimalizovat síťový provoz a latenci, ale doporučujeme používat stejný token devět minut.
 

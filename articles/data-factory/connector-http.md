@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
-ms.openlocfilehash: f7c82b3aa88e874328452aae46dc14972d63192f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a27d90006d31c83b5ebe6cfc4a8d97969743a91e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616939"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049854"
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Kopírování dat z koncový bod HTTP pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-http-connector.md)
-> * [Verze 2 – Preview](connector-http.md)
+> * [Verze 1](v1/data-factory-http-connector.md)
+> * [Aktuální verze](connector-http.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z koncový bod HTTP. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [HTTP konektoru V1](v1/data-factory-http-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -69,7 +66,7 @@ Nastavte vlastnost "authenticationType" na **základní**, **Digest**, nebo **Wi
 
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
-| Uživatelské jméno | Uživatelské jméno pro přístup k koncový bod HTTP. | Ano |
+| uživatelské jméno | Uživatelské jméno pro přístup k koncový bod HTTP. | Ano |
 | heslo | Heslo pro uživatele (uživatelské jméno). Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 
 **Příklad**
@@ -103,7 +100,7 @@ Chcete-li použít ověřování ClientCertificate, nastavte vlastnost "authenti
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | embeddedCertData | Data certifikátu kódováním base64. | Zadejte buď `embeddedCertData` nebo `certThumbprint`. |
-| CertThumbprint | Kryptografický otisk certifikátu, který je nainstalován v úložišti certifikátů počítače Self-hosted integrace Runtime. Platí jenom v případě, že je zadán vlastním hostováním typ integrace Runtime v connectVia. | Zadejte buď `embeddedCertData` nebo `certThumbprint`. |
+| certThumbprint | Kryptografický otisk certifikátu, který je nainstalován v úložišti certifikátů počítače Self-hosted integrace Runtime. Platí jenom v případě, že je zadán vlastním hostováním typ integrace Runtime v connectVia. | Zadejte buď `embeddedCertData` nebo `certThumbprint`. |
 | heslo | Heslo přidružené k certifikátu. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 
 Pokud používáte "certThumbprint" pro ověřování a je certifikát nainstalován v osobním úložišti místního počítače, je třeba udělit oprávnění ke čtení modulu runtime Self-hosted integrace:
@@ -169,7 +166,7 @@ Ke zkopírování dat z protokolu HTTP, nastavte vlastnost typu datové sady, kt
 | relativeUrl | Relativní adresa URL k prostředku, který obsahuje data. Když není tato vlastnost určena, použije se jenom adresu URL, zadaný v definici propojené služby. | Ne |
 | requestMethod | Metoda HTTP.<br/>Povolené hodnoty jsou **získat** (výchozí) nebo **Post**. | Ne |
 | additionalHeaders | Další hlavičky žádosti HTTP. | Ne |
-| RequestBody | Text pro požadavek HTTP. | Ne |
+| requestBody | Text pro požadavek HTTP. | Ne |
 | Formát | Pokud chcete **načtení dat z koncový bod HTTP jako-je** bez analýza ho a zkopírujte do úložiště na základě souborů, přeskočte část formátu v obou definice vstupní a výstupní datové sady.<br/><br/>Pokud chcete analyzovat během kopírování obsahu odpovědi HTTP, jsou podporovány následující typy souboru formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [formátu Json](supported-file-formats-and-compression-codecs.md#json-format), [textovém formátu](supported-file-formats-and-compression-codecs.md#text-format), [Avro formát](supported-file-formats-and-compression-codecs.md#avro-format), [Orc formátu](supported-file-formats-and-compression-codecs.md#orc-format), a [Parquet formát](supported-file-formats-and-compression-codecs.md#parquet-format) oddíly. |Ne |
 | Komprese | Zadejte typ a úroveň komprese pro data. Další informace najdete v tématu [podporované formáty souborů a komprese kodeky](supported-file-formats-and-compression-codecs.md#compression-support).<br/>Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**.<br/>Jsou podporované úrovně: **Optimal** a **nejrychlejší**. |Ne |
 

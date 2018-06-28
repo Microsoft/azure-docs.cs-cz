@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 66e6725dd4e23eeaf0c8d0dcff6e5d26e3743218
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9453099af8d9be21a97808733ffa8f8bfe5a364a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624280"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047560"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Řešení potíží při použití Brány pro správu dat
 Tento článek obsahuje informace o řešení potíží s použitím brány pro správu dat.
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Azure Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [hostovanou na vlastním integrace runtime v datové továrně verze 2](../create-self-hosted-integration-runtime.md).
+> Tento článek se týká verze 1 Azure Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [hostovanou na vlastním integrace runtime v datové továrně](../create-self-hosted-integration-runtime.md).
 
 Najdete v článku [Brána pro správu dat](data-factory-data-management-gateway.md) článku podrobné informace o bráně. Najdete v článku [přesun dat mezi místními a cloudovými](data-factory-move-data-between-onprem-and-cloud.md) článku návod přesun dat z databáze SQL serveru místně do Microsoft Azure Blob storage pomocí brány.
 
@@ -126,7 +126,7 @@ Brána je zaregistrován na jiných počítačích než. Při počáteční regi
 Při obnovování brány na jiný hostitelský počítač, Průvodce registrací požádá o tohoto certifikátu dešifrovat přihlašovací údaje dříve zašifrované pomocí tohoto certifikátu.  Bez tohoto certifikátu přihlašovací údaje nelze dešifrovat pomocí nové brány a další kopie aktivity spuštěních přidružené k této nové brány se nezdaří.  
 
 #### <a name="resolution"></a>Řešení
-Pokud jste exportovali certifikát přihlašovacích údajů z původní počítač brány pomocí **exportovat** tlačítko **nastavení** kartě v správy Správce konfigurace brány dat, použít certifikát v tomto poli.
+Pokud jste exportovali certifikát přihlašovacích údajů z původní počítač brány pomocí **exportovat** na tlačítko **nastavení** kartě v správy Správce konfigurace brány dat, použití certifikátu Tady.
 
 Při obnovení bránu nedá Přeskočit tuto fázi. Pokud chybí certifikát, budete muset odstranit bránu z portálu a znovu vytvořit novou bránu.  Kromě toho aktualizujte všechny propojené služby, které se vztahují k bráně nutnosti opětovného zadávání svých přihlašovacích údajů.
 

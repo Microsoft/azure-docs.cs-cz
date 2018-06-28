@@ -12,19 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: jingwang
-ms.openlocfilehash: f4ce76385897c24bd5259d5a39aa1756769fe2aa
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: ba965b0610525f66c24dd6d5bad3fd113a6b6758
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284476"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050861"
 ---
 # <a name="azure-data-factory-service-identity"></a>Identita služby Azure Data Factory
 
 Tento článek vám pomůže pochopit co je identita služby data factory a jak to funguje.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [dokumentace pro objekt pro vytváření dat version1](v1/data-factory-introduction.md).
 
 ## <a name="overview"></a>Přehled
 
@@ -39,7 +36,7 @@ Identita služby data factory výhody následující dvě funkce:
 
 Identita služby data factory je vygenerována následujícím způsobem:
 
-- Při vytváření objektu pro vytváření dat prostřednictvím **portál Azure nebo PowerShell**, identita služby vždy se vytvoří automaticky od ADF V2 ve verzi public preview.
+- Při vytváření objektu pro vytváření dat prostřednictvím **portál Azure nebo PowerShell**, identita služby vždy se vytvoří automaticky.
 - Při vytváření objektu pro vytváření dat prostřednictvím **SDK**, identita služby se vytvoří pouze v případě, že zadáte "Identity = nové FactoryIdentity()" v objektu factory pro vytváření. Najdete v příkladu v [.NET rychlý start - vytváření dat](quickstart-create-data-factory-dot-net.md#create-a-data-factory).
 - Při vytváření objektu pro vytváření dat prostřednictvím **REST API**, identita služby se vytvoří pouze v případě, že zadáte části "identity" v textu žádosti. Najdete v příkladu v [REST rychlý start - vytvořit objekt pro vytváření dat](quickstart-create-data-factory-rest-api.md#create-a-data-factory).
 

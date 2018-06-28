@@ -10,19 +10,19 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 37228ca2f887f0993f707a2b10a2b5dcd888b1b9
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 0bcdc3c4357cb8985fad16c607957bffad4a2b8c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753650"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049226"
 ---
 # <a name="quickstart-for-c-and-windows"></a>Rychlý start pro C++ a Windows
 
 Aktuální verze sady SDK kognitivní řeči služby je `0.4.0`.
 
 Jsme popisují, jak vytvořit na základě C++ konzolové aplikace pro Windows Desktop, který využívá řeči SDK.
-Aplikace je založena na [balíček NuGet sady SDK kognitivní služby Microsoft](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech) a 2017 Microsoft Visual Studio.
+Aplikace je založena na [balíček NuGet sady SDK kognitivní služby Microsoft](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech) a Microsoft Visual Studio 2017.
 
 > [!NOTE]
 > Pokud hledáte rychlý start pro C++ a Linux, přejděte [zde](quickstart-cpp-linux.md).<br>

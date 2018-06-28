@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: a9a4f7b19d6ef08562d17474e252ce72fd0977dc
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: cbd51c48ec5b1801062e7aaf0b77e7b347018b31
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051861"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Poradce při potížích se službou Data Factory
 > [!NOTE]
-> Tento článek se týká verze 1 služby Azure Data Factory, která je obecně dostupná (GA). 
+> Tento článek se týká verze 1 Azure Data Factory. 
 
 Tento článek obsahuje tipy k řešení potíží pro problémy při použití Azure Data Factory. V tomto článku nejsou uvedeny všechny možné problémy při použití služby, týká se však některé problémy a Obecné tipy k řešení potíží.   
 
@@ -67,7 +68,7 @@ Spusťte **Správce konfigurace brány pro správu dat** na počítači brány a
 
 Použití vlastnosti **external** si můžete prohlédnout v následujícím příkladu. Volitelně můžete zadat **externalData*** Pokud nastavíte externí na hodnotu true.
 
-V tématu [datové sady](data-factory-create-datasets.md) článku Další podrobnosti o této vlastnosti.
+Další podrobnosti o této vlastnosti najdete v článku [Datové sady](data-factory-create-datasets.md).
 
 ```json
 {

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d1d4c847916b76785cbee40a12b59387498fb5c5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3eb9f765b5ffe1118b3b25aff8ecdde327021a54
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621213"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046472"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Aktualizace pomocí aktivita prostředku aktualizace modely Azure Machine Learning
 
@@ -36,7 +36,7 @@ ms.locfileid: "34621213"
 
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [aktualizace modelů machine learning v datové továrně verze 2](../update-machine-learning-models.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [aktualizace modelů machine learning v datové továrně](../update-machine-learning-models.md).
 
 Tento článek doplňuje hlavní Azure Data Factory – článek integrace Azure Machine Learning: [vytvořit prediktivní kanály pomocí Azure Machine Learning a Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). Pokud jste tak již neučinili, přečtěte si hlavní článek než si přečtete prostřednictvím tohoto článku. 
 

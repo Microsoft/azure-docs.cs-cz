@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e30cffa836beb2086e3bc4e94bf60be94136d3a0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f68e1077ebc26245b25eae3b0310db74b6d1357e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620618"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046441"
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Zápis dat do indexu Azure Search pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-azure-search-connector.md)
-> * [Verze 2 – Preview](../connector-azure-search.md)
+> * [Verze 1](data-factory-azure-search-connector.md)
+> * [Verze 2 (aktuální verze)](../connector-azure-search.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [konektor Azure Search v V2](../connector-azure-search.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [konektor Azure Search v V2](../connector-azure-search.md).
 
 Tento článek popisuje, jak pomocí aktivity kopírování a nabízí data z podporované zdrojové úložiště dat do indexu Azure Search. Podporované zdrojové úložiště dat jsou uvedena ve sloupci zdroj z [podporované zdroje a jímky](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabulky. Tento článek vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který uvádí obecný přehled přesun dat s aktivitou kopírování a kombinace podporované datové úložiště.
 
@@ -41,7 +41,7 @@ Vytvoření kanálu s aktivitou kopírování, který by vložil data ze zdrojov
 
 Nejjednodušší způsob, jak vytvořit kanál je použití **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
 Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený: 
 
@@ -80,7 +80,7 @@ Pro aktivitu kopírování, když je typ jímky **AzureSearchIndexSink**, násle
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Určuje, jestli se má sloučit nebo nahradit, pokud již dokument v indexu existuje. Najdete v článku [WriteBehavior vlastnost](#writebehavior-property).| Merge (výchozí)<br/>Odeslat| Ne |
+| writeBehavior | Určuje, jestli se má sloučit nebo nahradit, pokud již dokument v indexu existuje. Najdete v článku [WriteBehavior vlastnost](#writebehavior-property).| Sloučí (výchozí)<br/>Odeslat| Ne |
 | writeBatchSize | Ukládání dat do indexu Azure Search, když velikost vyrovnávací paměti dosáhne writeBatchSize. Najdete v článku [WriteBatchSize vlastnost](#writebatchsize-property) podrobnosti. | 1 do 1000. Výchozí hodnota je 1 000. | Ne |
 
 ### <a name="writebehavior-property"></a>Vlastnost WriteBehavior

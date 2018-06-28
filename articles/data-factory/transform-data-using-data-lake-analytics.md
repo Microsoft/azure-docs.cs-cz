@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: abnarain
-ms.openlocfilehash: 1bf030d7eaba5c8aa608c504f65c5ebf291eab3d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b82353418931c872f8ec90f381b27bbb5d5781e9
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619690"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046951"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformace dat pomocí spouštění skriptů U-SQL v Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-usql-activity.md)
-> * [Verze 2 – Preview](transform-data-using-data-lake-analytics.md)
+> * [Verze 1](v1/data-factory-usql-activity.md)
+> * [Aktuální verze](transform-data-using-data-lake-analytics.md)
 
 Kanál v objektu pro vytváření dat Azure zpracovává data v služby propojené úložiště pomocí propojené výpočetní služby. Obsahuje posloupnost aktivit, kde každá aktivita provede konkrétní zpracování operace. Tento článek popisuje **Data Lake Analytics U-SQL aktivity** , která se spouští **U-SQL** skript na **Azure Data Lake Analytics** výpočetní propojené služby. 
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [USQL aktivity v V1](v1/data-factory-usql-activity.md).
 
 Vytvoření účtu Azure Data Lake Analytics před vytvořením kanálu s aktivitou Data Lake Analytics U-SQL. Další informace o Azure Data Lake Analytics najdete v tématu [Začínáme s Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md).
 
@@ -61,7 +58,7 @@ Použijte objekt zabezpečení ověřování služby tak, že zadáte následuj�
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Zadejte ID aplikace klienta.     | Ano      |
 | **servicePrincipalKey** | Zadejte klíč aplikace.           | Ano      |
-| **Klienta**              | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete ji načíst podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano      |
+| **klienta**              | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete ji načíst podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano      |
 
 **Příkladu: Ověření objektu službu**
 ```json

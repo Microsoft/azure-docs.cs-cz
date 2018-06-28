@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/07/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: da3d78880a3d389c2a247f9940b708c026c96e03
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 365d9cde29292b40847ec2a0ac6f7d4011222f2c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34591326"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028927"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure předávací ověřování služby Active Directory: Rychlý start
 
@@ -152,7 +152,7 @@ Druhý můžete vytvořit a spustit skript bezobslužné nasazení. To je užite
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>Další postup
-- [Inteligentní uzamčení](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Zjistěte, jak nakonfigurovat možnosti inteligentního uzamčení na vašeho klienta k ochraně uživatelské účty.
+- [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): Zjistěte, jak nakonfigurovat možnosti inteligentního uzamčení na vašeho klienta k ochraně uživatelské účty.
 - [Aktuální omezení](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Zjistěte, jaké scénáře jsou podporovány pomocí předávacího ověřování a ty, které nejsou.
 - [Podrobné technické informace](active-directory-aadconnect-pass-through-authentication-how-it-works.md): pochopit, jak funguje funkci předávací ověřování.
 - [Nejčastější dotazy](active-directory-aadconnect-pass-through-authentication-faq.md): Vyhledejte odpovědi na nejčastější dotazy.

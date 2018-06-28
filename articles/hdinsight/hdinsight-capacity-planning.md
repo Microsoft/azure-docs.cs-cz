@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: ce8764e79d24d36eb3b162fb5f3f688b3e9fab3f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8a8344388e9d31846770d5989d1ddd43fbe15336
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401998"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047475"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Plánování kapacity pro clustery HDInsight
 
@@ -114,5 +114,5 @@ Ale existují některá omezení pevné kvótu, například v rámci jednoho př
 
 ## <a name="next-steps"></a>Další postup
 
-* [Nastavit clusterů v HDInsight Hadoop, Spark, Kafka a dalšími](hdinsight-hadoop-provision-linux-clusters.md): Zjistěte, jak nastavit a konfigurovat clusterů v HDInsight Hadoop, Spark, Kafka, interaktivní Hive, HBase, R Server nebo Storm.
+* [Nastavit clusterů v HDInsight Hadoop, Spark, Kafka a dalšími](hdinsight-hadoop-provision-linux-clusters.md): Zjistěte, jak nastavit a konfigurovat clusterů v HDInsight Hadoop, Spark, Kafka, interaktivní Hive, HBase, ML služby nebo Storm.
 * [Sledování výkonu clusteru](hdinsight-key-scenarios-to-monitor.md): Další informace o klíčových scénářů monitorování pro váš cluster HDInsight, které by mohly ovlivnit váš cluster kapacity.

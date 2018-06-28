@@ -13,23 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/23/2018
 ms.author: jingwang
-ms.openlocfilehash: 436725e54e197e021f088e0fd0cd75fc944983a3
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 6279e088b8abd574bbd8ef6488d986d42c91123c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751373"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046050"
 ---
 # <a name="copy-data-from-postgresql-by-using-azure-data-factory"></a>Kopírování dat z PostgreSQL pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-onprem-postgresql-connector.md)
-> * [Verze 2 – Preview](connector-postgresql.md)
+> * [Verze 1](v1/data-factory-onprem-postgresql-connector.md)
+> * [Aktuální verze](connector-postgresql.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z databáze PostgreSQL. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [PostgreSQL konektoru V1](v1/data-factory-onprem-postgresql-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 

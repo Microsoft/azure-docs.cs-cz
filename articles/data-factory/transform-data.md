@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 90089c009d3515df3df2453c710bac143ee7d90f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 23471a4ae912ee4947a91f0aef7fb2557e6ebba3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619744"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050961"
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Transformace dat v Azure Data Factory
 > [!div class="op_single_selector"]
@@ -35,10 +35,6 @@ ms.locfileid: "34619744"
 Tento článek vysvětluje aktivit transformace dat v Azure Data Factory můžete použít k transformaci a zpracuje nezpracovaná data do předpovědi a statistiky. Transformace aktivity spustí výpočetní prostředí jako je cluster Azure HDInsight nebo Azure Batch. Poskytuje odkazy na články s podrobné informace o každé aktivity transformace.
 
 Objekt pro vytváření dat podporuje následující aktivit transformace dat, které mohou být přidány do [kanály](concepts-pipelines-activities.md) buď jednotlivě nebo zřetězené s jinou aktivitou.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aktivit transformace v datové továrně verze 1](v1/data-factory-data-transformation-activities.md).
- 
 
 ## <a name="hdinsight-hive-activity"></a>Aktivitu HDInsight Hive
 Aktivity HDInsight Hive v kanálu pro vytváření dat provede dotazů Hive sami nebo clusteru HDInsight se systémem Windows nebo Linux na vyžádání. V tématu [aktivitu Hivu](transform-data-using-hadoop-hive.md) článku podrobnosti o této aktivitě. 

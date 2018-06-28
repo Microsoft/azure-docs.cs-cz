@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 1ed2ee73b32f71d2e1ca34c6de9d1cb2649d7f0c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6c358b5a40b1d8e91c2e1af5eb493b13604cf82e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343785"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045054"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Použití "Převod textu na řeč" v řeči služby
 
@@ -25,14 +25,7 @@ Text v příspěvku žádostí pro převod textu na řeč, může být prostý t
 
 Zde se zobrazují regionální převod textu na řeč koncových bodů. Použijte jeden vhodné pro vaše předplatné.
 
-Oblast| Koncový bod
--|-
-Západní USA| `https://westus.tts.speech.microsoft.com/cognitiveservices/v1`
-Východní Asie| `https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1`
-Severní Evropa| `https://northeurope.tts.speech.microsoft.com/cognitiveservices/v1`
-
-> [!NOTE]
-> Pokud jste vytvořili vlastní hlasové písmo, použijte koncovým bodem, který jste vytvořili pro něj místo ty výše.
+[!include[](includes/endpoints-text-to-speech.md)]
 
 ## <a name="specify-a-voice"></a>Zadejte hlasu
 

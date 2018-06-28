@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 924c41b060f56b4a21e4d29e059eb2968fa19330
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: dc1e3fd3984d0ccbfb0565a3216ec907894e88ea
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232307"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028944"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Jaké jsou řízení přístupu v Azure Active Directory podmíněného přístupu? 
 
@@ -77,7 +77,7 @@ Pomocí služby Multi-Factor authentication pomáhá chránit prostředky z při
 
 ### <a name="compliant-device"></a>Odpovídající zařízení
 
-Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založené na zařízení. Cílem zásad podmíněného přístupu na základě zařízení je k udělení přístupu k prostředkům nakonfigurované jenom z [zařízení spravovaná](active-directory-conditional-access-policy-connected-applications.md#managed-devices). Vyžadování vyhovující zařízení je jednou z možností je nutné definovat spravované zařízení. Pokud je vybraná tato možnost, zásady podmíněného přístupu uděluje pokusy o přístup k přístupu pomocí zařízení, které jsou [zaregistrován](device-management-introduction.md) do vaší Azure Active Directory a jsou označeny jako kompatibilní řešení pro správu.
+Můžete nakonfigurovat zásady podmíněného přístupu, které jsou založené na zařízení. Cílem zásad podmíněného přístupu na základě zařízení je k udělení přístupu k prostředkům nakonfigurované jenom z [zařízení spravovaná](active-directory-conditional-access-policy-connected-applications.md#managed-devices). Vyžadování vyhovující zařízení je jednou z možností je nutné definovat spravované zařízení. Pokud je vybraná tato možnost, zásady podmíněného přístupu uděluje pokusy o přístup k přístupu pomocí zařízení, které jsou [zaregistrován](device-management-introduction.md) do vaší Azure Active Directory a jsou označena jako kompatibilní, Intune (u všech zařízení, operačního systému) nebo pomocí vašeho systém MDM třetí strany pro zařízení s Windows 10. Nejsou podporovány systémy MDM třetí strany pro typy zařízení operační systém než Windows 10.
 
 Další informace najdete v tématu [nastavit zásady podmíněného přístupu na základě zařízení služby Azure Active Directory](active-directory-conditional-access-policy-connected-applications.md).
 

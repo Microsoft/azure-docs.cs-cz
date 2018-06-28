@@ -7,14 +7,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 06/26/2018
 ms.author: rimman
-ms.openlocfilehash: 9021d0c3f650d64480f2881508d456ce98beab2a
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 160ff4e09f70036fd261c07fa59e13772bc00660
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36961931"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053323"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Požadované jednotky v Azure Cosmos DB
 
@@ -41,7 +41,7 @@ Azure Cosmos DB rychlé a poskytuje předvídatelný výkon vyhrazením prostře
 
 S Azure Cosmos databáze je vyhrazenou propustností specifikované jako jednotky žádosti zpracování za sekundu. Jednotek žádosti si lze představit jako měnu propustnost. Můžete vyhradit počet jednotek žádosti zaručenou být k dispozici pro aplikaci na základě za sekundu. Každé operace v Azure DB Cosmos, včetně zápisu dokumentu, provádění dotazu a aktualizaci dokumentu se odebírá, procesoru, paměti a procesorů. To znamená každou operaci způsobuje požadavek poplatků, vyjádřené v jednotek žádosti. Až porozumíte faktory, které ovlivňují poplatky jednotek žádosti a požadavky na propustnost vaší aplikace, můžete spustit aplikace jako efektivně možné náklady. 
 
-Chcete-li začít pracovat, popisuje Azure manažer programu DB Cosmos Andrew Liu jednotek žádosti v následujícím videu: <br /><br />
+Chcete-li začít pracovat, Azure manažer programu DB Cosmos Andrew Liu popisuje jednotek žádosti v následujícím videu (je menší překlepem v příkladu jednotek žádosti videa. Když se používá 1 KB dat pomocí 100 000 záznamů, celkový počet úložiště je 100 MB a není 100 GB): <br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 

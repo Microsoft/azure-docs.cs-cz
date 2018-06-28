@@ -13,20 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/06/2018
 ms.author: shlo
-ms.openlocfilehash: bf358e5a2cbe05c7b786e18936d356efdd7c725f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e654cc23d6a558469ea238fc5ade82b44562f9a2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620431"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050365"
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Vizuální sledování Azure data Factory
 Azure Data Factory je cloudová služba pro integraci dat umožňující vytváření pracovních postupů řízených daty v cloudu za účelem orchestrace a automatizace přesunu a transformace dat. Pomocí služby Azure Data Factory můžete vytvářet a plánovat pracovní postupy řízené daty (nazývané kanály) se schopností ingestovat data z různorodých úložišť dat, zpracovat a transformovat tato data pomocí výpočetních služeb, jako je Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics a Azure Machine Learning, a publikovat výstupní data do úložišť dat, jako je Azure SQL Data Warehouse, aby je mohly využívat aplikace business intelligence (BI).
 V této úvodní se dozvíte, jak vizuálně monitorování kanálů v2 objekt pro vytváření dat bez nutnosti napsat jediný řádek kódu.
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [monitorování a Správa kanálů v objektu pro vytváření dat version1](v1/data-factory-monitor-manage-app.md).
 
 ## <a name="monitor-data-factory-v2-pipelines"></a>Monitorování kanálů v2 objekt pro vytváření dat
 

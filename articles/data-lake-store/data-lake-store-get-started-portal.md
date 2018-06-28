@@ -1,26 +1,24 @@
 ---
-title: Začínáme s Data Lake Storem pomocí webu Azure Portal | Dokumentace Microsoftu
-description: Jak používat Azure Portal k vytvoření účtu Data Lake Store a provádění základních operací v Data Lake Storu
+title: Začínáme s Data Lake Storage Gen1 pomocí portálu Azure | Microsoft Docs
+description: Vytvoření účtu Data Lake Store a provádění základních operací v data lake store pomocí portálu Azure
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: fea324d0-ad1a-4150-81f0-8682ddb4591c
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: hero-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 03/26/2018
+ms.topic: conceptual
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 91ed55e5f12c10e67653bdadfca80bd072779711
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
-ms.translationtype: HT
+ms.openlocfilehash: e23b2496ccb69bb530bd825a1feb99abcc4ab35b
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035970"
 ---
-# <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Začínáme s Azure Data Lake Store pomocí webu Azure Portal
+# <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Začínáme s Azure Data Lake Storage Gen1 pomocí portálu Azure
+
 > [!div class="op_single_selector"]
 > * [Azure Portal](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
@@ -28,7 +26,9 @@ ms.lasthandoff: 03/28/2018
 >
 > 
 
-Naučte se používat web Azure Portal k vytvoření účtu Azure Data Lake Store a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace najdete v tématu [Přehled služby Azure Data Lake Store](data-lake-store-overview.md).
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
+Naučte se používat web Azure Portal k vytvoření účtu Azure Data Lake Store a provádění základních operací, jako je vytváření složek, nahrávání a stahování datových souborů, odstranění účtu atd. Další informace najdete v tématu [Přehled služby Azure Data Lake Storage Gen1](data-lake-store-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Před zahájením tohoto kurzu musíte mít tyto položky:
@@ -122,7 +122,7 @@ Pokud chcete odstranit účet Azure Data Lake Store, v okně Data Lake Store kli
 
 ![Odstranění účtu Data Lake](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Odstranění účtu Data Lake")
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Použití Azure Data Lake Store pro potřeby velkého objemu dat](data-lake-store-data-scenarios.md) 
 * [Zabezpečení dat ve službě Data Lake Store](data-lake-store-secure-data.md)
 * [Použití Azure Data Lake Analytics se službou Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)

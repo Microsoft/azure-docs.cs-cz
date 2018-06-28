@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c5f47379072f4e5d15ffd96c5e45a23d10fff187
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f53c9e2b21e4758bccb6b0f89eb69501df2a6009
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620244"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051395"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory – protokol změn rozhraní API .NET
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). 
+> Tento článek se týká verze 1 služby Data Factory. 
 
 Tento článek obsahuje informace o změnách SDK služby Azure Data Factory v konkrétní verzi. Můžete najít nejnovější balíček NuGet pro Azure Data Factory [sem](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactories)
 
@@ -44,8 +44,8 @@ Přidání funkce:
 ## <a name="version-4100"></a>Verze 4.10.0
 * Následující volitelné vlastnosti Přibyla TextFormat:
   * [SkipLineCount](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.skiplinecount.aspx)
-  * [FirstRowAsHeader](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.firstrowasheader.aspx)
-  * [TreatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
+  * [firstRowAsHeader](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.firstrowasheader.aspx)
+  * [treatEmptyAsNull](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.textformat.treatemptyasnull.aspx)
 * Byly přidány následující typy propojené služby:
   * [OnPremisesCassandraLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.onpremisescassandralinkedservice.aspx)
   * [SalesforceLinkedService](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.salesforcelinkedservice.aspx)
@@ -71,8 +71,8 @@ Přidání funkce:
 ## <a name="version-480"></a>Verze 4.8.0
 ### <a name="feature-additions"></a>Přidání funkce
 * Byly přidány následující volitelné vlastnosti na typ aktivity kopírování povolit ladění výkonu kopie:
-  * [parallelCopies](https://msdn.microsoft.com/library/mt767910.aspx)
-  * [cloudDataMovementUnits](https://msdn.microsoft.com/library/mt767912.aspx)
+  * [ParallelCopies](https://msdn.microsoft.com/library/mt767910.aspx)
+  * [CloudDataMovementUnits](https://msdn.microsoft.com/library/mt767912.aspx)
 
 ## <a name="version-470"></a>Verze 4.7.0
 ### <a name="feature-additions"></a>Přidání funkce
@@ -89,7 +89,7 @@ Přidání funkce:
 ### <a name="feature-additions"></a>Přidání funkce
 * Následující vlastnosti jsou přidané do [PipelineProperties](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties_properties.aspx):
   * [pipelineMode](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.pipelinemode.aspx)
-  * [ExpirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
+  * [expirationTime](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.expirationtime.aspx)
   * [Datové sady](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.pipelineproperties.datasets.aspx)
 * Následující vlastnosti jsou přidané do [PipelineRuntimeInfo](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.aspx):
   * [PipelineState](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.common.models.pipelineruntimeinfo.pipelinestate.aspx)
@@ -184,5 +184,5 @@ Následující třídy byly přejmenovány. Nové názvy byly původní názvy t
 * **Seznam** kanálu rozhraní API Vrátí souhrn kanálu místo úplné podrobnosti. Například aktivity v kanálu souhrn obsahovat jenom název a typ.
 
 ### <a name="feature-additions"></a>Přidání funkce
-* [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) třída podporuje dva nové vlastnosti **SliceIdentifierColumnName** a **SqlWriterCleanupScript**, pro podporu idempotent kopírovat do Azure SQL Data Warehouse. Najdete v článku [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) podrobnosti o těchto vlastnostech najdete v článku.
+* [SqlDWSink](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsink.aspx) třída podporuje dva nové vlastnosti **SliceIdentifierColumnName** a **SqlWriterCleanupScript**, pro podporu idempotent kopii dat SQL Azure Skladu. Najdete v článku [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md) podrobnosti o těchto vlastnostech najdete v článku.
 * Teď podporují spuštěným uložené procedury pro Azure SQL Database a Azure SQL Data Warehouse zdroje v rámci aktivity kopírování. [SqlSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqlsource.aspx) a [SqlDWSource](https://msdn.microsoft.com/library/azure/microsoft.azure.management.datafactories.models.sqldwsource.aspx) třídy mají následující vlastnosti: **SqlReaderStoredProcedureName** a **StoredProcedureParameters**. Najdete v článku [Azure SQL Database](data-factory-azure-sql-connector.md#sqlsource) a [Azure SQL Data Warehouse](data-factory-azure-sql-data-warehouse-connector.md#sqldwsource) články na Azure.com. Podrobnosti o těchto vlastnostech.  

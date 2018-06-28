@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: d12038daf5d74889ca99ed2c7d35009f4cb7add7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 044d47a294df4e218c84a928a63426dde4f8373b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622809"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053129"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-use-custom-activities.md)
-> * [Verze 2 – Preview](../transform-data-using-dotnet-custom-activity.md)
+> * [Verze 1](data-factory-use-custom-activities.md)
+> * [Verze 2 (aktuální verze)](../transform-data-using-dotnet-custom-activity.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [vlastní aktivity v V2](../transform-data-using-dotnet-custom-activity.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [vlastní aktivity v V2](../transform-data-using-dotnet-custom-activity.md).
 
 Existují dva typy aktivit, které můžete použít v kanál služby Azure Data Factory.
 

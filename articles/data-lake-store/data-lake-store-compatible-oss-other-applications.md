@@ -1,25 +1,26 @@
 ---
-title: Velké objemy dat aplikace, které jsou kompatibilní s Data Lake Store | Microsoft Docs
-description: Seznam aplikací s otevřeným zdrojem, které fungují s Azure Data Lake Store
+title: Velké objemy dat aplikace, které jsou kompatibilní s Data Lake Storage Gen1 | Microsoft Docs
+description: Seznam aplikací s otevřeným zdrojem, které fungují s Azure Data Lake Storage Gen1 (dříve označované jako Azure Data Lake Store)
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 699e1805-cb76-4807-9ac1-8bd9d9bbb72b
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/29/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: fdeaf4d1d25d1669002b696219adfb6eaff4fd40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 61187a26190e8d449a572e00d5abe8338d9060c2
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624700"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029634"
 ---
-# <a name="open-source-big-data-applications-that-work-with-azure-data-lake-store"></a>Otevřete zdroj velkých objemů dat aplikací, které fungují s Azure Data Lake Store
+# <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>Otevřete zdroj velkých objemů dat aplikací, které fungují s Azure Data Lake Storage Gen1
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 Tento článek obsahuje seznam aplikací s otevřeným zdrojem velkých objemů dat, které fungují s Azure Data Lake Store. Pro aplikace v následující tabulce jsou podporovány pouze verze uvedené distribuční k dispozici. Informace o jaké verze těchto aplikací jsou k dispozici s HDInsight naleznete v tématu [Správa verzí komponenty HDInsight](../hdinsight/hdinsight-component-versioning.md).
 
 | Software s otevřeným zdrojem | Distribuce |
@@ -38,5 +39,5 @@ Tento článek obsahuje seznam aplikací s otevřeným zdrojem velkých objemů 
 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
-* [Přehled Azure Data Lake Storu](data-lake-store-overview.md)
+* [Přehled Azure Data Lake Storage Gen1](data-lake-store-overview.md)
 

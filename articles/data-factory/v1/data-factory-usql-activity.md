@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: a0f4a823d9a484dcae35a2741bf7904eb17a1502
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 534fbeaa8ba3c27c8d3f3bbcc59717d8bdb5c654
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622849"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050314"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformace dat pomocí spouštění skriptů U-SQL v Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-usql-activity.md)
-> * [Verze 2 – Preview](../transform-data-using-data-lake-analytics.md)
+> * [Verze 1](data-factory-usql-activity.md)
+> * [Verze 2 (aktuální verze)](../transform-data-using-data-lake-analytics.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [aktivity U-SQL v V2](../transform-data-using-data-lake-analytics.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [aktivity U-SQL v V2](../transform-data-using-data-lake-analytics.md).
 
 Kanál v objektu pro vytváření dat Azure zpracovává data v služby propojené úložiště pomocí propojené výpočetní služby. Obsahuje posloupnost aktivit, kde každá aktivita provede konkrétní zpracování operace. Tento článek popisuje **Data Lake Analytics U-SQL aktivity** , která se spouští **U-SQL** skript na **Azure Data Lake Analytics** výpočetní propojené služby. 
 
@@ -67,7 +67,7 @@ Použijte objekt zabezpečení ověřování služby tak, že zadáte následuj�
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Zadejte ID aplikace klienta. | Ano |
 | **servicePrincipalKey** | Zadejte klíč aplikace. | Ano |
-| **Klienta** | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete ji načíst podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano |
+| **klienta** | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete ji načíst podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano |
 
 **Příkladu: Ověření objektu službu**
 ```json
@@ -149,7 +149,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 }
 ```
 
-V tématu [azuredatalakestorelinkedservice třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), a [AuthorizationSessionGetResponse třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témata podrobnosti o třídy objektu pro vytváření dat používá v kódu. Přidat odkaz na: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll pro třídu WindowsFormsWebAuthenticationDialog. 
+V tématu [azuredatalakestorelinkedservice třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), a [AuthorizationSessionGetResponse třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témata podrobnosti o třídách objekt pro vytváření dat používá v kódu. Přidat odkaz na: Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll pro třídu WindowsFormsWebAuthenticationDialog. 
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>Aktivita U-SQL služby Data Lake Analytics
 Následující fragment kódu JSON definuje kanál s aktivitou Data Lake Analytics U-SQL. Definici aktivity odkazuje na Azure Data Lake Analytics propojené služby, kterou jste vytvořili dříve.   
@@ -213,7 +213,7 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 | linkedServiceName   | Referenční dokumentace k Azure Data Lake Analytics registrován jako propojené služby v datové továrně | Ano                                      |
 | scriptPath          | Cesta ke složce, který obsahuje skript U-SQL. Název souboru je malá a velká písmena. | Ne (když používáte skript)                   |
 | scriptLinkedService | Propojené služby, který odkazuje úložiště, který obsahuje skript pro vytváření dat. | Ne (když používáte skript)                   |
-| Skript              | Zadejte místo zadání scriptPath a scriptLinkedService zpracování vloženého skriptu. Například: `"script": "CREATE DATABASE test"`. | Ne (když používáte scriptPath a scriptLinkedService) |
+| skript              | Zadejte místo zadání scriptPath a scriptLinkedService zpracování vloženého skriptu. Například: `"script": "CREATE DATABASE test"`. | Ne (když používáte scriptPath a scriptLinkedService) |
 | degreeOfParallelism | Maximální počet uzlů současně slouží ke spuštění úlohy. | Ne                                       |
 | priorita            | Určuje, jaké úlohy mimo všechny, které jsou zařazeny do fronty, měla by být vybrána má spustit jako první. Čím nižší je číslo, tím vyšší je priorita. | Ne                                       |
 | parameters          | Parametry pro skript U-SQL          | Ne                                       |

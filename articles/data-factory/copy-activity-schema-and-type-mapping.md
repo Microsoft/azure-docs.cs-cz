@@ -13,19 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 8e3c4ec0062b6a155d0f4b11da1c699a0906c442
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 338df0e258f66b6639e59a4fe31b6cfb6c283dd3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318224"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045523"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schéma mapování v aktivitě kopírování
 Tento článek popisuje, jak funguje Azure Data Factory aktivity kopírování schéma mapování a mapování datového typu od zdrojových dat za účelem jímky dat při kopírování dat provádění.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), prostudujte si [dokumentaci služby Data Factory verze 1](v1/data-factory-introduction.md).
-
 
 ## <a name="column-mapping"></a>Mapování sloupce
 

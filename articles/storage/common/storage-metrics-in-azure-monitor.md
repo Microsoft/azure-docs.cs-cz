@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/05/2017
 ms.author: fryu
-ms.openlocfilehash: b1d82f9b527a62109e0301907b87bd683f9912af
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 05021d5ab8d33e36bff16ce7d2ebacd3db72639a
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035766"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metriky Azure Storage na platformě Azure Monitor
 
@@ -38,7 +39,7 @@ Metriky můžete sledovat v čase na portálu Azure. Následující příklad uk
 
 ![snímek obrazovky přístup k metriky na portálu Azure](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 
-Pro podporu dimenze metriky musí filtrovat s hodnotou požadované dimenze. Následující příklad ukazuje, jak zobrazit **transakce** na úrovni účtu s **úspěch** typ odpovědi.
+Pro podporu dimenze metriky můžete filtrovat metrika s hodnotou požadované dimenze. Následující příklad ukazuje, jak zobrazit **transakce** na úrovni účtu na konkrétní operaci výběrem hodnoty pro **název rozhraní API** dimenze.
 
 ![snímek obrazovky přístup k metriky s dimenzí na portálu Azure](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal-with-dimension.png)
 
@@ -317,7 +318,7 @@ Následující obrázek znázorňuje formát pro určení ID prostředku pro jed
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 `
 * ID prostředku služby souboru `
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/default
 `
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>ID prostředku v Azure monitorování rozhraní REST API
@@ -395,13 +396,19 @@ Transakce metriky odešlou ze služby Azure Storage do Azure monitorování kaž
 | BlobType | Typ objektu blob pro pouze metriky objektů Blob. Podporované hodnoty jsou **BlockBlob** a **PageBlob**. Append – objekt Blob je součástí BlockBlob. |
 | Hodnota ResponseType | Typ odpovědi transakce. Dostupné hodnoty: <br/><br/> <li>ServerOtherError: Popisuje ty, které jsou s výjimkou všechny ostatní chyby na straně serveru </li> <li> ServerBusyError: Ověřit požadavek, který vrátil kód stavu HTTP 503. </li> <li> ServerTimeoutError: Vypršení časového limitu ověřený požadavek, který vrátil kód stavu HTTP 500. Časový limit došlo k chybě serveru. </li> <li> AuthorizationError: Ověřený požadavek, který se nezdařilo z důvodu neoprávněného přístupu dat nebo k chybě autorizace. </li> <li> NetworkError: Ověřeného požadavku, která se nezdařila z důvodu chyby sítě. Nejčastěji dochází, když klient předčasně ukončí připojení, vypršení časového limitu. </li> <li>    ClientThrottlingError: Chyba omezení na straně klienta. </li> <li> ClientTimeoutError: Vypršení časového limitu ověřený požadavek, který vrátil kód stavu HTTP 500. Pokud časový limit sítě klienta nebo časový limit požadavku je nastavena na hodnotu nižší, než bylo očekáváno pomocí služby úložiště, je očekávané časový limit. Jinak jsou považovány za ServerTimeoutError. </li> <li> ClientOtherError: Všechny ostatní chyby klienta s výjimkou ty, které jsou popsány. </li> <li> Úspěch: Úspěšné žádosti|
 | GeoType | Transakce z primární nebo sekundární clusteru. Dostupné hodnoty zahrnují primární i sekundární. Se vztahuje na přístup pro čtení geograficky redundantní Storage(RA-GRS) při čtení objektů ze sekundární klienta. |
-| apiName | Název operace. Příklad: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>Getblob –</li> Všechny názvy operací, najdete v části [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
+| ApiName | Název operace. Příklad: <br/> <li>CreateContainer</li> <li>DeleteBlob</li> <li>Getblob –</li> Všechny názvy operací, najdete v části [dokumentu](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages#logged-operations.md). |
 
 Pro podpůrné dimenze metriky je třeba zadat hodnotu dimenze zobrazíte odpovídající hodnoty metrik. Například, pokud se podíváte na **transakce** hodnota pro úspěšné odpovědi, budete muset filtrovat **ResponseType** dimenze s **úspěch**. Nebo pokud se podíváte na **BlobCount** hodnotu pro objekt Blob bloku, budete muset filtrovat **BlobType** dimenze s **BlockBlob**.
 
 ## <a name="service-continuity-of-legacy-metrics"></a>Abyste zabránili výpadkům provozu starší verze metrik
 
 Starší verze metriky jsou k dispozici souběžně s Azure monitorování spravované metriky. Podporu stejné uchová, dokud končí službu na starší verze metrik Azure Storage.
+
+## <a name="faq"></a>Nejčastější dotazy
+
+**Podporuje Azure Storage metrics pro disky spravované nebo nespravované disky?**
+
+Ne, Azure Compute podporuje metriky na discích. V tématu [článku](https://azure.microsoft.com/en-us/blog/per-disk-metrics-managed-disks/) další podrobnosti.
 
 ## <a name="next-steps"></a>Další postup
 

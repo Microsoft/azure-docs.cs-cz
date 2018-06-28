@@ -11,12 +11,12 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: a5a81279726e5c221d9ae4734466a04ae5912af6
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 1015600343886333655a921f2e0944ebb676f3e6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936798"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050122"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migrace instance systému SQL Server na instanci spravované databáze Azure SQL
 
@@ -82,6 +82,8 @@ Spravované Instance podporuje následující možnosti migrace databáze (aktu�
 ### <a name="azure-database-migration-service"></a>Azure Database Migration Service
 
 [Azure databáze migrace služby (DMS)](../dms/dms-overview.md) je plně spravovaná služba navržených k povolení bezproblémové migrace z více zdrojů databáze do platformy Azure dat s minimálními výpadky. Tato služba zjednodušuje úkoly vyžadované pro přesun existujících třetích stran a databáze SQL serveru do Azure. Možnosti nasazení ve verzi Public Preview zahrnují Azure SQL Database, spravované Instance a SQL Server v virtuální počítač Azure. Služba DMS patří mezi doporučené metody migrace pro vaše podnikové úlohy. 
+
+Pomocí integrace služby SSIS (SQL Server) na SQL serveru místní, DMS zatím nepodporuje migraci katalog služby SSIS (SSISDB), který ukládá balíčky SSIS, ale můžete zřídit Azure SSIS integrace modulu Runtime (IR) v Azure Data Factory (ADF), který bude Vytvořit nový SSISDB v Azure SQL Database/spravované Instance a pak můžete znovu nasadit balíčky k němu najdete v tématu [vytvořit Azure SSIS IR v ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
 
 Další informace o krocích, tento scénář a konfiguraci pro DMS najdete v tématu [migrací místní databázi k instanci spravované pomocí DMS](../dms/tutorial-sql-server-to-managed-instance.md).  
 

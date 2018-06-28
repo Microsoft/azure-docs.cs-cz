@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: shlo
-ms.openlocfilehash: 56128a7fe28f1599b74ba9f1475ef636e0e8718c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c07199887faf073d19007f1ef410c193bbdbf3ee
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617976"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049362"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Získání metadat aktivity v Azure Data Factory
-GetMetaData – aktivita slouží k načtení **metadata** všech dat v Azure Data Factory. Tato aktivita je podporována pouze pro datové továrny verze 2. Dá se v následujících scénářích:
+GetMetaData – aktivita slouží k načtení **metadata** všech dat v Azure Data Factory. Tato aktivita lze použít v následujících scénářích:
 
 - Ověřit informace o všech datech metadat
 - Kanál aktivovat, pokud jsou data připravena / k dispozici
@@ -31,9 +31,6 @@ Následující funkce jsou k dispozici v toku řízení:
 
 - Výstup z aktivity GetMetaData – lze v podmíněné výrazy k provedení ověřování.
 - Kanál může aktivuje, když je splněna podmínka prostřednictvím proveďte – dokud opakování ve smyčce
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [Data Factory V1 dokumentaci](v1/data-factory-introduction.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -46,18 +43,22 @@ GetMetaData – aktivity trvá datovou sadu jako požadované vstup a výstupy j
 
 **Úložiště souborů:**
 
-| Konektor nebo Metadata | Název položky<br>(soubor nebo složku) | itemType<br>(soubor nebo složku) | velikost<br>(soubor) | vytvořené<br>(soubor nebo složku) | Změněno<br>(soubor nebo složku) |childItems<br>(složka) |contentMD5<br>(soubor) | Struktura<br/>(soubor) | Počet sloupců<br>(soubor) | existuje<br>(soubor nebo složku) |
+| Konektor nebo Metadata | Název položky<br>(soubor nebo složku) | itemType<br>(soubor nebo složku) | velikost<br>(soubor) | vytvořené<br>(soubor nebo složku) | Změněno<br>(soubor nebo složku) |childItems<br>(složka) |contentMD5<br>(soubor) | Struktura<br/>(soubor) | počet sloupců<br>(soubor) | existuje<br>(soubor nebo složku) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| Azure Blob | √/√ | √/√ | √ | x/x | √/√ | √ | √ | √ | √ | √/√ |
+| Amazon S3 | √/√ | √/√ | √ | x/x | √ / √ * | √ | x | √ | √ | √ / √ * |
+| Azure Blob | √/√ | √/√ | √ | x/x | √ / √ * | √ | √ | √ | √ | √/√ |
 | Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | Systém souborů | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
+- Pro Amazon S3 `lastModified` se vztahuje na sady a klíč, ale není virtuální složky; a `exists` se vztahuje na sady a klíč, ale není předpony nebo virtuální složky.
+- Pro objekt Blob Azure `lastModified` se vztahuje na kontejner a objektů blob, ale není virtuální složky.
+
 **Relační databáze:**
 
-| Konektor nebo Metadata | Struktura | Počet sloupců | existuje |
+| Konektor nebo Metadata | Struktura | počet sloupců | existuje |
 |:--- |:--- |:--- |:--- |
 | Azure SQL Database | √ | √ | √ |
 | Azure SQL Data Warehouse | √ | √ | √ |
@@ -77,7 +78,7 @@ V seznamu polí GetMetaData – aktivita načíst lze zadat následující typy 
 | childItems | Seznam podsložky a soubory v dané složce. Platí pouze pro složku. Výstupní hodnota je seznam názvu a typu každé podřízené položky. |
 | contentMD5 | Algoritmus MD5 souboru. Použít pouze souboru. |
 | Struktura | Struktura dat v souboru nebo tabulky relační databáze. Výstupní hodnota je seznam název sloupce a typ sloupce. |
-| Počet sloupců | Počet sloupců v souboru nebo relační tabulky. |
+| počet sloupců | Počet sloupců v souboru nebo relační tabulky. |
 | existuje| Jestli existuje soubor nebo složku nebo tabulku nebo ne. Poznámka: Pokud "existuje" je uveden v seznamu polí GetaMetadata, aktivity nebudou i v případě, že položka (soubor nebo složku nebo tabulky) neexistuje; Místo toho vrátí `exists: false` ve výstupu. |
 
 >[!TIP]

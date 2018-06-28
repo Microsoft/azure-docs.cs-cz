@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/09/2018
 ms.author: rayne
-ms.openlocfilehash: 95a33c80b1aeef7fbf8bea0ab760bbd66babdac8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8b16f495a21ff0b3da415390877777650a9fbb82
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31426928"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048199"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Řešení potíží s technologií Hyper-V do Azure replikace a převzetí služeb při selhání
 
@@ -58,7 +58,7 @@ Pokud dojde k potížím při povolení ochrany pro virtuální počítače Hype
 5. Zkontrolujte, zda hostitelé Hyper-V může připojit k adresy URL objektu blob úložiště Azure. Chcete-li to provést, vyberte a zkontrolujte **cbengine.exe**. Zobrazení **připojení TCP** k ověření připojení od hostitele do objektu blob úložiště Azure.
 6. Problémy s výkonem, zkontrolujte, jak je popsáno níže.
     
-### <a name="performance-issues"></a>problémy s výkonem
+### <a name="performance-issues"></a>Problémy s výkonem
 
 Omezení šířky pásma sítě může mít vliv na replikaci. Řešení problémů takto:
 
@@ -116,7 +116,7 @@ Konzistentní snímku se v okamžiku snímek dat aplikací ve virtuálním poč�
         - Čítač: "zápis bajtů za sekundu"</br>
         - Tato data klidové vytížení zvyšuje nebo zůstat na vysoké úrovni, v závislosti na jejich vytížení virtuálního počítače nebo jeho aplikace jsou.
         - Mísení dat průměrná zdrojový disk je 2 MB/s pro standardní úložiště pro Site Recovery. [Další informace](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
-    - Kromě toho můžete [ověřte cíle škálovatelnosti úložiště](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets.md#scalability-targets-for-a-storage-account).
+    - Kromě toho můžete [ověřte cíle škálovatelnosti úložiště](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#scalability-targets-for-a-storage-account).
 8. Spustit [nasazení Planner](hyper-v-deployment-planner-run.md).
 9. Zkontrolovat doporučení pro [sítě](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) a [úložiště](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input).
 

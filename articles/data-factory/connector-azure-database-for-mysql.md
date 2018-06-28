@@ -13,19 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: jingwang
-ms.openlocfilehash: c93ef69b024bd3331abf9537f30a30876066249c
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: e254c9b18d86debad7ba914a0a4d41369795bc58
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750569"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050010"
 ---
 # <a name="copy-data-from-azure-database-for-mysql-using-azure-data-factory"></a>Kopírování dat z Azure databáze pro databázi MySQL pomocí Azure Data Factory
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Azure databáze pro databázi MySQL. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [MySQL konektoru V1](v1/data-factory-onprem-mysql-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 

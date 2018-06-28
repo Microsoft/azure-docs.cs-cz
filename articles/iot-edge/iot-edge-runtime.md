@@ -4,18 +4,18 @@ description: Další informace o modulu runtime Azure IoT okraj a jak ji umožň
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 02/15/2018
+ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4c44713d6b58edd3a18b0d20992d31dec7377fa7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b7418947c44c62883ef13c4be130458bb9f9ce6c
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632070"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030375"
 ---
-# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture---preview"></a>Pochopení modulu runtime Azure IoT okraj a jeho architektura – náhled
+# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení modulu runtime Azure IoT okraj a jeho architektura
 
 Modul runtime IoT okraj je kolekce programy, které je potřeba nainstalovat na zařízení, aby se dalo považovat za IoT hraniční zařízení. Komponenty modulu runtime IoT Edge souhrnně, povolte IoT hraniční zařízení získat kód pro spuštění na hranici a komunikaci výsledky. 
 
@@ -90,9 +90,9 @@ Zahájit provádění Edge agenta, spusťte příkaz start azure-iot-edge-runtim
 
 Každá položka ve slovníku moduly obsahuje konkrétní informace o modulu a je používána agenta Edge řízení životního cyklu modulu. Jsou některé z vlastností zajímavějšího: 
 
-* **Settings.Image** – kontejner bitové kopie, Edge agent používá ke spuštění modulu. Agent okraje musí být nakonfigurované přihlašovací údaje pro kontejner registru Pokud bitovou kopii je chráněný heslem. Ke konfiguraci agenta Edge, použijte následující příkaz: `azure-iot-edge-runtime-ctl.py –configure`
+* **Settings.Image** – kontejner bitové kopie, Edge agent používá ke spuštění modulu. Agent okraje musí být nakonfigurované přihlašovací údaje pro kontejner registru Pokud bitovou kopii je chráněný heslem. Pokud chcete nakonfigurovat hraniční agenta, aktualizujte `config.yaml` souboru. V systému Linux použijte následující příkaz: `sudo nano /etc/iotedge/config.yaml`
 * **settings.createOptions** – řetězec, který je předán přímo démon Docker při spouštění modulu kontejneru. Přidání možnosti Docker v této vlastnosti umožňuje rozšířené možnosti, jako je port, předávání nebo připojení svazků do kontejneru modulu.  
-* **Stav** – stavu, ve kterém Edge agent umístí modul. Tato hodnota se obvykle nastavuje *systémem* jako většina lidí má agent Edge k okamžitému spuštění všech modulů na zařízení. Můžete však zadat počáteční stav modulu do zastaveny a čekat na datum v budoucnosti říct Edge agenta spusťte modul. Edge agent hlásí stav každého modulu zpět cloudu ve vlastnostech hlášené. Rozdíl mezi požadovanou vlastnost a vlastnost hlášené je slouží jako ukazatel nebo identifikovala zařízení. Jsou podporované stavy:
+* **Stav** – stavu, ve kterém Edge agent umístí modul. Tato hodnota se obvykle nastavuje *systémem* jako většina lidí má agent Edge k okamžitému spuštění všech modulů na zařízení. Můžete však zadat počáteční stav modulu do zastaveny a čekat na datum v budoucnosti říct Edge agenta spusťte modul. Edge agent hlásí stav každého modulu zpět cloudu ve vlastnostech hlášené. Rozdíl mezi požadovanou vlastnost a vlastnost hlášené je slouží jako ukazatel identifikovala zařízení. Jsou podporované stavy:
    * Stahuje se
    * Spuštěno
    * Není v pořádku
@@ -104,7 +104,7 @@ Každá položka ve slovníku moduly obsahuje konkrétní informace o modulu a j
    * Není v pořádku – Pokud je modul dojde k chybě nebo považovat za chybný, Edge agent restartuje ho.
    * Vždy – pokud modul dojde k chybě, se považují za není v pořádku nebo ukončí žádným způsobem, Edge agent restartuje ho. 
 
-Okraj IoT agent odešle odpověď runtime do služby IoT Hub. Tady je seznam možných odpovědí:
+Agent IoT Edge odešle odpověď runtime do služby IoT Hub. Tady je seznam možných odpovědí:
   * 200 – OK
   * 400 - konfigurace nasazení je chybný nebo není platný.
   * 417 – zařízení nemá nastavit konfiguraci nasazení.
@@ -114,7 +114,7 @@ Okraj IoT agent odešle odpověď runtime do služby IoT Hub. Tady je seznam mo�
 
 ### <a name="security"></a>Zabezpečení
 
-Agenta IoT Edge hraje důležitou roli v zabezpečení IoT hraniční zařízení. Například provede akce, jako je ověření bitové kopie modul před jeho spuštění. Tyto funkce budou přidány po zavedení obecné dostupnosti V2 funkcí. 
+Agenta IoT Edge hraje důležitou roli v zabezpečení IoT hraniční zařízení. Například provede akce, jako je ověření bitové kopie modul před jeho spuštění. Tyto funkce budou přidány po zavedení obecné dostupnosti. 
 
 <!-- For more information about the Azure IoT Edge security framework, see []. -->
 

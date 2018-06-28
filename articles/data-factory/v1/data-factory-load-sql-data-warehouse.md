@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 957183e1aad225af6655d0cb65aa62d356f48567
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6a7f31cf541bc1cccd3a5d565a0d3a223ccd3aee
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620387"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37045163"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Načtení 1 TB do Azure SQL Data Warehouse pomocí služby Data Factory v části 15 minut
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [zkopírovat data do nebo z Azure SQL Data Warehouse pomocí služby Data Factory verze 2](../connector-azure-sql-data-warehouse.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [zkopírovat data do nebo z Azure SQL Data Warehouse pomocí služby Data Factory](../connector-azure-sql-data-warehouse.md).
 
 
 [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) je databáze založená na cloudu, škálování dokáže zpracovávat ohromné objemy dat, relačních i nerelačních.  Postavená na architektuře massively parallel processing (MPP), SQL Data Warehouse je optimalizovaná pro podnikové datového skladu úlohy.  Pružnost cloudu nabízí flexibilitu škálovat úložiště a výpočetní nezávisle.

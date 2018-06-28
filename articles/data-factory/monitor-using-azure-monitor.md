@@ -13,20 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
-ms.openlocfilehash: e60f368115e91cbd8972af8dfa7f0f3d6ea8765b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1d1b21897975717db7b733e33b7700bc76e3e065
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337594"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046543"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Výstrahy a monitorovat pomocí monitorování Azure data Factory
 Cloudové aplikace jsou komplexní s mnoha přesunutí částmi. Monitorování poskytuje data a ujistěte se, že vaše aplikace zůstává nahoru a spuštěna v dobrém stavu. Také pomáhá stave vypnout potenciální problémy nebo vyřešit potíže s uplynulou těch, které jsou. Kromě toho můžete data monitorování a získáte přehled o hloubkové o vaší aplikaci. Tato znalostní báze můžete dozvíte, jak zlepšit výkon aplikace nebo udržovatelnosti nebo automatizaci akcí, které by jinak vyžadují ruční zásah.
 
 Monitorování Azure poskytuje základní úroveň infrastruktura metriky a protokoly pro většina služeb v Microsoft Azure. Podrobnosti najdete v tématu [Přehled monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor). Azure diagnostické protokoly jsou protokoly vygenerované prostředek, které poskytují bohatou a často data o operaci prostředku. Objekt pro vytváření dat výstupy diagnostické protokoly v nástroji Sledování Azure.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [monitorování a Správa kanálů v objektu pro vytváření dat version1](v1/data-factory-monitor-manage-pipelines.md).
 
 ## <a name="persist-data-factory-data"></a>Zachovat Data objektu pro vytváření dat
 Objekt pro vytváření dat ukládá jenom kanálu spouští dat 45 dní. Pokud chcete zachovat kanálu spouští dat pro více než 45 dnů pomocí monitorování Azure, nemůžete provádět směrování pouze diagnostických protokolů pro analýzu, vám může zachovat do účtu úložiště a, abyste získali informace o vytváření po dobu trvání vaší chossing.

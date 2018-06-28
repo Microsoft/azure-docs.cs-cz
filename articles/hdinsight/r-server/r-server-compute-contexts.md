@@ -1,6 +1,6 @@
 ---
-title: Výpočetní kontextu možnosti pro R Server v HDInsight - Azure | Microsoft Docs
-description: Další informace o různých výpočetních kontextu možnosti dostupné uživatelům s R Server v HDInsight
+title: Výpočetní kontextu možnosti pro ML služby v HDInsight - Azure | Microsoft Docs
+description: Další informace o různých výpočetních kontextu možnosti dostupné uživatelům službou ML v HDInsight
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -11,26 +11,26 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: R
 ms.topic: conceptual
-ms.date: 03/22/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 2aa10e1eab6cabe058062519ecc023b88361d742
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 57480cef48182a56b315d7d6932883c485f5a7c8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409065"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050104"
 ---
-# <a name="compute-context-options-for-r-server-on-hdinsight"></a>Výpočetní kontextu možnosti pro R Server v HDInsight
+# <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Výpočetní kontextu možnosti pro ML služby v HDInsight
 
-Microsoft R serverem v Azure HDInsight řídí, jak jsou spouštěny nastavení kontext výpočetní volání. Tento článek popisuje možnosti, které jsou k dispozici k určení, zda a jak je paralelizovaná provádění málo mezi jader hraniční uzel nebo clusteru HDInsight.
+ML služby v Azure HDInsight řídí, jak jsou spouštěny nastavení kontext výpočetní volání. Tento článek popisuje možnosti, které jsou k dispozici k určení, zda a jak je paralelizovaná provádění málo mezi jader hraniční uzel nebo clusteru HDInsight.
 
 Hraničního uzlu clusteru poskytuje vhodné místo pro připojení ke clusteru a spustit skripty R. S hraniční uzel máte možnost spuštění parallelized distribuované funkce RevoScaleR mezi jader hraničního uzlu serveru. Můžete také spustit je mezi uzly clusteru pomocí RevoScaleR na Hadoop mapy snížit nebo výpočetní kontexty Spark.
 
-## <a name="microsoft-r-server-on-azure-hdinsight"></a>Microsoft R serverem v Azure HDInsight
-[Microsoft R serverem v Azure HDInsight](r-server-overview.md) přináší nejnovější schopnosti pro R na základě analýzy. Může používat data, která je uložená v kontejneru HDFS ve vaší [objektů Blob v Azure](../../storage/common/storage-introduction.md "úložiště objektů Azure Blob") účet úložiště, Data Lake store nebo místního souboru systému Linux. Vzhledem k tomu, že R Server je založený na R s otevřeným zdrojem, můžete použít na základě R aplikací, které vytvoříte, žádný z balíčků R s otevřeným zdrojem 8000 +. Může také používat rutiny v [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), balíček analýzy velkých objemů dat společnosti Microsoft, který je součástí R Server.  
+## <a name="ml-services-on-azure-hdinsight"></a>ML služby v Azure HDInsight
+[ML služby v Azure HDInsight](r-server-overview.md) přináší nejnovější schopnosti pro R na základě analýzy. Může používat data, která je uložená v kontejneru HDFS ve vaší [objektů Blob v Azure](../../storage/common/storage-introduction.md "úložiště objektů Azure Blob") účet úložiště, Data Lake store nebo místního souboru systému Linux. Vzhledem k tomu, že ML služby je založený na R s otevřeným zdrojem, můžete použít na základě R aplikací, které vytvoříte, žádný z balíčků R s otevřeným zdrojem 8000 +. Může také používat rutiny v [RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler), balíček analýzy velkých objemů dat společnosti Microsoft, který je součástí služby ML.  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>Výpočetní kontexty pro hraniční uzel
-Obecně platí R skript, který běží v R Server na uzlu edge běží v rámci překladač R v tomto uzlu. Výjimky jsou tyto kroky, které volají funkce RevoScaleR. Volání RevoScaleR spustit ve výpočetním prostředí, který je určen jak nastavit kontext výpočetní RevoScaleR.  Když spustíte R skript z hraniční uzel, kontextu výpočetní hodnoty jsou:
+Obecně platí R skript, který běží na hraničního uzlu v clusteru služby ML běží v rámci překladač R v tomto uzlu. Výjimky jsou tyto kroky, které volají funkce RevoScaleR. Volání RevoScaleR spustit ve výpočetním prostředí, který je určen jak nastavit kontext výpočetní RevoScaleR.  Když spustíte R skript z hraniční uzel, kontextu výpočetní hodnoty jsou:
 
 - místní sekvenční (*místní*)
 - místní paralelní (*localpar*)
@@ -78,9 +78,9 @@ Další informace a příklady RevoScaleR výpočetní kontexty najdete v témat
 Můžete se také podívat na [distribuovat výpočetní přehled](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing) v [dokumentaci Machine Learning serveru](https://docs.microsoft.com/machine-learning-server/).
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste se dozvěděli o možnostech, které jsou k dispozici k určení, zda a jak je paralelizovaná provádění málo mezi jader hraniční uzel nebo clusteru HDInsight. Další informace o tom, jak používat R Server s clustery HDInsight, naleznete v následujících tématech:
+V tomto článku jste se dozvěděli o možnostech, které jsou k dispozici k určení, zda a jak je paralelizovaná provádění málo mezi jader hraniční uzel nebo clusteru HDInsight. Další informace o tom, jak používat služby ML s clustery HDInsight, naleznete v následujících tématech:
 
-* [Přehled R Server pro Hadoop](r-server-overview.md)
-* [Začínáme s R Server pro Hadoop](r-server-get-started.md)
-* [Možnosti služby Azure Storage pro R Server ve službě HDInsight](r-server-storage.md)
+* [Přehled služby ML pro Hadoop](r-server-overview.md)
+* [Začínáme se službou ML pro Hadoop](r-server-get-started.md)
+* [Azure možnosti úložiště pro ML služby v HDInsight](r-server-storage.md)
 

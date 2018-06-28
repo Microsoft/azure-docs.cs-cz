@@ -1,6 +1,6 @@
 ---
-title: Nakonfigurujte zásady podmíněného přístupu na základě zařízení služby Azure Active Directory | Microsoft Docs
-description: Zjistěte, jak nakonfigurovat zásady podmíněného přístupu na základě zařízení služby Azure Active Directory.
+title: Jak chcete – vyžadují spravovaná zařízení pro přístup k aplikaci cloudu s Azure Active Directory podmíněným přístupem | Microsoft Docs
+description: Zjistěte, jak nakonfigurovat zásady podmíněného přístupu na základě zařízení služby Azure Active Directory (Azure AD), které vyžadují spravovaných zařízení pro přístup k aplikaci cloudu.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,38 +13,48 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 1c21c915bc0a83cdafb221a2cd592890577437ee
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
-ms.translationtype: HT
+ms.openlocfilehash: 066d25e8953a2be4bd64cdd1af79b7f2a25dd5f9
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849521"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37035781"
 ---
-# <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Nakonfigurujte zásady podmíněného přístupu na základě zařízení služby Azure Active Directory
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: Vyžadovat pro spravovaná zařízení pro přístup k aplikaci cloudu s podmíněným přístupem
 
-S [podmíněného přístupu Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md), můžete řídit způsob oprávněným uživatelům můžete přístup k prostředkům. Například můžete omezit přístup k určitým prostředkům spravovaných zařízení. Zásady podmíněného přístupu, která vyžaduje spravovaných zařízení se taky říká zásady podmíněného přístupu podle zařízení.
+První mobilní, cloudové první světě Azure Active Directory (Azure AD) umožňuje jednotné přihlašování k aplikacím a službám odkudkoli. Autorizovaní uživatelé můžete přístup cloudových aplikací z široké škály zařízení, včetně mobilních a také osobní zařízení. Mnoho prostředí však mít alespoň několik aplikací, které by měly být dostupné jenom zařízení, která splňují vaše standardy zabezpečení a dodržování předpisů. Tato zařízení jsou také známé jako spravovaných zařízení. 
 
-Toto téma vysvětluje, jak můžete nakonfigurovat zásady podmíněného přístupu na základě zařízení pro Azure AD připojené aplikace. 
+Tento článek vysvětluje, jak můžete konfigurovat zásady podmíněného přístupu, které vyžadují spravovaných zařízení pro přístup k určité cloudových aplikací ve vašem prostředí. 
 
 
-## <a name="before-you-begin"></a>Než začnete
+## <a name="prerequisites"></a>Požadavky
 
-Podmíněný přístup využívající zařízení ties **podmíněného přístupu Azure AD** a **správy zařízení služby Azure AD společně**. Pokud nejste obeznámeni s jedním z těchto oblastí ještě, měli byste si přečíst v následujících tématech, nejdřív:
+Vyžadování spravovaných zařízení pro cloudové aplikace přístup ties **podmíněného přístupu Azure AD** a **správy zařízení služby Azure AD** společně. Pokud nejste obeznámeni s jedním z těchto oblastí ještě, měli byste si přečíst v následujících tématech, nejdřív:
 
-- **[Podmíněný přístup v Azure Active Directory](active-directory-conditional-access-azure-portal.md)**  – Toto téma poskytuje koncepční přehled podmíněného přístupu a souvisejících technologiím.
+- **[Podmíněný přístup v Azure Active Directory](active-directory-conditional-access-azure-portal.md)**  – Tento článek obsahuje přehled podmíněného přístupu a souvisejících technologiím.
 
-- **[Úvod do správy zařízení v Azure Active Directory](device-management-introduction.md)**  – Toto téma poskytuje přehled různých možností budete muset připojit zařízení s Azure AD. 
+- **[Úvod do správy zařízení v Azure Active Directory](device-management-introduction.md)**  – Tento článek poskytuje přehled různých možností budete muset registraci zařízení v rámci organizace ovládacího prvku. 
 
+
+## <a name="scenario-description"></a>Popis scénáře
+
+Ovládnutí koncepcí rovnováhu mezi zabezpečením a produktivitu je výzvu. Jak narůstá počet podporovaných zařízení pro přístup k prostředkům cloudu pomáhá zvýšení produktivity uživatelů. Na straně překlopit pravděpodobně nechcete určitých prostředků ve vašem prostředí přístup k zařízení s úrovní neznámé ochrany. Pro příslušné zdroje byste měli vyžadovat, aby uživatelé přístup jenom k jejich použití spravovaných zařízení. 
+
+Pomocí podmíněného přístupu Azure AD které můžete vyřešit tento požadavek s jedinou zásadu, která uděluje přístup:
+
+- Pro vybraný cloud aplikace
+
+- Pro vybraného uživatele a skupiny
+
+- Vyžadování spravované zařízení
 
 
 ## <a name="managed-devices"></a>Spravovaná zařízení  
 
-První mobilní, cloudové první světě Azure Active Directory umožňuje jednotné přihlašování k zařízení, aplikacím a službám odkudkoli. Pro některé prostředky ve vašem prostředí, udělení přístupu ti správní uživatelé nemusí být dostatečně funkční. Kromě ti správní uživatelé můžete také může vyžadovat, aby pokusy o přístup můžete jenom pomocí spravovaného zařízení.
-
-Spravované zařízení je zařízení, které splňuje vaše standardy zabezpečení a dodržování předpisů. Jednoduše řečeno, jsou spravovaná zařízení, zařízení, která jsou pod *nějaká* organizační ovládacího prvku. Ve službě Azure AD předpokladem pro spravované zařízení je, že byl registrován s Azure AD. Registrace zařízení se vytvoří identity zařízení v podobě objekt zařízení. Tento objekt se používají v Azure ke sledování stavu informací o zařízení. Jako správce Azure AD, jste již tento objekt můžete použít k přepnutí (povolit nebo zakázat) stav zařízení.
+Jednoduše řečeno, jsou spravovaná zařízení, zařízení, která jsou pod *nějaká* organizační ovládacího prvku. Ve službě Azure AD předpokladem pro spravované zařízení je, že byl registrován s Azure AD. Registrace zařízení se vytvoří identity zařízení v podobě objekt zařízení. Tento objekt se používají v Azure ke sledování stavu informací o zařízení. Jako správce Azure AD, jste již tento objekt můžete použít k přepnutí (povolit nebo zakázat) stav zařízení.
   
 ![Podmínek založených na zařízení](./media/active-directory-conditional-access-policy-connected-applications/32.png)
 
@@ -56,10 +66,9 @@ Chcete-li získat zařízení registrovaná službou Azure AD, máte tři možno
 
 - **[Zařízení připojená k hybridní Azure AD](device-management-introduction.md#hybrid-azure-ad-joined-devices)**  – Pokud chcete získat zařízením s Windows 10, který je připojen k místní AD registrované s Azure AD.
 
-Se spravované zařízení registrovaná zařízení může být hybridní, zařízení nebo zařízení, která byla označena jako kompatibilní, připojený k Azure AD.  
+Spravované zařízení stane, zaregistrované zařízení musí být buď **zařízení připojeného k hybridní Azure AD** nebo **zařízení, která byla označena jako kompatibilní**.  
 
 ![Podmínek založených na zařízení](./media/active-directory-conditional-access-policy-connected-applications/47.png)
-
 
  
 ## <a name="require-hybrid-azure-ad-joined-devices"></a>Vyžadovat hybridní Azure AD zařízení připojená k
@@ -83,8 +92,8 @@ Možnost *vyžadují zařízení, které chcete označit jako kompatibilní* př
 
 Tato možnost vyžaduje zařízení zaregistrovat u služby Azure AD a také být označen jako dodržuje:
          
-- Intune 
-- Mobilní zařízení třetích stran spravováno systém, který spravuje zařízení s Windows 10 prostřednictvím integrace Azure AD 
+- Intune.
+- Systém správy (MDM) mobilních zařízení třetích stran, který spravuje zařízení s Windows 10 prostřednictvím integrace Azure AD. Nejsou podporovány systémy MDM třetí strany pro typy zařízení operační systém než Windows 10.
  
 ![Podmínek založených na zařízení](./media/active-directory-conditional-access-policy-connected-applications/46.png)
 

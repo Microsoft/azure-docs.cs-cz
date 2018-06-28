@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 808405de3391912433919d21b59214831b024866
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 11647c231db3ff7beb2fed641dc72ff339b2b45a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616392"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046237"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Kopírování dat z DB2 pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-onprem-db2-connector.md)
-> * [Verze 2 – Preview](connector-db2.md)
+> * [Verze 1](v1/data-factory-onprem-db2-connector.md)
+> * [Aktuální verze](connector-db2.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z databáze DB2. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [DB2 konektoru V1](v1/data-factory-onprem-db2-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -46,7 +43,7 @@ Konkrétně tento konektor DB2 podporuje tyto platformy IBM DB2 a verzí s distr
 
 > [!TIP]
 > Pokud se zobrazí chybová zpráva s oznámením "nebyl nalezen balíček odpovídající žádost o provedení příkazu SQL. SQLSTATE = 51002 SQLCODE =-805 ", z důvodu je potřebný balíček není vytvořena pro běžné uživatele na tyto operačního systému. Postupujte podle těchto pokynů podle typu DB2 serveru:
-> - DB2 pro i (AS400): umožní vytvoření kolekce pro přihlášení uživatele před použitím aktivity kopírování power users. příkaz: `create collection <username>`
+> - DB2 pro i (AS400): umožní vytvoření kolekce pro přihlášení uživatele před použitím aktivity kopírování power users. Příkaz: `create collection <username>`
 > - DB2 pro z/OS nebo LUW: Po spuštění aktivity kopírování pomocí účtu s vysokou úrovní oprávnění - power users nebo správce s balíček autority a vazby, BINDADD, UDĚLTE provést na veřejná oprávnění - a potom potřebné balíček je automaticky vytvořen během kopírování. Později můžete přepnout zpět na normální pro vaše další kopie spustí.
 
 ## <a name="prerequisites"></a>Požadavky

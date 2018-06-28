@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: 99429b8090eca6d8633abfb1309f02168f1d06fb
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c139b68421061362f40856af55ad0338118ab49a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618306"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051878"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Kopírování dat z a do služby Salesforce pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – Obecně dostupná](v1/data-factory-salesforce-connector.md)
-> * [Verze 2 – Preview](connector-salesforce.md)
+> * [Verze 1](v1/data-factory-salesforce-connector.md)
+> * [Aktuální verze](connector-salesforce.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z a do služby Salesforce. Vychází [aktivity kopírování přehled](copy-activity-overview.md) článek, který představuje obecný přehled o aktivitě kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 objektu pro vytváření dat, která je obecně k dispozici, najdete v části [konektor služby Salesforce v verze 1](v1/data-factory-salesforce-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -237,7 +234,7 @@ Ke zkopírování dat do služby Salesforce, nastavte typ jímky v aktivitě kop
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typ jímky aktivity kopírování musíte nastavit **SalesforceSink**. | Ano |
-| WriteBehavior | Chování zápisu pro danou operaci.<br/>Povolené hodnoty jsou **vložit** a **Upsert**. | Ne (výchozí hodnota je Insert) |
+| writeBehavior | Chování zápisu pro danou operaci.<br/>Povolené hodnoty jsou **vložit** a **Upsert**. | Ne (výchozí hodnota je Insert) |
 | externalIdFieldName | Název pole externí ID pro operaci upsert. Zadané pole musí být definovaný jako "Externí Id pole" v objektu služby Salesforce. Odpovídající vstupních dat nemůže mít hodnotu NULL. | Ano pro "Upsert" |
 | writeBatchSize | Počet řádků dat zapsaných na Salesforce v každé dávce. | Ne (výchozí hodnota je 5 000) |
 | ignoreNullValues | Označuje, zda ignorovat hodnot NULL ze vstupních dat během operace zápisu.<br/>Povolené hodnoty jsou **true** a **false**.<br>- **Hodnota TRUE,**: ponechejte data v cílovém objektu beze změny po provedení operace upsert nebo aktualizace. Při operaci vložení, vložte definované výchozí hodnotu.<br/>- **False**: aktualizovat data v cílovém objektu na hodnotu NULL, když se operace upsert nebo aktualizace. Při operaci vložení, vložte hodnotu NULL. | Ne (výchozí hodnota je false) |
@@ -304,7 +301,7 @@ Při kopírování dat ze služby Salesforce se používají následující mapo
 | Salesforce datový typ | Typ průběžných dat objektu pro vytváření dat |
 |:--- |:--- |
 | Automatické číslování |Řetězec |
-| Zaškrtávací políčko |Logická hodnota |
+| zaškrtávací políčko |Logická hodnota |
 | Měna |Double |
 | Datum |DateTime |
 | Datum/čas |DateTime |

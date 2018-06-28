@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/04/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8363c49c4a52785fb5deacb3ac4998d38aca1430
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ee467769b9653a9952b6e41e66a8777a4bac5e56
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34593876"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028876"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: Nejčastější dotazy
 
@@ -66,7 +66,7 @@ Pokud jste nenakonfigurovali zpětný zápis hesla pro konkrétního uživatele 
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>Jak předávací ověřování ochraně před útoky hrubou silou heslo?
 
-Čtení [ověřování Azure Active Directory průchozí: inteligentní uzamčení](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) Další informace.
+Čtení [ověřování Azure Active Directory průchozí: inteligentní uzamčení](../authentication/howto-password-smart-lockout.md) Další informace.
 
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>Co předávací ověřování agenti komunikovat přes porty 80 a 443?
 
@@ -133,7 +133,7 @@ Pokud odinstalujete agenta předávací ověřování ze serveru, stáhne server
 ## <a name="next-steps"></a>Další postup
 - [Aktuální omezení](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Zjistěte, jaké postupy se podporují, a ty, které nejsou.
 - [Rychlý start](active-directory-aadconnect-pass-through-authentication-quick-start.md): zprovoznění na Azure AD předávací ověřování.
-- [Inteligentní uzamčení](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Zjistěte, jak nakonfigurovat možnosti inteligentního uzamčení na vašeho klienta k ochraně uživatelské účty.
+- [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): Zjistěte, jak nakonfigurovat možnosti inteligentního uzamčení na vašeho klienta k ochraně uživatelské účty.
 - [Podrobné technické informace](active-directory-aadconnect-pass-through-authentication-how-it-works.md): pochopit, jak funguje funkci předávací ověřování.
 - [Řešení potíží s](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Přečtěte si o řešení běžných problémů s funkcí předávací ověřování.
 - [Podrobné informace zabezpečení](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md): podrobný technický informace o funkci předávací ověřování.

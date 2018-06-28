@@ -13,18 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 8ceecdefe644cb5dd1b6038636960cbb5dd9167e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cd4b58dea43e497a2d7a5b977379d95f7004af45
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618959"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052303"
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Dokud aktivity v Azure Data Factory
 Dokud aktivity nabízí stejné funkce, která DNT – dokud opakování ve smyčce struktura poskytuje programovací jazyky. Provádí ve smyčce sadu aktivit, dokud se podmínka přidružená k aktivitě nevyhodnotí jako pravdivá. Ve službě Data Factory můžete pro aktivitu Until určit hodnotu časového limitu. 
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [Data Factory V1 dokumentaci](v1/data-factory-introduction.md).
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -60,7 +57,7 @@ Vlastnost | Popis | Povolené hodnoty | Požaduje se
 -------- | ----------- | -------------- | --------
 jméno | Název `Until` aktivity. | Řetězec | Ano
 type | Musí být nastavena na **dokud**. | Řetězec | Ano
-výraz | Výraz, který se musí vyhodnotit na hodnotu true nebo false | Výraz.  | Ano
+Výraz | Výraz, který se musí vyhodnotit na hodnotu true nebo false | výraz.  | Ano
 timeout | Do – dokud smyčky časový limit po zadané doby. | Řetězec. `d.hh:mm:ss` (nebo) `hh:mm:ss`. Výchozí hodnota je 7 dní. Maximální hodnota je: 90 dní. | Ne
 Aktivity | Sada aktivit, které jsou prováděny, dokud výraz vyhodnocen jako `true`. | Pole aktivit. |  Ano
 

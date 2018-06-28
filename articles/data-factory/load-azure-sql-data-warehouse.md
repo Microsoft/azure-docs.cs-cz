@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: b035141c443c3dad18c3e9bfbc53581a7d180e5a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b96483232a1da5ae21e6ba8cbe873d876d38ed11
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333823"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050297"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Načtení dat do Azure SQL Data Warehouse pomocí Azure Data Factory
 
@@ -35,9 +35,6 @@ Tento článek ukazuje, jak používat nástroj Data Factory kopírovat Data k _
 
 > [!NOTE]
 > Další informace najdete v tématu [zkopírovat data do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory](connector-azure-sql-data-warehouse.md).
->
-> Tento článek se týká verze 2 služby Azure Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aktivitu kopírování v Azure Data Factory verze 1](v1/data-factory-data-movement-activities.md).
-
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure: Pokud nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/) před zahájením.
@@ -57,7 +54,7 @@ Tento článek ukazuje, jak používat nástroj Data Factory kopírovat Data k _
     * **Název**: Zadejte globálně jedinečný název objektu pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat \"LoadSQLDWDemo\" není k dispozici," Zadejte jiný název služby data Factory. Například můžete použít název  _**jméno**_**ADFTutorialDataFactory**. Zkuste vytvořit objekt pro vytváření dat znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
     * **Předplatné**: Vyberte předplatné Azure, ve kterém se má vytvořit datová továrna. 
     * **Skupina prostředků**: Vyberte existující skupinu prostředků z rozevíracího seznamu, nebo **vytvořit nový** možnost a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-    * **Verze**: vyberte **V2 (Preview)**.
+    * **Verze**: vyberte **V2**.
     * **Umístění**: Vyberte umístění služby data Factory. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, které jsou používány pro vytváření dat může být v jiných umístěních a oblastech. Tyto úložiště dat patří Azure Data Lake Store, Azure Storage, Azure SQL Database a tak dále.
 
 3. Vyberte **Vytvořit**.
@@ -90,9 +87,9 @@ Tento článek ukazuje, jak používat nástroj Data Factory kopírovat Data k _
    
     ![Konfigurace Azure SQL DB](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
-    d. Vyberte nově vytvořenou propojené služby jako zdroj a pak klikněte na tlačítko **Další**.
+    d. Vyberte nově vytvořenou propojenou službu jako zdroj a pak klikněte na **Next** (Další).
 
-    ![Zvolit zdroj propojené služby](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
+    ![Výběr zdrojové propojené služby](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
 
 4. V **vyberte tabulky, ze kterého chcete zkopírovat data nebo použít vlastní dotaz** zadejte **SalesLT** vyfiltrujete tabulky. Vyberte **(Vybrat vše)** používat všechny tabulky kopie a poté vyberte **Další**: 
 

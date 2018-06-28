@@ -13,23 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 6b0f576538f159155dcf602fe39b0ea67254e4c7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b6de6331b4d829f183c8b5dc03d6a29095a47479
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619248"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049325"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Zkopírujte aktivity výkonu a vyladění Průvodce
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-copy-activity-performance.md)
-> * [Verze 2 – Preview](copy-activity-performance.md)
+> * [Verze 1](v1/data-factory-copy-activity-performance.md)
+> * [Aktuální verze](copy-activity-performance.md)
 
 
 Aktivita kopírování Azure Data Factory nabízí prvotřídní dat zabezpečeným, spolehlivým a vysoce výkonné načítání řešení. Ji budete kopie desítkami terabajtů dat pro každý den s bohatou různých cloudové a místní úložiště dat. Výkon při načítání dat svěží fast je klíč k zajištění, můžete se zaměřit na problém "velkých objemů dat" základní: vytváření řešení pro pokročilou analýzu a získávání hlubšímu porozumění z všechno, co data.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [výkonu kopie aktivity v datové továrně verze 1](v1/data-factory-copy-activity-performance.md).
 
 Azure poskytuje sadu podnikové úrovni řešení pro úložiště a datového skladu dat a aktivity kopírování nabízí vysoce optimalizovaného data načítání prostředí, které se snadno konfiguraci a nastavení. Jenom jedna kopie aktivity můžete dosáhnout:
 
@@ -40,7 +37,7 @@ Azure poskytuje sadu podnikové úrovni řešení pro úložiště a datového s
 Tento článek popisuje:
 
 * [Výkon referenční čísla](#performance-reference) podporováno zdroj a jímka úložiště dat, které vám pomohou naplánovat projektu;
-* Funkce, které může zvýšit propustnost kopírování v různých scénářích, včetně [jednotky přesun dat v cloudu](#cloud-data-movement-units), [paralelní kopie](#parallel-copy), a [připravený kopie](#staged-copy);
+* Funkce, které může zvýšit propustnost kopírování v různých scénářích, včetně [jednotky integraci dat](#data-integration-units), [paralelní kopie](#parallel-copy), a [připravený kopie](#staged-copy);
 * [Ladění pokyny výkonu](#performance-tuning-steps) o tom, jak optimalizovat výkon a klíčové faktory, které může ovlivnit výkon kopírování.
 
 > [!NOTE]
@@ -49,12 +46,12 @@ Tento článek popisuje:
 
 ## <a name="performance-reference"></a>Referenční dokumentace výkonu
 
-Jako odkaz, níže uvedená tabulka zobrazuje číslo propustnost kopie **v MB/s** pro daný zdroj a jímka dvojice **v aktivitě sady jedna kopie spustit** založené na interní testování. Pro porovnání, také ukazuje, jak budou různí nastavení [jednotky přesun dat v cloudu](#cloud-data-movement-units) nebo [Self-hosted integrace Runtime škálovatelnost](concepts-integration-runtime.md#self-hosted-integration-runtime) (více uzlů) může pomoct na výkon kopírování.
+Jako odkaz, níže uvedená tabulka zobrazuje číslo propustnost kopie **v MB/s** pro daný zdroj a jímka dvojice **v aktivitě sady jedna kopie spustit** založené na interní testování. Pro porovnání, také ukazuje, jak budou různí nastavení [jednotky integraci dat](#data-integration-units) nebo [Self-hosted integrace Runtime škálovatelnost](concepts-integration-runtime.md#self-hosted-integration-runtime) (více uzlů) může pomoct na výkon kopírování.
 
 ![Matice výkonu](./media/copy-activity-performance/CopyPerfRef.png)
 
->[!IMPORTANT]
->V Azure Data Factory verze 2 při aktivitě kopírování se spustí na modulu Runtime integrace Azure, jednotky přesun dat minimální povolené cloudu je dva. Pokud není zadaný, najdete v části jednotky přesun dat výchozí použitá v [jednotky přesun dat v cloudu](#cloud-data-movement-units).
+> [!IMPORTANT]
+> Při aktivitě kopírování se spustí na modulu Runtime integrace Azure, minimální povolené jednotky integraci dat, (dříve označované jako jednotky přesun dat) je dva. Pokud není zadaný, najdete v článku výchozí Data integrace jednotky používá v [jednotky integraci dat](#data-integration-units).
 
 Všimněte si body:
 
@@ -79,25 +76,25 @@ Všimněte si body:
 
 
 > [!TIP]
-> Vyšší propustnost můžete dosáhnout pomocí jednotky další přesun dat (DMUs) než výchozí, povolená maximální DMUs, které jsou 32 pro spuštění aktivity kopírování cloudu do cloudu. Například s 100 DMUs, můžete dosáhnout kopírování dat z objektu Blob Azure do Azure Data Lake Store v **1.0GBps**. Najdete v článku [jednotky přesun dat v cloudu](#cloud-data-movement-units) část Podrobnosti o této funkci a podporovaném scénáři. Obraťte se na [podporu Azure](https://azure.microsoft.com/support/) požádat o další DMUs.
+> Vyšší propustnost můžete dosáhnout pomocí další Data integrace jednotky (DIU) než výchozí, povolená maximální DIUs, které jsou 32 pro spuštění aktivity kopírování cloudu do cloudu. Například s 100 DIUs, můžete dosáhnout kopírování dat z objektu Blob Azure do Azure Data Lake Store v **1.0GBps**. Najdete v článku [jednotky integraci dat](#data-integration-units) část Podrobnosti o této funkci a podporovaném scénáři. Obraťte se na [podporu Azure](https://azure.microsoft.com/support/) požádat o další DIUs.
 
-## <a name="cloud-data-movement-units"></a>Jednotky přesun dat cloudu
+## <a name="data-integration-units"></a>Jednotky pro integraci dat
 
-A **jednotky přesun dat cloudu (DMU)** je míra, která reprezentuje výkon (kombinaci procesoru, paměti a přidělení prostředků sítě) v objektu pro vytváření dat na jednu jednotku. **DMU se vztahuje pouze na [Runtime integrace Azure](concepts-integration-runtime.md#azure-integration-runtime)**, ale ne [Self-hosted integrace Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime).
+A **Data integrace jednotky (DIU)** (dříve označované jako jednotku přesun dat cloudu nebo DMU) je míra, která reprezentuje výkon (kombinaci procesoru, paměti a přidělení prostředků sítě) v objektu pro vytváření dat na jednu jednotku. **DIU se vztahuje pouze na [Runtime integrace Azure](concepts-integration-runtime.md#azure-integration-runtime)**, ale ne [Self-hosted integrace Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime).
 
-**Jednotky přesun dat minimální cloudu na základě kterých kopie aktivity při spuštění je dva.** Pokud není zadaný, následující tabulka uvádí výchozí DMUs, používá ve scénářích různé kopie:
+**Minimální jednotky integraci dat na základě kterých kopie aktivity při spuštění je dva.** Pokud není zadaný, následující tabulka uvádí výchozí DIUs, používá ve scénářích různé kopie:
 
-| Kopírování | Výchozí DMUs určit službou |
+| Kopírování | Výchozí DIUs určit službou |
 |:--- |:--- |
 | Kopírování dat mezi úložišti na základě souborů | Mezi 4 a 32 v závislosti na počtu a velikosti souborů. |
 | Všechny ostatní kopie scénáře | 4 |
 
-Pokud chcete přepsat toto výchozí nastavení, zadejte hodnotu **cloudDataMovementUnits** vlastnost následujícím způsobem. **Povolené hodnoty** pro **cloudDataMovementUnits** vlastnost je **až 256**. **Skutečný počet cloudu DMUs** že kopírování se používá v době běhu je rovna nebo menší než nakonfigurovaná hodnota, v závislosti na vaší vzorek dat. Informace o úrovni výkonnější se mohou objevit, když konfigurujete další jednotky pro konkrétní kopie zdroj a jímka najdete v tématu [referenční dokumentace výkonu](#performance-reference).
+Pokud chcete přepsat toto výchozí nastavení, zadejte hodnotu **dataIntegrationUnits** vlastnost následujícím způsobem. **Povolené hodnoty** pro **dataIntegrationUnits** vlastnost je **až 256**. **Skutečný počet DIUs** že kopírování se používá v době běhu je rovna nebo menší než nakonfigurovaná hodnota, v závislosti na vaší vzorek dat. Informace o úrovni výkonnější se mohou objevit, když konfigurujete další jednotky pro konkrétní kopie zdroj a jímka najdete v tématu [referenční dokumentace výkonu](#performance-reference).
 
-Zobrazí se ve skutečnosti použít cloudové jednotky přesun dat pro každou kopii spustit v aktivitě kopírování výstup při spuštění aktivity monitorování. Další informace z podrobností o [kopírovat, pokud chcete monitorování aktivit](copy-activity-overview.md#monitoring).
+Zobrazí se ve skutečnosti použité jednotky integraci dat pro každou kopii spustit v aktivitě kopírování výstup při spuštění aktivity monitorování. Další informace z podrobností o [kopírovat, pokud chcete monitorování aktivit](copy-activity-overview.md#monitoring).
 
 > [!NOTE]
-> Pokud potřebujete další cloudu DMUs pro vyšší propustnost, obraťte se na [podporu Azure](https://azure.microsoft.com/support/). Nastavení 8 a vyšší aktuálně funguje pouze tehdy, když jste **zkopírovat soubory z objektu Blob úložiště nebo Data Lake Store nebo Amazon S3 nebo cloudem FTP nebo cloudem SFTP žádné jiným úložištím dat cloudu**.
+> Pokud potřebujete další DIUs pro vyšší propustnost, obraťte se na [podporu Azure](https://azure.microsoft.com/support/). Nastavení 8 a vyšší aktuálně funguje pouze tehdy, když jste **zkopírovat soubory z objektu Blob úložiště nebo Data Lake Store nebo Amazon S3 nebo cloudem FTP nebo cloudem SFTP žádné jiným úložištím dat cloudu**.
 >
 
 **Příklad:**
@@ -116,15 +113,15 @@ Zobrazí se ve skutečnosti použít cloudové jednotky přesun dat pro každou 
             "sink": {
                 "type": "AzureDataLakeStoreSink"
             },
-            "cloudDataMovementUnits": 32
+            "dataIntegrationUnits": 32
         }
     }
 ]
 ```
 
-### <a name="cloud-data-movement-units-billing-impact"></a>Jednotky přesunu dat cloudové fakturace dopad
+### <a name="data-integration-units-billing-impact"></a>Datové jednotky integrace fakturace dopad
 
-Má **důležité** pamatovat, že budou účtovat na základě celkové doby operace kopírování. Celková doba trvání, které se účtují pro přesun dat je celková doba trvání mezi DMUs. Pokud úlohu kopírování se používá k trvat hodinu s dvě jednotky cloudu a teď bude trvat 15 minut u osm jednotek cloudu, zůstane celkové faktury téměř stejný.
+Má **důležité** pamatovat, že budou účtovat na základě celkové doby operace kopírování. Celková doba trvání, které se účtují pro přesun dat je celková doba trvání mezi DIUs. Pokud úlohu kopírování se používá k trvat hodinu s dvě jednotky cloudu a teď bude trvat 15 minut u osm jednotek cloudu, zůstane celkové faktury téměř stejný.
 
 ## <a name="parallel-copy"></a>Paralelní kopie
 
@@ -134,7 +131,7 @@ Objekt pro vytváření dat pro každou aktivitu kopírování, spuštění, ur�
 
 | Kopírování | Výchozí paralelní kopie počet určit službou |
 | --- | --- |
-| Kopírování dat mezi úložišti na základě souborů |Závisí na velikosti souborů a počet cloudu jednotek přesun dat (DMUs) používat ke kopírování dat mezi dvěma cloudové úložiště dat nebo fyzické konfigurace počítače Self-hosted integrace Runtime. |
+| Kopírování dat mezi úložišti na základě souborů |Závisí na velikosti souborů a počet jednotek integraci dat (DIUs) používat ke kopírování dat mezi dvěma cloudové úložiště dat nebo fyzické konfigurace počítače Self-hosted integrace Runtime. |
 | Kopírování dat z jakékoli zdrojového úložiště dat do úložiště Azure Table |4 |
 | Všechny ostatní kopie scénáře |1 |
 
@@ -168,7 +165,7 @@ Všimněte si body:
 * Při kopírování dat mezi úložišti na základě souborů **parallelCopies** určení stupně paralelního zpracování na úrovni souborů. Rozdělování v rámci jednoho souboru by se stalo pod automaticky a transparentně a je určený používat velikost bloku vhodné doporučené pro zadaná zdrojová datový typ úložiště pro načtení dat do paralelní a ortogonální k parallelCopies. Skutečný počet kopií paralelní služba pro přesun dat používá pro operace kopírování v době běhu je více než počet souborů, které máte. Pokud je kopie chování **mergeFile**, aktivity kopírování nemohou využívat paralelismus úrovni souborů.
 * Pokud zadáte hodnotu **parallelCopies** vlastnost, je-li aktivitě kopírování je oprávněný tímto například pro hybridní kopírování, zvažte zvýšení zatížení na zdroj a jímka datová úložiště a do Self-Hosted integrace Runtime. K tomu dojde, zejména pokud máte více souběžných spustí stejný aktivity, které spouštění stejné úložiště dat nebo aktivity. Pokud si všimnete, že úložiště dat nebo Self-hosted integrace Runtime je zahlcen zatížení, snížit **parallelCopies** hodnota, která má-li snížit zatížení.
 * Při kopírování dat z úložiště, které nejsou na základě souborů do úložiště, které jsou na základě souborů, služba pro přesun dat ignoruje **parallelCopies** vlastnost. I když je zadán paralelismus, není použita v tomto případě.
-* **parallelCopies** je ortogonální k **cloudDataMovementUnits**. První se počítá mezi všechny jednotky přesun cloudu data.
+* **parallelCopies** je ortogonální k **dataIntegrationUnits**. První se počítá mezi všechny datové jednotky integrace.
 
 ## <a name="staged-copy"></a>Kopírování dvoufázové instalace
 
@@ -184,7 +181,7 @@ Když aktivujete pracovní funkce, nejdřív data budou zkopírována z zdrojov�
 
 ![Kopírování dvoufázové instalace](media/copy-activity-performance/staged-copy.png)
 
-Když aktivujete přesun dat s použitím pracovní úložiště, můžete zadat, zda chcete data, která mají být před přesunutím dat ze zdrojového úložiště dat k úložišti dat dočasné nebo pracovní zkomprimovat a pak dekomprimovat před přesouvání dat od jako dočasné nebo přípravu úložiště dat pro úložiště dat podřízený.
+Když aktivujete přesun dat s použitím pracovní úložiště, můžete určit, zda se mají data, která mají být před přesunutím dat ze zdrojového úložiště dat k úložišti dat dočasné nebo pracovní zkomprimovat a pak dekomprimovat před přesouvání dat od jako dočasné nebo přípravu dat Uložit do úložiště dat jímky.
 
 V současné době nelze kopírovat data mezi dvěma místní úložišti dat pomocí pracovní úložiště.
 
@@ -246,12 +243,12 @@ Doporučujeme, aby je provést tyto kroky pro optimalizaci výkonu služby Data 
 
    * Funkce výkonu:
      * [Paralelní kopie](#parallel-copy)
-     * [Jednotky přesun dat cloudu](#cloud-data-movement-units)
+     * [Jednotky pro integraci dat](#data-integration-units)
      * [Kopírování dvoufázové instalace](#staged-copy)
      * [Škálovatelnost vlastním hostováním integrace modulu Runtime](concepts-integration-runtime.md#self-hosted-integration-runtime)
    * [Integrace s vlastním hostováním Runtime](#considerations-for-self-hosted-integration-runtime)
    * [Zdroj](#considerations-for-the-source)
-   * [podřízený](#considerations-for-the-sink)
+   * [Podřízený](#considerations-for-the-sink)
    * [Serializace a deserializace](#considerations-for-serialization-and-deserialization)
    * [Komprese](#considerations-for-compression)
    * [Mapování sloupce](#considerations-for-column-mapping)

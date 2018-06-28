@@ -13,23 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
-ms.openlocfilehash: bc260c747d5c6f3c4e3f955b1bbd93d22f9234d1
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: a0095ae4aa50845a24cabb981399ac4035afdebe
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36753332"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051446"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopírování dat z Cassandra pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-onprem-cassandra-connector.md)
-> * [Verze 2 – Preview](connector-cassandra.md)
+> * [Verze 1](v1/data-factory-onprem-cassandra-connector.md)
+> * [Aktuální verze](connector-cassandra.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z databáze Cassandra. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [Cassandra konektoru V1](v1/data-factory-onprem-cassandra-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 

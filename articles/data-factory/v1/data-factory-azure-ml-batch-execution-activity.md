@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 62ee13c4e756e41558adcb5b98081e24d683e01a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 62712a201e8f9717f3e0215c4c29130d3bddcdf2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620370"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050207"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytvořit prediktivní kanály pomocí Azure Machine Learning a Azure Data Factory
 
@@ -37,7 +37,7 @@ ms.locfileid: "34620370"
 
 ## <a name="introduction"></a>Úvod
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [transformace dat pomocí machine learning v datové továrně verze 2](../transform-data-using-machine-learning.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [transformace dat pomocí machine learning v datové továrně](../transform-data-using-machine-learning.md).
 
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
@@ -83,7 +83,7 @@ V tomto scénáři Azure Machine Learning webovou službu díky předpovědi pom
 > [!IMPORTANT]
 > Pokud webová služba přijímá více vstupů, použijte **webServiceInputs** vlastnost místo použití **webServiceInput**. Najdete v článku [webová služba vyžaduje více vstupů](#web-service-requires-multiple-inputs) části příklad pomocí vlastnosti webServiceInputs.
 >
-> Datové sady, které odkazují **webServiceInput**/**webServiceInputs** a **webServiceOutputs** vlastnosti (v **rámci typeProperties**) musí být i součástí aktivity **vstupy** a **výstupy**.
+> Datové sady, které odkazují **webServiceInput**/**webServiceInputs** a **webServiceOutputs** vlastnosti (v  **rámci typeProperties**) musí být i součástí aktivity **vstupy** a **výstupy**.
 >
 > V experimentu Azure ML vstup webové služby a porty výstup a globální parametry mají výchozí názvy ("input1", "input2"), které můžete přizpůsobit. Názvy, které můžete použít pro webServiceInputs, webServiceOutputs a globalParameters nastavení musí přesně shodovat názvy v experimenty. Datová část požadavku ukázka můžete zobrazit na stránce pomůže spuštění dávky pro koncový bod služby Azure ML ověření očekávané mapování.
 >

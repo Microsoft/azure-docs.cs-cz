@@ -1,6 +1,6 @@
 ---
-title: Instalace clusteru pro Hadoop, Spark, Kafka, HBase nebo R Server - Azure HDInsight | Microsoft Docs
-description: Nastavte Hadoop, Kafka, Spark, HBase, R Server nebo clustery Storm pro HDInsight z prohlížeče, rozhraní příkazového řádku Azure, Azure PowerShell, REST nebo sady SDK.
+title: Instalace clusteru pro Hadoop, Spark, Kafka, HBase nebo ML Services – Azure HDInsight | Microsoft Docs
+description: Nastavte Hadoop, Kafka, Spark, HBase, ML služeb nebo clustery Storm pro HDInsight z prohlížeče, rozhraní příkazového řádku Azure, Azure PowerShell, REST nebo sady SDK.
 keywords: nastavení clusteru hadoop, kafka clusteru instalační program, nastavení clusteru spark, co je cluster v hadoop
 services: hdinsight
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jgao
-ms.openlocfilehash: 2afe1e91465c92c6f6cba00c4383456ef78d225c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: eddbd3f171cee9df9ff306368df47501ff9dcfca
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34200193"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051589"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Nastavit clusterů v HDInsight Hadoop, Spark, Kafka a dalšími
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Zjistěte, jak nastavit a konfigurovat clusterů v HDInsight Hadoop, Spark, Kafka, interaktivní dotazu, HBase, R Server nebo Storm. Také zjistěte, jak přizpůsobit clustery a přidat zabezpečení tak, že je připojení k doméně.
+Zjistěte, jak nastavit a konfigurovat clusterů v HDInsight Hadoop, Spark, Kafka, interaktivní dotazu, HBase, ML služby nebo Storm. Také zjistěte, jak přizpůsobit clustery a přidat zabezpečení tak, že je připojení k doméně.
 
 Hadoop cluster se skládá z několika virtuálních počítačů (uzlů), které se používají pro distribuované zpracování úlohy. Azure HDInsight zpracovává podrobnosti implementace instalace a konfigurace jednotlivých uzlů, takže budete muset zadat informace o obecné konfiguraci. 
 
@@ -81,7 +81,7 @@ Azure HDInsight aktuálně poskytuje následující typy clusteru, každý s sad
 | [HBase](hbase/apache-hbase-overview.md) |Zpracování velkých objemů dat schemaless, NoSQL |
 | [Interaktivní dotazu](./interactive-query/apache-interactive-query-get-started.md) |Ukládání do mezipaměti v paměti pro interaktivní a rychlejší dotazů Hive |
 | [Kafka](kafka/apache-kafka-introduction.md) | Distribuované streamování platformu, která můžete použít k sestavení v reálném čase kanálů streamování dat a aplikací |
-| [R Server](r-server/r-server-overview.md) |Různé statistiky velkých objemů dat, prediktivního modelování a strojového učení možnosti |
+| [ML služby](r-server/r-server-overview.md) |Různé statistiky velkých objemů dat, prediktivního modelování a strojového učení možnosti |
 | [Spark](spark/apache-spark-overview.md) |Zpracování v paměti, interaktivních dotazů datového proudu micro dávkové zpracování |
 | [Storm](storm/apache-storm-overview.md) |Zpracování událostí v reálném čase |
 

@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 3afdcbfc2d1d6f40db0f0336be161a06908cb883
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1ded69225319e447ad210aed267741b2803889ac
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617993"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048079"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Kopírování dat z SAP HANA pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-sap-hana-connector.md)
-> * [Verze 2 – Preview](connector-sap-hana.md)
+> * [Verze 1](v1/data-factory-sap-hana-connector.md)
+> * [Aktuální verze](connector-sap-hana.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z databáze SAP HANA. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [SAP HANA konektoru V1](v1/data-factory-sap-hana-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -65,7 +62,7 @@ Pro SAP HANA propojené služby jsou podporovány následující vlastnosti:
 | type | Vlastnost typu musí být nastavena na: **SapHana** | Ano |
 | server | Název serveru, na kterém se nachází instance SAP HANA. Pokud váš server používá vlastní port, zadejte `server:port`. | Ano |
 | authenticationType. | Typ ověřování používaný pro připojení k databázi SAP HANA.<br/>Povolené hodnoty jsou: **základní**, a **Windows** | Ano |
-| Uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP. | Ano |
+| uživatelské jméno | Jméno uživatele, který má přístup k serveru SAP. | Ano |
 | heslo | Heslo pro uživatele. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. Modul Runtime Self-hosted integrace se vyžaduje, jak je uvedeno v [požadavky](#prerequisites). |Ano |
 
@@ -169,7 +166,7 @@ Při kopírování dat z SAP HANA, se používají následující mapování SAP
 | ALPHANUM | Řetězec |
 | BIGINT | Int64 |
 | OBJEKT BLOB | Byte] |
-| LOGICKÁ HODNOTA | Bajtů |
+| LOGICKÁ HODNOTA | Bajt |
 | DATOVÝ TYP CLOB | Byte] |
 | DATE (Datum) | DateTime |
 | DECIMAL | Decimal |
@@ -181,7 +178,7 @@ Při kopírování dat z SAP HANA, se používají následující mapování SAP
 | SMALLINT | Int16 |
 | ČAS | Časový interval |
 | ČASOVÉ RAZÍTKO | DateTime |
-| TINYINT | Bajtů |
+| TINYINT | Bajt |
 | VARCHAR | Řetězec |
 
 ## <a name="known-limitations"></a>Známá omezení

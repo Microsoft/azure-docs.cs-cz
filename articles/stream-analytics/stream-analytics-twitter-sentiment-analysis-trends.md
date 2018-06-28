@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: 4c77c8a7209825477929ddc0997b75ace5fe04a1
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 0b920d21486fc0003d8b11bef79bd44be4b28adf
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30910522"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030610"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Analýzy v reálném čase postojích Twitter v Azure Stream Analytics
 
@@ -69,7 +69,7 @@ V tomto postupu vytvoříte na obor názvů centra událostí a poté přidejte 
 
 ### <a name="grant-access-to-the-event-hub"></a>Udělení přístupu do centra událostí
 
-Předtím, než se proces může odesílat data do centra událostí, musí mít centra událostí zásadu, která umožňuje odpovídající přístup. Zásady přístupu vytvoří připojovací řetězec, který obsahuje informace o ověření.
+Předtím, než se proces může odesílat data do centra událostí, musí mít centra událostí zásadu, která umožňuje odpovídající přístup. Zásady přístupu vytváří připojovací řetězec, který obsahuje informace o autorizaci.
 
 1.  V okně oboru názvů událostí, klikněte na tlačítko **Event Hubs** a pak klikněte na název vašeho nového centra událostí.
 
@@ -251,7 +251,7 @@ Chcete-li porovnejte počet zmínkami mezi témata, můžete použít [Přeskaku
 
     Azure ukázky data z vstupního datového proudu za 3 minuty a vás upozorní, jakmile je připraven ukázková data. (To trvá nějakou dobu.) 
 
-    Ukázková data jsou ukládána dočasně a je k dispozici při otevření okna dotazu. Pokud zavřete okno dotazu se zahodí ukázková data a je nutné vytvořit novou sadu ukázková data. 
+    Ukázková data jsou dočasně uložena a jsou dostupná, dokud je otevřené okno dotazu. Pokud zavřete okno dotazu se zahodí ukázková data a je nutné vytvořit novou sadu ukázková data. 
 
 5. Změna dotazu v editoru kódu takto:
 
@@ -316,7 +316,7 @@ V tomto kurzu můžete zapsat události agregované tweet z dotazu úlohy do úl
 5. Zavřít **výstupy** okno. 
 
 
-## <a name="start-the-job"></a>Spustit úlohu
+## <a name="start-the-job"></a>Spuštění úlohy
 
 Úloha vstup, dotaz a výstup nejsou zadány. Jste připraveni začít úlohu služby Stream Analytics.
 
@@ -338,7 +338,7 @@ V tomto kurzu můžete zapsat události agregované tweet z dotazu úlohy do úl
 
 Po zahájení systémem úlohu zpracovává datový proud v reálném čase Twitter, můžete zobrazit výstup pro analýzu postojích.
 
-Můžete použít nástroje, jako je [Azure Storage Explorer](https://http://storageexplorer.com/) nebo [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) k zobrazení výstupu úlohy v reálném čase. Tady můžete použít [Power BI](https://powerbi.com/) rozšířit vaše aplikace a zahrnují přizpůsobený řídicí panel stejný, jako je znázorněno na následujícím snímku obrazovky:
+Můžete použít nástroje, jako je [Azure Storage Explorer](https://storageexplorer.com/) nebo [Azure Explorer](http://www.cerebrata.com/products/azure-explorer/introduction) k zobrazení výstupu úlohy v reálném čase. Tady můžete použít [Power BI](https://powerbi.com/) rozšířit vaše aplikace a zahrnují přizpůsobený řídicí panel stejný, jako je znázorněno na následujícím snímku obrazovky:
 
 ![Power BI](./media/stream-analytics-twitter-sentiment-analysis-trends/power-bi.png)
 

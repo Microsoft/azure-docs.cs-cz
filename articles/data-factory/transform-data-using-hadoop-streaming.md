@@ -12,22 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: ea83701e834895b09faf8eb6602bd342b648ec37
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4c2bf83fec3d8f961a84523365e4a98fe3bf7603
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620200"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052363"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>Transformace dat pomocí Hadoop streamované aktivitě v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-hadoop-streaming-activity.md)
-> * [Verze 2 – Preview](transform-data-using-hadoop-streaming.md)
+> * [Verze 1](v1/data-factory-hadoop-streaming-activity.md)
+> * [Aktuální verze](transform-data-using-hadoop-streaming.md)
 
 HDInsight streamované aktivitě v datové továrně [kanálu](concepts-pipelines-activities.md) provede streamování Hadoop programy na [vlastní](compute-linked-services.md#azure-hdinsight-linked-service) nebo [na vyžádání](compute-linked-services.md#azure-hdinsight-on-demand-linked-service) clusteru HDInsight. Tento článek vychází [aktivit transformace dat](transform-data.md) článek, který poskytne Obecné přehled o transformaci dat a aktivity podporované transformace.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [streamované aktivitě Hadoop v V1](v1/data-factory-hadoop-streaming-activity.md).
 
 Pokud jste do Azure Data Factory nové, přečtěte si [Úvod do Azure Data Factory](introduction.md) a proveďte [kurz: transformovat data](tutorial-transform-data-spark-powershell.md) před přečtení tohoto článku. 
 
@@ -86,7 +83,7 @@ Pokud jste do Azure Data Factory nové, přečtěte si [Úvod do Azure Data Fact
 | vstup             | Určuje WASB cestu k souboru vstupního souboru Mapper. | Ano      |
 | output            | Určuje cestu WASB do výstupního souboru pro reduktorem. | Ano      |
 | getdebuginfo –      | Určuje, kdy soubory protokolu se zkopírují do úložiště Azure používaný v clusteru HDInsight (a) zadaný ve scriptLinkedService. Povolené hodnoty: None, vždy nebo selhání. Výchozí hodnota: žádné. | Ne       |
-| Argumenty         | Určuje pole argumentů pro úlohy Hadoop. Argumenty, které jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
+| argumenty         | Určuje pole argumentů pro úlohy Hadoop. Argumenty, které jsou předány jako argumenty příkazového řádku pro každý úkol. | Ne       |
 | definuje           | Zadejte parametry pro odkazování v rámci skriptu Hive jako páry klíč/hodnota. | Ne       | 
 
 ## <a name="next-steps"></a>Další postup

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 4530b11db7691f631f636021634cc5e9c8be8c86
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac0e1945e75ee7aea346c103a671b4a47b9e5994
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620557"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048610"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Poznámky k verzi pro Bránu pro správu dat
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [hostovanou na vlastním integrace runtime v V2](../create-self-hosted-integration-runtime.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [hostovanou na vlastním integrace runtime v V2](../create-self-hosted-integration-runtime.md).
 
 Jedním z problémů pro integraci moderní dat je přesun dat do a z místního do cloudu. Objekt pro vytváření dat umožňuje integraci se Brána pro správu dat, což je místní povolit hybridní přesun dat můžete nainstalovat agenta.
 
@@ -127,12 +127,12 @@ Najdete podrobné informace o Brána pro správu dat a způsobu jeho použití v
 
     *  Ovládací prvky reorganizovány všechny a jednodušší.
 
-    *  Může kopírovat data z úložiště pomocí [nástroj preview bez kódu kopírování](data-factory-copy-data-wizard-tutorial.md). V tématu [připravený kopie](data-factory-copy-activity-performance.md#staged-copy) obecné podrobnosti o této funkci.
+    *  Může kopírovat data z úložiště pomocí [nástroj bez kódu kopírování](data-factory-copy-data-wizard-tutorial.md). V tématu [připravený kopie](data-factory-copy-activity-performance.md#staged-copy) obecné podrobnosti o této funkci.
 *  Brána pro správu dat na vstupní data přímo z místní databáze systému SQL Server můžete do Azure Machine Learning.
 
 *  Vylepšení výkonu
 
-    * Zlepšení výkonu na zobrazení schématu nebo Preview proti systému SQL Server v nástroji preview bez kódu kopírování.
+    * Zlepšení výkonu na zobrazení schématu nebo Preview proti systému SQL Server v nástroji bez kódu kopírování.
 
 ## <a name="11259531"></a>1.12.5953.1
 

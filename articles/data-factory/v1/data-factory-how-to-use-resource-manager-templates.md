@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 0a03bb836f789a2a1cb58705a6758000c07036d1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3419f8718396bfb4ec894310e545f6a8a5b8f718
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621305"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049260"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Pomocí šablony můžete vytvořit entit služby Azure Data Factory
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). 
+> Tento článek se týká verze 1 služby Data Factory. 
 
 ## <a name="overview"></a>Přehled
 Při použití Azure Data Factory pro integraci vašim datovým potřebám sami zjistíte opakovaného použití stejného vzoru v různých prostředích nebo implementace pro stejnou úlohu opakovaně v rámci stejného řešení. Šablony vám pomohou implementovat a spravovat tyto scénáře snadno způsobem. Šablony v Azure Data Factory jsou ideální pro scénáře, které zahrnují – opětovné použití a opakování.
@@ -33,7 +33,7 @@ Vezměte v úvahu situaci, kde může organizace má 10 výrobních závodech po
 
 V takovém případě musí opakovat ve stejném prostředí, ale s různými hodnotami mezi 10 datové továrny pro každého z výrobních závodů úlohu. Ve skutečnosti **opakování** je k dispozici. Ukázka umožňuje abstrakce tento obecný tok (to znamená, že stejné aktivity v každé služby data factory kanály), ale používá soubor samostatného parametru pro každého z výrobních závodů.
 
-Kromě toho, jak organizace chce nasadit tyto 10 datové továrny vícekrát různých prostředích, šablony můžete použít **– opětovné použití** s využitím soubory samostatného parametru pro vývoj, testování a provozním prostředí.
+Kromě toho, jak organizace chce nasadit tyto 10 datové továrny vícekrát různých prostředích, šablony můžete použít **– opětovné použití** s využitím soubory samostatného parametru pro vývoj, testování, a provozní prostředí.
 
 ## <a name="templating-with-azure-resource-manager"></a>Ukázka s Azure Resource Manager
 [Šablony Azure Resource Manageru](../../azure-resource-manager/resource-group-overview.md#template-deployment) jsou skvělý způsob, jak dosáhnout ukázka v Azure Data Factory. Šablony Resource Manageru definovat infrastrukturu a konfiguraci řešení Azure prostřednictvím soubor JSON. Protože šablon Azure Resource Manageru pracovat se službami Azure všechny nebo většinu, je široce umožňuje snadno spravovat všechny prostředky vaše prostředky Azure. V tématu [šablon pro tvorbu Azure Resource Manageru](../../azure-resource-manager/resource-group-authoring-templates.md) Další informace o šablonách Resource Manager obecně.
@@ -237,7 +237,7 @@ Osvědčené postupy v Parametrizace, najdete v části [osvědčené postupy pr
 * Nastavení se liší podle prostředí (Příklad: vývoj, testování a provozním)
 * Tajné klíče (jako jsou hesla)
 
-Pokud potřebujete vyžádat tajné klíče z [Azure Key Vault](../../key-vault/key-vault-get-started.md) při nasazení entit služby Azure Data Factory pomocí šablony, zadejte **trezoru klíčů** a **tajný název** jak je znázorněno v následujícím příkladu:
+Pokud potřebujete vyžádat tajné klíče z [Azure Key Vault](../../key-vault/key-vault-get-started.md) při nasazení entit služby Azure Data Factory pomocí šablony, zadejte **trezoru klíčů** a **tajný název** jak je znázorněno Následující příklad:
 
 ```JSON
 "parameters": {

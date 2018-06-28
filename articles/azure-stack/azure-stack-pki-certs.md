@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/07/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: f0c86f121fd65a06fb4d1a193f3e3bf724af505e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 9a43179998e8377dfbbb1a41ba7d46936d63aedd
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234837"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030151"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure požadavky na certifikáty infrastruktury veřejných klíčů zásobníku
 
@@ -77,26 +77,12 @@ Pro vaše nasazení [Oblast] a [externalfqdn] hodnoty musí odpovídat oblasti a
 | KeyVault | * .vault. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) | Key Vault | trezor. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
 | KeyVaultInternal | *.adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény ><br>(Certifikát SSL typu Wildcard) |  Interní Keyvault |  adminvault. &lt;oblast >. &lt;plně kvalifikovaný název domény > |
 
-### <a name="for-azure-stack-environment-on-pre-1803-versions"></a>Pro prostředí Azure zásobníku 1803 předběžné verze
-
-|Složky pro nasazení|Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN)|Obor (podle oblasti)|SubDomain namespace|
-|-----|-----|-----|-----|
-|Veřejné portálu|Portál.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|Portály|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
-|Portál pro správu|Adminportal.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|Portály|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
-|Veřejný Azure Resource Manager|Správa.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|Azure Resource Manager|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
-|Správce Azure Resource Manager|Adminmanagement.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|Azure Resource Manager|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
-|ACS<sup>1</sup>|Jeden více subdomény certifikát se zástupným znakem s názvy subjektu alternativní pro:<br>&#42;.blob.*&lt;region>.&lt;fqdn>*<br>&#42;.queue.*&lt;region>.&lt;fqdn>*<br>&#42;.Table.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|Úložiště|objekt BLOB.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>Tabulka.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>fronty.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|
-|KeyVault|&#42;.Vault.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL typu Wildcard)|Key Vault|trezor.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|
-|KeyVaultInternal|&#42;.adminvault.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL typu Wildcard)|Interní Keyvault|adminvault.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|
-|
-<sup>1</sup> certifikát ACS vyžaduje tři zástupné sítě SAN na jeden certifikát. Všechny veřejné certifikační autority nemusí podporovat více zástupné sítí SAN na jeden certifikát. 
-
 Pokud nasadíte zásobník Azure pomocí režimu nasazení služby Azure AD, stačí vyžádat certifikáty uvedené v předchozí tabulce. Ale pokud nasazujete zásobník Azure pomocí režimu nasazení služby AD FS, musíte také požádat o certifikáty, které jsou popsané v následující tabulce:
 
 |Složky pro nasazení|Požadovaný certifikát subjektu a alternativní názvy subjektu (SAN)|Obor (podle oblasti)|SubDomain namespace|
 |-----|-----|-----|-----|
 |ADFS|Služba AD FS.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL)|ADFS|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
-|Graph|Graf.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL)|Graph|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
+|Graph|graf.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*<br>(Certifikát SSL)|Graph|*&lt;oblast >. &lt;plně kvalifikovaný název domény >*|
 |
 
 > [!IMPORTANT]

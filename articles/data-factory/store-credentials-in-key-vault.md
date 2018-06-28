@@ -12,21 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: jingwang
-ms.openlocfilehash: f12c3a2a1193adc08c408292a4e0eca2e2458085
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e1be16ec6a7536cedf3a27ffacb9c4dffe42bbef
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620662"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052411"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Uložení přihlašovacích údajů v Azure Key Vault
 
 Můžete uložit přihlašovací údaje pro úložiště dat a výpočtů v [Azure Key Vault](../key-vault/key-vault-whatis.md). Azure Data Factory načte přihlašovací údaje při provádění aktivity, která používá úložiště dat/výpočetní.
 
 V současné době tuto funkci podporovat všechny typy aktivit s výjimkou vlastní aktivity. Pro konfiguraci konektoru konkrétně, zkontrolujte v části "vazbu vlastnosti služby" v [každého tématu konektor](copy-activity-overview.md#supported-data-stores-and-formats) podrobnosti.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [dokumentace pro objekt pro vytváření dat version1](v1/data-factory-introduction.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -51,7 +48,7 @@ Pro Azure Key Vault propojené služby jsou podporovány následující vlastnos
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavena na: **AzureKeyVault**. | Ano |
-| BaseUrl | Zadejte adresu URL Azure Key Vault. | Ano |
+| baseUrl | Zadejte adresu URL Azure Key Vault. | Ano |
 
 **Používání vytváření uživatelského rozhraní:**
 

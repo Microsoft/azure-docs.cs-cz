@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 9b2acf622f33f5d1748c503ab4765b72c3d921e2
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 5287a1d1f09a7057590b455c14aa7f70128ad7fa
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751574"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053633"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopírovat data do nebo z Azure SQL Database pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
-> * [Verze 1, GA](v1/data-factory-azure-sql-connector.md)
-> * [Verze 2, verze Preview](connector-azure-sql-database.md)
+> * [Verze 1](v1/data-factory-azure-sql-connector.md)
+> * [Aktuální verze](connector-azure-sql-database.md)
 
 Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z nebo do Azure SQL Database. Vychází [aktivity kopírování přehled](copy-activity-overview.md) článek, který poskytne obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká 2 objektu pro vytváření dat aktuálně ve verzi preview. Pokud používáte verzi 1 služby Data Factory, všeobecně dostupná (GA), najdete v části [konektor Azure SQL Database v V1](v1/data-factory-azure-sql-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 

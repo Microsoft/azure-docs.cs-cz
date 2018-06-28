@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d0897f73ed1a321c8287729eaba775a625f51e4d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f3ebd704129aabecffdaa2589b8b086803a2d092
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620982"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37046595"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Přesun dat do a z databáze Cosmos Azure pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-azure-documentdb-connector.md)
-> * [Verze 2 – Preview](../connector-azure-cosmos-db.md)
+> * [Verze 1](data-factory-azure-documentdb-connector.md)
+> * [Verze 2 (aktuální verze)](../connector-azure-cosmos-db.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [konektor Azure Cosmos DB v V2](../connector-azure-cosmos-db.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [konektor Azure Cosmos DB v V2](../connector-azure-cosmos-db.md).
 
 Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat z Azure Cosmos databáze (SQL API). Vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování. 
 
@@ -43,7 +43,7 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z Azure Co
 
 Nejjednodušší způsob, jak vytvořit kanál je použití **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
 Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený: 
 
@@ -134,7 +134,7 @@ V případě aktivitu kopírování, pokud je zdroj typu **DocumentDbCollectionS
 | --- | --- | --- | --- |
 | nestingSeparator |Budete potřebovat speciální znak v názvu sloupce zdroj označíte, že vnořených dokumentů. <br/><br/>Například výše: `Name.First` ve výstupu tabulky vytvoří následující strukturu JSON v dokumentu Cosmos DB:<br/><br/>"Název": {<br/>    "První": "Jan"<br/>}, |Znak, který se používá k oddělení úrovní vnoření.<br/><br/>Výchozí hodnota je `.` (tečka). |Znak, který se používá k oddělení úrovní vnoření. <br/><br/>Výchozí hodnota je `.` (tečka). |
 | writeBatchSize |Počet paralelní požadavků do služby Azure Cosmos DB vytvářet dokumenty.<br/><br/>Při kopírování dat z databáze Cosmos pomocí této vlastnosti lze optimalizovat výkon. Lepšího výkonu můžete očekávat, když zvýšíte writeBatchSize, protože se odesílají další paralelní žádosti do databáze Cosmos. Ale budete muset vyhnout, omezení šířky pásma, který lze vyvolat chybovou zprávu: "Požadavků je velká".<br/><br/>Omezení je určeno podle počtu faktorů, včetně velikosti dokumentů, počet podmínky v dokumentech, indexování zásad cílovou kolekci, atd. Pro operace kopírování, můžete použít kolekci lepší (např. S3) tak, aby měl nejvíce propustnost, které jsou k dispozici (2 500 žádostí jednotek za sekundu). |Integer |Ne (výchozí: 5) |
-| writeBatchTimeout |Počkejte, než čas na dokončení předtím, než vyprší časový limit operace. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
+| writeBatchTimeout |Počkejte, než čas na dokončení předtím, než vyprší časový limit operace. |časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
 
 ## <a name="importexport-json-documents"></a>Dokumenty JSON importu a exportu
 Pomocí tohoto konektoru Cosmos DB, můžete snadno

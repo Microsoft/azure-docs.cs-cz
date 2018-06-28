@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 265b227520f25ebd1112d940aaf28fed9f88ecdc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b4d9a684c2c21ed9ec00b04963432f9ebcff7493
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621016"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048450"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – funkce a systémové proměnné
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [systémové proměnné v datové továrně verze 2](../control-flow-system-variables.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [systémové proměnné v datové továrně](../control-flow-system-variables.md).
 
 Tento článek obsahuje informace o funkcích a proměnné, podporované službou Azure Data Factory.
 

@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 84d81dd9e1ef51a2a1705210cd7002a685bdf8fb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 3758b04fc9b5ecd5dc69c82a8bd07999a9f1074a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266817"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050603"
 ---
 # <a name="how-to-start-and-stop-the-azure-ssis-integration-runtime-on-a-schedule"></a>Postup spuštění a zastavení modulu runtime integrace Azure SSIS podle plánu
 Tento článek popisuje, jak naplánovat spuštění a zastavení z modulu runtime integrace Azure služby SSIS (IR) pomocí Azure Automation a Azure Data Factory. Spuštění modulu runtime integrace Azure služby SSIS (SQL Server Integration Services) (IR) má náklady s ním spojená. Proto chcete obvykle spustit IR pouze v případě potřeby pro spouštění balíčků SSIS v Azure a zastavit reakcí na Incidenty, když tomu tak není. Můžete použít uživatelské rozhraní objektu pro vytváření dat nebo prostředí Azure PowerShell [ruční spuštění nebo zastavení služby SSIS IR Azure](manage-azure-ssis-integration-runtime.md)).
@@ -34,10 +34,6 @@ Zde jsou základní kroky popsané v tomto článku:
 3. **Vytvořte dva webhooky pro sadu runbook**, jeden pro počáteční operaci a druhou pro operaci UKONČETE. Adresy URL tyto webhooky použijete při konfiguraci webové aktivity v kanálu Data Factory. 
 4. **Vytvoření kanálu pro vytváření dat**. Kanál, který vytvoříte, se skládá z tři aktivity. První **webové** aktivity vyvolá webhook první spuštění služby SSIS Azure, infračerveného signálu. **Uloženou proceduru** aktivita se spustí skript SQL, který spouští balíčku služby SSIS. Druhý **webové** aktivity zastaví SSIS Azure, infračerveného signálu. Další informace o vyvolání balíčku služby SSIS z objektu pro vytváření dat kanál pomocí aktivity uložené procedury najdete v tématu [vyvolání balíčku služby SSIS](how-to-invoke-ssis-package-stored-procedure-activity.md). Pak vytvořte plán aktivační událost při plánování kanál ke spuštění s frekvencí, které zadáte.
 
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [balíčky SSIS vyvolání pomocí aktivity uložené procedury v verze 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).
-
- 
 ## <a name="prerequisites"></a>Požadavky
 Pokud nebyly zřízené modulu runtime integrace Azure SSIS již, zřídit podle pokynů v [kurzu](tutorial-create-azure-ssis-runtime-portal.md). 
 
@@ -254,7 +250,7 @@ Po vytvoření a testování kanálu, můžete vytvořit aktivační událost pl
       - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
       Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-4. Jako **verzi** vyberte **V2 (Preview)**.
+4. Vyberte **V2** pro **verze**.
 5. Vyberte **umístění** pro objekt pro vytváření dat. V seznamu se zobrazí pouze podporovaná umístění pro vytváření datových továren.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na možnost **Vytvořit**.
