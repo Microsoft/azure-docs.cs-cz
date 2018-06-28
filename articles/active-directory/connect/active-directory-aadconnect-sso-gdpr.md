@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2018
+ms.date: 05/21/2018
+ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: bffa5a3aa57c5b01e3361bc6fc6b284348707800
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a4fc779cdfb177a9817049fd7b62b0014e141ce0
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34592404"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>Ochrana osobních údajů uživatelů a Azure AD bezproblémové jednotné přihlašování
 
@@ -27,11 +29,11 @@ ms.lasthandoff: 04/28/2018
 ## <a name="overview"></a>Přehled
 
 
-Azure AD bezproblémové SSO vytvoří následující typ protokolu, která může obsahovat EUII:
+Azure AD bezproblémové SSO vytvoří následující typ protokolu, která může obsahovat osobní údaje: 
 
 - Soubory protokolu trasování Azure AD Connect.
 
-Dodržování předpisů o ochraně osobních údajů uživatele pro bezproblémové jednotné přihlašování lze dosáhnout dvěma způsoby:
+Zlepšení ochrany osobních údajů uživatele pro bezproblémové jednotné přihlašování dvěma způsoby:
 
 1.  Na žádost extrahovat data pro osoby a odstranění dat z osoba ze zařízení.
 2.  Zkontrolujte, že žádná data se uchovávají za 48 hodin.

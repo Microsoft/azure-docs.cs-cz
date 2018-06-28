@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: a16e9ad5b72d87614f5d3630e24e6aa36def8c51
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 7902b5ad2d680a22a2d132187cdad5f96a334447
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32779529"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061841"
 ---
 # <a name="tutorial-load-balance-internal-traffic-with-basic-load-balancer-to-vms-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení interního provozu na virtuálních počítačích pomocí Load Balanceru úrovně Basic na webu Azure Portal
 
@@ -43,6 +43,8 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
     - *myBackendSubnet* – název podsítě.
 2. Kliknutím na **Vytvořit** vytvořte virtuální síť.
 
+![Vytvoření nástroje pro vyrovnávání zatížení](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
+
 ## <a name="create-a-basic-load-balancer"></a>Vytvoření Load Balanceru úrovně Basic
 Vytvořte interní Load Balancer úrovně Basic pomocí portálu.
 
@@ -57,10 +59,7 @@ Vytvořte interní Load Balancer úrovně Basic pomocí portálu.
     - *myResourceGroupILB* – název nové skupiny prostředků, kterou vytvoříte.
 3. Kliknutím na **Vytvořit** vytvořte nástroj pro vyrovnávání zatížení.
    
-    ![Vytvoření nástroje pro vyrovnávání zatížení](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
-
-
-## <a name="create-backend-servers"></a>Vytvoření serverů back-end
+    ## <a name="create-backend-servers"></a>Vytvoření serverů back-end
 
 V této části vytvoříte dva virtuální počítače pro back-endový fond vašeho Load Balanceru úrovně Basic a pak na tyto virtuální počítače nainstalujete službu IIS, která vám pomůže nástroj pro vyrovnávání zatížení otestovat.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: f5630c8cb9c0ca13210c62652f8d7f2e98f94438
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 209fdda974dee2386328da43991cc9d453e61aa7
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366643"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062152"
 ---
 # <a name="security-management-in-azure"></a>Správa zabezpečení v Azure
 Předplatitelé služby Azure mohou svoje cloudová prostředí spravovat z více zařízení. Můžou k tomu využívat pracovní stanice, počítače vývojářů a dokonce i privilegovaná zařízení koncových uživatelů, která mají oprávnění ke konkrétním úlohám. V některých případech se funkce správy provádějí prostřednictvím webových konzol, například [portálu Azure](https://azure.microsoft.com/features/azure-portal/). V ostatních případech můžou existovat přímá připojení k Azure z místních systémů prostřednictvím virtuálních privátních sítí (VPN), terminálových služeb, protokolů klientských aplikací nebo (v kódu) rozhraní API pro správu služby Azure (SMAPI). Kromě toho můžou být koncové body klienta buď připojené k doménám nebo izolované a nespravované, jako například tablety nebo smartphony.
@@ -224,8 +224,8 @@ Používání konfigurace posílené pracovní stanice ke správě cloudových s
 Následující prostředky vám poskytnou další obecné informace o Azure a souvisejících službách Microsoftu jako doplnění ke konkrétním položkám, na které odkazujeme v tomto dokumentu:
 
 * [Zabezpečení privilegovaného přístupu](https://technet.microsoft.com/library/mt631194.aspx) – technické podrobnosti o navrhování a vytváření zabezpečených pracovních stanic pro správu v prostředí Azure
-* [Centrum zabezpečení Microsoft](https://www.microsoft.com/TrustCenter/Security/AzureSecurity) – další informace o možnostech platformy Azure, které chrání prostředky infrastruktury Azure, a úlohách, které běží na Azure
-* [Středisko Microsoft Security Response Center](http://www.microsoft.com/security/msrc/default.aspx) – místo pro nahlášení chyby zabezpečení včetně problémů s Azure, popřípadě použijte e-mail [secure@microsoft.com](mailto:secure@microsoft.com)
+* [Centrum zabezpečení Microsoft](https://microsoft.com/en-us/trustcenter/cloudservices/azure) – další informace o možnostech platformy Azure, které chrání prostředky infrastruktury Azure, a úlohách, které běží na Azure
+* [Středisko Microsoft Security Response Center](https://technet.microsoft.com/en-us/security/dn440717.aspx) – místo pro nahlášení chyby zabezpečení včetně problémů s Azure, popřípadě použijte e-mail [secure@microsoft.com](mailto:secure@microsoft.com)
 * [Blog o bezpečnosti Azure](http://blogs.msdn.com/b/azuresecurity/) – nejnovější informace o zabezpečení Azure
 
 <!--Image references-->
