@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 5025eeda46f36982266a0bc3357b3d1e9249884a
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 5da4248f0b0a72c3614b4c3e5ea042c4341f4e03
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808202"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36330539"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Rychlý start: Řízení zařízení připojeného k centru IoT (Java)
 
@@ -75,7 +75,7 @@ Zařízení musí být zaregistrované ve vašem centru IoT, aby se mohlo připo
 
     Pokud si zvolíte jiný název zařízení, změňte ho také v ukázkových aplikacích, než je spustíte.
 
-1. Spuštěním následujícího příkazu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
+2. Spuštěním následujícího příkazu získejte _připojovací řetězec zařízení_ pro zařízení, které jste právě zaregistrovali:
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
@@ -99,17 +99,17 @@ Aplikace simulovaného zařízení se připojí ke koncovému bodu v centru IoT 
 
 1. V okně terminálu přejděte do kořenové složky ukázkového projektu Java. Potom přejděte do složky **iot-hub\Quickstarts\simulated-device-2**.
 
-1. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java**.
+2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java**.
 
     Hodnotu proměnné `connString` nahraďte připojovacím řetězcem zařízení, který jste si předtím poznamenali. Změny pak uložte do souboru **SimulatedDevice.java**.
 
-1. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a sestavení aplikace simulovaného zařízení:
+3. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a sestavení aplikace simulovaného zařízení:
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. V okně terminálu spusťte následující příkazy pro spuštění aplikace simulovaného zařízení:
+4. V okně terminálu spusťte následující příkazy pro spuštění aplikace simulovaného zařízení:
 
     ```cmd/sh
     java -jar target/simulated-device-2-1.0.0-with-deps.jar
@@ -125,17 +125,17 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
 
 1. V jiném okně terminálu přejděte do kořenové složky ukázkového projektu Java. Potom přejděte do složky **iot-hub\Quickstarts\back-end-application**.
 
-1. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java**.
+2. V libovolném textovém editoru otevřete soubor **src/main/java/com/microsoft/docs/iothub/samples/BackEndApplication.java**.
 
     Hodnotu proměnné `iotHubConnectionString` nahraďte připojovacím řetězcem služby, který jste si předtím poznamenali. Změny pak uložte do souboru **BackEndApplication.java**.
 
-1. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a sestavení back-endové aplikace:
+3. V okně terminálu spusťte následující příkazy pro instalaci požadovaných knihoven a sestavení back-endové aplikace:
 
     ```cmd/sh
     mvn clean package
     ```
 
-1. V okně terminálu spusťte následující příkazy pro spuštění back-endové aplikace:
+4. V okně terminálu spusťte následující příkazy pro spuštění back-endové aplikace:
 
     ```cmd/sh
     java -jar target/back-end-application-1.0.0-with-deps.jar
@@ -151,9 +151,7 @@ Back-endová aplikace se připojí ke koncovému bodu vašeho centra IoT na stra
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud se budete chtít přesunout ke kurzům, zachovejte skupinu prostředků a centrum IoT pro pozdější použití.
-
-Pokud už centrum IoT nepotřebujete, odstraňte ho společně se skupinou prostředků na portálu. Provedete to výběrem skupiny prostředků, která obsahuje vaše centrum IoT, a kliknutím na **Odstranit**.
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
