@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: yurid
-ms.openlocfilehash: 2f3a9344b9bd383ea59ff3cb400faa90942c5b9f
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 8564dd8a86cab1229f31e77e072ddd4e776947e7
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894476"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37029692"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Využití Azure Security Center při reakci na incidenty
 Mnoho organizací se naučí reagovat na incidenty zabezpečení teprve když se stanou obětí útoku. Kvůli snížení nákladů a minimalizaci škod je důležité mít hotový plán reakce na incidenty ještě před tím, než k útoku dojde. Azure Security Center můžete využít v různých fázích reakce na incidenty.
@@ -97,7 +97,7 @@ Sam od Judy obdržel případ a začíná s kontrolováním nápravných kroků,
 ![Životní cyklus reakce na incidenty](./media/security-center-incident-response/security-center-incident-response-fig6.png)
 
 ### <a name="additional-resources"></a>Další zdroje
-V případě společnosti, které při procesu šetření používají jeho řešení správy událostí a informací o zabezpečení (SIEM), může také [integrovat Security Center s vlastním řešením](security-center-integrating-alerts-with-log-integration.md). Můžete také integrovat protokoly auditu a události zabezpečení virtuálních počítačů Azure pomocí [nástroje pro integraci protokolů Azure](https://blogs.msdn.microsoft.com/azuresecurity/2016/07/21/microsoft-azure-log-integration-preview/). Při vyšetřování útoku můžete tyto informace použít ve spojení s informacemi, které poskytuje Security Center. Můžete také použít funkci [šetření](https://docs.microsoft.com/azure/security-center/security-center-investigation) ve službě Security Center, která vám pomůže určit původní příčinu incidentu.
+V případě společnosti, které při procesu šetření používají jeho řešení správy událostí a informací o zabezpečení (SIEM), může také [integrovat Security Center s vlastním řešením](security-center-integrating-alerts-with-log-integration.md). Můžete také integrovat protokoly auditu a události zabezpečení virtuálních počítačů Azure pomocí [nástroje pro integraci protokolů Azure](https://azure.microsoft.com/blog/introducing-hdinsight-integration-with-azure-log-analytics/). Při vyšetřování útoku můžete tyto informace použít ve spojení s informacemi, které poskytuje Security Center. Můžete také použít funkci [šetření](https://docs.microsoft.com/azure/security-center/security-center-investigation) ve službě Security Center, která vám pomůže určit původní příčinu incidentu.
 
 ## <a name="conclusion"></a>Závěr
 Sestavení týmu dříve, než dojde k incidentu, je pro vaši organizaci velmi důležité a pozitivně to ovlivní způsob zpracování incidentů. Dostupnost správných nástrojů pro monitorování prostředků může tomuto týmu pomoci s výběrem správného postupu k napravení incidentu zabezpečení. [Funkce detekce](security-center-detection-capabilities.md) v Security Center mohou IT oddělení pomoci s rychlou reakcí na incidenty zabezpečení a s nápravou problémů zabezpečení.

@@ -12,14 +12,14 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/16/2018
+ms.date: 06/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 28bb900a3281becc7bb243e6bd7bf2beedf1a5c1
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 49558f5a4777818478ee11b96636d87b70e1e156
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261627"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335362"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrace řešení zabezpečení v Azure Security Center
 Tento dokument vám pomůže se správou řešení zabezpečení již propojených s Azure Security Center a s přidáním nových řešení.
@@ -44,7 +44,7 @@ Prostředí integrace ochrany koncových bodů se může lišit v závislosti na
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
 | Windows Defender (antimalware Microsoftu)                  | Windows Server 2016                   | Ne, součást operačního systému           | Ano                       |
 | Ochrana koncových bodů System Center (antimalware Microsoftu) | Windows Server 2012 R2, 2012, 2008 R2 | Prostřednictvím rozšíření                | Ano                       |
-| Trend Micro – všechny verze         | Řada Windows Serverů                 | Prostřednictvím rozšíření                | Ano                       |
+| Trend Micro – všechny verze         | Řada Windows Serverů                 | Ne                           | Ano                       |
 | Symantec v12.1.1100+              | Řada Windows Serverů                 | Ne                           | Ano                       |
 | McAfee v10+                       | Řada Windows Serverů                 | Ne                           | Ano                       |
 | Kaspersky                         | Řada Windows Serverů                 | Ne                           | Ne                        |

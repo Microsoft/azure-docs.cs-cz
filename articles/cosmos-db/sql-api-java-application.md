@@ -3,20 +3,20 @@ title: Kurz vývoje aplikace Java využívající službu Azure Cosmos DB | Doku
 description: Tento kurz vývoje webové aplikace Java ukazuje, jak pomocí služby Azure Cosmos DB a rozhraní SQL API ukládat data a přistupovat k nim z aplikace Java hostované ve službě Azure Websites.
 keywords: Application development, database tutorial, java application, java web application tutorial, azure, Microsoft azure
 services: cosmos-db
-author: dennyglee
+author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 08/22/2017
-ms.author: denlee
-ms.openlocfilehash: 4e3fd2fc31bda1dd8172c574fe087d9fcc6068db
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.author: ramkris
+ms.openlocfilehash: 4cc29aad648f594a95f694cf0f778b55cb3145a8
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34796821"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959874"
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Sestavení webové aplikace Java využívající službu Azure Cosmos DB a rozhraní SQL API
 > [!div class="op_single_selector"]
