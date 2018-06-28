@@ -1,24 +1,19 @@
 ---
 title: Aktualizace firmwaru zařízení s Azure IoT Hub (uzel) | Microsoft Docs
 description: Jak používat správu zařízení v Azure IoT Hub zahájíte aktualizaci firmwaru zařízení. Použijete k implementaci aplikace simulovaného zařízení a aplikaci služby, která spustí aktualizaci firmwaru SDK služby Azure IoT pro Node.js.
-services: iot-hub
-documentationcenter: .net
 author: juanjperez
-manager: timlt
-editor: ''
-ms.assetid: 70b84258-bc9f-43b1-b7cf-de1bb715f2cf
+manager: cberlin
 ms.service: iot-hub
-ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 09/07/2017
 ms.author: juanpere
-ms.openlocfilehash: e8ef556793534c9eb8300ee262a4b134960f862a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 0cd8c019cf9a65e0e72227ba99c1995a45ed4067
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34634960"
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-nodenode"></a>Použití správy zařízení za účelem zahájení aktualizaci firmwaru zařízení (uzel nebo uzel)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]

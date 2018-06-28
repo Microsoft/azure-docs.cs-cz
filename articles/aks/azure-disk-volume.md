@@ -6,14 +6,15 @@ author: neilpeterson
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 05/21/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: b790213e19b9f2aaef74a3f670c89246f54fd6d7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 4af4620ff7a17cae76c4d5f2cf1a30ce4a3dccd8
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34597063"
 ---
 # <a name="volumes-with-azure-disks"></a>Svazky s disky systému Azure
 
@@ -23,34 +24,27 @@ Další informace o svazcích Kubernetes najdete v tématu [Kubernetes svazky][k
 
 ## <a name="create-an-azure-disk"></a>Vytvoření Azure disku
 
-Před připojení Azure spravované disk jako svazek Kubernetes disk, musí existovat ve stejné skupině prostředků jako AKS prostředků clusteru. K vyhledání této skupiny prostředků, použijte [seznam skupiny az] [ az-group-list] příkaz.
+Před připojení k Azure spravované disk jako svazek Kubernetes, musí existovat na disku v AKS **uzlu** skupinu prostředků. Získat název skupiny prostředků s [az prostředků zobrazit] [ az-resource-show] příkaz.
 
 ```azurecli-interactive
-az group list --output table
-```
+$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
 
-Hledáte skupinu prostředků s názvem podobná `MC_clustername_clustername_locaton`, kde clustername představuje název clusteru AKS a umístění je oblast Azure, kde byla nasazena do clusteru.
-
-```console
-Name                                 Location    Status
------------------------------------  ----------  ---------
-MC_myAKSCluster_myAKSCluster_eastus  eastus      Succeeded
-myAKSCluster                         eastus      Succeeded
+MC_myResourceGroup_myAKSCluster_eastus
 ```
 
 Použití [vytvoření disku az] [ az-disk-create] příkaz pro vytvoření disku s Azure.
 
-V tomto příkladu, aktualizovat `--resource-group` s názvem skupiny prostředků a `--name` název svého výběru.
+Aktualizace `--resource-group` s názvem skupiny prostředků získané v posledním kroku, a `--name` název svého výběru.
 
 ```azurecli-interactive
 az disk create \
-  --resource-group MC_myAKSCluster_myAKSCluster_eastus \
+  --resource-group MC_myResourceGroup_myAKSCluster_eastus \
   --name myAKSDisk  \
   --size-gb 20 \
   --query id --output tsv
 ```
 
-Po vytvoření disku, měli byste vidět výstup podobný následujícímu. Tato hodnota je ID disku, který je použit při připojení k disku a Kubernetes pod.
+Po vytvoření disku, měli byste vidět výstup podobný následujícímu. Tato hodnota je ID disku, který je použit při připojení disku.
 
 ```console
 /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
@@ -60,7 +54,7 @@ Po vytvoření disku, měli byste vidět výstup podobný následujícímu. Tato
 
 Připojte Azure disk do vaší pod konfigurací svazku ve specifikaci kontejneru.
 
-Vytvořte nový soubor s názvem `azure-disk-pod.yaml` s tímto obsahem. Aktualizace `diskName` s názvem nově vytvořený disku a `diskURI` s ID disku. Také si poznamenejte `mountPath`, jedná se o cestu, kde je Azure disk připojený v pod.
+Vytvořte nový soubor s názvem `azure-disk-pod.yaml` s tímto obsahem. Aktualizace `diskName` s názvem nově vytvořený disku a `diskURI` s ID disku. Také si poznamenejte `mountPath`, což je cestu, kde je připojené Azure disku pod.
 
 ```yaml
 apiVersion: v1
@@ -105,3 +99,4 @@ Další informace o Kubernetes svazky s využitím disky systému Azure.
 [az-disk-list]: /cli/azure/disk#az_disk_list
 [az-disk-create]: /cli/azure/disk#az_disk_create
 [az-group-list]: /cli/azure/group#az_group_list
+[az-resource-show]: /cli/azure/resource#az-resource-show

@@ -11,13 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: fdf3c7d1a6621437c414e2c1fe0628f2f585d98a
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 18398094dfff03739a3d3d44d2c9c58149271123
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34638632"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojit ITSM produkty nebo služby s konektoru služby správy IT
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktům a službám a konektor pro správu služby IT (ITSMC) v analýzy protokolů můžete centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](log-analytics-itsmc-overview.md).
@@ -85,7 +86,7 @@ Pomocí následujícího postupu se připojit k ITSMC instanci aplikace System C
 - Můžete vytvořit incidenty z výstrah analýzy protokolů nebo ze záznamů protokolu nebo z Azure výstrah v této instanci portálu Service Manager.
 
 
-Další informace: [ITSM vytvoření pracovní položky pro výstrahy analýzy protokolů](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [ITSM vytvoření pracovní položky z protokolů analýzy protokolů](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) a [ITSM vytvoření pracovní položky z Azure výstrah](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+Další informace: [ITSM vytvoření pracovní položky z Azure výstrah](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="create-and-deploy-service-manager-web-app-service"></a>Vytvoření a nasazení portálu Service Manager webové aplikace služby
 
@@ -238,7 +239,7 @@ Pomocí následujícího postupu vytvořte připojení ServiceNow:
 
 - Můžete vytvořit incidenty z výstrah analýzy protokolů nebo ze záznamů protokolu nebo z Azure výstrah u této instance ServiceNow.
 
-Další informace: [ITSM vytvoření pracovní položky pro výstrahy analýzy protokolů](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [ITSM vytvoření pracovní položky z protokolů analýzy protokolů](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) a [ITSM vytvoření pracovní položky z Azure výstrah](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+Další informace: [ITSM vytvoření pracovní položky z Azure výstrah](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="create-integration-user-role-in-servicenow-app"></a>Umožňuje vytvořit roli uživatele integrace v aplikaci ServiceNow
 
@@ -329,7 +330,7 @@ Pomocí následujícího postupu vytvoříte připojení typu Provance:
 
 - Můžete vytvořit incidenty z výstrah analýzy protokolů nebo ze záznamů protokolu nebo z Azure výstrah v této instanci Provance.
 
-Další informace: [ITSM vytvoření pracovní položky pro výstrahy analýzy protokolů](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [ITSM vytvoření pracovní položky z protokolů analýzy protokolů](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) a [ITSM vytvoření pracovní položky z Azure výstrah](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+Další informace: [ITSM vytvoření pracovní položky z Azure výstrah](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ## <a name="connect-cherwell-to-it-service-management-connector-in-azure"></a>Připojit k službě, IT Cherwell konektoru Management v Azure
 
@@ -381,7 +382,7 @@ Pomocí následujícího postupu vytvoříte připojení typu Provance:
 
 - Můžete vytvořit incidenty z výstrah analýzy protokolů nebo ze záznamů protokolu nebo z Azure výstrah v této instanci Cherwell.
 
-Další informace: [ITSM vytvoření pracovní položky pro výstrahy analýzy protokolů](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts), [ITSM vytvoření pracovní položky z protokolů analýzy protokolů](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records) a [ITSM vytvoření pracovní položky z Azure výstrah](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
+Další informace: [ITSM vytvoření pracovní položky z Azure výstrah](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts).
 
 ### <a name="generate-client-id-for-cherwell"></a>Generování ID klienta pro Cherwell
 
@@ -395,6 +396,4 @@ Ke generování ID nebo klíč klienta pro Cherwell, použijte následující po
 
 
 ## <a name="next-steps"></a>Další postup
- - [Vytváření ITSM pracovních položek pro výstrahy analýzy protokolů](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-alerts)
- - [Vytváření pracovních položek ITSM z protokolu analýzy protokolů záznamy protokolů](log-analytics-itsmc-overview.md#create-itsm-work-items-from-log-analytics-log-records)
  - [Vytváření pracovních položek ITSM z Azure výstrah](log-analytics-itsmc-overview.md#create-itsm-work-items-from-azure-alerts)

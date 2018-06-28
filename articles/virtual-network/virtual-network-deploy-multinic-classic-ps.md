@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/02/2016
+ms.date: 05/22/2018
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09c85a9badaad45816a9160d09cb3c4a726426e8
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: ca4e9e77d0e0ca62c04fbbfe132a41fb3e01df46
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34658770"
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>Vytvoření virtuálního počítače (klasické) s více síťovými kartami pomocí prostředí PowerShell
 
@@ -198,4 +199,10 @@ Teď, když jste stáhli a změnit skript na základě potřeb, o skript k vytvo
 
 ### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>Krok 5: Konfigurace směrování v rámci operačního systému Virtuálního počítače
 
-Azure DHCP přiřadí výchozí bránu na první (primární) síťové rozhraní připojené k virtuálnímu počítači. Azure nepřiřazuje výchozí bránu dalším (sekundárním) síťovým rozhraním připojeným k virtuálnímu počítači. Proto ve výchozím nastavení nemůžete komunikovat s prostředky mimo podsíť, ve které sekundární síťové rozhraní je. Sekundární síťová rozhraní může, ale komunikovat s prostředky mimo jejich podsítě. Konfigurace směrování pro sekundární síťová rozhraní najdete v tématu [směrování v rámci operačního systému virtuálního počítače s více síťovými rozhraními](virtual-network-network-interface-vm.md).
+Azure DHCP přiřadí výchozí bránu na první (primární) síťové rozhraní připojené k virtuálnímu počítači. Azure nepřiřazuje výchozí bránu dalším (sekundárním) síťovým rozhraním připojeným k virtuálnímu počítači. Proto ve výchozím nastavení nemůžete komunikovat s prostředky mimo podsíť, ve které sekundární síťové rozhraní je. Sekundární síťová rozhraní může, ale komunikovat s prostředky mimo jejich podsítě. Konfigurace směrování pro sekundární síťová rozhraní, najdete v následujících článcích:
+
+- [Nakonfigurujte virtuální počítač s Windows pro několik síťových adaptérů](../virtual-machines/windows/multiple-nics.md#configure-guest-os-for-multiple-nics
+)
+
+- [Konfigurace virtuálního počítače s Linuxem pro několik síťových adaptérů](../virtual-machines/linux/multiple-nics.md#configure-guest-os-for-multiple-nics
+)

@@ -1,23 +1,20 @@
 ---
 title: Plánování úloh službou Azure IoT Hub (Java) | Microsoft Docs
 description: Popisuje, jak naplánovat úlohu služby Azure IoT Hub vyvolat přímé metodu a nastavit požadovanou vlastnost na několika zařízeních. Použití zařízení Azure IoT SDK pro jazyk Java k implementaci aplikace simulovaného zařízení a sady SDK pro jazyk Java k implementaci aplikační služby, který chcete spustit úlohu služby Azure IoT.
-services: iot-hub
-documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: ''
 ms.service: iot-hub
+services: iot-hub
 ms.devlang: java
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/10/2017
 ms.author: dobett
-ms.openlocfilehash: b8b0742054b0348ded39b6357d00f6eac3449f99
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: cb25ae0e90189f0c808f561b20e45f08b49df0d6
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34633753"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Úlohy plán a všesměrového vysílání (Java)
 

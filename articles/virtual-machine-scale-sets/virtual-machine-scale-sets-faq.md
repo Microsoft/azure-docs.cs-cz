@@ -16,20 +16,22 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 2b0f463c009d13440f6d3eb2bbbe2315ba7b13f2
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bf73f9419732e93c1f32f2fb39d3acee02f49b64
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34656437"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Nejčastější dotazy k sadách škálování virtuálních počítačů Azure
 
 Získejte odpovědi na nejčastější dotazy týkající se sady škálování virtuálního počítače v Azure.
 
 ## <a name="top-frequently-asked-questions-for-scale-sets"></a>Horní nejčastější dotazy pro sady škálování
+
 **Otázka:** Kolik virtuálních počítačů může obsahovat škálovací sada?
 
-**Odpověď:** Škálovací sada může obsahovat 0 až 1 000 virtuálních počítačů založených na imagích platformy nebo 0 až 300 virtuálních počítačů založených na vlastních imagích. 
+**Odpověď:** Škálovací sada může obsahovat 0 až 1 000 virtuálních počítačů založených na imagích platformy nebo 0 až 300 virtuálních počítačů založených na vlastních imagích.
 
 **Otázka:** Podporují se ve škálovacích sadách datové disky?
 
@@ -47,7 +49,7 @@ Získejte odpovědi na nejčastější dotazy týkající se sady škálování 
 
 **Otázka:** Jak se vytváří škálovací sada s použitím vlastní image?
 
-**Odpověď:** Na základě virtuálního pevného disku vlastní image vytvoříte spravovaný disk, na který budete odkazovat v šabloně škálovací sady. [Tady je příklad](https://github.com/chagarw/MDPP/tree/master/101-vmss-custom-os).
+**Odpověď:** Vytvoření a zachycení image virtuálního počítače a pak použít jako zdroj pro škálovací sadu. Kurz o tom, jak vytvořit a používat vlastní image virtuálního počítače, můžete použít [Azure CLI 2.0](tutorial-use-custom-image-cli.md) nebo [prostředí Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 **Otázka:** Pokud snížím kapacitu škálovací sady z 20 na 15, které virtuální počítače budou odebrány?
 
@@ -119,7 +121,7 @@ Příklad používá metrika úrovni hostitele procesoru a metriky počet zpráv
 
 Výstrahy můžete vytvořit na metriky pro sady škálování virtuálního počítače pomocí prostředí PowerShell nebo rozhraní příkazového řádku Azure. Další informace najdete v tématu [ukázky rychlý start Azure PowerShell monitorování](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules) a [Azure monitorování napříč platformami rozhraní příkazového řádku rychlý start ukázky](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts).
 
-TargetResourceId škálovací sadu virtuálních počítačů vypadá takto: 
+TargetResourceId škálovací sadu virtuálních počítačů vypadá takto:
 
 /subscriptions/yoursubscriptionid/resourceGroups/yourresourcegroup/providers/Microsoft.COMPUTE/virtualMachineScaleSets/yourvmssname
 
@@ -127,8 +129,12 @@ Můžete jako metriku nastavit výstrahy pro všechny čítače výkonu virtuál
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>Jak mám nastavit automatické škálování podle škálování virtuálních počítačů, nastavit pomocí prostředí PowerShell?
 
-Nastavit škálování na škálování virtuálních počítačů, nastavit pomocí prostředí PowerShell, naleznete v příspěvku blogu [postup přidání škálování na sadu škálování virtuálního počítače Azure](https://msftstack.wordpress.com/2017/03/05/how-to-add-autoscale-to-an-azure-vm-scale-set/).
+Škálování na škálování virtuálních počítačů, nastavit pomocí prostředí PowerShell, naleznete v tématu [automaticky škálovat škálovací sadu virtuálních počítačů](tutorial-autoscale-powershell.md). Můžete také nakonfigurovat automatické škálování s [Azure CLI 2.0](tutorial-autoscale-cli.md) a [šablony Azure](tutorial-autoscale-template.md)
 
+
+### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>Pokud I přestaly (deallocated) virtuálního počítače, je tento virtuální počítač spuštěn jako součást operace škálování?
+
+Ne. Pokud pravidel škálování vyžadovat další instance virtuálních počítačů v rámci sady škálování, je vytvořena nová instance virtuálního počítače. Instance virtuálních počítačů, které jsou zastaveny (nepřiřazeném) nejsou spuštěna jako součást událost škálování. Ale tyto zastaveném (deallocated) virtuálních počítačů, můžou se odstranit v rámci automatického škálování událost, která ID měřítka v počtu instancí, stejným způsobem, můžou se odstranit všechny instance virtuálního počítače na základě pořadí instance virtuálního počítače.
 
 
 
