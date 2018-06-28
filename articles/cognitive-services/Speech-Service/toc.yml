@@ -12,31 +12,33 @@
     - name: 'Rozpoznávání řeči v C#'
       href: quickstart-csharp-windows.md
     - name: Rozpoznávání řeči v C++ pro Windows
-      href: cpp-windows.md
+      href: quickstart-cpp-windows.md
     - name: Rozpoznávání řeči v C++ pro Linux
-      href: cpp-linux.md
+      href: quickstart-cpp-linux.md
     - name: Začínáme se sadou Speech Devices SDK
       href: speech-devices-sdk-qsg.md
-- name: Návody
+- name: Přizpůsobení
   items:
-    - name: Rozpoznávání řeči
-      href: how-to-speech-to-text.md
     - name: Přizpůsobení modelů řeči
       href: how-to-customize-speech-models.md
-    - name: Syntetizace řeči
-      href: how-to-text-to-speech.md
     - name: Přizpůsobení hlasových písem
       href: how-to-customize-voice-font.md
-    - name: Překlad řeči
-      href: how-to-translate-speech.md
     - name: Příprava přepisů
       href: prepare-transcription.md
     - name: Použití vlastních zvukových streamů
       href: how-to-use-audio-input-streams.md
+    - name: Přizpůsobení aktivačního slova pro zařízení (Devices SDK)
+      href: speech-devices-sdk-create-kws.md
+- name: Návody
+  items:
+    - name: Rozpoznávání řeči
+      href: how-to-speech-to-text.md
+    - name: Syntetizace řeči
+      href: how-to-text-to-speech.md
+    - name: Překlad řeči
+      href: how-to-translate-speech.md
     - name: Získání sady Speech Devices SDK
       href: get-speech-devices-sdk.md
-    - name: Přizpůsobení aktivačního slova pro zařízení
-      href: speech-devices-sdk-create-kws.md
     - name: Dávkový přepis (call centra)
       href: batch-transcription.md
 - name: Ukázky
@@ -73,8 +75,14 @@
       href: speech-synthesis-markup.md
 - name: Zdroje a prostředky
   items:
-    - name: Převod řeči na text – nejčastější dotazy
-      href: faq-stt.md
+    - name: Nejčastější dotazy
+      items:
+        - name: Převod řeči na text – nejčastější dotazy
+          href: faq-stt.md
+        - name: Převod textu na řeč – nejčastější dotazy
+          href: faq-text-to-speech.md
+        - name: Aplikace Translator – nejčastější dotazy
+          href: 'https://www.microsoft.com/en-us/translator/faq.aspx'
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: UserVoice

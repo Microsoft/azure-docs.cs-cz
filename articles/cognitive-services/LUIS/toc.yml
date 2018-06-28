@@ -2,7 +2,7 @@
   href: index.yml
 - name: Přehled
   items:
-    - name: Další informace o službě Language Understanding
+    - name: Co je Language Understanding?
       href: Home.md
     - name: Podporované jazyky
       href: luis-supported-languages.md
@@ -25,10 +25,10 @@
           href: luis-quickstart-primary-and-secondary-data.md
         - name: Hierarchická entita
           href: luis-quickstart-intent-and-hier-entity.md
-        - name: Entita seznamu
-          href: luis-quickstart-intent-and-list-entity.md
         - name: Entita regulárního výrazu
           href: luis-quickstart-intents-regex-entity.md
+        - name: Entita seznamu
+          href: luis-quickstart-intent-and-list-entity.md
         - name: Entita klíčové fráze
           href: luis-quickstart-intent-and-key-phrase.md
         - name: Analýza mínění
@@ -238,7 +238,33 @@
     - name: Hranice
       href: luis-boundaries.md
     - name: Referenční informace k předem připraveným entitám
-      href: luis-reference-prebuilt-entities.md
+      items:
+        - name: Entity pro jednotlivé jazykové verze
+          href: luis-reference-prebuilt-entities.md
+        - name: Entita Age
+          href: luis-reference-prebuilt-age.md
+        - name: Entita Currency
+          href: luis-reference-prebuilt-currency.md
+        - name: Entita DatetimeV2
+          href: luis-reference-prebuilt-datetimev2.md
+        - name: Entita Dimension
+          href: luis-reference-prebuilt-dimension.md
+        - name: Zastaralé entity
+          href: luis-reference-prebuilt-deprecated.md
+        - name: Entita Email
+          href: luis-reference-prebuilt-email.md
+        - name: Entita Number
+          href: luis-reference-prebuilt-number.md
+        - name: Entita Ordinal
+          href: luis-reference-prebuilt-ordinal.md
+        - name: Entita Percentage
+          href: luis-reference-prebuilt-percentage.md
+        - name: Entita Phonenumber
+          href: luis-reference-prebuilt-phonenumber.md
+        - name: Entita Temperature
+          href: luis-reference-prebuilt-temperature.md
+        - name: Entita URL
+          href: luis-reference-prebuilt-url.md
     - name: Referenční informace k předem připraveným doménám
       href: luis-reference-prebuilt-domains.md
     - name: Referenční informace k předem připraveným aplikacím Cortana

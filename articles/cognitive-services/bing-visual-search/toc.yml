@@ -15,12 +15,27 @@
       href: quickstarts/nodejs.md
     - name: První dotaz v Pythonu
       href: quickstarts/python.md
+- name: Sada SDK
+  expanded: true
+  items:
+    - name: Přehled ukázek SDK
+      href: sdk.md
+    - name: 'SDK v C#'
+      href: visual-search-sdk-c-sharp.md
+    - name: SDK v Node
+      href: visual-search-sdk-node.md
+    - name: SDK v Pythonu
+      href: visual-search-sdk-python.md
 - name: Kurzy
   items:
     - name: Jednostránková webová aplikace
       href: tutorial-bing-visual-search-single-page-app.md
     - name: Jednostránková webová aplikace (zdrojový kód)
       href: tutorial-bing-visual-search-single-page-app-source.md
+    - name: Oblast oříznutí obrázku sady Bing Visual Search SDK a výsledky
+      href: tutorial-visual-search-crop-area-results.md
+    - name: ImageInsightsToken sady Bing Visual Search SDK a výsledky
+      href: tutorial-visual-search-insights-token.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
