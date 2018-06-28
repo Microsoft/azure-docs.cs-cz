@@ -1,6 +1,6 @@
 Ujistěte se, že jste již vytvořili obor názvů Service Bus, jak je znázorněno [zde][namespace-how-to].
 
-1. Přihlaste se k webu [Azure Portal][azure-portal].
+1. Přihlaste se na web [Azure Portal][azure-portal].
 2. V levém navigačním podokně portálu klikněte na **Service Bus** (pokud položku **Service Bus** nevidíte, klikněte na **Všechny služby**).
 3. Klikněte na obor názvů, ve kterém chcete vytvořit frontu. V tomto případě se jedná o **sbnstest1**.
    

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/20/2018
 ms.author: kgremban
-ms.openlocfilehash: 7b7f8e1805850861b30eb2a54991e5ab7fa96335
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: dbc1cc4a72d0346c92d506358c39a66a4d780b32
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808175"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36331553"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>Rychlý start: Odesílání telemetrických dat ze zařízení do centra IoT (iOS)
 
@@ -135,9 +135,7 @@ Pokud při spuštění příkazu iothub-explorer dojde k chybě, pečlivě zkont
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Pokud chcete pokračovat v testování služby IoT Hub v dalších článcích, ponechte si skupinu prostředků a centrum IoT pro pozdější použití.
-
-Pokud už centrum IoT nepotřebujete, odstraňte ho společně se skupinou prostředků na portálu. Provedete to výběrem skupiny prostředků, která obsahuje vaše centrum IoT, a kliknutím na **Odstranit**.
+[!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Další kroky
 
