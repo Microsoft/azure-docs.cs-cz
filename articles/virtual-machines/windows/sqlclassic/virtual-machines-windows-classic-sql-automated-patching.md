@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: jroth
-ms.openlocfilehash: 1da89bbf88e9f1f2105e7afab5c3fdabcecdbc64
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 4bb13ec9d835959273801c2f53c8d736491080a6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852706"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061331"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Automatizované opravy pro SQL Server na virtuálních počítačích Azure (klasický)
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Pomocí automatizované opravy, zvažte následující požadavky:
 * SQL Server 2014
 * SQL Server 2016
 
-**Azure PowerShell**:
+**Prostředí Azure PowerShell**:
 
 * [Nainstalujte nejnovější příkazy prostředí Azure PowerShell](/powershell/azure/overview).
 
@@ -86,7 +86,7 @@ Podle toho, v tomto příkladu, následující tabulka popisuje praktická vliv 
 | --- | --- |
 | **DayOfWeek** |Každý čtvrtek nainstalovány opravy. |
 | **MaintenanceWindowStartingHour** |Začátek aktualizace na 11:00. |
-| **MaintenanceWindowsDuration** |Během 120 minut musí být nainstalované opravy. Podle času zahájení, musí provést podle 1:00 pm. |
+| **MaintenanceWindowDuration** |Během 120 minut musí být nainstalované opravy. Podle času zahájení, musí provést podle 1:00 pm. |
 | **PatchCategory** |Jedinou možnou nastavení pro tento parametr je "Důležité". |
 
 Ho může trvat několik minut k instalaci a konfiguraci IaaS Agent serveru SQL Server.

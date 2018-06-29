@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: ellacroi
-ms.openlocfilehash: 11a4fe4cd7b4b08b4468e08bba754518d27abb99
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: f39392518f89ac51afd9a18fe59bcef46840478d
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309534"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054169"
 ---
 # <a name="grow-your-business-with-appsource"></a>Růst společnosti s AppSource  
 Použít AppSource při zaujmout obchodní zákazníkům najít, zkuste a get-obchodní software jako služba (SaaS) aplikace a implementaci služby Nápověda jednotky obchodní výsledky a zkrátit čas na hodnotu.  
@@ -67,7 +67,7 @@ Kvalitu aplikace publikace a zavázala k zákazníka zaměřená na vyžádání
 Následující kontrolní seznam obsahuje marketing osvědčené postupy a prostředků, které můžete zvážit při vytváření nabídky publikována na AppSource:  
 *   **Uvědomte si Microsoft Trademark & Brand pokyny.**  
     Při pojmenovávání vaší aplikace a odkazující na ochranné známky společnosti Microsoft a názvy softwaru společnosti Microsoft, produktů a služeb, postupujte podle Trademark Microsoft a pokyny pro značku, jakož i pokyny relevantní určitého produktu.  
-    *   Další informace o ochranné známky společnosti Microsoft a značka, najdete v článku Microsoft Trademark a pokyny Brand stránky na [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).  
+    *   Další informace o ochranné známky společnosti Microsoft a značka, najdete v článku Microsoft Trademark a pokyny Brand stránky na [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx).  
 *   **Povolit get teď prostředí, nabídka bezplatné zkušební verze, nebo testovací prostředí jednotky pro vaši aplikaci.**  
     Podnikoví uživatelé chtít nejprve ručně prostředí vaší aplikace.  
 *   **Sestavení nabízená silné hodnota.**  
@@ -104,7 +104,7 @@ V následujících tabulkách jsou upřesněny každého kroku vyplníte vaše n
 
 | Nabídka nastavení | Osvědčené postupy | 
 |:---------------------------------------- |:----------------------------------------------------- |
-| **Název** | **Pojmenování vaši nabídku**<br />Volba názvu pro vaši aplikaci je klíčová rozhodnutí. Na základě Benefit názvy jsou efektivnější než popisné názvy. Zákazníci hodnotu základní obdrží by měl název vaší aplikace komunikovat. Včetně hledaná klíčová slova v název vaší aplikace může také pomoct vaší aplikace, jejíž pořadí se určí vyšší ve výsledcích vyhledávání. Při odkazování na ochranné známky společnosti Microsoft a názvy Microsoft, softwaru, produktů a služeb, postupujte podle Trademark Microsoft a pokyny pro značku, jakož i pokyny relevantní určitého produktu.<ul> <li>Další informace o ochranné známky společnosti Microsoft a značka, najdete v článku Microsoft Trademark a pokyny Brand stránky na [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx).</li> </ul> |
+| **Název** | **Pojmenování vaši nabídku**<br />Volba názvu pro vaši aplikaci je klíčová rozhodnutí. Na základě Benefit názvy jsou efektivnější než popisné názvy. Zákazníci hodnotu základní obdrží by měl název vaší aplikace komunikovat. Včetně hledaná klíčová slova v název vaší aplikace může také pomoct vaší aplikace, jejíž pořadí se určí vyšší ve výsledcích vyhledávání. Při odkazování na ochranné známky společnosti Microsoft a názvy Microsoft, softwaru, produktů a služeb, postupujte podle Trademark Microsoft a pokyny pro značku, jakož i pokyny relevantní určitého produktu.<ul> <li>Další informace o ochranné známky společnosti Microsoft a značka, najdete v článku Microsoft Trademark a pokyny Brand stránky na [www.microsoft.com/legal/intellectualproperty/trademarks/usage/general.aspx](https://www.microsoft.com/en-us/legal/intellectualproperty/trademarks/usage/general.aspx).</li> </ul> |
 
 **StoreFront podrobnosti - podrobnosti nabídky**  
 

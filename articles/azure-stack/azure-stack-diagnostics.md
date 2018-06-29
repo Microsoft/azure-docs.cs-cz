@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 06/27/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: b966ed4f1a9a8e659fbce185a807573d5321b251
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 50fef25a3b7b71821e64638729eb8d93f65b9e31
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801649"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063784"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure zásobníku diagnostické nástroje
 
@@ -46,6 +46,35 @@ Následuje několik příkladů typů protokolu, které byly shromážděny:
 *   **Protokoly trasování událostí pro Windows**
 
 Tyto soubory jsou shromážděny a uloženy ve sdílené složce kolekce trasování. **Get-AzureStackLog** rutiny prostředí PowerShell pak umožňuje shromažďovat je, pokud je to nezbytné.
+
+### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems"></a>Ke spuštění v Azure zásobníku Get-AzureStackLog integrované systémy 
+Chcete-li spustit nástroj kolekce protokolu na integrovaný systém, mají přístup do privilegované koncového bodu (období). Tady je ukázkového skriptu můžete spustit pomocí období pro shromažďování protokolů na integrovaný systém:
+
+```powershell
+$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
+ 
+$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
+ 
+$shareCred = Get-Credential
+ 
+$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+
+$fromDate = (Get-Date).AddHours(-8)
+$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
+ 
+Invoke-Command -Session $s {    Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
+
+if($s)
+{
+    Remove-PSSession $s
+}
+```
+
+- Parametry **OutputSharePath** a **OutputShareCredential** se používají k odeslání protokolů k externí sdílené složce.
+- Jak je uvedeno v předchozím příkladu **FromDate** a **ToDate** parametry lze shromažďovat protokoly pro konkrétní časové období. To může se hodit pro scénáře, jako je shromažďování protokolů po použití balíčku aktualizace na integrovaný systém.
+
+
  
 ### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>Ke spuštění Get-AzureStackLog v systému Azure zásobníku Development Kit (ASDK)
 1. Přihlaste se jako **AzureStack\CloudAdmin** na hostiteli.
@@ -77,65 +106,6 @@ Tyto soubory jsou shromážděny a uloženy ve sdílené složce kolekce trasov�
   ```powershell
   Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
-
-### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1804-and-later"></a>Ke spuštění v Azure zásobníku Get-AzureStackLog integrované systémy verze 1804 a novější
-
-Chcete-li spustit nástroj kolekce protokolu na integrovaný systém, mají přístup do privilegované koncového bodu (období). Tady je ukázkového skriptu můžete spustit pomocí období pro shromažďování protokolů na integrovaný systém:
-
-```powershell
-$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
- 
-$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
-$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
- 
-$shareCred = Get-Credential
- 
-$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
-
-$fromDate = (Get-Date).AddHours(-8)
-$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
- 
-Invoke-Command -Session $s {    Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
-
-if($s)
-{
-    Remove-PSSession $s
-}
-```
-
-- Parametry **OutputSharePath** a **OutputShareCredential** se používají k odeslání protokolů k externí sdílené složce.
-- Jak je uvedeno v předchozím příkladu **FromDate** a **ToDate** parametry lze shromažďovat protokoly pro konkrétní časové období. To může se hodit pro scénáře, jako je shromažďování protokolů po použití balíčku aktualizace na integrovaný systém.
-
-
-### <a name="to-run-get-azurestacklog-on-azure-stack-integrated-systems-version-1803-and-earlier"></a>Ke spuštění v Azure zásobníku Get-AzureStackLog integrované systémy verze 1803 a starší
-
-Chcete-li spustit nástroj kolekce protokolu na integrovaný systém, mají přístup do privilegované koncového bodu (období). Tady je ukázkového skriptu můžete spustit pomocí období pro shromažďování protokolů na integrovaný systém:
-
-```powershell
-$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
- 
-$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
-$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
- 
-$shareCred = Get-Credential
- 
-$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
-
-$fromDate = (Get-Date).AddHours(-8)
-$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
- 
-Invoke-Command -Session $s {    Get-AzureStackLog -OutputPath "\\<HLH MACHINE ADDRESS>\c$\logs" -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
-
-if($s)
-{
-    Remove-PSSession $s
-}
-```
-
-- Pokud shromažďujete protokoly období, zadejte **OutputPath** parametr na umístění na počítači hardwaru životního cyklu hostitele (HLH). Ujistěte se také, že umístění je zašifrovaná.
-- Parametry **OutputSharePath** a **OutputShareCredential** jsou volitelné a používají se při odeslání protokolů k externí sdílené složce. Použít tyto parametry *kromě* k **OutputPath**. Pokud **OutputPath** není zadán, nástroje kolekce protokol používá systémové jednotce virtuálního počítače období pro úložiště. To může způsobit skript se nezdařila, protože je omezená místo na disku.
-- Jak je uvedeno v předchozím příkladu **FromDate** a **ToDate** parametry lze shromažďovat protokoly pro konkrétní časové období. To může se hodit pro scénáře, jako je shromažďování protokolů po použití balíčku aktualizace na integrovaný systém.
-
 
 ### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Parametr aspekty ASDK a integrované systémy
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: 18398094dfff03739a3d3d44d2c9c58149271123
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 1c1c294a877a996dc0e6cb916b038dc0ca27ed5c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "34638632"
+ms.locfileid: "37061705"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Připojit ITSM produkty nebo služby s konektoru služby správy IT
 Tento článek obsahuje informace o tom, jak nakonfigurovat připojení mezi ITSM produktům a službám a konektor pro správu služby IT (ITSMC) v analýzy protokolů můžete centrálně spravovat pracovní položky. Další informace o ITSMC najdete v tématu [přehled](log-analytics-itsmc-overview.md).
@@ -191,7 +191,7 @@ Zajistěte, aby že byly splněny následující požadavky:
 **Správci ServiceNow musíte provést následující v jejich instance ServiceNow**:
 - Generování ID klienta a tajný klíč klienta pro produkt ServiceNow. Informace o tom, jak vygenerovat ID klienta a tajný klíč podle potřeby najdete následující informace:
 
-    - [Nastavit OAuth pro Kingston](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/concept/OAuth-setup.html)
+    - [Nastavit OAuth pro Kingston](https://docs.servicenow.com/bundle/kingston-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Nastavit OAuth pro Jakarta](https://docs.servicenow.com/bundle/jakarta-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Nastavit OAuth pro Istanbul](https://docs.servicenow.com/bundle/istanbul-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)
     - [Nastavit OAuth pro Helsinkách](https://docs.servicenow.com/bundle/helsinki-platform-administration/page/administer/security/task/t_SettingUpOAuth.html)

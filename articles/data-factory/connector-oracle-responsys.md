@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z Responsys Oracle pomocí Azure Data Factory (Beta) | Microsoft Docs
+title: Kopírování dat z Responsys Oracle pomocí Azure Data Factory | Microsoft Docs
 description: Postup kopírování dat z Oracle Responsys do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,24 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/30/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 3d4c36578402d5a31464bc8a1c77f60cba9104c0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1368a75fb8ae44949ef25def19589ab164e25d8b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617398"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058851"
 ---
-# <a name="copy-data-from-oracle-responsys-using-azure-data-factory-beta"></a>Kopírování dat z Responsys Oracle pomocí Azure Data Factory (Beta)
+# <a name="copy-data-from-oracle-responsys-using-azure-data-factory"></a>Kopírování dat z Responsys Oracle pomocí Azure Data Factory
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Oracle Responsys. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
 
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aktivitu kopírování v V1](v1/data-factory-data-movement-activities.md).
-
 > [!IMPORTANT]
-> Tento konektor je aktuálně ve verzi Beta. Můžete si vyzkoušet a sdělte nám svůj názor. Nepoužívejte ji v produkčním prostředí.
+> Tento konektor je aktuálně ve verzi preview. Můžete si vyzkoušet a sdělte nám svůj názor. Pokud do svého řešení chcete zavést závislost na konektorech ve verzi Preview, kontaktujte [podporu Azure](https://azure.microsoft.com/support/).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 

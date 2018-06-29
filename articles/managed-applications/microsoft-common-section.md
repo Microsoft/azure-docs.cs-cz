@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: e6d7d5d7b205d275c72e96df527a354b072a9dd3
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 90ffae3dd8b05041c34d766e464eb68f793f6066
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260965"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062974"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Element Microsoft.Common.Section uživatelského rozhraní
 Ovládací prvek, který seskupuje jeden či více elementů pod nadpisem.
@@ -31,17 +31,17 @@ Ovládací prvek, který seskupuje jeden či více elementů pod nadpisem.
 {
   "name": "section1",
   "type": "Microsoft.Common.Section",
-  "label": "Some section",
+  "label": "Example section",
   "elements": [
     {
-      "name": "element1",
+      "name": "text1",
       "type": "Microsoft.Common.TextBox",
-      "label": "Some text box 1"
+      "label": "Example text box 1"
     },
     {
-      "name": "element2",
+      "name": "text2",
       "type": "Microsoft.Common.TextBox",
-      "label": "Some text box 2"
+      "label": "Example text box 2"
     }
   ],
   "visible": true
@@ -49,14 +49,14 @@ Ovládací prvek, který seskupuje jeden či více elementů pod nadpisem.
 ```
 
 ## <a name="remarks"></a>Poznámky
-- `elements` musí obsahovat alespoň jeden element a může obsahovat všechny typy element kromě `Microsoft.Common.Section`.
+- `elements` musí mít alespoň jeden element a může mít všechny typy element kromě `Microsoft.Common.Section`.
 - Tento element nepodporuje `toolTip` vlastnost.
 
 ## <a name="sample-output"></a>Ukázkový výstup
 Pro přístup k výstupu hodnoty elementů v `elements`, použijte [basics()](create-uidefinition-functions.md#basics) nebo [steps()](create-uidefinition-functions.md#steps) funkce a s tečkami:
 
 ```json
-basics('section1').element1
+steps('configuration').section1.text1
 ```
 
 Elementy typu `Microsoft.Common.Section` mít žádné hodnoty výstup, sami.

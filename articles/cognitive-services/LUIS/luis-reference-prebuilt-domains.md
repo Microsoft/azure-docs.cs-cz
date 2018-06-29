@@ -10,15 +10,17 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: v-geberr
-ms.openlocfilehash: 8e04853e0044e045158642fea51c225378eb3ad6
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 14c53bd25913922a0cd7cc438ad0fbe8b4663dd1
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319050"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061960"
 ---
-# <a name="prebuilt-domain-reference"></a>Informace o předem domény
-Tento odkaz obsahuje informace o předem domény, které jsou předem sestavené kolekce tříd Intent a entitami, které nabízí LEOŠ.
+# <a name="prebuilt-domain-reference"></a>Referenční informace k předem připraveným doménám
+Tento odkaz obsahuje informace o [předem domény](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce tříd Intent a entitami, které nabízí LEOŠ.
+
+[Vlastní domény](create-new-app.md), naopak spustit bez záměry a modely. Všechny předem domény záměry a entity můžete přidat vlastní modelu.
 
 ## <a name="list-of-prebuilt-domains"></a>Seznam přednastavených domén
 LEOŠ nabízí 20 předem domén. 
@@ -41,7 +43,7 @@ LEOŠ nabízí 20 předem domén.
 | Připomenutí | Zpracovává požadavky týkající se vytváření, úpravy a hledání připomenutí.| cs-CZ<br/> zh-CN |
 | RestaurantReservation | Zpracování požadavků pro správu restaurace rezervace.| cs-CZ<br/> zh-CN |
 | Taxíkem | Rezervace pro taxíkem zpracování.| cs-CZ<br/> zh-CN |
-| Převede | Text pro daný jazyk překladu.| cs-CZ<br/> zh-CN |
+| Překlad | Text pro daný jazyk překladu.| cs-CZ<br/> zh-CN |
 | TV | Řízení televizní přijímače.| cs-CZ |
 | Veřejné služby  | Zpracování požadavků, které jsou obvyklé v mnoha oblastech, jako je "Nápověda", "opakovat", "začněte znovu."| cs-CZ |
 | Počasí | Získávání zprávy o počasí a prognózy.| cs-CZ<br/> zh-CN |
@@ -525,7 +527,7 @@ Cancel my Uber
 | TransportationCompany | Název zprostředkovatele přenosu.|Amtrak<br/>Acela<br/>Greyhound|
 | TransportationType | Typ Transport.|Sběrnice<br/>Trénování<br/>Autem|
 
-## <a name="translate"></a>Převede 
+## <a name="translate"></a>Překlad 
 Domény přeložit poskytuje záměry a entity související text pro daný jazyk překladu.
 
 ### <a name="examples"></a>Příklady
@@ -538,7 +540,7 @@ Translate this sentence to English
 ### <a name="intents"></a>Záměry
 | Záměrné název | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Převede| Převede text na jiný jazyk.|Převede na francouzštinu<br/>Převede hello němčina|
+| Překlad| Převede text na jiný jazyk.|Převede na francouzštinu<br/>Převede hello němčina|
 
 
 ### <a name="entities"></a>Entity

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: deguhath
-ms.openlocfilehash: a856c59191a1e35b78d1ab6c2c88ab5288ea1419
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 991e4b86a1d3e75c02e5ed8fe97727c625f174a4
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836479"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058904"
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>Vehicle řešení analýzy Telemetrie playbook: přímý ponořte do řešení
 Této nabídky odkazy na části této playbook: 
@@ -35,7 +35,7 @@ Toto řešení využívá dva různé datové zdroje:
 * Simulované vehicle signály a diagnostiky datové sady
 * Vehicle katalogu
 
-Vehicle telematika jsme je součástí tohoto řešení, jak je znázorněno na následujícím snímku obrazovky. Ho vysílá diagnostické informace a signály, které odpovídají stavu nástroj a podporovat jeho vzor k danému bodu v čase. Chcete-li stáhnout Vehicle telematika simulátoru Visual Studio řešení pro přizpůsobení podle požadavků, přejděte na [Vehicle telematika simulátoru](http://go.microsoft.com/fwlink/?LinkId=717075) webovou stránku. Katalogu vehicle obsahuje referenční datové sady, který se mapuje na modely vehicle identifikačními čísly (VINs).
+Vehicle telematika jsme je součástí tohoto řešení, jak je znázorněno na následujícím snímku obrazovky. Ho vysílá diagnostické informace a signály, které odpovídají stavu nástroj a podporovat jeho vzor k danému bodu v čase.  Katalogu vehicle obsahuje referenční datové sady, který se mapuje na modely vehicle identifikačními čísly (VINs). Poznámka: V datové sadě Vehicle telematika simulátoru Visual Studio řešení již není k dispozici. 
 
 ![Vehicle telematika simulátoru](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig1-vehicle-telematics-simulator.png)
 
@@ -363,7 +363,7 @@ Aplikace je součástí řešení, aby zprovoznit model machine learning v reál
 
 Tento vzor platí i pro scénáře, ve kterých chcete integrovat-obchodní aplikace s tokem analýzu v reálném čase. Mezi tyto scénáře patří výstrahy, oznámení a zasílání zpráv.
 
-Si můžete stáhnout řešení nástroje RealtimeDashboardApp Visual Studio přizpůsobení [RealtimeDashboardApp stažení](http://go.microsoft.com/fwlink/?LinkId=717078) webovou stránku. 
+Poznámka: aby data pro řešení nástroje RealtimeDashboardApp Visual Studio již není k dispozici.
 
 #### <a name="execute-the-real-time-dashboard-application"></a>**Spuštění aplikace v reálném čase řídicí panel**
 1. Rozbalte RealtimeDashboardApp a uložit místně.
@@ -669,10 +669,9 @@ Tento dokument obsahuje podrobné procházení řešení Analytics Vehicle Telem
 
 ### <a name="references"></a>Odkazy
 
-* [Řešení vehicle telematika simulátoru sady Visual Studio](http://go.microsoft.com/fwlink/?LinkId=717075) 
 * [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)
 * [Azure Data Factory](https://azure.microsoft.com/documentation/learning-paths/data-factory/)
 * [Azure SDK centra událostí pro přijímání datového proudu](../../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-* [Možnosti přesun dat Azure Data Factory](../../data-factory/v1/data-factory-data-movement-activities.md)
-* [Aktivita služby Azure Data Factory .NET](../../data-factory/v1/data-factory-use-custom-activities.md)
+* [Možnosti přesun dat Azure Data Factory](../../data-factory/copy-activity-overview.md)
+* [Aktivita služby Azure Data Factory .NET](../../data-factory/transform-data-using-dotnet-custom-activity.md)
 * [Aktivita Azure Data Factory .NET řešení sady Visual Studio lze připravit ukázková data](http://go.microsoft.com/fwlink/?LinkId=717077) 

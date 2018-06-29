@@ -294,15 +294,15 @@
             - name: Nabízejí Kubernetes clusteru
               href: azure-stack-solution-template-kubernetes-cluster-add.md
         - name: Využití a fakturace
+          href: azure-stack-billing-and-chargeback.md
           items:
-            - name: Přehled
-              href: azure-stack-billing-and-chargeback.md
             - name: Spravovat využití a fakturace jako zprostředkovatel kryptografických služeb
               href: azure-stack-add-manage-billing-as-a-csp.md
-            - name: Přidat klienty pro využití a fakturace
-              href: azure-stack-csp-howto-register-tenants.md
-            - name: Spravovat registraci klientů
-              href: azure-stack-csp-ref-operations.md
+              items:
+                - name: Přidat klienty pro využití a fakturace
+                  href: azure-stack-csp-howto-register-tenants.md
+                - name: Spravovat registraci klientů
+                  href: azure-stack-csp-ref-operations.md
             - name: Využití a fakturace odkaz
               items:
                 - name: Generování sestav dat využití

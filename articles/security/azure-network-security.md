@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 774d678c00b830f3932455c5b79fb44bde284d91
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: b1485ff933df7991e1c112981ae10d93bf5613da
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895628"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061537"
 ---
 # <a name="azure-network-security"></a>Zabezpečení sítě Azure
 
 Víme, že je zabezpečení úlohy, jeden v cloudu a jak důležité je, že zjistíte přesné a aktuální informace o zabezpečení Azure. Jedním z nejlepší důvodů, proč používat Azure pro vaše aplikace a služby je využít výhod Azure širokou škálu zabezpečení nástroje a možnosti. Tyto nástroje a možnosti pomoct, aby bylo možné vytvořit zabezpečený řešení na platformě Azure.
 
-Microsoft Azure poskytuje utajení, integrita a dostupnost dat zákazníka, a zároveň umožnit transparentní odpovědnosti za. Vám pomůžou lépe pochopit kolekce ovládacích prvků zabezpečení sítě, která je implementována v rámci Microsoft Azure z hlediska zákazníka, je zapsán tohoto článku, "Azure Network Security", k poskytování komplexní pohled na síti kontrolních mechanismů zabezpečení v Microsoft Azure.
+Microsoft Azure poskytuje utajení, integrita a dostupnost dat zákazníka, a zároveň umožnit transparentní odpovědnosti za. Vám pomůžou lépe pochopit kolekce ovládacích prvků zabezpečení sítě, která je implementována v rámci Microsoft Azure z hlediska zákazníka, tento článek, "Azure Network Security", je určen k poskytování komplexní pohled na síti kontrolních mechanismů pro zabezpečení k dispozici s Microsoft Azure.
 
-Tento dokument je určený k budete informování o širokou škálu ovládací prvky sítě, které můžete konfigurovat pro zvýšení zabezpečení řešení, které můžete nasadit v Azure. Pokud vás zajímá Microsoft nemá k zabezpečení síťových prostředcích infrastruktury ze samotné platformě Azure, najdete v části zabezpečení Azure v [Microsoft Trust Center](https://www.microsoft.com/trustcenter/security/azure-security).
+Tento dokument je určený k budete informování o širokou škálu ovládací prvky sítě, které můžete konfigurovat pro zvýšení zabezpečení řešení, které můžete nasadit v Azure. Pokud vás zajímá Microsoft nemá k zabezpečení síťových prostředcích infrastruktury ze samotné platformě Azure, najdete v části zabezpečení Azure v [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/cloudservices/azure).
 
 ## <a name="azure-platform"></a>Platforma Azure
 
@@ -37,7 +37,7 @@ Pokud sestavení nebo IT prostředky se mají migrovat, poskytovatele služeb ve
 
 Infrastruktury Azure a k aplikacím pro hostování miliony zákazníků současně slouží ze zařízení a poskytuje trustworthy foundation, na kterém může podnikům splňovat požadavky jejich zabezpečení. Azure navíc poskytuje rozsáhlou sadu možností konfigurovat zabezpečení a umožňuje řídit tak, aby zabezpečení ke splnění jedinečným požadavkům vaší organizace nasazení můžete přizpůsobit.
 
-## <a name="abstract"></a>Abstraktní
+## <a name="abstract"></a>abstraktní
 
 Veřejné cloudové služby společnosti Microsoft poskytování služeb flexibilně škálovatelné a infrastruktury, podnikové úrovni funkce a mnoho možností pro hybridní připojení. Můžete přístup k těmto službám prostřednictvím Internetu nebo s Azure ExpressRoute, které poskytuje připojení k privátní síti. Platforma Microsoft Azure umožňuje bezproblémově rozšířit vaši infrastrukturu do cloudu a vytvářet vícevrstvé architektury. Kromě toho můžete povolit třetím stranám rozšířené možnosti prostřednictvím nabídky zabezpečení služeb a virtuálních zařízení.
 
@@ -205,7 +205,7 @@ Jak naznačuje název připojení k Internetu, zpřístupní úlohy z Internetu,
 V tomto scénáři může zveřejnit aplikaci, která musí být veřejné k Internetu a budou moci připojovat k němu z kdekoli nebo z určitých umístění v závislosti na konfiguraci úlohy.
 
 #### <a name="point-to-site-vpn-or-site-to-site-vpn"></a>Point-to-Site VPN nebo VPN typu Site-to-Site
-Tyto dva, které patří do stejné kategorii. Obě potřebují mít bránu VPN virtuální síť a můžete připojit se pomocí buď klienta VPN pro pracovní stanice v rámci [KonfiguracePoint-to-Site](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal) nebo můžete konfigurovat místní [zařízení VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices) moct ukončit site-to-site VPN. Tímto způsobem místní zařízení může připojit k prostředkům v rámci virtuální sítě.
+Tyto dva, které patří do stejné kategorii. Obě potřebují mít bránu VPN virtuální síť a můžete připojit se pomocí buď klienta VPN pro pracovní stanice v rámci [KonfiguracePoint-to-Site](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal) nebo můžete konfigurovat místní [zařízení VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)moct ukončit site-to-site VPN. Tímto způsobem místní zařízení může připojit k prostředkům v rámci virtuální sítě.
 
 Konfigurace Point-to-Site (P2S) umožňuje vytvořit zabezpečené připojení jednotlivých klientských počítačů k virtuální síti. P2S je připojení VPN prostřednictvím protokolu SSTP (Secure Socket Tunneling Protocol).
 
@@ -261,7 +261,7 @@ Následují kontrolní mechanismy zabezpečení, které můžete použít na vir
 -   Řízení dostupnost sítě
 
 #### <a name="network-access-controls"></a>Ovládací prvky pro přístup k síti
-Zatímco Azure Virtual Network (VNet) je základním kamenem Azure model pro sítě a poskytuje izolace a ochrany, [skupiny zabezpečení sítě (NSG)](https://blogs.msdn.microsoft.com/igorpag/2016/05/14/azure-network-security-groups-nsg-best-practices-and-lessons-learned/) jsou hlavní nástroj slouží k vynucení a řídit pravidla pro provoz sítě na úrovni sítě.
+Zatímco Azure Virtual Network (VNet) je základním kamenem Azure model pro sítě a poskytuje izolace a ochrany, [skupiny zabezpečení sítě (NSG)](https://blogs.msdn.microsoft.com/igorpag/2016/05/14/azure-network-security-groups-nsg-best-practices-and-lessons-learned/) jsou hlavní slouží k vynucení a řízení pravidla pro provoz sítě na nástroj úroveň sítě.
 
 ![ Ovládací prvky pro přístup k síti](media/azure-network-security/azure-network-security-fig-8.png)
 
@@ -338,7 +338,7 @@ V následující části jsou uvedené aktuální omezení směrovací tabulku a
 > Další informace najdete v tématu [dokumentace ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/) Další informace.
 
 #### <a name="network-security-appliances"></a>Sítě zabezpečovací zařízení
-Při skupiny zabezpečení sítě a trasy definované uživatelem může poskytnout míru zabezpečení sítě v síti a přenosu vrstvy [OSI model](https://en.wikipedia.org/wiki/OSI_model), budou existovat být situace, kdy má být nebo muset povolit zabezpečení s vyšší úrovní sadu síťových protokolů. V takových situacích doporučujeme nasadit virtuální sítě zabezpečovací zařízení poskytovaných Azure partnery.
+Při skupiny zabezpečení sítě a trasy definované uživatelem může poskytnout míru zabezpečení sítě v síti a přenosu vrstvy [OSI model](https://en.wikipedia.org/wiki/OSI_model), že se chystáte být situace, kdy má být nebo muset povolit zabezpečení v vyšší úrovně sadu síťových protokolů. V takových situacích doporučujeme nasadit virtuální sítě zabezpečovací zařízení poskytovaných Azure partnery.
 
 ![Sítě zabezpečovací zařízení](./media/azure-network-security/azure-network-security-fig-10.png)
 
@@ -389,7 +389,7 @@ Aplikace brány firewall webových aplikací můžete spustit v režimu zjišťo
 
  ![Application Gateway](./media/azure-network-security/azure-network-security-fig-12.png)
 
-Kromě toho aplikace brány firewall webových aplikací umožňuje monitorovat webové aplikace před útoky pomocí protokolu v reálném čase firewall webových aplikací, které jsou integrovány s [Azure monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) a [Azure Security Center](https://azure.microsoft.com/services/security-center/) snadno sledovat trendy a sledovat výstrahy firewall webových aplikací.
+Kromě toho aplikace brány firewall webových aplikací umožňuje monitorovat webové aplikace před útoky pomocí protokolu v reálném čase firewall webových aplikací, které jsou integrovány s [Azure monitorování](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) a [Azure Security Center](https://azure.microsoft.com/services/security-center/) sledovat výstrahy firewall webových aplikací a snadno monitorovat trendy.
 
 Formátovaný protokolu JSON přejde přímo na účet úložiště zákazníka. Mít plnou kontrolu nad tyto protokoly a můžete použít vlastní zásady uchovávání informací.
 
@@ -458,7 +458,7 @@ Když klient se pokusí připojit ke službě, se musí nejprve přeložit náze
 
 Ověření síť Azure, je potřeba zajistit, že síť Azure pracuje jako je nakonfigurován a lze provést ověření pomocí služby a funkce, které jsou k dispozici pro monitorování sítě. Sledovací proces sítě Azure, dostanete nadbytku protokolování a diagnostické funkce, které můžete umožnit příslušným Statistika zjistit stav a výkon sítě. Tyto možnosti jsou dostupné přes portál, prostředí PowerShell, rozhraní příkazového řádku, Rest API a sady SDK.
 
-Zabezpečení provozu Azure se odkazuje na služby, ovládací prvky a funkce, které jsou k dispozici uživatelům pro ochranu svá data, aplikace a dalších prostředků ve službě Microsoft Azure. Zabezpečení provozu Azure je založený na rozhraní, které zahrnuje poznatky získané při různých možnostech, které jsou jedinečné pro společnosti Microsoft, včetně Microsoft SDL Security Development Lifecycle (), programu Microsoft zabezpečení odpovědi Centre a hloubkové povědomí o povahu hrozeb kybernetického zabezpečení.
+Zabezpečení provozu Azure se odkazuje na služby, ovládací prvky a funkce, které jsou k dispozici uživatelům pro ochranu svá data, aplikace a dalších prostředků ve službě Microsoft Azure. Zabezpečení provozu Azure je založený na rozhraní, které zahrnuje poznatky získané při různých možnostech, které jsou jedinečné pro společnosti Microsoft, včetně Microsoft SDL Security Development Lifecycle (), programu Microsoft zabezpečení odpovědi Centre a přímý povědomí o povahu hrozeb kybernetického zabezpečení.
 
 -   [Azure Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
 
@@ -537,7 +537,7 @@ Sledovací proces sítě [zachytáváním paketů proměnné](https://docs.micro
 
 Zachytáváním paketů je rozšíření virtuálního počítače, který se spustil vzdáleně přes sledovací proces sítě. Tato funkce snižuje zátěž spuštěných zachytáváním paketů ručně na požadovaný virtuální počítač, který úspora času. Zachytáváním paketů můžete spustit prostřednictvím portálu, prostředí PowerShell, rozhraní příkazového řádku nebo REST API. Je jeden příklad, jak můžete spustit zachytáváním paketů s výstrahami virtuálního počítače.
 
-#### <a name="ip-flow-verify"></a>Ověřte toku IP
+#### <a name="ip-flow-verify"></a>Ověření toku protokolu IP
 
 [Ověřte IP toky](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview) zkontroluje, jestli je paket povolen nebo odepřen do nebo z virtuálního počítače na základě informací o 5 řazené kolekce členů. Tyto informace se skládá z směr, protokol, místní IP, vzdálené IP, místního portu a vzdáleného portu. Pokud paketu je zakázané skupiny zabezpečení, je vrácen název pravidla, které odepřen paketu. Zatímco můžete vybrat všechny zdrojové i cílové adresy IP, tato funkce vám pomůže správci rychle diagnostikovat problémy s připojením z nebo na Internet a z nebo na místním prostředí.
 
@@ -549,7 +549,7 @@ Určuje, [další segment](https://docs.microsoft.com/azure/network-watcher/netw
 
 Další směrování také vrátí hodnotu směrovací tabulka přidružené k dalším místě směrování. Při dotazování další směrování, pokud trasy, která je definována jako trasy definované uživatelem, bude vrácen danou trasu. V opačném případě vrátí další segment "Systémová trasa".
 
-#### <a name="security-group-view"></a>zobrazení skupiny zabezpečení
+#### <a name="security-group-view"></a>Zobrazení skupiny zabezpečení
 
 Získá zabezpečení efektivní a použitých pravidel, která se použijí na virtuálním počítači. Skupiny zabezpečení sítě na úrovni podsítě nebo na úrovni seskupování souvisejí. Když přidružené na úrovni podsítě, bude se vztahovat na všechny instance virtuálního počítače v podsíti. Síť [zobrazení skupiny zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) vrátí nakonfigurované skupiny Nsg a pravidel, které jsou přidružené úrovni síťových Adaptérů a podsítě pro virtuální počítač poskytuje přehled o konfiguraci. Kromě toho pravidla efektivní zabezpečení jsou vráceny pro jednotlivé síťové adaptéry ve virtuálním počítači. Zobrazení pomocí skupiny zabezpečení sítě, můžete vyhodnotit virtuální počítač chyb zabezpečení sítě, jako je například otevřené porty. Můžete také ověřit, pokud vaše skupina zabezpečení sítě funguje podle očekávání, na základě [srovnání nakonfigurované a pravidla efektivní zabezpečení](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-auditing-powershell).
 

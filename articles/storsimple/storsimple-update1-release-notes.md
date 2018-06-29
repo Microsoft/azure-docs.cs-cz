@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 67603c04cf7b5f45517d16620e5b79241aaae94d
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
+ms.openlocfilehash: 7810027e4ab9df6742b4431d12daf9ba2b678bf6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34057957"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061805"
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>Aktualizovat 1.2 poznámky k verzi pro vaše zařízení řady StorSimple 8000
 
@@ -54,7 +54,7 @@ Tyto funkce byly prvního vydání s Update 1, který byl zpřístupněn pro ome
   * **Kontinuita podnikových procesů**, povolením migrace existujících dat na zařízení řady 5000 7000 tak, aby zařízení řady 8000.
   * **Vylepšené funkce nabídky zařízení řady 8000**, jako je například efektivní centralizovaná správa více zařízení prostřednictvím služby StorSimple Manager, lepší třída hardwaru a aktualizovat firmware, virtuální zařízení, data mobility Funkce a v budoucích plán.
     
-    Odkazovat [příručka k migraci](http://www.microsoft.com/download/details.aspx?id=47322) pro podrobnosti o tom, jak migrovat StorSimple řady 5000 7000 zařízení řady 8000. 
+    Odkazovat [příručka k migraci](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b) pro podrobnosti o tom, jak migrovat StorSimple řady 5000 7000 zařízení řady 8000. 
 * **Dostupnost v portálu Azure Government** – StorSimple je nyní k dispozici na portálu Azure Government. V tématu Jak [nasazení zařízení StorSimple na portálu Azure Government](storsimple-deployment-walkthrough-gov.md).
 * **Podpora pro ostatní poskytovatele cloudových služeb** – jiných poskytovatelů cloudových služeb podporované jsou Amazon S3, Amazon S3 s RRS, HP a OpenStack (beta).
 * **Aktualizace na nejnovější rozhraní API úložiště** – v této verzi se StorSimple aktualizoval na nejnovější rozhraní API služby Azure Storage. Řadu zařízení StorSimple 8000 s verzí softwaru před aktualizací 1 (verze 0.1, 0.2 a 0.3) používají verze API služby úložiště Azure starší než 17 července 2009. Jak je uvedeno v aktualizaci [oznámení o odebrání verze služby úložiště](http://blogs.msdn.com/b/windowsazurestorage/archive/2015/10/19/microsoft-azure-storage-service-version-removal-update-extension-to-2016.aspx), podle 1 srpna 2016, bude tato rozhraní API zastaralá. Je nutné, abyste použili řady 8000 StorSimple Update 1 před 1 srpna 2016. Pokud tak učinit, zařízení StorSimple přestane fungovat správně.
@@ -75,8 +75,8 @@ Následující tabulka obsahuje souhrn problémy, které jsme vyřešili v aktua
 | 7 |Monitorování LED |V některých případech monitorování LED zadní straně zařízení neobsahoval pokyn správný stav. Modré DIODU byl vypnut. DATA 0 a 1 LED dat byly přerušované, i když nebyla nakonfigurovaná tato rozhraní. Tento problém byl opraven a monitorování LED teď správný stav. |Update 1 |Ano |Ne |
 | 8 |Monitorování LED |V některých případech po použití Update 1 modrý indikátor v aktivním řadiči vypnuté a díky tomu je obtížné určit řadič služby active. Tento problém byl opraven v této verzi opravy. |Aktualizace 1.2 |Ano |Ne |
 | 9 |Síťová rozhraní |V předchozích verzích se může zařízení StorSimple pomocí směrovat brány nakonfigurovat přejít do režimu offline. V této verzi metriky rozhraní data 0 byl provedené nejnižší; Proto i v případě jiných síťových rozhraní povolenou podporu cloudu, veškerý provoz cloudu ze zařízení, budou směrovány prostřednictvím Data 0. |Update 1 |Ano |Ano |
-| 10 |Zálohy |Oprava verze 1.1 aktualizace byl opraven chyby v Update 1, který chybu způsobil zálohy selhávat po 24 dní. |Aktualizace 1.1 |Ano |Ano |
-| 11 |Zálohy |Chyby v předchozích verzích za následek nízký výkon pro cloudové snímky s nízkou změnu sazby. V tomto vydání opravy byl opraven této chyby. |Aktualizace 1.2 |Ano |Ano |
+| 10 |Zálohování |Oprava verze 1.1 aktualizace byl opraven chyby v Update 1, který chybu způsobil zálohy selhávat po 24 dní. |Aktualizace 1.1 |Ano |Ano |
+| 11 |Zálohování |Chyby v předchozích verzích za následek nízký výkon pro cloudové snímky s nízkou změnu sazby. V tomto vydání opravy byl opraven této chyby. |Aktualizace 1.2 |Ano |Ano |
 | 12 |Aktualizace |Chyby v Update 1, který ohlásil selhání upgradu a způsobila řadiče uvést do režimu obnovení, byl opraven v této verzi opravy. |Aktualizace 1.2 |Ano |Ano |
 
 ## <a name="known-issues-in-update-12"></a>Známé problémy v aktualizaci 1.2

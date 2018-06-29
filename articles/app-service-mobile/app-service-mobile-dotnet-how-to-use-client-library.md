@@ -14,18 +14,18 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: crdun
-ms.openlocfilehash: 10ce9058fca0ec56640e9bedabcc82683046fe9f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f0f28d4b6573e4e6fecf0e6dd84814d4fc66cd60
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598449"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050485"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak používat spravovaného klienta pro Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
 ## <a name="overview"></a>Přehled
-Tento průvodce vám ukáže, jak provádět běžné scénáře s využitím spravované klientské knihovny pro Azure App Service mobilní aplikace pro Windows a aplikacemi Xamarin. Pokud jste ještě Mobile Apps, zvažte nejdřív dokončení [rychlý start Azure Mobile Apps] [ 1] kurzu. V této příručce se zaměříme na spravované SDK klienta. Další informace o na straně serveru SDK pro Mobile Apps, naleznete v dokumentaci k [.NET serveru SDK] [ 2] nebo [Node.js Server SDK][3].
+Tento průvodce vám ukáže, jak provádět běžné scénáře s využitím spravované klientské knihovny pro Azure App Service mobilní aplikace pro Windows a aplikacemi Xamarin. Pokud jste ještě Mobile Apps, zvažte nejdřív dokončení [rychlý start Azure Mobile Apps] [ 1] kurzu. V této příručce se zaměříme na spravované SDK klienta. Další informace o na straně serveru SDK pro Mobile Apps, naleznete v dokumentaci k [.NET serveru SDK] [ 2] nebo [Node.js Server SDK] [ 3].
 
 ## <a name="reference-documentation"></a>Referenční dokumentace
 Referenční dokumentaci k nástroji pro klienta SDK se nachází zde: [Azure Mobile Apps .NET – referenční informace klienta][4].
@@ -36,7 +36,7 @@ Platformě .NET podporuje tyto platformy:
 
 * Xamarin Android verze pro rozhraní API 19 až 24 (KitKat prostřednictvím cukrovinkách typu nugát)
 * Xamarin iOS verze pro iOS verze 8.0 a novější
-* Univerzální platforma pro Windows
+* Univerzální platforma Windows
 * Windows Phone 8.1
 * Windows Phone 8.0, s výjimkou aplikace Silverlight
 
@@ -215,7 +215,7 @@ List<TodoItem> items = await query.ToListAsync();
 ```
 
 ### <a name="paging"></a>Postupy: vracet data na stránkách
-Ve výchozím nastavení vrátí back-end pouze prvních 50 řádků. Můžete zvýšit počet vrácených řádků voláním [trvat] metoda. Použití `Take` spolu s [přeskočit] metoda požádat o konkrétní "stránka" celkový sady dat vrácených dotazem. Následující dotaz, při spuštění, vrátí první tři položky v tabulce.
+Ve výchozím nastavení vrátí back-end pouze prvních 50 řádků. Můžete zvýšit počet vrácených řádků voláním [trvat] metoda. Použití `Take` spolu s [Přeskočit] metoda požádat o konkrétní "stránka" celkový sady dat vrácených dotazem. Následující dotaz, při spuštění, vrátí první tři položky v tabulce.
 
 ```
 // Define a filtered query that returns the top 3 items.
@@ -335,7 +335,7 @@ jo.Add("id", Guid.NewGuid().ToString("N"));
 ```
 
 ### <a name="modifying"></a>Postupy: Změna dat v back-end mobilní aplikace
-Následující kód ukazuje, jak používat [metod UpdateAsync] metoda aktualizovat existující záznam se stejným ID se novými informacemi. Parametr obsahuje data, která mají být aktualizována jako objekt .NET.
+Následující kód ukazuje, jak používat [Metod UpdateAsync] metoda aktualizovat existující záznam se stejným ID se novými informacemi. Parametr obsahuje data, která mají být aktualizována jako objekt .NET.
 
 ```
 await todoTable.UpdateAsync(todoItem);
@@ -401,7 +401,7 @@ Aplikace, které používají bez typu tabulky povolit optimistickou metodu soub
 todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 ```
 
-Kromě povolení optimistickou metodu souběžného, musí také catch `MobileServicePreconditionFailedException<T>` výjimka ve vašem kódu při volání metody [metod UpdateAsync].  Vyřešte konflikt s použitím správné `version` aktualizovaný záznam a volání [metod UpdateAsync] k vyřešení záznamu. Následující kód ukazuje, jak vyřešit jednou zjištěn konflikt zápisu:
+Kromě povolení optimistickou metodu souběžného, musí také catch `MobileServicePreconditionFailedException<T>` výjimka ve vašem kódu při volání metody [Metod UpdateAsync].  Vyřešte konflikt s použitím správné `version` aktualizovaný záznam a volání [Metod UpdateAsync] k vyřešení záznamu. Následující kód ukazuje, jak vyřešit jednou zjištěn konflikt zápisu:
 
 ```
 private async void UpdateToDoItem(TodoItem item)
@@ -520,7 +520,7 @@ Offline tabulky použijte místní úložiště pro ukládání dat SQLite pro p
    * **Modul Runtime pro Windows 8.1:** nainstalovat [SQLite pro Windows 8.1][3].
    * **Windows Phone 8.1:** nainstalovat [SQLite pro Windows Phone 8.1][4].
    * **Univerzální platformu Windows** nainstalovat [SQLite for Universal Windows][5].
-3. (Volitelné). Zařízení se systémem Windows, klikněte na tlačítko **odkazy** > **přidat odkaz na...** , rozbalte **Windows** složky > **rozšíření**, povolíte příslušné **SQLite pro systém Windows** SDK spolu s **Visual C++ 2013 modulu Runtime pro Windows** SDK.
+3. (Volitelné). Zařízení se systémem Windows, klikněte na tlačítko **odkazy** > **přidat odkaz na...** , rozbalte **Windows** složky > **rozšíření**, povolíte příslušné **SQLite pro systém Windows** SDK společně s **2013 modulu Runtime visual C++ pro systém Windows** SDK.
     Názvy SQLite SDK mírně lišit s každou platformu Windows.
 
 Aby bylo možné vytvořit odkaz na tabulku, musí být připraveno místní úložiště:
@@ -648,7 +648,7 @@ Příklady jsou k dispozici pro následující způsoby ověřování tok klient
 #### <a name="adal"></a>Ověřuje uživatele pomocí knihovny Active Directory Authentication Library
 Active Directory Authentication Library (ADAL) slouží k ověřování uživatelů inicializovat z klienta pomocí ověřování Azure Active Directory.
 
-1. Podle konfigurace váš back-end mobilní aplikace pro přihlašování AAD [jak nakonfigurovat App Service pro přihlášení služby Active Directory] kurzu. Ujistěte se, že dokončení volitelný krok registrace nativní klientskou aplikaci.
+1. Podle konfigurace váš back-end mobilní aplikace pro přihlašování AAD [Jak nakonfigurovat App Service pro přihlášení služby Active Directory] kurzu. Ujistěte se, že dokončení volitelný krok registrace nativní klientskou aplikaci.
 2. V sadě Visual Studio nebo Xamarin Studio, otevřete projekt a přidejte odkaz na `Microsoft.IdentityModel.CLients.ActiveDirectory` balíček NuGet. Při hledání, zahrňte předběžné verze.
 3. Přidejte následující kód k vaší aplikaci, podle platformy, které používáte. V každé zkontrolujte následující náhrady:
 
@@ -795,7 +795,7 @@ private async Task AuthenticateAsync()
 ```
 
 #### <a name="client-livesdk"></a>Jednotné přihlašování pomocí Account Microsoft Live SDK
-K ověřování uživatelů, je nutné zaregistrovat aplikaci ve středisku pro vývojáře účtu Microsoft. Nakonfigurujte podrobnosti registrace na váš back-end mobilní aplikace. Vytvořit registrace účtu Microsoft a připojte ho k váš back-end mobilní aplikace, proveďte kroky v [svou aplikaci zaregistrovat pro používat přihlašovací údaje účtu Microsoft]. Pokud máte Microsoft Store a Windows Phone 8 nebo Silverlight verze aplikace, na verzi Microsoft Store nejprve zaregistrujte.
+K ověřování uživatelů, je nutné zaregistrovat aplikaci ve středisku pro vývojáře účtu Microsoft. Nakonfigurujte podrobnosti registrace na váš back-end mobilní aplikace. Vytvořit registrace účtu Microsoft a připojte ho k váš back-end mobilní aplikace, proveďte kroky v [Svou aplikaci zaregistrovat pro používat přihlašovací údaje účtu Microsoft]. Pokud máte Microsoft Store a Windows Phone 8 nebo Silverlight verze aplikace, na verzi Microsoft Store nejprve zaregistrujte.
 
 Následující kód se ověří pomocí sady SDK za provozu a použije token vrácený pro přihlášení k váš back-end mobilní aplikace.
 
@@ -1017,7 +1017,7 @@ MobileService.GetPush().RegisterAsync(string channelUri, JObject templates, JObj
 
 Všechny značky se odstraní a rychle během registrace pro zabezpečení. Přidání značek na zařízení nebo šablony v rámci instalace naleznete v tématu [práci s .NET back-end serveru SDK pro Azure Mobile Apps].
 
-Odeslat oznámení využívá tyto registrované šablony, najdete v tématu [rozhraní API centra oznámení].
+Odeslat oznámení využívá tyto registrované šablony, najdete v tématu [Rozhraní API centra oznámení].
 
 ## <a name="misc"></a>Ostatní témata
 ### <a name="errors"></a>Postupy: zpracování chyb
@@ -1121,12 +1121,12 @@ public class MyHandler : DelegatingHandler
 [Přeskočit]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [Metod UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserId]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
-[kde]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
+[Kde]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
 [Azure Portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: http://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
-[Centrum vývojářů pro Windows]: https://dev.windows.com/en-us/overview
+[Centrum vývojářů pro Windows]: https://dev.windows.com/overview
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
 [Windows Live SDK]: https://msdn.microsoft.com/library/bb404787.aspx
 [PasswordVault]: http://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx

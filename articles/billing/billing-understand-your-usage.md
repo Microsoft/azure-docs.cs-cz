@@ -1,5 +1,5 @@
 ---
-title: Porozumět Azure podrobné používání
+title: Porozumět Azure podrobné používání | Microsoft Docs
 description: Zjistěte, jak ke čtení a pochopení v částech vaší podrobné informace o použití sdíleného svazku clusteru pro vaše předplatné Azure
 services: ''
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: 0f698bff1506484e1dd4afe22f7c14e0a710937c
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 723e42d2bb2af09eb2236c3cbefeee33987ea45b
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32771134"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060796"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Pochopit podmínky na vaše poplatky Azure podrobné informace o použití Microsoftu 
 
@@ -59,7 +59,7 @@ V horní části ze souboru CSV podrobné informace o použití zobrazí služby
 |Sazba |Rychlost, kterou jste se vám účtovat na jednotku fakturovatelného času |
 |Hodnota |Zobrazuje výsledek násobení sloupci Nadlimitní množství podle sloupce míry. Pokud množství spotřebované není překročit množství zahrnuty, je bezplatná v tomto sloupci. |
 
-### <a name="daily-usage"></a>Denní využití
+### <a name="daily-usage"></a>Denní využívání
 
 Denní využití části ze souboru CSV se zobrazují podrobnosti o použití, které ovlivňují fakturační sazby. V následující tabulce jsou uvedeny podmínky a popisy uvedené v této sekci.
 

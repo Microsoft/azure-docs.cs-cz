@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f18d6817d3a04ad787888ba058e1251303e575a7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bd8b682e073e86bb824d31d6ebab20a80f807730
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622403"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054598"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory plánování a provádění
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [kanálu spouštěcí a aktivační události](../concepts-pipeline-execution-triggers.md) článku.
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [kanálu spouštěcí a aktivační události](../concepts-pipeline-execution-triggers.md) článku.
 
 Tento článek vysvětluje aspekty plánování a spouštění aplikačního modelu služby Azure Data Factory. Tento článek předpokládá, že chápete základní informace o objektu pro vytváření dat aplikací modelu koncepty, včetně aktivit, kanálů, propojené služby a datové sady. Základní koncepty objektu pro vytváření dat Azure najdete v následujících článcích:
 
@@ -190,7 +190,7 @@ Následující tabulka popisuje vlastnosti, které můžete použít v **dostupn
 | frequency |Určuje časovou jednotku pro produkční řez datovou sadu.<br/><br/><b>Podporované frekvence</b>: minutu, hodinu, den, týden, měsíc |Ano |Není k dispozici |
 | interval |Určuje multiplikátor pro četnost<br/><br/>"Frekvence x interval" Určuje, jak často se vytvářejí řez.<br/><br/>Pokud budete potřebovat datovou sadu, která se rozříznut hodinu, nastavíte <b>frekvence</b> k <b>hodinu</b>, a <b>interval</b> k <b>1</b>.<br/><br/><b>Poznámka:</b>: Pokud zadáte četnost jako minutu, doporučujeme nastavit interval na menší než 15 |Ano |Není k dispozici |
 | Styl |Určuje, zda by měl být na zahájení a ukončení intervalu předložen řez.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Pokud je nastavena frekvence měsíc a styl je nastaven na EndOfInterval, řez vytváří poslední den v měsíci. Pokud je styl nastavené na StartOfInterval, řez vytváří první den v měsíci.<br/><br/>Pokud je nastavena frekvence den a styl je nastaven na EndOfInterval, řez se vytvářejí za poslední hodinu dne.<br/><br/>Pokud je nastavena frekvence hodinu a styl je nastaven na EndOfInterval, řez se vytvářejí na konci za hodinu. Například pro řez dobu 13: 00 – 14: 00, je řez vytvořeného ve 2. |Ne |EndOfInterval |
-| anchorDateTime |Definuje absolutní pozici v čase plánovačem slouží k výpočtu hranice řez datovou sadu. <br/><br/><b>Poznámka:</b>: Pokud AnchorDateTime má částí data, která jsou podrobnější než je četnost pak podrobnější části jsou ignorovány. <br/><br/>Například pokud <b>interval</b> je <b>každou hodinu</b> (frekvence: hodinu a intervalu: 1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b>, pak se <b>minuty a sekundy</b> částí AnchorDateTime jsou ignorovány. |Ne |01/01/0001 |
+| anchorDateTime |Definuje absolutní pozici v čase plánovačem slouží k výpočtu hranice řez datovou sadu. <br/><br/><b>Poznámka:</b>: Pokud AnchorDateTime má částí data, která jsou podrobnější než je četnost pak podrobnější části jsou ignorovány. <br/><br/>Například pokud <b>interval</b> je <b>každou hodinu</b> (frekvence: hodin a interval: 1) a <b>AnchorDateTime</b> obsahuje <b>minuty a sekundy</b>, pak se <b>minuty a sekundy</b> částí AnchorDateTime jsou ignorovány. |Ne |01/01/0001 |
 | Posun |Časový interval, ve kterém jsou zapuštěno počáteční a koncová všech řezech datovou sadu. <br/><br/><b>Poznámka:</b>: Pokud jsou zadané anchorDateTime i posun, výsledkem je kombinovaná shift. |Ne |Není k dispozici |
 
 ### <a name="offset-example"></a>Příklad posunutí
@@ -271,11 +271,11 @@ Zásady ovlivňují chování běhu aktivity, konkrétně při zpracování řez
 
 | Vlastnost | Povolené hodnoty | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
-| Souběžnosti |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet spuštění paralelní aktivity, které se může stát při jiné řezy. Například pokud aktivitu musí projít, velké sady dostupných dat, mají větší hodnotu souběžnosti urychluje zpracování dat. |
+| souběžnosti |Integer <br/><br/>Maximální hodnota: 10 |1 |Počet souběžných spuštění aktivity.<br/><br/>Určuje počet spuštění paralelní aktivity, které se může stát při jiné řezy. Například pokud aktivitu musí projít, velké sady dostupných dat, mají větší hodnotu souběžnosti urychluje zpracování dat. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Určuje pořadí datové řezy, které jsou zpracovávány.<br/><br/>Pokud máte 2 řezy (jeden situaci ve 4 a další v 17: 00) a jsou obě čekající na zpracování. Pokud jste nastavili executionPriorityOrder být NewestFirst, je nejprve zpracování řezu v 17: 00. Podobně pokud nastavíte executionPriorityORder být OldestFIrst, pak ve 4 zpracování řezu se. |
 | retry |Integer<br/><br/>Maximální hodnota může být 10 |0 |Počet opakování, než se zpracování dat pro řez je označen jako selhání. Provedení aktivity pro datový řez je opakovat až zadaný počet. Opakovaném provádí co nejdříve po selhání. |
 | timeout |Časový interval |00:00:00 |Časový limit aktivity. Příklad: 00:10:00 (znamená časový limit 10 minut)<br/><br/>Pokud hodnota není zadána nebo je 0, časový limit je nekonečno.<br/><br/>Pokud bude čas zpracování dat na řez překročí hodnota časového limitu, se zruší a systém se pokusí opakujte zpracování. Počet pokusů, závisí na vlastnost opakování. Když dojde k vypršení časového limitu, je stav nastaven na TimedOut. |
-| Zpoždění |Časový interval |00:00:00 |Zadejte zpoždění před zpracování dat řezu spustí.<br/><br/>Provádění aktivity pro datový řez se spustí po zpoždění očekávaný čas spuštění.<br/><br/>Příklad: 00:10:00 (znamená zpoždění 10 minut) |
+| zpoždění |Časový interval |00:00:00 |Zadejte zpoždění před zpracování dat řezu spustí.<br/><br/>Provádění aktivity pro datový řez se spustí po zpoždění očekávaný čas spuštění.<br/><br/>Příklad: 00:10:00 (znamená zpoždění 10 minut) |
 | opakování po delší době |Integer<br/><br/>Maximální hodnota: 10 |1 |Počet dlouho opakování pokusů, než řez spuštění se nezdařilo.<br/><br/>pokusy o opakování po delší době jsou rozmístěny ve longRetryInterval. Takže pokud je třeba zadat čas mezi pokusy o opakování, použijte opakování po delší době. Pokud jsou zadané opakování a opakování po delší době, jednotlivé pokusy o opakování po delší době zahrnuje opakovaných pokusů a je maximální počet pokusů o opakování * opakování po delší době.<br/><br/>Například, pokud bychom měli následující nastavení v zásadách aktivit:<br/>Opakujte: 3<br/>opakování po delší době: 2<br/>longRetryInterval: 01:00:00<br/><br/>Předpokládá se jenom jeden řez provést (stav Čeká) a provedení aktivity pokaždé, když dojde k chybě. Nejdřív by 3 provádění po sobě jdoucích pokusů. Po každém pokusu o stav řezu bude opakovat. Po první 3 pokusy jsou přes, bude stav řezu opakování po delší době.<br/><br/>Po hodině (který je na longRetryInteval hodnota) bude další sadu 3 provádění po sobě jdoucích pokusů. Poté stav řezu by se nezdařilo a by se pokus o žádné další opakování. Proto celkové 6 pokusy byly provedeny.<br/><br/>Pokud žádné spuštění úspěšné, stav řezu by mít připravené a jsou pokus o žádné další opakování.<br/><br/>opakování po delší době je možné použít situace, kdy závislé data dorazí na Nedeterministický časy nebo je v nestabilním stavu v rámci které zpracování dat dojde celém prostředí. V takových případech to, které opakování, jedna po druhé nemusí být úspěšná a díky tomu v intervalech čas má za následek požadované výstup.<br/><br/>Word varování: nenastavujte vysoké hodnoty pro opakování po delší době nebo longRetryInterval. Vyšší hodnoty obvykle implikují dalších systémových otázek. |
 | longRetryInterval |Časový interval |00:00:00 |Prodleva mezi pokusy o opakování dlouho |
 

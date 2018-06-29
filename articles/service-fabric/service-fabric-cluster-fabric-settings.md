@@ -12,15 +12,21 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/09/2018
+ms.date: 06/27/2018
 ms.author: aljo
-ms.openlocfilehash: 118a6d10eeba691fd0886967f90156a0ab8d9fae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 6783c2b3b431e99050bc6762c1855b22e0701686
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642644"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062275"
 ---
+# <a name="description-of-the-different-upgrade-policies"></a>Popis různých zásad upgradu
+
+- **Dynamické** – změny konfigurace dynamické nezpůsobí žádné restartování procesu Service Fabric procesy nebo hostitelské procesy vaší služby. 
+- **Statické** – změny v konfiguraci statického způsobí, že uzel Service Fabric restartovat, aby bylo možné využívat změnu. Restartuje služby na uzlech.
+- **NotAllowed** – toto nastavení nelze změnit. Změna těchto nastavení vyžaduje, aby být zničený, clusteru a vytvoření nového clusteru. 
+
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Přizpůsobení nastavení clusteru Service Fabric a zásady upgradu prostředků infrastruktury
 Tento dokument vysvětluje, jak přizpůsobit různá nastavení prostředků infrastruktury a infrastruktury upgradovat zásady pro váš cluster Service Fabric. Přizpůsobit pomocí [portál Azure](https://portal.azure.com) nebo pomocí šablony Azure Resource Manager.
 
@@ -80,7 +86,7 @@ Následuje seznam infrastruktury nastavení, které můžete přizpůsobit, uspo
 ## <a name="backuprestoreservice"></a>BackupRestoreService
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Pokyny nebo krátký popis** |
 | --- | --- | --- | --- |
-|MinReplicaSetSize|Int, výchozí hodnota je 0|Statická|MinReplicaSetSize pro BackupRestoreService |
+|MinReplicaSetSize|int, výchozí je 0.|Statická|MinReplicaSetSize pro BackupRestoreService |
 |PlacementConstraints|wstring, výchozí je L""|Statická| PlacementConstraints BackupRestore služby |
 |SecretEncryptionCertThumbprint|wstring, výchozí je L""|Dynamická|Kryptografický otisk certifikátu tajný šifrování X509 |
 |SecretEncryptionCertX509StoreName|wstring, výchozí je L "Moje"|  Dynamická|    To znamená na certifikát pro šifrování a dešifrování úložiště certifikátů název X.509 přihlašovací údaje, které se používá pro šifrování, dešifrování objektu přihlašovací údaje k úložišti používá služba zálohování obnovení |
@@ -207,9 +213,9 @@ Následuje seznam infrastruktury nastavení, které můžete přizpůsobit, uspo
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Pokyny nebo krátký popis** |
 | --- | --- | --- | --- |
 |BuildReplicaTimeLimit|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(3600)|Dynamická|Zadejte časový interval v sekundách. Časový limit pro vytváření repliku stavová; po kterém bude inicializován sestavy stavu upozornění |
-|ClusterPauseThreshold|Int, výchozí hodnota je 1|Dynamická|Pokud počet uzlů v systému přejděte pod tuto hodnotu pak umístění; načíst vyrovnávání; a převzetí služeb při selhání se zastaví. |
+|ClusterPauseThreshold|int, výchozí je 1|Dynamická|Pokud počet uzlů v systému přejděte pod tuto hodnotu pak umístění; načíst vyrovnávání; a převzetí služeb při selhání se zastaví. |
 |CreateInstanceTimeLimit|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(300)|Dynamická|Zadejte časový interval v sekundách. Časový limit pro vytvoření bezstavové instance; po kterém bude inicializován sestavy stavu upozornění |
-|ExpectedClusterSize|Int, výchozí hodnota je 1|Dynamická|Při prvním spuštění clusteru FM vyčká pro tento velký počet uzlů na sestavu sami si před zahájením umístění jiných služeb; včetně služeb systému jako názvy. Zvýšení hodnoty tuto zvyšuje doby trvání cluster spustil; ale zabrání časná uzly z přetížení měřidla a také další přesune, které bude nutné jako více uzlů do režimu online. Tato hodnota by měla obecně nastavená na některé malá část počáteční velikost. |
+|ExpectedClusterSize|int, výchozí je 1|Dynamická|Při prvním spuštění clusteru FM vyčká pro tento velký počet uzlů na sestavu sami si před zahájením umístění jiných služeb; včetně služeb systému jako názvy. Zvýšení hodnoty tuto zvyšuje doby trvání cluster spustil; ale zabrání časná uzly z přetížení měřidla a také další přesune, které bude nutné jako více uzlů do režimu online. Tato hodnota by měla obecně nastavená na některé malá část počáteční velikost. |
 |ExpectedNodeDeactivationDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamická|Zadejte časový interval v sekundách. Toto je očekávané trvání pro uzel k dokončení deaktivace v. |
 |ExpectedNodeFabricUpgradeDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamická|Zadejte časový interval v sekundách. Toto je očekávané trvání pro uzel k upgradu během upgradu technologie Windows Fabric. |
 |ExpectedReplicaUpgradeDuration|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(60.0 * 30)|Dynamická|Zadejte časový interval v sekundách. Toto je očekávané trvání pro všechny repliky k upgradu na uzlu během upgradu aplikace. |
@@ -231,7 +237,7 @@ Následuje seznam infrastruktury nastavení, které můžete přizpůsobit, uspo
 | --- | --- | --- | --- |
 |CompletedActionKeepDurationInSeconds | Int, výchozí hodnota je 604800 |Statická| Toto je přibližně jak dlouho chcete ponechat akce, které jsou ve stavu terminálu. To také závisí na StoredActionCleanupIntervalInSeconds; vzhledem k tomu, že práce, kterou čištění se provádí pouze v tomto intervalu. 604800 je 7 dní. |
 |DataLossCheckPollIntervalInSeconds|int, výchozí je 5|Statická|Toto je čas mezi kontroly, které provede systém čekání ztráty dat provést. Počet opakovaných číslo ztrátě dat se ověří na interní iterace je DataLossCheckWaitDurationInSeconds, tento. |
-|DataLossCheckWaitDurationInSeconds|Int, výchozí hodnota je 25|Statická|Celkové množství času; v sekundách; bude systém čekat ztráty dat provést. Používá se interně při volání rozhraní api StartPartitionDataLossAsync(). |
+|DataLossCheckWaitDurationInSeconds|int, výchozí je 25|Statická|Celkové množství času; v sekundách; bude systém čekat ztráty dat provést. Používá se interně při volání rozhraní api StartPartitionDataLossAsync(). |
 |MinReplicaSetSize |Int, výchozí hodnota je 0 |Statická|MinReplicaSetSize pro FaultAnalysisService. |
 |PlacementConstraints | Výchozí hodnota je řetězec, ""|Statická| PlacementConstraints pro FaultAnalysisService. |
 |QuorumLossWaitDuration | Čas v sekundách, výchozí hodnota je MaxValue |Statická|Zadejte časový interval v sekundách. QuorumLossWaitDuration pro FaultAnalysisService. |
@@ -298,7 +304,7 @@ Následuje seznam infrastruktury nastavení, které můžete přizpůsobit, uspo
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Pokyny nebo krátký popis** |
 | --- | --- | --- | --- |
 |MaxPercentDeltaUnhealthyNodes|Int, výchozí hodnota je 10|Statická|Cluster zásad vyhodnocení stavu upgradu: povolená maximální procento rozdílů není v pořádku uzly clusteru jako v pořádku |
-|MaxPercentUpgradeDomainDeltaUnhealthyNodes|Int, výchozí hodnota je 15|Statická|Cluster zásad vyhodnocení stavu upgradu: maximální procento rozdílů není v pořádku uzlů v doméně upgradu povolené pro cluster jako v pořádku |
+|MaxPercentUpgradeDomainDeltaUnhealthyNodes|int, výchozí je 15|Statická|Cluster zásad vyhodnocení stavu upgradu: maximální procento rozdílů není v pořádku uzlů v doméně upgradu povolené pro cluster jako v pořádku |
 
 ## <a name="hosting"></a>Hostování
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Pokyny nebo krátký popis** |
@@ -379,7 +385,7 @@ Následuje seznam infrastruktury nastavení, které můžete přizpůsobit, uspo
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Pokyny nebo krátký popis** |
 | --- | --- | --- | --- |
 |AzureStorageMaxConnections | Int, výchozí hodnota je 5000 |Dynamická|Maximální počet souběžných připojení k úložišti azure. |
-|AzureStorageMaxWorkerThreads | Int, výchozí hodnota je 25 |Dynamická|Maximální počet pracovních vláken současně. |
+|AzureStorageMaxWorkerThreads | int, výchozí je 25 |Dynamická|Maximální počet pracovních vláken současně. |
 |AzureStorageOperationTimeout | Čas v sekundách, výchozí hodnota je 6000 |Dynamická|Zadejte časový interval v sekundách. Vypršení časového limitu pro xstore na dokončení operace. |
 |CleanupApplicationPackageOnProvisionSuccess|BOOL, výchozí hodnotu FALSE |Dynamická|Tato konfigurace povolí nebo zakáže automatické čištění balíčku aplikace v úspěšném zřízení. |
 |DisableChecksumValidation | BOOL, výchozí hodnota je false |Statická| Tato konfigurace umožňuje povolit nebo zakázat ověření kontrolního součtu při zřizování aplikace. |
@@ -469,9 +475,9 @@ Následuje seznam infrastruktury nastavení, které můžete přizpůsobit, uspo
 |ConstraintFixPartialDelayAfterNodeDown | Čas v sekundách, výchozí hodnota je 120. |Dynamická| Zadejte časový interval v sekundách. To není narušení omezení opravte FaultDomain a UpgradeDomain během tohoto období po uzlu událost vypnutí. |
 |ConstraintViolationHealthReportLimit | Int, výchozí hodnota je 50 |Dynamická| Určuje počet, kolikrát omezení bychom při tom porušili repliky musí být trvalé nevyřešené předtím, než jsou prováděny diagnostiky a stavu sestavy jsou vygenerované. |
 |DetailedConstraintViolationHealthReportLimit | Int, výchozí hodnota je 200 |Dynamická| Určuje počet, kolikrát omezení bychom při tom porušili repliky musí před trvale nevyřešené diagnostiky jsou prováděny a podrobných stavu, které jsou vygenerované sestavy. |
-|DetailedDiagnosticsInfoListLimit | Int, výchozí hodnota je 15 |Dynamická| Definuje počtem diagnostických záznamů (s podrobnými informacemi) na omezení, které zahrnují před zkrácení v diagnostice.|
-|DetailedNodeListLimit | Int, výchozí hodnota je 15 |Dynamická| Definuje počet uzlů na omezení, které zahrnují před zkrácení v sestavách Neumístěná repliky. |
-|DetailedPartitionListLimit | Int, výchozí hodnota je 15 |Dynamická| Definuje počet oddílů na diagnostiky záznam pro omezení zahrnout před zkrácení v diagnostice. |
+|DetailedDiagnosticsInfoListLimit | int, výchozí je 15 |Dynamická| Definuje počtem diagnostických záznamů (s podrobnými informacemi) na omezení, které zahrnují před zkrácení v diagnostice.|
+|DetailedNodeListLimit | int, výchozí je 15 |Dynamická| Definuje počet uzlů na omezení, které zahrnují před zkrácení v sestavách Neumístěná repliky. |
+|DetailedPartitionListLimit | int, výchozí je 15 |Dynamická| Definuje počet oddílů na diagnostiky záznam pro omezení zahrnout před zkrácení v diagnostice. |
 |DetailedVerboseHealthReportLimit | Int, výchozí hodnota je 200 | Dynamická|Definuje počet opakovaných Neumístěná repliky musí být trvalé Neumístěná předtím, než jsou vygenerované stavu podrobné sestavy. |
 |FaultDomainConstraintPriority | Int, výchozí hodnota je 0 |Dynamická| Určuje prioritu omezení domény chyby: 0: pevné; 1: logicky; záporné: ignorovat. |
 |GlobalMovementThrottleCountingInterval | Čas v sekundách, výchozí hodnota je 600 |Statická| Zadejte časový interval v sekundách. Oznámení délku posledních intervalu, pro které chcete sledovat za pohybů repliky domény (používá se společně s GlobalMovementThrottleThreshold). Můžete nastavit na hodnotu 0 ignorovat globální omezení šířky pásma úplně. |
@@ -527,10 +533,10 @@ Následuje seznam infrastruktury nastavení, které můžete přizpůsobit, uspo
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu**| **Pokyny nebo krátký popis** |
 | --- | --- | --- | --- |
 |BatchAcknowledgementInterval|Časový interval, výchozí hodnota je Common::TimeSpan::FromMilliseconds(15)|Statická|Zadejte časový interval v sekundách. Určuje množství času, kterou Replikátor čeká po přijetí operace před odesláním zpět potvrzení. Jiné operace přijata během této doby bude mít jejich potvrzení odeslána zpět v do jedné zprávy -> Redukční síťový provoz, ale potenciálně omezení propustnosti replikátoru.|
-|MaxCopyQueueSize|Uint, výchozí hodnota je 1 024|Statická|Toto je maximální hodnota definuje počáteční velikost fronty, který udržuje operací replikace. Všimněte si, že musí být násobkem 2. Pokud během doby běhu zvětšuje, aby tato operace velikost fronty budou omezeny mezi primárním a sekundárním replikátory.|
+|MaxCopyQueueSize|uint, výchozí je 1 024|Statická|Toto je maximální hodnota definuje počáteční velikost fronty, který udržuje operací replikace. Všimněte si, že musí být násobkem 2. Pokud během doby běhu zvětšuje, aby tato operace velikost fronty budou omezeny mezi primárním a sekundárním replikátory.|
 |MaxPrimaryReplicationQueueMemorySize|Uint, výchozí hodnota je 0|Statická|Toto je maximální hodnota primární replikace fronty v bajtech.|
-|MaxPrimaryReplicationQueueSize|Uint, výchozí hodnota je 1 024|Statická|Toto je maximální počet operací, které může existovat ve frontě primární replikace. Všimněte si, že musí být násobkem 2.|
-|Maxreplicationmessagesize.|Uint, výchozí hodnota je 52428800|Statická|Maximální velikost zprávy operací replikace. Výchozí hodnota je 50MB.|
+|MaxPrimaryReplicationQueueSize|uint, výchozí je 1 024|Statická|Toto je maximální počet operací, které může existovat ve frontě primární replikace. Všimněte si, že musí být násobkem 2.|
+|Maxreplicationmessagesize.|uint, výchozí je 52428800|Statická|Maximální velikost zprávy operací replikace. Výchozí hodnota je 50MB.|
 |MaxSecondaryReplicationQueueMemorySize|Uint, výchozí hodnota je 0|Statická|Toto je maximální hodnota sekundární replikační fronty v bajtech.|
 |MaxSecondaryReplicationQueueSize|uint, výchozí je 2048|Statická|Toto je maximální počet operací, které může existovat ve frontě sekundární replikace. Všimněte si, že musí být násobkem 2.|
 |QueueHealthMonitoringInterval|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(30)|Statická|Zadejte časový interval v sekundách. Tato hodnota určuje časové období, které Replikátor používá k monitorování všechny události stavu upozornění nebo chyby ve frontách operace replikace. Hodnota '0' zakáže monitorování stavu |
@@ -538,7 +544,7 @@ Následuje seznam infrastruktury nastavení, které můžete přizpůsobit, uspo
 |ReplicatorAddress|řetězec, výchozí je L "localhost:0"|Statická|Koncový bod v podobě řetězce-'IP: port, který je používán Replikátor Windows Fabric ke zřízení spojení s dalšími replikami k odesílání a přijímání operace.|
 |ReplicatorListenAddress|řetězec, výchozí je L "localhost:0"|Statická|Koncový bod v podobě řetězce-'IP: port, který je používán Replikátor Windows Fabric přijímat operace z jiné repliky.|
 |ReplicatorPublishAddress|řetězec, výchozí je L "localhost:0"|Statická|Koncový bod v podobě řetězce-'IP: port, který je používán Replikátor Windows Fabric k odeslání operace do jiné repliky.|
-|RetryInterval|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(5)|Statická|Zadejte časový interval v sekundách. Při operaci dojde ke ztrátě nebo odmítnuté tento časovač Určuje, jak často bude Replikátor opakovat operaci odeslání.|
+|retryInterval|Časový interval, výchozí hodnota je Common::TimeSpan::FromSeconds(5)|Statická|Zadejte časový interval v sekundách. Při operaci dojde ke ztrátě nebo odmítnuté tento časovač Určuje, jak často bude Replikátor opakovat operaci odeslání.|
 
 ## <a name="resourcemonitorservice"></a>ResourceMonitorService
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu**| **Pokyny nebo krátký popis** |
@@ -765,7 +771,7 @@ Následuje seznam infrastruktury nastavení, které můžete přizpůsobit, uspo
 |MaxCopyQueueSize |Uint, výchozí hodnota je 16384 | Statická |Toto je maximální hodnota definuje počáteční velikost fronty, který udržuje operací replikace. Všimněte si, že musí být násobkem 2. Pokud během doby běhu zvětšuje, aby tato operace velikost fronty budou omezeny mezi primárním a sekundárním replikátory. |
 |MaxPrimaryReplicationQueueMemorySize |Uint, výchozí hodnota je 0 | Statická |Toto je maximální hodnota primární replikace fronty v bajtech. |
 |MaxPrimaryReplicationQueueSize |Uint, výchozí hodnota je 8192 | Statická |Toto je maximální počet operací, které může existovat ve frontě primární replikace. Všimněte si, že musí být násobkem 2. |
-|Maxreplicationmessagesize. |Uint, výchozí hodnota je 52428800 | Statická | Maximální velikost zprávy operací replikace. Výchozí hodnota je 50MB. |
+|Maxreplicationmessagesize. |uint, výchozí je 52428800 | Statická | Maximální velikost zprávy operací replikace. Výchozí hodnota je 50MB. |
 |MaxSecondaryReplicationQueueMemorySize |Uint, výchozí hodnota je 0 | Statická |Toto je maximální hodnota sekundární replikační fronty v bajtech. |
 |MaxSecondaryReplicationQueueSize |Uint, výchozí hodnota je 16384 | Statická |Toto je maximální počet operací, které může existovat ve frontě sekundární replikace. Všimněte si, že musí být násobkem 2. |
 |ReplicatorAddress |řetězec, výchozí je "localhost:0" | Statická | Koncový bod v podobě řetězce-'IP: port, který je používán Replikátor Windows Fabric ke zřízení spojení s dalšími replikami k odesílání a přijímání operace. |
@@ -791,7 +797,7 @@ Následuje seznam infrastruktury nastavení, které můžete přizpůsobit, uspo
 ## <a name="upgradeservice"></a>UpgradeService
 | **Parametr** | **Povolené hodnoty** | **Zásady upgradu** | **Pokyny nebo krátký popis** |
 | --- | --- | --- | --- |
-|BaseUrl | Výchozí hodnota je řetězec, "" |Statická|BaseUrl pro UpgradeService. |
+|baseUrl | Výchozí hodnota je řetězec, "" |Statická|BaseUrl pro UpgradeService. |
 |ClusterId | Výchozí hodnota je řetězec, "" |Statická|ClusterId pro UpgradeService. |
 |CoordinatorType | řetězec, výchozí je "WUTest"|Nepovolené|CoordinatorType pro UpgradeService. |
 |MinReplicaSetSize | Int, výchozí hodnota je 2 |Nepovolené| MinReplicaSetSize pro UpgradeService. |

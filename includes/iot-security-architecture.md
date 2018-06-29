@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 62856d4743d853d5685503b5c21faedc46575e55
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6f28df6f2faa78af90fb4b5e62f218e3b391000b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33814794"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37066080"
 ---
 # <a name="internet-of-things-security-architecture"></a>Architektura zabezpečení Internetu věcí
 
@@ -29,7 +29,7 @@ Mnoho vývojové týmy provést úlohu vynikající zaznamenávání funkční p
 
 ### <a name="when-to-threat-model"></a>Kdy hrozby modelu
 
-[Modelování hrozeb](http://www.microsoft.com/security/sdl/adopt/threatmodeling.aspx) nabízí nejvyšší hodnota zahrnout do fáze návrhu. Při návrhu, máte nejvyšší flexibilitu provést změny eliminovat hrozeb. Odstranění hrozeb návrhu je požadovaný výsledek. Je mnohem jednodušší než přidávání způsoby zmírnění rizik, je testování a zajištění zůstanou aktuální a kromě toho toto odstranění není možné. Bude těžší eliminovat hrozeb jako produkt stane víc vyspělých a naopak nakonec vyžaduje více práce a kompromisy je mnohem obtížnější než hrozby již v rané fázi na modelování pro vývoj.
+[Modelování hrozeb](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx) nabízí nejvyšší hodnota zahrnout do fáze návrhu. Při návrhu, máte nejvyšší flexibilitu provést změny eliminovat hrozeb. Odstranění hrozeb návrhu je požadovaný výsledek. Je mnohem jednodušší než přidávání způsoby zmírnění rizik, je testování a zajištění zůstanou aktuální a kromě toho toto odstranění není možné. Bude těžší eliminovat hrozeb jako produkt stane víc vyspělých a naopak nakonec vyžaduje více práce a kompromisy je mnohem obtížnější než hrozby již v rané fázi na modelování pro vývoj.
 
 ### <a name="what-to-threat-model"></a>Co je potřeba model hrozeb
 
@@ -103,7 +103,7 @@ Následující části popisují standardní součásti, které se většinou na
 
 ### <a name="the-device-zone"></a>Zóny zařízení
 
-Prostředí zařízení je okamžitou fyzického místa kolem zařízení, kde je to fyzického přístupu nebo "místní sítě" možné je peer-to-peer digitální přístupu k zařízení. "Místní sítě" se předpokládá, že se k síti, který se odlišuje a je izolovaná od – ale potenciálně přidat do mostu k – veřejného Internetu a obsahuje všechny krátkého dosahu bezdrátové přepínačů technologie, které umožňuje komunikaci peer-to-peer zařízení. Provede *není* zahrnout všechny technologie virtualizace sítě vzniká dojem místní síti a také nebude obsahovat veřejný operátor sítě, které vyžadují jakékoli dvě zařízení komunikovat místo veřejné síti, pokud by byly zadejte vztahu komunikace peer-to-peer.
+Prostředí zařízení je okamžitou fyzického místa kolem zařízení, kde je to fyzického přístupu nebo "místní sítě" možné je peer-to-peer digitální přístupu k zařízení. "Místní sítě" se předpokládá, že se k síti, který se odlišuje a je izolovaná od – ale potenciálně přidat do mostu k – veřejného Internetu a obsahuje všechny krátkého dosahu bezdrátové přepínačů technologie, které umožňuje komunikaci peer-to-peer zařízení. Provede *není* zahrnout všechny technologie virtualizace sítě vzniká dojem místní síti a také nebude obsahovat veřejný operátor sítě, které vyžadují jakékoli dvě zařízení komunikují přes veřejnou síť místa, pokud byly zadejte vztahu komunikace peer-to-peer.
 
 ### <a name="the-field-gateway-zone"></a>Zóny brána pole
 
@@ -174,7 +174,7 @@ V každé z kategorií uvedených v architektuře Azure IoT pokusí zmírnit po�
 
 **Zvýšení oprávnění (E)**: zařízení, která provádí konkrétní funkce se dá vynutit na dělejte něco jiného. Například může být ventil, který je naprogramovaný tak, aby otevřete poloviční způsobem, aby otevřete úplně.
 
-| **Komponenta** | **Hrozby** | **Zmírnění dopadů** | **Riziko** | **Implementace** |
+| **Komponenta** | **Hrozby** | **Zmírnění dopadů** | **Riziko** | **implementace** |
 | --- | --- | --- | --- | --- |
 | Zařízení |S |Přiřazování identitu zařízení a ověřování zařízení |Nahrazení zařízení nebo jeho část zařízení s jiným zařízením. Jak poznáte, že mluvíme na správné zařízení? |Ověření zařízení, pomocí zabezpečení TLS (Transport Layer) nebo protokol IPSec. Infrastruktura by měla podporovat použití předsdílený klíč (PSK) na těchto zařízeních, které nelze zpracovat úplné asymetrické šifrování. Využít Azure AD, [OAuth](http://www.rfc-editor.org/in-notes/internet-drafts/draft-ietf-ace-oauth-authz-01.txt) |
 || TRID |Použijte tamperproof mechanismy pro zařízení, například tím, že pevné k možné extrahovat klíče a jiného kryptografických materiálu ze zařízení. |Riziko je, pokud někdo je falšování zařízení (fyzického narušení). Jak máte jistotu, že zařízení nikdo neoprávněně nemanipuloval. |Co nejúčinnější zmírnění je funkcí module (TPM) důvěryhodné platformy, které umožňuje ukládání klíčů v speciální na čipu zapojení, ze kterého klíče nelze číst, ale lze použít pouze pro kryptografické operace využívající klíč, ale nikdy zveřejnit klíč. Paměť šifrování zařízení. Správy klíčů pro zařízení. Podepisování kódu. | |
@@ -217,7 +217,7 @@ Falšování identity: Útočník může extrahovat materiál kryptografické kl
 
 Hrozby kolem cesta komunikaci mezi zařízeními, zařízení a pole brány a zařízení a cloudové brány. Následující tabulka obsahuje některé pokyny kolem otevřete sockets na zařízení sítě VPN:
 
-| **Komponenta** | **Hrozby** | **Zmírnění dopadů** | **Riziko** | **Implementace** |
+| **Komponenta** | **Hrozby** | **Zmírnění dopadů** | **Riziko** | **implementace** |
 | --- | --- | --- | --- | --- |
 | Zařízení IoT Hub |TID |(D) (PSK/RSA) k šifrování přenosů TLS |Odposlouchávání nebo vzájemnému komunikaci mezi zařízením a brány |Zabezpečení na úrovni protokolu. Vlastní protokoly je nutné zjistit, jak je chránit. Ve většině případů komunikace probíhá ze zařízení ke službě IoT Hub (připojení iniciuje zařízení). |
 | Zařízení zařízení |TID |(D) Protokol TLS (PSK/RSA) k šifrování přenosů. |Čtení dat během přenosu mezi zařízeními. Manipulaci s daty. Přetížení zařízení v rámci nového připojení |Zabezpečení na úrovni protokolu (MQTT nebo AMQP nebo HTTP/CoAP. Vlastní protokoly je nutné zjistit, jak je chránit. Zmírnění dopadů na hrozby DoS je peer zařízení prostřednictvím brány cloudu nebo pole a nechat je jenom akce jako klienti směrem k síti. Partnerský vztah může vést k přímé připojení mezi rovnocennými počítači po s byla zprostředkované bránou |
@@ -241,7 +241,7 @@ Tady jsou některé příklady hrozeb v této kategorii:
 
 Každé zařízení a pole brány má určitou formu úložiště (dočasný pro službu Řízení front dat a úložiště bitové kopie operačního systému (OS)).
 
-| **Komponenta** | **Hrozby** | **Zmírnění dopadů** | **Riziko** | **Implementace** |
+| **Komponenta** | **Hrozby** | **Zmírnění dopadů** | **Riziko** | **implementace** |
 | --- | --- | --- | --- | --- |
 | Úložiště zařízení. |TRID |Šifrování úložiště, podepisování protokoly |Čtení dat z úložiště (PII data), manipulaci s telemetrická data. Manipulaci s zařazených do fronty nebo ukládání do mezipaměti příkaz data ovládacího prvku. Manipulaci s konfigurace nebo firmware balíčky aktualizací do mezipaměti nebo zařazených do fronty místně, může dojít k součásti operačního systému nebo systému se ohrožení zabezpečení |Šifrování, ověřovací kód zprávy (MAC) nebo digitální podpis. Kde řízení možné silné přístup prostřednictvím přístupu k prostředkům řízení oprávnění nebo seznamy (ACL). |
 | Bitové kopie operačního systému zařízení |TRID | |Manipulaci s operačním systémem / nahrazení součásti operačního systému |Jen pro čtení oddílu operačního systému podepsané bitové kopie operačního systému, šifrování |
@@ -250,13 +250,13 @@ Každé zařízení a pole brány má určitou formu úložiště (dočasný pro
 
 ### <a name="device-and-event-processingcloud-gateway-zone"></a>Zařízení a události zpracování nebo cloudové brány zóny
 
-Cloudové brány je systém, který umožňuje vzdálenou komunikaci od a do zařízení nebo brány pole z několika různých lokalit prostoru veřejnou síť, obvykle směrem řízení na základě cloud a systém analýzy dat, federace těchto systémů. V některých případech cloudové brány může okamžitě usnadnění přístupu k zařízení speciální z terminály, jako například tablety nebo telefony. V kontextu tady popisovaných "cloud" je určená k odkazování na systém vyhrazené zpracování dat, který není vázán na stejném místě jako připojená zařízení nebo pole brány a kde provozní míry zabránit cílová fyzický přístup, ale není nutně s infrastrukturou "veřejného cloudu". Cloudové brány může být namapovaný potenciálně do překrytí virtualizace sítě do izolovat Cloudová brána a všechny jeho připojená zařízení nebo brány pole od ostatního síťového přenosu. Cloudová brána samotné není řídicím systémem zařízení nebo zpracování nebo zařízení úložiště pro data zařízení; Tyto vlastnosti rozhraní s Cloudová brána. Oblast cloudové brány zahrnuje brány cloudu společně s všechny brány pole a zařízení k němu připojen přímo nebo nepřímo.
+Cloudové brány je systém, který umožňuje vzdálenou komunikaci od a do zařízení nebo brány pole z několika různých lokalit prostoru veřejnou síť, obvykle směrem řízení na základě cloud a systém analýzy dat, federace těchto systémů. V některých případech cloudové brány může okamžitě usnadnění přístupu k zařízení speciální z terminály, jako například tablety nebo telefony. V kontextu popsané tady "cloud" je určená k odkazování na vyhrazené zpracování dat systému, která není vázaná na stejném místě jako připojená zařízení nebo pole brány a kde provozní míry zabránit cílové fyzického přístupu ale není nutně na " infrastruktura veřejného cloudu". Cloudové brány může být namapovaný potenciálně do překrytí virtualizace sítě do izolovat Cloudová brána a všechny jeho připojená zařízení nebo brány pole od ostatního síťového přenosu. Cloudová brána samotné není řídicím systémem zařízení nebo zpracování nebo zařízení úložiště pro data zařízení; Tyto vlastnosti rozhraní s Cloudová brána. Oblast cloudové brány zahrnuje brány cloudu společně s všechny brány pole a zařízení k němu připojen přímo nebo nepřímo.
 
 Cloudová brána je ve většině případů vlastní integrované část softwaru jako službu s zveřejněné koncových bodů, do kterých brána pole a zařízení připojit. Jako takový musí být vytvořeny s důrazem na bezpečnost. Postupujte podle [SDL](http://www.microsoft.com/sdl) procesů pro navrhování a vytváření této služby.
 
 #### <a name="services-zone"></a>Zóny služby
 
-Ovládací prvek systému (nebo řadič) je softwarové řešení, které sdílí rozhraní se zařízení, nebo brána pole nebo Cloudová brána za účelem řízení jedno nebo více zařízení nebo pro shromažďování nebo ukládat a analyzovat data zařízení pro prezentace, nebo pro účely další ovládací prvek. Ovládací prvek systémy jsou pouze entity, které v oboru toto pojednání, která by mohla okamžitě usnadnit interakce s uživateli. Výjimky jsou zprostředkující fyzické oblasti ovládacího prvku na zařízeních, jako jsou přepínače, který umožňuje uživateli vypnout zařízení nebo změnit ostatní vlastnosti, a pro které není žádný funkční ekvivalent, která je přístupná digitálně.
+Ovládací prvek systému (nebo řadič) je softwarové řešení, které sdílí rozhraní se zařízení, nebo brána pole nebo Cloudová brána za účelem řízení jedno nebo více zařízení nebo pro shromažďování nebo ukládat a analyzovat data zařízení pro prezentaci, nebo pro účely další řízení. Ovládací prvek systémy jsou pouze entity, které v oboru toto pojednání, která by mohla okamžitě usnadnit interakce s uživateli. Výjimky jsou zprostředkující fyzické oblasti ovládacího prvku na zařízeních, jako jsou přepínače, který umožňuje uživateli vypnout zařízení nebo změnit ostatní vlastnosti, a pro které není žádný funkční ekvivalent, která je přístupná digitálně.
 
 Zprostředkující fyzické povrchy řízení jsou ty, kde řídících logiku omezí funkce povrchu fyzické ovládacího prvku tak, aby ekvivalentní funkce lze inicializovat vzdáleně nebo vstupní je v konfliktu s vzdálené vstup se vyhnout – například intermediated ovládací prvek povrchy se koncepčně připojují k řízení místní systém, který využívá stejné základní funkce jako všechny ostatní systémy vzdálené řízení, které zařízení může připojit k paralelně. Horní hrozeb pro cloud computing, můžete si jej přečíst v [cloudu zabezpečení Alliance (CSA)](https://cloudsecurityalliance.org/research/top-threats/) stránky.
 

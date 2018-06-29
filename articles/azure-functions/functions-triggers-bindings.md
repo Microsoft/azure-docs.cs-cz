@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/24/2018
 ms.author: tdykstra
-ms.openlocfilehash: c5211b43a85383c7c9f42a1d56271addae6d956e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: MT
+ms.openlocfilehash: 5e7e6608003b365d5516ca2e94a51c0710ad1125
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725339"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061349"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure funkce triggerů a vazeb koncepty
 
@@ -46,48 +46,53 @@ Informace o tom, které jsou ve verzi preview vazby, nebo jsou schváleny pro po
 
 ## <a name="register-binding-extensions"></a>Registrace rozšíření vazby
 
-Ve verzi 2.x modulu runtime Azure Functions, budete muset explicitně zaregistrovat rozšíření vazby (typy vazeb), které používáte ve vaší aplikaci funkce. 
+V některých prostředích s vývoj, je nutné explicitně *zaregistrovat* vazbu, která chcete použít. Vazba rozšíření jsou součástí balíčků NuGet a k registraci rozšíření nainstalovat balíček. Následující tabulka uvádí, kdy a jak zaregistrujete rozšíření vazby.
 
-Verze 2.x Functions runtime je aktuálně ve verzi preview. Informace o tom, jak nastavit aplikaci funkce na použití verze 2.x Functions runtime najdete v části [jak mít verze modulu runtime Azure Functions](set-runtime-version.md).
+|Vývojové prostředí |Registrace<br/> ve funkcích 1.x  |Registrace<br/> ve funkcích 2.x  |
+|---------|---------|---------|
+|Azure Portal|Automaticky|[Automatické s výzvou](#azure-portal-development)|
+|Místní pomocí nástroje základní funkce Azure|Automaticky|[Použití rozhraní jádra nástroje příkazového řádku](#local-development-azure-functions-core-tools)|
+|Třída knihovny jazyka C# pomocí Visual Studio 2017|[Pomocí nástroje NuGet](#c-class-library-with-visual-studio-2017)|[Pomocí nástroje NuGet](#c-class-library-with-visual-studio-2017)|
+|Třída knihovny jazyka C# pomocí Visual Studio Code|neuvedeno|[.NET Core pomocí rozhraní příkazového řádku](#c-class-library-with-visual-studio-code)|
 
-Je základní sady vazeb v verze 2.x, které se automaticky registruje, takže není nutné explicitně je registrace: HTTP, časovače a Azure Storage (objekty BLOB, fronty a tabulky). 
+Výjimky, které nevyžadují explicitní registrace, protože se automaticky registruje v všechny verze a prostředí jsou následující typy vazeb: HTTP, časovače a Azure Storage (objekty BLOB, fronty a tabulky). 
 
-Rozšíření se dodávají jako balíčky NuGet, kde název balíčku obvykle začíná [microsoft.azure.webjobs.extensions](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions).  Způsob, jak zaregistrovat rozšíření vazby závisí na tom, jak vyvíjet funkcí: 
+### <a name="azure-portal-development"></a>Vývoj pro portálu Azure
 
-+ [Místně v jazyce C# pomocí sady Visual Studio nebo VS Code](#local-c-development-using-visual-studio-or-vs-code)
-+ [Místně pomocí nástroje základní funkce Azure](#local-development-azure-functions-core-tools)
-+ [Na portálu Azure](#azure-portal-development) 
+Při vytvoření funkce nebo přidat vazbu, budete vyzváni, když rozšíření pro aktivační události nebo vazba vyžaduje registraci. Odpověď na výzvu kliknutím **nainstalovat** k registraci rozšíření. Instalace může trvat až 10 minut na plánu spotřeby.
 
-Verze balíčku uvedené v této části jsou uvedeny pouze jako příklady. Zkontrolujte [NuGet.org lokality](https://www.nuget.org/packages?q=microsoft.azure.webjobs.extensions) můžete určit, kterou verzi daného rozšíření je nezbytné další závislosti ve vaší aplikaci funkce.    
-
-### <a name="local-csharp"></a>Místní vývoj C# pomocí sady Visual Studio nebo VS Code
-
-Při použití sady Visual Studio nebo Visual Studio Code místně vyvíjet funkce v jazyce C#, nainstalujte balíček NuGet pro rozšíření. 
-
-+ **Visual Studio**: pomocí nástroje Správce balíčků NuGet. Následující [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) příkaz instalaci rozšíření Azure Cosmos DB z konzoly Správce balíčků:
-
-    ```powershell
-    Install-Package Microsoft.Azure.WebJobs.Extensions.CosmosDB -Version 3.0.0-beta6 
-    ```
-
-+ **Visual Studio Code**: balíčky můžete nainstalovat z příkazového řádku pomocí [dotnet. Přidejte balíček](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) příkaz v rozhraní příkazového řádku .NET následujícím způsobem:
-
-    ```terminal
-    dotnet add package Microsoft.Azure.WebJobs.Extensions.CosmosDB --version 3.0.0-beta6 
-    ```
+Každé rozšíření nutné nainstalovat jenom jednou pro danou funkci aplikace. 
 
 ### <a name="local-development-azure-functions-core-tools"></a>Místní vývojové nástroje základní funkce Azure
 
 [!INCLUDE [functions-core-tools-install-extension](../../includes/functions-core-tools-install-extension.md)]
 
-### <a name="azure-portal-development"></a>Vývoj pro portálu Azure
+<a name="local-csharp"></a>
+### <a name="c-class-library-with-visual-studio-2017"></a>Třída knihovny jazyka C# s Visual Studio 2017
 
-Při vytvoření funkce nebo přidat vazbu k existující funkce, budete vyzváni, když rozšíření pro aktivační události nebo vazba přidávané vyžaduje registraci.   
+V **Visual Studio 2017**, balíčky můžete nainstalovat z konzoly Správce balíčků pomocí [Install-Package](https://docs.microsoft.com/nuget/tools/ps-ref-install-package) příkaz, jak je znázorněno v následujícím příkladu:
 
-Jakmile se zobrazí upozornění pro konkrétní příponu během instalace, klikněte na tlačítko **nainstalovat** k registraci rozšíření. Každé rozšíření nutné nainstalovat jenom jednou pro danou funkci aplikace. 
+```powershell
+Install-Package Microsoft.Azure.WebJobs.ServiceBus --Version <target_version>
+```
 
->[!Note] 
->Proces instalace v portálu může trvat až 10 minut na plánu spotřeby.
+Název balíčku pro danou vazbu najdete v článku odkaz pro danou vazbu. Příklad, naleznete v části [balíčky v Service Bus vazby odkaz článku](functions-bindings-service-bus.md#packages---functions-1x).
+
+Nahraďte `<target_version>` v příkladu se na konkrétní verzi balíčku, například `3.0.0-beta5`. Neplatná verze jsou uvedené na stránkách individuální balíčku na [NuGet.org](https://nuget.org). Hlavní verze, které odpovídají Functions runtime 1.x nebo 2.x jsou určené v článku odkaz pro vazbu.
+
+### <a name="c-class-library-with-visual-studio-code"></a>Třída knihovny jazyka C# s kódem jazyka Visual Studio
+
+V **Visual Studio Code**, balíčky můžete nainstalovat z příkazového řádku pomocí [dotnet. Přidejte balíček](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) příkaz v rozhraní příkazového řádku .NET Core, jak je znázorněno v následujícím příkladu:
+
+```terminal
+dotnet add package Microsoft.Azure.WebJobs.ServiceBus --version <target_version>
+```
+
+Rozhraní příkazového řádku .NET Core lze použít pouze pro vývoj 2.x Azure Functions.
+
+Název balíčku pro danou vazbu najdete v článku odkaz pro danou vazbu. Příklad, naleznete v části [balíčky v Service Bus vazby odkaz článku](functions-bindings-service-bus.md#packages---functions-1x).
+
+Nahraďte `<target_version>` v příkladu se na konkrétní verzi balíčku, například `3.0.0-beta5`. Neplatná verze jsou uvedené na stránkách individuální balíčku na [NuGet.org](https://nuget.org). Hlavní verze, které odpovídají Functions runtime 1.x nebo 2.x jsou určené v článku odkaz pro vazbu.
 
 ## <a name="example-trigger-and-binding"></a>Příklad aktivační události a vazby
 
@@ -474,7 +479,7 @@ Například aktivační procedury fronty Azure storage podporuje následující 
 
 * QueueTrigger - aktivován obsah zprávy, pokud platný řetězec
 * DequeueCount
-* ExpirationTime
+* expirationTime
 * ID
 * InsertionTime
 * NextVisibleTime

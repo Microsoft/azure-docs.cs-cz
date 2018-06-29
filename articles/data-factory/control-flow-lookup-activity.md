@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 06/15/2018
 ms.author: shlo
-ms.openlocfilehash: 032b14051c5c2b06fa23ee67858706fada545967
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 25ed439674fcf7136e29034eb97e0652ae9ba111
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618653"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058892"
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Aktivita vyhledávání v Azure Data Factory
 
@@ -26,9 +26,6 @@ Aktivita vyhledávání slouží k načtení datové sady z jakéhokoli zdroje d
 - Dynamicky určete, které objekty (soubory, tabulky a podobně) k provozu na následné aktivity, místo pevně kódováno název objektu
 
 Aktivita vyhledávání můžete číst a vrátí obsah konfigurační soubor, tabulku konfigurace nebo výsledek provedení dotazu nebo uložené proceduře.  Výstup z aktivity vyhledávání můžete použít v následných kopírování nebo aktivit transformace, pokud je hodnota typu singleton, nebo použít v příkazu ForEach aktivitu, pokud je pole atributů.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Azure Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), prostudujte si [dokumentaci služby Data Factory verze 1](v1/data-factory-introduction.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 

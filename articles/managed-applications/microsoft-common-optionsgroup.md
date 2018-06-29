@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2e0b448b5ab48e7be3429d3d3b5b898b6bf22115
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: e51061dc781e4ec6e822cde9cc450887ff3b1368
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261844"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061181"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Element Microsoft.Common.OptionsGroup uživatelského rozhraní
 Ovládací prvek výběru s řádek dostupných možností.
@@ -44,7 +44,8 @@ Ovládací prvek výběru s řádek dostupných možností.
         "label": "Value two",
         "value": "two"
       }
-    ]
+    ],
+    "required": true
   },
   "visible": true
 }
@@ -54,7 +55,6 @@ Ovládací prvek výběru s řádek dostupných možností.
 - Popisek pro `constraints.allowedValues` je zobrazený text pro položku, a jeho hodnota může být výstupní hodnotu elementu při výběru.
 - -Li zadána, výchozí hodnota musí být součástí štítek `constraints.allowedValues`. Pokud není zadaný, první položky v `constraints.allowedValues` je standardně vybraná. Výchozí hodnota je **null**.
 - `constraints.allowedValues` musí obsahovat alespoň jednu položku.
-- Tento element nepodporuje `constraints.required` vlastnost; musí být vybrána položka úspěšně ověřit.
 
 ## <a name="sample-output"></a>Ukázkový výstup
 ```json

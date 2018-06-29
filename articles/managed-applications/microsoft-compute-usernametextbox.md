@@ -4,21 +4,20 @@ description: Popisuje element Microsoft.Compute.UserNameTextBox uživatelského 
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
-manager: timlt
 editor: tysonn
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: b65b62389fbb66c9461430d1dd2df42e71bf6cff
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 9f07c5bf9ba1f1880fa142beb52455522425e68d
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260718"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063297"
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>Element Microsoft.Compute.UserNameTextBox uživatelského rozhraní
 Ovládací prvek textové pole s integrované ověřování systému Windows a Linux uživatelská jména.
@@ -45,16 +44,15 @@ Ovládací prvek textové pole s integrované ověřování systému Windows a L
 ```
 
 ## <a name="remarks"></a>Poznámky
-- Pokud `constraints.required` je nastaven na **true**, pak textového pole musí obsahovat hodnotu úspěšně ověřit. Výchozí hodnota je **true**.
+- Pokud `constraints.required` je nastaven na **true**, pak textového pole musí mít hodnotu úspěšně ověřit. Výchozí hodnota je **true**.
 - `osPlatform` musí být zadán, a může být buď **Windows** nebo **Linux**.
 - `constraints.regex` je vzor regulárního výrazu jazyka JavaScript. -Li zadána, hodnota textového pole musí odpovídat vzorku úspěšně ověřit. Výchozí hodnota je **null**.
 - `constraints.validationMessage` je řetězec k zobrazení při jeho hodnotu neprojde ověřením určeného `constraints.regex`. Pokud není zadaný, se používají zpráv integrované ověření textového pole. Výchozí hodnota je **null**.
-- Tento element má integrované ověřování, který je založen na hodnotu zadanou pro `osPlatform`. Integrované ověřování můžete použít vlastní regulární výraz.
-Pokud nezadáte hodnotu `constraints.regex` je určeno, aktivaci předdefinované a vlastní ověření.
+- Tento element má integrované ověřování, který je založen na hodnotu zadanou pro `osPlatform`. Integrované ověřování můžete použít vlastní regulární výraz. Pokud nezadáte hodnotu `constraints.regex` je určeno, aktivaci předdefinované a vlastní ověření.
 
 ## <a name="sample-output"></a>Ukázkový výstup
 ```json
-"tabrezm"
+"Example name"
 ```
 
 ## <a name="next-steps"></a>Další postup

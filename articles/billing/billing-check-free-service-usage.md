@@ -1,5 +1,5 @@
 ---
-title: Monitorování a sledování využití bezplatné služby - Azure | Microsoft Docs
+title: Monitorování a sledování využití služby Azure volné | Microsoft Docs
 description: Další informace a zkontrolujte pro bezplatné služby. Pomocí Azure portal a používání sdíleného svazku clusteru.
 services: ''
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: 560137d92491da46fda950dec84a0a7caa3ed720
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7fa0196b7a44ef20ecd63797869dffea55f92c3d
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205886"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061312"
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Zkontrolujte využití volného služby zahrnuté do vaší bezplatný účet Azure 
 

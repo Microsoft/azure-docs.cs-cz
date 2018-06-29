@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a4cf32ea7b77db3fc78a404063b8a4d69ecebf58
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 32cc1a436521574917c8e52b2fa4e045d32a4f09
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195705"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062570"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spuštěné sady runbook pro Hybrid Runbook Worker.
 
@@ -157,13 +157,9 @@ Uložit *Export RunAsCertificateToHybridWorker* runbook do počítače s `.ps1` 
 
 Úlohy jsou zpracovávány mírně liší na procesy Hybrid Runbook Worker než při spuštění v Azure izolovaných prostorů. Jeden klíčovým rozdílem je, že neexistuje žádné omezení na dobu trvání úlohy na procesy Hybrid Runbook Worker. Pokud máte sadu runbook dlouho běžící chcete zajistěte, aby byl odolné vůči možné restartování, například pokud je počítač, který je hostitelem hybridní pracovní proces se restartuje. Pokud hostitelský počítač hybridního pracovního procesu dojde k restartování, všechny spuštěné úlohy runbooku se restartuje, od začátku, nebo z posledního kontrolního bodu pro runbooky pracovních postupů Powershellu. Pokud úlohy sady runbook je restartován více než 3 výskyty, pak pozastavení.
 
-## <a name="troubleshooting-runbooks-on-hybrid-runbook-worker"></a>Řešení potíží s sady runbook pro Hybrid Runbook Worker.
+## <a name="troubleshoot"></a>Řešení potíží
 
-Protokoly se ukládají místně na každém hybridní pracovní proces na C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Hybridní pracovní procesy také záznam chyby a události v protokolu událostí systému Windows v rámci **aplikace a služby Logs\Microsoft-SMA\Operational**. Události souvisejících se sadami runbook spustit v pracovním procesu se zapisují do **aplikace a služby Logs\Microsoft-Automation\Operational**. **Microsoft SMA** protokolu zahrnuje mnoho další události související s úloha sady runbook nabídnutých do pracovního procesu a zpracování sady runbook. Když **automatizace Microsoft** protokolu událostí nemá mnoho událostí s podrobnostmi o pomoc při řešení potíží s spuštění sady runbook, obsahuje výsledky úlohy runbooku.
-
-[Runbook výstup a zprávy](automation-runbook-output-and-messages.md) odešlou do Azure Automation z hybridní pracovní procesy stejně jako úlohy sady runbook běží v cloudu. Můžete také povolit podrobné a průběh datové proudy stejným způsobem jako pro ostatní sady runbook.
-
-Pokud vaše sady runbook nejsou úspěšném dokončení a Souhrn úlohy zobrazuje stav **pozastaveno**, přečtěte si článek o odstraňování potíží [Hybrid Runbook Worker: ukončí úlohy runbooku se stavem pozastaveno](automation-troubleshooting-hybrid-runbook-worker.md#a-runbook-job-terminates-with-a-status-of-suspended).
+Pokud vaše sady runbook nejsou úspěšném dokončení a Souhrn úlohy zobrazuje stav **pozastaveno**, zkontrolujte Průvodci odstraňováním potíží na [selhání spuštění sady runbook](troubleshoot/hybrid-runbook-worker.md#runbook-execution-fails).
 
 ## <a name="next-steps"></a>Další postup
 

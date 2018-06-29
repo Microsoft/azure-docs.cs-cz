@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 16cc7c5841708b8b27cff4fcc7c93cdbb2fe0fa4
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7754fccdfe8a2c4fad24f61fc22c722d2640ffa6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838329"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063822"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Jak určit scénáře a plánovat zpracování dat pokročilé analýzy
 Jaké prostředky měli naplánovat při nastavení prostředí pro provádět pokročilé analýzy na datovou sadu? Tento článek navrhuje řadu otázky, snadněji identifikovat úlohy a prostředky, které jsou relevantní váš scénář. Pořadí kroků pro prediktivní analýzy popsané v [co je proces pro vědecké účely Data Team (TDSP)?](overview.md). Každý z těchto kroků pro úlohy, které jsou relevantní pro konkrétní scénář vyžaduje konkrétní prostředky. Klíčové otázky k identifikaci váš scénář se týkají dat logistiky charakteristiky, kvalitu nástroje a jazyky, které chcete provést analýzu a datové sady.
@@ -48,7 +48,7 @@ Logistic dotazy se týkají umístění **zdroj dat**, **cílového místa** v A
    
    * [Načtení dat do úložiště prostředí pro analýzu](ingest-data.md)
    * [Importu trénovacích dat do Azure Machine Learning Studio z různých zdrojů dat](../studio/import-data.md).
-4. **Potřebuje přesunout v pravidelných intervalech nebo změnit během migrace dat?** Zvážit použití Azure Data Factory (ADF), když data je třeba migrovat průběžně, zvlášť pokud hybridní scénář, který přistupuje k místní a cloudové prostředky je zahrnuta nebo když dat je zpracován, nebo musí být upraven nebo mít obchodní logiky přidána průběhu migrované. Další informace najdete v tématu [přesun dat z místního serveru SQL do SQL Azure s Azure Data Factory](move-sql-azure-adf.md)
+4. **Potřebuje přesunout v pravidelných intervalech nebo změnit během migrace dat?** Zvažte použití Azure Data Factory (ADF), když data je třeba migrovat průběžně, zvlášť pokud hybridní scénář, který přistupuje k místní a cloudové prostředky je zahrnuta nebo když dat je zpracován, nebo musí být upraven nebo mít obchodní logiky, které jsou přidány do ji v průběhu se migruje. Další informace najdete v tématu [přesun dat z místního serveru SQL do SQL Azure s Azure Data Factory](move-sql-azure-adf.md)
 5. **Kolik dat je přesunuta do Azure?** Datové sady, které jsou velmi velký může překročit kapacitu úložiště určité prostředí. Příklad najdete v tématu diskuzi o omezení velikosti pro Machine Learning Studio v další části. V takových případech ukázkových dat lze během analýzy. Podrobnosti o tom, jak nižší sample datovou sadu v různých prostředích Azure najdete v tématu [vzorová data v procesu Team datové vědy](sample-data.md).
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Otázky ohledně dat charakteristiky: velikost, typ a formát
@@ -97,9 +97,9 @@ Existuje mnoho možností v závislosti na tom, jaké jazyky a vývojových pros
    
    * [Microsoft Azure Powershell](/powershell/azure/overview) -skriptovací jazyk používají ke správě prostředků Azure v skriptovací jazyk.
    * [Azure Machine Learning Studio](../studio/what-is-ml-studio.md)
-   * [Revolution Analytics](http://www.revolutionanalytics.com/revolution-r-open)
+   * [Revolution Analytics](https://www.microsoft.com/sql-server/machinelearningserver)
    * [Rstudia](http://www.rstudio.com)
-   * [Python Tools for Visual Studio](http://microsoft.github.io/PTVS/)
+   * [Python Tools for Visual Studio](http://aka.ms/ptvsdocs)
    * [Anaconda](https://www.continuum.io/why-anaconda)
    * [Poznámkové bloky Jupyter](http://jupyter.org/)
    * [Microsoft Power BI](http://powerbi.microsoft.com)

@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 93729646cf1a501b5502e2666ed68944fe474f72
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5cf4005ad50c9c75f22b2fa2719925afbe69f26
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34616001"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37044972"
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Datové sady a propojené služby v Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-create-datasets.md)
-> * [Verze 2 – Preview](concepts-datasets-linked-services.md)
+> * [Verze 1](v1/data-factory-create-datasets.md)
+> * [Aktuální verze](concepts-datasets-linked-services.md)
 
-Tento článek popisuje, jaké datové sady se, jak jsou definovány ve formátu JSON, a způsobu jejich použití v Azure Data Factory V2 kanálů. 
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [datové sady v V1 objekt pro vytváření dat](v1/data-factory-create-datasets.md).
+Tento článek popisuje, jaké datové sady se, jak jsou definovány ve formátu JSON, a způsobu jejich použití v Azure Data Factory kanálů. 
 
 Pokud jste nový objekt pro vytváření dat, najdete v části [Úvod do Azure Data Factory](introduction.md) Přehled. 
 
@@ -193,7 +190,7 @@ Vlastnost | Popis | Požaduje se
 -------- | ----------- | --------
 jméno | Název sloupce. | Ano
 type | Datový typ sloupce. Objekt pro vytváření dat podporuje následující typy průběžných dat jako Povolené hodnoty: **Int16, Int32, Int64, jedním, Double, Decimal, Byte [], logická hodnota, řetězec, Guid, Datetime, Datetimeoffset a časový interval** | Ne
-Jazyková verze | . Na základě NET jazykovou verzi, která se použije, když je typ typ formátu .NET: `Datetime` nebo `Datetimeoffset`. Výchozí hodnota je `en-us`. | Ne
+jazyková verze | . Na základě NET jazykovou verzi, která se použije, když je typ typ formátu .NET: `Datetime` nebo `Datetimeoffset`. Výchozí hodnota je `en-us`. | Ne
 Formát | Řetězec, který se má použít, když je typ typ formátu .NET formátu: `Datetime` nebo `Datetimeoffset`. Odkazovat na [vlastní řetězců data a času formát](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) k formátování data a času. | Ne
 
 ### <a name="example"></a>Příklad:
@@ -220,13 +217,13 @@ Následující pokyny vám pomohou pochopit, kdy se mají zahrnout informace o s
 ## <a name="create-datasets"></a>Vytvoření datových sad
 Datové sady můžete vytvořit pomocí jedné z těchto nástrojů nebo sady SDK: [.NET API](quickstart-create-data-factory-dot-net.md), [prostředí PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), šablony Azure Resource Manageru a portálu Azure
 
-## <a name="v1-vs-v2-datasets"></a>V1 vs. Datové sady v2
+## <a name="current-version-vs-version-1-datasets"></a>Aktuální verze a verze 1 datové sady
 
-Zde jsou některé rozdíly mezi datové sady objektu pro vytváření dat v1 a v2: 
+Zde jsou některé rozdíly mezi objekt pro vytváření dat a datové sady verze 1 pro vytváření dat: 
 
-- Vlastnost external nepodporuje v2. Je nahrazena [aktivační událost](concepts-pipeline-execution-triggers.md).
-- Zásady a dostupnosti vlastnosti nejsou podporovány u V2. Počáteční čas pro kanál závisí na [aktivační události](concepts-pipeline-execution-triggers.md).
-- Oboru datové sady (datové sady definované v kanálu) nejsou podporovány u V2. 
+- Vlastnost external není v aktuální verzi podporováno. Je nahrazena [aktivační událost](concepts-pipeline-execution-triggers.md).
+- Zásady a dostupnosti vlastnosti nejsou podporovány v aktuální verzi. Počáteční čas pro kanál závisí na [aktivační události](concepts-pipeline-execution-triggers.md).
+- Oboru datové sady (datové sady definované v kanálu) nejsou podporovány v aktuální verzi. 
 
 ## <a name="next-steps"></a>Další postup
 Projděte si následující kurz podrobné pokyny pro vytváření kanálů a datové sady pomocí jedné z těchto nástrojů nebo sady SDK. 

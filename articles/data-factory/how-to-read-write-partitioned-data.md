@@ -1,6 +1,6 @@
 ---
 title: Jak číst nebo zapisovat na oddíly dat v Azure Data Factory | Microsoft Docs
-description: Zjistěte, jak číst nebo zapisovat oddílů dat v Azure Data Factory verze 2.
+description: Zjistěte, jak číst nebo zapisovat oddílů dat v Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: cdf305e3607d7483186185a014883cff5458b89f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59644f3318e2bf9c4f0ea6c3f5699fe1d19f2089
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619078"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053706"
 ---
-# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory-version-2"></a>Jak číst nebo zapisovat data v Azure Data Factory verze 2 rozdělena na oddíly
-Azure Data Factory v verze 1, podporované čtení nebo zápis oddílů dat pomocí SliceStart/SliceEnd/WindowStart/WindowEnd systémové proměnné. Ve verzi 2 můžete dosáhnout toto chování pomocí parametru kanálu a čas nebo naplánovaný čas spuštění aktivační události jako hodnotu parametru. 
+# <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Jak číst nebo zapisovat data v Azure Data Factory rozdělena na oddíly
+Azure Data Factory v verze 1, podporované čtení nebo zápis oddílů dat pomocí SliceStart/SliceEnd/WindowStart/WindowEnd systémové proměnné. V aktuální verzi objektu pro vytváření dat můžete toto chování dosáhnout pomocí parametru kanálu a čas nebo naplánovaný čas spuštění aktivační události jako hodnotu parametru. 
 
 ## <a name="use-a-pipeline-parameter"></a>Pomocí parametru kanálu 
 Ve verzi 1 můžete použít vlastnost partitionedBy a SliceStart systémové proměnné, jak je znázorněno v následujícím příkladu: 
@@ -37,7 +37,7 @@ Ve verzi 1 můžete použít vlastnost partitionedBy a SliceStart systémové pr
 
 Další informace o vlastnosti partitonedBy najdete v tématu [konektor Azure Blob verze 1](v1/data-factory-azure-blob-connector.md#dataset-properties) článku. 
 
-V verze 2 je způsob, jak dosáhnout toto chování provést následující akce: 
+V aktuální verzi objektu pro vytváření dat je způsob, jak dosáhnout toto chování provést následující akce: 
 
 1. Definování **kanálu parametr** typu řetězec. V následujícím příkladu je název parametru kanálu **windowStartTime**. 
 2. Nastavit **folderPath** v definici datové sady, chcete-li hodnota parametru kanálu. 

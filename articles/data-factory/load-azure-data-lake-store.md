@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: fdfb35b0e1c52ad2aad164a38ae308f9142880a6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 25df96664f6b5fe9da26bee43bc726e05504e5b8
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619622"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058855"
 ---
 # <a name="load-data-into-azure-data-lake-store-by-using-azure-data-factory"></a>Načtení dat do Azure Data Lake Store pomocí Azure Data Factory
 
@@ -35,9 +35,6 @@ Tento článek ukazuje, jak používat nástroj Data Factory kopírovat Data k _
 
 > [!NOTE]
 > Další informace najdete v tématu [zkopírovat data do nebo z Azure Data Lake Store pomocí Azure Data Factory](connector-azure-data-lake-store.md).
->
-> Tento článek se týká verze 2 služby Azure Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aktivitu kopírování v Azure Data Factory verze 1](v1/data-factory-data-movement-activities.md).
-
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure: Pokud nemáte předplatné Azure, vytvořte [bezplatný účet](https://azure.microsoft.com/free/) před zahájením.
@@ -56,7 +53,7 @@ Tento článek ukazuje, jak používat nástroj Data Factory kopírovat Data k _
     * **Název**: Zadejte globálně jedinečný název objektu pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat \"LoadADLSDemo\" není k dispozici," Zadejte jiný název služby data Factory. Například můžete použít název  _**jméno**_**ADFTutorialDataFactory**. Zkuste vytvořit objekt pro vytváření dat znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
     * **Předplatné**: Vyberte předplatné Azure, ve kterém se má vytvořit datová továrna. 
     * **Skupina prostředků**: Vyberte existující skupinu prostředků z rozevíracího seznamu, nebo **vytvořit nový** možnost a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-    * **Verze**: vyberte **V2 (Preview)**.
+    * **Verze**: vyberte **V2**.
     * **Umístění**: Vyberte umístění služby data Factory. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, které jsou používány pro vytváření dat může být v jiných umístěních a oblastech. Tyto úložiště dat patří Azure Data Lake Store, Azure Storage, Azure SQL Database a tak dále.
 
 3. Vyberte **Vytvořit**.
@@ -74,35 +71,45 @@ Tento článek ukazuje, jak používat nástroj Data Factory kopírovat Data k _
 2. V **vlastnosti** zadejte **CopyFromAmazonS3ToADLS** pro **název úlohy** pole a vyberte možnost **Další**:
 
     ![Stránka Vlastnosti](./media/load-data-into-azure-data-lake-store/copy-data-tool-properties-page.png)
-3. V **zdrojového úložiště dat** vyberte **Amazon S3**a vyberte **Další**:
+3. V **zdrojového úložiště dat** klikněte na tlačítko **+ vytvořit nové připojení**:
 
     ![Stránka Zdrojové úložiště dat](./media/load-data-into-azure-data-lake-store/source-data-store-page.png)
+    
+    Vyberte **Amazon S3**a vyberte **pokračovat**
+    
+    ![Stránka s3 úložiště zdroje dat](./media/load-data-into-azure-data-lake-store/source-data-store-page-s3.png)
+    
 4. V **připojení zadejte Amazon S3** proveďte následující kroky: 
    1. Zadejte **Access Key ID** hodnotu.
    2. Zadejte **tajný přístupový klíč** hodnotu.
-   3. Vyberte **Next** (Další).
+   3. Vyberte **Finish** (Dokončit).
    
    ![Zadejte účet Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+   
+   4. Zobrazí se nové připojení. Vyberte **Next** (Další).
+   
+   ![Zadejte účet Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account-created.png)
+   
 5. V **zvolte vstupní soubor nebo složku** stránky, přejděte na složku a soubor, který chcete zkopírovat přes. Vyberte složka či soubor, vyberte **zvolte**a potom vyberte **Další**:
 
     ![Zvolte vstupní soubor nebo složku](./media/load-data-into-azure-data-lake-store/choose-input-folder.png)
 
-6. V **cílového úložiště dat** vyberte **Azure Data Lake Store**a vyberte **Další**:
-
-    ![Stránka Cílové úložiště dat](./media/load-data-into-azure-data-lake-store/destination-data-storage-page.png)
-
-7. Vyberte chování kopie výběrem **kopírování souborů rekurzivně** a **binární kopie** (kopírovat soubory jako-je) možnosti. Vyberte **Další**:
+6. Vyberte chování kopie výběrem **kopírování souborů rekurzivně** a **binární kopie** (kopírovat soubory jako-je) možnosti. Vyberte **Další**:
 
     ![Zadejte výstupní složky](./media/load-data-into-azure-data-lake-store/specify-binary-copy.png)
+    
+7. V **cílového úložiště dat** klikněte na tlačítko **+ vytvořit nové připojení**a potom vyberte **Azure Data Lake Store**a vyberte **pokračovat**:
+
+    ![Stránka Cílové úložiště dat](./media/load-data-into-azure-data-lake-store/destination-data-storage-page.png)
 
 8. V **zadejte Data Lake Store připojení** proveďte následující kroky: 
 
    1. Vyberte pro Data Lake Store **název účtu Data Lake Store**.
-   2. Zadejte informace o objektu služby: **klienta**, **služby ID objektu zabezpečení**, a **hlavní klíč služby**.
+   2. Zadejte **klienta**a vyberte dokončit.
    3. Vyberte **Next** (Další).
    
    > [!IMPORTANT]
-   > V tomto návodu můžete použít _instanční objekt_ k ověření Data Lake Store. Ujistěte se, zda jste instanční objekt udělit příslušná oprávnění v Azure Data Lake Store pomocí následujícího [tyto pokyny](connector-azure-data-lake-store.md#using-service-principal-authentication).
+   > V tomto návodu můžete použít _identita spravované služby_ k ověření Data Lake Store. Ujistěte se, zda jste instanční objekt udělit příslušná oprávnění v Azure Data Lake Store pomocí následujícího [tyto pokyny](connector-azure-data-lake-store.md#using-managed-service-identity-authentication).
    
    ![Zadejte účet Azure Data Lake Store](./media/load-data-into-azure-data-lake-store/specify-adls.png)
 9. V **zvolit výstupní soubor nebo složku** zadejte **copyfroms3** jako výstup název složky a vyberte **Další**: 

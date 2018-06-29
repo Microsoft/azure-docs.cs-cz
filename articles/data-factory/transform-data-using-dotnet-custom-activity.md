@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 345ea6f91593e14ff19616f5512916ee77f38486
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2dab0adb0728a1fb5e8ac9bebe01f861ed8c7c3a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619945"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058853"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-use-custom-activities.md)
-> * [Verze 2 – Preview](transform-data-using-dotnet-custom-activity.md)
+> * [Verze 1](v1/data-factory-use-custom-activities.md)
+> * [Aktuální verze](transform-data-using-dotnet-custom-activity.md)
 
 Existují dva typy aktivit, které můžete použít v kanál služby Azure Data Factory.
 
@@ -30,10 +30,6 @@ Existují dva typy aktivit, které můžete použít v kanál služby Azure Data
 - [Aktivity transformace dat](transform-data.md) k transformaci dat pomocí výpočetních služeb, například Azure HDInsight, Azure Batch a Azure Machine Learning. 
 
 Pro přesun úložiště dat do nebo z dat objektu pro vytváření dat nepodporuje, nebo transformace nebo zpracovat data způsobem, který není podporován službou Data Factory, můžete vytvořit **vlastní aktivity** s vlastní přesun dat nebo logiku transformaci a použití aktivity v kanálu. Vlastní aktivita běží na logice vlastní kód **Azure Batch** fondu virtuálních počítačů.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [(vlastní) DotNet aktivity v datové továrně verze 1](v1/data-factory-use-custom-activities.md).
- 
 
 Viz následující články, pokud začínáte používat službu Azure Batch:
 
@@ -107,11 +103,11 @@ Následující tabulka popisuje názvy a popisy vlastností, které jsou specifi
 | description           | Popisuje, jakým způsobem aktivita naloží text.  | Ne       |
 | type                  | Vlastní aktivity, typ aktivity je **vlastní**. | Ano      |
 | linkedServiceName     | Propojené služby Azure batch. Další informace o této propojené služby najdete v tématu [výpočetní propojené služby](compute-linked-services.md) článku.  | Ano      |
-| příkaz               | Příkaz vlastní aplikace má být proveden. Pokud aplikace je již k dispozici na uzlu fondu Azure Batch, mohou být přeskočeny resourceLinkedService a folderPath. Například můžete zadat příkaz, který má být `cmd /c dir`, která nativně podporuje uzlu fondu Batch systému Windows. | Ano      |
+| command               | Příkaz vlastní aplikace má být proveden. Pokud aplikace je již k dispozici na uzlu fondu Azure Batch, mohou být přeskočeny resourceLinkedService a folderPath. Například můžete zadat příkaz, který má být `cmd /c dir`, která nativně podporuje uzlu fondu Batch systému Windows. | Ano      |
 | resourceLinkedService | Propojená služba Azure úložiště k účtu úložiště se uloží vlastní aplikace | Ne       |
 | folderPath            | Cesta ke složce vlastní aplikace a všechny jeho závislé součásti | Ne       |
 | referenceObjects      | Pole existující propojené služby a datové sady. Odkazovaná propojené služby a datové sady se předávají do vlastní aplikace ve formátu JSON, vlastní kód můžete odkazovat na prostředky objektu pro vytváření dat | Ne       |
-| ExtendedProperties    | Uživatelem definované vlastnosti, které lze předat vlastní aplikaci ve formátu JSON, takže další vlastnosti, můžete odkazovat vlastní kód | Ne       |
+| extendedProperties    | Uživatelem definované vlastnosti, které lze předat vlastní aplikaci ve formátu JSON, takže další vlastnosti, můžete odkazovat vlastní kód | Ne       |
 
 ## <a name="executing-commands"></a>Provádění příkazů
 
@@ -288,7 +284,7 @@ namespace SampleApp
   "failureType": ""
   "target": "MyCustomActivity"
   ```
-Pokud chcete pracovat s obsahem stdout.txt v podřízené aktivity, můžete získat cestu k souboru stdout.txt ve výrazu "@activity(MyCustomActivity).output.outputs [0]". 
+Pokud chcete pracovat s obsahem stdout.txt v podřízené aktivity, můžete získat cestu k souboru stdout.txt ve výrazu "\@activity('MyCustomActivity').output.outputs [0]". 
 
   > [!IMPORTANT]
   > - Activity.json, linkedServices.json a datasets.json jsou uloženy ve složce modulu runtime úlohy Batch. V tomto příkladu activity.json, linkedServices.json a datasets.json jsou uloženy v "https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" cesta. V případě potřeby, musíte je vyčistit samostatně. 
@@ -307,7 +303,7 @@ Pokud chcete pracovat s obsahem stdout.txt v podřízené aktivity, můžete zí
   Následující tabulka popisuje rozdíly mezi aktivitou V2 vlastní objekt pro vytváření dat a objektu pro vytváření dat verze 1 (vlastní) DotNet aktivity: 
 
 
-|Rozdíly      |verze 2 vlastní aktivity      | verze 1 (vlastní) aktivity DotNet.      |
+|Rozdíly      | Vlastní aktivity      | verze 1 (vlastní) aktivity DotNet.      |
 | ---- | ---- | ---- |
 |Jak je definovaný vlastní logiky      |Tím, že poskytuje spustitelný soubor      |Implementací .net knihovny DLL      |
 |Prostředí pro spuštění vlastní logiky      |Windows nebo Linux      |Windows (rozhraní .net Framework 4.5.2)      |
@@ -318,7 +314,7 @@ Pokud chcete pracovat s obsahem stdout.txt v podřízené aktivity, můžete zí
 |Protokolování      |Zapíše přímo do STDOUT      |Implementace protokolovacího nástroje v rozhraní .net knihovny DLL      |
 
 
-  Pokud máte existující .net kódu napsaného pro verzi aktivity DotNet 1 (vlastní), budete muset upravit kód pro ho na spolupráci s verzí 2 vlastní aktivity. Aktualizace kódu podle těchto pokynů vysoké úrovně:  
+  Pokud máte existující .net kódu napsaného pro verzi aktivity DotNet 1 (vlastní), budete muset upravit kód pro ho na spolupráci s aktuální verzí vlastní aktivity. Aktualizace kódu podle těchto pokynů vysoké úrovně:  
 
    - Změnit projekt z .net knihovny tříd do konzoly aplikace. 
    - Spuštění vaší aplikace pomocí `Main` metoda. `Execute` Metodu `IDotNetActivity` rozhraní se už nevyžaduje. 
@@ -327,7 +323,7 @@ Pokud chcete pracovat s obsahem stdout.txt v podřízené aktivity, můžete zí
    - Balíček Microsoft.Azure.Management.DataFactories NuGet se už nevyžaduje. 
    - Kompilace kódu, nahrát spustitelného souboru a jeho závislosti do služby Azure Storage a zadejte cestu, do `folderPath` vlastnost. 
 
-Kompletní příklad začátku do konce DLL a kanál ukázku popisu v objektu pro vytváření dat verze 1 článku [použít vlastní aktivity v kanálu Azure Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) může být přepsán jako vlastní aktivity v2 Data Factory najdete v tématu [ Data Factory verze 2 vlastní aktivity ukázka](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample). 
+Kompletní příklad začátku do konce DLL a kanál ukázku popisu v objektu pro vytváření dat verze 1 článku [použít vlastní aktivity v kanálu Azure Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) může být přepsán jako Data objektu pro vytváření vlastních aktivit najdete v tématu [ Ukázkové aktivity vlastní objekt pro vytváření dat](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample). 
 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatické škálování služby Azure Batch
 Můžete také vytvořit fond Azure Batch s **škálování** funkce. Můžete například vytvořit fondu azure batch s 0 vyhrazených virtuálních počítačích a vzorec škálování na základě počtu úkolů čekajících na zpracování. 

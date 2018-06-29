@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/08/2018
+ms.date: 06/27/2018
 ms.author: iainfou
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 7a67d65621da129640d3bb551cb0976ec1912050
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 6a4dcc2cd3b196221b881783c79ddb0adaa6f38b
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284800"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063659"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Jaké jsou dostupnost zóny v Azure?
 Dostupnost zóny je vysoká dostupnost nabízející, které chrání vaše aplikace a data před selháním datového centra. Dostupnost zóny jsou jedinečné fyzické umístění v rámci oblasti Azure. Každé zóny se skládá z jedné nebo více datových centrech vybaven nezávislé napájení, chlazení a práci v síti. K zajištění odolnosti, je minimálně tři samostatné zóny ve všech oblastech povoleno. Fyzické oddělení dostupnost zóny v rámci oblasti chrání aplikace a data před selháním datového centra. Zónově redundantní služby replikaci mezi zón dostupnosti pro ochranu před jedním bodů z selháním aplikacím a datům. Dostupnost zón Azure nabízí odvětví nejlepší 99,99 % virtuálních počítačů smlouva SLA. Úplná smlouva [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) vysvětluje garantovanou dostupnost Azure jako celku.
@@ -42,7 +42,7 @@ Zajistit komplexní provozní kontinuitu v Azure vytvořte architektuře aplikac
 - Střed USA
 - Francie – střed
 - Východní USA 2 (Preview)
-- Západní Evropa (Preview)
+- Západní Evropa
 - Asie a Tichomoří – jihovýchod (Preview)
 
 
@@ -59,6 +59,8 @@ Služby Azure, které podporují dostupnost zóny jsou:
 - SQL Database
 - Event Hubs
 - Service Bus
+- VPN Gateway
+- ExpressRoute
 
 
 ## <a name="pricing"></a>Ceny
@@ -73,6 +75,9 @@ Není k dispozici pro virtuální počítače nasazené v zóně dostupnosti bez
 - [Nástroj pro vyrovnávání zatížení virtuálních počítačů v rámci zóny pomocí standardní Vyrovnávání zatížení s front-end oblastmi](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [Zónově redundantní úložiště](../storage/common/storage-redundancy-zrs.md)
 - [SQL Database](../sql-database/sql-database-high-availability.md#zone-redundant-configuration-preview)
+- [Obnovení geograficky havárii centra událostí](../event-hubs/event-hubs-geo-dr.md#availability-zones-preview)
+- [Geograficky havárii Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview)
+- [Vytvoření brány virtuální sítě zónově redundantní](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 
 
 ## <a name="next-steps"></a>Další postup

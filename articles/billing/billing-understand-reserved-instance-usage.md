@@ -1,5 +1,5 @@
 ---
-title: Pochopení využití vyhrazenou instanci Azure pro předplatné průběžnými platbami - fakturace Azure | Microsoft Docs
+title: Porozumět používání Azure vyhrazenou instanci pro vaše předplatné s průběžnými platbami | Microsoft Docs
 description: Zjistěte, jak číst vaše využití, abyste pochopili, jak se použije Instance vyhrazené virtuálního počítače Azure pro vaše předplatné s průběžnými platbami.
 services: billing
 documentationcenter: ''
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: manshuk
-ms.openlocfilehash: 7bf4aea86d4d430c15d60a8d73365705ace18b5a
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: 7e303f3e5ce0e618d941be4190f6fadb40f2e09d
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063787"
 ---
 # <a name="understand-reserved-instance-usage-for-your-pay-as-you-go-subscription"></a>Pochopení vyhrazenou instanci využití pro vaše předplatné s průběžnými platbami
 
@@ -26,9 +27,9 @@ Pochopení využití vyhrazená instance virtuálních počítačů Azure pomoc�
 
 
 >[!NOTE]
->Tento článek se nevztahuje na EA zákazníků. Pokud jste zákazník EA, přečtěte si téma [pochopit vyhrazenou instanci využití podnikového zápisu.](billing-understand-reserved-instance-usage-ea.md) Tento článek také předpokládá, že vyhrazenou instanci se použije pro v rámci jednoho předplatného. Pokud vyhrazená Instance se použije k více než jedno předplatné, může vyhrazenou instanci benefit span více souborů csv. 
+>Tento článek se nevztahuje na EA zákazníků. Pokud jste zákazník EA, přečtěte si téma [pochopit vyhrazenou instanci využití podnikového zápisu.](billing-understand-reserved-instance-usage-ea.md) Tento článek také předpokládá, že je vyhrazená instance se použije pro v rámci jednoho předplatného. Pokud vyhrazená instance se použije k více než jedno předplatné, může vyhrazenou instanci benefit span více souborů csv. 
 
-V následující části předpokládají, že používáte virtuální počítač s Windows Standard_DS1_v2 v oblasti USA – východ a vyhrazenou instanci informace vypadá jako v následující tabulce:
+V následující části předpokládají, že používáte virtuální počítač s Windows Standard_DS1_v2 v oblasti USA – východ a vaše vyhrazenou instanci informace vypadá podobně jako v následující tabulce:
 
 | Pole | Hodnota |
 |---| :---: |
@@ -37,7 +38,7 @@ V následující části předpokládají, že používáte virtuální počíta
 |Skladová jednotka (SKU) | Standard_DS1_v2|
 |Oblast | eastus |
 
-## <a name="reserved-instance-application"></a>Vyhrazená Instance aplikace
+## <a name="reserved-instance-application"></a>Vyhrazená instance aplikace
 
 Část hardwaru virtuálního počítače je zahrnout, protože nasazených virtuálních počítačů odpovídající atributy vyhrazenou instanci. Chcete-li zjistit, jaký software Windows není předmětem vyhrazená Instance, přejděte na [náklady na software Windows instancí virtuálních počítačů rezervy Azure.](billing-reserved-instance-windows-software-costs.md)
 
@@ -51,7 +52,7 @@ Na další informace o filtrování a zadejte vaše **ID rezervace**. Následuj�
 
 ![Snímek obrazovky s denní podrobnosti o využití a poplatky](./media/billing-understand-reserved-instance-usage/billing-payg-reserved-instance-csv-details.png)
 
-1. **ReservationId** dalších údajů, pole je vyhrazená Instance, která se použije k uplatnění výhody k virtuálnímu počítači.
+1. **ReservationId** dalších údajů, pole je vyhrazená instance, která se použije k uplatnění výhody k virtuálnímu počítači.
 2. ConsumptionMeter je měření Id pro virtuální počítač.
 3. Základní rezervace virtuálních počítačů měření podkategorie řádek představuje řádku nákladů $0 v části prohlášení. Náklady na provozování tento virtuální počítač je již uhrazeno vyhrazenou instanci.
 4. Jedná se o Id měření pro vyhrazenou instanci. Náklady na toto monitorování je $0. Žádné virtuální počítače, která kvalifikují pro vyhrazenou instanci má tento MeterId ve sdíleném svazku clusteru, aby se zohlednily náklady. 
@@ -60,9 +61,9 @@ Na další informace o filtrování a zadejte vaše **ID rezervace**. Následuj�
 ## <a name="next-steps"></a>Další postup
 Další informace o vyhrazenou instancí, naleznete v následujících článcích:
 
-- [Ušetřit peníze u virtuálních počítačů s vyhrazenou instancí Azure](billing-save-compute-costs-reservations.md)
-- [Předem pro virtuální počítače s vyhrazenou instancí](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Spravovat vyhrazená instance](billing-manage-reserved-vm-instance.md)
+- [Jaké jsou vyhrazená instance virtuálních počítačů Azure?](billing-save-compute-costs-reservations.md)
+- [Předem pro virtuální počítače s instancemi Azure vyhrazené virtuálních počítačů](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Spravovat vyhrazená instance v Azure](billing-manage-reserved-vm-instance.md)
 - [Pochopit, jak se použije slevu vyhrazenou instanci](billing-understand-vm-reservation-charges.md)
 - [Pochopení vyhrazenou instanci využití pro podnikového zápisu](billing-understand-reserved-instance-usage-ea.md)
 - [Náklady na software Windows není součástí vyhrazené instance](billing-reserved-instance-windows-software-costs.md)

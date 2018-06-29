@@ -13,23 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 24d641247ad9bb0b5e6199952cbde9cb56fcaea7
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: debb27f49c730df4a8bef42b1f1ef9ec50f1faf0
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809285"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054054"
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopírování dat z MongoDB pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-on-premises-mongodb-connector.md)
-> * [Verze 2 – Preview](connector-mongodb.md)
+> * [Verze 1](v1/data-factory-on-premises-mongodb-connector.md)
+> * [Aktuální verze](connector-mongodb.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z databáze MongoDB. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [MongoDB konektoru V1](v1/data-factory-on-premises-mongodb-connector.md).
-
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 

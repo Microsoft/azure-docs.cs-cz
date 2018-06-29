@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/20/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: d65c75a9b4f308ddd1bb6a6bff28c52c946e4f05
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 43408ebc65d4acf581b612e8ecfb9d00679cc078
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36320028"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37066097"
 ---
 Objekt pro vytváření dat je víceklientské služby, který má následující výchozí omezení na místě a ujistěte se, že předplatná zákazníka jsou chráněny z druhé strany úlohy. Mnoho omezení lze snadno zvýšit pro vaše předplatné až do maximálního limitu kontaktováním podpory.
 
@@ -35,7 +35,7 @@ Objekt pro vytváření dat je víceklientské služby, který má následujíc�
 | Maximální časový limit pro běh aktivit kanálu | 7 dní | 7 dní |
 | Počet bajtů za objektu pro objekty kanálu <sup>1</sup> | 200 KB | 200 KB |
 | Počet bajtů za pro datovou sadu a propojené služby objekty <sup>1</sup> | 100 KB | 2000 KB |
-| Cloud jednotek přesun dat na aktivity při spuštění <sup>3</sup> | 256 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Data integrace jednotek na kopie aktivity při spuštění <sup>3</sup> | 256 | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Zápis volání rozhraní API | 2 500/hod.<br/><br/> Toto omezení je dáno pomocí Azure Resource Manager, není Azure Data Factory. | [Obraťte se na podporu](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Volání rozhraní API pro čtení | 12 500/hod.<br/><br/> Toto omezení je dáno pomocí Azure Resource Manager, není Azure Data Factory. | [Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 
@@ -51,14 +51,14 @@ Objekt pro vytváření dat je víceklientské služby, který má následujíc�
 | Počet bajtů za objektu pro objekty kanálu <sup>1</sup> |200 KB |200 KB |
 | Počet bajtů za pro datovou sadu a propojené služby objekty <sup>1</sup> |100 KB |2000 KB |
 | HDInsight na vyžádání clusteru jader v rámci předplatného <sup>2</sup> |60 |[Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
-| Cloud jednotek přesun dat na aktivity při spuštění <sup>3</sup> |32 |[Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
+| Cloud jednotek přesun dat na kopie aktivity při spuštění <sup>3</sup> |32 |[Kontaktování podpory](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) |
 | Pro běh aktivit kanálu počet opakování |1000 |MaxInt (32 bitů) |
 
 <sup>1</sup> kanálu, datové sady a propojené služby objekty představují logické seskupení vašich úloh. Limity pro tyto objekty se nevztahují k množství dat, můžete přesunout a zpracovat služby Azure Data Factory. Objekt pro vytváření dat je navržena tak, aby pro manipulaci s petabajty dat.
 
 <sup>2</sup> jader na vyžádání HDInsight jsou přiděleny mimo odběr, který obsahuje data factory. V důsledku toho tohoto limitu je objektu pro vytváření dat vynucené základní limit pro počet jader na vyžádání HDInsight a se liší od základní limit spojený s předplatným Azure.
 
-<sup>3</sup> jednotky přesun dat cloudu (DMU) se používá v rámci cloudu cloudové kopírování operace. Se jedná o míru, která reprezentuje výkon (kombinaci procesoru, paměti a přidělení prostředků sítě) na jednu jednotku v datové továrně. Pomocí další DMUs v některých případech můžete dosáhnout vyšší propustnost kopírování. Odkazovat na [cloudu jednotky přesun dat (V2)](../articles/data-factory/copy-activity-performance.md#cloud-data-movement-units) a [cloudu jednotky přesun dat (V1)](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units) části na podrobnosti.
+<sup>3</sup> data integrace jednotky (DIU) v2 nebo cloudu Data přesun jednotky (DMU) pro v1 se používá v rámci cloudu cloudové kopírování operace. Se jedná o míru, která reprezentuje výkon (kombinaci procesoru, paměti a přidělení prostředků sítě) na jednu jednotku v datové továrně. Pomocí další DMUs v některých případech můžete dosáhnout vyšší propustnost kopírování. Odkazovat na [jednotky integraci dat (V2)](../articles/data-factory/copy-activity-performance.md#data-integration-units) a [cloudu jednotky přesun dat (V1)](../articles/data-factory/v1/data-factory-copy-activity-performance.md#cloud-data-movement-units) části na podrobnosti, a [Azure Data Factory stránce s cenami](https://azure.microsoft.com/pricing/details/data-factory/) pro fakturace vliv.
 
 <sup>4</sup> integrace modulu Runtime (IR) je na výpočetní infrastruktuře používá k zajištění následující funkce integrace dat různých prostředích sítě Azure Data Factory: Přesun dat, odeslání aktivity a výpočetní služby spouštění balíčků SSIS. Další informace najdete v tématu [Přehled integrace modulu Runtime](../articles/data-factory/concepts-integration-runtime.md).
 

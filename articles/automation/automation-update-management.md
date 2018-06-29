@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c6ec168332d8a655d78c3deffe89f51f7d75a840
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
-ms.translationtype: MT
+ms.openlocfilehash: a8ac62986eb7eb184ae6d102a956ee051e3aa88a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751876"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063506"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
@@ -505,39 +505,9 @@ Aktualizace správy však stále hlásit tento počítač se nekompatibilní, pr
 
 Nasazení aktualizací pomocí klasifikace aktualizace nefunguje na CentOS mimo pole. Pro SUSE výběr *pouze* jiné aktualizace podle klasifikace může vést k některé zabezpečení aktualizuje také nainstalovat Pokud aktualizace zabezpečení související s zypper (Správce balíčků) nebo jeho závislostí je potřeba nejdřív. Jedná se o omezení systému zypper. V některých případech může být nutné znovu spustit nasazení aktualizace, chcete-li ověřit pomocí protokolu aktualizace.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshoot"></a>Řešení potíží
 
-Tato část obsahuje informace, které pomohou při odstraňování problémů s řešením správy aktualizací.
-
-### <a name="windows"></a>Windows
-
-Pokud dojde k potížím při pokusu připojit virtuální počítač nebo řešení, podívejte se **aplikace a Správce služby Logs\Operations** zprávy protokolu událostí v místním počítači pro události, které mají 4502 ID události a události, který obsahovat **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent**. Následující tabulka obsahuje pro každý specifické chybové zprávy a možná řešení:
-
-| Zpráva | Důvod | Řešení |
-|----------|----------|----------|
-| Nepodařilo se zaregistrovat počítač pro správu oprav,<br/>registrace se nezdařila s výjimkou<br/>System.InvalidOperationException: {"Zpráva":"Počítač už je<br/>registrovaný k jinému účtu. "} | Počítač je již zařazený, nemá do jiného pracovního prostoru pro správu aktualizací. | Vyčistit stará artefaktů podle [odstraňuje se skupina Hybrid Runbook](automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group).|
-| Nelze zaregistrovat počítač pro správu opravy, registrace se nezdařila s výjimkou<br/>System.Net.Http.HttpRequestException: Při odesílání požadavku došlo k chybě. ---><br/>System.Net.WebException: Nadřízené připojení<br/>bylo uzavřeno: Došlo k neočekávané<br/>chybě při příjmu. ---> System.ComponentModel.Win32Exception:<br/>Klient a server nemůžou komunikovat,<br/>protože nepoužívají společný algoritmus. | Proxy nebo brány nebo brána firewall blokuje komunikaci. | [Zkontrolujte požadavky na síť](automation-hybrid-runbook-worker.md#network-planning).|
-| Nepodařilo se zaregistrovat počítač pro správu oprav,<br/>registrace se nezdařila s výjimkou<br/>Newtonsoft.Json.JsonReaderException: Chyba při analýze hodnoty kladného nekončena. | Proxy nebo brány nebo brána firewall blokuje komunikaci. | [Zkontrolujte požadavky na síť](automation-hybrid-runbook-worker.md#network-planning).|
-| Certifikát předložený službu \<wsid\>. oms.opinsights.azure.com<br/>nebyl vydaný certifikační autoritou<br/>používanou pro služby Microsoft. Kontakt<br/>správce sítě a zjistěte, jestli nepoužívají proxy server bránící<br/>komunikaci prostřednictvím protokolu TLS/SSL. |Proxy nebo brány nebo brána firewall blokuje komunikaci. | [Zkontrolujte požadavky na síť](automation-hybrid-runbook-worker.md#network-planning).|
-| Nepodařilo se zaregistrovat počítač pro správu oprav,<br/>registrace se nezdařila s výjimkou<br/>AgentService.HybridRegistration.<br/>PowerShell.Certificates.CertificateCreationException:<br/>Vytvoření certifikátu podepsaného svým držitelem se nezdařilo. ---><br/>System.UnauthorizedAccessException: Přístup byl odepřen. | Chyba při generování certifikátu podepsaného svým držitelem. | Ověřte, že má systémový účet<br/>oprávnění ke čtení ze složky:<br/>**C:\ProgramData\Microsoft\**<br/>** Crypto\RSA**|
-
-### <a name="linux"></a>Linux
-
-Pokud hromadné postupné aktualizace se nepodaří spustit na počítač s Linuxem, zkopírujte následující souboru protokolu a zachovat pro účely odstraňování potíží:
-
-```
-/var/opt/microsoft/omsagent/run/automationworker/worker.log
-```
-
-Pokud dojde k selhání během aktualizace spustit po úspěšně spustí v systému Linux, zjistíte z úlohy, výstup z napadeného počítače v spustit. Možná ze Správce balíčků váš počítač, který můžete prozkoumat a provést akci pro specifické chybové zprávy. Správa aktualizací vyžaduje správce balíčků jako v pořádku pro nasazení aktualizace úspěšná.
-
-Aktualizace balíčků v některých případech může narušovat aktualizovat správy brání nasazení aktualizací z dokončení. Pokud uvidíte, že, budete muset tyto balíčky vyloučit z budoucí aktualizace spustí nebo je nainstalovat ručně sami.
-
-Pokud oprav problém nelze vyřešit, zkopírujte následující souboru protokolu a zachovat ji **před** další nasazení aktualizace spustí pro účely odstraňování potíží:
-
-```
-/var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
-```
+Další informace o řešení potíží s vaší správy aktualizací naleznete v tématu [řešení potíží s správy aktualizací](troubleshoot/update-management.md)
 
 ## <a name="next-steps"></a>Další postup
 

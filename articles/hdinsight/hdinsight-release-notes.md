@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: nitinme
-ms.openlocfilehash: 17ba4af006587dd1d34f61a0f5f77cbcd768fcf8
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: a53bc6459e431d855ba09cda59680c5d8698c488
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31410086"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063253"
 ---
 # <a name="release-notes-for-hadoop-components-on-azure-hdinsight"></a>Poznámky k verzi pro komponent systému Hadoop v Azure HDInsight
 
@@ -28,6 +28,17 @@ Tento článek obsahuje informace o **nejnovější** Azure HDInsight verze aktu
 > [!IMPORTANT]
 > HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [HDInsight verze článku](hdinsight-component-versioning.md).
 
+## <a name="notes-for-06272018---release-of-new-open-source-versions-adls-gen2-etc-on-hdinsight-36"></a>Poznámky pro 27/06/2018 – vydání nové verze s otevřeným zdrojem, ADLS Gen2 atd na HDInsight 3.6
+2018 června verzi HDInsight formuluje až se k významnému uvolnění s velkým množstvím nových aktualizací a možnosti pro naše zákazníky, jak je uvedeno níže. Přečtěte si to [post](https://azure.microsoft.com/en-us/blog/enterprises-get-deeper-insights-with-hadoop-and-spark-updates-on-azure-hdinsight/) další podrobnosti.
+
+Toto jsou světla. Pro podrobné poznámky, opravených, známé problémy atd., přečtěte si prosím toto [dokumentu](https://aka.ms/hdirelnotes).
+
+- **Aktualizace Hadoop a další projekty open-source** – kromě 1 000 + opravy chyb napříč 20 + open-source projekty, tato aktualizace obsahuje novou verzi Spark (2.3) a Kafka (1.0).
+- **Aktualizace 9.1 serveru R na Machine Learning služby 9.3** – v této verzi se společnost Microsoft poskytuje datových vědců a techniky s nejlepší open-source rozšířené algoritmické inovace a snadné operationalization, všechny dostupné v jejich Upřednostňovaný jazyk s rychlosti Apache Spark. Tato verze rozšiřuje možnosti nabízí v R Server s přidanou podporu pro Python, vedoucí k změnu názvu clusteru z R Server pro ML služby. 
+- **Podpora pro Azure Data Lake Storage Gen2** – HDInsight bude podporovat verzi Preview služby Azure Data Lake Storage Gen2. Zákazníci budou moci zvolit účet ADLS Gen2 jako úložiště pro své clustery služby HDInsight v dostupné oblasti.
+- **Aktualizace zabezpečení balíčku HDInsight Enterprise (Preview)** – (Preview) virtuální koncových bodů služby sítě podpora pro Azure blob, úložiště, ADLS Gen1, Cosmos DB a Azure DB. 
+
+
 ## <a name="notes-for-03202018---release-of-spark-22-on-hdinsight-36"></a>Poznámky pro 03/20/2018 - verzi 2.2 Spark v HDInsight 3.6
 
 - Spark 2.2.0 zlepšuje stabilitu napříč Spark Core, SQL, ML a přináší strukturovaných streamování GA stavu. Spark 2.2.0 je nyní k dispozici na HDInsight 3.6.
@@ -35,7 +46,7 @@ Tento článek obsahuje informace o **nejnovější** Azure HDInsight verze aktu
 
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>Poznámky k verzi 08/01/2017 HDInsight
 
-| Nadpis | Popis | Ovlivněné oblasti  | Typ clusteru  | 
+| Titul | Popis | Ovlivněné oblasti  | Typ clusteru  | 
 | --- | --- | --- | --- | --- |
 | Verze systému Microsoft R Server 9.1 v HDInsight |Zřizování R Server 9.1 clustery HDInsight teď podporuje v HDInsight. Další informace o verzi Microsoft R Server 9.1, najdete v části [tomto blogu](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/). |Služba |R Server |
 | HDInsight 3.6 nyní zahrnuje novější verze do zásobníku Hadoop|<ul><li>Podrobný seznam aktualizované verze, najdete v části [verze součástí Hadoop v HDInsight k dispozici](hdinsight-component-versioning.md#hadoop-components-available-with-different-hdinsight-versions).</li><li>Seznam opravených nejnovější verze do zásobníku Hadoop najdete v tématu [informace o opravě Apache](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html).</li><li>Seznam nejnovější změny mezi HDP 2.6.1 (což je nyní k dispozici v HDInsight 3.6), naleznete v části [ https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html ](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html).</li><li>Seznam známých problémů v softwaru HDP 2.6.1 najdete v tématu [známé problémy](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html).</li></ul> |Služba |Vše |neuvedeno |

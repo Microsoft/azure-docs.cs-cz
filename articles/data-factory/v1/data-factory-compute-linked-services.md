@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 51a0f43587b9d34a3693eb4a2927d10c71bd95d1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59631ee0115c817da1b0588c1ad37d2f8b34db67
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621747"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053648"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaných službou Azure Data Factory
 > [!NOTE]
-> Tento článek se týká verze 1 služby Azure Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [výpočetní propojené služby v verze 2](../compute-linked-services.md).
+> Tento článek se týká verze 1 Azure Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [výpočetní propojené služby v](../compute-linked-services.md).
 
 Tento článek vysvětluje výpočetní prostředí, které můžete použít k datům procesu nebo transformace. Také poskytuje podrobnosti o různých konfiguracích (na vyžádání a přineste vlastní), podporuje objekt pro vytváření dat při konfiguraci propojené služby, které odkazují tyto výpočetní prostředí s objektem pro vytváření dat Azure.
 
@@ -66,7 +66,7 @@ Po 31. července 2018:
 - Pokud používáte na vyžádání propojené služby HDInsight k provedení Data Factory verze 1 DotNet vlastní aktivity, aktualizace definici JSON aktivity vlastní DotNet. místo toho použít Azure Batch propojené služby. Další informace najdete v tématu [použít vlastní aktivity v kanálu pro vytváření dat](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities). 
 
 > [!Note]
-> Pokud používáte stávající, přineste vlastní cluster HDInsight propojený zařízení v datové továrně verze 1 nebo vyžádáním přineste vlastní i na vyžádání propojené služby HDInsight v Azure Data Factory verze 2, žádná akce. V těchto scénářích je již vynutí nejnovější zásady podpory verze clusterů HDInsight. 
+> Pokud používáte stávající, přineste vlastní cluster HDInsight propojený zařízení do služby Data Factory verze 1 nebo vyžádáním přineste vlastní i na vyžádání propojené služby HDInsight v Azure Data Factory žádná akce. V těchto scénářích je již vynutí nejnovější zásady podpory verze clusterů HDInsight. 
 >
 > 
 

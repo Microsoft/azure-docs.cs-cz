@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ad883248097fd84e2fa064515b6c7a5232aaa3d3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f6b2be357ad53a1852973d40e221da3d41b09ffb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621934"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37050569"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Proces rozsáhlých datových sad pomocí objektu pro vytváření dat a Batch
 > [!NOTE]
-> Tento článek se týká verze 1 služby Azure Data Factory, která je všeobecně dostupná. Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [vlastní aktivity v datové továrně verze 2](../transform-data-using-dotnet-custom-activity.md).
+> Tento článek se týká verze 1 služby Azure Data Factory, která je všeobecně dostupná. Pokud používáte aktuální verze služby Data Factory, najdete v části [vlastní aktivity v datové továrně](../transform-data-using-dotnet-custom-activity.md).
 
 Tento článek popisuje architekturu ukázkové řešení, které přesune a zpracuje rozsáhlých datových sad automatické a naplánované způsobem. Je také začátku do konce návod k implementaci řešení pomocí služby Data Factory a Azure Batch.
 

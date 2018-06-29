@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 0aaf0eea0414d234c9a24f707df5eed491a61c08
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 81247863eb86752113989f6e48e79f5c8bc75505
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788792"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061150"
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Distribuce licencí Widevine pro Azure Media Services pomocí Axinomu
 > [!div class="op_single_selector"]
@@ -59,7 +59,7 @@ V tématu [generování tokenů JWT](media-services-axinom-integration.md#jwt-to
 
 ## <a name="azure-media-player-preparation"></a>Příprava Azure Media Player
 AMP v1.4.0 podporuje přehrávání AMS obsahu, který je dynamicky spojených s technologií PlayReady a Widevine DRM.
-Pokud server licence Widevine nevyžaduje ověření pomocí tokenu, neexistuje žádné další, že musíte udělat testování DASH obsah chráněný Widevine. Pro příklad, týmem AMP poskytuje jednoduchou [ukázka](http://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevine_notoken.html), kde uvidíte jejich práce v hraniční a IE11 s technologií PlayReady) a Chrome (s technologií Widevine.
+Pokud server licence Widevine nevyžaduje ověření pomocí tokenu, neexistuje žádné další, že musíte udělat testování DASH obsah chráněný Widevine. Pro příklad, týmem AMP poskytuje jednoduchou [ukázka](https://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevineFairPlay_notoken.html), kde uvidíte jejich práce v hraniční a IE11 s technologií PlayReady) a Chrome (s technologií Widevine.
 Zadaný server licence Widevine ve Axinom vyžaduje ověření pomocí tokenu JWT. JWT token musí být odeslána s požadavek na licenční prostřednictvím záhlaví HTTP "X-AxDRM – zpráva". Pro tento účel je nutné přidat následující javascript na webové stránce hostování AMP před nastavením zdroje:
 
     <script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>

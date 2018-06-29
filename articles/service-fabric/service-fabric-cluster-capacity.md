@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
+ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: a5046a5e3771e95d76bb6edc7987a1e3176abeb0
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: aca03452ff5655d3a7180009f42df14c9459a9ff
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309411"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061554"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Aspekty plánování kapacity služby cluster Service Fabric
 Pro všechna produkční nasazení plánování kapacity je důležitý krok. Zde jsou některé položky, které je nutné zvážit jako součást tohoto procesu.
@@ -27,6 +27,10 @@ Pro všechna produkční nasazení plánování kapacity je důležitý krok. Zd
 * Počet typů uzlů, které cluster potřebuje začít s
 * Vlastnosti každého typu uzlu (velikost, primární, internetový bod, počet virtuálních počítačů, atd.)
 * Spolehlivost a odolnost clusteru
+
+> [!NOTE]
+> Minimálně byste měli zkontrolovat všechny **není povoleno** při plánování upgradu hodnoty zásad. Toto je zajistit správně nastavené hodnoty a zmírnit zápis clusteru později z důvodu nastavení konfigurace neměnný systému. 
+> 
 
 Stručně dejte nám zkontrolujte, každá z těchto položek.
 

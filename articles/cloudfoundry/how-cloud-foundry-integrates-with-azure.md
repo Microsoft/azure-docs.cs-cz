@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 1f4afbe1849210c55c392d014449224f2fe97b04
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0959617185694d48c593996d5cd8c836098dd1cd
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654817"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062202"
 ---
-# <a name="integrate-cloud-foundry-with-azure"></a>Integrovat Azure Cloud Foundry
+# <a name="integrate-cloud-foundry-with-azure"></a>Integrace Cloud Foundry s Azure
 
 [Cloud Foundry](https://docs.cloudfoundry.org/) je platforma PaaS systémem nad poskytovatelů cloudu IaaS platformy. Nabízí možnosti nasazení aplikace konzistentní napříč poskytovatelů cloudu. Kromě toho můžete také integraci s různými službami Azure, s enterprise úrovni HA, škálovatelnosti a finanční úspoře.
 Existují [6 subsystémy cloudu Foundry](https://docs.cloudfoundry.org/concepts/architecture/), který může být flexibilně škálování online, včetně: směrování, ověřování, Správa životního cyklu aplikací, Správa služby zasílání zpráv a monitorování. Pro každou subsystémů můžete nakonfigurovat Cloud Foundry využívat zpravodaj služby Azure. 
@@ -81,7 +81,7 @@ Když řady F a virtuálních počítačů D byly běžně doporučoval pro prod
 #### <a name="managed-standard-disk"></a>Spravované – standardní Disk: 
 Prémiové disky se doporučuje pro spolehlivý výkon v produkčním prostředí.  S [spravované disku](https://azure.microsoft.com/services/managed-disks/), standardního úložiště může také poskytnout podobné spolehlivost, výkon jiný. Pro úlohy, která není náročné na výkon, jako jsou pro vývoj/testování nebo nekritické prostředí spravované standardní disky nabízejí alternativní možnost s nižší náklady.  
 ### <a name="cost-saving-in-general"></a>Obecně úspora nákladů 
-#### <a name="significant-vm-cost-saving-with-reserved-instances"></a>Uložení s vyhrazenou instancí náklady na významné virtuální počítače: 
+#### <a name="significant-vm-cost-saving-with-reserved-instances"></a>Významné virtuálních počítačů náklady na ukládání s vyhrazenou instancí: 
 Dnes, které všechny virtuální počítače CR fakturují pomocí "na vyžádání" ceny, i když prostředí obvykle zůstat až po neomezenou dobu. Nyní můžete záložní kapacita virtuálního počítače na termín 1 nebo rok 3 a získáte slevy 45 65 %. Slevy jsou použity v fakturačních systémů bez změny pro vaše prostředí. Podrobnosti najdete v tématu [funguje jak vyhrazené instance](https://azure.microsoft.com/pricing/reserved-vm-instances/). 
 #### <a name="managed-premium-disk-with-smaller-sizes"></a>Spravovaný Disk Premium s menší velikostí: 
 Spravované disky podporu menší velikost disku, například P4(32 GB) a P6(64 GB) pro premium a standardní disky. Pokud máte malé úlohy, můžete uložit náklady při migraci z standardní prémiové disky spravované prémiové disky.

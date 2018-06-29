@@ -13,23 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/27/2018
 ms.author: jingwang
-ms.openlocfilehash: 2c25bff60adc1f3d462cc6a437eab0d46f9fa413
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 034c9a321f402bada87290f6aa72fc7e416ef2c6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287867"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054540"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Kopírování dat z HDFS pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-hdfs-connector.md)
-> * [Verze 2 – Preview](connector-hdfs.md)
+> * [Verze 1](v1/data-factory-hdfs-connector.md)
+> * [Aktuální verze](connector-hdfs.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z HDFS. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [HDFS konektoru V1](v1/data-factory-hdfs-connector.md).
-
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -60,7 +56,7 @@ Pro HDFS propojené služby jsou podporovány následující vlastnosti:
 | type | Vlastnost typu musí být nastavena na: **Hdfs**. | Ano |
 | url |Adresa URL HDFS |Ano |
 | authenticationType. | Povolené hodnoty jsou: **anonymní**, nebo **Windows**. <br><br> Použít **ověřování protokolem Kerberos** HDFS konektor, najdete v části [v této části](#use-kerberos-authentication-for-hdfs-connector) odpovídajícím způsobem nastavit v místním prostředí. |Ano |
-| Uživatelské jméno |Ověřování uživatelského jména pro systém Windows. Pro ověřování pomocí protokolu Kerberos, zadejte `<username>@<domain>.com`. |Ano (pro ověřování systému Windows) |
+| uživatelské jméno |Ověřování uživatelského jména pro systém Windows. Pro ověřování pomocí protokolu Kerberos, zadejte `<username>@<domain>.com`. |Ano (pro ověřování systému Windows) |
 | heslo |Heslo pro ověřování systému Windows. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). |Ano (pro ověřování systému Windows) |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je veřejně přístupná data store), můžete použít modul Runtime integrace Self-hosted nebo Runtime integrace Azure. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
 
@@ -164,7 +160,7 @@ Pokud chcete zkopírovat data z HDFS, nastavte typ zdroje v aktivitě kopírová
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typ zdroje kopie aktivity musí být nastavena na: **HdfsSource** |Ano |
-| Rekurzivní | Označuje, zda je data načíst rekurzivně z dílčí složky nebo pouze do zadané složky. Poznámka: když rekurzivní nastavena na hodnotu true a jímka je na základě souborů úložiště, prázdné složky nebo dílčí-folder nebudou zkopírovat nebo vytvořit v jímky.<br/>Povolené hodnoty jsou: **true** (výchozí), **false** | Ne |
+| rekurzivní | Označuje, zda je data načíst rekurzivně z dílčí složky nebo pouze do zadané složky. Poznámka: když rekurzivní nastavena na hodnotu true a jímka je na základě souborů úložiště, prázdné složky nebo dílčí-folder nebudou zkopírovat nebo vytvořit v jímky.<br/>Povolené hodnoty jsou: **true** (výchozí), **false** | Ne |
 | distcpSettings | Skupina vlastností při použití HDFS DistCp. | Ne |
 | resourceManagerEndpoint | Koncový bod Yarn ResourceManager | Ano, při použití DistCp |
 | tempScriptPath | Cesty používá k ukládání dočasného DistCp příkazu skriptu. Soubor skriptu je generován objekt pro vytváření dat a bude odebrána po dokončení úlohu kopírování. | Ano, při použití DistCp |
@@ -354,7 +350,7 @@ Existují dvě možnosti nastavit v místním prostředí tak, aby používala o
 
     1. Přejděte do správce serveru > Správa zásad skupiny > domény > objekty zásad skupiny > výchozí nebo zásady služby Active Domain a upravit.
 
-    2. V **Editor správy zásad skupiny** automaticky otevíraném okně, přejděte na konfigurace počítače > zásady > Nastavení systému Windows > Nastavení zabezpečení > Místní zásady > Možnosti zabezpečení a nakonfigurujte **zabezpečení sítě: typy konfigurace šifrování povolené pro protokol Kerberos**.
+    2. V **Editor správy zásad skupiny** automaticky otevíraném okně, přejděte na konfigurace počítače > zásady > Nastavení systému Windows > Nastavení zabezpečení > Místní zásady > Možnosti zabezpečení a nakonfigurujte **sítě zabezpečení: Konfigurace typy šifrování, které jsou povoleny pro protokol Kerberos**.
 
     3. Vyberte algoritmus šifrování, kterou chcete použít při připojení k služby KDC. Běžně můžete jednoduše vybrat všechny možnosti.
 

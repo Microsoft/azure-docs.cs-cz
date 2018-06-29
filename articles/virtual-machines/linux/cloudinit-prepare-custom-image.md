@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: faa28a6b28c721e4088ccfbb00514be7f605f3e2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: ff5c76ca0a164d09e45488cb7abf7f2c2ee50a95
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943742"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063820"
 ---
 # <a name="prepare-an-existing-linux-azure-vm-image-for-use-with-cloud-init"></a>Příprava stávající image virtuálního počítače s Linuxem Azure pro použití s inicializací cloudu
 Tento článek ukazuje, jak využít existující virtuální počítač Azure a připravit opakovaně nasazeném a připravené k použití init cloudu. Výsledný obraz lze použít k nasazení nového virtuálního počítače nebo sady škálování virtuálního počítače – buď z nich může pak dále přizpůsobit podle cloudu init v době nasazení.  Tyto skripty cloudu init spustit při prvním spuštění počítače po prostředky se zřizují Azure. Další informace o cloudu init fungování nativně ve službě Azure a podporovaných distribucích systému Linux najdete v tématu [init cloudu – přehled](using-cloud-init.md)
@@ -97,7 +97,7 @@ EOF
 
 Pokud vaše stávající image Azure má odkládací soubor nakonfigurovaný a chcete změnit konfiguraci souboru odkládacího souboru pro nové bitové kopie pomocí cloudu init, budete muset odebrat existující odkládací soubor.
 
-Pro RedHat na základě bitové kopie – postupujte podle pokynů v následujícím dokumentu RedHat vysvětlením postup [odebrat odkládací soubor](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/5/html/Deployment_Guide/s2-swap-removing-file.html).
+Pro Red Hat na základě bitové kopie – postupujte podle pokynů v následujícím dokumentu Red Hat vysvětlující postupy [odebrat odkládací soubor](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/storage_administration_guide/swap-removing-file).
 
 Pro Image CentOS s swapfile povolena můžete spustit následující příkaz k vypnutí swapfile:
 ```bash

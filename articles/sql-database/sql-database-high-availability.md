@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: 4e1963e97a7458db8badb63e28dbc3d215ad88b2
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: a9874681d59d193fc3c3d0fd4271e2a6a0fb0dc6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309626"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060379"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Vysoká dostupnost a Azure SQL Database
 
@@ -60,7 +60,7 @@ Zóny redundantní verzi Architektura vysoké dostupnosti je zobrazená ve násl
 ![Vysoká dostupnost architektura zónově redundantní](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
 
 ## <a name="read-scale-out"></a>Přečtěte si Škálováním na více systémů
-Jak je popsáno, Premium a kritické obchodní (preview) služby využívají vrstev kvora sad a technologie Always On pro zajištění vysoké dostupnosti v jedné oblasti i redundantní konfigurace zóny. Jednou z výhod AlwasyON je, že repliky jsou vždycky ve stavu transakční konzistence stavu. Vzhledem k tomu, že repliky na stejnou úroveň výkonu jako primární, aplikace mohou využít výhod tuto další kapacitu pro obsluhu úlohy jen pro čtení bez jakýchkoli nákladů (čtení Škálováním na více systémů). Tímto způsobem dotazy jen pro čtení bude izolovaná od hlavní úloh pro čtení a zápis a nebude mít vliv na jeho výkon. Číst funkce škálování je určená pro aplikace, které zahrnují logicky oddělené jen pro čtení úlohy, jako jsou například analýzy a proto může využít tuto dodatečnou kapacitu bez připojení k primární. 
+Jak je popsáno, Premium a kritické obchodní (preview) služby využívají vrstev kvora sad a technologie Always On pro zajištění vysoké dostupnosti v jedné oblasti i redundantní konfigurace zóny. Jednou z výhod technologie AlwaysOn serveru je, že repliky jsou vždycky ve stavu transakční konzistence stavu. Vzhledem k tomu, že repliky na stejnou úroveň výkonu jako primární, aplikace mohou využít výhod tuto další kapacitu pro obsluhu úlohy jen pro čtení bez jakýchkoli nákladů (čtení Škálováním na více systémů). Tímto způsobem dotazy jen pro čtení bude izolovaná od hlavní úloh pro čtení a zápis a nebude mít vliv na jeho výkon. Číst funkce škálování je určená pro aplikace, které zahrnují logicky oddělené jen pro čtení úlohy, jako jsou například analýzy a proto může využít tuto dodatečnou kapacitu bez připojení k primární. 
 
 Pokud chcete používat funkce škálování pro čtení s danou databází, musí explicitně ji aktivujete při vytváření databáze nebo později změnou jeho konfigurace pomocí prostředí PowerShell vyvoláním [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) rutiny nebo prostřednictvím rozhraní REST API Azure Resource Manager [databází - vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate) metoda.
 

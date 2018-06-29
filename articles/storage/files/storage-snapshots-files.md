@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: cfb1e6810285886da13aa0bf69faee9c65e2b222
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: af113ae76d81c82ff6c4ced1569aa16f3a9ee27c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738223"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063785"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Přehled sdílené složky snímků pro Azure Files 
 Soubory Azure poskytuje schopnost pořizovat snímky sdílenou složku Sdílené složky. Sdílet snímky zachycení stavu sdílení v tomto bodě v čase. V tomto článku jsme popisují, jaké funkce poskytovat sdílené složky snímků a jak můžete využít výhod těchto ve vašem případě vlastní použití.
@@ -46,7 +46,7 @@ Vytváření sdílené složky snímků je k dispozici na úrovni sdílené slo�
 
 Sdílenou složku snímku sdílené složky je stejný jako jeho základní sdílené složky. Jediným rozdílem je, že **data a času** hodnota se připojí ke sdílené složce identifikátor URI, který označuje datum a čas, kdy pořízení snímku sdílené složky. Například pokud sdílenou identifikátor URI je http://storagesample.core.file.windows.net/myshare, identifikátor URI je podobná snímku sdílené složky:
 ```
-http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
+http://storagesample.file.core.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
 
 Sdílené složky snímků uchová, dokud explicitně odstranit. Sdílenou složku snímku nelze outlive jeho základní sdílené složky. Můžete vytvořit výčet snímků přidružených základní sdílené složky sledovat vaše aktuální snímky. 

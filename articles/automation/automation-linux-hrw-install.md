@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8507cf99ea22b24aa3026565cb7c4139e4c3742d
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
-ms.translationtype: MT
+ms.openlocfilehash: d37dbb85dc85ee8bae0447f18f771dc658de18e3
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268119"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060234"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Nasazení Linux Hybrid Runbook Worker
 
@@ -50,7 +50,7 @@ Jsou minimální požadavky pro Linux Hybrid Runbook Worker:
 |--------------------- | --------------------- | -------------------|
 |Glibc |Knihovny jazyka C GNU| 2.5-12 |
 |OpenSSL| Knihovny OpenSSL | 0.9.8E nebo 1.0|
-|Curl | cURL webového klienta | 7.15.5|
+|curl | cURL webového klienta | 7.15.5|
 |Python ctypes | |
 |PAM | Modulů PAM|
 | **Volitelné balíčku** | **Popis** | **Minimální verze**|
@@ -109,41 +109,9 @@ Linux hybridního pracovního procesu nepodporují následující typy sady runb
 * Grafické
 * Pracovní postup grafické prostředí PowerShell
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshoot"></a>Řešení potíží
 
-Linux hybridní pracovní proces Runbook závisí na OMS agenta pro Linux komunikovat s vaším účtem Automation registraci pracovního procesu, přijímat úlohy sady runbook a zprávy o stavu. Pokud pracovní proces registrace selže, tady jsou některé možné příčiny chyby.
-
-### <a name="the-oms-agent-for-linux-isnt-running"></a>Není spuštěn Agent OMS pro Linux
-
-Pokud není spuštěn Agent OMS pro Linux, Linux Hybrid Runbook Worker nemůže komunikovat s Azure Automation. Ověřte, zda je spuštěna agenta zadáním příkazu `ps -ef | grep python`. 
-
-Měli byste vidět výstup podobný následujícímu (Python zpracovává s **nxautomation** uživatelský účet). Pokud řešení správy aktualizací nebo Azure Automation není povolena, žádný z těchto procesů bude spuštěna.
-
-```bash
-nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
-nxautom+   8593      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/state/automationworker/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
-nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/hybridworker.py /var/opt/microsoft/omsagent/<workspaceId>/state/automationworker/diy/worker.conf managed rworkspace:<workspaceId> rversion:<Linux hybrid worker version>
-```
-
-Následující procesy jsou spuštěny pro Linux Hybrid Runbook Worker. Všechny se nachází v `/var/opt/microsoft/omsagent/state/automationworker/` adresáře.
-
-* **OMS.conf**: Toto je správce pracovního procesu. Je spuštěno přímo z požadovaného stavu konfigurace (DSC).
-
-* **Worker.conf**: Toto je automaticky zaregistrován hybridní pracovní proces. Je spuštěno pomocí Správce pracovního procesu. Tento proces slouží pomocí správy aktualizací a je pro uživatele transparentní. Tento proces není k dispozici pouze v případě, že je na počítači povolená řešení pro správu aktualizací.
-
-* **diy/Worker.conf**: Jedná se o DIY hybridní pracovní proces. DIY hybridní pracovní proces se používá ke spouštění sad runbook uživatele na hybridní pracovní proces Runbooku. Se liší od automaticky zaregistrovat hybridní pracovní proces pouze v tom, že používá jinou konfiguraci. Tento proces je přítomen pouze v případě, že je povolená řešení služby Azure Automation a je zaregistrován DIY Linux hybridní pracovní proces.
-
-Pokud agenta OMS pro Linux neběží, spusťte následující příkaz pro spuštění služby: `sudo /opt/microsoft/omsagent/bin/service_control restart`.
-
-### <a name="the-specified-class-doesnt-exist"></a>Pro zadanou třídu neexistuje.
-
-Pokud se zobrazí chyba "Zadaná třída neexistuje" v `/var/opt/microsoft/omsconfig/omsconfig.log`, OMS agenta pro Linux je nutné aktualizovat. Spusťte následující příkaz, který znovu nainstalujte agenta OMS:
-
-```bash
-wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
-```
-
-Další pokyny o tom, jak vyřešit problémy s správy aktualizací najdete v tématu [správy aktualizací: řešení potíží s](automation-update-management.md#troubleshooting).
+Další informace o řešení potíží s procesy Hybrid Runbook Worker naleznete v tématu [řešení potíží s Linux hybridních pracovních procesech Runbooku](troubleshoot/hybrid-runbook-worker.md#linux)
 
 ## <a name="next-steps"></a>Další postup
 

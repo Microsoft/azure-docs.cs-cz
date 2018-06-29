@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: db7f1f85601cfcf4531bb11176a21126625ce7f0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: c5819d39bf3ab7c0f4af32171aadea56e4f6a241
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31422007"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063523"
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>Pomocí nástroje Oozie coordinator založené na čase s Hadoop v HDInsight můžete definovat pracovní postupy a koordinovat úlohy
 V tomto článku se dozvíte, jak definovat pracovní postupy a koordinátoři a spouštění koordinátor úlohy, na základě času. Je užitečné projít [Oozie použití s HDInsight] [ hdinsight-use-oozie] před přečtěte si tento článek. Kromě Oozie můžete také naplánovat úlohy pomocí Azure Data Factory. Další služby Azure Data Factory najdete v tématu [použijte Pig a Hive pomocí služby Data Factory](../data-factory/transform-data.md).
@@ -718,7 +718,7 @@ V tomto kurzu jste se dozvěděli, jak definovat pracovním postupu Oozie a Oozi
 * [Používat úložiště objektů Azure Blob s HDInsight][hdinsight-storage]
 * [Spravovat HDInsight pomocí prostředí Azure PowerShell][hdinsight-admin-powershell]
 * [Nahrání dat do služby HDInsight][hdinsight-upload-data]
-* [Použití nástroje Sqoop s HDInsight][hdinsight-use-sqoop]
+* [Použití Sqoopu se službou HDInsight][hdinsight-use-sqoop]
 * [Použití Hivu se službou HDInsight][hdinsight-use-hive]
 * [Použití Pigu se službou HDInsight][hdinsight-use-pig]
 * [Vývoj aplikací Java MapReduce pro HDInsight][hdinsight-develop-java-mapreduce]
@@ -752,7 +752,7 @@ V tomto kurzu jste se dozvěděli, jak definovat pracovním postupu Oozie a Oozi
 [powershell-download]: http://azure.microsoft.com/downloads/
 [powershell-about-profiles]: http://go.microsoft.com/fwlink/?LinkID=113729
 [powershell-install-configure]: /powershell/azureps-cmdlets-docs
-[powershell-start]: http://technet.microsoft.com/library/hh847889.aspx
+[powershell-start]: https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6
 [powershell-script]: http://technet.microsoft.com/library/ee176949.aspx
 
 [cindygross-hive-tables]: http://blogs.msdn.com/b/cindygross/archive/2013/02/06/hdinsight-hive-internal-and-external-tables-intro.aspx

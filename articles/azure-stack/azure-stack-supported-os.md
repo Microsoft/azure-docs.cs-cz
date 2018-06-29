@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: Brenduns
 ms.reviewer: JeffGoldner
-ms.openlocfilehash: d90ac726ae689cf299ee41d4e7ff4c17769e7455
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 8d9337053c8905886ed4429d64f8ef5b4e2c7d14
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34074826"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060443"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Hostované operační systémy podporované v Azure zásobníku
 
@@ -40,7 +40,7 @@ Azure zásobníku podporuje Windows hostované operační systémy uvedené v n�
 | Windows Server 2008 SP2 | 64 bitů |  Přineste vlastní image |
 | Windows 10 *(viz poznámka 1)* | 64-bit, Pro a Enterprise | Přineste vlastní image |
 
-***Poznámka 1:*** *k nasazení Windows 10 klientské operační systémy v zásobníku Azure, musí mít [Windows licence vázané na uživatele](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx) nebo nakupovat prostřednictvím kvalifikovaný hostitele víceklientské ([QMTH](https://www.microsoft.com/CloudandHosting/licensing_sca.aspx)).*
+***Poznámka 1:*** *k nasazení Windows 10 klientské operační systémy v zásobníku Azure, musí mít [Windows licence vázané na uživatele](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) nebo nakupovat prostřednictvím kvalifikovaný hostitele víceklientské ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).*
 
 Marketplace obrázky nejsou k dispozici pro platím jako--používání nebo licencování BYOL (EA nebo programu SPLA). Použití i na jednu instanci Azure zásobníku není podporováno. Během nasazení vloží Azure zásobníku vhodná verze agenta hosta do bitové kopie.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: c2beb67a27b667d31402b903f38dbf116e9425d0
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: bace90021d5a786f0b014e617bd0ae8e6043bb36
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34301071"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060123"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Podpora SSH pro Azure App Service v systému Linux
 
@@ -113,13 +113,13 @@ Abyste mohli začít, musíte nainstalovat [rozhraní příkazového řádku Azu
 Přidejte nejnovější rozšíření služby App Service spuštěním [přidat rozšíření az](/cli/azure/extension?view=azure-cli-latest#az-extension-add):
 
 ```azurecli-interactive
-az extension add -–name webapp
+az extension add --name webapp
 ```
 
 Pokud jste již spustili `az extension add` před, spusťte [aktualizace rozšíření az](/cli/azure/extension?view=azure-cli-latest#az-extension-update) místo:
 
 ```azurecli-interactive
-az extension update -–name webapp
+az extension update --name webapp
 ```
 
 Otevřete připojení ke vzdálené aplikace pomocí [vytvořit připojení vzdáleného webapp az](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) příkaz. Zadejte  _\<skupiny\_název >_ a \_< aplikace\_name > _ pro vaše aplikace a nahradit \<port > s číslem místního portu.

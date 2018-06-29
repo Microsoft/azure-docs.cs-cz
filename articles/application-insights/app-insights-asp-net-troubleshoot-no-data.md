@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: cdfc3ceb1ce94c4653a710658c1df991d9ca2c30
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 8253dfb6525496c78515a9382778a767f7da0771
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294441"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063574"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>Řešení potíží s chybějícími daty v nástroji Application Insights pro .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>Chybí některé Moje telemetrie
@@ -41,7 +41,7 @@ ms.locfileid: "35294441"
 *Při kliknutí pravým tlačítkem myši existující projekt v Průzkumníku řešení, se nezobrazí žádné možnosti Application Insights.*
 
 * Nástroje pro jsou podporovány všechny typy rozhraní .NET projektu. Projekty webové a WCF jsou podporovány. Pro ostatní typy projektu například stolní nebo služby aplikací, můžete stále [Application Insights SDK do projektu přidejte ručně](app-insights-windows-desktop.md).
-* Zajistěte, aby byla [Visual Studio 2013 Update 3 nebo novější](http://go.microsoft.com/fwlink/?LinkId=397827). Pochází předinstalované Developer Analytics tools, které poskytují Application Insights SDK.
+* Zajistěte, aby byla [Visual Studio 2013 Update 3 nebo novější](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2013-update3-rtm-vs). Pochází předinstalované Developer Analytics tools, které poskytují Application Insights SDK.
 * Vyberte **nástroje**, **rozšíření a aktualizace** a zkontrolujte, zda **Developer Analytics Tools** je nainstalovaný a povolený. Pokud ano, klikněte na tlačítko **aktualizace** Pokud je k dispozici aktualizace.
 * Otevřete dialogové okno Nový projekt a zvolte webové aplikace ASP.NET. Pokud se zobrazí možnost Application Insights existuje, jsou nainstalované nástroje. Pokud ne, zkuste odinstalace a opětovné instalaci nástroje Application Insights.
 
@@ -114,7 +114,7 @@ Klíč instrumentace v ovládacích prvcích souboru ApplicationInsights.config,
 
 Oprava:
 
-* V Průzkumníku řešení klikněte pravým tlačítkem na projekt a vyberte Application Insights, konfigurovat Application Insights. V dialogovém okně buď můžete odesílat telemetrická data do existující prostředek, nebo vytvořte novou. nebo:
+* V Průzkumníku řešení klikněte pravým tlačítkem na projekt a vyberte Application Insights, konfigurovat Application Insights. V dialogovém okně buď můžete odesílat telemetrická data do existující prostředek, nebo vytvořte novou. Nebo:
 * Otevřete prostředek přímo. Přihlaste se k [portálu Azure](https://portal.azure.com), klikněte na tlačítko Application Insights na levém navigačním panelu a pak vyberte svou aplikaci.
 
 ## <a name="where-do-i-find-my-telemetry"></a>Kde Moje telemetrie

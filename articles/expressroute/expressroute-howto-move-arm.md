@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/03/2017
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 37db218010288912bf75d00fd5868aab171aef71
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
-ms.translationtype: MT
+ms.openlocfilehash: 20914eec070452186295f6d87a85ea0675ebaf4c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31592901"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060082"
 ---
 # <a name="move-expressroute-circuits-from-the-classic-to-the-resource-manager-deployment-model-using-powershell"></a>Přesun okruhů ExpressRoute z classic do modelu nasazení Resource Manager pomocí prostředí PowerShell
 
@@ -96,6 +96,10 @@ Chcete-li přesunout váš okruh, upravit a spusťte následující fragment kó
 ```powershell
 Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
+
+> [!NOTE]
+> Okruh ExpressRoute v klasickém režimu, nemá koncept není svázán s oblast. V Resource Manager (ARM), každý prostředek musí být namapovaný na oblast Azure. Oblasti zadaný v rutinu Move-AzureRmExpressRouteCircuit může být technicky libovolné oblasti. Pro účely organizace můžete zvolit oblasti, která úzce představuje vaše umístění partnerského vztahu.
+> 
 
 > [!NOTE]
 > Po dokončení přesunu nový název, který je uvedený v předchozí rutiny bude používat k adresování prostředku. Okruhu bude v podstatě přejmenovat.

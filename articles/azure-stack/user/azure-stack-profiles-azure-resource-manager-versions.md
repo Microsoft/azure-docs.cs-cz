@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 06/27/2018
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.openlocfilehash: ee4321b905396f78e7dad9248b9e377dad250a13
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: 1a516c890441c3b703d43f31816b7c37cac364fd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010971"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054377"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Verze API poskytovatele prostředků podporované profily v Azure zásobníku
 
@@ -26,7 +26,7 @@ Můžete najít poskytovatele prostředků a čísla verzí pro každý profil A
 
 Profil rozhraní API používá tři zásady vytváření názvů:
  - nejnovější
- - Rrrr mm-dd hybridní
+ - rrrr mm-dd hybridní
  - rrrr mm-dd profil
 
 Vysvětlení profilů rozhraní API a cadence vydání verze pro zásobník Azure najdete v tématu [profily verze spravovat rozhraní API v Azure zásobníku](azure-stack-version-profiles.md).
@@ -49,10 +49,10 @@ Vysvětlení profilů rozhraní API a cadence vydání verze pro zásobník Azur
 | Microsoft.Insights | 2015-11-01 |
 | Microsoft.Keyvault | 2016-10-01 |
 | Zásada | 2016-10-01 |
-| Prostředky | 2016-10-01 |
+| Zdroje a prostředky | 2016-10-01 |
 | Resources_Links | 2016-10-01 |
 | Resources_Locks | 2016-10-01 |
-| Odběry | 2016-10-01 |
+| Předplatná | 2016-10-01 |
 
 Více seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu rozhraní api najdete v tématu [podrobnosti 2018-03-01hybridní](#details-for-the-2018-03-01-hybrid) profilu.
 
@@ -71,10 +71,10 @@ Více seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu
 | Microsoft.Insights | 2015-11-01 |
 | Microsoft.Keyvault | 2016-10-01 |
 | Zásada | 2015-10-01-preview |
-| Prostředky | 2016-02-01 |
+| Zdroje a prostředky | 2016-02-01 |
 | Resources_Links | 2016-09-01 |
 | Resources_Locks | 2016-09-01 |
-| Odběry | 2016-06-1 |
+| Předplatná | 2016-06-1 |
 
 Více seznam verzí pro každý typ prostředku pro zprostředkovatele v profilu rozhraní api najdete v tématu [podrobnosti 2017-03-09profil](#details-for-the-2017-03-09-profile)
 
@@ -112,14 +112,14 @@ Rozhraní API Azure výpočetní zajišťují programový přístup k virtuáln�
 
 | Typ prostředku | Verze rozhraní API |
 |---------------------------------------------------------------|-------------|
-| Sady dostupnosti | 2016-03-30 |
+| Skupiny dostupnosti | 2016-03-30 |
 | Umístění | 2016-03-30 |
 | Umístění nebo operací | 2016-03-30 |
 | Umístění nebo vydavatelů | 2016-03-30 |
 | Umístění nebo použití | 2016-03-30 |
 | Umístění nebo vmSizes | 2016-03-30 |
 | Operace | 2016-03-30 |
-| Virtual Machines | 2016-03-30 |
+| Virtuální počítače | 2016-03-30 |
 | Virtuální počítače nebo rozšíření | 2016-03-30 |
 | Virtual Machine Scale Sets | 2016-03-30 |
 | Sady škálování virtuálních počítačů nebo rozšíření | 2016-03-30 |
@@ -137,18 +137,21 @@ Rozhraní API Azure výpočetní zajišťují programový přístup k virtuáln�
 | Položky galerie | 2015-04-01 |
 | Operace | 2015-04-01 |
 | Portál | 2015-04-01 |
-| Hledat | 2015-04-01 |
+| Search | 2015-04-01 |
 | Navrhnout | 2015-04-01 |
 
 ### <a name="microsoftinsights"></a>Microsoft.Insights
 
 | Typy prostředků | Verze rozhraní API |
 |--------------------|--------------------|
-| Pravidla výstrah | 2016-03-01 |
-| Kategorie události | 2017-03-01-preview |
-| Typy událostí | 2017-03-01-preview |
-| Definice metrik | 2016-03-01 |
 | Operace | 2015-04-01 |
+| Typy událostí | 2015-04-01 |
+| Kategorie události | 2015-04-01 |
+| Definice metrik | 2018-01-01 |
+| Metriky | 2018-01-01 |
+| Nastavení diagnostiky | 2017-05-01-preview |
+| Nastavení diagnostiky kategorií | 2017-05-01-preview |
+
 
 ### <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -201,10 +204,10 @@ Azure Resource Manager umožňuje nasadit a spravovat infrastrukturu pro vaše �
 | Umístění | 2015-01-01 |
 | Nabídky | 2015-01-01 |
 | Operace | 2015-01-01 |
-| Zprostředkovatelé | 2015-012017-08-01 |
+| Poskytovatelé | 2015-012017-08-01 |
 | Skupiny prostředků | 2015-012016-09-01 |
-| Prostředky | 2015-012016-09-01 |
-| Odběry | 2015-012016-09-01 |
+| Zdroje a prostředky | 2015-012016-09-01 |
+| Předplatná | 2015-012016-09-01 |
 | Odběry nebo umístění | 2015-012016-09-01 |
 | Výsledky odběry/operaci | 2015-012016-09-01 |
 | Odběry/zprostředkovatelů | 2015-012017-08-01 |
@@ -221,7 +224,7 @@ Zprostředkovatel prostředků úložiště (SRP) umožňuje spravovat váš ú�
 
 | Typy prostředků | Verze rozhraní API |
 |-------------------------|--------------|
-| Ověřit dostupnost názvu | 2016-01-01 |
+| Zkontrolovat dostupnost názvu | 2016-01-01 |
 | Umístění | 2016-01-01 |
 | Umístění nebo kvóty | 2016-01-01 |
 | Operace | 2016-01-01 |
@@ -230,7 +233,7 @@ Zprostředkovatel prostředků úložiště (SRP) umožňuje spravovat váš ú�
 
 ## <a name="details-for-the-2017-03-09-profile"></a>Podrobnosti o 2017-03-09profil
 
-### <a name="microsoft-authorization"></a>Microsoft Authorization
+### <a name="microsoft-authorization"></a>Autorizace Microsoft
 
 | Typy prostředků | Verze rozhraní API |
 |---------------------|---------------------------------|
@@ -247,14 +250,14 @@ Zprostředkovatel prostředků úložiště (SRP) umožňuje spravovat váš ú�
 
 | Typ prostředku | Verze rozhraní API |
 |---------------------------------------------------------------|-------------|
-| Sady dostupnosti | 2016-03-30 |
+| Skupiny dostupnosti | 2016-03-30 |
 | Umístění | 2016-03-30 |
 | Umístění nebo operací | 2016-03-30 |
 | Umístění nebo vydavatelů | 2016-03-30 |
 | Umístění nebo použití | 2016-03-30 |
 | Umístění nebo vmSizes | 2016-03-30 |
 | Operace | 2016-03-30 |
-| Virtual Machines | 2016-03-30 |
+| Virtuální počítače | 2016-03-30 |
 | Virtuální počítače nebo rozšíření | 2016-03-30 |
 | Virtual Machine Scale Sets | 2016-03-30 |
 | Sady škálování virtuálních počítačů nebo rozšíření | 2016-03-30 |
@@ -298,10 +301,10 @@ Zprostředkovatel prostředků úložiště (SRP) umožňuje spravovat váš ú�
 | Umístění | 2015-01-01 |
 | Nabídky | 2015-01-01 |
 | Operace | 2015-01-01 |
-| Zprostředkovatelé | 2017-08-01 |
+| Poskytovatelé | 2017-08-01 |
 | Skupiny prostředků | 2016-09-01 |
-| Prostředky | 2016-09-01 |
-| Odběry | 2016-09-01 |
+| Zdroje a prostředky | 2016-09-01 |
+| Předplatná | 2016-09-01 |
 | Odběry nebo umístění | 2016-09-01 |
 | Výsledky odběry/operaci | 2016-09-01 |
 | Odběry/zprostředkovatelů | 2017-08-01 |
@@ -316,7 +319,7 @@ Zprostředkovatel prostředků úložiště (SRP) umožňuje spravovat váš ú�
 
 | Typy prostředků | Verze rozhraní API |
 |-------------------------|--------------|
-| Ověřit dostupnost názvu | 2016-01-01 |
+| Zkontrolovat dostupnost názvu | 2016-01-01 |
 | Umístění | 2016-01-01 |
 | Umístění nebo kvóty | 2016-01-01 |
 | Operace | 2016-01-01 |

@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 683e8b1407042624d08aee1f0a2120990e2f702e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d010fd90d96409b262be59f1db4fac9e4cec835c
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621706"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051555"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Kopírování dat do a z Azure SQL Database pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-azure-sql-connector.md)
-> * [Verze 2 – Preview](../connector-azure-sql-database.md)
+> * [Verze 1](data-factory-azure-sql-connector.md)
+> * [Verze 2 (aktuální verze)](../connector-azure-sql-database.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [konektor Azure SQL Database v V2](../connector-azure-sql-database.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [konektor Azure SQL Database v V2](../connector-azure-sql-database.md).
 
 Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat do a z Azure SQL Database. Vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování.  
 
@@ -48,7 +48,7 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z Azure SQ
 
 Nejjednodušší způsob, jak vytvořit kanál je použití **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
+Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování. 
 
 Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený: 
 
@@ -148,7 +148,7 @@ GO
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Počkejte, než čas na dokončení předtím, než vyprší časový limit operace dávkové vložení. |Časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
+| writeBatchTimeout |Počkejte, než čas na dokončení předtím, než vyprší časový limit operace dávkové vložení. |časový interval<br/><br/> Příklad: "00: 30:00" (30 minut). |Ne |
 | writeBatchSize |Vloží data do tabulky SQL, když velikost vyrovnávací paměti dosáhne writeBatchSize. |Celé číslo (počet řádků) |Ne (výchozí: 10000) |
 | sqlWriterCleanupScript |Zadejte dotaz pro aktivitu kopírování provést tak, aby se vyčistit data určitý řez. Další informace najdete v tématu [opakovatelných kopie](#repeatable-copy). |Příkaz dotazu. |Ne |
 | sliceIdentifierColumnName |Zadejte název sloupce pro aktivitu kopírování vyplníte identifikátor automaticky generovány řez, který se používá k vyčištění dat určitý řez při spusťte znovu. Další informace najdete v tématu [opakovatelných kopie](#repeatable-copy). |Název sloupce sloupce s datovým typem binary(32). |Ne |
@@ -639,7 +639,7 @@ Při přesunu dat do a z Azure SQL Database, se používají následující mapo
 | Typ databázového stroje SQL Server | Typ rozhraní .NET framework |
 | --- | --- |
 | bigint |Int64 |
-| Binární |Byte] |
+| binární |Byte] |
 | Bit |Logická hodnota |
 | Char |Řetězec, Char] |
 | datum |DateTime |
@@ -649,7 +649,7 @@ Při přesunu dat do a z Azure SQL Database, se používají následující mapo
 | Decimal |Decimal |
 | Atribut FILESTREAM (varbinary(max)) |Byte] |
 | Float |Double |
-| Bitové kopie |Byte] |
+| image |Byte] |
 | celá čísla |Int32 |
 | peníze |Decimal |
 | nchar |Řetězec, Char] |
@@ -665,7 +665,7 @@ Při přesunu dat do a z Azure SQL Database, se používají následující mapo
 | text |Řetězec, Char] |
 | time |Časový interval |
 | časové razítko |Byte] |
-| tinyint |Bajtů |
+| tinyint |Bajt |
 | Typ UniqueIdentifier |Guid |
 | varbinary |Byte] |
 | varchar |Řetězec, Char] |

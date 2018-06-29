@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 958b495b2328a981c573447c44585bc7430c1095
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1d19cf6ecc9f2bedb6ceaf6312b247670d965b84
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621162"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048545"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místní zdroje a cloudu s Brána pro správu dat
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [kopírovat data mezi místními a cloudu pomocí služby Data Factory verze 2](../tutorial-hybrid-copy-powershell.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [kopírovat data mezi místními a cloudu pomocí služby Data Factory](../tutorial-hybrid-copy-powershell.md).
 
 Tento článek obsahuje přehled dat integrace mezi místním úložištím dat a cloudové úložiště dat pomocí služby Data Factory. Vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek a další data factory základní koncepty články: [datové sady](data-factory-create-datasets.md) a [kanály](data-factory-create-pipelines.md).
 

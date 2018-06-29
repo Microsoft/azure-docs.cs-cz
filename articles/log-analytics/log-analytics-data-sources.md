@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/19/2018
+ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 5201d02b4f70f964f39b4fe135e4715732b9741a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: e0366e6a2403f7cea83efde35c7b3b42565a1cf2
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792544"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062775"
 ---
 # <a name="data-sources-in-log-analytics"></a>Zdroje dat v analýzy protokolů
 Analýzy protokolů shromažďuje data z vaší připojené zdroje a ukládá je v pracovní prostor analýzy protokolů.  Data, která se shromažďují z každé je definována zdroje dat, který nakonfigurujete.  Data v analýzy protokolů se ukládají jako sada záznamů.  Všechny zdroje dat, vytvoří záznamy určitého typu pomocí jednotlivých typů má svou vlastní sadu vlastností.
@@ -37,7 +37,7 @@ Následující tabulka uvádí zdroje dat, které jsou aktuálně k dispozici v 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Vlastní protokoly](log-analytics-data-sources-custom-logs.md) | Windows |&#8226; |  | |  |  | v případě přijetí |
 | [Vlastní protokoly](log-analytics-data-sources-custom-logs.md) | Linux   |&#8226; |  | |  |  | v případě přijetí |
-| [Protokoly IIS](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |5 minut |
+| [Protokoly IIS](log-analytics-data-sources-iis-logs.md) | Windows |&#8226; |&#8226; |&#8226; |  |  |závisí na nastavení změna souboru protokolu |
 | [Čítače výkonu](log-analytics-data-sources-performance-counters.md) | Windows |&#8226; |&#8226; |  |  |  |podle plánu, minimálně 10 sekund. |
 | [Čítače výkonu](log-analytics-data-sources-performance-counters.md) | Linux |&#8226; |  |  |  |  |podle plánu, minimálně 10 sekund. |
 | [Syslog](log-analytics-data-sources-syslog.md) | Linux |&#8226; |  |  |  |  |ze služby Azure storage: 10 minut; z agenta: na přijetí |

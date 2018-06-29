@@ -10,20 +10,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/24/2018
+ms.date: 06/27/2018
 ms.author: douglasl
-ms.openlocfilehash: 2bcb0d4e6af00b56d083690439be45379ce4d175
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: a9c15b239ee0bd0dde0b1f11691565b2676e3d07
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752805"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062117"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvořit aktivační událost, která běží v reakci na událost kanálu
 
 Tento článek popisuje aktivační události na základě událostí, které vytvoříte v objektu pro vytváření dat kanály.
 
-Událostmi řízené architektura (Automatizace elektronického designu) je běžný vzor integraci dat, který zahrnuje výroby, detekce, spotřeby a reakce na události. Scénáře integrace dat často vyžadují zákazníci služby Data Factory k aktivaci na základě událostí kanály.
+Událostmi řízené architektura (Automatizace elektronického designu) je běžný vzor integraci dat, který zahrnuje výroby, detekce, spotřeby a reakce na události. Scénáře integrace dat často vyžadují zákazníci služby Data Factory k aktivaci na základě událostí kanály. Objekt pro vytváření dat je nyní integrována [mřížky událostí Azure](https://azure.microsoft.com/services/event-grid/), které lze spustíte kanálů na události.
 
 ## <a name="data-factory-ui"></a>Uživatelské rozhraní Data Factory
 
@@ -64,11 +64,20 @@ Následující tabulka obsahuje přehled elementů schématu, které se vztahuj�
 Tato část obsahuje příklady nastavení na základě událostí aktivační události.
 
 -   **Cesta blobu začíná**('/ containername /") – přijímá události pro libovolný objekt blob v kontejneru.
--   **Cesta blobu začíná**('/ containername/název_složky") – přijímá události pro všechny objekty BLOB v kontejneru containername a název_složky složce.
--   **Cesta blobu začíná**("/ containername/foldername/file.txt") – přijímá události pro objekt blob s názvem soubor.txt ve složce název_složky v kontejneru containername.
+-   **Cesta blobu začíná**('/ containername nebo objekty BLOB/název_složky) – přijímá události pro všechny objekty BLOB v kontejneru containername a název_složky složce.
+-   **Cesta blobu začíná**("/ containername/blobs/foldername/file.txt") – přijímá události pro objekt blob s názvem soubor.txt ve složce název_složky v kontejneru containername.
 -   **Cesta objektu BLOB končí**('soubor.txt") – Receives události pro objekt blob s názvem soubor.txt na jakoukoli cestu.
--   **Cesta objektu BLOB končí**('/ containername/file.txt ") – přijímá události pro objekt blob s názvem soubor.txt pod containername kontejneru.
+-   **Cesta objektu BLOB končí**('/ containername/blobs/file.txt ") – přijímá události pro objekt blob s názvem soubor.txt pod containername kontejneru.
 -   **Cesta objektu BLOB končí**('foldername/file.txt') – Receives události pro objekt blob s názvem soubor.txt ve složce název_složky v jakékoli kontejneru.
+
+> [!NOTE]
+> Je nutné zahrnout `/blobs/` segment cesty vždy, když zadáte kontejneru a složku, kontejner a soubor nebo kontejner, složku a soubor.
+
+## <a name="using-blob-events-trigger-properties"></a>Pomocí vlastnosti aktivační události objektu Blob
+
+Když se aktivuje aktivační události objektu blob, ho zpřístupní dvě proměnné do kanálu: *folderPath* a *fileName*. Chcete-li získat přístup k těmto proměnným, použijte `@triggerBody().fileName` nebo `@triggerBody().folderPath` výrazy.
+
+Představte si třeba nakonfigurovat tak, aby fire při vytvoření objektu blob se aktivační událost `.csv` jako hodnotu `blobPathEndsWith`. Pokud soubor .csv se ukončí do účtu úložiště *folderPath* a *fileName* popisují umístění souboru CSV. Například *folderPath* má hodnotu `/containername/foldername/nestedfoldername` a *fileName* má hodnotu `filename.csv`.
 
 ## <a name="next-steps"></a>Další postup
 Podrobné informace o aktivační události najdete v tématu [kanálu spouštěcí a aktivační události](concepts-pipeline-execution-triggers.md#triggers).

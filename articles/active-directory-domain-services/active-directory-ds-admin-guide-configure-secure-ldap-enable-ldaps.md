@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 06/27/2018
 ms.author: maheshu
-ms.openlocfilehash: 4263034408de059880b91e8106f6832ccacc6085
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 5838dbefab9f7100ed4776eebef7a1d07d2db1a6
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36300964"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061041"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurace zabezpečeného LDAP (LDAPS) pro spravované doméně služby Azure AD Domain Services
 
@@ -48,7 +48,7 @@ Pokud chcete povolit zabezpečený LDAP, proveďte následující kroky konfigur
 4. Zabezpečený LDAP přístup k vaší spravované domény je ve výchozím nastavení zakázaná. Přepnutí **zabezpečený LDAP** k **povolit**.
 
     ![Povolit zabezpečený LDAP](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
-5. Zabezpečený LDAP přístup k vaší spravované domény přes internet je ve výchozím nastavení zakázaná. Přepnutí **povolit zabezpečený LDAP přístup přes internet** k **povolit**, v případě potřeby. 
+5. Zabezpečený LDAP přístup k vaší spravované domény přes internet je ve výchozím nastavení zakázaná. Přepnutí **povolit zabezpečený LDAP přístup přes internet** k **povolit**, v případě potřeby.
 
     > [!WARNING]
     > Když povolíte zabezpečený LDAP přístup přes internet, vaše doména je náchylný na útoky hrubou silou hesla přes internet. Proto doporučujeme nastavení skupiny NSG k zablokovat přístup do požadovaných zdrojových rozsahů IP adres. Postupujte podle pokynů k [uzamčení LDAPS přístup k vaší spravované domény přes internet](#task-5---lock-down-secure-ldap-access-to-your-managed-domain-over-the-internet).
@@ -111,6 +111,23 @@ Následující tabulka znázorňuje ukázku NSG můžete nakonfigurovat, zamknou
 
 <br>
 
+## <a name="bind-to-the-managed-domain-over-ldap-using-ldpexe"></a>Vytvořit vazbu k spravované doméně prostřednictvím protokolu LDAP pomocí LDP.exe
+Můžete použít nástroj LDP.exe, která je součástí sady nástrojů pro vzdálenou správu serveru vazby a hledání prostřednictvím protokolu LDAP.
+
+První otevřete LDP a připojte k spravované doméně. Klikněte na tlačítko **připojení** a klikněte na tlačítko **připojení...**  v nabídce. Zadejte název domény DNS spravované domény. Zadejte port pro připojení používat. Pro připojení LDAP použití portu 389. Pro připojení LDAPS používat port 636. Klikněte na tlačítko **OK** tlačítko Připojit k spravované doméně.
+
+V dalším kroku vytvořit vazbu k spravované doméně. Klikněte na tlačítko **připojení** a klikněte na tlačítko **vazby...**  v nabídce. Zadejte pověření uživatelského účtu, který patří do skupiny 'AAD řadič domény správci'.
+
+Vyberte **zobrazení**a potom vyberte **stromu** v nabídce. Základní rozlišující název pole ponechte prázdné a klikněte na tlačítko OK. Přejděte do kontejneru, který chcete vyhledávat, klikněte pravým tlačítkem na kontejner a vyberte možnost hledání.
+
+> [!TIP]
+> - Uživatelé a skupiny synchronizované z Azure AD jsou uložené v **AADDC uživatelé** kontejneru. Cesta hledání pro tento kontejner vypadá ```CN=AADDC\ Users,DC=CONTOSO100,DC=COM```.
+> - Účty počítačů pro počítače připojené k spravované doméně jsou uloženy v **AADDC počítače** kontejneru. Cesta hledání pro tento kontejner vypadá ```CN=AADDC\ Computers,DC=CONTOSO100,DC=COM```.
+>
+>
+
+Další informace - [základy dotazů protokolu LDAP](https://technet.microsoft.com/library/aa996205.aspx)
+
 
 ## <a name="troubleshooting"></a>Řešení potíží
 Pokud máte potíže s připojením k spravované doméně pomocí zabezpečený LDAP, proveďte následující kroky řešení potíží:
@@ -129,6 +146,7 @@ Pokud máte potíže s připojením k spravované doméně pomocí zabezpečený
 ## <a name="related-content"></a>Související obsah
 * [Azure AD Domain Services – Příručka Začínáme](active-directory-ds-getting-started.md)
 * [Správa spravované domény služby Azure AD Domain Services](active-directory-ds-admin-guide-administer-domain.md)
+* [Základy dotazů protokolu LDAP](https://technet.microsoft.com/library/aa996205.aspx)
 * [Správa zásad skupiny na spravované doméně služby Azure AD Domain Services](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Skupiny zabezpečení sítě](../virtual-network/security-overview.md)
 * [Vytvořit skupinu zabezpečení sítě](../virtual-network/tutorial-filter-network-traffic.md)

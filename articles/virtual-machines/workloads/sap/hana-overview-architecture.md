@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/19/2018
+ms.date: 06/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18b6aaf7396c16714370435d2ee6d3a4960ecf21
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3918096a977cfd48e2128646d7c552e842ab8834
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337972"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063676"
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Přehled SAP HANA (velké instance) a architektura v Azure
 
@@ -393,6 +393,8 @@ Tyto velikosti jsou čísla hrubý svazku, která mírně založené na nasazen�
 Můžete potřebovat další úložiště. Úložiště můžete přidat nákupu dalšího úložiště v jednotkách 1 TB. Toto dodatečné úložiště se dá přidat jako další svazek. Také může sloužit k rozšíření jeden nebo více existujících svazcích. Není možné snížit velikost svazků původně nasazení a většinou zdokumentovat, předchozích tabulkách. Také není možné změnit názvy svazků nebo se připojte názvy. Svazky úložiště výše popsané jsou připojené k instanci HANA velké jednotky jako NFS4 svazky.
 
 Úložiště snímků můžete použít pro zálohování a obnovení a po havárii pro účely obnovení. Další informace najdete v tématu [SAP HANA (velké instance) vysoké dostupnosti a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+
+Odkazovat [HLI Podporované scénáře](hana-supported-scenario.md) podrobnosti rozložení úložiště pro váš scénář.
 
 ### <a name="encryption-of-data-at-rest"></a>Šifrování neaktivních uložených dat
 Úložiště použitého pro velké Instance HANA umožňuje transparentní šifrování dat, který je uložen na discích. Při nasazení Instance HANA velké jednotky, můžete povolit tento druh šifrování. Také můžete změnit na svazky šifrované po nasazení probíhá. Přesunutí ze bez šifrování šifrovaných svazcích je transparentní a nevyžaduje výpadek. 

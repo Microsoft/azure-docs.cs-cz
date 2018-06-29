@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: b6cfe6ba510f1e7ed1b448d99fb8a71bb94053e8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0db357194aa4bd4d01b1d445cb407d983214b32b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620679"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054119"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Monitorování a Správa kanálů služby Azure Data Factory pomocí portálu Azure a prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "34620679"
 > * [Pomocí monitorování a správu aplikací](data-factory-monitor-manage-app.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [sledování a Správa kanálů služby Data Factory v verze 2](../monitor-visually.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [sledování a Správa kanálů služby Data Factory v](../monitor-visually.md).
 
 Tento článek popisuje, jak monitorovat, spravovat a ladit kanály pomocí portálu Azure a prostředí PowerShell.
 

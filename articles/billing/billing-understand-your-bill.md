@@ -1,5 +1,5 @@
 ---
-title: Porozumět vaší faktuře pro Azure
+title: Porozumět vaší faktuře pro Azure | Microsoft Docs
 description: Zjistěte, jak číst a porozumět využívání a fakturovaná částka u předplatného Azure
 services: ''
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 06/14/2018
 ms.author: tonguyen
-ms.openlocfilehash: f3e0e3eeab88ad8ad0c4a21eb69a6340dbbe0441
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 689ea9e0d029bb65bc579fc914c6ed3073b4a96b
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204886"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063823"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Vysvětlení vašeho vyúčtování služeb Microsoft Azure
 Chcete-li vysvětlení faktury Azure, porovnejte faktury s podrobné soubor denní využití a správu sestav náklady na portálu Azure.
@@ -101,6 +101,40 @@ Pokud jste [platíte podle fakturace](billing-how-to-pay-by-invoice.md), odeslá
 ## <a name="how-do-i-check-the-status-of-a-payment-made-by-credit-card"></a>Jak zkontrolovat stav platba platební karty?
 
 [Vytvořit lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) požádat o stav platby. 
+
+## <a name="are-there-different-azure-customer-types-how-do-i-know-what-customer-type-i-am"></a>Existují různé Azure zákazníků typy? Jak zjistím, jaké zákazníka typ jsem?
+Existují různé typy Azure zákazníků. Abyste lépe pochopili ceny a faktury, najdete v následujících popisech typ odběratele.
+
+- **Enterprise**: podnikoví zákazníci zaregistrovali smlouvu Enterprise Agreement s Azure a ujistěte se, vyjednané peněžních závazků a získat přístup k vlastní ceny prostředků Azure.
+- **Web přímo**: webové přímého zákazníkům nezaregistrovali jakékoli vlastní smlouvy, s Azure. Těchto zákazníků prostřednictvím azure.com registraci k Azure a přijímat veřejné přístupných ceny pro všechny prostředky Azure.
+- **Cloud poskytovatele služeb**: poskytovatele cloudových služeb jsou obvykle společností, které pronajaté podle koncoví zákazníka k sestavení řešení v Azure.
+
+## <a name="why-dont-i-see-the-cost-the-resource-i-have-created-in-my-bill"></a>Proč nevidím náklady na prostředek, který vytvořil jsem v mé faktury?
+Azure nepodporuje není faktury přímo podle prostředků náklady. Fakturace se provádí na základě vypnout jeden nebo více měřidla, které se používají ke sledování využití prostředků v celé jeho životnosti. Tato měřidla jsou poté použít k výpočtu kusovníku. Další informace o Azure měření níže v tématu.
+
+## <a name="how-does-azure-charge-metering-work"></a>Jak Azure účtují měření pracovní?
+Když začne pracovat jeden prostředků Azure, jako je například virtuální počítač, bude mít také vytvořit jeden nebo více instancí měření. Tato měřidla se používají ke sledování využití prostředku v čase. Každý měření vysílá záznamů využití, které jsou pak používány Azure v našem náklady systému měření k výpočtu kusovníku. 
+
+Například jeden virtuální počítač vytvořený v Azure může mít následující měřidla vytvořili ke sledování jeho využití:
+
+- Výpočetní čas
+- Hodiny IP adresy
+- Přenos dat
+- Odchozí přenosy dat
+- Spravovaných disků na úrovni Standard
+- Operace spravovaných disků na úrovni Standard
+- Standardní v/v – Disk
+- Standardní bloku vstupně-výstupní operace čtení objektů Blob
+- Standardní bloku vstupně-výstupní operace zápisu objektů Blob
+- Odstranění objektů Blob standardní vstupně-výstupní – blok
+
+Po vytvoření virtuálního počítače zahájíte každé z nich výše měřidla generování záznamů využití. Toto použití se potom použije v Azure měření systému, společně s cena monitorování k určení, kolik zákazníka je účtován.
+
+> [!Note]
+> Výše uvedený příklad měřidla může být pouze podmnožinu měřidla vytvořit virtuální počítač, který je vytvořen.
+
+## <a name="what-is-the-difference-between-azure-1st-party-charges-and-azure-marketplace-charges"></a>Jaký je rozdíl mezi Azure 1 strany poplatky a poplatky Azure Marketplace?
+Azure 1 strany poplatky jsou pro prostředky, které jsou přímo vyvinutých, které nabízí Azure. Azure Marketplace poplatky jsou pro prostředky, které byly vytvořeny dodavatelé softwaru třetích stran, které jsou k dispozici pro použití prostřednictvím Azure marketplace. Například Brána Firewall Barracuda je prostředek Azure marketplace nabízí třetí strany. Všechny poplatky za bránu firewall a jeho odpovídající měřidla zobrazí jako marketplace poplatky. 
 
 ## <a name="tips-for-cost-management"></a>Tipy pro náklady na správu
 - Odhad nákladů pomocí [cenové kalkulačky](https://azure.microsoft.com/pricing/calculator/) a [celkové náklady na vlastnictví kalkulačky](https://aka.ms/azure-tco-calculator)a získat [podrobné informace o cenách pro každou službu](https://azure.microsoft.com/pricing/).

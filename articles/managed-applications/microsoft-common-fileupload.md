@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 591fe2222c54aad50acc378be7f3399518a8087e
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: c41ff548ed4020ab85d15f610503a3b1592910a5
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34266914"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059885"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>Element Microsoft.Common.FileUpload uživatelského rozhraní
 Ovládací prvek, který umožňuje uživateli zadat jeden nebo více souborů, které chcete nahrát.
@@ -50,19 +50,19 @@ Ovládací prvek, který umožňuje uživateli zadat jeden nebo více souborů, 
 ## <a name="remarks"></a>Poznámky
 - `constraints.accept` Určuje typy souborů, které se zobrazují v dialogovém okně prohlížeče souboru. Najdete v článku [specifikace HTML5](http://www.w3.org/TR/html5/forms.html#attr-input-accept) pro povolené hodnoty. Výchozí hodnota je **null**.
 - Pokud `options.multiple` je nastaven na **true**, uživatel může vybrat více než jeden soubor v dialogovém okně prohlížeče souboru. Výchozí hodnota je **false**.
-- Tento element podporuje odesílání souborů ve dvou režimech na základě hodnoty z `options.uploadMode`. Pokud **soubor** není zadaný, výstup obsahuje obsah souboru jako objekt blob. Pokud **url** je určeno, soubor je odesílán do dočasného umístění a výstup obsahuje adresu URL objektu blob. Dočasné objekty BLOB se vyprázdní po 24 hodinách. Výchozí hodnota je **soubor**.
+- Tento element podporuje odesílání souborů ve dvou režimech na základě hodnoty z `options.uploadMode`. Pokud **soubor** není zadaný, výstup má obsah souboru jako objekt blob. Pokud **url** je určeno, soubor je odesílán do dočasného umístění a výstup má adresu URL objektu blob. Dočasné objekty BLOB se vyprázdní po 24 hodinách. Výchozí hodnota je **soubor**.
 - Hodnota `options.openMode` Určuje, jak je soubor pro čtení. Pokud soubor je očekáván prostý text, zadejte **text**; v opačném, zadejte **binární**. Výchozí hodnota je **text**.
 - Pokud `options.uploadMode` je nastaven na **soubor** a `options.openMode` je nastaven na **binární**, výstup se kódování base64.
 - `options.encoding` Určuje kódování určené k použití při čtení souboru. Výchozí hodnota je **UTF-8**a používá se pouze tehdy, když `options.openMode` je nastaven na **text**.
 
 ## <a name="sample-output"></a>Ukázkový výstup
-Pokud je hodnota false options.multiple a options.uploadMode je soubor, výstup obsahuje obsah souboru jako řetězec formátu JSON:
+Pokud je hodnota false options.multiple a options.uploadMode je soubor, výstup má obsah souboru jako řetězec formátu JSON:
 
 ```json
 "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 ```
 
-Pokud platí options.multiple and'options.uploadMode je soubor, pak výstup obsahuje obsah souborů jako pole JSON:
+Pokud platí options.multiple and'options.uploadMode je soubor, pak výstup má obsah souborů jako pole JSON:
 
 ```json
 [
@@ -73,13 +73,13 @@ Pokud platí options.multiple and'options.uploadMode je soubor, pak výstup obsa
 ]
 ```
 
-Pokud je hodnota false options.multiple a options.uploadMode je adresa url, výstup obsahuje adresu URL jako řetězec formátu JSON:
+Pokud je hodnota false options.multiple a options.uploadMode je adresa url, výstup má adresu URL jako řetězec formátu JSON:
 
 ```json
 "https://myaccount.blob.core.windows.net/pictures/profile.jpg?sv=2013-08-15&st=2013-08-16&se=2013-08-17&sr=c&sp=r&rscd=file;%20attachment&rsct=binary &sig=YWJjZGVmZw%3d%3d&sig=a39%2BYozJhGp6miujGymjRpN8tsrQfLo9Z3i8IRyIpnQ%3d"
 ```
 
-Pokud je true options.multiple a options.uploadMode je adresa url, výstup obsahuje seznam adres URL jako pole JSON:
+Pokud je true options.multiple a options.uploadMode je adresa url, výstup má seznam adres URL jako pole JSON:
 ```json
 [
   "https://myaccount.blob.core.windows.net/pictures/profile1.jpg?sv=2013-08-15&st=2013-08-16&se=2013-08-17&sr=c&sp=r&rscd=file;%20attachment&rsct=binary &sig=YWJjZGVmZw%3d%3d&sig=a39%2BYozJhGp6miujGymjRpN8tsrQfLo9Z3i8IRyIpnQ%3d",

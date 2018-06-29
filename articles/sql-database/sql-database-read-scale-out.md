@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 06/26/2018
+ms.date: 06/27/2018
 ms.author: sashan
-ms.openlocfilehash: fb6e8f4420b739b5ac84f1d5c185fddc740c551a
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7b504306e32f97a0392239f9e6adc6c460848580
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018509"
+ms.locfileid: "37060004"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Použít jen pro čtení repliky načíst vyrovnávat zatížení dotazu jen pro čtení (preview)
 
@@ -22,7 +22,7 @@ ms.locfileid: "37018509"
 
 ## <a name="overview-of-read-scale-out"></a>Přehled čtení Škálováním na více systémů
 
-Každou databázi v úrovni Premium ([na základě DTU nákupní model](sql-database-service-tiers-dtu.md)) nebo v kritické obchodní vrstvy ([nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md)) je automaticky zřízena několik Always ON repliky pro podporu smlouva SLA o dostupnosti. Tyto repliky jsou zřízené se stejnou úrovní výkonu jako repliky pro čtení a zápis používá standardní databázi připojení. **Čtení škálování** funkce umožňuje načíst vyrovnávání SQL databáze jen pro čtení pracovní úlohy nepoužívají kapacitu jen pro čtení replik místo sdílení repliky pro čtení a zápis. Tímto způsobem zatížení jen pro čtení bude izolovaná od hlavní úloh pro čtení a zápis a nebude mít vliv na jeho výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené jen pro čtení úlohy, jako jsou například analýzy a proto může získat výhody výkonu pomocí tuto dodatečnou kapacitu na Ne peníze navíc.
+Každou databázi v úrovni Premium ([na základě DTU nákupní model](sql-database-service-tiers-dtu.md)) nebo v kritické obchodní vrstvy ([nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md)) je automaticky zřízena několik AlwaysON repliky pro podporu smlouva SLA o dostupnosti. Tyto repliky jsou zřízené se stejnou úrovní výkonu jako repliky pro čtení a zápis používá standardní databázi připojení. **Čtení škálování** funkce umožňuje načíst vyrovnávat SQL Database jen pro čtení zatížení využití kapacity jednoho z repliky jen pro čtení místo sdílení repliky pro čtení a zápis. Tímto způsobem zatížení jen pro čtení bude izolovaná od hlavní úloh pro čtení a zápis a nebude mít vliv na jeho výkon. Tato funkce je určená pro aplikace, které zahrnují logicky oddělené jen pro čtení úlohy, jako jsou například analýzy a proto může získat výhody výkonu pomocí tuto dodatečnou kapacitu na Ne peníze navíc.
 
 Pokud chcete používat funkce škálování pro čtení s danou databází, je potřeba explicitně povolit ho při vytváření databáze nebo později změnou jeho konfigurace pomocí prostředí PowerShell vyvoláním [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) nebo [ Nový-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) rutiny nebo prostřednictvím rozhraní REST API Azure Resource Manager [databáze - vytvořit nebo aktualizovat](/rest/api/sql/databases/createorupdate) metoda. 
 
@@ -61,10 +61,12 @@ Server=tcp:<server>.database.windows.net;Database=<mydatabase>;User ID=<myLogin>
 
 Můžete ověřit, zda jste připojeni k repliku jen pro čtení spuštěním následujícího dotazu. Vrátí READ_ONLY při připojení k replice jen pro čtení.
 
+
 ```SQL
 SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 ```
-
+> [!NOTE]
+> V každém okamžiku pouze jeden z replik AlwaysON, je přístupné relací jen pro čtení.
 
 ## <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Povolení a zákaz čtení Škálováním na více systémů pomocí prostředí Azure PowerShell
 
@@ -110,7 +112,7 @@ Další informace najdete v tématu [databází - vytvořit nebo aktualizovat](/
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>Čtení Škálováním na více systémů pomocí geograficky replikované databáze
 
-Pokud vaše jsou pomocí čtení horizontální načíst Vyrovnávání zatížení jen pro čtení v databázi, která je geograficky replikované (např. jako člen skupiny převzetí služeb při selhání), ujistěte se, že čtení Škálováním na více systémů je povolena na primárním serverem a geograficky replikované sekundární databáze. Tím bude zajištěno stejného efektu Vyrovnávání zatížení, když se aplikace připojí k nové primární po převzetí služeb při selhání. Pokud se připojujete k geograficky replikované sekundární databáze s měřítku pro čtení povolené, vaše relace s `ApplicationIntent=ReadOnly` , budou směrovány na jednu z replik stejným způsobem jako jsme směrovat připojení na primární databáze.  Relace bez `ApplicationIntent=ReadOnly` , budou směrovány na primární repliku geograficky replikované sekundární, což je také jen pro čtení. 
+Pokud vaše jsou pomocí čtení horizontální načíst Vyrovnávání zatížení jen pro čtení v databázi, která je geograficky replikované (např. jako člen skupiny převzetí služeb při selhání), ujistěte se, že čtení Škálováním na více systémů je povolena na primárním serverem a geograficky replikované sekundární databáze. Tím bude zajištěno stejného efektu Vyrovnávání zatížení, když se aplikace připojí k nové primární po převzetí služeb při selhání. Pokud se připojujete k geograficky replikované sekundární databáze s měřítku pro čtení povolené, vaše relace s `ApplicationIntent=ReadOnly` , budou směrovány na jednu z replik stejným způsobem jako jsme směrovat připojení na primární databáze.  Relace bez `ApplicationIntent=ReadOnly` , budou směrovány na primární repliku geograficky replikované sekundární, což je také jen pro čtení. Protože geograficky replikované sekundární databáze má jiný koncový bod než primární databázi, v minulosti pro přístup k sekundární nebyl vyžadovala nastavit `ApplicationIntent=ReadOnly`. Pro zajištění zpětné kompatibility, `sys.geo_replication_links` DMV ukazuje `secondary_allow_connections=2` (jakékoli připojení klienta je povolena.).
 
 > [!NOTE]
 > Během ve verzi preview jsme nebude provádět pomocí kruhového dotazování nebo jiné zatížení vyrovnáváním směrování mezi místní repliky sekundární databázi. 

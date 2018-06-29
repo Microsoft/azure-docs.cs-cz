@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 6/1/2018
 ms.author: raiye
-ms.openlocfilehash: 73771aaff59c3db46907ffd9f74c03f0ac0830cb
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: dd6a9b3e8777c6efa4d6db07d4d65c86463f6cfe
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736775"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063608"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure verze hostovaného operačního systému a kompatibilních sad SDK
 Poskytuje že aktuální informace o nejnovější hostovaného operačního systému Azure verze pro cloudové služby. Tyto informace vám pomůžou naplánovat způsob upgradu než hostovaného operačního systému je zakázáno. Pokud nakonfigurujete použití role *automatické* aktualizace hostovaného operačního systému, jak je popsáno v [nastavení aktualizace operačního systému hosta Azure][Azure Guest OS Update Settings], není důležité, abyste si přečetli tuto stránku.
@@ -75,7 +75,7 @@ Vydala září hostovaného operačního systému. Pro tuto verzi systému Windo
 
 
 
-## <a name="releases"></a>Verze
+## <a name="releases"></a>verze
 ## <a name="family-5-releases"></a>Uvolní rodiny 5
 **Windows Server 2016**
 
@@ -222,7 +222,7 @@ Microsoft Azure je neustále vydání aktualizace. Hostovaného operačního sys
 
 Pokud je publikovaná v nové verzi hostovaného operačního systému, může trvat dobu plně rozšíří na Azure. Jako služby Aktualizovaní na novou hostovaného operačního systému, budou se restartují, aby byla dodržena aktualizace domény. Nastavte na "Automatické" aktualizace pomocí služby získají verze první. Po aktualizaci zobrazí se nová verze hostovaného operačního systému, které jsou uvedené pro vaši službu na portálu Azure. Opětovná vydání může dojít během této doby. Některé verze může být nasazena v delší a automatického upgradu restartování počítače nelze provádět mnoho týdny po datu oficiálního vydání. Jakmile hostovaného operačního systému k dispozici, pak explicitně můžete tuto verzi z portálu nebo v konfiguračním souboru.
 
-Značnou část cenné informace o restartování a ukazatele na další informace o technické podrobnosti aktualizace hosta a hostitelským operačním systémem, naleznete v příspěvku MSDN post s názvem [Role Instance restartuje kvůli upgrady operačního systému][restarts].
+Značnou část cenné informace o restartování a ukazatele na další informace o technické podrobnosti aktualizace hosta a hostitelským operačním systémem, naleznete v příspěvku MSDN post s názvem [Role Instance restartuje kvůli upgrady operačního systému] [ restarts].
 
 Pokud ručně aktualizovat vaše hostovaného operačního systému, přečtěte si téma [zásady vyřazení hostovaného operačního systému] [ retirepolicy] Další informace.
 
@@ -242,7 +242,7 @@ Možnosti podpory a vyřazení zásady hostovaného operačního systému je vys
 [server and gos]: https://msdn.microsoft.com/library/dn775043.aspx
 [azuresupport]: http://azure.microsoft.com/support/options/
 [net install pkg]: http://www.microsoft.com/download/details.aspx?id=42643
-[msrc]: http://www.microsoft.com/security/msrc/default.aspx
+[msrc]: https://technet.microsoft.com/en-us/security/dn440717.aspx
 [update guest os portal]: https://msdn.microsoft.com/library/gg433101.aspx
 [update guest os svc]: https://msdn.microsoft.com/library/gg456324.aspx
 [restarts]: http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx

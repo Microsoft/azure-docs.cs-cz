@@ -1,5 +1,5 @@
 ---
-title: Řešení potíží s enterprise náklady zobrazení - Azure | Microsoft Docs
+title: Řešení potíží s Azure enterprise náklady na zobrazení | Microsoft Docs
 description: Přečtěte si o řešení problémů, které můžete mít s náklady na organizační zobrazení v portálu Azure.
 author: rthorn17
 manager: rithorn
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/22/2017
 ms.author: rithorn
-ms.openlocfilehash: 193e4691d2e10dd1c5ad16c26ad25534e3156745
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 2a9639103b494e3af54a6a21ed769cf4f7bd6259
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32770351"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063188"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Řešení potíží s enterprise náklady zobrazení 
 

@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/04/2018
+ms.date: 06/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0747bd5dc147639167f352dea46f7e4a1d43227d
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 178102990462235b9b39f2ed1ad0e43395118daf
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763441"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063791"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Postup instalace a konfigurace SAP HANA (velké instance) na Azure
 
@@ -80,18 +80,7 @@ Předpokládáme, že jste postupovali podle doporučení v návrhu sítě Azure
 
 Abychom zmínili o možnostech sítě jedné jednotky existují některé podrobnosti vhodné. Každá jednotka HANA velké Instance obsahuje dvě nebo tři IP adresy, které jsou přiřazeny k seskupování porty dvě nebo tři jednotky. Tři IP adresy se používají v HANA konfigurace Škálováním na více systémů a scénář replikaci HANA systému. Jednou z IP adresy přiřazené k seskupování jednotky je z fondu IP adresy serveru, který je popsáno v [přehled SAP HANA (velké Instance) a architektura v Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture).
 
-Distribuce pro jednotky s přiřazeny dvě IP adresy by měl vypadat podobně jako:
-
-- eth0.xx by měl mít IP adresu přiřadit, která je mimo rozsah adres fondu IP serveru, který jste odeslali do společnosti Microsoft. Tato IP adresa se použije pro zachování v/etc/hosts operačního systému.
-- eth1.xx by měl mít IP adresu přiřazen, který se používá pro komunikaci systému souborů NFS. Proto se tyto adresy **není** třeba udržet v etc/hosts, aby bylo možné povolit provoz instance pro instance v rámci klienta.
-
-Pro nasazení případech replikaci systému HANA nebo HANA škálování není vhodný okno Konfigurace s přiřazeny dvě IP adresy. Pokud má dvě IP adresy, které jsou přiřazeny pouze a chtějí nasadit taková konfigurace, obraťte se na SAP HANA na Azure Service Management získání třetí IP adresu ve třetí přiřadit síť VLAN. Pro velké Instance HANA jednotky s tři IP adresy přiřazené na tři porty NIC platí následující pravidla využití:
-
-- eth0.xx by měl mít IP adresu přiřadit, která je mimo rozsah adres fondu IP serveru, který jste odeslali do společnosti Microsoft. Proto tuto IP adresu se nepoužijí pro zachování v/etc/hosts operačního systému.
-- eth1.xx by měl mít IP adresu přiřadit, který se používá pro komunikaci úložiště systému souborů NFS. Tento typ adresy proto by nemělo být udržovány v etc/hosts.
-- eth2.xx by měl být zachován v atd nebo hostitele pro komunikaci mezi různými instancemi výhradně použije. Tyto adresy by také IP adresy, které je potřeba udržovat v konfiguracích HANA škálování jako IP adresy, kterou používá HANA pro konfigurace mezi uzly.
-
-
+Odkazovat [HLI Podporované scénáře](hana-supported-scenario.md) další podrobnosti o ethernet v architektuře.
 
 ## <a name="storage"></a>Úložiště
 
@@ -111,7 +100,7 @@ Kde SID = instance HANA ID systému
 
 A klient = interní výčet operací při nasazování klienta.
 
-Jak vidíte, HANA sdílené a usr/sap sdílejí stejný svazek. Klasifikace přípojné body nezahrnuje systému ID instance HANA, jakož i počet připojení. V nasazení škálování jenom je jeden přípojný, jako je mnt00001. Zatímco v nasazení s více instancemi zobrazí se jako v mnoha připojení zařízení, jako, máte uzly pracovního procesu a hlavní server. Pro prostředí Škálováním na více systémů, dat, protokolu jsou záložní svazky protokolu sdílené a připojené k každý uzel v konfiguraci škálovaného na více systémů. Pro konfigurace spuštěním několika instancí SAP jinou sadu svazků je vytvořen a připojena k jednotce HANU velké Instance.
+Jak vidíte, HANA sdílené a usr/sap sdílejí stejný svazek. Klasifikace přípojné body nezahrnuje systému ID instance HANA, jakož i počet připojení. V nasazení škálování jenom je jeden přípojný, jako je mnt00001. Zatímco v nasazení s více instancemi zobrazí se jako v mnoha připojení zařízení, jako, máte uzly pracovního procesu a hlavní server. Pro prostředí Škálováním na více systémů, dat, protokolu jsou záložní svazky protokolu sdílené a připojené k každý uzel v konfiguraci škálovaného na více systémů. Pro konfigurace spuštěním několika instancí SAP jinou sadu svazků je vytvořen a připojena k jednotce HANU velké Instance. Odkazovat [HLI Podporované scénáře](hana-supported-scenario.md) podrobnosti rozložení úložiště pro váš scénář.
 
 Číst papíru a vypadat Instance HANA velké jednotky, zjistíte, že jednotky dodávány spolu s místo štědrém diskový svazek pro HANA nebo data a že obsahuje svazek HANA/log/zálohování. Důvod, proč jsme velikost HANA nebo data tak velký, je, nabízíme vám jako zákazník snímky úložiště používáte stejný svazek disku. Znamená to, další úložiště snímků provedete, snímky v svazků přiřazené úložiště využívá více místa. HANA/log/zálohování svazku není představit jako svazek se umístí zálohy databáze. Je podle použít jako záložní svazek pro zálohování HANA transakčního protokolu. V budoucích verzích úložiště snímku vlastní službu, že jsme se zaměří na konkrétním svazku mít častější snímky. A s třídou další časté replikace na web pro zotavení po havárii pro možnost v pro obnovení po havárii funkce poskytované službou infrastruktury velké Instance HANA vyžadujete-li. Zobrazit podrobnosti v [SAP HANA (velké instance) vysokou dostupnost a zotavení po havárii v Azure](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 
 
@@ -150,6 +139,7 @@ Také můžete nakonfigurovat parametry po instalaci databáze SAP HANA pomocí 
 
 S SAP HANA 2.0 se již nepoužívá rozhraní hdbparam. V důsledku parametry musí být nastavena pomocí příkazů SQL. Podrobnosti najdete v tématu [2399079 # Poznámka SAP: odstranění hdbparam v HANA 2](https://launchpad.support.sap.com/#/notes/2399079).
 
+Odkazovat [HLI Podporované scénáře](hana-supported-scenario.md) další rozložení úložiště v architektuře.
 
 ## <a name="operating-system"></a>Operační systém
 
@@ -157,7 +147,7 @@ Velikosti odkládacího souboru doručené bitové kopie operačního systému j
 
 [SUSE Linux Enterprise Server 12 SP1 pro aplikace SAP](https://www.suse.com/products/sles-for-sap/hana) je distribuci systému Linux nainstalován pro SAP HANA v Azure (velké instance). Tuto konkrétní distribuci poskytuje funkce specifické pro SAP &quot;ihned&quot; (včetně předem nastavené parametry pro SAP systémem SLES efektivně).
 
-V tématu [dokumenty prostředků knihovny nebo White Paper](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) na webu SUSE a [SAP na SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) na SAP komunity sítě (oznámení změny stavu) pro několik užitečné zdroje související s nasazováním SAP HANA na SLES (včetně nastavení vysoké dostupnosti, posílení zabezpečení specifická pro operace SAP a další).
+V tématu [dokumenty prostředků knihovny nebo White Paper](https://www.suse.com/products/sles-for-sap/resource-library#white-papers) na webu SUSE a [SAP na SUSE](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE) na SAP komunity sítě (oznámení změny stavu) pro několik užitečné zdroje související s nasazováním SAP HANA na SLES (včetně nastavení Vysoká Dostupnost, posílení zabezpečení specifická pro operace SAP a další).
 
 Další a užitečné SAP SUSE související odkazy:
 
@@ -325,7 +315,7 @@ Vzhledem k tomu, že Instance HANA velké jednotky nemají přímé připojení 
 
 Chcete-li stáhnout instalační balíčky HANA, potřebujete SAP uživatelem S nebo jiný uživatel, který umožňuje přístup k SAP Marketplace. Projděte této posloupnosti obrazovky po přihlášení:
 
-Přejděte na [Marketplace služby SAP](https://support.sap.com/en/index.html) > klikněte na tlačítko Stáhnout Software > Instalace a Upgrade > podle abecední Index > v části H – SAP HANA platformy edice > SAP HANA platformy verze 2.0 > instalace > stažení následujících souborů
+Přejděte na [Marketplace služby SAP](https://support.sap.com/en/index.html) > klikněte na možnost stažení softwaru > Instalace a Upgrade > abecední index > v části H – SAP HANA platformy edice > SAP HANA platformy verze 2.0 > instalace > stáhnout Následující soubory
 
 ![Stažení a instalace HANA](./media/hana-installation/image16_download_hana.PNG)
 
@@ -400,7 +390,7 @@ V dalším kroku musíte také načíst data, která jste zadali do společnosti
 > [!Important]
 > Potřebujete poskytovat stejné systému ID uživatele a skupiny uživatelů ID jako automatického Microsoft jako pořadí nasazení jednotky. Pokud nedodržíte poskytují velmi stejná ID, se instalace SAP HANA na jednotce HANA velké Instance se nezdaří.
 
-V následujících dvou obrazovky, které nezobrazují se všechna v této dokumentaci, budete muset zadat heslo pro uživatele systému databázi SAP HANA a heslo pro uživatele sapadm, který se používá pro SAP Agent hostitele, který získá nainstalované v rámci instance databáze SAP HANA.
+V následujících dvou obrazovky, které nezobrazují se všechna v této dokumentaci, budete muset zadat heslo pro uživatele systému databázi SAP HANA a heslo pro uživatele sapadm, který se používá pro hostitele agenta SAP, která je nainstalována jako součást datab SAP HANA App Service Environment instance.
 
 Po definování heslo, se zobrazuje obrazovka s potvrzením, protože. Zkontrolujte všechna data uvedena v seznamu a pokračovat v instalaci. Probíhá na obrazovce, která dokumenty průběh instalace, jako je níže
 

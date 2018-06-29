@@ -11,24 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/07/2018
+ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: 3f6add6691b0e1f43d70399493fa6bf8db8f3833
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 24954cfc128834313bf13a1917e67d5c1812cf66
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617174"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058857"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Kopírování dat do a z Azure Table storage pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – Obecně dostupná](v1/data-factory-azure-table-connector.md)
-> * [Verze 2 – Preview](connector-azure-table-storage.md)
+> * [Verze 1](v1/data-factory-azure-table-connector.md)
+> * [Aktuální verze](connector-azure-table-storage.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat do a z Azure Table storage. Vychází [aktivity kopírování přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 objektu pro vytváření dat, která je obecně k dispozici, najdete v části [konektor úložiště tabulky v verze 1](v1/data-factory-azure-table-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -81,11 +78,11 @@ Propojenou službu úložiště můžete vytvořit také pomocí sdíleného př
 
 Sdílený přístupový podpis poskytuje Delegovaný přístup k prostředkům ve vašem účtu úložiště. Můžete ho udělit, že klient omezené oprávnění k objektům v účtu úložiště po určitou dobu a se zadanou sadou oprávnění. Nemáte sdílet klíče pro přístup k účtu. Sdílený přístupový podpis je identifikátor URI, který zahrnuje všechny informace potřebné pro ověřený přístup k prostředku úložiště v jeho parametry dotazu. Pro přístup k prostředkům úložiště s sdílený přístupový podpis, klient pouze musí předat sdílený přístupový podpis metodu, nebo odpovídající konstruktor. Další informace o sdílených přístupových podpisů najdete v tématu [sdílené přístupové podpisy: pochopení modelu sdíleného přístupového podpisu](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
-> [!IMPORTANT]
-> Objekt pro vytváření dat se teď podporuje pouze služby sdílené přístupové podpisy ale není účet sdílené přístupové podpisy. Další informace o těchto dvou typů a konstruování je najdete v tématu [druhy sdílených přístupových podpisů](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). Sdílený přístupový podpis adresa URL vygenerovat z portálu Azure nebo Azure Storage Explorer je sdílený přístupový podpis účet, který není podporován.
+> [!NOTE]
+> Objekt pro vytváření dat se teď podporuje služby sdílené přístupové podpisy a účet sdílené přístupové podpisy. Další informace o těchto dvou typů a konstruování je najdete v tématu [druhy sdílených přístupových podpisů](../storage/common/storage-dotnet-shared-access-signature-part-1.md#types-of-shared-access-signatures). 
 
 > [!TIP]
-> Můžete spustit následující příkazy prostředí PowerShell vygenerovat sdílený přístupový podpis služby pro účet úložiště. Nahraďte zástupné symboly a udělení potřebných oprávnění.
+> Chcete-li vygenerovat sdílený přístupový podpis služby pro účet úložiště, můžete spustit následující příkazy prostředí PowerShell. Nahraďte zástupné symboly a udělení potřebných oprávnění.
 > `$context = New-AzureStorageContext -StorageAccountName <accountName> -StorageAccountKey <accountKey>`
 > `New-AzureStorageContainerSASToken -Name <containerName> -Context $context -Permission rwdl -StartTime <startTime> -ExpiryTime <endTime> -FullUri`
 

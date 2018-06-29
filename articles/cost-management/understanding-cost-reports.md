@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 06/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b2f33a8dce441312e74688ca766ab65c028451d9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 75709e099c6126997d91bf4b679de473fc75a485
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32167884"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063824"
 ---
 # <a name="understanding-cost-management-reports"></a>Principy náklady na správu sestav
 
@@ -121,7 +121,7 @@ Každou číslem oblast na předchozím obrázku je podrobně popsaná v násled
     -   **Typ použití**
           - Typ použití může být poplatků jednorázové nebo opakované poplatky.
 
-5. **filtry**
+5. **Filtry**
 
     Pomocí jednoho nebo více vyberte filtry nastavte rozsahy na vybraných hodnot. Pokud chcete nastavit filtr, klikněte na tlačítko **přidat** a potom vyberte filtr kategorií a hodnoty.
 
@@ -141,7 +141,7 @@ Každou číslem oblast na předchozím obrázku je podrobně popsaná v násled
 
   V části amortizace, vyberte **amortizovaný náklady** nebo **skutečné náklady**.
 
-8. **Řešení**
+8. **řešení**
 
     Vyberte dobu řešení v rámci vybraného rozsahu dat pomocí řešení. Rozlišení vašeho doba určuje, jak se zobrazují v sestavě jednotky a může být:
     - Denně
@@ -162,7 +162,7 @@ Každou číslem oblast na předchozím obrázku je podrobně popsaná v násled
 
     Zobrazit nebo skrýt možnost nemá žádný vliv v sestavách.
 
-12.   **formáty zobrazení**
+12.   **Formáty zobrazení**
 
     Formáty zobrazení slouží k výběru různých zobrazení grafu nebo tabulky.
 
@@ -175,6 +175,10 @@ Každou číslem oblast na předchozím obrázku je podrobně popsaná v násled
 14. **Akce**
 
     Pomocí akce Uložit, exportujte nebo plánování sestavy.
+
+15. **Zásady**
+
+    I když není na obrázku, některé sestavy obsahují zásadu výpočtu předpokládané náklady. V těchto sestavách **konsolidované** zásad zobrazuje doporučení pro všechny účty a předplatná aktuální entity, jako je například Microsoft zápisu nebo plátce AWS. **Samostatné** zásad ukazuje doporučení pro jeden účet nebo předplatné, jako kdyby neexistuje žádný odběr. Zásadu, kterou vyberete, se liší na strategii optimalizace, které vaše organizace používá. Projekce náklady jsou založené na využití za posledních 30 dní.
 
 ## <a name="save-and-schedule-reports"></a>Uložte a plánování sestav
 
@@ -199,4 +203,5 @@ Při zobrazení žádnou sestavu, klikněte na tlačítko **akce** a pak vyberte
 
 ## <a name="next-steps"></a>Další postup
 
-- Pokud jste ještě nedokončili první kurz pro náklady na správu, přečtěte si ho na [zkontrolujte využití a náklady na](tutorial-review-usage.md).
+- Další informace o sestavách, které jsou součástí Cloudyn v [náklady na správu pomocí sestavy](use-reports.md).
+- Další informace o použití sestav k vytvoření [řídicí panely](dashboards.md).

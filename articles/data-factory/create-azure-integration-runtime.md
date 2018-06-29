@@ -12,18 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: douglasl
-ms.openlocfilehash: 984971c24f2dfdd5d8eced45341737d1ce975033
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cb1a263c0a33a291a44e7c60b3c032d7f9dc16a3
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619350"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054071"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Jak vytvořit a nakonfigurovat Runtime integrace Azure
 Integrační modul Runtime (IR) je na výpočetní infrastruktuře používá k zajištění funkce integrace dat různých prostředích sítě Azure Data Factory. Další informace o IR najdete v tématu [integrace runtime](concepts-integration-runtime.md).
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [Data Factory V1 dokumentaci](v1/data-factory-introduction.md).
 
 Azure IR poskytuje plně spravovaná výpočetní nativně provést přesun a odesílání dat aktivit transformace dat na výpočetní služby stejně jako HDInsight. Je hostovaná v prostředí Azure a podporuje připojení k prostředkům ve veřejné síti prostředí s veřejné koncové body přístupné.
 

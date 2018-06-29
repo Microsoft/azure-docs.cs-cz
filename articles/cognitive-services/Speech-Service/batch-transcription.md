@@ -9,12 +9,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 0e30b26806121fa9b10118d79dd0287745d176f8
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
-ms.translationtype: MT
+ms.openlocfilehash: 01bbf4ca19b0fb702aa76d5149fb0e38389fe455
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36322027"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054819"
 ---
 # <a name="batch-transcription"></a>Přepis batch
 
@@ -82,7 +82,7 @@ Využitím rozhraní API je docela rovnou dál. Následující ukázkový kód j
 ```cs
    static async Task TranscribeAsync()
         { 
-            // Creating an Batch transcription API Client
+            // Creating a Batch transcription API Client
             var client = 
                 await CrisClient.CreateApiV1ClientAsync(
                     "<your msa>", // MSA email

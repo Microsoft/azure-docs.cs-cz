@@ -1,17 +1,17 @@
 ---
 ms.topic: include
-ms.openlocfilehash: 32fdc23aded78ca491fbde2ef5c76247c56d0c4c
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 509d2bc3f58c57a3e2e15eed2ea2c70ed17856f3
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313740"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063693"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Předem pro virtuální počítače s instancemi Azure vyhrazené virtuálních počítačů
 
-Předem pro virtuální počítače a ušetřit peníze s instancemi Azure vyhrazené virtuální počítač (VM). Další informace najdete v tématu [nabídky Azure vyhrazenou instancí](https://azure.microsoft.com/pricing/reserved-vm-instances/).
+Předem pro virtuální počítače a ušetřit peníze s instancemi Azure vyhrazené virtuální počítač (VM). Další informace najdete v tématu [vyhrazenou instancí virtuálních počítačů Azure nabídky](https://azure.microsoft.com/pricing/reserved-vm-instances/).
 
-Vyhrazená instance Azure můžete zakoupit [portál Azure](https://portal.azure.com). Koupit vyhrazenou instanci:
+Můžete si koupit Azure vyhrazenou instancí [portál Azure](https://portal.azure.com). Koupit vyhrazenou instanci:
 -   Musíte být roli vlastníka pro alespoň jeden Enterprise nebo předplatné s průběžnými platbami.
 -   U předplatného typu Enterprise, musí být povolená vyhrazenou instanci nákupy v [EA portál](https://ea.azure.com).
 -   Cloud Solution Provider (CSP) programu můžete zakoupit pouze správce agentů nebo prodejní agenty vyhrazenou instancí.
@@ -50,12 +50,12 @@ Musí používat jednu z metod popsaných níže k identifikaci správně veliko
 ## <a name="next-steps"></a>Další postup 
 Vyhrazená Instance slevu je automaticky použity počet spuštěných virtuálních počítačů, které odpovídají oboru vyhrazenou instanci a atributy. Můžete aktualizovat rozsah vyhrazenou instanci prostřednictvím [portál Azure](https://portal.azure.com), prostředí PowerShell, rozhraní příkazového řádku nebo pomocí rozhraní API. 
 
-Zjistěte, jak spravovat vyhrazenou instanci, najdete v tématu [spravovat vyhrazená instance Azure](../articles/billing/billing-manage-reserved-vm-instance.md).
+Zjistěte, jak spravovat vyhrazenou instanci, najdete v tématu [spravovat vyhrazená instance v Azure](../articles/billing/billing-manage-reserved-vm-instance.md).
 
-Další informace o vyhrazenou instancí Azure, najdete v následujících článcích:
+Další informace o Azure vyhrazenou instancí, naleznete v následujících článcích:
 
-- [Ušetřit peníze u virtuálních počítačů s vyhrazenou instancí](../articles/billing/billing-save-compute-costs-reservations.md)
-- [Správa Azure vyhrazenou instancí](../articles/billing/billing-manage-reserved-vm-instance.md)
+- [Jaké jsou vyhrazená instance virtuálních počítačů Azure?](../articles/billing/billing-save-compute-costs-reservations.md)
+- [Spravovat vyhrazená instance v Azure](../articles/billing/billing-manage-reserved-vm-instance.md)
 - [Pochopit, jak se použije slevu vyhrazenou instanci](../articles/billing/billing-understand-vm-reservation-charges.md)
 - [Pochopení vyhrazenou instanci využití pro vaše předplatné s průběžnými platbami](../articles/billing/billing-understand-reserved-instance-usage.md)
 - [Pochopení vyhrazenou instanci využití pro podnikového zápisu](../articles/billing/billing-understand-reserved-instance-usage-ea.md)

@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: jingwang
-ms.openlocfilehash: f648bec7530260a6445f74b6d141140f728674ee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: aaec710dd6c12f96a479a1f41603351512da1df6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617157"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054666"
 ---
 # <a name="copy-data-from-odata-source-using-azure-data-factory"></a>Kopírování dat z zdroj OData pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-odata-connector.md)
-> * [Verze 2 – Preview](connector-odata.md)
+> * [Verze 1](v1/data-factory-odata-connector.md)
+> * [Aktuální verze](connector-odata.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z zdroje OData. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [konektoru OData V1](v1/data-factory-odata-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -54,7 +51,7 @@ Pro OData propojené služby jsou podporovány následující vlastnosti:
 | type | Vlastnost typu musí být nastavena na: **OData** |Ano |
 | url | Adresy URL kořenového adresáře služby OData. |Ano |
 | authenticationType. | Typ ověřování používaný pro připojení ke zdroji OData.<br/>Povolené hodnoty jsou: **anonymní**, **základní**, a **Windows**. Poznámka: OAuth není podporována. | Ano |
-| Uživatelské jméno | Pokud používáte ověřování Basic nebo Windows, zadejte uživatelské jméno. | Ne |
+| uživatelské jméno | Pokud používáte ověřování Basic nebo Windows, zadejte uživatelské jméno. | Ne |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md). | Ne |
 | connectVia | [Integrace Runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je vaše úložiště dat se nachází v privátní síti), můžete použít modul Runtime integrace Azure nebo Self-hosted integrace Runtime. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
 

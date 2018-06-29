@@ -16,12 +16,12 @@ ms.date: 06/18/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 193be37f4c804d087bf404f14bc60e27349038ad
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 63fa305a94321fef87e5c60cb4ad78e83a3ca356
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319033"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054683"
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>Integraci aplikací SaaS s Azure Active Directory
 
@@ -136,8 +136,8 @@ Kompletní seznam aplikací SaaS, které byly předem integrované do služby Az
 | ![Logo](./media/tutorial-list/active-directory-saas-cimpl-tutorial.png)| [Cimpl](cimpl-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-ciscocloud-tutorial.png)| [Cisco cloudu](ciscocloud-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-ciscocloudlock-tutorial.png)| [Cisco Cloudlock](ciscocloudlock-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-cisco-spark-tutorial.png)| [Cisco Spark](cisco-spark-tutorial.md)|
-| ![Logo](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|[Cisco Webex - zřizování uživatelů](cisco-webex-provisioning-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-cisco-spark-tutorial.png)| [Cisco Spark](cisco-spark-tutorial.md)|[Cisco Spark - zřizování uživatelů](cisco-spark-provisioning-tutorial.md)|
+| ![Logo](./media/tutorial-list/active-directory-saas-cisco-webex-tutorial.png)| [Cisco Webex](cisco-webex-tutorial.md)|)|[Cisco Webex - zřizování uživatelů](cisco-webex-provisioning-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-sharefile-tutorial.png)| [Citrix ShareFile](sharefile-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-clarizen-tutorial.png)| [Clarizen](clarizen-tutorial.md)|[Clarizen - zřizování uživatelů](clarizen-provisioning-tutorial.md)|
 | ![Logo](./media/tutorial-list/active-directory-saas-clearreview-tutorial.png)| [Clear – kontrola](clearreview-tutorial.md)|

@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b8a35e19628ebbe75d3f1890a6d64ab777519698
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f6577b8b2c99773887ecdac865684f6cb4c9d3b9
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621543"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051572"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Přesun dat z místní HDFS pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-hdfs-connector.md)
-> * [Verze 2 – Preview](../connector-hdfs.md)
+> * [Verze 1](data-factory-hdfs-connector.md)
+> * [Verze 2 (aktuální verze)](../connector-hdfs.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [HDFS konektor v V2](../connector-hdfs.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [HDFS konektor v V2](../connector-hdfs.md).
 
 Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat z místní službě HDFS. Vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článek, který představuje obecný přehled přesun dat s aktivitou kopírování.
 
@@ -49,7 +49,7 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z HDFS zdr
 
 Nejjednodušší způsob, jak vytvořit kanál je použití **Průvodce kopírováním**. V tématu [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md) podrobný rychlé vytvoření kanálu pomocí Průvodce kopírováním data.
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený:
 
@@ -69,7 +69,7 @@ Propojená služba odkazuje na objekt pro vytváření dat úložiště dat. Vyt
 | type |Vlastnost typu musí být nastavena na: **Hdfs** |Ano |
 | URL |Adresa URL HDFS |Ano |
 | authenticationType. |Anonymní, nebo Windows. <br><br> Použít **ověřování protokolem Kerberos** HDFS konektor, najdete v části [v této části](#use-kerberos-authentication-for-hdfs-connector) odpovídajícím způsobem nastavit v místním prostředí. |Ano |
-| Uživatelské jméno |Ověřování uživatelského jména pro systém Windows. Pro ověřování pomocí protokolu Kerberos, zadejte `<username>@<domain>.com`. |Ano (pro ověřování systému Windows) |
+| uživatelské jméno |Ověřování uživatelského jména pro systém Windows. Pro ověřování pomocí protokolu Kerberos, zadejte `<username>@<domain>.com`. |Ano (pro ověřování systému Windows) |
 | heslo |Heslo pro ověřování systému Windows. |Ano (pro ověřování systému Windows) |
 | gatewayName |Název brány, kterou služba Data Factory měla použít pro připojení k HDFS. |Ano |
 | encryptedCredential |[Nové AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) výstup pověření přístup. |Ne |
@@ -122,7 +122,7 @@ Propojená služba odkazuje na objekt pro vytváření dat úložiště dat. Vyt
 | folderPath |Cesta ke složce. Příklad: `myfolder`<br/><br/>Použít řídicí znak ' \ ' pro speciální znaky v řetězci. Příklad: pro folder\subfolder, určete složku\\\\podsložky a pro d:\samplefolder, zadejte d:\\\\ukázková_složka.<br/><br/>Tato vlastnost se můžete kombinovat **partitionBy** tak, aby měl složky cesty založené na řez počáteční nebo koncové hodnoty data a času. |Ano |
 | fileName |Zadejte název souboru do **folderPath** Pokud chcete, aby v tabulce odkazovat na konkrétní soubor ve složce. Pokud nezadáte žádnou hodnotu pro tuto vlastnost, tabulka odkazuje na všechny soubory ve složce.<br/><br/>Pokud není zadán název souboru pro datovou sadu výstupů, název vygenerovaný soubor bude v následujícím tento formát: <br/><br/>Data. <Guid>.txt (například:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Ne |
 | partitionedBy |partitionedBy slouží k určení dynamické folderPath, název souboru pro data časové řady. Příklad: folderPath parametry pro každou hodinu data. |Ne |
-| Formát | Jsou podporovány následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátu](data-factory-supported-file-and-compression-formats.md#orc-format), a [Parquet formát](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **zkopírujte soubory jako-je** mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady. |Ne |
+| Formát | Jsou podporovány následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**,  **ParquetFormat**. Nastavte **typ** vlastnost pod formát na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](data-factory-supported-file-and-compression-formats.md#text-format), [formátu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formát](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátu](data-factory-supported-file-and-compression-formats.md#orc-format), a [Parquet formát](data-factory-supported-file-and-compression-formats.md#parquet-format) oddíly. <br><br> Pokud chcete **zkopírujte soubory jako-je** mezi souborové úložiště (binární kopie), přeskočte část formátu v obou definice vstupní a výstupní datové sady. |Ne |
 | Komprese | Zadejte typ a úroveň komprese pro data. Podporované typy jsou: **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně: **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 > [!NOTE]
@@ -170,7 +170,7 @@ Pro aktivitu kopírování, pokud je zdroj typu **FileSystemSource** následují
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| Rekurzivní |Označuje, zda je data načíst rekurzivně z dílčí složky nebo pouze do zadané složky. |Hodnota TRUE, False (výchozí) |Ne |
+| rekurzivní |Označuje, zda je data načíst rekurzivně z dílčí složky nebo pouze do zadané složky. |Hodnota TRUE, False (výchozí) |Ne |
 
 ## <a name="supported-file-and-compression-formats"></a>Podporované formáty souborů a komprese
 V tématu [formáty souborů a komprese v Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článek na podrobnosti.
@@ -455,7 +455,7 @@ Existují dvě možnosti nastavit v místním prostředí tak, aby používala o
 
     1. Přejděte do správce serveru > Správa zásad skupiny > domény > objekty zásad skupiny > výchozí nebo zásady služby Active Domain a upravit.
 
-    2. V **Editor správy zásad skupiny** automaticky otevíraném okně, přejděte na konfigurace počítače > zásady > Nastavení systému Windows > Nastavení zabezpečení > Místní zásady > Možnosti zabezpečení a nakonfigurujte **zabezpečení sítě: typy konfigurace šifrování povolené pro protokol Kerberos**.
+    2. V **Editor správy zásad skupiny** automaticky otevíraném okně, přejděte na konfigurace počítače > zásady > Nastavení systému Windows > Nastavení zabezpečení > Místní zásady > Možnosti zabezpečení a nakonfigurujte **sítě zabezpečení: Konfigurace typy šifrování, které jsou povoleny pro protokol Kerberos**.
 
     3. Vyberte algoritmus šifrování, kterou chcete použít při připojení k služby KDC. Běžně můžete jednoduše vybrat všechny možnosti.
 

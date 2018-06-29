@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: f11098f4af2e85df16e00ce6dac6e7c4b5b34e2b
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: fa3e5fff8080acb9e824ffe27f6c149054804830
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260914"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063642"
 ---
 # <a name="microsoftcommontextbox-ui-element"></a>Element Microsoft.Common.TextBox uživatelského rozhraní
 Ovládací prvek, který lze upravit neformátovaný text.
@@ -31,8 +31,8 @@ Ovládací prvek, který lze upravit neformátovaný text.
 {
   "name": "element1",
   "type": "Microsoft.Common.TextBox",
-  "label": "Some text box",
-  "defaultValue": "my value",
+  "label": "Example text box 1",
+  "defaultValue": "my text value",
   "toolTip": "Use only allowed characters",
   "constraints": {
     "required": true,
@@ -44,15 +44,15 @@ Ovládací prvek, který lze upravit neformátovaný text.
 ```
 
 ## <a name="remarks"></a>Poznámky
-- Pokud `constraints.required` je nastaven na **true**, pak textového pole musí obsahovat hodnotu úspěšně ověřit. Výchozí hodnota je **false**.
+- Pokud `constraints.required` je nastaven na **true**, pak textového pole musí mít hodnotu úspěšně ověřit. Výchozí hodnota je **false**.
 - `constraints.regex` je vzor regulárního výrazu jazyka JavaScript. -Li zadána, hodnota textového pole musí odpovídat vzorku úspěšně ověřit. Výchozí hodnota je **null**.
 - `constraints.validationMessage` je řetězec k zobrazení při ověřování se nezdaří, jeho hodnotu. Pokud není zadaný, se používají zpráv integrované ověření textového pole. Výchozí hodnota je **null**.
-- Je možné zadat hodnotu pro `constraints.regex` při `constraints.required` je nastaven na **false**. V tomto scénáři se hodnota nevyžaduje pro textové pole úspěšně ověřit. Pokud je zadaná, musí se shodovat regulární výraz.
+- Je možné zadat hodnotu pro `constraints.regex` při `constraints.required` je nastaven na **false**. V tomto scénáři není nutné u textového pole úspěšně ověřit hodnotu. Pokud je zadaná, musí se shodovat regulární výraz.
 
 ## <a name="sample-output"></a>Ukázkový výstup
 
 ```json
-"my value"
+"my text value"
 ```
 
 ## <a name="next-steps"></a>Další postup

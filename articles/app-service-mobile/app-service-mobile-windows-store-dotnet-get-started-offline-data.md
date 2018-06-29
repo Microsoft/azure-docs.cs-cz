@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: a16de4cef82c29f9b6becfae1901662ee1936934
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 3df6951129f7beda7970e394ffdd32c7e02304dd
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27594475"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060303"
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Zapnutí offline synchronizace u aplikace pro Windows
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -29,15 +29,15 @@ V tomto kurzu se dozvíte, jak přidat podporu offline režimu do aplikace pro u
 
 V tomto kurzu aktualizujete projekt aplikace UPW z tohoto kurzu [vytvoření aplikace pro Windows] pro podporu offline funkce Azure Mobile Apps. Pokud použijete serverový projekt stažené rychlý start, je nutné přidat data přístup rozšiřující balíčky do projektu. Další informace o balíčcích rozšíření serveru najdete v tématu [pracovat s .NET back-end serveru SDK pro Azure Mobile Apps](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md).
 
-Další informace o funkci offline synchronizace, naleznete v tématu [Offline synchronizací dat v Azure Mobile Apps].
+Další informace o funkci offline synchronizace, naleznete v tématu [Synchronizace offline dat v prostředí Azure Mobile Apps].
 
-## <a name="requirements"></a>Požadavky
+## <a name="requirements"></a>Požadavky  
 Tento kurz vyžaduje následující požadavky:
 
 * Visual Studio 2013 běžící na Windows 8.1 nebo novějším.
-* Dokončení [vytvoření aplikace pro Windows][Vytvoření aplikace pro windows].
+* Dokončení [vytvoření aplikace pro Windows][vytvoření aplikace pro windows].
 * [Azure Mobile Services SQLite úložiště][sqlite store nuget]
-* [SQLite pro vývoj pro univerzální platformu Windows](http://www.sqlite.org/downloads)
+* [SQLite pro vývoj pro univerzální platformu Windows](https://marketplace.visualstudio.com/items?itemName=SQLiteDevelopmentTeam.SQLiteforUniversalWindowsPlatform) 
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>Aktualizace klienta aplikace pro podporu funkcím offline
 Offline funkce mobilní aplikace Azure umožňují interakci s místní databázi, pokud jste v offline scénář. V aplikaci použít tyto funkce, inicializovat [SyncContext] [ synccontext] do místního úložiště. Potom referenční tabulku prostřednictvím [IMobileServiceSyncTable][IMobileServiceSyncTable] rozhraní. SQLite slouží jako místní úložiště v zařízení.
@@ -45,7 +45,7 @@ Offline funkce mobilní aplikace Azure umožňují interakci s místní databáz
 1. Nainstalujte [SQLite runtime pro univerzální platformu Windows](http://sqlite.org/2016/sqlite-uwp-3120200.vsix).
 2. V sadě Visual Studio, otevřete Správce balíčků NuGet pro projekt aplikace UPW, který jste dokončili v [vytvoření aplikace pro Windows] kurzu.
     Vyhledat a nainstalovat **Microsoft.Azure.Mobile.Client.SQLiteStore** balíček NuGet.
-3. V Průzkumníku řešení klikněte pravým tlačítkem na **odkazy** > **přidat odkaz na...** >**Universal Windows** > **rozšíření**, potom povolte obě **SQLite pro univerzální platformu Windows** a **2015 modulu Runtime Visual C++ pro Universal Windows Platform apps**.
+3. V Průzkumníku řešení klikněte pravým tlačítkem na **odkazy** > **přidat odkaz na...** > **Universal Windows** > **rozšíření**, potom povolte obě **SQLite pro univerzální platformu Windows** a **2015 modulu Runtime Visual C++ Universal Windows Aplikace platformy**.
 
     ![Přidat odkaz na SQLite UWP][1]
 4. Otevřete soubor MainPage.xaml.cs a zrušte komentář u `#define OFFLINE_SYNC_ENABLED` definice.
@@ -75,7 +75,7 @@ Při prvním spuštění aplikace, `OnNavigatedTo` volání obslužné rutiny ud
 3. (Volitelné) Zobrazte aktualizovaná data pomocí Průzkumníka objektů systému SQL Server nebo REST nástroje, například aplikaci Fiddler. Všimněte si data umístění byl synchronizován mezi databázi back-end mobilní aplikace Azure a místní úložiště.
 4. V aplikaci klikněte na zaškrtávací políčko vedle několik položek k jejich dokončení v místním úložišti.
 
-   `UpdateCheckedTodoItem`volání `SyncAsync` k položce každý byla úspěšně dokončena synchronizace s back-end mobilní aplikace. `SyncAsync`volá nabízení a vyžadování. Ale **vždy, když je spustit vyžádání pro tabulku, která klient udělal změny, push vždy provést automaticky**. To zaručuje, že všechny tabulky v místním úložišti společně s vztahy zůstaly konzistentní. Toto chování může způsobit neočekávané push.  Další informace o toto chování najdete v tématu [Offline synchronizací dat v Azure Mobile Apps].
+   `UpdateCheckedTodoItem` volání `SyncAsync` k položce každý byla úspěšně dokončena synchronizace s back-end mobilní aplikace. `SyncAsync` volá nabízení a vyžadování. Ale **vždy, když je spustit vyžádání pro tabulku, která klient udělal změny, push vždy provést automaticky**. To zaručuje, že všechny tabulky v místním úložišti společně s vztahy zůstaly konzistentní. Toto chování může způsobit neočekávané push.  Další informace o toto chování najdete v tématu [Synchronizace offline dat v prostředí Azure Mobile Apps].
 
 ## <a name="api-summary"></a>Souhrn rozhraní API
 K podpoře offline funkce mobilních služeb, jsme použili [IMobileServiceSyncTable] rozhraní a inicializovat [MobileServiceClient.SyncContext] [ synccontext] s místní databáze SQLite. V režimu offline, normální operace CRUD pro Mobile Apps pracovat jako aplikace stále připojený. během operace dojít proti místní úložiště. Tyto metody slouží k synchronizaci místní úložiště se serverem:
@@ -89,7 +89,7 @@ Další informace o těchto postupech najdete v tématu [Offline synchronizací 
 ## <a name="more-info"></a>Další informace
 Následující témata obsahují další informace o funkci offline synchronizace mobilních aplikací:
 
-* [Offline synchronizací dat v Azure Mobile Apps]
+* [Synchronizace offline dat v prostředí Azure Mobile Apps]
 * [Mobilní aplikace Azure .NET SDK postupy][8]
 
 <!-- Anchors. -->
@@ -105,8 +105,8 @@ Následující témata obsahují další informace o funkci offline synchronizac
 
 
 <!-- URLs. -->
-[Offline synchronizací dat v Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
-[Vytvoření aplikace pro windows]: app-service-mobile-windows-store-dotnet-get-started.md
+[Synchronizace offline dat v prostředí Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
+[vytvoření aplikace pro windows]: app-service-mobile-windows-store-dotnet-get-started.md
 [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkID=716919
 [SQLite for Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkID=716920
 [SQLite for Windows 10]: http://go.microsoft.com/fwlink/?LinkID=716921

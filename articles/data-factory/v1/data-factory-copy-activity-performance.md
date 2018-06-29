@@ -14,21 +14,21 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 27d74ce2cf8fdc4434c48c36dd0c0751dbbab232
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 505f7345af6224b767d6d3719c123d91f54e48f5
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34622308"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054288"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Zkopírujte aktivity výkonu a vyladění Průvodce
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-copy-activity-performance.md)
-> * [Verze 2 – Preview](../copy-activity-performance.md)
+> * [Verze 1](data-factory-copy-activity-performance.md)
+> * [Verze 2 (aktuální verze)](../copy-activity-performance.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [zkopírujte vyladění Průvodce pro vytváření dat verze 2 a výkonu aktivity](../copy-activity-performance.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [zkopírujte vyladění Průvodce pro vytváření dat a aktivity výkonu](../copy-activity-performance.md).
 
 Aktivita kopírování Azure Data Factory nabízí prvotřídní dat zabezpečeným, spolehlivým a vysoce výkonné načítání řešení. Ji budete kopie desítkami terabajtů dat pro každý den s bohatou různých cloudové a místní úložiště dat. Výkon při načítání dat svěží fast je klíč k zajištění, můžete se zaměřit na problém "velkých objemů dat" základní: vytváření řešení pro pokročilou analýzu a získávání hlubšímu porozumění z všechno, co data.
 
@@ -133,7 +133,7 @@ Pokud chcete přepsat toto výchozí nastavení, zadejte hodnotu **cloudDataMove
 > Pokud potřebujete další cloudu DMUs pro vyšší propustnost, obraťte se na [podporu Azure](https://azure.microsoft.com/support/). Nastavení 8 a vyšší aktuálně funguje pouze tehdy, když jste **zkopírovat soubory z objektu Blob úložiště nebo Data Lake Store nebo Amazon S3 nebo cloudem FTP nebo cloudem SFTP do objektu Blob úložiště nebo Data Lake Store nebo Azure SQL Database**.
 >
 
-### <a name="parallelcopies"></a>parallelCopies
+### <a name="parallelcopies"></a>ParallelCopies
 Můžete použít **parallelCopies** vlastnost označující paralelismus, který chcete použít aktivitu kopírování. Tato vlastnost si můžete představit jako maximální počet vláken v rámci aktivitu kopírování, která můžou číst ze zdroje nebo zapisovat do vašeho úložiště dat podřízený paralelně.
 
 Objekt pro vytváření dat pro každou aktivitu kopírování, spuštění, určuje počet paralelních kopií, které chcete použít ke zkopírování dat ze zdroje dat, ukládání a k datům cílového úložiště. Výchozí počet paralelní kopie, které používá závisí na typu zdroj a jímka, který používáte.  
@@ -200,7 +200,7 @@ V hybridním scénáři kopírování (je místní zdroj a jímka je v cloudu), 
 
 ![Dvoufázové instalace kopírování: hybridní scénář](media/data-factory-copy-activity-performance/staged-copy-hybrid-scenario.png)
 
-Když aktivujete přesun dat s použitím pracovní úložiště, můžete zadat, zda chcete data, která mají být před přesunutím dat ze zdrojového úložiště dat k úložišti dat dočasné nebo pracovní zkomprimovat a pak dekomprimovat před přesouvání dat od jako dočasné nebo přípravu úložiště dat pro úložiště dat podřízený.
+Když aktivujete přesun dat s použitím pracovní úložiště, můžete určit, zda se mají data, která mají být před přesunutím dat ze zdrojového úložiště dat k úložišti dat dočasné nebo pracovní zkomprimovat a pak dekomprimovat před přesouvání dat od jako dočasné nebo přípravu dat Uložit do úložiště dat jímky.
 
 V současné době nelze kopírovat data mezi dvěma místní úložišti dat pomocí pracovní úložiště. Očekáváme, že tuto možnost, chcete-li být brzy dostupná.
 
@@ -266,7 +266,7 @@ Doporučujeme, aby je provést tyto kroky pro optimalizaci výkonu služby Data 
      * [Škálovatelnost Brána pro správu dat](data-factory-data-management-gateway-high-availability-scalability.md)
    * [Brána správy dat](#considerations-for-data-management-gateway)
    * [Zdroj](#considerations-for-the-source)
-   * [podřízený](#considerations-for-the-sink)
+   * [Podřízený](#considerations-for-the-sink)
    * [Serializace a deserializace](#considerations-for-serialization-and-deserialization)
    * [Komprese](#considerations-for-compression)
    * [Mapování sloupce](#considerations-for-column-mapping)
@@ -276,7 +276,7 @@ Doporučujeme, aby je provést tyto kroky pro optimalizaci výkonu služby Data 
 ## <a name="considerations-for-data-management-gateway"></a>Důležité informace týkající se Brána pro správu dat
 **Instalační program brány**: doporučujeme použít vyhrazený počítač na hostitele brány pro správu dat. V tématu [předpoklady pro použití brány pro správu dat](data-factory-data-management-gateway.md#considerations-for-using-gateway).  
 
-**Monitorování brány a nahoru nebo škálování**: jedné logické brány se jeden nebo více uzlů brány může sloužit více aktivity kopírování spustí ve stejnou dobu současně. Skoro v reálném čase snímek využití prostředků (procesor, paměť, network(in/out) atd.) můžete zobrazit na počítači brány i počet souběžných úloh spuštěných versus limit na portálu Azure najdete v části [monitorování brány na portálu](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Pokud máte třeba velkou na přesun dat hybridní buď velký počet souběžných kopie aktivity spustí nebo s velkým množstvím data ke zkopírování, zvažte pro [vertikální navýšení kapacity nebo škálovat. brána](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) tak, aby lépe využívat prostředek nebo pro zřízení více prostředků na základě kterých kopírování. 
+**Monitorování brány a nahoru nebo škálování**: jedné logické brány se jeden nebo více uzlů brány může sloužit více aktivity kopírování spustí ve stejnou dobu současně. Skoro v reálném čase snímek využití prostředků (procesor, paměť, network(in/out) atd.) můžete zobrazit na počítači brány i počet souběžných úloh spuštěných versus limit na portálu Azure najdete v části [monitorování brány na portálu](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Pokud máte třeba velkou na přesun dat hybridní buď velký počet souběžných kopie aktivity spustí nebo s velkým množstvím data ke zkopírování, zvažte pro [vertikální navýšení kapacity nebo škálovat. brána](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) tak, aby lépe využívat prostředek nebo pro zřízení Další prostředků na základě kterých kopírování. 
 
 ## <a name="considerations-for-the-source"></a>Důležité informace pro zdroj
 ### <a name="general"></a>Obecné
@@ -326,7 +326,7 @@ Pokud chcete kopírovat data z **úložiště objektů Blob** k **SQL Data Wareh
 * **Velikost dat vzor a batch**:
   * Schéma tabulky ovlivňuje kopie propustnost. Ke zkopírování stejné množství dat, velikost velké řádku umožňuje lepší výkon než velikost malých řádku, protože databáze můžete potvrdit efektivněji méně dávky data.
   * Aktivita kopírování vkládá data v řadě dávek. Můžete nastavit počet řádků v dávce pomocí **writeBatchSize** vlastnost. Pokud data obsahují malé řádky, můžete nastavit **writeBatchSize** vlastnost s vyšší hodnotou, abyste mohli využívat výhod nižší režijní náklady na dávky a vyšší propustnost. Pokud velikost řádku data velká, dávejte pozor, když zvýšíte **writeBatchSize**. Vysoká hodnota může vést k selhání kopírování způsobené přetížení databáze.
-* Pro **místní relační databáze** , jako třeba SQL Server a Oracle, které vyžadují použití **Brána pro správu dat**, najdete v článku [důležité informace týkající se Brána pro správu dat](#considerations-for-data-management-gateway) části.
+* Pro **místní relační databáze** , jako třeba SQL Server a Oracle, které vyžadují použití **Brána pro správu dat**, najdete v článku [důležité informace týkající se Brána pro správu dat](#considerations-for-data-management-gateway)části.
 
 ### <a name="nosql-stores"></a>NoSQL úložiště
 *(Zahrnuje Table storage a Azure Cosmos DB)*

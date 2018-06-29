@@ -12,24 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: 25329d65861dc31e67bba146e15a6446a6449e83
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e8e0f8352404892ea8af6a0fa176c336dd2c1659
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34620584"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054020"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformace dat pomocí aktivity uložené procedury serveru SQL v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-stored-proc-activity.md)
-> * [Verze 2 – Preview](transform-data-using-stored-procedure.md)
-
+> * [Verze 1](v1/data-factory-stored-proc-activity.md)
+> * [Aktuální verze](transform-data-using-stored-procedure.md)
 
 Pomocí aktivit transformace dat v datové továrně [kanálu](concepts-pipelines-activities.md) k transformaci a zpracování nezpracovaných dat do předpovědi a statistiky. Aktivita uložené procedury je jedním z aktivit transformace, které podporuje služby Data Factory. Tento článek vychází [transformovat data](transform-data.md) článek, který představuje Obecné přehled o transformaci dat a aktivity podporované transformace v datové továrně.
 
 > [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aktivity uložené procedury v V1](v1/data-factory-stored-proc-activity.md).
-> 
 > Pokud jste nový do Azure Data Factory, pročtěte [Úvod do Azure Data Factory](introduction.md) a proveďte kurz: [kurz: transformovat data](tutorial-transform-data-spark-powershell.md) před přečtení tohoto článku. 
 
 Aktivita uložené procedury můžete vyvolat uloženou proceduru v jednom z následujících úložiště dat ve vašem podniku nebo na virtuální počítač Azure (VM): 

@@ -10,19 +10,20 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: d04500e770bf43278b88c2f980a10693590c7d16
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2d636eb381710c5e8341e24af8cd157a627348ef
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053832"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Brána pro správu dat – vysokou dostupnost a škálovatelnost (Preview)
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [hostovanou na vlastním integrace runtime v verze 2](../create-self-hosted-integration-runtime.md). 
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [hostovanou na vlastním integrace runtime v](../create-self-hosted-integration-runtime.md). 
 
 
 Tento článek vám pomůže nakonfigurovat vysokou dostupnost a škálovatelnost řešení s brány pro správu dat nebo integrace.    

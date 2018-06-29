@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: f07ce542c176f4038378d54497d7114109ac5bd3
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
-ms.translationtype: MT
+ms.openlocfilehash: e606b38c626c1a4dd335c40926e89a7cf0cec17a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215520"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054649"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Instance spravované (preview)?
 
@@ -66,7 +66,7 @@ Následující tabulka uvádí několik vlastností, přístupný prostřednictv
 |**Zabezpečení a dodržování předpisů** | **Správa**|
 |Izolované prostředí (integrace virtuální sítě, jednoho klienta služby, vyhrazeného výpočetního prostředí a úložiště <br>Šifrování dat při přenosu <br>Ověřování Azure AD, podporu přihlašování <br>Dodržuje standardy dodržování předpisů stejné jako databázi Azure SQL <br>Auditování SQL <br>Detekce hrozeb |Azure Resource Manager rozhraní API pro automatizaci služby zřizování a škálování <br>Azure portálu funkce pro ruční služby zřizování a škálování <br>Služba migrace dat 
 
-![Jednotné přihlašování](./media/sql-database-managed-instance/sso.png) 
+![jednotné přihlašování](./media/sql-database-managed-instance/sso.png) 
 
 ## <a name="vcore-based-purchasing-model-preview"></a>na základě vCore nákupní model (preview)
 
@@ -210,7 +210,8 @@ Spravované Instance výhody nebudou vyřazené vždy až--datum v cloudu, což 
 - Spravované Instance nepovoluje zadání úplné fyzické cesty k umístění, aby ve všech scénářích odpovídající jinak podporovaná: obnovení databáze nepodporuje WITH MOVE, vytvořit DB neumožňuje fyzické cesty k umístění, BULK INSERT s objekty BLOB Azure funguje pouze atd. 
 - Spravované Instance podporuje [ověřování Azure AD](sql-database-aad-authentication.md) jako cloudu alternativu k ověřování systému Windows. 
 - Spravované Instance automaticky spravuje XTP souborů a soubory pro databáze, které obsahují objekty OLTP v paměti
- 
+- Spravované Instance podporuje integraci služby SSIS (SQL Server) a hostitele katalog služby SSIS (SSISDB), který ukládá balíčky SSIS můžete, ale jsou prováděna na spravované Azure SSIS integrace modulu Runtime (IR) v Azure Data Factory (ADF), najdete v tématu [vytvořit IR Azure SSIS v ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+
 ### <a name="managed-instance-administration-features"></a>Funkce správy spravované Instance  
 
 Spravované Instance povolení správce systému a zaměřit se na čem nejvíc pro firmy. Řada aktivit Správce nebo správce databáze systému nejsou vyžadovány, nebo jsou jednoduché. Například operačního systému / instalace RDBMS a opravy chyb, dynamické instance změny velikosti a konfigurace, zálohování, replikace databáze (včetně systémových databází), konfigurace vysoké dostupnosti a konfigurace dat sledování stavu a výkonu datové proudy. 

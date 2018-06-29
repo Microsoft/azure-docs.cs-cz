@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/17/2017
 ms.author: xiaoyzhu
-ms.openlocfilehash: 95fd9efdcd7f93d8011808af943f52d4db13de8b
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 646d6e4b8980b780d4691fa258aa0d36ff309fd6
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808617"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054322"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Použití Caffe v Azure HDInsight Spark pro distribuované hloubkové learning
 
@@ -30,7 +30,7 @@ Hloubkové learning je ovlivňující všechno zdravotní péče k Transport do 
 
 Existují [mnoha oblíbených rozhraní](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), včetně [kognitivní nástrojů Microsoft](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [Tensorflow](https://www.tensorflow.org/), MXNet, Theano, atd. Caffe je nejslavnější rozhraní-symbolický (imperativní) neuronové sítě a široce používaných v mnoha oblastech, včetně vize počítače. Kromě toho [CaffeOnSpark](http://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) kombinuje Caffe s Apache Spark, v takovém případě hloubky učení lze snadno použít u stávajícího clusteru Hadoop. Hloubkové learning společně s Spark ETL kanály, redukční složitost systému a latence můžete použít pro učení kompletního řešení.
 
-[HDInsight](https://azure.microsoft.com/services/hdinsight/) cloudu Hadoop nabídka je poskytuje optimalizovanou open-source analytické clustery Spark, Hive, Hadoop, HBase, Storm, Kafka a R Server. HDInsight je zálohovaný díky SLA 99,9 %. Každá z těchto velkých objemů dat technologie a ISV aplikace je snadno nasadit jako spravované clustery s zabezpečení a monitorování pro podniky.
+[HDInsight](https://azure.microsoft.com/services/hdinsight/) cloudu Hadoop nabídka je poskytuje optimalizovanou open-source analytické clustery Spark, Hive, Hadoop, HBase, Storm, Kafka a ML služby. HDInsight je zálohovaný díky SLA 99,9 %. Každá z těchto velkých objemů dat technologie a ISV aplikace je snadno nasadit jako spravované clustery s zabezpečení a monitorování pro podniky.
 
 Tento článek ukazuje, jak nainstalovat [Caffe na Spark](https://github.com/yahoo/CaffeOnSpark) pro cluster služby HDInsight. Tento článek také používá vestavěné ukázkový MNIST k ukazují, jak používat distribuované hloubkové Learning pomocí HDInsight Spark v procesorech.
 
@@ -293,7 +293,7 @@ SampleID reprezentuje ID v datové sadě MNIST a popisek je číslo, které iden
 
 ## <a name="conclusion"></a>Závěr
 
-V této dokumentaci jste se pokusili nainstalovat CaffeOnSpark se spouštěním jednoduchý příklad. HDInsight je úplná spravované cloudové platformy distribuovaná výpočetní a je nejlepší místo pro spouštění strojového učení a úlohy pokročilou analýzu na velké datové sady, a pro distribuované hloubkové learning, můžete použít Caffe na HDInsight Spark k provádění hloubkové learning úloh.
+V této dokumentaci jste se pokusili nainstalovat CaffeOnSpark se spouštěním jednoduchý příklad. HDInsight je úplná spravované cloudové platformy distribuovaná výpočetní a je nejlepší místo pro spouštění strojového učení a úlohy pokročilou analýzu na velké datové sady a distribuované hloubkové informací, můžete použít Caffe na HDInsight Spark k provádění hloubkové učení úlohy.
 
 
 ## <a name="seealso"></a>Viz také

@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/30/2018
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9c4c126663d34d65cc7e0aa641bf93b848a5dcae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d2445713aa5d6a839950ca0fe9567133c06d1ffa
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658311"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062237"
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Velké instance SAP HANA vysoké dostupnosti a zotavení po havárii v Azure 
 
@@ -44,10 +44,12 @@ V následující tabulce jsou uvedeny aktuálně podporované vysokou dostupnost
 | Scénář v HANA velké instancí | Jako možnost vysoké dostupnosti | Možnost obnovení po havárii | Komentáře |
 | --- | --- | --- | --- |
 | Jeden uzel | Není k dispozici. | Instalační program vyhrazené zotavení po Havárii.<br /> Instalační program Multipurpose zotavení po Havárii. | |
-| Automatické převzetí služeb při selhání hostitele: N + m<br /> včetně 1 + 1 | Chcete-li to možné s v úsporném režimu trvá aktivní roli.<br /> HANA řídí přepínač role. | Instalační program vyhrazené zotavení po Havárii.<br /> Instalační program Multipurpose zotavení po Havárii.<br /> Zotavení po Havárii synchronizace pomocí replikace úložiště. | Sady svazků HANA jsou připojené ke všem uzlům (n + m).<br /> Zotavení po Havárii lokalita musí mít stejný počet uzlů. |
+| Automatické převzetí služeb při selhání hostitele: Škálováním na více systémů (s nebo bez pohotovostní režim)<br /> včetně 1 + 1 | Chcete-li to možné s v úsporném režimu trvá aktivní roli.<br /> HANA řídí přepínač role. | Instalační program vyhrazené zotavení po Havárii.<br /> Instalační program Multipurpose zotavení po Havárii.<br /> Zotavení po Havárii synchronizace pomocí replikace úložiště. | Sady svazků HANA jsou připojené ke všem uzlům.<br /> Zotavení po Havárii lokalita musí mít stejný počet uzlů. |
 | Replikace systému HANA | Chcete-li to možné primární nebo sekundární instalačního programu.<br /> Sekundární přesune do primární role v případě převzetí služeb při selhání.<br /> Převzetí služeb při selhání řízení HANA systému replikace a operačního systému. | Instalační program vyhrazené zotavení po Havárii.<br /> Instalační program Multipurpose zotavení po Havárii.<br /> Zotavení po Havárii synchronizace pomocí replikace úložiště.<br /> Zotavení po Havárii pomocí replikace systému HANA ještě není možné bez komponenty jiných výrobců. | Samostatnou sadu diskové svazky jsou připojené do každého uzlu.<br /> Pouze diskové svazky sekundární replika v produkční lokality replikovaly do umístění, zotavení po Havárii.<br /> Na webu zotavení po Havárii je požadován jednu sadu svazky. | 
 
 Instalace s vyhrazenou zotavení po Havárii je, kde není jednotka HANA velké Instance v lokalitě zotavení po Havárii používaný ke spuštění jakékoli úlohy nebo testovacím systému. Jednotka je pasivní a nasazuje pouze v případě, že je provést převzetí služeb po havárii. Tento instalační program, když není upřednostňovaný volba pro mnoho zákazníků.
+
+Odkazovat [HLI Podporované scénáře](hana-supported-scenario.md) další rozložení a sítě ethernet a podrobnosti v architektuře úložiště.
 
 > [!NOTE]
 > [Nasazení SAP HANA MCOD](https://launchpad.support.sap.com/#/notes/1681092) (více instancí HANA na jednu jednotku) jako překrytí práce scénáře s vysokou DOSTUPNOSTÍ a zotavení po Havárii metody uvedené v tabulce. Výjimkou je použití replikace systému HANA pomocí clusteru služby automatické převzetí služeb při selhání podle kardiostimulátor. Takovém případě podporuje pouze jednu instanci HANA na jednotku. Pro [SAP HANA MDC](https://launchpad.support.sap.com/#/notes/2096000) nasazení, pouze nezaložené úložiště HA a zotavení po Havárii metody fungovat, pokud je nasazený víc než jednoho klienta. Nasazení jednoho klienta jsou platné všechny metody uvedené.  
@@ -60,7 +62,7 @@ Další informace o vysoké dostupnosti SAP HANA najdete v těchto článcích S
 - [SAP HANA vysokou dostupnost dokument White Paper](http://go.sap.com/documents/2016/05/f8e5eeba-737c-0010-82c7-eda71af511fa.html)
 - [Příručka pro správu SAP HANA](http://help.sap.com/hana/SAP_HANA_Administration_Guide_en.pdf)
 - [SAP HANA Academy Video o replikaci systému SAP HANA](http://scn.sap.com/community/hana-in-memory/blog/2015/05/19/sap-hana-system-replication)
-- [SAP podporu Poznámka #1999880 – nejčastější dotazy na replikaci systému SAP HANA](https://bcs.wdf.sap.corp/sap/support/notes/1999880)
+- [SAP podporu Poznámka #1999880 – nejčastější dotazy na replikaci systému SAP HANA](https://apps.support.sap.com/sap/support/knowledge/preview/en/1999880)
 - [SAP podporu Poznámka #2165547 – SAP HANA zpět nahoru a obnovení v rámci prostředí replikace systému SAP HANA](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3231363535343726)
 - [Pro Exchange hardwaru minimální nebo nula. výpadků SAP podporu Poznámka #1984882 – pomocí replikace systému SAP HANA](https://websmp230.sap-ag.de/sap(bD1lbiZjPTAwMQ==)/bc/bsp/sno/ui_entry/entry.htm?param=69765F6D6F64653D3030312669765F7361706E6F7465735F6E756D6265723D3139383438383226)
 

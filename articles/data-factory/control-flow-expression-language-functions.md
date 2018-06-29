@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: ea612f0c58b92e37d405f9a57611610fa187f7db
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 81392cc8b6225302d6835cdb3d23e9bab7d9c930
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619316"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058902"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Výrazy a funkce v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-functions-variables.md)
-> * [Verze 2 – Preview](control-flow-expression-language-functions.md)
+> * [Verze 1](v1/data-factory-functions-variables.md)
+> * [Aktuální verze](control-flow-expression-language-functions.md)
 
-Tento článek obsahuje podrobné informace o výrazů a funkcí podporovaných službou Azure Data Factory (verze 2). 
+Tento článek obsahuje podrobné informace o výrazů a funkcí podporovaných službou Azure Data Factory. 
 
 ## <a name="introduction"></a>Úvod
 Hodnoty JSON v definici může být literál nebo výrazy, které jsou vyhodnocovány v době běhu. Příklad:  
@@ -40,20 +40,15 @@ Hodnoty JSON v definici může být literál nebo výrazy, které jsou vyhodnoco
 "name": "@pipeline().parameters.password"
 ```
 
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [funkce a proměnné v V1 objekt pro vytváření dat](v1/data-factory-functions-variables.md).
-
-
 ## <a name="expressions"></a>Výrazy  
-Výrazy může vyskytovat kdekoli v hodnotu řetězce formátu JSON a vždy mít za následek jinou hodnotu JSON. Pokud je hodnota JSON výrazu, těle výrazu je extrahován odebráním znaku @ (@). Pokud je potřeba řetězcový literál, který začíná @, je nutné uvést pomocí@. Následující příklady ukazují, jak se vyhodnocují výrazy.  
+Výrazy může vyskytovat kdekoli v hodnotu řetězce formátu JSON a vždy mít za následek jinou hodnotu JSON. Pokud je hodnota JSON výrazu, těle výrazu je extrahován odebráním znaku @ (\@). Pokud je potřeba řetězcový literál, který začíná @, je nutné uvést pomocí@. Následující příklady ukazují, jak se vyhodnocují výrazy.  
   
 |Hodnota JSON|Výsledek|  
 |----------------|------------|  
 |"parametry"|Znaky, parametry, jsou vráceny.|  
 |"parametry [1]"|Jsou vráceny znaky 'parametry [1]'.|  
-|"@@"|Řetězec 1 znak, který obsahuje ' @' je vrácen.|  
-|" @"|Řetězec 2 znak, který obsahuje ' @' je vrácen.|  
+|"\@@"|Řetězec 1 znak, který obsahuje ' @' je vrácen.|  
+|" \@"|Řetězec 2 znak, který obsahuje ' @' je vrácen.|  
   
  Výrazy se může zobrazit i uvnitř řetězce, pomocí funkce volá *řetězec interpolace* kde jsou výrazy uzavřen do `@{ ... }`. Příklad: `"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
@@ -61,13 +56,13 @@ Výrazy může vyskytovat kdekoli v hodnotu řetězce formátu JSON a vždy mít
   
 |Hodnota JSON|Výsledek|  
 |----------------|------------|  
-|"@pipeline().parameters.myString"| Vrátí `foo` jako řetězec.|  
-|"@{pipeline().parameters.myString}"| Vrátí `foo` jako řetězec.|  
-|"@pipeline().parameters.myNumber"| Vrátí `42` jako *číslo*.|  
-|"@{pipeline().parameters.myNumber}"| Vrátí `42` jako *řetězec*.|  
+|"\@kanálu.parameters.myString ()"| Vrátí `foo` jako řetězec.|  
+|"\@{kanálu ().parameters.myString}"| Vrátí `foo` jako řetězec.|  
+|"\@kanálu.parameters.myNumber ()"| Vrátí `42` jako *číslo*.|  
+|"\@{kanálu ().parameters.myNumber}"| Vrátí `42` jako *řetězec*.|  
 |"Odpověď je: @{kanálu ().parameters.myNumber}"| Vrátí řetězec `Answer is: 42`.|  
-|"@concat(' Odpověď je: ', string(pipeline().parameters.myNumber))"| Vrátí řetězec `Answer is: 42`|  
-|"Odpověď je: @@ {kanálu ().parameters.myNumber}"| Vrátí řetězec `Answer is: @{pipeline().parameters.myNumber}`.|  
+|"\@concat (' odpověď je: ', string(pipeline().parameters.myNumber))"| Vrátí řetězec `Answer is: 42`|  
+|"Odpověď je: \@@{kanálu ().parameters.myNumber}"| Vrátí řetězec `Answer is: @{pipeline().parameters.myNumber}`.|  
   
 ### <a name="examples"></a>Příklady
 
@@ -156,7 +151,7 @@ V následujícím příkladu kanálu trvá **inputPath** a **outputPath** parame
 |-------------------|-----------------|  
 |concat|Kombinuje libovolný počet řetězce společně. Například, pokud je parameter1 `foo,` by vrátit následující výraz `somevalue-foo-somevalue`:  `concat('somevalue-',pipeline().parameters.parameter1,'-somevalue')`<br /><br /> **Parametr číslo**: 1... *n*<br /><br /> **Název**: řetězec *n*<br /><br /> **Popis**: vyžaduje. Řetězce se zkombinovat do jednoho řetězce.|  
 |dílčí řetězec|Vrátí podmnožinu znaků z řetězce. Například následující výraz:<br /><br /> `substring('somevalue-foo-somevalue',10,3)`<br /><br /> Vrátí:<br /><br /> `foo`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: řetězec<br /><br /> **Popis**: vyžaduje. Řetězec, ze kterého je provedena dílčí řetězec.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: počáteční index<br /><br /> **Popis**: vyžaduje. Index kde dílčí řetězec začíná v parametru 1.<br /><br /> **Parametr číslo**: 3<br /><br /> **Název**: délka<br /><br /> **Popis**: vyžaduje. Délka dílčí řetězec.|  
-|Nahradit|Nahradí řetězec daný řetězec. Například ve výrazu:<br /><br /> `replace('the old string', 'old', 'new')`<br /><br /> Vrátí:<br /><br /> `the new string`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: řetězec<br /><br /> **Popis**: vyžaduje.  Pokud parametr 2 nachází v parametru 1, řetězec, který je hledán parametr 2 a aktualizovat pomocí parametru 3.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: původní řetězec<br /><br /> **Popis**: vyžaduje. Řetězec, který má nahradit parametr 3, pokud je nalezena shoda v parametru 1<br /><br /> **Parametr číslo**: 3<br /><br /> **Název**: nový řetězec<br /><br /> **Popis**: vyžaduje. Řetězec, který se používá k nahrazení řetězec v parametru 2, pokud je nalezena shoda v parametru 1.|  
+|nahradit|Nahradí řetězec daný řetězec. Například ve výrazu:<br /><br /> `replace('the old string', 'old', 'new')`<br /><br /> Vrátí:<br /><br /> `the new string`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: řetězec<br /><br /> **Popis**: vyžaduje.  Pokud parametr 2 nachází v parametru 1, řetězec, který je hledán parametr 2 a aktualizovat pomocí parametru 3.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: původní řetězec<br /><br /> **Popis**: vyžaduje. Řetězec, který má nahradit parametr 3, pokud je nalezena shoda v parametru 1<br /><br /> **Parametr číslo**: 3<br /><br /> **Název**: nový řetězec<br /><br /> **Popis**: vyžaduje. Řetězec, který se používá k nahrazení řetězec v parametru 2, pokud je nalezena shoda v parametru 1.|  
 |Identifikátor GUID| Generuje globálně jedinečné řetězce (neboli. identifikátor GUID). Například nebylo možné vygenerovat následující výstup `c2ecc88d-88c8-4096-912c-d6f2e2b138ce`:<br /><br /> `guid()`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: formát<br /><br /> **Popis**: volitelné. Specifikátor jednoho formátu, který označuje [způsob formátování hodnotu identifikátoru Guid](https://msdn.microsoft.com/library/97af8hh4%28v=vs.110%29.aspx). Formát parametru může být "N", "D", "B", "P" nebo "X". Pokud formát není zadaný, použije se "D".|  
 |toLower|Převede řetězec na malá písmena. Například následující vrátí `two by two is four`:  `toLower('Two by Two is Four')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: řetězec<br /><br /> **Popis**: vyžaduje. Řetězec převést na nižší velká a malá písmena. Pokud znak v řetězci nemá malá ekvivalentní, je zahrnut v vrácený řetězec beze změny.|  
 |toUpper|Převede řetězec na velká písmena. Například následující výraz vrací `TWO BY TWO IS FOUR`:  `toUpper('Two by Two is Four')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: řetězec<br /><br /> **Popis**: vyžaduje. Řetězec převést na horní velká a malá písmena. Pokud znak v řetězci nemá ekvivalentní velká, je součástí beze změny v vrácený řetězec.|  
@@ -174,11 +169,11 @@ V následujícím příkladu kanálu trvá **inputPath** a **outputPath** parame
 |-------------------|-----------------|  
 |obsahuje|Vrátí hodnotu PRAVDA, pokud slovník obsahuje seznam klíčů, obsahuje hodnotu nebo řetězec obsahuje dílčí řetězec. Například následující výraz vrací `true:``contains('abacaba','aca')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: v rámci kolekce<br /><br /> **Popis**: vyžaduje. Kolekce se hledat v.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: najít objekt<br /><br /> **Popis**: vyžaduje. Objekt, který chcete najít uvnitř **v rámci kolekce**.|  
 |Délka|Vrátí počet prvků v pole nebo řetězec. Například následující výraz vrací `3`:  `length('abc')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: kolekce<br /><br /> **Popis**: vyžaduje. Kolekce získat délku.|  
-|prázdný|Vrátí hodnotu true Pokud objekt, pole nebo řetězec je prázdný. Například následující výraz vrací `true`:<br /><br /> `empty('')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: kolekce<br /><br /> **Popis**: vyžaduje. Kolekce ke kontrole, jestli je prázdný.|  
-|průnik|Vrátí objekt s běžných elementech nebo jednoho pole mezi pole nebo objekty do ní předán. Například funkce vrátí hodnotu `[1, 2]`:<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> Parametry pro funkci může být buď sadu objektů, nebo sadu pole (není jejich směs). Existují dva objekty se stejným názvem, zobrazí se v poslední objekt poslední objekt se stejným názvem.<br /><br /> **Parametr číslo**: 1... *n*<br /><br /> **Název**: kolekce *n*<br /><br /> **Popis**: vyžaduje. Kolekce k vyhodnocení. Objekt musí být ve všech kolekcích předaná se objeví ve výsledku.|  
+|Prázdný|Vrátí hodnotu true Pokud objekt, pole nebo řetězec je prázdný. Například následující výraz vrací `true`:<br /><br /> `empty('')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: kolekce<br /><br /> **Popis**: vyžaduje. Kolekce ke kontrole, jestli je prázdný.|  
+|Průnik|Vrátí objekt s běžných elementech nebo jednoho pole mezi pole nebo objekty do ní předán. Například funkce vrátí hodnotu `[1, 2]`:<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> Parametry pro funkci může být buď sadu objektů, nebo sadu pole (není jejich směs). Existují dva objekty se stejným názvem, zobrazí se v poslední objekt poslední objekt se stejným názvem.<br /><br /> **Parametr číslo**: 1... *n*<br /><br /> **Název**: kolekce *n*<br /><br /> **Popis**: vyžaduje. Kolekce k vyhodnocení. Objekt musí být ve všech kolekcích předaná se objeví ve výsledku.|  
 |sjednocení|Vrátí objekt s všechny elementy, které jsou v pole nebo objekt předaný nebo jednoho pole. Například funkce vrátí hodnotu `[1, 2, 3, 10, 101]:`<br /><br /> :  `union([1, 2, 3], [101, 2, 1, 10])`<br /><br /> Parametry pro funkci může být buď sadu objektů, nebo sadu pole (není jejich směs). Pokud jsou dva objekty se stejným názvem v finální výstup, se zobrazí v posledním objekt poslední objekt se stejným názvem.<br /><br /> **Parametr číslo**: 1... *n*<br /><br /> **Název**: kolekce *n*<br /><br /> **Popis**: vyžaduje. Kolekce k vyhodnocení. Objekt, který se zobrazí v některém z kolekce se zobrazí ve výsledku.|  
 |první|Vrátí první prvek pole nebo předaný řetězec. Například funkce vrátí hodnotu `0`:<br /><br /> `first([0,2,3])`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: kolekce<br /><br /> **Popis**: vyžaduje. Provést první objekt z kolekce.|  
-|poslední|Vrátí poslední prvek v poli nebo předaný řetězec. Například funkce vrátí hodnotu `3`:<br /><br /> `last('0123')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: kolekce<br /><br /> **Popis**: vyžaduje. Provést poslední objekt z kolekce.|  
+|Poslední|Vrátí poslední prvek v poli nebo předaný řetězec. Například funkce vrátí hodnotu `3`:<br /><br /> `last('0123')`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: kolekce<br /><br /> **Popis**: vyžaduje. Provést poslední objekt z kolekce.|  
 |proveďte|Vrátí první **počet** předaná elementy z pole nebo řetězec, například funkce vrátí hodnotu `[1, 2]`:  `take([1, 2, 3, 4], 2)`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: kolekce<br /><br /> **Popis**: vyžaduje. Kolekce provést první **počet** objekty z.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: počet<br /><br /> **Popis**: vyžaduje. Počet objektů, které chcete od **kolekce**. Musí být kladné celé číslo.|  
 |Přeskočit|Vrátí elementy v poli začínající na indexu **počet**, například funkce vrátí hodnotu `[3, 4]`:<br /><br /> `skip([1, 2 ,3 ,4], 2)`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: kolekce<br /><br /> **Popis**: vyžaduje. Kolekce tak, aby přeskočil první **počet** objekty z.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: počet<br /><br /> **Popis**: vyžaduje. Počet objektů, které chcete odebrat z před **kolekce**. Musí být kladné celé číslo.|  
   
@@ -251,7 +246,7 @@ V následujícím příkladu kanálu trvá **inputPath** a **outputPath** parame
 |MOD|Vrátí výsledek zbytek po dělení dvou čísel (modulo). Například následující výraz vrací `2`:<br /><br /> `mod(10,4)`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: dělenec<br /><br /> **Popis**: vyžaduje. Číslo, které má dělit **dělitel**.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: dělitel<br /><br /> **Popis**: vyžaduje. Číslo, které má rozdělit **dělenec** podle. Po rozdělení je zbývající zabraný.|  
 |min|Existují dva různé vzorce pro volání této funkce: `min([0,1,2])` zde min přijímá pole. Tento výraz vrátí `0`. Alternativně můžete tuto funkci trvat seznam hodnot oddělených čárkami: `min(0,1,2)` tato funkce také vrátí hodnotu 0. Všimněte si, že se všechny hodnoty musí být číslo, takže pokud je parametr pole musí obsahovat pouze čísla v ní.<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: kolekce nebo hodnota<br /><br /> **Popis**: vyžaduje. Může to být pole hodnot najít minimální hodnotu, nebo první hodnotu sady.<br /><br /> **Parametr číslo**: 2... *n*<br /><br /> **Název**: hodnota *n*<br /><br /> **Popis**: volitelné. Pokud první parametr je hodnota, pak můžete předat další hodnoty a jsou vráceny minimum všechny předané hodnoty.|  
 |max|Existují dva různé vzorce pro volání této funkce:  `max([0,1,2])`<br /><br /> Zde maximální přijímá pole. Tento výraz vrátí `2`. Alternativně můžete tuto funkci trvat seznam hodnot oddělených čárkami: `max(0,1,2)` funkce vrátí hodnotu 2. Všimněte si, že se všechny hodnoty musí být číslo, takže pokud je parametr pole musí obsahovat pouze čísla v ní.<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: kolekce nebo hodnota<br /><br /> **Popis**: vyžaduje. Může to být pole hodnot najít maximální hodnota, nebo první hodnotu sady.<br /><br /> **Parametr číslo**: 2... *n*<br /><br /> **Název**: hodnota *n*<br /><br /> **Popis**: volitelné. Pokud první parametr je hodnota, pak můžete předat další hodnoty a maximální počet všechny předané hodnoty jsou vráceny.|  
-|rozsah| Generuje pole celá čísla od určité číslo, a definujte délka vrácený pole. Například funkce vrátí hodnotu `[3,4,5,6]`:<br /><br /> `range(3,4)`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: počáteční index<br /><br /> **Popis**: vyžaduje. Je první celé číslo v poli.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: počet<br /><br /> **Popis**: vyžaduje. Počet celých čísel, které jsou v poli.|  
+|Rozsah| Generuje pole celá čísla od určité číslo, a definujte délka vrácený pole. Například funkce vrátí hodnotu `[3,4,5,6]`:<br /><br /> `range(3,4)`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: počáteční index<br /><br /> **Popis**: vyžaduje. Je první celé číslo v poli.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: počet<br /><br /> **Popis**: vyžaduje. Počet celých čísel, které jsou v poli.|  
 |rand –| Generuje náhodné celé číslo v rámci zadaného rozsahu (včetně na obou koncích. Například to může vrátit `42`:<br /><br /> `rand(-1000,1000)`<br /><br /> **Parametr číslo**: 1<br /><br /> **Název**: minimální<br /><br /> **Popis**: vyžaduje. Nejnižší celé číslo, kterým nemohl být vrácen.<br /><br /> **Parametr číslo**: 2<br /><br /> **Název**: maximální<br /><br /> **Popis**: vyžaduje. Nejvyšší celé číslo, kterým nemohl být vrácen.|  
   
 ## <a name="date-functions"></a>Datové funkce  

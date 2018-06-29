@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: de85a555def31d164f2cda5c6c6bc9fae9fb5a7e
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
-ms.translationtype: MT
+ms.openlocfilehash: c48a0f078da8e56038ec74ee398bd26fe1dc2718
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309278"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054751"
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>Porovnání funkcí: Azure SQL Database a SQL Server 
 
@@ -80,7 +80,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | Ne | Ne |
 | [Fulltextové vyhledávání](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  Dělení textu třetích stran nejsou podporovány. |Dělení textu třetích stran nejsou podporovány. |
 | [Functions](https://docs.microsoft.com/sql/t-sql/functions/functions) | Většina - jednotlivých funkcí najdete v části | Ano – najdete v části [uložené procedury, funkce, aktivuje rozdíly](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers) |
-| [geografické obnovení](sql-database-recovery-using-backups.md#geo-restore) | Ano | Ne – můžete obnovit COPY_ONLY najdete úplné zálohy, které můžete provést pravidelně - [zálohování rozdíly](sql-database-managed-instance-transact-sql-information.md#backup) a [obnovit rozdíly](sql-database-managed-instance-transact-sql-information.md#restore-statement). |
+| [Geografické obnovení](sql-database-recovery-using-backups.md#geo-restore) | Ano | Ne – můžete obnovit COPY_ONLY najdete úplné zálohy, které můžete provést pravidelně - [zálohování rozdíly](sql-database-managed-instance-transact-sql-information.md#backup) a [obnovit rozdíly](sql-database-managed-instance-transact-sql-information.md#restore-statement). |
 | [Geografická replikace](sql-database-geo-replication-overview.md) | Ano | Ne |
 | [Zpracování grafu](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | Ano | Ano |
 | [Optimalizace v paměti](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | Ano – [Premium a kritické obchodní vrstvy](sql-database-in-memory.md) | Ne |
@@ -121,7 +121,7 @@ V následující tabulce jsou uvedeny hlavní funkce systému SQL Server a posky
 | [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | Ne – najdete v části [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) | Ne – najdete v části [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) |
 | [Auditování SQL serveru](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | Ne – najdete v části [auditování databáze SQL](sql-database-auditing.md) | Ano – najdete v části [auditování rozdíly](sql-database-managed-instance-transact-sql-information.md#auditing) |
 | [SQL Server Data Tools (SSDT)] (https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | Ano | Ano |
-| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ano, s spravované SSIS v prostředí Azure Data Factory (ADF), kde jsou uložené balíčky v SSISDB hostované ve službě Azure SQL Database a spouštět v [Runtime integrace Azure SSIS](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md). | Ano, s spravované SSIS v prostředí Azure Data Factory (ADF), kde jsou uložené balíčky v SSISDB hostované spravované Instance a spouštět v [Runtime integrace Azure SSIS](../data-factory/tutorial-deploy-ssis-packages-azure-powershell.md). |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | Ano, s spravované SSIS v prostředí Azure Data Factory (ADF), kde balíčky jsou uloženy v SSISDB hostované ve službě Azure SQL Database a spustit v Azure SSIS integrace modulu Runtime (IR), přečtěte si téma [vytvořit Azure SSIS IR v ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). | Ano, s spravované SSIS v prostředí Azure Data Factory (ADF), kde balíčky jsou uloženy v SSISDB hostované spravované Instance a spustit v Azure SSIS integrace modulu Runtime (IR), přečtěte si téma [vytvořit Azure SSIS IR v ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). |
 | [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | Ano | Ano |
 | [Prostředí PowerShell pro Server SQL](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | Ano | Ano |
 | [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | Ne – najdete v části [rozšířené události](sql-database-xevent-db-diff-from-svr.md) | Ano |

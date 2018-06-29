@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: a5f323b98fa30d2c4c89fa8fe8e75c1d89089b6e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c0794ebd953160c8569502db5d58c6d2b9ad892a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33895271"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061492"
 ---
 # <a name="governance-in-azure"></a>Zásady správného řízení v Azure
 
@@ -37,11 +37,11 @@ Infrastruktury Azure a k aplikacím pro hostování miliony zákazníků součas
 
 Tento dokument vám pomůže pochopit, jak možnosti zásad správného řízení Azure vám mohou pomoci splnit tyto požadavky.
 
-## <a name="abstract"></a>Abstraktní
+## <a name="abstract"></a>abstraktní
 
 Zásady správného řízení cloudu Microsoft Azure poskytuje integrované auditu a konzultační přístup pro kontrolu a poradenství organizace na jejich využití platformy Azure. Microsoft Azure cloud zásad správného řízení odkazuje na rozhodovacích procesy, kritéria a zásady plánují, architektura, získávání, nasazení, operace a správy cloudu computing.
 
-Chcete-li vytvořit plán pro Microsoft Azure cloud zásad správného řízení, je potřeba provést hlubší pohled na osoby, procesy a technologie aktuálně na místě a následně vytvořit rozhraní, které usnadňují tak konzistentně podporu obchodních potřeb současně nabízí koncovým uživatelům možnost používat výkonné funkce Microsoft Azure.
+Chcete-li vytvořit plán pro Microsoft Azure cloud zásad správného řízení, je potřeba provést hlubší pohled na osoby, procesy a technologie aktuálně na místě a následně vytvořit rozhraní, které usnadňují tak konzistentně podporují obchodní potřeby a umožní koncovým uživatelům s možnost používat výkonné funkce Microsoft Azure.
 
 Tento dokument popisuje, jak můžete dosáhnout zvýšené úrovni zásad správného řízení prostředků vaší IT v Microsoft Azure. Tento dokument vám může pomoct pochopit funkce zabezpečení a zásad správného řízení, které jsou součástí do služby Microsoft Azure.
 
@@ -178,21 +178,21 @@ V rámci každého předplatného můžete udělit až 2000 přiřazení rolí.
 
 ## <a name="resource-management"></a>Správa prostředků
 
-Azure původně zadat pouze v modelu nasazení classic. V tomto modelu všechny prostředky existovaly nezávisle; došlo k dispozici žádný způsob, jak seskupit související prostředky. Místo toho musíte ručně sledovat prostředky, ke kterým skládá řešení nebo aplikace a nezapomeňte spravovat je v koordinovaný přístup.
+Platforma Azure původně poskytovala jenom model nasazení Classic. V tomto modelu existoval každý prostředek odděleně a nebyl dostupný žádný způsob, jak související prostředky seskupit. Bylo tak potřeba ručně sledovat, které prostředky tvoří vaše řešení nebo aplikaci, a spravovat je pomocí koordinovaného přístupu.
 
-Nasazení řešení, jste měli k vytvoření každého prostředku jednotlivě prostřednictvím portálu Azure, nebo vytvořit skript, který nasadit všechny prostředky ve správném pořadí. Pokud chcete odstranit řešení, jste museli odstranit jednotlivé prostředky. Není snadno můžete použít a aktualizovat zásady řízení přístupu pro související prostředky. Nakonec nelze aplikovat značek k prostředkům a označte je podmínky, které vám pomůžou sledovat vaše prostředky a spravovat fakturace.
+Nasazení řešení, jste měli k vytvoření každého prostředku jednotlivě prostřednictvím portálu Azure, nebo vytvořit skript, který nasadit všechny prostředky ve správném pořadí. Pokud jste chtěli řešení odstranit, museli jste odstranit každý prostředek zvlášť. U souvisejících prostředků jste nemohli snadno uplatnit a aktualizovat zásady řízení přístupu. Navíc nebylo možné používat u prostředků značky tvořené výrazy, které by vám pomohly prostředky monitorovat a usnadnily vám správu fakturace.
 
-V roce 2014 si uvedla Azure Resource Manager, která přidá koncept skupinu prostředků. Skupina prostředků je kontejner pro prostředky, které sdílejí společné životního cyklu. Model nasazení Resource Manager poskytuje několik výhod:
+V roce 2014 platforma Azure představila model Resource Manager, který přinesl koncept skupiny prostředků. Skupina prostředků je kontejner pro prostředky, které sdílejí společný životní cyklus. Model nasazení Resource Manager poskytuje několik výhod:
 
-- Můžete nasadit, spravovat a monitorovat všechny služby pro vaše řešení jako se skupinou, nikoli zpracování těchto služeb jednotlivě.
+- Všechny služby pro vaše řešení můžete nasadit, spravovat a monitorovat jako skupinu a nemusíte je zpracovávat jednotlivě.
 
-- Můžete opakovaně nasadit řešení v průběhu životního cyklu a mít přitom jistotu, že vaše prostředky jsou nasazeny v konzistentním stavu.
+- Můžete řešení opakovaně nasadit v průběhu životního cyklu a mít při tom jistotu, že se prostředky nasadí konzistentně.
 
-- Řízení přístupu můžete použít na všechny prostředky ve vaší skupině prostředků a tyto zásady budou automaticky použita při přidávání nových prostředků do skupiny prostředků.
+- U všech prostředků ve skupině prostředků taky můžete použít řízení přístupu a tyto zásady se potom automaticky použijí vždy, když do skupiny prostředků přibudou nové prostředky.
 
 - Můžete označit prostředky pomocí značek a logicky tak uspořádat všechny prostředky ve svém předplatném.
 
-- JavaScript Object Notation (JSON) můžete použít k definování infrastrukturu pro vaše řešení. Soubor JSON se označuje jako šablony Resource Manageru.
+- K definování infrastruktury řešení můžete použít formát JSON (JavaScript Object Notation). Soubor JSON se označuje jako šablona Resource Manageru.
 
 - Můžete definovat závislosti mezi prostředky, takže se nasadí ve správném pořadí.
 
@@ -276,7 +276,7 @@ Na rozdíl od řízení přístupu na základě rolí použít zámky správy pr
 
 Když použijete zámku v nadřazeném oboru, zdědí všechny prostředky v rámci tohoto oboru stejné zámek. I prostředky, které přidáte později zámek dědí z nadřazeného objektu. Nejvíc omezující zámek v dědičnosti přednost.
 
-Vytvořit nebo odstranit zámky správy, musíte mít přístup k Microsoft.Authorization/ _nebo Microsoft.Authorization/locks/_ akce. Z předdefinovaných rolí pouze **vlastníka** a **správce přístupu uživatelů** mají tyto akce.
+Vytvořit nebo odstranit zámky správy, musíte mít přístup k Microsoft.Authorization/ _nebo Microsoft.Authorization/locks/_ akce. Z předdefinovaných rolí má tyto akce povolené pouze **vlastník** a **správce uživatelských přístupů**.
 
 ## <a name="api-access-to-billing-information"></a>Rozhraní API pro přístup k fakturační informace
 
@@ -388,9 +388,9 @@ Zabezpečení Azure zásad správného řízení z GPO v AD DS k řízení všec
 
 Security Center poskytuje integrované bezpečnostní sledování a správu zásad ve vašich předplatných Azure, pomáhá zjišťovat hrozby, které byste jinak nevšimli a spolupracuje s řadou řešení zabezpečení. Po povolení [zásady zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-policies) pro prostředky předplatného, Security Center analyzuje zabezpečení vašich prostředků, aby identifikovala potenciální ohrožení zabezpečení. Informace o konfiguraci vaší sítě jsou k dispozici okamžitě.
 
-Azure Security Center představuje kombinaci osvědčených postupů analýzy a zabezpečení správy zásad pro všechny prostředky v rámci předplatného Azure. Tento efektivní a snadno použitelný nástroj umožňuje týmy zabezpečení a rizika osob zabránit, zjistit a reagovat na hrozby zabezpečení tak, jak automaticky shromažďuje a analyzuje data zabezpečení z vašich prostředků Azure, sítě a řešení partnerů, jako jsou antimalwarové programy a brány firewall.
+Azure Security Center představuje kombinaci osvědčených postupů analýzy a zabezpečení správy zásad pro všechny prostředky v rámci předplatného Azure. Tento efektivní a snadno použitelný nástroj umožňuje týmy zabezpečení a rizika osob zabránit, zjistit a reagovat na hrozby zabezpečení tak, jak automaticky shromažďuje a analyzuje data zabezpečení z vašich prostředků Azure, sítě a řešení partnerů, jako proti malwaru programy a brány firewall.
 
-Kromě toho Azure Security Center používá pokročilou analýzu, včetně machine learningu a analýzy chování při využívání globální analýzou hrozeb z produktů společnosti Microsoft a služby, Microsoft digitální činů jednotky (přicházejí týmu DCU), Microsoft Security Response Center (MSRC) a externích informačních kanálů. [Zásady správného řízení zabezpečení](https://www.credera.com/blog/credera-site/azure-governance-part-4-other-tools-in-the-toolbox/) můžete použít široce na úrovni předplatného nebo co nejlépe určen konkrétní, podrobné požadavky u jednotlivých prostředků prostřednictvím definic zásad.
+Kromě toho Azure Security Center používá pokročilou analýzu, včetně machine learningu a analýzy chování při využívání globální analýzou hrozeb z produktů a služeb společnosti Microsoft digitální činů jednotky (přicházejí týmu DCU), Microsoft Security Response Center (MSRC) a externích informačních kanálů. [Zásady správného řízení zabezpečení](https://www.credera.com/blog/credera-site/azure-governance-part-4-other-tools-in-the-toolbox/) můžete použít široce na úrovni předplatného nebo co nejlépe určen konkrétní, podrobné požadavky u jednotlivých prostředků prostřednictvím definic zásad.
 
 Nakonec Azure Security Center analyzuje stav zabezpečení prostředků na základě těchto zásad a to se používá k poskytnutí pronikavého řídicí panely a výstrahy pro události, například zjištění malwaru nebo škodlivý připojení IP pokusy.
 
@@ -413,7 +413,7 @@ Azure Security Center monitoruje následující prostředky Azure:
 
 ### <a name="log-analytics"></a>Log Analytics
 
-Zabezpečení informací analýzy protokolů softwaru vývoj a služby týmu a [zásad správného řízení programu](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) podporuje požadavky na jeho firmy a dodržuje zákonů a nařízení, jak je popsáno v [důvěřovat Microsoft Azure Center](https://azure.microsoft.com/support/trust-center/) a [dodržování předpisů Centrum zabezpečení Microsoft](https://www.microsoft.com/TrustCenter/Compliance/default.aspx). Jak zřídit požadavky na zabezpečení analýzy protokolů, identifikuje ovládací prvky zabezpečení, spravuje a monitoruje rizika jsou také popsány existuje. Ročně, jsme zkontrolujte zásady, standardy, postupy a pokyny.
+Zabezpečení informací analýzy protokolů softwaru vývoj a služby týmu a [zásad správného řízení programu](https://github.com/Microsoft/azure-docs/blob/master/articles/log-analytics/log-analytics-security.md) podporuje požadavky na jeho firmy a dodržuje zákonů a nařízení, jak je popsáno v [důvěřovat Microsoft Azure Center](https://azure.microsoft.com/support/trust-center/) a [dodržování předpisů Centrum zabezpečení Microsoft](https://microsoft.com/en-us/trustcenter/compliance). Jak zřídit požadavky na zabezpečení analýzy protokolů, identifikuje ovládací prvky zabezpečení, spravuje a monitoruje rizika jsou také popsány existuje. Ročně, jsme zkontrolujte zásady, standardy, postupy a pokyny.
 
 Každý člen týmu vývoj analýzy protokolů obdrží formální aplikace bezpečnostního školení. Interně používáme systém správy verzí pro vývoj softwaru. Každý projekt softwaru je chráněn systém správy verzí.
 

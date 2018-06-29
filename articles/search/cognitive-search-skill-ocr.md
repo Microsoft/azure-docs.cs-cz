@@ -4,8 +4,6 @@ description: Rozbalte text z souborů bitové kopie v obohacení kanál služby 
 services: search
 manager: pablocas
 author: luiscabrer
-documentationcenter: ''
-ms.assetid: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -13,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 4ac86be25ebe7d12190cce290603ce83037a7b47
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 478afe81ed739b98487973eb092ee9cad0aa17fd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640366"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058899"
 ---
 # <a name="ocr-cognitive-skill"></a>Kognitivní odborností rozpoznávání znaků
 
@@ -38,14 +36,14 @@ Parametry jsou malá a velká písmena.
 | Název parametru     | Popis |
 |--------------------|-------------|
 | detectOrientation | Umožňuje automatické zjištění orientaci obrázku. <br/> Platné hodnoty: true / false.|
-|defaultLanguageCode |  Kód jazyka ze vstupního textu. Mezi podporované jazyky patří: `ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`.  Pokud kód jazyka je určena nebo hodnotu null, je jazyk autodetected.|
+|defaultLanguageCode | <p>  Kód jazyka ze vstupního textu. Mezi podporované jazyky patří: <br/> zh-Hans (ChineseSimplified) <br/> zh-Hant (ChineseTraditional) <br/>CS (čeština) <br/>da (dánština) <br/>NL (holandština) <br/>en (angličtina) <br/>Fi (finština)  <br/>FR (francouzština) <br/>  Německo (němčina) <br/>El (řečtina) <br/> hu (maďarština) <br/> ho (italština) <br/>  Japonsko (japonština) <br/> Ko (korejština) <br/> NB (norština) <br/>   PL (polština) <br/> PT (portugalština) <br/>  RU (ruština) <br/>  ES (španělština) <br/>  SV (švédština) <br/>  TR (turečtina) <br/> ar (Arabské) <br/> ro (rumunština) <br/> SR-Cyrl (SerbianCyrillic) <br/> SR-Latn (SerbianLatin) <br/>  Sk (slovenština). <br/>  UNK (neznámé) <br/><br/> Pokud kód jazyka je určena nebo hodnotu null, je jazyk autodetected. </p> |
 | textExtractionAlgorithm | "vytištěno" nebo "psané". Algoritmus "ručně psaný" text rozpoznávání rozpoznávání znaků je aktuálně ve verzi preview a podporována pouze v angličtině. |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
 | Název vstupu      | Popis                                          |
 |---------------|------------------------------------------------------|
-| Bitové kopie         | Komplexního typu. Aktuálně jedinou funguje s pole "/ dokumentu/normalized_images" vyprodukované indexeru objektů Blob v Azure při ```imageAction``` je nastaven na ```generateNormalizedImages```. Najdete v článku [ukázka](#sample-output) Další informace.|
+| image         | Komplexního typu. Aktuálně jedinou funguje s pole "/ dokumentu/normalized_images" vyprodukované indexeru objektů Blob v Azure při ```imageAction``` je nastaven na ```generateNormalizedImages```. Najdete v článku [ukázka](#sample-output) Další informace.|
 
 
 ## <a name="skill-outputs"></a>Výstupy dovedností

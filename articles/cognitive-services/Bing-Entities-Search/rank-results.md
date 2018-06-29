@@ -10,16 +10,16 @@ ms.component: bing-entity-search
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: v-jerkin
-ms.openlocfilehash: ff5b004aaa863dbdfc460a774a5dfd658ce52537
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 53354c0f78419a37e8896bb4d00e0d7aebf32203
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342380"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059987"
 ---
 # <a name="using-ranking-to-display-results"></a>Chcete-li zobrazit výsledky pomocí řazení  
 
-Každá odpověď vyhledávání entity zahrnuje [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-entities-v7-reference#rankingresponse) odpovědět, podobně jako v odpovědi vyhledávání webové služby Bing, který určuje, jak je třeba zobrazit výsledky hledání. Odpověď hodnocení skupiny výsledky do pólu nejdůležitějších a obsah na bočním panelu. Výsledek pólu je nejdůležitější nebo viditelného výsledek a by měl být zobrazen jako první. Pokud se nezobrazují zbývající výsledky v tradičním nejdůležitějších a formát bočním panelu, je nutné zadat nejdůležitějších viditelnost obsahu vyšší než obsah bočním panelu. 
+Každá odpověď vyhledávání entity zahrnuje [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) odpovědět, podobně jako v odpovědi vyhledávání webové služby Bing, který určuje, jak je třeba zobrazit výsledky hledání. Odpověď hodnocení skupiny výsledky do pólu nejdůležitějších a obsah na bočním panelu. Výsledek pólu je nejdůležitější nebo viditelného výsledek a by měl být zobrazen jako první. Pokud se nezobrazují zbývající výsledky v tradičním nejdůležitějších a formát bočním panelu, je nutné zadat nejdůležitějších viditelnost obsahu vyšší než obsah bočním panelu. 
   
 V rámci jednotlivých skupin [položky](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) pole identifikuje obsah musí být zadány v požadovaném pořadí. Každá položka nabízí dva způsoby, jak identifikovat výsledek v rámci odpověď.  
   

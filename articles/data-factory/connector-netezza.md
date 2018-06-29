@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat z Netezza pomocí Azure Data Factory (Beta) | Microsoft Docs
+title: Kopírování dat z Netezza pomocí Azure Data Factory | Microsoft Docs
 description: Postup kopírování dat z Netezza do úložiště dat podporovaných podřízený pomocí aktivity kopírování v kanál služby Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -11,24 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 85a79cbbe53393bc02178cd827453508b043692e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f8c10e2200f830ea6e568e7b3fba1f0a6085cef2
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34617888"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058894"
 ---
-# <a name="copy-data-from-netezza-using-azure-data-factory-beta"></a>Kopírování dat z Netezza pomocí Azure Data Factory (Beta)
+# <a name="copy-data-from-netezza-using-azure-data-factory"></a>Kopírování dat z Netezza pomocí Azure Data Factory 
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z Netezza. Vychází [zkopírujte aktivity přehled](copy-activity-overview.md) článek, který představuje obecný přehled aktivity kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aktivitu kopírování v V1](v1/data-factory-data-movement-activities.md).
-
-> [!IMPORTANT]
-> Tento konektor je aktuálně ve verzi Beta. Můžete si vyzkoušet a sdělte nám svůj názor. Nepoužívejte ji v produkčním prostředí.
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 

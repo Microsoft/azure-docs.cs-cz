@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cdea020ad4c9c9e828d62fff8639acec2e3d6c74
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6b13c70d86af195e50190083aa562811236cdd4b
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621917"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054254"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Přesun dat pomocí aktivity kopírování
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-data-movement-activities.md)
-> * [Verze 2 – Preview](../copy-activity-overview.md)
+> * [Verze 1](data-factory-data-movement-activities.md)
+> * [Verze 2 (aktuální verze)](../copy-activity-overview.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [aktivitu kopírování v V2](../copy-activity-overview.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [aktivitu kopírování v V2](../copy-activity-overview.md).
 
 ## <a name="overview"></a>Přehled
 V Azure Data Factory můžete aktivitu kopírování ke kopírování dat mezi místními a cloudovými datová úložiště. Po zkopírování dat, může být další transformovat a analyzovat. Aktivita kopírování můžete taky publikovat transformaci a analýzu výsledky pro business intelligence (BI) a využití aplikace.
@@ -120,8 +120,8 @@ Pokud jsou zdrojový a podřízený datová úložiště v cloudu, objekt pro vy
 | &nbsp; | Indie – jih | Střed Indie |
 | Japonsko | Japonsko – východ | Japonsko – východ |
 | &nbsp; | Japonsko – západ | Japonsko – východ |
-| Korea | Korea – střed | Korea – střed |
-| &nbsp; | Korea – jih | Korea – střed |
+| Jižní Korea | Jižní Korea – střed | Jižní Korea – střed |
+| &nbsp; | Jižní Korea – jih | Jižní Korea – střed |
 
 Alternativně můžete explicitně určit oblasti služby Data Factory, který se má použít k provedení kopie zadáním `executionLocation` vlastnost v aktivitě kopírování `typeProperties`. Podporované hodnoty této vlastnosti jsou nahoře uvedené v **používá oblast pro přesun dat** sloupce. Všimněte si, že vaše data prochází danou oblast přenášených v síti během kopírování. Například pro kopírování mezi Azure ukládá v Koreji, můžete zadat `"executionLocation": "Japan East"` trasu prostřednictvím Japonsko oblast (najdete v části [ukázkové JSON](#by-using-json-scripts) jako odkaz).
 

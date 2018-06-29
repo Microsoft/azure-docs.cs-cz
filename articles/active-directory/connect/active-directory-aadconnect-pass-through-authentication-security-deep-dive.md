@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/12/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb8382a9801c3570a190259416d846fe518cc6ea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 967184d9a7590dc0b8c88a49cf178bbd9eb83267
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34595032"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063591"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory předávací ověřování zabezpečení podrobné informace
 
@@ -132,20 +132,21 @@ Předávací ověřování zpracovává požadavek přihlášení uživatele tak
 1. Uživatel se pokusí o přístup k aplikaci, například [Outlook Web App](https://outlook.office365.com/owa).
 2. Pokud již není přihlášený uživatel, aplikace prohlížeč přesměruje na přihlašovací stránku služby Azure AD.
 3. Odpoví služby tokenů zabezpečení Azure AD zpátky s **přihlášení uživatele** stránky.
-4. Uživatel zadá své uživatelské jméno a heslo do **přihlášení uživatele** stránce a potom vybere **přihlášení** tlačítko.
-5. Uživatelské jméno a heslo se odešlou do Azure AD Služba tokenů zabezpečení ve požadavek POST protokolu HTTPS.
-6. Azure AD STS načte veřejných klíčů pro všechny agenty ověřování registrovaný na vašeho klienta z databáze Azure SQL a zašifruje heslo pomocí nich. 
+4. Uživatel zadá své uživatelské jméno do **přihlášení uživatele** stránce a potom vybere **Další** tlačítko.
+5. Uživatel zadá své heslo do **přihlášení uživatele** stránce a potom vybere **přihlášení** tlačítko.
+6. Uživatelské jméno a heslo se odešlou do Azure AD Služba tokenů zabezpečení ve požadavek POST protokolu HTTPS.
+7. Azure AD STS načte veřejných klíčů pro všechny agenty ověřování registrovaný na vašeho klienta z databáze Azure SQL a zašifruje heslo pomocí nich. 
     - Vyvolá hodnoty "N" zašifrované heslo pro agenty "N" ověřování registrovaný na klientovi.
-7. Azure AD STS umístí žádost o ověření hesla se skládá z uživatelské jméno a heslo šifrované hodnoty, do fronty Service Bus, který je určený výhradně pro vašeho klienta.
-8. Protože inicializovaného agenty ověřování trvalé připojení k fronty Service Bus, jednu z dostupných agentů ověřování načte žádost o ověření hesla.
-9. Agent ověřování vyhledá zašifrované heslo hodnotu, která je specifická pro svůj veřejný klíč, pomocí identifikátor a dešifruje ji pomocí jeho privátní klíč.
-10. Agent ověřování pokusí se ověřit uživatelské jméno a heslo pro místní službu Active Directory pomocí [rozhraní API Win32 LogonUser](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) s **dwLogonType** parametr nastaven na **LOGON32_LOGON_NETWORK**. 
+8. Azure AD STS umístí žádost o ověření hesla se skládá z uživatelské jméno a heslo šifrované hodnoty, do fronty Service Bus, který je určený výhradně pro vašeho klienta.
+9. Protože inicializovaného agenty ověřování trvalé připojení k fronty Service Bus, jednu z dostupných agentů ověřování načte žádost o ověření hesla.
+10. Agent ověřování vyhledá zašifrované heslo hodnotu, která je specifická pro svůj veřejný klíč, pomocí identifikátor a dešifruje ji pomocí jeho privátní klíč.
+11. Agent ověřování pokusí se ověřit uživatelské jméno a heslo pro místní službu Active Directory pomocí [rozhraní API Win32 LogonUser](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx) s **dwLogonType** parametr nastaven na **LOGON32_LOGON_NETWORK**. 
     - Toto rozhraní API je stejné rozhraní API, které se používá ve službě Active Directory Federation Services (AD FS) pro přihlášení uživatelů ve scénáři federované přihlašování.
     - Toto rozhraní API závisí na procesu standardní překladu, který v systému Windows Server na řadič domény najít.
-11. Agent ověřování obdrží výsledek ze služby Active Directory, jako je například úspěch, uživatelské jméno nebo nesprávné heslo nebo platnost hesla.
-12. Agent ověřování výsledek předá zpět tokenů zabezpečení Azure AD přes odchozí vzájemně ověřené kanál HTTPS přes port 443. Vzájemné ověřování pomocí certifikátu dříve vydaného Agent ověřování během registrace.
-13. Služby tokenů zabezpečení služby Azure AD ověřuje, že tento výsledek koreluje s konkrétní přihlášení žádost na klientovi.
-14. Azure AD STS pokračuje s postupem přihlášení podle konfigurace. Například pokud ověření hesla bylo úspěšné, uživatel může být postiženy pro službu Multi-Factor Authentication nebo přesměrován zpět do aplikace.
+12. Agent ověřování obdrží výsledek ze služby Active Directory, jako je například úspěch, uživatelské jméno nebo nesprávné heslo nebo platnost hesla.
+13. Agent ověřování výsledek předá zpět tokenů zabezpečení Azure AD přes odchozí vzájemně ověřené kanál HTTPS přes port 443. Vzájemné ověřování pomocí certifikátu dříve vydaného Agent ověřování během registrace.
+14. Služby tokenů zabezpečení služby Azure AD ověřuje, že tento výsledek koreluje s konkrétní přihlášení žádost na klientovi.
+15. Azure AD STS pokračuje s postupem přihlášení podle konfigurace. Například pokud ověření hesla bylo úspěšné, uživatel může být postiženy pro službu Multi-Factor Authentication nebo přesměrován zpět do aplikace.
 
 ## <a name="operational-security-of-the-authentication-agents"></a>Provozní zabezpečení ověřování agentů
 
@@ -208,7 +209,7 @@ Pro automatickou aktualizaci agenta ověřování:
 ## <a name="next-steps"></a>Další postup
 - [Aktuální omezení](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Zjistěte, jaké postupy se podporují, a ty, které nejsou.
 - [Rychlý start](active-directory-aadconnect-pass-through-authentication-quick-start.md): zprovoznění na Azure AD předávací ověřování.
-- [Inteligentní uzamčení](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): nakonfigurovat možnosti inteligentního uzamčení na vašeho klienta k ochraně uživatelské účty.
+- [Inteligentní uzamčení](../authentication/howto-password-smart-lockout.md): nakonfigurovat možnosti inteligentního uzamčení na vašeho klienta k ochraně uživatelské účty.
 - [Jak to funguje](active-directory-aadconnect-pass-through-authentication-how-it-works.md): Získejte základní informace o tom, jak funguje Azure AD předávací ověřování.
 - [Nejčastější dotazy](active-directory-aadconnect-pass-through-authentication-faq.md): Vyhledejte odpovědi na nejčastější dotazy.
 - [Řešení potíží s](active-directory-aadconnect-troubleshoot-pass-through-authentication.md): Přečtěte si o řešení běžných problémů s funkcí předávací ověřování.

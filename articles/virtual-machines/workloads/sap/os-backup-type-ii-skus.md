@@ -11,24 +11,24 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/31/2017
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d5caf5836b96555e01b55d408e51f3df2407d35
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f01a32612b335003856a372ece15ef300b9d93db
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657600"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063270"
 ---
 # <a name="os-backup-and-restore-for-type-ii-skus"></a>Operační systém zálohování a obnovení pro typ II SKU
 
-Tento dokument popisuje postup zálohování operačního systému a obnovíte **typu II SKU** velké instancí HANA. 
+Tento dokument popisuje postup proveďte zálohu úrovni souboru operačního systému a obnovíte **typu II SKU** velké instancí HANA. 
 
 >[!NOTE]
 >Skripty zálohování operačního systému používá zadní software, který je předem nainstalovaná na serveru.  
 
-Po dokončení týmem Microsoft Service Management ve výchozím nastavení, zajišťování server je nakonfigurovaný s dvě zálohy plán zálohování z úplného operačního systému. Plán úlohy zálohování můžete zkontrolovat pomocí následujícího příkazu:
+Po dokončení týmem Microsoft Service Management ve výchozím nastavení, zajišťování je server nakonfigurovaný s dvě zálohy plán zálohování systému souborů úrovně zálohování operačního systému. Plán úlohy zálohování můžete zkontrolovat pomocí následujícího příkazu:
 ```
 #crontab –l
 ```
@@ -38,14 +38,14 @@ Můžete změnit plán zálohování kdykoli pomocí následujícího příkazu:
 ```
 ## <a name="how-to-take-a-manual-backup"></a>Postup provedení ruční zálohy?
 
-Naplánování zálohování operačního systému pomocí **cron úlohy** již. Můžete však provést ručně také zálohování operačního systému. Pokud chcete provést ruční zálohy, spusťte následující příkaz:
+Zálohu systému souborů operačního systému je naplánováno, použití **cron úlohy** již. Můžete však provést operačního systému úrovni záložní soubor také ručně. Pokud chcete provést ruční zálohy, spusťte následující příkaz:
 
 ```
 #rear -v mkbackup
 ```
 Následující zobrazení obrazovky ukazuje ukázka ručního zálohování:
 
-![Postupy](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
+![postupy](media/HowToHLI/OSBackupTypeIISKUs/HowtoTakeManualBackup.PNG)
 
 
 ## <a name="how-to-restore-a-backup"></a>Jak obnovit zálohu?

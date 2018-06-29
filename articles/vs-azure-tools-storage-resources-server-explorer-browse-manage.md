@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 8/24/2017
 ms.author: ghogen
-ms.openlocfilehash: 0beeb8fb7f7e46db97e179f3eacf3c68dd92cff3
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: c9828504ab40a1e62c107f218fda024be6330c23
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31798561"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061739"
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>Procházet a spravovat prostředky úložiště pomocí Průzkumníka serveru
 
@@ -157,7 +157,7 @@ Následující obrázek znázorňuje fronty, který obsahuje dvě zprávy:
 
 ![Zobrazení fronty](./media/vs-azure-tools-storage-resources-server-explorer-browse-manage/IC651470.png)
 
-Další informace o úložišti služeb fronty naleznete v tématu [Začínáme s Azure Queue storage pomocí rozhraní .NET](http://go.microsoft.com/fwlink/?LinkID=264702). Informace o webové službě úložiště služeb fronty naleznete v tématu [koncepty služby front](http://go.microsoft.com/fwlink/?LinkId=264788). Informace o tom, jak odesílat zprávy do fronty služby úložiště pomocí sady Visual Studio najdete v tématu [odeslání zprávy do fronty služby úložiště](https://msdn.microsoft.com/library/azure/jj649344.aspx).
+Další informace o úložišti služeb fronty naleznete v tématu [Začínáme s Azure Queue storage pomocí rozhraní .NET](http://go.microsoft.com/fwlink/?LinkID=264702). Informace o webové službě úložiště služeb fronty naleznete v tématu [koncepty služby front](http://go.microsoft.com/fwlink/?LinkId=264788). Informace o tom, jak odesílat zprávy do fronty služby úložiště pomocí sady Visual Studio najdete v tématu [odeslání zprávy do fronty služby úložiště](https://docs.microsoft.com/azure/visual-studio/vs-storage-cloud-services-getting-started-queues).
 
 > [!NOTE]
 > Fronty úložiště služby se liší od fronty Azure Service Bus. Další informace o fronty Service Bus najdete v tématu [Service Bus fronty, témata a odběry](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-queues-topics-subscriptions).

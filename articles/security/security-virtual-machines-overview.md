@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 7d31a434d4ead6dd8f8a13a08d368389904b5b4a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 5ffba386ae6b1e1e5d18f92803bc8cb74b2ff89e
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364229"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061295"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Přehled zabezpečení služby Azure virtuální počítače
 Virtuální počítače Azure můžete použít k nasazení širokou škálu výpočetní řešení agilní způsobem. Služba podporuje Microsoft Windows, Linux, Microsoft SQL Server, Oracle, SAP, IBM a služby Azure BizTalk Services. Proto můžete nasadit jakoukoli úlohu a jakýkoli jazyk na téměř jakémkoliv operačním systému.
@@ -142,5 +142,5 @@ Virtuální počítače Azure je certifikované pro FISMA, FedRAMP, HIPAA, PCI D
 
 Další informace:
 
-* [Centrum zabezpečení Microsoft: dodržování předpisů](https://www.microsoft.com/TrustCenter/Compliance/default.aspx)
+* [Centrum zabezpečení Microsoft: dodržování předpisů](https://www.microsoft.com/en-us/trustcenter/compliance)
 * [Důvěryhodné cloudu: Microsoft Azure zabezpečení, ochrany osobních údajů a dodržování předpisů](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)

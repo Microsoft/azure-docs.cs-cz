@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 06/04/2018
 ms.author: danlep
-ms.openlocfilehash: 4ee8425bb5c3830b029b766aad464df0ffb15f41
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 8ef9d5a8e5212f6715769eecf4fde92a6d0b9d44
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801111"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37060513"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Spustit v Azure Batch – aplikace typu kontejner
 
@@ -229,7 +229,13 @@ Použití `ContainerSettings` vlastnost třídy úloh konfigurace nastavení spe
 
 Pokud spustíte úlohy v kontejneru Image, [cloudu úloh](/dotnet/api/microsoft.azure.batch.cloudtask) a [úkolu Správce úloh](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) požadovat nastavení kontejneru. Ale [spouštěcí úkol](/dotnet/api/microsoft.azure.batch.starttask), [úkol přípravy úlohy](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask), a [úkol uvolnění úlohy](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) nevyžadují nastavení kontejneru (to znamená, že můžete spustit v kontextu kontejneru nebo přímo v uzlu).
 
-Při konfiguraci nastavení kontejneru, všechny adresáře rekurzivně níže `AZ_BATCH_NODE_ROOT_DIR` (kořenové adresáře Azure Batch na uzlu) jsou mapovány do kontejneru, všechny úlohy prostředí proměnné jsou mapovány na kontejneru a příkazového řádku úkolu je provést v kontejneru.
+Příkazový řádek pro kontejner úloh Azure Batch provádí v pracovním adresáři v kontejneru, který je velmi podobné prostředí, ve kterém Batch nastaví pro regulární úlohu (není kontejner):
+
+* Všechny adresáře rekurzivně níže `AZ_BATCH_NODE_ROOT_DIR` (kořenové adresáře Azure Batch na uzlu) jsou mapovány do kontejneru
+* Všechny proměnné prostředí úkolu jsou mapovány do kontejneru
+* Pracovní adresář aplikace nastavena, je stejný jako u pravidelné úlohy, abyste mohli používat funkce, jako je například balíčky aplikací a soubory prostředků
+
+Vzhledem k tomu Batch změní výchozí pracovní adresář vaší kontejneru, tato úloha se spustí na jiném ze vstupního bodu typické kontejneru místě (například `c:\` ve výchozím nastavení do kontejneru systému Windows nebo `/` v systému Linux). Ujistěte se, že vaše úloha příkazový řádek nebo kontejneru vstupní bod určuje absolutní cestu, pokud již není nakonfigurována tímto způsobem.
 
 Následující fragment kódu Python ukazuje základní příkazového řádku spuštěné v kontejneru Ubuntu načtený z úložiště Docker Hub. Spusťte kontejner možnosti jsou další argumenty, které mají `docker create` příkaz, který bude spuštěna úloha. Zde `--rm` možnost odebere kontejneru po dokončení této úlohy.
 
@@ -240,7 +246,7 @@ task_container_settings = batch.models.TaskContainerSettings(
     container_run_options='--rm')
 task = batch.models.TaskAddParameter(
     id=task_id,
-    command_line='echo hello',
+    command_line='/bin/echo hello',
     container_settings=task_container_settings
 )
 
@@ -251,7 +257,7 @@ Následující příklad jazyka C# ukazuje nastavení základního kontejneru pr
 ```csharp
 // Simple container task command
 
-string cmdLine = "<my-command-line>";
+string cmdLine = "c:\myApp.exe";
 
 TaskContainerSettings cmdContainerSettings = new TaskContainerSettings (
     imageName: "tensorflow/tensorflow:latest-gpu",

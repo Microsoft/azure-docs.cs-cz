@@ -11,20 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 06/14/2018
 ms.author: shlo
-ms.openlocfilehash: 6d14d84610d97e487e3bf4286267623681c4eb75
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 71e89828645cadbbbf60527fca9968fd8ed568ff
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34619231"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058908"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Aktivity webového v Azure Data Factory
 Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu služby Data Factory. Můžete předávat datové sady a propojené služby, které má aktivita používat a ke kterým má mít přístup. 
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), prostudujte si [dokumentaci služby Data Factory verze 1](v1/data-factory-introduction.md).
 
 ## <a name="syntax"></a>Syntaxe
 
@@ -72,7 +69,7 @@ type | Musí být nastavena na **WebActivity**. | Řetězec | Ano
 method | Metoda REST API pro koncový bod cíl. | Řetězec. <br/><br/>Podporované typy: "GET", "POST", "PUT" | Ano
 url | Koncový bod cíl a cesty | Řetězec (nebo výraz s hodnotou resultType řetězec). Aktivity bude časový limit na 1 minutu, zobrazí se chyba, pokud neobdrží odpověď z koncového bodu. | Ano
 hlavičky | Hlavičky, které se odesílají na požadavek. Chcete-li například nastavit jazyk a typ na vyžádání: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Řetězec (nebo výraz s hodnotou resultType řetězec) | Ano, je požadovaná hlavička Content-type. `"headers":{ "Content-Type":"application/json"}`
-hlavní část | Představuje datovou část, která je odeslána koncovému bodu. Vyžaduje se pro metody POST nebo PUT.  | Řetězec (nebo výraz s hodnotou resultType řetězec). <br/><br/>Najdete v části schéma datová část požadavku v [schématu datová část požadavku](#request-payload-schema) části. | Ne
+hlavní část | Představuje datovou část, která je odeslána koncovému bodu.  | Řetězec (nebo výraz s hodnotou resultType řetězec). <br/><br/>Najdete v části schéma datová část požadavku v [schématu datová část požadavku](#request-payload-schema) části. | Vyžaduje se pro metody POST nebo PUT.
 Ověřování | Metodu ověřování pro volání koncový bod. Podporované typy jsou "Basic nebo ClientCertificate." Další informace najdete v tématu [ověřování](#authentication) části. Pokud ověření není vyžadováno, vyloučíte tuto vlastnost. | Řetězec (nebo výraz s hodnotou resultType řetězec) | Ne
 Datové sady | Seznam datových sad předaná koncovému bodu. | Pole odkazuje na datovou sadu. Může být prázdné pole. | Ano
 linkedServices | Seznam propojené služby předaná koncovému bodu. | Pole Propojená služba odkazuje. Může být prázdné pole. | Ano

@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/24/2018
+ms.date: 06/27/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: aca67ceff2650a5470b1c08b20c21d71f00bae62
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: eae350f751788eb09271e70f71f79b12e27c4e16
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751526"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061397"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Připojení modulu runtime integrace Azure SSIS k virtuální síti.
 Vaše Azure SSIS integrace modulu runtime (IR) připojení k virtuální síť Azure v následujících scénářích: 
@@ -27,10 +27,7 @@ Vaše Azure SSIS integrace modulu runtime (IR) připojení k virtuální síť A
 
 - Jsou hostiteli databáze katalogu integrační služby SSIS (SQL Server) ve službě Azure SQL Database pomocí virtuální sítě služby koncových bodů nebo spravované Instance (Preview). 
 
- Azure Data Factory verze 2 (Preview) umožňuje připojení k vaší runtime integrace Azure SSIS k virtuální síti vytvořené pomocí modelu nasazení classic nebo modelu nasazení Azure Resource Manager. 
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verze 1 služby Data Factory, který je v obecně dostupnosti (GA), najdete v článku [dokumentace verze 1 pro vytváření dat](v1/data-factory-introduction.md). 
+ Azure Data Factory umožňuje připojit vaše runtime integrace Azure SSIS k virtuální síti vytvořené pomocí modelu nasazení classic nebo modelu nasazení Azure Resource Manager. 
 
 ## <a name="access-to-on-premises-data-stores"></a>Přístup k místním úložištím dat.
 Pokud balíčky SSIS přistupovat k úložištím dat pouze veřejného cloudu, nemusíte IR Azure SSIS připojit k virtuální síti. Pokud balíčky SSIS přístup k místním úložištím dat, musíte IR Azure SSIS připojit k virtuální síti, která je připojena k místní síti. 
@@ -114,7 +111,10 @@ Pokud máte obavy o ztráty možnosti Zkontrolujte odchozí internetové přenos
 V tématu [tento skript prostředí PowerShell](https://gallery.technet.microsoft.com/scriptcenter/Adds-Azure-Datacenter-IP-dbeebe0c) příklad. Budete muset spustit skript každý týden k zachování aktualizovaného stavu seznamu IP adres center dat Azure. 
 
 ### <a name="resource-group"></a> Požadavky pro skupinu prostředků
-IR Azure SSIS potřebuje k vytvoření určitým síťovým prostředkům ve stejné skupině prostředků jako virtuální síť, včetně Vyrovnávání zatížení Azure, Azure veřejnou IP adresu a pracovní skupina zabezpečení sítě. 
+-   IR Azure SSIS potřebuje k vytvoření určitým síťovým prostředkům ve stejné skupině prostředků jako virtuální síť. Tyto prostředky zahrnují následující:
+    -   Pro vyrovnávání zatížení Azure, s názvem  *<Guid>- azurebatch cloudserviceloadbalancer*.
+    -   Azure veřejnou IP adresu, s názvem  *<Guid>- azurebatch cloudservicepublicip*.
+    -   Skupinu zabezpečení sítě práci s názvem  *<Guid>- azurebatch cloudservicenetworksecuritygroup*. 
 
 -   Ujistěte se, že nemáte žádné Zámek prostředků ve skupině prostředků nebo předplatného, do které patří virtuální síť. Pokud nakonfigurujete zámek jen pro čtení nebo odstranění zámku, spuštění a zastavení IR může selhat nebo zablokuje. 
 

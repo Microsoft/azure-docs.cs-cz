@@ -14,20 +14,20 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: d83e71efa89746d7744893281ffe0ac1169fa08b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8f86f43b4d8c474f338285abffb3c444f5ebc2d7
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34621468"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054734"
 ---
 # <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>Kopírování dat do a z Data Lake Store pomocí objektu pro vytváření dat
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-azure-datalake-connector.md)
-> * [Verze 2 – Preview](../connector-azure-data-lake-store.md)
+> * [Verze 1](data-factory-azure-datalake-connector.md)
+> * [Verze 2 (aktuální verze)](../connector-azure-data-lake-store.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Data Factory, která je obecně dostupná (GA). Pokud používáte verze 2 služby Data Factory, který je ve verzi preview, najdete v části [konektor Azure Data Lake Store v V2](../connector-azure-data-lake-store.md).
+> Tento článek se týká verze 1 služby Data Factory. Pokud používáte aktuální verze služby Data Factory, přečtěte si téma [konektor Azure Data Lake Store v V2](../connector-azure-data-lake-store.md).
 
 Tento článek vysvětluje, jak pomocí aktivity kopírování v Azure Data Factory pro přesun dat do a z Azure Data Lake Store. Vychází [aktivity přesunu dat](data-factory-data-movement-activities.md) článku přehled o přesun dat s aktivitou kopírování.
 
@@ -55,7 +55,7 @@ Vytvoření kanálu s aktivitou kopírování, který přesouvá data z Azure Da
 
 Nejjednodušší způsob, jak vytvořit kanál ke zkopírování dat je použití **Průvodce kopírováním**. Kurz týkající se vytváření kanálu pomocí Průvodce kopírováním, najdete v části [kurz: vytvoření kanálu pomocí Průvodce kopírováním](data-factory-copy-data-wizard-tutorial.md).
 
-Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru**, **.NET API**, a **REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
+Tyto nástroje můžete také použít k vytvoření kanálu: **portál Azure**, **Visual Studio**, **prostředí Azure PowerShell**, **šablony Azure Resource Manageru** , **.NET API**, a **rozhraní REST API**. V tématu [kurzu aktivity kopírování](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) podrobné pokyny k vytvoření kanálu s aktivitou kopírování.
 
 Jestli používáte nástroje nebo rozhraní API, je třeba provést následující kroky k vytvoření kanálu, který přesouvá data ze zdrojového úložiště dat do úložiště dat podřízený:
 
@@ -96,7 +96,7 @@ Použijte objekt zabezpečení ověřování služby tak, že zadáte následuj�
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Zadejte ID aplikace klienta. | Ano |
 | **servicePrincipalKey** | Zadejte klíč aplikace. | Ano |
-| **Klienta** | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete ji načíst podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano |
+| **klienta** | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete ji načíst podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano |
 
 **Příkladu: Ověření objektu službu**
 ```json
@@ -188,7 +188,7 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
     }
 }
 ```
-Podrobnosti o třídách objekt pro vytváření dat používá v kódu najdete v tématu [azuredatalakestorelinkedservice třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), a [AuthorizationSessionGetResponse třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témata. Přidat odkaz na verzi `2.9.10826.1824` z `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` pro `WindowsFormsWebAuthenticationDialog` třída používaná v kódu.
+Podrobnosti o třídách objekt pro vytváření dat používá v kódu najdete v tématu [azuredatalakestorelinkedservice třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService třída](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx), a [ Třída AuthorizationSessionGetResponse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx) témata. Přidat odkaz na verzi `2.9.10826.1824` z `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` pro `WindowsFormsWebAuthenticationDialog` třída používaná v kódu.
 
 ## <a name="troubleshooting-tips"></a>Rady pro řešení potíží
 
@@ -234,7 +234,7 @@ Podrobnosti o třídách objekt pro vytváření dat používá v kódu najdete 
     ```
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
-Pokud chcete zadat datové sady představují vstupní data v Data Lake Store, nastavíte **typ** vlastnosti datové sady, která **AzureDataLakeStore**. Nastavte **linkedServiceName** vlastnosti datové sady, která název Data Lake Store propojené služby. Úplný seznam části JSON a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Části datové sady ve formátu JSON, jako například **struktura**, **dostupnosti**, a **zásad**, jsou podobné pro všechny typy datovou sadu (Azure SQL Azure blob, databáze a tabulky Azure, např.). **Rámci typeProperties** oddílu se liší pro jednotlivé typy datovou sadu a informace, jako je například umístění a formát dat v úložišti dat. 
+Pokud chcete zadat datové sady představují vstupní data v Data Lake Store, nastavíte **typ** vlastnosti datové sady, která **AzureDataLakeStore**. Nastavte **linkedServiceName** vlastnosti datové sady, která název Data Lake Store propojené služby. Úplný seznam části JSON a vlastnosti, které jsou k dispozici pro definování datové sady, najdete v článku [vytváření datových sad](data-factory-create-datasets.md) článku. Části datové sady ve formátu JSON, například **struktura**, **dostupnosti**, a **zásad**, jsou podobné pro všechny typy datovou sadu (Azure SQL database, objektů blob v Azure a tabulky Azure pro Příklad). **Rámci typeProperties** oddílu se liší pro jednotlivé typy datovou sadu a informace, jako je například umístění a formát dat v úložišti dat. 
 
 **Rámci typeProperties** části datové sady typu **AzureDataLakeStore** obsahuje následující vlastnosti:
 
@@ -243,7 +243,7 @@ Pokud chcete zadat datové sady představují vstupní data v Data Lake Store, n
 | **folderPath** |Cesta ke kontejneru a složce v Data Lake Store. |Ano |
 | **fileName** |Název souboru v Azure Data Lake Store. **FileName** vlastnost je volitelná a velká a malá písmena. <br/><br/>Pokud zadáte **fileName**, aktivitu (včetně kopie) funguje na konkrétní soubor.<br/><br/>Když **fileName** není zadán, zahrnuje kopírování všech souborů v **folderPath** ve vstupní datové sady.<br/><br/>Když **fileName** pro datovou sadu výstupů není zadána a **preserveHierarchy** není zadané v podřízený aktivity, je název vygenerovaný soubor ve formátu Data. _Identifikátor GUID_.txt'. Například: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Ne |
 | **partitionedBy** |**PartitionedBy** vlastnost je nepovinná. Můžete ji zadat dynamické cestu a název souboru pro data časové řady. Například **folderPath** lze nastavit parametry pro každou hodinu data. Podrobnosti a příklady naleznete v tématu [vlastnost partitionedBy](#using-partitionedby-property). |Ne |
-| **Formát** | Jsou podporovány následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a **ParquetFormat**. Nastavte **typ** vlastnost pod **formát** na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC formátu](data-factory-supported-file-and-compression-formats.md#orc-format), a [Parquet formátu](data-factory-supported-file-and-compression-formats.md#parquet-format) v částech [formáty souborů a komprese podporovaných službou Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článku. <br><br> Pokud chcete zkopírovat soubory "jako-je" mezi souborové úložiště (binární kopie), přejděte `format` část v obou definice vstupní a výstupní datové sady. |Ne |
+| **Formát** | Jsou podporovány následující typy formátu: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, a  **ParquetFormat**. Nastavte **typ** vlastnost pod **formát** na jednu z těchto hodnot. Další informace najdete v tématu [textovém formátu](data-factory-supported-file-and-compression-formats.md#text-format), [formátu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [formát Avro](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC formátu](data-factory-supported-file-and-compression-formats.md#orc-format), a [Parquet formátu ](data-factory-supported-file-and-compression-formats.md#parquet-format) v částech [formáty souborů a komprese podporovaných službou Azure Data Factory](data-factory-supported-file-and-compression-formats.md) článku. <br><br> Pokud chcete zkopírovat soubory "jako-je" mezi souborové úložiště (binární kopie), přejděte `format` část v obou definice vstupní a výstupní datové sady. |Ne |
 | **Komprese** | Zadejte typ a úroveň komprese pro data. Podporované typy jsou **GZip**, **Deflate**, **BZip2**, a **ZipDeflate**. Jsou podporované úrovně **Optimal** a **nejrychlejší**. Další informace najdete v tématu [formáty souborů a komprese podporovaných službou Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Ne |
 
 ### <a name="the-partitionedby-property"></a>Vlastnost partitionedBy
@@ -284,7 +284,7 @@ Vlastnosti dostupné ve **rámci typeProperties** části aktivity se liší pod
 
 | Vlastnost | Popis | Povolené hodnoty | Požaduje se |
 | --- | --- | --- | --- |
-| **Rekurzivní** |Označuje, zda je data načíst rekurzivně z podsložky nebo pouze do zadané složky. |True (výchozí hodnota), False. |Ne |
+| **rekurzivní** |Označuje, zda je data načíst rekurzivně z podsložky nebo pouze do zadané složky. |True (výchozí hodnota), False. |Ne |
 
 
 **AzureDataLakeStoreSink** podporuje následující vlastnosti v **rámci typeProperties** části:
@@ -296,11 +296,11 @@ Vlastnosti dostupné ve **rámci typeProperties** části aktivity se liší pod
 ### <a name="recursive-and-copybehavior-examples"></a>Příklady rekurzivní a copyBehavior
 Tato část popisuje jejich výsledné chování pro různé kombinace hodnot rekurzivní a copyBehavior operace kopírování.
 
-| Rekurzivní | copyBehavior | Výsledné chování |
+| rekurzivní | copyBehavior | Výsledné chování |
 | --- | --- | --- |
 | true (pravda) |preserveHierarchy |Pro zdrojové složky složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cílové složky složku1 je vytvořena s stejná struktura jako zdroj<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5. |
-| true (pravda) |flattenHierarchy |Pro zdrojové složky složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cíl složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File5 |
-| true (pravda) |mergeFiles |Pro zdrojové složky složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>cíl složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + soubor3 + File4 + soubor 5 obsah jsou sloučeny do jednoho souboru s názvem automaticky generovaný soubor |
+| true (pravda) |flattenHierarchy |Pro zdrojové složky složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cíl složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File5 |
+| true (pravda) |mergeFiles |Pro zdrojové složky složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Cíl složku1 je vytvořen s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 + soubor3 + File4 + soubor 5 obsah jsou sloučeny do jednoho souboru s názvem automaticky generovaný soubor |
 | false (nepravda) |preserveHierarchy |Pro zdrojové složky složku1 s následující strukturou: <br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Vytvoření cílové složky složku1 s následující strukturou<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/><br/><br/>Subfolder1 s soubor3, File4 a File5 nejsou zachyceny. |
 | false (nepravda) |flattenHierarchy |Pro zdrojové složky složku1 s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Vytvoření cílové složky složku1 s následující strukturou<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;automaticky generovaný název File2<br/><br/><br/>Subfolder1 s soubor3, File4 a File5 nejsou zachyceny. |
 | false (nepravda) |mergeFiles |Pro zdrojové složky složku1 s následující strukturou:<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File2<br/>&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor3<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File5<br/><br/>Vytvoření cílové složky složku1 s následující strukturou<br/><br/>Složku1<br/>&nbsp;&nbsp;&nbsp;&nbsp;File1 + File2 obsah jsou sloučeny do jednoho souboru s názvem automaticky generovaný soubor. automaticky generovaný název File1<br/><br/>Subfolder1 s soubor3, File4 a File5 nejsou zachyceny. |

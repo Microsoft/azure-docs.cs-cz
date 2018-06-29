@@ -13,20 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 5df6633d40a3a361e551d1bea6caa2606a661a52
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: eee68481f4396f8a09241b664d4c3d7d4a4f6567
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618918"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054346"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Vytvořit aktivační událost, která spouští kanál podle plánu
 Tento článek obsahuje informace o aktivační události plán a kroky k vytvoření, spuštění a monitorování plánu aktivační událost. U jiných typů aktivačních událostí, najdete v části [kanálu spouštěcí a aktivační události](concepts-pipeline-execution-triggers.md).
 
 Při vytváření aktivační události plánu, můžete zadat plán (počáteční datum opakování, koncové datum atd.) pro aktivační události a přidružení se zřetězením příkazů. Mezi kanály a aktivačními událostmi existuje vztah n-m. Víc aktivačních událostí může aktivovat jeden kanál. Jedna aktivační událost může aktivovat více kanálů.
-
-> [!NOTE]
-> Tento článek se týká služby Azure Data Factory verze 2, která je aktuálně ve verzi Preview. Pokud používáte Azure Data Factory verze 1, který je všeobecně dostupná (GA), najdete v části [Začínáme s Azure Data Factory verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 Následující části popisují vytvořit aktivační událost plán různými způsoby. 
 
@@ -249,7 +246,7 @@ Ke sledování aktivační událost spustí a kanál se spustí na portálu Azur
 Šablonu Azure Resource Manager můžete vytvořit aktivační událost. Podrobné pokyny najdete v tématu [vytvořit objekt pro vytváření dat Azure pomocí šablony Resource Manageru](quickstart-create-data-factory-resource-manager-template.md).  
 
 ## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>Čas spuštění aktivační události předat kanálu
-Azure Data Factory verze 1 podporuje čtení nebo zápisu dat. oddílů pomocí systému proměnných: **SliceStart**, **SliceEnd**, **WindowStart**a **WindowEnd**. V Azure Data Factory verze 2 můžete toto chování dosáhnout pomocí parametru kanálu. Čas spuštění a naplánovaném čase pro aktivační událost jsou nastavená jako hodnota pro parametr kanálu. V následujícím příkladu je naplánovaném čase pro aktivační událost jako hodnotu předaný kanálu **scheduledRunTime** parametr:
+Azure Data Factory verze 1 podporuje čtení nebo zápisu dat. oddílů pomocí systému proměnných: **SliceStart**, **SliceEnd**, **WindowStart**a **WindowEnd**. V aktuální verzi objektu pro vytváření dat Azure můžete toto chování dosáhnout pomocí parametru kanálu. Čas spuštění a naplánovaném čase pro aktivační událost jsou nastavená jako hodnota pro parametr kanálu. V následujícím příkladu je naplánovaném čase pro aktivační událost jako hodnotu předaný kanálu **scheduledRunTime** parametr:
 
 ```json
 "parameters": {

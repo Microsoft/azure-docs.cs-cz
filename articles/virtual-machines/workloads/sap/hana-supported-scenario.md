@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/25/2018
+ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4b703f6d141005cf3cf29531a0586eebb61693a2
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 8927b2a32956f73e75ac7b157ebad6bf6596ea88
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754446"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063625"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Podporované scénáře pro velké instance HANA
 Tento dokument popisuje podporované scénáře a jejich podrobnosti architektura pro HANA velké instancí (HLI).
@@ -78,6 +78,22 @@ V případě potřeby můžete definovat další Síťových karet sami. Však l
 
 >[!NOTE]
 >Přesto můžete najít další rozhraní, které jsou fyzické rozhraní nebo záruční. Měli byste zvážit výše uvedené rozhraní pro váš případ použít, můžete ignorovat rest / nebo nechcete být zmírněna s.
+
+Distribuce pro jednotky s přiřazeny dvě IP adresy by měl vypadat podobně jako:
+
+Ethernet "A" by měl mít IP adresu přiřadit, která je mimo rozsah adres fondu IP serveru, který jste odeslali do společnosti Microsoft. Tato IP adresa se použije pro zachování v/etc/hosts operačního systému.
+
+Ethernet "B" by měl mít IP adresu přiřadit, která se používá pro komunikaci systému souborů NFS. Proto se tyto adresy **není** třeba udržet v etc/hosts, aby bylo možné povolit provoz instance pro instance v rámci klienta.
+
+Pro nasazení případech replikaci systému HANA nebo HANA škálování není vhodný okno Konfigurace s přiřazeny dvě IP adresy. Pokud má dvě IP adresy, které jsou přiřazeny pouze a chtějí nasadit taková konfigurace, obraťte se na SAP HANA na Azure Service Management získání třetí IP adresu ve třetí přiřadit síť VLAN. Pro velké Instance HANA jednotky s tři IP adresy přiřazené na tři porty NIC platí následující pravidla využití:
+
+- Ethernet "A" by měl mít IP adresu přiřadit, která je mimo rozsah adres fondu IP serveru, který jste odeslali do společnosti Microsoft. Proto tuto IP adresu se nepoužijí pro zachování v/etc/hosts operačního systému.
+
+- Ethernet "B" by měl mít IP adresu přiřadit, která se používá pro komunikaci úložiště systému souborů NFS. Tento typ adresy proto by nemělo být udržovány v etc/hosts.
+
+- Ethernet "C" by měl být zachován v atd nebo hostitele pro komunikaci mezi různými instancemi výhradně použije. Tyto adresy by také IP adresy, které je potřeba udržovat v konfiguracích HANA škálování jako IP adresy, kterou používá HANA pro konfigurace mezi uzly.
+
+- Ethernet "D" výhradně slouží pro přístup k zařízení STONITH pro kardiostimulátor. To je potřeba, pokud jste konfiguraci HANA systému replikace (HSR) a chcete zajistit automatické převzetí služeb při selhání na operační systém pomocí zařízení s SBD na základě.
 
 
 ### <a name="storage"></a>Úložiště
@@ -221,6 +237,7 @@ Předem konfigurovaných následující přípojné body:
 - Pro MCOS: Distribuce velikost svazku je založena na velikost databáze v paměti. Odkazovat [přehled a architektura](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) oddílu se dozvíte, jaké databáze velikosti v paměti jsou podporovány s multisid prostředí.
 - Na zotavení po Havárii: svazky a přípojné body jsou nakonfigurované (označené jako "Požadovaných pro instalaci HANA") pro provozní instalace HANA Instance na jednotku HLI zotavení po Havárii. 
 - Na zotavení po Havárii: data, logbackups a sdílené svazky (označena jako "Replikace úložiště") se replikují přes snímek z pracoviště. Jsou tyto svazky připojené jenom na dobu převzetí služeb při selhání. Odkazovat [převzetí služeb při selhání postupu zotavení po havárii](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti.
+- Spouštěcí svazek pro **SKU typ I třídy** se replikují do uzlu zotavení po Havárii.
 
 
 ## <a name="4-single-node-with-dr-multipurpose"></a>4. Jeden uzel a zotavení po Havárii (Multipurpose)
@@ -270,6 +287,7 @@ Předem konfigurovaných následující přípojné body:
 - Na zotavení po Havárii: svazky a přípojné body jsou nakonfigurované (označené jako "Požadovaných pro instalaci HANA") pro provozní instalace HANA Instance na jednotku HLI zotavení po Havárii. 
 - Na zotavení po Havárii: data, logbackups a sdílené svazky (označena jako "Replikace úložiště") se replikují přes snímek z pracoviště. Jsou tyto svazky připojené jenom na dobu převzetí služeb při selhání. Odkazovat [převzetí služeb při selhání postupu zotavení po havárii](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti. 
 - Na zotavení po Havárii: data, logbackups, protokolu, sdílené svazky pro kontrolu kvality (označena jako "QA Instance instalace") jsou nakonfigurované pro instalaci instance QA.
+- Spouštěcí svazek pro **SKU typ I třídy** se replikují do uzlu zotavení po Havárii.
 
 ## <a name="5-hsr-with-stonith"></a>5. HSR s STONITH
  
@@ -378,6 +396,7 @@ Předem konfigurovaných následující přípojné body:
 - Na zotavení po Havárii: svazky a přípojné body jsou nakonfigurované (označené jako "Požadovaných pro instalaci HANA") pro provozní instalace HANA Instance na jednotku HLI zotavení po Havárii. 
 - Na zotavení po Havárii: data, logbackups a sdílené svazky (označena jako "Replikace úložiště") se replikují přes snímek z pracoviště. Jsou tyto svazky připojené jenom na dobu převzetí služeb při selhání. Odkazovat [převzetí služeb při selhání postupu zotavení po havárii](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti. 
 - Na zotavení po Havárii: data, logbackups, protokolu, sdílené svazky pro kontrolu kvality (označena jako "QA Instance instalace") jsou nakonfigurované pro instalaci instance QA.
+- Spouštěcí svazek pro **SKU typ I třídy** se replikují do uzlu zotavení po Havárii.
 
 
 ## <a name="7-host-auto-failover-11"></a>7. Hostitele automatické převzetí služeb při selhání (1 + 1)
@@ -540,6 +559,7 @@ Předem konfigurovaných následující přípojné body:
 - /USR/SAP/SID je symbolický odkaz na /hana/shared/SID.
 -  Na zotavení po Havárii: svazky a přípojné body jsou nakonfigurované (označené jako "Požadovaných pro instalaci HANA") pro provozní instalace HANA Instance na jednotku HLI zotavení po Havárii. 
 - Na zotavení po Havárii: data, logbackups a sdílené svazky (označena jako "Replikace úložiště") se replikují přes snímek z pracoviště. Jsou tyto svazky připojené jenom na dobu převzetí služeb při selhání. Odkazovat [převzetí služeb při selhání postupu zotavení po havárii](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) další podrobnosti. 
+- Spouštěcí svazek pro **SKU typ I třídy** se replikují do uzlu zotavení po Havárii.
 
 
 ## <a name="next-steps"></a>Další postup

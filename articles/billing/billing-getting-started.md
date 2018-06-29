@@ -1,5 +1,5 @@
 ---
-title: Zabránit neočekávané náklady, spravovat fakturace - Azure | Microsoft Docs
+title: Zabránit neočekávané náklady, spravovat fakturace v Azure | Microsoft Docs
 description: Zjistěte, jak neočekávané náklady na faktury Azure. Pomocí funkce sledování nákladů a správy pro předplatné Microsoft Azure.
 services: ''
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: 797421e40a5550e1897443f35089838a349ad85a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e4db9911697a4d79032b7a6358db642112a5a54e
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607391"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062158"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Zabránit neočekávané poplatky s Azure fakturace a náklady na správu
 

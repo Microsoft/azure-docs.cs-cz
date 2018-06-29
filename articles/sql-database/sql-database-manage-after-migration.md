@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: 2a0a411d5f2b19eda844cba160429ecfe958c45e
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: d97e0bf94b911936cacf04f7f26c172b9975c56f
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309609"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061640"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – správu databáze v databázi SQL Azure
 
@@ -170,7 +170,7 @@ Express Route také umožňuje burst až 2 x limit šířky pásma, kterou jste 
 - [Pracovní postupy](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Je kompatibilní s žádné ze zákonných požadavků v databázi SQL a jak který pomáhá s kontrolou vlastní organizaci?
-Databáze SQL je kompatibilní s rozsahem regulačních compliances. Chcete-li zobrazit nejnovější sadu compliances, které byly splněny, navštivte [Microsoft Trust Center](https://www.microsoft.com/trustcenter/compliance/complianceofferings) a přechod na compliances, které jsou důležité pro vaši organizaci chcete zobrazit, pokud databáze SQL je zahrnuta v části kompatibilní služby Azure. Je důležité si uvědomit, že i když SQL Database může musí být certifikovaná jako kompatibilní služby, pomůcky v dodržování předpisů služby vaší organizace ale nezaručí automaticky ji.
+Databáze SQL je kompatibilní s rozsahem regulačních compliances. Chcete-li zobrazit nejnovější sadu compliances, které byly splněny, navštivte [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/compliance/complianceofferings) a přechod na compliances, které jsou důležité pro vaši organizaci chcete zobrazit, pokud databáze SQL je zahrnuta v části kompatibilní služby Azure. Je důležité si uvědomit, že i když SQL Database může musí být certifikovaná jako kompatibilní služby, pomůcky v dodržování předpisů služby vaší organizace ale nezaručí automaticky ji.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Inteligentní databáze monitorování a údržby po migraci
 
@@ -245,11 +245,11 @@ Databáze SQL používá některé inteligentní technik, které mohla zpracová
 
 - **Export**: Azure SQL database, můžete exportovat jako soubor souboru BACPAC z portálu Azure
 
-   ![Export databáze.](./media/sql-database-export/database-export.png)
+   ![export databáze.](./media/sql-database-export/database-export.png)
 
 - **Import**: data jako soubor souboru BACPAC můžete také importovat do databáze pomocí portálu Azure.
 
-   ![Import databáze.](./media/sql-database-import/import.png)
+   ![import databáze.](./media/sql-database-import/import.png)
 
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>Jak synchronizaci dat mezi SQL Database a SQL Server?
 Existuje několik způsobů jak toho docílit: 

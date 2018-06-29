@@ -1,6 +1,6 @@
 ---
 title: Použijte ScaleR a SparkR s Azure HDInsight | Microsoft Docs
-description: Použít ScaleR a SparkR s R Server a HDInsight
+description: Použít ScaleR a SparkR službou ML v HDInsight
 services: hdinsight
 documentationcenter: ''
 author: bradsev
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 4306f265bf7f52f9bc307def2256dd62e94e004f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 34d923cdf2dd96412996c766632ae42aac576e8c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31399962"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061474"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>Kombinace ScaleR a SparkR v HDInsight
 
 Tento dokument popisuje, jak k předvídání příchodem zpoždění letů pomocí **ScaleR** logistic regresní model. Tento příklad používá data zpoždění a počasí letu, spojena **SparkR**.
 
-I když oba balíčky běží na stroji provádění Spark pro Hadoop, jsou blokovat sdílení jako každý vyžadují jejich vlastní příslušné relace Spark dat v paměti. Dokud se tento problém řešit v budoucích verzích R Server, je alternativní řešení údržbu nepřekrývají relací Spark a vyměňovat data prostřednictvím zprostředkující soubory. Podle pokynů tady ukazují, že tyto požadavky jsou jednoduché k dosažení.
+I když oba balíčky běží na stroji provádění Spark pro Hadoop, jsou blokovat sdílení jako každý vyžadují jejich vlastní příslušné relace Spark dat v paměti. Dokud se tento problém řešit v nadcházející verzi serveru ML, řešením je údržbu nepřekrývají relací Spark a vyměňovat data prostřednictvím zprostředkující soubory. Podle pokynů tady ukazují, že tyto požadavky jsou jednoduché k dosažení.
 
 V tomto příkladu byla původně sdílí v obraťte na 2016 vrstev Mario Inchiosa a Roni Burd. Můžete najít tento obraťte na [vytváření škálovatelné platformy vědecké účely dat s R](http://event.on24.com/eventRegistration/console/EventConsoleNG.jsp?uimode=nextgeneration&eventid=1160288&sessionid=1&key=8F8FB9E2EB1AEE867287CD6757D5BD40&contenttype=A&eventuserid=305999&playerwidth=1000&playerheight=650&caller=previewLobby&text_language_id=en&format=fhaudio).
 
-Kód byl původně zapsán pro R Server systémem Spark v clusteru služby HDInsight v Azure. Ale koncept kombinování použití SparkR a ScaleR v jednom skriptu je taky platná v kontextu místního prostředí. 
+Kód byl původně zapsán pro ML Server systémem Spark v clusteru služby HDInsight v Azure. Ale koncept kombinování použití SparkR a ScaleR v jednom skriptu je taky platná v kontextu místního prostředí.
 
-Kroky v tomto dokumentu předpokládají, že byl pokročilou úroveň znalosti R a jsou [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) knihovny R Server. Zavedly se k [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) při procházení tohoto scénáře.
+Kroky v tomto dokumentu předpokládají, že byl pokročilou úroveň znalosti R a jsou [ScaleR](https://msdn.microsoft.com/microsoft-r/scaler-user-guide-introduction) knihovny ML serveru. Zavedly se k [SparkR](https://spark.apache.org/docs/2.1.0/sparkr.html) při procházení tohoto scénáře.
 
 ## <a name="the-airline-and-weather-datasets"></a>Datové sady letecká společnost a počasí
 
@@ -200,7 +200,7 @@ rxDataStep(weatherDF, outFile = weatherDF1, rowsPerRead = 50000, overwrite = T,
 
 ## <a name="importing-the-airline-and-weather-data-to-spark-dataframes"></a>Import dat letecká společnost a počasí do Spark DataFrames
 
-Teď používáme SparkR [read.df()](https://docs.databricks.com/spark/latest/sparkr/functions/read.df.html) funkce importování dat počasí a letecká společnost do Spark DataFrames. Tato funkce, jako je mnoho dalších metod Spark jsou spouštěny líné, což znamená, že jsou zařazené do fronty pro provádění ale nebyl proveden až požadovaných.
+Teď používáme SparkR [read.df()](https://docs.databricks.com/spark/1.6/sparkr/functions/read.df.html#read-df) funkce importování dat počasí a letecká společnost do Spark DataFrames. Tato funkce, jako je mnoho dalších metod Spark jsou spouštěny líné, což znamená, že jsou zařazené do fronty pro provádění ale nebyl proveden až požadovaných.
 
 ```
 airPath     <- file.path(inputDataDir, "AirOnTime08to12CSV")
@@ -360,7 +360,7 @@ Můžeme použít soubor CSV připojené k letecká společnost a počasí dat j
 ```
 logmsg('Import the CSV to compressed, binary XDF format') 
 
-# set the Spark compute context for R Server 
+# set the Spark compute context for ML Services 
 rxSetComputeContext(sparkCC)
 rxGetComputeContext()
 
@@ -537,15 +537,15 @@ logmsg(paste('Elapsed time=',sprintf('%6.2f',elapsed),'(sec)\n\n'))
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jsme jste ukazuje, jak je možné kombinovat používání SparkR pro manipulaci s daty s ScaleR pro vývoj modelu v Hadoop, Spark. Tento scénář vyžaduje udržovat samostatných relací Spark pouze jednu relaci spuštěný v čase a vyměňovat data prostřednictvím souborů CSV. I když je jasné, tento proces by měl být snazší i v budoucích vydání R Server, SparkR a ScaleR můžete sdílet relaci Spark a sdílet tak Spark DataFrames.
+V tomto článku jsme jste ukazuje, jak je možné kombinovat používání SparkR pro manipulaci s daty s ScaleR pro vývoj modelu v Hadoop, Spark. Tento scénář vyžaduje udržovat samostatných relací Spark pouze jednu relaci spuštěný v čase a vyměňovat data prostřednictvím souborů CSV. I když je jasné, tento proces by měl být snazší i v budoucích vydání služby ML, SparkR a ScaleR můžete sdílet relaci Spark a sdílet tak Spark DataFrames.
 
 ## <a name="next-steps-and-more-information"></a>Další informace a další kroky
 
-- Další informace o použití serveru R na Spark, najdete v článku [Průvodce Začínáme na webu MSDN](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
+- Další informace o použití serveru ML na Spark, najdete v článku [Průvodce Začínáme](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)
 
-- Obecné informace o R Server, najdete v článku [začít pracovat s R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) článku.
+- Obecné informace na ML serveru najdete v tématu [začít pracovat s R](https://msdn.microsoft.com/microsoft-r/microsoft-r-get-started-node) článku.
 
-- Informace o R serverem v HDInsight, naleznete v části [R serverem v Azure HDInsight přehled](r-server/r-server-overview.md) a [R serverem v Azure HDInsight](r-server/r-server-get-started.md).
+- Informace o službách ML v HDInsight naleznete v tématu [přehled ML služby v HDInsight](r-server/r-server-overview.md) a [Začínáme se službou ML v Azure HDInsight](r-server/r-server-get-started.md).
 
 Další informace o použití SparkR najdete v tématu:
 

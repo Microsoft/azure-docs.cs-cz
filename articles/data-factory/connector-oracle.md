@@ -10,24 +10,22 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/07/2018
+ms.topic: conceptual
+ms.date: 06/14/2018
 ms.author: jingwang
-ms.openlocfilehash: aa96356b01d63aa21c55f1b2e6998e65f9d617f6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a232787793f9f4992a4dece821ae0bcc9059afc
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058856"
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Kopírování dat z a do databáze Oracle pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – Obecně dostupná](v1/data-factory-onprem-oracle-connector.md)
-> * [Verze 2 – Preview](connector-oracle.md)
+> * [Verze 1](v1/data-factory-onprem-oracle-connector.md)
+> * [Aktuální verze](connector-oracle.md)
 
 Tento článek popisuje, jak pomocí aktivity kopírování v Azure Data Factory ke zkopírování dat z a do databáze Oracle. Vychází [aktivity kopírování přehled](copy-activity-overview.md) článek, který představuje obecný přehled o aktivitě kopírování.
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 objektu pro vytváření dat, která je obecně k dispozici, najdete v části [Oracle konektoru verze 1](v1/data-factory-onprem-oracle-connector.md).
 
 ## <a name="supported-capabilities"></a>Podporované možnosti
 
@@ -40,6 +38,9 @@ Konkrétně tento konektor Oracle podporuje následující verze databáze Oracl
 - R1 Oracle 10g, R2 (10,1, 10.2)
 - Oracle 9i R1, R2 (9.0.1, 9.2)
 - Oracle 8i R3 (8.1.7)
+
+> [!Note]
+> Oracle proxy serveru není podporována.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -58,7 +59,7 @@ Následující vlastnosti jsou podporovány pro Oracle propojené služby.
 | Vlastnost | Popis | Požaduje se |
 |:--- |:--- |:--- |
 | type | Vlastnost typu musí být nastavená na **Oracle**. | Ano |
-| připojovací řetězec | Určuje informace potřebné pro připojení k instanci databáze Oracle. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md).<br><br>**Typ připojení podporovaný**: můžete použít **Oracle SID** nebo **název služby Oracle** k identifikaci vaší databáze:<br>– Pokud používáte SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud používáte název služby: `Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | Ano |
+| připojovací řetězec | Určuje informace potřebné pro připojení k instanci databáze Oracle. Toto pole označit jako SecureString bezpečně uložit v datové továrně nebo [odkazovat tajného klíče uložené v Azure Key Vault](store-credentials-in-key-vault.md).<br><br>**Typ připojení podporovaný**: můžete použít **Oracle SID** nebo **název služby Oracle** k identifikaci vaší databáze:<br>– Pokud používáte SID: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>– Pokud používáte název služby: `Host=<host>;Port=<port>;ServiceName=<servicename>;User Id=<username>;Password=<password>;` | Ano |
 | connectVia | [Integrace runtime](concepts-integration-runtime.md) který se má použít pro připojení k úložišti. (Pokud je veřejně přístupná data store), můžete použít modul Runtime integrace Self-hosted nebo Runtime integrace Azure. Pokud není zadaný, použije výchozí Runtime integrace Azure. |Ne |
 
 **Příklad:**
@@ -207,20 +208,20 @@ Při kopírování dat z a do databáze Oracle, se používají následující m
 
 | Oracle datový typ | Typ průběžných dat objektu pro vytváření dat |
 |:--- |:--- |
-| BFILE |Byte[] |
-| OBJEKT BLOB |Byte[]<br/>(podporováno pouze Oracle 10g a vyšší) |
+| BFILE |Byte] |
+| OBJEKT BLOB |Byte]<br/>(podporováno pouze Oracle 10g a vyšší) |
 | CHAR – |Řetězec |
 | DATOVÝ TYP CLOB |Řetězec |
 | DATE (Datum) |DateTime |
 | PLOVOUCÍ DESETINNÁ ČÁRKA |Decimal, řetězec (Pokud přesnost > 28) |
 | CELÉ ČÍSLO |Decimal, řetězec (Pokud přesnost > 28) |
 | DLOUHÁ |Řetězec |
-| DLOUHO NEZPRACOVANÁ |Byte[] |
+| DLOUHO NEZPRACOVANÁ |Byte] |
 | NCHAR |Řetězec |
 | NCLOB |Řetězec |
 | ČÍSLO |Decimal, řetězec (Pokud přesnost > 28) |
 | NVARCHAR2 |Řetězec |
-| NEZPRACOVANÁ |Byte[] |
+| NEZPRACOVANÁ |Byte] |
 | ID ŘÁDKU |Řetězec |
 | ČASOVÉ RAZÍTKO |DateTime |
 | ČASOVÉ RAZÍTKO S MÍSTNÍM ČASOVÉM PÁSMU |Řetězec |

@@ -13,18 +13,15 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ffe65260e73aa2daa4ab63840a00076000f8e6a8
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
-ms.translationtype: MT
+ms.openlocfilehash: 5ff397e8b13d56b3b034854c507f8bef05008812
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264901"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054717"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spusťte balíček SSIS s spuštění aktivity balíčku služby SSIS v Azure Data Factory
 Tento článek popisuje způsob spouštění balíčku služby SSIS v kanál služby Azure Data Factory pomocí spuštění balíčku služby SSIS aktivitu. 
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Aktivita provedení balíčku služby SSIS není k dispozici v verze 1 služby Data Factory, který je všeobecně dostupná (GA). Alternativní metoda pro balíček služby SSIS verze 1 služby Data Factory, najdete v části [balíčky SSIS spustit pomocí aktivity uložené procedury v verze 1](v1/how-to-invoke-ssis-package-stored-procedure-activity.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -59,7 +56,7 @@ Prvním krokem je pro vytváření dat pomocí portálu Azure.
       - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
     Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-4. Jako **verzi** vyberte **V2 (Preview)**.
+4. Vyberte **V2** pro **verze**.
 5. Vyberte **umístění** pro objekt pro vytváření dat. V rozevíracím seznamu se zobrazí pouze umístění podporovaná službou Data Factory. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou můžou být v jiných umístěních.
 6. Zaškrtněte **Připnout na řídicí panel**.     
 7. Klikněte na možnost **Vytvořit**.
@@ -177,7 +174,7 @@ Je třeba počítat s následujícím:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Pro vytvoření instancí Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem rolí **přispěvatel** nebo **vlastník** nebo **správcem** předplatného Azure.
-* V současné době Data Factory verze 2 můžete vytvořit datové továrny pouze ve východní USA, východ US2, západní Evropa a oblasti jihovýchodní Asie. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+* V současné době objekt pro vytváření dat můžete vytvořit datové továrny pouze ve východní USA, východ US2, západní Evropa a oblasti jihovýchodní Asie. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 ### <a name="create-a-pipeline-with-an-ssis-activity"></a>Vytvoření kanálu s aktivitou SSIS 
 V tomto kroku vytvoříte kanál s aktivitou SSIS. Spuštění aktivity vašeho balíčku služby SSIS. 

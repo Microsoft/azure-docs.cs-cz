@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 0f3662ed386c3a3d2d132a483e7192bddc26de06
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5c05c7c4c0f8f0b3619b36390c8a0224a03c900a
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26633813"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063538"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Poznámky k verzi pro služby Azure BizTalk Services
 
@@ -42,7 +42,7 @@ Poznámky k verzi pro služby Microsoft Azure BizTalk Services obsahují známé
     V tématu [registrace a aktualizace nasazení služby BizTalk v BizTalk Services portál](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
 
 ### <a name="august-14-update"></a>Srpen 14 aktualizace
-* Na portálu služby BizTalk teď odpojené smlouvy a most oddělení – obchodní partnery smlouvy a mostů. Teď vytvoříte smlouvy a mostů samostatně a v době běhu mostů odkazující na smlouvu na základě hodnot v EDI zprávy. V tématu [vytvoření smluv ve službě Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689908.aspx), [vytvořit mostu EDI pomocí portálu služby BizTalk](https://msdn.microsoft.com/library/azure/dn793986.aspx), [vytvořit mostu AS2 pomocí portálu služby BizTalk](https://msdn.microsoft.com/library/azure/dn793993.aspx), a [jak mostů vyřešit smlouvy za běhu?](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
+* Na portálu služby BizTalk teď odpojené smlouvy a most oddělení – obchodní partnery smlouvy a mostů. Teď vytvoříte smlouvy a mostů samostatně a v době běhu mostů odkazující na smlouvu na základě hodnot v EDI zprávy. V tématu [vytvoření smluv ve službě Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689908.aspx), [vytvořit mostu EDI pomocí portálu služby BizTalk](https://msdn.microsoft.com/library/azure/dn793986.aspx), [vytvořit mostu AS2 pomocí portálu služby BizTalk](https://msdn.microsoft.com/library/azure/dn793993.aspx)a [ Jak mostů vyřešit smlouvy za běhu?](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
 * Možnost vytvoření šablony pro smlouvy je přerušeno.  
 * Smlouvy na straně odesílání nyní můžete určit jiný oddělovač sady pro každé schéma. Tato konfigurace je zadaný v nastavení protokolu pro smlouvu straně odeslání. Další informace najdete v tématu [vytvořit na X12 smluv ve službě Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx) a [vytvořili smlouvu EDIFACT v Azure BizTalk Services](https://msdn.microsoft.com/library/azure/dn606267.aspx). Dva nové entity jsou také přidat do rozhraní API OM čip TPM k tomuto účelu. V tématu [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) a [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
 * Standardní XSD konstrukce, včetně odvozené typy jsou nyní podporovány. V tématu [použijte standardní XSD vytvoří ve vašem mapy](https://msdn.microsoft.com/library/azure/dn793987.aspx) a [použití odvozené typy v mapování scénáře a příklady](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
@@ -66,17 +66,17 @@ Sestavování, řešení v sadě Visual Studio úspěšně. Pak 'Znovu sestavte'
   Nelze zkopírovat soubor <Path to DLL> na "bin\Debug\FileName.dll". Proces nemá přístup k souboru 'bin\Debug\FileName.dll', protože je stále používán jiným procesem.  
 
 #### <a name="workaround"></a>Alternativní řešení
-* Pokud [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305) je nainstalovaná, máte následující dvě možnosti:
+* Pokud [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) je nainstalovaná, máte následující dvě možnosti:
   
   * Restartujte Visual Studio, nebo
   * Restartujte řešení. Potom proveďte pouze sestavení v řešení.  
-* Pokud [Visual Studio 2012 Update 3](https://www.microsoft.com/download/details.aspx?id=39305) není nainstalovaná, otevřete Správce úloh, klikněte na tlačítko procesy, klikněte proces MSBuild.exe a potom klikněte na tlačítko Ukončit proces.  
+* Pokud [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) není nainstalovaná, otevřete Správce úloh, klikněte na tlačítko procesy, klikněte proces MSBuild.exe a potom klikněte na tlačítko Ukončit proces.  
 
 ### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>Směrování do koncových bodů BasicHttpRelay není podporován z mostů a portál služeb BizTalk povýšené netisknutelné znaky jako hlavičky protokolu HTTP
 Pokud používáte netisknutelné znaky jako součást propagovaných vlastností pro zprávy, tyto zprávy nelze směrovat do předávání cílových míst, které používají BasicHttpRelay vazby. Navíc propagovaných vlastnosti které jsou k dispozici jako součást sledování jsou kódování URL pro objekty BLOB a zrušení kódovaného pro cílů.  
 
 ### <a name="mdn-is-sent-asynchronously-even-if-the-send-asynchronous-mdn-option-is-unchecked"></a>MDN je odeslán asynchronně, i když není zaškrtnuta možnost MDN asynchronní odesílání
-Vezměte v úvahu tento scénář – Pokud vyberete **odesílat asynchronní MDN** zaškrtávací políčko a zadejte adresu URL k odesílání asynchronní MDN na a potom zrušte zaškrtnutí políčka **odesílat asynchronní MDN** políčko znovu, MDN odesílána na zadanou adresu URL i v případě, že není vybrána možnost odesílat asynchronní MDNs.  
+Vezměte v úvahu tento scénář – Pokud vyberete **odesílat asynchronní MDN** zaškrtávací políčko a zadejte adresu URL k odesílání asynchronní MDN na a potom zrušte zaškrtnutí políčka **odesílat asynchronní MDN** políčko znovu, MDN stále posílá Zadaná adresa URL, i když není vybrána možnost odesílat asynchronní MDNs.  
 Jako alternativní řešení, musíte před zaškrtnutí políčka vymazat zadaná adresa URL **odesílat asynchronní MDN** zaškrtávací políčko a potom nasadíte smlouvy AS2.  
 
 ### <a name="whitespace-characters-beyond-a-valid-interchange-cause-an-empty-message-to-be-sent-to-the-suspend-endpoint"></a>Prázdné znaky následující po platný výměnu způsobit prázdný zprávu k odeslání do koncového bodu pozastavit
@@ -108,7 +108,7 @@ Představte si třeba situaci v následujícím pořadí:
 * Zavřete soubor .bcs (ukončením kartě v sadě Visual Studio) bez uložení změn.  
 * Znovu otevřete soubor .bcs v Průzkumníku řešení.  
   Si všimnete, že soubor přidružené .bridgeconfig se nový název, který jste zadali, název entity na návrhovou plochu, která je stále starý název. Pokud se pokusíte otevřít konfiguraci mostu poklepáním na komponentu most, zobrazí se následující chyba:  
-  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist`Abyste se vyhnuli spuštěna v tomto scénáři, zkontrolujte, zda že po přejmenování entity v projektu služby BizTalk se uložit změny.  
+  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` Abyste se vyhnuli spuštěna v tomto scénáři, zkontrolujte, zda že po přejmenování entity v projektu služby BizTalk se uložit změny.  
   
 ### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>Sestavení projektu služby BizTalk se úspěšně, i když artefakt byl vyloučen z projektu sady Visual Studio
 Představte si třeba situaci, kdy přidáte artefakt (například soubor XSD) do projektu služby BizTalk, zahrnují tento artefaktů v konfiguraci most? víc informací (například zadáním ji jako typ zprávy požadavku) a vyloučíte je z projektu sady Visual Studio. V takovém případě sestavení projektu poskytovat všechny chyby, dokud odstraněné artefaktů je k dispozici na disku na stejné umístění, ze kterých je zahrnutý v projektu sady Visual Studio.

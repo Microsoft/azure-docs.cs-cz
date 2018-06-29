@@ -11,29 +11,26 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: c5ec07603088edd3f95f08f12b6982022b396d05
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8e34b0823b7f10455ac0b66fb0614d3946f2382e
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34618483"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37058893"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Aktivita kopírování v Azure Data Factory
 
 ## <a name="overview"></a>Přehled
 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-data-movement-activities.md)
-> * [Verze 2 – Preview](copy-activity-overview.md)
+> * [Verze 1](v1/data-factory-data-movement-activities.md)
+> * [Aktuální verze](copy-activity-overview.md)
 
 V Azure Data Factory můžete aktivitu kopírování ke kopírování dat mezi dat úložiště nacházejí na místních i v cloudu. Po zkopírování dat, může být další transformovat a analyzovat. Aktivita kopírování můžete taky publikovat transformaci a analýzu výsledky pro business intelligence (BI) a využití aplikace.
 
 ![Role aktivity kopírování](media/copy-activity-overview/copy-activity.png)
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), přečtěte si téma [aktivitu kopírování v V1](v1/data-factory-data-movement-activities.md).
 
 Aktivita kopírování se spustí na [integrace Runtime](concepts-integration-runtime.md). Pro různé datové kopie scénář můžete využít různé příchuť integrace modulu runtime:
 
@@ -114,7 +111,7 @@ Následující šablony aktivity kopírování obsahuje úplný seznam podporova
                 "type": "TabularTranslator",
                 "columnMappings": "<column mapping>"
             },
-            "cloudDataMovementUnits": <number>,
+            "dataIntegrationUnits": <number>,
             "parallelCopies": <number>,
             "enableStaging": true/false,
             "stagingSettings": {
@@ -138,10 +135,10 @@ Následující šablony aktivity kopírování obsahuje úplný seznam podporova
 | výstupy | Zadejte datovou sadu jste vytvořili, které body k datům jímky. Aktivita kopírování podporuje pouze jediného výstupu. | Ano |
 | typeProperties | Skupina vlastností konfigurace aktivity kopírování. | Ano |
 | source | Zadejte typ zdroje kopie a odpovídající vlastnosti o tom, jak načíst data.<br/><br/>Další informace v článku konektor uvedené v části "Zkopírovat vlastnosti aktivity" [podporované úložiště dat a formáty](#supported-data-stores-and-formats). | Ano |
-| podřízený | Zadejte typ jímky kopie a odpovídající vlastnosti o tom, jak zapsat data.<br/><br/>Další informace v článku konektor uvedené v části "Zkopírovat vlastnosti aktivity" [podporované úložiště dat a formáty](#supported-data-stores-and-formats). | Ano |
-| Překladač | Zadejte mapování explicitní sloupce ze zdroje na jímky. Použije, pokud výchozí chování kopírování se nedá vyřídit vašim potřebám.<br/><br/>Další informace z podrobností o [schéma a data mapování typu](copy-activity-schema-and-type-mapping.md). | Ne |
-| cloudDataMovementUnits | Zadejte powerfulness z [Runtime integrace Azure](concepts-integration-runtime.md) na základě kterých kopírování dat.<br/><br/>Další informace z podrobností o [jednotky přesun dat v cloudu](copy-activity-performance.md). | Ne |
-| parallelCopies | Určení stupně paralelního zpracování, který chcete aktivitu kopírování použít při čtení dat ze zdroje a zápis dat do jímky.<br/><br/>Další informace z podrobností o [paralelní kopie](copy-activity-performance.md#parallel-copy). | Ne |
+| Podřízený | Zadejte typ jímky kopie a odpovídající vlastnosti o tom, jak zapsat data.<br/><br/>Další informace v článku konektor uvedené v části "Zkopírovat vlastnosti aktivity" [podporované úložiště dat a formáty](#supported-data-stores-and-formats). | Ano |
+| překladač | Zadejte mapování explicitní sloupce ze zdroje na jímky. Použije, pokud výchozí chování kopírování se nedá vyřídit vašim potřebám.<br/><br/>Další informace z podrobností o [schéma a data mapování typu](copy-activity-schema-and-type-mapping.md). | Ne |
+| dataIntegrationUnits | Zadejte powerfulness z [Runtime integrace Azure](concepts-integration-runtime.md) na základě kterých kopírování dat. Dříve označované jako cloud Data přesun jednotky (DMU). <br/><br/>Další informace z podrobností o [jednotky integraci dat](copy-activity-performance.md#data-integration-units). | Ne |
+| ParallelCopies | Určení stupně paralelního zpracování, který chcete aktivitu kopírování použít při čtení dat ze zdroje a zápis dat do jímky.<br/><br/>Další informace z podrobností o [paralelní kopie](copy-activity-performance.md#parallel-copy). | Ne |
 | enableStaging<br/>stagingSettings | Zvolte Příprava dočasné dat v úložišti objektů blob aa místo přímo kopírování dat ze zdroje na jímky.<br/><br/>Další užitečné scénáře a podrobnosti o konfiguraci z [připravený kopie](copy-activity-performance.md#staged-copy). | Ne |
 | enableSkipIncompatibleRow<br/>redirectIncompatibleRowSettings| Vyberte, jak pracovat s nekompatibilní řádků při kopírování dat ze zdroje na jímky.<br/><br/>Další informace z podrobností o [odolnost proti chybám](copy-activity-fault-tolerance.md). | Ne |
 
@@ -173,8 +170,8 @@ Podrobnosti o provádění aktivitě kopírování a výkonové charakteristiky 
 
 | Název vlastnosti  | Popis | Jednotka |
 |:--- |:--- |:--- |
-| DataRead | Velikost dat číst ze zdroje. | Hodnotu Int64 v **bajtů** |
-| DataWritten | Velikost dat zapsána do jímky | Hodnotu Int64 v **bajtů** |
+| dataRead | Velikost dat číst ze zdroje. | Hodnotu Int64 v **bajtů** |
+| dataWritten | Velikost dat zapsána do jímky | Hodnotu Int64 v **bajtů** |
 | filesRead | Počet souborů, které byly zkopírovány při kopírování dat z úložiště souborů. | Hodnotu Int64 (žádné unit) |
 | filesWritten | Počet souborů, které byly zkopírovány při kopírování dat do úložiště file. | Hodnotu Int64 (žádné unit) |
 | rowsCopied | Počet řádků, které jsou kopírovány (neplatí pro binární kopie). | Hodnotu Int64 (žádné unit) |
@@ -185,7 +182,7 @@ Podrobnosti o provádění aktivitě kopírování a výkonové charakteristiky 
 | redshiftUnload | Pokud uvolnění se používá při kopírování dat z Redshift. | Logická hodnota |
 | hdfsDistcp | Pokud DistCp se používá při kopírování dat z HDFS. | Logická hodnota |
 | effectiveIntegrationRuntime | Zobrazit, který Runtime(s) integrace se používá k posílení aktivity při spuštění ve formátu `<IR name> (<region if it's Azure IR>)`. | Text (řetězec) |
-| usedCloudDataMovementUnits | Efektivní cloudové jednotky přesun dat během kopírování. | Hodnota Int32 |
+| usedDataIntegrationUnits | Efektivní jednotky integraci dat během kopírování. | Hodnota Int32 |
 | usedParallelCopies | Efektivní parallelCopies během kopírování. | Hodnota Int32|
 | redirectRowPath | Cesta k protokolu přeskočené nekompatibilní řádků v úložišti objektů blob, které jste nakonfigurovali v části "redirectIncompatibleRowSettings". Najdete v následujícím příkladu. | Text (řetězec) |
 | executionDetails | Další informace o fázích prochází aktivitu kopírování, a odpovídajících kroků, doba trvání, použít konfigurace, atd. Nedoporučujeme analyzovat v této části, které můžou změnit. | Pole |
@@ -200,7 +197,7 @@ Podrobnosti o provádění aktivitě kopírování a výkonové charakteristiky 
     "throughput": 467707.344,
     "errors": [],
     "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US 2)",
-    "usedCloudDataMovementUnits": 32,
+    "usedDataIntegrationUnits": 32,
     "usedParallelCopies": 8,
     "executionDetails": [
         {
@@ -213,7 +210,7 @@ Podrobnosti o provádění aktivitě kopírování a výkonové charakteristiky 
             "status": "Succeeded",
             "start": "2018-01-17T15:13:00.3515165Z",
             "duration": 221,
-            "usedCloudDataMovementUnits": 32,
+            "usedDataIntegrationUnits": 32,
             "usedParallelCopies": 8,
             "detailedDurations": {
                 "queuingDuration": 2,
@@ -237,10 +234,10 @@ Ve výchozím nastavení aktivity kopírování zastaví kopírování dat a vr�
 Najdete v článku [výkonu kopie aktivity a vyladění průvodce](copy-activity-performance.md), který popisuje klíčové faktory ovlivňující výkon přesun dat (aktivita kopírování) v Azure Data Factory. Také uvádí pozorovaný výkon při interním testování a popisuje různé způsoby za účelem optimalizace výkonu kopie aktivity.
 
 ## <a name="incremental-copy"></a>Přírůstkové kopie 
-Objekt pro vytváření dat verze 2 podporuje scénáře pro přírůstkově kopírování rozdílová data ze zdrojového úložiště dat do cílového úložiště dat. V tématu [kurz: přírůstkově kopírovat data](tutorial-incremental-copy-overview.md). 
+Objekt pro vytváření dat podporuje scénáře pro přírůstkově kopírování rozdílová data ze zdrojového úložiště dat do cílového úložiště dat. V tématu [kurz: přírůstkově kopírovat data](tutorial-incremental-copy-overview.md). 
 
 ## <a name="read-and-write-partitioned-data"></a>Čtení a zápis dat oddílů
-Azure Data Factory v verze 1, podporované čtení nebo zápis oddílů dat pomocí SliceStart/SliceEnd/WindowStart/WindowEnd systémové proměnné. Ve verzi 2 můžete dosáhnout toto chování pomocí parametru kanálu a čas nebo naplánovaný čas spuštění aktivační události jako hodnotu parametru. Další informace najdete v tématu [jak pro čtení nebo zápis dat rozdělena na oddíly](how-to-read-write-partitioned-data.md).
+Azure Data Factory v verze 1, podporované čtení nebo zápis oddílů dat pomocí SliceStart/SliceEnd/WindowStart/WindowEnd systémové proměnné. V aktuální verzi můžete toto chování dosáhnout pomocí parametru kanálu a čas nebo naplánovaný čas spuštění aktivační události jako hodnotu parametru. Další informace najdete v tématu [jak pro čtení nebo zápis dat rozdělena na oddíly](how-to-read-write-partitioned-data.md).
 
 ## <a name="next-steps"></a>Další postup
 Naleznete v následujících – elementy QuickStart, kurzy a ukázky:

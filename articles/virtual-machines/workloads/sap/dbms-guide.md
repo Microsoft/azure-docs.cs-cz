@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 356e44b063fbd65de23d3aab313f58b5572840ea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 79e77aa067cbb7262a945d94ce8ac1750e80b2d5
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656189"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37054785"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Nasazení virtuálních počítačů databázového systému Azure pro SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -288,7 +288,7 @@ ms.locfileid: "34656189"
 [virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
-[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
+[virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/en-us/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
 [virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/template-samples.md
@@ -390,7 +390,7 @@ Aby bylo možné postupovat podle této kapitoly, je potřeba pochopit, co se zo
 
 Dokud března 2015 byly omezený na 127 GB velikost disků, které obsahují operačního systému. Toto omezení získali odvolat v března 2015 (Další informace o kontrole <https://azure.microsoft.com/blog/2015/03/25/azure-vm-os-drive-limit-octupled/>). Odtud na discích obsahující operační systém může mít stejnou velikost jako jakýkoli jiný disk. Nicméně nám stále přednost struktura nasazení, kde jsou oddělené od databázové soubory operačního systému, databázového systému a případný SAP binární soubory. Proto Očekáváme, že SAP systémy s operačním systémem v Azure Virtual Machines základní virtuálního počítače (nebo disk) nainstalované s operačním systémem, spustitelné soubory systému správy databáze a SAP spustitelné soubory. Soubory protokolu a data databázového systému jsou uložené ve službě Azure Storage (Standard nebo Premium Storage) v různých discích a připojit k původní image Azure operačního systému virtuálního počítače jako logické disky. 
 
-Závisí na využívání Azure Standard nebo Premium Storage (například pomocí služby DS-series nebo GS-series virtuálních počítačů) existuje jsou ostatní kvóty v Azure, které jsou popsány [zde (Linux)] [ virtual-machines-sizes-linux] a [zde (Windows)][virtual-machines-sizes-windows]. Při plánování vaší rozložení disku, budete muset najít nejlepší rovnováhu mezi kvót pro následující položky:
+Závisí na využívání Azure Standard nebo Premium Storage (například pomocí služby DS-series nebo GS-series virtuálních počítačů) existuje jsou ostatní kvóty v Azure, které jsou popsány [zde (Linux)] [ virtual-machines-sizes-linux] a [ Zde (Windows)][virtual-machines-sizes-windows]. Při plánování vaší rozložení disku, budete muset najít nejlepší rovnováhu mezi kvót pro následující položky:
 
 * Počet datových souborů.
 * Počet disků, které obsahují soubory.
@@ -449,7 +449,7 @@ Doporučení pro Storage úrovně Premium je možné využít **číst ukládán
 ### <a name="c8e566f9-21b7-4457-9f7f-126036971a91"></a>Softwaru diskového pole RAID
 Jak již uvedené výše, musíte vyvážit počet IOPS potřebné pro soubory databáze mezi počet disků, které můžete konfigurovat, a maximální IOPS virtuálního počítače Azure poskytuje na disku nebo disk typu Premium Storage. Nejjednodušší způsob, jak řešit zatížení IOPS přes disků je sestavení softwaru diskového pole RAID přes různé disky. Pak umístíte počet datových souborů databázového systému SAP na jednotky LUN carved mimo softwaru diskového pole RAID. Závislé na požadavky, které že můžete vzít v úvahu využití úložiště Premium také od dvě ze tří různých disky úložiště Premium poskytují vyšší kvóty IOPS než disky podle standardního úložiště. Kromě toho významné lepší latence vstupně-výstupních operací poskytované Azure Premium Storage. 
 
-Totéž platí i pro transakční protokol různých systémů databázového systému. S mnohými z nich přidat další soubory protokolu nepomůže vzhledem k tomu, že systémy databázového systému zapisovat do jednoho ze souborů vždy pouze. Pokud jsou potřeba vyšší rychlosti IOPS než jednu standardní úložiště založené může poskytnout disk, můžete rozkládají přes víc disků Standard Storage nebo můžete použít větší typ disku Storage úrovně Premium, který kromě vyšší rychlosti IOPS také nabízí faktory menší latence pro zápis vstupně-výstupních operací do transakčního protokolu.
+Totéž platí i pro transakční protokol různých systémů databázového systému. S mnohými z nich přidat další soubory protokolu nepomůže vzhledem k tomu, že systémy databázového systému zapisovat do jednoho ze souborů vždy pouze. Pokud než může poskytnout jediný disk standardní úložiště na základě jsou potřeba vyšší rychlosti IOPS můžete rozkládají přes víc disků Standard Storage nebo můžete použít větší typ disku Storage úrovně Premium, který kromě vyšší rychlosti IOPS také nabízí faktory nižší latence pro zápis I / Chcete-li operační systém do protokolu transakcí.
 
 Situace došlo v Azure nasazení, které by upřednostnit pomocí softwaru diskového pole RAID jsou:
 
@@ -554,7 +554,7 @@ Chcete převést Microsoft nebo třetích stran, které poskytuje bitovou kopii 
 #### <a name="deploying-a-vm-with-a-customer-specific-generalized-image"></a>Nasazení virtuálního počítače pomocí bitové kopie zobecněný zákaznické
 Z důvodu opravy specifické požadavky týkající se vaší verzí operačního systému nebo databázového systému nemusí zadané bitové kopie v Azure Marketplace podle vašich potřeb. Proto může být potřeba vytvořit virtuální počítač pomocí vlastní "privátní" image operačního systému nebo databázového systému virtuálního počítače, které mohou být nasazeny několikrát později. Pro přípravu "privátní" image pro duplikaci, musí být zobecněn operačního systému na virtuálním počítači na místě. Odkazovat [Průvodce nasazením] [ deployment-guide] podrobnosti o tom, jak generalize virtuálního počítače.
 
-Pokud jste již nainstalovali SAP obsah v místní virtuální počítač (hlavně u systémy vrstvě 2), můžete upravit nastavení systému SAP po nasazení virtuálního počítače Azure pomocí instance přejmenovat postup nepodporuje správce zřizování softwaru SAP (Poznámka SAP [1619720]). Jinak můžete nainstalovat SAP software později po nasazení virtuálního počítače Azure.
+Pokud jste již nainstalovali SAP obsah v místní virtuální počítač (hlavně u systémy vrstvě 2), můžete upravit nastavení systému SAP po nasazení virtuálního počítače Azure pomocí instance přejmenovat postup podporované nástrojem SAP softwaru zřizování Manager (SAP Všimněte si, [1619720]). Jinak můžete nainstalovat SAP software později po nasazení virtuálního počítače Azure.
 
 Jako databázi obsahu používá aplikace SAP, můžete buď vygenerovat obsah čerstvě instalací SAP nebo svůj obsah můžete importovat do Azure pomocí virtuální pevný disk s zálohu databáze databázového systému nebo využití funkcí databázového systému zálohovat přímo do  Microsoft Azure Storage. V takovém případě může také připravit virtuální pevné disky s databázového systému protokolu a data souborů místní a importovat tyto disky do Azure. Ale přenos dat databázového systému, který je načítán z místního do Azure by fungovat přes virtuální pevný disk disky, které musejí být připraveny na místě.
 
@@ -567,7 +567,7 @@ Azure nabízí následující vysoké dostupnosti (HA) a obnovení po havárii (
 ### <a name="vms-deployed-on-azure-nodes"></a>Virtuální počítače nasazené na uzly Azure
 Platforma Azure nenabízí funkce, jako je migrace za provozu pro nasazené virtuální počítače. To znamená, že pokud v clusteru serveru, na kterém je nasazený virtuální počítač je nutné údržby, virtuální počítač je potřeba získat zastavena a restartována. Údržby v Azure se provádí pomocí tak názvem upgradu domén v rámci clusterů serverů. Pouze jeden upgradu domény současně je neudržují. Při restartování je přerušení služby během virtuální počítač je vypnutý, provádění údržby a restartování virtuálního počítače. Většina dodavatelů databázového systému ale poskytovat vysokou dostupnost a zotavení po havárii funkce, které rychle restartuje služby databázového systému v jiném uzlu, pokud není k dispozici primárního uzlu. Platforma Azure nabízí funkce pro distribuci virtuálních počítačů, úložiště a dalším službám Azure napříč doménami Upgrade k zajištění, aby plánované údržby nebo infrastruktury selhání by vliv pouze malou podmnožinu virtuální počítače a služby.  S pečlivé plánování, je možné dosáhnout úrovní dostupnosti srovnatelná místní infrastruktury.
 
-Skupiny dostupnosti Microsoft Azure jsou logická seskupení virtuálních počítačů nebo služeb, které zajišťuje virtuálním počítačům a dalším službám jsou distribuovány do různých selhání a upgradu domén v rámci clusteru tak, že by existovat pouze jedna vypnutí uzlu v kterémkoli bodě v čase (čtení [této (Linux)] [ virtual-machines-manage-availability-linux] nebo [této (Windows)] [ virtual-machines-manage-availability-windows] další podrobnosti najdete v článku).
+Skupiny dostupnosti Microsoft Azure jsou logická seskupení virtuálních počítačů nebo služeb, které zajišťuje virtuálním počítačům a dalším službám jsou distribuovány do různých selhání a upgradu domén v rámci clusteru tak, že by existovat pouze jedna vypnutí uzlu v daném v čase (přečíst [této (Linux)] [ virtual-machines-manage-availability-linux] nebo [této (Windows)] [ virtual-machines-manage-availability-windows] další podrobnosti najdete v článku).
 
 Je nutné konfigurovat tak, že účel při zavádění virtuálních počítačů, jak je vidět tady:
 
@@ -802,7 +802,7 @@ Některé aspekty pomocí naslouchací proces skupiny dostupnosti jsou:
 
 * Pomocí naslouchací proces skupiny dostupnosti je možné pouze v systému Windows Server 2012 nebo vyšší jako hostovaný operační systém virtuálního počítače. Pro Windows Server 2012, musíte zajistit, aby se použila tato oprava: <https://support.microsoft.com/kb/2854082> 
 * Pro Windows Server 2008 R2, tato oprava neexistuje a Always On by bylo potřeba použít stejným způsobem jako zrcadlení databáze zadáním partnera převzetí služeb při selhání v řetězci připojení (provést prostřednictvím SAP default.pfl parametr databáze nebo mss nebo serveru – viz poznámka SAP [965908]).
-* Při použití naslouchací proces skupiny dostupnosti, je třeba se připojit k vyhrazené pro vyrovnávání zatížení databáze virtuálních počítačů. Název řešení v čistě cloudové nasazení by buď vyžadují všech virtuálních počítačů systému SAP (aplikační servery, databázového systému server a server (A) SCS) jsou ve stejné virtuální síti nebo by vyžadovaly z aplikační vrstva SAP údržby souboru etc\host mohli virtuálních počítačů serveru SQL přeložit názvy virtuálních počítačů. Aby se zabránilo, že Azure je přiřazení nové IP adresy v případech, kdy oba virtuální počítače jsou náhodně vypnutí, jeden by měl přiřadit statické IP adresy pro rozhraní sítě těchto virtuálních počítačů v konfiguraci Always On (definování statickou IP adresu je popsaný v [to] [ virtual-networks-reserved-private-ip] článku)
+* Při použití naslouchací proces skupiny dostupnosti, je třeba se připojit k vyhrazené pro vyrovnávání zatížení databáze virtuálních počítačů. Název řešení v čistě cloudové nasazení by buď vyžadují všech virtuálních počítačů systému SAP (aplikační servery, databázového systému server a server (A) SCS) jsou ve stejné virtuální síti nebo by vyžadovaly z aplikační vrstva SAP údržby souboru etc\host v pořadí Chcete-li získat názvy virtuálních počítačů, virtuálních počítačů serveru SQL přeložit. Aby se zabránilo, že Azure je přiřazení nové IP adresy v případech, kdy oba virtuální počítače jsou náhodně vypnutí, jeden by měl přiřadit statické IP adresy pro rozhraní sítě těchto virtuálních počítačů v konfiguraci Always On (definice, které se statickou IP adresu je popsaná v [to] [ virtual-networks-reserved-private-ip] článek)
 
 [comment]: <> (Původní blogy)
 [comment]: <> (<https://blogs.msdn.com/b/alwaysonpro/archive/2014/08/29/recommendations-and-best-practices-when-deploying-sql-server-alwayson-availability-groups-in-windows-azure-iaas.aspx>, <https://blogs.technet.com/b/rmilne/archive/2015/07/27/how-to-set-static-ip-on-azure-vm.aspx>) 
@@ -931,7 +931,7 @@ a odkazy vygenerované v transakci DBACockpit vypadá podobně jako tento:
 > 
 > 
 
-V závislosti na zda a jak virtuální počítač Azure, který je hostitelem systému SAP je připojená přes site-to-site, více lokalit nebo ExpressRoute (mezi různými místy nasazení), musíte zajistit, že ICM používá plně kvalifikovaný název hostitele, který lze převést na počítači kde se pokoušíte otevřít DBACockpit z. Viz poznámka SAP [773830] pochopit, jak ICM Určuje plně kvalifikovaný název v závislosti na parametry profil a sadu parametr icm/host_name_full explicitně v případě potřeby.
+V závislosti na zda a jak virtuální počítač Azure, který je hostitelem systému SAP je připojená přes site-to-site, více lokalit nebo ExpressRoute (mezi různými místy nasazení), musíte zajistit, že ICM používá plně kvalifikovaný název hostitele, který lze převést na počítači kde Pokoušíte se otevřít DBACockpit z. Viz poznámka SAP [773830] pochopit, jak ICM Určuje plně kvalifikovaný název v závislosti na parametry profil a sadu parametr icm/host_name_full explicitně v případě potřeby.
 
 Pokud nasadíte virtuální počítač v čistě cloudové scénář bez připojení mezi různými místy mezi místními a Azure, budete muset definovat veřejnou IP adresu a domainlabel. Formát veřejný název DNS virtuálního počítače vypadá takto:
 
@@ -1043,7 +1043,7 @@ V závislosti na verzi SAPInst nebo SWPM použitý k instalaci systému může o
 * App Service Environment SAP tempdb vytvořené instalace SAP App Service Environment a další saptempdb vytvořené rutiny instalace SAP
 * App Service Environment SAP tempdb vytvořené instalace SAP App Service Environment a další databáze tempdb, který byl vytvořen ručně (například následující poznámka SAP [1752266]) splnění konkrétní databázi tempdb ERP/BW
 
-V případě konkrétní ERP nebo všechny úlohy BW má smysl, s ohledem na výkon, zachovat databázi tempdb zařízení, která kromě vytvořené databáze tempdb (SWPM nebo ručně) na systém samostatný soubor, který může být reprezentovaný jednoho Azure datový disk nebo Linux diskového pole RAID práci s více disky dat Azure. Pokud existuje žádné další databáze tempdb, doporučuje se vytvořit (Poznámka SAP [1752266]).
+V případě konkrétní ERP nebo všechny úlohy BW má smysl, s ohledem na výkon, zachovat databázi tempdb zařízení, která kromě vytvořené databáze tempdb (SWPM nebo ručně) na systém samostatný soubor, který může být reprezentovaný jednoho Azure datový disk nebo spannin Linux RAID g více disků dat Azure. Pokud existuje žádné další databáze tempdb, doporučuje se vytvořit (Poznámka SAP [1752266]).
 
 Pro tyto systémy by měla pro kromě vytvořené databáze tempdb provést následující kroky:
 
@@ -1084,7 +1084,7 @@ a odkazy vygenerované v transakci DBACockpit bude vypadat podobně jako tento:
 > 
 > 
 
-V závislosti na zda a jak virtuální počítač Azure, který je hostitelem systému SAP je připojená přes site-to-site, více lokalit nebo ExpressRoute (mezi různými místy nasazení), musíte zajistit, že ICM používá plně kvalifikovaný název hostitele, který lze převést na počítači kde se pokoušíte otevřít DBACockpit z. Viz poznámka SAP [773830] pochopit, jak ICM Určuje plně kvalifikovaný název v závislosti na parametry profil a sadu parametr icm/host_name_full explicitně v případě potřeby.
+V závislosti na zda a jak virtuální počítač Azure, který je hostitelem systému SAP je připojená přes site-to-site, více lokalit nebo ExpressRoute (mezi různými místy nasazení), musíte zajistit, že ICM používá plně kvalifikovaný název hostitele, který lze převést na počítači kde Pokoušíte se otevřít DBACockpit z. Viz poznámka SAP [773830] pochopit, jak ICM Určuje plně kvalifikovaný název v závislosti na parametry profil a sadu parametr icm/host_name_full explicitně v případě potřeby.
 
 Pokud nasadíte virtuální počítač v čistě cloudové scénář bez připojení mezi různými místy mezi místními a Azure, budete muset definovat veřejnou IP adresu a domainlabel. Formát veřejný název DNS virtuálního počítače vypadá takto:
 
@@ -1265,7 +1265,7 @@ Stručně řečeno budete muset:
 
 * Pokud používáte účty Azure Storage, nastavit účet úložiště Azure, který obsahuje SAP MaxDB protokolu a data svazky (tj. soubory) **místní redundantní úložiště (LRS)** uvedené v kapitole [Microsoft Azure Storage][dbms-guide-2.3].
 * Vstupně-výstupní cestu pro SAP MaxDB datové svazky (tj. soubory) nezávislá na vstupně-výstupní cestu pro svazky protokolu (tj. soubory). To znamená, že SAP MaxDB datové svazky (tj. soubory) musí být instalovány na jedné logické jednotce a svazky protokolu SAP MaxDB (tj. soubory) musí být instalovány na jiné logické jednotce.
-* Nastavte správný typ ukládání do mezipaměti pro každý disk, v závislosti na tom, jestli ho použít pro SAP MaxDB dat či protokolu svazky (tj. soubory) a jestli použít standardní Azure nebo Azure Premium Storage, jak je popsáno v kapitole [ukládání do mezipaměti pro virtuální počítače a datové disky][dbms-guide-2.1].
+* Nastavte správný typ ukládání do mezipaměti pro každý disk, v závislosti na tom, jestli ho použít pro SAP MaxDB dat či protokolu svazky (tj. soubory) a jestli použít standardní Azure nebo Azure Premium Storage, jak je popsáno v kapitole [ukládání do mezipaměti pro virtuální počítače a datové disky] [dbms-guide-2.1].
 * Tak dlouho, dokud se aktuální kvóty IOPS na disk splňuje požadavky, je možné uložit všechny datové svazky na jednom disku připojené a také uložení všechny svazky protokolu databáze na jiný disk jedné připojené.
 * Pokud jsou vyžadovány další IOPS nebo místa, se doporučuje použít k vytvoření jedno velké logické zařízení přes více fondů úložiště okno Microsoft (pouze k dispozici v systému Microsoft Windows Server 2012 a vyšší) nebo Microsoft Windows prokládání pro Microsoft Windows 2008 R2 připojené disky. Viz také kapitoly [softwaru diskového pole RAID] [ dbms-guide-2.2] tohoto dokumentu. Tento přístup zjednodušuje nároky na správu spravovat místo na disku a zabraňuje úsilí ručně distribuci souborů mezi více připojené disky.
 * Pro požadavky na nejvyšší IOPS můžete použít Azure Premium Storage, který je k dispozici na DS-series a GS-series virtuálních počítačů.
@@ -1363,7 +1363,7 @@ Důrazně doporučujeme používat nejnovější verzi systému Microsoft Window
 
 ### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>Pokyny ke konfiguraci serveru obsahu SAP pro SAP instalace ve virtuálních počítačích Azure
 #### <a name="storage-configuration"></a>Konfigurace úložiště
-Pokud nakonfigurujete Server obsahu SAP k ukládání souborů v databázi SAP MaxDB, všechny úložiště Azure osvědčených postupů doporučení uvedená pro SAP MaxDB v kapitole [konfigurace úložiště] [ dbms-guide-8.4.1] platí také pro scénář obsahu serveru SAP. 
+Pokud nakonfigurujete Server obsahu SAP k ukládání souborů v databázi SAP MaxDB, všechny úložiště Azure osvědčených postupů doporučení uvedená pro SAP MaxDB v kapitole [konfigurace úložiště] [ dbms-guide-8.4.1] jsou platná pro scénář obsahu serveru SAP. 
 
 Pokud nakonfigurujete Server obsahu SAP k uložení souborů v systému souborů, doporučujeme použít vyhrazený logické jednotky. Použití prostorů úložiště systému Windows umožňuje také zvýšit velikost logického disku a propustnost IOPS, jak je popsáno v kapitole [softwaru diskového pole RAID][dbms-guide-2.2]. 
 
@@ -1386,7 +1386,7 @@ Zde máte dvě možnosti:
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
 #### <a name="backup--restore"></a>Backup / obnovení
-Při konfiguraci serveru SAP obsahu k ukládání souborů v databázi SAP MaxDB, zálohování a obnovení postupu a výkonové požadavky jsou již popsané v kapitole SAP MaxDB [zálohování a obnovení] [ dbms-guide-8.4.2] a kapitoly [otázky výkonu při zálohování a obnovení][dbms-guide-8.4.3]. 
+Při konfiguraci serveru SAP obsahu k ukládání souborů v databázi SAP MaxDB, zálohování a obnovení postupu a výkonové požadavky jsou již popsané v kapitole SAP MaxDB [zálohování a obnovení] [ dbms-guide-8.4.2]a kapitoly [otázky výkonu při zálohování a obnovení][dbms-guide-8.4.3]. 
 
 Při konfiguraci serveru SAP obsahu k uložení souborů v systému souborů, jednou z možností je provést ruční zálohování nebo obnovení struktury celý soubor, kde se nachází v dokumentech. Podobně jako SAP MaxDB zálohování a obnovení, se doporučuje mít vyhrazeným diskovým svazek pro zálohování účel. 
 
@@ -1414,7 +1414,7 @@ Všechny soubory databáze musí být uložen v systému souborů NTFS podle př
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
 
-Pokud používáte disky na základě úložiště objektů BLOB stránky Azure nebo spravovat disky, příkazy provedené v tomto dokumentu v kapitole [struktura nasazení RDBMS] [ dbms-guide-2] platí také pro nasazení s IBM DB2 LUW databáze. 
+Pokud používáte disky na základě úložiště objektů BLOB stránky Azure nebo spravovat disky, příkazy provedené v tomto dokumentu v kapitole [struktura nasazení RDBMS] [ dbms-guide-2] platí také pro nasazení s IBM DB2 pro LUW Databáze. 
 
 Jak je popsáno výše v části Obecné v dokumentu, existují kvóty na propustnost IOPS pro disky. Přesný kvóty závisí na typu virtuálního počítače použít. Seznam typů virtuálních počítačů s jejich kvóty najdete [zde (Linux)] [ virtual-machines-sizes-linux] a [zde (Windows)][virtual-machines-sizes-windows].
 
@@ -1422,7 +1422,7 @@ Tak dlouho, dokud stačí aktuální kvóty IOPS na disk, je možné uložit vš
 
 Výkon aspekty také naleznete kapitoly "Data zabezpečení a důležité informace o výkonu pro databázi adresáře" v příručkách instalace SAP.
 
-Alternativně můžete použít fondy úložiště systému Windows (pouze k dispozici v systému Windows Server 2012 a vyšší) nebo proložení Windows pro systém Windows 2008 R2 jako popsané v kapitole [softwaru diskového pole RAID] [ dbms-guide-2.2] v tomto dokumentu vytvořte jeden velké logické zařízení přes několik disků.
+Alternativně můžete použít fondy úložiště systému Windows (pouze k dispozici v systému Windows Server 2012 a vyšší) nebo proložení Windows pro systém Windows 2008 R2 jako popsané v kapitole [softwaru diskového pole RAID] [ dbms-guide-2.2] tohoto dokumentu Vytvořte jeden velký logického zařízení přes několik disků.
 Pro disky obsahující cesty úložiště DB2 pro sapdata a saptmp adresářů musíte zadat velikost sektoru fyzického disku 512 KB. Pokud používáte fondy úložišť systému Windows, je třeba vytvořit fondy úložiště ručně pomocí rozhraní příkazového řádku pomocí parametru `-LogicalSectorSizeDefault`. Další informace najdete v tématu <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>.
 
 #### <a name="backuprestore"></a>Zálohování a obnovení
@@ -1446,7 +1446,7 @@ Microsoft Cluster Server (MSCS) není podporována.
 
 Zotavení po havárii DB2 vysokou dostupnost (HADR) je podporováno. Pokud virtuální počítače HA konfigurace funguje překlad, instalační program v Azure se neliší od žádné nastavení, která se provádí na místě. Není doporučeno spoléhají na pouze pro překlad IP.
 
-Nepoužívejte geografická replikace pro účty úložiště, které ukládají databáze disky. Další informace najdete v části kapitoly [Microsoft Azure Storage] [ dbms-guide-2.3] a kapitoly [vysokou dostupnost a zotavení po havárii s virtuálními počítači Azure][dbms-guide-3].
+Nepoužívejte geografická replikace pro účty úložiště, které ukládají databáze disky. Další informace najdete v části kapitoly [Microsoft Azure Storage] [ dbms-guide-2.3] a kapitoly [vysokou dostupnost a zotavení po havárii s virtuálními počítači Azure] [ dbms-guide-3].
 
 #### <a name="other"></a>Ostatní
 Všechny ostatní obecné oblasti jako skupiny dostupnosti Azure nebo SAP monitorování platí jak je popsáno v první tři kapitol tohoto dokumentu pro nasazení virtuálních počítačů s IBM DB2 pro LUW také. 
@@ -1500,7 +1500,7 @@ Pokud chcete zvýšit počet cílů k zápisu, může být dvě možnosti, podle
 #### <a name="high-availability-and-disaster-recovery"></a>Vysoká dostupnost a zotavení po havárii
 Zotavení po havárii DB2 vysokou dostupnost (HADR) je podporováno. Pokud virtuální počítače HA konfigurace funguje překlad, instalační program v Azure se neliší od žádné nastavení, která se provádí na místě. Není doporučeno spoléhají na pouze pro překlad IP.
 
-Nepoužívejte geografická replikace pro účty úložiště, které ukládají databáze disky. Další informace najdete v části kapitoly [Microsoft Azure Storage] [ dbms-guide-2.3] a kapitoly [vysokou dostupnost a zotavení po havárii s virtuálními počítači Azure][dbms-guide-3].
+Nepoužívejte geografická replikace pro účty úložiště, které ukládají databáze disky. Další informace najdete v části kapitoly [Microsoft Azure Storage] [ dbms-guide-2.3] a kapitoly [vysokou dostupnost a zotavení po havárii s virtuálními počítači Azure] [ dbms-guide-3].
 
 #### <a name="other"></a>Ostatní
 Jak je popsáno v první tři kapitol tohoto dokumentu pro nasazení virtuálních počítačů s IBM DB2 pro LUW také použít všechny ostatní obecné témata jako skupiny dostupnosti Azure nebo SAP monitorování.
