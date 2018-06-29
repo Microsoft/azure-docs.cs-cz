@@ -7,14 +7,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand how to create zone-redundant gateways.
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 06/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: a08c0f772965ddb2b40ac1ced1f26ade4cba3197
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: c484358bf98f0121cfc3ce270b162b01c75b5b09
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017028"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096229"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones---preview"></a>Vytvoření brány zónově redundantní virtuální sítě v Azure dostupnost zóny - Preview
 
@@ -177,7 +177,7 @@ V tomto kroku zvolte pokynů, které se týkají brány, kterou chcete vytvořit
 Vyžádání veřejné IP adresy s **standardní** PublicIpaddress SKU a nezadávejte žádné zóny. V takovém případě bude standardní veřejnou IP adresu vytvořit zónově redundantní veřejnou IP adresu.   
 
 ```azurepowershell-interactive
-$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Standard
+$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
 ```
 
 ### <a name="ipzonalgw"></a>Pro oblastmi brány
@@ -185,7 +185,7 @@ $pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Nam
 Vyžádání veřejné IP adresy s **standardní** PublicIpaddress SKU. Určete pásmo (1, 2 nebo 3). V této zóně budou nasazeny všechny instance brány.
 
 ```azurepowershell-interactive
-$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Standard -Zone 1
+$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
 ```
 
 ### <a name="ipregionalgw"></a>Pro místní brány

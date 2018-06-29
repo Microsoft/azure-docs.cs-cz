@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/06/2018
 ms.author: douglasl
-ms.openlocfilehash: b4e8a2dba65973919d9716655c4fbb4d533b1c78
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 14cb59487788f272533fd7ec7eccf313654bf857
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824927"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082803"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Výpočetní prostředí podporovaných službou Azure Data Factory
 Tento článek vysvětluje různé výpočetní prostředí, které můžete použít k datům procesu nebo transformace. Obsahuje také podrobnosti o různých konfiguracích (na vyžádání oproti přineste si vlastní) podporovaných službou Data Factory při konfiguraci propojených služeb propojení tyto výpočetní prostředí s objektem pro vytváření dat Azure.
@@ -106,7 +106,7 @@ Následující kód JSON určuje základě Linux na vyžádání propojené slu�
 | linkedServiceName            | Propojená služba má být používána clusteru na vyžádání pro ukládání a zpracování dat Azure Storage. HDInsight cluster vytvoří ve stejné oblasti jako účet úložiště Azure. Pro Azure HDInsight platí omezení celkového počtu jader, které můžete v jednotlivých podporovaných oblastech použít. Ujistěte se, že máte dostatek základní kvóty v této oblasti Azure ke splnění požadovaných parametr clusterSize. Podrobnosti najdete v části [nastavit clusterů v HDInsight Hadoop, Spark, Kafka a dalšími](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)<p>V současné době nelze vytvořit cluster HDInsight na vyžádání, který používá jako úložiště Azure Data Lake Store. Pokud chcete uložit výsledek data z HDInsight zpracování v Azure Data Lake Store, pomocí aktivity kopírování zkopírovat data z Azure Blob Storage do Azure Data Lake Store. </p> | Ano      |
 | clusterResourceGroup         | HDInsight cluster vytvoří v této skupině prostředků. | Ano      |
 | TimeToLive                   | Povolené doby nečinnosti pro cluster HDInsight na vyžádání. Určuje, jak dlouho clusteru HDInsight na vyžádání zůstane aktivní po dokončení činnosti spustit, pokud nejsou žádné aktivní úlohy v clusteru. Minimální povolená hodnota je 5 minut (00: 05:00).<br/><br/>Například pokud spuštění aktivity trvá 6 minut a timetolive nastavena na 5 minut, clusteru zůstává aktivní po dobu 5 minut po spuštění 6 minut zpracování aktivity. Pokud se okno 6 minut proveden jiné aktivity při spuštění, je zpracován stejného clusteru.<br/><br/>Vytvoření clusteru HDInsight na vyžádání je náročná operace (může trvat), takže použití tohoto nastavení podle potřeby ke zlepšení výkonu služby data factory pomocí opakovaného použití clusteru HDInsight na vyžádání.<br/><br/>Pokud hodnota timetolive nastavíte na 0, odstranění clusteru ihned po dokončení spuštění aktivity. Vzhledem k tomu, pokud jste nastavili na vysokou hodnotu, cluster může zůstat nečinné přihlášení pro některá řešení potíží s účel, ale může mít za následek vysoké náklady. Proto je důležité nastavit odpovídající hodnotu na základě potřeb.<br/><br/>Pokud je hodnota vlastnosti timetolive správně nastavena, více kanálů sdílet instanci clusteru HDInsight na vyžádání. | Ano      |
-| clusterType                  | Typ clusteru HDInsight, který se má vytvořit. Povolené hodnoty jsou "hadoop" a "spark". Pokud není zadáno, výchozí hodnota je hadoop. | Ne       |
+| clusterType                  | Typ clusteru HDInsight, který se má vytvořit. Povolené hodnoty jsou "hadoop" a "spark". Pokud není zadáno, výchozí hodnota je hadoop. Balíček zabezpečení Enterprise povoleno clusteru není aktuálně podporována. | Ne       |
 | verze                      | Verze clusteru HDInsight. Pokud není zadaný, používá aktuální verze definované výchozí HDInsight. | Ne       |
 | hostSubscriptionId           | ID předplatného Azure, použít k vytvoření clusteru HDInsight. Pokud není zadaný, používá ID předplatného Azure přihlašovacího kontextu. | Ne       |
 | clusterNamePrefix           | Předpona názvu clusteru HDI, časového razítka se automaticky připojí na konci názvu clusteru| Ne       |
@@ -123,6 +123,10 @@ Následující kód JSON určuje základě Linux na vyžádání propojené slu�
 
 > [!IMPORTANT]
 > HDInsight podporuje více verzích clusterů Hadoop, které lze nasadit. Každou verzi volbu vytvoří na konkrétní verzi rozdělení Hortonworks Data Platform (HDP) a sadu součástí, které jsou obsaženy v rámci této distribuce. Seznam podporovaných verzí HDInsight zajišťuje, aktualizovaných poskytovat nejnovější komponenty ekosystém Hadoop a opravy. Zajistěte, aby vždy odkazují na nejnovější informace z [HDInsight podporované verze a operační systém typu](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions) zajistit používáte podporovanou verzi HDInsight. 
+>
+> 
+> [!IMPORTANT]
+> V současné době HDInsight, HBase, interaktivní dotazu (Hive LLAP), Storm a podnikové zabezpečení povolené (doméně) nepodporuje propojené služby clusterů. 
 >
 > 
 
@@ -149,7 +153,7 @@ Použijte objekt zabezpečení ověřování služby tak, že zadáte následuj�
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Zadejte ID aplikace klienta.     | Ano      |
 | **servicePrincipalKey** | Zadejte klíč aplikace.           | Ano      |
-| **Klienta**              | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete ji načíst podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano      |
+| **klienta**              | Zadejte informace o klienta (název nebo klienta domény ID) v rámci které se nachází aplikace. Můžete ji načíst podržením ukazatele myši v pravém horním rohu portálu Azure. | Ano      |
 
 ### <a name="advanced-properties"></a>Rozšířené vlastnosti
 
@@ -295,6 +299,10 @@ Můžete vytvořit propojené služby Azure HDInsight k registraci vlastní clus
 > [!IMPORTANT]
 > HDInsight podporuje více verzích clusterů Hadoop, které lze nasadit. Každou verzi volbu vytvoří na konkrétní verzi rozdělení Hortonworks Data Platform (HDP) a sadu součástí, které jsou obsaženy v rámci této distribuce. Seznam podporovaných verzí HDInsight zajišťuje, aktualizovaných poskytovat nejnovější komponenty ekosystém Hadoop a opravy. Zajistěte, aby vždy odkazují na nejnovější informace z [HDInsight podporované verze a operační systém typu](../hdinsight/hdinsight-component-versioning.md#supported-hdinsight-versions) zajistit používáte podporovanou verzi HDInsight. 
 >
+> [!IMPORTANT]
+> V současné době HDInsight, HBase, interaktivní dotazu (Hive LLAP), Storm a podnikové zabezpečení povolené (doméně) nepodporuje propojené služby clusterů. 
+>
+> 
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch propojené služby
 

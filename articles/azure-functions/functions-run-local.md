@@ -1,6 +1,6 @@
 ---
-title: Vývoj a spustit místně na Azure functions | Microsoft Docs
-description: Zjistěte, jak kód a testovat Azure functions v místním počítači před spuštěním na Azure Functions.
+title: Práce s Azure Functions základní nástroje | Microsoft Docs
+description: Zjistěte, jak kód a testovat Azure functions z příkazového řádku nebo Terminálové v místním počítači před spuštěním na Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -12,30 +12,34 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/03/2018
+ms.date: 06/26/2018
 ms.author: glenga
-ms.openlocfilehash: 5613b6b30d97b88bdfa6b00f90e334f1756ad614
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 5c582b080ec6f2cff801758fc4bff4f7d07fd7df
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294479"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083065"
 ---
-# <a name="code-and-test-azure-functions-locally"></a>Kód a testovat místně na Azure Functions
+# <a name="work-with-azure-functions-core-tools"></a>Práce s Azure Functions základní nástroje
 
-Když [Azure Portal] poskytuje úplnou sadu nástrojů pro vývoj a testování Azure Functions se celá řada vývojářů raději místní vývojové prostředí. Azure Functions umožňuje snadno použít editor Oblíbené kódu a místní vývojové nástroje pro vývoj a testování funkcí v místním počítači. Funkce můžete aktivovat pro události v Azure a při ladění vašich C# a funkce jazyka JavaScript v místním počítači. 
+Nástroje Azure základní funkce umožňuje vývoj a testování funkcí v místním počítači z příkazového řádku nebo terminál. Lokální funkce se může připojit k Azure služby live a funkcí můžete ladit v místním počítači pomocí úplné funkce runtime. Funkce aplikace můžete nasadit i do vašeho předplatného Azure.
 
-Pokud jste Azure Functions Visual Studio C# vývojář, také [se integruje s Visual Studio 2017](functions-develop-vs.md).
+[!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
 
->[!IMPORTANT]  
-> Nemíchat místní vývoj pomocí portálu vývoj v aplikaci stejné funkce. Při vytváření a publikování funkce z místní projektu, by neměl pokusíte udržovat nebo upravit kód projektu na portálu.
+## <a name="core-tools-versions"></a>Základní verze nástroje
+
+Existují dvě verze nástroje základní funkce Azure. Verze, kterou použijete, závisí na vaší místní vývojové prostředí, volba jazyka a úroveň požadované podpory:
+
++ [Verze 1.x](#v1): podporuje verze 1.x modul runtime, který je obvykle dostupná (GA). Tato verze nástroje je podporován pouze na počítačích s Windows a je nainstalovat z [balíčku npm](https://docs.npmjs.com/getting-started/what-is-npm). S touto verzí můžete vytvořit v experimentální jazyky, které nejsou oficiálně podporované funkce. Další informace najdete v tématu [podporované jazyky v Azure Functions](supported-languages.md)
+
++ [Verze 2.x](#v2): podporuje verze 2.x modulu runtime. Tato verze podporuje [Windows](#windows-npm), [systému macOS](#brew), a [Linux](#linux). Používá správce balíčku specifické pro platformu nebo npm pro instalaci. Jako modul runtime 2.x je tato verze nástroje základní aktuálně ve verzi preview.
+
+Pokud není uvedeno jinak, příklady v tomto článku jsou verze 2.x.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Instalace nástrojů Azure Functions Core
 
-[Azure Functions základní nástroje] je místní verzi modulu runtime Azure Functions, který můžete spustit na místním vývojovém počítači. Není emulátor ani simulátor. Je stejný modul runtime, který zajišťuje funkce v Azure. Existují dvě verze nástroje základní funkce Azure:
-
-+ [Verze 1.x](#v1): podporuje verze 1.x modulu runtime. Tuto verzi je podporována pouze na počítačích s Windows a je nainstalovat z [balíčku npm](https://docs.npmjs.com/getting-started/what-is-npm).
-+ [Verze 2.x](#v2): podporuje verze 2.x modulu runtime. Tato verze podporuje [Windows](#windows-npm), [systému macOS](#brew), a [Linux](#linux). Používá správce balíčku specifické pro platformu nebo npm pro instalaci. 
+[Azure Functions základní nástroje] obsahuje verzi stejné runtime, která pohání modulu runtime Azure Functions, který můžete spustit na místním vývojovém počítači. Také poskytuje příkazy pro vytvoření funkce, připojení k Azure a nasazení funkce projekty.
 
 ### <a name="v1"></a>Verze 1.x
 
@@ -115,23 +119,11 @@ Následující postup použijte [byt č](https://wiki.debian.org/Apt) při insta
     sudo apt-get install azure-functions-core-tools
     ```
 
-## <a name="run-azure-functions-core-tools"></a>Spuštění nástrojů Azure Functions jádra
-
-Nástroje Azure základní funkce přidá následující aliasy příkazů:
-
-+ **Func**
-+ **azfun**
-+ **azurefunctions**
-
-Některé z těchto aliasy slouží kde `func` je zobrazeno v příkladech.
-
-```bash
-func init MyFunctionProj
-```
-
 ## <a name="create-a-local-functions-project"></a>Vytvoření projektu místní funkce
 
-Při místním spuštění projektu funkce je adresář, který má soubory [host.json](functions-host-json.md) a [local.settings.json](#local-settings-file). Tento adresář je ekvivalentem funkce aplikace v Azure. Další informace o struktuře složky Azure Functions najdete v tématu [Příručka pro vývojáře Azure Functions](functions-reference.md#folder-structure).
+Adresář projektu funkce obsahuje soubory [host.json](functions-host-json.md) a [local.settings.json](#local-settings-file), podél podsložkám, které obsahují kódu pro jednotlivé funkce. Tento adresář je ekvivalentem funkce aplikace v Azure. Další informace o struktuře složky funkce, najdete v článku [Příručka pro vývojáře Azure Functions](functions-reference.md#folder-structure).
+
+Verze 2.x vyžaduje, abyste při inicializaci a použijte výchozí jazyk šablony přidat všechny funkce, vyberte výchozí jazyk pro váš projekt. Ve verzi 1.x, zadáte jazyk pokaždé, když vytvoříte funkci.
 
 V okně terminálu nebo z příkazového řádku spusťte následující příkaz pro vytvoření projektu a místní úložiště Git:
 
@@ -139,14 +131,23 @@ V okně terminálu nebo z příkazového řádku spusťte následující příka
 func init MyFunctionProj
 ```
 
-Výstup bude vypadat jako v následujícím příkladu:
+Ve verzi 2.x, když spustíte příkaz musíte zvolit modul runtime pro váš projekt. Pokud máte v plánu k vývoji funkce jazyka JavaScript, zvolte **uzlu**:
 
 ```output
+Select a worker runtime:
+dotnet
+node
+```
+
+Nahoru/dolů klávesy se šipkami vybrat jazyk, stiskněte klávesu Enter. Výstup bude vypadat jako v následujícím příkladu pro projekt jazyka JavaScript:
+
+```output
+Select a worker runtime: node
 Writing .gitignore
 Writing host.json
 Writing local.settings.json
-Created launch.json
-Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
+Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
+Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 ```
 
 Chcete-li vytvořit projekt bez místní úložiště Git, použijte `--no-source-control [-n]` možnost.
@@ -165,15 +166,15 @@ Soubor local.settings.json ukládá nastavení aplikace, řetězce připojení a
 
 ```json
 {
-  "IsEncrypted": false,   
+  "IsEncrypted": false,
   "Values": {
-    "AzureWebJobsStorage": "<connection-string>", 
+    "AzureWebJobsStorage": "<connection-string>",
     "AzureWebJobsDashboard": "<connection-string>",
     "MyBindingConnection": "<binding-connection-string>"
   },
   "Host": {
-    "LocalHttpPort": 7071, 
-    "CORS": "*" 
+    "LocalHttpPort": 7071,
+    "CORS": "*"
   },
   "ConnectionStrings": {
     "SQLConnectionString": "Value"
@@ -183,8 +184,8 @@ Soubor local.settings.json ukládá nastavení aplikace, řetězce připojení a
 
 | Nastavení      | Popis                            |
 | ------------ | -------------------------------------- |
-| **isEncrypted** | Pokud nastavíte hodnotu **true**, všechny hodnoty jsou šifrované pomocí klíče místního počítače. Použít s `func settings` příkazy. Výchozí hodnota je **false**. |
-| **Hodnoty** | Kolekce nastavení aplikace a připojovacích řetězců použít při místním spuštění. Tyto odpovídají nastavení aplikace v aplikaci funkce v Azure, jako například **AzureWebJobsStorage** a **AzureWebJobsDashboard**. Mnoho triggerů a vazeb mají vlastnost, která odkazuje na nastavení aplikace připojovací řetězec, například **připojení** pro [aktivační události objektu Blob úložiště](functions-bindings-storage-blob.md#trigger---configuration). Pro tyto vlastnosti je třeba definované v nastavení aplikace **hodnoty** pole. <br/>**AzureWebJobsStorage** je nastavení požadovaná aplikace pro aktivační procedury než HTTP. Pokud máte [emulátoru úložiště Azure](../storage/common/storage-use-emulator.md) nainstalovány místně, můžete nastavit **AzureWebJobsStorage** k `UseDevelopmentStorage=true` a základní nástroje používá emulátor. To je užitečné při vývoji, ale měli byste otestovat s připojením k skutečné úložiště před nasazením. |
+| **IsEncrypted** | Pokud nastavíte hodnotu **true**, všechny hodnoty jsou šifrované pomocí klíče místního počítače. Použít s `func settings` příkazy. Výchozí hodnota je **false**. |
+| **Hodnoty** | Kolekce nastavení aplikace a připojovacích řetězců použít při místním spuštění. Tyto hodnoty odpovídají nastavení aplikace v aplikaci funkce v Azure, jako například **AzureWebJobsStorage** a **AzureWebJobsDashboard**. Mnoho triggerů a vazeb mají vlastnost, která odkazuje na nastavení aplikace připojovací řetězec, například **připojení** pro [aktivační události objektu Blob úložiště](functions-bindings-storage-blob.md#trigger---configuration). Pro tyto vlastnosti je třeba definované v nastavení aplikace **hodnoty** pole. <br/>**AzureWebJobsStorage** je nastavení požadovaná aplikace pro aktivační procedury než HTTP. Pokud máte [emulátoru úložiště Azure](../storage/common/storage-use-emulator.md) nainstalovány místně, můžete nastavit **AzureWebJobsStorage** k `UseDevelopmentStorage=true` a základní nástroje používá emulátor. To je užitečné při vývoji, ale měli byste otestovat s připojením k skutečné úložiště před nasazením. |
 | **Hostitel** | Nastavení v této části přizpůsobit funkce hostitelský proces, při místním spuštění. |
 | **LocalHttpPort** | Nastaví výchozí port použitý při spuštění místního hostitele funkce (`func host start` a `func run`). `--port` Možnost příkazového řádku má přednost před tuto hodnotu. |
 | **CORS** | Definuje zdroje povolené pro [(CORS) pro sdílení prostředků různého původu](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). Zdroje se zadávají jako seznam oddělený čárkami bez mezer. Hodnota zástupného znaku (\*) je podporováno, což umožňuje požadavky od jakýkoli původ. |
@@ -229,39 +230,65 @@ I když pro vývoj pomocí emulátoru úložiště, můžete otestovat s připoj
     func azure storage fetch-connection-string <StorageAccountName>
     ```
     
-    Oba příkazy vyžadovat, abyste první přihlášení do Azure.
+    Pokud už nejste přihlášení do Azure, budete vyzváni k tomu.
 
-<a name="create-func"></a>
-## <a name="create-a-function"></a>Vytvoření funkce
+## <a name="create-func"></a>Vytvoření funkce
 
 Pokud chcete vytvořit funkci, spusťte následující příkaz:
 
 ```bash
 func new
-``` 
-`func new` podporuje následující volitelné argumenty:
-
-| Argument     | Popis                            |
-| ------------ | -------------------------------------- |
-| **`--language -l`** | Šablona programovací jazyk, například C#, F # nebo JavaScript. |
-| **`--template -t`** | Název šablony. |
-| **`--name -n`** | Název funkce. |
-
-Například pokud chcete vytvořit aktivační událost jazyka JavaScript HTTP, spusťte tento příkaz:
-
-```bash
-func new --language JavaScript --template "Http Trigger" --name MyHttpTrigger
 ```
 
-Chcete-li vytvořit funkci aktivovaného fronty, spusťte:
+Ve verzi 2.x, když spustíte `func new` budete vyzváni k výběru šablony ve výchozím jazyce funkce aplikace a potom zobrazí výzva k zvolte název funkce. Ve verzi 1.x, zobrazí výzva k volbě jazyka.
+
+```output
+Select a language: Select a template:
+Blob trigger
+Cosmos DB trigger
+Event Grid trigger
+HTTP trigger
+Queue trigger
+SendGrid
+Service Bus Queue trigger
+Service Bus Topic trigger
+Timer trigger
+```
+
+Funkce kód je vygenerován v podsložce s názvem zadané funkce, jak můžete vidět v následující aktivační událost výstupní fronty:
+
+```output
+Select a language: Select a template: Queue trigger
+Function name: [QueueTriggerJS] MyQueueTrigger
+Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\index.js
+Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\readme.md
+Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\sample.dat
+Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
+```
+
+Tyto možnosti můžete zadat také v příkaz s těmito argumenty:
+
+| Argument     | Popis                            |
+| ------------------------------------------ | -------------------------------------- |
+| **`--language -l`**| Šablona programovací jazyk, například C#, F # nebo JavaScript. Tato možnost je vyžadována ve verzi 1.x. Ve verzi 2.x, tuto možnost použijte, nebo vyberte výchozí jazyk projektu. |
+| **`--template -t`** | Název šablony, které může být jedna z hodnot:<br/><ul><li>`Blob trigger`</li><li>`Cosmos DB trigger`</li><li>`Event Grid trigger`</li><li>`HTTP trigger`</li><li>`Queue trigger`</li><li>`SendGrid`</li><li>`Service Bus Queue trigger`</li><li>`Service Bus Topic trigger`</li><li>`Timer trigger`</li></ul> |
+| **`--name -n`** | Název funkce. |
+
+Například pokud chcete vytvořit aktivační událost JavaScript HTTP v příkazu, spusťte tento příkaz:
 
 ```bash
-func new --language JavaScript --template "Queue Trigger" --name QueueTriggerJS
-```bash
-<a name="start"></a>
-## Run functions locally
+func new --template "Http Trigger" --name MyHttpTrigger
+```
 
-To run a Functions project, run the Functions host. The host enables triggers for all functions in the project:
+Chcete-li vytvořit funkci aktivovaného fronty v příkazu, spusťte:
+
+```bash
+func new --template "Queue Trigger" --name QueueTriggerJS
+```
+
+## <a name="start"></a>Místní spuštění funkce
+
+Pokud chcete spustit funkce projektu, spusťte hostiteli funkce. Hostitel umožňuje aktivačních událostí pro všechny funkce v projektu:
 
 ```bash
 func host start
@@ -272,13 +299,13 @@ func host start
 | Možnost     | Popis                            |
 | ------------ | -------------------------------------- |
 |**`--port -p`** | Místní port pro naslouchání. Výchozí hodnota: 7071. |
-| **`--debug <type>`** | Možnosti jsou `VSCode` a `VS`. |
+| **`--debug <type>`** | Spustí hostitele s portem ladění otevřete tak, aby se můžete připojit k **func.exe** procesů z [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) nebo [Visual Studio 2017](functions-dotnet-class-library.md). *\<Typ\>* možnosti jsou `VSCode` a `VS`.  |
 | **`--cors`** | Seznam původů CORS, bez mezer oddělených čárkami. |
 | **`--nodeDebugPort -n`** | Port pro uzel ladicí program používat. Výchozí hodnota: Hodnota z launch.json nebo 5858. |
 | **`--debugLevel -d`** | Úroveň trasování konzoly (vypnuto, podrobné nastavení, informace, varování nebo chyba). Výchozí: informace.|
 | **`--timeout -t`** | Časový limit pro hostitele funkce spustit v sekundách. Výchozí hodnota: 20 sekund.|
-| **`--useHttps`** | Vytvořit vazbu na https://localhost:{port} spíše než do http://localhost:{port}. Ve výchozím nastavení tato možnost vytvoří důvěryhodný certifikát v počítači.|
-| **`--pause-on-error`** | Pozastavení další vstupní před ukončení procesu. Užitečné při spuštění nástroje základní funkce Azure z integrované vývojové prostředí (IDE).|
+| **`--useHttps`** | Vytvořit vazbu na `https://localhost:{port}` spíše než do `http://localhost:{port}`. Ve výchozím nastavení tato možnost vytvoří důvěryhodný certifikát v počítači.|
+| **`--pause-on-error`** | Pozastavení další vstupní před ukončení procesu. Použít při spuštění z Visual Studio nebo VS Code nástrojů jádra.|
 
 Při spuštění funkce hostitele výstupy funkce aktivované protokolem URL HTTP:
 
@@ -290,28 +317,9 @@ Job host started
 Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 
-### <a name="vs-debug"></a>Ladění ve VS Code nebo Visual Studio
-
-Chcete-li připojit ladicí program, předat `--debug` argument. Chcete-li ladit funkce jazyka JavaScript, použijte Visual Studio Code. Pro C# funkce použijte sadu Visual Studio.
-
-Chcete-li ladit funkce jazyka C#, použijte `--debug vs`. Můžete také použít [Azure funkce 2017 nástroje sady Visual Studio](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/). 
-
-Spusťte hostiteli a nastavte ladění jazyka JavaScript, spusťte příkaz:
-
-```bash
-func host start --debug vscode
-```
-
-> [!IMPORTANT]
-> Pro ladění, pouze Node.js 8.x je podporována. Node.js 9.x není podporován. 
-
-Potom v sadě Visual Studio Code v **ladění** zobrazit, vyberte možnost **připojit k Azure Functions**. Můžete připojit zarážky, zkontrolujte proměnné a krok prostřednictvím kódu.
-
-![Ladění jazyka JavaScript s kódem jazyka Visual Studio](./media/functions-run-local/vscode-javascript-debugging.png)
-
 ### <a name="passing-test-data-to-a-function"></a>Předávání testů dat na funkci
 
-K testování funkcí místně, můžete [spuštění funkce hostitele](#start) a volání koncové body na místním serveru pomocí protokolu HTTP žádosti. Koncový bod, které volat závisí na typu funkce. 
+K testování funkcí místně, můžete [spuštění funkce hostitele](#start) a volání koncové body na místním serveru pomocí protokolu HTTP žádosti. Koncový bod, které volat závisí na typu funkce.
 
 >[!NOTE]  
 > Příklady v tomto tématu použít nástroj cURL k odeslání požadavků HTTP z terminálu nebo z příkazového řádku. Nástroj podle svého výběru slouží k odesílání požadavků HTTP na místním serveru. Nástroj cURL je k dispozici ve výchozím nastavení počítače se systémem Linux. V systému Windows, musíte nejdřív stáhnout a nainstalovat [cURL nástroj](https://curl.haxx.se/).
@@ -340,6 +348,7 @@ curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azu
 Můžete nastavit získat požadavky z prohlížeče předávání dat v řetězci dotazu. Pro všechny ostatní metody HTTP musíte použít cURL aplikaci Fiddler, Postman nebo podobné nástroj testování HTTP.  
 
 #### <a name="non-http-triggered-functions"></a>Jiným protokolem než HTTP aktivované funkce
+
 Pro všechny typy funkcí než aktivace protokolu HTTP a pomocí webhooků můžete otestovat funkcí místně voláním koncového bodu správy. Volání metody tento koncový bod s požadavek HTTP POST na místním serveru aktivuje funkce. Volitelně můžete předat data testovací spuštění v textu požadavku POST. Tato funkce je podobná **Test** na portálu Azure.  
 
 Zavoláte následující koncový bod správce k aktivaci funkce jiným protokolem než HTTP:
@@ -352,8 +361,9 @@ Chcete-li předat test data ke koncovému bodu správce funkce, je nutné zadat 
 {
     "input": "<trigger_input>"
 }
-```` 
-`<trigger_input>` Hodnota obsahuje data ve formátu očekávanou funkce. Následující příklad cURL je metodu POST SMĚŘUJÍCÍ `QueueTriggerJS` funkce. V takovém případě je vstupní řetězec, který je ekvivalentem zprávy očekává ve frontě.      
+````
+
+`<trigger_input>` Hodnota obsahuje data ve formátu očekávanou funkce. Následující příklad cURL je metodu POST SMĚŘUJÍCÍ `QueueTriggerJS` funkce. V takovém případě je vstupní řetězec, který je ekvivalentem zprávy očekává ve frontě.
 
 ```bash
 curl --request POST -H "Content-Type:application/json" --data '{"input":"sample queue data"}' http://localhost:7071/admin/functions/QueueTriggerJS
@@ -407,7 +417,8 @@ Tento příkaz publikuje do stávající funkce aplikace v Azure. Dojde k chybě
 
 >[!IMPORTANT]  
 > Když vytvoříte aplikaci funkce v Azure, používá verzi 1.x modulu runtime funkce ve výchozím nastavení. Chcete-li funkce aplikace použitelná verze 2.x modulu runtime přidat nastavení aplikace `FUNCTIONS_EXTENSION_VERSION=beta`.  
-Použijte následující kód rozhraní příkazového řádku Azure pro přidání do aplikaci funkce toto nastavení: 
+Použijte následující kód rozhraní příkazového řádku Azure pro přidání do aplikaci funkce toto nastavení:
+
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \
 --resource-group myResourceGroup \
@@ -417,7 +428,7 @@ az functionapp config appsettings set --name <function_app> \
 ## <a name="next-steps"></a>Další postup
 
 Nástroje Azure základní funkce je [otevřít zdroj a hostované na Githubu](https://github.com/azure/azure-functions-cli).  
-Do souboru žádost chyb nebo funkce [otevřete potíže Githubu](https://github.com/azure/azure-functions-cli/issues). 
+Do souboru žádost chyb nebo funkce [otevřete potíže Githubu](https://github.com/azure/azure-functions-cli/issues).
 
 <!-- LINKS -->
 

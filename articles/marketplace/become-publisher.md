@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: b3b9228c0733d34ea909a501e8ca6f9e11948381
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 58e3646588e500c4dd5334966d559aaed333b689
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825092"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083157"
 ---
 # <a name="become-a-publisher-in-the-storefronts-on-the-marketplace"></a>Stát vydavatele v obchodní poutače na webu marketplace  
 Následující postup vám pomůže při registraci jako vydavatel v obchodní poutače na webu marketplace. Na základě vaší stávající zapojení se společností Microsoft a vybraný typ seznamu, nemusí být některá z následujících kroků vyžaduje.  
@@ -29,8 +29,7 @@ Následující postup vám pomůže při registraci jako vydavatel v obchodní p
 | 1 | Registrovat v síti partnera společnosti Microsoft | 15 minut | [Registrovat v síti partnera společnosti Microsoft](#register-in-microsoft-partner-network) |  
 | 2 | Vytvoření ID společnosti Microsoft | 15 minut | [Vytvoření ID společnosti Microsoft](#create-a-microsoft-id) |  
 | 3 | Odeslání formuláře navrženém marketplace. | 1 až 3 dnů | [Odeslání formuláře navrženém marketplace.](#submit-the-marketplace-nomination-form) |  
-| 4 | Zaregistrovat v centru Microsoft vývojáře (Dev Center) | 5 až 10 dnů | [Zaregistrovat v centru vývojářů](#register-in-dev-center) |  
-| 5 | Přihlaste se k AppSource | 15 minut | [Přihlaste se k AppSource](#sign-into-appSource) |  
+| 4 | Zaregistrovat v centru Microsoft vývojáře (Dev Center) | 5 až 10 dnů | [Registrace na webu Dev Center](#register-in-dev-center) |  
 | 5 |  Přihlaste se k portálu pro partnery cloudu | 15 minut | [Přihlaste se k portálu pro partnery cloudu](#sign-into-cloud-partner-portal) |  
 
 ## <a name="register-in-microsoft-partner-network"></a>Registrovat v síti partnera společnosti Microsoft  
@@ -81,18 +80,6 @@ Aplikace nebo nabídka je zkontrolovat a ověřit po odeslání formuláře. Pok
 >[!Important]
 >Před pokusem o vytvoření účtu Dev Center, ověřte, že vaše společnost již nemá účet Centrum vývojářů. 
 >*   Další informace najdete v článku [postup registrace na Dev Center](#how-to-register-in-dev-center) části.  
-
----  
-
-## <a name="sign-into-appsource"></a>Přihlaste se k AppSource  
-| 15 minut |  
-Po vaší navrženém je schválená a je zaregistrovaný v MPN a Dev Center, je vytvoření účtu webu marketplace s přístupem k AppSource. Přihlašovací údaje poprvé jsou zasílány v e-mailu schválení navrženém. 
-*   Přístup MPN, najdete na stránce členství v [partner.microsoft.com/membership](https://partner.microsoft.com/membership).  
-*   Pro přístup k centru vývojářů, navštivte stránku nacházející se v centru vývojářů pro Windows [dev.windows.com](https://dev.windows.com).  
-*   Pro přístup k AppSource, najdete na stránce AppSource nacházející se v [appsource.microsoft.com](https://appsource.microsoft.com).  
-*   Přístup k portálu Microsoft Cloud Partner, najdete na portálu pro partnery cloudu stránky nacházející se v [cloudpartner.azure.com](https://cloudpartner.azure.com).  
-*   Další informace o používání cloudové portál pro partnery, naleznete v části Další informace najdete v [cloudpartner.azure.com/#Learn](https://cloudpartner.azure.com/#Learn).  
-*   Dokumentaci ke cloudu portál pro partnery, naleznete v části dokumentace nacházející se v [cloudpartner.azure.com/#documentation](https://cloudpartner.azure.com/#documentation).  
 
 ---  
 

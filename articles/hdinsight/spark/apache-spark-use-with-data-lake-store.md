@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: fa6f93231cba46e29206ec312fb82ad120ed45f6
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: c715ea3a3c4e113ec419919d240716517c28ffb8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31517620"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099516"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-store"></a>Použití clusteru HDInsight Spark k analýze dat v Data Lake Store
 
@@ -28,7 +28,7 @@ V tomto kurzu použijete k dispozici poznámkového bloku Jupyter s clustery HDI
 
 * Účet Azure Data Lake Store. Postupujte podle pokynů v tématu [Začínáme s Azure Data Lake Store s použitím webu Azure Portal](../../data-lake-store/data-lake-store-get-started-portal.md).
 
-* Cluster Azure HDInsight Spark s Data Lake Store jako úložiště. Postupujte podle pokynů v [vytvoření clusteru HDInsight s Data Lake Store pomocí portálu Azure](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+* Cluster Azure HDInsight Spark s Data Lake Store jako úložiště. Postupujte podle pokynů v [rychlý start: nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
     
 ## <a name="prepare-the-data"></a>Příprava dat

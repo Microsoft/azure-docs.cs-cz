@@ -2,19 +2,19 @@
 title: Použít Azure soubor s AKS
 description: Disky systému Azure pomocí AKS
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/21/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d3e92902e711ba2b1664c6497ecb66f035ea9308
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 84500791887194884e1ec7d15ddfbc169ba22517
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597497"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098341"
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Trvalé svazky s soubory Azure
 
@@ -24,7 +24,7 @@ Další informace o Kubernetes trvalé svazky, včetně statické vytváření, 
 
 ## <a name="create-storage-account"></a>Vytvoření účtu úložiště
 
-Při vytváření dynamicky sdílenou složku Azure jako Kubernetes svazek, můžete použít libovolný účet úložiště, dokud se AKS **uzlu** skupinu prostředků. Získat název skupiny prostředků s [az prostředků zobrazit] [ az-resource-show] příkaz.
+Při vytváření dynamicky sdílenou složku Azure jako Kubernetes svazek, můžete použít libovolný účet úložiště, dokud se AKS **uzlu** skupinu prostředků. Toto je to se `MC_` předponu, která byla vytvořená zřizování prostředků pro AKS clusteru. Získat název skupiny prostředků s [az prostředků zobrazit] [ az-resource-show] příkaz.
 
 ```azurecli-interactive
 $ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
@@ -40,13 +40,15 @@ Aktualizace `--resource-group` s názvem skupiny prostředků získané v posled
 az storage account create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
 ```
 
+> Soubory Azure aktuálně pouze pracovat standardní úložiště. Pokud používáte storage úrovně premium, se zřizování nezdaří svazku.
+
 ## <a name="create-storage-class"></a>Vytvoření třídy úložiště
 
 Třídy úložiště se používá k definování, jak vytvořit sdílenou složku Azure. Účet konkrétní úložiště lze zadat v třídě. Pokud není zadán účet úložiště, `skuName` a `location` musí být zadán, a všechny účty úložiště ve skupině prostředků přidružené vyhodnocují shody.
 
 Další informace o Kubernetes třídy úložiště pro soubory Azure najdete v tématu [třídy úložiště Kubernetes][kubernetes-storage-classes].
 
-Vytvořte soubor s názvem `azure-file-sc.yaml` a zkopírujte následující manifestu. Aktualizace `storageAccount` s názvem cílového účtu úložiště.
+Vytvořte soubor s názvem `azure-file-sc.yaml` a zkopírujte následující manifestu. Aktualizace `storageAccount` s názvem cílového účtu úložiště. Najdete v části [možnosti připojení] Další informace na `mountOptions`.
 
 ```yaml
 kind: StorageClass
@@ -54,8 +56,13 @@ apiVersion: storage.k8s.io/v1
 metadata:
   name: azurefile
 provisioner: kubernetes.io/azure-file
+mountOptions:
+  - dir_mode=0777
+  - file_mode=0777
+  - uid=1000
+  - gid=1000
 parameters:
-  storageAccount: mystorageaccount
+  skuName: Standard_LRS
 ```
 
 Vytvoření třídy úložiště s [kubectl použít] [ kubectl-apply] příkaz.
@@ -206,3 +213,4 @@ Další informace o Kubernetes trvalé svazky s využitím Azure Files.
 [az-storage-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list
 [az-storage-share-create]: /cli/azure/storage/share#az_storage_share_create
+[mount-options]: #mount-options

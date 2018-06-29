@@ -1,6 +1,6 @@
 ---
-title: Seznámení s akcelerátorem řešení prediktivní údržby – Azure | Microsoft Docs
-description: Seznámení s akcelerátorem řešení prediktivní údržby Azure IoT.
+title: Přehled akcelerátoru řešení prediktivní údržby – Azure | Microsoft Docs
+description: Přehled akcelerátoru řešení prediktivní údržby Azure IoT.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,14 +8,14 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: dobett
-ms.openlocfilehash: e29975558801b4ffccd38d4485306d25ecaec0aa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6bd61f301fa4468ef1d308d4da275c760ee09dc0
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654826"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37088607"
 ---
-# <a name="predictive-maintenance-solution-accelerator-walkthrough"></a>Seznámení s akcelerátorem řešení prediktivní údržby
+# <a name="predictive-maintenance-solution-accelerator-overview"></a>Přehled akcelerátoru řešení prediktivní údržby
 
 Akcelerátor řešení prediktivní údržby je uceleným řešením pro podnikový scénář, které se pokouší předvídat bod, ve kterém pravděpodobně nastane chyba. Tento akcelerátor řešení můžete aktivně využívat pro různé činnosti, jako je třeba optimalizace údržby. Řešení kombinuje klíčové služby akcelerátorů řešení Azure IoT, jako je služba IoT Hub, Stream Analytics a pracovní prostor [Azure Machine Learning][lnk-machine-learning]. Tento pracovní prostor obsahuje model založený na veřejné ukázkové sadě dat, který předpovídá zbývající dobu životnosti (RUL) leteckého motoru. Řešení nabízí úplnou implementaci daného obchodního scénáře IoT jako výchozího bodu pro plánování a implementaci řešení, které vyhovuje vašim konkrétním obchodním požadavkům.
 
@@ -76,5 +76,5 @@ Můžete si také prostudovat některé další funkce a možnosti akcelerátor�
 [lnk-cortana-analytics]: http://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
 [lnk-azureiotsuite]: https://www.azureiotsolutions.com/
 [lnk-faq]: iot-accelerators-faq.md
-[lnk-security-groundup]:securing-iot-ground-up.md
+[lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/

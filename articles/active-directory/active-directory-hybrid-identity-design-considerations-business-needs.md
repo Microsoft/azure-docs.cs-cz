@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/18/2017
+ms.date: 06/27/2018
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 68a7e71cf374f10b4c5ced3e64da36138b0d2e4d
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: a641464e04421b90de15cd953bb8a0fbf9b687d3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34800720"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084718"
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>Stanovení požadavků na identit pro hybridní řešení identit
 Prvním krokem při navrhování řešení hybridní identity je určit požadavky na obchodní organizace, která bude mít využívání tohoto řešení.  Hybridní identita se spustí jako podpůrné role (podporuje jiných řešení cloud tím, že poskytuje ověřování) a přejde na, zadejte nové a zajímavé funkce, které odemknutí nové úlohy pro uživatele.  Tyto úlohy nebo služby, které chcete použít pro vaše uživatele se určují požadavky na návrh hybridní identity.  Tyto služby a úlohy muset využívají hybridní identita jak místně a v cloudu.  
@@ -58,7 +58,7 @@ Musíte taky zajímat, cloudové služby, které vaše společnost může mít. 
 * Tato integrace je aktuálně v produkčním prostředí, nebo je pilotní nasazení?
 
 > [!NOTE]
-> Pokud nemáte přesné mapování u všech aplikací a cloudové služby, můžete použít nástroj Cloud App Discovery. Tento nástroj můžete poskytnout přehled o všech vaší organizace a příjemce cloudových aplikací vaše IT oddělení. Díky tomu se dají mnohem jednodušeji než dřív objevit ve vaší organizaci skryté IT činnosti, včetně vzorců používání a všech přístupů uživatelů ke cloudovým aplikacím. Získat Začínáme najdete [Cloud app discovery](manage-apps/cloud-app-discovery.md).
+> Cloud Discovery analyzuje protokolů přenosů proti katalogu cloudových aplikací Microsoft Cloud App Security na víc než 16 000 cloudu, které aplikace, které jsou řazením a skóre na základě na více než 70 rizikových faktorů, zajistit s probíhající viditelnost do cloudu použijete, stínové IT a riziko Představuje stínové IT k vaší organizaci. Získat Začínáme najdete [nastavení Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 > 
 > 
 

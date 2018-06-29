@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: mbullwin
-ms.openlocfilehash: 0ee712b24478b52dfc5864e59e885e3b9dd6137b
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: MT
+ms.openlocfilehash: 95e576eb5ce6834e67d997cde57426fd09db4e6a
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294062"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099792"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -128,22 +128,9 @@ Všechna data se šifrují, když se přesunuje mezi datovými centry.
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Má tato data šifrovat během přenosu z mé aplikace na servery Application Insights?
 Ano, používáme protokol https k odesílání dat do portálu od skoro všech sad SDK, včetně webových serverů, zařízení a HTTPS webové stránky. Jedinou výjimkou je dat odesílaných ze prostý webové stránky HTTP. 
 
-## <a name="personally-identifiable-information"></a>Identifikovatelné osobní údaje
-#### <a name="could-personally-identifiable-information-pii-be-sent-to-application-insights"></a>Může být odeslán identifikovatelné osobní informace (PII) do služby Application Insights?
-Ano, je možné. 
+## <a name="personal-data-stored-in-application-insights"></a>Osobní data uložená ve službě Application Insights
 
-Jako obecné pokyny:
-
-* Většina standardní telemetrie (tedy telemetrické zprávy odesílané bez psaní jakéhokoli kódu) nezahrnuje explicitní PII. Nicméně je možné identifikovat jednotlivce odvozená z kolekce událostí.
-* Výjimky a trasování zprávy může obsahovat identifikovatelné osobní údaje
-* Vlastní telemetrii – to znamená, volání například TrackEvent, které můžete psát v kódu pomocí rozhraní API nebo protokolu trasování - může obsahovat žádná data, které zvolíte.
-
-V tabulce na konci tento dokument obsahuje podrobnější popisy data shromážděná.
-
-#### <a name="am-i-responsible-for-complying-with-laws-and-regulations-in-regard-to-pii"></a>Jsem zodpovědná za soulad s právními předpisy ohledně PII?
-Ano. Je vaší povinností ujistit, že se shromažďování a používání dat vyhovuje s právními předpisy a podmínky společnosti Microsoft Online Services.
-
-Vaši zákazníci měli správně informovat o data, která shromažďuje vaší aplikace a jak se data používají.
+Naše [Application Insights osobní data článku](app-insights-customer-data.md) popisuje Toto téma podrobné.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Moji uživatelé vypnout Application Insights?
 Ne přímo. Poskytujeme nemáte přepínač, který vaši uživatelé mohou pracovat vypnout Application Insights.
@@ -154,7 +141,7 @@ Však můžete implementovat této funkce ve vaší aplikaci. Sady SDK zahrnout 
 Application Insights filtrovat nebo odstraňovat data. Měli byste správně spravovat data a vyhnout odesílání taková data do služby Application Insights.
 
 ## <a name="data-sent-by-application-insights"></a>Data odeslaná Application Insights
-Sady SDK se liší mezi platformami a je několik součástí, které můžete nainstalovat. (Odkazovat na [Application Insights - přehled][start].) Jednotlivé komponenty odešle různých data.
+Sady SDK se liší mezi platformami a několik součástí, které můžete nainstalovat. (Odkazovat na [Application Insights - přehled][start].) Jednotlivé komponenty odešle různých data.
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>Třídy dat odesílaných v různých scénářích
 | Vaše akce | Datové třídy, které jsou shromážděny (viz další tabulce) |
@@ -177,7 +164,7 @@ Pro [sady SDK pro jiné platformy][platforms], najdete v části své dokumenty.
 | **Vlastnosti** |**Žádná data - určenému kódu** |
 | DeviceContext |ID, IP, národní prostředí, model zařízení, sítě, typ sítě, název výrobce OEM, rozlišení obrazovky, instanci Role, název Role, typ zařízení |
 | ClientContext |Operační systém, národní prostředí, jazyka, sítě, okno řešení |
-| Relace |Id relace |
+| Relace |id relace |
 | ServerContext |Název počítače, národní prostředí, operačního systému, zařízení, uživatelské relace, kontextu uživatele, operace |
 | Odvodit |geografické umístění z IP adresy, časové razítko, operačního systému, prohlížeč |
 | Metriky |Název metriky a hodnotu |

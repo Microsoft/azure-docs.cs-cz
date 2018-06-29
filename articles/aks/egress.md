@@ -2,18 +2,18 @@
 title: Seznam povolených adres odchozí provoz z clusteru Azure Kubernetes služby (AKS)
 description: Seznam povolených adres odchozí provoz z clusteru služby Azure Kubernetes služby (AKS)
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2018
-ms.author: nepeters
-ms.openlocfilehash: 0bafb62fcdc8a24084cf7170a0e0f72bfd7824b1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: iainfou
+ms.openlocfilehash: 2394b61fb84a2f22af036f35819b87074a1dbd2d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654785"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100141"
 ---
 # <a name="azure-kubernetes-service-aks-egress"></a>Azure odchozí Kubernetes služby (AKS)
 

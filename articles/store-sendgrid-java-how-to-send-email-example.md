@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
-ms.openlocfilehash: d80d7d9c54bad12a4d26d8623eeccdf9bc2a743a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fab76467025518bc455295da681d0b0127a9cbfe
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23873944"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098725"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Postup odesílání e-mailu pomocí sendgrid vám umožňuje z prostředí Java v Azure nasazení
 Následující příklad ukazuje, jak můžete sendgrid vám umožňuje použít k odesílání e-mailů z webové stránky hostované v Azure. Výsledné aplikace vyzve uživatele, hodnoty e-mailu, jak je znázorněno na následujícím snímku obrazovky.
@@ -28,7 +28,7 @@ Následující příklad ukazuje, jak můžete sendgrid vám umožňuje použít
 
 Výsledný e-mailu, bude vypadat podobně jako na následujícím snímku obrazovky.
 
-![E-mailové zprávy][emailsent]
+![E-mailová zpráva][emailsent]
 
 Budete muset následujícím postupem použít kód v tomto tématu:
 
@@ -208,12 +208,12 @@ Kromě odesílání e-mailu, poskytuje emailform.jsp výsledku pro uživatele. n
 
 ![Odesílání e-mailu výsledek][emailresult]
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Nasazení aplikace emulátoru služby výpočty a prohlížeče, spusťte emailform.jsp, zadejte hodnoty ve formátu, klikněte na tlačítko **odeslání této e-mailu**a pak zobrazte výsledky v sendemail.jsp.
 
-Tento kód byl poskytnut návod, jak používat sendgrid vám umožňuje v jazyce Java v Azure. Před nasazením do Azure v produkčním prostředí, můžete přidat další zpracování chyb a další funkce. Například: 
+Tento kód byl poskytnut návod, jak používat sendgrid vám umožňuje v jazyce Java v Azure. Před nasazením do Azure v produkčním prostředí, můžete přidat další zpracování chyb a další funkce. Příklad: 
 
-* Můžete použít objekty BLOB úložiště Azure nebo databáze SQL pro ukládání e-mailové adresy a e-mailové zprávy, místo použití webového formuláře. Informace o použití objektů BLOB služby Azure storage v jazyce Java najdete v tématu [jak používat služby úložiště objektů Blob z Javy](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/). Informace o používání databáze SQL v jazyce Java najdete v tématu [pomocí SQL Database v jazyce Java](https://azure.microsoft.com/develop/java/how-to-guides/using-sql-azure-in-java/).
+* Můžete použít objekty BLOB úložiště Azure nebo databáze SQL pro ukládání e-mailové adresy a e-mailové zprávy, místo použití webového formuláře. Informace o použití objektů BLOB služby Azure storage v jazyce Java najdete v tématu [jak používat služby úložiště objektů Blob z Javy](https://azure.microsoft.com/develop/java/how-to-guides/blob-storage/). Informace o používání databáze SQL v jazyce Java najdete v tématu [pomocí SQL Database v jazyce Java](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-connect-query-java).
 * Můžete použít `RoleEnvironment.getConfigurationSettings` načíst sendgrid vám umožňuje uživatelské jméno a heslo z nastavení konfigurace vašeho nasazení, místo použití webového formuláře pro načtení těchto hodnot. Informace o `RoleEnvironment` třídy najdete v tématu [pomocí běhové knihovny služby Azure v JSP](http://msdn.microsoft.com/library/windowsazure/hh690948) a v dokumentaci k balíčku běh služby Azure na <http://dl.windowsazure.com/javadoc>.
 * Další informace o používání sendgrid vám umožňuje v jazyce Java najdete v tématu [postup odesílání e-mailu pomocí sendgrid vám umožňuje z prostředí Java](store-sendgrid-java-how-to-send-email.md).
 

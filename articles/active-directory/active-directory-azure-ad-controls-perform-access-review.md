@@ -2,9 +2,9 @@
 title: Kontrolujte přístup pomocí služby Azure AD přístup recenze | Microsoft Docs
 description: Zjistěte, jak kontrolovat přístup pomocí služby Azure Active Directory přístup recenze.
 services: active-directory
-author: markwahl-msft
+author: rolyon
 manager: mtillman
-editor: ''
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,12 +13,13 @@ ms.topic: article
 ms.component: compliance-reports
 ms.date: 09/19/2017
 ms.author: rolyon
-ms.openlocfilehash: dbc06f7978b5669e67f1e4161ebcd0bbeb3dec41
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.reviewer: mwahl
+ms.openlocfilehash: e6a109e499395e09be27770a510427038872da38
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233491"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085119"
 ---
 # <a name="review-access-with-azure-ad-access-reviews"></a>Kontrolujte přístup s Azure AD přístup recenze
 

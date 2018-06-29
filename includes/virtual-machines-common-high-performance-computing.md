@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 32a438d393077cfe4cb7f6ee62f3a01edfce0571
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-ms.translationtype: HT
+ms.openlocfilehash: b8bbcf81f48e82417a0d51e29f7dd8ce76681fed
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34152219"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37095331"
 ---
 Organizace mají rozsáhlé výpočetní potřebám. Tyto úlohy Big Compute zahrnují technického návrhu a analýzy, výpočtů finančních rizik, vykreslování obrázků, komplexního modelování, simulací typu Monte Carlo a další. 
 
@@ -40,7 +40,7 @@ Použijte Azure cloud pro efektivní spouštění výpočetně náročných úlo
     * Spustit Azure inženýrství a simulace řešeních s infrastrukturou od dodavatelů, včetně [Altair](http://www.altair.com/), [nastavit velikost](https://www.rescale.com/azure/), a [Cycle Computing](https://cyclecomputing.com/) (teď [propojit s Microsoft](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)).
     * Použití [Cray superpočítače](https://www.cray.com/solutions/supercomputing-as-a-service/cray-in-azure) jako služby hostované v Azure.
 * **Řešení Marketplace.**
-    * Použití rozsahu [aplikace prostředí HPC](#hpc-applications) a [řešení](#marketplace-solutions) nenabízí [Azure Marketplace](https://azuremarketplace.microsoft.com/). 
+    * Použití rozsahu [aplikace prostředí HPC](#hpc-applications) a [řešení](#marketplace-solutions) nenabízí [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/). 
     
 
 
@@ -64,7 +64,7 @@ Přejděte [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplac
  
 ## <a name="hpc-applications"></a>Aplikace prostředí HPC
 
-Spusťte vlastní nebo obchodní aplikace prostředí HPC v Azure. Několik příkladů v této části jsou benchmarked efektivní škálování s další virtuální počítače nebo výpočetní jader. Přejděte [Azure Marketplace](https://marketplace.azure.com) připravená k nasazení řešení.
+Spusťte vlastní nebo obchodní aplikace prostředí HPC v Azure. Několik příkladů v této části jsou benchmarked efektivní škálování s další virtuální počítače nebo výpočetní jader. Přejděte [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace) připravená k nasazení řešení.
 
 > [!NOTE]
 > Zkontrolujte s dodavateli komerčních aplikací se vždy pro licencování a dalších omezení při spouštění v cloudu. Ne všichni dodavatelé nabízejí licencování formou průběžných plateb. Může potřebovat licenční server v cloudu pro vaše řešení nebo připojit k místní licence serveru.

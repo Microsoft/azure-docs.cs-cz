@@ -2,20 +2,20 @@
 title: Limity kapacity – Azure SQL Data Warehouse | Microsoft Docs
 description: Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: antvgski
+author: sachinpMSFT
 manager: craigg-msft
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: implement
-ms.date: 04/17/2018
+ms.date: 06/28/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: b79d928f3c1c3d81fbca0b8d676d4a4cbf83369a
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 82ad6239923f78641bfa80027ed62242b45b95eb
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839635"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096253"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Limity kapacity SQL Data Warehouse
 Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Warehouse.
@@ -51,7 +51,7 @@ Maximální hodnoty povolené pro různé komponenty služby Azure SQL Data Ware
 | Uložené procedury |Maximální úrovně vnoření. |8 |
 | Zobrazení |Sloupců v zobrazení |1,024 |
 
-## <a name="loads"></a>Načítání
+## <a name="loads"></a>načte
 | Kategorie | Popis | Maximum |
 |:--- |:--- |:--- |
 | Polybase zatížení |MB na řádek |1<br/><br/>Polybase načte jenom na řádky, které jsou menší než 1 MB a nelze načíst VARCHAR(MAX), NVARCHAR(MAX) nebo VARBINARY(MAX).<br/><br/> |

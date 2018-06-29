@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 826daae9c5d9cf5cd169651ab8603cef938e6482
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-ms.translationtype: MT
+ms.openlocfilehash: 48723a68fcad79ab7c4c670da78c95de3ea5868f
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030032"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100534"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure k dispozici pro Azure zásobníku položky Marketplace.
 
@@ -204,7 +204,7 @@ Zásobník Microsoft Azure podporuje následující virtuální počítače Azur
 | ![Fórum jednoduchý počítače](media/azure-stack-marketplace-azure-items/simplemachinesforum.png) | [Fórum jednoduchý počítače](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.simplemachinesforum) | Jednoduché fórum software k vytvoření vlastního online komunita. | Bitnami |
 | ![Spree](media/azure-stack-marketplace-azure-items/spree.png) | [Sdělení](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.spree) | Platforma elektronického obchodování snadno použitelné. | Bitnami |
 | ![Subversion](media/azure-stack-marketplace-azure-items/subversion.png) | [Podverze](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.subversion) | Systém správy verzí Open source. | Bitnami |
-| ![SugarCRM](media/azure-stack-marketplace-azure-items/sugarcrm.png) | [SugarCRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.sugarcrm) | Řešení pro správu vztah flexibilní zákazníka. | Bitnami |
+| ![SugarCRM](media/azure-stack-marketplace-azure-items/sugarcrm.png) | [SugarCRM](https://azuremarketplace.microsoft.com/marketplace/apps/aad.sugarcrm) | Řešení pro správu vztah flexibilní zákazníka. | Bitnami |
 | ![SuiteCRM](media/azure-stack-marketplace-azure-items/suitecrm.png) | [SuiteCRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.suitecrm) | Oblíbené aplikace CRM podnikové úrovni. | Bitnami |
 | ![TestLink](media/azure-stack-marketplace-azure-items/testlink.png) | [TestLink](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.testlink) | Testování usnadnění zajištění kvality software pro správu. | Bitnami |
 | ![Groupware tiki Wiki CMS](media/azure-stack-marketplace-azure-items/tikiwikicmsgroupware.png) | [Groupware tiki Wiki CMS](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.tikiwikicmsgroupware) | Platforma plnohodnotný wiki. | Bitnami |
@@ -233,5 +233,5 @@ Zásobník Microsoft Azure podporuje následující virtuální počítače Azur
 | ![Brány Firewall PT aplikací](media/azure-stack-marketplace-azure-items/pt.png) | [Brány Firewall PT aplikací](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | Brány Firewall aplikací PT detekuje známé & neznámé chyby zabezpečení a zabrání útoky na webové aplikace. <b>Stáhněte si oba položky PT Marketplace.</b> | Kladné technologie |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise umožňuje automatizovat celý životní cyklus infrastruktury Azure zásobníku. <b>Stáhněte si oba položky Puppet Marketplace.</b> | Puppet |
 | ![Požadavek na rychlé obnovení](media/azure-stack-marketplace-azure-items/quest.png) | [Základní požadavek na rychlé obnovení](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Rychlé obnovení rozšířené ochrany dat kombinuje zálohování, replikaci a obnovení v jednom řešení snadné použití softwaru. | Požadavek na Software |
-| ![SUSE Manager 3.0 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSEManager30ProxyBringYourOwnSubscription) | Správa infrastruktury open-source třídy nejvhodnější. | SUSE |
+| ![SUSE Manager 3.0 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.0 Proxy (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSE-Manager) | Správa infrastruktury open-source třídy nejvhodnější. | SUSE |
 | ![Nástroj ZeroDown softwaru](media/azure-stack-marketplace-azure-items/zerodown.png) | [Nástroj ZeroDown softwaru ](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.zerodown-software-tool-7_1) | Nástroj v7.1 ZeroDown softwaru - migrovat + HA. | ZeroDown softwaru |

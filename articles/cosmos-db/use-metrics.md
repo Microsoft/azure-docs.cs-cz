@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 49a381efa0603889336f43e409698bbcef44f41f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5f6852de2c09e3de9375a2cb5d73f052ac68f039
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34615637"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100568"
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Sledování a ladění pomocí metriky v Azure Cosmos DB
 
@@ -33,7 +33,7 @@ Tento článek vás provede běžné případy použití a jak metrik Azure Cosm
 
 Abyste mohli začít, přejděte na [portál Azure](https://portal.azure.com) a přejděte do **metriky** okno. V okně Najít **překročen počet požadavků kapacity za 1 minutu** grafu. Tento graf znázorňuje celkový počet minut pomocí minutu požadavky oddělených stavový kód. Další informace o stavových kódech HTTP najdete v tématu [stavové kódy HTTP pro Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
-Nejběžnější stavový kód chyby je 429 (omezení), což znamená, že jsou požadavky na Azure Cosmos DB překročení zřízené propustnosti. Nejběžnější řešením je [škálovat RUs](./set-throughput.md) pro danou kolekci.
+Nejběžnější stavový kód chyby je 429 (míra omezení nebo omezení), což znamená, že jsou požadavky na Azure Cosmos DB překročení zřízené propustnosti. Nejběžnější řešením je [škálovat RUs](./set-throughput.md) pro danou kolekci.
 
 ![Počet požadavků za minutu](media/use-metrics/metrics-12.png)
 

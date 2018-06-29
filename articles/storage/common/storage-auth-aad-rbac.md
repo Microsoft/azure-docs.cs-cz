@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: tamram
-ms.openlocfilehash: cb77bd4418e105c877202f0f1725350380ea2308
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 241808e0a7bde1d2c53cd0af1de677275c169214
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660744"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082206"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Správa přístupových práv k Azure Storage data pomocí RBAC (Preview)
 
@@ -61,7 +61,7 @@ Následující části vysvětlují, jak přiřadit role obor k účtu úložiš
 
 Přiřazení předdefinovaná role, udělení přístupu k všechny kontejnery nebo fronty v účtu storage na portálu Azure:
 
-1. V [portál Azure](https://azure.portal.com/), přejděte na svůj účet úložiště.
+1. V [portál Azure](https://portal.azure.com), přejděte na svůj účet úložiště.
 2. Vyberte svůj účet úložiště a pak vyberte **řízení přístupu (IAM)** zobrazíte nastavení řízení přístupu pro účet. Klikněte **přidat** tlačítko Přidat novou roli.
 
     ![Snímek obrazovky znázorňující zprávu úložiště nastavení řízení přístupu](media/storage-auth-aad-rbac/portal-access-control.png)
@@ -78,7 +78,7 @@ Přiřazení předdefinovaná role, udělení přístupu k všechny kontejnery n
 
 Kroky pro přiřazení předdefinovaná role obor na kontejner nebo do fronty jsou podobné. Postup tady uvedené přiřadí roli obor do kontejneru, ale můžete postupovat podle stejných kroků přiřazení role obor do fronty: 
 
-1. V [portál Azure](https://azure.portal.com/), přejděte na svůj účet úložiště a zobrazit **přehled** pro účet.
+1. V [portál Azure](https://portal.azure.com), přejděte na svůj účet úložiště a zobrazit **přehled** pro účet.
 2. V části služby objektů Blob, vyberte **procházet objekty BLOB**. 
 3. Vyhledejte kontejneru, pro kterou chcete přiřadit role a zobrazení nastavení kontejneru. 
 4. Vyberte **řízení přístupu (IAM)** zobrazíte nastavení řízení přístupu pro příslušný kontejner.

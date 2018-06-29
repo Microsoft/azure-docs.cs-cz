@@ -3,7 +3,7 @@ title: Příručka pro operátory Azure IT Začínáme | Microsoft Docs
 description: Úvodní příručka pro operátory IT Azure
 services: ''
 documentationcenter: ''
-author: neilpeterson
+author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.topic: ''
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
-ms.author: nepeters
-ms.openlocfilehash: b63beffdd3b10071c6d18128e78a949374c171b2
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.author: iainfou
+ms.openlocfilehash: f79f727ed46f85866f59468be418ba8975c17bd8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34361637"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099489"
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Úvod k řešení cloud computing a Microsoft Azure
 
@@ -61,7 +61,7 @@ SaaS je software, který je centrálně hostované a spravované. Obvykle je zal
 
 Microsoft Office 365 je dobrým příkladem SaaS, nabídky. Odběratelé platit měsíční nebo roční předplatné a získají Microsoft Exchange, Microsoft OneDrive a rest sady Microsoft Office jako služba. Odběratelé vždycky získat nejnovější verzi a spravovaná serveru Exchange. Ve srovnání s instalace a upgradu systému Office každý rok, to je levnější a vyžaduje menší úsilí.
 
-#### <a name="paas-platform-as-a-service"></a>PaaS: Platforma jako služba 
+#### <a name="paas-platform-as-a-service"></a>PaaS: Platforma jako služba
 
 S PaaS nasadit aplikace do prostředí, které poskytuje dodavatelem cloudové služby. Dodavatele nepodporuje všechny správu infrastruktury, můžete se zaměřit na vývoj aplikací.
 
@@ -381,11 +381,11 @@ Azure Storage je služba spravovaných společností Microsoft, která poskytuje
 
 -   **Geograficky redundantní úložiště s přístupem pro čtení** je geograficky redundantní úložiště plus umožňuje číst data v sekundární oblasti. Tato možnost je vhodný pro zotavení po havárii částečné. Pokud dojde k problému s primární oblasti, můžete změnit aplikace mají přístup jen pro čtení k spárované oblast.
 
-### <a name="use-cases"></a>Případy použití 
+### <a name="use-cases"></a>Případy použití
 
 Každý typ úložiště má případu použití různých.
 
-**Blob Storage** 
+**Blob Storage**
 
 Slovo *blob* je zkratka pro *binární rozsáhlý objekt*. Objekty BLOB jsou nestrukturovaných soubory, jako jsou ty, které ukládáte ve vašem počítači. Do Blob storage se dá ukládat jakýkoli druh textu nebo binárních dat, jako je dokument, soubor médií nebo instalátor aplikace. Blob storage se také nazývá úložiště objektů. Úložiště objektů Blob Azure také obsahuje datové disky virtuálních počítačů Azure.
 
@@ -445,7 +445,7 @@ Podobně můžete rozhraní příkazového řádku Azure Pokud chcete nasadit š
 
 ### <a name="access-and-security-for-azure-storage"></a>Přístup a zabezpečení pro Azure Storage
 
-Úložiště Azure, se získají různými způsoby, včetně ale portálu Azure při vytváření virtuálních počítačů a operaci a z knihovny klienta úložiště. 
+Úložiště Azure, se získají různými způsoby, včetně ale portálu Azure při vytváření virtuálních počítačů a operaci a z knihovny klienta úložiště.
 
 **Disky virtuálního počítače**
 

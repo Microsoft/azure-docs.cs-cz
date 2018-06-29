@@ -190,6 +190,8 @@
           href: storage-https-custom-domain-cdn.md
         - name: Funkce Immutable Storage služby Azure Blob Storage (Preview)
           href: storage-blob-immutable-storage.md
+        - name: Povolení zabezpečeného TLS pro klienta Azure Storage
+          href: ../common/storage-security-tls.md
     - name: Monitorování a odstraňování potíží
       items:
         - name: Kurz odstraňování potíží

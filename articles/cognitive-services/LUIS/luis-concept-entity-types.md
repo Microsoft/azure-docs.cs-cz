@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/22/2018
+ms.date: 06/28/2018
 ms.author: v-geberr
-ms.openlocfilehash: ccb7269109309355e2af95f6fb2aa060c1998b22
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 01f451f7a3e09aacb029c2194044320717bfae96
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36286014"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083241"
 ---
 # <a name="entities-in-luis"></a>Entity v LEOŠ
 
@@ -28,7 +28,7 @@ Pro srovnání představuje záměr předpovědi celý utterance.
 ## <a name="entities-represent-data"></a>Entity představují data
 Entity jsou data, která chcete načítat z utterance. To může být název, datum, název produktu nebo libovolnou skupinu slova. 
 
-|Utterance|Entita|Data|
+|Promluva|Entita|data|
 |--|--|--|
 |Zakoupit 3 lístky pro Brno|Předkompilované číslo<br>Location.Destination|3<br>New York|
 |Koupit lístek z New Yorku do Londýna na března 5|Location.Origin<br>Location.Destination<br>Předkompilované datetimeV2|New York<br>Londýn<br>5. března 2018|
@@ -91,10 +91,13 @@ LEOŠ nabízí mnoho typů entit; Předkompilované entity vlastní počítače 
 ## <a name="entity-limits"></a>Omezení entity
 Zkontrolujte [omezení](luis-boundaries.md#model-boundaries) zjistit, kolik každý typ entity, můžete přidat k modelu.
 
+## <a name="entity-roles"></a>Entity role
+Entity [role](luis-concept-roles.md) se používají v pouze vzorce. 
+
 ## <a name="composite-vs-hierarchical-entities"></a>Hierarchická entity složené vs
 Složené a hierarchické entit mít vztahů nadřazenosti a podřízenosti i se naučili počítače. Strojové učení umožňuje LEOŠ pochopit entity podle různých kontextů (uspořádání slova). Složené entity jsou flexibilnější, protože jiné entity typy jako podřízené objekty. Hierarchická entity podřízené objekty jsou pouze jednoduché entity. 
 
-|Typ|Účel|Příklad:|
+|Typ|Účel|Příklad|
 |--|--|--|
 |Hierarchická|Nadřazený podřízený jednoduché entit|Location.Origin=New York<br>Location.Destination=London|
 |Složené|Nadřazený podřízený entity: předem, seznamu jednoduchý, hierarchické| počet = 3<br>Seznam = první – třída<br>prebuilt.datetimeV2=March 5|
@@ -208,7 +211,7 @@ Jako součást kontrola zvažte přidání frázi seznamu pro přidání signál
 
 V tématu [osvědčené postupy](luis-concept-best-practices.md) Další informace.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Další informace o dobré koncepty [utterances](luis-concept-utterance.md). 
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 056821bd26e9c6c110b23a048df4aa13bc4ab8fa
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 36cbf9249664af1cd469d7e27c617a4810d0e74f
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36754500"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098953"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o koncept playbook: stavební bloky
 
@@ -428,7 +428,7 @@ Přibližná doba na dokončeno: 10 minut
 ### <a name="considerations"></a>Požadavky
 
 1. Ve fázi PoC kroky v této stavebním blokem explicitně nastavení vícefaktorového ověřování pro uživatele na všechny přihlášení. Existují jiné nástroje, jako je například podmíněný přístup a ochrana Identity, které zaujmout MFA na více cílových scénářů. To bude vypadat přibližně vzít v úvahu při přesouvání z POC do produkčního prostředí.
-2. Testování koncepce kroků v této stavebním blokem explicitně používají telefonní hovory jako metodu vícefaktorového ověřování pro expedience. Jak z POC přechod do produkčního prostředí, doporučujeme používat aplikace, jako [Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) jako vaše druhý faktor, kdykoli je to možné.
+2. Testování koncepce kroků v této stavebním blokem explicitně používají telefonní hovory jako metodu vícefaktorového ověřování pro expedience. Jak z POC přechod do produkčního prostředí, doporučujeme používat aplikace, jako [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) jako vaše druhý faktor, kdykoli je to možné.
 Další informace: [koncept speciální publikace NIST 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
 ## <a name="mfa-conditional-access-for-saas-applications"></a>MFA podmíněného přístupu pro aplikace SaaS
@@ -553,7 +553,7 @@ Přibližná doba na dokončení: 20 minut
 | --- | --- |
 | Zařízení s uživatelský certifikát zřízení (Windows, iOS nebo Android) z infrastruktury veřejných KLÍČŮ rozlehlé sítě | [Nasazení uživatelských certifikátů](https://msdn.microsoft.com/library/cc770857.aspx) |
 | Azure AD domain sdružených se službou AD FS | [Azure AD Connect a federace](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Přehled služby Active Directory Certificate Services](https://technet.microsoft.com/library/hh831740.aspx)|
-| Pro zařízení s iOS mají nainstalovanou aplikaci Microsoft Authenticator | [Začínáme s aplikací Microsoft Authenticator](../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md) |
+| Pro zařízení s iOS mají nainstalovanou aplikaci Microsoft Authenticator | [Začínáme s aplikací Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Kroky
 

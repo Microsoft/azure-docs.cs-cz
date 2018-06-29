@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 93cd4b6c4264c5905746b85f9fa46ce31ebd9e9f
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: b1945c68f0e320c834ae93a590f420403263a0fd
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937665"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098936"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Spusťte Cassandra clusteru v systému Linux v Azure pomocí Node.js
 
@@ -61,7 +61,7 @@ Všimněte si, že v době psaní tohoto textu, Azure neumožňuje explicitní m
 
 **Cluster semen:** je důležité vybrat Většina uzlů vysoce dostupný pro semena jako nové uzly komunikaci s uzly počáteční hodnoty pro zjišťování topologie clusteru. Jeden uzel z každé skupiny dostupnosti je určený jako uzly počáteční hodnoty předejdete jediný bod selhání.
 
-**Zařízení a úroveň konzistence replikace:** Cassandra na sestavení v vysokou dostupnost a data odolnost je charakterizovaná replikace faktor (RF - počet kopií každého řádku uložené v clusteru) a úroveň konzistence (počet replik být číst nebo zapisovat před vrácením výsledku volající). Faktor replikace je zadán během vytváření KEYSPACE (podobně jako relační databáze), zatímco úroveň konzistence je zadána při vydání CRUD dotaz. Naleznete v dokumentaci k Cassandra v [konfigurace pro konzistence](http://www.datastax.com/documentation/cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) konzistence podrobnosti a vzorec pro výpočty kvora.
+**Zařízení a úroveň konzistence replikace:** Cassandra na sestavení v vysokou dostupnost a data odolnost je charakterizovaná replikace faktor (RF - počet kopií každého řádku uložené v clusteru) a úroveň konzistence (počet replik být číst nebo zapisovat před vrácením výsledku volající). Faktor replikace je zadán během vytváření KEYSPACE (podobně jako relační databáze), zatímco úroveň konzistence je zadána při vydání CRUD dotaz. Naleznete v dokumentaci k Cassandra v [konfigurace pro konzistence](https://docs.datastax.com/en/cassandra/3.0/cassandra/dml/dmlConfigConsistency.html) konzistence podrobnosti a vzorec pro výpočty kvora.
 
 Cassandra podporuje dva typy modelů integrity dat – konzistence a konzistence typu případné; Faktor replikace a úroveň konzistence společně určují, pokud je data konzistentní při operaci zápisu označena jako dokončená nebo nakonec byl konzistentní. Například zadání KVORA jako úroveň konzistence vždy zajišťuje konzistenci dat při jakékoli úrovní konzistence, menší než počet replik k zapsání tak, aby bylo možné KVORA (například jeden) výsledkem data se nakonec byl konzistentní.
 
@@ -75,8 +75,8 @@ Konfigurace clusteru Cassandra jedné oblasti:
 | Replikace faktor (RF) |3 |Počet replik daného řádku |
 | Úroveň konzistence (zápisu) |QUORUM[(RF/2) +1) = 2] výsledek vzorec se zaokrouhlí směrem dolů |Zapíše maximálně 2 repliky předtím, než odešle odpověď na volajícího; 3. replika se zapíše nakonec byl konzistentní způsobem. |
 | Úroveň konzistence (čtení) |KVORA [(RF/2) + 1 = 2] výsledek vzorec se zaokrouhlí směrem dolů |Přečte 2 repliky před odesláním odpověď na volajícího. |
-| Strategie replikace |Viz NetworkTopologyStrategy [replikaci dat](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html) v dokumentaci k Cassandra pro další informace |Jste srozuměni s tím topologie nasazení a umístí repliky na uzlech, aby všechny repliky není skončili na stejné racku |
-| Snitch |Viz GossipingPropertyFileSnitch [přepínače](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) v dokumentaci k Cassandra pro další informace |NetworkTopologyStrategy používá koncept snitch zjistit topologii. GossipingPropertyFileSnitch poskytuje lepší kontrolu mapování každý uzel datového centra a racku. Cluster použije povídání potřebný k šíření tyto informace. To je mnohem jednodušší v dynamické nastavení protokolu IP relativně k PropertyFileSnitch |
+| Strategie replikace |Viz NetworkTopologyStrategy [replikaci dat](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html) v dokumentaci k Cassandra pro další informace |Jste srozuměni s tím topologie nasazení a umístí repliky na uzlech, aby všechny repliky není skončili na stejné racku |
+| Snitch |Viz GossipingPropertyFileSnitch [přepínače](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) v dokumentaci k Cassandra pro další informace |NetworkTopologyStrategy používá koncept snitch zjistit topologii. GossipingPropertyFileSnitch poskytuje lepší kontrolu mapování každý uzel datového centra a racku. Cluster použije povídání potřebný k šíření tyto informace. To je mnohem jednodušší v dynamické nastavení protokolu IP relativně k PropertyFileSnitch |
 
 **Azure aspekty pro Cassandra Cluster:** funkce Microsoft Azure Virtual Machines používá úložiště objektů Blob v Azure disku trvalosti; Úložiště Azure uloží tři repliky každého disku pro vysokou odolnost. To znamená, že každý řádek dat vloženy do tabulky Cassandra je již uložen v tři repliky. Proto konzistenci dat je již postaráno i v případě, že replikace faktor (RF) je 1. Hlavní problém s Multi-Factor replikace se 1 je, že aplikace i v případě selhání jednoho uzlu Cassandra vyskytne výpadku. Ale pokud uzel je vypnutý problémy (například hardwaru, softwaru selhání systému) rozpoznáno Kontroleru prostředků infrastruktury Azure, zřídí nového uzlu na jeho místo pomocí stejné jednotky úložiště. Zřizování nový uzel nahradit starou může trvat několik minut.  Pro plánované údržby činnosti, jako například změny hostovaného operačního systému, podobně jako Cassandra upgraduje a změny aplikace Kontroleru prostředků infrastruktury Azure provádí vrácení upgrady z uzlů v clusteru.  Vrácení upgradu také může trvat dolů několika uzlů najednou a proto clusteru setkat s krátkou prodlevou mezi migrací pro několik oddílů. Data však není ztraceno v důsledku vestavěná redundance úložiště Azure.  
 
@@ -110,8 +110,8 @@ Pro systém, který potřebuje vysokou konzistence LOCAL_QUORUM pro úroveň kon
 | Replikace faktor (RF) |3 |Počet replik daného řádku |
 | Úroveň konzistence (zápisu) |LOCAL_QUORUM [(sum(RF)/2) +1) = 4] výsledek vzorec se zaokrouhlí směrem dolů |2 uzly se zapíše do první datového centra synchronně; Další 2 uzly, které jsou potřebné pro kvora se asynchronně zapíše na 2. datové centrum. |
 | Úroveň konzistence (čtení) |LOCAL_QUORUM ((RF/2) + 1) = 2, výsledek vzorec se zaokrouhlí směrem dolů |Požadavky pro čtení jsou splnit v pouze jedna oblast; 2 uzly se čtou předtím, než odešle odpověď zpět klientovi. |
-| Strategie replikace |Viz NetworkTopologyStrategy [replikaci dat](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureDataDistributeReplication_c.html) v dokumentaci k Cassandra pro další informace |Jste srozuměni s tím topologie nasazení a umístí repliky na uzlech, aby všechny repliky není skončili na stejné racku |
-| Snitch |Viz GossipingPropertyFileSnitch [Snitches](http://www.datastax.com/documentation/cassandra/2.0/cassandra/architecture/architectureSnitchesAbout_c.html) v dokumentaci k Cassandra pro další informace |NetworkTopologyStrategy používá koncept snitch zjistit topologii. GossipingPropertyFileSnitch poskytuje lepší kontrolu mapování každý uzel datového centra a racku. Cluster použije povídání potřebný k šíření tyto informace. To je mnohem jednodušší v dynamické nastavení protokolu IP relativně k PropertyFileSnitch |
+| Strategie replikace |Viz NetworkTopologyStrategy [replikaci dat](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archDataDistributeAbout.html) v dokumentaci k Cassandra pro další informace |Jste srozuměni s tím topologie nasazení a umístí repliky na uzlech, aby všechny repliky není skončili na stejné racku |
+| Snitch |Viz GossipingPropertyFileSnitch [Snitches](https://docs.datastax.com/en/cassandra/3.0/cassandra/architecture/archSnitchesAbout.html) v dokumentaci k Cassandra pro další informace |NetworkTopologyStrategy používá koncept snitch zjistit topologii. GossipingPropertyFileSnitch poskytuje lepší kontrolu mapování každý uzel datového centra a racku. Cluster použije povídání potřebný k šíření tyto informace. To je mnohem jednodušší v dynamické nastavení protokolu IP relativně k PropertyFileSnitch |
 
 ## <a name="the-software-configuration"></a>KONFIGURACE SOFTWARU
 Během nasazení se používají následující verze softwaru:

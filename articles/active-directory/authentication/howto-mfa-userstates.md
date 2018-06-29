@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: b809097e50a17178da12fdb424eba08dc8e0c4cb
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 204910ff6e02eafd62eeb56bf82b77b91b3cb5ad
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866887"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099605"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>Jak vyžadovat dvoustupňové ověřování pro uživatele nebo skupinu
 
@@ -71,7 +71,7 @@ Pomocí následujících kroků pro přístup ke stránce, kde můžete zobrazit
 
 5. Potvrďte výběr v místním okně, které se otevře. 
 
-Jakmile uživatele povolíte, upozorněte je e-mailem. Sdělte jim, že budete vyzváni k registraci při příštím přihlášení. Navíc pokud vaše organizace používá neprohlížečové aplikace, které nepodporují moderní ověřování, budou muset vytvořit hesla aplikací. Můžete použít také odkaz [Průvodce pro koncové uživatele Azure MFA](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user.md) pomáhá jim začít pracovat.
+Jakmile uživatele povolíte, upozorněte je e-mailem. Sdělte jim, že budete vyzváni k registraci při příštím přihlášení. Navíc pokud vaše organizace používá neprohlížečové aplikace, které nepodporují moderní ověřování, budou muset vytvořit hesla aplikací. Můžete použít také odkaz [Průvodce pro koncové uživatele Azure MFA](end-user/current/multi-factor-authentication-end-user.md) pomáhá jim začít pracovat.
 
 ### <a name="use-powershell"></a>Použití prostředí PowerShell
 Chcete-li změnit stav uživatele pomocí [Azure AD PowerShell](/powershell/azure/overview), změňte `$st.State`. Existují tři možné stavy:

@@ -10,69 +10,69 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f6f9b9c7ae71697efb6d722eff55d9ee3f8746d5
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 073af4a57d55eb8b2f3608482159b57c7b408f3b
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712296"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37102234"
 ---
-# <a name="configure-the-resource-owner-password-credentials-flow-ropc-in-azure-ad-b2c"></a>Konfigurace toku přihlašovacích údajů heslo vlastníka prostředku (ROPC) v Azure AD B2C
+# <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Konfigurovat přihlašovací údaje toku heslo vlastníka prostředku v Azure AD B2C
 
-Tok přihlašovací údaje (ROPC) heslo vlastníka prostředku je tok standardní ověřování OAUTH, kde aplikace, také známé jako přijímající strany výměny platné přihlašovací údaje, jako je například ID uživatele a heslo pro ID token, token přístupu a obnovovací token. 
+Tok přihlašovací údaje (ROPC) heslo vlastníka prostředku je tok standardní ověřování OAuth, kde aplikace, také známé jako přijímající strany výměny platné přihlašovací údaje, jako je například ID uživatele a heslo pro ID token, token přístupu a obnovovací token. 
 
 > [!NOTE]
 > Tato funkce je ve verzi Preview.
 
-V Azure AD B2C jsou podporovány tyto možnosti:
+V Azure Active Directory (Azure AD) B2C jsou podporovány následující možnosti:
 
-- **Nativní klient** – interakci s uživatelem během ověřování se stane pomocí kódu, které jsou spuštěné na zařízení uživatele na straně, který může být mobilní aplikace běží v nativním operačního systému, například Android nebo v prohlížeči, jako je Javascript.
-- **Tok veřejné klienta** – se odesílají pouze uživatelské přihlašovací údaje shromážděné aplikace, volání rozhraní API. Přihlašovací údaje aplikace se neodesílají.
-- **Přidání nových deklarací identity** -ID tokenu obsah můžete změnit tak, aby přidání nových deklarací identity. 
+- **Nativní klient**: interakce s uživatelem během ověřování se stane, když spuštění kódu na straně pro uživatele zařízení. Zařízení může být mobilní aplikace, která běží v nativním operačního systému, například Android, nebo v prohlížeči, jako je JavaScript.
+- **Tok veřejné klienta**: se odesílají pouze uživatelské přihlašovací údaje shromážděné aplikace, volání rozhraní API. Přihlašovací údaje aplikace se neodesílají.
+- **Přidání nových deklarací identity**: ID tokenu obsah můžete změnit tak, aby přidání nových deklarací identity. 
 
-Tyto toky nejsou podporovány:
+Následující toky nejsou podporovány:
 
-- **Na serveru** systému ochranu identity (IDPS) musí shromážděná z volající (Nativní klient) jako součást interakce spolehlivé IP adresu.  Volání rozhraní API na straně serveru se používá pouze IP adresa serveru a IDPS mohou identifikovat opakovaných IP adresu jako útočník, pokud je překročena dynamické mezní hodnota neúspěšné ověřování.
-- **Tok důvěrné klienta** – ID klienta aplikace byl ověřen, ale není ověřený tajný klíč aplikace.
+- **Na serveru**: systém ochrany identit musí shromážděná z volající (Nativní klient) jako součást interakce spolehlivé IP adresu. Volání rozhraní API na straně serveru je použít jenom IP adresy serveru. Pokud je překročena dynamické mezní hodnota neúspěšné ověřování, může systém ochrany identit Identifikujte opakovaných IP adresu jako útočník.
+- **Tok důvěrné klienta**: ověření ID klienta aplikace, ale není ověřený tajný klíč aplikace.
 
 ##  <a name="create-a-resource-owner-policy"></a>Vytvoření vlastníka prostředků
 
 1. Přihlaste se k portálu Azure jako globální správce tenanta Azure AD B2C.
-2. Pokud chcete přepnout na svého tenanta Azure AD B2C, vyberte adresář B2C v pravém horním rohu portálu.
+2. Přejděte ke klientovi Azure AD B2C, vyberte adresář B2C v pravém horním rohu portálu.
 3. V části **zásady**, vyberte **vlastník prostředku zásady**.
-4. Zadejte název zásady, jako třeba *ROPC_Auth*a potom klikněte na **deklarace identity aplikace**.
+4. Zadejte název zásady, jako třeba *ROPC_Auth*a potom vyberte **deklarace identity aplikace**.
 5. Vyberte aplikaci deklarací identity, které potřebujete pro vaši aplikaci, například *zobrazovaný název*, *e-mailovou adresu*, a *zprostředkovatele Identity*.
-6. Klikněte na tlačítko **OK**a potom klikněte na **vytvořit**.
+6. Vyberte **OK** a potom vyberte **Vytvořit**.
 
-Zobrazí koncový bod například Tento příklad:
+   Zobrazí koncový bod například Tento příklad:
 
-`https://login.microsoftonline.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_ROPC_Auth`
+   `https://login.microsoftonline.com/yourtenant.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1A_ROPC_Auth`
 
 
 ## <a name="register-an-application"></a>Registrace aplikace
 
-1. V nastavení B2C klikněte na **Aplikace** a potom klikněte na **+ Přidat**.
-2. Zadejte název aplikace, jako třeba *ROPC_Auth_app*.
-3. Klikněte na tlačítko **ne** pro **webové aplikaci nebo webové rozhraní API** a klikněte na tlačítko **Ano** pro **nativního klienta**.
-4. Nechte všechny ostatní hodnoty tak, jak jsou a klikněte na tlačítko **vytvořit**.
-5. Vyberte novou aplikaci a poznamenejte si ID aplikace.
+1. V nastavení B2C vyberte **aplikace**a potom vyberte **přidat**.
+2. Zadejte název aplikace, jako například *ROPC_Auth_app*.
+3. Vyberte **ne** pro **webové aplikaci nebo webové rozhraní API**a potom vyberte **Ano** pro **nativního klienta**.
+4. Nechte všechny ostatní hodnoty tak, jak jsou a potom vyberte **vytvořit**.
+5. Vyberte novou aplikaci a poznamenejte si ID aplikace pro pozdější použití.
 
 ## <a name="test-the-policy"></a>Testování zásad
 
 Generovat volání rozhraní API pomocí Oblíbené vývoj aplikace API a zkontrolovat odpověď na ladění vaše zásady. Vytvořte podobné volání pomocí informací v následující tabulce jako text požadavku POST:
-- Nahraďte *yourtenant.onmicrosoft.com* s názvem svého klienta B2C
-- Nahraďte *B2C_1A_ROPC_Auth* s úplný název ROPC zásad
-- Nahraďte *bef2222d56-552f-4a5b-b90a-1988a7d634c3* s ID aplikace z registrace.
+- Nahraďte  *\<yourtenant.onmicrosoft.com >* s názvem svého klienta B2C.
+- Nahraďte  *\<B2C_1A_ROPC_Auth >* s úplný název zásad pověření heslo vlastníka prostředku.
+- Nahraďte  *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* s ID aplikace z registrace.
 
-`https://te.cpim.windows.net/yourtenant.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
+`https://login.microsoftonline.com/<yourtenant.onmicrosoft.com>/<B2C_1A_ROPC_Auth>/oauth2/v2.0/token`
 
 | Klíč | Hodnota |
 | --- | ----- |
 | uživatelské jméno | leadiocl@outlook.com |
 | heslo | Passxword1 |
 | grant_type | heslo |
-| scope | offline_access bef2222d56-552f-4a5b-b90a-1988a7d634c3 openid |
-| client_id | bef2222d56-552f-4a5b-b90a-1988a7d634c3 |
+| scope | openid \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | response_type | Token požadavku id_token |
 
 *Client_id* je hodnota, kterou jste dříve si poznamenali jako ID aplikace. *Offline_access* je nepovinná, pokud chcete dostávat token obnovení. 
@@ -81,14 +81,14 @@ Skutečný požadavek POST vypadá takto:
 
 ```
 POST /yourtenant.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token HTTP/1.1
-Host: te.cpim.windows.net
+Host: login.microsoftonline.com
 Content-Type: application/x-www-form-urlencoded
 
 username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
 ```
 
 
-Úspěšná odpověď s offline přístup se podobá následujícímu příkladu:
+Úspěšná odpověď s offline přístup vypadá jako v následujícím příkladu:
 
 ```
 { 
@@ -102,26 +102,25 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 ## <a name="redeem-a-refresh-token"></a>Uplatnit obnovovací token
 
-Vytvořte podobné s informacemi v následující tabulce jako text zprávy požadavku POST volání:
+Vytvoření volání POST zde zobrazený pomocí informací v následující tabulce jako text žádosti:
 
-`https://te.cpim.windows.net/yourtenant.onmicrosoft.com/B2C_1A_ROPC_Auth/oauth2/v2.0/token`
+`https://login.microsoftonline.com/<yourtenant.onmicrosoft.com>/<B2C_1A_ROPC_Auth>/oauth2/v2.0/token`
 
 | Klíč | Hodnota |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
-| client_id | bef2222d56-552f-4a5b-b90a-1988a7d634c3 |
-| prostředek | bef2222d56-552f-4a5b-b90a-1988a7d634c3 |
+| client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
+| prostředek | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > |
 | refresh_token | eyJraWQiOiJacW9pQlp2TW5pYVc2MUY0TnlfR3... |
 
 *Client_id* a *prostředků* jsou hodnoty v předchozí části jako ID aplikace. *Refresh_token* je token, který jste obdrželi v ověřovacího hovoru již bylo zmíněno dříve.
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementace s vaší upřednostňované nativní SDK nebo použít ověřování aplikace
 
+Implementace Azure AD B2C splňuje standardy OAuth 2.0 pro oprávnění hesla vlastníka prostředku veřejné klienta a musí být kompatibilní s většině klientem sady SDK. Tento tok mít hojně, testování v produkčním prostředí s AppAuth pro iOS a AppAuth pro Android. Nejnovější informace najdete v tématu [nativní App SDK pro OAuth 2.0 a OpenID Connect implementace moderní osvědčené postupy](https://appauth.io/).
 
-Implementace Azure AD B2C splňuje standardy OAuth 2.0 nebo veřejné klienta ROPC a musí být kompatibilní s většině klientem sady SDK.  Tento tok mít hojně, testování v produkčním prostředí s AppAuth pro iOS a AppAuth pro Android.  V tématu https://appauth.io/ nejnovější informace.
-
-Můžete ho stáhnout pracovní vzorků, které byly nakonfigurovány pro použití se službou Azure AD B2C z webu github na https://aka.ms/aadb2cappauthropc pro Android a https://aka.ms/aadb2ciosappauthropc.
+Stáhněte si ukázky pracovní, které byly nakonfigurovány pro použití se službou Azure AD B2C z Githubu, [pro Android](https://aka.ms/aadb2cappauthropc) a [pro iOS](https://aka.ms/aadb2ciosappauthropc).
 
 
 

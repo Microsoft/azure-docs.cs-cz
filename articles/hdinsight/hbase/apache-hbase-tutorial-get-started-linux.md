@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: f85772aa74e876764181330b6d29c4f8d2b48508
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: b9298b081baf94350ab19a5d9a8af2705327eed6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37102116"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Začínáme s příkladem Apache HBase ve službě HDInsight
 
@@ -34,7 +35,7 @@ Než se pustíte do tohoto příkladu HBase, musíte mít následující položk
 * [curl](http://curl.haxx.se/download.html).
 
 ## <a name="create-hbase-cluster"></a>Vytvoření clusteru HBase
-Následující postup používá šablonu Azure Resource Manageru pro vytvoření clusteru HBase a výchozího účtu služby Azure Storage. Pro lepší pochopení parametrů použitých v postupu a dalších metod vytvoření clusteru si projděte téma [Vytvoření Hadoop clusterů se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
+Následující postup používá šablonu Azure Resource Manageru pro vytvoření clusteru HBase a výchozího účtu služby Azure Storage. Pro lepší pochopení parametrů použitých v postupu a dalších metod vytvoření clusteru si projděte téma [Vytvoření Hadoop clusterů se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Další informace o používání Gen2 úložiště Data Lake najdete v tématu [rychlý start: nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 1. Kliknutím na následující obrázek otevřete šablonu na portálu Azure Portal. Tuto šablonu najdete v [šablonách Azure pro rychlý start](https://azure.microsoft.com/resources/templates/).
    
@@ -42,7 +43,7 @@ Následující postup používá šablonu Azure Resource Manageru pro vytvořen�
 2. V okně **Vlastní nasazení** zadejte následující hodnoty:
    
    * **Předplatné:** Vyberte předplatné Azure, které se použije k vytvoření clusteru.
-   * **Skupina prostředků:** Vytvořte skupinu správy prostředků Azure nebo použijte již existující.
+   * **Skupina prostředků**: vytvoření skupiny správy prostředků Azure nebo použijte existující.
    * **Umístění**: Zadejte umístění skupiny prostředků. 
    * **Název clusteru:** Zadejte název pro cluster HBase.
    * **Přihlašovací jméno a heslo clusteru**: výchozí přihlašovací jméno je **admin**.

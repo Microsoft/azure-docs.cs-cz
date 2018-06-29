@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 509df5274a5e44342390036511689fa8f8146807
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: bf25ae5703a632005dd73820fc05347f7b5e16a6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869797"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097491"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Konfigurovat nastavení ověřování Azure Multi-Factor Authentication
 
@@ -292,7 +292,7 @@ Ve výchozím nastavení uživatelé nemůžou vytvářet hesla aplikací. Musí
 
 Uživatelé mohou vytvářet hesla aplikací během jejich počáteční registrace. Uživatel má možnost vytvořit hesla aplikací na konci procesu registrace.
 
-Uživatelé mohou také vytvářet hesla aplikací po registraci. Hesla aplikací lze změnit pomocí nastavení v portálu Azure nebo na portálu Office 365. Další informace a podrobné pokyny pro uživatele najdete v tématu [co jsou hesla aplikací v Azure Multi-Factor Authentication?](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-app-passwords.md)
+Uživatelé mohou také vytvářet hesla aplikací po registraci. Hesla aplikací lze změnit pomocí nastavení v portálu Azure nebo na portálu Office 365. Další informace a podrobné pokyny pro uživatele najdete v tématu [co jsou hesla aplikací v Azure Multi-Factor Authentication?](end-user/current/multi-factor-authentication-end-user-app-passwords.md)
 
 <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>
 ## <a name="remember-multi-factor-authentication-for-trusted-devices"></a>Zapamatovat Vícefaktorové ověřování pro důvěryhodná zařízení
@@ -301,7 +301,7 @@ _Zapamatovat Vícefaktorové ověřování_ funkce pro zařízení a prohlíže�
 >[!IMPORTANT]
 >Když v ohrožení účtu nebo zařízení, nezapomeňte vícefaktorového ověřování pro důvěryhodná zařízení může ovlivnit zabezpečení. Pokud podnikové účty nebo ztráty nebo odcizení důvěryhodné zařízení, měli byste [obnovit Multi-Factor Authentication na všech zařízeních](howto-mfa-userdevicesettings.md#restore-mfa-on-all-remembered-devices-for-a-user).
 >
->Akce obnovení odvolá důvěryhodný stav ze všech zařízení a uživatele je potřeba provést dvoustupňové ověření znovu. Můžete také Vyzvěte uživatele, aby-li obnovit služby Multi-Factor Authentication na jejich vlastní zařízení s pokyny uvedenými v [spravovat nastavení pro dvoustupňové ověření](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted).
+>Akce obnovení odvolá důvěryhodný stav ze všech zařízení a uživatele je potřeba provést dvoustupňové ověření znovu. Můžete také Vyzvěte uživatele, aby-li obnovit služby Multi-Factor Authentication na jejich vlastní zařízení s pokyny uvedenými v [spravovat nastavení pro dvoustupňové ověření](end-user/current/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted).
 >
 
 ### <a name="how-the-feature-works"></a>Princip funkce
@@ -341,7 +341,7 @@ Když povolíte funkci vícefaktorového ověřování zapamatovat, uživatelé 
 
 Můžete zvolit metody ověřování, které jsou k dispozici pro vaše uživatele pomocí _metody volitelný ověření_ funkce. Následující tabulka obsahuje stručný přehled metod.
 
-Když uživatelé zaregistrují svoje účty pro Azure Multi-Factor Authentication, vybírá jejich metoda upřednostňované ověření z možností, které jste povolili. Pokyny pro registraci uživatelů je k dispozici v [nastavit účtu pro dvoustupňové ověření](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md).
+Když uživatelé zaregistrují svoje účty pro Azure Multi-Factor Authentication, vybírá jejich metoda upřednostňované ověření z možností, které jste povolili. Pokyny pro registraci uživatelů je k dispozici v [nastavit účtu pro dvoustupňové ověření](end-user/current/multi-factor-authentication-end-user-first-time.md).
 
 | Metoda | Popis |
 |:--- |:--- |

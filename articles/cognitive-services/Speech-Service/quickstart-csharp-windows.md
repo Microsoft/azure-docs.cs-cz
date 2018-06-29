@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 64281215d139731b61365936bc1b837798ad8fbf
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: MT
+ms.openlocfilehash: f0a2ec617c71f9e86610017d3b6fa961bbd14322
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37016830"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083082"
 ---
 # <a name="quickstart-recognize-speech-using-the-cognitive-services-speech-c-sdk"></a>Rychlý úvod: Rozpoznávat řeč pomocí kognitivní služby řeči C# sady SDK
 
@@ -101,4 +101,5 @@ Nejnovější sadu vzorků, najdete v článku [úložiště GitHub SDK ukázka 
 ## <a name="next-steps"></a>Další postup
 
 - [Převede řeči](how-to-translate-speech.md)
-- [Přizpůsobit rozpoznávání řeči modely](how-to-customize-speech-models.md)
+- [Přizpůsobení akustickými modely](how-to-customize-acoustic-models.md)
+- [Přizpůsobit jazyk modely](how-to-customize-language-model.md)

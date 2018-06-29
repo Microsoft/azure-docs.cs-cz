@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: On Demand
-ms.date: 04/04/2018
+ms.date: 06/27/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 9149405e2778557a94815812fdf4966d38a3149c
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 18c162e03030fc4277fa0a7b3e953bf780574a21
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308451"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084956"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 
@@ -40,7 +40,7 @@ Následující tabulka porovnává vložit a plánovaný bod obnovení pro jedno
 
 SQL Database automaticky provede kombinaci databáze úplné zálohování každý týden, databáze rozdílové zálohy každou hodinu a transakce protokolu zálohování každých pět - deset minut chránit vaši firmu před ztrátou dat. Pokud používáte [na základě DTU nákupní model](sql-database-service-tiers-dtu.md), pak tyto zálohy jsou uloženy v úložišti RA-GRS 35 dní pro databáze v úrovních služeb Standard a Premium a 7 dní pro databáze ve vrstvě služby na úrovni Basic. Pokud doba uchovávání vaší úrovně služby nevyhovuje požadavkům vaší organizace, můžete dobu uchovávání prodloužit [změnou úrovně služby](sql-database-single-database-scale.md). Pokud používáte [nákupní model (preview) na základě vCore](sql-database-service-tiers-vcore.md), uchovávání záloh je konfigurovatelné až na 35 dnů v obecné účely a kritické podnikové úrovně. Pro zajištění ochrany před výpadkem datového centra se úplné a rozdílové zálohy databáze také replikují do [spárovaného datového centra](../best-practices-availability-paired-regions.md). Další informace najdete v tématu [automatické zálohování databází](sql-database-automated-backups.md).
 
-Pokud maximální doba uchování podporované možnosti PITR není dostatečná pro aplikaci, můžete ji rozšířit tak, že nakonfigurujete zásady dlouhodobé uchovávání informací (zleva doprava) pro databáze. Další informace najdete v tématu [Dlouhodobé uchovávání](sql-database-long-term-retention.md).
+Pokud maximální podporované v daném okamžiku obnovení (Možnosti PITR) není dostatečná pro vaši aplikaci dobu uchování, můžete ji rozšířit tak, že nakonfigurujete zásady dlouhodobé uchovávání informací (zleva doprava) pro databáze. Další informace najdete v tématu [automatizované zálohování](sql-database-automated-backups.md) a [dlouhodobé uchovávání záloh](sql-database-long-term-retention.md).
 
 Tyto automatické zálohy databáze můžete použít k obnovení databáze po různých ničivých událostech, a to jak v rámci vašeho datového centra, tak do jiného datového centra. Při použití automatických záloh databáze závisí odhadovaný čas obnovení na několika faktorech. Patří mezi ně celkový počet obnovovaných databází ve stejném regionu a ve stejnou dobu, velikost databáze, velikost protokolu transakcí a šířka pásma sítě. Doba obnovení je obvykle menší než 12 hodin. Může trvat delší dobu velmi velké soubory nebo aktivní databázi obnovit. Další podrobnosti o čase obnovení najdete v tématu [databáze čas obnovení](sql-database-recovery-using-backups.md#recovery-time). Při obnovování do jiné oblasti dat je potenciální ztráta dat omezena na 1 hodinu díky geograficky redundantnímu úložišti s rozdílovými zálohami prováděnými každou hodinu.
 

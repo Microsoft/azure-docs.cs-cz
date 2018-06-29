@@ -126,6 +126,10 @@
               href: service-bus-amqp-request-response.md
         - name: Pokročilé funkce
           items:
+            - name: Filtry připojení IP
+              href: service-bus-ip-filtering.md
+            - name: Koncové body služby virtuální sítě
+              href: service-bus-service-endpoints.md
             - name: Fronty nedoručených zpráv
               href: service-bus-dead-letter-queues.md
             - name: Předběžné načtení zpráv

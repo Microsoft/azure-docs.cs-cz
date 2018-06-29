@@ -12,15 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
+ms.component: protection
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 69a27a2a75eb2a08a93b8b70648733673eac36db
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: a83b1b32bc7c1ba8dcfb0e96b11540253903a01f
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260042"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085143"
 ---
 # <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Požadavky předplatné služby Azure Active Directory Privileged Identity Management
 

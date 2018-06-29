@@ -2,19 +2,19 @@
 title: Nasazení skupiny více kontejnerů v Azure kontejner instancí
 description: Postup nasazení kontejneru skupiny pomocí několika kontejnerů v Azure kontejner instancí.
 services: container-instances
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: db3f616d85c21f01c751fd82532289593a6e7e45
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 6d337c9ed23ac9af884f4113b046a8e9756fd441
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850565"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097100"
 ---
 # <a name="deploy-a-container-group"></a>Nasazení kontejneru skupiny
 

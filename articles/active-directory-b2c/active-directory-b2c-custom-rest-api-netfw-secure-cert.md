@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 004577ead56befce02771b82ace088706e8f0c3c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: fc95974fb7db856d0a255d4a5d1d754649b71eca
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34709202"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098442"
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>Zabezpečení služby RESTful pomocí klientských certifikátů
 
@@ -38,21 +38,13 @@ Tento článek podrobnosti o tom, jak:
 * Získáte platný certifikát (soubor .pfx s privátní klíč).
 
 ## <a name="step-1-configure-a-web-app-for-client-certificate-authentication"></a>Krok 1: Konfigurace webové aplikace pro ověření certifikátu klienta
-Nastavit **Azure App Service** vyžadování klientských certifikátů, nastavení webové aplikace `clientCertEnabled` lokality nastavení *true*. Chcete-li tuto změnu, musíte použít rozhraní REST API. Toto nastavení je k dispozici prostřednictvím prostředí pro správu na portálu Azure. Najít nastavení, v aplikaci RESTful **nastavení** nabídce v části **nástroje pro vývoj**, vyberte **Průzkumníka prostředků**.
+Nastavit **Azure App Service** vyžadování klientských certifikátů, nastavení webové aplikace `clientCertEnabled` lokality nastavení *true*. Chcete-li tuto změnu na portálu Azure, otevřete stránku své webové aplikace. V levém navigačním panelu v části **nastavení** vyberte **nastavení SSL**. V **klientské certifikáty** část, zapněte **příchozí klientský certifikát** možnost.
 
 >[!NOTE]
 >Ujistěte se, že plán služby Azure App Service je standardní nebo vyšší. Další informace najdete v tématu [podrobný přehled plánů služby Azure App Service](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview).
 
-
-Použití [Průzkumníka prostředků Azure (Preview)](https://resources.azure.com) nastavit **clientCertEnabled** vlastnost *true*, jak je znázorněno na následujícím obrázku:
-
-![Nastavení clientCertEnabled pomocí Průzkumníka prostředků Azure](media/aadb2c-ief-rest-api-netfw-secure-cert/rest-api-netfw-secure-client-cert-resource-explorer.png)
-
 >[!NOTE]
 >Další informace o nastavení **clientCertEnabled** vlastnost, najdete v části [konfigurace TLS vzájemné ověřování pro webové aplikace](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth).
-
->[!TIP]
->Aby bylo snazší vytvořit volání rozhraní REST API služby, případně můžete použít [ARMClient](https://github.com/projectkudu/ARMClient) nástroj.
 
 ## <a name="step-2-upload-your-certificate-to-azure-ad-b2c-policy-keys"></a>Krok 2: Nahrajte certifikát do Azure AD B2C zásad klíče
 Po nastavení `clientCertEnabled` k *true*, komunikaci se službou rozhraní RESTful API, vyžaduje klientský certifikát. Získat, odeslání a uložte certifikát klienta v klientovi služby Azure AD B2C, postupujte takto: 

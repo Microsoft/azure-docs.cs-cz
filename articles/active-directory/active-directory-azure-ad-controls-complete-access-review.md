@@ -3,9 +3,9 @@ title: Dokončení kontrola přístupu členů skupiny či přístup uživatelů
 description: Zjistěte, jak dokončit kontrola přístupu pro členy skupiny nebo uživatelé s přístupem k aplikaci v Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: markwahl-msft
+author: rolyon
 manager: mtillman
-editor: ''
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,12 +14,13 @@ ms.topic: article
 ms.component: compliance-reports
 ms.date: 05/02/2018
 ms.author: rolyon
-ms.openlocfilehash: f34435e018e6cb30d51866cdd3182d86b148ba94
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.reviewer: mwahl
+ms.openlocfilehash: f054455154fab1a7d4a8f161700def6b6634335c
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235018"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084772"
 ---
 # <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>Dokončení kontrola přístupu členů skupiny či přístup uživatelů k aplikaci ve službě Azure AD
 

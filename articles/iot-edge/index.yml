@@ -9,14 +9,14 @@ metadata:
   ms.service: iot-edge
   services: iot-edge
   ms.topic: landing-page
-  ms.date: 01/08/2018
+  ms.date: 06/21/2018
   ms.author: kgremban
-  ms.openlocfilehash: 6d46719a31e5ebd41276a1f6988180518fcbf9bb
-  ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+  ms.openlocfilehash: 4c2ffde78b2a29601722f4233c69c99b37f332d5
+  ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/01/2018
-  ms.locfileid: "34631084"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37028536"
 abstract:
   description: Azure IoT Edge je služba Internetu věcí (IoT) postavená na službě IoT Hub. Tato služba je určená pro zákazníky, kteří chtějí analyzovat data na zařízeních, jinými slovy na hraničních zařízeních, a ne v cloudu. Díky přesunu částí úlohy do hraničních zařízení můžou vaše zařízení šetřit čas strávený odesíláním zpráv do cloudu a rychleji reagovat na změny stavu.
 sections:
@@ -35,10 +35,6 @@ sections:
         src: https://docs.microsoft.com/media/logos/logo_linux-color.svg
       text: Linux
       href: /azure/iot-edge/quickstart-linux
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_macos.svg
-      text: Mac
-      href: /azure/iot-edge/quickstart-linux
 - title: Podrobné kurzy
   items:
   - type: paragraph
@@ -46,9 +42,10 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/iot-edge/tutorial-simulate-device-windows">Simulace zařízení IoT Edge ve Windows</a>
-    - html: <a href="/azure/iot-edge/tutorial-simulate-device-Linux">Simulace zařízení IoT Edge v Linuxu nebo v systému MacOS</a>
-    - html: <a href="/azure/iot-edge/tutorial-csharp-module">Vývoj a nasazení modulu jazyka C#</a>
-    - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">Nasazení služby Azure Stream Analytics jako modulu</a>
-    - html: <a href="/azure/iot-edge/tutorial-deploy-machine-learning">Nasazení služby Azure Machine Learning jako modulu</a>
-    - html: <a href="/azure/iot-edge/tutorial-deploy-function">Nasazení služby Azure Functions jako modulu</a>
+    - html: <a href="/azure/iot-edge/tutorial-deploy-function">Filtrování zpráv s využitím Azure Functions</a>
+    - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">Zjištění průměrů s využitím Azure Stream Analytics jako modulu</a>
+    - html: <a href="/azure/iot-edge/tutorial-deploy-machine-learning">Hodnocení dat s využitím služby Azure Machine Learning jako modulu</a>
+    - html: <a href="/azure/iot-edge/tutorial-csharp-module">Filtrování dat s využitím modulu C#</a>
+    - html: <a href="/azure/iot-edge/tutorial-python-module">Filtrování dat s využitím modulu Python</a>
+    - html: <a href="/azure/iot-edge/tutorial-node-module">Filtrování dat s využitím modulu Node.js</a>
+    - html: <a href="/azure/iot-edge/tutorial-store-data-sql-server">Uložení dat na hraničních zařízeních s využitím SQL Serveru</a>

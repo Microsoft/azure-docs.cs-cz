@@ -38,6 +38,7 @@
 #### [Úloha 3: Povolení protokolu LDAPS pro spravované domény pomocí webu Azure Portal](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
 
 ### [Vytvoření OU ve spravované doméně](active-directory-ds-admin-guide-create-ou.md)
+### [Vytvoření skupinového účtu spravované služby ve spravované doméně](active-directory-ds-create-gmsa.md)
 ### [Správa zásad skupiny ve spravované doméně](active-directory-ds-admin-guide-administer-group-policy.md)
 ## [Výběr virtuální sítě](active-directory-ds-networking.md)
 ## Nasazení aplikací

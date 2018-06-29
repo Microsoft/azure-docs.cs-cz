@@ -20,6 +20,7 @@
 <!-- These will all be replaced by the new MVC tutorials as we write them -->
 ## [Směrování zpráv](tutorial-routing.md)
 ## [Konfigurace vašich zařízení](tutorial-device-twins.md)
+## [Správa aktualizací firmwaru](tutorial-firmware-update.md)
 ## [Testování připojení zařízení](tutorial-connectivity.md)
 ## Odesílání zpráv z cloudu do zařízení
 ### [.NET](iot-hub-csharp-csharp-c2d.md)
@@ -111,6 +112,8 @@
 #### [Odeslání zprávy serveru MQTT s využitím rozhraní API Eclipse Paho](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
 #### [Monitorování magnetických senzorů a odesílání e-mailových oznámení pomocí Azure Functions](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
+## [Osvědčené postupy konfigurace zařízení](iot-hub-configuration-best-practices.md)
+
 # Návody
 ## Plánování
 ### [Porovnání služeb IoT Hub a Event Hubs](iot-hub-compare-event-hubs.md)
@@ -169,6 +172,9 @@
 ### Začínáme s dvojčaty modulů
 #### [Azure Portal](iot-hub-portal-csharp-module-twin-getstarted.md)
 #### [.NET](iot-hub-csharp-csharp-module-twin-getstarted.md)
+#### [Python](iot-hub-python-python-module-twin-getstarted.md)
+#### [C](iot-hub-c-c-module-twin-getstarted.md)
+#### [Node](iot-hub-node-node-module-twin-getstarted.md)
 ### Použití přímých metod
 #### [Node.js](iot-hub-node-node-direct-methods.md)
 #### [.NET](iot-hub-csharp-csharp-direct-methods.md)
@@ -221,7 +227,9 @@
 ## [Upgrade IoT Hubu](iot-hub-upgrade.md)
 ## [Metriky využití](iot-hub-metrics.md)
 ## [Konfigurace filtrování IP](iot-hub-ip-filtering.md)
-## [Konfigurace zařízení ve velkém měřítku](iot-hub-auto-device-config.md)
+## Konfigurace zařízení ve velkém měřítku
+### [Použití webu Azure Portal](iot-hub-auto-device-config.md)
+### [Použití rozhraní příkazového řádku Azure](iot-hub-auto-device-config-cli.md)
 
 # Referenční informace
 ## [Ukázky kódu](https://azure.microsoft.com/resources/samples/?service=iot-hub)

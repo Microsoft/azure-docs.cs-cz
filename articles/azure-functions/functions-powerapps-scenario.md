@@ -17,12 +17,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 02cd491be5336abe708cce0f6e268b38514d4e88
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 3693b167f196b82c520703fa50ffabb27b555050
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234950"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082661"
 ---
 # <a name="call-a-function-from-powerapps"></a>Volání funkce z PowerApps
 [PowerApps](https://powerapps.microsoft.com) platformy je určená pro obchodní specialisté můžete vytvářet aplikace, bez kódu tradiční aplikace. Profesionální vývojáře můžete použít Azure Functions k rozšíření možností PowerApps, při stínění Tvůrce aplikací PowerApps z technické podrobnosti.
@@ -46,7 +46,7 @@ V tomto tématu se dozvíte, jak:
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ Aktivní [PowerApps účet](https://powerapps.microsoft.com/tutorials/signup-for-powerapps.md) s stejné přihlašovací údaje jako účet Azure. 
++ Aktivní [PowerApps účet](https://docs.microsoft.com/en-us/powerapps/maker/signup-for-powerapps) s stejné přihlašovací údaje jako účet Azure. 
 + Aplikace Excel a [ukázkový soubor aplikace Excel](https://procsi.blob.core.windows.net/docs/turbine-data.xlsx) , kterou použijete jako zdroj dat pro vaši aplikaci.
 + Dokončení tohoto kurzu [vytvořit definici OpenAPI pro funkci](functions-openapi-definition.md).
 
@@ -139,7 +139,7 @@ Teď, když zdroji dat jsou k dispozici v aplikaci, přidáte obrazovky do vaš�
 
 1. V **Data** panel, vyberte **turbín** ze seznamu.
 
-    ![Vyberte zdroj dat](media/functions-powerapps-scenario/select-data-source.png)
+    ![Výběr zdroje dat](media/functions-powerapps-scenario/select-data-source.png)
 
     Datová sada neobsahuje bitovou kopii, takže teď že můžete změnit rozložení, aby lépe vyhovoval data. 
 

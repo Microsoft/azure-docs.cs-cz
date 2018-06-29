@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 85450119b9ab25b6f812cbf8c6c64174dd6f322c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 1b9b1fa5b67e37181ff4c76773c6666ccbbcf275
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061722"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082861"
 ---
 # <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>V Azure Data Factory vytvořit modul runtime integrace Azure SSIS
 Tento článek popisuje kroky pro zřizování modulu runtime integrace Azure SSIS v Azure Data Factory. Následně můžete pomocí SQL Server Data Tools (SSDT) nebo aplikace SQL Server Management Studio (SSMS) v tomto modulu runtime v Azure nasazovat a spouštět balíčky SSIS (SQL Server Integration Services). 
@@ -54,9 +54,9 @@ Když zřizujete instanci Azure-SSIS IR, nainstaluje se také Azure Feature Pack
 - **Azure PowerShell**. Postupujte podle pokynů v [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/install-azurerm-ps), je-li spustit skript do zřízení Azure SSIS integrace runtime, který spouští balíčky SSIS v cloudu pomocí prostředí PowerShell. 
 
 ### <a name="region-support"></a>Oblasti podpory
-Vytvoříte objekt pro vytváření dat v následujících oblastech: Východ USA, Východ USA 2, jihovýchodní Asie a západní Evropa. 
+Seznam oblastí Azure, ve kterých je aktuálně dostupné pro vytváření dat, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **Data Factory**: [ Produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/).
 
-Prostředí Azure SSIS IR můžete vytvořit v následujících oblastech: USA – východ, USA – východ 2, USA – střed, USA – západ 2, Severní Evropa, Západní Evropa, Velká Británie – jih a Austrálie – východ. 
+Seznam oblastí Azure, ve kterých je aktuálně k dispozici modul Runtime integrace Azure SSIS, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **Runtime integrační služby SSIS** : [Produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/). ### porovnat SQL Database a spravované Instance (Preview)
 
 ### <a name="compare-sql-database-and-managed-instance-preview"></a>Porovnání SQL Database a spravované Instance (Preview)
 
@@ -220,13 +220,11 @@ Definujte proměnné, které se použijí ve skriptech v tomto kurzu:
 $SubscriptionName = "[your Azure subscription name]"
 $ResourceGroupName = "[your Azure resource group name]"
 $DataFactoryName = "[your data factory name]"
-# You can create a data factory in the following regions: East US, East US 2, Southeast Asia, and West Europe. 
 $DataFactoryLocation = "EastUS" 
 
 ### Azure-SSIS integration runtime information - This is the Data Factory compute resource for running SSIS packages
 $AzureSSISName = "[specify a name for your Azure-SSIS IR]"
 $AzureSSISDescription = "[specify a description for your Azure-SSIS IR]"
-# You can create an Azure-SSIS IR in the following regions: East US, East US 2, Central US, West US 2, North Europe, West Europe, UK South, and Australia East.
 $AzureSSISLocation = "EastUS" 
 # Only Standard_A4_v2|Standard_A8_v2|Standard_D1_v2|Standard_D2_v2|Standard_D3_v2|Standard_D4_v2 are supported.
 $AzureSSISNodeSize = "Standard_D4_v2"
@@ -392,13 +390,11 @@ Zde je úplná skript, který vytvoří modulu runtime integrace Azure SSIS.
 $SubscriptionName = "[your Azure subscription name]"
 $ResourceGroupName = "[your Azure resource group name]"
 $DataFactoryName = "[your data factory name]"
-# You can create a data factory in the following regions: East US, East US 2, Southeast Asia, and West Europe. 
 $DataFactoryLocation = "EastUS" 
 
 ### Azure-SSIS integration runtime information - This is the Data Factory compute resource for running SSIS packages
 $AzureSSISName = "[specify a name for your Azure-SSIS IR]"
 $AzureSSISDescription = "[specify a description for your Azure-SSIS IR]"
-# You can create an Azure-SSIS IR in the following regions: East US, East US 2, Central US, West US 2, North Europe, West Europe, UK South, and Australia East.
 $AzureSSISLocation = "EastUS" 
 # Only Standard_A4_v2|Standard_A8_v2|Standard_D1_v2|Standard_D2_v2|Standard_D3_v2|Standard_D4_v2 are supported.
 $AzureSSISNodeSize = "Standard_D4_v2"

@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: bonova
-ms.openlocfilehash: e606b38c626c1a4dd335c40926e89a7cf0cec17a
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: 1dec40871b8842cb5e41d48c759d1f4fa85d7b66
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054649"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082501"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co je Instance spravované (preview)?
 
@@ -210,7 +210,7 @@ Spravované Instance výhody nebudou vyřazené vždy až--datum v cloudu, což 
 - Spravované Instance nepovoluje zadání úplné fyzické cesty k umístění, aby ve všech scénářích odpovídající jinak podporovaná: obnovení databáze nepodporuje WITH MOVE, vytvořit DB neumožňuje fyzické cesty k umístění, BULK INSERT s objekty BLOB Azure funguje pouze atd. 
 - Spravované Instance podporuje [ověřování Azure AD](sql-database-aad-authentication.md) jako cloudu alternativu k ověřování systému Windows. 
 - Spravované Instance automaticky spravuje XTP souborů a soubory pro databáze, které obsahují objekty OLTP v paměti
-- Spravované Instance podporuje integraci služby SSIS (SQL Server) a hostitele katalog služby SSIS (SSISDB), který ukládá balíčky SSIS můžete, ale jsou prováděna na spravované Azure SSIS integrace modulu Runtime (IR) v Azure Data Factory (ADF), najdete v tématu [vytvořit IR Azure SSIS v ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+- Spravované Instance podporuje integraci služby SSIS (SQL Server) a hostitele katalog služby SSIS (SSISDB), který ukládá balíčky SSIS můžete, ale jsou prováděna na spravované Azure SSIS integrace modulu Runtime (IR) v Azure Data Factory (ADF), najdete v tématu [vytvořit IR Azure SSIS v ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime). K porovnání funkcí služby SSIS v databázi SQL a spravovat instanci, najdete v části [porovnat SQL Database a spravované Instance (Preview)](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-and-managed-instance-preview).
 
 ### <a name="managed-instance-administration-features"></a>Funkce správy spravované Instance  
 

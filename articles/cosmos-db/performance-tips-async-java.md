@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
-ms.openlocfilehash: 867a48674fe2489629a887ff9626d8e10b41e653
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e3ee75a07f19fef50d9aca61773bd7ea860f2ca4
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34613978"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37102150"
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
@@ -83,11 +83,11 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
 
     Mohou také nastavit pomocí metody setMaxItemCount velikost stránky.
     
-9. **Použít příslušné Plánovač (nepoužívejte krádež eventloop – vstupně-výstupní operace Netty vláken)**
+9. **Použít příslušné Plánovač (nepoužívejte krádež událostí smyčky vstupně-výstupní operace Netty vláken)**
 
-    Asynchronní Java SDK používá [netty](https://netty.io/) pro neblokující vstupně-výstupní operace. Sada SDK používá pevný počet vstupně-výstupní operace netty eventloop – vláken (libovolný počet jader procesoru, které má váš počítač) pro provádění operací vstupně-výstupní operace. Lze zobrazit vrácený API vysílá výsledek na jednom ze sdílených vláken netty eventloop – vstupně-výstupní operace. Proto je důležité sdílené vláken netty eventloop – vstupně-výstupní operace nejsou blokovány. Procesor intenzivně pracujete nebo blokování operace ve vlákně netty eventloop – vstupně-výstupní operace může způsobit zablokování nebo výrazně snížit propustnost SDK.
+    Asynchronní Java SDK používá [netty](https://netty.io/) pro neblokující vstupně-výstupní operace. Sada SDK používá pevný počet vstupně-výstupní operace netty událostí smyčky vláken (libovolný počet jader procesoru, které má váš počítač) pro provádění operací vstupně-výstupní operace. Lze zobrazit vrácený API vysílá výsledek na jednom ze sdílených vstupně-výstupní operace událostí smyčky netty vláken. Proto je důležité není zablokovat sdílené vstupně-výstupní operace událostí smyčky netty vláken. Procesor intenzivně pracujete nebo blokování operace ve vlákně netty smyčky událostí vstupně-výstupní operace může způsobit zablokování nebo výrazně snížit propustnost SDK.
 
-    Například následující kód provede náročné pracovní procesoru ve vlákně netty eventloop – vstupně-výstupní operace:
+    Například následující kód provede náročné pracovní procesoru na události smyčky netty vlákno vstupně-výstupní operace:
 
     ```java
     Observable<ResourceResponse<Document>> createDocObs = asyncDocumentClient.createDocument(
@@ -103,7 +103,7 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
       });
     ```
 
-    Po přijetí výsledek, pokud ji chcete intenzivní nároky na procesor fungovat na výsledek byste se měli vyhnout provádění netty vlákna tak dále eventloop – vstupně-výstupní operace. Místo toho můžete zadat vlastní plánovače poskytnout vlastní vlákno pro spuštění práci.
+    Po přijetí výsledek, pokud ji chcete intenzivní nároky na procesor fungovat na výsledek byste se měli vyhnout provádění tak dále událostí smyčky vstupně-výstupní operace netty přístup z více vláken. Místo toho můžete zadat vlastní plánovače poskytnout vlastní vlákno pro spuštění práci.
 
     ```java
     import rx.schedulers;
@@ -126,13 +126,13 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
 
     Další informace, podívejte se prosím na [Github stránce](https://github.com/Azure/azure-cosmosdb-java) pro asynchronní Java SDK.
 
-10. **Zakázání protokolování na netty** Netty knihovny protokolování je chatty a musí být vypnuté (potlačení protokolu v konfiguraci nemusí stačit) aby se zabránilo další náklady procesoru. Pokud nejste v režimu ladění, zakažte netty veškeré protokolování. Pokud používáte log4j odebrat náklady na další procesoru způsobené ``org.apache.log4j.Category.callAppenders()`` z netty přidejte následující řádek na vaše základu kódu:
+10. **Zakázání protokolování na netty** Netty knihovny protokolování je chatty a musí být vypnuté (potlačení přihlášení konfigurace nemusí stačit) aby se zabránilo další náklady procesoru. Pokud nejste v režimu ladění, zakažte netty veškeré protokolování. Pokud používáte log4j odebrat náklady na další procesoru způsobené ``org.apache.log4j.Category.callAppenders()`` z netty přidejte následující řádek na vaše základu kódu:
 
     ```java
     org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
     ```
 
-11. **Otevřete operační systém souborů limitu prostředků** některá Linux systémy (např. Redhat) mají horní limit počtu otevřené soubory a tak celkový počet připojení. Spusťte následující příkaz a zobrazí aktuální omezení:
+11. **Otevřete operační systém souborů limitu prostředků** některá Linux systémy (například Red Hat) mají horní limit počtu otevřené soubory a tak celkový počet připojení. Spusťte následující příkaz a zobrazí aktuální omezení:
 
     ```bash
     ulimit -a
@@ -170,7 +170,7 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
     </dependency>
     ```
 
-Pro jiné platformy (Red Hat, Windows, Mac, atd.) postupujte podle těchto pokynů https://netty.io/wiki/forked-tomcat-native.html
+Pro jiné platformy (Red Hat, Windows, Mac, atd.) postupovat podle těchto pokynů https://netty.io/wiki/forked-tomcat-native.html
 
 ## <a name="indexing-policy"></a>Zásada indexování
  
@@ -209,7 +209,7 @@ Pro jiné platformy (Red Hat, Windows, Mac, atd.) postupujte podle těchto pokyn
     response.getRequestCharge();
     ```             
 
-    Žádost o poplatků, vrátí se v tuto hlavičku je zlomek zřízené propustnosti. Například pokud máte 2000 zřízený RU/s, a pokud předchozí dotaz vrátí 1000 1KB – dokumenty, náklady na operaci je 1000. Jako takový jedné sekundy ctí serveru pouze dva takových požadavků před omezení následných žádostí. Další informace najdete v tématu [požadované jednotky](request-units.md) a [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner).
+    Žádost o poplatků, vrátí se v tuto hlavičku je zlomek zřízené propustnosti. Například pokud máte 2000 zřízený RU/s, a pokud předchozí dotaz vrátí 1000 1KB – dokumenty, náklady na operaci je 1000. V rámci jedné sekundy jako takový serveru ctí jenom dva takových požadavků, než míra omezení následných žádostí. Další informace najdete v tématu [požadované jednotky](request-units.md) a [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner).
 <a id="429"></a>
 2. **Rychlost omezení nebo požadavků popisovač míra příliš velký**
 

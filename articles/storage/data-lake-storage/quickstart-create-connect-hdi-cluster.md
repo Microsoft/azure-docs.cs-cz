@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 6707610fc3410eab6eb2985c7d8a0ef821354689
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 9e986507269d9d7d8822e6f6088901be7d92edd8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062075"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096549"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Rychlý úvod: Nastavení clusterů v HDInsight
 
@@ -117,7 +117,7 @@ I když místní instalace systému Hadoop používá Hadoop Distributed File Sy
 
 Během konfigurace zadáte pro výchozí koncový bod úložiště Data Lake Storage. Výchozí úložiště obsahující aplikační a systémové protokoly. Volitelně můžete zadat další propojené účty Azure Data Lake Storage, kteří mohou přistupovat ke clusteru. HDInsight cluster a účty závislého úložiště musí být ve stejné oblasti Azure.
 
-![Nastavení úložiště clusteru: koncové body HDFS kompatibilní úložiště](media/quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage-TEMP.png)
+![Nastavení úložiště clusteru: koncové body HDFS kompatibilní úložiště](media/quickstart-create-connect-hdi-cluster/hdinsight-cluster-creation-storage2.png)
 
 > [!IMPORTANT]
 > Nezapomeňte **zakázat přístup Data Lake Store**. Toto nastavení odkazuje na starý *Data Lake Store* funkce a musí být zakázáno, aby *Data Lake Storage* funkce, které mají správně fungovat.

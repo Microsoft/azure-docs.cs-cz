@@ -7,36 +7,41 @@ manager: wolmfa61
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 06/28/2018
 ms.author: mahilleb
-ms.openlocfilehash: a201cc043f673e2285ea48950804d97b96f881ed
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: 1eb3768f5a5c5a27a45dde3f62f862f36fa3e8ac
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054964"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098494"
 ---
-# <a name="regions-and-endpoints-of-the-speech-service"></a>Koncové body služby řeči a oblasti
+# <a name="regions-of-the-speech-service"></a>Oblasti služby řeči
 
-> [!NOTE]
-> Oblast názvy v [řeči SDK](speech-sdk.md) odpovídat první součástí domény koncových bodů vypsáni níže.
-> Například použít `westus` k určení oblasti západní USA v sadě SDK řeči.
+Služba rozpoznávání řeči je k dispozici v různých oblastech.
+Při vytvoření odběru můžete podle potřeby vyberte oblast dostupná.
 
-## <a name="speech-to-text"></a>Převod řeči na text
+Při používání vašeho předplatného, budete muset účet pro oblast, kterou jste vybrali.
 
-[!include[](includes/endpoints-speech-to-text.md)]
+## <a name="rest-api"></a>REST API
 
-## <a name="text-to-speech"></a>Převod textu na řeč
+Pomocí rozhraní REST API, vyberte práva specifické pro oblast koncových bodů.
+V tématu [rozhraní REST API](rest-apis.md) podrobnosti.
 
-[!include[](includes/endpoints-text-to-speech.md)]
 
-## <a name="authentication"></a>Authentication
 
-[!include[](includes/endpoints-token-service.md)]
+## <a name="speech-sdk"></a>Speech SDK
 
-V tématu [sem](rest-apis.md#authentication) podrobnosti získání a aktualizaci tokeny autorizace.
+V [řeči SDK](speech-sdk.md), oblasti jsou určené jako řetězec (například jako parametr pro [SpeechFactory.FromSubscription](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechfactory.fromsubscription) v řeči SDK pro jazyk C#).
 
-## <a name="language-understanding-speech-sdk-only"></a>Principy jazyka (pouze řeči SDK)
+Následující tabulka uvádí dostupné oblasti pro rozpoznávání řeči a překlad:
 
-Oblasti pro službu znalosti jazyka jsou uvedeny [zde](/azure/cognitive-services/luis/luis-reference-regions).
-V sadě SDK rozpoznávání řeči, zadejte tyto oblasti první část názvu domény koncového bodu (například `westus`).
+Oblast| Hodnota parametru oblast v sadě SDK řeči
+-|-
+Západní USA| `westus`
+Východní Asie| `eastasia`
+Severní Evropa| `northeurope`
+
+Dostupné oblasti pro záměrné rozpoznávání pomocí sady SDK řeči jsou uvedeny v [stránku oblasti služby znalosti jazyka](/azure/cognitive-services/luis/luis-reference-regions).
+Pro každou oblast publikování uvedené je určen parametr odpovídající oblast řeči SDK jako první část názvu domény koncového bodu.
+Například použít `westus` k určení publikování oblast západní USA.

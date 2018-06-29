@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: ed69d4de56d23210cc9133d74ab81530f924b5ae
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 769d530d85199e3f38890589e3719ba35f7cf5d6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261555"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097967"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy Azure Cosmos DB
@@ -70,7 +70,7 @@ Ano, můžete zaregistrovat pro účet časově omezené bez poplatků, bez záv
 
 Pokud jste Azure ještě nepoužívali, můžete si zaregistrovat [bezplatný účet Azure](https://azure.microsoft.com/free/), kterým získáte 30 dnů a a Dal na vyzkoušení všech služeb Azure. Pokud máte předplatné sady Visual Studio, jste také vhodné pro [volné kredity Azure](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) na libovolnou službu Azure používat. 
 
-Můžete také [emulátoru DB Cosmos Azure](local-emulator.md) pro vývoj a testování vaší aplikace místně pro uvolnění bez vytváření předplatného Azure. Až budete spokojeni s jak funguje aplikaci v emulátoru DB Cosmos Azure, můžete přejít k používání účtu Azure Cosmos DB v cloudu.
+Můžete také [emulátoru DB Cosmos Azure](local-emulator.md) pro vývoj a testování vaší aplikace místně pro uvolnění bez vytváření předplatného Azure. Jakmile budete spokojeni s fungováním aplikace v emulátoru, můžete přejít na účet služby Azure Cosmos DB v cloudu.
 
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>Jak můžete získat další pomoc s Azure Cosmos DB?
 
@@ -80,7 +80,7 @@ Položte technické dotazy, můžete odeslat na jednu z těchto dvou otázku a o
 
 Pokud chcete požádat o nové funkce, vytvořit novou žádost o na [Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
-Chcete-li vyřešit problém s vaším účtem, souborů [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) na portálu Azure.
+Pokud řešíte problém s účtem, podejte prostřednictvím webu Azure Portal [žádost o podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
 Další otázky, můžete odeslat týmu v [ askcosmosdb@microsoft.com ](mailto:askcosmosdb@microsoft.com); ale to není alias se na technickou podporu. 
 
@@ -281,9 +281,6 @@ Můžete použít [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-a
 
 Nástroje a flexibilně trvat připojovací řetězec ve formátu určeném dříve může podporovat nové rozhraní API tabulky. Seznam nástroje tabulky je uvedený na [Azure Storage Client Tools](../storage/common/storage-explorers.md) stránky. 
 
-### <a name="do-powershell-or-azure-cli-work-with-the-table-api"></a>Prostředí PowerShell nebo rozhraní příkazového řádku Azure fungují s rozhraním API pro tabulku?
-Je dostupná podpora [prostředí PowerShell](table-powershell.md). Azure CLI podpora není aktuálně k dispozici.
-
 ### <a name="is-the-concurrency-on-operations-controlled"></a>Je na operace řízené souběžnost?
 Ano, optimistickou metodu souběžného je k dispozici prostřednictvím použití mechanismu značka ETag. 
 
@@ -410,7 +407,7 @@ Ano, pokud TableThroughput prostřednictvím app.config nepotlačí a nepoužív
 ### <a name="how-is-the-price-calculated-for-the-table-api"></a>Výpočtu ceny pro rozhraní API tabulky 
 Cena závisí na přidělené TableThroughput. 
 
-### <a name="how-do-i-handle-any-throttling-on-the-tables-in-table-api-offering"></a>Jak pracovat, žádné omezení pro tabulky v tabulce API nabídky? 
+### <a name="how-do-i-handle-any-rate-limiting-on-the-tables-in-table-api-offering"></a>Jak pracovat, žádné omezení rychlosti na tabulky v tabulce API nabídky? 
 Pokud rychlost požadavků překročí kapacitu zřízené propustnosti pro základní kontejner nebo sadu kontejnery, dojde k chybě a sady SDK opakování volání použitím zásady opakování.
 
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Proč je muset zvolit propustnost kromě PartitionKey a RowKey využívat výhod nabídku API tabulky databáze Cosmos Azure?

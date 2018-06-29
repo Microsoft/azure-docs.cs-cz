@@ -9,12 +9,12 @@ ms.component: linguistic-analysis
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: 4681098a0e56640e95463272be44f7432be26839
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 78e539f365728ad540308e9cfb07af44bf6d8fe7
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342451"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084038"
 ---
 # <a name="sentence-separation-and-tokenization"></a>Věty oddělení a tokenizaci
 
@@ -68,4 +68,4 @@ Nakonec jsou více neobvyklou tokeny představují staženiny jako *n't* pro *ne
 ## <a name="specification"></a>Specifikace
 
 Je důležité zajistit konzistentní rozhodnutí o co zahrnuje věty a token.
-Spoléháme na specifikaci z [členem této Treebank](https://www.cis.upenn.edu/~treebank/) (některé další podrobnosti jsou k dispozici zde: [https://www.cis.upenn.edu/~treebank/tokenization.html]).
+Spoléháme na specifikaci z [členem této Treebank](https://catalog.ldc.upenn.edu/ldc99t42) (některé další podrobnosti jsou dostupné na ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html).

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: jeedes
-ms.openlocfilehash: d4832807bb8ce3a854bee16eae5d0ced37fedcd8
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 547c3785fa307838e9a86d38280b90fb31b040b3
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215071"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082617"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>Kurz: Azure Active Directory integrace s Sedgwick CMS
 
@@ -123,7 +123,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     | `https://claimlookup.com/Voe/sso` |
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory Sedgwick CMS](https://www.sedgwick.com/contact/Pages/contactform.aspx) k získání těchto hodnot.
+    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte se skutečným identifikátorem a adresa URL odpovědi. Obraťte se na [tým podpory Sedgwick CMS](https://www.sedgwick.com/help) k získání těchto hodnot.
  
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
@@ -137,7 +137,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 6. Konfigurace jednotného přihlašování na **Sedgwick CMS** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory Sedgwick CMS](https://www.sedgwick.com/contact/Pages/contactform.aspx). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím  **Konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 

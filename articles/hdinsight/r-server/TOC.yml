@@ -1,6 +1,6 @@
 - name: Dokumentace ke službě HDInsight
   href: /azure/hdinsight
-- name: R Server v HDInsightu
+- name: Služby ML v HDInsightu
   items:
     - name: Přehled
       href: r-server-overview.md
@@ -9,7 +9,7 @@
       maintainContext: true
 - name: Začínáme
   items:
-    - name: Začínáme s R Serverem
+    - name: Začínáme se službami ML
       href: r-server-get-started.md
     - name: Instalace aplikací HDInsight
       href: ../hdinsight-apps-install-applications.md
@@ -19,11 +19,11 @@
       maintainContext: true
 - name: Postup
   items:
-    - name: Použít R Serveru
+    - name: Použití služeb ML
       items:
-        - name: Správa clusteru R Serveru
+        - name: Správa clusteru služeb ML
           href: r-server-hdinsight-manage.md
-        - name: Zprovoznění clusteru R Serveru
+        - name: Zprovoznění clusteru služeb ML
           href: r-server-operationalize.md
         - name: Možnosti úložiště
           href: r-server-storage.md

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: aa140bceb5f7ad5e638f747fa8d88803c27f02a3
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 74a660f7240b9ae6138c402dbbb418bbc665dc3c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33867661"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098698"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Vyřešte chybové zprávy z NPS rozšíření pro Azure Multi-Factor Authentication
 
@@ -52,14 +52,14 @@ Pokud narazíte na chyby s příponou NPS pro Azure Multi-Factor Authentication,
 | Kód chyby | Chybová zpráva | Postup při řešení potíží |
 | ---------- | ------------- | --------------------- |
 | **AccessDenied** | Volající klient nemá oprávnění k přístupu k provést ověřování pro uživatele | Zkontrolujte, zda doména klienta a doménu hlavní název uživatele (UPN) jsou stejné. Například, ujistěte se, že user@contoso.com se pokusil o ověření klienta Contoso. Hlavní název uživatele představuje platného uživatele pro klienta v Azure. |
-| **AuthenticationMethodNotConfigured** | Použití zadané metody ověřování nebyl nakonfigurovaný pro tohoto uživatele | Mít uživatele, přidání nebo ověřte své metody ověřování podle pokynů v [spravovat nastavení pro dvoustupňové ověření](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md). |
+| **AuthenticationMethodNotConfigured** | Použití zadané metody ověřování nebyl nakonfigurovaný pro tohoto uživatele | Mít uživatele, přidání nebo ověřte své metody ověřování podle pokynů v [spravovat nastavení pro dvoustupňové ověření](end-user/current/multi-factor-authentication-end-user-manage-settings.md). |
 | **AuthenticationMethodNotSupported** | Zadané metody ověřování není podporována. | Shromažďovat všechny protokoly, které obsahují tato chyba, a [obraťte se na podporu](#contact-microsoft-support). Když se obrátíte na podporu, zadejte uživatelské jméno a metodu sekundární ověření, který aktivoval chyba. |
-| **BecAccessDenied** | Volání MSODS Bec vrátil odepření přístupu, pravděpodobně není definováno uživatelské jméno v klientovi | Uživatel je součástí služby Active Directory v místě, ale není synchronizovat do Azure AD pomocí AD Connect. Nebo uživatel chybí u klienta. Přidejte uživatele do služby Azure AD a požádejte o přidání své metody ověřování podle pokynů v [spravovat nastavení pro dvoustupňové ověření](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md). |
+| **BecAccessDenied** | Volání MSODS Bec vrátil odepření přístupu, pravděpodobně není definováno uživatelské jméno v klientovi | Uživatel je součástí služby Active Directory v místě, ale není synchronizovat do Azure AD pomocí AD Connect. Nebo uživatel chybí u klienta. Přidejte uživatele do služby Azure AD a požádejte o přidání své metody ověřování podle pokynů v [spravovat nastavení pro dvoustupňové ověření](end-user/current/multi-factor-authentication-end-user-manage-settings.md). |
 | **InvalidFormat** nebo **StrongAuthenticationServiceInvalidParameter** | Telefonní číslo je ve formátu nerozpoznatelný | Máte opravte jejich ověření telefonních čísel uživatele. |
 | **InvalidSession** | Zadaná relace je neplatný nebo platnost vypršela | Relace trvá víc než tři minut. Ověřte, zda je uživatel zadáte ověřovací kód, nebo odpověď na oznámení aplikace, do tří minut po inicializaci žádosti o ověření. Jestliže problém problém, zkontrolujte, že neexistují žádné síťovou latenci mezi klientem, na Server, NPS Server a koncový bod Azure MFA.  |
-| **NoDefaultAuthenticationMethodIsConfigured** | Pro uživatele byla nakonfigurována žádná výchozí metoda ověření | Mít uživatele, přidání nebo ověřte své metody ověřování podle pokynů v [spravovat nastavení pro dvoustupňové ověření](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md). Ověřte, zda má uživatel vybrali metodu ověřování výchozí a nakonfigurovat tuto metodu pro svůj účet. |
+| **NoDefaultAuthenticationMethodIsConfigured** | Pro uživatele byla nakonfigurována žádná výchozí metoda ověření | Mít uživatele, přidání nebo ověřte své metody ověřování podle pokynů v [spravovat nastavení pro dvoustupňové ověření](end-user/current/multi-factor-authentication-end-user-manage-settings.md). Ověřte, zda má uživatel vybrali metodu ověřování výchozí a nakonfigurovat tuto metodu pro svůj účet. |
 | **OathCodePinIncorrect** | Nesprávný kód a zadán kód pin. | Tato chyba není očekáván v rozšíření serveru NPS. Pokud uživatel zaznamená, [obraťte se na podporu](#contact-microsoft-support) Poradce při potížích. |
-| **ProofDataNotFound** | Doklad data nebyla nakonfigurována pro použití zadané metody ověřování. | Uživatel, zkuste metodu různých ověřování, nebo přidejte nové metody ověřování podle pokynů v [spravovat nastavení pro dvoustupňové ověření](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md). Pokud uživatel pokračuje se tato chyba po potvrzení správně, nastavit jejich metoda ověření [obraťte se na podporu](#contact-microsoft-support). |
+| **ProofDataNotFound** | Doklad data nebyla nakonfigurována pro použití zadané metody ověřování. | Uživatel, zkuste metodu různých ověřování, nebo přidejte nové metody ověřování podle pokynů v [spravovat nastavení pro dvoustupňové ověření](end-user/current/multi-factor-authentication-end-user-manage-settings.md). Pokud uživatel pokračuje se tato chyba po potvrzení správně, nastavit jejich metoda ověření [obraťte se na podporu](#contact-microsoft-support). |
 | **SMSAuthFailedWrongCodePinEntered** | Nesprávný kód a zadán kód pin. (OneWaySMS) | Tato chyba není očekáván v rozšíření serveru NPS. Pokud uživatel zaznamená, [obraťte se na podporu](#contact-microsoft-support) Poradce při potížích. |
 | **TenantIsBlocked** | Klient je blokovaný. | [Obraťte se na podporu](#contact-microsoft-support) s ID adresáře na stránce Vlastnosti Azure AD na portálu Azure. |
 | **UserNotFound** | Zadaný uživatel nebyl nalezen. | Klient není již zobrazen jako aktivní v Azure AD. Zkontrolujte, zda je vaše předplatné aktivní a zda máte požadovaná první strany aplikace. Také zkontrolujte, že klient v předmětu certifikátu podle očekávání a certifikát je stále platný a registrované v části objektu služby. |
@@ -98,7 +98,7 @@ Pokud některé z těchto chyb narazíte, doporučujeme vám [obraťte se na pod
 
 Pokud jsou vaši uživatelé [došlo k potížím s dvoustupnovym overovanim](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md), pomoci jim samoobslužné diagnostikovat problémy. 
 
-### <a name="contact-microsoft-support"></a>Obraťte se na podporu společnosti Microsoft
+### <a name="contact-microsoft-support"></a>Kontaktovat podporu Microsoftu
 
 Pokud potřebujete další pomoc, obraťte se na pracovníky technické podpory prostřednictvím [podpory Azure Multi-Factor Authentication Server](https://support.microsoft.com/oas/default.aspx?prid=14947). Při kontaktování nám, je užitečné, pokud zahrnete tolik informací o problému nejdříve. Obsahuje informace, které můžete zadat stránky, kde jste viděli v chybě, kód chyby ID konkrétní relace, ID uživatele, který viděli k chybě a protokoly pro ladění.
 

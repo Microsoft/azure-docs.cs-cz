@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 2916252c08c599d2e528595a8cdf2abca8ea89a3
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 3715dcceb4330f6eaab01f49aee9d4d19663b62e
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938380"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099653"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technické příručce k šabloně Cortana Intelligence řešení pro prediktivní údržby v letecký a jiné firmy
 
@@ -54,7 +54,7 @@ Následující oddíly popisují části řešení.
 ### <a name="synthetic-data-source"></a>Zdroj dat syntetického
 U této šablony se zdroj dat používaný generují z plochy aplikace, která můžete stáhnout a spustit místně po úspěšné nasazení.
 
-Pokyny ke stažení a instalaci této aplikace, vyberete prvního uzlu generátor dat prediktivní údržby, v diagramu šablonu řešení. Pokyny naleznete v panelu Vlastnosti. Tuto aplikaci kanály [centra událostí Azure](#azure-event-hub) služby s datových bodů nebo události, použité ve zbývající části toku řešení. Tento zdroj dat je odvozený od veřejně dostupnými daty z [datové úložiště NASA](https://c3.nasa.gov/dashlink/resources/139/) pomocí [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan).
+Pokyny ke stažení a instalaci této aplikace, vyberete prvního uzlu generátor dat prediktivní údržby, v diagramu šablonu řešení. Pokyny naleznete v panelu Vlastnosti. Tuto aplikaci kanály [centra událostí Azure](#azure-event-hub) služby s datových bodů nebo události, použité ve zbývající části toku řešení. Tento zdroj dat je odvozený od veřejně dostupnými daty z [datové úložiště NASA](https://c3.nasa.gov/dashlink/resources/139/) pomocí [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan).
 
 Aplikace generování událostí naplní centra událostí Azure pouze tehdy, když je prováděna v počítači.  
 
@@ -82,7 +82,7 @@ Použití [Power BI](https://powerbi.microsoft.com) zobrazit řídicí panel, kt
 ## <a name="how-to-bring-in-your-own-data"></a>Jak mají být předány svoje vlastní data
 Tato část popisuje, jak převést svoje vlastní data do Azure a oblasti, které vyžadují změny data, která přepnutím do této architektury.
 
-Není pravděpodobné, že datovou sadu odpovídá datové sady používané [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) použít pro tuto šablonu řešení. Seznámení s daty a požadavky na jsou klíčové v tom, jak upravit tuto šablonu pro práci s vlastními daty. 
+Není pravděpodobné, že datovou sadu odpovídá datové sady používané [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan) použít pro tuto šablonu řešení. Seznámení s daty a požadavky na jsou klíčové v tom, jak upravit tuto šablonu pro práci s vlastními daty. 
 
 Následující části popisují části šablony, které vyžadují změny, pokud je zavedená nová datová sada.
 

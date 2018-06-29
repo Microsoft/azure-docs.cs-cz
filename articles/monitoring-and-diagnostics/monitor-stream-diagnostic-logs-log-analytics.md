@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 634cecb247686afd8c5c749d6e28b301d7e07c4f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: d8966edb6061ed07f5aecb9682fca081ed589040
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263503"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083970"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Stream Azure diagnostických protokolů k analýze protokolů
 
@@ -30,7 +30,7 @@ Azure Log Analytics je flexibilní protokol hledání a analýzy nástroj, kter�
 
 ## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics"></a>Povolení diagnostických protokolů k analýze protokolů streamování
 
-Můžete povolit vysílání datového proudu diagnostické protokoly prostřednictvím kódu programu, prostřednictvím portálu nebo pomocí [rozhraní REST API Azure monitorování](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings). V obou případech vytvoříte nastavení diagnostiky ve kterém zadáte, pracovní prostor analýzy protokolů a protokolu kategorií a metriky, které se mají posílat do tohoto pracovního prostoru. Diagnostika **kategorie protokolu** je typ protokolu, který může poskytnout prostředku.
+Můžete povolit vysílání datového proudu diagnostické protokoly prostřednictvím kódu programu, prostřednictvím portálu nebo pomocí [rozhraní REST API Azure monitorování](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). V obou případech vytvoříte nastavení diagnostiky ve kterém zadáte, pracovní prostor analýzy protokolů a protokolu kategorií a metriky, které se mají posílat do tohoto pracovního prostoru. Diagnostika **kategorie protokolu** je typ protokolu, který může poskytnout prostředku.
 
 Pracovní prostor analýzy protokolů nemusí být ve stejném předplatném jako prostředek emitování protokoly tak dlouho, dokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC do oba odběry.
 

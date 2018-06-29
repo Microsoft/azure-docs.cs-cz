@@ -3,24 +3,24 @@ documentType: LandingData
 title: Dokumentace k Azure Storage
 metadata:
   title: Dokumentace ke službě Azure Storage – kurzy, reference k rozhraní API | Dokumentace Microsoftu
-  description: Azure Storage je cloudová služba spravovaná Microsoftem, která poskytuje vysoce dostupné, zabezpečené, odolné, škálovatelné a redundantní úložiště. Azure Storage se skládá ze služeb Blob Storage, File Storage a Queue Storage.
+  description: Azure Storage je cloudová služba spravovaná Microsoftem, která poskytuje vysoce dostupné, zabezpečené, odolné, škálovatelné a redundantní úložiště. Azure Storage zahrnuje objekty blob Azure, Azure Data Lake Storage Gen2, soubory Azure, fronty Azure a tabulky Azure.
   services: storage
   author: tamram
-  manager: jeconnoc
+  manager: twooley
   ms.service: storage
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 06/18/2018
+  ms.date: 06/27/2018
   ms.author: tamram
-  ms.openlocfilehash: 0e8c2b7048ff9e59612e13a87506bf1209036ca6
-  ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+  ms.openlocfilehash: a2254967a9f7338e29105682ea6d496271bbbe75
+  ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/19/2018
-  ms.locfileid: "36266667"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37030287"
 abstract:
-  description: Microsoft Azure Storage je cloudová služba spravovaná Microsoftem, která poskytuje vysoce dostupné, zabezpečené, odolné, škálovatelné a redundantní úložiště. Azure Storage se skládá ze služeb Blob Storage, File Storage a Queue Storage.  Prostřednictvím našich šablon Rychlý start a kurzů se naučíte využívat Azure Storage ve svých aplikacích.
+  description: Azure Storage je služba spravovaná Microsoftem, která poskytuje vysoce dostupné, zabezpečené, odolné, škálovatelné a redundantní cloudové úložiště. Azure Storage zahrnuje objekty blob Azure, Azure Data Lake Storage Gen2, soubory Azure, fronty Azure a tabulky Azure. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte využívat Azure Storage ve svých aplikacích.
 sections:
 - title: Zprovoznění během 5 minut
   items:
@@ -65,30 +65,25 @@ sections:
       - href: /azure/storage/blobs/storage-quickstart-blobs-java
       - href: /azure/storage/blobs/storage-quickstart-blobs-python
       - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
+    - title: Data Lake Storage Gen2
+      values:
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-the-azure-portal
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-powershell
+      - href: /azure/storage/data-lake-storage/quickstart-create-account#create-an-account-using-azure-cli
+      - href: 
+      - href: 
+      - href: 
+      - href: 
 - title: Podrobné kurzy
   items:
-  - type: paragraph
-    text: Naučíte se nahrávat a zpracovávat data obrázků v cloudu.
   - type: list
-    style: unordered
+    style: cards
+    className: cardsD
     items:
-    - html: <a href="/azure/storage/blobs/storage-upload-process-images">Nahrání a načtení dat obrázků v cloudu</a>
-    - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Aktivace Azure Functions pro zpracování objektů blob</a>
-    - html: <a href="/azure/storage/blobs/storage-secure-access-application">Zabezpečení dat aplikací</a>
-    - html: <a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Monitorování a odstraňování potíží s úložištěm</a>
-  - type: paragraph
-    text: Naučte se navrhovat aplikace pro vysokou dostupnost ve službě Azure Storage.
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Zajištění vysoké dostupnosti dat aplikace</a>
-    - html: <a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Simulace selhání při přístupu k redundantnímu úložišti jen pro čtení</a>
-  - type: paragraph
-    text: Naučte se vyhledávat nestrukturovaná data v Azure Storage.
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="/azure/storage/blobs/storage-unstructured-search">Vyhledávání nestrukturovaných dat v cloudovém úložišti</a>
+    - title: Objekty blob
+      html: <p>Nahrání a zpracování dat obrázků v cloudu</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">Nahrání a načtení dat obrázků v cloudu</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Aktivace Azure Functions pro zpracování objektů blob</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">Zabezpečení dat aplikací</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">Monitorování a odstraňování potíží s úložištěm</a></li></ul><p>Návrh aplikace pro zajištění vysoké dostupnosti</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">Zajištění vysoké dostupnosti dat aplikace</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">Simulace selhání při přístupu k redundantnímu úložišti jen pro čtení</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">Vyhledávání nestrukturovaných dat ve službě Azure Storage</a></p>
+    - title: Data Lake Storage Gen2
+      html: <p><a href="/azure/storage/data-lake-storage/handle-data-using-databricks">Extrakce, transformace a načítání dat pomocí Azure Databricks</a></p><p><a href="/azure/storage/data-lake-storage/using-databricks-spark">Přístup k datům Azure Data Lake Storage Gen2 se službou DataBricks s využitím Sparku</a></p><p><a href="/azure/storage/data-lake-storage/tutorial-extract-transform-load-hive">Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight</a></p>
 - title: Ukázky
   items:
   - type: paragraph

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: dda37600dffaf1e8e1c85c9757696f2d8219febb
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 1a5424b69fc70f69359b12beac86060f4e23ff27
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751666"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083987"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Azure SQL Database zakoupení modely a prostředky 
 
@@ -40,7 +40,7 @@ Následující tabulku a graf porovnání a porovnejte tyto dva modely nákupu.
 
 Virtuální základní představuje logický procesor nabízí s možností si vybrat mezi generací hardwaru. Nákupní model (preview) na základě vCore poskytuje flexibilitu, řízení, průhlednost spotřebu jednotlivých prostředků a snadný způsob, jak převede místní požadavků na zatížení do cloudu. Tento model umožňuje škálování výpočetní kapacity, paměť a úložiště podle jejich potřeb pracovního vytížení. V na základě vCore nákupu modelu (preview) Zákazníci můžete vybrat mezi obecné účely a obchodními úrovněmi kritické služby (preview) pro obě [jedna databáze](sql-database-single-database-scale.md) a [elastické fondy](sql-database-elastic-pool.md). 
 
-Použí na základě vCore nákupní model (preview) umožňuje nezávisle škálovat výpočetní a úložnou kapacitu, shodovat s místními výkonu a optimalizovat ceny. Pokud vaše databáze nebo elastického fondu spotřebovává více než 300 DTU převod na vCore může snížit vaše náklady. Můžete převést pomocí rozhraní API podle volby nebo pomocí portálu Azure, nedojde k výpadku. Převod však není požadováno. Pokud nákupní model DTU splňuje vaše požadavky na výkon a business, by měly pokračovat, jeho použití. Pokud se rozhodnete převést z modelu DTU vCore-model, měli byste vybrat úroveň výkonu pomocí následující pravidlo: každý 100 DTU ve standardní vrstvě vyžaduje minimálně 1 vCore ve vrstvě obecné účely; Každý 125 DTU v úrovni Premium vyžaduje minimálně 1 vCore v kritické obchodní vrstvy.
+Nákupní model (preview) na základě vCore můžete nezávisle škálovat výpočetní a úložnou kapacitu, odpovídající místní výkonu a optimalizovat ceny. Pokud vaše databáze nebo elastického fondu spotřebovává více než 300 DTU převod na vCore může snížit vaše náklady. Můžete převést pomocí rozhraní API podle volby nebo pomocí portálu Azure, nedojde k výpadku. Převod však není požadováno. Pokud nákupní model DTU splňuje vaše požadavky na výkon a business, by měly pokračovat, jeho použití. Pokud se rozhodnete převést z modelu DTU vCore-model, měli byste vybrat úroveň výkonu pomocí následující pravidlo: každý 100 DTU ve standardní vrstvě vyžaduje minimálně 1 vCore ve vrstvě obecné účely; Každý 125 DTU v úrovni Premium vyžaduje minimálně 1 vCore v kritické obchodní vrstvy.
 
 V na základě vCore nákupu modelu (preview) se zákazníci platit pro:
 - Výpočetní (úroveň služby + číslo vCores + generování hardwaru) *

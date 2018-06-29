@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: maghan
-ms.openlocfilehash: c8204e204978a9fd7cda2e9c02be0c70722b01bb
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: a41dcd5f2c93e5c1279e1c7511e10e6d72574b3b
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021356"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098742"
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>SQL Server Business Intelligence v Azure Virtual Machines
 > [!IMPORTANT] 
@@ -63,7 +63,7 @@ Virtuální počítač Microsoft Azure galerie obsahuje několik imagí, které 
 
 Další informace o vydání a funkce v systému SQL Server podporovány naleznete v následujících tématech:
 
-* [Edice serveru SQL](https://www.microsoft.com/server-cloud/products/sql-server-editions/#fbid=Zae0-E6r5oh)
+* [Edice serveru SQL](https://www.microsoft.com/sql-server/sql-server-2017-editions)
 * [Funkce podporovaných jednotlivými edicemi systému SQL Server 2016](https://msdn.microsoft.com/library/cc645993.aspx)
 
 ### <a name="bi-features-installed-on-the-sql-server-virtual-machine-gallery-images"></a>BI funkce nainstalované Image SQL serveru galerii virtuálních počítačů
@@ -351,5 +351,5 @@ Následující diagram znázorňuje tyto porty otevřít v bráně firewall virt
 > [Odeslat zpětnou vazbu a kontaktních informací prostřednictvím připojení ke službě Microsoft SQL Server](https://connect.microsoft.com/SQLServer/Feedback)
 
 ### <a name="community-content"></a>Komunitním obsahu
-* [Správa databáze Azure SQL pomocí prostředí PowerShell](http://blogs.msdn.com/b/windowsazure/archive/2013/02/07/windows-azure-sql-database-management-with-powershell.aspx)
+* [Správa databáze Azure SQL pomocí prostředí PowerShell](https://azure.microsoft.com/blog/windows-azure-sql-database-management-with-powershell/)
 

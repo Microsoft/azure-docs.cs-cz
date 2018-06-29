@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 10f4b6ec29c2d9539fa7fe61c96581755e630822
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: b0d6a797e4fe84ce2cb969d001ff96177f6ac641
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23950284"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097042"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>Řady StorSimple 8000: řešení hybridní cloudové úložiště
 ## <a name="overview"></a>Přehled
@@ -247,9 +247,9 @@ Následuje seznam další software, který slouží k vytvoření řešení s St
 | Typ úlohy | Software použít s StorSimple | Podporované verze|Odkaz na Průvodce řešením| 
 | --- | --- | --- | --- |
 | Cíl zálohy |Veeam |V Veeam 9 a novějším |[StorSimple jako cíl zálohování s Veaam](storsimple-configure-backup-target-veeam.md)|
-| Cíl zálohy |Veritas Backup Exec |Zálohování Exec 16 a novější |[StorSimple jako cíl zálohování pomocí zálohování Exec](storsimple-configure-backup-target-using-backup-exec.md)|
-| Cíl zálohy |Veritas NetBackup |NetBackup 7.7.x a novější  |[StorSimple jako cíl zálohování s NetBackup](storsimple-configure-backuptarget-netbackup.md)|
-| Sdílení souborů globální <br></br> Spolupráce |Talon  |[StorSimple s Talon](https://www.talonstorage.com/products/fast-deployment-azure-storsimple) | |
+| Cíl zálohy |Exec – zálohování této společnosti |Zálohování Exec 16 a novější |[StorSimple jako cíl zálohování pomocí zálohování Exec](storsimple-configure-backup-target-using-backup-exec.md)|
+| Cíl zálohy |NetBackup této společnosti |NetBackup 7.7.x a novější  |[StorSimple jako cíl zálohování s NetBackup](storsimple-configure-backuptarget-netbackup.md)|
+| Sdílení souborů globální <br></br> Spolupráce |Talon  |[StorSimple s Talon](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
 
 ## <a name="storsimple-terminology"></a>Terminologie služby StorSimple
 Před nasazením řešení Microsoft Azure StorSimple, doporučujeme, abyste si prošli následující termíny a definice.
@@ -261,16 +261,16 @@ Před nasazením řešení Microsoft Azure StorSimple, doporučujeme, abyste si 
 | AES-256 |Algoritmus Advanced Encryption (Standard AES) 256 bitů pro šifrování dat při jejich přesunu do a z cloudu. |
 | velikost alokační jednotky (Austrálie) |Nejmenší velikost místa na disku, který může být přidělen k uložení souboru v systému Windows. systémy souborů. Pokud velikost souboru není násobkem velikost clusteru, místo navíc je třeba zadat pro uložení souboru (až další více velikost clusteru) což vede ke ztrátě místa a fragmentace pevného disku. <br>Doporučené Austrálie pro svazky Azure StorSimple je 64 KB, protože ho pracuje s algoritmy pro odstranění duplicit. |
 | automatizované úložiště vrstvení |Automaticky přesouvání míň aktivní dat z jednotky SSD na pevné disky a pak do vrstvy v cloudu a pak povolení správy všech úložiště z centrální uživatelské rozhraní. |
-| Zálohování katalogu |Kolekce zálohování, které jsou obvykle spojené typu aplikace, který byl použit. Tato kolekce se zobrazí v okně Zálohování katalogu služby StorSimple Manager zařízení uživatelského rozhraní. |
+| zálohování katalogu |Kolekce zálohování, které jsou obvykle spojené typu aplikace, který byl použit. Tato kolekce se zobrazí v okně Zálohování katalogu služby StorSimple Manager zařízení uživatelského rozhraní. |
 | soubor zálohy katalogu |Soubor obsahující seznam dostupných snímky, které jsou aktuálně uloženy v databázi zálohování služby StorSimple Snapshot Manager. |
 | zásady zálohování |Výběr svazků, typ zálohy a časový plán, který umožňuje vytvářet zálohy dle předdefinovaného plánu. |
 | binární rozsáhlé objekty (objekty BLOB) |Kolekce binární data uložená jako jedna entita v systému pro správu databáze. Objekty BLOB jsou obvykle bitové kopie, zvuk nebo jiné multimédií objekty, i když někdy binární kód spustitelný soubor je uložen jako objekt BLOB. |
 | Challenge Handshake Authentication Protocol (CHAP) |Protokol použitý k ověření partnera připojení na základě jeho protějšek sdílení hesla a tajný klíč. CHAP mohou být jednosměrné nebo vzájemné. Cíl s jednosměrný CHAP, ověřuje iniciátor. Vzájemné CHAP vyžaduje, že cíl ověřování iniciátoru a že je iniciátor ověřuje cíl. |
-| klonování |Duplicitní kopie svazku. |
+| Klonování |Duplicitní kopie svazku. |
 | Cloud jako vrstvu (CaaT) |Cloudového úložiště, které jsou integrovány jako vrstvu v architektuře úložiště tak, aby všechny úložiště se zobrazí jako součást jedné podnikové sítě úložiště. |
 | poskytovatele cloudové služby (CSP) |Zprostředkovatel cloud computing služby. |
 | cloudový snímek |V okamžiku kopii svazku data, která je uložená v cloudu. Cloudový snímek je stejná jako snímek replikují na jiný, odlehlého úložiště systému. Cloudové snímky jsou obzvláště užitečná ve scénářích zotavení po havárii. |
-| Šifrovací klíč cloudového úložiště |Heslo nebo klíč používá zařízení StorSimple k přístupu k zašifrovaným datům poslal zařízení do cloudu. |
+| šifrovací klíč cloudového úložiště |Heslo nebo klíč používá zařízení StorSimple k přístupu k zašifrovaným datům poslal zařízení do cloudu. |
 | aktualizace pro clustery |Správa aktualizací softwaru na serverech v clusteru s podporou převzetí služeb při selhání tak, aby aktualizace minimální nebo žádný vliv na dostupnost služeb. |
 | DataPath |Kolekce funkční jednotek, které provádějí operace propojených zpracování dat. |
 | deaktivovat |Trvalé akce, která dělí připojení mezi zařízení StorSimple a související cloudové služby. Cloudové snímky zařízení zůstaly po tento proces a může být klonovat nebo použít pro zotavení po havárii. |
@@ -290,11 +290,11 @@ Před nasazením řešení Microsoft Azure StorSimple, doporučujeme, abyste si 
 | místní snímek |V okamžiku kopii svazku data, která je uložená v Microsoft Azure StorSimple zařízení. |
 | Microsoft Azure StorSimple |Výkonné řešení skládající se z datacenter úložiště zařízení a softwaru, který umožňuje IT organizacím využít cloudového úložiště, jako by šlo úložišti datacentra. StorSimple zjednodušuje ochrany dat a správu dat při současném snížení nákladů. Řešení dojde ke konsolidaci primární úložiště, archivace, zálohování a zotavení po havárii (DR) prostřednictvím bezproblémovou integraci s cloudem. Kombinací SAN úložiště a cloudové správy dat na platformě podnikových zařízení StorSimple povolit rychlosti, jednoduchost a spolehlivost pro všechny požadavky související s úložištěm. |
 | Napájení a chlazení modulu (PCM) |Hardwarové součásti zařízení StorSimple skládající se z zdroje napájení a chladicí ventilátory, proto název napájení a chlazení modulu. Skříni primární zařízení má dva PCMs 764W, zatímco skříni EBOD má dva PCMs 580W. |
-| Primární skříň |Hlavní skříň zařízení StorSimple, obsahující řadiče platformy aplikace. |
-| Cíli času obnovení (RTO) |Maximální množství času, které by měl být použito před obchodní proces nebo systém úplné obnovení po havárii. |
+| primární skříň |Hlavní skříň zařízení StorSimple, obsahující řadiče platformy aplikace. |
+| cíli času obnovení (RTO) |Maximální množství času, které by měl být použito před obchodní proces nebo systém úplné obnovení po havárii. |
 | sériově připojené SCSI (SAS) |Typ jednotky pevného disku (HDD). |
 | šifrovací klíč dat služby |Klíč k dispozici pro všechny nové zařízení StorSimple, která zaregistruje u služby StorSimple Manager zařízení. Konfiguračních dat přenesených mezi služby StorSimple Manager zařízení a zařízení je zašifrován pomocí veřejného klíče a pak mohou ho dešifrovat jenom na zařízení pomocí soukromého klíče. Šifrovací klíč dat služby umožňuje službě získat tento soukromý klíč pro dešifrování. |
-| Registrační klíč služby |Klíč, který pomáhá registrace zařízení StorSimple pomocí služby Správce zařízení StorSimple, takže se zobrazí na portálu Azure pro další akce správy. |
+| registrační klíč služby |Klíč, který pomáhá registrace zařízení StorSimple pomocí služby Správce zařízení StorSimple, takže se zobrazí na portálu Azure pro další akce správy. |
 | Small Computer System Interface (SCSI) |Sada standardů pro fyzicky propojení počítačů a předávání dat mezi nimi. |
 | jednotky SSD (SSD) |Disk, který neobsahuje žádné přesunutí části; například flash disk. |
 | účet úložiště |Sada pověření pro přístup k propojený s vaším účtem úložiště pro daný cloud poskytovatele služeb. |
@@ -302,9 +302,9 @@ Před nasazením řešení Microsoft Azure StorSimple, doporučujeme, abyste si 
 | Služba Správce zařízení StorSimple |Rozšíření na portálu Azure, která umožňuje spravovat Azure StorSimple místní a virtuální zařízení. |
 | StorSimple Snapshot Manager |Modul Microsoft Management Console (MMC) snap-in pro správu operace zálohování a obnovení v Microsoft Azure StorSimple. |
 | proveďte zálohování |Funkce, která umožňuje uživatelům provést zálohu interaktivní svazku. Jedná se o alternativní způsob pořízení ručního zálohování svazku oproti trvá automatické zálohování prostřednictvím definovanou zásadu. |
-| Dynamické zajišťování |Metoda optimalizace efektivitu, ke které se používá místo k dispozici v systémech úložiště. V dynamickém zřizování se úložiště je rozdělena mezi více uživatelů, které jsou založené na minimální požadované každý uživatel, v každém okamžiku místo. Viz také *fat zřizování*. |
+| dynamické zajišťování |Metoda optimalizace efektivitu, ke které se používá místo k dispozici v systémech úložiště. V dynamickém zřizování se úložiště je rozdělena mezi více uživatelů, které jsou založené na minimální požadované každý uživatel, v každém okamžiku místo. Viz také *fat zřizování*. |
 | Vrstvení |Uspořádání dat v logické seskupení na základě aktuálního využití, stáří a vztahů s jinými daty. StorSimple automaticky uspořádá data na úrovních. |
-| Svazek |Oblasti logické úložiště uvedené ve formě jednotky. Svazky zařízení StorSimple odpovídají svazky připojené pro hostitele, včetně těch, které zjištěny prostřednictvím iSCSI a zařízení StorSimple. |
+| svazek |Oblasti logické úložiště uvedené ve formě jednotky. Svazky zařízení StorSimple odpovídají svazky připojené pro hostitele, včetně těch, které zjištěny prostřednictvím iSCSI a zařízení StorSimple. |
 | kontejner svazků |Seskupení svazky a nastavení, které se vztahují k nim. Všechny svazky v zařízení StorSimple se seskupují do kontejnery svazků. Nastavení kontejneru svazku zahrnují účty úložiště, nastavení šifrování pro data odesílaná do cloudu s přidružených šifrovacích klíčů a šířku pásma využívat pro operace s cloudem. |
 | svazek skupiny |V zařízení StorSimple Snapshot Manager skupinu svazek je kolekce svazků, které jsou nakonfigurované tak, aby se usnadnilo zálohování zpracování. |
 | Služby Stínová kopie svazku (VSS) |Služba operačního systému Windows Server, která usnadňuje konzistence aplikací tím, že komunikaci s aplikací používající stínovou kopii svazku pro koordinaci vytváření přírůstkové snímků. Služby Stínová kopie svazku zajišťuje, aby aplikace byly dočasně neaktivní při pořizování snímků. |

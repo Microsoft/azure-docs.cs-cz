@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: search
 ms.date: 05/17/2018
 ms.author: HeidiSteen
-ms.openlocfilehash: ce5771777762414a0229cf83425c2f3601cb979a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: MT
+ms.openlocfilehash: 2e000628ebec393147328125a04d5d6f55afd3c6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654993"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100483"
 ---
 # <a name="azure-search-service-rest-api-version-2017-11-11-preview"></a>Verze rozhraní api REST služby vyhledávání systému Azure 2017-11-11-Preview
 Tento článek popisuje `api-version=2017-11-11-Preview` verzi služby Azure Search rozhraní REST API, nabízí povolenými experimentálními funkcemi ještě není obecně k dispozici.
@@ -27,11 +27,11 @@ Tento článek popisuje `api-version=2017-11-11-Preview` verzi služby Azure Sea
 
 ## <a name="new-in-2017-11-11-preview"></a>Novinka v 2017-11-11-Preview
 
-[Kognitivní vyhledávání](cognitive-search-concept-intro.md), novou funkci obohacení ve službě Azure Search vyhledá latentní informace v jiné textové zdroje a poskytujících blíže neurčené text, převod do textu v plném znění s možností vyhledávání obsahu ve službě Azure Search.
+[**Automatické dokončování** ](search-autocomplete-tutorial.md) spojí existující [návrhy API](https://docs.microsoft.com/rest/api/searchservice/suggestions) přidat doplňkové našeptávání dojde k panelu vyhledávání. Automatické dokončování vrátí vyhledávacích dotazů, které může uživatel jako řetězec dotazu pro následné vyhledávání kandidátských. Návrhy vrátí skutečné dokumenty v reakci na částečné vstupy: výsledky hledání jsou okamžité a dynamicky měnit s růstem zadání podmínek vyhledávání v délku a specifické podobě.
 
-Následující reources jsou zavedena nebo upravit v rozhraní REST API ve verzi preview. Všechny ostatní rozhraní API REST jsou stejné, ať už volání obecně dostupná nebo náhled verze.
+[**Kognitivní vyhledávání**](cognitive-search-concept-intro.md), novou funkci obohacení ve službě Azure Search vyhledá latentní informace v jiné textové zdroje a poskytujících blíže neurčené text, převod do textu v plném znění s možností vyhledávání obsahu ve službě Azure Search. V následujících zdrojích informací jsou zavedena nebo upravit v rozhraní REST API ve verzi preview. Všechny ostatní rozhraní API REST jsou stejné, ať už volání obecně dostupná nebo náhled verze.
 
-+ [Vytvoření Skillset (api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
++ [Skillset operations(api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/skillset-operations)
 
 + [Vytvoření Indexer (api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 

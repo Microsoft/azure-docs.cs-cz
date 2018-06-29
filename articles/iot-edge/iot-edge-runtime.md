@@ -8,12 +8,12 @@ ms.date: 06/05/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b7418947c44c62883ef13c4be130458bb9f9ce6c
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: aa371ef2ebad01fba379675e8438f56dca9ce356
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030375"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096962"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Pochopení modulu runtime Azure IoT okraj a jeho architektura
 
@@ -40,12 +40,12 @@ Agent okraj a okraj rozbočovače jsou moduly, stejně jako ostatní moduly syst
 Centrum hraniční je mezi dvěma moduly, které tvoří runtime Azure IoT okraj. Díky zpřístupnění stejné koncové body protokolu jako IoT Hub funguje jako místní proxy server pro služby IoT Hub. Tato konzistence znamená, že klienti (jestli zařízení nebo moduly) může připojit k modulu runtime IoT Edge, stejně jako do služby IoT Hub. 
 
 >[!NOTE]
-> Verzi public Preview centra Edge podporuje pouze klienty, které se připojují prostřednictvím MQTT.
+>Hraniční rozbočovače podporuje klienty, které se připojují prostřednictvím MQTT nebo AMQP. Klienti, kteří používají protokol HTTP nepodporuje. 
 
 Centra Edge není plnou verzi služby IoT Hub spuštěn místně. Existují některé věci, které rozbočovače Edge bezobslužně deleguje do služby IoT Hub. Hraniční rozbočovače například předává do služby IoT Hub žádosti o ověření, když se zařízení poprvé pokusí připojit. Po první připojení, informace o zabezpečení je do místní mezipaměti Edge rozbočovače. Další připojení z těchto zařízení jsou povoleny bez nutnosti ověření do cloudu. 
 
 >[!NOTE]
-> Modul runtime verzi public Preview musí být připojen každém pokusu o ověření zařízení.
+>Při každém pokusu o ověření zařízení, musí být připojen modulu runtime.
 
 Ke snížení šířky pásma vašeho řešení IoT používá, rozbočovače Edge optimalizuje, kolik skutečné připojení jsou vytvářeny do cloudu. Hraniční rozbočovače trvá logické připojení od klientů, jako jsou moduly nebo listu zařízení a kombinuje je pro jedno fyzické připojení ke cloudu. Podrobnosti tohoto procesu jsou transparentní, zbytek řešení. Klienti vezměte v úvahu, že mají svoje vlastní připojení ke cloudu i v případě, že jsou všechny odesílány přes stejné připojení. 
 

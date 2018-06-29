@@ -36,6 +36,8 @@
 ### [Použití Apache Flinku se službou Event Hubs pro ekosystém Kafka](event-hubs-kafka-flink-tutorial.md)
 ### [Použití Akka Streams se službou Event Hubs pro ekosystém Kafka](event-hubs-kafka-akka-streams-tutorial.md)
 ## Vývoj
+### [Filtry připojení IP](event-hubs-ip-filtering.md)
+### [Koncové body služby virtuální sítě](event-hubs-service-endpoints.md)
 ### [Odesílání událostí pomocí rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-send.md)
 ### [Příjem událostí pomocí rozhraní .NET Framework](event-hubs-dotnet-framework-getstarted-receive-eph.md)
 ### [Dostupná rozhraní API](event-hubs-api-overview.md)

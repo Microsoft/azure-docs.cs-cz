@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: d2350d8021925278d6362c8227d408476a569319
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 2d70aff4cc569a194740fdab9373b7e11a1fcb15
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33776902"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084344"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Nasazení a správa Notification Hubs pomocí PowerShellu
 ## <a name="overview"></a>Přehled
@@ -34,8 +34,8 @@ Správa centra oznámení není podporována přímo pomocí rutin obsažených 
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Azure je platforma, na základě předplatného. Další informace o získání předplatného najdete v tématu [možnostech nákupu], [nabízí člen], nebo [bezplatné zkušební verze].
-* Počítač s prostředím Azure PowerShell. Pokyny najdete v tématu [nainstalovat a nakonfigurovat Azure PowerShell].
+* Předplatné Azure. Azure je platforma, na základě předplatného. Další informace o získání předplatného najdete v tématu [Možností nákupu], [Člen nabídky], nebo [Bezplatná zkušební verze].
+* Počítač s prostředím Azure PowerShell. Pokyny najdete v tématu [Nainstalujte a nakonfigurujte Azure PowerShell.].
 * Obecné znalosti skriptů prostředí PowerShell, balíčků NuGet a rozhraní .NET Framework.
 
 ## <a name="including-a-reference-to-the-net-assembly-for-service-bus"></a>Včetně odkaz na sestavení rozhraní .NET pro Service Bus
@@ -154,11 +154,11 @@ Některé připravených skripty jsou také k dispozici ke stažení:
 
 * [Skripty prostředí PowerShell služby Service Bus](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
 
-[možnostech nákupu]: http://azure.microsoft.com/pricing/purchase-options/
-[nabízí člen]: http://azure.microsoft.com/pricing/member-offers/
-[bezplatné zkušební verze]: http://azure.microsoft.com/pricing/free-trial/
-[nainstalovat a nakonfigurovat Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[rozhraní API .NET pro centra oznámení]: https://msdn.microsoft.com/library/azure/mt414893.aspx
+[Možností nákupu]: http://azure.microsoft.com/pricing/purchase-options/
+[Člen nabídky]: http://azure.microsoft.com/pricing/member-offers/
+[Bezplatná zkušební verze]: http://azure.microsoft.com/pricing/free-trial/
+[Nainstalujte a nakonfigurujte Azure PowerShell.]: /powershell/azureps-cmdlets-docs
+[Rozhraní API .NET pro centra oznámení]: https://docs.microsoft.com/en-us/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495122.aspx
 [New-AzureSBNamespace]: https://msdn.microsoft.com/library/azure/dn495165.aspx
 [Get-AzureSBAuthorizationRule]: https://msdn.microsoft.com/library/azure/dn495113.aspx

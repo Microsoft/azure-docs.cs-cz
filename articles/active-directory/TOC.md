@@ -151,6 +151,7 @@
 ### [Přizpůsobení SSPR](authentication/concept-sspr-customization.md)
 ### [Požadavky SSPR na data](authentication/howto-sspr-authenticationdata.md)
 ### [Vytváření sestav SSPR](authentication/howto-sspr-reporting.md)
+### [Inteligentní uzamčení](authentication/howto-password-smart-lockout.md)
 ### [Eliminace slabých hesel](authentication/concept-password-ban-bad.md)
 ### [Konfigurace seznamu zakázaných hesel](authentication/howto-password-ban-bad.md)
 ### [Místní integrace](authentication/concept-password-ban-bad-on-premises.md)

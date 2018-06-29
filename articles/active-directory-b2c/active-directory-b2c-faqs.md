@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e16130dc41418b22f2dea4ceae5e0a90ed963161
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 11335079373b627bab923f63eda148b0a74307ea
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938378"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100517"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Nejčastější dotazy (FAQ) 
 Tato stránka odpovědi časté otázky o Azure Active Directory (Azure AD) B2C. Kontrolovat zpět aktualizací.
@@ -97,9 +97,9 @@ Přečtěte si tento článek o [externí identity](../active-directory/active-d
 ### <a name="what-reporting-and-auditing-features-does-azure-ad-b2c-provide-are-they-the-same-as-in-azure-ad-premium"></a>Jaké generování sestav a auditování funkce poskytuje Azure AD B2C? Budou stejné jako v Azure AD Premium?
 Ne, Azure AD B2C nepodporuje stejnou sadu sestavy jako Azure AD Premium. Ale existuje mnoho commonalities:
 
-* **Přihlášení sestavy** jsou dostupné jenom v portálu Azure (Azure Active Directory > Aktivity > přihlášení) a nejsou k dispozici prostřednictvím rozhraní Graph API. Poskytují záznam každé přihlášení s omezenou podrobnosti.
-* **Audit sestavy** jsou dostupné jenom v portálu Azure (Azure Active Directory > Aktivity > protokoly auditu) a nejsou k dispozici prostřednictvím rozhraní Graph API. Patří mezi ně aktivita správce jak aktivity aplikace. 
-* **Sestavy využití** jsou k dispozici prostřednictvím pouze [API pro vytváření sestav využití](active-directory-b2c-reference-usage-reporting-api.md) a nejsou k dispozici prostřednictvím portálu Azure. Patří mezi ně počet uživatelů, počet přihlášení a objem vícefaktorového ověřování. 
+* **Přihlášení sestavy** záznam každé přihlášení poskytnout snížené podrobnosti.
+* **Audit sestavy** zahrnují aktivita správce jak aktivity aplikace. 
+* **Sestavy využití** patří počet uživatelů, počet přihlášení a objem vícefaktorového ověřování. 
 
 ### <a name="can-i-localize-the-ui-of-pages-served-by-azure-ad-b2c-what-languages-are-supported"></a>Možné lokalizovat uživatelského rozhraní stránky obsluhuje Azure AD B2C? Jaké jazyky jsou podporovány?
 Ano!  Přečtěte si informace o [jazyk přizpůsobení](active-directory-b2c-reference-language-customization.md), což je ve verzi public preview.  Poskytujeme překladů pro 36 jazyků a můžete přepsat libovolný řetězec tak, aby vyhovovala vašim potřebám.

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 13f746697a7e694da79a6e376b45f95529049a44
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 5a6fa3f2bb6ab76bf323fe3ca829797878f5e774
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31401957"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100500"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Vytvořit clustery se systémem Linux v HDInsight pomocí portálu Azure
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -74,14 +74,14 @@ Portál Azure zpřístupní většinu vlastností clusteru. Pomocí šablony Azu
 
     * Klikněte na **Další**.
 
-4. Pro **úložiště**, zadejte, zda chcete jako výchozí úložiště Azure Storage (WASB) nebo Data Lake Store. Podívejte se na tabulce pro další informace.
+4. Pro **úložiště**, určete, jestli má Azure Storage (WASB) nebo Data Lake Storage jako výchozí úložiště. Podívejte se na tabulce pro další informace.
 
     ![Vytvoření nového clusteru na portálu Azure](./media/hdinsight-hadoop-create-linux-cluster-portal/hdinsight-create-cluster-storage.png "vytvoření nového clusteru na portálu Azure")
 
     | Úložiště                                      | Popis |
     |----------------------------------------------|-------------|
-    | **Objektů BLOB služby Azure Storage jako výchozí úložiště**   | <ul><li>Pro **primárního úložiště typu**, vyberte **Azure Storage**. Potom pro **metodu výběru**, můžete zvolit **mé odběry** Pokud chcete zadat účet úložiště, který je součástí vašeho předplatného Azure a potom vyberte účet úložiště. Jinak, klikněte na tlačítko **přístupový klíč** a zadejte informace pro účet úložiště, který chcete vybrat z mimo vašeho předplatného Azure.</li><li>Pro **výchozí kontejner**, můžete přejít s výchozím názvem kontejneru navrhovaná službou portálu nebo zadat vlastní.</li><li>Pokud používáte WASB jako výchozí úložiště, můžete (volitelně) klepnutím **další účty úložiště** k určení dalších účtů úložiště pro přidružení ke clusteru. Pro **klíčů k úložišti Azure**, klikněte na tlačítko **přidejte klíč k úložišti**, a potom můžete zadat účet úložiště z vašich předplatných Azure nebo z jiných předplatných (tím, že přístupový klíč účtu úložiště).</li><li>Pokud používáte WASB jako výchozí úložiště, můžete (volitelně) klepnutím **Data Lake Store přístup** k určení Azure Data Lake Store jako další úložiště. Další informace najdete v tématu [vytvoření clusteru HDInsight s Data Lake Store pomocí portálu Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).</li></ul> |
-    | **Azure Data Lake Store jako výchozí úložiště** | Pro **primárního úložiště typu**, vyberte **Data Lake Store** a pak naleznete v článku [vytvoření clusteru HDInsight s Data Lake Store pomocí portálu Azure](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md) pokyny. |
+    | **Objektů BLOB služby Azure Storage jako výchozí úložiště**   | <ul><li>Pro **primárního úložiště typu**, vyberte **Azure Storage**. Potom pro **metodu výběru**, můžete zvolit **mé odběry** Pokud chcete zadat účet úložiště, který je součástí vašeho předplatného Azure a potom vyberte účet úložiště. Jinak, klikněte na tlačítko **přístupový klíč** a zadejte informace pro účet úložiště, který chcete vybrat z mimo vašeho předplatného Azure.</li><li>Pro **výchozí kontejner**, můžete přejít s výchozím názvem kontejneru navrhovaná službou portálu nebo zadat vlastní.</li><li>Pokud používáte WASB jako výchozí úložiště, můžete (volitelně) klepnutím **další účty úložiště** k určení dalších účtů úložiště pro přidružení ke clusteru. Pro **klíčů k úložišti Azure**, klikněte na tlačítko **přidejte klíč k úložišti**, a potom můžete zadat účet úložiště z vašich předplatných Azure nebo z jiných předplatných (tím, že přístupový klíč účtu úložiště).</li><li>Pokud používáte WASB jako výchozí úložiště, můžete (volitelně) klepnutím **Data Lake Store přístup** k určení Azure Data Lake Storage jako další úložiště. Další informace najdete v tématu [rychlý start: nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).</li></ul> |
+    | **Azure Data Lake Storage jako výchozí úložiště** | Pro **primárního úložiště typu**, vyberte **Azure Data Lake Storage Gen1** nebo **Azure Data Lake Storage Gen2 (Preview)** a pak naleznete v článku [rychlý start : Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) pokyny. |
     | **Externí metaúložiště**                      | Volitelně můžete zadat databázi SQL pro uložení Hive a Oozie metadata spojená s clusterem. Pro **vyberte databázi SQL pro Hive** vyberte databázi SQL a zadejte uživatelské jméno a heslo pro databázi. Opakujte tyto kroky pro Oozie metadata.<br><br>Některé aspekty při používání Azure SQL database pro metaúložiště. <ul><li>Databáze Azure SQL použitý k metaúložiště musí umožňovat připojení k jiným službám Azure, včetně Azure HDInsight. Na řídicím panelu Azure SQL database, na pravé straně klikněte na název serveru. Je to server, na kterém je spuštěna instance databáze SQL. Jakmile jste na zobrazení serveru, klikněte na **konfigurace**a pak pro **služeb Azure**, klikněte na tlačítko **Ano**a pak klikněte na **Uložit**.</li><li>Při vytváření metaúložiště, nepoužívejte název databáze, který obsahuje pomlčky nebo spojovníky, protože to může způsobit selhání procesu vytváření clusteru.</li></ul> |
 
     Klikněte na **Další**. 
@@ -99,7 +99,7 @@ Portál Azure zpřístupní většinu vlastností clusteru. Pomocí šablony Azu
    > [!IMPORTANT]
    > Pokud máte v plánu na víc než 32 uzlů pracovního procesu, při vytváření clusteru nebo škálování clusteru po vytvoření, je nutné vybrat velikost hlavního uzlu s alespoň s 8 jádry a 14 GB paměti RAM.
    > 
-   > Další informace o velikosti uzlu a souvisejících nákladů, najdete v části [HDInsight ceny](https://azure.microsoft.com/pricing/details/hdinsight/).
+   > Další informace o velikostech uzlů a souvisejících nákladech najdete v [cenách pro HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/).
    > 
    > 
    

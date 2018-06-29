@@ -50,7 +50,7 @@
       href: sql-database-design-first-database.md
     - name: 2. Návrh databáze pomocí .NET
       href: sql-database-design-first-database-csharp.md
-    - name: 3. Migrace do databáze SQL Serveru s využitím DMS
+    - name: 3. Migrace do databáze SQL Serveru s využitím DMA
       href: sql-database-migrate-your-sql-server-database.md
     - name: 4. Zabezpečení databáze SQL
       href: sql-database-security-tutorial.md

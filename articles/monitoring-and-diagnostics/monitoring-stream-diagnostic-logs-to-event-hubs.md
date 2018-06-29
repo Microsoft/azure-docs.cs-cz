@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 806ebe80ad49f2f908bf46549bb4abc533a6d516
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: c59b9982f5ba5a4fa52ab36df5ebb6995b2d45b0
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936696"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085085"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Datový proud Azure diagnostických protokolů do centra událostí
 **[Azure diagnostické protokoly](monitoring-overview-of-diagnostic-logs.md)**  Streamovat skoro v reálném čase pro žádnou aplikaci pomocí předdefinované možnosti "Export do služby Event Hubs" na portálu nebo povolením ID události rozbočovače autorizační pravidla v nastavení diagnostiky prostřednictvím Azure Rutiny prostředí PowerShell nebo Azure CLI 2.0.
@@ -41,7 +41,7 @@ Můžete použít k diagnostickým protokolům streamování schopností několi
 
 ## <a name="enable-streaming-of-diagnostic-logs"></a>Povolení diagnostických protokolů streamování
 
-Můžete povolit vysílání datového proudu diagnostické protokoly prostřednictvím kódu programu, prostřednictvím portálu nebo pomocí [rozhraní REST API Azure monitorování](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings). V obou případech vytvoříte nastavení diagnostiky v němž jsou uvedeny na obor názvů služby Event Hubs a protokolu kategorií a metriky, které se mají posílat do oboru názvů. Centra událostí je vytvořen v oboru názvů pro každou kategorii protokolu, které povolíte. Diagnostika **kategorie protokolu** je typ protokolu, který může shromažďovat prostředku.
+Můžete povolit vysílání datového proudu diagnostické protokoly prostřednictvím kódu programu, prostřednictvím portálu nebo pomocí [rozhraní REST API Azure monitorování](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). V obou případech vytvoříte nastavení diagnostiky v němž jsou uvedeny na obor názvů služby Event Hubs a protokolu kategorií a metriky, které se mají posílat do oboru názvů. Centra událostí je vytvořen v oboru názvů pro každou kategorii protokolu, které povolíte. Diagnostika **kategorie protokolu** je typ protokolu, který může shromažďovat prostředku.
 
 > [!WARNING]
 > Povolení a vysílání datového proudu diagnostických protokolů z výpočetní prostředky (například virtuální počítače nebo Service Fabric) [vyžaduje jinou sadu kroků](../event-hubs/event-hubs-streaming-azure-diags-data.md).

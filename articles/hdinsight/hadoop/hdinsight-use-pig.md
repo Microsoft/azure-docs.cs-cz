@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: larryfr
-ms.openlocfilehash: d382293ce815f24ad635b50c920d7988b664d79c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d030bdaf4c68a7e2ec9d11cdd8a2f55eccfbd67d
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32169604"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081163"
 ---
 # <a name="use-pig-with-hadoop-on-hdinsight"></a>Použijte Pig s Hadoop v HDInsight
 
@@ -55,7 +55,7 @@ Jazyka Pig Latin můžete k popisu toku dat z nezpracovaná vstupu prostřednict
 
 Pig Latin také podporuje uživatelsky definované funkce (UDF), která umožňuje vyvolání externí součásti, které implementují logiku, která je obtížné model v Pig Latin.
 
-Další informace o Pig Latin najdete v tématu [Pig Latin odkazu ruční 1](http://pig.apache.org/docs/r0.7.0/piglatin_ref1.html) a [Pig Latin odkaz ruční 2](http://pig.apache.org/docs/r0.7.0/piglatin_ref2.html).
+Další informace o Pig Latin najdete v tématu [Pig Latin odkazu ruční 1](http://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html) a [Pig Latin odkaz ruční 2](http://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html).
 
 Příklad použití UDF s Pig najdete v následujících dokumentech:
 
@@ -99,7 +99,7 @@ HDInsight můžete spustit úlohy Pig Latin pomocí různých metod. Následují
 | **Použít** Pokud chcete... | ...an **interaktivní** prostředí | ...**batch** zpracování | ...při to **clusteru operačního systému** | ...from to **klienta** |
 |:--- |:---:|:---:|:--- |:--- |
 | [SSH](apache-hadoop-use-pig-ssh.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X nebo systému Windows |
-| [Curl](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux nebo Windows |Linux, Unix, Mac OS X nebo systému Windows |
+| [curl](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux nebo Windows |Linux, Unix, Mac OS X nebo systému Windows |
 | [Sada .NET SDK pro Hadoop](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux nebo Windows |Windows (prozatím) |
 | [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux nebo Windows |Windows |
 

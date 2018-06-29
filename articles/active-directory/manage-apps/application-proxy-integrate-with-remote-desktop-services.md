@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 06/27/2018
 ms.author: barbkess
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 5c6d6b9580b123dafb03af2acc885d2416ca2a56
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 0a004ee6e5dbdd2ceb8546a4b7ce20b2b551fac9
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35292537"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084061"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy s proxy aplikace služby Azure AD
 
@@ -44,6 +44,8 @@ V nasazení služby Vzdálená plocha VP webovou roli a roli služby Brána VP s
 >Pokud jste nenasadili RDS před nebo chcete další informace, než začnete, přečtěte si postup [bezproblémově nasazení vzdálené plochy s Azure Resource Manageru a webu Azure Marketplace](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure).
 
 ## <a name="requirements"></a>Požadavky
+
+- Vzhledem k tomu, že webový klient nepodporuje Proxy aplikace, použijte klienta než webového klienta vzdálené plochy.
 
 - Koncové body Web VP a Brána VP musí být umístěné ve stejném počítači a s společný kořen. Web VP a Brána VP jsou publikovány jako jednu aplikaci pomocí Proxy aplikace tak, že můžete mít jednom přihlašování mezi těmito dvěma aplikacemi.
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: fbca491e845ad96ecafc6afb5f40d46b99c047bf
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 19d602570337b101e4a5cf759fc56822313c631c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33932094"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098001"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrace infrastruktury Brána vzdálené plochy pomocí rozšíření serveru NPS (Network Policy Server) a Azure AD
 
@@ -34,7 +34,7 @@ Obvykle zásady organizace použijte RADIUS serveru NPS () a zjednodušit centra
 
 Organizace může také integrovat Azure MFA a zvýšit zabezpečení a zajistit vysokou úroveň dodržování předpisů serveru NPS. To pomáhá zajistit, že uživatelé vytvořit dvoustupňové ověřování pro přihlášení k služby Brána vzdálené plochy. Uživatelům udělen přístup musí zadat jejich kombinace uživatelského jména a hesla společně s informacemi, které má uživatel v jejich řízení. Tyto informace musí být důvěryhodný a duplikovaná není snadno, například číslo mobilního telefonu, číslo pevné, aplikace na mobilní zařízení a tak dále.
 
-Před dostupnost serveru NPS rozšíření pro Azure, zákazníky, kteří si přáli implementovat dvoustupňové ověřování pro integrované prostředí NPS a Azure MFA museli konfigurovat a spravovat samostatný Server MFA v místním prostředí, jak je uvedeno v [Brána vzdálené plochy a pomocí protokolu RADIUS serveru Azure Multi-Factor Authentication Server](howto-mfaserver-nps-rdg.md).
+Před dostupnost serveru NPS rozšíření pro Azure zákazníky, kteří si přáli implementovat dvoustupňové ověřování pro integrované prostředí NPS a Azure MFA museli konfigurovat a spravovat samostatný Server MFA v místním prostředí, jak je uvedeno v [ Vzdálená plocha brány a Server Azure Multi-Factor Authentication pomocí protokolu RADIUS](howto-mfaserver-nps-rdg.md).
 
 Dostupnost serveru NPS rozšíření pro Azure teď poskytuje organizacím rozhodnout pro nasazení do řešení vícefaktorového ověřování pro místní nebo cloudové řešení vícefaktorového ověřování do zabezpečeného ověřování klienta protokolu RADIUS.
 
@@ -95,7 +95,7 @@ Postupujte podle kroků v [Začínáme s Azure Multi-Factor Authentication v clo
 ### <a name="configure-accounts-for-two-step-verification"></a>Konfigurace účtů pro dvoustupňové ověření
 Jakmile účet povolen pro MFA, nemůžete se přihlásit k prostředkům řídí podle zásad vícefaktorového ověřování, dokud úspěšně jste nakonfigurovali důvěryhodné zařízení k použití pro druhý faktor ověřování a ověřené pomocí dvoustupňového ověření.
 
-Postupujte podle kroků v [co Azure Multi-Factor Authentication znamená pro mě nejlepší?](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user.md) pochopit a správně nakonfigurovat zařízení pro MFA s vaším uživatelským účtem.
+Postupujte podle kroků v [co Azure Multi-Factor Authentication znamená pro mě nejlepší?](end-user/current/multi-factor-authentication-end-user.md) pochopit a správně nakonfigurovat zařízení pro MFA s vaším uživatelským účtem.
 
 ## <a name="install-and-configure-nps-extension"></a>Instalace a konfigurace serveru NPS rozšíření
 Tato část obsahuje pokyny ke konfiguraci vzdálené plochy infrastruktury pro použití Azure MFA pro ověřování klientů pomocí služby Brána vzdálené plochy.

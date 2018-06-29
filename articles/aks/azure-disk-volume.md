@@ -2,19 +2,19 @@
 title: Disky systému Azure pomocí AKS
 description: Disky systému Azure pomocí AKS
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 05/21/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4af4620ff7a17cae76c4d5f2cf1a30ce4a3dccd8
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: cfad5ebd1212df03cee86b71340d8a73c2594f57
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34597063"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096089"
 ---
 # <a name="volumes-with-azure-disks"></a>Svazky s disky systému Azure
 

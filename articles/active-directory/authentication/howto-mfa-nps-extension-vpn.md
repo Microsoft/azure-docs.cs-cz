@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: cfdb89ae833dc2450a4670a84af305f1caa10591
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: dfd28c5abea668e704fb5ee8b02d85d552e9ae77
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869508"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098868"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrovat Azure MFA infrastrukturu sítě VPN pomocí rozšíření Network Policy Server pro Azure.
 
@@ -305,7 +305,7 @@ Chcete-li vyřešit tyto problémy, je ideální místo spuštění Zkontrolujte
  
 ## <a name="configure-multi-factor-authentication"></a>Konfigurace služby Multi-Factor Authentication
 
-Pomoc při konfiguraci uživatelů pro službu Multi-Factor Authentication najdete v článcích [jak vyžadovat dvoustupňové ověřování pro uživatele nebo skupinu](howto-mfa-userstates.md) a [nastavit účtu pro dvoustupňové ověření](../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md)
+Pomoc při konfiguraci uživatelů pro službu Multi-Factor Authentication najdete v článcích [jak vyžadovat dvoustupňové ověřování pro uživatele nebo skupinu](howto-mfa-userstates.md) a [nastavit účtu pro dvoustupňové ověření](end-user/current/multi-factor-authentication-end-user-first-time.md)
 
 ## <a name="install-and-configure-the-nps-extension"></a>Instalace a konfigurace serveru NPS rozšíření
 
@@ -393,7 +393,7 @@ Chcete-li použít skript, poskytnout rozšíření vaše pověření pro správ
 
 6. Restartujte server.
 
-### <a name="verify-the-configuration"></a>Ověření konfigurace
+### <a name="verify-the-configuration"></a>Zkontrolujte konfiguraci
 Pokud chcete ověřit konfiguraci, je potřeba vytvořit nové připojení VPN se serverem VPN. Po úspěšně jste zadali svoje přihlašovací údaje pro primární ověřování, čeká na připojení k síti VPN pro sekundární ověření úspěšné před připojení, jak je uvedeno níže. 
 
 ![Okno nastavení sítě VPN ve Windows](./media/howto-mfa-nps-extension-vpn/image42.png)

@@ -13,14 +13,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 05/07/2018
   ms.author: nitinme
-  ms.openlocfilehash: e3a366cd933b8667b39df146d80d07d5548138bc
-  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.openlocfilehash: 4d10acb6d3597b5f5007098775b9bd7751ed4b2a
+  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/07/2018
-  ms.locfileid: "33778660"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37053615"
 abstract:
-  description: Naučte se používat Azure HDInsight pro analýzu streamování nebo historických dat. V kurzech a další dokumentaci se dozvíte, jak vytvářet clustery, zpracovávat a analyzovat velké objemy dat a vyvíjet řešení s použitím oblíbených opensourcových architektur, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm a R.<p>Azure HDInsight je plně spravovaná opensourcová analytická služba určená pro podniky. HDInsight je cloudová služba, která umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. HDInsight také podporuje širokou škálu scénářů, jako jsou ETL (extrakce, transformace a načítání), datové sklady, strojové učení a IoT.</p>
+  description: Naučte se používat Azure HDInsight pro analýzu streamování nebo historických dat. V kurzech a další dokumentaci se dozvíte, jak vytvářet clustery, zpracovávat a analyzovat velké objemy dat a vyvíjet řešení s použitím oblíbených opensourcových architektur, jako jsou Hadoop, Spark, Hive, LLAP, Kafka, Storm a Microsoft Machine Learning Server.<p>Azure HDInsight je plně spravovaná opensourcová analytická služba určená pro podniky. HDInsight je cloudová služba, která umožňuje snadné, rychlé a nákladově efektivní zpracování obrovského množství dat. HDInsight také podporuje širokou škálu scénářů, jako jsou ETL (extrakce, transformace a načítání), datové sklady, strojové učení a IoT.</p>
   aside:
     image:
       alt: 
@@ -63,8 +63,8 @@ sections:
       text: Storm
       href: /azure/hdinsight/storm/apache-storm-tutorial-get-started-linux
     - image:
-        src: media/index/r-server_r.svg
-      text: R Server
+        src: media/index/ml-server_r.svg
+      text: Služby ML
       href: /azure/hdinsight/r-server/r-server-get-started
 - title: Podrobné kurzy
   items:
@@ -79,7 +79,7 @@ sections:
     - html: 'HBase: <a href="/azure/hdinsight/hbase/apache-hbase-provision-vnet">Vytváření clusterů HBase ve virtuální síti</a> | <a href="/azure/hdinsight/hdinsight-phoenix-in-hdinsight">Použití Apache Phoenixu</a> | <a href="/azure/hdinsight/hdinsight-using-spark-query-hbase">Připojení ke Sparku</a>'
     - html: 'Interactive Query: <a href="/azure/hdinsight/interactive-query/apache-hadoop-connect-hive-power-bi-directquery">Propojení s Power BI s využitím Direct Query</a>'
     - html: 'Storm: <a href="/azure/hdinsight/storm/apache-storm-develop-java-topology">Vytvoření topologie Stormu v Javě</a> | <a href="/azure/hdinsight/storm/apache-storm-deploy-monitor-topology-linux">Nasazení topologií Stormu v HDInsightu</a> | <a href="/azure/hdinsight/storm/apache-storm-write-data-lake-store">Zápis ze Stormu do služby Data Lake Store</a>'
-    - html: 'R Server: <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">Použití Nástrojů R pro Visual Studio</a>'
+    - html: Služby ML Services&#58; <a href="/azure/hdinsight/r-server/r-server-submit-jobs-r-tools-vs">Použití Nástrojů R pro Visual Studio</a>
 - title: Referenční informace
   items:
   - type: list

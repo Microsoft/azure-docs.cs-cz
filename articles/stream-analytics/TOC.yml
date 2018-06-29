@@ -10,6 +10,8 @@
       href: stream-analytics-quick-create-portal.md
     - name: Vytvoření úlohy – PowerShell
       href: stream-analytics-quick-create-powershell.md
+    - name: Vytvoření úlohy – Visual Studio
+      href: stream-analytics-quick-create-vs.md
 - name: Kurzy
   items:
     - name: 1. Vytvoření a správa úlohy

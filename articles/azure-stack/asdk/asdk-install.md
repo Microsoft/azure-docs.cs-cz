@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 7b8fe61731a9412c61152bc58e55deebb611d011
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 74a81901c8ad38a84357a9f3c2e1d948aa81e8bc
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30171192"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084327"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Nainstalovat Azure zásobníku Development Kit (ASDK)
 Po [Příprava hostitelský počítač ASDK](asdk-prepare-host.md), ASDK lze nasadit do bitové kopie CloudBuilder.vhdx pomocí následujících kroků v tomto článku.
@@ -58,7 +58,7 @@ Kroky v tomto článku ukazují, jak nasadit ASDK pomocí grafického uživatels
     - Zadejte platnou **čas IP adresa serveru** adresu. To vyžaduje, že pole nastaví čas serveru, který má být používána development kit. Tento parametr je zadat jako IP adresa serveru doby platnosti. Názvy serverů nejsou podporovány.
 
       > [!TIP]
-      > Čas serveru najít IP adresu, navštivte [pool.ntp.org](http:\\pool.ntp.org) nebo příkaz ping time.windows.com. 
+      > Čas serveru najít IP adresu, navštivte [pool.ntp.org](http://pool.ntp.org) nebo příkaz ping time.windows.com. 
 
     - **Volitelně**, nastavte následující hodnoty:
         - **ID sítě VLAN**: Nastaví ID sítě VLAN. Tuto možnost použijte pouze v případě hostitele a AzS BGPNAT01 musíte nakonfigurovat ID sítě VLAN pro přístup k fyzické síti (a Internetu). 

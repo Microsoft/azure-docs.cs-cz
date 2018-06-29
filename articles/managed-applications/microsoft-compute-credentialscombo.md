@@ -11,23 +11,35 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 914e354265754a05476e96411d35e6cb04183213
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 183075f7407b0a0ca6ea53871e239ab8c2d89490
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261050"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098616"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Element Microsoft.Compute.CredentialsCombo uživatelského rozhraní
 Skupina ovládacích prvků pomocí integrované ověřování systému Windows a Linux hesla a veřejného klíče SSH.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
-![Microsoft.Compute.CredentialsCombo](./media/managed-application-elements/microsoft.compute.credentialscombo.png)
+
+Pro systém Windows najdete v části uživatelé:
+
+![Microsoft.Compute.CredentialsCombo Windows](./media/managed-application-elements/microsoft.compute.credentialscombo-windows.png)
+
+Pro Linux s heslem, které jsou vybrané se uživatelům zobrazí:
+
+![Microsoft.Compute.CredentialsCombo Linux heslo](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-password.png)
+
+Pro Linux s veřejný klíč SSH vybraný najdete v části uživatelé:
+
+![Klíč Microsoft.Compute.CredentialsCombo Linux](./media/managed-application-elements/microsoft.compute.credentialscombo-linux-key.png)
 
 ## <a name="schema"></a>Schéma
-Pokud `osPlatform` je **Windows**, je použita na následující schéma:
+Pro systém Windows použijte následující schéma:
+
 ```json
 {
   "name": "element1",
@@ -52,7 +64,8 @@ Pokud `osPlatform` je **Windows**, je použita na následující schéma:
 }
 ```
 
-Pokud `osPlatform` je **Linux**, je použita na následující schéma:
+Pro **Linux**, použít následující schéma:
+
 ```json
 {
   "name": "element1",
@@ -84,13 +97,13 @@ Pokud `osPlatform` je **Linux**, je použita na následující schéma:
 
 ## <a name="remarks"></a>Poznámky
 - `osPlatform` musí být zadán, a může být buď **Windows** nebo **Linux**.
-- Pokud `constraints.required` je nastaven na **true**, pak heslo nebo SSH veřejného klíče textová pole musí obsahovat hodnoty úspěšně ověřit. Výchozí hodnota je **true**.
+- Pokud `constraints.required` je nastaven na **true**, pak heslo nebo veřejný klíč textová pole SSH musí mít hodnoty úspěšně ověřit. Výchozí hodnota je **true**.
 - Pokud `options.hideConfirmation` je nastaven na **true**, druhé textové pole pro potvrzení hesla je skrytý. Výchozí hodnota je **false**.
 - Pokud `options.hidePassword` je nastaven na **true**, možnost použít ověřování hesla je skrytý. Lze jej použít pouze tehdy, když `osPlatform` je **Linux**. Výchozí hodnota je **false**.
 - Další omezení povolených hesel můžete implementovat pomocí `customPasswordRegex` vlastnost. Řetězec v `customValidationMessage` se zobrazí, pokud heslo vlastní ověřování se nezdaří. Výchozí hodnota pro obě vlastnosti je **null**.
 
 ## <a name="sample-output"></a>Ukázkový výstup
-Pokud `osPlatform` je **Windows**, nebo uživatele zadali heslo místo veřejný klíč SSH a pak se očekává následující výstup:
+Pokud `osPlatform` je **Windows**, nebo `osPlatform` je **Linux** a uživatele zadali heslo místo veřejný klíč SSH, ovládacího prvku vrátí následující výstup:
 
 ```json
 {
@@ -99,7 +112,8 @@ Pokud `osPlatform` je **Windows**, nebo uživatele zadali heslo místo veřejný
 }
 ```
 
-Pokud uživatel zadaný veřejný klíč SSH, je očekáván následující výstup:
+Pokud `osPlatform` je **Linux** a uživatele zadali veřejný klíč SSH, ovládacího prvku vrátí následující výstup:
+
 ```json
 {
   "authenticationType": "sshPublicKey",

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: e2512a2af05ee7101713886c3ae1b5c6c74dd3db
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 1a874e31c05d287522810782f743d389c86dbe27
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018534"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098919"
 ---
 # <a name="azure-media-services-release-notes"></a>Poznámky k verzi Azure Media Services
 Tyto poznámky k verzi pro Azure Media Services shrnout změny z předchozích verzí a známé problémy.
@@ -366,7 +366,7 @@ Pro Azure Media Services Balíčkovač a modul pro šifrování byly provedeny n
 
 ## <a id="may_changes_14"></a>Verze může 2014
 ### <a id="may_14_changes"></a>Aktualizace obecné Media Services
-Teď můžete použít [dynamické balení] do datového proudu HLS verze 3. Do datového proudu HLS verze 3, přidejte do cesty Lokátor původ v následujícím formátu: * .ism/manifest(format=m3u8-aapl-v3). Další informace najdete v tématu [tomto blogu](http://blog-ndrouin.azurewebsites.net/hls-v3-new-old-thing/).
+Teď můžete použít [dynamické balení] do datového proudu HLS verze 3. Do datového proudu HLS verze 3, přidejte do cesty Lokátor původ v následujícím formátu: * .ism/manifest(format=m3u8-aapl-v3). Další informace najdete v tématu [Toto fórum](https://social.msdn.microsoft.com/Forums/en-US/13b8a776-9519-4145-b9ed-d2b632861fde/dynamic-packaging-to-hls-v3).
 
 Dynamické balení teď také podporuje doručování HLS (verze 3 a verze 4) šifrovat pomocí PlayReady podle staticky šifrovat pomocí PlayReady technologie Smooth Streaming. Informace o tom, jak šifrování, technologie Smooth Streaming s technologií PlayReady najdete v tématu [chránit technologie Smooth Streaming s technologií PlayReady](http://msdn.microsoft.com/library/azure/dn189154.aspx).
 

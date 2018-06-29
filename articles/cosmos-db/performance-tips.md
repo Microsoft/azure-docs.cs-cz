@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: fa68711158bea203d4fe1605966363dd2786a038
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 9418525e60f255787f39a42657ee0dbdbd46957d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715016"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096929"
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
@@ -200,7 +200,7 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
          }
     ```             
 
-    Žádost o poplatků, vrátí se v tuto hlavičku je zlomek zřízené propustnosti (tj, 2000 RUs / druhý). Například pokud předchozí dotaz vrátí 1000 1KB – dokumenty, náklady na operaci je 1 000. Jako takový jedné sekundy ctí serveru pouze dva takových požadavků před omezení následných žádostí. Další informace najdete v tématu [požadované jednotky](request-units.md) a [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner).
+    Žádost o poplatků, vrátí se v tuto hlavičku je zlomek zřízené propustnosti (tj, 2000 RUs / druhý). Například pokud předchozí dotaz vrátí 1000 1KB – dokumenty, náklady na operaci je 1 000. V rámci jedné sekundy jako takový serveru ctí jenom dva takových požadavků, než míra omezení následných žádostí. Další informace najdete v tématu [požadované jednotky](request-units.md) a [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner).
 <a id="429"></a>
 2. **Rychlost omezení nebo požadavků popisovač míra příliš velký**
 

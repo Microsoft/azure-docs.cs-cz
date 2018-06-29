@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 3b9a7d998e7153318b21adcada7c143b428e591f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: af748f234a27ed9b37ac50438d7497fd680bc193
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724770"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085568"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph vazby pro Azure Functions
 
@@ -976,7 +976,7 @@ Webhooky umožňují reagování na události v aplikaci Microsoft Graph. Pro po
 - A [webhooku předplatného Microsoft Graph vstupní vazby](#webhook-input) umožňuje seznamu existující odběry a můžete je aktualizovat.
 - A [webhooku předplatného Microsoft Graph výstup vazby](#webhook-output) umožňuje vytvořit nebo odstranit odběry webhooku.
 
-Vazby sami nevyžadují žádné oprávnění Azure AD, ale budete muset požádat o oprávnění, které jsou relevantní pro typ prostředku, který chcete reagovat na. Seznam, které jsou potřeba oprávnění pro každý typ prostředku, naleznete v části [předplatné oprávnění](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions#permissions).
+Vazby sami nevyžadují žádné oprávnění Azure AD, ale budete muset požádat o oprávnění, které jsou relevantní pro typ prostředku, který chcete reagovat na. Seznam, které jsou potřeba oprávnění pro každý typ prostředku, naleznete v části [předplatné oprávnění](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions).
 
 Další informace o webhooky najdete v tématu [práce s webhooky v aplikaci Microsoft Graph].
 
@@ -1243,7 +1243,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 ### <a name="webhook-input---usage"></a>Vstup - Webhooku využití
 
 Vazba zveřejňuje následující typy, které mají funkce .NET:
-- řetězec]
+- Řetězec]
 - Typ pole vlastních objektů
 - Newtonsoft.Json.Linq.JObject[]
 - [Microsoft.Graph.Subscription]
@@ -1382,7 +1382,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 |**userId**|**ID uživatele**  |V případě potřeby a pouze v případě _identity_ je nastaven na `userFromId`. ID objektu zabezpečení uživatele přidružené k dříve přihlášeného uživatele.|
 |**userToken**|**UserToken**|V případě potřeby a pouze v případě _identity_ je nastaven na `userFromToken`. Token platný pro funkce aplikace. |
 |**Akce**|**Akce**|Požadováno – určuje má provést akce vazby. Může být jedna z následujících hodnot:<ul><li><code>create</code> -Zaregistruje nové předplatné.</li><li><code>delete</code> -Odstraní určený odběr.</li><li><code>refresh</code> -Aktualizuje určený odběr Zabraňte vypršení platnosti.</li></ul>|
-|**SubscriptionResource**|**SubscriptionResource**|V případě potřeby a pouze v případě _akce_ je nastaven na `create`. Určuje prostředek Microsoft Graph, které se budou monitorovat změny. V tématu [práce s webhooky v aplikaci Microsoft Graph]. |
+|**subscriptionResource**|**SubscriptionResource**|V případě potřeby a pouze v případě _akce_ je nastaven na `create`. Určuje prostředek Microsoft Graph, které se budou monitorovat změny. V tématu [práce s webhooky v aplikaci Microsoft Graph]. |
 |**changeType**|**ChangeType –**|V případě potřeby a pouze v případě _akce_ je nastaven na `create`. Určuje typ změny v odebírané prostředek, který vyvolá oznámení. Podporované hodnoty jsou: `created`, `updated`, `deleted`. Více hodnot lze spojovat pomocí seznam oddělený čárkami.|
 
 ### <a name="webhook-output---usage"></a>Výstup - Webhooku využití

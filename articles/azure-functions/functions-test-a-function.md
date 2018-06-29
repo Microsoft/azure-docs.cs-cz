@@ -3,7 +3,7 @@ title: Testování funkcí Azure Functions | Microsoft Docs
 description: Azure functions otestujte pomocí Postman, cURL a Node.js.
 services: functions
 documentationcenter: na
-author: wesmc7777
+author: tdykstra
 manager: cfowler
 editor: ''
 tags: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/02/2017
-ms.author: wesmc
+ms.author: tdykstra
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41796a8cdde0756e5157ba276463a56b07679d04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4f6bf89ec5c83a497666a8a410a156c5f9bb359
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23838951"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083245"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategie pro testování kódu v Azure Functions
 
@@ -37,7 +37,7 @@ Toto téma popisuje různé způsoby, kterými k testování funkcí, včetně p
 Všechny tyto metody testování pomocí funkce aktivační událost HTTP, který přijímá vstupu prostřednictvím parametr řetězce dotazu nebo textu požadavku. V první části vytvoříte tuto funkci.
 
 ## <a name="create-a-function-for-testing"></a>Vytvořit funkci pro testování
-Pro většinu v tomto kurzu používáme mírně upravenou verzi šablony funkce HttpTrigger JavaScript, která je dostupná, když vytvoříte funkci. Pokud potřebujete pomoc, vytváření funkce, přečtěte si to [kurzu](functions-create-first-azure-function.md). Vyberte **HttpTrigger - JavaScript** při vytváření funkci test v šabloně [portál Azure].
+Pro většinu v tomto kurzu používáme mírně upravenou verzi šablony funkce HttpTrigger JavaScript, která je dostupná, když vytvoříte funkci. Pokud potřebujete pomoc, vytváření funkce, přečtěte si to [kurzu](functions-create-first-azure-function.md). Vyberte **HttpTrigger - JavaScript** při vytváření funkci test v šabloně [Azure Portal].
 
 Výchozí šablony funkce je v podstatě funkce "hello, world", která vrátí zpět názvem z požadavku textu nebo dotaz, řetězec parametr `name=<your name>`.  Budeme budete aktualizovat kód, který taky umožňují zadat název a adresu jako obsah JSON v textu požadavku. Funkce pak vrátí tyto zpět klientovi, pokud je k dispozici.   
 
@@ -186,10 +186,10 @@ Na portálu **protokoly** okně výstup podobný následujícímu přihlášen p
 ### <a name="test-a-blob-trigger-by-using-storage-explorer"></a>Testovací aktivační události objektu blob pomocí Průzkumníka úložiště
 Funkce aktivační události objektu blob můžete otestovat pomocí [Azure Storage Explorer](http://storageexplorer.com/).
 
-1. V [portál Azure] pro vaši aplikaci funkce vytvořit jazyka C#, F # nebo JavaScript funkci aktivační události objektu blob. Nastavte cestu k monitorování pro název vašeho kontejneru objektů blob. Například:
+1. V [Azure Portal] pro vaši aplikaci funkce vytvořit jazyka C#, F # nebo JavaScript funkci aktivační události objektu blob. Nastavte cestu k monitorování pro název vašeho kontejneru objektů blob. Příklad:
 
         files
-2. Klikněte  **+**  tlačítko Vybrat nebo vytvořit účet úložiště, kterou chcete použít. Poté klikněte na **Vytvořit**.
+2. Klikněte **+** tlačítko Vybrat nebo vytvořit účet úložiště, kterou chcete použít. Poté klikněte na **Vytvořit**.
 3. Vytvořte textový soubor s následujícím textem a uložte jej:
 
         A text file for blob trigger function testing.
@@ -248,15 +248,15 @@ K předvedení tento přístup, jsme nejprve vytvořit funkci fronty aktivační
 >
 >
 
-1. V [portál Azure] funkce aplikace, klikněte na tlačítko **novou funkci** > **QueueTrigger - C#**.
+1. V [Azure Portal] funkce aplikace, klikněte na tlačítko **novou funkci** > **QueueTrigger - C#**.
 2. Zadejte název fronty musí být sledován pomocí funkce fronty:
 
         queue-newusers
-3. Klikněte  **+**  tlačítko Vybrat nebo vytvořit účet úložiště, kterou chcete použít. Poté klikněte na **Vytvořit**.
+3. Klikněte **+** tlačítko Vybrat nebo vytvořit účet úložiště, kterou chcete použít. Poté klikněte na **Vytvořit**.
 4. Nechte toto okno prohlížeče portálu otevřené, tak můžete sledovat položky protokolu pro kód výchozí funkce fronty šablony.
 
 #### <a name="create-a-timer-trigger-to-drop-a-message-in-the-queue"></a>Vytvořit aktivační událost časovače odpojení zprávu ve frontě
-1. Otevřete [portál Azure] v nové okno prohlížeče a přejděte do aplikaci funkce.
+1. Otevřete [Azure Portal] v nové okno prohlížeče a přejděte do aplikaci funkce.
 2. Klikněte na tlačítko **novou funkci** > **TimerTrigger - C#**. Zadejte výraz cron nastavit, jak často kód časovače testy funkce fronty. Poté klikněte na **Vytvořit**. Pokud chcete testovací spouštět každých 30 sekund, můžete použít následující [výraz CRON](https://wikipedia.org/wiki/Cron#CRON_expression):
 
         */30 * * * * *
@@ -268,7 +268,7 @@ K předvedení tento přístup, jsme nejprve vytvořit funkci fronty aktivační
 6. Zadejte název fronty, kde je zpráva odeslána:
 
         queue-newusers
-7. Klikněte  **+**  tlačítko vyberte účet úložiště, který jste použili dříve s aktivační událost fronty. Potom klikněte na **Uložit**.
+7. Klikněte **+** tlačítko vyberte účet úložiště, který jste použili dříve s aktivační událost fronty. Potom klikněte na **Uložit**.
 8. Klikněte **vývoj** kartě aktivační události časovače.
 9. Pro funkci jazyka C# časovače, můžete použít následující kód, tak dlouho, dokud jste použili stejný název zpráva objekt fronty, kde je uvedena výše. Potom klikněte na **Uložit**.
 
@@ -443,4 +443,4 @@ V okně prohlížeče pro funkci fronty, můžete zjistit každou zprávu zpraco
 
 <!-- URLs. -->
 
-[portál Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

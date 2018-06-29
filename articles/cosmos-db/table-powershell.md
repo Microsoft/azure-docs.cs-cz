@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/15/2017
 ms.author: sngun
-ms.openlocfilehash: cce1cfc4cf883fcecab0e339177bc70c18e7af0b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 9365fd70036c8b489efaea42bda9c670182c496c
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798640"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082270"
 ---
 # <a name="perform-azure-cosmos-db-table-api-operations-with-azure-powershell"></a>Provádění operací rozhraní API služby Azure Cosmos DB tabulky s prostředím Azure PowerShell 
 
@@ -45,7 +45,7 @@ Po instalaci prostředí Azure PowerShell nebo aktualizaci, musíte nainstalovat
 Install-Module AzureRmStorageTable
 ```
 
-Potom nainstalujte Azure Cosmos DB sestavení místně, aby bylo možné používat tyto rutiny prostředí PowerShell. Pokyny o tom, jak to udělat najdete v tématu [modul Azure RM úložiště tabulek PowerShell pro tabulky DB Cosmos](https://blogs.technet.microsoft.com/paulomarques/2017/05/23/azure-rm-storage-tables-powershell-module-now-includes-support-for-cosmos-db-tables/).
+Potom nainstalujte Azure Cosmos DB sestavení místně, aby bylo možné používat tyto rutiny prostředí PowerShell. Pokyny o tom, jak to udělat najdete v tématu [modul Azure RM úložiště tabulek PowerShell pro tabulky DB Cosmos](https://blogs.technet.microsoft.com/paulomarques/2017/01/17/working-with-azure-storage-tables-from-powershell/).
 
 Můžete vyzkoušet na následující cvičení, potřebujete účet Azure Cosmos DB databáze. Pokud jste ještě nemáte, vytvořte novou Cosmos Azure DB účtu pomocí [portál Azure](https://portal.azure.com). Nápovědu k vytvoření nového účtu databáze najdete v tématu [Cosmos databázi Azure: vytvoření databázového účtu](create-table-dotnet.md#create-a-database-account).
 
@@ -88,7 +88,7 @@ Nelze seznam tabulek v účtu Azure Cosmos DB pomocí prostředí PowerShell, al
 
 ## <a name="delete-a-table"></a>Odstranění tabulky 
 
-PowerShell nepodporuje odstraňování tabulek z databáze Azure Cosmos. Chcete-li odstranit tabulku, přejděte na [portál Azure](https://azure.portal.com), vyhledejte účet Azure Cosmos DB používáte, pak najít a odstranit tabulku. 
+PowerShell nepodporuje odstraňování tabulek z databáze Azure Cosmos. Chcete-li odstranit tabulku, přejděte na [portál Azure](https://portal.azure.com), vyhledejte účet Azure Cosmos DB používáte, pak najít a odstranit tabulku. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

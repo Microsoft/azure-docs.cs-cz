@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/27/2018
 ms.author: tdykstra
-ms.openlocfilehash: 5a3070582a32adeda45dff233782c3a971885c14
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 6cdcfbf16f77525d6cee2085fdde9fdd630027e3
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018451"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096675"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Začínáme s Azure WebJobs SDK pro zpracování na pozadí založeného na událostech
 
@@ -48,6 +48,9 @@ public static void Run(
 
 Podle pokynů informování, jak vytvořit projekt WebJobs SDK verze 2.x s poznámky o tom, co je jiný pro 3.x (ve verzi preview). Hlavní změna zaváděné 3.x je použití .NET Core místo rozhraní .NET Framework.
 
+> [!NOTE]
+> 3.x je ve verzi preview a je ve vývoji a 3.x pokyny v tomto článku jsou zastaralé. Nejnovější informace najdete v tématu Githubu problémy v dolní části stránky.
+
 ### <a name="azure-functions"></a>Azure Functions
 
 [Azure Functions](../azure-functions/functions-overview.md) je založena na WebJobs SDK a když nemusíte používat přímo WebJobs SDK. Azure funkce 1.x využívá sadu WebJobs SDK 2.x. Další informace najdete v tématu [srovnání Azure Functions a WebJobs SDK](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
@@ -68,7 +71,7 @@ Tento článek předpokládá, že máte [účet Azure](https://azure.microsoft.
    Vytvoření projektu 3.x, vyberte **.NET Core > konzolové aplikace (.NET Core)**.
    
    > [!NOTE]
-   > 3.x je stále ve verzi preview a je ve vývoji. 3.x pokyny v tomto článku jsou neúplné; nejnovější informace najdete v tématu Githubu problémy v dolní části stránky.
+   > 3.x je ve verzi preview a je ve vývoji a 3.x pokyny v tomto článku jsou zastaralé. Nejnovější informace najdete v tématu Githubu problémy v dolní části stránky.
 
 3. Název projektu *WebJobsSDKSample*a potom vyberte **OK**.
 

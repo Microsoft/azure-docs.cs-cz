@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.component: protection
 ms.date: 04/28/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 6e14d91eae367ef62d1ff2e4cb6ddeb47c9fbbea
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 135c789dc6e41e07bb939ece679756c8c42de2d1
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261011"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085279"
 ---
 # <a name="approvals"></a>Schvalování
 
@@ -52,15 +53,15 @@ Privátní preview podporuje následující scénáře:
 
 -   [Schválit nebo odmítnout žádosti o zvýšení oprávnění role (jeden nebo hromadně)](#approve-or-reject-requests-for-role-elevation-single-and/or-bulk)
 
--   [Uveďte její odůvodnění moje schválení nebo zamítnutí](#provide-justification-for-my-approval/rejection) 
+-   [uveďte její odůvodnění moje schválení nebo zamítnutí](#provide-justification-for-my-approval/rejection) 
 
 **Jako oprávněný uživatel roli můžete:**
 
--   [Žádost o aktivaci role, který vyžaduje schválení](#request-activation-of-a-role-that-requires-approval)
+-   [žádost o aktivaci role, který vyžaduje schválení](#request-activation-of-a-role-that-requires-approval)
 
 -   [Zobrazení stavu vaši žádost o aktivaci](#view-the-status-of-your-request-to-activate)
 
--   [Dokončení úkolu ve službě Azure AD, pokud byla schválena aktivace](#complete-your-task-in-azure-ad-if-activation-was-approved)
+-   [dokončení úkolu ve službě Azure AD, pokud byla schválena aktivace](#complete-your-task-in-azure-ad-if-activation-was-approved)
 
 ### <a name="navigation"></a>Navigace
 

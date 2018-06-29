@@ -1,11 +1,11 @@
-# [Dokumentace ke službě Data Lake Store](index.md)
+# [Dokumentace ke službě Data Lake Storage Gen1](index.md)
 
 # Přehled
-## [Přehled Azure Data Lake Store](data-lake-store-overview.md)
-## [Porovnání Azure Data Lake Store se službou Azure Storage](data-lake-store-comparison-with-blob-storage.md)
-## [Azure Data Lake Store pro zpracování velkého objemu dat](data-lake-store-data-scenarios.md)
-## [Open source aplikace využívající Azure Data Lake Store](data-lake-store-compatible-oss-other-applications.md)
-## [Osvědčené postupy při používání Data Lake Store](data-lake-store-best-practices.md)
+## [Přehled Data Lake Storage Gen1](data-lake-store-overview.md)
+## [Porovnání služeb Data Lake Storage Gen1 a Azure Storage](data-lake-store-comparison-with-blob-storage.md)
+## [Data Lake Storage Gen1 pro zpracování velkého objemu dat](data-lake-store-data-scenarios.md)
+## [Opensourcové aplikace využívající Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)
+## [Osvědčené postupy při používání Data Lake Storage Gen1](data-lake-store-best-practices.md)
 
 # Začínáme
 ## [Pomocí portálu](data-lake-store-get-started-portal.md)
@@ -21,15 +21,15 @@
 ### [Pomocí DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [Pomocí Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 ### [Nahrávání dat z offline zdrojů](data-lake-store-offline-bulk-data-upload.md)
-### [Migrace Azure Data Lake Store napříč oblastmi](data-lake-store-migration-cross-region.md)
+### [Migrace Data Lake Store napříč oblastmi](data-lake-store-migration-cross-region.md)
 
 ## Zabezpečení dat
 ### [Přehled zabezpečení](data-lake-store-security-overview.md)
-### [Řízení přístupu v Data Lake Store](data-lake-store-access-control.md)
-### [Zabezpečení dat ve službě Data Lake Store](data-lake-store-secure-data.md)
+### [Řízení přístupu ve službě Data Lake Storage Gen1](data-lake-store-access-control.md)
+### [Zabezpečení dat ve službě Data Lake Storage Gen1](data-lake-store-secure-data.md)
 ### [Šifrování](data-lake-store-encryption.md)
 
-## Ověřování s využitím služby Data Lake Store
+## Ověřování s využitím služby Data Lake Storage Gen1
 ### [Možnosti ověřování](data-lakes-store-authentication-using-azure-active-directory.md)
 ### [Ověřování koncových uživatelů](data-lake-store-end-user-authenticate-using-active-directory.md)
 #### [Pomocí Javy](data-lake-store-end-user-authenticate-java-sdk.md)
@@ -42,7 +42,7 @@
 #### [Pomocí rozhraní REST API](data-lake-store-service-to-service-authenticate-rest-api.md)
 #### [Pomocí Pythonu](data-lake-store-service-to-service-authenticate-python.md)
 
-## Práce s Data Lake Store
+## Práce se službou Data Lake Storage Gen1
 ### Operace správy účtů
 #### [Pomocí sady .NET SDK](data-lake-store-get-started-net-sdk.md)
 #### [Pomocí rozhraní REST API](data-lake-store-get-started-rest-api.md)
@@ -54,12 +54,12 @@
 #### [Pomocí Pythonu](data-lake-store-data-operations-python.md)
 
 ## Výkon
-### [Průvodce laděním výkonu pro Azure Data Lake Store](data-lake-store-performance-tuning-guidance.md)
-### [Průvodce laděním výkonu pro použití PowerShellu se službou Azure Data Lake Store](data-lake-store-performance-tuning-powershell.md)
-### [Průvodce laděním výkonu pro Spark ve službě HDInsight a Azure Data Lake Store](data-lake-store-performance-tuning-spark.md)
-### [Průvodce laděním výkonu pro Hive ve službě HDInsight a Azure Data Lake Store](data-lake-store-performance-tuning-hive.md)
-### [Průvodce laděním výkonu pro MapReduce ve službě HDInsight a Azure Data Lake Store](data-lake-store-performance-tuning-mapreduce.md)
-### [Průvodce laděním výkonu pro Storm ve službě HDInsight a Azure Data Lake Store](data-lake-store-performance-tuning-storm.md)
+### [Průvodce laděním výkonu pro Azure Data Lake Storage Gen1](data-lake-store-performance-tuning-guidance.md)
+### [Průvodce laděním výkonu pro použití PowerShellu se službou Data Lake Storage Gen1](data-lake-store-performance-tuning-powershell.md)
+### [Průvodce laděním výkonu pro Spark ve službě HDInsight a Data Lake Storage Gen1](data-lake-store-performance-tuning-spark.md)
+### [Průvodce laděním výkonu pro Hive ve službě HDInsight a Data Lake Storage Gen1](data-lake-store-performance-tuning-hive.md)
+### [Průvodce laděním výkonu pro MapReduce ve službě HDInsight a Data Lake Storage Gen1](data-lake-store-performance-tuning-mapreduce.md)
+### [Průvodce laděním výkonu pro Storm ve službě HDInsight a Azure Data Lake Storage Gen1](data-lake-store-performance-tuning-storm.md)
 
 ## Integrace se službami Azure
 ### Pomocí HDInsight

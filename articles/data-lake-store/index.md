@@ -1,26 +1,28 @@
 ---
-title: Dokumentace ke službě Azure Data Lake Store – kurzy, reference k rozhraní API | Dokumentace Microsoftu
+title: Dokumentace ke službě Azure Data Lake Storage Gen1 – kurzy, reference k rozhraní API | Microsoft Docs
 description: Naučte se nastavovat a spravovat úložiště Data Lake ve velkém měřítku, které je kompatibilní s Hadoopem, a přistupovat k němu pro účely analýzy dat libovolné velikosti, typu a rychlosti příjmu.
 services: data-lake-store
-author: czeumault
-manager: carolz
+author: twooley
+manager: twooley
 layout: LandingPage
 ms.assetid: ''
 ms.service: data-lake-store
-ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: landing-page
-ms.date: 01/23/2017
-ms.author: carolz
-ms.openlocfilehash: d738676a0a9b16c32646734168546992d8595912
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.topic: conceptual
+ms.date: 06/27/2018
+ms.author: twooley
+ms.openlocfilehash: ba17c59169d00a8333bb9eb1c7bb0c1a56aaba83
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37033413"
 ---
-# <a name="data-lake-store-documentation"></a>Dokumentace ke službě Data Lake Store
+# <a name="azure-data-lake-storage-gen1-documentation"></a>Dokumentace ke službě Azure Data Lake Storage Gen1
 
-Naučte se použít Data Lake Store k vytvoření úložiště ve velkém měřítku, které je kompatibilní s Hadoopem, pro účely analýzy dat libovolné velikosti, typu a rychlosti příjmu. Kurzy, odkazy na rozhraní API a další dokumentace obsahují informace o tom, jak nastavit a úložiště Data Lake a přistupovat k němu pro účely provozní a zjišťovací analýzy.
+Naučte se používat Azure Data Lake Storage Gen1 (dříve označované jako Azure Data Lake Store) k vytvoření úložiště ve velkém měřítku, které je kompatibilní s Hadoopem, pro účely analýzy dat libovolné velikosti, typu a rychlosti příjmu. Kurzy, odkazy na rozhraní API a další dokumentace obsahují informace o tom, jak nastavit a úložiště Data Lake a přistupovat k němu pro účely provozní a zjišťovací analýzy.
+
+Pokud se chcete o verzi Preview služby Data Lake Storage Gen2 dozvědět víc, podívejte se na [produktovou stránku](https://aka.ms/adlsgen2-product).
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -34,7 +36,7 @@ Naučte se použít Data Lake Store k vytvoření úložiště ve velkém měř�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Informace o službě Azure Data Lake Store</h3>
+                        <h3>Další informace o Data Lake Storage Gen1</h3>
                     </div>
                 </div>
             </div>
@@ -52,7 +54,7 @@ Naučte se použít Data Lake Store k vytvoření úložiště ve velkém měř�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Knihovna videí ke službě Azure Data Lake Store</h3>
+                        <h3>Knihovna videí ke službě Data Lake Storage Gen1</h3>
                     </div>
                 </div>
             </div>
@@ -70,7 +72,7 @@ Naučte se použít Data Lake Store k vytvoření úložiště ve velkém měř�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s Azure Data Lake Store s využitím webu Azure Portal</h3>
+                        <h3>Začínáme se službou Data Lake Storage Gen1 s využitím webu Azure Portal</h3>
                     </div>
                 </div>
             </div>
@@ -88,7 +90,7 @@ Naučte se použít Data Lake Store k vytvoření úložiště ve velkém měř�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s Azure Data Lake Store s využitím prostředí PowerShell</h3>
+                        <h3>Začínáme se službou Data Lake Storage Gen1 s využitím PowerShellu</h3>
                     </div>
                 </div>
             </div>
@@ -106,7 +108,7 @@ Naučte se použít Data Lake Store k vytvoření úložiště ve velkém měř�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s Azure Data Lake Store s využitím rozhraní Azure CLI</h3>
+                        <h3>Začínáme se službou Data Lake Storage Gen1 s využitím Azure CLI</h3>
                     </div>
                 </div>
             </div>
@@ -124,7 +126,7 @@ Naučte se použít Data Lake Store k vytvoření úložiště ve velkém měř�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s Azure Data Lake Store s využitím rozhraní .NET</h3>
+                        <h3>Začínáme se službou Data Lake Storage Gen1 s využitím .NET</h3>
                     </div>
                 </div>
             </div>
@@ -142,7 +144,7 @@ Naučte se použít Data Lake Store k vytvoření úložiště ve velkém měř�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s Azure Data Lake Store s využitím Javy</h3>
+                        <h3>Začínáme se službou Data Lake Storage Gen1 s využitím Javy</h3>
                     </div>
                 </div>
             </div>
@@ -160,7 +162,7 @@ Naučte se použít Data Lake Store k vytvoření úložiště ve velkém měř�
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>Začínáme s Azure Data Lake Store s využitím Node.js</h3>
+                        <h3>Začínáme se službou Data Lake Storage Gen1 s využitím Node.js</h3>
                     </div>
                 </div>
             </div>

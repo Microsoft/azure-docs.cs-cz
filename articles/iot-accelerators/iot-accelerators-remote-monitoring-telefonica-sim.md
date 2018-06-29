@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: ae8751f429cb4b11199bd8da9d8c2e08c0b98b35
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8ba187fd82fa6a698905313bfda2802324a9034d
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628279"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097076"
 ---
 # <a name="integrate-sim-data-in-the-remote-monitoring-solution"></a>Integrace SIM dat v řešení vzdáleného monitorování
 
@@ -33,9 +33,9 @@ V tomto kurzu se naučíte:
 
 Tato další funkce pro vzdálené monitorování je aktuálně ve verzi preview. K synchronizaci dat připojení do řešení vzdáleného monitorování na Azure, postupujte takto:
 
-1. Vyplnění požadavek na [lokality na Telefónica](https://iot.Telefónica.com/contact), vyberte možnost **Azure vzdálené monitorování**, včetně vašich kontaktních údajů.
+1. Vyplnění požadavek na [lokality na Telefónica](https://iot.telefonica.com/contact), vyberte možnost **Azure vzdálené monitorování**, včetně vašich kontaktních údajů.
 2. Telefónica aktivuje váš účet.
-3. Pokud klient Telefónica ještě nejste a vy chcete Získejte to nebo jiné služby pro IoT připojení cloudu připraven, navštivte [lokality na Telefónica](https://iot.Telefónica.com/contact) a vyberte možnost **připojení**.
+3. Pokud klient Telefónica ještě nejste a vy chcete Získejte to nebo jiné služby pro IoT připojení cloudu připraven, navštivte [lokality na Telefónica](https://iot.telefonica.com/) a vyberte možnost **připojení**.
 
 ### <a name="telefnica-sim-setup"></a>Instalační program Telefónica SIM
 Telefónica SIM & Azure Twin přidružení ID zařízení je založena na vlastnosti "alias" Telefónica IoT SIM. 

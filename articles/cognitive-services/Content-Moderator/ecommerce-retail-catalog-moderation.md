@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 5cb93941751c8744a19a5473d13f1e135a589eaa
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6177758eaa3e611ad67da0778d889df48b052d90
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342489"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37095747"
 ---
 # <a name="ecommerce-catalog-moderation-with-machine-learning"></a>přerušování katalogu elektronické obchodování s machine learning
 
@@ -158,7 +158,7 @@ V našem případě jsme definovali tyto vlastní značky (**celebrit**, **pří
 
 ## <a name="classify-into-flags-toys-and-pens"></a>Klasifikovat do příznaky, toys a pera
 
-1. [Přihlaste se](https://www.customvision.ai/account/signin) k [preview rozhraní API vize vlastní](https://www.customvision.ai/).
+1. [Přihlaste se](https://azure.microsoft.com/en-us/services/cognitive-services/custom-vision-service/) k [preview rozhraní API vize vlastní](https://www.customvision.ai/).
 2. Použití [rychlý Start](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier) vytvořit vaše vlastní třídění k detekci přítomnosti potenciální příznaky, toys a pera.
    ![Vlastní vize školení obrázků](images/tutorial-ecommerce-custom-vision.PNG)
 3. [Získat adresu URL koncového bodu předpovědi](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api) pro vaše vlastní třídění.

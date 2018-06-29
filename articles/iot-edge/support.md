@@ -8,12 +8,12 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a6bf918428312c511505304bd23b68cd19e46471
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
-ms.translationtype: MT
+ms.openlocfilehash: 0a5cbabf8080efd1ae25ba151a1be339e8f5cad2
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035870"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081750"
 ---
 # <a name="azure-iot-edge-support"></a>Podpora Azure IoT Edge
 Existuje mnoho různých způsobů, jak získat podporu pro produkt Azure IoT okraj.
@@ -33,8 +33,8 @@ Systémy vrstvy 1 můžete představit jako oficiálně podporován. To znamená
 * poskytuje instalační balíčky pro ně
 
 Obecně k dispozici
-* Ubuntu 18.04
-* Ubuntu 16.04
+* Ubuntu Server 18.04
+* Ubuntu Server 16.04
 * Raspbian-stretch
 
 Ve verzi Public Preview
@@ -47,9 +47,9 @@ Systémy vrstvy 2 si lze představit jako kompatibilní s Azure IoT okraj a je m
 * Společnost Microsoft provedla ad-hoc testování na platformách nebo zná partnerských úspěšném spuštění Azure IoT Edge na platformě
 * Instalační balíčky pro jiné platformy může fungovat na těchto platformách
 
-Ubuntu Server 18.04
+Ubuntu 18.04
 
-Ubuntu Server 16.04
+Ubuntu 16.04
 
 Oblasti větru 8
 

@@ -11,14 +11,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: bbf75a03fb771aa415a26e151614cecfaa14c485
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 333ff3ac3de053eae604ffeab600df7d35874f69
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598874"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085228"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Připojit k Azure Databricks z aplikace Excel, Python nebo R
 
@@ -99,6 +99,9 @@ V této části můžete získání dat z Azure Databricks do aplikace Microsoft
 Až budete mít data v sešitu aplikace Excel, analytické operace na něm lze provádět.
 
 ## <a name="connect-from-r"></a>Připojení z R
+
+> [!NOTE]
+> Tato část obsahuje informace o tom, jak integrovat klientem R Studio spuštěná na ploše s Azure Databricks. Pokyny k použití na samotný cluster Azure Databricks R Studio najdete v tématu [Studio R na Azure Databricks](https://docs.azuredatabricks.net/spark/latest/sparkr/rstudio.html).
 
 V této části použijte jazyk R IDE pro referenční data k dispozici v Azure Databricks. Než začnete, musíte mít následující v počítači nainstalována.
 

@@ -1,6 +1,6 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentace ke službě Azure Data Factory V2 ve verzi Preview
+title: Dokumentace ke službě Azure Data Factory
 metadata:
   title: Dokumentace ke službě Azure Data Factory – kurzy, reference k rozhraní API | Dokumentace Microsoftu
   description: Naučte se používat službu Data Factory k nastavování automatizovaných datových kanálů do místních a cloudových zdrojů a z nich s cílem přesouvat a zpracovávat data pro analýzu.
@@ -13,21 +13,21 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/08/2017
   ms.author: douglasl
-  ms.openlocfilehash: e31500a02bc3470e338f727771eebe887dcc493f
-  ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+  ms.openlocfilehash: 624b2f0968776115f35698710cdc930a9a824922
+  ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/23/2018
-  ms.locfileid: "30166738"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37047196"
 abstract:
-  description: Naučte se používat cloudovou službu pro integraci dat Data Factory k sestavování služeb úložišť dat, přesouvání a zpracování v automatizovaných datových kanálech. V kurzech a další dokumentaci se naučíte nastavit a spravovat datové kanály a také přesouvat a transformovat data pro analýzu. <p>Momentálně je služba Data Factory V2 ve verzi Preview. Verze V1 je obecně dostupná. Pokud používáte službu Data Factory V1, projděte si <a href=/azure/data-factory/v1/data-factory-introduction>dokumentaci k V1</a>.</p>
+  description: Naučte se používat cloudovou službu pro integraci dat Data Factory k sestavování služeb úložišť dat, přesouvání a zpracování v automatizovaných datových kanálech. V kurzech a další dokumentaci se naučíte nastavit a spravovat datové kanály a také přesouvat a transformovat data pro analýzu. <p>Pokud používáte službu Data Factory V1, projděte si <a href=/azure/data-factory/v1/data-factory-introduction>dokumentaci k V1</a>.</p>
   aside:
     image:
       alt: 
       height: 110
       src: media/index/video.png
       width: 250
-    title: Vizuálně sestavené kanály pro Azure Data Factory V2 (19:31)
+    title: Vizuálně sestavené kanály pro Azure Data Factory (19:31)
     href: https://azure.microsoft.com/en-us/resources/videos/azure-friday-visually-build-pipelines-for-azure-data-factory-v2
     width: 250
 sections:

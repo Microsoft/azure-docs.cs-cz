@@ -37,11 +37,23 @@
 
 ### [Veřejná IP adresa](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
-### Databáze SQL
+### SQL Database
 #### [Zóny dostupnosti pro SQL Database](../sql-database/sql-database-high-availability.md#availability-zones)
 
 ### Úložiště
 #### [Zónově redundantní úložiště](../storage/common/storage-redundancy-zrs.md)
+
+### Event Hubs
+#### [Geografické zotavení po havárii služby Event Hubs](../event-hubs/event-hubs-geo-dr.md#availability-zones-preview)
+
+### Service Bus
+#### [Geografické zotavení po havárii služby Service Bus](../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview)
+
+### VPN Gateway
+#### [Vytvoření zónově redundantní brány virtuální sítě](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
+
+### ExpressRoute
+#### [Vytvoření zónově redundantní brány virtuální sítě](../vpn-gateway/create-zone-redundant-vnet-gateway.md)
 
 # Zotavení po havárii
 ## [Použití Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)

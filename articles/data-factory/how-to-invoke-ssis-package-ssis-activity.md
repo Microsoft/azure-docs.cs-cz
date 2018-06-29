@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 5ff397e8b13d56b3b034854c507f8bef05008812
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
-ms.translationtype: HT
+ms.openlocfilehash: 26b9271744d7be45c2a879fde3bb3fb5d6049a3b
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37054717"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083781"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Spusťte balíček SSIS s spuštění aktivity balíčku služby SSIS v Azure Data Factory
 Tento článek popisuje způsob spouštění balíčku služby SSIS v kanál služby Azure Data Factory pomocí spuštění balíčku služby SSIS aktivitu. 
@@ -174,7 +174,7 @@ Je třeba počítat s následujícím:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Pro vytvoření instancí Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem rolí **přispěvatel** nebo **vlastník** nebo **správcem** předplatného Azure.
-* V současné době objekt pro vytváření dat můžete vytvořit datové továrny pouze ve východní USA, východ US2, západní Evropa a oblasti jihovýchodní Asie. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+* Seznam oblastí Azure, ve kterých je aktuálně dostupné pro vytváření dat, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **Data Factory**: [ Produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 ### <a name="create-a-pipeline-with-an-ssis-activity"></a>Vytvoření kanálu s aktivitou SSIS 
 V tomto kroku vytvoříte kanál s aktivitou SSIS. Spuštění aktivity vašeho balíčku služby SSIS. 

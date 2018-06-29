@@ -1,6 +1,6 @@
 ---
-title: Architektura řešení vzdáleného monitorování - Azure | Microsoft Docs
-description: Návod architektury vzdálené monitorování akcelerátoru řešení.
+title: Vzdálené monitorování akcelerátoru přehled řešení – Azure | Microsoft Docs
+description: Přehled akcelerátoru řešení vzdáleného monitorování.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,14 +8,14 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: af7feb6c95a7de1d2211378c5eb71f09907221ff
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.openlocfilehash: a8b5d9e3917c854cb255a35d3bbc901bcce52c24
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757429"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084522"
 ---
-# <a name="remote-monitoring-solution-accelerator-architecture"></a>Vzdálené monitorování řešení akcelerátoru architektura
+# <a name="remote-monitoring-solution-accelerator-overview"></a>Přehled akcelerátoru řešení pro vzdálené monitorování
 
 Vzdálené monitorování [řešení akcelerátoru](../iot-accelerators/iot-accelerators-what-are-solution-accelerators.md) implementuje řešení monitorování v začátku do konce pro víc počítačů ve vzdálených umístěních. Řešení kombinuje klíčové služby Azure a poskytuje obecnou implementaci obchodního scénáře. Řešení můžete použít jako výchozí bod pro vlastní implementaci a [přizpůsobit](../iot-accelerators/iot-accelerators-remote-monitoring-customize.md) ho podle konkrétních podnikových požadavků.
 

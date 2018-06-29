@@ -2,7 +2,7 @@
 title: Azure Active Directory Identity Protection playbook | Microsoft Docs
 description: Zjistěte, jak Azure AD Identity Protection umožňuje omezit možnost útočník zneužít ohroženými identity nebo zařízení a zabezpečit identity nebo zařízení, která byla dříve by mohly vzbuzovat podezření nebo známé došlo k narušení.
 services: active-directory
-keywords: ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
+keywords: ochrany identit Azure active directory, zjišťování cloudu, Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: ff4a8bfb5a92f0969aef726893bebb6aacd4d942
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 566748d7d7a2ec89c69ab706700583a9db1f5246
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714302"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083953"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure seznam strategií ochrany identit Active Directory
 
@@ -104,7 +104,7 @@ Přihlášení se zobrazí v řídicím panelu ochrany identit v rámci 2 – 4 
 Ohrožení zabezpečení jsou slabá místa v prostředí Azure AD, které může zneužít objektu actor chybný. Aktuálně jsou prezentované 3 typy ohrožení zabezpečení v Azure AD Identity Protection, které využít další funkce služby Azure AD. Tyto chyby zabezpečení se zobrazí na řídicím panelu ochrany identit automaticky po tyto funkce jsou nastavené.
 
 * Azure AD [vícefaktorového ověřování](authentication/multi-factor-authentication.md)
-* Azure AD [Cloud App Discovery](manage-apps/cloud-app-discovery.md).
+* Azure AD [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 * Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md). 
 
 

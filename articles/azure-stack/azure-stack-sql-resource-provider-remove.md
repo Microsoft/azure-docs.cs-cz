@@ -11,19 +11,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 06/27/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 150d1c40463aa04527bdd6e356a4c24ef68b02ef
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: b73deebb10d0c81a06df9cd192eaa2ef28de744d
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301894"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083035"
 ---
 # <a name="remove-the-sql-resource-provider"></a>Odebrat zprostředkovatele prostředků SQL
 
 Před odebráním poskytovatele prostředků SQL, musíte odebrat všechny závislosti zprostředkovatele. Budete také potřebovat kopii balíček nasazení, který byl použitý k instalaci zprostředkovatele prostředků.
+
+Různé úlohy čištění provést před spuštěním _DeploySqlProvider.ps1_ skript pro odebrání zprostředkovatele prostředků.
+Klienti jsou zodpovědní za následující úlohy čištění:
+
+* Odstraňte všechny své databáze od zprostředkovatele prostředků. (Odstranit databáze klienta neodstraní data.)
+* Zrušení registrace obor názvů zprostředkovatele prostředků.
+
+Správce zodpovídá za tyto úlohy čištění:
+
+* Odstraní hostitelskými servery od zprostředkovatele prostředků SQL.
+* Odstraní všechny plány, které odkazují poskytovatele prostředků SQL.
+* Odstraní všechny kvóty, které jsou spojeny s poskytovatelem prostředků SQL.
 
 ## <a name="to-remove-the-sql-resource-provider"></a>Chcete-li odebrat poskytovatele prostředků SQL
 
@@ -38,10 +50,10 @@ Před odebráním poskytovatele prostředků SQL, musíte odebrat všechny závi
 
 4. Spusťte skript DeploySqlProvider.ps1 s následujícími parametry:
 
-    - **Odinstalace**. Odebere poskytovatele prostředků a všechny přidružené prostředky.
-    - **PrivilegedEndpoint**. IP adresa nebo název DNS privilegované koncového bodu.
-    - **CloudAdminCredential**. Přihlašovací údaje pro správce cloudu potřebné pro přístup k privilegované koncový bod.
-    - **AzCredential**. Přihlašovací údaje pro účet správce služby Azure zásobníku. Pomocí stejných přihlašovacích údajů, které jste použili pro nasazení Azure zásobníku.
+    * **Odinstalace**. Odebere poskytovatele prostředků a všechny přidružené prostředky.
+    * **PrivilegedEndpoint**. IP adresa nebo název DNS privilegované koncového bodu.
+    * **CloudAdminCredential**. Přihlašovací údaje pro správce cloudu potřebné pro přístup k privilegované koncový bod.
+    * **AzCredential**. Přihlašovací údaje pro účet správce služby Azure zásobníku. Pomocí stejných přihlašovacích údajů, které jste použili pro nasazení Azure zásobníku.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -14,25 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/27/2018
 ms.author: aljo
-ms.openlocfilehash: 6783c2b3b431e99050bc6762c1855b22e0701686
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 84f8827a58d7f3c5dcc32943d2ba891b02c1e1ab
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062275"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083188"
 ---
-# <a name="description-of-the-different-upgrade-policies"></a>Popis různých zásad upgradu
-
-- **Dynamické** – změny konfigurace dynamické nezpůsobí žádné restartování procesu Service Fabric procesy nebo hostitelské procesy vaší služby. 
-- **Statické** – změny v konfiguraci statického způsobí, že uzel Service Fabric restartovat, aby bylo možné využívat změnu. Restartuje služby na uzlech.
-- **NotAllowed** – toto nastavení nelze změnit. Změna těchto nastavení vyžaduje, aby být zničený, clusteru a vytvoření nového clusteru. 
-
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Přizpůsobení nastavení clusteru Service Fabric a zásady upgradu prostředků infrastruktury
 Tento dokument vysvětluje, jak přizpůsobit různá nastavení prostředků infrastruktury a infrastruktury upgradovat zásady pro váš cluster Service Fabric. Přizpůsobit pomocí [portál Azure](https://portal.azure.com) nebo pomocí šablony Azure Resource Manager.
 
 > [!NOTE]
 > Ne všechna nastavení jsou k dispozici na portálu. V případě, že níže uvedených nastavení není k dispozici prostřednictvím portálu přizpůsobte pomocí šablony Azure Resource Manager.
 > 
+
+## <a name="description-of-the-different-upgrade-policies"></a>Popis různých zásad upgradu
+
+- **Dynamické** – změny konfigurace dynamické nezpůsobí žádné restartování procesu Service Fabric procesy nebo hostitelské procesy vaší služby. 
+- **Statické** – změny v konfiguraci statického způsobí, že uzel Service Fabric restartovat, aby bylo možné využívat změnu. Restartuje služby na uzlech.
+- **NotAllowed** – toto nastavení nelze změnit. Změna těchto nastavení vyžaduje, aby být zničený, clusteru a vytvoření nového clusteru. 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Přizpůsobení nastavení clusteru pomocí šablony Resource Manageru
 Následující kroky ukazují, jak přidat nové nastavení *MaxDiskQuotaInMB* k *diagnostiky* části.

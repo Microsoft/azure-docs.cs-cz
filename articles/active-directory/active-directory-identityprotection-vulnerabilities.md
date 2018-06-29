@@ -2,7 +2,7 @@
 title: Chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection | Microsoft Docs
 description: Přehled chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection.
 services: active-directory
-keywords: ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
+keywords: ochrany identit Azure active directory, zjišťování cloudu, Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 9ee926ff7cf44041c1969d541ca225395ba31a2f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 534384f8e8fde17c2330831b346d87c50ea24183
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713690"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084004"
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection
 Ohrožení zabezpečení jsou slabá místa ve vašem prostředí, může útočník zneužít. Doporučujeme, abyste tyto nedostatky ke zlepšení postavení zabezpečení vaší organizace a útočníkům zabránit v jejich využití.
@@ -47,9 +47,9 @@ Toto ohrožení zabezpečení pomáhá identifikovat nespravované cloudových a
 
 V rámci moderní firmy IT oddělení neberou často všechny cloudové aplikace, které uživateli v organizaci používáte ke své práci. Je snadno zjistit, proč by správci mají obavy o neoprávněný přístup k podnikovým datům, možné úniku a další bezpečnostní rizika. 
 
-Doporučujeme nasadit Cloud App Discovery ke zjišťování nespravované cloudových aplikací a ke správě těchto aplikací pomocí služby Azure Active Directory.
+Doporučujeme nasadit Cloud Discovery ke zjišťování nespravované cloudových aplikací a ke správě těchto aplikací pomocí služby Azure Active Directory.
 
-Další informace najdete v tématu [hledání nespravované cloudových aplikací s Cloud App Discovery](manage-apps/cloud-app-discovery.md).
+Další informace najdete v tématu [Cloud Discovery](/cloud-app-security/set-up-cloud-discovery).
 
 ## <a name="security-alerts-from-privileged-identity-management"></a>Výstrahy zabezpečení z Privileged Identity Managementu
 Toto ohrožení zabezpečení vám pomůže zjistit a vyřešit výstrahy týkající se privilegované identity ve vaší organizaci.  

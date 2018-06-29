@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: b01e4498e63ab989b0b78246636cba50ed4f82d6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d08ac9f2cbdf98493b3132fa9dd3a3e973576451
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33943208"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098813"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Živé streamování s místními kodéry, které vytvářejí proudy s více přenosovými rychlostmi
 
@@ -146,7 +146,7 @@ Kanály zadejte koncový bod preview (URL náhledu), který používáte pro zob
 
 Když vytvoříte kanál, můžete získat adresu URL náhledu. Abyste mohli získat adresu URL, nemá kanál v **systémem** stavu. Po kanál spuštění příjem dat, můžete zobrazit náhled datového proudu.
 
-V současné době mohou být zajišťovány preview datového proudu pouze v fragmentovaných MP4 formátu (technologie Smooth Streaming), bez ohledu na zadaný typ vstupu. Můžete použít [monitorování stavu technologie Smooth Streaming](http://smf.cloudapp.net/healthmonitor) player k testování datový proud smooth. Můžete také použít přehrávač, který je hostován na portálu Azure k zobrazení datového proudu.
+V současné době mohou být zajišťovány preview datového proudu pouze v fragmentovaných MP4 formátu (technologie Smooth Streaming), bez ohledu na zadaný typ vstupu. Můžete použít [monitorování stavu technologie Smooth Streaming](http://playready.directtaps.net/smoothstreaming/) player k testování datový proud smooth. Můžete také použít přehrávač, který je hostován na portálu Azure k zobrazení datového proudu.
 
 #### <a name="allowed-ip-addresses"></a>Povolené IP adresy
 Můžete definovat IP adresy, které se mohou připojit ke koncovému bodu náhledu. Pokud nejsou zadány žádné IP adresy, je povoleno jakékoli IP adresy. Povolené IP adresu lze zadat jako jednu z těchto možností:

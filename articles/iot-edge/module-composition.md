@@ -1,37 +1,37 @@
 ---
 title: Složení modulu Azure IoT Edge | Microsoft Docs
-description: Zjistěte, co na moduly Azure IoT okraj a jak může být znovu
+description: Zjistěte, jak deklaruje manifest nasazení, které moduly pro nasazení, jak je nasadit a jak vytvořit směrování zpráv mezi nimi.
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/23/2018
+ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c886d1d9dea120a243693c12ae861a58126daadc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 209f159d9003838edb36728828758b76730118ff
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34631679"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098460"
 ---
-# <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Pochopení IoT Edge moduly použití, nakonfigurovaná a znovu použít – náhled
+# <a name="learn-how-to-use-deployment-manifests-to-deploy-modules-and-establish-routes"></a>Naučte se používat k nasazení moduly a vytvářet trasu manifesty nasazení
 
-Každé zařízení IoT Edge spustí aspoň dva moduly: $edgeAgent a $edgeHub, které tvoří runtime IoT okraj. Kromě těchto dvou standardní žádné IoT hraniční zařízení můžete spustit více modulů provést libovolný počet procesů. Při nasazení těchto modulů zařízení najednou, je nutné způsob, jak deklarace, které moduly jsou zahrnuty jejich vzájemné interakce mezi sebou. 
+Každé zařízení IoT Edge spustí aspoň dva moduly: $edgeAgent a $edgeHub, které tvoří runtime IoT okraj. Kromě těchto dvou standardní žádné IoT hraniční zařízení můžete spustit více modulů provést libovolný počet procesů. Při nasazení těchto modulů zařízení najednou, je nutné způsob, jak deklarace, které moduly jsou zahrnuty a jejich vzájemné interakce mezi sebou. 
 
 *– Manifest nasazení* je dokument JSON, který popisuje:
 
-* Které moduly IoT Edge mají být nasazeny, spolu s jejich možnosti vytváření a správu.
+* Konfigurace agenta okraj, který obsahuje bitovou kopii kontejner pro každý modul, přihlašovací údaje pro přístup privátní kontejneru registrech a pokyny, jak by měl vytvořit a spravovat každý modul.
 * Konfigurace centra Edge, která zahrnuje jak toku zpráv mezi moduly a nakonec do služby IoT Hub.
-* Hodnoty, Volitelně můžete nastavit v požadované vlastnosti dvojčata modulu, ke konfiguraci jednotlivých modulu aplikací.
+* Volitelně můžete požadované vlastnosti dvojčata modulu.
 
 Všechny IoT hraniční zařízení musí být nakonfigurované manifest nasazení. Nově instalovaný modul runtime IoT okraj sestavy kód chyby, dokud nebude nakonfigurována s platný manifest. 
 
-V kurzů k Azure IoT Edge sestavení manifest nasazení tak, že přejdete v průvodci na portálu Azure IoT okraj. Můžete také použít nasazení manifestu programově pomocí REST nebo sady SDK služby IoT Hub. Odkazovat na [nasazení a monitorování] [ lnk-deploy] Další informace o nasazení IoT okraj.
+V kurzů k Azure IoT Edge sestavení manifest nasazení tak, že přejdete v průvodci na portálu Azure IoT okraj. Můžete také použít nasazení manifestu programově pomocí REST nebo sady SDK služby IoT Hub. Další informace najdete v tématu [pochopit IoT Edge nasazení][lnk-deploy].
 
 ## <a name="create-a-deployment-manifest"></a>Vytvoření manifestu nasazení
 
-Na vysoké úrovni nakonfiguruje manifest nasazení modul twin požadované vlastnosti pro IoT Edge moduly nasazené na IoT hraniční zařízení. Dva z těchto modulů nejsou vždy: agent okraj a okraj rozbočovače.
+Na vysoké úrovni nakonfiguruje manifest nasazení modul twin požadované vlastnosti pro IoT Edge moduly nasazené na IoT hraniční zařízení. Dva z těchto modulů nejsou vždy: `$edgeAgent`, a `$edgeHub`.
 
 Manifest nasazení, který obsahuje pouze IoT Edge runtime (agenta a rozbočovače) je platná.
 
@@ -44,6 +44,7 @@ Manifest dodržuje tuto strukturu:
             "properties.desired": {
                 // desired properties of the Edge agent
                 // includes the image URIs of all modules
+                // includes container registry credentials
             }
         },
         "$edgeHub": {
@@ -67,7 +68,7 @@ Manifest dodržuje tuto strukturu:
 
 ## <a name="configure-modules"></a>Konfigurovat moduly
 
-Kromě vytvoření požadované vlastnosti všechny moduly, které chcete nasadit, budete muset informování IoT Edge runtime, jak je nainstalovat. Informace o konfiguraci a správu všechny moduly přejde uvnitř **$edgeAgent** požadovaných vlastností. Tyto informace zahrnují parametry konfigurace pro vlastní agent okraj. 
+Je třeba sdělit runtime IoT Edge postupy pro instalaci modulů ve vašem nasazení. Informace o konfiguraci a správu všechny moduly přejde uvnitř **$edgeAgent** požadovaných vlastností. Tyto informace zahrnují parametry konfigurace pro vlastní agent okraj. 
 
 Úplný seznam vlastností, které mohou nebo musí být zahrnut, najdete v části [vlastnosti agenta okraj a okraj rozbočovače](module-edgeagent-edgehub.md).
 
@@ -78,6 +79,11 @@ Vlastnosti $edgeAgent následující strukturu:
     "properties.desired": {
         "schemaVersion": "1.0",
         "runtime": {
+            "settings":{
+                "registryCredentials":{ // give the edge agent access to container images that aren't public
+                    }
+                }
+            }
         },
         "systemModules": {
             "edgeAgent": {
@@ -88,7 +94,7 @@ Vlastnosti $edgeAgent následující strukturu:
             }
         },
         "modules": {
-            "{module1}": { //optional
+            "{module1}": { // optional
                 // configuration and management details
             },
             "{module2}": { // optional
@@ -158,7 +164,7 @@ Jímky definuje, které jsou odesílány zprávy. Může být libovolná z násl
 | `$upstream` | Odeslání zprávy do služby IoT Hub |
 | `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | Odeslat zprávu jako vstup `{input}` modulu `{moduleId}` |
 
-Je důležité si uvědomit, že hraniční hub zajišťuje záruky na aspoň jednou, to znamená, že zprávy ukládat místně v případě, že trasu nelze doručení zprávy do jeho podřízený, například hraniční centra se nemůže připojit ke službě IoT Hub, nebo není připojen cílový modul.
+Okraj IoT poskytuje záruky na aspoň jednou. Hraniční rozbočovače ukládá zprávy místně v případě, že trasu nelze doručení zprávy do jeho jímky. Pokud rozbočovače Edge nemůže připojit k Centrum IoT nebo modul cíl například není připojen.
 
 Hraniční rozbočovače ukládá zprávy až za dobu určenou v `storeAndForwardConfiguration.timeToLiveSecs` vlastnost [Edge rozbočovače potřeby vlastnosti](module-edgeagent-edgehub.md).
 
@@ -168,7 +174,7 @@ Manifest nasazení můžete zadat požadované vlastnosti pro dvojici modulu ka�
 
 Pokud nezadáte požadované vlastnosti modul twin v manifestu nasazení, IoT Hub nezmění twin modulu jakýmkoli způsobem a nebudete moci nastavit požadované vlastnosti prostřednictvím kódu programu.
 
-Stejné mechanismy, které vám umožní změnit dvojčata zařízení se používají k úpravě dvojčata modulu. Odkazovat [twin zařízení – Příručka vývojáře](../iot-hub/iot-hub-devguide-device-twins.md) Další informace.   
+Stejné mechanismy, které vám umožní změnit dvojčata zařízení se používají k úpravě dvojčata modulu. Další informace najdete v tématu [twin zařízení – Příručka vývojáře](../iot-hub/iot-hub-devguide-device-twins.md).   
 
 ## <a name="deployment-manifest-example"></a>Příklad nasazení manifestu
 
@@ -176,72 +182,79 @@ Tento příklad nasazení manifestu dokumentu JSON.
 
 ```json
 {
-"moduleContent": {
+  "moduleContent": {
     "$edgeAgent": {
-        "properties.desired": {
-            "schemaVersion": "1.0",
-            "runtime": {
-                "type": "docker",
-                "settings": {
-                    "minDockerVersion": "v1.25",
-                    "loggingOptions": ""
-                }
-            },
-            "systemModules": {
-                "edgeAgent": {
-                    "type": "docker",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-agent:1.0-preview",
-                    "createOptions": ""
-                    }
-                },
-                "edgeHub": {
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-hub:1.0-preview",
-                    "createOptions": ""
-                    }
-                }
-            },
-            "modules": {
-                "tempSensor": {
-                    "version": "1.0",
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview",
-                    "createOptions": "{}"
-                    }
-                },
-                "filtermodule": {
-                    "version": "1.0",
-                    "type": "docker",
-                    "status": "running",
-                    "restartPolicy": "always",
-                    "settings": {
-                    "image": "myacr.azurecr.io/filtermodule:latest",
-                    "createOptions": "{}"
-                    }
-                }
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "runtime": {
+          "type": "docker",
+          "settings": {
+            "minDockerVersion": "v1.25",
+            "loggingOptions": "",
+            "registryCredentials": {
+              "ContosoRegistry": {
+                "username": "myacr",
+                "password": "{password}",
+                "address": "myacr.azurecr.io"
+              }
             }
+          }
+        },
+        "systemModules": {
+          "edgeAgent": {
+            "type": "docker",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-agent:1.0",
+              "createOptions": ""
+            }
+          },
+          "edgeHub": {
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+              "createOptions": ""
+            }
+          }
+        },
+        "modules": {
+          "tempSensor": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0",
+              "createOptions": "{}"
+            }
+          },
+          "filtermodule": {
+            "version": "1.0",
+            "type": "docker",
+            "status": "running",
+            "restartPolicy": "always",
+            "settings": {
+              "image": "myacr.azurecr.io/filtermodule:latest",
+              "createOptions": "{}"
+            }
+          }
         }
+      }
     },
     "$edgeHub": {
-        "properties.desired": {
-            "schemaVersion": "1.0",
-            "routes": {
-                "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-                "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
-            },
-            "storeAndForwardConfiguration": {
-                "timeToLiveSecs": 10
-            }
+      "properties.desired": {
+        "schemaVersion": "1.0",
+        "routes": {
+          "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+          "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
+        },
+        "storeAndForwardConfiguration": {
+          "timeToLiveSecs": 10
         }
+      }
     }
-}
+  }
 }
 ```
 

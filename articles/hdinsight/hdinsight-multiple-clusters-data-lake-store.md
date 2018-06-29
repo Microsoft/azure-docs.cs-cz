@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 48e5a8d270701c43276e1d248d8ea4dc748d15b2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 1d073732b5dd9b9867813d9ffcfad5caa1131d81
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31404563"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37102117"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Použití více clusterů HDInsight pomocí účtu Azure Data Lake Store
 
 Počínaje HDInsight verze 3.5, můžete vytvořit clustery HDInsight pomocí účtů Azure Data Lake Store jako výchozí systém souborů.
-Data Lake Store podporuje neomezené úložiště, která usnadňuje ideální nejen pro hostování velké objemy dat; Můžete ale také pro hostování clusterů HDInsight více tuto sdílenou složku jeden účet Data Lake Store. Pokyny k vytvoření clusteru HDInsight s Data Lake Store jako úložiště najdete v tématu [Tvorba clusterů HDInsight s Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+Data Lake Store podporuje neomezené úložiště, která usnadňuje ideální nejen pro hostování velké objemy dat; Můžete ale také pro hostování clusterů HDInsight více tuto sdílenou složku jeden účet Data Lake Store. Pokyny k vytvoření clusteru HDInsight s Data Lake Store jako úložiště najdete v tématu [rychlý start: nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 Tento článek obsahuje doporučení pro Data Lake Správce úložiště pro nastavení jednoho a sdílené Data Lake ukládání účet, který lze použít v rámci více **active** clusterů HDInsight. Tato doporučení se vztahují k hostování více clusterů systému Hadoop zabezpečené a také nezabezpečené na sdíleného účtu Data Lake store.
 
@@ -41,9 +41,9 @@ Chcete-li povolit tuto strukturu složek pro efektivně používat clusterů HDI
 
 |Složka  |Oprávnění  |Vlastnící uživatel  |Vlastnící skupina  | Jmenovaný uživatel | Jmenovaný uživatel oprávnění | S názvem skupiny | Oprávnění skupiny s názvem |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |správce |správce  |Instanční objekt |– x  |FINGRP   |r-x         |
-|/Clusters | rwxr-x--x |správce |správce |Instanční objekt |– x  |FINGRP |r-x         |
-|nebo clustery, finance | rwxr-x--t |správce |FINGRP  |Instanční objekt |rwx  |-  |-     |
+|/ | rwxr-x--x  |Správce |Správce  |Instanční objekt |– x  |FINGRP   |r-x         |
+|/Clusters | rwxr-x--x |Správce |Správce |Instanční objekt |– x  |FINGRP |r-x         |
+|nebo clustery, finance | rwxr-x--t |Správce |FINGRP  |Instanční objekt |rwx  |-  |-     |
 
 V tabulce
 
@@ -51,13 +51,13 @@ V tabulce
 - **Instanční objekt** je objekt služby Azure Active Directory (AAD), který je přidružený k účtu.
 - **FINGRP** je skupina uživatelů vytvořené v AAD, která obsahuje uživatele z finančního organizace.
 
-Pokyny o tom, jak vytvořit aplikaci AAD (která také vytvoří objekt služby), najdete v tématu [vytvořit aplikaci AAD](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Pokyny o tom, jak vytvořit skupiny uživatelů v AAD najdete v tématu [Správa skupin v Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md).
+Pokyny o tom, jak vytvořit aplikaci AAD (která také vytvoří objekt služby), najdete v tématu [vytvořit aplikaci AAD](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application). Pokyny o tom, jak vytvořit skupiny uživatelů v AAD najdete v tématu [Správa skupin v Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md).
 
 Některé klíčové body vzít v úvahu.
 
 - Dvě úrovně struktura složek (**/clusterů nebo finanční nebo**) musí být vytvořen a vytváří správce Data Lake Store s příslušnými oprávněními **před** pomocí účtu úložiště pro clustery. Tato struktura není vytvořena automaticky při vytváření clusterů.
-- V předchozím příkladu doporučuje nastavení vlastnícím skupiny **nebo clustery, finance** jako **FINGRP** a jejímu **r-x** přístup k FINGRP do hierarchie celou složku od kořene. Tím se zajistí, že členové FINGRP můžete přejít od kořenové struktura složek.
-- V případě, že pokud různé objekty služby AAD můžete vytvořit clustery v **nebo clustery, finance**, trvalé bit (Pokud nastavíte na **finanční** složky) zajišťuje, že podle jednoho instančního objektu vytvořeny složky nelze odstranit, jinými.
+- V předchozím příkladu doporučuje nastavení vlastnícím skupiny **nebo clustery, finance** jako **FINGRP** a jejímu **r-x** přístup k FINGRP do hierarchie celou složku, ve spuštění z kořenového adresáře. Tím se zajistí, že členové FINGRP můžete přejít od kořenové struktura složek.
+- V případě, že pokud různé objekty služby AAD můžete vytvořit clustery v **nebo clustery, finance**, trvalé bit (Pokud nastavíte na **finanční** složky) zajišťuje vytvořený složky podle jednoho instanční objekt nelze odstranit, jinými.
 - Jakmile struktury složek a oprávnění jsou na místě, procesu vytváření clusteru HDInsight vytvoří místo specifických pro cluster úložiště v rámci **/clusterů nebo finanční nebo**. Například může být úložiště pro cluster s názvem fincluster01 **/clusters/finance/fincluster01**. Vlastnictví a oprávnění pro složky vytvořené clusteru HDInsight se zobrazují v tabulce sem.
 
     |Složka  |Oprávnění  |Vlastnící uživatel  |Vlastnící skupina  | Jmenovaný uživatel | Jmenovaný uživatel oprávnění | S názvem skupiny | Oprávnění skupiny s názvem |
@@ -97,6 +97,6 @@ Sada pro čtení-oprávnění ke spouštění pro **ostatní** prostřednictvím
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-* [Vytvoření clusteru HDInsight s Data Lake Store jako úložiště](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Rychlý úvod: Nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 
 

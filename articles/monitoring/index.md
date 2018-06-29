@@ -1,6 +1,6 @@
 ---
-title: Správa Azure – monitorování | Microsoft Docs
-description: Azure má několik služeb a nástrojů, které společně poskytují kompletní správu pro vaše aplikace spuštěné nejen v Azure, ale také v ostatních cloudech a v místním prostředí.  Tento článek obsahuje obecný popis různých oblastí správy a odkazy na obsah věnovaný nástrojům Azure pro správu vašich cloudových aplikací a prostředků.
+title: Správa Azure a Operations Management Suite (OMS) | Microsoft Docs
+description: Přehled oblastí správy pro prostředky a aplikace Azure s odkazy na obsah věnovaný nástrojům Azure pro správu, které byly dřív součástí sady Operations Management Suite (OMS)
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: bwren
-ms.openlocfilehash: 36dd04be167d9e8e63ab38e4af80c5766ba55370
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 8598e3528aa0a9fb171853e5f6554346ace937ef
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31410290"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37059946"
 ---
 # <a name="azure-management---monitoring"></a>Správa Azure – monitorování
 

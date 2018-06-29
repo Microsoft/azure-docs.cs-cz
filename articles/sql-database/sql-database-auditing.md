@@ -9,12 +9,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 06/24/2018
 ms.author: giladm
-ms.openlocfilehash: 0646667caab594556cc3c2043bc36905acef6e54
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: f187a5fe1541f5508e55443abe80fc295ee63c87
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751039"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081451"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Začínáme s auditem databáze SQL
 Auditování databáze SQL Azure sleduje události databáze a zápisu, které mají auditu přihlášení účtu úložiště Azure. Auditování také:
@@ -62,20 +62,18 @@ Zásady auditu je možné definovat pro konkrétní databázi nebo jako výchoz�
 Následující část popisuje konfigurace auditování pomocí portálu Azure.
 
 1. Přejděte na [portál Azure](https://portal.azure.com).
-2. Přejděte na **nastavení** okno chcete auditovat serveru SQL database nebo SQL Server. V **nastavení** vyberte **auditování a detekce hrozeb**.
+2. Přejděte na **auditování** v části zabezpečení v podokně pro databáze nebo serveru SQL.
 
     <a id="auditing-screenshot"></a> ![Navigační podokno][1]
 3. Pokud chcete nastavit zásady auditu serveru, můžete vybrat **zobrazit nastavení serveru** odkaz v okně auditování databáze. Můžete pak zobrazit nebo upravit nastavení auditování serveru. Zásady auditu serveru platí pro všechny stávající a nově vytvořené databáze na tomto serveru.
 
     ![Navigační podokno][2]
-4. Pokud chcete povolit auditování objektů blob na úrovni databáze pro **auditování**, vyberte **ON**a pro **auditování typ**, vyberte **Blob**.
+4. Pokud chcete povolit auditování na úrovni databáze, přepínač **auditování** k **ON**.
 
-    Pokud je auditování objektů blob serveru je povoleno, budou existovat audit databáze konfigurována node souběžně s auditování objektů blob serveru.
+    Pokud je auditování serveru je povoleno, budou existovat audit databáze konfigurována souběžného s auditu serveru.
 
     ![Navigační podokno][3]
 5. Chcete-li otevřít **úložiště protokolů auditu** vyberte **podrobnosti úložiště**. Vyberte účet úložiště Azure, kde bude uložena protokoly a pak vyberte dobu uchování. Starých protokolů se odstraní. Pak klikněte na **OK**.
-    >[!TIP]
-    >K plnému využití mimo auditování šablon sestav, použijte stejný účet úložiště pro všechny auditování databáze.
 
     <a id="storage-screenshot"></a> ![Navigační podokno][4]
 6. Pokud chcete přizpůsobit auditované události, můžete k tomu prostřednictvím [rutiny prostředí PowerShell](#subheading-7) nebo [REST API](#subheading-9).
@@ -102,7 +100,8 @@ Existuje několik metod, které můžete použít k zobrazení protokolů audito
     **Audit záznamy** otevře se okno, z nichž budete moci zobrazit protokoly.
 
     - Kliknutím můžete zobrazit konkrétní kalendářní data **filtru** v horní části **Audit záznamy** okno.
-    - Můžete přepínat mezi záznamy auditu, které byly vytvořeny auditu pro zásady zásady nebo databázi serveru.
+    - Můžete přepínat mezi záznamy auditu, které byly vytvořeny *zásady auditu serveru* a *databáze zásady auditu* přepnutím **Audit zdroj**.
+    - Můžete zobrazit pouze Injektáž SQL související záznamy auditu kontrolou **zobrazit jenom záznamy pro vložení SQL audit** zaškrtávací políčko.
 
        ![Navigační podokno][8]
 
@@ -147,8 +146,8 @@ Geograficky replikované databáze když povolíte auditování v primární dat
 * Úrovni serveru (**doporučená**): zapnout auditování pro obě **primární server** společně s **sekundární server** -primární a sekundární databáze každý auditování nezávisle založené na jejich příslušné zásady na úrovni serveru.
 
 * Úroveň databáze: Databáze úrovni auditování pro sekundární databáze lze konfigurovat pouze v primární databázi, nastavení auditování.
-   * Auditování objektů BLOB musí být povolená na *primární databázi, samotné*, nikoli na server.
-   * Povolíte auditování objektů blob v primární databázi, bude ho také přístupné v sekundární databázi.
+   * Musí být povoleno auditování na *primární databázi, samotné*, nikoli na server.
+   * Povolíte auditování v primární databázi, bude ho také přístupné v sekundární databázi.
 
     >[!IMPORTANT]
     >Úroveň databáze auditování, nastavení pro sekundární databázi bude stejné jako primární databáze, způsobuje provoz mezi místní. Doporučujeme, abyste povolili auditování pouze úrovni serveru a nechte úroveň databáze auditování zakázáno pro všechny databáze.
@@ -204,7 +203,6 @@ Příklad skriptu najdete v tématu [konfigurace auditování a zjišťování h
 * [Vytvořit nebo aktualizovat Server Blob zásady auditování](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
 * [Získání objektu Blob databáze zásady auditování](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
 * [Získání objektu Blob serveru zásady auditování](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
-* [Získání objektu Blob serveru auditování výsledek operace](https://msdn.microsoft.com/library/azure/mt771862.aspx)
 
 Rozšířené zásady s kde klauzule podpory pro další filtrování:
 * [Vytvoření nebo aktualizace databáze *rozšířené* Blob zásad auditu](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)

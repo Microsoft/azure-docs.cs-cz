@@ -10,12 +10,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: sngun
-ms.openlocfilehash: 2c0290ef160283f5aef8b1a4a5f67e69222aec0e
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: bf0bd715e47cc7145a76d5f8b5f2589f24b343a8
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029352"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100551"
 ---
 > [!div class="op_single_selector"]
 > * [Async Java](performance-tips-async-java.md)
@@ -148,9 +148,9 @@ Takže pokud vás nemůže ověřit "jak vylepšit výkon Moje databáze?" Zvaž
     response.getRequestCharge();
     ```             
 
-    Žádost o poplatků, vrátí se v tuto hlavičku je zlomek zřízené propustnosti. Například pokud máte 2000 zřízený RU/s, a pokud předchozí dotaz vrátí 1000 1KB – dokumenty, náklady na operaci je 1000. Jako takový jedné sekundy ctí serveru pouze dva takových požadavků před omezení následných žádostí. Další informace najdete v tématu [požadované jednotky](request-units.md) a [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner).
+    Žádost o poplatků, vrátí se v tuto hlavičku je zlomek zřízené propustnosti. Například pokud máte 2000 zřízený RU/s, a pokud předchozí dotaz vrátí 1000 1KB – dokumenty, náklady na operaci je 1000. V rámci jedné sekundy jako takový serveru ctí jenom dva takových požadavků, než míra omezení následných žádostí. Další informace najdete v tématu [požadované jednotky](request-units.md) a [kalkulačky jednotek žádosti](https://www.documentdb.com/capacityplanner).
 <a id="429"></a>
-2. **Rychlost omezení nebo požadavků popisovač míra příliš velký**
+1. **Rychlost omezení nebo požadavků popisovač míra příliš velký**
 
     Když se klient pokusí delší než vyhrazenou propustností pro účet, není bez snížení výkonu na serveru a bez využití kapacity propustnosti mimo úroveň vyhrazené. Server bude ho preventivně ukončit požadavek s RequestRateTooLarge (kód stavu HTTP 429) a vrátit se [x-ms opakování za ms](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) hlavičky, která určuje množství času v milisekundách, která uživatel musí počkat před provedením nového pokusu požadavek.
 

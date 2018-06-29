@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: cfac573bc9f1bdec3fd884f8090e11514f1e93b3
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: b5adc1bb5a5aae96f37cc312588aa71e57d8342e
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604705"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37083222"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure zásobníku certifikáty Podepisování generování požadavku
 
@@ -30,8 +30,6 @@ Nástroj pro kontrolu připravenosti zásobník Azure (AzsReadinessChecker) prov
 
  - **Standardní certifikát požadavky**  
     Žádosti podle [generovat certifikáty PKI pro nasazení Azure zásobníku](azure-stack-get-pki-certs.md).
- - **Typ žádosti**  
-    Určuje, zda žádosti o podepsání certifikátu bude žádost o jeden nebo více požadavků.
  - **Platforma jako služba**  
     Volitelně můžete požádat o platforma jako služba (PaaS) názvy se certifikátů, jak je uvedeno v [požadavky na certifikáty infrastruktury veřejných klíčů Azure zásobníku - volitelné certifikáty PaaS](azure-stack-pki-certs.md#optional-paas-certificates).
 
@@ -98,22 +96,22 @@ Pomocí těchto kroků můžete připravit a ověřit certifikáty PKI zásobní
     > [!note]  
     > `<regionName>.<externalFQDN>` Tento balíček je základem, na kterém jsou všechny externí názvy DNS v zásobníku Azure vytvořili, v tomto příkladu, portálu budou `portal.east.azurestack.contoso.com`.  
 
-6. K vytvoření žádosti jeden certifikát s více alternativní názvy subjektu:
+6. Pro vytvoření certifikátu Podepisování žádostí pro každý název DNS:
+
+    ```PowerShell  
+    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
+    ````
+
+    Zahrnout PaaS služby zadejte přepínač ```-IncludePaaS```
+
+7. Můžete taky pro vývoj/testování prostředí. Ke generování žádost jeden certifikát s více alternativní názvy subjektu přidat **- RequestType SingleCSR** parametr a hodnotu (**není** doporučuje pro provozní prostředí):
 
     ```PowerShell  
     Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ````
 
     Zahrnout PaaS služby zadejte přepínač ```-IncludePaaS```
-
-7. Pro vytvoření jednotlivých certifikátu Podepisování žádostí pro každý název DNS:
-
-    ```PowerShell  
-    Start-AzsReadinessChecker -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType MultipleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
-    ````
-
-    Zahrnout PaaS služby zadejte přepínač ```-IncludePaaS```
-
+    
 8. Zkontrolujte výstup:
 
     ````PowerShell  

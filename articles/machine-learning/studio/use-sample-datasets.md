@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.openlocfilehash: 5e225a16baef53c12a5d0a719c36a2042d391c7f
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: 87d0eac427f2d3904278dbe8211a3fae3da891ed
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36959098"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085051"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Použití vzorových datových sad v Azure Machine Learning Studiu
 [top]: #machine-learning-sample-datasets
@@ -403,7 +403,7 @@ Téma přiřazení pro články s příspěvky v datové sadě RCV1 V2 Reuters z
 <tr>
   <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
-Tato data pocházejí z výzvy vyhodnocení výkonu KDD Cup 2010 Student (<a href="http://www.kdd.org/kdd-cup-2010-student-performance-evaluation">vyhodnocení výkonu student</a>). Data použitá je sada školení Algebra_2008_2009 (Stamper, J., Niculescu-Mizil, S. A. Ritter, Gordon, G.J. & Koedinger, k. r. (2010). Algebra I 2008-2009. Výzvy datové sady z KDD Cup 2010 výukových Data Mining výzvu. Najít v <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
+Tato data pocházejí z výzvy vyhodnocení výkonu KDD Cup 2010 Student (<a href="http://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">vyhodnocení výkonu student</a>). Data použitá je sada školení Algebra_2008_2009 (Stamper, J., Niculescu-Mizil, S. A. Ritter, Gordon, G.J. & Koedinger, k. r. (2010). Algebra I 2008-2009. Výzvy datové sady z KDD Cup 2010 výukových Data Mining výzvu. Najít v <a href="http://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">downloads.jsp</a>.
 <p></p>
 Datová sada byla stažena a uložená v úložišti objektů Blob v Azure (<a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a>) a obsahuje soubory protokolů z student soukromé vyučování/doučování systému. Zadaná funkce zahrnují ID problému a jeho stručný popis, student ID, časové razítko a počet pokusů o student provedené před správné způsobem řešení tohoto problému. Původní datové sady obsahuje záznamy 8,9 M; Tato datová sada byl vzorkovat dolů na první řádky 100 kB. Datová sada má 23 tabulátorem sloupce různé typy: číselné literály, kategorií a časové razítko.
   </td>

@@ -2,19 +2,19 @@
 title: Integrovat Azure Kubernetes služby Azure Active Directory
 description: Jak vytvořit clustery s podporou služby Azure Active Directory Azure Kubernetes Service.
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
 ms.date: 6/17/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7d157d50bbcd25edd9cd6693a71fb04535cbeb79
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
-ms.translationtype: MT
+ms.openlocfilehash: 272d98613e13c1bb76c75befd6bd5e0115c32610
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937377"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097236"
 ---
 # <a name="integrate-azure-active-directory-with-aks---preview"></a>Integrovat AKS - Preview služby Azure Active Directory
 

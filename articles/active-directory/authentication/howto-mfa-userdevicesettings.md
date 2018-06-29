@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 8dd30f53dc37734e1c01b3712b5adb7d81a1489b
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 363106421e75fa2e1b220d03a7d7cbed25447bcc
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33865897"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098392"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Spravovat uživatelská nastavení s Azure Multi-Factor Authentication v cloudu
 
@@ -58,7 +58,7 @@ Mezi konfigurovatelné funkce služby Azure Multi-Factor Authentication je uděl
 
 Uživatelé mohou vyjádření výslovného nesouhlasu dvoustupňové ověřování pro konfigurovat počet dní na svých zařízeních regulární. Pokud dojde k ohrožení bezpečnosti účtu nebo o důvěryhodné zařízení dojde ke ztrátě, musíte být schopni odebrat důvěryhodný stav a vyžadovat dvoustupňové ověření znovu.
 
-**Obnovení služby Multi-Factor authentication u všech zapamatovaných zařízení** nastavení znamená, že uživatel se bude postiženy provést dvoustupňové ověření při příštím přihlášení, bez ohledu na to, jestli se rozhodli označit jejich zařízení jako důvěryhodný. 
+**Obnovení služby Multi-Factor authentication u všech zapamatovaných zařízení** nastavení znamená, že uživatel se bude postiženy provést dvoustupňové ověření při příštím přihlášení, bez ohledu na to, jestli se rozhodli označit jako zařízení důvěryhodné. 
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>Postup obnovení MFA na všechny pozastavené zařízení pro uživatele
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
@@ -75,4 +75,4 @@ Uživatelé mohou vyjádření výslovného nesouhlasu dvoustupňové ověřová
 
 - Další informace o tom, jak [nastavení konfigurace Azure Multi-Factor Authentication](howto-mfa-mfasettings.md)
 
-- Pokud budou uživatelé potřebovat pomoc, je směrem nasměrujte [uživatelská příručka pro dvoustupňové ověření](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user.md)
+- Pokud budou uživatelé potřebovat pomoc, je směrem nasměrujte [uživatelská příručka pro dvoustupňové ověření](end-user/current/multi-factor-authentication-end-user.md)

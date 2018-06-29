@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/24/2018
+ms.date: 06/27/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 714afa1da5d2c8c5695dfe33edd0257f69af149d
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 8dd77dd3431f1be2b8edd8b51929c21b1d5bcd88
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287700"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081346"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Zpřístupnit bitovou kopii virtuálního počítače v Azure zásobníku
 
@@ -54,7 +54,7 @@ Bitové kopie musí být schopen odkazovat úložiště objektů blob identifik�
 
    ![Sada objektů blob přístup k veřejné](./media/azure-stack-add-vm-image/image2.png)
 
-2. Přihlaste se k Azure zásobníku jako operátor. V nabídce vyberte **další služby** > **zprostředkovatelé prostředků**. Pak vyberte **výpočetní** > **Image virtuálních počítačů** > **přidat**.
+2. Přihlaste se k Azure zásobníku jako operátor. V nabídce vyberte **další služby**. Pak vyberte **výpočetní** > **Image virtuálních počítačů** > **přidat**.
 
 3. V části **přidat bitovou kopii virtuálního počítače**, zadejte vydavatele, nabídky, SKU a verzi bitové kopie virtuálního počítače. Tyto segmenty název odkazovat na bitovou kopii virtuálního počítače v šablonách Resource Manageru. Je nutné vybrat **osType** hodnota správně. Pro **identifikátor URI objektu Blob disku operačního systému**, zadejte identifikátor URI objektu Blob, kde byl odeslán bitovou kopii. Pak vyberte **vytvořit** zahajte proces vytváření bitové kopie virtuálního počítače.
 

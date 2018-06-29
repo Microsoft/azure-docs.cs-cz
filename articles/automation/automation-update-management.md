@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a8ac62986eb7eb184ae6d102a956ee051e3aa88a
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 3de93c06285f36353d91a66db975c0a579c1379c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063506"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097440"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
@@ -35,9 +35,9 @@ Následující diagram znázorňuje koncepční zobrazení chování a tok dat z
 
 ![Tok procesu správy aktualizace](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Poté, co počítač provede kontrolu shody aktualizací, agent předává informace hromadně k analýze protokolů Azure. Na počítači s Windows nebude provedena kontrola dodržování předpisů ve výchozím nastavení každých 12 hodin. 
+Poté, co počítač provede kontrolu shody aktualizací, agent předává informace hromadně k analýze protokolů Azure. Na počítači s Windows nebude provedena kontrola dodržování předpisů ve výchozím nastavení každých 12 hodin.
 
-Kromě plánu vyhledávání se zahájí kontroly shody aktualizací do 15 minut, pokud je restartován MMA, před instalací aktualizací a po instalaci aktualizace. 
+Kromě plánu vyhledávání se zahájí kontroly shody aktualizací do 15 minut, pokud je restartován MMA, před instalací aktualizací a po instalaci aktualizace.
 
 Pro počítač se systémem Linux prohledávání shody probíhá každých 3 hodiny ve výchozím nastavení. Pokud je restartován agenta MMA, kontrolu kompatibility je zahájeno 15 minut.
 
@@ -86,7 +86,7 @@ Agenty se systémem Windows musí být nakonfigurován pro komunikaci serveru WS
 
 #### <a name="linux"></a>Linux
 
-Pro Linux počítač musí mít přístup k úložiště aktualizací. Úložiště aktualizací může být privátní nebo veřejné. Toto řešení nepodporuje agenta Operations Management Suite (OMS) pro Linux, který je nakonfigurovaný k více pracovní prostory analýzy protokolů sestavy.
+Pro Linux počítač musí mít přístup k úložiště aktualizací. Úložiště aktualizací může být privátní nebo veřejné. K interakci s Správa aktualizací je zapotřebí protokolu TLS 1.1 nebo TLS 1.2. Toto řešení nepodporuje agenta Operations Management Suite (OMS) pro Linux, který je nakonfigurovaný k více pracovní prostory analýzy protokolů sestavy.
 
 Informace o tom, které chcete nainstalovat agenta OMS pro Linux a ke stažení nejnovější verze najdete v tématu [Operations Management Suite agenta pro Linux](https://github.com/microsoft/oms-agent-for-linux). Informace o tom, jak nainstalovat agenta OMS systému Windows najdete v tématu [Operations Management Suite agenta pro Windows](../log-analytics/log-analytics-windows-agent.md).
 
@@ -157,7 +157,7 @@ Potvrďte, že skupiny pro správu nástroje Operations Manager komunikuje s ana
 
 Následující tabulka popisuje připojené zdroje, které podporuje toto řešení:
 
-| Připojený zdroj | Podporováno | Popis |
+| Připojený zdroj | Podporuje se | Popis |
 | --- | --- | --- |
 | Agenti systému Windows |Ano |Řešení shromažďuje informace o aktualizacích systému z agentů v systému Windows a poté zahájí instalaci požadovaných aktualizací. |
 | Agenti systému Linux |Ano |Řešení shromažďuje informace o aktualizacích systému od Linux agentů a poté zahájí instalaci požadovaných aktualizací na podporované distribuce. |
@@ -214,7 +214,7 @@ Chcete-li vytvořit nové nasazení aktualizací, vyberte **nasazení aktualizac
 |Operační systém| Vyberte **Linux** nebo **Windows**.|
 |Počítače, které chcete aktualizovat |Uložené hledání nebo vyberte **počítač** z rozevíracího seznamu a potom vyberte jednotlivé počítače. |
 |Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete. CentOS nepodporují mimo pole.|
-|Aktualizace k vyloučení|Zadejte aktualizace, které chcete vyloučit. Pro systém Windows, zadejte v článku KB bez **KB** předponu. Pro Linux zadejte název balíčku nebo použít zástupný znak.  |
+|Aktualizace, které chcete vyloučit|Zadejte aktualizace, které chcete vyloučit. Pro systém Windows, zadejte v článku KB bez **KB** předponu. Pro Linux zadejte název balíčku nebo použít zástupný znak.  |
 |Nastavení plánu|Vyberte čas spuštění a pak vyberte buď **jednou** nebo **opakovaná** pro opakování.|| Časové období údržby |Počet minut nastavit pro aktualizace. Hodnota nemůže být menší než 30 minut nebo déle než 6 hodin. |
 
 ## <a name="update-classifications"></a>Klasifikace aktualizací
@@ -223,7 +223,7 @@ V následujících tabulkách jsou uvedeny klasifikace aktualizací v nástroji 
 
 ### <a name="windows"></a>Windows
 
-|Klasifikace  |Popis  |
+|klasifikace  |Popis  |
 |---------|---------|
 |Důležité aktualizace     | Aktualizaci pro určitý problém, která řeší kritickou nesouvisející zabezpečení chybu.        |
 |Aktualizace zabezpečení     | Aktualizaci pro problém produktu, související se zabezpečením.        |
@@ -236,7 +236,7 @@ V následujících tabulkách jsou uvedeny klasifikace aktualizací v nástroji 
 
 ### <a name="linux"></a>Linux
 
-|Klasifikace  |Popis  |
+|klasifikace  |Popis  |
 |---------|---------|
 |Důležité aktualizace a aktualizace zabezpečení     | Aktualizace pro určitý problém nebo problém s produktu, související se zabezpečením.         |
 |Další aktualizace     | Všechny další aktualizace, které nejsou důležité ve své podstatě nebo nejsou aktualizace zabezpečení.        |
@@ -509,7 +509,7 @@ Nasazení aktualizací pomocí klasifikace aktualizace nefunguje na CentOS mimo 
 
 Další informace o řešení potíží s vaší správy aktualizací naleznete v tématu [řešení potíží s správy aktualizací](troubleshoot/update-management.md)
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
 Pokračujte v kurzu se dozvíte, jak spravovat aktualizace pro virtuální počítače s Windows.
 

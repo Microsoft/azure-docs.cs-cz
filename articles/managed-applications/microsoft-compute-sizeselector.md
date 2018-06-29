@@ -11,20 +11,27 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: d1b4974c78a5cdb7b4eb885797319b283be2d393
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 9009d29e281ace179ad1dd2021c7cf35e3dc611a
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260836"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084800"
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Element Microsoft.Compute.SizeSelector uživatelského rozhraní
 Ovládací prvek pro výběr velikost pro jeden nebo více instancí virtuálního počítače.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
+
+Uživateli se zobrazí selektor s výchozími hodnotami z definice elementu.
+
 ![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
+
+Po výběru ovládacího prvku, uživatel uvidí rozbalené zobrazení si dostupné velikosti.
+
+![Microsoft.Compute.SizeSelector rozšířit](./media/managed-application-elements/microsoft.compute.sizeselector-expanded.png)
 
 ## <a name="schema"></a>Schéma
 ```json
@@ -44,6 +51,9 @@ Ovládací prvek pro výběr velikost pro jeden nebo více instancí virtuální
     "numAvailabilityZonesRequired": 3,
     "zone": "3"
   },
+  "options": {
+    "hideDiskTypeFilter": false
+  },
   "osPlatform": "Windows",
   "imageReference": {
     "publisher": "MicrosoftWindowsServer",
@@ -56,14 +66,14 @@ Ovládací prvek pro výběr velikost pro jeden nebo více instancí virtuální
 ```
 
 ## <a name="remarks"></a>Poznámky
-- `recommendedSizes` musí obsahovat alespoň jeden velikost. První doporučená velikost je použita jako výchozí.
+- `recommendedSizes` musí mít alespoň jeden velikost. První doporučená velikost je použita jako výchozí. Seznam dostupných velikostí není seřazen podle doporučených stavu. Uživatele můžete vybrat tento sloupec seřadit podle doporučených stavu.
 - Pokud doporučená velikost není k dispozici ve vybraném umístění, velikost automaticky přeskočen. Místo toho se používá další doporučená velikost.
-- Jakékoli velikosti, nebyly zadány v `constraints.allowedSizes` skryt a jakékoli velikosti, nebyly zadány v `constraints.excludedSizes` se zobrazí.
-`constraints.allowedSizes` a `constraints.excludedSizes` obě jsou nepovinné, ale nelze používat současně. Seznam dostupných velikostí se dá určit pomocí volání [seznam dostupných velikostí virtuálních počítačů pro předplatné](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region).
+- `constraints.allowedSizes` a `constraints.excludedSizes` obě jsou nepovinné, ale nelze používat současně. Seznam dostupných velikostí se dá určit pomocí volání [seznam dostupných velikostí virtuálních počítačů pro předplatné](/rest/api/compute/virtualmachines/virtualmachines-list-sizes-region). Jakékoli velikosti, nebyly zadány v `constraints.allowedSizes` skryt a jakékoli velikosti, nebyly zadány v `constraints.excludedSizes` se zobrazí.
 - `osPlatform` musí být zadán, a může být buď **Windows** nebo **Linux**. Slouží k určení náklady na hardware virtuálních počítačů.
 - `imageReference` pro první strany Image, ale zadaná pro třetí strany bitové kopie je vynechán. Slouží k určení náklady na software virtuálních počítačů.
 - `count` slouží k nastavení odpovídající multiplikátor pro element. Podporuje statické hodnoty, jako je třeba **2**, nebo jako dynamické hodnoty z jiný element `[steps('step1').vmCount]`. Výchozí hodnota je **1**.
 - `numAvailabilityZonesRequired` Může být 1, 2 nebo 3.
+- Ve výchozím nastavení `hideDiskTypeFilter` je **false**. Filtr typu disku umožňuje uživatelům zobrazit všechny typy disků nebo pouze SSD.
 
 ## <a name="sample-output"></a>Ukázkový výstup
 ```json

@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a25c2b7ea7fdfcc6bcaa10baff3a5ae14ae9753b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 53560fd4f8240c4446898f58992a9319e5177435
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37044815"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085367"
 ---
 # <a name="speech-service-rest-apis"></a>REST API služby řeči
 
@@ -265,5 +265,7 @@ Jako dříve, zkontrolujte `FetchTokenUri` hodnota odpovídá oblasti vašeho p�
 
 ## <a name="next-steps"></a>Další postup
 
-* [Získat zkušební verze předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)
-* [Zjistit, jak přizpůsobit rozpoznávání řeči modelu](how-to-customize-speech-models.md)
+- [Získat zkušební verze předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)
+- [Přizpůsobení akustickými modely](how-to-customize-acoustic-models.md)
+- [Přizpůsobit jazyk modely](how-to-customize-language-model.md)
+

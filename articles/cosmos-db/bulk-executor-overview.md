@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: ramkris
-ms.openlocfilehash: 893888904b6afc583c3c20b94d08eb3255a98cad
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 7c490aa958cf9e78c260dd0fbcf7952b55d8d88c
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304427"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096171"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Přehled Azure Cosmos DB hromadné vykonavatele knihovny
  
@@ -33,7 +33,7 @@ Knihovna vykonavatele hromadné umožňuje využít tuto obrovskou propustnost a
  
 * Významně snižuje klienta výpočetní prostředky potřebné k saturate propustnost přidělené do kontejneru. Jednu zařazování aplikaci, která zapisuje data pomocí že rozhraní API pro hromadný import dosáhne 10 případech větší propustnost zápisu ve srovnání s vícevláknové aplikace, která zapisuje data souběžně při přetížení klienta procesoru počítače.  
 
-* Abstrahuje rychle zdlouhavé úlohy zápisu aplikační logiku a zpracování omezení požadavků, překročení časového limitu požadavku a další přechodné výjimky efektivně je zpracování v knihovně.  
+* Abstrahuje rychle zdlouhavé úlohy zápisu aplikační logiku a zpracování omezení rychlosti požadavku, překročení časového limitu požadavku a další přechodné výjimky s efektivně je zpracování v knihovně.  
 
 * Poskytuje zjednodušenou mechanismus pro aplikace, které provádí hromadné operace škálování. Do jedné hromadné vykonavatele instance systémem virtuálního počítače Azure můžete využívat větší než 500 tis. RU/s a přidáním další instance na jednotlivých klientských virtuálních počítačích můžete dosáhnout vyšší propustnost.  
  
@@ -47,7 +47,7 @@ Při hromadné operace importu nebo aktualizovat dokumenty aktivaci pomocí slu�
 
 ![Architektura vykonavatele hromadné](./media/bulk-executor-overview/bulk-executor-architecture.png)
 
-Knihovna hromadné vykonavatele zajišťuje lze uchovávat využívat propustnost přidělené do kolekce. Používá [mechanismu řízení zahlcení stylu AIMD](https://tools.ietf.org/html/rfc5681) pro každou databázi Cosmos Azure oddílu klíče rozsah pro efektivní zpracování omezení a vypršení časových limitů. 
+Knihovna hromadné vykonavatele zajišťuje lze uchovávat využívat propustnost přidělené do kolekce. Používá [mechanismu řízení zahlcení stylu AIMD](https://tools.ietf.org/html/rfc5681) pro každou databázi Cosmos Azure oddílu klíče rozsah pro efektivní zpracování omezení rychlosti a vypršení časových limitů. 
 
 ## <a name="next-steps"></a>Další kroky 
   

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 11e0a4e38739a775d977cf76b72d4dc92942a7b0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e93b241c79a50380f4ef1538dfbf7615232e6c49
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725087"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096505"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Připojte se k databázi Cosmos Azure pomocí nástrojů BI analýzy pomocí ovladače ODBC
 
@@ -63,7 +63,7 @@ Teď umožňuje Začínáme pomocí ovladače ODBC.
 4. Klikněte **Test** tlačítko a ujistěte se, zda se můžete připojit ke svému účtu Azure Cosmos DB. 
 5. Klikněte na tlačítko **pokročilé možnosti** a nastavte následující hodnoty:
     - **Dotaz konzistence**: vyberte [úroveň konzistence](consistency-levels.md) pro operace. Výchozí hodnota je relace.
-    - **Počet opakovaných pokusů**: Zadejte počet pokusů o opakování operace, pokud úvodního požadavku není dokončena z důvodu omezení služby.
+    - **Počet opakovaných pokusů**: Zadejte počet pokusů o opakování operace, pokud není dokončena počáteční požadavek z důvodu omezení rychlosti služby.
     - **Soubor se schématem**: Zde máte několik možností.
         - Ve výchozím nastavení tato položka, jako je (prázdný), a kontroluje ovladače data na první stránce pro všechny kolekce k určení schéma každou kolekci. To se označuje jako kolekce mapování. Bez soubor schéma definované ovladače se má provést kontrola pro každou relaci ovladačů a může mít za následek vyšší doba spuštění aplikace pomocí DSN. Doporučujeme vždy přiřadit soubor schématu pro zdroje dat DSN.
         - Pokud již máte soubor schématu (může být ten, který jste vytvořili pomocí [schématu Editor](#schema-editor)), můžete kliknout na **Procházet**, přejděte k souboru, klikněte na **Uložit**a potom klikněte na **OK**.
@@ -196,4 +196,4 @@ Pokud se zobrazí následující chyba, zkontrolujte **hostitele** a **přístup
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o databázi Cosmos Azure najdete v tématu [Vítá vás Azure Cosmos DB](introduction.md).
+Další informace o Cosmos Azure DB najdete v tématu [Vítá vás Azure Cosmos DB](introduction.md).

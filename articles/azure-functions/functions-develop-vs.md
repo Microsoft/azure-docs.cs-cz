@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2018
 ms.author: glenga
-ms.openlocfilehash: 93d5883071a012842106bdd946e4f09a0d7aa751
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: bc280e9b4ade8a4fb8107ec2dcc1c33f538472e1
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260450"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37081556"
 ---
-# <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions Tools pro Visual Studio  
+# <a name="develop-azure-functions-using-visual-studio"></a>Vývoj Azure Functions pomocí sady Visual Studio  
 
 Azure funkce Tools for Visual Studio 2017 představuje rozšíření pro Visual Studio, která umožňuje vývoj, testování a nasazení funkce jazyka C# do Azure. Pokud toto prostředí je první díky Azure Functions, další informace najdete v [Úvod do Azure Functions](functions-overview.md).
 
@@ -93,7 +93,7 @@ Modul runtime funkce interně používá účet úložiště Azure. Pro všechny
 
 Nastavení připojovacího řetězce pro účet úložiště:
 
-1. V sadě Visual Studio otevřete **Průzkumník cloudu**, rozbalte položku **účet úložiště** > **váš účet úložiště**, pak vyberte **vlastnosti** a zkopírujte **primární připojovací řetězec** hodnotu.
+1. V sadě Visual Studio otevřete **Průzkumník cloudu**, rozbalte položku **účet úložiště** > **váš účet úložiště**, pak vyberte **vlastnosti**a zkopírujte **primární připojovací řetězec** hodnotu.
 
 2. V projektu, otevřete soubor local.settings.json a nastavte hodnotu **AzureWebJobsStorage** zkopírovanou klíče připojovací řetězec.
 

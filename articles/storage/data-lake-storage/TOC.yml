@@ -1,0 +1,72 @@
+- name: Dokumentace k Azure Storage
+  href: /azure/storage/
+- name: Dokumentace k přechodu na Data Lake Storage Gen1
+  href: /azure/data-lake-store/
+- name: Přehled
+  items:
+    - name: Úvod
+      href: introduction.md
+- name: Šablony Rychlý start
+  items:
+    - name: Vytvoření účtu úložiště připraveného pro Data Lake Storage Gen2
+      href: quickstart-create-account.md
+    - name: Vytvoření/připojení účtu Databricks
+      href: quickstart-create-databricks-account.md
+    - name: Vytvoření clusteru HDInsight
+      href: quickstart-create-connect-hdi-cluster.md
+- name: Kurzy
+  items:
+    - name: 'Extrakce, transformace a načítání dat pomocí Azure Databricks'
+      href: handle-data-using-databricks.md
+    - name: Přístup k datům Data Lake Storage se službou DataBricks s využitím Sparku
+      href: using-databricks-spark.md
+    - name: 'Extrakce, transformace a načítání dat pomocí Apache Hivu ve službě Azure HDInsight'
+      href: tutorial-extract-transform-load-hive.md
+- name: Koncepty
+  items:
+    - name: Ovladač Azure Blob FileSystem pro Hadoop
+      href: abfs-driver.md
+    - name: Úvod k identifikátoru URI Azure Blob File System
+      href: introduction-abfs-uri.md
+    - name: Služba hierarchických oborů názvů
+      href: namespace.md
+    - name: Zabezpečení
+      items:
+        - name: Šifrování pro neaktivní uložená data
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+        - name: Šifrování neaktivních uložených dat pomocí klíčů zákazníka
+          href: ../common/storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+    - name: Vyhodnocení Data Lake Storage Gen2
+      href: evaluation.md
+- name: Návody
+  items:
+    - name: Použití služby Data Lake Storage Gen2 s clustery Azure HDInsight
+      href: use-hdi-cluster.md
+    - name: Použití CLI systému souborů Hadoop se službou Data Lake Storage Gen2
+      href: use-hdfs-data-lake-storage.md
+    - name: Příjem dat
+      items:
+        - name: Kopírování dat do Data Lake Storage Gen2 s využitím Distcp
+          href: use-distcp.md
+        - name: Kopírování dat do Data Lake Storage Gen2 s využitím Azure Data Factory
+          href: ../../data-factory/load-azure-data-lake-storage-gen2.md
+    - name: Připojení k Azure DataBricks
+      href: 'https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake-gen2.html'
+- name: Zdroje a prostředky
+  items:
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=storage'
+    - name: Klientské nástroje pro Azure Storage
+      href: ../common/storage-explorers.md?toc=%2fazure%2fstorage%2fdata-lake-storage%2ftoc.json
+    - name: Fórum
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/storage/data-lake/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=storage'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/windows-azure-storage'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'

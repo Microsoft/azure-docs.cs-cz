@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 311e58f01fac6d7786992b3c11e4b1b7c02ca838
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: f8cf5a46e1d1e3242fd46900b56f7d8cf15d3fc5
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304518"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37082518"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Spravovat učebny labs v prostředí služby Azure 
 Tento článek popisuje, jak vytvořit a nakonfigurovat Učebna testovacího prostředí, zobrazit všechny učebny labs nebo odstranit Učebna testovacího prostředí.
@@ -86,8 +86,8 @@ Při publikování šablonu služby testovacího prostředí Azure vytvoří vir
 2. Nyní, vyberte **publikovat** tlačítko. Tento proces může trvat čas v závislosti na tom, kolik virtuálních počítačů během vytváření, což je stejný jako počet uživatelů povolených v testovacím prostředí.
     
     > [!IMPORTANT]
-    > Jakmile je šablona veřejně dostupná, nemůže být přístup k ní změněn na privátní. 
-4. Přepnout **virtuální počítače** stránky a zkontrolujte, jestli pět virtuálních počítačů, které jsou v **vyřazení** stavu. Studenti, kteří nejsou přiřazeni tyto virtuální počítače ještě. 
+    > Po publikování šablonu ji nelze zrušit jeho publikování. 
+4. Přepnout **virtuální počítače** stránky a zkontrolujte, jestli virtuální počítače, které jsou v **vyřazení** stavu. Studenti, kteří nejsou přiřazeni tyto virtuální počítače ještě. 
 
     ![Virtuální počítače](../media/tutorial-setup-classroom-lab/virtual-machines.png)
 5. Počkejte, dokud se vytvoří virtuální počítače. Musí být v **Zastaveno** stavu. Můžete spustit student virtuálního počítače, připojení k virtuálnímu počítači, zastavte virtuální počítač a odstranit virtuální počítač na této stránce. Můžete spustit na této stránce nebo to studenty spustit virtuální počítače. 

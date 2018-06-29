@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: larryfr
-ms.openlocfilehash: 856a94b0cf64a20fbe9267b76422c47d88d21f43
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.openlocfilehash: 500b6ef33bb70cd5138067d88303b7db9121e867
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32778899"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37102237"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Přizpůsobení clusterů HDInsight se systémem Linux pomocí akcí skriptů
 
@@ -58,7 +58,7 @@ Akce skriptu je Bash skript, který běží v uzlech v clusteru služby HDInsigh
 
 * Musí být uložen v identifikátoru URI, který je přístupný z clusteru HDInsight. Toto jsou možné úložiště umístění:
 
-    * **Azure Data Lake Store** účet, který je přístupný pro HDInsight cluster. Informace o používání Azure Data Lake Store s HDInsight naleznete v tématu [vytvoření clusteru HDInsight s Data Lake Store](../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md).
+    * **Azure Data Lake Store** účet, který je přístupný pro HDInsight cluster. Informace o používání Azure Data Lake Store s HDInsight naleznete v tématu [rychlý start: nastavení clusterů v HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
         Při použití skriptu uložených v Data Lake Store, formát identifikátoru URI je `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
 
@@ -173,9 +173,7 @@ Tato část obsahuje příklady o různých způsobech skriptových akcí může
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>Použití akce skriptu při vytváření clusteru z portálu Azure
 
-1. Zahájení vytváření clusteru, jak je popsáno v [vytvoření Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Zastavit, když přejdete __clusteru Souhrn__ části.
-
-2. Z __clusteru Souhrn__ vyberte __upravit__ propojení pro __upřesňující nastavení__.
+1. Zahájení vytváření clusteru, jak je popsáno v [vytvoření Hadoop clusterů v HDInsight](hdinsight-hadoop-provision-linux-clusters.md). Při vytváření clusteru, které přicházejí na __clusteru Souhrn__ stránky. Z __clusteru Souhrn__ vyberte __upravit__ propojení pro __upřesňující nastavení__.
 
     ![Upřesnit nastavení odkaz](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 

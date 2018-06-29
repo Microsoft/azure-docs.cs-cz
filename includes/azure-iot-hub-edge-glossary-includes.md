@@ -8,13 +8,13 @@ Azure IoT Edge umožňuje řízené cloudové nasazení služby Azure a kódu pr
 Součást zodpovědná za nasazení a monitorování modulů IoT Edge runtime.
 
 ## <a name="iot-edge-device"></a>Zařízení IoT Edge
-IoT hraniční zařízení mít IoT Edge nainstalován modul runtime a jsou označeny jako "IoT hraniční zařízení" v podrobností o zařízení. Zjistěte, jak [nasazení Azure IoT Edge v simulovaném zařízení v systému Linux – Náhled](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux).
+Zařízení IoT Edge mít runtime IoT Edge nainstalován a jsou označeny jako **IoT hraniční zařízení** v podrobností o zařízení. Zjistěte, jak [nasazení Azure IoT Edge v simulovaném zařízení v systému Linux – Náhled](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux).
 
 ## <a name="iot-edge-automatic-deployment"></a>Okraj IoT automatického nasazení
 Automatické nasazení IoT Edge nakonfiguruje cíl sadu IoT hraniční zařízení pro spuštění sady IoT Edge moduly. Každé nasazení nepřetržitě zajišťuje, aby všechna zařízení, které odpovídají jeho cílovou podmínku běží Zadaná sada modulů, i když nové zařízení se vytvoří nebo jsou upraveny tak, aby odpovídaly cílovou podmínku. Každé zařízení IoT Edge pouze obdrží nejvyšší prioritou nasazení jejichž cílovou podmínku splňuje. Další informace o [IoT okraj automatického nasazení](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
 
 ## <a name="iot-edge-deployment-manifest"></a>Okraj IoT – manifest nasazení
-Dokument Json obsahující informace, která se mají zkopírovat jeden nebo více IoT hraniční zařízení modulu twin(s) nasadit sadu moduly, trasy a přidružené modulu požadované vlastnosti.
+Dokument Json obsahující informace, která se mají zkopírovat jeden nebo více IoT hraniční zařízení twin(s) modul pro nasazení sady modulů, trasy a přidružené modulu požadované vlastnosti.
 
 ## <a name="iot-edge-gateway-device"></a>Zařízení IoT hraniční brány
 IoT hraniční zařízení s podřízené zařízení. Podřízené zařízení může být buď IoT Edge, nebo není IoT hraniční zařízení.
@@ -41,10 +41,10 @@ Ve službě IoT Hub, která ukládá informace o stavu pro modul instance jako t
 Při dvou nasazeních IoT Edge cíle do stejného zařízení, získá použít nasazení s vyšší prioritou. Pokud má dvě nasazení se stejnou prioritou, získá použít nasazení s novější datum vytvoření. Další informace o [s prioritou](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#priority).
 
 ## <a name="iot-edge-runtime"></a>Modul runtime IoT Edge
-Modul runtime IoT hraniční zahrnuje vše, co Microsoft distribuuje být nainstalovány na IoT hraniční zařízení. Zahrnutý Edge agenta, rozbočovače okraj a okraj CTL nástroj.
+Modul runtime IoT hraniční zahrnuje vše, co Microsoft distribuuje být nainstalovány na IoT hraniční zařízení. Obsahuje hraniční agenta, Edge rozbočovače a démon zabezpečení hraniční IoT.
 
 ## <a name="iot-edge-set-modules-to-a-single-device"></a>Nastavit hraniční IoT modulů na jedno zařízení
 Operace, která zkopíruje obsah manifestu IoT Edge na jednom zařízení, dvojici modulu. Základní rozhraní API je obecný použít konfiguraci, což trvá jednoduše manifest IoT okraj jako vstup.
 
 ## <a name="iot-edge-target-condition"></a>Okraj IoT cílovou podmínku
-V nasazení IoT okraj, je cílovou podmínku žádné Boolean podmínka značky dvojčata zařízení vyberte zařízení cíl nasazení, například "tag.environment = prod". Cílovou podmínku nepřetržitě vyhodnotí zahrnout všechny nová zařízení, které splňují požadavky nebo odeberte zařízení, které už provést. Další informace o [cíle stavu](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)
+V nasazení IoT okraj, je cílovou podmínku žádné Boolean podmínka značky dvojčata zařízení vyberte zařízení cíl nasazení, například **tag.environment = prod**. Cílovou podmínku nepřetržitě vyhodnotí zahrnout všechny nová zařízení, které splňují požadavky nebo odeberte zařízení, které už provést. Další informace o [cíle stavu](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition)

@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: jingwang
-ms.openlocfilehash: d1a6dd896f95f4a0efaa7d73fcc8e219493a3117
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 42abb5fdaf05424d5f39ecf4a2c88afcefd17312
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050478"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084735"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Spusťte balíček SSIS s aktivity uložené procedury v Azure Data Factory
 Tento článek popisuje způsob spouštění balíčku služby SSIS v kanál služby Azure Data Factory pomocí aktivity uložené procedury. 
@@ -187,7 +187,7 @@ Je třeba počítat s následujícím:
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
 * Pro vytvoření instancí Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem rolí **přispěvatel** nebo **vlastník** nebo **správcem** předplatného Azure.
-* V současné době Data Factory můžete vytvářet datové továrny jenom v oblasti Východ USA, východ US2 a západní Evropa. Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+* Seznam oblastí Azure, ve kterých je aktuálně dostupné pro vytváření dat, vyberte oblasti, které vás zajímají na následující stránce a potom rozbalte **Analytics** najít **Data Factory**: [ Produkty podle oblasti](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, Azure SQL Database atd.) a výpočetní prostředí (HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 ### <a name="create-an-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database
 Vytvoření propojené služby propojení Azure SQL database, který je hostitelem služby SSIS katalogu datovou továrnu. Objekt pro vytváření dat používá informace v rámci této propojené služby pro připojení k databázi SSISDB a spustí uloženou proceduru spustit balíčku služby SSIS. 

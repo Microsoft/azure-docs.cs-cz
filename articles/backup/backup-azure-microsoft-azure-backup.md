@@ -7,16 +7,16 @@ manager: shivamg
 keywords: Azure backup server; chránit úlohy; zálohování úloh
 ms.service: backup
 ms.topic: conceptual
-ms.date: 5/14/2018
+ms.date: 6/27/2018
 ms.author: adigan
-ms.openlocfilehash: 13b3a5f8530c9f91ca23072c320513b8107df061
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0364643c087453e423544937052aa6aad233b3b3
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605803"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099652"
 ---
-# <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Příprava zálohování úloh pomocí Azure Backup Serveru
+# <a name="install-and-configure-azure-backup-server"></a>Instalace a konfigurace serveru Azure Backup
 > [!div class="op_single_selector"]
 > * [Azure Backup Server](backup-azure-microsoft-azure-backup.md)
 > * [SCDPM](backup-azure-dpm-introduction.md)

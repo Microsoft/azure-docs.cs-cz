@@ -9,24 +9,22 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: sajagtap
-ms.openlocfilehash: 5783a7a06d75a409969abad011de3bbd31dec292
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6924807a64cec074d9688eaad158bb9bb638f6bb
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342812"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37085755"
 ---
 # <a name="text-moderation"></a>Moderování textu
 
-Použít moderátora obsah s asistencí počítač text přerušování a [lidské v the smyčky](Review-Tool-User-Guide/human-in-the-loop.md) funkce pro střední textového obsahu.
+Použít moderátora obsah s asistencí počítač text přerušování a [lidské zkontrolujte](Review-Tool-User-Guide/human-in-the-loop.md) funkce pro střední textového obsahu.
 
-Podnikům používat službu přerušování text blokovat, schválení nebo zkontrolujte obsah na základě jejich zásady a prahové hodnoty. Služby textového přerušování slouží k posílení lidské přerušování prostředí, které vyžadují partnery, zaměstnanci a spotřebitelé generovat textového obsahu. Mezi ně patří, chatovací místnosti, diskusní vývěsky, chatbots, elektronické obchodování katalogů, dokumenty a další. 
-
-Rozhraní API kontroluje příchozí textu (maximálně 1 024 znaků) testujeme, klasifikuje možné nežádoucí text (preview), autocorrects text a zjistí potenciální identifikovatelné osobní informace (PII). Také odpovídající proti vlastních seznamů, které podmínek. Funkci Automatické opravy pomáhá catch úmyslně překlepu slova. Po zpracování obsahu je služba vrátí podrobné odpověď. Odpověď na použít k vytvoření kontrolu lidského v nástroji kontrolní nebo trvat dolů, atd.
+Můžete blokovat, schválit nebo zkontrolujte obsah na základě zásad a prahové hodnoty. Použijte k posílení lidské přerušování prostředí, kde partnery, zaměstnanci a spotřebitelé generovat textového obsahu. Mezi ně patří, chatovací místnosti, diskusní vývěsky, chatbots, elektronické obchodování katalogů a dokumenty. 
 
 Odpověď služby obsahuje následující informace:
 
-- Vulgárnost: na základě podmínek odpovídající pomocí seznam předdefinovaných znevažujícího podmínek v několika jazycích
+- Vulgárnost: na základě podmínek odpovídající pomocí seznam předdefinovaných znevažujícího podmínek v různých jazycích
 - Klasifikace: klasifikace s asistencí počítače do tří kategorií
 - Identifikovatelné osobní údaje (PII)
 - Automaticky opravit text
@@ -52,12 +50,9 @@ Pokud rozhraní API zjistí znevažujícího podmínek v některém z [podporova
 
 ## <a name="classification"></a>Klasifikace
 
-Obsahu moderátora je s asistencí počítač **funkce klasifikace textových** podporuje **pouze v angličtině,**, a pomáhá zjišťovat potenciálně nežádoucí obsah. Označení obsahu mohou být považovány za jako nevhodný v závislosti na kontextu. Kromě zdůraznění pravděpodobnost každou kategorii, může doporučit kontrolu lidského obsahu. Funkce modulu trained model používá k identifikaci možných urážlivé, derogační nebo diskriminační jazyk. To zahrnuje slang, zkrácené slova, urážlivé a záměrně překlepu slova ke kontrole. 
+Obsahu moderátora je s asistencí počítač **funkce klasifikace textových** podporuje **pouze v angličtině,**, a pomáhá zjišťovat potenciálně nežádoucí obsah. Označení obsahu lze vyhodnotit jako nevhodný v závislosti na kontextu. To přenese tak pravděpodobnost každou kategorii a může doporučujeme lidského kontrolu. Funkce modulu trained model používá k identifikaci možných urážlivé, derogační nebo diskriminační jazyk. To zahrnuje slang, zkrácené slova, urážlivé a záměrně překlepu slova ke kontrole. 
 
 Následující extract v JSON extract ukazuje příklad výstupu:
-
-> [!NOTE]
-> Funkci, klasifikace, s asistencí počítač je ve verzi preview.
 
     "Classification": {
         "ReviewRecommended": true,
@@ -74,9 +69,9 @@ Následující extract v JSON extract ukazuje příklad výstupu:
 
 ### <a name="explanation"></a>Vysvětlení
 
-- `Category1` představuje potenciální přítomnost jazyk, který může být považováno za zřejmý explicitní nebo pro dospělé v určitých situacích.
-- `Category2` představuje potenciální přítomnost jazyk, který může být považováno za zřejmý sugestivní nebo vyspělá v určitých situacích.
-- `Category3` představuje potenciální přítomnost jazyk, který může být považováno za urážlivé v určitých situacích.
+- `Category1` označuje potenciální přítomnost jazyk, který může být považováno za zřejmý explicitní nebo pro dospělé v určitých situacích.
+- `Category2` označuje potenciální přítomnost jazyk, který může být považováno za zřejmý sugestivní nebo vyspělá v určitých situacích.
+- `Category3` označuje potenciální přítomnost jazyk, který může být považováno za urážlivé v určitých situacích.
 - `Score` je mezi 0 a 1. Čím více bodů, tím vyšší modelu je predikci, můžou být příslušné kategorii. Tato verze preview spoléhá na statistické model, místo ručně programové výstupy. Doporučujeme, abyste testování s vlastním obsahem určit, jakým způsobem bude každou kategorii zarovnán vašim požadavkům.
 - `ReviewRecommended` je PRAVDA nebo NEPRAVDA v závislosti na interní skóre prahové hodnoty. Zákazníci by měli zhodnotit, jestli se má použít tuto hodnotu nebo rozhodněte o vlastní prahové hodnoty na základě jejich obsahu zásad.
 
@@ -151,7 +146,7 @@ Pokud je požádat o automatické opravy, odpověď obsahuje opravené verzi tex
 
 ## <a name="creating-and-managing-your-custom-lists-of-terms"></a>Vytváření a správě vlastních seznamů, které podmínek
 
-Při výchozím seznamu pro globální podmínek dobře funguje pro většinou, můžete na obrazovce s výrazy, které jsou specifické pro vaše obchodní potřeby. Můžete například filtrovat žádné konkurenční brand názvy z příspěvcích uživatelé. Vaše prahovou hodnotu povolených textového obsahu se může lišit od výchozím seznamu.
+Při výchozím seznamu pro globální podmínek dobře funguje pro většinou, můžete na obrazovce s výrazy, které jsou specifické pro vaše obchodní potřeby. Můžete například filtrovat žádné konkurenční brand názvy z příspěvcích uživatelé.
 
 > [!NOTE]
 > Maximální limit je **5 termín uvádí** s každou seznamu **není delší než 10 000 podmínky**.

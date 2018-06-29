@@ -14,14 +14,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 04/01/2018
   ms.author: carlrab
-  ms.openlocfilehash: b7888a2bece1a9b601c3629deb1c1dd1fc5cbbe3
-  ms.sourcegitcommit: 3a4ebcb58192f5bf7969482393090cb356294399
+  ms.openlocfilehash: 64c6bd7ee69f443f819676d1605aa679066e2e84
+  ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/06/2018
-  ms.locfileid: "30922378"
+  ms.lasthandoff: 06/27/2018
+  ms.locfileid: "37063345"
 abstract:
-  description: Azure SQL Database je relační databáze jako služba v cloudu, která je založená na modulu Microsoft SQL Serveru. SQL Database je vysoce výkonná, spolehlivá a zabezpečená databáze, kterou můžete použít k vytváření datových aplikací a webů v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
+  description: Azure SQL Database je relační databáze jako služba, která je založená na nejnovější stabilní verzi databázového stroje Microsoft SQL Server. SQL Database je vysoce výkonná, spolehlivá a zabezpečená databáze, kterou můžete použít k vytváření datových aplikací a webů v programovacím jazyce podle vašeho výběru, aniž by bylo potřeba zabývat se správou infrastruktury. Naučte se používat SQL Database prostřednictvím našich šablon Rychlý start, výukových kurzů a ukázek.
   aside:
     image:
       alt: 
@@ -35,22 +35,55 @@ sections:
 - title: Zprovoznění během 5 minut
   items:
   - type: paragraph
-    text: 'Naučte se vytvořit SQL Database, ke správě použít SQL Management Studio a při vývoji využít C#, Javu, Python, Node.js a Ruby:'
-  - type: list
-    style: icon48
-    items:
+    text: 'Azure SQL Database umožňuje snadno provádět základní úlohy správy pomocí webu Azure Portal, rozhraní příkazového řádku Azure a prostředí Azure PowerShell. Naučte se provádět základní úlohy správy pomocí následujících úvodních ukázek:'
+  - type: table
+    style: dataMatrix
+    columns:
     - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
-      text: Azure Portal
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal
+        src: media/index/portal.svg
+      title: Azure Portal
     - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/cli.svg
-      text: Azure CLI
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-cli
+        src: media/index/cli.svg
+      title: Azure CLI
     - image:
-        src: https://docs.microsoft.com/azure/sql-database/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-get-started-powershell
+        src: media/index/logo_powershell.svg
+      title: PowerShell
+    rows:
+    - title: Vytvoření izolované databáze SQL
+      values:
+      - href: /azure/sql-database/sql-database-get-started-portal
+      - href: /azure/sql-database/sql-database-get-started-cli
+      - href: /azure/sql-database/sql-database-get-started-powershell
+    - title: Vytvoření spravované instance SQL
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-create-tutorial-portal
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
+    - title: Vytvoření elastického fondu SQL
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
+      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
+    - title: Škálování izolované databáze SQL
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-cli
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-database-powershell
+    - title: Škálování elastického fondu SQL
+      values:
+      - href: 
+      - href: /azure/sql-database/scripts/sql-database-scale-pool-cli
+      - href: /azure/sql-database/scripts/sql-database-monitor-and-scale-pool-powershell
+    - title: Škálování spravované instance
+      values:
+      - href: 
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
+    - title: Konfigurace sítě Azure pro spravovanou instanci
+      values:
+      - href: /azure/sql-database/sql-database-managed-instance-create-tutorial-portal
+      - href: 
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/25/quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/
 - title: Podrobné kurzy
   items:
   - type: paragraph

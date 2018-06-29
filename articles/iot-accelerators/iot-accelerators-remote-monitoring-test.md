@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/15/2018
 ms.topic: conceptual
-ms.openlocfilehash: d8a528265acc3e0bee24da6c1b6130082815b9fd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 33566bd31f320ccc21f32a256d96d89ee25198bb
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628255"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37088611"
 ---
 # <a name="create-a-new-simulated-device"></a>Vytvoření nového simulovaného zařízení
 
@@ -41,7 +41,7 @@ Následující tabulka obsahuje data že žárovek sestav v cloudu jako datový 
 | ------ | ----------- |
 | Status | "na" "off" |
 | Teplota | Stupňů F |
-| online | Hodnota TRUE, false |
+| Online | Hodnota TRUE, false |
 
 > [!NOTE]
 > **Online** hodnota telemetrie je povinná pro všechny simulované typy.
@@ -174,7 +174,7 @@ V tomto kurzu pracovat s řešení sady Visual Studio, který se připojuje ke s
     sudo grep STORAGEADAPTER_DOCUMENTDB /app/env-vars
     ```
 
-    Poznamenejte si připojovací řetězec. Tuto hodnotu použijete později v tomto kurzu.
+    Poznamenejte si připojovací řetězec. Tuto hodnotu budete později v kurzu potřebovat.
 
 1. Pokud chcete vyhledat připojovací řetězec služby IoT Hub, spusťte následující příkaz v relaci SSH připojen k virtuálnímu počítači:
 
@@ -182,7 +182,7 @@ V tomto kurzu pracovat s řešení sady Visual Studio, který se připojuje ke s
     sudo grep IOTHUB_CONNSTRING /app/env-vars
     ```
 
-    Poznamenejte si připojovací řetězec. Tuto hodnotu použijete později v tomto kurzu.
+    Poznamenejte si připojovací řetězec. Tuto hodnotu budete později v kurzu potřebovat.
 
 > [!NOTE]
 > Můžete také vyhledat tyto řetězce připojení na portálu Azure nebo pomocí `az` příkaz.
@@ -191,15 +191,15 @@ V tomto kurzu pracovat s řešení sady Visual Studio, který se připojuje ke s
 
 Když upravíte službu simulace zařízení, můžete spustit místně a otestovat změny. Než spustíte službu simulace zařízení místně, je nutné zastavit instance běží na virtuálním počítači následujícím způsobem:
 
-1. Najít **ID KONTEJNERU** z **zařízení simulace** služby, spusťte následující příkaz v relaci SSH připojen k virtuálnímu počítači:
+1. Najít **ID KONTEJNERU** z **zařízení. simulace dotnet** služby, spusťte následující příkaz v relaci SSH připojen k virtuálnímu počítači:
 
     ```sh
     docker ps
     ```
 
-    Poznamenejte si ID kontejneru **zařízení simulace** služby.
+    Poznamenejte si ID kontejneru **zařízení. simulace dotnet** služby.
 
-1. Chcete-li zastavit **zařízení simulace** kontejneru, spusťte následující příkaz:
+1. Zastavit **zařízení. simulace dotnet** kontejneru, spusťte následující příkaz:
 
     ```sh
     docker stop container-id-from-previous-step
@@ -248,12 +248,6 @@ Nyní máte všechno, co na místě a jste připraveni začít přidávat nový 
 ## <a name="create-a-simulated-device-type"></a>Vytvoření simulovaného zařízení typu
 
 Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simulace zařízení je zkopírovat a upravit existující typ. Následující kroky vám ukážou, jak zkopírovat integrované **chladič** zařízení pro vytvoření nového **žárovek** zařízení:
-
-1. V sadě Visual Studio, otevřete **zařízení simulation.sln** soubor řešení ve vaší místní klon **zařízení simulace** úložiště.
-
-1. V Průzkumníku řešení klikněte pravým tlačítkem myši **SimulationAgent** projektu, zvolte **vlastnosti**a potom zvolte **ladění**.
-
-1. V **proměnné prostředí** část, upravte hodnotu **počítače\_IOTHUB\_CONNSTRING** proměnné jako připojovací řetězec služby IoT Hub jste si poznamenali dříve. Potom změny uložte.
 
 1. V Průzkumníku řešení klikněte pravým tlačítkem myši **WebService** projektu, zvolte **vlastnosti**a potom vyberte **ladění**.
 
@@ -385,18 +379,21 @@ Nejjednodušší způsob, jak vytvořit nový typ zařízení ve službě simula
 1. Upravit **hlavní** funkce pro implementaci chování, jak je znázorněno v následujícím fragmentu kódu:
 
     ```js
-    function main(context, previousState) {
+    function main(context, previousState, previousProperties) {
 
-      // Restore the global state before generating the new telemetry, so that
-      // the telemetry can apply changes using the previous function state.
-      restoreState(previousState);
+        // Restore the global device properties and the global state before
+        // generating the new telemetry, so that the telemetry can apply changes
+        // using the previous function state.
+        restoreSimulation(previousState, previousProperties);
 
-      state.temperature = vary(200, 5, 150, 250);
+        state.temperature = vary(200, 5, 150, 250);
 
-      // Make this flip every so often
-      state.status = flip(state.status);
+        // Make this flip every so often
+        state.status = flip(state.status);
 
-      return state;
+        updateState(state);
+
+        return state;
     }
     ```
 
@@ -545,11 +542,11 @@ Následující kroky předpokládají, že byl úložiště volána **žárovek*
 
     Skripty vložené **testování** značky na bitovou kopii.
 
-1. Použití SSH se připojit k virtuálnímu počítači na řešení v Azure. Pak přejděte do **aplikace** složku a upravit **docker compose.yaml** souboru:
+1. Použití SSH se připojit k virtuálnímu počítači na řešení v Azure. Pak přejděte do **aplikace** složku a upravit **docker-compose.yml** souboru:
 
     ```sh
     cd /app
-    sudo nano docker-compose.yaml
+    sudo nano docker-compose.yml
     ```
 
 1. Upravte položku služby simulace zařízení používat docker image:
@@ -605,7 +602,7 @@ Tato část popisuje postup úpravy existujícího typu simulované zařízení 
 
 Následující kroky vám ukážou, jak najít soubory, které definují integrované **chladič** zařízení:
 
-1. Pokud jste tak již neučinili, použijte následující příkaz klonovat **zařízení simulace** úložiště GitHub do místního počítače:
+1. Pokud jste tak již neučinili, použijte následující příkaz klonovat **zařízení. simulace dotnet** úložiště GitHub do místního počítače:
 
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
@@ -673,9 +670,9 @@ Následující kroky vám ukážou, jak přidat nové **interní teploty** typ, 
 
 ### <a name="test-the-chiller-device-type"></a>Typ zařízení chladič testu
 
-K testování aktualizovaný **chladič** typ zařízení, nejprve spusťte místní kopii **zařízení simulace** služby k testování typu vašeho zařízení chová podle očekávání. Když máte testovat a ladit typu vašeho zařízení aktualizované místně, můžete znovu vytvořit kontejner a znovu nasaďte **zařízení simulace** službu Azure.
+K testování aktualizovaný **chladič** typ zařízení, nejprve spusťte místní kopii **zařízení. simulace dotnet** služby k testování typu vašeho zařízení chová podle očekávání. Když máte testovat a ladit typu vašeho zařízení aktualizované místně, můžete znovu vytvořit kontejner a znovu nasaďte **zařízení. simulace dotnet** službu Azure.
 
-Při spuštění **zařízení simulace** místně služby, odešle telemetrie do řešení vzdáleného monitorování. Na **zařízení** stránky, můžete zřídit instance vaše aktualizované typu.
+Při spuštění **zařízení. simulace dotnet** místně služby, odešle telemetrie do řešení vzdáleného monitorování. Na **zařízení** stránky, můžete zřídit instance vaše aktualizované typu.
 
 K testování a ladění změny místně, najdete v předchozí části [testování typ zařízení žárovek místně](#test-the-lightbulb-device-type-locally).
 

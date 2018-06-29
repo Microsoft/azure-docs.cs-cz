@@ -10,12 +10,12 @@ ms.date: 03/05/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: e8d84944d44588602593c762c4f60c375e480343
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d4e69d33e07f484b4ccc5343786865230368c7ca
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298164"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096372"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>Vytvoření podmíněné příkazy, které řídí akce pracovního postupu v Azure Logic Apps
 
@@ -46,36 +46,31 @@ Předpokládejme například, že máte aplikaci logiky, která odešle příli�
 
    Pokud chcete přidat podmínku na konci pracovního postupu, v dolní části svou aplikaci logiky, vyberte **+ nový krok** > **přidat podmínku**.
 
-3. V části **podmínku**, vytvořte vaše podmínku. 
+3. V části **podmínku**, sestavení vaší podmínky. 
 
    1. V dialogovém okně levém zadejte data nebo pole, které chcete porovnat.
 
-      Z **přidávat dynamický obsah** seznamu můžete vybrat existující pole z aplikace logiky.
+      Po kliknutí na tlačítko uvnitř levé pole, seznamu dynamického obsahu se zobrazí, takže výstupy z předchozích kroků můžete vybrat v aplikaci logiky. 
+      V tomto příkladu vyberte souhrn informačního kanálu RSS.
+
+      ![Sestavení vaší podmínky](./media/logic-apps-control-flow-conditional-statement/edit-condition.png)
 
    2. V prostředním seznamu vyberte na provedení operace. 
-   3. V dialogovém okně vpravo zadejte hodnota nebo pole jako kritériím.
+   V tomto příkladu vyberte "**obsahuje**". 
 
-   Příklad:
-
-   ![Upravit podmínky v základní režimu](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode.png)
+   3. V dialogovém okně vpravo zadejte hodnota nebo pole jako kritériím. 
+   V tomto příkladu zadejte tento řetězec: **Microsoft**
 
    Tady je Dokončená podmínka:
 
-   ![Dokončená podmínka](./media/logic-apps-control-flow-conditional-statement/edit-condition-basic-mode-2.png)
+   ![Dokončená podmínka](./media/logic-apps-control-flow-conditional-statement/edit-condition-2.png)
+
+5. V části **v případě hodnoty true** a **-li pravda**, přidávat postupy založené na tom, zda je splněna podmínka. Příklad:
+
+   ![Podmínka vyhodnocena jako s "je-li nastavena hodnota true" a "je-li hodnotu false" cesty](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 
    > [!TIP]
-   > Chcete-li vytvořit podmínku pokročilejší nebo použití výrazů, zvolte **upravit v rozšířeném režimu**. Můžete použít výrazy, které jsou definované [jazyk definic workflowů](../logic-apps/logic-apps-workflow-definition-language.md).
-   > 
-   > Příklad:
-   >
-   > ![Upravit podmínky v kódu](./media/logic-apps-control-flow-conditional-statement/edit-condition-advanced-mode.png)
-
-5. V části **Pokud Ano** a **ne v případě**, přidávat postupy založené na tom, zda je splněna podmínka. Příklad:
-
-   ![Podmínky se Ano a žádné cesty](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
-
-   > [!TIP]
-   > Můžete přetáhnout existující akce do **Pokud Ano** a **ne v případě** cesty.
+   > Můžete přetáhnout existující akce do **v případě hodnoty true** a **-li pravda** cesty.
 
 6. Uložte svou aplikaci logiky.
 
@@ -87,14 +82,21 @@ Teď, když jste vytvořili pomocí podmíněného příkazu aplikace logiky, po
 
 ``` json
 "actions": {
-  "myConditionName": {
+  "Condition": {
     "type": "If",
-    "expression": "@contains(triggerBody()?['summary'], 'Microsoft')",
     "actions": {
       "Send_an_email": {
-        "inputs": { },
+        "inputs": {},
         "runAfter": {}
-      }
+    },
+    "expression": {
+      "and": [ 
+        { 
+          "contains": [ 
+            "@triggerBody()?['summary']", "Microsoft"
+          ]
+        } 
+      ]
     },
     "runAfter": {}
   }
