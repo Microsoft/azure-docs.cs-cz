@@ -17,20 +17,16 @@
       href: quick-deploy-iot-central.md
 - name: Kurzy
   items:
-    - name: Tvůrce
-      items:
-        - name: 1. Definování nového typu zařízení
-          href: tutorial-define-device-type.md
-        - name: 2. Konfigurace pravidel
-          href: tutorial-configure-rules.md
-        - name: 3. Přizpůsobení zobrazení operátora
-          href: tutorial-customize-operator.md
-    - name: Operátor
-      items:
-        - name: 4. Monitorování vašich zařízení
-          href: tutorial-monitor-devices.md
-        - name: 5. Přidání zařízení
-          href: tutorial-add-device.md
+    - name: 1. Definování nového typu zařízení
+      href: tutorial-define-device-type.md
+    - name: 2. Konfigurace pravidel
+      href: tutorial-configure-rules.md
+    - name: 3. Přizpůsobení zobrazení operátora
+      href: tutorial-customize-operator.md
+    - name: 4. Monitorování vašich zařízení
+      href: tutorial-monitor-devices.md
+    - name: 5. Přidání zařízení
+      href: tutorial-add-device.md
 - name: Koncepty
   items:
     - name: Architektura
