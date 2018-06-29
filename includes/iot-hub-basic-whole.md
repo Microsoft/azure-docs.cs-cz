@@ -9,10 +9,11 @@ ms.date: 04/01/2018
 ms.author: kgremban
 ms.custom: include file
 ms.openlocfilehash: 490260a1cda8ed467d3fc7ad0c1020e6e459bd13
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "30325408"
 ---
 >[!NOTE]
->Funkce popsané v tomto článku jsou pouze k dispozici ve standardní vrstvě služby IoT hub. Další informace o úrovních služby IoT Hub úrovně basic a standard najdete v tématu [jak vybrat správné úrovně služby IoT Hub](../articles/iot-hub/iot-hub-scaling.md).
+>Funkce popsané v tomto článku jsou pouze k dispozici ve standardní vrstvě služby IoT hub. Další informace o úrovních Basic a Standard služby IoT Hub najdete v [návodu k výběru správné úrovně služby IoT Hub](../articles/iot-hub/iot-hub-scaling.md).

@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Integrace rozhraní REST API deklarace identity výměn v vám dobře slouží Azure AD B2C uživatele jako ověřování vstupu uživatele'
+title: Integrace rozhraní REST API deklarace identity výměn v vám dobře slouží uživatele Azure Active Directory B2C | Microsoft Docs
 description: Integrace rozhraní REST API deklarace identity výměn v vám dobře slouží Azure AD B2C uživatele jako ověřování vstupu uživatele.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: davidmu
-ms.openlocfilehash: c4a530b3d6b4f6d4f5ec6087adcee839422dd01d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: e17647016da0e877bd8f21357a4bd38121820f22
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34709355"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrace rozhraní REST API deklarace identity výměn v vám dobře slouží Azure AD B2C uživatele jako ověřování vstupu uživatele
 
@@ -82,7 +82,7 @@ Modely představují mezi vstupními deklaracemi identity a deklarací výstupn�
 Vytvoření modelu, který představuje vstupních deklarací identity následujícím způsobem:
 
 1. Pokud Průzkumníku řešení ještě není otevřený, vyberte **zobrazení** > **Průzkumníku řešení**. 
-2. V Průzkumníku řešení klikněte pravým tlačítkem myši **modely** složky, vyberte **přidat**a potom vyberte **třída**.
+2. V Průzkumníku řešení klikněte pravým tlačítkem na složku **Modely**, vyberte **Přidat** a pak vyberte **Třída**.
 
     ![Přidání modelu](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-model.png)
 
@@ -136,7 +136,7 @@ Vytvoření modelu, který představuje vstupních deklarací identity následuj
 ### <a name="step-22-add-a-controller"></a>Krok 2.2: Přidání kontroleru
 Ve webové rozhraní API _řadič_ je objekt, který zpracovává požadavky HTTP. Řadičem vrátí výstup deklarací, nebo pokud křestní jméno není platné, vyvolá chybová zpráva o konfliktu HTTP.
 
-1. V Průzkumníku řešení klikněte pravým tlačítkem myši **řadiče** složky, vyberte **přidat**a potom vyberte **řadič**.
+1. V Průzkumníku řešení klikněte pravým tlačítkem na složku **Kontrolery**, vyberte **Přidat** a pak vyberte **Kontroler**.
 
     ![Přidat nový řadič](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 

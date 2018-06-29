@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Začínáme s vlastními zásadami | Microsoft Docs'
-description: Jak začít pracovat s Azure Active Directory B2C vlastní zásady
+title: Začínáme s vlastní zásady v Azure Active Directory B2C | Microsoft Docs
+description: Jak začít pracovat s Azure Active Directory B2C vlastní zásady.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: davidmu
-ms.openlocfilehash: 502f88bd08c05f71988763fedeba4d596aa409b6
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 8ff69942971950e2d4a274e7d3502379a26326c7
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34709287"
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C: Začínáme s vlastní zásady
 
@@ -52,7 +52,7 @@ Než budete pokračovat, ujistěte se, že máte klienta Azure AD B2C, což je k
  e. Pro **data**, použijte výchozí hodnoty.<br>
  f. Pro **použití klíče**, použijte **šifrování**.<br>
  g. Vyberte **Vytvořit**.<br>
-5. Create B2C_1A_FacebookSecret. <br>
+5. Vytvořte B2C_1A_FacebookSecret. <br>
 Pokud již máte tajný klíč aplikace Facebook, přidejte ji jako klíč zásad klienta. Jinak musí vytvořit klíč s hodnotu zástupného symbolu, tak, aby vaše zásady projít ověřením.<br>
  a. Vyberte **Přidat**.<br>
  b. Pro **možnosti**, použijte **ruční**.<br>
@@ -73,8 +73,8 @@ Azure AD B2C musíte zaregistrovat dva další aplikace, které jsou používán
 
 1. V [portál Azure](https://portal.azure.com), přepněte do [kontextu klienta služby Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md).
 2. Otevřete **Azure Active Directory** okno (ne **Azure AD B2C** okno). Možná budete muset vybrat možnost **více služeb** se ho najít.
-3. Vyberte **registrace aplikace**.
-4. Vyberte **nové registrace aplikace**.
+3. Vyberte **Registrace aplikací**.
+4. Vyberte **Registrace nové aplikace**.
    * Pro **název**, použijte `IdentityExperienceFramework`.
    * Pro **typ aplikace**, použijte **webové aplikace nebo rozhraní API**.
    * Pro **přihlašovací adresa URL**, použijte `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`, kde `yourtenant` je název domény klienta Azure AD B2C.
@@ -85,8 +85,8 @@ Azure AD B2C musíte zaregistrovat dva další aplikace, které jsou používán
 
 ### <a name="create-the-proxyidentityexperienceframework-application"></a>Vytvoření aplikace ProxyIdentityExperienceFramework
 
-1. Vyberte **registrace aplikace**.
-1. Vyberte **nové registrace aplikace**.
+1. Vyberte **Registrace aplikací**.
+1. Vyberte **Registrace nové aplikace**.
    * Pro **název**, použijte `ProxyIdentityExperienceFramework`.
    * Pro **typ aplikace**, použijte **nativní**.
    * Pro **identifikátor URI pro přesměrování**, použijte `https://login.microsoftonline.com/yourtenant.onmicrosoft.com`, kde `yourtenant` je váš klient Azure AD B2C.
@@ -143,8 +143,8 @@ Jednotlivé sady starter obsahuje:
    >`PolicyId` je název zásady, které vidíte na portálu a název, kterým je tento soubor zásad odkazují jiné soubory zásad.
 
 5. Uložte soubor.
-6. Open TrustFrameworkExtensions.xml. Provést stejné změny dva nahrazením `yourtenant.onmicrosoft.com` s vašeho klienta Azure AD B2C. Ujistěte se, stejné náhrada v `<TenantId>` element celkem tři změny. Uložte soubor.
-7. Open SignUpOrSignIn.xml. Provést stejné změny nahrazením `yourtenant.onmicrosoft.com` s vašeho klienta Azure AD B2C na třech místech. Uložte soubor.
+6. Otevřete TrustFrameworkExtensions.xml. Provést stejné změny dva nahrazením `yourtenant.onmicrosoft.com` s vašeho klienta Azure AD B2C. Ujistěte se, stejné náhrada v `<TenantId>` element celkem tři změny. Uložte soubor.
+7. Otevřete SignUpOrSignIn.xml. Provést stejné změny nahrazením `yourtenant.onmicrosoft.com` s vašeho klienta Azure AD B2C na třech místech. Uložte soubor.
 8. Otevřete resetování hesla a úpravy souborů profilu. Provést stejné změny nahrazením `yourtenant.onmicrosoft.com` s vašeho klienta Azure AD B2C na třech místech do každého souboru. Uložte soubory.
 
 ### <a name="add-the-application-ids-to-your-custom-policy"></a>Přidat ID aplikace do vlastních zásad
@@ -168,7 +168,7 @@ Přidat ID aplikace souboru rozšíření (`TrustFrameworkExtensions.xml`):
     >[!WARNING]
     >Vlastní zásady pro soubory, musí se nahrát v následujícím pořadí:
 
-1. Upload TrustFrameworkBase.xml.
+1. Nahrajte TrustFrameworkBase.xml.
 2. Nahrajte TrustFrameworkExtensions.xml.
 3. Nahrajte SignUpOrSignin.xml.
 4. Odešlete další soubory zásad.

@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Přidání služby Twitter jako zprostředkovatel identity OAuth1 pomocí vlastních zásad'
-description: Pomocí služby Twitter jako poskytovatel identit pomocí protokolu OAuth1
+title: Přidejte služby Twitter jako zprostředkovatel identity OAuth1 pomocí vlastních zásad v Azure Active Directory B2C | Microsoft Docs
+description: Pomocí služby Twitter jako poskytovatel identit pomocí protokolu OAuth1.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: davidmu
-ms.openlocfilehash: 4a7cc552f49877874dc173a47efe22873d5aeeed
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: B2C
+ms.openlocfilehash: 6b09bb295d889255dada0cebbb9ded2379d95d23
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34710232"
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Přidání služby Twitter jako zprostředkovatel identity OAuth1 pomocí vlastních zásad
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]

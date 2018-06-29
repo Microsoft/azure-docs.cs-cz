@@ -67,6 +67,8 @@
   items:
     - name: Podporované jazyky
       href: supported-languages.md
+    - name: Oblasti
+      href: regions.md
     - name: Rozhraní REST API
       href: rest-apis.md
     - name: Rozhraní API sady Speech SDK

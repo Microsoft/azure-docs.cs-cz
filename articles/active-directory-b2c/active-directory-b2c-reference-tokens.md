@@ -1,21 +1,21 @@
 ---
-title: Token odkaz – Azure AD B2C | Microsoft Docs
+title: Token odkaz v Azure Active Directory B2C | Microsoft Docs
 description: Typy tokeny vydané v Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: davidmu
-ms.openlocfilehash: 09d776b54941e33979d7969b25c35e67a53cf8f0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: e2ca582c9ec767e9b810c574e3efddc6485bb6a0
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34709304"
 ---
 # <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C: Odkaz tokenu
 
@@ -145,12 +145,12 @@ Když aplikaci nebo API obdrží ID token, má také provést několik kontrol p
 
 Úplný seznam ověření proveďte vaší aplikace, najdete v části [OpenID Connect specifikace](https://openid.net). Podrobnosti o očekávaných hodnot pro tyto deklarace identity jsou zahrnuty v předchozím [token části](#types-of-tokens).  
 
-## <a name="token-lifetimes"></a>Doby života tokenů
+## <a name="token-lifetimes"></a>Životnost tokenů
 Následující token životnosti jsou k dispozici pro další vašeho vědomí. Můžou vám pomoct při vývoji a ladění aplikací. Všimněte si, že vaše aplikace nemá zapisovat očekávat některé z těchto životnosti nezměnila. Mohou a změní. Další informace o [přizpůsobení tokenu životnosti](active-directory-b2c-token-session-sso.md) v Azure AD B2C.
 
 | Podpisový | Doba platnosti | Popis |
 | --- | --- | --- |
-| ID tokeny |Jedna hodina. |ID tokeny jsou obvykle platný jednu hodinu. Webové aplikace můžete použít tato doba platnosti udržovat svůj vlastní relací uživatelů (doporučeno). Můžete také dobu platnosti jiné relace. Pokud aplikace potřebuje k získání tokenu nové ID, jednoduše potřebuje k vytvoření nové žádosti o přihlášení do služby Azure AD. Pokud má uživatel relace platná prohlížeče s Azure AD, tento uživatel nemusí nutné znovu zadat přihlašovací údaje. |
+| ID tokeny |Jedna hodina |ID tokeny jsou obvykle platný jednu hodinu. Webové aplikace můžete použít tato doba platnosti udržovat svůj vlastní relací uživatelů (doporučeno). Můžete také dobu platnosti jiné relace. Pokud aplikace potřebuje k získání tokenu nové ID, jednoduše potřebuje k vytvoření nové žádosti o přihlášení do služby Azure AD. Pokud má uživatel relace platná prohlížeče s Azure AD, tento uživatel nemusí nutné znovu zadat přihlašovací údaje. |
 | Obnovovacích tokenů |Až 14 dní |Jeden obnovovací token je platný pro maximálně 14 dní. Token obnovení však můžete stane neplatnou kdykoli z několika příčin. Aplikace by měly být nadále pokoušet použít obnovovací token, dokud žádost skončí s chybou, nebo dokud aplikace nahradí nový token obnovení. Obnovovací token se může stát také neplatné, pokud od uživatele naposledy zadali přihlašovací údaje, uplynulo 90 dní. |
 | Autorizačních kódů |Pět minut |Kódy ověřování jsou záměrně krátkodobou. Jejich by měl být uplatněn okamžitě přístupové tokeny, tokeny typu ID nebo tokeny obnovení při příjmu. |
 

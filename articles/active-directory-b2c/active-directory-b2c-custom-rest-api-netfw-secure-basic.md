@@ -1,21 +1,21 @@
 ---
-title: 'Azure Active Directory B2C: Zabezpečte vaše RESTful služby pomocí základního ověřování protokolu HTTP'
-description: Zabezpečit vaše vlastní výměnu REST API deklarace identity ve vašem Azure AD B2C pomocí základního ověřování protokolu HTTP
+title: Zabezpečit vaše RESTful služby pomocí protokolu HTTP základní ověřování v Azure Active Directory B2C | Microsoft Docs
+description: Vaše vlastní výměnu REST API deklarace identity ve vašem Azure AD B2C zabezpečené pomocí protokolu HTTP základní ověřování.
 services: active-directory-b2c
-documentationcenter: ''
 author: davidmu1
 manager: mtillman
-editor: ''
-ms.service: active-directory-b2c
+ms.service: active-directory
 ms.workload: identity
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: davidmu
-ms.openlocfilehash: 749157d16c1c394b173545dddb8751d58fdcfd56
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.component: B2C
+ms.openlocfilehash: 18aeeef1aa2ef322f78e7e10118464d542926e59
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34709790"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Zabezpečení vašich služeb RESTful pomocí základního ověřování protokolu HTTP
 

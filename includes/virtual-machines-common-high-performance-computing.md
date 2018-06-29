@@ -9,10 +9,11 @@ ms.date: 05/11/2018
 ms.author: danlep
 ms.custom: include file
 ms.openlocfilehash: 32a438d393077cfe4cb7f6ee62f3a01edfce0571
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
-ms.translationtype: MT
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "34152219"
 ---
 Organizace mají rozsáhlé výpočetní potřebám. Tyto úlohy Big Compute zahrnují technického návrhu a analýzy, výpočtů finančních rizik, vykreslování obrázků, komplexního modelování, simulací typu Monte Carlo a další. 
 
