@@ -88,5 +88,30 @@ Naslouchací proces skupiny dostupnosti je IP adresy a síťového názvu objekt
 
     b. Nastavení parametrů clusteru spuštěním skriptu prostředí PowerShell na jednom z uzlů clusteru.  
 
+Opakujte tento postup k nastavení parametrů clusteru pro IP adresu clusteru služby WSFC.
+
+1. Získání názvu adresu IP adresu IP clusteru služby WSFC. V **Správce clusteru převzetí služeb při selhání** pod **základní prostředky clusteru**, vyhledejte **název serveru**.
+
+1. Klikněte pravým tlačítkem na **IP adresu**a vyberte **vlastnosti**.
+
+1. Kopírování **název** IP adresy. To může být `Cluster IP Address`. 
+
+1. <a name="setwsfcparam"></a>Nastavení parametrů clusteru v prostředí PowerShell.
+    
+    a. Zkopírujte následující skript prostředí PowerShell vaší instance systému SQL Server. Aktualizujte proměnné pro vaše prostředí.     
+    
+    ```PowerShell
+    $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
+    $IPResourceName = "<ClusterIPResourceName>" # the IP Address resource name
+    $ILBIP = "<n.n.n.n>" # the IP Address of the Cluster IP resource. This is the static IP address for the load balancer you configured in the Azure portal.
+    [int]$ProbePort = <nnnnn>
+    
+    Import-Module FailoverClusters
+    
+    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
+    ```
+
+    b. Nastavení parametrů clusteru spuštěním skriptu prostředí PowerShell na jednom z uzlů clusteru.  
+
     > [!NOTE]
     > Pokud vaše instance systému SQL Server v oblastech, musíte spustit skript prostředí PowerShell dvakrát. Při prvním použití `$ILBIP` a `$ProbePort` z první oblasti. Při druhém použít `$ILBIP` a `$ProbePort` z oblasti druhý. Název sítě clusteru a název prostředku IP clusteru jsou stejné. 

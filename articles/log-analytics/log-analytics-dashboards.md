@@ -3,7 +3,7 @@ title: Vytvořit vlastní řídicí panel v Azure Log Analytics | Microsoft Docs
 description: Tento průvodce vám pomůže pochopit jak řídicí panely analýzy protokolů můžete vizualizovat všechny uložený protokol hledání, budete jeden přehledu zobrazení prostředí.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: abb07f6c-b356-4f15-85f5-60e4415d0ba2
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7eaa74655b009e3154e2cc4f09d5599040ec4589
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.component: na
+ms.openlocfilehash: 7b17b23d30b15fe71dcf031ac67f0c54fc3cfe3e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34010767"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129308"
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Vytvořit vlastní řídicí panel pro použití v analýzy protokolů
 
@@ -72,9 +72,9 @@ Existují tři druhy vizualizace dlaždice můžete vybrat ze:
 | --- | --- |
 | ![Pruhový graf](./media/log-analytics-dashboards/oms-dashboards-bar-chart.png) |Časová osa výsledků hledání uložený protokol zobrazí jako pruhový graf nebo seznam výsledků podle pole v závislosti na tom, pokud vyhledávání protokolu agreguje výsledky podle pole, nebo ne. |
 | ![metrika](./media/log-analytics-dashboards/oms-dashboards-metric.png) |Zobrazí vaše přístupů výsledek hledání celkový protokolu jako číslo v dlaždici. Metriky dlaždice umožňují nastavit prahovou hodnotu, která se zaměřuje na dlaždici na dosažení prahové hodnoty. |
-| ![řádek](./media/log-analytics-dashboards/oms-dashboards-line.png) |Jako spojnicový graf zobrazuje časová osa přístupů vaší uložený protokol hledání výsledek s hodnotami. |
+| ![Řádek](./media/log-analytics-dashboards/oms-dashboards-line.png) |Jako spojnicový graf zobrazuje časová osa přístupů vaší uložený protokol hledání výsledek s hodnotami. |
 
-### <a name="threshold"></a>Sloučit barvy
+### <a name="threshold"></a>Prahová hodnota
 Na dlaždici pomocí metriky vizualizace můžete vytvořit prahovou hodnotu. Vyberte na vytvoření prahovou hodnotu na dlaždici. Vyberte, zda chcete zvýraznit dlaždici, když hodnota je nad nebo pod zvolenou prahovou hodnotu, a poté nastavit mezní hodnotu níže.
 
 ## <a name="organizing-the-dashboard"></a>Uspořádání řídicí panel

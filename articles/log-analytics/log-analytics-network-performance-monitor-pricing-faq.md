@@ -10,17 +10,18 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.openlocfilehash: 1e7e43dc2e7ed386f8f77fd1ab186d2ff34af405
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: na
+ms.openlocfilehash: 96eb26d6a4faf8c6907d23ebf21f2446722c913b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32176995"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127089"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Změny cenových pro sledování výkonu sítě Azure
 
@@ -67,7 +68,7 @@ Náklady na monitorování odkaz jedné podsíti za každý měsíc, najdete v �
 Zdarma pro přijímání (nahrání dat k analýze protokolů, zpracování a indexování) je k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/) pro analýzy protokolů, v části přijímat Data. Poplatek pro uchovávání dat (to znamená, data se uchovávají v možnost zákazníka po prvním měsíci) je také k dispozici na [stránce s cenami](https://azure.microsoft.com/pricing/details/log-analytics/), v části uchovávání dat.
 
 
-## <a name="expressroute-monitor"></a>Monitorování ExpressRoute
+## <a name="expressroute-monitor"></a>ExpressRoute Monitor
 
 **Jaké jsou poplatky za využití monitorování ExpressRoute?**
 
@@ -107,8 +108,8 @@ Zákazníci na vyšší percentily (v předchozí tabulce) obvykle monitorovat j
 **Jaké jsou poplatky za využití monitorování koncového bodu služby?**
 
 Poplatky za využití monitorování koncového bodu služby se vypočítávají podle:
-* počet připojení
-* objem dat
+* Počet připojení
+* Objem dat
 
 **Co je připojení?**
 

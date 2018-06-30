@@ -3,7 +3,7 @@ title: Shromažďování dat z prostředí s nástrojem Azure Log Analytics | Mi
 description: Toto téma vám pomůže pochopit postup shromažďování dat a monitorování počítačů, které jsou hostovány v místní nebo jiné prostředí cloudu s analýzy protokolů.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 5bf1e12c958fef0cb20eaad8cece8cadb380c196
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.component: na
+ms.openlocfilehash: a13c83fc0d35be1aec87cb5f2d2b19b0bf27f1bf
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235936"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37132873"
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Shromažďovat data z počítačů ve vašem prostředí s analýzy protokolů
 
@@ -96,7 +97,7 @@ Pro agenta systému Linux, je proxy serveru zadané během instalace nebo [po in
 Příklad: `https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
-> Pokud používáte speciální znaky, jako "@" heslo, obdržíte chybu připojení proxy vzhledem k tomu, že je správně analyzovat hodnotu.  Chcete-li tento problém obejít, kódovat heslo v adrese URL pomocí některého nástroje, jako třeba [URLDecode](https://www.urldecoder.org/).  
+> Pokud používáte speciální znaky, jako "\@" heslo, obdržíte chybu připojení proxy vzhledem k tomu, že je správně analyzovat hodnotu.  Chcete-li tento problém obejít, kódovat heslo v adrese URL pomocí některého nástroje, jako třeba [URLDecode](https://www.urldecoder.org/).  
 
 ## <a name="install-and-configure-agent"></a>Instalace a konfigurace agenta 
 Připojení místní počítače přímo k Log Analytics lze provést různými způsoby v závislosti na vaše požadavky. V následující tabulce jsou vysvětlené každé metody, který nejlépe fungovat ve vaší organizaci.

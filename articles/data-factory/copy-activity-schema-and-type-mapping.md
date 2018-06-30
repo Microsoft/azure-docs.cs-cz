@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 338df0e258f66b6639e59a4fe31b6cfb6c283dd3
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 16275ddc4d4ad85bdac54244ceeec568603fdfef
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045523"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112095"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>Schéma mapování v aktivitě kopírování
 Tento článek popisuje, jak funguje Azure Data Factory aktivity kopírování schéma mapování a mapování datového typu od zdrojových dat za účelem jímky dat při kopírování dat provádění.
@@ -52,7 +52,7 @@ Můžete zadat **columnMappings** v **rámci typeProperties** části aktivitě 
 
 #### <a name="explicit-column-mapping-example"></a>Příklad mapování explicitní sloupce
 
-V této ukázce vstupní tabulka obsahuje strukturu a odkazuje na tabulku v místní databázi.
+V této ukázce vstupní tabulka obsahuje strukturu a odkazuje na tabulku v databázi SQL na místě.
 
 ```json
 {

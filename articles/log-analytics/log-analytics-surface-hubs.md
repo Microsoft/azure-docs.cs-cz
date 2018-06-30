@@ -3,7 +3,7 @@ title: Monitorování Surface Hubů s Azure Log Analytics | Microsoft Docs
 description: Použijte Surface Hub řešení ke sledování stavu Surface Huby a pochopit, jak se právě používají.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 8b4e56bc-2d4f-4648-a236-16e9e732ebef
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 525b3ced979834a956f91ef8c6f647b659ca21f1
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.component: na
+ms.openlocfilehash: dfbcdce293d6d47267892487d0760410665af94a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29179221"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130766"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Monitorování Surface Huby se analýzy protokolů sledovat jejich stav
 
@@ -31,7 +31,7 @@ Tento článek popisuje, jak použít řešení Surface Hub v analýzy protokol�
 Každý Surface Hub má Microsoft Monitoring Agent nainstalována. Jeho prostřednictvím, může odesílat data z Surface Hub k analýze protokolů agenta. Soubory protokolu se načítají z Surface Huby a jsou pak odešlou k analýze protokolů. Problémy, jako je offline, servery kalendáře nesynchronizuje, nebo pokud účet zařízení se nemůže přihlásit do Skype se zobrazují na řídicím panelu Surface Hub v analýzy protokolů. Pomocí dat v řídicím panelu můžete identifikovat zařízení, která neběží nebo které jsou s jiné problémy a potenciálně použít opravy zjištěných problémů.
 
 ## <a name="install-and-configure-the-solution"></a>Instalace a konfigurace řešení
-Použijte následující informace k instalaci a konfiguraci řešení. Abyste mohli spravovat vaše Surface Huby v analýzy protokolů, budete potřebovat následující:
+K instalaci a konfiguraci řešení můžete použít následující informace. Abyste mohli spravovat vaše Surface Huby v analýzy protokolů, budete potřebovat následující:
 
 * A [analýzy protokolů předplatné](https://azure.microsoft.com/pricing/details/log-analytics/) úroveň, která bude podporovat počet zařízení, které chcete monitorovat. Log Analytics ceny se liší v závislosti na tom, kolik zařízení jsou zaregistrovaná a kolik dat se procesy. Je potřeba vzít v úvahu při plánování zavádění řešení Surface Hub.
 

@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: nini
-ms.openlocfilehash: 879c89d21aece120888dded49ca1b2c55677635e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.component: na
+ms.openlocfilehash: 282b610aeb75010108a63dafe037c09180a247a1
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31595051"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131680"
 ---
 # <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a>Vyhodnocení aplikace Azure Service Fabric a micro-services pomocí prostředí PowerShell
 > [!div class="op_single_selector"]
@@ -300,7 +301,7 @@ $storageAccount = Select-StorageAccount
 
 Po dokončení konfigurace pracovní prostor analýzy protokolů pro čtení z tabulky Azure ve vašem účtu úložiště, přihlaste se k portálu Azure. Vyberte pracovní prostor analýzy protokolů z **všechny prostředky**. Zobrazí se počet připojení do pracovního prostoru protokol účtu úložiště. Vyberte **protokol účtu úložiště** dlaždici. Projděte si seznam protokol účtu úložiště k ověření, že váš účet úložiště je připojený k správné pracovního prostoru.
 
-![Protokol účtu úložiště](./media/log-analytics-service-fabric/sf1.png)
+![Protokoly účtu úložiště](./media/log-analytics-service-fabric/sf1.png)
 
 ## <a name="enable-the-service-fabric-solution"></a>Povolit řešení Service Fabric
 Pomocí následujícího skriptu přidat do pracovního prostoru analýzy protokolů řešení. Spusťte skript prostředí PowerShell, pomocí předplatného Azure, který je přidružen pracovní prostor analýzy protokolů, který chcete povolit řešení v Service Fabric.
@@ -375,7 +376,7 @@ Klikněte **Service Fabric** dlaždici otevřete řídicí panel Service Fabric.
 
 Následující tabulka uvádí metody shromažďování dat a další podrobnosti o tom, jak se data shromažďují pro Service Fabric:
 
-| Platforma | Přímé agenta | Agent nástroje Operations Manager | Azure Storage | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Frekvence kolekce |
+| Platforma | Přímý agent | Agent nástroje Operations Manager | Azure Storage | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Frekvence kolekce |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |  |  | &#8226; |  |  |10 minut |
 

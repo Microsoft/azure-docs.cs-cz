@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: de52521824c146f63fb16e2690e2a24167ae2efe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e6b263c1eb9fe3b151f0a51b5da9a92b8ced4549
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333908"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109738"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Zabezpečený přístup k účtu Azure Cosmos DB pomocí koncový bod služby Azure Virtual Network
 
@@ -249,7 +249,7 @@ Další informace o NSG značky najdete [virtuální sítě služby značky](../
 
 Tyto dvě funkce doplňují ostatní k zajištění izolace Azure Cosmos DB prostředků a jejich zabezpečení. Použití IP brány firewall zajišťuje, aby statické IP adresy můžete přístup k účtu Azure Cosmos DB.  
 
-### <a name="can-an-on-premise-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>Můžete zařízení s místní IP adresu, která je připojený prostřednictvím Azure Virtual Network gateway(VPN) nebo Express trasy brány přístup k účtu Azure Cosmos DB?  
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>Můžete IP adresu místního zařízení, která je připojený prostřednictvím Azure Virtual Network gateway(VPN) nebo Express trasy brány přístup k účtu Azure Cosmos DB?  
 
 Zařízení místní IP adresu nebo rozsah IP adres musí být přidaní do seznamu statických IP adres pro přístup k účtu Azure Cosmos DB.  
 

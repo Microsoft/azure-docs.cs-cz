@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: 273fca51d83f25e2657b51b68179e46f4295f92b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b3283880ebb116e5397c38d722a0790cff414f38
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263876"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111918"
 ---
 # <a name="web-app-bot-using-the-luis-template-for-c"></a>Robota webové aplikace pomocí šablony LEOŠ pro jazyk C#
 
@@ -72,7 +72,7 @@ Odpoví robota vyslovením "bylo dosaženo pozdrav. Jste uvedli: hello ".  Tato 
 
 ## <a name="connect-your-luis-app-to-the-bot"></a>Připojení aplikace LEOŠ k robota
 
-Otevřete **nastavení aplikace** a upravit **LuisAppId** pole tak, aby obsahovala ID aplikace LEOŠ aplikace. Pokud jste vytvořili vaší aplikaci HomeAutomation LEOŠ v jiné oblasti, než západní USA, budete muset změnit **LuisAPIHostName** také. **LuisAPIKey** je nastaveno na klíč pro vytváření obsahu. Můžete to změnit na svůj klíč předplatného při provozu překročí kvótu úroveň free. 
+Otevřete **nastavení aplikace** a upravit **LuisAppId** pole tak, aby obsahovala ID aplikace LEOŠ aplikace. Pokud jste vytvořili vaší aplikaci HomeAutomation LEOŠ v jiné oblasti, než západní USA, budete muset změnit **LuisAPIHostName** také. **LuisAPIKey** je nastaveno na klíč pro vytváření obsahu. Můžete to změnit k vašemu klíči koncový bod při provozu překročí kvótu úroveň free. 
 
   ![Aktualizovat LEOŠ ID aplikace v Azure](./media/luis-tutorial-cscharp-web-bot/bot-service-app-settings.png)
 

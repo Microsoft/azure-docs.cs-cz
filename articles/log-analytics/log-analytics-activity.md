@@ -3,7 +3,7 @@ title: Shromažďovat a analyzovat protokoly aktivita Azure v Log Analytics | Mi
 description: Řešení Azure aktivity protokoly můžete použít k analýze a hledání protokol činnosti Azure ve všech vašich předplatných Azure.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: dbac4c73-0058-4191-a906-e59aca8e2ee0
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: b6e823d9338d76a350569091d6794e3ac4a2eae9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.component: na
+ms.openlocfilehash: 0b05dc17fc7ba567bf633c25a080fbf56903935c
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30283380"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130322"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Shromažďovat a analyzovat protokoly aktivita Azure v analýzy protokolů
 
@@ -66,7 +67,7 @@ Na rozdíl od většiny jiných řešení analýzy protokolů není data shromá
 
 Proveďte následující postup pro konfiguraci řešení aktivity analýzy protokolů pro pracovní prostory.
 
-1. Povolit řešení analýzy protokolů aktivity z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
+1. Povolte řešení Activity Log Analytics z [Azure marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) nebo pomocí postupu popsaného v článku [Přidání řešení Log Analytics z galerie řešení](log-analytics-add-solutions.md).
 2. Konfigurace protokolů událostí přejděte do pracovního prostoru analýzy protokolů.
     1. Na portálu Azure vyberte pracovní prostor a pak klikněte na tlačítko **protokol činnosti Azure**.
     2. Pro každé předplatné klikněte na název odběru.  
@@ -85,11 +86,11 @@ Když přidáte řešení analýzy protokolů aktivitu do pracovního prostoru *
 
 ### <a name="view-azure-activity-logs"></a>Aktivita služby Azure zobrazení protokolů
 
-Klikněte na tlačítko **protokoly aktivity Azure** dlaždici otevřete **protokoly aktivity Azure** řídicího panelu. Řídicí panel obsahuje okna v následující tabulce. Každý okno uvádí až 10 položky odpovídající kritériím tohoto okna pro zadaný obor a časový rozsah. Můžete spustit vyhledávání protokolu, který vrátí všechny záznamy kliknutím **zobrazit všechny** v dolní části okna, nebo kliknutím na záhlaví okna.
+Klikněte na tlačítko **protokoly aktivity Azure** dlaždici otevřete **protokoly aktivity Azure** řídicího panelu. Tento řídicí panel obsahuje okna popsaná v následující tabulce. V každém okně je seznam až 10 položek, které vyhovují kritériím oboru a časového rozsahu daného okna. Kliknutím na **Zobrazit vše** v dolní části okna nebo na záhlaví okna můžete spustit hledání v protokolu, které vrátí všechny záznamy.
 
 Data protokolu aktivity se zobrazí pouze *po* protokolů aktivity k přejít na řešení, takže data nelze zobrazit, předtím jste nakonfigurovali.
 
-| Blade | Popis |
+| Okno | Popis |
 | --- | --- |
 | Aktivita Azure položky protokolu | Ukazuje pruhový graf prvních položka protokolu aktivita Azure záznamů součty pro rozsah dat, které jste vybrali a seznam top 10 aktivity volající. Klikněte na tlačítko pruhový graf ke spuštění protokolu vyhledejte <code>AzureActivity</code>. Klikněte na položku volající ke spuštění vyhledávání protokolu vrácení všech položek protokolů aktivity pro tuto položku. |
 | Protokoly aktivity podle stavu | Zobrazí prstencový graf pro stav protokolu Azure aktivity pro rozsah, kterou jste vybrali. Také ukazuje seznam seznam top deset stav záznamů. Klikněte na graf ke spuštění protokolu vyhledejte <code>AzureActivity &#124; summarize AggregatedValue = count() by ActivityStatus</code>. Klikněte na položku Stav spuštění vyhledávání protokolu vrácení všech položek protokolů aktivity pro tento stav záznamu. |

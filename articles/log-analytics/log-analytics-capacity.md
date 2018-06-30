@@ -3,7 +3,7 @@ title: Kapacitu a výkon řešení v Azure Log Analytics | Microsoft Docs
 description: Použijte řešení kapacitu a výkon v analýzy protokolů vám pomohou pochopit kapacitu serverů Hyper-V.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 51617a6f-ffdd-4ed2-8b74-1257149ce3d4
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: db38678a05afbc764dec20f2a475e00856a1aeee
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: na
+ms.openlocfilehash: e9163b3c29fd304c80eff46426a30c4fa0ce3b15
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32170029"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130339"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Plánování kapacity virtuálního počítače technologie Hyper-V s řešením kapacitu a výkon (Preview)
 

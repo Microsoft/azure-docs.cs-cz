@@ -3,7 +3,7 @@ title: Používání úložiště blob pro službu IIS a tabulka úložiště pr
 description: Analýzy protokolů můžete přečíst v protokolech služby Azure, které zápis diagnostiky table Storage nebo protokoly služby IIS zapisovat do úložiště objektů blob.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: bf444752-ecc1-4306-9489-c29cb37d6045
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 459ef90ca1d76bada6565bfefd7b4bd1086197d5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: 8f923cc081ea652c8e32d4109225044c70c8767d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23855443"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128737"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Používat úložiště objektů blob v Azure pro službu IIS a Azure úložiště table pro události se analýzy protokolů
 
@@ -45,7 +45,7 @@ Pro analýzy protokolů pro shromažďování těchto protokolů Azure Diagnosti
 | Provozní události služby prostředků infrastruktury |Uzly Service Fabric |WADServiceFabricSystemEventTable |
 | Události služby Fabric spolehlivé objektu Actor |Uzly Service Fabric |WADServiceFabricReliableActorEventTable |
 | Události spolehlivé služby Service Fabric |Uzly Service Fabric |WADServiceFabricReliableServiceEventTable |
-| Protokoly událostí systému Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADWindowsEventLogsTable (Table Storage) |
+| Protokoly událostí Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADWindowsEventLogsTable (Table Storage) |
 | Protokoly systému Windows trasování událostí pro Windows |Uzly Service Fabric <br> Virtuální počítače <br> Webové role <br> Role pracovního procesu |WADETWEventTable (Table Storage) |
 
 > [!NOTE]
@@ -61,7 +61,7 @@ Pomocí následujícího postupu umožníte Azure diagnostics ve virtuálním po
 ### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>Chcete-li povolit Azure diagnostics ve virtuálním počítači pomocí portálu Azure
 1. Když vytvoříte virtuální počítač, nainstalujte agenta virtuálního počítače. Pokud virtuální počítač již existuje, ověřte, že je již nainstalován Agent virtuálního počítače.
 
-   * Na portálu Azure přejděte do virtuálního počítače, vyberte **volitelné konfiguraci**, pak **diagnostiky** a nastavte **stav** k **na**.
+   * Na portálu Azure přejděte do virtuálního počítače, vyberte **volitelné konfiguraci**, pak **diagnostiky** a nastavte **stav** k **na** .
 
      Po dokončení zpracování se má virtuální počítač Azure Diagnostics rozšíření nainstalovaná a spuštěná. Toto rozšíření je zodpovědná za shromažďování dat diagnostiky.
 2. Povolí monitorování a konfigurace protokolování událostí na existující virtuální počítač. Můžete povolit diagnostiku na úrovni virtuálního počítače. Povolte diagnostiku a pak nastavte protokolování událostí, proveďte následující kroky:
@@ -123,7 +123,7 @@ Jakmile aktualizované konfigurace diagnostiky se použije ke cloudové službě
 ## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>Pomocí portálu Azure ke shromažďování protokolů z Azure Storage
 Na portálu Azure můžete použít ke konfiguraci analýzy protokolů pro shromažďování protokolů u následujících služeb Azure:
 
-* Clusterů Service Fabric
+* Clustery Service Fabricu
 * Virtuální počítače
 * Web/role pracovního procesu
 
@@ -192,7 +192,7 @@ Zkontrolujte následující ukázka skriptu, zkopírujte jej, upravte ho požado
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Shromažďovat protokoly a metriky pro služby Azure](log-analytics-azure-storage.md) podporovaných službami Azure.
 * [Povolit řešení](log-analytics-add-solutions.md) zajistit přehled o data.
 * [Použijte vyhledávací dotazy](log-analytics-log-searches.md) analyzovat data.

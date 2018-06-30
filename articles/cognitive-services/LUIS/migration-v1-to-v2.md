@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: v-geberr
-ms.openlocfilehash: 060baa6578f8a31234a1a667e2d591b92c39a06f
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 45b6c2eda77668616a7e49ecd5ea2715af3cd3ce
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264280"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111582"
 ---
 # <a name="api-v2-migration-guide"></a>Příručka k migraci v2 rozhraní API
 Verze 1 [koncový bod](https://aka.ms/v1-endpoint-api-docs) a [vytváření](https://aka.ms/v1-authoring-api-docs) přestanou rozhraní API. Tento průvodce vám pomůže porozumět způsob migrace do verze 2 [koncový bod](https://aka.ms/luis-endpoint-apis) a [vytváření](https://aka.ms/luis-authoring-apis) rozhraní API. 
@@ -104,14 +104,14 @@ Koncový bod rozhraní API je nové parametry řetězce dotazu, jakož i jiné o
 ```
 
 ## <a name="key-management-no-longer-in-api"></a>Správa klíčů již v rozhraní API
-Klíč předplatného rozhraní API jsou zastaralé, vrácení 410 GONE.
+Klíč předplatného koncový bod rozhraní API jsou zastaralé, vrácení 410 GONE.
 
 | verze | trasa |
 |--|--|
 |1|/luis/V1.0/Prog/subscriptions|
 |1|/ luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
-Azure [předplatné klíče](luis-how-to-azure-subscription.md) jsou generovány na portálu Azure. Přiřazení klíče do aplikace LEOŠ na **[publikovat](manage-keys.md)** stránky. Není nutné vědět, skutečná hodnota klíče. LEOŠ přiřazení používá název odběru. 
+Azure [koncový bod klíče](luis-how-to-azure-subscription.md) jsou generovány na portálu Azure. Přiřazení klíče do aplikace LEOŠ na **[publikovat](manage-keys.md)** stránky. Není nutné vědět, skutečná hodnota klíče. LEOŠ přiřazení používá název odběru. 
 
 ## <a name="new-versioning-route"></a>Novou trasu Správa verzí
 Je nyní součástí modelu v2 [verze](luis-how-to-manage-versions.md). Název verze je 10 znaků trasy. Výchozí verze je "0,1".

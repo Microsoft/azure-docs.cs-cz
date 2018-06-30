@@ -10,12 +10,12 @@ ms.author: jamesbak
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: a726779e731be2534e457ba595d93fe51c023601
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: e92c4efba29f1c40f6d4cb155974ca3a896796e5
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035755"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114329"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure Blob souborů ovladačů (ABFS): vyhrazené ovladač Azure Storage pro Hadoop
 
@@ -29,7 +29,7 @@ K překonání nedostatky vyplývajících návrhu z WASB, byl proto nové služ
 
 ## <a name="the-azure-blob-file-system-driver"></a>Ovladač systému souborů objektů Blob Azure
 
-[Rozhraní Azure Data Lake Storage REST](https://docs.microsoft.com/en-us/rest/api/datalakestorage/) je navržen pro podporu sémantiku systému souborů přes Azure Blob Storage. Vzhledem k tomu, že systému souborů Hadoop je navržen pro podporu stejnou sémantiku se nevyžaduje pro komplexní mapování v ovladači. Ovladač systému souborů objektů Blob Azure (nebo ABFS) tedy shim pouhé klienta pro REST API.
+[Rozhraní Azure Data Lake Storage REST](https://docs.microsoft.com/en-us/rest/api/storageservices/data-lake-storage-gen2) je navržen pro podporu sémantiku systému souborů přes Azure Blob Storage. Vzhledem k tomu, že systému souborů Hadoop je navržen pro podporu stejnou sémantiku se nevyžaduje pro komplexní mapování v ovladači. Ovladač systému souborů objektů Blob Azure (nebo ABFS) tedy shim pouhé klienta pro REST API.
 
 Existují však některé funkce, které ovladač musí i nadále provádět:
 

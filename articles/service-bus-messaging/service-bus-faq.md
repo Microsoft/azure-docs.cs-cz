@@ -8,16 +8,16 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: sethm
-ms.openlocfilehash: df60862b6a835340534be4ed43a27267c33b64f5
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: b3171ca264afdbdbddeb26eff8744ee67f336dfe
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34802261"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109515"
 ---
 # <a name="service-bus-faq"></a>Nejčastější dotazy k Service Bus
 
-Tento článek popisuje některé nejčastější dotazy o Microsoft Azure Service Bus. Další informace získáte [podporu nejčastější dotazy k Azure](http://go.microsoft.com/fwlink/?LinkID=185083) obecné Azure – ceny a podporu informace.
+Tento článek popisuje některé nejčastější dotazy o Microsoft Azure Service Bus. Další informace získáte [podporu nejčastější dotazy k Azure](https://azure.microsoft.com/en-us/support/faq/) obecné Azure – ceny a podporu informace.
 
 ## <a name="general-questions-about-azure-service-bus"></a>Obecné otázky o Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Co je Azure Service Bus?
@@ -48,7 +48,7 @@ Následující vlastnosti frontu a téma se nedá změnit. Při zřizování ent
 
 * Dělení
 * Relace
-* Detekce duplicitních
+* Vyhledávání duplicit
 * Expresní entity
 
 ## <a name="pricing"></a>Ceny
@@ -56,7 +56,7 @@ Tato část odpovídá na některé nejčastější dotazy týkající se Servic
 
 [Service Bus ceny a fakturace](service-bus-pricing-billing.md) článek vysvětluje fakturace měřidla v Service Bus. Konkrétní informace o službě Service Bus ceny možnosti najdete v tématu [Service Bus podrobnosti o cenách](https://azure.microsoft.com/pricing/details/service-bus/).
 
-Další informace získáte [Azure podporu nejčastější dotazy k](http://go.microsoft.com/fwlink/?LinkID=185083) pro obecné Azure informace o cenách. 
+Další informace získáte [Azure podporu nejčastější dotazy k](https://azure.microsoft.com/en-us/support/faq/) pro obecné Azure informace o cenách. 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>Jak se vám účtují pro Service Bus?
 Úplné informace o cenách služby Service Bus, najdete v části [Service Bus podrobnosti o cenách][Pricing overview]. Kromě ceny uvedené budou se vám účtovat pro přenosy přidružená data o sazbách za odchozí mimo datové centrum, ve kterém je zajištěna vaší aplikace.

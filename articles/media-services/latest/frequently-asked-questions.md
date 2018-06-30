@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: juliako
-ms.openlocfilehash: 7fe59763162ca53ea0256d5902aeece90525f214
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 098a34aba8e5ce23f64d4bb07e3b9622aa2adb8e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654875"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110410"
 ---
 # <a name="azure-media-services-v3-preview-frequently-asked-questions"></a>Azure Media Services v3 (preview) nejčastější dotazy
 
@@ -30,7 +30,7 @@ Zatím ne. Můžete použít jednu z podporovaných sad SDK. V tématu výukové
 
 Tým služby Media Services je odstranění RUs v v3. Ale práce potřebné služby není úplný. Do té doby se zákazníci, mají nastavení RUs pomocí portálu Azure nebo rozhraní API pro AMS v2 (jak je popsáno v [škálování zpracování média](../previous/media-services-scale-media-processing-overview.md). 
 
-S3 RUs jsou nezbytné, aby **VideoAnalyzerPreset** a **AudioAnalyzerPreset** přednastavení V3.
+Při použití **VideoAnalyzerPreset** nebo **AudioAnalyzerPreset**, nastavení vašeho účtu Media Services k 10 jednotek rezervovaných média S3.
 
 ## <a name="does-v3-asset-have-no-assetfile-concept"></a>Má V3 Asset žádná koncepce AssetFile?
 
@@ -56,7 +56,7 @@ Další informace najdete v tématu [filtrování, řazení, stránkování](ass
 
 ## <a name="how-to-retrieve-an-entity-in-media-services-v3"></a>Jak načíst entity ve službě Media Services v3?
 
-V3 je založena na jednotné rozhraní API prostor, který zveřejňuje funkce Správa a provoz založený na **Azure Resource Manager**. V souladu s **Azure Resource Manager**, jsou vždy jedinečné názvy prostředků. Proto můžete použít všechny řetězce jedinečný identifikátor (například GUID) pro názvy prostředků. 
+V3 je založena na jednotné rozhraní API prostor, který zveřejňuje funkce Správa a provoz založený na **Azure Resource Manager**. V souladu s **Azure Resource Manager**, jsou vždy jedinečné názvy prostředků. Jako názvy prostředků tedy můžete použít jakékoli řetězce jedinečného identifikátoru (například identifikátory GUID). 
 
 ## <a name="next-steps"></a>Další postup
 

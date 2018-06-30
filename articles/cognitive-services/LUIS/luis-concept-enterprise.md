@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: v-geberr
-ms.openlocfilehash: 1f501981dd4b45f4d36188ef4c2aaa6cb11881a2
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: f5d1cf61ca7b8d8eeaed52fc3f45f8d4847ddda9
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263749"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37108684"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Strategie organizace pro LEOŠ aplikace
 Přečtěte si tyto návrhu strategie pro firemní aplikace.
@@ -32,7 +32,7 @@ Určete jenom jedna aplikace, jako je hlavní server. Všechny utterances, kter�
 Plánování pravidelné [kontrolní koncový bod utterances](label-suggested-utterances.md) active informací, jako je například každé dva týdny, pak přeučování a znovu publikovat. 
 
 ### <a name="assign-multiple-luis-keys-to-same-app"></a>Přiřadit více LEOŠ klíče stejná aplikace
-Pokud vaše aplikace LEOŠ přijme další koncový bod přístupů než povoluje kvóta jeden klíč, vytvořte a přiřaďte další klíče LEOŠ aplikace. Vytvoření přenosem manager nebo službu spravovat dotazy koncového bodu v rámci předplatného klíče Vyrovnávání zatížení. 
+Pokud vaše aplikace LEOŠ přijme další koncový bod přístupů než povoluje kvóta jeden klíč, vytvořte a přiřaďte další klíče LEOŠ aplikace. Vytvoření přenosem manager nebo službu spravovat dotazy koncového bodu v rámci klíče koncový bod Vyrovnávání zatížení. 
 
 ## <a name="when-your-monolithic-app-returns-wrong-intent"></a>Když aplikace monolitický vrátí nesprávný záměr
 Pokud vaše aplikace je určená k předvídání širokou škálu utterances uživatele, zvažte implementaci [odesílání modelu](#dispatch-tool-and-model). Rozdělení monolitický aplikace umožňuje LEOŠ detekce fokus mezi záměry úspěšně místo získávání nerozumíte mezi záměry napříč aplikace nadřazené a podřízené aplikace. 

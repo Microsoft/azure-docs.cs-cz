@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7cfcc5b907b28a877bea57ea869e17f01aae00cb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: d1b83432e925e4f6fd439ac78acfde56ad31ba52
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265383"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128385"
 ---
 # <a name="glossary"></a>Glosář
 
@@ -70,7 +70,7 @@ Stejné jako [aktivní verze](#active-version)
 
 V kontextu LEOŠ **domény** je oblast znalostní báze. Vaše doména je specifické pro vaši aplikaci část znalostní báze. To může být obecné oblasti, jako je například aplikace cesta agenta. Cesta agenta aplikace může být také specifické pro právě oblasti informace o vaší společnosti, jako je například konkrétní zeměpisné polohy, jazyků a služby. 
 
-## <a name="endpoint"></a>koncový bod
+## <a name="endpoint"></a>Koncový bod
 
 [Koncový bod LEOŠ](https://aka.ms/luis-endpoint-apis) je adresa URL, kde odeslat LEOŠ dotazy po [LEOŠ aplikace](#luis-app) je vytvořena a publikovaná. Adresa URL koncového bodu obsahuje oblasti publikované aplikace, stejně jako ID aplikace. Koncový bod můžete najít na **[publikovat](publishapp.md)** stránku aplikace, v tabulce prostředky a klíče nebo je můžete získat adresu URL koncového bodu z [získat informace o aplikaci](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) rozhraní API.
 
@@ -82,11 +82,11 @@ Koncový bod příkladu vypadá takto:
 |--|--|
 |oblast| [publikované oblast](luis-reference-regions.md#publishing-regions) |
 |appID | ID aplikace LEOŠ |
-|ID předplatného | Klíč předplatného LEOŠ vytvořit na portálu Azure |
-|OTÁZKY | Utterance |
+|ID předplatného | Klíč koncového bodu (předplatné) LEOŠ vytvořit na portálu Azure |
+|OTÁZKY | utterance |
 |timezoneOffset| minutes|
 
-## <a name="entity"></a>Entity
+## <a name="entity"></a>entity
 
 [Entity](luis-concept-entity-types.md) jsou důležité slova v [utterances](luis-concept-utterance.md) popisují informace, které jsou relevantní pro [záměr](luis-concept-intent.md), a někdy jsou nezbytné k němu. Entita je v podstatě datový typ v LEOŠ. 
 
@@ -110,7 +110,7 @@ Ve strojovém učení se [funkce](luis-concept-feature.md) je rozlišovací znak
 
 [Záměr](luis-concept-intent.md) představuje úloh nebo akce, které chce uživatel provést. Je to účel nebo cílem vyjádřené v vstup od uživatele, například rezervace letu, platícího faktury nebo hledání článku zprávy. V LEOŠ záměrné předpovědi je založena na celý utterance. Entity, pro srovnání, jsou údaje utterance.
 
-## <a name="labeling"></a>označování
+## <a name="labeling"></a>Označování
 
 Označování je přiřazování slovo nebo frázi v záměr [utterance](#utterance) s [entity](#entity) (datový typ). 
 
@@ -137,7 +137,7 @@ A [předem domény](luis-how-to-use-prebuilt-domains.md) je LEOŠ aplikace, nako
 
 A [předem entity](pre-builtentities.md) je entita LEOŠ poskytuje pro běžné typy informace, jako je číslo, adresa URL a e-mailu. Můžete přidat předem entity do vaší aplikace. 
 
-## <a name="precision"></a>přesnost
+## <a name="precision"></a>Přesnost
 V [testování batch][batch-testing], přesnost (také nazývané kladnou hodnotu prediktivní) je podíl relevantní utterances mezi načtené utterances.
 
 ## <a name="programmatic-key"></a>Programová klíč
@@ -173,9 +173,9 @@ Na stránce publikovat povolit [kontrola pravopisu v Bingu](publishapp.md#enable
 
 Stejné jako [programový klíč](#programmatic-key), přejmenován na klíč pro vytváření obsahu.
 
-## <a name="subscription-key"></a>Klíč předplatného
+## <a name="subscription-key"></a>klíč předplatného
 
-Klíč předplatného je klíč přidružený k službě LEOŠ [jste vytvořili v Azure](luis-how-to-azure-subscription.md). Tento klíč se [vytváření klíč](#programmatic-key). Pokud máte klíč předplatného, by měl použít pro všechny žádosti koncového bodu místo pro tvorbu klíče. Můžete zobrazit svůj aktuální klíč předplatného uvnitř adresu URL koncového bodu v dolní části [ **publikovat aplikace** stránky](publishapp.md) v [LEOŠ](luis-reference-regions.md) webu. Je hodnota **klíč předplatného** dvojice název hodnota. 
+Klíč předplatného je **koncový bod** klíč přidružený k službě LEOŠ [jste vytvořili v Azure](luis-how-to-azure-subscription.md). Tento klíč se [vytváření klíč](#programmatic-key). Pokud už máte klíč koncového bodu, by měl použít pro všechny žádosti koncového bodu místo pro tvorbu klíče. Můžete zobrazit vaše aktuální klíč koncového bodu uvnitř adresu URL koncového bodu v dolní části [ **publikovat aplikace** stránky](publishapp.md) v [LEOŠ](luis-reference-regions.md) webu. Je hodnota **klíč předplatného** dvojice název hodnota. 
 
 ## <a name="test"></a>Test
 
@@ -202,7 +202,7 @@ V [testování batch][batch-testing], datových bodů představují utterances, 
 
 V [testování batch][batch-testing], datových bodů představují utterances, ve kterých vaše aplikace správně předpovědět existenci cílovou záměr nebo entitu.
 
-## <a name="utterance"></a>Utterance
+## <a name="utterance"></a>utterance
 
 Utterance je přirozeného jazyka slovní spojení "kniha 2 lístky k webu Seattle další úterý". Příklad utterances se přidají do záměr. 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/15/2018
 ms.author: estfan
 ms.custom: include file
-ms.openlocfilehash: 013e230aa7e096f6a90ed7cf9e93a44fbdeb3bd6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4ffda692da0ab7b63f7376c36dfab0bec914e334
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34678207"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37138061"
 ---
 * Pokud používáte Azure SQL Database, postupujte podle kroků v části [připojit k databázi SQL Azure](#connect-azure-sql-db). 
 
@@ -66,7 +66,7 @@ Abyste mohli vybrat bránu, ujistěte se, že jste již [nastavit vaše brána d
 
 1. Když aktivační události SQL nebo akce vás vyzve k zadání informací o připojení, postupujte takto:
 
-   1. V aktivační události nebo akce, vyberte **připojit prostřednictvím brány místní data** tak, aby se zobrazují možnosti serveru SQL.
+   1. V aktivační události nebo akce, vyberte **připojit prostřednictvím místní brána dat** tak, aby se zobrazují možnosti serveru SQL.
 
    2. Vytvořte název připojení.
 

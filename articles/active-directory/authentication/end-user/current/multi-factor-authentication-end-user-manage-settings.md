@@ -16,15 +16,15 @@ ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
 ms.custom: end-user
-ms.openlocfilehash: 25a51cf534afaabd6fd540d70152659fc2478e11
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 81c2323dd65ee18d42a231306840eeb65bd09313
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102235"
+ms.locfileid: "37127454"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>Spravovat nastavení pro dvoustupňové ověření
-Tento článek obsahuje odpovědi na dotazy týkající se aktualizovat nastavení pro dvoustupňové ověření nebo vícefaktorové ověřování. Pokud máte problémy s přihlášení ke svému účtu, podívejte se na [došlo k potížím s dvoustupnovym overovanim](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md) Poradce při potížích.
+Tento článek obsahuje odpovědi na dotazy týkající se aktualizovat nastavení pro dvoustupňové ověření nebo vícefaktorové ověřování. Pokud máte problémy s přihlášení ke svému účtu, podívejte se na [došlo k potížím s dvoustupnovym overovanim](multi-factor-authentication-end-user-troubleshoot.md) Poradce při potížích.
 
 ## <a name="where-to-find-the-settings-page"></a>Kde najít nastavení stránky
 V závislosti na tom, jak vaše společnost nastavit ověřování Azure Multi-Factor Authentication jsou na několika místech, kde můžete změnit nastavení jako vaše telefonní číslo.
@@ -55,7 +55,7 @@ Pokud kliknete na tento odkaz nefunguje pro vás, můžete získat také na **da
 Je potřeba nakonfigurovat telefonní číslo sekundární ověřování.  Protože vaše primární telefonní číslo a mobilní aplikace jsou pravděpodobně na stejné telefonu, sekundární telefonní číslo je jediným způsobem, jak bude moct vrátit ke svému účtu, pokud dojde ke ztrátě nebo odcizení vašeho telefonu.
 
 > [!NOTE]
-> Pokud nebudete mít přístup k vaší primární telefonní číslo a potřebujete pomoc, získávání ve ke svému účtu, najdete v článku [došlo k potížím s dvoustupnovym overovanim](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md) článek o další pomoc.  
+> Pokud nebudete mít přístup k vaší primární telefonní číslo a potřebujete pomoc, získávání ve ke svému účtu, najdete v článku [došlo k potížím s dvoustupnovym overovanim](multi-factor-authentication-end-user-troubleshoot.md) článek o další pomoc.  
 
 **Chcete-li změnit primární telefonní číslo:**  
 
@@ -80,5 +80,5 @@ V závislosti na nastavení organizace může mít zaškrtávací políčko, kte
 Po odinstalaci aplikace ze zařízení nebo se zařízení resetovat, neodebere aktivace na back-end. Další informace najdete v tématu [Microsoft Authenticator](../../../../multi-factor-authentication/end-user/microsoft-authenticator-app-how-to.md).
 
 ## <a name="next-steps"></a>Další postup
-* Získat tipy pro odstraňování potíží a nápovědy na [došlo k potížím s dvoustupňové ověření](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md)
+* Získat tipy pro odstraňování potíží a nápovědy na [došlo k potížím s dvoustupňové ověření](multi-factor-authentication-end-user-troubleshoot.md)
 * Nastavit [hesla aplikací](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-app-passwords.md) pro všechny aplikace, které nepodporují dvoustupňové ověřování.

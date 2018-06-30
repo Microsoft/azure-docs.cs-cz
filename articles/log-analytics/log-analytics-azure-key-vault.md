@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 9c4b16ec11d1990de687014c5385314f0e0c602a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: na
+ms.openlocfilehash: 47158d0c2b5a80ceae25b275836d45b63db50ff4
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30238388"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127038"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Azure Key Vault Analytics řešení v analýzy protokolů
 
@@ -113,14 +114,14 @@ Po kliknutí **přehled** dlaždici, můžete zobrazit souhrny souborů protokol
 | httpStatusCode_d |Stavový kód HTTP vrácených požadavkem (například *200*) |
 | id_s |Jedinečné ID požadavku |
 | identity_claim_appid_g | Identifikátor GUID pro id aplikace |
-| OperationName |Název operace, jak je uvedeno v [protokolování Azure Key Vault](../key-vault/key-vault-logging.md) |
+| operationName |Název operace, jak je uvedeno v [protokolování Azure Key Vault](../key-vault/key-vault-logging.md) |
 | OperationVersion |Verze rozhraní REST API požadovaná klientem (například *2015-06-01*) |
 | requestUri_s |Identifikátor URI požadavku |
 | Prostředek |Název trezoru klíčů |
 | ResourceGroup |Skupina prostředků služby key vault |
 | ID prostředku |ID prostředku Azure Resource Manageru Pro protokoly Key Vault to je ID prostředku Key Vault. |
 | ResourceProvider |*MICROSOFT.KEYVAULT* |
-| ResourceType | *VAULTS* |
+| ResourceType | *TREZORY* |
 | ResultSignature |Stav protokolu HTTP (například *OK*) |
 | ResultType |Výsledek požadavku REST API (například *úspěch*) |
 | SubscriptionId |ID předplatného Azure předplatného obsahující Key Vault |

@@ -8,17 +8,17 @@ ms.date: 6/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0a5cbabf8080efd1ae25ba151a1be339e8f5cad2
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
-ms.translationtype: HT
+ms.openlocfilehash: 05a571c4491122ec5c7c35f6bccc4b8c332a4be2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081750"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130705"
 ---
 # <a name="azure-iot-edge-support"></a>Podpora Azure IoT Edge
 Existuje mnoho různých způsobů, jak získat podporu pro produkt Azure IoT okraj.
 
-**Zasílání zpráv o chybách** – většina vývoj, která přejde do Azure IoT Edge produktu probíhá IoT Edge projektu open source. Může být ohlášeny chyby [stránky problémy](https://github.com/azure/iot-edge/issues) projektu. Opravy rychle zkontrolujte cestě z projektu v aktualizace produktu.
+**Zasílání zpráv o chybách** – většina vývoj, která přejde do Azure IoT Edge produktu probíhá IoT Edge projektu open source. Může být ohlášeny chyby [stránky problémy](https://github.com/azure/iotedge/issues) projektu. Opravy rychle zkontrolujte cestě z projektu v aktualizace produktu.
 
 **Tým podpory zákazníků společnosti Microsoft** – uživatelé, kteří mají [plán podpory](https://azure.microsoft.com/support/plans/) tým podpory zákazníků společnosti Microsoft můžete použít tak, že vytvoříte lístek podpory přímo z [portál Azure]( https://ms.portal.azure.com/signin/index/?feature.settingsportalinstance=mpac).
 

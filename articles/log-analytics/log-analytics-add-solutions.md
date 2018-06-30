@@ -3,7 +3,7 @@ title: Přidat řešení pro správu Azure Log Analytics | Microsoft Docs
 description: Řešení pro správu v Azure jsou kolekce logiku, vizualizace a data pořízení pravidel, které poskytují metriky seskupit kolem oblasti konkrétní problém.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f029dd6d-58ae-42c5-ad27-e6cc92352b3b
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f6ec6dd46d28518baf6f105dd232a4b0e77a8c6f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: na
+ms.openlocfilehash: 0cffdbcaa128dce52758e4b618b93dd763961361
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29395458"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131471"
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Přidat řešení pro správu Azure Log Analytics do pracovního prostoru
 
@@ -74,41 +74,41 @@ Všechna řešení v následující tabulce jsou dostupné v rámci portálu Azu
 
 | Řešení pro správu                                                                       | Nabídka                                                                     | Cenové úrovně<sup>1</sup>                                                 | Poznámky |
 | ---                                                                                       | ---                                                                       | ---                                                                                                       | ---   |
-| [Activity Log Analytics](log-analytics-activity.md)                                                                   | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | 90 dnů dat jsou k dispozici zdarma<br>Data nejsou předmětem krytky úroveň Free |
-| [Posouzení AD](log-analytics-ad-assessment.md)                                           | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
-| [Stav replikace AD](log-analytics-ad-replication-status.md)                           | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
-| [Stav agenta](../operations-management-suite/oms-solution-agenthealth.md)                                                                                | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Data nejsou předmětem krytky úroveň Free<br> Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
-| [Správa výstrah](log-analytics-solution-alert-management.md)                            | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
-| [Konektor služby Statistika aplikace (Preview)](log-analytics-app-insights-connector.md)                                               | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+| [Activity Log Analytics](log-analytics-activity.md)                                                                   | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | 90 dnů dat jsou k dispozici zdarma<br>Data nejsou předmětem krytky úroveň Free |
+| [Posouzení AD](log-analytics-ad-assessment.md)                                           | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+| [Stav replikace AD](log-analytics-ad-replication-status.md)                           | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
+| [Stav agenta](../operations-management-suite/oms-solution-agenthealth.md)                                                                                | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Data nejsou předmětem krytky úroveň Free<br> Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
+| [Správa výstrah](log-analytics-solution-alert-management.md)                            | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
+| [Konektor služby Statistika aplikace (Preview)](log-analytics-app-insights-connector.md)                                               | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
 | [Automatizace hybridní pracovní proces](../automation/automation-hybrid-runbook-worker.md)                                                                     | <ul><li>Automation and Control</li></ul>                                  | Free<br> Za&nbsp;uzlu&nbsp;(OMS)                                                                         | Vyžaduje pracovní prostor analýzy protokolů propojení na účet služby Automation. |
-| [Analýza brány Azure aplikace](log-analytics-azure-networking-analytics.md)    | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
-| [Skupina zabezpečení sítě Azure Analytics](log-analytics-azure-networking-analytics.md)     | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
-| [Analýza Azure SQL (Preview)](log-analytics-azure-sql.md)                                                       | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br>Za&nbsp;uzlu&nbsp;(OMS)                                                                          | Vyžaduje pracovní prostor analýzy protokolů propojení na účet služby Automation.|
-| [Azure Web Apps Analytics](log-analytics-azure-web-apps-analytics.md)     | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
-|[Backup](../backup/backup-introduction-to-azure-backup.md)                                                                                 | <ul><li>Statistiky a analýza</li></ul>                                   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)                                                                       | Vyžaduje classic úložiště záloh.<br> Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
-| [Kapacitu a výkon (Preview)](log-analytics-capacity.md)                                                   | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+| [Analýza brány Azure aplikace](log-analytics-azure-networking-analytics.md)    | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+| [Skupina zabezpečení sítě Azure Analytics](log-analytics-azure-networking-analytics.md)     | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+| [Analýza Azure SQL (Preview)](log-analytics-azure-sql.md)                                                       | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br>Za&nbsp;uzlu&nbsp;(OMS)                                                                          | Vyžaduje pracovní prostor analýzy protokolů propojení na účet služby Automation.|
+| [Azure Web Apps Analytics](log-analytics-azure-web-apps-analytics.md)     | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+|[Backup](../backup/backup-introduction-to-azure-backup.md)                                                                                 | <ul><li>Statistiky a analýza</li></ul>                                   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)                                                                       | Vyžaduje classic úložiště záloh.<br> Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
+| [Kapacitu a výkon (Preview)](log-analytics-capacity.md)                                                   | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
 | [Sledování změn](log-analytics-change-tracking.md)                                       | <ul><li>Automation and Control</li></ul>                                  | Free<br> Za&nbsp;uzlu&nbsp;(OMS)                                                                         | Vyžaduje pracovní prostor analýzy protokolů propojení na účet služby Automation. |
-| [Kontejnery](log-analytics-containers.md)                                                 | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
-| [IT Service Management Connector](log-analytics-itsmc-overview.md)                                                | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Za&nbsp;uzlu&nbsp;(OMS)     | |
-| HDInsight HBase monitorování <br>(Preview)                                                  | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
-| [Analýza služby Key Vault](log-analytics-azure-key-vault.md)                   | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
-| [Logiku aplikace B2B](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)                    | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
+| [Containers](log-analytics-containers.md)                                                 | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+| [IT Service Management Connector](log-analytics-itsmc-overview.md)                                                | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Za&nbsp;uzlu&nbsp;(OMS)     | |
+| HDInsight HBase monitorování <br>(Preview)                                                  | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+| [Analýza služby Key Vault](log-analytics-azure-key-vault.md)                   | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+| [Logiku aplikace B2B](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)                    | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
 | [Posouzení malwaru](log-analytics-malware.md)                                            | <ul><li>Zabezpečení a dodržování předpisů</li></ul>                                 | Free<br> Standalone<br>Za&nbsp;uzlu&nbsp;(OMS)                                                                           | Pokud přidáte řešení zabezpečení a dodržování předpisů po 19 června 2017 [fakturuje se podle uzlu](https://azure.microsoft.com/pricing/details/security-compliance/), bez ohledu na to pracovního prostoru cenová úroveň. Prvních 60 dní jsou volné.  |
 | [Sledování výkonu sítě](log-analytics-network-performance-monitor.md) <br>  | <ul><li>Statistiky a analýza</li></ul>                                   | Free<br> Za&nbsp;uzlu&nbsp;(OMS)                                                                         | |
-| [Analýza Office 365 (Preview)](../operations-management-suite/oms-solution-office-365.md)                                                       | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+| [Analýza Office 365 (Preview)](../operations-management-suite/oms-solution-office-365.md)                                                       | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
 | [Zabezpečení a audit](../operations-management-suite/oms-security-getting-started.md)      | <ul><li>Zabezpečení&nbsp;a&nbsp;dodržování předpisů</li></ul>                       | Free<br> Standalone<br>Za&nbsp;uzlu&nbsp;(OMS)                                                                           | Shromažďování protokolů událostí zabezpečení vyžaduje toto řešení<br>Pokud přidáte řešení zabezpečení a dodržování předpisů po 19 června 2017 [fakturuje se podle uzlu](https://azure.microsoft.com/pricing/details/security-compliance/), bez ohledu na to pracovního prostoru cenová úroveň. Prvních 60 dní jsou volné. |
-| [Služba Fabric Analytics (Preview)](log-analytics-service-fabric.md)                     | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+| [Služba Fabric Analytics (Preview)](log-analytics-service-fabric.md)                     | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
 | [Mapa služeb (Preview)](../operations-management-suite/operations-management-suite-service-map.md) | <ul><li>Statistiky a analýza</li></ul>                      | Free<br> Za&nbsp;uzlu&nbsp;(OMS)                                                                         | K dispozici ve východní USA, západní Evropa a střed USA – západ    |
-| [Site Recovery](../site-recovery/site-recovery-overview.md)                                                                               | <ul><li>Statistiky a analýza</li></ul>                                   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)                                                                       | Vyžaduje classic trezoru Site Recovery.<br> Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
-| [Posouzení SQL](log-analytics-sql-assessment.md)                                         | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
-| Spuštění/zastavení virtuálních počítačů mimo špičku<br>(Preview)                                              | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Za&nbsp;uzlu&nbsp;(OMS)                                                                         | Vyžaduje pracovní prostor analýzy protokolů propojení na účet služby Automation. |
-| [SurfaceHub](log-analytics-surface-hubs.md)                                               | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
-| [System Center Operations Manager Assessment (Preview)](log-analytics-scom-assessment.md)  | <ul><li>Statistiky a analýza</li><li>Log Analytics</li></ul>        | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+| [Site Recovery](../site-recovery/site-recovery-overview.md)                                                                               | <ul><li>Statistiky a analýza</li></ul>                                   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)                                                                       | Vyžaduje classic trezoru Site Recovery.<br> Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
+| [Posouzení SQL](log-analytics-sql-assessment.md)                                         | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+| Spuštění/zastavení virtuálních počítačů mimo špičku<br>(Preview)                                              | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Za&nbsp;uzlu&nbsp;(OMS)                                                                         | Vyžaduje pracovní prostor analýzy protokolů propojení na účet služby Automation. |
+| [SurfaceHub](log-analytics-surface-hubs.md)                                               | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
+| [System Center Operations Manager Assessment (Preview)](log-analytics-scom-assessment.md)  | <ul><li>Statistiky a analýza</li><li>Log Analytics</li></ul>        | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
 | [Správa aktualizací](../operations-management-suite/oms-solution-update-management.md)                                                                         | <ul><li>Automation and Control</li></ul>                                  | Free<br> Za&nbsp;uzlu&nbsp;(OMS)                                                                         | Vyžaduje pracovní prostor analýzy protokolů propojení na účet služby Automation. |
-| [Dodržování předpisů pro aktualizaci (Preview)](https://docs.microsoft.com/windows/deployment/update/update-compliance-get-started)                                                             | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Bez poplatků dat nebo uzly<br>Data, která není předmětem krytky úroveň Free.<br> Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
-| [Upgrade Readiness](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started)                                                          | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Bez poplatků dat nebo uzly<br>Data, která není předmětem krytky úroveň Free.<br> Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
-| [VMware monitorování (Preview)](log-analytics-vmware.md)                                | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Per&nbsp;GB&nbsp;(Standalone)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
-| [Wire Data 2.0 (Preview)](log-analytics-wire-data.md)                                                                 | <ul><li>Statistiky a analýza</li></ul>                                   | Free<br> Za&nbsp;uzlu&nbsp;(OMS)                                                                         | K dispozici ve východní USA, západní Evropa a střed USA – západ |
+| [Dodržování předpisů pro aktualizaci (Preview)](https://docs.microsoft.com/windows/deployment/update/update-compliance-get-started)                                                             | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Bez poplatků dat nebo uzly<br>Data, která není předmětem krytky úroveň Free.<br> Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
+| [Upgrade Readiness](https://docs.microsoft.com/windows/deployment/upgrade/upgrade-readiness-get-started)                                                          | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | Bez poplatků dat nebo uzly<br>Data, která není předmětem krytky úroveň Free.<br> Chcete-li přidat z portálu Azure nebo marketplace není k dispozici. |
+| [VMware monitorování (Preview)](log-analytics-vmware.md)                                | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Standard<br> Premium&nbsp;(OMS)<br> Za&nbsp;GB&nbsp;(samostatně)<br> Za&nbsp;uzlu&nbsp;(OMS)   | |
+| [Data kabelové sítě 2.0 (Preview)](log-analytics-wire-data.md)                                                                 | <ul><li>Statistiky a analýza</li></ul>                                   | Free<br> Za&nbsp;uzlu&nbsp;(OMS)                                                                         | K dispozici ve východní USA, západní Evropa a střed USA – západ |
 
 <sup>1</sup> *standardní* a *Premium (OMS)* cenové úrovně jsou dostupné pouze pro zákazníky, kteří vytvořili jejich pracovní prostor analýzy protokolů před 21 září 2016.
 
@@ -118,7 +118,7 @@ Jsou k dispozici z komunity poskytuje řešení [šablony Azure Galerie](https:/
 
 | Řešení pro správu               | Nabídka                                                                     | Cenové úrovně                         | Poznámky |
 | ---                               | ---                                                                       | ---                                   | ---   |
-| Všechna řešení pro zadaný komunity  | <ul><li>Insight&nbsp;and&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Za&nbsp;uzlu&nbsp;(OMS)     |   Vyžaduje pracovní prostor analýzy protokolů propojení na účet služby Automation. |
+| Všechna řešení pro zadaný komunity  | <ul><li>Přehled&nbsp;a&nbsp;Analytics</li><li>Log Analytics</li></ul>   | Free<br> Za&nbsp;uzlu&nbsp;(OMS)     |   Vyžaduje pracovní prostor analýzy protokolů propojení na účet služby Automation. |
 
 
 
@@ -146,22 +146,22 @@ Agent služby Windows analýzy protokolů a agenta System Center Operations Mana
 | Správu výstrah (Nagios) |Linux |&#8226; |  |  |  |  |v případě přijetí |
 | Správu výstrah (Zabbix) |Linux |&#8226; |  |  |  |  |1 minuta |
 | Správu výstrah (Operations Manager) |Windows |  |&#8226; |  |&#8226; |&#8226; |3 minuty |
-| Konektor služby Statistika aplikace (Preview) | Azure |   |   |   |   |   | v oznámení |
-| Analýza brány Azure aplikace | Azure |   |   |   |   |   | v oznámení |
-| Skupina zabezpečení sítě Azure Analytics | Azure |   |   |   |   |   | v oznámení |
-| Analýza Azure SQL (Preview) |Windows |  |  |  |  |  | 10 minut |
+| Application Insights Connector (Náhled) | Azure |   |   |   |   |   | v oznámení |
+| Analýzy Azure Application Gateway | Azure |   |   |   |   |   | v oznámení |
+| Analýzy skupin zabezpečení sítě Azure | Azure |   |   |   |   |   | v oznámení |
+| Azure SQL Analytics (Náhled) |Windows |  |  |  |  |  | 10 minut |
 | Správa kapacit |Windows |&#8226; |&#8226; |  |  |&#8226; |v případě přijetí |
-| Kontejnery | Windows a Linux | &#8226; | &#8226; |   |   |   | 3 minuty |
-| Analýza trezoru klíčů |Windows |  |  |  |  |  |v oznámení |
+| Containers | Windows a Linux | &#8226; | &#8226; |   |   |   | 3 minuty |
+| Key Vault Analytics |Windows |  |  |  |  |  |v oznámení |
 | Sledování výkonu sítě | Windows | &#8226; | &#8226; |   |   |   | TCP metodou handshake každých 5 sekund, data odeslána každé 3 minuty |
-| Analýza Office 365 (Preview) |Windows |  |  |  |  |  |v oznámení |
-| Analýza Service Fabric |Windows |  |  |&#8226; |  |  |5 minut |
+| Office 365 Analytics (Náhled) |Windows |  |  |  |  |  |v oznámení |
+| Service Fabric Analytics |Windows |  |  |&#8226; |  |  |5 minut |
 | Mapa služeb | Windows a Linux | &#8226; | &#8226; |   |   |   | 15 sekund |
 | Posouzení SQL |Windows |&#8226; |&#8226; |  |  |&#8226; |7 dní |
 | SurfaceHub |Windows |&#8226; |  |  |  |  |v případě přijetí |
 | System Center Operations Manager Assessment (Preview) | Windows | &#8226; | &#8226; |   |   | &#8226; | sedm dní |
-| Upgrade Analytics (Preview) | Windows | &#8226; |   |   |   |   | 2 dny |
-| VMware monitorování (Preview) | Linux | &#8226; |   |   |   |   | 3 minuty |
+| Upgrade Analytics (Náhled) | Windows | &#8226; |   |   |   |   | 2 dny |
+| VMware Monitoring (Náhled) | Linux | &#8226; |   |   |   |   | 3 minuty |
 | Linková data |Windows (2012 R2 / 8.1 nebo novější) |&#8226; |&#8226; |  |  |  | 1 minuta |
 
 
@@ -169,7 +169,7 @@ Agent služby Windows analýzy protokolů a agenta System Center Operations Mana
 
 | Řešení pro správu | Platforma | Agent monitorování Microsoft | Agent nástroje Operations Manager | Úložiště Azure | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Automatizace hybridní pracovní proces | Windows | &#8226; | &#8226; |   |   |   | neuvedeno |
+| Automation Hybrid Worker | Windows | &#8226; | &#8226; |   |   |   | neuvedeno |
 | Sledování změn |Windows |&#8226; |&#8226; |  |  |&#8226; |každou hodinu |
 | Sledování změn |Linux |&#8226; |  |  |  |  |každou hodinu |
 | Update Management | Windows |&#8226; |&#8226; |  |  |&#8226; |aspoň 2 časy denně a 15 minut po instalaci aktualizace |
@@ -178,7 +178,7 @@ Agent služby Windows analýzy protokolů a agenta System Center Operations Mana
 
 | Řešení pro správu | Platforma | Agent monitorování Microsoft | Agent nástroje Operations Manager | Úložiště Azure | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Vyhodnocení proti malwaru |Windows |&#8226; |&#8226; |  |  |&#8226; |každou hodinu |
+| Posouzení antimalwaru |Windows |&#8226; |&#8226; |  |  |&#8226; |každou hodinu |
 | Zabezpečení a Audit<sup>1</sup> | Windows a Linux | částečné | částečné | částečné |   | částečné | různé |
 
 <sup>1</sup> řešení zabezpečení a Audit můžete shromažďovat protokoly ze systému Windows, Operations Manager a Linux agenty. V tématu [zdroje dat](#data-sources) pro informace o shromažďování dat o:
@@ -186,7 +186,7 @@ Agent služby Windows analýzy protokolů a agenta System Center Operations Mana
 - Syslog
 - Protokoly událostí zabezpečení systému Windows
 - Protokoly brány firewall systému Windows
-- Protokoly událostí systému Windows
+- Protokoly událostí Windows
 
 
 
@@ -206,14 +206,14 @@ Agent služby Windows analýzy protokolů a agenta System Center Operations Mana
 | Protokoly Azure aktivity |Windows |  |  |  |  |  |v oznámení |
 | Azure diagnostických protokolů |Windows |  |  |  |  |  |v oznámení |
 | Azure diagnostiky metriky |Windows |  |  |  |  |  |v oznámení |
-| ETW |Windows |  |  |&#8226; |  |  |5 minut |
-| Protokoly služby IIS |Windows |&#8226; |&#8226; |&#8226; |  |  |5 minut |
+| Trasování událostí pro Windows |Windows |  |  |&#8226; |  |  |5 minut |
+| Protokoly IIS |Windows |&#8226; |&#8226; |&#8226; |  |  |5 minut |
 | Čítače výkonu |Windows |&#8226; |&#8226; |  |  |  |podle plánu, minimálně 10 sekund. |
 | Čítače výkonu |Linux |&#8226; |  |  |  |  |podle plánu, minimálně 10 sekund. |
 | Syslog |Linux |&#8226; |  |  |  |  |ze služby Azure storage: 10 minut; z agenta: na přijetí |
 | Protokoly událostí zabezpečení systému Windows |Windows |&#8226; |&#8226; |&#8226; |  |  |pro úložiště Azure: 10 min; pro agenta: na přijetí |
 | Protokoly brány firewall systému Windows |Windows |&#8226; |&#8226; |  |  |  |v případě přijetí |
-| Protokoly událostí systému Windows |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; |pro úložiště Azure: 10 min; pro agenta: na přijetí |
+| Protokoly událostí Windows |Windows |&#8226; |&#8226; |&#8226; |  |&#8226; |pro úložiště Azure: 10 min; pro agenta: na přijetí |
 
 
 

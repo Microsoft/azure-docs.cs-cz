@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/29/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 2caf8e14407546d8a2ec7c9d18765dd10e575144
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 8f273a5a2c47b25dc339fd63df127d141fe2f8e2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099337"
+ms.locfileid: "37130239"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>Použít koncept se službou Azure Kubernetes (AKS)
 
@@ -58,11 +58,11 @@ Koncept sestavení Image kontejneru místně a pak je buď nasadí v místním r
 
 ### <a name="create-trust-between-aks-cluster-and-acr"></a>Vytvořit vztah důvěryhodnosti mezi AKS clusteru a ACR
 
-K vybudování důvěry mezi clusteru služby AKS a registru ACR, upravte Azure Active Directory Service Principal použít s AKS přidáním role Přispěvatel na ni s oborem ACR úložiště. Uděláte to tak, spusťte následující příkazy, nahraďte _&lt;aks-rg-name&gt;_ a _&lt;název clusteru aks&gt;_ s skupinu prostředků a název vaší AKS clusteru, a _&lt;acr. rg osoby&gt;_ a _&lt;název acr úložišti&gt;_ s název skupiny a úložiště prostředků ACR úložiště, pro který chcete vytvořit vztah důvěryhodnosti.
+K vybudování důvěry mezi clusteru služby AKS a registru ACR, upravte Azure Active Directory Service Principal použít s AKS přidáním role Přispěvatel na ni s oborem ACR registru. Uděláte to tak, spusťte následující příkazy, nahraďte _&lt;aks-rg-name&gt;_ a _&lt;název clusteru aks&gt;_ s skupinu prostředků a název vaší AKS clusteru, a _&lt;acr. rg osoby&gt;_ a _&lt;název acr registru&gt;_ s názvem skupiny a registru prostředku ACR registru, pro který chcete vytvořit vztah důvěryhodnosti.
 
 ```console
 export AKS_SP_ID=$(az aks show -g <aks-rg-name> -n <aks-cluster-name> --query "servicePrincipalProfile.clientId" -o tsv)
-export ACR_RESOURCE_ID=$(az acr show -g <acr-rg-name> -n <acr-repo-name> --query "id" -o tsv)
+export ACR_RESOURCE_ID=$(az acr show -g <acr-rg-name> -n <acr-registry-name> --query "id" -o tsv)
 az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role contributor
 ```
 

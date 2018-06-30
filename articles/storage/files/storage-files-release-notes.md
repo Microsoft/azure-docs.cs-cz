@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: wgries
-ms.openlocfilehash: 946311c42088d3a5840eb35387c8a552d3d5d70f
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: c1ca8146db8c5d67be53ba4e30d8ab0218aca104
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34735640"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128754"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent-preview"></a>Poznámky k verzi pro agenta Azure File Sync (Preview)
 Azure File Sync umožňuje centralizovat sdílené složky organizace ve službě Soubory Azure bez ztráty flexibility, výkonu a kompatibility místního souborového serveru. Vaše instalace Windows Serveru se transformují na rychlou mezipaměť sdílené složky Azure. Pro místní přístup k datům můžete použít jakýkoli protokol dostupný ve Windows Serveru (včetně SMB, NFS a FTPS). Můžete mít libovolný počet mezipamětí po celém světě.
@@ -25,7 +25,8 @@ Agent Azure File Sync podporuje následující verze:
 
 | Milník | Číslo verze agenta | Datum vydání | Status |
 |----|----------------------|--------------|------------------|
-| Aktualizace 2 | 3.0.12.0 | 22. května 2018 | Podporovaná (doporučená verze) |
+| Kumulativní aktualizace června | 3.0.13.0 | 29. června 2018 | Podporovaná (doporučená verze) |
+| Aktualizace 2 | 3.0.12.0 | 22. května 2018 | Podporováno |
 | Kumulativní aktualizace duben | 2.3.0.0 | 8 může 2018 | Podporováno |
 | Kumulativní aktualizace března | 2.2.0.0 | 12. březen 2018 | Podporováno |
 | Kumulativní aktualizace února | 2.1.0.0 | 28. února 2018 | Podporováno |
@@ -37,6 +38,12 @@ Agent Azure File Sync podporuje následující verze:
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Azure File Sync
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-30130"></a>Verze agenta 3.0.13.0
+Následující poznámky k verzi jsou pro verzi agenta Azure souboru Sync vydané 29. června 2018 3.0.13.0. Tyto poznámky jsou kromě poznámky k verzi pro verzi 3.0.12.0 uvedené.
+
+Tato verze obsahuje následující potíže:
+- Body rozboru synchronizace nezdaří, pokud server se přidá do existující skupiny sync, pokud existují v umístění koncového bodu serveru na serveru.
 
 ## <a name="agent-version-30120"></a>Verze agenta 3.0.12.0
 Následující poznámky k verzi jsou pro verzi 3.0.12.0 agenta synchronizace souboru Azure (vydané 22 může 2018).

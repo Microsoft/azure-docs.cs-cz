@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 28fde09fa9291fbcd64ce4542a008f48dd0018d1
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 8d8620a1c53037be6f1a33083f41964655a04921
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265248"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112112"
 ---
 # <a name="data-extraction"></a>Extrakce dat
 LEOŠ vám dává možnost pro získání informací z utterances přirozeného jazyka uživatele. Informace se extrahuje tak, že ho můžete používat programu, aplikace nebo chatbot provádět akci.
@@ -26,7 +26,7 @@ LEOŠ poskytuje data z k publikovanému [koncový bod](luis-glossary.md#endpoint
 
 `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<subscription-key>&verbose=true&timezoneOffset=0&q=book 2 tickets to paris`
 
-`appID` Je k dispozici na **nastavení** stránky vaší aplikace LEOŠ, stejně jako část adresy URL (po `/apps/`) při úpravách LEOŠ aplikaci. `subscription-key` Je koncový bod klíč používaný k dotazování vaší aplikace. I když můžete používat klíč pro tvorbu nebo starter volné při zjišťujete LEOŠ, je potřeba změnit předplatné klíč na klíč, který podporuje vaše [očekávaného využití LEOŠ](luis-boundaries.md#key-limits). `timezoneOffset` Jednotka je minut.
+`appID` Je k dispozici na **nastavení** stránky vaší aplikace LEOŠ, stejně jako část adresy URL (po `/apps/`) při úpravách LEOŠ aplikaci. `subscription-key` Je koncový bod klíč používaný k dotazování vaší aplikace. I když můžete používat klíč pro tvorbu nebo starter volné při zjišťujete LEOŠ, je potřeba změnit koncový bod klíč na klíč, který podporuje vaše [očekávaného využití LEOŠ](luis-boundaries.md#key-limits). `timezoneOffset` Jednotka je minut.
 
 **HTTPS odpovědi** obsahuje všechny informace o záměru a entity můžete určit LEOŠ podle aktuální publikované model buď pracovním nebo produkčním koncový bod. Koncový bod adresy URL nachází na [LEOŠ] [ LUIS] webu **publikovat** stránky. 
 
@@ -540,7 +540,7 @@ Pattern.Any entity jsou použité v šabloně utterances z entity proměnlivou d
 ```
 
 
-## <a name="sentiment-analysis"></a>Analýza subjektivního hodnocení
+## <a name="sentiment-analysis"></a>Analýza mínění
 Pokud je nakonfigurovaná postojích analýzy, odpověď json LEOŠ obsahuje postojích analýzy. Další informace o analýze postojích v [Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentaci.
 
 ### <a name="sentiment-data"></a>Postojích dat

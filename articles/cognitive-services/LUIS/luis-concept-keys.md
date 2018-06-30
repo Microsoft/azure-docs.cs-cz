@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: v-geberr
-ms.openlocfilehash: 70bca3b181e02f42da50e827154193936544131a
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: d22b2ba332996d31b1db4ef4d095f0a4b443ba16
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36263814"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109354"
 ---
 # <a name="keys-in-luis"></a>Klíče v LEOŠ
 LEOŠ používá dva klíče: [vytváření](#programmatic-key) a [koncový bod](#endpoint-key). Vytváření klíč je vytvořen automaticky při vytvoření účtu LEOŠ. Až budete připraveni k publikování aplikace LEOŠ, budete muset [vytvořit klíč koncového bodu](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [ji přiřadit](Manage-keys.md#assign-endpoint-key) do vaší aplikace LEOŠ a [pomocí dotazu koncový bod](#use-endpoint-key-in-query). 
@@ -22,7 +22,7 @@ LEOŠ používá dva klíče: [vytváření](#programmatic-key) a [koncový bod]
 |Klíč|Účel|
 |--|--|
 |[Vytváření klíče](#programmatic-key)|Vytváření, publikování, správu spolupracovníci, Správa verzí|
-|[Klíč koncového bodu](#endpoint-key)| Dotazování|
+|[klíč koncového bodu](#endpoint-key)| Dotazování|
 
 Je důležité k vytváření aplikací LEOŠ v [oblasti](luis-reference-regions.md#publishing-regions) také místo publikování a dotazu.
 
@@ -40,7 +40,7 @@ Pokud chcete provést **produkční koncový bod dotazy**, vytvořit Azure [LEO�
 > [!CAUTION]
 > Pro usnadnění práce řadu ukázky použít klíč pro vytváření obsahu vzhledem k tomu, že poskytuje několik volání koncového bodu v jeho [kvóty](luis-boundaries.md#key-limits).  
 
-## <a name="endpoint-key"></a>Klíč koncového bodu
+## <a name="endpoint-key"></a>klíč koncového bodu
  Když potřebujete **produkční koncový bod dotazy**, vytvoření [klíč LEOŠ](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) na portálu Azure. Mějte na paměti, název sloužící k vytvoření klíče, je nutné při přidání klíče do aplikace...
 
 Po dokončení procesu předplatné LEOŠ [přidat klíč](Manage-keys.md#assign-endpoint-key) aplikace na **publikovat** stránky. 
@@ -62,10 +62,10 @@ Koncový bod LEOŠ přijímá dva styly dotazu, používejte klíče, ale koncov
 ## <a name="api-usage-of-ocp-apim-subscription-key"></a>Využití rozhraní API Ocp-Apim-Subscription-Key
 Rozhraní API LEOŠ použít záhlaví, `Ocp-Apim-Subscription-Key`. Název hlavičky nezmění podle které klíč a sadu rozhraní API, kterou používáte. Nastavte hlavičku ke klíči pro vytváření obsahu pro rozhraní API pro vytváření obsahu. Pokud používáte koncový bod, nastavte záhlaví na klíč koncového bodu. 
 
-Nelze předat klíč koncový bod rozhraní API pro vytváření obsahu. Pokud tak učiníte, získáte 401 Chyba: přístup byl odepřen z důvodu neplatný odběr klíč. 
+Nelze předat klíč koncový bod rozhraní API pro vytváření obsahu. Pokud tak učiníte, získáte 401 Chyba: přístup byl odepřen z důvodu klíč neplatný koncový bod. 
 
 ## <a name="key-limits"></a>Omezuje klíč
-V tématu [klíče omezení](luis-boundaries.md#key-limits) a [oblastí Azure](luis-reference-regions.md). Vytváření klíč je volné a využité pro vytváření obsahu. Klíč předplatného LEOŠ obsahuje volné vrstvy, ale musí být vytvořené vámi a přidružené k vaší aplikaci LEOŠ na **publikovat** stránky. Nelze zadat pro vytváření, ale pouze na dotazy koncový bod.
+V tématu [klíče omezení](luis-boundaries.md#key-limits) a [oblastí Azure](luis-reference-regions.md). Vytváření klíč je volné a využité pro vytváření obsahu. Klíč koncového bodu LEOŠ obsahuje volné vrstvy, ale musí být vytvořené vámi a přidružené k vaší aplikaci LEOŠ na **publikovat** stránky. Nelze zadat pro vytváření, ale pouze na dotazy koncový bod.
 
 Publikování oblastí se liší od vytváření oblastí. Ujistěte se, že vytvoříte aplikaci v vytváření oblast odpovídající k publikování oblast, kterou chcete.
 

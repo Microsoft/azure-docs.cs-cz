@@ -12,29 +12,27 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 06/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 42adef66fb1b1141ab44aab3a1ccdaae022202b5
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: ce57e153dcab6a386150ebefe1ecb4a018514247
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32150970"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130366"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>Jak znovu distribuovat Azure App Service v zásobníku Azure napříč doménami selhání
 
 *Platí pro: Azure zásobníku integrované systémy*
 
-K aktualizaci 1802 zásobník Azure nyní podporuje distribuci úloh napříč doménami selhání, funkci, která je velmi důležitá pro vysokou dostupnost.
+K aktualizaci 1802 zásobník Azure nyní podporuje distribuci zatížení napříč doménami selhání funkce, která je důležité pro zajištění vysoké dostupnosti.
 
-> [!IMPORTANT]
-> Musí jste aktualizovali systému Azure zásobníku integrované do 1802 mohli využít výhod podpory domény selhání.  Tento dokument se vztahuje pouze k nasazení zprostředkovatele prostředků služby App Service, které byly dokončeny před aktualizací 1802.  Pokud jste nasadili služby App Service v zásobníku Azure po 1802 aktualizace byla použita na Azure zásobníku, poskytovatel prostředků je již distribuovaný napříč doménami selhání.
->
->
+>[!IMPORTANT]
+>Abyste mohli využívat podpora domén selhání, je třeba aktualizovat na 1802 zásobník Azure integrovaný systém. Tento dokument se vztahuje pouze k nasazení zprostředkovatele prostředků služby App Service, které byly dokončeny před aktualizací 1802. Pokud jste nasadili služby App Service v zásobníku Azure po 1802 aktualizace byla použita na Azure zásobníku, poskytovatel prostředků je již distribuovaný napříč doménami selhání.
 
 ## <a name="rebalance-an-app-service-resource-provider-across-fault-domains"></a>Znovu vyvážit poskytovatele prostředků služby App Service napříč doménami selhání
 
-Chcete-li znovu distribuovat sady škálování nasazuje pro poskytovatele prostředků služby App Service, musíte provést následující kroky pro každý sadě škálování.  Ve výchozím nastavení jsou názvy scaleset:
+Chcete-li distribuovat sady škálování nasazuje pro poskytovatele prostředků služby App Service, musíte provést kroky v tomto článku každé sadě škálování. Ve výchozím nastavení scaleset názvů:
 
 * ManagementServersScaleSet
 * FrontEndsScaleSet
@@ -44,39 +42,40 @@ Chcete-li znovu distribuovat sady škálování nasazuje pro poskytovatele prost
 * MediumWorkerTierScaleSet
 * LargeWorkerTierScaleSet
 
-> [!NOTE]
-> Pokud máte žádné instance nasazené v některých pracovních sad škálování vrstvy, není potřeba znovu vyvážit tyto sady škálování.  Sady škálování budou vyváženy správně při škálování je v budoucnosti.
->
->
+>[!NOTE]
+> Pokud nemáte instance nasazené v některých sad škálování vrstvy pracovního procesu, nemusíte znovu vyvážit tyto sady škálování. Sady škálování budou vyváženy správně při škálování je v budoucnosti.
 
-1. Přejděte do sady škálování virtuálního počítače na portálu Azure zásobníku správce.  Objeví se existující sady škálování nasazen jako součást nasazení aplikace služby s informace o počtu instancí.
+Chcete-li škálovat sady škálování, postupujte takto:
 
-    ![Azure App Service Škálovací sady uvedené v UX sady škálování virtuálního počítače][1]
+1. Přihlaste se k portálu Azure zásobníku správce.
+2. Vyberte **další služby**.
+3. V části výpočetní, vyberte **sady škálování virtuálního počítače**. Objeví se existující sady škálování nasazen jako součást nasazení aplikace služby s informace o počtu instancí. Následující snímek obrazovky ukazuje příklad sady škálování.
 
-2. Každá sada škálování Další.  Například pokud máte tři existující instance v sadě škálování musí vertikální navýšení kapacity 6 tak, aby tři nové instance, se zřídí napříč doménami selhání.
-    a. [Nastavení prostředí správce Azure zásobníku v prostředí PowerShell](azure-stack-powershell-configure-admin.md) b. Použijte tento příklad pro rozšíření Škálováním škálovací sadu:
-        ```powershell
-                Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
+      ![Azure App Service Škálovací sady uvedené v UX sady škálování virtuálního počítače][1]
 
-                # Get current scale set
-                $vmss = Get-AzureRmVmss -ResourceGroupName "AppService.local" -VMScaleSetName "SmallWorkerTierScaleSet"
+4. Každá sada škálování. Například pokud máte tři existující instance v sadě škálování musí vertikální navýšení kapacity 6 tak tři nové instance nasazených napříč doménami selhání. Následující příklad PowerShell ukazuje se pro rozšíření Škálováním byly sadou škálování.
 
-                # Set and update the capacity of your scale set
-                $vmss.sku.capacity = 6
-                Update-AzureRmVmss -ResourceGroupName "AppService.local" -Name "SmallWorkerTierScaleSet" -VirtualMachineScaleSet $vmss
-        '''
-> [!NOTE]
-> Tento krok může trvat několik hodin, v závislosti na typu role a počet instancí.
->
->
+   ```powershell
+   Add-AzureRmAccount -EnvironmentName AzureStackAdmin 
 
-3. Monitorujte stav instancí nové role v okně aplikace služby správy rolí.  Zkontrolujte stav instance jednotlivých rolí kliknutím typ role v seznamu
+   # Get current scale set
+   $vmss = Get-AzureRmVmss -ResourceGroupName "AppService.local" -VMScaleSetName "SmallWorkerTierScaleSet"
+
+   # Set and update the capacity of your scale set
+   $vmss.sku.capacity = 6
+   Update-AzureRmVmss -ResourceGroupName AppService.local" -Name "SmallWorkerTierScaleSet" -VirtualMachineScaleSet $vmss
+   ```
+
+   >[!NOTE]
+   >Tento krok může trvat několik hodin, v závislosti na typu role a počet instancí.
+
+5. V **aplikace služby správy rolí**, sledovat stav nové instance role. Pokud chcete zkontrolovat stav instanci role, vyberte v seznamu Typ role
 
     ![Aplikační služba Azure pro role Azure zásobníku][2]
 
-4. Jeden nové instance jsou v **připraven** stavu, přejděte zpět do okna sadu škálování virtuálního počítače a **odstranit** původní instancí.
+6. Když se stav nové instance role **připraven**, přejděte zpět na **sadu škálování virtuálního počítače** a **odstranit** původní instance rolí.
 
-5. Opakujte tyto kroky pro **každý** škálovací sadu virtuálních počítačů.
+7. Opakujte tyto kroky pro **každý** škálovací sadu virtuálních počítačů.
 
 ## <a name="next-steps"></a>Další postup
 

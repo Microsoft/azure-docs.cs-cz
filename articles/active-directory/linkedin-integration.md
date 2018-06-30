@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 05/02/2018
+ms.date: 06/28/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 3d73cae0975bea0332c2d266d2745773b373b7d8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4b3ff0b2481b42f516d28ac17f2616685730b7d5
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33762366"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109582"
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>Účet připojení LinkedIn Microsoft aplikace a služby
 V tomto článku se můžete naučit ke správě připojení účtu LinkedIn pro vašeho klienta v Centru správy služby Azure Active Directory (Azure AD). 
@@ -53,7 +53,7 @@ Funkce připojení účtu LinkedIn je ve výchozím pro celý klienta. Můžete 
 4. V části **LinkedIn účet připojení**:
   * Vyberte **Ano** povolit připojení LinkedIn účet pro všechny uživatele ve vašem klientovi
   * Vyberte **vybrané** povolit účet LinkedIn připojení pouze vybraného klienta uživatele
-  * Vyberte **ne** zakázat LinkedIn účet připojení pro všechny uživatele ![povolení LinkedIn účet připojení](./media/linkedin-integration/LinkedIn-integration.png)
+  * Vyberte **ne** zakázat LinkedIn účet připojení pro všechny uživatele ![povolení LinkedIn účet připojení](./media/linkedin-integration/linkedin-integration.png)
 5. Uložit nastavení, když jste hotovi výběrem **Uložit**.
 
 ### <a name="enable-or-disable-linkedin-account-connections-for-your-organizations-office-2016-apps-using-group-policy"></a>Povolení nebo zakázání LinkedIn účet připojení pro aplikace Office 2016 vaší organizace pomocí zásad skupiny
@@ -64,7 +64,7 @@ Funkce připojení účtu LinkedIn je ve výchozím pro celý klienta. Můžete 
 4. Vytvoření objektu zásad skupiny s následujícím nastavením: **konfigurace uživatele** > **šablony pro správu** > **Microsoft Office 2016**  >  **Různé** > **LinkedIn zobrazit funkce v aplikacích Office**.
 5. Vyberte **povoleno** nebo **zakázané**.
   * Pokud tato zásada je **povoleno**, **LinkedIn zobrazit funkce v aplikacích Office** je povoleno nastavení v dialogovém okně Možnosti Office 2016. Také to znamená, že uživatelé ve vaší organizaci můžete použít funkce LinkedIn ve svých aplikacích Office.
-  * Pokud tato zásada je **zakázáno**, **LinkedIn zobrazit funkce v aplikacích Office** nastavení nalezených v možnostech Office 2016 dialogové okno nastavena na zakázaném stavu, a toto nastavení nelze změnit koncovým uživatelům. Uživatelé ve vaší organizaci LinkedIn funkce nelze používat ve svých aplikacích Office 2016. 
+  * Pokud tato zásada je **zakázáno**, **LinkedIn zobrazit funkce v aplikacích Office** nastavení nalezených v možnostech Office 2016 dialogové okno nastavena na zakázaném stavu, a toto nastavení nelze změnit koncovým uživatelům. Uživatelé ve vaší organizaci LinkedIn funkce nelze používat ve svých aplikacích Office 2016.
 
 Tato zásada skupiny ovlivní pouze aplikace Office 2016 pro místní počítač. Uživatelé mohou vidět LinkedIn funkcí v profilu karty v rámci služeb Office 365, i když se zakážou LinkedIn ve svých aplikacích Office 2016. 
 

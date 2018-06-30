@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 0c870b0c8de648ac65bec6857bf850c2913e7aeb
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 149f91f3091f08da2e54458d708a17da928c1972
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412624"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131731"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Zápis do HDFS z Apache Storm v HDInsight
 
-Naučte se používat Storm k zápisu dat do HDFS kompatibilní úložiště používané Apache Storm v HDInsight. HDInsight můžete je používat jako úložiště HDFS kompatibilní úložiště Azure Storage a Azure Data Lake. Storm poskytuje [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) komponenty, která zapisuje data do HDFS. Tento dokument obsahuje informace o zápis z HdfsBolt na některý typ úložiště. 
+Naučte se používat Storm k zápisu dat do HDFS kompatibilní úložiště používané Apache Storm v HDInsight. HDInsight můžete je používat jako úložiště HDFS kompatibilní úložiště Azure Storage a Azure Data Lake. Storm poskytuje [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) komponenty, která zapisuje data do HDFS. Tento dokument obsahuje informace o zápis z HdfsBolt na některý typ úložiště. 
 
 > [!IMPORTANT]
 > Příklad topologii použitou v tomto dokumentu využívá součásti, které jsou součástí Storm v HDInsight. Změny pro práci s Azure Data Lake Store při použití s další clustery Apache Storm může požadovat.
@@ -37,14 +37,14 @@ Kompilace projektu, potřebujete následující konfigurace pro vývojové prost
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
-Následující proměnné prostředí může být nastaven při instalaci Java a sadu JDK na pracovní stanici. Nicméně byste měli zkontrolovat, že existují a že obsahují správné hodnoty pro váš systém.
+Když na svoji vývojářskou pracovní stanici nainstalujete Javu a JDK, mohou být nastaveny následující proměnné prostředí. Nicméně byste měli zkontrolovat, že existují a že obsahují hodnoty správné pro váš systém.
 
-* `JAVA_HOME` -by měla odkazovat na adresář, kam nainstalovat sadu JDK.
-* `PATH` -musí obsahovat následující cesty:
+* `JAVA_HOME` – instalační adresář sady JDK.
+* `PATH` – měla by obsahovat následující cesty:
   
-    * `JAVA_HOME` (nebo ekvivalentní cesta).
-    * `JAVA_HOME\bin` (nebo ekvivalentní cesta).
-    * Adresář, kde je nainstalován Maven.
+    * `JAVA_HOME` (nebo odpovídající cestu).
+    * `JAVA_HOME\bin` (nebo odpovídající cestu).
+    * Adresář, kde je nainstalovaný Maven.
 
 ## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>Postup použití HdfsBolt s HDInsight
 
@@ -65,7 +65,7 @@ Následující tabulka obsahuje příklady použití souboru schématu pro různ
 | `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Účet úložiště Azure (Další) jiné než výchozí přidružen ke clusteru. |
 | `adl://STORENAME/` | Kořenovém adresáři Data Lake Store používaný v clusteru. Toto schéma umožňuje přístup k datům, která se nachází mimo adresář, který obsahuje clusteru systému souborů. |
 
-Další informace najdete v tématu [HdfsBolt](http://storm.apache.org/releases/1.1.0/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) odkaz na Apache.org.
+Další informace najdete v tématu [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) odkaz na Apache.org.
 
 ### <a name="example-configuration"></a>Příklad konfigurace
 
@@ -164,7 +164,7 @@ Informace o použití tohoto skriptu k vašemu clusteru najdete v tématu [HDIns
     Po zobrazení výzvy zadejte heslo použité při vytváření uživatele SSH pro cluster. Pokud jste použili veřejný klíč místo hesla, budete možná muset použít `-i` parametru určete cestu k odpovídající soukromý klíč.
    
    > [!NOTE]
-   > Další informace o používání `scp` s HDInsight, najdete v části [použití SSH s HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+   > Další informace o použití `scp` se službou HDInsight najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Po dokončení nahrávání, použijte následující se připojit ke clusteru HDInsight pomocí protokolu SSH. Nahraďte **uživatele** uživatelským jménem SSH, které jste použili při vytvoření clusteru. Místo **CLUSTERNAME** zadejte název vašeho clusteru.
    

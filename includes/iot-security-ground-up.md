@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: c1ba6cb5b01c86c64fd6134c592829050bbb226d
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.openlocfilehash: b3525f461d0662db5bf3677f7e981bbdbc663d50
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34307545"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37103639"
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Zabezpečení Internetu věcí od základů
 
 Internet věcí (IoT) představuje jedinečné výzvy zabezpečení, ochrany osobních údajů a dodržování předpisů pro firmy po celém světě. Na rozdíl od tradičních internetový technologie, kde tyto problémy základem softwaru a o tom, jak je implementována IoT se vztahuje na co se stane, když internetový a fyzické světů sloučit. Ochrana řešení IoT vyžaduje zajištění zabezpečené zřizování zařízení, zabezpečené připojení mezi tato zařízení a cloudu a ochranu zabezpečení dat v cloudu při zpracování a úložiště. Pracovat se tyto funkce, ale jsou zařízení s omezenými zdroji, geografické rozptýlení nasazení a velký počet zařízení v rámci řešení.
 
-Tento článek popisuje, jak akcelerátorů řešení IoT poskytují zabezpečení a privátní cloudového řešení Internetu věcí. Řešení akcelerátorů poskytovat úplného začátku do konce řešení, se zabezpečení, které jsou součástí každé fáze od základů. Ve společnosti Microsoft, vývoj softwaru zabezpečení je součástí softwaru inženýrství postupem je integrován do společnosti Microsoft desetiletí dlouho prostředí vývoje zabezpečení softwaru. Aby to životního cyklu SDL (Security Development) je základní vývoj metodika, spolu s hostitelem služby zabezpečení na úrovni infrastruktury, například provozní zajištění zabezpečení (OSA) a Microsoft jejichž šíření tým Dcu, Microsoft Security Response Center a Microsoft Malware Protection Center.
+Tento článek popisuje, jak akcelerátorů řešení IoT poskytují zabezpečení a privátní cloudového řešení Internetu věcí. Řešení akcelerátorů poskytovat úplného začátku do konce řešení, se zabezpečení, které jsou součástí každé fáze od základů. Ve společnosti Microsoft, vývoj softwaru zabezpečení je součástí softwaru inženýrství postupem je integrován do společnosti Microsoft desetiletí dlouho prostředí vývoje zabezpečení softwaru. Aby to životního cyklu SDL (Security Development) je základní vývoj metodika, spolu se hostitel služeb zabezpečení na úrovni infrastruktury, jako je provozní zajištění zabezpečení (OSA) a Microsoft jejichž šíření tým Dcu, Microsoft Security Response Center a Microsoft Malware Protection Center.
 
 Akcelerátorů řešení nabízejí jedinečné funkce, že zkontrolujte zřizování, připojení k a ukládání dat ze zařízení IoT snadný a transparentní a nejvyšší všech, zabezpečení. Tento článek prozkoumá funkce zabezpečení akcelerátorů řešení Azure IoT a strategie nasazení k zajištění zabezpečení, ochrany osobních údajů a dodržování předpisů problémy řešeny.
 
@@ -33,13 +33,13 @@ Vzhledem k zabezpečení, ochrany osobních údajů, průhlednost a aspekty dodr
 
 ## <a name="secure-infrastructure-from-the-ground-up"></a>Zabezpečení infrastruktury od základů
 
-[Microsoft Cloud](https://www.microsoft.com/enterprise/microsoftcloud/default.aspx#fbid=WzBsRQi6aGk) infrastruktura podporuje více než jednu miliardu zákazníků v 127 zemích. Kreslení na desetiletí dlouho zkušeností společnosti Microsoft vytváření podnikového softwaru a spuštění některých z online služby největší na světě, Microsoft Cloud poskytuje vyšší úrovně lepší zabezpečení, ochrany osobních údajů, dodržování předpisů a hrozeb zmírnění postupy než většina zákazníků může dosáhnout na své vlastní.
+[Microsoft Cloud](https://azure.microsoft.com) infrastruktura podporuje více než jednu miliardu zákazníků v 127 zemích. Kreslení na desetiletí dlouho zkušeností společnosti Microsoft vytváření podnikového softwaru a spuštění některých z online služby největší na světě, Microsoft Cloud poskytuje vyšší úrovně lepší zabezpečení, ochrany osobních údajů, dodržování předpisů a hrozeb zmírnění postupy než většina zákazníků může dosáhnout na své vlastní.
 
 [Životního cyklu SDL (Security Development)](https://www.microsoft.com/sdl/) poskytuje povinné vývoj společnosti proces, který se vloží do softwaru celý životní cyklus požadavky na zabezpečení. Aby bylo zajištěno, že provozní aktivity podle stejnou úroveň postupy zabezpečení, používá SDL pokyny bezpečnost bez kompromisů nastíněny v procesu provozní zajištění zabezpečení (OSA) společnosti Microsoft. Microsoft také pracuje s podniky auditu třetích stran pro probíhající ověření, že splňuje jeho povinnosti dodržování předpisů a Microsoft zapojí v úsilí široký zabezpečení prostřednictvím vytváření Center vynikajících, včetně Microsoft jejichž šíření tým Dcu, Microsoft Security Response Center a Microsoft Malware Protection Center.
 
 ## <a name="microsoft-azure---secure-iot-infrastructure-for-your-business"></a>Microsoft Azure - zabezpečené IoT infrastrukturu pro vaši organizaci
 
-Microsoft Azure nabízí řešení kompletní cloud, který kombinuje neustále rostoucí kolekce integrovaných cloudové služby – analytics, machine learning, úložiště, zabezpečení, sítě a webové – s své špičkový snahy o ochranu a ochranu osobních údajů vaše data. Společnosti Microsoft [předpokládá porušení](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/) strategie používá vyhrazená *red team* odborníků zabezpečení softwaru, kteří simulovat útoky, testování schopnost Azure rozpoznat, ochrana před vznikajícími hrozbami a obnovení z narušení. Společnosti Microsoft [globální reakcí na incidenty](https://www.microsoft.com/TrustCenter/Security/DesignOpSecurity) týmu funguje po celý den, aby se minimalizoval vliv útoků a škodlivé aktivity. Tým postupuje podle stanovené postupy pro správu incidentů, komunikaci a obnovení a používá rozhraní zjistitelný a předvídatelný s interní a externí partnery.
+Microsoft Azure nabízí řešení kompletní cloud, který kombinuje neustále rostoucí kolekce integrovaných cloudové služby – analytics, machine learning, úložiště, zabezpečení, sítě a webové – s své špičkový snahy o ochranu a Ochrana osobních údajů se vaše data. Společnosti Microsoft [předpokládá porušení](https://azure.microsoft.com/blog/red-teaming-using-cutting-edge-threat-simulation-to-harden-the-microsoft-enterprise-cloud/) strategie používá vyhrazená *red team* odborníků zabezpečení softwaru, kteří simulovat útoky, testování schopnost Azure rozpoznat, ochrana před vznikajícími hrozbami a obnovení z narušení. Společnosti Microsoft [globální reakcí na incidenty](https://www.microsoft.com/TrustCenter/Security/DesignOpSecurity) týmu funguje po celý den, aby se minimalizoval vliv útoků a škodlivé aktivity. Tým postupuje podle stanovené postupy pro správu incidentů, komunikaci a obnovení a používá rozhraní zjistitelný a předvídatelný s interní a externí partnery.
 
 Systémy společnosti Microsoft zadejte zjišťování neoprávněných vniknutí průběžné a prevence, zabránění útoku služby, regulární průnikům testování a forenzní nástroje, které pomáhají identifikovat a zmírnit hrozby. [Služba Multi-Factor authentication](../articles/active-directory/authentication/multi-factor-authentication.md) poskytuje další úroveň zabezpečení pro koncové uživatele pro přístup k síti. A pro aplikace a poskytovateli hostitele, společnost Microsoft nabízí řízení přístupu, monitorování, proti malwaru, zjišťování ohrožení zabezpečení, opravy a konfigurace správy.
 

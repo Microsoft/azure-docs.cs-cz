@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/21/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 49db6b625a9e4fc46fe414eb723dfccd890efd64
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b31e5cc3f99bdbb45aae6f9d71efdabdcc60f9c8
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34677355"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37138173"
 ---
 **Poslední aktualizace dokumentů**: 21 může 2018 3:00 PM PST.
 
@@ -28,7 +28,7 @@ Na 21 může 2018 oznámila nové podtřídou třídy spekulativní straně kan�
 >
 > V pozdní února 2018 publikovaná Intel Corporation aktualizované [mikrokódu revize pokyny](https://newsroom.intel.com/wp-content/uploads/sites/11/2018/03/microcode-update-guidance.pdf) stav mikrokódu verzích, které zlepšení stability a zmírňuje nebezpečí, že poslední ohrožení zabezpečení, budou mít přístup podle [Projektu Google nula](https://googleprojectzero.blogspot.com/2018/01/reading-privileged-memory-with-side.html). Jejich zmírnění umístí na místě Azure [3 leden 2018](https://azure.microsoft.com/blog/securing-azure-customers-from-cpu-vulnerability/) nemá vliv aktualizace mikrokódu společnosti Intel. Microsoft už zavedena silné jejich zmírnění pro ochranu Azure zákazníků z jiných virtuálních počítačích Azure.  
 >
-> Společnosti Intel mikrokódu adresy typu variant 2 spektrum ([CVE. 2017 5715](https://www.cve.mitre.org/cgi-bin/cvename.cgi?name=2017-5715) nebo vkládání cíl větev) k ochraně před útoky, které bude odesláno pouze použít kterém spouštíte sdílených nebo nedůvěryhodné úlohy uvnitř virtuální počítače na platformě Azure. Naše technici testování stabilitu pro minimalizaci dopadů výkonu mikrokódu, před zpřístupnění Azure zákazníků.  Jako velmi několik zákazníků spustit nedůvěryhodné zatížení v rámci jejich virtuální počítače, nebudete muset povolit tuto funkci po vydání většina zákazníků. 
+> Společnosti Intel mikrokódu adresy typu variant 2 spektrum - [CVE. 2017 5715](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-5715) nebo vkládání cíl větve - chránit před útoky, které bude odesláno pouze použít kterém spouštíte sdílených nebo nedůvěryhodné úlohy uvnitř virtuální počítače na platformě Azure. Naše technici testování stabilitu pro minimalizaci dopadů výkonu mikrokódu, před zpřístupnění Azure zákazníků.  Jako velmi několik zákazníků spustit nedůvěryhodné zatížení v rámci jejich virtuální počítače, nebudete muset povolit tuto funkci po vydání většina zákazníků. 
 >
 > Tato stránka bude aktualizován, protože je k dispozici další informace.  
 

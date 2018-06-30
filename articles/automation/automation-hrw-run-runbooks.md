@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32cc1a436521574917c8e52b2fa4e045d32a4f09
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: dcc77d9826d91c57dc15b1abed83c2b640e73906
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062570"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110697"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Spuštěné sady runbook pro Hybrid Runbook Worker.
 
@@ -77,7 +77,7 @@ Následující postup použijte k určení účtu RunAs pro skupinu hybridních 
 
 ### <a name="automation-run-as-account"></a>Účet Spustit jako automatizace
 
-Jako součást procesu automatizované sestavení pro nasazení prostředků v Azure možná budete potřebovat přístup k místním systémy pro podporu ve vašem nasazení pořadí úloh nebo sadu kroků. Pro podporu ověřování proti Azure pomocí účtu spustit jako, musíte nainstalovat certifikát účtu spustit jako.
+Jako součást procesu automatizované sestavení pro nasazení prostředků v Azure možná budete potřebovat přístup k místním systémům pro podporu ve vašem nasazení pořadí úloh nebo sadu kroků. Pro podporu ověřování proti Azure pomocí účtu spustit jako, musíte nainstalovat certifikát účtu spustit jako.
 
 Následující Powershellový runbook *Export RunAsCertificateToHybridWorker*, exportuje certifikát spustit jako z vašeho účtu Azure Automation a soubory ke stažení a naimportuje ho do úložiště certifikátů místního počítače v hybridním pracovní připojený k stejný účet. Po dokončení tohoto kroku, tak ověří, že pracovní proces může úspěšně ověřit do Azure pomocí účtu spustit jako.
 

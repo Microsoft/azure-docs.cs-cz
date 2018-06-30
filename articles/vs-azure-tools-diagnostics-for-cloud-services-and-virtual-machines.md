@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/11/2016
+ms.date: 06/28/2018
 ms.author: mikejo
-ms.openlocfilehash: 34c667b0a594682e4d099e7bff64bfdb336b850b
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 2ff2a619dabd7dfabf89361172557efa4884ba12
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30292536"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110483"
 ---
 # <a name="set-up-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Nastavení diagnostiky pro Azure Cloud Services a virtuálních počítačů
 Když budete potřebovat řešení služby Azure cloudové služby nebo virtuálního počítače, můžete snadno nastavit Azure Diagnostics Visual Studio. Diagnostika zaznamená data systému a protokolování dat na virtuálních počítačů a instancí virtuálního počítače se systémem cloudové služby. Diagnostická data se přenáší na účet úložiště, který zvolíte. Další informace o diagnostiku protokolování v Azure, najdete v části [povolit protokolování diagnostiky pro webové aplikace v Azure App Service](app-service/web-sites-enable-diagnostic-log.md).
@@ -87,7 +87,11 @@ V sadě Visual Studio můžete shromažďovat diagnostická data pro role, kter�
    * Pokud vyberete **vaše předplatné**, můžete vybrat předplatné Azure, kterou chcete použít a zadejte název účtu. Chcete-li spravovat předplatné Azure, vyberte **Správa účtů**.
    * Pokud vyberete **ručně zadali přihlašovací údaje**, zadejte název a klíč účtu Azure, který chcete použít.
 5. Chcete-li zobrazit **konfigurace diagnostiky** dialogové okno, vyberte **konfigurace**. S výjimkou **Obecné** a **adresáře protokolu**, každé kartě představuje zdroj dat diagnostiky, který můžete shromáždit. Výchozí hodnota **Obecné** karta nabízí následující Diagnostika možnosti shromažďování dat: **pouze chyby**, **všechny informace o**, a **vlastní plán**. Výchozí hodnota **pouze chyby** možnost používá minimálně velikost úložiště, protože nepřenese upozornění nebo trasování zpráv. **Všechny informace o** možnost přenáší informace na maximum, používá úložiště na maximum a je proto nejnákladnější možnost.
-   
+
+   > [!NOTE]
+   > Minimální podporovaná velikost "Disk kvóty v MB" je 4GB. Ale pokud shromažďujete výpisy paměti, zvýšit to na vyšší hodnotu, jako je 10GB.
+   >
+  
     ![Povolení a konfigurace Azure Diagnostika](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758144.png)
 6. V tomto příkladu vyberte **vlastní plán** možnost, takže můžete přizpůsobit shromážděná data.
 7. V **kvóty disku v MB** pole, můžete nastavit kolik místa k přidělení ve vašem účtu úložiště pro data diagnostiky. Můžete změnit nebo přijměte výchozí hodnotu.

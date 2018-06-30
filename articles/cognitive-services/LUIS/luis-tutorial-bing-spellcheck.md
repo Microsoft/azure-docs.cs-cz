@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: 340fb34c234a12f93fcfc3182ac3fd44fce324fe
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 96b23146e726b7fee86b7e449c81d7efc0073e8d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35343928"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127665"
 ---
 # <a name="correct-misspelled-words-with-bing-spell-check"></a>Správné překlepu slova s Bing kontrola pravopisu
 
@@ -26,8 +26,9 @@ Vaše [první v7 klíč API kontrola pravopisu Bing](https://azure.microsoft.com
 
 ![Vytvoření volné klíče](./media/luis-tutorial-bing-spellcheck/free-key.png)
 
-## <a name="create-subscription-key"></a>Vytvořte klíč předplatného
-Pokud platnost vašeho volné klíče, vytvořte klíč předplatného.
+< name "Vytvoření subscription-key" ></a>
+## <a name="create-endpoint-key"></a>Vytvořte klíč koncového bodu
+Pokud platnost vašeho volné klíče, vytvoření klíče koncový bod.
 
 1. Přihlaste se k portálu [Azure Portal](https://portal.azure.com). 
 
@@ -56,7 +57,7 @@ Pokud platnost vašeho volné klíče, vytvořte klíč předplatného.
 10. Zkopírujte první klíč. Potřebujete jenom jednu z dva klíče. 
 
 ## <a name="using-the-key-in-luis-test-panel"></a>Pomocí klíče panelu LEOŠ testu
-Existují dvě místech LEOŠ používat klíč. První je v [testovací panely](train-test.md#view-bing-spell-check-corrections-in-test-panel). Klíč se neuloží do LEOŠ, ale místo toho je proměnné relace. Je nutné nastavit klíč pokaždé, když chcete panelu testu pro použití služby API kontrola pravopisu Bing v7 utterance. V tématu [pokyny](train-test.md#view-bing-spell-check-corrections-in-test-panel) panelu testu pro nastavení klíče.
+Existují dvě místech LEOŠ používat klíč. První je v [testovací panely](interactive-test.md#view-bing-spell-check-corrections-in-test-panel). Klíč se neuloží do LEOŠ, ale místo toho je proměnné relace. Je nutné nastavit klíč pokaždé, když chcete panelu testu pro použití služby API kontrola pravopisu Bing v7 utterance. V tématu [pokyny](interactive-test.md#view-bing-spell-check-corrections-in-test-panel) panelu testu pro nastavení klíče.
 
 ## <a name="adding-the-key-to-the-endpoint-url"></a>Přidání klíče do adresu URL koncového bodu
 Dotaz koncový bod potřebuje klíč předávaný do parametrů řetězce dotazu pro každý dotaz, že který chcete použít oprava pravopis. Můžete mít chatbot, který volá LEOŠ nebo LEOŠ koncový bod rozhraní API může volat přímo. Bez ohledu na to, jak se nazývá koncový bod musí každé volání zahrnout požadované informace z kontroly pravopisu správně fungovat.

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: rapatchi
-ms.openlocfilehash: bc5302b9af023b04fb6b1654ac13e9fc02e0a465
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 987959742335940dca8eb57c54d593aea90dec15
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206262"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111180"
 ---
 # <a name="azure-service-fabric-java-client-apis"></a>Rozhraní API klienta služby Azure Service Fabric Java
 
-Service Fabric klientské rozhraní API umožňuje aplikace založené na nasazení a správě mikroslužeb a kontejnery v Service Fabric clusteru v Azure, místní, na místním vývojovém počítači nebo v jiných cloudu. Tento článek popisuje, jak vygenerovat a používat rozhraní API klienta služby Fabric Java nad klient REST API pro Service Fabric
+Rozhraní API klienta Service Fabric umožňuje nasazení a správě mikroslužeb aplikace a kontejnery v clusteru Service Fabric na základě Azure, místně na místním vývojovém počítači nebo v jiných cloudu. Tento článek popisuje, jak vygenerovat a používat rozhraní API klienta služby Fabric Java nad klient REST API pro Service Fabric
 
 ## <a name="generate-the-client-code-using-autorest"></a>Generování kódu klienta pomocí AutoRest
 

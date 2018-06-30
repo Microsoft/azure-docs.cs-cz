@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 2797c9f18364a2321bea885592690793271d8b8e
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: d5b67d971c2261084857d6b512c8d011173884af
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37062185"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113251"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Pomocí Azure Data Lake Storage Gen2 Preview s clustery Azure HDInsight
 
@@ -49,7 +49,7 @@ Služba HDInsight poskytuje přístup do systému souborů DFS, který je místn
 
 Kromě toho HDInsight umožňuje přístup k datům, která je uložená v Azure Data Lake Storage. Syntaxe je:
 
-    abfs[s]://<file_system>@<accountname>.dfs.core.widows.net/<path>
+    abfs[s]://<file_system>@<accountname>.dfs.core.windows.net/<path>
 
 Tady jsou některé aspekty při použití účtu služby Azure Storage s clustery HDInsight.
 
@@ -62,7 +62,7 @@ Tady jsou některé aspekty při použití účtu služby Azure Storage s cluste
  
 * **Soubor privátního systémy v účtech úložiště, které nejsou připojené ke clusteru s podporou** neumožňují přístup k souborům v systému souborů, dokud nedefinujete účet úložiště při odesílání úlohy WebHCat. Později v tomto článku jsou vysvětleny příčiny toto omezení.
 
-Účty úložiště, které se definují v procesu vytváření a jejich klíče jsou uloženy v %HADOOP_HOME%/conf/core-site.xml na uzlech clusteru. Výchozím chováním služby HDInsight je používání účtů úložiště, které jsou definovány v souboru core-site.xml. Toto nastavení můžete upravit pomocí [Ambari](/hdinsight/hdinsight-hadoop-manage-ambari.md).
+Účty úložiště, které jsou definovány v procesu vytváření a jejich klíče jsou uložené v *%HADOOP_HOME%/conf/core-site.xml* na uzlech clusteru. Výchozím chováním služby HDInsight je používání účtů úložiště, které jsou definované v *core-site.xml* souboru. Toto nastavení můžete upravit pomocí [Ambari](/hdinsight/hdinsight-hadoop-manage-ambari.md).
 
 Více úloh WebHCat, včetně Hive, MapReduce, streamování Hadoop a Pig, může obsahovat popis účtů úložiště a spojených metadat. (Tento přístup aktuálně funguje pro Pig s účty úložiště, ale ne pro metadata.) Více informací najdete v části [Použití clusteru HDInsight s alternativními účty úložiště a metaúložišti](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx).
 
@@ -73,16 +73,21 @@ Předpokládaná výkonová náročnost společně umístěných výpočetních 
 S ukládáním dat ve službě Azure Storage namísto HDFS je spojeno několik výhod:
 
 * **Opakované použití dat a sdílení:** data v HDFS se nachází uvnitř výpočetního clusteru. Jenom aplikace, které mají přístup k výpočetnímu clusteru, můžou používat data pomocí rozhraní API HDFS. Data ve službě Azure Storage jsou přístupná prostřednictvím rozhraní API HDFS nebo prostřednictvím [rozhraní REST API služby Blob Storage][blob-storage-restAPI]. Proto s větším počtem aplikací (včetně jiných clusterů HDInsight) a nástrojů  se dají vytvářet a využívat data.
-* **Archivace dat:** Ukládání dat ve službě Azure Storage umožňuje bezpečné odstranění clusterů HDInsight, které jsou používány pro výpočty, aniž by se ztratila uživatelská data.
-* **Náklady na úložiště dat:** Ukládání dat v systému souborů DFS je z dlouhodobého hlediska dražší než ukládání dat ve službě Azure Storage, protože náklady na výpočetní cluster jsou vyšší než náklady na službu Azure Storage. Navíc se data nemusí nahrávat znovu pro každou generaci výpočetních clusterů, náklady na nahrávání dat jsou tak nižší.
-* **Elastické škálování:** I když HDFS poskytuje škálovaný systém souborů, škála se určuje podle počtu uzlů, které vytvoříte pro svůj cluster. Změna škálování může být složitější než využití elastického škálování, které je automaticky k dispozici ve službě Azure Storage.
-* **Geografická replikace:** Službu Azure Storage je možné geograficky replikovat. I když to přináší geografické obnovení a redundanci dat, převzetí služeb při selhání do geograficky replikovaného umístění vážně ovlivňuje výkon a může vést k dalším nákladům. Proto doporučujeme vybrat geografickou replikaci dobře a pouze v případě, že hodnota dat je vhodné náklady.
-* **Správa životního cyklu dat:** všechna data v libovolném systému souborů prochází vlastní životní cyklus se velmi cenné a často používaná prostřednictvím menší hodnotu, menší přistupovat prostřednictvím archivu nebo odstranění. Úložiště Azure poskytuje dat vrstvení a životního cyklu zásad správy, které správně vrstvy data pro jeho fáze životního cyklu.
 
-Některé úlohy a balíčky MapReduce můžou vytvořit mezilehlé výsledky, které ve službě Azure Storage ve skutečnosti uložit nechcete. V takovém případě můžete zvolit k uložení dat do místní HDFS. Ve skutečnosti služba HDInsight používá DFS pro některé z těchto mezilehlých výsledků v úlohách Hive a jiných procesech.
+* **Archivace dat:** Ukládání dat ve službě Azure Storage umožňuje bezpečné odstranění clusterů HDInsight, které jsou používány pro výpočty, aniž by se ztratila uživatelská data.
+
+* **Náklady na úložiště dat:** ukládání dat v nativní HDFS je z dlouhodobého hlediska dražší než ukládání dat v úložišti Azure, protože náklady na výpočetním clusteru je vyšší než náklady na úložiště Azure. Navíc se data nemusí nahrávat znovu pro každou generaci výpočetních clusterů, náklady na nahrávání dat jsou tak nižší.
+
+* **Elastické škálování:** I když HDFS poskytuje škálovaný systém souborů, škála se určuje podle počtu uzlů, které vytvoříte pro svůj cluster. Změna škálování může být složitější než využití elastického škálování, které je automaticky k dispozici ve službě Azure Storage.
+
+* **Geografická replikace:** data úložiště Azure může být geograficky replikované. I když tato funkce vám dává geografické obnovení a redundanci dat, podporu převzetí služeb při selhání do geograficky replikovaného umístění vážně ovlivňuje výkon a může způsobit dodatečné náklady. Proto zvolte geografická replikace pečlivě a pouze pokud hodnota data je vhodné dalších poplatků.
+
+* **Správa životního cyklu dat:** všechna data v libovolném systému souborů prochází vlastní životního cyklu. Data se často spustí vypnout se velmi cenné a často používaná, přechází do je méně cenné a vyžadují menší přístup a nakonec vyžaduje archivace nebo odstraňování. Úložiště Azure poskytuje dat vrstvení a životního cyklu zásad správy, které správně vrstvy data pro jeho fáze životního cyklu.
+
+Některé úlohy a balíčky MapReduce můžou vytvořit mezilehlé výsledky, které ve službě Azure Storage ve skutečnosti uložit nechcete. V takovém případě můžete zvolit k uložení dat do místní HDFS. Ve skutečnosti služba HDInsight používá nativní implementaci HDFS (což se označuje jako DFS) pro některé z těchto mezilehlých výsledků v úlohách Hive a jinými procesy.
 
 > [!NOTE]
-> Většina příkazů HDFS (například `ls`, `copyFromLocal` a `mkdir`) i nadále fungovat podle očekávání. Příkazy, které jsou specifické pro nativní implementaci HDFS (což se označuje jako DFS), jako například `fschk` a `dfsadmin`, zobrazit různé chování v úložišti Azure.
+> Většina příkazů HDFS (například `ls`, `copyFromLocal` a `mkdir`) i nadále fungovat podle očekávání. Příkazy, které jsou specifické pro systému souborů DFS, jako například `fschk` a `dfsadmin`, zobrazit různé chování v úložišti Azure.
 
 ## <a name="create-an-data-lake-storage-file-system"></a>Vytvořit systém souborů Data Lake Storage
 
@@ -90,7 +95,7 @@ Pomocí systému souborů, je třeba nejprve vytvořit [účet úložiště Azur
 
 Bez ohledu na jeho žije, do systému souborů v účtu Azure Data Lake Storage patří každý objekt blob, které vytvoříte. 
 
-Výchozí systém souborů Data Lake Storage ukládá informace o specifických pro cluster například historie úlohy a protokoly. Výchozí systém souborů Data Lake Storage nesdílejte s více clustery služby HDInsight. Může dojít k poškození historie úlohy. Doporučujeme použít jiný systém souborů pro každý cluster a umístit sdílená data na propojený účet úložiště zadaný v nasazení všech příslušných clusterů, nikoli výchozí účet úložiště. Další informace o konfiguraci propojených účtů úložiště najdete v tématu [Tvorba clusterů HDInsight][hdinsight-creation]. Ale můžete znovu použít výchozí systém souborů úložiště po odstranění původního clusteru HDInsight. Pro clustery HBase můžete zachovat schéma a data tabulky HBase vytvořením nového clusteru HBase pomocí výchozího kontejneru objektů blob, který je používán odstraněným clusterem HBase.
+Výchozí systém souborů Data Lake Storage ukládá informace o specifických pro cluster například historie úlohy a protokoly. Výchozí systém souborů Data Lake Storage nesdílejte s více clustery služby HDInsight. Může dojít k poškození historie úlohy. Doporučujeme použít jiný systém souborů pro každý cluster a umístit sdílená data na propojený účet úložiště zadaný v nasazení všech příslušných clusterů, nikoli výchozí účet úložiště. Další informace o konfiguraci propojených účtů úložiště najdete v tématu [Tvorba clusterů HDInsight][hdinsight-creation]. Však můžete znovu použít výchozí systém souborů úložiště po odstranění původního clusteru HDInsight. Pro clustery HBase můžete zachovat schéma tabulky HBase a data vytvořením nového clusteru HBase pomocí výchozího kontejneru blob, který je používán odstraněné cluster HBase, který byl odstraněn.
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../../includes/hdinsight-secure-transfer.md)]
 
@@ -144,20 +149,28 @@ Pokud jste [instalace a konfigurace prostředí Azure PowerShell][powershell-ins
 
 Pokud máte [nainstalováno a nakonfigurováno rozhraní příkazového řádku Azure CLI](../../cli-install-nodejs.md), následující příkaz lze použít k účtu úložiště a kontejneru.
 
-    azure storage account create <storageaccountname> --type LRS --is-hns-enabled true
+```bash
+az storage account create \
+    --name <STORAGE_ACCOUNT_NAME> \
+    --resource-group <RESOURCE_GROUP_NAME> \
+    --location westus2 \
+    --sku Standard_LRS \
+    --kind StorageV2 \
+    --Enable-hierarchical-namespace true
+```
 
 > [!NOTE]
-> Během verzi public preview služby Data Lake Storage Gen2 pouze `--type LRS` je podporována. Možnosti k další redundanci bude k dispozici v rámci programu preview.
+> Během verzi public preview služby Data Lake Storage Gen2 pouze `--sku Standard_LRS` je podporována.
 
 Budete vyzváni k zadání geografické oblasti, ve které se vytvoří účet úložiště. Vytvořte účet úložiště ve stejné oblasti, kterou chcete použít k vytvoření clusteru služby HDInsight.
 
 Po vytvoření účtu úložiště použijte následující příkaz k načtení klíčů účtu úložiště:
 
-    azure storage account keys list <storageaccountname>
+    azure storage account keys list <STORAGE_ACCOUNT_NAME>
 
 Když chcete vytvořit kontejner, použijte následující příkaz:
 
-    azure storage container create <containername> --account-name <storageaccountname> --account-key <storageaccountkey>
+    azure storage container create <CONTAINER_NAME> --account-name <STORAGE_ACCOUNT_NAME> --account-key <STORAGE_ACCOUNT_KEY>
 
 > [!NOTE]
 > Vytvoření kontejneru je totožná s vytváření systém souborů v Azure Data Lake Storage.
@@ -166,28 +179,27 @@ Když chcete vytvořit kontejner, použijte následující příkaz:
 
 Schéma identifikátoru URI pro přístup k souborům ve službě Azure Storage ze služby HDInsight je:
 
-    abfs[s]://<FileSystem>@<AccountName>.dfs.core.widows.net/<path>
+    abfs[s]://<FILE_SYSTEM_NAME>@<ACCOUNT_NAME>.dfs.core.widows.net/<PATH>
 
 Schéma identifikátoru URI poskytuje nezašifrovaný přístup (s *abfs:* předponu) a zašifrovaný přístup SSL (s *abfss*). Doporučujeme používat *abfss* kdykoli je to možné, i v případě, že přístup k datům, umístěným uvnitř stejné oblasti v Azure.
 
-&lt;FileSystem&gt; identifikuje cesta systému souborů Azure Data Lake Storage.
-&lt;AccountName&gt; identifikuje název účtu úložiště Azure. Vyžaduje se plně kvalifikovaný název domény (FQDN).
+* &lt;FILE_SYSTEM_NAME&gt; identifikuje cesta systému souborů Azure Data Lake Storage.
+* &lt;ACCOUNT_NAME&gt; identifikuje název účtu úložiště Azure. Vyžaduje se plně kvalifikovaný název domény (FQDN).
 
-Pokud hodnoty pro &lt;FileSystem&gt; ani &lt;AccountName&gt; byl zadán, se používá výchozí systém souborů. Pro soubory ve výchozím systému souborů můžete použít relativní cestu nebo absolutní cestu. Například *hadoop-mapreduce-examples.jar* soubor, který se dodává s clustery HDInsight lze odkazovat pomocí jedné z následujících cestách:
-
-    abfs://myfilesystempath@myaccount.dfs.core.widows.net/example/jars/hadoop-mapreduce-examples.jar
-    abfs:///example/jars/hadoop-mapreduce-examples.jar
-    /example/jars/hadoop-mapreduce-examples.jar
+    Pokud hodnoty pro &lt;FILE_SYSTEM_NAME&gt; ani &lt;ACCOUNT_NAME&gt; byl zadán, se používá výchozí systém souborů. Pro soubory ve výchozím systému souborů můžete použít relativní cestu nebo absolutní cestu. Například *hadoop-mapreduce-examples.jar* soubor, který se dodává s clustery HDInsight lze odkazovat pomocí jedné z následujících cestách:
+    
+        abfs://myfilesystempath@myaccount.dfs.core.widows.net/example/jars/hadoop-mapreduce-examples.jar
+        abfs:///example/jars/hadoop-mapreduce-examples.jar
+        /example/jars/hadoop-mapreduce-examples.jar
 
 > [!NOTE]
 > V clusterech HDInsight verze 2.1 a 1.6. je název souboru *hadoop-examples.jar*
 
-&lt;Cesta&gt; je název cesty HDFS souboru nebo adresáře.
+* &lt;Cesta&gt; je název cesty HDFS souboru nebo adresáře.
 
 > [!NOTE]
 > Při práci se soubory mimo HDInsight, většina nástrojů nelze rozpoznat ABFS formátování a místo toho očekávají základní formát cesty, jako například `example/jars/hadoop-mapreduce-examples.jar`.
-> 
-
+ 
 ## <a name="use-additional-storage-accounts"></a>Použití dalších účtů úložiště
 
 Při vytváření clusteru HDInsight zadáváte účet služby Azure Storage, který k němu chcete přidružit. Kromě tohoto účtu úložiště můžete během procesu vytváření nebo až po vytvoření clusteru přidat další účty úložiště ze stejného předplatného Azure nebo různých předplatných Azure. Pokyny pro přidání dalších účtů úložiště najdete v tématu [Vytváření clusterů HDInsight](/hdinsight/hdinsight-hadoop-provision-linux-clusters.md).

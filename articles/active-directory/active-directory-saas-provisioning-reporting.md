@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/12/2017
 ms.author: asmalser-msft
-ms.openlocfilehash: e2ab7efdec326a7f1a2c7f3e7b7d0f379efa8606
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 5011dfbe496472e21a85dee9fa4901dad429a984
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025680"
+ms.locfileid: "37031725"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Kurz: Generování sestav na uživatele automatické zřizování účtu
 
@@ -112,6 +112,9 @@ Nejběžnější případ použití pro zřizování protokoly auditu je zkontro
 
 7. Kliknutím na jednotlivé události zobrazíte Rozšířené podrobnosti, včetně všech vlastnosti uživatele, které byly načteny, vyhodnotí nebo zapsat jako součást události.
 
+Ukázka o tom, jak pomocí protokolů auditování najdete v níže uvedené video. Protokoly auditu jsou prezentované přibližně 5:30 označit:
+
+> [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 
 ### <a name="tips-for-viewing-the-provisioning-audit-logs"></a>Tipy pro zobrazení zřizování protokoly auditu
 

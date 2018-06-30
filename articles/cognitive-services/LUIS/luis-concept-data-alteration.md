@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/26/2018
 ms.author: v-geberr
-ms.openlocfilehash: 4fb1a5542bb56bd853984e66198ebfbd189451f8
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ab9b9fe5c34c334fd65971f9040c8e43467aa242
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266861"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112146"
 ---
 # <a name="data-alterations"></a>Změny dat
 LEOŠ poskytuje způsoby, jak pracovat s utterance před nebo během předpovědi. 
@@ -31,7 +31,7 @@ Koncový bod vyžaduje dva parametry z kontroly pravopisu postup:
 |Param|Hodnota|
 |--|--|
 |`spellCheck`|Boolean|
-|`bing-spell-check-subscription-key`|[Zkontrolujte V7 rozhraní API aplikace Bing pravopisu](https://azure.microsoft.com/services/cognitive-services/spell-check/) klíč předplatného|
+|`bing-spell-check-subscription-key`|[Zkontrolujte V7 rozhraní API aplikace Bing pravopisu](https://azure.microsoft.com/services/cognitive-services/spell-check/) klíč koncového bodu|
 
 Když [API V7 kontrola pravopisu Bing](https://azure.microsoft.com/services/cognitive-services/spell-check/) zjistí chybu původní utterance, opravené utterance jsou vráceny a společně s předpovědi z koncového bodu.
 

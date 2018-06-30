@@ -4,22 +4,23 @@ description: Řešení pro správu výstrah v analýzy protokolů umožňuje ana
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: fe5d534e-0418-4e2f-9073-8025e13271a8
-ms.service: operations-management-suite
+ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 0d9028b821e4c488186143311c81bfa6d17908ff
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: na
+ms.openlocfilehash: eb61a48e8c479db4742d65187b202655f29b032d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30181193"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131043"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Výstrahy řešení pro správu v Azure Log Analytics
 
@@ -69,8 +70,8 @@ Klikněte na **správu výstrah** dlaždici otevřete **správu výstrah** říd
 | Sloupec | Popis |
 |:--- |:--- |
 | Kritické výstrahy |Všechny výstrahy se závažností kritický seskupené podle název výstrahy.  Klikněte na název výstrahy. ke spuštění vyhledávání protokolu vrátit všechny záznamy pro tuto výstrahu. |
-| Varovné výstrahy. |Všechny výstrahy se závažností upozornění seskupené podle název výstrahy.  Klikněte na název výstrahy. ke spuštění vyhledávání protokolu vrátit všechny záznamy pro tuto výstrahu. |
-| Aktivní SCOM výstrahy |Všechny výstrahy shromážděné z nástroje Operations Manager pomocí nějaký stav, jiné než *uzavřeno* seskupené podle zdroje, které výstrahu vygenerovalo. |
+| Upozorňující výstrahy |Všechny výstrahy se závažností upozornění seskupené podle název výstrahy.  Klikněte na název výstrahy. ke spuštění vyhledávání protokolu vrátit všechny záznamy pro tuto výstrahu. |
+| Aktivní výstrahy SCOM |Všechny výstrahy shromážděné z nástroje Operations Manager pomocí nějaký stav, jiné než *uzavřeno* seskupené podle zdroje, které výstrahu vygenerovalo. |
 | Všechny aktivní výstrahy |Všechny výstrahy s všechny závažnosti seskupené podle název výstrahy. Zahrnuje výstrahy nástroje Operations Manager s jakýkoli stav jenom jiné než *uzavřeno*. |
 
 Pokud jste se posuňte doprava, řídicí panel uvádí několik běžných dotazů, které můžete provést kliknutím na [hledání protokolů](log-analytics-log-searches.md) pro dat výstrah.
@@ -85,7 +86,7 @@ Pokud jste se posuňte doprava, řídicí panel uvádí několik běžných dota
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Typ |*Alert* |
+| Typ |*Výstrahy* |
 | SourceSystem |*OpsManager* |
 | AlertContext |Podrobnosti o datová položka, která způsobila výstrahu, kterou chcete vygenerovat ve formátu XML. |
 | AlertDescription |Podrobný popis výstrahy. |

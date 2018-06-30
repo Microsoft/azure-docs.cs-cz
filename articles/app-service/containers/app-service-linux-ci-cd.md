@@ -4,8 +4,8 @@ description: Jak nastavit průběžné nasazování registr, kontejner Docker ve
 keywords: služby Azure app service, linux, docker, acr, operačních systémů
 services: app-service
 documentationcenter: ''
-author: ahmedelnably
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 ms.assetid: a47fb43a-bbbd-4751-bdc1-cd382eae49f8
 ms.service: app-service
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
-ms.author: aelnably;msangapu
-ms.openlocfilehash: ac35dbd041de50ab8aae1a0fb4c00fe3917a7297
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.date: 06/29/2018
+ms.author: msangapu
+ms.openlocfilehash: 0f2d4626308eed376b71f1b3df2f9e43f1b2a4f7
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30168322"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130957"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Průběžné nasazování s webovou aplikaci pro kontejnery
 
@@ -54,7 +54,8 @@ Získat adresu URL webhooku pomocí [rozhraní příkazového řádku Azure](htt
 az webapp deployment container show-cd-url --name sname1 --resource-group rgname
 ```
 
-URL webhooku se nenačetla, potřebujete následující koncový bod: `https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`.
+Poznamenejte si adresu URL webhooku. Budete ho potřebovat v další části.
+`https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook`.
 
 Můžete získat vaše `publishingusername` a `publishingpwd` stažením webové aplikace profil publikování se pomocí portálu Azure.
 
@@ -62,34 +63,15 @@ Můžete získat vaše `publishingusername` a `publishingpwd` stažením webové
 
 ## <a name="add-a-webhook"></a>Přidat webhook, jehož
 
-### <a name="azure-container-registry"></a>Azure Container Registry
+Pokud chcete přidat webhook, jehož, postupujte podle kroků v těchto průvodcích se dozvíte:
 
-1. Na stránce portálu registru, vyberte **Webhooky**.
-2. Chcete-li vytvořit nové webhooku, vyberte **přidat**. 
-3. V **vytvoření webhooku** podokně, zadejte název vaší webhooku. Webhooku identifikátor URI zadejte adresu URL získaných v předchozím oddílu.
-
-Zajistěte, aby že definujte rozsah jako úložiště obsahující bitové kopie kontejneru.
-
-![Snímek obrazovky webhooku](./media/app-service-webapp-service-linux-ci-cd/step3ACRWebhook-1.png)
-
-Při aktualizaci bitovou kopii, webové aplikace se automaticky aktualizuje s novou bitovou kopii.
-
-### <a name="docker-hub"></a>Docker Hub
-
-Na stránce úložiště Docker Hub, vyberte **Webhooky**a potom **vytvoření WEBHOOKU A**.
-
-![Snímek obrazovky přidání webhooku 1](./media/app-service-webapp-service-linux-ci-cd/step3-1.png)
-
-URL webhooku se nenačetla zadejte adresu URL, kterou jste získali dříve.
-
-![Snímek obrazovky přidání webhooku 2](./media/app-service-webapp-service-linux-ci-cd/step3-2.png)
-
-Při aktualizaci bitovou kopii, webové aplikace se automaticky aktualizuje s novou bitovou kopii.
+- [Azure kontejneru registru](../../container-registry/container-registry-webhook.md) pomocí adresy URL webhooku
+- [Webhooky pro úložiště Docker Hub](https://docs.docker.com/docker-hub/webhooks/)
 
 ## <a name="next-steps"></a>Další postup
 
 * [Úvod do Azure App Service v systému Linux](./app-service-linux-intro.md)
-* [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
+* [Kontejner Azure registru](https://azure.microsoft.com/services/container-registry/)
 * [Vytvoření webové aplikace .NET Core ve službě App Service v Linuxu](quickstart-dotnetcore.md)
 * [Vytvoření Ruby webové aplikace ve službě App Service v systému Linux](quickstart-ruby.md)
 * [Nasazení webové aplikace Docker nebo přejděte ve webové aplikaci pro kontejnery](quickstart-docker-go.md)

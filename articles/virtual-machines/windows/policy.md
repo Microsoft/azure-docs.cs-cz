@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: fc95b57c244e855f6788b7f21fc9abc0eba3d44d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b6a42e1a0b0256a6b19220958f98940764273a2d
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654704"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114380"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Použití zásad u virtuálních počítačů s Windows pomocí Azure Resource Manageru
 Pomocí zásad můžete vynutit organizaci různé konvence a pravidla v rámci podniku. Vynucení požadované chování může pomoci zmírnit rizika při přispívání do úspěch organizace. V tomto článku jsme popisují, jak lze pomocí Azure Resource Manager zásad můžete určit požadované chování pro virtuální počítače vaší organizace.
@@ -228,7 +228,7 @@ Můžete chtít nezakazuje využití určitých typů rozšíření. Například
 
 ## <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
 
-Pokud máte licenci místní, můžete uložit poplatek licence na virtuálních počítačích. Pokud nemáte licenci, by měl nezakazuje možnost. Tyto zásady zakazuje použití Azure hybridní použití zvýhodnění (AHUB):
+Pokud máte licenci na místě, můžete uložit poplatek licence na virtuálních počítačích. Pokud nemáte licenci, by měl nezakazuje možnost. Tyto zásady zakazuje použití Azure hybridní použití zvýhodnění (AHUB):
 
 ```json
 {

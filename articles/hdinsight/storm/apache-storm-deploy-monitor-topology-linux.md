@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: 8b4584e9ccd17eba385f2068709f5bbaea6df20b
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 53433e6a677a2576a11209075f397bb5f246b875
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37019951"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129281"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>Nasazení a správa topologií Apache Storm v HDInsight
 
@@ -212,7 +212,7 @@ Výběr funkcí spout z **Spouts** nebo **Bolts** části zobrazí následujíc�
 
 Uživatelské rozhraní Storm je postavený na rozhraní REST API, takže můžete provádět podobné správy a monitorování funkce pomocí rozhraní REST API. Rozhraní REST API můžete použít k vytvoření vlastních nástrojů pro správu a monitorování topologie Storm.
 
-Další informace najdete v tématu [Storm uživatelského rozhraní REST API](http://storm.apache.org/releases/0.9.6/STORM-UI-REST-API.html). Tyto informace je specifická pro Apache Storm v HDInsight pomocí rozhraní REST API.
+Další informace najdete v tématu [Storm uživatelského rozhraní REST API](http://storm.apache.org/releases/current/STORM-UI-REST-API.html). Tyto informace je specifická pro Apache Storm v HDInsight pomocí rozhraní REST API.
 
 > [!IMPORTANT]
 > Rozhraní API REST Storm není veřejně dostupné přes internet a musí být přístup pomocí tunelového propojení SSH k hlavnímu uzlu clusteru HDInsight. Informace o vytváření a používání tunelového propojení SSH naleznete v tématu [používání tunelového propojení SSH pro přístup k webovému uživatelskému rozhraní Ambari, ResourceManager, JobHistory, NameNode, Oozie a jiným webovým uživatelská rozhraní](../hdinsight-linux-ambari-ssh-tunnel.md).

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 06/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 2062ba20b09e8e42fd094fbff628f5e76b5ea00f
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d234b34f7583441f496fb96d37166c5472cadb4c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36225785"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110823"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-riskware"></a>Kurz: Azure Active Directory integrace s Riskware
 
@@ -67,7 +67,7 @@ Při konfiguraci integrace Riskware do služby Azure AD musíte přidat do sezna
 2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
-    
+
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Tlačítko nové aplikace][3]
@@ -101,7 +101,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurace propojení přihlášení][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Jediné přihlášení dialogové okno](./media/riskware-tutorial/tutorial_riskware_samlbase.png)
 
 3. Na **Riskware domény a adresy URL** část, proveďte následující kroky:
@@ -113,7 +113,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     |--|--|
     | UAT|  `https://riskcloud.net/uat?ccode=<COMPANYCODE>` |
     | PRODUKČNÍMU| `https://riskcloud.net/prod?ccode=<COMPANYCODE>` |
-    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` | 
+    | DEMO| `https://riskcloud.net/demo?ccode=<COMPANYCODE>` |
     |||
 
     b. V **identifikátoru (Entity ID)** textovému poli, zadejte adresu URL:
@@ -121,10 +121,10 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     |--|--|
     | UAT| `https://riskcloud.net/uat` |
     | PRODUKČNÍMU| `https://riskcloud.net/prod` |
-    | DEMO| `https://riskcloud.net/demo` | 
+    | DEMO| `https://riskcloud.net/demo` |
     |||
 
-    > [!NOTE] 
+    > [!NOTE]
     > Přihlašování hodnota adresy URL není skutečné. Aktualizujte hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Riskware klienta](mailto:support@pansoftware.com.au) k získání hodnoty.
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
@@ -137,11 +137,11 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
 6. Na **Riskware konfigurace** klikněte na tlačítko **konfigurace Riskware** otevřete **konfigurovat přihlášení** okno. Kopírování **Sign-Out adresu URL a SAML jeden přihlašování služby URL** z **Stručná referenční příručka části.**
 
-    ![Konfigurace Riskware](./media/riskware-tutorial/tutorial_riskware_configure.png) 
+    ![Konfigurace Riskware](./media/riskware-tutorial/tutorial_riskware_configure.png)
 
 7. V okně prohlížeče jiný web Přihlaste se k serveru vaší společnosti Riskware jako správce.
 
-8. Vpravo nahoře klikněte na tlačítko **údržby** chcete otevřít stránku údržby. 
+8. Vpravo nahoře klikněte na tlačítko **údržby** chcete otevřít stránku údržby.
 
     ![Udržovat Riskware konfigurace](./media/riskware-tutorial/tutorial_riskware_maintain.png)
 
@@ -159,16 +159,16 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     c. V **popis** textovému poli, zadejte do pole, jako je konfigurace AZURE pro jednotné přihlašování.
 
-    d. V **jediné přihlášení na stránce** textovému poli, vložte hodnotu **SAML jeden přihlašování adresa URL služby**, který jste zkopírovali z portálu Azure.
+    d. V **jediné přihlášení na stránce** textovému poli, Vložit **SAML jeden přihlašování adresa URL služby** hodnotu, kterou jste zkopírovali z portálu Azure.
 
-    e. V **Odhlásit se stránka** textovému poli, vložte hodnotu **Sign-Out URL**, který jste zkopírovali z portálu Azure.
+    e. V **Odhlásit se stránka** textovému poli, Vložit **Sign-Out URL** hodnotu, kterou jste zkopírovali z portálu Azure.
 
-    f. V **pole formuláře Post** textovému poli, zadejte název pole, která je součástí Post odpovědi, která obsahuje SAML jako SamlResponse
+    f. V **pole formuláře Post** textovému poli, zadejte název pole, která je součástí Post odpovědi, která obsahuje SAML jako SAMLResponse
 
     g. V **název značky XML Identity** textovému poli, typ atributu, který obsahuje jedinečný identifikátor v odpovědi SAML jako NameID.
 
     h. Otevřete stažené **soubor Xml s metadaty** z portálu Azure v programu Poznámkový blok, zkopírujte certifikát ze souboru metadat a vložte ji do **certifikát** textbox
-    
+
     i. V **příjemce URL** textovému poli, vložte hodnotu **adresa URL odpovědi**, který můžete získat z tým podpory.
 
     j. V **vystavitele** textovému poli, vložte hodnotu **identifikátor**, který můžete získat z tým podpory.
@@ -176,9 +176,9 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     > [!Note]
     > Obraťte se na [tým podpory Riskware klienta](mailto:support@pansoftware.com.au) získat tyto hodnoty
 
-    k. Vyberte **použití POST** k předávání žádostí SAML jako parametr post.
+    k. Vyberte **po použití** zaškrtávací políčko.
 
-    l. Vyberte **žádosti SAML použití** předat jednotné přihlašování povolit žádosti SAML pro SP inicioval.
+    l. Vyberte **žádosti SAML použití** zaškrtávací políčko.
 
     m. Klikněte na **Uložit**.
 
@@ -213,7 +213,7 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="create-a-riskware-test-user"></a>Vytvoření zkušebního uživatele Riskware
 
 Pokud chcete povolit uživatelům Azure AD přihlášení k Riskware, musí být zřízená do Riskware. V Riskware zřizování je ruční úloha.
@@ -230,8 +230,8 @@ Pokud chcete povolit uživatelům Azure AD přihlášení k Riskware, musí být
 
     ![Konfigurace Riskware osoby](./media/riskware-tutorial/tutorial_riskware_people.png)
 
-4. Na **podrobnosti** kartu, proveďte následující kroky:
-    
+4. Vyberte **podrobnosti** kartě a proveďte následující kroky:
+
     ![Podrobnosti o konfiguraci Riskware](./media/riskware-tutorial/tutorial_riskware_details.png)
 
     a. Vyberte **typ osoby** jako jsou třeba zaměstnanců.
@@ -240,7 +240,7 @@ Pokud chcete povolit uživatelům Azure AD přihlášení k Riskware, musí být
 
     c. V **Přezdívka** textovému poli, zadejte příjmení uživatele jako **Simon**.
 
-5. Na **zabezpečení** kartu, proveďte následující kroky:    
+5. Na **zabezpečení** kartu, proveďte následující kroky:
 
     ![Riskware konfigurace zabezpečení](./media/riskware-tutorial/tutorial_riskware_security.png)
 
@@ -254,8 +254,8 @@ Pokud chcete povolit uživatelům Azure AD přihlášení k Riskware, musí být
 
     ![Konfigurace Riskware org](./media/riskware-tutorial/tutorial_riskware_org.png)
 
-    a. V části **organizace** vyberte organizace jako **Level1** organizace.
-    
+    a. Vyberte možnost jako **Level1** organizace.
+
     b. V části **primární síti na pracovišti osoby** v části **umístění** textovému poli, zadejte vaše umístění.
 
     c. V části **zaměstnanec** vyberte **stavu zaměstnance** jako volný čas.
@@ -266,7 +266,7 @@ Pokud chcete povolit uživatelům Azure AD přihlášení k Riskware, musí být
 
 V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Riskware.
 
-![Přiřadit role uživatele][200] 
+![Přiřadit role uživatele][200]
 
 **Pokud chcete přiřadit Britta Simon Riskware, proveďte následující kroky:**
 

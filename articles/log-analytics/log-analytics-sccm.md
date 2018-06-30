@@ -3,7 +3,7 @@ title: Připojení nástroje Configuration Manager k analýze protokolů | Micro
 description: Tento článek popisuje kroky pro připojení k analýze protokolů nástroje Configuration Manager a začněte analyzovat data.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f2298bd7-18d7-4371-b24a-7f9f15f06d66
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: 5ff0687fe99f0853e29e5f0d814a8555c367027c
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.component: na
+ms.openlocfilehash: 6bb59e4b63933500bc8571dca2422eec6c3456ee
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30283992"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129753"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Připojení k analýze protokolů nástroje Configuration Manager
 Můžete se připojit prostředí System Center Configuration Manager k analýze protokolů Azure na synchronizaci zařízení shromažďování dat a odkazovat na těchto kolekcí v analýzy protokolů a automatizace Azure.  
@@ -48,7 +49,7 @@ V následujícím postupu udělíte *Přispěvatel* role v pracovní prostor ana
 > Musíte zadat oprávnění v analýzy protokolů pro nástroj Configuration Manager. Jinak zobrazí chybová zpráva při použití Průvodce konfigurací služby v nástroji Configuration Manager.
 >
 
-1. Na portálu Azure klikněte na tlačítko **všechny služby** najít v levém horním rohu. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. V seznamu analýzy protokolů pracovních prostorů vyberte Upravit v pracovním prostoru.
 3. V levém podokně vyberte **řízení přístupu (IAM)**.
 4. Na stránce řízení přístupu, klikněte na tlačítko **přidat** a **přidat oprávnění** podokně se zobrazí.
@@ -94,7 +95,7 @@ Po připojení k OMS přidán do nástroje Configuration Manager a nainstalovali
 
 Po dokončení počáteční konfigurace pro import kolekce zařízení z vaší hierarchii, informace o členství v kolekci je načíst každé 3 hodiny zachovat aktuální členství. Můžete to kdykoli zakázat.
 
-1. Na portálu Azure klikněte na tlačítko **všechny služby** najít v levém horním rohu. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
+1. Na webu Azure Portal klikněte v levém horním rohu na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
 2. V seznamu analýzy protokolů pracovních prostorů vyberte pracovní prostor, který není zaregistrována nástroje Configuration Manager.  
 3. Vyberte **Upřesňující nastavení**.<br><br> ![Upřesňující nastavení Log Analytics](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
 4. Vyberte **skupiny počítačů** a pak vyberte **SCCM**.  

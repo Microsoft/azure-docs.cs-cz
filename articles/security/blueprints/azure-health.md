@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: jomolesk
-ms.openlocfilehash: e627019f6219509c21ca6245ee1f7f54f2e1669a
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: f58466bb4cc90823d8e75e0371b400ee674e8b5d
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "33894309"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113227"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpečení Azure a dodržování předpisů plán, podle kterého - HIPAA nebo HITRUST Data o stavu a AI
 
@@ -163,7 +163,7 @@ Plán, podle kterého obsahuje velké sady anonymizovaná lékařské záznamy k
 
 *E-mailu: Alex\_SiteAdmin*
 
-Úloha je Alex je vyhodnotit technologie, které může snížit režie správy k místní síti a snížit náklady na správu. Alex byla vyhodnocování Azure nějakou dobu, ale má měli problémy, ke konfiguraci služby, které mu je potřeba splnit požadavky na dodržování HiTrust k ukládání dat pacienta v cloudu. Alex vybral AI stavu Azure chcete nasadit řešení stavu dodržování předpisů připravené, který má řešit požadavky pro požadavkům zákazníka HiTrust.
+Úloha je Alex je vyhodnotit technologie, které může snížit režie správy do místní sítě a snížit náklady na správu. Alex byla vyhodnocování Azure nějakou dobu, ale má měli problémy, ke konfiguraci služby, které mu je potřeba splnit požadavky na dodržování HiTrust k ukládání dat pacienta v cloudu. Alex vybral AI stavu Azure chcete nasadit řešení stavu dodržování předpisů připravené, který má řešit požadavky pro požadavkům zákazníka HiTrust.
 
 **Dat – vědecký pracovník Debra**
 
@@ -301,7 +301,7 @@ K dosažení úložiště dat, společné schéma rozhraní API implementovat n�
 
 
 
-### <a name="event-grid"></a>Mřížka událostí
+### <a name="event-grid"></a>Event Grid
 
 
 Podporuje řešení Azure událostí mřížky, jedinou službu pro správu směrování pro všechny události z jakéhokoli zdroje do žádné cíle, pokud:

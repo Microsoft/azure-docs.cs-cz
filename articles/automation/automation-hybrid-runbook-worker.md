@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: be79f0111cb569509cb05b24c99f86d4ca9534b0
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 54b2cab2ad6b1a22d35fcf0755f257063573e58b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063789"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128618"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizaci prostředků v datovém centru nebo v cloudu pomocí hybridní pracovní proces Runbooku
 
@@ -95,7 +95,7 @@ Chcete-li odebrat skupinu, musíte nejprve odebrat hybridní pracovní proces Ru
 
 ### <a name="hybrid-worker-role"></a>Hybridní role pracovního procesu
 
-Pro Runbook Worker hybridní připojení k a zaregistrovat u analýzy protokolů musí mít přístup k adresám URL, které jsou popsané v této části a číslo portu. Tento přístup je kromě [portů a adres URL potřebných pro agenta Microsoft Monitoring Agent](../log-analytics/log-analytics-agent-windows.md) pro připojení k analýze protokolů.
+Pro Runbook Worker hybridní připojení k a zaregistrovat u analýzy protokolů musí mít přístup k adresám URL, které jsou popsané v této části a číslo portu. Tento přístup je kromě [portů a adres URL potřebných pro agenta Microsoft Monitoring Agent](../log-analytics/log-analytics-agent-windows.md) pro připojení k analýze protokolů. 
 
 Pokud používáte proxy server pro komunikaci mezi agentem a analýzy protokolů služby, zajistěte, aby byly dostupné s příslušnými prostředky. Pokud používáte bránu firewall k omezení přístupu k Internetu, musíte nakonfigurovat bránu firewall tak, aby povolovala přístup.
 
@@ -105,6 +105,8 @@ Následující portů a adres URL jsou vyžadovány pro roli hybridní pracovní
 * Globální adresa URL: *.azure-automation.net
 * Globální adresa URL USA verze pro státní správu Virginia: *.azure automation.us
 * Služba agenta: https://\<workspaceId\>.agentsvc.azure-automation.net
+
+Doporučujeme použít adresy uvedené při definování výjimky. Pro IP adresy si můžete stáhnout [Microsoft Azure Datacenter rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor je aktualizovaný týdně a odráží aktuálně nasazená rozsahy a žádné nadcházející změny rozsahy IP.
 
 Pokud máte účet Automation, který je definován pro určitou oblast, můžete omezit komunikaci s místní stejné datové centrum. Následující tabulka obsahuje záznam DNS pro každou oblast:
 

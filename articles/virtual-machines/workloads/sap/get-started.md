@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7f0705f2fb14bc44a7738f38bc3ef53a6359dfb4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4b3024b451ddf08b6b7ab171238ae45edbafc58a
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657767"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110958"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Pomocí Azure pro hostování a spuštění úlohy scénáře SAP
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -301,7 +301,7 @@ Kromě hostování SAP NetWeaver scénáře s jinou databázového systému na p
 
 Azure má nativní nabízí virtuální počítač Azure, které jsou neustále rozšiřující velikostí prostředků procesoru a paměti tak, aby pokrývalo SAP zatížení, která využívá SAP HANA. Další informace o této oblasti vyhledat dokumenty části SAP HANA ve virtuálních počítačích Azure."
 
-Jedinečnost Azure pro SAP HANA je jedinečný nabídka, která nastaví Azure kromě konfliktům. Chcete-li povolit, hostování více paměti a procesoru prostředků vyhrazené náročné SAP scénáře zahrnující SAP HANA, Azure nabízí použití zákazníka holého hardwaru pro účely probíhá nasazení SAP HANA, které vyžadují až 20 TB (škálovatelnou 60 TB) paměti pro S nebo 4HANA nebo jiných úloh SAP HANA. Tento jedinečný Azure řešení SAP HANA v Azure (velké instance) umožňuje spustit SAP HANA na vyhrazeném hardwaru holých počítačů s vrstvy aplikace SAP nebo zatížení VMware střední vrstvy hostované v nativní Azure Virtual Machines. Toto řešení je popsána v několika dokumentů v části "SAP HANA v Azure (velké instance)."   
+Jedinečnost Azure pro SAP HANA je jedinečný nabídka, která nastaví Azure kromě konfliktům. Chcete-li povolit hostování více paměti a procesoru prostředků náročných SAP scénáře zahrnující SAP HANA Azure nabízí použití zákazníka vyhrazené holého hardwaru pro účely probíhá nasazení SAP HANA, které vyžadují až 20 TB paměti pro (60 TB Škálováním na více systémů) S nebo 4HANA nebo jiných úloh SAP HANA. Tento jedinečný Azure řešení SAP HANA v Azure (velké instance) umožňuje spustit SAP HANA na vyhrazeném hardwaru holých počítačů s vrstvy aplikace SAP nebo zatížení VMware střední vrstvy hostované v nativní Azure Virtual Machines. Toto řešení je popsána v několika dokumentů v části "SAP HANA v Azure (velké instance)."   
 
 Hostování SAP scénáře zatížení v Azure můžete vytvořit požadavky Identity integrace a jednotné přihlášení pomocí Azure Directory aktivity pro různé součásti SAP a SAP SaaS nebo PaaS nabízí. Seznam těchto integrace a scénáře jednotného přihlašování s Azure Active Directory (AAD) a SAP entity je popsané a popsané v části "integrace identit AAD SAP a jednotného přihlašování."
 
@@ -444,7 +444,7 @@ Aktualizované: Červen 2017
 ### <a name="high-availability-configurations-of-sap-netweaver-in-azure-vms"></a>Konfigurace vysoké dostupnosti SAP NetWeaver ve virtuálních počítačích Azure
 Title: Virtuální počítače Azure vysoká dostupnost pro SAP NetWeaver
 
-Souhrn: V tomto dokumentu nabídneme kroky, které můžete provést nasazení SAP systémů s vysokou dostupností v Azure pomocí modelu nasazení Azure Resource Manager. Můžeme vás provedou tyto hlavní úlohy. V dokumentu, jsme popisují, jak jeden bod z – selhání součásti jako Advanced obchodní aplikace programování (ABAP) SAP centrální služby (ASC) / SAP centrální služby (SCS) a databázové systémy (databázového systému) a redundantní komponenty, jako jsou aplikace serveru SAP se chystáte chránit při spuštění ve virtuálních počítačích Azure. Podrobný příklad k instalaci a konfiguraci systému SAP vysoké dostupnosti v clusteru Windows Server Failover Clustering a SUSE Linux Enterprise Server clusteru Framework v Azure je ukázán a v tomto dokumentu.
+Souhrn: V tomto dokumentu nabídneme kroky, které můžete provést nasazení SAP systémů s vysokou dostupností v Azure pomocí modelu nasazení Azure Resource Manager. Můžeme vás provedou tyto hlavní úlohy. V dokumentu, jsme popisují, jak jeden bod z – selhání součásti jako Advanced obchodní aplikace programování (ABAP) SAP centrální služby (ASC) / SAP centrální služby (SCS) a databázové systémy (databázového systému) a redundantní komponenty, například SAP Aplikační Server se chystáte chránit při spuštění ve virtuálních počítačích Azure. Podrobný příklad k instalaci a konfiguraci systému SAP vysoké dostupnosti v clusteru Windows Server Failover Clustering a SUSE Linux Enterprise Server clusteru Framework v Azure je ukázán a v tomto dokumentu.
 
 Aktualizované: Říjen 2017
 

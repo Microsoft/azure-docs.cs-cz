@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.openlocfilehash: a34a4be75488aca46fe232331e4bac3e0ac414b0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.component: na
+ms.openlocfilehash: 240e56e3e482b81d6336f7d6d2a1f5688953ecd8
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637765"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131547"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Shromažďovat výstrahy z Nagios a Zabbix v analýzy protokolů z OMS agenta pro Linux 
 [Nagios](https://www.nagios.org/) a [Zabbix](http://www.zabbix.com/) jsou nástroje pro sledování s otevřeným zdrojem. Výstrahy můžete shromáždit z těchto nástrojů do analýzy protokolů, aby bylo možné analyzovat, spolu s [výstrahy z jiných zdrojů](log-analytics-alerts.md).  Tento článek popisuje postup konfigurace agenta OMS pro Linux ke shromažďování výstrah z těchto systémů.
@@ -91,7 +92,7 @@ Výstrahy mají záznamy shromažďují Nagios **typ** z **výstrahy** a **Sourc
 | AlertName |Název výstrahy. |
 | AlertDescription | Popis výstrahy. |
 | AlertState | Stav služby nebo hostitele.<br><br>OK<br>UPOZORNĚNÍ<br>NAHORU<br>DOLŮ |
-| Název hostitele | Název hostitele, který vytvořili výstrahu. |
+| název hostitele | Název hostitele, který vytvořili výstrahu. |
 | PriorityNumber | Úroveň priority výstrahy. |
 | StateType | Typ stav výstrahy.<br><br>Konfigurace SOFT - problém, který nebyl opakovaným zkontrolováním.<br>PEVNÝ - problém, který byl znovu zkontrolují zadaného počtu opakování.  |
 | TimeGenerated |Datum a čas vytvoření výstrahy. |
@@ -109,7 +110,7 @@ Výstrahy mají záznamy shromažďují Zabbix **typ** z **výstrahy** a **Sourc
 | AlertState | Stav výstrahy.<br><br>0 – stav je aktuální.<br>1 - stav není znám.  |
 | AlertTypeNumber | Určuje, zda výstraha může vygenerovat více událostí problém.<br><br>0 – stav je aktuální.<br>1 - stav není znám.    |
 | Komentáře | Další poznámky pro výstrahu. |
-| Název hostitele | Název hostitele, který vytvořili výstrahu. |
+| název hostitele | Název hostitele, který vytvořili výstrahu. |
 | PriorityNumber | Hodnota označující závažnost výstrahy.<br><br>0 – nezařazených<br>1 - informace<br>2 – upozornění<br>3 – průměr<br>4 – vysoká<br>5 - po havárii |
 | TimeGenerated |Datum a čas vytvoření výstrahy. |
 | TimeLastModified |Datum a čas, kdy byl naposledy změněn stav výstrahy. |

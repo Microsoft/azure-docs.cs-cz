@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: jeedes
-ms.openlocfilehash: d8f3c0e4dec05b2ed968a3493a7cc560231e7331
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: b57522933647c9d1d5518740d41b624b199a020e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215687"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110554"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>Kurz: Integrace Azure Active Directory pomocí jednotného přihlašování SAML soutoku společností Microsoft
 
@@ -43,7 +43,7 @@ Pomocí účtu Microsoft Azure Active Directory se serverem Atlassian soutoku um
 Ke konfiguraci integrace služby Azure AD pomocí jednotného přihlašování SAML soutoku společností Microsoft, potřebujete následující položky:
 
 - Předplatné služby Azure AD
-- Aplikace serveru soutoku nainstalovaný na 64bitovou verzi Windows serveru (místní nebo v cloudu IaaS infrastrukturu)
+- Soutoku serverová aplikace nainstalována na 64bitovém systému Windows server (místně nebo v cloudu IaaS infrastrukturu)
 - Soutoku server je povolen protokol HTTPS
 - Všimněte si, že podporované verze pro modul plug-in soutoku jsou uvedené v následující části.
 - Soutoku server je dostupný na Internetu, zvláště na Azure AD přihlašovací stránku pro ověřování a měli schopný přijímat tokenu z Azure AD
@@ -167,7 +167,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     a. V **adresu URL metadat** textovému poli, vložte **adresu Url aplikace federační Metadata** hodnotu, která jste zkopírovali z portálu Azure a klikněte na tlačítko **vyřešit** tlačítko. Přečte adresu URL metadat IdP a naplní všechny informace o pole.
 
-    b. Kopírování **identifikátor, adresa URL odpovědi a adresa URL přihlašování** hodnoty a vložte je do **identifikátor, adresa URL odpovědi a adresa URL přihlašování** textových polí v uvedeném pořadí v **jednotné přihlašování SAML soutoku Microsoft Domain a adresy URL** části na portálu Azure.
+    b. Kopírování **identifikátor, adresa URL odpovědi a adresa URL přihlašování** hodnoty a vložte je do **identifikátor, adresa URL odpovědi a adresa URL přihlašování** textových polí v uvedeném pořadí v **jednotné přihlašování SAML soutoku Microsoft Domain a adresy URL**  části na portálu Azure.
 
     c. V **přihlašovací jméno tlačítko** zadejte název vaší organizace chce, aby se uživatelům zobrazit na přihlašovací obrazovku tlačítka.
 
@@ -226,7 +226,7 @@ Pokud chcete povolit uživatelům Azure AD přihlášení do soutoku na místní
 
 **K poskytnutí uživatelského účtu, proveďte následující kroky:**
 
-1. Přihlaste se k vaší soutoku na místním serveru jako správce.
+1. Přihlaste se k serveru místní soutoku jako správce.
 
 2. Pozastavte ukazatel myši na ikonu a klikněte na **Správa uživatelů**.
 

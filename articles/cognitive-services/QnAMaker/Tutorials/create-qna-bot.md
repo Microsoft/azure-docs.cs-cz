@@ -8,18 +8,18 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: saneppal
-ms.openlocfilehash: f2721dfa9a0922ee4a5af1eb66fd4506feb94d28
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: fc430bf3aa7cad279d7a93bb6892aa19abee3378
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343877"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109265"
 ---
 # <a name="create-a-qna-bot-with-azure-bot-service"></a>Vytvořit QnA robota se službou Azure robota
 Tento kurz vás provede procesem vytváření QnA robota službou Azure robota na portálu Azure.
 
 ## <a name="prerequisite"></a>Požadavek
-Než vytvoříte, postupujte podle kroků v [vytvořit znalostní bázi]() vytvoření služby QnA Maker s otázky a odpovědi.
+Než vytvoříte, postupujte podle kroků v [vytvořit znalostní bázi](../How-To/create-knowledge-base.md) vytvoření služby QnA Maker s otázky a odpovědi.
 
 Robota odpoví na dotazy z znalostní bázi knowledge base, kterou jste vytvořili pomocí QnAMakerDialog.
 

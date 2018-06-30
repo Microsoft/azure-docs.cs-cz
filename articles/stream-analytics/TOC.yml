@@ -127,8 +127,6 @@
           href: stream-analytics-job-diagram-with-metrics.md
         - name: Diagnostické protokoly
           href: stream-analytics-job-diagnostic-logs.md
-        - name: Kontrola stavu prostředků
-          href: stream-analytics-resource-health.md
         - name: Příkaz SELECT INTO
           href: stream-analytics-select-into.md
         - name: Přijímače centra událostí

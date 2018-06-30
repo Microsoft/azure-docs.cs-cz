@@ -3,23 +3,24 @@ title: Řešení potíží s rozšíření virtuálního počítače Azure Log A
 description: Popisují příznaky, příčiny a řešení nejběžnějších problémů s rozšířením VM analýzy protokolů pro systém Windows a Linux virtuálních počítačích Azure.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: ''
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
-ms.openlocfilehash: d1e70d8f9fb929e3877c88fd4c1169a0c76ac2a6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.component: na
+ms.openlocfilehash: 700d6b2c3bcd39aed38bf75556bcdcb59d1ab78b
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29394982"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128822"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Řešení potíží s rozšíření virtuálního počítače analýzy protokolů
 Tento článek obsahuje nápovědu k odstraňování potíží chyby setkat s rozšířením VM analýzy protokolů pro Windows a Linux virtuální počítače běžící v Microsoft Azure a navrhne možná řešení jejich řešení.
@@ -27,7 +28,7 @@ Tento článek obsahuje nápovědu k odstraňování potíží chyby setkat s ro
 Pokud chcete ověřit stav rozšíření, proveďte následující kroky na portálu Azure.
 
 1. Přihlaste se k webu [Azure Portal](http://portal.azure.com).
-2. Na portálu Azure klikněte na tlačítko **všechny služby**. V seznamu prostředků zadejte **virtuální počítače**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **virtuální počítače**.
+2. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **virtuální počítače**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **virtuální počítače**.
 3. V seznamu virtuálních počítačů najděte a vyberte ho.
 3. Na virtuálním počítači, klikněte na tlačítko **rozšíření**.
 4. Ze seznamu zkontrolujte, pokud je povolené rozšíření analýzy protokolů, nebo ne.  Pro Linux, je agent uveden jako **OMSAgentforLinux** a pro Windows, je agent uveden jako **MicrosoftMonitoringAgent**.

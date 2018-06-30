@@ -4,22 +4,23 @@ description: Skupiny počítačů v analýzy protokolů umožňují oboru vyhled
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: ''
 ms.assetid: a28b9e8a-6761-4ead-aa61-c8451ca90125
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
-ms.openlocfilehash: c4a1edc8e4ff129a8b073f008e1d20bb20941ae1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.component: na
+ms.openlocfilehash: 23ac75b4afb07c3f8d5f0d90755a5cf2087087e1
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33775260"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130671"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Skupiny počítačů v analýzy protokolů protokolu hledání
 
@@ -129,7 +130,7 @@ V pracovním prostoru analýzy protokolů pro každý členství ve skupině po�
 | Počítač |Název členského počítače. |
 | Skupina |Název skupiny. |
 | GroupFullName |Úplná cesta ke skupině, včetně zdroje a název zdroje. |
-| GroupSource |Zdroj této skupině se shromážděných z. <br><br>Active Directory<br>SLUŽBY WSUS<br>WSUSClientTargeting |
+| GroupSource |Zdroj této skupině se shromážděných z. <br><br>Active Directory<br>WSUS<br>WSUSClientTargeting |
 | GroupSourceName |Název zdroje, který skupině nebyla shromážděna z.  U služby Active Directory je to název domény. |
 | ManagementGroupName |Název skupiny pro správu agentů SCOM.  Pro jiné agenty jde AOI -\<ID pracovního prostoru\> |
 | TimeGenerated |Datum a čas vytvoření nebo aktualizovat skupiny počítačů. |

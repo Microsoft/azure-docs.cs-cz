@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/20/2017
-ms.openlocfilehash: e407a95d3ac858ea7180a75f9fbfc399860ad378
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: f0ee486d9ff4c05269da23866edad281aa627889
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30912011"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113890"
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Důležité informace pořadí událostí Azure Stream Analytics
 
@@ -22,7 +22,7 @@ ms.locfileid: "30912011"
 
 V dočasné datovém proudu událostí je přiřazen každé události časové razítko. Azure Stream Analytics přiřadí časové razítko jednotlivých událostí pomocí buď příchodem času nebo času aplikace. **System.Timestamp** má sloupec časového razítka přiřazené k události. 
 
-Čas doručení přiřazen za vstupní zdroj, když událost dosáhne zdroji. Máte přístup k čas doručení pomocí **EventEnqueuedTime** vlastnost pro událost rozbočovače vstup a použití [BlobProperties.LastModified](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) vlastnost pro vstup objektů blob. 
+Čas doručení přiřazen za vstupní zdroj, když událost dosáhne zdroji. Máte přístup k čas doručení pomocí **EventEnqueuedUtcTime** vlastnost pro vstupy Event Hubs, **IoTHub.EnqueuedTime** vlastnost pro IoT Hub a pomocí [BlobProperties.LastModified ](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.lastmodified?view=azurestorage-8.1.3) vlastnost pro vstup objektů blob. 
 
 Čas aplikace je přiřazena, když se vygeneruje událost a je součástí datové části. Ke zpracování události doba aplikace, použijte **časové razítko podle** klauzuli select dotazu. Pokud **časové razítko podle** chybí klauzule, zpracovává události čas doručení. 
 
@@ -111,7 +111,7 @@ Dotaz nemá **oddílu podle PartitionId** klauzule, a nejsou alespoň dva oddíl
 
 Konfigurace je stejný jako příklad 2. Neexistence data v jedné z oddílů však zpozdit výstup v závislosti další interval tolerance pozdního.
 
-## <a name="handling-event-producers-with-differing-timelines"></a>Zpracování událostí producenti s odlišnými časové osy
+## <a name="handling-event-producers-with-differing-timelines-with-substreams"></a>Zpracování událostí producenti s odlišnými časových os s "substreams"
 Datový proud s jedna vstupní událost často obsahují události, které pocházejí z více událostí výrobců, jako jsou například jednotlivých zařízení. Tyto události nemusí být dodány mimo pořadí z důvodů uvedených dříve. V těchto scénářích nepořádku napříč producenti události může být velký, nepořádku v rámci událostí od jednoho výrobce sice malých (nebo i neexistující).
 
 Azure Stream Analytics poskytuje obecné mechanismy pro práci s událostmi mimo pořadí. Tyto mechanismy výsledek zpracování zpoždění (při čekání na straggling události k dosažení systému), vyřadit nebo upravena události nebo obojí.

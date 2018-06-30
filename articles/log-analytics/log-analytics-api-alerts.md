@@ -4,23 +4,23 @@ description: Log Analytics výstrahy REST API umožňuje vytvářet a spravovat 
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 628ad256-7181-4a0d-9e68-4ed60c0f3f04
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e6987900ac2ef535fe31d4d1ecadb1a302a9c0be
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: na
+ms.openlocfilehash: 9097ca13bf4f65db4b0924044a9c0f075e3703af
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32178516"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128890"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Vytvářet a spravovat pravidla výstrah v analýzy protokolů pomocí rozhraní REST API
 Log Analytics výstrahy REST API umožňuje vytvářet a spravovat výstrahy v Operations Management Suite (OMS).  Tento článek obsahuje podrobné informace o rozhraní API a několik příkladů pro provádění různých akcí.
@@ -136,8 +136,8 @@ Plán by měl mít pouze jeden výstrahy akce.  Jeden nebo více oddílů v nás
 
 | Sekce | Popis | Využití |
 |:--- |:--- |:--- |
-| Mezní hodnota |Kritéria pro spuštění akce.| Vyžaduje se pro každou výstrahu před nebo po jejich platnost do Azure. |
-| Závažnost |Popisek slouží ke klasifikaci výstrahu při aktivaci.| Vyžaduje se pro každou výstrahu před nebo po jejich platnost do Azure. |
+| Prahová hodnota |Kritéria pro spuštění akce.| Vyžaduje se pro každou výstrahu před nebo po jejich platnost do Azure. |
+| Severity |Popisek slouží ke klasifikaci výstrahu při aktivaci.| Vyžaduje se pro každou výstrahu před nebo po jejich platnost do Azure. |
 | Skupiny akcí |ID Azure ActionGroup tam, kde je zadán požadované akce, jako například – e-mailů, SMSs, hlasové hovory, Webhooky, runbooků služeb automatizace, ITSM konektory, atd.| Požadované po výstrahy jsou rozšířené a Azure|
 | Přizpůsobit akce|Upravit ve standardním výstupu pro akce vyberte z ActionGroup| Volitelné pro každou výstrahu lze po výstrahy jsou rozšířené do Azure. |
 | EmailNotification |Odesílat e-maily několika příjemcům. | Není vyžadována, pokud jsou rozšířené výstrahy do Azure|
@@ -147,7 +147,7 @@ Plán by měl mít pouze jeden výstrahy akce.  Jeden nebo více oddílů v nás
 > [!NOTE]
 > Od 14 může 2018, bude automaticky rozšířeno všechny výstrahy v pracovním prostoru do Azure. Uživatel může odpojit iniciovat rozšíření výstrahy do Azure před 14 může 2018. Další informace najdete v tématu [výstrahy rozšířit do Azure z OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md).
 
-#### <a name="thresholds"></a>Prahové hodnoty
+#### <a name="thresholds"></a>Mezní hodnoty
 Výstrahy akce by měl mít pouze jednu prahovou hodnotu.  Pokud výsledky uloženého hledání neodpovídají prahovou hodnotu v akci spojené s toto hledání, jsou spuštěny žádné další procesy, které jsou v této akce.  Akce může také obsahovat pouze prahovou hodnotu, aby se může použít s akcemi jiných typů, které neobsahují žádný prahové hodnoty.
 
 Prahové hodnoty mít vlastnosti v následující tabulce.
@@ -182,7 +182,7 @@ K úpravě akce prahové hodnoty pro plán, použijte metodu Put s existující 
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-#### <a name="severity"></a>Závažnost
+#### <a name="severity"></a>Severity
 Analýzy protokolů umožňuje klasifikovat upozornění do kategorií, umožňující snadnější správu a třídění. Závažnost výstrahy, které jsou definované je: informační, upozornění a kritickou. Tyto jsou namapované na škále normalizovaný závažnost výstrahy Azure jako:
 
 |Úroveň závažnosti analýzy protokolů  |Úroveň závažnosti Azure výstrahy  |

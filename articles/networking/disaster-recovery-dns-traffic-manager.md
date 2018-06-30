@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6c46ada7fc95d5789512f8f7c7842852e6a86b69
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: d608378f9b3ff3179f9e37ef13f88c65a645d018
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35249258"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112982"
 ---
-# <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Zotavení po havárii pomocí Azure DNS a Traffic Manager
+# <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Zotavení po havárii s využitím Azure DNS a Traffic Manageru
 
 Zotavení po havárii se zaměřuje na obnovu po závažné ztráty funkčnosti aplikací. Chcete-li vybrat řešení zotavení po havárii, třeba obchodním a technologickým vlastníky nejprve určit úroveň funkcí, které je potřeba při havárii, jako například – není k dispozici, částečně dostupné prostřednictvím sníženou funkčností nebo zpožděné dostupnosti, nebo plně k dispozici.
 Většina podnikových zákazníků výběru několika oblast architektura pro odolnost proti aplikace nebo úrovně převzetí služeb při selhání infrastruktury. Zákazníci v požadavek na zajistit převzetí služeb při selhání a vysokou dostupnost prostřednictvím redundantní architektura můžete vybrat několik přístupů. Tady jsou některé z oblíbených přístupů:
@@ -59,7 +59,7 @@ DNS je jedním z nejúčinnější mechanismy pro přesměrovat provoz sítě, p
 
 Je důležité si uvědomit, několika koncepty ve službě DNS, který je hojně používaný diskutovat o řešení uvedené v tomto článku:
 - **Záznam DNS A** – jsou A záznamy ukazatele, které domény přejděte na adresu IPv4. 
-- **Název CNAME nebo Canonical** – tento typ záznamu je používat tak, aby odkazoval na jiný záznam DNS. CNAME nereaguje s odpověď IP, ale spíš ukazatele na záznam, který obsahuje IP adresu. 
+- **Název CNAME nebo Canonical** – tento typ záznamu je používat tak, aby odkazoval na jiný záznam DNS. IP adresu, ale spíš ukazatele nebude odpovídat CNAME na záznam, který obsahuje IP adresu. 
 - **Vážené směrování** – jeden můžete přidružit váhu ke koncovým bodům služby a pak distribuovat provozu na základě přiřazené vah. Tuto metodu směrování je jedním z čtyři provoz směrování mechanismů k dispozici v rámci Traffic Manager. Další informace najdete v tématu [vážené metody směrování](../traffic-manager/traffic-manager-routing-methods.md#weighted).
 - **Směrování s prioritou** – směrování s prioritou vychází z kontroly stavu koncových bodů. Ve výchozím nastavení Azure Traffic manager odešle veškerý provoz do nejvyšší priorita koncového bodu a při selhání nebo havárie, Traffic Manager směruje provoz do sekundárního koncového bodu. Další informace najdete v tématu [metody směrování s prioritou](../traffic-manager/traffic-manager-routing-methods.md#priority).
 

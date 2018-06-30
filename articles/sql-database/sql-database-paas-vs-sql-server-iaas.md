@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: a212a595c02a048721f1a8753b437f74f2fc4973
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: 2fb5a7cbca4df0faa06864f580814f31cc2b609c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36308950"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114397"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Volba cloudového řešení systému SQL Server: Azure SQL (PaaS) Database nebo SQL Server na virtuálních počítačích Azure (IaaS)
 
@@ -124,7 +124,7 @@ Pro **SQL Server běžící na virtuálních počítačích Azure** poskytuje Mi
 
 **Spravované Instance databáze SQL** výrazně zjednodušuje migraci existujících aplikací do Azure SQL Database, umožňuje přepněte migrované databáze aplikace na trh rychle v Azure.
 
-**SQL Server běžící na virtuálních počítačích Azure** je ideální, pokud existující nebo nové aplikace vyžadují velké databáze nebo přístup ke všem funkcím v systému SQL Server nebo Windows nebo Linuxem a budete chtít vyhnout na čas a náklady získání nového hardwaru místní. Je také vhodné, pokud chcete migrovat existující místní aplikace a databáze do Azure jako-je – v případech, kdy Azure SQL Database spravované Instance není vhodné. Vzhledem k tomu, že nemusíte měnit prezentační, aplikační ani datové vrstvy, ušetříte čas a finanční prostředky z rozpočtu, které byste jinak museli vynaložit na vytvoření nové architektury existujícího řešení. Místo toho se můžete soustředit na migraci všech svých řešení do Azure a provedení některých optimalizací výkonu, která mohou být platformou Azure vyžadována. Další informace najdete v tématu [Osvědčené postupy z hlediska výkonu pro SQL Server ve službě Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md).
+**SQL Server běžící na virtuálních počítačích Azure** je ideální, pokud existující nebo nové aplikace vyžadují velké databáze nebo přístup ke všem funkcím v systému SQL Server nebo Windows nebo Linux a budete chtít vyhnout času a nákladů na získávání nových místní hardware. Je také vhodné, pokud chcete migrovat existující místní aplikace a databáze do Azure jako-je – v případech, kdy Azure SQL Database spravované Instance není vhodné. Vzhledem k tomu, že nemusíte měnit prezentační, aplikační ani datové vrstvy, ušetříte čas a finanční prostředky z rozpočtu, které byste jinak museli vynaložit na vytvoření nové architektury existujícího řešení. Místo toho se můžete soustředit na migraci všech svých řešení do Azure a provedení některých optimalizací výkonu, která mohou být platformou Azure vyžadována. Další informace najdete v tématu [Osvědčené postupy z hlediska výkonu pro SQL Server ve službě Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md).
 
 ## <a name="summary"></a>Souhrn
 Tento článek se věnoval SQL Database a SQL Serveru na virtuálních počítačích Azure a běžným motivačním faktorům firem, které by mohly mít vliv na vaše rozhodnutí. Následuje souhrn návrhů, které doporučujeme zvážit:

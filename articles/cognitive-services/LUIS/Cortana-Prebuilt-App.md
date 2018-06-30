@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: v-geberr
-ms.openlocfilehash: b792d090d037ef180258a1634d4bd063c0a71b9a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c7249cb8d8cff29f419412025c69e3b2b76b49d1
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343010"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110653"
 ---
 # <a name="cortana-prebuilt-app"></a>Předkompilované aplikace Cortany
 
@@ -46,7 +46,7 @@ Máte přístup Cortana předkompilované aplikace pomocí následujících konc
 > Koncový bod adresy URL jsou dostupné i z [aplikace - získat pomocníka osobní aplikace](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c32) rozhraní API.
 
 ## <a name="try-out-the-personal-assistant-app"></a>Vyzkoušet pomocníka osobní aplikace
-K volání koncový bod, můžete připojit vaše předplatné argument a dotaz řetězec klíče ke koncovému bodu. 
+K volání koncový bod, můžete připojit váš koncový bod argument a dotaz řetězec klíče ke koncovému bodu. 
 
 Pokud utterance chcete interpretovat je například "Vytvoření události pro aplikaci team meeting", pak tento utterance můžete připojit k adrese URL koncového bodu. 
 
@@ -54,7 +54,7 @@ Pokud utterance chcete interpretovat je například "Vytvoření události pro a
 https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/c413b2ef-382c-45bd-8ff0-f76d60e2a821?subscription-key={YOUR-SUBSCRIPTION-KEY}&q=create an appointment for team meeting
 ```
 
-Vložte adresu URL do webového prohlížeče a nahraďte svůj klíč předplatného pro `{YOUR-SUBSCRIPTION-KEY}` pole.
+Vložte adresu URL do webového prohlížeče a nahraďte klíč koncový bod pro `{YOUR-SUBSCRIPTION-KEY}` pole.
 
 V prohlížeči uvidíte, že předkompilované aplikace Cortana identifikuje `builtin.intent.calendar.create_calendar_entry` jako záměr, a `builtin.calendar.title` jako typ entity a utterance `create an appointment for team meeting`.
 

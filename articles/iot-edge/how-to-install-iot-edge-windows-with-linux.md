@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: cd517d7e652b38c7ecf28a17657936698416413a
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 039ca304633eafa8211daffe1a4241b326eda6fb
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035748"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114097"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Instalace modulu runtime Azure IoT Edge v systému Windows pro použití s kontejnery Linux
 
@@ -87,15 +87,37 @@ Windows Registry Editor Version 5.00
 
 ## <a name="configure-the-azure-iot-edge-security-daemon"></a>Nakonfigurujte funkce zabezpečení Azure IoT Edge
 
-Démon lze nakonfigurovat pomocí konfiguračního souboru na `C:\ProgramData\iotedge\config.yaml` hraniční zařízení je možné nakonfigurovat <!--[automatically via Device Provisioning Service][lnk-dps] or--> ručně pomocí [zařízení připojovací řetězec][lnk-dcs].
+Démon lze nakonfigurovat pomocí konfiguračního souboru na `C:\ProgramData\iotedge\config.yaml`.
 
-Pro ruční konfigurace, zadejte připojovací řetězec zařízení **zřizování:** části **config.yaml**
+Hraniční zařízení můžete nakonfigurovat ručně pomocí [zařízení připojovací řetězec] [ lnk-dcs] nebo [automaticky prostřednictvím služby zřizování zařízení] [ lnk-dps].
 
-```yaml
-provisioning:
-  source: "manual"
-  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
-```
+* Ruční konfigurace, zrušte komentář u **ruční** režim zřizování. Aktualizujte hodnotu **device_connection_string** s řetězcem připojení ze zařízení IoT okraj.
+
+   ```yaml
+   provisioning:
+     source: "manual"
+     device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   # provisioning: 
+   #   source: "dps"
+   #   global_endpoint: "https://global.azure-devices-provisioning.net"
+   #   scope_id: "{scope_id}"
+   #   registration_id: "{registration_id}"
+   ```
+
+* Pro automatickou konfiguraci, zrušte komentář u **distribučních bodů** režim zřizování. Aktualizujte hodnoty **scope_id** a **registration_id** hodnotami z vaší instance IoT Hub distribučních bodů a zařízení IoT Edge s čipem TPM. 
+
+   ```yaml
+   # provisioning:
+   #   source: "manual"
+   #   device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
+  
+   provisioning: 
+     source: "dps"
+     global_endpoint: "https://global.azure-devices-provisioning.net"
+     scope_id: "{scope_id}"
+     registration_id: "{registration_id}"
+   ```
 
 Získání názvu hraniční zařízení pomocí `hostname` příkazů v prostředí PowerShell a nastavte jej jako hodnota **název hostitele:** v yaml konfigurace. Příklad:
 
@@ -156,6 +178,9 @@ Start-Service iotedge
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 
+Pokud jste použili **ruční konfigurace** kroky v předchozí části, modul runtime IoT Edge by měla být úspěšně zřízený a spuštěné na zařízení. Pokud jste použili **automatickou konfiguraci** kroky, pak je potřeba provést některé další kroky, aby modul runtime můžete registraci zařízení ve službě IoT hub vaším jménem. Další pokyny najdete v tématu [vytvořit a zřídit simulované TPM hraniční zařízení v systému Windows](how-to-auto-provision-simulated-device-windows.md#create-a-tpm-environment-variable).
+
+
 Můžete zkontrolovat stav služby IoT Edge podle: 
 
 ```powershell
@@ -191,8 +216,8 @@ Pokud máte potíže s modulem runtime Edge instalaci správně, najdete v člá
 
 <!-- Links -->
 [lnk-docker-config]: https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers
-[lnk-dcs]: ../iot-hub/quickstart-send-telemetry-dotnet.md#register-a-device
-[lnk-dps]: how-to-simulate-dps-tpm.md
+[lnk-dcs]: how-to-register-device-portal.md
+[lnk-dps]: how-to-auto-provision-simulated-device-windows.md
 [lnk-oci]: https://www.opencontainers.org/
 [lnk-moby]: https://mobyproject.org/
 [lnk-trouble]: troubleshoot.md

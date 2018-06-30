@@ -3,7 +3,7 @@ title: Zobrazení dat aplikací Azure Application Insights | Microsoft Docs
 description: Řešení Application Insights konektor slouží k diagnostice problémů s výkonem a pochopit, co uživatelé dělají s vaší aplikací, pokud monitorované pomocí Application Insights.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
@@ -11,19 +11,23 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/18/2017
+ms.topic: conceptual
+ms.date: 06/29/2018
 ms.author: magoedte
-ms.openlocfilehash: 854ec70c897b6a561fdec056228f82ccec3ae16c
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: na
+ms.openlocfilehash: 2312b0ed51be7079da3e53b27c269adfb761044d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30186229"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131622"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Řešení správy konektor služby Statistika aplikací (Preview)
 
 ![Application Insights symbol](./media/log-analytics-app-insights-connector/app-insights-connector-symbol.png)
+
+>[!NOTE]
+> S podporou [prostředků mezi dotazy](log-analytics-cross-workspace-search.md), řešením pro správu konektoru služby Application Insights se už nevyžaduje a bude zastaralá. Od července se nebude moci propojit pracovní prostory analýzy protokolů nové prostředky Application Insights. Existující odkazy a řídicí panely budou nadále fungovat, dokud listopadu 2018. Další informace najdete v tématu [portálu OMS Přesun do Azure](log-analytics-oms-portal-transition.md).
 
 Konektor služby Statistika aplikací řešení umožňuje diagnostikovat problémy s výkonem a pochopit, co uživatelé dělají s vaší aplikací když je monitorovaný s [Application Insights](../application-insights/app-insights-overview.md). Zobrazení stejná telemetrická data aplikací, které vývojáři zobrazit ve službě Application Insights jsou k dispozici v analýzy protokolů. Při integraci aplikace Application Insights s analýzy protokolů, zda se aplikace zvýšit tak, že data operace a aplikace na jednom místě. Má stejné zobrazení umožňuje spolupracovat s vývojáři vaší aplikace. Obecná zobrazení může pomoci zkrátit čas a vyřešte aplikace a problém s platformou.
 
@@ -83,7 +87,7 @@ Klikněte **Application Insights** dlaždici otevřete **Application Insights** 
 
 ![Přehledný řídicí panel aplikací](./media/log-analytics-app-insights-connector/app-insights-dash02.png)
 
-Řídicí panel obsahuje okna uvedené v tabulce. Každý okno uvádí až 10 položky odpovídající kritériím tohoto okna pro zadaný obor a časový rozsah. Můžete spustit hledání protokolů, která vrací všechny záznamy, po kliknutí na tlačítko **zobrazit všechny** v dolní části okna, nebo když kliknete na záhlaví okna.
+Řídicí panel obsahuje okna uvedené v tabulce. V každém okně je seznam až 10 položek, které vyhovují kritériím oboru a časového rozsahu daného okna. Můžete spustit hledání protokolů, která vrací všechny záznamy, po kliknutí na tlačítko **zobrazit všechny** v dolní části okna, nebo když kliknete na záhlaví okna.
 
 [!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
@@ -118,7 +122,7 @@ Když kliknete na libovolné místo v **výjimky** okně uvidíte vizualizace, p
 
 ![Okna Statistika výjimky aplikací](./media/log-analytics-app-insights-connector/exceptions-blade-drill-search.png)
 
-Bez ohledu na to, jestli klepnutí na něco **konektor služby Statistika aplikace** řídicího panelu, v **vyhledávání** samostatně, stránka jakýkoli dotaz vrací Application Insights data zobrazují perspektivy Application Insights. Pokud se nacházíte Application Insights data, například **&#42;** dotaz také zobrazí na kartě perspektivy jako na následujícím obrázku:
+Bez ohledu na to, jestli klepnutí na něco **konektor služby Statistika aplikace** řídicího panelu, v **vyhledávání** samostatně, stránka jakýkoli dotaz vrací Application Insights data zobrazují aplikace Statistika perspektivy. Pokud se nacházíte Application Insights data, například **&#42;** dotaz také zobrazí na kartě perspektivy jako na následujícím obrázku:
 
 ![Application Insights ](./media/log-analytics-app-insights-connector/app-insights-search.png)
 
@@ -137,7 +141,7 @@ Chcete-li otáčení, klikněte na symbol tří teček (**...** ), zobrazí se n
 >[!NOTE]
 >**Otevřete ve službě Application Insights** není k dispozici na portálu Azure.
 
-![Otevřete ve službě Application Insights](./media/log-analytics-app-insights-connector/open-in-app-insights.png)
+![Otevřít v Application Insights](./media/log-analytics-app-insights-connector/open-in-app-insights.png)
 
 ### <a name="sample-corrected-data"></a>Opravě ukázková data
 
@@ -191,7 +195,7 @@ Záznam s *typ* z *ApplicationInsights* se vytvoří pro každý typ vstupní da
 | IsAuthenticated | True nebo False |
 | OperationID | Položky, které mají stejné operace ID se zobrazují jako související položky v portálu. Obvykle ID požadavku |
 | ParentOperationID | ID nadřazené operace |
-| OperationName |   |
+| operationName |   |
 | ID relace | Identifikátor GUID k jednoznačné identifikaci relace, kde byla vytvořena |
 | SourceSystem | ApplicationInsights |
 

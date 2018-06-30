@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 09c9d4da835b7b30fd132770f9d13b33fa80a3f5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: e97dc184266bc9518ee5f909891bd97f7c71804b
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36268327"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113048"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Vytvořit aplikaci LEOŠ programově pomocí Node.js
 
@@ -111,7 +111,7 @@ Nainstalujte Node.js závislosti z NPM v terminálu nebo příkazového řádku.
 ````
 
 ### <a name="change-configuration-settings"></a>Změňte nastavení konfigurace
-Chcete-li používat tuto aplikaci, musíte změnit hodnoty v souboru index.js na svůj vlastní klíč předplatného a zadejte název, chcete mít aplikaci. Můžete také nastavit jazykovou verzi aplikace nebo změnit číslo verze.
+Chcete-li používat tuto aplikaci, musíte změnit hodnoty v souboru index.js na klíč koncového bodu a zadejte název chcete aplikaci tak, aby měl. Můžete také nastavit jazykovou verzi aplikace nebo změnit číslo verze.
 
 Otevřete soubor index.js a změňte tyto hodnoty v horní části souboru.
 

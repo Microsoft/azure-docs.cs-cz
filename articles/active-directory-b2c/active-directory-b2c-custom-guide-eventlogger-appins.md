@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 1b37e61763b34e320ffb4078600e08b1d32330a1
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 94d96af8db651a848ac092d1f8b85da4909427b7
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709960"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110111"
 ---
 # <a name="track-user-behavior-in-azure-ad-b2c-journeys-by-using-application-insights"></a>Sledovat chování uživatele v Azure AD B2C cesty pomocí Application Insights
 
@@ -111,7 +111,7 @@ Technické profily lze považovat za funkcí v Identity rozhraní Framework z Az
 | JourneyContextForInsights | Otevře relaci ve službě Application Insights a odešle ID korelace |
 | AzureInsights-SignInRequest | Vytvoří `SignIn` událost s sadu deklarací identity, pokud byla přijata žádost o přihlášení | 
 | AzureInsights-UserSignup | Vytvoří UserSignup událost, když uživatel spustí registrace možnost cesty registrace-množství nebo přihlášení | 
-| AzureInsights-SignInComplete | zaznamenává úspěšné dokončení ověření, pokud token byl odeslán do aplikace předávající strany | 
+| AzureInsights-SignInComplete | Zaznamenává úspěšné dokončení ověření, pokud token byl odeslán do aplikace předávající strany | 
 
 Přidejte profily do souboru rozšíření z balíčku starter přidáním tyto prvky, aby `<ClaimsProviders>` uzlu.  Obvykle je název souboru `yourtenant.onmicrosoft.com-B2C_1A_TrustFrameworkExtensions.xml`
 
@@ -280,13 +280,12 @@ Referenced using {OIDC:One of the property names below}
 
 | Deklarovat | Parametr OpenIdConnect | Příklad: |
 | ----- | ----------------------- | --------|
-| řádku | řádku | neuvedeno |
+| Výzva | Výzva | neuvedeno |
 | LoginHint |  login_hint | neuvedeno |
 | DomainHint | domain_hint | neuvedeno |
 |  MaxAge | max_age | neuvedeno |
 | clientId | client_id | neuvedeno |
 | Uživatelské jméno | login_hint | neuvedeno |
-| Heslo | domain_hint | neuvedeno |
 |  Prostředek | prostředek| neuvedeno |
 | AuthenticationContextReferences | acr_values | neuvedeno |
 
@@ -304,11 +303,11 @@ Zde je ukázka požadavku z aplikace:
 https://login.microsoftonline.com/sampletenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=e1d2612f-c2bc-4599-8e7b-d874eaca1ae1&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&app_session=0a2b45c&loyalty_number=1234567
 
 ```
-Poté můžete přidat deklarací identity tak, že přidáte `Input Claim` element události Application Insights:
+Poté můžete přidat deklarací identity tak, že přidáte `Input Claim` element události Application Insights. Vlastnosti události jsou přidány prostřednictvím syntaxe {vlastnost: NAME}, kde název vlastnosti se přidává do událost. Příklad:
 
 ```
-<InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="app_session" DefaultValue="{OAUTH-KV:app_session}" />
-<InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="loyalty_number" DefaultValue="{OAUTH-KV:loyalty_number}" />
+<InputClaim ClaimTypeReferenceId="app_session" PartnerClaimType="{property:app_session}" DefaultValue="{OAUTH-KV:app_session}" />
+<InputClaim ClaimTypeReferenceId="loyalty_number" PartnerClaimType="{property:loyalty_number}" DefaultValue="{OAUTH-KV:loyalty_number}" />
 ```
 
 ### <a name="other-system-claims"></a>Další deklarace identity systému

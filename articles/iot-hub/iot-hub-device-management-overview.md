@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: briz
-ms.openlocfilehash: 82a3ebcf4d208b550a792deddba5ce214105af13
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c4d0b5d5ba429dc5d839fa054476461f96a52143
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632743"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030729"
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Přehled správy zařízení ve službě IoT Hub
 
@@ -51,16 +51,16 @@ V každé z těchto pěti fází existuje několik požadavků souvisejících s
 
 * **Plánování:** Operátoři získají možnost vytvořit schéma metadat zařízení, na jehož základě mohou snadno a přesně zadávat dotazy na skupinu zařízení, kterou pak nastaví jako cíl pro hromadné operace správy. K uložení těchto metadat ve formě značek a vlastností můžete použít dvojče zařízení.
   
-    *Další materiály:*[Začínáme s dvojčaty zařízení][lnk-twins-getstarted], [Principy dvojčat zařízení][lnk-twins-devguide], [Jak používat vlastnosti dvojčat zařízení][lnk-twin-properties].
+    *Další čtení*: [začít pracovat s dvojčata zařízení][lnk-twins-getstarted], [pochopit dvojčata zařízení][lnk-twins-devguide], [postup použití zařízení dvojici vlastností][lnk-twin-properties], [osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT][lnk-adm-best-practices].
 * **Zřízení:** Bezpečné zřízení nových zařízení pro IoT Hub a umožnění okamžitého zjištění možností zařízení pro operátory.  Pomocí registru identit ve službě IoT Hub můžete vytvářet flexibilní identity a přihlašovací údaje zařízení a provádět tuto operaci hromadně pomocí úlohy. Zařízení sestavujte tak, aby hlásila své možnosti a stav prostřednictvím svých vlastností v dvojčeti zařízení.
   
-    *Další materiály:* [Správa identit zařízení][lnk-identity-registry], [Hromadná správa identit zařízení][lnk-bulk-identity], [Jak používat vlastnosti dvojčat zařízení][lnk-twin-properties], [Služba Azure IoT Hub Device Provisioning][lnk-dps]
+    *Další čtení*: [Správa identit zařízení][lnk-identity-registry], [hromadné správu identit zařízení][lnk-bulk-identity], [Použití zařízení dvojici vlastností][lnk-twin-properties], [osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT][lnk-adm-best-practices], [Zařízení azure IoT Hub zřizování služby][lnk-dps].
 * **Konfigurace**: Provádění hromadných změn konfigurace a aktualizací firmwaru v zařízeních při zachování stavu i zabezpečení. Tyto operace správy zařízení provádějte hromadně pomocí požadovaných vlastností nebo pomocí přímých metod a vysílacích úloh.
   
-    *Další materiály:*[Použití přímých metod][lnk-c2d-methods], [Vyvolání přímé metody v zařízení][lnk-methods-devguide], [Jak používat vlastnosti dvojčat zařízení][lnk-twin-properties], [Plánování a vysílání úloh][lnk-jobs], [Plánování úloh na několika zařízeních][lnk-jobs-devguide].
+    *Další čtení*: [použití zařízení dvojici vlastností][lnk-twin-properties], [konfigurovat a monitorovat zařízení IoT ve velkém měřítku][lnk-adm-how-to], [ Osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT][lnk-adm-best-practices].
 * **Monitorování:** Monitorování celkového stavu kolekce zařízení a stavu probíhajících operací, přičemž operátoři dostávají upozornění na problémy, které mohou vyžadovat jejich pozornost.  Dvojče zařízení umožní zařízením hlásit jejich provozní podmínky a stav aktualizačních operací v reálném čase. Vytvořte efektivní sestavy řídicího panelu, které budou bezprostředně informovat o problémech na základě dotazů na dvojčata zařízení.
   
-    *Další materiály*: [Jak používat vlastnosti dvojčat zařízení][lnk-twin-properties], [Dotazovací jazyk služby IoT pro dvojčata zařízení, úlohy a směrování zpráv][lnk-query-language].
+    *Další čtení*: [použití zařízení dvojici vlastností][lnk-twin-properties], [IoT Hub dotazovacího jazyka pro dvojčata zařízení, úlohy a směrování zpráv] [ lnk-query-language], [Konfigurovat a monitorovat zařízení IoT ve velkém měřítku][lnk-adm-how-to], [osvědčené postupy pro konfiguraci zařízení v rámci řešení IoT] [lnk-adm-best-practices].
 * **Vyřazení:** Výměna nebo zařízení nebo jejich vyloučení z provozu po selhání, po provedení cyklu upgradů nebo na konci životnosti služby.  Pomocí dvojčete zařízení můžete provést údržbu informací o zařízení, když se nahrazuje fyzické zařízení, nebo jejich archivaci při jeho vyřazení. Pro zabezpečené odvolávání identit zařízení a přihlašovacích údajů používejte registr identit ve službě IoT Hub.
   
     *Další materiály:*[Jak používat vlastnosti dvojčat zařízení][lnk-twin-properties], [Správa identit zařízení][lnk-identity-registry].
@@ -77,7 +77,7 @@ IoT Hub umožňuje využívat následující schémata správy zařízení.  V [
 * **Konfigurace** – Back-endová aplikace využívá požadované vlastnosti ke konfiguraci softwaru spuštěného v příslušném zařízení.  Zařízení využívá ohlášené vlastnosti k aktualizaci stavu konfigurace příslušného zařízení.
   
     ![Grafické znázornění schématu konfigurace ve správě zařízení][img-config_pattern]
-* **Aktualizace firmwaru** – Back-endová aplikace informuje zařízení prostřednictvím přímé metody, že zahájila aktualizaci firmwaru.  Zařízení zahájí vícefázový proces stahování balíčku firmwaru a jeho použití a následného opětného připojení ke službě IoT Hub.  Během tohoto vícefázového procesu zařízení využívá ohlášené vlastnosti k aktualizaci informací o průběhu zpracování a stavu zařízení.
+* **Aktualizace firmwaru** -back-end aplikace používá konfiguraci správy automatické zařízení vyberte zařízení, která chcete přijímat aktualizace s oznámením zařízení, kde chcete vyhledat aktualizace a monitorování procesu aktualizace. Zařízení zahájí proces zahrnující více kroků ke stažení, ověřit a použít bitovou kopii firmware a pak proveďte restart zařízení před novým připojením ke službě IoT Hub.  Během tohoto vícefázového procesu zařízení využívá ohlášené vlastnosti k aktualizaci informací o průběhu zpracování a stavu zařízení.
   
     ![Grafické znázornění schématu aktualizace firmwaru ve správě zařízení][img-fwupdate_pattern]
 * **Informování o průběhu a stavu** – Back-end řešení spouští dotazy dvojčete zařízení nad sadou zařízení a předává informace o stavu a průběhu zpracování akcí spuštěných v těchto zařízeních.
@@ -111,3 +111,5 @@ Pokud si chcete přečíst více o funkcích správy zařízení ve službě IoT
 [lnk-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-jobs-devguide]: iot-hub-devguide-jobs.md
 [lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps
+[lnk-adm-best-practices]: iot-hub-configuration-best-practices.md
+[lnk-adm-how-to]: iot-hub-auto-device-config.md

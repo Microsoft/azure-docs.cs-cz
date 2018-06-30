@@ -3,7 +3,7 @@ title: Protokolu Analytics – nejčastější dotazy | Microsoft Docs
 description: Odpovědi na nejčastější dotazy týkající se služby Azure Log Analytics.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ad536ff7-2c60-4850-a46d-230bc9e1ab45
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 9d34c06461ea5f264f762494d93d76f1dc1bcb3e
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.component: na
+ms.openlocfilehash: eb1a60ff533e9e24f3dc80057129da47a2d9a726
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221531"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128526"
 ---
 # <a name="log-analytics-faq"></a>Nejčastější dotazy k Log Analytics
 Tato FAQ Microsoft je seznam často kladené otázky týkající se analýzy protokolů v Microsoft Azure. Pokud máte další dotazy o analýzy protokolů, přejděte k [diskusní fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) a zveřejněte svoje otázky. Dotaz je dotaz, často, přidáme ji k tomuto článku tak, aby se nachází snadno a rychle.
@@ -79,13 +80,13 @@ Odpověď: pomocí kroků popsaných v [vytvořit novou výstrahu protokolu](../
 
 Při vytváření výstrahy pro při shromažďování dat zastaví, nastavte:
 
-- **Definovat výstrahy podmínku** zadejte pracovní prostor analýzy protokolů jako cíl prostředků.
-- **Výstrahy kritéria** zadejte následující:
+- **Definujte podmínku upozornění** – Jako cíl prostředku zadejte svůj pracovní prostor Log Analytics.
+- **Kritéria upozornění** – Zadejte následující:
    - **Název signálu** vyberte **hledání protokolů vlastní**.
    - **Vyhledávací dotaz** na `Heartbeat | summarize LastCall = max(TimeGenerated) by Computer | where LastCall < ago(15m)`.
-   - **Výstrahy logiku** je **na základě** *počet výsledků* a **podmínku** je *větší než* **prahová hodnota**  z *0*
+   - **Logika upozornění** je **Založená na** *počtu výsledků* a **Podmínka** je *Větší než* **Prahová hodnota** *0*.
    - **Časové období** z *30* minut a **výstrahy frekvence** ke každému *10* minut
-- **Zadejte podrobnosti výstrahy** zadejte následující:
+- **Definujte podrobnosti upozornění** – Zadejte následující:
    - **Název** k *zastavit shromažďování dat*
    - **Závažnost** na *Upozornění*.
 

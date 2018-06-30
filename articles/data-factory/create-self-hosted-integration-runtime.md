@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 832e4672a15368768977feedade83707a26b9965
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: be2ac5427516bc29f87052667e4b44be52757f1e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048784"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113149"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak vytvořit a nakonfigurovat Self-hosted integrace Runtime
 Integrační modul Runtime (IR) je na výpočetní infrastruktuře používá k zajištění funkce integrace dat různých prostředích sítě Azure Data Factory. Podrobnosti o IR najdete v tématu [Přehled integrace modulu Runtime](concepts-integration-runtime.md).
@@ -101,7 +101,7 @@ Modul runtime vlastním hostováním integrace může být instalován stahován
 
 
 ## <a name="high-availability-and-scalability"></a>Vysoké dostupnosti a škálovatelnosti
-Modul Runtime Self-hosted integrace může být přidružena k několika místní počítače. Tyto počítače se označují jako uzly. Může mít až čtyři uzly, které jsou přidružené k modulu Runtime Self-hosted integrace. Výhody s více uzly (místní počítače s nainstalovanou bránu) pro logické brány jsou:
+Modul Runtime Self-hosted integrace může být přidružena k několika místním počítačům. Tyto počítače se označují jako uzly. Může mít až čtyři uzly, které jsou přidružené k modulu Runtime Self-hosted integrace. Výhody s více uzly (místní počítače s nainstalovanou bránu) pro logické brány jsou:
 1. Vyšší dostupnost Self-hosted integrace Runtime, aby byla již jediný bod selhání v svoji velkých objemů dat řešení nebo cloudových dat integraci s Azure Data Factory, zajištění kontinuity s maximálně 4 uzly.
 2. Vylepšený výkon a propustnost při přesouvání dat mezi místními a cloudovými datová úložiště. Další informace získáte [porovnání výkonu](copy-activity-performance.md).
 

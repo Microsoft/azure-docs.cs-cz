@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: df7ca91d403374e8d320822f5fa384a866fac0ae
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 7cb7ce0ea81cf99c2ee14a6f209864894563d237
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025725"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111775"
 ---
 # <a name="set-up-sql-data-sync"></a>Nastavit synchronizaci dat SQL
 V tomto kurzu zjistěte, jak nastavit synchronizaci dat SQL Azure tak, že vytvoříte skupinu hybridních synchronizace, která obsahuje instance Azure SQL Database a SQL Server. Do nové skupiny synchronizace plně konfigurována a synchronizuje podle plánu, který nastavíte.
@@ -274,7 +274,7 @@ Pokud chcete spustit místní agent z jiného počítače, než je aktuálně v,
 
 3. Použijte uživatelské rozhraní nového agenta odeslat nový klíč agenta.
 
-4. Počkejte, než agent klienta stáhne seznam místních databází, které byly dříve zaregistrovány.
+4. Počkejte, než agent klienta stáhne seznam místní databází, které byly dříve zaregistrovány.
 
 5. Zadejte přihlašovací údaje databáze pro všechny databáze, které zobrazují jako nedostupný. Tyto databáze musí být dosažitelný z nového počítače, ve kterém je nainstalován agent.
 

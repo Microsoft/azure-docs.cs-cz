@@ -10,15 +10,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: bwren
-ms.openlocfilehash: 5719dc3719739fb561626e307ee295729752c1fa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.component: na
+ms.openlocfilehash: e47e8cbd209ea34317ca9b176a2c4b0fef10a2b2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297749"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37132905"
 ---
 # <a name="oms-portal-moving-to-azure"></a>Přesouvání do Azure portálu OMS
 Děkujeme za používání portálu OMS. Jsme podporu doporučujeme a nadále výraznou investovat do našich monitorování a správu služeb. Jeden připomínek opakovaně naslouchali zákazníkům, je potřeba pro jednoho uživatele prostředí můžete sledovat a spravovat místní i Azure úlohy. Pravděpodobně víte, portál Azure je centrem pro všech služeb Azure a nabízí bohaté správu prostředí s funkcí, jako je řídicí panely pro Připnutí prostředky, inteligentního hledat prostředky hledání a označování pro správu prostředků. Konsolidovat a zjednodušit sledování a správu pracovního postupu, spuštění přidání funkcí portálu OMS do portálu Azure. Snažíme se radostí oznamujeme, že většina funkcí portálu OMS jsou teď součástí portálu Azure. Ve skutečnosti některé nové funkce, jako je například Traffic Manager jsou dostupné jenom na portálu Azure. Jsou pouze několik mezery zbývající, nejvíce impactful se pět řešení, které jsou stále v procesu se přesunul na portálu Azure. Pokud nepoužíváte tyto funkce, bude moci provést vše, co jste dělali na portálu OMS pomocí portálu Azure a další. Pokud jste tak již neučinili, doporučujeme, že abyste mohli začít používat portál Azure ještě dnes! 
@@ -72,7 +73,7 @@ Při převodu bude systém zkontrolujte každému uživateli nebo skupině zabez
 
 | Oprávnění na portálu OMS | Azure Role |
 |:---|:---|
-| ReadOnly | Čtenář Log Analytics |
+| Jen pro čtení | Čtenář Log Analytics |
 | Přispěvatel | Přispěvatel Log Analytics |
 | Správce | Vlastník |
 
@@ -94,7 +95,7 @@ S podporou [prostředků mezi dotazy](log-analytics-cross-workspace-search.md), 
 
 
 ## <a name="azure-network-security-group-analytics"></a>Analýzy skupin zabezpečení sítě Azure
-[Řešení analýzy skupiny zabezpečení sítě Azure](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) se nahradí s naposledy spuštěný [Analýza provozu](../network-watcher/traffic-analytics.md) který poskytuje přehled o činnosti uživatelů a aplikací v cloudových sítích. Analýza provozu umožňuje audit síťové aktivity, zabezpečených aplikací a dat vaší organizace, optimalizace výkonu zatížení a zůstat kompatibilní. 
+[Řešení analýzy skupiny zabezpečení sítě Azure](log-analytics-azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-log-analytics) se nahradí s naposledy spuštěný [Analýza provozu](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/) který poskytuje přehled o činnosti uživatelů a aplikací v cloudových sítích. Analýza provozu umožňuje audit síťové aktivity, zabezpečených aplikací a dat vaší organizace, optimalizace výkonu zatížení a zůstat kompatibilní. 
 
 Toto řešení analyzuje NSG toku protokoly a poskytuje přehledy o následující.
 
@@ -105,7 +106,7 @@ Toto řešení analyzuje NSG toku protokoly a poskytuje přehledy o následujíc
 - Zabezpečení, včetně škodlivý přenos porty otevřené pro Internet, aplikace nebo virtuální počítače pokusu o přístup k Internetu.
 - Využití kapacity, které vám umožní eliminovat problémy přes zřizování nebo nedostatečné.
 
-Můžete nadále závisí na nastavení diagnostiky pro odeslání protokolů NSG k analýze protokolů tak stávající uložené hledání, výstrahy, řídicí panely budou nadále fungovat. Zákazníci, kteří již nainstalovali řešení můžete nadále používat ji až do dalšího oznámení. Od června 20 NSG řešení budou odebrány z marketplace a prostřednictvím komunity jako dostupné [šablony rychlý start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
+Můžete nadále závisí na nastavení diagnostiky pro odeslání protokolů NSG k analýze protokolů tak stávající uložené hledání, výstrahy, řídicí panely budou nadále fungovat. Zákazníci, kteří již nainstalovali řešení můžete nadále používat ji až do dalšího oznámení. Od června 20 řešení Analytics skupiny zabezpečení sítě budou odebrány z marketplace a prostřednictvím komunity jako dostupné [šablony rychlý start Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Operationalinsights).
 
 ## <a name="next-steps"></a>Další postup
 - V tématu [běžné otázky pro přechod z portálu OMS na portálu Azure Log Analytics uživatelům](log-analytics-oms-portal-faq.md) pokyny k přesouvání z portálu OMS na portál Azure.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/23/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 89fcd88643bd793935e7476ef32641ffa5ff4713
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6bc845e4ec329d308ed87770d0dec6a7d5e447c7
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299789"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030945"
 ---
 # <a name="scenario-trigger-a-logic-app-with-azure-functions-and-azure-service-bus"></a>Scénář: Aktivovat aplikaci logiky s funkcemi Azure a Azure Service Bus
 
@@ -39,7 +39,7 @@ V tomto příkladu máte funkci pro každou aplikaci logiky, která musí být a
 ## <a name="build-the-function"></a>Vytvoření funkce
 Dále musíte vytvořit funkci, která funguje jako aktivační události a naslouchá do fronty.
 
-1. V [portálu Azure Functions](https://functions.azure.com/signin), vyberte **novou funkci**a pak vyberte **ServiceBusQueueTrigger - C#** šablony.
+1. V [portálu Azure Functions](https://functions.azure.com/), vyberte **novou funkci**a pak vyberte **ServiceBusQueueTrigger - C#** šablony.
    
     ![Azure Functions na portálu][2]
 2. Konfigurace připojení do fronty Service Bus, která používá Azure Service Bus SDK `OnMessageReceive()` naslouchací proces.

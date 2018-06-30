@@ -1,25 +1,26 @@
 ---
-title: Scénáře dat obsahující Data Lake Store | Microsoft Docs
-description: Pochopit různé scénáře a nástroje pro použití, která data můžete požity, zpracování, staženy a vizualizována v Data Lake Store
+title: Scénáře dat obsahující Data Lake Storage Gen1 | Microsoft Docs
+description: Pochopit různé scénáře a nástroje pro použití, která data můžete požity, zpracování, staženy a vizualizována v Data Lake Storage Gen1 (dříve označované jako Azure Data Lake Store)
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
 manager: jhubbard
-editor: cgronlun
-ms.assetid: 37409a71-a563-4bb7-bc46-2cbd426a2ece
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/29/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: cc48bf011d95b3e60a78d2102d88dc188155ddc1
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: e0c7ed22762ef19c6e68ad69d0cabcfeb8007251
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017364"
+ms.locfileid: "37031035"
 ---
-# <a name="using-azure-data-lake-store-for-big-data-requirements"></a>Požadavky na velkých objemů dat pomocí Azure Data Lake Store
+# <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Pomocí Azure Data Lake Storage Gen1 požadavky na velkých objemů dat
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+
 Existují čtyři fáze klíče v zpracování velkých objemů dat:
 
 * Příjem velkých objemů dat do úložiště dat v reálném čase nebo v dávkách

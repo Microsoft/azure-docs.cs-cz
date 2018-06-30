@@ -11,21 +11,22 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 05abd943d85fcdd709143bf7fce221dcdfb86011
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.component: na
+ms.openlocfilehash: c260371043ddcb8a9ea5952760377282596fff7c
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215095"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127189"
 ---
-# <a name="service-endpoint-monitor"></a>Monitorování koncového bodu služby
+# <a name="service-connectivity-monitor"></a>Monitorování připojení služby
 
-Můžete použít funkce monitorování koncového bodu služby v [sledování výkonu sítě](log-analytics-network-performance-monitor.md) monitorování připojení k síti pro libovolný koncový bod, který má otevřený port TCP. Tyto koncové body můžou být webů, aplikací SaaS, PaaS aplikací a databází SQL. 
+Můžete použít funkce monitorování připojení služby v [sledování výkonu sítě](log-analytics-network-performance-monitor.md) monitorování připojení k síti pro libovolný koncový bod, který má otevřený port TCP. Tyto koncové body můžou být webů, aplikací SaaS, PaaS aplikací a databází SQL. 
 
-Můžete provádět následující funkce s monitorování koncového bodu služby: 
+Můžete provádět následující funkce s monitorování připojení služby: 
 
 - Monitorování připojení k síti k vašim aplikacím a síťových služeb z více firemní pobočky nebo umístění. Aplikace a síťové služby patří Office 365, Dynamics CRM, interní-obchodní aplikace a databází SQL.
 - Pomocí předdefinovaných testů a monitorování síťové připojení k Office 365, Dynamics 365 koncové body. 
@@ -34,7 +35,7 @@ Můžete provádět následující funkce s monitorování koncového bodu služ
 - Identifikujte aktivní body v síti, která může být příčinou aplikace nízký výkon zobrazením latence přispěli každého směrování na mapě topologie.
 
 
-![Monitorování koncového bodu služby](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
+![Monitorování připojení služby](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>Konfigurace 
@@ -55,11 +56,11 @@ netsh advfirewall firewall add rule name="NPMDICMPV4TimeExceeded" protocol="icmp
 netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmpv6:3,any" dir=in action=allow 
 ```
 
-### <a name="create-service-endpoint-monitor-tests"></a>Vytváření testů monitorování koncového bodu služby 
+### <a name="create-service-connectivity-monitor-tests"></a>Vytváření testů monitorování připojení služby 
 
 Začít vytvářet testy monitorování síťové připojení ke koncovým bodům služby.
 
-1. Vyberte **monitorování koncového bodu služby** kartě.
+1. Vyberte **monitorování připojení služby** kartě.
 2. Vyberte **přidat Test**a zadejte testovací název a popis. 
 3. Vyberte typ testu:<br>
 
@@ -84,7 +85,7 @@ Začít vytvářet testy monitorování síťové připojení ke koncovým bodů
 
 ## <a name="walkthrough"></a>Názorný postup 
 
-Přejděte do zobrazení řídicího panelu monitorování výkonu sítě. Chcete-li získat shrnutí stavu různých testy, které jste vytvořili, podívejte se **monitorování koncového bodu služby** stránky. 
+Přejděte do zobrazení řídicího panelu monitorování výkonu sítě. Chcete-li získat shrnutí stavu různých testy, které jste vytvořili, podívejte se **monitorování připojení služby** stránky. 
 
 ![Stránka monitorování koncového bodu služby](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
 

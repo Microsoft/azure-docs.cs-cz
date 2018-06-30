@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
-ms.openlocfilehash: 1b9c0514e93fa89f8776d830ef242fc4963a6f7b
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: d5ec76a62b56769ee3065cac3542f5a94df4a1c6
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316466"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37132869"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Spuštění úlohy v části uživatelské účty ve službě Batch
 
@@ -173,8 +173,8 @@ Console.WriteLine("Creating pool [{0}]...", poolId);
 // Create a pool using the cloud service configuration.
 pool = batchClient.PoolOperations.CreatePool(
     poolId: poolId,
-    targetDedicatedComputeNodes: 3,                                                         
-    virtualMachineSize: "small",                                                
+    targetDedicatedComputeNodes: 3,
+    virtualMachineSize: "standard_d1_v2",
     cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));   
 
 // Add named user accounts.
@@ -313,7 +313,7 @@ Verze služby Batch 2017-01-01.4.0 zavádí narušující změně nahrazení **r
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated` Není zadaná. | Bez aktualizace                                                                                               |
+| `CloudTask.RunElevated` není zadaná. | Bez aktualizace                                                                                               |
 
 ### <a name="batch-java"></a>Batch Java
 
@@ -321,7 +321,7 @@ Verze služby Batch 2017-01-01.4.0 zavádí narušující změně nahrazení **r
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated` Není zadaná. | Bez aktualizace                                                                                                                     |
+| `CloudTask.withRunElevated` není zadaná. | Bez aktualizace                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
@@ -329,11 +329,9 @@ Verze služby Batch 2017-01-01.4.0 zavádí narušující změně nahrazení **r
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`, kde <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin)) `                |
 | `run_elevated=False`                      | `user_identity=user`, kde <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin)) `             |
-| `run_elevated` Není zadaná. | Bez aktualizace                                                                                                                                  |
+| `run_elevated` není zadaná. | Bez aktualizace                                                                                                                                  |
 
 
 ## <a name="next-steps"></a>Další postup
 
-### <a name="batch-forum"></a>Fórum batch
-
-[Fóru služby Azure Batch](https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch) na webu MSDN je skvělým místem popisují Batch a klást otázky týkající se služby. HEAD na přes pro užitečné definovaného příspěvky a při jejich vzniku při sestavování řešení Batch zveřejněte svoje otázky.
+* Podrobnější přehled služby Batch, najdete v tématu [rozsáhlé paralelní vývoj výpočetní řešení pomocí služby Batch](batch-api-basics.md).

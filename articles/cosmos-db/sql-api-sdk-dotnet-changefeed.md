@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/21/2018
 ms.author: maquaran
-ms.openlocfilehash: f69742d111555e776a968454bdc004ba171e6336
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: f47b847b3a356540e5f366235713b8f99aea3404
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937413"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113713"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Informační kanál procesor změnu .NET SDK: Stažení a poznámky k verzi
 > [!div class="op_single_selector"]
@@ -41,39 +41,10 @@ ms.locfileid: "36937413"
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-### <a name="stable-builds"></a>Stabilní sestavení
+### <a name="v2-builds"></a>sestavení v2
 
-### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
-* Přidat další protokolování.
-* Pevné nevrácenou DocumentClient při volání metody odhad čekající pracovní vícekrát.
-
-### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
-* Opravy v odhad čekající práci.
-
-### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
-* Zlepšení stability.
-  * Oprava pro zpracování zrušené úlohy problém, který může vést k zastavena pozorovatelů na některé oddíly.
-* Podpora pro ruční vytváření kontrolních bodů.
-* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.21 a vyšší.
-
-### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
-* Přidává podporu pro standardní rozhraní .NET 2.0. Balíček teď podporuje `netstandard2.0` a `net451` monikery framework.
-* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.17.0 a vyšší.
-* Kompatibilní s [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) verze 1.5.1 a vyšší.
-
-### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
-* Řeší problém s výpočtu odhad zbývající práce při změnu kanálu byla prázdná nebo žádná práce se čekalo na zpracování.
-* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.13.2 a vyšší.
-
-### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
-* Přidat metodu k získání odhad zbývající práce mají být zpracovány v kanálu změnu.
-* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.13.2 a vyšší.
-
-### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+### <a name="a-name204204"></a><a name="2.0.4"/>verze 2.0.4
 * GA SDK
-* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.14.1 a níže.
-
-### <a name="pre-release-builds"></a>Předběžné verze sestavení
 
 ### <a name="a-name203-prerelease203-prerelease"></a><a name="2.0.3-prerelease"/>2.0.3-prerelease
 * Opravené následující problémy:
@@ -108,6 +79,39 @@ ms.locfileid: "36937413"
 * 100 % zpětně kompatibilní s rozhraním API v1.
 * Nový kód základní.
 * Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.21.1 a vyšší.
+
+### <a name="v1-builds"></a>sestavení V1
+
+### <a name="a-name133133"></a><a name="1.3.3"/>1.3.3
+* Přidat další protokolování.
+* Pevné nevrácenou DocumentClient při volání metody odhad čekající pracovní vícekrát.
+
+### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
+* Opravy v odhad čekající práci.
+
+### <a name="a-name131131"></a><a name="1.3.1"/>1.3.1
+* Zlepšení stability.
+  * Oprava pro zpracování zrušené úlohy problém, který může vést k zastavena pozorovatelů na některé oddíly.
+* Podpora pro ruční vytváření kontrolních bodů.
+* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.21 a vyšší.
+
+### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
+* Přidává podporu pro standardní rozhraní .NET 2.0. Balíček teď podporuje `netstandard2.0` a `net451` monikery framework.
+* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.17.0 a vyšší.
+* Kompatibilní s [SQL .NET Core SDK](sql-api-sdk-dotnet-core.md) verze 1.5.1 a vyšší.
+
+### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+* Řeší problém s výpočtu odhad zbývající práce při změnu kanálu byla prázdná nebo žádná práce se čekalo na zpracování.
+* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.13.2 a vyšší.
+
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+* Přidat metodu k získání odhad zbývající práce mají být zpracovány v kanálu změnu.
+* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.13.2 a vyšší.
+
+### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
+* GA SDK
+* Kompatibilní s [SQL .NET SDK](sql-api-sdk-dotnet.md) verze 1.14.1 a níže.
+
 
 ## <a name="release--retirement-dates"></a>Verze & vyřazení kalendářních dat
 Microsoft bude poskytovat oznámení alespoň **dobu 12 měsíců** předem vyřazení sady SDK k funkce smooth přechodu na novější nebo podporované verzi.

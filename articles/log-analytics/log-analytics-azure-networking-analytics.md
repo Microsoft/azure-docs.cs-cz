@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/20/2018
+ms.topic: conceptual
+ms.date: 06/21/2018
 ms.author: richrund
-ms.openlocfilehash: 12172e81ed6b4d79ee200ee1ca79803ad58d6d19
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.component: na
+ms.openlocfilehash: 8a92bf7b031899ee75fbf2bb2fdfd7dced3bc1ad
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/29/2018
-ms.locfileid: "30263526"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127888"
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Monitorování řešení v analýzy protokolů Azure sítě
 
@@ -31,7 +32,7 @@ Analýzy protokolů nabízí následující řešení pro monitorování vaší 
  * Metriky Azure Application Gateway
 * Řešení ke sledování a audit síťové aktivity v síti cloudu
 * [Analýza provozu](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
-* Skupina zabezpečení sítě Azure Analytics
+* Analýzy skupin zabezpečení sítě Azure
 
 ## <a name="network-performance-monitor-npm"></a>Sledování výkonu sítě (NPM)
 
@@ -62,7 +63,7 @@ Analýza Azure Application Gateway a řešením pro správu analytics skupinu za
 
 Následující tabulka uvádí metody shromažďování dat a další podrobnosti o tom, jak se data shromažďují pro Azure Application Gateway analýzy a analýzy skupinu zabezpečení sítě.
 
-| Platformy | Přímé agenta | Agent systémy Center Operations Manager | Azure | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
+| Platforma | Přímé agenta | Agent systémy Center Operations Manager | Azure | Nástroj Operations Manager vyžaduje? | Dat agenta nástroje Operations Manager odeslána prostřednictvím skupiny pro správu | Četnost shromažďování dat |
 | --- | --- | --- | --- | --- | --- | --- |
 | Azure |  |  |&#8226; |  |  |Při zaznamenání |
 
@@ -77,7 +78,8 @@ Tyto protokoly jsou podporovány pro Application Gateway:
 * ApplicationGatewayPerformanceLog
 * ApplicationGatewayFirewallLog
 
-Pro Application Gateway se podporují následující metriky:
+Pro Application Gateway jsou podporovány následující metriky: znovu
+
 
 * propustnost 5 minut
 
@@ -140,6 +142,12 @@ Na všech stránkách vyhledávání protokolu můžete zobrazit výsledky čas,
 ## <a name="azure-network-security-group-analytics-solution-in-log-analytics"></a>Skupina zabezpečení sítě Azure analytics řešení v analýzy protokolů
 
 ![Skupina zabezpečení sítě Azure Analytics symbol](./media/log-analytics-azure-networking/azure-analytics-symbol.png)
+
+> [!NOTE]
+> Řešení analýzy skupinu zabezpečení sítě přechází na podpora komunity, protože jeho funkce nahradila [Analýza provozu](../network-watcher/traffic-analytics.md).
+> - Řešení je k dispozici v [šablon Azure rychlý Start](https://azure.microsoft.com/resources/templates/oms-azurensg-solution/) a brzy bude k dispozici v Azure Marketplace.
+> - Pro stávající zákazníky, kteří již přidán řešení do svého pracovního prostoru ji budou nadále fungovat bez úprav.
+> - Microsoft bude podporovat odesílání diagnostických protokolů NSG do pracovního prostoru pomocí nastavení diagnostiky.
 
 Tyto protokoly jsou podporovány pro skupiny zabezpečení sítě:
 
@@ -213,9 +221,9 @@ Použití aktualizované řešení:
 
     | Namísto: | Použití: |
     | --- | --- |
-    | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayAccess" | AzureDiagnostics &#124; kde ResourceType = "APPLICATIONGATEWAYS" a OperationName == "ApplicationGatewayAccess" |
-    | NetworkApplicationgateways &#124; where OperationName=="ApplicationGatewayPerformance" | AzureDiagnostics &#124; kde ResourceType == "APPLICATIONGATEWAYS" a OperationName = ApplicationGatewayPerformance |
-    | NetworkSecuritygroups | AzureDiagnostics &#124; kde ResourceType == "Skupin zabezpečení sítě" |
+    | NetworkApplicationgateways &#124; kde OperationName == "ApplicationGatewayAccess" | AzureDiagnostics &#124; kde ResourceType = "APPLICATIONGATEWAYS" a OperationName == "ApplicationGatewayAccess" |
+    | NetworkApplicationgateways &#124; kde OperationName == "ApplicationGatewayPerformance" | AzureDiagnostics &#124; kde ResourceType == "APPLICATIONGATEWAYS" a OperationName = ApplicationGatewayPerformance |
+    | Skupin zabezpečení sítě | AzureDiagnostics &#124; kde ResourceType == "Skupin zabezpečení sítě" |
 
    + Pro každé pole, které má příponu \_s, \_d, nebo \_g v názvu, změna po prvním znaku na malá písmena
    + Pro každé pole, které má příponu \_o název, data je rozdělená do jednotlivých polí na základě názvů vnořená pole.
@@ -224,7 +232,7 @@ Použití aktualizované řešení:
 
 Data jsou shromažďována předtím, než tato změna není zobrazená v nové řešení. Můžete pokračovat se dotázat na tato data pomocí starého typu a názvy polí.
 
-## <a name="troubleshooting"></a>Poradce při potížích
+## <a name="troubleshooting"></a>Řešení potíží
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
 ## <a name="next-steps"></a>Další postup

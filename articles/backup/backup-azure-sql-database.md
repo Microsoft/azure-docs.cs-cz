@@ -13,15 +13,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 6/1/2018
+ms.date: 6/29/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: 4ae64fefb58840214104a4e1cb338ec404fac1a8
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 89a1df607c220e5dc12bc6263955d6e445e529bd
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235409"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37115963"
 ---
 # <a name="back-up-sql-server-database-in-azure"></a>Zálohování databáze systému SQL Server v Azure
 
@@ -63,8 +63,8 @@ Následující položky jsou známá omezení pro verzi Public Preview.
 - Japonsko – západ (JPW)
 - Indie – střed (INC) 
 - Indie – jih (INS)
-- Korea – střed (KRC)
-- Korea – jih (KRS)
+- Jižní Korea – střed (KRC)
+- Jižní Korea – jih (KRS)
 - Střed USA – sever (NCUS) 
 - Severní Evropa (NE) 
 - Střed USA – jih (SCUS) 
@@ -251,7 +251,7 @@ Při použití **zjistit databází** nástroj Azure Backup provede následujíc
 
 - nainstaluje **AzureBackupWindowsWorkload** rozšíření ve virtuálním počítači. Zálohování databáze SQL je bez agentů řešení, tedy s příponou nainstalovaný na virtuálním počítači není nainstalovaný agent v databázi SQL.
 
-- vytvoří účet služby, **NT Service\AzureWLBackupPluginSvc**, na virtuálním počítači. Všechny operace zálohování a obnovení pomocí účtu služby. **NT Server\AzureWLBackupPluginSvc** vyžaduje oprávnění správce SQL. Všechny virtuální počítače SQL Marketplace dodávají s SqlIaaSExtension nainstalován a AzureBackupWindowsWorkload používá SQLIaaSExtension automaticky získat požadovaná oprávnění. Pokud virtuální počítač nemá nainstalován SqlIaaSExtension, dojde k selhání operace zjišťování DB a získání chybové zprávy, **UserErrorSQLNoSysAdminMembership**. Chcete-li přidat oprávnění sysadmin pro zálohování, postupujte podle pokynů v [nastavení služby Azure Backup oprávnění pro virtuální počítače bez marketplace SQL](backup-azure-sql-database.md#set-permissions-for-non--marketplace-sql-vms).
+- vytvoří účet služby, **NT Service\AzureWLBackupPluginSvc**, na virtuálním počítači. Všechny operace zálohování a obnovení pomocí účtu služby. **NT Service\AzureWLBackupPluginSvc** vyžaduje oprávnění správce SQL. Všechny virtuální počítače SQL Marketplace dodávají s SqlIaaSExtension nainstalován a AzureBackupWindowsWorkload používá SQLIaaSExtension automaticky získat požadovaná oprávnění. Pokud virtuální počítač nemá nainstalován SqlIaaSExtension, dojde k selhání operace zjišťování DB a získání chybové zprávy, **UserErrorSQLNoSysAdminMembership**. Chcete-li přidat oprávnění sysadmin pro zálohování, postupujte podle pokynů v [nastavení služby Azure Backup oprávnění pro virtuální počítače bez marketplace SQL](backup-azure-sql-database.md#set-permissions-for-non--marketplace-sql-vms).
 
     ![Vyberte virtuální počítač a databáze](./media/backup-azure-sql-database/registration-errors.png)
 
@@ -443,6 +443,10 @@ Obnovení databáze
 
 Tento postup vás provede obnovení dat do alternativního umístění. Pokud chcete přepsat databázi při obnovování, přejít k části [obnovit a přepsat databázi](backup-azure-sql-database.md#restore-and-overwrite-the-database). Tento postup předpokládá můžete mít vaše otevřený trezor služeb zotavení a jsou v nabídce obnovení konfigurace. Pokud si nejste, začněte částí, [obnovení databáze SQL](backup-azure-sql-database.md#restore-a-sql-database).
 
+> [!NOTE]
+> Můžete obnovit databázi k serveru SQL Server ve stejné oblasti Azure a cílový server musí být zaregistrovaný do trezoru služeb zotavení. 
+>
+
 **Server** rozevírací nabídky se zobrazí pouze servery SQL Server, který je zaregistrován v trezoru služeb zotavení. Pokud chcete, aby server není v **Server** seznamu, najdete v části [databáze serveru SQL zjistit](backup-azure-sql-database.md#discover-sql-server-databases) najít server. Během procesu zjišťování databáze jsou registrované všechny nové servery do trezoru služeb zotavení.
 
 1. V **obnovení konfigurace** nabídky:
@@ -607,10 +611,40 @@ Tato část obsahuje informace o různých Azure Backup operacích správy k dis
 * Zrušení registrace SQL server
 
 ### <a name="monitor-jobs"></a>Monitorování úloh
+Zálohování Azure je podnikové řešení třída poskytuje pokročilé zálohování výstrahy a oznámení k jeho selhání (naleznete výstrahy zálohování níže). Pokud chcete sledovat konkrétní úlohy můžete použít některý z následujících možností podle potřeby:
 
-Azure Backup používá SQL nativních rozhraní API pro všechny operace zálohování. Pomocí nativních rozhraní API, může načíst všechny úlohy informace ze [tabulky SQL záloh](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) v databázi msdb. Kromě toho Azure Backup zobrazí všechny ručně spouštěná nebo ad hoc, úlohy na portálu úlohy zálohování. Úlohy, které jsou k dispozici v portálu zahrnout: všechny operace zálohování, operace obnovení registrace konfiguraci a zjistit databázových operací a zastavit operace zálohování. Všechny naplánované úlohy je možné monitorovat také s analýzy protokolů OMS. Pomocí analýzy protokolů odebere úlohy zbytečné soubory a poskytuje podrobné flexibilitu pro monitorování nebo filtrování určité úlohy.
-
+#### <a name="using-azure-portal---recovery-services-vault-for-all-ad-hoc-operations"></a>Pomocí portálu Azure -> trezoru služeb zotavení pro všechny operace ad-hoc
+Azure Backup zobrazuje všechny ruční aktivaci ad hoc, úlohy nebo na portálu úlohy zálohování. Úlohy, které jsou k dispozici v portálu zahrnout: všechny konfiguraci operace zálohování, ručně spustí operace zálohování, operace obnovení registrace a zjistit databázových operací a zastavit operace zálohování. 
 ![upřesňující konfigurace nabídky](./media/backup-azure-sql-database/jobs-list.png)
+
+> [!NOTE]
+> Všechny naplánované úlohy zálohování včetně úplné, rozdíl a protokolu zálohování, nebude se zobrazovat na portálu a je možné monitorovat pomocí SQL Server Management Studio, jak je popsáno níže.
+>
+
+#### <a name="using-sql-server-management-studio-ssms-for-backup-jobs"></a>Pomocí SQL Server Management Studio (SSMS) pro úlohy zálohování
+Azure Backup používá SQL nativních rozhraní API pro všechny operace zálohování. Pomocí nativních rozhraní API, může načíst všechny úlohy informace ze [tabulky SQL záloh](https://docs.microsoft.com/sql/relational-databases/system-tables/backupset-transact-sql?view=sql-server-2017) v databázi msdb. 
+
+Můžete použít níže dotazu jako příklad načíst všechny úlohy zálohování pro konkrétní databázi s názvem "DB1". Můžete přizpůsobit níže dotazu další pokročilé monitorování.
+```
+select CAST (
+Case type
+                when 'D' 
+                                 then 'Full'
+                when  'I'
+                               then 'Differential' 
+                ELSE 'Log'
+                END         
+                AS varchar ) AS 'BackupType',
+database_name, 
+server_name,
+machine_name,
+backup_start_date,
+backup_finish_date,
+DATEDIFF(SECOND, backup_start_date, backup_finish_date) AS TimeTakenByBackupInSeconds,
+backup_size AS BackupSizeInBytes
+  from msdb.dbo.backupset where user_name = 'NT SERVICE\AzureWLBackupPluginSvc' AND database_name =  <DB1>  
+ 
+```
 
 ### <a name="backup-alerts"></a>Výstrahy zálohy
 

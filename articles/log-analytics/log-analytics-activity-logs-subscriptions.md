@@ -3,22 +3,23 @@ title: Shromažďování protokolů aktivit Azure do Log Analytics napříč př
 description: Použijte služby Event Hubs a Logic Apps ke shromažďování dat z protokolu aktivit Azure a jejich odesílání do pracovního prostoru Log Analytics v jiném tenantovi.
 services: log-analytics, logic-apps, event-hubs
 documentationcenter: ''
-author: richrundmsft
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: d72d0823d78f47aed3d8690cee81f8bb00e7921d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.component: na
+ms.openlocfilehash: c2bb802213d903290a0168623d7e6a302ba0e324
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636966"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127437"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Shromažďování protokolů aktivit Azure do Log Analytics napříč předplatnými
 
@@ -338,7 +339,7 @@ Posledním krokem je kontrola pracovního prostoru Log Analytics a ověření, �
 
 ![Test aplikace logiky](media/log-analytics-activity-logs-subscriptions/log-analytics-results.png)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 V tomto článku jste vytvořili aplikaci logiky, která načítá protokoly aktivit Azure z centra událostí a odesílá je k analýze do Log Analytics. Další informace o vizualizaci dat v Log Analytics, včetně vytváření řídicích panelů, najdete v kurzu vizualizace dat.
 

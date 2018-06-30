@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 3d4d217fba55b8329937575042f0ac909aad09e9
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f447378816f137517a3d542a27841d0cab351473
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838472"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112676"
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>Týmové projekty platformy a nástroje pro vědecké zpracování dat
 
-Společnost Microsoft poskytuje úplné spektrum data a analytické služby a prostředky pro cloud nebo místní platformy. Je lze nasadit, aby provádění projekty vědecké účely data efektivní a škálovatelné. Řídí pokyny pro implementaci datové vědy projekty v organizovaným týmy, verze, a poskytuje způsob spolupráce [proces vědecké účely dat Team](overview.md) (TDSP).  Přehled role pracovníky a jejich přidružených úloh, které zpracovávají datové vědy team standardizace na tento proces, najdete v části [proces vědecké účely dat Team rolí a úloh](roles-tasks.md).
+Společnost Microsoft poskytuje úplné spektrum data a analýzy službám a prostředkům platforem cloudu nebo místně. Je lze nasadit, aby provádění projekty vědecké účely data efektivní a škálovatelné. Řídí pokyny pro implementaci datové vědy projekty v organizovaným týmy, verze, a poskytuje způsob spolupráce [proces vědecké účely dat Team](overview.md) (TDSP).  Přehled role pracovníky a jejich přidružených úloh, které zpracovávají datové vědy team standardizace na tento proces, najdete v části [proces vědecké účely dat Team rolí a úloh](roles-tasks.md).
 
 Služby data a analýzy, které jsou k dispozici týmů vědecké účely dat pomocí TDSP patří:
 

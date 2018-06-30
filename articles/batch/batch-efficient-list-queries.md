@@ -15,16 +15,16 @@ ms.workload: big-compute
 ms.date: 08/02/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 330350d6ac6838ea5b09763fe1f73fab1934710c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 950e422b3076e5abd5db6dd0ac452fa1c2d500d0
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30315044"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129264"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Efektivně vytvářet dotazy ke prostředky Batch seznamu
 
-Zde se dozvíte, jak zvýšit výkon aplikace Azure Batch snižuje množství dat, která je vrácena službou při dotazování úlohy a úlohy a výpočetní uzly se [Batch .NET] [ api_net] knihovny.
+Zde se dozvíte, jak zvýšit výkon aplikace Azure Batch snižuje množství dat, která je vrácena službou při dotazování úlohy a úlohy a výpočetní uzly se [Batch .NET] [ api_net]knihovny.
 
 Téměř všechny aplikace Batch je potřeba provést nějaký typ monitorování nebo jiné operace, který se dotazuje služby Batch, často v pravidelných intervalech. Pokud chcete zjistit, zda jsou všechny ve frontě úloh zbývající v rámci úlohy, například musí získat data na každý úkol v úloze. Pokud chcete zjistit stav uzly ve fondu, musíte získat data na každý uzel ve fondu. Tento článek vysvětluje, jak provést takové dotazy nejefektivnějším způsobem.
 
@@ -68,7 +68,7 @@ V tomto ukázkovém scénáři, pokud existují tisíce úkolů do úlohy výsle
 > 
 
 ## <a name="filter-select-and-expand"></a>Filtrovat, vyberte a rozbalte
-[Batch .NET] [ api_net] a [Batch REST] [ api_rest] rozhraní API nabízejí možnost snížit i počet položek, které jsou vráceny v seznamu, a také množství informací, které se vrátí pro každou. To uděláte tak, že zadáte **filtru**, **vyberte**, a **rozbalte řetězce** při provádění dotazů seznamu.
+[Batch .NET] [ api_net] a [Batch REST] [ api_rest] rozhraní API umožňují snížit počet položek, které jsou vráceny v seznamu, a také objem informací, které se vrátí pro každou. To uděláte tak, že zadáte **filtru**, **vyberte**, a **rozbalte řetězce** při provádění dotazů seznamu.
 
 ### <a name="filter"></a>Filtr
 Řetězec filtru je výraz, který snižuje počet položek, které jsou vráceny. Například seznam pouze spuštěné úlohy pro úlohu, nebo seznam pouze výpočetní uzly, které jsou připravené ke spuštění úlohy.
@@ -92,12 +92,12 @@ Rozbalte řetězec snižuje počet volání rozhraní API, které jsou nutné k 
 * Tento příklad rozbalte položku řetězec Určuje, zda má být vrácen statistické informace pro každou položku v seznamu: `stats`.
 
 > [!NOTE]
-> Při vytváření jakýkoli z typů řetězec dotazu tři (filtrování, vyberte a rozbalte možnost), ujistěte se, že názvy vlastností a případ shodovat s jejich protějšky element REST API. Například při práci s .NET [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) třídy, je nutné zadat **stavu** místo **stavu**, i když je vlastnost .NET [CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state). Podívejte se na tabulky pod pro mapování vlastností mezi .NET a REST API.
+> Při vytváření jakýkoli z typů řetězec dotazu tři (filtrování, vyberte a rozbalte možnost), ujistěte se, že názvy vlastností a případ shodovat s jejich protějšky element REST API. Například při práci s .NET [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) třídy, je nutné zadat **stavu** místo **stavu**, i když je vlastnost .NET [ CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state). Podívejte se na tabulky pod pro mapování vlastností mezi .NET a REST API.
 > 
 > 
 
 ### <a name="rules-for-filter-select-and-expand-strings"></a>Pravidla pro filtr, vyberte a rozbalte řetězce
-* Názvy vlastností ve filtru, vyberte a rozbalte řetězce by se měla zobrazit jako ve [Batch REST] [ api_rest] rozhraní API – i v případě, že používáte [Batch .NET] [ api_net] nebo jeden z ostatních Batch sad SDK.
+* Názvy vlastností ve filtru, vyberte a rozbalte řetězce by se měla zobrazit jako ve [Batch REST] [ api_rest] rozhraní API – i v případě, že používáte [Batch .NET] [ api_net]nebo jeden z ostatních Batch sad SDK.
 * Všechny názvy vlastností malá a velká písmena, ale hodnoty vlastností se malá a velká písmena.
 * Datum a čas řetězců může mít jednu ze dvou formátů a musí předcházet `DateTime`.
   
@@ -107,7 +107,7 @@ Rozbalte řetězec snižuje počet volání rozhraní API, které jsou nutné k 
 * Pokud je zadána neplatná vlastnost nebo operátor, `400 (Bad Request)` bude výsledkem chyba.
 
 ## <a name="efficient-querying-in-batch-net"></a>Efektivní dotazování v Batch .NET
-V rámci [Batch .NET] [ api_net] rozhraní API, [ODATADetailLevel] [ odata] třída se používá pro zadávání filtru, vyberte a rozbalte seznam způsobů řetězce. Třída ODataDetailLevel má tři řetězec veřejné vlastnosti, které lze zadaným v konstruktoru, nebo nastavit přímo na objekt. Můžete poté předat objekt ODataDetailLevel jako parametr různé operace výpisu, jako [ListPools][net_list_pools], [ListJobs][net_list_jobs], a [ListTasks][net_list_tasks].
+V rámci [Batch .NET] [ api_net] rozhraní API, [ODATADetailLevel] [ odata] třída se používá pro zadávání filtru, vyberte a rozbalte seznam řetězců operace. Třída ODataDetailLevel má tři řetězec veřejné vlastnosti, které lze zadaným v konstruktoru, nebo nastavit přímo na objekt. Můžete poté předat objekt ODataDetailLevel jako parametr různé operace výpisu, jako [ListPools][net_list_pools], [ListJobs][net_list_jobs], a [ListTasks][net_list_tasks].
 
 * [ODATADetailLevel][odata].[ FilterClause][odata_filter]: omezit počet položek, které jsou vráceny.
 * [ODATADetailLevel][odata].[ SelectClause][odata_select]: Zadejte každou položku jsou vráceny hodnot vlastností.
@@ -142,7 +142,7 @@ List<CloudPool> testPools =
 ```
 
 > [!TIP]
-> Instance [ODATADetailLevel] [ odata] nakonfigurovaný s vyberte a rozbalte klauzule lze také předat příslušné metody Get, jako například [PoolOperations.GetPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getpool.aspx), chcete-li omezit množství dat, která je vrácena.
+> Instance [ODATADetailLevel] [ odata] nakonfigurovaný s vyberte a rozbalte klauzule lze také předat příslušné metody Get, jako například [PoolOperations.GetPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getpool.aspx), Chcete-li omezit množství dat, která je vrácena.
 > 
 > 
 
@@ -172,7 +172,7 @@ Názvy vlastností ve filtru, vyberte a rozbalte řetězce *musí* odráží jej
 
 | Typy batch .NET | Rozhraní REST API entity |
 | --- | --- |
-| [certifikát][net_cert] |[Získání informací o certifikát][rest_get_cert] |
+| [Certifikát][net_cert] |[Získání informací o certifikát][rest_get_cert] |
 | [CloudJob][net_job] |[Získání informací o úlohy][rest_get_job] |
 | [CloudJobSchedule][net_schedule] |[Získat informace o plánu úlohy][rest_get_schedule] |
 | [ComputeNode][net_node] |[Získání informací o uzlu][rest_get_node] |
@@ -180,7 +180,7 @@ Názvy vlastností ve filtru, vyberte a rozbalte řetězce *musí* odráží jej
 | [CloudTask][net_task] |[Získat informace o úkolu][rest_get_task] |
 
 ## <a name="example-construct-a-filter-string"></a>Příklad: vytvoření řetězec filtru
-Když vytvoříte řetězec filtru pro [ODATADetailLevel.FilterClause][odata_filter], najdete v tabulce výše v části "Mapování pro filtr řetězce" na stránce dokumentace najít rozhraní REST API, která odpovídá seznamu operaci, kterou chcete provést. V první tabulce více řádků na této stránce najdete filtrování vlastností a jejich podporované operátory. Pokud chcete načíst všechny úlohy, jejichž ukončovací kód procesu je nenulové hodnoty, například tento řádek na [seznamu úkoly spojené s úlohou] [ rest_list_tasks] určuje povolené operátory a použít vlastnost řetězec:
+Když vytvoříte řetězec filtru pro [ODATADetailLevel.FilterClause][odata_filter], najdete v tabulce výše v části "Mapování pro filtr řetězce" na stránce dokumentace najít rozhraní REST API, která odpovídá operace seznamu, který chcete provést. V první tabulce více řádků na této stránce najdete filtrování vlastností a jejich podporované operátory. Pokud chcete načíst všechny úlohy, jejichž ukončovací kód procesu je nenulové hodnoty, například tento řádek na [seznamu úkoly spojené s úlohou] [ rest_list_tasks] určuje povolené operátory a použít vlastnost řetězec:
 
 | Vlastnost | Povolené operace | Typ |
 |:--- |:--- |:--- |
@@ -204,7 +204,7 @@ Poté budou vyberte řetězec pro včetně pouze ID a příkazového řádku u j
 
 ## <a name="code-samples"></a>Ukázky kódů
 ### <a name="efficient-list-queries-code-sample"></a>Ukázka kódu dotazy efektivní seznamu
-Podívejte se [EfficientListQueries] [ efficient_query_sample] ukázkového projektu na Githubu, které chcete zobrazit, jak efektivní dotazování seznamu může ovlivnit výkon v aplikaci. Tato Konzolová aplikace C# vytvoří a přidá velkého počtu úkolů do úlohy. Pak umožňuje více volání [JobOperations.ListTasks] [ net_list_tasks] metoda a předává [ODATADetailLevel] [ odata] objekty, které jsou nakonfigurovány s jinou vlastnost hodnoty pro množství dat, který se má vrátit se liší. Vyvolá výstup podobný následujícímu:
+Podívejte se [EfficientListQueries] [ efficient_query_sample] ukázkového projektu na Githubu, které chcete zobrazit, jak efektivní dotazování seznamu může ovlivnit výkon v aplikaci. Tato Konzolová aplikace C# vytvoří a přidá velkého počtu úkolů do úlohy. Pak umožňuje více volání [JobOperations.ListTasks] [ net_list_tasks] metoda a předává [ODATADetailLevel] [ odata] objekty, které jsou nakonfigurované hodnot různých vlastností k odlišení množství dat, který se má vrátit. Vyvolá výstup podobný následujícímu:
 
 ```
 Adding 5000 tasks to job jobEffQuery...
@@ -223,7 +223,7 @@ Sample complete, hit ENTER to continue...
 Jak je znázorněno v procentuálně dobu, můžete výrazně snížit dobu odezvy na dotazy omezením vlastnosti a počet položek, které jsou vráceny. Tato a Další ukázkové projekty v lze najít [azure-batch-samples] [ github_samples] úložišti na Githubu.
 
 ### <a name="batchmetrics-library-and-code-sample"></a>Ukázka BatchMetrics knihovny a kódu
-Kromě EfficientListQueries kód ukázce výše můžete najít [BatchMetrics] [ batch_metrics] v projektu [azure-batch-samples] [ github_samples] úložiště GitHub. Ukázkový projekt BatchMetrics ukazuje, jak efektivně sledovat průběh úlohy Azure Batch pomocí rozhraní API služby Batch.
+Kromě EfficientListQueries kód ukázce výše můžete najít [BatchMetrics] [ batch_metrics] v projektu [azure-batch-samples] [ github_samples]Úložiště GitHub. Ukázkový projekt BatchMetrics ukazuje, jak efektivně sledovat průběh úlohy Azure Batch pomocí rozhraní API služby Batch.
 
 [BatchMetrics] [ batch_metrics] ukázka zahrnuje projektu knihovny tříd rozhraní .NET, která můžete začlenit do vašich vlastních projektů a jednoduchý příkazového řádku programu prověření a Ukázka použití knihovny.
 
@@ -248,15 +248,12 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 ### <a name="parallel-node-tasks"></a>Uzel paralelní úlohy
 [Maximalizovat využití prostředků Azure Batch výpočetní uzel souběžných úloh](batch-parallel-node-tasks.md) je jiný článek související s výkonem aplikací Batch. Některé typy úloh využívat výhod spouštění paralelní úlohy na větší – ale méně – výpočetní uzly. Podívejte se [ukázkový scénář](batch-parallel-node-tasks.md#example-scenario) v článku podrobnosti o tento případ.
 
-### <a name="batch-forum"></a>Fórum batch
-[Fóru služby Azure Batch] [ forum] na webu MSDN je skvělým místem popisují Batch a klást otázky týkající se služby. HEAD na přes pro užitečné "rychlé" příspěvky a při jejich vzniku při sestavování řešení Batch zveřejněte svoje otázky.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
 [batch_metrics]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchMetrics
 [efficient_query_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/EfficientListQueries
-[forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [odata]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.odatadetaillevel.aspx
 [odata_ctor]: https://msdn.microsoft.com/library/azure/dn866178.aspx

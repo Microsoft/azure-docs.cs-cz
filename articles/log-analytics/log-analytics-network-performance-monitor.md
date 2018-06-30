@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: a3c81d63593bb7bf268c1026064e34c3a363ef86
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
+ms.component: na
+ms.openlocfilehash: d083783fb4c648cde5d8f4ab611990f65e48a16e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34304653"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129993"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Síťová řešení pro sledování výkonu v Azure
 
@@ -205,7 +206,7 @@ Po povolení řešení monitorování výkonu sítě na dlaždici řešení **p�
 
  
 
-### <a name="drill-down-for-depth"></a>procházení hloubka 
+### <a name="drill-down-for-depth"></a>Procházení hloubka 
 
 Můžete vybrat různé odkazy na řídicí panel řešení přejdete dolů hlubší do všech oblastí zájmu. Například pokud se zobrazí výstraha nebo není v pořádku síťové propojení se zobrazují na řídicím panelu, vyberte ho k prozkoumání Další. Na stránce uvádí všechna propojení podsítí pro konkrétní síťové propojení. Uvidíte ztrátě, latence a stav každého odkazu podsítí. Můžete rychle zjistit způsobuje problémy, které propojení podsítí. Vyberte **zobrazení uzlu odkazy** zobrazíte všechny odkazy na uzlu odkazu podsíť není v pořádku. Potom můžete zobrazit jednotlivé uzly – odkazy a odkazy uzlů ve špatném stavu. 
 

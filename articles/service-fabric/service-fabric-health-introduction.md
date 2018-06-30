@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: ed1a307cb2a2613fc7701392cd7b408715f10910
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fc0bb56e85c2a9cf7a458b0f6d97887d392ee65f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207294"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114312"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
 Azure Service Fabric zavádí stavu model, který poskytuje bohatý, flexibilní a rozšiřitelný stavu vyhodnocení a vytváření sestav. Model umožňuje téměř v reálném čase monitorování stavu clusteru a služby spuštěné v ní. Můžete snadno získat informace o stavu a opravte potenciální problémy předtím, než v kaskádě a způsobit masivní výpadků. V typické modelu služby odesílat sestavy založené na jejich místní zobrazení, a že informace se shromažďují zajistit celkovou clusteru úrovni zobrazení.
@@ -78,7 +78,7 @@ Možné [stavů](https://docs.microsoft.com/dotnet/api/system.fabric.health.heal
 * **OK**. Entita je v pořádku. Neexistují žádné známé problémy, které jsou ohlášeny ho nebo jejích podřízených objektech (v případě potřeby).
 * **Upozornění**. Entita, která má některé problémy, ale mohou i nadále fungovat správně. Například je, ale nezpůsobí ještě všechny funkční problémy. V některých případech může opravit podmínky upozornění bez zásahu externí sám sebe. V těchto případech sestav stavu zvýšení povědomí a poskytují přehled o co se děje. V jiných případech může snížit podmínky upozornění do k závažnému problému bez zásahu uživatele.
 * **Error** (Chyba). Entita není v pořádku. Chcete-li vyřešit stav entity, by měla provedena akce, protože nemůže správně fungovat.
-* **Neznámý**. Entita neexistuje v health store. Tento výsledek je možné získat z distribuované dotazy, které sloučení výsledky z několika součástí. Například dotaz get uzel přejde k **FailoverManager**, **ClusterManager**, a **HealthManager**; získat aplikaci dotaz přejde na **ClusterManager** a **HealthManager**. Tyto dotazy sloučení výsledky z několika komponent systému. Pokud součást jiného systému vrací entity, která se nenachází v health store, výsledného má neznámý stav. Entity není v úložišti, protože stav sestavy nebyly dosud zpracovány nebo entita byla vyčištěna po jeho odstranění.
+* **Neznámý**. Entita neexistuje v health store. Tento výsledek je možné získat z distribuované dotazy, které sloučení výsledky z několika součástí. Například dotaz get uzel přejde k **FailoverManager**, **ClusterManager**, a **HealthManager**; získat aplikaci dotaz přejde na  **ClusterManager** a **HealthManager**. Tyto dotazy sloučení výsledky z několika komponent systému. Pokud součást jiného systému vrací entity, která se nenachází v health store, výsledného má neznámý stav. Entity není v úložišti, protože stav sestavy nebyly dosud zpracovány nebo entita byla vyčištěna po jeho odstranění.
 
 ## <a name="health-policies"></a>Zásady stavu
 Úložiště stavu platí zásady stavu k určení, zda entita je v pořádku, na základě jeho sestavy a její podřízené položky.
@@ -117,7 +117,7 @@ Následující příklad je výňatek ze manifestu clusteru. K definování polo
 [Zásady stavu aplikace](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) popisuje, jak se provádí vyhodnocení události a podřízené stavy agregace pro aplikace a jejich podřízené položky. V manifestu aplikace, lze definovat **ApplicationManifest.xml**, v balíčku aplikace. Pokud nejsou zadány žádné zásady, Service Fabric předpokládá, že je entita není v pořádku, pokud má sestavy stavu, nebo podřízenou položku ve stavu upozornění nebo chyby.
 Konfigurovat zásady, jsou:
 
-* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.considerwarningaserror.aspx). Určuje, zda považovat upozornění stavu sestav jako chyby během vyhodnocení stavu. Výchozí: false.
+* [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Určuje, zda považovat upozornění stavu sestav jako chyby během vyhodnocení stavu. Výchozí: false.
 * [MaxPercentUnhealthyDeployedApplications](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.maxpercentunhealthydeployedapplications). Určuje maximální procento. povolená nasazené aplikace, které se dají není v pořádku, než aplikace je považována za chybu. Se počítá vydělením počtu není v pořádku nasazené aplikace přes počet uzlů, které aplikace jsou aktuálně nasazená v v clusteru. Výpočet zaokrouhlí na tolerovat jeden selhání na malém počtu uzlů. Výchozí procento: nula.
 * [DefaultServiceTypeHealthPolicy](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.defaultservicetypehealthpolicy). Určuje výchozí služby typu zásad stavu, která nahradí výchozí zásady stavu pro všechny typy služeb v aplikaci.
 * [ServiceTypeHealthPolicyMap](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy.servicetypehealthpolicymap). Obsahuje mapování zásad stavu service podle typu služby. Tyto zásady nahradí výchozí zásady stavu typ služby pro každý typ zadaná služba. Pokud aplikace má typ služby bezstavové brány a service type stavový stroj, můžete je třeba nakonfigurovat zásady stavu pro jejich hodnocení jinak. Když zadáte zásady, za typ služby, můžete získat podrobnější řízení stavu služby.
@@ -201,7 +201,7 @@ Zpravodaje, která pokud chcete odeslat data o stavu k úložišti stavů, musí
 * **Identifikátor entity**. Identifikuje entity, kde je použito sestavy. Liší se i na základě [typ entity](service-fabric-health-introduction.md#health-entities-and-hierarchy):
   
   * Cluster. Žádné.
-  * Uzel. Název uzlu (string).
+  * uzel. Název uzlu (string).
   * Aplikace. Název aplikace (URI). Představuje název instance aplikace nasazené v clusteru.
   * Služba. Název služby (URI). Představuje název instance služby, který je nasazen v clusteru.
   * Oddíl. Oddíl ID (GUID). Představuje jedinečný identifikátor oddílu.

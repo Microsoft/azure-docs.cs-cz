@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: f7c3820624a4ef27e2ece4d902f2c033b6a6f48f
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 9b41ca1eedcf69b23557c079e018d69de9fb907c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061216"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114363"
 ---
 # <a name="azure-data-lake-storage-gen2-preview-hierarchical-namespace"></a>Azure hierarchického oboru názvů Data Lake Storage Gen2 Preview
 
@@ -27,7 +27,7 @@ Klíče mechanismus, který umožňuje Azure Data Lake Storage Gen2 Preview zaji
 
 Systémy souborů, které implementují hierarchického oboru názvů přes data objektu blob přidruženo následující výhody:
 
-- **Atomic Directory manipulaci:** objekt úložiště Přibližná hierarchie adresářů přijetím konvence vnoření lomítka (/) v názvu objektu k označení segmenty cesty. Při této konvence funguje uspokojivě pro uspořádání objektů, poskytuje konvence bez podpory pro akce jako přesunutí, přejmenování nebo odstranění adresáře. Bez skutečné adresářů musí aplikace potenciálně zpracovat miliony jednotlivých objektů BLOB k dosažení úrovni adresář úlohy. Naopak hierarchického oboru názvů zpracuje tyto úlohy aktualizací jednu položku (nadřazený adresář). 
+- **Atomic Directory manipulaci:** objekt úložiště Přibližná hierarchie adresářů přijetím konvence vnoření lomítka (/) v názvu objektu k označení segmenty cesty. Při této konvence funguje pro uspořádání objektů, poskytuje konvence bez podpory pro akce jako přesunutí, přejmenování nebo odstranění adresáře. Bez skutečné adresářů musí aplikace potenciálně zpracovat miliony jednotlivých objektů BLOB k dosažení úrovni adresář úlohy. Naopak hierarchického oboru názvů zpracuje tyto úlohy aktualizací jednu položku (nadřazený adresář). 
 
     Výrazné optimalizace je obzvláště důležité pro mnoho rozhraní analýzy velkých objemů dat. Nástroje, například Hive, Spark, atd. často zapisovat výstup do dočasného umístění a přejmenujte umístění při ukončení úlohy. Bez hierarchického oboru názvů může trvat přejmenujte často déle, než analytics zpracovat sám sebe. Nižší latenci úlohy se rovná snížit náklady na vlastnictví (TCO) pro zatížení analytics.
 

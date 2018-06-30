@@ -8,14 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: fe5ce960663f39d4f2c87a7bbffa091d327e9559
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 29a56e212f842e8f4243eca7fc865175fd275a39
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632444"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030763"
 ---
-# <a name="configure-and-monitor-iot-devices-at-scale---preview"></a>Konfigurace a monitorování zařízení IoT ve velkém měřítku – náhled
+# <a name="configure-and-monitor-iot-devices-at-scale-using-the-azure-portal"></a>Konfigurace a monitorování zařízení IoT škálované pomocí portálu Azure
+
+[!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-hub-auto-device-config-selector.md)]
 
 Správa automatického zařízení v Azure IoT Hub automatizuje řadu opakovaných a složitější úlohy správy loďstev velké zařízení přes celého jejich životních cyklů. Se správou automatického zařízení můžete cílí na skupiny zařízení, na základě jejich vlastností, zadejte požadované konfigurace a nechat IoT Hub, aktualizujte si zařízení vždy, když se do oboru.  To se provádí pomocí konfigurace automatického zařízení, která vám také umožní shrnout doplňování a dodržování předpisů, slučování popisovač a je v konfliktu a zavedení konfigurace v rámci fázového přístupu.
 
@@ -28,9 +30,6 @@ Konfigurace pracovních zařízení automatické aktualizace sadu dvojčata zař
 * **Směrovat obsah** definuje požadované vlastnosti, které chcete přidat nebo aktualizovat v dvojčata cílové zařízení. Obsah obsahuje cestu k části požadované vlastnosti chcete změnit.
 
 * **Metriky** definovat souhrnné počty různé stavy konfigurace, jako **úspěch**, **probíhá**, a **chyba**. Vlastní metriky v dotazech na zařízení zadány twin hlášené vlastnosti.  Metriky systému jsou výchozích metrik, které měří stav aktualizace twin, například počet dvojčata zařízení, které jsou cíleny a počet dvojčata, které byly úspěšně aktualizovány. 
-
-> [!Note]
-> Verzi Preview tato funkce není k dispozici pro centra IoT v oblasti Východ USA, západ USA, Severní Evropa a západní Evropa.
 
 ## <a name="implement-device-twins-to-configure-devices"></a>Implementace dvojčata zařízení konfigurace zařízení
 
@@ -52,7 +51,7 @@ Před vytvořením konfigurace, je nutné zadat zařízení, která chcete ovliv
 ## <a name="create-a-configuration"></a>Vytvoření konfigurace
 
 1. V [portál Azure][lnk-portal], přejděte do služby IoT hub. 
-1. Vyberte **konfigurace zařízení IoT (preview)**.
+1. Vyberte **konfigurace zařízení IoT**.
 1. Vyberte **Přidat konfiguraci**.
 
 Existují pět kroky pro vytvoření konfigurace. V následujících částech provede každé z nich. 
@@ -96,7 +95,7 @@ Použijte vlastnost značky z vaší dvojčata zařízení pro konkrétní zař�
 Vzhledem k tomu, že do stejného zařízení mohou být zaměřeny na různé konfigurace, je třeba přiřadit každé konfiguraci číslem priority. Pokud někdy dojde ke konfliktu, služby wins konfigurace s nejvyšší prioritou. 
 
 1. Zadejte kladné celé číslo pro konfiguraci **s prioritou**. Nejvyšší číselnou hodnotu považuje za nejvyšší prioritou. Pokud dvě konfigurace stejné číslo priority, ten, který byl vytvořen většina nedávno wins. 
-1. Zadejte **cíle podmínku** k určení zařízení, která budou cílem s touto konfigurací. Je založena na zařízení twin značky nebo dvojče zařízení hlášené vlastnosti a musí odpovídat formátu výraz. Například `tags.environment='test'` nebo `properties.reported.chillerProperties.model='4000x'`. 
+1. Zadejte **cíle podmínku** k určení zařízení, která budou cílem s touto konfigurací. Je založena na zařízení twin značky nebo dvojče zařízení hlášené vlastnosti a musí odpovídat formátu výraz. Například `tags.environment='test'` nebo `properties.reported.chillerProperties.model='4000x'`. Můžete zadat `*` pro všechna zařízení.
 1. Vyberte **Další** přechod poslední krok.
 
 ### <a name="step-5-review-configuration"></a>Krok 5: Kontrola konfigurace
@@ -108,8 +107,8 @@ Zkontrolujte informace o konfiguraci a pak vyberte **odeslání**.
 Chcete-li zobrazit podrobnosti o konfiguraci a monitorování zařízení se systémem, použijte následující postup:
 
 1. V [portál Azure][lnk-portal], přejděte do služby IoT hub. 
-1. Vyberte **konfigurace zařízení IoT (preview)**.
-1. Zkontrolujte seznam konfigurace. Pro každou konfiguraci můžete zobrazit následující podrobnosti:
+1. Vyberte **konfigurace zařízení IoT**.
+2. Zkontrolujte seznam konfigurace. Pro každou konfiguraci můžete zobrazit následující podrobnosti:
    * **ID** -název konfigurace.
    * **Cíl podmínku** -dotaz, použít k definování cílová zařízení.
    * **Priorita** -číslo priority přiřazené ke konfiguraci.
@@ -136,25 +135,25 @@ Pokud aktualizujete cílovou podmínku, provedou se následující aktualizace:
 Chcete-li upravit konfiguraci, použijte následující kroky: 
 
 1. V [portál Azure][lnk-portal], přejděte do služby IoT hub. 
-1. Vyberte **konfigurace zařízení IoT (preview)**. 
-1. Vyberte konfiguraci, kterou chcete upravit. 
-1. Proveďte aktualizace následující pole: 
+1. Vyberte **konfigurace zařízení IoT**. 
+2. Vyberte konfiguraci, kterou chcete upravit. 
+3. Proveďte aktualizace následující pole: 
    * Cílovou podmínku 
    * Popisky 
    * Priorita 
    * Metriky
-1. Vyberte **Uložit**.
-1. Postupujte podle kroků v [monitorování konfigurace] [ukotvení monitor] můžete sledovat změny zavedení. 
+4. Vyberte **Uložit**.
+5. Postupujte podle kroků v [monitorování konfigurace] [ukotvení monitor] můžete sledovat změny zavedení. 
 
 ## <a name="delete-a-configuration"></a>Odstranění konfigurace
 
 Při odstranění konfigurace žádné dvojčata zařízení trvat na jejich další konfigurace nejvyšší prioritou. Pokud dvojčata zařízení nesplňují podmínku cíl jakoukoli jinou konfiguraci, se neuplatní žádné další nastavení. 
 
 1. V [portál Azure][lnk-portal], přejděte do služby IoT hub. 
-1. Vyberte **konfigurace zařízení IoT (preview)**. 
-1. Vyberte konfiguraci, kterou chcete odstranit, použijte zaškrtávací políčko. 
-1. Vyberte **Odstranit**.
-1. Na řádku požádá o potvrzení.
+1. Vyberte **konfigurace zařízení IoT**. 
+2. Vyberte konfiguraci, kterou chcete odstranit, použijte zaškrtávací políčko. 
+3. Vyberte **Odstranit**.
+4. Na řádku požádá o potvrzení.
 
 ## <a name="next-steps"></a>Další postup
 V tomto článku jste se dozvěděli, jak konfigurovat a monitorovat zařízení IoT ve velkém měřítku. Další informace o správě Azure IoT Hub na následujících odkazech:

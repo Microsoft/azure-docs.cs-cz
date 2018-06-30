@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/26/18
 ms.author: mihauss
-ms.openlocfilehash: 7021a0499547818d702d14aecb9d8e451a820181
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: df1661b5fe7a2c0e37deef5259d6b5842ed6ee5e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37025674"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131605"
 ---
 # <a name="static-website-hosting-in-azure-storage-preview"></a>Hostování statického webu ve službě Azure Storage (Preview)
 Azure Storage teď nabízí statická webová stránka hostování (Preview), umožňuje nasadit nákladově efektivní a škálovatelné moderních webových aplikací v Azure. Webové stránky na statická webová stránka obsahovat statický obsah a JavaScript nebo jiných kódu na straně klienta. Naopak dynamické weby s závisí na kódu na straně serveru a může být hostovaný pomocí [Azure Web Apps](/app-service/app-service-web-overview.md).
@@ -43,6 +43,9 @@ Pokud chcete spustit, který je hostitelem webové aplikace v Azure Storage, mů
 ![](media/storage-blob-static-website/storage-blob-static-website-portal-config.PNG)
 
 Nahrajte vaše webové prostředky ke kontejneru "$web", který byl vytvořen jako součást povolení statická webová stránka. Můžete to provést přímo na portálu Azure, nebo můžete využít výhod [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) nahrát struktury celý adresář. Nezapomeňte zahrnout dokument index s názvem, který jste nakonfigurovali. V tomto příkladu je název dokumentu "index.html".
+
+> [!NOTE]
+> Název dokumentu je velká a malá písmena a proto se musí přesně shodovat s názvem souboru v úložišti.
 
 Nakonec přejděte na koncový bod webové otestovat váš web.
 

@@ -3,7 +3,7 @@ title: Správa agenta Azure Log Analytics | Microsoft Docs
 description: Tento článek popisuje různé správu úlohy, které obvykle provedete během životního cyklu z monitorování agenta MMA (Microsoft) nasazený na počítači.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ''
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
-ms.openlocfilehash: 5ff4f79a607143683b37726f1c02a6057dc6b9b0
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.component: na
+ms.openlocfilehash: 908418dffaffc25be320bd0008edf03493aa4e55
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30320080"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128788"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Správu a údržbu agenta analýzy protokolů pro systém Windows a Linux
 

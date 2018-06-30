@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3de93c06285f36353d91a66db975c0a579c1379c
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: e1bcae85c7078d817e30ec578ac12b2be13342c7
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097440"
+ms.locfileid: "37129019"
 ---
 # <a name="update-management-solution-in-azure"></a>Řešení pro správu aktualizací v Azure
 
@@ -157,7 +157,7 @@ Potvrďte, že skupiny pro správu nástroje Operations Manager komunikuje s ana
 
 Následující tabulka popisuje připojené zdroje, které podporuje toto řešení:
 
-| Připojený zdroj | Podporuje se | Popis |
+| Připojený zdroj | Podporováno | Popis |
 | --- | --- | --- |
 | Agenti systému Windows |Ano |Řešení shromažďuje informace o aktualizacích systému z agentů v systému Windows a poté zahájí instalaci požadovaných aktualizací. |
 | Agenti systému Linux |Ano |Řešení shromažďuje informace o aktualizacích systému od Linux agentů a poté zahájí instalaci požadovaných aktualizací na podporované distribuce. |
@@ -214,7 +214,7 @@ Chcete-li vytvořit nové nasazení aktualizací, vyberte **nasazení aktualizac
 |Operační systém| Vyberte **Linux** nebo **Windows**.|
 |Počítače, které chcete aktualizovat |Uložené hledání nebo vyberte **počítač** z rozevíracího seznamu a potom vyberte jednotlivé počítače. |
 |Klasifikace aktualizací|Vyberte všechny klasifikace aktualizací, které potřebujete. CentOS nepodporují mimo pole.|
-|Aktualizace, které chcete vyloučit|Zadejte aktualizace, které chcete vyloučit. Pro systém Windows, zadejte v článku KB bez **KB** předponu. Pro Linux zadejte název balíčku nebo použít zástupný znak.  |
+|Aktualizace k vyloučení|Zadejte aktualizace, které chcete vyloučit. Pro systém Windows, zadejte v článku KB bez **KB** předponu. Pro Linux zadejte název balíčku nebo použít zástupný znak.  |
 |Nastavení plánu|Vyberte čas spuštění a pak vyberte buď **jednou** nebo **opakovaná** pro opakování.|| Časové období údržby |Počet minut nastavit pro aktualizace. Hodnota nemůže být menší než 30 minut nebo déle než 6 hodin. |
 
 ## <a name="update-classifications"></a>Klasifikace aktualizací
@@ -223,7 +223,7 @@ V následujících tabulkách jsou uvedeny klasifikace aktualizací v nástroji 
 
 ### <a name="windows"></a>Windows
 
-|klasifikace  |Popis  |
+|Klasifikace  |Popis  |
 |---------|---------|
 |Důležité aktualizace     | Aktualizaci pro určitý problém, která řeší kritickou nesouvisející zabezpečení chybu.        |
 |Aktualizace zabezpečení     | Aktualizaci pro problém produktu, související se zabezpečením.        |
@@ -236,7 +236,7 @@ V následujících tabulkách jsou uvedeny klasifikace aktualizací v nástroji 
 
 ### <a name="linux"></a>Linux
 
-|klasifikace  |Popis  |
+|Klasifikace  |Popis  |
 |---------|---------|
 |Důležité aktualizace a aktualizace zabezpečení     | Aktualizace pro určitý problém nebo problém s produktu, související se zabezpečením.         |
 |Další aktualizace     | Všechny další aktualizace, které nejsou důležité ve své podstatě nebo nejsou aktualizace zabezpečení.        |
@@ -260,6 +260,8 @@ Následující adresy se vyžadují speciálně pro správu aktualizací. Probí
 |*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
 
 Další informace o portech, které vyžaduje hybridní pracovní proces Runbooku najdete v tématu [hybridní pracovní proces role porty](automation-hybrid-runbook-worker.md#hybrid-worker-role).
+
+Doporučujeme použít adresy uvedené při definování výjimky. Pro IP adresy si můžete stáhnout [Microsoft Azure Datacenter rozsahy IP adres](https://www.microsoft.com/download/details.aspx?id=41653). Tento soubor je aktualizovaný týdně a odráží aktuálně nasazená rozsahy a žádné nadcházející změny rozsahy IP.
 
 ## <a name="search-logs"></a>Protokoly vyhledávání
 
@@ -509,7 +511,7 @@ Nasazení aktualizací pomocí klasifikace aktualizace nefunguje na CentOS mimo 
 
 Další informace o řešení potíží s vaší správy aktualizací naleznete v tématu [řešení potíží s správy aktualizací](troubleshoot/update-management.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Pokračujte v kurzu se dozvíte, jak spravovat aktualizace pro virtuální počítače s Windows.
 

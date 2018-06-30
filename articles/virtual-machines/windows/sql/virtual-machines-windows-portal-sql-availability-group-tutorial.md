@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 40a8cd256164bb66e82c651e58d37b1afbb4a652
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: a3bba4e8fd83b160472a2dc6a9425192b4bbd301
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287799"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114605"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurovat vždy na skupiny dostupnosti ve virtuálním počítači Azure ručně
 
@@ -86,7 +86,7 @@ Po dokončení požadavky prvním krokem je vytvoření clusteru převzetí slu�
 
    ![Vlastnosti clusteru](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/42_IPProperties.png)
 
-3. Vyberte **statickou IP adresu** a zadejte dostupnou adresu od privátní IP adresy () rozsahu AUTOMATIC: 169.254.0.1 až 169.254.255.254 do textového pole adresy. V tomto příkladu můžete použít libovolnou adresu v tomto rozsahu. Například `169.254.0.1`. Potom klikněte na **OK**.
+3. Vyberte **statickou IP adresu** a zadejte dostupnou adresu ze stejné podsítě jako virtuální počítače.
 
 4. V **základní prostředky clusteru** části, klikněte pravým tlačítkem na název clusteru a klikněte na tlačítko **přepnout do režimu Online**. Potom počkejte, dokud jsou obě prostředky online. Při přechodu prostředek názvu clusteru do režimu online, se nový účet počítače AD aktualizuje serveru řadiče domény. Pomocí tohoto účtu AD později spustit služba skupiny dostupnosti v clusteru.
 
@@ -341,7 +341,7 @@ Nyní máte skupinu dostupnosti s replikami na dvě instance systému SQL Server
 
 ## <a name="create-an-azure-load-balancer"></a>Vytvoření nástroje pro vyrovnávání zatížení Azure
 
-Skupinu dostupnosti SQL Server na virtuálních počítačích Azure, vyžaduje nástroj pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení obsahuje IP adresu pro naslouchací proces skupiny dostupnosti. Tento oddíl shrnuje, jak vytvořit nástroj pro vyrovnávání zatížení na portálu Azure.
+Skupinu dostupnosti SQL Server na virtuálních počítačích Azure, vyžaduje nástroj pro vyrovnávání zatížení. Nástroje pro vyrovnávání zatížení obsahuje IP adresy pro naslouchací procesy skupiny dostupnosti a převzetí služeb při selhání clusteru systému Windows Server. Tento oddíl shrnuje, jak vytvořit nástroj pro vyrovnávání zatížení na portálu Azure.
 
 1. Na portálu Azure přejděte do skupiny prostředků, kde jsou vaše servery SQL a klikněte na tlačítko **+ přidat**.
 2. Vyhledejte **nástroj pro vyrovnávání zatížení**. Zvolte Nástroje pro vyrovnávání zatížení, který je publikovaný microsoftem.
@@ -370,7 +370,7 @@ Skupinu dostupnosti SQL Server na virtuálních počítačích Azure, vyžaduje 
 
 Ke konfiguraci nástroje pro vyrovnávání zatížení, musíte vytvořit fond back-end, sondu a nastavte pravidla Vyrovnávání zatížení. Proveďte tyto na portálu Azure.
 
-### <a name="add-backend-pool"></a>Přidejte fond back-end
+### <a name="add-backend-pool-for-the-availability-group-listener"></a>Přidejte fond back-end pro naslouchací proces skupiny dostupnosti
 
 1. V portálu Azure přejděte do vaší skupiny dostupnosti. Možná budete muset aktualizovat zobrazení, aby najdete v části nástroje pro vyrovnávání zatížení nově vytvořený.
 
@@ -416,6 +416,46 @@ Ke konfiguraci nástroje pro vyrovnávání zatížení, musíte vytvořit fond 
    | **Port** | Použít port pro naslouchací proces skupiny dostupnosti | 1435 |
    | **Back-endový Port** | Toto pole se nepoužívá při plovoucí IP adresa je nastavena pro přímý server návratový | 1435 |
    | **Test** |Název, který jste zadali pro kontrolu | SQLAlwaysOnEndPointProbe |
+   | **Trvalost relace** | Rozevírací seznam | **None** |
+   | **Časový limit nečinnosti** | Otevřete minut pro uchování připojení TCP | 4 |
+   | **Plovoucí IP adresa (přímá odpověď ze serveru)** | |Povoleno |
+
+   > [!WARNING]
+   > Přímá odpověď ze serveru se nastavuje během vytváření. Název není možné změnit.
+
+1. Klikněte na tlačítko **OK** nastavit pravidla Vyrovnávání zatížení.
+
+### <a name="add-the-front-end-ip-address-for-the-wsfc"></a>Přidejte front-end IP adresu pro služby WSFC
+
+Také musí být v nástroji pro vyrovnávání zatížení služby WSFC IP adresu. 
+
+1. Na portálu přidejte novou konfiguraci IP front-endu pro služby WSFC. Použijte IP adresu, které jste nakonfigurovali pro služby WSFC v základní prostředky clusteru. Nastavte jako statickou IP adresu. 
+
+1. Klikněte na nástroje pro vyrovnávání zatížení, klikněte na tlačítko **testy stavu**a klikněte na tlačítko **+ přidat**.
+
+1. Test stavu nastavte takto:
+
+   | Nastavení | Popis | Příklad:
+   | --- | --- |---
+   | **Název** | Text | WSFCEndPointProbe |
+   | **Protokol** | Zvolte TCP | TCP |
+   | **Port** | Všechny nepoužívaný port. | 58888 |
+   | **Interval**  | Množství času mezi pokusy o sondování v sekundách |5 |
+   | **Prahová hodnota špatného stavu** | Počet po sobě jdoucích kontroly chyb, které musí být stejné pro virtuální počítač, aby byla považována za není v pořádku  | 2 |
+
+1. Klikněte na tlačítko **OK** nastavit test stavu.
+
+1. Nastavte pravidla Vyrovnávání zatížení. Klikněte na tlačítko **pravidla Vyrovnávání zatížení**a klikněte na tlačítko **+ přidat**.
+
+1. Nastavte pravidla takto Vyrovnávání zatížení.
+   | Nastavení | Popis | Příklad:
+   | --- | --- |---
+   | **Název** | Text | WSFCPointListener |
+   | **Adresa IP front-endu** | Zvolte adresu |Použijte adresu, kterou jste vytvořili při konfiguraci služby WSFC IP adresu. |
+   | **Protokol** | Zvolte TCP |TCP |
+   | **Port** | Použít port pro naslouchací proces skupiny dostupnosti | 58888 |
+   | **Back-endový Port** | Toto pole se nepoužívá při plovoucí IP adresa je nastavena pro přímý server návratový | 58888 |
+   | **Test** |Název, který jste zadali pro kontrolu | WSFCEndPointProbe |
    | **Trvalost relace** | Rozevírací seznam | **None** |
    | **Časový limit nečinnosti** | Otevřete minut pro uchování připojení TCP | 4 |
    | **Plovoucí IP adresa (přímá odpověď ze serveru)** | |Povoleno |

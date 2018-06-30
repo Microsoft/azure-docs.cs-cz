@@ -14,13 +14,14 @@ metadata:
   ms.topic: landing-page
   ms.date: 07-21-2017
   ms.author: carolz
-  ms.openlocfilehash: b67814bc2dd622758ade1fc76f1fade99f718bd6
-  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+  ms.openlocfilehash: 081e54a6ed04fa74f96b327b2c9e9e63c9fc01cb
+  ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/07/2018
+  ms.lasthandoff: 06/29/2018
+  ms.locfileid: "37132530"
 abstract:
-  description: Azure Kubernetes Service (AKS) spravuje hostované prostředí Kubernetes a umožňuje tak rychle a snadno nasazovat a spravovat kontejnerizované aplikace bez znalosti orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.<div class="IMPORTANT alert"><p>Důležité</p><p>Azure Kubernetes Service (AKS) je aktuálně ve verzi <strong>Preview</strong>. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s <a href="https://azure.microsoft.com/support/legal/preview-supplemental-terms/">dodatečnými podmínkami použití</a>. Některé aspekty této funkce se můžou před zveřejněním změnit.</p></div>
+  description: Azure Kubernetes Service (AKS) spravuje hostované prostředí Kubernetes a umožňuje tak rychle a snadno nasazovat a spravovat kontejnerizované aplikace bez znalosti orchestrace kontejnerů. Zároveň eliminuje režii spojenou s probíhajícími operacemi a údržbou díky zřizování, upgradování a škálování prostředků na vyžádání bez nutnosti odpojovat aplikace.
 sections:
 - title: Zprovoznění během 5 minut
   items:
@@ -30,9 +31,13 @@ sections:
     style: icon48
     items:
     - image:
-        src: /azure/media/index/ContainerService.svg
-      text: Vytvoření clusteru AKS
+        src: https://docs.microsoft.com/media/common/i_cligeneric.svg
+      text: Azure CLI
       href: /azure/aks/kubernetes-walkthrough
+    - image:
+        src: https://docs.microsoft.com/media/common/i_portal.svg
+      text: Azure Portal
+      href: /azure/aks/kubernetes-walkthrough-portal
 - title: Podrobné kurzy
   items:
   - type: paragraph
@@ -46,7 +51,6 @@ sections:
     - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">Spuštění imagí kontejneru v Kubernetes</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-scale">Škálování aplikace a infrastruktury Kubernetes</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Aktualizace aplikace běžící v Kubernetes</a>
-    - html: <a href="/azure/aks/tutorial-kubernetes-monitor">Monitorování Kubernetes pomocí Log Analytics</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-upgrade-cluster">Upgrade clusteru AKS</a>
 - title: Referenční informace
   items:
@@ -56,5 +60,7 @@ sections:
     items:
     - title: Příkazový řádek
       html: <p><a href="/cli/azure/aks">Azure CLI</a></p>
+    - title: Jazyky
+      html: <p><a href="/dotnet/api/overview/azure/containerservice">.NET</a></p><p><a href="/python/api/overview/azure/containerservice">Python</a></p><p><a href="/java/api/overview/azure/containerservice">Java</a></p><p><a href="/javascript/api/overview/azure/container-service">Node.js</a></p>
     - title: REST
       html: <p><a href="/rest/api/aks">REST API</a></p>

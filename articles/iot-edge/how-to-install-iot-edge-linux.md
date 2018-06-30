@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: d1df27300ac2e7f4732d32f54b2a4a4803f421f2
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 273bb920b1ef2cac425ba9e636d488c8219ad9d2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37100438"
+ms.locfileid: "37126962"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalace modulu runtime Azure IoT Edge na platformě Linux (x64)
 
@@ -44,18 +44,6 @@ sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
 ```cmd/sh
 # Install repository configuration
 curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > ./microsoft-prod.list
-sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-
-# Install Microsoft GPG public key
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-```
-
-### <a name="debian-9"></a>Debian 9
-
-```cmd/sh
-# Install repository configuration
-curl https://packages.microsoft.com/config/debian/9/prod.list > ./microsoft-prod.list
 sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
 
 # Install Microsoft GPG public key

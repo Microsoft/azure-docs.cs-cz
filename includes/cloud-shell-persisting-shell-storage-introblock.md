@@ -19,7 +19,7 @@ Když používáte základní nastavení a vyberte pouze předplatné, cloudové
 Sdílené složky připojí jako `clouddrive` ve vaší `$Home` adresáře. Toto je jednorázová akce a sdílené složky automaticky připojí v následné relace. 
 
 > [!NOTE]
-> Pro zabezpečení každý uživatel by měl zřídit vlastní úložiště.  Pro řízení přístupu na základě role (RBAC), musí mít uživatelé přístup Přispěvatel nebo vyšší.
+> Pro zabezpečení každý uživatel by měl zřídit vlastní účet úložiště.  Pro řízení přístupu na základě role (RBAC) musí uživatelé mají přístup Přispěvatel nebo výše v úložišti účet úroveň.
 
 V Bash, sdílené složky také obsahuje bitovou kopii 5 GB, který je vytvořen který automaticky dál data ve vaší `$Home` adresáře. 
 
@@ -43,7 +43,7 @@ Vyhledání vašeho přiřazené oblasti, které jste se:
 * Spustit `env` a vyhledejte proměnné `ACC_LOCATION`
 
 Počítač prostředí cloudu neexistuje v následujících oblastech:
-|Plošný|Oblast|
+|Oblast|Oblast|
 |---|---|
 |Amerika|Východ USA, střed USA – Jih, západ USA|
 |Evropa|Severní Evropa, Západní Evropa|

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/15/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: c8f8dbc4aa32b550849ff14f3ad653311b9fab93
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 5d5b2e78755d6800f61e3e4adb1769799d01dad2
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265279"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111519"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Integrace v rámci partnera Azure monitorování
 | Partneři |  |  |
@@ -82,7 +82,7 @@ Grafana je aplikace s otevřeným zdrojem, která umožňuje vizualizovat data m
 [Přejděte na dokumentaci.][grafana-doc]
 
 ## <a name="logic-monitor"></a>Logiku monitorování
-LogicMonitor® je přední založené na SaaS, sledování výkonu platforma pro komplexní infrastruktury IT. S pokrytí pro tisíce technologie LogicMonitor poskytuje podrobné přehled o výkonu infrastruktury a aplikace. LM cloudu komplexní Azure monitorování umožňuje uživatelům korelovat výkon cloudu Azure, místní a hybridní cloudové prostředky, všechny z jedné platformy. Automatizované prostředek zjišťování, součástí monitorování šablony, předkonfigurované prahových hodnot výstrah a přizpůsobit řídicí panely kombinace umožnit IT rychlosti, flexibilitu a viditelnost potřebné k úspěšné.
+LogicMonitor® je přední založené na SaaS, sledování výkonu platforma pro komplexní infrastruktury IT. S pokrytí pro tisíce technologie LogicMonitor poskytuje podrobné přehled o výkonu infrastruktury a aplikace. LM cloudu komplexní Azure monitorování umožňuje uživatelům korelovat výkonu cloudu Azure, místní a hybridní cloudové prostředky, všechny z jedné platformy. Automatizované prostředek zjišťování, součástí monitorování šablony, předkonfigurované prahových hodnot výstrah a přizpůsobit řídicí panely kombinace umožnit IT rychlosti, flexibilitu a viditelnost potřebné k úspěšné.
 
 [Přejděte na dokumentaci.][logicmonitor-doc]
 
@@ -90,7 +90,7 @@ LogicMonitor® je přední založené na SaaS, sledování výkonu platforma pro
 Moogsoft AIOps zrychluje agilní obchodní transformace.
 
 Nástroje Microsoft Azure automatizace a řízení zadejte okno v reálném čase do stavu aplikace a mikroslužeb nasazené v Azure a pomoci orchestraci diagnostiky a sady runbook pro rychlejší nápravu.
-Další nástroje třetích stran zadejte okno na místní aplikace a stav infrastruktury.
+Další nástroje třetích stran zadejte okno do místní aplikace a stav infrastruktury.
 
 Moogsoft AIOps automatizuje událost postup nápravy beze změny existujících procesů a organizační struktury. 
 

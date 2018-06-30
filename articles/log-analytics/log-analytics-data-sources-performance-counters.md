@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: 20e145e4-2ace-4cd9-b252-71fb4f94099e
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 0f7119f280f2eb51222ade2ea7984b560a02f667
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.component: na
+ms.openlocfilehash: b23c170e557d019abf2b9aab8edcb74728bc872d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26783158"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128771"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Systém Windows a Linux zdroje dat výkonu v analýzy protokolů
 Čítače výkonu v systému Windows a Linux získat přehled o výkonu hardwarové součásti, operačních systémů a aplikací.  Analýzy protokolů můžete shromáždit čítače výkonu v pravidelných intervalech pro analýzu téměř reálném čase (NRT) kromě agregování dat výkonu pro delší období analýzu a vytváření sestav.
@@ -37,7 +38,7 @@ Pro čítače výkonu systému Windows můžete konkrétní instance jednotlivý
 | --- | --- |
 | \_Celkový počet |Celkový počet všech instancí |
 | \* |Všechny instance |
-| (/ &#124; / var) |Odpovídá instancí s názvem: / nebo /var |
+| (nebo&#124;/var) |Odpovídá instancí s názvem: / nebo /var |
 
 ### <a name="windows-performance-counters"></a>Čítače výkonu Windows
 
@@ -49,7 +50,7 @@ Pomocí následujícího postupu přidejte nový čítač výkonu systému Windo
 
     Při shromažďování čítače výkonu pro SQL Server z pojmenované instance, všechny s názvem instance čítače začněte s *MSSQL$* a následuje název instance.  Například shromažďovat čítač poměr přístupů do mezipaměti protokolu pro všechny databáze z objektu výkonu databáze s názvem SQL instance INST2, zadejte `MSSQL$INST2:Databases(*)\Log Cache Hit Ratio`.
 
-2. Klikněte na tlačítko  **+**  nebo stiskněte klávesu **Enter** přidat čítač do seznamu.
+2. Klikněte na tlačítko **+** nebo stiskněte klávesu **Enter** přidat čítač do seznamu.
 3. Když přidáte čítače, použije výchozí hodnotu 10 sekund, jeho **ukázkového intervalu**.  Můžete to na vyšší hodnotu až 1 800 sekund (30 minut) Pokud chcete snížit požadavky na úložiště dat shromážděných výkonu.
 4. Po dokončení přidávání čítače, klikněte **Uložit** tlačítka v horní části obrazovky, čímž konfiguraci uložíte.
 
@@ -61,7 +62,7 @@ Pomocí následujícího postupu přidejte nový čítač výkonu Linux shromaž
 
 1. Ve výchozím nastavení všechny změny konfigurace automaticky odesílají na všechny agenty.  Pro agenty Linux konfigurační soubor posílá kolekcí dat Fluentd.  Pokud chcete upravit soubor ručně na každý agenta systému Linux, poté zrušte zaškrtnutí políčka *použít dole uvedenou konfiguraci u mých Linuxových počítačů* a postupujte podle pokynů níže.
 2. Zadejte název čítače v textovém poli ve formátu *objektu (instance) \counter*.  Když začnete psát, se zobrazí seznam běžných čítačů odpovídající.  Čítače můžete buď vybrat ze seznamu nebo zadejte svůj vlastní.  
-3. Klikněte na tlačítko  **+**  nebo stiskněte klávesu **Enter** přidat do seznamu jiných čítačů pro objekt, čítač.
+3. Klikněte na tlačítko **+** nebo stiskněte klávesu **Enter** přidat do seznamu jiných čítačů pro objekt, čítač.
 4. Všechny čítače pro objekt používají stejné **ukázkového intervalu**.  Výchozí hodnota je 10 sekund.  Můžete změnit na vyšší hodnotu až 1 800 sekund (30 minut) Pokud chcete snížit požadavky na úložiště dat shromážděných výkonu.
 5. Po dokončení přidávání čítače, klikněte **Uložit** tlačítka v horní části obrazovky, čímž konfiguraci uložíte.
 
@@ -84,20 +85,20 @@ V následující tabulce jsou popsány parametry v tomto elementu.
 | Parametry | Popis |
 |:--|:--|
 | objekt\_název | Název objektu pro kolekci. |
-| instance\_regex |  A *regulární výraz* definování instance, které ke shromažďování. Hodnota: `.*` Určuje všechny instance. Ke shromažďování metrik procesoru pro pouze \_celkový počet instancí, můžete zadat `_Total`. Ke shromažďování metrik proces pro pouze crond nebo sshd instancí, můžete zadat: ' (crond\|sshd)'. |
-| Čítač\_název\_regex | A *regulární výraz* definice, které ke shromažďování čítače (pro objekt). Chcete-li shromažďovat všechny čítače pro objekt, zadejte: `.*`. Pokud chcete shromažďovat pouze čítače místa odkládacího souboru paměti objektu, například můžete zadat:`.+Swap.+` |
+| instance\_regex |  A *regulární výraz* definování instance, které ke shromažďování. Hodnota: `.*` Určuje všechny instance. Ke shromažďování metrik procesoru pro pouze \_celkový počet instancí, můžete zadat `_Total`. Ke shromažďování metrik proces pro pouze crond nebo sshd instancí, můžete zadat: `(crond\|sshd)`. |
+| Čítač\_název\_regex | A *regulární výraz* definice, které ke shromažďování čítače (pro objekt). Chcete-li shromažďovat všechny čítače pro objekt, zadejte: `.*`. Pokud chcete shromažďovat pouze čítače místa odkládacího souboru paměti objektu, například můžete zadat: `.+Swap.+` |
 | interval | Frekvence, při které se shromažďují objektu čítače. |
 
 
 Následující tabulka uvádí objekty a čítače, které můžete zadat v konfiguračním souboru.  Existují další čítače pro konkrétní aplikace k dispozici jak je popsáno v [shromáždit čítače výkonu pro Linux aplikace v analýzy protokolů](log-analytics-data-sources-linux-applications.md).
 
-| Název objektu | Název čítače |
+| Název objektu | Název počítadla |
 |:--|:--|
 | Logický Disk | % Volných uzlů Inode |
 | Logický Disk | % Volného místa |
 | Logický Disk | % Použitých uzlů Inode |
 | Logický Disk | Využitý prostor v % |
-| Logický Disk | Čtení z disku bajtů/s |
+| Logický Disk | Bajty čtení z disku/s |
 | Logický Disk | Čtení disku/s |
 | Logický Disk | Přenosy disku/s |
 | Logický Disk | Bajty zapisování na disk/s |
@@ -117,7 +118,7 @@ Následující tabulka uvádí objekty a čítače, které můžete zadat v konf
 | Memory (Paměť) | Využitá paměť v MB |
 | Síť | Celkový počet bajtů přenesených |
 | Síť | Celkový počet přijatých bajtů |
-| Síť | Celkový počet bajtů |
+| Síť | Bajty celkem |
 | Síť | Celkový počet paketů odeslaných |
 | Síť | Celkový počet přijatých paketů |
 | Síť | Celkový počet Rx chyby |
@@ -211,20 +212,20 @@ Následující tabulka obsahuje různé příklady vyhledávání protokolu, kte
 |:--- |:--- |
 | Výkonu |Všechny údaje o výkonu |
 | Výkonu &#124; kde počítač == "Tento počítač" |Všechny údaje o výkonu z určitého počítače |
-| Výkonu &#124; kde CounterName == "Aktuální délka fronty disku" |Všechny údaje o výkonu pro konkrétní čítač |
+| Výkonu &#124; tam, kde CounterName == "Aktuální délka fronty disku" |Všechny údaje o výkonu pro konkrétní čítač |
 | Výkonu &#124; kde ObjectName == "Procesor" a název_čítače == "% času procesoru" a InstanceName == "_Total" &#124; shrnout AVGCPU = avg(Average) počítačem. |Průměrné využití procesoru pro všechny počítače |
-| Výkonu &#124; kde CounterName == "% času procesoru" &#124; shrnout AggregatedValue = max(Max) počítačem. |Maximální využití procesoru pro všechny počítače |
+| Výkonu &#124; tam, kde CounterName == "% času procesoru" &#124; shrnout AggregatedValue = max(Max) počítačem. |Maximální využití procesoru pro všechny počítače |
 | Výkonu &#124; kde ObjectName == "Logický disk" a název_čítače == "Aktuální délka fronty disku" a počítač == "MyComputerName" &#124; shrnout AggregatedValue = avg(Average) podle InstanceName |Průměrná délka fronty disku pro aktuální napříč všemi instancemi daný počítač |
-| Výkonu &#124; kde CounterName == "DiskTransfers za sekundu" &#124; shrnout AggregatedValue = percentilu (průměru, 95) podle počítače |95. percentil z přenosy disku/s pro všechny počítače |
-| Výkonu &#124; kde CounterName == "% času procesoru" a InstanceName == "_Total" &#124; shrnout AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hod), počítač |Hodinové průměr využití procesoru pro všechny počítače |
+| Výkonu &#124; tam, kde CounterName == "DiskTransfers za sekundu" &#124; shrnout AggregatedValue = percentilu (průměru, 95) podle počítače |95. percentil z přenosy disku/s pro všechny počítače |
+| Výkonu &#124; tam, kde CounterName == "% času procesoru" a InstanceName == "_Total" &#124; shrnout AggregatedValue = avg(CounterValue) podle bin (TimeGenerated, 1 hod), počítač |Hodinové průměr využití procesoru pro všechny počítače |
 | Výkonu &#124; kde počítač == "Tento počítač" a název_čítače startswith_cs "%" a InstanceName == "_Total" &#124; shrnout AggregatedValue = percentilu (přepočtené 70) podle bin (TimeGenerated, 1 hod), název_čítače | Hodinové 70 percentilu každých % procentuální hodnoty čítače pro konkrétní počítač. |
-| Výkonu &#124; kde CounterName == "% času procesoru" a InstanceName == "_Total" a počítač == "Tento počítač" &#124; shrnout ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentilu (přepočtené, 75), ["max(CounterValue)"] = max(CounterValue) podle bin (TimeGenerated, 1 hod), počítač |Hodinové průměr, minimální, maximální a 75 percentilu využití procesoru pro určitý počítač |
+| Výkonu &#124; tam, kde CounterName == "% času procesoru" a InstanceName == "_Total" a počítač == "Tento počítač" &#124; shrnout ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentilu (přepočtené, 75), ["max(CounterValue)"] = max(CounterValue) podle bin (TimeGenerated, 1 hod), počítač |Hodinové průměr, minimální, maximální a 75 percentilu využití procesoru pro určitý počítač |
 | Výkonu &#124; kde ObjectName == "MSSQL$ INST2: databáze" a InstanceName == "hlavní" | Všechny údaje o výkonu z objektu výkonu databáze pro hlavní databázi z pojmenované instance systému SQL Server INST2.  
 
 
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * [Shromáždit čítače výkonu z aplikace Linux](log-analytics-data-sources-linux-applications.md) včetně MySQL a serveru Apache HTTP Server.
 * Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení.  
 * Exportovat shromážděná data do [Power BI](log-analytics-powerbi.md) pro další vizualizaci a analýzu.

@@ -3,7 +3,7 @@ title: Připojte počítače pomocí brány OMS | Microsoft Docs
 description: Připojení zařízení a nástroje Operations Manager monitorované počítače s bránou OMS k odesílání dat do Azure Automation a analýzy protokolů služby, když nemají přístup k Internetu.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: magoedte
-ms.openlocfilehash: b3055e6b22e3f391c0bc3f321cd8117d55a95cf5
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.component: na
+ms.openlocfilehash: ecbc88ebaaa93215f85b57becc8a643dc3e168a0
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34271645"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129036"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Připojte počítače bez přístupu k Internetu pomocí brány OMS
 Tento dokument popisuje, jak nakonfigurovat komunikaci s Azure Automation a analýzy protokolů pomocí brány OMS při přímé připojení nebo Operations Manager monitorované počítače nemají přístup k Internetu.  Bránu OMS, což je předat dál proxy protokolu HTTP, podporující tunelování HTTP pomocí příkazu HTTP připojení, můžete shromažďovat data a odeslat do Azure Automation a analýzy protokolů jejich jménem.  
@@ -157,12 +158,12 @@ Pro použití brány na podporu nástroje Operations Manager, musíte mít:
 > Pokud nezadáte hodnotu pro bránu, prázdné hodnoty odesílají na všechny agenty.
 > 
 
-Pokud je prvním pracovní prostor analýzy protokolů je registrace skupiny pro správu nástroje Operations Manager, můžete zadat konfiguraci proxy serveru pro skupinu pro správu není k dispozici v konzoli Operations console.  Skupina pro správu musí být úspěšně registrován u služby, než tato možnost je k dispozici.  Je potřeba aktualizovat konfiguraci proxy serveru systému použití příkazu Netsh v systému konzoli Operations console z systémem pro konfiguraci integrace a všechny servery pro správu ve skupině pro správu.  
+Pokud je prvním pracovní prostor analýzy protokolů je registrace skupiny pro správu nástroje Operations Manager, můžete zadat konfiguraci proxy serveru pro skupinu pro správu není k dispozici v konzoli Operations console.  Tato možnost bude dostupná až potom, co bude skupina pro správu ve službě úspěšně zaregistrovaná.  Aby bylo možné nakonfigurovat integraci, jakož i všechny servery pro správu ve skupině pro správu, je potřeba v systému, ze kterého spouštíte konzolu Operations Console, aktualizovat systémovou konfiguraci proxy serveru pomocí nástroje Netsh.  
 
-1. Otevření příkazového řádku se zvýšenými oprávněními.
+1. Otevřete příkazový řádek se zvýšenými oprávněními.
    a. Přejděte na **spustit** a typ **cmd**.
    b. Klikněte pravým tlačítkem na **příkazového řádku** a vyberte spustit jako správce **.
-2. Zadejte následující příkaz a stiskněte klávesu **Enter**:
+2. Zadejte následující příkaz a stiskněte **Enter**:
 
     `netsh winhttp set proxy <proxy>:<port>`
 

@@ -8,16 +8,18 @@ manager: carmonm
 editor: tysonn
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: bwren
-ms.openlocfilehash: 9c487ab33859ae453a0074ef0344f61de19c7b4d
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.component: na
+ms.openlocfilehash: 7c2158d8e6f64c7c356ba40b3bf56684f00cb8c0
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37132870"
 ---
 # <a name="transitioning-to-azure-log-analytics-new-query-language"></a>Přechod na nový dotaz jazyk Azure Log Analytics
 Analýzy protokolů nedávno implementována o nový jazyk dotazu.  Tento článek obsahuje pomoc na přechod tento jazyk pro analýzu protokolu, pokud jste již obeznámeni s starší verze jazyka a potřebujete ještě další pomoc.
@@ -48,11 +50,11 @@ Následující tabulka uvádí srovnání mezi celou řadu běžných dotazů na
 |                        | Typ = událostí &#124; prvních 100 | Událost &#124; trvat 100 |
 | Porovnání řetězců      | Typ = Computer=srv01.contoso.com událostí   | Událost &#124; kde počítač == "srv01.contoso.com" |
 |                        | Typ = Computer=contains("contoso") událostí | Událost &#124; kde počítač obsahuje "contoso" (ne velká a malá písmena)<br>Událost &#124; kde počítač contains_cs "Contoso" (malá a velká písmena) |
-|                        | Typ = počítač událostí = RegEx ("@contoso@")  | Událost &#124; kde počítače odpovídá regulárnímu výrazu ". *contoso*" |
+|                        | Typ = počítač událostí = RegEx ("\@contoso @")  | Událost &#124; kde počítače odpovídá regulárnímu výrazu ". *contoso*" |
 | Porovnání kalendářních dat        | Typ události TimeGenerated = > nyní 1DAYS | Událost &#124; kde TimeGenerated > ago(1d) |
-|                        | Type=Event TimeGenerated>2017-05-01 TimeGenerated<2017-05-31 | Událost &#124; kde TimeGenerated mezi (datetime(2017-05-01)... DATETIME(2017-05-31)) |
-| Logická hodnota porovnání     | Type=Heartbeat IsGatewayInstalled=false  | Prezenční signál \| kde IsGatewayInstalled hodnotu false |
-| Seřadit                   | Type=Event &#124; sort Computer asc, EventLog desc, EventLevelName asc | Událost \| řazení podle počítače asc, EventLevelName asc a desc protokolu událostí |
+|                        | Typ události TimeGenerated = > 2017-05-01 TimeGenerated < 2017-05-31 | Událost &#124; kde TimeGenerated mezi (datetime(2017-05-01)... DATETIME(2017-05-31)) |
+| Logická hodnota porovnání     | Typ = prezenčního signálu IsGatewayInstalled = false  | Prezenční signál \| kde IsGatewayInstalled hodnotu false |
+| Seřadit                   | Typ = událostí &#124; seřaďte počítače asc, EventLevelName asc a desc protokolu událostí | Událost \| řazení podle počítače asc, EventLevelName asc a desc protokolu událostí |
 | Odlišné               | Typ = událostí &#124; odstraňování duplicitních dat počítače \| vyberte počítač | Událost &#124; shrnout počítačem protokolu událostí |
 | Rozšíření sloupců         | Typ = výkonu název_čítače = "čas procesoru v %" &#124; rozšíření if(map(CounterValue,0,50,0,1),"HIGH","LOW") jako využití | Výkonu &#124; tam, kde CounterName == "% času procesoru" \| rozšířit využití =, je-li ("Nedostatek" přepočtené > 50, "Vysoká") |
 | Agregace            | Typ = událostí &#124; měření count() jako počet počítačem. | Událost &#124; shrnout Count = count() počítačem. |

@@ -11,12 +11,12 @@ ms.workload: azure
 ms.topic: conceptual
 ms.date: 8/24/2017
 ms.author: ghogen
-ms.openlocfilehash: c9828504ab40a1e62c107f218fda024be6330c23
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: dd867462ce3a1841aa4e2e8943f2c2619d168b08
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061739"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112316"
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>Procházet a spravovat prostředky úložiště pomocí Průzkumníka serveru
 
@@ -219,7 +219,7 @@ Můžete přizpůsobit sadu entit, které se zobrazují v tabulce, pokud použí
 1. Po dokončení sestavení dotazu, zavřete dialogové okno. Výsledný formulář text dotazu se zobrazí v textovém poli jako filtr součásti WCF Data Services.
 1. Pokud chcete spustit dotaz, vyberte ikonu zeleným trojúhelníkem.
 
-Můžete také filtrovat data entity, která se zobrazí v Návrháři tabulky Pokud zadáte řetězec filtru datových služeb WCF přímo do textového pole filtru. Tento druh řetězec je podobná SQL klauzule WHERE, ale je odeslána na server jako požadavek HTTP. Informace o tom, jak vytvořit filtr řetězců najdete v tématu [vytváření řetězců filtru pro návrháře tabulky](https://msdn.microsoft.com/library/azure/ff683669.aspx).
+Můžete také filtrovat data entity, která se zobrazí v Návrháři tabulky Pokud zadáte řetězec filtru datových služeb WCF přímo do textového pole filtru. Tento druh řetězec je podobná SQL klauzule WHERE, ale je odeslána na server jako požadavek HTTP. Informace o tom, jak vytvořit filtr řetězců najdete v tématu [Constructing filtru řetězce pro návrháře tabulky](https://docs.microsoft.com/azure/vs-azure-tools-table-designer-construct-filter-strings).
 
 Následující obrázek znázorňuje příklad řetězec platný filtru:
 

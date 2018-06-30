@@ -11,22 +11,30 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4a18d629b959e4f1abf4ec2df28a31180efec89f
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 5de536a562d234a4c463c862aedffc7c7ca5228d
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261033"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112282"
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Element Microsoft.Storage.StorageAccountSelector uživatelského rozhraní
 Ovládací prvek pro výběr účtu nový nebo existující úložiště.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
+
+Ovládací prvek zobrazí výchozí hodnotu.
+
 ![Microsoft.Storage.StorageAccountSelector](./media/managed-application-elements/microsoft.storage.storageaccountselector.png)
 
+Ovládací prvek umožňuje uživateli vytvořit nový účet úložiště nebo vybrat existující účet úložiště.
+
+![Microsoft.Storage.StorageAccountSelector nový](./media/managed-application-elements/microsoft.storage.storageaccountselector-new.png)
+
 ## <a name="schema"></a>Schéma
+
 ```json
 {
   "name": "element1",
@@ -51,12 +59,11 @@ Ovládací prvek pro výběr účtu nový nebo existující úložiště.
 ## <a name="remarks"></a>Poznámky
 - -Li zadána, `defaultValue.name` dojde k automatickému ověření jedinečnosti. Pokud název účtu úložiště není jedinečný, musí uživatel zadejte jiný název nebo vybrat existující účet úložiště.
 - Výchozí hodnota pro `defaultValue.type` je **Premium_LRS**.
-- Žádný typ, nebyly zadány v `constraints.allowedTypes` skryt a jakýmikoli nebyly zadány v `constraints.excludedTypes` se zobrazí.
-`constraints.allowedTypes` a `constraints.excludedTypes` obě jsou nepovinné, ale nelze používat současně.
+- Žádný typ, nebyly zadány v `constraints.allowedTypes` skryt a jakýmikoli nebyly zadány v `constraints.excludedTypes` se zobrazí. `constraints.allowedTypes` a `constraints.excludedTypes` obě jsou nepovinné, ale nelze používat současně.
 - Pokud `options.hideExisting` je **true**, uživatel nemůže vybrat existující účet úložiště. Výchozí hodnota je **false**.
 
-
 ## <a name="sample-output"></a>Ukázkový výstup
+
 ```json
 {
   "name": "storageaccount01",

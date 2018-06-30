@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: ee52f564-995b-450f-a6ba-0d7b1dac3f32
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
-ms.openlocfilehash: 7a7deb4d7a287b2e9613e6035a7ffd7bb6f14f9c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.component: na
+ms.openlocfilehash: 8183258ddde335b09293c72368ad3bf58a69334a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26782026"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129349"
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Zdroje dat protokolu událostí systému Windows v analýzy protokolů
 Protokoly událostí systému Windows jsou jedním z většiny běžných [zdroje dat](log-analytics-data-sources.md) pro shromažďování dat pomocí agentů v systému Windows, vzhledem k tomu, že řada aplikací pro zápis do protokolu událostí systému Windows.  Kromě určení žádné vlastní protokoly, které jsou vytvořené pomocí aplikací, které potřebujete k monitorování může shromažďovat události z standardní protokoly, jako je například systém a aplikace.
@@ -29,7 +30,7 @@ Protokoly událostí systému Windows jsou jedním z většiny běžných [zdroj
 ## <a name="configuring-windows-event-logs"></a>Protokoly událostí konfigurace systému Windows
 Protokoly událostí systému Windows z konfigurace [nabídce Data v nastavení analýzy protokolů](log-analytics-data-sources.md#configuring-data-sources).
 
-Analýzy protokolů pouze shromažďuje události z protokolů událostí systému Windows, které jsou určené v nastavení.  Protokol událostí můžete přidat zadáním názvu do protokolu a kliknutím na tlačítko  **+** .  Pro každý protokol se shromažďují jenom události s vybranou závažnosti.  Zkontrolujte závažnosti pro určitý protokol, který chcete shromáždit.  Nelze poskytnout žádná další kritéria filtrování událostí.
+Analýzy protokolů pouze shromažďuje události z protokolů událostí systému Windows, které jsou určené v nastavení.  Protokol událostí můžete přidat zadáním názvu do protokolu a kliknutím na tlačítko **+**.  Pro každý protokol se shromažďují jenom události s vybranou závažnosti.  Zkontrolujte závažnosti pro určitý protokol, který chcete shromáždit.  Nelze poskytnout žádná další kritéria filtrování událostí.
 
 Jak budete zadávat název protokolu událostí, analýzy protokolů poskytuje návrhy běžné názvy protokolu událostí. Pokud na protokol, který chcete přidat v seznamu nezobrazí, můžete ho přidat stále zadáním do úplného názvu protokolu. Úplný název protokolu můžete najít pomocí prohlížeče událostí. V prohlížeči událostí, otevřete *vlastnosti* stránky pro protokol a zkopírujte řetězec z *úplný název* pole.
 
@@ -51,7 +52,7 @@ Záznamy událostí Windows mít typ **událostí** a mít vlastnosti v následu
 | EventCategory |Kategorie události. |
 | EventData |Data všech událostí v nezpracovaném formátu. |
 | ID události |Číslo události. |
-| eventLevel |Závažnost události v číselný tvar. |
+| EventLevel |Závažnost události v číselný tvar. |
 | EventLevelName |Závažnost události v textové podobě. |
 | Protokol událostí |Název protokolu událostí, který událost nebyla shromážděna z. |
 | ParameterXml |Hodnoty parametru události ve formátu XML. |
@@ -73,7 +74,7 @@ Následující tabulka obsahuje různé příklady vyhledávání protokolu, kte
 | Událost &#124; kde EventLevelName == "Chyba" &#124; shrnout count() zdrojem. |Události chyb počet Windows zdrojem. |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Konfigurace analýzy protokolů ke shromažďování dalších [zdroje dat](log-analytics-data-sources.md) pro analýzu.
 * Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení.  
 * Použití [vlastní pole](log-analytics-custom-fields.md) k analýze záznamů událostí do jednotlivých polí.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: danis
-ms.openlocfilehash: eac64a5b456eb040bcb1ac01c3c86dfde0847e57
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 526021ca238be7bc934e639c34d3e49879279a6a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942771"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127648"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Virtuální počítače s Linuxem pomocí Azure vlastní skript rozšíření verze 1
 Vlastní skript rozšíření verze 1 se stáhne a spustí skripty na virtuálních počítačích Azure. Toto rozšíření je užitečné pro konfiguraci po nasazení, instalace softwaru nebo jiná úloha správy nebo konfigurace. Skripty si můžete stáhnout z Azure Storage nebo jiné dostupné umístění v Internetu, nebo je můžete zadat rozšíření modulu runtime. 
@@ -34,7 +34,7 @@ Existují dvě rozšíření vlastních skriptů Linux:
 * Verze 1 - Microsoft.OSTCExtensions.CustomScriptForLinux
 * Verze 2 - Microsoft.Azure.Extensions.CustomScript
 
-Nové a stávající nasazení na použití nové verze, přepněte ([Microsoft.Azure.Extensions.CustomScript](\custom-script-linux.md)) místo. Nové verze je určena jako náhrada drop-in. Proto migrace je stejně snadná jako změnit název a verze, není potřeba změnit konfiguraci rozšíření.
+Nové a stávající nasazení na použití nové verze, přepněte ([Microsoft.Azure.Extensions.CustomScript](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux)) místo. Nové verze je určena jako náhrada drop-in. Proto migrace je stejně snadná jako změnit název a verze, není potřeba změnit konfiguraci rozšíření.
 
  
 

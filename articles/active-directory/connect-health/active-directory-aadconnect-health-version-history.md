@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 3e3cebd47a259c7c297d6df0eaf76a350111f2e3
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 8907619b802d93cee4463a80155f38ce9030948f
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319261"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129667"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Historie vydaných verzí
 Tým služby Azure Active Directory pravidelně aktualizuje Azure AD Connect Health se nové funkce a funkce. V tomto článku jsou uvedené verze a funkce, které byly vydány.
@@ -29,6 +29,13 @@ Tým služby Azure Active Directory pravidelně aktualizuje Azure AD Connect Hea
 * Azure AD Connect Health pro synchronizaci - diagnostikovat a opravit chyby synchronizace duplicitní atribut z portálu 
 
 **Aktualizace agenta:** 
+*  Agent Azure AD Connect Health pro službu AD DS (verze 3.1.7.0)    
+   1. Oprava hotfix pro problém vysoké využití procesoru monitorování agent s verzemi KB rozhraní .NET Framework
+
+*   Agent Azure AD Connect Health pro službu AD FS (verze 3.1.7.0)  
+   1. Oprava hotfix pro problém vysoké využití procesoru monitorování agent s verzemi KB rozhraní .NET Framework  
+   2. Výsledky testu opravy na sekundárním serveru služby AD FS Server 2016
+   
 *   Agent Azure AD Connect Health pro službu AD FS (verze 3.1.2.0)  
    1. Oprava hotfix pro agenta správy paměti a související výstrahy speciálně pro verzi 3.0.244.0
 

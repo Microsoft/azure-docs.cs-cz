@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: bfb9b62a8965fa1f7daf62d814665ca23491cc04
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.component: na
+ms.openlocfilehash: 528274844908f9a1b2a604de42d8e84f4dc7d6f2
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32168278"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127347"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Shromáždit čítače výkonu pro Linux aplikace v analýzy protokolů 
 Tento článek obsahuje podrobné informace pro konfiguraci [OMS agenta pro Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) ke shromažďování čítače výkonu pro konkrétní aplikace.  Aplikace, zahrnuté v tomto článku jsou:  
@@ -82,7 +83,7 @@ Následující tabulka obsahuje podrobnosti o syntaxi použití mycimprovauth.
 | pomocí funkce Automatické aktualizace *true nebo false* | false mycimprovauth automatických aktualizací | Nastaví, jestli se automaticky aktualizuje soubor ověřování na restartovat nebo aktualizovat. |
 | výchozí *vazby adresu uživatelské jméno, heslo* | mycimprovauth výchozí 127.0.0.1 kořenové pwd | Nastaví výchozí instance databáze MySQL OMI soubor pro ověření.<br>Pole hesla by měly být zadány ve formátu prostého textu – heslo v souboru MySQL OMI ověřování bude kódováním Base 64. |
 | Odstranit *výchozí nebo port_num* | mycimprovauth 3308 | Odstraní zadanou instanci buď výchozí nebo číslo portu. |
-| nápověda | mycimprov nápovědy | Vytiskne seznam příkazů použít. |
+| Nápověda | mycimprov nápovědy | Vytiskne seznam příkazů použít. |
 | Tisk | mycimprov tisku | Vytiskne snadno MySQL OMI číst soubor pro ověření. |
 | Aktualizovat port_num *vazby adresu uživatelské jméno, heslo* | mycimprov aktualizace 3307 127.0.0.1 kořenové pwd | Aktualizuje zadaný instanci nebo přidá instanci, pokud neexistuje. |
 
@@ -116,7 +117,7 @@ Tato oprávnění lze udělit spuštěním následujících příkazů grant.
 
 Po dokončení konfigurace agenta OMS pro Linux k odesílání dat k analýze protokolů, je nutné nakonfigurovat shromažďování čítačů výkonu.  Pomocí postupu v [Windows a Linux zdroje dat výkonu v analýzy protokolů](log-analytics-data-sources-windows-events.md) s čítači v následující tabulce.
 
-| Název objektu | Název čítače |
+| Název objektu | Název počítadla |
 |:--|:--|
 | Databáze MySQL | Místo na disku v bajtech |
 | Databáze MySQL | Tabulky |
@@ -152,7 +153,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 Po dokončení konfigurace agenta OMS pro Linux k odesílání dat k analýze protokolů, je nutné nakonfigurovat shromažďování čítačů výkonu.  Pomocí postupu v [Windows a Linux zdroje dat výkonu v analýzy protokolů](log-analytics-data-sources-windows-events.md) s čítači v následující tabulce.
 
-| Název objektu | Název čítače |
+| Název objektu | Název počítadla |
 |:--|:--|
 | Apache HTTP Server | Vytížených pracovních procesů |
 | Apache HTTP Server | Nečinných pracovních procesů |

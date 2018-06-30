@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 06/27/2018
 ms.author: seguler
-ms.openlocfilehash: 2a958ceb0b3a1db9d06d045a8161fa6cd3ef5aba
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 073d81baca7e174872806301236f547329836c45
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059922"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113472"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-data-lake-storage-gen2-preview"></a>Použití Distcp ke kopírování dat mezi objektů BLOB služby Azure Storage a Data Lake Storage Gen2 Preview
 
-Pokud máte cluster služby HDInsight s přístupem k Azure Data Lake Storage Gen2 Preview, můžete použít nástroje pro ekosystém Hadoop jako Distcp ke zkopírování dat **do a z** úložišti clusteru HDInsight (WASB) do s podporou dat Gen2 úložiště Lake účet. Tento článek obsahuje pokyny, jak používat nástroj Distcp.
+Pokud máte cluster služby HDInsight s přístupem k Azure Data Lake Storage Gen2 Preview, můžete použít nástroje pro ekosystém Hadoop jako [Distcp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) ke zkopírování dat **do a z** úložišti clusteru HDInsight (WASB) do dat Gen2 Lake úložiště podporující účet. Tento článek obsahuje pokyny, jak používat nástroj Distcp.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * **Předplatné Azure**. Viz [Získání bezplatné zkušební verze Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Účet úložiště Azure s povolenou funkcí Azure Data Lake Storage (Preview)**. Pokyny o tom, jak vytvořit najdete v tématu [TODO](quickstart-create-account.md)
+* **Účet úložiště Azure s povolenou funkcí Azure Data Lake Storage (Preview)**. Pokyny o tom, jak vytvořit najdete v tématu [vytvoření účtu úložiště Azure Data Lake Storage Gen2 Preview](quickstart-create-account.md)
 * **Azure HDInsight cluster** s přístupem k účtu Data Lake Storage. V tématu [clusterů pomocí Azure Data Lake Storage Gen2 s Azure HDInsight](use-hdi-cluster.md). Ujistěte se, že povolení vzdálené plochy pro cluster.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>Použití Distcp z clusteru služby HDInsight Linux
@@ -37,35 +37,35 @@ Cluster služby HDInsight se dodává s Distcp nástroj, který můžete použí
 
 2. Ověřte, zda máte přístup Azure BLOB Storage (WASB). Spusťte následující příkaz:
 
-        hdfs dfs –ls wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
+        hdfs dfs –ls wasb://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/
 
     Výstup by měl poskytovat seznam obsah v objektu blob úložiště.
 
 3. Stejně tak ověřte, zda máte přístup k účtu Data Lake Storage z clusteru. Spusťte následující příkaz:
 
-        hdfs dfs -ls abfs://<filesystem_name>@<storage_account_name>.dfs.core.windows.net/
+        hdfs dfs -ls abfs://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
 
     Výstup by měl poskytovat seznam souborů a složek v účtu Data Lake Storage.
 
 4. Použití Distcp ke zkopírování dat z WASB na účet Data Lake Storage.
 
-        hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg abfs://<filesystem_name>@<storage_account_name>.dfs.core.windows.net/myfolder
+        hadoop distcp wasb://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfs://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
 
     Příkaz zkopíruje obsah **/příklad/data/gutenberg/** složku v úložišti objektů Blob k **/myfolder** v účtu Data Lake Storage.
 
 5. Podobně použití Distcp ke zkopírování dat z účtu Data Lake Storage úložiště objektů Blob (WASB).
 
-        hadoop distcp abfs://<filesystem_name>@<storage_account_name>.dfs.core.windows.net/myfolder wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg
+        hadoop distcp abfs://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder wasb://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg
 
     Příkaz zkopíruje obsah **/myfolder** v účtu Data Lake Store k **/příklad/data/gutenberg/** složky v WASB.
 
 ## <a name="performance-considerations-while-using-distcp"></a>Faktory ovlivňující výkon při použití DistCp
 
-Protože DistCp na nejnižší členitost je jeden soubor, nastavení maximální počet souběžných kopie je nejdůležitější parametr za účelem optimalizace pro Data Lake Storage. Počet souběžných kopií je řízena nastavením počet mappers ('m ') parametr na příkazovém řádku. Tento parametr určuje maximální počet mappers, které se používají ke zkopírování dat. Výchozí hodnota je 20.
+Protože DistCp na nejnižší členitost je jeden soubor, nastavení maximální počet souběžných kopie je nejdůležitější parametr za účelem optimalizace pro Data Lake Storage. Počet souběžných kopií je řízena nastavením počet mappers (**m**) parametr na příkazovém řádku. Tento parametr určuje maximální počet mappers, které se používají ke zkopírování dat. Výchozí hodnota je 20.
 
 **Příklad**
 
-    hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg abfs://<filesystem_name>@<storage_account_name>.dfs.core.windows.net/myfolder -m 100
+    hadoop distcp wasb://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfs://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder -m 100
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Jak určit počet mappers používat?
 
@@ -81,11 +81,11 @@ Tady je několik rad, kterými se můžete řídit.
 
 Předpokládejme, že máte 4 D14v2s uzly v clusteru a chcete přenést 10 TB dat z 10 jiné složky. Všechny složky obsahuje různých objemy dat a velikosti souborů v rámci každé složky se liší.
 
-* Celkový počet YARN paměť – portál z Ambari, že zjistíte, že je paměť YARN 96 GB pro uzel D14. Ano je celková paměť YARN pro cluster se čtyřmi uzly: 
+* **Celková paměť YARN**: portál z Ambari zjistíte, že je paměť YARN 96 GB pro uzel D14. Ano je celková paměť YARN pro cluster se čtyřmi uzly: 
 
         YARN memory = 4 * 96GB = 384GB
 
-* Počet mappers - portál z Ambari zjistíte, že velikost YARN kontejneru 3072 pro uzel clusteru s podporou D14. Ano počet mappers je:
+* **Počet mappers**: portál z Ambari zjistíte, že velikost YARN kontejneru 3072 pro uzel clusteru s podporou D14. Ano počet mappers je:
 
         m = (4 nodes * 96GB) / 3072MB = 128 mappers
 

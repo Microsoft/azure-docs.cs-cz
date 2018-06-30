@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 6/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 272d98613e13c1bb76c75befd6bd5e0115c32610
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
-ms.translationtype: HT
+ms.openlocfilehash: ff9f107b8cd10cdab71ba13a1925403d2d144984
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097236"
+ms.locfileid: "37128492"
 ---
 # <a name="integrate-azure-active-directory-with-aks---preview"></a>Integrovat AKS - Preview služby Azure Active Directory
 
@@ -59,19 +59,21 @@ První aplikace Azure AD se používá k získání členství ve skupině uživ
 
 4. Vrátit se do aplikace Azure AD, vyberte **nastavení** > **požadovaná oprávnění** > **přidat**  >   **Vybrat rozhraní API** > **Microsoft Graph** > **vyberte**.
 
-  V části **oprávnění aplikací** zaškrtněte vedle **čtení dat adresáře**.
+  ![Vyberte rozhraní graph API](media/aad-integration/graph-api.png)
+
+5. V části **oprávnění aplikací** zaškrtněte vedle **čtení dat adresáře**.
 
   ![Nastavte oprávnění aplikací grafu](media/aad-integration/read-directory.png)
 
-5. V části **DELEGOVANÁ oprávnění**, zaškrtněte vedle **přihlášení a čtení profilu uživatele** a **čtení dat adresáře**. Uložte aktualizace jednou provést.
+6. V části **DELEGOVANÁ oprávnění**, zaškrtněte vedle **přihlášení a čtení profilu uživatele** a **čtení dat adresáře**. Uložte aktualizace jednou provést.
 
   ![Nastavte oprávnění aplikací grafu](media/aad-integration/delegated-permissions.png)
 
-6. Vyberte **provádí** a **udělit oprávnění** k dokončení tohoto kroku. Tento krok se nezdaří, pokud není aktuální účet správce klienta
+7. Vyberte **provádí**, zvolte *Microsoft Graph* ze seznamu rozhraní API, pak vyberte **udělit oprávnění**. Tento krok se nezdaří, pokud není aktuální účet správce klienta
 
   ![Nastavte oprávnění aplikací grafu](media/aad-integration/grant-permissions.png)
 
-7. Vraťte se k aplikaci a poznamenejte si **ID aplikace**. Při nasazení clusteru služby Azure AD s podporou AKS, tato hodnota se označuje jako `Server application ID`.
+8. Vraťte se k aplikaci a poznamenejte si **ID aplikace**. Při nasazení clusteru služby Azure AD s podporou AKS, tato hodnota se označuje jako `Server application ID`.
 
   ![Získání ID aplikace](media/aad-integration/application-id.png)
 
@@ -195,6 +197,12 @@ aks-nodepool1-42032720-2   Ready     agent     1h        v1.9.6
 ```
 
 Po dokončení se uloží do mezipaměti ověřovací token. Jsou pouze získat přihlásit Pokud vypršela platnost tokenu nebo konfiguračního souboru Kubernetes znovu vytvořit.
+
+Pokud po úspěšném přihlášení se zobrazuje chybovou zprávu o autorizaci, zkontrolujte, že uživatel se přihlašujete jako není hostovaný ve službě Azure AD (to je často případ Pokud používáte federovaných přihlášení z jiného adresáře).
+```console
+error: You must be logged in to the server (Unauthorized)
+```
+
 
 ## <a name="next-steps"></a>Další kroky
 

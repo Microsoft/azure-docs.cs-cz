@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/29/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 37239a45cffe18478b8302ccf1ee95c8edd0423a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9b36014057eb1713b2b056cd203a099c59d9b5d4
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592156"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031766"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Přihlášení uživatele pomocí ověřování Azure Active Directory průchozí
 
@@ -49,7 +49,7 @@ Zkombinováním předávacího ověřování s [bezproblémové jednotné přihl
 - *Zabezpečení*
   - Místních hesel nikdy ukládají v cloudu v žádný formulář.
   - Agent umožní pouze odchozí připojení z vaší sítě. Proto je potřeba nainstalovat agenta v hraniční síti, označované také jako zóna DMZ.
-  - Chrání vaše uživatelské účty ve spolupráci s bezproblémově [zásady Azure AD podmíněného přístupu](../active-directory-conditional-access-azure-portal.md), včetně vícefaktorového ověřování (MFA) a nástrojem [filtrování útoky hrubou silou heslo](active-directory-aadconnect-pass-through-authentication-smart-lockout.md).
+  - Chrání vaše uživatelské účty ve spolupráci s bezproblémově [zásady Azure AD podmíněného přístupu](../active-directory-conditional-access-azure-portal.md), včetně vícefaktorového ověřování (MFA) a nástrojem [filtrování útoky hrubou silou heslo](../authentication/howto-password-smart-lockout.md).
 - *Vysoce dostupný*
   - Další agenty lze nainstalovat na více serverech místně pro zajištění vysoké dostupnosti žádostí o přihlášení.
 
@@ -64,12 +64,12 @@ Zkombinováním předávacího ověřování s [bezproblémové jednotné přihl
 - Může být povoleno prostřednictvím [Azure AD Connect](active-directory-aadconnect.md).
 - Používá lightweight místní agent, který naslouchá a reaguje na požadavky na ověření hesla.
 - Instalace více agentů poskytuje vysokou dostupnost žádostí o přihlášení.
-- Ho [chrání](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) vaše místní účty před hrubou vynutit heslo útoky v cloudu.
+- Ho [chrání](../authentication/howto-password-smart-lockout.md) vaše místní účty před hrubou vynutit heslo útoky v cloudu.
 
 ## <a name="next-steps"></a>Další postup
 
 - [**Rychlý Start** ](active-directory-aadconnect-pass-through-authentication-quick-start.md) – zprovoznění a systémem Azure AD předávací ověřování.
-- [**Inteligentní uzamčení** ](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) -možnost konfigurace inteligentní uzamčení na vašeho klienta k ochraně uživatelské účty.
+- [**Inteligentní uzamčení** ](../authentication/howto-password-smart-lockout.md) -možnost konfigurace inteligentní uzamčení na vašeho klienta k ochraně uživatelské účty.
 - [**Aktuální omezení** ](active-directory-aadconnect-pass-through-authentication-current-limitations.md) – zjistěte, jaké postupy se podporují, a ty, které nejsou.
 - [**Podrobné technické informace** ](active-directory-aadconnect-pass-through-authentication-how-it-works.md) -pochopit, jak tato funkce funguje.
 - [**Nejčastější dotazy** ](active-directory-aadconnect-pass-through-authentication-faq.md) -odpovědi na nejčastější dotazy.

@@ -3,7 +3,7 @@ title: Řešení Wire Data ve službě Log Analytics | Microsoft Docs
 description: Data kabelové sítě jsou konsolidovaná síťová a výkonnostní data z počítačů s agenty sady OMS včetně agentů nástroje Operations Manager a agentů připojených k Windows. Kvůli pomoci při korelaci dat se síťová data kombinují s daty protokolu.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: magoedte
-ms.openlocfilehash: c86d1274ed46ff725c9db3093a8852fbae7f67ff
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.component: na
+ms.openlocfilehash: f44f47129a1d989422d25b7f0c5c55c1d229c07e
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011437"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129002"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Řešení Wire Data 2.0 (Preview) ve službě Log Analytics
 
@@ -187,7 +188,7 @@ V následujících částech najdete seznam operačních systémů pro závislé
 
 #### <a name="dependency-agent-downloads"></a>Soubory závislého agenta ke stažení
 
-| **Soubor** | **Operační systém** | **Verze** | **SHA-256** |
+| **File** | **OS** | **Verze** | **SHA-256** |
 | --- | --- | --- | --- |
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.0.5 | 73B3F6A2A76A08D58F72A550947FF839B588591C48E6EDDD6DDF73AA3FD82B43 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.0.5 | A1BAD0B36EBF79F2B69113A07FCF48C68D90BD169C722689F9C83C69FC032371 |
@@ -420,14 +421,14 @@ Pro každý typ vstupních dat se vytvoří záznam typu _WireData_. Záznamy Wi
 
 | Vlastnost | Popis |
 |---|---|
-| Computer | Název počítače, na kterém byla data shromážděna |
+| Počítač | Název počítače, na kterém byla data shromážděna |
 | TimeGenerated | Čas záznamu |
 | LocalIP | IP adresa místního počítače |
 | SessionState | Připojeno nebo Odpojeno |
 | ReceivedBytes | Množství přijatých bajtů |
 | ProtocolName | Název použitého síťového protokolu |
 | IPVersion | Verze protokolu IP |
-| Direction | Příchozí nebo odchozí |
+| Směr | Příchozí nebo odchozí |
 | MaliciousIP | IP adresa známého škodlivého zdroje |
 | Severity | Závažnost podezřelého malwaru |
 | RemoteIPCountry | Země vzdálené IP adresy |
@@ -449,6 +450,6 @@ Pro každý typ vstupních dat se vytvoří záznam typu _WireData_. Záznamy Wi
 | RemoteIPLatitude | Zeměpisná šířka IP adresy |
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Podrobné záznamy hledání dat kabelové sítě zobrazíte [prohledáním protokolů](log-analytics-log-searches.md).

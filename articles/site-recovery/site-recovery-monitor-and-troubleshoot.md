@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 02/22/2018
 ms.author: bsiva
-ms.openlocfilehash: b357a3231dac6dfa54cb02fe921baf771c0880f4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9a979cc940e2133e3dff3bb7dd4c5f2ec53fea7a
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30186287"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109497"
 ---
 # <a name="monitoring-and-troubleshooting-azure-site-recovery"></a>Monitorování a řešení potíží s Azure Site Recovery
 
@@ -56,7 +56,7 @@ Různé části stránky řídicí panel Azure Site Recovery automaticky aktuali
     <td>Jeden nebo více příznaky upozornění, které může mít vliv na replikace nebo znamenat, že replikace není pokročíte normálně zjistil pro tyto servery.</td>
 </tr>
 <tr>
-    <td>Kritická</td>
+    <td>Důležité</td>
     <td>Jeden nebo více příznaků chyba důležité replikace nebyly zjištěny pro tyto servery. Příznaky chyby jsou obvykle indikátory replikace je buď zablokuje nebo není pokročíte rychlého data změnit rychlost pro tyto servery.</td>
 </tr>
 <tr>
@@ -146,7 +146,7 @@ Je k dispozici na stránce Přehled replikované položky zobrazení infrastrukt
 **Odpověď:** Tato funkce zobrazení infrastruktury je jen pro virtuální počítače, které jsou replikaci do Azure k dispozici. Tato funkce není aktuálně k dispozici pro virtuální počítače, které jsou replikaci mezi místními servery.
 
 **Otázka:** Proč se zobrazí počet virtuálních počítačů v různých z celkového počtu zobrazení infrastruktury úložiště v prstenec replikované položky?</br>
-**Odpověď:** Zobrazení infrastruktury úložiště je vymezeny scénáře replikace. Účastí v aktuálně vybraném replikace scénáři jenom virtuální počítače jsou zahrnuty do počtu virtuálních počítačů v zobrazení infrastruktury. Pro vybraným scénářem, navíc jenom virtuální počítače, které jsou aktuálně nakonfigurované pro replikaci do Azure jsou zahrnuty do počtu virtuálních počítačů v zobrazení infrastruktury (třeba Fo: převzít služby při selhání virtuálního počítače, virtuální počítače replikující se zpět pro místní lokality nejsou zahrnuty v zobrazení infrastruktury.)
+**Odpověď:** Zobrazení infrastruktury úložiště je vymezeny scénáře replikace. Účastí v aktuálně vybraném replikace scénáři jenom virtuální počítače jsou zahrnuty do počtu virtuálních počítačů v zobrazení infrastruktury. Pro vybraným scénářem, navíc jenom virtuální počítače, které jsou aktuálně nakonfigurované pro replikaci do Azure jsou zahrnuty do počtu virtuálních počítačů v zobrazení infrastruktury (třeba Fo: převzít služby při selhání virtuálního počítače, virtuální počítače replikující se zpět k místní lokalitě nejsou zahrnuty v zobrazení infrastruktury.)
 
 **Otázka:** Proč je počet replikované položky zobrazené v panel essentials na stránce Přehled liší od celkový počet zobrazených v grafu prstenec v řídicím panelu replikované položky?</br>
 **Odpověď:** Jenom těch virtuálních počítačů, pro které počáteční replikace byla dokončena zahrnuty do počtu ukazuje panel essentials. Celkový počet replikované položky prstenec zahrnuje všechny virtuální počítače v trezoru, včetně serverů pro které počáteční replikaci právě probíhá.

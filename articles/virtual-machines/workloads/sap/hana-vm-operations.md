@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/24/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 61369fbf864db28ee0a9415bbb87dca2a185ed43
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 59adc0bccd523818aad1feca2d0cf260f45d899c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809671"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110363"
 ---
 # <a name="sap-hana-on-azure-operations-guide"></a>SAP HANA na Azure provozní příručky
 Tento dokument obsahuje pokyny pro operační systémy SAP HANA, které jsou nasazeny na Azure nativní virtuální počítače (VM). Tento dokument není určen k nahrazení standardní SAP dokumentace, která zahrnuje následující obsah:

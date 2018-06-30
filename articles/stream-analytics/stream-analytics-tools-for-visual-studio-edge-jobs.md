@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/13/2018
-ms.openlocfilehash: ec916ea2104df9d694aad2462df7ca5a487017f2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: cfdfa1493857a1731da74c52a616293b482f811a
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30907754"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37030688"
 ---
 # <a name="develop-stream-analytics-edge-jobs-using-visual-studio-tools"></a>Vývoj úlohy Stream Analytics Edge pomocí nástrojů Visual Studio
 
@@ -61,7 +61,7 @@ Po vytvoření projektu získá přejděte do **Průzkumníku řešení** zobraz
 2. Ujistěte se, že podřízený je nastavená na vyberte **Edge rozbočovače** > formát serializace událostí nastavit na **Json** > a kódování je nastavena na **UTF8** > formátu je nastavená na  **Pole**. Volitelně můžete přejmenovat **Alias pro výstup**, můžeme ponechte jako je v tomto příkladu. V případě, že přejmenujete alias pro výstup, použijte název, který jste zadali při definování dotazu. Vyberte **Uložit** a nastavení se uloží. 
    ![Výstup konfigurace](./media/stream-analytics-tools-for-visual-studio-edge-jobs/stream-analytics-output-configuration.png)
  
-## <a name="define-the-transformation-query"></a>Zadejte dotaz transformace
+## <a name="define-the-transformation-query"></a>Definice transformačního dotazu
 
 Úlohy Stream Analytics nasadit v prostředí hraniční podporují většinu [Stream Analytics Query Language odkaz](https://msdn.microsoft.com/azure/stream-analytics/reference/stream-analytics-query-language-reference?f=255&MSPPError=-2147217396), ale pro úlohy Edge ještě nepodporuje následující operace: 
 
@@ -69,7 +69,7 @@ Po vytvoření projektu získá přejděte do **Průzkumníku řešení** zobraz
 |**Kategorie**  | **Příkaz**  |
 |---------|---------|
 |Geoprostorové operátory |<ul><li>CreatePoint</li><li>CreatePolygon</li><li>CreateLineString</li><li>ST_DISTANCE</li><li>ST_WITHIN</li><li>ST_OVERLAPS</li><li>ST_INTERSECTS</li></ul> |
-|Jiné operátory | <ul><li>ODDÍL</li><li>ČASOVÉ RAZÍTKO PODLE PŘES</li><li>DISTINCT</li><li>Parametr výraz v operátoru COUNT</li><li>Mikrosekund v funkce data a času</li><li>JavaScript UDA (Tato funkce je stále ve verzi preview pro úlohy nasazené v cloudu)</li></ul>   |
+|Jiné operátory | <ul><li>ODDÍL</li><li>ČASOVÉ RAZÍTKO PODLE PŘES</li><li>ODLIŠNÉ</li><li>Parametr výraz v operátoru COUNT</li><li>Mikrosekund v funkce data a času</li><li>JavaScript UDA (Tato funkce je stále ve verzi preview pro úlohy nasazené v cloudu)</li></ul>   |
 
 Když vytvoříte úlohu Edge na portálu, kompilátor automaticky upozornění, pokud nepoužíváte podporované operátor.
 
@@ -123,6 +123,6 @@ Okno zobrazení úlohy vám poskytne operací, jako je aktualizace úlohu Odstra
 
 ## <a name="next-steps"></a>Další postup
 
-* [Další informace o Azure Iot Edge](../iot-edge/how-iot-edge-works.md)
+* [Další informace o Azure Iot Edge](../iot-edge/about-iot-edge.md)
 * [ASA na IoT Edge kurzu](../iot-edge/tutorial-deploy-stream-analytics.md)
 * [Pošlete svůj názor týmu pomocí tohoto průzkumu](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2czagZ-i_9Cg6NhAZlH9ypUMjNEM0RDVU9CVTBQWDdYTlk0UDNTTFdUTC4u) 

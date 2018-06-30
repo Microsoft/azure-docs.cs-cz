@@ -2,25 +2,22 @@
 title: 'Azure Active Directory Connect: Řešení potíží s bezproblémové jednotné přihlašování | Microsoft Docs'
 description: Toto téma popisuje postupy řešení potíží s Azure Active Directory bezproblémové jednotné přihlašování
 services: active-directory
-keywords: Co je Azure AD Connect, instalace služby Active Directory, požadované součásti pro Azure AD, jednotné přihlašování, jednotné přihlašování
-documentationcenter: ''
-author: swkrish
+author: billmath
+ms.reviewer: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 03/12/2018
+ms.date: 06/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 205df47c36cb1d6925e232f06c0f1355c40ae973
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4df60668f6b9aa0afb2203fa59788c47e2ffaefb
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34592224"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110885"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Řešení potíží s Azure Active Directory bezproblémové jednotné přihlašování
 
@@ -61,7 +58,7 @@ Přejděte do **Azure Active Directory** > **přihlášení** v [centra pro spr�
 
 |Kód chyby přihlášení|Důvod selhání přihlášení|Řešení
 | --- | --- | ---
-| 81001 | Lístek Kerberos uživatele je příliš velký. | Snižte členství uživatele ve skupinách a zkuste to znovu.
+| 81001 | Lístek Kerberos uživatele je příliš velký. | Snižte počet členství uživatele ve skupinách a zkuste to znovu.
 | 81002 | Nelze ověřit uživatele lístek protokolu Kerberos. | Najdete v článku [řešení potíží s kontrolní seznam](#troubleshooting-checklist).
 | 81003 | Nelze ověřit uživatele lístek protokolu Kerberos. | Najdete v článku [řešení potíží s kontrolní seznam](#troubleshooting-checklist).
 | 81004 | Pokus o ověření protokolu Kerberos selhal. | Najdete v článku [řešení potíží s kontrolní seznam](#troubleshooting-checklist).
@@ -84,6 +81,7 @@ Následující kontrolní seznam využít k řešení problémů bezproblémové
 - Ujistěte se, že účet uživatele z doménové struktury služby Active Directory, kde byl bezproblémové jednotného přihlašování k nastavení.
 - Ujistěte se, že zařízení je připojené k podnikové síti.
 - Ujistěte se, že je zařízení čas synchronizovaný s časem ve službě Active Directory a řadiče domény a že jsou během pěti minut.
+- Ujistěte se, že `AZUREADSSOACCT` účet počítače je přítomen a povolené v každé doménové struktuře AD, které chcete bezproblémové SSO povolena. 
 - Seznam existujících lístků protokolu Kerberos na zařízení pomocí `klist` příkazu z příkazového řádku. Ujistěte se, že lístky vydané pro `AZUREADSSOACCT` účet počítače jsou k dispozici. Lístky protokolu Kerberos uživatelů jsou obvykle platné po dobu 10 hodin. Můžete mít různá nastavení ve službě Active Directory.
 - Pokud zakázána a znovu povolena bezproblémové jednotného přihlašování na váš klient, nebudou uživatelé získat jeden přihlašování dokud vypršela jejich uložené v mezipaměti lístky protokolu Kerberos.
 - Vyprázdnění existujících lístků protokolu Kerberos ze zařízení pomocí `klist purge` příkaz a akci opakujte.

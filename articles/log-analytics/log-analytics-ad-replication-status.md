@@ -3,7 +3,7 @@ title: Monitorování stavu replikace služby Active Directory s Azure Log Analy
 description: Sada pro stav replikace Active Directory řešení pravidelně monitoruje prostředí služby Active Directory k jeho selhání replikace.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: 1b988972-8e01-4f83-a7f4-87f62778f91d
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7707c4a1afdc42ef44a7b6f761ceb03b7e7da2f0
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.component: na
+ms.openlocfilehash: 0ccd457295584f871088bc20864ef103648f1654
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/13/2018
-ms.locfileid: "29179330"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128720"
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitorování stavu replikace služby Active Directory s analýzy protokolů
 
@@ -31,7 +31,7 @@ Služba Active Directory je klíčovou součástí organizace IT prostředí. Za
 Sada pro stav replikace AD řešení pravidelně monitoruje prostředí služby Active Directory k jeho selhání replikace.
 
 ## <a name="installing-and-configuring-the-solution"></a>Instalace a konfigurace řešení
-Použijte následující informace k instalaci a konfiguraci řešení.
+K instalaci a konfiguraci řešení můžete použít následující informace.
 
 * Je nutné nainstalovat agenty na řadičích domény, které jsou členy domény, který se má vyhodnotit. Nebo, je nutné nainstalovat agenty na členských serverech a konfigurace agentů k odesílání dat replikace AD k analýze protokolů. Chcete-li pochopit, jak se připojit k analýze protokolů počítače se systémem Windows, přečtěte si téma [počítače se systémem Windows se připojit k analýze protokolů](log-analytics-windows-agent.md). Pokud řadič domény už je součástí stávajícího prostředí System Center Operations Manager, kterou chcete připojit k analýze protokolů najdete v tématu [připojení nástroje Operations Manager k analýze protokolů](log-analytics-om-agents.md).
 * Přidat řešení stav replikace Active Directory do pracovního prostoru analýzy protokolů pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).  Není nutná žádná další konfigurace.
@@ -39,7 +39,7 @@ Použijte následující informace k instalaci a konfiguraci řešení.
 ## <a name="ad-replication-status-data-collection-details"></a>Podrobnosti služby AD stav replikace dat kolekce
 Následující tabulka uvádí metody shromažďování dat a další podrobnosti o tom, jak se údaje pro stav replikace AD.
 
-| Platforma | Přímé agenta | Agenta nástroje SCOM | Azure Storage | SCOM vyžaduje? | Data agenta SCOM odeslána prostřednictvím skupiny pro správu | Frekvence kolekce |
+| Platforma | Přímý agent | Agenta nástroje SCOM | Azure Storage | SCOM vyžaduje? | Data agenta SCOM odeslána prostřednictvím skupiny pro správu | Frekvence kolekce |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |každých pět dní |
 
@@ -51,7 +51,7 @@ Pokud nechcete, aby všechny řadiče domény připojit přímo k Log Analytics,
 2. [Připojení počítače se systémem Windows k analýze protokolů](log-analytics-windows-agent.md) nebo [připojit pomocí svého stávajícího prostředí Operations Manager k analýze protokolů](log-analytics-om-agents.md), pokud již není připojen.
 3. Na tomto počítači nastavte následující klíč registru:
 
-   * Key: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
+   * Klíč: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management skupiny\<ManagementGroupName > \Solutions\ADReplication**
    * Hodnota: **IsTarget**
    * Údaj hodnoty: **true**
 
@@ -98,7 +98,7 @@ Kromě identifikaci případné chyby replikace, které mají trvalé po dobu ž
 
 Toto jsou chyby, které jsou jasně přetrvávajících odstraněných, není přechodný, a proto potřebují pravděpodobně váš zásah, chcete-li vyřešit. Dobrá zpráva je, že se ještě nedosáhly životnosti objektů označených jako neplatné. Pokud jste tyto problémy opravit rychle a *před* nedostanou životnosti objektů označených jako neplatné, replikace můžete restartovat s minimálním ruční zásah.
 
-Jak už jsme zmínili dřív, dlaždici řídicího panelu pro stav replikace AD řešení zobrazuje číslo *kritické* chyby replikace ve vašem prostředí, která je definována jako chyby, které se víc než 75 % životnosti objektů označených jako neplatné (včetně chyby, které se více než 100 % TSL). Zajistit, aby toto číslo na 0.
+Jak už jsme zmínili dřív, dlaždici řídicího panelu pro stav replikace AD řešení zobrazuje číslo *kritické* chyby replikace ve vašem prostředí, která je definována jako chyby, které se víc než 75 % životnosti objektů označených jako neplatné (včetně chyby které jsou více než 100 % TSL). Zajistit, aby toto číslo na 0.
 
 > [!NOTE]
 > Všech výpočtů procento životnosti objektů označených jako neplatné jsou založené na životnosti objektů označených jako neplatné skutečné pro doménové struktury služby Active Directory, takže můžete důvěřovat, že jsou tyto procenta správné, i když máte nastaví hodnota životnosti objektů označených jako neplatné vlastní.

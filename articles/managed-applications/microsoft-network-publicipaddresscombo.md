@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: bf0ef5be609fba14ab12e1e6f9f97bc63f032aae
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: d06a450595a53fdc65fba74791345abe3a1b3db4
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260556"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109565"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Element Microsoft.Network.PublicIpAddressCombo uživatelského rozhraní
 Skupina ovládacích prvků pro výběr nový nebo existující veřejnou IP adresu.
@@ -70,14 +70,16 @@ Skupina ovládacích prvků pro výběr nový nebo existující veřejnou IP adr
 - Pro `zone`, pouze veřejné IP adresy zadané zóny, nebo zónu odolné veřejné IP adresy jsou k dispozici.
 
 ## <a name="sample-output"></a>Ukázkový výstup
-Pokud uživatel vybere žádné veřejnou IP adresu, se předpokládá, že následující výstup:
+Pokud uživatel vybere žádné veřejnou IP adresu, ovládacího prvku vrátí následující výstup:
+
 ```json
 {
   "newOrExistingOrNone": "none"
 }
 ```
 
-Pokud uživatel vybere nový nebo existující IP adresu, se předpokládá, že následující výstup:
+Pokud uživatel vybere nový nebo existující IP adresu, ovládacího prvku vrátí následující výstup:
+
 ```json
 {
   "name": "ip01",
@@ -87,6 +89,7 @@ Pokud uživatel vybere nový nebo existující IP adresu, se předpokládá, že
   "newOrExistingOrNone": "new"
 }
 ```
+
 - Když `options.hideNone` je zadán jako **true**, `newOrExistingOrNone` budou mít pouze hodnotu **nové** nebo **existující**.
 - Když `options.hideDomainNameLabel` je zadán jako **true**, `domainNameLabel` není deklarován.
 

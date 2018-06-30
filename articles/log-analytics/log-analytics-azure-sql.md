@@ -1,9 +1,9 @@
 ---
 title: Řešení Azure SQL analýzy v Log Analytics | Microsoft Docs
-description: Řešení analýzy SQL Azure pomáhá spravovat vaše databáze Azure SQL.
+description: Azure SQL Analytics řešení vám usnadní správu vaše databáze Azure SQL
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: b2712749-1ded-40c4-b211-abc51cc65171
@@ -11,24 +11,26 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 722a10e853f6d61bb5349e92754954e3bb199225
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.component: na
+ms.openlocfilehash: f57a47677f752a644975a25fa746d78bced5d766
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37132867"
 ---
-# <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Monitorování databáze Azure SQL pomocí analýzy SQL Azure (Preview) v analýzy protokolů
+# <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>Monitorování databáze Azure SQL pomocí Analytics SQL Azure (Preview)
 
 ![Azure SQL Analytics symbol](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Řešení Azure SQL analýzy v Azure Log Analytics shromažďuje a vizualizuje důležité metriky výkonu SQL Azure. Pomocí metriky, které shromažďujete s řešením, můžete vytvořit vlastní pravidla monitorování a výstrahy. A, můžete monitorovat Azure SQL Database a metriky elastického fondu napříč více předplatných Azure a elastického fondu a vizualizovat je. Řešení také vám pomůže identifikovat problémy v každé vrstvě zásobníku vaší aplikace.  Používá [Azure diagnostiky metriky](log-analytics-azure-storage.md) společně s zobrazení analýzy protokolů pro zobrazení dat o databází Azure SQL a elastické fondy v jedné pracovní prostor analýzy protokolů.
+Azure SQL Analytics je Cloudová řešení pro sledování výkonu databází SQL Azure se Škálováním na více elastické fondy a odběry monitorování. Shromažďuje a vizualizuje důležité metriky výkonu databáze SQL Azure s vestavěné inteligentní pro řešení potíží s nahoře výkonu. 
+
+Metriky, které shromáždíte pomocí s řešením, můžete vytvořit vlastní pravidla monitorování a výstrahy. Toto řešení umožňuje identifikovat problémy v každé vrstvě zásobníku vaší aplikace. Pomocí diagnostiky Azure metriky společně s analýzy protokolů zobrazení prezentují data o databází Azure SQL a elastické fondy v jedné pracovní prostor analýzy protokolů. Analýzy protokolů umožňuje shromažďovat, korelaci a vizualizovat strukturovaná i nestrukturovaná data.
 
 Toto řešení preview v současné době podporuje až 150 000 databází SQL Azure a 5 000 SQL elastické fondy podle pracovního prostoru.
-
-Řešení Azure SQL Analytics, jako je k dispozici pro analýzy protokolů, ostatní pomáhá sledovat a přijímání oznámení o stavu vašich prostředků Azure – v tomto případě Azure SQL Database. Microsoft Azure SQL Database je služba škálovatelné relační databáze, který nabízí známé jako SQL Server – funkce pro aplikace běžící v cloudu Azure. Analýzy protokolů umožňuje shromažďovat, korelaci a vizualizovat strukturovaná i nestrukturovaná data.
 
 Praktické přehled o používání řešení analýzy SQL Azure a příklady typických scénářů použití naleznete v tématu vložené video:
 
@@ -37,39 +39,34 @@ Praktické přehled o používání řešení analýzy SQL Azure a příklady ty
 
 ## <a name="connected-sources"></a>Připojené zdroje
 
-Řešení Azure SQL analýzy nepoužívá agentů pro připojení ke službě Analýza protokolů.
-
-Následující tabulka popisuje připojené zdroje, které toto řešení podporuje.
+Azure SQL Analytics je v cloudu, monitorování, řešení podpůrné vysílání datového proudu telemetrických dat diagnostiky pro databáze SQL Azure a elastické fondy. Jak se připojit ke službě Analýza protokolů nepoužívá agentů, řešení nepodporuje připojení s Windows, Linux nebo SCOM prostředky, viz následující tabulka kompatibility.
 
 | Připojený zdroj | Podpora | Popis |
 | --- | --- | --- |
+| **[Azure Diagnostics](log-analytics-azure-storage.md)** | **Ano** | Metrika a protokolu dat Azure jsou odesílány Log Analytics přímo v Azure. |
+| [Účet služby Azure Storage](log-analytics-azure-storage.md) | Ne | Analýzy protokolů číst data z účtu úložiště. |
 | [Agenti systému Windows](log-analytics-windows-agent.md) | Ne | Přímé agentů v systému Windows nejsou používány nástrojem řešení. |
 | [Agenti systému Linux](log-analytics-linux-agents.md) | Ne | Přímé agenty Linux nejsou používány nástrojem řešení. |
 | [Skupiny správy nástroje SCOM](log-analytics-om-agents.md) | Ne | Přímé připojení z agenta nástroje SCOM k analýze protokolů nepoužívá řešení. |
-| [Účet služby Azure Storage](log-analytics-azure-storage.md) | Ne | Analýzy protokolů číst data z účtu úložiště. |
-| [Diagnostika Azure](log-analytics-azure-storage.md) | Ano | Metrika a protokolu dat Azure jsou odesílány Log Analytics přímo v Azure. |
-
-## <a name="prerequisites"></a>Požadavky
-
-- Předplatné Azure. Pokud nemáte, můžete vytvořit jeden pro [volné](https://azure.microsoft.com/free/).
-- Pracovní prostor analýzy protokolů. Můžete použít existující, nebo můžete [vytvořte novou](log-analytics-quick-create-workspace.md) než začnete používat tohoto řešení.
-- Povolit Azure Diagnostics pro databáze Azure SQL a elastické fondy a [nakonfigurovat je pro odesílají data k analýze protokolů](../sql-database/sql-database-metrics-diag-logging.md).
 
 ## <a name="configuration"></a>Konfigurace
 
 Proveďte následující postup pro přidání řešení analýzy SQL Azure do pracovního prostoru.
 
-1. Přidat řešení analýzy SQL Azure do pracovního prostoru z [Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview) nebo pomocí procesu popsaného v tématu [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md).
-2. Na portálu Azure klikněte na tlačítko **vytvořit prostředek** > **monitorování + správu**.  
+1. Přidat řešení analýzy SQL Azure do pracovního prostoru z [Azure marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview).
+2. Na portálu Azure klikněte na tlačítko **+ vytvořit prostředek**, vyhledejte **Azure SQL Analytics**.  
     ![Monitorování a správa](./media/log-analytics-azure-sql/monitoring-management.png)
-3. V **monitorování + správu** seznamu klikněte na tlačítko **zobrazit všechny**.
-4. V **doporučeno** seznamu, klikněte na tlačítko **Další**a pak v seznamu nové vyhledejte **analýzy SQL Azure (Preview)** a pak ho vyberte.  
-    ![Řešení Azure SQL analýzy](./media/log-analytics-azure-sql/azure-sql-solution-portal.png)
-5. V **analýzy SQL Azure (Preview)** oblast, klikněte na tlačítko **vytvořit**.  
+3. Vyberte **analýzy SQL Azure (Preview)** ze seznamu
+4. V **analýzy SQL Azure (Preview)** oblast, klikněte na tlačítko **vytvořit**.  
     ![Vytvoření](./media/log-analytics-azure-sql/portal-create.png)
-6. V **vytvořte nové řešení** oblasti, vyberte pracovní prostor, který chcete přidat řešení a pak klikněte na tlačítko **vytvořit**.  
+5. V **vytvořte nové řešení** oblasti, vytvořit nový, nebo vyberte existující pracovní prostor, který chcete přidat řešení a potom klikněte na **vytvořit**.  
     ![Přidat do pracovního prostoru](./media/log-analytics-azure-sql/add-to-workspace.png)
 
+### <a name="configure-azure-sql-databases-and-elastic-pools-to-stream-diagnostics-telemetry"></a>Konfigurovat databáze SQL Azure a elastické fondy na datový proud telemetrie diagnostiky
+
+Po vytvoření řešení analýzy SQL Azure v pracovním prostoru, aby bylo možné sledovat výkon databáze SQL Azure a/nebo elastické fondy, budete muset **nakonfigurujte všechny** Azure SQL Database a elastický fond prostředků, které chcete k monitorování k vysílání datového proudu jeho diagnostiky telemetrii do řešení.
+
+- Povolit Azure Diagnostics pro databáze Azure SQL a elastické fondy a [nakonfigurovat je pro odesílají data k analýze protokolů](../sql-database/sql-database-metrics-diag-logging.md).
 
 ### <a name="to-configure-multiple-azure-subscriptions"></a>Ke konfiguraci víc předplatných Azure
 
@@ -110,9 +107,9 @@ Každý perspektivy obsahuje souhrny předplatné, server, elastický fond a úr
 | Chyby | Poskytuje hierarchické procházení do SQL chybách, ke kterým došlo v databázích. |
 | Časové limity | Poskytuje hierarchické procházení do SQL vypršení časových limitů, které bylo provedeno v databázích. |
 | Blokování | Poskytuje hierarchické procházení do blokování SQL, které bylo provedeno v databázích. |
-| Počká databáze | Poskytuje hierarchické procházení do SQL čekání Statistika na úrovni databáze. Obsahuje souhrnné informace o celkový čas čekání a doba čekání na typ čekání. |
+| Databáze čeká | Poskytuje hierarchické procházení do SQL čekání Statistika na úrovni databáze. Obsahuje souhrnné informace o celkový čas čekání a doba čekání na typ čekání. |
 | Doba trvání dotazu | Poskytuje hierarchické procházení do statistik provádění dotazů například doba trvání dotazu, využití procesoru, vstupně-výstupní operace dat využití, využití vstupně-výstupní operace protokolu. |
-| Dotaz čekat | Poskytuje hierarchické procházení do statistiky čekání dotaz podle kategorie čekání. |
+| Dotaz čeká | Poskytuje hierarchické procházení do statistiky čekání dotaz podle kategorie čekání. |
 
 ### <a name="intelligent-insights-report"></a>Inteligentní Statistika sestavy
 

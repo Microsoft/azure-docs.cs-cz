@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 12a63e65a739be08d436f8f1b53df566255b1fb1
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: ad5ef58536bb6cc7f2c754f2e5c4487a3ffe96f2
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36322055"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112822"
 ---
 # <a name="publish-your-trained-app"></a>Publikování vyškolení aplikace
 Po dokončení vytváření a testování vaší aplikace LEOŠ ji publikujte. Po publikování aplikace, na stránce publikování se zobrazí všechny související HTTP [koncové body](luis-glossary.md#endpoint). Tyto koncové body na [oblast](luis-reference-regions.md) a za [klíč](Manage-Keys.md), pak jsou integrované do libovolné aplikace klienta, chatbot nebo back-end. 
@@ -48,7 +48,7 @@ V **externí služby nastavení**, **povolit Priming řeči** zaškrtávacího p
 Po povolení této funkce publikování aplikace. Při publikování aplikace LEOŠ modelu aplikace je odeslán služby řeči pro primární řeči služby. Informace o modelu **není** použít mimo vaši vlastní službu. 
 
 Aby bylo možné dokončit použití dočištění rozpoznávání řeči, potřebujete následující informace pro použití v [řeči SDK](../speech-service/speech-sdk-reference.md):
-* Klíč předplatného LEOŠ.
+* Klíč LEOŠ koncový bod.
 * ID LEOŠ aplikace.
 * Doméně koncový bod označuje jako "Název hostitele" v sadě SDK pro rozpoznávání řeči, jako je například "westus.api.cognitive.microsoft.com", kde je první subdomény oblasti, kde je publikovaná aplikace.
 
@@ -129,7 +129,7 @@ Tato tabulka pohodlně odráží publikování konfigurace adresy URL koncového
 
 Trasu adresy URL je vytvořený pomocí oblast a ID aplikace. Při publikování v jiných oblastech nebo s jinými aplikacemi, konstruovat adresu URL koncového bodu změnou hodnoty ID oblasti a aplikace. 
 
-* Vyberte produkční slot a **publikovat** tlačítko. Při publikování úspěšné, použijte adresu URL zobrazené koncový bod pro přístup k aplikaci LEOŠ. 
+* Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat). Při publikování úspěšné, použijte adresu URL zobrazené koncový bod pro přístup k aplikaci LEOŠ. 
 
 ### <a name="optional-query-string-parameters"></a>Parametrů řetězce dotazu volitelné
 Následující parametrů řetězce dotazu lze použít s adresou URL koncového bodu:

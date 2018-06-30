@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 513d4395b1d3e631855c2f6e132d54331b3ddf8d
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 8c8228b13c972c65596f0389e2fdfde585f8a742
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266341"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110309"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Použít Microsoft Azure Traffic Manager ke správě koncový bod kvóty napříč klíče
 Principy jazyka (LEOŠ) nabízí možnost o zvýšení kvóty požadavku koncového bodu nad rámec kvóty jeden klíč. K tomu je potřeba vytváření více klíčů pro LEOŠ a jejich přidáním do aplikace LEOŠ na **publikovat** stránku **prostředky a klíče** části. 
@@ -48,13 +48,13 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Snímek obrazovky LEOŠ portál dva klíče LEOŠ na stránky publikování](./media/traffic-manager/luis-keys-in-luis.png)
 
-    Příklad adresy URL v **koncový bod** sloupec používá požadavek GET s klíč předplatného jako parametr dotazu. Zkopírujte adres URL koncového bodu dva nové klíče. Používají se jako součást konfigurace Traffic Manager později v tomto článku.
+    Příklad adresy URL v **koncový bod** sloupec používá požadavek GET s klíčem koncový bod jako parametr dotazu. Zkopírujte adres URL koncového bodu dva nové klíče. Používají se jako součást konfigurace Traffic Manager později v tomto článku.
 
 ## <a name="manage-luis-endpoint-requests-across-keys-with-traffic-manager"></a>Spravovat požadavky na koncový bod LEOŠ napříč klíče pomocí nástroje Traffic Manager
 Traffic Manager se vytvoří nový bod přístup DNS pro koncové body. Nejedná se jako brána nebo proxy, ale výhradně na úrovni DNS. Tento příklad nezmění žádné záznamy DNS. Knihovna DNS používá ke komunikaci s nástrojem Traffic Manager získat správný koncový bod pro tuto konkrétní žádost. _Každý_ žádost určená pro LEOŠ vyžaduje nejprve Traffic Manager požadavku k určení kterému koncovému bodu LEOŠ používat. 
 
 ### <a name="polling-uses-luis-endpoint"></a>Dotazování používá LEOŠ koncový bod
-Traffic Manager dotazovat koncové body pravidelně a ujistěte se, že koncový bod je stále k dispozici. Adresa URL správce provozu dotazování musí být přístupné pomocí požadavek GET a vrátíte se 200. Adresu URL koncového bodu na **publikovat** stránky k tomu. Vzhledem k tomu, že každý klíč k odběru má jinou cestu a parametrů řetězce dotazu, musí každý klíč předplatného cestu k jiné dotazování. Pokaždé, když Traffic Manager dotazovat, ho nákladů žádost o kvótu. Parametr řetězce dotazu **q** LEOŠ koncový bod je utterance posílá LEOŠ. Tento parametr, místo abyste odesílali utterance, slouží k přidat Traffic Manager dotazování na koncový bod protokolu LEOŠ jako technika ladění při získávání Traffic Manager nakonfigurován.
+Traffic Manager dotazovat koncové body pravidelně a ujistěte se, že koncový bod je stále k dispozici. Adresa URL správce provozu dotazování musí být přístupné pomocí požadavek GET a vrátíte se 200. Adresu URL koncového bodu na **publikovat** stránky k tomu. Vzhledem k tomu, že každý koncový bod klíč má jinou cestu a parametrů řetězce dotazu, musí každý koncový bod klíč cestu k jiné dotazování. Pokaždé, když Traffic Manager dotazovat, ho nákladů žádost o kvótu. Parametr řetězce dotazu **q** LEOŠ koncový bod je utterance posílá LEOŠ. Tento parametr, místo abyste odesílali utterance, slouží k přidat Traffic Manager dotazování na koncový bod protokolu LEOŠ jako technika ladění při získávání Traffic Manager nakonfigurován.
 
 Protože každý koncový bod LEOŠ vyžaduje vlastní cestu, musí vlastní profil služby Traffic Manager. Abyste mohli spravovat mezi profily, vytvoření [ _vnořené_ Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-nested-profiles) architektura. Jeden profil nadřazené odkazuje na podřízené objekty profily a správě provozu mezi nimi.
 
@@ -64,11 +64,11 @@ Po nakonfigurování Traffic Manager nezapomeňte změnit cestu k na protokolov�
 Následující části vytvořit dva profily podřízené, jeden pro klíč LEOŠ – východ a jeden pro klíč LEOŠ – západ. Potom nadřazené profil je vytvořen a dva podřízené profily jsou přidány do profilu nadřazené. 
 
 ### <a name="create-the-east-us-traffic-manager-profile-with-powershell"></a>Vytvořit profil služby Traffic Manager východní USA pomocí prostředí PowerShell
-Pokud chcete vytvořit profil služby Traffic Manager Východ USA, existuje několik kroků: vytvoření profilu, přidání koncového bodu a nastavte koncový bod. Profil správce provozu může mít velký počet koncových bodů, ale každý koncový bod má stejné cesty k ověření. Vzhledem k adres URL koncového bodu LEOŠ odběrů east a west jsou různé kvůli oblasti a předplatné klíče, každý koncový bod LEOŠ musí být jeden koncový bod v profilu. 
+Pokud chcete vytvořit profil služby Traffic Manager Východ USA, existuje několik kroků: vytvoření profilu, přidání koncového bodu a nastavte koncový bod. Profil správce provozu může mít velký počet koncových bodů, ale každý koncový bod má stejné cesty k ověření. Protože adres URL koncového bodu LEOŠ odběrů east a west jsou odlišné z důvodu klíč oblasti a koncového bodu, každý koncový bod LEOŠ musí být jeden koncový bod v profilu. 
 
 1. Vytvoření profilu s **[New-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/new-azurermtrafficmanagerprofile?view=azurermps-6.2.0)** rutiny
 
-    Pomocí následující rutiny můžete vytvořit profil. Ujistěte se, chcete-li změnit `appIdLuis` a `subscriptionKeyLuis`. SubscriptionKey je pro klíč LEOŠ USA – východ. Pokud cesta není správný, včetně LEOŠ app ID a předplatné klíče, dotazování Traffic Manager je ve stavu `degraded` protože spravovat přenosy nelze úspěšně koncový bod LEOŠ vyžádat. Ujistěte se, hodnota `q` je `traffic-manager-east` , zobrazí se tato hodnota v protokolech LEOŠ koncový bod.
+    Pomocí následující rutiny můžete vytvořit profil. Ujistěte se, chcete-li změnit `appIdLuis` a `subscriptionKeyLuis`. SubscriptionKey je pro klíč LEOŠ USA – východ. Pokud cesta není správný, včetně LEOŠ app ID a koncového bodu klíče, dotazování Traffic Manager je ve stavu `degraded` protože spravovat přenosy nelze úspěšně koncový bod LEOŠ vyžádat. Ujistěte se, hodnota `q` je `traffic-manager-east` , zobrazí se tato hodnota v protokolech LEOŠ koncový bod.
 
     ```PowerShell
     $eastprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-eastus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-eastus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appID>?subscription-key=<subscriptionKey>&q=traffic-manager-east"
@@ -136,7 +136,7 @@ Pokud chcete vytvořit profil služby Traffic Manager západní USA, použít st
 
 1. Vytvoření profilu s **[New-AzureRmTrafficManagerProfile](https://docs.microsoft.com/powershell/module/AzureRM.TrafficManager/New-AzureRmTrafficManagerProfile?view=azurermps-6.2.0)** rutiny
 
-    Pomocí následující rutiny můžete vytvořit profil. Ujistěte se, chcete-li změnit `appIdLuis` a `subscriptionKeyLuis`. SubscriptionKey je pro klíč LEOŠ USA – východ. Pokud cesta není správný, včetně aplikace LEOŠ klíče ID a předplatné, dotazování Traffic Manager je ve stavu `degraded` protože spravovat přenosy nelze úspěšně koncový bod LEOŠ vyžádat. Ujistěte se, hodnota `q` je `traffic-manager-west` , zobrazí se tato hodnota v protokolech LEOŠ koncový bod.
+    Pomocí následující rutiny můžete vytvořit profil. Ujistěte se, chcete-li změnit `appIdLuis` a `subscriptionKeyLuis`. SubscriptionKey je pro klíč LEOŠ USA – východ. Pokud cesta není správný, včetně aplikace LEOŠ klíče ID a koncového bodu, dotazování Traffic Manager je ve stavu `degraded` protože spravovat přenosy nelze úspěšně koncový bod LEOŠ vyžádat. Ujistěte se, hodnota `q` je `traffic-manager-west` , zobrazí se tato hodnota v protokolech LEOŠ koncový bod.
 
     ```PowerShell
     $westprofile = New-AzureRmTrafficManagerProfile -Name luis-profile-westus -ResourceGroupName luis-traffic-manager -TrafficRoutingMethod Performance -RelativeDnsName luis-dns-westus -Ttl 30 -MonitorProtocol HTTPS -MonitorPort 443 -MonitorPath "/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west"
@@ -152,7 +152,7 @@ Pokud chcete vytvořit profil služby Traffic Manager západní USA, použít st
     |-RelativeDnsName|Leoš. dns westus|Toto je subdoménou pro službu: Leoš. dns westus.trafficmanager.net|
     |-Hodnota Ttl|30|Interval dotazování, 30 sekund|
     |-MonitorProtocol<BR>-MonitorPort|HTTPS<br>443|Port a protokol pro LEOŠ je HTTPS nebo 443|
-    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Nahraďte <appId> a <subscriptionKey> vlastními hodnotami. Mějte na paměti, že tento klíč předplatného se liší od klíč předplatného – východ|
+    |-MonitorPath|`/luis/v2.0/apps/<appIdLuis>?subscription-key=<subscriptionKeyLuis>&q=traffic-manager-west`|Nahraďte <appId> a <subscriptionKey> vlastními hodnotami. Mějte na paměti, že tento klíč koncového bodu se liší od klíč koncového bodu – východ|
     
     V případě úspěšné žádosti nemá žádná odpověď.
 
@@ -364,7 +364,7 @@ Abyste mohli spravovat přenosy napříč koncovými body, je třeba vložit vol
 
 
 ## <a name="clean-up"></a>Vyčištění
-Odeberte dva klíče LEOŠ předplatné, tři profily Traffic Manageru a skupině prostředků, která obsahovala těchto pět prostředků. To se provádí z portálu Azure. Odstranit pět prostředky ze seznamu prostředků. Potom odstraňte skupinu prostředků. 
+Odeberte dva klíče LEOŠ koncový bod, tři profily Traffic Manageru a skupině prostředků, která obsahovala těchto pět prostředků. To se provádí z portálu Azure. Odstranit pět prostředky ze seznamu prostředků. Potom odstraňte skupinu prostředků. 
 
 ## <a name="next-steps"></a>Další postup
 

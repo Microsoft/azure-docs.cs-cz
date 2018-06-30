@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: omidm
-ms.openlocfilehash: f4380f5d6ec379d5807f697294623a672bd270ae
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 8503534031dc5774e64c58edd3e158162a5a6aee
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34715237"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110450"
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>Plánování clusterů Azure Hadoop připojených k doméně ve službě HDInsight
 
@@ -50,7 +50,7 @@ Následující snímek obrazovky ukazuje organizační jednotce vytvořené v do
 HDInsight aktuálně podporuje jenom AAD DS jako řadič domény hlavním, cluster bude komunikovat s Kerberise clusteru. Ale jiné komplexní AD nastavení jsou také možné, dokud ho vede k povolení služby AAD DS pro HDI přístup.
 
 - **[Azure Active Directory Domain Services (AAD-DS)](../../active-directory-domain-services/active-directory-ds-overview.md)**: Tato služba poskytuje spravované doméně, která je plně kompatibilní s Windows Server Active Directory. Správa, opravy a monitorování doménou, ve vysoce Available(HA) instalace postará Microsoft. Cluster můžete nasadit bez starostí o správu řadičů domény. Uživatelé, skupiny a hesla jsou synchronizované z Azure Active Directory(AAD) [jednosměrné synchronizaci z AAD do služby AAD DS] povolení uživatelům přihlásit ke clusteru pomocí stejné podnikové přihlašovací údaje. Další informace najdete v tématu [jak nakonfigurovat připojený k doméně HDInsight clusterů pomocí AAD DS](./apache-domain-joined-configure-using-azure-adds.md).
-- **Místní AD ani AD na virtuální počítače IaaS**: Pokud máte místní AD nebo jiné složitější AD nastavení vaší domény, budete moct synchronizovat těchto identit aad pomocí AD Connect a pak povolte klienta služby AAD DS na tuto Reklamu. Vzhledem k tomu, že Kerberos závisí na hodnot hash hesel, budete muset [povolení synchronizace hodnot hash hesel v AAD DS](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Pokud používáte federační službou AD federation Services (ADFS), můžete volitelně můžete nastavit synchronizace hodnot hash hesel jako záložní případ selhání infrastruktury služby AD FS. Další informace najdete v tématu [povolení synchronizace hodnot hash hesel s AAD Connect sync](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md). Pomocí místní AD ani AD na virtuální počítače IaaS samostatně, bez AAD a AAD DS není podporovanou konfiguraci pro připojení k doméně clusteru HDI.
+- **Místní AD ani AD na virtuální počítače IaaS**: Pokud máte místní AD ani jiné složitější AD nastavení vaší domény, budete moct synchronizovat těchto identit aad pomocí AD Connect a pak povolte klienta služby AAD DS na tuto Reklamu. Vzhledem k tomu, že Kerberos závisí na hodnot hash hesel, budete muset [povolení synchronizace hodnot hash hesel v AAD DS](../../active-directory-domain-services/active-directory-ds-getting-started-password-sync.md). Pokud používáte federační službou AD federation Services (ADFS), můžete volitelně můžete nastavit synchronizace hodnot hash hesel jako záložní případ selhání infrastruktury služby AD FS. Další informace najdete v tématu [povolení synchronizace hodnot hash hesel s AAD Connect sync](../../active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md). Pomocí místní AD ani AD na virtuální počítače IaaS samostatně, aniž by AAD a AAD DS není podporovanou konfiguraci pro připojení k doméně clusteru HDI.
 
 ## <a name="next-steps"></a>Další postup
 * [Konfigurovat připojený k doméně clusterů HDInsight](apache-domain-joined-configure-using-azure-adds.md).

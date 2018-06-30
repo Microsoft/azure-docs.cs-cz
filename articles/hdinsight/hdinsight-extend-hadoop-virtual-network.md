@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: larryfr
-ms.openlocfilehash: 9ad7a35864f8e8a1aa95f0b54174a792f069ba18
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 842746561b74860e674fbaa298c78bb0ac58bd68
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34700702"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37112129"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozšíření Azure HDInsight pomocí virtuální síť Azure
 
@@ -292,8 +292,8 @@ Pokud používáte skupiny zabezpečení sítě nebo trasy definované uživatel
     | Indie | Střed Indie | 52.172.153.209</br>52.172.152.49 | 443 | Příchozí |
     | Japonsko | Japonsko – východ | 13.78.125.90</br>13.78.89.60 | 443 | Příchozí |
     | &nbsp; | Japonsko – západ | 40.74.125.69</br>138.91.29.150 | 443 | Příchozí |
-    | Korea | Korea – střed | 52.231.39.142</br>52.231.36.209 | 433 | Příchozí |
-    | &nbsp; | Korea – jih | 52.231.203.16</br>52.231.205.214 | 443 | Příchozí
+    | Jižní Korea | Jižní Korea – střed | 52.231.39.142</br>52.231.36.209 | 433 | Příchozí |
+    | &nbsp; | Jižní Korea – jih | 52.231.203.16</br>52.231.205.214 | 443 | Příchozí
     | Spojené království | Spojené království – západ | 51.141.13.110</br>51.141.7.20 | 443 | Příchozí |
     | &nbsp; | Spojené království – jih | 51.140.47.39</br>51.140.52.16 | 443 | Příchozí |
     | Spojené státy | Střed USA | 13.67.223.215</br>40.86.83.253 | 443 | Příchozí |

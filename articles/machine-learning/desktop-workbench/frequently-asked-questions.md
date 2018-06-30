@@ -7,16 +7,16 @@ ms.author: serinak
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 8a0d26a1ba1ca5fa7a3bd5cfca078ee6c94b229d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 43da51e389fa899d912a60bfe90e7b4e39390382
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831570"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37115929"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Nejčastější dotazy k Azure Machine Learning
 
@@ -30,7 +30,7 @@ Azure Blob Storage a kontejner registru Azure používají Azure Machine Learnin
 
 **Jak Azure Machine Learning vztahují k Microsoft Machine Learning Services v SQL serveru 2017?**   
 
-V SQL serveru 2017 služby Machine Learning je rozšiřitelný, škálovatelná platforma pro integraci úkoly strojového učení do databáze pracovních postupů. Je vzájemně přizpůsobit pro scénáře, kdy je potřeba, například kde přesun dat je nákladné nebo untenable do místní řešení. Naproti tomu Cloudová nebo hybridní úlohy jsou skvělý přizpůsobit pro naše nové služby Azure. 
+V SQL serveru 2017 služby Machine Learning je rozšiřitelný, škálovatelná platforma pro integraci úkoly strojového učení do databáze pracovních postupů. Je vzájemně přizpůsobit pro scénáře, kdy je potřeba, například kde přesun dat je nákladné nebo untenable místní řešení. Naproti tomu Cloudová nebo hybridní úlohy jsou skvělý přizpůsobit pro naše nové služby Azure. 
 
 **Podporujete Python a R? Co o jinými programovací jazyky jako jazyk C++**
 

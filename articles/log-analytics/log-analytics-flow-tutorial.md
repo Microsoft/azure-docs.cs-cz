@@ -3,21 +3,22 @@ title: Automatizovat procesy analýzy protokolů Azure s Flow Microsoft
 description: Zjistěte, jak Microsoft Flow můžete rychle automatizovat opakované procesy pomocí konektoru Azure Log Analytics.
 services: log-analytics
 documentationcenter: ''
-author: CFreemanwa
+author: mgoedtel
 manager: carmonm
 ms.service: log-analytics
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: 9884b97aad8f022e6bc20b2a630ccdd07ebc64db
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.component: na
+ms.openlocfilehash: 21cf7cf3d12902b02fcbf650a1623e78004d28b4
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/16/2017
-ms.locfileid: "23889505"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131696"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatizovat procesy analýzy protokolů pomocí konektoru pro Flow Microsoft
 [Microsoft Flow](https://ms.flow.microsoft.com) vám umožní vytvořit automatizované pracovní postupy pomocí stovky akce pro celou řadu služeb. Výstup z jednu akci je možné použít jako vstup pro jiné umožňuje vytvářet integrace mezi různými službami.  Konektor analýzy protokolů Azure pro Microsoft Flow umožňují vytvářet pracovní postupy, které zahrnují data načtená při prohledávání protokolu v analýzy protokolů.
@@ -76,7 +77,7 @@ Tento kurz v tomto článku se dozvíte, jak vytvořit toku, který automaticky 
 3. Po dokončení toku zkontrolujte e-mailu příjemce, který jste zadali.  Byste měli obdržet e-mail se text podobný následujícímu:<br><br>![Ukázkového e-mailu](media/log-analytics-flow-tutorial/flow08.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - Další informace o [přihlásit analýzy protokolů hledání](log-analytics-log-search-new.md).
 - Další informace o [Microsoft Flow](https://ms.flow.microsoft.com).

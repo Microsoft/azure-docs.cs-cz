@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 2f34233a68bec506d9f69426d779aee8e493d759
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9314b8ae8dceb29a9aee63ba3093ab191d4fdef3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31402059"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37115965"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
@@ -81,11 +81,11 @@ ADLS je také optimalizovaná pro přijímání událostí pomocí centra událo
 
 #### <a name="considerations-for-both-storage-options"></a>Důležité informace pro obě možnosti úložiště
 
-Nahrát datové sady v rozsahu terabajt, latence sítě může být hlavní problém, zejména v případě, že data pochází z místního umístění.  V takových případech můžete pomocí následujících možností:
+Nahrát datové sady v rozsahu terabajt, latence sítě může být hlavní problém, zejména v případě, že data pochází z místní umístění.  V takových případech můžete pomocí následujících možností:
 
-* Azure ExpressRoute: Azure ExpressRoute vám umožňuje vytvářet privátní připojení mezi datovými centry Azure a vaší místní infrastruktury. Tato připojení poskytují spolehlivé možnost pro přenos velkých objemů dat. Další informace najdete v tématu [dokumentace Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
+* Azure ExpressRoute: Azure ExpressRoute vám umožňuje vytvářet privátní připojení mezi datovými centry Azure a v místní infrastruktuře. Tato připojení poskytují spolehlivé možnost pro přenos velkých objemů dat. Další informace najdete v tématu [dokumentace Azure ExpressRoute](../../expressroute/expressroute-introduction.md).
 
-* "Do režimu offline" nahrát data. Můžete použít [služba Azure Import/Export](../../storage/common/storage-import-export-service.md) pro odeslání jednotky pevného disku s daty pro datové centrum Azure. Vaše data, je nejprve nahrán do úložiště objektů BLOB služby Azure. Pak můžete použít [Azure Data Factory](../../data-factory/v1/data-factory-azure-datalake-connector.md) nebo [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) nástroj pro kopírování dat z Azure úložiště objektů BLOB do Data Lake Store.
+* "Do režimu offline" nahrát data. Můžete použít [služba Azure Import/Export](../../storage/common/storage-import-export-service.md) pro odeslání jednotky pevného disku s daty pro datové centrum Azure. Vaše data, je nejprve nahrán do úložiště objektů BLOB služby Azure. Pak můžete použít [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) nebo [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) nástroj pro kopírování dat z Azure úložiště objektů BLOB do Data Lake Store.
 
 ### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 

@@ -11,23 +11,26 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2018
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5d806afbfd74d68d139f494c7a5a6e871a7dae36
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 2c2553d9ffb1dfbe032385fb77e234a8b96cb239
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260590"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110061"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI element
 Skupina ovládacích prvků pro výběr nový nebo existující virtuální síť.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
-![Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo.png)
+Když uživatel vybere nové virtuální sítě, uživatel můžete přizpůsobit název každé podsítě a předponu adresy. Konfigurace podsítí je volitelné.
 
-- V horní obrázek uživatel vybral nové virtuální sítě, takže uživatel může přizpůsobit název a adresu předpona každé podsítě. Konfigurace podsítí v tomto případě je volitelné.
-- V dolní obrázek uživatel vybral existující virtuální síť, takže uživatel musí být mapována každou podsíť, kterou šablonu nasazení vyžaduje existující podsítí. Podsítě v takovém případě se vyžaduje konfigurace.
+![Microsoft.Network.VirtualNetworkCombo nový](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
+
+Když uživatel vybere existující virtuální síť, musí uživatel mapovat každou podsíť, kterou vyžaduje nasazení šablony do existující podsítí. Podsítě v takovém případě se vyžaduje konfigurace.
+
+![Existující Microsoft.Network.VirtualNetworkCombo](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>Schéma
 ```json
@@ -88,12 +91,12 @@ Skupina ovládacích prvků pro výběr nový nebo existující virtuální sí�
 - `constraints.minAddressPrefixSize` musí být zadán. Žádné existující virtuální sítě s adresním prostorem menší než zadaná hodnota jsou k dispozici pro výběr.
 - `subnets` musí být zadán, a `constraints.minAddressPrefixSize` pro každou podsíť musí být zadána.
 - Při vytváření nové virtuální sítě, předpona adresy každou podsíť je vypočtena automaticky na základě předponu adresy virtuální sítě a příslušné `addressPrefixSize`.
-- Při použití existující virtuální sítě, podsítě, menší než příslušných `constraints.minAddressPrefixSize` jsou k dispozici pro výběr. Kromě toho-li zadána, podsítě, které neobsahují alespoň `minAddressCount` dostupné adresy jsou k dispozici pro výběr.
-Výchozí hodnota je **0**. K zajištění, že jsou k dispozici adresy souvislé, zadejte **true** pro `requireContiguousAddresses`. Výchozí hodnota je **true**.
+- Při použití existující virtuální sítě, podsítě, menší než příslušných `constraints.minAddressPrefixSize` jsou k dispozici pro výběr. Kromě toho-li zadána, podsítě, které nemají alespoň `minAddressCount` dostupné adresy jsou k dispozici pro výběr. Výchozí hodnota je **0**. K zajištění, že jsou k dispozici adresy souvislé, zadejte **true** pro `requireContiguousAddresses`. Výchozí hodnota je **true**.
 - Vytvoření podsítě v existující virtuální síť se nepodporuje.
 - Pokud `options.hideExisting` je **true**, uživatel nemůže vybrat existující virtuální síť. Výchozí hodnota je **false**.
 
 ## <a name="sample-output"></a>Ukázkový výstup
+
 ```json
 {
   "name": "vnet01",

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: deguhath
-ms.openlocfilehash: 3058678032989d71886311073513a23ac19d18f8
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: a81c23d6acb79e42157ac7d804dac259723b3b0e
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "34838856"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114346"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Pokročilé zkoumání a modelování dat pomocí Spark
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -45,7 +45,7 @@ Modely, které používáme zahrnují logistic a lineární regrese, náhodné d
 * [Náhodné doménových strukturách](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) jsou komplety rozhodovací stromy.  Že kombinují mnoho rozhodovacích stromů, aby se snížilo riziko overfitting. Náhodné doménovými strukturami se používají pro regresní a klasifikaci a dokáže zpracovat kategorií funkce a lze rozšířit pro nastavení více třídami klasifikace. Tyto nevyžadují funkce škálování a mohli zaznamenat nelineárností a funkci interakce. Náhodné doménových strukturách jsou jedním z těch nejúspěšnějších strojového učení modely pro klasifikaci a regrese.
 * [Přechodu boosted stromy](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) jsou komplety rozhodovací stromy. GBTs cvičení stromů rozhodnutí interaktivně, aby se minimalizoval funkci ztrátu. GBTs se používají pro regresní a klasifikaci a dokáže zpracovat kategorií funkce, nevyžadují funkce škálování a mohli zaznamenat nelineárností a funkci interakce. Můžete také používají v nastavení multiclass klasifikace.
 
-Modelování příklady použití odchylka nákladů a Hyperparameter oblouku se zobrazují pro problém binární klasifikace. Jednodušší příklady (bez parametru přesune) jsou uvedeny na hlavní téma pro regresní úlohy. Ale v příloze, jsou také uvedené ověření pomocí elastické net pro lineární regrese a odchylka nákladů pomocí parametru oblouku pro regresní náhodných doménové struktury. **Elastická net** je vyřešeno regrese metoda pro to lineárně hodí lineární regrese modely kombinuje metriky L1 a L2 jako postihy z [laso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) a [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization) metody.   
+Modelování příklady použití odchylka nákladů a Hyperparameter oblouku se zobrazují pro problém binární klasifikace. Jednodušší příklady (bez parametru přesune) jsou uvedeny na hlavní téma pro regresní úlohy. Ale v příloze, jsou také uvedené ověření pomocí elastické net pro lineární regrese a odchylka nákladů pomocí parametru oblouku pro regresní náhodných doménové struktury. **Elastická net** je vyřešeno regrese metoda pro to lineárně hodí lineární regrese modely kombinuje metriky L1 a L2 jako postihy z [laso](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) a [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization)metody.   
 
 > [!NOTE]
 > I když toolkit Spark MLlib je navržen pro práci na velkých datových sad, relativně malé ukázkové (pomocí 170 tisíc řádků, přibližně 0,1 % původní datové sady NYC ~ 30 Mb) se zde používá ke zvýšení pohodlí. Cvičení zadané tady běží efektivně (v přibližně 10 minut) v clusteru HDInsight s 2 uzlů pracovního procesu. Stejný kód, s menšími změnami, můžete použít ke zpracování větší-sady dat, se změny, které pro ukládání do mezipaměti data v paměti a změna velikosti clusteru.
@@ -668,7 +668,7 @@ Kód v této části ukazuje, jak pro trénování, hodnocení a uložit logisti
 
 **VÝSTUP**
 
-Koeficienty: [0.0082065285375-0.0223675576104,-0.0183812028036, - 3.48124578069e-05-0.00247646947233,-0.00165897881503, 0.0675394837328,-0.111823113101,-0.324609912762,-0.204549780032,-1.36499216354, 0.591088507921,-0.664263411392,-1.00439726852, 3.46567827545,-3.51025855172,-0.0471341112232,-0.043521833294, 0.000243375810385, 0.054518719222]
+Koeficienty: [0.0082065285375-0.0223675576104,-0.0183812028036, - 3.48124578069e - 05,-0.00247646947233,-0.00165897881503, 0.0675394837328,-0.111823113101,-0.324609912762,-0.204549780032,-1.36499216354, 0.591088507921, - 0.664263411392,-1.00439726852, 3.46567827545,-3.51025855172,-0.0471341112232,-0.043521833294, 0.000243375810385, 0.054518719222]
 
 Zachycení:-0.0111216486893
 
@@ -1057,7 +1057,7 @@ Kód v této části ukazuje, jak používat škálovat funkce ke cvičení line
 
 **VÝSTUP**
 
-Koeficienty: [0.0141707753435,-0.0252930927087,-0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092,-0.00456498588241,-0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632,-0.00289545676449,-0.00791124681938, 0.54396316518,-0.536293513569, 0.0119076553369,-0.0173039244582, 0.0119632796147, 0.00146764882502]
+Koeficienty: [0.0141707753435,-0.0252930927087,-0.0231442517137, 0.247070902996, 0.312544147152, 0.360296120645, 0.0122079566092,-0.00456498588241,-0.0898228505177, 0.0714046248793, 0.102171263868, 0.100022455632,-0.00289545676449,- 0.00791124681938, 0.54396316518,-0.536293513569, 0.0119076553369,-0.0173039244582, 0.0119632796147, 0.00146764882502]
 
 Zachytávat: 0.854507624459
 
@@ -1126,7 +1126,7 @@ Doba k provedení výše buňky: 25.98 sekund
 ### <a name="gradient-boosting-trees-regression"></a>Přechodu zvýšení skóre regresní stromy
 Kód v této části ukazuje, jak pro trénování, hodnocení a uložit přechodu zvýšení skóre stromy model, který předpovídá velikost tip pro data NYC taxíkem cesty.
 
-** Natrénování a vyhodnocení **
+**Natrénování a vyhodnocení**
 
     #PREDICT TIP AMOUNTS USING GRADIENT BOOSTING TREES
 

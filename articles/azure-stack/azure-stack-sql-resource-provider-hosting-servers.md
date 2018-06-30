@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 06/29/2018
 ms.author: jeffgilb
-ms.openlocfilehash: af820f90c5d8822dbdaa768b16360d534fd47828
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 74d888ffe28e5428b47bfc73122518c22d0f0918
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060038"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128703"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků SQL
 
@@ -121,7 +121,8 @@ Instance SQL Always On konfigurace vyžaduje další kroky a vyžaduje tři virt
 > [!NOTE]
 > Zprostředkovatel prostředků adaptér SQL _pouze_ podporuje SQL 2016 SP1 Enterprise nebo později instance pro Always On. Tato konfigurace adaptér vyžaduje nové funkce SQL, jako je například automatická synchronizace replik indexů.
 
-Kromě toho je nutné povolit [Automatická synchronizace replik indexů](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) pro každou skupinu dostupnosti pro každou instanci systému SQL Server.
+### <a name="automatic-seeding"></a>Automatická synchronizace replik indexů
+Je nutné povolit [Automatická synchronizace replik indexů](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) pro každou skupinu dostupnosti pro každou instanci systému SQL Server.
 
 Pokud chcete povolit, automatická synchronizace replik indexů na všech instancích, upravit a poté spusťte následující příkaz SQL pro každou instanci:
 
@@ -136,6 +137,18 @@ V sekundární instance úpravy a potom spusťte následující příkaz SQL pro
 
   ```
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
+  GO
+  ```
+
+### <a name="configure-contained-database-authentication"></a>Konfigurace ověřování databáze s omezením
+Před přidáním do skupiny dostupnosti, databázi s omezením, ujistěte se, zda je možnost server ověřování databáze s omezením nastavena na hodnotu 1 všechny instance serveru, který je hostitelem replika dostupnosti pro skupinu dostupnosti. Další informace najdete v tématu [obsažené ověřování databáze možnosti konfigurace serveru](https://docs.microsoft.com/sql/database-engine/configure-windows/contained-database-authentication-server-configuration-option?view=sql-server-2017).
+
+Chcete-li nastavit možnost serveru ověřování databáze s omezením pro každou instanci použijte tyto příkazy:
+
+  ```
+  EXEC sp_configure 'contained database authentication', 1
+  GO
+  RECONFIGURE
   GO
   ```
 

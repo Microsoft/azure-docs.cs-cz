@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 7f46e55e11c4eb68b515a743b0f51392ffc1269e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 52bda6a13422ce8f759c40bd454a6b15e92d7a5d
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266800"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110292"
 ---
 # <a name="luis-boundaries"></a>LEOŠ hranice
 LEOŠ má několik oblasti hranic. První je [modelu hranic](#model-boundaries), který určuje záměry, entit a funkcí v LEOŠ. Druhý oblast je [kvótami](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) řízení LEOŠ webu. Čtvrtý oblast je [mapování oblasti world](luis-reference-regions.md) mezi LEOŠ vytváření webu a LEOŠ [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
@@ -35,11 +35,11 @@ LEOŠ má několik oblasti hranic. První je [modelu hranic](#model-boundaries),
 | [Vzory](luis-concept-patterns.md)|500 vzory na aplikaci.<br>Maximální délka vzor je 400 znaků.<br>3 Pattern.any entit na vzor<br>Maximálně 2 vnořené volitelné texty ve vzoru|
 | [Pattern.Any](./luis-concept-entity-types.md)|100 na aplikaci, 3 pattern.any entit na vzor |
 | [Seznam frází][phrase-list]|10 seznamy frázi, 5 000 položek na seznamu|
-| [Předkompilované entity](./Pre-builtEntities.md) | Žádné omezení|
+| [Předkompilované entity](./Pre-builtEntities.md) | žádné omezení|
 | [Regulární výraz entity](./luis-concept-entity-types.md)|20 entity<br>maximální počet 500 znaků. na entity vzor regulárního výrazu|
 | [Role](luis-concept-roles.md)|300 role na aplikaci. 10 role na entity|
 | **[Jednoduché](./luis-concept-entity-types.md)| 100 entit|
-| [Utterance][utterances] | 500 znaků|
+| [utterance][utterances] | 500 znaků|
 | [Utterances][utterances] | 15 000 na aplikaci.|
 | [Název verze][luis-how-to-manage-versions] | 10 znaků omezen na alfanumerické znaky a období (.) |
 
@@ -56,17 +56,17 @@ V názvech záměr a entity nepoužívejte tyto znaky:
 |`}`|Pravé složené závorky|
 |`[`|Levé závorky|
 |`]`|Pravé závorky|
-|`\`|zpětné lomítko|
+|`\`|Zpětné lomítko|
 
 ## <a name="key-limits"></a>Omezuje klíč
-Vytváření klíč má jiné limity pro vytváření obsahu a koncový bod. Klíč předplatného služby LEOŠ platí pouze pro koncový bod dotazy.
+Vytváření klíč má jiné limity pro vytváření obsahu a koncový bod. Klíč koncového bodu služby LEOŠ platí pouze pro koncový bod dotazy.
 
 |Klíč|Vytváření obsahu|Koncový bod|Účel|
 |--|--|--|--|
 |Vytváření nebo Starter|1 milion za měsíc, 5/druhý|1 tisíc za měsíc, 5/druhý|Vytváření aplikace LEOŠ|
 |[Předplatné] [ pricing] - F0 - úroveň Free |neplatné|10 tisíc za měsíc, 5/druhý|Váš koncový bod LEOŠ dotazování|
 |[Předplatné] [ pricing] - S0 – základní vrstvě|neplatné|50 za sekundu|Váš koncový bod LEOŠ dotazování|
-|[Integrace postojích analýzy](publishapp.md#enable-sentiment-analysis)|neplatné|Bez poplatků|Přidání informací o postojích včetně klíče frázi extrakce dat |
+|[Integrace postojích analýzy](publishapp.md#enable-sentiment-analysis)|neplatné|bez poplatků|Přidání informací o postojích včetně klíče frázi extrakce dat |
 |Rozpoznávání řeči integrace|neplatné|Požadavky 5.50 USD/1 tisíc koncový bod|Převést na text utterance mluvené utterance a vrátí výsledky LEOŠ|
 
 ## <a name="keyboard-controls"></a>Ovládací prvky klávesnice

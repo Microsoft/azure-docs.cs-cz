@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4741cf306aed1c86be1bc4b54fb961383e2f70bd
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 4c0f5d0c5ed3814495a68d7fd49d41cec521bbd7
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34763761"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114554"
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Infrastruktura SAP HANA (velké instance) a připojení v Azure 
 
@@ -120,7 +120,7 @@ Shrnutí důležitých faktů o virtuální síť Azure, která se připojuje k 
 
 Již zavedli jsme některé z rozsahů IP adres nezbytné pro nasazení HANA velké instancí v předchozích částech. Ale existují některé další rozsahy IP adres, které jsou důležité. Přejděte prostřednictvím některé další podrobnosti. Následující adresy IP, ve kterých není nutné odeslat společnosti Microsoft je potřeba určit, před odesláním požadavku pro počáteční nasazení:
 
-- **Virtuální síť adresní prostor:** už zavedená dříve, nebo jsou IP adresy range(s) jste přiřadili (nebo plán přiřadit) vaší parametr místo adresy ve virtuální sítě Azure (VNet) připojení k prostředí SAP HANA velké Instance. Doporučuje se, že tento parametr adresní prostor je hodnota Víceřádkový skládá z rozsahy podsíť virtuálních počítačů Azure a rozsahu podsítě brány Azure, jak je znázorněno grafiky dříve. Tento rozsah musí nepřekrývají s místními nebo rozsahů adres IP fondu serverů nebo ER P2P. Jak získat je, že tyto rozsahy IP adres? Poskytovatel tým nebo služby podnikové síti by měl poskytovat jeden nebo více IP adres rozsahy, které nebo nejsou použity uvnitř vaší sítě. Příklad: Pokud je vaše podsíť virtuálních počítačů Azure (viz výše) 10.0.1.0/24 a podsítě brány Azure (viz následující) je 10.0.2.0/28, pak váš adresní prostor virtuální sítě Azure se doporučuje se dva řádky; 10.0.1.0/24 a 10.0.2.0/28. I když se dají agregovat hodnoty adresní prostor, se doporučuje odpovídající je na rozsahy podsíť předejdete náhodnému opakované použití nepoužívané rozsahy IP adres v rámci větší adresní prostory v budoucnu jinde v síti. **Virtuální síť adresní prostor je rozsah IP adres, který se musí k odeslání společnosti Microsoft při požadující počáteční nasazení**
+- **Virtuální síť adresní prostor:** už zavedená dříve, nebo jsou IP adresy range(s) jste přiřadili (nebo plán přiřadit) vaší parametr místo adresy ve virtuální sítě Azure (VNet) připojení k prostředí SAP HANA velké Instance. Doporučuje se, že tento parametr adresní prostor je hodnota Víceřádkový skládá z rozsahy podsíť virtuálních počítačů Azure a rozsahu podsítě brány Azure, jak je znázorněno grafiky dříve. Tento rozsah musí nepřekrývá s místními nebo rozsahů adres IP fondu serverů nebo ER P2P. Jak získat je, že tyto rozsahy IP adres? Poskytovatel tým nebo služby podnikové síti by měl poskytovat jeden nebo více IP adres rozsahy, které nebo nejsou použity uvnitř vaší sítě. Příklad: Pokud je vaše podsíť virtuálních počítačů Azure (viz výše) 10.0.1.0/24 a podsítě brány Azure (viz následující) je 10.0.2.0/28, pak váš adresní prostor virtuální sítě Azure se doporučuje se dva řádky; 10.0.1.0/24 a 10.0.2.0/28. I když se dají agregovat hodnoty adresní prostor, se doporučuje odpovídající je na rozsahy podsíť předejdete náhodnému opakované použití nepoužívané rozsahy IP adres v rámci větší adresní prostory v budoucnu jinde v síti. **Virtuální síť adresní prostor je rozsah IP adres, který se musí k odeslání společnosti Microsoft při požadující počáteční nasazení**
 
 - **Azure rozsah adres IP podsítě virtuálních počítačů:** tento adresy IP, jak je popsáno dříve již je ten, který jste přiřadili (nebo plán přiřazení) parametr podsíť virtuální sítě Azure ve vaší virtuální síti Azure připojení k prostředí SAP HANA velké Instance. Tento rozsah adres IP se používá k přidělování IP adres pro virtuální počítače Azure. IP adresy mimo tento rozsah mohou připojit k vaší instanci velké SAP HANA servery. V případě potřeby lze několik podsítí virtuálních počítačů Azure. A/24 blok CIDR se společnost Microsoft doporučuje pro každou podsíť virtuálních počítačů Azure. Tento rozsah adres musí být součástí hodnoty používané v adresním prostoru virtuální sítě Azure. Jak získat tento rozsah IP adres? Poskytovatel tým nebo služby podnikové síti by měl poskytovat rozsah IP adres, který není právě používána uvnitř vaší sítě.
 
@@ -129,9 +129,9 @@ Již zavedli jsme některé z rozsahů IP adres nezbytné pro nasazení HANA vel
    - Koexistenci se připojení VPN a ExpressRoute pomocí vysoce výkonné brány ExpressRoute (nebo menší): / 27 blok adres
    - Další situace: / 28 blok adres. Tento rozsah adres musí být součástí hodnoty používané v hodnoty "Adresní prostor virtuální sítě". Tento rozsah adres musí být součástí hodnoty používané v adresní prostor sítě VNet Azure hodnoty, které budete muset odeslat společnosti Microsoft. Jak získat tento rozsah IP adres? Poskytovatel tým nebo služby podnikové síti by měl poskytovat rozsah IP adres, který není právě používána uvnitř vaší sítě. 
 
-- **Rozsah pro připojení k síti ER P2P adres:** tento rozsah je rozsah IP adres pro připojení k SAP HANA velké Instance ExpressRoute (ER) P2P. Tento rozsah IP adres musí být/29 rozsah CIDR IP adres. Tento rozsah musí nepřekrývají s vaší místní nebo jiné IP Azure rozsahy adres. Tento rozsah adres IP se používá k nastavení připojení ER z bránu ExpressRoute virtuální síť Azure pro velké Instance SAP HANA servery. Jak získat tento rozsah IP adres? Poskytovatel tým nebo služby podnikové síti by měl poskytovat rozsah IP adres, který není právě používána uvnitř vaší sítě. **Tento rozsah je rozsah IP adres, který se musí k odeslání společnosti Microsoft při požadující počáteční nasazení**
+- **Rozsah pro připojení k síti ER P2P adres:** tento rozsah je rozsah IP adres pro připojení k SAP HANA velké Instance ExpressRoute (ER) P2P. Tento rozsah IP adres musí být/29 rozsah CIDR IP adres. Tento rozsah musí nepřekrývají s místními nebo jiné IP Azure rozsahy adres. Tento rozsah adres IP se používá k nastavení připojení ER z bránu ExpressRoute virtuální síť Azure pro velké Instance SAP HANA servery. Jak získat tento rozsah IP adres? Poskytovatel tým nebo služby podnikové síti by měl poskytovat rozsah IP adres, který není právě používána uvnitř vaší sítě. **Tento rozsah je rozsah IP adres, který se musí k odeslání společnosti Microsoft při požadující počáteční nasazení**
   
-- **Rozsah adres fondu IP serveru:** tento rozsah adres IP se používá k jednotlivé IP adresu přiřadit HANA velké instance serverů. / 24 je velikost doporučené podsítě CIDR blokovat – ale pokud potřeby může být menší na minimum poskytnout 64 IP adresy. Z tohoto rozsahu prvních 30 IP adresy jsou vyhrazené pro použití společností Microsoft. Zkontrolujte, zda že je tento fakt pozornost při výběru velikost rozsahu. Tento rozsah musí nepřekrývají s vaší místní nebo jiné Azure IP adresy. Jak získat tento rozsah IP adres? Poskytovatel tým nebo služby podnikové síti by měl poskytovat rozsah IP adres, který není právě používána uvnitř vaší sítě. / 24 (doporučeno) jedinečný CIDR blokovat má být použit pro přiřazení konkrétní IP adresy, které jsou potřebné pro SAP HANA v Azure (velké instance). **Tento rozsah je rozsah IP adres, který se musí k odeslání společnosti Microsoft při požadující počáteční nasazení**
+- **Rozsah adres fondu IP serveru:** tento rozsah adres IP se používá k jednotlivé IP adresu přiřadit HANA velké instance serverů. / 24 je velikost doporučené podsítě CIDR blokovat – ale pokud potřeby může být menší na minimum poskytnout 64 IP adresy. Z tohoto rozsahu prvních 30 IP adresy jsou vyhrazené pro použití společností Microsoft. Zkontrolujte, zda že je tento fakt pozornost při výběru velikost rozsahu. Tento rozsah musí nepřekrývají s místními nebo jiných Azure IP adresy. Jak získat tento rozsah IP adres? Poskytovatel tým nebo služby podnikové síti by měl poskytovat rozsah IP adres, který není právě používána uvnitř vaší sítě. / 24 (doporučeno) jedinečný CIDR blokovat má být použit pro přiřazení konkrétní IP adresy, které jsou potřebné pro SAP HANA v Azure (velké instance). **Tento rozsah je rozsah IP adres, který se musí k odeslání společnosti Microsoft při požadující počáteční nasazení**
  
 Když potřebujete definovat a plánování rozsahů IP adres výše, ne všechny je třeba přenášet do společnosti Microsoft. To Shrneme výše, rozsahy IP adres, které jsou třeba název společnosti Microsoft jsou:
 
@@ -152,7 +152,7 @@ Máte také možnost agregování dat, která můžete odeslat společnosti Micr
 Jak je uvedeno výše, místo dvou menší rozsahy, které definované adresní prostor sítě vnet Azure, máme jeden větší rozsah, které pokrývá 4096 IP adresy. Velké definice adresního prostoru zanechává některé místo velkých oblastí nepoužívá. Vzhledem k tomu, že hodnoty adresní prostor sítě VNet se používají pro šíření trasy protokolu BGP, využití nepoužívané rozsahy místní nebo jinde v síti může způsobit problémy s směrování. Proto se doporučuje udržovat adresní prostor naprosto v souladu s adresního prostoru skutečné podsítě použít. V případě potřeby, aniž by docházelo k výpadkům ve virtuální síti, můžete vždy přidat nové hodnoty adresní prostor později.
  
 > [!IMPORTANT] 
-> Každou IP adresu adresní prostor sítě VNet Azure rozsah ER – P2P, IP fondu serverů, musí **není** navzájem překrývají nebo jiné rozsahu použít jinde v síti; každý musí být diskrétní, a jako dvou grafika starší zobrazit, nemusí být podsíť jiných rozsahu. Dojde-li překrytí mezi rozsahy, virtuální síť Azure nemusí připojit k okruhu ExpressRoute.
+> Každou IP adresu adresní prostor sítě VNet Azure rozsah ER – P2P, IP fondu serverů, musí **není** navzájem překrývají nebo použít jinou oblast jinde v síti; každý musí být diskrétní, a jako dvou grafika nesmí být starší zobrazit, podsíť jinou oblast. Dojde-li překrytí mezi rozsahy, virtuální síť Azure nemusí připojit k okruhu ExpressRoute.
 
 ### <a name="next-steps-after-address-ranges-have-been-defined"></a>Další kroky po nebyly definovány rozsahy adres
 Po definování rozsahy IP adres je potřeba dojít níže uvedených aktivit:
@@ -243,7 +243,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $myConnectionName `
 -PeerId $PeerID -ConnectionType ExpressRoute -AuthorizationKey $AuthGUID
 ```
 
-Pokud se chcete připojit bránu a více okruhů ExpressRoute, které jsou spojeny s předplatným, musíte provést tento krok více než jednou. Například pravděpodobně chcete připojit bránu virtuální sítě k okruhu ExpressRoute, které virtuální sítě se připojí k místní síti.
+Pokud se chcete připojit bránu a více okruhů ExpressRoute, které jsou spojeny s předplatným, musíte provést tento krok více než jednou. Například pravděpodobně chcete připojit bránu virtuální sítě k okruhu ExpressRoute, která se připojuje virtuální sítě k síti na pracovišti.
 
 ## <a name="adding-more-ip-addresses-or-subnets"></a>Přidání další IP adresy nebo podsítě
 
@@ -276,7 +276,7 @@ Jakmile se vytvoří nový okruhu a SAP HANA na Azure Service Management configu
 
 ## <a name="deleting-a-subnet"></a>Odstraňování podsíť
 
-Odebrat podsíť virtuální sítě, můžete použít portál Azure, PowerShell nebo rozhraní příkazového řádku. V případě, že vaše Azure VNet IP adresa rozsahu nebo Azure adresní prostor sítě VNet byla agregované rozsahu, neexistuje žádný postupujte podle službu jste se společností Microsoft. Kromě toho, že virtuální sítě je stále šíření BGP trasy adresní prostor, který zahrnuje odstraněné podsítě. Pokud jste definovali Azure VNet IP adresa rozsahu nebo Azure adresní prostor sítě VNet jako více rozsahů IP adres, z nichž jeden byl přiřazen odstraněné podsíť, by měl odstranit, mimo váš adresní prostor sítě VNet a následně informujte SAP HANA na Azure Service Management jeho odebrání z rozsahů, které může komunikovat s SAP HANA v Azure (velké instance).
+Odebrat podsíť virtuální sítě, můžete použít portál Azure, PowerShell nebo rozhraní příkazového řádku. V případě, že vaše Azure VNet IP adresa rozsahu nebo Azure adresní prostor sítě VNet byla agregované rozsahu, neexistuje žádný postupujte podle službu jste se společností Microsoft. Kromě toho, že virtuální sítě je stále šíření BGP trasy adresní prostor, který zahrnuje odstraněné podsítě. Pokud jste definovali Azure VNet IP adresa rozsahu nebo Azure adresní prostor sítě VNet jako více rozsahů IP adres, z nichž jeden byl přiřazen odstraněné podsíť, by měl odstranit, mimo váš adresní prostor virtuální sítě a následně informovat o tom SAP HANA na správu služby Azure Odeberte ji z rozsahů, které může komunikovat s SAP HANA v Azure (velké instance).
 
 Chcete-li odstranit podsíť, přečtěte si téma [odstranit podsíť](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet) Další informace o vytvoření podsítě.
 

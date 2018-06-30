@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 9a8e0154faccca356c7fb8ce93e43ce67cc0aae2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 3fae9390b41d12361b820e2c37601283b37bc302
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28019581"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031708"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Zabezpečení rámce: Správa výjimek | Způsoby zmírnění rizik 
 | Produktům a službám | Článek |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF – nezahrnujte serviceDebug uzlu v konfiguračním souboru](#servicedebug)</li><li>[WCF – nezahrnujte serviceMetadata uzlu v konfiguračním souboru](#servicemetadata)</li></ul> |
-| **Webové rozhraní API** | <ul><li>[Zajistit, že je v rozhraní ASP.NET Web API správné zpracování výjimek](#exception)</li></ul> |
-| **Webové aplikace** | <ul><li>[Podrobné informace o zabezpečení v chybových zprávách, neuvádějí](#messages)</li><li>[Implementace výchozí chyba zpracování stránky](#default)</li><li>[Nastavte metodu nasazení prodejní ve službě IIS](#deployment)</li><li>[Výjimky má bezpečně selhat.](#fail)</li></ul> |
+| **Webové rozhraní API** | <ul><li>[Zajistit, že je v rozhraní ASP.NET Web API správné zpracování výjimek ](#exception)</li></ul> |
+| **Webové aplikace** | <ul><li>[Podrobné informace o zabezpečení v chybových zprávách, neuvádějí ](#messages)</li><li>[Implementace výchozí chyba zpracování stránky ](#default)</li><li>[Nastavte metodu nasazení prodejní ve službě IIS](#deployment)</li><li>[Výjimky má bezpečně selhat.](#fail)</li></ul> |
 
 ## <a id="servicedebug"></a>WCF – nezahrnujte serviceDebug uzlu v konfiguračním souboru
 
-| Nadpis                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
 | **Použít technologie** | Obecné, NET Framework 3 |
 | **Atributy**              | neuvedeno  |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
 | **Kroky** | Ke zveřejnění informace o ladění lze nakonfigurovat komunikaci Framework služby Windows (WCF). Ladění informace nesmí použít v produkčním prostředí. `<serviceDebug>` Značky definuje, zda je povolena funkce informace o ladění služby WCF. Pokud třídu includeExceptionDetailInFaults atributu je nastavena na hodnotu true, informace o výjimce z aplikace, bude vrácen klientům. Útočníci můžou využít další informace, které získají z ladění výstupu připojit útoků, které cílí na rozhraní, databázi nebo jiným prostředkům, které používá aplikace. |
 
 ### <a name="example"></a>Příklad:
@@ -54,25 +54,25 @@ Zakažte ladicí informace ve službě. Toho lze dosáhnout odebráním `<servic
 
 ## <a id="servicemetadata"></a>WCF – nezahrnujte serviceMetadata uzlu v konfiguračním souboru
 
-| Nadpis                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | WCF | 
 | **SDL fáze**               | Sestavení |  
 | **Použít technologie** | Obecné |
 | **Atributy**              | Obecné, NET Framework 3 |
-| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/vulncat/index.html) |
+| **Odkazy**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [obohacení království](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
 | **Kroky** | Útočníkům cenné přehled o tom, jak mohou využívat služby můžete poskytnout veřejně odhalení informací o služby. `<serviceMetadata>` Značky povolí funkci publikování metadat. Metadata služby můžou obsahovat citlivé informace, které by neměl být veřejně přístupná. Minimálně povolíte jenom důvěryhodným uživatelům přístup k metadatům a ujistěte se, že nebude vystavena, víc informací. Ještě lepší zcela zakážete možnost publikování metadat. Nebude obsahovat bezpečné konfigurace WCF `<serviceMetadata>` značky. |
 
 ## <a id="exception"></a>Zajistit, že je v rozhraní ASP.NET Web API správné zpracování výjimek
 
-| Nadpis                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Web API | 
 | **SDL fáze**               | Sestavení |  
 | **Použít technologie** | MVC 5, MVC 6 |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [Zpracování výjimek v rozhraní ASP.NET Web API](http://www.asp.net/web-api/overview/error-handling/exception-handling), [modelu ověřování v rozhraní ASP.NET Web API](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
-| **Kroky** | Ve výchozím nastavení jsou nejvíce nezachycená výjimek v rozhraní ASP.NET Web API přeložit na odpovědi HTTP se stavovým kódem`500, Internal Server Error`|
+| **Kroky** | Ve výchozím nastavení jsou nejvíce nezachycená výjimek v rozhraní ASP.NET Web API přeložit na odpovědi HTTP se stavovým kódem `500, Internal Server Error`|
 
 ### <a name="example"></a>Příklad:
 K řízení vrátil rozhraní API, kód stavu `HttpResponseException` je možné, jak je uvedeno níže: 
@@ -134,7 +134,7 @@ namespace ProductStore.Filters
 Existuje několik způsobů, jak zaregistrovat filtr výjimek webového rozhraní API:
 - Akce
 - Adaptérem
-- Globálně
+- globálně
 
 ### <a name="example"></a>Příklad:
 Pokud chcete použít filtr na určité akce, přidejte filtr jako atribut na akci: 
@@ -183,7 +183,7 @@ Zkontrolujte na odkazy v části odkazy na další podrobnosti o výjimečných 
 
 ## <a id="messages"></a>Podrobné informace o zabezpečení v chybových zprávách, neuvádějí
 
-| Nadpis                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -194,7 +194,7 @@ Zkontrolujte na odkazy v části odkazy na další podrobnosti o výjimečných 
 
 ## <a id="default"></a>Implementace výchozí chyba zpracování stránky
 
-| Nadpis                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  
@@ -205,18 +205,18 @@ Zkontrolujte na odkazy v části odkazy na další podrobnosti o výjimečných 
 
 ## <a id="deployment"></a>Nastavte metodu nasazení prodejní ve službě IIS
 
-| Nadpis                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Nasazení |  
 | **Použít technologie** | Obecné |
 | **Atributy**              | neuvedeno  |
 | **Odkazy**              | [nasazení – Element (schéma nastavení ASP.NET)](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
-| **Kroky** | <p>`<deployment retail>` Přepínač je určená pro produkční servery služby IIS. Tento přepínač se používá k pomoci se spouští s nejmenšími možnými úniků informace o zabezpečení a nejlepší možný výkon zakázáním schopnost aplikace generovat výstup trasování na stránce, zakázání schopnost zobrazovat podrobné chybové zprávy pro koncové uživatele a zakázání přepínač ladění aplikace.</p><p>Často, přepínače a možnosti, které jsou zaměřené na vývojáře, například se nezdařilo žádosti o trasování a ladění, jsou povolené během vývoje aktivní. Doporučuje se, že metoda nasazení na žádném serveru pro produkční být nastavená na prodejní. otevření souboru machine.config a ujistěte se, že `<deployment retail="true" />` zůstane nastavený na hodnotu true.</p>|
+| **Kroky** | <p>`<deployment retail>` Přepínač je určená pro produkční servery služby IIS. Tento přepínač slouží k zajištění se spouští s nejmenšími možnými úniků informace o zabezpečení a nejlepší možný výkon zakázáním schopnost aplikace generovat výstup trasování na stránce, zakázání možnost zobrazit podrobné chybové zprávy, které aplikace koncoví uživatelé a zakázáním přepínač ladění.</p><p>Často, přepínače a možnosti, které jsou zaměřené na vývojáře, například se nezdařilo žádosti o trasování a ladění, jsou povolené během vývoje aktivní. Doporučuje se, že metoda nasazení na žádném serveru pro produkční být nastavená na prodejní. otevření souboru machine.config a ujistěte se, že `<deployment retail="true" />` zůstane nastavený na hodnotu true.</p>|
 
 ## <a id="fail"></a>Výjimky má bezpečně selhat.
 
-| Nadpis                   | Podrobnosti      |
+| Titul                   | Podrobnosti      |
 | ----------------------- | ------------ |
 | **Komponenta**               | Webová aplikace | 
 | **SDL fáze**               | Sestavení |  

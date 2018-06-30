@@ -15,12 +15,12 @@ ms.date: 03/08/2018
 ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user
-ms.openlocfilehash: 9aea8060d9b3a5314d4c6f42197bb78586d5ad00
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 9027b09c186dfb7661fc63f200f4d2e5da96a70a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102155"
+ms.locfileid: "37130097"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Aplikace Microsoft Authenticator – nejčastější dotazy
 
@@ -119,5 +119,5 @@ Pokud jste v tomto poli, chceme váš názor. Přejděte na [fórum aplikace Mic
 
 ### <a name="related-topics"></a>Související témata
 * [O dvoustupňovém ověřování](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification) u účtů Microsoft
-* [Došlo k potížím s dvoustupnovym overovanim](../../../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md) pro svůj pracovní nebo školní účet?
+* [Došlo k potížím s dvoustupnovym overovanim](multi-factor-authentication-end-user-troubleshoot.md) pro svůj pracovní nebo školní účet?
 * [Použít Microsoft Authenticator k přihlášení z telefonu](microsoft-authenticator-app-phone-signin-faq.md)

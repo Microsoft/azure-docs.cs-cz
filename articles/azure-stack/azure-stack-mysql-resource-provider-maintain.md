@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 06/29/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: a1fadd0cfdb38452e86cfce643bebbfd746e8643
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: bc1c96d2f027d459ca20fccb70cd94ac9e5cae94
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085775"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130134"
 ---
 # <a name="mysql-resource-provider-maintenance-operations"></a>Operace údržby poskytovatele prostředků MySQL
 
@@ -81,11 +81,11 @@ Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
 
 # Install the update definitions.
 Invoke-Command -Session $session -ScriptBlock `
-    {Update-AzSDBAdapterWindowsDefenderDefinition -DefinitionsUpdatePackageFile "User:\"}
+    {Update-AzSDBAdapterWindowsDefenderDefinition -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
 
 # Cleanup the definitions package file and session.
 Invoke-Command -Session $session -ScriptBlock `
-    {Remove-AzSItemOnUserDrive -ItemPath "User:\"}
+    {Remove-AzSItemOnUserDrive -ItemPath "User:\mpam-fe.exe"}
 $session | Remove-PSSession
 
 ```
@@ -219,7 +219,7 @@ $destinationPackage = Join-Path -Path (Convert-Path '.') -ChildPath $logs
 Copy-Item -FromSession $session -Path $sourcePath -Destination $destinationPackage
 
 # Cleanup the logs.
-$cleanup = Invoke-Command -Session $session -ScriptBlock {Remove- AzsDBAdapterLog }
+$cleanup = Invoke-Command -Session $session -ScriptBlock {Remove-AzsDBAdapterLog}
 # Close the session.
 $session | Remove-PSSession
 

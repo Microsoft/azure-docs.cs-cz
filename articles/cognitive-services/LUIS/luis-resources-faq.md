@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: fd63ffd312e3ac17a6376eb3c9bef8f1978e3935
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f192c2f71208f3caf8a01a18a7023763f8de63c3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333611"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113132"
 ---
 # <a name="language-understanding-faq"></a>Nejčastější dotazy k pochopení jazyka
 
@@ -65,9 +65,9 @@ LEOŠ [tokenizes](luis-glossary.md#token) na základě utterance [jazykovou verz
 Systém musí používat nejvyšší vyhodnocování záměr bez ohledu na jeho hodnotu. Například skóre níže 0,5 (méně než 50 %) nutně znamenat, že LEOŠ má nízkou spolehlivosti. Poskytuje další data školení může přispět k vyšší skóre nejpravděpodobnější záměr.
 
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Proč nevidím moje koncový bod přístupů do mojí aplikace řídicího panelu?
-Koncový bod celkový počet přístupů do řídicího panelu vaší aplikace jsou pravidelně aktualizovány, ale metriku související s svůj klíč předplatného LEOŠ na portálu Azure jsou aktualizovány častěji. 
+Koncový bod celkový počet přístupů do řídicího panelu vaší aplikace jsou pravidelně aktualizovány, ale metriky přidružené klíče LEOŠ koncový bod na portálu Azure jsou aktualizovány častěji. 
 
-Pokud se nezobrazí aktualizované koncový bod přístupů do řídicího panelu, přihlaste se k portálu Azure a najít prostředek přidružené svůj klíč předplatného LEOŠ a otevřete **metriky** vyberte **celkový počet volání** metriku. Pokud klíč předplatného se používá pro více než jednu aplikaci LEOŠ, údaj na portálu Azure se zobrazí souhrnný počet volání z všechny LEOŠ aplikace, které ho používají.
+Pokud se nezobrazí aktualizované koncový bod přístupů do řídicího panelu, přihlaste se k portálu Azure a najít prostředek přidružené klíče LEOŠ koncový bod a otevřete **metriky** vyberte **celkový počet volání** metriku. Pokud klíč koncového bodu se používá pro více než jednu aplikaci LEOŠ, údaj na portálu Azure se zobrazí souhrnný počet volání z všechny LEOŠ aplikace, které ho používají.
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Aplikace My LEOŠ pracoval včera, ale ještě dnes zobrazuje chyby 403. Aplikace k nezměnil Jakým způsobem ji lze upravit? 
 Následující [pokyny](#how-do-i-create-and-assign-a-luis-endpoint-key) v další – nejčastější dotazy k vytvoření klíče LEOŠ koncový bod a přiřaďte ho do aplikace. Pak musíte změnit požadavek HTTP na koncový bod pro [používání nového klíče koncový bod](luis-concept-keys.md#use-endpoint-key-in-query).
@@ -115,8 +115,9 @@ V Azure představuje klienta, klient nebo organizace, který je spojen s služby
 
 ![ID klienta v portálu Azure](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
-### <a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>Proč jsou existuje další předplatné klíče v mojí aplikaci publikovat stránku než jsou přiděleny do aplikace? 
-Každá aplikace LEOŠ má klíč vytváření obsahu nebo spuštění. LEOŠ předplatné klíče vytvořené během časového rámce GA se zobrazí na stránku publikovat bez ohledu na to, pokud jste přidali do aplikace. K tomu bylo potřeba usnadnění GA migrace. Všechny nové předplatné klíče LEOŠ se nezobrazí na stránce publikovat. 
+<a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
+### <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>Proč jsou existuje další koncový bod klíče v mojí aplikaci publikovat stránku než jsou přiděleny do aplikace? 
+Každá aplikace LEOŠ má klíč vytváření obsahu nebo spuštění. LEOŠ koncový bod klíče vytvořené během časového rámce GA se zobrazí na stránku publikovat bez ohledu na to, pokud jste přidali do aplikace. K tomu bylo potřeba usnadnění GA migrace. Všechny nové klíče LEOŠ koncový bod se nezobrazí na stránce publikovat. 
 
 ## <a name="app-management"></a>Správa aplikací
 
@@ -153,7 +154,7 @@ Pokud používáte protokol pro analýzu předpovědi, není zachytit utterances
 ## <a name="app-notification"></a>Oznámení aplikace
 
 ### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>Proč získat e-mailu, že jsem téměř mimo kvótu?
-Klíč pro tvorbu nebo spuštění je povolené jenom 1000 koncový bod dotazuje za měsíc. Vytvořte klíč předplatného LEOŠ (volné nebo placené) a používat při provádění dotazů koncový bod. Pokud bude z robotu nebo jinou aplikaci klienta se koncový bod dotazy, potřebujete změnit klíč koncového bodu LEOŠ existuje. 
+Klíč pro tvorbu nebo spuštění je povolené jenom 1000 koncový bod dotazuje za měsíc. Vytvořte klíč koncového bodu LEOŠ (volné nebo placené) a používat při provádění dotazů koncový bod. Pokud bude z robotu nebo jinou aplikaci klienta se koncový bod dotazy, potřebujete změnit klíč koncového bodu LEOŠ existuje. 
 
 ## <a name="integrating-luis"></a>Integrace LEOŠ
 
@@ -167,7 +168,7 @@ Pokud vyberete šablonu LEOŠ a vyberte **vyberte** tlačítko v podokně šablo
 
 ## <a name="luis-service"></a>LEOŠ služby 
 
-### <a name="is-luis-available-on-premise-or-in-private-cloud"></a>Je LEOŠ k dispozici místní nebo v privátním cloudu?
+### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>Je k dispozici místní LEOŠ nebo v privátním cloudu?
 Ne. 
 
 ## <a name="changes-to-the-docs"></a>Změny v dokumentaci
@@ -201,7 +202,7 @@ Další vytváření [rozhraní API trasy](https://github.com/Microsoft/LUIS-Sam
 Videa: 
 * [Azure pátek v sestavení 2018: Kognitivní služeb - Language (LEOŠ)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
 * [Sestavení 2018 AI zobrazit - co je nového službou znalosti jazyka](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
-* [Sestavení 2018 relace - intelligence, funkce a NLU robota osvědčené postupy](https://channel9.msdn.com/events/Build/2018/BRK3208)
+* [Seminář na konferenci Build 2018 – Inteligence robotů, možnosti využití řeči a osvědčené postupy NLU](https://channel9.msdn.com/events/Build/2018/BRK3208)
 * [Sestavení 2018 - LEOŠ aktualizace](https://channel9.msdn.com/events/Build/2018/THR3118/player)
 
 Projekty: 

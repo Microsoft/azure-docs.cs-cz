@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
 ms.author: mbaldwin
-ms.openlocfilehash: 83e69701aa5e8c11354e7551d66f3fdd18289000
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 147b0b9b4a3fe789544457d17fed3d29badbe12c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29937304"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113948"
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Průvodce Vytvořit šablonu řešení pro Azure Marketplace
-Po dokončení kroku 1, [vytváření účtů a registrace][link-acct-creation], jsme vám na základě na vytvoření šablony řešení kompatibilní s Azure v [technické požadavky pro vytvoření šablony řešení](marketplace-publishing-solution-template-creation-prerequisites.md). Nyní jsme vás provede kroky pro vytvoření šablony řešení pro víc virtuálních počítačů na [publikování portál] [ link-pubportal] pro Azure Marketplace.
+Po dokončení kroku 1, [vytváření účtů a registrace][link-acct-creation], jsme vám na základě na vytvoření šablony řešení kompatibilní s Azure v [technické požadavky pro vytváření Šablona řešení](marketplace-publishing-solution-template-creation-prerequisites.md). Nyní jsme vás provede kroky pro vytvoření šablony řešení pro víc virtuálních počítačů na [publikování portál] [ link-pubportal] pro Azure Marketplace.
 
 ## <a name="create-your-solution-template-offer-in-the-publishing-portal"></a>Vytvořit nabídku šablony řešení na portálu publikování
 Přejděte na [ https://publish.windowsazure.com ](http://publish.windowsazure.com). Při prvním přihlášení k [publikování portál](https://publish.windowsazure.com/), použijte stejný účet, který byl zaregistrován profil prodejce vaší společnosti. Každý zaměstnanec vaší společnosti můžete později přidat jako spolusprávce na portálu pro publikování.
@@ -60,7 +60,7 @@ Teď, když jste vytvořili šablony řešení a nahrát soubor zip, postupujte 
 Může být také zájem o tyto související články:
 
 * Image virtuálních počítačů: [o Image virtuálních počítačů v Azure](https://msdn.microsoft.com/library/azure/dn790290.aspx)
-* Rozšíření virtuálního počítače: [agenta virtuálního počítače a přehled rozšíření virtuálního počítače](https://msdn.microsoft.com/library/azure/dn832621.aspx) a [rozšíření virtuálního počítače Azure a funkce](https://msdn.microsoft.com/library/azure/dn606311.aspx)
+* Rozšíření virtuálního počítače: [agenta virtuálního počítače a přehled rozšíření virtuálního počítače](https://msdn.microsoft.com/library/azure/dn832621.aspx) a [rozšíření virtuálního počítače Azure a funkce](https://docs.microsoft.com/azure/virtual-machines/extensions/features-windows)
 * Azure Resource Manager: [vytváření šablon Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) a [příklady jednoduchou šablonu](https://github.com/rjmax/ArmExamples)
 * Omezení účtu úložiště: [monitorování omezení účtu úložiště](http://blogs.msdn.com/b/mast/archive/2014/08/02/how-to-monitor-for-storage-account-throttling.aspx) a [storage úrovně Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)
 

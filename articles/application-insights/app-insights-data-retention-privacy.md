@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/07/2017
+ms.date: 06/29/2018
 ms.author: mbullwin
-ms.openlocfilehash: 95e576eb5ce6834e67d997cde57426fd09db4e6a
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
-ms.translationtype: HT
+ms.openlocfilehash: 897671ef592ac691402a4e452f7a0baa04aa228a
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099792"
+ms.locfileid: "37129053"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Shromažďování, uchování a ukládání dat v nástroji Application Insights
 
@@ -126,19 +126,57 @@ Není v serverech v současné době.
 Všechna data se šifrují, když se přesunuje mezi datovými centry.
 
 #### <a name="is-the-data-encrypted-in-transit-from-my-application-to-application-insights-servers"></a>Má tato data šifrovat během přenosu z mé aplikace na servery Application Insights?
-Ano, používáme protokol https k odesílání dat do portálu od skoro všech sad SDK, včetně webových serverů, zařízení a HTTPS webové stránky. Jedinou výjimkou je dat odesílaných ze prostý webové stránky HTTP. 
+Ano, používáme protokol https k odesílání dat do portálu od skoro všech sad SDK, včetně webových serverů, zařízení a HTTPS webové stránky. Jedinou výjimkou je dat odesílaných ze prostý webové stránky HTTP.
+
+## <a name="how-do-i-send-data-to-application-insights-using-tls-12"></a>Jak se odesílají data do služby Application Insights pomocí protokolu TLS 1.2?
+
+Zajistit zabezpečení dat při přenosu do koncových bodů služby Application Insights, doporučujeme důrazně zákazníkům, nakonfigurovat jejich aplikace použijte alespoň zabezpečení TLS (Transport Layer) 1.2. Chyba zabezpečení byly zjištěny starší verze protokolu TLS/Secure Sockets Layer (SSL) a když pracují stále aktuálně povolit zpětné kompatibility, jsou **nedoporučuje**, a v odvětví je rychle se měnící ukončil podpory pro tyto starší protokoly. 
+
+[Council standardy zabezpečení PCI](https://www.pcisecuritystandards.org/) nastavil [termínu 30. června 2018](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) zakázat starší verze na více bezpečné protokoly TLS/SSL a upgradu. Jakmile Azure zahodí podporuje starší verze, pokud vaše aplikace nebo klienti nemůžou komunikovat přes alespoň TLS 1.2 již nebude možné odesílat data do služby Application Insights. Přístupů, které můžete použít k testování a validaci podporu protokolu TLS vaší aplikace se bude lišit v závislosti na operačním systému nebo platformy, jakož i jazyk nebo rozhraní, které vaše aplikace používá.
+
+Nedoporučujeme explicitně nastavení aplikace používat jenom TLS 1.2, pokud není nezbytně nutné, protože to může dojít k narušení zabezpečení na úrovni funkcí platformy, které vám umožní automaticky zjistit a využít výhod novější bezpečnější protokoly, které jsou zrovna k dispozici jako je například TLS 1.3. Doporučujeme provádět důkladné auditu kódu vaší aplikace zkontrolujte hardcoding konkrétních verzí protokolu TLS/SSL.
+
+### <a name="platformlanguage-specific-guidance"></a>Konkrétní pokyny platformy nebo jazyk
+
+|Platforma/jazyk | Podpora | Další informace |
+| --- | --- | --- |
+| Azure App Services  | Podporované, konfigurace mohou být vyžadovány. | Podpora byl oznámen v dubnu 2018. Přečtěte si sdělení pro [podrobnosti konfigurace](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/).  |
+| Aplikace Azure – funkce | Podporované, konfigurace mohou být vyžadovány. | Podpora byl oznámen v dubnu 2018. Přečtěte si sdělení pro [podrobnosti konfigurace](https://blogs.msdn.microsoft.com/appserviceteam/2018/04/17/app-service-and-functions-hosted-apps-can-now-update-tls-versions/). |
+|.NET | Podporované, konfigurace se liší podle verze. | Informace o podrobnou konfiguraci pro rozhraní .NET 4.7 a starší verze najdete v části [tyto pokyny](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12).  |
+|Monitorování stavu | Požadována podporované konfigurace. | Monitorování stavu spoléhá na [konfigurace operačního systému](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) + [konfigurace .NET](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12) podpory protokolu TLS 1.2.
+|Node.js |  Podporované v v10.5.0, konfigurace mohou být vyžadovány. | Použití [oficiální dokumentaci Node.js TLS/SSL](https://nodejs.org/api/tls.html) pro všechny konfigurace pro konkrétní aplikace. |
+|Java | Podporované, v byla přidána podpora JDK pro TLS 1.2 [aktualizace JDK 6 121](http://www.oracle.com/technetwork/java/javase/overview-156328.html#R160_121) a [JDK 7](http://www.oracle.com/technetwork/java/javase/7u131-relnotes-3338543.html). | Používá JDK 8 [TLS 1.2 ve výchozím nastavení](https://blogs.oracle.com/java-platform-group/jdk-8-will-use-tls-12-as-default).  |
+|Linux | Zpravidla spoléhají na Linuxových distribucích [OpenSSL](https://www.openssl.org) podpora protokolu TLS 1.2.  | Zkontrolujte [protokol změn OpenSSL](https://www.openssl.org/news/changelog.html) potvrďte vaše verze OpenSSL není podporovaná.|
+| Windows 8.0 10 | Podporované a ve výchozím nastavení povolené. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings).  |
+| Windows Server 2012 2016 | Podporované a ve výchozím nastavení povolené. | Potvrďte, že stále používáte [výchozí nastavení](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) |
+| Windows 7 SP1 a Windows Server 2008 R2 SP1 | Podporované, ale není povoleno ve výchozím nastavení. | Najdete v článku [zabezpečení TLS (Transport Layer), nastavení registru](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings) stránku Podrobnosti o tom, jak povolit.  |
+| Windows Server 2008 SP2 | Podpora pro TLS 1.2 vyžaduje aktualizaci. | V tématu [aktualizace přidání podpory pro TLS 1.2](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s) v systému Windows Server 2008 SP2. |
+|Windows Vista | Nepodporuje se. | neuvedeno
+
+### <a name="check-what-version-of-openssl-your-linux-distribution-is-running"></a>Zkontrolujte, jaké verze OpenSSL distribuční Linux běží.
+
+Pokud chcete zkontrolovat, jaká verze OpenSSL jste nainstalovali, otevřete terminál a spusťte:
+
+```terminal
+openssl version -a
+```
+
+### <a name="run-a-test-tls-12-transaction-on-linux"></a>Spuštění testu TLS 1.2 transakce v systému Linux
+
+Ke spuštění základní předběžný test ke zjištění, pokud váš systém Linux komunikovat přes TLS 1.2. Otevřete terminál a spusťte:
+
+```terminal
+openssl s_client -connect bing.com:443 -tls1_2
+```
 
 ## <a name="personal-data-stored-in-application-insights"></a>Osobní data uložená ve službě Application Insights
 
-Naše [Application Insights osobní data článku](app-insights-customer-data.md) popisuje Toto téma podrobné.
+Naše [Application Insights osobní data článku](app-insights-customer-data.md) tento problém podrobné.
 
 #### <a name="can-my-users-turn-off-application-insights"></a>Moji uživatelé vypnout Application Insights?
 Ne přímo. Poskytujeme nemáte přepínač, který vaši uživatelé mohou pracovat vypnout Application Insights.
 
 Však můžete implementovat této funkce ve vaší aplikaci. Sady SDK zahrnout nastavení rozhraní API, který vypne telemetrii kolekce. 
-
-#### <a name="my-application-is-unintentionally-collecting-sensitive-information-can-application-insights-scrub-this-data-so-it-isnt-retained"></a>Moje aplikace neúmyslně shromažďuje citlivé informace. Můžete Application Insights přesouváním tato data, není zachována?
-Application Insights filtrovat nebo odstraňovat data. Měli byste správně spravovat data a vyhnout odesílání taková data do služby Application Insights.
 
 ## <a name="data-sent-by-application-insights"></a>Data odeslaná Application Insights
 Sady SDK se liší mezi platformami a několik součástí, které můžete nainstalovat. (Odkazovat na [Application Insights - přehled][start].) Jednotlivé komponenty odešle různých data.

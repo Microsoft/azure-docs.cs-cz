@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: 72f5215bac9254c9e3295b2cade7b6d44d516af6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2c988f8651d0ae9a8662b502ca2ba2dbabb2defe
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637731"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37115926"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Sestavení a nasazení bitové kopie klasifikační modely pomocí Azure Machine Learning
 
@@ -34,7 +34,7 @@ Při vytváření a nasazování tento model se AMLPCV, můžete přejít pomoc�
 7. Nasazení webové služby
 8. Webová služba zátěžové testování
 
-[CNTK](https://www.microsoft.com/cognitive-toolkit/) slouží jako rozhraní hloubkové learning školení je prováděn lokálně na počítači GPU používá technologii, jako ([hloubkové učení datové vědy VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), a nasazení používá rozhraní příkazového řádku Azure ML Operationalization.
+[CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/) slouží jako rozhraní hloubkové learning školení je prováděn lokálně na počítači GPU používá technologii, jako ([hloubkové učení datové vědy VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview)), a nasazení používá rozhraní příkazového řádku Azure ML Operationalization.
 
 Obrátit [balíček referenční dokumentaci k nástroji](https://aka.ms/aml-packages/vision) pro podrobné referenční informace pro každý modul a třída.
 

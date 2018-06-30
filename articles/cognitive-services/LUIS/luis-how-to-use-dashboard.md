@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: v-geberr
-ms.openlocfilehash: 4e117aa734c551f76c3602f81e3e2ebc6aa9f337
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c7ef38e2f2edaf795d3d76706afd4aa09b3b6959
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343830"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110044"
 ---
 # <a name="application-dashboard"></a>Řídicí panel aplikací
 Řídicí panel aplikace umožňuje sledování aplikace na první pohled jeden. **Řídicí panel** zobrazí při otevření aplikace klepnutím na název aplikace v **Moje aplikace** stránce vyberte **řídicí panel** z horním panelu. 
@@ -69,7 +69,7 @@ Výběr období, které chcete zobrazit v grafu:
 2. Vyberte období ze seznamu a pak klikněte na šipku zpět ![Šipku zpět](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) Chcete-li zobrazit graf.
 
 ### <a name="key-usage"></a>Použití klíče
-Počet přístupů k používán z klíč předplatného aplikace. Další informace o klíčích předplatné, najdete v části [klíče v LEOŠ](luis-concept-keys.md). 
+Počet přístupů k používán z klíč koncového bodu aplikace. Další informace o klíčích koncový bod, najdete v části [klíče v LEOŠ](luis-concept-keys.md). 
   
 ## <a name="intent-breakdown"></a>Záměrné rozdělení
 **Záměr rozpis** zobrazí rozpis záměry na základě s popiskem utterances nebo koncový bod přístupů. Toto souhrnné grafy zobrazují relativní důležitost každý záměr v aplikaci. Po přesunutí ukazatele myši ukazatele myši řez, zobrazí název záměrné a procento, které představuje celkový počet přístupů k s popiskem utterances nebo koncového bodu. 

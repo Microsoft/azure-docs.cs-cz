@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5241c62e8b423b20477fc72c87303daf3d4ab43c
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 98a5af1c0b321b7f9acf2bfd936a16d22088babf
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316745"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128856"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>Sestavování řešení Batch pomocí šablony projektů Visual Studio
 
@@ -216,7 +216,7 @@ job.JobManagerTask.EnvironmentSettings = new [] {
 ```
 **Přihlašovací údaje úložiště**
 
-Klient obvykle není nutné poskytnout pověření k účtu propojené úložiště na úkolu Správce úloh, protože není nutné explicitně přístup propojený účet úložiště (a) nejvíce Správci úloh a (b) propojený účet úložiště se často poskytuje na všechny úlohy jako běžné nastavení prostředí pro úlohu. Pokud nejsou poskytuje propojený účet úložiště pomocí běžných nastavení prostředí a Správce úloh vyžaduje přístup k propojené úložiště, pak by měl zadáte přihlašovacích údajů propojené úložiště následujícím způsobem:
+Klient obvykle není nutné poskytnout pověření k účtu propojené úložiště na úkolu Správce úloh, protože není nutné explicitně přístup propojený účet úložiště (a) většina Správci úloh a (b) propojený účet úložiště se často poskytuje na všechny úlohy, jako Běžné nastavení prostředí pro úlohu. Pokud nejsou poskytuje propojený účet úložiště pomocí běžných nastavení prostředí a Správce úloh vyžaduje přístup k propojené úložiště, pak by měl zadáte přihlašovacích údajů propojené úložiště následujícím způsobem:
 
 ```csharp
 job.JobManagerTask.EnvironmentSettings = new [] {
@@ -362,7 +362,7 @@ Implementace Run() má přístup k:
 
 **Selhání úlohy**
 
-V případě selhání můžete k ukončení metodu Run() došlo k výjimce, ale zůstane obslužná rutina výjimky nejvyšší úrovně v prvku kód ukončení úkolů. Pokud potřebujete řídit ukončovací kód, aby mohl rozlišit různé typy selhání, například k diagnostickým účelům nebo protože některé selhání režimy musí ukončit úlohu a ostatní neměli, musí ukončit metodu Run() vrácením nenulový ukončovací kód. To se stane kód ukončení úkolů.
+V případě selhání můžete k ukončení metodu Run() došlo k výjimce, ale zůstane obslužná rutina výjimky nejvyšší úrovně v prvku kód ukončení úkolů. Pokud potřebujete řídit ukončovací kód, aby mohl rozlišit různé typy selhání, například k diagnostickým účelům nebo protože některé selhání režimy musí ukončit úlohu a ostatní neměli, pak by měl ukončení metodu Run() vrácením nenulovou hodnotou ukončovací kód. To se stane kód ukončení úkolů.
 
 ### <a name="exit-codes-and-exceptions-in-the-task-processor-template"></a>Kódy ukončení a výjimky v šabloně úlohy procesoru
 Kódy ukončení a výjimky poskytují mechanismus určit výsledek spuštění programu, a můžou pomoct zjistit případné problémy s spuštění programu. Šablony úloh procesoru implementuje ukončovacích kódů a výjimek popsaných v této části.
@@ -385,7 +385,7 @@ Všechny informace vrácené výjimky jsou zapsána do stdout.txt a stderr.txt s
 ### <a name="client-considerations"></a>Důležité informace o klientech
 **Přihlašovací údaje úložiště**
 
-Pokud procesor úloh používá úložiště objektů blob v Azure k uchování výstupů, například pomocí souboru konvence pomocné knihovny, pak potřebuje přístup k *buď* údaje k účtu úložiště cloudu *nebo* adresu URL kontejneru objektů blob, která zahrnuje sdílený přístupový podpis (SAS). Šablona zahrnuje podporu poskytování pověření prostřednictvím společné proměnné prostředí. Váš klient může předat přihlašovacích údajů úložiště následujícím způsobem:
+Pokud procesor úloh používá úložiště objektů blob v Azure k uchování výstupů, například pomocí souboru konvence pomocné knihovny, pak potřebuje přístup k *buď* údaje k účtu úložiště cloudu *nebo* objektu blob Adresa URL kontejneru, která zahrnuje sdílený přístupový podpis (SAS). Šablona zahrnuje podporu poskytování pověření prostřednictvím společné proměnné prostředí. Váš klient může předat přihlašovacích údajů úložiště následujícím způsobem:
 
 ```csharp
 job.CommonEnvironmentSettings = new [] {
@@ -439,10 +439,7 @@ Parameters.JSON tímto kódem a pokud zjistila, že ho načte jako slovník para
 ### <a name="persist-job-and-task-output-to-azure-storage"></a>Zachovat výstup úlohy a úkolů do úložiště Azure.
 Další užitečné nástroje při vývoji řešení Batch je [Azure Batch souboru konvence][nuget_package]. Tato knihovna tříd rozhraní .NET (momentálně ve verzi preview) v aplikacích Batch .NET pomocí snadno ukládání a načítání úloh výstupy do a z Azure Storage. [Zachovat výstup úlohy a úlohy Azure Batch](batch-task-output.md) obsahuje úplnou diskusi o knihovně a jeho použití.
 
-### <a name="batch-forum"></a>Fórum batch
-[Fóru služby Azure Batch] [ forum] na webu MSDN je skvělým místem popisují Batch a klást otázky týkající se služby. HEAD na přes pro užitečné "rychlé" příspěvky a při jejich vzniku při sestavování řešení Batch zveřejněte svoje otázky.
 
-[forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [net_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.jobmanagertask.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [nuget_package]: https://www.nuget.org/packages/Microsoft.Azure.Batch.Conventions.Files

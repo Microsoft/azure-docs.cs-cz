@@ -2,18 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: virtual-machines
-author: rogara
+author: roygara
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 812f11a1ced3bac765441bf66f402abb4da4bc3f
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.openlocfilehash: d05d6d4a8bfc4450de4881e704b0e9f7b7b4716d
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35414565"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37138139"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Nejčastější dotazy týkající se disky virtuálního počítače Azure IaaS a spravovanými a nespravovanými prémiové disky
 
@@ -102,7 +102,7 @@ Zákazníci můžete pořízení snímku jejich spravované disky a potom pomoc�
 Ano, jsou podporovány nespravované a spravované disky. Doporučujeme používat spravované disky pro nové úlohy a migraci vašich aktuální zatížení na spravované disky.
 
 
-**Je-li vytvořit 128 GB disk a poté zvýšit velikost 130 GB, bude I vám účtována další velikost disku (512 GB)?**
+**Je-li vytvořit 128 GB disk a poté zvýšit velikost 130 GB, bude I vám účtována další velikost disku (256 GB)?**
 
 Ano.
 
@@ -209,11 +209,11 @@ Ne.
 
 **Je šifrování služby úložiště k dispozici pouze v určitých oblastí?**
 
-Ne. Je k dispozici ve všech oblastech, kde spravované disky jsou dostupné. Spravované disků je k dispozici ve všech veřejných oblastí a Německu.
+Ne. Je k dispozici ve všech oblastech, kde spravované disky jsou dostupné. Spravované disků je k dispozici ve všech veřejných oblastí a Německu. Je také dostupná v Číně, ale pouze pro spravované Microsoft klíče, nejsou spravované klíče zákazníků.
 
 **Jak můžete zjistit, pokud je zašifrovaná Moje spravovaných disků?**
 
-Můžete získat čas vytvoření spravovaného disku z portálu Azure, rozhraní příkazového řádku Azure a prostředí PowerShell. Pokud je doba po 9. června 2017, se šifrují na disku. 
+Můžete získat čas vytvoření spravovaného disku z portálu Azure, rozhraní příkazového řádku Azure a prostředí PowerShell. Pokud je doba po 9. června 2017, se šifrují na disku.
 
 **Jak můžete šifrovat Můj stávající disky, které byly vytvořeny před 10 června 2017?**
 

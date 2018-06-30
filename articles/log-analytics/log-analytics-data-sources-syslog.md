@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 011eaf1a4705f9078225b9b871f81b4333b05ee8
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.component: na
+ms.openlocfilehash: 1e7806e802f9b1dda16a9d5d477783663d03d416
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34011090"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131782"
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Syslog zdroje dat v analýzy protokolů
 Syslog je protokol protokolování událostí, které je běžné Linux.  Aplikace bude odesílat zprávy, které mohou být uloženy v místním počítači nebo doručit do kolekce Syslog.  Pokud je nainstalován Agent OMS pro Linux, nakonfiguruje místní démon procesu Syslog předávání zpráv do agenta.  Agent pak odešle zprávu k analýze protokolů, které se vytvoří odpovídající záznam v úložišti OMS.  
@@ -189,11 +190,11 @@ Zaznamenává Syslog mít typ **Syslog** a mít vlastnosti v následující tabu
 | Počítač |Počítač, který událost nebyla shromážděna z. |
 | Zařízení |Definuje část systému, který vygeneroval zprávu. |
 | HostIP |IP adresa systému odeslání zprávy. |
-| Název hostitele |Název systému odeslání zprávy. |
+| název hostitele |Název systému odeslání zprávy. |
 | Úroveň závažnosti |Úroveň závažnosti události. |
 | SyslogMessage |Text zprávy. |
-| ID procesu |ID procesu, který vygeneroval zprávu. |
-| eventTime |Datum a čas, která byla vygenerována událost. |
+| ProcessID |ID procesu, který vygeneroval zprávu. |
+| EventTime |Datum a čas, která byla vygenerována událost. |
 
 ## <a name="log-queries-with-syslog-records"></a>Dotazy protokolu se záznamy Syslog
 Následující tabulka obsahuje různé příklady dotazů protokolu, která načítají záznamy Syslog.

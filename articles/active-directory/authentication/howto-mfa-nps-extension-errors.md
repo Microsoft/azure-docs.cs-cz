@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 74a660f7240b9ae6138c402dbbb418bbc665dc3c
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 5f25213d8d1fbc95aa419c86ca5b780f345952ed
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098698"
+ms.locfileid: "37130195"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Vyřešte chybové zprávy z NPS rozšíření pro Azure Multi-Factor Authentication
 
@@ -96,7 +96,7 @@ Pokud některé z těchto chyb narazíte, doporučujeme vám [obraťte se na pod
 
 ### <a name="troubleshoot-user-accounts"></a>Řešení potíží s uživatelské účty
 
-Pokud jsou vaši uživatelé [došlo k potížím s dvoustupnovym overovanim](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-troubleshoot.md), pomoci jim samoobslužné diagnostikovat problémy. 
+Pokud jsou vaši uživatelé [došlo k potížím s dvoustupnovym overovanim](end-user/current/multi-factor-authentication-end-user-troubleshoot.md), pomoci jim samoobslužné diagnostikovat problémy. 
 
 ### <a name="contact-microsoft-support"></a>Kontaktovat podporu Microsoftu
 

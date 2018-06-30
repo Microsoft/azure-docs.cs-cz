@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/06/2018
+ms.date: 06/28/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 861b4ca360ef3fb9bc752d79009570ee2cfc9ade
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 7de9700b41b08e2769ba337dcd5760fdf7ab246b
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36294492"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37114639"
 ---
 # <a name="built-in-roles-in-azure"></a>Předdefinované role v Azure
 [Řízení přístupu na základě role (RBAC)](overview.md) má několik definic předdefinovaná role, které můžete přiřadit uživatele, skupiny a objekty služby. Přiřazení role představují způsob, jak můžete řídit přístup k prostředkům v Azure. Pokud předdefinované role nesplňují specifické požadavky vaší organizace, můžete vytvořit vlastní [vlastní role](custom-roles.md).
@@ -35,11 +35,11 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 | --- | --- |
 | [Vlastník](#owner) | Umožňuje správu všech položek včetně přístupu k prostředkům. |
 | [Přispěvatel](#contributor) | Umožňuje správu všech položek kromě přístupu k prostředkům. |
-| [Čtecí modul](#reader) | Umožňuje zobrazit všechny položky, ale ne provádět změny. |
+| [Čtenář](#reader) | Umožňuje zobrazit všechny položky, ale ne provádět změny. |
 | [AcrImageSigner](#acrimagesigner) | podepisující osoba image ACR |
 | [AcrQuarantineReader](#acrquarantinereader) | čtenář dat karantény ACR |
 | [AcrQuarantineWriter](#acrquarantinewriter) | zapisovatel dat karantény ACR |
-| [Rozhraní API správy služby přispěvatele](#api-management-service-contributor) | Můžete spravovat služby a rozhraní API |
+| [Rozhraní API správy služby přispěvatele](#api-management-service-contributor) | Umožňuje správu služeb API Management, ale ne přístup k nim. |
 | [Role operátora služby API Management](#api-management-service-operator-role) | Může spravovat službu, ale ne rozhraní API. |
 | [Role čtenáře služby API Management](#api-management-service-reader-role) | Přístup ke službě a rozhraním API jen ke čtení |
 | [Application Insights součást Přispěvatel](#application-insights-component-contributor) | Může spravovat součásti Application Insights. |
@@ -51,7 +51,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 | [Zálohování přispěvatele](#backup-contributor) | Umožňuje spravovat službu zálohování, ale neumožňuje vytvářet trezory a udělovat přístup ostatním uživatelům. |
 | [Operátor zálohování](#backup-operator) | Umožňuje spravovat služby zálohování s výjimkou odebírání záloh, vytváření trezorů a udělování přístupu jiným uživatelům. |
 | [Zálohování čtečky](#backup-reader) | Může zobrazovat služby zálohování, ale nemůže provádět změny. |
-| [Čtečka fakturace](#billing-reader) | Povolí přístup pro čtení fakturačních údajů. |
+| [Čtečka fakturace](#billing-reader) | Umožňuje načíst fakturační údaje |
 | [BizTalk přispěvatele](#biztalk-contributor) | Umožňuje správu služeb BizTalk, ale ne přístup k nim. |
 | [Přispěvatel koncový bod CDN](#cdn-endpoint-contributor) | Může spravovat koncové body CDN, ale nemůže udělovat přístup jiným uživatelům. |
 | [Čtečka koncový bod CDN](#cdn-endpoint-reader) | Může zobrazovat koncové body CDN, ale nemůže je měnit. |
@@ -63,10 +63,10 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 | [Přispěvatel Classic virtuálních počítačů](#classic-virtual-machine-contributor) | Umožňuje správu klasických virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým jsou připojené. |
 | [Databáze MySQL cleardb – DB přispěvatele](#cleardb-mysql-db-contributor) | Umožňuje správu databází ClearDB MySQL, ale ne přístup k nim. |
 | [Role čtenáře účet cosmos DB](#cosmos-db-account-reader-role) | Můžete číst data účtu Azure Cosmos DB. V tématu [Přispěvatel účet DocumentDB](#documentdb-account-contributor) pro správu účtů Azure Cosmos DB. |
-| [Přispěvatel objekt pro vytváření dat](#data-factory-contributor) | Vytvoření a Správa objektů pro vytváření dat, jakož i podřízené prostředky v nich. |
+| [Přispěvatel objekt pro vytváření dat](#data-factory-contributor) | Umožňuje správu služeb Data Factory, ale ne přístup k nim. |
 | [Data Lake Analytics vývojáře](#data-lake-analytics-developer) | Umožňuje odesílat, monitorovat a spravovat vlastní úlohy, ale neumožňuje vytvářet ani odstraňovat účty Data Lake Analytics. |
 | [Purger dat](#data-purger) | Můžete vyprázdnit analytická data |
-| [Uživatel DevTest Labs](#devtest-labs-user) | Umožňuje spouštět, restartovat a vypínat virtuální počítače v Azure DevTest Labs a připojovat se k nim. |
+| [Uživatel DevTest Labs](#devtest-labs-user) | Umožňuje připojit, spuštění, restart a vypnutí virtuálního počítače ve vašem Azure DevTest Labs. |
 | [Přispěvatel zóny DNS](#dns-zone-contributor) | Umožňuje spravovat zóny DNS a sady záznamů v Azure DNS, ale neumožňuje řídit, kdo k nim má přístup. |
 | [Přispěvatel účtu DocumentDB](#documentdb-account-contributor) | Ke správě účtů Azure Cosmos DB. Azure Cosmos DB je dříve označované jako DocumentDB. |
 | [Přispěvatel účet inteligentních systémů](#intelligent-systems-account-contributor) | Umožňuje správu účtů inteligentních systémů, ale ne přístup k nim. |
@@ -88,7 +88,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 | [Přispěvatel kolekce úloh plánovače](#scheduler-job-collections-contributor) | Umožňuje správu kolekcí úloh Scheduleru, ale ne přístup k nim. |
 | [Přispěvatel služby vyhledávání](#search-service-contributor) | Umožňuje správu služeb Search, ale ne přístup k nim. |
 | [Správce zabezpečení](#security-admin) | V Centru zabezpečení pouze: můžete zobrazit zásady zabezpečení, zobrazit stavy zabezpečení, upravit zásady zabezpečení, zobrazení výstrah a doporučení, zavření výstrahy a doporučení |
-| [Správce zabezpečení (zastaralé)](#security-manager-legacy) | Toto je starší verze role. Místo toho použijte Správce zabezpečení. |
+| [Správce zabezpečení](#security-manager) | Umožňuje správu součástí zabezpečení, zásad zabezpečení a virtuálních počítačů. |
 | [Čtečka zabezpečení](#security-reader) | V Centru zabezpečení pouze: můžete zobrazit doporučení a výstrahy, zobrazení zásady zabezpečení, zobrazit stavy zabezpečení, ale nelze provádět změny |
 | [Přispěvatel obnovení lokality](#site-recovery-contributor) | Umožňuje spravovat službu Site Recovery, ale ne vytvářet trezory a přiřazovat role. |
 | [Operátor obnovení lokality](#site-recovery-operator) | Umožňuje provádět převzetí služeb při selhání a navrácení služeb po obnovení, ale žádné jiné operace správy služby Site Recovery. |
@@ -105,9 +105,9 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 | [Přispěvatel žádosti o podporu](#support-request-contributor) | Umožňuje vytvořit a spravovat žádosti o podporu. |
 | [Přispěvatel Traffic Manageru](#traffic-manager-contributor) | Umožňuje spravovat profily Traffic Manageru, ale neumožňuje řídit, kdo k nim má přístup. |
 | [Správce přístupu uživatelů](#user-access-administrator) | Umožňuje správu přístupu uživatelů k prostředkům Azure. |
-| [Přihlášení správce virtuálních počítačů](#virtual-machine-administrator-login) | –  Uživatelé s touto rolí se budou moct přihlašovat k virtuálnímu počítači s oprávněními správce Windows nebo uživatele root v Linuxu. |
+| [Přihlášení správce virtuálních počítačů](#virtual-machine-administrator-login) | Zobrazení virtuálních počítačů v portálu a přihlaste se jako správce |
 | [Přispěvatel virtuálních počítačů](#virtual-machine-contributor) | Umožňuje spravovat virtuální počítače, ale ne přístup k nim a ne virtuální sítě nebo účet úložiště, který jste připojení k. |
-| [Přihlášení uživatele virtuálního počítače](#virtual-machine-user-login) | Uživatelé s touto rolí se budou moct přihlašovat k virtuálnímu počítači jako běžní uživatelé. |
+| [Přihlášení uživatele virtuálního počítače](#virtual-machine-user-login) | Zobrazení virtuálních počítačů v portálu a přihlaste se jako běžný uživatel. |
 | [Plán přispěvatelů webu](#web-plan-contributor) | Umožňuje správu webových plánů pro weby, ale ne přístup k nim. |
 | [Přispěvatel webu](#website-contributor) | Umožňuje správu webů (ne webových plánů), ale ne přístup k nim. |
 
@@ -178,7 +178,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Můžete spravovat služby a rozhraní API |
+> | **Popis** | Umožňuje správu služeb API Management, ale ne přístup k nim. |
 > | **ID** | 312a565d-c81f-4fd8-895a-4e21e48d571c |
 > | **Akce** |  |
 > | Microsoft.ApiManagement/service/* | Vytvářet a spravovat služby API Management |
@@ -383,14 +383,18 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Čtení rolí a přiřazení rolí |
 > | Microsoft.Network/virtualNetworks/read | Získat definici virtuální sítě |
+> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp je interní operace, kterou používá služba |
+> | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | Vrátí stav operace |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | Načte výsledky operace provedené na kontejneru ochrany. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | Provede zálohování chráněné položky. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | Načte výsledky operace provedené na chráněných položkách. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | Načte stav operace provedené na chráněných položkách. |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | Vrátí podrobnosti o objektu chráněné položky |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | Zřízení rychlých položky obnovení pro chráněné položky |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | Načíst body obnovení pro chráněné položky |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action | Obnoví body obnovení pro chráněné položky |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | Odvolat rychlých položky obnovení pro chráněné položky |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | Vytvoření zálohy chráněné položky |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | Vrátí všechny registrované kontejnery |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | Vytvářet a spravovat úlohy zálohování |
@@ -398,36 +402,32 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | Vrátí výsledek operace úlohy. |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | Vrátí všechny objekty úlohy |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | Export úloh |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | Vrátí výsledek operace úlohy exportu. |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Vrátí metadata správy zálohování trezoru Recovery Services. |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | Vytvořit a spravovat výsledky operací zálohování správy |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | Načte výsledky operace zásad. |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/operationStatus/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | Vrátí všechny zásady ochrany |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | Vytváření a Správa položek, které lze zálohovat |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/read | Vrátí seznam chránitelných položek. |
 > | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | Vrátí seznam všech chráněných položek. |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | Vrátí všechny kontejnery, které patří k předplatnému |
 > | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Vrátí souhrny pro chráněné položky a chráněné servery pro služeb zotavení. |
+> | Microsoft.RecoveryServices/Vaults/certificates/write | Operace aktualizace prostředek certifikátu aktualizuje prostředek nebo trezoru certifikát přihlašovacích údajů. |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/read | Operace Získat rozšířené informace získá rozšířené informace o objektu, který představuje prostředek Azure typu trezor. |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/write | Operace Získat rozšířené informace získá rozšířené informace o objektu, který představuje prostředek Azure typu trezor. |
+> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Získá výstrahy pro trezor služeb zotavení. |
+> | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
 > | Microsoft.RecoveryServices/Vaults/read | Operace získání trezoru získá objekt, který reprezentuje prostředků Azure typu 'trezoru. |
-> | Microsoft.RecoveryServices/Vaults/refreshContainers/* | Spravovat operaci zjišťování pro načítání nově vytvořený kontejnery |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | Aktualizuje seznam kontejneru |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | Výsledky operace Get, lze operace získat stav operace a výsledek asynchronně odeslaná operaci |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | Získat kontejnerů, které můžete použít operaci získat kontejnery zaregistrovat pro prostředek. |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | Operaci zaregistrovat kontejneru služby lze použít k registraci kontejner službou obnovení. |
+> | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Vrátí podrobnosti využití trezoru Recovery Services. |
 > | Microsoft.Resources/deployments/* | Vytvářet a spravovat nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Storage/storageAccounts/read | Vrátí seznam účtů úložišť nebo načte vlastnosti zadaného účtu. |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/action | Zřízení rychlých položky obnovení pro chráněné položky |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | Odvolat rychlých položky obnovení pro chráněné položky |
-> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp je interní operace, kterou používá služba |
-> | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
-> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Získá výstrahy pro trezor služeb zotavení. |
-> | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | Vrátí výsledek operace úlohy exportu. |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/operationStatus/read |  |
-> | Microsoft.RecoveryServices/Vaults/certificates/write | Operace aktualizace prostředek certifikátu aktualizuje prostředek nebo trezoru certifikát přihlašovacích údajů. |
 > | Microsoft.Support/* | Vytvářet a spravovat lístky žádostí o podporu |
 
 ## <a name="backup-reader"></a>Čtenář záloh
@@ -472,7 +472,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Povolí přístup pro čtení fakturačních údajů. |
+> | **Popis** | Umožňuje načíst fakturační údaje |
 > | **ID** | fa23ad8b-c56e-40d8-ac0c-ce449e1d2c64 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Čtení rolí a přiřazení rolí |
@@ -660,7 +660,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Vytvoření a Správa objektů pro vytváření dat, jakož i podřízené prostředky v nich. |
+> | **Popis** | Umožňuje správu služeb Data Factory, ale ne přístup k nim. |
 > | **ID** | 673868aa-7521-48A0-acc6-0f60742d39f5 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Čtení role a role přiřazení |
@@ -719,7 +719,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Umožňuje spouštět, restartovat a vypínat virtuální počítače v Azure DevTest Labs a připojovat se k nim. |
+> | **Popis** | Umožňuje připojit, spuštění, restart a vypnutí virtuálního počítače ve vašem Azure DevTest Labs. |
 > | **ID** | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Čtení role a role přiřazení |
@@ -1103,18 +1103,19 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > | Microsoft.Resources/deployments/* | Vytvářet a spravovat nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Security/*/read | Čtení bezpečnostních komponent a zásad |
-> | Microsoft.Security/locations/alerts/dismiss/action | Zamítnutí výstrahy zabezpečení |
 > | Microsoft.Security/locations/alerts/activate/action | Aktivovat výstrahy zabezpečení |
-> | Microsoft.Security/locations/tasks/dismiss/action | Zavření doporučení zabezpečení |
+> | Microsoft.Security/locations/alerts/dismiss/action | Zamítnutí výstrahy zabezpečení |
 > | Microsoft.Security/locations/tasks/activate/action | Aktivovat doporučení zabezpečení |
+> | Microsoft.Security/locations/tasks/dismiss/action | Zavření doporučení zabezpečení |
 > | Microsoft.Security/policies/write | Aktualizace nastavení zásad zabezpečení |
 > | Microsoft.Support/* | Vytvářet a spravovat lístky žádostí o podporu |
+> | Microsoft.Management/managementGroups/read | Zobrazí seznam skupin pro správu pro ověřené uživatele. |
 
-## <a name="security-manager-legacy"></a>Správce zabezpečení (zastaralé)
+## <a name="security-manager"></a>Správce zabezpečení
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Toto je starší verze role. Místo toho použijte Správce zabezpečení. |
+> | **Popis** | Umožňuje správu součástí zabezpečení, zásad zabezpečení a virtuálních počítačů. |
 > | **ID** | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | **Akce** |  |
 > | Microsoft.Authorization/*/read | Čtení rolí a přiřazení rolí |
@@ -1135,13 +1136,14 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > | **Popis** | V Centru zabezpečení pouze: můžete zobrazit doporučení a výstrahy, zobrazení zásady zabezpečení, zobrazit stavy zabezpečení, ale nelze provádět změny |
 > | **ID** | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **Akce** |  |
-> | Microsoft.Insights/alertRules/* | Vytvářet a spravovat pravidla výstrah |
-> | Microsoft.Resources/deployments/* | Vytvářet a spravovat nasazení skupiny prostředků |
-> | Microsoft.operationalInsights/workspaces/*/read | Zobrazit data analýzy protokolů |
 > | Microsoft.Authorization/*/read | Čtení rolí a přiřazení rolí |
-> | Microsoft.Support/* | Vytvářet a spravovat lístky žádostí o podporu |
+> | Microsoft.Insights/alertRules/* | Vytvářet a spravovat pravidla výstrah |
+> | Microsoft.operationalInsights/workspaces/*/read | Zobrazit data analýzy protokolů |
+> | Microsoft.Resources/deployments/* | Vytvářet a spravovat nasazení skupiny prostředků |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Načte nebo vypíše skupinu prostředků. |
 > | Microsoft.Security/*/read | Čtení bezpečnostních komponent a zásad |
+> | Microsoft.Support/* | Vytvářet a spravovat lístky žádostí o podporu |
+> | Microsoft.Management/managementGroups/read | Zobrazí seznam skupin pro správu pro ověřené uživatele. |
 
 ## <a name="site-recovery-contributor"></a>Přispěvatel Site Recovery
 > [!div class="mx-tableFixed"]
@@ -1221,7 +1223,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/refreshProvider/action | Aktualizujte zprostředkovatele |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationStorageClassifications/read | Číst všechny klasifikace úložiště |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/read | Číst veškerá jeho mapování klasifikace úložiště |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Číst všechny úlohy |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Číst všechny Vcenter |
 > | Microsoft.RecoveryServices/vaults/replicationJobs/* | Vytvářet a spravovat úlohy replikace |
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/read | Číst všechny zásady |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/failoverCommit/action | Plán obnovení potvrzení převzetí služeb při selhání |
@@ -1272,7 +1274,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationRecoveryServicesProviders/read | Přečtěte si zprostředkovatelů služby obnovení |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationStorageClassifications/read | Číst všechny klasifikace úložiště |
 > | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/read | Číst veškerá jeho mapování klasifikace úložiště |
-> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Číst všechny úlohy |
+> | Microsoft.RecoveryServices/vaults/replicationFabrics/replicationvCenters/read | Číst všechny Vcenter |
 > | Microsoft.RecoveryServices/vaults/replicationJobs/read | Číst všechny úlohy |
 > | Microsoft.RecoveryServices/vaults/replicationPolicies/read | Číst všechny zásady |
 > | Microsoft.RecoveryServices/vaults/replicationRecoveryPlans/read | Číst všechny plány obnovení |
@@ -1503,7 +1505,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | –  Uživatelé s touto rolí se budou moct přihlašovat k virtuálnímu počítači s oprávněními správce Windows nebo uživatele root v Linuxu. |
+> | **Popis** | Zobrazení virtuálních počítačů v portálu a přihlaste se jako správce |
 > | **ID** | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | **Akce** |  |
 > | Microsoft.Network/publicIPAddresses/read | Získá definici veřejné ip adresy. |
@@ -1564,7 +1566,7 @@ Následující tabulka obsahuje stručný popis předdefinovaných rolí. Klikn�
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Popis** | Uživatelé s touto rolí se budou moct přihlašovat k virtuálnímu počítači jako běžní uživatelé. |
+> | **Popis** | Zobrazení virtuálních počítačů v portálu a přihlaste se jako běžný uživatel. |
 > | **ID** | fb879df8-f326-4884-b1cf-06f3ad86be52 |
 > | **Akce** |  |
 > | Microsoft.Network/publicIPAddresses/read | Získá definici veřejné ip adresy. |

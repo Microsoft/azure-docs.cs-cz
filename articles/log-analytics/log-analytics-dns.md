@@ -3,7 +3,7 @@ title: Řešení DNS analýzy v Azure Log Analytics | Microsoft Docs
 description: Nastavit a použít řešení DNS analýzy v analýzy protokolů získat přehled o infrastruktuře DNS na zabezpečení, výkonu a operací.
 services: log-analytics
 documentationcenter: ''
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: ''
 ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
@@ -11,15 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 6a59cf8b9444fe7cb197501c51d10dae81acb027
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.component: na
+ms.openlocfilehash: a6f63fac85008425f473f431ae85d04f62eed667
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30241941"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127587"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Shromažďovat statistiky o infrastruktury služby DNS s řešením DNS Analytics Preview
 
@@ -41,7 +42,7 @@ Analýza DNS vám pomůže:
 
 Následující tabulka popisuje připojené zdroje, které podporuje toto řešení:
 
-| **Připojené zdroje** | **Podpora** | **Popis** |
+| **Připojený zdroj** | **Podpora** | **Popis** |
 | --- | --- | --- |
 | [Agenti systému Windows](log-analytics-windows-agent.md) | Ano | Řešení shromažďuje informace DNS z agentů v systému Windows. |
 | [Agenti systému Linux](log-analytics-linux-agents.md) | Ne | Řešení neshromažďuje informace DNS z přímé agenty Linux. |
@@ -61,7 +62,7 @@ Pomocí následujících informací nakonfigurujte řešení:
 
 Řešení spustí shromažďování dat bez nutnosti další konfigurace. Můžete však použít následující konfigurace přizpůsobit shromažďování dat.
 
-### <a name="configure-the-solution"></a>Konfigurace řešení
+### <a name="configure-the-solution"></a>Konfigurovat řešení
 
 Na řídicím panelu řešení, klikněte na tlačítko **konfigurace** otevřete stránku konfigurace analýzy DNS. Existují dva typy změny konfigurace, které můžete použít:
 

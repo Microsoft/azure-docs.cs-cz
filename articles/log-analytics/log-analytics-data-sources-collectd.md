@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
-ms.openlocfilehash: a63b15ca5126b45451f0694c9ee75d7b67b1ceaf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: 59b6f8b82d0f714d4526147b42f68e14bf0aa2bd
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23855205"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127692"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Shromažďování dat z CollectD na agentech Linux v analýzy protokolů
 [CollectD](https://collectd.org/) je démon Linux s otevřeným zdrojem, který pravidelně shromažďuje metriky výkonu z aplikace a informace o úrovni systému. Příklad aplikace patří Java Virtual Machine (JVM), MySQL Server a Nginx. Tento článek obsahuje informace o shromažďování dat výkonu z CollectD v analýzy protokolů.
@@ -111,8 +112,8 @@ Chcete-li zachovat, že známý model mezi infrastruktura metriky již shromáž
 
 | Metrika CollectD pole | Pole analýzy protokolů |
 |:--|:--|
-| hostitele | Počítač |
-| Modul plug-in | Žádný |
+| hostitel | Počítač |
+| modul plug-in | Žádný |
 | plugin_instance | Název instance<br>Pokud **plugin_instance** je *null* pak InstanceName = "*_celkem*" |
 | type | Název objektu |
 | type_instance | Název_čítače<br>Pokud **type_instance** je *null* pak CounterName =**prázdné** |
@@ -120,7 +121,7 @@ Chcete-li zachovat, že známý model mezi infrastruktura metriky již shromáž
 | dstypes | Žádný |
 | [] – hodnoty | Přepočtené |
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení. 
 * Použití [vlastní pole](log-analytics-custom-fields.md) k analýze dat z syslog záznamů do jednotlivých polí.
 

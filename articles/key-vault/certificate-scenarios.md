@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: alleonar
-ms.openlocfilehash: 665365e06ef02698c10259628f6bf2442ab8d612
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f1a1a2fa083dd1bf02132e08981d736a17a2c58f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333509"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109480"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty Key Vault
 Následující scénáře popisují některé z primární použití služby Key Vault certifikát správy včetně další kroky potřebné k vytvoření vašeho prvního certifikátu v trezoru klíčů.
@@ -121,5 +121,5 @@ Poznámka: Tento proces, pomocí kroku 3.1, je jednorázově operace.
   (5) – aplikace dokončení nové vytvoření certifikátu s fúzi X509 certifikátu z certifikační Autority.
 
 ## <a name="see-also"></a>Viz také
-- [Operace certifikátu](/rest/api/keyvault/certificate-operations.md)
+- [Operace certifikátu](/rest/api/keyvault/certificate-operations)
 - [Informace o klíčích, tajných kódech a certifikátech](about-keys-secrets-and-certificates.md)

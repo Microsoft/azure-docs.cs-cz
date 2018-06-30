@@ -9,17 +9,18 @@ editor: tysonn
 ms.assetid: f1d5bde4-6b86-4b8e-b5c1-3ecbaba76198
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: 800ee1269556e7c2d56fbbf2b497c10509b5c78c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.component: na
+ms.openlocfilehash: d3c8807b7624e68ff55557922f97d51e24fc2c19
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23855219"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131799"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Shromažďování vlastní zdroje dat JSON s agentem OMS pro Linux v analýzy protokolů
 Vlastní zdroje dat JSON je možné sbírat do analýzy protokolů pro Linux pomocí agenta OMS.  Tyto zdroje dat vlastní může být jednoduché skripty, jako vrácení JSON [curl](https://curl.haxx.se/) nebo jeden z [FluentD na 300 + modulů plug-in](http://www.fluentd.org/plugins/all). Tento článek popisuje konfigurace požadované pro tuto kolekci data.
@@ -62,7 +63,7 @@ Konfigurační soubor přidají pod `/etc/opt/microsoft/omsagent/<workspace id>/
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
 
 ### <a name="configure-output-plugin"></a>Konfigurace modulu plug-in výstup 
-Přidejte následující konfigurace modulu plug-in výstup do hlavní konfigurace v nástroji `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` nebo jako jiný konfigurační soubor umístěn v`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
+Přidejte následující konfigurace modulu plug-in výstup do hlavní konfigurace v nástroji `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` nebo jako jiný konfigurační soubor umístěn v `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
 
 ```
 <match oms.api.**>
@@ -103,6 +104,6 @@ Vnořené data JSON zdroje jsou podporované, ale jsou uloženy na základě nad
 ```
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 * Další informace o [protokolu hledání](log-analytics-log-searches.md) analyzovat data shromážděná ze zdrojů dat a řešení. 
  

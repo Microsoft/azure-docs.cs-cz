@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: magoedte
-ms.custom: mvc
-ms.openlocfilehash: 084b8fa0addbe2ddeee699b58c9b0de1a6f27d99
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.component: na
+ms.openlocfilehash: 54f2af60751ed0d9c64e71efad6fa9aa3ef06589
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33938688"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37129111"
 ---
 # <a name="delete-an-azure-log-analytics-workspace-with-the-azure-portal"></a>Odstranit pracovní prostor služby Azure Log Analytics pomocí portálu Azure
 Tento článek ukazuje, jak pomocí portálu Azure můžete odstranit pracovní prostor analýzy protokolů, které už můžou vyžadovat. 
@@ -38,7 +38,7 @@ Při odstranění pracovní prostor analýzy protokolů všech dat spojených s 
 
 Všechny agenty a skupin pro správu System Center Operations Manager nakonfigurovat tak, aby sestavy do pracovního prostoru i nadále v osamocené stavu.  Jaké agenty řešení, inventáře a jinými službami Azure jsou integrované s pracovním prostoru, než budete pokračovat.   
  
-Pokud jste správce a k pracovnímu prostoru bylo přidruženo víc uživatelů, přidružení těchto uživatelů s pracovním prostorem se přeruší. Pokud jsou uživatelé přidružené jiných pracovních prostorech, potom můžou pokračovat pomocí těchto jiných pracovních prostorech analýzy protokolů. Ale pokud nejsou přidruženy jiných pracovních prostorech pak potřebují k vytvoření pracovního prostoru analýzy protokolů použít. 
+Pokud jste správce a k pracovnímu prostoru bylo přidruženo víc uživatelů, přidružení těchto uživatelů s pracovním prostorem se přeruší. Pokud byli tito uživatelé přidruženi s jinými pracovními prostory, můžou pokračovat v používání služby Log Analytics s těmito prostory. Ale pokud nejsou přidruženy jiných pracovních prostorech pak potřebují k vytvoření pracovního prostoru analýzy protokolů použít. 
 
 1. Přihlaste se k webu [Azure Portal](http://portal.azure.com). 
 2. Na webu Azure Portal klikněte v levém dolním rohu na **Další služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.

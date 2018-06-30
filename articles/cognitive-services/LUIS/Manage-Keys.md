@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 8e6e363649a0bdab5525de7b8e7abe9a53d14573
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 1fdf0f21697e48fd5cb9eca4212596059a9519cb
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266018"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127113"
 ---
 # <a name="manage-your-luis-keys"></a>Spravovat klíče LEOŠ
 Klíč umožňuje vytvářet a publikovat aplikace LEOŠ nebo dotaz na koncový bod. 
@@ -34,7 +34,7 @@ V tématu [klíče v LEOŠ](luis-concept-keys.md) pochopit LEOŠ vytváření ob
 ## <a name="assign-endpoint-key"></a>Přiřadit klíč koncového bodu
 Na **publikovat aplikace** stránky, je již klíč v **prostředky a klíče** tabulky. Toto je pro tvorbu klíč (starter). 
 
-1. Vytvořte klíč LEOŠ na [portál Azure](https://portal.azure.com). Další pokyny najdete v tématu [vytváření předplatného klíče pomocí Azure](luis-how-to-azure-subscription.md).
+1. Vytvořte klíč LEOŠ na [portál Azure](https://portal.azure.com). Další pokyny najdete v tématu [vytváření klíčem koncový bod pomocí Azure](luis-how-to-azure-subscription.md).
  
 2. Chcete-li přidat klíč LEOŠ vytvořili v předchozím kroku, klikněte na tlačítko **přidat klíč** tlačítko Otevřít **přiřadit klíč do vaší aplikace** dialogové okno. 
 

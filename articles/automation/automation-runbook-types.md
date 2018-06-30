@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/16/2018
+ms.date: 06/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94fbc1cf0232eaf48bb0be3c6edc0542142e4681
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 7958042ccb2f55e9b6021f7d804a0dcd090695c5
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34196045"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37109313"
 ---
 # <a name="azure-automation-runbook-types"></a>Typy runbooků služby Azure Automation
 Služby Azure Automation podporuje několik typů sad runbook, které jsou popsány v následující tabulce.  V níže uvedených částech poskytují další informace o jednotlivých typech včetně důležité informace týkající se použití každé.
@@ -44,7 +44,7 @@ Služby Azure Automation podporuje několik typů sad runbook, které jsou pops�
 * Nelze zobrazit, nebo přímo upravit kód prostředí PowerShell, který byl vytvořený grafický workflow. Všimněte si, že se zobrazí kód, který vytvoříte v žádné aktivity kódu.
 
 ## <a name="powershell-runbooks"></a>Powershellové runbooky
-Powershellové runbooky jsou založené na prostředí Windows PowerShell.  Přímo upravovat kód sadu runbook pomocí textového editoru na portálu Azure.  Můžete použít také všechny offline textovém editoru a [naimportujte sadu runbook](http://msdn.microsoft.com/library/azure/dn643637.aspx) do Azure Automation.
+Powershellové runbooky jsou založené na prostředí Windows PowerShell.  Přímo upravovat kód sadu runbook pomocí textového editoru na portálu Azure.  Můžete použít také všechny offline textovém editoru a [naimportujte sadu runbook](automation-creating-importing-runbook.md) do Azure Automation.
 
 ### <a name="advantages"></a>Výhody
 * Implementujte všechny komplexní logiku kódem Powershellu bez další složitosti pracovního postupu prostředí PowerShell. 
@@ -65,7 +65,7 @@ Toto jsou aktuální známé problémy s Powershellovými runbooky.
 * Powershellový runbook může selhat, pokud se pokusí o velmi velké množství dat najednou zapisovat do výstupního datového proudu.   Tento problém můžete vyřešit obvykle podle výstupu pouze informace, které je třeba při práci s rozsáhlé objekty.  Například místo výstup podobný vytvořeného *Get-Process*, výstup můžete právě povinná pole s *Get-Process | Vyberte název_procesu procesoru*.
 
 ## <a name="powershell-workflow-runbooks"></a>Runbooky pracovních postupů Powershellu
-Runbooky pracovních postupů Powershellu jsou text sad runbook na základě [pracovního postupu prostředí Windows PowerShell](automation-powershell-workflow.md).  Přímo upravovat kód sadu runbook pomocí textového editoru na portálu Azure.  Můžete použít také všechny offline textovém editoru a [naimportujte sadu runbook](http://msdn.microsoft.com/library/azure/dn643637.aspx) do Azure Automation.
+Runbooky pracovních postupů Powershellu jsou text sad runbook na základě [pracovního postupu prostředí Windows PowerShell](automation-powershell-workflow.md).  Přímo upravovat kód sadu runbook pomocí textového editoru na portálu Azure.  Můžete použít také všechny offline textovém editoru a [naimportujte sadu runbook](automation-creating-importing-runbook.md) do Azure Automation.
 
 ### <a name="advantages"></a>Výhody
 * Implementujte všechny komplexní logiku s kódem pracovního postupu Powershellu.
@@ -80,7 +80,7 @@ Runbooky pracovních postupů Powershellu jsou text sad runbook na základě [pr
 * Powershellové runbooky může být pouze zahrnuta jako podřízené sady runbook pomocí rutiny Start-AzureAutomationRunbook, která vytvoří novou úlohu.
 
 ## <a name="python-runbooks"></a>Sady runbook Python
-Sady runbook Python zkompilovat pod Python 2.  Lze přímo upravit kód sadu runbook pomocí textového editoru na portálu Azure, nebo můžete použít všechny offline textovém editoru a [naimportujte sadu runbook](http://msdn.microsoft.com/library/azure/dn643637.aspx) do Azure Automation.
+Sady runbook Python zkompilovat pod Python 2.  Lze přímo upravit kód sadu runbook pomocí textového editoru na portálu Azure, nebo můžete použít všechny offline textovém editoru a [naimportujte sadu runbook](automation-creating-importing-runbook.md) do Azure Automation.
 
 ### <a name="advantages"></a>Výhody
 * Využívat robustní standardní knihovny jazyka Python.

@@ -4,21 +4,23 @@ description: Internetové informační služby (IIS) ukládá aktivity uživatel
 services: log-analytics
 documentationcenter: ''
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: cec5ff0a-01f5-4262-b2e8-e3db7b7467d2
 ms.service: log-analytics
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/07/2018
+ms.date: 06/12/2018
 ms.author: bwren
-ms.openlocfilehash: b8ce4e6fe6e12aa3edb81abad1589924e3e121e4
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.comopnent: na
+ms.openlocfilehash: 65320e7d3cc97a3d53fd1a00fbbeab5559c02fce
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37132878"
 ---
 # <a name="iis-logs-in-log-analytics"></a>Služba IIS přihlásí analýzy protokolů
 Internetové informační služby (IIS) ukládá aktivity uživatelů v souborech protokolů, které může shromáždit analýzy protokolů.  
@@ -33,10 +35,10 @@ Analýzy protokolů neshromažďuje protokoly ve formátu NCSA nebo IIS nativní
 
 Konfigurace služby IIS protokoly v analýzy protokolů z [nabídce Data v nastavení analýzy protokolů](log-analytics-data-sources.md#configuring-data-sources).  Není nutná žádná konfigurace, jiné než vyberete **souborů protokolu W3C shromažďovat formátu služby IIS**.
 
-Doporučujeme vám, že pokud povolíte kolekce protokolu služby IIS, by měl nakonfigurovat nastavení výměny protokolu služby IIS na každém serveru.
 
 ## <a name="data-collection"></a>Shromažďování dat
-Analýzy protokolů shromažďuje položky protokolu služby IIS z každého připojeného zdroje přibližně každých 15 minut.  Agent zaznamenává jeho místo v každém protokolu událostí, shromažďující z.  Pokud agenta přejde do režimu offline, pak analýzy protokolů shromažďuje události od poslední místa vypnout, i v případě, že tyto události byly vytvořeny v době, kdy agent offline.
+Analýzy protokolů shromažďuje ze všech agentů, které se vytvoří pokaždé, když je uzavřen do protokolu a nové položky protokolu služby IIS. Tato četnost se řídí **plán změna souboru protokolu** nastavení pro web služby IIS, která je jednou za den ve výchozím nastavení. Například, pokud je nastavení **hodinové**, pak analýzy protokolů bude shromažďovat protokol každou hodinu.  Pokud je nastavení **denní**, pak analýzy protokolů bude shromažďovat protokolu každých 24 hodin.
+
 
 ## <a name="iis-log-record-properties"></a>Vlastnosti záznamu protokolu služby IIS
 Záznamy protokolu služby IIS mít typ **W3CIISLog** a mít vlastnosti v následující tabulce:
@@ -63,7 +65,7 @@ Záznamy protokolu služby IIS mít typ **W3CIISLog** a mít vlastnosti v násle
 | sPort |Port na serveru klient připojen. |
 | sSiteName |Název webu služby IIS. |
 | TimeGenerated |Datum a čas, kdy byla zapsána na položku. |
-| timeTaken |Časový interval pro zpracování požadavku v milisekundách. |
+| TimeTaken |Časový interval pro zpracování požadavku v milisekundách. |
 
 ## <a name="log-searches-with-iis-logs"></a>Protokol hledání s protokoly služby IIS
 Následující tabulka obsahuje příklady různých dotazů protokolu, které načtení záznamů protokolu služby IIS.
@@ -74,7 +76,7 @@ Následující tabulka obsahuje příklady různých dotazů protokolu, které n
 | W3CIISLog &#124; kde scStatus == 500 |Všechny záznamy protokolu služby IIS s návratový stav 500. |
 | W3CIISLog &#124; shrnout count() podle cIP |Počet služby IIS protokolu položky podle IP adresy klienta. |
 | W3CIISLog &#124; kde csHost == "www.contoso.com" &#124; shrnout count() podle csUriStem |Počet z protokolu služby IIS položky podle adresy URL pro www.contoso.com hostitele. |
-| W3CIISLog &#124; shrnout sum(csBytes) podle počítače &#124; trvat 500000 |Celkový počet přijatých bajtů na každém počítači služby IIS. |
+| W3CIISLog &#124; shrnout sum(csBytes) počítačem &#124; trvat 500000 |Celkový počet přijatých bajtů na každém počítači služby IIS. |
 
 ## <a name="next-steps"></a>Další postup
 * Konfigurace analýzy protokolů ke shromažďování dalších [zdroje dat](log-analytics-data-sources.md) pro analýzu.

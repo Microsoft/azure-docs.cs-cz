@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: v-geberr;
-ms.openlocfilehash: b8a2c0dbadb0124b9250849a0260f5b34d38a5c3
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: b681598f953d217ca636fb5c0adc3de4ddbebd60
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021659"
+ms.locfileid: "37031783"
 ---
 # <a name="integrate-speech-service"></a>Integrace služby řeči
 [Řeči služby](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umožňuje používat jeden požadavek na obdrží zvuk a vrátí LEOŠ předpovědi objekty JSON.
@@ -53,7 +53,9 @@ Po importu aplikace, vyberte **entity**, pak **spravovat předem entity**. Přid
 
   Na **publikovat** stránky, shromažďování ID aplikace, publikujte oblast a ID předplatného LEOŠ klíče vytvořené v [klíč koncového bodu vytvořit LEOŠ](#create-luis-endpoint-key) části. Budete muset upravit kód, který použije tyto hodnoty později v tomto článku. 
 
-  Tyto hodnoty jsou zahrnuty v adrese URL koncového bodu v dolní části **publikovat** stránky pro klíč, který jste vytvořili. Proveďte **není** pomocí volné starter klíče pro toto cvičení. 
+  Tyto hodnoty jsou zahrnuty v adrese URL koncového bodu v dolní části **publikovat** stránky pro klíč, který jste vytvořili. 
+  
+  Proveďte **není** pomocí volné starter klíče pro toto cvičení. Pouze **znalosti jazyka** klíč vytvořený na portálu Azure bude fungovat pro toto cvičení. 
 
   https://**oblast**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**? klíč předplatného =**LUISKEY**& q =
 
@@ -84,22 +86,13 @@ Soubor již záměry lidských zdrojů namapované.
 
 Sestavte a spusťte aplikaci. 
 
-![Snímek obrazovky příkazového řádku spuštění programu](./media/luis-tutorial-speech-to-intent/cmdline-1.png)
-
 ## <a name="test-code-with-utterance"></a>Testování kódu s utterance
-Vyberte **8** a do mikrofonu "Kdo je správce John Smith".
+Vyberte **1** a do mikrofonu "Kdo je správce John Smith".
 
 ```cmd
-1. Speech recognition with microphone input.
-2. Speech recognition in the specified language.
-3. Speech recognition with file input.
-4. Speech recognition using customized model.
-5. Speech continuous recognition using events.
-6. Translation with microphone input.
-7. Translation with file input.
-8. Speech recognition of LUIS intent.
+1. Speech recognition of LUIS intent.
 0. Stop.
-Your choice: 8
+Your choice: 1
 LUIS...
 Say something...
 ResultId:cc83cebc9d6040d5956880bcdc5f5a98 Status:Recognized IntentId:<GetEmployeeOrgChart> Recognized text:<Who is the manager of John Smith?> Recognized Json:{"DisplayText":"Who is the manager of John Smith?","Duration":25700000,"Offset":9200000,"RecognitionStatus":"Success"}. LanguageUnderstandingJson:{
@@ -127,7 +120,7 @@ Správné záměr **GetEmployeeOrgChart**, byl nalezen s jistotou 61 %. Byl vrá
 Sada SDK řeči vrátí celé LEOŠ odpovědi. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud již nepotřebujete, odstraňte aplikaci LEOŠ Lidskézdroje. To pokud chcete udělat, vyberte v seznamu aplikací, vyberte v nabídce tři tečky (...) vpravo od názvu aplikace **odstranit**. V místním dialogovém okně **aplikaci odstranit?**, vyberte **Ok**.
+Pokud již nepotřebujete, odstraňte aplikaci LEOŠ Lidskézdroje. Provedete to tak, že vyberete nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberete **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 Nezapomeňte odstranit LEOŠ-Samples directory po dokončení pomocí ukázkový kód.
 

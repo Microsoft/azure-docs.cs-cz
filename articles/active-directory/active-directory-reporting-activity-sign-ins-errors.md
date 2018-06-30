@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: dc01a775579455ae24c95ecc6f3858ce28149dea
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: cc5b4955d6bd239f99a9be0ab158ac8003f67ddf
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36232293"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110517"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory
 
@@ -104,7 +104,7 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |50120|Problém s hlavičkou JWT. Obraťte se na správce tenanta.|
 |50124|Transformace deklarací identity obsahuje neplatný vstupní parametr. Obraťte se na správce klienta, aby aktualizovat zásady.|
 |50125|Přihlášení se přerušilo z důvodu resetování hesla nebo položky registrace hesla.|
-|50126|Neplatné uživatelské jméno nebo heslo nebo Neplatné místní uživatelské jméno nebo heslo.|
+|50126|Neplatné uživatelské jméno nebo heslo nebo neplatný místní uživatelské jméno nebo heslo.|
 |50127|Aby uživatel získal přístup k tomuto obsahu, musí si nainstalovat aplikaci zprostředkovatele.|
 |50128|Neplatný název domény – identifikující informace o tenantovi se nenachází ani v požadavku a ani je není možné odvodit z poskytnutých přihlašovacích údajů.|
 |50129|Zařízení není připojené k pracovišti. Připojení k pracovišti je nezbytné, aby se zařízení mohlo zaregistrovat.|

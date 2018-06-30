@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/27/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8927b2a32956f73e75ac7b157ebad6bf6596ea88
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 656ba21abf06ad0f079e3ce425d3221724d195d4
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063625"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113574"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Podporované scénáře pro velké instance HANA
 Tento dokument popisuje podporované scénáře a jejich podrobnosti architektura pro HANA velké instancí (HLI).
@@ -81,17 +81,17 @@ V případě potřeby můžete definovat další Síťových karet sami. Však l
 
 Distribuce pro jednotky s přiřazeny dvě IP adresy by měl vypadat podobně jako:
 
-Ethernet "A" by měl mít IP adresu přiřadit, která je mimo rozsah adres fondu IP serveru, který jste odeslali do společnosti Microsoft. Tato IP adresa se použije pro zachování v/etc/hosts operačního systému.
+- Ethernet "A" by měl mít IP adresu přiřadit, která je mimo rozsah adres fondu IP serveru, který jste odeslali do společnosti Microsoft. Tato IP adresa se použije pro zachování v/etc/hosts operačního systému.
 
-Ethernet "B" by měl mít IP adresu přiřadit, která se používá pro komunikaci systému souborů NFS. Proto se tyto adresy **není** třeba udržet v etc/hosts, aby bylo možné povolit provoz instance pro instance v rámci klienta.
+- Ethernet "C" by měl mít IP adresu přiřadit, která se používá pro komunikaci systému souborů NFS. Proto se tyto adresy **není** třeba udržet v etc/hosts, aby bylo možné povolit provoz instance pro instance v rámci klienta.
 
 Pro nasazení případech replikaci systému HANA nebo HANA škálování není vhodný okno Konfigurace s přiřazeny dvě IP adresy. Pokud má dvě IP adresy, které jsou přiřazeny pouze a chtějí nasadit taková konfigurace, obraťte se na SAP HANA na Azure Service Management získání třetí IP adresu ve třetí přiřadit síť VLAN. Pro velké Instance HANA jednotky s tři IP adresy přiřazené na tři porty NIC platí následující pravidla využití:
 
 - Ethernet "A" by měl mít IP adresu přiřadit, která je mimo rozsah adres fondu IP serveru, který jste odeslali do společnosti Microsoft. Proto tuto IP adresu se nepoužijí pro zachování v/etc/hosts operačního systému.
 
-- Ethernet "B" by měl mít IP adresu přiřadit, která se používá pro komunikaci úložiště systému souborů NFS. Tento typ adresy proto by nemělo být udržovány v etc/hosts.
+- Ethernet "B" by měl být zachován v atd nebo hostitele pro komunikaci mezi různými instancemi výhradně použije. Tyto adresy by také IP adresy, které je potřeba udržovat v konfiguracích HANA škálování jako IP adresy, kterou používá HANA pro konfigurace mezi uzly.
 
-- Ethernet "C" by měl být zachován v atd nebo hostitele pro komunikaci mezi různými instancemi výhradně použije. Tyto adresy by také IP adresy, které je potřeba udržovat v konfiguracích HANA škálování jako IP adresy, kterou používá HANA pro konfigurace mezi uzly.
+- Ethernet "C" by měl mít IP adresu přiřadit, která se používá pro komunikaci úložiště systému souborů NFS. Tento typ adresy proto by nemělo být udržovány v etc/hosts.
 
 - Ethernet "D" výhradně slouží pro přístup k zařízení STONITH pro kardiostimulátor. To je potřeba, pokud jste konfiguraci HANA systému replikace (HSR) a chcete zajistit automatické převzetí služeb při selhání na operační systém pomocí zařízení s SBD na základě.
 

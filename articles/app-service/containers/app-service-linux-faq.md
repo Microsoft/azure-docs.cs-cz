@@ -1,11 +1,11 @@
 ---
 title: Aplikační služba Azure v systému Linux – nejčastější dotazy | Microsoft Docs
 description: Aplikační služba Azure v systému Linux – nejčastější dotazy.
-keywords: služby Azure app service, webové aplikace, – nejčastější dotazy, linux, operačních systémů
+keywords: služby Azure app service, webové aplikace, – nejčastější dotazy, linux, operačních systémů, webové aplikace pro kontejnery, více kontejneru, multicontainer
 services: app-service
 documentationCenter: ''
-author: ahmedelnably
-manager: cfowler
+author: yili
+manager: apurvajo
 editor: ''
 ms.assetid: ''
 ms.service: app-service
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2018
-ms.author: msangapu
-ms.openlocfilehash: 5b3b3d3946b56ff53ad74c2ab93a646baa787d05
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.date: 06/26/2018
+ms.author: yili
+ms.openlocfilehash: a35f3d428674c3398497cd43465e0bd501f5c3fc
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222973"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131488"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>V systému Linux nejčastější dotazy týkající se služby Azure App Service
 
@@ -144,6 +144,35 @@ Máme Automatická detekce portu. Můžete také určit aplikaci názvem *WEBSIT
 **Je nutné implementovat HTTPS v mé vlastní kontejner?**
 
 Ne, platformu zpracovává ukončení protokolu HTTPS na sdílené elementy front end.
+
+## <a name="multi-container-with-docker-compose-and-kubernetes"></a>Více kontejnerů pomocí Docker Compose a Kubernetes
+
+**Konfigurování Azure kontejneru registru (ACR) pro použití s více kontejneru**
+
+Abyste mohli používat ACR s více kontejneru **všechny Image kontejneru** musí být hostované na stejném serveru registru ACR. Jakmile jsou na stejném serveru registru, musíte se k vytvoření nastavení aplikace a potom aktualizovat konfigurační soubor Docker Compose nebo Kubernetes, zahrnout název ACR bitové kopie.
+
+Vytvořte následující nastavení aplikace:
+
+- DOCKER_REGISTRY_SERVER_USERNAME
+- DOCKER_REGISTRY_SERVER_URL (úplná adresa URL, například: https://<server-name>.azurecr.io)
+- DOCKER_REGISTRY_SERVER_PASSWORD (Povolit přístup správce v nastavení ACR)
+
+V rámci konfiguračního souboru referenční bitové kopie ACR jako v následujícím příkladu:
+
+```yaml
+image: <server-name>.azurecr.io/<image-name>:<tag>
+```
+
+**Jak poznám, které kontejner je dostupný na Internetu?**
+
+- Pouze jeden kontejner může být otevřené pro přístup
+- Pouze port 80 a 8080 je přístupný (zveřejněné porty)
+
+Zde jsou pravidla pro určování, které kontejneru je přístupná – v pořadí podle priority:
+
+- Nastavení aplikace `WEBSITES_WEB_CONTAINER_NAME` nastavena na název kontejneru
+- První kontejner, aby definovat port 80 nebo 8080
+- Pokud žádná z výše uvedeného není true, budou přístupné kontejneru první definované v souboru (vystavený)
 
 ## <a name="pricing-and-sla"></a>Ceny a smlouva SLA
 

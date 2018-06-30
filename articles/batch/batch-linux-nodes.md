@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: abb822483253fc5fce0e76afc2628806fe4485d8
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: f3faa9e811216cc930354b76903519a66f3d3587
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34801758"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128807"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřídit Linux výpočetních uzlů ve fondech Batch
 
-Azure Batch můžete spouštět úlohy paralelní výpočty u virtuálních počítačů Linux a Windows. Tento článek popisuje, jak vytvořit fondy Linuxových výpočetních uzlů ve službě Batch pomocí obou [Batch Python] [ py_batch_package] a [Batch .NET] [ api_net] knihovny klienta.
+Azure Batch můžete spouštět úlohy paralelní výpočty u virtuálních počítačů Linux a Windows. Tento článek popisuje, jak vytvořit fondy Linuxových výpočetních uzlů ve službě Batch pomocí obou [Batch Python] [ py_batch_package] a [Batch .NET] [ api_net]knihovny klienta.
 
 > [!NOTE]
 > Balíčky aplikací jsou podporované ve všech fondech služby Batch vytvořených po 5. červenci 2017. Ve fondech služby Batch vytvořených mezi 10. březnem 2016 a 5. červencem 2017 jsou podporované, pouze pokud byl fond vytvořen pomocí konfigurace cloudové služby. Fondy služby Batch vytvořené před 10. březnem 2016 nepodporují balíčky aplikací. Další informace o používání balíčků aplikací k nasazení aplikací do uzlů služby Batch najdete v tématu [Nasazení aplikací do výpočetních uzlů pomocí balíčků aplikací služby Batch](batch-application-packages.md).
@@ -216,12 +216,12 @@ Následující tabulka uvádí Marketplace Image virtuálních počítačů, kte
 
 | **Publisher** | **Nabídka** | **Obrázek SKU** | **Verze** | **Uzel agenta SKU ID** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| dávka | vykreslování centos73 | Vykreslování | nejnovější | batch.Node.centos 7 |
-| dávka | vykreslování windows2016 | Vykreslování | nejnovější | batch.Node.Windows amd64 |
+| dávka | vykreslování centos73 | vykreslování | nejnovější | batch.Node.centos 7 |
+| dávka | vykreslování windows2016 | vykreslování | nejnovější | batch.Node.Windows amd64 |
 | Canonical | UbuntuServer | 16.04-LTS | nejnovější | batch.Node.Ubuntu 16.04 |
 | Canonical | UbuntuServer | 14.04.5-LTS | nejnovější | batch.Node.Ubuntu 14.04 |
-| Credativ | Debian | 9 | nejnovější | batch.Node.debian 9 |
-| Credativ | Debian | 8 | nejnovější | batch.Node.debian 8 |
+| credativ | Debian | 9 | nejnovější | batch.Node.debian 9 |
+| credativ | Debian | 8 | nejnovější | batch.Node.debian 8 |
 | microsoft-ads | linux-data-science-vm | linuxdsvm | nejnovější | batch.Node.centos 7 |
 | microsoft-ads | standard-data-science-vm | standard-data-science-vm | nejnovější | batch.Node.Windows amd64 |
 | Microsoft-azure-batch | kontejner centos | 7 – 4 | nejnovější | batch.Node.centos 7 |
@@ -328,16 +328,12 @@ Pokud nasazujete aplikace na uzly Batch pomocí [balíčky aplikací](batch-appl
 Pro více podrobný kurz o tom, jak pracovat s Batch pomocí Python, podívejte se na [Začínáme s klientem Azure Batch Python](batch-python-tutorial.md). Jeho doprovodné [ukázka kódu] [ github_samples_pyclient] zahrnuje podpůrná funkce `get_vm_config_for_distro`, který ukazuje další technika, jak získat konfiguraci virtuálního počítače.
 
 ### <a name="batch-python-code-samples"></a>Ukázek kódu služby batch Python
-[Ukázky kódu jsou Python] [ github_samples_py] v [azure-batch-samples] [ github_samples] úložišti na Githubu obsahovat skripty, které ukazují, jak provádět běžné operace Batch, například fond, úlohy a vytváření úlohy. [README] [ github_py_readme] doprovodný Python ukázky obsahuje podrobnosti o tom, jak nainstalovat požadované balíčky.
-
-### <a name="batch-forum"></a>Fórum služby Batch
-[Fóru služby Azure Batch] [ forum] na webu MSDN je skvělým místem popisují Batch a klást otázky týkající se služby. Užitečné pro čtení "připnutý" účtuje a zveřejněte svoje otázky, kterým dochází při sestavování řešení Batch.
+[Ukázky kódu jsou Python] [ github_samples_py] v [azure-batch-samples] [ github_samples] úložišti na Githubu obsahovat skripty, které ukazují, jak provést běžné operace Batch, třeba fond, úlohy a vytváření úlohy. [README] [ github_py_readme] doprovodný Python ukázky obsahuje podrobnosti o tom, jak nainstalovat požadované balíčky.
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
 [cloud_services_pricing]: https://azure.microsoft.com/pricing/details/cloud-services/
-[forum]: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azurebatch
 [github_py_readme]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/README.md
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_samples_py]: https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch
@@ -349,14 +345,14 @@ Pro více podrobný kurz o tom, jak pracovat s Batch pomocí Python, podívejte 
 [net_list_skus]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.listnodeagentskus.aspx
 [net_pool_ops]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.aspx
 [net_ssh_key]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.computenodeuser.sshpublickey.aspx
-[nuget_batch_net]: https://www.nuget.org/packages/Azure.Batch/
+[nuget_batch_net]: https://www.nuget.org/packages/Microsoft.Azure.Batch/
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 [py_account_ops]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.operations.html#azure.batch.operations.AccountOperations
 [py_azure_sdk]: https://pypi.python.org/pypi/azure
-[py_batch_docs]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.html
+[py_batch_docs]: https://azure-sdk-for-python.readthedocs.io/batch.html
 [py_batch_package]: https://pypi.python.org/pypi/azure-batch
-[py_computenodeuser]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.models.html#azure.batch.models.ComputeNodeUser
-[py_imagereference]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.models.html#azure.batch.models.ImageReference
+[py_computenodeuser]: https://docs.microsoft.com/python/api/azure.batch.models.computenodeuser
+[py_imagereference]: https://docs.microsoft.com/python/api/azure.mgmt.batch.models.imagereference
 [py_list_skus]: http://azure-sdk-for-python.readthedocs.org/en/dev/ref/azure.batch.operations.html#azure.batch.operations.AccountOperations.list_node_agent_skus
 [vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 [vm_pricing]: https://azure.microsoft.com/pricing/details/virtual-machines/

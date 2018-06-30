@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: f0a2ec617c71f9e86610017d3b6fa961bbd14322
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
-ms.translationtype: HT
+ms.openlocfilehash: 14e5110385667d0f2135251eef53ff20ada08444
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083082"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111248"
 ---
 # <a name="quickstart-recognize-speech-using-the-cognitive-services-speech-c-sdk"></a>Rychlý úvod: Rozpoznávat řeč pomocí kognitivní služby řeči C# sady SDK
 
@@ -63,7 +63,7 @@ V této části přidáte nová platforma konfiguraci, která odpovídá archite
 
 ## <a name="add-the-sample-code"></a>Přidejte ukázkový kód
 
-1. V `Program.cs` pro váš projekt sady Visual Studio, nahraďte text `Program` třídy následujícím kódem. Ujistěte se, že nahradíte klíč předplatného a oblasti s jedním, který jste získali pro službu.
+1. V `Program.cs` souboru v projektu sady Visual Studio, nahraďte text `Program` třídy následujícím kódem. Zkontrolujte, zda nahradit vlastní klíč předplatného a změnit [oblast](regions.md) na ten, který má přidruženou k odběru (například `westus` pro bezplatné předplatné zkušební verze).
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/Windows/quickstart-csharp/Program.cs#code)]
 

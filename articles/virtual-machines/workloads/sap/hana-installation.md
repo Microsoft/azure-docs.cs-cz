@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 06/27/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 178102990462235b9b39f2ed1ad0e43395118daf
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: ecef13f0ce97c7cec5a6583479911a08a99b0877
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063791"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110724"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Postup instalace a konfigurace SAP HANA (velké instance) na Azure
 
@@ -301,7 +301,7 @@ Tato část ukazuje postup instalace SAP HANA na jednotce, velké Instance HANA.
 
 - Microsoft poskytuje všechna data nasazení můžete velké Instance SAP HANA.
 - Velké Instance SAP HANA jste dostali od společnosti Microsoft.
-- Vytvořili jste virtuální síť Azure, která je připojena k místní síti.
+- Vytvořili jste virtuální síť Azure, který je připojen k síti na pracovišti.
 - Jste se přihlásili ExpressRotue okruhu pro velké instance HANA pro stejnou virtuální síť Azure.
 - Nainstalovali jste virtuální počítač Azure používat jako pole přechod pro velké instance HANA.
 - Je ověřeno, zda se můžete připojit z pole přechod do Instance HANA velké jednotky a naopak.

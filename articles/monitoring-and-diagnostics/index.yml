@@ -5,20 +5,19 @@ metadata:
   title: Dokumentace ke službě Azure Monitor – kurzy, reference k rozhraní API | Dokumentace Microsoftu
   description: Azure Monitor je součástí celkového monitorovacího řešení Microsoft Azure. Azure Monitor pomáhá sledovat výkon, zajišťovat zabezpečení a identifikovat trendy. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak auditovat, vytvářet upozornění a archivovat data.
   services: monitoring-and-diagnostics
-  author: czeumault
-  manager: carolz
+  author: rboucher
   ms.service: monitoring-and-diagnostics
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 09/18/2017
-  ms.author: carolz
-  ms.openlocfilehash: 44a32aae5b2e98e1f29ee56631e50c84dfe18902
-  ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+  ms.author: robb
+  ms.openlocfilehash: af90087551b41a64b140a79ad527a713b5f1697e
+  ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 10/11/2017
-  ms.locfileid: "23070731"
+  ms.lasthandoff: 06/29/2018
+  ms.locfileid: "37111901"
 abstract:
   description: Azure Monitor je součástí celkového monitorovacího řešení Microsoft Azure. Azure Monitor pomáhá sledovat výkon, zajišťovat zabezpečení a identifikovat trendy. Prostřednictvím našich šablon Rychlý start a kurzů se naučíte, jak auditovat, vytvářet upozornění a archivovat data.
 sections:

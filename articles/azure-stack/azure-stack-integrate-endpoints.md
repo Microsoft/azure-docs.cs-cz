@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 06/29/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: d7384d8d1d8c0378e1a9dd68a4f7b71196330b8e
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 0992846416ce77bccd23fda73f61568eb61c33fb
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736690"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37127631"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure zásobníku datacenter integrace – Publikování koncové body
 Azure zásobníku nastaví virtuální IP adresy (VIP) pro její role infrastruktury. Tyto virtuální IP adresy jsou přiděleny z fondu veřejných IP adres. Každý virtuální IP adresy, je zabezpečen seznam řízení přístupu (ACL) ve vrstvě softwarově definované sítě. Seznamy ACL se také používají ve fyzické přepínače (mandátu a BMC) pro další posílení zabezpečení řešení. Položka DNS se vytvoří pro každý koncový bod v externí zóně DNS, který zadaný v době nasazení.
@@ -42,7 +42,7 @@ Interní infrastruktury virtuální IP adresy nejsou uvedené, protože není js
 |Azure Resource Manager (správce)|Adminmanagement.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443<br>30024|
 |Portál (uživatel)|Portál.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443<br>12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003|
 |Azure Resource Manager (uživatel)|Správa.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443<br>30024|
-|Graph|Graf.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443|
+|Graph|graf.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443|
 |Seznam odvolaných certifikátů|Seznam CRL.*&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTP|80|
 |DNS|&#42;.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|TCP A UDP|53|
 |Key Vault (uživatel)|&#42;.Vault.  *&lt;oblast >.&lt; plně kvalifikovaný název domény >*|HTTPS|443|
@@ -56,6 +56,8 @@ Interní infrastruktury virtuální IP adresy nejsou uvedené, protože není js
 |  |&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)|
 |  |api.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)<br>44300 (azure Resource Manager)|
 |  |ftp.appservice.*&lt;region>.&lt;fqdn>*|TCP, UDP|21, 1021, 10001-101000 (FTP)<br>990 (FTPS)|
+|Brány VPN Gateway|     |     |[Najdete v části Nejčastější dotazy k branám VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vpn-faq#can-i-traverse-proxies-and-firewalls-using-point-to-site-capability).|
+|     |     |     |     |
 
 ## <a name="ports-and-urls-outbound"></a>Porty a adresy URL (odchozí)
 
@@ -70,6 +72,9 @@ Azure zásobníku podporuje pouze transparentní proxy servery. V nasazení, kde
 |Registrace|https://management.azure.com|HTTPS|443|
 |Využití|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.NET|HTTPS|443|
 |Program Windows Defender|. wdcp.microsoft.com<br>. wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>http://www.microsoft.com/pkiops/crl<br>http://www.microsoft.com/pkiops/certs<br>http://crl.microsoft.com/pki/crl/products<br>http://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
+|NTP|     |UDP|123|
+|DNS|     |TCP<br>UDP|53|
+|     |     |     |     |
 
 
 

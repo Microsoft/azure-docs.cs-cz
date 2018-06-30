@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 05/04/2018
+ms.date: 06/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: ebba28e72b3b27729318956bad07b6b6df3f14ac
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 3c085074863aa166a5766116b6c63b7dc341ad96
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823542"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130831"
 ---
 # <a name="event-grid-sdks-for-management-and-publishing"></a>Událost mřížky sady SDK pro správu a publikování
 
@@ -43,6 +43,7 @@ Roviny data sady SDK umožňují odesílají události do témata podle postará
 
 ## <a name="next-steps"></a>Další postup
 
+* Například aplikace, najdete v části [ukázky kódu událostí mřížky](https://azure.microsoft.com/resources/samples/?sort=0&service=event-grid).
 * Úvod k mřížce událostí, naleznete v části [co je mřížky událostí?](overview.md)
 * Příkazy událostí mřížky v Azure CLI, najdete v části [rozhraní příkazového řádku Azure](/cli/azure/eventgrid).
 * Událost mřížky příkazy v prostředí PowerShell, najdete v části [prostředí PowerShell](/powershell/module/azurerm.eventgrid).

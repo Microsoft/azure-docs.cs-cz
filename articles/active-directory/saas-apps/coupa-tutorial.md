@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 06/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 3c3fde3aefe02dd3919378d39afeff7cded763fc
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 36c7bfeece12fe2bb2738e50de03ba2c8fc07bfa
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215558"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111942"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Kurz: Azure Active Directory integrace s Coupa
 
@@ -60,14 +60,14 @@ Při konfiguraci integrace Coupa do služby Azure AD musíte přidat do seznamu 
 
 **Pokud chcete přidat Coupa z galerie, proveďte následující kroky:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu.
 
     ![Tlačítko Azure Active Directory][1]
 
 2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
 
     ![V okně podnikové aplikace][2]
-    
+
 3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
     ![Tlačítko nové aplikace][3]
@@ -103,21 +103,33 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     ![Konfigurace propojení přihlášení][4]
 
 2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
+
     ![Jediné přihlášení dialogové okno](./media/coupa-tutorial/tutorial_coupa_samlbase.png)
 
 3. Na **Coupa domény a adresy URL** část, proveďte následující kroky:
 
     ![Coupa domény a adresy URL jednotné přihlašování informace](./media/coupa-tutorial/tutorial_coupa_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `http://<companyname>.Coupa.com`
+    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.coupahost.com`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `<companyname>.coupahost.com`
+    > [!NOTE]
+    > Hodnota přihlašovací adresa URL není skutečné. Aktualizujte tuto hodnotu s skutečná adresa URL přihlašování. Obraťte se na [tým podpory Coupa klienta](https://success.coupa.com/Support/Contact_Us?) získat tuto hodnotu.
 
-    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<companyname>.coupahost.com/sp/ACS.saml2`
+    b. V **identifikátor** textovému poli, zadejte adresu URL:
 
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte s skutečná adresa URL přihlašování, identifikátor a adresa URL odpovědi. Obraťte se na [tým podpory Coupa klienta](https://success.coupa.com/Support/Contact_Us?) k získání těchto hodnot. Zobrazí se hodnota adresa URL odpovědi z metadat, který je vysvětlen později v tomto kurzu.
+    | Prostředí  | zprostředkovatele identity |
+    |:-------------|----|
+    | Izolovaný prostor | `devsso35.coupahost.com`|
+    | Výroba | `prdsso40.coupahost.com`|
+    | | |
+
+    c. V **adresa URL odpovědi** textovému poli, zadejte adresu URL:
+
+    | Prostředí | zprostředkovatele identity |
+    |------------- |----|
+    | Izolovaný prostor | `https://devsso35.coupahost.com/sp/ACS.saml2`|
+    | Výroba | `https://prdsso40.coupahost.com/sp/ACS.saml2`|
+    | | |
 
 4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
 
@@ -130,24 +142,18 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 6. Přihlásit se k serveru vaší společnosti Coupa jako správce.
 
 7. Přejděte na **instalace \> řízení zabezpečení**.
-   
+
    ![Ovládací prvky zabezpečení](./media/coupa-tutorial/ic791900.png "kontrolních mechanismů pro zabezpečení")
 
 8. V **přihlásit pomocí přihlašovacích údajů Coupa** část, proveďte následující kroky:
 
     ![Metadata Coupa SP](./media/coupa-tutorial/ic791901.png "Coupa SP metadat")
-    
-    a. Vyberte **Přihlaste se pomocí SAML**.
-    
-    b. Chcete-li stáhnout soubor metadat Coupa do počítače, klikněte na tlačítko **stahování a import metadat SP**. Otevřete metadata a zkopírujte **AssertionConsumerService index nebo adresa URL** hodnotu, vložte hodnotu do **adresa URL odpovědi** textového pole v **Coupa domény a adresy URL** části. 
-    
-    c. Klikněte na tlačítko **Procházet** nahrát metadata stáhli z portálu Azure.
-    
-    d. Klikněte na **Uložit**.
 
-> [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    a. Vyberte **Přihlaste se pomocí SAML**.
+
+    b. Klikněte na tlačítko **Procházet** nahrát metadata stáhli z portálu Azure.
+
+    c. Klikněte na **Uložit**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvořit testovací uživatele Azure AD
 
@@ -180,7 +186,7 @@ Cílem této části je vytvoření zkušebního uživatele na portálu Azure, n
     c. Vyberte **zobrazit hesla** zaškrtněte políčko a zapište si ji hodnotu, která se zobrazí v **heslo** pole.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="create-a-coupa-test-user"></a>Vytvoření zkušebního uživatele Coupa
 
 Pokud chcete povolit uživatelům Azure AD přihlášení do Coupa, musí být zřízená do Coupa.  
@@ -192,39 +198,39 @@ Pokud chcete povolit uživatelům Azure AD přihlášení do Coupa, musí být z
 1. Přihlaste se k vaší **Coupa** společnosti lokality jako správce.
 
 2. V nabídce v horní části, klikněte na tlačítko **instalace**a potom klikněte na **uživatelé**.
-   
+
    ![Uživatelé](./media/coupa-tutorial/ic791908.png "uživatelů")
 
 3. Klikněte na možnost **Vytvořit**.
-   
+
    ![Vytvoření uživatelů](./media/coupa-tutorial/ic791909.png "vytvoření uživatelů")
 
 4. V **vytvořit uživateli** část, proveďte následující kroky:
-   
+
    ![Podrobné informace o uživateli](./media/coupa-tutorial/ic791910.png "podrobné informace o uživateli")
-   
+
    a. Typ **přihlášení**, **křestní jméno**, **příjmení**, **ID přihlášení**, **e-mailu** atributy platný účet služby Azure Active Directory, který má být zahrnuty do související textových polí.
 
-   b. Klikněte na možnost **Vytvořit**.   
-   
+   b. Klikněte na možnost **Vytvořit**.
+
    >[!NOTE]
-   >Držitel účtu Azure Active Directory dostane e-mail s odkazem pro potvrzení účtu před stane aktivní. 
-   > 
+   >Držitel účtu Azure Active Directory dostane e-mail s odkazem pro potvrzení účtu před stane aktivní.
+   >
 
 >[!NOTE]
->Můžete použít všechny ostatní Coupa uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované Coupa zřídit AAD uživatelské účty. 
+>Můžete použít všechny ostatní Coupa uživatele účtu nástroje pro tvorbu nebo rozhraní API poskytované Coupa zřídit AAD uživatelské účty.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Přiřadit testovacího uživatele Azure AD
 
 V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Coupa.
 
-![Přiřadit role uživatele][200] 
+![Přiřadit role uživatele][200]
 
 **Pokud chcete přiřadit Britta Simon Coupa, proveďte následující kroky:**
 
 1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
 
-    ![Přiřadit uživatele][201] 
+    ![Přiřadit uživatele][201]
 
 2. V seznamu aplikací vyberte **Coupa**.
 
@@ -243,13 +249,13 @@ V této části povolíte Britta Simon používat Azure jednotné přihlašován
 6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
 
 7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
-    
+
 ### <a name="test-single-sign-on"></a>Otestovat jednotné přihlašování
 
 V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
 
 Když kliknete na dlaždici Coupa na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci Coupa.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
@@ -269,4 +275,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/coupa-tutorial/tutorial_general_201.png
 [202]: ./media/coupa-tutorial/tutorial_general_202.png
 [203]: ./media/coupa-tutorial/tutorial_general_203.png
-

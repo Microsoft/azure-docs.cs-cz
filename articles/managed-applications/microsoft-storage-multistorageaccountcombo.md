@@ -11,17 +11,17 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: a4ec5a97f8655c0b5b53dea129d4648a05f6ef85
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: f5fa81d53e1728e8f566a2a39aed8311828b20c7
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34261152"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37108701"
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Element Microsoft.Storage.MultiStorageAccountCombo uživatelského rozhraní
-Skupina ovládacích prvků pro vytváření více účtů úložiště, jejichž názvy začínají s předponou běžné.
+Skupina ovládacích prvků pro vytváření několik účtů úložiště s názvy, které začínají běžné předponou.
 
 ## <a name="ui-sample"></a>Ukázka uživatelského rozhraní
 ![Microsoft.Storage.MultiStorageAccountCombo](./media/managed-application-elements/microsoft.storage.multistorageaccountcombo.png)
@@ -53,14 +53,14 @@ Skupina ovládacích prvků pro vytváření více účtů úložiště, jejich�
 ```
 
 ## <a name="remarks"></a>Poznámky
-- Hodnota `defaultValue.prefix` je zřetězen s jeden nebo více celých čísel na generování pořadí názvy účtů úložiště. Například pokud `defaultValue.prefix` je **foobar** a `count` je **2**, pak názvy účtů úložiště **foobar1** a **foobar2** se generují. Názvy účtů úložiště generovaného ověření jedinečnosti automaticky.
-- Názvy účtů úložiště jsou generovány lexicographically podle `count`. Například pokud `count` je 10 a názvy účtů úložiště končit celá čísla 2 číslice (01, 02, 03, atd.).
+- Hodnota `defaultValue.prefix` je zřetězen s jeden nebo více celých čísel na generování pořadí názvy účtů úložiště. Například pokud `defaultValue.prefix` je **sa** a `count` je **2**, pak názvy účtů úložiště **SA 1** a **SA 2** se generují. Názvy účtů úložiště generovaného ověření jedinečnosti automaticky.
+- Názvy účtů úložiště jsou generovány lexicographically podle `count`. Například pokud `count` je 10 a názvy účtů úložiště končit letopočty celých čísel (01, 02, 03).
 - Výchozí hodnota pro `defaultValue.prefix` je **null**a pro `defaultValue.type` je **Premium_LRS**.
-- Žádný typ, nebyly zadány v `constraints.allowedTypes` skryt a jakýmikoli nebyly zadány v `constraints.excludedTypes` se zobrazí.
-`constraints.allowedTypes` a `constraints.excludedTypes` obě jsou nepovinné, ale nelze používat současně.
+- Žádný typ, nebyly zadány v `constraints.allowedTypes` skryt a jakýmikoli nebyly zadány v `constraints.excludedTypes` se zobrazí. `constraints.allowedTypes` a `constraints.excludedTypes` obě jsou nepovinné, ale nelze používat současně.
 - Kromě vytváření názvy účtů úložiště `count` slouží k nastavení odpovídající multiplikátor pro element. Podporuje statické hodnoty, jako je třeba **2**, nebo jako dynamické hodnoty z jiný element `[steps('step1').storageAccountCount]`. Výchozí hodnota je **1**.
 
 ## <a name="sample-output"></a>Ukázkový výstup
+
 ```json
 {
   "prefix": "sa",

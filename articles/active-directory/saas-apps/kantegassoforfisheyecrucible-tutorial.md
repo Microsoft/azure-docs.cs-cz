@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: fe55c84964d10be971c0f1d64d2c70313098a4ee
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: bf262a42751e02c939696e4c8554fc19f5a4f4bd
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36215705"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111197"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-fisheyecrucible"></a>Kurz: Azure Active Directory integrace s Kantega jednotné přihlašování pro FishEye/kelímek
 
@@ -133,7 +133,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
 
     ![Konfigurovat jednotné přihlašování](./media/kantegassoforfisheyecrucible-tutorial/tutorial_general_400.png)
     
-7. V okně prohlížeče jiný web Přihlaste se do vaší FishEye/kelímku na místním serveru jako správce.
+7. V okně prohlížeče jiný web Přihlaste se na místní server FishEye/kelímku jako správce.
 
 8. Pozastavte ukazatel myši na ikonu a klikněte na **doplňky**.
 
@@ -222,7 +222,7 @@ V této části můžete povolit Azure AD jednotného přihlašování na portá
     c. Klikněte na **Uložit**.  
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím  **Konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
 
 ### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
 Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
@@ -261,7 +261,7 @@ Pokud chcete povolit uživatelům Azure AD přihlášení do FishEye/kelímku, m
 
 **K poskytnutí uživatelského účtu, proveďte následující kroky:**
 
-1. Přihlaste se k vaší kelímku na místním serveru jako správce.
+1. Přihlaste se na místní server kelímku jako správce.
 
 2. Pozastavte ukazatel myši na ikonu a klikněte na **uživatelé**.
 

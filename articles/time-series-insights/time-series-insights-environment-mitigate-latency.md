@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
-ms.openlocfilehash: bbd5e7d91e982a3dce320ea10a7fe8da435ff212
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 35860838d03d61e1145d35fd2516c1688c3bb64f
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293770"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37130576"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>Monitorování a zmírnit omezení ke snížení latence v Azure časové řady přehledy
 Při konfiguraci vašeho prostředí překračuje příchozích dat, může zaznamenat latenci nebo omezení v Azure časové řady přehledy.
@@ -52,15 +52,15 @@ Odtud můžete nakonfigurovat výstrahy pomocí následující metriky:
 |**Příjem příchozích dat přijatých zpráv**   | Počet zpráv číst ze zdroje událostí pro všechny služby Event Hubs nebo centra IoT.        |
 |**Příjem příchozích dat uložené bajtů**     | Celková velikost událostí uložených a k dispozici pro dotaz. Velikost se počítá pouze na hodnotu vlastnosti.        |
 |**Příjem příchozích dat uložené události**     |   Počet plochou události uložené a k dispozici pro dotaz.      |
-|**Příchozí zpráva přístupů časové prodlení**    |  Rozdíl mezi časem, který zprávy je zařazených do fronty ve zdroji událostí a v době zpracování ve vstupní.      |
-|**Funkce Lag počet zpráv přijatých přístupů příjem příchozích dat**    |  Rozdíl mezi pořadové číslo poslední zprávu ve frontě události zdroje oddílu a pořadí číslo zpracovávána v příchozí zprávy.      |
+|**Příjem příchozích dat přijaté zprávy časové prodlení**    |  Rozdíl v sekundách mezi čas zpráva události je zařazených do fronty, zdroje a čas, kdy je zpracován v příchozí.      |
+|**Prodleva počet zpráv přijatých příjem příchozích dat**    |  Rozdíl mezi pořadové číslo poslední zprávu ve frontě události zdroje oddílu a pořadí číslo zpracovávána v příchozí zprávy.      |
 
 
 ![Latence](media/environment-mitigate-latency/latency.png)
 
-Pokud jste jsou omezené, zobrazí se hodnota *příjem příchozích dat přijatých přístupů zpráva časové prodlení*, která vás informuje o tom, kolik minut za TSI je z skutečný čas zpráva dotkne zdroj události (s výjimkou indexování čas appx. 30 – 60 sekund).  *Počet zpráv přijatých přístupů příchozího prodleva* musí také mít hodnotu, umožňuje určit, kolik zpráv za můžete jsou.  Nejjednodušší způsob, jak získat zachycena je zvýšit kapacitu pro vaše prostředí na velikost, která vám umožní překonat rozdíl.  
+Pokud jste jsou omezené, zobrazí se hodnota *příjem příchozích dat přijatých zpráv časové prodlení*, která vás informuje o tom, kolik sekund za TSI je z skutečný čas zprávy dotkne zdroj události (s výjimkou indexování čas appx. 30 – 60 sekund).  *Funkce Lag počet zpráv přijatých příjem příchozích dat* musí také mít hodnotu, umožňuje určit, kolik zpráv za můžete jsou.  Nejjednodušší způsob, jak získat zachycena je zvýšit kapacitu pro vaše prostředí na velikost, která vám umožní překonat rozdíl.  
 
-Například pokud máte prostředí S1 jedné jednotky a že je zpráva pěti milionů prodleva, může zvýšit velikost vašeho prostředí a šesti jednotky pro kolem denně pro získání zachycena.  Vám může zhoršit i dál catch až rychlejší.  Je to běžné occurance při počátečním zřizování prostředí, zejména při připojení k zdroje událostí, který už má události v něm, nebo při hromadné nahrávání spoustu historická data.
+Například pokud máte prostředí S1 jedné jednotky a že je zpráva pěti milionů prodleva, může zvýšit velikost vašeho prostředí a šesti jednotky pro kolem denně pro získání zachycena.  Vám může zhoršit i dál catch až rychlejší.  Opravný období je běžné v situaci, při počátečním zřizování prostředí, zejména při připojení k zdroje událostí, který už má události v něm, nebo pokud hromadně nahrávání spoustu historická data.
 
 Jiné technika je nastavit **uložené události příchozího** výstrahu > = prahová hodnota mírně nižší než vaše kapacita celkový prostředí pro 2 hodin.  Tato výstraha může pomoct pochopit, pokud jste neustále na kapacitě, který označuje vysokou pravděpodobnost latence.  
 
