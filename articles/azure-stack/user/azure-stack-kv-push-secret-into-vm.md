@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 06/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3950c9dfc5ff5f7ea1d170da086b4f97048ed81c
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 05278ee4b0dc1f2c22f40bfcff4f9d7342017c0f
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069029"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37108752"
 ---
 # <a name="create-a-virtual-machine-and-install-a-certificate-retrieved-from-an-azure-stack-key-vault"></a>Vytvoření virtuálního počítače a nainstalovat certifikát načíst z trezoru klíčů služby Azure zásobníku
 
@@ -43,8 +43,8 @@ Následující kroky popisují proces nutný k nabízení certifikát do virtuá
 2. Aktualizujte soubor azuredeploy.parameters.json.
 3. Nasazení šablony
 
->[!NOTE]
->Tyto kroky ze Development Kit zásobník Azure nebo z externích klientských můžete použít, pokud jsou připojené prostřednictvím sítě VPN.
+> [!NOTE]
+> Tyto kroky ze Development Kit zásobník Azure nebo z externích klientských můžete použít, pokud jsou připojené prostřednictvím sítě VPN.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -56,8 +56,8 @@ Následující kroky popisují proces nutný k nabízení certifikát do virtuá
 
 Tento skript vytvoří certifikát ve formátu .pfx, vytvoří trezoru klíčů a certifikát uloží v trezoru klíčů jako tajný klíč.
 
->[!IMPORTANT]
->Je nutné použít `-EnabledForDeployment` parametr při vytváření klíče selhání. Tento parametr zajistí, že trezor klíčů můžete na něj odkazovat z šablon Azure Resource Manageru.
+> [!IMPORTANT]
+> Je nutné použít `-EnabledForDeployment` parametr při vytváření trezoru klíčů. Tento parametr zajistí, že trezor klíčů můžete na něj odkazovat z šablon Azure Resource Manageru.
 
 ```powershell
 

@@ -269,6 +269,8 @@
               href: azure-stack-app-service-release-notes-update-one.md
             - name: Aplikační služby na Azure zásobníku poznámky k verzi update 2
               href: azure-stack-app-service-release-notes-update-two.md
+        - name: Nasazení Ethereum
+          href: azure-stack-ethereum.md
         - name: Naplnění webu Marketplace
           items:
             - name: Přehled webu Marketplace
