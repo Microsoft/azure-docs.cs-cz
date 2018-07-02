@@ -7,6 +7,7 @@
 #### [Rozvoj podnikání s využitím AppSource](./grow-your-business-with-appsource.md)  
 ##### [Vytvoření cílové stránky](./build-your-landing-page.md)  
 ##### [Povolení sdílení potenciálních zákazníků](./enable-lead-sharing.md)  
+##### [Upřednostňovaná řešení](./preferred-solutions.md)
 ##### [Výhody GTM na marketplace](./gtm-benefits.md)  
 ##### [Propagace vašeho podnikání s Microsoftem](./promote-your-business-with-microsoft.md)  
 #### [Rozvoj vašeho podnikání prostřednictvím Azure Marketplace](./grow-your-business-with-azure-marketplace.md)  

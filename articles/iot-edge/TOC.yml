@@ -68,14 +68,18 @@
           href: how-to-register-device-vscode.md
     - name: Instalace modulu runtime IoT Edge
       items:
-        - name: Na zařízení s Linuxem X64
+        - name: Linux X64
           href: how-to-install-iot-edge-linux.md
-        - name: Na zařízení s Linuxem ARM32
+        - name: Linux ARM32
           href: how-to-install-iot-edge-linux-arm.md
-        - name: Ve Windows s kontejnery Windows
+        - name: Windows s kontejnery Windows
           href: how-to-install-iot-edge-windows-with-windows.md
-        - name: Ve Windows s kontejnery Linuxu
+        - name: Windows s kontejnery Linuxu
           href: how-to-install-iot-edge-windows-with-linux.md
+        - name: IoT Core
+          href: how-to-install-iot-core.md
+    - name: Automatické zřizování s využitím DPS
+      href: how-to-auto-provision-simulated-device-windows.md
     - name: Vývoj a ladění modulů
       items:
         - name: 'C#'
@@ -110,8 +114,6 @@
           href: how-to-create-transparent-gateway-windows.md
         - name: Protokolová brána Modbus
           href: deploy-modbus-gateway.md
-    - name: Zřízení zařízení IoT Core
-      href: how-to-install-iot-core.md
     - name: CI/CD ve VSTS
       href: how-to-ci-cd.md
     - name: Řešení potíží

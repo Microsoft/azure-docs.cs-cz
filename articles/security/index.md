@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/30/2018
 ms.author: carolz
-ms.openlocfilehash: 4122afcc730c9c8b312373b77eaf4fd004b2248b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ceabc623963acd469a2e4694cb412828dc511100
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641148"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113788"
 ---
 # <a name="azure-security-documentation"></a>Dokumentace ke službě Azure Security
 
@@ -70,12 +70,12 @@ Zabezpečení je integrované do všech oblastí Azure. Azure nabízí jedinečn
         </a>
     </li>
     <li style="list-style: none;">
-        <a href="/azure/security/azure-isolation">
+        <a href="/azure/security/azure-security-infrastructure">
             <div class="cardSize">
                 <div class="cardPadding">
                     <div class="card" style="min-height: 0;padding-bottom: 24px; text-align: center;">
                         <div class="cardText">
-                            <p style="font-size: 1.12rem;">Jak Azure izoluje moje prostředky od ostatních zákazníků Azure?</p>
+                            <p style="font-size: 1.12rem;">Jak Microsoft zabezpečuje infrastrukturu Azure?</p>
                         </div>
                     </div>
                 </div>

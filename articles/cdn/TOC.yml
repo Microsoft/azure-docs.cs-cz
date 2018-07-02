@@ -91,6 +91,8 @@
           href: cdn-resource-health.md
         - name: Potlačení chování pomocí pravidel
           href: cdn-rules-engine.md
+        - name: Použití Traffic Manageru
+          href: cdn-traffic-manager.md
     - name: Analýza
       href: cdn-log-analysis.md
       items:

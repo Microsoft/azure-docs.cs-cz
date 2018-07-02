@@ -1,0 +1,151 @@
+- name: Dokumentace ke službě Event Hubs
+  href: ./index.yml
+- name: Přehled
+  items:
+    - name: Co je služba Event Hubs?
+      href: event-hubs-about.md
+    - name: Porovnání služeb zasílání zpráv
+      href: ../event-grid/compare-messaging-services.md
+      maintainContext: true
+- name: Šablony Rychlý start
+  expanded: true
+  items:
+    - name: Zpracování streamů událostí – portál
+      href: event-hubs-quickstart-portal.md
+    - name: Zpracování streamů událostí – Azure CLI
+      href: event-hubs-quickstart-cli.md
+    - name: Zpracování streamů událostí – Azure PowerShell
+      href: event-hubs-quickstart-powershell.md
+- name: Kurzy
+  items:
+    - name: Vizualizace datových anomálií v datových streamech Event Hubs
+      href: event-hubs-tutorial-visualize-anomalies.md
+- name: Ukázky
+  href: event-hubs-samples.md
+- name: Koncepty
+  items:
+    - name: Přehled třídy Event Processor Host
+      href: event-hubs-event-processor-host.md
+    - name: Průvodce programováním
+      href: event-hubs-programming-guide.md
+    - name: Integrace se službou Event Grid
+      href: ../event-grid/event-grid-event-hubs-integration.md
+      maintainContext: true
+    - name: Funkce Event Hubs
+      href: event-hubs-features.md
+    - name: Identita spravované služby (Preview)
+      href: event-hubs-managed-service-identity.md
+    - name: Řízení přístupu na základě rolí (Preview)
+      href: event-hubs-role-based-access-control.md
+    - name: Geografické zotavení po havárii a geografická replikace
+      href: event-hubs-geo-dr.md
+    - name: Event Hubs úrovně Dedicated
+      href: event-hubs-dedicated-overview.md
+    - name: Přehled ověřování a modelu zabezpečení
+      href: event-hubs-authentication-and-security-model-overview.md
+    - name: Dostupnost a konzistence
+      href: event-hubs-availability-and-consistency.md
+    - name: Automatické škálování jednotek propustnosti
+      href: event-hubs-auto-inflate.md
+    - name: Diagnostické protokoly
+      href: event-hubs-diagnostic-logs.md
+    - name: Průvodce protokolem AMQP 1.0
+      href: ../service-bus-messaging/service-bus-amqp-protocol-guide.md
+      maintainContext: true
+- name: Návody
+  items:
+    - name: Vytvoření centra událostí
+      href: event-hubs-create.md
+    - name: Odesílání událostí pomocí rozhraní .NET Framework
+      href: event-hubs-dotnet-framework-getstarted-send.md
+    - name: Příjem událostí pomocí rozhraní .NET Framework
+      href: event-hubs-dotnet-framework-getstarted-receive-eph.md
+    - name: Dostupná rozhraní API
+      href: event-hubs-api-overview.md
+      items:
+        - name: .NET Standard
+          href: event-hubs-dotnet-standard-api-overview.md
+        - name: .NET Framework
+          href: event-hubs-dotnet-framework-api-overview.md
+    - name: Odesílání událostí
+      items:
+        - name: .NET Standard
+          href: event-hubs-dotnet-standard-getstarted-send.md
+        - name: Java
+          href: event-hubs-java-get-started-send.md
+        - name: C
+          href: event-hubs-c-getstarted-send.md
+    - name: Příjem událostí
+      items:
+        - name: .NET Standard
+          href: event-hubs-dotnet-standard-getstarted-receive-eph.md
+        - name: Java
+          href: event-hubs-java-get-started-receive-eph.md
+        - name: Apache Storm
+          href: event-hubs-storm-getstarted-receive.md
+    - name: Zachycení událostí
+      items:
+        - name: Použití webu Azure Portal k povolení funkce Event Hubs Capture
+          href: event-hubs-capture-enable-through-portal.md
+        - name: Použití šablony Resource Manageru k povolení funkce Event Hubs Capture
+          href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
+    - name: Spravovat
+      items:
+        - name: Monitorování Event Hubs s využitím Azure Monitoru
+          href: event-hubs-metrics-azure-monitor.md
+        - name: Knihovny pro správu Event Hubs
+          href: event-hubs-management-libraries.md
+        - name: Zachycování
+          items:
+            - name: Event Hubs Capture
+              href: event-hubs-capture-overview.md
+            - name: Zachytávání dat Event Hubs pomocí Pythonu
+              href: event-hubs-capture-python.md
+        - name: Streamování dat Diagnostiky Azure pomocí Event Hubs
+          href: event-hubs-streaming-azure-diags-data.md
+        - name: Vytvoření a nasazení centra událostí pomocí šablony Resource Manageru
+          href: event-hubs-resource-manager-namespace-event-hub.md
+- name: Referenční informace
+  items:
+    - name: Java
+      items:
+        - name: com.microsoft.azure.eventhubs
+          href: /java/api/com.microsoft.azure.eventhubs
+        - name: com.microsoft.azure.eventprocessorhost
+          href: /java/api/com.microsoft.azure.eventprocessorhost
+    - name: .NET
+      items:
+        - name: Microsoft.Azure.EventHubs
+          href: /dotnet/api/microsoft.azure.eventhubs
+        - name: Microsoft.Azure.EventHubs.Processor
+          href: /dotnet/api/microsoft.azure.eventhubs.processor
+        - name: Microsoft.ServiceBus.Messaging
+          href: /dotnet/api/microsoft.servicebus.messaging
+        - name: Microsoft.ServiceBus.Messaging.EventProcessorHost
+          href: /dotnet/api/microsoft.servicebus.messaging.eventprocessorhost
+        - name: Microsoft.Azure.Management.EventHub
+          href: /dotnet/api/microsoft.azure.management.eventhub
+    - name: REST
+      href: /rest/api/eventhub
+    - name: Výjimky
+      href: event-hubs-messaging-exceptions.md
+    - name: Kvóty
+      href: event-hubs-quotas.md
+- name: Zdroje a prostředky
+  items:
+    - name: Nejčastější dotazy
+      href: event-hubs-faq.md
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/?category=internet-of-things'
+    - name: Postup výuky
+      href: 'https://azure.microsoft.com/documentation/learning-paths/event-hubs/'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/event-hubs/'
+    - name: Cenová kalkulačka
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?product=event-hubs'
+    - name: Stack Overflow
+      href: 'http://stackoverflow.com/questions/tagged/azure-eventhub'
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=event-hubs'

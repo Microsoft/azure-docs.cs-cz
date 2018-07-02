@@ -113,6 +113,9 @@
           href: how-to-manage-dps-with-cli.md
         - name: Řízení přístupu k rozhraním API služby zřizování
           href: how-to-control-access.md
+    - name: Zřízení zařízení IoT Edge
+      href: ../iot-edge/how-to-auto-provision-simulated-device-windows.md
+      maintainContext: true
     - name: Použití mechanismů ověřování s využitím SDK
       href: use-hsm-with-sdk.md
     - name: Použití nástrojů SDK pro vývoj

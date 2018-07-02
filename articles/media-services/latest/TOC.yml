@@ -35,6 +35,10 @@
   items:
     - name: Prostředky
       href: assets-concept.md
+    - name: Ochrana obsahu
+      items:
+        - name: Přehled
+          href: content-protection-overview.md
     - name: Kódování
       items:
         - name: Přehled
@@ -69,6 +73,10 @@
           href: job-input-from-http-how-to.md
         - name: Z místního souboru – .NET
           href: job-input-from-local-file-how-to.md
+    - name: Ochrana obsahu
+      items:
+        - name: S využitím AES-128 – .NET
+          href: protect-with-aes128.md
 - name: Referenční informace
   items:
     - name: Specifikace OpenAPI (Swagger)
@@ -87,6 +95,12 @@
       href: 'https://docs.microsoft.com/en-us/javascript/api/azure-arm-mediaservices/index?view=azure-node-latest'
     - name: Schémata událostí
       href: media-services-event-schemas.md
+    - name: Schémata licencování DRM
+      items:
+        - name: Šablona licencování PlayReady
+          href: playready-license-template-overview.md
+        - name: Šablona licencování Widevine
+          href: widevine-license-template-overview.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

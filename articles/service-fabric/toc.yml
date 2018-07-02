@@ -460,6 +460,13 @@
           href: service-fabric-debugging-your-application-java.md
         - name: Místní monitorování a diagnostika
           href: service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md
+    - name: Práce v prostředí VS Code
+      href: service-fabric-get-started-vs-code.md
+      items:
+        - name: 'Vývoj aplikací Service Fabric v C# s využitím VS Code'
+          href: service-fabric-develop-csharp-applications-with-vs-code.md
+        - name: Vývoj aplikací Service Fabric v Javě s využitím VS Code
+          href: service-fabric-develop-java-applications-with-vs-code.md
     - name: Migrace ze služby Cloud Services
       items:
         - name: Porovnání služby Cloud Services se Service Fabric
@@ -534,10 +541,6 @@
                   href: service-fabric-cluster-creation-via-arm.md
                 - name: Cluster využívající běžný název certifikátu
                   href: service-fabric-create-cluster-using-cert-cn.md
-                - name: Povolení šifrování disků pro Windows
-                  href: service-fabric-enable-azure-disk-encryption-windows.md
-                - name: Povolení šifrování disků pro Linux
-                  href: service-fabric-enable-azure-disk-encryption-linux.md
             - name: Měřítko
               items:
                 - name: Ruční horizontální navýšení kapacity

@@ -1,0 +1,48 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace k řízení přístupu na základě role
+metadata:
+  document_id: 
+  title: Dokumentace k řízení přístupu na základě role (RBAC) v Azure | Microsoft Docs
+  description: Přečtěte si víc o využití řízení přístupu na základě role (RBAC) ke správě toho, kdo má přístup k prostředkům Azure, co může s těmito prostředky dělat a k jakým oblastem má přístup.
+  services: active-directory
+  author: rolyon
+  manager: mtillman
+  ms.service: role-based-access-control
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 06/15/2018
+  ms.author: rolyon
+  ms.openlocfilehash: 2d49a0ad4393582439511e5454041a2478cea961
+  ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 06/29/2018
+  ms.locfileid: "37115018"
+abstract:
+  description: Řízení přístupu na základě role (RBAC) je systém, který poskytuje detailní správu přístupu prostředků v Azure. Pomocí řízení přístupu na základě role můžete povinnosti v rámci týmu oddělit a udělit uživatelům jenom takový přístup, který potřebují k výkonu své práce.
+  aside:
+    image:
+      alt: 
+      height: 112
+      src: media/index/video-thumb-get-started.png
+      width: 200
+    title: Uzamknutí přístupu do Azure (1:16)
+    href: https://www.youtube.com/embed/FKBoWWKRnvI
+    width: 200
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">Udělení přístupu pro uživatele</a>
+- title: Podrobné kurzy
+  items:
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/role-based-access-control/tutorial-role-assignments-group-powershell">Udělení přístupu pro skupinu – PowerShell</a>
+    - html: <a href="/azure/role-based-access-control/tutorial-custom-role-powershell">Vytvoření vlastní role – PowerShell</a>
+    - html: <a href="/azure/role-based-access-control/tutorial-custom-role-cli">Vytvoření vlastní role – rozhraní příkazového řádku</a>

@@ -25,16 +25,11 @@
   items:
     - name: Vysvětlení definic rolí
       href: role-definitions.md
-    - name: Vestavěné role
-      href: built-in-roles.md
-    - name: Operace poskytovatele prostředků
-      href: resource-provider-operations.md
     - name: Privileged Identity Management (PIM) pro RBAC
       href: pim-azure-resource.md
     - name: Podmíněný přístup pro správu Azure
       href: conditional-access-azure-management.md
 - name: Návody
-  expanded: true
   items:
     - name: Správa přístupu
       items:
@@ -63,3 +58,17 @@
       href: role-assignments-external-users.md
     - name: Řešení potíží
       href: troubleshooting.md
+- name: Referenční informace
+  items:
+    - name: Vestavěné role
+      href: built-in-roles.md
+    - name: Operace poskytovatele prostředků
+      href: resource-provider-operations.md
+    - name: Omezení RBAC
+      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.resources
+    - name: Azure CLI
+      href: /cli/azure/role?view=azure-cli-latest
+    - name: REST API
+      href: /rest/api/authorization/
