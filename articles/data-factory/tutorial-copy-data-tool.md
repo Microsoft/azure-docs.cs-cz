@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat pomocí nástroje pro kopírování dat Azure | Dokumentace Microsoftu
+title: Kopírování dat pomocí nástroje pro kopírování dat Azure | Microsoft Docs
 description: Vytvořte datovou továrnu Azure a pak pomocí nástroje pro kopírování dat zkopírujte data z úložiště objektů blob v Azure do databáze SQL.
 services: data-factory
 documentationcenter: ''
@@ -9,27 +9,24 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
-ms.date: 01/09/2018
+ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: d2f1d089c6a08a1dc90f82fd9d1c3cb2b6f6dc0a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 504f025edef79b310249c29665198438a326881a
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30171793"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37051997"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Kopírování dat z úložiště objektů blob v Azure do databáze SQL pomocí nástroje pro kopírování dat
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
-> * [Verze 1 – Obecně dostupná](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [Verze 2 – Preview](tutorial-copy-data-tool.md)
+> * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Aktuální verze](tutorial-copy-data-tool.md)
 
 V tomto kurzu pomocí webu Azure Portal vytvoříte datovou továrnu. Pak pomocí nástroje pro kopírování dat vytvoříte kanál, který kopírujte data z úložiště objektů blob v Azure do databáze SQL. 
 
 > [!NOTE]
 > Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](introduction.md).
->
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, která je obecně dostupná, přečtěte si téma [Začínáme se službou Data Factory verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-
 
 V tomto kurzu budete provádět následující kroky:
 
@@ -106,7 +103,7 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
          
     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).
 
-5. V části **Verze** vyberte **V2 (Preview)**.
+5. V části **Verze** vyberte **V2**.
 6. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například služby Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používané datovou továrnou můžou být v jiných umístěních a oblastech.
 7. Zaškrtněte **Připnout na řídicí panel**. 
 8. Vyberte **Vytvořit**.
@@ -126,84 +123,80 @@ Provedením těchto kroků si připravte úložiště objektů blob a databázi 
 2. Na stránce **Vlastnosti** v části **Název úlohy** zadejte **CopyFromBlobToSqlPipeline**. Pak vyberte **Další**. Uživatelské rozhraní služby Data Factory vytvoří kanál se zadaným názvem úlohy. 
 
     ![Stránka Vlastnosti](./media/tutorial-copy-data-tool/copy-data-tool-properties-page.png)
-3. Na stránce **Source data store** (Zdrojové úložiště dat) vyberte **Azure Blob Storage** a pak vyberte **Next** (Další). Zdrojová data se nacházejí v úložišti objektů blob. 
+3. Na stránce **Source data store** (Zdrojové úložiště dat) proveďte následující kroky:
 
-    ![Stránka Zdrojové úložiště dat](./media/tutorial-copy-data-tool/source-data-store-page.png)
-4. Na stránce **Zadejte účet služby Azure Blob Storage** proveďte následující kroky:
+    a. Kliknutím na **+ Create new connection** (+ Vytvořit nové připojení) přidejte připojení.
 
-    a. V části **Název připojení** zadejte **AzureStorageLinkedService**.
+    ![Nová zdrojová propojená služba](./media/tutorial-copy-data-tool/new-source-linked-service.png)
 
-    b. Z rozevíracího seznamu **Název účtu úložiště** vyberte název svého účtu úložiště.
+    b. Z galerie vyberte **Azure Blob Storage** a pak vyberte **Next** (Další).
 
-    c. Vyberte **Next** (Další). 
+    ![Výběr zdroje objektu blob](./media/tutorial-copy-data-tool/select-blob-source.png)
 
-    ![Zadání účtu úložiště](./media/tutorial-copy-data-tool/specify-blob-storage-account.png)
+    c. Na stránce **New Linked Service** (Nová propojená služba) vyberte ze seznamu **Storage account name** (Název účtu úložiště) svůj účet úložiště a pak vyberte **Finish** (Dokončit).
 
-    Propojená služba propojuje úložiště dat nebo výpočetní prostředí s datovou továrnou. V tomto případě vytvoříte propojenou službu Storage, která propojí váš účet úložiště s úložištěm dat. Propojená služba obsahuje informace o připojení, které služba Data Factory používá pro připojení k úložišti Blob Storage za běhu. Datová sada určuje kontejner, složku a soubor (volitelné) obsahující zdrojová data. 
+    ![Konfigurace úložiště Azure](./media/tutorial-copy-data-tool/configure-azure-storage.png)
 
-5. Na stránce **Zvolte vstupní soubor nebo složku** proveďte následující kroky:
+    d. Vyberte nově vytvořenou propojenou službu jako zdroj a pak klikněte na **Next** (Další).
+
+    ![Výběr zdrojové propojené služby](./media/tutorial-copy-data-tool/select-source-linked-service.png)
+
+4. Na stránce **Choose the input file or folder** (Zvolit vstupní soubor nebo složku) proveďte následující kroky:
     
-    a. Přejděte do složky **adfv2tutorial/input**.
+    a. Klikněte na **Browse** (Procházet), přejděte do složky **adfv2tutorial/input**, vyberte soubor **inputEmp.txt** a pak klikněte na **Choose** (Zvolit).
 
-    b. Vyberte soubor **inputEmp.txt**.
+    ![Zvolte vstupní soubor nebo složku](./media/tutorial-copy-data-tool/specify-source-path.png)
 
-    c. Vyberte **Choose** (Zvolit). Případně můžete na soubor **inputEmp.txt** dvakrát kliknout.
+    b. Kliknutím na **Next** (Další) přejděte k dalšímu kroku.
 
-    d. Vyberte **Next** (Další). 
-
-    ![Zvolte vstupní soubor nebo složku](./media/tutorial-copy-data-tool/choose-input-file-folder.png)
-
-6. Na stránce **Nastavení formátu souboru** si všimněte, že nástroj automaticky rozpoznává oddělovače sloupců a řádků. Vyberte **Next** (Další). Na této stránce si také můžete prohlédnou data a schéma vstupních dat. 
+5. Na stránce **Nastavení formátu souboru** si všimněte, že nástroj automaticky rozpoznává oddělovače sloupců a řádků. Vyberte **Next** (Další). Na této stránce si také můžete prohlédnou data a schéma vstupních dat. 
 
     ![Nastavení formátu souboru](./media/tutorial-copy-data-tool/file-format-settings-page.png)
-7. Na stránce **Cílové úložiště dat** vyberte **Azure SQL Database** a pak vyberte **Další**.
+6. Na stránce **Destination data store** (Cílové úložiště dat) proveďte následující kroky:
 
-    ![Cílové úložiště dat](./media/tutorial-copy-data-tool/destination-data-storage-page.png)
-8. Na stránce **Zadejte databázi SQL Azure** proveďte následující kroky: 
+    a. Kliknutím na **+ Create new connection** (+ Vytvořit nové připojení) přidejte připojení.
 
-    a. V části **Název připojení** zadejte **AzureSqlDatabaseLinkedService**.
+    ![Nová propojená služba jímky](./media/tutorial-copy-data-tool/new-sink-linked-service.png)
 
-    b. V rozevíracím seznamu **Název serveru** vyberte příslušný název instance SQL Serveru.
+    b. Z galerie vyberte **Azure Blob Storage** a pak vyberte **Next** (Další).
 
-    c. V rozevíracím seznamu **Název databáze** vyberte svoji databázi SQL Database.
+    ![Výběr Azure SQL DB](./media/tutorial-copy-data-tool/select-azure-sql-db.png)
 
-    d. Do pole **Uživatelské jméno** zadejte jméno uživatele.
+    c. Na stránce **New Linked Service** (Nová propojená služba) vyberte z rozevíracího seznamu název serveru a název databáze, zadejte uživatelské jméno a heslo a vyberte **Finish** (Dokončit).    
 
-    e. Do pole **Heslo** zadejte heslo pro tohoto uživatele.
+    ![Konfigurace Azure SQL DB](./media/tutorial-copy-data-tool/config-azure-sql-db.png)
 
-    f. Vyberte **Next** (Další). 
+    d. Vyberte nově vytvořenou propojenou službu jako jímku a klikněte na **Next** (Další).
 
-    ![Zadání databáze SQL](./media/tutorial-copy-data-tool/specify-azure-sql-database.png)
+    ![Výběr propojené služby jímky](./media/tutorial-copy-data-tool/select-sink-linked-service.png)
 
-    Datová sada musí být přidružená k propojené službě. Propojená služba obsahuje připojovací řetězec, který služba Data Factory používá pro připojení k databázi SQL Database za běhu. Datová sada určuje kontejner, složku a soubor (volitelné), do kterého se data kopírují.
+7. Na stránce **Mapování tabulek** vyberte tabulku **[dbo].[emp]** a pak vyberte **Další**. 
 
-9. Na stránce **Mapování tabulek** vyberte tabulku **[dbo].[emp]** a pak vyberte **Další**. 
+    ![Mapování tabulek](./media/tutorial-copy-data-tool/table-mapping.png)
+8. Na stránce **Mapování schématu** si všimněte mapování prvního a druhého sloupce ve vstupním souboru na sloupce **FirstName** (Jméno) a **LastName** (Příjmení) tabulky **emp**. Vyberte **Next** (Další).
 
-    ![Mapování tabulek](./media/tutorial-copy-data-tool/table-mapping-page.png)
-10. Na stránce **Mapování schématu** si všimněte mapování prvního a druhého sloupce ve vstupním souboru na sloupce **FirstName** (Jméno) a **LastName** (Příjmení) tabulky **emp**.
-
-    ![Stránka Mapování schématu](./media/tutorial-copy-data-tool/schema-mapping-page.png)
-11. Na stránce **Settings** (Nastavení) vyberte **Next** (Další). 
-
-    ![Stránka Nastavení](./media/tutorial-copy-data-tool/settings-page.png)
-12. Na stránce **Souhrn** zkontrolujte nastavení a pak vyberte **Další**.
+    ![Stránka Mapování schématu](./media/tutorial-copy-data-tool/schema-mapping.png)
+9. Na stránce **Settings** (Nastavení) vyberte **Next** (Další). 
+10. Na stránce **Souhrn** zkontrolujte nastavení a pak vyberte **Další**.
 
     ![Stránka souhrnu](./media/tutorial-copy-data-tool/summary-page.png)
-13. Na stránce **Nasazení** vyberte **Monitorovat** a začněte monitorovat kanál (úlohu).
+11. Na stránce **Nasazení** vyberte **Monitorovat** a začněte monitorovat kanál (úlohu).
 
     ![Stránka Nasazení](./media/tutorial-copy-data-tool/deployment-page.png)
-14. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Akce** obsahuje odkazy na zobrazení podrobností o spuštění aktivit a na opětovné spuštění kanálu. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**. 
+12. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Akce** obsahuje odkazy na zobrazení podrobností o spuštění aktivit a na opětovné spuštění kanálu. Seznam můžete aktualizovat výběrem možnosti **Aktualizovat**. 
 
-    ![Monitorování spuštění kanálu](./media/tutorial-copy-data-tool/monitor-pipeline-runs.png)
-15. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Podrobnosti o operaci kopírování zobrazíte výběrem odkazu **Podrobnosti** (ikona brýlí) ve sloupci **Akce**. Pokud chcete přejít zpátky k zobrazení **Spuštění kanálu**, vyberte odkaz **Kanály** v horní části. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**. 
+    ![Monitorování spuštění kanálu](./media/tutorial-copy-data-tool/pipeline-monitoring.png)
+13. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce**. Podrobnosti o operaci kopírování zobrazíte výběrem odkazu **Podrobnosti** (ikona brýlí) ve sloupci **Akce**. Pokud chcete přejít zpátky k zobrazení **Spuštění kanálu**, vyberte odkaz **Kanály** v horní části. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**. 
 
-    ![Monitorování spuštění aktivit](./media/tutorial-copy-data-tool/monitor-activity-runs.png)
-16. Výběrem karty **Upravit** na levé straně přepněte do režimu úprav. Pomocí editoru můžete aktualizovat propojené služby, datové sady a kanály vytvořené nástrojem. Vyberte **Kód** a zobrazte kód JSON pro entitu aktuálně otevřenou v editoru. Podrobnosti o úpravách těchto entit v uživatelském rozhraní služby Data Factory najdete ve [verzi tohoto kurzu pro Azure Portal](tutorial-copy-data-portal.md).
+    ![Monitorování spuštění aktivit](./media/tutorial-copy-data-tool/activity-monitoring.png)
 
-    ![Karta Editor](./media/tutorial-copy-data-tool/edit-tab.png)
-17. Ověřte vložení dat do tabulky **emp** ve vaší databázi SQL.
+    ![Podrobnosti o aktivitě kopírování](./media/tutorial-copy-data-tool/copy-execution-details.png)
+
+14. Ověřte vložení dat do tabulky **emp** ve vaší databázi SQL.
 
     ![Ověření výstupu SQL](./media/tutorial-copy-data-tool/verify-sql-output.png)
+
+15. Výběrem karty **Autor** na levé straně přepněte do režimu úprav. Pomocí editoru můžete aktualizovat propojené služby, datové sady a kanály vytvořené nástrojem. Podrobnosti o úpravách těchto entit v uživatelském rozhraní služby Data Factory najdete ve [verzi tohoto kurzu pro Azure Portal](tutorial-copy-data-portal.md).
 
 ## <a name="next-steps"></a>Další kroky
 Kanál v této ukázce kopíruje data z úložiště objektů blob do databáze SQL. Naučili jste se tyto postupy: 

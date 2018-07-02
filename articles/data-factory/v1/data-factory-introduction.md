@@ -1,5 +1,5 @@
 ---
-title: Úvod do Data Factory, služby pro integraci dat | Dokumentace Microsoftu
+title: Úvod do Data Factory, služby pro integraci dat | Microsoft Docs
 description: Dozvíte se, že Data Factory je cloudová služba pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat.
 services: data-factory
 documentationcenter: ''
@@ -14,20 +14,20 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 6747dc6ef482fecba7e9fb4fae5748de377051eb
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 1b0838bb3d4fa1f47d906294ce42c318d1f4a0cd
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30179595"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37049793"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Úvod do Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](data-factory-introduction.md)
-> * [Verze 2 – Preview](../introduction.md)
+> * [Verze 1](data-factory-introduction.md)
+> * [Verze 2 (aktuální verze)](../introduction.md)
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Azure Data Factory, která je obecně dostupná (GA). Pokud používáte verzi 2 služby Data Factory, který je ve verzi Preview, přečtěte si [Úvodní informace k Data Factory verze 2](../introduction.md).
+> Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si článek [Úvod do Data Factory V2](../introduction.md).
 
 
 ## <a name="what-is-azure-data-factory"></a>Co je služba Azure Data Factory?

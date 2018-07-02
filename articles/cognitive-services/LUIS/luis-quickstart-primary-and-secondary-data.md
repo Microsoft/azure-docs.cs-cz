@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 03/29/2018
+ms.date: 06/26/2018
 ms.author: v-geberr
-ms.openlocfilehash: 1e8647e34da3d34946a4f6ac298017f6d4c99de6
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: b718ed505babd2df6487aecd3a87f17590aef2b9
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265356"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37061243"
 ---
 # <a name="tutorial-create-app-that-uses-simple-entity"></a>Kurz: Vytvoření aplikace využívající jednoduchou entitu
 V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci strojově naučených dat z promluvy pomocí **jednoduché** entity.
@@ -22,125 +22,110 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje extrakci strojově naučenýc
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Vysvětlení jednoduchých entit 
-> * Vytvoření nové aplikace LUIS pro doménu komunikace se záměrem SendMessage (Odeslat zprávu)
-> * Přidání záměru _None_ (Žádný) a přidání ukázkových promluv
-> * Přidání jednoduché entity pro extrakci obsahu zprávy z promluvy
+> * Vytvoření nové aplikace LUIS pro doménu lidských zdrojů 
+> * Přidání jednoduché entity k extrahování pracovních pozic z aplikace
 > * Trénování a publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS
+> * Přidání seznamu frází ke zlepšení signalizování slov týkajících se pracovních pozic
+> * Trénování, publikování aplikace a opětovný dotaz na koncový bod
 
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
+Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
+
+## <a name="before-you-begin"></a>Než začnete
+Pokud nemáte aplikaci pro lidské zdroje z kurzu k [hierarchickým entitám](luis-quickstart-intent-and-hier-entity.md), [naimportujte](create-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) na Githubu.
+
+Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `simple`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi.  
 
 ## <a name="purpose-of-the-app"></a>Účel aplikace
-Tato aplikace ukazuje, jak získat data z promluvy. Představte si následující promluvu z chatbota:
+Tato aplikace ukazuje, jak získat data z promluvy. Představte si následující promluvy z chatbota:
 
-```JSON
-Send a message telling them to stop
-```
+|Promluva|Extrahovatelný název pracovní pozice|
+|:--|:--|
+|I want to apply for the new accounting job (Chci se přihlásit na novou pozici v účetnictví).|accounting (účetnictví)|
+|Please submit my resume for the engineering position (Odešlete můj životopis pro pozici technický pracovník).|engineering (technický pracovník)|
+|Fill out application for job 123456 (Vyplňte přihlášku pro pozici 123456).|123456|
 
-Záměrem je odeslat zprávu. Důležitá data z promluvy jsou samotná zpráva `telling them to stop`.  
+V tomto kurzu přidáte novou entitu k extrahování názvu pracovní pozice. Možnost extrahovat číslo specifické pracovní pozice je popsána v [kurzu](luis-quickstart-intents-regex-entity.md) k regulárním výrazům. 
 
 ## <a name="purpose-of-the-simple-entity"></a>Účel jednoduché entity
-Účelem jednoduché entity je naučit službu LUIS, co je zpráva a kde ji v promluvě najít. Část promluvy, která představuje zprávu, se může u jednotlivých promluv lišit na základě volby slov a délky promluvy. Služba LUIS potřebuje příklady zpráv v různých promluvách napříč všemi záměry.  
+Účelem jednoduché entity v této aplikaci LUIS je naučit službu LUIS, co je název pracovní pozice a kde ho v promluvě najít. Část promluvy, která představuje pracovní pozici, se může u jednotlivých promluv lišit na základě volby slov a délky promluvy. Služba LUIS potřebuje příklady pracovních pozic v různých promluvách napříč všemi záměry.  
 
-Pro účely této jednoduché aplikace bude zpráva na konci promluvy. 
+Název pracovní pozice je obtížné určit, protože název může být podstatné jméno, sloveso nebo fráze složená z několika slov. Příklady:
 
-## <a name="create-a-new-app"></a>Vytvoření nové aplikace
-1. Přihlaste se k webu [LUIS][LUIS]. Nezapomeňte se přihlásit k oblasti, ve které potřebujete publikovat koncové body služby LUIS.
+|Pracovní pozice|
+|--|
+|engineer (technik)|
+|software engineer (softwarový inženýr)|
+|senior software engineer (softwarový inženýr senior)|
+|engineering team lead (vedoucí technického týmu) |
+|air traffic controller (letecký dispečer)|
+|motor vehicle operator (řidič motorového vozidla)|
+|ambulance driver (řidič sanitky)|
+|tender (ošetřovatel)|
+|extruder (plastikář)|
+|millwright (strojní zámečník)|
 
-2. Na webu [LUIS][LUIS] vyberte **Create new app** (Vytvořit novou aplikaci).  
+Tato aplikace LUIS obsahuje názvy pracovních pozic v několika záměrech. Díky označování těchto slov v promluvách všech těchto záměrů služba LUIS lépe porozumí tomu, co je pracovní pozice a kde se v promluvách nachází.
 
-    ![Seznam aplikací LUIS](./media/luis-quickstart-primary-and-secondary-data/app-list.png)
+## <a name="create-job-simple-entity"></a>Vytvoření jednoduché entity pracovní pozice
 
-3. V automaticky otevíraném dialogovém okně zadejte název `MyCommunicator`. 
+1. Ujistěte se, že je vaše aplikace pro lidské zdroje uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
 
-    ![Seznam aplikací LUIS](./media/luis-quickstart-primary-and-secondary-data/create-new-app-dialog.png)
+    [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png)](./media/luis-quickstart-primary-and-secondary-data/hr-first-image.png#lightbox)
 
-4. Po dokončení tohoto procesu aplikace zobrazí stránku **Intents** (Záměry) se záměrem **None** (Žádný). 
+2. Na stránce **Intents** (Záměry) vyberte záměr **ApplyForJob** (Přihláška na pracovní pozici). 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/intents-list.png "Snímek obrazovky se stránkou Intents (Záměry) služby LUIS se záměrem None (Žádný)")](media/luis-quickstart-primary-and-secondary-data/intents-list.png#lightbox)
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-select-applyforjob.png "Snímek obrazovky aplikace LUIS se zvýrazněným záměrem ApplyForJob (Přihláška na pracovní pozici)")](media/luis-quickstart-primary-and-secondary-data/hr-select-applyforjob.png#lightbox)
 
-## <a name="create-a-new-intent"></a>Vytvoření nového záměru
+3. V promluvě `I want to apply for the new accounting job` vyberte `accounting`, zadejte `Job` do horního pole v místní nabídce a pak v této místní nabídce vyberte **Create new entity** (Vytvořit novou entitu). 
 
-1. Na stránce **Intents** (Záměry) vyberte **Create new intent** (Vytvořit nový záměr). 
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png "Snímek obrazovky aplikace LUIS se záměrem ApplyForJob (Přihláška na pracovní pozici) se zvýrazněným postupem vytvoření entity")](media/luis-quickstart-primary-and-secondary-data/hr-create-entity.png#lightbox)
 
-    [![](media/luis-quickstart-primary-and-secondary-data/create-new-intent-button.png "Snímek obrazovky služby LUIS se zvýrazněným tlačítkem Create new intent (Vytvořit nový záměr)")](media/luis-quickstart-primary-and-secondary-data/create-new-intent-button.png#lightbox)
+4. V automaticky otevíraném okně ověřte název a typ entity a vyberte **Done** (Hotovo).
 
-2. Zadejte název nového záměru `SendMessage`. Tento záměr by se měl vybrat vždy, když chce uživatel odeslat zprávu.
+    ![Modální automaticky otevírané okno pro vytvoření jednoduché entity s názvem pracovní pozice a typem Simple (Jednoduchá)](media/luis-quickstart-primary-and-secondary-data/hr-create-simple-entity-popup.png)
 
-    Vytvořením záměru vytváříte primární kategorii informací, které chcete identifikovat. Pojmenováním kategorie umožníte všem ostatním aplikacím, které využívají výsledky dotazů ze služby LUIS, použít název této kategorie k vyhledání vhodné odpovědi nebo provedení odpovídající akce. Služba LUIS tyto dotazy nezodpoví, pouze identifikuje, na jaký typ informací směřuje dotaz v přirozeném jazyce. 
+5. V promluvě `Submit resume for engineering position` označte slovo engineering jako entitu Job (Pracovní pozice). Vyberte slovo engineering a pak v místní nabídce vyberte Job (Pracovní pozice). 
 
-    ![Zadejte název záměru SendMessage (Odeslat zprávu).](./media/luis-quickstart-primary-and-secondary-data/create-new-intent-popup-dialog.png)
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png "Snímek obrazovky aplikace LUIS se zvýrazněnou označenou entitou pracovní pozice")](media/luis-quickstart-primary-and-secondary-data/hr-label-simple-entity.png#lightbox)
 
-3. Do záměru `SendMessage` přidejte sedm promluv, které očekáváte, že uživatel bude požadovat, například:
+    Všechny promluvy jsou označené, ale pět promluv není dostatečný počet k tomu, aby se služba LUIS naučila slova a fráze týkající se pracovních pozic. Pracovní pozice, které používají číselnou hodnotu, nepotřebují další příklady, protože se u nich používá entita regulárního výrazu. U pracovních pozic, které jsou zadány jako slova nebo fráze, je potřeba alespoň dalších 15 příkladů. 
 
-    | Ukázkové promluvy|
-    |--|
-    |Reply with I got your message, I will have the answer tomorrow (Odpovědět zprávou „Dostal/a jsem vaši zprávu, odpovím vám zítra“)|
-    |Send message of When will you be home? (Odeslat zprávu „Kdy budeš doma?“)|
-    |Text that I am busy (Odeslat zprávu, že jsem zaneprázdněn/a)|
-    |Tell them that it needs to be done today (Řekněte jim, že se to musí udělat ještě dnes)|
-    |IM that I am driving and will respond later (Odeslat rychlou zprávu, že řídím a odpovím později)|
-    |Compose message to David that says When was that? (Napsat zprávu Davidovi „Co to bylo?“)|
-    |say greg hello (pozdravovat grega)|
+6. Přidejte další promluvy a označte slova a fráze označující pracovní pozice jako entitu **Job** (Pracovní pozice). Typy pracovních pozic jsou obecné jako pozice používané pracovní agenturou. Pokud byste chtěli používat pracovní pozice, které se vztahují ke konkrétnímu odvětví, měla by to slova označující tyto pracovní pozice odrážet. 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/enter-utterances-on-intent-page.png "Snímek obrazovky služby LUIS se zadanými promluvami")](media/luis-quickstart-primary-and-secondary-data/enter-utterances-on-intent-page.png#lightbox)
+    |Promluva|Entita pracovní pozice|
+    |:--|:--|
+    |I'm applying for the Program Manager desk in R&D (Ucházím se o pozici Programového manažera ve vývoji).|Program Manager (Programový manažer)|
+    |Here is my line cook application (Tady je moje přihláška na pozici kuchaře).|Kuchař|
+    |My resume for camp counselor is attached (Přikládám životopis pro pozici táborového vedoucího).|camp counselor (táborový vedoucí)|
+    |This is my c.v. for administrative assistant (Toto je můj životopis pro pozici asistenta v administrativě).|administrative assistant (asistent v administrativě)|
+    |I want to apply for the management job in sales (Chci se ucházet o pozici manažer v prodeji).|management, sales (manažer v prodeji)|
+    |This is my resume for the new accounting position (Tady je můj životopis pro novou pozici v účetnictví).|accounting (účetnictví)|
+    |My application for barback is included (Přikládám přihlášku pro pomocníka barmana).|barback (pomocník barmana)|
+    |I'm submitting my application for roofer and framer (Posílám přihlášku pro pozici tesař pokrývač).|tesař pokrývač|
+    |My c.v. for bus driver is here (Tady je můj životopis pro pozici řidič autobusu).|bus driver (řidič autobusu)|
+    |I'm a registered nurse. Here is my resume. (Jsem registrovaná zdravotní sestra. Tady je můj životopis.)|registered nurse (registrovaná zdravotní sestra)|
+    |I would like to submit my paperwork for the teaching position I saw in the paper (Chtěla bych vám poslat doklady pro pozici vyučující, kterou jsem našla v novinách).|teaching (vyučující)|
+    |This is my c.v. for the stocker post in fruits and vegetables (Tady je můj životopis pro doplňování zboží v sekci ovoce a zeleniny).|stocker (doplňování zboží)|
+    |Apply for tile work (Přihláška na práci obkladače).|tile (obkladač)|
+    |Attached resume for landscape architect (V příloze je životopis pro pozici zahradní architekt).|landscape architect (zahradní architekt)|
+    |My curriculum vitae for professor of biology is enclosed (Přikládám curriculum vitae pro pozici profesor biologie).|professor of biology (profesor biologie)|
+    |I would like to apply for the position in photography (Chtěl bych se přihlásit na pozici fotograf).|photography (fotograf)|git 
 
-## <a name="add-utterances-to-none-intent"></a>Přidání promluv do záměru None (Žádný)
-
-Aplikace LUIS aktuálně neobsahuje žádné promluvy pro záměr **None** (Žádný). Aplikace potřebuje promluvy, na které nechcete, aby odpovídala, takže potřebuje mít promluvy v záměru **None** (Žádný). Nenechávejte ho prázdný. 
-    
-1. Na levém panelu vyberte **Intents** (Záměry). 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/select-intent-link.png "Snímek obrazovky služby LUIS se zvýrazněným tlačítkem Intents (Záměry)")](media/luis-quickstart-primary-and-secondary-data/select-intent-link.png#lightbox)
-
-2. Vyberte záměr **None** (Žádný). 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/select-none-intent.png "Snímek obrazovky s výběrem záměru None (Žádný)")](media/luis-quickstart-primary-and-secondary-data/select-none-intent.png#lightbox)
-
-3. Přidejte tři promluvy, které může uživatel zadat, ale které nejsou pro aplikaci relevantní. Mezi dobré příklady promluv se záměrem **None** (Žádný) patří:
-
-    | Ukázkové promluvy|
-    |--|
-    |Cancel! (Zrušit!)|
-    |Good bye (Na shledanou)|
-    |What is going on? (Co se děje?)|
-    
-    Pokud služba LUIS vrátí pro promluvu záměr **None** (Žádný), v aplikaci volající službu LUIS, jako je například chatbot, se chatbot může zeptat, jestli chce uživatel ukončit konverzaci. Pokud uživatel nechce ukončit konverzaci, chatbot může také nabídnout možnosti jejího dalšího směřování. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/utterances-for-none-intent.png "Snímek obrazovky služby LUIS s promluvami pro záměr None (Žádný)")](media/luis-quickstart-primary-and-secondary-data/utterances-for-none-intent.png#lightbox)
-
-## <a name="create-a-simple-entity-to-extract-message"></a>Vytvoření jednoduché entity pro extrakci zprávy 
+## <a name="label-entity-in-example-utterances-for-getjobinformation-intent"></a>Označení entity v příkladech promluv pro záměr GetJobInformation (Informace o pracovní pozici)
 1. V levé nabídce vyberte **Intents** (Záměry).
 
-    ![Výběr odkazu Intents (Záměry)](./media/luis-quickstart-primary-and-secondary-data/select-intents-from-none-intent.png)
+2. V seznamu záměrů vyberte **GetJobInformation** (Informace o pracovní pozici). 
 
-2. V seznamu záměrů vyberte `SendMessage`.
+3. Označte pracovní pozice v příkladech promluv:
 
-    ![Výběr záměru SendMessage (Odeslat zprávu)](./media/luis-quickstart-primary-and-secondary-data/select-sendmessage-intent.png)
+    |Promluva|Entita pracovní pozice|
+    |:--|:--|
+    |Is there any work in databases? (Nabízíte nějakou práci se zaměřením na databáze?)|databases (databáze)|
+    |Looking for a new situation with responsibilities in accounting (Hledám něco nového v oboru účetnictví).|accounting (účetnictví)|
+    |What positions are available for senior engineers? (Jaké pozice jsou otevřené na úrovni inženýr senior?)|senior engineers (inženýr senior)|
 
-3. V promluvě `Reply with I got your message, I will have the answer tomorrow` vyberte první slovo textu zprávy (`I`) a poslední slovo textu zprávy (`tomorrow`). Vyberou se všechna slova zprávy a v horní části se zobrazí rozevírací nabídka s textovým polem.
-
-    [![](media/luis-quickstart-primary-and-secondary-data/select-words-in-utterance.png "Snímek obrazovky s vybranými slovy zprávy v promluvě")](media/luis-quickstart-primary-and-secondary-data/select-words-in-utterance.png#lightbox)
-
-4. Do textového pole zadejte název entity `Message`.
-
-    [![](media/luis-quickstart-primary-and-secondary-data/enter-entity-name-in-box.png "Snímek obrazovky se zadaným názvem entity v poli")](media/luis-quickstart-primary-and-secondary-data/enter-entity-name-in-box.png#lightbox)
-
-5. V rozevírací nabídce vyberte **Create new entity** (Vytvořit novou entitu). Účelem entity je získat text, který představuje text zprávy. V této aplikaci LUIS je textová zpráva na konci promluvy, ale promluva i zpráva může mít libovolnou délku. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/create-message-entity.png "Snímek obrazovky s vytvářením nové entity z promluvy")](media/luis-quickstart-primary-and-secondary-data/create-message-entity.png#lightbox)
-
-6. V automaticky otevíraném okně je výchozí typ entity **Simple** (Jednoduchá) a název entity je `Message`. Ponechte tato nastavení a vyberte **Done** (Hotovo).
-
-    ![Ověření typu entity](./media/luis-quickstart-primary-and-secondary-data/entity-type.png)
-
-7. Když je teď entita vytvořená a jedna promluva označená, označte s použitím této entity i zbývající promluvy. Vyberte promluvu a pak vyberte první a poslední slovo zprávy. V rozevírací nabídce vyberte entitu `Message`. V entitě je teď označená zpráva. Pokračujte a označte všechny zprávy ve zbývajících promluvách.
-
-    [![](media/luis-quickstart-primary-and-secondary-data/all-labeled-utterances.png "Snímek obrazovky s označenými zprávami ve všech promluvách")](media/luis-quickstart-primary-and-secondary-data/all-labeled-utterances.png#lightbox)
-
-    Výchozí zobrazení promluv je zobrazení entit (**Entities view**). Vyberte ovládací prvek **Entities view** (Zobrazení entit) nad promluvami. V zobrazení tokenů (**Tokens view**) se zobrazí texty promluv. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/tokens-view-of-utterances.png "Snímek obrazovky s promluvami v zobrazení tokenů")](media/luis-quickstart-primary-and-secondary-data/tokens-view-of-utterances.png#lightbox)
+    K dispozici jsou další příklady promluv, ale neobsahují slova týkající se pracovních pozic.
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 Služba LUIS nemá informace o změnách záměrů a entit (tedy modelu), dokud se nenatrénuje. 
@@ -169,48 +154,227 @@ V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový b
 
 [![](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněným koncovým bodem")](media/luis-quickstart-primary-and-secondary-data/publish-select-endpoint.png#lightbox)
 
-Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. Na konec adresy URL zadejte `text I'm driving and will be 30 minutes late to the meeting`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měly by se vrátit promluvy `SendMessage`.
+Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. Na konec adresy URL zadejte `Here is my c.v. for the programmer job`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měly by se vrátit promluvy `ApplyForJob`.
 
-```
+```JSON
 {
-  "query": "text I'm driving and will be 30 minutes late to the meeting",
+  "query": "Here is my c.v. for the programmer job",
   "topScoringIntent": {
-    "intent": "SendMessage",
-    "score": 0.987501
+    "intent": "ApplyForJob",
+    "score": 0.9826467
   },
   "intents": [
     {
-      "intent": "SendMessage",
-      "score": 0.987501
+      "intent": "ApplyForJob",
+      "score": 0.9826467
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.0218927357
+    },
+    {
+      "intent": "MoveEmployee",
+      "score": 0.007849265
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00349470088
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 0.00348804821
     },
     {
       "intent": "None",
-      "score": 0.111048922
+      "score": 0.00319909188
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.00222647213
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00211193133
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.00172086991
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00138010911
     }
   ],
   "entities": [
     {
-      "entity": "i ' m driving and will be 30 minutes late to the meeting",
-      "type": "Message",
-      "startIndex": 5,
-      "endIndex": 58,
-      "score": 0.162995353
+      "entity": "programmer",
+      "type": "Job",
+      "startIndex": 24,
+      "endIndex": 33,
+      "score": 0.5230502
     }
   ]
 }
 ```
 
+## <a name="names-are-tricky"></a>S názvy je to složitější
+Aplikace LUIS našla s vysokou spolehlivostí správný záměr a extrahovala název pracovní pozice, ale s názvy je to složitější. Vyzkoušejte promluvu `This is the lead welder paperwork`.  
+
+V následujícím souboru JSON vrátí služba LUIS správný záměr `ApplyForJob`, ale neextrahuje název pracovní pozice `lead welder`. 
+
+```JSON
+{
+  "query": "This is the lead welder paperwork.",
+  "topScoringIntent": {
+    "intent": "ApplyForJob",
+    "score": 0.468558252
+  },
+  "intents": [
+    {
+      "intent": "ApplyForJob",
+      "score": 0.468558252
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.0102701457
+    },
+    {
+      "intent": "MoveEmployee",
+      "score": 0.009442534
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00639619166
+    },
+    {
+      "intent": "None",
+      "score": 0.005859333
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.005087704
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.00315379258
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00259344373
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.00193389168
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 0.000420796918
+    }
+  ],
+  "entities": []
+}
+```
+
+Protože názvem může být cokoli, predikuje služba LUIS entity přesněji, pokud má seznam frází se slovy pro zlepšení signalizování.
+
+## <a name="to-boost-signal-add-jobs-phrase-list"></a>Přidání seznamu frází pro zlepšení signalizování
+Otevřete soubor [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) z úložiště LUIS-Samples na Githubu. V seznamu je více než tisíc slov a frází označujících pracovní pozice. Seznam si prohlédněte a vyhledejte slova označující pracovní pozice, která pro vás mají smysl. Pokud potřebná slova nebo fráze v seznamu nenajdete, přidejte si vlastní.
+
+1. V části **Build** (Sestavit) aplikace LUIS vyberte možnost **Phrase lists** (Seznamy frází) v nabídce **Improve app performance** (Zvýšení výkonu aplikací).
+
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-select-phrase-list-left-nav.png "Snímek obrazovky se zvýrazněným tlačítkem Phrase lists (Seznamy frází) na levém navigačním panelu")](media/luis-quickstart-primary-and-secondary-data/hr-select-phrase-list-left-nav.png#lightbox)
+
+2. Vyberte **Create new phrase list** (Vytvořit nový seznam frází). 
+
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-new-phrase-list.png "Snímek obrazovky se zvýrazněným tlačítkem Create new phrase list (Vytvořit nový seznam frází)")](media/luis-quickstart-primary-and-secondary-data/hr-create-new-phrase-list.png#lightbox)
+
+3. Nový seznam frází pojmenujte `Jobs` a zkopírujte seznam ze souboru jobs-phrase-list.csv do textového pole **Values** (Hodnoty). Stiskněte klávesu ENTER. 
+
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Snímek obrazovky s automaticky otevíraným oknem pro vytvoření nového seznamu frází")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
+
+    Pokud chcete do seznamu frází přidat další slova, prohlédněte si doporučená slova a přidejte všechna, která jsou relevantní. 
+
+4. Výběrem tlačítka **Save** (Uložit) seznam frází aktivujte.
+
+    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "Snímek obrazovky s automaticky otevíraným oknem pro vytvoření nového seznamu frází se slovy v polích s hodnotami seznamu frází")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
+
+5. Aplikaci [natrénujte](#train-the-luis-app) a znovu [publikujte](#publish-the-app-to-get-the-endpoint-URL), aby tento seznam frází používala.
+
+6. Znovu zadejte dotaz na koncovém bodě pomocí stejné promluvy: `This is the lead welder paperwork.`
+
+    Odpověď JSON obsahuje extrahovanou entitu:
+
+    ```JSON
+    {
+        "query": "This is the lead welder paperwork.",
+        "topScoringIntent": {
+            "intent": "ApplyForJob",
+            "score": 0.920025647
+        },
+        "intents": [
+            {
+            "intent": "ApplyForJob",
+            "score": 0.920025647
+            },
+            {
+            "intent": "GetJobInformation",
+            "score": 0.003800706
+            },
+            {
+            "intent": "Utilities.StartOver",
+            "score": 0.00299335527
+            },
+            {
+            "intent": "MoveEmployee",
+            "score": 0.0027167045
+            },
+            {
+            "intent": "None",
+            "score": 0.00259556063
+            },
+            {
+            "intent": "FindForm",
+            "score": 0.00224019377
+            },
+            {
+            "intent": "Utilities.Stop",
+            "score": 0.00200693542
+            },
+            {
+            "intent": "Utilities.Cancel",
+            "score": 0.00195913855
+            },
+            {
+            "intent": "Utilities.Help",
+            "score": 0.00162656687
+            },
+            {
+            "intent": "Utilities.Confirm",
+            "score": 0.0002851904
+            }
+        ],
+        "entities": [
+            {
+            "entity": "lead welder",
+            "type": "Job",
+            "startIndex": 12,
+            "endIndex": 22,
+            "score": 0.8295959
+            }
+        ]
+    }
+    ```
+
+## <a name="phrase-lists"></a>Seznamy frází
+Přidání seznamu frází zlepšilo signalizování slov v seznamu, ale **nepoužívá** se jako přesná shoda. Seznam frází obsahuje několik pracovních pozic, kde je prvním slovem `lead` a také obsahuje pracovní pozici `welder`, ale neobsahuje pozici `lead welder`. Tento seznam frází s pracovními pozicemi nemusí být úplný. Když budete pravidelně [kontrolovat promluvy v koncovém bodě](label-suggested-utterances.md) a najdete další slova označující pracovní pozice, přidejte je do svého seznamu frází. Pak opakujte trénování a publikování.
+
 ## <a name="what-has-this-luis-app-accomplished"></a>Co tato aplikace LUIS udělala?
-Tato aplikace s pouhými dvěma záměry a jednou entitou identifikovala záměr dotazu v přirozeném jazyce a vrátila data zprávy. 
+Tato aplikace s jednoduchou entitou a seznamem frází se slovy identifikovala záměr dotazu v přirozeném jazyce a vrátila data zprávy. 
 
-Výsledek JSON identifikuje záměr `SendMessage` s nejvyšším skóre 0,987501. Všechna skóre jsou v rozmezí 1 až 0, přičemž čím blíže je skóre hodnotě 1, tím je lepší. Skóre záměru `None` je 0,111048922, což je mnohem blíže nule. 
-
-Data zprávy obsahují typ (`Message`) i hodnotu (`i ' m driving and will be 30 minutes late to the meeting`). 
-
-Váš chatbot má teď dostatek informací k určení primární akce `SendMessage` a parametru této akce, což je text zprávy. 
+Váš chatbot má teď dostatek informací k určení primární akce přihlášení se na pracovní pozici a parametru této akce – o jakou pozici se jedná. 
 
 ## <a name="where-is-this-luis-data-used"></a>Kde se tato data služby LUIS používají? 
-Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data z entity a odeslat zprávu přes rozhraní API třetí strany. Pokud chatbot nebo volající aplikace nabízí další programové možnosti, služba LUIS tuto práci nedělá. Služba LUIS pouze určuje, co je záměrem uživatele. 
+Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data z entity a pomocí rozhraní API od jiného výrobce odeslat informace o pracovní pozici zástupci oddělení lidských zdrojů. Pokud chatbot nebo volající aplikace nabízí další programové možnosti, služba LUIS tuto práci nedělá. Služba LUIS pouze určuje, co je záměrem uživatele. 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že vyberete nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberete **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
@@ -218,8 +382,4 @@ Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že vyb
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Informace o postupu při přidání hierarchické entity](luis-quickstart-intent-and-hier-entity.md)
-
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
+> [Jak přidat předem připravenou entitu klíčové fráze](luis-quickstart-intent-and-key-phrase.md)

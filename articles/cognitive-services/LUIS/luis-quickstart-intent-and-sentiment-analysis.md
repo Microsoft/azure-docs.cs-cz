@@ -7,104 +7,98 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/25/2018
 ms.author: v-geberr
-ms.openlocfilehash: d000637312619fc493e2f7bad8e8edf0d8d0d94b
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: ac959989dbe64460025bfba84df7b6f22c3c1c04
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265330"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36958425"
 ---
 # <a name="tutorial-create-app-that-returns-sentiment-along-with-intent-prediction"></a>Kurz: Vytvoření aplikace vracející mínění a předpověď záměru
 V tomto kurzu vytvoříte aplikaci, která ukazuje, jak z promluv extrahovat pozitivní, negativní a neutrální mínění.
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Vysvětlení hierarchických entit a kontextově naučených podřízených entit 
-> * Vytvoření nové aplikace LUIS pro doménu cestování se záměrem BookFlight (Rezervovat let)
-> * Přidání záměru _None_ (Žádný) a přidání ukázkových promluv
-> * Přidání hierarchické entity polohy s podřízenými entitami počátku a cíle
+> * Vysvětlení analýzy mínění
+> * Použití aplikace LUIS v doméně lidských zdrojů 
+> * Přidání analýzy mínění
 > * Trénování a publikování aplikace
-> * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS obsahující hierarchické podřízené entity 
+> * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS 
 
 Pro účely tohoto článku potřebujete bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
+
+## <a name="before-you-begin"></a>Než začnete
+Pokud nemáte aplikaci pro lidské zdroje z kurzu k [entitám klíčové fráze](luis-quickstart-intent-and-key-phrase.md), [naimportujte](create-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-keyphrase-HumanResources.json) na Githubu.
+
+Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `sentiment`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 Analýza mínění představuje možnost určit, jestli je promluva uživatele pozitivní, negativní nebo neutrální. 
 
 Následující promluvy ukazují příklady mínění:
 
-|Mínění a skóre|Promluva|
-|:--|--|
-|pozitivní – 0,89 |Ta kombinace polévky a salátu byla skvělá.|
-|negativní – 0,07 |U večeře mi nechutnal předkrm.|
+|Mínění|Skóre|Promluva|
+|:--|:--|:--|
+|pozitivní|0,91 |John W. Smith did a great job on the presentation in Paris (John W. Smith udělal skvělou práci na prezentaci v Paříži).|
+|pozitivní|0,84 |jill-jones@mycompany.com did fabulous work on the Parker sales pitch (jill-jones@mycompany.com odvedla vynikající práci při prodejní prezentaci pro firmu Parker).|
 
-Analýza mínění je nastavení aplikace, které se vztahuje na všechny promluvy. V promluvách nemusíte hledat slova značící mínění a označovat je. Služba LUIS to udělá za vás.
+Analýza mínění je nastavení aplikace, které se vztahuje na všechny promluvy. Nemusíte vyhledávat slova indikující mínění v promluvě a označovat je, protože analýza mínění se používá u celé promluvy. 
 
-## <a name="create-a-new-app"></a>Vytvoření nové aplikace
-1. Přihlaste se k webu [LUIS][LUIS]. Nezapomeňte se přihlásit k [oblasti][LUIS-regions], ve které potřebujete publikovat koncové body služby LUIS.
+## <a name="add-employeefeedback-intent"></a>Přidání záměru EmployeeFeedback (Zpětná vazba o zaměstnancích) 
+Přidejte nový záměr, který bude zachycovat zpětnou vazbu o zaměstnancích od členů společnosti. 
 
-2. Na webu [LUIS][LUIS] vyberte **Create new app** (Vytvořit novou aplikaci). 
+1. Ujistěte se, že je vaše aplikace pro lidské zdroje uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
 
-    [![](media/luis-quickstart-intent-and-sentiment-analysis/app-list.png "Snímek obrazovky se stránkou se seznamy aplikací")](media/luis-quickstart-intent-and-sentiment-analysis/app-list.png#lightbox)
+    [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-quickstart-intent-and-sentiment-analysis/hr-first-image.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-first-image.png#lightbox)
 
-3. V dialogovém okně **Create new app** (Vytvořit novou aplikaci) zadejte název aplikace `Restaurant Reservations With Sentiment` a vyberte **Done** (Hotovo). 
+2. Vyberte **Create new intent** (Vytvořit nový záměr).
 
-    ![Obrázek dialogového okna Create new app (Vytvořit novou aplikaci)](./media/luis-quickstart-intent-and-sentiment-analysis/create-app-ddl.png)
+    [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent.png#lightbox)
 
-    Po dokončení procesu vytváření aplikace zobrazí služba LUIS seznam záměrů obsahující záměr None (Žádný).
+3. Nový záměr pojmenujte `EmployeeFeedback`.
 
-    [![](media/luis-quickstart-intent-and-sentiment-analysis/intents-list.png "Snímek obrazovky se stránkou se seznamy záměrů")](media/luis-quickstart-intent-and-sentiment-analysis/intents-list.png#lightbox)
+    ![Dialogové okno Create new intent (Vytvořit nový záměr) s názvem EmployeeFeedback (Zpětná vazba o zaměstnancích)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-create-new-intent-ddl.png)
 
-## <a name="add-a-prebuilt-domain"></a>Přidání předem připravené domény
-Přidejte předem připravenou doménu, abyste mohli rychle přidávat záměry, entity a označovat promluvy.
+4. Přidejte několik promluv, které budou indikovat, že zaměstnanec udělal něco dobře, nebo nějakou oblast, ve které se potřebuje zlepšit:
 
-1. V levé nabídce vyberte **Prebuilt Domains** (Předem připravené domény).
+    Mějte na paměti, že v této aplikaci pro lidské zdroje jsou zaměstnanci definováni v entitě seznamu `Employee` pomocí jména, e-mailu, čísla telefonní linky, čísla mobilního telefonu a čísla amerického federálního sociálního pojištění. 
 
-    [ ![Snímek obrazovky s tlačítkem Prebuilt Domain (Předem připravená doména)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-button-inline.png)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-button-expanded.png#lightbox)
+    |Promluvy|
+    |--|
+    |425-555-1212 did a nice job of welcoming back a co-worker from maternity leave (425-555-1212 udělala dobrou práci, když přivítala spolupracovnici, která se vrátila z mateřské dovolené).|
+    |234-56-7891 did a great job of comforting a co-worker in their time of grief (234. 56 7891 se hezky zachoval, když utěšoval spolupracovníka v době smutku).|
+    |jill-jones@mycompany.com didn't have all the required invoices for the paperwork (jill-jones@mycompany.com neměla všechny požadované faktury pro zpracování dokladů).|
+    |john.w.smith@mycompany.com turned in the required forms a month late with no signatures (john.w.smith@mycompany.com odevzdal požadované formuláře s měsíčním zpožděním a bez podpisů).|
+    |x23456 didn't make it to the important marketing off-site meeting (x23456 se včas nedostavil na důležitou externí schůzku o marketingu).|
+    |x12345 missed the meeting for June reviews (x12345 nepřišla na schůzku hodnocení za červen).|
+    |Jill Jones rocked the sales pitch at Harvard (Jill Jonesová fantasticky zvládla prodejní prezentaci na Harvardu).|
+    |John W. Smith did a great job on the presentation at Stanford (John W. Smith udělal skvělou práci na prezentaci na Standfordu).|
 
-2. U předem připravené domény **RestaurantReservation** vyberte **Add domain** (Přidat doménu). Počkejte na přidání domény.
-
-    [ ![Snímek obrazovky se seznamem předem připravených domén](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-inline.png)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-expanded.png#lightbox)
-
-3. Na levém navigačním panelu vyberte **Intents** (Záměry). Tato předem připravená doména obsahuje jeden záměr.
-
-    [ ![Snímek obrazovky se seznamem předem připravených domén a zvýrazněnou možností Intents (Záměry) na levém navigačním panelu](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-domain-added-expanded.png)](./media/luis-quickstart-intent-and-sentiment-analysis/prebuilt-domains-list-domain-added-expanded.png#lightbox)
-
-4.  Vyberte záměr **RestaurantReservation.Reserve**. 
-
-    [ ![Snímek obrazovky se seznamem záměrů a zvýrazněným záměrem RestaurantReservation.Reserve](./media/luis-quickstart-intent-and-sentiment-analysis/select-intent.png)](./media/luis-quickstart-intent-and-sentiment-analysis/select-intent.png#lightbox)
-
-5. Přepněte **Entities View** (Zobrazení entit) a zobrazte řadu uvedených promluv s označenými entitami specifickými pro doménu.
-
-    [ ![Snímek obrazovky se záměrem RestaurantReservation.Reserve a zvýrazněnou možností Entities View (Zobrazení entit) přepnutou na Token View (Zobrazení tokenů)](./media/luis-quickstart-intent-and-sentiment-analysis/utterance-list-inline.png)](./media/luis-quickstart-intent-and-sentiment-analysis/utterance-list-expanded.png#lightbox)
+    [ ![Snímek obrazovky aplikace LUIS s příklady promluv v záměru EmployeeFeedback (Zpětná vazba o zaměstnancích)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
-Služba LUIS nemá informace o změnách záměrů a entit (tedy modelu), dokud se nenatrénuje. 
+Aplikace LUIS nebude o novém záměru a příkladech promluv vědět, dokud nebude natrénována. 
 
 1. V pravé horní části webu LUIS vyberte tlačítko **Train** (Trénovat).
 
-    ![Snímek obrazovky se zvýrazněným tlačítkem Train (Trénovat)](./media/luis-quickstart-intent-and-sentiment-analysis/train-button-expanded.png)
+    ![Snímek obrazovky se zvýrazněným tlačítkem Train (Trénovat)](./media/luis-quickstart-intent-and-sentiment-analysis/train-button.png)
 
 2. Trénování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
 
-    ![Snímek obrazovky s pruhem oznamujícím úspěšné trénování ](./media/luis-quickstart-intent-and-sentiment-analysis/trained-expanded.png)
+    ![Snímek obrazovky s pruhem oznamujícím úspěšné trénování ](./media/luis-quickstart-intent-and-sentiment-analysis/hr-trained-inline.png)
 
 ## <a name="configure-app-to-include-sentiment-analysis"></a>Konfigurace aplikace pro zahrnutí analýzy mínění
-Analýza mínění se povoluje na stránce **Publish** (Publikovat). 
+Analýza mínění se konfiguruje na stránce **Publish** (Publikovat). 
 
 1. Na pravém horním navigačním panelu vyberte **Publish** (Publikovat).
 
-    ![Snímek obrazovky se stránkou záměru a rozbaleným tlačítkem Publish (Publikovat) ](./media/luis-quickstart-intent-and-sentiment-analysis/publish-expanded.png)
+    ![Snímek obrazovky se stránkou záměru a rozbaleným tlačítkem Publish (Publikovat) ](./media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-button-in-top-nav-highlighted.png)
 
-2. Vyberte **Enable Sentiment Analysis** (Povolit analýzu mínění).
+2. Vyberte **Enable Sentiment Analysis** (Povolit analýzu mínění). Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat).
 
-    ![Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněnou možností Enable Sentiment Analysis (Povolit analýzu mínění) ](./media/luis-quickstart-intent-and-sentiment-analysis/enable-sentiment-expanded.png)
-
-3. Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat).
-
-    [![](media/luis-quickstart-intent-and-sentiment-analysis/publish-to-production-inline.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněným tlačítkem Publish to production slot (Publikovat do produkčního slotu)")](media/luis-quickstart-intent-and-sentiment-analysis/publish-to-production-expanded.png#lightbox)
+    [![](media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-to-production-expanded.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněným tlačítkem Publish to production slot (Publikovat do produkčního slotu)")](media/luis-quickstart-intent-and-sentiment-analysis/hr-publish-to-production-expanded.png#lightbox)
 
 4. Publikování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
 
@@ -112,34 +106,102 @@ Analýza mínění se povoluje na stránce **Publish** (Publikovat).
 
 1. V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. 
 
-    ![Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněnou adresou URL koncového bodu](media/luis-quickstart-intent-and-sentiment-analysis/endpoint-url-inline.png)
+    ![Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněnou adresou URL koncového bodu](media/luis-quickstart-intent-and-sentiment-analysis/hr-endpoint-url-inline.png)
 
-2. Na konec adresy URL zadejte `Reserve table for  10 on upper level away from kitchen`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `RestaurantReservation.Reserve` s extrahovanou analýzou mínění.
+2. Na konec adresy URL zadejte `Jill Jones work with the media team on the public portal was amazing`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `EmployeeFeedback` s extrahovanou analýzou mínění.
 
 ```
 {
-  "query": "Reserve table for 10 on upper level away from kitchen",
+  "query": "Jill Jones work with the media team on the public portal was amazing",
   "topScoringIntent": {
-    "intent": "RestaurantReservation.Reserve",
-    "score": 0.9926384
+    "intent": "EmployeeFeedback",
+    "score": 0.4983256
   },
   "intents": [
     {
-      "intent": "RestaurantReservation.Reserve",
-      "score": 0.9926384
+      "intent": "EmployeeFeedback",
+      "score": 0.4983256
+    },
+    {
+      "intent": "MoveEmployee",
+      "score": 0.06617523
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.04631853
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.0103248553
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.007531875
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.00344597152
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00337914471
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.0026357458
     },
     {
       "intent": "None",
-      "score": 0.00961109251
+      "score": 0.00214573368
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.00157622492
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 7.379545E-05
     }
   ],
-  "entities": [],
+  "entities": [
+    {
+      "entity": "jill jones",
+      "type": "Employee",
+      "startIndex": 0,
+      "endIndex": 9,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
+    },
+    {
+      "entity": "media team",
+      "type": "builtin.keyPhrase",
+      "startIndex": 25,
+      "endIndex": 34
+    },
+    {
+      "entity": "public portal",
+      "type": "builtin.keyPhrase",
+      "startIndex": 43,
+      "endIndex": 55
+    },
+    {
+      "entity": "jill jones",
+      "type": "builtin.keyPhrase",
+      "startIndex": 0,
+      "endIndex": 9
+    }
+  ],
   "sentimentAnalysis": {
-    "label": "neutral",
-    "score": 0.5
+    "label": "positive",
+    "score": 0.8694164
   }
 }
 ```
+
+Hodnota SentimentAnalysis je kladná a má skóre 0,86. 
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Co tato aplikace LUIS udělala?
 Tato aplikace s povolenou analýzou mínění identifikovala záměr dotazu v přirozeném jazyce a vrátila extrahovaná data, včetně celkového mínění v podobě skóre. 

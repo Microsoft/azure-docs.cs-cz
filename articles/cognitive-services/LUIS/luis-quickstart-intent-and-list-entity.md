@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 33394dff1091f27c79c74d8648a90724ba8d6698
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 68c241833aab756bfc5e71c03da5d4175401910d
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264823"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335818"
 ---
 # <a name="tutorial-create-app-using-a-list-entity"></a>Kurz: Vytvoření aplikace využívající entitu seznamu
 V tomto kurzu vytvoříte aplikaci, která ukazuje, jak získat data odpovídající předdefinovanému seznamu. 
@@ -22,154 +22,126 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje, jak získat data odpovídaj�
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Vysvětlení entit seznamu 
-> * Vytvoření nové aplikace LUIS pro doménu nápojů se záměrem OrderDrinks (Objednat nápoje)
-> * Přidání záměru _None_ (Žádný) a přidání ukázkových promluv
-> * Přidání entity seznamu pro extrakci položek nápojů z promluvy
+> * Vytvoření nové aplikace LUIS pro doménu lidských zdrojů se záměrem MoveEmployee (Přesunutí zaměstnance)
+> * Přidání entity seznamu pro extrakci zaměstnance z promluvy
 > * Trénování a publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS
 
-Pro účely tohoto článku potřebujete bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
+Pro účely tohoto článku potřebujete bezplatný účet [LUIS](luis-reference-regions.md#luis-website), abyste mohli vytvořit svou aplikaci LUIS.
+
+## <a name="before-you-begin"></a>Než začnete
+Pokud nemáte aplikaci pro lidské zdroje z kurzu k entitám regex pro [vlastní doménu](luis-quickstart-intents-regex-entity.md), [naimportujte](create-new-app.md#import-new-app) JSON do nové aplikace na webu [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) na Githubu.
+
+Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `list`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
 
 ## <a name="purpose-of-the-list-entity"></a>Účel entity seznamu
-Tato aplikace přebírá objednávky nápojů, například `1 coke and 1 milk please`, a vrací data, jako je například typ nápoje. Entita **seznamu** nápojů hledá přesné shody textu a vrací tyto shody. 
+Tato aplikace predikuje promluvy o přesunutí zaměstnance z jedné budovy do jiné. Tato aplikace používá k extrakci zaměstnance entitu seznamu. Na zaměstnance je možné odkazovat pomocí jména, telefonního čísla, e-mailu nebo čísla amerického federálního sociálního pojištění. 
 
-Entita seznamu je vhodná pro tento typ dat, kdy je známá sada hodnot dat. Názvy nápojů se můžou lišit a můžou se v nich používat hovorové výrazy a zkratky, ale samotné názvy se nemění často. 
+Entita seznamu může obsahovat mnoho položek se synonymy pro každou položku. U malých až středně velkých společností slouží entita seznamu k extrakci informací o zaměstnanci. 
 
-## <a name="app-intents"></a>Záměry aplikace
-Záměry představují kategorie toho, co uživatel chce. Tato aplikace obsahuje dva záměry: OrderDrinks (Objednat nápoje) a None (Žádný). Záměr [None](luis-concept-intent.md#none-intent-is-fallback-for-app) (Žádný) se používá účelně k označení všeho mimo aplikaci.  
+Název každé položky v kanonickém tvaru je číslo zaměstnance. Příklady synonym v této doméně: 
 
-## <a name="list-entity-is-an-exact-text-match"></a>Entita seznamu hledá přesnou shodu textu
-Účelem této entity je vyhledat v promluvě části textu a uspořádat je do kategorií. Entita [seznamu](luis-concept-entity-types.md) umožňuje hledat přesnou shodu slov nebo frází.  
+|Účel synonyma|Hodnota synonyma|
+|--|--|
+|Jméno|John W. Smith|
+|E-mailová adresa|john.w.smith@mycompany.com|
+|Telefonní linka|x12345|
+|Číslo osobního mobilního telefonu|425-555-1212|
+|Číslo amerického federálního sociálního pojištění|123-45-6789|
 
-Pro tuto nápojovou aplikaci služba LUIS extrahuje objednávku nápojů takovým způsobem, aby bylo možné vytvořit a vyplnit standardní objednávku. Služba LUIS umožňuje v promluvách používat variace, zkratky a hovorové výrazy. 
+Entita seznamu je vhodná pro tento typ dat, když platí následující:
 
-Mezi jednoduché ukázkové promluvy od uživatelů patří:
+* Hodnoty dat jsou známou sadou.
+* Tato sada nepřekračuje maximální [hranice](luis-boundaries.md) aplikace LUIS pro tento typ entity.
+* Text v promluvě se přesně shoduje se synonymem. 
+
+Služba LUIS extrahuje informace o zaměstnanci takovým způsobem, že klientská aplikace může vytvořit standardní pokyn k přesunutí zaměstnance.
+<!--
+## Example utterances
+Simple example utterances for a `MoveEmployee` inent:
 
 ```
-2 glasses of milk
-3 bottles of water
-2 cokes
-```
-
-Mezi zkrácené nebo hovorové verze promluv patří:
+move John W. Smith from B-1234 to H-4452
+mv john.w.smith@mycompany from office b-1234 to office h-4452
 
 ```
-5 milk
-3 h2o
-1 pop
-```
- 
-Entita seznamu páruje `h2o` s vodou a `pop` s nealkoholickými nápoji.  
+-->
 
-## <a name="what-luis-does"></a>Co dělá služba LUIS
-Když se záměr a entity promluvy identifikují, [extrahují](luis-concept-data-extraction.md#list-entity-data) a vrátí z [koncového bodu](https://aka.ms/luis-endpoint-apis) ve formátu JSON, služba LUIS je hotová. Volající aplikace nebo chatbot převezme tuto odpověď JSON a splní požadavek způsobem, pro který jsou aplikace nebo chatbot určené. 
+## <a name="add-moveemployee-intent"></a>Přidání záměru MoveEmployee (Přesunutí zaměstnance)
 
-## <a name="create-a-new-app"></a>Vytvoření nové aplikace
-1. Přihlaste se k webu [LUIS][LUIS]. Nezapomeňte se přihlásit k [oblasti][LUIS-regions], ve které potřebujete publikovat koncové body služby LUIS.
+1. Ujistěte se, že je vaše aplikace pro lidské zdroje uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
 
-2. Na webu [LUIS][LUIS] vyberte **Create new app** (Vytvořit novou aplikaci).  
+    [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-quickstart-intent-and-list-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-list-entity/hr-first-image.png#lightbox)
 
-    ![Vytvoření nové aplikace](./media/luis-quickstart-intent-and-list-entity/app-list.png)
+2. Vyberte **Create new intent** (Vytvořit nový záměr). 
 
-3. V automaticky otevíraném dialogovém okně zadejte název `MyDrinklist`. 
+    [ ![Snímek obrazovky se stránkou Intents (Záměry) a zvýrazněným tlačítkem Create new intent (Vytvořit nový záměr)](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-button.png) ](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-button.png#lightbox)
 
-    ![Pojmenování aplikace MyDrinkList](./media/luis-quickstart-intent-and-list-entity/create-app-dialog.png)
+3. V automaticky otevíraném dialogovém okně zadejte `MoveEmployee` a pak vyberte **Done** (Hotovo). 
 
-4. Po dokončení tohoto procesu aplikace zobrazí stránku **Intents** (Záměry) se záměrem **None** (Žádný). 
+    ![Snímek obrazovky s dialogovým oknem pro vytvoření nového záměru](./media/luis-quickstart-intent-and-list-entity/hr-create-new-intent-ddl.png)
 
-    [![](media/luis-quickstart-intent-and-list-entity/intents-page-none-only.png "Snímek obrazovky se stránkou Intents (Záměry)")](media/luis-quickstart-intent-and-list-entity/intents-page-none-only.png#lightbox)
+4. Přidejte do záměru ukázkové promluvy.
 
-## <a name="create-a-new-intent"></a>Vytvoření nového záměru
-
-1. Na stránce **Intents** (Záměry) vyberte **Create new intent** (Vytvořit nový záměr). 
-
-    [![](media/luis-quickstart-intent-and-list-entity/create-new-intent.png "Snímek obrazovky se stránkou Intents (Záměry) a zvýrazněným tlačítkem Create new intent (Vytvořit nový záměr)")](media/luis-quickstart-intent-and-list-entity/create-new-intent.png#lightbox)
-
-2. Zadejte název nového záměru `OrderDrinks`. Tento záměr by se měl vybrat vždy, když si chce uživatel objednat nápoj.
-
-    Vytvořením záměru vytváříte primární kategorii informací, které chcete identifikovat. Pojmenováním kategorie umožníte všem ostatním aplikacím, které využívají výsledky dotazů ze služby LUIS, použít název této kategorie k vyhledání vhodné odpovědi nebo provedení odpovídající akce. Služba LUIS tyto dotazy nezodpoví, pouze identifikuje, na jaký typ informací směřuje dotaz v přirozeném jazyce. 
-
-    [![](media/luis-quickstart-intent-and-list-entity/intent-create-dialog-order-drinks.png "Snímek obrazovky s vytvářením nového záměru OrderDrinks (Objednat nápoje)")](media/luis-quickstart-intent-and-list-entity/intent-create-dialog-order-drinks.png#lightbox)
-
-3. Do záměru `OrderDrinks` přidejte několik promluv, které očekáváte, že uživatel bude požadovat, například:
-
-    | Ukázkové promluvy|
+    |Příklady promluv|
     |--|
-    |Please send 2 cokes and a bottle of water to my room (Pošlete do mého pokoje prosím 2 coly a láhev vody)|
-    |2 perriers with a twist of lime (2 minerálky s kouskem citrónu)|
-    |h20|
+    |move John W. Smith from B-1234 to H-4452 (přesunout Johna W. Smithe z B-1234 do H-4452).|
+    |mv john.w.smith@mycompany.com from office b-1234 to office h-4452 (john.w.smith@mycompany.com se přesune z kanceláře b-1234 do kanceláře h-4452).|
+    |shift x12345 to h-1234 tomorrow (přestěhujte zítra x12345 do h-1234).|
+    |place 425-555-1212 in HH-2345 (umístěte 425-555-1212 do HH-2345).|
+    |move 123-45-6789 from A-4321 to J-23456 (přesunout 123-45-6789 z A-4321 do J-23456).|
+    |mv Jill Jones from D-2345 to J-23456 (Jill Jonesová se přesune z D-2345 do J-23456).|
+    |shift jill-jones@mycompany.com to M-12345 (přestěhujte jill-jones@mycompany.com do M-12345).|
+    |x23456 to M-12345 (x23456 do M-12345).|
+    |425-555-0000 to h-4452 (425-555-0000 do h-4452)|
+    |234-56-7891 to hh-2345 (234 7891 56 do hh 2345)|
 
-    [![](media/luis-quickstart-intent-and-list-entity/intent-order-drinks-utterance.png "Snímek obrazovky se zadáváním promluvy na stránce záměru OrderDrinks (Objednat nápoje)")](media/luis-quickstart-intent-and-list-entity/intent-order-drinks-utterance.png#lightbox)
+    [ ![Snímek obrazovky se stránkou záměru a zvýrazněnými novými promluvami](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
 
-## <a name="add-utterances-to-none-intent"></a>Přidání promluv do záměru None (Žádný)
+    Aplikace má z předchozího kurzu přidanou předem připravenou entitu čísla, takže je každé číslo označené. Pro klientskou aplikaci může být tato informace dostačující, ale číslo není označené typem. Vytvoření nové entity s odpovídajícím názvem umožní klientské aplikaci zpracovat entitu po vrácení ze služby LUIS.
 
-Aplikace LUIS aktuálně neobsahuje žádné promluvy pro záměr **None** (Žádný). Aplikace potřebuje promluvy, na které nechcete, aby odpovídala, takže potřebuje mít promluvy v záměru **None** (Žádný). Nenechávejte ho prázdný. 
-
-1. Na levém panelu vyberte **Intents** (Záměry). 
-
-    [![](media/luis-quickstart-intent-and-list-entity/left-panel-intents.png "Snímek obrazovky s výběrem odkazu Intents (Záměry) na levém panelu")](media/luis-quickstart-intent-and-list-entity/left-panel-intents.png#lightbox)
-
-2. Vyberte záměr **None** (Žádný). Přidejte tři promluvy, které může uživatel zadat, ale které nejsou pro aplikaci relevantní:
-
-    | Ukázkové promluvy|
-    |--|
-    |Cancel! (Zrušit!)|
-    |Good bye (Na shledanou)|
-    |What is going on? (Co se děje?)|
-
-## <a name="when-the-utterance-is-predicted-for-the-none-intent"></a>Když se u promluvy předpokládá záměr None (Žádný)
-Když služba LUIS vrátí pro promluvu záměr **None** (Žádný), v aplikaci volající službu LUIS (jako je například chatbot) se chatbot může zeptat, jestli chce uživatel ukončit konverzaci. Pokud uživatel nechce ukončit konverzaci, chatbot může také nabídnout možnosti jejího dalšího směřování. 
-
-Entity fungují v záměru **None** (Žádný). Pokud je záměr s nejvyšším skóre **None** (Žádný), ale extrahovala se entita, která má pro chatbota smysl, může chatbot pokračovat otázkou, která se zaměří na záměr zákazníka. 
-
-## <a name="create-a-menu-entity-from-the-intent-page"></a>Vytvoření entity nabídky na stránce záměru
-Když teď oba záměry obsahují promluvy, potřebuje služba LUIS pochopit, co je nápoj. Vraťte se k záměru `OrderDrinks` a podle následujícího postupu označte nápoje v promluvě:
-
-1. Vraťte se k záměru `OrderDrinks` tak, že na levém panelu vyberete **Intents** (Záměry).
-
-2. V seznamu záměrů vyberte `OrderDrinks`.
-
-3. V promluvě `Please send 2 cokes and a bottle of water to my room` vyberte slovo `water`. Zobrazí se rozevírací nabídka a v její horní části textové pole umožňující vytvoření nové entity. Zadejte do textového pole název entity `Drink` a pak v rozevírací nabídce vyberte **Create new entity** (Vytvořit novou entitu). 
-
-    [![](media/luis-quickstart-intent-and-list-entity/intent-label-h2o-in-utterance.png "Snímek obrazovky s vytvářením nové entity výběrem slova v promluvě")](media/luis-quickstart-intent-and-list-entity/intent-label-h2o-in-utterance.png#lightbox)
-
-4. V automaticky otevíraném okně vyberte typ entity **List** (Seznam). Přidejte synonymum `h20`. Po zadání každého synonyma stiskněte klávesu Enter. Nepřidávejte do seznamu synonym výraz `perrier`. Ten se přidá jako příklad v dalším kroku. Vyberte **Done** (Hotovo).
-
-    [![](media/luis-quickstart-intent-and-list-entity/create-list-ddl.png "Snímek obrazovky s konfigurací nové entity")](media/luis-quickstart-intent-and-list-entity/create-list-ddl.png#lightbox)
-
-5. Když je teď entita vytvořená, označte i ostatní synonyma pro vodu tak, že vyberete synonymum pro vodu a pak v rozevíracím seznamu vyberete `Drink`. V nabídce přejděte doprava, vyberte `Set as synonym` a pak `water`.
-
-    [![](media/luis-quickstart-intent-and-list-entity/intent-label-perriers.png "Snímek obrazovky s označováním stávající entity v promluvě")](media/luis-quickstart-intent-and-list-entity/intent-label-perriers.png#lightbox)
-
-## <a name="modify-the-list-entity-from-the-entity-page"></a>Úprava entity seznamu na stránce entity
-Entita seznamu nápojů je vytvořená, ale obsahuje málo položek a synonym. Pokud znáte některé výrazy, zkratky a hovorové výrazy, je jednodušší vyplnit seznam na stránce **entity**. 
+## <a name="create-an-employee-list-entity"></a>Vytvoření entity seznamu zaměstnanců
+Když teď má záměr **MoveEmployee** (Přesunutí zaměstnance) promluvy, musí služba LUIS porozumět tomu, co je zaměstnanec. 
 
 1. Na levém panelu vyberte **Entities** (Entity).
 
-    [![](media/luis-quickstart-intent-and-list-entity/intent-select-entities.png "Snímek obrazovky s výběrem možnosti Entities (Entity) na levém panelu")](media/luis-quickstart-intent-and-list-entity/intent-select-entities.png#lightbox)
+    [ ![Snímek obrazovky se stránkou záměru se zvýrazněným tlačítkem Entities (Entity) na levém navigačním panelu](./media/luis-quickstart-intent-and-list-entity/hr-select-entity-button.png) ](./media/luis-quickstart-intent-and-list-entity/hr-select-entity-button.png#lightbox)
 
-2. V seznamu entity vyberte `Drink`.
+2. Vyberte **Create new entity** (Vytvořit novou entitu).
 
-    [![](media/luis-quickstart-intent-and-list-entity/entities-select-drink-entity.png "Snímek obrazovky s výběrem entity Drink v seznamu entit")](media/luis-quickstart-intent-and-list-entity/entities-select-drink-entity.png#lightbox)
+    [ ![Snímek obrazovky se stránkou Entities (Entity) a zvýrazněnou možností Create new entity (Vytvořit novou entitu)](./media/luis-quickstart-intent-and-list-entity/hr-create-new-entity-button.png) ](./media/luis-quickstart-intent-and-list-entity/hr-create-new-entity-button.png#lightbox)
 
-3. Do textového pole zadejte `Soda pop` a stiskněte Enter. Tento výraz se běžně používá pro sycené nápoje. Každá kultura má pro tento typ nápoje nějakou přezdívku nebo hovorový výraz.
+3. V automaticky otevíraném dialogovém okně entity zadejte `Employee` jako název entity a **List** (Seznam) jako typ entity. Vyberte **Done** (Hotovo).  
 
-    [![](media/luis-quickstart-intent-and-list-entity/drink-entity-enter-canonical-name.png "Snímek obrazovky se zadáváním názvu v kanonickém tvaru")](media/luis-quickstart-intent-and-list-entity/drink-entity-enter-canonical-name.png#lightbox)
+    [![](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png "Snímek obrazovky s dialogovým oknem pro vytváření nové entity")](media/luis-quickstart-intent-and-list-entity/hr-list-entity-ddl.png#lightbox)
 
-4. Na stejném řádku jako `Soda pop` zadejte synonyma, například: 
+4. Na stránce entity Employee (Zaměstnanec) zadejte jako novou hodnotu `Employee-24612`.
 
-    ```
-    coke
-    cokes
-    coca-cola
-    coca-colas
-    ```
+    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png "Snímek obrazovky se zadáváním hodnoty")](media/luis-quickstart-intent-and-list-entity/hr-emp1-value.png#lightbox)
 
-    Synonyma můžou obsahovat fráze, interpunkci, přivlastňovací zájmena a množná čísla. Vzhledem k tomu, že entita seznamu hledá přesnou shodu textu (kromě velikosti znaků), musí synonyma obsahovat všechny variace. Seznam můžete rozšiřovat s tím, jak budete zjišťovat další variace z protokolů dotazů nebo při kontrole požadavků přicházejících do koncového bodu. 
+5. Pro synonyma zadejte následující hodnoty:
 
-    Kvůli zachování stručnosti příkladu obsahuje tento článek jenom pár synonym. Produkční aplikace LUIS by obsahovala velké množství synonym, která by se pravidelně kontrolovala a rozšiřovala. 
+    |Účel synonyma|Hodnota synonyma|
+    |--|--|
+    |Jméno|John W. Smith|
+    |E-mailová adresa|john.w.smith@mycompany.com|
+    |Telefonní linka|x12345|
+    |Číslo osobního mobilního telefonu|425-555-1212|
+    |Číslo amerického federálního sociálního pojištění|123-45-6789|
 
-    [![](media/luis-quickstart-intent-and-list-entity/drink-entity-enter-synonyms.png "Snímek obrazovky s přidáváním synonym")](media/luis-quickstart-intent-and-list-entity/drink-entity-enter-synonyms.png#lightbox)
+    [![](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png "Snímek obrazovky se zadáváním synonym")](media/luis-quickstart-intent-and-list-entity/hr-emp1-synonyms.png#lightbox)
+
+6. Jako novou hodnotu zadejte `Employee-45612`.
+
+7. Pro synonyma zadejte následující hodnoty:
+
+    |Účel synonyma|Hodnota synonyma|
+    |--|--|
+    |Jméno|Jill Jones|
+    |E-mailová adresa|jill-jones@mycompany.com|
+    |Telefonní linka|x23456|
+    |Číslo osobního mobilního telefonu|425-555-0000|
+    |Číslo amerického federálního sociálního pojištění|234-56-7891|
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 Služba LUIS nemá informace o změnách záměrů a entit (tedy modelu), dokud se nenatrénuje. 
@@ -200,59 +172,127 @@ Abyste mohli využít předpověď služby LUIS v chatbotu nebo jiné aplikaci, 
 
     [![](media/luis-quickstart-intent-and-list-entity/publish-select-endpoint.png "Snímek obrazovky s adresou URL koncového bodu na stránce Publish (Publikovat)")](media/luis-quickstart-intent-and-list-entity/publish-select-endpoint.png#lightbox)
 
-2. Na konec adresy URL zadejte `2 cokes and 3 waters`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `OrderDrinks` se dvěma typy nápojů `cokes` a `waters`.
+2. Na konec adresy URL zadejte `shift 123-45-6789 from Z-1242 to T-54672`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `MoveEmployee` s extrahovanou hodnotou `Employee`.
 
-```
+```JSON
 {
-  "query": "2 cokes and 3 waters",
+  "query": "shift 123-45-6789 from Z-1242 to T-54672",
   "topScoringIntent": {
-    "intent": "OrderDrinks",
-    "score": 0.999998569
+    "intent": "MoveEmployee",
+    "score": 0.9882801
   },
   "intents": [
     {
-      "intent": "OrderDrinks",
-      "score": 0.999998569
+      "intent": "MoveEmployee",
+      "score": 0.9882801
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.016044287
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.007611245
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.007063288
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00684710965
     },
     {
       "intent": "None",
-      "score": 0.23884207
+      "score": 0.00304174074
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.002981
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 0.00212222221
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00191026414
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.0007461446
     }
   ],
   "entities": [
     {
-      "entity": "cokes",
-      "type": "Drink",
-      "startIndex": 2,
-      "endIndex": 6,
+      "entity": "123 - 45 - 6789",
+      "type": "Employee",
+      "startIndex": 6,
+      "endIndex": 16,
       "resolution": {
         "values": [
-          "Soda pop"
+          "Employee-24612"
         ]
       }
     },
     {
-      "entity": "waters",
-      "type": "Drink",
-      "startIndex": 14,
-      "endIndex": 19,
+      "entity": "123",
+      "type": "builtin.number",
+      "startIndex": 6,
+      "endIndex": 8,
       "resolution": {
-        "values": [
-          "h20"
-        ]
+        "value": "123"
+      }
+    },
+    {
+      "entity": "45",
+      "type": "builtin.number",
+      "startIndex": 10,
+      "endIndex": 11,
+      "resolution": {
+        "value": "45"
+      }
+    },
+    {
+      "entity": "6789",
+      "type": "builtin.number",
+      "startIndex": 13,
+      "endIndex": 16,
+      "resolution": {
+        "value": "6789"
+      }
+    },
+    {
+      "entity": "-1242",
+      "type": "builtin.number",
+      "startIndex": 24,
+      "endIndex": 28,
+      "resolution": {
+        "value": "-1242"
+      }
+    },
+    {
+      "entity": "-54672",
+      "type": "builtin.number",
+      "startIndex": 34,
+      "endIndex": 39,
+      "resolution": {
+        "value": "-54672"
       }
     }
   ]
 }
 ```
 
+Zaměstnanec byl nalezen a vrácen jako typ `Employee` s rozlišovací hodnotou `Employee-24612`.
+
 ## <a name="where-is-the-natural-language-processing-in-the-list-entity"></a>Kde se v entitě seznamu provádí zpracování přirozeného jazyka? 
-Vzhledem k tomu, že entita seznamu hledá přesnou shodu textu, nespoléhá se na zpracování přirozeného jazyka (ani strojové učení). Služba LUIS však využívá zpracování přirozeného jazyka (nebo strojové učení) k výběru správného záměru s nejvyšším skóre. Promluva navíc může být kombinací více než jedné entity nebo dokonce více než jednoho typu entity. V každé promluvě se zpracovávají všechny entity v aplikaci, včetně entit zpracování přirozeného jazyka (nebo strojově naučených entit), jako je například **jednoduchá** entita.
+Vzhledem k tomu, že entita seznamu hledá přesnou shodu textu, nespoléhá se na zpracování přirozeného jazyka (ani strojové učení). Služba LUIS však využívá zpracování přirozeného jazyka (nebo strojové učení) k výběru správného záměru s nejvyšším skóre. Promluva navíc může být kombinací více než jedné entity nebo dokonce více než jednoho typu entity. V každé promluvě se zpracovávají všechny entity v aplikaci včetně entit zpracování přirozeného jazyka (nebo strojově naučených entit).
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Co tato aplikace LUIS udělala?
-Tato aplikace s pouhými dvěma záměry a entitou seznamu identifikovala záměr dotazu v přirozeném jazyce a vrátila extrahovaná data. 
+Tato aplikace extrahovala pomocí entity sezamu správného zaměstnance. 
 
-Váš chatbot má teď dostatek informací, aby z entity seznamu nápojů určil primární akci `OrderDrinks` a typ objednaných nápojů. 
+Váš chatbot má teď dostatek informací k určení primární akce `MoveEmployee` a toho, který zaměstnanec se má přesunout. 
 
 ## <a name="where-is-this-luis-data-used"></a>Kde se tato data služby LUIS používají? 
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data z entity a provést další krok. Služba LUIS neprovádí tuto programovou práci za chatbota ani nevolá aplikaci. Služba LUIS pouze určuje, co je záměrem uživatele. 
@@ -263,10 +303,5 @@ Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že vyb
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Informace o postupu při přidání entity regulárního výrazu](luis-quickstart-intents-regex-entity.md)
+> [Informace o postupu při přidání hierarchické entity](luis-quickstart-intent-and-hier-entity.md)
 
-Přidání [předem připravené entity](luis-how-to-add-entities.md#add-prebuilt-entity) **čísla** pro extrakci čísla. 
-
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

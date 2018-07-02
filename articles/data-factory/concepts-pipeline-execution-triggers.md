@@ -1,5 +1,5 @@
 ---
-title: Spouštění kanálů a aktivační události v Azure Data Factory | Dokumentace Microsoftu
+title: Spouštění kanálů a aktivační události v Azure Data Factory | Microsoft Docs
 description: Tento článek obsahuje informace o tom, jak spustit kanál v Azure Data Factory, a to buď na vyžádání, nebo pomocí aktivační události.
 services: data-factory
 documentationcenter: ''
@@ -13,24 +13,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/20/2018
 ms.author: shlo
-ms.openlocfilehash: 8fda0eaa3c92fd750a84db345a91590163c20446
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: ceff54b15ef70c9654142566bb1d54b6a7990833
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293475"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048634"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Spouštění kanálů a aktivační události v Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
-> * [Verze 1 – GA](v1/data-factory-scheduling-and-execution.md)
-> * [Verze 2 – Preview](concepts-pipeline-execution-triggers.md)
+> * [Verze 1](v1/data-factory-scheduling-and-execution.md)
+> * [Aktuální verze](concepts-pipeline-execution-triggers.md)
 
-_Spuštění kanálu_ v Azure Data Factory verze 2 definuje instanci spuštění kanálu. Například si představte, že máte kanál, který se spouští v 8:00, 9:00 a 10:00. V tomto případě existují tři samostatná spuštění kanálu. Každé spuštění kanálu má jedinečné ID spuštění. Tento identifikátor GUID jedinečným způsobem definuje konkrétní spuštění kanálu. 
+_Spuštění kanálu_ v Azure Data Factory definuje instanci spuštění kanálu. Například si představte, že máte kanál, který se spouští v 8:00, 9:00 a 10:00. V tomto případě existují tři samostatná spuštění kanálu. Každé spuštění kanálu má jedinečné ID spuštění. Tento identifikátor GUID jedinečným způsobem definuje konkrétní spuštění kanálu. 
 
 Instance spuštění kanálu se obvykle vytvářejí předáváním argumentů do parametrů, které definujete v kanálech. Kanál můžete spustit ručně nebo prostřednictvím _aktivační události_. Tento článek obsahuje podrobnosti o obou způsobech spuštění kanálu.
-
-> [!NOTE]
-> Tento článek se týká služby Azure Data Factory verze 2, která je aktuálně ve verzi Preview. Pokud používáte službu Azure Data Factory verze 1, která je všeobecně dostupná (GA), přečtěte si téma o [plánování a provádění ve službě Azure Data Factory verze 1](v1/data-factory-scheduling-and-execution.md).
 
 ## <a name="manual-execution-on-demand"></a>Ruční spuštění (na vyžádání)
 Ruční spuštění kanálu se označuje také jako spuštění _na vyžádání_.
@@ -136,7 +133,7 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 > Sadu .NET SDK můžete použít k volání kanálů Data Factory ze služby Azure Functions, vlastních webových služeb atd.
 
 <h2 id="triggers">Spuštění pomocí aktivační události</h2>
-Aktivační události představují další způsob spuštění kanálu. Aktivační události jsou jednotkou zpracování, která určuje, kdy se má zahájit provádění kanálu. V současné době služba Data Factory podporuje dva typy aktivačních událostí:
+Aktivační události představují další způsob spuštění kanálu. Aktivační události jsou jednotkou zpracování, která určuje, kdy se má zahájit provádění kanálu. V současné době služba Data Factory podporuje tři typy aktivačních událostí:
 
 - Aktivační událost plánovače: Aktivační událost, která volá kanál podle časového plánu.
 

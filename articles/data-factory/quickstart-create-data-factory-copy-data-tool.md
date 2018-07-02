@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat pomocí nástroje pro kopírování dat Azure | Dokumentace Microsoftu
+title: Kopírování dat pomocí nástroje pro kopírování dat Azure | Microsoft Docs
 description: Vytvořte datovou továrnu Azure a pak pomocí nástroje Kopírování dat zkopírujte data z jednoho umístění v úložišti objektů blob v Azure do jiného.
 services: data-factory
 documentationcenter: ''
@@ -11,25 +11,22 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 23d4afffbe108d439dd53d95ed81f7d9fc4246ef
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 4df392ec7e100ef0efcbb3876079710a6b9ca4fb
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284568"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048022"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>Kopírování dat pomocí nástroje pro kopírování dat 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
-> * [Verze 1 – GA](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-> * [Verze 2 – Preview](quickstart-create-data-factory-copy-data-tool.md)
+> * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [Aktuální verze](quickstart-create-data-factory-copy-data-tool.md)
 
 V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. Pak pomocí nástroje pro kopírování dat vytvoříte kanál, který kopíruje data z jedné složky v úložišti objektů blob v Azure do jiné. 
 
 > [!NOTE]
 > Pokud se službou Azure Data Factory začínáte, přečtěte si téma [Seznámení se službou Azure Data Factory](data-factory-introduction.md), než s tímto rychlým startem začnete. 
->
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby, která je všeobecně dostupná (GA), prostudujte si [úvod do služby Data Factory verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
-
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
@@ -52,8 +49,8 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
    - Vyberte **Vytvořit novou** a zadejte název skupiny prostředků.   
          
    Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md).  
-4. Jako **Verze** vyberte **V2 (Preview)**.
-5. V poli **Umístění** vyberte umístění pro datovou továrnu. 
+4. V poli **Verze** vyberte **V2**.
+5. Jako **Umístění** vyberte umístění datové továrny. 
 
    V seznamu se zobrazují pouze podporovaná umístění. Úložiště dat (např. Azure Storage nebo Azure SQL Database) a výpočetní prostředí (např. Azure HDInsight) používaná službou Data Factory můžou být v jiných umístěních nebo oblastech.
 
@@ -85,7 +82,7 @@ V tomto rychlém startu použijete Azure Portal k vytvoření datové továrny. 
 
     ![Výběr služby Blob Storage z galerie](./media/quickstart-create-data-factory-copy-data-tool/select-blob-source.png)
 
-    c. Na stránce **Specify the Azure Blob storage account** (Zadat účet služby Azure Blob Storage) vyberte ze seznamu **Storage account name** (Název účtu úložiště) svůj účet úložiště a pak vyberte **Next** (Další). 
+    c. Na stránce **Specify the Azure Blob storage account** (Zadejte účet Azure Blob Storage) vyberte ze seznamu **Storage account name** (Název účtu úložiště) účet úložiště a pak vyberte **Finish** (Dokončit). 
 
    ![Konfigurace účtu služby Azure Blob Storage](./media/quickstart-create-data-factory-copy-data-tool/configure-blob-storage.png)
 

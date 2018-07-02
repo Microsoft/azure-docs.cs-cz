@@ -7,14 +7,14 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 03/27/2018
+ms.date: 06/22/2018
 ms.author: v-geberr
-ms.openlocfilehash: 2547407126943161ba604fa2f5e80b9186cae57e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 5fb93ebbd2da02df0c2cdf0d19ed282aeafe9473
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266494"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335556"
 ---
 # <a name="tutorial-create-app-that-uses-hierarchical-entity"></a>Kurz: Vytvoření aplikace využívající hierarchickou entitu
 V tomto kurzu vytvoříte aplikaci, která ukazuje vyhledání souvisejících částí dat na základě kontextu. 
@@ -22,140 +22,111 @@ V tomto kurzu vytvoříte aplikaci, která ukazuje vyhledání souvisejících �
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Vysvětlení hierarchických entit a kontextově naučených podřízených entit 
-> * Vytvoření nové aplikace LUIS pro doménu cestování se záměrem BookFlight (Rezervovat let)
-> * Přidání záměru _None_ (Žádný) a přidání ukázkových promluv
-> * Přidání hierarchické entity polohy s podřízenými entitami počátku a cíle
+> * Použití aplikace LUIS v doméně lidských zdrojů 
+> * Přidání hierarchické entity místa s podřízenými entitami počátku a cíle
 > * Trénování a publikování aplikace
 > * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS obsahující hierarchické podřízené entity 
 
 Pro účely tohoto článku potřebujete bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
 
+## <a name="before-you-begin"></a>Než začnete
+Pokud nemáte aplikaci pro lidské zdroje z kurzu k [entitám seznamu](luis-quickstart-intent-and-list-entity.md), [naimportujte](create-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-list-HumanResources.json) na Githubu.
+
+Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `hier`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
+
 ## <a name="purpose-of-the-app-with-this-entity"></a>Účel aplikace s touto entitou
-Tato aplikace určuje, jestli chce uživatel zarezervovat let. Pomocí hierarchické entity určuje z textu uživatele polohy, počáteční město a cílové město. 
+Tato aplikace určuje, do jakého cílového umístění (budova a kancelář) se má zaměstnanec přesunout z počátečního místa (budova a kancelář). K určení míst v rámci promluvy se používá hierarchická entita. 
 
 Hierarchická entita je vhodná pro tento typ dat, protože obě části dat:
 
-* Jsou polohy, obvykle vyjádřené kódem města nebo letiště.
-* Obvykle používají jednoznačnou volbu slov umožňující určit, co je počátek a co je cíl. Mezi tato slova patří: do, směřující do, z, odlet.
-* Obě polohy se často vyskytují ve stejné promluvě. 
+* Se k sobě v kontextu promluvy navzájem vztahují.
+* K označení obou míst používají specifická slova. Mezi příklady těchto slov patří from/to (z/do), leaving/headed to (odstěhovat/nastěhovat), away from/toward (z kanceláře/do kanceláře).
+* Obě místa se často vyskytují ve stejné promluvě. 
 
 Účelem **hierarchické** entity je na základě kontextu vyhledat data související s promluvou. Představte si následující promluvu:
 
 ```JSON
-1 ticket from Seattle to Cairo`
+mv Jill Jones from a-2349 to b-1298
 ```
-
-V promluvě jsou uvedené dvě polohy. Jedna představuje počáteční město Seattle a druhá představuje cílové město Káhira. Obě tato města jsou důležitá pro rezervaci letu. I když by se dala najít pomocí jednoduchých entit, navzájem spolu souvisí a často se nacházejí ve stejné promluvě. Proto má smysl je obě seskupit jako podřízené prvky hierarchické entity **Location** (Poloha). 
-
-Vzhledem k tomu, že se jedná o strojově naučené entity, aplikace potřebuje ukázkové promluvy s označeným počátečním a cílovým městem. Díky tomu se služba LUIS naučí, v jakých částech promluv se entity nacházejí, jak jsou dlouhé a jaká slova se kolem nich vyskytují. 
-
-## <a name="app-intents"></a>Záměry aplikace
-Záměry představují kategorie toho, co uživatel chce. Tato aplikace obsahuje dva záměry: BookFlight (Rezervovat let) a None (Žádný). Záměr [None](luis-concept-intent.md#none-intent-is-fallback-for-app) (Žádný) se používá účelně k označení všeho mimo aplikaci.  
-
-## <a name="hierarchical-entity-is-contextually-learned"></a>Hierarchická entita je kontextově naučená 
-Účelem této entity je vyhledat v promluvě části textu a uspořádat je do kategorií. [Hierarchická](luis-concept-entity-types.md) entita je entita nadřazeného a podřízeného prvku na základě kontextu použití. Člověk dokáže určit počáteční a cílové město v promluvě na základě použití slov `to` (do) a `from` (z). Tady jsou příklady kontextového použití.  
-
-Pro tuto cestovní aplikaci služba LUIS extrahuje počáteční a cílovou polohu takovým způsobem, aby bylo možné vytvořit a vyplnit standardní rezervaci. Služba LUIS umožňuje v promluvách používat variace, zkratky a hovorové výrazy. 
-
-Mezi jednoduché ukázkové promluvy od uživatelů patří:
-
-```
-Book a flight to London for next Monday
-2 tickets from Dallas to Dublin this weekend
-Researve a seat from New York to Paris on the first of April
-```
-
-Mezi zkrácené nebo hovorové verze promluv patří:
-
-```
-LHR tomorrow
-SEA to NYC next Monday
-LA to MCO spring break
-```
+V promluvě jsou určená dvě místa – `a-2349` a `b-1298`. Předpokládejme, že písmeno odpovídá názvu budovy a číslo označuje kancelář v této budově. V tomto případě dává smysl, aby byly obě informace seskupeny jako podřízené prvky hierarchické entity `Locations`, protože obě části dat je potřeba z promluvy extrahovat a navzájem se k sobě vztahují. 
  
-Hierarchická entita hledá shodu počáteční a cílové polohy. Pokud je k dispozici pouze jeden podřízený prvek (počátek nebo cíl) hierarchické entity, přesto se extrahuje. Není potřeba vyhledat všechny podřízené entity, aby se extrahovala jedna nebo několik z nich. 
+Pokud je k dispozici pouze jeden podřízený prvek (počátek nebo cíl) hierarchické entity, přesto se extrahuje. Není potřeba vyhledat všechny podřízené entity, aby se extrahovala jedna nebo několik z nich. 
 
-## <a name="what-luis-does"></a>Co dělá služba LUIS
-Když se záměr a entity promluvy identifikují, [extrahují](luis-concept-data-extraction.md#list-entity-data) a vrátí z [koncového bodu](https://aka.ms/luis-endpoint-apis) ve formátu JSON, služba LUIS je hotová. Volající aplikace nebo chatbot převezme tuto odpověď JSON a splní požadavek způsobem, pro který jsou aplikace nebo chatbot určené. 
+## <a name="remove-prebuilt-number-entity-from-app"></a>Odebrání předem připravené entity čísla z aplikace
+Abyste mohli vidět celou promluvu a mohli označit podřízené prvky hierarchické entity, odeberte dočasně předem připravenou entitu čísla.
 
-## <a name="create-a-new-app"></a>Vytvoření nové aplikace
-1. Přihlaste se k webu [LUIS][LUIS]. Nezapomeňte se přihlásit k [oblasti][LUIS-regions], ve které potřebujete publikovat koncové body služby LUIS.
+1. Ujistěte se, že je vaše aplikace pro lidské zdroje uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
 
-2. Na webu [LUIS][LUIS] vyberte **Create new app** (Vytvořit novou aplikaci).  
+    [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png)](./media/luis-quickstart-intent-and-hier-entity/hr-first-image.png#lightbox)
 
-    [![](media/luis-quickstart-intent-and-hier-entity/app-list.png "Snímek obrazovky se stránkou se seznamy aplikací")](media/luis-quickstart-intent-and-hier-entity/app-list.png#lightbox)
+2. V levé nabídce vyberte **Entities** (Entity).
 
-3. V automaticky otevíraném dialogovém okně zadejte název `MyTravelApp`. 
+    [ ![Snímek obrazovky aplikace LUIS se zvýrazněným tlačítkem Entities (Entity) v levé nabídce](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entities-button.png#lightbox)
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-app.png "Snímek obrazovky s automaticky otevíraným dialogovým oknem Create new app (Vytvořit novou aplikaci)")](media/luis-quickstart-intent-and-hier-entity/create-new-app.png#lightbox)
 
-4. Po dokončení tohoto procesu aplikace zobrazí stránku **Intents** (Záměry) se záměrem **None** (Žádný). 
+3. V seznamu vyberte ikonu tří teček (...) vpravo od entity čísla. Vyberte **Odstranit**. 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/intents-page-none-only.png "Snímek obrazovky se seznamem záměrů obsahujícím pouze záměr None (Žádný)")](media/luis-quickstart-intent-and-hier-entity/intents-page-none-only.png#lightbox)
+    [ ![Snímek aplikace LUIS na stránce se seznamem entit se zvýrazněným tlačítkem Delete (Odstranit) u předem připravené entity čísla](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png)](./media/luis-quickstart-intent-and-hier-entity/hr-delete-number-prebuilt.png#lightbox)
 
-## <a name="create-a-new-intent"></a>Vytvoření nového záměru
 
-1. Na stránce **Intents** (Záměry) vyberte **Create new intent** (Vytvořit nový záměr). 
+## <a name="add-utterances-to-findform-intent"></a>Přidání promluv do záměru FindForm (Vyhledat formulář)
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-intent-button.png "Snímek obrazovky se seznamem záměrů a zvýrazněným tlačítkem Create new intent (Vytvořit nový záměr)")](media/luis-quickstart-intent-and-hier-entity/create-new-intent-button.png#lightbox)
+1. V levé nabídce vyberte **Intents** (Záměry).
 
-2. Zadejte název nového záměru `BookFlight`. Tento záměr by se měl vybrat vždy, když chce uživatel provést rezervaci letu.
+    [ ![Snímek obrazovky aplikace LUIS se zvýrazněným tlačítkem Intents (Záměry) v levé nabídce](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-intents-button.png#lightbox)
 
-    Vytvořením záměru vytváříte primární kategorii informací, které chcete identifikovat. Pojmenováním kategorie umožníte všem ostatním aplikacím, které využívají výsledky dotazů ze služby LUIS, použít název této kategorie k vyhledání vhodné odpovědi nebo provedení odpovídající akce. Služba LUIS tyto dotazy nezodpoví, pouze identifikuje, na jaký typ informací směřuje dotaz v přirozeném jazyce. 
+2. V seznamu záměrů vyberte **MoveEmployee** (Přesunutí zaměstnance).
 
-    [![](media/luis-quickstart-intent-and-hier-entity/create-new-intent.png "Snímek obrazovky s automaticky otevíraným dialogovým oknem Create new intent (Vytvořit nový záměr)")](media/luis-quickstart-intent-and-hier-entity/create-new-intent.png#lightbox)
+    [ ![Snímek obrazovky aplikace LUIS se zvýrazněným záměrem MoveEmployee (Přesunutí zaměstnance) v levé nabídce](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png)](./media/luis-quickstart-intent-and-hier-entity/hr-intents-list-moveemployee.png#lightbox)
 
-3. Do záměru `BookFlight` přidejte několik promluv, které očekáváte, že uživatel bude požadovat, například:
+3. Přidejte následující příklady promluv:
 
-    | Ukázkové promluvy|
+    |Ukázkové promluvy|
     |--|
-    |Book 2 flights from Seattle to Cairo next Monday (Zarezervovat 2 letenky ze Seattlu do Káhiry na příští pondělí)|
-    |Reserve a ticket to London tomorrow (Zarezervovat letenku do Londýna na zítra)|
-    |Schedule 4 seats from Paris to London for April 1 (Naplánovat rezervaci 4 míst z Paříže do Londýna na 1. dubna)|
+    |Move John W. Smith **to** a-2345 (Přesunout John Smithe **do** a-2345).|
+    |Direct Jill Jones **to** b-3499 (Poslat Jill Jonesovou **do** b-3499).|
+    |Organize the move of x23456 **from** hh-2345 **to** e-0234 (Zorganizovat přesun x23456 **z** hh 2345 **do** e-0234).|
+    |Begin paperwork to set x12345 **leaving** a-3459 **headed to** f-34567 (Začít připravovat podklady, abys se mohl x12345 **odstěhovat** z a-3459 a **nastěhovat** do f-34567).|
+    |Displace 425-555-0000 **away from** g-2323 **toward** hh-2345 (Přemístit 425-555-0000 **z kanceláře** g-2323 **do kanceláře** hh 2345).|
 
-    [![](media/luis-quickstart-intent-and-hier-entity/enter-utterances-on-intent.png "Snímek obrazovky se zadáváním promluv na stránce záměru BookFlight (Rezervovat let)")](media/luis-quickstart-intent-and-hier-entity/enter-utterances-on-intent.png#lightbox)
+    V kurzu k [entitám seznamu](luis-quickstart-intent-and-list-entity.md) může být zaměstnanec určen pomocí jména, e-mailu, čísla telefonní linky, čísla mobilního telefonu a čísla amerického federálního sociálního pojištění. V promluvách se používají tato čísla zaměstnanců. Předchozí příklady promluv obsahují různé způsoby (zobrazené tučně), jak označit počáteční a cílové místo. Dvě z těchto promluv obsahují záměrně jen cílové místo. To pomáhá aplikaci LUIS porozumět tomu, jak jsou tato místa v promluvě umístěna, když není určeno počáteční místo.
 
-## <a name="add-utterances-to-none-intent"></a>Přidání promluv do záměru None (Žádný)
+    [ ![Snímek obrazovky aplikace LUIS s novými promluvami v záměru MoveEmployee (Přesunutí zaměstnance)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
+     
 
-Aplikace LUIS aktuálně neobsahuje žádné promluvy pro záměr **None** (Žádný). Aplikace potřebuje promluvy, na které nechcete, aby odpovídala, takže potřebuje mít promluvy v záměru **None** (Žádný). Nenechávejte ho prázdný. 
+## <a name="create-a-location-entity"></a>Vytvoření entity místa
+Služba LUIS potřebuje porozumět tomu, co je místo, tím, že v promluvách označí počáteční a cílové místo. Pokud potřebujete promluvu zobrazit v zobrazení tokenů (nezpracovaných), vyberte přepínač na panelu nad promluvami s popiskem **Entities View** (Zobrazení entit). Po přepnutí přepínače bude mít tento ovládací prvek popisek **Tokens View** (Zobrazení tokenů).
 
-1. Na levém panelu vyberte **Intents** (Záměry). 
+1. V promluvě `Displace 425-555-0000 away from g-2323 toward hh-2345` vyberte slovo `g-2323`. Zobrazí se rozevírací nabídka s textovým polem v horní části. Zadejte do textového pole název entity `Locations` a pak v rozevírací nabídce vyberte **Create new entity** (Vytvořit novou entitu). 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/select-intents-from-bookflight-intent.png "Snímek obrazovky se stránkou záměru BookFlight (Rezervovat let) a zvýrazněným tlačítkem Intents (Záměry)")](media/luis-quickstart-intent-and-hier-entity/select-intents-from-bookflight-intent.png#lightbox)
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png "Snímek obrazovky s vytvářením nové entity na stránce záměru")](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-1.png#lightbox)
 
-2. Vyberte záměr **None** (Žádný). Přidejte tři promluvy, které může uživatel zadat, ale které nejsou pro aplikaci relevantní:
+2. V automaticky otevíraném okně vyberte typ entity **Hierarchical** (Hierarchická) s podřízenými entitami `Origin` a `Destination`. Vyberte **Done** (Hotovo).
 
-    | Ukázkové promluvy|
-    |--|
-    |Cancel! (Zrušit!)|
-    |Good bye (Na shledanou)|
-    |What is going on? (Co se děje?)|
+    ![](media/luis-quickstart-intent-and-hier-entity/hr-create-new-entity-2.png "Snímek obrazovky s automaticky otevíraným dialogovým oknem pro novou entitu místa")
 
-## <a name="when-the-utterance-is-predicted-for-the-none-intent"></a>Když se u promluvy předpokládá záměr None (Žádný)
-Když služba LUIS vrátí pro promluvu záměr **None** (Žádný), v aplikaci volající službu LUIS (jako je například chatbot) se chatbot může zeptat, jestli chce uživatel ukončit konverzaci. Pokud uživatel nechce ukončit konverzaci, chatbot může také nabídnout možnosti jejího dalšího směřování. 
+3. Popisek pro `g-2323` je označený jako `Locations`, protože služba LUIS neví, jestli je toto slovo počátkem, cílem, nebo ani jedním. Vyberte `g-2323`, pak vyberte **Locations** (Místa) a pak přejděte do nabídky vpravo a vyberte `Origin`.
 
-Entity fungují v záměru **None** (Žádný). Pokud je záměr s nejvyšším skóre **None** (Žádný), ale extrahovala se entita, která má pro chatbota smysl, může chatbot pokračovat otázkou, která se zaměří na záměr zákazníka. 
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png "Snímek obrazovky s automaticky otevíraným dialogovým oknem označování entit pro změnu podřízeného prvku entity místa")](media/luis-quickstart-intent-and-hier-entity/hr-label-entity.png#lightbox)
 
-## <a name="create-a-location-entity-from-the-intent-page"></a>Vytvoření entity polohy na stránce záměru
-Když teď oba záměry obsahují promluvy, potřebuje služba LUIS pochopit, co je poloha. Vraťte se k záměru `BookFlight` a podle následujícího postupu označte název města v promluvě:
+5. Označte ostatní místa ve všech dalších promluvách tím, že v promluvě vyberete budovu a kancelář, pak vyberete Locations (Místa) a pak v nabídce vpravo vyberete `Origin` (Počátek) nebo `Destination` (Cíl). Až označíte všechna místa, začnou promluvy v zobrazení **Tokens View** (Zobrazení tokenů) vypadat jako vzor. 
 
-1. Vraťte se k záměru `BookFlight` tak, že na levém panelu vyberete **Intents** (Záměry).
+    [![](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png "Snímek obrazovky s entitami míst označených v promluvách")](media/luis-quickstart-intent-and-hier-entity/hr-entities-labeled.png#lightbox)
 
-2. V seznamu záměrů vyberte `BookFlight`.
+## <a name="add-prebuilt-number-entity-to-app"></a>Přidání předem připravené entity čísla do aplikace
+Přidejte předem připravenou entitu čísla zpět do aplikace.
 
-3. V promluvě `Book 2 flights from Seattle to Cairo next Monday` vyberte slovo `Seattle`. Zobrazí se rozevírací nabídka a v její horní části textové pole umožňující vytvoření nové entity. Zadejte do textového pole název entity `Location` a pak v rozevírací nabídce vyberte **Create new entity** (Vytvořit novou entitu). 
+1. V levé navigační nabídce vyberte **Entities** (Entity).
 
-    [![](media/luis-quickstart-intent-and-hier-entity/label-seattle-in-utterance.png "Snímek obrazovky se stránkou záměru BookFlight (Rezervovat let) a vytvářením nové entity z vybraného textu")](media/luis-quickstart-intent-and-hier-entity/label-seattle-in-utterance.png#lightbox)
+    [ ![Snímek obrazovky se zvýrazněným tlačítkem Entities (Entity) na levém navigačním panelu](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png)](./media/luis-quickstart-intent-and-hier-entity/hr-select-entity-button-from-intent-page.png#lightbox)
 
-4. V automaticky otevíraném okně vyberte typ entity **Hierarchical** (Hierarchická) s podřízenými entitami `Origin` a `Destination`. Vyberte **Done** (Hotovo).
+2. Vyberte tlačítko **Manage prebuilt entities** (Spravovat předem připravené entity).
 
-    [![](media/luis-quickstart-intent-and-hier-entity/hier-entity-ddl.png "Snímek obrazovky s automaticky otevíraným dialogovým oknem pro vytvoření nové entity polohy")](media/luis-quickstart-intent-and-hier-entity/hier-entity-ddl.png#lightbox)
+    [ ![Snímek obrazovky se seznamem entit se zvýrazněným tlačítkem Manage prebuilt entities (Spravovat předem připravené entity)](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png)](./media/luis-quickstart-intent-and-hier-entity/hr-manage-prebuilt-button.png#lightbox)
 
-    Popisek pro `Seattle` je označený jako `Location`, protože služba LUIS neví, jestli je toto slovo počátkem, cílem, nebo ani jedním. Vyberte `Seattle`, pak vyberte Location (Poloha), přejděte v nabídce doprava a vyberte `Origin`.
+3. V seznamu předem připravených entit vyberte možnost **number** (číslo) a pak vyberte **Done** (Hotovo).
 
-5. Když je teď entita vytvořená a jedna promluva označená, označte i ostatní města tak, že vyberete název města, pak Location (Poloha), přejdete v nabídce doprava a vyberete `Origin` nebo `Destination`.
-
-    [![](media/luis-quickstart-intent-and-hier-entity/label-destination-in-utterance.png "Snímek obrazovky s entitou BookFlight (Rezervovat let) a vybraným textem promluvy pro výběr entity")](media/luis-quickstart-intent-and-hier-entity/label-destination-in-utterance.png#lightbox)
+    ![Snímek obrazovky s vybranou možností number (číslo) v dialogovém okně s předem připravenými entitami](./media/luis-quickstart-intent-and-hier-entity/hr-add-number-back-ddl.png)
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
 Služba LUIS nemá informace o změnách záměrů a entit (tedy modelu), dokud se nenatrénuje. 
@@ -173,8 +144,6 @@ Abyste mohli využít předpověď služby LUIS v chatbotu nebo jiné aplikaci, 
 
 1. V pravé horní části webu LUIS vyberte tlačítko **Publish** (Publikovat). 
 
-    [![](media/luis-quickstart-intent-and-hier-entity/publish.png "Snímek obrazovky se záměrem BookFlight (Rezervovat let) a zvýrazněným tlačítkem Publish (Publikovat)")](media/luis-quickstart-intent-and-hier-entity/publish.png#lightbox)
-
 2. Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat).
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněným tlačítkem Publish to production slot (Publikovat do produkčního slotu)")](media/luis-quickstart-intent-and-hier-entity/publish-to-production.png#lightbox)
@@ -186,41 +155,114 @@ Abyste mohli využít předpověď služby LUIS v chatbotu nebo jiné aplikaci, 
 
     [![](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněnou adresou URL koncového bodu")](media/luis-quickstart-intent-and-hier-entity/publish-select-endpoint.png#lightbox)
 
-2. Na konec adresy URL zadejte `1 ticket to Portland on Friday`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `BookFlight` s extrahovanou hierarchickou entitou.
+2. Přejděte na konec adresy URL v panelu adresy a zadejte `Please relocation jill-jones@mycompany.com from x-2345 to g-23456`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. Tato promluva není stejná jako žádná z označených promluv, proto je to dobrý test a měl by se vrátit záměr `MoveEmployee` s extrahovanou hierarchickou entitou.
 
-```
+```JSON
 {
-  "query": "1 ticket to Portland on Friday",
+  "query": "Please relocation jill-jones@mycompany.com from x-2345 to g-23456",
   "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.9998226
+    "intent": "MoveEmployee",
+    "score": 0.9966052
   },
   "intents": [
     {
-      "intent": "BookFlight",
-      "score": 0.9998226
+      "intent": "MoveEmployee",
+      "score": 0.9966052
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.0325253047
+    },
+    {
+      "intent": "FindForm",
+      "score": 0.006137873
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.00462633232
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00415637763
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.00382325822
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00249120337
     },
     {
       "intent": "None",
-      "score": 0.221926212
+      "score": 0.00130756292
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.00119622645
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 1.26910036E-05
     }
   ],
   "entities": [
     {
-      "entity": "portland",
-      "type": "Location::Destination",
-      "startIndex": 12,
-      "endIndex": 19,
-      "score": 0.564448953
+      "entity": "jill - jones @ mycompany . com",
+      "type": "Employee",
+      "startIndex": 18,
+      "endIndex": 41,
+      "resolution": {
+        "values": [
+          "Employee-45612"
+        ]
+      }
+    },
+    {
+      "entity": "x - 2345",
+      "type": "Locations::Origin",
+      "startIndex": 48,
+      "endIndex": 53,
+      "score": 0.8520272
+    },
+    {
+      "entity": "g - 23456",
+      "type": "Locations::Destination",
+      "startIndex": 58,
+      "endIndex": 64,
+      "score": 0.974032
+    },
+    {
+      "entity": "-2345",
+      "type": "builtin.number",
+      "startIndex": 49,
+      "endIndex": 53,
+      "resolution": {
+        "value": "-2345"
+      }
+    },
+    {
+      "entity": "-23456",
+      "type": "builtin.number",
+      "startIndex": 59,
+      "endIndex": 64,
+      "resolution": {
+        "value": "-23456"
+      }
     }
   ]
 }
 ```
 
-## <a name="what-has-this-luis-app-accomplished"></a>Co tato aplikace LUIS udělala?
-Tato aplikace s pouhými dvěma záměry a hierarchickou entitou identifikovala záměr dotazu v přirozeném jazyce a vrátila extrahovaná data. 
+## <a name="could-you-have-used-a-regular-expression-for-each-location"></a>Bylo by možné použít pro každé místo regulární výraz?
+Ano, můžete vytvořit regulární výraz s rolemi počátečního a cílového místa a používat ho ve vzoru.
 
-Váš chatbot má teď dostatek informací k určení primární akce `BookFlight` a informací o poloze nalezených v promluvě. 
+Místa v tomto příkladu, jako je třeba `a-1234`, používají specifický formát, který obsahuje jedno nebo dvě písmena, pomlčku a pak řadu 4 nebo 5 číslic. Tato data je možné popsat jako entitu regulárního výrazu s rolí pro každé místo. U vzorů jsou k dispozici role. Můžete vytvořit vzory založené na těchto promluvách a pak vytvořit regulární výraz pro formát místa a přidat ho do vzorů. <!-- Go to this tutorial to see how that is done -->
+
+## <a name="what-has-this-luis-app-accomplished"></a>Co tato aplikace LUIS udělala?
+Tato aplikace pomocí jen několika záměrů a hierarchické entity identifikovala záměr dotazu v přirozeném jazyce a vrátila extrahovaná data. 
+
+Váš chatbot má teď dostatek informací k určení primární akce `MoveEmployee` a informací o poloze nalezených v promluvě. 
 
 ## <a name="where-is-this-luis-data-used"></a>Kde se tato data služby LUIS používají? 
 Služba LUIS s tímto požadavkem skončila. Volající aplikace, například chatbot, může převzít výsledek topScoringIntent a data z entity a provést další krok. Služba LUIS neprovádí tuto programovou práci za chatbota ani nevolá aplikaci. Služba LUIS pouze určuje, co je záměrem uživatele. 
@@ -231,11 +273,6 @@ Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že vyb
 ## <a name="next-steps"></a>Další kroky
 > [!div class="nextstepaction"] 
 > [Informace o postupu při přidání entity seznamu](luis-quickstart-intent-and-list-entity.md) 
-
-Přidání [předem připravené entity](luis-how-to-add-entities.md#add-prebuilt-entity) **čísla** pro extrakci čísla. 
-
-Přidání [předem připravené entity](luis-how-to-add-entities.md#add-prebuilt-entity) **datetimeV2** pro extrakci informací o datu.
-
 
 <!--References-->
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

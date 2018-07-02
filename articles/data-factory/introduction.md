@@ -1,5 +1,5 @@
 ---
-title: Úvod do služby Azure Data Factory | Dokumentace Microsoftu
+title: Úvod do služby Azure Data Factory | Microsoft Docs
 description: Seznamte se se službou Azure Data Factory, cloudovou službou pro integraci dat, která orchestruje a automatizuje přesouvání a transformaci dat.
 services: data-factory
 documentationcenter: ''
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 89f5391cfbfd85f9f0715a8c7d288cc3981cc618
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: ae0247df0bbde07e755bd910bca08b8703969cec
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30237001"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37047271"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Úvod do Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Verze 1 – GA](v1/data-factory-introduction.md)
-> * [Verze 2 – Preview](introduction.md)
+> * [Verze 1](v1/data-factory-introduction.md)
+> * [Aktuální verze](introduction.md)
 
 Ve světě velkých objemů dat jsou nezpracovaná, neuspořádaná data často uložená v relačních, nerelačních a jiných systémech úložiště. Nezpracovaná data sama o sobě ale nemají potřebný kontext ani význam, aby mohla analytikům, datovým vědcům nebo osobám rozhodujícím v rámci podniků poskytnout smysluplný přehled. 
 
@@ -40,9 +40,6 @@ Právě v takových scénářích práce s daty nachází uplatnění platforma 
 Výstupní data navíc můžete publikovat v úložištích dat, jako je Azure SQL Data Warehouse, a umožnit jejich využití v aplikacích business intelligence (BI). V neposlední řadě služba Azure Data Factory umožňuje uspořádání nezpracovaných dat do smysluplných úložišť dat a datových jezer, která pomáhají při obchodním rozhodování.
 
 ![Zobrazení nejvyšší úrovně služby Data Factory](media/introduction/big-picture.png)
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, který je všeobecně dostupná (GA), prostudujte si téma [Úvod do služby Data Factory verze 1](v1/data-factory-introduction.md).
 
 ## <a name="how-does-it-work"></a>Jak to funguje?
 Kanály (pracovní postupy řízené daty) ve službě Azure Data Factory obvykle provádí následující čtyři kroky:
@@ -92,7 +89,7 @@ Propojené služby slouží ve službě Data Factory ke dvěma účelům:
 - Představují **výpočetní prostředek**, který může hostovat provádění aktivity. Například aktivita HDInsightHive se spouští na clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v článku o [transformaci dat](transform-data.md).
 
 ### <a name="triggers"></a>Triggery
-Aktivační události jsou jednotkou zpracování, která určuje, kdy se má zahájit provádění kanálu. Pro různé typy událostí existují různé typy aktivačních událostí. Ve verzi Preview služba Data Factory podporuje aktivační událost plánovače s hodinovým plánem. 
+Aktivační události jsou jednotkou zpracování, která určuje, kdy se má zahájit provádění kanálu. Pro různé typy událostí existují různé typy aktivačních událostí.
 
 ### <a name="pipeline-runs"></a>Spuštění kanálu
 Spuštění kanálu je instance provádění kanálu. Instance spuštění kanálu se obvykle vytvářejí předáváním argumentů do parametrů definovaných v kanálech. Argumenty je možné předat ručně nebo v rámci definice aktivační události.
@@ -124,8 +121,8 @@ Přestože je služba Data Factory dostupná jenom v oblastech Východní USA, V
 
 Předpokládejme například, že vaše výpočetní prostředí, jako je cluster Azure HDInsight nebo služba Azure Machine Learning, běží v oblasti Západní Evropa. Můžete vytvořit instanci služby Azure Data Factory v oblasti Východní USA a Východní USA 2 a použít ji k plánování úloh ve výpočetních prostředích v oblasti Západní Evropa. Trvá několik milisekund, než Data Factory aktivuje úlohu ve výpočetním prostředí, ale čas potřebný pro vykonání úlohy ve výpočetním prostředí se nemění.
 
-## <a name="compare-with-version-2"></a>Porovnání s verzí 2
-Seznam rozdílů mezi verzí 1 a verzí 2 služby Data Factory najdete v [porovnání s verzí 1](compare-versions.md). 
+## <a name="compare-with-version-1"></a>Porovnání s verzí 1
+Seznam rozdílů mezi verzí 1 a aktuální verzí služby Data Factory najdete v [porovnání s verzí 1](compare-versions.md). 
 
 ## <a name="next-steps"></a>Další kroky
 Začněte s vytvářením kanálu služby Data Factory pomocí jednoho z následujících nástrojů nebo sad SDK: 

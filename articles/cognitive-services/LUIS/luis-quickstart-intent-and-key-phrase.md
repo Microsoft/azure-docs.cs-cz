@@ -7,31 +7,35 @@ manager: kaiqb
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: tutorial
-ms.date: 05/07/2018
+ms.date: 06/27/2018
 ms.author: v-geberr
-ms.openlocfilehash: 12c306b5199da5862302c28d1690b81c6e1edb0e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 9acdfdde667d37bac5b96e4497b3e86d2cdeccb8
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264611"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37063404"
 ---
-# <a name="tutorial-create-app-that-returns-keyphrases-entity-data-found-in-utterances"></a>Kurz: Vytvoření aplikace vracející data entity klíčové fráze nalezená v promluvách
-V tomto kurzu vytvoříte aplikaci, která ukazuje, jak z promluv extrahovat klíčová témata.
+# <a name="tutorial-learn-how-to-return-data-from-keyphrase-entity"></a>Kurz: Jak vrátit data z entity klíčové fráze 
+V tomto kurzu použijete aplikaci, která ukazuje, jak z promluv extrahovat klíčová témata.
 
 <!-- green checkmark -->
 > [!div class="checklist"]
 > * Vysvětlení entit klíčové fráze 
-> * Vytvoření nové aplikace LUIS pro doménu lidských zdrojů
-> * Přidání záměru _None_ (Žádný) a přidání ukázkových promluv
+> * Použití aplikace LUIS v doméně lidských zdrojů 
 > * Přidání entity klíčové fráze pro extrahování obsahu z promluvy
 > * Trénování a publikování aplikace
-> * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS
+> * Odeslání dotazu na koncový bod aplikace a zobrazení odpovědi JSON ze služby LUIS obsahující klíčové fráze
 
-Pro účely tohoto článku můžete použít bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
+Pro účely tohoto článku můžete použít bezplatný účet [LUIS](luis-reference-regions.md#publishing-regions), abyste mohli vytvořit svou aplikaci LUIS.
+
+## <a name="before-you-begin"></a>Než začnete
+Pokud nemáte aplikaci pro lidské zdroje z kurzu k [jednoduchým entitám](luis-quickstart-primary-and-secondary-data.md), [naimportujte](create-new-app.md#import-new-app) JSON do nové aplikace na webu služby [LUIS](luis-reference-regions.md#luis-website). Aplikaci k importování najdete v úložišti [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) na Githubu.
+
+Pokud chcete zachovat původní aplikaci pro lidské zdroje, naklonujte verzi na stránce [Settings](luis-how-to-manage-versions.md#clone-a-version) (Nastavení) a pojmenujte ji `keyphrase`. Klonování představuje skvělý způsob, jak si můžete vyzkoušet různé funkce služby LUIS, aniž by to mělo vliv na původní verzi. 
 
 ## <a name="keyphrase-entity-extraction"></a>Extrakce entity klíčové fráze
-Klíčová témata poskytuje předem připravená entita **klíčové fráze**. Tato entita vrací klíčové téma promluvy.
+Klíčová témata poskytuje předem připravená entita klíčové fráze **keyPhrase**. Tato entita vrací klíčové téma promluvy.
 
 Následující promluvy ukazují příklady klíčových frází:
 
@@ -40,65 +44,54 @@ Následující promluvy ukazují příklady klíčových frází:
 |Bude příští rok v nabídce nový plán zdravotní péče s nižší spoluúčastí?|„nižší spoluúčast“<br>„nový plán zdravotní péče“<br>„rok“|
 |Pokrývá plán zdravotní péče s vysokou spoluúčastí léčbu zraku?|„plán zdravotní péče s vysokou spoluúčastí“<br>„léčba zraku“|
 
-Váš chatbot může při rozhodování o dalším kroku v konverzaci posuzovat kromě všech ostatních extrahovaných entit i tyto hodnoty.
-
-## <a name="download-sample-app"></a>Stažení ukázkové aplikace
-Stáhněte aplikaci pro [lidské zdroje](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) a uložte ji do souboru s příponou *.json. Tato ukázková aplikace rozpozná promluvy týkající se zaměstnaneckých výhod, organizačních diagramů a fyzických prostředků.
-
-## <a name="create-a-new-app"></a>Vytvoření nové aplikace
-1. Přihlaste se k webu [LUIS][LUIS]. Nezapomeňte se přihlásit k [oblasti][LUIS-regions], ve které potřebujete publikovat koncové body služby LUIS.
-
-2. Na webu [LUIS][LUIS] vyberte **Import new app** (Importovat novou aplikaci) a importujte aplikaci pro lidské zdroje, kterou jste stáhli v předchozí části. 
-
-    [![](media/luis-quickstart-intent-and-key-phrase/app-list.png "Snímek obrazovky se stránkou se seznamy aplikací")](media/luis-quickstart-intent-and-key-phrase/app-list.png#lightbox)
-
-3. V dialogovém okně **Import new app** (Importovat novou aplikaci) zadejte název aplikace `Human Resources with Key Phrase entity`. 
-
-    ![Obrázek dialogového okna Create new app (Vytvořit novou aplikaci)](./media/luis-quickstart-intent-and-key-phrase/import-new-app-inline.png)
-
-    Po dokončení procesu vytváření aplikace zobrazí služba LUIS seznam záměrů.
-
-    [![](media/luis-quickstart-intent-and-key-phrase/intents-list.png "Snímek obrazovky se stránkou se seznamy záměrů")](media/luis-quickstart-intent-and-key-phrase/intents-list.png#lightbox)
+Vaše klientská aplikace může tyto hodnoty používat spolu s dalšími extrahovanými entitami k rozhodování o dalším kroku v konverzaci.
 
 ## <a name="add-keyphrase-entity"></a>Přidání entity klíčové fráze 
 Přidejte předem připravenou entitu klíčové fráze pro extrahování témat z promluv.
 
-1. V levé nabídce vyberte **Entities** (Entity).
+1. Ujistěte se, že je vaše aplikace pro lidské zdroje uvedená v části **Build** (Sestavení) služby LUIS. Do této části můžete přejít výběrem možnosti **Build** (Sestavit) v pravém horním řádku nabídek. 
 
-    [ ![Snímek obrazovky se zvýrazněnou možností Entities (Entity) na levém navigačním panelu v části Build (Sestavení)](./media/luis-quickstart-intent-and-key-phrase/select-entities.png)](./media/luis-quickstart-intent-and-key-phrase/select-entities.png#lightbox)
+    [ ![Snímek obrazovky aplikace LUIS se zvýrazněnou možností Build (Sestavit) na pravém horním navigačním panelu](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png)](./media/luis-quickstart-intent-and-key-phrase/hr-first-image.png#lightbox)
 
-2. Vyberte **Manage prebuilt entities** (Spravovat předem připravené entity).
+2. V levé nabídce vyberte **Entities** (Entity).
 
-    [ ![Snímek obrazovky s automaticky otevíraným dialogovým oknem se seznamem entit](./media/luis-quickstart-intent-and-key-phrase/manage-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/manage-prebuilt-entities.png#lightbox)
+    [ ![Snímek obrazovky se zvýrazněnou možností Entities (Entity) na levém navigačním panelu v části Build (Sestavení)](./media/luis-quickstart-intent-and-key-phrase/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-key-phrase/hr-select-entities-button.png#lightbox)
 
-3. V automaticky otevíraném dialogovém okně vyberte **keyPhrase** (Klíčová fráze) a pak vyberte **Done** (Hotovo). 
+3. Vyberte **Manage prebuilt entities** (Spravovat předem připravené entity).
 
-    [ ![Snímek obrazovky s automaticky otevíraným dialogovým oknem se seznamem entit](./media/luis-quickstart-intent-and-key-phrase/add-or-remove-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/add-or-remove-prebuilt-entities.png#lightbox)
+    [ ![Snímek obrazovky s automaticky otevíraným dialogovým oknem se seznamem entit](./media/luis-quickstart-intent-and-key-phrase/hr-manage-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/hr-manage-prebuilt-entities.png#lightbox)
+
+4. V automaticky otevíraném dialogovém okně vyberte **keyPhrase** (Klíčová fráze) a pak vyberte **Done** (Hotovo). 
+
+    [ ![Snímek obrazovky s automaticky otevíraným dialogovým oknem se seznamem entit](./media/luis-quickstart-intent-and-key-phrase/hr-add-or-remove-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/hr-add-or-remove-prebuilt-entities.png#lightbox)
 
     <!-- TBD: asking Carol
     You won't see these entities labeled in utterances on the intents pages. 
     -->
+5. V levé nabídce vyberte **Intents** (Záměry) a pak vyberte záměr **Utilities.Confirm** (Potvrzení nástrojů). Entita klíčové fráze je označená v několika promluvách. 
+
+    [ ![Snímek obrazovky záměru Utilities.Confirm (Potvrzení nástrojů) s klíčovými frázemi označenými v promluvách](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png)](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png#lightbox)
 
 ## <a name="train-the-luis-app"></a>Trénování aplikace LUIS
-Služba LUIS nemá informace o této změně modelu, dokud se nenatrénuje. 
+Novou verzi aplikace s entitami `keyphrase` je potřeba natrénovat.  
 
 1. V pravé horní části webu LUIS vyberte tlačítko **Train** (Trénovat).
 
-    ![Snímek obrazovky se zvýrazněným tlačítkem Train (Trénovat)](./media/luis-quickstart-intent-and-key-phrase/train-button-expanded.png)
+    ![Trénování aplikace](./media/luis-quickstart-intent-and-key-phrase/train-button.png)
 
 2. Trénování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
 
-    ![Snímek obrazovky s pruhem oznamujícím úspěšné trénování ](./media/luis-quickstart-intent-and-key-phrase/trained-inline.png)
+    ![Trénování proběhlo úspěšně](./media/luis-quickstart-intent-and-key-phrase/trained.png)
 
 ## <a name="publish-app-to-endpoint"></a>Publikování aplikace do koncového bodu
 
 1. Na pravém horním navigačním panelu vyberte **Publish** (Publikovat).
 
-    ![Snímek obrazovky se stránkou entity a rozbaleným tlačítkem Publish (Publikovat) ](./media/luis-quickstart-intent-and-key-phrase/publish-expanded.png)
+    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněným tlačítkem Publish to production slot (Publikovat do produkčního slotu)")](media/luis-quickstart-intent-and-key-phrase/hr-publish-button-top-nav.png#lightbox)
 
 2. Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat).
 
-    [![](media/luis-quickstart-intent-and-key-phrase/publish-to-production-inline.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněným tlačítkem Publish to production slot (Publikovat do produkčního slotu)")](media/luis-quickstart-intent-and-key-phrase/publish-to-production-expanded.png#lightbox)
+    [![](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png "Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněným tlačítkem Publish to production slot (Publikovat do produkčního slotu)")](media/luis-quickstart-intent-and-key-phrase/hr-publish-to-production-expanded.png#lightbox)
 
 3. Publikování je dokončené, když se v horní části webu zobrazí zelený stavový řádek potvrzující úspěch.
 
@@ -106,39 +99,98 @@ Služba LUIS nemá informace o této změně modelu, dokud se nenatrénuje.
 
 1. V dolní části stránky **Publish** (Publikovat) vyberte odkaz na **koncový bod**. Tato akce otevře další okno prohlížeče s adresou URL koncového bodu v adresním řádku. 
 
-    ![Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněnou adresou URL koncového bodu](media/luis-quickstart-intent-and-key-phrase/endpoint-url-inline.png )
+    ![Snímek obrazovky se stránkou Publish (Publikovat) a zvýrazněnou adresou URL koncového bodu](media/luis-quickstart-intent-and-key-phrase/hr-endpoint-url-inline.png )
 
-2. Na konec adresy URL zadejte `Is there a new medical plan with a lower deductible offered next year?`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
+2. Na konec adresy URL zadejte `does form hrf-123456 cover the new dental benefits and medical plan`. Poslední parametr řetězce dotazu je `q`, což je **dotaz** promluvy. 
 
 ```
 {
-  "query": "Is there a new medical plan with a lower deductible offered next year?",
+  "query": "does form hrf-123456 cover the new dental benefits and medical plan",
   "topScoringIntent": {
     "intent": "FindForm",
-    "score": 0.216838628
+    "score": 0.9300641
   },
+  "intents": [
+    {
+      "intent": "FindForm",
+      "score": 0.9300641
+    },
+    {
+      "intent": "ApplyForJob",
+      "score": 0.0359598845
+    },
+    {
+      "intent": "GetJobInformation",
+      "score": 0.0141798034
+    },
+    {
+      "intent": "MoveEmployee",
+      "score": 0.0112197418
+    },
+    {
+      "intent": "Utilities.StartOver",
+      "score": 0.00507669244
+    },
+    {
+      "intent": "None",
+      "score": 0.00238501839
+    },
+    {
+      "intent": "Utilities.Help",
+      "score": 0.00202810857
+    },
+    {
+      "intent": "Utilities.Stop",
+      "score": 0.00102957746
+    },
+    {
+      "intent": "Utilities.Cancel",
+      "score": 0.0008688423
+    },
+    {
+      "intent": "Utilities.Confirm",
+      "score": 3.557994E-05
+    }
+  ],
   "entities": [
     {
-      "entity": "lower deductible",
-      "type": "builtin.keyPhrase",
-      "startIndex": 35,
-      "endIndex": 50
+      "entity": "hrf-123456",
+      "type": "HRF-number",git 
+      "startIndex": 10,
+      "endIndex": 19
     },
     {
-      "entity": "new medical plan",
+      "entity": "new dental benefits",
       "type": "builtin.keyPhrase",
-      "startIndex": 11,
-      "endIndex": 26
+      "startIndex": 31,
+      "endIndex": 49
     },
     {
-      "entity": "year",
+      "entity": "medical plan",
       "type": "builtin.keyPhrase",
-      "startIndex": 65,
-      "endIndex": 68
+      "startIndex": 55,
+      "endIndex": 66
+    },
+    {
+      "entity": "hrf",
+      "type": "builtin.keyPhrase",
+      "startIndex": 10,
+      "endIndex": 12
+    },
+    {
+      "entity": "-123456",
+      "type": "builtin.number",
+      "startIndex": 13,
+      "endIndex": 19,
+      "resolution": {
+        "value": "-123456"
+      }
     }
   ]
 }
 ```
+
+Při hledání formuláře poskytl uživatel víc informací, než bylo potřeba k nalezení formuláře. Další informace se vrátí jako hodnota **builtin.keyPhrase**. Klientská aplikace může tyto další informace použít pro následnou otázku, například „Chtěli byste hovořit se zástupcem oddělení lidských zdrojů o nových benefitech v oblasti péče o chrup“, nebo může poskytnou nabídku s dalšími možnostmi včetně položky „Další informace o nových benefitech v oblasti péče o chrup nebo o zdravotním připojištění“.
 
 ## <a name="what-has-this-luis-app-accomplished"></a>Co tato aplikace LUIS udělala?
 Tato aplikace s rozpoznáváním entity klíčové fráze identifikovala záměr dotazu v přirozeném jazyce a vrátila extrahovaná data, včetně hlavního tématu. 
@@ -156,6 +208,3 @@ Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že vyb
 > [!div class="nextstepaction"]
 > [Vytvoření aplikace vracející mínění a předpověď záměru](luis-quickstart-intent-and-sentiment-analysis.md)
 
-<!--References-->
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-[LUIS-regions]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#publishing-regions

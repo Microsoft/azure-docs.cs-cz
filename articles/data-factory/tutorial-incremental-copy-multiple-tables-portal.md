@@ -3,7 +3,7 @@ title: Přírůstkové kopírování více tabulek pomocí Azure Data Factory | 
 description: V tomto kurzu vytvoříte kanál Azure Data Factory, který přírůstkově kopíruje rozdílová data z několika tabulek v místní databázi SQL Serveru do databáze Azure SQL.
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/20/2018
-ms.author: jingwang
-ms.openlocfilehash: 399e132f0a28ffc6b60e3d757afff5aae60f7674
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.author: yexu
+ms.openlocfilehash: c35d267acfd1778e80605cdfe9eec0edbb18a281
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37052840"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Přírůstkové načtení dat z více tabulek v SQL Serveru do databáze Azure SQL
 V tomto kurzu vytvoříte Azure Data Factory s kanálem, který načítá rozdílová data z několika tabulek v místním SQL Serveru do databáze Azure SQL.    
@@ -36,9 +37,6 @@ V tomto kurzu provedete následující kroky:
 > * Přidání nebo aktualizace dat ve zdrojových tabulkách
 > * Opakované spuštění kanálu a jeho monitorování
 > * Kontrola konečných výsledků
-
-> [!NOTE]
-> Tento článek se týká verze 2 služby Azure Data Factory, která je aktuálně ve verzi Preview. Pokud používáte verzi 1 služby Data Factory, která je všeobecně dostupná, prostudujte si [dokumentaci služby Data Factory verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 ## <a name="overview"></a>Přehled
 Tady jsou důležité kroky pro vytvoření tohoto řešení: 
@@ -369,16 +367,25 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
 3. Ve webovém prohlížeči se otevře nová karta, na které můžete datovou sadu konfigurovat. Datová sada se zobrazí také ve stromovém zobrazení. Na kartě **Obecné** v dolní části okna Vlastnosti jako **Název** zadejte **SinkDataset**.
 
    ![Datová sada jímky – obecné](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-general.png)
-4. V okně Vlastnosti přepněte na kartu **Připojení** a jako **Propojená služba** vyberte **AzureSqlLinkedService**. 
-
-   ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
-5. V okně Vlastnosti přepněte na kartu **Parametry** a proveďte následující kroky: 
+4. V okně Vlastnosti přepněte na kartu **Parametry** a proveďte následující kroky: 
 
     1. V části **Vytvořit nebo aktualizovat parametry** klikněte na **Nový**. 
     2. Jako **název** zadejte **SinkTableName** a jako **typ** zadejte **Řetězec**. Tato datová sada jako parametr přijímá **SinkTableName**. Parametr SinkTableName nastavuje kanál dynamicky za běhu. Aktivita ForEach v kanálu prochází seznam názvů tabulek a při každé iteraci předává název tabulky této datové sadě.
-    3. V části **Parametrizované vlastnosti** jako hodnotu vlastnosti **tableName** zadejte `@{dataset().SinkTableName}`. Hodnotu předanou parametru **SinkTableName** použijete k inicializaci vlastnosti **tableName** datové sady. 
-
+   
        ![Datová sada jímky – vlastnosti](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-parameters.png)
+5. V okně Vlastnosti přepněte na kartu **Připojení** a jako **Propojená služba** vyberte **AzureSqlLinkedService**. U vlastnosti **Tabulka** klikněte na **Přidat dynamický obsah**. 
+
+   ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection.png)
+    
+    
+6. V části **Parametry** vyberte **SinkTableName**.
+   
+   ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-dynamicContent.png)
+
+   
+ 7. Po kliknutí na **Dokončit** se jako název tabulky zobrazí **@dataset().SinkTableName**.
+   
+   ![Datová sada jímky – připojení](./media/tutorial-incremental-copy-multiple-tables-portal/sink-dataset-connection-completion.png)
 
 ### <a name="create-a-dataset-for-a-watermark"></a>Vytvoření datové sady pro mez
 V tomto kroku vytvoříte datovou sadu pro uložení hodnoty horní meze. 
@@ -644,7 +651,7 @@ VALUES
     ]
     ```
 
-## <a name="monitor-the-pipeline"></a>Monitorování kanálu
+## <a name="monitor-the-pipeline-again"></a>Opětovné monitorování kanálu
 
 1. Vlevo přepněte na kartu **Monitorování**. Zobrazí se **ručně aktivované** spuštění kanálu. Kliknutím na tlačítko **Aktualizovat** seznam aktualizujte. Pomocí odkazů ve sloupci **Akce** můžete zobrazit spuštění aktivit související se spuštěním kanálu nebo spustit kanál znovu. 
 

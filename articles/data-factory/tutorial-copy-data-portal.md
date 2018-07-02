@@ -11,22 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/09/2018
+ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 34c78a114c1d106c400a94941aa113153383e206
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 47fc3b44719caf430edf026bf776c4e85764ad08
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30173334"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048433"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopírování dat z úložiště Azure Blob Storage do databáze SQL Database pomocí služby Azure Data Factory
 V tomto kurzu vytvoříte datovou továrnu pomocí uživatelského rozhraní služby Azure Data Factory. Kanál v této datové továrně kopíruje data z úložiště Azure Blob Storage do databáze SQL Database. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
 
 > [!NOTE]
 > - Pokud se službou Data Factory teprve začínáte, přečtěte si téma [Úvod do Azure Data Factory](introduction.md).
->
-> - Tento článek se týká verze 2 služby Data Factory, která je aktuálně ve verzi Preview. Jestliže používáte verzi 1 služby Data Factory, která je obecně dostupná, podívejte se na téma [Úvod do Data Factory (verze 1)](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
 
 V tomto kurzu budete provádět následující kroky:
 
@@ -104,7 +102,7 @@ V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní
     b. Vyberte **Vytvořit novou** a zadejte název skupiny prostředků. 
          
     Informace o skupinách prostředků najdete v tématu [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/resource-group-overview.md). 
-6. V rozevíracím seznamu **Verze** vyberte **V2 (Preview)**.
+6. Jako **Verzi** vyberte **V2**.
 7. V části **Umístění** vyberte umístění datové továrny. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat (například Azure Storage a SQL Database) a výpočetní prostředí (například Azure HDInsight) používaná datovou továrnou můžou být v jiných oblastech.
 8. Zaškrtněte **Připnout na řídicí panel**. 
 9. Vyberte **Vytvořit**. 
@@ -128,74 +126,67 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
 1. Na stránce **Pusťme se do toho** vyberte **Vytvořit kanál**. 
 
    ![Vytvoření kanálu](./media/tutorial-copy-data-portal/create-pipeline-tile.png)
-2. V okně **Vlastnosti** pro příslušný kanál nastavte **Název** kanálu na **CopyPipeline**.
+2. Na kartě kanálu **Obecné** zadejte **CopyPipeline** jako **Název** kanálu.
 
-    ![Název kanálu](./media/tutorial-copy-data-portal/pipeline-name.png)
-3. Na panelu nástrojů **Aktivity** rozbalte kategorii **Tok dat** a přetáhněte aktivitu **Kopírování** z panelu nástrojů na plochu návrháře kanálu. 
+3. Na panelu nástrojů **Aktivity** rozbalte kategorii **Tok dat** a přetáhněte aktivitu **Kopírování** z panelu nástrojů na plochu návrháře kanálu. Jako **Název** zadejte **CopyFromBlobToSql**.
 
     ![Aktivita kopírování](./media/tutorial-copy-data-portal/drag-drop-copy-activity.png)
-4. Na kartě **Obecné** v okně **Vlastnosti** nastavte název aktivity na **CopyFromBlobToSql**.
 
-    ![Název aktivity](./media/tutorial-copy-data-portal/activity-name.png)
-5. Přejděte na kartu **Zdroj**. Výběrem **+ Nová** vytvořte zdrojovou datovou sadu. 
+### <a name="configure-source"></a>Konfigurace zdroje
 
-    ![Karta Zdroj](./media/tutorial-copy-data-portal/new-source-dataset-button.png)
-6. V okně **Nová datová sada** vyberte **Azure Blob Storage** a pak vyberte **Dokončit**. Zdrojová data jsou v úložišti Blob Storage, takže jako zdrojovou datovou sadu vyberete **Azure Blob Storage**. 
+1. Přejděte na kartu **Zdroj**. Výběrem **+ Nová** vytvořte zdrojovou datovou sadu. 
 
-    ![Výběr úložiště](./media/tutorial-copy-data-portal/select-azure-storage.png)
-7. V aplikaci se otevře nová karta s názvem **AzureBlob1**.
+2. V okně **Nová datová sada** vyberte **Azure Blob Storage** a pak vyberte **Dokončit**. Zdrojová data jsou v úložišti Blob Storage, takže jako zdrojovou datovou sadu vyberete **Azure Blob Storage**. 
 
-    ![Karta AzureBlob1 ](./media/tutorial-copy-data-portal/new-tab-azure-blob1.png)        
-8. Do pole **Název** na kartě **Obecné** v dolní části okna **Vlastnosti** zadejte **SourceBlobDataset**.
+    ![Výběr úložiště](./media/tutorial-copy-data-portal/select-azure-blob-dataset.png)
+
+3. Otevře se nová karta pro datovou sadu blobu. Do pole **Název** na kartě **Obecné** v dolní části okna **Vlastnosti** zadejte **SourceBlobDataset**.
 
     ![Název datové sady](./media/tutorial-copy-data-portal/dataset-name.png)
-9. V okně **Vlastnosti** přejděte na kartu **Připojení**. Vyberte **+ Nová** vedle textového pole **Propojená služba**. 
 
-    Propojená služba propojuje úložiště dat nebo výpočetní prostředí s datovou továrnou. V tomto případě vytvoříte propojenou službu Storage, která propojí váš účet úložiště s úložištěm dat. Propojená služba obsahuje informace o připojení, které služba Data Factory používá pro připojení k úložišti Blob Storage za běhu. Datová sada určuje kontejner, složku a soubor (volitelné) obsahující zdrojová data. 
+4. V okně **Vlastnosti** přejděte na kartu **Připojení**. Vyberte **+ Nová** vedle textového pole **Propojená služba**. 
 
     ![Tlačítko Nová propojená služba](./media/tutorial-copy-data-portal/source-dataset-new-linked-service-button.png)
-10. V okně **Nová propojená služba** proveďte následující kroky: 
 
-    a. Do pole **Název** zadejte **AzureStorageLinkedService**. 
-
-    b. V rozevíracím seznamu **Název účtu úložiště** vyberte svůj účet úložiště.
-
-    c. Vyberte **Testovat připojení** a otestujte připojení k účtu úložiště.
-
-    d. Vyberte **Uložit** a uložte propojenou službu.
+5. V okně **New Linked Service** (Nová propojená služba) zadejte **AzureStorageLinkedService** jako název, vyberte svůj účet úložiště ze seznamu **Název účtu úložiště** a pak pomocí **Uložit** propojenou službu nasaďte.
 
     ![Nová propojená služba](./media/tutorial-copy-data-portal/new-azure-storage-linked-service.png)
-11. Vedle pole **Cesta k souboru** vyberte **Procházet**.
+
+6. Po vytvoření propojené služby se vrátíte do nastavení datové sady. Vedle pole **Cesta k souboru** vyberte **Procházet**.
 
     ![Tlačítko Procházet pro vyhledání cesty k souboru](./media/tutorial-copy-data-portal/file-browse-button.png)
-12. Přejděte do složky **adftutorial/input**, vyberte soubor **emp.txt** a potom vyberte **Dokončit**. Nebo také můžete na soubor **emp.txt** dvakrát kliknout. 
+
+7. Přejděte do složky **adftutorial/input**, vyberte soubor **emp.txt** a potom vyberte **Dokončit**. 
 
     ![Výběr vstupního souboru](./media/tutorial-copy-data-portal/select-input-file.png)
-13. Ověřte, že je v rozevíracím seznamu **Formát souboru** vybraná položka **Formát textu** a v rozevíracím seznamu **Oddělovač sloupců** položka **Čárka (`,`)**. Pokud se ve zdrojovém souboru používají jiné oddělovače řádků a sloupců, můžete vybrat **Rozpoznat formát textu** vedle rozevíracího seznamu **Formát souboru**. Nástroj pro kopírování dat pro vás automaticky rozpozná formát souboru a oddělovače. Tyto hodnoty však můžete přepsat. Pokud se na této stránce chcete podívat na náhled dat, vyberte **Náhled dat**.
+
+8. Ověřte, že je v rozevíracím seznamu **Formát souboru** vybraná položka **Formát textu** a v rozevíracím seznamu **Oddělovač sloupců** položka **Čárka (`,`)**. Pokud se ve zdrojovém souboru používají jiné oddělovače řádků a sloupců, můžete vybrat **Rozpoznat formát textu** vedle rozevíracího seznamu **Formát souboru**. Nástroj pro kopírování dat pro vás automaticky rozpozná formát souboru a oddělovače. Tyto hodnoty však můžete přepsat. Pokud se na této stránce chcete podívat na náhled dat, vyberte **Náhled dat**.
 
     ![Rozpoznat formát textu](./media/tutorial-copy-data-portal/detect-text-format.png)
-14. V okně **Vlastnosti** přejděte na kartu **Schéma** a vyberte **Importovat schéma**. Všimněte si, že aplikace ve zdrojovém souboru rozpoznala dva sloupce. Tady naimportujete schéma, abyste mohli namapovat sloupce ze zdrojového úložiště dat na sloupce v úložišti dat jímky. Pokud sloupce mapovat nepotřebujete, můžete tento krok přeskočit. Pro účely tohoto kurzu schéma naimportujte.
+
+9. V okně **Vlastnosti** přejděte na kartu **Schéma** a vyberte **Importovat schéma**. Všimněte si, že aplikace ve zdrojovém souboru rozpoznala dva sloupce. Tady naimportujete schéma, abyste mohli namapovat sloupce ze zdrojového úložiště dat na sloupce v úložišti dat jímky. Pokud sloupce mapovat nepotřebujete, můžete tento krok přeskočit. Pro účely tohoto kurzu schéma naimportujte.
 
     ![Rozpoznání schématu zdroje](./media/tutorial-copy-data-portal/detect-source-schema.png)  
-15. Teď přejděte na kartu s kanálem (vyberte kanál na levé straně).
 
-    ![Karta Kanál](./media/tutorial-copy-data-portal/pipeline-tab.png)
-16. Ověřte, že je v rozevíracím seznamu **Zdrojová datová sada** v okně **Vlastnosti** vybraná sada **SourceBlobDataset**. Pokud se na této stránce chcete podívat na náhled dat, vyberte **Náhled dat**. 
+10. Teď se vraťte na kanál -> karta **Zdroj** a zkontrolujte, jestli je vybraný **SourceBlobDataset**. Pokud se na této stránce chcete podívat na náhled dat, vyberte **Náhled dat**. 
     
     ![Zdrojová datová sada](./media/tutorial-copy-data-portal/source-dataset-selected.png)
-17. Přejděte na kartu **Jímka**, vyberte **+ Nová** a vytvořte datovou sadu jímky. 
+
+### <a name="configure-sink"></a>Konfigurace jímky
+
+1. Přejděte na kartu **Jímka**, vyberte **+ Nová** a vytvořte datovou sadu jímky. 
 
     ![Datová sada jímky](./media/tutorial-copy-data-portal/new-sink-dataset-button.png)
-18. V okně **Nová datová sada** vyberte **Azure SQL Database** a potom vyberte **Dokončit**. V tomto kurzu zkopírujte data do databáze SQL Database. 
+2. V okně **Nová datová sada** zadejte do vyhledávacího pole „SQL“, abyste filtrovali konektory. Pak vyberte **Azure SQL Database** a pak vyberte **Dokončit**. V tomto kurzu zkopírujte data do databáze SQL Database. 
 
-    ![Výběr databáze SQL Database](./media/tutorial-copy-data-portal/select-azure-sql-database.png)
-19. Do pole **Název** na kartě **Obecné** v okně **Vlastnosti** zadejte **OutputSqlDataset**. 
+    ![Výběr databáze SQL Database](./media/tutorial-copy-data-portal/select-azure-sql-dataset.png)
+3. Do pole **Název** na kartě **Obecné** v okně **Vlastnosti** zadejte **OutputSqlDataset**. 
     
     ![Název výstupní datové sady](./media/tutorial-copy-data-portal/output-dataset-name.png)
-20. Přejděte na kartu **Připojení** a vedle pole **Propojená služba** vyberte **+ Nová**. Datová sada musí být přidružená k propojené službě. Propojená služba obsahuje připojovací řetězec, který služba Data Factory používá pro připojení k databázi SQL Database za běhu. Datová sada určuje kontejner, složku a soubor (volitelné), do kterého se data kopírují. 
+4. Přejděte na kartu **Připojení** a vedle pole **Propojená služba** vyberte **+ Nová**. Datová sada musí být přidružená k propojené službě. Propojená služba obsahuje připojovací řetězec, který služba Data Factory používá pro připojení k databázi SQL Database za běhu. Datová sada určuje kontejner, složku a soubor (volitelné), do kterého se data kopírují. 
     
     ![Propojená služba](./media/tutorial-copy-data-portal/new-azure-sql-database-linked-service-button.png)       
-21. V okně **Nová propojená služba** proveďte následující kroky: 
+5. V okně **Nová propojená služba** proveďte následující kroky: 
 
     a. Do pole **Název** zadejte **AzureSqlDatabaseLinkedService**.
 
@@ -213,160 +204,46 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
     
     ![Uložení nové propojené služby](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-22. V rozevíracím seznamu **Tabulka** vyberte **[dbo].[emp]**. 
+6. V rozevíracím seznamu **Tabulka** vyberte **[dbo].[emp]**. 
 
     ![Table](./media/tutorial-copy-data-portal/select-emp-table.png)
-23. Přejděte na kartu **Schéma** a vyberte **Importovat schéma**. 
+7. Přejděte na kartu **Schéma** a vyberte **Importovat schéma**. 
 
     ![Výběr tlačítka Importovat schéma](./media/tutorial-copy-data-portal/import-destination-schema.png)
-24. Vyberte sloupec **ID** a potom vyberte **Odstranit**. Sloupec **ID** je v databázi SQL Database sloupcem identity, takže aktivita kopírování nemusí do tohoto sloupce vkládat žádná data.
+8. Vyberte sloupec **ID** a potom vyberte **Odstranit**. Sloupec **ID** je v databázi SQL Database sloupcem identity, takže aktivita kopírování nemusí do tohoto sloupce vkládat žádná data.
 
     ![Odstranění sloupce ID](./media/tutorial-copy-data-portal/delete-id-column.png)
-25. Přejděte na kartu s kanálem a zkontrolujte, že je v rozevíracím seznamu **Datová sada jímky** vybraná sada **OutputSqlDataset**.
+9. Přejděte na kartu s kanálem a zkontrolujte, že je v rozevíracím seznamu **Datová sada jímky** vybraná sada **OutputSqlDataset**.
 
     ![Karta Kanál](./media/tutorial-copy-data-portal/pipeline-tab-2.png)        
-26. V dolní části okna **Vlastnosti** přejděte na kartu **Mapování** a vyberte **Importovat schémata**. Všimněte si mapování prvního a druhého sloupce ve zdrojovém souboru na pole **FirstName** (Jméno) a **LastName** (Příjmení) v databázi SQL Database.
 
-    ![Mapování schémat](./media/tutorial-copy-data-portal/map-schemas.png)
-27. Vyberte **Ověřit** a kanál ověřte. Výběrem tlačítka se šipkou doprava, které se nachází v pravém horním rohu, okno ověření zavřete.
+### <a name="confugure-mapping"></a>Konfigurace mapování
 
-    ![Výstup ověření kanálu](./media/tutorial-copy-data-portal/pipeline-validation-output.png)   
-28. V pravém horním rohu vyberte **Kód**. Zobrazí se kód JSON přidružený k příslušnému kanálu. 
+V dolní části okna **Vlastnosti** přejděte na kartu **Mapování** a vyberte **Importovat schémata**. Všimněte si mapování prvního a druhého sloupce ve zdrojovém souboru na pole **FirstName** (Jméno) a **LastName** (Příjmení) v databázi SQL Database.
 
-    ![Tlačítko Kód](./media/tutorial-copy-data-portal/code-button.png)
-29. Zobrazí se kód JSON podobný následujícímu fragmentu kódu: 
+![Mapování schémat](./media/tutorial-copy-data-portal/map-schemas.png)
 
-    ```json
-    {
-        "name": "CopyPipeline",
-        "properties": {
-            "activities": [
-                {
-                    "name": "CopyFromBlobToSql",
-                    "type": "Copy",
-                    "dependsOn": [],
-                    "policy": {
-                        "timeout": "7.00:00:00",
-                        "retry": 0,
-                        "retryIntervalInSeconds": 20
-                    },
-                    "typeProperties": {
-                        "source": {
-                            "type": "BlobSource",
-                            "recursive": true
-                        },
-                        "sink": {
-                            "type": "SqlSink",
-                            "writeBatchSize": 10000
-                        },
-                        "enableStaging": false,
-                        "parallelCopies": 0,
-                        "cloudDataMovementUnits": 0,
-                        "translator": {
-                            "type": "TabularTranslator",
-                            "columnMappings": "Prop_0: FirstName, Prop_1: LastName"
-                        }
-                    },
-                    "inputs": [
-                        {
-                            "referenceName": "SourceBlobDataset",
-                            "type": "DatasetReference",
-                            "parameters": {}
-                        }
-                    ],
-                    "outputs": [
-                        {
-                            "referenceName": "OutputSqlDataset",
-                            "type": "DatasetReference",
-                            "parameters": {}
-                        }
-                    ]
-                }
-            ]
-        }
-    }
-    ```
+## <a name="validate-the-pipeline"></a>Ověření kanálu
+Vyberte **Ověřit** z panelu nástrojů a kanál ověřte.
+ 
+Kliknutím na **Kód** vpravo nahoře zobrazíte kód JSON přidružený ke kanálu.
 
-## <a name="test-run-the-pipeline"></a>Testovací spuštění kanálu
-Před publikováním artefaktů (propojených služeb, datových sad a kanálu) do služby Data Factory nebo vlastního úložiště VSTS (Visual Studio Team Services) GIT můžete spuštění kanálu otestovat. 
+## <a name="debug-and-publish-the-pipeline"></a>Ladění a publikování kanálu
+Před publikováním artefaktů (propojených služeb, datových sad a kanálu) do služby Data Factory nebo vlastního úložiště VSTS (Visual Studio Team Services) GIT můžete spuštění kanálu ladit. 
 
-1. Pokud chcete spuštění kanálu otestovat, vyberte na panelu nástrojů **Testovací běh**. Na kartě **Výstup** v dolní části okna se zobrazí stav spuštění kanálu. 
+1. K ladění kanálu vyberte na panelu nástrojů **Ladit**. Na kartě **Výstup** v dolní části okna se zobrazí stav spuštění kanálu. 
 
-    ![Otestování kanálu](./media/tutorial-copy-data-portal/test-run-output.png)
-2. Ověřte, že se data ze zdrojového souboru vložila do cílové databáze SQL. 
-
-    ![Ověření výstupu SQL](./media/tutorial-copy-data-portal/verify-sql-output.png)
-3. V levém podokně vyberte **Publikovat vše**. Touto akcí publikujete vytvořené entity (propojené služby, datové sady a kanály) do služby Data Factory.
+2. Když jde kanál úspěšně spustit, na horním panelu nástrojů vyberte **Publikovat vše**. Touto akcí publikujete vytvořené entity (datové sady a kanály) do služby Data Factory.
 
     ![Publikování](./media/tutorial-copy-data-portal/publish-button.png)
-4. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**. Pokud chcete zobrazit oznámení, vyberte na levém bočním panelu kartu **Zobrazit oznámení**. Když budete chtít okno s oznámeními zavřít, vyberte **Zavřít**.
 
-    ![Zobrazit oznámení](./media/tutorial-copy-data-portal/show-notifications.png)
-
-## <a name="configure-code-repository"></a>Konfigurace úložiště kódu
-Kód přidružený k artefaktům datové továrny můžete publikovat do úložiště kódu Visual Studio Team Services. V tomto kroku vytvoříte úložiště kódu.  Další informace o vizuálním vytváření s využitím integrace VSTS najdete v tématu popisujícím [vytváření s využitím integrace VSTS Git](author-visually.md#author-with-vsts-git-integration).
-
-Pokud s úložištěm kódu Visual Studio Team Services pracovat nechcete, můžete tento krok přeskočit. Můžete dál publikovat do služby Data Factory, jako jste to dělali v předchozím kroku. 
-
-1. V levém horním rohu vyberte **Data Factory** (nebo použijte šipku dolů vedle této položky) a vyberte **Konfigurace úložiště kódu**. 
-
-    ![Konfigurace úložiště kódu](./media/tutorial-copy-data-portal/configure-code-repository-button.png)
-2. Na stránce **Nastavení úložiště** proveďte následující kroky:
-
-    a. V rozevíracím seznamu **Typ úložiště** vyberte **Visual Studio Team Services Git**.
-
-    b. V rozevíracím seznamu **Účet služby Visual Studio Team Services** vyberte svůj účet služby Visual Studio Team Services.
-
-    c. V rozevíracím seznamu **Název projektu** vyberte projekt na svém účtu služby Visual Studio Team Services.
-
-    d. Do pole **Název úložiště Git** zadejte **Tutorial2**. Úložiště Git se tím přidruží k vaší datové továrně.
-
-    e. Zkontrolujte, jestli je zaškrtnuté políčko **Importovat do úložiště stávající prostředky Data Factory**.
-
-    f. Vyberte **Uložit** a nastavení se uloží. 
-
-    ![Nastavení úložiště](./media/tutorial-copy-data-portal/repository-settings.png)
-3. Ověřte, že je vybrané úložiště **VSTS GIT**.
-
-    ![Výběr úložiště VSTS GIT](./media/tutorial-copy-data-portal/vsts-git-selected.png)
-4. Na samostatné kartě ve webovém prohlížeči přejděte do úložiště **Tutorial2**. Zobrazí se dvě větve: **adf_publish** a **master**.
-
-    ![Větve master a adf_publish](./media/tutorial-copy-data-portal/initial-branches-vsts-git.png)
-5. Ověřte, že jsou soubory JSON pro entity služby Data Factory ve větvi **master**.
-
-    ![Soubory ve větvi master](./media/tutorial-copy-data-portal/master-branch-files.png)
-6. Ověřte, že soubory JSON zatím nejsou ve větvi **adf_publish**. 
-
-    ![Soubory ve větvi adf_publish](./media/tutorial-copy-data-portal/adf-publish-files.png)
-7. Do pole **Popis** zadejte popis kanálu a na panelu nástrojů vyberte **Uložit**. 
-
-    ![Popis kanálu](./media/tutorial-copy-data-portal/pipeline-description.png)
-8. Teď v úložišti **Tutorial2** vidíte větev se svým uživatelským jménem. Provedená změna je ve vaší vlastní větvi, ne ve větvi master. Publikovat můžete jenom entity z větve master.
-
-    ![Vaše větev](./media/tutorial-copy-data-portal/your-branch.png)
-9. Najeďte myší na tlačítko **Synchronizovat** (ale zatím na něj neklikejte), zaškrtněte políčko **Potvrdit změny** a vyberte **Synchronizovat**. Tím svoje změny synchronizujete s větví master. 
-
-    ![Potvrzení a synchronizace změn](./media/tutorial-copy-data-portal/commit-and-sync.png)
-10. V okně **Synchronizace změn** proveďte následující akce: 
-
-    a. Ověřte, že se v aktualizovaném seznamu **Kanály** zobrazuje kanál **CopyPipeline**.
-
-    b. Ověřte, že je vybraná možnost **Po synchronizaci publikovat změny**. Jestliže zaškrtnutí tohoto políčka zrušíte, budou se změny, které jste ve své větvi udělali, jenom synchronizovat s větví master. Nebudou se publikovat do služby Data Factory. Můžete je publikovat později pomocí tlačítka **Publikovat**. Pokud toto políčko zaškrtnete, budou se změny nejprve synchronizovat s větví master a pak se publikují do služby Data Factory.
-
-    c. Vyberte **Synchronizovat**. 
-
-    ![Synchronizace provedených změn](./media/tutorial-copy-data-portal/sync-your-changes.png)
-11. Teď se ve větvi **adf_publish** úložiště **Tutorial2** zobrazují soubory. V této větvi najdete také šablonu Azure Resource Manageru pro vaše řešení Data Factory. 
-
-    ![Seznam souborů ve větvi adf_publish](./media/tutorial-copy-data-portal/adf-publish-files-after-publish.png)
-
+4. Počkejte, dokud se nezobrazí zpráva **Publikování proběhlo úspěšně**. Pokud chcete zobrazit zprávy oznámení, klikněte vpravo nahoře (tlačítko zvonečku) na **Zobrazit oznámení**. 
 
 ## <a name="trigger-the-pipeline-manually"></a>Ruční aktivace kanálu
 V tomto kroku ručně aktivujete kanál, který jste publikovali v minulém kroku. 
 
 1. Vyberte na panelu nástrojů **Aktivační událost** a potom vyberte **Aktivovat**. Na stránce **Spuštění kanálu** vyberte **Dokončit**.  
 
-    ![Aktivace kanálu](./media/tutorial-copy-data-portal/trigger-now-menu.png)
 2. Vlevo přejděte na kartu **Monitorování**. Zobrazí se stav ručně aktivovaného spuštění kanálu. Pomocí odkazů ve sloupci **Akce** můžete zobrazit podrobnosti o aktivitě a spustit kanál znovu.
 
     ![Monitorování spuštění kanálu](./media/tutorial-copy-data-portal/monitor-pipeline.png)
@@ -378,12 +255,10 @@ V tomto kroku ručně aktivujete kanál, který jste publikovali v minulém krok
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>Aktivace kanálu podle plánu
 V tomto kroku vytvoříte pro kanál aktivační událost plánovače. Tato aktivační událost spouští kanál podle zadaného plánu (například každou hodinu nebo každý den). V tomto příkladu nastavíte aktivační událost tak, aby se spouštěla každou minutu až do uplynutí koncového data a času. 
 
-1. Vlevo přejděte na kartu **Upravit**. 
+1. Vlevo nad kartou monitorování přejděte na kartu **Autor**. 
 
-    ![Karta Upravit](./media/tutorial-copy-data-portal/edit-tab.png)
-2. Vyberte **Aktivační událost** a vyberte **Nová/Upravit**. Pokud kanál není aktivní, přejděte do něj. 
+2. Přejděte na kanál, na panelu nástrojů klikněte na **Aktivační událost** a vyberte **Nové/upravit**. 
 
-    ![Možnost aktivace](./media/tutorial-copy-data-portal/trigger-new-edit-menu.png)
 3. V okně **Přidat aktivační události** vyberte **Zvolit aktivační událost** a pak vyberte **+ Nová**. 
 
     ![Tlačítko Nová](./media/tutorial-copy-data-portal/add-trigger-new-button.png)
@@ -414,9 +289,9 @@ V tomto kroku vytvoříte pro kanál aktivační událost plánovače. Tato akt
 5. Na stránce **Parametry spuštění aktivační události** si přečtěte upozornění a pak vyberte **Dokončit**. Kanál v tomto příkladu nepoužívá žádné parametry. 
 
     ![Parametry spuštění aktivační události](./media/tutorial-copy-data-portal/trigger-pipeline-parameters.png)
-6. Vyberte **Synchronizovat** a synchronizujte změny ve svojí větvi s větví mater. Ve výchozím nastavení je políčko **Po synchronizaci publikovat změny** zaškrtnuté. Když vyberete **Synchronizovat**, budou se do služby Data Factory publikovat také aktualizované entity z větve master. Aktivační událost se neaktivuje, dokud publikování neproběhne úspěšně.
 
-    ![Synchronizace provedených změn](./media/tutorial-copy-data-portal/sync-your-changes-with-trigger.png) 
+6. Kliknutím na **Publikovat vše** publikujte změnu. 
+
 7. Vlevo přejděte na kartu **Monitorování**, kde uvidíte aktivovaná spuštění kanálu. 
 
     ![Aktivovaná spuštění kanálu](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)    

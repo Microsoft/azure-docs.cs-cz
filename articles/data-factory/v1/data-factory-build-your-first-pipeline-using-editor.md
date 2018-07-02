@@ -1,5 +1,5 @@
 ---
-title: Sestavení prvního objektu pro vytváření dat (Azure Portal) | Dokumentace Microsoftu
+title: Sestavení prvního objektu pro vytváření dat (Azure Portal) | Microsoft Docs
 description: V tomto kurzu vytvoříte pomocí editoru služby Data Factory na webu Azure Portal ukázkový kanál služby Azure Data Factory.
 services: data-factory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 75139e39c3391a7662e3d02ee8d56463ac9fcc7a
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: e57a2e72479d36908ef1e9f537506bb67ae311fe
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31406554"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37048403"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Kurz: Vytvoření první datové továrny pomocí webu Azure Portal
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "31406554"
 
 
 > [!NOTE]
-> Tento článek se týká verze 1 služby Azure Data Factory, která je všeobecně dostupná. Pokud používáte verzi 2 služby Data Factory, která je ve verzi Preview, přečtěte si [Rychlý start: Vytvoření datové továrny pomocí služby Data Factory verze 2](../quickstart-create-data-factory-dot-net.md).
+> Tento článek se týká verze 1 služby Azure Data Factory, která je všeobecně dostupná. Pokud používáte aktuální verzi služby Data Factory, přečtěte si [Rychlý start: Vytvoření datové továrny pomocí Data Factory](../quickstart-create-data-factory-dot-net.md).
 
 V tomto článku se dozvíte, jak pomocí webu [Azure Portal](https://portal.azure.com/) vytvořit první datovou továrnu. Pokud chcete kurz absolvovat s použitím jiných nástrojů nebo sad SDK, vyberte některou z možností z rozevíracího seznamu. 
 

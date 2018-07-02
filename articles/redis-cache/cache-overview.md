@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 8f477282e49104e9b034e11656ff50c2a67545f7
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5efb0087c8e1ea55051d8eb7b209059b3abd5c5c
+ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32195868"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37062755"
 ---
 # <a name="what-is-azure-redis-cache"></a>Co je Azure Redis Cache
 
@@ -77,6 +77,7 @@ Na stránce věnované [cenovým úrovním služby Redis Cache](https://azure.mi
 
 * [Rychlý start pro webové aplikace v ASP.NET](cache-web-app-howto.md): Vytvořte si jednoduchou webovou aplikaci v ASP.NET, která používá Azure Redis Cache.
 * [Rychlý start pro .NET](cache-dotnet-how-to-use-azure-redis-cache.md): Vytvořte si aplikaci v .NET, která používá Azure Redis Cache.
+* [Rychlý start pro .NET Core](cache-dotnet-core-quickstart.md): Vytvořte si aplikaci v .NET Core, která používá Azure Redis Cache.
 * [Rychlý start pro Node.js](cache-nodejs-get-started.md): Vytvořte si jednoduchou aplikaci v Node.js, která používá Azure Redis Cache.
 * [Rychlý start pro jazyk Java](cache-java-get-started.md): Vytvořte si jednoduchou aplikaci v jazyce Java, která používá Azure Redis Cache.
 * [Rychlý start pro Python](cache-python-get-started.md): Vytvořte si aplikaci v Pythonu, která používá Azure Redis Cache.

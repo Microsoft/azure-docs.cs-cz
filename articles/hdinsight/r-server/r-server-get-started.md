@@ -1,6 +1,6 @@
 ---
-title: Začínáme s R Serverem ve službě HDInsight – Azure| Dokumentace Microsoftu
-description: Naučíte se vytvořit Apache Spark v clusteru HDInsight, který obsahuje R Server, a odeslat do clusteru skript R.
+title: Začínáme se službou ML Services v HDInsight – Azure | Microsoft Docs
+description: Naučíte se vytvořit Apache Spark v clusteru HDInsight, který obsahuje službu ML Services, a odeslat do clusteru skript R.
 services: hdinsight
 documentationcenter: ''
 author: nitinme
@@ -13,19 +13,18 @@ ms.devlang: R
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/23/2018
+ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: d6910ab257312626ca25126721410edeed6cdeae
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: efc7ada12f722b0447712594de496e933bde3d36
+ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31411477"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37053428"
 ---
-# <a name="get-started-with-r-server-cluster-on-azure-hdinsight"></a>Začínáme s clusterem R Serveru v Azure HDInsight
+# <a name="get-started-with-ml-services-on-azure-hdinsight"></a>Začínáme se službou ML Services v Azure HDInsight
 
-Azure HDInsight zahrnuje možnost integrace R Serveru do clusteru HDInsight. Díky této možnosti můžou skripty R používat Spark a MapReduce ke spouštění distribuovaných výpočtů. V tomto článku se dozvíte, jak vytvořit R Server v clusteru HDInsight. Pak se naučíte, jak spustit skript R, který předvádí použití Sparku k distribuovaným výpočtům jazyka R.
-
+Azure HDInsight umožňuje vytvořit cluster služby ML Services. Díky této možnosti můžou skripty R používat Spark a MapReduce ke spouštění distribuovaných výpočtů. V tomto dokumentu se naučíte vytvořit cluster služby ML Services v HDInsight a následně spustit skript R, který ukazuje použití Sparku k distribuovaným výpočtům jazyka R.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,13 +52,13 @@ Azure HDInsight zahrnuje možnost integrace R Serveru do clusteru HDInsight. Dí
 
 4. Vyberte **Typ clusteru** a pak v části **Konfigurace clusteru** zadejte následující hodnoty:
 
-    * **Typ clusteru:** R Server
+    * **Typ clusteru**: ML Services
 
     * **Operační systém:** Linux
 
-    * **Verze:** R Server 9.1 (HDI 3.6). Poznámky k dostupným verzím R Serveru jsou k dispozici na webu [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-r-server#r-server-91).
+    * **Verze**: ML Server 9.3 (HDI 3.6). Zpráva k vydání verze pro ML Server 9.3 je dostupná na webu [docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-machine-learning-server).
 
-    * **Komunitní verze RStudia pro R Server:** Toto integrované vývojové prostředí (IDE) v prohlížeči se ve výchozím nastavení nainstaluje na hraniční uzel. Pokud si jeho instalaci nepřejete, zrušte zaškrtnutí tohoto políčka. Pokud zvolíte jeho instalaci, adresu URL pro přístup k přihlašovací stránce RStudio Serveru najdete po vytvoření clusteru v okně aplikace portálu pro váš cluster.
+    * **Komunitní verze R Studia pro ML Server:** Toto integrované vývojové prostředí (IDE) v prohlížeči se ve výchozím nastavení nainstaluje na hraniční uzel. Pokud si jeho instalaci nepřejete, zrušte zaškrtnutí tohoto políčka. Pokud zvolíte jeho instalaci, adresu URL pro přístup k přihlašovací stránce RStudio Serveru najdete po vytvoření clusteru v okně aplikace portálu pro váš cluster.
 
         ![Základní informace o clusteru](./media/r-server-get-started/clustertypeconfig.png)
 
@@ -81,11 +80,11 @@ Azure HDInsight zahrnuje možnost integrace R Serveru do clusteru HDInsight. Dí
 
 Pokud jste zvolili instalaci RStudio Serveru Community Edition jako součást svého clusteru HDInsight, přístup k přihlašovací stránce RStudia můžete získat jednou z následujících dvou metod:
 
-* **Možnost 1** – Přejděte na následující adresu URL (kde **CLUSTERNAME** je název clusteru R Serveru, který jste vytvořili):
+* **Možnost 1** – Přejděte na následující adresu URL (kde **CLUSTERNAME** je název clusteru služby ML Services, který jste vytvořili):
 
         https://CLUSTERNAME.azurehdinsight.net/rstudio/
 
-* **Možnost 2** – Otevřete cluster R Serveru na webu Azure Portal kliknutím na **Řídicí panely R Serveru** v části **Rychlé odkazy**.
+* **Možnost 2** – Otevřete cluster služby ML Services na portálu Azure Portal kliknutím na **Řídicí panely služby ML Services** v části **Rychlé odkazy**.
 
      ![Nastavení účtu úložiště pro HDInsight](./media/r-server-get-started/dashboard-quick-links.png)
 
@@ -175,9 +174,9 @@ Můžete odeslat úlohu pomocí funkcí ScaleR. Tady je příklad příkazů pou
 <a name="connect-to-edge-node"></a>
 ## <a name="connect-to-the-cluster-edge-node"></a>Připojení k hraničnímu uzlu clusteru
 
-V této části se dozvíte, jak se připojit k hraničnímu uzlu clusteru HDInsight s R Serverem pomocí SSH. Informace o použití SSH najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
+V této části se dozvíte, jak se připojit k hraničnímu uzlu clusteru HDInsight se službou ML Services pomocí SSH. Informace o použití SSH najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-Tady je příkaz SSH pro připojení k hraničnímu uzlu clusteru R Server:
+Tady je příkaz SSH pro připojení k hraničnímu uzlu clusteru služby ML Services:
 
    `ssh USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net`
 
@@ -194,15 +193,15 @@ Po připojení se dostanete na příkazový řádek, který bude vypadat nějak 
     sshuser@ed00-myrclu:~$
 
 <a name="use-r-console"></a>
-## <a name="use-the-r-server-console"></a>Použití konzoly R Serveru
+## <a name="use-the-r-console"></a>Použití konzoly R
 
 1. Z relace SSH pomocí následujícího příkazu spusťte konzolu R:  
 
         R
 
-2. Měl by se zobrazit výstup s verzí R Serveru a dalšími informacemi.
+2. Měl by se zobrazit výstup s verzí ML Serveru a dalšími informacemi.
     
-3. Na příkazovém řádku `>` můžete zadat kód R. R Server v HDInsight obsahuje balíčky umožňující snadnou interakci se systémem Hadoop a spouštění distribuovaných výpočtů. Například pomocí následujícího příkazu zobrazíte kořen výchozího systému souborů pro cluster HDInsight:
+3. Na příkazovém řádku `>` můžete zadat kód R. Služba ML Services v HDInsight obsahuje balíčky umožňující snadnou interakci se systémem Hadoop a spouštění distribuovaných výpočtů. Například pomocí následujícího příkazu zobrazíte kořen výchozího systému souborů pro cluster HDInsight:
 
         rxHadoopListFiles("/")
 
@@ -216,11 +215,11 @@ Po připojení se dostanete na příkazový řádek, který bude vypadat nějak 
 
 ## <a name="automated-cluster-creation"></a>Automatizované vytváření clusterů
 
-Vytváření clusteru R Serveru pro HDInsight můžete automatizovat pomocí šablon Azure Resource Manageru, sady SDK nebo PowerShellu.
+Vytváření clusteru služby ML Services pro HDInsight můžete automatizovat pomocí sady SDK nebo PowerShellu.
 
-* Informace o vytvoření clusteru R Serveru pomocí šablony Azure Resource Manageru najdete v tématu [Nasazení clusteru R Serveru pro HDInsight](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/).
-* Informace o vytvoření clusteru R Serveru pomocí sady .NET SDK najdete v tématu [Vytváření clusterů se systémem Linux v HDInsight pomocí sady .NET SDK](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md).
-* Informace o vytvoření clusteru R Serveru pomocí PowerShellu najdete v článku věnovaném [vytváření clusterů HDInsight pomocí Azure PowerShellu](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md).
+<!---* To create an ML Server cluster using an Azure Resource Management template, see [Deploy an R Server for HDInsight cluster](https://azure.microsoft.com/resources/templates/101-hdinsight-rserver/).--->
+* Informace o vytvoření clusteru služby ML Services pomocí sady .NET SDK najdete v článku o [vytváření clusterů se systémem Linux v HDInsight pomocí sady .NET SDK](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md).
+* Informace o vytvoření clusteru služby ML Services pomocí PowerShellu najdete v článku o [vytváření clusterů HDInsight pomocí Azure PowerShellu](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md).
 
 ## <a name="delete-the-cluster"></a>Odstranění clusteru
 
@@ -232,10 +231,10 @@ Pokud narazíte na problémy s vytvářením clusterů HDInsight, podívejte se 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak vytvořit nový cluster R Serveru v Azure HDInsight, a seznámili jste se se základy používání konzoly R z relace SSH. Následující články popisují další způsoby správy a práce s R Serverem v HDInsight:
+V tomto článku jste zjistili, jak vytvořit nový cluster služby ML Services v Azure HDInsight, a seznámili jste se se základy používání konzoly R z relace SSH. Následující články popisují další způsoby správy a práce se službou ML Services v HDInsight:
 
 * [Odesílání úloh z Nástrojů R pro Visual Studio](r-server-submit-jobs-r-tools-vs.md)
-* [Správa clusteru R Serveru v HDInsight](r-server-hdinsight-manage.md)
-* [Zprovoznění clusteru R Serveru v HDInsight](r-server-operationalize.md)
-* [Možnosti výpočetního kontextu pro cluster R Serveru v HDInsight](r-server-compute-contexts.md)
-* [Možnosti služby Azure Storage pro cluster R Serveru v HDInsight](r-server-storage.md)
+* [Správa clusteru služby ML Services v HDInsight](r-server-hdinsight-manage.md)
+* [Zprovoznění clusteru služby ML Services v HDInsight](r-server-operationalize.md)
+* [Možnosti výpočetního kontextu pro cluster služby ML Services v HDInsight](r-server-compute-contexts.md)
+* [Možnosti Azure Storage pro cluster služby ML Services v HDInsight](r-server-storage.md)
