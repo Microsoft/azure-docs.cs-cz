@@ -17,18 +17,6 @@
       href: quickstart-cpp-linux.md
     - name: Začínáme se sadou Speech Devices SDK
       href: speech-devices-sdk-qsg.md
-- name: Přizpůsobení
-  items:
-    - name: Přizpůsobení modelů řeči
-      href: how-to-customize-speech-models.md
-    - name: Přizpůsobení hlasových písem
-      href: how-to-customize-voice-font.md
-    - name: Příprava přepisů
-      href: prepare-transcription.md
-    - name: Použití vlastních zvukových streamů
-      href: how-to-use-audio-input-streams.md
-    - name: Přizpůsobení aktivačního slova pro zařízení (Devices SDK)
-      href: speech-devices-sdk-create-kws.md
 - name: Návody
   items:
     - name: Rozpoznávání řeči
@@ -39,8 +27,22 @@
       href: how-to-translate-speech.md
     - name: Získání sady Speech Devices SDK
       href: get-speech-devices-sdk.md
-    - name: Dávkový přepis (call centra)
+    - name: Dávkový přepis
       href: batch-transcription.md
+- name: Přizpůsobení
+  items:
+    - name: Přizpůsobení akustických modelů
+      href: how-to-customize-acoustic-models.md
+    - name: Přizpůsobení jazykových modelů
+      href: how-to-customize-language-model.md
+    - name: Přizpůsobení hlasových písem (hlas značky robota)
+      href: how-to-customize-voice-font.md
+    - name: Příprava přepisů
+      href: prepare-transcription.md
+    - name: Použití vlastních zvukových streamů
+      href: how-to-use-audio-input-streams.md
+    - name: Přizpůsobení aktivačního slova pro zařízení (Devices SDK)
+      href: speech-devices-sdk-create-kws.md
 - name: Ukázky
   items:
     - name: Stažení ukázek

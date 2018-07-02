@@ -1,11 +1,11 @@
 - name: Dokumentace k počítačovému zpracování obrazu
   href: index.yml
 - name: Přehled
+  expanded: true
   items:
     - name: Co je počítačové zpracování obrazu?
       href: Home.md
-- name: Šablony Rychlý start
-  expanded: true
+- name: Rychlá zprovoznění pro rozhraní API
   items:
     - name: Souhrn
       href: QuickStarts/quickstart-summary.md
@@ -97,6 +97,16 @@
           href: QuickStarts/ruby-thumb.md
         - name: Extrakce tištěného textu
           href: QuickStarts/ruby-print-text.md
+- name: Rychlá zprovoznění pro SDK
+  items:
+    - name: 'C#'
+      items:
+        - name: Analýza obrázku
+          href: quickstarts-sdk/csharp-analyze-sdk.md
+        - name: Vytvoření miniatury
+          href: quickstarts-sdk/csharp-thumb-sdk.md
+        - name: Extrakce rukou psaného textu
+          href: quickstarts-sdk/csharp-hand-text-sdk.md
 - name: Návody
   items:
     - name: První aplikace pro počítačové zpracování obrazu

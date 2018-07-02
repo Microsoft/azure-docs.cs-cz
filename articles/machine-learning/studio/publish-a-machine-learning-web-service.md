@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.openlocfilehash: 86e018a3f8eedecbb60614b0f1226b088ebb18fc
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0f22f22d40410b258b3945d9e78938384ce64767
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837928"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37128389"
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Nasazení webové služby Azure Machine Learning
 Azure Machine Learning můžete vytvářet, testovat a nasazovat řešení prediktivní analýzy.
@@ -48,7 +48,7 @@ Když jsme natrénovali model, jste připravení převést výukový experiment 
 
 Převedením na prediktivní experiment vám trained model připravená k nasazení jako vyhodnocování webovou službu. Uživatelé webové služby může odesílat vstupních dat modelu a modelu pošle zpět výsledky předpovědi. Při převodu na prediktivní experiment vzít v úvahu, jak očekáváte, že váš model používat ostatní uživatelé.
 
-Chcete-li převést výukový experiment prediktivní experiment, klikněte na tlačítko **spustit** dole na plátno experimentu klikněte na **nastavit webové služby**, pak vyberte **prediktivní webové služby**.
+Chcete-li převést výukový experiment prediktivní experiment, klikněte na tlačítko **spustit** dole na plátno experimentu klikněte na **nastavit webové služby**, pak vyberte **webové služby prediktivní**.
 
 ![Převést na vyhodnocování experimentu](./media/publish-a-machine-learning-web-service/figure-1.png)
 
@@ -145,7 +145,7 @@ Chcete-li otestovat spuštění služby Batch, klikněte na tlačítko **testov�
 
 Na **konfigurace** stránky, můžete změnit zobrazovaný název služby a zadejte jeho popis. Název a popis se zobrazí v [portál Azure](https://portal.azure.com/) kde budete spravovat webové služby.
 
-Můžete zadat popis vstupních dat, výstupní data a webové služby parametry tak, že zadáte řetězec pro každý sloupec v části **vstupní schéma**, **výstupního schématu**, a **parametr webové služby**. Tyto popisy se používají v dokumentaci ukázkový kód zadaný pro webovou službu.
+Můžete zadat popis vstupních dat, výstupní data a webové služby parametry tak, že zadáte řetězec pro každý sloupec v části **vstupní schéma**, **výstupního schématu**, a **webové služby Parametr**. Tyto popisy se používají v dokumentaci ukázkový kód zadaný pro webovou službu.
 
 Můžete povolit protokolování diagnostiky všechny chyby, které se zobrazuje při přístupu k webové služby. Další informace najdete v tématu [povolení protokolování pro webové služby Machine Learning](web-services-logging.md).
 
@@ -187,8 +187,8 @@ Jednou z možností pro aktualizaci webové služby je programově přeučit mod
 [Vytvoření experimentu školení]: #create-a-training-experiment
 [Převést na prediktivní experiment]: #convert-the-training-experiment-to-a-predictive-experiment
 [Nasadit jako webovou službu]: #deploy-it-as-a-web-service
-[Nový]: #deploy-the-predictive-experiment-as-a-new-Web-service
-[Classic]: #deploy-the-predictive-experiment-as-a-new-Web-service
+[Nový]: #deploy-the-predictive-experiment-as-a-new-web-service
+[Classic]: #deploy-the-predictive-experiment-as-a-classic-web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal
 [Update]: #update-the-Web-service

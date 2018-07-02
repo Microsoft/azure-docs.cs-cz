@@ -157,6 +157,8 @@
           href: b2clogin.md
         - name: Použití omezení přístupu podle věku
           href: basic-age-gating.md
+        - name: Přímé přihlášení
+          href: direct-signin.md
     - name: Architektura prostředí identit
       items:
         - name: Vlastní zásady

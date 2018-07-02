@@ -61,13 +61,13 @@
           href: backup-mabs-protection-matrix.md
         - name: Instalace nebo upgrade
           items:
-            - name: Příprava úloh Azure Backup Serveru na webu Azure Portal
+            - name: Instalace Azure Backup Serveru
               href: backup-azure-microsoft-azure-backup.md
-            - name: Přidání úložiště do Azure Backup Serveru
+            - name: Přidání úložiště
               href: backup-mabs-add-storage.md
-            - name: Upgrade Azure Backup Serveru na v.2
+            - name: Upgrade na v.2
               href: backup-mabs-upgrade-to-v2.md
-            - name: Bezobslužná instalace Azure Backup Serveru
+            - name: Bezobslužná instalace
               href: backup-mabs-unattended-install.md
         - name: Ochrana úloh
           items:

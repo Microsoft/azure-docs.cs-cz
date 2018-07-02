@@ -118,8 +118,6 @@ items:
                         href: sql-api-java-get-started.md
                       - name: Node.js
                         href: sql-api-nodejs-get-started.md
-                      - name: C++
-                        href: sql-api-cpp-get-started.md
                   - name: Vytvoření webové aplikace
                     items:
                       - name: .NET
@@ -144,10 +142,6 @@ items:
                     href: local-emulator.md
                   - name: Export certifikátů
                     href: local-emulator-export-ssl-certificates.md
-              - name: 6. Integrace s funkcemi
-                items:
-                  - name: Trigger HTTP
-                    href: tutorial-functions-http-trigger.md
           - name: Ukázky
             items:
               - name: Azure CLI
@@ -350,26 +344,14 @@ items:
                 href: gremlin-support.md
           - name: Kurzy
             items:
-              - name: 1. Vytvoření
-                href: tutorial-develop-graph-dotnet.md
-              - name: 2. Dotaz
+              - name: 1. Dotaz
                 href: tutorial-query-graph.md
-              - name: 3. Globální distribuce
-                href: tutorial-global-distribution-graph.md
           - name: Průvodce postupy
             items:
               - name: Dělení grafů
                 href: graph-partitioning.md
               - name: Správa s využitím Průzkumníka služby Azure Storage
                 href: storage-explorer.md
-              - name: Integrace
-                items:
-                  - name: Připojení ke Spark GraphX
-                    href: spark-connector-graph.md
-          - name: Referenční informace
-            items:
-              - name: .NET
-                href: graph-sdk-dotnet.md
           - name: Zdroje a prostředky
             items:
               - name: Správa s využitím Průzkumníka služby Azure Storage

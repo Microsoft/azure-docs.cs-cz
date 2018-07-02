@@ -39,6 +39,8 @@
       href: log-analytics-data-security.md
     - name: Správa přístupu
       href: log-analytics-manage-access.md
+    - name: Přehled agentů
+      href: ../monitoring/monitoring-overview-azure-agents.md
     - name: Monitorování hybridních prostředí
       href: log-analytics-concept-hybrid.md
     - name: Funkce pro poskytovatele služeb

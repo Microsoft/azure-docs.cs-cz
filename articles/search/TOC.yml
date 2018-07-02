@@ -47,6 +47,8 @@
       href: search-semi-structured-data.md
     - name: Přidání synonym v .NET
       href: search-synonyms-tutorial-sdk.md
+    - name: Přidání automatického dokončování v .NET
+      href: search-autocomplete-tutorial.md
     - name: Průvodce portálem
       href: search-get-started-portal.md
 - name: Ukázky

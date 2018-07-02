@@ -11,36 +11,68 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/25/2018
+  ms.date: 06/28/2018
   ms.author: kamrani
-  ms.openlocfilehash: 7d529825733025335f27ce0fe477c117aeaf5c41
-  ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+  ms.openlocfilehash: f3ccbb033354afc01fa840b3129d305f04942ffd
+  ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/08/2018
-  ms.locfileid: "35356990"
+  ms.lasthandoff: 06/29/2018
+  ms.locfileid: "37095566"
 abstract:
   description: Služba Language Understanding (LUIS) umožňuje vaší aplikaci pochopit, co lidé vlastními slovy chtějí. Služba LUIS využívá strojové učení a umožňuje vývojářům sestavovat aplikace, které dokážou přijmout uživatelský vstup v přirozeném jazyce a extrahovat jeho význam.
 sections:
 - title: Zprovoznění během 5 minut
   items:
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="luis-get-started-create-app.md">Vytvoření aplikace pro předem připravenou doménu</a>
-    - html: <a href="luis-quickstart-intents-only.md">Vytvoření aplikace pro vlastní doménu</a>
+  - type: table
+    style: dataMatrix
+    columns:
+    - image:
+        src: media/index/logo_csharp.svg
+    - image:
+        src: media/index/logo_java.svg
+    - image:
+        src: media/index/logo_js.svg
+    - image:
+        src: media/index/logo_nodejs.svg
+    - image:
+        src: media/index/logo_python.svg
+    - image:
+        src: media/index/logo_php.svg
+    - image:
+        src: media/index/logo_ruby.svg
+    rows:
+    - title: Rozhraní API pro koncové body
+      values:
+      - href: luis-get-started-cs-get-intent
+      - href: luis-get-started-java-get-intent
+      - href: luis-get-started-js-get-intent
+      - href: luis-get-started-node-get-intent
+      - href: luis-get-started-python-get-intent
+      - href: luis-get-started-php-get-intent
+      - href: luis-get-started-ruby-get-intent
+    - title: Rozhraní API pro vytváření
+      values:
+      - href: luis-get-started-cs-add-utterance
+      - href: luis-get-started-java-add-utterance
+      - href: luis-get-started-javascript-add-utterance
+      - href: luis-get-started-node-add-utterance
+      - href: luis-get-started-python-add-utterance
+      - href: luis-get-started-php-add-utterance
+      - href: luis-get-started-ruby-add-utterance
 - title: Podrobné kurzy
   items:
   - type: list
     style: ordered
     items:
-    - html: <a href="luis-quickstart-primary-and-secondary-data">Extrakce dat zprávy z promluvy s využitím jednoduché entity</a>
-    - html: <a href="luis-quickstart-intents-regex-entity">Extrakce čísel článků KB z promluvy s využitím entity regulárního výrazu</a>
-    - html: <a href="luis-quickstart-intent-and-list-entity">Extrakce informací o objednávce nápojů z promluvy s využitém entity seznamu</a>
-    - html: <a href="luis-tutorial-pattern">Vylepšení přesnosti předpovědi entit a záměru s využitím vzorů</a>
-    - html: <a href="luis-tutorial-interchangeable-phrase-list">Zvýšení důležitosti slov pomocí seznamu frází</a>
-    - html: <a href="luis-get-started-cs-get-intent">Odeslání promluvy do LUIS a přijetí odpovědi předpovědi koncového bodu – C#</a>
-    - html: <a href="luis-get-started-cs-add-utterance">Přidání ukázkové promluvy do záměru a trénování aplikace LUIS – C#</a>
+    - html: <a href="luis-quickstart-intents-only">Sestavení aplikace pro doménu lidských zdrojů (HR)</a>
+    - html: <a href="luis-tutorial-prebuilt-intents-entities">Přidání předem připravených záměrů a entit</a>
+    - html: <a href="luis-quickstart-intents-regex-entity">Přidání entity regulárního výrazu</a>
+    - html: <a href="luis-quickstart-intent-and-list-entity">Přidání entity seznamu</a>
+    - html: <a href="luis-quickstart-intent-and-hier-entity">Přidání hierarchické entity</a>
+    - html: <a href="luis-quickstart-primary-and-secondary-data">Přidání jednoduché entity a seznamu frází</a>
+    - html: <a href="luis-quickstart-intent-and-key-phrase">Přidání entity klíčové fráze</a>
+    - html: <a href="luis-quickstart-intent-and-sentiment-analysis">Přidání analýzy mínění</a>
 - title: Videa
   items:
   - type: list

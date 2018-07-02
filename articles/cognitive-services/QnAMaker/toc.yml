@@ -1,7 +1,9 @@
-- name: Co je QnA Maker?
-  href: Overview/overview.md
+- name: Dokumentace ke QnA Makeru
+  href: index.yml
 - name: Přehled
   items:
+    - name: Co je QnA Maker?
+      href: Overview/overview.md
     - name: Podporované jazyky
       href: Overview/languages-supported.md
 - name: Šablony Rychlý start

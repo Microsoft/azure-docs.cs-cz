@@ -186,12 +186,6 @@
 ### [Začínáme](manage-apps/plan-an-application-integration.md)
 ### [Kurzy integrace aplikací SaaS](saas-apps/tutorial-list.md)
 
-
-### [Cloud App Discovery](manage-apps/cloud-app-discovery.md)
-#### [Vytvoření sestav snímků](manage-apps/cloud-app-discovery-create-snapshot-reports.md)
-#### [Konfigurace průběžného vytváření sestav](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-#### [Použití vlastního analyzátoru protokolů](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-
 ### [Zřizování a rušení zřízení uživatelů pro aplikace SaaS](active-directory-saas-app-provisioning.md) 
 #### [Kurzy integrace aplikací](saas-apps/tutorial-list.md) 
 #### [Automatizace zřizování pro aplikace s podporou SCIM](manage-apps/use-scim-to-provision-users-and-groups.md) 

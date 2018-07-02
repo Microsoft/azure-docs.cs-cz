@@ -138,9 +138,11 @@
         - name: Testování funkcí
           href: functions-test-a-function.md
         - name: Místní vývoj a ladění
-          href: functions-run-local.md
+          href: functions-develop-local.md
         - name: Vývoj sady Visual Studio
           href: functions-develop-vs.md
+        - name: Vývoj s využitím základních nástrojů
+          href: functions-run-local.md
         - name: Správa připojení
           href: manage-connections.md
         - name: Zpracování chyb

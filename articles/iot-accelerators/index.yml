@@ -1,0 +1,43 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentace k akcelerátorům řešení IoT
+metadata:
+  title: Dokumentace k akcelerátorům řešení IoT
+  meta.description: Get started quickly building your IoT solutions with the IoT solution accelerators. Add new devices and connect existing ones using device SDKs for multiple platforms, including Linux, Windows, and real-time operating systems. Easily scale from just a few sensors to millions of simultaneously connected devices and rely on the global availability of Azure, no matter how large or small your project.
+  services: iot-accelerators
+  author: dominicbetts
+  manager: timlt
+  ms.service: iot-accelerators
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 06/19/2018
+  ms.author: dobett
+  ms.openlocfilehash: ab97a3a2579be289f1d88d926fc2151cb4d2ad4f
+  ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 06/28/2018
+  ms.locfileid: "37088294"
+abstract:
+  description: Začněte rychle s využitím akcelerátorů řešení IoT při sestavování vašich řešení IoT. Přidávejte nová zařízení a připojujte existující prostřednictvím sad SDK zařízení pro několik platforem, včetně Linuxu, Windows a operačních systémů pracujících v reálném čase. Snadno škálujte z několika málo senzorů na miliony současně připojených zařízení a spolehněte se na celosvětovou dostupnost služby Azure. Na velikosti projektu přitom nezáleží.
+sections:
+- title: Zprovoznění během 5 minut
+  items:
+  - type: paragraph
+    text: 'Začínáme s akcelerátory řešení IoT:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/iot-accelerators/quickstart-remote-monitoring-deploy">Nasazení řešení vzdáleného cloudového monitorování</a>
+- title: Podrobné kurzy
+  items:
+  - type: paragraph
+    text: 'Další informace o akcelerátorech řešení IoT a klíčových scénářích, která implementují:'
+  - type: list
+    style: ordered
+    items:
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-monitor">Monitorování zařízení IoT</a>
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-automate">Detekce problémů se zařízeními připojenými k vašemu monitorovacímu řešení</a>
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-manage">Konfigurace a správa zařízení připojených k vašemu monitorovacímu řešení</a>
+    - html: <a href="/azure/iot-accelerators/iot-accelerators-remote-monitoring-maintain">Použití upozornění a oprava potíží se zařízeními</a>

@@ -9,36 +9,8 @@
 - name: Šablony Rychlý start
   expanded: true
   items:
-    - name: Vytvoření modelu aplikace
-      items:
-        - name: Použití předem připravené domény
-          href: luis-get-started-create-app.md
-        - name: Použití vlastní domény
-          href: luis-quickstart-intents-only.md
-- name: Kurzy
-  items:
-    - name: Přidání předem připravených záměrů a entit
-      href: luis-tutorial-prebuilt-intents-entities.md
-    - name: Získání dat z entity
-      items:
-        - name: Jednoduchá entita
-          href: luis-quickstart-primary-and-secondary-data.md
-        - name: Hierarchická entita
-          href: luis-quickstart-intent-and-hier-entity.md
-        - name: Entita regulárního výrazu
-          href: luis-quickstart-intents-regex-entity.md
-        - name: Entita seznamu
-          href: luis-quickstart-intent-and-list-entity.md
-        - name: Entita klíčové fráze
-          href: luis-quickstart-intent-and-key-phrase.md
-        - name: Analýza mínění
-          href: luis-quickstart-intent-and-sentiment-analysis.md
-    - name: Zlepšení předpovědi
-      items:
-        - name: S využitím vzorů
-          href: luis-tutorial-pattern.md
-        - name: S využitím seznamu frází
-          href: luis-tutorial-interchangeable-phrase-list.md
+    - name: Sestavení aplikace předem připravené domény
+      href: luis-get-started-create-app.md
     - name: Použití rozhraní API
       items:
         - name: Získání předpovědi promluvy s využitím dotazu na koncový bod
@@ -73,6 +45,32 @@
               href: luis-get-started-php-add-utterance.md
             - name: Ruby
               href: luis-get-started-ruby-add-utterance.md
+- name: Kurzy
+  items:
+    - name: Sestavování aplikací
+      items:
+        - name: 1. S využitím vlastní domény
+          href: luis-quickstart-intents-only.md
+        - name: 2. Přidání předem připravených záměrů a entit
+          href: luis-tutorial-prebuilt-intents-entities.md
+        - name: 3. Přidání entity regulárního výrazu
+          href: luis-quickstart-intents-regex-entity.md
+        - name: 4. Přidání entity seznamu
+          href: luis-quickstart-intent-and-list-entity.md
+        - name: 5. Přidání hierarchické entity
+          href: luis-quickstart-intent-and-hier-entity.md
+        - name: 6. Přidání jednoduché entity a seznamu frází
+          href: luis-quickstart-primary-and-secondary-data.md
+        - name: 7. Přidání entity klíčové fráze
+          href: luis-quickstart-intent-and-key-phrase.md
+        - name: 8. Přidání analýzy mínění
+          href: luis-quickstart-intent-and-sentiment-analysis.md
+    - name: Zlepšení předpovědi
+      items:
+        - name: S využitím vzorů
+          href: luis-tutorial-pattern.md
+        - name: S využitím seznamu frází
+          href: luis-tutorial-interchangeable-phrase-list.md
 - name: Ukázky
   items:
     - name: Ukázky kódů
