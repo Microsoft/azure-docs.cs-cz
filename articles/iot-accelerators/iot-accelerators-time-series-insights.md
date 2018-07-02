@@ -8,12 +8,12 @@ ms.date: 04/29/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: ed1a55c26ab1ef2aadb4906757205df0ca09d866
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7a0a5d4f1fbba5d7bd2813e8b9c300a37853e06c
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654828"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37111472"
 ---
 # <a name="visualize-remote-monitoring-data-with-time-series-insights"></a>Vizualizaci vzdálené monitorování dat se statistickými časové řady
 
@@ -55,7 +55,7 @@ Azure Time Series Insights je plně spravovaná služba pro analýzy, ukládán�
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Název prostředí | Následující snímek obrazovky používá název **contorosrmtsi**. Po dokončení tohoto kroku, zvolte svůj vlastní jedinečný název. |
-    | Předplatné | V rozevíracím seznamu vyberte předplatné Azure. |
+    | Předplatné | Z rozevíracího seznamu vyberte své předplatné Azure. |
     | Skupina prostředků | **Vytvořit nový**. Se používá název **ContosoRM**. |
     | Umístění | Používáme **východní USA**. Vytvoření prostředí ve stejné oblasti jako vaše řešení vzdáleného monitorování. |
     | Skladová jednotka (SKU) |**S1** |
@@ -87,7 +87,7 @@ Vytvořte nový zdroj událostí k připojení do služby IoT hub. Ujistěte se,
     | Zdroj události název | Následující snímek obrazovky používá název **contosorm-iot-hub**. Po dokončení tohoto kroku, použijte svůj vlastní jedinečný název. |
     | Zdroj | **IoT Hub** |
     | Možnost importu | **Pomocí služby IoT Hub z dostupných předplatných** |
-    | ID předplatného | V rozevíracím seznamu vyberte předplatné Azure. |
+    | ID předplatného | Z rozevíracího seznamu vyberte své předplatné Azure. |
     | Název centra IOT | **contosorma57a6**. Použijte název služby IoT hub z řešení vzdáleného monitorování. |
     | Název zásady centra IOT | **iothubowner** zkontrolujte zásady používané zásadu vlastníka. |
     | Klíč zásad centra IOT | Toto pole se vyplní automaticky. |
@@ -145,4 +145,4 @@ Statistika časové řady explorer je webovou aplikaci, která vám pomůže vyt
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak prozkoumat a dotazování dat v Průzkumníku časové řady statistiky najdete v tématu [Statistika řady čas Azure explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-dashboard.png).
+Informace o tom, jak prozkoumat a dotazování dat v Průzkumníku časové řady statistiky najdete v tématu [Statistika řady čas Azure explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-explorer).

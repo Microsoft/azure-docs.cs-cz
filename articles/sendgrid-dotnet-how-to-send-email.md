@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: dx@sendgrid.com
 ms.openlocfilehash: a5f07d02bfe4032d77a17e5972b88f6530125f28
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 06/29/2018
 ms.locfileid: "27534851"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Postup odesílání e-mailu pomocí sendgrid vám umožňuje pomocí Azure
@@ -34,7 +34,7 @@ Je sendgrid vám umožňuje [cloudový e-mailovou službu] poskytuje spolehlivé
 * Předávání dotazy zákazníků.
 * Zpracování příchozích e-mailů.
 
-Další informace najdete v článku [https://sendgrid.com](https://sendgrid.com) nebo sendgrid vám umožňuje na [knihovna jazyka C#] [ sendgrid-csharp] úložiště GitHub.
+Další informace najdete v článku [ https://sendgrid.com ](https://sendgrid.com) nebo sendgrid vám umožňuje na [knihovna jazyka C#] [ sendgrid-csharp] úložiště GitHub.
 
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu sendgrid vám umožňuje
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -43,7 +43,7 @@ Další informace najdete v článku [https://sendgrid.com](https://sendgrid.com
 [Balíček NuGet sendgrid vám umožňuje](https://www.nuget.org/packages/Sendgrid) Nejsnadnějším způsobem, chcete-li získat sendgrid vám umožňuje rozhraní API a ke konfiguraci vaší aplikace s všechny závislosti. NuGet je součástí sady Microsoft Visual Studio 2015 rozšíření sady Visual Studio a vyšší usnadňuje instalace a aktualizace knihovny a nástroje.
 
 > [!NOTE]
-> Nainstalovat NuGet, pokud používáte verzi sady Visual Studio starší než Visual Studio 2015, najdete [http://www.nuget.org](http://www.nuget.org)a klikněte na **nainstalovat NuGet** tlačítko.
+> Nainstalovat NuGet, pokud používáte verzi sady Visual Studio starší než Visual Studio 2015, najdete [ http://www.nuget.org ](http://www.nuget.org)a klikněte na **nainstalovat NuGet** tlačítko.
 >
 >
 

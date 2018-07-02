@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 04/29/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c41c02acaeffa170d55f3c59f34a4b1ecae1c523
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: c4b3122984cdcb324f7b86e44a62e111d6ca0a29
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712449"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131588"
 ---
 # <a name="using-b2clogincom"></a>Použití b2clogin.com
 
@@ -24,8 +24,8 @@ ms.locfileid: "34712449"
 >
 
 Nyní máte možnost používat službu Azure AD B2C s `<YourTenantName>.b2clogin.com` místo použití `login.microsoftonline.com`.  To má mnoho výhod:
-* Stejné omezení velikosti hlavičky souboru cookie budou už sdílet s dalšími produkty Microsoftu
-* Můžete odebrat všechny odkazy na Microsoft v svoji adresu URL (můžete nahradit `<YourTenantName>.onmicrosoft.com` s vaše ID klienta)
+* Už sdílet stejné omezení velikosti hlavičky souborů cookie s dalšími produkty Microsoftu.
+* Můžete odebrat všechny odkazy na Microsoft v svoji adresu URL (můžete nahradit `<YourTenantName>.onmicrosoft.com` s vaše ID klienta). Například: `https://<tenantname>.b2clogin.com/tfp/<tenantname>/<policyname>/v2.0/.well-known/openid-configuration`.
 
  Aby bylo možné využít výhod b2clogin.com, je nutné nastavit některé z následujících akcí:
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2017
 ms.author: wesmc
-ms.openlocfilehash: f78dd2a28575ad8e3fa30ac9c2bbd29c7d85a78f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6c308205c5adb05f4c7e1668c67adea414020ea2
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640468"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113268"
 ---
 # <a name="azure-redis-cache-faq"></a>Nejčastější dotazy k Azure Redis Cache
 Další odpovědi na časté otázky, vzorce a osvědčené postupy pro Azure Redis Cache.
@@ -217,7 +217,7 @@ Jedním z užitečných funkcí Redis je, že existuje mnoho klientů podporuje 
 <a name="cache-emulator"></a>
 
 ### <a name="is-there-a-local-emulator-for-azure-redis-cache"></a>Je k dispozici místní emulátor pro Azure Redis Cache?
-Neexistuje žádné místní emulátor pro Azure Redis Cache, ale může spouštět MSOpenTech verzi redis-server.exe z [nástroje příkazového řádku Redis](https://github.com/MSOpenTech/redis/releases/) ve vašem místním počítači a připojit se k němu získat na podobném principu do místní mezipaměti emulátoru, jak je znázorněno v následujícím příkladu:
+Neexistuje žádné místní emulátor pro Azure Redis Cache, ale může spouštět MSOpenTech verzi redis-server.exe z [nástroje příkazového řádku Redis](https://github.com/MSOpenTech/redis/releases/) ve vašem místním počítač a připojte se k němu získat na podobném principu do místní mezipaměti emulátoru, jak je znázorněno v následujícím příkladu:
 
     private static Lazy<ConnectionMultiplexer>
           lazyConnection = new Lazy<ConnectionMultiplexer>
@@ -250,7 +250,7 @@ Můžete používat kterýkoli z příkazů uvedený na [Redis příkazy](http:/
 * `redis-cli -h <redis cache name>.redis.cache.windows.net -a <key>`
 
 > [!NOTE]
-> Nástroje příkazového řádku Redis nefungují s portem SSL, ale můžete pomocí nástroje, jako `stunnel` bezpečně připojit nástroje podle pokynů v SSL port [uvedení ASP.NET poskytovatele stavu relace pro Redis verze Preview](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) příspěvku na blogu.
+> Nástroje příkazového řádku Redis nefungují s portem SSL, ale můžete pomocí nástroje, jako `stunnel` bezpečně připojit nástroje podle pokynů v SSL port [uvedení ASP.NET poskytovatele stavu relace pro Redis Preview Verze](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) příspěvku na blogu.
 >
 >
 
@@ -295,7 +295,7 @@ Redis serveru nativně nepodporuje protokol SSL, ale v Azure Redis Cache. Pokud 
 >
 >
 
-Nástroje, jako redis `redis-cli` nefungují s portem SSL, ale můžete pomocí nástroje, jako `stunnel` bezpečně připojit nástroje SSL port podle pokynů v [uvedení ASP.NET poskytovatele stavu relace pro Redis verze Preview](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) příspěvku na blogu.
+Nástroje, jako redis `redis-cli` nefungují s portem SSL, ale můžete pomocí nástroje, jako `stunnel` bezpečně připojit nástroje SSL port podle pokynů v [uvedení ASP.NET poskytovatele stavu relace pro Redis Verze Preview](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) příspěvku na blogu.
 
 Pokyny ke stahování nástroje Redis, najdete v článku [jak můžete spouštět příkazy Redis?](#cache-commands) části.
 
@@ -331,7 +331,7 @@ Pokyny ke stahování nástroje Redis, najdete v článku [jak můžete spoušt�
 * Nespouštějte určité Redis příkazy, které trvat dlouhou dobu pro dokončení bez porozumění vlivu těchto příkazů.
   * Například se nespustí [klíče](http://redis.io/commands/keys) příkazů v produkčním prostředí, protože to může trvat dlouhou dobu vrátit v závislosti na počet klíčů. Redis je server jednovláknové a zpracovává příkazy jeden najednou. Pokud máte další příkazy vydané po klíče, nebudou zpracovány až Redis zpracuje příkaz klíče. [Redis.io lokality](http://redis.io/commands/) obsahuje podrobnosti kolem složitost čas pro každou operaci, kterou podporuje. Klikněte na každý příkaz zobrazíte složitost pro každou operaci.
 * Velikosti klíče - použít malé klíč/hodnota nebo velké klíč/hodnota? Obecně platí závisí na scénáři. Pokud váš scénář vyžaduje větší klíčů, můžete upravit ConnectionTimeout a opakujte hodnot a upravit logika opakovaných pokusů. Z hlediska serveru Redis jsou dodržovány menší hodnoty do mají lepší výkon.
-* Tyto aspekty nemáte znamenat vyšší hodnoty nelze uložit do Redis; je potřeba vědět následující aspekty. Latence bude vyšší. Pokud máte jednu sadu dat, která je větší a ten, který je menší, můžete použít několik instancí ConnectionMultiplexer, každý nakonfigurován s jinou sadu hodnot časového limitu a zkuste to znovu, jak je popsáno v předchozí [co dělat StackExchange.Redis provést konfiguraci možností](#cache-configuration) části.
+* Tyto aspekty nemáte znamenat vyšší hodnoty nelze uložit do Redis; je potřeba vědět následující aspekty. Latence bude vyšší. Pokud máte jednu sadu dat, která je větší a ten, který je menší, můžete použít několik instancí ConnectionMultiplexer, každý nakonfigurován s jinou sadu hodnot časového limitu a zkuste to znovu, jak je popsáno v předchozí [co dělat StackExchange.Redis Možnosti konfigurace provést](#cache-configuration) části.
 
 <a name="cache-benchmarking"></a>
 
@@ -392,7 +392,10 @@ Postup konfigurace tohoto nastavení:
   > Hodnota zadaná v tomto elementu konfigurace je *za jádra* nastavení. Například pokud máte 4jádrový počítač a chcete nastavení minIOThreads na 200 za běhu, byste použili `<processModel minIoThreads="50"/>`.
   >
 
-* Mimo prostředí ASP.NET, použijte [ThreadPool.SetMinThreads(...) ](https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) Rozhraní API.
+* Mimo technologii ASP.NET a soubor global.asax weby Azure, použijte [ThreadPool.SetMinThreads (...)] (https://msdn.microsoft.com/library/system.threading.threadpool.setminthreads.aspx) Rozhraní API.
+
+  > [!NOTE]
+  > Hodnotu zadanou pomocí toto rozhraní API je globální nastavení, které mají vliv na celý domény aplikace. Pokud máte 4jádrový počítač a chcete nastavit minWorkerThreads a minIOThreads na 50 za využití procesoru při běhu, využije ThreadPool.SetMinThreads (200, 200).
 
 <a name="server-gc"></a>
 

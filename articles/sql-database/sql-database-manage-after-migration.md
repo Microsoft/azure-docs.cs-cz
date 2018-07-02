@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: d97e0bf94b911936cacf04f7f26c172b9975c56f
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: ab6a66821905901515258842176ce24e485a54e3
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061640"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37110608"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nové DBA v cloudu – správu databáze v databázi SQL Azure
 
@@ -254,7 +254,7 @@ Databáze SQL používá některé inteligentní technik, které mohla zpracová
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>Jak synchronizaci dat mezi SQL Database a SQL Server?
 Existuje několik způsobů jak toho docílit: 
 - **[Synchronizaci dat](sql-database-sync-data.md)**  – tato funkce umožňuje synchronizaci dat obousměrně mezi více místní databáze systému SQL Server a databáze SQL. K synchronizaci s místní databází systému SQL Server, musíte nainstalovat a nakonfigurovat synchronizaci agenta v místním počítači a otevřete odchozí port TCP 1433.
-- **[Transakce replikace](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  – s transakce replikace můžete synchronizaci dat z místního k databázi SQL Azure s místní se vydavatele a odběratele se databáze SQL Azure. Prozatím se jenom tato instalace je podporována. Další informace o tom, jak migrovat data z místního do Azure SQL s minimálními výpadky najdete v tématu: [použití transakcí replikace](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
+- **[Transakce replikace](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  – s transakce replikace můžete synchronizaci dat z místního k databázi SQL Azure s místní se vydavatele a odběratele se databáze SQL Azure. Prozatím se jenom tato instalace je podporována. Další informace o tom, jak migrovat data z místně do Azure SQL s minimálními výpadky najdete v tématu: [použití transakcí replikace](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>Další postup
 Další informace o [databáze SQL](sql-database-technical-overview.md).

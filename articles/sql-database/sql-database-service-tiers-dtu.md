@@ -2,19 +2,19 @@
 title: Úrovně služeb Azure SQL Database - DTU | Microsoft Docs
 description: Další informace o úrovních služeb pro jeden a zadejte velikost úložiště a úrovně výkonu databáze fondu.
 services: sql-database
-author: CarlRabeler
+author: sachinpMSFT
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 06/28/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: cf17ec616819da94678f2ae4f0f0ca283f99f629
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: d6dc641123e2bf840940f6246245a89fdd792db5
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36750420"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37131833"
 ---
 # <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>Výběr vrstvy služeb na základě DTU, úroveň výkonu a prostředků úložiště 
 
@@ -60,7 +60,7 @@ Volba úrovně služby závisí hlavně na kontinuity podnikových procesů, úl
 ||||||
 
 > [!IMPORTANT]
-> Více než 1 TB místa v úrovni Premium je nyní k dispozici ve všech oblastech s následující výjimkou: Spojené království – sever, – Západ střední USA, UK South2, východní Čína, USDoDCentral, Německo – střed, indiánský motiv verze pro státní správu USDoDEast, USA, nám verze pro státní správu – jih centrální, Německo – severovýchod, Čína Severní, verze pro státní správu USA – východ. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Více než 1 TB místa v úrovni Premium je nyní k dispozici ve všech oblastech s následující výjimkou: – Západ střední USA, východní Čína, střed USDoDCentral, Německo, indiánský motiv verze pro státní správu USDoDEast, USA, vláda USA Iowa, Německo severovýchod, severní Čína. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 ## <a name="next-steps"></a>Další postup
 
