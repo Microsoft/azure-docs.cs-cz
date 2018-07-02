@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: 523b986f66a2e48685e9707903194856f0dcf4a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 06/29/2018
 ms.locfileid: "23874028"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>Používání služby sendgrid vám umožňuje e-mailu z PHP
@@ -35,7 +35,7 @@ Je sendgrid vám umožňuje [cloudový e-mailovou službu] poskytuje spolehlivé
 * Předávání dotazy zákazníků
 * E-mailových oznámení z vaší aplikace
 
-Další informace najdete v tématu [https://sendgrid.com][https://sendgrid.com].
+Další informace najdete v tématu [ https://sendgrid.com ] [ https://sendgrid.com].
 
 ## <a name="create-a-sendgrid-account"></a>Vytvoření účtu sendgrid vám umožňuje
 [!INCLUDE [sendgrid-sign-up](../includes/sendgrid-sign-up.md)]
@@ -47,7 +47,7 @@ Použití sendgrid vám umožňuje v aplikaci Azure PHP vyžaduje žádná speci
 Můžete odeslat e-mailu pomocí protokolu SMTP nebo webového rozhraní API poskytované sendgrid vám umožňuje.
 
 ### <a name="smtp-api"></a>ROZHRANÍ API SMTP
-Pokud chcete poslat e-mailu pomocí rozhraní API SMTP Sendgridu, použijte *poštovní Swift modul*, na základě součástí knihovny pro odesílání e-mailů z aplikací PHP. Si můžete stáhnout *poštovní Swift modul* knihovny z [http://swiftmailer.org/download] [ http://swiftmailer.org/download] v5.3.0 (použijte [autora] k instalaci Swift Poštovní modul). Odesílání e-mailu s knihovnou zahrnuje vytvoření instancí <span class="auto-style2">Swift\_SmtpTransport</span>, <span class="auto-style2">Swift\_poštovní modul</span>, a <span class="auto-style2">Swift\_zpráv </span> třídy, nastavení příslušných vlastností a volání <span class="auto-style2">Swift\_Mailer::send</span> metoda.
+Pokud chcete poslat e-mailu pomocí rozhraní API SMTP Sendgridu, použijte *poštovní Swift modul*, na základě součástí knihovny pro odesílání e-mailů z aplikací PHP. Si můžete stáhnout *poštovní Swift modul* knihovny z [ http://swiftmailer.org/download ] [ http://swiftmailer.org/download] v5.3.0 (použijte [Composer] k instalaci poštovní modul Swift). Odesílání e-mailu s knihovnou zahrnuje vytvoření instancí <span class="auto-style2">Swift\_SmtpTransport</span>, <span class="auto-style2">Swift\_poštovní modul</span>, a <span class="auto-style2">Swift\_zpráv </span> třídy, nastavení příslušných vlastností a volání <span class="auto-style2">Swift\_Mailer::send</span> metoda.
 
     <?php
      include_once "vendor/autoload.php";
@@ -280,8 +280,8 @@ Příklad:
 Sendgrid vám umožňuje poskytuje další e-mailové funkce prostřednictvím 'filtry'. Jsou to nastavení, které mohou být přidány do e-mailovou zprávu povolit specifické funkce, například povolení sledování klikněte na tlačítko, Google analytics, předplatné, sledování a tak dále.
 
 Filtry je použít pro zprávu pomocí vlastnosti filtry. Každý filtr je zadána hodnota hash obsahující nastavení pro konkrétní filtru. Následující příklad povolí filtr zápatí a určuje text zprávy, která se připojí k dolnímu okraji e-mailové zprávy.
-V tomto příkladu použijeme [sendgrid vám umožňuje php knihovny].
-Použití [autora] k instalaci knihovny:
+V tomto příkladu použijeme [Knihovna sendgrid vám umožňuje php].
+Použití [Composer] k instalaci knihovny:
 
     php composer.phar require sendgrid/sendgrid 2.1.1
 
@@ -384,8 +384,8 @@ Příklad:
 Teď, když jste se naučili základy služby sendgrid vám umožňuje e-mailu, postupujte podle následujících odkazech na další informace.
 
 * Dokumentace sendgrid vám umožňuje: <https://sendgrid.com/docs>
-* Knihovna sendgrid vám umožňuje PHP: <https://github.com/sendgrid/sendgrid-php>
-* Speciální nabídka sendgrid vám umožňuje Azure zákazníků: <https://sendgrid.com/windowsazure.html>
+* Knihovna PHP sendgrid vám umožňuje: <https://github.com/sendgrid/sendgrid-php>
+* Sendgrid vám umožňuje speciální nabídka pro zákazníky, Azure: <https://sendgrid.com/windowsazure.html>
 
 Další informace naleznete také [středisku pro vývojáře PHP](/develop/php/).
 
@@ -397,5 +397,5 @@ Další informace naleznete také [středisku pro vývojáře PHP](/develop/php/
 [curl function]: http://php.net/curl
 [cloudový e-mailovou službu]: https://sendgrid.com/email-solutions
 [doručování e-mailem transakční]: https://sendgrid.com/transactional-email
-[sendgrid vám umožňuje php knihovny]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
-[autora]: https://getcomposer.org/download/
+[Knihovna sendgrid vám umožňuje php]: https://github.com/sendgrid/sendgrid-php/tree/v2.1.1
+[Composer]: https://getcomposer.org/download/
