@@ -1,6 +1,6 @@
 ---
-title: Vytvořte transparentní bránu s Azure IoT okraj – Linux | Microsoft Docs
-description: Použití Azure IoT Edge k vytvoření transparentní brány, který dokáže zpracovat informace pro více zařízení
+title: Vytvoření transparentní brány s použitím Azure IoT Edge – Linux | Dokumentace Microsoftu
+description: Použití Azure IoT Edge k vytvoření transparentní brány, která dokáže zpracovávat informace pro různá zařízení
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -8,51 +8,51 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5a78d6fb8ee52f0daba80a77cc8a5e75c2e5248d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 45179f8f1f46be764144bdc22d5bab3548e9401d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035822"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346055"
 ---
-# <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Vytvoření Linux IoT hraniční zařízení, která funguje jako brána transparentní
+# <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>Vytvoření zařízení Linux IoT Edge, který funguje jako transparentní brána
 
-Tento článek obsahuje podrobné pokyny pro používání IoT hraniční zařízení jako brána transparentní. Pro zbývající část tohoto článku termín *IoT hraniční brána* odkazuje na IoT hraniční zařízení používá jako brána transparentní. Podrobnější informace najdete v části [jak IoT hraniční zařízení lze použít jako brána][lnk-edge-as-gateway], což dává koncepční přehled.
+Tento článek obsahuje podrobné pokyny k používání zařízení IoT Edge jako transparentní brána. Pro zbývající část tohoto článku termín *brána IoT Edge* odkazuje na zařízení IoT Edge použít jako transparentní brána. Další informace najdete v tématu [zařízení jak IoT Edge může sloužit jako brána][lnk-edge-as-gateway], která poskytuje koncepční přehled.
 
 >[!NOTE]
 >Aktuálně:
-> * Pokud brána je odpojená ze služby IoT Hub, podřízené zařízení nemůže ověřit pomocí brány.
-> * IoT hraniční zařízení nemůže připojit k IoT hraniční brány.
-> * Podřízené zařízení nelze používat nahrávání souborů.
+> * Pokud brána není připojený k ze služby IoT Hub, se nemůže ověřit podřízené zařízení s bránou.
+> * Zařízení IoT Edge se nemůže připojit k brány IoT Edge.
+> * Příjem dat zařízení nemohou použít nahrávání souboru.
 
-Pevné část o vytváření transparentní brána se připojuje bezpečně bránu pro příjem dat zařízení. Azure IoT Edge umožňuje používat infrastrukturu veřejných KLÍČŮ nastavit zabezpečené připojení TLS mezi tato zařízení. V takovém případě se bychom povolovat podřízené zařízení pro připojení k IoT hraniční zařízení funguje jako brána transparentní.  K zachování přiměřené zabezpečení, by měl podřízené zařízení potvrdit identitu hraniční zařízení vzhledem k tomu, že chcete pouze vaše zařízení připojující se k vaší brány a není potenciálně škodlivého brány.
+Obtížnou část o vytvoření transparentní brány je bezpečné připojení brány pro příjem dat zařízení. Azure IoT Edge umožňuje používat infrastrukturu veřejných KLÍČŮ nastavení zabezpečení připojení protokol TLS mezi tato zařízení. V tomto případě jsme se umožní příjem dat zařízení pro připojení k zařízení IoT Edge sloužit jako transparentní brána.  Zachování přiměřené zabezpečení, by měl podřízené zařízení potvrdit identitu hraniční zařízení, protože pouze chcete, aby vaše zařízení připojující se k vaší brány a potenciálně škodlivých bránu.
 
-Můžete vytvořit všechny infrastrukturu certifikátů, která umožňuje důvěryhodnosti vyžadované pro topologii zařízení brány. V tomto článku předpokládáme nastavení stejný certifikát, který byste použili k povolení [zabezpečení certifikační Autority X.509] [ lnk-iothub-x509] IoT hub, která zahrnuje certifikát certifikační Autority X.509, který je přidružený ke konkrétní Centrum IoT (IoT hub vlastník certifikační Autority ) a řadu certifikáty podepsané této certifikační Autority a certifikační Autoritu pro hraniční zařízení.
+Můžete vytvořit jakékoli infrastrukturu certifikátů, která umožňuje důvěryhodnosti vyžadované pro topologii zařízení brány. V tomto článku se budeme předpokládat stejné nastavení certifikátu, který můžete použít k povolení [zabezpečení certifikační Autority X.509] [ lnk-iothub-x509] ve službě IoT Hub, která zahrnuje přidružený ke konkrétní IoT hub (IoT hub vlastníka certifikační Autority certifikátu webu X.509 ) a řadě certifikáty podepsané této certifikační Autority a certifikační Autority pro hraniční zařízení.
 
 ![Instalační program brány][1]
 
-Brána svůj certifikát hraniční zařízení certifikační Autority podřízené zařízení během inicializace připojení. Podřízené zařízení zkontroluje, ujistěte se, že certifikát hraniční zařízení certifikační Autority je podepsaný certifikát certifikační Autority vlastníka. Tento proces umožňuje podřízené zařízení potvrďte, že brána pochází z důvěryhodného zdroje.
+Brána svůj certifikát hraniční zařízení certifikační Autority podřízené zařízení během inicializace připojení. Příjem dat zařízení zkontroluje, ujistěte se, že hraniční zařízení certifikační Autority certifikát je podepsaný certifikátem pro certifikační Autority vlastníka. Tento proces povolí příjem dat zařízení potvrďte, že brána pochází z důvěryhodného zdroje.
 
-Následující postup vás provede procesem vytváření certifikátů a jejich instalace na správných místech.
+Následující kroky vás provedou procesem vytváření certifikátů a jejich instalace na správných místech.
 
 ## <a name="prerequisites"></a>Požadavky
-1.  Nainstalujte modul runtime Azure IoT Edge na Linux zařízení, které chcete použít jako bránu transparentní.
+1.  Nainstalujte modul runtime Azure IoT Edge na zařízení systému Linux, kterou chcete použít jako transparentní brána.
    * [Linux x64][lnk-install-linux-x64]
    * [Linux ARM32][lnk-install-linux-arm]
 
-2.  Získáte skripty ke generování požadované certifikáty mimo produkční pomocí následujícího příkazu. Tyto skripty vám pomůže vytvořit potřebné certifikáty nastavit bránu transparentní. 
+2.  Získáte skripty ke generování požadované certifikáty li se o neprodukční pomocí následujícího příkazu. Tyto skripty vám pomůžou vytvořit potřebné certifikáty pro nastavení transparentní brány. 
 
    ```cmd
    git clone https://github.com/Azure/azure-iot-sdk-c.git
    ```
 
-3. Tyto skripty používat OpenSSL ke generování požadované certifikáty a OpenSSL vyžaduje některé instalační program.
+3. Tyto skripty používají ke generování požadované certifikáty OpenSSL a OpenSSL vyžaduje některé nastavení.
    
-   1. Přejděte do adresáře, ve kterém chcete pracovat. Od teď budete označujeme to $WRKDIR.  Všechny soubory budou vytvořeny v tomto adresáři.
+   1. Přejděte do adresáře, ve kterém chcete pracovat. Dále budeme odkazovat na tuto jako $WRKDIR.  Vytvoří se všechny soubory v tomto adresáři.
 
       CD $WRKDIR
    
-   1. Zkopírujte soubory konfigurace a skript do pracovního adresáře.
+   1. Zkopírujte soubory config a skript do pracovního adresáře.
 
       ```cmd
       cp azure-iot-sdk-c/tools/CACertificates/*.cnf .
@@ -61,7 +61,7 @@ Následující postup vás provede procesem vytváření certifikátů a jejich 
       ```
 
 ## <a name="certificate-creation"></a>Vytvoření certifikátu
-1.  Vytvořte certifikát certifikační Autority vlastníka a jeden zprostředkující certifikát. Tyto jsou všechny umístěny v `$WRKDIR`.
+1.  Vytvořte certifikát certifikační Autority vlastníka a jeden zprostředkující certifikát. Tyto jsou umístěny v `$WRKDIR`.
 
    ```cmd
    ./certGen.sh create_root_and_intermediate
@@ -75,34 +75,34 @@ Následující postup vás provede procesem vytváření certifikátů a jejich 
       * `$WRKDIR/private/azure-iot-test-only.root.ca.key.pem`
       * `$WRKDIR/private/azure-iot-test-only.intermediate.key.pem`
 
-2.  Vytvořte certifikát hraniční zařízení certifikační Autority a privátního klíče pomocí níže uvedeného příkazu.
+2.  Pomocí následujícího příkazu vytvořte certifikát hraniční zařízení certifikační Autority a privátního klíče.
 
    >[!NOTE]
-   > **NECHCETE** použijte název, který je stejný jako název hostitele DNS pro bránu. To způsobí, že certifikát klienta pro tyto certifikáty k selhání.
+   > **Ne** použít název, který je stejný jako název hostitele DNS této brány. To způsobí, že certifikát klienta pro tyto certifikáty k selhání.
 
       ```cmd
       ./certGen.sh create_edge_device_certificate "<gateway device name>"
       ```
 
-   Výstupy provádění skriptu jsou tyto certifikáty a klíče:
+   Výstupy provádění skriptu jsou následující klíče a certifikáty:
    * `$WRKDIR/certs/new-edge-device.*`
    * `$WRKDIR/private/new-edge-device.key.pem`
 
-## <a name="certificate-chain-creation"></a>Vytváření řetězu certifikátů
-Vytvořte řetěz certifikátů z certifikátu certifikační Autority vlastníka, zprostředkující certifikát a certifikát certifikační Autority hraniční zařízení s následující příkaz. Umístění v řetězu souboru umožňuje snadno ji nainstalovat v hraniční zařízení funguje jako brána transparentní.
+## <a name="certificate-chain-creation"></a>Vytvoření řetězce certifikátu
+Z certifikátu certifikační Autority vlastníka, zprostředkující certifikát a certifikát certifikační Autority hraničních zařízení pomocí následujícího příkazu vytvořte řetěz certifikátů. Umístíte do řetězce souboru umožňuje snadno nainstalovat na hraniční zařízení naprogramujete sloužit jako transparentní brána.
 
    ```cmd
    cat ./certs/new-edge-device.cert.pem ./certs/azure-iot-test-only.intermediate.cert.pem ./certs/azure-iot-test-only.root.ca.cert.pem > ./certs/new-edge-device-full-chain.cert.pem
    ```
 
-## <a name="installation-on-the-gateway"></a>Instalace na bráně
-1.  Zkopírujte následující soubory z $WRKDIR kdekoli na hraniční zařízení, budeme označovat, jako $CERTDIR. Tento krok přeskočte, pokud jste vygenerovali certifikáty na hraniční zařízení.
+## <a name="installation-on-the-gateway"></a>Instalace brány
+1.  Zkopírujte následující soubory z $WRKDIR kdekoli v hraničním zařízení, budeme odkazovat na tento jako $CERTDIR. Tento krok přeskočte, pokud se generuje certifikáty na hraniční zařízení.
 
-   * Certifikát certifikační Autority zařízení-  `$WRKDIR/certs/new-edge-device-full-chain.cert.pem`
-   * Privátního klíče certifikační Autority zařízení- `$WRKDIR/private/new-edge-device.key.pem`
-   * Vlastník certifikační Autority – `$WRKDIR/certs/azure-iot-test-only.root.ca.cert.pem`
+   * Certifikát certifikační Autority zařízení –  `$WRKDIR/certs/new-edge-device-full-chain.cert.pem`
+   * Privátní klíč certifikační Autority zařízení – `$WRKDIR/private/new-edge-device.key.pem`
+   * Vlastník CA- `$WRKDIR/certs/azure-iot-test-only.root.ca.cert.pem`
 
-2.  Nastavte `certificate` vlastnosti v zabezpečení démon konfiguračním yaml souboru do cesty kam umístit soubory certifikát a klíč.
+2.  Nastavte `certificate` vlastností v umístění souborů certifikát a klíč souboru yaml zabezpečení démon konfigurace k cestě.
 
 ```yaml
 certificates:
@@ -111,13 +111,13 @@ certificates:
   trusted_ca_certs: "$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem"
 ```
 
-## <a name="deploy-edgehub-to-the-gateway"></a>Nasazení EdgeHub k bráně.
-Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat moduly do zařízení IoT Edge z cloudu. Tato část obsahuje, můžete vytvořit zdánlivě prázdný nasazení; Hraniční centra je ale automatcially přidat pro všechna nasazení, i v případě, že neexistují žádné z ostatních modulů přítomen. Centrum okraj je jenom modul, který musíte na hraniční zařízení jej fungovat jako brána transparentní, vytváření prázdného nasazení je dost. 
+## <a name="deploy-edgehub-to-the-gateway"></a>Nasazení EdgeHub do brány
+Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat moduly do zařízení IoT Edge z cloudu. Tato část obsahuje, můžete vytvořit zdánlivě prázdný nasazení; Centrum Edge se ale automatcially přidat pro všechna nasazení, i když nejsou žádné další moduly, které jsou k dispozici. Centrum Edge se pouze modul, který je potřeba na hraniční zařízení ho sloužit jako transparentní brána tak vytváření prázdného nasazení je dostatečná. 
 1. Na webu Azure Portal přejděte do svého centra IoT.
-2. Přejděte na **IoT Edge** a vyberte zařízení IoT Edge, kterou chcete použít jako bránu.
+2. Přejděte na **IoT Edge** a vyberte zařízení IoT Edge, který chcete použít jako bránu.
 3. Vyberte **Nastavit moduly**.
 4. Vyberte **Next** (Další).
-5. V **určit trasy** kroku byste měli mít výchozí trasu, která odešle všechny zprávy ze všech modulů do služby IoT Hub. Pokud ne, přidejte následující kód, pak vyberte **Další**.
+5. V kroku **Specify routes** (Zadejte trasy) musíte mít výchozí trasu, která odesílá všechny zprávy ze všech modulů do IoT Hubu. Pokud tomu tak není, přidejte následující kód a vyberte **Next** (Další).
    ```JSON
    {
        "routes": {
@@ -125,27 +125,31 @@ Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat m
        }
    }
    ```
-6. V kroku zkontrolujte šablony, vyberte **odeslání**.
+6. V kroku zkontrolujte šablony, vyberte **odeslat**.
 
 ## <a name="installation-on-the-downstream-device"></a>Instalace na příjem dat zařízení
-Podřízené zařízení může být z jakékoliv aplikace pomocí [zařízení Azure IoT SDK][lnk-devicesdk], tak jak je popsáno jednoduché jeden v [připojení zařízení do služby IoT hub pomocí rozhraní .NET] [ lnk-iothub-getstarted]. Aplikaci pro příjem dat zařízení musí důvěřovat **vlastníka certifikační Autority** certifikát k ověřování TLS připojení k zařízení brány. Tento krok můžete obvykle provést dvěma způsoby: na úrovni operačního systému, nebo (pro určité jazyky) na úrovni aplikace.
+Příjem dat zařízení může být libovolná aplikace pomocí [zařízení Azure IoT SDK][lnk-devicesdk], jako je jednoduché je popsáno v [připojení zařízení k IoT hubu pomocí .NET] [ lnk-iothub-getstarted]. Aplikaci pro příjem dat zařízení musí důvěřovat **vlastníka certifikační Autority** certifikát k ověřování TLS připojení k zařízení brány. Tento krok lze obvykle provést dvěma způsoby: na úrovni operačního systému, nebo (pro některé jazyky) na úrovni aplikace.
 
 ### <a name="os-level"></a>Úroveň operačního systému
-Instalace tohoto certifikátu v úložišti certifikátů operačního systému povolí všechny aplikace na používání vlastník certifikát certifikační Autority jako důvěryhodný certifikát.
+Instalace tohoto certifikátu v úložišti certifikátů operačního systému vám umožní všechny aplikace, aby používaly vlastníka certifikát certifikační Autority jako důvěryhodný certifikát.
 
-* Ubuntu – tady je příklad toho, jak nainstalovat certifikát certifikační Autority na hostiteli Ubuntu.
+* Ubuntu – tady je příklad toho, jak nainstalovat certifikát certifikační Autority na hostiteli se systémem Ubuntu.
 
    ```cmd
    sudo cp $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem  /usr/local/share/ca-certificates/azure-iot-test-only.root.ca.cert.pem.crt
    sudo update-ca-certificates
    ```
  
-    Zobrazí se zpráva, "aktualizace certifikáty v /etc/ssl/certs... 1 přidávat, odebírat 0; Hotovo."
+    Zobrazí se zpráva, že "aktualizace certifikáty v /etc/ssl/certs... 1 přidání, odebrání 0; Hotovo."
 
-* Windows – [to](https://msdn.microsoft.com/en-us/library/cc750534.aspx) článku podrobnosti o tom, jak to udělat na zařízení se systémem Windows pomocí pomocí Průvodce importem certifikátu. 
+* Windows – tady je příklad toho, jak nainstalovat certifikát certifikační Autority na hostiteli Windows.
+  * V nabídce start se zadejte v "Spravovat certifikáty počítače". To by měl vyvolat nástroj, který volá `certlm`.
+  * Přejděte na certifikátů místního počítače--> důvěryhodných kořenových certifikátů--> certifikáty--> vpravo klikněte na tlačítko--> všechny úlohy--> Import ke spuštění Průvodce importem certifikátu.
+  * Postupujte podle pokynů a importovat $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem soubor certifikátu.
+  * Po dokončení, měli byste vidět zprávu "Úspěšně naimportoval".
 
 ### <a name="application-level"></a>Úrovni aplikace
-Pro aplikace .NET můžete přidat následující fragment kódu důvěřovat certifikátu ve formátu PEM. Inicializace proměnné `certPath` s `$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem`.
+Pro aplikace .NET můžete přidat následující fragment kódu důvěřovat certifikátu ve formátu PEM. Inicializovat proměnnou `certPath` s `$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem`.
 
    ```
    using System.Security.Cryptography.X509Certificates;
@@ -158,29 +162,29 @@ Pro aplikace .NET můžete přidat následující fragment kódu důvěřovat ce
    store.Close();
    ```
 
-## <a name="connect-the-downstream-device-to-the-gateway"></a>Připojení k bráně podřízené zařízení
-Je třeba inicializovat sady sdk zařízení IoT Hub s připojovacím řetězcem odkazující na název hostitele zařízení brány. To se provádí přidáním `GatewayHostName` vlastnost, která má připojovací řetězec zařízení. Pro instanci zde je ukázka zařízení připojovací řetězec pro zařízení, na kterou jsme připojí `GatewayHostName` vlastnost:
+## <a name="connect-the-downstream-device-to-the-gateway"></a>Připojení zařízení příjem dat k bráně
+Sady sdk služby IoT Hub device musíte inicializovat připojovací řetězec odkazující na název hostitele zařízení brány. Uděláte to pomocí připojení `GatewayHostName` vlastnost připojovací řetězec zařízení. Například tady je ukázka zařízení připojovací řetězec pro zařízení, do které budeme připojí `GatewayHostName` vlastnost:
 
    ```
    HostName=yourHub.azure-devices.net;DeviceId=yourDevice;SharedAccessKey=XXXYYYZZZ=;GatewayHostName=mygateway.contoso.com
    ```
 
    >[!NOTE]
-   >Toto je ukázkový příkaz, které testy, které všechno, co byl nastavit správně. Můžete sohuld zpráva "ověřit OK".
+   >Toto je ukázkový příkaz, jaké testy, které všechno, co bylo nastavit správně. Můžete sohuld zpráva s oznámením "ověřit OK".
    >
    >OpenSSL s_client-connect - CAfile mygateway.contoso.com:8883 $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem - showcerts
 
-## <a name="routing-messages-from-downstream-devices"></a>Směrování zprávy z podřízené zařízení
-Modul runtime IoT Edge může směrovat zpráv odeslaných z podřízené zařízení stejně jako zprávy odeslané moduly. To umožňuje provádět analýzy v modulu spuštěné na bráně před odesláním libovolných dat do cloudu. Níže trasy se použije k odesílání zpráv z podřízené zařízení s názvem `sensor` název modulu `ai_insights`.
+## <a name="routing-messages-from-downstream-devices"></a>Směrování zpráv ze zařízení příjem dat
+Modul runtime IoT Edge může směrovat zprávy odeslané ze zařízení příjem dat, stejně jako zprávy odeslané moduly. To umožňuje provádět analýzy v modulu na bráně spuštěna před odesláním všechna data do cloudu. Níže trasy se použije pro odesílání zpráv ze zařízení příjem dat s názvem `sensor` název modulu `ai_insights`.
 
    ```json
    { "routes":{ "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")", "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream" } }
    ```
 
-Znalostní báze [modulu složení] [lnk--složení modulu] Další informace o směrování zpráv.
+Znalostní báze [modulu složení] [lnk-module složení] podrobné informace o směrování zpráv.
 
 ## <a name="next-steps"></a>Další postup
-[Pochopení požadavků a nástrojů pro vývoj modulů IoT Edge][lnk-module-dev].
+[Pochopení požadavků a nástroje pro vývoj modulů IoT Edge][lnk-module-dev].
 
 <!-- Images -->
 [1]: ./media/how-to-create-transparent-gateway/gateway-setup.png

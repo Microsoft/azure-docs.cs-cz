@@ -1,6 +1,6 @@
 ---
-title: Host.JSON odkazu pro Azure Functions
-description: Referenční dokumentace pro soubor host.json Azure Functions.
+title: referenční materiály k Host.JSON pro Azure Functions
+description: Referenční dokumentace k host.json souboru Azure Functions.
 services: functions
 author: tdykstra
 manager: cfowler
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: d1dec6f2da4f6fcbeb38585fc6a1cfcd9d622c4a
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: d89170f796355b734facc5e08ad1815a2b865d49
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764583"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342088"
 ---
-# <a name="hostjson-reference-for-azure-functions"></a>Host.JSON odkazu pro Azure Functions
+# <a name="hostjson-reference-for-azure-functions"></a>referenční materiály k Host.JSON pro Azure Functions
 
-*Host.json* soubor metadat obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce pro funkce aplikace. Tento článek obsahuje seznam nastavení, které jsou k dispozici. Schéma JSON je v http://json.schemastore.org/host.
+*Host.json* soubor metadat obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce aplikace function App. Tento článek obsahuje seznam nastavení, které jsou k dispozici. Schéma JSON je na http://json.schemastore.org/host.
 
-Existují další možnosti globální konfigurace v [nastavení aplikace](functions-app-settings.md) a v [local.settings.json](functions-run-local.md#local-settings-file) souboru.
+Existují další možnosti globální konfiguraci v [nastavení aplikace](functions-app-settings.md) a [local.settings.json](functions-run-local.md#local-settings-file) souboru.
 
 ## <a name="sample-hostjson-file"></a>Ukázkový soubor host.json
 
-Následující ukázka *host.json* soubor obsahuje všechny možné možností.
+Následující ukázka *host.json* soubor obsahuje všechny zadané možnosti.
 
 ```json
 {
@@ -101,11 +101,11 @@ Následující ukázka *host.json* soubor obsahuje všechny možné možností.
 }
 ```
 
-Následující části tohoto článku popisují každou vlastnost nejvyšší úrovně. Všechny jsou volitelné, pokud není uvedeno jinak.
+Následující části tohoto článku popisují jednotlivé vlastnosti nejvyšší úrovně. Všechny jsou volitelné, pokud není uvedeno jinak.
 
 ## <a name="aggregator"></a>Agregátor
 
-Určuje, kolik volání funkce agregovat při [výpočet metriky pro službu Application Insights](functions-monitoring.md#configure-the-aggregator). 
+Určuje, kolik obsahující záznamy volání funkcí jsou při agregované [výpočet metrik pro službu Application Insights](functions-monitoring.md#configure-the-aggregator). 
 
 ```json
 {
@@ -119,13 +119,13 @@ Určuje, kolik volání funkce agregovat při [výpočet metriky pro službu App
 |Vlastnost |Výchozí  | Popis |
 |---------|---------|---------| 
 |batchSize|1000|Maximální počet požadavků, které k agregaci.| 
-|flushTimeout|00:00:30|Maximální doba období k agregaci.| 
+|flushTimeout|00:00:30|Maximální doba období agregace.| 
 
-Volání funkce jsou agregovat při první dva omezuje se dosáhne.
+Volání funkce se agregují při první z nich omezuje se dosáhne.
 
 ## <a name="applicationinsights"></a>applicationInsights
 
-Ovládací prvky [vzorkování funkce ve službě Application Insights](functions-monitoring.md#configure-sampling).
+Ovládací prvky [vzorkování funkcí ve službě Application Insights](functions-monitoring.md#configure-sampling).
 
 ```json
 {
@@ -140,12 +140,12 @@ Ovládací prvky [vzorkování funkce ve službě Application Insights](function
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|Hodnotu IsEnabled|true (pravda)|Povolí nebo zakáže vzorkování.| 
-|maxTelemetryItemsPerSecond|5|Prahová hodnota, na které vzorkování začne.| 
+|hodnotu isEnabled|true (pravda)|Povolí nebo zakáže vzorkování.| 
+|maxTelemetryItemsPerSecond|5|Prahová hodnota, na které vzorkování začíná.| 
 
 ## <a name="durabletask"></a>durableTask
 
-Nastavení konfigurace pro [trvanlivý funkce](durable-functions-overview.md).
+Nastavení konfigurace pro [Durable Functions](durable-functions-overview.md).
 
 ```json
 {
@@ -159,39 +159,45 @@ Nastavení konfigurace pro [trvanlivý funkce](durable-functions-overview.md).
     "MaxConcurrentOrchestratorFunctions": 10,
     "AzureStorageConnectionStringName": "AzureWebJobsStorage",
     "TraceInputsAndOutputs": false,
+    "LogReplayEvents": false,
     "EventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
-    "EventGridKeySettingName":  "EventGridKey"
+    "EventGridKeySettingName":  "EventGridKey",
+    "EventGridPublishRetryCount": 3,
+    "EventGridPublishRetryInterval": "00:00:30"
   }
 }
 ```
 
-Úloha rozbočovače názvy musí začínat písmenem a obsahovat jenom písmena a čísla. Pokud není zadáno, je výchozí název rozbočovače úlohy pro funkce aplikace **DurableFunctionsHub**. Další informace najdete v tématu [úloh centra](durable-functions-task-hubs.md).
+Centrum názvy úloh musí začínat písmenem a obsahovat jenom písmena a číslice. Pokud není zadán, výchozí název centra úloh aplikace function App je **DurableFunctionsHub**. Další informace najdete v tématu [úkolů rozbočovače](durable-functions-task-hubs.md).
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------|
-|hubName|DurableFunctionsHub|Alternativní [úloh centra](durable-functions-task-hubs.md) názvy lze izolovat více trvanlivý funkce aplikace od sebe navzájem, i když používají stejný back-endu úložiště.|
-|ControlQueueBatchSize|32|Počet zpráv načítat z fronty řízení najednou.|
-|PartitionCount |4|Počet oddílů pro frontu ovládacího prvku. Může být kladné celé číslo mezi 1 a 16.|
-|ControlQueueVisibilityTimeout |5 minut|Časový limit viditelnosti vyjmutou řízení fronty zpráv.|
-|WorkItemQueueVisibilityTimeout |5 minut|Časový limit viditelnosti vyjmutou pracovní položka fronty zpráv.|
-|MaxConcurrentActivityFunctions |10 x počet procesorů do aktuálního počítače|Maximální počet funkcí aktivity, které mohou být zpracovány současně na jednom hostiteli instanci.|
-|MaxConcurrentOrchestratorFunctions |10 x počet procesorů do aktuálního počítače|Maximální počet funkcí aktivity, které mohou být zpracovány současně na jednom hostiteli instanci.|
-|AzureStorageConnectionStringName |AzureWebJobsStorage|Název nastavení aplikace, který má připojovací řetězec úložiště Azure používat ke správě základní prostředky Azure Storage.|
-|TraceInputsAndOutputs |false (nepravda)|Hodnota, která určuje, zda chcete trasovat vstupy a výstupy volání funkce. Výchozí chování při trasování funkce zpracování událostí je zahrnují počet bajtů v serializovaných vstupy a výstupy pro volání funkcí. To poskytuje minimální informace o jak vstupy a výstupy vypadat bez nadměrnému nárůstu velikosti protokolů nebo neúmyslně odhalení citlivých informací do protokolů. Nastavení této vlastnosti na hodnotu true způsobí, že výchozí funkce protokolování do protokolu celý obsah funkce vstupy a výstupy.|
-|EventGridTopicEndpoint ||Adresa URL koncového bodu Azure událostí mřížky vlastní tématu. Pokud je tato vlastnost nastavena, orchestration životní cyklus oznámení události publikují k tomuto koncovému bodu.|
-|EventGridKeySettingName ||Název nastavení aplikace, který obsahuje klíč používaný pro ověřování s vlastní téma Azure událostí mřížky v `EventGridTopicEndpoint`.
+|HubName|DurableFunctionsHub|Alternativní [centra úloh](durable-functions-task-hubs.md) názvy můžete použít k izolaci více aplikací Durable Functions od sebe navzájem, i v případě, že používají stejný back-endu úložiště.|
+|ControlQueueBatchSize|32|Počet zpráv o přijetí změn z fronty ovládací prvek v čase.|
+|PartitionCount |4|Počet oddílů pro frontu ovládacího prvku. Může být kladné celé číslo od 1 do 16.|
+|ControlQueueVisibilityTimeout |5 minut|Časový limit viditelnosti ovládacího prvku vyřazených z fronty zpráv.|
+|WorkItemQueueVisibilityTimeout |5 minut|Časový limit viditelnosti zpráv vyřazených z fronty pracovní položku.|
+|MaxConcurrentActivityFunctions |10 × počet procesorů na aktuálním počítači|Maximální počet funkce aktivity, které je možné zpracovávat současně na jednom hostiteli instance.|
+|MaxConcurrentOrchestratorFunctions |10 × počet procesorů na aktuálním počítači|Maximální počet funkce aktivity, které je možné zpracovávat současně na jednom hostiteli instance.|
+|AzureStorageConnectionStringName |AzureWebJobsStorage|Název nastavení aplikace, které obsahuje připojovací řetězec služby Azure Storage používá ke správě základní prostředky služby Azure Storage.|
+|TraceInputsAndOutputs |false (nepravda)|Hodnota označující, zda se pro sledování vstupů a výstupů volání funkce. Výchozí chování při trasování událostí spuštění funkce se zahrnou počet bajtů v serializovaném vstupy a výstupy pro volání funkce. To poskytuje minimální informace o vstupy a výstupy vypadat bez nadměrnému nárůstu velikosti protokolů nebo neúmyslně odhalují citlivé informace do protokolů. Nastavení této vlastnosti na hodnotu true způsobí, že je výchozí funkce protokolování do protokolu celý obsah vstupy a výstupy funkcí.|
+|LogReplayEvents|false (nepravda)|Hodnota určující, jestli se má zapsat události opakování Orchestrace do Application Insights.|
+|EventGridTopicEndpoint ||Adresa URL koncového bodu služby Azure Event Grid vlastního tématu. Pokud je tato vlastnost nastavena, Orchestrace životní cyklus oznámení události se publikují do tohoto koncového bodu. Tato vlastnost podporuje překlad nastavení aplikace.|
+|EventGridKeySettingName ||Název nastavení aplikace, který obsahuje klíč používaný k ověřování pomocí Azure Event Grid vlastního tématu v `EventGridTopicEndpoint`.|
+|EventGridPublishRetryCount|0|Počet pokusů o zopakování Pokud publikování do tématu Event gridu se nezdaří.|
+|EventGridPublishRetryInterval|5 minut|Interval opakování v publikování služby Event Grid *hh: mm:* formátu.|
 
-Mnoho z těchto je pro optimalizaci výkonu. Další informace najdete v tématu [výkonu a možností škálování](durable-functions-perf-and-scale.md).
+Mnoho z nich je pro optimalizaci výkonu. Další informace najdete v tématu [výkon a škálování](durable-functions-perf-and-scale.md).
 
-## <a name="eventhub"></a>Centrum EventHub
+## <a name="eventhub"></a>centra událostí
 
-Nastavení konfigurace pro [centra událostí triggerů a vazeb](functions-bindings-event-hubs.md).
+Nastavení konfigurace pro [centra Event aktivačními událostmi a vazbami](functions-bindings-event-hubs.md).
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
 ## <a name="functions"></a>functions
 
-Seznam funkcí, které budou spouštět úlohy hostitele. Prázdné pole znamená spustit všechny funkce. Určený k použití pouze tehdy, když [spuštěn místně](functions-run-local.md). V aplikacích pro funkce, použijte *function.json* `disabled` vlastnost spíše než tuto vlastnost v *host.json*.
+Seznam funkcí, které se spustí úloha hostitele. Prázdné pole znamená, že spuštění všech funkcí. Určený k použití pouze tehdy, když [spuštěná místně](functions-run-local.md). V aplikace function App, použijte *function.json* `disabled` vlastnosti namísto této vlastnosti v *host.json*.
 
 ```json
 {
@@ -201,7 +207,7 @@ Seznam funkcí, které budou spouštět úlohy hostitele. Prázdné pole znamen�
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Určuje dobu trvání časového limitu pro všechny funkce. V rámci plánů spotřebu platný rozsah je od 1 sekundy do 10 minut a výchozí hodnota je 5 minut. V plánech služby App Service není omezen a výchozí hodnota je null, což značí bez časového limitu.
+Určuje dobu trvání časového limitu pro všechny funkce. V plány Consumption platný rozsah je od 1 sekundy do 10 minut a výchozí hodnota je 5 minut. V plánech služby App Service neexistuje žádné omezení výchozí hodnota je null, což znamená žádný časový limit
 
 ```json
 {
@@ -211,7 +217,7 @@ Určuje dobu trvání časového limitu pro všechny funkce. V rámci plánů sp
 
 ## <a name="healthmonitor"></a>healthMonitor
 
-Nastavení konfigurace pro [monitorování stavu hostitele](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
+Nastavení konfigurace pro [monitorování stavu hostitelů](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor).
 
 ```
 {
@@ -227,11 +233,11 @@ Nastavení konfigurace pro [monitorování stavu hostitele](https://github.com/A
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|povoleno|true (pravda)|Jestli je funkce zapnutá. | 
-|healthCheckInterval|10 sekund|Kontroluje, časový interval mezi stavy pravidelných pozadí. | 
-|healthCheckWindow|2 minuty|Posuvné okno čas používá ve spojení s `healthCheckThreshold` nastavení.| 
-|healthCheckThreshold|6|Maximální počet kontrolou stavu může selhat, než je zahájeno recyklaci hostitele.| 
-|counterThreshold|0,80|Prahová hodnota, na které čítač výkonu, který se bude zvažovat není v pořádku.| 
+|povoleno|true (pravda)|Určuje, zda je povolena funkce. | 
+|healthCheckInterval|10 sekund|Časový interval mezi stavu na pozadí pravidelně kontroluje. | 
+|healthCheckWindow|2 minut|Použít ve spojení s klouzavého časového období `healthCheckThreshold` nastavení.| 
+|healthCheckThreshold|6|Maximální počet pokusů o kontrolu stavu může selhat, předtím, než je zahájeno recyklace hostitele.| 
+|counterThreshold|0,80|Prahová hodnota, na které čítače výkonu se budou považovat za není v pořádku.| 
 
 ## <a name="http"></a>http
 
@@ -241,9 +247,9 @@ Nastavení konfigurace pro [http triggerů a vazeb](functions-bindings-http-webh
 
 ## <a name="id"></a>id
 
-Jedinečné ID pro úlohu hostitele. Mohou být malé písmeno GUID s pomlčkami odebrány. Při místním spuštění vyžaduje. Při spuštění v Azure Functions, je-li automaticky vygeneruje ID `id` je vynechán.
+Jedinečné ID pro úlohu hostitele. Mohou být malé písmeno identifikátor GUID s pomlčkami odebrány. Vyžadováno při místním spuštění. Při spuštění ve službě Azure Functions, je Pokud automaticky vygenerované ID `id` je vynechán.
 
-Pokud účet úložiště můžete sdílet mezi více aplikacemi funkce, ujistěte se, že každá funkce aplikace má jiné `id`. Můžete vynechat `id` vlastnost nebo ručně nastavit každé funkce aplikace `id` na jinou hodnotu. Aktivační událost časovače používá úložiště zámek k zajištění, že bude pouze jedna instance časovače při aplikaci funkce horizontálně navýší kapacitu na více instancí. Pokud dvě funkce aplikace sdílet stejný `id` a každá používá aktivaci časovačem, bude spuštěna pouze jedna časovače.
+Pokud sdílíte mezi více aplikací funkcí účet úložiště, ujistěte se, že každá aplikace function app má jinou `id`. Můžete vynechat `id` vlastnost nebo ručně nastavit vaší aplikace funkcí `id` na jinou hodnotu. Trigger časovače používá úložiště zámek k zajištění, že bude existovat pouze jedna instance časovač při aplikaci function app horizontálně navýší kapacitu na několik instancí. Pokud dvě aplikace function App sdílet stejný `id` a každý používá aktivaci časovačem, bude spuštěna pouze jedna časovače.
 
 
 ```json
@@ -252,9 +258,9 @@ Pokud účet úložiště můžete sdílet mezi více aplikacemi funkce, ujistě
 }
 ```
 
-## <a name="logger"></a>Protokoly
+## <a name="logger"></a>Protokolovací nástroj
 
-Ovládací prvky filtrování podle zapisují protokoly [objekt objektu ILogger](functions-monitoring.md#write-logs-in-c-functions) nebo [context.log](functions-monitoring.md#write-logs-in-javascript-functions).
+Ovládací prvky filtrování protokolů autorem [objektu ILogger](functions-monitoring.md#write-logs-in-c-functions) nebo [context.log](functions-monitoring.md#write-logs-in-javascript-functions).
 
 ```json
 {
@@ -274,24 +280,24 @@ Ovládací prvky filtrování podle zapisují protokoly [objekt objektu ILogger]
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
 |categoryFilter|neuvedeno|Určuje filtrování podle kategorie| 
-|defaultLevel|Informace|Pro všechny kategorie, nebyly zadány v `categoryLevels` pole, odeslání protokolů na této úrovni a vyšší Application Insights.| 
-|categoryLevels|neuvedeno|Pole kategorií, které určuje úroveň minimální protokolu odeslat do služby Application Insights pro každou kategorii. Kategorie zde zadané řídí všechny kategorie, které začínají stejnou hodnotu a mají přednost před delší hodnoty. V předchozím příkladu *host.json* souboru, všechny kategorie, které začínají "Host.Aggregator" protokolu v `Information` úroveň. Přihlaste se na všech ostatních kategorií, které začínají "Hostitel", jako je například "Host.Executor" `Error` úroveň.| 
+|defaultLevel|Informace|Pro všechny kategorie, není zadáno v `categoryLevels` pole, odeslat protokoly na této úrovni a novější do služby Application Insights.| 
+|categoryLevels|neuvedeno|Pole kategorií, které určuje úroveň protokolu minimální k odeslání do Application Insights pro každou kategorii. Kategorie tady zadané, řídí všechny kategorie, které začínají stejnou hodnotu a delší hodnoty přednost. V předchozím příkladu *host.json* soubor, všechny kategorie, které začínají řetězcem "Host.Aggregator" protokolu v `Information` úroveň. Všechny kategorie, které začínají řetězcem "Hostitel", jako je například "Host.Executor" protokolu `Error` úroveň.| 
 
-## <a name="queues"></a>Fronty
+## <a name="queues"></a>fronty
 
-Nastavení konfigurace pro [úložiště fronty triggerů a vazeb](functions-bindings-storage-queue.md).
+Nastavení konfigurace pro [úložiště fronty aktivačními událostmi a vazbami](functions-bindings-storage-queue.md).
 
 [!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
 
-## <a name="servicebus"></a>Sběrnice
+## <a name="servicebus"></a>služby Service Bus
 
-Nastavení konfigurace pro [Service Bus triggerů a vazeb](functions-bindings-service-bus.md).
+Nastavení konfigurace pro [aktivační události služby Service Bus a vazby](functions-bindings-service-bus.md).
 
 [!INCLUDE [functions-host-json-service-bus](../../includes/functions-host-json-service-bus.md)]
 
 ## <a name="singleton"></a>singleton
 
-Nastavení konfigurace pro jednotlivý prvek uzamčení chování. Další informace najdete v tématu [potíže Githubu o podpoře singleton](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
+Nastavení konfigurace pro chování zámku typu Singleton. Další informace najdete v tématu [problém Githubu o podpoře typu singleton](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 
 ```json
 {
@@ -307,15 +313,15 @@ Nastavení konfigurace pro jednotlivý prvek uzamčení chování. Další infor
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|lockPeriod|00:00:15|Dobu, po kterou jsou funkce úrovni zámky prováděné na. Zámky automatického obnovení.| 
-|listenerLockPeriod|00:01:00|Období, které se provádějí zámky naslouchací proces pro.| 
-|listenerLockRecoveryPollingInterval|00:01:00|Časový interval pro naslouchací proces obnovení zámku použit v případě, že při spuštění se nepodařilo získat zámek naslouchací proces.| 
-|lockAcquisitionTimeout|00:01:00|Maximální množství času modulu runtime se pokusí získat zámek.| 
+|lockPeriod|00:00:15|Dobu, po kterou úroveň zámků funkce pořízeny pro. Zámky automatického obnovení.| 
+|listenerLockPeriod|00:01:00|Období, ve kterém zamkne naslouchací proces pořízeny pro.| 
+|listenerLockRecoveryPollingInterval|00:01:00|Časový interval použít pro obnovení zámku naslouchací proces, pokud při spuštění nebylo možné získat zámek naslouchací proces.| 
+|lockAcquisitionTimeout|00:01:00|Maximální množství času se modul runtime pokusí se získat zámek.| 
 |lockAcquisitionPollingInterval|neuvedeno|Interval mezi pokusy o získání zámku.| 
 
 ## <a name="tracing"></a>trasování
 
-Nastavení konfigurace pro protokoly, které vytvoříte pomocí `TraceWriter` objektu. V tématu [C# protokolování](functions-reference-csharp.md#logging) a [Node.js protokolování](functions-reference-node.md#writing-trace-output-to-the-console). 
+Nastavení konfigurace, které vytvoříte pomocí `TraceWriter` objektu. Zobrazit [jazyka C# protokolování](functions-reference-csharp.md#logging) a [Node.js protokolování](functions-reference-node.md#writing-trace-output-to-the-console). 
 
 ```json
 {
@@ -328,12 +334,12 @@ Nastavení konfigurace pro protokoly, které vytvoříte pomocí `TraceWriter` o
 
 |Vlastnost  |Výchozí | Popis |
 |---------|---------|---------| 
-|consoleLevel|Informace o|Úroveň trasování pro protokolování konzoly. Možnosti jsou: `off`, `error`, `warning`, `info`, a `verbose`.|
+|consoleLevel|informace|Úroveň trasování pro protokolování konzoly. Možnosti jsou: `off`, `error`, `warning`, `info`, a `verbose`.|
 |fileLoggingMode|debugOnly|Úroveň trasování pro protokolování do souboru. Možnosti jsou `never`, `always`, `debugOnly`.| 
 
 ## <a name="watchdirectories"></a>watchDirectories
 
-Sadu [sdíleného adresáře kód](functions-reference-csharp.md#watched-directories) , je nutné sledovat změny.  Zajišťuje, že při změně kódu v tyto adresáře změny jsou zachyceny pomocí funkcí.
+Sada [sdílených adresářů kód](functions-reference-csharp.md#watched-directories) , který je potřeba sledovat změny.  Zajišťuje, že při změně kódu v těchto adresářích, změny se prodlouží vašich funkcí.
 
 ```json
 {
@@ -347,4 +353,4 @@ Sadu [sdíleného adresáře kód](functions-reference-csharp.md#watched-directo
 > [Zjistěte, jak aktualizovat soubor host.json](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
-> [Najdete v části globální nastavení v seznamu proměnných prostředí](functions-app-settings.md)
+> [Podívejte se globální nastavení proměnné prostředí](functions-app-settings.md)

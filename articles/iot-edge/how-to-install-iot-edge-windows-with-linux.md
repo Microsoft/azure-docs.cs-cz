@@ -1,6 +1,6 @@
 ---
-title: Jak nainstalovat Azure IoT Edge v systému Windows s kontejnery Linux | Microsoft Docs
-description: Azure IoT Edge pokyny k instalaci v systému Windows s kontejnery Linux
+title: Jak nainstalovat Azure IoT Edge ve Windows s kontejnery Linuxu | Dokumentace Microsoftu
+description: Azure IoT Edge pokyny k instalaci na Windows s kontejnery Linuxu
 author: kgremban
 manager: timlt
 ms.reviewer: veyalla
@@ -9,41 +9,41 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 039ca304633eafa8211daffe1a4241b326eda6fb
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: a5b7845522769393826057c4bc92bda56e557258
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114097"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346143"
 ---
-# <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Instalace modulu runtime Azure IoT Edge v systému Windows pro použití s kontejnery Linux
+# <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Nainstalovat modul runtime Azure IoT Edge ve Windows pro použití s kontejnery Linuxu
 
-Modul runtime Azure IoT okraj je nasadit na všechna zařízení IoT okraj. Má tři součásti. **IoT Edge zabezpečení démon** poskytuje a udržuje standardy zabezpečení na hraniční zařízení. Démon se spustí na každém spuštění a bootstraps zařízení spuštěním agenta IoT okraj. **IoT Edge agenta** usnadňuje nasazení a monitorování modulů na hraniční zařízení, včetně IoT Edge hub. Druhým je **IoT Edge Hub**, který na zařízení IoT Edge řídí komunikaci mezi moduly a také mezi zařízením a IoT Hubem.
+Modul runtime Azure IoT Edge je nasadit na všechna zařízení IoT Edge. Skládá se ze tří částí. **Démon zabezpečení IoT Edge** poskytuje a udržuje standardy zabezpečení na hraniční zařízení. Proces démon spustí při každé spuštění a bootstraps zařízení spuštěním agenta IoT Edge. **Agenta IoT Edge** usnadňuje nasazení a monitorování modulů na hraniční zařízení, včetně hraničních zařízeních IoT hub. Druhým je **IoT Edge Hub**, který na zařízení IoT Edge řídí komunikaci mezi moduly a také mezi zařízením a IoT Hubem.
 
-Tento článek obsahuje kroky k instalaci modulu runtime Azure IoT Edge na váš Windows x64 (AMD nebo Intel) systému. Podpora systému Windows je aktuálně ve verzi Preview.
+V tomto článku jsou uvedené kroky k instalaci modulu runtime Azure IoT Edge na vaše Windows x64 (AMD nebo Intel) systému. Podpora Windows je aktuálně ve verzi Preview.
 
 >[!NOTE]
-Použití kontejnerů Linux na systémy Windows není produkční doporučená nebo podporované konfigurace pro Azure IoT okraj. Můžete se ale, použít pro účely vývoje a testování.
+Pomocí kontejnerů Linuxu na systémy Windows není produkční doporučené nebo podporované konfigurace pro Azure IoT Edge. To však lze použít pro účely vývoje a testování.
 
-## <a name="supported-windows-versions"></a>Podporované verze systému Windows
-Azure IoT Edge lze použít pro vývoj a testování v následujících verzích systému Windows, při použití kontejnery Linux:
+## <a name="supported-windows-versions"></a>Podporované verze Windows
+Azure IoT Edge může být používané pro vývoj a testování v následujících verzích Windows, při použití kontejnerů Linuxu:
   * Windows 10 nebo novější operační systémy.
   * Windows Server 2016 nebo nové serverové operační systémy.
 
 ## <a name="install-the-container-runtime"></a>Nainstalovat modul runtime kontejneru 
 
-Azure IoT Edge spoléhá na [OCI kompatibilní] [ lnk-oci] kontejner modulu runtime (např. Docker). 
+Azure IoT Edge se může spolehnout [OCI kompatibilní] [ lnk-oci] runtime kontejneru (např. Dockeru). 
 
-Můžete použít [Docker pro systém Windows] [ lnk-docker-for-windows] pro vývoj a testování. Ujistěte se, Docker pro systém Windows je [nakonfigurované na používání Linux kontejnery][lnk-docker-config]
+Můžete použít [Docker pro Windows] [ lnk-docker-for-windows] pro vývoj a testování. Zkontrolujte Docker pro Windows je [nakonfigurován na použití kontejnery Linuxu][lnk-docker-config]
 
 ## <a name="install-the-azure-iot-edge-security-daemon"></a>Instalace démona zabezpečení Azure IoT Edge
 
 >[!NOTE]
->Azure IoT Edge softwarové balíčky jsou souladu s licenčními podmínkami, který je umístěný v balíčcích (v adresáři licencí). Přečtěte si licenční podmínky před použitím balíčku. Instalace a použití balíčku, znamená to, že přijímáte tyto podmínky. Pokud s licenčními podmínkami nesouhlasíte, nepoužívejte balíčku.
+>Azure IoT Edge softwarové balíčky jsou souladu s licenčními podmínkami umístěný v balíčcích (v adresáři licencí). Přečtěte si licenční podmínky před použitím balíčku. Instalace a použití balíčku se považuje za svůj souhlas s těmito podmínkami. Pokud s licenčními podmínkami nesouhlasíte, nepoužívejte balíček.
 
-### <a name="download-the-edge-daemon-package-and-install"></a>Stáhněte si balíček démon okraj a nainstalovat
+### <a name="download-the-edge-daemon-package-and-install"></a>Stáhněte si balíček Edge démon a instalace
 
-V okně Powershellu správce spusťte následující příkazy:
+V okně Správce PowerShell spusťte následující příkazy:
 
 ```powershell
 Invoke-WebRequest https://aka.ms/iotedged-windows-latest -o .\iotedged-windows.zip
@@ -54,7 +54,7 @@ $env:Path += ";C:\ProgramData\iotedge"
 SETX /M PATH "$env:Path"
 ```
 
-Nainstalujte vcruntime:
+Nainstalujte s použitím vcruntime:
 
 ```powershell
 Invoke-WebRequest -useb https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe -o vc_redist.exe
@@ -74,7 +74,7 @@ Přidáte výjimky brány Firewall pro porty používané službou:
 New-NetFirewallRule -DisplayName "iotedged allow inbound 15580,15581" -Direction Inbound -Action Allow -Protocol TCP -LocalPort 15580-15581 -Program "C:\programdata\iotedge\iotedged.exe" -InterfaceType Any
 ```
 
-Vytvoření **iotedge.reg** soubor s následujícím obsahem a importování v registru systému Windows poklikat nebo pomocí `reg import iotedge.reg` příkaz:
+Vytvoření **iotedge.reg** soubor s následujícím obsahem a importu v registru Windows na ni poklikáte nebo pomocí `reg import iotedge.reg` příkaz:
 
 ```
 Windows Registry Editor Version 5.00
@@ -87,11 +87,11 @@ Windows Registry Editor Version 5.00
 
 ## <a name="configure-the-azure-iot-edge-security-daemon"></a>Nakonfigurujte funkce zabezpečení Azure IoT Edge
 
-Démon lze nakonfigurovat pomocí konfiguračního souboru na `C:\ProgramData\iotedge\config.yaml`.
+Proces démon lze konfigurovat pomocí konfiguračního souboru na `C:\ProgramData\iotedge\config.yaml`.
 
-Hraniční zařízení můžete nakonfigurovat ručně pomocí [zařízení připojovací řetězec] [ lnk-dcs] nebo [automaticky prostřednictvím služby zřizování zařízení] [ lnk-dps].
+Hraniční zařízení můžete nakonfigurovat ručně pomocí [připojovací řetězec zařízení] [ lnk-dcs] nebo [automaticky prostřednictvím služby Azure Device Provisioning] [ lnk-dps].
 
-* Ruční konfigurace, zrušte komentář u **ruční** režim zřizování. Aktualizujte hodnotu **device_connection_string** s řetězcem připojení ze zařízení IoT okraj.
+* Ruční konfigurace, zrušte komentář **ruční** režim zřizování. Aktualizujte hodnotu **device_connection_string** připojovacím řetězcem z vašeho zařízení IoT Edge.
 
    ```yaml
    provisioning:
@@ -105,7 +105,7 @@ Hraniční zařízení můžete nakonfigurovat ručně pomocí [zařízení při
    #   registration_id: "{registration_id}"
    ```
 
-* Pro automatickou konfiguraci, zrušte komentář u **distribučních bodů** režim zřizování. Aktualizujte hodnoty **scope_id** a **registration_id** hodnotami z vaší instance IoT Hub distribučních bodů a zařízení IoT Edge s čipem TPM. 
+* Automatická konfigurace, zrušte komentář **dps** režim zřizování. Aktualizujte hodnoty **scope_id** a **registration_id** s hodnotami z vaší instance IoT Hub Device Provisioning a zařízení IoT Edge s čipem TPM. 
 
    ```yaml
    # provisioning:
@@ -119,7 +119,7 @@ Hraniční zařízení můžete nakonfigurovat ručně pomocí [zařízení při
      registration_id: "{registration_id}"
    ```
 
-Získání názvu hraniční zařízení pomocí `hostname` příkazů v prostředí PowerShell a nastavte jej jako hodnota **název hostitele:** v yaml konfigurace. Příklad:
+Název hraniční zařízení používá `hostname` příkazu v prostředí PowerShell a nastavte ji jako hodnotu **název hostitele:** v konfiguraci yaml. Příklad:
 
 ```yaml
   ###############################################################################
@@ -134,33 +134,35 @@ Získání názvu hraniční zařízení pomocí `hostname` příkazů v prostř
   hostname: "edgedevice-1"
 ```
 
-V dalším kroku budeme potřebovat zadejte ip adresu a port pro **workload_uri** a **management_uri** v **připojení:** oddílu konfigurace.
+V dalším kroku, zadejte IP adresu a port pro **workload_uri** a **management_uri** v **připojit:** a **naslouchání:** oddíly konfigurace.
 
-Pro ip adresu, zadejte `ipconfig` v okně prostředí PowerShell a vyberte ip adresu **vEthernet (DockerNAT)**, rozhraní, jak je znázorněno v následujícím příkladu (ip adresu v systému může být jiný):
+Chcete-li získat IP adresu, zadejte `ipconfig` v prostředí PowerShell. Zkopírujte IP adresu **vEthernet (DockerNAT)**"rozhraní, jak je znázorněno v následujícím příkladu (ip adresa ve vašem systému může lišit):
 
 ![DockerNat][img-docker-nat]
 
+Aktualizace **workload_uri** a **management_uri** v **připojit:** oddílu konfiguračního souboru. Nahraďte **\<GATEWAY_ADDRESS\>** s IP adresou, kterou jste zkopírovali. 
+
 ```yaml
 connect:
-  management_uri: "http://10.0.75.1:15580"
-  workload_uri: "http://10.0.75.1:15581"
+  management_uri: "http://<GATEWAY_ADDRESS>:15580"
+  workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-Zadejte stejné adresy v **naslouchání:** oddílu konfigurace. Příklad:
+Zadejte stejné adresy **naslouchání:** oddílu konfigurace pomocí IP adresy jako adresu brány.
 
 ```yaml
 listen:
-  management_uri: "http://10.0.75.1:15580"
-  workload_uri: "http://10.0.75.1:15581"
+  management_uri: "http://<GATEWAY_ADDRESS>:15580"
+  workload_uri: "http://<GATEWAY_ADDRESS>:15581"
 ```
 
-V okně prostředí PowerShell vytvořit proměnnou prostředí **IOTEDGE_HOST** s **management_uri** adresu, třeba:
+V okně Powershellu Vytvořte proměnnou prostředí **IOTEDGE_HOST** s **management_uri** adresu.
 
 ```powershell
-[Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://10.0.75.1:15580")
+[Environment]::SetEnvironmentVariable("IOTEDGE_HOST", "http://<GATEWAY_ADDRESS>:15580")
 ```
 
-Nakonec se ujistěte, **sítě:** nastavení v části **moby_runtime:** je uncommented a nastavený na **azure-iot-edge**
+Nakonec se ujistěte, **sítě:** v nabídce **moby_runtime:** je komentář a nastavena na **azure-iot-edge**
 
 ```yaml
 moby_runtime:
@@ -168,7 +170,7 @@ moby_runtime:
   network: "azure-iot-edge"
 ```
 
-Konfigurační soubor uložte a restartujte službu:
+Uložit konfigurační soubor a restartujte službu:
 
 ```powershell
 Stop-Service iotedge -NoWait
@@ -178,10 +180,10 @@ Start-Service iotedge
 
 ## <a name="verify-successful-installation"></a>Ověření úspěšné instalace
 
-Pokud jste použili **ruční konfigurace** kroky v předchozí části, modul runtime IoT Edge by měla být úspěšně zřízený a spuštěné na zařízení. Pokud jste použili **automatickou konfiguraci** kroky, pak je potřeba provést některé další kroky, aby modul runtime můžete registraci zařízení ve službě IoT hub vaším jménem. Další pokyny najdete v tématu [vytvořit a zřídit simulované TPM hraniční zařízení v systému Windows](how-to-auto-provision-simulated-device-windows.md#create-a-tpm-environment-variable).
+Pokud jste použili **ruční konfigurace** kroků v předchozí části, modul runtime IoT Edge by měla být úspěšně zřízený a spuštěný ve vašem zařízení. Pokud jste použili **automatickou konfiguraci** kroky, pak budete muset provést některé další kroky, tak, aby modul runtime můžete registraci zařízení ve službě IoT hub vaším jménem. Další pokyny najdete v článku [vytvoření a zřízení simulovaného zařízení TPM Edge ve Windows](how-to-auto-provision-simulated-device-windows.md#create-a-tpm-environment-variable).
 
 
-Můžete zkontrolovat stav služby IoT Edge podle: 
+Můžete zkontrolovat stav této služby IoT Edge: 
 
 ```powershell
 Get-Service iotedge
@@ -200,7 +202,7 @@ Get-WinEvent -ea SilentlyContinue `
   sort-object @{Expression="TimeCreated";Descending=$false}
 ```
 
-A seznam systémem modulů s:
+A seznam s moduly:
 
 ```powershell
 iotedge list
@@ -208,7 +210,7 @@ iotedge list
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud máte potíže s modulem runtime Edge instalaci správně, najdete v článku věnovaném [řešení potíží s] [ lnk-trouble] stránky.
+Pokud máte problémy s modulu runtime Edge instalaci správně, rezervace [řešení potíží s] [ lnk-trouble] stránky.
 
 
 <!-- Images -->

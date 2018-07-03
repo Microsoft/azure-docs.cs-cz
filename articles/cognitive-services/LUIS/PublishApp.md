@@ -1,6 +1,6 @@
 ---
-title: Publikování aplikace LEOŠ | Microsoft Docs
-description: Po vytvoření a testování aplikace s použitím jazyka Principy (LEOŠ), můžete jej publikujte jako webovou službu v Azure.
+title: Publikování aplikace LUIS | Dokumentace Microsoftu
+description: Po sestavení a testování vaší aplikace s použitím služby Language Understanding (LUIS), můžete ji publikujte jako webovou službu v Azure.
 services: cognitive-services
 titleSuffix: Azure
 author: v-geberr
@@ -10,64 +10,64 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr;
-ms.openlocfilehash: ad5ef58536bb6cc7f2c754f2e5c4487a3ffe96f2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 1bd24af0498755b7cdcb170624fd8f9f3b39c85a
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112822"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341285"
 ---
-# <a name="publish-your-trained-app"></a>Publikování vyškolení aplikace
-Po dokončení vytváření a testování vaší aplikace LEOŠ ji publikujte. Po publikování aplikace, na stránce publikování se zobrazí všechny související HTTP [koncové body](luis-glossary.md#endpoint). Tyto koncové body na [oblast](luis-reference-regions.md) a za [klíč](Manage-Keys.md), pak jsou integrované do libovolné aplikace klienta, chatbot nebo back-end. 
+# <a name="publish-your-trained-app"></a>Publikování trénovaného aplikace
+Po dokončení vytváření a testování vaší aplikace LUIS, publikujte ho. Po publikování aplikace na stránce publikování se zobrazí všechny přidružené HTTP [koncové body](luis-glossary.md#endpoint). Tyto koncové body za [oblasti](luis-reference-regions.md) a za [klíč](luis-how-to-manage-keys.md), pak jsou integrované do libovolné aplikace klienta, chatovací robot nebo back-endu. 
 
-Vždy můžete [testování](interactive-test.md) aplikace před publikováním. 
+Vždy můžete [testování](interactive-test.md) vaši aplikaci před publikováním. 
 
-## <a name="production-and-staging-slots"></a>Produkční a pracovní sloty
-Můžete publikovat aplikaci, kterou chcete **pracovní pozici** nebo **produkční Slot**. Pomocí dvou publikování sloty, můžete tak mít dvě různé verze pomocí publikovaných koncových bodů nebo stejnou verzi na dva různé koncové body. 
+## <a name="production-and-staging-slots"></a>Produkční a přípravné sloty
+Můžete publikovat aplikaci tak, aby **přípravný slot** nebo **produkčního slotu**. Pomocí dvou publikování sloty díky tomu budete mít dvě různé verze s koncovými body publikované nebo stejnou verzi na dvou různých koncových bodů. 
 
 <!-- TBD: what is the technical difference? log files, endpoint quota? -->
 
-## <a name="settings-configuration-requires-publishing-model"></a>Nastavení konfigurace vyžaduje publikování modelu
-Po provedení změn následujícího nastavení publikování ke koncovému bodu. 
+## <a name="settings-configuration-requires-publishing-model"></a>Konfigurace nastavení vyžaduje publikování modelu
+Publikování do koncového bodu po změny následujícího nastavení. 
 
-## <a name="external-services-settings"></a>Nastavení externích služeb
-Zahrnout nastavení služby externí **[postojích Analysis](#enable-sentiment-analysis)** a  **[řeči Priming](#enable-speech-priming)**.
+## <a name="external-services-settings"></a>Nastavení externí služby
+Nastavení externí služby zahrnují **[analýzu subjektivního hodnocení](#enable-sentiment-analysis)** a  **[řeči Příprava](#enable-speech-priming)**.
 
-### <a name="enable-sentiment-analysis"></a>Povolit postojích analýzy
-V **externí služby nastavení**, **povolit Analysis postojích** políčko umožňuje LEOŠ k integraci s [Analýza textu](https://azure.microsoft.com/services/cognitive-services/text-analytics/) zajistit postojích a klíče fráze analýza. Není nutné zadat klíč Analýza textu a je bezplatná fakturace pro tuto službu ke svému účtu Azure. Jakmile zaškrtnete toto nastavení, je trvalé. 
+### <a name="enable-sentiment-analysis"></a>Povolit analýzu subjektivního hodnocení
+V **externí služby nastavení**, **povolit analýzu subjektivního hodnocení** LUIS můžete integrovat s umožňuje zaškrtávací políčko [rozhraní Text Analytics](https://azure.microsoft.com/services/cognitive-services/text-analytics/) poskytnout zabarvení a klíčové fráze analýzy. Není potřeba zadat klíč pro analýzu textu a nic neplatíte fakturace pro tuto službu ke svému účtu Azure. Když zaškrtnete toto nastavení, je trvalé. 
 
-Postojích dat je skóre mezi 1 a 0 označující pozitivní (blíže 1) ani na zápornou (blíže 0) postojích data.
+Je skóre mezi 1 a 0 označující pozitivní mínění data (blíže 1) ani na zápornou (blíže 0) mínění data.
 
-Další informace o odpovědi JSON koncového bodu postojích analýzy najdete v tématu [postojích analýzy](luis-concept-data-extraction.md#sentiment-analysis)
+Další informace o odpovědi JSON koncového bodu s analýzou mínění, naleznete v tématu [analýzu subjektivního hodnocení](luis-concept-data-extraction.md#sentiment-analysis)
 
 ### <a name="enable-speech-priming"></a>Povolit dočištění řeči 
-V **externí služby nastavení**, **povolit Priming řeči** zaškrtávacího políčka můžete mít jeden koncový bod získat mluvené utterance z chatbot nebo LEOŠ volání aplikace a přijímat LEOŠ odpověď předpovědi. Rozpoznávání řeči dočištění používá službu kognitivní [rozhraní API pro rozpoznávání řeči](../Speech-Service/rest-apis.md). 
+V **externí služby nastavení**, **povolit Příprava řeči** umožňuje zaškrtávací políčko, abyste měli jeden koncový bod zajistit mluvené slovo utterance chatovací robot nebo LUIS volající aplikace a přijímat LUIS předpověď odpovědi. Rozpoznávání řeči dočištění používá služby Cognitive Services [rozhraní Speech API](../Speech-Service/rest-apis.md). 
 
-![Obrázek dialogového okna potvrzení dočištění řeči](./media/luis-how-to-publish-app/speech-prime-modal.png)
+![Obrázek řeči dočištění potvrzovací dialogové okno](./media/luis-how-to-publish-app/speech-prime-modal.png)
 
-Po povolení této funkce publikování aplikace. Při publikování aplikace LEOŠ modelu aplikace je odeslán služby řeči pro primární řeči služby. Informace o modelu **není** použít mimo vaši vlastní službu. 
+Jakmile je tato funkce povolena, publikujte aplikaci. Při publikování aplikace LUIS modelu aplikace posílá službě řeči vymazat Speech service. Informace o modelu **není** použít mimo vlastních služeb. 
 
-Aby bylo možné dokončit použití dočištění rozpoznávání řeči, potřebujete následující informace pro použití v [řeči SDK](../speech-service/speech-sdk-reference.md):
-* Klíč LEOŠ koncový bod.
-* ID LEOŠ aplikace.
-* Doméně koncový bod označuje jako "Název hostitele" v sadě SDK pro rozpoznávání řeči, jako je například "westus.api.cognitive.microsoft.com", kde je první subdomény oblasti, kde je publikovaná aplikace.
+Aby bylo možné dokončit použití dočištění řeči, budete potřebovat následující informace pro použití v [sadou SDK pro řeč](../speech-service/speech-sdk-reference.md):
+* Klíč koncového bodu služby LUIS.
+* ID aplikace LUIS
+* Doménu koncového bodu označovány jako "Hostname" v sadě SDK řeči, jako je například "westus.api.cognitive.microsoft.com", kde první subdoménu je oblast, ve kterém je aplikace publikována.
 
-Další informace najdete v tématu [převod řeči na záměr](http://aka.ms/speechsdk) ukázka.
+Další informace najdete v tématu [řeč na záměr](http://aka.ms/speechsdk) vzorku.
 
-Pokud vaše aplikace LEOŠ odstraněna nebo službu řeči je odstranit, odeberou se data modelu. 
+Při odstranění aplikace LUIS nebo při odstranění služby řeči, vaše data modelu se odeberou. 
 
 ## <a name="endpoint-url-settings"></a>Nastavení adresy URL koncového bodu
-Zahrnout nastavení služby adresy URL koncového bodu **[časové pásmo](#set-timezone-offset)** posun,  **[všechny předpovědět záměrné skóre](#include-all-predicted-intent-scores)**, a  **[ Kontrola pravopisu v Bingu](#enable-bing-spell-checker)**.
+Zahrnout nastavení služby koncového bodu adresy URL **[časové pásmo](#set-timezone-offset)** odsazení,  **[všechny předpovědět záměru skóre](#include-all-predicted-intent-scores)**, a  **[ Kontrola pravopisu Bingu](#enable-bing-spell-checker)**.
 
-### <a name="set-timezone-offset"></a>Nastavte posun časového pásma 
-Součást volba slotu je výběru časového pásma. Toto nastavení časového pásma umožňuje LEOŠ k [alter](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) kdykoli předem datetimeV2 hodnoty během předpovědi, aby byla data vrácenou entitu správné podle vybraného časového pásma. 
+### <a name="set-timezone-offset"></a>Nastavit posun časového pásma 
+Volba slot je výběr časového pásma. Toto nastavení časového pásma umožňuje LUIS [alter](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) kdykoli předem připravených datetimeV2 hodnoty během předpovědi tak, aby byla data vrácená entity správné podle vybraného časového pásma. 
 
-### <a name="include-all-predicted-intent-scores"></a>Zahrnout všechny předpokládaných záměrné skóre
-**Zahrnout všechny předpovědět záměrné skóre** políčko umožňuje odpovědi na dotaz koncový bod zahrnout předpovědi skóre pro každý záměr. 
+### <a name="include-all-predicted-intent-scores"></a>Zahrnout všechny predikovaného hodnocení záměru
+**Zahrnout všechny předpovědět záměru skóre** odpověď na dotaz koncový bod zahrnout skóre předpovědi pro každý záměru umožňuje zaškrtávací políčko. 
 
-Toto nastavení umožňuje chatbot nebo LEOŠ volání aplikace k programovým rozhodnutí podle skóre vrácený tříd Intent. Obecně jsou nejvíce zajímavé nejvyšší dvou tříd Intent. Pokud hlavní skóre je záměrné, že vaše chatbot můžete k zadání následné dotazu, který poskytuje spolehlivý možnost výběru mezi záměrné žádné a vysokým skóre záměr None. 
+Toto nastavení umožňuje chatovací robot nebo LUIS volající aplikace pro programové rozhodnutí podle skóre vrácené záměry. Horní dva příkazy jsou obecně zajímá nejvíce. Pokud hlavní skóre již není žádný záměru, že váš robot můžete položit dotaz zpracování zajistíte, aby konečná možností volby mezi záměru žádný a vysokým skóre záměr. 
 
-Tříd Intent a jejich výsledky jsou také zahrnuté v protokolech koncový bod. Můžete [exportovat](create-new-app.md#export-app) tyto protokoly a analyzovat skóre. 
+Příkazů a jejich výsledky jsou také zahrnuté protokoly koncového bodu. Je možné [exportovat](create-new-app.md#export-app) tyto protokoly a analyzovat výsledky. 
 
 ```
 {
@@ -90,10 +90,10 @@ Tříd Intent a jejich výsledky jsou také zahrnuté v protokolech koncový bod
 }
 ```
 
-### <a name="enable-bing-spell-checker"></a>Povolit kontrolu pravopisu v Bingu 
-V **nastavení adresy url koncového bodu**, **kontrola pravopisu povolit Bing** políčko umožňuje LEOŠ opravit slovo obsahující chyby před předpovědi. To vyžaduje, abyste vytvořili  **[kontrola pravopisu Bing klíč](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)**. Po vytvoření klíče dva parametry řetězce dotazu se přidají do adresu URL koncového bodu na stránce publikovat. 
+### <a name="enable-bing-spell-checker"></a>Povolit kontrolu pravopisu Bingu 
+V **nastavení adresy url koncového bodu**, **kontrolu pravopisu Bingu povolit** LUIS opravovat slova s překlepem před předpovědi umožňuje zaškrtávací políčko. To je potřeba vytvořit  **[kontrolu pravopisu Bingu klíč](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)**. Po vytvoření klíče jsou přidány dva parametry řetězce dotazu na URL koncového bodu na stránce publikovat. 
 
-Pokud jsou vytváření vlastní adresy URL pro aplikaci LEOŠ volání, zkontrolujte **kontrola pravopisu = true** parametr řetězce dotazu a **bing pravopisu – kontrola subscription-key = {YOUR_BING_KEY_HERE}**. Nahraďte `{YOUR_BING_KEY_HERE}` váš klíč pro kontrolu pravopisu Bing.
+Pokud se vytváření vlastní adresy URL pro vaši aplikaci LUIS volání, ujistěte se, že **kontrola pravopisu = true** parametr querystring a **Bingu – pravopisu – kontrola subscription-key = {YOUR_BING_KEY_HERE}**. Nahradit `{YOUR_BING_KEY_HERE}` vaším klíčem kontrolu pravopisu Bingu.
 
 ```JSON
 {
@@ -107,51 +107,51 @@ Pokud jsou vytváření vlastní adresy URL pro aplikaci LEOŠ volání, zkontro
 }
 ```
 
-## <a name="publish-your-trained-app-to-an-http-endpoint"></a>Publikujte aplikaci vyškolení koncový bod HTTP
-Otevřete aplikaci klikněte na jeho název **Moje aplikace** a pak klikněte na tlačítko **publikovat** v horním panelu. 
+## <a name="publish-your-trained-app-to-an-http-endpoint"></a>Publikovat aplikaci trénované na koncový bod HTTP
+Otevření aplikace po kliknutí na jeho název **Moje aplikace** stránce a potom klikněte na tlačítko **publikovat** v horním panelu. 
 
 ![Publikovat stránku –](./media/luis-how-to-publish-app/publish-to-production.png)
  
-Pokud vaše aplikace je úspěšně publikována, zobrazí se upozornění zelená úspěch v horní části prohlížeče. 
+Pokud vaše aplikace se úspěšně publikuje, zobrazí se upozornění zelené úspěch v horní části stránky prohlížeče. 
 
-* Vyberte, zda chcete publikovat do **produkční** nebo **pracovní** výběrem z rozevírací nabídky v části **vyberte slotu**. 
+* Zvolte, jestli se má publikovat **produkční** nebo **pracovní** tak, že vyberete rozevírací nabídky v části **vyberte slot**. 
 
 ## <a name="assign-key"></a>Přiřazení klíče
 
-Pokud chcete používat klíč jiné než volné Starter_Key zobrazí, klikněte na **přidat klíč** tlačítko. Tím se otevře dialogové okno, které vám umožní vybrat existující klíč koncového bodu přiřadit k aplikaci. Další informace o tom, jak vytvořit a přidat koncový bod klíče do aplikace LEOŠ najdete v tématu [spravovat klíče](Manage-Keys.md).
+Pokud chcete použít klíče jiných než bezplatné Starter_Key zobrazí, klikněte na tlačítko **přidat klíč** tlačítko. Tato akce otevře dialogové okno, které vám umožní vybrat existující klíč koncového bodu přiřadit k aplikaci. Další informace o tom, jak vytvořit a přidat do aplikace LUIS klíče koncového bodu, najdete v části [spravovat klíče](luis-how-to-manage-keys.md).
 
-Koncové body a klíče přidružené jiných oblastí najdete pomocí přepínačů, chcete-li přepnout oblasti. Každý řádek **prostředky a klíče** tabulce jsou uvedeny prostředky Azure, které jsou přidružené k účtu a klíče koncový bod přidružené k danému prostředku.
+Koncové body a klíče přidružené k další oblasti zobrazíte pomocí přepínací tlačítka můžete přepínat oblastech. Každý řádek **prostředky a klíče** tabulce jsou uvedeny prostředky Azure, které jsou spojené s vaším účtem a koncový bod klíče přidružené k tomuto prostředku.
 
 ## <a name="endpoint-url-construction"></a>Konstrukce adresu URL koncového bodu
-Adresa URL koncového bodu odpovídá oblast Azure, které jsou přidružené ke klíči koncový bod.
+Adresa URL koncového bodu odpovídající oblast Azure, které jsou přidružené k klíče koncového bodu.
 
-Tato tabulka pohodlně odráží publikování konfigurace adresy URL koncového bodu se volby trasy a hodnoty řetězců dotazu. Pokud jsou vytváření váš koncový bod adresy URL pro aplikaci LEOŠ volání, zajistěte, aby tyto hodnoty jsou nastavené pro koncový bod stejné trasy a řetězce dotazu – Pokud je chcete nastavit.
+Tato tabulka zobrazuje pohodlně publikování konfigurace koncového bodu adresy URL s možností trasy a hodnot řetězce dotazu. Pokud váš koncový bod adresy URL se sestavením pro vaši aplikaci LUIS volání, ujistěte se, že tyto hodnoty jsou nastavené pro koncový bod tras a řetězec dotazu použít – pokud je chcete nastavit.
 
-Trasu adresy URL je vytvořený pomocí oblast a ID aplikace. Při publikování v jiných oblastech nebo s jinými aplikacemi, konstruovat adresu URL koncového bodu změnou hodnoty ID oblasti a aplikace. 
+Adresa URL trasy je vytvořený pomocí oblast a ID aplikace. Pokud publikujete v jiných oblastech nebo s jinými aplikacemi, adresu URL koncového bodu lze sestavit tak, že změníte hodnoty ID oblasti a aplikace. 
 
-* Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat). Při publikování úspěšné, použijte adresu URL zobrazené koncový bod pro přístup k aplikaci LEOŠ. 
+* Vyberte slot Production (Produkční) a tlačítko **Publish** (Publikovat). Při publikování bude úspěšné, použijte adresu URL zobrazené koncový bod pro přístup k aplikaci LUIS. 
 
-### <a name="optional-query-string-parameters"></a>Parametrů řetězce dotazu volitelné
-Následující parametrů řetězce dotazu lze použít s adresou URL koncového bodu:
+### <a name="optional-query-string-parameters"></a>Parametry řetězce dotazu volitelné
+Následující parametry řetězce dotazu jde použít s adresu URL koncového bodu:
 
 <!-- TBD: what about speech priming? -->
 
 |Řetězec dotazu|Typ|Příklad hodnoty|Účel|
 |--|--|--|--|
-|verbose|Boolean|true (pravda)|Zahrnout [všechny záměrné skóre](#include-all-predicted-intent-scores) pro utterance|
-|timezoneOffset|číslo (jednotka je minut)|60|Nastavit [posun časového pásma](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) pro [datetimeV2 předem entity](luis-reference-prebuilt-datetimev2.md)|
-|Kontrola pravopisu|Boolean|true (pravda)|[Opravte pravopis](#enable-bing-spell-checker) z utterance – používá ve spojení s parametr řetězce dotazu bing pravopisu – kontrola subscription-key|
-|Bing pravopisu – kontrola subscription-key|ID předplatného||používá ve spojení s parametr řetězce dotazu kontrola pravopisu|
-|pracovní|Boolean|false (nepravda)|Vyberte pracovním nebo produkčním koncový bod|
-|protokolu|Boolean|true (pravda)|Přidání dotazu a výsledky do protokolu|
+|verbose|Boolean|true (pravda)|Zahrnout [všechny záměru skóre](#include-all-predicted-intent-scores) pro utterance|
+|timezoneOffset|číslo (jednotka je minut)|60|Nastavte [posun časového pásma](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) pro [datetimeV2 předem připravených entit](luis-reference-prebuilt-datetimev2.md)|
+|Kontrola pravopisu|Boolean|true (pravda)|[Opravte pravopis](#enable-bing-spell-checker) z utterance - použít ve spojení s parametrem řetězce dotazu Bingu – pravopisu – kontrola subscription-key|
+|Bing pravopisu – kontrola subscription-key|ID předplatného||použít ve spojení s parametrem řetězce dotazu kontrola pravopisu|
+|pracovní|Boolean|false (nepravda)|Vyberte pracovní nebo produkční koncový bod|
+|protokol|Boolean|true (pravda)|Přidání dotazu a výsledky do protokolu|
 
 
 ## <a name="test-your-published-endpoint-in-a-browser"></a>Testování publikované koncový bod v prohlížeči
-Testování publikované koncový bod výběrem adresu URL v **koncový bod** sloupce. Výchozí prohlížeč otevře s vygenerovaná adresa URL. Nastavte parametr adresy URL, "& q" do testovací dotazu. Například připojit `&q=Book me a flight to Boston on May 4` na adresu URL a potom stiskněte klávesu Enter. Prohlížeč zobrazí odpověď JSON váš koncový bod HTTP. 
+Testování publikované koncový bod tak, že vyberete na adresu URL v **koncový bod** sloupce. Výchozí prohlížeč otevře se vygenerovala adresa URL. Nastavte parametr adresy URL "& q" do dotazu testu. Například připojte `&q=Book me a flight to Boston on May 4` na adresu URL a potom stiskněte klávesu Enter. Prohlížeč zobrazí odpovědi JSON koncového bodu protokolu HTTP. 
 
-![Odpověď JSON z publikovaných koncový bod HTTP](./media/luis-how-to-publish-app/luis-publish-app-json-response.png)
+![Odpověď JSON od publikované koncový bod HTTP](./media/luis-how-to-publish-app/luis-publish-app-json-response.png)
 
 ## <a name="next-steps"></a>Další postup
 
-* V tématu [Správa klíčů](./Manage-Keys.md) přidání klíče do LEOŠ aplikace a další informace o mapování klíče do oblasti.
-* V tématu [Train a testování aplikace](interactive-test.md) pokyny k testování publikované aplikace v konzole nástroje test.
+* Zobrazit [spravovat klíče](./luis-how-to-manage-keys.md) přidat klíče aplikace LUIS, a další informace o mapování klíčů do oblasti.
+* Zobrazit [trénování a testování vaší aplikace](interactive-test.md) pokyny o tom, jak v testovací konzole testování publikované aplikace.

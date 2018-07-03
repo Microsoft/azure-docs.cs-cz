@@ -1,6 +1,6 @@
 ---
-title: Pochopení přístup k aplikacím LEOŠ - Azure | Microsoft Docs
-description: Zjistěte, jak pro přístup k LEOŠ vytváření obsahu.
+title: Principy přístupu k aplikacím LUIS – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak získat přístup k vytváření LUIS.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,58 +9,60 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 44380e12e6d095e8d40675af0b6b2fddc5e4c4e9
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: c581c26f867ca78a5ed12922c9e8760f5f903881
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264263"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345854"
 ---
-# <a name="authoring-and-endpoint-user-access"></a>Vytváření obsahu a koncový bod přístupu uživatele
-Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Pro privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncový bod. Pro veřejného app přístup koncový bod je k dispozici všem uživatelům, které má svůj vlastní účet LEOŠ a ID veřejné aplikace. 
+# <a name="authoring-and-endpoint-user-access"></a>Vytváření a koncového bodu přístupu uživatelů
+Vytváření přístup je k dispozici pro vlastníky a spolupracovníky. Privátní aplikaci je k dispozici pro vlastníky a spolupracovníci přístup koncového bodu. Veřejné aplikace koncový bod přístup je k dispozici pro všechny uživatele, který má svůj vlastní účet služby LUIS a má ID veřejné aplikace. 
 
 ## <a name="access-to-authoring"></a>Přístup k vytváření obsahu
-Přístup k aplikaci [LEOŠ] [ LUIS] webu nebo [vytváření rozhraní API](https://aka.ms/luis-authoring-apis) řídí vlastník aplikace. 
+Přístup k aplikaci z [LUIS] [ LUIS] webu nebo [rozhraní API pro vytváření](https://aka.ms/luis-authoring-apis) řídí vlastník aplikace. 
 
-Vlastník a všechny spolupracovníci mít přístup k vytváření aplikace. 
+Vlastníka a spolupracovníky všechny mají přístup k vytváření aplikací. 
 
-|Vytváření přístupu zahrnuje|Poznámky|
+|Vytváření přístup zahrnuje|Poznámky|
 |--|--|
-|Přidání nebo odebrání koncového bodu klíče||
+|Přidání nebo odebrání klíče koncového bodu||
 |Export verze||
-|Koncový bod protokoly exportu||
-|Import verze||
-|Zveřejnit aplikaci|Pokud aplikace je veřejný, každý, kdo má vytváření nebo koncový bod klíč dotazu aplikace.|
-|Upravit modelu|
+|Exportovat protokoly koncového bodu||
+|Importuje se verze||
+|Zveřejnit aplikaci|Pokud aplikace je veřejný, kdokoli s klíčem s vytvářením nebo koncový bod aplikace dotazu.|
+|Upravit model|
 |Publikování|
-|Zkontrolujte utterances koncový bod pro [active učení](label-suggested-utterances.md)|
+|Zkontrolujte projevy koncový bod pro [aktivní učení](label-suggested-utterances.md)|
 |Trénování|
 
 ## <a name="access-to-endpoint"></a>Přístup ke koncovému bodu
-Přístup ke koncovému bodu dotazu LEOŠ řídí **veřejné** nastavení aplikace na **nastavení** stránky. Dotaz privátní aplikace koncového bodu se kontroluje na autorizovaného klíče se zbývajícími kvóty přístupů. Dotaz koncový bod veřejné aplikace má také zajistit klíčem koncového bodu (v kdo je provádění dotazu) které se také kontroluje pro zbývající kvóty přístupů. 
+Řídí přístup ke koncovému bodu k dotazování služby LUIS **veřejné** nastavení aplikace **nastavení** stránky. Dotaz soukromých aplikací koncový bod se kontroluje u autorizovaného klíče s zbývající kvóta přístupů. Dotaz koncový bod veřejné aplikace má také poskytnout klíčem koncový bod (z kdo provádí dotaz) která je také kontroluje zbývající kvóta přístupů. 
 
-Klíč koncového bodu je předán buď v řetězci dotazu požadavku GET nebo záhlaví v příspěvku požadavku.
+Klíč koncového bodu se předává v řetězci dotazu požadavku GET nebo požádat o záhlaví příspěvku.
 
-![Sada aplikaci veřejné](./media/luis-concept-security/set-application-as-public.png)
+![Sada aplikací na veřejnou](./media/luis-concept-security/set-application-as-public.png)
 
-### <a name="private-app-endpoint-security"></a>Zabezpečení koncového bodu privátní aplikace
-Koncový bod privátní aplikace je k dispozici následující pouze:
+### <a name="private-app-endpoint-security"></a>Zabezpečení koncových bodů privátní aplikaci
+Koncový bod soukromých aplikací je pouze k dispozici pro následující:
 
 |Klíč a uživatele|Vysvětlení|
 |--|--|--|
-|Klíč pro tvorbu vlastníka| Až koncový bod 1 000 přístupů|
-|Vytváření klíčů spolupracovníci.| Až koncový bod 1 000 přístupů|
-|Koncový bod klíče přidají **[publikovat](publishapp.md)** stránky|Vlastníka a spolupracovníci můžete přidat kódy pro koncový bod|
+|Klíč pro tvorbu vlastníka| Až 1000 koncový bod přístupů|
+|Pro vytváření klíčů se spolupracovníky| Až 1000 koncový bod přístupů|
+|Přidat z klíče koncového bodu **[publikovat](luis-how-to-publish-app.md)** stránky|Vlastníka a spolupracovníky můžete přidat klíče koncového bodu|
 
-Jiné vytváření nebo koncový bod klíče měly **žádné** přístup.
+Další vytváření nebo koncový bod klíče mají **žádné** přístup.
 
-### <a name="public-app-endpoint-access"></a>Přístup k koncový bod veřejné aplikaci
-Konfigurace aplikace jako **veřejné** na **nastavení** stránky aplikace. Jakmile aplikace je nakonfigurovaný jako veřejné, _žádné_ platný LEOŠ vytváření klíč nebo klíč koncového bodu LEOŠ můžete dotazovat aplikace, tak dlouho, dokud kód nepoužili kvótu celý koncový bod.
+### <a name="public-app-endpoint-access"></a>Přístup koncového bodu aplikace z veřejného app
+Konfigurace aplikace jako **veřejné** na **nastavení** stránky aplikace. Jakmile aplikace je nakonfigurovaná jako veřejné, _jakékoli_ platný LUIS vytváření klíč nebo klíč koncového bodu služby LUIS můžete dotazovat vaší aplikace, tak dlouho, dokud klíč nebyl použit kvóty celý koncový bod.
 
-Uživatel, který není vlastníkem nebo spolupracovník, přístup jenom k veřejného app-li zadány ID aplikace. LEOŠ nemá veřejné _trhu_ nebo jiný způsob, jak hledat veřejného app.  
+Uživatel, který není vlastníkem nebo spolupracovník, můžete pouze přistupovat veřejné aplikace v případě, že zadané ID aplikace. Služba LUIS nemá veřejnou _trhu_ nebo jiný způsob, jak vyhledat aplikace z veřejného app.  
 
 ## <a name="microsoft-user-accounts"></a>Uživatelské účty Microsoft
-Autoři a spolupracovníci můžete přidat klíče k LEOŠ na stránce publikovat. Uživatelský účet Microsoft, který vytvoří klíč LEOŠ na portálu Azure musí vlastník aplikace nebo aplikaci spolupracovníka. 
+Autoři a spolupracovníky můžete přidat klíče k LUIS na stránce publikovat. Uživatelský účet Microsoft, který vytvoří klíč LUIS na webu Azure Portal, musí vlastník aplikace nebo spolupracovníka aplikace. 
+
+Zobrazit [uživatel tenanta Azure Active Directory](luis-how-to-account-settings.md#azure-active-directory-tenant-user) získat další informace o uživatelských účtů Active Directory. 
 
 <!--
 ### Individual consent
@@ -70,13 +72,13 @@ If the Microsoft user account is part of an Azure Active Directory (AAD), and th
 If the Microsoft user account is part of an Azure Active Directory (AAD), and the active directory doesn't allow users to give consent, then the administrator can give individual consent via the method discussed in this [blog](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/). 
 -->
 ## <a name="securing-the-endpoint"></a>Zabezpečení koncového bodu 
-Můžete řídit, kdo může zobrazit svůj klíč pro koncový bod LEOŠ voláním v prostředí serveru na server. Pokud používáte LEOŠ z robotu, je už zabezpečené připojení mezi robota a LEOŠ. Koncový bod LEOŠ při volání přímo, měli byste vytvořit rozhraní API na straně serveru (například Azure [funkce](https://azure.microsoft.com/services/functions/)) s řízený přístup (například [AAD](https://azure.microsoft.com/services/active-directory/)). Když je volána rozhraní API na straně serveru a ověřování a autorizace je ověřeno, předejte volání k LEOŠ. Při této strategie není zabránit útokům man-in-the-middle, zastírá váš koncový bod z vašich uživatelů, umožňuje sledovat přístup a umožňuje přidat protokolování odpovědi koncového bodu (jako například [Application Insights](https://azure.microsoft.com/services/application-insights/)).  
+Můžete řídit, kdo uvidí vaše klíče koncového bodu služby LUIS voláním v prostředí na serveru. Pokud používáte LUIS z robota, je již zabezpečené připojení mezi robotů a LUIS. Pokud koncový bod služby LUIS se volat přímo, měli byste vytvořit rozhraní API na straně serveru (jako je Azure [funkce](https://azure.microsoft.com/services/functions/)) s řízený přístup (například [AAD](https://azure.microsoft.com/services/active-directory/)). Pokud se volá rozhraní API na straně serveru a ověřování a autorizace je ověřeno, předejte volání k LUIS. Při použití této strategie není útokům man-in-the-middle, zastírá váš koncový bod od uživatelů, umožňuje sledovat přístup a slouží k přidání koncového bodu odpovědi protokolování (například [Application Insights](https://azure.microsoft.com/services/application-insights/)).  
 
-## <a name="security-compliance"></a>Dodržování předpisů pro zabezpečení
-LEOŠ úspěšně ISO 27001: 2013 a audit 27018:2014 ISO s NULOVÉ při nedodržení požadavků (zjištění) v sestavě auditu. Kromě toho LEOŠ také získat certifikační HVĚZDIČKY CSA s nejvyšší možné Gold ukrývá pro funkce vyhodnocování vyspělosti. Azure je poskytovatele služeb veřejného cloudu pouze hlavní získat této certifikační. Další podrobnosti, můžete najít LEOŠ součástí příkaz aktualizované oboru v Azure hlavní [dodržování předpisů přehled](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) dokumentu, který se odkazuje na [Centrum zabezpečení](https://www.microsoft.com/en-us/trustcenter/compliance/iso-iec-27001) ISO stránky.  
+## <a name="security-compliance"></a>Dodržování předpisů zabezpečení
+Služba LUIS se úspěšně dokončila, ISO 27001: 2013 a 27018:2014 auditu podle standardu ISO s NULOVOU nedodržení (výsledky) v sestavě auditu. Kromě toho LUIS také získané certifikace CSA STAR s nejvyšší možné zlaté ocenění pro posouzení vyspělosti funkce. Azure je jenom významnější veřejná Cloudová poskytovatel služeb si tohoto certifikátu. Další podrobnosti můžete najít LUIS součástí příkazu aktualizované oboru v Azure hlavní [přehled dodržování předpisů](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) dokument, který se odkazuje na [Centrum](https://www.microsoft.com/en-us/trustcenter/compliance/iso-iec-27001) ISO stránky.  
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-V tématu [osvědčené postupy](luis-concept-best-practices.md) na další informace o použití tříd Intent a entity pro nejlepší předpovědi.
+Zobrazit [osvědčené postupy](luis-concept-best-practices.md) na další informace o použití záměry a entity, pro nejlepší předpovědi.
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

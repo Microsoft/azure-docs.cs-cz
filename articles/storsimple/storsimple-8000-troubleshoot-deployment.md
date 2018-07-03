@@ -1,6 +1,6 @@
 ---
-title: Řešení problémů nasazení řady StorSimple 8000 | Microsoft Docs
-description: Popisuje, jak diagnostikovat a opravit chyby, ke kterým dochází při prvním nasazení zařízení StorSimple.
+title: StorSimple 8000 series řešení problémů s nasazením | Dokumentace Microsoftu
+description: Popisuje, jak diagnostikovat a opravit chyby, ke kterým dochází při prvním nasazení StorSimple.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,199 +14,199 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: d6642231bf9d012b0015902c82d2bfde3b86285c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61719d482a4db1c737bbe38277f2ac3b2d684b63
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23927856"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342421"
 ---
-# <a name="troubleshoot-storsimple-device-deployment-issues"></a>Řešení problémů nasazení zařízení StorSimple
+# <a name="troubleshoot-storsimple-device-deployment-issues"></a>Řešení potíží s problémy při nasazení zařízení StorSimple
 ## <a name="overview"></a>Přehled
-Tento článek obsahuje užitečné pokyny k odstraňování potíží pro vaše nasazení Microsoft Azure StorSimple. Popisuje běžné problémy, možné příčiny a doporučené kroky, aby pomáhal vyřešit problémy, které se můžete setkat při konfiguraci zařízení StorSimple. 
+Tento článek obsahuje užitečné pokyny k odstraňování problémů pro nasazení Microsoft Azure StorSimple. Popisuje běžné problémy, možné příčiny a doporučené kroky, které vám pomohou vyřešit problémy, které se můžete setkat při konfiguraci StorSimple. 
 
-Tato informace se vztahují na fyzické zařízení řady StorSimple 8000 a cloudu zařízení StorSimple.
+Tyto informace platí pro fyzická zařízení řady StorSimple 8000 i řešení StorSimple Cloud Appliance.
 
 > [!NOTE]
-> Související s konfigurací problémy zařízení, které může být vystaven může dojít, když nasazujete zařízení poprvé, nebo k nim lze dojde později, když je zařízení provozní. Tento článek se zaměřuje na řešení potíží s prvním nasazení. Chcete-li vyřešit provozní zařízení, přejděte na [řešení potíží s provozní zařízení pomocí nástroje Diagnostika](storsimple-8000-diagnostics.md).
+> Konfigurace související problémy zařízení, které mohou nastat situace může nastat při nasazení zařízení poprvé, nebo k nim můžete dojde později, když zařízení je funkční. Tento článek se zaměřuje na řešení potíží s problémy při prvním nasazení. Řešení potíží s operational zařízení, přejděte na [pomocí diagnostického nástroje pro řešení potíží s operational zařízení](storsimple-8000-diagnostics.md).
 
-Tento článek také popisuje nástroje pro řešení potíží s nasazením zařízení StorSimple a poskytuje podrobný příklad řešení potíží.
+Tento článek také popisuje nástroje pro řešení potíží s nasazeními StorSimple a poskytuje podrobný příklad řešení potíží.
 
 ## <a name="first-time-deployment-issues"></a>Problémy při prvním nasazení
-Pokud narazíte na problém při nasazování zařízení poprvé, zvažte následující:
+Pokud narazíte problém při prvním nasazení zařízení, zvažte následující:
 
-* Pokud řešíte fyzické zařízení, ujistěte se, že hardware má byla nainstalována a nakonfigurována, jak je popsáno v [instalace zařízení StorSimple 8100](storsimple-8100-hardware-installation.md) nebo [instalace zařízení StorSimple 8600](storsimple-8600-hardware-installation.md).
+* Pokud řešíte fyzické zařízení, ujistěte se, že byla nainstalována a nakonfigurovali podle popisu v hardwaru [instalaci zařízení StorSimple 8100](storsimple-8100-hardware-installation.md) nebo [instalaci zařízení StorSimple 8600](storsimple-8600-hardware-installation.md).
 * Zkontrolujte požadavky na nasazení. Ujistěte se, že máte všechny informace, které jsou popsané v [kontrolní seznam konfigurace nasazení](storsimple-8000-deployment-walkthrough-u2.md#deployment-configuration-checklist).
-* Přečtěte si poznámky k verzi StorSimple, pokud je popsána problém. Poznámky k verzi obsahovat alternativní řešení známých instalace problémy. 
+* Přečtěte si poznámky k verzi StorSimple, pokud je popsána problém. Zpráva k vydání verze zahrnují alternativní řešení známých instalace problémy. 
 
-Během nasazování zařízení nejběžnější problémy kterou můžou uživatelé setkávají dojde k jejich spuštění Průvodce instalací a při jejich registrace zařízení pomocí Windows Powershellu pro StorSimple. (Můžete použít prostředí Windows PowerShell pro StorSimple registrace a konfigurace zařízení StorSimple. Další informace o registraci zařízení najdete v tématu [krok 3: Konfigurace a registrace zařízení pomocí Windows Powershellu pro StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)).
+Během nasazování zařízení nejčastější problémy, které uživatelé pro rozpoznávání tváře dojít při spuštění Průvodce instalací a při registraci zařízení pomocí Windows Powershellu pro StorSimple. (Můžete použít Windows PowerShell pro StorSimple k registraci a konfiguraci zařízení StorSimple. Další informace o registraci zařízení najdete v tématu [krok 3: Konfigurace a registrace zařízení pomocí Windows Powershellu pro StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple)).
 
-V následujících částech vám může pomoct vyřešit problémy, které dojde při první konfiguraci zařízení StorSimple.
+Následující části vám můžou pomoct vyřešit problémy, ke které dojde při první konfiguraci zařízení StorSimple.
 
-## <a name="first-time-setup-wizard-process"></a>Průvodce instalací prvního
-Následující kroky shrnují Průvodce instalací. Instalační program podrobné informace najdete v tématu [nasazení místního zařízení StorSimple](storsimple-8000-deployment-walkthrough-u2.md).
+## <a name="first-time-setup-wizard-process"></a>Průvodce instalací první
+Následující kroky shrnují proces Průvodce instalací. Podrobné informace o nastavení, najdete v článku [nasazení zařízení StorSimple v místním](storsimple-8000-deployment-walkthrough-u2.md).
 
-1. Spustit [Invoke-HcsSetupWizard](https://technet.microsoft.com/library/dn688135.aspx) rutiny spusťte Průvodce instalací, který vás provede zbývající kroky. 
-2. Konfigurace sítě: Průvodce instalací vám umožní nakonfigurovat nastavení sítě síťového rozhraní DATA 0 v zařízení StorSimple. Tato nastavení zahrnují následující:
-   * Virtuální IP (VIP), maska podsítě a bránu – [Set-HcsNetInterface](https://technet.microsoft.com/library/dn688161.aspx) rutina se spustí na pozadí. Nakonfiguruje adresu IP, masky podsítě a bránu pro rozhraní DATA 0 sítě na zařízení StorSimple.
-   * Primární server DNS – [Set-HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) rutina se spustí na pozadí. Konfiguruje nastavení DNS pro vašeho řešení StorSimple.
-   * NTP server – [Set-HcsNtpClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) rutina se spustí na pozadí. Konfiguruje nastavení serveru NTP pro vašeho řešení StorSimple.
-   * Volitelné webový proxy server – [Set-HcsWebProxy](https://technet.microsoft.com/library/dn688154.aspx) rutina se spustí na pozadí. Nastaví a umožňuje konfiguraci webového proxy serveru pro vaše řešení StorSimple.
+1. Spustit [Invoke-HcsSetupWizard](https://technet.microsoft.com/library/dn688135.aspx) rutinu spusťte Průvodce instalací, který vás provede zbývající kroky. 
+2. Konfigurace sítě: Průvodce instalací vám umožní nakonfigurovat nastavení sítě síťové rozhraní DATA 0 v zařízení StorSimple. Tato nastavení patří následující:
+   * Virtuální IP (VIP), maska podsítě a bránu – [Set-HcsNetInterface](https://technet.microsoft.com/library/dn688161.aspx) rutiny probíhá na pozadí. Nakonfiguruje IP adresu, masku podsítě a bránu pro rozhraní DATA 0 sítě na zařízení StorSimple.
+   * Primární DNS server – [Set-HcsDnsClientServerAddress](https://technet.microsoft.com/library/dn688172.aspx) rutiny probíhá na pozadí. Konfiguruje nastavení DNS pro vaše řešení StorSimple.
+   * NTP server – [Set-HcsNtpClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) rutiny probíhá na pozadí. Konfiguruje nastavení serveru NTP pro vaše řešení StorSimple.
+   * Volitelné webový proxy server – [Set-HcsWebProxy](https://technet.microsoft.com/library/dn688154.aspx) rutiny probíhá na pozadí. Nastaví a umožňuje konfigurace webového proxy serveru pro řešení StorSimple.
 3. Nastavit heslo: dalším krokem je nastavení hesla správce zařízení.
    Heslo správce zařízení se používá k přihlášení k zařízení. Výchozí heslo zařízení je **Password1**.
         
      > [!IMPORTANT]
-     > Hesla jsou shromažďovány před zaregistrováním, ale použijí pouze po úspěšné registraci zařízení. Pokud dojde k selhání použít heslo, budete vyzváni k zadání hesla znovu, dokud se shromažďují požadované hesla (které splňují požadavky na složitost).
+     > Hesla jsou shromážděná před registrací, ale použít pouze po úspěšné registraci zařízení. Pokud dojde k selhání použít hesla, vyzváni k zadání hesla znovu, dokud se shromažďují požadovaná hesla, (, které splňují požadavky na složitost).
      
-4. Registrace zařízení: posledním krokem je registrace zařízení pomocí Správce zařízení StorSimple služby běžící v Microsoft Azure. Registrace vyžaduje, abyste [získat registrační klíč služby](storsimple-8000-manage-service.md#get-the-service-registration-key) z portálu Azure a poskytnout ho v Průvodci instalací. **Po úspěšné registraci zařízení se vám poskytuje šifrovacího klíče dat služby. Ujistěte se, že zachovat tento šifrovací klíč do bezpečného umístění, protože ji budou muset všechna další zařízení zaregistrovat službu.**
+4. Registrace zařízení: posledním krokem je registrace zařízení ve službě Správce zařízení StorSimple běží v Microsoft Azure. Registrace vyžaduje, abyste [registrační klíč služby získáte](storsimple-8000-manage-service.md#get-the-service-registration-key) z portálu Azure portal a ho zadat v Průvodci instalací. **Po úspěšné registraci zařízení, budete mít k dispozici šifrovací klíč dat služby. Je potřeba zachovat tento šifrovací klíč na bezpečném místě, protože ji budou muset všechna další zařízení zaregistrovat do služby.**
 
 ## <a name="common-errors-during-device-deployment"></a>Běžné chyby během nasazování zařízení
-V následujících tabulkách jsou uvedeny běžné chyby, že můžete narazit při můžete:
+Následující tabulky obsahují seznam běžných chyb, že můžete setkat, když jste:
 
-* Nakonfigurujte požadovaná síťová nastavení.
-* Nakonfigurujte nastavení volitelné webového proxy serveru.
+* Nakonfigurujte potřebná nastavení sítě.
+* Konfigurace nastavení volitelné webového proxy serveru.
 * Nastavení hesla správce zařízení.
 * Registrace zařízení.
 
-## <a name="errors-during-the-required-network-settings"></a>Chyby při nastavení požadovaná sítě
+## <a name="errors-during-the-required-network-settings"></a>Chyby při potřebná nastavení sítě
 | Ne. | Chybová zpráva | Možné příčiny | Doporučená akce |
 | --- | --- | --- | --- |
-| 1 |Invoke-HcsSetupWizard: Tento příkaz lze spustit pouze v aktivním řadiči. |Konfigurace se provádí na pasivní řadiče. |Tento příkaz lze spustíte z aktivní řadiče. Další informace najdete v tématu [identifikovat v zařízení aktivní řadič](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
-| 2 |Invoke-HcsSetupWizard: Zařízení není připraveno. |Nedochází k potížím s připojením k síti na DATA 0. |Zkontrolujte připojení k fyzické síti na DATA 0. |
-| 3 |Invoke-HcsSetupWizard: Je konflikt IP adres s jiným systémem v síti (výjimky z HRESULT: 0x80070263). |IP adresa zadaná pro DATA 0 byl již používán jiným systémem. |Zadejte novou IP, které nejsou používána. |
-| 4 |Invoke-HcsSetupWizard: Prostředku clusteru se nezdařilo. (Výjimka z HRESULT: 0x800713AE). |Duplicitní VIP. Zadaná IP adresa je již používán. |Zadejte novou IP, které nejsou používána. |
-| 5 |Invoke-HcsSetupWizard: Neplatný IPv4 adresa. |IP adresy se poskytuje v nesprávném formátu. |Zkontrolujte formát a znovu zadejte IP adresu. Další informace najdete v tématu [adresování protokolu Ipv4][1]. |
-| 6 |Invoke-HcsSetupWizard: Neplatný IPv6 adresa. |IP adresy se poskytuje v nesprávném formátu. |Zkontrolujte formát a znovu zadejte IP adresu. Další informace najdete v tématu [adresách Ipv6][2]. |
-| 7 |Invoke-HcsSetupWizard: Další koncové body nejsou k dispozici z mapovač koncových bodů. (Výjimka z HRESULT: 0x800706D9) |Funkce cluster nefunguje. |[Kontaktujte Microsoft Support](storsimple-8000-contact-microsoft-support.md) pro další kroky. |
+| 1 |Invoke-HcsSetupWizard: Tento příkaz lze spustit pouze na aktivním řadiči. |Konfigurace se právě provádí na pasivním kontroleru. |Spusťte tento příkaz z aktivního kontroleru. Další informace najdete v tématu [identifikace aktivního kontroleru na vašem zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device). |
+| 2 |Invoke-HcsSetupWizard: Zařízení není připraveno. |Dochází k problémům s připojením k síti na DATA 0. |Zkontrolujte připojení k fyzické síti na DATA 0. |
+| 3 |Invoke-HcsSetupWizard: Existuje konflikt IP adres s jiným systémem v síti (výjimka z HRESULT: 0x80070263). |IP adresa zadaná pro DATA 0 se již používá jiný systém. |Zadejte novou IP adresu, která se nepoužívá. |
+| 4 |Invoke-HcsSetupWizard: Prostředek clusteru selhal. (Výjimka z HRESULT: 0x800713AE). |Duplicitní virtuální IP adresy. Zadaná IP adresa se už používá. |Zadejte novou IP adresu, která se nepoužívá. |
+| 5 |Invoke-HcsSetupWizard: Neplatná IPv4 adresa. |IP adresy se poskytuje v nesprávném formátu. |Zkontrolujte formát a znovu zadejte IP adresu. Další informace najdete v tématu [adresování protokolu Ipv4][1]. |
+| 6 |Invoke-HcsSetupWizard: Neplatná IPv6 adresa. |IP adresy se poskytuje v nesprávném formátu. |Zkontrolujte formát a znovu zadejte IP adresu. Další informace najdete v tématu [adresování Ipv6][2]. |
+| 7 |Invoke-HcsSetupWizard: Žádné další koncové body nejsou k dispozici z mapovač koncových bodů. (Výjimka z HRESULT: 0x800706D9) |Fungování clusteru není funkční. |[Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) o dalších krocích. |
 
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>Chyby při nastavení volitelné webového proxy serveru
 | Ne. | Chybová zpráva | Možné příčiny | Doporučená akce |
 | --- | --- | --- | --- |
-| 1 |Invoke-HcsSetupWizard: Neplatný parametr (výjimky z HRESULT: 0x80070057) |Jeden z parametrů zadaných pro nastavení proxy serveru je neplatný. |Identifikátor URI není k dispozici ve správném formátu. Použijte následující formát: http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
-| 2 |Invoke-HcsSetupWizard: Server RPC není k dispozici (výjimky z HRESULT: 0x800706ba) |Hlavní příčinou je jedním z těchto:<ol><li>Až clusteru není.</li><li>Pasivní řadiče nemůže komunikovat s řadičem aktivní a se příkaz spustí z pasivní řadiče.</li></ol> |V závislosti na příčiny:<ol><li>[Kontaktujte Microsoft Support](storsimple-8000-contact-microsoft-support.md) a ujistěte se, zda je clusteru.</li><li>Spusťte příkaz z aktivní řadiče. Pokud chcete spustit příkaz z pasivní řadiče, musíte zajistit, že pasivní řadič může komunikovat s řadičem active. Budete muset [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md) Pokud toto připojení je přerušené.</li></ol> |
-| 3 |Invoke-HcsSetupWizard: Volání vzdáleného volání Procedur se nezdařilo (výjimky z HRESULT: 0x800706be) |Clusteru je mimo provoz. |[Kontaktujte Microsoft Support](storsimple-8000-contact-microsoft-support.md) a ujistěte se, zda je clusteru. |
-| 4 |Invoke-HcsSetupWizard: Clusteru prostředek nebyl nalezen (výjimky z HRESULT: 0x8007138f) |Prostředek clusteru nebyl nalezen. To může nastat při instalaci není správný. |Potřebujete v zařízení resetovat výchozí tovární nastavení. [Kontaktujte Microsoft Support](storsimple-8000-contact-microsoft-support.md) vytvoření prostředku clusteru. |
-| 5 |Invoke-HcsSetupWizard: Clusteru zdroj není online (výjimky z HRESULT: 0x8007138c) |Prostředky clusteru nejsou online. |[Kontaktujte Microsoft Support](storsimple-8000-contact-microsoft-support.md) pro další kroky. |
+| 1 |Invoke-HcsSetupWizard: Neplatný parametr (výjimka z HRESULT: 0x80070057) |Jeden z parametrů stanovených nastavení proxy serveru není platný. |Není k dispozici identifikátor URI ve správném formátu. Použijte následující formát: http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
+| 2 |Invoke-HcsSetupWizard: Server vzdáleného volání Procedur není k dispozici (výjimka z HRESULT: 0x800706ba) |Hlavní příčinou je jeden z následujících akcí:<ol><li>Až cluster není.</li><li>Pasivní kontroler nemůže komunikovat s aktivním řadiči. proto se příkaz spustí z pasivní kontroler.</li></ol> |V závislosti na hlavní příčina:<ol><li>[Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) abyste měli jistotu, že cluster běží.</li><li>Spusťte příkaz z aktivního kontroleru. Pokud chcete spustit příkaz z pasivního kontroleru, je potřeba zajistit, že pasivní kontroler může komunikovat s aktivním řadiči. Budete muset [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) Pokud tyto možnosti připojení bylo přerušeno.</li></ol> |
+| 3 |Invoke-HcsSetupWizard: Volání RPC se nezdařilo (výjimka z HRESULT: 0x800706be) |Clusteru je mimo provoz. |[Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) abyste měli jistotu, že cluster běží. |
+| 4 |Invoke-HcsSetupWizard: Cluster prostředek se nenašel (výjimka z HRESULT: 0x8007138f) |Prostředek clusteru se nenašel. To může nastat při instalaci není správný. |Budete muset obnovit zařízení do výchozího továrního nastavení. [Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) k vytvoření prostředku clusteru. |
+| 5 |Invoke-HcsSetupWizard: Cluster zdroj není online (výjimka z HRESULT: 0x8007138c) |Prostředky clusteru nejsou online. |[Obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) o dalších krocích. |
 
 ## <a name="errors-related-to-device-administrator-password"></a>Chyby související s hesla správce zařízení
-Výchozí heslo správce zařízení je **Heslo1**. Toto heslo vyprší po prvním přihlášení; Proto musíte použít Průvodce instalací nástroje ho změnit. Při první registraci zařízení, je nutné zadat nové heslo správce zařízení. 
+Výchozí heslo správce zařízení je **Heslo1**. Toto heslo vyprší po prvním přihlášení; Proto je potřeba ji změnit pomocí Průvodce instalací. Při první registraci zařízení je nutné zadat nové heslo správce zařízení. 
 
 Ujistěte se, že hesla splňovat následující požadavky:
 
-* Heslo správce zařízení musí mít délku 8 až 15 znaků.
+* Heslo správce zařízení by měl mít délku 8 až 15 znaků.
 * Hesla musí obsahovat 3 z následujících typů znaků 4: malá písmena, velká písmena, číselné a speciální. 
 * Heslo nesmí být stejný jako poslední 24 hesla.
 
-Kromě toho mějte na paměti, že každý rok po vypršení platnosti hesla a lze změnit pouze po úspěšné registraci zařízení. Pokud se registrace z jakéhokoli důvodu nezdaří, hesla se nezmění.
+Kromě toho mějte na paměti, hesla vyprší každý rok, který lze změnit pouze po úspěšné registraci zařízení. Pokud z nějakého důvodu selže registrace hesla se nezmění.
 
-Další informace o heslo správce zařízení, přejděte na [pomocí služby StorSimple Manager zařízení StorSimple heslo změnit](storsimple-8000-change-passwords.md).
+Další informace o heslo správce zařízení, přejděte na [použít službu Správce zařízení StorSimple ke změně hesla StorSimple](storsimple-8000-change-passwords.md).
 
-Jeden nebo více z těchto chyb setkat při nastavování správce zařízení a hesla Snapshot Manageru zařízení StorSimple.
+Jeden nebo více z těchto chyb může dojít při nastavování hesla Snapshot Manageru zařízení StorSimple a Správce zařízení.
 
 | Ne. | Chybová zpráva | Doporučená akce |
 | --- | --- | --- |
-| 1 |Heslo překračuje maximální délku. |Heslo správce zařízení musí být mezi 8 až 15 znaků. |
-| 2 |Heslo nesplňuje požadovanou délku. |Heslo správce zařízení musí být mezi 8 až 15 znaků.|
+| 1 |Heslo překračuje maximální délku. |Heslo správce zařízení musí být dlouhé 8 až 15 znaků. |
+| 2 |Heslo nesplňuje požadovanou délku. |Heslo správce zařízení musí být dlouhé 8 až 15 znaků.|
 | 3 |Heslo musí obsahovat malá písmena. |Hesla musí obsahovat 3 z následujících typů znaků 4: malá písmena, velká písmena, číselné a speciální. Ujistěte se, že vaše heslo splňuje tyto požadavky. |
 | 4 |Heslo musí obsahovat znaky. |Hesla musí obsahovat 3 z následujících typů znaků 4: malá písmena, velká písmena, číselné a speciální. Ujistěte se, že vaše heslo splňuje tyto požadavky. |
 | 5 |Heslo musí obsahovat speciální znaky. |Hesla musí obsahovat 3 z následujících typů znaků 4: malá písmena, velká písmena, číselné a speciální. Ujistěte se, že vaše heslo splňuje tyto požadavky. |
 | 6 |Heslo musí obsahovat 3 z následujících typů 4 znaků: velká písmena, malá písmena, číselné a speciální. |Heslo neobsahuje požadované typy znaků. Ujistěte se, že vaše heslo splňuje tyto požadavky. |
-| 7 |Parametr neodpovídá potvrzení. |Ujistěte se, že vaše heslo splňuje všechny požadavky a že jste ji zadali správně. |
-| 8 |Vaše heslo se nemůže shodovat výchozí. |Výchozí heslo je *Heslo1*. Budete muset po prvním přihlášení Toto heslo změnit. |
-| 9 |Heslo, které jste zadali, neodpovídá heslo zařízení. Zadejte heslo znovu. |Zkontrolujte heslo a zadejte jej znovu. |
+| 7 |Parametr neodpovídá potvrzení. |Ujistěte se, že vaše heslo splňuje všechny požadavky a že jste ho zadali správně. |
+| 8 |Heslo nesmí odpovídat ve výchozím nastavení. |Výchozí heslo je *Heslo1*. Budete muset toto heslo změnit po prvním přihlášení. |
+| 9 |Heslo, které jste zadali, neodpovídá heslo zařízení. Zadejte heslo znovu. |Zkontrolujte heslo a zadávat znovu. |
 
-Hesla se shromažďují před zařízení je registrované, ale použijí se jenom po úspěšné registraci. Pracovní postup obnovení hesla vyžaduje, aby zařízení k registraci.
+Hesla se shromažďují předtím, než zařízení je zaregistrované, ale se použijí pouze po úspěšném dokončení registrace. Pracovní postup obnovení hesla vyžaduje zařízení k registraci.
 
 > [!IMPORTANT]
-> Obecně platí Pokud se nezdaří pokus o použití hesla, pak software pokusí se opakovaně o shromažďování heslo, dokud neproběhne úspěšně. Ve výjimečných případech nelze použít heslo. V takovém případě můžete zaregistrovat zařízení a pokračovat, ale nebudou změněny hesla. Po registraci z portálu Azure můžete změnit heslo správce zařízení.
+> Obecně platí Pokud se nezdaří pokus o použití hesla, pak software opakovaně pokusí shromáždit heslo, dokud nebude úspěšná. Ve výjimečných případech nelze použít heslo. V takovém případě můžete zaregistrovat zařízení a pokračovat, ale nebudou změněny hesla. Po registraci na webu Azure Portal můžete změnit heslo správce zařízení.
 
 
-Můžete resetovat heslo v portálu Azure pomocí služby StorSimple Manager zařízení. Další informace, přejděte na [změnit heslo správce zařízení](storsimple-8000-change-passwords.md#change-the-device-administrator-password).
+Můžete resetovat heslo na webu Azure Portal prostřednictvím služby Správce zařízení StorSimple. Další informace najdete v části [změnit heslo správce zařízení](storsimple-8000-change-passwords.md#change-the-device-administrator-password).
 
 ## <a name="errors-during-device-registration"></a>Chyby při registraci zařízení
-Použijete službu StorSimple Manager zařízení v Microsoft Azure k registraci zařízení. Jeden nebo více z následujících důvodů může dojít během registrace zařízení.
+Použijte ve službě Správce zařízení StorSimple běží v Microsoft Azure k registraci zařízení. Jeden nebo více z těchto problémů může dojít při registraci zařízení.
 
 | Ne. | Chybová zpráva | Možné příčiny | Doporučená akce |
 | --- | --- | --- | --- |
-| 1 |Chyba 350027: Nepodařilo se zaregistrovat zařízení pomocí Správce zařízení StorSimple. | |Počkejte několik minut a opakujte operaci znovu. Pokud potíže potrvají, [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md). |
-| 2 |Chyba 350013: Došlo k chybě při registraci zařízení. Tuto situaci mohly způsobit nesprávné služby registrační klíč. | |Zaregistrujte prosím zařízení znovu s použitím správného registračního klíče služby. Další informace najdete v tématu [získat registrační klíč služby.](storsimple-8000-manage-service.md#get-the-service-registration-key) |
-| 3 |Chyba 350063: Selhalo ověřování služby StorSimple Manager zařízení předán ale registrace. Opakujte operaci po určité době. |Tato chyba znamená, že uplynutí ověřování pomocí služby ACS, ale volání registrace služby se nezdařilo. To může být výsledek chybě ojediněle sítě. |Pokud problém přetrvá, prosím [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md). |
-| 4 |Chyba 350049: Služba není dosažitelná během registrace. |Při volání ke službě, byl přijat webové výjimka. V některých případech to může získat stanovena opakováním operaci později. |Zkontrolujte, zda vaše IP adresa a název DNS a potom operaci opakujte. Pokud potíže potrvají, [kontaktovat Microsoft Support.](storsimple-8000-contact-microsoft-support.md) |
-| 5 |Chyba 350031: Zařízení je již zaregistrován. | |Není potřebná žádná akce. |
-| 6 |Chyba 350016: Registrace zařízení se nezdařila. | |Zkontrolujte prosím, že je správný registrační klíč. |
-| 7 |Invoke-HcsSetupWizard: Došlo k chybě při registraci zařízení; Tuto situaci mohly způsobit nesprávné IP adresu nebo název DNS. Zkontrolujte síťové nastavení a zkuste to znovu. Pokud potíže potrvají, [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md). (Chyba 350050) |Ujistěte se, že zařízení může odeslat příkaz ping vnější síti. Pokud jste připojení k vnější síti, registrace se pravděpodobně nezdaří s touto chybou. Tato chyba může být kombinací jeden nebo více následujících akcí:<ul><li>Nesprávná IP</li><li>Nesprávný podsítě</li><li>Nesprávný brány</li><li>Nesprávné nastavení DNS</li></ul> |Podívejte se na postup v [podrobný příklad řešení potíží](#step-by-step-storsimple-troubleshooting-example). |
-| 8 |Invoke-HcsSetupWizard: Aktuální operace selhala kvůli vnitřní chybě služby [0x1FBE2]. Zkuste operaci po nějaké době zopakovat. Pokud potíže potrvají, kontaktujte prosím Microsoft Support. |Toto je obecná chyba vyvolána pro všechny uživatele neviditelná chyby ze služby nebo agenta. Nejčastější příčinou může být, že se nezdařilo ověření služby ACS. Možnou příčinou chyby je, že dochází k potížím s konfigurací serveru NTP a čas v zařízení není správně nastaven. |Opravte čas (v případě problémů) a opakujte operaci registrace. Pokud použijete příkaz Set-HcsSystem - časové pásmo upravit časové pásmo, převedení na velká písmena jednotlivých slov v časovém pásmu (například "Tichomoří (běžný čas)").  Pokud potíže potrvají, [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md) pro další kroky. |
-| 9 |Upozornění: Nebylo možné aktivovat zařízení. Správce zařízení a hesla Snapshot Manageru zařízení StorSimple nebyly změněny. |Pokud se registrace nezdaří, Správce zařízení a hesla Snapshot Manageru zařízení StorSimple, nebudou změněny. | |
+| 1 |Chyba 350027: Nepovedlo se zaregistrovat zařízení pomocí Správce zařízení StorSimple. | |Počkejte pár minut a opakujte operaci znovu. Pokud se problém nevyřeší, [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md). |
+| 2 |Chyba 350013: Při registraci zařízení došlo k chybě. To může být nesprávný registrační klíč služby. | |Zaregistrujte prosím zařízení znovu s použitím správného registračního klíče služby. Další informace najdete v tématu [získat registrační klíč služby.](storsimple-8000-manage-service.md#get-the-service-registration-key) |
+| 3 |Chyba 350063: Selhalo ověřování do služby Správce zařízení StorSimple předán, ale registrace. Zkuste prosím operaci zopakovat později. |Tato chyba označuje, že uplynutí ověřování pomocí služby ACS, ale volání registrace ke službě se nezdařila. To může být výsledkem poruchu sporadické sítě. |Pokud se problém nevyřeší, prosím [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md). |
+| 4 |Chyba 350049: Služba není dosažitelná během registrace. |Když při volání do služby, webové výjimce přijetí. V některých případech to může získat opraven budete pokoušet operaci později. |Zkontrolujte prosím IP adresu a název DNS a zkuste operaci zopakovat. Pokud se problém nevyřeší, [obraťte se na Microsoft Support.](storsimple-8000-contact-microsoft-support.md) |
+| 5 |Chyba 350031: Zařízení je již zaregistrován. | |Není potřeba žádná akce. |
+| 6 |Chyba 350016: Registrace zařízení se nezdařila. | |Ujistěte se prosím, že registrační klíč je správný. |
+| 7 |Invoke-HcsSetupWizard: Došlo k chybě při registraci zařízení; To může být způsobeno nesprávná IP adresa nebo název DNS. Zkontrolujte nastavení sítě a zkuste to znovu. Pokud se problém nevyřeší, [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md). (Chyba 350050) |Ujistěte se, že vaše zařízení příkazem ping vnější síti. Pokud nemáte připojení k vnější síti, registrace může selhat s touto chybou. Tato chyba může být kombinací jeden nebo více z následujících akcí:<ul><li>Nesprávná IP</li><li>Nesprávný podsítě</li><li>Nesprávný brány</li><li>Nesprávné nastavení DNS</li></ul> |Podívejte se na postup v [podrobný Poradce při potížích příklad](#step-by-step-storsimple-troubleshooting-example). |
+| 8 |Invoke-HcsSetupWizard: Aktuální operace selhala kvůli vnitřní chybě služby [0x1FBE2]. Zkuste operaci po nějaké době zopakovat. Pokud se problém nevyřeší, obraťte se na Microsoft Support. |Toto je obecná chyba vyvolána pro všechny uživatele neviditelné chyby ze služby nebo agenta. Nejběžnějším Důvodem může být, že ověřování ACS se nezdařilo. Možná příčina selhání je, že dojde k problémům s konfigurací serveru NTP a čas na zařízení není správně nastaven. |Opravte čas (Pokud dojde k problémům) a pak zkuste operaci zopakovat registraci. Pokud pomocí příkazu Set-HcsSystem - Timezone upravte časové pásmo, velké první písmeno každého slova v časovém pásmu (například "Tichomoří (běžný čas").  Pokud se problém nevyřeší, [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) o dalších krocích. |
+| 9 |Upozornění: Nebylo možné aktivovat zařízení. Správce zařízení a hesla Snapshot Manageru zařízení StorSimple se nezměnily. |Pokud se registrace nezdaří, Správce zařízení a hesla Snapshot Manageru zařízení StorSimple se nezmění. | |
 
-## <a name="tools-for-troubleshooting-storsimple-deployments"></a>Nástroje pro řešení potíží s nasazením zařízení StorSimple
+## <a name="tools-for-troubleshooting-storsimple-deployments"></a>Nástroje pro řešení potíží s nasazeními StorSimple
 StorSimple obsahuje několik nástrojů, které můžete použít k řešení vašeho řešení StorSimple. Mezi ně patří:
 
-* Podporuje balíčky a protokolů zařízení.
-* Rutiny speciálně pro řešení potíží.
+* Podporuje balíčky a protokoly zařízení.
+* Rutiny vytvořené speciálně pro řešení potíží.
 
-## <a name="support-packages-and-device-logs-available-for-troubleshooting"></a>Podporuje balíčky a protokolů zařízení, které jsou k dispozici pro řešení potíží
-Balíček pro podporu obsahuje všechny relevantní protokoly, které mohou pomoci týmem Microsoft Support s potíží zařízení. Prostředí Windows PowerShell pro StorSimple můžete použít ke generování balíček šifrované podpory, které pak můžete sdílet s pracovníky podpory.
+## <a name="support-packages-and-device-logs-available-for-troubleshooting"></a>Podporuje balíčky a zařízení nejsou k dispozici protokoly pro řešení potíží
+Balíček pro podporu obsahuje všechny relevantní protokoly, které mohou pomoci týmu Microsoft Support při řešení problémů se zařízením. Prostředí Windows PowerShell pro StorSimple můžete použít k vygenerování balíčku šifrované podpory, které pak můžete sdílet s pracovníky podpory.
 
-### <a name="to-view-the-logs-or-the-contents-of-the-support-package"></a>Chcete-li zobrazit protokoly nebo obsah balíčku podpory
-1. Pomocí Windows Powershellu pro StorSimple ke generování balíčku pro podporu, jak je popsáno v [vytvoření a Správa balíčku pro podporu](storsimple-8000-create-manage-support-package.md).
-2. Stažení [dešifrování skriptu](https://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) místně na klientském počítači.
-3. Použít [podrobný postup](storsimple-8000-create-manage-support-package.md#edit-a-support-package) otevřít a dešifrování balíček pro podporu.
-4. Protokoly balíček dešifrovaný podpory jsou ve formátu trasování událostí pro Windows nebo etvx. Abyste mohli provést následující kroky k zobrazení těchto souborů v prohlížeči událostí systému Windows:
+### <a name="to-view-the-logs-or-the-contents-of-the-support-package"></a>Chcete-li zobrazit protokoly nebo obsah balíčku pro podporu
+1. Vygenerujte balíček pro podporu, jak je popsáno v pomocí Windows Powershellu pro StorSimple [vytvoření a Správa balíčku pro podporu](storsimple-8000-create-manage-support-package.md).
+2. Stáhněte si [dešifrování skript](https://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) lokálně na klientském počítači.
+3. Použijte tento [podrobný postup](storsimple-8000-create-manage-support-package.md#edit-a-support-package) k otevření a dešifrovat balíček pro podporu.
+4. Protokoly balíček dešifrovaný podpory jsou ve formátu trasování událostí pro Windows/etvx. Můžete provést následující kroky a tyto soubory zobrazit v prohlížeči událostí pro Windows:
    
-   1. Spustit **eventvwr** příkazů na vašeho klienta Windows. Tím se spustí prohlížeč událostí.
-   2. V **akce** podokně klikněte na tlačítko **otevřít uložený protokol** a přejděte na soubory protokolu ve formátu etvx nebo trasování událostí pro Windows (podpora balíček). Teď si můžete zobrazit soubor. Po otevření souboru, kliknete pravým tlačítkem a uložte soubor jako text.
+   1. Spustit **eventvwr** příkaz na klientovi Windows. Tím se spustí prohlížeč událostí.
+   2. V **akce** podokně klikněte na tlačítko **otevřít uložený protokol** a odkazují na soubory protokolu ve formátu etvx/trasování událostí pro Windows (balíček pro podporu). Teď si můžete zobrazit soubor. Po otevření souboru, kliknete pravým tlačítkem a uložte soubor jako text.
       
       > [!IMPORTANT]
-      > Můžete také **Get-WinEvent** rutiny otevření těchto souborů v prostředí Windows PowerShell. Další informace najdete v tématu [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx) v referenční dokumentaci rutiny prostředí Windows PowerShell.
+      > Můžete také použít **Get-WinEvent** rutiny pro otevření těchto souborů v prostředí Windows PowerShell. Další informace najdete v tématu [Get-WinEvent](https://technet.microsoft.com/library/hh849682.aspx) v referenční dokumentace k rutinám Windows Powershellu.
      
-5. Když otevřete protokoly v prohlížeči událostí, podívejte se na tyto protokoly, které obsahují problémy související s konfigurací zařízení:
+5. Když otevřete protokoly v prohlížeči událostí vyhledejte tyto protokoly, které obsahují problémy související s konfigurací zařízení:
    
    * hcs_pfconfig/Operational protokolu
-   * hcs_pfconfig nebo konfigurace
-6. V souborech protokolu hledat řetězce související s rutinami volá Průvodce instalací. V tématu [Průvodce instalací prvního](#first-time-setup-wizard-process) seznam tyto rutiny.
-7. Pokud si nejste schopni zjistit příčinu problému, můžete [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md) pro další kroky. Postupujte podle kroků v [vytvořit žádost o podporu](storsimple-8000-contact-microsoft-support.md#create-a-support-request) při požádejte Microsoft Support o pomoc.
+   * hcs_pfconfig/Config
+6. V souborech protokolu hledat řetězce související s rutinami, volá se, Průvodce instalací. Zobrazit [Průvodce instalací první](#first-time-setup-wizard-process) seznam těchto rutin.
+7. Pokud nejste schopni zjistit příčinu problému, můžete si [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) o dalších krocích. Postupujte podle kroků v [vytvořit žádost o podporu](storsimple-8000-contact-microsoft-support.md#create-a-support-request) když požádáte o pomoc Microsoft Support.
 
 ## <a name="cmdlets-available-for-troubleshooting"></a>Rutiny, které jsou k dispozici pro řešení potíží
-Následující rutiny prostředí Windows PowerShell použijte k detekci k chybám připojení.
+Následující rutiny prostředí Windows PowerShell použijte k detekci chyb připojení.
 
 * `Get-NetAdapter`: Tuto rutinu použijte k detekci stavu síťových rozhraní.
-* `Test-Connection`: Pomocí této rutiny zkontrolujte možnosti síťového připojení uvnitř i vně sítě.
-* `Test-HcsmConnection`: Pomocí této rutiny zkontrolujte připojení úspěšně registrovaná zařízení.
-* `Sync-HcsTime`: Tuto rutinu použijte k zobrazení času a vynutit synchronizace času s serveru NTP.
-* `Enable-HcsPing`a `Disable-HcsPing`: použijte tyto rutiny umožňující hostitelů na příkaz ping na rozhraní sítě v zařízení StorSimple. Ve výchozím nastavení rozhraní sítě StorSimple neodpoví na žádosti příkazu ping.
-* `Trace-HcsRoute`: Pomocí této rutiny jako nástroj pro sledování tras. Odesílá pakety každému směrovači na cestě do konečného cíle přes v časovém intervalu a pak vypočítá výsledky podle vrácených z každého směrování paketů. Vzhledem k tomu `Trace-HcsRoute` zobrazuje stupeň ztráta paketů v jakékoli dané směrovače nebo odkaz, lze přesně určit které směrovače nebo odkazy může být příčinou problémů se sítí.
-* `Get-HcsRoutingTable`: Tuto rutinu použijte k zobrazení místní směrovací tabulky protokolu IP.
+* `Test-Connection`: Pomocí této rutiny zkontrolujte připojení k síti uvnitř i mimo síť.
+* `Test-HcsmConnection`: Pomocí této rutiny aby se ověřilo připojení úspěšně registrovaná zařízení.
+* `Sync-HcsTime`: Tuto rutinu použijte k zobrazení času zařízení a vynucení synchronizace času se serverem NTP.
+* `Enable-HcsPing` a `Disable-HcsPing`: použijte tyto rutiny umožňující hostitele pro odeslání příkazu ping síťových rozhraní na zařízení StorSimple. Ve výchozím nastavení síťová rozhraní StorSimple není reagovat na žádosti příkazu ping.
+* `Trace-HcsRoute`: Pomocí této rutiny jako nástroj pro sledování postupu. Odešle pakety každý směrovač na cestě do konečného místa určení po určitou dobu a pak vypočítá výsledky podle paketů vrácených z každého směrování. Protože `Trace-HcsRoute` ukazuje stupeň ztráta paketů v jakékoli dané směrovače nebo odkaz, můžete určit které směrovače nebo odkazy by mohly způsobovat problémy se sítí.
+* `Get-HcsRoutingTable`: Tuto rutinu použijte k zobrazení místní směrovací tabulce IP.
 
-## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>Poradce při potížích s rutinu Get-NetAdapter
-Když konfigurujete síťová rozhraní pro nasazení prvního zařízení, stav hardwaru není k dispozici ve službě StorSimple Manager zařízení uživatelského rozhraní, protože zařízení zatím není registrovaný ve službě. Kromě toho **stavu hardwaru** okno nemusí odrážet vždy správně stavu zařízení, zejména v případě, že jsou problémy, které mají vliv synchronizace služby. V těchto situacích můžete použít `Get-NetAdapter` rutiny určit stav síťových rozhraní.
+## <a name="troubleshoot-with-the-get-netadapter-cmdlet"></a>Řešení potíží pomocí rutiny Get-NetAdapter
+Při konfiguraci síťových rozhraní pro nasazení první zařízení, stav hardwaru není k dispozici ve službě Správce zařízení StorSimple uživatelského rozhraní, protože zařízení ještě není zaregistrované ve službě. Kromě toho **stav hardwaru** okno nemusí odrážet vždy správně stavu zařízení, zejména v případě, že dojde k problémům, které mají vliv synchronizace služby. V takových případech můžete použít `Get-NetAdapter` rutiny určit stav síťových rozhraní.
 
-### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>Zobrazte seznam všech síťových adaptérů na zařízení
-1. Spusťte prostředí Windows PowerShell pro StorSimple a pak zadejte `Get-NetAdapter`. 
-2. Použít výstup `Get-NetAdapter` rutiny a následující pokyny pro porozumění stavům síťového rozhraní.
+### <a name="to-see-a-list-of-all-the-network-adapters-on-your-device"></a>Chcete-li zobrazit seznam všech síťových adaptérů na vašem zařízení
+1. Spusťte prostředí Windows PowerShell pro StorSimple a potom zadejte `Get-NetAdapter`. 
+2. Použít výstup `Get-NetAdapter` rutiny a následující pokyny pro zjištění stavu síťového rozhraní.
    
-   * Pokud rozhraní je v pořádku a je povolen **ifIndex** stav se zobrazuje jako **až**.
-   * Pokud rozhraní je v pořádku, ale není fyzicky (podle síťový kabel), **ifIndex** se zobrazí jako **zakázané**.
-   * Pokud rozhraní je v pořádku, ale není povoleno **ifIndex** stav se zobrazuje jako **NotPresent**.
-   * Pokud rozhraní neexistuje, nezobrazí se v tomto seznamu. Službu StorSimple Manager zařízení uživatelského rozhraní, bude mít toto rozhraní ve stavu selhání.
+   * Pokud rozhraní je v pořádku a povolený, **ifIndex** stav zobrazen **nahoru**.
+   * Pokud rozhraní je v pořádku, ale není fyzicky připojené (pomocí síťového kabelu) **ifIndex** se zobrazuje jako **zakázané**.
+   * Pokud rozhraní je v pořádku, ale není povoleno, **ifIndex** stav zobrazen **NotPresent**.
+   * Pokud rozhraní buď neexistuje, nezobrazí se v tomto seznamu. Uživatelské rozhraní služby Správce zařízení StorSimple bude mít toto rozhraní ve stavu selhání.
 
-Další informace o tom, jak použít tuto rutinu, přejděte na [GetNetAdapter](https://technet.microsoft.com/library/jj130867.aspx) v odkazu na rutiny Windows Powershellu.
+Další informace o tom, jak pomocí této rutiny naleznete v části [Get-NetAdapter](https://docs.microsoft.com/powershell/module/netadapter/get-netadapter?view=win10-ps) v Reference k rutinám Windows Powershellu.
 
-Následující části vysvětlují ukázky výstupu z `Get-NetAdapter` rutiny.
+V následujících částech se dozvíte ukázky výstup z `Get-NetAdapter` rutiny.
 
- Tyto ukázky řadič 0 byl pasivní řadiče a bylo nakonfigurováno takto:
+ V těchto ukázek řadič 0 pasivní kontroler a bylo nakonfigurováno takto:
 
-* DATA 0, 1 dat, DATA 2 a DATA 3 síťové rozhraní byly na zařízení.
-* DATA 4 a 5 dat síťových karet nebyly nalezeny; proto nejsou uvedené ve výstupu.
-* DATA 0 bylo povoleno.
+* DATA 0, DATA 1, DATA 2 a DATA 3 v síti byly rozhraní na zařízení.
+* Nebyly k dispozici; DATA 4 a karty síťového rozhraní DATA 5 proto nejsou uvedené ve výstupu.
+* Bylo povolené rozhraní DATA 0.
 
-Řadič 1 byla aktivní řadiče a bylo nakonfigurováno takto:
+Řadič 1 aktivní kontroler a bylo nakonfigurováno takto:
 
-* DATA 0, DATA 1, 2 dat, DATA 3, DATA 4 a DATA 5 síťové rozhraní byly na zařízení.
-* DATA 0 bylo povoleno.
+* DATA 0, DATA 1, DATA 2, DATA 3, DATA 4 a 5 dat v síti byly rozhraní na zařízení.
+* Bylo povolené rozhraní DATA 0.
 
-**Ukázkový výstup – řadič 0**
+**Ukázkový výstup – řadiče 0**
 
-Zde je výstup řadič 0 (pasivní řadič). DATA 1, DATA 2 a DATA 3 nejsou připojené. DATA 4 a 5 dat nejsou zobrazeny, protože se nenachází v zařízení.
+Následuje výstup z řadiče 0 (pasivní kontroler). Nejste připojení dat 1, DATA 2 a DATA 3. DATA 4 a DATA 5 nejsou uvedené, protože nejsou k dispozici na zařízení.
 
      Controller0>Get-NetAdapter
      Name                 InterfaceDescription                        ifIndex  Status
@@ -218,9 +218,9 @@ Zde je výstup řadič 0 (pasivní řadič). DATA 1, DATA 2 a DATA 3 nejsou při
      DATA0                Intel(R) 82574L Gigabit Network Conn...     15       Up
 
 
-**Ukázkový výstup – řadič 1**
+**Ukázkový výstup – řadiče 1**
 
-Zde je výstup z řadiče 1 (aktivní řadič). Pouze DATA 0 je nakonfigurován síťové rozhraní na zařízení a funkční.
+Následuje výstup z řadiče 1 (aktivní kontroler). Pouze DATA 0 nakonfigurovali síťového rozhraní na zařízení a funkční.
 
      Controller1>Get-NetAdapter
      Name                 InterfaceDescription                        ifIndex  Status
@@ -234,19 +234,19 @@ Zde je výstup z řadiče 1 (aktivní řadič). Pouze DATA 0 je nakonfigurován 
      DATA4                Intel(R) Gigabit ET Dual Port Serv...#2     17       NotPresent
 
 
-## <a name="troubleshoot-with-the-test-connection-cmdlet"></a>Poradce při potížích s rutinu Test-Connection
-Můžete použít `Test-Connection` rutiny k určení, zda zařízení StorSimple se mohou připojit k vnější síti. Pokud všechny síťové parametry, včetně DNS, jsou v Průvodci instalací správně nakonfigurovaný, můžete použít `Test-Connection` rutiny příkazem ping otestovat adresu známé mimo síť, jako je outlook.com.
+## <a name="troubleshoot-with-the-test-connection-cmdlet"></a>Řešení potíží pomocí rutiny Test-Connection
+Můžete použít `Test-Connection` rutiny k určení, zda zařízení StorSimple můžete připojit k vnější síti. Pokud všechny síťové parametry, včetně služby DNS jsou správně nakonfigurovány v Průvodci instalací, můžete použít `Test-Connection` rutiny pro odeslání příkazu ping známé adrese mimo síť, jako je outlook.com.
 
-Měli byste povolit příkaz ping a řešení potíží s problémy s připojením pomocí této rutiny, pokud je zakázána příkazu ping.
+Měli byste povolit příkaz ping na řešit problémy s připojením pomocí této rutiny je zakázána. příkaz ping.
 
-Viz následující ukázky výstupu z `Test-Connection` rutiny.
+Najdete v následujících ukázkách výstup `Test-Connection` rutiny.
 
 > [!NOTE]
-> V první ukázce je zařízení nakonfigurované s nesprávnou DNS. V druhé ukázce DNS je správná.
+> V prvním příkladu je toto zařízení nakonfigurované s nesprávné DNS. V druhém příkladu DNS je správná.
 
-**Ukázkový výstup – nesprávný DNS**
+**Ukázkový výstup – nesprávné DNS**
 
-V následující ukázce není žádný výstup pro adresy IPV4 a IPV6, který označuje, že není vyřešen DNS. To znamená, že je k dispozici žádné připojení k vnější síti a správné DNS musí být zadán.
+V následujícím příkladu neexistuje žádný výstup pro adresy IPV4 a IPV6, což znamená, že DNS není přeložen. To znamená, že není k dispozici připojení k vnější síti a správné DNS musí být zadán.
 
      Source        Destination     IPV4Address      IPV6Address
      ------        -----------     -----------      -----------
@@ -257,7 +257,7 @@ V následující ukázce není žádný výstup pro adresy IPV4 a IPV6, který o
 
 **Ukázkový výstup – správné DNS**
 
-V následující ukázce DNS vrátí adresu IPV4, označující, zda je správně nakonfigurována DNS. Tím potvrdí, že existuje připojení k vnější síti.
+V následujícím příkladu DNS vrátí adresu IPV4, označující, jestli je správně nakonfigurovaný server DNS. Tím potvrdíte, že se připojení k vnější síti.
 
      Source        Destination     IPV4Address      IPV6Address
      ------        -----------     -----------      -----------
@@ -266,46 +266,46 @@ V následující ukázce DNS vrátí adresu IPV4, označující, zda je správn�
      HCSNODE0      outlook.com     132.245.92.194
      HCSNODE0      outlook.com     132.245.92.194
 
-## <a name="troubleshoot-with-the-test-hcsmconnection-cmdlet"></a>Poradce při potížích s rutinu Test-HcsmConnection
-Použití `Test-HcsmConnection` rutiny pro zařízení, která je již připojena k a zaregistrovali služby StorSimple Manager zařízení. Tato rutina vám pomůže zkontrolovat připojení mezi registrované zařízení a odpovídající služby StorSimple Manager zařízení. Tento příkaz lze spustit v prostředí Windows PowerShell pro StorSimple.
+## <a name="troubleshoot-with-the-test-hcsmconnection-cmdlet"></a>Řešení potíží pomocí rutiny Test-HcsmConnection
+Použití `Test-HcsmConnection` rutiny pro zařízení, která je již připojen k a registraci ve službě Správce zařízení StorSimple. Tato rutina vám pomůže zkontrolovat připojení mezi registrovaných zařízení a odpovídající služby Správce zařízení StorSimple. Tento příkaz můžete spustit v prostředí Windows PowerShell pro StorSimple.
 
-### <a name="to-run-the-test-hcsmconnection-cmdlet"></a>Spuštění rutiny Test-HcsmConnection
+### <a name="to-run-the-test-hcsmconnection-cmdlet"></a>Ke spuštění rutiny Test-HcsmConnection
 1. Ujistěte se, že je zařízení zaregistrované.
-2. Zkontrolujte stav zařízení. Pokud je deaktivována zařízení, v režimu údržby, nebo v režimu offline, můžete sledovat některé z těchto chyb:
+2. Kontrola stavu zařízení. Pokud je zařízení deaktivováno, v režimu údržby nebo v režimu offline, může se zobrazit jedna z následujících chyb:
    
-   * ErrorCode.CiSDeviceDecommissioned – to znamená, že zařízení je deaktivována.
-   * ErrorCode.DeviceNotReady – to znamená, že zařízení je v režimu údržby.
+   * ErrorCode.CiSDeviceDecommissioned – to znamená, že je zařízení deaktivováno.
+   * ErrorCode.DeviceNotReady – to znamená, že je zařízení v režimu údržby.
    * ErrorCode.DeviceNotReady – to znamená, že zařízení není online.
-3. Ověřte, zda je spuštěna služba Manager zařízení StorSimple (pomocí [Get-ClusterResource](https://technet.microsoft.com/library/ee461004.aspx) rutiny). Pokud tato služba neběží, může se zobrazit následující chyby:
+3. Ověřte, zda je spuštěna služba Správce zařízení StorSimple (použít [Get-ClusterResource](https://technet.microsoft.com/library/ee461004.aspx) rutiny). Pokud služba není spuštěná, může se zobrazit následující chyby:
    
    * ErrorCode.CiSApplianceAgentNotOnline
-   * ErrorCode.CisPowershellScriptHcsError – to znamená, že při spuštění Get-ClusterResource došlo k výjimce.
-4. Zkontrolujte token služby Řízení přístupu (ACS). Pokud se vyhodí výjimku web, může to být výsledek problém brány, chybějící ověření proxy serverem, nesprávný DNS či k chybě ověřování. Může se zobrazí následující chyby:
+   * ErrorCode.CisPowershellScriptHcsError – to znamená, že když jste spustili Get ClusterResource došlo k výjimce.
+4. Zkontrolujte token Access Control Service (ACS). Pokud vyvolá výjimky na web, může být výsledkem problému brány, chybějící ověření proxy serverem, nesprávné DNS nebo selhání ověřování. Může se zobrazit následující chyby:
    
-   * ErrorCode.CiSApplianceGateway – to znamená výjimku HttpStatusCode.BadGateway: název překladače služby nešlo přeložit název hostitele.
-   * ErrorCode.CiSApplianceProxy – to znamená výjimku HttpStatusCode.ProxyAuthenticationRequired (kód stavu HTTP 407): klient nemůže ověřit na proxy serveru.
-   * ErrorCode.CiSApplianceDNSError – to znamená WebExceptionStatus.NameResolutionFailure výjimka: název překladače služby nešlo přeložit název hostitele.
-   * ErrorCode.CiSApplianceACSError –, to znamená, že služba vrátila chybu ověřování, ale je k dispozici připojení.
+   * ErrorCode.CiSApplianceGateway – to znamená výjimku HttpStatusCode.BadGateway: službě překládání názvu nešlo přeložit název hostitele.
+   * ErrorCode.CiSApplianceProxy – to znamená HttpStatusCode.ProxyAuthenticationRequired výjimky (kód stavu HTTP 407): klient nemůže ověřit proxy serveru.
+   * ErrorCode.CiSApplianceDNSError – to znamená, s výjimkou WebExceptionStatus.NameResolutionFailure: službě překládání názvu nešlo přeložit název hostitele.
+   * ErrorCode.CiSApplianceACSError – to znamená, že služba vrátila chybu ověřování, ale připojení.
      
-     Pokud nevyvolá výjimku webové, zkontrolujte ErrorCode.CiSApplianceFailure. To znamená, že zařízení se nezdařila.
-5. Zkontrolujte připojení cloudové služby. Pokud službu vyhodí výjimku web, může se zobrazit následující chyby:
+     Pokud se nevyvolá výjimky na web, zkontrolujte ErrorCode.CiSApplianceFailure. To znamená, že zařízení se nezdařila.
+5. Zkontrolujte připojení cloudové služby. Pokud webovou službu výjimku, může se zobrazit následující chyby:
    
-   * ErrorCode.CiSApplianceGateway – to znamená výjimku HttpStatusCode.BadGateway: zprostředkujícího serveru proxy přijal neplatný požadavek z jiného serveru proxy nebo z původního serveru.
-   * ErrorCode.CiSApplianceProxy – to znamená výjimku HttpStatusCode.ProxyAuthenticationRequired (kód stavu HTTP 407): klient nemůže ověřit na proxy serveru.
-   * ErrorCode.CiSApplianceDNSError – to znamená WebExceptionStatus.NameResolutionFailure výjimka: název překladače služby nešlo přeložit název hostitele.
-   * ErrorCode.CiSApplianceACSError –, to znamená, že služba vrátila chybu ověřování, ale je k dispozici připojení.
+   * ErrorCode.CiSApplianceGateway – to znamená výjimku HttpStatusCode.BadGateway: zprostředkující proxy serveru přijata chybná žádost z jiného serveru proxy nebo z původního serveru.
+   * ErrorCode.CiSApplianceProxy – to znamená HttpStatusCode.ProxyAuthenticationRequired výjimky (kód stavu HTTP 407): klient nemůže ověřit proxy serveru.
+   * ErrorCode.CiSApplianceDNSError – to znamená, s výjimkou WebExceptionStatus.NameResolutionFailure: službě překládání názvu nešlo přeložit název hostitele.
+   * ErrorCode.CiSApplianceACSError – to znamená, že služba vrátila chybu ověřování, ale připojení.
      
-     Pokud nevyvolá výjimku webové, zkontrolujte ErrorCode.CiSApplianceSaasServiceError. To znamená problém s služby StorSimple Manager zařízení.
-6. Zkontrolujte připojení k Azure Service Bus. ErrorCode.CiSApplianceServiceBusError označuje, že zařízení nemůže připojit k Service Bus.
+     Pokud se nevyvolá výjimky na web, zkontrolujte ErrorCode.CiSApplianceSaasServiceError. To znamená problém s ve službě Správce zařízení StorSimple.
+6. Zkontrolujte připojení k Azure Service Bus. ErrorCode.CiSApplianceServiceBusError označuje, jestli se zařízení nemůže připojit ke službě Service Bus.
 
 Soubory protokolu CiSCommandletLog0Curr.errlog a CiSAgentsvc0Curr.errlog bude obsahovat další informace, jako je například Podrobnosti o výjimce.
 
-Další informace o tom, jak pomocí rutiny, přejděte na [Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx) v prostředí Windows PowerShell referenční dokumentace.
+Další informace o tom, jak používat rutinu, přejděte na [Test-HcsmConnection](https://technet.microsoft.com/library/dn715782.aspx) v prostředí Windows PowerShell referenční dokumentaci.
 
 > [!IMPORTANT]
-> Spuštěním této rutiny pro aktivní a pasivní řadiče.
+> Spuštěním této rutiny pro aktivní a pasivní kontroler.
 
-Viz následující ukázky výstupu z `Test-HcsmConnection` rutiny.
+Najdete v následujících ukázkách výstup `Test-HcsmConnection` rutiny.
 
 **Ukázkový výstup – úspěšně registrovaná zařízení se systémem StorSimple Update 3**
 
@@ -339,21 +339,21 @@ Viz následující ukázky výstupu z `Test-HcsmConnection` rutiny.
 
 **Ukázkový výstup – offline zařízení** 
 
-Tato ukázka je ze zařízení, které je ve stavu **Offline** na portálu Azure.
+Tato ukázka je ze zařízení, která je ve stavu **Offline** na webu Azure Portal.
 
      Checking device registrationstate: Success
      Device is registered successfully
      Checking connectivity from device to SaaS.. Failure
 
-Zařízení se nelze připojit pomocí aktuální konfigurace webového proxy serveru. Může se jednat o problém s konfigurace webového proxy serveru nebo problém se síťovým připojením. V takovém případě by měl Ujistěte se, že vaše nastavení proxy serveru webové správné a webových proxy serverů jsou online a dostupný.
+Zařízení se nemohlo připojit pomocí aktuální konfigurace webového proxy serveru. Může se jednat problém s konfigurace webového proxy serveru nebo problém se síťovým připojením. V takovém případě by měl Ujistěte se, že vaše nastavení webového proxy serveru jsou správné a webové proxy servery byly online a dostupné.
 
-## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>Poradce při potížích s rutinu HcsTime synchronizace
-Tuto rutinu použijte k zobrazení času zařízení. Pokud zařízení čas je posun s serveru NTP, můžete pomocí této rutiny force synchronizovat čas s serveru NTP.
-- Pokud posun mezi zařízením a serveru NTP je větší než 5 minut, zobrazí se upozornění. 
-- Posun je větší než 15 minut, zařízení bude přejděte do režimu offline. Tato rutina stále můžete vynutit synchronizace času. 
-- Ale pokud posun překračuje po dobu 15 hodin, pak nebude možné k vynucení sync, které se zobrazí čas a chybová zpráva.
+## <a name="troubleshoot-with-the-sync-hcstime-cmdlet"></a>Řešení potíží pomocí rutiny Sync-HcsTime
+Tuto rutinu použijte k zobrazení času zařízení. Pokud čas zařízení má posun se serverem NTP, pak můžete tuto rutinu vynucení synchronizace času se serverem NTP.
+- Posun mezi zařízením a serverem NTP je větší než 5 minut, zobrazí se upozornění. 
+- Posun je větší než 15 minut, zařízení bude přejdou do režimu offline. Tato rutina stále slouží k vynucení synchronizace času. 
+- Nicméně pokud posun přesahuje 15 hodin, pak nebudete mít k vynucení synchronizace, čas a chybová zpráva se zobrazí.
 
-**Ukázkový výstup – synchronizace vynucené času pomocí HcsTime synchronizace**
+**Ukázkový výstup – pomocí Sync-HcsTime vynucené čas synchronizace**
 
      Controller0>Sync-HcsTime
      The current device time is 4/24/2015 4:05:40 PM UTC.
@@ -362,10 +362,10 @@ Tuto rutinu použijte k zobrazení času zařízení. Pokud zařízení čas je 
      [Y] Yes [N] No (Default is "Y"): Y
      Controller0>
 
-## <a name="troubleshoot-with-the-enable-hcsping-and-disable-hcsping-cmdlets"></a>Poradce při potížích s rutiny HcsPing povolit a zakázat HcsPing
-Tyto rutiny použijte k zajištění, že rozhraní sítě ve vašem zařízení reagovat na požadavky ping ICMP. Ve výchozím nastavení rozhraní sítě StorSimple neodpoví na žádosti příkazu ping. Použití této rutiny je nejjednodušší způsob, jak zjistit, pokud vaše zařízení je online a dostupný.
+## <a name="troubleshoot-with-the-enable-hcsping-and-disable-hcsping-cmdlets"></a>Řešení potíží s rutinami Enable HcsPing a Disable-HcsPing
+Tyto rutiny používají k zajištění, že síťových rozhraní na zařízení s reagovat na žádosti příkazu ping ICMP. Ve výchozím nastavení síťová rozhraní StorSimple není reagovat na žádosti příkazu ping. Použití této rutiny je nejjednodušší způsob, jak vědět, jestli vaše zařízení je online a dostupný.
 
-**Ukázkový výstup – HcsPing povolit a zakázat HcsPing**
+**Ukázkový výstup – Enable HcsPing a Disable-HcsPing**
 
      Controller0>
      Controller0>Enable-HcsPing
@@ -376,10 +376,10 @@ Tyto rutiny použijte k zajištění, že rozhraní sítě ve vašem zařízení
      Successfully disabled ping.
      Controller0>
 
-## <a name="troubleshoot-with-the-trace-hcsroute-cmdlet"></a>Poradce při potížích s rutinu HcsRoute trasování
-Použijte tuto rutinu jako nástroj pro sledování tras. Odesílá pakety každému směrovači na cestě do konečného cíle přes v časovém intervalu a pak vypočítá výsledky podle vrácených z každého směrování paketů. Protože rutina udává podíl ztráta paketů v každém směrovači nebo odkaz, lze přesně určit které směrovače nebo odkazy může být příčinou problémů se sítí.
+## <a name="troubleshoot-with-the-trace-hcsroute-cmdlet"></a>Řešení potíží pomocí rutiny HcsRoute trasování
+Pomocí této rutiny jako nástroj pro sledování postupu. Odešle pakety každý směrovač na cestě do konečného místa určení po určitou dobu a pak vypočítá výsledky podle paketů vrácených z každého směrování. Protože rutina zobrazuje stupeň ztráta paketů v jakékoli dané směrovače nebo odkaz, můžete určit které směrovače nebo odkazy by mohly způsobovat problémy se sítí.
 
-**Ukázkový výstup znázorňující trasu paket se HcsRoute trasování**
+**Ukázkový výstup ukazuje, jak trasu paket s HcsRoute trasování**
 
      Controller0>Trace-HcsRoute -Target 10.126.174.25
 
@@ -398,16 +398,16 @@ Použijte tuto rutinu jako nástroj pro sledování tras. Odesílá pakety každ
 
      Trace complete.
 
-## <a name="troubleshoot-with-the-get-hcsroutingtable-cmdlet"></a>Poradce při potížích s rutinu Get-HcsRoutingTable
-Tuto rutinu použijte k zobrazení směrovací tabulky pro zařízení StorSimple. Směrovací tabulka je sada pravidel, které vám mohou pomoci určit, kde budou přesměrováni datových paketů cestě přes síť Internet Protocol (IP).
+## <a name="troubleshoot-with-the-get-hcsroutingtable-cmdlet"></a>Řešení potíží pomocí rutiny Get-HcsRoutingTable
+Tuto rutinu použijte k zobrazení směrovací tabulky pro zařízení StorSimple. Směrovací tabulku je sada pravidel, která vám pomůže určit, kde budete přesměrováni datových paketů přenosu po síti Internet Protocol (IP).
 
-Směrovací tabulka ukazuje rozhraní a brána, která směruje data na servery z uvedených sítí. Dává také metriky směrování, která je rozhodovací pravomocí pro trasu pro dosažení určitého cíle. Čím nižší metriky směrování, tím vyšší priorita.
+Směrovací tabulka ukazuje rozhraní a brána, který přesměruje data do vybraných sítích. Poskytuje metriky, což je osoba, která rozhoduje pro trasu k dosažení určitého cíle. Nižší metriky, tím vyšší priorita.
 
-Například pokud máte 2 síťová rozhraní DATA 2 a DATA 3, připojený k Internetu. Pokud směrování metriky pro DATA 2 a DATA 3 jsou 15 a 261, s nižší metriky rozhraní DATA 2 je upřednostňovaný rozhraní použité k dosažení Internetu.
+Například pokud máte 2 síťová rozhraní DATA 2 a DATA 3, připojený k Internetu. Pokud směrování metriky pro DATA 2 a DATA 3 se 15 a 261, s nižší metriky rozhraní DATA 2 je upřednostňovaný rozhraní použité pro přístup k Internetu.
 
-Pokud používáte zařízení StorSimple Update 1, vašeho síťového rozhraní DATA 0 má nejvyšší předvolby pro přenosy dat cloudové. To znamená, že i když existují další rozhraní povolenou podporu cloudu, by přenosy dat cloudové směrován přes DATA 0.
+Pokud používáte zařízení StorSimple Update 1, vaše síťové rozhraní DATA 0 má nejvyšší priority pro přenosy v cloudu. Z toho vyplývá, že i v případě, že existují další povolenou podporu cloudu rozhraní, by cloud provoz směrován přes DATA 0.
 
-Pokud spustíte `Get-HcsRoutingTable` rutiny bez zadání všech parametrů (jak ukazuje následující příklad), bude výstup rutiny směrovací tabulky IPv4 i IPv6. Alternativně můžete zadat `Get-HcsRoutingTable -IPv4` nebo `Get-HcsRoutingTable -IPv6` získat relevantní směrovací tabulky.
+Pokud spustíte `Get-HcsRoutingTable` rutiny bez zadání všech parametrů (jako v následujícím příkladu), bude výstup rutiny směrovací tabulky IPv4 i IPv6. Alternativně můžete zadat `Get-HcsRoutingTable -IPv4` nebo `Get-HcsRoutingTable -IPv6` zobrazíte relevantní směrovací tabulky.
 
       Controller0>
       Controller0>Get-HcsRoutingTable
@@ -473,61 +473,61 @@ Pokud spustíte `Get-HcsRoutingTable` rutiny bez zadání všech parametrů (jak
 
       Controller0>
 
-## <a name="step-by-step-storsimple-troubleshooting-example"></a>Podrobný příklad řešení potíží StorSimple
-Následující příklad ukazuje, podrobné řešení potíží s nasazení zařízení StorSimple. V ukázkovém scénáři registrace zařízení nezdaří a zobrazí se chybová zpráva oznamující, že nastavení sítě nebo název DNS je nesprávná.
+## <a name="step-by-step-storsimple-troubleshooting-example"></a>Podrobný Poradce při potížích příklad StorSimple
+Následující příklad ukazuje podrobný Poradce při potížích pro StorSimple nasazení. V ukázkovém scénáři neúspěšné registrace zařízení s chybová zpráva oznamující, že nastavení sítě nebo název DNS je nesprávná.
 
-Chybovou zprávu vrácenou je:
+Vrácená chybová zpráva je:
 
      Invoke-HcsSetupWizard: An error has occurred while registering the device. This could be due to incorrect IP address or DNS name. Please check your network settings and try again. If the problems persist, contact Microsoft Support.
      +CategoryInfo: Not specified
      +FullyQualifiedErrorID: CiSClientCommunicationErros, Microsoft.HCS.Management.PowerShell.Cmdlets.InvokeHcsSetupWizardCommand
 
-Chyba může být způsobeno některé z následujících:
+Chyba může být způsobeno jedním z následujících akcí:
 
-* Instalace nesprávný hardwaru
-* Vadné síti alespoň jedno rozhraní
-* Nesprávnou adresu IP, masky podsítě, brány, primární server DNS nebo webového proxy serveru
+* Nesprávný hardware instalace
+* Chybný síťová rozhraní
+* Nesprávná IP adresa, maska podsítě, brány, primárního serveru DNS nebo webového proxy serveru
 * Nesprávný registrační klíč
 * Nastavení brány firewall nesprávný
 
-### <a name="to-locate-and-fix-the-device-registration-problem"></a>Vyhledejte a opravte problém registrace zařízení
-1. Zkontrolujte konfiguraci zařízení: v aktivním řadiči, spusťte `Invoke-HcsSetupWizard`.
+### <a name="to-locate-and-fix-the-device-registration-problem"></a>Účelem vypátrání a opravení problému registrace zařízení
+1. Zkontrolujte konfiguraci zařízení: spusťte na aktivním řadiči `Invoke-HcsSetupWizard`.
    
    > [!NOTE]
-   > V aktivním řadiči musíte spustit Průvodce instalací. Pokud chcete ověřit, že jste připojeni k aktivnímu řadiči, podívejte se na informační zprávě zobrazí v konzole sériového portu. Banner informující o označuje, zda jste připojeni k řadič 0 nebo 1 řadiče a zda je daný řadič aktivní nebo pasivní. Další informace, přejděte na [identifikovat v zařízení aktivní řadič](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
+   > Průvodce instalací se musí spustit na aktivním řadiči. Pokud chcete ověřit, že jste připojeni k aktivnímu řadiči, podívejte se na banner v konzole sériového portu. Hlavičky určuje, zda jste připojeni k řadič 0 a řadič 1, a určuje, zda kontroler je aktivní nebo pasivní. Další informace najdete v části [identifikace aktivního kontroleru na vašem zařízení](storsimple-8000-controller-replacement.md#identify-the-active-controller-on-your-device).
    
-2. Ujistěte se, že je zařízení správně zapojené: Zkontrolujte síť kabelů zpět ploché zařízení. Kabeláž je specifické pro model zařízení. Další informace, přejděte na [instalace zařízení StorSimple 8100](storsimple-8100-hardware-installation.md) nebo [instalace zařízení StorSimple 8600](storsimple-8600-hardware-installation.md).
+2. Ujistěte se, že je zařízení zapojené správně: Zkontrolujte síťové kabely zpět rovině zařízení. Kabeláž je specifické pro model zařízení. Další informace najdete v části [instalaci zařízení StorSimple 8100](storsimple-8100-hardware-installation.md) nebo [instalaci zařízení StorSimple 8600](storsimple-8600-hardware-installation.md).
    
    > [!NOTE]
-   > Pokud používáte 10 GbE síťové porty, musíte použít zadaný QSFP SFP adaptéry a kabely SFP. Další informace najdete v tématu [seznam kabely, přepínače a vysílače doporučeno pro 10 GbE porty](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
+   > Pokud používáte 10 GbE síťové porty, je potřeba použít zadaný QSFP SFP adaptéry a kabely SFP. Další informace najdete v tématu [seznam kabely, přepínače a doporučuje pro 10 GbE portů vysílače](storsimple-supported-hardware-for-10-gbe-network-interfaces.md).
   
-3. Ověření stavu síťové rozhraní:
+3. Ověření stavu síťového rozhraní:
    
-   * Použijte rutinu Get-NetAdapter ke zjištění stavu síťových rozhraní data 0. 
-   * Pokud na odkaz nefunguje, **ifindex** stav bude znamenat, že rozhraní dolů. Pak bude muset zkontrolujte síťové připojení k zařízení a k přepínači portu. Musíte také vyloučit chybný kabely. 
-   * Pokud máte podezření, že DATA 0 v aktivním řadiči port se nezdařila, můžete to ověřit připojením k DATŮM na řadiči 1 0 port. Chcete-li to ověřit, odpojte síťový kabel od zpět zařízení z řadič 0, připojte kabel k řadiči 1 a poté spusťte rutinu Get-NetAdapter.
-     Pokud DATA 0 portu na řadiči selže, [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md) pro další kroky. Může se stát, že je třeba nahradit řadičem ve vašem systému.
+   * Použijte rutinu Get-NetAdapter zjišťovat stav síťová rozhraní DATA 0. 
+   * Pokud odkaz nebude fungovat správně, **ifindex** stav bude znamenat, že rozhraní dolů. Musíte pak zkontrolujte síťové připojení portů do zařízení a k přepínači. Musíte také vyloučit chybný kabely. 
+   * Pokud máte podezření, že na port DATA 0 aktivního kontroleru se nezdařila, můžete to ověřit připojením k DATŮM 0 port na řadiči 1. Pokud to pokud chcete potvrdit, odpojíte síťový kabel od zařízení z řadiče 0, připojte kabel do řadiče 1 a pak znovu spusťte rutinu Get-NetAdapter.
+     Pokud port DATA 0 na řadiči se nezdaří, [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) o dalších krocích. Může se stát, že je třeba nahradit řadiče ve vašem systému.
 4. Ověření připojení k přepínači:
    
-   * Ujistěte se, že DATA 0 síťová rozhraní řadič 0 a řadič 1 ve vaší primární skříň jsou ve stejné podsíti. 
-   * Zkontrolujte rozbočovače nebo směrovač. Oba řadiče by měl obvykle připojit ke stejné rozbočovače nebo směrovač. 
-   * Ujistěte se, že přepínače, které používáte pro připojení mají DATA 0 pro oba řadiče v stejnou síť vLAN.
-5. Vyloučit všechny chyby uživatele:
+   * Ujistěte se, že DATA 0 síťových rozhraní na řadiči 0 a řadič 1 v primárním zařízení jsou ve stejné podsíti. 
+   * Zkontrolujte rozbočovač nebo směrovač. Obvykle byste měli připojit oba kontrolery stejné rozbočovač nebo směrovač. 
+   * Ujistěte se, že přepínače, který používáte pro připojení jsou DATA 0 pro oba řadiče ve stejné síti vLAN.
+5. Vylučte všechny chyby uživatelů:
    
-   * Spusťte znovu Průvodce instalací (Spustit **Invoke-HcsSetupWizard**) a zadejte hodnoty znovu, abyste měli jistotu, že nejsou žádné chyby. 
-   * Ověření registrace klíč používaný. Stejné registrační klíč slouží k připojení více zařízení ke službě StorSimple Manager zařízení. Pomocí postupu v [získat registrační klíč služby](storsimple-8000-manage-service.md#get-the-service-registration-key) zajistit, že používáte správné registrační klíč.
+   * Znovu spusťte Průvodce instalací (Spustit **Invoke-HcsSetupWizard**) a zadejte hodnoty znovu a ujistit se, že zde nejsou žádné chyby. 
+   * Ověřte registraci klíč se používá. Stejné registrační klíč slouží k připojení několika zařízení do služby Správce zařízení StorSimple. Použijte postup uvedený v [registrační klíč služby získáte](storsimple-8000-manage-service.md#get-the-service-registration-key) zajistit, že používáte správné registrační klíč.
      
      > [!IMPORTANT]
-     > Pokud máte více služby spuštěné, musíte zajistit, že si registrační klíč pro příslušnou službu slouží k registraci zařízení. Pokud zařízení jste zaregistrovali službu nesprávný Manager zařízení StorSimple, budete muset [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md) pro další kroky. Možná budete muset provést obnovení továrního nastavení zařízení (což může vést ke ztrátě dat) a pak připojit ke službě určený.
+     > Pokud máte více služby spuštěné, je potřeba zajistit, že registrační klíč pro příslušnou službu slouží k registraci zařízení. Pokud zaregistrujete zařízení s nesprávnou službu Správce zařízení StorSimple budete muset [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) o dalších krocích. Budete muset provést obnovení do výrobního nastavení zařízení (která může způsobit ztrátu dat) a pak ho připojit ke službě určené.
      > 
      > 
-6. Chcete-li ověřit, že máte připojení k vnější síti pomocí rutiny Test-Connection. Další informace, přejděte na [Poradce při potížích s rutinu Test-Connection](#troubleshoot-with-the-test-connection-cmdlet).
-7. Zkontrolujte, zda brána firewall narušení. Pokud můžete ověřit, zda nastavení virtuální IP (VIP), podsíť, bránu a DNS jsou všechny správné a stále vidět problémy s připojením, pak je možné, že brána firewall blokuje komunikaci mezi vaším zařízením a vnější síti. Je potřeba zajistit, že porty 80 a 443 jsou k dispozici v zařízení StorSimple pro odchozí komunikaci. Další informace najdete v tématu [požadavcích sítě pro zařízení StorSimple](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
-8. Podívejte se na protokoly. Přejděte na [podporuje balíčky a protokolů zařízení, které jsou k dispozici pro řešení potíží s](#support-packages-and-device-logs-available-for-troubleshooting).
-9. Pokud předchozí kroky k vyřešení problému, [kontaktovat Microsoft Support](storsimple-8000-contact-microsoft-support.md) o pomoc.
+6. Pomocí rutiny Test-Connection ověřte, že máte připojení k vnější síti. Další informace najdete v části [řešení potíží pomocí rutiny Test-Connection](#troubleshoot-with-the-test-connection-cmdlet).
+7. Zkontrolujte rušení brány firewall. Pokud si ověříte, že nastavení virtuálních IP (VIP), podsíť, brána a DNS jsou všechny správné a stále zobrazuje problémy s připojením, pak je možné, že brána firewall blokuje komunikaci mezi zařízením a vnější síti. Je potřeba zajistit, že porty 80 a 443 jsou dostupné v zařízení StorSimple pro odchozí komunikaci. Další informace najdete v tématu [požadavky sítě pro zařízení StorSimple](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
+8. Podívejte se na protokoly. Přejděte na [podporuje balíčky a zařízení nejsou k dispozici protokoly pro řešení potíží s](#support-packages-and-device-logs-available-for-troubleshooting).
+9. Pokud předchozí postup nebude vyřešen, [obraťte se na Microsoft Support](storsimple-8000-contact-microsoft-support.md) žádostí o pomoc.
 
-## <a name="next-steps"></a>Další kroky
-[Naučte se používat nástroj diagnostiky potíží s zařízení StorSimple](storsimple-8000-diagnostics.md).
+## <a name="next-steps"></a>Další postup
+[Zjistěte, jak pomocí diagnostického nástroje pro řešení potíží s zařízení StorSimple](storsimple-8000-diagnostics.md).
 
 <!--Link references-->
 

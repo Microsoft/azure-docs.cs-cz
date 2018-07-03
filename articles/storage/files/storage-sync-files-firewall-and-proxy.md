@@ -1,6 +1,6 @@
 ---
-title: Synchronizace služby Azure soubor místní nastavení brány firewall a proxy | Microsoft Docs
-description: Synchronizace služby Azure soubor místní konfigurace sítě
+title: Azure File Sync v místním nastavení brány firewall a proxy | Dokumentace Microsoftu
+description: Azure File Sync místní konfigurace sítě
 services: storage
 documentationcenter: ''
 author: fauhse
@@ -14,23 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: fauhse
-ms.openlocfilehash: 5014c8204b6b6da539a41aaa3308d8787fb517a7
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 7d86082abb6412072af44a6b2d794bcf536fa18d
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34738526"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342722"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Nastavení proxy a firewallu služby Azure File Sync
-Synchronizace služby Azure souboru se připojí k Azure Files, povolení synchronizace více lokalit a cloudu vrstvení funkce na místní servery. Místní server jako takový musí být připojen k Internetu. Správce IT potřebuje k rozhodování o nejlepší cestu pro server k získání přístupu do cloudových služeb Azure.
+Azure File Sync se připojí k Azure Files umožňuje synchronizaci více webů a funkce vrstvení cloudu na místních serverech. V důsledku toho musí být na místním serveru připojený k Internetu. Správce IT je potřeba rozhodnout nejlepší cestu pro server k získání přístupu do cloudových služeb Azure.
 
-Tento článek se získat přehled o konkrétní požadavky a možnosti, které jsou k dispozici úspěšně a bezpečného připojení serveru pro synchronizaci souborů Azure.
+Tento článek poskytuje přehled o konkrétní požadavky a možnosti dostupné pro úspěšně a bezpečného připojení serveru k Azure File Sync.
 
 > [!Important]
-> Synchronizace služby Azure souboru zatím nepodporuje brány firewall a virtuální sítě pro účet úložiště. 
+> Azure File Sync zatím nepodporuje brány firewall a virtuální sítě pro účet úložiště. 
 
 ## <a name="overview"></a>Přehled
-Synchronizace služby Azure souboru funguje jako služba orchestration mezi systému Windows Server, Azure sdílené složky a několika dalším službám Azure synchronizaci dat, jak je popsáno ve vaší skupině pro synchronizaci. Pro synchronizaci souborů Azure fungovala správně je nutné ke konfiguraci serverů ke komunikaci s následující služby Azure:
+Azure File Sync funguje jako službu Orchestrace mezi systému Windows Server, sdílené složky Azure a několik dalších služeb Azure, synchronizaci dat, jak je popsáno ve vaší skupině synchronizace. Pro Azure File Sync fungovala správně budete potřebovat ke konfiguraci serverů ke komunikaci s těmito službami Azure:
 
 - Azure Storage
 - Azure File Sync
@@ -38,42 +38,50 @@ Synchronizace služby Azure souboru funguje jako služba orchestration mezi syst
 - Ověřovací služby
 
 > [!Note]  
-> Agent Azure Sync souboru v systému Windows Server iniciuje všechny požadavky na cloudové služby, které má za následek pouze nutnosti zvažte odchozí provoz z hlediska brány firewall. <br /> Žádné služby Azure zahájí připojení k agentovi Azure synchronizace souboru.
+> Agenta Azure File Sync v systému Windows Server spustí všechny požadavky na cloudové služby, čímž vznikne pouze by bylo třeba řešit odchozího provozu z hlediska brány firewall. <br /> Žádné služby Azure zahájí připojení agenta Azure File Sync.
 
 
 ## <a name="ports"></a>Porty
-Synchronizace služby Azure soubor přesune data souborů a metadat výhradně prostřednictvím protokolu HTTPS a vyžaduje se otevřít odchozí port 443.
-Výsledkem je zašifrován veškerý provoz.
+Azure File Sync přesune data souborů a metadat výhradně prostřednictvím protokolu HTTPS a vyžaduje se otevřít odchozí port 443.
+V důsledku veškerý provoz se šifruje.
 
-## <a name="networks-and-special-connections-to-azure"></a>Sítě a speciální připojení k Azure
-Agent Azure souboru Sync nemá žádné požadavky týkající Speciální kanály jako [ExpressRoute](../../expressroute/expressroute-introduction.md), atd. do Azure.
+## <a name="networks-and-special-connections-to-azure"></a>Speciální připojení k Azure a sítě
+Agenta Azure File Sync nemá žádné požadavky týkající se speciálních kanály, jako jsou [ExpressRoute](../../expressroute/expressroute-introduction.md), atd. a Azure.
 
-Synchronizace služby Azure soubor bude fungovat přes všechny dostupné znamená, že povolit reach do Azure, automaticky přizpůsobení do různých síť charakteristiky, jako jsou například šířky pásma, latence a také nabídky Správce řízení pro optimalizaci. Ne všechny funkce jsou dostupné v tuto chvíli. Pokud chcete nakonfigurovat konkrétní chování, dejte nám vědět prostřednictvím [Azure soubory UserVoice](https://feedback.azure.com/forums/217298-storage?category_id=180670).
+Na všechny prostředky k dispozici, díky kterým můžou dosah do Azure, automaticky přizpůsobuje různým charakteristiky sítě jako šířky pásma, latence stejně jako nabídka řízení správy pro optimalizaci exportovatelného bude spolupracovat Azure File Sync. Ne všechny funkce jsou v tuto chvíli k dispozici. Pokud chcete nakonfigurovat konkrétní chování, dejte nám vědět prostřednictvím [UserVoice soubory Azure](https://feedback.azure.com/forums/217298-storage?category_id=180670).
 
 ## <a name="proxy"></a>Proxy server
-Synchronizace služby Azure souboru aktuálně podporuje nastavení proxy serveru celého systému. Tato nastavení proxy serveru je transparentní agentovi Azure synchronizace souborů, protože celý provoz serveru směrován přes tento proxy server.
+Azure File Sync podporuje nastavení proxy serveru pro konkrétní aplikace a celý počítač.
 
-Nastavení proxy serveru pro konkrétní aplikaci aktuálně jsou ve vývoji a bude podporovaný v budoucí verzi agenta synchronizace souboru Azure. To vám umožní konfigurace proxy speciálně pro provoz synchronizace souboru Azure.
+Nastavení serveru proxy pro celý počítač jsou transparentní pro agenta Azure File Sync celý provoz serveru je směrován přes proxy server.
+
+Nastavení proxy server pro konkrétní aplikaci povolit konfiguraci proxy serveru speciálně pro provoz Azure File Sync. Nastavení serveru proxy konkrétní aplikace jsou podporované ve verzi agenta 3.0.12.0 nebo novější a je možné konfigurovat během instalace agenta nebo pomocí rutiny prostředí PowerShell Set-StorageSyncProxyConfiguration.
+
+Příkazy prostředí PowerShell a zadejte nastavení proxy server pro konkrétní aplikaci:
+```PowerShell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCredential <credentials>
+```
 
 ## <a name="firewall"></a>Brána firewall
-Jak je uvedeno v předchozí části, otevřete odchozí port 443, musí být. Na základě zásad v datovém centru, pobočky nebo oblast, další omezení provozu prostřednictvím tohoto portu na vybrané domény může být požadovaných nebo požadováno.
+Jak je uvedeno v předchozí části, otevřít odchozí port 443 musí být. Na základě zásad v datovém centru, větvi nebo oblasti, další omezení provozu přes tento port na vybrané domény může být požadovaného nebo vyžaduje.
 
-Následující tabulka popisuje požadované domén pro komunikace:
+Následující tabulka popisuje požadovaných domén pro komunikace:
 
 | Služba | Doména | Využití |
 |---------|----------------|------------------------------|
-| **Azure Resource Manager** | https://management.azure.com | Volání žádné uživatele (například prostředí PowerShell) přejde prostřednictvím tuto adresu URL, včetně volání registrace počáteční server. |
-| **Azure Active Directory** | https://login.windows.net | Ověřený uživatel musí být provedeny volání Azure Resource Manager. Úspěšné, je tato adresa URL použitá k ověření uživatele. |
-| **Azure Active Directory** | https://graph.windows.net/ | Jako součást nasazení synchronizace služby Azure souboru bude vytvořen objekt služby v odběru Azure Active Directory. Tato adresa URL se používá pro tento. Tento objekt se používá pro delegování minimální sadu oprávnění ke službě Azure synchronizace souboru. Ověřený uživatel s oprávněními vlastníka předplatného musí být uživatel, provádí počáteční nastavení synchronizace souborů Azure. |
-| **Azure Storage** | &ast;.core.windows.net | Pokud server stáhne soubor, pak server provádí tento přesun dat efektivněji při posuzování přímo na sdílenou složkou Azure v účtu úložiště. Server má SAS klíč, který umožňuje pouze pro přístup ke sdílené složce cílový soubor. |
-| **Synchronizace Azure File** | &ast;.one.microsoft.com | Po registraci počáteční server server nahlásí místní adresu URL pro instanci služby synchronizace Azure soubor v této oblasti. Server můžete použít adresu URL komunikovat přímo a efektivně s instancí zpracování jeho synchronizace. |
+| **Azure Resource Manager** | https://management.azure.com | Jakékoli volání uživatele (jako je PowerShell) prochází přes tuto adresu URL, včetně volání registrace počáteční server. |
+| **Azure Active Directory** | https://login.windows.net | Ověřený uživatel se musí provádět volání Azure Resource Manageru. Úspěšné, tato adresa URL slouží k ověřování uživatelů. |
+| **Azure Active Directory** | https://graph.windows.net/ | Jako součást nasazení Azure File Sync se vytvoří instanční objekt služby ve službě Active Directory předplatného Azure. Pro, který se používá tuto adresu URL. Tento objekt se používá pro delegování minimální sadu práv ve službě Azure File Sync. Uživatel provádějící počáteční nastavení služby Azure File Sync musí být ověřený uživatel s oprávněními vlastníka předplatného. |
+| **Azure Storage** | &ast;.core.windows.net | Pokud server stáhne soubor, pak server provede tento přesun dat efektivněji přímo s sdílené složky Azure v účtu úložiště. Server má klíč SAS, která povoluje jenom pro přístup ke sdílené složce cílového souboru. |
+| **Azure File Sync** | &ast;.one.microsoft.com | Po registraci počáteční server přijímá na serveru místní adresu URL instance služby Azure File Sync v dané oblasti. Server může komunikovat přímo a efektivně s instancí zpracování synchronizace. použijte adresu URL. |
 
 > [!Important]
-> Při povolování provoz &ast;. one.microsoft.com, provoz do více než jen synchronizační služby je možné ze serveru. Nejsou k dispozici v části subdomény mnoho další služby Microsoftu.
+> Při povolení provozu na &ast;. one.microsoft.com, provoz do více než jen synchronizační služby je možné ze serveru. Nejsou k dispozici v části subdomény mnoho další služby Microsoftu.
 
-Pokud &ast;. one.microsoft.com je příliš široké, komunikace serveru můžete omezit tím, že pouze explicitní místní instance služby Azure soubory Sync. Instance, které do zvolit, závisí na oblasti služby Sync úložiště, ke kterému jste nasazení a registraci serveru. To je oblast, kterou je potřeba povolit pro server. Brzy bude existovat více adres URL můžete povolit nové funkce kontinuity obchodních. 
+Pokud &ast;. one.microsoft.com je příliš široké, komunikaci serverem můžete omezit tím, že pouze explicitní místní instance služby Azure File Sync. Které instancí zvolit, závisí na oblasti služby synchronizace úložiště, ke kterému jste nasazení a registraci serveru. To je oblast, kterou je potřeba povolit pro server. Brzy bude existovat více adres URL umožňuje nové funkce pro provozní kontinuitu. 
 
-| Oblast | Adresa URL místní koncového bodu Azure synchronizace souboru |
+| Oblast | Adresa URL místní koncového bodu Azure File Sync |
 |--------|---------------------------------------|
 | Austrálie – východ | https://kailani-aue.one.microsoft.com |
 | Střední Kanada | https://kailani-cac.one.microsoft.com |
@@ -84,13 +92,13 @@ Pokud &ast;. one.microsoft.com je příliš široké, komunikace serveru můžet
 | Západní USA | https://kailani.one.microsoft.com |
 
 > [!Important]
-> Pokud definujete pravidla tyto podrobné brány firewall, často Zkontrolujte tento dokument a aktualizace vašich pravidlech brány firewall, aby se zabránilo přerušení poskytování služeb z důvodu zastaralé nebo jsou neúplné výpisy adresy URL v nastavení brány firewall.
+> Pokud definujete tato pravidla brány firewall na podrobné, často Zkontrolujte tento dokument a aktualizovat pravidla brány firewall a vyhnout se přerušením služeb kvůli zastaralé nebo neúplné výpisy adresy URL v nastavení brány firewall.
 
-## <a name="summary-and-risk-limitation"></a>Souhrn a riziko omezení
-Seznam dříve v tomto dokumentu obsahovat synchronizace služby Azure souboru aktuálně komunikuje s adresy URL. Brány firewall musí být schopný umožňující přenos odchozí do těchto domén, jakož i odpovědí z nich. Společnost Microsoft usiluje ponechat tento seznam aktualizovat.
+## <a name="summary-and-risk-limitation"></a>Omezení rizika a souhrn
+Seznamy dříve v tomto dokumentu obsahují adresy URL Azure File Sync aktuálně komunikuje s. Brány firewall musí být schopen přenosy odchozích těchto domén, jakož i odpovědi z nich. Microsoft se snaží zachovat tento seznam se aktualizoval.
 
-Nastavení domény omezení pravidla brány firewall může být míru pro zlepšení zabezpečení. Pokud se používají tyto konfigurace brány firewall, musí jeden mějte na paměti, že adresy URL bude přidána a časem změnit. Je proto třeba ji zkontrolovat míru ke kontrole tabulky v tomto dokumentu v rámci procesu správy změn z jedné verze agenta synchronizace souboru Azure do jiné na testovací nasazení nejnovější verzi agenta. Tímto způsobem můžete zajistit, že je nakonfigurována vaše brána firewall povolit provoz domény nejnovější agenta vyžaduje.
+Nastavení domény omezení pravidel brány firewall může být míra pro vylepšení zabezpečení. Pokud se používají tyto konfigurace brány firewall, jeden musí mít na paměti, že adresy URL přidat, který se mění v průběhu času. Proto je třeba ji zkontrolovat opatření ke kontrole tabulky v tomto dokumentu jako součást procesu správy změn z jedné verze agenta Azure File Sync do jiného testu nasazení nejnovější verzi agenta. Tímto způsobem můžete zajistit, že je vaše brána firewall nakonfigurována pro povolení provozu na domény nejnovější agent vyžaduje.
 
 ## <a name="next-steps"></a>Další postup
-- [Plánování nasazení Azure souboru Sync](storage-sync-files-planning.md)
-- [Nasadit soubor synchronizaci Azure (preview)](storage-sync-files-deployment-guide.md)
+- [Plánování nasazení služby Azure File Sync](storage-sync-files-planning.md)
+- [Nasazení služby Azure File Sync (preview)](storage-sync-files-deployment-guide.md)

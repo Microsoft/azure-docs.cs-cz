@@ -1,6 +1,6 @@
 ---
-title: Omezení v Azure databáze pro databázi MySQL
-description: Tento článek popisuje omezení v Azure Database pro databázi MySQL, jako je například počet připojení a možnosti úložiště modul.
+title: Omezení ve službě Azure Database for MySQL
+description: Tento článek popisuje omezení ve službě Azure Database for MySQL, jako je třeba počet připojení a možnosti úložiště modul.
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,21 +8,21 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 06/21/2018
-ms.openlocfilehash: 2fc224445f89a0b0b4afdc0ef1d0eb1b25b45f36
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.date: 06/30/2018
+ms.openlocfilehash: 1fd5905b8ea3f87fe6cfc2a830b73b8120a717dd
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309922"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341473"
 ---
-# <a name="limitations-in-azure-database-for-mysql"></a>Omezení v Azure databáze pro databázi MySQL
-Následující části popisují kapacity, modul úložiště s podporou, oprávnění podpory, podpora příkaz manipulaci dat a funkční omezení ve službě databázového. Viz také [obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) vztahuje k modulu databáze MySQL.
+# <a name="limitations-in-azure-database-for-mysql"></a>Omezení ve službě Azure Database for MySQL
+Následující části popisují kapacitu, podpora modulu úložiště, oprávnění podpory, podpora příkaz manipulace dat a funkční omezení v databázi služby. Viz také [obecná omezení](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) pro databázového stroje MySQL.
 
 ## <a name="maximum-connections"></a>Maximální počet připojení
-Maximální počet připojení za cenová úroveň a vCores jsou následující: 
+Maximální počet připojení na cenová úroveň a virtuálními jádry jsou následující: 
 
-|**Cenová úroveň**|**vCore(s)**| **Maximální počet připojení**|
+|**Cenová úroveň**|**počet virtuálních jader:**| **Maximální počet připojení**|
 |---|---|---|
 |Basic| 1| 50|
 |Basic| 2| 100|
@@ -36,7 +36,7 @@ Maximální počet připojení za cenová úroveň a vCores jsou následující:
 |Paměťově optimalizované| 8| 2500|
 |Paměťově optimalizované| 16| 5000|
 
-Při připojení přesahuje limit, může se zobrazit chybová zpráva:
+Při připojení překročí limit, může se zobrazit následující chyba:
 > Chyba 1040 (08004): Příliš mnoho připojení
 
 ## <a name="storage-engine-support"></a>Podpora modulu úložiště
@@ -54,13 +54,13 @@ Při připojení přesahuje limit, může se zobrazit chybová zpráva:
 ## <a name="privilege-support"></a>Podpora oprávnění
 
 ### <a name="unsupported"></a>Nepodporovaný
-- DBA role: mnoha parametry serveru a nastavení můžete nechtěně snížit výkon serveru nebo negate ACID vlastnosti databázového systému. Jako takový zachování integrity služby a SLA na úrovni produktu, tato služba nevystavuje roli správce databáze. Výchozí uživatelský účet, který je vytvořený, když je vytvořena nová instance databáze, umožňuje provádět většinu příkazů DDL a jazyk DML instance spravované databáze. 
+- DBA role: mnoho parametrů serveru a nastavení můžete neúmyslně snížit výkon serveru nebo negate kyseliny vlastnosti správce databáze. V důsledku toho pro zajištění integrity služby a smlouvě SLA na úrovni produktu, tato služba nevystavuje DBA role. Výchozí uživatelský účet, který je vytvořen při vytvoření nové instance databáze, umožňuje provádět většinu příkazů DDL a jazyk DML instance spravované databáze. 
 - Oprávnění SUPERUŽIVATELE: podobně [SUPER oprávnění](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) je také omezen.
 
 ## <a name="data-manipulation-statement-support"></a>Podpora příkaz manipulace dat
 
 ### <a name="supported"></a>Podporováno
-- `LOAD DATA INFILE` je podporováno, ale `[LOCAL]` parametr musí být zadán a směrované na cestu UNC (úložiště Azure připojené prostřednictvím protokolu SMB).
+- `LOAD DATA INFILE` je podporováno, ale `[LOCAL]` parametr musí být zadán a směrované na cestu UNC (úložiště Azure připojit přes protokol SMB).
 
 ### <a name="unsupported"></a>Nepodporovaný
 - `SELECT ... INTO OUTFILE`
@@ -68,22 +68,25 @@ Při připojení přesahuje limit, může se zobrazit chybová zpráva:
 ## <a name="functional-limitations"></a>Funkční omezení
 
 ### <a name="scale-operations"></a>Operace škálování
-- Dynamické škálování do a z základní cenové úrovně se aktuálně nepodporuje.
-- Zmenšuje velikost úložiště serveru není podporována.
+- Dynamické škálování do a ze základní cenové úrovně se aktuálně nepodporuje.
+- Snížení velikosti úložiště serveru se nepodporuje.
 
 ### <a name="server-version-upgrades"></a>Upgrady verze serveru
-- Automatické migrace mezi verzemi modul hlavní databáze není aktuálně podporována.
+- Automatizovaný přenos mezi verzí vyhledávacích strojů hlavní databáze se aktuálně nepodporuje.
 
 ### <a name="point-in-time-restore"></a>Obnovení do bodu v čase
-- Když používáte funkci Možnosti PITR, se vytvoří nový server s stejné konfigurace jako u serveru, který je založen na.
-- Obnovení odstraněného server není podporováno.
+- Při použití funkce PITR se vytvoří nový server se stejnou konfiguraci jako server, který je založen na.
+- Obnovení odstraněné serveru není podporováno.
+
+### <a name="vnet-service-endpoints"></a>Koncové body služby virtuální sítě
+- Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.
 
 ### <a name="subscription-management"></a>Správa předplatného
-- Dynamicky přesunutí předem vytvořené serverů mezi předplatné a skupina prostředků není aktuálně podporováno.
+- Dynamicky přesunutí předem vytvořené servery v předplatném a skupině prostředků se momentálně nepodporuje.
 
 ## <a name="current-known-issues"></a>Aktuální známé problémy
-- Instance serveru MySQL zobrazí verze nesprávný serveru po navázání připojení. Serveru správná verze modulu instance, použijte `select version();` příkaz.
+- Instanci MySQL serveru zobrazuje verze serveru měla špatný po navázání připojení. Chcete-li získat správný server verze modulu instance, použijte `select version();` příkazu.
 
 ## <a name="next-steps"></a>Další postup
-- [Co je dostupné na jednotlivých úrovních služby](concepts-pricing-tiers.md)
+- [Co je k dispozici na jednotlivých úrovních služby](concepts-pricing-tiers.md)
 - [Podporované verze databáze MySQL](concepts-supported-versions.md)

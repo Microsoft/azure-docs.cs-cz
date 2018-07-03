@@ -1,7 +1,7 @@
 ---
-title: Hranice jazyk Principy (LEOŠ) | Microsoft Docs
+title: Language Understanding (LUIS) hranice | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Tento článek obsahuje známé omezení LEOŠ.
+description: Tento článek obsahuje známé omezení LUIS.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -10,74 +10,74 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: 52bda6a13422ce8f759c40bd454a6b15e92d7a5d
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: c1f49f88cb4772da636bd1396b09e5efd357fb60
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110292"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344117"
 ---
-# <a name="luis-boundaries"></a>LEOŠ hranice
-LEOŠ má několik oblasti hranic. První je [modelu hranic](#model-boundaries), který určuje záměry, entit a funkcí v LEOŠ. Druhý oblast je [kvótami](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) řízení LEOŠ webu. Čtvrtý oblast je [mapování oblasti world](luis-reference-regions.md) mezi LEOŠ vytváření webu a LEOŠ [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
+# <a name="luis-boundaries"></a>Služba LUIS hranice
+Služba LUIS má několik oblasti hranic. První je [modelu hranice](#model-boundaries), který určuje záměrů, entit a funkcí v LUIS. Druhá oblast je [kvóty](#key-limits) podle typu klíče. Je třetí oblasti hranic [klávesové kombinace](#keyboard-controls) pro řízení webu LUIS. Je čtvrtý oblast [mapování oblasti world](luis-reference-regions.md) mezi LUIS vytváření webu a LUIS [koncový bod](luis-glossary.md#endpoint) rozhraní API. 
 
 
-## <a name="model-boundaries"></a>Hranice modelu
+## <a name="model-boundaries"></a>Model hranice
 
 |Oblast|Omezení|
 |--|:--|--|
-| [Název aplikace.][luis-get-started-create-app] | * Znak výchozí maximální |
-| [Testování batch][batch-testing]| 10 datové sady, 1000 utterances za datové sady|
-| **[Složené](./luis-concept-entity-types.md)|100 s až 10 podřízených prvků |
+| [Název aplikace][luis-get-started-create-app] | * Znak výchozí maximální |
+| [Testování služby batch][batch-testing]| 10 datové sady, 1000 projevy na datovou sadu|
+| **[Složené](./luis-concept-entity-types.md)|100 s až 10 podřízených objektů |
 | Explicitní seznam | 50 na aplikaci.|
-| **[Hierarchická](./luis-concept-entity-types.md) |100 s až 10 podřízených prvků |
-| [Záměry][intents]|500 na aplikaci.<br>[Na základě odesílání](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) aplikace má odpovídající 500 odesílání zdroje|
-| [Seznam entity](./luis-concept-entity-types.md) | Nadřazený: 50, podřízený: 20 000 položek. Název v kanonickém tvaru je * výchozí maximální počet znaků. Synonyma mít žádné omezení délky. |
-| [Vzory](luis-concept-patterns.md)|500 vzory na aplikaci.<br>Maximální délka vzor je 400 znaků.<br>3 Pattern.any entit na vzor<br>Maximálně 2 vnořené volitelné texty ve vzoru|
-| [Pattern.Any](./luis-concept-entity-types.md)|100 na aplikaci, 3 pattern.any entit na vzor |
-| [Seznam frází][phrase-list]|10 seznamy frázi, 5 000 položek na seznamu|
-| [Předkompilované entity](./Pre-builtEntities.md) | žádné omezení|
-| [Regulární výraz entity](./luis-concept-entity-types.md)|20 entity<br>maximální počet 500 znaků. na entity vzor regulárního výrazu|
-| [Role](luis-concept-roles.md)|300 role na aplikaci. 10 role na entity|
+| **[Hierarchické](./luis-concept-entity-types.md) |100 s až 10 podřízených objektů |
+| [Záměrů][intents]|500 na aplikaci.<br>[Na základě odeslání](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) aplikace nemá odpovídající 500 odeslání zdroje|
+| [Seznam entit](./luis-concept-entity-types.md) | Nadřízený: 50, podřízený: 20 000 položek. Název v kanonickém tvaru je * výchozí maximální počet znaků. Synonyma mít žádné omezení délky. |
+| [Vzory](luis-concept-patterns.md)|500 vzory na jednu žádost.<br>Maximální délka vzor je až 400 znaků.<br>3 entity Pattern.any za vzor<br>Maximálně 2 vnořené volitelné texty ve vzoru|
+| [Pattern.Any](./luis-concept-entity-types.md)|100 na aplikaci, 3 entity pattern.any za vzor |
+| [Seznam frází][phrase-list]|10 seznamy frázi, 5 000 položek na seznam|
+| [Předem připravených entit](./luis-prebuilt-entities.md) | bez omezení|
+| [Regulární výraz entity](./luis-concept-entity-types.md)|20 entity<br>Max. 500 znaků. každý vzor regulárního výrazu entity|
+| [Role](luis-concept-roles.md)|300 role na aplikaci. 10 rolemi na entitu|
 | **[Jednoduché](./luis-concept-entity-types.md)| 100 entit|
-| [utterance][utterances] | 500 znaků|
-| [Utterances][utterances] | 15 000 na aplikaci.|
-| [Název verze][luis-how-to-manage-versions] | 10 znaků omezen na alfanumerické znaky a období (.) |
+| [Utterance][utterances] | 500 znaků|
+| [Projevy][utterances] | 15 000 na aplikaci.|
+| [Název verze][luis-how-to-manage-versions] | 10 znaků omezen na alfanumerické znaky a tečky (.) |
 
-* Znak výchozí maximální je 50 znaků. 
+* Znak výchozí maximální počet je 50 znaků. 
 
-** Celkový počet jednoduchý, hierarchických a složené entity nemůže překročit 100. Celkový počet hierarchické, složené entity, jednoduché entity a hierarchické podřízených entit nesmí překročit 330. 
+** Celkový počet jednoduché, hierarchických a složené entit může mít maximálně 100. Celkový počet hierarchické entity, složený entity, jednoduché entit a hierarchické podřízených entit může mít maximálně 330. 
 
-## <a name="intent-and-entity-naming"></a>Záměr a pojmenování entity
-V názvech záměr a entity nepoužívejte tyto znaky:
+## <a name="intent-and-entity-naming"></a>Pojmenování entity a záměr
+Nepoužívejte tyto znaky v názvech záměr a entity:
 
 |Znak|Název|
 |--|--|
 |`{`|Levá složená závorka|
-|`}`|Pravé složené závorky|
-|`[`|Levé závorky|
-|`]`|Pravé závorky|
+|`}`|Pravá složená závorka|
+|`[`|Levá závorka|
+|`]`|Pravá hranatá závorka|
 |`\`|Zpětné lomítko|
 
-## <a name="key-limits"></a>Omezuje klíč
-Vytváření klíč má jiné limity pro vytváření obsahu a koncový bod. Klíč koncového bodu služby LEOŠ platí pouze pro koncový bod dotazy.
+## <a name="key-limits"></a>Omezení klíčů
+Vytváření klíč má různá omezení pro vytváření obsahu a koncový bod. Klíč koncového bodu služby LUIS platí pouze pro dotazy na koncový bod.
 
 |Klíč|Vytváření obsahu|Koncový bod|Účel|
 |--|--|--|--|
-|Vytváření nebo Starter|1 milion za měsíc, 5/druhý|1 tisíc za měsíc, 5/druhý|Vytváření aplikace LEOŠ|
-|[Předplatné] [ pricing] - F0 - úroveň Free |neplatné|10 tisíc za měsíc, 5/druhý|Váš koncový bod LEOŠ dotazování|
-|[Předplatné] [ pricing] - S0 – základní vrstvě|neplatné|50 za sekundu|Váš koncový bod LEOŠ dotazování|
-|[Integrace postojích analýzy](publishapp.md#enable-sentiment-analysis)|neplatné|bez poplatků|Přidání informací o postojích včetně klíče frázi extrakce dat |
-|Rozpoznávání řeči integrace|neplatné|Požadavky 5.50 USD/1 tisíc koncový bod|Převést na text utterance mluvené utterance a vrátí výsledky LEOŠ|
+|Vytváření/Starter|1 milion za měsíc, 5 za sekundu|1 tisíc za měsíc, 5 za sekundu|Vytváření aplikace LUIS|
+|[Předplatné] [ pricing] - F0 – úroveň Free |neplatné|10 tisíc za měsíc, 5 za sekundu|Dotazování na koncový bod služby LUIS|
+|[Předplatné] [ pricing] - S0 - na úrovni Basic|neplatné|50/s|Dotazování na koncový bod služby LUIS|
+|[Integrace analýzy mínění](luis-how-to-publish-app.md#enable-sentiment-analysis)|neplatné|bez poplatků|Přidání informací o mínění včetně extrakce klíčových frází |
+|Integrace rozpoznávání řeči|neplatné|Žádosti koncového bodu 5.50 USD/1 tisíc|Převést utterance mluvené slovo na text utterance a vrátí výsledky LUIS|
 
-## <a name="keyboard-controls"></a>Ovládací prvky klávesnice
+## <a name="keyboard-controls"></a>Ovládacím prvkům klávesnice
 
-|Vstup klávesnice | Popis | 
+|Vstup z klávesnice | Popis | 
 |--|--|
-|Ovládací prvek + E|Přepne mezi tokeny a entity v seznamu utterances|
+|Ovládací prvek + E|Přepne mezi tokeny a entit v seznamu projevy|
 
-## <a name="website-sign-in-time-period"></a>Web přihlásit v časovém období.
+## <a name="website-sign-in-time-period"></a>Webu přihlásit v časovém období
 
-Přihlášení přístup je pro **60 minut**. Tato chyba se zobrazí po uplynutí této doby. Budete muset znovu přihlásit.
+Přihlášení přístup je pro **60 minut**. Tato chyba se zobrazí po tomto časovém období. Musíte se přihlásit znovu.
 
 [luis-get-started-create-app]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-get-started-create-app
 [batch-testing]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-test#batch-testing

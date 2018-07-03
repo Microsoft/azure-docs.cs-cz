@@ -1,6 +1,6 @@
 ---
-title: Co je služba rozpoznávání řeči (preview)? | Dokumenty Microsoft
-description: 'Služba rozpoznávání řeči, součástí kognitivní služby společnosti Microsoft, jednotek několik služeb Azure rozpoznávání řeči, které byly dřív dostupné samostatně: Bing řeči (které zahrnuje rozpoznávání řeči a převod textu na řeč), vlastní řeči a řeči překlad.'
+title: Co je Speech service (preview)? | Dokumenty Microsoft
+description: 'Speech service součástí společnosti Microsoft Cognitive Services, sjednotí několik služeb Azure řeči, které byly dříve k dispozici samostatně: (zahrnující rozpoznávání řeči a převod textu na řeč) pro zpracování řeči Bingu, vlastní řeč a překladu řeči.'
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: v-jerkin
@@ -10,84 +10,86 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e7c09eee1634c52e78a523a7cc65641ea99f23e6
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: ccdcdeeaf4ac8730be4f9e3ee648dc41c2a02641
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35343940"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345154"
 ---
-# <a name="what-is-the-speech-service-preview"></a>Co je služba rozpoznávání řeči (preview)?
+# <a name="what-is-the-speech-service-preview"></a>Co je Speech service (preview)?
 
-Služba rozpoznávání řeči, součástí kognitivní služby společnosti Microsoft, jednotek několik služeb Azure rozpoznávání řeči, které byly dřív dostupné samostatně: Bing řeči (které zahrnuje rozpoznávání řeči a převod textu na řeč), vlastní řeči a řeči překlad. Jako jeho prekurzorů řeči služba používá technologii technologií používaných v další produkty společnosti Microsoft, včetně Cortana a Microsoft Office.
+Speech service součástí společnosti Microsoft Cognitive Services, sjednotí několik služeb Azure řeči, které byly dříve k dispozici samostatně: (zahrnující rozpoznávání řeči a převod textu na řeč) pro zpracování řeči Bingu, vlastní řeč a překladu řeči. Stejně jako jeho prekurzorů Speech service využívá k tomu technologií používaných pro ostatní produkty Microsoftu, včetně Cortana a Microsoft Office.
 
 > [!NOTE]
-> Rozpoznávání řeči služba je aktuálně ve verzi public preview. Vraťte se sem pravidelně aktualizací k dokumentaci, ukázky další kódu a další.
+> Speech service je aktuálně ve verzi public preview. Vraťte se sem pravidelně aktualizací do dokumentace, ukázky kódu Další a další.
 
-Jednotná řeči služby s jedno předplatné, poskytuje vývojářům snadný způsob, jak poskytnout funkce výkonné rozpoznávání řeči své aplikace. Aplikace můžete nyní funkce hlasových příkazů, přepis, diktování, řeči souhrnnou a překlad.
+S jedním oděrem jednotné Speech service poskytuje vývojářům snadný způsob, jak poskytnout funkce výkonnou podporou hlasových jejich aplikací. Své aplikace můžete nyní funkcí hlasových příkazů, přepis, diktování, syntézu řeči a překladu.
 
 |Funkce|Popis|
 |-|-|
-|Převod řeči na text|Průběžné lidského hlasu převede na text, který lze použít jako vstup do vaší aplikace. Umožňuje integraci s [znalosti jazyka služby](https://docs.microsoft.com/azure/cognitive-services/luis/) (LEOŠ) k odvozování z utterances záměru uživatele.|
-|Převod textu na řeč|Převede text na zvukové soubory přirozený zní řečového.|
-|Rozpoznávání řeči&nbsp;překlad|Poskytněte překlady převod řeči na jiných jazyků, text nebo řečovém výstupu.|
+|Převod řeči na text|Převede průběžné lidské řeči na text, který může sloužit jako vstup do vaší aplikace. Můžete integrovat [služby Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) k odvození z projevy záměru uživatele.|
+|Převod textu na řeč|Převede text na zvukové soubory přirozeného to nezní řečového.|
+|Rozpoznávání řeči&nbsp;překladu|Překlady řeči do jiných jazyků, poskytněte text nebo řeči výstup.|
 
 ## <a name="using-the-speech-service"></a>Pomocí služby řeči
 
-Služba rozpoznávání řeči je k dispozici dvěma způsoby. [Sada SDK](speech-sdk.md) abstrahuje rychle podrobnosti síťových protokolů. [REST API](rest-apis.md) pracuje s žádný programovací jazyk, ale neposkytuje všechny funkce, které nabízí sadu SDK.
+Speech service je k dispozici dvě možnosti. [Sada SDK](speech-sdk.md) vyčleňuje podrobnostmi síťových protokolů. [Rozhraní REST API](rest-apis.md) funguje s libovolným programovacím jazykem, ale neposkytuje všechny funkce nabízené prostřednictvím sady SDK.
 
 |<br>Metoda|Řeč<br>na Text|Text, který se<br>Řeč|Řeč<br>Překlad|<br>Popis|
 |-|-|-|-|-|
 |[Sady SDK](speech-sdk.md)|Ano|Ne|Ano|Knihovny pro konkrétní programovací jazyky, které zjednodušují vývoj.|
-|[REST](rest-apis.md)|Ano|Ano|Ne|Jednoduché založené na protokolu HTTP rozhraní API umožňující snadné přidání řeči do vaší aplikace.|
+|[REST](rest-apis.md)|Ano|Ano|Ne|Jednoduché založené na protokolu HTTP rozhraní API, která umožňuje snadno přidat rozpoznávání řeči do vaší aplikace.|
 
 ## <a name="speech-to-text"></a>Převod řeči na text
 
-[Řeči na Text](speech-to-text.md) (STT), nebo rozpoznávání řeči, rozhraní API transcribes zvukových datových proudů do textu, který vaše aplikace může přijmout jako vstup. Aplikace můžete pak, například zadejte text do dokumentu nebo pracovat jako příkaz.
+[Převod řeči na Text](speech-to-text.md) (STT), nebo rozpoznávání řeči, rozhraní API transcribes audiostreamy do textu, který vaše aplikace může přijmout jako vstup. Vaše aplikace potom může například zadat tento text do dokumentu nebo ho zpracovat jako příkaz.
 
-Převod řeči na Text samostatně optimalizovaná pro interaktivní, konverzace a diktování scénáře. Tady uvádíme běžné případy použití pro převod řeči na Text rozhraní API. 
+Převod řeči na Text samostatně optimalizované pro interaktivní, konverzace a scénáře diktování. Tady jsou běžné případy použití pro Speech to Text API. 
 
-* Rozpoznat stručné utterance, třeba příkaz, bez dočasné výsledky
-* Transcribe dlouhý, dříve zaznamenaných utterance, jako je například zprávu hlasová pošta
-* Transcribe streamování řeči v reálném čase s částečné výsledky pro diktování
-* Zjistit, co uživatelé chtějí provést podle žádost mluvené přirozeného jazyka
+* Rozpoznat stručný utterance, například příkaz bez prozatímní výsledky
+* Přepisy dlouhý, dříve nahrané utterance, jako je například hlasové pošty zpráva
+* Přepisy streamování řeči v reálném čase pomocí částečných výsledků pro diktování
+* Zjistit, co uživatelé chtějí provedete podle mluvené slovo požadavek v přirozeném jazyce
 
-Převod řeči na Text rozhraní API podporuje interaktivní řeči přepis s v reálném čase průběžné rozpoznávání a průběžných výsledky. Podporuje také end řeči detekce, volitelné automaticky velká písmena a interpunkční znaménka, vulgárnost maskování a normalizaci text.
+Služba Speech to Text API podporuje přepis interaktivní řeči v reálném čase průběžné rozpoznávání a dočasné výsledky. Podporuje také detekci konce řeči, volitelné automatické použití velkých a malých písmen a interpunkce, maskování vulgarismů a normalizaci textu.
 
-Můžete přizpůsobit rozpoznávání řeči na Text akustickými a jazyk modely, aby specializované terminologie, aktivní prostředí a různé způsoby hovořícího.
+Můžete přizpůsobit převod řeči na Text akustických a jazykových modelů, aby pokryla specializovaného slovníku, hlučného prostředí a různé způsoby mluvený.
 
 ## <a name="text-to-speech"></a>Převod textu na řeč
 
-[Převod textu na řeč](text-to-speech.md) (převod textu na ŘEČ), nebo řeči slučování jsou rozhraní API převede prostého textu na řeč přirozený zní, doručit do vaší aplikace v zvukový soubor. Více hlasy, různých pohlaví nebo zvýraznění, jsou k dispozici mnoho podporovaných jazyků.
+[Převod textu na řeč](text-to-speech.md) (převod textu na ŘEČ), nebo syntézu řeči, rozhraní API převede prostého textu na řeč přirozeného to nezní, doručí do vaší aplikace v zvukový soubor. Více hlasů ve pohlaví nebo zvýraznění, jsou k dispozici pro mnoho podporované jazyky.
 
-Rozhraní API podporuje značky řeči souhrnnou Markup Language (SSML), takže můžete zadat přesný výslovnosti výslovnosti pro problémových slova. SSML může také indikovat charakteristiky rozpoznávání řeči (včetně zvýraznění, rychlost, svazek, pohlaví a výšce) přímo do textu.
+Rozhraní API podporuje značky řeči syntézu Markup Language (SSML) umožňující vám zadat přesné fonetická výslovnost problémových slov. SSML může také přímo v textu indikovat řečové charakteristiky (včetně důrazu, rychlosti, hlasitosti, pohlaví a výšky).
 
-Tady uvádíme běžné případy použití pro převod textu na řeč rozhraní API.
+Tady jsou běžné případy použití pro převod textu na řeč rozhraní API.
 
-* Řečovém výstupu jako alternativní obrazovky výstupu uživatelům se zrakovým postižením
-* Hlas na výzvy pro aplikace v automobilu, jako například navigace
-* Konverzačního uživatelského rozhraní v souladu s převod řeči na Text rozhraní API
+* Řečovém výstupu jako alternativní obrazovky výstupu pro zrakově postižené uživatele
+* Hlasové vás vyzve k zadání automobilu aplikací, jako je navigace
+* Konverzační uživatelská rozhraní společně s rozhraním Speech to Text API
 
-Pokud potřebujete nepodporované dialekt nebo jenom chcete jedinečný hlasu pro vaši aplikaci, převod textu na řeč rozhraní API podporuje vlastní hlasové modely.
+Pokud potřebujete nepodporované dialekt nebo chcete jenom jedinečný hlas pro vaši aplikaci, převod textu na řeč rozhraní API podporuje vlastní hlasové modely.
 
 ## <a name="speech-translation"></a>Překlad řeči
 
-[Řeči překlad](speech-translation.md) rozhraní API je možné přeložit datový proud zvuku v téměř v reálném čase nebo ke zpracování zaznamenaná řeči. Při překladu streamování, vrátí službu dočasné výsledky, které lze zobrazit pro uživatele k určení průběhu překlad. Výsledky mohou být vráceny jako text, nebo jako hlasu.
+[Překlad řeči](speech-translation.md) rozhraní API je možné přeložit zvukové streamy v téměř reálném čase nebo zpracovat zaznamenané řeči. Ve streamování překladu, vrátí služba prozatímní výsledky, které se dají zobrazit uživateli, aby se indikoval průběh překladu. Výsledky se dají vrátit v textové nebo hlasové podobě.
 
-Případy použití pro překlad řeči patří.
+Případy použití pro překlad řeči, patří.
 
-* Pro zaměstnanci služebních implementovat "konverzačního" Překlad mobilní aplikace nebo zařízení 
-* Zadejte automatické překladů pro titulkování záznamů audio a video
+* Implementace "konverzační" překladu mobilní aplikace nebo zařízení pro cestovatelům 
+* Zadejte automatické překlady titulkování z nahrávky zvuku a videa
 
 ## <a name="speech-devices-sdk"></a>Speech Devices SDK
 
-Se zavedením jednotné řeči služby společnosti Microsoft a příslušní partneři nabízí platformu integrované hardware a software pro optimalizovaná pro vývoj zařízení s podporou rozpoznávání řeči: [řeči zařízení SDK](speech-devices-sdk.md). Tato sada SDK je vhodný pro vývoj inteligentní řeči zařízení pro všechny typy aplikací.
+Se zavedením jednotné Speech service, Microsoft a příslušní partneři nabízí platformu integrované hardware a software pro optimalizovaný pro vývoj zařízení řeči: [sadou SDK pro řeč zařízení](speech-devices-sdk.md). Tato sada SDK je vhodná pro vývoj inteligentních hlasových zařízení pro všechny typy použití.
 
-Sady SDK zařízení řeči umožňuje vytvářet vlastní vedlejším zařízení slovem přizpůsobené probuzení, tak, aby upozornění, která aktivuje zvuku jsou jedinečné pro vaší značkou. Nabízí taky nadřízená zvuk zpracování z několika kanál zdrojů pro přesnější rozpoznávání řeči, včetně potlačení šumu, hlasové úplně pole a beamforming.
+Zařízení sadou SDK pro řeč umožňuje vytvářet okolí zařízeních pomocí přizpůsobených probuzení slovo, tak, aby upozornění, která aktivuje zvuku jedinečné pro vlastní značky. Poskytuje také špičkové zpracování zvuku z vícekanálových zdrojů pro přesnější rozpoznávání řeči, včetně potlačení šumu, a technologií Far-Field Voice a Beamforming.
+
+Sada SDK je založená na webové sokety používá port 443.
 
 ## <a name="next-steps"></a>Další postup
 
-Získáte klíč bezplatné předplatné zkušební verze pro rozpoznávání řeči služby.
+Získejte bezplatné předplatné zkušební verze klíče pro službu rozpoznávání řeči.
 
 > [!div class="nextstepaction"]
-> [Vyzkoušení služby řeči zdarma](get-started.md)
+> [Bezplatné vyzkoušení Speech service](get-started.md)

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/19/2018
+ms.date: 06/29/2018
 ms.author: terrylan
-ms.openlocfilehash: f950b6fef575e9dc2d637c17ba40b6f504d1f227
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 326b07a18b07f15850e0283ad51a05b42c1ef0ab
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284773"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341309"
 ---
 # <a name="custom-alert-rules-in-azure-security-center-preview"></a>Vlastní pravidla výstrah v Azure Security Center (Preview)
 Tento dokument vám pomůže vytvořit vlastní pravidla výstrah v Azure Security Center.
@@ -31,7 +31,7 @@ Služba Security Center obsahuje sadu předdefinovaných [výstrah zabezpečení
 Vlastní pravidla výstrah ve službě Security Center umožňují definovat nové výstrahy zabezpečení na základě již shromážděných dat z vašeho prostředí. Můžete vytvořit dotazy a výsledky těchto dotazů použít jako kritéria pro vlastní pravidlo, které se provede po splnění těchto kritérií. K vytváření vlastních dotazů můžete použít také události zabezpečení počítačů, protokoly partnerských řešení zabezpečení nebo data ingestovaná pomocí rozhraní API.
 
 > [!NOTE]
-> V pracovním prostoru, který vyberete pro uložení vlastní upozornění potřebujete oprávnění zapisovat.
+> Vlastní výstrahy nejsou podporované ve službě Security Center [pročtěte](security-center-investigation.md).
 >
 >
 
@@ -52,7 +52,14 @@ Otevřete řídicí panel **Security Center** a podle těchto kroků vytvořte v
 5.  Do pole **Popis** zadejte stručný popis vyjadřující záměr tohoto pravidla.
 6.  V poli **Závažnost** vyberte úroveň závažnosti (Vysoká, Střední, Nízká) podle svých potřeb.
 7.  V poli **Předplatné** vyberte předplatné, na které se toto pravidlo vztahuje.
-8.  Vyberte pracovní prostor, který chcete monitorovat s tímto pravidlem v **prostoru** pole a v **vyhledávací dotaz** pole, dotaz, který chcete použít k získání výsledků. V pracovním prostoru, který vyberete pro uložení vlastní upozornění potřebujete oprávnění zapisovat. Výsledek tohoto dotazu aktivuje výstrahu. Všimněte si, že při zadání platného dotazu se v pravém rohu tohoto pole zobrazí zelená značka zaškrtnutí:
+8.  Vyberte pracovní prostor, který chcete monitorovat pomocí tohoto pravidla v **pracovní prostor** pole a **vyhledávací dotaz** pole dotazu, který chcete použít k získání výsledků.
+
+    > [!NOTE]
+    > V pracovním prostoru, kterou Pokud chcete ukládat vlastní upozornění potřebujete oprávnění zapisovat.
+    >
+    >
+
+    Výsledek tohoto dotazu aktivuje výstrahu. Všimněte si, že při zadání platného dotazu se v pravém rohu tohoto pole zobrazí zelená značka zaškrtnutí:
 
     ![Dotaz](./media/security-center-custom-alert/security-center-custom-alert-fig3.png)
 

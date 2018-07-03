@@ -1,6 +1,6 @@
 ---
-title: Přidat záměry v aplikacích LEOŠ | Microsoft Docs
-description: Principy jazyka (LEOŠ) slouží k přidání záměry pomohou aplikace pochopení požadavků uživatele a reagovat na ně správně.
+title: Přidání záměrů aplikace LUIS | Dokumentace Microsoftu
+description: Language Understanding (LUIS) použijte k přidání záměrů, což umožní aplikace porozumět uživatelských požadavků a reagovat na ně správně.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,48 +9,48 @@ ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
 ms.service: cognitive-services
-ms.openlocfilehash: 6e013e994a3bcb60c3104aa10cd7bad1535706f1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: f004a0a1726ca6c513e2cb4c137f82ae40e31a01
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343825"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344323"
 ---
-# <a name="manage-intents"></a>Spravovat záměry 
-Přidat [záměry](luis-concept-intent.md) do vaší aplikace LEOŠ k identifikaci skupin dotazy nebo příkazy, které mají stejné záměry. 
+# <a name="manage-intents"></a>Správa záměrů 
+Přidat [záměry](luis-concept-intent.md) do vaší aplikace LUIS k identifikaci skupin dotazy nebo příkazy, které mají stejné záměry. 
 
-Můžete přidat a spravovat vaše záměry z **záměry** stránka, k dispozici z **záměry** v LEOŠ na levém panelu. 
+Přidávat a spravovat vaše záměry z **záměry** stránky k dispozici z **záměry** LUIS na levém panelu. 
 
-Následující postup ukazuje, jak přidat záměr "Bookflight" v aplikaci TravelAgent.
+Následující postup ukazuje, jak přidat "Bookflight" záměr v aplikaci TravelAgent.
 
-## <a name="add-intent"></a>Přidat záměru
+## <a name="add-intent"></a>Přidat záměr
 
-1. Otevřete aplikaci (například TravelAgent) klepnutím na její název v **Moje aplikace** a pak klikněte na tlačítko **záměry** na levém panelu. 
-2. Na **záměry** klikněte na tlačítko **vytvořit nové záměr**.
+1. Otevřete aplikaci (například TravelAgent) kliknutím na název na **Moje aplikace** stránce a potom klikněte na tlačítko **záměry** na levém panelu. 
+2. Na **záměry** klikněte na **vytvořit nové záměr**.
 
-    ![Seznam tříd Intent](./media/luis-how-to-add-intents/IntentsList.png)
-3. V **vytvořit nové záměr** dialogové okno, typ záměr název "BookFlight" a klikněte na tlačítko **provádí**.
+    ![Seznam příkazů](./media/luis-how-to-add-intents/IntentsList.png)
+3. V **vytvořit nové záměr** dialogové okno, zadejte název "BookFlight" záměr a klikněte na **provádí**.
 
-    ![Přidat záměru](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
+    ![Přidat záměr](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    Na stránce podrobností záměrné nově přidané záměru [přidat utterances](#add-an-utterance-on-intent-page).
+    Na stránce s podrobnostmi záměru nově přidané záměru [přidání projevů](#add-an-utterance-on-intent-page).
 
-## <a name="rename-intent"></a>Přejmenujte záměru
+## <a name="rename-intent"></a>Přejmenovat záměr
 
-1. Na **záměr** klikněte na ikonu přejmenování ![přejmenovat záměr](./media/luis-how-to-add-intents/Rename-Intent-btn.png) vedle názvu záměrné. 
+1. Na **záměr** klikněte na ikonu přejmenovat ![přejmenovat záměr](./media/luis-how-to-add-intents/Rename-Intent-btn.png) vedle názvu záměru. 
 
-2. Na **záměr** stránky, v dialogovém okně se zobrazí aktuální název záměrné. Upravit název záměrné a stiskněte klávesu enter. Nový název uložit a zobrazit na stránce záměrné.
+2. Na **záměr** stránky, záměru aktuální název se zobrazí v dialogovém okně. Upravit záměru název a stiskněte klávesu enter. Nový název uložit a zobrazit na stránce záměru.
 
-    ![Upravit záměru](./media/luis-how-to-add-intents/EditIntent-dialogbox.png)
+    ![Upravit záměr](./media/luis-how-to-add-intents/EditIntent-dialogbox.png)
 
-## <a name="delete-intent"></a>Odstranit záměru
-Při odstraňování záměrem než záměrné žádné, můžete přidat všechny utterances záměrné none. To je užitečné, pokud potřebujete přesunout utterances místo odstraněním.   
+## <a name="delete-intent"></a>Odstranit záměr
+Při odstraňování záměru než záměru None, můžete přidat všechny projevy na hodnotu None záměru. To je užitečné, pokud potřebujete přesunout projevy místo jejich odstranění.   
 
-1. Na **záměr** klikněte na tlačítko **odstranit záměr** tlačítko vedle vpravo od názvu záměrné. 
+1. Na **záměr** stránky, klikněte na tlačítko **odstranit záměr** tlačítko vedle vpravo od názvu záměru. 
 
-    ![Odstranit záměrné tlačítko](./media/luis-how-to-add-intents/DeleteIntent.png)
+    ![Záměru tlačítko Odstranit](./media/luis-how-to-add-intents/DeleteIntent.png)
 
-2. Klikněte na tlačítko "Ok" v potvrzovacím dialogu.
+2. Klikněte na tlačítko "Ok" v dialogovém okně potvrzení.
 
 <!--
     TBD: waiting for confirmation about which delete dialog is going to be in //BUILD
@@ -59,88 +59,88 @@ Při odstraňování záměrem než záměrné žádné, můžete přidat všech
 -->
 
 
-## <a name="add-an-utterance-on-intent-page"></a>Přidat utterance na záměrné stránky
+## <a name="add-an-utterance-on-intent-page"></a>Přidat utterance na stránce záměru
 
-Na stránce záměrné zadejte příslušné utterance očekávat od uživatelů, jako například `book 2 adult business tickets to Paris tomorrow on Air France` do textového pole pod záměrné název a potom stiskněte klávesu Enter. 
+Na stránce záměru zadejte relevantní utterance očekáváte, že od uživatelů, jako například `book 2 adult business tickets to Paris tomorrow on Air France` do textového pole pod název záměru a potom stiskněte klávesu Enter. 
  
 >[!NOTE]
->LEOŠ převede všechny utterances na malá písmena.
+>Služba LUIS převede všechny projevy na malá písmena.
 
-![Stránka Podrobnosti snímek záměry, s utterance zvýrazněná](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
+![Stránce s podrobnostmi o snímek obrazovky záměrů, se zvýrazněným utterance](./media/luis-how-to-add-intents/add-new-utterance-to-intent.png) 
 
-Utterances se přidají do seznamu utterances pro aktuální záměr. Po přidání utterance [popisku všechny entity](luis-how-to-add-example-utterances.md) v rámci utterances a [cvičení](luis-how-to-train.md) vaší aplikace. 
+Projevy se přidají do seznamu projevy pro aktuální záměr. Po přidání utterance [popisek žádné entity](luis-how-to-add-example-utterances.md) v rámci projevy a [trénování](luis-how-to-train.md) vaší aplikace. 
 
-## <a name="create-a-pattern-from-an-utterance"></a>Vytvořit vzor z utterance
-V tématu [přidat vzor z existující utterance na stránce záměr nebo entity](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
+## <a name="create-a-pattern-from-an-utterance"></a>Ze utterance společně tvoří masku
+Zobrazit [přidat vzorek z existující utterance na stránce záměr nebo entity](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 
-## <a name="edit-an-utterance-on-intent-page"></a>Upravit utterance na záměrné stránce
+## <a name="edit-an-utterance-on-intent-page"></a>Upravit utterance na stránce záměru
 
-Chcete-li upravit utterance, vyberte ikonu tři tečky (...) na pravém konci řádku pro tento utterance a pak vyberte **upravit**. Upravit text stiskněte klávesu Enter na klávesnici.
+Upravit utterance, vyberte ikonu tří teček (...) na pravém konci řádku pro tento utterance a pak vyberte **upravit**. Upravit text a stiskněte klávesu Enter na klávesnici.
 
-![Stránka Podrobnosti snímek záměry, se zvýrazněnou ikonou tři tečky](./media/luis-how-to-add-intents/edit-utterance.png) 
+![Stránce s podrobnostmi o snímek obrazovky záměrů, se zvýrazněným ikonu tří teček](./media/luis-how-to-add-intents/edit-utterance.png) 
 
-## <a name="reassign-utterances-on-intent-page"></a>Přiřazení utterances na záměrné stránce
-Záměr jeden nebo více utterances můžete změnit změnou jejich přiřazení k jiné záměr. 
+## <a name="reassign-utterances-on-intent-page"></a>Změnit přiřazení projevy na stránce záměru
+Záměr projevů jeden nebo více můžete změnit změnou přiřazení na jiné záměr. 
 
-K opětovnému přiřazení jednoho utterance do různých záměrů, na pravém konci utterance na řádek, správné záměrné seznamu vyberte název **s názvem bez přípony záměr** sloupce. Utterance se odebral ze seznamu utterance aktuální záměr. 
+K opětovnému přiřazení jednoho utterance na různých záměr, na pravém konci řádku utterance správné záměru seznamu vyberte název **označené záměr** sloupce. Utterance je odebrat ze seznamu utterance aktuální záměr. 
 
-![Snímek obrazovky BookFlight záměrné stránky se záměrem utterance pod vybraný sloupec záměrné Labeled](./media/luis-how-to-add-intents/reassign-1-utterance.png)
+![Snímek obrazovky BookFlight záměru stránka s záměr utterance pod Labeled záměru vybraný sloupec](./media/luis-how-to-add-intents/reassign-1-utterance.png)
 
-Chcete-li změnit záměr několik utterances, vyberte zaškrtávací políčka nalevo od utterances a pak vyberte **přiřazení záměr**. Vyberte správný záměr ze seznamu.
+Chcete-li změnit záměr projevů několik, zaškrtněte políčka nalevo od projevy a pak vyberte **záměr přiřazení**. Ze seznamu vyberte správné záměr.
 
-![Snímek obrazovky BookFlight záměrné stránka s utterance zaškrtnutí a tlačítko znovu přiřadit záměrné zvýrazněná](./media/luis-how-to-add-intents/delete-several-utterances.png) 
+![Snímek obrazovky BookFlight záměru stránku utterance zaškrtnuto a zvýrazněným tlačítkem záměru opětovného přiřazení](./media/luis-how-to-add-intents/delete-several-utterances.png) 
 
-## <a name="delete-utterances-on-intent-page"></a>Odstranit utterances na záměrné stránce
+## <a name="delete-utterances-on-intent-page"></a>Odstranit projevy na stránce záměru
 
-Chcete-li odstranit utterance, vyberte ikonu tři tečky (...) na pravém konci řádku pro tento utterance a pak vyberte **odstranit**. Utterance se odebere ze seznamu a LEOŠ aplikace.
+Pokud chcete odstranit utterance, vyberte ikonu tří teček (...) na pravém konci řádku pro tento utterance a pak vyberte **odstranit**. Utterance se odebere ze seznamu a aplikaci LUIS.
 
-![Stránka Podrobnosti snímek záměry, se zvýrazněnou možností odstranit](./media/luis-how-to-add-intents/delete-utterance-ddl.png)
+![Stránce s podrobnostmi o snímek obrazovky záměrů, se zvýrazněnou možností odstranit](./media/luis-how-to-add-intents/delete-utterance-ddl.png)
 
-Chcete-li odstranit několik utterances:
+Pokud chcete odstranit několik projevy:
 
-1. Vyberte zaškrtávací políčka nalevo od utterances a pak vyberte **odstranit utterances (s)**. 
+1. Zaškrtněte políčka nalevo od projevy a pak vyberte **odstranit projevy (s)**. 
 
-    ![Stránka Podrobnosti snímek záměry, s utterances zaškrtnutí a odstranění utterance(s) tlačítkem](./media/luis-how-to-add-intents/delete-several-utterances.png)
+    ![Stránce s podrobnostmi o snímek obrazovky záměrů, s projevy zkontrolovat a odstranit zvýrazněným tlačítkem utterance(s)](./media/luis-how-to-add-intents/delete-several-utterances.png)
 
-2. Vyberte **provádí** v **odstranit utterances?** automaticky otevíraná okna.
+2. Vyberte **provádí** v **odstranit projevy?** automaticky otevíraná okna.
 
-## <a name="search-in-utterances-on-intent-page"></a>Hledání v utterances na záměrné stránce
-V záměrem můžete vyhledat utterances, které obsahují text (slova nebo fráze). Například může dojít k chybě, která zahrnuje určité slovo, a chcete najít všechny příklady, které zahrnují této konkrétní aplikace word. 
+## <a name="search-in-utterances-on-intent-page"></a>Hledat v projevy na stránce záměru
+V záměru můžou vyhledejte projevy, které obsahují text (slova nebo fráze). Například můžete si všimnout chybu, která zahrnuje určité slovo a chcete najít všechny příklady, které zahrnují toto konkrétní slovo. 
 
-1. Vyberte ikonu lupy na panelu nástrojů.
+1. V panelu nástrojů vyberte ikonu lupy.
 
-    ![Snímek obrazovky záměry stránka s vyhledávání ikonu lupy zvýrazněná](./media/luis-how-to-add-intents/magnifying-glass.png)
+    ![Snímek obrazovky záměry stránku pro hledání ikonu lupy zvýrazněnou](./media/luis-how-to-add-intents/magnifying-glass.png)
 
-2. Do textového pole hledání se zobrazí. Do pole Hledat v pravém horním rohu seznamu utterances zadejte slovo nebo frázi. Utterances seznam aktualizací, chcete-li zobrazit pouze utterances, které obsahují hledaný text. 
+2. Zobrazí se textové pole pro hledání. Zadejte slovo nebo frázi v pole Hledat v pravém horním rohu projevy seznamu. Projevy seznam aktualizací, chcete-li zobrazit pouze projevy, které obsahují hledaný text. 
 
-    ![Snímek obrazovky záměry stránka se zvýrazněnou pole hledání text](./media/luis-how-to-add-intents/search-textbox.png)
+    ![Snímek obrazovky záměry stránky se zvýrazněnou textové pole pro hledání](./media/luis-how-to-add-intents/search-textbox.png)
 
-    Chcete-li zrušit hledání a obnovit vaše úplný seznam utterances, odstraňte hledaný text, který jste zadali. Zavřete textového pole hledání, vyberte ikonu lupy znovu na panelu nástrojů.
+    Chcete-li zrušit hledání a obnovit váš seznam všech projevy, odstraňte hledaný text, který jste zadali. Zavřete textové pole pro hledání, vyberte ikonu lupy znovu na panelu nástrojů.
 
-## <a name="prediction-discrepancy-errors-on-intent-page"></a>Chyby předpovědi nesoulad mezi databází na záměrné stránky
-Utterance v záměrem může být v rozporu vybrané záměr a skóre předpovědi. LEOŠ označuje Tato nesrovnalost s červeným rámečkem kolem skóre. 
+## <a name="prediction-discrepancy-errors-on-intent-page"></a>Predikce nesrovnalosti chyby na stránce záměru
+Utterance v záměru pravděpodobně relevanci vybrané záměr a skóre předpovědi. Služba LUIS označuje této nesrovnalosti s červeným rámečkem okolo položky skóre. 
 
-![Stránka záměr BookFlight – snímek obrazovky s skóre nesoulad mezi databází předpovědi zvýrazněná](./media/luis-how-to-add-intents/score-discrepancy.png) 
+![Stránka záměr BookFlight snímek obrazovky se zvýrazněnou skóre nesrovnalosti predikcí](./media/luis-how-to-add-intents/score-discrepancy.png) 
 
-## <a name="filter-by-intent-prediction-discrepancy-errors-on-intent-page"></a>Filtrovat podle záměrné předpovědi nesoulad mezi databází chyby na stránce záměrné
-Pro filtrování seznamu utterance pouze utterances s nesoulad mezi databází záměrné předpovědi, přepněte z **Zobrazit vše** k **pouze chyby** na panelu nástrojů. 
+## <a name="filter-by-intent-prediction-discrepancy-errors-on-intent-page"></a>Filtrovat podle záměru předpovědi nesrovnalosti chyby na stránce záměru
+K filtrování seznamu utterance pouze projevy s záměru předpovědi nesrovnalosti, přepněte z **Zobrazit vše** k **pouze chyby** na panelu nástrojů. 
 
-## <a name="filter-by-entity-type-on-intent-page"></a>Filtrovat podle typu entity na záměrné stránce
-Použití **Entity filtry** rozevíracího seznamu na panelu nástrojů utterances filtrovat podle entity. 
+## <a name="filter-by-entity-type-on-intent-page"></a>Filtrovat podle typu entity na stránce záměru
+Použití **Entity filtry** rozevíracího seznamu na panelu nástrojů můžete filtrovat projevy podle entity. 
 
-![Snímek obrazovky záměry stránka se zvýrazněnou filtr typu entity](./media/luis-how-to-add-intents/filter-by-entities.png) 
+![Snímek obrazovky záměry stránky se zvýrazněnou filtr typu entity](./media/luis-how-to-add-intents/filter-by-entities.png) 
 
-Odebrat filtr, vyberte pole blue filtr s tímto slovo nebo frázi v panelu nástrojů.  
+Odebrat filtr, vyberte pole modré filtr s tímto slova nebo fráze ve skupinovém rámečku panelu nástrojů.  
 <!-- TBD: waiting for ux fix - bug in ux of prebuit entity number -- when filtering by it, it doesn't show the list -->
 
-## <a name="switch-to-token-view-on-intent-page"></a>Umožňuje přepnout do zobrazení tokenu na záměrné stránce
-Přepnutí **tokeny zobrazení** zobrazíte tokeny namísto názvů typu entity. Na klávesnici, můžete také použít **řízení + E** k přepnutí zobrazení. 
+## <a name="switch-to-token-view-on-intent-page"></a>Přepnout na token zobrazení na stránce záměru
+Přepnout **tokeny zobrazení** zobrazíte tokeny namísto názvů typu entity. Na klávesnici, můžete také použít **ovládací prvek + E** přepnete zobrazení. 
 
-![Snímek obrazovky BookFlight záměr se zvýrazněnou tokenu zobrazení](./media/luis-how-to-add-intents/toggle-tokens-view.png)
+![Záměr BookFlight snímek obrazovky se zvýrazněnou Token zobrazení](./media/luis-how-to-add-intents/toggle-tokens-view.png)
 
-## <a name="train-your-app-after-changing-model-with-intents"></a>Po změně modelu pomocí tříd Intent cvičení vaší aplikace
-Po přidat, upravit nebo odebrat záměry, [cvičení](luis-how-to-train.md) a [publikování](PublishApp.md) aplikace se změny ovlivňují dotazy koncový bod. 
+## <a name="train-your-app-after-changing-model-with-intents"></a>Po změně modelu pomocí tříd Intent trénování vaší aplikace
+Po přidání, úprava nebo odebrání záměrů, [trénování](luis-how-to-train.md) a [publikovat](luis-how-to-publish-app.md) vaší aplikace pro vaše změny ovlivnit dotazy koncový bod. 
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Po přidání záměry do vaší aplikace, je začít přidávat svůj další úkol [příklad utterances](luis-how-to-add-example-utterances.md) pro záměry jste přidali. 
+Po přidání záměrů do vaší aplikace, dalším krokem je začít přidávat [příklad projevy](luis-how-to-add-example-utterances.md) pro záměrů, které jste přidali. 

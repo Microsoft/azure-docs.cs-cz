@@ -1,6 +1,6 @@
 ---
-title: Chránit obsah pomocí služby Azure Media Services | Microsoft Docs
-description: Tento článek poskytuje přehled toho Ochrana obsahu pomocí služby Media Services.
+title: Chránit obsah pomocí služby Azure Media Services | Dokumentace Microsoftu
+description: Tento článek přináší přehled ochrany obsahu pomocí služby Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,91 +12,89 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 07/01/2018
 ms.author: juliako
-ms.openlocfilehash: 13447fd9193374d80ed5c2e6af8543f11b95e709
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 63cf7633a2280682b3a3da7e8939e71e83ee8f3b
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788736"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342106"
 ---
 # <a name="content-protection-overview"></a>Přehled ochrany obsahu
- Azure Media Services můžete použít k zabezpečení médiu od okamžiku, kdy by poté počítač prostřednictvím úložiště, zpracování a doručení. Pomocí služby Media Services, abyste mohli zajistit obsah za provozu a na vyžádání dynamicky šifrován Advanced Encryption Standard (AES-128) nebo jakýkoli systém tři hlavní digitální rights management (DRM): Microsoft PlayReady, Google Widevine a Apple FairPlay. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům. 
+ Azure Media Services můžete použít k zabezpečení médií od okamžiku opuštění počítače přes úložiště, zpracování a dodání. Pomocí služby Media Services můžete doručovat na vyžádání a živého obsahu dynamicky šifrován Advanced Encryption Standard (AES-128) nebo některý z systémy tři hlavní digital rights management (DRM): Apple FairPlay, Microsoft PlayReady a Google Widevine. Služba Media Services také poskytuje službu k doručování klíčů AES a DRM (PlayReady, Widevine a FairPlay) licence autorizovaným klientům. 
 
-Následující obrázek ukazuje pracovní postup služby Media Services ochrana obsahu: 
+Následující obrázek ukazuje pracovní postup služby Media Services content protection: 
 
 ![Ochrana technologií PlayReady](./media/media-services-content-protection-overview/media-services-content-protection-with-multi-drm.png)
 
-Tento článek vysvětluje principy a terminologií, které jsou relevantní pro pochopení ochrana obsahu pomocí služby Media Services. Tento článek také poskytuje odkazy na články, které popisují postup chránit obsah. 
+Tento článek vysvětluje koncepty a terminologie relevantní pro pochopení ochrany obsahu pomocí služby Media Services. Článek taky obsahuje odkazy na články, které se zabývají k ochraně obsahu. 
 
 ## <a name="dynamic-encryption"></a>Dynamické šifrování
- Služba Media Services můžete použít k doručení obsahu dynamicky šifrovat pomocí nezašifrovaného klíče AES nebo DRM šifrování pomocí PlayReady a Widevine, FairPlay. V současné době můžete šifrovat formáty HTTP Live Streaming (HLS), MPEG DASH a technologie Smooth Streaming. Šifrování na progresivní stahování není podporováno. Každá metoda šifrování podporuje následující protokoly pro streamování:
+ Media Services můžete doručovat obsah zašifrovaný dynamicky pomocí nezašifrovaného klíče AES a DRM šifrování pomocí PlayReady, Widevine a FairPlay. V současné době můžete šifrovat formáty HTTP Live Streaming (HLS), MPEG DASH a Smooth Streaming. Šifrování na progresivní stahování se nepodporuje. Každá metoda šifrování se podporuje následující protokoly pro streamování:
 
 - AES: MPEG-DASH, Smooth Streaming a HLS
 - PlayReady: MPEG-DASH, Smooth Streaming a HLS
 - Widevine: MPEG-DASH
 - FairPlay: HLS
 
-K šifrování prostředek, musíte přidružit asset šifrovací klíč obsahu a taky konfigurace zásad autorizace pro klíč. Obsahu klíčů může být zadaný nebo automaticky generuje služba Media Services.
+K šifrování assetu, musíte přidružit asset šifrovací klíč obsahu a také konfigurace zásad autorizace pro klíč. Symetrické klíče můžete zadat nebo automaticky generuje služba Media Services.
 
-Také musíte nakonfigurovat zásady doručení assetu. Pokud chcete k vysílání datového proudu asset šifrovat úložiště, zajistěte, aby k určení, jak chcete poskytovaným konfigurace zásad doručení assetu.
+Také musíte nakonfigurovat zásady doručení assetu. Pokud chcete Streamovat k šifrování úložiště assetu, ujistěte se, že k určení způsobu poskytovaným konfigurace zásad doručení assetu.
 
-Datový proud je žádost přehrávač, Media Services používá k zadanému klíči dynamicky šifrovat pomocí standardu AES nezašifrovaný klíč nebo DRM šifrování vašeho obsahu. Přehrávač dešifrovat datový proud, vyžaduje klíč z doručení klíče služby Media Services. Při rozhodování, zda je uživatel oprávnění k získání klíče, služba vyhodnocuje zásady autorizace, které jste zadali pro klíč.
+Datový proud je žádost přehrávač, Media Services využívá se zadaným klíčem k dynamické šifrování obsahu pomocí nezašifrovaného klíče AES a DRM šifrování. K dešifrování datového proudu, vyžaduje přehrávač klíč z doručení klíče služby Media Services. Rozhodování o tom, zda je uživatel oprávnění k získání klíče, služba vyhodnocuje zásady autorizace, které jste zadali pro klíč.
 
-## <a name="aes-128-clear-key-vs-drm"></a>Zrušte klíče vs AES-128. DRM
-Zákazníci často zajímat, jestli by měl použít systém DRM nebo šifrování AES. Hlavní rozdíl mezi dvěma systémy je, že s šifrováním AES klíč obsahu přenášená do klienta v nezašifrované podobě ("v Vymazat"). V důsledku toho klíč používaný k šifrování obsahu lze zobrazit v trasování v síti na straně klienta v prostém textu. Zrušte klíče šifrování AES-128 je vhodná pro použití případech, kdy prohlížeč je důvěryhodná strana (například šifrování podnikové videa distribuované v rámci společnosti prohlížení zaměstnanci).
+## <a name="aes-128-clear-key-vs-drm"></a>Vs nezašifrovaného klíče AES-128. DRM
+Zákazníci často zajímat, zda by měl používat šifrování AES nebo systému DRM. Hlavní rozdíl mezi těmito dvěma systémy je, že se šifrováním AES klíč obsahu přenášena na klienty v nezašifrované podobě ("v nezašifrované podobě"). V důsledku toho klíč používaný k šifrování obsahu lze zobrazit v síťového trasování na straně klienta ve formátu prostého textu. Šifrování nezašifrovaného klíče AES-128 je vhodný pro případy použití, ve kterém je prohlížeč důvěryhodné strany (například šifrování firemních videí distribuované v rámci společnosti prohlížení zaměstnanci).
 
-Technologie PlayReady, Widevine a FairPlay všechny poskytovat vyšší úroveň porovnání šifrování AES-128 zrušte šifrovacího klíče. Klíč obsahu se přenášejí v zašifrovaném formátu. Kromě toho se v zabezpečeném prostředí na úrovni operačního systému, kde je pro uživatel se zlými úmysly použijí pro útok obtížnější zpracovává dešifrování. DRM se doporučuje pro použití případy, kdy prohlížeč nemusí být důvěryhodná strana a vyžadujete nejvyšší úroveň zabezpečení.
+PlayReady, Widevine a FairPlay AES-128 všechny poskytovat vyšší úroveň šifrování ve srovnání s nezašifrovaným klíčem. Klíč obsahu se přenášejí v zašifrovaném formátu. Kromě toho se v zabezpečeném prostředí na úrovni operačního systému, kde je obtížnější uživatel se zlými úmysly k útoku na zpracovává dešifrování. DRM se doporučuje pro případy použití, kdy prohlížeč pravděpodobně nebude důvěryhodná strana a vyžadujete nejvyšší úroveň zabezpečení.
 
 ## <a name="storage-encryption"></a>Šifrování úložiště
-Šifrování úložiště můžete použít k zašifrování obsahu místně pomocí šifrování AES 256 bitů. Potom můžete nahrát jej do úložiště Azure, kde je uložený v zašifrované podobě. Prostředky chráněné pomocí šifrování úložiště jsou automaticky bez šifrování a jejich umísťování v systému souborů EFS před kódování. Prostředky jsou volitelně znovu zašifrovat před jejich odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je, když chcete zabezpečit soubory vysoce kvalitními vstupními médii pomocí silného šifrování v klidovém stavu na disku.
+Šifrování úložiště můžete použít k zašifrování obsahu místně s použitím šifrování AES 256 bitů. Potom můžete nahrát ho do služby Azure Storage, kde jsou uložená v klidovém stavu zašifrovaná. Prostředky chráněné pomocí šifrování úložiště jsou automaticky nešifrované a umístěné v systému souborů EFS před kódováním. Prostředky jsou volitelně znovu zašifrovat před odesláním zpět v podobě nového výstupního prostředku. Případem primárního použití šifrování úložiště je, pokud chcete zajistit vysoce kvalitními vstupními multimediálními soubory pomocí silného šifrování v klidovém stavu na disku.
 
-K poskytování asset šifrovat úložiště, musíte nakonfigurovat zásady doručení assetu, aby služba Media Services věděla způsob doručení obsahu. Před asset Streamovat, streamování serveru dešifruje a datové proudy svůj obsah pomocí zadaného doručování zásad (například AES, běžným šifrováním nebo žádné šifrování).
+K zajištění k šifrování úložiště assetu, musíte nakonfigurovat zásady doručení assetu tak, aby služba Media Services ví, jak chcete dodávat váš obsah. Předtím, než můžete Streamovat prostředek, server streamování dešifruje a streamování vašeho obsahu s využitím zadaného doručování zásad (například AES, používat standard common encryption nebo bez šifrování).
 
 ## <a name="types-of-encryption"></a>Typy šifrování
-PlayReady a Widevine využívat běžné šifrování (AES PEV.cenu režim). FairPlay využívá šifrování AES-režimu CBC. Zrušte klíče šifrování AES-128 využívá šifrování obálku.
+PlayReady a Widevine použít obecné šifrování (AES PEV.cenu režim). FairPlay využívá šifrování AES-CBC-režimu. Šifrování nezašifrovaného klíče AES-128 využívá šifrování obálky.
 
-## <a name="licenses-and-keys-delivery-service"></a>Službu doručování licencí a klíče
-Služba Media Services poskytuje doručení klíče službu k doručování licencí DRM (PlayReady, Widevine, FairPlay) a klíčů AES autorizovaným klientům. Můžete použít [portálu Azure](media-services-portal-protect-content.md), REST API nebo sady Media Services SDK pro .NET, ke konfiguraci zásad autorizace a ověření licencí a klíčů.
+## <a name="licenses-and-keys-delivery-service"></a>Službu doručování licencí a klíčů
+Služba Media Services poskytuje doručení klíče služby pro doručování licencí DRM (PlayReady, Widevine, FairPlay) a klíče AES autorizovaným klientům. Můžete použít [na webu Azure portal](media-services-portal-protect-content.md), rozhraní REST API nebo Media Services SDK pro .NET konfigurace zásad autorizace a ověřování licencí a klíčů.
 
 ## <a name="control-content-access"></a>Přístup k obsahu ovládacího prvku
-Můžete řídit, kdo má přístup k vašemu obsahu tak, že nakonfigurujete zásady autorizace klíče obsahu. Zásady autorizace klíče obsahu podporuje buď otevřené nebo s tokenem omezení.
+Můžete řídit, kdo má přístup k vašemu obsahu tím, že nakonfigurujete zásady autorizace klíče obsahu. Zásady autorizace klíče obsahu podporuje omezení buď otevřené nebo s tokenem.
 
-### <a name="open-authorization"></a>Otevřete autorizace
-Zásad otevřete autorizace je odeslán klíč obsahu libovolnému klientovi (bez omezení).
+### <a name="open-authorization"></a>Otevřít autorizace
+Pomocí zásad autorizace otevřít přijde klíč obsahu libovolnému klientovi (bez omezení).
 
 ### <a name="token-authorization"></a>Token autorizace
-Zásadu omezený tokenu autorizace klíče obsahu je odeslán pouze klienta, který představuje platný JSON Web Token (JWT) nebo jednoduchého webového tokenu (SWT) v žádosti o klíč nebo licenci. Tento token musí být vydaný služby tokenů zabezpečení (STS). Můžete použít jako služby tokenů zabezpečení Azure Active Directory nebo nasadit vlastní službu tokenů zabezpečení. Služba tokenů zabezpečení musí být nakonfigurované vytvořit token podepsané zadaný klíč a vystavování deklarací identity, které jste zadali v nastavení omezení s tokenem. Pokud token je platný a deklarace identity v tokenu shodují s těmi, nakonfigurované pro klíč nebo licence doručení klíče služby Media Services vrátí požadovaný klíč nebo licence klientovi.
+Zásady omezení tokenem autorizace klíče k obsahu odesláno pouze pro klienta, který představuje jednoduchý webový token (SWT) nebo platný JSON Web Token (JWT) v žádosti o správu klíčů/licencí. Tento token musí být vystavené služby tokenů zabezpečení (STS). Můžete použít Azure Active Directory jako služba STS nebo nasadit vlastní službu STS. Služba tokenů zabezpečení musí být nakonfigurovaný k vytvoření tokenu podepsán zadaný klíč a vydávání deklarací identity, které jste zadali v konfiguraci omezení s tokenem. Doručení klíče služby Media Services vrátí klientovi požadovaný klíčů/licencí, pokud je token platný a deklarace identity v tokenu odpovídají těm nakonfigurovaný pro klíčů/licencí.
 
-Když konfigurujete zásady omezení tokenem, musíte zadat ověření primární klíč, vystavitele a cílová skupina parametry. Ověření primární klíč obsahuje klíč, který byl podepsaný token. Vystavitel je zabezpečený tokenu služba, která vydá token. Cílovou skupinu, které se někdy označuje jako obor, popisuje záměr tokenu nebo prostředek token povolí přístup k. Služba Media Services doručení klíče ověří, jestli tyto hodnoty v tokenu shodují s hodnotami v šabloně.
+Když konfigurujete zásady omezení tokenem, musíte zadat primární ověřovací klíč, vydavatele a parametry cílovou skupinu. Primární ověřovací klíč obsahuje klíč, který byl token podepsán pomocí. Vystavitel je služba tokenů zabezpečení, který vydá token. Cílové skupiny, někdy označuje jako obor, by měl popisovat záměr tokenu nebo prostředek token, který autorizuje přístup k. Služba Media Services doručení klíče ověří, že tyto hodnoty v tokenu odpovídají hodnotám v šabloně.
 
 ## <a name="streaming-urls"></a>Adresy URL pro streamování
-Pokud váš asset byla zašifrována pomocí více než jeden DRM, použijte značku šifrování v adresu URL streamování: (formát = 'm3u8-aapl' šifrování = 'xxx').
+Pokud váš asset byla zašifrována s více DRM, použijte značku šifrování v adrese URL streamování: (format = "m3u8-aapl" šifrování = "xxx").
 
 Platí následující aspekty:
 
-* Lze zadat více než jeden typ šifrování.
-* Typ šifrování nemusí být zadaného v adrese URL, pokud jenom jeden šifrování byla použita pro daný prostředek.
-* Typ šifrování je malá a velká písmena.
-* Určit lze následující typy šifrování:
-  * **šifrování cenc**: pro PlayReady nebo Widevine (common encryption)
-  * **cbcs-aapl**: pro FairPlay (šifrování AES CBC)
+* Je možné zadat více než jeden typ šifrování.
+* Typ šifrování nemusí být zadané v adrese URL, pokud pouze jeden šifrování byla použita k assetu.
+* Typ šifrování se nerozlišují malá a velká písmena.
+* Můžete zadat následující typy šifrování:
+  * **šifrování cenc**: pro PlayReady nebo Widevine (Standard common encryption)
+  * **cbcs-aapl**: pro FairPlay (AES CBC šifrování)
   * **CBC**: šifrování AES pro obálky
 
 ## <a name="next-steps"></a>Další postup
-Následující články popisují další kroky můžete začít pracovat s ochrana obsahu:
+Následující články popisují kroků, které vám pomůžou začít s ochranou obsahu:
 
 * [Chránit pomocí šifrování úložiště](media-services-rest-storage-encryption.md)
-* [Chránit pomocí šifrování AES](media-services-protect-with-aes128.md)
-* [Chránit pomocí PlayReady nebo Widevine](media-services-protect-with-playready-widevine.md)
-* [Chránit pomocí FairPlay](media-services-protect-hls-with-FairPlay.md)
+* [Ochrana s využitím šifrování AES](media-services-protect-with-aes128.md)
+* [Ochrana díky PlayReady nebo Widevine](media-services-protect-with-playready-widevine.md)
+* [Ochrana s využitím FairPlay](media-services-protect-hls-with-FairPlay.md)
 
 ## <a name="related-links"></a>Související odkazy
 
-* [Vysvětlení Azure ceny doručování licencí Media Services PlayReady](http://mingfeiy.com/playready-pricing-explained-in-azure-media-services)
-* [Ladění pro šifrované datový proud AES ve službě Azure Media Services](http://mingfeiy.com/debug-aes-encrypted-stream-azure-media-services)
-* [Ověření pomocí tokenu JWT](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
-* [Aplikace založené na Azure Media Services OWIN MVC integrovat Azure Active Directory a omezit klíče doručování obsahu na základě deklarací JWT](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
+* [Ověření tokenu JWT](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
+* [Integrace aplikace využívající architekturu MVC OWIN Azure Media Services se službou Azure Active Directory a omezit klíče doručování obsahu na základě deklarací identity tokenů JWT](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
 [content-protection]: ./media/media-services-content-protection-overview/media-services-content-protection.png

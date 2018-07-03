@@ -1,6 +1,6 @@
 ---
-title: Pochopení LEOŠ klíče - Azure | Microsoft Docs
-description: Klávesami znalosti jazyka (LEOŠ) vytvářet aplikace a dotazovat se vaše endpoing.
+title: Principy klíčů LUIS – Azure | Dokumentace Microsoftu
+description: Použití klíčů Language Understanding (LUIS) k vytváření vaší aplikace a vaše endpoing dotazování.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,71 +9,71 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/23/2018
 ms.author: v-geberr
-ms.openlocfilehash: d22b2ba332996d31b1db4ef4d095f0a4b443ba16
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: fe6bd0803098854c7ced1a7d816ebbc8cce23b09
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109354"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340609"
 ---
-# <a name="keys-in-luis"></a>Klíče v LEOŠ
-LEOŠ používá dva klíče: [vytváření](#programmatic-key) a [koncový bod](#endpoint-key). Vytváření klíč je vytvořen automaticky při vytvoření účtu LEOŠ. Až budete připraveni k publikování aplikace LEOŠ, budete muset [vytvořit klíč koncového bodu](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [ji přiřadit](Manage-keys.md#assign-endpoint-key) do vaší aplikace LEOŠ a [pomocí dotazu koncový bod](#use-endpoint-key-in-query). 
+# <a name="keys-in-luis"></a>Klíče v LUIS
+Služba LUIS používá dva klíče: [vytváření](#programmatic-key) a [koncový bod](#endpoint-key). Vytváření klíč je vytvořen automaticky při vytvoření účtu služby LUIS. Až budete připraveni k publikování aplikace LUIS, budete muset [vytvořit klíče koncového bodu](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [ji přiřadit](luis-how-to-manage-keys.md#assign-endpoint-key) do vaší aplikace LUIS a [pomocí dotazu koncový bod](#use-endpoint-key-in-query). 
 
 |Klíč|Účel|
 |--|--|
-|[Vytváření klíče](#programmatic-key)|Vytváření, publikování, správu spolupracovníci, Správa verzí|
-|[klíč koncového bodu](#endpoint-key)| Dotazování|
+|[Klíč pro tvorbu](#programmatic-key)|Vytváření, publikování, správě spolupracovníkům, Správa verzí|
+|[Klíč koncového bodu](#endpoint-key)| Dotazování|
 
-Je důležité k vytváření aplikací LEOŠ v [oblasti](luis-reference-regions.md#publishing-regions) také místo publikování a dotazu.
+Je důležité vytvářet aplikace LUIS v [oblastech](luis-reference-regions.md#publishing-regions) také místo k publikování a dotazování.
 
 <a name="programmatic-key" ></a>
-## <a name="authoring-key"></a>Vytváření klíče
+## <a name="authoring-key"></a>Klíč pro tvorbu
 
-Vytváření klíč, také známé jako klíč starter, se vytvoří automaticky při vytvoření účtu LEOŠ a je zdarma. Máte jeden klíč pro tvorbu napříč aplikace LEOŠ pro každý vytváření [oblast](luis-reference-regions.md). Vytváření klíč je k dispozici pro vytvoření aplikace LEOŠ nebo k testování dotazů koncový bod. 
+Vytváření klíč, označované také jako počáteční klíč, je vytvořen automaticky při vytvoření účtu služby LUIS a je zdarma. Máte jeden klíč pro vytváření obsahu napříč všemi vašimi aplikacemi LUIS pro každou vytváření [oblasti](luis-reference-regions.md). Vytváření klíč poskytuje vytvářet aplikace LUIS nebo testování dotazů koncový bod. 
 
-Vyhledání klíče pro tvorbu, přihlaste se k [LEOŠ] [ LUIS] a klikněte na název účtu v pravém horním navigačním panelu otevřete **nastavení účtu**.
+Najít klíč pro vytváření, přihlaste se k [LUIS] [ LUIS] a klikněte na název účtu v pravém horním navigačním panelu otevřete **nastavení účtu**.
 
-![vytváření klíče](./media/luis-concept-keys/programatic-key.png)
+![Klíč pro tvorbu](./media/luis-concept-keys/programatic-key.png)
 
-Pokud chcete provést **produkční koncový bod dotazy**, vytvořit Azure [LEOŠ předplatné](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). 
+Pokud chcete provést **produkční koncový bod dotazy**, vytvoření Azure [LUIS předplatné](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). 
 
 > [!CAUTION]
-> Pro usnadnění práce řadu ukázky použít klíč pro vytváření obsahu vzhledem k tomu, že poskytuje několik volání koncového bodu v jeho [kvóty](luis-boundaries.md#key-limits).  
+> Pro usnadnění práce z ukázky používat klíč pro tvorbu vzhledem k tomu, že poskytuje několik volání koncového bodu v jeho [kvóty](luis-boundaries.md#key-limits).  
 
-## <a name="endpoint-key"></a>klíč koncového bodu
- Když potřebujete **produkční koncový bod dotazy**, vytvoření [klíč LEOŠ](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) na portálu Azure. Mějte na paměti, název sloužící k vytvoření klíče, je nutné při přidání klíče do aplikace...
+## <a name="endpoint-key"></a>Klíč koncového bodu
+ Pokud potřebujete **produkční koncový bod dotazy**, vytvořit [LUIS klíč](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) na webu Azure Portal. Mějte na paměti název používaný k vytvoření klíče, budete potřebovat při přidávání klíče do aplikace...
 
-Po dokončení procesu předplatné LEOŠ [přidat klíč](Manage-keys.md#assign-endpoint-key) aplikace na **publikovat** stránky. 
+Po dokončení procesu předplatné LUIS [přidat klíč](luis-how-to-manage-keys.md#assign-endpoint-key) do aplikace na **publikovat** stránky. 
 
-Klíč koncového bodu umožňuje kvótu přístupů koncový bod na základě plánu využití, kterou jste zadali při vytváření klíče. V tématu [kognitivní ceny služby](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) informace o cenách.
+Klíč koncového bodu umožňuje kvótu přístupů do koncového bodu na základě plánu využití, které jste zadali při vytváření klíče. Zobrazit [ceny služby Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) informace o cenách.
 
-Klíč koncového bodu lze použít pro všechny aplikace LEOŠ nebo pro konkrétní aplikace LEOŠ. 
+Klíč koncového bodu je možné pro všechny vaše aplikace LUIS nebo pro konkrétní aplikace LUIS. 
 
-Nepoužívejte pro vytváření aplikací LEOŠ klíč koncového bodu. 
+Nepoužívejte klíče koncového bodu pro vytváření aplikací služby LUIS. 
 
-## <a name="use-endpoint-key-in-query"></a>Použijte klíč koncového bodu v dotazu
-Koncový bod LEOŠ přijímá dva styly dotazu, používejte klíče, ale koncový bod na různých místech:
+## <a name="use-endpoint-key-in-query"></a>Použít klíče koncového bodu v dotazu
+Koncový bod služby LUIS přijímá dva styly dotazu, používají klíče, ale koncový bod na různých místech:
 
 |Příkaz|Příklad adresy url a klíč umístění|
 |--|--|
-|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/98998dcf-66d2-468e-840a-7c7c57549b5a?subscription-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn na indikátory<br><br>hodnotu řetězce dotazu pro `subscription-key`<br><br>Změnit hodnotu dotazu váš koncový bod pro `subscription-key` z vytváření klíče (starter), na nový klíč koncový bod, chcete-li použít míra klíče kvót LEOŠ koncový bod. Pokud klíč, vytvořte a přiřaďte klíč, ale neměňte hodnotu dotazu koncového bodu pro klíč předplatného se, že nepoužíváte kvóty klíče vašeho koncového bodu.|
-|[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/98998dcf-66d2-468e-840a-7c7c57549b5a<br><br> Hodnota hlavičky pro `Ocp-Apim-Subscription-Key`<br><br>Změnit hodnotu dotazu váš koncový bod pro `Ocp-Apim-Subscription-Key` z vytváření klíče (starter), na nový klíč koncový bod, chcete-li použít míra klíče kvót LEOŠ koncový bod. Pokud vytvoříte klíč a přiřadit klíč, ale neměňte hodnotu dotazu koncového bodu pro `Ocp-Apim-Subscription-Key`, že nepoužíváte kvóty klíče vašeho koncového bodu.|
+|[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/98998dcf-66d2-468e-840a-7c7c57549b5a?subscription-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn světla<br><br>Hodnota řetězce dotazu pro `subscription-key`<br><br>Změnit hodnotu dotazu váš koncový bod pro `subscription-key` z vytváření klíč (starter), a nový klíč koncového bodu, chcete-li použít míra klíče kvót koncový bod služby LUIS. -Li vytvořit klíč a přiřadit klíč, ale neměňte hodnotu dotazu koncový bod pro klíč předplatného se, že nepoužíváte kvótu klíče koncového bodu.|
+|[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/98998dcf-66d2-468e-840a-7c7c57549b5a<br><br> Hodnota hlavičky pro `Ocp-Apim-Subscription-Key`<br><br>Změnit hodnotu dotazu váš koncový bod pro `Ocp-Apim-Subscription-Key` z vytváření klíč (starter), a nový klíč koncového bodu, chcete-li použít míra klíče kvót koncový bod služby LUIS. Pokud vytvoříte klíč a přiřadit klíč, ale neměňte hodnotu dotazu koncový bod pro `Ocp-Apim-Subscription-Key`, nepoužíváte kvótu klíče koncového bodu.|
 
-## <a name="api-usage-of-ocp-apim-subscription-key"></a>Využití rozhraní API Ocp-Apim-Subscription-Key
-Rozhraní API LEOŠ použít záhlaví, `Ocp-Apim-Subscription-Key`. Název hlavičky nezmění podle které klíč a sadu rozhraní API, kterou používáte. Nastavte hlavičku ke klíči pro vytváření obsahu pro rozhraní API pro vytváření obsahu. Pokud používáte koncový bod, nastavte záhlaví na klíč koncového bodu. 
+## <a name="api-usage-of-ocp-apim-subscription-key"></a>Použití rozhraní API z Ocp-Apim-Subscription-Key
+Rozhraní LUIS API použít záhlaví `Ocp-Apim-Subscription-Key`. Název hlavičky nezmění podle která klíč a sadu rozhraní API, kterou používáte. Nastavte hlavičku na vytváření klíč rozhraní API pro vytváření. Pokud používáte koncový bod, nastavte hlavičku do klíče koncového bodu. 
 
-Nelze předat klíč koncový bod rozhraní API pro vytváření obsahu. Pokud tak učiníte, získáte 401 Chyba: přístup byl odepřen z důvodu klíč neplatný koncový bod. 
+Nelze předat klíč koncového bodu pro rozhraní API pro vytváření. Pokud tak učiníte, získáte chyba 401 - Přístup byl odmítnut neplatný koncový bod klíč. 
 
-## <a name="key-limits"></a>Omezuje klíč
-V tématu [klíče omezení](luis-boundaries.md#key-limits) a [oblastí Azure](luis-reference-regions.md). Vytváření klíč je volné a využité pro vytváření obsahu. Klíč koncového bodu LEOŠ obsahuje volné vrstvy, ale musí být vytvořené vámi a přidružené k vaší aplikaci LEOŠ na **publikovat** stránky. Nelze zadat pro vytváření, ale pouze na dotazy koncový bod.
+## <a name="key-limits"></a>Omezení klíčů
+Zobrazit [klíče omezení](luis-boundaries.md#key-limits) a [oblastí Azure](luis-reference-regions.md). Vytváření klíč je zdarma a slouží pro vytváření obsahu. Klíč koncového bodu služby LUIS obsahuje volné vrstvy, ale musí být vytvořené a přidružené aplikace LUIS na **publikovat** stránky. Nelze použít pro vytváření obsahu, ale pouze dotazy koncový bod.
 
-Publikování oblastí se liší od vytváření oblastí. Ujistěte se, že vytvoříte aplikaci v vytváření oblast odpovídající k publikování oblast, kterou chcete.
+Publikování oblastech se liší od vytváření oblastí. Ujistěte se, že vytvoříte aplikaci pro vytváření oblasti odpovídajících k publikování oblast, kterou chcete.
 
-## <a name="key-limit-errors"></a>Chyby klíčů limit
-Pokud překročíte vaší za druhé kvótu, obdržíte chybu HTTP 429. Pokud překročíte vaší za měsíc kvótu, obdržíte chybu HTTP 403. Opravte tyto chyby získáním LEOŠ [koncový bod](#endpoint-key) klíč, [přiřazení](Manage-keys.md#assign-endpoint-key) klíč do aplikace na **publikovat** stránky [LEOŠ] [ LUIS] webu.
+## <a name="key-limit-errors"></a>Omezení klíče chyby
+Při překročení vaší za druhé kvóty, obdržíte chybu HTTP 429. Při překročení vaší za měsíc kvóty, obdržíte chybu HTTP 403. Tyto chyby opravit tím, že získáme LUIS [koncový bod](#endpoint-key) klíč, [přiřazení](luis-how-to-manage-keys.md#assign-endpoint-key) klíč do aplikace na **publikovat** stránku [LUIS] [ LUIS] webu.
 
 ## <a name="next-steps"></a>Další postup
 
-* Další informace [koncepty](Manage-Keys.md#assign-endpoint-key) o vytváření a koncového bodu klíče.
+* Přečtěte si [koncepty](luis-how-to-manage-keys.md#assign-endpoint-key) o klíčích pro vytváření a koncového bodu.
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

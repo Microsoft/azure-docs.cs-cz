@@ -1,6 +1,6 @@
 ---
-title: Kurz pomocí seznamu frázi ke zlepšení LEOŠ předpovědi - Azure | Microsoft Docs
-description: V tomto kurzu přidejte seznam frázi LEOŠ aplikaci a najdete v části zlepšení skóre.
+title: Kurz pomocí fráze seznamu k vylepšení predikce služby LUIS – Azure | Dokumentace Microsoftu
+description: V tomto kurzu přidat seznam frází na aplikaci LUIS a najdete v článku zlepšování skóre.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -9,48 +9,48 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: v-geberr
-ms.openlocfilehash: feb8acb674fd2dc62b62c26da6a6b42515f30242
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 9f12d9e8c9ee2038e7841cd05bb438421a5a8984
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265967"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345341"
 ---
-# <a name="tutorial-add-phrase-list-to-improve-predictions"></a>Kurz: Přidejte seznam frází ke zlepšení předpovědi
-V tomto kurzu, zvýšit přesnost záměrné skóre a identifikovat entity pro slova, která mají stejný význam (synonyma) tak, že přidáte zaměňovat [funkce seznamu frázi](./luis-concept-feature.md).
+# <a name="tutorial-add-phrase-list-to-improve-predictions"></a>Kurz: Přidání seznamu frází k vylepšení predikce
+V tomto kurzu, zvýšit přesnost záměru skóre a identifikaci entity pro slova, která mají stejný význam (synonym) tak, že přidáte zaměnitelné [funkci seznamu frázi](./luis-concept-feature.md).
 
 > [!div class="checklist"]
 * Importovat novou aplikaci  
 * Koncový bod dotazu s známé utterance 
-* Dotaz na koncový bod s _neznámé_ utterance
-* Přidat seznam frází ke zlepšení neznámé utterance skóre
-* Ověřte, zda entita je nalezena, při použití seznamu fráze
+* Dotazování koncový bod s _neznámý_ utterance
+* Přidat seznam frází ke zlepšení Neznámý utterance skóre
+* Ověřte, zda je najít při používání seznamu frází
 
-V tomto článku budete potřebovat bezplatný [LEOŠ] [ LUIS] účet, aby bylo možné vytvořit aplikace LEOŠ.
+Pro účely tohoto článku potřebujete bezplatný účet [LUIS][LUIS], abyste mohli vytvořit svou aplikaci LUIS.
 
 ## <a name="import-a-new-app"></a>Importovat novou aplikaci
-1. Stažení [příklad LEOŠ aplikace] [ LuisSampleApp] který je určený pro účely tohoto kurzu. Budete ho používat v dalším kroku. 
+1. Stáhněte si [příkladu aplikace LUIS] [ LuisSampleApp] , která je navržená pro účely tohoto kurzu. Použijete ho v dalším kroku. 
 
-2. Jak je popsáno v [vytvořit aplikaci](Create-new-app.md#import-new-app), importovat soubor, který jste stáhli do [LEOŠ] [ LUIS] webu jako novou aplikaci. Název aplikace je "Kurz Moje seznam frází." Má záměry, entit a utterances. 
+2. Jak je popsáno v [vytvořit aplikaci](Create-new-app.md#import-new-app), import souboru, který jste stáhli do [LUIS] [ LUIS] webu jako novou aplikaci. Název aplikace je "Kurz Můj seznam frází." Má projevy, záměry a entity. 
 
-3. [Train](luis-how-to-train.md) vaší aplikace. Dokud není nastavena, nemůžete [interaktivně testování](interactive-test.md#interactive-testing) ho [LEOŠ] [ LUIS] webu. 
+3. [Trénování](luis-how-to-train.md) vaší aplikace. Dokud není nastavena, nelze [testovat](interactive-test.md#interactive-testing) ho [LUIS] [ LUIS] webu. 
 
-4. Na [publikovat](PublishApp.md) vyberte **zahrnout všechny předpovědět záměrné skóre** zaškrtávací políčko. Pokud je zaškrtnuté políčko, jsou vráceny všechny záměry. Pokud není políčko zaškrtnuto, je vrácena pouze nejvyšší záměr. 
+4. Na [publikovat](luis-how-to-publish-app.md) stránky, vyberte **zahrnout všechny předpovědět záměru skóre** zaškrtávací políčko. Pokud zaškrtávací políčko je zaškrtnuto, budou vráceny všechny záměry. Pokud políčko není zaškrtnuto, je vrácen pouze hlavní záměr. 
 
-5. [Publikování](PublishApp.md) aplikace. Publikování aplikace, můžete otestovat pomocí koncový bod HTTPS. 
+5. [Publikování](luis-how-to-publish-app.md) aplikace. Publikování aplikace můžete otestovat pomocí koncového bodu HTTPS. 
 
-## <a name="test-a-trained-utterance"></a>Testování vyškolení utterance
-Dotaz utterance, že aplikace již zná pomocí publikovaných koncový bod. Vzhledem k tomu, že LEOŠ již zná utterance, skóre je vysoká a je zjištěn entity.
+## <a name="test-a-trained-utterance"></a>Testování trénovaného utterance
+Použití publikované koncový bod k dotazování utterance, která aplikace už zná. Vzhledem k tomu, že LUIS již ví, utterance, skóre je vysoké a zjištění entity.
 
-1. Na [znalosti jazyka (LEOŠ)] [ LUIS] webu na **publikovat** stránku pro nové aplikace, vyberte adresu URL koncového bodu v **prostředky a klíče**části. 
+1. Na [Language Understanding (LUIS)] [ LUIS] webu na **publikovat** stránky pro novou aplikaci, vyberte adresu URL koncového bodu v **prostředky a klíče**oddílu. 
 
     ![Publikovat adresu URL koncového bodu](./media/luis-tutorial-interchangeable-phrase-list/luis-publish-url.png)
 
-2. V prohlížeči na konci adresy URL, přidejte následující dotaz po `q=`.
+2. V prohlížeči, na konci adresy URL, přidejte následující dotaz po `q=`.
 
     `I want a computer replacement`
 
-    Koncový bod odpoví následujícím kódu JSON:
+    Koncový bod odpovídá následujícím kódem JSON:
     
     ```JSON
     {
@@ -93,23 +93,23 @@ Dotaz utterance, že aplikace již zná pomocí publikovaných koncový bod. Vzh
     }
     ```
 
-    Záměrné skóre 0.973 a skóre detekce entity 0.846 jsou vysoké, protože aplikace byla trénink na tento utterance. Utterance je v aplikaci LEOŠ na stránce záměrné **GetHardware**. Text utterance `computer`, je označeno jako **hardwaru** entity. 
+    Záměru skóre 0.973 a skóre detekce entity 0.846 jsou vysoká, protože aplikace byla natrénovaný pomocí této utterance. Utterance je v aplikaci LUIS na stránce záměru **GetHardware**. Text utterance `computer`, je označena jako **hardwaru** entity. 
     
-    |Status|Word| Záměrné skóre | Skóre entity |
+    |Status|Word| Záměru skóre | Skóre entity |
     |--|--|--|--|
-    |Cvičení| Chcete | 0.973 | 0.846 |
+    |Školení| Chcete | 0.973 | 0.846 |
     
     
-## <a name="test-an-untrained-utterance"></a>Testování nevyškoleným utterance
-V prohlížeči použijte stejný publikované koncový bod pro dotaz s utterance, který již není známo, aplikace:
+## <a name="test-an-untrained-utterance"></a>Testování Nezkušený utterance
+V prohlížeči použijte stejný koncový bod publikované do dotazu s utterance, aplikace nebude již víte, že:
 
 `I require a computer replacement`
 
 Tato utterance používá synonymum předchozí utterance:
 
-| Vyškolení aplikace word | Nezkušený synonymum |
+| Trénované aplikace word | Nezkušený synonym |
 |--|--|
-| Chcete | Vyžadovat |
+| Chcete | vyžadovat |
 
 Koncový bod odpověď je:
 
@@ -146,61 +146,61 @@ Koncový bod odpověď je:
 }
 ```
 
-| Status | Word | Záměrné skóre | Skóre entity |
+| Status | Word | Záměru skóre | Skóre entity |
 |--|--|--|--|
-| Cvičení| Chcete | 0.973 | 0.846 |
-| Nezkušený| Vyžadovat | 0.840 | - |
+| Školení| Chcete | 0.973 | 0.846 |
+| Nezkušený| vyžadovat | 0.840 | - |
 
-Záměrné skóre nevyškoleným utterance je nižší než u s popiskem utterance, protože LEOŠ ví, že se věta je gramaticky stejný. Ale LEOŠ neví, že utterances mají stejný význam. Navíc bez seznamu frázi **hardwaru** entita nebyla nalezena.
+Skóre záměru Nezkušený utterance je nižší než s popiskem utterance, protože LUIS ví, že věty je gramaticky stejný. Ale služba LUIS neví, že projevy mají stejný význam. Navíc bez seznamu frázi **hardwaru** entita nebyla nalezena.
 
-Musí LEOŠ naučit, *má* a *vyžadují* synonymum v této doméně aplikace, protože slova můžou mít více než jeden význam. 
+Musí naučit LUIS, který *má* a *vyžadují* to samé v této doméně AppDomain, protože u slov velká, může mít více než jeden význam. 
 
-## <a name="improve-the-score-of-untrained-utterance-with-phrase-list"></a>Zlepšení skóre nevyškoleným utterance s frázi seznamu 
-1. Přidat [frázi seznamu](luis-how-to-add-features.md) funkci s názvem **má** s hodnotou `want`a potom vyberte **Enter**.
+## <a name="improve-the-score-of-untrained-utterance-with-phrase-list"></a>Zvýšení skóre Nezkušený utterance seznamem fráze 
+1. Přidat [seznam frází](luis-how-to-add-features.md) funkci s názvem **má** s hodnotou `want`a pak vyberte **Enter**.
 
     > [!TIP]
-    > Po každé slovo nebo frázi, vyberte **Enter** klíč. Slovo nebo frázi je přidán do **fráze hodnoty seznamu** pole, když ukazatel zůstane v **hodnotu** pole. Můžete zadat mnoho hodnot rychle s touto funkcí.
+    > Po každé slovo nebo frázi, vyberte **Enter** klíč. Slovo nebo frázi, se přidá do **frázi hodnoty seznamu** pole, když ukazatel zůstane v **hodnotu** pole. Můžete zadat více hodnot rychle s touto funkcí.
 
-2. Chcete-li zobrazit slova, která doporučuje LEOŠ, vyberte **doporučujeme**. 
+2. Chcete-li zobrazit slova, která doporučuje LUIS, vyberte **doporučujeme**. 
 
     ![Doporučujeme hodnoty](./media/luis-tutorial-interchangeable-phrase-list/recommend.png)
 
-3. Přidejte všechna slova. Pokud `require` není v seznamu doporučené přidejte jej jako požadovaná hodnota. 
+3. Přidáte všechna slova. Pokud `require` není v doporučeném seznamu, přidejte jej jako povinná hodnota. 
 
-4. Protože tato slova jsou synonyma, zachovat *zaměňovat* nastavení a potom vyberte **Uložit**.
+4. Protože tato slova jsou synonyma, zachovat *zaměnitelné* nastavení a pak vyberte **Uložit**.
 
     ![Hodnoty seznamu fráze](./media/luis-tutorial-interchangeable-phrase-list/phrase-list-values.png)
 
-5. V horním navigačním panelu, vyberte **cvičení** ke cvičení aplikace, ale nemáte publikovat. Nyní máte dva modely. Můžete porovnat hodnoty v obou modelů.
+5. V horním navigačním panelu vyberte **trénování** tak moct trénovat na aplikaci, ale není publikovat. Teď máte dva modely. Můžete porovnat hodnoty v obou modelů.
 
 ## <a name="compare-the-phrase-list-model-to-the-published-model"></a>Porovnání modelu frázi seznam publikovaných modelu
-V této aplikaci není cvičení publikované modelu s synonyma. Pouze aktuálně upravená model zahrnuje frázi seznam synonyma. Chcete-li porovnat modely, použijte [interaktivní testování](interactive-test.md#interactive-testing). 
+V této aplikaci není publikovaný model natrénovaný pomocí synonym. Pouze aktuálně upravované model obsahuje seznam frázi synonym. Chcete-li porovnat modely, použijte [interaktivní testování](interactive-test.md#interactive-testing). 
 
-1. Otevřete **Test** podokně a zadejte následující utterance:
+1. Otevřít **Test** podokně a zadejte následující utterance:
 
     `I require a computer replacement`
 
-2. Chcete-li otevřít panel kontroly, vyberte **kontroly**. 
+2. Chcete-li otevřít panel kontroly, vyberte **zkontrolujte, jestli se**. 
 
-    ![Vyberte zkontrolovat](./media/luis-tutorial-interchangeable-phrase-list/inspect-button.png)
+    ![Zkontrolujte výběr](./media/luis-tutorial-interchangeable-phrase-list/inspect-button.png)
 
-3. Chcete-li porovnat publikované modelu, který má nový model frázi seznamu, vyberte **publikovaná porovnat s**.
+3. Chcete-li porovnat publikované modelu na nový model seznamu frázi, vyberte **porovnat s publikované**.
 
-    ![Zkontrolujte publikována a aktuální](./media/luis-tutorial-interchangeable-phrase-list/inspect.png)
+    ![Kontrola publikované srovnání s aktuální](./media/luis-tutorial-interchangeable-phrase-list/inspect.png)
 
-Po přidání seznamu frázi vyšší přesnost utterance a **hardwaru** entita je nalezena. 
+Po přidání seznamu frázi vyšší přesnost utterance a **hardwaru** entita se nenašla. 
 
-|Status | Seznam frází| Záměrné skóre | Skóre entity |
+|Status | Seznam frází| Záměru skóre | Skóre entity |
 |--|--|--|--|
 | Publikováno | - | 0,84 | - |
-| Aktuálně úpravy |✔| 0.92 | Hardware entitu identifikovanou |
+| Právě se upravuje |✔| 0.92 | Hardware entitu identifikovanou |
 
 > [!TIP]
-> * Pomocí [interaktivní testování](interactive-test.md#interactive-testing), můžete porovnat publikované modelu, který má vyškolení změny provedené po publikování. 
-> * Pomocí [testování koncový bod](PublishApp.md#test-your-published-endpoint-in-a-browser), můžete zobrazit přesný LEOŠ odpovědi JSON. 
+> * S použitím [interaktivní testování](interactive-test.md#interactive-testing), můžete porovnat publikované model trénovaného změny provedené po publikování. 
+> * S použitím [testování koncového bodu](luis-how-to-publish-app.md#test-your-published-endpoint-in-a-browser), můžete zobrazit přesný LUIS odpověď JSON. 
 
-## <a name="get-the-entity-score-with-the-endpoint-test"></a>Získat entity skóre s testovací koncový bod
-Chcete-li zobrazit skóre entity [publikování modelu](PublishApp.md) a dotazovat se na koncový bod. 
+## <a name="get-the-entity-score-with-the-endpoint-test"></a>Získat entity skóre v testu koncového bodu
+Chcete-li zobrazit skóre entity [model publikujte](luis-how-to-publish-app.md) a dotazování na koncový bod. 
 
 `I require a computer replacement`
 
@@ -245,21 +245,21 @@ Chcete-li zobrazit skóre entity [publikování modelu](PublishApp.md) a dotazov
 }
 ```
 
-**Hardwaru** entity ukazuje skóre 0.595 se seznamem frázi. Dříve, než seznamu frázi vznikla, nebyla zjištěna entity. 
+**Hardwaru** entity se zobrazí skóre 0.595 seznamem frázi. Před existovalo seznamu frázi, entita nebyla rozpoznána. 
 
-|Status | Seznam frází| Záměrné skóre | Skóre entity |
+|Status | Seznam frází| Záměru skóre | Skóre entity |
 |--|--|--|--|
 | Publikováno | - | 0,84 | - |
-| Aktuálně úpravy |✔| 0.92 | 0.595 |
+| Právě se upravuje |✔| 0.92 | 0.595 |
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud již nepotřebujete, odstraňte aplikaci LEOŠ. To pokud chcete udělat, vyberte v seznamu aplikací, vyberte v nabídce tři tečky (...) vpravo od názvu aplikace **odstranit**. V místním dialogovém okně **aplikaci odstranit?**, vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že vyberete nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberete **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Získat utterance předpovědi s dotazem koncový bod](luis-get-started-cs-get-intent.md)
+> [Získat utterance půjček s využitím koncového bodu dotazu](luis-get-started-cs-get-intent.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 [LuisFeatures]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-feature

@@ -1,71 +1,71 @@
 ---
-title: " Spravovat konfigurační server pro obnovení po havárii fyzického serveru s Azure Site Recovery | Microsoft Docs"
-description: Tento článek popisuje, jak spravovat existující konfigurační server pro zotavení po havárii fyzického serveru do Azure, se službou Azure Site Recovery.
+title: " Správa konfiguračního serveru pro zotavení po havárii fyzického serveru pomocí Azure Site Recovery | Dokumentace Microsoftu"
+description: Tento článek popisuje, jak spravovat existující konfigurační server pro zotavení po havárii fyzického serveru do Azure pomocí služby Azure Site Recovery.
 services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 07/01/2018
 ms.author: anoopkv
-ms.openlocfilehash: 580d32a51f6b38916ddccd46784b80b1179c29c4
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 0b30e4df71bae631366e81ebd2d4e1c467981fbe
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31598859"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341956"
 ---
-# <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfigurace serveru pro zotavení po havárii fyzického serveru
+# <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Správa konfiguračního serveru pro zotavení po havárii fyzického serveru
 
-Můžete nastavení konfigurace serveru místní, při použití [Azure Site Recovery](site-recovery-overview.md) služby pro zotavení po havárii fyzických serverů do Azure. Konfigurační server koordinuje komunikaci mezi místní počítače a Azure a spravuje replikaci dat. Tento článek shrnuje běžné úlohy správy konfigurační server po je nasazený.
+Nastavíte místní konfigurační server, když použijete [Azure Site Recovery](site-recovery-overview.md) služby zotavení po havárii fyzických serverů do Azure. Konfigurační server koordinuje komunikaci mezi místní počítače a Azure a spravuje replikaci dat. Tento článek shrnuje běžné úlohy správy konfigurační server je po nasazení.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Tabulka shrnuje předpoklady pro nasazení na místním počítači konfigurace serveru.
+Tabulka shrnuje předpoklady pro nasazení počítače místní konfigurační server.
 
 | **Komponenta** | **Požadavek** |
 | --- |---|
 | Procesorová jádra| 8 |
 | Paměť RAM | 16 GB|
-| Počet disků | 3, včetně disku operačního systému, proces disku mezipaměti serveru a jednotka pro uchování pro navrácení služeb po obnovení |
+| Počet disků | 3, včetně operačního systému disku, disk mezipaměti procesového serveru a jednotky pro uchovávání dat pro navrácení služeb po obnovení |
 | Volné místo na disku (mezipaměť procesového serveru) | 600 GB
 | Volné místo na disku (disk pro uchování) | 600 GB|
 | Operační systém  | Windows Server 2012 R2 <br> Windows Server 2016 |
 | Národní prostředí operačního systému | English (US)|
 | Verze VMware vSphere PowerCLI | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
-| Role Windows Serveru | Nepovolíte tyto role: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V |
-| Zásady skupiny| Nemáte povolit tyto zásady skupiny: <br> -Zabránit přístupu do příkazového řádku <br> -Zabránit přístupu do nástroje pro úpravy registru <br> -Důvěřovat logiku pro přílohy souborů <br> -Zapnout provádění skriptu <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
-| IIS | -Žádné existující výchozí web <br> -Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení  <br> -Žádná existující web nebo aplikace naslouchá na portu 443<br>|
-| Typ síťový adaptér | VMXNET3 (Pokud je nasazený jako virtuální počítač VMware) |
+| Role Windows Serveru | Nepovolí pracovníci v těchto rolích: <br> – Active Directory Domain Services <br>– Internet Information Service <br> – Hyper-V |
+| Zásady skupiny| Nepovolí tyto zásady skupiny: <br> -Zabránit přístupu do příkazového řádku <br> -Zabránit přístupu k nástrojům pro úpravu registru <br> – Logika důvěryhodnosti pro přiložené soubory <br> -Zapnutí provádění skriptů <br> [Další informace](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)|
+| IIS | -Žádné existující výchozí web <br> -Aktivovat [anonymní ověřování](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) <br> -Aktivovat [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) nastavení  <br> -Žádné existující web/aplikace naslouchá na portu 443<br>|
+| Typ NIC | VMXNET3 (Pokud je nasazená jako virtuální počítač VMware) |
 | Typ IP adresy | Statická |
-| Přístup k internetu | Server potřebuje přístup k tyto adresy URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (není požadováno pro servery se Škálováním na více systémů procesu) <br> - time.nist.gov <br> - time.windows.com |
+| Přístup k internetu | Server potřebuje přístup k těmto adresám URL: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (není vyžadované pro horizontální navýšení kapacity procesových serverů) <br> - time.nist.gov <br> - time.windows.com |
 | Porty | 443 (orchestrace řídicího kanálu)<br>9443 (přenos dat)|
 
 ## <a name="download-the-latest-installation-file"></a>Stažení nejnovějšího instalačního souboru
 
-Nejnovější verzi instalačního souboru konfigurace serveru je k dispozici na portálu Site Recovery. Kromě toho se můžete stáhnout přímo z [Microsoft Download Center](http://aka.ms/unifiedsetup).
+Nejnovější verzi instalačního souboru konfigurace serveru je k dispozici na portálu Site Recovery. Kromě toho můžete stáhnout přímo z [Microsoft Download Center](http://aka.ms/unifiedsetup).
 
-1. Přihlaste se k portálu Azure a přejděte do trezoru služeb zotavení.
-2. Přejděte do **infrastruktury obnovení lokality** > **konfigurační servery** (v části pro VMware a fyzické počítače).
-3. Klikněte **+ servery** tlačítko.
-4. Na **přidat Server** klikněte na tlačítko Stáhnout na stáhnout registrační klíč. Je nutné tento klíč během instalace konfigurační Server a zaregistrujte ho pomocí služby Azure Site Recovery.
-5. Klikněte **stáhnout instalaci služby Microsoft Azure Site Recovery Unified** odkaz ke stažení nejnovější verze konfigurace serveru.
+1. Přihlaste se k webu Azure portal a přejděte do vašeho trezoru služby Recovery Services.
+2. Přejděte do **infrastruktura Site Recovery** > **konfigurační servery** (v části pro VMware a fyzické počítače).
+3. Klikněte na tlačítko **+ servery** tlačítko.
+4. Na **přidat Server** klikněte na tlačítko pro stažení se stáhnout registrační klíč. Tento klíč budete potřebovat při instalaci konfiguračního serveru k registraci pomocí služby Azure Site Recovery.
+5. Klikněte na tlačítko **stáhněte si Microsoft Azure Site Recovery sjednocené instalace** odkaz ke stažení nejnovější verze konfiguračního serveru.
 
-  ![Stažení stránky](./media/physical-manage-configuration-server/downloadcs.png)
+  ![Stránka Stažení](./media/physical-manage-configuration-server/downloadcs.png)
 
 
 ## <a name="install-and-register-the-server"></a>Instalace a registrace serveru
 
 1. Spusťte instalační soubor sjednocené instalace.
-2. V **než začnete**, vyberte **nainstalujte konfigurační server a procesový server**.
+2. V **před zahájením**vyberte **nainstalovat konfigurační server a procesový server**.
 
     ![Než začnete](./media/physical-manage-configuration-server/combined-wiz1.png)
 
 3. Na stránce **Licence k softwaru jiného výrobce** vyberte **Souhlasím** pro stažení a instalaci MySQL.
-4. Na stránce **Nastavení internetu** určete, jak se zprostředkovatel, který běží na konfiguračním serveru, připojí k Azure Site Recovery přes internet. Ujistěte se, že jste povolené požadované adresy URL.
+4. Na stránce **Nastavení internetu** určete, jak se zprostředkovatel, který běží na konfiguračním serveru, připojí k Azure Site Recovery přes internet. Ujistěte se, že jste povolili požadované adresy URL.
 
-    - Pokud se chcete připojit s proxy serverem, který je aktuálně nastavený na počítač, vyberte **připojit k Azure Site Recovery pomocí proxy serveru**.
-    - Pokud chcete, aby zprostředkovatel připojil přímo, vyberte **připojit se přímo k Azure Site Recovery bez serveru proxy**.
-    - Pokud stávající proxy server vyžaduje ověřování, nebo pokud chcete používat vlastní proxy server pro připojení poskytovatele, vyberte **Connect s vlastním nastavením proxy**a zadejte adresu, port a přihlašovací údaje.
+    - Pokud chcete pro připojení s proxy serverem, který je aktuálně nastavený na počítači, vyberte **připojit k Azure Site Recovery pomocí proxy serveru**.
+    - Pokud chcete, aby zprostředkovatel připojil přímo, vyberte **připojit přímo k Azure Site Recovery bez proxy serveru**.
+    - Pokud stávající proxy server vyžaduje ověření nebo pokud chcete používat vlastní proxy server pro připojení zprostředkovatele vyberte **Connect s vlastním nastavením proxy serveru**a zadejte adresu, port a přihlašovací údaje.
      ![Brána firewall](./media/physical-manage-configuration-server/combined-wiz4.png)
 6. Na stránce **Kontrola předpokladů** instalační program provede kontrolu a ověří, že lze spustit instalaci. Pokud se zobrazí varování u položky **Kontrola synchronizace globálního času**, ověřte, že čas na systémových hodinách (nastavení **Datum a čas**) je stejný jako časové pásmo.
 
@@ -73,11 +73,11 @@ Nejnovější verzi instalačního souboru konfigurace serveru je k dispozici na
 7. Na stránce **Konfigurace MySQL** vytvořte přihlašovací údaje pro přihlašování k nainstalované instanci serveru MySQL.
 
     ![MySQL](./media/physical-manage-configuration-server/combined-wiz6.png)
-8. Na stránce **Podrobnosti o prostředí** vyberte, zda se chystáte replikovat virtuální počítače VMware. Pokud jste, potom instalační program kontroluje, že je nainstalována PowerCLI 6.0.
+8. Na stránce **Podrobnosti o prostředí** vyberte, zda se chystáte replikovat virtuální počítače VMware. Pokud se instalační program zkontroluje, že je nainstalované rozhraní PowerCLI 6.0.
 9. Na stránce **Umístění instalace** vyberte, kam chcete nainstalovat binární soubory a ukládat mezipaměť. Vybraná jednotka musí mít minimálně 5 GB dostupného místa na disku, ale pro mezipaměť doporučujeme jednotku alespoň s 600 GB volného místa.
 
     ![Umístění instalace](./media/physical-manage-configuration-server/combined-wiz8.png)
-10. Na stránce **Výběr sítě** zadejte naslouchací proces (síťový adaptér a port SSL), na kterém konfigurační server odesílá a přijímá data replikace. Výchozím portem pro odesílání a příjem přenosů replikace je port 9443, ale toto číslo portu můžete změnit podle potřeb vašeho prostředí. Kromě portu 9443 otevíráme také port 443, který používá webový server k orchestraci operací replikace. Nepoužívejte port 443 pro odesílání nebo přijímání provoz replikace.
+10. Na stránce **Výběr sítě** zadejte naslouchací proces (síťový adaptér a port SSL), na kterém konfigurační server odesílá a přijímá data replikace. Výchozím portem pro odesílání a příjem přenosů replikace je port 9443, ale toto číslo portu můžete změnit podle potřeb vašeho prostředí. Kromě portu 9443 otevíráme také port 443, který používá webový server k orchestraci operací replikace. Nepoužívejte port 443 pro odesílání nebo příjem provozu replikace.
 
     ![Výběr sítě](./media/physical-manage-configuration-server/combined-wiz9.png)
 
@@ -98,7 +98,7 @@ Spusťte instalační soubor následujícím způsobem:
 
 ### <a name="sample-usage"></a>Využití vzorků
   ```
-  MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /xC:\Temp\Extracted
+  MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
   cd C:\Temp\Extracted
   UNIFIEDSETUP.EXE /AcceptThirdpartyEULA /servermode "CS" /InstallLocation "D:\" /MySQLCredsFilePath "C:\Temp\MySQLCredentialsfile.txt" /VaultCredsFilePath "C:\Temp\MyVault.vaultcredentials" /EnvType "VMWare"
   ```
@@ -127,14 +127,14 @@ Spusťte instalační soubor následujícím způsobem:
 
 ### <a name="create-file-input-for-mysqlcredsfilepath"></a>Vytvoření vstupní soubor pro MYSQLCredsFilePath
 
-Parametr MySQLCredsFilePath vezme jako vstupní soubor. Vytvořte soubor v následujícím formátu a předejte jej jako vstupní parametr MySQLCredsFilePath.
+Parametr MySQLCredsFilePath vezme jako vstupní údaje do souboru. Vytvořte soubor v následujícím formátu a předat ji jako vstupní parametr MySQLCredsFilePath.
 ```
 [MySQLCredentials]
 MySQLRootPassword = "Password>"
 MySQLUserPassword = "Password"
 ```
 ### <a name="create-file-input-for-proxysettingsfilepath"></a>Vytvoření vstupní soubor pro ProxySettingsFilePath
-Parametr ProxySettingsFilePath vezme jako vstupní soubor. Vytvořte soubor v následujícím formátu a předejte jej jako vstupní parametr ProxySettingsFilePath.
+Parametr ProxySettingsFilePath vezme jako vstupní údaje do souboru. Vytvořte soubor v následujícím formátu a předat ji jako vstupní parametr ProxySettingsFilePath.
 
 ```
 [ProxySettings]
@@ -144,18 +144,18 @@ ProxyPort = "Port"
 ProxyUserName="UserName"
 ProxyPassword="Password"
 ```
-## <a name="modify-proxy-settings"></a>Upravte nastavení proxy serveru
+## <a name="modify-proxy-settings"></a>Upravit nastavení proxy serveru
 
-Nastavení proxy pro počítače konfigurace serveru můžete upravit takto:
+Nastavení proxy serveru pro počítač serveru konfiguraci můžete upravit následujícím způsobem:
 
-1. Přihlaste se na konfiguračním serveru.
-2. Spusťte cspsconfigtool.exe pomocí zástupce na vaše.
-3. Klikněte **registrace trezoru** kartě.
-4. Nový soubor registrace trezoru stáhnout z portálu a zadejte jako vstup pro tento nástroj.
+1. Přihlaste se ke konfiguračnímu serveru.
+2. Spusťte cspsconfigtool.exe na pomocí zkratky vaše.
+3. Klikněte na tlačítko **registrace trezoru** kartu.
+4. Stáhněte si nový soubor registrace trezoru z portálu a zadejte jako vstup do nástroje.
 
   ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
-5. Zadejte nové podrobnosti o proxy serveru a klikněte na **zaregistrovat** tlačítko.
-6. Otevřete okno příkazového prostředí PowerShell pro správu.
+5. Zadejte nové podrobnosti proxy a klikněte na tlačítko **zaregistrovat** tlačítko.
+6. Otevřete okno příkazového řádku Powershellu pro správu.
 7. Spusťte následující příkaz:
   ```
   $pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -165,17 +165,17 @@ Nastavení proxy pro počítače konfigurace serveru můžete upravit takto:
   ```
 
   >[!WARNING]
-  Pokud máte další proces servery připojené k konfigurační server, budete muset [opravte nastavení proxy serveru na všech serverech Škálováním na více systémů proces](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server) ve vašem nasazení.
+  Pokud máte dalších procesových serverů, které jsou připojené ke konfiguračnímu serveru, budete muset [opravit nastavení proxy serveru na všechny horizontální navýšení kapacity procesových serverů](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server) ve vašem nasazení.
 
-## <a name="reregister-a-configuration-server-with-the-same-vault"></a>Znovu zaregistrujte konfigurační server s ke stejnému trezoru
-  1. Přihlaste se k konfigurační Server.
+## <a name="reregister-a-configuration-server-with-the-same-vault"></a>Opětovná registrace konfiguračního serveru u stejného trezoru
+  1. Přihlaste se ke konfiguračnímu serveru.
   2. Spusťte cspsconfigtool.exe pomocí zástupce na ploše.
-  3. Klikněte **registrace trezoru** kartě.
-  4. Stáhněte si nový soubor registrace z portálu a zadejte jako vstup pro nástroj.
+  3. Klikněte na tlačítko **registrace trezoru** kartu.
+  4. Stáhněte si nový registrační soubor z portálu a zadejte jako vstup do nástroje.
         ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
-  5. Zadejte podrobnosti o Proxy serveru a klikněte na **zaregistrovat** tlačítko.  
-  6. Otevřete okno příkazového prostředí PowerShell pro správu.
-  7. Spusťte následující příkaz
+  5. Zadejte podrobnosti o Proxy serveru a klikněte na tlačítko **zaregistrovat** tlačítko.  
+  6. Otevřete okno příkazového řádku Powershellu pro správu.
+  7. Spuštěním následujícího příkazu
 
       ```
       $pwd = ConvertTo-SecureString -String MyProxyUserPassword
@@ -187,12 +187,12 @@ Nastavení proxy pro počítače konfigurace serveru můžete upravit takto:
   >[!WARNING]
   Pokud máte více procesový server, budete muset [zaregistrovat znovu](vmware-azure-manage-process-server.md#reregister-a-process-server).
 
-## <a name="register-a-configuration-server-with-a-different-vault"></a>Zaregistrujte konfigurační server s jiným trezorem
+## <a name="register-a-configuration-server-with-a-different-vault"></a>Registrace konfiguračního serveru pomocí jiného trezoru
 
 > [!WARNING]
-> Následující krok zrušíte konfigurační server z aktuální trezoru a zastaví se všechny chráněné virtuální počítače v rámci konfigurace serveru replikace.
+> Následující krok zruší přidružení konfiguračního serveru z aktuálního úložiště a zastaví se replikace všech chráněných virtuálních počítačů v rámci konfigurace serveru.
 
-1. Přihlaste se na konfiguračním serveru
+1. Přihlaste se konfigurační server
 2. z příkazového řádku správce spusťte příkaz:
 
     ```
@@ -200,11 +200,11 @@ Nastavení proxy pro počítače konfigurace serveru můžete upravit takto:
     net stop dra
     ```
 3. Spusťte cspsconfigtool.exe pomocí zástupce na ploše.
-4. Klikněte **registrace trezoru** kartě.
-5. Stáhněte si nový soubor registrace z portálu a zadejte jako vstup pro nástroj.
-6. Zadejte podrobnosti o Proxy serveru a klikněte na **zaregistrovat** tlačítko.  
-7. Otevřete okno příkazového prostředí PowerShell pro správu.
-8. Spusťte následující příkaz
+4. Klikněte na tlačítko **registrace trezoru** kartu.
+5. Stáhněte si nový registrační soubor z portálu a zadejte jako vstup do nástroje.
+6. Zadejte podrobnosti o Proxy serveru a klikněte na tlačítko **zaregistrovat** tlačítko.  
+7. Otevřete okno příkazového řádku Powershellu pro správu.
+8. Spuštěním následujícího příkazu
     ```
     $pwd = ConvertTo-SecureString -String MyProxyUserPassword
     Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber – ProxyUserName domain\username -ProxyPassword $pwd
@@ -212,66 +212,66 @@ Nastavení proxy pro počítače konfigurace serveru můžete upravit takto:
     net start obengine
     ```
 
-## <a name="upgrade-a-configuration-server"></a>Upgrade serveru konfigurace
+## <a name="upgrade-a-configuration-server"></a>Upgradujte konfigurační server
 
-Spuštění aktualizace kumulativní aktualizace konfigurace serveru. Aktualizace můžete použít pro až N-4 verze. Příklad:
+Spuštění kumulativní aktualizace se aktualizovat konfigurační server. Aktualizace můžete použít pro až N-4 verze. Příklad:
 
-- Pokud používáte 9.7 9.8, 9.9 nebo 9.10 – můžete upgradovat přímo do 9.11.
-- Pokud používáte 9,6 nebo starším systémem, a chcete upgradovat na 9.11, je nutné nejprve upgradovat na verzi 9.7. před 9.11.
+- Pokud používáte 9.7, 9.8, 9.9 nebo 9.10 – můžete upgradovat přímo na 9.11.
+- Pokud používáte 9,6 nebo starší, a chcete provést upgrade 9.11, musíte nejprve upgradovat na verzi 9.7. před 9.11.
 
-Odkazy na kumulativní aktualizace pro upgrade na všechny verze serveru konfigurace jsou k dispozici v [wiki aktualizace stránky](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
+Odkazy na kumulativní aktualizace pro upgrade pro všechny verze konfiguračního serveru jsou k dispozici v [aktualizace wikistránka](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx).
 
 Upgrade serveru následujícím způsobem:
 
-1. Stáhněte si soubor instalačního programu aktualizace na konfiguračním serveru.
+1. Stáhněte si instalační soubor aktualizace ke konfiguračnímu serveru.
 2. Dvakrát klikněte na panel spusťte instalační program.
-3. Instalační program zjistí aktuální verze na počítači spuštěna.
-4. Klikněte na tlačítko **OK** potvrďte a spustíte upgrade. 
+3. Instalační program zjistí aktuální verze, která běží na počítači.
+4. Klikněte na tlačítko **OK** potvrďte a spusťte upgrade. 
 
 
-## <a name="delete-or-unregister-a-configuration-server"></a>Odstranit nebo zrušit registraci konfigurační server
+## <a name="delete-or-unregister-a-configuration-server"></a>Odstranění nebo zrušení registrace konfiguračního serveru
 
 > [!WARNING]
-> Zkontrolujte následující před zahájením vyřazení z provozu konfigurační Server.
-> 1. [Zakažte ochranu](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) pro všechny virtuální počítače v rámci této konfigurace serveru.
+> Zajistěte následující před zahájením vyřazení z provozu konfigurační Server.
+> 1. [Zakažte ochranu](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure) pro všechny virtuální počítače v rámci tohoto konfiguračního serveru.
 > 2. [Zrušit přidružení](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) a [odstranit](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy) všechny zásady replikace z konfiguračního serveru.
-> 3. [Odstranit](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) všichni hostitelé Vcenter vSphere servery, které jsou přidružené k konfigurační Server.
+> 3. [Odstranit](vmware-azure-manage-vcenter.md#delete-a-vcenter-server) všichni hostitelé vCenters servery pro/vSphere, které jsou přidružené ke konfiguračnímu serveru.
 
 
-### <a name="delete-the-configuration-server-from-azure-portal"></a>Odstraňte konfigurační Server z portálu Azure
-1. Na portálu Azure, přejděte do **infrastruktura Site Recovery** > **konfigurační servery** nabídce trezoru.
-2. Klikněte na konfigurační server, který chcete vyřadit z provozu.
-3. Na stránce s podrobnostmi o konfigurační Server, klikněte na **odstranit** tlačítko.
-4. Klikněte na tlačítko **Ano** potvrďte odstranění serveru.
+### <a name="delete-the-configuration-server-from-azure-portal"></a>Odstranit konfigurační Server z webu Azure portal
+1. Na webu Azure portal, přejděte k **infrastruktura Site Recovery** > **konfigurační servery** v nabídce trezoru.
+2. Klikněte na konfiguračním serveru, který chcete vyřadit z provozu.
+3. Na stránce s podrobnostmi o konfiguračním serveru, klikněte na tlačítko **odstranit** tlačítko.
+4. Klikněte na tlačítko **Ano** k potvrzení odstranění serveru.
 
-### <a name="uninstall-the-configuration-server-and-its-dependencies"></a>Odinstalujte konfiguračního serveru a jeho závislosti
+### <a name="uninstall-the-configuration-server-and-its-dependencies"></a>Odinstalace konfiguračního serveru a jeho závislosti
   > [!TIP]
-  Pokud budete chtít použít konfigurační Server s Azure Site Recovery znovu, potom můžete přeskočit ke kroku 4 přímo
+  Pokud chcete znovu použít konfiguračního serveru pomocí Azure Site Recovery, pak můžete přeskočit ke kroku 4 přímo
 
-1. Přihlaste se k serveru Configuration jako správce.
-2. Otevřete ovládací panely > Program > odinstalovat programy
-3. Odinstalujte programy v tomto pořadí:
+1. Přihlaste se k konfiguračního serveru jako správce.
+2. Otevřete ovládací panely > aplikace > odinstalovat programy
+3. Odinstalujte programy v následujícím pořadí:
   * Agent Microsoft Azure Recovery Services
-  * Microsoft Azure Site Recovery Mobility služby nebo hlavní cílový server
-  * Zprostředkovatele služby Microsoft Azure Site Recovery
-  * Microsoft Azure Site obnovení konfigurace serveru nebo procesový Server
-  * Microsoft Azure Site Recovery konfigurace serveru závislosti
+  * Microsoft Azure Site Recovery Mobility Service/hlavní cílový server
+  * Microsoft Azure Site Recovery Provider
+  * Microsoft Azure Site Recovery konfigurační Server/Process Server
+  * Závislosti na Microsoft Azure Site Recovery konfigurace serveru
   * MySQL Server 5.5
-4. Spusťte následující příkaz a správu příkazového řádku.
+4. Spusťte následující příkaz a příkazového řádku správce.
   ```
   reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
   ```
 
-## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Odstranit nebo zrušit registraci konfigurační server (PowerShell)
+## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Odstranění nebo zrušení registrace konfiguračního serveru (PowerShell)
 
-1. [Nainstalujte](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) modul Azure PowerShell
-2. Přihlášení do ke svému účtu Azure pomocí příkazu
+1. [Nainstalujte](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0) modulu Azure PowerShell
+2. Přihlásit se ke svému účtu Azure pomocí příkazu
     
     `Connect-AzureRmAccount`
-3. Vyberte předplatné, ve kterém se nachází v úložišti
+3. Vyberte předplatné, pod kterým je k dispozici v úložišti
 
      `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
-3.  Nyní nastavit váš trezor kontext
+3.  Teď nastavte kontext trezoru
     
     ```
     $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
@@ -280,29 +280,29 @@ Upgrade serveru následujícím způsobem:
 4. Získat vyberte konfigurační server
 
     `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
-6. Odstraňte konfigurační Server
+6. Odstranění konfiguračního serveru
 
     `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
 
 > [!NOTE]
-> **-Force** možnost v Remove-AzureRmSiteRecoveryFabric je možné vynutit odebrání nebo odstranění konfigurační server.
+> **– Platnost** možnost v Remove-AzureRmSiteRecoveryFabric jde použít k vynucení odebrání nebo odstranění konfiguračního serveru.
 
-## <a name="renew-ssl-certificates"></a>Obnovení certifikátů SSL
-Konfigurační server má integrované webový server, která orchestruje činnosti služby Mobility, proces servery a hlavních cílových serverů, které jsou k němu připojená. Webový server používá certifikát SSL k ověřování klientů. Platnost certifikátu vyprší po tři roky a můžete obnovit kdykoli.
+## <a name="renew-ssl-certificates"></a>Prodloužit platnost certifikátů SSL
+Konfigurační server má integrované webový server, která orchestruje činnosti služby Mobility, procesových serverů a hlavní cílové servery, které jsou k němu připojená. Webový server používá certifikát SSL k ověřování klientů. Certifikát vyprší po uplynutí tří let a jde ji obnovit v každém okamžiku.
 
 ### <a name="check-expiry"></a>Kontrola vypršení platnosti
 
-Pro nasazení serveru konfigurace před může 2016 vypršení platnosti certifikátu byla nastavena na jeden rok. Pokud máte certifikát se blíží uplynutí platnosti, dojde k následujícímu:
+Pro nasazení serveru konfigurace před. května 2016 vypršení platnosti certifikátu byla nastavená na jeden rok. Pokud máte certifikát bude vyprší, dojde k následujícímu:
 
-- Když datum vypršení platnosti je dvou měsíců nebo méně, spuštění služby odesílání oznámení na portálu a e-mailem (Pokud se přihlášení k odběru oznámení Azure Site Recovery).
-- Na stránce prostředků úložiště se zobrazí nápis informující o oznámení. Klikněte na tlačítko Banner informující o další podrobnosti.
-- Pokud se zobrazí **upgradovat nyní** tlačítko, to znamená, že se některé součásti ve vašem prostředí, které nebyly aktualizovány na verzi 9.4.xxxx.x nebo vyšší verze. Upgrade součástí než obnovení certifikátu. Nelze obnovit na starší verze.
+- Pokud datum vypršení platnosti je po dobu dvou měsíců nebo méně, začne služba odesílání oznámení z portálu a e-mailem (je-li připojila ke oznámení Azure Site Recovery).
+- Na stránce prostředků trezoru se zobrazí banner s oznámením. Kliknutím na banner pro další podrobnosti.
+- Pokud se zobrazí **upgradovat** tlačítko, to znamená, že jsou některé komponenty ve vašem prostředí, kteří se neupgradovali na 9.4.xxxx.x nebo vyšší verze. Upgrade součásti před obnovováním certifikátu. Nejde obnovit ke starším verzím.
 
 ### <a name="renew-the-certificate"></a>Obnovení certifikátu
 
-1. V úložišti, otevřete **infrastruktura Site Recovery** > **konfigurační Server**a klikněte na požadované konfigurační server.
-2. Datum vypršení platnosti se zobrazí pod **stav konfigurace serveru**
-3. Klikněte na tlačítko **obnovení certifikátů**. 
+1. V trezoru, otevřete **infrastruktura Site Recovery** > **konfigurační Server**a klikněte na požadované konfigurační server.
+2. Datum vypršení platnosti se zobrazí v části **stav konfigurace serveru**
+3. Klikněte na tlačítko **prodloužit platnost certifikátů**. 
 
 
 

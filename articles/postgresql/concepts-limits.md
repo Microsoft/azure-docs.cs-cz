@@ -1,28 +1,28 @@
 ---
-title: Omezení v Azure databázi PostgreSQL
-description: Tento článek popisuje omezení v Azure databázi PostgreSQL, jako je například počet připojení a možnosti úložiště modul.
+title: Omezení ve službě Azure Database for PostgreSQL
+description: Tento článek popisuje omezení ve službě Azure Database for PostgreSQL, jako je třeba počet připojení a možnosti úložiště modul.
 services: postgresql
-author: kamathsun
-ms.author: sukamat
+author: rachel-msft
+ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/04/2018
-ms.openlocfilehash: 5cd829236d8d8a58e68f7bf766790aa3f0cb656e
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.date: 06/30/2018
+ms.openlocfilehash: dc1f8581df5dc7c5728094577298ba078cc2c527
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34757412"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342913"
 ---
-# <a name="limitations-in-azure-database-for-postgresql"></a>Omezení v Azure databázi PostgreSQL
-Následující části popisují kapacitu a funkční omezení ve službě databáze.
+# <a name="limitations-in-azure-database-for-postgresql"></a>Omezení ve službě Azure Database for PostgreSQL
+Následující části popisují kapacitu a limity funkční ve službě database.
 
 ## <a name="maximum-connections"></a>Maximální počet připojení
-Maximální počet připojení za cenová úroveň a vCores jsou následující: 
+Maximální počet připojení na cenová úroveň a virtuálními jádry jsou následující: 
 
-|**Cenová úroveň**| **vCore(s)**| **Maximální počet připojení** |
+|**Cenová úroveň**| **počet virtuálních jader:**| **Maximální počet připojení** |
 |---|---|---|
 |Basic| 1| 50 |
 |Basic| 2| 100 |
@@ -36,27 +36,30 @@ Maximální počet připojení za cenová úroveň a vCores jsou následující:
 |Paměťově optimalizované| 8| 480|
 |Paměťově optimalizované| 16| 950|
 
-Při připojení přesahuje limit, může se zobrazit chybová zpráva:
-> Závažná chyba: bohužel již příliš mnoho klientů
+Při připojení překročí limit, může se zobrazit následující chyba:
+> Závažná chyba: je nám líto, už příliš mnoho klientů
 
-Azure systém vyžaduje pět připojení k Azure databáze PostgreSQL serveru. 
+Systému Azure vyžaduje pět připojení ke sledování serveru Azure Database for PostgreSQL. 
 
 ## <a name="functional-limitations"></a>Funkční omezení
 ### <a name="scale-operations"></a>Operace škálování
-1.  Dynamické škálování serverů napříč cenové úrovně se aktuálně nepodporuje. To znamená přepínání mezi základní ověřování, obecné účely nebo k paměťově optimalizovaným vrstev.
-2.  Zmenšuje velikost úložiště serveru není aktuálně podporováno.
+- Dynamické škálování do a ze základní cenové úrovně se aktuálně nepodporuje.
+- Snížení velikosti úložiště serveru se aktuálně nepodporuje.
 
 ### <a name="server-version-upgrades"></a>Upgrady verze serveru
-- Automatické migrace mezi verzemi modul hlavní databáze není aktuálně podporována.
+- Automatizovaný přenos mezi verzí vyhledávacích strojů hlavní databáze se aktuálně nepodporuje.
 
 ### <a name="subscription-management"></a>Správa předplatného
-- Dynamicky přesunutí serverů mezi skupiny prostředků a předplatná se aktuálně nepodporuje.
+- Dynamicky přesunu serverů napříč skupiny prostředků a předplatná se aktuálně nepodporuje.
 
-### <a name="point-in-time-restore-pitr"></a>Bod v čas – obnovení (Možnosti PITR)
-1.  Když používáte funkci Možnosti PITR, se vytvoří nový server s stejné konfigurace jako u serveru, který je založen na.
-2.  Obnovení odstraněného server není podporováno.
+### <a name="vnet-service-endpoints"></a>Koncové body služby virtuální sítě
+- Podpora pro koncové body služby virtuální sítě je pouze pro servery pro obecné účely a optimalizovaný pro paměť.
 
-## <a name="next-steps"></a>Další postup
-- Pochopení [co je k dispozici v jednotlivých cenových úrovní](concepts-pricing-tiers.md)
+### <a name="point-in-time-restore-pitr"></a>Obnovení bodu v čas-(PITR)
+- Při použití funkce PITR se vytvoří nový server se stejnou konfiguraci jako server, který je založen na.
+- Obnovení odstraněné serveru není podporováno.
+
+## <a name="next-steps"></a>Další kroky
+- Vysvětlení [co je k dispozici v jednotlivých cenových úrovní](concepts-pricing-tiers.md)
 - Další informace o [podporované verze databáze PostgreSQL](concepts-supported-versions.md)
-- Zkontrolujte [postup zálohování a obnovení serveru v databázi Azure pro PostgreSQL pomocí portálu Azure](howto-restore-server-portal.md)
+- Kontrola [jak zálohovat a obnovovat server ve službě Azure Database for PostgreSQL pomocí webu Azure portal](howto-restore-server-portal.md)

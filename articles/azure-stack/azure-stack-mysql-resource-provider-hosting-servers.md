@@ -1,6 +1,6 @@
 ---
-title: MySQL hostitelské servery v Azure zásobníku | Microsoft Docs
-description: Postup přidání instance databáze MySQL pro zřizování prostřednictvím poskytovatele prostředků adaptér MySQL
+title: MySQL, který je hostitelem serverů v Azure stacku | Dokumentace Microsoftu
+description: Přidání instancí MySQL pro zřizování prostřednictvím poskytovatele prostředků MySQL adaptéru
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,63 +11,74 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2018
+ms.date: 07/02/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 5522eb1b8b0398aeb6f1b0dd8578b906880b4e89
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 60f1978b4173f169ad14deb67b075a61f9e7f149
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938381"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344134"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Přidání hostitelské servery pro poskytovatele prostředků MySQL
 
-Instance databáze MySQL na virtuálním počítači (VM) můžete hostovat v [zásobník Azure](azure-stack-poc.md), nebo na virtuálním počítači mimo prostředí Azure zásobníku, pokud poskytovatel prostředků MySQL se můžete připojit k instanci.
+Můžete hostovat na instanci MySQL na virtuálním počítači (VM) v [Azure Stack](azure-stack-poc.md), nebo mimo prostředí Azure Stack, dokud poskytovatele prostředků MySQL můžete připojit k instanci virtuálního počítače.
 
-## <a name="connect-to-a-mysql-hosting-server"></a>Připojení k serveru pro hostování databáze MySQL
+Verze MySQL 5.6, 5.7 a 8.0, lze pro hostitelské servery. Poskytovatele prostředků MySQL nepodporuje ověřování caching_sha2_password; který bude přidán v další vydané verzi. Servery MySQL 8.0 musí být nakonfigurovány pro použití mysql_native_password. MariaDB je také podporována.
 
-Ujistěte se, že máte přihlašovací údaje k účtu s oprávněními správce systému. Chcete-li přidat hostitelský server, postupujte takto:
+## <a name="connect-to-a-mysql-hosting-server"></a>Připojení k hostování serveru MySQL
 
-1. Přihlaste se k portálu Azure zásobníku operátor jako správce služby
+Ujistěte se, že máte přihlašovací údaje pro účet s oprávněními správce systému. Přidání hostitelského serveru, postupujte podle těchto kroků:
+
+1. Přihlaste se k portálu Azure Stack operátor jako správce služby.
 2. Vyberte **další služby**.
-3. Vyberte **prostředky pro správu** > **MySQL hostitelské servery** > **+ přidat**. Tím se otevře **přidání serveru pro hostování databáze MySQL** dialogové okno, znázorňuje následující snímek obrazovky.
+3. Vyberte **prostředky pro správu** > **hostitelské servery MySQL** > **+ přidat**. Tím se otevře **přidat Server pro hostování MySQL** dialogového okna, je znázorněno na následujícím snímku obrazovky.
 
-   ![Konfiguruje server pro hostování](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
+   ![Konfigurace serveru pro hostování](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
 
 4. Zadejte podrobnosti připojení vaší instance serveru MySQL.
 
-   * Pro **název serveru pro hostování databáze MySQL**, zadejte plně kvalifikovaný název domény (FQDN) nebo platná IPv4 adresa. Nepoužívejte krátký název virtuálního počítače.
-   * Výchozí instance databáze MySQL není k dispozici, takže budete muset zadat **velikost hostování služby v GB**. Zadejte velikost, která je blízko kapacitu databázového serveru.
+   * Pro **názvem serveru MySQL hostování**, zadejte plně kvalifikovaný název domény (FQDN) nebo platná adresa IPv4. Nepoužívejte krátký název virtuálního počítače.
+   * Výchozí instanci MySQL není k dispozici, takže budete muset zadat **velikost hostování služby v GB**. Zadejte velikost, která je blízko kapacity databázového serveru.
    * Zachovat výchozí nastavení pro **předplatné**.
-   * Pro **skupiny prostředků**, vytvořte novou nebo použít stávající skupinu.
+   * Pro **skupiny prostředků**, vytvořte novou, nebo použijte existující skupinu.
 
    > [!NOTE]
-   > Pokud instance databáze MySQL byla přístupná pomocí klienta a správce Azure Resource Manager, můžete ji umístit pod kontrolou zprostředkovatele prostředků. Ale instance databáze MySQL **musí** přidělit výhradně k poskytovateli prostředků.
+   > Pokud instanci MySQL přístupný tenanta a správce Azure Resource Manageru, můžete ji umístit pod kontrolou zprostředkovatele prostředků. Ale instanci MySQL **musí** přidělit jenom pro poskytovatele prostředků.
 
-5. Vyberte **SKU** otevřete **vytvořit SKU** dialogové okno.
+5. Vyberte **SKU** otevřít **vytvořit SKU** dialogového okna.
 
-   ![Vytvoření databáze MySQL SKU](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
+   ![Vytvoří skladová jednotka MySQL](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
 
-   Verze SKU **název** odrážet vlastnosti verze SKU, mohou uživatelé nasadit své databáze příslušné SKU.
+   SKU **název** by měly odrážet vlastnosti skladové Položce, takže uživatelé můžou nasazovat své databáze do příslušné SKU.
 
    >[!IMPORTANT]
-   >Speciální znaky, včetně mezery a tečky, nejsou podporovány v **název** nebo **vrstvy** při vytváření SKU pro poskytovatele prostředků MySQL.
+   >Speciální znaky, mezery a tečky, včetně nejsou podporovány v **název** nebo **úroveň** při vytváření SKU pro poskytovatele prostředků MySQL.
 
-6. Vyberte **OK** vytvořit verze SKU.
-7. V části **přidání serveru pro hostování databáze MySQL**, vyberte **vytvořit**.
+6. Vyberte **OK** vytvoření skladové Položce.
+> [!NOTE]
+> SKU může trvat až hodinu, uvidí na portálu. Nelze vytvořit databázi, dokud SKU není nasazená a běží.
 
-Při přidávání serverů, můžete je přiřadíte k nové nebo existující SKU k odlišení nabídky služeb. Například můžete mít instanci enterprise MySQL, která poskytuje vyšší databáze a automatické zálohování. Tento server vysoce výkonné pro různá oddělení může rezervovat ve vaší organizaci.
+7. V části **přidat Server pro hostování MySQL**vyberte **vytvořit**.
 
-## <a name="increase-backend-database-capacity"></a>Zvýšení kapacity back-end databáze
+Jak budete přidávat servery, můžete je přiřadíte k nové nebo existující skladové položky k rozlišení nabídek služeb. Například můžete mít instanci MySQL enterprise, která poskytuje zvýšenou databázovou a automatické zálohování. Tento server výkonné pro různá oddělení můžete registrovat ve vaší organizaci.
 
-Nasazení více serverů MySQL na portálu Azure zásobníku, může zvýšit kapacitu databáze back-end. Tyto servery přidáte do nové nebo existující SKU. Pokud přidáte server do existující SKU, ujistěte se, že vlastnosti serveru jsou stejné jako ostatní servery v verze SKU.
+## <a name="security-considerations-for-mysql"></a>Informace o zabezpečení pro MySQL
 
-## <a name="make-mysql-database-servers-available-to-your-users"></a>Servery databáze MySQL zpřístupnit uživatelům.
+Následující informace platí pro RP a MySQL hostitelské servery:
 
-Vytvoření plánu a nabídky na serverech databáze MySQL zpřístupnit uživatelům. Přidání služby Microsoft.MySqlAdapter k plánu a přidat výchozí kvótu nebo vytvořit novou kvótu.
+* Ujistěte se, že všechny hostitelské servery jsou nakonfigurované pro komunikaci pomocí protokolu TLS 1.2. Zobrazit [konfigurace MySQL šifrované připojení](https://dev.mysql.com/doc/refman/5.7/en/using-encrypted-connections.html).
+* Využívat [transparentní šifrování dat](https://dev.mysql.com/doc/mysql-secure-deployment-guide/5.7/en/secure-deployment-data-encryption.html).
+* Poskytovatele prostředků MySQL nepodporuje caching_sha2_password ověřování.
 
-![Vytvoření plánu a nabídky pro databáze](./media/azure-stack-mysql-rp-deploy/mysql-new-plan.png)
+## <a name="increase-backend-database-capacity"></a>Zvýšení kapacity databáze back-endu
+
+Nasazením další servery MySQL na portálu Azure Stack můžete zvýšit kapacitu databáze back-endu. Tyto servery přidáte do nové nebo existující skladové položky. Pokud přidáte server do existující skladové položky, ujistěte se, že vlastnosti serveru jsou stejné jako ostatní servery ve skladové Položce.
+
+## <a name="make-mysql-database-servers-available-to-your-users"></a>Servery MySQL database zpřístupnit uživatelům
+
+Vytvořte plány a nabídky pro databázové servery MySQL zpřístupnit uživatelům. Přidat službu Microsoft.MySqlAdapter plánu a vytvořit novou kvótu. MySQL nepovoluje omezení velikosti databáze.
 
 ## <a name="next-steps"></a>Další postup
 

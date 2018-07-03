@@ -1,6 +1,6 @@
 ---
-title: Heslo pro ověřování, registrace, resetování v Azure Active Directory B2C | Microsoft Docs
-description: Jak vytvořit webovou aplikaci, která má registrace-množství nebo přihlášení, úprava profilu a resetování hesla pomocí Azure Active Directory B2C.
+title: Heslo pro ověřování, registrace, obnovení v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Jak vytvořit webovou aplikaci, která má přihlášení-registrace/přihlášení, úpravy profilu a resetování hesla pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
@@ -10,52 +10,54 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ec106b46097f9a35b9e41e08de4c18339f1b28f0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 090e85df2f4315e6a31d5f9da38483f7ec00be22
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710402"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345001"
 ---
-# <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Vytvoření webové aplikace ASP.NET s Azure Active Directory B2C profil registrace, přihlášení, úpravy a resetování hesla
+# <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Vytvoření webové aplikace ASP.NET pomocí Azure Active Directory B2C profil registrace, přihlašování, úpravy a resetování hesla
 
 V tomto kurzu získáte informace o následujících postupech:
 
 > [!div class="checklist"]
-> * Přidání funkce Azure AD B2C identity do webové aplikace
-> * Registrace vaší webové aplikace ve vašem adresáři Azure AD B2C
-> * Vytvoření uživatele registrace-množství nebo přihlášení, upravit profil a zásady resetování hesel pro vaši webovou aplikaci
+> * Přidání funkce identity Azure AD B2C do webové aplikace
+> * Registrace webové aplikace v adresáři Azure AD B2C
+> * Vytvořte uživatele přihlášení-registrace/přihlášení, úpravy profilu a zásady pro resetování hesla pro vaši webovou aplikaci
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Svého klienta B2C je nutné připojit k účtu Azure. Můžete vytvořit bezplatný účet Azure [zde](https://azure.microsoft.com/).
-- Je třeba [Microsoft Visual Studio](https://www.visualstudio.com/) nebo podobné program zobrazovat a upravovat ukázkový kód.
+- Tenanta B2C musíte se připojit k účtu Azure. Můžete vytvořit si bezplatný účet Azure [tady](https://azure.microsoft.com/).
+- Potřebujete [sady Microsoft Visual Studio](https://www.visualstudio.com/) nebo podobný program k zobrazení a úprava vzorového kódu.
 
-## <a name="create-an-azure-ad-b2c-directory"></a>Vytvoření adresáře Azure AD B2C
+## <a name="create-an-azure-ad-b2c-tenant"></a>Vytvoření tenanta Azure AD B2C
 
-Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta. Adresář je kontejner pro všechny uživatele, aplikace, skupiny a další. Pokud nemáte již, vytvořte adresář B2C, než budete pokračovat v této příručce.
+Než budete moct použít Azure AD B2C, musíte vytvořit tenanta. Tenant je kontejner pro všechny uživatele, aplikace, skupiny a další. Pokud je nemáte, vytvořte tenanta B2C předtím, než budete pokračovat v této příručce.
 
 [!INCLUDE [active-directory-b2c-create-tenant](../../includes/active-directory-b2c-create-tenant.md)]
 
 > [!NOTE]
 > 
-> Potřebujete připojit k předplatnému Azure klienta B2C. Po výběru **vytvořit**, vyberte **odkaz existující Azure AD B2C klienta pro Moje předplatné** možnost a potom v **klienta Azure AD B2C** rozevírací nabídku, vyberte klienta, které chcete přidružit.
+> Budete muset připojit ke svému předplatnému Azure tenanta Azure AD B2C. Po výběru **vytvořit**, vyberte **Tenanta odkaz stávající službou Azure AD B2C s mým předplatným Azure** možnost a pak v **Tenanta Azure AD B2C** rozevírací seznam, vyberte Klient, který chcete přidružit.
 
 ## <a name="create-and-register-an-application"></a>Vytvoření a registrace aplikace
 
-Dále musíte vytvořit a registrovat aplikace ve svém adresáři B2C. To poskytuje informace, které Azure AD B2C potřebné k bezpečné komunikaci s vaší aplikací. 
+Dále je třeba vytvořit a zaregistrovat aplikaci v tenantovi Azure AD B2C. To poskytuje informace, které Azure AD B2C potřebuje k bezpečné komunikaci s vaší aplikací. 
+
+Zvolte **Všechny služby** v levém horním rohu portálu Azure Portal a vyhledejte a vyberte **Azure AD B2C**. Měli byste nyní použít klienta, který jste předtím vytvořili.
 
 [!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
 
-Až skončíte, bude mít rozhraní API a nativní aplikace v nastavení aplikace.
+Jakmile budete hotovi, budete mít rozhraní API a nativní aplikace v aplikaci nastavení.
 
-## <a name="create-policies-on-your-b2c-tenant"></a>Vytvořit zásady na svého klienta B2C
+## <a name="create-policies-on-your-b2c-tenant"></a>Vytvoření zásad ve svém tenantovi B2C
 
-V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato ukázka kódu obsahuje tři činnosti identity: **registrace a přihlášení**, **profilu upravit**, a **resetování hesla**.  Pro každý typ rozhraní musíte vytvořit zásadu, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md). U každé zásady nezapomeňte vybrat atribut název zobrazení nebo deklarace identity a poznamenejte název vaší zásady pro pozdější použití.
+V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato ukázka kódu obsahuje tři činnosti identity: **registrace a přihlášení**, **profilu úpravy**, a **resetování hesla**.  Pro každý typ rozhraní musíte vytvořit zásadu, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md). U každé zásady nezapomeňte vybrat atribut název zobrazení nebo deklarací identity a poznamenejte název zásady pro pozdější použití.
 
-### <a name="add-your-identity-providers"></a>Přidat vaši zprostředkovatelé identity
+### <a name="add-your-identity-providers"></a>Přidat svoje zprostředkovatele identit
 
-Nastavení, vyberte **zprostředkovatelů Identity** a zvolte registrace uživatelského jména nebo e-mailu registrace.
+Nastavení, vyberte **zprostředkovatelé Identity** a možnost registrace uživatelského jména nebo e-mailová registrace.
 
 ### <a name="create-a-sign-up-and-sign-in-policy"></a>Vytvoření zásad registrace a přihlášení
 
@@ -71,7 +73,7 @@ Nastavení, vyberte **zprostředkovatelů Identity** a zvolte registrace uživat
 
 Po vytvoření zásad jste připraveni k sestavení aplikace.
 
-## <a name="download-the-sample-code"></a>Stažení ukázkového kódu
+## <a name="download-the-sample-code"></a>Stáhněte si ukázkový kód
 
 Kód k tomuto kurzu se udržuje na [GitHubu](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi). Ukázku můžete klonovat spuštěním:
 
@@ -79,11 +81,11 @@ Kód k tomuto kurzu se udržuje na [GitHubu](https://github.com/Azure-Samples/ac
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohli začít. Soubor řešení obsahuje dva projekty: `TaskWebApp` a `TaskService`. `TaskWebApp` je webová aplikace MVC, která uživatel komunikuje. `TaskService` je back-endové webové rozhraní API aplikace, které ukládá seznam úkolů každého uživatele. Tento článek bude probírat pouze aplikaci `TaskWebApp`. Další informace o sestavení `TaskService` pomocí Azure AD B2C, najdete v tématu [naše kurz webové rozhraní api .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
+Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohli začít. Soubor řešení obsahuje dva projekty: `TaskWebApp` a `TaskService`. `TaskWebApp` je webová aplikace MVC, kterou uživatel komunikuje. `TaskService` je back-endové webové rozhraní API aplikace, které ukládá seznam úkolů každého uživatele. Tento článek bude probírat pouze aplikaci `TaskWebApp`. Chcete-li další informace o vytváření `TaskService` pomocí služby Azure AD B2C, najdete v článku [Náš kurz webových rozhraní api .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
 
-## <a name="update-code-to-use-your-tenant-and-policies"></a>Aktualizujte kód používat klienta a zásady
+## <a name="update-code-to-use-your-tenant-and-policies"></a>Aktualizace kódu pro použití vašeho tenanta a zásady
 
-Naše ukázka je nakonfigurovaná k použití zásad a ID klienta naše ukázkového tenanta. Aby se připojila k vlastního klienta, budete muset otevřít `web.config` v `TaskWebApp` projektu a nahraďte následující hodnoty:
+Naše ukázka je nakonfigurovaná k použití zásad a ID klienta naše ukázkového tenanta. Aby se připojila k vašeho vlastního tenanta, budete muset otevřít `web.config` v `TaskWebApp` projektu a nahraďte následující hodnoty:
 
 * `ida:Tenant` názvem vašeho tenanta
 * `ida:ClientId` identifikátorem webového aplikace
@@ -92,36 +94,36 @@ Naše ukázka je nakonfigurovaná k použití zásad a ID klienta naše ukázkov
 * `ida:EditProfilePolicyId` názvem zásady pro úpravu profilu
 * `ida:ResetPasswordPolicyId` názvem zásady pro resetování hesla
 
-## <a name="launch-the-app"></a>Spusťte aplikaci
-Z Visual Studia, spusťte aplikaci. Přejděte na kartu seznam úkolů a poznamenejte si, že je adresa URl: https://login.microsoftonline.com/ *YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*& client_id =*YourclientID*.....
+## <a name="launch-the-app"></a>Spuštění aplikace
+Ze sady Visual Studio, spusťte aplikaci. Přejděte na kartu seznam úkolů a Všimněte si, že je adresa URl: https://login.microsoftonline.com/ *YourTenantName*/oauth2/v2.0/authorize?p=*YourSignUpPolicyName*& client_id =*YourclientID*.....
 
-Zaregistrujte se pro aplikace pomocí e-mailové adresy nebo uživatelské jméno. Odhlásit se, potom znovu přihlásit a upravte profil nebo resetování hesla. Odhlásit se a přihlaste se jako jiný uživatel. 
+Zaregistrujte se pro aplikaci s použitím e-mailové adresy nebo uživatelského jména. Odhlaste, pak znovu přihlásit a upravte profil nebo resetování hesla. Odhlaste se a přihlaste se jako jiný uživatel. 
 
-## <a name="add-social-idps"></a>Přidat sociálních IDPs
+## <a name="add-social-idps"></a>Přidání sociálních sítí zprostředkovatelů identity
 
-Aplikace v současné době podporuje pouze uživatel registrace a přihlášení pomocí **místní účty**; uložené v adresáři B2C účty, které používají uživatelské jméno a heslo. Pomocí Azure AD B2C můžete přidat podporu pro ostatní **zprostředkovatelů identity** (IDPs) beze změny některé z vašeho kódu.
+V současné době aplikace podporuje pouze uživatele, registrace a přihlášení pomocí **místní účty**; účty uložené v adresáři B2C, které používají uživatelské jméno a heslo. Pomocí Azure AD B2C, můžete přidat podporu pro ostatní **zprostředkovatelé identity** (IDP) bez změny vašich kód.
 
-Sociální IDPs přidat do vaší aplikace, začněte tím, že následující podrobné pokyny v těchto článcích. Pro každý deklarací identity, které chcete podporovat je třeba zaregistrovat aplikaci v daném systému a získat ID klienta.
+Chcete-li přidat zprostředkovatelů sociálních sítí do vaší aplikace, začněte podle podrobných pokynů v těchto článcích. Pro každého zprostředkovatele identity, které chcete podporovat budete muset zaregistrovat aplikaci v daném systému a získat ID klienta.
 
-* [Nastavení sítě Facebook jako IDP](active-directory-b2c-setup-fb-app.md)
-* [Nastavit Google jako IDP](active-directory-b2c-setup-goog-app.md)
-* [Nastavit Amazon jako IDP](active-directory-b2c-setup-amzn-app.md)
-* [Nastavit LinkedIn jako IDP](active-directory-b2c-setup-li-app.md)
+* [Nastavení sítě Facebook jako identity](active-directory-b2c-setup-fb-app.md)
+* [Nastavení Google jako identity](active-directory-b2c-setup-goog-app.md)
+* [Nastavení Amazon jako identity](active-directory-b2c-setup-amzn-app.md)
+* [Nastavení Linkedinu jako identity](active-directory-b2c-setup-li-app.md)
 
-Po přidání zprostředkovatelů identity do vašeho adresáře B2C, upravit, každý z vaší tři zásady, které zahrnují nové IDPs, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md). Po uložení zásad, znovu spusťte aplikaci.  Měli byste vidět nové IDPs přidat jako přihlášení a registrace možnosti v každé z vaší identity činnost.
+Po přidání zprostředkovatele identity do vašeho tenanta B2C, upravit, všechny tři zásady zahrnout nové zprostředkovatelů identity, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md). Po uložení zásady znovu spusťte aplikaci.  Měli byste vidět nové zprostředkovatelů identity, které jsou přidány jako přihlášení a prostředí možností registrace v jednotlivých vaši identitu.
 
-Můžete experimentovat s vašimi zásadami a sledovat účinek na ukázkové aplikace. Přidat nebo odebrat IDPs, pracovat s deklarace identity aplikace nebo změnit atributy registrace. Experiment, dokud se nezobrazí, jak zásady, žádosti o ověření a OWIN tie společně.
+Můžete experimentovat s vašimi zásadami a můžete sledovat účinek na ukázkovou aplikaci. Přidat nebo odebrat zprostředkovatelů identity, manipulovat s deklaracemi identity aplikace nebo změnit atributy registrace. Experiment, dokud se nezobrazí, jak spojovat zásady žádosti o ověření a OWIN.
 
-## <a name="sample-code-walkthrough"></a>Ukázka kódu návod
-Následující části vysvětlují, jak jsou nakonfigurované ukázkového kódu aplikace. Může to použijte jako vodítko při vývoji vaší budoucí aplikace.
+## <a name="sample-code-walkthrough"></a>Ukázkový názorný postup kódu
+Následující části vysvětlují konfiguraci ukázkový kód aplikace. Můžete ji používat jako vodítko při vývoji budoucí aplikace.
 
-### <a name="add-authentication-support"></a>Přidat podporu ověřování
+### <a name="add-authentication-support"></a>Přidání podpory ověřování
 
-Teď můžete konfigurovat aplikaci používají Azure AD B2C. Aplikace komunikuje se službou Azure AD B2C odesláním OpenID Connect žádosti o ověření. Požadavky určují uživatelské prostředí, které vaše aplikace chce provést zadáním zásady. Knihovna OWIN společnosti Microsoft můžete odesílat tyto požadavky, provést zásady a spravovat uživatelské relace a další.
+Teď můžete nakonfigurovat aplikace pro použití Azure AD B2C. Vaše aplikace komunikovala s Azure AD B2C odesláním žádosti o ověření OpenID Connect. Požadavky určují uživatelské prostředí, které aplikace chce provést tak, že určíte zásady. Společnosti Microsoft OWIN knihovny slouží k odesílání těchto požadavků, spuštění zásady, spravovat uživatelské relace a další věci.
 
 #### <a name="install-owin"></a>Instalace OWIN
 
-Pokud chcete začít, přidejte do projektu balíčky NuGet middleware OWIN pomocí konzoly Správce balíčků Visual Studio.
+Pokud chcete začít, přidáte do projektu balíčky NuGet middleware OWIN pomocí konzole Správce balíčků Visual Studio.
 
 ```Console
 PM> Install-Package Microsoft.Owin.Security.OpenIdConnect
@@ -151,9 +153,9 @@ public partial class Startup
 
 #### <a name="configure-the-authentication-middleware"></a>Nakonfigurujte middleware ověřování.
 
-Otevřete soubor `App_Start\Startup.Auth.cs` a implementovat `ConfigureAuth(...)` metoda. Parametry, zadejte v `OpenIdConnectAuthenticationOptions` sloužit jako souřadnice pro vaši aplikaci ke komunikaci s Azure AD B2C. Pokud některé parametry nezadáte, použije se výchozí hodnota. Například můžeme nezadávejte `ResponseType` v ukázce proto výchozí hodnota `code id_token` se použije v každém odchozí požadavku na Azure AD B2C.
+Otevřete soubor `App_Start\Startup.Auth.cs` a implementovat `ConfigureAuth(...)` metody. Parametry, které poskytnete v `OpenIdConnectAuthenticationOptions` sloužit jako souřadnice pro vaši aplikaci ke komunikaci s Azure AD B2C. Pokud nezadáte určité parametry, použije se výchozí hodnota. Například jsme nezadávejte `ResponseType` ve vzorku, tak na výchozí hodnotu `code id_token` se použije v každý odchozí požadavek na Azure AD B2C.
 
-Musíte taky nastavit ověřování souborů cookie. Middleware OpenID Connect používá soubory cookie k udržování uživatelské relace, mimo jiné.
+Také je nutné nastavit ověřování souborů cookie. Middleware OpenID Connect používá soubory cookie k Udržovat uživatelské relace, mimo jiné.
 
 ```CSharp
 // App_Start\Startup.Auth.cs
@@ -203,20 +205,20 @@ public partial class Startup
 }
 ```
 
-V `OpenIdConnectAuthenticationOptions` vyšší, jsme definovali sadu funkce zpětného volání pro konkrétní oznámení, které jsou přijaty middlewarem OpenID Connect. Tyto chování jsou definovány pomocí `OpenIdConnectAuthenticationNotifications` objektu a uložena do `Notifications` proměnné. V našem ukázce jsme definovali tři různé zpětná volání v závislosti na události.
+V `OpenIdConnectAuthenticationOptions` výše definujeme sadu funkcí zpětného volání pro upozornění, které jsou přijaty middlewarem OpenID Connect. Těchto projevů jsou definovány pomocí `OpenIdConnectAuthenticationNotifications` objektu a uložena do `Notifications` proměnné. V naší ukázce budeme definovat tři různé zpětná volání v závislosti na události.
 
-### <a name="using-different-policies"></a>Pomocí různých zásad
+### <a name="using-different-policies"></a>Použití různých zásad
 
-`RedirectToIdentityProvider` Oznámení se aktivuje vždy, když požadavku na službu Azure AD B2C. Ve funkci zpětného volání `OnRedirectToIdentityProvider`, jsme změnami odchozí volání, pokud chcete použít jinou zásadu. Aby bylo možné provést resetování hesla nebo upravte profil, budete muset použít odpovídající zásada, jako je heslo resetovat zásady místo výchozí zásady "Registrace nebo přihlášení".
+`RedirectToIdentityProvider` Upozornění se aktivuje vždy, když se požadavek na Azure AD B2C. Ve funkci zpětného volání `OnRedirectToIdentityProvider`, zkontrolujeme v odchozích volání, pokud chcete použít jiné zásady. Aby bylo možné provést resetování hesla nebo upravte profil, budete muset použít odpovídající zásady, jako je místo výchozí zásady "Registrace / přihlášení" zásady pro resetování hesla.
 
-Ve výběru když uživatel chce resetovat heslo nebo upravte profil, přidáme na zásadu, kterou jsme dávají přednost používání do kontextu OWIN. To můžete udělat následujícím způsobem:
+V naší ukázce když uživatel chce resetovat heslo nebo upravte profil, přidáme na zásadu, kterou jsme dávají přednost používání do kontextu OWIN. To jde udělat následujícím způsobem:
 
 ```CSharp
     // Let the middleware know you are trying to use the edit profile policy
     HttpContext.GetOwinContext().Set("Policy", EditProfilePolicyId);
 ```
 
-A můžete implementovat funkce zpětného volání `OnRedirectToIdentityProvider` provedením následujících akcí:
+A můžete implementovat funkci zpětného volání `OnRedirectToIdentityProvider` následujícím způsobem:
 
 ```CSharp
 /*
@@ -238,13 +240,13 @@ private Task OnRedirectToIdentityProvider(RedirectToIdentityProviderNotification
 }
 ```
 
-### <a name="handling-authorization-codes"></a>Zpracování autorizačních kódů
+### <a name="handling-authorization-codes"></a>Zpracování autorizační kódy
 
-`AuthorizationCodeReceived` Oznámení se aktivuje při přijetí autorizační kód. Middleware OpenID Connect nepodporuje výměnou kódy pro tokeny přístupu. Kód pro token ve funkci zpětného volání, můžete je ručně vyměnit. Další informace, podívejte se prosím na [dokumentace](active-directory-b2c-devquickstarts-web-api-dotnet.md) to vysvětluje, jak.
+`AuthorizationCodeReceived` Upozornění se aktivuje při přijetí autorizační kód. Middleware OpenID Connect nepodporuje pro přístupových tokenů výměnou kódy. Můžete ručně vyměnit kód pro daný token ve funkci zpětného volání. Další informace, podívejte se prosím na [dokumentaci](active-directory-b2c-devquickstarts-web-api-dotnet.md) , který vysvětluje, jak.
 
 ### <a name="handling-errors"></a>Zpracování chyb
 
-`AuthenticationFailed` Oznámení se aktivuje, když se ověřování nezdaří. V jeho metoda zpětného volání může zpracovávat chyby podle potřeby. Měli byste ale přidat kontrolu pro kód chyby `AADB2C90118`. Během provádění zásady "Registrace nebo přihlášení", uživatel má možnost vybrat **zapomněli jste heslo?** odkaz. V takovém případě Azure AD B2C odešle aplikace této chyby kódu oznamující, že vaše aplikace by měl provádět žádost místo toho použít zásady resetování hesel.
+`AuthenticationFailed` Upozornění se aktivuje, pokud se ověření nezdaří. Ve své metodě zpětného volání může zpracovávat chyby podle potřeby. Měli byste ale přidat kontrolu kód chyby: `AADB2C90118`. Při zpracování zásady "Registrace nebo přihlašování" uživatel má možnost vybrat **zapomněli jste heslo?** odkaz. V takovém případě Azure AD B2C pošle vaší aplikace tento kód chyby označující, že vaše aplikace by měl vytvořit žádost o místo toho použít zásady resetování hesla.
 
 ```CSharp
 /*
@@ -276,9 +278,9 @@ private Task OnAuthenticationFailed(AuthenticationFailedNotification<OpenIdConne
 
 ### <a name="send-authentication-requests-to-azure-ad"></a>Odeslání žádosti o ověření do služby Azure AD
 
-Aplikace je nyní správně nakonfigurováno pro komunikaci s Azure AD B2C pomocí ověřovacího protokolu OpenID Connect. OWIN spravuje podrobnosti věnujte zpráv ověřování, ověřování tokenů z Azure AD B2C a údržbě uživatelské relace. Zbývá zahájíte toku každého uživatele.
+Vaše aplikace je teď správně nakonfigurované pro komunikaci s Azure AD B2C pomocí ověřovacího protokolu OpenID Connect. Podrobnosti ohledně vytváření ověřovacích zpráv, ověřování tokenů z Azure AD B2C a udržování uživatelských relací slouží ke správě OWIN. Už jen zbývá k zahájení toku jednotlivých uživatelů.
 
-Když uživatel vybere **až přihlášení nebo přihlášení**, **upravit profil**, nebo **resetovat heslo** ve webové aplikaci, přidružené akce je volána v `Controllers\AccountController.cs`:
+Když uživatel vybere **Sign up/přihlášení**, **upravit profil**, nebo **resetovat heslo** ve webové aplikaci, je vyvolána přidružené akce v `Controllers\AccountController.cs`:
 
 ```CSharp
 // Controllers\AccountController.cs
@@ -335,7 +337,7 @@ public void ResetPassword()
 }
 ```
 
-OWIN můžete také použít k odhlášení uživatele z aplikace. V `Controllers\AccountController.cs` máme:
+Také vám pomůže OWIN neodhlásí uživatele z aplikace. V `Controllers\AccountController.cs` máme k dispozici:
 
 ```CSharp
 // Controllers\AccountController.cs
@@ -355,7 +357,7 @@ public void SignOut()
 }
 ```
 
-Kromě explicitně vyvolání zásady, můžete použít `[Authorize]` značky v řadičích, které provádí zásadu, pokud uživatel není přihlášený. Otevřete `Controllers\HomeController.cs` a přidejte `[Authorize]` značky k řadiči deklarací identity.  Vybere OWIN poslední zásady nakonfigurované při zpracování `[Authorize]` je dosáhl značky.
+Kromě explicitně vyvolání zásady, můžete použít `[Authorize]` značku ve vašich kontrolerech, zásady se spustí, pokud uživatel není přihlášený. Otevřít `Controllers\HomeController.cs` a přidejte `[Authorize]` značka, které deklarace identity kontroleru.  OWIN Vybere poslední zásady nakonfigurované při `[Authorize]` stiskněte značku.
 
 ```CSharp
 // Controllers\HomeController.cs
@@ -369,9 +371,9 @@ public ActionResult Claims()
 
 ### <a name="display-user-information"></a>Zobrazit informace o uživateli
 
-Při ověřování uživatele pomocí OpenID Connect, Azure AD B2C vrátí ID token na aplikaci, která obsahuje **deklarace identity**. Tyto jsou tvrzení o uživateli. Deklarace identity můžete použít k přizpůsobení funkcí aplikace.
+Při ověřování uživatelů pomocí OpenID Connect, Azure AD B2C vrátí ID token pro aplikaci, která obsahuje **deklarace identity**. Jedná se o kontrolní výrazy informace o uživateli. Deklarace identity můžete použít k přizpůsobení aplikace.
 
-Otevřete soubor `Controllers\HomeController.cs`. Dostanete deklarace identity uživatelů v řadičích prostřednictvím `ClaimsPrincipal.Current` zaregistrovaný objekt zabezpečení.
+Otevřete soubor `Controllers\HomeController.cs`. Dostanete deklarace identity uživatelů ve vašich kontrolerech prostřednictvím `ClaimsPrincipal.Current` zaregistrovaný objekt zabezpečení.
 
 ```CSharp
 // Controllers\HomeController.cs
@@ -385,4 +387,4 @@ public ActionResult Claims()
 }
 ```
 
-Všechny deklarace identity, které aplikace přijímá stejným způsobem můžete přistupovat.  Seznam všech deklarací identity aplikace obdrží je k dispozici pro vás na **deklarace identity** stránky.
+Všechny deklarace identity, které aplikace přijímá stejným způsobem můžete přistupovat.  Seznam všech deklarací identity aplikace obdrží je k dispozici na **deklarace identity** stránky.

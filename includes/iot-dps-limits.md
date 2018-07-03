@@ -1,19 +1,22 @@
-Následující tabulka uvádí omezení, které se vztahují k prostředkům služby zřizování zařízení IoT Hub:
+Následující tabulka uvádí omezení, které se vztahují k prostředkům IoT Hub Device Provisioning Service:
 
 | Prostředek | Omezení |
 | --- | --- |
-| Maximální zařízení zřizování služby podle předplatného Azure | 10 |
-| Maximální počet registrace | 10 000 |
-| Maximální počet registrací | 10 000 |
-| Maximální počet skupin registrace | 100 |
-| Maximální počet certifikačních autorit | 10 |
+| Maximální služby Device Provisioning na předplatné Azure | 10 |
+| Maximální počet registrací | 500,000 |
+| Maximální počet registrací | 500,000 |
+| Maximální počet skupin registrací | 100 |
+| Maximální počet certifikačních autorit | 25 |
 
 > [!NOTE]
-> Obraťte se na [Microsoft Support](https://azure.microsoft.com/support/options/) zvýšit počet instancí v rámci vašeho předplatného.
+> Můžete kontaktovat [Microsoft Support](https://azure.microsoft.com/support/options/) ke zvýšení počtu instancí v rámci vašeho předplatného.
 
-Službu zřizování zařízení omezí generovaný požadavky při překročení kvóty následující:
+> [!NOTE]
+> Můžete kontaktovat [Microsoft Support](https://azure.microsoft.com/support/options/) zvyšte počet registrací a registrací ve vaší službě zřizování.
 
-| Omezení | Hodnota za služby |
+Služby Device Provisioning omezuje žádosti při překročení následujících kvót:
+
+| Omezení | Hodnotu za služby |
 | --- | --- |
-| Operace | 100 za minutu |
-| Registrace zařízení | 100 za minutu |
+| Operace | 100/min |
+| Registrace zařízení | 100/min |

@@ -1,6 +1,6 @@
 ---
-title: Spravovat předplatné koncového bodu Azure | Microsoft Docs
-description: V tomto článku vytvořit koncový bod měření podle objemu klíč pro váš účet LEOŠ zajistit neomezená provoz na váš koncový bod, následující platebního plánu.
+title: Spravovat předplatné koncový bod Azure | Dokumentace Microsoftu
+description: V tomto článku vytvoříte klíč monitorovaný koncový bod pro váš účet služby LUIS k poskytování neomezené přenosy do vašeho koncového bodu po platební plán.
 services: cognitive-services
 author: v-geberr
 manager: Kaiqb
@@ -9,78 +9,78 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3526871f126ac975f323fe84b14883b361b684ae
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dbcbdb0f806241c015e6fbc160465390bead7c37
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343826"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340769"
 ---
-# <a name="manage-azure-endpoint-subscription-keys"></a>Správa klíčů předplatné koncového bodu Azure
+# <a name="manage-azure-endpoint-subscription-keys"></a>Spravovat klíče předplatného koncový bod Azure
 
-Pro účely testování a prototypu pouze pomocí úroveň free (F0). Pro produkční systémy, používat [placené](https://aka.ms/luis-price-tier) vrstvy. 
+Pro účely testování a prototypu pouze úroveň free (F0) můžete použijte. Pro produkční systémy, používat [placené](https://aka.ms/luis-price-tier) vrstvy. 
 
 > [!NOTE]
-> Nepoužívejte [vytváření klíč](luis-concept-keys.md#authoring-key) pro koncový bod dotazy v produkčním prostředí.
+> Nepoužívejte [vytváření klíč](luis-concept-keys.md#authoring-key) za dotazy na koncový bod v produkčním prostředí.
 
 <a name="create-luis-service"></a>
-## <a name="create-luis-endpoint-key"></a>Vytvořte klíč LEOŠ koncového bodu
+## <a name="create-luis-endpoint-key"></a>Vytvoření klíče koncového bodu služby LUIS
 
 1. Přihlaste se k  **[Microsoft Azure](https://ms.portal.azure.com/)** 
-2. Klikněte na tlačítko se zeleným **+** přihlásit v levém horním panelu a vyhledejte "LEOŠ" na webu Marketplace, a potom klikněte na **znalosti jazyka** a postupujte podle pokynů **vytvořit prostředí**  k vytvoření účtu LEOŠ předplatného. 
+2. Klikněte na zelené **+** přihlášení v horní panel vlevo a vyhledejte položku "LUIS" na webu Marketplace a potom klikněte na **Language Understanding** a postupujte podle pokynů **vytvořit prostředí**  k vytvoření účtu předplatného služba LUIS. 
 
     ![Azure Search](./media/luis-azure-subscription/azure-search.png) 
 
-3. Nakonfigurujte odběr nastavení název účtu, včetně cenové úrovně atd. 
+3. Nakonfigurování odběru s nastavením název účtu, včetně cenové úrovně, atd. 
 
-    ![Volba Azure API](./media/luis-azure-subscription/azure-api-choice.png) 
+    ![Volbou Azure API](./media/luis-azure-subscription/azure-api-choice.png) 
 
-4. Jakmile vytvoříte službu LEOŠ, můžete zobrazit přístupové klíče generované v **Správa prostředků -> klíče**.  
+4. Jakmile vytvoříte službu LUIS, můžete zobrazit přístupové klíče vygenerované v **správy prostředků -> klíče**.  
 
     ![Azure klíče](./media/luis-azure-subscription/azure-keys.png)
 
     > [!Note] 
-    > * Přihlaste se k vaší oblasti [LEOŠ](luis-reference-regions.md) webu a [přidejte nový klíč koncového bodu LEOŠ](Manage-Keys.md#assign-endpoint-key). 
-    > * Je potřeba pamatovat název služby Azure jste vytvořili, aby bylo možné, vyberte ho v této oblasti [LEOŠ](luis-reference-regions.md) stránky publikování.  
+    > * Přihlaste se k vaší oblasti [LUIS](luis-reference-regions.md) webu a [přidejte nový klíč koncového bodu služby LUIS](luis-how-to-manage-keys.md#assign-endpoint-key). 
+    > * Je potřeba si vzpomenout název služby Azure jste vytvořili, abyste mohli vybrat ve vaší oblasti [LUIS](luis-reference-regions.md) stránka publikovat.  
 
-## <a name="change-luis-pricing-tier"></a>Změna LEOŠ cenovou úroveň
+## <a name="change-luis-pricing-tier"></a>Změna LUIS cenová úroveň
 
-1.  V [Azure](https://portal.azure.com), najít předplatné LEOŠ. Klikněte na předplatné LEOŠ.
-    ![Najít předplatné LEOŠ](./media/luis-usage-tiers/find.png)
+1.  V [Azure](https://portal.azure.com), vyhledejte své předplatné služby LUIS. Klikněte na předplatné služby LUIS.
+    ![Vyhledejte své předplatné služby LUIS](./media/luis-usage-tiers/find.png)
 2.  Klikněte na tlačítko **cenová úroveň** Chcete-li zobrazit dostupné cenové úrovně. 
     ![Zobrazení cenové úrovně](./media/luis-usage-tiers/subscription.png)
-3.  Klikněte na cenovou úroveň a klikněte na tlačítko **vyberte** uložte změny. 
-    ![Vaše úroveň platebních LEOŠ změnit.](./media/luis-usage-tiers/plans.png)
-4.  Po dokončení změny cenové ověřuje automaticky otevírané okno nového cenovou úroveň. 
-    ![Ověřte vaší LEOŠ platebních vrstvy](./media/luis-usage-tiers/updated.png)
-5. Nezapomeňte [přiřadit tento koncový bod klíč](manage-keys.md#assign-endpoint-key) na **publikovat** stránky a použít ho v všechny dotazy na koncový bod. 
+3.  Vyberte požadovanou cenovou úroveň a klikněte na tlačítko **vyberte** změny se uloží. 
+    ![Změnit úroveň služby LUIS platby](./media/luis-usage-tiers/plans.png)
+4.  Po dokončení při změně cen se automaticky otevírané okno ověří novou cenovou úroveň. 
+    ![Ověřte svou úroveň platby LUIS](./media/luis-usage-tiers/updated.png)
+5. Nezapomeňte [přiřadit tento klíč koncového bodu](luis-how-to-manage-keys.md#assign-endpoint-key) na **publikovat** stránce a používat ho v všechny dotazy na koncový bod. 
 
-## <a name="exceed-pricing-tier-usage"></a>Překročit cenovou úroveň využití
-Každá úroveň umožňuje, aby váš účet LEOŠ požadavky koncového bodu v určitých. Pokud je rychlost požadavků na vyšší než povolený počet účtu měřené za minutu nebo měsíčně, požadavky obdrží chybu HTTP "429: příliš mnoho požadavků."
+## <a name="exceed-pricing-tier-usage"></a>Překročit využití cenové úrovně
+Každá úroveň umožňuje koncový bod požadavků na účet služby LUIS určitou rychlostí. Pokud se o počet žádostí o je vyšší než povolený počet účtu Účtovaná podle objemu dat za minutu nebo za měsíc, požadavky obdrží chybu HTTP "429: příliš mnoho požadavků."
 
-Každá úroveň umožňuje kumulativní požadavky za měsíc. Pokud jsou vyšší než počet povolených celkový počet požadavků, požadavky obdrží chybu HTTP "403: zakázáno".  
+Každá úroveň umožňuje kumulativní žádostí za měsíc. Pokud celkový počet požadavků jsou vyšší než povolený počet souborů, požadavky obdrží chybu HTTP "403: zakázáno".  
 
 ## <a name="viewing-summary-usage"></a>Zobrazení souhrnu využití
-Informace o využití LEOŠ můžete zobrazit v Azure. **Přehled** stránky se zobrazí poslední souhrnné informace, včetně volání a chyb. Pokud provedete LEOŠ požadavku koncového bodu, pak okamžitě podívejte se **stránku přehled**, povolit až pět minut využití objeví.
+Informace o použití LUIS můžete zobrazit v Azure. **Přehled** stránka zobrazuje poslední souhrnné informace, včetně volání a chyby. Pokud provedete požadavku koncového bodu LUIS, pak okamžitě podívejte se **stránka s přehledem**, povolit pro použití se zobrazí až pět minut.
 
 ![Zobrazení souhrnu využití](./media/luis-usage-tiers/overview.png)
 
-## <a name="customizing-usage-charts"></a>Přizpůsobení použití grafů
+## <a name="customizing-usage-charts"></a>Přizpůsobení využití grafů
 Metriky poskytuje podrobnější pohled na data.
 
-![Výchozích metrik](./media/luis-usage-tiers/metrics-default.png)
+![Výchozí metriky](./media/luis-usage-tiers/metrics-default.png)
 
-Vaše grafy metriky můžete nakonfigurovat pro časové období a metriky typu. 
+Grafy metrik můžete nakonfigurovat pro časové období a typu metrika. 
 
 ![Vlastní metriky](./media/luis-usage-tiers/metrics-custom.png)
 
 ## <a name="total-transactions-threshold-alert"></a>Celkový počet transakcí prahová hodnota výstrahy
-Pokud chcete vědět, kdy bylo dosaženo určité transakce prahovou hodnotu, například 10 000 transakcí, můžete vytvořit výstrahu. 
+Pokud chcete vědět, kdy jste dosáhli určitou transakci prahovou hodnotu, například 10 000 transakcí, můžete vytvořit výstrahu. 
 
-![Výchozí výstrahy](./media/luis-usage-tiers/alert-default.png)
+![Výchozí upozornění](./media/luis-usage-tiers/alert-default.png)
 
-Přidání metriky upozornění pro **celkový počet volání** metriky pro určité časové období. Přidání e-mailové adresy všech osob, které by měly dostávat upozornění. Přidejte webhooky pro všechny systémy, které by měly dostávat upozornění. Aplikace logiky můžete také spustit, když je výstraha. 
+Přidat upozornění metriky pro **celkový počet volání** metriky pro určité časové období. Přidáte e-mailové adresy lidí, kteří měli obdržet upozornění. Přidání webhooků pro všechny systémy, které by měla přijímat oznámení. Aplikace logiky můžete spustit také při aktivaci tohoto upozornění. 
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o použití [verze](luis-how-to-manage-versions.md) pro správu změn LEOŠ aplikace.
+Další informace o použití [verze](luis-how-to-manage-versions.md) spravovat změny aplikace LUIS.

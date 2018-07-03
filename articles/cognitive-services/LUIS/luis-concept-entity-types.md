@@ -1,6 +1,6 @@
 ---
-title: Seznámení s typy entit v aplikacích LEOŠ v Azure | Microsoft Docs
-description: Přidání entity (klíče data v doméně vaší aplikace) v aplikacích jazyka Principy inteligentního služby (LEOŠ).
+title: Principy typů entit v aplikacích LUIS v Azure | Dokumentace Microsoftu
+description: Přidání entity (klíčových dat v doméně vaší aplikace) v aplikacích Language Understanding Intelligent Service (LUIS).
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,101 +9,101 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: v-geberr
-ms.openlocfilehash: 01f451f7a3e09aacb029c2194044320717bfae96
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 3b87f89c8f0cb6a5b22923513d78fff9085f3598
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083241"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345324"
 ---
-# <a name="entities-in-luis"></a>Entity v LEOŠ
+# <a name="entities-in-luis"></a>Entity v LUIS
 
-Entity jsou slova nebo fráze v utterances, které jsou klíčová data v doméně vaší aplikace.
+Entity jsou slova nebo fráze v projevy, které jsou data klíče v doméně vaší aplikace.
 
-## <a name="entity-compared-to-intent"></a>Ve srovnání s záměr entity
-Entita představuje slovo nebo frázi uvnitř utterance, který chcete extrahované. Utterance může obsahovat mnoho entit nebo hodnotu none vůbec. Entita představuje třídu, včetně kolekce podobně jako objekty (míst, věcí, osoby, události nebo koncepty). Entity popisují informace, které jsou relevantní pro záměr a někdy jsou důležité pro vaši aplikaci k provedení úkolu. Vyhledávání zprávy aplikace může obsahovat třeba entity, jako je například "tématu", "zdroj", "– klíčové slovo" a "datu publikování", které jsou klíčová data pro vyhledávání zprávy. V aplikaci rezervace cesta, "místo", "datum", "letecká společnost" "cesta třída" a "lístky" jsou informace o klíči pro letu rezervace (relevantní pro záměr "Bookflight").
+## <a name="entity-compared-to-intent"></a>Entity ve srovnání s cílem
+Entita představuje slovo nebo frázi v utterance, který chcete, aby byl extrahován. Utterance může obsahovat mnoho entit nebo žádný vůbec. Entity představuje třídu kolekce podobných objektů (místa, věci, osoby, události nebo koncepty) včetně. Entity popisují informace související s cílem a někdy jsou nezbytné pro vaši aplikaci k provedení svých úkolů. Pro vyhledávání zpráv aplikace může například obsahovat entity, jako je například "tematické", "zdroj", "– klíčové slovo" a "datum publikování", které jsou klíčová data pro vyhledávání zpráv. Cestovní aplikaci rezervace, "umístění", "data", "letecká společnost" "cesty třída" a "lístků" jsou informace o klíči pro rezervace letu (relevantní k příslušnému záměru "Bookflight").
 
-Pro srovnání představuje záměr předpovědi celý utterance. 
+Naproti tomu představuje záměr předpovědi celý utterance. 
 
 ## <a name="entities-represent-data"></a>Entity představují data
-Entity jsou data, která chcete načítat z utterance. To může být název, datum, název produktu nebo libovolnou skupinu slova. 
+Entity jsou data, která chcete načítat utterance. To může být název, datum, název produktu nebo jakákoli skupina slova. 
 
-|Promluva|Entita|data|
+|Promluva|Entita|Data|
 |--|--|--|
-|Zakoupit 3 lístky pro Brno|Předkompilované číslo<br>Location.Destination|3<br>New York|
-|Koupit lístek z New Yorku do Londýna na března 5|Location.Origin<br>Location.Destination<br>Předkompilované datetimeV2|New York<br>Londýn<br>5. března 2018|
+|Zakoupit 3 lístky pro New York|Předem připravené číslo<br>Location.Destination|3<br>New York|
+|Nákup lístků z New Yorku do Londýna na 5. března|Location.Origin<br>Location.Destination<br>Předem připravené datetimeV2|New York<br>Londýn<br>5. března 2018|
 
 ## <a name="entities-are-optional-but-highly-recommended"></a>Entity jsou volitelné, ale důrazně doporučené
-Při záměry jsou požadovány, jsou volitelné entity. Není nutné k vytváření entit pro každý koncept ve vaší aplikaci, ale jenom pro požadované aplikace provádět akci. 
+I když záměry povinné, entity jsou volitelné. Nemusíte vytvářet entity pro každý koncept ve vaší aplikaci, ale pouze pro tyto aplikace vyžaduje k akci. 
 
-Pokud vaše utterances nemají podrobnosti, které vaše robota musí pokračovat, není nutné je přidat. Během existence vaší aplikace, můžete je přidat později. 
+Pokud vaše projevy nemají podrobnosti, které váš robot je potřeba pokračovat, není potřeba je přidat. Během existence vaší aplikace, můžete je přidat později. 
 
-Pokud si nejste jisti, jak byste použili informace, přidáte pár běžných předem entitami, jako je například datetimeV2 pořadí, e-mailu a telefonní číslo.
+Pokud si nejste jisti, jak můžete využít informace, přidáte pár běžných předem připravených entit, jako je například datetimeV2 pořadovém místě, e-mailu a telefonní číslo.
 
-## <a name="label-for-word-meaning"></a>Popisek pro význam aplikace word
-Pokud volba slovo nebo slovo uspořádání je stejný, ale neznamená samé, není popisku ho s entitou. 
+## <a name="label-for-word-meaning"></a>Popisek pro význam slova
+Pokud volba slovo nebo slovo uspořádání je stejný, ale není to samé, není popisek s entitou. 
 
-Následující utterances, slovo `fair` je homograf. Je napsaný stejné, ale má jiný význam:
+Následující projevy, slovo `fair` je homograf. Je napsána stejný, ale má odlišný význam:
 
 ```
 What kind of county fairs are happening in the Seattle area this summer?
 Is the current rating for the Seattle review fair?
 ```
 
-Pokud byste chtěli entitu událostí najít data všech událostí, označení slovo `fair` v první utterance, ale ne za sekundu.
+Pokud byste chtěli entity událost najít všechna data událostí, popisek slovo `fair` v první utterance, ale nikoli do druhého.
 
-## <a name="entities-are-shared-across-intents"></a>Entity jsou sdíleny záměry
-Entity jsou sdílena mezi tříd Intent. Jejich nepatří do žádné jednoho záměr. Tříd Intent a entity lze sémanticky přidružit, ale není výhradní vztah.
+## <a name="entities-are-shared-across-intents"></a>Entity jsou sdíleny napříč záměrů
+Entity jsou sdíleny mezi záměry. Nepatří do žádné jeden záměr. Záměry a entity můžou být sémanticky přidružené ale není výhradní vztah.
 
-V utterance "sešit mi lístek do Paříž", "Paříž" je entita typu umístění. Tím, že rozpoznává entitami, které jsou uvedené ve vstupu uživatele, LEOŠ vám pomůže vybrat konkrétní akce, které ke splnění záměrem.
+V utterance "rezervovat mě lístek do Paříže", "Paříž" je entita typu umístění. Služba LUIS umožňuje tím, že rozpoznává entity, které jsou uvedené ve vstupu uživatele, zvolte konkrétní akce ke splnění záměru.
 
-## <a name="assign-entities-in-none-intent"></a>Přiřadit entity v žádné záměrné
-Všechny záměry, včetně **žádné** záměr, by měly mít entity s názvem bez přípony. To pomáhá LEOŠ Další informace o kde entity, které jsou v utterances a slova jsou kolem entity. 
+## <a name="assign-entities-in-none-intent"></a>Přiřadit entity v žádné záměru
+Všechny příkazy, včetně **žádný** záměr, by měly mít entity s popiskem. To pomáhá LUIS Další informace o kde entity, které jsou v projevy a slova jsou kolem entity. 
 
 ## <a name="types-of-entities"></a>Typy entit
-LEOŠ nabízí mnoho typů entit; Předkompilované entity vlastní počítače se naučili a seznamu entit.
+Služba LUIS nabízí mnoho typů entit; předem připravených entit, vlastního počítače se naučili a seznam entit.
 
-| Název | Může označovat | Popis |
+| Název | Lze označit | Popis |
 | -- |--|--|
-| **Předkompilované** <br/>[Vlastní](#prebuilt)| |  **Definice**<br>Vestavěné typy, které představují běžné koncepty. <br><br>**seznam**<br/>číslo klíče frázi, pořadí, teploty, dimenze, peníze, stáří, procento, e-mailu, adresa URL, telefonní číslo a klíče frázi. <br><br>Předkompilované entity názvy jsou vyhrazené. <br><br>Všechny předem entity, které jsou přidány do aplikace jsou vrácena jako [koncový bod](luis-glossary.md#endpoint) dotazu. Další informace najdete v tématu [předem entity](./Pre-builtEntities.md). <br/><br/>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#prebuilt-entity-data)|
-|<!-- added week of 3/21/08 --> **Regulární výraz**<br/>[Regulární výraz](#regex)||**Definice**<br>Vlastní regulární výraz formátovaný nezpracovaná utterance textu. Se ignoruje velikost písmen a ignoruje kulturního variant.  <br><br>Tato entita je vhodný pro hesla či fráze konzistentně formátovaných pomocí jakékoli změny, která je konzistentní.<br><br>Odpovídající regulární výraz se použije po změnách kontrolu pravopisu v podniku. <br><br>Pokud regulární výraz je příliš složitý, jako je třeba použití mnoha závorky, nejsou budete moct přidat výraz do modelu. <br><br>**Příklad**<br>`kb[0-9]{6,}` odpovídá kb123456.<br/><br/>[Rychlý start](luis-quickstart-intents-regex-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md)|
-| **Jednoduché** <br/>[Naučili počítače](#machine-learned) | ✔ | **Definice**<br>Jednoduché entity je obecný entita, která popisuje jeden koncept a získané z počítače naučili kontextu. Kontext zahrnují volba word, word umístění a utterance délka.<br/><br/>Toto je dobré entity slova nebo fráze, které nejsou konzistentní formátovány ale indikovat samé. <br/><br/>[Rychlý start](luis-quickstart-primary-and-secondary-data.md)<br/>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#simple-entity-data)|  
-| **seznam** <br/>[Přesná shoda](#exact-match)|| **Definice**<br>Seznam entity představují sadu související slova spolu s jejich synoymns pevné, uzavřené v systému. <br><br>Každá entita seznamu může mít jeden nebo více formulářů. Nejvhodnější pro sadu varianty způsoby, jak představují stejný koncept známý.<br/><br/>LEOŠ nevyhledává další hodnoty pro seznam entity. Použití zobrazíte [sémantického slovník](luis-glossary.md#semantic-dictionary) najít návrhy nových slov podle aktuálního seznamu.<br/><br>Pokud existuje více než jedna entita seznamu se stejnou hodnotou, vrátí se v dotazu koncový bod každé entity. <br/><br/>[Rychlý start](luis-quickstart-intent-and-list-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#list-entity-data)| 
-| **Pattern.Any** <br/>[Ve smíšeném](#mixed) | ✔|**Definice**<br>Patterns.Any představuje proměnnou délkou použít pouze v utterance vzor šablony k označení, kde entity zahájení a ukončení.  <br><br>**Příklad**<br>Vzhledem utterance hledat podle názvu knihy, pattern.any extrahuje úplný název. Je utterance šablony pomocí pattern.any `Who wrote {BookTitle}[?]`.<br/><br/>[Kurz](luis-tutorial-pattern.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#composite-entity-data)|  
-| **Složené** <br/>[Naučili počítače](#machine-learned) | ✔|**Definice**<br>Složené entity se skládá z jinými entitami, jako je například předem entity a jednoduché. Samostatné entity formuláři celou entity. Seznam entity nejsou povoleny v složené entity. <br><br>**Příklad**<br>Složené entity s názvem PlaneTicketOrder může mít podřízených entit předem `number` a `ToLocation`. <br/><br/>[Kurz](luis-tutorial-composite-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#composite-entity-data)|  
-| **Hierarchická** <br/>[Naučili počítače](#machine-learned) |✔ | **Definice**<br>Hierarchická entita je kategorii kontextově zjištěné entity.<br><br>**Příklad**<br>Zadané hierarchické entity `Location` s podřízenými položkami `ToLocation` a `FromLocation`, jednotlivých podřízených lze určit podle **kontextu** v rámci utterance. V utterance `Book 2 tickets from Seattle to New York`, `ToLocation` a `FromLocation` kontextově liší na základě slova je obcházet. <br/><br/>**Nepoužívejte Pokud**<br>Pokud hledáte entitu, která má odpovídá přesný text pro děti bez ohledu na kontext, měli byste použít seznam entity. Pokud hledáte relaci nadřazený podřízený s jinými typy entit, měli byste použít složené entity.<br/><br/>[Rychlý start](luis-quickstart-intent-and-hier-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#hierarchical-entity-data)|
+| **Předem připravené** <br/>[Vlastní](#prebuilt)| |  **Definice**<br>Vestavěné typy, které představují běžné koncepty. <br><br>**Seznam**<br/>počet klíčových frází, pořadí, teploty, dimenze, peníze, věk, procento, e-mailu, adresa URL, telefonní číslo a klíčových frází. <br><br>Názvy předem připravených entit, jsou vyhrazena. <br><br>Všechny předem připravených entit, které jsou přidané do aplikace jsou vráceny v [koncový bod](luis-glossary.md#endpoint) dotazu. Další informace najdete v tématu [předem připravených entit](./luis-prebuilt-entities.md). <br/><br/>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#prebuilt-entity-data)|
+|<!-- added week of 3/21/08 --> **Regulární výraz**<br/>[Regulární výraz](#regex)||**Definice**<br>Vlastní regulárního výrazu pro text formátovaný nezpracovaná utterance. Ignoruje velikost písmen a ignoruje kulturní variant.  <br><br>Tato entita je vhodný pro slova nebo fráze, které jsou s jakékoli změny, které je konzistentní s konzistentním formátováním.<br><br>Porovnávání regulárních výrazů se použije po změny pro kontrolu pravopisu. <br><br>Pokud regulární výraz je příliš složitý, jako je třeba použití mnoha závorky, nejste schopni přidat výraz do modelu. <br><br>**Příklad**<br>`kb[0-9]{6,}` odpovídá kb123456.<br/><br/>[Rychlý start](luis-quickstart-intents-regex-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md)|
+| **Jednoduché** <br/>[Zjištěné počítače](#machine-learned) | ✔ | **Definice**<br>Jednoduché entita je obecné entity, která popisuje jeden koncept a zjistili díky spolupráci se naučili počítač kontextu. Kontext obsahovat výběr aplikace word, slovo umístění a utterance délka.<br/><br/>To je dobrý entita slov nebo slovních spojení, které nejsou naformátovány konzistentně, ale označují stejnou věc. <br/><br/>[Rychlý start](luis-quickstart-primary-and-secondary-data.md)<br/>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#simple-entity-data)|  
+| **Seznam** <br/>[Přesná shoda](#exact-match)|| **Definice**<br>Seznam entit představují sadu související slova spolu s jejich synoymns pevné, uzavřené v systému. <br><br>Každá entita seznamu může mít jeden nebo více formulářů. Nejvhodnější pro známé sady změn v způsoby, jak reprezentaci stejný koncept.<br/><br/>Služba LUIS nevyhledává další hodnoty pro seznam entit. Použití zobrazíte [sémantické slovníku](luis-glossary.md#semantic-dictionary) najít návrhy nových slov na základě aktuálního seznamu.<br/><br>Pokud existuje více než jednu entitu seznamu se stejnou hodnotou, je každá entita vrácené dotazem koncový bod. <br/><br/>[Rychlý start](luis-quickstart-intent-and-list-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#list-entity-data)| 
+| **Pattern.Any** <br/>[Smíšené](#mixed) | ✔|**Definice**<br>Patterns.any je použít jenom v utterance vzor šablony k označení, ve kterém entita začíná a končí zástupným symbolem proměnné délky.  <br><br>**Příklad**<br>Zadaný utterance hledat podle názvu knihy, extrahuje pattern.any úplný název. Je šablona utterance pomocí pattern.any `Who wrote {BookTitle}[?]`.<br/><br/>[Kurz](luis-tutorial-pattern.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#composite-entity-data)|  
+| **Složené** <br/>[Zjištěné počítače](#machine-learned) | ✔|**Definice**<br>Složený entity je tvořena jinými entitami, jako je například předem připravených entit a jednoduché. Samostatné entity tvoří celé entity. Seznam entit nejsou povoleny v složený entity. <br><br>**Příklad**<br>Složený entita s názvem PlaneTicketOrder může obsahovat podřízené entity předem připravených `number` a `ToLocation`. <br/><br/>[Kurz](luis-tutorial-composite-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#composite-entity-data)|  
+| **Hierarchické** <br/>[Zjištěné počítače](#machine-learned) |✔ | **Definice**<br>Hierarchické entita je kategorie kontextově zjištěná entit.<br><br>**Příklad**<br>Zadaný hierarchické entitu `Location` s podřízenými `ToLocation` a `FromLocation`, jednotlivých podřízených můžete určit, na základě **kontextu** v rámci utterance. V utterance `Book 2 tickets from Seattle to New York`, `ToLocation` a `FromLocation` kontextově liší na základě slova, co s nimi souvisí. <br/><br/>**Nepoužívejte, pokud**<br>Pokud hledáte entitu, která má přesný text shody pro podřízené položky bez ohledu na kontextu, měli byste použít seznam entit. Pokud hledáte vztah nadřízenosti a podřízenosti s jinými typy entit, měli byste použít složené entity.<br/><br/>[Rychlý start](luis-quickstart-intent-and-hier-entity.md)<br>[Příklad odpovědi pro entitu](luis-concept-data-extraction.md#hierarchical-entity-data)|
 
 <a name="prebuilt"></a>
-**Předkompilované** entity jsou poskytované LEOŠ vlastní entity. Některé z těchto entitách jsou definovány v open-source [rozpoznávání Text](https://github.com/Microsoft/Recognizers-Text) projektu. Existuje mnoho [příklady](https://github.com/Microsoft/Recognizers-Text/tree/master/Specs) v adresáři /Specs pro podporované jazykové verze. Pokud konkrétní jazykové verze nebo entity není aktuálně podporován, přispívat do projektu. 
+**Předem připravené** entity jsou poskytované služby LUIS vlastní entity. Některé z těchto entit jsou definovány v open-source [rozpoznávání textu](https://github.com/Microsoft/Recognizers-Text) projektu. Existuje několik instancí [příklady](https://github.com/Microsoft/Recognizers-Text/tree/master/Specs) v adresáři /Specs pro podporované jazykové verze. Pokud konkrétní jazykovou verzi nebo entity se aktuálně nepodporuje, přispět k projektu. 
 
 <a name="machine-learned"></a>
-**Naučili počítač** entity se nejlépe fungovat při testování prostřednictvím [koncový bod dotazy](luis-concept-test.md#endpoint-testing) a [kontrola utterances koncový bod](label-suggested-utterances.md). 
+**Zjištěné počítače** entity fungují lépe, když testován prostřednictvím [koncový bod dotazy](luis-concept-test.md#endpoint-testing) a [recenzování projevy koncový bod](label-suggested-utterances.md). 
 
 <a name="regex"></a>
-**Regulární výraz entity** jsou definovány jako regulární výraz uživatele poskytuje jako součást definice entity. 
+**Regulární výraz entity** jsou definovány pomocí regulárního výrazu, který uživatel zadá jako součást definice entity. 
 
 <a name="exact-match"></a>
-**Přesnou shodu** entity použijte text zadaný v entitě aby text na přesně shodovat.
+**Přesnou shodu** entity použití textu poskytnutého v entitě aby text na přesně shodovat.
 
 <a name="mixed"></a>
-**Smíšený** entity použít kombinaci metod detekce entity.
+**Smíšené** entity pomocí kombinace metod zjišťování entit.
 
 ## <a name="entity-limits"></a>Omezení entity
-Zkontrolujte [omezení](luis-boundaries.md#model-boundaries) zjistit, kolik každý typ entity, můžete přidat k modelu.
+Kontrola [omezení](luis-boundaries.md#model-boundaries) porozumět, kolik jednotlivých typů entit můžete přidat do modelu.
 
-## <a name="entity-roles"></a>Entity role
-Entity [role](luis-concept-roles.md) se používají v pouze vzorce. 
+## <a name="entity-roles"></a>Entita role
+Entity [role](luis-concept-roles.md) se používají ve vzorcích pouze. 
 
-## <a name="composite-vs-hierarchical-entities"></a>Hierarchická entity složené vs
-Složené a hierarchické entit mít vztahů nadřazenosti a podřízenosti i se naučili počítače. Strojové učení umožňuje LEOŠ pochopit entity podle různých kontextů (uspořádání slova). Složené entity jsou flexibilnější, protože jiné entity typy jako podřízené objekty. Hierarchická entity podřízené objekty jsou pouze jednoduché entity. 
+## <a name="composite-vs-hierarchical-entities"></a>Složený vs hierarchické entity
+Složené a hierarchické entit jak mají vztahů nadřazenosti a podřízenosti a jsou počítače se naučili. Machine learning umožňuje LUIS vysvětlení konceptu entit podle různých kontextech (uspořádání slov). Složený entity jsou flexibilnější, protože umožňují typy různých entit jako podřízené objekty. Hierarchické entity podřízené objekty jsou pouze jednoduché entity. 
 
-|Typ|Účel|Příklad|
+|Typ|Účel|Příklad:|
 |--|--|--|
-|Hierarchická|Nadřazený podřízený jednoduché entit|Location.Origin=New York<br>Location.Destination=London|
-|Složené|Nadřazený podřízený entity: předem, seznamu jednoduchý, hierarchické| počet = 3<br>Seznam = první – třída<br>prebuilt.datetimeV2=March 5|
+|Hierarchické|Nadřazený podřízený jednoduché entit|Location.Origin=New York<br>Location.Destination=London|
+|Složené|Nadřazené podřízené entity: předem připravených, seznam, jednoduchý a hierarchické| číslo = 3<br>Seznam = první třídy<br>prebuilt.datetimeV2=March 5|
 
 ## <a name="data-matching-multiple-entities"></a>Data odpovídající více entit
-Pokud slovo nebo frázi odpovídá více než jedna entita, koncový bod dotaz vrátí každé entity. Pokud přidáte předem číslo entity a události prebuild datetimeV2 a mít utterance `create meeting on 2018/03/12 for lunch with wayne`, LEOŠ rozpozná všechny entity a vrátí pole entit v rámci odpovědi JSON koncového bodu: 
+Pokud slovo nebo frázi, odpovídá více než jednu entitu, koncový bod dotaz vrací jednotlivé entity. Pokud přidáte číslo předem připravených entit a události prebuild datetimeV2 a mít utterance `create meeting on 2018/03/12 for lunch with wayne`, LUIS, rozpozná všechny entity a vrátí pole entit jako součást koncového bodu odpověď JSON: 
 
 ```JSON
 {
@@ -150,10 +150,10 @@ Pokud slovo nebo frázi odpovídá více než jedna entita, koncový bod dotaz v
 }
 ```
 
-## <a name="data-matching-multiple-list-entities"></a>Data odpovídající více seznamu entit
-Pokud slovo nebo frázi odpovídá více než jedna entita seznamu, koncový bod dotaz vrátí každé entity seznamu.
+## <a name="data-matching-multiple-list-entities"></a>Data odpovídající více seznam entit
+Pokud slovo nebo frázi, odpovídá více než jednu entitu seznamu, koncový bod dotaz vrátí Každá entita seznamu.
 
-Pro dotaz `when is the best time to go to red rock?`, a aplikace má slovo `red` ve více než jeden seznam LEOŠ rozpozná všechny entity a vrátí pole entit v rámci odpovědi JSON koncového bodu: 
+Pro dotaz `when is the best time to go to red rock?`, a aplikace obsahuje slovo `red` ve více než jeden seznam, LUIS, rozpozná všechny entity a vrátí pole entit jako součást koncového bodu odpověď JSON: 
 
 ```JSON
 {
@@ -191,30 +191,30 @@ Pro dotaz `when is the best time to go to red rock?`, a aplikace má slovo `red`
 
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Pokud potřebujete více než maximální počet entit 
 
-Budete se muset použít hierarchické a složené entity. Hierarchická entity projeví vztah mezi entitami, které sdílí charakteristiky nebo jsou členy kategorie. Podřízených entit jsou všichni členové jejich nadřazené kategorie. Například hierarchické entity s názvem PlaneTicketClass pravděpodobně podřízených entit EconomyClass a FirstClass. Pouze jedna úroveň hloubky rozdělena na hierarchii.  
+Můžete potřebovat použít hierarchická a složené entit. Hierarchické entity odrážet relace mezi entitami, které mají vlastnosti nebo jsou členy skupiny. Podřízené entity jsou všechny členy své nadřazené kategorie. Například hierarchické entitu s názvem PlaneTicketClass pravděpodobně podřízené entity EconomyClass a FirstClass. Hierarchie obsahuje pouze jednu úroveň hloubky.  
 
-Složené entity představují část celek. Například složenou entitu s názvem PlaneTicketOrder pravděpodobně podřízených entit letecká společnost, cílový, DepartureCity, datumOdjezdu a PlaneTicketClass. Sestavování složené entity z existující jednoduché entit, děti hierarchické entit nebo předem entity.  
+Složený entity představují část celku. Například složenou entitu s názvem PlaneTicketOrder může mít podřízené entity letecká společnost, cíl, DepartureCity, datumOdjezdu a PlaneTicketClass. Vytváření složených entity z již existujících jednoduché entit, podřízené položky hierarchické entity nebo předem připravených entit.  
 
-LEOŠ taky poskytuje seznam typ entity, který naučili počítač není ale umožníte své aplikaci LEOŠ zadejte pevný seznam hodnot. V tématu [LEOŠ hranice](luis-boundaries.md) odkaz na zkontrolujte omezení typu entity. 
+Služba LUIS také poskytuje seznam typ entity, která není se naučili počítače, ale umožňuje aplikaci LUIS, chcete-li určit pevnou seznam hodnot. Zobrazit [LUIS hranice](luis-boundaries.md) odkazu ke kontrole omezení typu entity. 
 
-Pokud jste považována za hierarchické, složený a seznamu entit a stále je třeba víc než limit, kontaktujte podporu. Uděláte to tak shromáždit podrobné informace o systému, přejděte na [LEOŠ] [ LUIS] webu a pak vyberte **podporu**. Pokud vaše předplatné zahrnuje služby podpory, obraťte se na [Azure technickou podporu](https://azure.microsoft.com/support/options/). 
+Pokud jste za hierarchické, složený a seznamu entit a stále potřebovat vyšší limit, obraťte se na podporu. Uděláte to tak, získat podrobné informace o systému, přejděte [LUIS] [ LUIS] webu a pak vyberte **podporu**. Pokud vaše předplatné Azure zahrnuje odbornou pomoc, obraťte se na [technické podpoře Azure](https://azure.microsoft.com/support/options/). 
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Vytvoření [entity](luis-concept-entity-types.md) když volající aplikace nebo robota potřebuje některé parametry nebo data z utterance požadované k provedení akce. Entita je slovo nebo frázi v utterance, které potřebujete – případně extrahovat jako parametr pro funkci. 
+Vytvoření [entity](luis-concept-entity-types.md) když volající aplikaci nebo robotovi potřebuje některé parametry nebo data z utterance potřebných k provedení akce. Entita je slovo nebo frázi v utterance, které potřebujete extrahovat – možná jako parametr pro funkci. 
 
-Chcete-li vybrat správný typ entity, které chcete přidat do vaší aplikace, je třeba vědět, jak se tato data zadané uživateli. Každému typu entity, se zjistí pomocí různých mechanismu, jako je například seznam strojové učení, uzavřené nebo regulární výraz. Pokud si nejste jistí, začínat jednoduché entity a označovat slovo nebo frázi, představuje těmto datům ve všech utterances napříč všech tříd Intent včetně žádný záměrné.  
+Abyste mohli vybrat správný typ entitu, kterou chcete přidat do svojí aplikace, budete muset vědět, jak tato data je zadané uživateli. Každý typ entity se našlo se pomocí jiným způsobem, jako je machine learning, uzavřené seznamu nebo regulární výraz. Pokud si nejste jistí, začněte s jednoduchou entitu a označovat slovo nebo frázi, která představuje data v všechny projevy, přes všechny záměry včetně žádný záměru.  
 
-Zkontrolujte utterances koncového bodu v pravidelných intervalech najít běžné využití, kde můžete identifikovat jako regulární výraz nebo najít s shodou přesný text entity.  
+Projděte si projevy koncový bod v pravidelných intervalech se najít běžné použití, ve kterém můžete entity identifikované jako regulární výraz nebo najít s shodou přesný text.  
 
-Jako součást kontrola zvažte přidání frázi seznamu pro přidání signál LEOŠ slova nebo fráze, které jsou důležité pro vaši doménu, ale nejsou přesné shody, a pro které LEOŠ nemá vysokou spolehlivostí.  
+V rámci kontroly zvažte možnost Přidat frázi seznamu se přidá signál k LUIS slov nebo slovních spojení, které jsou důležité pro vaši doménu, ale nejsou přesné shody, a pro které služba LUIS nemá vysokou spolehlivostí.  
 
-V tématu [osvědčené postupy](luis-concept-best-practices.md) Další informace.
+Zobrazit [osvědčené postupy](luis-concept-best-practices.md) Další informace.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o dobré koncepty [utterances](luis-concept-utterance.md). 
+Další koncepty o dobré [projevy](luis-concept-utterance.md). 
 
-V tématu [přidat entity](luis-how-to-add-entities.md) Další informace o tom, jak přidat do aplikace LEOŠ entity.
+Zobrazit [přidat entity](luis-how-to-add-entities.md) získat další informace o přidání entity do aplikace LUIS.
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

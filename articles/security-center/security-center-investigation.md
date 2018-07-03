@@ -3,36 +3,41 @@ title: Vyšetřování incidentů a výstrah v Azure Security Center | Dokumenta
 description: Tento dokument vám pomůže používat funkci šetření v Azure Security Center k vyšetřování výstrah a incidentů zabezpečení.
 services: security-center
 documentationcenter: na
-author: terrylan
+author: TerryLanfear
 manager: mbaldwin
 editor: ''
 ms.assetid: a8e894a9-8781-4749-ae8f-8c8e01658566
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/18/2017
-ms.author: yurid
-ms.openlocfilehash: bab7b64a1635639991d639fb838b7118e234aa5b
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
-ms.translationtype: HT
+ms.date: 06/29/2018
+ms.author: terrylan
+ms.openlocfilehash: 010c641c247552a8994c9d1c945cd585148fadf9
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32776475"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340786"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Vyšetřování incidentů a výstrah v Azure Security Center (Preview)
 Tento dokument vám pomůže používat funkci šetření v Azure Security Center k vyšetřování výstrah a incidentů zabezpečení.
 
 ## <a name="what-is-investigation-in-security-center"></a>Co je šetření ve službě Security Center?
 Funkce šetření ve službě Security Center umožňuje třídit, porozumět rozsahu a vysledovat původní příčinu potenciálního [incidentu zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-incident).
- 
+
 Cílem je zjednodušit proces šetření propojením všech entit ([výstrah zabezpečení](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), uživatelů, počítačů a incidentů) souvisejících s incidentem, který vyšetřujete.  Služba Security Center to dokáže díky korelaci relevantních dat se všemi souvisejícími entitami a zveřejnění této korelace v podobě interaktivního grafu, který pomáhá procházet objekty a vizualizovat relevantní informace.
+
+> [!NOTE]
+> [Vlastní upozornění](security-center-custom-alert.md) nepodporuje funkci šetření Security Center.
+>
+>
 
 
 ## <a name="how-investigation-works"></a>Jak šetření funguje?
 Šetření je tvořeno grafem, který se nachází v centrální oblasti řídicího panelu šetření. Graf je vždy zaměřený na konkrétní entitu a zobrazuje další entity, které jsou s ní spojené. Entitou může být výstraha zabezpečení, uživatel, počítač nebo incident.
- 
+
 ![Mapa](./media/security-center-investigation/security-center-investigation-fig1.png)
 
 Uživatel může mezi jednotlivými entitami přecházet kliknutím na příslušnou entitu v grafu. Graf automaticky přesune zaměření na vybranou entitu a entity, které s ní souvisí. Entity, které už nejsou relevantní, je možné z grafu odebrat.
@@ -43,7 +48,7 @@ Zatímco uživatel prochází různé entity, cesta šetření pomáhá udržova
 ![Cesta](./media/security-center-investigation/security-center-investigation-fig2.png)
 
 ### <a name="general-information"></a>Obecné informace
-Když je entita zobrazena v grafu, na kartách se zobrazují další informace o této entitě. Karta **Informace** uvádí obecné informace o entitě z různých dostupných zdrojů informací. 
+Když je entita zobrazena v grafu, na kartách se zobrazují další informace o této entitě. Karta **Informace** uvádí obecné informace o entitě z různých dostupných zdrojů informací.
 
 ![Obecné informace](./media/security-center-investigation/security-center-investigation-fig3.png)
 
@@ -71,7 +76,7 @@ Karta **Průzkum** umožňuje vyšetřovateli zkoumat data související s různ
 
 ### <a name="timeline"></a>Časová osa
 
-Většina dat znázorněných v grafu a na různých kartách je relevantní pro konkrétní časové období. Tento časový rozsah je možné nastavit pomocí selektoru časového rozsahu v levé horní části grafu. Vyšetřovatel může časový rozsah vybrat různými způsoby. 
+Většina dat znázorněných v grafu a na různých kartách je relevantní pro konkrétní časové období. Tento časový rozsah je možné nastavit pomocí selektoru časového rozsahu v levé horní části grafu. Vyšetřovatel může časový rozsah vybrat různými způsoby.
 
 ![Časová osa](./media/security-center-investigation/security-center-investigation-fig7.png)
 
@@ -103,15 +108,14 @@ S šetřením můžete začít od incidentu zabezpečení nebo výstrahy. Zvolen
 
     ![Řídicí panel Šetření](./media/security-center-investigation/security-center-investigation-fig9.png)
 
-Z tohoto bodu můžete zkoumat entity, které byly spojeny s tímto incidentem, a o každé z nich zkoumat další podrobnosti. 
+Z tohoto bodu můžete zkoumat entity, které byly spojeny s tímto incidentem, a o každé z nich zkoumat další podrobnosti.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Další informace najdete v tématech
 V tomto dokumentu jste zjistili, jak používat funkci šetření ve službě Security Center. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
 * [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). Zjistěte, jak spravovat výstrahy a reagovat na incidenty zabezpečení ve službě Security Center.
 * [Monitorování stavu zabezpečení ve službě Azure Security Center](security-center-monitoring.md). Zjistěte, jak monitorovat stav svých prostředků Azure.
 * [Principy výstrah zabezpečení ve službě Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Seznamte se s dalšími typy výstrah zabezpečení.
-* [Průvodce odstraňováním potíží pro službu Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Zjistěte, jak řešit běžné problémy ve službě Security Center. 
+* [Průvodce odstraňováním potíží pro službu Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-troubleshooting-guide). Zjistěte, jak řešit běžné problémy ve službě Security Center.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md). Přečtěte si nejčastější dotazy o použití této služby.
 * [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/). Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.
-

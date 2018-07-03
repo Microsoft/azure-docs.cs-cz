@@ -1,28 +1,28 @@
-## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>Test dotazování Microsoft Graph API z vaší aplikace iOS
+## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>Testování dotazů na rozhraní Microsoft Graph API z aplikace pro iOS
 
-Spustí kód v simulátoru, stiskněte klávesu **příkaz** + **R**.
+Chcete-li spustit kód v simulátoru, stiskněte **příkaz** + **R**.
 
-![Testování vaší aplikace v simulátoru](media/active-directory-develop-guidedsetup-ios-test/iostestscreenshot.png)
+![Otestujte aplikaci v simulátoru](media/active-directory-develop-guidedsetup-ios-test/iostestscreenshot.png)
 
-Až budete připraveni k testování, vyberte **volání Microsoft Graph API**. Po zobrazení výzvy zadejte své uživatelské jméno a heslo.
+Jakmile budete připraveni k testování, vyberte **volat Microsoft Graph API**. Po zobrazení výzvy zadejte svoje uživatelské jméno a heslo.
 
-### <a name="provide-consent-for-application-access"></a>Zadejte souhlasu pro přístup k aplikaci
-Při prvním přihlášení do aplikace, se zobrazí výzva k souhlasíte s tím, aby aplikaci pro váš profil přístup a pro přihlášení:
+### <a name="provide-consent-for-application-access"></a>Zadejte svůj souhlas pro přístup k aplikaci
+Při prvním přihlášení do aplikace, budete vyzváni k souhlasíte s tím, aby aplikace k profilu a pro přihlášení:
 
-![Zadejte váš souhlas pro přístup k aplikaci](media/active-directory-develop-guidedsetup-ios-test/iosconsentscreen.png)
+![Zadejte svůj souhlas pro přístup k aplikaci](media/active-directory-develop-guidedsetup-ios-test/iosconsentscreen.png)
 
 ### <a name="view-application-results"></a>Zobrazení výsledků aplikace
-Po přihlášení, měli byste vidět uživatele informace z vašeho profilu Microsoft Graph API volání v vráceny **protokolování** části. 
+Po přihlášení, byste měli vidět údajům vašeho uživatelského profilu vrácený voláním rozhraní Microsoft Graph API v **protokolování** oddílu. 
 
 <!--start-collapse-->
-### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a přidělená oprávnění
+### <a name="more-information-about-scopes-and-delegated-permissions"></a>Další informace o oborech a delegovaná oprávnění
 
-Vyžaduje rozhraní Microsoft Graph API **user.read** obory a čtení profilu uživatele. Tento obor je automaticky přidán ve výchozím nastavení každou aplikaci, která je zaregistrovaná na portálu pro registraci. Ostatní rozhraní API pro Microsoft Graph, jakož i vlastní rozhraní API pro váš server back-end může vyžadovat další obory. Vyžaduje rozhraní Microsoft Graph API **Calendars.Read** oboru seznam kalendářích uživatele.
+Vyžaduje rozhraní Microsoft Graph API **user.read** obory a čtení profilu uživatele. Tento obor se automaticky přidá ve výchozím nastavení v každé aplikaci, která je zaregistrovaná na portálu pro registraci. Další rozhraní API pro Microsoft Graph, stejně jako vlastní rozhraní API pro back endového serveru může vyžadovat další obory. Vyžaduje rozhraní Microsoft Graph API **Calendars.Read** oboru seznam kalendářů uživatele.
 
-Chcete-li získat přístup k kalendářům uživatele v rámci aplikace, přidejte **Calendars.Read** delegovaná oprávnění k registraci informace o aplikaci. Poté, přidejte **Calendars.Read** obor na **acquireTokenSilent** volání. 
+Chcete-li přístup ke kalendářům uživatele v rámci aplikace, přidejte **Calendars.Read** delegovaná oprávnění aplikace informace o registraci. Pak přidejte **Calendars.Read** rozsah **acquireTokenSilent** volání. 
 
 >[!NOTE]
->Uživatel může být vyzvání pro další souhlas všech uživatelů, jak zvýšit počet oborů.
+>Uživatel může zobrazit výzva pro další souhlasy zvýšit počet oborů.
 
 <!--end-collapse-->
 

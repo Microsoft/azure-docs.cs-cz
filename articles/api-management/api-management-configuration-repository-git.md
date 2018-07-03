@@ -1,6 +1,6 @@
 ---
-title: Konfigurace služby API Management pomocí Git - Azure | Microsoft Docs
-description: Zjistěte, jak uložit a nakonfigurovat konfigurace služby API Management pomocí Git.
+title: Konfigurace služby API Management pomocí Git – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak uložit a nakonfigurujte konfigurace služby API Management pomocí Gitu.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -13,75 +13,75 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 0165de82850c0c80052564c5f31a5e5cf5effb11
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 7342e0fe69cf3c82ec82bf1a864e7325449fff22
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938304"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342248"
 ---
-# <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložte a konfiguraci konfigurace služby API Management pomocí Git
+# <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložit a konfigurace konfigurace služby API Management pomocí Gitu
 
-Každá instance služby API Management udržuje databázi konfigurace, která obsahuje informace o konfiguraci a metadat pro instanci služby. Změna nastavení na portálu Azure, pomocí rutiny prostředí PowerShell nebo volání rozhraní REST API, můžete provedeny změny v instanci služby. Kromě těchto metod můžete také spravovat konfigurace instance služby pomocí Git, například povolení scénářů správy služby:
+Každá instance služby API Management udržuje konfigurační databáze, který obsahuje informace o konfiguraci a metadat pro instanci služby. Můžete provést změny k instanci služby změnou nastavení na portálu Azure portal, pomocí rutiny Powershellu nebo volání rozhraní REST API. Kromě těchto metod můžete také spravovat konfigurace instance služby pomocí Gitu, jako například povolení scénářů správy služby:
 
-* Konfigurace správy verzí - stažení a uložení různých verzích konfigurace služby
-* Hromadné změny konfigurace – provádět změny více částí konfigurace služby v místním úložišti a integrovat změny zpět na server s jedinou operací.
-* Známých nástrojů Git a pracovní postup - používat Git nástrojů a pracovní postupy, které jste již obeznámeni s
+* Konfigurace správy verzí – stažení a uložení různých verzích konfigurace služby
+* Hromadné změny konfigurace – provádět změny více částí konfigurace služby ve vašem místním úložišti a integrovat změny na server v jedné operaci
+* Známých nástrojů Git a pracovního postupu – pomocí nástroje Git a pracovní postupy, které jste už obeznámení s
 
-Následující diagram ukazuje přehled různé způsoby, jak nakonfigurovat instanci služby API Management.
+Následující diagram znázorňuje základní informace o různých způsobech konfigurace vaší instance služby API Management.
 
-![Konfigurace Git][api-management-git-configure]
+![Konfigurace Gitu][api-management-git-configure]
 
-Když provedete změny služby pomocí portálu Azure, rutiny prostředí PowerShell nebo rozhraní REST API, kterou spravujete vaší služby konfigurace databáze pomocí `https://{name}.management.azure-api.net` koncový bod, jak je znázorněno na pravé straně diagramu. Levé straně diagram znázorňuje, jak můžete spravovat konfiguraci služby pomocí Git a úložiště Git pro vaši službu na `https://{name}.scm.azure-api.net`.
+Pokud provedete změny do svojí služby pomocí webu Azure portal, rutin prostředí PowerShell nebo rozhraní REST API, které spravujete vaší služby konfigurace databáze pomocí `https://{name}.management.azure-api.net` koncový bod, jak je znázorněno na pravé straně diagramu. Levé straně diagramu znázorňuje, jak můžete spravovat pomocí nástroje Git konfigurace služby a umístění úložiště Git pro vaši službu `https://{name}.scm.azure-api.net`.
 
-Následující kroky poskytují přehled správy pomocí Git instanci služby API Management.
+Následující kroky obsahují přehled správy vaší instance služby API Management pomocí Gitu.
 
 1. Konfigurace přístupu Git ve službě
-2. Uložit konfigurační databáze služby služby do úložiště Git
+2. Uložení konfigurační databáze služby do úložiště Git
 3. Naklonujte úložiště Git do místního počítače
-4. Stáhněte nejnovější úložišti na místním počítači a potvrzení a posílejte nabízená oznámení změn zpět do vašeho úložiště
-5. Nasazení změny z vašeho úložiště do konfigurační databáze služby service
+4. Stáhněte nejnovější úložiště na místním počítači a potvrzení a nasdílení změn změny zpět do úložiště
+5. Změny v úložišti nasadí do konfigurační databáze služby
 
-Tento článek popisuje, jak povolit a používat Git ke správě konfigurace služby a poskytuje odkaz pro soubory a složky do úložiště Git.
+Tento článek popisuje, jak povolit a používat Git ke správě konfigurace služby a poskytuje odkaz pro soubory a složky v úložišti Git.
 
 ## <a name="access-git-configuration-in-your-service"></a>Konfigurace přístupu Git ve službě
 
-Pokud chcete zobrazit a konfigurovat nastavení konfigurace Git, můžete kliknout na **zabezpečení** nabídky a přejděte do **konfigurace úložiště** kartě.
+Pokud chcete zobrazit a konfigurovat nastavení konfigurace Git, můžete kliknout na **zabezpečení** nabídky a přejděte **konfigurace úložiště** kartu.
 
 ![Povolit GIT][api-management-enable-git]
 
 > [!IMPORTANT]
-> Všechny tajné klíče, které nejsou definovány vlastnosti bude uložen v úložišti a zůstane v historii dokud zakázat a znovu povolte přístup Git. Vlastnosti poskytují na bezpečné místo pro správu konstantní řetězcové hodnoty, včetně tajných klíčů, ve všech konfigurací rozhraní API a zásady, takže není nutné ukládat je přímo do vaší příkazy zásad. Další informace najdete v tématu [použití vlastností v zásadách Azure API Management](api-management-howto-properties.md).
+> Všechny tajné klíče, které nejsou definovány vlastnosti bude uložen v úložišti a zůstanou v historii do můžete zakázat a znovu povolit přístup Git. Vlastnosti poskytují zabezpečené místo, kde můžete spravovat konstantní hodnoty řetězce, včetně tajné kódy, přes všechny zásady a konfigurace rozhraní API, takže není nutné pro ukládání přímo v příkazech vaše zásady. Další informace najdete v tématu [jak používat vlastnosti v Azure API Management zásady](api-management-howto-properties.md).
 > 
 > 
 
-Informace o povolení nebo zakázání Git přístup pomocí rozhraní REST API najdete v tématu [povolit nebo zakázat Git přístup pomocí rozhraní REST API](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit).
+Informace o povolení nebo zakázání přístupu Git pomocí rozhraní REST API najdete v tématu [povolit nebo zakázat Git přístup pomocí rozhraní REST API](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit).
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>Chcete-li uložit konfiguraci služby do úložiště Git
 
-Prvním krokem před klonováním úložiště je uložit aktuální stav konfigurace služby do úložiště. Klikněte na tlačítko **uložit do úložiště**.
+Prvním krokem před klonováním úložiště je uložit aktuální stav konfigurace služby úložiště. Klikněte na tlačítko **uložit do úložiště**.
 
-Všechny požadované změny provádějte na potvrzovací obrazovce a klepněte na tlačítko **Ok** uložit.
+Proveďte požadované změny na potvrzovací obrazovce a klikněte na tlačítko **Ok** uložte.
 
-Po chvíli konfiguraci uložit, a stav konfigurace úložiště, ve kterém se zobrazí, včetně datum a čas poslední změny konfigurace a poslední synchronizace mezi konfiguraci služby a úložiště.
+Po chvíli se uložit konfiguraci a stavu konfigurace příslušného úložiště se zobrazí, včetně datum a čas poslední změny konfigurace a poslední synchronizace mezi konfiguraci služby a úložiště.
 
-Po konfiguraci je uložen do úložiště, můžete klonovat.
+Po uložení konfigurace do úložiště můžete klonovat.
 
-Informace o provedení této operace pomocí rozhraní REST API najdete v tématu [potvrzení konfigurace snímek pomocí rozhraní REST API](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot).
+Informace o provedení této operace pomocí rozhraní REST API najdete v tématu [potvrzení konfigurace snímku pomocí rozhraní REST API](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot).
 
-## <a name="to-clone-the-repository-to-your-local-machine"></a>Klonování úložiště do místního počítače
+## <a name="to-clone-the-repository-to-your-local-machine"></a>Naklonujte úložiště do svého místního počítače
 
-Klonovat úložiště, musíte adresu URL úložiště, uživatelské jméno a heslo. Chcete-li získat uživatelské jméno a další přihlašovací údaje, klikněte na **přístupu k pověřením** v horní části stránky.  
+Klonování úložiště, musíte adresu URL úložiště, uživatelské jméno a heslo. Pokud chcete získat uživatelské jméno a jiné přihlašovací údaje, klikněte na **přístup k přihlašovacím údajům** v horní části stránky.  
  
-Vygenerovat heslo, nejdřív ověřte, že **vypršení platnosti** je nastavená na požadované vypršení platnosti datum a čas a potom klikněte na **generování**.
+Vytvořit heslo, nejprve zkontrolujte, zda **vypršení platnosti** je nastavena na vypršení platnosti požadované datum a čas a potom klikněte na **generovat**.
 
 > [!IMPORTANT]
-> Toto heslo si poznamenejte. Jakmile tuto stránku opustíte heslo se znovu nezobrazí.
+> Toto heslo si poznamenejte. Po opuštění této stránky heslo znovu nezobrazí.
 > 
 
-Následující příklady použít nástroj Git Bash z [Git pro Windows](http://www.git-scm.com/downloads) ale můžete použít jakýkoli Git nástroj, který jste se seznámili s.
+Následující příklady používají nástroje Git Bash [Git pro Windows](http://www.git-scm.com/downloads) ale můžete použít libovolný nástroj Gitu, který jste obeznámeni s.
 
-Otevřete svůj nástroj Git do požadované složky a spusťte následující příkaz klonovat úložiště git do místního počítače, pomocí příkazu poskytované portálu Azure.
+Otevřete nástroj Gitu do požadované složky a spusťte následující příkaz a naklonujte úložiště git do svého místního počítače pomocí příkazu poskytované na webu Azure portal.
 
 ```
 git clone https://bugbashdev4.scm.azure-api.net/
@@ -89,96 +89,96 @@ git clone https://bugbashdev4.scm.azure-api.net/
 
 Zadejte uživatelské jméno a heslo po zobrazení výzvy.
 
-Pokud se zobrazí všechny chyby, zkuste upravit vaše `git clone` příkazu zahrnovat uživatelské jméno a heslo, jak je znázorněno v následujícím příkladu.
+Pokud se zobrazí nějaké chyby, zkuste upravit vaše `git clone` příkazu zahrnovat uživatelské jméno a heslo, jak je znázorněno v následujícím příkladu.
 
 ```
 git clone https://username:password@bugbashdev4.scm.azure-api.net/
 ```
 
-Pokud to poskytuje k chybě, zkuste URL kódování heslo část příkazu. Jeden rychlý způsob, jak to udělat je otevřete Visual Studio a vydejte následující příkaz v **hodnot proměnných**. Otevřete **hodnot proměnných**, otevřete jakékoli řešení nebo produktu project v sadě Visual Studio (nebo vytvořte novou prázdnou konzolovou aplikaci) a zvolte **Windows**, **Immediate** z **Ladění** nabídky.
+Pokud to poskytuje k chybě, zkuste použít kódování heslo část příkazu. Jeden rychlý způsob, jak to udělat je spuštění sady Visual Studio a vydejte následující příkaz v **podokna**. Chcete-li otevřít **podokna**otevřete libovolné řešení nebo projektu v sadě Visual Studio (nebo vytvořte novou prázdnou aplikaci) a zvolte možnost **Windows**, **okamžité** z **Ladění** nabídky.
 
 ```
 ?System.NetWebUtility.UrlEncode("password from the Azure portal")
 ```
 
-Použijte zakódované heslo společně s vaše uživatelské jméno a úložiště umístění k vytvoření příkazu git.
+Použijte zakódované heslo spolu s uživatelské jméno a úložiště umístění k vytvoření příkazu git.
 
 ```
 git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
 ```
 
-Jakmile je klonovat úložiště můžete zobrazit a pracovat v místním systému souborů. Další informace najdete v tématu [souborů a složek struktury odkaz místní úložiště Git](#file-and-folder-structure-reference-of-local-git-repository).
+Po naklonování úložiště můžete zobrazit a pracovat v místním systému souborů. Další informace najdete v tématu [souborům a složkám struktury odkaz na místní úložiště Git](#file-and-folder-structure-reference-of-local-git-repository).
 
-## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>Chcete-li aktualizovat místní úložiště s nejnovější konfigurací instance služby
+## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>K aktualizaci vašeho místního úložiště s nejaktuálnější konfiguraci instance služby
 
-Pokud provedete změny instanci služby API Management v portálu Azure nebo pomocí rozhraní REST API, musíte uložit tyto změny do úložiště než budete moct aktualizovat místní úložiště s nejnovější změny. Chcete-li to provést, klikněte na tlačítko **uložit konfiguraci úložiště** na **konfigurace úložiště** v portálu Azure a potom vydat příkaz v místním úložišti.
+Pokud provedete změny instance služby API Management na webu Azure portal nebo pomocí rozhraní REST API, musíte tyto změny uložit do úložiště než budete moct s nejnovějšími změnami aktualizovat místní úložiště. Chcete-li to provést, klikněte na tlačítko **uložit konfiguraci do úložiště** na **konfigurace úložiště** kartu na webu Azure Portal a potom vydejte následující příkaz v místním úložišti.
 
 ```
 git pull
 ```
 
-Dřív, než spustíte `git pull` Ujistěte se, že jste ve složce pro místní úložiště. Pokud jste právě dokončili `git clone` příkaz, pak musí změňte adresář na vašem úložišti spuštěním příkazu jako následující.
+Před spuštěním `git pull` Ujistěte se, že jste ve složce pro vaše místní úložiště. Pokud právě jste dokončili `git clone` příkaz, pak musí změňte adresář na úložišti můžete přecházet pomocí příkazu následujícím postupem.
 
 ```
 cd bugbashdev4.scm.azure-api.net/
 ```
 
-## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>K replikaci změn z vaší místní úložiště na server úložiště
-K replikaci změn z místního úložiště do úložiště serveru, musí potvrdit změny a vložit je na serveru úložiště. Potvrzení změny, otevřete svůj nástroj příkazu Git, přejděte do adresáře, ve vašem místním úložišti a vydat následující příkazy.
+## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>K replikaci změn z místního úložiště na server úložiště
+Pokud chcete nasdílet změny ze svého místního úložiště do úložiště serveru, musíte potvrzení změn a jejich následnému doručování do serverové úložiště. Potvrďte provedené změny, otevřete nástroj příkaz Git, přejděte do adresáře vašeho místního úložiště a tyto příkazy.
 
 ```
 git add --all
 git commit -m "Description of your changes"
 ```
 
-K replikaci všechna potvrzení na serveru, spusťte následující příkaz.
+Pro všechna potvrzení nasdílet na server, spusťte následující příkaz.
 
 ```
 git push
 ```
 
-## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>K nasazení změny konfigurace služby v instanci služby API Management
+## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>Nasazení změny konfigurace služby do instance služby API Management
 
-Jakmile jsou místní změny potvrzeny a instaluje do úložiště serveru, můžete nasadit instanci služby API Management.
+Jakmile jsou vaše místní změny potvrdíte a nabídnete do úložiště serveru, je můžete nasadit do vaší instance služby API Management.
 
-Informace o provedení této operace pomocí rozhraní REST API najdete v tématu [nasazení Git změny konfigurační databáze pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/tenantconfiguration).
+Informace o provedení této operace pomocí rozhraní REST API najdete v tématu [nasazení Git změn konfigurace databáze pomocí rozhraní REST API](https://docs.microsoft.com/rest/api/apimanagement/tenantconfiguration).
 
-## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Odkaz struktury souborů a složek místní úložiště Git
+## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>Odkaz na strukturu souborů a složek z místního úložiště Git
 
-Soubory a složky v úložišti místní git obsahovat informace o konfiguraci o instanci služby.
+Soubory a složky v úložišti místního gitu obsahují informace o konfiguraci o instanci služby.
 
 | Položka | Popis |
 | --- | --- |
-| Kořenová složka api management |Obsahuje nejvyšší úrovně konfiguraci pro instanci služby |
+| Kořenová složka api management |Obsahuje konfiguraci nejvyšší úrovně pro instance služby |
 | rozhraní API složky |Obsahuje konfiguraci pro rozhraní API v instanci služby |
-| složka skupiny |Obsahuje konfiguraci skupin v instanci služby |
+| složka skupiny |Obsahuje konfiguraci pro skupiny v instanci služby |
 | Složka zásad |Obsahuje zásady v instanci služby |
-| portalStyles složky |Obsahuje konfiguraci pro přizpůsobení portálu vývojáře v instanci služby |
-| produkty složky |Obsahuje konfiguraci pro produkty v instanci služby |
-| složka šablon |Obsahuje konfiguraci e-mailových šablon v instanci služby |
+| portalStyles složky |Obsahuje konfiguraci pro přizpůsobení portálu pro vývojáře v instanci služby |
+| Složka produkty |Obsahuje konfiguraci pro produkty v instanci služby |
+| Složka šablony |Obsahuje konfiguraci pro e-mailové šablony v instanci služby |
 
-Každé složky může obsahovat jeden nebo více souborů a v některých případech jeden nebo více složek, například do složky pro každé rozhraní API, produkty nebo skupiny. Soubory v rámci každé složky jsou specifické pro typ entity popsaného název složky.
+Všechny složky, může obsahovat jeden nebo více souborů a v některých případech jedné nebo více složek, například do složky pro každé rozhraní API, produktů nebo skupinu. Soubory v rámci každé složky jsou specifická pro typ entity popsány podle názvu složky.
 
 | Typ souboru | Účel |
 | --- | --- |
-| json |Informace o konfiguraci o odpovídající entity |
-| HTML |Popisy o entitě, často zobrazeny v portálu pro vývojáře |
+| json |Informace o konfiguraci o příslušné entity |
+| HTML |Popis entity, často zobrazují na portálu pro vývojáře |
 | xml |Příkazy zásad |
-| šablon stylů CSS |Šablony stylů pro přizpůsobení portálu pro vývojáře |
+| šablony stylů CSS |Šablony stylů pro přizpůsobení portálu pro vývojáře |
 
-Tyto soubory lze vytvořit, odstranit, upravit a spravovat v místním systému souborů a nasazení změn zpět do instanci služby API Management.
+Tyto soubory lze vytvořit, odstranit, upravit a spravovat na vašem místním systému souborů a nasazení změn zpět vaší instance služby API Management.
 
 > [!NOTE]
-> Následující entity, které nejsou obsaženy v úložišti Git a nelze konfigurovat pomocí Git.
+> Tyto entity nejsou obsaženy v úložišti Git a nedá se konfigurovat pomocí Gitu.
 > 
 > * Uživatelé
 > * Předplatná
 > * Vlastnosti
-> * Vývojáře portálu entity než styly
+> * Entity portálu pro vývojáře než styly
 > 
 
 ### <a name="root-api-management-folder"></a>Kořenová složka api management
-Kořenové `api-management` složka obsahuje `configuration.json` soubor, který obsahuje nejvyšší úrovně informace o instanci služby v následujícím formátu.
+Kořen `api-management` obsahuje složku `configuration.json` soubor, který obsahuje informace na nejvyšší úrovni o instanci služby v následujícím formátu.
 
 ```json
 {
@@ -196,73 +196,73 @@ Kořenové `api-management` složka obsahuje `configuration.json` soubor, který
 }
 ```
 
-První čtyři nastavení (`RegistrationEnabled`, `UserRegistrationTerms`, `UserRegistrationTermsEnabled`, a `UserRegistrationTermsConsentRequired`) mapování na následující nastavení na **identity** ve **zabezpečení** části.
+První čtyři nastavení (`RegistrationEnabled`, `UserRegistrationTerms`, `UserRegistrationTermsEnabled`, a `UserRegistrationTermsConsentRequired`) mapovat na následující nastavení na **identit** kartu **zabezpečení** oddílu.
 
-| Nastavení identity | Se mapuje na |
+| Nastavení identity | Mapuje se na |
 | --- | --- |
-| RegistrationEnabled |**Anonymní uživatelé přesměruje na přihlašovací stránce** zaškrtávací políčko |
-| UserRegistrationTerms |**Podmínky použití na registraci uživatele** textbox |
-| UserRegistrationTermsEnabled |**Zobrazit podmínky použití na přihlašovací stránce** zaškrtávací políčko |
+| RegistrationEnabled |**Přesměrovat anonymní uživatele na přihlašovací stránce** zaškrtávací políčko |
+| UserRegistrationTerms |**Podmínky použití při registraci uživatele** textové pole |
+| UserRegistrationTermsEnabled |**Zobrazit podmínky použití na registrační stránce** zaškrtávací políčko |
 | UserRegistrationTermsConsentRequired |**Vyžadovat souhlas** zaškrtávací políčko |
 
-Nastavení další čtyři (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled`, a `DelegationValidationKey`) mapování na následující nastavení na **delegování** ve **zabezpečení** části.
+Další čtyři nastavení (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled`, a `DelegationValidationKey`) mapovat na následující nastavení na **delegování** kartu **zabezpečení** oddílu.
 
-| Nastavení delegování | Se mapuje na |
+| Nastavení delegování | Mapuje se na |
 | --- | --- |
-| DelegationEnabled |**Delegát přihlášení a registrace** zaškrtávací políčko |
-| DelegationUrl |**Adresa URL koncového bodu delegování** textbox |
-| DelegatedSubscriptionEnabled |**Delegovat odběru produktů** zaškrtávací políčko |
-| DelegationValidationKey |**Delegovat ověřovací klíč** textbox |
+| DelegationEnabled |**Delegovat přihlášení a registraci** zaškrtávací políčko |
+| DelegationUrl |**Adresa URL koncového bodu delegace** textové pole |
+| DelegatedSubscriptionEnabled |**Delegovat předplatné produktu** zaškrtávací políčko |
+| DelegationValidationKey |**Delegovat ověřovací klíč** textové pole |
 
-Nastavení konečného `$ref-policy`, se mapuje na soubor globální zásady příkazy pro instanci služby.
+Nastavení konečného `$ref-policy`, mapuje příkazy soubor globálních zásad pro instance služby.
 
 ### <a name="apis-folder"></a>rozhraní API složky
 `apis` Složka obsahuje složku pro každé rozhraní API v instanci služby, který obsahuje následující položky.
 
-* `apis\<api name>\configuration.json` -Toto je konfigurace pro rozhraní API a obsahuje informace o adresu URL back-end služby a činnosti. Toto je stejné informace, které by byla vrácena, pokud byste chtěli volání [získat konkrétní rozhraní API](https://docs.microsoft.com/en-us/rest/api/apimanagement/api/get) s `export=true` v `application/json` formátu.
-* `apis\<api name>\api.description.html` -Toto je popis rozhraní API a odpovídá `description` vlastnost [rozhraní API entity](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.table._entity_property).
-* `apis\<api name>\operations\` – Tato složka obsahuje `<operation name>.description.html` soubory, které se mapují na operace v rozhraní API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje na `description` vlastnost [operaci entity](https://docs.microsoft.com/en-us/rest/api/visualstudio/operations/list#operationproperties) v rozhraní REST API.
+* `apis\<api name>\configuration.json` – To je uvedena konfigurace pro rozhraní API a obsahuje informace o adresu URL back-endové služby a operace. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [konkrétní rozhraní API](https://docs.microsoft.com/en-us/rest/api/apimanagement/api/get) s `export=true` v `application/json` formátu.
+* `apis\<api name>\api.description.html` – Toto je popis rozhraní API a odpovídá `description` vlastnost [rozhraní API entity](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.table._entity_property).
+* `apis\<api name>\operations\` – Tato složka obsahuje `<operation name>.description.html` soubory, které se mapují na operace v rozhraní API. Každý soubor obsahuje popis jedné operace v rozhraní API, která se mapuje `description` vlastnost [entity operace](https://docs.microsoft.com/en-us/rest/api/visualstudio/operations/list#operationproperties) v rozhraní REST API.
 
 ### <a name="groups-folder"></a>složka skupiny
-`groups` Složka obsahuje složku pro každou skupinu definované v instanci služby.
+`groups` Složka obsahuje složku pro jednotlivé skupiny definované v instanci služby.
 
-* `groups\<group name>\configuration.json` -jedná o konfiguraci pro skupinu. Toto je stejné informace, které by byla vrácena, pokud byste chtěli volání [získat určité skupiny](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup) operaci.
-* `groups\<group name>\description.html` -Toto je popis skupiny a odpovídá `description` vlastnost [skupiny entity](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties).
+* `groups\<group name>\configuration.json` – Jedná se o konfiguraci pro skupinu. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [získání konkrétní skupiny](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup) operace.
+* `groups\<group name>\description.html` – Toto je popis skupiny a odpovídá `description` vlastnost [skupiny entit](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties).
 
 ### <a name="policies-folder"></a>Složka zásad
-`policies` Složka obsahuje příkazy zásad pro instanci služby.
+`policies` Složka obsahuje příkazy zásad vaší instance služby.
 
-* `policies\global.xml` -obsahuje zásady definované v globálním oboru pro instanci služby.
-* `policies\apis\<api name>\` – Pokud máte jakékoli zásady definované v oboru rozhraní API, jsou obsažené v této složce.
-* `policies\apis\<api name>\<operation name>\` Složka – Pokud máte jakékoli zásady definované v oboru operaci, jsou obsažené v této složce v `<operation name>.xml` soubory, které jsou mapovány na příkazy zásad pro každou operaci.
-* `policies\products\` – Pokud máte jakékoli zásady definované v produktu oboru, jsou obsažené v této složce, která obsahuje `<product name>.xml` soubory, které jsou mapovány na příkazy zásad pro jednotlivé produkty.
+* `policies\global.xml` -obsahuje zásady definované v globálním oboru vaší instance služby.
+* `policies\apis\<api name>\` – Pokud máte jakékoli zásady definované v oboru rozhraní API, jsou obsaženy v této složce.
+* `policies\apis\<api name>\<operation name>\` Složka – Pokud máte jakékoli zásady definované v oboru operace jsou obsaženy v této složce v `<operation name>.xml` soubory, které se mapují příkazům zásady pro každou operaci.
+* `policies\products\` – Pokud máte jakékoli zásady definované na obor produktu jsou obsaženy v této složce, která obsahuje `<product name>.xml` soubory, které se mapují příkazům zásady pro jednotlivé produkty.
 
 ### <a name="portalstyles-folder"></a>portalStyles složky
-`portalStyles` Složka obsahuje konfiguraci a stylu stylů pro vývojáře přizpůsobení portálu pro instance služby.
+`portalStyles` Složka obsahuje konfiguraci a styl tabulky pro přizpůsobení portálu pro vývojáře pro instanci služby.
 
-* `portalStyles\configuration.json` -obsahuje názvy stylů používá portál pro vývojáře
-* `portalStyles\<style name>.css` -Každý `<style name>.css` soubor obsahuje styly pro portál pro vývojáře (`Preview.css` a `Production.css` ve výchozím nastavení).
+* `portalStyles\configuration.json` -obsahuje názvy šablony stylů používaná na portálu pro vývojáře
+* `portalStyles\<style name>.css` -Každá `<style name>.css` soubor obsahuje styly pro portál pro vývojáře (`Preview.css` a `Production.css` ve výchozím nastavení).
 
-### <a name="products-folder"></a>produkty složky
-`products` Složka obsahuje složku pro každý produkt definované v instanci služby.
+### <a name="products-folder"></a>Složka produkty
+`products` Složka obsahuje složku pro každý produkt definovaný v instanci služby.
 
-* `products\<product name>\configuration.json` -Toto je konfigurace produktu. Toto je stejné informace, které by byla vrácena, pokud byste chtěli volání [získat určitý produkt](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct) operaci.
-* `products\<product name>\product.description.html` -Toto je popis produktu a odpovídá `description` vlastnost [entity produktu](https://msdn.microsoft.com/library/azure/dn776336.aspx#Product) v rozhraní REST API.
+* `products\<product name>\configuration.json` – Jedná se o konfiguraci produktu. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [získat konkrétní produkt](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct) operace.
+* `products\<product name>\product.description.html` – Toto je popis produktu a odpovídá `description` vlastnost [entitou produkt](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) v rozhraní REST API.
 
 ### <a name="templates"></a>šablony
 `templates` Složka obsahuje konfiguraci [e-mailových šablon](api-management-howto-configure-notifications.md) instance služby.
 
-* `<template name>\configuration.json` -Toto je konfigurace pro e-mailové šablony.
-* `<template name>\body.html` -Toto je text šablony e-mailu.
+* `<template name>\configuration.json` – Jedná se o konfiguraci pro e-mailové šablony.
+* `<template name>\body.html` -tělo e-mailové šablony.
 
-## <a name="next-steps"></a>Další postup
-Informace o jiných způsobech spravovat instanci služby najdete v tématu:
+## <a name="next-steps"></a>Další kroky
+Informace o jiných způsobech ke správě vaší instance služby najdete tady:
 
-* Spravovat instanci služby pomocí následující rutiny prostředí PowerShell
+* Spravovat pomocí následujících rutin Powershellu pro instance služby
   * [Referenční informace k rutinám PowerShellu pro nasazení služeb](https://msdn.microsoft.com/library/azure/mt619282.aspx)
-  * [Správa služeb referenční informace o rutinách prostředí PowerShell](https://msdn.microsoft.com/library/azure/mt613507.aspx)
-* Spravovat instanci služby pomocí rozhraní REST API
-  * [Referenční dokumentace rozhraní API REST API Management](https://msdn.microsoft.com/library/azure/dn776326.aspx)
+  * [Reference k rutinám Powershellu pro správu služeb](https://msdn.microsoft.com/library/azure/mt613507.aspx)
+* Správa vaší instance služby pomocí rozhraní REST API
+  * [Reference k REST API služby API Management](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 
 
 [api-management-enable-git]: ./media/api-management-configuration-repository-git/api-management-enable-git.png

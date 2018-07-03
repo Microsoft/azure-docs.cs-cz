@@ -1,6 +1,6 @@
 ---
-title: Disky systému Azure pomocí AKS
-description: Disky systému Azure pomocí AKS
+title: Použití disků v Azure s AKS
+description: Použití disků v Azure s AKS
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -9,22 +9,22 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: cfad5ebd1212df03cee86b71340d8a73c2594f57
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 8aea56017d38b57d36f5f1d42e2d4e9ed1d809e5
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096089"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346089"
 ---
-# <a name="volumes-with-azure-disks"></a>Svazky s disky systému Azure
+# <a name="volumes-with-azure-disks"></a>Svazky s disků v Azure
 
-Aplikace založené na kontejneru často potřebují přístup a uchovávat data v svazku externí data. Disky systému Azure můžete použít jako tohle úložiště dat externí. Tento článek údaje pomocí Azure disku jako svazek Kubernetes v clusteru služby Azure Kubernetes služby (AKS).
+Kontejnerových aplikací často potřebují přístup k a zachovat data ve svazku externí data. Disky Azure může sloužit jako úložiště tuto externí data. Tento článek podrobně popisuje použití Azure disk jako svazek Kubernetes v clusteru služby Azure Kubernetes Service (AKS).
 
-Další informace o svazcích Kubernetes najdete v tématu [Kubernetes svazky][kubernetes-volumes].
+Další informace o Kubernetes svazky, naleznete v tématu [Kubernetes svazky][kubernetes-volumes].
 
-## <a name="create-an-azure-disk"></a>Vytvoření Azure disku
+## <a name="create-an-azure-disk"></a>Vytvořte disk s Azure
 
-Před připojení k Azure spravované disk jako svazek Kubernetes, musí existovat na disku v AKS **uzlu** skupinu prostředků. Získat název skupiny prostředků s [az prostředků zobrazit] [ az-resource-show] příkaz.
+Před připojením Azure managed Disks jako svazek Kubernetes, musí existovat na disku AKS **uzel** skupinu prostředků. Získání názvu skupiny prostředků s [az resource show] [ az-resource-show] příkazu.
 
 ```azurecli-interactive
 $ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
@@ -32,9 +32,9 @@ $ az resource show --resource-group myResourceGroup --name myAKSCluster --resour
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Použití [vytvoření disku az] [ az-disk-create] příkaz pro vytvoření disku s Azure.
+Použití [az disk vytvořit] [ az-disk-create] příkaz pro vytvoření disku Azure.
 
-Aktualizace `--resource-group` s názvem skupiny prostředků získané v posledním kroku, a `--name` název svého výběru.
+Aktualizace `--resource-group` s názvem skupiny prostředků získané v předchozím kroku, a `--name` název podle vašeho výběru.
 
 ```azurecli-interactive
 az disk create \
@@ -44,17 +44,19 @@ az disk create \
   --query id --output tsv
 ```
 
-Po vytvoření disku, měli byste vidět výstup podobný následujícímu. Tato hodnota je ID disku, který je použit při připojení disku.
+Po vytvoření disku, byste měli vidět výstup podobný následujícímu. Tato hodnota je Identifikátor disku, který je použit při připojování disku.
 
 ```console
 /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
 ```
+> [!NOTE]
+> Spravované disky Azure se účtují po SKU pro určité velikosti. Tyto skladové položky sahají od 32GiB disků S4 nebo P4 4TiB S50 nebo P50 disků. Kromě toho propustnost a výkon vstupně-výstupních operací na úrovni Premium managed disku závisí na SKU a velikosti instance uzlů v clusteru AKS. Zobrazit [ceny a výkonu spravované disky][managed-disk-pricing-performance].
 
-## <a name="mount-disk-as-volume"></a>Připojte disk jako svazek
+## <a name="mount-disk-as-volume"></a>Připojení disku jako svazek
 
-Připojte Azure disk do vaší pod konfigurací svazku ve specifikaci kontejneru.
+Připojení Azure disku do podu pomocí konfigurace svazku v kontejneru specifikace.
 
-Vytvořte nový soubor s názvem `azure-disk-pod.yaml` s tímto obsahem. Aktualizace `diskName` s názvem nově vytvořený disku a `diskURI` s ID disku. Také si poznamenejte `mountPath`, což je cestu, kde je připojené Azure disku pod.
+Vytvořte nový soubor s názvem `azure-disk-pod.yaml` s následujícím obsahem. Aktualizace `diskName` s název nově vytvořeného disku a `diskURI` ID disku. Také poznamenejte si hodnotu `mountPath`, což je cesta kde je Azure disk připojený v pod.
 
 ```yaml
 apiVersion: v1
@@ -76,17 +78,17 @@ spec:
           diskURI: /subscriptions/<subscriptionID>/resourceGroups/MC_myAKSCluster_myAKSCluster_eastus/providers/Microsoft.Compute/disks/myAKSDisk
 ```
 
-K vytvoření pod použijte kubectl.
+Můžete vytvořit pod kubectl.
 
 ```azurecli-interactive
 kubectl apply -f azure-disk-pod.yaml
 ```
 
-Nyní máte spuštěný pod s diskem Azure připojen `/mnt/azure`.
+Teď máte spuštěné pod s připojený k disku Azure `/mnt/azure`.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Další informace o Kubernetes svazky s využitím disky systému Azure.
+Další informace o Kubernetes svazky s využitím disků v Azure.
 
 > [!div class="nextstepaction"]
 > [Modul plug-in Kubernetes pro disky Azure][kubernetes-disks]
@@ -94,6 +96,7 @@ Další informace o Kubernetes svazky s využitím disky systému Azure.
 <!-- LINKS - external -->
 [kubernetes-disks]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/volumes/
+[managed-disk-pricing-performance]: https://azure.microsoft.com/pricing/details/managed-disks/
 
 <!-- LINKS - internal -->
 [az-disk-list]: /cli/azure/disk#az_disk_list

@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy k pochopení jazyka (LEOŠ) v Azure | Microsoft Docs
-description: Získejte odpovědi na nejčastější dotazy o znalosti jazyka (LEOŠ)
+title: Language Understanding (LUIS) v Azure – nejčastější dotazy | Dokumentace Microsoftu
+description: Získejte odpovědi na nejčastější dotazy o Language Understanding (LUIS)
 author: v-geberr
 manager: kaiqb
 services: cognitive-services
@@ -9,209 +9,209 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
-ms.openlocfilehash: f192c2f71208f3caf8a01a18a7023763f8de63c3
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: eb8e55b3763c66dd2c8aabe92376bcb1278a0f45
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113132"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346752"
 ---
-# <a name="language-understanding-faq"></a>Nejčastější dotazy k pochopení jazyka
+# <a name="language-understanding-faq"></a>Language Understanding – nejčastější dotazy
 
-Tento článek obsahuje odpovědi na nejčastější dotazy o znalosti jazyka (LEOŠ).
+Tento článek obsahuje odpovědi na nejčastější dotazy o Language Understanding (LUIS).
 
-## <a name="luis-authoring"></a>LEOŠ vytváření
+## <a name="luis-authoring"></a>Služba LUIS pro tvorbu
 
-### <a name="what-are-the-luis-best-practices"></a>Jaké jsou doporučené postupy LEOŠ? 
-Začínat [vytváření cyklu](luis-concept-app-iteration.md), přečtěte si [osvědčené postupy](luis-concept-best-practices.md). 
+### <a name="what-are-the-luis-best-practices"></a>Co jsou doporučené postupy LUIS? 
+Začněte [vytváření cyklu](luis-concept-app-iteration.md), pak si můžete přečíst [osvědčené postupy](luis-concept-best-practices.md). 
 
-### <a name="what-is-the-best-way-to-start-building-my-app-in-luis"></a>Co je nejlepší způsob, jak začít vytvářet aplikace my v LEOŠ?
+### <a name="what-is-the-best-way-to-start-building-my-app-in-luis"></a>Co je nejlepší způsob, jak můžete začít sestavovat aplikaci v LUIS?
 
-Nejlepší způsob, jak sestavit aplikaci je prostřednictvím [přírůstkové proces](luis-concept-app-iteration.md). 
+Nejlepší způsob, jak sestavit aplikaci je prostřednictvím [přírůstkové procesu](luis-concept-app-iteration.md). 
 
-### <a name="what-is-a-good-practice-to-model-the-intents-of-my-app-should-i-create-more-specific-or-more-generic-intents"></a>Co je dobrým zvykem model tříd Intent Moje aplikace? Lze vytvořit více konkrétních nebo obecnější záměry?
+### <a name="what-is-a-good-practice-to-model-the-intents-of-my-app-should-i-create-more-specific-or-more-generic-intents"></a>Co je dobrým zvykem model záměry Moje aplikace? Je vhodné vytvořit konkrétnější nebo obecnějším záměry?
 
-Zvolte záměry, které nejsou tak obecné tak, aby byly překrývající se, ale není tak konkrétní, aby ho ztěžuje LEOŠ rozlišovat podobné záměry. Vytváření discriminative konkrétní záměry patří mezi osvědčené postupy pro LEOŠ modelování.
+Zvolte záměrů, které nejsou tak obecné by se překrývají, ale nejsou tak specifické, že to ztěžuje LUIS k rozlišení mezi podobné záměry. Vytváření discriminative konkrétní záměry je jedním z osvědčených postupů pro modelování LUIS.
 
-### <a name="is-it-important-to-train-the-none-intent"></a>Je důležité ke cvičení záměrné žádné?
+### <a name="is-it-important-to-train-the-none-intent"></a>Je důležité pro trénování záměru žádný?
 
-Ano, je vhodné školení vaše **žádné** záměrné s další utterances při přidávání dalších záměry další popisky. Dobrý poměr je 1 nebo 2 popisky, které jsou přidány do **žádné** pro každých 10 popisky přidány do záměrem. Tento poměr zvyšuje discriminative sílu LEOŠ.
+Ano, je vhodné pro trénování vaše **žádný** záměru s více projevy při přidávání více popisků do jiných záměry. Je dobrý poměr 1 nebo 2 popisky přidané k **žádný** pro každých 10 popisky přidané k záměru. Tento poměr zvyšuje discriminative sílu LUIS.
 
-### <a name="how-can-i-correct-spelling-mistakes-in-utterances"></a>Jak můžete opravit chyby v pravopisu v utterances?
+### <a name="how-can-i-correct-spelling-mistakes-in-utterances"></a>Jak může oprava pravopisných chyb ve projevy?
 
-Najdete v článku [API V7 kontrola pravopisu Bing](luis-tutorial-bing-spellcheck.md) kurzu. LEOŠ vynucuje omezení, která API V7 kontrola pravopisu Bing. 
+Zobrazit [API V7 kontrola pravopisu Bingu](luis-tutorial-bing-spellcheck.md) kurzu. Služba LUIS vynucuje omezení, která API V7 kontrola pravopisu Bingu. 
 
-### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Jak upravit mé aplikace LEOŠ prostřednictvím kódu programu?
-Chcete-li upravit aplikaci LEOŠ prostřednictvím kódu programu, použijte [vytváření rozhraní API](https://aka.ms/luis-authoring-apis). V tématu [volání LEOŠ vytváření rozhraní API](./luis-quickstart-node-add-utterance.md) a [vytvořit aplikaci LEOŠ programově pomocí Node.js](./luis-tutorial-node-import-utterances-csv.md) příklady, jak volat rozhraní API pro vytváření obsahu. Rozhraní API pro vytváření obsahu vyžaduje, abyste používali [vytváření klíč](luis-concept-keys.md#authoring-key) místo klíčem koncový bod. Programové vytváření umožňuje až 1 000 000 volání za měsíc a pět transakcí za sekundu. Další informace o klíčích pomocí LEOŠ najdete v tématu [Správa klíčů](./luis-concept-keys.md).
+### <a name="how-do-i-edit-my-luis-app-programmatically"></a>Jak mohu programově upravit aplikaci LUIS?
+Chcete-li upravit aplikace LUIS prostřednictvím kódu programu, použijte [rozhraní API pro vytváření](https://aka.ms/luis-authoring-apis). Zobrazit [LUIS volání rozhraní API pro vytváření](./luis-quickstart-node-add-utterance.md) a [sestavení aplikace LUIS programově pomocí Node.js](./luis-tutorial-node-import-utterances-csv.md) příklady toho, jak volat rozhraní API pro vytváření. Rozhraní API pro vytváření vyžaduje použití [vytváření klíč](luis-concept-keys.md#authoring-key) místo klíče rozhraní koncového bodu. Programové vytváření umožňuje až 1 000 000 volání za měsíc a pět transakcí za sekundu. Další informace o klíče pomocí služby LUIS, naleznete v tématu [spravovat klíče](./luis-concept-keys.md).
 
-### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Kde je odpovídající funkce vzor, která regulární výraz k dispozici?
-Předchozí **vzorová funkce** je aktuálně nepoužívané, nahrazuje  **[vzory](luis-concept-patterns.md)**. 
+### <a name="where-is-the-pattern-feature-that-provided-regular-expression-matching"></a>Pokud je odpovídající vzor funkci, která poskytuje regulární výraz?
+Předchozí **funkce** je momentálně zastaralý, nahrazuje  **[vzory](luis-concept-patterns.md)**. 
 
-### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>Jak použít entitu vysunout správná data? 
-V tématu [entity](luis-concept-entity-types.md) a [extrakce dat](luis-concept-data-extraction.md).
+### <a name="how-do-i-use-an-entity-to-pull-out-the-correct-data"></a>Jak používat entity a vytáhnout správná data? 
+Zobrazit [entity](luis-concept-entity-types.md) a [extrakce dat](luis-concept-data-extraction.md).
 
-### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Variace utterance příkladu by měla obsahovat interpunkce? 
-Přidejte různých změn jako příklad utterances k záměr nebo vzor utterance příklad s [syntaxe Ignorovat](luis-concept-patterns.md#pattern-syntax) znaky interpunkce. 
+### <a name="should-variations-of-an-example-utterance-include-punctuation"></a>Variace utterance příkladu by měl obsahovat interpunkce? 
+Přidejte různými variantami jako příklad projevy k příslušnému záměru nebo vzorec, podle kterého utterance příklad s [syntaxe Ignorovat](luis-concept-patterns.md#pattern-syntax) znaky interpunkce. 
 
-## <a name="luis-endpoint"></a>Koncový bod LEOŠ
+## <a name="luis-endpoint"></a>Koncový bod služby LUIS
 
-### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Proč LEOŠ prostory chcete do dotazu přidat kolem nebo uprostřed slova?
-LEOŠ [tokenizes](luis-glossary.md#token) na základě utterance [jazykovou verzi](luis-supported-languages.md#tokenization). Původní hodnotu i tokenizovaná hodnoty jsou k dispozici pro [extrakce dat](luis-concept-data-extraction.md#tokenized-entity-returned).
+### <a name="why-does-luis-add-spaces-to-the-query-around-or-in-the-middle-of-words"></a>Proč služba LUIS přidá mezery v dotazu kolem nebo uprostřed slova?
+Služba LUIS [tokenizes](luis-glossary.md#token) na základě utterance [jazykovou verzi](luis-supported-languages.md#tokenization). Jsou k dispozici pro původní hodnotu a hodnotu tokenizovaná [extrakce dat](luis-concept-data-extraction.md#tokenized-entity-returned).
 
-### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Jak vytvořit a přiřadit LEOŠ klíč koncového bodu?
-[Vytvořte klíč koncového bodu](luis-how-to-azure-subscription.md#create-luis-endpoint-key) v Azure pro vaše [služby](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) úroveň. [Přiřazení klíče](Manage-keys.md#assign-endpoint-key) na **[publikovat](publishapp.md)** stránky. Neexistuje žádný odpovídající rozhraní API pro tuto akci. Pak musíte změnit požadavek HTTP na koncový bod pro [používání nového klíče koncový bod](luis-concept-keys.md#use-endpoint-key-in-query).
+### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Jak vytvořit a přiřadit klíče koncového bodu LUIS?
+[Vytvoření klíče koncového bodu](luis-how-to-azure-subscription.md#create-luis-endpoint-key) v Azure pro vaše [služby](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) úroveň. [Přiřazení klíče](luis-how-to-manage-keys.md#assign-endpoint-key) na **[publikovat](luis-how-to-publish-app.md)** stránky. Neexistuje žádná odpovídající rozhraní API pro tuto akci. Pak musíte změnit požadavek HTTP na koncový bod, který [používání nového klíče koncového bodu](luis-concept-keys.md#use-endpoint-key-in-query).
 
-### <a name="how-do-i-interpret-luis-scores"></a>Interpretace LEOŠ skóre 
-Systém musí používat nejvyšší vyhodnocování záměr bez ohledu na jeho hodnotu. Například skóre níže 0,5 (méně než 50 %) nutně znamenat, že LEOŠ má nízkou spolehlivosti. Poskytuje další data školení může přispět k vyšší skóre nejpravděpodobnější záměr.
+### <a name="how-do-i-interpret-luis-scores"></a>Jak se interpretují skóre, které se služba LUIS? 
+Systém by měl používat nejvyšší hodnocení záměr bez ohledu na jeho hodnotu. Například skóre pod 0,5 (méně než 50 %) nemusí nutně znamenat, že má služba LUIS s nízkou spolehlivostí. Poskytuje další trénovacích dat můžete zvýšit skóre nejpravděpodobnější záměr.
 
-### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Proč nevidím moje koncový bod přístupů do mojí aplikace řídicího panelu?
-Koncový bod celkový počet přístupů do řídicího panelu vaší aplikace jsou pravidelně aktualizovány, ale metriky přidružené klíče LEOŠ koncový bod na portálu Azure jsou aktualizovány častěji. 
+### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Proč nevidím moje přístupů koncový bod v řídicí panel Moje aplikace?
+Celkový počet koncových bodů přístupů na řídicím panelu vaší aplikace jsou pravidelně aktualizovány, ale metriky související s vaší klíče koncového bodu služby LUIS na webu Azure Portal se aktualizuje častěji. 
 
-Pokud se nezobrazí aktualizované koncový bod přístupů do řídicího panelu, přihlaste se k portálu Azure a najít prostředek přidružené klíče LEOŠ koncový bod a otevřete **metriky** vyberte **celkový počet volání** metriku. Pokud klíč koncového bodu se používá pro více než jednu aplikaci LEOŠ, údaj na portálu Azure se zobrazí souhrnný počet volání z všechny LEOŠ aplikace, které ho používají.
+Pokud se nezobrazí aktualizované koncový bod přístupů na řídicím panelu, přihlaste se k webu Azure portal a najít prostředek přidružený klíč koncového bodu služby LUIS a otevřete **metriky** vyberte **volání celkem** metriku. Pokud klíč koncového bodu se používá pro více než jednu aplikaci LUIS, metriky na webu Azure Portal zobrazí souhrnný počet volání ze všech aplikací LUIS, které ji používají.
 
-### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Aplikace My LEOŠ pracoval včera, ale ještě dnes zobrazuje chyby 403. Aplikace k nezměnil Jakým způsobem ji lze upravit? 
-Následující [pokyny](#how-do-i-create-and-assign-a-luis-endpoint-key) v další – nejčastější dotazy k vytvoření klíče LEOŠ koncový bod a přiřaďte ho do aplikace. Pak musíte změnit požadavek HTTP na koncový bod pro [používání nového klíče koncový bod](luis-concept-keys.md#use-endpoint-key-in-query).
+### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Moje aplikace LUIS pracoval včerejšího dne, ale ještě dnes se zobrazují chyby 403. Můžu aplikaci nezměnila. Jak ho mám opravit? 
+Následující [pokyny](#how-do-i-create-and-assign-a-luis-endpoint-key) v další nejčastější dotazy k vytvoření klíče koncového bodu služby LUIS a přiřaďte ho do aplikace. Pak musíte změnit požadavek HTTP na koncový bod, který [používání nového klíče koncového bodu](luis-concept-keys.md#use-endpoint-key-in-query).
 
-### <a name="how-do-i-secure-my-luis-endpoint"></a>Jak zabezpečit Moje LEOŠ koncový bod? 
-V tématu [zabezpečení koncového bodu](luis-concept-security.md#securing-the-endpoint).
+### <a name="how-do-i-secure-my-luis-endpoint"></a>Jak zabezpečit tento koncový bod služby LUIS? 
+Zobrazit [zabezpečení koncového bodu](luis-concept-security.md#securing-the-endpoint).
 
-## <a name="working-within-luis-limits"></a>Práce v rámci LEOŠ limitů
+## <a name="working-within-luis-limits"></a>Práce v mezích limitů služby LUIS
 
-### <a name="what-is-the-maximum-number-of-intents-and-entities-that-a-luis-app-can-support"></a>Jaký je maximální počet tříd Intent a entitami, které může podporovat LEOŠ aplikace?
-Najdete v článku [hranice](luis-boundaries.md) odkaz.
+### <a name="what-is-the-maximum-number-of-intents-and-entities-that-a-luis-app-can-support"></a>Jaký je maximální počet záměry a entity, které může podporovat aplikace LUIS?
+Zobrazit [hranice](luis-boundaries.md) odkaz.
 
-### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>Chcete vytvořit aplikaci LEOŠ s více než maximální počet tříd Intent. Co bych měl/a dělat?
+### <a name="i-want-to-build-a-luis-app-with-more-than-the-maximum-number-of-intents-what-should-i-do"></a>Chci, aby k sestavení aplikace LUIS s více než maximální počet záměry. Co bych měl/a dělat?
 
-V tématu [osvědčené postupy pro záměry](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents).
+Zobrazit [osvědčené postupy pro záměry](luis-concept-intent.md#if-you-need-more-than-the-maximum-number-of-intents).
 
-### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>Chcete vytvořit aplikaci LEOŠ s více než maximální počet entit. Co bych měl/a dělat?
+### <a name="i-want-to-build-an-app-in-luis-with-more-than-the-maximum-number-of-entities-what-should-i-do"></a>Chci vytvořit aplikaci v LUIS s více než maximální počet entit. Co bych měl/a dělat?
 
-V tématu [osvědčené postupy pro entity](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)
+Zobrazit [osvědčené postupy pro entity](luis-concept-entity-types.md#if-you-need-more-than-the-maximum-number-of-entities)
 
 ### <a name="what-are-the-limits-on-the-number-and-size-of-phrase-lists"></a>Jaká jsou omezení na počtu a velikosti frázi uvádí?
-Pro maximální délku [frázi seznamu](./luis-concept-feature.md), najdete v článku [hranice](luis-boundaries.md) odkaz.
+Pro maximální délku [seznam frází](./luis-concept-feature.md), najdete v článku [hranice](luis-boundaries.md) odkaz.
 
-### <a name="what-are-the-limits-on-example-utterances"></a>Jaká jsou omezení na příkladu utterances?
-Najdete v článku [hranice](luis-boundaries.md) odkaz.
+### <a name="what-are-the-limits-on-example-utterances"></a>Jaká jsou omezení na příkladu projevy?
+Zobrazit [hranice](luis-boundaries.md) odkaz.
 
 ## <a name="testing-and-training"></a>Testování a školení
 
-### <a name="i-see-some-errors-in-the-batch-testing-pane-for-some-of-the-models-in-my-app-how-can-i-address-this-problem"></a>Vidím chybami v dávce testování podokně u některých modelů v mé aplikace. Jak můžete tento problém vyřešit?
+### <a name="i-see-some-errors-in-the-batch-testing-pane-for-some-of-the-models-in-my-app-how-can-i-address-this-problem"></a>Zobrazila se některé chyby ve službě batch testování podokně u některých modelů v aplikaci. Jak vyřešit tento problém?
 
-Chyby znamenat, že některé nesoulad mezi štítky a předpovědi z vaší modelů. Chcete-li potíže vyřešit, proveďte jednu z následujících úloh:
-* LEOŠ zlepšit diskriminace mezi záměry, přidáte další popisky.
-* LEOŠ další rychleji, přidáte seznam frází funkce, které zavést termínů specifické pro doménu.
+Chyby označují, že je některá nesoulad mezi popisky a předpovědi z vašich modelů. K vyřešení problému, proveďte jednu z následujících úloh:
+* Chcete-li LUIS zlepšit diskriminaci záměrů, přidejte další popisky.
+* Chcete-li LUIS při učení, Přidat frázi seznam funkcí, které představují slovník jazyka specifického pro doménu.
 
-Najdete v článku [testování Batch](luis-tutorial-batch-testing.md) kurzu.
+Zobrazit [Batch testování](luis-tutorial-batch-testing.md) kurzu.
 
-### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Když je aplikace exportovat pak importovat do nové aplikace (s novým ID aplikace), se liší skóre LEOŠ předpovědi. Proč to stává? 
+### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Pokud aplikace je exportovat a importovat do nové aplikace (s novým ID aplikace), skóre predikcí služby LUIS se liší. Proč k tomu dochází? 
 
-V tématu [předpovědi rozdíly mezi kopie stejné aplikaci](luis-concept-prediction-score.md#differences-with-predictions).
+Zobrazit [předpovědi rozdíly mezi kopie stejnou aplikaci](luis-concept-prediction-score.md#differences-with-predictions).
 
 ## <a name="app-publishing"></a>Publikování aplikací
 
-### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Co je ID klienta v okně "Přidání klíče do vaší aplikace"?
-V Azure představuje klienta, klient nebo organizace, který je spojen s služby. Najít na portálu Azure v vaše ID klienta **ID adresáře** pole výběrem **Azure Active Directory** > **spravovat**  >  **Vlastnosti**.
+### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Co je ID tenanta v okně "Přidání klíče do vaší aplikace"?
+V Azure představuje tenanta klient nebo organizace, který je spojen s využitím služby. Svoje ID tenanta zjistíte na webu Azure Portal v **ID adresáře** pole tak, že vyberete **Azure Active Directory** > **spravovat**  >  **Vlastnosti**.
 
-![ID klienta v portálu Azure](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
+![ID tenanta na portálu Azure portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
 <a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
-### <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>Proč jsou existuje další koncový bod klíče v mojí aplikaci publikovat stránku než jsou přiděleny do aplikace? 
-Každá aplikace LEOŠ má klíč vytváření obsahu nebo spuštění. LEOŠ koncový bod klíče vytvořené během časového rámce GA se zobrazí na stránku publikovat bez ohledu na to, pokud jste přidali do aplikace. K tomu bylo potřeba usnadnění GA migrace. Všechny nové klíče LEOŠ koncový bod se nezobrazí na stránce publikovat. 
+### <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>Proč jsou existuje více klíčů koncový bod v mé aplikaci publikovat stránku než přiřadí aplikaci? 
+Každá aplikace LUIS má klíč pro vytváření/starter. Klíče koncového bodu služby LUIS vytvořené během časového rámce všeobecné dostupnosti jsou zobrazeny na stránce publikování, bez ohledu na to, pokud jste přidali do aplikace. To se pro usnadnění migrace všeobecné dostupnosti. Všechny nové klíče koncového bodu služby LUIS se nezobrazí na stránce publikovat. 
 
 ## <a name="app-management"></a>Správa aplikací
 
-### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak převést vlastnictví LEOŠ aplikace?
-Přenos LEOŠ aplikace do jiného předplatného Azure, aplikaci LEOŠ export a import pomocí nového účtu. ID aplikace LEOŠ v aplikaci klienta, který volá ho aktualizujte. Nové aplikace může vrátit mírně odlišné LEOŠ skóre z původní aplikace. 
+### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak se převést vlastnictví aplikace LUIS?
+Aplikace LUIS přenést do jiného předplatného Azure, aplikace LUIS exportujte a importujte ho pomocí nového účtu. Aktualizujte ID aplikace LUIS v klientské aplikaci, která je volá. Nová aplikace může vrátit mírně odlišné LUIS skóre z původní aplikace. 
 
-### <a name="how-do-i-download-a-log-of-user-utterances"></a>Jak lze stáhnout protokolu utterances uživatele?
-Ve výchozím nastavení zaznamená aplikace LEOŠ utterances od uživatelů. Chcete-li stáhnout protokolu utterances, které uživatelé odeslat do aplikace LEOŠ, přejděte na **Moje aplikace**a klikněte na se třemi tečkami (***...*** ) v seznamu pro vaši aplikaci. Pak klikněte na tlačítko **exportovat protokoly koncový bod**. V protokolu je naformátován jako soubor s oddělovači (CSV).
+### <a name="how-do-i-download-a-log-of-user-utterances"></a>Jak se stáhnout protokol projevy uživatele?
+Ve výchozím nastavení zaznamená aplikace LUIS projevy od uživatelů. Pokud chcete stáhnout protokol projevy, které uživatelům odeslat do vaší aplikace LUIS, přejděte na **Moje aplikace**a klikněte na symbol tří teček (***...*** ) v seznamu pro vaši aplikaci. Pak klikněte na tlačítko **exportovat protokoly koncového bodu**. Protokol je formátován jako soubor hodnot oddělených čárkami (CSV).
 
-### <a name="how-can-i-disable-the-logging-of-utterances"></a>Jak lze vypnout protokolování utterances?
-Protokolování utterances uživatele můžete vypnout pomocí nastavení `log=false` adresu URL koncového bodu, která klientské aplikace používá k dotazování LEOŠ. Vypnutí protokolování ale zakáže aplikaci LEOŠ možnost navrhnout utterances nebo zvýšit výkon, který je založen na [active learning](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Pokud nastavíte `log=false` kvůli riziko z hlediska ochrany osobních údajů, nelze z LEOŠ stahovat záznam utterances tyto uživatele, nebo použít tyto utterances ke zlepšení aplikace.
+### <a name="how-can-i-disable-the-logging-of-utterances"></a>Jak lze zakázat protokolování projevy?
+Protokolování projevy uživatele můžete vypnout nastavením `log=false` v adrese URL koncového bodu, který klientské aplikace používá k dotazování služby LUIS. Vypnutí protokolování ale, zakáže schopnost aplikace LUIS navrhnout projevy nebo zvýšit výkon, který je založen na [aktivně učit](luis-concept-review-endpoint-utterances.md#what-is-active-learning). Pokud nastavíte `log=false` z důvodu ochrany osobních údajů se týká, nelze stáhnout záznam o těchto projevů uživatele služby luis nebo pomocí těchto projevů můžete aplikaci vylepšovat.
 
-Protokolování je pouze úložiště utterances. 
+Protokolování je pouze úložiště projevy. 
 
-### <a name="why-dont-i-want-all-my-endpoint-utterances-logged"></a>Proč nechcete všechna Moje utterances koncový bod protokolují?
-Pokud používáte protokol pro analýzu předpovědi, není zachytit utterances testu v protokolu.
+### <a name="why-dont-i-want-all-my-endpoint-utterances-logged"></a>Proč nechcete všechny moje projevy koncový bod přihlášení?
+Pokud používáte protokol pro předpověď analýzy, nezachytí projevy testu v protokolu.
 
 ## <a name="data-management"></a>Správa dat
 
-### <a name="can-i-delete-data-from-luis"></a>Z LEOŠ, odstranit data? 
+### <a name="can-i-delete-data-from-luis"></a>Můžete odstranit data ze služby LUIS? 
 
-* Vždy můžete odstranit utterances příklad používá pro trénování LEOŠ. Pokud odstraníte utterance příklad z vaší aplikace LEOŠ, je odebrán z LEOŠ webové služby a není k dispozici pro export.
-* Utterances můžete odstranit ze seznamu utterances uživatele, které LEOŠ navrhuje v **zkontrolujte koncový bod utterances** stránky. Z tohoto seznamu odstraníte utterances sdělovat navržena, ale nedojde k jejich odstranění z protokolů.
-* Pokud účet odstraníte, se odstraní všechny aplikace, spolu s jejich příklad utterances a protokoly. Data se uchovávají na serverech 60 dnů, než se trvale odstraní.
+* Vždy můžete odstranit projevy příklad používá pro trénování služby LUIS. Pokud odstraníte utterance příklad z vaší aplikace LUIS, se odebere z webové služby LUIS a není k dispozici pro export.
+* Projevy můžete odstranit ze seznamu uživatelů projevy, které navrhuje LUIS v **zkontrolujte koncový bod projevy** stránky. Odstraňuje se z tohoto seznamu projevy brání jejich navržena, ale nedojde k jejich odstranění z protokolů.
+* Pokud odstraníte účet, se odstraní všechny aplikace, spolu s jejich příklad projevy a protokoly. Data se uchovávají na serverech za 60 dní, než je odstraníme trvale.
 
-## <a name="language-and-translation-support"></a>Podpora jazyka a překlad 
+## <a name="language-and-translation-support"></a>Podpora jazyka a překladu 
 
-### <a name="i-have-an-app-in-one-language-and-want-to-create-a-parallel-app-in-another-language-what-is-the-easiest-way-to-do-so"></a>Mám aplikace v jednom jazyce a chcete vytvořit paralelní aplikace v jiném jazyce. Co je nejjednodušší způsob?
-1. Exportujte aplikace.
-2. Převede s popiskem utterances v souboru JSON exportovaný aplikaci cílový jazyk.
-3. Možná budete muset změnit názvy tříd Intent a entity nebo je nechat, jak jsou.
-4. Nakonec importujte aplikaci, aby měla LEOŠ aplikace v jazyce cíl.
+### <a name="i-have-an-app-in-one-language-and-want-to-create-a-parallel-app-in-another-language-what-is-the-easiest-way-to-do-so"></a>Mám aplikaci v jednom jazyce a chcete vytvořit paralelní aplikace v jiném jazyce. Co je nejjednodušší způsob, jak to provést?
+1. Exportujte aplikaci.
+2. Převede uzel s popiskem projevy v souboru JSON aplikace exportovala do cílového jazyka.
+3. Může být potřeba změnit názvy záměry a entity nebo je nechat, jak jsou.
+4. Importujte finally, aby měla aplikace LUIS v cílovém jazyce aplikace.
 
 ## <a name="app-notification"></a>Oznámení aplikace
 
-### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>Proč získat e-mailu, že jsem téměř mimo kvótu?
-Klíč pro tvorbu nebo spuštění je povolené jenom 1000 koncový bod dotazuje za měsíc. Vytvořte klíč koncového bodu LEOŠ (volné nebo placené) a používat při provádění dotazů koncový bod. Pokud bude z robotu nebo jinou aplikaci klienta se koncový bod dotazy, potřebujete změnit klíč koncového bodu LEOŠ existuje. 
+### <a name="why-did-i-get-an-email-saying-im-almost-out-of-quota"></a>Proč můžu získat e-mailu o tom, že jsem téměř překročení kvóty?
+Klíč pro vytváření/starter je povolený jenom 1000 koncový bod dotazů za měsíc. Vytvoření klíče koncového bodu služby LUIS (bezplatné nebo placené) a používat při provádění dotazů koncový bod. Pokud provádíte dotazy koncového bodu z robota nebo v jiné klientské aplikaci, musíte změnit klíč koncového bodu služby LUIS existuje. 
 
-## <a name="integrating-luis"></a>Integrace LEOŠ
+## <a name="integrating-luis"></a>Integrace LUIS
 
-### <a name="where-is-my-luis-app-created-during-the-azure-web-app-bot-subscription-process"></a>Kde je aplikace my LEOŠ vytvořené během procesu službě Azure web app robota předplatné?
-Pokud vyberete šablonu LEOŠ a vyberte **vyberte** tlačítko v podokně šablony, v levém podokně se změní na zahrnují typ šablony a zobrazí dotaz, ve které oblasti pro vytvoření šablony LEOŠ. Proces robota webové aplikace, když není vytvořit odběr LEOŠ.
+### <a name="where-is-my-luis-app-created-during-the-azure-web-app-bot-subscription-process"></a>Kde je Moje aplikace LUIS vytvořené během procesu předplatného Azure web app bot?
+Pokud vyberete šablonu služby LUIS a vyberte **vyberte** tlačítko v podokně šablony, v levém podokně se změní na zahrnují typ šablony a zeptá se v jaké oblasti se má vytvořit šablonu služby LUIS. I když procesu web app bot nevytváří LUIS předplatného.
 
-![Oblast robota LEOŠ šablony webové aplikace](./media/luis-faq/web-app-bot-location.png)
+![Oblasti bot LUIS šablony webové aplikace.](./media/luis-faq/web-app-bot-location.png)
 
-### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Jaké LEOŠ oblasti podporují robota Framework řeči dočištění?
-[Rozpoznávání řeči dočištění](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) je podporována pouze pro aplikace LEOŠ v centrální instanci (USA). 
+### <a name="what-luis-regions-support-bot-framework-speech-priming"></a>Jaké oblasti LUIS podporují dočištění řeči Bot Framework?
+[Rozpoznávání řeči dočištění](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) je podporována pouze pro aplikace LUIS v instanci střed (USA). 
 
-## <a name="luis-service"></a>LEOŠ služby 
+## <a name="luis-service"></a>Služba LUIS 
 
-### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>Je k dispozici místní LEOŠ nebo v privátním cloudu?
+### <a name="is-luis-available-on-premises-or-in-private-cloud"></a>Služba LUIS je k dispozici místně nebo v privátním cloudu?
 Ne. 
 
-## <a name="changes-to-the-docs"></a>Změny v dokumentaci
+## <a name="changes-to-the-docs"></a>Změny do této dokumentace
 
-### <a name="where-did-the-tutorials-go"></a>Kde? kurzů k 
-Články, které byly dříve v části kurzu jsou nyní v části postupy dokumentů. 
+### <a name="where-did-the-tutorials-go"></a>Kde najdu kurzy? 
+Články, které byly dříve v části kurzu jsou teď v části dokumenty s postupy. 
 
 |Kurz|
 |--|
-|Integrovat LEOŠ robota s [C#](luis-csharp-tutorial-build-bot-framework-sample.md) a [Node.js](luis-nodejs-tutorial-build-bot-framework-sample.md)|
-|Přidejte Application Insights do robota s [C#](luis-tutorial-bot-csharp-appinsights.md) a [Node.js](luis-tutorial-function-appinsights.md)|
-|Vytvořit aplikaci LEOŠ programově pomocí [Node.js](luis-tutorial-node-import-utterances-csv.md)|
-|Použití [složené entity](luis-tutorial-composite-entity.md) extrahovat seskupené data|
-|Přidat [seznamu entity](luis-tutorial-list-entity.md) pro vyšší entity zjišťování pomocí Node.js|
-|Zvyšte přesnost předpovědi s [frázi seznamu](luis-tutorial-interchangeable-phrase-list.md), [vzory](luis-tutorial-pattern.md), a [batch testování](luis-tutorial-batch-testing.md)|
-|[Opravte pravopis](luis-tutorial-batch-testing.md) s v7 API kontrola pravopisu Bing
+|Integrace LUIS s využitím botu pomocí [jazyka C#](luis-csharp-tutorial-build-bot-framework-sample.md) a [Node.js](luis-nodejs-tutorial-build-bot-framework-sample.md)|
+|Přidat službu Application Insights k Robotovi s [jazyka C#](luis-tutorial-bot-csharp-appinsights.md) a [Node.js](luis-tutorial-function-appinsights.md)|
+|Sestavení aplikace LUIS programově pomocí [Node.js](luis-tutorial-node-import-utterances-csv.md)|
+|Použití [složený entity](luis-tutorial-composite-entity.md) extrahovat seskupených dat|
+|Přidat [seznam entit](luis-tutorial-list-entity.md) k detekci zvýšení entity pomocí Node.js|
+|Zvyšte přesnost předpovědi pomocí [seznam frází](luis-tutorial-interchangeable-phrase-list.md), [vzory](luis-tutorial-pattern.md), a [testování služby batch](luis-tutorial-batch-testing.md)|
+|[Opravte pravopis](luis-tutorial-batch-testing.md) API kontrola pravopisu Bingu v7
 
-### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Na konferenci 2018 sestavení dozvěděli znalosti jazyka funkce nebo ukázku, ale nemohu si vzpomenout, co byla volána? 
+### <a name="at-the-build-2018-conference-i-heard-about-a-language-understanding-feature-or-demo-but-i-dont-remember-what-it-was-called"></a>Na konferenci Build 2018 funkce umožňující porozumět jazyku nebo ukázka slyšeli, ale nepamatuji byla volána? 
 
-Následující funkce byly vydané na konferenci 2018 sestavení:
+Následující funkce byly vydány na konferenci Build 2018:
 
 |Název|Obsah|
 |--|--|
-|Vylepšení|[Regulární výraz](luis-concept-data-extraction.md##regular-expression-entity-data) entity a [klíč frázi](luis-concept-data-extraction.md#key-phrase-extraction-entity-data) entity
-|Vzory|Vzory [koncept](luis-concept-patterns.md), [kurzu](luis-tutorial-pattern.md), [postupy:](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) entity koncept včetně [explicitní seznam](luis-concept-patterns.md#explicit-lists) pro výjimky<br>[Role](luis-concept-roles.md) koncept|
-|Integrace|[Analýza textu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) integrace [postojích analýzy](publishapp.md#enable-sentiment-analysis)<br>[Rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech) integrace [řeči dočištění](publishapp.md#enable-speech-priming) ve spojení s [řeči SDK](https://aka.ms/SpeechSDK)|
-|Nástroj pro odesílání|Součást [BotBuilder nástroje](https://github.com/Microsoft/botbuilder-tools), odesílání příkazového řádku [nástroj](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps) kombinovat více LEOŠ a QnA Maker aplikací do jednoho LEOŠ aplikace pro lepší záměrné rozpoznávání v robotu
+|Vylepšení|[Regulární výraz](luis-concept-data-extraction.md##regular-expression-entity-data) entity a [klíčových frází to](luis-concept-data-extraction.md#key-phrase-extraction-entity-data) entity
+|Vzory|Vzory [koncept](luis-concept-patterns.md), [kurzu](luis-tutorial-pattern.md), [s postupy](luis-how-to-model-intent-pattern.md)<br>[Patterns.Any](luis-concept-entity-types.md) entity koncept včetně [explicitní seznam](luis-concept-patterns.md#explicit-lists) pro výjimky<br>[Role](luis-concept-roles.md) koncept|
+|Integrace|[Rozhraní text analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) integrace [analýzu subjektivního hodnocení](luis-how-to-publish-app.md#enable-sentiment-analysis)<br>[Rozpoznávání řeči](https://docs.microsoft.com/azure/cognitive-services/speech) integrace [řeči dočištění](luis-how-to-publish-app.md#enable-speech-priming) ve spojení s [sadou SDK pro řeč](https://aka.ms/SpeechSDK)|
+|Nástroj pro odesílání|Součást [BotBuilder nástroje](https://github.com/Microsoft/botbuilder-tools), odeslání příkazového řádku [nástroj](luis-concept-enterprise.md#when-you-need-to-combine-several-luis-and-qna-maker-apps) zkombinovat více LUIS a nástroje QnA Maker aplikace do jedné aplikace LUIS pro lepší rozpoznání záměru v robota
 
-Další vytváření [rozhraní API trasy](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md) byly zahrnuty. 
+Další vytváření [trasy rozhraní API](https://github.com/Microsoft/LUIS-Samples/blob/master/authoring-routes.md) byly zahrnuty. 
 
 Videa: 
-* [Azure pátek v sestavení 2018: Kognitivní služeb - Language (LEOŠ)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
-* [Sestavení 2018 AI zobrazit - co je nového službou znalosti jazyka](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
+* [Azure Friday na sestavení 2018: Cognitive Services – Language (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
+* [Build 2018 AI Show - co je nového službou Language Understanding](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
 * [Seminář na konferenci Build 2018 – Inteligence robotů, možnosti využití řeči a osvědčené postupy NLU](https://channel9.msdn.com/events/Build/2018/BRK3208)
-* [Sestavení 2018 - LEOŠ aktualizace](https://channel9.msdn.com/events/Build/2018/THR3118/player)
+* [Build 2018 - aktualizace LUIS](https://channel9.msdn.com/events/Build/2018/THR3118/player)
 
 Projekty: 
-* [Contoso Cafe robota](https://github.com/botbuilderbuild2018/build2018demo) demo - zdrojového kódu na Githubu
+* [Contoso Cafe bot](https://github.com/botbuilderbuild2018/build2018demo) demo - zdrojového kódu na Githubu
 
 ## <a name="next-steps"></a>Další postup
 
-Další informace o LEOŠ, najdete v následujících zdrojích informací:
-* [Otázky přetečení zásobníku označené LEOŠ](https://stackoverflow.com/questions/tagged/luis)
-* [Jazyk MSDN pochopení inteligentního služeb fórum (LEOŠ)](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) 
+Další informace o LUIS, najdete v následujících zdrojích:
+* [Dotazy přetečení zásobníku označené LUIS](https://stackoverflow.com/questions/tagged/luis)
+* [MSDN Language Understanding Intelligent Services (LUIS) fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS) 
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

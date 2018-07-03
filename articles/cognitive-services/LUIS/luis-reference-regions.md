@@ -1,7 +1,7 @@
 ---
-title: Jazyk oblasti Principy (LEOŠ) | Microsoft Docs
+title: Language Understanding (LUIS) oblasti | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Tento článek obsahuje seznam oblastí LEOŠ webu LEOŠ, předplatných Azure a oblasti world.
+description: Tento článek obsahuje seznam oblastí LUIS pro web služby LUIS, předplatná Azure a oblastí světa.
 services: cognitive-services
 author: v-geberr
 manager: kamran.iqbal
@@ -10,19 +10,19 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: v-geberr
-ms.openlocfilehash: 86a20770178707f72cf2991ca08b6b98eaeaf0cf
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: d81fbc03689788066fb9275523a5e96647117c58
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36236941"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346440"
 ---
-# <a name="regions-and-keys"></a>Oblasti a klíče
+# <a name="regions-and-keys"></a>Oblasti a klíčů
 
-Oblast, ve kterém můžete publikovat aplikaci LEOŠ odpovídá oblast nebo umístění, které zadáte na portálu Azure při vytváření klíčem Azure LEOŠ koncový bod. Pokud jste [publikovat aplikaci](./PublishApp.md), LEOŠ automaticky generuje adresu URL koncového bodu pro oblast přidružené ke klíči. K publikování aplikace LEOŠ na více než jednu oblast, potřebujete aspoň jeden klíč každou oblast. 
+Oblast, ve kterém můžete publikovat aplikaci LUIS odpovídá oblast nebo umístění, ve kterém zadáte na webu Azure Portal, při vytváření klíče koncového bodu Azure LUIS. Pokud jste [publikování aplikace](./luis-how-to-publish-app.md), LUIS automaticky generuje adresu URL koncového bodu pro oblast spojené s klíči. K publikování aplikace LUIS do více než jedné oblasti, budete potřebovat alespoň jeden klíč v jedné oblasti. 
 
-## <a name="luis-website"></a>LEOŠ webu
-Existují tři LEOŠ webů, na základě oblasti. Musíte vytvořit a publikovat ve stejné oblasti. 
+## <a name="luis-website"></a>Služba LUIS webu
+Existují tři websites LUIS, podle oblasti. Musí se vytvářet a publikovat ve stejné oblasti. 
 
 |LUIS|Oblast|
 |--|--|
@@ -33,11 +33,11 @@ Existují tři LEOŠ webů, na základě oblasti. Musíte vytvořit a publikovat
 
 ## <a name="publishing-regions"></a>Publikování oblastí
 
-LEOŠ aplikace vytvořené na https://www.luis.ai mohou být publikovány pro všechny koncové body s výjimkou [Evropské](#publishing-to-europe) a [Austrálie](#publishing-to-australia) oblasti. 
+LUIS aplikací vytvořených v https://www.luis.ai lze publikovat na všechny koncové body s výjimkou [Evropské](#publishing-to-europe) a [australské](#publishing-to-australia) oblastech. 
 
-Vytváření oblastí aplikace lze publikovat pouze na odpovídající publikovat oblast. Pokud je vaše aplikace aktuálně do nesprávné oblasti vytváření exportovat aplikaci a importujte ho na správné pro tvorbu oblast pro vaši oblast publikování. 
+Pro vytváření oblasti aplikace lze publikovat pouze na odpovídající publikovat oblasti. Pokud vaše aplikace je aktuálně v nesprávné oblasti pro vytváření, export aplikace a importujte ho do správné zdrojové oblasti pro publikování oblast. 
 
- Globální oblast | Oblast pro tvorbu | Publikování & dotazování oblast   |   LEOŠ webu | Formát adresy URL koncového bodu   |
+ Globální oblast | Oblast pro tvorbu | Publikování a dotazování na oblast   |   Služba LUIS webu | Formát adresy URL koncového bodu   |
 |-----|------|------|------|------|
 | Asie | Západní USA| Východní Asie     | [www.LUIS.ai][www.luis.ai] |  https://eastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 | Asie | Západní USA| Jihovýchodní Asie     | [www.LUIS.ai][www.luis.ai] |   https://southeastasia.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
@@ -52,18 +52,18 @@ Vytváření oblastí aplikace lze publikovat pouze na odpovídající publikova
 | Severní Amerika | Západní USA | Západní USA 2    | [www.LUIS.ai][www.luis.ai] |  https://westus2.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY  |
 | Jižní Amerika | Západní USA | Brazílie – jih     | [www.LUIS.ai][www.luis.ai] |  https://brazilsouth.api.cognitive.microsoft.com/luis/v2.0/apps/YOUR-APP-ID?subscription-key=YOUR-SUBSCRIPTION-KEY   |
 
-## <a name="publishing-to-europe"></a>Publikování Evropa
+## <a name="publishing-to-europe"></a>Publikování v Evropě
 
-K publikování do Evropského oblastí, vytvoříte LEOŠ aplikace na https://eu.luis.ai pouze. Pokud se pokusíte publikovat kdekoli v oblasti Evropa použití klíče, LEOŠ zobrazí zprávu s upozorněním. Místo toho použijte https://eu.luis.ai. LEOŠ aplikace vytvořená v [ https://eu.luis.ai ] [ eu.luis.ai] není automaticky migrovat do jiných oblastí. Exportovat a importovat aplikaci LEOŠ k jeho migraci.
+Chcete-li publikovat do všech evropských oblastech, vytvoříte LUIS aplikace na https://eu.luis.ai pouze. Při pokusu publikovat kdekoli jinde pomocí klíče v oblasti Evropa, LUIS se zobrazí zpráva s upozorněním. Místo toho použijte https://eu.luis.ai. Služba LUIS aplikací vytvořených v [ https://eu.luis.ai ] [ eu.luis.ai] neproběhne Automatická migrace do jiných oblastí. Exportovat a importovat aplikaci LUIS k její migraci.
 
 ## <a name="publishing-to-australia"></a>Publikování do Austrálie
 
-K publikování do australské oblastí, vytvoříte LEOŠ aplikace na https://au.luis.ai pouze. Pokud se pokusíte publikovat kdekoli v oblasti australské použití klíče, LEOŠ zobrazí zprávu s upozorněním. Místo toho použijte https://au.luis.ai. LEOŠ aplikace vytvořená v [ https://au.luis.ai ] [ au.luis.ai] není automaticky migrovat do jiných oblastí. Exportovat a importovat aplikaci LEOŠ k jeho migraci.
+Chcete-li publikovat do různých oblastí, vytvoříte LUIS aplikace na https://au.luis.ai pouze. Při pokusu publikovat kdekoli jinde pomocí klíče v oblasti Austrálie, LUIS se zobrazí zpráva s upozorněním. Místo toho použijte https://au.luis.ai. Služba LUIS aplikací vytvořených v [ https://au.luis.ai ] [ au.luis.ai] neproběhne Automatická migrace do jiných oblastí. Exportovat a importovat aplikaci LUIS k její migraci.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Odkaz na předem entity](./luis-reference-prebuilt-entities.md)
+> [Odkaz na předem připravených entit](./luis-reference-prebuilt-entities.md)
 
  [www.luis.ai]: https://www.luis.ai
  [au.luis.ai]: https://au.luis.ai

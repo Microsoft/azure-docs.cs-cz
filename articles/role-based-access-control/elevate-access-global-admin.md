@@ -1,6 +1,6 @@
 ---
-title: Zvýšení oprávnění přístupu pro globálního správce ve službě Azure Active Directory | Microsoft Docs
-description: Popisuje, jak ke zvýšení oprávnění přístupu pro globálního správce ve službě Azure Active Directory pomocí portálu Azure nebo REST API.
+title: Zvýšení úrovně přístupu pro globálního správce ve službě Azure Active Directory | Dokumentace Microsoftu
+description: Popisuje postup zvýšení úrovně přístupu pro globální správce v Azure Active Directory pomocí webu Azure portal nebo rozhraní REST API.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -12,56 +12,56 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2018
+ms.date: 06/29/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: e1e46d5fb786b09a4c006b61f52b3ac99aafd555
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0004390264ed0c22adbdc0de5e20150c7946dc4b
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266496"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346926"
 ---
-# <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Zvýšení oprávnění přístupu pro globálního správce ve službě Azure Active Directory
+# <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Zvýšení úrovně přístupu pro globálního správce ve službě Azure Active Directory
 
-Pokud jste [globálního správce](../active-directory/active-directory-assign-admin-roles-azure-portal.md#global-administrator) v Azure Active Directory (Azure AD), nemusí být vždy, když chcete provést následující:
+Pokud jste [globálního správce](../active-directory/active-directory-assign-admin-roles-azure-portal.md#company-administrator) ve službě Azure Active Directory (Azure AD), může nastat situace, kdy budete chtít provést následující:
 
-- Znovu získat přístup k předplatnému Azure, když uživatel ztratí přístup
+- Pokud uživatel ztratí přístup znovu získat přístup k předplatnému Azure
 - Udělit jiným uživatelem nebo sami přístup k předplatnému Azure
-- Zobrazit všechny odběry služby Azure v organizaci
-- Povolit přístup k všechny odběry služby Azure automation aplikace (například fakturace nebo auditování aplikace)
+- Zobrazit všechna předplatná Azure v rámci organizace
+- Povolit přístup všech předplatných Azure k automatizace aplikace (jako je například aplikace auditování nebo fakturace)
 
-Ve výchozím nastavení řízení rolí Správce služby Azure AD a přístupu na základě role Azure role (RBAC) není rozpětí Azure AD a Azure. Pokud jste globálním správcem ve službě Azure AD, můžete však zvýšení oprávnění přístup ke správě předplatných Azure a skupiny pro správu. Pokud jste zvýšení vaší přístupu, udělí se vám [správce přístupu uživatelů](built-in-roles.md#user-access-administrator) role (RBAC role) na všechny odběry pro konkrétního klienta. Role správce přístupu uživatelů umožňuje jiných uživatelům uděluje přístup k prostředkům Azure v kořenovém oboru (`/`).
+Ve výchozím nastavení, role správce Azure AD a Azure na základě rolí řízení přístupu role (RBAC) není span Azure AD a Azure. Pokud jste globální správce ve službě Azure AD, ale můžete zvýšit přístup ke správě předplatných Azure a skupiny pro správu. Když je zvýšení úrovně přístupu, budou mít [správce uživatelských přístupů](built-in-roles.md#user-access-administrator) rolí (RBAC role) na všechna předplatná pro konkrétního tenanta. Role správce přístupu uživatelů umožňuje udělit jiným uživatelům přístup k prostředkům Azure v kořenovém oboru (`/`).
 
 Toto zvýšení úrovně oprávnění by měl být dočasné a pouze v případě potřeby.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="elevate-access-for-a-global-administrator-using-the-azure-portal"></a>Zvýšení oprávnění přístupu pro globálního správce pomocí portálu Azure
+## <a name="elevate-access-for-a-global-administrator-using-the-azure-portal"></a>Zvýšení úrovně přístupu pro globálního správce pomocí webu Azure portal
 
-1. Přihlaste se k [portál Azure](https://portal.azure.com) nebo [centra pro správu Azure Active Directory](https://aad.portal.azure.com).
+1. Přihlaste se k [webu Azure portal](https://portal.azure.com) nebo [centra pro správu Azure Active Directory](https://aad.portal.azure.com).
 
-1. V seznamu navigace klikněte na **Azure Active Directory** a pak klikněte na **vlastnosti**.
+1. V navigačním seznamu klikněte na tlačítko **Azure Active Directory** a potom klikněte na tlačítko **vlastnosti**.
 
    ![Azure AD – vlastnosti – snímek obrazovky](./media/elevate-access-global-admin/aad-properties.png)
 
-1. V části **globálního správce může spravovat předplatná Azure a skupiny pro správu**, nastavení přepínače **Ano**.
+1. V části **globální správce může spravovat předplatná Azure a skupiny pro správu**, nastavte přepínač na **Ano**.
 
    ![Globální správce může spravovat předplatná Azure a skupiny pro správu – snímek obrazovky](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   Pokud nastavíte přepínač na **Ano**, váš účet globálního správce (aktuálně přihlášeného uživatele) je přidán do role správce přístupu uživatelů v Azure RBAC v kořenovém oboru (`/`), který uděluje přístup k zobrazení a sestavy na Všechna předplatná Azure přidružená klientovi Azure AD.
+   Pokud nastavíte přepínač na **Ano**, váš účet globálního správce (aktuálně přihlášeného uživatele) je přidán do role správce přístupu uživatelů v Azure RBAC v kořenovém oboru (`/`), která uděluje přístup k zobrazení a sestavu na Všechna předplatná Azure přidružené k tenantovi Azure AD.
 
-   Pokud nastavíte přepínač na **ne**, váš účet globálního správce (aktuálně přihlášeného uživatele) je odebrán z role správce přístupu uživatelů v Azure RBAC. Nelze zobrazit všechny odběry služby Azure přidružených ke klientovi Azure AD, a můžete zobrazit a spravovat pouze předplatná Azure ke kterým máte přístup.
+   Pokud nastavíte přepínač na **ne**, váš účet globálního správce (aktuálně přihlášeného uživatele) je odebrán z role správce přístupu uživatelů v Azure RBAC. Nelze zobrazit všechna předplatná Azure, které jsou spojené s tenantem Azure AD a můžete zobrazit a spravovat pouze předplatná Azure ke kterým vám byl udělen přístup.
 
-1. Klikněte na tlačítko **Uložit** uložit vaše nastavení.
+1. Klikněte na tlačítko **Uložit** uložte nastavení.
 
-   Toto nastavení není globální vlastnost a platí pouze pro aktuálně přihlášeného uživatele.
+   Toto nastavení se nenachází ve vlastnosti globální a platí jenom pro aktuálně přihlášeného uživatele.
 
-1. Provedení úlohy, které musíte udělat na přístup se zvýšeným oprávněním. Až skončíte, nastavení přepínače zpět na **ne**.
+1. Provádění úloh, které je třeba provést na přístup se zvýšeným oprávněním. Jakmile budete hotovi, nastavte přepínač zpět **ne**.
 
-## <a name="list-role-assignment-at-the-root-scope--using-powershell"></a>Seznam přiřazení role v kořenovém oboru (/) pomocí prostředí PowerShell
+## <a name="list-role-assignment-at-the-root-scope--using-powershell"></a>Seznam přiřazení role v kořenovém oboru (/) pomocí Powershellu
 
-Seznam přiřazení role správce přístupu uživatelů pro uživatele v kořenovém oboru (`/`), použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) příkaz.
+Seznam přiřazení role správce přístupu uživatelů pro uživatele v kořenovém oboru (`/`), použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) příkazu.
 
 ```azurepowershell
 Get-AzureRmRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
@@ -79,26 +79,26 @@ ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
 ```
 
-## <a name="remove-a-role-assignment-at-the-root-scope--using-powershell"></a>Odebrat přiřazení role v kořenovém oboru (/) pomocí prostředí PowerShell
+## <a name="remove-a-role-assignment-at-the-root-scope--using-powershell"></a>Odebrání přiřazení role v kořenovém oboru (/) pomocí Powershellu
 
-Chcete-li odebrat přiřazení role správce přístupu uživatelů pro uživatele v kořenovém oboru (`/`), použijte [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) příkaz.
+Chcete-li odebrat přiřazení role správce přístupu uživatelů pro uživatele v kořenovém oboru (`/`), použijte [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) příkazu.
 
 ```azurepowershell
 Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
   -RoleDefinitionName "User Access Administrator" -Scope "/"
 ```
 
-## <a name="elevate-access-for-a-global-administrator-using-the-rest-api"></a>Zvýšení oprávnění přístupu pro globálního správce pomocí rozhraní REST API
+## <a name="elevate-access-for-a-global-administrator-using-the-rest-api"></a>Zvýšení úrovně přístupu pro globálního správce služby pomocí rozhraní REST API
 
-Použijte následující základní kroky ke zvýšení oprávnění přístupu pro globálního správce pomocí rozhraní REST API.
+Použijte následující základní kroky pro zvýšení úrovně přístupu pro globálního správce služby pomocí rozhraní REST API.
 
-1. Pomocí REST, volání `elevateAccess`, která vám uděluje roli správce přístupu uživatelů v kořenovém oboru (`/`).
+1. Pomocí rozhraní REST, volání `elevateAccess`, která uděluje role správce přístupu uživatelů v kořenovém oboru (`/`).
 
    ```http
    POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
    ```
 
-1. Vytvoření [přiřazení role](/rest/api/authorization/roleassignments) přiřadit žádnou roli v jakémkoli oboru. Následující příklad ukazuje vlastnosti přiřazení role {hodnoty vlastnosti roleDefinitionID} v kořenovém oboru (`/`):
+1. Vytvoření [přiřazení role](/rest/api/authorization/roleassignments) jakoukoli roli na žádný rozsah přiřazení. V následujícím příkladu jsou uvedeny vlastnosti pro roli {roleDefinitionID} v kořenovém oboru přiřazení (`/`):
 
    ```json
    { 
@@ -113,15 +113,15 @@ Použijte následující základní kroky ke zvýšení oprávnění přístupu 
    }
    ```
 
-1. Při správce přístupu uživatelů, můžete také odebrat přiřazení rolí v kořenovém oboru (`/`).
+1. Při přístupu správce uživatelů, můžete také odebrat přiřazení rolí v kořenovém oboru (`/`).
 
-1. Vaše oprávnění správce přístupu uživatelů odeberte, dokud se znovu požadován.
+1. Váš správce uživatelských přístupů oprávnění odeberte, dokud je budete potřebovat znovu.
 
 ## <a name="list-role-assignments-at-the-root-scope--using-the-rest-api"></a>Seznam přiřazení rolí v kořenovém oboru (/) pomocí rozhraní REST API
 
-Můžete vytvořit seznam všechna přiřazení role pro uživatele v kořenovém oboru (`/`).
+Můžete vytvořit seznam všechna přiřazení rolí pro uživatele v kořenovém oboru (`/`).
 
-- Volání [GET roleAssignments](/rest/api/authorization/roleassignments/listforscope) kde `{objectIdOfUser}` je ID objektu uživatele, jehož přiřazení rolí můžete obnovit.
+- Volání [GET roleAssignments](/rest/api/authorization/roleassignments/listforscope) kde `{objectIdOfUser}` je ID objektu uživatele, jehož přiřazení rolí, které chcete načíst.
 
    ```http
    GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
@@ -129,9 +129,9 @@ Můžete vytvořit seznam všechna přiřazení role pro uživatele v kořenové
 
 ## <a name="remove-elevated-access-using-the-rest-api"></a>Odebrat přístup se zvýšeným oprávněním pomocí rozhraní REST API
 
-Při volání `elevateAccess`, vytvořit přiřazení role pro sebe, tak k odvolání těchto oprávnění je třeba odebrat přiřazení.
+Při volání `elevateAccess`, vytvořit přiřazení role pro sebe, takže se odvolat těchto oprávnění budete muset odebrat přiřazení.
 
-1. Volání [GET roleDefinitions](/rest/api/authorization/roledefinitions/get) kde `roleName` rovná správce přístupu uživatelů k určení ID názvu role uživatele přístup správce.
+1. Volání [GET roleDefinitions](/rest/api/authorization/roledefinitions/get) kde `roleName` správce přístupu uživatelů k určení ID názvu role správce uživatelských přístupů rovná se.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=roleName+eq+'User Access Administrator'
@@ -172,18 +172,18 @@ Při volání `elevateAccess`, vytvořit přiřazení role pro sebe, tak k odvol
     }
     ```
 
-    Uložit ID z `name` parametr v tomto případě `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`.
+    ID z si pak uložte `name` parametrů v tomto případě `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9`.
 
-2. Musíte také seznam přiřazení role pro správce klienta na obor klienta. Seznam na obor klienta pro všechna přiřazení `principalId` správce klienta, který provedené přístup zvýšení volání. To se zobrazí seznam všech přiřazení v klientovi pro objectid.
+2. Potřebujete také seznam přiřazení role pro správce klienta v oboru tenanta. Seznam všech přiřazení v oboru tenanta pro `principalId` provedených volání zvýšení přístupu správce tenanta. Tím se zobrazí seznam všech přiřazení v tenantovi pro objectid.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'
     ```
     
     >[!NOTE] 
-    >Správce klienta by neměl mít mnoho přiřazení, pokud předchozí dotaz vrátí příliš mnoho přiřazení, se můžete dotazovat i pro všechna přiřazení právě na úrovni oboru klienta a pak filtrovat výsledky: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
+    >Správce tenanta by neměl mít mnoho přiřazení, pokud předchozí dotaz vrací příliš mnoho přiřazení, můžete také zadávat dotazy pro všechna přiřazení jenom na úrovni oboru tenanta a potom vyfiltrujte z výsledků: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
         
-    2. Předchozí volání vrátí seznam přiřazení rolí. Najít přiřazení role, kde je oboru `"/"` a `roleDefinitionId` končí ID název role, který jste získali v kroku 1 a `principalId` odpovídá objectId správce klienta. 
+    2. Předchozí volání vrátí seznam přiřazení rolí. Vyhledejte přiřazení role, kde obor je `"/"` a `roleDefinitionId` končí ID názvu role jste získali v kroku 1 a `principalId` odpovídá objectId správce tenanta. 
     
     Ukázka přiřazení role:
 
@@ -209,9 +209,9 @@ Při volání `elevateAccess`, vytvořit přiřazení role pro sebe, tak k odvol
         }
         ```
         
-    Znovu uložit ID z `name` parametr, v takovém případě e7dd75bc-06f6-4e71-9014-ee96a929d099.
+    Znovu uložit ID z `name` parametr, v tomto případě e7dd75bc-06f6-4e71-9014-ee96a929d099.
 
-    3. Nakonec pomocí ID přiřazení role přiřazení přidal odebrat `elevateAccess`:
+    3. Nakonec použijte ID přiřazení role se odebrat přiřazení přidal `elevateAccess`:
 
     ```http
     DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01
@@ -219,5 +219,6 @@ Při volání `elevateAccess`, vytvořit přiřazení role pro sebe, tak k odvol
 
 ## <a name="next-steps"></a>Další postup
 
-- [Řízení přístupu na základě rolí pomocí REST](role-assignments-rest.md)
-- [Spravovat přístup k přiřazení](role-assignments-users.md)
+- [Řízení přístupu podle role pomocí REST](role-assignments-rest.md)
+- [Správa přístupu k prostředkům Azure se službou Privileged Identity Management](pim-azure-resource.md)
+- [Správa přístupu ke správě Azure s podmíněným přístupem](conditional-access-azure-management.md)

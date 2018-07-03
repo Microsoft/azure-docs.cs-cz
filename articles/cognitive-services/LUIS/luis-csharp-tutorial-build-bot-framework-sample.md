@@ -1,6 +1,6 @@
 ---
-title: Integrovat LEOŠ robotu pomocí robota Tvůrce SDK pro jazyk C# v Azure | Microsoft Docs
-description: Sestavení robotu integrovat LEOŠ aplikace pomocí rozhraní robota.
+title: Integrace LUIS s využitím botu pomocí sady SDK služby Bot Builder pro jazyk C# v Azure | Dokumentace Microsoftu
+description: Vytvořte robota, integrovaná aplikace LUIS pomocí rozhraní Bot Framework.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,156 +9,156 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: v-geberr
-ms.openlocfilehash: b3283880ebb116e5397c38d722a0790cff414f38
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: b7e8bf9046d432bd830f65e1934704ec5036fd1c
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111918"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346626"
 ---
-# <a name="web-app-bot-using-the-luis-template-for-c"></a>Robota webové aplikace pomocí šablony LEOŠ pro jazyk C#
+# <a name="web-app-bot-using-the-luis-template-for-c"></a>Web App Bot pomocí služby LUIS šablony pro jazyk C#
 
-Sestavení chatbot s principy integrované jazyk.
+Vytvořte chatovacího robota pomocí integrovaného umožňující porozumět jazyku.
 
 ## <a name="prerequisite"></a>Požadavek
 
-* [Aplikace LEOŠ HomeAutomation](luis-get-started-create-app.md). Záměry z této aplikace mapy LEOŠ obslužné rutiny robota dialogové okno. 
+* [Aplikace LUIS HomeAutomation](luis-get-started-create-app.md). Záměry z této mapy aplikace LUIS rutinám bodu robotů také dialogového okna. 
 
-## <a name="luis-homeautomation-intents"></a>LEOŠ HomeAutomation záměry
+## <a name="luis-homeautomation-intents"></a>Služba LUIS HomeAutomation záměrů
 
 | Záměr | Příklad utterance | Funkce robota |
 |:----:|:----------:|---|
-| HomeAutomation.TurnOn | Zapněte světla. | Když záměr LEOŠ `HomeAutomation.TurnOn` je zjištěn, vyvolá robota `OnIntent` obslužná rutina dialogové okno. Toto dialogové okno je, kde by volání služby IoT můžete zapnout v zařízení a informace pro uživatele, který zařízení je zapnutý. |
-| HomeAutomation.TurnOff | Indikátory ložnici vypněte. | Když záměr LEOŠ `HomeAutomation.TurnOff` je zjištěn, vyvolá robota `OffIntent` obslužná rutina dialogové okno. Toto dialogové okno je, kde by volání služby IoT vypněte zařízení a informace pro uživatele, že zařízení je vypnutá. |
+| HomeAutomation.TurnOn | Vypnul světla. | Když záměr LUIS `HomeAutomation.TurnOn` zjistí, vyvolá robota `OnIntent` obslužná rutina dialogové okno. Toto dialogové okno je, kde by volat služby IoT můžete zapnout v zařízení a informace pro uživatele, že zařízení je zapnutý. |
+| HomeAutomation.TurnOff | Vypněte ložnici světla. | Když záměr LUIS `HomeAutomation.TurnOff` zjistí, vyvolá robota `OffIntent` obslužná rutina dialogové okno. Toto dialogové okno je, kde by volat služby IoT, vypněte zařízení a řekněte mu, že zařízení jsou vypnuté. |
 
-## <a name="create-a-language-understanding-bot-with-bot-service"></a>Vytvořit znalosti jazyka robota službou robota
+## <a name="create-a-language-understanding-bot-with-bot-service"></a>Vytváření robotů Language Understanding s využitím služby Bot
 
-1. V [portál Azure](https://portal.azure.com), vyberte **vytvořit nový prostředek** v levé nabídce nahoře.
+1. V [webu Azure portal](https://portal.azure.com)vyberte **vytvořit nový prostředek** v nabídce vlevo nahoře.
 
     ![Vytvořit nový prostředek](./media/luis-tutorial-cscharp-web-bot/bot-service-creation.png)
 
-2. Do vyhledávacího pole Hledat **webové aplikace robota**. 
+2. Do vyhledávacího pole vyhledejte **Web App Bot**. 
 
     ![Vytvořit nový prostředek](./media/luis-tutorial-cscharp-web-bot/bot-service-selection.png)
 
-3. V okně robota webové aplikace klikněte na **vytvořit**.
+3. V okně s Web App Bot, klikněte na tlačítko **vytvořit**.
 
-4. V **robota služby**, zadejte požadované informace a klikněte na **vytvořit**. Tím se vytvoří a nasadí robota služby a aplikace LEOŠ do Azure. Pokud chcete použít [řeči dočištění](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), zkontrolujte [požadavků oblasti](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming) před vytvořením vaší robota. 
-    * Nastavit **název aplikace** na název vaší robota. Název se používá jako subdoménou, když vaše robota je nasazená do cloudu (například mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
+4. V **Bot Service**, zadejte požadované informace a klikněte na tlačítko **vytvořit**. Tím se vytvoří a nasadí bot service a LUIS aplikace do Azure. Pokud chcete použít [řeči dočištění](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), zkontrolujte [požadavků oblasti](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming) před vytvořením svého robota. 
+    * Nastavte **název aplikace** na název svého robota. Název se používá jako subdoménu svého robota nasazené do cloudu (například mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * Vyberte předplatné, [skupiny prostředků](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), plán služby App service, a [umístění](https://azure.microsoft.com/regions/).
-    * Vyberte **znalosti jazyka (C#)** šablonu **robota šablony** pole.
-    * Vyberte **umístění aplikace LEOŠ**. Toto je pro tvorbu [oblast] [ LUIS] vytvoří se v aplikaci.
-    * Zaškrtněte políčko potvrzení právní upozornění. Právní upozornění. podmínky jsou uvedeny níže políčko.
+    * Vyberte **Language understanding (C#)** šablonu **Bot šablony** pole.
+    * Vyberte **umístění aplikace LUIS**. Toto je vytváření [oblasti] [ LUIS] vytvoření aplikace v.
+    * Zaškrtněte políčko potvrzení právních upozornění. Podmínky právních upozornění jsou níže na zaškrtávací políčko.
 
     ![Služba Bot](./media/luis-tutorial-cscharp-web-bot/bot-service-setting-callout-template.png)
 
 
-5. Potvrďte, že byla nasazena službu robota.
-    * Kliknutím na oznámení (na ikonu zvonku umístěné podél horního okraje portálu Azure). Oznámení se změní z **nasazení začalo** k **nasazení bylo úspěšné**.
-    * Po oznámení změn na **nasazení bylo úspěšné**, klikněte na tlačítko **přejděte k prostředku** na tomto oznámení.
+5. Potvrďte, že byla nasazena bot service.
+    * Klikněte na oznámení (ikona zvonku umístěné podél horního okraje na webu Azure portal). Oznámení se změní z **nasazení začalo** k **nasazení bylo úspěšné**.
+    * Po oznámení změn **nasazení bylo úspěšné**, klikněte na tlačítko **přejít k prostředku** na toto oznámení.
 
 > [!Note]
-> Tento proces vytvoření robota webové aplikace pro můžete také vytvořit novou aplikaci LEOŠ. Bylo vycvičena a publikovaná za vás. 
+> Tento proces vytváření robota webové aplikace vytvoří také novou aplikaci LUIS za vás. Má se školení a publikovat za vás. 
 
-## <a name="try-the-default-bot"></a>Zkuste robota výchozí
+## <a name="try-the-default-bot"></a>Zkuste bot výchozí
 
-Potvrďte, že byla nasazena robota výběrem **oznámení** zaškrtávací políčko. Oznámení se změní z **nasazení probíhá...**  k **nasazení bylo úspěšné**. Klikněte na tlačítko **přejděte k prostředku** tlačítko Otevřít robota prostředky.
+Potvrďte, že byla nasazena robota tak, že vyberete **oznámení** zaškrtávací políčko. Oznámení se změní z **probíhá nasazení...**  k **nasazení bylo úspěšné**. Klikněte na tlačítko **přejít k prostředku** tlačítko Otevřít bodu robotů také prostředky.
 
-Jakmile robota je nasazena, klikněte na tlačítko **Test v webového chatu** otevřete podokno webového chatu. Zadejte "hello" v webového chatu.
+Po nasazení se robota, klikněte na tlačítko **testování ve Web Chat** a otevřete tak podokno Web Chat. Zadejte "hello" v Web Chat.
 
-  ![Testování robota v webového chatu](./media/luis-tutorial-cscharp-web-bot/bot-service-web-chat.png)
+  ![Testování ve Web Chat robota](./media/luis-tutorial-cscharp-web-bot/bot-service-web-chat.png)
 
-Odpoví robota vyslovením "bylo dosaženo pozdrav. Jste uvedli: hello ".  Tato odezva potvrdí, že má robota přijal zprávu a předaný výchozí LEOŠ aplikaci, která ji vytvořit. Toto výchozí nastavení aplikace LEOŠ zjištěna pozdravu záměr. V dalším kroku připojíte robota LEOŠ aplikaci, kterou jste dříve vytvořili místo výchozího LEOŠ aplikace.
+Robot reaguje vyslovením příkazu "dosáhli pozdrav. Je ale nutné dodat: hello ".  Tato odpověď potvrdí, že robota obdržel zprávu a předat aplikaci LUIS, který je vytvořen výchozí. Toto výchozí nastavení aplikace LUIS zjistil záměr pozdrav. V dalším kroku připojíte aplikaci LUIS, kterou jste dříve vytvořili místo výchozího aplikace LUIS robota.
 
-## <a name="connect-your-luis-app-to-the-bot"></a>Připojení aplikace LEOŠ k robota
+## <a name="connect-your-luis-app-to-the-bot"></a>Připojte svou aplikaci LUIS robotu
 
-Otevřete **nastavení aplikace** a upravit **LuisAppId** pole tak, aby obsahovala ID aplikace LEOŠ aplikace. Pokud jste vytvořili vaší aplikaci HomeAutomation LEOŠ v jiné oblasti, než západní USA, budete muset změnit **LuisAPIHostName** také. **LuisAPIKey** je nastaveno na klíč pro vytváření obsahu. Můžete to změnit k vašemu klíči koncový bod při provozu překročí kvótu úroveň free. 
+Otevřít **nastavení aplikace** a upravit **LuisAppId** pole obsahující ID aplikace pro vaši aplikaci LUIS. Pokud jste vytvořili aplikaci HomeAutomation LUIS v jiné oblasti, než USA – Západ, budete muset změnit **LuisAPIHostName** také. **LuisAPIKey** je aktuálně nastavený na klíč pro vytváření obsahu. Můžete to změnit klíče koncového bodu při provozu překročí kvótu na úrovni free. 
 
-  ![Aktualizovat LEOŠ ID aplikace v Azure](./media/luis-tutorial-cscharp-web-bot/bot-service-app-settings.png)
+  ![Aktualizovat ID aplikace LUIS v Azure](./media/luis-tutorial-cscharp-web-bot/bot-service-app-settings.png)
 
 > [!Note]
-> Pokud nemáte ID aplikace LEOŠ [Domů automatizace aplikace](luis-get-started-create-app.md), přihlaste se k [LEOŠ](luis-reference-regions.md) webu pomocí stejného účtu, který používáte k přihlášení do Azure. 
+> Pokud nemáte ID aplikace LUIS [Domů automatizace aplikace](luis-get-started-create-app.md), přihlaste se k [LUIS](luis-reference-regions.md) webu pomocí stejného účtu, který používáte k přihlášení k Azure. 
 > 1. Klikněte na **Moje aplikace**. 
-> 2. Najděte LEOŠ aplikaci, kterou jste dříve vytvořili, obsahující tříd Intent a entity z domény HomeAutomation.
-> 3. V **nastavení** stránku pro aplikaci LEOŠ, najít a zkopírovat ID aplikace. Zkontrolujte, zda je [trained](interactive-test.md) a [publikovaná](PublishApp.md). 
+> 2. Najdete LUIS aplikaci, kterou jste dříve vytvořili, a která obsahuje záměry a entity z HomeAutomation domény.
+> 3. V **nastavení** stránky pro aplikaci LUIS, najít a zkopírovat ID aplikace. Ujistěte se, že je [trénovaného](interactive-test.md) a [publikované](luis-how-to-publish-app.md). 
 
     > [!WARNING]
     > If you delete your app ID or LUIS key, the bot will stop working.
 
-## <a name="modify-the-bot-code"></a>Upravit kód robota
+## <a name="modify-the-bot-code"></a>Úprava kódu robota
 
-1. Klikněte na tlačítko **sestavení** a pak klikněte na **editor otevřete online kódu**.
+1. Klikněte na tlačítko **sestavení** a potom klikněte na tlačítko **otevřít online editor kódu**.
 
    ![Otevřít online editor kódu](./media/luis-tutorial-cscharp-web-bot/bot-service-build.png)
 
-2. Klikněte pravým tlačítkem na `build.cmd` a zvolte **spustit z konzoly** k sestavení aplikace. Existuje několik kroků sestavení, které služba dokončení automaticky za vás. Sestavení je dokončená, když se dokončila "Bylo úspěšně dokončeno."
+2. Klikněte pravým tlačítkem myši `build.cmd` a zvolte **spustit z konzoly** k sestavení aplikace. Existuje několik kroků sestavení, které služba provede automaticky za vás. Sestavení je dokončená, jakmile bylo dokončeno s "Byl úspěšně dokončen."
 
-3. V editoru kódu otevřete `/Dialogs/BasicLuisDialog.cs`. Obsahuje následující kód:
+3. V editoru kódu, otevřete `/Dialogs/BasicLuisDialog.cs`. Obsahuje následující kód:
 
    [!code-csharp[Default BasicLuisDialog.cs](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/Default_BasicLuisDialog.cs "Default BasicLuisDialog.cs")]
 
-## <a name="change-code-to-homeautomation-intents"></a>Změňte kód HomeAutomation záměry
+## <a name="change-code-to-homeautomation-intents"></a>Změňte kód na HomeAutomation záměrů
 
 
-1. Odebrat tři záměrné atributy a metody pro **s pozdravem**, **zrušit**, a **pomoci**. Tyto záměry nejsou v doméně předem HomeAutomation používat. Ujistěte se, aby **žádné** záměrné atribut a metoda. 
+1. Odebrat tři atributy záměru a metody pro **pozdrav**, **zrušit**, a **pomáhají**. V doméně předem připravených HomeAutomation nejsou použity tyto záměry. Ujistěte se, aby **žádný** záměru atribut a metody. 
 
-2. Přidejte závislosti do horní části souboru, s další závislosti:
+2. Přidáte závislosti do horní části souboru s další závislosti:
 
    [!code-csharp[Dependencies](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=4-5&dedent=8 "dependencies")]
 
-3. Přidejte konstanty ke správě řetězce v horní části `BasicLuisDialog ` třídy:
+3. Přidejte konstanty pro správu řetězce v horní části `BasicLuisDialog ` třídy:
 
    [!code-csharp[Add Intent and Entity Constants](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=23-32&dedent=8 "Add Intent and Entity Constants")]
 
-4. Přidat kód pro nové záměry z `HomeAutomation.TurnOn` a `HomeAutomation.TurnOff` uvnitř `BasicLuisDialog ` třídy:
+4. Přidejte kód pro nové příkazů `HomeAutomation.TurnOn` a `HomeAutomation.TurnOff` uvnitř `BasicLuisDialog ` třídy:
 
    [!code-csharp[Add Intents](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=61-71&dedent=8 "Add Intents")]
 
-5. Přidejte kód k načtení všech entit nalezena LEOŠ uvnitř `BasicLuisDialog ` třídy:
+5. Přidejte kód k získání všech entit objevila aplikace LUIS uvnitř `BasicLuisDialog ` třídy:
 
    [!code-csharp[Collect entities](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=34-53&dedent=8 "Collect entities")]
 
-6. Změna **ShowLuisResult** metoda v `BasicLuisDialog ` třída zaokrouhleno skóre, shromažďování entity a zobrazí se zpráva odpovědi v chatbot:
+6. Změna **ShowLuisResult** metodu `BasicLuisDialog ` třídy zaokrouhlí skóre, shromáždění entity a zobrazení zprávy s odpovědí v chatovací robot:
 
    [!code-csharp[Display message in chatbot](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=73-83&dedent=8 "Display message in chatbot")]
 
-## <a name="build-the-bot"></a>Sestavení robota
+## <a name="build-the-bot"></a>Sestavit robota
 V editoru kódu, klikněte pravým tlačítkem na `build.cmd` a vyberte **spustit z konzoly**.
 
-![Sestavení webové robota ](./media/luis-tutorial-cscharp-web-bot/bot-service-build-run-from-console.png)
+![Sestavit robota Web ](./media/luis-tutorial-cscharp-web-bot/bot-service-build-run-from-console.png)
 
-Zobrazení kódu se nahradí okno terminálu zobrazující průběh a výsledky sestavení.
+Zobrazení kódu se nahradí okno terminálu znázorňující průběh a výsledky sestavení.
 
-![Úspěch sestavení webové robota](./media/luis-tutorial-cscharp-web-bot/bot-service-build-success.png)
+![Úspěch sestavení Web bot](./media/luis-tutorial-cscharp-web-bot/bot-service-build-success.png)
 
 > [!TIP]
-> Alternativní metodu sestavení robota je vyberte název robota na horním panelu modré a vyberte **otevřít konzolu Kudu**. Otevře se konzola pro **D:\home**. 
+> Vyberte název robota na začátek modrém panelu a vyberte je alternativní metoda pro vytvoření robota **otevřete konzoly Kudu**. Otevře se konzola pro **D:\home**. 
 > 
 > Změňte adresář na **D:\home\site\wwwroot** zadáním: `cd site\wwwroot`
 >
 > Spusťte skript sestavení zadáním: `build.cmd`
 
-## <a name="test-the-bot"></a>Testovací robota
+## <a name="test-the-bot"></a>Testování robota
 
-Na portálu Azure klikněte na **testů ve webové Chat** k testování robota. Typ zprávy například "Zapnout indikátory" a "vypnout Moje topení" k vyvolání záměry, které jste přidali do ní.
+Na webu Azure Portal, klikněte na **testování ve Web Chat** otestovat robota. Typ zprávy like "vypnul světla" a "vypnout Moje Ohřívač" k vyvolání příkazů, které jste přidali do něj.
 
-   ![Testování HomeAutomation robota v webového chatu](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
+   ![Testování ve Web Chat HomeAutomation bot](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
 
 > [!TIP]
-> Můžete přeučování LEOŠ aplikace bez nutnosti jakékoli úpravy kódu vaší robota. V tématu [přidat příklad utterances](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) a [trénování a testování aplikace s LEOŠ](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test). 
+> Mohou uchovávat aplikace LUIS bez jakékoli změny kódu vašeho robota. Zobrazit [přidání projevů příklad](https://docs.microsoft.com/azure/cognitive-services/LUIS/add-example-utterances) a [trénování a testování vaší aplikace LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/interactive-test). 
 
-## <a name="download-the-bot-to-debug"></a>Stáhnout robota k ladění
-Pokud vaše robota nefunguje, stáhněte projektu do místního počítače a pokračovat [ladění](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot). 
+## <a name="download-the-bot-to-debug"></a>Stáhněte si robota, aby ladění
+Pokud váš robot nefunguje, stáhněte si projekt do svého místního počítače a pokračovat [ladění](https://docs.microsoft.com/bot-framework/bot-service-debug-bot#debug-an-azure-app-service-web-app-c-bot). 
 
-## <a name="learn-more-about-bot-framework"></a>Další informace o robota Framework
-Další informace o [robota Framework](https://dev.botframework.com/) a [3.x](https://github.com/Microsoft/BotBuilder) a [4.x](https://github.com/Microsoft/botbuilder-dotnet) sady SDK.
+## <a name="learn-more-about-bot-framework"></a>Další informace o rozhraní Bot Framework
+Další informace o [Bot Framework](https://dev.botframework.com/) a [3.x](https://github.com/Microsoft/BotBuilder) a [4.x](https://github.com/Microsoft/botbuilder-dotnet) sady SDK.
 
 ## <a name="next-steps"></a>Další postup
 
-Přidejte LEOŠ záměry a robota služby dialogová okna pro zpracování **pomoci**, **zrušit**, a **s pozdravem** tříd Intent. Nezapomeňte cvičení, publikovat a [sestavení](#build-the-bot) robota aplikaci web. LEOŠ i robota by měl mít stejné tříd Intent.
+Přidání záměrů LUIS a Bot service dialogová okna pro zpracování **pomáhají**, **zrušit**, a **pozdrav** záměry. Nezapomeňte si školení, publikovat a [sestavení](#build-the-bot) použijete web app bot. Služba LUIS a robot by měl mít stejné záměry.
 
 > [!div class="nextstepaction"]
-> [Přidat tříd Intent](./luis-how-to-add-intents.md)
+> [Přidání záměrů](./luis-how-to-add-intents.md)
 > [dočištění řeči](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)
 
 
@@ -170,7 +170,7 @@ Přidejte LEOŠ záměry a robota služby dialogová okna pro zpracování **pom
 [BFPortal]: https://dev.botframework.com/
 [RegisterInstructions]: https://docs.microsoft.com/bot-framework/portal-register-bot
 [BotFramework]: https://docs.microsoft.com/bot-framework/
-[AssignedEndpointDoc]: https://docs.microsoft.com/azure/cognitive-services/LUIS/manage-keys
+[AssignedEndpointDoc]: https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-manage-keys
 [VisualStudio]: https://www.visualstudio.com/
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions
 <!-- tested on Win10 -->

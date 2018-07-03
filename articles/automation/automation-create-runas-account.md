@@ -1,5 +1,5 @@
 ---
-title: Vytvoření Azure Automation účtů spustit jako
+title: Vytvoření účtů služby Automation spustit jako pro Azure
 description: Tento článek popisuje postup aktualizace účtu Automation a vytváření účtů Spustit jako pomocí PowerShellu nebo z portálu.
 services: automation
 ms.service: automation
@@ -9,17 +9,17 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c9180b3f6bf6b151909ab681d0f33bc6b3583ce0
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 3f6f2768e13e85edb8a314359fef0b0312a8e84d
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714659"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344886"
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Aktualizace ověřování účtu Automation o účty Spustit jako 
 Existující účet Automation můžete aktualizovat z webu Azure Portal nebo pomocí PowerShellu, pokud jste postupovali takto:
 
-* Vytvořili jste účet Automation, ale odmítli jste vytvoření účtu Spustit jako.
+* Vytvořit účet Automation, ale nevytvořit účet Spustit jako.
 * Už máte účet Automation pro správu prostředků Resource Manageru a chcete ho aktualizovat, aby zahrnoval účet Spustit jako pro ověřování runbooků.
 * Už máte účet Automation pro správu klasických prostředků a chcete ho aktualizovat, abyste mohli použít účet Spustit jako pro Classic a nemuseli vytvářet nový účet a migrovat na něj runbooky a prostředky.   
 
@@ -52,7 +52,7 @@ Abyste získali hodnoty pro parametry *SubscriptionID*, *ResourceGroup* a *Autom
 ### <a name="required-permissions-to-update-your-automation-account"></a>Požadovaná oprávnění k aktualizaci účtu Automation
 Pokud chcete aktualizovat účet Automation, musíte mít následující specifická oprávnění vyžadovaná k dokončení tohoto tématu.   
  
-* Váš uživatelský účet AD musí být přidána do role s oprávnění na role Přispěvatel pro Microsoft.Automation prostředky podle uvedených v článku [řízení přístupu na základě Role ve službě Azure Automation](automation-role-based-access-control.md#contributor).  
+* Váš uživatelský účet AD musí přidat do role se stejnými oprávněními role přispěvatele pro prostředky Microsoft.Automation, jak je uvedeno v článku [řízení přístupu na základě rolí ve službě Azure Automation](automation-role-based-access-control.md#contributor).  
 * Uživatelé ve vašem tenantovi Azure AD, kteří nejsou správci, můžou [registrovat aplikace AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions), pokud je možnost **Uživatelé můžou registrovat aplikace** na stránce **Uživatelská nastavení** pro vašeho tenanta Azure AD nastavená na **Ano**. Pokud je nastavení Registrace aplikací nastaveno na **Ne**, uživatel provádějící tuto akci musí být globálním správcem služby Azure AD.
 
 Pokud před přidáním do role globálního správce nebo spolusprávce nejste členem instance Active Directory příslušného předplatného, budete do služby Active Directory přidaní jako host. V takové situaci se zobrazí upozornění Nemáte oprávnění k vytvoření... v okně **Přidání účtu Automation**. Uživatele, kteří byli nejdřív přidaní do role globálního správce nebo spolusprávce, je možné z instance Active Directory předplatného odebrat a potom je znovu přidat – tak se z nich ve službě Active Directory stanou úplní uživatelé. Takovou situaci můžete ověřit v podokně **Azure Active Directory** na webu Azure Portal. Vyberte **Uživatelé a skupiny**, potom **Všichni uživatelé** a po výběru konkrétního uživatele vyberte **Profil**. Hodnota atributu **Typ uživatele** v profilu uživatele by neměla být **Host**.
@@ -272,19 +272,19 @@ Tento skript PowerShellu zahrnuje podporu následujících konfigurací:
 
 Po úspěšném spuštění skriptu je třeba počítat s následujícím:
 * Pokud jste vytvořili účet Spustit jako pro Classic s využitím veřejného certifikátu podepsaného svým držitelem (soubor .cer), skript ho vytvoří a uloží ve složce dočasných souborů ve vašem počítači pod profilem uživatele *%USERPROFILE%\AppData\Local\Temp*, který používáte ke spuštění relace PowerShellu.
-* Pokud jste vytvořili účet Spustit jako pro Classic s využitím podnikového veřejného certifikátu (soubor .cer), použijte tento certifikát. Postupujte podle pokynů pro [certifikát správy rozhraní API se nahrávají na portálu Azure](../azure-api-management-certs.md)a potom ověřit konfiguraci přihlašovacích údajů s prostředky nasazení classic pomocí [ukázkový kód pro ověření s prostředky Azure nasazení Classic](automation-verify-runas-authentication.md#classic-run-as-authentication). 
+* Pokud jste vytvořili účet Spustit jako pro Classic s využitím podnikového veřejného certifikátu (soubor .cer), použijte tento certifikát. Postupujte podle pokynů pro [odeslání certifikátu rozhraní API pro správu na webu Azure portal](../azure-api-management-certs.md)a její ověření konfigurace přihlašovacích údajů pomocí prostředků nasazení classic pomocí [ukázkový kód pro ověření pomocí prostředků nasazení Azure Classic](automation-verify-runas-authentication.md#classic-run-as-authentication). 
 * Pokud jste *nevytvořili* účet Spustit jako pro Classic, použijte k ověření pomocí prostředků Resource Manageru a ke kontrole konfigurace přihlašovacích údajů [ukázkový kód pro ověření s využitím prostředků správy služeb](automation-verify-runas-authentication.md#automation-run-as-authentication).
 
 ## <a name="limiting-run-as-account-permissions"></a>Omezení oprávnění účtu spustit jako
 
-K řízení cílení automatizace s prostředky ve službě Azure Automation, účet Spustit jako ve výchozím nastavení je oprávnění přispěvatele v rámci předplatného. Pokud potřebujete omezit, co můžete dělat instančního objektu RunAs, můžete odebrat účet z role Přispěvatel k odběru a přidejte jej jako Přispěvatel do skupiny prostředků, které chcete zadat.
+K řízení cílení služby automation s prostředky ve službě Azure Automation, účet Spustit jako ve výchozím nastavení je povoleno oprávněním přispěvatele v předplatném. Pokud potřebujete omezit, co můžete dělat instančního objektu RunAs, můžete odebrat účet z role přispěvatele k předplatnému a přidat jako přispěvatelé do skupiny prostředků, kterou chcete zadat.
 
-Na portálu Azure vyberte **odběry** a zvolte předplatné účtu Automation. Vyberte **přístup k ovládacímu prvku (IAM)** a vyhledejte objekt služby pro svůj účet Automation (to vypadá \<AutomationAccountName\>identifikátor _unique). Vyberte účet a klikněte na tlačítko **odebrat** ho odebrat z předplatného.
+Na webu Azure Portal, vyberte **předplatná** a zvolte předplatné účtu Automation. Vyberte **řízení přístupu (IAM)** a vyhledejte instančním objektu pro svůj účet Automation (vypadá jako \<AutomationAccountName\>_unique identifikátor). Vyberte účet a klikněte na tlačítko **odebrat** odebrat z předplatného.
 
 ![Přispěvatelé předplatného](media/automation-create-runas-account/automation-account-remove-subscription.png)
 
-Objekt služby přidat do skupiny prostředků, vyberte skupinu prostředků ve službě Azure portálu a vyberte možnost **přístup k ovládacímu prvku (IAM)**. Vyberte **přidat**, otevře se **přidat oprávnění** stránky. Pro **Role**, vyberte **Přispěvatel**. V **vyberte** textového pole zadejte název objektu služby pro účet Spustit jako a vyberte ho ze seznamu. Kliknutím na **Uložit** uložte změny. To lze proveďte pro skupiny prostředků, které chcete poskytnout vaše spustit v Azure Automation jako služba hlavní přístup.
+Přidání instančního objektu do skupiny prostředků, vyberte skupinu prostředků v Azure portal a vyberte **řízení přístupu (IAM)**. Vyberte **přidat**, tím se otevře **přidat oprávnění** stránky. Pro **Role**vyberte **Přispěvatel**. V **vyberte** textového pole zadejte název objektu služby pro účet Spustit jako a vyberte ho ze seznamu. Kliknutím na **Uložit** uložte změny. To lze proveďte pro skupiny prostředků, kterou chcete přidělit Azure Automation spustit jako službu objektu zabezpečení přístup k.
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o objektech služby najdete v tématu [objekty aplikací a hlavní objekty služeb](../active-directory/active-directory-application-objects.md).
-* Další informace o certifikátech a službám Azure najdete v tématu [Přehled certifikátů pro Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).
+* Další informace o instančních objektech najdete v tématu [aplikace a instanční objekty](../active-directory/active-directory-application-objects.md).
+* Další informace o certifikátech a službách Azure najdete v tématu [Přehled certifikátů pro Azure Cloud Services](../cloud-services/cloud-services-certs-create.md).

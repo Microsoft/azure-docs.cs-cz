@@ -1,6 +1,6 @@
 ---
-title: Azure Marketplace a AppSource upřednostňovaný řešení
-description: Přehled upřednostňované řešení v Marketplace a jak jsou vybrané
+title: Azure Marketplace a AppSource upřednostňované řešení
+description: Přehled upřednostňované řešení v rámci webu Marketplace a jak se vybírají
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: ellacroi
@@ -14,15 +14,15 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: ellacroi
-ms.openlocfilehash: 727c1e5095f875151c6d6e94ec013fa4dba6c1ba
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: cee313f2f648de987fde8c769435264048a12eff
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37115959"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37344025"
 ---
-#<a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Upřednostňované řešení v Azure Marketplace a AppSource
+# <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Upřednostňované řešení v Azure Marketplace a AppSource
 
-Upřednostňovaný řešení společnosti Microsoft je cloudové aplikace vybrané pro jeho kvality, výkonu a schopnost požadavky adresa zákazníka v určité odvětví vertical nebo řešení oblasti. Tým Microsoft odvětví a organizační jednotky prodej odborníky vybere řešení z Microsoft Partner Network [zlatý členství](https://partner.microsoft.com/en-us/membership/core-benefits) partnery. Tato řešení jsou vhodné pro s funkcí v našich obchodní poutače marketplace cloudu. Zákazníci najdete řadu řešení odvětví preferované umístěná na stránkách AppSource odvětví, zatímco zatížení preferované, řešení může být umístěná v Azure Marketplace. 
+Upřednostňované řešení společnosti Microsoft je Cloudová aplikace vybrané pro jeho kvality, výkonu a schopnost adresu zákaznické potřeby v určité odvětví svislé nebo řešení oblasti. Tým odborníků Microsoftu odvětví a prodej vybere řešení z programu Microsoft Partner Network [Gold členství](https://partner.microsoft.com/en-us/membership/core-benefits) partnerů. Tato řešení jsou způsobilé pro poskytuje funkci v našich cloudových prodejní místa. Zákazníci najdou využívá celá řada odvětví upřednostňované řešení vybrané na stránkách odvětví AppSource, zatímco úloha upřednostňované řešení může být umístěná v Azure Marketplace. 
 
-Microsoft může spolupracovat s tyto zprostředkovatele na společné prodeje a marketingu oznámeních podporujících zapojení uživatelů. Microsoft vás bude kontaktovat poskytovatelé řešení, pokud jeden nebo více svá řešení pro preferované badging byla vybrána. 
+Microsoft může spolupracovat s těchto zprostředkovatelů na společného marketingu a prodeje závazky. Microsoft bude kontaktovat poskytovatele řešení, pokud jeden nebo více z jejich řešení byla vybrána pro štítků upřednostňované. 

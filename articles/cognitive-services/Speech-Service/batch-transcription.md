@@ -1,5 +1,5 @@
 ---
-title: Azure Batch přepis rozhraní API | Azure Microsoft Docs
+title: Přepis rozhraní API služby Azure Batch | Azure dokumentace Microsoftu
 description: Ukázky
 services: cognitive-services
 author: PanosPeriorellis
@@ -9,36 +9,36 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: cf58f676be52aa16ce6de59c3566613c7ee9276d
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 9dd7479ae95f74123d9b762e42ec95e8dbf25818
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084078"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346435"
 ---
-# <a name="batch-transcription"></a>Přepis batch
+# <a name="batch-transcription"></a>Dávkový přepis
 
-Přepis batch je ideální pro případy použití s velkým množstvím zvukovém souboru. Umožňuje vývojáři přejděte zvukových souborů a získat zpátky transcriptions v asynchronním režimu.
+Přepis batch je ideální pro případy použití s velkým množstvím zvuk. Umožňuje vývojářům přejděte zvukové soubory a získat zpět přepisů v asynchronním režimu.
 
-## <a name="batch-transcription-api"></a>Přepis batch rozhraní API
+## <a name="batch-transcription-api"></a>Přepis rozhraní API služby batch
 
-Přepis Batch API umožňuje výše uvedené scénáře. Nabízí asynchronní převod řeči na text přepis spolu s další funkce.
+Přepis Batch API umožňuje výše popsaném scénáři. Nabízí asynchronní převod řeči na text přepisu společně s další funkce.
 
 > [!NOTE]
-> Přepis Batch rozhraní API je ideální pro centrech volání, které obvykle hromadit tisíce hodin zvukovém souboru. Ještě efektivněji & zapomenout filosofie rozhraní API usnadňuje transcribe velkého objemu zvukových záznamů.
+> Přepis rozhraní API služby Batch je ideální pro volání centra, což obvykle accumulate tisíce hodin zvukového záznamu. Vyvolání & zapomenout filozofií rozhraní API umožňuje snadno přepisy velkého objemu zvukové záznamy.
 
 ### <a name="supported-formats"></a>Podporované formáty
 
-Přepis Batch API cílem je stane de facto pro scénáře související s center všechny offline volání a podporu pro všechny související formáty. Aktuálně podporované formáty:
+Přepis rozhraní API služby Batch, zaměřuje de facto pro všechny scénáře týkající se center volání v režimu offline a nabízí podporu pro všechny související formáty. Aktuálně podporované formáty:
 
 Název| Kanál  |
 ----|----------|
 MP3 |   Mono   |   
-MP3 |  Stereofonním systémem  | 
+MP3 |  Stereo  | 
 WAV |   Mono   |
-WAV |  Stereofonním systémem  |
+WAV |  Stereo  |
 
-Pro stereo zvukové datové proudy rozdělí Batch přepis během přepis levého a pravého kanálu. Každé dva soubory JSON s výsledkem jsou vytvořené z jeden kanál. Časová razítka na utterance povolit vývojáře k vytvoření seřazené konečné přepis. Následující ukázka JSON zobrazí výstup kanál.
+Pro stereo zvukové datové proudy určené k transkripci Batch rozdělí levého a pravého kanálu během přepis. Každé dva soubory JSON s výsledkem jsou vytvořeny z jednoho kanálu. Časová razítka na utterance umožňují vývojářům vytvořit seřazený konečné přepisu. Podle následující ukázky JSON ukazuje výstupní kanál.
 
 ```json
        {
@@ -56,11 +56,11 @@ Pro stereo zvukové datové proudy rozdělí Batch přepis během přepis levéh
 ```
 
 > [!NOTE]
-> Přepis Batch API používá služby REST pro požadování transcriptions, jejich stav a přidružené výsledky. Ho je založena na rozhraní .NET a nemá žádné externí závislosti. Další část popisuje, jak se používají.
+> Přepis rozhraní API služby Batch používá službu REST pro požadování přepisů, jejich stav a přidružené výsledky. Rozhraní API můžete použít z jakéhokoli jazyka. Další část popisuje, jak se používají.
 
 ## <a name="authorization-token"></a>Autorizační token
 
-Jak se všemi funkcemi služby Unified rozpoznávání řeči, uživatel musí vytvořit klíč předplatného z [portál Azure](https://portal.azure.com). Kromě toho musí být získali z portálu řeči klíč rozhraní API. Kroky pro vygenerování klíč rozhraní API:
+Jak se všemi funkcemi Unified Speech Service, musí uživatel vytvořit klíč předplatného z [webu Azure portal](https://portal.azure.com). Klíč rozhraní API musí navíc získali z portálu řeči. Kroky pro vygenerování klíče rozhraní API:
 
 1. Přihlaste se k https://customspeech.ai.
 
@@ -68,16 +68,16 @@ Jak se všemi funkcemi služby Unified rozpoznávání řeči, uživatel musí v
 
 3. Klikněte na možnost `Generate API Key`.
 
-    ![Nahrávání zobrazení](media/stt/Subscriptions.jpg)
+    ![Zobrazení nahrávání](media/stt/Subscriptions.jpg)
 
-4. Zkopírujte a vložte klíči v klientském kódu v následující ukázce.
+4. Zkopírujte a vložte tento klíč v klientském kódu v následující ukázce.
 
 > [!NOTE]
-> Pokud máte v úmyslu použít vlastní model budete potřebovat Identifikátor tohoto modelu příliš. Všimněte si, že se nejedná nasazení nebo ID koncového bodu, které se nachází v zobrazení podrobností koncový bod, ale ID modelu, který může načíst po kliknutí na položku Podrobnosti tohoto modelu
+> Pokud budete chtít použít vlastní model pak bude potřebujete ID tohoto modelu příliš. Všimněte si, že to není nasazení nebo ID koncového bodu, které se nachází v zobrazení Podrobnosti o koncovém bodu, ale ID modelu, který můžete získat po kliknutí na podrobnosti o tomto modelu
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Využitím rozhraní API je docela rovnou dál. Následující ukázkový kód je potřeba lze přizpůsobit pomocí klíč předplatného a klíč rozhraní API, což na oplátku umožňuje vývojáři získat token nosiče, jako kód následující fragment kódu ukazuje kód:
+Používá rozhraní API je poměrně jasně. Ukázkový kód níže je potřeba upravit klíč předplatného a klíč rozhraní API, která zase umožňuje vývojářům získat nosný token, jako následující fragment kódu ukazuje:
 
 ```cs
     public static async Task<CrisClient> CreateApiV1ClientAsync(string username, string key, string hostName, int port)
@@ -94,7 +94,7 @@ Využitím rozhraní API je docela rovnou dál. Následující ukázkový kód j
         }
 ```
 
-Po získání tokenu vývojář musí zadejte identifikátor Uri SAS odkazující na zvukového souboru nutnosti přepis. Zbytek kód jednoduše iteruje stav a zobrazí výsledky.
+Po získání tokenu vývojář musí určit identifikátor Uri SAS odkazující na zvukový soubor, které vyžadují určené k transkripci. Zbytek kódu jednoduše prochází stav a zobrazí výsledky.
 
 ```cs
    static async Task TranscribeAsync()
@@ -153,29 +153,29 @@ Po získání tokenu vývojář musí zadejte identifikátor Uri SAS odkazujíc�
 ```
 
 > [!NOTE]
-> Klíč předplatného zmiňována ve výše uvedeném fragmentu kódu je klíč z Speech(Preview) prostředku, kterou vytvoříte na portálu Azure. Klíče získané z prostředku vlastní řeči služby nebude fungovat.
+> Klíč předplatného uvedeno ve výše uvedeném fragmentu kódu je klíč z Speech(Preview) prostředku, kterou vytvoříte na webu Azure portal. Klíče získané z prostředku služby Custom Speech Service nebude fungovat.
 
 
-Všimněte si asynchronní nastavení pro publikování zvuk a příjem přepis stavu. Vytvoření klienta je NET Http klienta. Je `PostTranscriptions` metodu pro odesílání podrobnosti zvukový soubor a `GetTranscriptions` metodu výsledky. `PostTranscriptions` Vrátí popisovač, a `GetTranscriptions` metoda používá k vytvoření popisovače získat stav přepis tento popisovač.
+Všimněte si, že asynchronní instalační program pro zvuk odesílání a příjem určené k transkripci stav. Vytvoření klienta je klienta .NET protokolu Http. Je `PostTranscriptions` metodu pro odesílání podrobnosti zvukový soubor a `GetTranscriptions` metoda na příjem výsledků. `PostTranscriptions` Vrátí popisovač, a `GetTranscriptions` metoda používá tento ovladač k vytvoření popisovače k získání stavu určené k transkripci.
 
-Aktuální ukázkový kód neurčuje žádné vlastní modely. Služba bude používat modely směrný plán pro přepisování soubory. Pokud uživatel chce zadejte modely, jeden předat na stejnou metodu modelIDs acoustic a model jazyk. 
+Aktuální vzorový kód neurčuje žádné vlastní modely. Služba bude používat základní modely pro přepisování soubory. Pokud si uživatel přeje zadejte modely, jeden předat na stejné metodě modelIDs akustických a jazykový model. 
 
-Pokud jeden nechce používat směrného plánu, jeden musí projít ID modelu pro modely acoustic a jazyk.
+Pokud jeden nechce použít směrný plán, jeden musíte předat ID modelu akustických a jazykových modelů.
 
 > [!NOTE]
-> Pro směrný plán přepis uživatel nemá k deklaraci koncových bodů modelů směrného plánu. Pokud chce uživatel použít vlastní modely má zajistit jejich ID koncové body, jako [ukázka](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI). Pokud chce uživatel použít akustickými směrný plán s modelem jazyk směrného plánu pak pouze má deklarovat ID vlastní modelu koncový bod. Interně naše systém Zjistěte modelu směrného plánu partnera (být ho akustickými nebo language) a použít ke splnění tohoto požadavku přepis.
+> Pro směrný plán určené k transkripci uživatel nemá k deklarování koncovým bodům modelů směrného plánu. Pokud chce uživatel použít vlastní modely má zajistit jejich ID koncové body, jako [ukázka](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI). Pokud chce uživatel použít akustický směrného plánu se jazykový model směrný plán pak pouze má k deklarování ID vlastního modelu koncový bod. Náš systém bude interně zjistit základního modelu partnera (být je akustický nebo language) a použít ke splnění žádosti určené k transkripci.
 
 ### <a name="supported-storage"></a>Podporované úložiště
 
-Se v současné době podporováno pouze úložiště objektů blob v Azure.
+Aktuálně je pouze úložiště nepodporuje objektů blob v Azure.
 
 ## <a name="downloading-the-sample"></a>Stažení ukázky
 
-Ukázka zobrazí tady je na [Githubu](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
+Ukázka tady zobrazí je v [Githubu](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
 
 > [!NOTE]
-> Obvykle vyžaduje zvuk přepis rovna trvání zvukový soubor plus režijní náklady na 2 až 3 minuty časové období.
+> Obvykle se vyžaduje přepisování zvukového záznamu časový rozsah, který se rovná době trvání zvukový soubor a režijní náklady na 2 až 3 minuty.
 
 ## <a name="next-steps"></a>Další postup
 
-* [Získat zkušební verze předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)
+* [Získejte zkušební verzi předplatného řeči](https://azure.microsoft.com/try/cognitive-services/)

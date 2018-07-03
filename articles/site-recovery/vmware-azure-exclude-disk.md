@@ -1,21 +1,21 @@
 ---
-title: Vyloučit z ochrany pomocí Azure Site Recovery disky | Microsoft Docs
+title: Vyloučení disků z ochrany pomocí Azure Site Recovery | Dokumentace Microsoftu
 description: Tento článek popisuje, proč a jak vyloučit disky virtuálních počítačů z replikace pro scénáře z VMware do Azure.
 author: nsoneji
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 07/01/2018
 ms.author: nisoneji
-ms.openlocfilehash: 59c8d38d94604a9950693d6bb73b6263f9cdb23b
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 6a0b8891e25a764ecd0430696e155b2bd8e06e13
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285086"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342602"
 ---
 # <a name="exclude-disks-from-replication-for-vmware-to-azure-scenario"></a>Vyloučení disků z replikace pro scénář VMware do Azure
 
-Tento článek popisuje, jak chcete vyloučit disky při replikaci virtuálních počítačů VMware do Azure. Takové vyloučení může optimalizovat jak využití šířky pásma potřebné pro replikaci, tak i prostředků využívaných na cílové straně těmito disky. Pokud potřebujete informace o s výjimkou disků pro Hyper-V, přečtěte si [v tomto článku](hyper-v-exclude-disk.md)
+Tento článek popisuje, jak vyloučit disky při replikaci virtuálních počítačů VMware do Azure. Takové vyloučení může optimalizovat jak využití šířky pásma potřebné pro replikaci, tak i prostředků využívaných na cílové straně těmito disky. Pokud potřebujete informace o vyloučení disků pro technologii Hyper-V, přečtěte si [v tomto článku](hyper-v-exclude-disk.md)
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -50,7 +50,7 @@ Pokud chcete chránit virtuální počítač z portálu Azure Site Recovery, pos
 
 >[!NOTE]
 >
-> * Můžete vyloučit jenom disky, na kterých už je nainstalovaná služba Mobility. Službu Mobility musíte nainstalovat ručně, protože se jinak instaluje pomocí mechanismu nabízených instalací až po povolení replikace.
+> * Můžete vyloučit jenom disky na virtuálních počítačích, na kterých už je nainstalovaná služba Mobility. Službu Mobility musíte nainstalovat ručně, protože se jinak instaluje pomocí mechanismu nabízených instalací až po povolení replikace.
 > * Z replikace můžete vyloučit pouze běžné disky. Nemůžete vyloučit disk operačního systému ani dynamické disky.
 > * Po povolení replikace už není možné přidávat nebo odebírat disky pro replikaci. Pokud chcete přidat nebo vyloučit disk, budete muset zakázat ochranu virtuálního počítače a potom ji znovu povolit.
 > * Pokud vyloučíte disk, který je nezbytný pro provoz aplikace, po převzetí služeb při selhání do Azure budete muset v Azure disk znovu ručně vytvořit, aby se replikovaná aplikace mohla spustit. Alternativně můžete do plánu obnovení integrovat službu Azure Automation, která disk vytvoří během převzetí služeb při selhání počítače.

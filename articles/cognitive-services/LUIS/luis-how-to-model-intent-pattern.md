@@ -1,7 +1,7 @@
 ---
-title: Přidat vzor šablon v aplikacích LEOŠ | Microsoft Docs
+title: Přidejte vzor šablon v aplikacích LUIS | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Informace o postupu přidání vzor šablon v aplikacích jazyka Principy (LEOŠ) a zvyšte tak přesnost předpovědi.
+description: Zjistěte, jak přidat vzor šablon v aplikacích Language Understanding (LUIS) zvyšte přesnost předpovědi.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -10,76 +10,76 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 68c0ea1fd3f2e60e0adec631f33c8bd09a3d9960
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 9dd23fd5f8a0024f127b71160899d10042037a66
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35346002"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37346004"
 ---
-# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Postup přidání vzory a zvyšte tak přesnost předpovědi
-Po LEOŠ aplikace obdrží utterances koncový bod, použijte [koncept](luis-concept-patterns.md) schémat a zvyšte tak přesnost předpovědi pro utterances, které se zobrazí v vzor v pořadí aplikace word a volba aplikace word. Vzory použití [entity](luis-concept-entity-types.md) a jejich rolí extrahovat data pomocí specifického vzoru syntaxe. 
+# <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak přidat vzorce, a zvyšte přesnost předpovědi
+Po aplikaci LUIS obdrží koncový bod projevy, použijte [koncept](luis-concept-patterns.md) vzorů zvyšte přesnost předpovědi pro projevy, které se zjistí vzor v pořadí slov a požadované aplikace word. Vzory používání [entity](luis-concept-entity-types.md) a jejich rolí k extrakci dat pomocí specifického vzoru syntaxe. 
 
-## <a name="add-template-utterance-to-create-pattern"></a>Přidat utterance šablony pro vytvoření vzorku
-1. Otevřete aplikaci tak, že vyberete svůj název na **Moje aplikace** a pak vyberte **vzory** v levém panelu klikněte v části **zlepšit výkon aplikace**.
+## <a name="add-template-utterance-to-create-pattern"></a>Přidat utterance šablony k vytvoření vzorku
+1. Otevřete aplikaci tak, že vyberete jeho název na **Moje aplikace** stránce a pak vyberte **vzory** v levém panelu klikněte v části **zvýšit výkon aplikace**.
 
-    ![Snímek obrazovky seznamu vzory](./media/luis-how-to-model-intent-pattern/patterns-1.png)
+    ![Snímek obrazovky seznamu vzorů](./media/luis-how-to-model-intent-pattern/patterns-1.png)
 
-2. Vyberte správný záměr pro vzoru. 
+2. Vyberte správný záměr pro vzor. 
 
     ![Vyberte záměr](./media/luis-how-to-model-intent-pattern/patterns-2.png)
 
-3. Do textového pole šablony zadejte utterance šablony a Enter. Pokud chcete zadat název entity, použijte syntaxi správné vzor entity. Začněte syntaxe entity s `{`. Seznam zobrazí entity. Vyberte správný entity a pak vyberte Enter. 
+3. V textovém poli šablony zadejte utterance šablony a stiskněte Enter. Pokud chcete zadat název entity, použijte syntaxi správný model entity. Začněte syntaxe entity s `{`. Seznam entit zobrazí. Vyberte správný entitu a pak stiskněte Enter. 
 
-    ![Snímek obrazovky entity pro vzor](./media/luis-how-to-model-intent-pattern/patterns-3.png)
+    ![Snímek obrazovky pro model entity](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    Pokud vaše entity zahrnuje roli, znamenat role s jedinou dvojtečku, `:`po název entity, jako například `{Location:Origin}`. Zobrazí seznam rolí pro entity v seznamu. Vyberte roli a pak vyberte Enter. 
+    Pokud entita obsahuje roli, naznačit roli s jedinou dvojtečku `:`po název entity, jako `{Location:Origin}`. Seznam rolí pro entity, které se zobrazí v seznamu. Vyberte roli a pak stiskněte Enter. 
 
     ![Snímek obrazovky entity s rolí](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 
-    Po výběru správné entity dokončit zadáním vzoru a Enter. Po dokončení vstup vzory [cvičení](luis-how-to-train.md) vaší aplikace.
+    Po výběru entity správné zadáte vzor a pak stiskněte Enter. Po dokončení zadávání vzorce [trénování](luis-how-to-train.md) vaší aplikace.
 
-    ![Snímek obrazovky zadat vzor s oběma typy entit](./media/luis-how-to-model-intent-pattern/patterns-5.png)
+    ![Snímek obrazovky zadaný vzor s oběma typy entit](./media/luis-how-to-model-intent-pattern/patterns-5.png)
 
-## <a name="search-patterns"></a>Vzory pro vyhledávání
-Hledání můžete najít vzorů, které obsahují daný text.  
+## <a name="search-patterns"></a>Vyhledávání vzorků
+Vyhledávání umožňuje najít vzory, které obsahují daný text.  
 
 1. Vyberte ikonu lupy.
 
-    ![Snímek obrazovky vzory stránka se zvýrazněnou ikonu nástroj pro hledání](./media/luis-how-to-model-intent-pattern/search-icon.png)
+    ![Vzory snímek obrazovky stránky s ikonou nástroj hledání zvýrazněnou](./media/luis-how-to-model-intent-pattern/search-icon.png)
 
-    Zadejte hledaný text do pole Hledat v pravém horním rohu seznamu vzorů a Enter. Seznam vzorů se aktualizuje a zobrazí pouze vzory včetně hledaný text.
+    Zadejte hledaný text do pole Hledat v pravém horním rohu seznam vzorů a stiskněte Enter. Seznam vzorů se aktualizuje a zobrazí jenom ty vzory, včetně hledaný text.
 
-    ![Snímek obrazovky vzory stránka se hledaný text zvýrazněná vyhledávacího pole](./media/luis-how-to-model-intent-pattern/search-text.png)
+    ![Snímek obrazovky vzory stránky pomocí vyhledávacího pole zvýrazní hledaný text](./media/luis-how-to-model-intent-pattern/search-text.png)
 
-    Chcete-li zrušit hledání a obnovit vaše úplný seznam vzorů, odstraňte hledaný text, který jste zadali.
+    Chcete-li zrušit hledání a obnovit váš úplný seznam vzorů, odstraňte hledaný text, který jste zadali.
 
 <!-- TBD: should I be able to click on the magnifying glass again to close the search box? It doesn't reset the list. -->
 
-## <a name="edit-a-pattern"></a>Upravit vzor
-1. Chcete-li upravit vzor, vyberte ikonu tři tečky (...) na pravém konci řádku pro tento vzor a poté vyberte **upravit**. 
+## <a name="edit-a-pattern"></a>Úprava vzoru
+1. Chcete-li upravit vzor, vyberte ikonu tří teček (...) na pravém konci řádku pro tento model a pak vyberte **upravit**. 
 
-    ![Snímek obrazovky Upravit položku nabídky v řádku vzor](./media/luis-how-to-model-intent-pattern/patterns-three-dots.png) 
+    ![Snímek obrazovky Upravit položku nabídky na řádku vzor](./media/luis-how-to-model-intent-pattern/patterns-three-dots.png) 
 
-2. Zadejte všechny změny v textovém poli. Až skončíte, zadejte vyberte. Po dokončení úprav vzory [cvičení](luis-how-to-train.md) vaší aplikace.
+2. Zadejte všechny změny v textovém poli. Jakmile budete hotovi, vyberte možnost zadat. Po dokončení úprav vzory [trénování](luis-how-to-train.md) vaší aplikace.
 
     ![Snímek obrazovky úpravy vzor](./media/luis-how-to-model-intent-pattern/edit-pattern.png)
 
-## <a name="reassign-individual-pattern-to-different-intent"></a>Přiřazení jednotlivých vzor různých záměrů
+## <a name="reassign-individual-pattern-to-different-intent"></a>Změnit přiřazení jednotlivých vzor, který má jiný záměr
 
-K přiřazení single vzor do různých záměrů, vyberte pole se seznamem záměrné vpravo od textu vzor a vyberte různých záměrů.
+Jeden vzor na různých záměr přiřazení, vyberte záměru seznamu vpravo od textu vzor a vyberte jiný záměr.
 
-![Snímek obrazovky přeřazení jednotlivých vzor různých záměrů](./media/luis-how-to-model-intent-pattern/reassign-individual-pattern.png)
+![Snímek obrazovky přiřazení jednotlivých vzor, který má jiný záměr](./media/luis-how-to-model-intent-pattern/reassign-individual-pattern.png)
 
-## <a name="reassign-several-patterns-to-different-intent"></a>Přiřadit několik vzorů pro různých záměrů
+## <a name="reassign-several-patterns-to-different-intent"></a>Znovu přiřadit několik vzory na různých záměr
 
-K přiřazení několik vzorů pro různých záměrů, zaškrtněte políčko nalevo od každého vzor nebo nejvyšší zaškrtávací políčko. **Přiřazení záměr** možnost se zobrazí na panelu nástrojů. Vyberte správný záměr pro vzory. 
+Změnit některé postupy na různých záměr přiřazení, vyberte zaškrtávací políčko nalevo od každý vzorek nebo horní políčko zaškrtněte, pokud. **Záměr přiřazení** možnost se zobrazí na panelu nástrojů. Vyberte správný záměr pro tyto vzory se dají. 
 
-![Snímek obrazovky přeřazení několik vzorů pro různých záměrů](./media/luis-how-to-model-intent-pattern/reassign-many-patterns.png)
+![Snímek obrazovky přiřazení několika vzory na různých záměr](./media/luis-how-to-model-intent-pattern/reassign-many-patterns.png)
 
-## <a name="delete-a-single-pattern"></a>Odstranit single vzor
+## <a name="delete-a-single-pattern"></a>Odstranit jeden vzor
 
-1. Pokud chcete odstranit vzor, vyberte ikonu tři tečky (...) na pravém konci řádku pro tento vzor, pak vyberte **odstranit**. 
+1. Pokud chcete odstranit vzor, vyberte ikonu tří teček (...) na pravém konci řádku pro tento model a pak vyberte **odstranit**. 
 
     ![Snímek obrazovky odstranit utterance](./media/luis-how-to-model-intent-pattern/patterns-three-dots-ddl.png)
 
@@ -87,54 +87,54 @@ K přiřazení několik vzorů pro různých záměrů, zaškrtněte políčko n
 
     ![Snímek obrazovky odstranit potvrzení](./media/luis-how-to-model-intent-pattern/confirm-delete.png)
 
-## <a name="delete-several-patterns"></a>Odstranit několik vzorů
+## <a name="delete-several-patterns"></a>Odstranit některé postupy
 
-1. Pokud chcete odstranit několik vzory, zaškrtněte políčko nalevo od každého vzor nebo nejvyšší zaškrtávací políčko. **Odstranit vzory (s)** možnost se zobrazí na panelu nástrojů. Vyberte **odstranit vzory (s)**.  
+1. Pokud chcete odstranit některé postupy, vyberte zaškrtávací políčko nalevo od každý vzorek nebo horní políčko zaškrtněte, pokud. **Odstranit způsoby (s)** možnost se zobrazí na panelu nástrojů. Vyberte **odstranit způsoby (s)**.  
 
-    ![Snímek obrazovky odstraňování několik vzorů](./media/luis-how-to-model-intent-pattern/delete-many-patterns.png)
+    ![Snímek obrazovky s odstraněním několik vzory](./media/luis-how-to-model-intent-pattern/delete-many-patterns.png)
 
-2. **Odstranit vzory** se zobrazí dialogové okno potvrzení. Vyberte **Ok** dokončení odstranění.
+2. **Odstranit vzory** se zobrazí dialogové okno potvrzení. Vyberte **Ok** na dokončení odstranění.
 
-    ![Snímek obrazovky odstraňování několik vzorů](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
+    ![Snímek obrazovky s odstraněním několik vzory](./media/luis-how-to-model-intent-pattern/delete-many-patterns-confirmation.png)
 
 ## <a name="filter-pattern-list-by-entity"></a>Vzor seznam můžete filtrovat podle entity
 
-Chcete-li filtrovat seznam vzorů podle konkrétní entitu, vyberte **Entity filtry** v panelu nástrojů nad vzory. 
+Chcete-li filtrovat seznam vzorů podle konkrétní entitu, vyberte **Entity filtry** na panelu nástrojů nad vzory. 
 
-![Snímek obrazovky filtrování vzory entita](./media/luis-how-to-model-intent-pattern/filter-entities-1.png)
+![Snímek obrazovky vzory pomocí filtrování podle entity](./media/luis-how-to-model-intent-pattern/filter-entities-1.png)
 
-Až se filtr použije, zobrazí se název entity níže panelu nástrojů. 
+Po použití filtru název entity se zobrazí pod panelu nástrojů. 
 
-## <a name="filter-pattern-list-by-intent"></a>Vzor seznam můžete filtrovat podle záměru
+## <a name="filter-pattern-list-by-intent"></a>Vzor seznam můžete filtrovat podle záměr
 
-Chcete-li filtrovat seznam vzorů podle konkrétní záměr, vyberte **záměr filtry** v panelu nástrojů nad vzory. 
+Chcete-li filtrovat seznam vzorů podle konkrétní záměr, vyberte **záměr filtry** na panelu nástrojů nad vzory. 
 
-![Snímek obrazovky filtrování vzory podle záměru](./media/luis-how-to-model-intent-pattern/filter-intents-1.png)
+![Snímek obrazovky vzory pomocí filtrování podle záměr](./media/luis-how-to-model-intent-pattern/filter-intents-1.png)
 
-Až se filtr použije, se zobrazí název záměrné pod panelu nástrojů. 
+Po použití filtru záměru název se zobrazí pod panelu nástrojů. 
 
-## <a name="remove-entity-or-intent-filter"></a>Odeberte entity nebo záměrné filtru
-Pokud vzor seznam je filtrovaný, entity nebo záměrné název se zobrazí pod panelu nástrojů. Chcete-li odebrat filtr, vyberte název.
+## <a name="remove-entity-or-intent-filter"></a>Odebrat entitu nebo záměru filtru
+Pokud vzor seznam je filtrovaný, entity nebo záměru název se zobrazí pod panelem nástrojů. Chcete-li odebrat filtr, vyberte název.
 
-![Snímek obrazovky filtrované vzory entita](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
+![Snímek obrazovky filtrované vzory entity](./media/luis-how-to-model-intent-pattern/filter-entities-2.png)
 
 Bude filtr odebrán a zobrazit všechny vzorky. 
 
-## <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>Přidat vzor z existující utterance na stránce záměr nebo entity
-Vzor můžete vytvořit z existující utterance na buď **záměr** nebo **Entity** stránky. Všechny utterances na libovolné stránce záměr nebo entity se zobrazí v seznamu s pravém sloupci poskytování přístupu k úrovni utterance možnosti, jako **upravit**, **odstranit**, a **přidat jako vzor**.
+## <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>Přidat model z existující utterance na stránce záměr nebo entity
+Vzoru můžete vytvořit ze stávající utterance buď **záměr** nebo **Entity** stránky. Všechny projevy na libovolné stránce záměr nebo entity se zobrazí v seznamu se v pravém sloupci, jako poskytuje přístup k možnosti na úrovni utterance **upravit**, **odstranit**, a **přidat jako vzor**.
 
-1. Pro vybraný řádek utterance, vyberte se třemi tečkami (...) napravo od utterance a vyberte **přidat jako vzor**.
+1. Na vybraný řádek utterance, vyberte tři tečky (...) napravo od utterance a vyberte **přidat jako vzor**.
 
-    [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Snímek obrazovky utterances tabulku s přidat vzor zvýrazněných v nabídce Možnosti")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
+    [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Snímek obrazovky projevy tabulky se vzorem přidat zvýrazní v nabídce Možnosti v")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 
-2. Upravit podle vzoru [syntaxe pravidla](luis-concept-patterns.md#pattern-syntax). Pokud utterance, které jste vybrali označený verzí entity, jsou tyto entity již ve vzorku se správnou syntaxi.
+2. Upravit model podle [syntaktickými pravidly](luis-concept-patterns.md#pattern-syntax). Pokud s entitami označený utterance, kterou jste vybrali, tyto entity jsou již ve vzoru s správnou syntaxi.
 
-    ![Snímek obrazovky filtrované vzory entita](./media/luis-how-to-model-intent-pattern/confirm-patterns-modal.png)
+    ![Snímek obrazovky filtrované vzory entity](./media/luis-how-to-model-intent-pattern/confirm-patterns-modal.png)
 
-## <a name="train-your-app-after-changing-model-with-patterns"></a>Cvičení aplikace po změně modelu pomocí vzorů
-Po přidat, upravit, odebrat nebo změnit přiřazení vzor, [cvičení](luis-how-to-train.md) a [publikování](PublishApp.md) aplikace se změny ovlivňují dotazy koncový bod. 
+## <a name="train-your-app-after-changing-model-with-patterns"></a>Po změně modelu s vzory trénování vaší aplikace
+Po přidání, úpravy, odebrat nebo změnit přiřazení vzor, [trénování](luis-how-to-train.md) a [publikovat](luis-how-to-publish-app.md) vaší aplikace pro vaše změny ovlivnit dotazy koncový bod. 
 
 ## <a name="next-steps"></a>Další postup
 
-* Zjistěte, jak [sestavení vzor](luis-tutorial-pattern.md) s pattern.any a rolí.
-* Zjistěte, jak [cvičení](luis-how-to-train.md) vaší aplikace.
+* Zjistěte, jak [sestavení vzor](luis-tutorial-pattern.md) pattern.any a rolí.
+* Zjistěte, jak [trénování](luis-how-to-train.md) vaší aplikace.

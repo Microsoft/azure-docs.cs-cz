@@ -1,6 +1,6 @@
 ---
-title: Efektivní správě náklady pro SQL Server na virtuálních počítačích Azure | Microsoft Docs
-description: Obsahuje doporučené postupy pro výběr správné virtuálního počítače systému SQL Server cenový model.
+title: Efektivně spravovat náklady pro SQL Server na virtuálních počítačích Azure | Dokumentace Microsoftu
+description: Poskytuje osvědčené postupy pro výběr správné virtuální počítač systému SQL Server cenový model.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -13,155 +13,155 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/02/2018
+ms.date: 07/02/2018
 ms.author: jroth
-ms.openlocfilehash: 71c86af9d4dcdf1026b4f539574b9932ef1cfc89
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: e9033724f62b383ce70488b98a3a8919e3cb198a
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32767796"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37345273"
 ---
-# <a name="pricing-guidance-for-sql-server-azure-vms"></a>Pokyny pro virtuální počítače SQL serveru Azure – ceny
+# <a name="pricing-guidance-for-sql-server-azure-vms"></a>Ceny pokyny pro virtuální počítače Azure s SQL serverem
 
-Tento článek obsahuje pokyny, cenovou [virtuální počítače systému SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) v Azure. Existuje několik možností, které ovlivňují náklady a je důležité vybrat správné bitové kopie, který vyrovnává náklady obchodním požadavkům.
+Tento článek obsahuje pokyny, ocenění [virtuální počítače s SQL serverem](virtual-machines-windows-sql-server-iaas-overview.md) v Azure. Existuje několik možností, které ovlivňují náklady a je důležité vybrat správnou image, který vyrovnává náklady pomocí obchodní požadavky.
 
 > [!TIP]
-> Pokud potřebujete zjistit odhad náklady pro konkrétní kombinaci edici systému SQL Server a velikost virtuálního počítače, najdete na stránce s cenami pro [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) nebo [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux). Vyberte platformu a edici systému SQL Server z **operační systém a Software** seznamu.
+> Pokud potřebujete zjistit odhad nákladů pro konkrétní kombinaci edici systému SQL Server a velikost virtuálního počítače, přečtěte si téma stránce s cenami [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) nebo [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux). Výběr platformy a z edicí systému SQL Server **operační systém nebo Software** seznamu.
 >
-> ![Uživatelské rozhraní na stránce ceny virtuálních počítačů](./media/virtual-machines-windows-sql-server-pricing-guidance/virtual-machines-pricing-ui.png)
+> ![Uživatelské rozhraní na stránce s cenami virtuálních počítačů](./media/virtual-machines-windows-sql-server-pricing-guidance/virtual-machines-pricing-ui.png)
 >
-> Nebo použijte [cenové kalkulačky](https://azure.microsoft.com/pricing/#explore-cost) k přidání a konfigurace virtuálního počítače. 
+> Nebo použijte [cenové kalkulačky](https://azure.microsoft.com/pricing/#explore-cost) přidání a konfigurace virtuálního počítače. 
 
-## <a name="free-licensed-sql-server-editions"></a>Uvolněte licenci edicích systému SQL Server
+## <a name="free-licensed-sql-server-editions"></a>Licencované bezplatně edicích systému SQL Server
 
-Pokud chcete vývoj, testování nebo sestavení testování konceptu, použijte volně licencovanou **SQL Server Developer edition**. Tato edice obsahuje všechny funkce SQL Server Enterprise edition, což umožňuje sestavení a testů jakéhokoli typu aplikace. Developer edition však nelze spustit v produkčním prostředí. SQL Server Developer edition virtuálních počítačů pouze budou vám účtovány poplatky nákladů na virtuální počítač, protože nejsou k dispozici žádné přidružené k serveru SQL, náklady na licencování.
+Pokud chcete pro vývoj, testování nebo sestavení testování konceptu, použijte volně licencovaný **SQL Server Developer edition**. Tato verze obsahuje všechny funkce edice SQL serveru Enterprise, díky tomu můžete sestavit a otestovat jakýkoli typ aplikace. U verze Developer edition však nelze spustit v produkčním prostředí. SQL Server Developer edition virtuálního počítače pouze neúčtují poplatky za náklady na virtuální počítač, protože nejsou k dispozici žádný přidružený Server SQL, náklady na licencování.
 
-Pokud chcete spustit prosté úlohy v produkčním prostředí (< 4 jádra, < 1 GB paměti, < 10 GB/databáze), použijte volně licencovanou **edice systému SQL Server Express**. Edice systému SQL Server Express virtuální počítač také pouze budou vám účtovány poplatky nákladů na virtuální počítač.
+Pokud budete chtít spuštění jednoduché úlohy v produkčním prostředí (< 4 jádra, < 1 GB paměti, < 10 GB/databáze), použijte volně licencovaný **edice systému SQL Server Express**. Edice systému SQL Server Express virtuálního počítače se také pouze neúčtují poplatky za náklady na virtuální počítač.
 
-Pro tyto vývoj/testování a lightweight produkčním prostředí můžete také šetřit peníze a vybrat menší velikost virtuálního počítače, který odpovídá těchto úloh. DS1v2 může být vhodné v některých scénářích.
+Pro tyto vývoj/testování a nenáročné produkční úlohy můžete také výběrem menší velikost virtuálního počítače, který odpovídá na tyto úlohy ušetřit peníze. DS1v2 může být dobrou volbou v některých scénářích.
 
-Pokud chcete vytvořit virtuální počítač Azure SQL Server 2017 s jedním z těchto bitových kopií, v následujících tématech:
+Vytvoření virtuálního počítače Azure s SQL serverem 2017 s jedním z těchto imagí najdete v tématu na následujících odkazech:
 
-| Platforma | Volně licencovanou Image |
+| Platforma | Volně licencované Image |
 |---|---|
-| Windows Server 2016 | [SQL Server 2017 vývojáře Azure virtuálních počítačů](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016)<br/>[SQL Server 2017 Express virtuálních počítačů Azure](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016) |
-| Red Hat Enterprise Linux | [SQL Server 2017 vývojáře Azure virtuálních počítačů](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonRedHatEnterpriseLinux74)<br/>[SQL Server 2017 Express virtuálních počítačů Azure](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonRedHatEnterpriseLinux74) |
-| SUSE Linux Enterprise Server | [SQL Server 2017 vývojáře Azure virtuálních počítačů](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonSLES12SP2)<br/>[SQL Server 2017 Express virtuálních počítačů Azure](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2) |
-| Ubuntu | [SQL Server 2017 vývojáře Azure virtuálních počítačů](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonUbuntuServer1604LTS)<br/>[SQL Server 2017 Express virtuálních počítačů Azure](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonUbuntuServer1604LTS) |
+| Windows Server 2016 | [SQL Server 2017 Developer Azure VM](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016)<br/>[SQL Server 2017 Express virtuálním počítači Azure](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016) |
+| Red Hat Enterprise Linux | [SQL Server 2017 Developer Azure VM](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonRedHatEnterpriseLinux74)<br/>[SQL Server 2017 Express virtuálním počítači Azure](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonRedHatEnterpriseLinux74) |
+| SUSE Linux Enterprise Server | [SQL Server 2017 Developer Azure VM](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonSLES12SP2)<br/>[SQL Server 2017 Express virtuálním počítači Azure](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2) |
+| Ubuntu | [SQL Server 2017 Developer Azure VM](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonUbuntuServer1604LTS)<br/>[SQL Server 2017 Express virtuálním počítači Azure](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonUbuntuServer1604LTS) |
 
-## <a name="paid-sql-server-editions"></a>Placených edicích systému SQL Server
+## <a name="paid-sql-server-editions"></a>Placené edice SQL serveru
 
-Pokud máte jiný lightweight produkční zatížení, použijte jednu z následujících edicích systému SQL Server:
+Pokud máte jiné lightweight produkční úlohy, použijte jednu z následujících edic systému SQL Server:
 
-| Edice systému SQL Server | Úloha |
+| Edice SQL serveru | Úloha |
 |-----|-----|
-| Web | Malé weby |
-| Standard | Malé a střední zatížení |
-| Enterprise | Velké soubory nebo důležité úlohy|
+| Web | Malé webové stránky |
+| Standard | Malé až střední úlohy |
+| Enterprise | Velká, nebo klíčové úlohy|
 
-Máte dvě možnosti platit za licencování SQL serveru pro tyto edice: *platíte za použití* nebo *přineste si vlastní licenci (BYOL)*.
+Máte dvě možnosti k platbám za licencování SQL serveru v těchto edicích: *platit za použití* nebo *používání vlastní licence (BYOL)*.
 
 ## <a name="pay-per-usage"></a>Platba za použití
 
-**Licenci systému SQL Server za použití platícího** znamená, že za sekundu náklady na provozování virtuálního počítače Azure obsahuje náklady na licence pro SQL Server. Můžete zobrazit ceny pro různých edicích systému SQL Server (Web, Standard, Enterprise) ve virtuálním počítači Azure pro stránce s cenami [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) nebo [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
+**Licenci systému SQL Server za použití platební** znamená, že za sekundu náklady na provozování virtuálního počítače Azure zahrnují cenu licence SQL serveru. Můžete zobrazit ceny pro jiné edice systému SQL Server (Web, Standard, Enterprise) ve virtuálním počítači Azure stránce s cenami za [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows) nebo [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux).
 
-Náklady na je stejný pro všechny verze systému SQL Server (2012 SP3 na 2017). Náklady na licencování za sekundu závisí na počtu jader virtuálního počítače, což je standard pro všechny licencování SQL serveru.
+Náklady jsou stejné pro všechny verze systému SQL Server (2012 SP3-2017). Náklady na licencování za sekundu závisí na počtu virtuálních procesorů virtuálního počítače.
 
-Platícího systému SQL Server licencování za použití se doporučuje pro:
+SQL serveru platíte licencování za využití se doporučuje pro:
 
-- **Dočasné nebo pravidelné úlohy**. Například aplikace, která musí podporovat událost pro několik měsíců každý rok nebo obchodní analýzy v pondělí.
+- **Dočasné nebo pravidelné úlohy**. Například aplikace, který musí podporovat událost pár měsíců každý rok nebo obchodní analýza v pondělí.
 
-- **Úlohy s neznámou životnost nebo škálování**. Například aplikace, nemusí být nutné několik měsíců, nebo které může být více nebo méně výpočetního výkonu, v závislosti na vyžádání.
+- **Úlohy se neznámý životnosti nebo určený počet číslic**. Například aplikace, které nemusí být vyžadované během pár měsíců, nebo které může vyžadovat více nebo méně výpočetní výkon, v závislosti na vyžádání.
 
-Pokud chcete vytvořit virtuální počítač Azure SQL Server 2017 s jedním z těchto bitových kopií platím za použití, v následujících tématech:
+Vytvoření virtuálního počítače Azure s SQL serverem 2017 s jedním z těchto imagí platby za využití najdete v tématu na následujících odkazech:
 
-| Platforma | Licencovanou Image |
+| Platforma | Licencované Image |
 |---|---|
-| Windows Server 2016 | [SQL Server virtuálního počítače Azure webové 2017](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016)<br/>[SQL Server 2017 standardní virtuální počítač Azure](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016)<br/>[SQL Server virtuálního počítače Azure Enterprise 2017](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016) |
-| Red Hat Enterprise Linux | [SQL Server virtuálního počítače Azure webové 2017](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonRedHatEnterpriseLinux74)<br/>[SQL Server 2017 standardní virtuální počítač Azure](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonRedHatEnterpriseLinux74)<br/>[SQL Server virtuálního počítače Azure Enterprise 2017](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonRedHatEnterpriseLinux74) |
-| SUSE Linux Enterprise Server | [SQL Server virtuálního počítače Azure webové 2017](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonSLES12SP2)<br/>[SQL Server 2017 standardní virtuální počítač Azure](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonSLES12SP2)<br/>[SQL Server virtuálního počítače Azure Enterprise 2017](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonSLES12SP2) |
-| Ubuntu | [SQL Server virtuálního počítače Azure webové 2017](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS)<br/>[SQL Server 2017 standardní virtuální počítač Azure](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS)<br/>[SQL Server virtuálního počítače Azure Enterprise 2017](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) |
+| Windows Server 2016 | [SQL Server 2017 Web Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016)<br/>[SQL Server 2017 standardní virtuální počítač Azure](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016)<br/>[SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016) |
+| Red Hat Enterprise Linux | [SQL Server 2017 Web Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonRedHatEnterpriseLinux74)<br/>[SQL Server 2017 standardní virtuální počítač Azure](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonRedHatEnterpriseLinux74)<br/>[SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonRedHatEnterpriseLinux74) |
+| SUSE Linux Enterprise Server | [SQL Server 2017 Web Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonSLES12SP2)<br/>[SQL Server 2017 standardní virtuální počítač Azure](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonSLES12SP2)<br/>[SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonSLES12SP2) |
+| Ubuntu | [SQL Server 2017 Web Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonUbuntuServer1604LTS)<br/>[SQL Server 2017 standardní virtuální počítač Azure](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonUbuntuServer1604LTS)<br/>[SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseonUbuntuServer1604LTS) |
 
 > [!IMPORTANT]
-> Při vytváření virtuálního počítače s SQL serverem na portálu **zvolte velikost** v okně se zobrazí odhadované náklady. Je důležité si uvědomit, že je tento odhad výpočetní náklady pro spuštění virtuálního počítače společně s žádné OS licenční náklady (Windows nebo operačních systémů Linux třetích stran).
+> Při vytváření virtuálního počítače s SQL serverem na portálu **zvolte velikost** okně zobrazí odhadované náklady. Je důležité si uvědomit, že tento odhad pouze náklady na výpočty pro spuštění virtuálního počítače společně s náklady (Windows nebo operačních systémů Linux třetích stran) licencí k operačnímu systému.
 >
-> ![Vyberte virtuální počítač velikost okna](./media/virtual-machines-windows-sql-server-pricing-guidance/sql-vm-choose-size-pricing-estimate.png)
+> ![Zvolte velikost okna virtuálního počítače](./media/virtual-machines-windows-sql-server-pricing-guidance/sql-vm-choose-size-pricing-estimate.png)
 >
->Nezahrnuje dodatečné licenční náklady pro webové, Standard a Enterprise systému SQL Server. Chcete-li získat nejpřesnější cenovou odhad, vyberte operační systém a edice systému SQL Server na na stránce s cenami pro [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) nebo [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+>Nezahrnuje dodatečné licenční náklady na pro edice Web, Standard a Enterprise systému SQL Server. Pokud chcete získat co nejvíce zpřesnili cenové odhad, vyberte svůj operační systém a edice systému SQL Server na stránce s cenami [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) nebo [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
 ## <a name="bring-your-own-license-byol"></a>Používání vlastní licence (BYOL)
 
-**Přináší vlastní licenci na SQL Server prostřednictvím mobilita licencí**, také nazývaný jako **BYOL**, znamená existující Volume License serveru SQL pomocí programu Software Assurance virtuální počítač Azure. Virtuální počítač SQL Server pomocí BYOL pouze poplatky pro náklady na provozování virtuálního počítače, ne pro licencování SQL serveru, vzhledem k tomu, že jste už získali licence a programu Software Assurance prostřednictvím multilicenčního programu.
+**Přináší díky mobilitě licencí používat vlastní licenci na SQL Server**, která se také označují jako **BYOL**, znamená, že pomocí stávající licence SQL Server svazek s programem Software Assurance na Virtuálním počítači Azure. SQL Server virtuálního počítače s pomocí BYOL jenom poplatky za náklady na provozování virtuálního počítače, nikoli pro licencování SQL serveru, vzhledem k tomu, že jste už získali licencí se Software Assurance prostřednictvím multilicenčního programu.
 
 > [!NOTE]
-> BYOL bitové kopie jsou momentálně dostupné jenom pro virtuální počítače s Windows. Však můžete ručně nainstalovat SQL Server na virtuálním počítači pouze Linux. Viz pokyny v [Linux SQL virtuálního počítače – nejčastější dotazy](../../linux/sql/sql-server-linux-faq.md).
+> BYOL Image jsou aktuálně dostupné jenom pro virtuální počítače s Windows. Můžete však ručně nainstalujte SQL Server na virtuálním počítači pouze pro Linux. Viz pokyny v [nejčastější dotazy týkající se virtuálních počítačů v systému Linux SQL](../../linux/sql/sql-server-linux-faq.md).
 
-Přináší vlastní SQL licencování prostřednictvím mobilita licencí se doporučuje pro:
+Přenesení vlastní SQL licencování díky mobilitě licencí používat se doporučuje pro:
 
-- **Nepřetržité úlohy**. Například aplikace, která musí podporovat podnikové operace 24 x 7.
+- **Nepřetržité úlohy**. Například aplikace, které potřebuje pro podporu obchodních operací 24 x 7.
 
-- **Úlohy s známé životnost a škálování**. Například aplikace, která je nezbytné pro celý rok a který požadavek má byla naplánované.
+- **Úlohy se známými životnost a škálování**. Například aplikace, která je požadována pro celý rok a byla naplánované který požadavek.
 
-Používat BYOL virtuálního počítače s SQL Server, musí mít licenci pro SQL Server Standard nebo Enterprise a [programu Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default.aspx#tab=1), což je požadovaná možnost prostřednictvím některé multilicenčních programů a volitelný nákup s ostatními. Cenová úroveň poskytované prostřednictvím multilicenčních programů se liší, na základě typu smlouvy a množství a nebo závazku k systému SQL Server. Ale jako existuje pravidlo, přináší vlastní licenci pro produkční nepřetržité úlohy má následující výhody:
+BYOL pomocí virtuálního počítače s SQL serverem, musí mít licenci pro SQL Server Standard nebo Enterprise a [programu Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default.aspx#tab=1), což je požadované možnost přes několik multilicenčních programů a volitelné nákupu s ostatními. Cenová úroveň poskytuje prostřednictvím multilicenčních programů se liší, na základě typu smlouvy a množství a nebo závazku k systému SQL Server. Ale jako říci, používáním vlastní licence za nepřetržité produkční úlohy má následující výhody:
 
-| BYOL výhody | Popis |
+| Výhoda BYOL | Popis |
 |-----|-----|
-| **Úspora nákladů** | Přináší vlastní licenci na SQL Server je nákladově efektivnější než platícího za použití, pokud úloha běží nepřetržitě, SQL Server Standard nebo Enterprise pro *více než 10 měsíců*. |
-| **Dlouhodobé úspory** | V průměru je *30 % levnější za jeden rok.* koupit nebo obnovit licenci SQL serveru pro první 3 roky. Kromě toho po 3 roky, nemusíte už obnovit licence, platit pouze pro Software Assurance. V tomto okamžiku je *200 % levnější*. |
-| **Volné pasivní sekundární repliky** | Další výhodou přinesou vlastní licence je [volné licencování pro jeden pasivní sekundární repliky](https://azure.microsoft.com/pricing/licensing-faq/) na Server SQL pro vysokou dostupnost pro účely. To snižuje v poloviční licenční náklady na vysoce dostupné nasazení systému SQL Server (například použití skupin dostupnosti Always On). Práva pro spuštění pasivní sekundární jsou k dispozici prostřednictvím výhody Software Assurance servery převzetí služeb při selhání. |
+| **Úspora nákladů** | Používáním vlastní licence SQL serveru je nákladově efektivnější než platit podle využití, pokud úloha běží nepřetržitě, SQL Server Standard nebo Enterprise pro *více než 10 měsíců*. |
+| **Dlouhodobé úspory** | V průměru je *30 % levnější za rok* k nákupu nebo obnovování licenci systému SQL Server na první 3 roky. Kromě toho po 3 roky, nemusíte už obnovení licence, stačí zaplatit programu Software Assurance. V tomto okamžiku je *200 % levnější*. |
+| **Bezplatné pasivní sekundární repliky** | Další výhodou používáním vlastní licence je [zdarma licencování pro jednu pasivní sekundární repliku](https://azure.microsoft.com/pricing/licensing-faq/) za SQL Server potřebujete zajistit vysokou dostupnost. To snižuje v polovině licenční náklady na nasazení vysoce dostupného SQL serveru (například použití skupin dostupnosti Always On). Oprávnění ke spuštění pasivní sekundární jsou k dispozici prostřednictvím převzetí služeb při selhání serverů programu Software Assurance. |
 
-Vytvoření virtuálního počítače s SQL serverem 2017 Azure s jedním z těchto přineste si vlastníte license bitových kopií naleznete v tématu předponu "{BYOL}" virtuální počítače:
+Vytvoření virtuálního počítače Azure s SQL serverem 2017 s jedním z těchto imagí přineste svůj – používání vlastní licence, najdete v tématu virtuálních počítačů s předponou "{BYOL}":
 
-- [SQL Server virtuálního počítače Azure Enterprise 2017](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016)
+- [SQL Server 2017 Enterprise Azure VM](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017EnterpriseWindowsServer2016)
 - [SQL Server 2017 standardní virtuální počítač Azure](https://portal.azure.com/#create/Microsoft.BYOLSQLServer2017StandardonWindowsServer2016)
 
 > [!IMPORTANT]
-> Dejte nám vědět do 10 dnů kolik licencí systému SQL Server používáte v Azure. Odkazy na předchozí bitové kopie jsou pokyny o tom, jak to udělat.
+> Dejte nám vědět do 10 dnů kolik licencí SQL serveru, který používáte v Azure. Odkazy na předchozí obrázky jsou pokyny o tom, jak to provést.
 
 > [!NOTE]
-> Není možné změnit model licencování platím za sekundu virtuální počítač SQL Server používat vlastní licenci. V takovém případě musíte vytvořit nový virtuální počítač BYOL a migrovat databáze do nového virtuálního počítače.
+> Není možné změnit licenční model platbami za sekundu virtuálního počítače s SQL serverem používat vlastní licenci. V takovém případě musíte vytvořit nový virtuální počítač BYOL a migrovat databáze do nového virtuálního počítače.
 
 ## <a name="reduce-costs"></a>Snížení nákladů
 
-Abyste se vyhnuli zbytečných nákladů, zvolte velikost optimální virtuálního počítače a zvažte přerušované vypnutí systému pro nesouvislé úlohy.
+Abyste zabránili zbytečné náklady, zvolte pro velikost virtuálního počítače optimální a vezměte v úvahu přerušované vypínání pro nesouvislé úlohy.
 
 ### <a id="machinesize"></a> Správně velikost virtuálního počítače
 
-Náklady na licencování SQL serveru přímo souvisí s počet jader. Zvolte velikost virtuálního počítače, který odpovídá vašim potřebám očekávané pro využití procesoru, paměti, úložiště a vstupně-výstupní šířky. Úplný seznam možnosti velikosti počítačů najdete v tématu [velikosti virtuálních počítačů Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) a [velikosti virtuálního počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Licenční náklady na SQL Server přímo souvisí s počet virtuálních procesorů. Zvolte velikost virtuálního počítače, který odpovídá vašim potřebám očekávané využití procesoru, paměti, úložiště a šířku pásma vstupně-výstupních operací. Úplný seznam možnosti velikosti počítačů najdete v tématu [velikosti virtuálních počítačů s Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes) a [velikosti virtuálního počítače s Linuxem](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Existují nové velikosti počítačů, které funkce fungují dobře u určitých typů úloh SQL serveru. Tyto počítače velikosti udržování vysoké úrovně paměť, úložiště a vstupně-výstupní šířky pásma, ale mají nižší počet virtualizované jader. Představte si třeba v následujícím příkladu:
+Existují nové velikosti počítačů, které fungují dobře u určitých typů úloh SQL serveru. Tyto velikosti počítačů udržovat velký objem paměti, úložiště a šířku pásma vstupně-výstupních operací, ale mají nižší počet virtualizované jader. Představte si třeba v následujícím příkladu:
 
-| Velikost virtuálního počítače | vCPU | Memory (Paměť) | Maximální počet disků | Maximální propustnost vstupu/výstupu | Náklady na licencování SQL | Celkové náklady (výpočetní + licencování) |
+| Velikost virtuálního počítače | vCPU | Memory (Paměť) | Maximální počet disků | Maximální propustnost vstupně-výstupních operací | Náklady na licencování SQL | Celkové náklady (výpočetní + licencování) |
 |---|---|---|---|---|---|---|
-| **Standard_DS14v2** | 16 | 112 GB | 32 | 51 200 IOPS nebo 768 MB/s | | |
-| **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51 200 IOPS nebo 768 MB/s | 75 % nižší | 57 % nižší |
+| **Standard_DS14v2** | 16 | 112 GB | 32 | 51 200 vstupně-výstupních operací nebo 768 MB/s | | |
+| **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51 200 vstupně-výstupních operací nebo 768 MB/s | 75 % nižšími | 57 % nižší |
 
 > [!IMPORTANT]
-> Toto je příklad v daném okamžiku. Nejnovější specifikace, naleznete v článcích velikost počítače a Azure pro stránce s cenami [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) a [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+> Toto je příklad bodu v čase. Nejnovější specifikace, najdete v článcích velikostí počítačů a stránce s cenami za Azure [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) a [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-V předchozím příkladu můžete uvidíte, že specifikace pro **Standard_DS14v2** a **Standard_DS14 4v2** jsou identické s výjimkou Vcpu. Přípona **-4v2** na konci **Standard_DS14 4v2** velikost počítače udává počet active Vcpu. Vzhledem k tomu, že náklady na licencování SQL serveru, jsou svázané s počet jader, to významně snižuje náklady na virtuální počítač ve scénářích, kde nejsou potřebné navíc Vcpu. Toto je jedním z příkladů a existuje mnoho velikosti počítačů s omezené Vcpu, které jsou označeny tento vzor příponu. Další informace naleznete v příspěvku blogu [uvedení nové velikosti virtuálního počítače Azure pro další databáze nákladově efektivní práci](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
+V předchozím příkladu vidíte, že specifikace pro **Standard_DS14v2** a **Standard_DS14 4v2** jsou stejné s výjimkou virtuálních procesorů. Přípona **-4v2** na konci **Standard_DS14 4v2** velikost počítače označuje počet aktivních virtuálních procesorů. Protože náklady na licencování SQL serveru jsou svázány se počet virtuálních procesorů, to významně snižuje náklady na virtuální počítač ve scénářích, které nevyžadují další virtuální procesory. Toto je jeden příklad a existuje mnoho velikostí počítačů pomocí virtuální procesory s omezením, které jsou označené v tomto modelu příponu. Další informace naleznete v příspěvku blogu [oznamujeme nové velikosti virtuálních počítačů Azure pro další databáze nákladově efektivní práci](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
-### <a name="shut-down-your-vm-when-possible"></a>Vypnout váš virtuální počítač, pokud je to možné
+### <a name="shut-down-your-vm-when-possible"></a>Vypnutí vašeho virtuálního počítače, pokud je to možné
 
-Pokud používáte jakékoli úlohy, které nepoužívají nepřetržitě, vezměte v úvahu vypínání virtuálního počítače během období neaktivní. Platíte jenom za to, co používáte.
+Pokud používáte jakékoli úlohy, která nepoužívají nepřetržitě, vezměte v úvahu vypnutí virtuálních počítačů během neaktivní období. Platíte jenom za to, co používáte.
 
-Pokud zkoušíte jednoduše na SQL Server na virtuální počítač Azure, by například chtít platit poplatky omylem ponecháte systémem týdny. Jeden řešením je použití [funkce automatického ukončení](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/).
+Například pokud jsou jednoduše vyzkoušet SQL Server na Virtuálním počítači Azure, nebude chcete účtovat poplatky podle omylem se v něm spuštěná týdny. Jedním řešením je použít [funkci automatického vypínání](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/).
 
-![Virtuální počítač SQL autoshutdown](./media/virtual-machines-windows-sql-server-pricing-guidance/sql-vm-auto-shutdown.png)
+![Autoshutdown virtuálního počítače SQL](./media/virtual-machines-windows-sql-server-pricing-guidance/sql-vm-auto-shutdown.png)
 
-Automatické ukončení je součástí větší sady podobné funkce poskytované službou [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab).
+Automatické vypnutí je součástí větší sady podobné funkce poskytované službou [Azure DevTest Labs](https://azure.microsoft.com/services/devtest-lab).
 
-Pro jiné pracovní postupy, zvažte automaticky vypínání a restartování virtuálních počítačů Azure v rámci řešení pro skriptování, například [Azure Automation](https://azure.microsoft.com/services/automation/).
+Další pracovní postupy, zvažte možnost Automatické vypnutí a restartování virtuálních počítačů Azure pomocí skriptování řešení, jako například [Azure Automation](https://azure.microsoft.com/services/automation/).
 
 > [!IMPORTANT]
-> Vypíná a rušení přidělení virtuálního počítače je jedinou možností, aby se zabránilo poplatky. Jednoduše zastavení nebo pomocí možnosti napájení vypnout virtuální počítač stále způsobuje poplatky za používání.
+> Vypíná a rušení přidělení virtuálního počítače je jediný způsob, jak se vyhnout poplatkům. Jednoduše zastavení nebo pomocí možnosti vypnutí virtuálního počítače stále neúčtují poplatky za využití.
 
-## <a name="next-steps"></a>Další postup
+## <a name="next-steps"></a>Další kroky
 
-Obecné Azure ceny pokyny najdete v tématu [zabránit neočekávané náklady s Azure fakturace a náklady na správu](../../../billing/billing-getting-started.md). Nejnovější virtuální počítače ceny, včetně systému SQL Server, najdete v tématu Azure virtuálních počítačů Azure pro stránce s cenami [virtuálních počítačů Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) a [virtuální počítače s Linuxem](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
+Obecné Azure ceny pokyny najdete v tématu [jak zabránit neočekávaným nákladům se správou nákladů a fakturací Azure](../../../billing/billing-getting-started.md). Nejnovější virtuální počítače cen, včetně SQL serveru, najdete v článku stránce s cenami za Azure virtuální počítač Azure [virtuální počítače s Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) a [virtuální počítače s Linuxem](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
-Přehled systému SQL Server běžící na virtuálních počítačích Azure najdete v následujících článcích:
+Přehled systému SQL Server provozovaný v Azure Virtual Machines najdete v následujících článcích:
 
-- [Přehled systému SQL Server na virtuálních počítačích Windows](virtual-machines-windows-sql-server-iaas-overview.md)
-- [Přehled systému SQL Server na virtuální počítače s Linuxem](../../linux/sql/sql-server-linux-virtual-machines-overview.md)
+- [Přehled SQL serveru na virtuálních počítačích s Windows](virtual-machines-windows-sql-server-iaas-overview.md)
+- [Přehled SQL serveru na virtuálních počítačích s Linuxem](../../linux/sql/sql-server-linux-virtual-machines-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Integrovat Azure Kubernetes služby Azure Active Directory
-description: Jak vytvořit clustery s podporou služby Azure Active Directory Azure Kubernetes Service.
+title: Integrace služby Azure Active Directory s Azure Kubernetes Service
+description: Jak vytvářet clustery s podporou Azure Active Directory Azure Kubernetes Service.
 services: container-service
 author: iainfoulds
 manager: jeconnoc
@@ -9,117 +9,117 @@ ms.topic: article
 ms.date: 6/17/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ff9f107b8cd10cdab71ba13a1925403d2d144984
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 7ae3818795cddf5dfbb93ca6cc8dfff9d1c44c03
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128492"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341230"
 ---
-# <a name="integrate-azure-active-directory-with-aks---preview"></a>Integrovat AKS - Preview služby Azure Active Directory
+# <a name="integrate-azure-active-directory-with-aks---preview"></a>Integrace Azure Active Directory s AKS – Preview
 
-Služba Azure Kubernetes (AKS) lze nakonfigurovat k využívání služby Azure Active Directory pro ověřování uživatelů. V této konfiguraci může přihlásit k clusteru Azure Kubernetes Service pomocí tokenu ověřování Azure Active Directory. Kromě toho Správce clusterů mohou konfigurace řízení přístupu na základě rolí Kubernetes podle uživatelů identity nebo adresář členství ve skupině.
+Azure Kubernetes Service (AKS) je nakonfigurovat pro použití služby Azure Active Directory k ověřování uživatelů. V této konfiguraci se můžete přihlásit cluster Azure Kubernetes Service pomocí tokenu ověřování Azure Active Directory. Kromě toho Správce clusterů budou moct konfigurovat řízení přístupu na základě rolí Kubernetes podle uživatelů identity nebo adresář členství ve skupině.
 
-Tento dokument podrobně popisuje vytvoření všech nezbytných předpokladů pro AKS a Azure AD, nasazení služby Azure AD s podporou clusteru a vytvoření jednoduché role RBAC v AKS clusteru.
+Tento dokument podrobně popisuje vytvoření všechny nezbytné požadavky pro Azure AD a AKS, nasazení clusteru Azure AD povolené a vytvoření jednoduchého role RBAC v clusteru AKS.
 
 > [!IMPORTANT]
-> Integrace Azure RBAC služby Kubernetes (AKS) a Azure AD je aktuálně v **preview**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
+> Integrace služby Azure Kubernetes Service (AKS) RBAC a Azure AD je aktuálně ve **ve verzi preview**. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před zveřejněním změnit.
 >
 
 ## <a name="authentication-details"></a>Podrobnosti o ověřování
 
-Ověřování služby Azure AD je určen k Azure Kubernetes clusterů s OpenID Connect. OpenID Connect je vrstvu identit postavená na protokol OAuth 2.0. Další informace o OpenID Connect naleznete v [Open ID connect dokumentaci][open-id-connect].
+Ověřování Azure AD je k dispozici ke clusterům Kubernetes v Azure s OpenID Connect. OpenID Connect se vrstvu identit postavené na protokol OAuth 2.0. Další informace o OpenID Connect najdete v [Open ID connect dokumentaci][open-id-connect].
 
-Z uvnitř clusteru Kubernetes Webhooku tokenu ověřování používají k ověření tokeny ověřování. Ověření pomocí tokenu Webhooku je nakonfigurované a spravované v rámci clusteru AKS. Další informace o Webhooku tokenu ověřování najdete v [webhooku ověřování dokumentaci][kubernetes-webhook].
+Z v rámci clusteru Kubernetes, ověřování pomocí tokenu Webhooku slouží k ověření ověřovacích tokenů. Ověřování pomocí tokenu Webhooku je nakonfigurovat a spravovat jako součást clusteru AKS. Další informace o Webhooků, ověřování pomocí tokenu lze nalézt v [dokumentace ověřování webhooku][kubernetes-webhook].
 
 > [!NOTE]
-> Při konfiguraci Azure AD pro ověřování AKS, jsou nakonfigurované dva aplikaci Azure AD. Tuto operaci musíte dokončit správce klientovi Azure.
+> Při konfiguraci Azure AD pro ověřování AKS, jsou nakonfigurovány dvě aplikace Azure AD. Tuto operaci musíte dokončit microsoftem nebo správcem tenanta Azure.
 
-## <a name="create-server-application"></a>Vytvoření aplikace serveru
+## <a name="create-server-application"></a>Vytvoření serverové aplikace
 
-První aplikace Azure AD se používá k získání členství ve skupině uživatelů Azure AD.
+První aplikaci Azure AD slouží k získání členství ve skupině uživatelů Azure AD.
 
 1. Vyberte položky **Azure Active Directory** > **Registrace aplikací** > **Registrace nové aplikace**.
 
-  Pojmenujte aplikaci, vyberte **webovou aplikaci nebo API** pro typ aplikace a zadejte libovolnou hodnotu formátu identifikátoru URI pro **přihlašovací adresa URL**. Vyberte **vytvořit** po dokončení.
+  Pojmenujte aplikaci, vyberte **webovou aplikaci nebo API** pro typ aplikace a zadejte libovolnou hodnotu ve formátu identifikátoru URI pro **přihlašovací adresa URL**. Vyberte **vytvořit** až budete hotovi.
 
-  ![Vytvoření registrace Azure AD](media/aad-integration/app-registration.png)
+  ![Vytvoření registrace služby Azure AD](media/aad-integration/app-registration.png)
 
-2. Vyberte **Manifest** a upravit `groupMembershipClaims` hodnotu `"All"`.
+2. Vyberte **Manifest** a upravit `groupMembershipClaims` hodnota, která se `"All"`.
 
   Aktualizace po dokončení uložte.
 
   ![Aktualizovat členství ve skupině pro všechny](media/aad-integration/edit-manifest.png)
 
-3. Zpět na aplikace Azure AD, vyberte **nastavení** > **klíče**.
+3. Zpět v aplikaci Azure AD, vyberte **nastavení** > **klíče**.
 
-  Přidejte klíče popis, vyberte termín vypršení platnosti a vyberte **Uložit**. Poznamenejte si hodnotu klíče. Při nasazení Azure AD povolili AKS clusteru, tato hodnota se označuje jako `Server application secret`.
+  Přidat popis klíče, vyberte termín vypršení platnosti a vyberte **Uložit**. Poznamenejte si hodnotu klíče. Při nasazení Azure AD povolené clusteru AKS, tato hodnota se označuje jako `Server application secret`.
 
-  ![Získat soukromý klíč aplikace](media/aad-integration/application-key.png)
+  ![Získání privátní klíč aplikace](media/aad-integration/application-key.png)
 
-4. Vrátit se do aplikace Azure AD, vyberte **nastavení** > **požadovaná oprávnění** > **přidat**  >   **Vybrat rozhraní API** > **Microsoft Graph** > **vyberte**.
+4. Vraťte se do aplikace Azure AD, vyberte **nastavení** > **požadovaná oprávnění** > **přidat**  >   **Vyberte rozhraní API** > **Microsoft Graphu** > **vyberte**.
 
   ![Vyberte rozhraní graph API](media/aad-integration/graph-api.png)
 
-5. V části **oprávnění aplikací** zaškrtněte vedle **čtení dat adresáře**.
+5. V části **oprávnění aplikace** přidejte zaškrtnutí vedle **čtení dat adresáře**.
 
-  ![Nastavte oprávnění aplikací grafu](media/aad-integration/read-directory.png)
+  ![Nastavte oprávnění ke graphu aplikace](media/aad-integration/read-directory.png)
 
-6. V části **DELEGOVANÁ oprávnění**, zaškrtněte vedle **přihlášení a čtení profilu uživatele** a **čtení dat adresáře**. Uložte aktualizace jednou provést.
+6. V části **DELEGOVANÁ oprávnění**, přidejte zaškrtnutí vedle **přihlášení a čtení profilu uživatele** a **čtení dat adresáře**. Uložte změny, až to bude hotové.
 
-  ![Nastavte oprávnění aplikací grafu](media/aad-integration/delegated-permissions.png)
+  ![Nastavte oprávnění ke graphu aplikace](media/aad-integration/delegated-permissions.png)
 
-7. Vyberte **provádí**, zvolte *Microsoft Graph* ze seznamu rozhraní API, pak vyberte **udělit oprávnění**. Tento krok se nezdaří, pokud není aktuální účet správce klienta
+7. Vyberte **provádí**, zvolte *Microsoft Graphu* ze seznamu rozhraní API, vyberte **udělit oprávnění**. Tento krok selže, pokud není aktuální účet správce tenanta.
 
-  ![Nastavte oprávnění aplikací grafu](media/aad-integration/grant-permissions.png)
+  ![Nastavte oprávnění ke graphu aplikace](media/aad-integration/grant-permissions.png)
 
-8. Vraťte se k aplikaci a poznamenejte si **ID aplikace**. Při nasazení clusteru služby Azure AD s podporou AKS, tato hodnota se označuje jako `Server application ID`.
+8. Vraťte se do aplikace a poznamenejte si **ID aplikace**. Při nasazování clusteru služby Azure AD povolené AKS, tato hodnota se označuje jako `Server application ID`.
 
   ![Získání ID aplikace](media/aad-integration/application-id.png)
 
-## <a name="create-client-application"></a>Vytvoření aplikace klienta
+## <a name="create-client-application"></a>Vytvořit klientskou aplikaci
 
-Druhý aplikace Azure AD se používá při přihlašování pomocí rozhraní příkazového řádku Kubernetes (kubectl.)
+Druhá aplikace Azure AD se používá při přihlášení s využitím rozhraní příkazového řádku Kubernetes (kubectl).
 
 1. Vyberte položky **Azure Active Directory** > **Registrace aplikací** > **Registrace nové aplikace**.
 
-  Zadejte název, vyberte aplikaci **nativní** pro typ aplikace a zadejte libovolnou hodnotu formátu identifikátoru URI pro **identifikátor URI pro přesměrování**. Vyberte **vytvořit** po dokončení.
+  Pojmenujte aplikaci, vyberte **nativní** pro typ aplikace a zadejte libovolnou hodnotu ve formátu identifikátoru URI pro **identifikátor URI pro přesměrování**. Vyberte **vytvořit** až budete hotovi.
 
   ![Vytvoření registrace AAD](media/aad-integration/app-registration-client.png)
 
-2. Aplikace Azure AD, vyberte **nastavení** > **požadovaná oprávnění** > **přidat** > **vyberte Rozhraní API** a vyhledávání pro název serveru aplikace vytvořené v posledním kroku tohoto dokumentu.
+2. V aplikaci Azure AD, vyberte **nastavení** > **požadovaná oprávnění** > **přidat** > **vybrat Rozhraní API** a vyhledávání pro název serveru aplikace vytvořené v předchozím kroku tohoto dokumentu.
 
-  ![Konfigurace oprávnění aplikací](media/aad-integration/select-api.png)
+  ![Konfigurace oprávnění aplikace](media/aad-integration/select-api.png)
 
 3. Zaškrtněte políčko vedle aplikace a klikněte na tlačítko **vyberte**.
 
-  ![Vyberte AKS AAD koncový bod serveru aplikace](media/aad-integration/select-server-app.png)
+  ![Vyberte koncový bod aplikace AKS AAD serveru](media/aad-integration/select-server-app.png)
 
 4. Vyberte **provádí** a **udělit oprávnění** k dokončení tohoto kroku.
 
   ![Udělení oprávnění](media/aad-integration/grant-permissions-client.png)
 
-5. Zpět na aplikaci AD, poznamenejte si **ID aplikace**. Při nasazení clusteru služby Azure AD s podporou AKS, tato hodnota se označuje jako `Client application ID`.
+5. Zpět na aplikace AD, poznamenejte si **ID aplikace**. Při nasazování clusteru služby Azure AD povolené AKS, tato hodnota se označuje jako `Client application ID`.
 
   ![Získání ID aplikace](media/aad-integration/application-id-client.png)
 
 ## <a name="get-tenant-id"></a>Získání ID tenanta
 
-Nakonec se získáte ID klienta služby Azure. Tato hodnota se také používá při nasazování clusteru AKS.
+A konečně Získejte ID vašeho tenanta Azure. Tato hodnota se také používá při nasazování clusteru AKS.
 
-Z portálu Azure vyberte **Azure Active Directory** > **vlastnosti** a poznamenejte si **ID adresáře**. Při nasazení clusteru služby Azure AD s podporou AKS, tato hodnota se označuje jako `Tenant ID`.
+Na webu Azure Portal, vyberte **Azure Active Directory** > **vlastnosti** a poznamenejte si **ID adresáře**. Při nasazování clusteru služby Azure AD povolené AKS, tato hodnota se označuje jako `Tenant ID`.
 
-![Získání ID klienta Azure](media/aad-integration/tenant-id.png)
+![Získání ID tenanta Azure](media/aad-integration/tenant-id.png)
 
 ## <a name="deploy-cluster"></a>Nasazení clusteru
 
-Použití [vytvořit skupinu az] [ az-group-create] příkazu vytvořte skupinu prostředků clusteru AKS.
+Použití [vytvořit skupiny az] [ az-group-create] příkazu vytvořte skupinu prostředků pro AKS clusteru.
 
 ```azurecli
 az group create --name myAKSCluster --location eastus
 ```
 
-Nasazení clusteru pomocí [vytvořit az aks] [ az-aks-create] příkaz. Nahraďte hodnoty v příkazu ukázka níže hodnoty shromažďované při vytváření aplikace Azure AD.
+Nasazení clusteru pomocí [az aks vytvořit] [ az-aks-create] příkazu. Hodnoty v následující ukázkový příkaz nahraďte hodnoty shromážděné při vytváření aplikací v Azure AD.
 
 ```azurecli
 az aks create --resource-group myAKSCluster --name myAKSCluster --generate-ssh-keys --enable-rbac \
@@ -131,15 +131,15 @@ az aks create --resource-group myAKSCluster --name myAKSCluster --generate-ssh-k
 
 ## <a name="create-rbac-binding"></a>Vytvoření vazby RBAC
 
-Před použitím účet služby Azure Active Directory s clusterem AKS vazby role nebo vazby role clusteru musí být vytvořen.
+Předtím, než účet služby Azure Active Directory je možné s clusterem AKS, role vazby nebo vazby role clusteru je potřeba vytvořit.
 
-Nejprve pomocí [az aks get pověření] [ az-aks-get-credentials] s `--admin` argument pro přihlášení do clusteru s přístupem správce.
+Nejprve [az aks get-credentials] [ az-aks-get-credentials] příkazů `--admin` argument měl přístup ke clusteru s přístupem správce.
 
 ```azurecli
 az aks get-credentials --resource-group myAKSCluster --name myAKSCluster --admin
 ```
 
-Pak pomocí následujících manifest vytvořit ClusterRoleBinding pro účet služby Azure AD. Aktualizace uživatelské jméno s jedním z vašeho klienta Azure AD. Tento příklad poskytuje úplný přístup účtu na všechny obory názvů clusteru.
+V dalším kroku použijte následující manifest k vytvoření ClusterRoleBinding pro účet služby Azure AD. Aktualizujte uživatelské jméno s jedním z vašeho tenanta Azure AD. V tomto příkladu poskytuje úplný přístup k účtu na všechny obory názvů clusteru.
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -156,7 +156,7 @@ subjects:
   name: "user@contoso.com"
 ```
 
-Můžete také vytvořit vazbu role pro všechny členy skupiny služby Azure AD. Následující manifest poskytuje všechny členy `kubernetes-admin` skupiny přístup správce ke clusteru.
+Vazba role můžete také vytvořit pro všechny členy skupiny Azure AD. Skupiny Azure AD jsou určeny pomocí ID skupiny objektů.
 
  ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -170,20 +170,20 @@ roleRef:
 subjects:
 - apiGroup: rbac.authorization.k8s.io
    kind: Group
-   name: "kubernetes-admin"
+   name: "894656e1-39f8-4bfe-b16a-510f61af6f41"
 ```
 
-Další informace o zabezpečení clusteru Kubernetes s RBAC najdete v tématu [autorizace pomocí RBAC][rbac-authorization].
+Další informace o zabezpečení clusteru Kubernetes pomocí RBAC najdete v tématu [pomocí RBAC se podařilo Autorizovat][rbac-authorization].
 
-## <a name="access-cluster-with-azure-ad"></a>Cluster přístup s Azure AD
+## <a name="access-cluster-with-azure-ad"></a>Přístup k clusteru se službou Azure AD
 
-V dalším kroku pro vyžádání obsahu kontext pro uživatele bez oprávnění správce s využitím [az aks get pověření] [ az-aks-get-credentials] příkaz.
+V dalším kroku o přijetí změn kontextu pro uživatele bez oprávnění správce s využitím [az aks get-credentials] [ az-aks-get-credentials] příkazu.
 
 ```azurecli
 az aks get-credentials --resource-group myAKSCluster --name myAKSCluster
 ```
 
-Po spuštění příkazu žádné kubectl, zobrazí se výzva k ověření pomocí Azure. Postupujte podle na obrazovce pokyny.
+Po spuštění libovolného příkazu kubectl, budou vyzváni k ověření pomocí Azure. Použijte na obrazovce pokyny.
 
 ```console
 $ kubectl get nodes
@@ -196,9 +196,9 @@ aks-nodepool1-42032720-1   Ready     agent     1h        v1.9.6
 aks-nodepool1-42032720-2   Ready     agent     1h        v1.9.6
 ```
 
-Po dokončení se uloží do mezipaměti ověřovací token. Jsou pouze získat přihlásit Pokud vypršela platnost tokenu nebo konfiguračního souboru Kubernetes znovu vytvořit.
+Jakmile budete hotovi, je uložit do mezipaměti ověřovací token. Jsou pouze získat přihlásit, pokud vypršela platnost tokenu nebo znovu vytvořit konfigurační soubor Kubernetes.
 
-Pokud po úspěšném přihlášení se zobrazuje chybovou zprávu o autorizaci, zkontrolujte, že uživatel se přihlašujete jako není hostovaný ve službě Azure AD (to je často případ Pokud používáte federovaných přihlášení z jiného adresáře).
+Pokud po úspěšném přihlášení se zobrazuje zprávy o chybě autorizace, podívejte se, že uživatel se přihlašujete jako není hostovaný ve službě Azure AD (to se často stává případě Pokud používáte federované přihlašování z jiného adresáře).
 ```console
 error: You must be logged in to the server (Unauthorized)
 ```
@@ -206,7 +206,7 @@ error: You must be logged in to the server (Unauthorized)
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o zabezpečení Kubernetes clusterů s RBAC s [autorizace pomocí RBAC] [ rbac-authorization] dokumentaci.
+Další informace o zabezpečení clusterů Kubernetes pomocí RBAC s [pomocí RBAC se podařilo Autorizovat] [ rbac-authorization] dokumentaci.
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication

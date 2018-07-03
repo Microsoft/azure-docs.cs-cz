@@ -1,6 +1,6 @@
 ---
-title: Diagnostika v trvanlivý funkce – Azure
-description: Zjistěte, jak diagnostikovat problémy s příponou trvanlivý funkce pro Azure Functions.
+title: Diagnostika v Durable Functions – Azure
+description: Zjistěte, jak diagnostikovat problémy s rozšíření Durable Functions pro službu Azure Functions.
 services: functions
 author: cgillum
 manager: cfowler
@@ -14,46 +14,46 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 4829ea88e0b6507159c192c111acf8ec7e5088e2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ce5acda7e2beca1f3d6367708d5b96a5275b2c7f
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764011"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37340691"
 ---
-# <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnostika trvanlivý funkcí (Azure Functions)
+# <a name="diagnostics-in-durable-functions-azure-functions"></a>Diagnostika v Durable Functions (Azure Functions)
 
-Existuje několik možností pro diagnostiku problémů s [trvanlivý funkce](durable-functions-overview.md). Některé z těchto možností jsou stejné pro běžné funkce a některé z nich jsou jedinečné pro odolná funkce.
+Existuje několik možností pro diagnostiku problémů s [Durable Functions](durable-functions-overview.md). Některé z těchto možností jsou stejné pro běžné funkce a některé z nich jsou jedinečné pro Durable Functions.
 
 ## <a name="application-insights"></a>Application Insights
 
-[Application Insights](../application-insights/app-insights-overview.md) je doporučeným způsobem, jak se diagnostika a sledování v Azure Functions. Totéž platí i pro odolná funkce. Přehled o tom, jak využít Application Insights ve vaší aplikaci funkce najdete v tématu [monitorování Azure Functions](functions-monitoring.md).
+[Application Insights](../application-insights/app-insights-overview.md) je doporučeným způsobem, jak Diagnostika a monitorování ve službě Azure Functions. Totéž platí i pro Durable Functions. Přehled o tom, jak využívat Application Insights ve vaší aplikaci function app, naleznete v tématu [monitorování Azure Functions](functions-monitoring.md).
 
-Trvanlivý rozšíření funkce Azure také vysílá *sledování událostí* které umožňují sledovat spuštění začátku do konce orchestration. Tyto naleznete a dotazovat pomocí [Application Insights Analytics](../application-insights/app-insights-analytics.md) nástroj na webu Azure portal.
+Trvalé rozšíření funkce Azure také vysílá *sledování událostí* , které umožňují sledování spuštění začátku do konce Orchestrace. Ty najdete Power pivotu a dotazované pomocí [Application Insights Analytics](../application-insights/app-insights-analytics.md) nástroj na webu Azure Portal.
 
 ### <a name="tracking-data"></a>Sledování dat
 
-Všechny události životního cyklu instance orchestration způsobí vygenerování události sledování k zápisu do **trasování** kolekce ve službě Application Insights. Tato událost obsahuje **customDimensions** datovou část s několika poli.  Názvy polí jsou všechny přidá jako předpona s `prop__`.
+Každé události životního cyklu instance Orchestrace způsobí vygenerování události sledování má být proveden zápis **trasy** kolekce ve službě Application Insights. Tato událost obsahuje **customDimensions** datovou část s několika polí.  Názvy polí jsou před s `prop__`.
 
-* **hubName**: název rozbočovače úloh, ve kterém běží váš orchestrations.
-* **appName**: název aplikace funkce. To je užitečné, pokud máte víc aplikací funkce sdílení na stejnou instanci Application Insights.
-* **slotName**: [nasazovací slot](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) v aktuální aplikaci funkce běží. To je užitečné, pokud využíváte nasazovací sloty na verzi vašeho orchestrations.
-* **%{FunctionName/**: název funkce orchestrator nebo aktivity.
+* **hubName**: název centra úloh, ve kterém běží vaše Orchestrace.
+* **appName**: název aplikace function app. To je užitečné v případě, že máte více aplikací funkcí sdílení stejné instance služby Application Insights.
+* **slotName**: [slot nasazení](https://blogs.msdn.microsoft.com/appserviceteam/2017/06/13/deployment-slots-preview-for-azure-functions/) v aktuální aplikaci function app běží. To je užitečné, když využít sloty nasazení na verzi vašeho Orchestrace.
+* **functionName**: název funkce nástroje orchestrator nebo aktivity.
 * **functiontype –**: typ funkce, jako například **Orchestrator** nebo **aktivity**.
-* **identifikátor instanceId**: jedinečné ID instance orchestration.
-* **Stav**: stav spuštění cyklu instance. Platné hodnoty patří:
-    * **Naplánované**: funkce byla naplánována na spuštění, ale nebyla spuštěna, ještě spuštěna.
-    * **Spuštění**: funkce byl spuštěn, ale nebylo dosud očekávaná nebo byla dokončena.
-    * **Očekávaná**: orchestrator má naplánované některé pracovní a čeká na její dokončení.
-    * **Naslouchání**: orchestrator naslouchá pro oznámení o externí události.
-    * **Dokončit**: funkce byla úspěšně dokončena.
-    * **Se nezdařilo**: funkce došlo k chybě.
-* **důvod**: další data přidružená k události sledování. Například pokud instance čeká na oznámení o události externí, toto pole označuje název události, kterou se čeká na. Funkce se nezdařila, bude obsahovat podrobnosti o chybě.
-* **isReplay**: přehrány logickou hodnotu udávající, zda je sledování událostí pro spuštění.
-* **extensionVersion**: verzi rozšíření trvanlivý úloh. To je zvláště důležitá data při zasílání zpráv o chybách možné v rozšíření. Dlouho běžící instance může hlásit několik verzí, pokud dojde k aktualizaci, když je spuštěná. 
-* **sequenceNumber**: provádění pořadové číslo pro událost. V kombinaci s časové razítko umožňuje řazení událostí dobu provádění. *Všimněte si, že tato hodnota bude resetování nula, pokud hostitel restartuje je spuštěn instance, proto je důležité vždy seřadíte podle časové razítko nejprve pak sequenceNumber.*
+* **instanceId**: Jedinečný ID instance Orchestrace.
+* **Stav**: stav provádění životního cyklu instance. Platné hodnoty jsou:
+    * **Naplánované**: funkce byla naplánována na spuštění, ale nebyl spuštěn dosud spuštěna.
+    * **Spuštění**: funkce byla spuštěna, ale nebylo dosud očekáváno nebo dokončení.
+    * **Očekáváno**: orchestrátoru je naplánováno úkony a čeká na její dokončení.
+    * **Naslouchání**: orchestrátoru naslouchá oznámení o externí události.
+    * **Dokončení**: funkce byla úspěšně dokončena.
+    * **Nepovedlo**: funkce se nezdařila s chybou.
+* **z důvodu**: další data přidružená k události sledování. Například pokud instanci čeká na oznámení o externí události, toto pole indikuje název události, kterou je čekání. V případě neúspěchu se funkce, to bude obsahovat podrobnosti o chybě.
+* **isReplay**: logickou hodnotu označující, zda je událost sledování pro přehrály spuštění.
+* **extensionVersion**: verze rozšíření trvalý úlohy. To je zvlášť důležitá data při hlášení případné chyby v rozšíření. Dlouho běžící instance může hlásit více verzí, pokud je spuštěný, dojde k aktualizaci. 
+* **sequenceNumber**: číslo pořadí spuštění pro událost. V kombinaci s pomáhá časové razítko pro řazení událostí podle času spuštění. *Všimněte si, že toto číslo bude resetování nula, pokud hostitel restartuje je spuštěna instance, proto je důležité vždy seřadit podle časového razítka nejprve pak sequenceNumber.*
 
-Podrobností sledování dat do služby Application Insights vygenerované se dá nakonfigurovat v `logger` části `host.json` souboru.
+Úroveň podrobností pro sledování dat do služby Application Insights se dá nakonfigurovat v `logger` část `host.json` souboru.
 
 ```json
 {
@@ -67,14 +67,24 @@ Podrobností sledování dat do služby Application Insights vygenerované se d�
 }
 ```
 
-Ve výchozím nastavení jsou všechny sledování události vygenerované. Objem dat může snížit nastavení `Host.Triggers.DurableTask` k `"Warning"` nebo `"Error"` v takovém případě sledování událostí bude pouze být vygenerované pro výjimečné situace.
+Ve výchozím nastavení sledování všechny opakované události se vysílají. Lze snížit objem dat nastavením `Host.Triggers.DurableTask` k `"Warning"` nebo `"Error"` v takovém případě sledování událostí bude pouze měl vyzařovaného pro výjimečné situace.
+
+Povolit generování události opakování podrobné Orchestrace, `LogReplayEvents` může být nastaven na `true` v `host.json` soubor `durableTask` znázorněno:
+
+```json
+{
+    "durableTask": {
+        "logReplayEvents": true
+    }
+}
+```
 
 > [!NOTE]
-> Ve výchozím nastavení je telemetrie Application Insights vzorkovat modulu runtime Azure Functions tak, aby se zabránilo generování dat příliš často. To může způsobit informace o sledování být ztraceny, pokud v krátké době dojde k mnoha události životního cyklu. [Monitorování funkce Azure článku](functions-monitoring.md#configure-sampling) vysvětluje, jak pro konfiguraci tohoto chování.
+> Telemetrie Application Insights je ve výchozím nastavení, vzorkovat modulu runtime Azure Functions, aby se zabránilo příliš časté generování dat. To může způsobit informace o sledování ztratí, pokud v krátké době dojde k události životního cyklu. [Monitorování služby Azure Functions článku](functions-monitoring.md#configure-sampling) vysvětluje postup konfigurace tohoto chování.
 
 ### <a name="single-instance-query"></a>Jedna instance dotazu
 
-Následující dotaz zobrazí sledování historických dat pro jednu instanci [Hello pořadí](durable-functions-sequence.md) funkce orchestration. Zapsané pomocí [Application Insights dotazu jazyka (AIQL)](https://docs.loganalytics.io/docs/Language-Reference). Odfiltruje opětovného přehrání provádění tak pouze *logické* provádění cesta se zobrazí. Události lze provést řazení podle řazení podle `timestamp` a `sequenceNumber` jak je znázorněno v následující dotaz: 
+Následující dotaz zobrazí sledování historických dat pro jednu instanci [Hello pořadí](durable-functions-sequence.md) funkce Orchestrace. To je zapsáno s použitím [Application Insights dotazu jazyka (AIQL)](https://docs.loganalytics.io/docs/Language-Reference). Odfiltruje spuštění přehrání takže jen *logické* je zobrazena cesta provedení. Události lze provést řazení podle řazení podle `timestamp` a `sequenceNumber` jak je znázorněno v následujícím dotazu: 
 
 ```AIQL
 let targetInstanceId = "ddd1aaa685034059b545eb004b15d4eb";
@@ -87,20 +97,20 @@ traces
 | extend state = customDimensions["prop__state"]
 | extend isReplay = tobool(tolower(customDimensions["prop__isReplay"]))
 | extend sequenceNumber = tolong(customDimensions["prop__sequenceNumber"]) 
-| where isReplay == false
+| where isReplay != true
 | where instanceId == targetInstanceId
 | sort by timestamp asc, sequenceNumber asc
 | project timestamp, functionName, state, instanceId, sequenceNumber, appName = cloud_RoleName
 ```
 
-Výsledkem je seznam sledování událostí, který zobrazuje provádění cestu Orchestrace, včetně jakékoli funkce aktivity seřazené podle času spuštění ve vzestupném pořadí.
+Výsledkem je seznam sledování událostí, který zobrazuje cesta provedení Orchestrace, včetně funkce všechny aktivity, seřazené podle času spuštění ve vzestupném pořadí.
 
-![Application Insights dotazu](media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
+![Dotaz Application Insights](media/durable-functions-diagnostics/app-insights-single-instance-ordered-query.png)
 
 
 ### <a name="instance-summary-query"></a>Souhrn dotazu instance
 
-Následující dotaz zobrazí stav všech instancí orchestration, které byly spuštěny v zadaném časovém rozmezí.
+Následující dotaz zobrazí stav všech instancí Orchestrace, které byly spuštěny v zadaném časovém rozmezí.
 
 ```AIQL
 let start = datetime(2017-09-30T04:30:00);
@@ -112,18 +122,18 @@ traces
 | extend state = tostring(customDimensions["prop__state"])
 | extend isReplay = tobool(tolower(customDimensions["prop__isReplay"]))
 | extend output = tostring(customDimensions["prop__output"])
-| where isReplay == false
+| where isReplay != true
 | summarize arg_max(timestamp, *) by instanceId
 | project timestamp, instanceId, functionName, state, output, appName = cloud_RoleName
 | order by timestamp asc
 ```
-Výsledkem je seznam instance ID a jejich aktuální stav modulu runtime.
+Výsledkem je seznam ID instance a jejich aktuální stav modulu runtime.
 
-![Application Insights dotazu](media/durable-functions-diagnostics/app-insights-single-summary-query.png)
+![Dotaz Application Insights](media/durable-functions-diagnostics/app-insights-single-summary-query.png)
 
 ## <a name="logging"></a>Protokolování
 
-Je důležité mějte orchestrator opětovného přehrání chování při zápisu protokoly přímo z funkce produktu orchestrator. Zvažte například následující funkce orchestrator:
+Je důležité udržovat orchestrátoru chování opakování v úvahu při zápisu protokoly přímo z funkce orchestrátoru. Představte si třeba následující funkce nástroje orchestrator:
 
 #### <a name="c"></a>C#
 
@@ -142,7 +152,7 @@ public static async Task Run(
 }
 ```
 
-#### <a name="javascript-functions-v2-only"></a>JavaScript (pouze funkce v2)
+#### <a name="javascript-functions-v2-only"></a>JavaScript (jenom funkce v2)
 
 ```javascript
 const df = require("durable-functions");
@@ -158,7 +168,7 @@ module.exports = df(function*(context){
 });
 ```
 
-Výsledná data protokolu bude vypadat podobně jako následující:
+Výsledná data protokolu bude vypadat přibližně takto:
 
 ```txt
 Calling F1.
@@ -174,9 +184,9 @@ Done!
 ```
 
 > [!NOTE]
-> Mějte na paměti, že když chcete-li být volání F1, F2 a F3 deklarací identity v protokolech, tyto funkce jsou pouze *ve skutečnosti* volána při prvním se vyskytují. Následující volání, které dojít během opětovného přehrání se přeskočí a výstupy jsou odesílal na logice orchestrator.
+> Mějte na paměti, že deklarace bude volat F1, F2 a F3 protokoly, tyto funkce jsou pouze *skutečně* zavoláno poprvé jejich výskytu. Následná volání, ke kterým dochází při přehrávání se přeskočí a výstupy jsou odesílal do logiky nástroje orchestrator.
 
-Pokud budete chtít přihlásit pouze provádění opětovného přehrání, podmíněného výrazu může zapsat do protokolu pouze v případě `IsReplaying` je `false`. Vezměte v úvahu v předchozím příkladu, ale tentokrát s opakování kontroly.
+Pokud budete chtít přihlásit pouze provádění bez opětovného přehrání, podmíněný výraz můžete zapisovat do protokolu pouze tehdy, pokud `IsReplaying` je `false`. Vezměte v úvahu výše uvedený příklad, ale tentokrát s opakování kontroly.
 
 ```cs
 public static async Task Run(
@@ -202,11 +212,11 @@ Done!
 ```
 
 > [!NOTE]
-> `IsReplaying` Vlastnost dosud nejsou k dispozici v jazyce JavaScript.
+> `IsReplaying` Vlastnost ještě není k dispozici v jazyce JavaScript.
 
 ## <a name="custom-status"></a>Vlastní stav
 
-Stav vlastní orchestration umožňuje nastavit vlastní stav hodnotu funkce produktu orchestrator. Tento stav je k dispozici prostřednictvím rozhraní API dotazu stav protokolu HTTP nebo `DurableOrchestrationClient.GetStatusAsync` rozhraní API. Stav vlastní orchestration umožňuje bohatší monitorování pro orchestrator funkce. Například může obsahovat kód funkce orchestrator `DurableOrchestrationContext.SetCustomStatus` volání se aktualizovat průběh dlouho běžící operace. Klienta, například na webové stránce nebo jiné externí systém, pak pravidelně dotazovat dotazu stav HTTP rozhraní API pro širší informace o průběhu. Ukázka použití `DurableOrchestrationContext.SetCustomStatus` najdete níže:
+Stav vlastní Orchestrace umožňuje nastavit vlastní stav hodnotu funkce nástroje orchestrator. Tento stav se poskytuje prostřednictvím dotazu na stav protokolu HTTP rozhraní API nebo `DurableOrchestrationClient.GetStatusAsync` rozhraní API. Stav vlastní Orchestrace umožňuje bohatší monitorování pro funkce nástroje orchestrator. Například může obsahovat kód funkce orchestrátoru `DurableOrchestrationContext.SetCustomStatus` volání k aktualizaci průběhu pro dlouho běžící operace. Klientovi, například na webové stránce nebo jiné externí systém, může pak bude pravidelně odesílat dotazy dotazu stav protokolu HTTP rozhraní API pro bohatší informace o průběhu. Ukázkový používání `DurableOrchestrationContext.SetCustomStatus` jsou uvedeny níže:
 
 ```csharp
 public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrationContext ctx)
@@ -221,14 +231,14 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 }
 ```
 
-Je spuštěn orchestration, externích klientů můžete načíst tento vlastní stav:
+Je spuštěn orchestraci, můžete načíst externí klienti tento vlastní stav:
 
 ```http
 GET /admin/extensions/DurableTaskExtension/instances/instance123
 
 ```
 
-Klienti získají následující odpověď: 
+Klienti získáte odpovědi na následující: 
 
 ```http
 {
@@ -242,31 +252,31 @@ Klienti získají následující odpověď:
 ```
 
 > [!WARNING]
->  Datová část vlastní stav je omezena na 16 KB text JSON UTF-16, protože se musí být schopni nevešla sloupec Azure Table Storage. Externí úložiště můžete použít, pokud potřebujete větší datovou část.
+>  Datová část vlastní stav je omezena na 16 KB text JSON UTF-16, protože se musí být schopni vyplňoval sloupec Azure Table Storage. Externí úložiště můžete použít, pokud potřebujete větší datovou část.
 
 ## <a name="debugging"></a>Ladění
 
-Azure Functions podporuje ladění kódu funkce přímo a které podporují stejné představuje dál na trvanlivý funkce, jestli běží v Azure nebo místně. Existuje však několik chování znát při ladění:
+Ladění přímo v kódu funkce Azure Functions podporuje a které podporují stejné přenesou do Durable Functions, jestli běží v Azure nebo místně. Existuje však několik chování je potřeba vědět při ladění:
 
-* **Opakování**: funkce Orchestrator pravidelně opakování při přijetí nové vstupy. To znamená jedné *logické* provádění orchestrator funkce může způsobit stiskne stejné zarážek vícekrát, zvlášť pokud je nastaveno již v rané fázi v kód funkce.
-* **Await**: vždy, když `await` je došlo, dává řízení zpět do dispečera trvanlivý Framework úloh. Pokud je to poprvé a konkrétní `await` byl došlo, přidružené úloha je *nikdy* byl obnoven. Protože úloha nikdy obnoví, krokování *přes* await (F10 v sadě Visual Studio) není ve skutečnosti možné. Krokování s přes funguje pouze, když je právě přehrány úlohu.
-* **Časové limity pro zasílání zpráv**: trvanlivý funkce interně používá zprávy fronty disku spouštění orchestrator funkce a funkce aktivity. V prostředí s více virtuálních počítačů rozdělení do ladění pro dlouhou dobu způsobit jiným virtuálním Počítačem na vyzvednutí zpráva, což vede k provádění duplicitní. Toto chování pro aktivační událost regulární fronty funkce také existuje, ale je důležité, tak, aby odkazoval v tomto kontextu, protože fronty jsou podrobností implementace.
+* **Přehrát**: funkce Orchestrátoru pravidelně opakované přehrání při přijetí nové vstupů. To znamená, že jeden *logické* spuštění funkce orchestrátoru může vést k dosažení stejného zarážku více než jednou, zejména v případě, že je nastavena v rané fázi kód funkce.
+* **Operátor await**: pokaždé, když `await` je nalezen, bude vrácen řízení zpět do dispečera trvalý Framework úloh. Pokud je to poprvé konkrétní `await` byl nalezen, je přidruženého úkolu *nikdy* obnoveno. Protože úloha nikdy obnoví, krokování *přes* await (F10 v sadě Visual Studio) není ve skutečnosti je to možné. Krokování přes funguje pouze v případě znovu přehrát úkolu.
+* **Zasílání zpráv vypršení časových limitů**: odolná služba Functions interně používá fronta zpráv do jednotky provádění funkcí nástroje orchestrator a funkce aktivity. V prostředí více virtuálních počítačů rozdělení do ladění pro dlouhou dobu způsobit jinému virtuálnímu počítači, aby se získaly zpráva, což vede k duplicitní spuštění. Toto chování pro pravidelné aktivační událost fronty funkce také existuje, ale je důležité zdůraznit v tomto kontextu, protože fronty jsou podrobnosti implementace.
 
 > [!TIP]
-> Při nastavení zarážek, pokud chcete pouze rozdělit na provedení bez opakování, můžete nastavit podmíněné zarážky tohoto konce pouze v případě `IsReplaying` je `false`.
+> Při nastavení zarážek, pokud chcete přerušit pouze na provádění bez opakování, můžete nastavit podmíněné zarážky, že pouze pokud konce `IsReplaying` je `false`.
 
 ## <a name="storage"></a>Úložiště
 
-Ve výchozím nastavení ukládá trvanlivý funkce stavu ve službě Azure Storage. To znamená, že si můžete prohlédnout stav vaší orchestrations pomocí nástrojů, jako [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
+Ve výchozím nastavení Durable Functions ukládá stav ve službě Azure Storage. To znamená, že si můžete prohlédnout stav vaší Orchestrace pomocí nástrojů, jako [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 
-![Snímek Azure Storage Explorer obrazovky](media/durable-functions-diagnostics/storage-explorer.png)
+![Snímek obrazovky Azure Storage Exploreru](media/durable-functions-diagnostics/storage-explorer.png)
 
-To je užitečné pro ladění, protože uvidíte přesně jaké stav orchestration může být v. Zprávy do front můžete také prověřit, se dozvíte, jaké pracovní čeká na vyřízení (nebo zablokuje v některých případech).
+To je užitečné pro ladění, protože se zobrazí přesně jednotlivých stavech Orchestrace může být v. Zprávy ve frontách se dají prozkoumat také se dozvíte, jaká práce čeká na vyřízení (nebo zablokuje a v některých případech).
 
 > [!WARNING]
-> I když je vhodné zobrazit historii spouštění ve službě table storage, neberte některé závislé na této tabulce. Se může změnit při zpracovaní rozšíření trvanlivý funkce.
+> I když je vhodné zobrazit historii provádění ve službě table storage, vyhnete se tak všechny závislosti pro tuto tabulku. To může změnit, protože rozšíření Durable Functions vyvíjí.
 
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Další informace o použití trvanlivý časovače](durable-functions-timers.md)
+> [Další informace o použití trvalý časovače](durable-functions-timers.md)
