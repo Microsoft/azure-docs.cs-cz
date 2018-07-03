@@ -189,7 +189,7 @@
                   href: active-directory-b2c-setup-sf-app-custom.md
             - name: Integrace rozhraní RESTful API
               items:
-                - name: Ověření uživatelského vstupu
+                - name: Ověření vstupu uživatele
                   href: active-directory-b2c-rest-api-validation-custom.md
                 - name: Získání dalších deklarací identity
                   href: active-directory-b2c-rest-api-step-custom.md

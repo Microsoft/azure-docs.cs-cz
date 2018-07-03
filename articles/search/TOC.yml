@@ -145,7 +145,7 @@
           href: search-faceted-navigation.md
         - name: Upřesnění relevance
           href: 'https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index'
-        - name: Synonyma (Preview)
+        - name: Synonyma
           href: search-synonyms.md
     - name: Indexování dat
       items:
