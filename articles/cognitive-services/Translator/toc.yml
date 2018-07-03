@@ -21,6 +21,20 @@
           href: quickstart-csharp-languages.md
         - name: Zjištění délky vět v textu
           href: quickstart-csharp-sentences.md
+    - name: Přejít
+      items:
+        - name: Přeložení textu
+          href: quickstart-go-translate.md
+        - name: Převod textového skriptu
+          href: quickstart-go-transliterate.md
+        - name: Identifikace jazyka z textu
+          href: quickstart-go-detect.md
+        - name: Získání alternativních překladů
+          href: quickstart-go-dictionary.md
+        - name: Zjištění podporovaných jazyků
+          href: quickstart-go-languages.md
+        - name: Zjištění délky vět v textu
+          href: quickstart-go-sentences.md
     - name: Java
       items:
         - name: Přeložení textu

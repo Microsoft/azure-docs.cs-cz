@@ -1,11 +1,11 @@
 - name: Dokumentace k rozhraní API pro rozpoznávání tváře
   href: index.yml
 - name: Přehled
+  expanded: true
   items:
     - name: Co je rozhraní API pro rozpoznávání tváře?
       href: Overview.md
 - name: Šablony Rychlý start
-  expanded: true
   items:
     - name: 'C#'
       href: QuickStarts/CSharp.md
@@ -53,16 +53,18 @@
   items:
     - name: Rozhraní API pro rozpoznávání tváře
       href: APIReference.md
+    - name: Glosář
+      href: Glossary.md
     - name: Sady SDK
       items:
-        - name: Přejít
-          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face'
+        - name: Windows
+          href: 'https://github.com/Microsoft/Cognitive-Face-Windows'
         - name: Node.js
           href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules'
         - name: Python
           href: 'https://github.com/Microsoft/Cognitive-Face-Python'
-        - name: Windows
-          href: 'https://github.com/Microsoft/Cognitive-Face-Windows'
+        - name: Přejít
+          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face'
         - name: Android
           href: 'https://github.com/Microsoft/Cognitive-Face-Android'
         - name: iOS
@@ -81,7 +83,7 @@
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
-    - name: Glosář
-      href: Glossary.md
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: "Poznámky k\_verzi"
       href: ReleaseNotes.md

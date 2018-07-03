@@ -41,18 +41,16 @@
       href: 'https://go.microsoft.com/fwlink/?linkid=865446'
     - name: Rozhraní API Custom Vision pro predikce
       href: 'https://go.microsoft.com/fwlink/?linkid=865445'
-    - name: Omezení a kvóty
-      href: limits-and-quotas.md
     - name: Glosář
       href: glossary-of-terms.md
     - name: Sady SDK
       items:
-        - name: Přejít
-          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices'
-        - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules'
         - name: Windows
           href: 'http://github.com/Microsoft/Cognitive-CustomVision-Windows'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules'
+        - name: Přejít
+          href: 'https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices'
 - name: Zdroje a prostředky
   items:
     - name: Ukázky
@@ -67,3 +65,7 @@
       href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Omezení a kvóty
+      href: limits-and-quotas.md

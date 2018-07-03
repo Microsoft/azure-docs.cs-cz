@@ -14,12 +14,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/22/2018
   ms.author: nolachar
-  ms.openlocfilehash: 72adfaf478596e5f3153cee6eee9d70f1c02c31f
-  ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+  ms.openlocfilehash: 7a68ff1e0cc80c99ec94cfe6f0480408afa92431
+  ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/25/2018
-  ms.locfileid: "36751958"
+  ms.lasthandoff: 07/02/2018
+  ms.locfileid: "37340705"
 abstract:
   description: Cloudové rozhraní API pro počítačové zpracování obrazu poskytuje vývojářům přístup k pokročilým algoritmům pro zpracování obrázků a vrácení informací. Na základě nahrání obrázku nebo zadání adresy URL obrázku mohou algoritmy Microsoftu pro počítačové zpracování obrazu různými způsoby analyzovat vizuální obsah, a to v závislosti na vstupech a volbách uživatelů. Pomocí rychlých zprovoznění, kurzů a ukázek se naučíte různými způsoby analyzovat vizuální obsah.
 sections:
@@ -33,11 +33,7 @@ sections:
     - image:
         src: media/index/logo_Csharp.svg
       text: C&#35;
-      href: QuickStarts/CSharp-analyze
-    - image:
-        src: media/index/logo_go.svg
-      text: Přejít
-      href: QuickStarts/go-analyze
+      href: quickstarts-sdk/csharp-analyze-sdk
     - image:
         src: media/index/logo_java.svg
       text: Java
@@ -50,6 +46,10 @@ sections:
         src: media/index/logo_python.svg
       text: Python
       href: QuickStarts/python-analyze
+    - image:
+        src: media/index/logo_go.svg
+      text: Přejít
+      href: QuickStarts/go-analyze
 - title: Referenční informace
   items:
   - type: list
@@ -59,4 +59,4 @@ sections:
     - title: Rozhraní API
       html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44">Rozhraní API pro počítačové zpracování obrazu v2.0</a></p> <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/56f91f2d778daf23d8ec6739">Rozhraní API pro počítačové zpracování obrazu v1.0</a></p>
     - title: Sady SDK
-      html: <p><a href="https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/computervision">Go</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules">Python</a></p> <p><a href="https://github.com/Microsoft/Cognitive-vision-windows">Windows</a></p> <p><a href="https://github.com/Microsoft/Cognitive-vision-android">Android</a></p> <p><a href="https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK">Swift</a></p>
+      html: <p><a href="https://github.com/Microsoft/Cognitive-vision-windows">Windows</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitive-services?view=azure-node-latest#vision-modules">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitive-services?view=azure-python#vision-modules">Python</a></p> <p><a href="https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/computervision">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-vision-android">Android</a></p> <p><a href="https://github.com/DanilaVladi/Microsoft-Cognitive-Services-Swift-SDK">Swift</a></p>

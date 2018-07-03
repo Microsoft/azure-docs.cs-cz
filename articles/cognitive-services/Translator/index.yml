@@ -13,12 +13,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/30/2017
   ms.author: v-jansko
-  ms.openlocfilehash: 1995f8d58c47b8e098022ca672c7889195dd5328
-  ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+  ms.openlocfilehash: 5d321a533ee6194492e5f0b25a8ef78951ac188a
+  ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/22/2018
-  ms.locfileid: "36319176"
+  ms.lasthandoff: 07/02/2018
+  ms.locfileid: "37340885"
 abstract:
   description: Microsoft Translator Text API je cloudová služba pro strojový překlad. Pomocí tohoto rozhraní API můžete překládat texty z libovolné aplikace nebo služby téměř v reálném čase, a to pomocí jednoduchého volání rozhraní REST API. Rozhraní API využívá nejmodernější technologie neuronového strojového překladu a nabízí také i technologie statistického strojového překladu. Seznam podporovaných jazyků pro neuronový i statistický strojový překlad najdete v části věnované <a href="languages.md">podporovaným jazykům</a>.
 sections:
@@ -41,6 +41,9 @@ sections:
     - image:
         src: media/index/logo_python.svg
       title: Python
+    - image:
+        src: media/index/logo_go.svg
+      title: Přejít
     rows:
     - title: Překlad textu z jednoho jazyka do druhého
       values:
@@ -48,24 +51,28 @@ sections:
       - href: quickstart-java-translate
       - href: quickstart-nodejs-translate
       - href: quickstart-python-translate
+      - href: quickstart-go-translate
     - title: Převod textu z jednoho skriptu do druhého
       values:
       - href: quickstart-csharp-transliterate
       - href: quickstart-java-transliterate
       - href: quickstart-nodejs-transliterate
       - href: quickstart-python-transliterate
+      - href: quickstart-go-transliterate
     - title: Identifikace jazyka textu
       values:
       - href: quickstart-csharp-detect
       - href: quickstart-java-detect
       - href: quickstart-nodejs-detect
       - href: quickstart-python-detect
+      - href: quickstart-go-detect
     - title: Získání alternativních překladů a využití
       values:
       - href: quickstart-csharp-dictionary
       - href: quickstart-java-dictionary
       - href: quickstart-nodejs-dictionary
       - href: quickstart-python-dictionary
+      - href: quickstart-go-dictionary
 - title: Referenční informace
   items:
   - type: paragraph

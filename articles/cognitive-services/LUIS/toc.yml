@@ -192,11 +192,11 @@
         - name: Zlepšení přesnosti s využitím dávkového testování
           href: luis-tutorial-batch-testing.md
     - name: Publikování aplikace
-      href: PublishApp.md
+      href: luis-how-to-publish-app.md
     - name: Použití předem připravených modelů
       items:
         - name: Použití předem připravených entit
-          href: Pre-builtEntities.md
+          href: luis-prebuilt-entities.md
         - name: Použití předem připravených domén
           href: luis-how-to-use-prebuilt-domains.md
         - name: Použití předem připravené aplikace Cortana
@@ -208,7 +208,7 @@
         - name: Vytvoření klíčů
           href: luis-how-to-azure-subscription.md
         - name: Přidání klíčů v LUIS
-          href: Manage-Keys.md
+          href: luis-how-to-manage-keys.md
         - name: Zobrazení využití koncového bodu s využitím PowerShellu
           href: luis-how-to-manage-from-cloud-shell.md
         - name: Správa verzí
@@ -283,6 +283,10 @@
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Android'
         - name: Node.js
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Node.js'
+        - name: Přejít
+          href: 'https://aka.ms/luis-sdk-go'
+        - name: Java
+          href: 'https://aka.ms/luis-java-sdk'
         - name: Python
           href: 'https://github.com/Microsoft/Cognitive-LUIS-Python'
         - name: Koncový bod .Net
