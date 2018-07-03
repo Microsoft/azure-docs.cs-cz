@@ -1,6 +1,6 @@
 ---
-title: Přidání Azure Active Directory pomocí připojené služby v sadě Visual Studio
-description: Přidat Azure Active Directory pomocí dialogu Visual Studio přidat připojení služby
+title: Přidání služby Azure Active Directory pomocí připojené služby v sadě Visual Studio
+description: Přidat službu Azure Active Directory s použitím v dialogovém okně Visual Studio přidání připojené služby
 services: active-directory
 author: ghogen
 manager: douge
@@ -12,65 +12,67 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: a87ed8630f86cf004a05cdb2ae8b34c479cdaf32
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 42ec8aa6119dbf01297743cd509285145c7bea29
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "34594072"
 ---
-# <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Přidání Azure Active Directory pomocí připojené služby v sadě Visual Studio
+# <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Přidání služby Azure Active Directory pomocí připojené služby v sadě Visual Studio
 
-Pomocí služby Azure Active Directory (Azure AD), může podporovat jednotné přihlašování (SSO) pro webové aplikace ASP.NET MVC nebo ověřování Active Directory v webového rozhraní API služby. S Azure AD Authentication uživatelům jejich účty ze služby Azure Active Directory použít k připojení k webovým aplikacím. Výhody služby Azure AD Authentication pomocí webového rozhraní API zahrnují rozšířené zabezpečení při vystavení rozhraní API z webové aplikace. S Azure AD není nutné spravovat samostatného ověření systému se správou svůj vlastní účet a uživatele.
+Pomocí Azure Active Directory (Azure AD), může podporovat jednotné přihlašování (SSO) pro webové aplikace ASP.NET MVC nebo ověřování Active Directory služby webového rozhraní API. Ověřování Azure AD uživatelé pomocí svých účtů ze služby Azure Active Directory pro připojení k webovým aplikacím. Výhody ověřování Azure AD s webovým rozhraním API například dokonalejší zabezpečení dat při zpřístupňování rozhraní API z webové aplikace. S Azure AD není nutné spravovat oddělený ověřovací systém s vlastní správou účtů a uživatelů.
 
-V tomto článku a jeho článcích doprovodné uveďte podrobné informace o použití funkce Visual Studio připojené služby pro službu Active Directory. Funkce je k dispozici v Visual Studio 2017 a Visual Studio 2015.
+V tomto článku a jeho doprovodné články poskytují podrobné informace o použití funkce připojené služby sady Visual Studio pro službu Active Directory. Možnost je k dispozici v sadě Visual Studio 2017 a Visual Studio 2015.
 
 V současné době nepodporuje službu Active Directory, které jsou připojené aplikace ASP.NET Core.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Účet Azure: Pokud nemáte účet Azure, můžete [zaregistrovat k bezplatné zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) nebo [aktivovat výhody předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+- Účet Azure: Pokud nemáte účet Azure, můžete si [zaregistrujte si bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A261C142F) nebo [aktivovat výhody pro předplatitele sady Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A261C142F).
+- **Visual Studio 2015** nebo novější. [Stáhněte si Visual Studio 2017](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
-### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Připojení k Azure Active Directory v dialogovém okně připojení služby
+### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Připojení k Azure Active Directory pomocí dialogového okna připojené služby
 
-1. V sadě Visual Studio vytvoření nebo otevření projektu aplikace ASP.NET MVC nebo projekt webového rozhraní API ASP.NET. Můžete použít MVC, webového rozhraní API, jedné stránky aplikace, aplikace Azure API, mobilní aplikace Azure a Azure Mobile Service šablony.
+1. V sadě Visual Studio vytvoření nebo otevření projektu aplikace ASP.NET MVC nebo projektu aplikace ASP.NET Web API. Můžete použít MVC, webové rozhraní API, jednostránková aplikace, aplikace API Azure, mobilní aplikace Azure a šablony služeb Azure Mobile.
 
-1. Vyberte **Projekt > Přidání připojené služby...**  příkaz nabídky, nebo klikněte dvakrát **připojené služby** uzlu byl nalezen v rámci projektu v Průzkumníku řešení.
+1. Vyberte **Projekt > Přidat připojenou službu...**  příkaz nabídky nebo dvojím kliknutím **připojené služby** uzel nalezen v rámci projektu v Průzkumníku řešení.
 
-1. Na **připojené služby** vyberte **ověřování s Azure Active Directory**.
+1. Na **připojené služby** stránce **ověřování pomocí Azure Active Directory**.
 
-    ![Připojená stránka služby](./media/vs-azure-active-directory/connected-services-add-active-directory.png)
+    ![Stránka připojené služby](./media/vs-azure-active-directory/connected-services-add-active-directory.png)
 
-1. Na **ÚVOD** vyberte **Další**. Pokud se na této stránce se zobrazí chyby, přečtěte si [diagnostikování chyb pomocí služby Azure Active Directory připojené Service](vs-active-directory-error.md).
+1. Na **ÚVOD** stránce **Další**. Pokud se na této stránce se zobrazí chyby, přečtěte si [Diagnostika chyb ve službě Azure Active Directory připojené Service](vs-active-directory-error.md).
 
     ![Úvodní stránka](./media/vs-azure-active-directory/configure-azure-ad-wizard-1.png)
 
-1. Na **jednotné přihlašování na** vyberte k doméně z **domény** rozevíracího seznamu. Seznam obsahuje všechny domény, které jsou dostupné účty uvedené v dialogovém okně Nastavení účtu sady Visual Studio (**soubor > Nastavení účtu...** ). Jako alternativu, můžete zadat název domény, pokud zde nejsou tu, kterou hledáte, jako například `mydomain.onmicrosoft.com`. Můžete vytvořit aplikaci Azure Active Directory nebo používat nastavení z existující aplikaci Azure Active Directory. Vyberte **Další** po dokončení.
+1. Na **Single Sign On** stránky, vyberte doménu z **domény** rozevíracího seznamu. Seznam obsahuje všechny domény, které jsou přístupné účty uvedené v dialogovém okně Nastavení účtu sady Visual Studio (**soubor > Nastavení účtu...** ). Jako alternativu můžete zadat název domény, Pokud nenajdete ta, kterou hledáte, jako například `mydomain.onmicrosoft.com`. Můžete zvolit možnost vytvoření aplikace Azure Active Directory nebo použít nastavení z existující aplikace Azure Active Directory. Vyberte **Další** až budete hotovi.
 
     ![Jednotné přihlašování na stránce](./media/vs-azure-active-directory/configure-azure-ad-wizard-2.png)
 
-1. Na **přístup k adresářové** vyberte **čtení dat adresáře** možnost podle potřeby. Vývojáři obvykle obsahují tuto možnost.
+1. Na **přístup k adresáři** stránky, vyberte **čtení dat adresáře** možnost podle potřeby. Vývojáři obvykle zahrnout tuto možnost.
 
-    ![Stránka adresáře](./media/vs-azure-active-directory/configure-azure-ad-wizard-3.png)
+    ![Stránka adresáře přístup](./media/vs-azure-active-directory/configure-azure-ad-wizard-3.png)
 
-1. Vyberte **Dokončit** zahájíte změny do projektu povolení ověřování Azure AD. Visual Studio zobrazí průběh během této doby:
+1. Vyberte **Dokončit** zahájíte úpravy do projektu, aby umožňoval ověřování Azure AD. Visual Studio zobrazuje průběh během této doby:
 
-    ![Průběh služby Active Directory připojení](./media/vs-azure-active-directory/active-directory-connected-service-output.png)
+    ![Servisním připojené služby Active Directory](./media/vs-azure-active-directory/active-directory-connected-service-output.png)
 
 1. Po dokončení procesu Visual Studio otevře prohlížeč na jednu z následujících článků, v závislosti na typu vašeho projektu:
 
     - [Začínáme s projekty .NET MVC](vs-active-directory-dotnet-getting-started.md)
     - [Začínáme s projekty WebAPI](vs-active-directory-webapi-getting-started.md)
 
-1. Domény služby Active Directory můžete také zjistit na [portál Azure](http://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Domény služby Active Directory můžete zobrazit také na [webu Azure portal](http://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-## <a name="how-your-project-is-modified"></a>Jak se mění projektu
+## <a name="how-your-project-is-modified"></a>Jak se váš projekt změnil
 
-Při přidání připojené služby v průvodci, Visual Studio přidá Azure Active Directory a přidružené odkazy na projekt. Přidání podpory pro Azure AD jsou také upravit konfigurační soubory a soubory kódu v projektu. Určité změny, které sada Visual Studio provádí závisí na typu projektu. Najdete v následujících článcích podrobnosti:
+Když přidáte připojenou službu v průvodci, Visual Studio přidá Azure Active Directory a přidružené odkazy do projektu. Přidání podpory pro Azure AD jsou také upravit konfigurační soubory a soubory kódu ve vašem projektu. Konkrétní změny, které vytvoří malou Visual Studio závisí na typu projektu. Zobrazit podrobnosti v následujících článcích:
 
 - [Co se stalo s mým projektem .NET MVC?](vs-active-directory-dotnet-what-happened.md)
-- [Co se stalo s Moje projekt webového rozhraní API?](vs-active-directory-webapi-what-happened.md)
+- [Co se stalo s mým projektem webového rozhraní API?](vs-active-directory-webapi-what-happened.md)
 
 ## <a name="next-steps"></a>Další postup
 
 - [Scénáře ověřování pro Azure Active Directory](active-directory-authentication-scenarios.md)
-- [Přidání přihlášení se společností Microsoft do webové aplikace ASP.NET](guidedsetups/active-directory-aspnetwebapp-v1.md)
+- [Přidání přihlašování s Microsoftem do webové aplikace ASP.NET](guidedsetups/active-directory-aspnetwebapp-v1.md)

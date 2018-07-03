@@ -1,42 +1,38 @@
 ---
-title: Jak pomocí prostředí PowerShell k vytvoření certifikátů X.509 | Microsoft Docs
-description: Jak pomocí prostředí PowerShell vytvořit certifikáty X.509 místně a povolit X.509 na základě zabezpečení ve službě Azure IoT hub v simulovaném prostředí.
-services: iot-hub
-documentationcenter: ''
+title: Použití Powershellu k vytvoření certifikátů X.509 | Dokumentace Microsoftu
+description: Použití Powershellu k vytvoření certifikátů X.509 místně a povolení X.509 na základě zabezpečení ve službě Azure IoT hub v simulovaném prostředí.
 author: dsk-2015
 manager: timlt
-editor: ''
 ms.service: iot-hub
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+services: iot-hub
+ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: dkshir
-ms.openlocfilehash: 656799c76a87870a19018849dbeffea3b12a356e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: d0063ff79a0bda88fffb486f03286f6784ece7fa
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "34637595"
 ---
-# <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>Skripty prostředí PowerShell ke správě certifikační Autority podepsané X.509 – certifikáty
+# <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>Skripty Powershellu pro správu certifikátů X.509 podepsaných certifikační Autority
 
-Zabezpečení na základě certifikátu X.509 ve službě IoT Hub, musíte spustit s [řetěz certifikátů X.509](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification), což zahrnuje kořenový certifikát a také všechny zprostředkující certifikáty, až se certifikát typu list. To *postup* Průvodce vás provede ukázkové skripty prostředí PowerShell využívající [OpenSSL](https://www.openssl.org/) k vytvoření a podepsání certifikátů X.509. Doporučujeme používat tato příručka pro experimentování, vzhledem k tomu, že hodně těchto kroků dojde během výrobní proces ve skutečnosti. Tyto certifikáty můžete použít k simulaci zabezpečení v Azure IoT hub pomocí *ověřování pomocí certifikátu X.509*. Kroky v této příručce vytvářet certifikáty místně na počítači se systémem Windows. 
+Zabezpečení pomocí certifikátů X.509 ve službě IoT Hub je nutné začít s [řetěz certifikátů X.509](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification), který obsahuje kořenový certifikát, stejně jako všechny zprostředkující certifikáty až listový certifikát. To *jak* příručka vás provede ukázkové skripty Powershellu, které používají [OpenSSL](https://www.openssl.org/) k vytvoření a podepsání certifikátů X.509. Doporučujeme vám k použití tohoto průvodce pro experimentování ve službě, protože mnoho z těchto kroků se stane během výrobního procesu v reálném světě. Tyto certifikáty slouží k simulaci zabezpečení v Azure IoT hub pomocí *ověřování pomocí certifikátu X.509*. Kroky v tomto průvodci vytvoření certifikátů místně na svém počítači s Windows. 
 
 ## <a name="prerequisites"></a>Požadavky
-Tento kurz předpokládá, že jste získali OpenSSL binární soubory. Můžete buď může
-    - Stáhněte si OpenSSL zdrojový kód a sestavte binární soubory na počítači, nebo 
-    - Stáhněte a nainstalujte všechny [binární soubory OpenSSL třetích stran](https://wiki.openssl.org/index.php/Binaries), například z [tento projekt na SourceForge](https://sourceforge.net/projects/openssl/).
+Tento kurz předpokládá, že jste získali OpenSSL binární soubory. Můžete buď
+    - Stáhněte si zdrojový kód OpenSSL a sestavit binární soubory na svém počítači, nebo 
+    - Stáhněte a nainstalujte všechny [binárních souborů třetí strany OpenSSL](https://wiki.openssl.org/index.php/Binaries), například z [tento projekt na SourceForge](https://sourceforge.net/projects/openssl/).
 
 <a id="createcerts"></a>
 
-## <a name="create-x509-certificates"></a>Vytvoření certifikáty X.509
-Následující kroky ukazují příklad vytvoření kořenové certifikáty X.509 místně. 
+## <a name="create-x509-certificates"></a>Vytvoření certifikátů X.509
+Následující kroky ukazují, příklad toho, jak vytvořit kořenové certifikáty X.509 místně. 
 
-1. Otevřete okno prostředí PowerShell jako *správce*.  
-   **Poznámka:** musíte otevřít to v prostředí PowerShell sám sebe, není PowerShell ISE, Visual Studio Code nebo jiné nástroje, které balí základní konzole PowerShell.  Pomocí jiných konzoly založené na prostředí PowerShell bude mít za následek `openssl` příkazy níže ukotvených.
+1. Otevřete okno Powershellu jako *správce*.  
+   **Poznámka:** je nutné otevřít to v prostředí PowerShell samotného, není prostředí PowerShell ISE, Visual Studio Code nebo jiné nástroje, které balí základní konzola Powershellu.  Použití bez konzoly Powershellu na základě způsobí `openssl` příkazy pod předsazení.
 
-2. Přejděte do pracovního adresáře. Spusťte následující skript a nastavte globální proměnné. 
+2. Přejděte do pracovního adresáře. Spusťte následující skript, který nastaví globální proměnné. 
     ```PowerShell
     $openSSLBinSource = "<full_path_to_the_binaries>\OpenSSL\bin"
     $errorActionPreference    = "stop"
@@ -58,7 +54,7 @@ Následující kroky ukazují příklad vytvoření kořenové certifikáty X.50
     # Whether to use ECC or RSA.
     $useEcc                     = $true
     ```
-3. Spusťte následující skript, který zkopíruje OpenSSL binární soubory do pracovního adresáře a nastaví proměnné prostředí:
+3. Spusťte následující skript, který zkopíruje OpenSSL binárních souborů do pracovního adresáře a nastaví proměnné prostředí:
 
     ```PowerShell
     function Initialize-CAOpenSSL()
@@ -80,7 +76,7 @@ Následující kroky ukazují příklad vytvoření kořenové certifikáty X.50
     }
     Initialize-CAOpenSSL
     ```
-4. Potom spusťte následující skript, která hledá zda certifikát k zadanému *název subjektu* je již nainstalován, a jestli OpenSSL správně nakonfigurovaná na váš počítač:
+4. Potom spusťte následující skript, který vyhledá, jestli certifikát k zadanému *název subjektu* je už nainstalovaný, a zda OpenSSL správně nakonfigurovaná na vašem počítači:
     ```PowerShell
     function Get-CACertBySubjectName([string]$subjectName)
     {
@@ -115,13 +111,13 @@ Následující kroky ukazují příklad vytvoření kořenové certifikáty X.50
     }
     Test-CAPrerequisites
     ```
-    Pokud se vše správně nakonfigurován, měli byste vidět "ÚSPĚCH" zprávy. 
+    Pokud je vše nastaveno správně, měli byste vidět "Success" zpráva. 
 
 <a id="createcertchain"></a>
 
 ## <a name="create-x509-certificate-chain"></a>Vytvořit řetěz certifikátů X.509
-Vytvořit řetěz certifikátů s kořenové certifikační Autority, například "CN = Azure IoT kořenové certifikační Autority", tato ukázka používá spuštěním následujícího skriptu prostředí PowerShell. Tento skript také aktualizací úložiště certifikátů operačního systému Windows, také vytvoří soubory certifikátů v pracovním adresáři. 
-    1. Následující skript vytvoří funkci prostředí PowerShell pro vytvoření certifikát podepsaný sám sebou, daný *název subjektu* a úřad pro podepisování. 
+Vytvořit řetěz certifikátů s kořenové certifikační Autority, například "CN = Azure IoT kořenové certifikační Autority", tato ukázka používá spuštěním následujícího skriptu prostředí PowerShell. Tento skript také aktualizuje svého úložiště certifikátů operačního systému Windows, také vytvoří soubory certifikátů ve svém pracovním adresáři. 
+    1. Následující skript prostředí PowerShell funkci, která vytvoří vlastnoručně podepsaný certifikát, pro vytvoří danou *název subjektu* a úřad pro podepisování. 
     ```PowerShell
     function New-CASelfsignedCertificate([string]$commonName, [object]$signingCert, [bool]$isASigner=$true)
     {
@@ -157,7 +153,7 @@ Vytvořit řetěz certifikátů s kořenové certifikační Autority, napříkla
         write (New-SelfSignedCertificate @selfSignedArgs)
     }
     ``` 
-    2. Následující funkce prostředí PowerShell vytvoří zprostředkující certifikáty X.509 pomocí funkce předchozí, jakož i OpenSSL binární soubory. 
+    2. Následující funkce prostředí PowerShell vytvoří zprostředkujících certifikátů X.509 pomocí předchozí funkce, stejně jako binární soubory OpenSSL. 
     ```PowerShell
     function New-CAIntermediateCert([string]$commonName, [Microsoft.CertificateServices.Commands.Certificate]$signingCert, [string]$pemFileName)
     {
@@ -174,7 +170,7 @@ Vytvořit řetěz certifikátů s kořenové certifikační Autority, napříkla
         write $newCert
     }  
     ```
-    3. Následující funkce prostředí PowerShell vytvoří řetězu certifikátů X.509. Čtení [certifikát zřetězil](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification) Další informace.
+    3. Následující funkce prostředí PowerShell vytvoří řetěz certifikátů X.509. Čtení [certifikát zřetězil](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification) Další informace.
     ```PowerShell
     function New-CACertChain()
     {
@@ -192,17 +188,17 @@ Vytvořit řetěz certifikátů s kořenové certifikační Autority, napříkla
         Write-Host "Success"
     }    
     ```
-    Tento skript vytvoří soubor s názvem *RootCA.cer* v pracovním adresáři. 
-    4. Nakonec použijte výše uvedené funkce prostředí PowerShell vytvořit řetěz certifikátů X.509, spuštěním příkazu `New-CACertChain` v okně prostředí PowerShell. 
+    Tento skript vytvoří soubor s názvem *RootCA.cer* ve svém pracovním adresáři. 
+    4. Nakonec použijte výše uvedené funkce Powershellu vytvořit řetěz certifikátů X.509 spuštěním příkazu `New-CACertChain` v prostředí PowerShell. 
 
 
 <a id="signverificationcode"></a>
 
-## <a name="proof-of-possession-of-your-x509-ca-certificate"></a>Ověření u sebe certifikátu X.509 certifikační Autority
+## <a name="proof-of-possession-of-your-x509-ca-certificate"></a>Doklad o vlastnictví vaší certifikátu webu X.509
 
-Tento skript provede *důkaz vlastnictví* tok pro svůj certifikát X.509. 
+Tento skript provede *důkaz vlastnictví* toku pro váš certifikát X.509. 
 
-V okně prostředí PowerShell na pracovní ploše spusťte následující kód:
+V okně Powershellu na ploše spusťte následující kód:
    
    ```PowerShell
    function New-CAVerificationCert([string]$requestedSubjectName)
@@ -225,16 +221,16 @@ V okně prostředí PowerShell na pracovní ploše spusťte následující kód:
    New-CAVerificationCert "<your verification code>"
    ```
 
-Tento kód vytvoří certifikát s názvem daným subjektem, podepsaný certifikační autoritou, jako soubor s názvem *VerifyCert4.cer* v pracovním adresáři. Tento soubor certifikátu pomůže ověřit pomocí služby IoT hub, zda máte podpisový oprávnění (to znamená, že privátní klíč) této certifikační autority.
+Tento kód vytvoří certifikát s názvem daného subjektu, podepsaný certifikační autoritou, jako soubor s názvem *VerifyCert4.cer* ve svém pracovním adresáři. Tento soubor certifikátu vám pomůže ověřit pomocí služby IoT hub, které máte oprávnění podpisový (to znamená, privátní klíč) této certifikační autority.
 
 
 <a id="createx509device"></a>
 
-## <a name="create-leaf-x509-certificate-for-your-device"></a>Vytvoření certifikátu X.509 listu pro vaše zařízení
+## <a name="create-leaf-x509-certificate-for-your-device"></a>Vytvoření listový certifikát X.509 pro vaše zařízení
 
-Tato část uvádí, že které můžete použít skript prostředí PowerShell, který vytváří listu zařízení certifikát a odpovídající řetěz certifikátů. 
+Tato část ukazuje, že používáte skript prostředí PowerShell, který vytvoří certifikát pro zařízení typu list a odpovídající řetěz certifikátů. 
 
-V okně prostředí PowerShell na místním počítači spusťte následující skript vytvořit certifikát podepsaný certifikační Autority X.509 pro toto zařízení:
+V okně Powershellu v místním počítači spusťte následující skript, abyste mohli vytvořit certifikát X.509 podepsaný certifikační Autoritou pro toto zařízení:
 
    ```PowerShell
    function New-CADevice([string]$deviceName, [string]$signingCertSubject=$_rootCertSubject)
@@ -276,14 +272,14 @@ V okně prostředí PowerShell na místním počítači spusťte následující 
    }
    ```
 
-Spusťte `New-CADevice "<yourTestDevice>"` v okně prostředí PowerShell, pomocí popisný název, který jste použili k vytvoření vašeho zařízení. Po zobrazení výzvy k zadání hesla pro privátního klíče Certifikační autority, zadejte "123". Tím se vytvoří  _<yourTestDevice>.pfx_ souboru v pracovním adresáři.
+Potom spusťte `New-CADevice "<yourTestDevice>"` v prostředí PowerShell pomocí popisný název, který jste použili k vytvoření vašeho zařízení. Po zobrazení výzvy k zadání hesla privátního klíče Certifikační autority, zadejte "123". Tím se vytvoří  _<yourTestDevice>.pfx_ soubor ve svém pracovním adresáři.
 
 ## <a name="clean-up-certificates"></a>Vyčištění certifikáty
 
-V řádku start nebo **nastavení** aplikace, vyhledejte a vyberte **spravovat certifikáty počítače**. Odeberte všechny certifikáty vydané ** Azure IoT certifikační Autority TestOnly ***. Tyto certifikáty by měly existovat v následujících třech umístěních: 
+Panelu start nebo **nastavení** aplikace, vyhledejte a vyberte **spravovat certifikáty počítače**. Odeberte všechny certifikáty vydané ** TestOnly *** Azure IoT certifikační Autority. Tyto certifikáty by měly existovat v následujících třech místech: 
 
 * Certifikáty - místní počítač > osobní > certifikáty
 * Certifikáty - místní počítač > Důvěryhodné kořenové certifikační autority > certifikáty
-* Certifikáty - místní počítač > zprostředkující certifikační úřady > certifikáty
+* Certifikáty - místní počítač > zprostředkujících certifikačních autorit > certifikáty
 
-   ![Odebrat Azure IoT certifikační Autority TestOnly certifikáty](./media/iot-hub-security-x509-create-certificates/cleanup.png)
+   ![Odebrání Azure IoT certifikační Autority TestOnly certifikátů](./media/iot-hub-security-x509-create-certificates/cleanup.png)

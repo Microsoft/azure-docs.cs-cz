@@ -1,28 +1,35 @@
-### <a name="prerequisites"></a>Požadavky
-* Účet Azure; můžete vytvořit [bezplatný účet](https://azure.microsoft.com/free)
-* [Účtu úložiště objektů Blob Azure](../articles/storage/common/storage-create-storage-account.md) včetně název účtu úložiště a jeho přístupový klíč. Tyto informace je uvedena v okně vlastností účtu úložiště na portálu Azure. Další informace o [Azure Storage](../articles/storage/common/storage-introduction.md).
+---
+title: zahrnout soubor
+description: zahrnout soubor
+services: logic-apps
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 05/21/2018
+ms.author: estfan
+ms.custom: include file
+ms.openlocfilehash: 6e95d456c5eb981a29400057cfd58faa419060fc
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "34677886"
+---
+1. Po zobrazení výzvy pro informace o připojení, uveďte následující údaje:
 
-Před použitím svého účtu úložiště objektů Blob Azure v aplikaci logiky se připojte k účtu úložiště objektů Blob Azure. Můžete k tomu snadno v rámci aplikace logiky na portálu Azure.  
+   *Vyžaduje*
 
-Připojte k účtu Azure Blob Storage pomocí následujících kroků:  
+   | Vlastnost | Hodnota | Popis | 
+   |----------|-------|-------------| 
+   | Název připojení | <*Název připojení*> | Název pro vytvoření připojení | 
+   | Účet úložiště | <*účet úložiště*> | Ze seznamu vyberte svůj účet úložiště. | 
+   ||| 
 
-1. Vytvoření aplikace logiky. V Návrháři Logic Apps přidejte aktivační událost a potom přidat akci. Vyberte **zobrazit Microsoft spravované rozhraní API** v rozevíracím seznamu a potom zadejte do vyhledávacího pole "blob". Vyberte jednu z akcí:  
-   
-    ![Azure Blob Storage – krok vytvoření připojení](./media/connectors-create-api-azureblobstorage/azureblobstorage-1.png)  
-2. Pokud jste dosud nevytvořili žádné připojení k úložišti Azure, budete vyzváni k podrobnosti připojení:   
-   
-    ![Azure Blob Storage – krok vytvoření připojení](./media/connectors-create-api-azureblobstorage/connection-details.png)  
-3. Zadejte podrobnosti o účtu úložiště. Vyžadují se vlastnosti s hvězdičkou.
-   
-   | Vlastnost | Podrobnosti |
-   | --- | --- |
-   | Název připojení * |Zadejte libovolný název pro připojení. |
-   | Název účtu úložiště Azure * |Zadejte název účtu úložiště. Název účtu úložiště se zobrazí ve vlastnostech úložiště na portálu Azure. |
-   | Přístupový klíč účtu úložiště Azure * |Zadejte klíč účtu úložiště. Přístupové klíče se zobrazí ve vlastnostech úložiště na portálu Azure. |
-   
-    Tyto přihlašovací údaje se používají k autorizaci aplikace logiky připojení a přístup k datům. 
-4. Vyberte **Vytvořit**.
-5. Všimněte si, že existuje připojení. Nyní pokračujte další kroky v aplikaci logiky: 
-   
-    ![Azure Blob Storage – krok vytvoření připojení](./media/connectors-create-api-azureblobstorage/azureblobstorage-3.png)  
+   Příklad:
+
+   ![Vytvoření připojení](./media/connectors-create-api-azureblobstorage/create-storage-account-connection.png)  
+
+2. Jakmile budete hotoví, vyberte **Vytvořit**.
+
+3. Po vytvoření připojení pokračujte [přidání triggeru](#add-trigger) nebo [přidat akci](#add-action).
 

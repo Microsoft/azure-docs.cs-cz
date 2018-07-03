@@ -1,179 +1,180 @@
 ---
-title: ActiveDirectoryInteractive připojuje k SQL | Microsoft Docs
-description: Příklad kódu C#, s vysvětlením, pro připojení k Azure SQL Database pomocí SqlAuthenticationMethod.ActiveDirectoryInteractive režimu.
+title: ActiveDirectoryInteractive připojuje k SQL | Dokumentace Microsoftu
+description: Příklad kódu jazyka C#, s vysvětlením, pro připojení ke službě Azure SQL Database s použitím SqlAuthenticationMethod.ActiveDirectoryInteractive režimu.
 services: sql-database
 author: GithubMirek
 manager: craigg
 ms.service: sql-database
 ms.custom: active directory
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/06/2018
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.openlocfilehash: 6489fb5630e1990c942b461859650e2e469cda73
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: cbbaa789295a0e8fe602d7d90055f6d3af6bfc01
+ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "34643752"
 ---
-# <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Režim ActiveDirectoryInteractive slouží k připojení k databázi SQL Azure
+# <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Režim ActiveDirectoryInteractive slouží k připojení ke službě Azure SQL Database
 
-Tento článek obsahuje spustitelného C# příklad kódu, který se připojuje k vaší databázi SQL Azure Microsoft. Programu C# používá interaktivní režim ověřování, který podporuje Azure AD vícefaktorové ověřování (MFA). Pokus o připojení může zahrnovat ověřovací kód odesílány na váš mobilní telefon.
+Tento článek obsahuje spustitelný C# příklad kódu, který se připojuje k Microsoft Azure SQL Database. Program jazyka C# používá interaktivní režim ověřování, které podporuje Azure AD vícefaktorové ověřování (MFA). Pokus o připojení, může obsahovat kód pro ověření odesílaných na váš mobilní telefon.
 
-Další informace o podpoře vícefaktorového ověřování pro nástroje systému SQL najdete v tématu [podporu služby Azure Active Directory v serveru SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory).
+Další informace o podpoře vícefaktorové ověřování pro nástroje systému SQL najdete v tématu [podpora služby Azure Active Directory v SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory).
 
 
 
 
 ## <a name="sqlauthenticationmethod-activedirectoryinteractive-enum-value"></a>SqlAuthenticationMethod. Hodnota výčtu ActiveDirectoryInteractive
 
-Od verze rozhraní .NET Framework verze 4.7.2, je výčet [ **SqlAuthenticationMethod** ](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) má novou hodnotu **. ActiveDirectoryInteractive**. Při použití s klienta programu v C#, tato hodnota výčtu určí, že systém interaktivním režimu Azure AD podporuje vícefaktorové ověřování používat k ověřování do Azure SQL Database. Uživatel, který spouští program, pak se zobrazí následující dialogová okna:
+Počínaje rozhraním .NET Framework verze 4.7.2, výčtového typu [ **SqlAuthenticationMethod** ](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) obsahuje novou hodnotu **. ActiveDirectoryInteractive**. Při použití klienta programu v C#, tato hodnota výčtu přesměruje systém použít interaktivní režim Azure AD podporuje vícefaktorové ověřování k ověření do služby Azure SQL Database. Uživatel, který spouští program, pak se zobrazí následující dialogová okna:
 
-1. Dialog, který zobrazí uživatelské jméno Azure AD, a který požádá o heslo uživatele Azure AD.
-    - Toto dialogové okno se nezobrazí, pokud je potřeba žádné heslo. Pokud je doména uživatele sdružených se službou Azure AD, je potřeba žádné heslo.
+1. Dialogové okno, který zobrazí uživatelské jméno Azure AD a, který vyzve k zadání hesla uživatele Azure AD.
+    - Toto dialogové okno se nezobrazí v případě potřeby bez hesla. Pokud doména uživatele je Federovaná pomocí služby Azure AD, je potřeba žádné heslo.
 
-    Pokud vícefaktorové ověřování, je na uživatele, způsobené zásady nastavené v Azure AD, zobrazí se další následující dialogová okna.
+    Pokud vícefaktorové ověřování je uložena na uživatele pomocí zásad nastavení ve službě Azure AD, se zobrazují vedle následující dialogová okna.
 
-2. Pouze při prvním uživatele vyskytne scénáři MFA systému zobrazí další dialogové okno. Dialogové okno požádá o mobilní telefonní číslo, na které se budou odesílat textové zprávy. Každá zpráva poskytuje *ověřovací kód* , musí uživatel zadat do dialogu Další.
+2. Pouze úplně první čas uživatelské prostředí scénář MFA systému zobrazí další dialog. Dialogové okno požádá o číslo mobilního telefonu, na které se budou odesílat textové zprávy. Každá zpráva obsahuje *ověřovací kód* , které uživatel musí zadat v dalším dialogovém okně.
 
-3. Další dialog s žádostí o MFA ověřovací kód, který systému odeslal na mobilní telefon.
+3. Další dialog, který vyzve k zadání kódu ověřování MFA, odesílajících systému na mobilní telefon.
 
-Informace o tom, jak konfigurovat Azure AD, aby se vyžadovalo najdete v tématu [Začínáme s Azure Multi-Factor Authentication v cloudu](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud).
+Informace o tom, jak nakonfigurovat tak, aby vyžadovala vícefaktorové ověřování Azure AD najdete v tématu [Začínáme se službou Azure Multi-Factor Authentication v cloudu](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud).
 
-Snímky obrazovky tyto dialogy, najdete v části [konfigurace vícefaktorového ověřování pro SQL Server Management Studio a Azure AD](sql-database-ssms-mfa-authentication-configure.md).
+Snímky obrazovky tyto dialogy, naleznete v tématu [konfigurovat vícefaktorové ověřování pro SQL Server Management Studio a Azure AD](sql-database-ssms-mfa-authentication-configure.md).
 
 > [!TIP]
-> Naše stránka Obecné vyhledávání pro všechny typy rozhraní API technologie .NET Framework je k dispozici na následující odkaz na našem užitečný **prohlížeče rozhraní API .NET** nástroje:
+> Naši stránku Obecné vyhledávání pro všechny druhy rozhraní API .NET Framework je k dispozici na na následující odkaz a naše po ruce **.NET API Browseru** nástroje:
 >
 > [https://docs.microsoft.com/dotnet/api/](https://docs.microsoft.com/dotnet/api/)
 >
-> Přidáním název typu volitelnou připojí **? termín =** parametr stránky hledání může mít naše výsledek čekání a připravené pro nás:
+> Přidáním názvu typu volitelnou připojí **? termín =** parametr, na stránce vyhledávání může mít naše výsledek připraven i na pro nás:
 >
 > [https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod](https://docs.microsoft.com/dotnet/api/?term=SqlAuthenticationMethod)
 
 
-## <a name="preparations-for-c-by-using-the-azure-portal"></a>Přípravné kroky pro jazyk C# pomocí portálu Azure
+## <a name="preparations-for-c-by-using-the-azure-portal"></a>Příprava pro jazyk C# s použitím webu Azure portal
 
-Předpokládáme, že už máte [serveru Azure SQL Database vytvořit](sql-database-get-started-portal.md) a k dispozici.
+Předpokládáme, že máte [vytvoření serveru Azure SQL Database](sql-database-get-started-portal.md) a k dispozici.
 
 
-### <a name="a-create-an-app-registration"></a>A. Vytvořit registraci aplikace
+### <a name="a-create-an-app-registration"></a>A. Vytvoření registrace aplikace
 
-Chcete-li použít ověřování Azure AD, musí váš klientský program C# zadat identifikátor GUID jako *clientId* když váš program pokusí o připojení. Dokončení registraci aplikace vygeneruje a zobrazí GUID v portálu Azure označený jako **ID aplikace**. Navigace kroky jsou následující:
+Pokud chcete používat ověřování Azure AD, váš klientský program C#, musíte zadat identifikátor GUID jako *clientId* když váš program pokusí o připojení. Dokončuje se registrace aplikace vygeneruje a zobrazí identifikátor GUID na webu Azure Portal označené jako **ID aplikace**. Navigace kroky jsou následující:
 
-1. Portál Azure &gt; **Azure Active Directory** &gt; **registrace aplikací**
+1. Azure portal &gt; **Azure Active Directory** &gt; **registrace aplikace**
 
     ![Registrace aplikace](media\active-directory-interactive-connect-azure-sql-db\sshot-create-app-registration-b20.png)
 
-2. **ID aplikace** se vygeneruje a zobrazí hodnotu.
+2. **ID aplikace** vygeneruje a zobrazí hodnotu.
 
     ![Zobrazí ID aplikace](media\active-directory-interactive-connect-azure-sql-db\sshot-application-id-app-regis-mk49.png)
 
-3. **Registrované aplikaci** &gt; **nastavení** &gt; **požadovaná oprávnění** &gt; **přidat**
+3. **Registrovaná aplikace** &gt; **nastavení** &gt; **požadovaná oprávnění** &gt; **přidat**
 
-    ![Nastavení oprávnění pro registrované aplikaci](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
+    ![Nastavení oprávnění pro registrovaná aplikace](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-c32.png)
 
-4. **Požadovaná oprávnění** &gt; **přístup přidat rozhraní API** &gt; **vybrat rozhraní API** &gt; **Azure SQL Database**
+4. **Požadovaná oprávnění** &gt; **přístup přes rozhraní API přidat** &gt; **vyberte rozhraní API** &gt; **Azure SQL Database**
 
-    ![Přidat přístup k rozhraní API pro databázi SQL Azure](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
+    ![Přidat přístup k rozhraní API pro službu Azure SQL Database](media\active-directory-interactive-connect-azure-sql-db\sshot-registered-app-settings-required-permissions-add-api-access-Azure-sql-db-d11.png)
 
-5. **Přístup pomocí rozhraní API** &gt; **vyberte oprávnění** &gt; **delegovaná oprávnění**
+5. **Přístup přes rozhraní API** &gt; **vyberte oprávnění** &gt; **delegovaná oprávnění**
 
-    ![Delegování oprávnění k rozhraní API pro databázi SQL Azure](media\active-directory-interactive-connect-azure-sql-db\sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
+    ![Delegování oprávnění k rozhraní API pro službu Azure SQL Database](media\active-directory-interactive-connect-azure-sql-db\sshot-add-api-access-azure-sql-db-delegated-permissions-checkbox-e14.png)
 
 
-### <a name="b-set-azure-ad-admin-on-your-sql-database-server"></a>B. Nastavit správce Azure AD na server služby SQL Database
+### <a name="b-set-azure-ad-admin-on-your-sql-database-server"></a>B. Nastavit správce Azure AD na serveru služby SQL Database
 
-Každý server Azure SQL Database má svou vlastní logickému serveru SQL Azure AD. Pro naše C# scénáři je potřeba nastavit správce Azure AD pro server Azure SQL.
+Každý server Azure SQL Database má svůj vlastní logický server SQL Azure AD. Pro C# scénáři je potřeba nastavit správce Azure AD pro váš server Azure SQL.
 
 1. **SQL Server** &gt; **správce Active Directory** &gt; **nastavit správce**
 
-    - Další informace o Azure AD správci a uživatelé pro databázi SQL Azure, najdete v článku na snímcích obrazovky v [konfigurovat a spravovat ověřování Azure Active Directory s databází SQL](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server), v jeho části **zřízení Azure Správce Active Directory pro server Azure SQL Database**.
+    - Další informace o Správci Azure AD a uživatelů pro službu Azure SQL Database najdete v tématu snímky obrazovky v [konfigurovat a spravovat ověřování Azure Active Directory s využitím SQL Database](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server), v jeho oddílu **zřízení Azure Správce služby Active Directory pro váš server Azure SQL Database**.
 
 
 ### <a name="c-prepare-an-azure-ad-user-to-connect-to-a-specific-database"></a>C. Příprava pro připojení k databázi konkrétní uživatele Azure AD
 
-Ve službě Azure AD, která je specifická pro server služby Azure SQL Database můžete přidat uživatele, který má přístup ke konkrétní databázi.
+Ve službě Azure AD, který je specifický pro váš server Azure SQL Database můžete přidat uživatele, který musí mít přístup ke konkrétní databázi.
 
-Další informace najdete v tématu [použití Azure ověřování služby Active Directory k ověřování připojení k databázi SQL, spravované Instance nebo SQL Data Warehouse](sql-database-aad-authentication.md).
+Další informace najdete v tématu [používání ověřování Azure Active Directory pro ověřování pomocí SQL Database, mi nebo SQL Data Warehouse](sql-database-aad-authentication.md).
 
 
-### <a name="d-add-a-non-admin-user-to-azure-ad"></a>D. Přidat uživatele bez oprávnění správce k Azure AD
+### <a name="d-add-a-non-admin-user-to-azure-ad"></a>D. Přidat uživatele bez oprávnění správce ke službě Azure AD
 
-Azure AD správce databáze SQL serveru slouží k připojení k databázi SQL serveru. Další obecné případě je však přidat uživatele bez oprávnění správce k Azure AD. Pokud uživatele bez oprávnění správce se používá k připojení, pořadí MFA je volána, pokud MFA je vynucená pro tohoto uživatele Azure AD.
+Správce služby Azure AD z databáze SQL serveru je možné se připojit k serveru služby SQL Database. Další obecné případ je však přidat uživatele bez oprávnění správce k Azure AD. Když uživatel bez oprávnění správce se používá pro připojení, pořadí MFA je vyvolána, pokud MFA je dáno na tohoto uživatele Azure AD.
 
 
 
 
 ## <a name="azure-active-directory-authentication-library-adal"></a>Azure Active Directory Authentication Library (ADAL)
 
-Programu C# spoléhá na obor názvů **Microsoft.IdentityModel.Clients.ActiveDirectory**. Třídy pro tento obor názvů jsou v sestavení se stejným názvem.
+Program jazyka C# spoléhá na obor názvů **Microsoft.IdentityModel.Clients.ActiveDirectory**. Třídy pro tento obor názvů jsou v sestavení se stejným názvem.
 
 - Ke stažení a instalaci ADAL sestavení použijte NuGet.
     - [https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)
 
-- Přidáte odkaz na sestavení pro podporu kompilace programu C#.
+- Přidejte odkaz na sestavení pro podporu kompilace programu C#.
 
 
 
 
 ## <a name="sqlauthenticationmethod-enum"></a>SqlAuthenticationMethod výčtu
 
-Jeden obory názvů, které využívá příklad jazyka C# je **System.Data.SqlClient**. Zajímají je je výčet **SqlAuthenticationMethod**. Tento výčet má následující hodnoty:
+Je jeden obory názvů, příklad jazyka C# využívající **System.Data.SqlClient**. Výčet je speciální zájmová **SqlAuthenticationMethod**. Tento výčet má následující hodnoty:
 
-- **SqlAuthenticationMethod.ActiveDirectory*interaktivní ***:&nbsp; to použít s Azure AD uživatelské jméno, k dosažení vícefaktorového ověřování MFA.
-    - Tato hodnota je fokus tohoto článku. Vyvolá interaktivní možnosti zobrazením dialogová okna pro heslo uživatele a poté pro ověření vícefaktorového ověřování, pokud je vynucená vícefaktorového ověřování pro tohoto uživatele.
-    - Tato hodnota je k dispozici od verze v rozhraní .NET Framework verze 4.7.2.
+- **SqlAuthenticationMethod.ActiveDirectory*interaktivní ***:&nbsp; použijte tento fragment se uživatelské jméno Azure AD k dosažení vícefaktorové ověřování služby Multi-Factor authentication.
+    - Tato hodnota je hlavním cílem tohoto článku. Vytvoří interaktivní zobrazením dialogová okna pro heslo uživatele a pro ověřování MFA, pokud vícefaktorové ověřování se vynucují na tohoto uživatele.
+    - Tato hodnota je k dispozici počínaje rozhraním .NET Framework verze 4.7.2 s.
 
-- **SqlAuthenticationMethod.ActiveDirectory*integrovaný ***:&nbsp; se používá *federovaný* účtu. Pro účet federované se označuje uživatelské jméno k doméně systému Windows. Tato metoda nepodporuje vícefaktorového ověřování.
+- **SqlAuthenticationMethod.ActiveDirectory*integrované ***:&nbsp; se používá *federované* účtu. Pro federované účet, který se označuje uživatelské jméno k doméně Windows. Tato metoda nepodporuje vícefaktorové ověřování.
 
-- **SqlAuthenticationMethod.ActiveDirectory*heslo ***:&nbsp; používejte pro ověřování, které vyžaduje uživatele Azure AD a heslo uživatele. Databáze SQL Azure provádí ověřování. Tato metoda nepodporuje vícefaktorového ověřování.
-
-
+- **SqlAuthenticationMethod.ActiveDirectory*heslo ***:&nbsp; používá se pro ověřování, které vyžaduje uživatele služby Azure AD a heslo uživatele. Azure SQL Database provádí ověřování. Tato metoda nepodporuje vícefaktorové ověřování.
 
 
-## <a name="prepare-c-parameter-values-from-the-azure-portal"></a>Příprava C# hodnoty parametrů z portálu Azure
-
-Pro úspěšný běh programu C# je nutné přiřadit správné hodnoty pro následující statické pole. Tato statická pole fungovat stejně jako parametry do programu. Zde se zobrazují pole pretend hodnotami. Také ukazuje jsou umístění na portálu Azure, ze kterých můžete získat správné hodnoty:
 
 
-| Statické pole název | Předstírají, že hodnota | Kde na portálu Azure |
+## <a name="prepare-c-parameter-values-from-the-azure-portal"></a>Příprava C# hodnoty parametrů z webu Azure portal
+
+Pro úspěšného spuštění programu jazyka C# je nutné přiřadit odpovídajícími hodnotami pro následující statické pole. Tato statická pole fungují jako parametry do programu. Pole se tady zobrazí pretend hodnotami. Umístění na webu Azure Portal ze kde lze získat odpovídajícími hodnotami jsou také uvedeny:
+
+
+| Statické pole název | Předstírají, že hodnota | Pokud na webu Azure portal |
 | :---------------- | :------------ | :-------------------- |
-| Az_SQLDB_svrName | "my-Oblíbené položky.-sqldb-svr.database.windows.net" | **Servery SQL** &gt; **filtrovat podle názvu** |
-| AzureAD_UserID | user9@abc.onmicrosoft.com | **Azure Active Directory** &gt; **uživatele** &gt; **nového uživatele guest** |
-| Initial_DatabaseName | "hlavní" | **Servery SQL** &gt; **databáze SQL** |
-| ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Azure Active Directory** &gt; **registrace aplikace**<br /> &nbsp; &nbsp; &gt; **Hledat podle názvu** &gt; **ID aplikace** |
-| redirectUri | nový identifikátor Uri ("https://bing.com/") | **Azure Active Directory** &gt; **registrace aplikace**<br /> &nbsp; &nbsp; &gt; **Hledat podle názvu** &gt; *[vaše-App-regis]* &gt;<br /> &nbsp; &nbsp; **Nastavení** &gt; **RedirectURIs**<br /><br />V tomto článku je vhodná pro RedirectUri žádné platnou hodnotu. Hodnota není v našem případě skutečně použít. |
+| Az_SQLDB_svrName | "my Oblíbené sqldb-svr.database.windows.net" | **SQL servery** &gt; **filtrovat podle názvu** |
+| AzureAD_UserID | user9@abc.onmicrosoft.com | **Azure Active Directory** &gt; **uživatele** &gt; **nový uživatel typu Host** |
+| Initial_DatabaseName | "hlavní" | **SQL servery** &gt; **databáze SQL** |
+| ClientApplicationID | "a94f9c62-97fe-4d19-b06d-111111111111" | **Azure Active Directory** &gt; **registrace aplikací**<br /> &nbsp; &nbsp; &gt; **Hledat podle názvu** &gt; **ID aplikace** |
+| Identifikátor URI pro přesměrování | nový identifikátor Uri ("https://bing.com/") | **Azure Active Directory** &gt; **registrace aplikací**<br /> &nbsp; &nbsp; &gt; **Hledat podle názvu** &gt; *[Your-App-regis]* &gt;<br /> &nbsp; &nbsp; **Nastavení** &gt; **RedirectURIs**<br /><br />Libovolná platná hodnota pro účely tohoto článku je v pořádku pro identifikátor URI pro přesměrování. V našem případě není skutečně použita hodnota. |
 | &nbsp; | &nbsp; | &nbsp; |
 
 
-V závislosti na konkrétní scénář nemusí potřebovat hodnoty všech parametrů v předchozí tabulce.
+V závislosti na konkrétním scénáři nemusí hodnoty všech parametrů v předchozí tabulce.
 
 
 
 
-## <a name="run-ssms-to-verify"></a>Spuštění aplikace SSMS ověření
+## <a name="run-ssms-to-verify"></a>Spusťte aplikaci SSMS k ověření
 
-Je vhodné spustit SQL Server Management Studio (SSMS) před spuštěním programu C#. Aplikace SSMS spustit ověří správnost různých konfiguracích. Pak kdykoli programu C# můžete být narrows právě zdrojovém kódu.
-
-
-#### <a name="verify-sql-database-firewall-ip-addresses"></a>Ověřovat IP adresy brány firewall SQL Database
-
-Spuštění aplikace SSMS ze stejného počítače ve stejné budově, že později spustíte programu C#. Můžete toho **ověřování** režimu si myslíte, že je nejjednodušší. Pokud je jakoukoli indikaci toho, že brána firewall serveru databáze nepřijímá IP adresu, můžete je vyřešit, jak je znázorněno v [pravidla brány firewall úrovni serveru a na úrovni databáze Azure SQL Database](sql-database-firewall-configure.md).
+Je vhodné spustit SQL Server Management Studio (SSMS) před spuštěním programu jazyka C#. SSMS spusťte ověří správnost různé konfigurace. Jakékoli neúspěchy programu jazyka C# může být potom zúží právě zdrojového kódu.
 
 
-#### <a name="verify-multi-factor-authentication-mfa-for-azure-ad"></a>Ověření vícefaktorového ověřování (MFA) pro Azure AD
+#### <a name="verify-sql-database-firewall-ip-addresses"></a>Zkontrolujte IP adresy brány firewall SQL Database
 
-Spusťte aplikaci SSMS znovu, tentokrát s **ověřování** nastavena na **Universal s podpora vícefaktorového ověřování služby Active Directory -**. Pro tuto možnost musíte mít SSMS verze 17,5 nebo novější.
-
-Další informace najdete v tématu [konfigurace vícefaktorového ověřování pro aplikaci SSMS a Azure AD](sql-database-ssms-mfa-authentication-configure.md).
+Spusťte aplikaci SSMS ze stejného počítače ve stejné budově, později spustíte program C#. Můžete použít podle toho, co **ověřování** režimu máte pocit, že je nejjednodušší. Pokud jakoukoli indikaci toho, že brány firewall serveru databáze nepřijímá vaše IP adresa se můžete vyřešit tím, jak je znázorněno v [pravidla brány firewall na úrovni serveru a databáze Azure SQL Database](sql-database-firewall-configure.md).
 
 
+#### <a name="verify-multi-factor-authentication-mfa-for-azure-ad"></a>Ověření služby Multi-Factor authentication (MFA) pro službu Azure AD
+
+Spusťte aplikaci SSMS znovu, tentokrát s **ověřování** nastavena na **univerzální podporující vícefaktorové ověřování služby Active Directory –**. Pro tuto možnost musíte mít aplikaci SSMS verze 17,5 nebo novější.
+
+Další informace najdete v tématu [ověřování službou Multi-Factor Authentication konfigurovat pro aplikace SSMS a Azure AD](sql-database-ssms-mfa-authentication-configure.md).
 
 
-## <a name="c-code-example"></a>Příklad kódu C#
 
-Pro zkompilování tohoto příkladu C#, musíte přidat odkaz na knihovnu DLL sestavení s názvem **Microsoft.IdentityModel.Clients.ActiveDirectory**.
+
+## <a name="c-code-example"></a>Příklad kódu jazyka C#
+
+Chcete-li zkompilovat tento příklad jazyka C#, je nutné přidat odkaz na sestavení knihovny DLL s názvem **Microsoft.IdentityModel.Clients.ActiveDirectory**.
 
 
 #### <a name="reference-documentation"></a>Referenční dokumentace
@@ -287,9 +288,9 @@ namespace ADInteractive5
 
 &nbsp;
 
-#### <a name="second-half-of-the-c-program"></a>Druhé polovině tématu programu C#
+#### <a name="second-half-of-the-c-program"></a>Druhé polovině programu jazyka C#
 
-Pro lepší visual zobrazení je programu C# rozdělit na dvě bloky kódu. Ke spuštění programu, vložte bloky dvě kódu společně.
+Pro lepší zobrazení vizuálu programu jazyka C# je rozdělený do dvou bloků kódu. Ke spuštění programu, vložte bloky kódu dvě společně.
 
 &nbsp;
 
@@ -373,7 +374,7 @@ Pro lepší visual zobrazení je programu C# rozdělit na dvě bloky kódu. Ke s
 
 &nbsp;
 
-#### <a name="actual-test-output-from-c"></a>Výstup skutečné testu z jazyka C#
+#### <a name="actual-test-output-from-c"></a>Skutečný test výstup z jazyka C#
 
 ```
 [C:\Test\VSProj\ADInteractive5\ADInteractive5\bin\Debug\]
