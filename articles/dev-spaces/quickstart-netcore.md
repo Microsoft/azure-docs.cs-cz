@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 3802e67503fd546ef71b9c26daddc8ef63cf4bd2
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 21b94544105f55cbb8cb77c28d8c546ffcf7f8c0
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823222"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945852"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>Rychlý start: Vytvoření vývojového prostoru Kubernetes pomocí služby Azure Dev Spaces (.NET Core a VS Code)
 
@@ -40,7 +40,7 @@ V tomto průvodci se naučíte:
 
 ## <a name="set-up-azure-dev-spaces"></a>Nastavení služby Azure Dev Spaces
 
-1. Nainstalujte si [rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (verzi 2.0.33 nebo vyšší).
+1. Nainstalujte si [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (verze 2.0.38 nebo novější).
 1. Nastavte službu Dev Spaces v clusteru AKS: `az aks use-dev-spaces -g MyResourceGroup -n MyAKS`.
 1. Stáhněte si [rozšíření Azure Dev Spaces](https://aka.ms/get-azds-code) pro VS Code.
 1. Nainstalujte rozšíření: `code --install-extension path-to-downloaded-extension/azds-0.1.1.vsix`.
@@ -50,12 +50,15 @@ V tomto průvodci se naučíte:
 1. Stáhněte si ukázkový kód z GitHubu: [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces). 
 1. Změňte adresář na složku webfrontend: `cd dev-spaces/samples/dotnetcore/getting-started/webfrontend`.
 1. Vygenerujte prostředky pro Docker a Helm chart: `azds prep --public`.
-1. Sestavte a spusťte kód v AKS. V okně terminálu spusťte tento příkaz z **kořenové složky kódu** webfrontend: `azds up`.
+1. Sestavte a spusťte kód v AKS. V okně terminálu ve **složce webfrontend** spusťte tento příkaz: `azds up`
 1. Ve výstupu konzoly vyhledejte informace o adrese URL, kterou vytvořil příkaz `up`. Bude v tomto tvaru: 
 
    `Service 'webfrontend' port 'http' is available at <url>` 
 
    Tuto adresu URL otevřete v okně prohlížeče. Mělo by se zobrazit načítání webové aplikace. 
+   
+   > [!Note]
+   > Při prvním spuštění může příprava veřejného záznamu DNS trvat několik minut. Pokud se veřejná adresa URL nepřeloží, můžete použít alternativní adresu URL http://localhost:<portnumber>, která se zobrazí ve výstupu konzoly. Pokud použijete adresu URL místního hostitele, může se zdát, že je kontejner spuštěný v místním prostředí, ale ve skutečnosti je spuštěný v AKS. Pro usnadnění práce a jednodušší interakci se službou z místního počítače vytvoří Azure Dev Spaces dočasný tunel SSH do kontejneru spuštěného v Azure. Můžete se vrátit a vyzkoušet veřejnou adresu URL později, jakmile bude záznam DNS připravený.
 
 ### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
 

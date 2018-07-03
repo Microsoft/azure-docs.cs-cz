@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 764606d838ac067a09072b84222a8ec092c4c124
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 99508d6e4e6502fe4fd2a81ee7aaefdde7cd2e15
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823203"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945798"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>Rychlý start: Vytvoření vývojového prostoru Kubernetes pomocí služby Azure Dev Spaces (Node.js)
 
@@ -40,7 +40,7 @@ V tomto průvodci se naučíte:
 
 ## <a name="set-up-azure-dev-spaces"></a>Nastavení služby Azure Dev Spaces
 
-1. Nainstalujte si [rozhraní Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (verzi 2.0.33 nebo vyšší).
+1. Nainstalujte si [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) (verze 2.0.38 nebo novější).
 1. Nastavte službu Dev Spaces v clusteru AKS: `az aks use-dev-spaces -g MyResourceGroup -n MyAKS`.
 1. Stáhněte si [rozšíření Azure Dev Spaces](https://aka.ms/get-azds-code) pro VS Code.
 1. Nainstalujte rozšíření: `code --install-extension path-to-downloaded-extension/azds-0.1.1.vsix`.
@@ -50,12 +50,15 @@ V tomto průvodci se naučíte:
 1. Stáhněte si ukázkový kód z GitHubu: [https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces). 
 1. Změňte adresář na složku webfrontend: `cd dev-spaces/samples/nodejs/getting-started/webfrontend`.
 1. Vygenerujte prostředky pro Docker a Helm chart: `azds prep --public`.
-1. Vytvořte vývojový prostor v AKS. V okně terminálu spusťte tento příkaz z **kořenové složky kódu** webfrontend: `azds up`.
+1. Sestavte a spusťte kód v AKS. V okně terminálu ve **složce webfrontend** spusťte tento příkaz: `azds up`
 1. Ve výstupu konzoly vyhledejte informace o adrese URL, kterou vytvořil příkaz `up`. Bude v tomto tvaru: 
 
    `Service 'webfrontend' port 'http' is available at <url>` 
 
-   Tuto adresu URL otevřete v okně prohlížeče. Mělo by se zobrazit načítání webové aplikace. 
+   Tuto adresu URL otevřete v okně prohlížeče. Mělo by se zobrazit načítání webové aplikace. Během spouštění kontejneru se výstup `stdout` a `stderr` streamuje do okna terminálu.
+   
+   > [!Note]
+   > Při prvním spuštění může příprava veřejného záznamu DNS trvat několik minut. Pokud se veřejná adresa URL nepřeloží, můžete použít alternativní adresu URL http://localhost:<portnumber>, která se zobrazí ve výstupu konzoly. Pokud použijete adresu URL místního hostitele, může se zdát, že je kontejner spuštěný v místním prostředí, ale ve skutečnosti je spuštěný v AKS. Pro usnadnění práce a jednodušší interakci se službou z místního počítače vytvoří Azure Dev Spaces dočasný tunel SSH do kontejneru spuštěného v Azure. Můžete se vrátit a vyzkoušet veřejnou adresu URL později, jakmile bude záznam DNS připravený.
 
 ### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
 Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
@@ -72,7 +75,7 @@ Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes.
 Co se stalo? Úpravy souborů obsahu, jako je HTML a CSS, nevyžadují restartování procesu Node.js. Aktivní příkaz `azds up` automaticky synchronizuje změněné soubory obsahu přímo se spuštěným kontejnerem v Azure, abyste si mohli rychle prohlédnout upravený obsah.
 
 ### <a name="test-from-a-mobile-device"></a>Testování na mobilním zařízení
-Pokud webovou aplikaci otevřete na mobilním zařízení, můžete si všimnout, že na malém zařízení se uživatelské rozhraní nezobrazuje správně.
+Otevřete webovou aplikaci na mobilním zařízení s použitím veřejné adresy URL webového front-endu. Adresu URL můžete zkopírovat na svém stolním počítači a odeslat ji do zařízení, abyste ji nemuseli celou zadávat. Po načtení webové aplikace na mobilním zařízení si můžete všimnout, že na malém zařízení se uživatelské rozhraní nezobrazuje správně.
 
 Opravíte to tak, že přidáte metaznačku `viewport`:
 1. Otevřete soubor `./public/index.html`.
@@ -116,7 +119,7 @@ V této části použijete editor VS Code k přímému ladění kontejneru spuš
 ### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>Inicializace prostředků ladění s využitím rozšíření VS Code
 Nejdřív musíte nakonfigurovat projekt kódu tak, aby editor VS Code komunikoval s naším vývojářským prostorem v Azure. Rozšíření VS Code pro Azure Dev Spaces poskytuje pomocný příkaz pro nastavení konfigurace ladění. 
 
-Otevřete **paletu příkazů** (pomocí nabídky **Zobrazit | Paleta příkazů**) a pomocí automatického dokončování zadejte a vyberte tento příkaz: `Azure Dev Spaces: Create configuration files for connected development`. 
+Otevřete **paletu příkazů** (pomocí nabídky **Zobrazit | Paleta příkazů**) a pomocí automatického dokončování zadejte a vyberte tento příkaz: `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
 
 Tím přidáte konfiguraci ladění pro Azure Dev Spaces do složky `.vscode`.
 
@@ -126,7 +129,7 @@ Tím přidáte konfiguraci ladění pro Azure Dev Spaces do složky `.vscode`.
 1. Pokud chcete zobrazit ladění, klikněte na boku editoru VS Code na **panelu aktivit** na ikonu Ladění.
 1. Jako aktivní ladicí konfiguraci vyberte **Launch Program (AZDS)**.
 
-![](media/get-started-node/debug-configuration-nodejs.png)
+![](media/get-started-node/debug-configuration-nodejs2.png)
 
 > [!Note]
 > Pokud na paletě příkazů nevidíte příkazy Azure Dev Spaces, ověřte, že máte nainstalované rozšíření VS Code pro Azure Dev Spaces.

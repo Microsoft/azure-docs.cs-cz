@@ -89,6 +89,12 @@
       href: /powershell/module/azurerm.eventgrid
     - name: REST
       href: /rest/api/eventgrid
+    - name: Prostředky šablon
+      items:
+        - name: Odběry událostí
+          href: /azure/templates/microsoft.eventgrid/eventsubscriptions
+        - name: Témata
+          href: /azure/templates/microsoft.eventgrid/topics
     - name: Sady SDK
       href: sdk-overview.md
     - name: Schéma předplatného

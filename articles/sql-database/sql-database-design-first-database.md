@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
 ms.topic: tutorial
-ms.date: 05/22/2018
+ms.date: 6/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 90e351992e08459040012a4d53f7e793ea35a8b5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c89b03baccc7e20ae945da154fbd78d5d0dac376
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645153"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36311027"
 ---
 # <a name="tutorial-design-your-first-azure-sql-database-using-ssms"></a>Kurz: Návrh první databáze Azure SQL Database pomocí SSMS
 
@@ -86,9 +86,7 @@ Pomocí následujících kroků vytvořte prázdnou databázi SQL.
 8. Přijměte podmínky verze Preview pro použití možnosti **Doplňkové úložiště**. 
 
    > [!IMPORTANT]
-   > - Velikosti úložiště větší než velikost zahrnutého úložiště jsou ve verzi Preview a účtují se za ně další poplatky. Podrobnosti najdete na stránce s [cenami služby SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). 
-   > - Více než 1 TB úložiště je na úrovni Premium k dispozici ve všech oblastech s výjimkou následujících: Velká Británie – sever, USA – středozápad, Velká Británie – jih 2, Čína – východ, USDoD – střed, Německo – střed, USDoD – východ, US Gov – jihozápad, US Gov (střed) – jih, Německo – severovýchod, Čína – sever, USGov – východ. Plánuje se další rozšíření. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15](sql-database-dtu-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
-   >
+   > Více než 1 TB úložiště na úrovni Premium je aktuálně k dispozici ve všech oblastech s výjimkou následujících: Velká Británie – sever, USA – středozápad, Velká Británie – jih 2, Čína – východ, USDoD – střed, Německo – střed, USDoD – východ, US Gov – jihozápad, US Gov (střed) – jih, Německo – severovýchod, Čína – sever, USGov – východ. V ostatních oblastech je úložiště na úrovni Premium omezeno na 1 TB. Viz [Aktuální omezení pro P11–P15]( sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).
 
 9. Po výběru úrovně služby, počtu DTU a velikosti úložiště klikněte na **Použít**.  
 
@@ -179,7 +177,7 @@ Vytvořte schéma databáze se čtyřmi tabulkami, které modelují systém spr�
 Následující diagram znázorňuje, jak spolu tyto tabulky vzájemně souvisejí. Některé z těchto tabulek odkazují na sloupce v jiných tabulkách. Například tabulka Student odkazuje na sloupec **PersonId** v tabulce **Person**. Prohlédněte si diagram, abyste pochopili, jak spolu tabulky v tomto kurzu souvisejí. Podrobný rozbor toho, jak vytvářet efektivní databázové tabulky, najdete v tématu [Vytváření efektivních databázových tabulek](https://msdn.microsoft.com/library/cc505842.aspx). Informace o výběru datových typů najdete v tématu [Datové typy](https://docs.microsoft.com/sql/t-sql/data-types/data-types-transact-sql).
 
 > [!NOTE]
-> Tabulky můžete také vytvářet a navrhovat pomocí [Návrháře tabulky v aplikaci SQL Server Management Studio](https://msdn.microsoft.com/library/hh272695.aspx). 
+> Tabulky můžete také vytvářet a navrhovat pomocí [Návrháře tabulky v aplikaci SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/visual-db-tools/design-database-diagrams-visual-database-tools). 
 
 ![Vztahy mezi tabulkami](./media/sql-database-design-first-database/tutorial-database-tables.png)
 

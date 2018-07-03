@@ -5,6 +5,8 @@
     - name: Co je služba Speech?
       href: overview.md
       expanded: true
+    - name: Scénáře pro službu Speech
+      href: speech-scenarios.md
 - name: Šablony Rychlý start
   items:
     - name: Vyzkoušejte si službu Speech zdarma
@@ -25,16 +27,18 @@
       href: how-to-text-to-speech.md
     - name: Překlad řeči
       href: how-to-translate-speech.md
-    - name: Získání sady Speech Devices SDK
-      href: get-speech-devices-sdk.md
     - name: Dávkový přepis
       href: batch-transcription.md
+    - name: Získání sady Speech Devices SDK
+      href: get-speech-devices-sdk.md
 - name: Přizpůsobení
   items:
     - name: Přizpůsobení akustických modelů
       href: how-to-customize-acoustic-models.md
     - name: Přizpůsobení jazykových modelů
       href: how-to-customize-language-model.md
+    - name: Přizpůsobení výslovnosti
+      href: how-to-customize-pronunciation.md
     - name: Přizpůsobení hlasových písem (hlas značky robota)
       href: how-to-customize-voice-font.md
     - name: Příprava přepisů

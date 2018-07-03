@@ -1,5 +1,5 @@
 ---
-title: Vytvoření aplikace Azure Service Fabric v Javě | Microsoft Docs
+title: Vytvoření aplikace Azure Service Fabric v Javě | Dokumentace Microsoftu
 description: V tomto rychlém startu vytvoříte aplikaci v Javě pro Azure s využitím ukázkové aplikace Service Fabric Reliable Services.
 services: service-fabric
 documentationcenter: java
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 13d350950e91d771b7b4b2310a788537c4c36bd7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5ae6ba28ba448591d58cc3963f5df9a563997ab0
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642389"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959541"
 ---
 # <a name="quickstart-deploy-a-java-service-fabric-reliable-services-application-to-azure"></a>Rychlý start: Nasazení aplikace Service Fabric Reliable Services v Javě do Azure
 Azure Service Fabric je platforma distribuovaných systémů pro nasazování a správu mikroslužeb a kontejnerů. 
@@ -120,13 +120,13 @@ K importování certifikátu do svého systému použijte jakoukoli metodu, kter
 
 Vzhledem k tomu, že aplikace používá programovací modely Service Fabric, je potřeba do ní přidat kryptografický otisk certifikátu. 
 
-1. Při spouštění aplikace na zabezpečeném clusteru budete muset mít kryptografický otisk certifikátu v souboru ```Voting/VotingApplication/ApplicationManiest.xml```. Spuštěním následujícího příkazu extrahujte kryptografický otisk certifikátu.
+1. Při spouštění aplikace na zabezpečeném clusteru budete muset mít kryptografický otisk certifikátu v souboru `Voting/VotingApplication/ApplicationManifest.xml`. Spuštěním následujícího příkazu extrahujte kryptografický otisk certifikátu.
 
     ```bash
     openssl x509 -in [CERTIFICATE_PEM_FILE] -fingerprint -noout
     ```
 
-2. V souboru ```Voting/VotingApplication/ApplicationManiest.xml``` přidejte pod značku **ApplicationManifest** následující fragment kódu. **X509FindValue** by měl být kryptografický otisk z předchozího kroku (bez středníků). 
+2. V souboru `Voting/VotingApplication/ApplicationManifest.xml` přidejte pod značku **ApplicationManifest** následující fragment kódu. **X509FindValue** by měl být kryptografický otisk z předchozího kroku (bez středníků). 
 
     ```xml
     <Certificates>

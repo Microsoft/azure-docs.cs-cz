@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/23/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: dab7fac1f28f70a58865ca3a09ad46884d4ac8d5
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 895665eef722e81030d9699c1a6c75455493bae9
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266926"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317840"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Nastavení zotavení po havárii do Azure pro místní virtuální počítače VMware
 
@@ -64,13 +64,13 @@ Jako první krok nasazení můžete nastavit zdrojové prostředí. Potřebujete
 - Procesní server funguje jako replikační brána. Přijímá data replikace, optimalizuje je pomocí ukládání do mezipaměti, komprese a šifrování a odesílá je do úložiště Azure. Procesový server také na všechny virtuální počítače, které chcete replikovat, nainstaluje službu mobility a automaticky vyhledá místní virtuální počítače VMware.
 - Hlavní cílový server zpracovává replikační data během navrácení služeb z Azure po obnovení.
 
-Pokud chcete nastavit konfigurační server jako vysoce dostupný virtuální počítač VMware, stáhněte připravenou šablonu OVF (Open Virtualization Format) a importujte ji do VMware. Tím vytvoříte požadovaný virtuální počítač. Jakmile nastavíte konfigurační server, zaregistrujte ho do vybraného trezoru. Po registraci služba Site Recovery zjistí místní virtuální počítače VMware.
+Pokud chcete nastavit konfigurační server jako vysoce dostupný virtuální počítač VMware, stáhněte připravenou šablonu OVA (Open Virtualization Application) a importujte ji do VMware. Tím vytvoříte požadovaný virtuální počítač. Jakmile nastavíte konfigurační server, zaregistrujte ho do vybraného trezoru. Po registraci služba Site Recovery zjistí místní virtuální počítače VMware.
 
 > [!TIP]
-> V tomto kurzu se k vytvoření virtuálního počítače VMware s konfiguračním serverem používá šablona OVF. Pokud to nemůžete udělat, můžete [nastavit konfigurační server ručně](physical-manage-configuration-server.md). 
+> V tomto kurzu se k vytvoření virtuálního počítače VMware s konfiguračním serverem používá šablona OVA. Pokud to nemůžete udělat, můžete [nastavit konfigurační server ručně](physical-manage-configuration-server.md).
 
 > [!TIP]
-> V tomto kurzu Site Recovery stáhne a nainstaluje na konfigurační server MySQL. Pokud nechcete, aby Site Recovery provedl tuto akci, můžete ho nastavit ručně. [Další informace](vmware-azure-deploy-configuration-server.md#prepare-for-mysql-installation).
+> V tomto kurzu Site Recovery stáhne a nainstaluje na konfigurační server MySQL. Pokud nechcete, aby Site Recovery provedl tuto akci, můžete ho nastavit ručně. [Další informace](vmware-azure-deploy-configuration-server.md#configure-settings).
 
 
 ### <a name="download-the-vm-template"></a>Stažení šablony virtuálního počítače
@@ -78,10 +78,13 @@ Pokud chcete nastavit konfigurační server jako vysoce dostupný virtuální po
 1. V daném trezoru klikněte na **Připravit infrastrukturu** > **Zdroj**.
 2. V části **Připravit zdroj** vyberte **+ Konfigurační server**.
 3. V části **Přidat server** zkontrolujte, jestli se v části **Typ serveru** zobrazí **Konfigurační server pro VMware**.
-4. Stáhněte šablonu OVF pro konfigurační server. Se šablonou poskytujeme zkušební licenci, která platí 100 dní. Po této době je nutné získat licenci.
+4. Stáhněte šablonu OVF pro konfigurační server.
 
-  > [!TIP]
-  Nejnovější verzi šablony konfiguračního serveru můžete stáhnout přímo z webu [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+ > [!TIP]
+ >Nejnovější verzi šablony konfiguračního serveru můžete stáhnout přímo z webu [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
+
+>[!NOTE]
+Licence, která je součástí šablony OVF, je zkušební licence platná po dobu 180 dnů. Zákazník musí aktivovat Windows s použitím zakoupené licence.
 
 ## <a name="import-the-template-in-vmware"></a>Import šablony do VMware
 
@@ -133,8 +136,8 @@ Pokud chcete na konfigurační server přidat další síťový adaptér, uděle
 8. V části **Nakonfigurovat přihlašovací údaje virtuálního počítače** zadejte uživatelské jméno a heslo, která se po povolení replikace použijí pro automatickou instalaci služby mobility na virtuální počítače.
     - Když chcete replikovat počítače s Windows, je nutné, aby na nich měl tento účet oprávnění místního správce.
     - U počítačů s Linuxem zadejte údaje superuživatele.
-1. Vyberte **Dokončit konfiguraci** a dokončete registraci. 
-2. Jakmile bude registrace dokončená, zkontrolujte Azure Portal, jestli je ve vybraném trezoru na stránce **Zdroj** uvedený konfigurační server a VMware server. Pak vyberte **OK** a nakonfigurujte nastavení cíle.
+9. Vyberte **Dokončit konfiguraci** a dokončete registraci.
+10. Jakmile bude registrace dokončená, zkontrolujte Azure Portal, jestli je ve vybraném trezoru na stránce **Zdroj** uvedený konfigurační server a VMware server. Pak vyberte **OK** a nakonfigurujte nastavení cíle.
 
 
 Site Recovery se připojí k serverům VMware pomocí zadaného nastavení a vyhledá virtuální počítače.
@@ -147,7 +150,7 @@ Site Recovery se připojí k serverům VMware pomocí zadaného nastavení a vyh
 Vyberte a zkontrolujte cílové prostředky.
 
 1. Vyberte **Příprava infrastruktury** > **Cíl**. Vyberte předplatné Azure, které chcete použít. Používáme model Resource Manager.
-1. Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure. Měli byste je mít, když nastavujete komponenty Azure v [prvním kurzu](tutorial-prepare-azure.md) v této sérii.
+2. Site Recovery zkontroluje, že máte minimálně jednu kompatibilní síť a účet úložiště Azure. Měli byste je mít, když nastavujete komponenty Azure v [prvním kurzu](tutorial-prepare-azure.md) v této sérii.
 
    ![Karta Cíl](./media/vmware-azure-tutorial/storage-network.png)
 
@@ -164,12 +167,11 @@ Vyberte a zkontrolujte cílové prostředky.
    ![Vytvoření zásady replikace](./media/vmware-azure-tutorial/replication-policy.png)
 
 - Tato zásada se automaticky přidruží ke konfiguračnímu serveru.
-- Ve výchozím nastavení se pro navrácení služeb po obnovení automaticky vytvoří zásada párování. Pokud má zásada replikace název například **rep-policy**, bude mít zásada navrácení služeb po obnovení název **rep-policy-failback**. Tato zásada se nepoužije, dokud nespustíte navrácení služeb po obnovení z Azure.
+- Ve výchozím nastavení se pro navrácení služeb po obnovení automaticky vytvoří zásada párování. Pokud má zásada replikace název například **rep-policy**, zásada navrácení služeb po obnovení bude mít název **rep-policy-failback**. Tato zásada se nepoužije, dokud nespustíte navrácení služeb po obnovení z Azure.
 
 ## <a name="enable-replication"></a>Povolení replikace
 
-
-Replikaci povolte následujícím způsobem:
+Replikaci je možné povolit následujícím způsobem:
 
 1. Vyberte **Replikovat aplikaci** > **Zdroj**.
 2. U možnosti **Zdroj** vyberte **Místní** a v **Umístění zdroje** vyberte konfigurační server.
@@ -178,13 +180,12 @@ Replikaci povolte následujícím způsobem:
 5. Vyberte procesový server (standardně se instaluje na virtuální počítač konfiguračního serveru). Pak vyberte **OK**.
 6. V části **Cíl** vyberte předplatné a skupinu prostředků, ve které chcete vytvořit virtuální počítače, jejichž služby se převezmou při selhání. Používáme model nasazení Resource Manager. 
 7. Vyberte účet úložiště Azure, který chcete použít k replikaci dat, a síť a podsíť Azure, ke kterým se připojí virtuální počítače Azure, když se vytvoří po převzetí služeb při selhání.
-1. Vyberte možnost **Nakonfigurovat pro vybrané počítače** a použijte tak nastavení sítě pro všechny virtuální počítače, na kterých jste povolili replikaci. Vyberte **Nakonfigurovat později** a vyberte síť Azure pro konkrétní počítač.
-2. V části **Virtuální počítače** > **Výběr virtuálních počítačů** vyberte každý počítač, který chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**.
-3. V části **Vlastnosti** > **Konfigurace vlastností** vyberte účet, který použije procesový server při automatické instalaci služby mobility na počítači.
-4. V části **Nastavení replikace** > **Konfigurace nastavení replikace** zkontrolujte, jestli je vybraná správná zásada replikace.
-5. Vyberte **Povolit replikaci**. Jakmile bude replikace virtuálního počítače povolená, nainstaluje Site Recovery automaticky službu mobility.
-6. Průběh úlohy **Povolení ochrany** můžete sledovat tady: **Nastavení** > **Úlohy** > **Úlohy Site Recovery**. Po spuštění úlohy **Dokončit ochranu** je počítač připravený k převzetí služeb při selhání.
-
+8. Vyberte možnost **Nakonfigurovat pro vybrané počítače** a použijte tak nastavení sítě pro všechny virtuální počítače, na kterých jste povolili replikaci. Vyberte **Nakonfigurovat později** a vyberte síť Azure pro konkrétní počítač.
+9. V části **Virtuální počítače** > **Výběr virtuálních počítačů** vyberte každý počítač, který chcete replikovat. Můžete vybrat pouze počítače, pro které je možné povolit replikaci. Pak vyberte **OK**.
+10. V části **Vlastnosti** > **Konfigurace vlastností** vyberte účet, který použije procesový server při automatické instalaci služby mobility na počítači.
+11. V části **Nastavení replikace** > **Konfigurace nastavení replikace** zkontrolujte, jestli je vybraná správná zásada replikace.
+12. Vyberte **Povolit replikaci**. Jakmile bude replikace virtuálního počítače povolená, nainstaluje Site Recovery automaticky službu mobility.
+13. Průběh úlohy **Povolení ochrany** můžete sledovat tady: **Nastavení** > **Úlohy** > **Úlohy Site Recovery**. Po spuštění úlohy **Dokončit ochranu** je počítač připravený k převzetí služeb při selhání.
 - Může to trvat 15 minut nebo déle, než se změny projeví a objeví se na portálu.
 - Pokud chcete monitorovat virtuální počítače, které jste přidali, zkontrolujte čas posledního zjištění virtuálních počítačů v části **Konfigurační servery** > **Poslední kontakt**. Pokud chcete přidat virtuální počítače bez čekání na naplánované zjišťování, zvýrazněte konfigurační server (nevybírejte ho) a vyberte **Aktualizovat**.
 

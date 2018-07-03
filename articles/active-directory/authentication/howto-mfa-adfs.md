@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 3f1d6b00652270d143f7df48b0f690c5f33433e9
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: ce70641d9ccb3c86d1360a0aaf21a4817e2b3c5d
+ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866059"
+ms.lasthandoff: 06/22/2018
+ms.locfileid: "36317857"
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Zabezpečení cloudových prostředků s Azure Multi-Factor Authentication a AD FS
 Pokud je vaše organizace federovaná pomocí služby Azure Active Directory, k zabezpečení prostředků, které využívá Azure AD, použijte ověřování Azure Multi-Factor Authentication nebo Active Directory Federation Services (AD FS). Následující postupy použijte k zabezpečení prostředků Azure Active Directory s ověřováním Azure Multi-Factor Authentication nebo Active Directory Federation Services.
@@ -41,7 +41,7 @@ K zabezpečení cloudových prostředků nastavte pravidlo deklarace identity ta
 6. Pojmenujte pravidlo. 
 7. Jako typ příchozí deklarace identity vyberte **Odkazy na metody ověřování**.
 8. Vyberte **Předávat všechny hodnoty deklarací identity**.
-    ![	Průvodce přidáním pravidla – deklarace identity transformace](./media/howto-mfa-adfs/configurewizard.png)
+    ![Průvodce přidáním pravidla deklarace identity transformace](./media/howto-mfa-adfs/configurewizard.png)
 9. Klikněte na **Dokončit**. Uzavřete konzolu pro správu služby AD FS.
 
 ## <a name="trusted-ips-for-federated-users"></a>Důvěryhodné IP adresy pro federované uživatele
@@ -80,7 +80,7 @@ První věc, kterou je potřeba udělat, je konfigurace deklarací identity slu�
 ### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>Konfigurovat důvěryhodné IP adresy ověřování Azure Multi-Factor Authentication s federovanými uživateli
 Teď, když máme vytvořené deklarace identity, můžeme nakonfigurovat důvěryhodné IP adresy.
 
-1. Přihlaste se k [portálu Azure](https://portal.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Vyberte **Azure Active Directory** > **Podmíněný přístup** > **Pojmenovaná umístění**.
 3. V okně **Podmíněný přístup – pojmenovaná umístění** vyberte **Konfigurovat důvěryhodné IP adresy MFA**.
 

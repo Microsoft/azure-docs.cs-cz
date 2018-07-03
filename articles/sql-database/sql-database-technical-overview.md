@@ -1,5 +1,5 @@
 ---
-title: Co je služba Azure SQL Database? | Microsoft Docs
+title: Co je služba Azure SQL Database? | Dokumenty Microsoft
 description: Přečtěte si základní informace o službě SQL Database – technické podrobnosti a možností cloudového systému pro správu relačních databází (RDBMS) společnosti Microsoft.
 keywords: představení sql,úvod do sql,co je sql database
 services: sql-database
@@ -7,18 +7,18 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.topic: overview
-ms.date: 03/07/2018
+ms.date: 06/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 0d730c886d2b591a8c7957f2f91cb193d93bf4be
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: e2a82f9c267a89ac4af3239ebc7ce6bbfd3840fe
+ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649988"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36308906"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Co je služba Azure SQL Database? 
 
-SQL Database je spravovaná služba relačních databází pro obecné účely v Microsoft Azure, která podporuje struktury, jako jsou relační data, JSON, prostorová data a XML. SQL Database nabízí spravované [izolované databáze SQL](sql-database-servers-databases.md), spravované databáze SQL v [elastickém fondu](sql-database-elastic-pool.md) a [spravované instance](sql-database-managed-instance.md) SQL (ve verzi Public Preview). Zajišťuje dynamicky škálovatelný výkon v rámci dvou nákupních modelů – [nákupního modelu založeného na DTU](sql-database-service-tiers-dtu.md) a [nákupního modelu založeného na virtuálních jádrech (ve verzi Preview)](sql-database-service-tiers-vcore.md). SQL Database také poskytuje možnosti jako [indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) pro extrémní analytické analýzy a generování sestav nebo [OLTP v paměti](sql-database-in-memory.md) pro extrémní zpracování transakcí. Microsoft zajišťuje bezproblémové opravy a aktualizace základního kódu SQL a odděluje veškerou správu základní infrastruktury. 
+SQL Database je spravovaná služba relačních databází pro obecné účely v Microsoft Azure, která podporuje struktury, jako jsou relační data, JSON, prostorová data a XML. SQL Database nabízí logické servery, které obsahují [izolované databáze SQL](sql-database-servers-databases.md), [elastické fondy](sql-database-elastic-pool.md) a [spravované instance](sql-database-managed-instance.md) (ve verzi Public Preview) obsahující systémové a uživatelské databáze. SQL Database zajišťuje dynamicky škálovatelný výkon v rámci dvou nákupních modelů: [nákupního modelu založeného na virtuálních jádrech (Preview)](sql-database-service-tiers-vcore.md) a [nákupního modelu založeného na DTU](sql-database-service-tiers-dtu.md). SQL Database také poskytuje možnosti jako [indexy columnstore](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) pro extrémní analytické analýzy a generování sestav nebo [OLTP v paměti](sql-database-in-memory.md) pro extrémní zpracování transakcí. Microsoft zajišťuje bezproblémové opravy a aktualizace základního kódu SQL a odděluje veškerou správu základní infrastruktury. 
 
 SQL Database sdílí základ kódu s [databázovým strojem Microsoft SQL Serveru](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation). V rámci strategie Microsoftu zaměřené na cloud se nové funkce SQL Serveru uvolňují nejprve do služby SQL Database a až potom do samotného SQL Serveru. Tento přístup vám poskytuje nejnovější funkce SQL Serveru bez režijních nákladů na opravy nebo aktualizace. Kromě toho umožňuje testování těchto funkcí v milionech databází. Pokud se chcete o nových funkcích dozvědět hned po jejich oznámení, podívejte se na:
 
@@ -30,7 +30,7 @@ SQL Database sdílí základ kódu s [databázovým strojem Microsoft SQL Server
 
 SQL Database nabízí předvídatelný výkon na několika úrovních služeb, které poskytují dynamickou škálovatelnost bez přerušení provozu, integrovanou inteligentní optimalizaci, globální škálovatelnost a dostupnost a pokročilé možnosti zabezpečení – to vše téměř bez nutnosti jakékoli správy. Díky těmto možnostem se můžete zaměřit na rychlý vývoj aplikací a zkrácení doby dodání produktu na trh, namísto vynakládání prostředků a drahocenného času na správu virtuálních počítačů a infrastruktury. SQL Database je aktuálně v 38 datových centrech po celém světě a další datová centra se pravidelně přidávají, což vám umožňuje provozovat databázi v datovém centru ve vaší blízkosti.
 
-> [!IMPORTANT]
+> [!NOTE]
 > SQL Database Managed Instance je aktuálně ve verzi Preview a je k dispozici pouze na jedné úrovni služby. Další informace najdete v tématu [SQL Database Managed Instance](sql-database-managed-instance.md).
 >
 
@@ -46,14 +46,11 @@ SQL Database nabízí [nákupní model založený na DTU](sql-database-service-t
 - Nákupní model založený na DTU nabízí pro zajištění podpory databázových úloh od zcela nenáročných až po velmi náročné kombinaci výpočetních, paměťových a vstupně-výstupních prostředků na třech úrovních služby: Basic, Standard a Premium. Úrovně výkonu na jednotlivých úrovních poskytují různou kombinaci těchto prostředků, ke kterým můžete přidat další prostředky úložiště.
 - Nákupní model založený na virtuálních jádrech (ve verzi Preview) umožňuje výběr počtu virtuálních jader, velikosti paměti a velikosti a rychlosti úložiště.
 
-S nízkými měsíčními náklady můžete sestavit svou první aplikaci s malou izolovanou databází a později ručně nebo programově změnit úroveň služby, aby splňovala požadavky vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost* umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
+S nízkými měsíčními náklady můžete sestavit svou první aplikaci s malou izolovanou databází a později ručně nebo programově změnit úroveň služby, aby splňovala požadavky vašeho řešení. Můžete upravit úroveň výkonu bez přerušení provozu aplikace a bez dopadu na vaše zákazníky. Dynamická škálovatelnost umožňuje databázím transparentně reagovat na rychle se měnící požadavky na prostředky a vy díky tomu platíte pouze za prostředky, které potřebujete, když je potřebujete.
 
-   ![Škálování DTU](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
+Dynamická škálovatelnost se liší od automatického škálování. K automatickému škálování dochází, když se služba škáluje automaticky na základě kritérií, zatímco dynamická škálovatelnost umožňuje ruční škálování bez prostojů. Izolovaná databáze Azure SQL Database podporuje ruční dynamickou škálovatelnost, nikoli automatické škálování. Pokud chcete *automatizovanější* prostředí, zvažte použití elastických fondů, které databázím umožňují sdílet prostředky ve fondu na základě potřeb jednotlivých databází. Existují ale skripty, které mohou automatickou škálovatelnost pro izolovanou databázi Azure SQL Database usnadnit. Příklad najdete v tématu [Monitorování a škálování izolované databáze SQL pomocí PowerShellu](scripts/sql-database-monitor-and-scale-database-powershell.md). 
 
 SQL Database Managed Instance je ve verzi Preview a nabízí jedinou úroveň služby. Další informace najdete v tématu [SQL Database Managed Instance](sql-database-managed-instance.md).
-
-  > [!IMPORTANT]
-  > \*Dynamická škálovatelnost se liší od automatického škálování. K automatickému škálování dochází, když se služba škáluje automaticky na základě kritérií, zatímco dynamická škálovatelnost umožňuje ruční škálování bez prostojů. Izolovaná databáze Azure SQL Database podporuje ruční dynamickou škálovatelnost, nikoli automatické škálování. Pokud chcete *automatizovanější* prostředí, zvažte použití elastických fondů, které databázím umožňují sdílet prostředky ve fondu na základě potřeb jednotlivých databází. Existují ale skripty, které mohou automatickou škálovatelnost pro izolovanou databázi Azure SQL Database usnadnit. Příklad najdete v tématu [Monitorování a škálování izolované databáze SQL pomocí PowerShellu](scripts/sql-database-monitor-and-scale-database-powershell.md). 
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Elastické fondy pro maximalizaci využití prostředků
 
@@ -86,7 +83,7 @@ Kromě toho může SQL Database [generovat metriky a diagnostické protokoly](sq
 
 ## <a name="availability-capabilities"></a>Možnosti dostupnosti
 
-Dostupnost služby Azure se smlouvou o úrovní služeb [(SLA)](http://azure.microsoft.com/support/legal/sla/) dosahuje špičkové hodnoty 99,99 %, protože staví na globální síti Microsoftem spravovaných datových center. Může tedy udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. Kromě toho SQL Database nabízí integrované funkce pro [provozní kontinuitu a globální škálovatelnost](sql-database-business-continuity.md), mezi které patří:
+Dostupnost služby Azure se smlouvou o úrovní služeb [(SLA)](http://azure.microsoft.com/support/legal/sla/) dosahuje špičkové hodnoty 99,99 %, protože staví na globální síti Microsoftem spravovaných datových center. Může tedy udržet vaše aplikace v nepřetržitém provozu každý den po celý rok. Platforma Azure plně spravuje všechny služby Azure SQL Database a zajišťuje nulovou ztrátu dat a vysokou procentní dostupnost dat. Azure automaticky zpracovává opravy, zálohování, replikaci, detekci selhání, potenciální selhání základního hardwaru, softwaru nebo sítě, nasazování oprav chyb, převzetí služeb při selhání, upgrady databází a další úlohy údržby. Dostupnosti úrovně Standard se dosahuje oddělením výpočetní a úložné vrstvy. Dostupnosti úrovně Premium se dosahuje integrací výpočetního prostředí a úložiště na jednom uzlu za účelem zajištění výkonu a implementací skupin dostupnosti AlwaysOn na pozadí. Úplný popis možností zajištění vysoké dostupnosti v Azure SQL Database najdete v tématu [Dostupnost služby SQL Database](sql-database-high-availability.md). Kromě toho SQL Database nabízí integrované funkce pro [provozní kontinuitu a globální škálovatelnost](sql-database-business-continuity.md), mezi které patří:
 
 - **[Automatické zálohování:](sql-database-automated-backups.md)** SQL Database automaticky provádí úplné a rozdílové zálohování a zálohování protokolů transakcí.
 - **[Obnovení k určitému bodu v čase:](sql-database-recovery-using-backups.md)** SQL Database podporuje obnovení k libovolnému bodu v čase v rámci doby uchování automatických záloh.
@@ -117,33 +114,25 @@ Ve službě [SQL Database jsou dostupné](sql-database-automatic-tuning.md) dva 
 
 Do služby SQL Database přidáváme také řadu funkcí pro [adaptivní zpracování dotazů](/sql/relational-databases/performance/adaptive-query-processing), včetně prokládaného spouštění funkcí s více příkazy vracejících tabulky, odezvy přidělení paměti v režimu dávky a adaptivních příkazů join v režimu dávky. Každá z těchto funkcí pro adaptivní zpracování dotazů používá podobné techniky učení a adaptace a pomáhá tak dále řešit problémy s výkonem související s historicky nezvladatelnými problémy s optimalizací dotazů.
 
-### <a name="intelligent-threat-detection"></a>Inteligentní detekce hrozeb
-
- [Detekce hrozeb SQL](sql-database-threat-detection.md) využívá [auditování služby SQL Database](sql-database-auditing.md) k nepřetržitému monitorování databází Azure SQL a detekci potencionálně škodlivých pokusů o přístup k citlivým datům. Detekce hrozeb SQL poskytuje novou vrstvu zabezpečení, která zákazníkům umožňuje díky poskytování upozornění zabezpečení na neobvyklé aktivity detekovat a reagovat na potenciální hrozby, když k nim dojde. Uživatelé obdrží upozornění při podezřelých databázových aktivitách, potenciálních ohroženích zabezpečení, útocích prostřednictvím injektáže SQL a neobvyklých vzorcích přístupu k databázi. Upozornění detekce hrozeb SQL obsahují podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby. Uživatelé můžou prozkoumat podezřelé události a určit, jestli jsou důsledkem pokusu o přístup, porušení zabezpečení nebo zneužití dat v databázi. Detekce hrozeb usnadňuje řešení potenciálních ohrožení databáze, aniž byste museli být odborníkem na zabezpečení nebo museli spravovat pokročilé systémy monitorování zabezpečení.
-
 ## <a name="advanced-security-and-compliance"></a>Pokročilé zabezpečení a dodržování předpisů
 
 SQL Database nabízí řadu [integrovaných funkcí zabezpečení a dodržování předpisů](sql-database-security-overview.md), které vaší aplikaci pomůžou se splněním nejrůznějších požadavků na zabezpečení a dodržování předpisů. 
+
+### <a name="advance-threat-protection"></a>Advanced Threat Protection
+
+SQL Advanced Threat Protection je jednotný balíček pokročilých možností zabezpečení SQL. Zahrnuje funkce pro zjišťování a klasifikaci citlivých dat, správu ohrožení zabezpečení databáze a detekci neobvyklých aktivit, které by pro vaši databázi mohly znamenat hrozbu. Poskytuje centrální místo pro povolování a správu těchto možností.
+
+- [Zjišťování a klasifikace dat](sql-database-data-discovery-and-classification.md) (aktuálně ve verzi Preview) poskytuje funkce integrované do Azure SQL Database pro zjišťování, klasifikaci, označování a ochranu citlivých dat v databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni.
+- [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je snadno konfigurovatelná služba, která může zjišťovat, sledovat a pomáhat opravovat potenciální ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
+- [Detekce hrozeb](sql-database-threat-detection.md) zjišťuje neobvyklé aktivity, které můžou ukazovat na neobvyklé a potenciálně škodlivé pokusy o přístup k databázi nebo její zneužití. Nepřetržitě monitoruje podezřelé aktivity v databázi a okamžitě poskytuje výstrahy zabezpečení týkající se potenciálních ohrožení zabezpečení, útoků prostřednictvím injektáže SQL a neobvyklých vzorů přístupu k databázi. Upozornění detekce hrozeb obsahují podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby.
 
 ### <a name="auditing-for-compliance-and-security"></a>Auditování dodržování předpisů a zabezpečení
 
 [Auditování služby SQL Database](sql-database-auditing.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu Azure Storage. Auditování pomáhá zajistit dodržování předpisů, porozumět databázové aktivitě a získat přehled o nesrovnalostech a anomáliích, které můžou značit problémy obchodního charakteru nebo vzbuzovat podezření na narušení zabezpečení.
 
-### <a name="data-encryption-at-rest"></a>Šifrování v klidovém stavu
+### <a name="data-encryption"></a>Šifrování dat
 
-[Transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) služby SQL Database pomáhá chránit před hrozbou škodlivé aktivity tím, že v reálném čase provádí šifrování a dešifrování databáze, přidružených záloh a souborů protokolů transakcí v klidovém stavu a nevyžaduje žádné změny aplikace. Od května 2017 jsou všechny nově vytvořené databáze Azure SQL automaticky chráněné pomocí transparentního šifrování dat (TDE). TDE je prověřená technologie SQL pro šifrování v klidovém stavu, kterou vyžaduje řada standardů dodržování předpisů z důvodu ochrany před krádeží úložného média. Zákazníci můžou bezpečně a s ohledem na dodržování předpisů spravovat šifrovací klíče TDE a další tajné klíče pomocí Azure Key Vault.
-
-### <a name="data-encryption-in-motion"></a>Šifrování přenášených dat
-
-Služba SQL Database je jediný databázový systém, který nabízí ochranu citlivých dat při přenosu, v neaktivním stavu a během zpracování dotazů pomocí funkce [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine). Funkce Always Encrypted je špičkou v odvětví, která nabízí bezkonkurenční zabezpečení dat před porušením zabezpečení, včetně krádeže důležitých dat. S povolenou funkcí Always Encrypted se například čísla platebních karet zákazníků ukládají v databázi vždy v zašifrované podobě, dokonce i během zpracování dotazů, s možností jejich dešifrování pro účely zpracování těchto dat v době použití ověřeným zaměstnancem nebo aplikací.
-
-### <a name="dynamic-data-masking"></a>Dynamické maskování dat
-
-[Dynamické maskování dat služby SQL Database](sql-database-dynamic-data-masking-get-started.md) omezuje riziko ohrožení citlivých dat pomocí jejich maskování pro neoprávněné uživatele. Dynamické maskování dat pomáhá předcházet neoprávněnému přístupu k citlivým datům tím, že uživatelům umožňuje určit, kolik citlivých dat se může odhalit, aby to mělo minimální dopad na aplikační vrstvu. Je to funkce zabezpečení založená na zásadách, která skrývá citlivá data v sadě výsledků dotazu nad určenými poli databáze, zatímco data v databázi se nemění.
-
-### <a name="row-level-security"></a>Zabezpečení na úrovni řádku
-
-[Zabezpečení na úrovni řádku](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) umožňuje řízení přístupu k řádkům v databázové tabulce na základě charakteristiky uživatele spouštějícího dotaz (například podle členství ve skupině nebo kontextu spuštění). Zabezpečení na úrovni řádku (RLS) zjednodušuje návrh a psaní kódu zabezpečení v aplikaci. RLS umožňuje implementovat omezení přístupu k datovým řádkům. Například pro zajištění, že pracovníci mají přístup pouze k datovým řádkům, které se vztahují k jejich oddělení, nebo pro omezení přístupu zákazníků pouze k datům souvisejícím s jejich společností.
+SQL Database chrání data tím, že zajišťuje šifrování přenášených dat pomocí [protokolu TLS (Transport Layer Security)](https://support.microsoft.com/kb/3135244), neaktivních uložených dat pomocí [transparentního šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) a používaných dat pomocí funkce [Always Encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine).
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integrace s Azure Active Directory a vícefaktorové ověřování
 

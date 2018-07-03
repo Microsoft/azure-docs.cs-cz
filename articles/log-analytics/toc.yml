@@ -169,94 +169,104 @@
           href: log-analytics-agent-linux-support.md
     - name: Použití řešení
       items:
-        - name: Přehled řešení
-          href: log-analytics-add-solutions.md
+        - name: Instalace řešení
+          href: ../monitoring/monitoring-solutions.md?toc=%2fazure%2flog-analytics%2ftoc.json
+        - name: Inventarizace řešení
+          href: ../monitoring/monitoring-solutions-inventory.md?toc=%2fazure%2flog-analytics%2ftoc.json
         - name: Cílová řešení
           href: ../monitoring/monitoring-solution-targeting.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Protokoly aktivit Azure
+        - name: Průvodce řešením
           items:
-            - name: Analýzy
-              href: log-analytics-activity.md
-            - name: Shromažďování napříč předplatnými
-              href: log-analytics-activity-logs-subscriptions.md
-        - name: Posouzení AD
-          href: log-analytics-ad-assessment.md
-        - name: Stav replikace AD
-          href: log-analytics-ad-replication-status.md
-        - name: Stav agenta
-          href: ../operations-management-suite/oms-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Správa výstrah
-          href: log-analytics-solution-alert-management.md
-        - name: Application Insights Connector
-          href: log-analytics-app-insights-connector.md
-        - name: Azure SQL Analytics
-          href: log-analytics-azure-sql.md
-        - name: Azure Web Apps Analytics
-          href: log-analytics-azure-web-apps-analytics.md
-        - name: Kapacita a výkon
-          href: log-analytics-capacity.md
-        - name: Sledování změn
-          href: log-analytics-change-tracking.md
-        - name: Containers
-          href: log-analytics-containers.md
-        - name: DNS Analytics
-          href: log-analytics-dns.md
-        - name: IT Service Management Connector
-          href: log-analytics-itsmc-overview.md
-          items:
-            - name: Připojení IT Service Management
-              href: log-analytics-itsmc-connections.md
-        - name: Key Vault
-          href: log-analytics-azure-key-vault.md
-        - name: Zprávy B2B Logic Apps
-          items:
-            - name: Řešení zpráv Logic Apps B2B
-              href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
-            - name: Vlastní schéma sledování Logic Apps B2B
-              href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Analýza sítě
-          href: log-analytics-azure-networking-analytics.md
-        - name: Sledování výkonu sítě
-          items:
-            - name: Přehled řešení
-              href: log-analytics-network-performance-monitor.md
-            - name: Monitorování výkonu
-              href: log-analytics-network-performance-monitor-performance-monitor.md
-            - name: Koncový bod služby
-              href: log-analytics-network-performance-monitor-service-endpoint.md
-            - name: ExpressRoute
-              href: log-analytics-network-performance-monitor-expressroute.md
-            - name: Ceny
-              href: log-analytics-network-performance-monitor-pricing-faq.md
-        - name: Office 365
-          href: ../operations-management-suite/oms-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Kontrola stavu SCOM
-          href: log-analytics-scom-assessment.md
-        - name: Audit zabezpečení
-          href: ../security-center/security-center-intro.md
-        - name: Service Fabric s PowerShellem
-          href: log-analytics-service-fabric.md
-          items:
-            - name: Service Fabric s Azure Resource Managerem
-              href: log-analytics-service-fabric-azure-resource-manager.md
-        - name: Mapa služeb
-          href: ../monitoring/monitoring-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: Kontrola stavu SQL
-          href: log-analytics-sql-assessment.md
-        - name: Surface Hub
-          href: log-analytics-surface-hubs.md
-        - name: Update Management
-          href: ../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2flog-analytics%2ftoc.json
-        - name: VMware
-          href: log-analytics-vmware.md
-        - name: Analýzy ve Windows
-          items:
-            - name: Update Compliance
-              href: 'https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started'
-            - name: Upgrade Readiness
-              href: 'https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started'
-        - name: Linková data
-          href: log-analytics-wire-data.md
+            - name: Protokoly aktivit Azure
+              items:
+                - name: Analýzy
+                  href: log-analytics-activity.md
+                - name: Shromažďování napříč předplatnými
+                  href: log-analytics-activity-logs-subscriptions.md
+            - name: Posouzení AD
+              href: log-analytics-ad-assessment.md
+            - name: Stav replikace AD
+              href: log-analytics-ad-replication-status.md
+            - name: Stav agenta
+              href: ../monitoring/monitoring-solution-agenthealth.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: Správa výstrah
+              href: log-analytics-solution-alert-management.md
+            - name: Application Insights Connector
+              href: log-analytics-app-insights-connector.md
+            - name: Azure SQL Analytics
+              href: log-analytics-azure-sql.md
+            - name: Azure Web Apps Analytics
+              href: log-analytics-azure-web-apps-analytics.md
+            - name: Kapacita a výkon
+              href: log-analytics-capacity.md
+            - name: Sledování změn
+              href: log-analytics-change-tracking.md
+            - name: Containers
+              href: log-analytics-containers.md
+            - name: DNS Analytics
+              href: log-analytics-dns.md
+            - name: IT Service Management Connector
+              href: log-analytics-itsmc-overview.md
+              items:
+                - name: Připojení IT Service Management
+                  href: log-analytics-itsmc-connections.md
+            - name: Key Vault
+              href: log-analytics-azure-key-vault.md
+            - name: Zprávy B2B Logic Apps
+              items:
+                - name: Řešení zpráv Logic Apps B2B
+                  href: ../logic-apps/logic-apps-track-b2b-messages-omsportal.md?toc=%2fazure%2flog-analytics%2ftoc.json
+                - name: Vlastní schéma sledování Logic Apps B2B
+                  href: ../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: Analýza sítě
+              href: log-analytics-azure-networking-analytics.md
+            - name: Sledování výkonu sítě
+              items:
+                - name: Přehled řešení
+                  href: log-analytics-network-performance-monitor.md
+                - name: Monitorování výkonu
+                  href: log-analytics-network-performance-monitor-performance-monitor.md
+                - name: Koncový bod služby
+                  href: log-analytics-network-performance-monitor-service-endpoint.md
+                - name: ExpressRoute
+                  href: log-analytics-network-performance-monitor-expressroute.md
+                - name: Ceny
+                  href: log-analytics-network-performance-monitor-pricing-faq.md
+            - name: Office 365
+              href: ../monitoring/monitoring-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: Kontrola stavu SCOM
+              href: log-analytics-scom-assessment.md
+            - name: Audit zabezpečení
+              href: ../security-center/security-center-intro.md
+            - name: Service Fabric s PowerShellem
+              href: log-analytics-service-fabric.md
+              items:
+                - name: Service Fabric s Azure Resource Managerem
+                  href: log-analytics-service-fabric-azure-resource-manager.md
+            - name: Mapa služeb
+              items:
+                - name: Použití
+                  href: ../monitoring/monitoring-service-map.md?toc=%2fazure%2flog-analytics%2ftoc.json
+                - name: Konfigurace
+                  href: ../monitoring/monitoring-service-map-configure.md?toc=%2fazure%2flog-analytics%2ftoc.json
+                - name: Integrace s Operations Managerem
+                  href: ../monitoring/monitoring-service-map-scom.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: Kontrola stavu SQL
+              href: log-analytics-sql-assessment.md
+            - name: Surface Hub
+              href: log-analytics-surface-hubs.md
+            - name: Update Management
+              href: ../automation/automation-update-management.md?toc=%2fazure%2flog-analytics%2ftoc.json
+            - name: VMware
+              href: log-analytics-vmware.md
+            - name: Analýzy ve Windows
+              items:
+                - name: Update Compliance
+                  href: 'https://technet.microsoft.com/itpro/windows/manage/update-compliance-get-started'
+                - name: Upgrade Readiness
+                  href: 'https://technet.microsoft.com/itpro/windows/deploy/upgrade-readiness-get-started'
+            - name: Linková data
+              href: log-analytics-wire-data.md
     - name: Vývoj
       items:
         - name: Rutiny prostředí PowerShell

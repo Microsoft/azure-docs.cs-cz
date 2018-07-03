@@ -278,3 +278,11 @@
               href: app-service-web-open-source-technologies-faq.md
             - name: Nejčastější dotazy ke konfiguraci a správě
               href: app-service-web-configuration-and-management-faq.md
+    - name: Změna IP adresy
+      items:
+        - name: Příchozí IP adresa
+          href: ip-address-change-inbound.md
+        - name: Odchozí IP adresa
+          href: ip-address-change-outbound.md
+        - name: Adresa SSL
+          href: ip-address-change-ssl.md

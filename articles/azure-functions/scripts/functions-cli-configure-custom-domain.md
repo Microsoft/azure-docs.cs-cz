@@ -13,19 +13,19 @@ ms.workload: na
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 06/01/2017
+ms.date: 06/26/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: d2efd0891cb0010aac6135ce190ad77667f78efd
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 7d3fc71bc53e85fa7555dbee5ee79b3f06f27fe8
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29843982"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960334"
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Mapování vlastní domény na aplikaci funkcí
 
-Tento ukázkový skript vytvoří aplikaci funkcí se souvisejícími prostředky a pak na ni namapuje doménu `www.<yourdomain>`. Pokud chcete namapovat vlastní doménu, vaše aplikace funkcí musí být vytvořená v plánu služby App Service, a ne v plánu Consumption. Azure Functions podporuje mapování vlastní domény pouze pomocí záznamu A.
+Tento ukázkový skript vytvoří aplikaci funkcí se souvisejícími prostředky a pak na ni namapuje doménu `www.<yourdomain>`. Pokud je vaše aplikace funkcí hostovaná v [plánu služby App Service](../functions-scale.md#app-service-plan), můžete vlastní doménu namapovat pomocí záznamu CNAME nebo A. Pro aplikace funkcí v [plánu Consumption](../functions-scale.md#consumption-plan) se podporuje pouze možnost CNAME.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

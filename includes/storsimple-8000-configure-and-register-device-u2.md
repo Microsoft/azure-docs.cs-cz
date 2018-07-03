@@ -9,7 +9,7 @@
 
 3. Budete vyzváni k volbě jazyka, který chcete pro zařízení nastavit. Zadejte jazyk a stiskněte **Enter**.
 
-4. V zobrazené nabídce konzoly sériového portu se výběrem možnosti 1 **přihlaste s oprávněním k úplnému přístupu**.
+4. V zobrazené nabídce sériové konzoly se výběrem možnosti 1 **přihlaste s oprávněním k úplnému přístupu**.
      Provedením kroků 5–12 konfigurujte minimální požadovaná síťová nastavení zařízení. **Tyto kroky konfigurace je nutné provést v aktivním řadiči zařízení.** Nabídka konzoly sériového portu zobrazuje stav řadiče ve zprávě v záhlaví. Pokud nejste připojeni k aktivnímu řadiči, odpojte se a potom se připojte k aktivnímu řadiči.
 
 5. Na příkazovém řádku zadejte heslo. Výchozí heslo zařízení je **Password1**.

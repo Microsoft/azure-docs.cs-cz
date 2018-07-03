@@ -8,12 +8,12 @@ ms.author: markgal
 ms.date: 2/21/2018
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 797637fbaaeb0577d0437f32d4ce244a738be84b
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 334cea710d185a6774e28ea3459b3ca1ad9f846f
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287321"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36959793"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Řešení problémů se zálohováním sdílených složek Azure
 K řešení problémů a chyb, ke kterým dochází při používání zálohování sdílených složek Azure, můžete využít informace uvedené v následujících tabulkách.
@@ -28,9 +28,9 @@ Zálohování sdílených složek Azure je ve verzi Preview. Následující scé
 - Používejte v účtu úložiště [zámky prostředků](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest), abyste zabránili nechtěnému odstranění záloh v trezoru služby Recovery Services.
 - Neodstraňujte snímky vytvořené službou Azure Backup. Odstranění snímků může způsobit ztrátu bodů obnovení nebo selhání obnovení.
 
-\*Sdílené složky Azure v účtech úložiště s funkcí replikace do [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy-grs.md) (RA-GRS) jako GRS a účtované za ceny GRS
+\*Sdílené složky Azure v účtech úložiště s funkcí replikace do [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy-grs.md) (RA-GRS) jako GRS a účtované za ceny GRS.
 
-Zálohování pro sdílené složky Azure v účtech úložiště s replikací do [zónově redundantního úložiště](../storage/common/storage-redundancy-zrs.md) (ZRS) je aktuálně k dispozici jenom v oblastech Střed USA (CUS) a USA – východ 2 (EUS2)
+Zálohování pro sdílené složky Azure v účtech úložiště s replikací do [zónově redundantního úložiště](../storage/common/storage-redundancy-zrs.md) (ZRS) je aktuálně k dispozici jenom v oblastech USA – střed (CUS), USA – východ 2 (EUS2), Severní Evropa (NE), Jihovýchodní Asie (SEA) a Západní Evropa (WE).
 
 ## <a name="configuring-backup"></a>Konfigurace zálohování
 Následující tabulka se týká konfigurace zálohování:

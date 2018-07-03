@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: 1dffceb629df5d0197bfc8ac66120df3912d70b1
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 7f6357c5b0be12c18797e82b73bd05af42888aa0
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603772"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752329"
 ---
 # <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
@@ -165,7 +165,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 na webu A
 1. Na webu Azure Portal rozbalením nabídky na levé straně otevřete nabídku služeb a zvolte **Všechny služby**. Potom přejděte dolů do části **Úložiště** a zvolte **Účty úložiště**. V okně **Účty úložiště**, které se zobrazí, zvolte **Přidat**.
 2. Zadejte název účtu úložiště.
 3. V poli **Druh účtu** nastavte hodnotu **StorageV2 (v2 pro obecné účely)**.
-4. V poli **Replikace** nechte nastavenou hodnotu **Místně redundantní úložiště (LRS)**. Alternativně můžete zvolit **Zónově redundantní úložiště (ZRS Preview)**, **Geograficky redundantní úložiště (GRS)** nebo **Geograficky redundantní úložiště s přístupem pro čtení (RA-GRS)**.
+4. V poli **Replikace** nechte nastavenou hodnotu **Místně redundantní úložiště (LRS)**. Alternativně můžete zvolit **Zónově redundantní úložiště (ZRS) (Preview)**, **Geograficky redundantní úložiště (GRS)** nebo **Geograficky redundantní úložiště jen pro čtení (RA-GRS)**.
 5. V následujících polích ponechte výchozí nastavení: **Model nasazení**, **Výkon** a **Vyžadovat zabezpečený přenos**.
 6. Vyberte předplatné, ve kterém chcete vytvořit účet úložiště.
 7. V části **Skupina prostředků** vyberte **Použít stávající** a potom zvolte skupinu prostředků, kterou jste vytvořili v předchozí části.
@@ -186,7 +186,7 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Kind StorageV2 
 ```
 
-Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 s využitím zónově redundantního úložiště (ZRS Preview), geograficky redundantního úložiště (GRS) nebo geograficky redundantního úložiště s přístupem pro čtení (RA-GRS), nahraďte v následující tabulce parametr **SkuName** požadovanou hodnotou. 
+Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 s využitím zónově redundantního úložiště (ZRS) (Preview), geograficky redundantního úložiště (GRS) nebo geograficky redundantního úložiště jen pro čtení (RA-GRS), nahraďte v následující tabulce parametr **SkuName** požadovanou hodnotou. 
 
 |Možnost replikace  |Parametr SkuName  |
 |---------|---------|
@@ -219,13 +219,7 @@ Pokud chcete vytvořit účet úložiště pro obecné účely verze 2 s využit
 
 ---
 
-> [!NOTE]
-> [Zónově redundantní úložiště](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-zone-redundant-storage/preview/) je aktuálně ve verzi preview a je k dispozici pouze v následujících umístěních:
->    - USA – východ 2
->    - USA – střed
->    - Francie – střed (Tato oblast je aktuálně ve verzi preview. Pokud chcete požádat o přístup, najdete informace v článku o tom, že [ve Francii je nyní k dispozici Microsoft Azure ve verzi preview se zónami dostupnosti Azure](https://azure.microsoft.com/blog/microsoft-azure-preview-with-azure-availability-zones-now-open-in-france).)
-    
-Další informace o různých typech replikace, které jsou k dispozici, najdete v článku [Možnosti replikace úložiště](storage-redundancy.md).
+Další informace o dostupných možnostech replikace najdete v tématu věnovaném [možnostem replikace služby Storage](storage-redundancy.md).
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

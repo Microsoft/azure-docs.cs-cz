@@ -1,10 +1,10 @@
 ---
 title: Vytvoření aplikace ASP.NET se službou SQL Database v Azure | Microsoft Docs
-description: Zjistěte, jak v Azure zprovoznit aplikaci ASP.NET s připojením ke službě SQL Database.
+description: Zjistěte, jak nasadit aplikaci C# ASP.NET s databází SQL Serveru do Azure.
 services: app-service\web
-documentationcenter: nodejs
+documentationcenter: ''
 author: cephalin
-manager: erikre
+manager: cfowler
 editor: ''
 ms.assetid: 03c584f1-a93c-4e3d-ac1b-c82b50c75d3e
 ms.service: app-service-web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 06/09/2017
+ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 4fd1381594c77d8bba92027fee06c08376ee903b
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: b08033c53185e6229e6fa368a3456749e19eb1f0
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31789244"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37021319"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>Kurz: Vytvoření aplikace ASP.NET se službou SQL Database v Azure
 
@@ -42,21 +42,17 @@ V tomto kurzu se naučíte:
 
 ## <a name="prerequisites"></a>Požadavky
 
-K provedení kroků v tomto kurzu je potřeba:
+Pro absolvování tohoto kurzu potřebujete:
 
-* Nainstalovat [Visual Studio 2017](https://www.visualstudio.com/downloads/) s následujícími sadami funkcí:
-  - **Vývoj pro ASP.NET a web**
-  - **Azure – vývoj**
-
-  ![Vývoj pro ASP.NET a Azure – vývoj (v části Web a cloud)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
+Nainstalujte sadu <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017</a> se sadou funkcí **Vývoj pro ASP.NET a web**.
 
 Pokud jste už sadu Visual Studio nainstalovali, přidejte do ní sady funkcí kliknutím na **Nástroje** > **Získat nástroje a funkce**.
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 
-[Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
-
-Extrahujte (rozbalte) soubor *dotnet-sqldb-tutorial-master.zip*.
+<a name="-download-the-sample-projecthttpsgithubcomazure-samplesdotnet-sqldb-tutorialarchivemasterzip"></a>-[Stáhněte si ukázkový projekt](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/archive/master.zip).
+-
+– Extrahujte (rozbalte) soubor *dotnet-sqldb-tutorial-master.zip*.
 
 Ukázkový projekt obsahuje základní aplikaci CRUD (vytváření-čtení-aktualizace-odstraňování) v [ASP.NET MVC](https://www.asp.net/mvc) používající [Entity Framework Code First](/aspnet/mvc/overview/getting-started/getting-started-with-ef-using-mvc/creating-an-entity-framework-data-model-for-an-asp-net-mvc-application).
 
@@ -86,20 +82,20 @@ Publikování otevře dialogové okno **Vytvoření služby App Service** které
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-V dialogovém okně **Vytvoření služby App Service** klikněte na **Přidat účet** a přihlaste se ke svému předplatnému Azure. Pokud jste již přihlášení k účtu Microsoft, ujistěte se, že odpovídá vašemu předplatnému Azure. Pokud jste přihlášeni k účtu Microsoft, který nemá přiřazené předplatné Azure, kliknutím na něj přidejte správný účet.
+V dialogovém okně **Vytvoření služby App Service** klikněte na **Přidat účet** a přihlaste se ke svému předplatnému Azure. Pokud jste již přihlášení k účtu Microsoft, ujistěte se, že odpovídá vašemu předplatnému Azure. Pokud jste přihlášeni k účtu Microsoft, který nemá přiřazené předplatné Azure, kliknutím na něj přidejte správný účet. 
+
+> [!NOTE]
+> Pokud už jste přihlášení, nevybírejte zatím možnost **Vytvořit**.
+>
+>
    
 ![Přihlášení k Azure](./media/app-service-web-tutorial-dotnet-sqldatabase/sign-in-azure.png)
-
-Až se přihlásíte, můžete v tomto okně vytvořit všechny prostředky, které potřebujete pro vaši webovou aplikaci Azure.
 
 ### <a name="configure-the-web-app-name"></a>Konfigurace názvu webové aplikace
 
 Můžete ponechat vygenerovaný název webové aplikace nebo ho můžete změnit na jiný jedinečný název (platné znaky jsou `a-z`, `0-9` a `-`). Název webové aplikace se používá jako součást výchozí adresy URL vaší aplikace (`<app_name>.azurewebsites.net`, kde `<app_name>` je název vaší webové aplikace). Název webové aplikace musí být jedinečný mezi všemi aplikacemi v Azure. 
 
 ![Dialogové okno Vytvoření služby App Service](media/app-service-web-tutorial-dotnet-sqldatabase/wan.png)
-
-> [!NOTE]
-> Neklikejte na **Vytvořit**. Nejprve je potřeba v pozdějším kroku nastavit službu SQL Database.
 
 ### <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -131,13 +127,9 @@ V dialogovém okně **Konfigurace plánu služby App Service** nastavte nový pl
 
 Před vytvořením databáze potřebujete [logický server Azure SQL Database](../sql-database/sql-database-features.md). Logický server obsahuje soubor databází spravovaných jako skupina.
 
-Vyberte **Prozkoumat další služby Azure**.
+Klikněte na **Vytvořit službu SQL Database**.
 
-![Nastavení názvu webové aplikace](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
-
-Na kartě **Služby** klikněte na ikonu **+** vedle **SQL Database**. 
-
-![Na kartě Služby klikněte na ikonu + vedle SQL Database.](media/app-service-web-tutorial-dotnet-sqldatabase/sql.png)
+![Vytvoření databáze SQL](media/app-service-web-tutorial-dotnet-sqldatabase/web-app-name.png)
 
 V dialogovém okně **Konfigurace služby SQL Database** klikněte na **Nový** vedle **SQL Server**. 
 
@@ -164,7 +156,7 @@ V dialogovém okně **Konfigurace služby SQL Database**:
 
 ![Konfigurace služby SQL Database](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-V dialogovém okně **Vytvoření služby App Service** se zobrazí prostředky, které jste vytvořili. Klikněte na možnost **Vytvořit**. 
+V dialogovém okně **Vytvoření služby App Service** se zobrazí prostředky, které jste nakonfigurovali. Klikněte na možnost **Vytvořit**. 
 
 ![prostředky, které jste vytvořili](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
@@ -314,7 +306,7 @@ Teď, když vaše změna kódu funguje včetně migrace databáze, ji publikujet
 
 Stejně jako předtím klikněte pravým tlačítkem na svůj projekt a vyberte **Publikovat**.
 
-Kliknutím na **Nastavení** otevřete průvodce publikováním.
+Kliknutím na **Konfigurovat** otevřete nastavení publikování.
 
 ![Otevřené nastavení publikování](./media/app-service-web-tutorial-dotnet-sqldatabase/publish-settings.png)
 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: bd42268c36f44dc20b88d27d19cbf378e848b82f
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 8b14f06f364bde1d4c5588e60a54aefe07c821d2
+ms.sourcegitcommit: e34afd967d66aea62e34d912a040c4622a737acb
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823142"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36945917"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Začínáme s .NET Core v Azure Dev Spaces
 
@@ -32,7 +32,7 @@ Teď můžete v Azure vytvořit vývojový prostor založený na Kubernetes.
 Azure Dev Spaces vyžaduje minimální nastavení místního počítače. Většina konfigurace vývojového prostoru se ukládá do cloudu, aby ji šlo sdílet s ostatními uživateli. Nejdřív si stáhněte a spusťte [rozhraní příkazového řádku Azure](/cli/azure/install-azure-cli?view=azure-cli-latest). 
 
 > [!IMPORTANT]
-> Pokud už máte rozhraní příkazového řádku Azure CLI nainstalované, ujistěte se, že používáte verzi 2.0.33 nebo vyšší.
+> Pokud už máte Azure CLI nainstalované, ujistěte se, že používáte verzi 2.0.38 nebo novější.
 
 [!INCLUDE[](includes/sign-into-azure.md)]
 
@@ -193,13 +193,14 @@ Hotovo! Teď máte aplikaci s více kontejnery, kde můžete každý kontejner v
 
 Podívejte se, jak to funguje: Přejděte do okna editoru VS Code s projektem `mywebapi` a upravte kód metody `string Get(int id)` například takto:
 
-    ```csharp
-    [HttpGet("{id}")]
-    public string Get(int id)
-    {
-        return "mywebapi now says something new";
-    }
-    ```
+```csharp
+[HttpGet("{id}")]
+public string Get(int id)
+{
+    return "mywebapi now says something new";
+}
+```
+
 
 [!INCLUDE[](includes/team-development-2.md)]
 

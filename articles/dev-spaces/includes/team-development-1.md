@@ -10,12 +10,12 @@ ms.author: ghogen
 ms.date: 05/11/2018
 ms.topic: include
 manager: douge
-ms.openlocfilehash: 41418cb908f2bf149a3d0087728652b44cd6b19e
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 2a6118bd23c6e8319ad4fa26a266948a4dad1b9f
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825506"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36939146"
 ---
 Zatím jste kód aplikace spouštěli tak, jako byste byli jediným vývojářem, který na aplikaci pracuje. V této části se dozvíte, jak služba Azure Dev Spaces zjednodušuje týmový vývoj:
 * Umožňuje týmu vývojářů podle potřeby pracovat ve stejném prostředí, ať už ve sdíleném pracovním prostoru nebo v oddělených pracovních prostorech.
@@ -56,13 +56,15 @@ webfrontend  default  webfrontend-0.1.0  80/TCP  1m ago     http://webfrontend-c
 
 Ve sloupci Space se zobrazuje, že obě služby běží v prostoru s názvem `default`. Kdokoli, kdo otevře veřejnou adresu URL a přejde k webové aplikaci, vyvolá zapsanou cestu kódu, která spouští obě služby. Nyní předpokládejme, že chcete pokračovat ve vývoji `mywebapi`. Jak provedete změny kódu a otestujete je bez toho, abyste přerušili práci ostatních vývojářů, kteří používají stejné vývojové prostředí? Vytvoříte si k tomu vlastní prostor.
 
-### <a name="create-a-space"></a>Vytvoření prostoru
+### <a name="create-a-dev-space"></a>Vytvoření vývojového prostoru
 Pokud chcete používat vlastní verzi `mywebapi` v jiném prostoru než `default`, můžete si vytvořit vlastní prostor pomocí následujícího příkazu:
 
 ``` 
-azds space create --name scott
+azds space select --name scott
 ```
+
+Po zobrazení výzvy jako **nadřazený vývojový prostor** vyberte `default`. To znamená, že náš nový prostor `default/scott` bude odvozený z prostoru `default`. Za chvíli si ukážeme, jak nám to pomůže s testováním. 
 
 V příkladu výše bylo pro nový prostor použito vlastní jméno, aby ostatní vývojáři věděli, že se jedná o prostor, ve kterém pracuje daný vývojář. Název si ale můžete zvolit podle toho, jak vám to vyhovuje a jak potřebujete, například „sprint4“ nebo „demo“.
 
-Spuštěním příkazu `azds space list` zobrazíte seznam všech prostorů ve vývojovém prostředí. Vedle aktuálně vybraného prostoru se zobrazí hvězdička (*). V našem případě byl při vytvoření automaticky vybrán prostor s názvem „scott“. Kdykoli si můžete vybrat jiný prostor pomocí příkazu `azds space select`.
+Spuštěním příkazu `azds space list` zobrazíte seznam všech prostorů ve vývojovém prostředí. Vedle aktuálně vybraného prostoru se zobrazí hvězdička (*). V našem případě se při vytvoření automaticky vybral prostor default/scott. Kdykoli si můžete vybrat jiný prostor pomocí příkazu `azds space select`.

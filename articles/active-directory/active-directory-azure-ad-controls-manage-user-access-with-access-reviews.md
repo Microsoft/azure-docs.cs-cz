@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.component: compliance-reports
-ms.date: 05/16/2018
+ms.date: 06/21/2018
 ms.author: rolyon
-ms.openlocfilehash: 22cb517435777074390321de64daf98c8d12d0fb
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 86ca14c8865ee82d61cb63a20f66c508f532f124
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35232961"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37019998"
 ---
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Správa přístupu uživatelů pomocí kontrol přístupu Azure AD
 
@@ -43,7 +43,7 @@ V rámci kontroly přístupu může revidujícími být mít jednoho nebo někol
 
 2. Rozhodněte, jestli má každý uživatel kontrolovat svůj vlastní přístup, nebo jestli má jeden nebo několik uživatelů kontrolovat přístup všech.
 
-3. Povolte zobrazení kontrol přístupu na přístupových panelech revidujících. Jako globální správce přejděte na [stránku kontrol přístupu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
+3. Povolte zobrazení kontrol přístupu na přístupových panelech revidujících. Jako globální správce nebo správce uživatelských účtů přejděte na [stránku kontrol přístupu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
 4. Začněte kontrolu přístupu. Další informace najdete v popisu [vytvoření kontroly přístupu](active-directory-azure-ad-controls-create-access-review.md).
 

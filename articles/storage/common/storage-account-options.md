@@ -1,6 +1,5 @@
 ---
-title: >
-  Možnosti účtu Azure Storage | Microsoft Docs
+title: Možnosti účtu Azure Storage | Dokumentace Microsoftu
 description: Vysvětlení možností použití služby Azure Storage.
 services: storage
 author: xyh1
@@ -8,14 +7,14 @@ manager: jwillis
 ms.service: storage
 ms.workload: storage
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 06/22/2018
 ms.author: hux
-ms.openlocfilehash: d6279a308bc4539184cca37c1343afe8725eca7f
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 3f1dfa09c0f123d20a7be043aa8d0033a5b6bd72
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248295"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335767"
 ---
 # <a name="azure-storage-account-options"></a>Možnosti účtu Azure Storage
 
@@ -77,32 +76,27 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 > [!NOTE]
 > Účty úložiště Blob podporují pouze objekty blob bloku a doplňovací objekty blob, nepodporují objekty blob stránky.
+>
+> Microsoft doporučuje ve většině scénářů používat místo účtů úložiště Blob účty úložiště pro obecné účely verze 2.
 
 ## <a name="recommendations"></a>Doporučení
 
 Další informace o účtech úložiště najdete v tématu [Účty Azure Storage](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-Pro aplikace, které potřebují pouze úložiště objektů blob bloku nebo doplňovacích objektů blob, doporučujeme použít účty úložiště GPv2 a využít tak výhody specializovaného cenového modelu vrstveného úložiště. V určitých scénářích však můžete chtít použít účty GPv1, například:
+Pro aplikace, které potřebují nejnovější funkce objektů blob bloku nebo doplňovacích objektů blob, doporučujeme použít účty úložiště GPv2 a využít tak výhody specializovaného cenového modelu vrstveného úložiště. V určitých scénářích však můžete chtít použít účty GPv1, například:
 
 * Potřebujete stále používat model nasazení Classic. Účet GPv2 a účet úložiště objektu blob jsou dostupné jenom přes model nasazení Azure Resource Manager.
-
 * Používáte velké objemy transakcí nebo šířky pásma geografické replikace, z čehož obojí stojí více v účtech úložiště GPv2 a Blob než v účtech GPv1, a nemáte dostatek úložiště, abyste mohli využívat výhody nižší ceny za GB úložiště.
-
 * Používáte verzi rozhraní [Storage Services REST API](https://msdn.microsoft.com/library/azure/dd894041.aspx), která je starší než 14.2.2014, nebo klientskou knihovnu verze nižší než 4.x a nemůžete svoji aplikaci upgradovat.
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 Všechny účty úložiště vycházejí z cenového modelu úložiště objektů blob založeného na úrovních jednotlivých objektů blob. Při použití účtu úložiště je potřeba vzít v úvahu tyto fakturační podmínky:
 
 * **Cena za uložení**: Vedle uloženého množství dat se cena za uložení odvíjí také od úrovně úložiště. Pokud je úroveň chladnější, cena za gigabajt se snižuje.
-
 * **Cena za přístup k datům:** Pokud je úroveň chladnější, cena za přístup k datům se zvyšuje. Přístup k datům ve studené úrovni úložiště a v úrovni úložiště Archive je zpoplatněný podle sazby za GB přečtených dat.
-
 * **Cena za transakce:** Pro všechny úrovně se účtuje poplatek za transakce, který se pro chladnější úrovně zvyšuje.
-
 * **Cena za přenosy dat geografické replikace:** Tento poplatek se vztahuje jen na účty s nastavenou geografickou replikací, jako třeba GRS a RA-GRS. Přenos dat geografické replikace je zpoplatněný podle sazby za GB.
-
 * **Cena za odchozí přenosy dat**: Odchozí přenosy dat (dat přenesených směrem z oblasti Azure) jsou zpoplatněné podle využití šířky pásma sazbou za GB, stejně jako je tomu u účtů úložiště pro obecné účely.
-
 * **Změna vrstvy úložiště:** Změna vrstvy úložiště účtu ze studené na horkou je zpoplatněna částkou, jejíž výše odpovídá přečtení všech dat v aktuálním účtu úložiště. Naproti tomu změna vrstvy úložiště účtu z horké na studenou je zpoplatněna částkou, která odpovídá zápisu všech dat do studené vrstvy (pouze účty GPv2).
 
 > [!NOTE]
@@ -206,7 +200,6 @@ V obou případech je hlavní prioritou odhad nákladů na ukládání a příst
 Abyste stanovili přibližnou cenu za ukládání a přístup k datům uloženým v účtu úložiště GPv2, musíte vyhodnotit, jak v současné době k datům přistupujete, nebo odhadnout, jak k nim přistupovat budete. Celkově vzato potřebujete vědět:
 
 * Spotřebu úložiště – Kolik dat ukládáte a jak se toto množství měsíc od měsíce mění?
-
 * Vzorec přistupování k úložišti – Kolik dat se na účtu čte a zapisuje (včetně nových dat)? Ke kolika transakcím dochází při přístupu k datům a o jaké transakce se jedná?
 
 ## <a name="monitoring-existing-storage-accounts"></a>Monitorování existujících účtů úložiště
@@ -224,7 +217,7 @@ Když tuto funkci zapnete, data o kapacitě služby Blob service pro daný úče
 Aby bylo možné pro účet úložiště Blob monitorovat vzory přístupu k datům, je potřeba povolit hodinovou metriku transakcí z rozhraní API. Když povolíte hodinovou metriku transakcí, data o transakcích rozhraní API se budou každou hodinu shromažďovat a zaznamenávat jako zápisy do tabulky *$MetricsHourPrimaryTransactionsBlob* v rámci stejného účtu úložiště. Při použití účtů úložiště RA-GRS zaznamenává tabulka *$MetricsHourSecondaryTransactionsBlob* transakce do sekundárního koncového bodu.
 
 > [!NOTE]
-> Pokud máte účet úložiště pro obecné účely, ve kterém jsou uložené objekty blob stránky a disky virtuálních počítačů, případně fronty, soubory, nebo tabulky, vedle dat objektů blob bloku a doplňovacích objektů blob, odhad tímto postupem provést nepůjde. Data o kapacitě nerozlišují objekty blob bloku od ostatních typů a neposkytují data o kapacitě pro ostatní typy dat. Pokud používáte tyto typy, můžete se podívat na množství na nejnovějším vyúčtování.
+> Pokud máte účet úložiště pro obecné účely s uloženými objekty blob stránky a disky virtuálních počítačů, případně frontami, soubory, nebo tabulkami, vedle dat objektů blob bloku a doplňovacích objektů blob, odhad tímto postupem provést nepůjde. Data o kapacitě nerozlišují objekty blob bloku od ostatních typů a neposkytují data o kapacitě pro ostatní typy dat. Pokud používáte tyto typy, můžete se podívat na množství na nejnovějším vyúčtování.
 
 Pokud chcete dobře odhadnout spotřebu dat a přístup k nim, doporučujeme pro měření dat vybrat takovou dobu uchování, která vystihuje pravidelné používání, a potom údaje extrapolovat. Můžete například měřená data uchovávat po sedm dní, sesbírat jednou za týden a analyzovat je na konci měsíce. Nebo změřte a nasbírejte data za posledních 30 dní a na konci 30denního období je analyzujte.
 
@@ -257,10 +250,9 @@ Pokud chcete odhadnout náklady na transakce pro účet úložiště GPv1, je po
 
 Analýza úložiště sice k účtu úložiště nevypíše množství přečtených a zapsaných dat, toto množství lze ale zhruba odhadnout z tabulky metriky transakcí. Součet *TotalBillableRequests* všech položek rozhraní API v tabulce metrik transakcí udává celkové množství příchozích dat k tomuto rozhraní API v bajtech. Podobně součet *TotalEgress* udává celkové množství odchozích dat v bajtech.
 
-Pokud chcete pro účet Blob Storage odhadnout náklady za přístup k datům, je potřeba transakce rozdělit do dvou skupin.
+Pokud chcete odhadnout náklady na přístup k datům pro účty úložiště objektů blob, je potřeba rozdělit transakce do dvou skupin:
 
 * Množství dat načtených z účtu úložiště lze odhadnout ze součtu *TotalEgress* především u operací *GetBlob* a *CopyBlob*.
-
 * Množství dat zapsaných do účtu úložiště lze odhadnout ze součtu *TotalIngress* především u operací *PutBlob*, *PutBlock*, *CopyBlob* a *AppendBlock*.
 
 Také cena za přenos geograficky replikovaných dat účtů Blob Storage se v případě účtu úložiště typu GRS nebo RA-GRS dá vypočítat pomocí toho, že odhadnete množství zapsaných dat.

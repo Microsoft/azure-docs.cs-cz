@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Rychlý vývoj na platformě Kubernetes s využitím kontejnerů a mikroslužeb v Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
 manager: douge
-ms.openlocfilehash: 16ec493708f85e9b3819943e131b9f9c3649f27e
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 3b0e03d47a03411e3e6dc2d073d5087bcb42e03e
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34824634"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36960419"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>Rychlý start: Vytvoření vývojového prostoru Kubernetes pomocí služby Azure Dev Spaces (.NET Core a Visual Studio)
 
@@ -51,9 +51,9 @@ V sadě Visual Studio 2017 vytvořte nový projekt. V současné době se musí 
 
 Vyberte šablonu **Webová aplikace (model-zobrazení-kontroler)** a nastavte cílení na **.NET Core** a **ASP.NET Core 2.0**.
 
-### <a name="create-a-dev-space-in-azure"></a>Vytvoření vývojového prostoru v Azure
+### <a name="enable-dev-spaces-for-an-aks-cluster"></a>Povolení služby Dev Spaces pro cluster AKS
 
-V projektu, který jste právě otevřeli, vyberte v rozevíracím okně nastavení spouštění **Azure Dev Spaces**, jak vidíte na následujícím obrázku.
+V projektu, který jste právě vytvořili, vyberte v rozevíracím okně nastavení spouštění **Azure Dev Spaces**, jak je znázorněno na následujícím obrázku.
 
 ![](media/get-started-netcore-visualstudio/LaunchSettings.png)
 
@@ -78,16 +78,41 @@ Během čekání na vytvoření vývojového prostoru se podívejte na soubory, 
 
 - Přidala se složka s názvem `charts` a v ní se vygeneroval [Helm chart](https://docs.helm.sh) pro vaši aplikaci. Tyto soubory slouží k nasazení vaší aplikace do vývojového prostoru.
 - Soubor `Dockerfile` obsahuje informace potřebné k zabalení vaší aplikace do standardního formátu Dockeru.
-- Soubor `azds.yaml` obsahuje informace o konfiguraci potřebné pro vývojový prostor, třeba to, jestli má být aplikace přístupná prostřednictvím veřejného koncového bodu.
+- Soubor `azds.yaml` obsahuje konfiguraci v době vývoje, kterou vývojový prostor potřebuje.
 
 ![](media/get-started-netcore-visualstudio/ProjectFiles.png)
 
 ## <a name="debug-a-container-in-kubernetes"></a>Ladění kontejneru v Kubernetes
 Po úspěšném vytvoření vývojového prostoru můžete začít ladit aplikaci. Nastavte v kódu zarážku, třeba na řádku 20 v souboru `HomeController.cs`, kde je nastavená proměnná `Message`. Ladění spustíte kliknutím na **F5**. 
 
-Visual Studio bude komunikovat s vývojovým prostorem, aby se mohla aplikace sestavit a nasadit, a potom otevře prohlížeč se spuštěnou webovou aplikací. I když to může vypadat, že kontejner je spuštěný lokálně, ve skutečnosti je spuštěný ve vývojovém prostoru v Azure. Adresa místního hostitele se zobrazuje proto, že služba Azure Dev Spaces vytvoří dočasný tunel SSH do kontejneru běžícího v Azure.
+Visual Studio bude komunikovat s vývojovým prostorem, aby se mohla aplikace sestavit a nasadit, a potom otevře prohlížeč se spuštěnou webovou aplikací. I když to může vypadat, že kontejner je spuštěný lokálně, ve skutečnosti je spuštěný ve vývojovém prostoru v Azure. Adresa místního hostitele se zobrazuje proto, že služba Azure Dev Spaces vytvoří dočasný tunel SSH do kontejneru spuštěného v AKS.
 
 Zarážku aktivujete kliknutím na odkaz **O aplikaci** v horní části stránky. Máte plný přístup k informacím o ladění, jako jsou zásobník volání, místní proměnné, informace o výjimkách apod., úplně stejně jako při místním spuštění kódu.
+
+
+## <a name="iteratively-develop-code"></a>Iterativní vývoj kódu
+
+Azure Dev Spaces neslouží jenom ke spuštění kódu v prostředí Kubernetes. Umožňuje také rychle opakovaně prohlížet změny kódu, ke kterým dochází v prostředí Kubernetes v cloudu.
+
+### <a name="update-a-content-file"></a>Aktualizace souboru obsahu
+1. Najděte soubor `./Views/Home/Index.cshtml` a upravte kód HTML. Můžete změnit řádek 70, na kterém je `<h2>Application uses</h2>`, třeba takto: `<h2>Hello k8s in Azure!</h2>`
+1. Uložte soubor.
+1. Přejděte do prohlížeče a aktualizujte stránku. Na webové stránce by se měl zobrazit aktualizovaný kód HTML.
+
+Co se stalo? Úpravy souborů obsahu jako HTML a CSS nevyžadují rekompilaci ve webové aplikaci .NET Core. Aktivní relace F5 totiž automaticky synchronizuje všechny upravené soubory obsahu do kontejneru spuštěného v AKS, abyste změny obsahu viděli okamžitě.
+
+### <a name="update-a-code-file"></a>Aktualizace souboru s kódem
+Aktualizace souborů s kódem je o něco pracnější, protože aplikace .NET Core musí znovu sestavit a vytvořit aktualizované binární soubory aplikace.
+
+1. Zastavte ladicí program v sadě Visual Studio.
+1. Otevřete soubor s kódem, který se jmenuje `Controllers/HomeController.cs`, a upravte zprávu, která se zobrazí na stránce O aplikaci: `ViewData["Message"] = "Your application description page.";`
+1. Uložte soubor.
+1. Stisknutím klávesy **F5** znovu spusťte ladění. 
+
+Místo opětovného sestavení a nasazení nové image kontejneru po každé provedené změně, což často dlouho trvá, rekompiluje služba Azure Dev Spaces kód po přírůstcích ve stávajícím kontejneru, aby se zrychlil cyklus úprav/ladění.
+
+Aktualizujte webovou aplikaci v prohlížeči a přejděte na stránku O aplikaci. V uživatelském rozhraní by se měla zobrazit vaše upravená zpráva.
+
 
 ## <a name="next-steps"></a>Další kroky
 

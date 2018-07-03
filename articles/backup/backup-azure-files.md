@@ -8,12 +8,12 @@ ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9697bd5a55a5cfcdcd6958f8baff85e55c880c87
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: d21a235602c425cef77b26d8c60f1e3562411095
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287656"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961668"
 ---
 # <a name="back-up-azure-file-shares"></a>Zálohování sdílených složek Azure
 Tento článek vysvětluje, jak pomocí webu Azure Portal zálohovat a obnovovat [sdílené složky Azure](../storage/files/storage-files-introduction.md).
@@ -40,9 +40,9 @@ Zálohování sdílených složek Azure je ve verzi Preview. Následující scé
 - Používejte v účtu úložiště [zámky prostředků](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest), abyste zabránili nechtěnému odstranění záloh v trezoru služby Recovery Services.
 - Neodstraňujte snímky vytvořené službou Azure Backup. Odstranění snímků může způsobit ztrátu bodů obnovení nebo selhání obnovení.
 
-\*Sdílené složky Azure v účtech úložiště s funkcí replikace do [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy-grs.md) (RA-GRS) jako GRS a účtované za ceny GRS
+\*Sdílené složky Azure v účtech úložiště s funkcí replikace do [geograficky redundantního úložiště jen pro čtení](../storage/common/storage-redundancy-grs.md) (RA-GRS) jako GRS a účtované za ceny GRS.
 
-Zálohování pro sdílené složky Azure v účtech úložiště s replikací do [zónově redundantního úložiště](../storage/common/storage-redundancy-zrs.md) (ZRS) je aktuálně k dispozici jenom v oblastech Střed USA (CUS) a USA – východ 2 (EUS2)
+Zálohování pro sdílené složky Azure v účtech úložiště s replikací do [zónově redundantního úložiště](../storage/common/storage-redundancy-zrs.md) (ZRS) je aktuálně k dispozici jenom v oblastech USA – střed (CUS), USA – východ 2 (EUS2), Severní Evropa (NE), Jihovýchodní Asie (SEA) a Západní Evropa (WE).
 
 ## <a name="configuring-backup-for-an-azure-file-share"></a>Konfigurace zálohování sdílené složky Azure
 Veškerá zálohovaná data se ukládají v trezorech služby Recovery Services. Tento kurz předpokládá, že už máte vytvořenou sdílenou složku Azure. Zálohování sdílené složky Azure:

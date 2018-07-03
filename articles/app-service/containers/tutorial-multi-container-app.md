@@ -1,7 +1,7 @@
 ---
-title: Vytvoření vícekontejnerové aplikace (verze Preview) pomocí služby Web App for Containers
+title: Vytvoření vícekontejnerové aplikace (Preview) ve službě Web App for Containers
 description: Zjistěte, jak v Azure používat více kontejnerů s konfiguračními soubory Docker Compose a Kubernetes pomocí WordPressu a aplikace MySQL.
-keywords: azure app service, webová aplikace, linux, docker, compose, více kontejnerů, kontejner, kubernetes
+keywords: azure app service, web app, linux, docker, compose, multicontainer, container, kubernetes
 services: app-service
 documentationcenter: ''
 author: msangapu
@@ -15,14 +15,14 @@ ms.topic: tutorial
 ms.date: 05/02/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 61158af0bc978665c3d914c8de3376b8f5d5c69f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 43a3fa271a1958c99bd3dd597c73de2d77bb1bfd
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651309"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36751910"
 ---
-# <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>Kurz: Vytvoření vícekontejnerové aplikace (verze Preview) ve službě Web App for Containers
+# <a name="tutorial-create-a-multicontainer-preview-app-in-web-app-for-containers"></a>Kurz: Vytvoření vícekontejnerové aplikace (Preview) ve službě Web App for Containers
 
 Služba [Web App for Containers](app-service-linux-intro.md) poskytuje flexibilní způsob, jak používat image Dockeru. V tomto kurzu zjistíte, jak vytvořit vícekontejnerovou aplikaci pomocí WordPressu a MySQL.
 
@@ -34,7 +34,7 @@ V tomto kurzu se naučíte:
 > * Přidat nastavení aplikace
 > * Použít trvalé úložiště pro kontejnery
 > * Připojit se ke službě Azure Database for MySQL
-> * Vyřešit chyby
+> * Řešení chyb
 
 [!INCLUDE [Free trial note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -336,7 +336,7 @@ Přejděte do nasazené aplikace na adrese `http://<app_name>.azurewebsites.net`
 
 ## <a name="add-persistent-storage"></a>Přidání trvalého úložiště
 
-Ve více kontejnerech se teď provozuje služba Web App for Containers. Pokud ale teď nainstalujete WordPress a později aplikaci restartujete, zjistíte, že instalace WordPressu zmizela. Konfigurace Docker Compose totiž momentálně ukazuje na umístění úložiště uvnitř vašeho kontejneru. Soubory nainstalované do tohoto kontejneru se po restartování aplikace nezachovají. V tomto oddílu přidáte do kontejneru WordPressu trvalé úložiště.
+Vaše vícekontejnerová aplikace je teď spuštěná ve službě Web App for Containers. Pokud ale teď nainstalujete WordPress a později aplikaci restartujete, zjistíte, že instalace WordPressu zmizela. Konfigurace Docker Compose totiž momentálně ukazuje na umístění úložiště uvnitř vašeho kontejneru. Soubory nainstalované do tohoto kontejneru se po restartování aplikace nezachovají. V tomto oddílu přidáte do kontejneru WordPressu trvalé úložiště.
 
 ### <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
 
@@ -511,13 +511,13 @@ WordPress se připojí k serveru Redis. Na stejné stránce se zobrazí **stav**
 
 V tomto oddílu zjistíte, jak k nasazení několika kontejnerů použít konfiguraci Kubernetes. Nezapomeňte podle dřívějšího postupu vytvořit [skupinu prostředků](#create-a-resource-group) a [plán služby App Service](#create-an-azure-app-service-plan). Protože se většina těchto kroků podobá krokům v oddílu pro Docker Compose, nachystali jsme vám konfigurační soubor.
 
-### <a name="supported-kubernetes-options-for-multi-container"></a>Podporované možnosti Kubernetes pro více kontejnerů
+### <a name="supported-kubernetes-options-for-multicontainer"></a>Podporované možnosti Kubernetes pro vícekontejnerové aplikace
 
 * args
 * command
 * containers
 * image
-* name
+* jméno
 * ports
 * spec
 
@@ -627,7 +627,7 @@ Po vytvoření nastavení aplikace se v rozhraní příkazového řádku Azure z
 
 ### <a name="add-persistent-storage"></a>Přidání trvalého úložiště
 
-Ve více kontejnerech se teď provozuje služba Web App for Containers. Tato data se při restartování vymažou, protože soubory se nezachovají. V tomto oddílu přidáte do kontejneru WordPressu trvalé úložiště.
+Vaše vícekontejnerová aplikace je teď spuštěná ve službě Web App for Containers. Tato data se při restartování vymažou, protože soubory se nezachovají. V tomto oddílu přidáte do kontejneru WordPressu trvalé úložiště.
 
 ### <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
 
@@ -649,7 +649,7 @@ Po vytvoření nastavení aplikace se v rozhraní příkazového řádku Azure z
 ]
 ```
 
-### <a name="create-a-multi-container-app-kubernetes"></a>Vytvoření vícekontejnerové aplikace (Kubernetes)
+### <a name="create-a-multicontainer-app-kubernetes"></a>Vytvoření vícekontejnerové aplikace (Kubernetes)
 
 V místním terminálu příkazového řádku vytvořte příkazem [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) vícekontejnerovou [webovou aplikaci](app-service-linux-intro.md) ve skupině prostředků `myResourceGroup` a plánu služby App Service `myAppServicePlan`. Nezapomeňte nahradit _\<app_name>_ jedinečným názvem aplikace.
 

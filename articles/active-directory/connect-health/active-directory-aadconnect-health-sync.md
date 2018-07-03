@@ -1,5 +1,5 @@
 ---
-title: Používání služby Azure AD Connect Health se synchronizací | Microsoft Docs
+title: Používání služby Azure AD Connect Health se synchronizací | Dokumentace Microsoftu
 description: Toto je stránka o službě Azure AD Connect Health, která popisuje sledování synchronizace Azure AD Connect.
 services: active-directory
 documentationcenter: ''
@@ -14,17 +14,17 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cff8be88e23d57545a9926df366289c6ba264886
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a3801573f3ffe3a0941f3941cf33e516f4f1b614
+ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/28/2018
-ms.locfileid: "30229944"
+ms.lasthandoff: 06/26/2018
+ms.locfileid: "36961634"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Sledování synchronizace Azure AD Connect pomocí služby Azure AD Connect Health
 Následující dokumentace se věnuje sledování služby Azure AD Connect (Sync) pomocí služby Azure AD Connect Health.  Informace o sledování služby AD FS pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD FS](active-directory-aadconnect-health-adfs.md). Informace o sledování služby Active Directory Domain Services pomocí služby Azure AD Connect Health najdete v článku [Používání služby Azure AD Connect Health se službou AD DS](active-directory-aadconnect-health-adds.md).
 
-![Azure AD Connect Health pro synchronizaci](./media/active-directory-aadconnect-health-sync/sync-blade.png)
+![Azure AD Connect Health pro synchronizaci](./media/active-directory-aadconnect-health-sync/syncsnapshot.png)
 
 ## <a name="alerts-for-azure-ad-connect-health-for-sync"></a>Upozornění služby Azure AD Connect Health pro synchronizaci
 Část pojednávající o výstrahách služby Azure AD Connect Health pro synchronizaci uvádí seznam aktivních upozornění. Každé upozornění obsahuje důležité informace, postup řešení a odkazy na související dokumentaci. Výběrem aktivního nebo vyřešeného upozornění zobrazíte nové okno s doplňujícími informacemi, kroky, které můžete k vyřešení upozornění použít, a odkazy na další dokumentaci. Můžete si zobrazit i historické údaje o dříve vyřešených upozorněních.
@@ -36,7 +36,7 @@ Výběrem některého upozornění zobrazíte doplňující informace, kroky, kt
 ### <a name="limited-evaluation-of-alerts"></a>Omezené vyhodnocení upozornění
 Pokud služba Azure AD Connect nepoužívá výchozí konfiguraci (například když je filtrování atributů změněné z výchozí konfigurace na vlastní), agent služby Azure AD Connect Health nebude odesílat chybové události související se službou Azure AD Connect.
 
-Služba tak bude při vyhodnocování upozornění omezená. Zobrazí se banner, který v rámci služby upozorňuje na tento stav na portálu Azure Portal.
+Služba tak bude při vyhodnocování upozornění omezená. Zobrazí se banner, který v rámci služby upozorňuje na tento stav na webu Azure Portal.
 
 ![Azure AD Connect Health pro synchronizaci](./media/active-directory-aadconnect-health-sync/banner.png)
 
@@ -98,15 +98,18 @@ Rozbalením jednotlivých kategorií zobrazíte seznam objektů, které mají ch
 ### <a name="error-details"></a>Podrobnosti o chybě
 Následující data jsou k dispozici v podrobném zobrazení jednotlivých chyb.
 
+* Zvýrazněný konfliktní atribut
 * Identifikátory příslušného *objektu AD*
 * Identifikátory příslušného *objektu Azure AD* (podle vhodnosti)
 * Popis chyby a její řešení
-* Související články
 
-![Podrobnosti sestavy chyb synchronizace](./media/active-directory-aadconnect-health-sync/errorreport04.png)
+![Podrobnosti sestavy chyb synchronizace](./media/active-directory-aadconnect-health-sync/duplicateAttributeSyncError.png)
 
 ### <a name="download-the-error-report-as-csv"></a>Stažení sestavy chyb ve formátu CSV
 Pomocí tlačítka Exportovat můžete stáhnout soubor CSV s podrobnými informacemi o všech chybách.
+
+### <a name="diagnose-and-remediate-sync-errors"></a>Diagnostika a oprava chyb synchronizace 
+Určité scénáře chyb synchronizace kvůli duplicitním atributům, které zahrnují uživatelskou aktualizaci zdrojového ukotvení, je možné opravit přímo na portálu. Další informace o [diagnostice a opravě chyb synchronizace kvůli duplicitním atributům](active-directory-aadconnect-health-diagnose-sync-errors.md)
 
 ## <a name="related-links"></a>Související odkazy
 * [Řešení chyb při synchronizaci](../connect/active-directory-aadconnect-troubleshoot-sync-errors.md)

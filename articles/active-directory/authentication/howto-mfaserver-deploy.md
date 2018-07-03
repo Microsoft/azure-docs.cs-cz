@@ -1,5 +1,5 @@
 ---
-title: Začínáme s Azure Multi-Factor Authentication Serverem | Microsoft Docs
+title: Začínáme s Azure Multi-Factor Authentication Serverem | Dokumentace Microsoftu
 description: Podrobný návod, jak začít s místním Azure MFA Serverem
 services: multi-factor-authentication
 ms.service: active-directory
@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: bd1b0f21162978496750886d32e7166c3a90922d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 130e9956702515574da47dc872b03598ca19ff29
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33868292"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031676"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Začínáme s Azure Multi-Factor Authentication Serverem
 
@@ -103,8 +103,8 @@ Teď, když jste server stáhli, ho můžete nainstalovat a nastavit. Ujistěte 
 
 1. Dvakrát klikněte na spustitelný soubor.
 2. Na obrazovce Výběr instalační složky zkontrolujte, že je složka zadaná správně, a klikněte na **Další**.
-3. Až instalace skončí, klikněte na **Dokončit**.  Spustí se průvodce konfigurací.
-4. Na úvodní obrazovce průvodce konfigurací zaškrtněte políčko **Vynechat použití průvodce konfigurací ověřování** a klikněte na **Další**.  Průvodce se zavře a spustí se server.
+3. Až instalace skončí, klikněte na **Dokončit**. Spustí se průvodce konfigurací.
+4. Na úvodní obrazovce průvodce konfigurací zaškrtněte políčko **Vynechat použití průvodce konfigurací ověřování** a klikněte na **Další**. Průvodce se zavře a spustí se server.
 
    ![Cloud](./media/howto-mfaserver-deploy/skip2.png)
 
@@ -116,7 +116,7 @@ Pro usnadnění uvedení povolte MFA Serveru komunikaci s vašimi uživateli. MF
 
 Jaký e-mail odešlete byste měli určit podle toho, jak jste pro uživatele nakonfigurovali dvoustupňové ověřování. Například pokud máte možnost naimportovat telefonní čísla z adresáře společnosti, e-mail by měl obsahovat výchozí telefonní čísla, aby uživatelé věděli, co mají očekávat. Pokud telefonní čísla nenaimportujete nebo pokud budou uživatelé používat mobilní aplikaci, odešlete jim e-mail, který je nasměruje k dokončení registrace účtu. Do e-mailu přidejte hypertextový odkaz na portál Azure Multi-Factor Authentication User Portal.
 
-Obsah e-mailu se liší také podle metody ověřování nastavené pro konkrétního uživatele (telefonní hovor, zpráva SMS nebo mobilní aplikace).  Pokud například uživatel musí při ověřování zadat PIN, v e-mailu se dozví, jaký počáteční PIN je pro něj nastavený.  Uživatelé musí při prvním ověření svůj PIN změnit.
+Obsah e-mailu se liší také podle metody ověřování nastavené pro konkrétního uživatele (telefonní hovor, zpráva SMS nebo mobilní aplikace). Pokud například uživatel musí při ověřování zadat PIN, v e-mailu se dozví, jaký počáteční PIN je pro něj nastavený. Uživatelé musí při prvním ověření svůj PIN změnit.
 
 ### <a name="configure-email-and-email-templates"></a>Konfigurace e-mailu a šablon e-mailu
 
@@ -136,8 +136,8 @@ Teď, když je server nainstalovaný, budete chtít přidat uživatele. Můžete
 
 1. V Azure MFA Serveru klikněte vlevo na **Uživatelé**.
 2. Dole vyberte **Importovat ze služby Active Directory**.
-3. Teď můžete hledat jednotlivé uživatele nebo v adresáři AD vyhledat organizační jednotky, ve kterých jsou uživatelé.  V tomto případě vyhledáme OJ uživatele.
-4. Vpravo označte všechny uživatele a klikněte na **Importovat**.  Mělo by se zobrazit vyskakovací okno s informací, že akce proběhla úspěšně.  Zavřete okno importu.
+3. Teď můžete hledat jednotlivé uživatele nebo v adresáři AD vyhledat organizační jednotky, ve kterých jsou uživatelé. V tomto případě vyhledáme OJ uživatele.
+4. Vpravo označte všechny uživatele a klikněte na **Importovat**. Mělo by se zobrazit vyskakovací okno s informací, že akce proběhla úspěšně. Zavřete okno importu.
 
    ![Import uživatelů do MFA Serveru](./media/howto-mfaserver-deploy/import2.png)
 
@@ -181,6 +181,10 @@ Pokud potřebujete provést obnovení, proveďte následující kroky:
 5. Spusťte službu **MultiFactorAuth**.
 
 Nový server je teď zprovozněný s původní zálohovanou konfigurací a uživatelskými daty.
+
+## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Správa protokolů TLS a SSL a šifrovacích sad
+
+Po upgradu na MFA Server verze 8.x nebo novější nebo jeho instalaci se doporučuje zakázat nebo odebrat starší a slabší šifrovací sady, pokud je vaše organizace nevyžaduje. Informace o tom, jak to provést, najdete v článku [Správa protokolů SSL a TLS a šifrovacích sad pro AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/manage-ssl-protocols-in-ad-fs).
 
 ## <a name="next-steps"></a>Další kroky
 

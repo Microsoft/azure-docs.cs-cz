@@ -1,19 +1,19 @@
 ---
-title: Co je služba Azure Analysis Services | Microsoft Docs
+title: Co je služba Azure Analysis Services | Dokumentace Microsoftu
 description: Získejte celkový přehled o službě Analysis Services v Azure.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 06/05/2018
+ms.date: 06/21/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 52695ba495b088d30a5ee039d3e24eb274957bff
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 07768dbc8beb7a851d442e9e0c3e7538bf12b766
+ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234552"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36937933"
 ---
 # <a name="what-is-azure-analysis-services"></a>Co je služba Azure Analysis Services?
 
@@ -31,7 +31,7 @@ Na webu Azure Portal můžete [vytvořit server](analysis-services-create-server
 
 **Video:** Podívejte se na video o [automatizaci nasazení](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation), ve kterém se dozvíte více o tom, jak můžete urychlit vytvoření serveru pomocí služby Azure Automation.
 
-Azure Analysis Services se integruje s mnoha službami Azure a umožňuje tak sestavovat sofistikovaná analytická řešení. Integrace s [Azure Active Directory](../active-directory/active-directory-whatis.md) poskytuje zabezpečený přístup na základě role k důležitým datům. Můžete provést integraci s kanály [Azure Data Factory](../data-factory/introduction.md) vložením aktivity, která načte data do modelu. Můžete použít služby [Azure Automation](../automation/automation-intro.md) a [Azure Functions](../azure-functions/functions-overview.md) k prosté orchestraci modelů pomocí vlastního kódu. 
+Azure Analysis Services se integruje s mnoha službami Azure a umožňuje tak sestavovat sofistikovaná analytická řešení. Integrace s [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) poskytuje zabezpečený přístup na základě role k důležitým datům. Můžete provést integraci s kanály [Azure Data Factory](../data-factory/introduction.md) vložením aktivity, která načte data do modelu. Můžete použít služby [Azure Automation](../automation/automation-intro.md) a [Azure Functions](../azure-functions/functions-overview.md) k prosté orchestraci modelů pomocí vlastního kódu. 
 
 ## <a name="the-right-tier-when-you-need-it"></a>Správná úroveň kdykoli potřebujete
 
@@ -72,39 +72,41 @@ Tato úroveň je pro důležité produkční aplikace, které vyžadují elastic
 
 ## <a name="availability-by-region"></a>Dostupnost podle oblasti
 
-Služba Azure Analysis Services je podporována ve všech zemích/oblastech po celém světě. Zajistěte [vysokou dostupnost](analysis-services-bcdr.md) nasazením modelů na redundantních serverech v několika oblastech. Podporované úrovně a repliky dotazů závisí na vámi zvolené oblasti. 
+Služba Azure Analysis Services je podporována ve všech zemích/oblastech po celém světě. Dostupnost podporovaných plánů a replik dotazů závisí na vámi zvolené oblasti. Dostupnost plánů a replik dotazů se může měnit v závislosti na požadavcích a dostupných prostředcích v jednotlivých oblastech. 
 
 ### <a name="americas"></a>Amerika
 
-|Oblast  | Podporované úrovně | Repliky dotazů |
+|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Brazílie – jih     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Střední Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
 |Východ USA     |     B1, B2, S0, S1, S2, S4, D1    |    1     |
-|Východní USA 2     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |    7     |
+|Východní USA 2     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
 |Střed USA – sever     |     B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Střed USA     |    B1, B2, S0, S1, S2, S4, D1     |    3     |
+|Střed USA     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
 |Střed USA – jih     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
-|Západní střed USA   |     B1, B2, S0, S1, S2, S4, D1    |    7     |
-|Západní USA     |    B1, B2, S0, S1, S2, S4, S8, S9, D1     |    7     |
-|Západní USA 2    |    B1, B2, S0, S1, S2, S4, S8, S9, D1     |    1     |
+|Západní střed USA   |     B1, B2, S0, S1, S2, S4, D1    |    3     |
+|Západní USA     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    7     |
+|Západní USA 2    |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |    3     |
 
 ### <a name="europe"></a>Evropa
 
-|Oblast  | Podporované úrovně | Repliky dotazů |
+|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
-|Severní Evropa     |    B1, B2, S0, S1, S2, S4, D1      |    1     |
+|Severní Evropa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Spojené království – jih   |    B1, B2, S0, S1, S2, S4, D1      |     1    |
-|Západní Evropa     |    B1, B2, S0, S1, S2, S4, S8, S9, D1      |    7     |
+|Západní Evropa     |    B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1      |    7     |
 
 ### <a name="asia-pacific"></a>Asie a Tichomoří 
 
-|Oblast  | Podporované úrovně | Repliky dotazů |
+|Oblast  | Podporované plány | Repliky dotazů (pouze plány Standard) |
 |---------|---------|:---------:|
 |Austrálie – jihovýchod     | B1, B2, S0, S1, S2, S4, D1       |    1     |
 |Japonsko – východ  |   B1, B2, S0, S1, S2, S4, D1       |    1     |
-|Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8, S9, D1     |   3      |
+|Jihovýchodní Asie     |     B1, B2, S0, S1, S2, S4, S8\*, S9\*, D1     |   1      |
 |Indie – západ     |    B1, B2, S0, S1, S2, S4, D1     |    1     |
+
+\* Plány S8 a S9 na úrovni Standard podporují jednu repliku dotazu.
 
 ## <a name="scale-to-your-needs"></a>Škálování podle vašich potřeb
 
@@ -116,7 +118,7 @@ Zvětšete, zmenšete nebo pozastavte svůj server. Použijte web Azure Portal n
 
 Díky škálování na více instancí se dotazy klientů distribuují napříč několika *replikami dotazů* ve fondu dotazů. Repliky dotazů obsahují synchronizované kopie vašich tabulkových modelů. Rozprostřením zátěže dotazů je možné snížit dobu odezvy u dotazů s vysokou zátěží. Operace zpracování modelů je možné oddělit od fondu dotazů a zajistit tím, aby neměly nepříznivý vliv na dotazy klientů. 
 
-Můžete vytvořit fond dotazů s až sedmi dalšími replikami dotazů (celkově osmi, včetně vašeho serveru). Počet replik dotazů, které můžete mít ve fondu, závisí na vámi vybrané oblasti. Repliky dotazů se nemůžou šířit mimo oblast serveru. Repliky dotazů se účtují stejně jako server.
+Můžete vytvořit fond dotazů s až sedmi dalšími replikami dotazů (celkově osmi, včetně vašeho serveru). Počet replik dotazů, které můžete mít ve fondu, závisí na vámi zvoleném plánu a oblasti. Repliky dotazů se nemůžou šířit mimo oblast serveru. Repliky dotazů se účtují stejně jako server.
 
 Stejně jako u změny úrovně můžete repliky dotazů škálovat na více instancí podle vašich potřeb. Škálování na více instancí můžete nakonfigurovat na portálu nebo pomocí rozhraní REST API. Další informace najdete v článku o [škálování služby Azure Analysis Services na více instancí](analysis-services-scale-out.md).
 
@@ -148,7 +150,7 @@ Brána firewall služby Azure Analysis Services blokuje všechna připojení kli
 
 ### <a name="authentication"></a>Authentication
 
-Ověřování uživatelů zařizuje služba [Azure Active Directory (AAD)](../active-directory/active-directory-whatis.md). Uživatelé používají při přihlašování identitu účtu organizace s přístupem k databázi založeným na roli. Identity uživatelů musí být členy výchozí služby Azure Active Directory pro předplatné, ve kterém se server nachází. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
+Ověřování uživatelů zařizuje služba [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md). Uživatelé používají při přihlašování identitu účtu organizace s přístupem k databázi založeným na roli. Identity uživatelů musí být členy výchozí služby Azure Active Directory pro předplatné, ve kterém se server nachází. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
 
 ### <a name="data-security"></a>Zabezpečení dat
 

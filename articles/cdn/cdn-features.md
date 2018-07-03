@@ -15,16 +15,18 @@ ms.topic: overview
 ms.date: 05/09/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 6c93d995d7270a194bf654e69183807ba1422c10
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dee6a77fb85b2ac882103ba58a19ac4fce59c188
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608030"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36301440"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Porovnání funkcí produktu Azure CDN
 
 Azure Content Delivery Network (CDN) zahrnuje čtyři produkty: **Azure CDN Standard od společnosti Microsoft** (ve verzi Preview), **Azure CDN Standard od společnosti Akamai**, **Azure CDN Standard od společnosti Verizon** a **Azure CDN Premium od společnosti Verizon**. 
+
+Informace o migraci profilu **Azure CDN Standard od společnosti Verizon** na **Azure CDN Premium od společnosti Verizon** najdete v tématu [Migrace profilu Azure CDN z verze Standard Verizon na verzi Premium Verizon](cdn-migrate.md).
 
 Následující tabulka obsahuje porovnání funkcí, které jsou dostupné v jednotlivých produktech.
 

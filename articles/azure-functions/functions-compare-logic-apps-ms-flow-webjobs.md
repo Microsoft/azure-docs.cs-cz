@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 04/09/2018
 ms.author: tdykstra
 ms.custom: mvc
-ms.openlocfilehash: 6df97a40be7bf1c437c5228006d114ace768f8ca
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9b9ef150a86a754d4ed328184eb02c1937008b7b
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32157369"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37028859"
 ---
 # <a name="compare-flow-logic-apps-functions-and-webjobs"></a>Porovnání služeb Flow, Logic Apps, Functions a WebJobs
 
@@ -50,7 +50,7 @@ Následující tabulka vám pomůže určit, jestli je pro danou integraci nejle
 | Návrhářský nástroj |V prohlížeči a mobilní aplikaci, pouze uživatelské rozhraní |V prohlížeči a sadě [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), k dispozici je [zobrazení kódu](../logic-apps/logic-apps-author-definitions.md) |
 | Správa životního cyklu aplikací (ALM) |Návrh a testování v neprodukčním prostředí, přesun do produkčního prostředí až po ověření připravenosti. |DevOps: správa zdrojového kódu, testování, podpora, automatizace a možnosti správy ve [správě prostředků Azure](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
 | Prostředí pro správu |Správa zásad prostředí služby Flow a prevence ztráty dat (DLP), sledování licencí [https://admin.flow.microsoft.com](https://admin.flow.microsoft.com) |Správa skupin prostředků, připojení, správy přístupu a protokolování [https://portal.azure.com](https://portal.azure.com) |
-| Zabezpečení |Protokoly auditu zabezpečení a dodržování předpisů Office 365, prevence ztráty dat (DLP), [šifrování v klidovém stavu](https://wikipedia.org/wiki/Data_at_rest#Encryption) pro citlivá data atd. |Zajištění zabezpečení Azure: [zabezpečení Azure](https://www.microsoft.com/trustcenter/Security/AzureSecurity), [Security Center](https://azure.microsoft.com/services/security-center/), [protokoly auditu](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) a další. |
+| Zabezpečení |Protokoly auditu zabezpečení a dodržování předpisů Office 365, prevence ztráty dat (DLP), [šifrování v klidovém stavu](https://wikipedia.org/wiki/Data_at_rest#Encryption) pro citlivá data atd. |Zajištění zabezpečení Azure: [zabezpečení Azure](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Security Center](https://azure.microsoft.com/services/security-center/), [protokoly auditu](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) a další. |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Porovnání služeb Azure Functions a Azure Logic Apps
 
@@ -85,7 +85,7 @@ Služba WebJobs a sada WebJobs SDK fungují nejlépe společně, ale můžete po
 
 Služba Azure Functions je postavená na sadě WebJobs SDK, takže sdílí řadu stejných aktivačních událostí a připojení k dalším službám Azure. Tady je několik faktorů, které byste měli zvážit při výběru mezi službami Azure Functions a WebJobs se sadou WebJobs SDK:
 
-|  | Funkce | Služba WebJobs se sadou WebJobs SDK |
+|  | Functions | Služba WebJobs se sadou WebJobs SDK |
 | --- | --- | --- |
 |[Model aplikace bez serveru](https://azure.microsoft.com/overview/serverless-computing/) s [automatickým škálováním](functions-scale.md#how-the-consumption-plan-works)|✔||
 |[Vývoj a testování v prohlížeči](functions-create-first-azure-function.md) |✔||

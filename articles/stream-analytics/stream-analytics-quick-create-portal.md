@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 1e7245afe36d348b1cbd955900e34876b8e34511
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1059a401382820b4e5d3fd4b010d400bb6113926
+ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34651722"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37031426"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Rychlý start: Vytvoření úlohy Stream Analytics pomocí webu Azure Portal
 
@@ -40,7 +40,7 @@ Než začnete definovat úlohu Stream Analytics, připravte si data nakonfigurov
      "hmdt": 44
    }
    ```
-2. Přihlaste se k portálu Azure Portal.  
+2. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).  
 
 3. V levém horním rohu webu Azure Portal vyberte **Vytvořit prostředek** > **Úložiště** > **Účet úložiště**. Vyplňte informace na stránce úlohy Účet úložiště a nastavte **Název** na „asaquickstartstorage“, **Umístění** na „West US 2“, **Skupinu prostředků** na „asaquickstart-resourcegroup“ (kvůli zajištění vyššího výkonu se účet úložiště hostuje ve stejné skupině prostředků jako úloha streamování). Ostatní nastavení můžou zůstat na výchozích hodnotách.  
 
@@ -116,7 +116,7 @@ V této části nakonfigurujete úložiště objektů blob jako vstup do úlohy 
    |---------|---------|---------|
    |Alias pro výstup |   BlobOutput   |   Zadejte název pro identifikaci výstupu úlohy. |
    |Předplatné  |  \<Vaše předplatné\>  |  Zadejte předplatné Azure vytvořeného účtu úložiště. Účet úložiště můžete využívat v rámci stejného, ale i jiného předplatného. V tomto příkladu se předpokládá, že jste účet vytvořili v rámci stejného předplatného. |
-   |Účet úložiště |  myasastorageaccount |   Vyberte nebo zadejte název účtu úložiště. Pokud jsou názvy vytvořeny v rámci stejného předplatného, zjišťují se automaticky.       |
+   |Účet úložiště |  asaquickstartstorage |   Vyberte nebo zadejte název účtu úložiště. Pokud jsou názvy vytvořeny v rámci stejného předplatného, zjišťují se automaticky.       |
    |Kontejner |   container1  |  Vyberte existující kontejner, který jste vytvořili v účtu úložiště.   |
    |Vzor cesty |   output  |  Zadejte název, který bude sloužit jako cesta v rámci stávajícího kontejneru pro výstup.   |
 

@@ -1,6 +1,5 @@
 # Přehled
-## [Co je Operations Management Suite (OMS)?](operations-management-suite-overview.md)
-## [Architektura OMS](operations-management-suite-architecture.md)
+## [Monitorování agenta](../monitoring/index.md)
 
 # Začínáme
 ## [Log Analytics](../log-analytics/log-analytics-get-started.md)
@@ -13,8 +12,6 @@
 
 ## Analýza
 ### [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
-### [Porovnání produktů monitorování](operations-management-suite-monitoring-product-comparison.md)
-### [Správa výstrah](operations-management-suite-monitoring-alerts.md)
 ## Automatizace
 ### [Přehled Azure Automation](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
@@ -68,12 +65,7 @@
 ### [Osvědčené postupy](../monitoring/monitoring-solutions-best-practices.md)
 
 ## Scénáře správy
-### [Shromažďování analytických dat z runbooků](operations-management-suite-runbook-datacollect.md)
-
-## [Integrace s OMS](operations-management-suite-integration.md)
-
-# Referenční informace
-## [Sada SDK](operations-management-suite-sdk.md)
+### [Shromažďování analytických dat z runbooků](../monitoring/monitoring-runbook-datacollect.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 
 # Zdroje a prostředky
 ## [Plány Azure do budoucna](https://azure.microsoft.com/roadmap/)

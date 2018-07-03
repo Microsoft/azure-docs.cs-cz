@@ -1,5 +1,5 @@
 ---
-title: 'Kurz ke službě Azure Cosmos DB: Vytváření, zadávání dotazů a procházení v konzole Apache TinkerPops Gremlin | Microsoft Docs'
+title: 'Kurz ke službě Azure Cosmos DB: Vytváření, zadávání dotazů a procházení v konzole Apache TinkerPops Gremlin | Dokumentace Microsoftu'
 description: Rychlý start ke službě Azure Cosmos DB vám pomůže s vytvářením vrcholů, okrajů a dotazů pomocí rozhraní Graph API služby Azure Cosmos DB.
 services: cosmos-db
 author: luisbosquez
@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 00e4da5fa1867aeddebe0e452f78ea24a3d0a821
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 6f6a622c2b9faf6117a8212000e1e632df3526b2
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808515"
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37016603"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Služba Azure Cosmos DB: Vytváření, zadávání dotazů a procházení grafu v konzole Gremlin
 
@@ -45,11 +45,11 @@ Musíte si také nainstalovat [konzolu Gremlin](http://tinkerpop.apache.org/). P
 
 ## <a id="ConnectAppService"></a>Připojení ke službě aplikace
 1. Než začnete používat konzolu Gremlin, vytvořte nebo upravte v adresáři `apache-tinkerpop-gremlin-console-3.2.5/conf` konfigurační soubor remote-secure.yaml.
-2. Vyplňte parametry *Hostitel*, *Port*, *Uživatelské jméno*, *Heslo*, *Fond připojení* a *Serializátor*:
+2. Podle následující tabulky vyplňte konfigurace *Hostitel*, *Port*, *Uživatelské jméno*, *Heslo*, *Fond připojení* a *Serializátor*:
 
     Nastavení|Navrhovaná hodnota|Popis
     ---|---|---
-    hostitelé|[*název-účtu*.gremlin.cosmosdb.azure.com] nebo [*název-účtu*.graphs.azure.com] pro účty vytvořené před 20. prosincem 2017|Viz následující snímek obrazovky. Toto je hodnota Gremlin URI na stránce Přehled na webu Azure Portal v hranatých závorkách a s odebraným řetězcem „:443/“ na konci.<br><br>Tuto hodnotu můžete získat také z karty Klíče s použitím hodnoty URI, ve které odeberete „https://“, změníte „documents“ na „graphs pr gremlin.cosmosdb“ a odeberete „:443/“ na konci.
+    hostitelé|[*název-účtu*.gremlin.cosmosdb.azure.com] nebo [*název-účtu*.graphs.azure.com] pro účty vytvořené před 20. prosincem 2017|Viz následující snímek obrazovky. Toto je hodnota Gremlin URI na stránce Přehled na webu Azure Portal v hranatých závorkách a s odebraným řetězcem „:443/“ na konci.
     port|443|Nastavte na hodnotu 443.
     uživatelské jméno|*Vaše uživatelské jméno*|Prostředek ve formátu `/dbs/<db>/colls/<coll>`, kde `<db>` je název vaší databáze a `<coll>` je název vaší kolekce.
     heslo|*Váš primární klíč*| Viz druhý snímek obrazovky níže. Toto je váš primární klíč, který můžete získat ze stránky Klíče na webu Azure Portal v poli Primární klíč. Pomocí tlačítka pro kopírování na levé straně pole hodnotu zkopírujte.

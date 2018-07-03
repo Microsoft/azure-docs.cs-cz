@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: e1a216a8bf524d22af815d077b16ab29c817e9e4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: e3e0855d2ac54643a6dc6128eea974d952bb56d5
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33866229"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36335624"
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>Upgrade agenta PhoneFactor na Azure Multi-Factor Authentication Server
 
@@ -66,11 +66,8 @@ Cesta instalace se převzala z registru z předchozí instalace agenta PhoneFact
 
   3. Přejděte do umístění instalace portálu User Portal (například C:\inetpub\wwwroot\MultiFactorAuth) a upravte soubor web.config. Zkopírujte hodnoty v oddílech appSettings a applicationSettings z původního souboru web.config, který se zálohoval před upgradem, do nového souboru web.config. Pokud byl při instalaci sady Web Service SDK zachován výchozí název virtuálního adresáře, změňte adresu URL v části applicationSettings tak, aby odkazovala na správné místo. Pokud byly v předchozím soubor web.config změněny ostatní výchozí hodnoty, tyto změny budou stejně použity na nový soubor web.config.
 
-  4. Chcete-li nainstalovat webové služby mobilní aplikace na webovém serveru, otevřete příkazový řádek jako správce a spusťte soubor MultiFactorAuthenticationMobileAppWebServiceSetupXX.msi.
-
-    Výchozí název virtuálního adresáře je nyní **MultiFactorAuthMobileAppWebService**, a ne **PhoneFactorPhoneAppWebService**. Pokud chcete použít předchozí název, musíte změnit název virtuálního adresáře během instalace. Můžete vybrat kratší název pro usnadnění zadávání na mobilních zařízeních koncovým uživatelům. Jinak pokud povolíte instalaci pro použití nového výchozího názvu, doporučujeme kliknout na ikonu mobilní aplikace na serveru Multi-Factor Authentication a aktualizovat adresu URL webových služeb mobilní aplikace.
-
-  5. Přejděte do umístění instalace webové služby mobilní aplikace (například C:\inetpub\wwwroot\MultiFactorAuthMobileAppWebService) a upravte soubor web.config. Zkopírujte hodnoty v oddílech appSettings a applicationSettings z původního souboru web.config, který se zálohoval před upgradem, do nového souboru web.config. Pokud byl při instalaci sady Web Service SDK zachován výchozí název virtuálního adresáře, změňte adresu URL v části applicationSettings tak, aby odkazovala na správné místo. Pokud byly v předchozím soubor web.config změněny ostatní výchozí hodnoty, tyto změny budou stejně použity na nový soubor web.config.
+> [!NOTE]
+> Pokud upgradujete ze starší verze Azure MFA Serveru než 8.0 na verzi 8.0 nebo novější, po upgradu je možné odinstalovat webovou službu mobilní aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 

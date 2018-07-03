@@ -3,7 +3,7 @@ title: Příklad PowerShellu – Synchronizace mezi službou SQL Database a mís
 description: Ukázkový skript Azure PowerShellu pro synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru
 services: sql-database
 documentationcenter: sql-database
-author: jognanay
+author: allenwux
 manager: craigg
 editor: ''
 tags: ''
@@ -15,23 +15,24 @@ ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 04/01/2018
-ms.author: jognanay
+ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: bef2e3088bf3f3d32f59b382792608fbf3a03a60
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 51624e162d4c3304e51ab69923f54213f317e42b
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37024684"
 ---
 # <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>Použití PowerShellu k synchronizaci mezi službou SQL Database a místní databází SQL Serveru
 
-Tento příklad PowerShellu nakonfiguruje Synchronizaci dat (Preview) pro synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru. 
+Tento příklad PowerShellu nakonfiguruje Synchronizaci dat pro synchronizaci mezi službou Azure SQL Database a místní databází SQL Serveru. 
 
 Tato ukázka vyžaduje modul Azure PowerShellu verze 4.2 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
  
 Spuštěním příkazu `Connect-AzureRmAccount` vytvořte připojení k Azure.
 
-Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure (Preview)](../sql-database-sync-data.md).
+Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](../sql-database-sync-data.md).
 
 ## <a name="sample-script"></a>Ukázkový skript
 

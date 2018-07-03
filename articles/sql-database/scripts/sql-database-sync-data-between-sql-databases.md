@@ -3,7 +3,7 @@ title: Příklad PowerShellu – Synchronizace mezi několika databázemi SQL Az
 description: Ukázkový skript Azure PowerShellu pro synchronizaci mezi několika databázemi SQL Azure
 services: sql-database
 documentationcenter: sql-database
-author: jognanay
+author: allenwux
 manager: craigg
 editor: ''
 tags: ''
@@ -15,23 +15,24 @@ ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 04/01/2018
-ms.author: jognanay
+ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: cf3d6ca00f884bf16d9c20a483df9853a2e64975
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c03384f71787e4ab3ad3bd56e2355558e8d0155a
+ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 06/27/2018
+ms.locfileid: "37024677"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>Synchronizace mezi několika databázemi SQL pomocí PowerShellu
  
-Tento příklad PowerShellu nakonfiguruje Synchronizaci dat (Preview) pro synchronizaci mezi několika databázemi SQL Azure.
+Tento příklad PowerShellu konfiguruje Synchronizaci dat pro synchronizaci mezi několika databázemi SQL Azure.
 
 Tato ukázka vyžaduje modul Azure PowerShellu verze 4.2 nebo novější. Nainstalovanou verzi zjistíte spuštěním příkazu `Get-Module -ListAvailable AzureRM`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
  
 Spuštěním příkazu `Connect-AzureRmAccount` vytvořte připojení k Azure.
 
-Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure (Preview)](../sql-database-sync-data.md).
+Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několika cloudovými a místními databázemi pomocí Synchronizace dat SQL Azure](../sql-database-sync-data.md).
 
 ## <a name="sample-script"></a>Ukázkový skript
 

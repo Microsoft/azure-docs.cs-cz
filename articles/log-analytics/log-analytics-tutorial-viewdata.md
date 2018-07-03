@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/03/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 6345fe89a3bf25041621213274ea0c3081848d99
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 4a5e6b24bbf7cc21d40cea8e4331de98a5cc05a6
+ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30834414"
+ms.lasthandoff: 06/25/2018
+ms.locfileid: "36752142"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Zobrazení nebo analýza shromážděných dat pomocí prohledávání protokolů v Log Analytics
 
@@ -41,8 +41,8 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 ## <a name="open-the-log-search-portal"></a>Otevření portálu pro prohledávání protokolů 
 Začněte otevřením portálu pro prohledávání protokolů.   
 
-1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics**.
-2. V podokně předplatného Log Analytics vyberte pracovní prostor a pak vyberte dlaždici **Prohledávání protokolů**.<br><br> ![Tlačítko Prohledávání protokolů](media/log-analytics-tutorial-viewdata/azure-portal-02.png)
+1. Na webu Azure Portal klikněte na **Všechny služby**. V seznamu prostředků zadejte **Monitor**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Monitor**.
+2. V navigační nabídce služby Monitor vyberte **Log Analytics** a pak vyberte pracovní prostor.
 
 ## <a name="create-a-simple-search"></a>Vytvoření jednoduchého hledání
 Nejrychlejší způsob načtení nějakých dat, se kterými můžeme pracovat, je použít tento jednoduchý dotaz, který vrátí všechny záznamy v tabulce.  Pokud ke svému pracovnímu prostoru máte připojené nějaké klienty Windows nebo Linuxu, budete mít data v tabulce Event (Windows) nebo Syslog (Linux).
@@ -124,7 +124,7 @@ Perf
 Vracení milionů záznamů pro všechny objekty a čítače výkonu však není moc užitečné.  Pomocí stejných metod jako výše můžete data filtrovat nebo zadejte následující dotaz přímo do pole prohledávání protokolů.  Tento dotaz vrátí pouze záznamy o využití procesoru pro počítače s Windows i Linuxem.
 
 ```
-Perf | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time")
+Perf | where ObjectName == "Processor"  | where CounterName == "% Processor Time"
 ```
 
 ![Využití procesoru](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-02.png)
@@ -132,7 +132,9 @@ Perf | where (ObjectName == "Processor")  | where (CounterName == "% Processor T
 Tím se data omezí na konkrétní čítač, ale stále se nezobrazují v užitečném formátu.  Data můžete zobrazit ve spojnicovém grafu, ale nejprve je potřeba je seskupit podle polí Computer (Počítač) a TimeGenerated (Čas vygenerování).  Abyste mohli data seskupit podle více polí, musíte dotaz upravit přímo, takže ho upravte na následující dotaz.  Tento dotaz používá funkci [avg](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/avg()) s vlastností **CounterValue** (Hodnota čítače) k výpočtu průměrných hodinových hodnot.
 
 ```
-Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated
+Perf  
+| where ObjectName == "Processor"  | where CounterName == "% Processor Time"
+| summarize avg(CounterValue) by Computer, TimeGenerated
 ```
 
 ![Graf dat výkonu](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-03.png)
@@ -140,7 +142,10 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 Když jsou teď data vhodně seskupená, můžete je zobrazit ve vizuálním grafu přidáním operátoru [render](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator).  
 
 ```
-Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated | render timechart
+Perf  
+| where ObjectName == "Processor" | where CounterName == "% Processor Time" 
+| summarize avg(CounterValue) by Computer, TimeGenerated 
+| render timechart
 ```
 
 ![Spojnicový graf](media/log-analytics-tutorial-viewdata/log-analytics-portal-linechart-01.png)

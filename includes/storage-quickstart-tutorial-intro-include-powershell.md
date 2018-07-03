@@ -1,6 +1,6 @@
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` a postupujte podle pokynů na obrazovce.
+Přihlaste se ke svému předplatnému Azure pomocí příkazu `Connect-AzureRmAccount` a postupujte podle pokynů na obrazovce.
 
 ```powershell
 Connect-AzureRmAccount
@@ -22,7 +22,7 @@ $resourceGroup = "myResourceGroup"
 New-AzureRmResourceGroup -Name $resourceGroup -Location $location 
 ```
 
-## <a name="create-a-storage-account"></a>Vytvoření účtu úložiště
+## <a name="create-a-storage-account"></a>vytvořit účet úložiště
 
 Pomocí příkazu [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) vytvořte standardní obecný účet úložiště s replikací LRS a pak načtěte kontext účtu úložiště, který definuje účet úložiště, které chcete použít. Když používáte účet úložiště, namísto opakovaného zadávání přihlašovacích údajů odkazujete na jeho kontext. V tomto příkladu vytvoříte účet úložiště s názvem *mystorageaccount* s místně redundantním úložištěm (LRS) a šifrováním objektů blob (které bude ve výchozím nastavení povolené).
 

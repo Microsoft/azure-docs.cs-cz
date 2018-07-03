@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 035deabd04b8b838e0009f2cae96b0761733897f
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: f839b05a1d97ce78601697469c982839358d6b06
+ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248237"
+ms.lasthandoff: 06/21/2018
+ms.locfileid: "36300852"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Kurz: Monitorování kontejnerů Windows na platformě Service Fabric pomocí Log Analytics
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > [!div class="checklist"]
 > * Konfigurace Log Analytics pro cluster Service Fabric
 > * Použití pracovního prostoru Log Analytics k zobrazení a dotazování protokolů z kontejnerů a uzlů
-> * Konfigurace agenta OMS ke sbírání metrik kontejnerů a uzlů
+> * Konfigurace agenta Log Analytics ke sbírání metrik kontejnerů a uzlů
 
 ## <a name="prerequisites"></a>Požadavky
 Než začnete s tímto kurzem, musíte mít splněné následující požadavky:
@@ -81,7 +81,7 @@ Proveďte následující změny v souboru *template.json*.
     "omsSolution": "ServiceFabric"
     ```
 
-3. Přidejte agenta Microsoft Monitoring Agent pro OMS jako rozšíření virtuálního počítače. Vyhledejte prostředek škálovací sady virtuálních počítačů: *resources* > *"apiVersion": "[variables('vmssApiVersion')]"*. V části *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* přidejte následující popis rozšíření za rozšíření *ServiceFabricNode*: 
+3. Přidejte agenta Microsoft Monitoring Agent jako rozšíření virtuálního počítače. Vyhledejte prostředek škálovací sady virtuálních počítačů: *resources* > *"apiVersion": "[variables('vmssApiVersion')]"*. V části *properties* > *virtualMachineProfile* > *extensionProfile* > *extensions* přidejte následující popis rozšíření za rozšíření *ServiceFabricNode*: 
     
     ```json
     {
@@ -181,7 +181,7 @@ Proveďte následující změny v souboru *template.json*.
     },
     ```
 
-[Tady](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) je ukázková šablona (použitá v první části tohoto kurzu) obsahující všechny tyto změny, kterou podle potřeby můžete použít jako vodítko. Těmito změnami se přidá pracovní prostor Log Analytics do vaší skupiny prostředků. Pracovní prostor se nakonfiguruje tak, aby sbíral události platformy Service Fabric z tabulek úložiště nakonfigurovaných pomocí agenta [Azure Diagnostics pro Windows](service-fabric-diagnostics-event-aggregation-wad.md). Do každého uzlu v clusteru se také přidal agent OMS (Microsoft Monitoring Agent) jako rozšíření virtuálního počítače – to znamená, že při škálování clusteru se agent automaticky nakonfiguruje na každém počítači a připojí se ke stejnému pracovnímu prostoru.
+[Tady](https://github.com/ChackDan/Service-Fabric/blob/master/ARM%20Templates/Tutorial/azuredeploy.json) je ukázková šablona (použitá v první části tohoto kurzu) obsahující všechny tyto změny, kterou podle potřeby můžete použít jako vodítko. Těmito změnami se přidá pracovní prostor Log Analytics do vaší skupiny prostředků. Pracovní prostor se nakonfiguruje tak, aby sbíral události platformy Service Fabric z tabulek úložiště nakonfigurovaných pomocí agenta [Azure Diagnostics pro Windows](service-fabric-diagnostics-event-aggregation-wad.md). Do každého uzlu v clusteru se také přidal agent Log Analytics (Microsoft Monitoring Agent) jako rozšíření virtuálního počítače – to znamená, že při škálování clusteru se agent automaticky nakonfiguruje na každém počítači a připojí se ke stejnému pracovnímu prostoru.
 
 Nasazením šablony s provedenými změnami upgradujte svůj aktuální cluster. Po dokončení by se ve vaší skupině prostředků měly zobrazit prostředky Log Analytics. Až bude cluster připravený, nasaďte do něj svou kontejnerizovanou aplikaci. V dalším kroku nastavíme monitorování kontejnerů.
 
@@ -191,7 +191,7 @@ Pokud chcete ve svém pracovním prostoru nastavit řešení kontejnerů, vyhled
 
 ![Přidání řešení kontejnerů](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-Po zobrazení výzvy k zadání *pracovního prostoru Log Analytics* vyberte pracovní prostor, který se vytvořil ve vaší skupině prostředků, a klikněte na **Vytvořit**. Tím se do vašeho pracovního prostoru přidá *řešení pro monitorování kontejnerů* a agent OMS nasazený šablonou začne automaticky shromažďovat protokoly a statistiky Dockeru. 
+Po zobrazení výzvy k zadání *pracovního prostoru Log Analytics* vyberte pracovní prostor, který se vytvořil ve vaší skupině prostředků, a klikněte na **Vytvořit**. Tím se do vašeho pracovního prostoru přidá *řešení pro monitorování kontejnerů* a agent Log Analytics nasazený šablonou začne automaticky shromažďovat protokoly a statistiky Dockeru. 
 
 Vraťte se do své *skupiny prostředků*, kde by se teď mělo zobrazit nově přidané řešení pro monitorování. Když na něj kliknete, na cílové stránce by se měl zobrazit počet spuštěných imagí kontejnerů. 
 
@@ -211,11 +211,11 @@ Kliknutím na jakýkoli z těchto panelů přejdete k dotazu Log Analytics, kter
 
 ![Dotaz na kontejner](./media/service-fabric-tutorial-monitoring-wincontainers/query-sample.png)
 
-## <a name="configure-oms-agent-to-pick-up-performance-counters"></a>Konfigurace agenta OMS ke sbírání čítačů výkonu
+## <a name="configure-log-analytics-agent-to-pick-up-performance-counters"></a>Konfigurace agenta Log Analytics pro sbírání čítačů výkonu
 
-Další výhodou používání agenta OMS je možnost změnit čítače výkonu, které chcete sbírat, přes uživatelské rozhraní OMS – nemusíte tak pokaždé konfigurovat agenta diagnostiky Azure ani provádět upgrade na základě šablony Resource Manageru. Provedete to tak, že kliknete na **Pracovní prostor OMS** na cílové stránce vašeho řešení pro monitorování kontejnerů (nebo Service Fabric).
+Další výhodou používání agenta Log Analytics je možnost změnit čítače výkonu, které chcete sbírat, přes uživatelské rozhraní Log Analytics – nemusíte tak pokaždé konfigurovat agenta diagnostiky Azure ani provádět upgrade na základě šablony Resource Manageru. Provedete to tak, že kliknete na **Pracovní prostor OMS** na cílové stránce vašeho řešení pro monitorování kontejnerů (nebo Service Fabric).
 
-Tím přejdete do svého pracovního prostoru OMS, kde můžete zobrazit svá řešení, vytvářet vlastní řídicí panely a také konfigurovat agenta OMS. 
+Tím přejdete do svého pracovního prostoru Log Analytics, kde můžete zobrazit svá řešení, vytvářet vlastní řídicí panely a také konfigurovat agenta Log Analytics. 
 * Klikněte na **Upřesnit nastavení** a otevřete tak nabídku Upřesnit nastavení.
 * Klikněte na **Připojené zdroje** > **Servery Windows** a ověřte, že máte *připojených 5 počítačů s Windows*.
 * Klikněte na **Data** > **Čítače výkonu Windows**, abyste mohli vyhledat a přidat nové čítače výkonu. Tady se zobrazí seznam doporučení Log Analytics týkajících se čítačů výkonů, jejichž údaje můžete shromažďovat, a také možnost vyhledat jiné čítače. Ověřte, že se shromažďují informace z čítačů **Procesor(_Celkem)\%Čas procesoru** a **Paměť(*)\Dostupné MB**.
