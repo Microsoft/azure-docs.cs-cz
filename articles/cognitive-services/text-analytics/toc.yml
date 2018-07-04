@@ -51,19 +51,21 @@
       href: 'https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7'
 - name: Zdroje a prostředky
   items:
+    - name: Externí obsah a obsah komunity
+      href: text-analytics-resource-external-community.md
     - name: Nejčastější dotazy
       href: text-analytics-resource-faq.md
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
-    - name: Podporované jazyky
-      href: text-analytics-supported-languages.md
     - name: Klíč předplatného
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=text-analytics'
-    - name: Externí obsah a obsah komunity
-      href: text-analytics-resource-external-community.md
+    - name: Podporované jazyky
+      href: text-analytics-supported-languages.md
     - name: Vyzkoušejte si to!
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'

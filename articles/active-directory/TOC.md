@@ -83,8 +83,8 @@
 ## [Správa skupin a členů](fundamentals/active-directory-manage-groups.md)
 ### Správa skupin
 #### [Azure Portal](fundamentals/active-directory-groups-create-azure-portal.md)
-#### [Azure AD PowerShell pro Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-#### [Azure AD PowerShell MSOnline](active-directory-accessmanagement-groups-settings-cmdlets.md)
+#### [Azure AD PowerShell pro Graph (v2)](users-groups-roles/groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell MSOnline](users-groups-roles/groups-settings-cmdlets.md)
 ### [Správa členů skupin](fundamentals/active-directory-groups-members-azure-portal.md)
 ### [Správa vlastníků skupin](fundamentals/active-directory-accessmanagement-managing-group-owners.md)
 ### [Správa členství ve skupinách](fundamentals/active-directory-groups-membership-azure-portal.md)
@@ -99,13 +99,13 @@
 ### [Nastavení vypršení platnosti skupin Office 365](active-directory-groups-lifecycle-azure-portal.md)
 ### [Vynucení zásad pojmenování pro skupiny](groups-naming-policy.md)
 ### [Zobrazení všech skupin](fundamentals/active-directory-groups-view-azure-portal.md)
-### [Přidání skupiny k aplikacím SaaS](active-directory-accessmanagement-group-saasapps.md)
+### [Přidání skupiny k aplikacím SaaS](users-groups-roles/groups-saasapps.md)
 ### [Obnovení odstraněné skupiny Office 365](fundamentals/active-directory-groups-restore-azure-portal.md)
 ### [Správa nastavení skupin](fundamentals/active-directory-groups-settings-azure-portal.md) 
 ### Vytváření rozšířených pravidel
 #### [Azure Portal](active-directory-groups-dynamic-membership-azure-portal.md)
-### [Vytvoření samoobslužných skupin](active-directory-accessmanagement-self-service-group-management.md)
-### [Řešení problémů](active-directory-accessmanagement-troubleshooting.md)
+### [Vytvoření samoobslužných skupin](users-groups-roles/groups-self-service-management.md)
+### [Řešení problémů](users-groups-roles/groups-troubleshooting.md)
 
 ## [Správa sestav](active-directory-reporting-azure-portal.md)
 ### [Aktivita přihlášení](active-directory-reporting-activity-sign-ins.md)
@@ -363,7 +363,7 @@
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### Vlastní názvy domén
 #### [Rychlý start](fundamentals/add-custom-domain.md)
-#### [Přidání vlastních názvů domén](active-directory-domains-manage-azure-portal.md)
+#### [Přidání vlastních názvů domén](users-groups-roles/domains-manage.md)
 ### [Správa adresáře](fundamentals/active-directory-administer.md)
 ### [Odstranění adresáře](directory-delete-howto.md)
 ### [Několik adresářů](active-directory-licensing-directory-independence.md)
@@ -381,12 +381,12 @@
 
 ## Delegování přístupu k prostředkům
 ### [Zobrazení členů role správce](directory-manage-roles-portal.md)
-### [Role správce](active-directory-assign-admin-roles-azure-portal.md)
+### [Role správce](users-groups-roles/directory-assign-admin-roles.md)
 #### [Přiřazení role správce uživateli](fundamentals/active-directory-users-assign-role-azure-portal.md)
 #### [Porovnání oprávnění pro členy a uživatele typu host](fundamentals/users-default-permissions.md)
 ### [Posílení zabezpečení role správce](admin-roles-best-practices.md)  
-#### [Vytvoření účtů správce pro nouzový přístup](active-directory-admin-manage-emergency-access-accounts.md)
-### [Jednotky pro správu](active-directory-administrative-units-management.md)
+#### [Vytvoření účtů správce pro nouzový přístup](users-groups-roles/directory-emergency-access.md)
+### [Jednotky pro správu](users-groups-roles/directory-administrative-units.md)
 ### [Konfigurace životnosti tokenů](active-directory-configurable-token-lifetimes.md)
 
 ## Kontroly přístupu
@@ -406,6 +406,7 @@
 #### Šablony Rychlý start
 ##### [Konfigurace na základě MFA cloudových aplikací](active-directory-conditional-access-app-based-mfa.md)
 ##### [Vyžadování přijetí podmínek použití](active-directory-conditional-access-tou.md)
+##### [Blokování přístupu, pokud se zjistí riziko relace](active-directory-conditional-access-app-sign-in-risk.md)
 #### Kurzy
 ##### [Migrace klasických zásad MFA](active-directory-conditional-access-migration-mfa.md)
 #### Koncepty

@@ -2,15 +2,17 @@
 
 # Přehled
 ## [Co je Resource Manager?](resource-group-overview.md)
-## [Poskytovatelé a typy prostředků](resource-manager-supported-services.md)
 ## [Resource Manager a klasické nasazení](resource-manager-deployment-model.md)
-## [Zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance)
-## [Uspořádání prostředků s využitím skupin pro správu](management-groups-overview.md)
 
 # Začínáme
 ## [Vytvoření šablony nasazení](resource-manager-create-first-template.md)
 ## [Rozšíření VS Code pro šablony](resource-manager-vscode-extension.md)
 ## [Visual Studio s Resource Managerem](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
+
+# Koncepty
+## [Poskytovatelé a typy prostředků](resource-manager-supported-services.md)
+## [Skupiny pro správu](management-groups-overview.md)
+## [Zásady správného řízení pro předplatná](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 # Postup
 ## Vytváření šablon

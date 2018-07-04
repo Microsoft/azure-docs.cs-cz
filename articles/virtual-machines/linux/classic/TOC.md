@@ -4,7 +4,7 @@
 ## [Nejčastější dotazy](faq-classic.md)
 
 # Začínáme
-## [Vytvoření virtuálního počítače s Linuxem s využitím webu Azure Portal](createportal-classic.md)
+## [Vytvoření virtuálního počítače s Linuxem](createportal-classic.md)
 
 # Postup
 ## Compute

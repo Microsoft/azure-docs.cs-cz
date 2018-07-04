@@ -20,6 +20,8 @@
       href: ../spark/apache-spark-intellij-tool-plugin.md
     - name: Propojení s clusterem připojeným k doméně pomocí Eclipse
       href: ../spark/apache-spark-eclipse-tool-plugin.md
+    - name: Použití Oozie v clusterech připojených k doméně
+      href: hdinsight-use-oozie-domain-joined-clusters.md
 - name: Zabezpečení dat
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
   maintainContext: true
@@ -69,6 +71,10 @@
     - name: "Poznámky k\_verzi"
       href: ../hdinsight-release-notes.md
       maintainContext: true
+      items:
+        - name: Archivované poznámky k verzi
+          href: ../hdinsight-release-notes-archive.md
+          maintainContext: true
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Získejte pomoc na fóru

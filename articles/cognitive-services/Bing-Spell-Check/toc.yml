@@ -45,19 +45,21 @@
       href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v5-reference'
 - name: Zdroje a prostředky
   items:
+    - name: Analýzy pro rozhraní API pro kontrolu pravopisu Bingu
+      href: bing-spell-check-stats.md
     - name: Nejčastější dotazy
       href: bing-spell-check-resource-faq.md
     - name: Ceny
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/spellcheck-api/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/598195-bing-spell-check'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/bing-api'
-    - name: Podporované jazyky
-      href: bing-spell-check-supported-languages.md
-    - name: Analýzy pro rozhraní API pro kontrolu pravopisu Bingu
-      href: bing-spell-check-stats.md
     - name: Klíč předplatného
       href: 'https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api'
+    - name: Podporované jazyky
+      href: bing-spell-check-supported-languages.md
     - name: Vyzkoušejte si to!
       href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/598195-bing-spell-check'

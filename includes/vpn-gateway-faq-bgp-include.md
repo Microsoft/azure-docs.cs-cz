@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 93698df0e1684b469b6e2a03e6681499949aab6d
-ms.sourcegitcommit: caebf2bb2fc6574aeee1b46d694a61f8b9243198
+ms.openlocfilehash: c6c67f6f1500ee90a1e0e4a04309f3f7aa2f6d05
+ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2018
-ms.locfileid: "35414599"
+ms.lasthandoff: 06/23/2018
+ms.locfileid: "36338318"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Je protokol BGP podporován ve všech SKU služby Azure VPN Gateway?
 Ne, protokol BGP se podporuje v branách VPN Azure úrovně **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** a **HighPerformance**. Pro SKU **Basic** NENÍ podporován.
@@ -23,6 +23,9 @@ Ne, protokol BGP je podporován pouze u služeb VPN Gateway se směrováním.
 
 ### <a name="can-i-use-private-asns-autonomous-system-numbers"></a>Je možné používat privátní čísla ASN (čísla autonomního systému)?
 Ano, svá vlastní veřejná čísla ASN nebo privátní čísla ASN můžete používat pro své místní sítě i virtuální sítě Azure.
+
+### <a name="can-i-use-32-bit-asns-autonomous-system-numbers"></a>Je možné používat 32bitová čísla ASN (čísla autonomního systému)?
+Ne, služby Azure VPN Gateway v současnosti podporují 16bitová čísla ASN.
 
 ### <a name="are-there-asns-reserved-by-azure"></a>Existují ASN vyhrazená sítí Azure?
 Ano, následující ASN jsou vyhrazena sítí Azure pro vnitřní a vnější peering:

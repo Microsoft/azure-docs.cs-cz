@@ -1,4 +1,5 @@
 # [Dokumentace ke službě Data Lake Storage Gen1](index.md)
+# [Dokumentace k přechodu ke službě Data Lake Storage Gen2 (Preview)](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction)
 
 # Přehled
 ## [Přehled Data Lake Storage Gen1](data-lake-store-overview.md)

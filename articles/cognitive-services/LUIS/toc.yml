@@ -136,7 +136,7 @@
 - name: Návody
   items:
     - name: Plánování aplikace
-      href: Plan-your-app.md
+      href: luis-how-plan-your-app.md
     - name: Vytvoření nové aplikace
       href: Create-new-app.md
     - name: Vytvoření modelu
@@ -200,7 +200,7 @@
         - name: Použití předem připravených domén
           href: luis-how-to-use-prebuilt-domains.md
         - name: Použití předem připravené aplikace Cortana
-          href: Cortana-Prebuilt-App.md
+          href: luis-how-to-cortana-prebuilt-app.md
     - name: Správa aplikace LUIS
       items:
         - name: S využitím řídicího panelu
@@ -309,6 +309,8 @@
       href: 'https://azure.microsoft.com/services/cognitive-services/spell-check/'
     - name: Analýza textu
       href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+    - name: Recognizers-Text
+      href: 'https://github.com/Microsoft/Recognizers-Text'
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

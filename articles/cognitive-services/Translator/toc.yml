@@ -157,15 +157,17 @@
           href: return-n-best-translations.md
 - name: Zdroje a prostředky
   items:
-    - name: Nejčastější dotazy
-      href: 'https://www.microsoft.com/translator/faq.aspx'
-    - name: Ceny
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/558796-translator'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
-    - name: Znalostní báze
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
     - name: Vzorový kód na GitHubu
       href: 'https://aka.ms/TranslatorGitHub'
+    - name: Nejčastější dotazy
+      href: 'https://www.microsoft.com/translator/faq.aspx'
+    - name: Znalostní báze
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
+    - name: Regionální dostupnost
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/558796-translator'

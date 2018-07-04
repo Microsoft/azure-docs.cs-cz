@@ -118,6 +118,8 @@
       href: glossary.md
 - name: Zdroje a prostředky
   items:
+    - name: Dostupnost podle oblastí
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/'
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Ceny

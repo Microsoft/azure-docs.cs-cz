@@ -5,7 +5,6 @@
 ### Prodejní místa  
 #### [Porovnání AppSource a Azure Marketplace](./comparing-appsource-azure-marketplace.md)  
 #### [Rozvoj podnikání s využitím AppSource](./grow-your-business-with-appsource.md) 
-#### [Upřednostňovaná řešení](./preferred-solutions.md)
 ##### [Vytvoření cílové stránky](./build-your-landing-page.md)  
 ##### [Povolení sdílení potenciálních zákazníků](./enable-lead-sharing.md)  
 ##### [Výhody GTM na marketplace](./gtm-benefits.md)  
@@ -19,17 +18,17 @@
 ### Jak publikovat na prodejních místech na marketplace  
 #### [Určení typu výpisu pro vaše řešení](./determine-your-listing-type.md)  
 #### [Jak se stát vydavatelem na prodejních místech na marketplace](./become-publisher.md)  
-#### [Požadavky podle typu výpisu](./listing-type-requirements.md)  
+#### [Požadavky podle typu výpisu](./listing-type-requirements.md) 
+#### [Upřednostňovaná řešení](./preferred-solutions.md) 
 
 ### Kontrolní seznamy pro publikování  
 #### [Kontrolní seznamy pro publikování pro AppSource](./publishing-checklist-appsource.md)  
 #### [Kontrolní seznamy pro publikování pro Azure Marketplace](./publishing-checklist-azure-marketplace.md)  
 
 ### Podpora  
-#### [Podpora pro AppSource](./support-appsource.md)  
-#### [Podpora pro Azure Marketplace](./support-azure-marketplace.md)  
+#### [Podpora pro Azure Marketplace a AppSource](./support-azure-marketplace.md)  
 
-### Průvodci  
+### Průvodci publikováním  
 #### [Konzultační služby pro Azure Marketplace](consulting-services.md)  
 #### [Technický průvodce publikováním aplikací SaaS na Azure Marketplace](marketplace-saas-applications-technical-publishing-guide.md) 
 

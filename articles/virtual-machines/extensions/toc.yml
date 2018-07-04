@@ -22,6 +22,12 @@
       href: features-windows.md
 - name: Návody
   items:
+    - name: Azure Disk Encryption
+      items:
+        - name: Linux
+          href: azure-disk-enc-linux.md
+        - name: Windows
+          href: azure-disk-enc-windows.md
     - name: Vlastní skript
       items:
         - name: Linux – verze 2
@@ -32,15 +38,44 @@
           href: custom-script-windows.md
         - name: Azure Service Management (Classic)
           href: custom-script-classic.md
-    - name: Přístup k virtuálním počítačům
-      href: vmaccess.md
+    - name: Diagnostika
+      items:
+        - name: Linux
+          href: vmsnapshot-linux.md
+        - name: Windows
+          href: vmsnapshot-windows.md
+    - name: Agent Network Watcher
+      items:
+        - name: Linux
+          href: network-watcher-linux.md
+        - name: Windows
+          href: network-watcher-windows.md
+    - name: Ovladače NVIDIA GPU
+      items:
+        - name: Linux
+          href: hpccompute-gpu-linux.md
+        - name: Windows
+          href: hpccompute-gpu-windows.md
     - name: Operations Management Suite
       items:
         - name: Linux
           href: oms-linux.md
         - name: Windows
           href: oms-windows.md
-    - name: Diagnostika
+    - name: PowerShell DSC
+      href: dsc-overview.md
+      items:
+        - name: DSC a Windows
+          href: dsc-windows.md
+        - name: DSC a Linux
+          href: dsc-linux.md
+        - name: Zpracování přihlašovacích údajů
+          href: dsc-credentials.md
+        - name: Použití šablon
+          href: dsc-template.md
+    - name: Přístup k virtuálním počítačům
+      href: vmaccess.md
+    - name: Diagnostika virtuálního počítače
       items:
         - name: Linux
           href: diagnostics-linux.md
@@ -48,29 +83,6 @@
           href: diagnostics-windows.md
         - name: Použití šablon
           href: diagnostics-template.md
-    - name: Agent Network Watcher
-      items:
-        - name: Linux
-          href: network-watcher-linux.md
-        - name: Windows
-          href: network-watcher-windows.md
-    - name: PowerShell DSC
-      href: dsc-overview.md
-      items:
-        - name: DSC a Windows
-          href: dsc-windows.md
-        - name: Zpracování přihlašovacích údajů
-          href: dsc-credentials.md
-        - name: Použití šablon
-          href: dsc-template.md
-    - name: Antimalware IaaS pro Windows
-      href: iaas-antimalware-windows.md
-    - name: VM Snapshot
-      items:
-        - name: Linux
-          href: vmsnapshot-linux.md
-        - name: Windows
-          href: vmsnapshot-windows.md
     - name: Rozšíření jiných výrobců
       items:
         - name: Stackify Retrace
