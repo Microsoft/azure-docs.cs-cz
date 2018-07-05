@@ -1,6 +1,6 @@
 ---
-title: Vytvoření virtuálního počítače s Windows pomocí zjednodušené rutiny New-AzureRMVM v prostředí cloudu Azure | Microsoft Docs
-description: Rychle se Naučte se vytvořit virtuální počítače s Windows pomocí rutiny New-AzureRMVM zjednodušené v prostředí cloudu Azure.
+title: Vytvoření virtuálního počítače s Windows pomocí zjednodušené rutiny New-AzureRMVM ve službě Azure Cloud Shell | Dokumentace Microsoftu
+description: Rychle se naučíte, jak vytvářet virtuální počítače Windows pomocí rutiny New-AzureRMVM zjednodušené ve službě Azure Cloud Shell.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,15 +16,16 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: a44c9ec9270e4ba76f0ff367e039f5ef72eb04a5
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ede8fab67c04eb7ce8d26280de2d1563b6cc8ad2
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435665"
 ---
-# <a name="create-a-windows-virtual-machine-with-the-simplified-new-azurermvm-cmdlet-in-cloud-shell"></a>Vytvoření virtuálního počítače s Windows pomocí rutiny New-AzureRMVM zjednodušené v prostředí cloudu 
+# <a name="create-a-windows-virtual-machine-with-the-simplified-new-azurermvm-cmdlet-in-cloud-shell"></a>Vytvoření virtuálního počítače s Windows pomocí rutiny New-AzureRMVM zjednodušené ve službě Cloud Shell 
 
-[New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) rutiny přidala zjednodušené sadu parametrů pro vytvoření nového virtuálního počítače pomocí prostředí PowerShell. Toto téma ukazuje, jak pomocí prostředí PowerShell v prostředí cloudu Azure, s nejnovější verzí rutinu New-AzureVM předinstalována k vytvoření nového virtuálního počítače. Budeme používat sadu zjednodušené parametr, který automaticky vytvoří všechny potřebné prostředky pomocí výchozího nastavení inteligentního. 
+[New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) rutiny přidal zjednodušené sady parametrů pro vytvoření nového virtuálního počítače pomocí Powershellu. V tomto tématu se dozvíte, jak pomocí prostředí PowerShell ve službě Azure Cloud Shell s nejnovější verzí rutinu New-AzureVM předinstalován, chcete-li vytvořit nový virtuální počítač. Použijeme sadu zjednodušené parametr, který automaticky vytvoří všechny potřebné prostředky využitím inteligentních výchozích hodnot. 
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
 
@@ -35,7 +36,7 @@ Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použ
 
 ## <a name="create-the-vm"></a>Vytvořte virtuální počítač.
 
-Můžete použít [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) vytvořte virtuální počítač s inteligentní výchozí hodnoty, které zahrnují pomocí bitové kopie systému Windows Server 2016 Datacenter z Azure Marketplace. Můžete použít New-AzureRMVM se jenom na **-název** parametr a použije tuto hodnotu pro všechny názvy prostředků. V tomto příkladu jsme jako parametr **-Name** nastavili *myVM*. 
+Můžete použít [New-AzureRMVM](/powershell/module/azurerm.resources/new-azurermvm) rutina pro vytvoření virtuálního počítače s inteligentním výchozím nastavením, které zahrnuje použití image Windows serveru 2016 Datacenter z Azure Marketplace. Můžete použít New-AzureRMVM s jenom **– název** parametr a použije tuto hodnotu pro všechny názvy prostředků. V tomto příkladu jsme jako parametr **-Name** nastavili *myVM*. 
 
 Ověřte, že ve službě Cloud Shell je vybraný **PowerShell**, a zadejte:
 
@@ -45,11 +46,11 @@ New-AzureRMVm -Name myVM
 
 Zobrazí se výzva k vytvoření uživatelského jména a hesla pro virtuální počítač, které se dále v tomto tématu použijí při připojení k tomuto virtuálnímu počítači. Heslo musí mít 12 až 123 znaků a musí splňovat tři ze čtyř bezpečnostních požadavků: jedno malé písmeno, jedno velké písmeno, jedna číslice a jeden speciální znak.
 
-Vytvoření virtuálního počítače a přidružených prostředků trvá zhruba minutu. Po dokončení se zobrazí všechny prostředky, které se vytvořily pomocí rutiny [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource).
+Vytvoření virtuálního počítače a přidružených prostředků trvá zhruba minutu. Až budete hotovi, uvidíte všechny prostředky, které byly vytvořeny pomocí [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) rutiny.
 
 ```azurepowershell-interactive
-Find-AzureRmResource `
-    -ResourceGroupNameEquals myVMResourceGroup | Format-Table Name
+Get-AzureRmResource `
+    -ResourceGroupName myVMResourceGroup | Format-Table Name
 ```
 
 ## <a name="connect-to-the-vm"></a>Připojení k virtuálnímu počítači
@@ -63,14 +64,14 @@ Get-AzureRmPublicIpAddress `
     -ResourceGroupName myVMResourceGroup | Select IpAddress
 ```
 
-Na místním počítači, otevřete příkazový řádek a použít **mstsc** příkaz ke spuštění relaci vzdálené plochy s nový virtuální počítač. Parametr &lt;publicIPAddress&gt; nahraďte IP adresou vašeho virtuálního počítače. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které jste zadali při vytváření tohoto virtuálního počítače.
+Na místním počítači, otevřete příkazový řádek a použít **mstsc** příkaz ke spuštění relace vzdálené plochy s novým virtuálním Počítačem. Parametr &lt;publicIPAddress&gt; nahraďte IP adresou vašeho virtuálního počítače. Po zobrazení výzvy zadejte uživatelské jméno a heslo, které jste zadali při vytváření tohoto virtuálního počítače.
 
 ```
 mstsc /v:<publicIpAddress>
 ```
 ## <a name="specify-different-resource-names"></a>Zadejte názvy různých prostředků
 
-Můžete také zadat více popisných názvů pro prostředky a ještě je vytvořen automaticky. Tady je příklad kde více zdrojů mají pojmenované pro nový virtuální počítač, včetně novou skupinu prostředků.
+Můžete také poskytnout více popisné názvy pro prostředky a ještě další je vytvořen automaticky. Tady je příklad kde několik prostředků mají pojmenované pro nový virtuální počítač, včetně novou skupinu prostředků.
 
 ```azurepowershell-interactive
 New-AzureRmVm `

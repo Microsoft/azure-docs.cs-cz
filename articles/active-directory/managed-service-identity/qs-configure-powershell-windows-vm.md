@@ -1,6 +1,6 @@
 ---
-title: Postup konfigurace MSI ve virtuálním počítači Azure pomocí prostředí PowerShell
-description: Krok podle podrobné pokyny pro konfiguraci a spravovaná služba Identity (MSI) ve virtuálním počítači Azure, pomocí prostředí PowerShell.
+title: Konfigurace MSI ve Virtuálním počítači Azure pomocí Powershellu
+description: Projděte pokyny ke konfiguraci Identity spravované služby (MSI) na virtuálním počítači Azure pomocí Powershellu.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,89 +14,90 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/27/2017
 ms.author: daveba
-ms.openlocfilehash: 6981c0f917fb7175f444ceca8c55c0df186774db
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 20bf16eeb6aff952423af6754812f9532e55cd5f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444448"
 ---
-# <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurace virtuálních počítačů spravovaných služba Identity (MSI) pomocí prostředí PowerShell
+# <a name="configure-a-vm-managed-service-identity-msi-using-powershell"></a>Konfigurace virtuálním počítači Identity spravované služby (MSI) pomocí Powershellu
 
 [!INCLUDE[preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Identita spravované služby poskytuje Azure služby automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření jakoukoli službu, která podporuje ověřování Azure AD, bez nutnosti přihlašovací údaje ve vašem kódu. 
+Identita spravované služby poskytuje služby Azure se automaticky spravované identity v Azure Active Directory. Tuto identitu můžete použít k ověření na libovolnou službu, která podporuje ověřování Azure AD, aniž by bylo přihlašovací údaje ve vašem kódu. 
 
-<a name="in-this-article-you-learn-how-to-perform-the-following-managed-service-identity-operations-on-an-azure-vm-using-powershell"></a>V tomto článku se dozvíte, jak provádět následující operace identita spravované služby ve virtuálním počítači Azure, pomocí prostředí PowerShell:
+<a name="in-this-article-you-learn-how-to-perform-the-following-managed-service-identity-operations-on-an-azure-vm-using-powershell"></a>V tomto článku se dozvíte, jak provádět následující operace Identity spravované služby na virtuálním počítači Azure pomocí Powershellu:
 - 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud jste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi systémem přiřazený a uživatel s přiřazenou identity](overview.md#how-does-it-work)**.
-- Pokud ještě nemáte účet Azure [si zaregistrovat bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.
-- Nainstalujte [nejnovější verzi prostředí Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) Pokud jste tak ještě neučinili.
+- Pokud nejste obeznámeni s identita spravované služby, podívejte se [oddílu přehled](overview.md). **Nezapomeňte si přečíst [rozdíl mezi přiřazenou systémem a identity přiřazené uživateli](overview.md#how-does-it-work)**.
+- Pokud ještě nemáte účet Azure [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.
+- Nainstalujte [nejnovější verzi Azure Powershellu](https://www.powershellgallery.com/packages/AzureRM) Pokud jste tak již neučinili.
 
-## <a name="system-assigned-identity"></a>Systém přiřazené identity
+## <a name="system-assigned-identity"></a>Identitu přiřazenou systémem
 
-V této části se dozvíte, jak povolit a zakázat systému přiřazené identitu pomocí Azure PowerShell.
+V této části se dozvíte, jak povolit a zakázat identitu přiřazenou systémem pomocí Azure Powershellu.
 
-### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vm"></a>Povolit systém přiřazené identity během vytváření virtuální počítač Azure
+### <a name="enable-system-assigned-identity-during-creation-of-an-azure-vm"></a>Povolit systém identity přiřazené během vytváření virtuálního počítače Azure
 
-Chcete-li vytvořit virtuální počítač Azure se systémem přiřadit identity povoleno:
+Vytvoření virtuálního počítače Azure s přiřazenou identity povoleno systémem:
 
-1. Podívejte se na jeden z následujících Quickstarts virtuálních počítačů Azure, dokončení jenom nezbytné oddíly ("Přihlášení k Azure", "Vytvořte skupinu prostředků", "Vytvoření sítě skupiny", "Vytvoření virtuálního počítače").
+1. Odkazovat na jeden z následujících startu virtuálního počítače Azure, dokončení jenom nezbytné oddíly ("Přihlášení k Azure", "Vytvoření skupiny prostředků", "Vytvoření sítě skupiny", "Vytvoření virtuálního počítače").
     
-    Když získáte do části "Vytvoření virtuálního počítače", provedete mírné změny [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvm) Syntaxe rutin. Nezapomeňte přidat `-AssignIdentity "SystemAssigned"` parametr zřídit virtuální počítač s identitou systému přiřazené povoleno, například:
+    Když dostanete do části "Vytvoření virtuálního počítače", ujistěte se, drobné změny [New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvm) Syntaxe rutin. Nezapomeňte si přidat `-AssignIdentity:$SystemAssigned` parametr ke zřízení virtuálního počítače s identitou přiřazenou systémem povolené, například:
       
     ```powershell
-    $vmConfig = New-AzureRmVMConfig -VMName myVM -AssignIdentity "SystemAssigned" ...
+    $vmConfig = New-AzureRmVMConfig -VMName myVM -AssignIdentity:$SystemAssigned ...
     ```
 
-   - [Vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
-   - [Vytvořit virtuální počítač s Linuxem pomocí prostředí PowerShell](../../virtual-machines/linux/quick-create-powershell.md)
+   - [Vytvoření virtuálního počítače s Windows pomocí Powershellu](../../virtual-machines/windows/quick-create-powershell.md)
+   - [Vytvoření virtuálního počítače s Linuxem pomocí Powershellu](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. (Volitelné) Přidat pomocí rozšíření virtuálního počítače MSI `-Type` parametr na [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametr. `-Settings` Parametr určuje port je používán koncový bod tokenu OAuth pro získání tokenu:
+2. (Volitelné) Přidat direktivu using MSI virtuálního počítače rozšíření `-Type` parametru u [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu:
 
    ```powershell
    $settings = @{ "port" = 50342 }
    Set-AzureRmVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
    ```
     > [!NOTE]
-    > Tento krok je nepovinný, protože identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k načtení také tokeny.
+    > Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.
 
-### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Povolit systém přiřazené identita na existující virtuální počítač Azure
+### <a name="enable-system-assigned-identity-on-an-existing-azure-vm"></a>Povolit v existujícím virtuálním počítači Azure identitu přiřazenou systémem
 
-Pokud potřebujete povolit identitu systému přiřazené na existující virtuální počítač:
+Pokud je potřeba povolit identitu přiřazenou systémem na existující virtuální počítač:
 
-1. Přihlaste se k Azure pomocí `Login-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Dále zkontrolujte, zda váš účet patří do role, která vám dává oprávnění k zápisu do virtuálního počítače, jako je například "Přispěvatel virtuálních počítačů":
+1. Přihlaste se k Azure s využitím `Login-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači, jako je například "Přispěvatel virtuálních počítačů":
 
    ```powershell
    Login-AzureRmAccount
    ```
 
-2. Nejdřív načíst vlastnosti virtuálního počítače pomocí `Get-AzureRmVM` rutiny. Povolit systému přiřazené identity, použije `-AssignIdentity` přepínač na [aktualizace-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) rutiny:
+2. Nejdřív načtěte pomocí vlastnosti virtuálního počítače `Get-AzureRmVM` rutiny. Chcete-li povolit identitu přiřazenou systémem, použijte `-AssignIdentity` přepnout [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) rutiny:
 
    ```powershell
    $vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM
-   Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity "SystemAssigned"
+   Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm -AssignIdentity:$SystemAssigned
    ```
 
-3. (Volitelné) Přidat pomocí rozšíření virtuálního počítače MSI `-Type` parametr na [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametr. `-Settings` Parametr určuje port je používán koncový bod tokenu OAuth pro získání tokenu. Nezapomeňte zadat správné `-Location` parametr odpovídající umístění existující virtuální počítač:
+3. (Volitelné) Přidat direktivu using MSI virtuálního počítače rozšíření `-Type` parametru u [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu. Nezapomeňte zadat správné `-Location` parametr odpovídající umístění existujícího virtuálního počítače:
 
    ```powershell
    $settings = @{ "port" = 50342 }
    Set-AzureRmVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
    ```
     > [!NOTE]
-    > Tento krok je nepovinný, protože identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k načtení také tokeny.
+    > Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.
 
-## <a name="disable-the-system-assigned-identity-from-an-azure-vm"></a>Zakázat systému přiřazené identity z virtuálního počítače Azure
+## <a name="disable-the-system-assigned-identity-from-an-azure-vm"></a>Zakázat systému identity přiřazené z virtuálního počítače Azure
 
 > [!NOTE]
->  Zakázání spravované identita služby z virtuálního počítače není aktuálně podporováno. Do té doby můžete přepnout mezi použitím přiřazené systému a přiřadit identity uživatelů.
+>  Zakáže identita spravované služby z virtuálního počítače není aktuálně podporováno. Do té doby můžete přepínat mezi použitím systém přiřadil a přiřazené identity uživatele.
 
-Pokud máte virtuální počítač, který už nepotřebuje systému přiřazené identity, ale stále potřebuje přiřazeného identity uživatele, použijte následující rutinu:
+Pokud máte virtuální počítač se už nepotřebuje identitu přiřazenou systémem, ale stále potřebuje identity přiřazené uživateli, použijte následující rutinu:
 
-1. Přihlaste se k Azure pomocí `Login-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Dále zkontrolujte, zda váš účet patří do role, která vám dává oprávnění k zápisu do virtuálního počítače, jako je například "Přispěvatel virtuálních počítačů":
+1. Přihlaste se k Azure s využitím `Login-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači, jako je například "Přispěvatel virtuálních počítačů":
 
    ```powershell
    Login-AzureRmAccount
@@ -106,79 +107,79 @@ Pokud máte virtuální počítač, který už nepotřebuje systému přiřazen�
     ```powershell       
     Update-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm -IdentityType "UserAssigned"
     ```
-Odebrat rozšíření virtuálního počítače MSI, uživatel-název přepínače s [odebrat AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) rutiny zadat stejný název, který jste použili při přidání rozšíření:
+Odebrat rozšíření MSI virtuálního počítače, uživatele – název přepínače s [Remove-AzureRmVMExtension](/powershell/module/azurerm.compute/remove-azurermvmextension) rutiny, určení stejným názvem, který při přidání rozšíření:
 
    ```powershell
    Remove-AzureRmVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
    ```
 
-## <a name="user-assigned-identity"></a>Uživatel s přiřazenou identity
+## <a name="user-assigned-identity"></a>Identity přiřazené uživateli
 
-V této části se dozvíte, jak přidávat a odebírat uživatele přiřazené identity z virtuálního počítače pomocí Azure PowerShell.
+V této části se dozvíte, jak přidávat a odebírat uživatele identity přiřazené z virtuálního počítače pomocí Azure Powershellu.
 
-### <a name="assign-a-user-assigned-identity-to-a-vm-during-creation"></a>Přiřazení uživatele přiřazené identity virtuálního počítače během vytváření
+### <a name="assign-a-user-assigned-identity-to-a-vm-during-creation"></a>Přiřazování identity přiřazené k virtuálnímu počítači při vytváření uživateli
 
-Přiřazení uživatele přiřadit identity na virtuální počítač Azure při vytváření virtuálního počítače:
+Postup přiřazení identity přiřazené uživateli na Virtuálním počítači Azure při vytváření virtuálního počítače:
 
-1. Podívejte se na jeden z následujících Quickstarts virtuálních počítačů Azure, dokončení jenom nezbytné oddíly ("Přihlášení k Azure", "Vytvořte skupinu prostředků", "Vytvoření sítě skupiny", "Vytvoření virtuálního počítače"). 
+1. Odkazovat na jeden z následujících startu virtuálního počítače Azure, dokončení jenom nezbytné oddíly ("Přihlášení k Azure", "Vytvoření skupiny prostředků", "Vytvoření sítě skupiny", "Vytvoření virtuálního počítače"). 
   
-    Když získáte do části "Vytvoření virtuálního počítače", provedete mírné změny [ `New-AzureRmVMConfig` ](/powershell/module/azurerm.compute/new-azurermvm) Syntaxe rutin. Přidat `-IdentityType UserAssigned` a `-IdentityID ` parametry zřídit virtuální počítač s identitou přiřazeného uživatele.  Nahraďte `<VM NAME>`,`<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, a `<MSI NAME>` vlastními hodnotami.  Příklad:
+    Když dostanete do části "Vytvoření virtuálního počítače", ujistěte se, drobné změny [ `New-AzureRmVMConfig` ](/powershell/module/azurerm.compute/new-azurermvm) Syntaxe rutin. Přidat `-IdentityType UserAssigned` a `-IdentityID ` parametry pro zřízení virtuálního počítače s využitím identity přiřazené uživateli.  Nahraďte `<VM NAME>`,`<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, a `<MSI NAME>` vlastními hodnotami.  Příklad:
     
     ```powershell 
     $vmConfig = New-AzureRmVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<MSI NAME>..."
     ```
     
-    - [Vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell](../../virtual-machines/windows/quick-create-powershell.md)
-    - [Vytvořit virtuální počítač s Linuxem pomocí prostředí PowerShell](../../virtual-machines/linux/quick-create-powershell.md)
+    - [Vytvoření virtuálního počítače s Windows pomocí Powershellu](../../virtual-machines/windows/quick-create-powershell.md)
+    - [Vytvoření virtuálního počítače s Linuxem pomocí Powershellu](../../virtual-machines/linux/quick-create-powershell.md)
 
-2. (Volitelné) Přidat pomocí rozšíření virtuálního počítače MSI `-Type` parametr na [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametr. `-Settings` Parametr určuje port je používán koncový bod tokenu OAuth pro získání tokenu. Nezapomeňte zadat správné `-Location` parametr odpovídající umístění existující virtuální počítač:
+2. (Volitelné) Přidat direktivu using MSI virtuálního počítače rozšíření `-Type` parametru u [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu. Nezapomeňte zadat správné `-Location` parametr odpovídající umístění existujícího virtuálního počítače:
       > [!NOTE]
-    > Tento krok je nepovinný, protože identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k načtení také tokeny.
+    > Tento krok je volitelný, i identitu koncového bodu Azure Instance Metadata služby (IMDS), můžete použít k získání tokenů také.
 
    ```powershell
    $settings = @{ "port" = 50342 }
    Set-AzureRmVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
    ```
 
-### <a name="assign-a-user-identity-to-an-existing-azure-vm"></a>Identita uživatele přiřadit existující virtuální počítač Azure
+### <a name="assign-a-user-identity-to-an-existing-azure-vm"></a>Přiřaďte identitu uživatele do existujícího virtuálního počítače Azure
 
-Přiřazení uživatele přiřadit k existující virtuální počítač Azure identity:
+K přiřazování identity přiřazené do stávajícího virtuálního počítače Azure uživateli:
 
-1. Přihlaste se k Azure pomocí `Connect-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Dále zkontrolujte, zda váš účet patří do role, která vám dává oprávnění k zápisu do virtuálního počítače, jako je například "Přispěvatel virtuálních počítačů":
+1. Přihlaste se k Azure s využitím `Connect-AzureRmAccount`. Použijte účet, který je přidružený k předplatnému Azure, která obsahuje virtuální počítač. Také ujistěte se, že váš účet patří do role, která poskytuje oprávnění k zápisu na virtuálním počítači, jako je například "Přispěvatel virtuálních počítačů":
 
    ```powershell
    Connect-AzureRmAccount
    ```
 
-2. Vytvoření uživatele přiřazená pomocí identity [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/new-azurermuserassignedidentity) rutiny.  Poznámka: `Id` ve výstupu vzhledem k tomu, že budete potřebovat v dalším kroku.
+2. Vytvoření uživatele přiřadit pomocí identity [New-AzureRmUserAssignedIdentity](/powershell/module/azurerm.managedserviceidentity/new-azurermuserassignedidentity) rutiny.  Poznámka: `Id` ve výstupu vzhledem k tomu, že ho budete potřebovat v dalším kroku.
 
     > [!IMPORTANT]
-    > Vytvoření identity uživatele přiřazené podporuje pouze alfanumerické znaky a spojovníky (0 – 9 nebo a-z nebo A-Z nebo -) znaků. Kromě toho název by měl být omezený na 24 znaků pro přiřazení virtuálního počítače nebo VMSS správně fungovat. Vraťte se zpět pro aktualizace. Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
+    > Vytvoření uživatelsky přiřazených identit podporuje pouze alfanumerické znaky a spojovník (0-9 nebo a-z nebo A-Z nebo -) znaků. Kromě toho název by měl být omezený na 24 znaků pro přiřazení k VM/VMSS správně fungovat. Sledujte novinky. Další informace najdete v části [nejčastější dotazy a známé problémy](known-issues.md)
 
 
   ```powershell
   New-AzureRmUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
   ```
-3. Načíst vlastnosti virtuálního počítače pomocí `Get-AzureRmVM` rutiny. Chcete-li přiřadit identitu uživatele přiřazené k virtuálnímu počítači Azure, použijte `-IdentityType` a `-IdentityID` přepínač na [aktualizace-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) rutiny.  Hodnota`-IdentityId` parametr je `Id` jste si poznamenali v předchozím kroku.  Nahraďte `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami.
+3. Načíst vlastnosti virtuálního počítače pomocí `Get-AzureRmVM` rutiny. Identity přiřazené uživateli přiřadit virtuálnímu počítači Azure, použijte `-IdentityType` a `-IdentityID` zapnout [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) rutiny.  Hodnota`-IdentityId` parametr je `Id` jste si poznamenali v předchozím kroku.  Nahraďte `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>`, a `<USER ASSIGNED IDENTITY NAME>` vlastními hodnotami.
 
    ```powershell
    $vm = Get-AzureRmVM -ResourceGroupName <RESOURCE GROUP> -Name <VM NAME>
    Update-AzureRmVM -ResourceGroupName <RESOURCE GROUP> -VM $vm -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>"
    ```
 
-4. Přidat pomocí rozšíření virtuálního počítače MSI `-Type` parametr na [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametr. `-Settings` Parametr určuje port je používán koncový bod tokenu OAuth pro získání tokenu. Zadejte správný `-Location` parametr odpovídající umístění existující virtuální počítač.
+4. Přidat direktivu using MSI virtuálního počítače rozšíření `-Type` parametru u [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension) rutiny. Můžete předat "ManagedIdentityExtensionForWindows" nebo "ManagedIdentityExtensionForLinux", v závislosti na typu virtuálního počítače a pojmenujte ho pomocí `-Name` parametru. `-Settings` Parametr určuje port používaný programem koncový bod tokenu OAuth pro získání tokenu. Zadejte správný `-Location` parametr odpovídající umístění existujícího virtuálního počítače.
 
    ```powershell
    $settings = @{ "port" = 50342 }
    Set-AzureRmVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
    ```
 
-### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Odebrání uživatele přiřazené spravované identity z virtuálního počítače Azure
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Odebrání uživatele přiřazeny spravovaná identita z virtuálního počítače Azure
 
 > [!NOTE]
->  Odebrání všech identit uživatelů přiřazené z virtuálního počítače není aktuálně podporováno, pokud používáte systém přiřazené identity. Vraťte se zpět pro aktualizace.
+>  Odebrání všech uživatelsky přiřazených identit z virtuálního počítače se aktuálně nepodporuje, pokud máte identitu přiřazenou systémem. Sledujte novinky.
 
-Pokud virtuální počítač má více identit přiřazeného uživatele, můžete odebrat všechny uzly s výjimkou naposledy pomocí následujících příkazů. Nezapomeňte nahradit `<RESOURCE GROUP>` a `<VM NAME>` hodnoty parametrů s vlastními hodnotami. `<MSI NAME>` Je identita uživatele přiřazené název vlastnosti, která by měla zůstat ve virtuálním počítači. Tyto informace můžete nalezen v části Identita virtuální počítač pomocí `az vm show`:
+Pokud váš virtuální počítač má více uživatelsky přiřazených identit, můžete odebrat všechny kromě poslední z nich pomocí následujících příkazů. Nezapomeňte nahradit `<RESOURCE GROUP>` a `<VM NAME>` parametr hodnoty vlastními hodnotami. `<MSI NAME>` Je název vlastnosti identity přiřazené uživateli, která by měla zůstat na virtuálním počítači. Tyto informace můžete zobrazit tak v části Identita virtuálního počítače pomocí `az vm show`:
 
 ```powershell
 $vm = Get-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm
@@ -186,7 +187,7 @@ $vm.Identity.IdentityIds = "<MSI NAME>"
 Update-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm -VirtualMachine $vm
 ```
 
-Pokud virtuální počítač má systém přiřadit i přiřazeného identity uživatele, můžete odebrat všechny uživatelské přiřadila přepínání identity používat pouze systém přiřazen. Použijte následující příkaz:
+Pokud váš virtuální počítač má přiřazenou systémem a identity přiřazené uživateli, můžete odebrat všechny uživatele identit přiřazených přepnutím používat pouze přiřazenou systémem. Použijte následující příkaz:
 
 ```powershell 
 $vm = Get-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm
@@ -196,8 +197,8 @@ Update-AzureRmVm -ResourceGroupName myResourceGroup -Name myVm -VirtualMachine $
 
 ## <a name="related-content"></a>Související obsah
 
-- [Přehled spravované identita služby](overview.md)
-- Úplné vytvoření virtuálního počítače Azure Quickstarts najdete v části:
+- [Přehled spravované Identity služby](overview.md)
+- Úplné vytvoření virtuálního počítače Azure rychlých startů naleznete v tématu:
   
-  - [Vytvoření virtuálního počítače s Windows pomocí prostředí PowerShell](../../virtual-machines/windows/quick-create-powershell.md) 
-  - [Vytvoření virtuální počítač s Linuxem pomocí prostředí PowerShell](../../virtual-machines/linux/quick-create-powershell.md) 
+  - [Vytvoření virtuálního počítače s Windows pomocí Powershellu](../../virtual-machines/windows/quick-create-powershell.md) 
+  - [Vytvoření virtuálního počítače s Linuxem pomocí Powershellu](../../virtual-machines/linux/quick-create-powershell.md) 

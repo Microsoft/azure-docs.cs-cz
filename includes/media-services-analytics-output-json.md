@@ -1,28 +1,28 @@
-Úloha vytvoří výstupní soubor JSON, který obsahuje metadata o zjištěných a sledovaných strany. Metadat obsahuje souřadnice označující umístění řezy, stejně jako číslo ID vzhled určující sledování to jednotlivých. Čísla ID vzhled jsou náchylné k resetování okolností v případě, že dojde ke ztrátě nebo překryté v rámečku, čelní tučné výsledkem některé jednotlivce získávání přiřazeno více ID.
+Úloha vytvoří výstupní soubor JSON, který obsahuje metadata o zjištěných a sleduje tváře. Metadata obsahují souřadnice označující umístění tváří, jakož i face ID číslo označující sledování tohoto jednotlivce. Face ID čísla jsou náchylné k obnovit okolností, když dojde ke ztrátě nebo překrývajících se v rámci, přední rozpoznávání tváře výsledkem několika jednotlivcům získávání přiřadit víc ID.
 
-Výstup JSON obsahuje následující prvky:
+Ve výstupu JSON obsahuje následující prvky:
 
-### <a name="root-json-elements"></a>Elementy kořenové JSON
+### <a name="root-json-elements"></a>JSON kořenové prvky
 
 | Element | Popis |
 | --- | --- |
-| verze |Vztahuje se na verzi rozhraní API Video. |
-| Časová osa |"Rysky" za sekundu videa. |
-| Posun |Toto je časové posunutí pro časová razítka. Ve verzi 1.0 rozhraní API, Video bude vždy 0. V budoucích scénáře, které podporujeme, tato hodnota může změnit. |
-| Šířka, vysoký |Šířka a vysoký snímku videa výstup v pixelech.|
-| kmitočet snímků |Počet snímků za sekundu videa. |
-| [fragmenty](#fragments-json-elements) |Metadata se blokové až do různých segmentů názvem fragmenty. Každý fragment obsahuje počáteční, doba trvání, číslo intervalu a událostí. |
+| verze |To se vztahuje na verzi rozhraní API pro Video. |
+| Časová osa |"Značky" za sekundu videa. |
+| Posun |Toto je posunutí čas pro časové razítko. Ve verzi 1.0 rozhraní API pro Video bude vždy 0. V budoucnu scénáře, které podporujeme, tato hodnota se může změnit. |
+| Šířka, vysoký |Šířka a vysoký snímek výstup videa, v pixelech.|
+| snímkovou |Snímků za sekundu videa. |
+| [fragmenty](#fragments-json-elements) |Metadata je rozdělený do bloků dat až do různých segmentů zvaných fragmenty. Každý fragment obsahuje spuštění, dobu trvání, číslo intervalu a události. |
 
-### <a name="fragments-json-elements"></a>Fragmenty elementy JSON
+### <a name="fragments-json-elements"></a>Elementy fragmentů JSON
 
 |Element|Popis|
 |---|---|
-| start |Čas zahájení první událost v "rysky." |
-| Doba trvání |Délka fragment v "rysky." |
-| index | (Platí pouze pro Azure Media Redactor) definuje index rámečku aktuální událost. |
-| interval |Interval každé události položky v rámci fragment v "rysky." |
-| stránka events |Každá událost obsahuje řezy zjištěn a sledují v rámci této doby trvání. Je pole události. Vnější pole představuje jeden časový interval. Vnitřní pole se skládá z 0 nebo více událostí, které bylo provedeno v tomto bodě v čase. Prázdný závorky [] znamená, že nebyly zjištěny žádné řezy. |
-| id |ID řez, který je sledován. Toto číslo může nechtěně změnit, pokud se stane nezjištěné řez. Daný individuální by mělo mít stejné ID v rámci celkového video, ale to nemůže zaručit z důvodu omezení v algoritmus detekce (NF pásmová atd.). |
-| x, y |Vlevo nahoře X a Y souřadnice ohraničujícího pole Normalizovaný rozsahu 0,0 až 1,0 písmo. <br/>-X a Y souřadnice jsou relativní na šířku vždycky, takže pokud máte na výšku video (nebo obráceným v případě iOS), budete muset transponuje souřadnice odpovídajícím způsobem. |
-| šířky, výšky |Šířka a výška tučné ohraničujícího pole Normalizovaný rozsahu od 0,0 do 1,0. |
-| facesDetected |To se nachází na konci výsledky JSON a shrnuje počet řezy, které algoritmus zjistil při přehrávání videa. Protože ID můžete nechtěně obnovit, pokud se stane nezjištěné řez (např. tučné přejde mimo obrazovku, vypadá rychle aplikace), toto číslo nemusí vždy rovná true počet řezy ve videu. |
+| start |Čas zahájení první událost v "impulzech." |
+| doba trvání |Délka fragment v "impulzech." |
+| index | (Platí jenom pro Azure Media Redactor) definuje index snímku aktuálního události. |
+| interval |Interval každý záznam událostí v rámci fragment v "impulzech." |
+| stránka events |Každá událost obsahuje tváří zjištěna a sledovány v rámci této dobu trvání. Je to pole událostí. Vnější pole představuje jeden časový interval. Vnitřní pole se skládá z 0 nebo více událostí, ke kterým došlo od tohoto okamžiku v čase. Prázdné závorky [] znamená, že nebyly zjištěny žádné tváře. |
+| id |ID tváře, která je sledována. Toto číslo může tak nechtěně změnit, pokud stane nezjištěné tváře. Dané osoby by mělo mít stejné ID v rámci celkového videa, ale to nemůže být zaručena z důvodu omezení v algoritmu detekce (uzavření atd.). |
+| x, y |Vlevo nahoře X a Y souřadnice rozpoznávání tváře ohraničujícího rámečku v normalizovaných škálování od 0,0 do 1,0. <br/>-X a Y souřadnice jsou relativní šířku vždycky, takže pokud máte na výšku videa (nebo vzhůru nohama, v případě iOS), budete muset transponuje souřadnice odpovídajícím způsobem. |
+| Šířka, výška |Šířku a výšku plochy ohraničujícího rámečku v normalizovaných škálování od 0,0 do 1,0. |
+| facesDetected |Tím se nachází na konci výsledky JSON a shrnuje počet tváří, které algoritmus zjištěného videa. Protože ID můžou neúmyslně resetovat, pokud tváře stane nezjištěné (například typ písma vypnul obrazovky, vyhledá okamžitě), toto číslo nemusí vždy rovná true počet tváří na videu. |
