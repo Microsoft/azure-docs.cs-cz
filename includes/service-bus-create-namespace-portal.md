@@ -5,15 +5,15 @@ services: service-bus-messaging
 author: sethmanheim
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 06/29/2018
+ms.date: 07/03/2018
 ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 503a1db726483709c351ac9861c5d54913de55d3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: a110998505ed49c36e1ec722b1dfbf0969def060
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37132003"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449554"
 ---
 Pokud chcete začít používat entity zasílání zpráv služby Service Bus v Azure, musíte nejprve vytvořit obor názvů s jedinečným názvem v rámci Azure. Obor názvů poskytuje kontejner oboru pro adresování prostředků služby Service Bus v rámci vaší aplikace.
 
@@ -22,7 +22,7 @@ Vytvoření oboru názvů:
 1. Přihlaste se na web [Azure Portal][Azure portal].
 2. V levém navigačním podokně portálu klikněte na **+ Vytvořit prostředek**, potom klikněte na **Integrace** a pak na **Service Bus**.
 3. V dialogovém okně **Vytvořit obor názvů** zadejte název oboru názvů. Systém okamžitě kontroluje, jestli je název dostupný.
-4. Po kontrole, že je název oborů názvů k dispozici, zvolte cenovou úroveň (Basic, Standard nebo Premium).
+4. Po kontrole, že je název oborů názvů k dispozici, zvolte cenovou úroveň (Basic, Standard nebo Premium). Pokud chcete používat [témata a předplatná](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions), nezapomeňte vybrat úroveň Standard nebo Premium. Témata/předplatná se v cenové úrovni Basic nepodporují.
 5. V poli **Předplatné** zvolte předplatné Azure, ve které chcete vytvořit obor názvů.
 6. V poli **Skupina prostředků** zvolte existující skupinu prostředků, ve které bude obor názvů fungovat, nebo vytvořte novou.      
 7. V poli **Umístění**, vyberte zemi nebo oblast, ve které by měl být oboru názvů hostován.
