@@ -1,6 +1,6 @@
 ---
-title: Vytvoření Azure webových a pracovních rolí pro jazyk PHP
-description: Pokyny pro vytváření webových a pracovních rolí PHP v cloudové službě Azure a konfigurace modulu PHP runtime.
+title: Vytvoření webové a pracovní role Azure pro jazyk PHP
+description: Průvodce můžete vytvářet webové a pracovní role PHP ve službě Azure cloud service a konfigurace modulu runtime PHP.
 services: ''
 documentationcenter: php
 author: msangapu
@@ -13,35 +13,40 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: b9f350870dde71666d269aaae9cb7c14aaac5aad
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 9d4be08e732127d6da12a9e0367383347f53c796
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34608895"
 ---
-# <a name="how-to-create-php-web-and-worker-roles"></a>Postup vytvoření PHP webových a pracovních rolí
+# <a name="create-php-web-and-worker-roles"></a>Vytvářet webové a pracovní role PHP
+
 ## <a name="overview"></a>Přehled
-Tento průvodce vám ukáže, jak vytvořit role web nebo worker PHP ve vývojovém prostředí Windows, vybrat konkrétní verzi PHP z "integrovaných" verzí, které jsou k dispozici, měnit nastavení PHP, povolit rozšíření a nakonec nasazení do Azure. Také popisuje, jak nakonfigurujete roli web nebo worker použít modul runtime PHP (s vlastní konfigurace a rozšíření), který zadáte.
 
-## <a name="what-are-php-web-and-worker-roles"></a>Co jsou webové a pracovní role PHP?
-Azure nabízí tři výpočetní modely pro provozování aplikací: Azure App Service, virtuální počítače Azure a cloudových služeb Azure. Všechny tři modely podporují PHP. Cloudové služby, včetně webových a pracovních rolí, poskytuje *platforma jako služba (PaaS)*. Webové role v rámci cloudové služby poskytuje vyhrazený webový server Internetové informační služby (IIS) na hostiteli front-endové webové aplikace. Asynchronní, dlouhotrvající nebo trvalé úlohy, které jsou nezávislé na vstupu nebo interakci uživatelů můžete spustit roli pracovního procesu.
+Tato příručka obsahuje pokyny k vytvoření webové nebo pracovní role PHP v prostředí pro vývoj Windows, vybrat konkrétní verzi PHP z "integrované" verze k dispozici, změňte konfiguraci PHP, povolit rozšíření a nakonec nasadit do Azure. Také popisuje, jak nakonfigurovat webové nebo pracovní role, použít modul runtime PHP (s vlastní konfigurace a rozšíření), který zadáte.
 
-Další informace o těchto možnostech najdete v tématu [výpočetní hostování možnosti poskytované Azure](cloud-services/cloud-services-choose-me.md).
+Azure nabízí tři výpočetní modely spouštění aplikací: Azure App Service, Azure Virtual Machines a Azure Cloud Services. Všechny tři modely podporují PHP. Cloud Services, které zahrnuje webové a pracovní role, poskytuje *platforma jako služba (PaaS)*. Webová role v rámci cloudové služby poskytuje vyhrazený webový server Internetové informační služby (IIS) pro hostování front-endových webových aplikací. Role pracovního procesu dokážou spouštět asynchronní, dlouhotrvající nebo trvalé úlohy, které jsou nezávislé na vstupu nebo interakci uživatelů.
+
+Další informace o těchto možnostech najdete v tématu [poskytovaný platformou Azure možností hostování výpočetních řešení](cloud-services/cloud-services-choose-me.md).
 
 ## <a name="download-the-azure-sdk-for-php"></a>Stažení sady Azure SDK pro PHP
-[Azure SDK pro jazyk PHP] se skládá z několika součástí. Tento článek se bude používat dvě z nich: Azure PowerShell a Azure emulátorů. Tyto dvě součásti lze nainstalovat pomocí instalačního programu webové platformy Microsoft. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
 
-## <a name="create-a-cloud-services-project"></a>Vytvoření projektu cloudové služby
-Prvním krokem při vytvoření role web nebo worker PHP je vytvoření projektu Azure Service. projekt služby Azure slouží jako kontejner logické pro webové a pracovní role, která obsahuje projektu [služby definice (.csdef)] a [konfigurace služby (.cscfg)] soubory.
+[Sady Azure SDK pro jazyk PHP](php-download-sdk.md) se skládá z několika součástí. Tento článek bude používat dva z nich: prostředí Azure PowerShell a emulátory Azure. Tyto dvě složky lze nainstalovat pomocí instalačního programu webové platformy. Další informace najdete v tématu [Instalace a konfigurace Azure PowerShellu](/powershell/azure/overview).
 
-Pokud chcete vytvořit nový projekt služeb Azure, spusťte prostředí Azure PowerShell jako správce a spusťte následující příkaz:
+## <a name="create-a-cloud-services-project"></a>Vytvořte projekt cloudové služby
+
+Prvním krokem při vytváření webové nebo pracovní role PHP je vytvoření projektu služby Azure. Projekt Azure Service slouží jako logický kontejner pro webové a pracovní role, a obsahuje projektu [definičních (.csdef) služby] a [konfigurace služby (.cscfg)] soubory.
+
+Chcete-li vytvořit nový projekt služby Azure, spustit prostředí Azure PowerShell jako správce a spusťte následující příkaz:
 
     PS C:\>New-AzureServiceProject myProject
 
-Tento příkaz vytvoří nový adresář (`myProject`) do kterého můžete přidat webové a pracovní role.
+Tento příkaz vytvoří nový adresář (`myProject`) ke kterému můžete přidat webové a pracovní role.
 
-## <a name="add-php-web-or-worker-roles"></a>Přidání rolí web nebo worker PHP
-Pokud chcete přidat do projektu webové role PHP, spusťte následující příkaz v kořenovém adresáři projektu:
+## <a name="add-php-web-or-worker-roles"></a>Přidání webové nebo pracovní role PHP
+
+Přidat do projektu webové role PHP, spusťte následující příkaz v kořenovém adresáři projektu:
 
     PS C:\myProject> Add-AzurePHPWebRole roleName
 
@@ -50,16 +55,17 @@ Pro roli pracovního procesu použijte tento příkaz:
     PS C:\myProject> Add-AzurePHPWorkerRole roleName
 
 > [!NOTE]
-> `roleName` Parametr je nepovinný. Je-li vynechán, budou automaticky generovány název role. Bude vytvořen první webovou roli `WebRole1`, druhý bude `WebRole2`a tak dále. První role pracovního procesu vytvoření bude `WorkerRole1`, druhý bude `WorkerRole2`a tak dále.
+> `roleName` Parametr je nepovinný. Pokud je vynechán, budou automaticky generovány název role. Vytvoření první webové role bude `WebRole1`, druhá bude `WebRole2`, a tak dále. První role pracovního procesu vytvoří bude `WorkerRole1`, druhá bude `WorkerRole2`, a tak dále.
 >
 >
 
-## <a name="specify-the-built-in-php-version"></a>Zadejte předdefinované verzi PHP
-Když přidáte roli web nebo worker PHP do projektu, projektu konfigurační soubory jsou upravit tak, aby PHP bude nainstalována na každou instanci vaší aplikace web nebo pracovní proces, při nasazení. Pokud chcete zobrazit verzi PHP, která bude nainstalována ve výchozím nastavení, spusťte následující příkaz:
+## <a name="specify-the-built-in-php-version"></a>Zadejte integrované verze PHP
+
+Když přidáte do projektu webové nebo pracovní role PHP, konfigurační soubory projektu jsou upraveny, aby PHP se nainstaluje na každý instance webové nebo pracovní aplikace při jejím nasazení. Pokud chcete zobrazit verzi PHP, který se nainstaluje ve výchozím nastavení, spusťte následující příkaz:
 
     PS C:\myProject> Get-AzureServiceProjectRoleRuntime
 
-Výstup z výše uvedeného příkazu bude vypadat podobně jako co jsou uvedeny níže. V tomto příkladu `IsDefault` je příznak nastaven na `true` pro jazyk PHP 5.3.17, která udává, zda je výchozí verze PHP nainstalován.
+Výstup z výše uvedeného příkazu bude vypadat podobně jako na co je uveden níže. V tomto příkladu `IsDefault` příznak je nastaven na `true` pro jazyk PHP 5.3.17, označující, že bude výchozí verzi PHP nainstalován.
 
 ```
 Runtime Version     PackageUri                      IsDefault
@@ -73,44 +79,47 @@ PHP 5.3.17          http://nodertncu.blob.core...   True
 PHP 5.4.0           http://nodertncu.blob.core...   False
 ```
 
-Modul runtime PHP můžete nastavit na verze PHP, které jsou uvedené. Chcete-li například nastavit verzi PHP (pro roli s názvem `roleName`) k 5.4.0, použijte následující příkaz:
+Verze modulu runtime PHP můžete nastavit na některou z verzí jazyka PHP, které jsou uvedeny. Chcete-li například nastavit verzi PHP (pro roli s názvem `roleName`) k 5.4.0, použijte následující příkaz:
 
     PS C:\myProject> Set-AzureServiceProjectRole roleName php 5.4.0
 
 > [!NOTE]
-> K dispozici verze PHP může v budoucnu změnit.
+> Dostupné verze PHP může v budoucnu změnit.
 >
 >
 
-## <a name="customize-the-built-in-php-runtime"></a>Přizpůsobení předdefinované modulu PHP runtime
-Máte plnou kontrolu nad konfigurace modulu PHP runtime, který je nainstalován, pokud budete postupovat podle kroků výše, včetně změny `php.ini` nastavení a povolení rozšíření.
+## <a name="customize-the-built-in-php-runtime"></a>Přizpůsobení předdefinovaných modulu runtime PHP
 
-Chcete-li přizpůsobit předdefinované runtime PHP, postupujte takto:
+Získejte úplnou kontrolu nad konfigurací modulu PHP runtime, který je nainstalován, pokud budete postupovat podle výše uvedené kroky, včetně změny `php.ini` nastavení a povolení rozšíření.
 
-1. Přidejte novou složku, s názvem `php`do `bin` adresář webové role. Pro roli pracovního procesu přidejte ji do role kořenový adresář.
-2. V `php` složce vytvořte jinou složku s názvem `ext`. Uveďte všechny `.dll` soubory rozšíření (například `php_mongo.dll`), které chcete povolit v této složce.
-3. Přidat `php.ini` do souboru `php` složky. Povolit všechny vlastní rozšíření a nastavte všechny direktivy PHP v tomto souboru. Například, pokud chcete zapnout `display_errors` na a povolte `php_mongo.dll` rozšíření, obsah vaší `php.ini` soubor vypadat takto:
+Přizpůsobení předdefinovaných modulu runtime PHP, postupujte podle těchto kroků:
+
+1. Přidat novou složku s názvem `php`, možnosti `bin` adresáři webové role. Pro roli pracovního procesu přidejte ho do kořenového adresáře této role.
+2. V `php` složku, vytvořte jinou složku s názvem `ext`. Vložit některé `.dll` soubory rozšíření (například `php_mongo.dll`), který chcete povolit v této složce.
+3. Přidat `php.ini` do souboru `php` složky. Povolte všechny vlastní rozšíření a nastavte jakékoli direktivy PHP v tomto souboru. Například, pokud chcete zapnout `display_errors` na a povolte `php_mongo.dll` rozšíření, obsah vaší `php.ini` soubor by měl vypadat takto:
 
         display_errors=On
         extension=php_mongo.dll
 
 > [!NOTE]
-> Všechna nastavení, která v nenastavíte explicitně `php.ini` souboru zadejte bude automaticky nastavit výchozí hodnoty. Ale mějte, můžete přidat úplná `php.ini` souboru.
+> Všechna nastavení, která v nenastavíte explicitně `php.ini` souboru zadejte bude automaticky nastavit na výchozí hodnoty. Však mít na paměti, že můžete přidat kompletní `php.ini` souboru.
 >
 >
 
-## <a name="use-your-own-php-runtime"></a>Použití vlastního modulu PHP runtime
-V některých případech, namísto výběru předdefinované modulu PHP runtime a nakonfigurovat jej jak bylo popsáno výše můžete zadat vlastní modul runtime PHP. Například můžete použít stejné modulu PHP runtime v roli web nebo pracovní proces, který používáte ve vašem vývojovém prostředí. To usnadňuje Ujistěte se, že aplikace nedojde ke změně chování v provozním prostředí.
+## <a name="use-your-own-php-runtime"></a>Použít vlastní PHP runtime
 
-### <a name="configure-a-web-role-to-use-your-own-php-runtime"></a>Konfigurace webové roli, kterou chcete použít vlastní modulu PHP runtime
-Pokud chcete konfigurovat webovou roli na-li použít modul runtime PHP, který zadáte, postupujte takto:
+V některých případech se místo výběru předdefinovaných PHP runtime a konfigurace ji jak je popsáno výše můžete chtít poskytnout vlastní PHP runtime. Například můžete použít stejné modulu runtime PHP ve webové nebo pracovní role, který používáte ve svém vývojovém prostředí. To umožňuje jednodušší zajistit, že aplikace nedojde ke změně chování v produkčním prostředí.
 
-1. Vytvoření projektu Azure Service a přidejte webovou roli PHP, jak je popsáno dříve v tomto tématu.
-2. Vytvoření `php` složky v `bin` složka, která je v kořenovém adresáři webovou roli a potom přidat do vašeho modulu PHP runtime (všechny binární soubory, konfiguračních souborů, podsložky atd.) `php` složky.
-3. (VOLITELNÉ) Pokud vaše modulu PHP runtime používá [Drivers společnosti Microsoft pro jazyk PHP pro SQL Server][sqlsrv drivers], budete muset nakonfigurovat vaši webovou roli nainstalovat [SQL Server Native Client 2012] [ sql native client] když je zřízený. Chcete-li to provést, přidejte [sqlncli.msi x64 instalační program] k `bin` složku v kořenovém adresáři webovou roli. Spuštění skriptu popsané v dalším kroku bude bezobslužně spusťte instalační program při zřízení roli. Pokud vaše modulu PHP runtime nepoužívá Drivers společnosti Microsoft pro jazyk PHP pro SQL Server, můžete odebrat ze skriptu vidět v dalším kroku následující řádek:
+### <a name="configure-a-web-role-to-use-your-own-php-runtime"></a>Konfigurace webové role, použít vlastní PHP runtime
+
+Pokud chcete nakonfigurovat webové role pro použití PHP runtime, který zadáte, postupujte takto:
+
+1. Vytvoření projektu Azure Service a přidat webové role PHP, jak je popsáno výše v tomto tématu.
+2. Vytvoření `php` složky `bin` složku, která je v kořenovém adresáři webové role a potom přidat do vašeho prostředí runtime PHP (všechny binární soubory, konfiguračních souborů, podsložky atd.) `php` složky.
+3. (VOLITELNÉ) Pokud se používá PHP runtime [Drivers společnosti Microsoft pro jazyk PHP pro SQL Server][sqlsrv drivers], budete muset nakonfigurovat vaši webovou roli nainstalovat [SQL Server Native Client 2012] [ sql native client] při zřízení. Chcete-li to provést, přidejte [instalační program sqlncli.msi x64] k `bin` složku v kořenovém adresáři webové role. Spouštěcí skript je popsáno v dalším kroku se bez upozornění spusťte instalační program při zřízení roli. Pokud prostředí PHP runtime nepoužívá Drivers společnosti Microsoft pro jazyk PHP pro SQL Server, můžete odebrat následující řádek ze skriptu je znázorněno v následujícím kroku:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Úloha spuštění, který konfiguruje definovat [Internetové informační služby (IIS)] [ iis.net] používat vaše modulu PHP runtime pro zpracování požadavků pro `.php` stránky. Chcete-li to provést, otevřete `setup_web.cmd` souboru (v `bin` souboru webovou roli kořenový adresář) v textovém editoru a nahraďte jeho obsah následující skript:
+4. Definujte úlohy po spuštění, který konfiguruje [Internetové informační služby (IIS)] [ iis.net] zpracovávat požadavky pro použití PHP runtime `.php` stránky. Chcete-li to provést, otevřete `setup_web.cmd` souboru (v `bin` soubor kořenový adresář webové role) v textovém editoru a jeho obsah nahraďte následující skript:
 
     ```cmd
     @ECHO ON
@@ -129,23 +138,24 @@ Pokud chcete konfigurovat webovou roli na-li použít modul runtime PHP, který 
     %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/handlers /+"[name='PHP',path='*.php',verb='GET,HEAD,POST',modules='FastCgiModule',scriptProcessor='%PHP_FULL_PATH%',resourceType='Either',requireAccess='Script']" /commit:apphost
     %WINDIR%\system32\inetsrv\appcmd.exe set config -section:system.webServer/fastCgi /"[fullPath='%PHP_FULL_PATH%'].queueLength:50000"
     ```
-5. Přidání souborů aplikací na vaši webovou roli kořenový adresář. To bude webový server kořenový adresář.
-6. Publikování aplikace, jak je popsáno v [publikování aplikace](#publish-your-application) části níže.
+5. Přidáte soubory aplikace do kořenového adresáře webové role. Bude jím kořenový adresář webového serveru.
+6. Publikování aplikace, jak je popsáno v [aplikace můžete publikovat](#publish-your-application) níže v části.
 
 > [!NOTE]
-> `download.ps1` Skriptu (v `bin` složky webovou roli kořenový adresář) můžete odstranit po podle kroků popsaných výše pro použití vlastního runtime PHP.
+> `download.ps1` Skriptu (v `bin` složky kořenový adresář webové role) je možné odstranit po postupujte podle kroků popsaných výše pro použití vlastní PHP runtime.
 >
 >
 
-### <a name="configure-a-worker-role-to-use-your-own-php-runtime"></a>Konfigurace role pracovních procesů na využití vlastního modulu runtime PHP
-Pokud chcete konfigurovat role pracovních procesů na využití modulu runtime PHP, které poskytujete, postupujte takto:
+### <a name="configure-a-worker-role-to-use-your-own-php-runtime"></a>Konfigurovat roli pracovního procesu, který chcete použít vlastní PHP runtime
 
-1. Vytvoření projektu Azure Service a přidejte roli pracovního procesu PHP, jak je popsáno dříve v tomto tématu.
-2. Vytvoření `php` složku v kořenovém adresáři role pracovního procesu a pak přidejte do vašeho modulu PHP runtime (všechny binární soubory, konfiguračních souborů, podsložky atd.) `php` složky.
-3. (VOLITELNÉ) Pokud vaše modulu PHP runtime používá [Drivers společnosti Microsoft pro jazyk PHP pro SQL Server][sqlsrv drivers], budete muset konfigurovat své role pracovního procesu instalace [SQL Server Native Client 2012] [ sql native client] když je zřízený. Chcete-li to provést, přidejte [sqlncli.msi x64 instalační program] pro roli pracovního procesu kořenový adresář. Spuštění skriptu popsané v dalším kroku bude bezobslužně spusťte instalační program při zřízení roli. Pokud vaše modulu PHP runtime nepoužívá Drivers společnosti Microsoft pro jazyk PHP pro SQL Server, můžete odebrat ze skriptu vidět v dalším kroku následující řádek:
+Konfigurace role pracovního procesu použití PHP runtime, který zadáte, postupujte takto:
+
+1. Vytvoření projektu Azure Service a přidat roli pracovního procesu PHP, jak je popsáno výše v tomto tématu.
+2. Vytvoření `php` složku v kořenovém adresáři role pracovního procesu a potom přidat do vašeho prostředí runtime PHP (všechny binární soubory, konfiguračních souborů, podsložky atd.) `php` složky.
+3. (VOLITELNÉ) Pokud se používá PHP runtime [Drivers společnosti Microsoft pro jazyk PHP pro SQL Server][sqlsrv drivers], budete muset konfigurovat své role pracovního procesu instalace [SQL Server Native Client 2012] [ sql native client] při zřízení. Chcete-li to provést, přidejte [instalační program sqlncli.msi x64] do kořenového adresáře role pracovního procesu. Spouštěcí skript je popsáno v dalším kroku se bez upozornění spusťte instalační program při zřízení roli. Pokud prostředí PHP runtime nepoužívá Drivers společnosti Microsoft pro jazyk PHP pro SQL Server, můžete odebrat následující řádek ze skriptu je znázorněno v následujícím kroku:
 
         msiexec /i sqlncli.msi /qn IACCEPTSQLNCLILICENSETERMS=YES
-4. Definování úloha spuštění, který přidává vaší `php.exe` spustitelný soubor do proměnné prostředí PATH role pracovního procesu při zřízení roli. Chcete-li to provést, otevřete `setup_worker.cmd` (v roli pracovního procesu kořenový adresář) soubor v textovém editoru a nahraďte jeho obsah následující skript:
+4. Definujte úlohy po spuštění, která přidá vaši `php.exe` spustitelný soubor do proměnné prostředí PATH role pracovního procesu při zřízení roli. Chcete-li to provést, otevřete `setup_worker.cmd` souboru (v kořenovém adresáři role pracovního procesu) v textovém editoru a jeho obsah nahraďte následující skript:
 
     ```cmd
     @echo on
@@ -173,15 +183,16 @@ Pokud chcete konfigurovat role pracovních procesů na využití modulu runtime 
     echo FAILED
     exit /b -1
     ```
-5. Přidáte soubory aplikací do kořenového adresáře role pracovního procesu.
-6. Publikování aplikace, jak je popsáno v [publikování aplikace](#publish-your-application) části níže.
+5. Přidáte soubory aplikace do kořenového adresáře role pracovního procesu.
+6. Publikování aplikace, jak je popsáno v [aplikace můžete publikovat](#publish-your-application) níže v části.
 
-## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>Spusťte aplikaci v emulátorů výpočetního prostředí a úložiště
-Azure emulátorů, zadejte do místního prostředí, ve kterém můžete testovat aplikaci Azure předtím, než můžete nasadit do cloudu. Existují určité rozdíly mezi emulátorů a prostředí Azure. To lépe pochopit, najdete v části [pomocí emulátoru úložiště Azure pro vývoj a testování](storage/common/storage-use-emulator.md).
+## <a name="run-your-application-in-the-compute-and-storage-emulators"></a>Spusťte aplikaci na výpočetní výkon a úložiště emulátorů
 
-Všimněte si, že musí mít nainstalované místně pro použití emulátoru služby výpočty v PHP. Emulátoru služby výpočty v použije místní instalace PHP spusťte aplikaci.
+Emulátory Azure poskytují místní prostředí, ve kterém můžete testovat vaše aplikace Azure před jejím nasazením do cloudu. Existuje několik rozdílů mezi emulátory a prostředí Azure. Chcete-li lépe pochopit, přečtěte si téma [použití emulátoru úložiště Azure pro vývoj a testování](storage/common/storage-use-emulator.md).
 
-Pokud chcete spustit projekt v emulátorů, spusťte následující příkaz z kořenového adresáře projektu na:
+Všimněte si, že musíte mít nainstalovaný místně na emulátor služby výpočty pomocí PHP. Emulátor služby výpočty použije místní instalace PHP ke spuštění aplikace.
+
+Spustit projekt v emulátorů, spusťte následující příkaz z kořenového adresáře projektu:
 
     PS C:\MyProject> Start-AzureEmulator
 
@@ -192,23 +203,24 @@ Zobrazí se výstup podobný tomuto:
     Role is running at http://127.0.0.1:81
     Started
 
-Uvidí vaši aplikaci běžící v emulátoru kliknutím otevřete webový prohlížeč a přejděte na adresu místního zobrazené ve výstupu (`http://127.0.0.1:81` ve výstupu v příkladu výše).
+Zobrazí se vaše aplikace běžící v emulátoru, že otevřete webový prohlížeč a přechodu na místní adrese uvedené ve výstupu (`http://127.0.0.1:81` na výše uvedeném příkladu výstupu).
 
-Chcete-li zastavit emulátorů, spusťte tento příkaz:
+Pokud chcete zastavit emulátorů, spusťte tento příkaz:
 
     PS C:\MyProject> Stop-AzureEmulator
 
 ## <a name="publish-your-application"></a>Publikování aplikace
-Pro publikování aplikace, musíte nejdříve naimportovat vaše nastavení publikování pomocí [Import AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) rutiny. Potom můžete publikovat aplikace pomocí [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) rutiny. Informace o přihlašování najdete v tématu [postup instalace a konfigurace prostředí Azure PowerShell](/powershell/azure/overview).
+
+Můžete publikovat svoji aplikaci, je nutné nejprve importovat vaše nastavení publikování pomocí [Import AzurePublishSettingsFile](https://msdn.microsoft.com/library/azure/dn790370.aspx) rutiny. Pak můžete publikovat aplikaci s použitím [Publish-AzureServiceProject](https://msdn.microsoft.com/library/azure/dn495166.aspx) rutiny. Informace o přihlašování najdete v tématu [instalace a konfigurace Azure Powershellu](/powershell/azure/overview).
 
 ## <a name="next-steps"></a>Další postup
-Další informace najdete v tématu [středisku pro vývojáře PHP](/develop/php/).
 
-[Azure SDK pro jazyk PHP]: /develop/php/common-tasks/download-php-sdk/
+Další informace najdete v tématu [středisko pro vývojáře PHP](https://azure.microsoft.com/develop/php/).
+
 [install ps and emulators]: http://go.microsoft.com/fwlink/p/?linkid=320376&clcid=0x409
-[služby definice (.csdef)]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
+[definičních (.csdef) služby]: http://msdn.microsoft.com/library/windowsazure/ee758711.aspx
 [konfigurace služby (.cscfg)]: http://msdn.microsoft.com/library/windowsazure/ee758710.aspx
 [iis.net]: http://www.iis.net/
 [sql native client]: http://msdn.microsoft.com/sqlserver/aa937733.aspx
 [sqlsrv drivers]: http://php.net/sqlsrv
-[sqlncli.msi x64 instalační program]: http://go.microsoft.com/fwlink/?LinkID=239648
+[instalační program sqlncli.msi x64]: http://go.microsoft.com/fwlink/?LinkID=239648

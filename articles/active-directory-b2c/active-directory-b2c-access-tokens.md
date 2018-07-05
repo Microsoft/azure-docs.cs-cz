@@ -1,128 +1,128 @@
 ---
-title: Požaduje přístupových tokenů v Azure Active Directory B2C | Microsoft Docs
-description: Tento článek vám ukáže, jak nastavit klientskou aplikaci a získat přístupový token.
+title: Žádosti o tokeny přístupu v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Tento článek vám ukáže postup nastavení klienta aplikace a získání přístupového tokenu.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 2da5d05767dddfe653e0a0ba65a21b7e755b3828
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 58a0a1e8be7ad5a119204b52b5263943dcef0192
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36330714"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441222"
 ---
-# <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Požaduje přístupové tokeny
+# <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Žádosti o přístupové tokeny
 
-Přístupový token (označené jako **přístup\_tokenu** v odpovědi z Azure AD B2C) je formulář tokenu zabezpečení, který může klient používat pro přístup k prostředkům, které jsou zabezpečeny [serveru ověřování](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-protocols#the-basics), jako jsou webové rozhraní API. Přístupové tokeny, jsou reprezentovány jako [Jwt](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#types-of-tokens) a obsahují informace o server určený prostředků a udělí oprávnění k serveru. Při volání metody server prostředků, přístupový token musí být přítomné v žádosti HTTP.
+Přístupový token (označené jako **přístup\_token** v odpovědi z Azure AD B2C) je forma tokenu zabezpečení, který může klient používat pro přístup k prostředkům, které jsou zabezpečené pomocí [autorizační server](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-protocols#the-basics), jako je například webové rozhraní API. Přístupové tokeny jsou reprezentovány ve formě [tokeny Jwt](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-tokens#types-of-tokens) a obsahují informace o serveru zamýšleného prostředku a udělená oprávnění k serveru. Při volání serveru prostředku, musí být přístupový token v požadavku HTTP.
 
-Tento článek popisuje postup konfigurace klientské aplikace a webové rozhraní API, aby bylo možné získat **přístup\_tokenu**.
+Tento článek popisuje, jak nakonfigurovat klientskou aplikaci a aby bylo možné získat rozhraní web API **přístup\_token**.
 
 > [!NOTE]
-> **Webové rozhraní API řetězy (On-Behalf-Of) nepodporuje Azure AD B2C.**
+> **Webové rozhraní API řetězy (On-Behalf-Of) není podporována službou Azure AD B2C.**
 >
-> Mnoho architektur zahrnuje webové rozhraní API, které potřebuje volat podřízené webové rozhraní API, i zabezpečené pomocí Azure AD B2C. Tento scénář je častý u nativních klientů, které mají webové rozhraní API back-end, které zavolá online službu Microsoftu, jako je například Azure AD Graph API.
+> Mnoho architektur zahrnuje webové rozhraní API, které potřebuje volat podřízené webové rozhraní API, obě jsou zabezpečené pomocí Azure AD B2C. Tento scénář je častý u nativních klientů, které mají webového rozhraní API back-end, který pak zavolá online službu Microsoftu, jako je například Azure AD Graph API.
 >
-> Tento scénář zřetězených webových rozhraní API může být podporován pomocí udělení přihlašovacích údajů nosiče OAuth 2.0 JWT, označováno také jako tok On-Behalf-Of. Tok On-Behalf-Of však není aktuálně implementována v Azure AD B2C.
+> Tento scénář zřetězených webových rozhraní API může být podporován pomocí udělení přihlašovacích údajů nosiče OAuth 2.0 JWT, jinak známé jako tok On-Behalf-Of. Nicméně tok On-Behalf-Of není aktuálně implementován v Azure AD B2C.
 
-## <a name="register-a-web-api-and-publish-permissions"></a>Webové rozhraní API pro registraci a publikování oprávnění
+## <a name="register-a-web-api-and-publish-permissions"></a>Registrace webové rozhraní API a publikujte oprávnění
 
-Před vyžádáním token přístupu, musíte nejprve registrovat webového rozhraní API a publikovat oprávnění (oborům), která můžete do klientské aplikace.
+Než požádáte o přístupový token, musíte nejprve zaregistrovat webové rozhraní API a publikujte oprávnění (obory), která můžete do klientské aplikace.
 
 ### <a name="register-a-web-api"></a>Registrace webové rozhraní API
 
-1. V nabídce Funkce Azure AD B2C na portálu Azure, klikněte na tlačítko **aplikace**.
+1. V nabídce funkcí Azure AD B2C na webu Azure portal, klikněte na **aplikací**.
 1. Klikněte na tlačítko **+ přidat** v horní nabídce.
-1. Zadejte **Název** aplikace, který popíše aplikaci uživatelům. Můžete například zadat "API společnosti Contoso".
+1. Zadejte **Název** aplikace, který popíše aplikaci uživatelům. Můžete například zadat "Contoso API".
 1. Přepněte přepínač **Zahrnout webovou aplikaci / webové rozhraní API** na **Ano**.
-1. Zadejte hodnotu pro libovolný **adresy URL odpovědí**. Zadejte například `https://localhost:44316/`. Hodnota není důležité, protože rozhraní API by neměl být přijetí tokenu přímo z Azure AD B2C.
-1. Zadejte **Identifikátor URI ID aplikace**. To je identifikátor použitý pro vaše webového rozhraní API. Například 'poznámky, zadejte do pole. **Identifikátor ID URI aplikace** by pak bylo `https://{tenantName}.onmicrosoft.com/notes`.
+1. Zadejte libovolnou hodnotu pro **adresy URL odpovědí**. Zadejte například `https://localhost:44316/`. Hodnota není důležitá, protože rozhraní API by neměl přijímají token přímo z Azure AD B2C.
+1. Zadejte **Identifikátor URI ID aplikace**. To je identifikátor použitý pro vaše webového rozhraní API. Zadejte například "notes" v poli. **Identifikátor ID URI aplikace** pak budou `https://{tenantName}.onmicrosoft.com/notes`.
 1. Pro registraci aplikace klikněte na **Vytvořit**.
 1. Klikněte na aplikaci, kterou jste právě vytvořili, a poznamenejte si globálně jedinečné**ID klienta aplikace**, které použijete později ve svém kódu.
 
 ### <a name="publishing-permissions"></a>Publikování oprávnění
 
-Obory, které jsou obdobou oprávnění, jsou nezbytné, pokud vaše aplikace je volání rozhraní API. Některé příklady oborů jsou "číst" nebo "zápis". Předpokládejme, že chcete web nebo nativní aplikaci "číst" z rozhraní API. Vaše aplikace by volání Azure AD B2C a žádosti o token přístupu, která poskytuje přístup k oboru "číst". Aby Azure AD B2C pro vydávání takový token přístupu musí udělit oprávnění ke "čtení" z rozhraní API pro konkrétní aplikace. K tomuto účelu potřebuje vaše rozhraní API nejprve publikovat oboru "číst".
+Obory, které jsou obdobou oprávnění, jsou nezbytné, pokud vaše aplikace volá rozhraní API. Některé příklady obory jsou "čtení" nebo "zápis". Předpokládejme, že chcete svou webovou nebo nativní aplikaci "číst" z rozhraní API. Vaše aplikace by volání Azure AD B2C a žádost o přístupový token, který poskytuje přístup k oboru "čtení". Pro Azure AD B2C ke generování těchto přístupový token, aplikace musí být udělena oprávnění ke "čtení" z konkrétního rozhraní API. K tomuto účelu potřebuje vaše rozhraní API nejprve publikovat obor "číst".
 
-1. V rámci Azure AD B2C **aplikace** nabídce otevřete rozhraní API webové aplikace ("API společnosti Contoso").
+1. V rámci Azure AD B2C **aplikací** nabídce otevřít webového rozhraní API aplikace ("Contoso API").
 1. Klikněte na **Publikované obory**. Tady můžete definovat oprávnění (obory), která lze udělit ostatním aplikacím.
-1. Přidat **hodnoty oboru** podle potřeby (například "číst"). Ve výchozím nastavení bude definován obor „user_impersonation“. To můžete ignorovat, pokud chcete. Zadejte popis oboru ve **název oboru** sloupce.
+1. Přidat **hodnoty oboru** podle potřeby (například "číst"). Ve výchozím nastavení bude definován obor „user_impersonation“. To můžete ignorovat, pokud chcete. Zadejte popis tohoto oboru ve **název oboru** sloupce.
 1. Klikněte na **Uložit**.
 
 > [!IMPORTANT]
-> **Název oboru** je popis **hodnota oboru**. Pokud používáte oboru, nezapomeňte použít **hodnota oboru**.
+> **Název oboru** je popis **hodnota rozsahu**. Při použití oboru, je nutné použít **hodnota rozsahu**.
 
 ## <a name="grant-a-native-or-web-app-permissions-to-a-web-api"></a>Udělit nativní nebo webové aplikaci oprávnění k webovému rozhraní API
 
-Po rozhraní API je nakonfigurována pro publikování obory, klientská aplikace musí být udělena tyto obory prostřednictvím portálu Azure.
+Jakmile rozhraní API je nakonfigurována pro publikování obory, klientská aplikace potřebuje mít tyto obory prostřednictvím webu Azure portal.
 
-1. Přejděte na **aplikace** nabídky v nabídce Funkce Azure AD B2C.
-1. Registrace aplikace klienta ([webové aplikace](active-directory-b2c-app-registration.md#register-a-web-app) nebo [nativního klienta](active-directory-b2c-app-registration.md#register-a-mobile-or-native-app)) Pokud již nemáte. Použijete-li tato příručka jako počáteční bod, budete muset zaregistrovat klientské aplikace.
-1. Klikněte na **přístup pomocí rozhraní API**.
+1. Přejděte **aplikací** nabídky v nabídce funkcí Azure AD B2C.
+1. Registrace aplikace klienta ([webovou aplikaci](active-directory-b2c-app-registration.md#register-a-web-app) nebo [nativního klienta](active-directory-b2c-app-registration.md#register-a-mobile-or-native-app)) Pokud již nemáte. Pokud jsou podle těchto pokynů jako výchozí bod, budete muset zaregistrovat klientské aplikace.
+1. Klikněte na **přístup přes rozhraní API**.
 1. Klikněte na **Přidat**.
-1. Vyberte webového rozhraní API a chcete udělit obory (oprávnění).
+1. Vyberte vaše webové rozhraní API a obory (oprávnění), které chcete udělit.
 1. Klikněte na **OK**.
 
 > [!NOTE]
-> Azure AD B2C nezeptá vašeho klienta aplikace uživatelům na jejich souhlasu. Místo toho jsou poskytovány všechny souhlasu správce, na základě oprávnění nakonfigurovaná mezi aplikací popsaných výše. Pokud odvolán udělit oprávnění pro aplikaci, všichni uživatelé, kteří byli schopní získat tato oprávnění už nebude moci učinit.
+> Azure AD B2C nevyžaduje váš klient uživatele aplikace pro svůj souhlas. Místo toho všechny souhlasu poskytuje správu, na základě oprávnění nakonfigurovaná mezi aplikacemi je popsáno výše. Udělení oprávnění pro aplikaci odvolá, všichni uživatelé, kteří byli schopní získat oprávnění se už by mohl Uděláte to tak.
 
-## <a name="requesting-a-token"></a>Požadování tokenu
+## <a name="requesting-a-token"></a>Vyžádání tokenu
 
-Žádosti o token přístupu, klientská aplikace musí určovat požadované oprávnění v **oboru** parametr požadavku. Například zadejte **hodnota oboru** "číst" pro rozhraní API, který má **identifikátor ID URI aplikace** z `https://contoso.onmicrosoft.com/notes`, oboru by `https://contoso.onmicrosoft.com/notes/read`. Dole je příklad autorizační kód požadavku na `/authorize` koncový bod.
+Při žádání o přístupový token, klientská aplikace potřebuje k určení požadovaných oprávnění v **oboru** parametr žádosti. Například, chcete-li určit **hodnota rozsahu** "čtení" pro rozhraní API, která má **identifikátor ID URI aplikace** z `https://contoso.onmicrosoft.com/notes`, oboru by `https://contoso.onmicrosoft.com/notes/read`. Tady je příklad autorizační kód požadavku pro `/authorize` koncového bodu.
 
 > [!NOTE]
-> Vlastní domény nejsou aktuálně podporované společně s přístupových tokenů. Je nutné použít doménu tenantName.onmicrosoft.com v adrese URL žádosti.
+> Vlastní domény nejsou v současné době podporuje spolu s přístupové tokeny. Je nutné použít tenantName.onmicrosoft.com domény v adrese URL požadavku.
 
 ```
 https://login.microsoftonline.com/tfp/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
-Chcete-li získat více oprávnění ve stejném požadavku, můžete přidat více položek v jedné **oboru** parametr, oddělené mezerami. Příklad:
+Chcete-li získat více oprávnění u stejné žádosti, můžete přidat více položek v jedné **oboru** parametr, oddělené mezerami. Příklad:
 
-Adresa URL dekódovat:
+Dekódovat. adresa URL:
 
 ```
 scope=https://contoso.onmicrosoft.com/notes/read openid offline_access
 ```
 
-Kódovaná adresou URL:
+Kódování URL:
 
 ```
 scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread%20openid%20offline_access
 ```
 
-Může požádat o další obory (oprávnění) pro prostředek, než co je povolen pro klientské aplikace. Pokud to tento případ, volání bude úspěšné, pokud alespoň jeden je povoleno. Výsledná **přístup\_tokenu** bude mít svůj požadavek "spojovací bod služby" zahrnovat jenom oprávnění, které byly úspěšně uděleno.
+Může vyžadovat další obory (oprávnění) pro určitý prostředek, než jaké jsou udělena pro klientské aplikace. Pokud tomu tak, že volání bude úspěšné, pokud aspoň jedno oprávnění jsou udělena. Výsledná **přístup\_token** bude mít jeho deklarace "spojovací bod služby" vyplní pouze oprávnění, které byly úspěšně udělen.
 
 > [!NOTE] 
-> Nepodporujeme vyžadování oprávnění pro dva různé webové prostředky ve stejném požadavku. Tento druh požadavek selže.
+> Nepodporujeme o oprávnění na dvě různé webové prostředky ve stejném požadavku. Tento druh požadavek selže.
 
 ### <a name="special-cases"></a>Zvláštní případy
 
-Standardní OpenID Connect určuje několik hodnot speciální "obor". Následující zvláštní obory představují oprávnění k "získat přístup na profil uživatele":
+Standard OpenID Connect určuje několik hodnot speciální "rozsah". Následující speciální obory představují oprávnění "přistupovat k profilu uživatele":
 
-* **openid**: to požadavky tokenu ID
-* **offline\_přístup**: to požadavky obnovovací token (pomocí [tok ověřování kódu](active-directory-b2c-reference-oauth-code.md)).
+* **openid**: to vyžádá ID token
+* **offline\_přístup**: to žádá token aktualizace (pomocí [toku kódu autorizace](active-directory-b2c-reference-oauth-code.md)).
 
-Pokud `response_type` parametr `/authorize` žádost obsahuje `token`, `scope` parametr musí obsahovat alespoň jeden prostředek oboru (jiné než `openid` a `offline_access`), bude udělen. Jinak `/authorize` požadavku se ukončí se selháním.
+Pokud `response_type` parametr `/authorize` požadavek zahrnuje `token`, `scope` parametr musí obsahovat nejméně jeden prostředek oboru (jiné než `openid` a `offline_access`), která budou udělena. V opačném případě `/authorize` požadavek bude ukončena s chybou.
 
-## <a name="the-returned-token"></a>Vrácený tokenu
+## <a name="the-returned-token"></a>Vrácený token
 
-V úspěšně minted **přístup\_tokenu** (buď z `/authorize` nebo `/token` koncového bodu), bude k dispozici následující deklarace identity:
+V úspěšně minted **přístup\_token** (buď z `/authorize` nebo `/token` koncového bodu), bude k dispozici následující deklarace identity:
 
 | Název | Deklarovat | Popis |
 | --- | --- | --- |
-|Cílová skupina |`aud` |**ID aplikace** jednoho prostředku, který token uděluje přístup k. |
-|Rozsah |`scp` |Oprávnění udělená k prostředku. Více udělená oprávnění budou oddělte mezerou. |
-|Autorizovaný strany |`azp` |**ID aplikace** klientské aplikace, která žádost iniciovala. |
+|Cílová skupina |`aud` |**ID aplikace** jednoho prostředku, který token uděluje přístup pro. |
+|Rozsah |`scp` |Oprávnění udělená k prostředku. Více udělená oprávnění oddělené mezerou. |
+|Autorizované stran |`azp` |**ID aplikace** klientské aplikace, který inicioval žádost. |
 
-Pokud vaše rozhraní API obdrží **přístup\_tokenu**, musí [ověřit token](active-directory-b2c-reference-tokens.md) prokázat, že token pravý a že má správné deklarace identity.
+Pokud vaše rozhraní API přijímá **přístup\_token**, musí být [token ověří](active-directory-b2c-reference-tokens.md) prokázat, že token, který je platná a má správný deklarací identity.
 
-Snažíme se vždy otevřený a názory a návrhy! Pokud máte jakékoli problémy s tímto tématem, prosím zveřejnit na Stack Overflow pomocí značky [, azure ad b2c,](https://stackoverflow.com/questions/tagged/azure-ad-b2c). Pro žádosti o funkce, přidejte je do [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
+Máme vždy otevřít na názory a návrhy! Pokud máte případné potíže s tímto tématem, zveřejněte ji prosím na webu Stack Overflow pomocí značky [azure-ad-b2c](https://stackoverflow.com/questions/tagged/azure-ad-b2c). Pro žádosti o funkce, přidejte je do [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c).
 
 ## <a name="next-steps"></a>Další postup
 
