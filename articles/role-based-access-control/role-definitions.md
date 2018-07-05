@@ -1,6 +1,6 @@
 ---
-title: Pochopit definice role v Azure RBAC | Microsoft Docs
-description: Další informace o definicích rolí v řízení přístupu na základě role (RBAC) a jak definovat vlastní role pro správu jemně odstupňovaných přístupu prostředků v Azure.
+title: Pochopení definic rolí v Azure RBAC | Dokumentace Microsoftu
+description: Další informace o definice rolí v řízení přístupu na základě role (RBAC) pro správu prostředků v Azure velice přesně kontrolovat přístup.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,27 +8,27 @@ manager: mtillman
 ms.assetid: ''
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/18/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 9bb7808f2b483fe9cd7d22c6df3fe80d4a98f1f4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1d594b91b85a1bad3bbaa69bc27e62a4829a5661
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266852"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37438008"
 ---
 # <a name="understand-role-definitions"></a>Vysvětlení definic rolí
 
-Pokud chcete pochopit, jak funguje roli, nebo při vytváření vlastní [vlastní role](custom-roles.md), je vhodné se seznámit s definici role. Tento článek popisuje podrobnosti o definice rolí a obsahuje některé příklady.
+Pokud se snažíte porozumět fungování role, nebo pokud vytváříte vlastní [vlastní roli](custom-roles.md), je užitečné k pochopení, jak jsou definované role. Tento článek popisuje podrobnosti o definicích rolí a obsahuje některé příklady.
 
-## <a name="role-definition-structure"></a>Struktura definice role
+## <a name="role-definition-structure"></a>Struktura definic rolí
 
-A *definice role* je kolekce oprávnění. Někdy právě se nazývá *role*. Definice role obsahuje seznam operací, které lze provést, jako je čtení, zápisu a odstranění. Můžete také seznam, operace, které nelze provést, nebo operace související s základní data. Definice role má následující strukturu:
+A *definice role* je kolekce oprávnění. To se někdy také říká *role*. Definice role obsahuje seznam operací, které lze provést, jako je čtení, zápis a odstranění. Můžete ho také seznam operací, které nelze provést, nebo operace související se podkladová data. Definice role obsahuje následující strukturu:
 
 ```
 assignableScopes []
@@ -45,20 +45,20 @@ roleType
 type
 ```
 
-Operace se zadaným řetězce, které mají tento formát:
+Operace jsou určeny pomocí řetězce, které mají tento formát:
 
-- `Microsoft.{ProviderName}/{ChildResourceType}/{action}`
+- `{Company}.{ProviderName}/{resourceType}/{action}`
 
-`{action}` Část řetězce operace určuje typ operace můžete provádět na typ prostředku. Například, zobrazí se následující dílčích řetězců v `{action}`:
+`{action}` Část řetězce operace určuje typ operace můžete provádět na typ prostředku. Například, zobrazí se následující podřetězce v `{action}`:
 
-| Substring akce    | Popis         |
+| Podřetězec akce    | Popis         |
 | ------------------- | ------------------- |
-| `*` | Zástupný znak uděluje přístup ke všem operacím, které odpovídají řetězec. |
-| `read` | Umožňuje číst operací (GET). |
-| `write` | Umožní zápisu operace (PUT, POST a oprava). |
+| `*` | Zástupný znak uděluje přístup ke všem operacím, které odpovídají řetězci. |
+| `read` | Povolí čtení (GET). |
+| `write` | Umožňuje zapisovat operací (PUT, POST a PATCH). |
 | `delete` | Umožňuje odstranit operace (DELETE). |
 
-Tady je [Přispěvatel](built-in-roles.md#contributor) definice role ve formátu JSON. Zástupný znak (`*`) operace v rámci `actions` označuje, že objekt přiřazení k této roli mohou provádět všechny akce, nebo jinými slovy, umožňuje spravovat všechno. To zahrnuje akce definované v budoucnu, přidává nové typy prostředků Azure. Operace v rámci `notActions` je odečten od `actions`. U [Přispěvatel](built-in-roles.md#contributor) role, `notActions` Odebere tuto roli schopnost spravovat přístup k prostředkům a také přiřazení přístupu k prostředkům.
+Tady je [Přispěvatel](built-in-roles.md#contributor) definice role ve formátu JSON. Zástupný znak (`*`) provozu `actions` označuje, že objekt zabezpečení přiřazené k této roli mohou provádět všechny akce, nebo jinými slovy, všechno, co dokáže spravovat. To zahrnuje akce definované v budoucnu se přidá nové typy prostředků Azure. Operace v rámci `notActions` jsou odečtena od `actions`. V případě třídy [Přispěvatel](built-in-roles.md#contributor) role, `notActions` odstraní tato role umožňuje spravovat přístup k prostředkům a také přiřazení přístupu k prostředkům.
 
 ```json
 [
@@ -92,25 +92,25 @@ Tady je [Přispěvatel](built-in-roles.md#contributor) definice role ve formátu
 ]
 ```
 
-## <a name="management-and-data-operations-preview"></a>Operace správy a data (Preview)
+## <a name="management-and-data-operations-preview"></a>Operace správy a dat (Preview)
 
-Řízení přístupu na základě rolí pro operace správy je uveden v `actions` a `notActions` části definici role. Tady jsou některé příklady operací správy v Azure:
+Řízení přístupu na základě rolí pro operace správy je zadán v `actions` a `notActions` vlastnosti definice role. Tady je několik příkladů operací správy v Azure:
 
 - Správa přístupu k účtu úložiště
-- Vytvářet, aktualizovat nebo odstranit kontejner objektů blob
+- Vytvořit, aktualizovat nebo odstranit kontejner objektů blob
 - Odstranit skupinu prostředků a všechny její prostředky
 
-Přístup pro správu není zděděna ke svým datům. Toto rozdělení brání role se zástupnými znaky (`*`) z má neomezený přístup k datům. Například pokud má uživatel [čtečky](built-in-roles.md#reader) role na předplatném, pak mohou zobrazit účet úložiště, ale ve výchozím nastavení se základní data nelze zobrazit.
+Přístup pro správu není zděděno k vašim datům. Toto oddělení brání role se zástupnými znaky (`*`) z mají stejně neomezený přístup k vašim datům. Například, pokud má uživatel [čtečky](built-in-roles.md#reader) role v rámci předplatného, pak mohou zobrazit účet úložiště, ale ve výchozím nastavení se nedá podívat na podkladová data.
 
-Řízení přístupu na základě role nebyla dříve, slouží k operacím data. Autorizace pro datové operace nejrůznější napříč zprostředkovatelé prostředků. Model pro autorizace stejné řízení přístupu na základě role používat pro operace správy rozšířilo a operace dat (momentálně ve verzi preview).
+Řízení přístupu na základě rolí nebyla dříve, použít pro operace s daty. Autorizace pro operace s daty různorodé přes poskytovatele prostředků. Model pro autorizace stejné řízení přístupu na základě rolí používá pro operace správy rozšířilo a operace s daty (aktuálně ve verzi preview).
 
-Pro podporu operací, data, byly přidány nové části dat na strukturu definici role. Operace dat jsou určené v `dataActions` a `notDataActions` oddíly. Přidáním těchto částí data se udržuje oddělení mezi správou a data. Zabrání se tak aktuální přiřazení rolí se zástupnými znaky (`*`) z najednou má přístup k datům. Tady jsou některé operace dat, které lze zadat v `dataActions` a `notDataActions`:
+Pro podporu operace s daty, byly přidány nové vlastnosti dat struktuře definice role. Operace s daty jsou určené v `dataActions` a `notDataActions` vlastnosti. Přidáním těchto vlastností dat se udržuje oddělení mezi správou a data. To zabrání aktuální přiřazení rolí se zástupnými znaky (`*`) z náhle mají přístup k datům. Tady jsou některé operace s daty, které lze zadat v `dataActions` a `notDataActions`:
 
 - Přečtěte si seznam objektů BLOB v kontejneru
-- Zápis do úložiště objektu blob v kontejneru
-- Odstranění zprávy ve frontě
+- Zapsat úložiště objektů blob v kontejneru
+- Odstranit zprávu ve frontě
 
-Tady je [čtecí modul dat objektů Blob Storage (Preview)](built-in-roles.md#storage-blob-data-reader-preview) definice role, která zahrnuje operace v obou `actions` a `dataActions` oddíly. Tato role umožňuje číst kontejneru objektů blob a také základní data objektů blob.
+Tady je [Čtenář dat objektu Blob služby Storage (Preview)](built-in-roles.md#storage-blob-data-reader-preview) definice role, který zahrnuje operace v obou `actions` a `dataActions` vlastnosti. Tato role umožňuje číst kontejner objektů blob a také podkladová data objektů blob.
 
 ```json
 [
@@ -142,17 +142,17 @@ Tady je [čtecí modul dat objektů Blob Storage (Preview)](built-in-roles.md#st
 ]
 ```
 
-Pouze operace, data mohou být přidány do `dataActions` a `notDataActions` oddíly. Zprostředkovatelé prostředků identifikovat operací, které jsou data operací, a to nastavením `isDataAction` vlastnost `true`. Chcete-li zobrazit seznam operací, kde `isDataAction` je `true`, najdete v části [operace poskytovatele prostředků](resource-provider-operations.md). Role, které nemají operace dat nemusí mít `dataActions` a `notDataActions` částí v definici role.
+Lze přidat pouze operace s daty `dataActions` a `notDataActions` vlastnosti. Poskytovatelé prostředků identifikaci operací, které jsou operace s daty tak, že nastavíte `isDataAction` vlastnost `true`. Pokud chcete zobrazit seznam operací kde `isDataAction` je `true`, naleznete v tématu [operace poskytovatele prostředků](resource-provider-operations.md). Role, které nemají operace s daty nemusí mít `dataActions` a `notDataActions` vlastnosti v rámci definice role.
 
-Autorizace pro všechna volání rozhraní API management operace zpracovává pomocí Správce prostředků Azure. Autorizace pro volání rozhraní API operaci dat zpracovává poskytovatele prostředků nebo Azure Resource Manager.
+Autorizace pro všechna volání rozhraní API operace správy se určují pomocí Azure Resource Manageru. Autorizace pro volání rozhraní API operace dat zařizuje služba poskytovatele prostředků nebo Azure Resource Manageru.
 
-### <a name="data-operations-example"></a>Příklad operations dat
+### <a name="data-operations-example"></a>Příklad dat operace
 
-Abyste lépe pochopili, jak fungují operace správy a data, zvažte konkrétní příklad. Alice byla přiřazena [vlastníka](built-in-roles.md#owner) role v obor předplatného. Byl přiřazen Bob [Přispěvatel Data objektů Blob Storage (Preview)](built-in-roles.md#storage-blob-data-contributor-preview) role v rozsahu účtu úložiště. Následující diagram ukazuje tento příklad.
+Abyste lépe pochopili, jak fungují operace správy a data, Pojďme se podívat na konkrétní příklad. Alice se přiřadila [vlastníka](built-in-roles.md#owner) role v oboru předplatného. Bob se přiřadila [Přispěvatel dat objektu Blob služby Storage (Preview)](built-in-roles.md#storage-blob-data-contributor-preview) role v rozsahu účtu úložiště. Následující diagram ukazuje tento příklad.
 
-![Řízení přístupu na základě rolí rozšířilo pro podporu správy a operace dat](./media/role-definitions/rbac-management-data.png)
+![Řízení přístupu na základě rolí se prodloužila, aby podporoval management i operace s daty](./media/role-definitions/rbac-management-data.png)
 
-[Vlastníka](built-in-roles.md#owner) role pro Alici a [Přispěvatel Data objektů Blob Storage (Preview)](built-in-roles.md#storage-blob-data-contributor-preview) role pro Roberta mít následující akce:
+[Vlastníka](built-in-roles.md#owner) role pro Alici a [Přispěvatel dat objektu Blob služby Storage (Preview)](built-in-roles.md#storage-blob-data-contributor-preview) role pro Roberta mít následující akce:
 
 Vlastník
 
@@ -170,159 +170,80 @@ Přispěvatel dat objektu blob služby Storage (Preview)
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-Vzhledem k tomu, že Alice je zástupný znak (`*`) akce v oboru předplatné, jeho oprávnění dědit dolů o provádět všechny akce správy. Alice však nelze provádět operace data. Například ve výchozím nastavení, Alice nemůže přečíst uvnitř kontejneru objektů BLOB, ale uživatel může číst, zapisovat a odstranění kontejnerů.
+Vzhledem k tomu, že Alice obsahuje zástupný znak (`*`) akci v oboru předplatného, své oprávnění dědí dolů povolit jí provádět veškeré akce správy. Alice však nemohou provádět operace s daty. Například ve výchozím nastavení, Alice nelze číst objekty BLOB v kontejneru, ale může číst, zapisovat a odstranění kontejnerů.
 
-Oprávnění Boba jsou omezeny na právě `actions` a `dataActions` zadaný v [Přispěvatel Data objektů Blob Storage (Preview)](built-in-roles.md#storage-blob-data-contributor-preview) role. Na základě role, Bob provádět správu a operace s daty. Například Bob čtení, zápis a odstranění kontejnerů v zadaný účet úložiště a mohl můžete také čtení, zápisu a odstranění objektů BLOB.
+Oprávnění Boba jsou omezeny na jenom `actions` a `dataActions` zadané v poli [Přispěvatel dat objektu Blob služby Storage (Preview)](built-in-roles.md#storage-blob-data-contributor-preview) role. Na základě role, Bob provádět správu a operace s daty. Například Bob čtení, zápis a odstranění kontejnerů ze zadaný účet úložiště a si můžete také čtení, zápisu a odstranění objektů BLOB.
 
-### <a name="what-tools-support-using-rbac-for-data-operations"></a>Jaké nástroje podporuje pomocí RBAC pro operace dat?
+### <a name="what-tools-support-using-rbac-for-data-operations"></a>Jaké nástroje podporují pomocí RBAC pro operace s daty?
 
-Zobrazit a pracovat s datovými operacemi, musí mít správná verze nástroje nebo sady SDK:
+Zobrazení a práce s operace s daty, musí mít správné verze prvků nástrojů nebo sad SDK:
 
 | Nástroj  | Verze  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-azurerm-ps) | 5.6.0 nebo novější |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 nebo novější |
 | [Azure pro .NET](/dotnet/azure/) | 2.8.0-Preview nebo novější |
-| [Azure SDK pro přejděte](/go/azure/azure-sdk-go-install) | 15.0.0 nebo novější |
-| [Azure pro jazyk Java](/java/azure/) | 1.9.0 nebo novější |
-| [Azure pro jazyk Python](/python/azure) | 0.40.0 nebo novější |
+| [Azure SDK for Go](/go/azure/azure-sdk-go-install) | 15.0.0 nebo novější |
+| [Azure pro Javu](/java/azure/) | 1.9.0 nebo novější |
+| [Azure pro Python](/python/azure) | 0.40.0 nebo novější |
 | [Azure SDK pro Ruby](https://rubygems.org/gems/azure_sdk) | 0.17.1 nebo novější |
 
 ## <a name="actions"></a>Akce
 
-`actions` Oprávnění určuje operace správy, ke kterým roli udělí přístup. Jedná se o kolekci operaci řetězců, které identifikují zabezpečitelné operations poskytovatelů prostředků Azure. Zde jsou některé příklady operace správy, které mohou být používány `actions`.
+`actions` Oprávnění určuje, které role umožňuje provádět operace správy. Jde o kolekci operace řetězců, které identifikují zabezpečitelných operace poskytovatele prostředků Azure. Tady je několik příkladů operace správy, které lze použít v `actions`.
 
-| Operace řetězec    | Popis         |
+| Řetězec operace    | Popis         |
 | ------------------- | ------------------- |
-| `*/read` | uděluje přístup ke čtení pro všechny typy prostředků všech poskytovatelů prostředků Azure.|
-| `Microsoft.Compute/*` | uděluje přístup ke všem operacím pro všechny typy prostředků ve zprostředkovateli prostředků Microsoft.Compute.|
-| `Microsoft.Network/*/read` | Uděluje přístup ke čtení pro všechny typy prostředků v poskytovatel prostředků Microsoft.Network.|
-| `Microsoft.Compute/virtualMachines/*` | uděluje přístup ke všem operacím virtuálních počítačů a jeho podřízené typy prostředků.|
+| `*/read` | Uděluje přístup pro čtení operací pro všechny typy prostředků všechny poskytovatele prostředků Azure.|
+| `Microsoft.Compute/*` | Uděluje přístup ke všem operacím pro všechny typy prostředků v poskytovateli prostředků Microsoft.Compute.|
+| `Microsoft.Network/*/read` | Uděluje přístup pro čtení operací pro všechny typy prostředků v poskytovateli prostředků Microsoft.Network.|
+| `Microsoft.Compute/virtualMachines/*` | Uděluje přístup ke všem operacím virtuálních počítačů a jeho podřízené typy prostředků.|
 | `microsoft.web/sites/restart/Action` | Uděluje přístup k restartování webové aplikace.|
 
-## <a name="notactions"></a>NotActions
+## <a name="notactions"></a>notActions
 
-`notActions` Oprávnění určuje operace správy, které budou vyloučeny z povolené maximum `actions`. Použití `notActions` oprávnění, pokud sadu operací, které chcete povolit je snadno definovanou s výjimkou operací s omezeným přístupem. Udělení přístupu podle rolí (skutečná oprávnění) se počítá odečtením `notActions` operací `actions` operace.
+`notActions` Oprávnění určuje operace správy, které jsou vyloučené z povolených `actions`. Použití `notActions` oprávnění, pokud sadu operací, které chcete povolit je mnohem snazší definované s výjimkou operace s omezeným přístupem. Udělení přístupu podle role (efektivní oprávnění) je vypočítána odečtením `notActions` operací `actions` operace.
 
 > [!NOTE]
-> Pokud je uživatel přiřazenou roli, která nezahrnuje operace v `notActions`a je mu přiřazená druhá role, který uděluje přístup ke stejné operace, má uživatel k provedení této operace. `notActions` není odepření pravidlo – je jenom pohodlný způsob, jak vytvořit sadu povolených operací při konkrétních operací muset vyloučeny.
+> Pokud uživatel je přiřazena role, který vylučuje operace v `notActions`a je mu přiřazená druhá role, která uděluje přístup ke stejné operace má uživatel k provedení této operace. `notActions` není odmítnout pravidlo – je jednoduše pohodlný způsob, jak vytvořit sadu povolených operací při určité operace je třeba vyloučit.
 >
 
 ## <a name="dataactions-preview"></a>dataActions (Preview)
 
-`dataActions` Oprávnění určuje operace dat, ke kterým roli udělí přístup k datům v rámci tohoto objektu. Například pokud uživatel má přístup pro čtení objektů blob dat k účtu úložiště, může číst objekty BLOB v rámci tohoto účtu úložiště. Zde jsou některé příklady data operací, které mohou být používány `dataActions`.
+`dataActions` Oprávnění určuje datové operace, které povoluje roli mají být provedeny ke svým datům v rámci daného objektu. Například pokud uživatel má přístup k datům objektu blob do účtu úložiště najdete potom může číst objekty BLOB v rámci tohoto účtu úložiště. Tady je několik příkladů operace s daty, které lze použít v `dataActions`.
 
-| Operace řetězec    | Popis         |
+| Řetězec operace    | Popis         |
 | ------------------- | ------------------- |
 | `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/read` | Vrátí objekt blob nebo seznam objektů BLOB. |
-| `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/write` | Vrátí výsledek zápisu do objektu blob. |
+| `Microsoft.Storage/storageAccounts/ blobServices/containers/blobs/write` | Vrátí výsledek zápisu objektu blob. |
 | `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/read` | Vrátí zprávu. |
-| `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | Vrátí zprávu nebo výsledek zápis nebo odstranění zprávy. |
+| `Microsoft.Storage/storageAccounts/ queueServices/queues/messages/*` | Vrátí zprávu nebo psaní nebo odstranění zprávy. |
 
 ## <a name="notdataactions-preview"></a>notDataActions (Preview)
 
-`notDataActions` Oprávnění určuje operace dat, které budou vyloučeny z povolené maximum `dataActions`. Udělení přístupu podle rolí (skutečná oprávnění) se počítá odečtením `notDataActions` operací `dataActions` operace. Každý poskytovatel prostředků nabízí její odpovídající sadu rozhraní API pro splnění data operací.
+`notDataActions` Oprávnění určuje datové operace, které jsou vyloučené z povolených `dataActions`. Udělení přístupu podle role (efektivní oprávnění) je vypočítána odečtením `notDataActions` operací `dataActions` operace. Každý poskytovatel prostředků nabízí jeho odpovídající sadu rozhraní API pro splnění operace s daty.
 
 > [!NOTE]
-> Pokud je uživatel přiřazenou roli, která nezahrnuje operace dat v `notDataActions`a je mu přiřazená druhá role, který uděluje přístup ke stejné operace dat má uživatel k provedení této operace data. `notDataActions` není odepření pravidlo – je jenom pohodlný způsob, jak vytvořit sadu povolených datovými operacemi, když se specifickými datovými operacemi muset vyloučeny.
+> Pokud uživatel je přiřazena role, který vylučuje operace s daty v `notDataActions`a je mu přiřazená druhá role, která uděluje přístup ke stejné operace s daty, uživatel může k provedení této operace s daty. `notDataActions` není odmítnout pravidlo – je jednoduše pohodlný způsob, jak vytvořit sadu operací povolených dat, když se specifickými datovými operacemi je třeba vyloučit.
 >
 
-## <a name="assignablescopes"></a>AssignableScopes
+## <a name="assignablescopes"></a>assignableScopes
 
-`assignableScopes` Část určuje obory (skupiny pro správu (momentálně ve verzi preview), odběry, skupiny prostředků nebo prostředky), že je k dispozici pro přiřazení role. Můžete zpřístupnit role pro přiřazení v pouze předplatných nebo skupiny prostředků, které vyžadují a ne uživatele zbytečné soubory prostředí pro zbytek předplatná nebo skupiny prostředků. Je nutné použít správu alespoň jednu skupinu, předplatné, skupinu prostředků nebo ID prostředku.
+`assignableScopes` Vlastnost určuje obory (skupin pro správu (aktuálně ve verzi preview), předplatná, skupiny prostředků nebo prostředky), že je k dispozici pro přiřazení role. Můžete vytvořit roli k dispozici pro přiřazení v jenom předplatná nebo skupiny prostředků, které vyžadují a ne uživatele nepořádku prostředí pro zbytek předplatných nebo skupinách prostředků. Je nutné použít správu alespoň jednu skupinu, předplatné, skupinu prostředků nebo ID prostředku.
 
-Předdefinované role mají `assignableScopes` nastavena na kořenovém oboru (`"/"`). Kořenovém oboru označuje, že role je k dispozici pro přiřazení v všechny obory. Kořenovém oboru nelze použít ve vlastní role. Pokud se pokusíte, bude dojde k chybě autorizace.
-
-Příklady platný přiřaditelnými obory:
+Předdefinované role mají `assignableScopes` nastavena na kořenového oboru (`"/"`). Kořenového oboru označuje, že role je k dispozici pro přiřazení ve všech oborech. Příklady platných přiřaditelných oborů:
 
 | Scénář | Příklad: |
 |----------|---------|
 | Role je k dispozici pro přiřazení v rámci jednoho předplatného | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e"` |
-| Role je k dispozici pro přiřazení v obě předplatná | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
-| Role je k dispozici pro přiřazení pouze ve skupině prostředků sítě | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
-| Role je k dispozici pro přiřazení v všechny obory | `"/"` |
+| Role je k dispozici pro přiřazení ve dvou předplatných | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e", "/subscriptions/e91d47c4-76f3-4271-a796-21b4ecfe3624"` |
+| Role je k dispozici pro přiřazení pouze ve skupině síťových prostředků | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
+| Role je k dispozici pro přiřazení ve všech oborech | `"/"` |
 
-## <a name="assignablescopes-and-custom-roles"></a>assignableScopes a vlastní role
+Informace o `assignableScopes` vlastních rolí, najdete v části [vlastní role](custom-roles.md).
 
-`assignableScopes` Části pro vlastní role také určuje, který můžete vytvořit, odstranit, upravit nebo zobrazit vlastní role.
-
-| Úkol | Operace | Popis |
-| --- | --- | --- |
-| Vytvořit nebo odstranit vlastní roli | `Microsoft.Authorization/ roleDefinition/write` | Uživatelé, kteří jsou udělena tato operace na všech `assignableScopes` vlastní role můžete vytvořit (nebo odstranit) vlastní role pro použití v tyto obory. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatele](built-in-roles.md#user-access-administrator) odběry, skupiny prostředků a prostředků. |
-| Upravit vlastní roli | `Microsoft.Authorization/ roleDefinition/write` | Uživatelé, kteří jsou udělena tato operace na všech `assignableScopes` vlastní role, můžete upravit vlastní role v tyto obory. Například [vlastníky](built-in-roles.md#owner) a [správci přístupu uživatele](built-in-roles.md#user-access-administrator) odběry, skupiny prostředků a prostředků. |
-| Zobrazit vlastní role | `Microsoft.Authorization/ roleDefinition/read` | Uživatelé, kteří jsou udělena tato operace v oboru můžete zobrazit vlastní role, které jsou k dispozici pro přiřazení v tomto oboru. Všechny předdefinované role umožňují vlastní role být k dispozici pro přiřazení. |
-
-## <a name="role-definition-examples"></a>Příklady definice rolí
-
-Následující příklad ukazuje [čtečky](built-in-roles.md#reader) definice role, zobrazovat pomocí rozhraní příkazového řádku Azure:
-
-```json
-[
-  {
-    "additionalProperties": {},
-    "assignableScopes": [
-      "/"
-    ],
-    "description": "Lets you view everything, but not make any changes.",
-    "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
-    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
-    "permissions": [
-      {
-        "actions": [
-          "*/read"
-        ],
-        "additionalProperties": {},
-        "dataActions": [],
-        "notActions": [],
-        "notDataActions": []
-      }
-    ],
-    "roleName": "Reader",
-    "roleType": "BuiltInRole",
-    "type": "Microsoft.Authorization/roleDefinitions"
-  }
-]
-```
-
-Následující příklad ukazuje vlastní role pro monitorování a restartování virtuálního počítače, který zobrazovat pomocí Azure PowerShell:
-
-```json
-{
-  "Name":  "Virtual Machine Operator",
-  "Id":  "88888888-8888-8888-8888-888888888888",
-  "IsCustom":  true,
-  "Description":  "Can monitor and restart virtual machines.",
-  "Actions":  [
-                  "Microsoft.Storage/*/read",
-                  "Microsoft.Network/*/read",
-                  "Microsoft.Compute/*/read",
-                  "Microsoft.Compute/virtualMachines/start/action",
-                  "Microsoft.Compute/virtualMachines/restart/action",
-                  "Microsoft.Authorization/*/read",
-                  "Microsoft.Resources/subscriptions/resourceGroups/read",
-                  "Microsoft.Insights/alertRules/*",
-                  "Microsoft.Insights/diagnosticSettings/*",
-                  "Microsoft.Support/*"
-  ],
-  "NotActions":  [
-
-                 ],
-  "DataActions":  [
-
-                  ],
-  "NotDataActions":  [
-
-                     ],
-  "AssignableScopes":  [
-                           "/subscriptions/{subscriptionId1}",
-                           "/subscriptions/{subscriptionId2}",
-                           "/subscriptions/{subscriptionId3}"
-                       ]
-}
-```
-
-## <a name="see-also"></a>Další informace najdete v tématech
+## <a name="next-steps"></a>Další postup
 
 * [Předdefinované role](built-in-roles.md)
 * [Vlastní role](custom-roles.md)
-* [Operace zprostředkovatele prostředků v Azure Resource Manager](resource-provider-operations.md)
+* [Operace poskytovatele prostředků Azure Resource Manageru](resource-provider-operations.md)

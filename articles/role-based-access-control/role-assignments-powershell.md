@@ -1,6 +1,6 @@
 ---
-title: Správa přístupu pomocí RBAC a prostředí Azure PowerShell | Microsoft Docs
-description: Zjistěte, jak chcete spravovat přístup pro uživatele, skupiny a aplikace, pomocí řízení přístupu na základě role (RBAC) a prostředí Azure PowerShell. To zahrnuje jak přístup, udělení přístupu a odebrání přístupu.
+title: Správa přístupu pomocí RBAC a prostředí Azure PowerShell | Dokumentace Microsoftu
+description: Zjistěte, jak spravovat přístup pro uživatele, skupiny nebo aplikace, pomocí řízení přístupu na základě role (RBAC) a prostředí Azure PowerShell. To zahrnuje výpis přístupu, udělení přístupu a odebrání přístupu.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,35 +8,35 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1b75443f442affea2f1010605bb9aa330043336a
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: dcc324f3b6c5153b294719ff8939aed8a3e82b1c
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36319579"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436826"
 ---
 # <a name="manage-access-using-rbac-and-azure-powershell"></a>Správa přístupu pomocí RBAC a prostředí Azure PowerShell
 
-[Řízení přístupu na základě role (RBAC)](overview.md) je způsob, která můžete spravovat přístup k prostředkům v Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny a aplikace pomocí RBAC a prostředí Azure PowerShell.
+[Řízení přístupu na základě role (RBAC)](overview.md) je způsob správy přístupu k prostředkům v Azure. Tento článek popisuje, jak spravovat přístup pro uživatele, skupiny nebo aplikace pomocí RBAC a prostředí Azure PowerShell.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li spravovat přístup, je třeba jednu z následujících:
+Ke správě přístupu, potřebujete jeden z následujících akcí:
 
-* [Prostředí PowerShell v prostředí cloudu Azure](/azure/cloud-shell/overview)
+* [PowerShell ve službě Azure Cloud Shell](/azure/cloud-shell/overview)
 * [Azure PowerShell](/powershell/azure/install-azurerm-ps)
 
-## <a name="list-roles"></a>Seznam rolí
+## <a name="list-roles"></a>Výpis rolí
 
-### <a name="list-all-available-roles"></a>Zobrazí seznam všech dostupných rolí
+### <a name="list-all-available-roles"></a>Seznam všech dostupných rolí
 
-Rolím RBAC seznamu, které jsou k dispozici pro přiřazení a chcete-li prověřit operací, u kterých se udělit přístup, použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
+Do role RBAC seznamu, které jsou k dispozici pro přiřazení a ke kontrole operací, u kterých udělují přístup, použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
 
 ```azurepowershell
 Get-AzureRmRoleDefinition | FT Name, Description
@@ -56,9 +56,9 @@ Automation Operator                               Automation Operators are able 
 ...
 ```
 
-### <a name="list-a-specific-role"></a>Seznam určité role
+### <a name="list-a-specific-role"></a>Vypsat konkrétní roli
 
-K zobrazení seznamu určité role, použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
+Seznam určité role, použít [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
 
 ```azurepowershell
 Get-AzureRmRoleDefinition <role name>
@@ -77,9 +77,9 @@ NotActions       : {Microsoft.Authorization/*/Delete, Microsoft.Authorization/*/
 AssignableScopes : {/}
 ```
 
-### <a name="list-a-specific-role-in-json-format"></a>Seznam určité role ve formátu JSON
+### <a name="list-a-specific-role-in-json-format"></a>Vypsat konkrétní roli ve formátu JSON
 
-K zobrazení seznamu určité role ve formátu JSON, použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
+Chcete-li vypsat konkrétní roli ve formátu JSON, použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
 
 ```azurepowershell
 Get-AzureRmRoleDefinition <role name> | ConvertTo-Json
@@ -109,7 +109,7 @@ PS C:\> Get-AzureRmRoleDefinition "Contributor" | ConvertTo-Json
 
 ### <a name="list-actions-of-a-role"></a>Seznam akcí role
 
-K zobrazení seznamu akce pro určité role, použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
+Seznam akcí pro určité role, použít [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
 
 ```azurepowershell
 Get-AzureRmRoleDefinition <role name> | FL Actions, NotActions
@@ -142,13 +142,13 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 ...
 ```
 
-## <a name="list-access"></a>Přístup k seznamu
+## <a name="list-access"></a>Výpis přístupu
 
 V RBAC pro přístup k seznamu, můžete seznam přiřazení rolí.
 
-### <a name="list-role-assignments-at-a-specific-scope"></a>Seznam přiřazení rolí na konkrétní rozsah
+### <a name="list-role-assignments-at-a-specific-scope"></a>Seznam přiřazení rolí v konkrétním oboru
 
-Zobrazí všechna přiřazení rolí pro zadané předplatné, skupinu prostředků nebo prostředek. Například pokud chcete zobrazit všech active přiřazení pro skupinu prostředků, použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
+Zobrazí se všechna přiřazení rolí pro zadané předplatné, skupinu prostředků nebo prostředek. Například pokud chcete zobrazit všechny aktivní přiřazení pro skupinu prostředků, použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
 ```azurepowershell
 Get-AzureRmRoleAssignment -ResourceGroupName <resource group name>
@@ -170,9 +170,9 @@ RoleDefinitionName : Virtual Machine Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales-projectforecast
 ```
 
-### <a name="list-role-assignments-for-a-user"></a>Seznam přiřazení role pro uživatele
+### <a name="list-role-assignments-for-a-user"></a>Výpis přiřazení rolí pro uživatele
 
-K zobrazení seznamu všech rolí, které jsou přiřazeny pro zadaného uživatele, použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
+K zobrazení seznamu všech rolí, které jsou přiřazeny k zadané uživatele, použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
 ```azurepowershell
 Get-AzureRmRoleAssignment -SignInName <user email>
@@ -186,7 +186,7 @@ RoleDefinitionName : BizTalk Contributor
 Scope              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/pharma-sales-projectforecast
 ```
 
-K zobrazení seznamu všech rolí, které jsou přiřazeny pro zadaného uživatele a role, které jsou přiřazeny do skupin, do kterých uživatel patří, použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
+Chcete-li vypsat všechny role, které jsou přiřazeny pro zadaného uživatele a role, které jsou přiřazeny do skupin, do kterých uživatel patří, použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
 ```azurepowershell
 Get-AzureRmRoleAssignment -SignInName <user email> -ExpandPrincipalGroups
@@ -196,9 +196,9 @@ Get-AzureRmRoleAssignment -SignInName <user email> -ExpandPrincipalGroups
 Get-AzureRmRoleAssignment -SignInName isabella@example.com -ExpandPrincipalGroups | FL DisplayName, RoleDefinitionName, Scope
 ```
 
-### <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Seznam přiřazení rolí pro správce classic služeb a spolusprávci
+### <a name="list-role-assignments-for-classic-service-administrator-and-co-administrators"></a>Seznam přiřazení rolí správce classic služeb a spolupracujících správců
 
-K přiřazení rolí pro správce classic předplatného a spolusprávci seznamu, použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
+Seznam přiřazení rolí pro klasický správce předplatného a spolupracujících správců, použijte [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
 
 ```azurepowershell
 Get-AzureRmRoleAssignment -IncludeClassicAdministrators
@@ -206,29 +206,29 @@ Get-AzureRmRoleAssignment -IncludeClassicAdministrators
 
 ## <a name="grant-access"></a>Udělení přístupu
 
-V RBAC udělit přístup, můžete vytvořit přiřazení role.
+V RBAC se přístup uděluje vytvořením přiřazení role.
 
 ### <a name="search-for-object-ids"></a>Vyhledejte ID objektů
 
-Pokud chcete přiřadit roli, musíte určit objektu (uživatele, skupiny nebo aplikace) a obor.
+Přiřazení role, je potřeba identifikovat objekt (uživatele, skupinu nebo aplikaci) a obor.
 
-Pokud si nejste jisti ID předplatného, najdete ji v **odběry** okno na portálu Azure, nebo můžete použít [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
+Pokud si nejste jisti ID předplatného, můžete ho najít **předplatná** okna na webu Azure portal nebo můžete použít [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
 
-ID objektu pro skupinu služby Azure AD, použijte [Get-AzureRmADGroup](/powershell/module/azurerm.resources/get-azurermadgroup):
+Chcete-li získat ID objektu skupiny Azure AD, použijte [Get-AzureRmADGroup](/powershell/module/azurerm.resources/get-azurermadgroup):
 
 ```azurepowershell
 Get-AzureRmADGroup -SearchString <group name in quotes>
 ```
 
-ID objektu pro objekt zabezpečení služby Azure AD nebo aplikaci, použijte [Get-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal).
+K získání ID objektu pro aplikaci nebo instanční objekt služby Azure AD, použijte [Get-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal).
 
 ```azurepowershell
 Get-AzureRmADServicePrincipal -SearchString <service name in quotes>
 ```
 
-### <a name="create-a-role-assignment-for-an-application-at-a-subscription-scope"></a>Umožňuje vytvořit přiřazení role pro aplikaci na obor předplatného
+### <a name="create-a-role-assignment-for-an-application-at-a-subscription-scope"></a>Vytvořit přiřazení role aplikace v oboru předplatného
 
-Pokud chcete udělit přístup k aplikaci v oboru předplatné, použijte [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
+Chcete-li udělit přístup k aplikaci v oboru předplatného, použijte [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
 
 ```azurepowershell
 New-AzureRmRoleAssignment -ObjectId <application id> -RoleDefinitionName <role name> -Scope <subscription id>
@@ -248,9 +248,9 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Umožňuje vytvořit přiřazení role pro uživatele v obor skupiny prostředků
+### <a name="create-a-role-assignment-for-a-user-at-a-resource-group-scope"></a>Vytvořit přiřazení role pro uživatele v oboru skupiny prostředků
 
-Pokud chcete udělit přístup na uživatele v oboru skupiny prostředků, použijte [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
+Chcete-li udělit přístup pro uživatele v oboru skupiny prostředků, použijte [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
 
 ```azurepowershell
 New-AzureRmRoleAssignment -SignInName <email of user> -RoleDefinitionName <role name in quotes> -ResourceGroupName <resource group name>
@@ -272,9 +272,9 @@ ObjectType         : User
 CanDelegate        : False
 ```
 
-### <a name="create-a-role-assignment-for-a-group-at-a-resource-scope"></a>Umožňuje vytvořit přiřazení role pro skupinu v oboru prostředků
+### <a name="create-a-role-assignment-for-a-group-at-a-resource-scope"></a>Vytvořit přiřazení role u skupiny v oboru prostředků
 
-Pokud chcete udělit přístup do skupiny v oboru prostředků, použijte [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
+Chcete-li udělit přístup do skupiny v oboru prostředků, použijte [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment).
 
 ```azurepowershell
 New-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name in quotes> -ResourceName <resource name> -ResourceType <resource type> -ParentResource <parent resource> -ResourceGroupName <resource group name>
@@ -303,9 +303,9 @@ ObjectType         : Group
 CanDelegate        : False
 ```
 
-## <a name="remove-access"></a>Odebrat přístup
+## <a name="remove-access"></a>Odebrání přístupu
 
-V RBAC, k odebrání přístupu, je odstranit přiřazení role pomocí [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment).
+V RBAC, k odebrání přístupu, můžete odebrat přiřazení role pomocí [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment).
 
 ```azurepowershell
 Remove-AzureRmRoleAssignment -ObjectId <object id> -RoleDefinitionName <role name> -Scope <scope such as subscription id>
@@ -317,6 +317,6 @@ PS C:\> Remove-AzureRmRoleAssignment -SignInName alain@example.com -RoleDefiniti
 
 ## <a name="next-steps"></a>Další postup
 
-- [Kurz: Udělení přístupu pro skupinu pomocí RBAC a prostředí Azure PowerShell](tutorial-role-assignments-group-powershell.md)
-- [Kurz: Vytvoření vlastní role pomocí Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Správa prostředků pomocí Azure PowerShell](../azure-resource-manager/powershell-azure-resource-manager.md)
+- [Kurz: Udělení přístupu pro skupiny pomocí RBAC a Azure Powershellu](tutorial-role-assignments-group-powershell.md)
+- [Kurz: Vytvoření vlastní role pomocí Azure Powershellu](tutorial-custom-role-powershell.md)
+- [Správa prostředků pomocí Azure Powershellu](../azure-resource-manager/powershell-azure-resource-manager.md)

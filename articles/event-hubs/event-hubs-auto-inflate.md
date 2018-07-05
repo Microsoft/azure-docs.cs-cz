@@ -1,6 +1,6 @@
 ---
-title: Automaticky škálovat jednotky propustnosti Azure Event Hubs | Microsoft Docs
-description: Povolit automatické zvýšilo u oboru názvů automaticky škálování jednotky propustnosti
+title: Automaticky vertikálně navýšit kapacitu jednotek propustnosti centra událostí Azure | Dokumentace Microsoftu
+description: Povolte automatické rozšiřování automaticky vertikálně navýšit kapacitu jednotek propustnosti oboru názvů.
 services: event-hubs
 documentationcenter: na
 author: sethmanheim
@@ -12,52 +12,52 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 07/02/2018
 ms.author: sethm
-ms.openlocfilehash: 20ee0e6cff2a07cbd62a79799eada5708c7a0f07
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 46ed6acc14356221eaf24b03dfa37dc4c76efcbc
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 01/24/2018
-ms.locfileid: "28018605"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434636"
 ---
-# <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automaticky škálovat jednotky propustnosti Azure Event Hubs
+# <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Automaticky vertikálně navýšit kapacitu jednotek propustnosti centra událostí Azure
 
-Azure Event Hubs je vysoce škálovatelná data streamování platformy. Použití služby Event Hubs jako takový často zvyšuje po spuštění pomocí služby. Takové využití je potřeba zvýšit propustnost předem určený jednotky škálování služby Event Hubs a zpracování větší množství přenesených dat. *Zvýšilo automaticky* funkce služby Event Hubs automatické škálování počtu jednotek propustnosti podle potřeb využití. Zvýšení jednotky propustnosti brání scénáře, ve kterém omezování:
+Azure Event Hubs je vysoce škálovatelná platforma pro streamování dat. V důsledku toho Služba Event Hubs využití často zvětšuje po začali používat službu. Použití je potřeba zvýšit předem [jednotek propustnosti](event-hubs-features.md#throughput-units) zpracovat větší množství přenesených dat a škálovat služby Event Hubs. **Automatické rozšiřování** funkce Event Hubs se automaticky zvětší zvýšením počtu jednotek propustnosti, které bude vyhovovat požadavkům využití. Zvýšení jednotek propustnosti brání omezení scénáře, ve kterém:
 
-* Datové sazby příchozího překročit jednotky propustnosti sady.
-* Sazby žádost o sazbách za odchozí data překročit jednotky propustnosti sady.
+* Sazby za příchozí přenos dat překročí sady jednotek propustnosti.
+* Žádost o přenosy dat překročí sady jednotek propustnosti.
 
-## <a name="how-auto-inflate-works"></a>Jak funguje automatické zvýšilo
+## <a name="how-auto-inflate-works"></a>Jak funguje automatické rozšiřování
 
-Je provoz Event Hubs řízená prostřednictvím jednotek propustnosti. Jedna jednotka propustnosti umožňuje 1 MB za sekundu příjem příchozích dat a dvakrát toto množství odchozí. Standardní služba event hubs se dá nakonfigurovat s 1-20 jednotek propustnosti. Automatické zvýšilo umožňuje začněte v malém rozsahu u jednotek minimální požadované propustnost. Funkci pak škáluje automaticky maximálnímu limitu jednotek propustnosti, které potřebujete, v závislosti na zvýšení provozu. Zvýšilo automaticky poskytuje následující výhody:
+Event Hubs provoz se řídí [jednotek propustnosti](event-hubs-features.md#throughput-units). Za druhé příchozího přenosu dat a dvakrát šířka odchozích přenosů dat umožňuje jedna jednotka propustnosti 1 MB. Centra událostí úrovně Standard může mít nakonfigurovanou 1 až 20 jednotek propustnosti. Automatické rozšiřování umožňuje začít v malém s jednotkami minimální požadované propustnosti, které zvolíte. Funkce pak automaticky škáluje do maximálního počtu jednotek propustnosti, které potřebujete, v závislosti na nárůst objemu provozu. Automatické rozšiřování poskytuje následující výhody:
 
-- Efektivní škálování mechanismus začněte v malém rozsahu a škálovat postupně.
-- Automaticky škálovat zadanou horní limit bez omezení problémy.
-- Větší kontrolu nad škálování, jak můžete řídit, kdy a jak mnohem škálování.
+- Efektivní škálování mechanismus začít v malém a vertikálně navyšujte kapacitu podle bude vaše firma růst.
+- Automatické škálování na zadané horní mez bez omezení problémy.
+- Větší kontrolu nad Škálováním, protože můžete určit, kdy a jak velký bude škálování.
 
-## <a name="enable-auto-inflate-on-a-namespace"></a>Povolit automatické rozšířené na obor názvů
+## <a name="enable-auto-inflate-on-a-namespace"></a>Povolit automatické rozšiřování oboru názvů
 
-Můžete povolit nebo zakázat automatické zvýšilo na na obor názvů služby Event Hubs některou z následujících metod:
+Můžete povolit nebo zakázat automatické rozšiřování na obor názvů služby Event Hubs pomocí jedné z následujících metod:
 
-1. [Portál Azure](https://portal.azure.com).
-2. Šablonu Azure Resource Manager.
+- [Webu Azure portal](https://portal.azure.com).
+- [Šablony Azure Resource Manageru](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate).
 
-### <a name="enable-auto-inflate-through-the-portal"></a>Povolit automatické zvýšilo prostřednictvím portálu
+### <a name="enable-auto-inflate-through-the-portal"></a>Povolit automatické rozšiřování prostřednictvím portálu
 
-Při vytváření na obor názvů služby Event Hubs můžete povolit funkci zvýšilo automaticky:
+Při vytváření oboru názvů Event Hubs můžete povolit funkci automatické rozšiřování:
  
 ![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate1.png)
 
-Když povolíte tuto možnost můžete začněte v malém rozsahu na vaší jednotky propustnosti a škálovat vaše využití stačit zvýšení. Horní limit pro inflační neovlivňuje okamžitě ceny, které závisí na počtu jednotek propustnosti použít za hodinu.
+Tato možnost povolená můžete začít v malém s kapacitu jednotek propustnosti a vertikálně navyšujte kapacitu podle využití musí zvýšení. Horní mez pro inflaci nemá vliv na okamžitě ceny, které závisí na počtu použitých jednotek propustnosti za hodinu.
 
-Můžete také povolit automatické zvýšilo pomocí **škálování** možnost v podokně nastavení na portálu:
+Můžete také povolit automatické rozšiřování pomocí **škálování** možnost v podokně nastavení na portálu:
  
 ![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
 
-### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Povolit automatické zvýšilo pomocí šablony Azure Resource Manager
+### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Povolit automatické rozšiřování pomocí šablony Azure Resource Manageru
 
-Můžete povolit zvýšilo automaticky během nasazení šablony Azure Resource Manager. Například nastavit `isAutoInflateEnabled` vlastnost **true** a nastavte `maximumThroughputUnits` do 10.
+Povolit automatické rozšiřování při nasazení šablony Azure Resource Manageru. Například nastavit `isAutoInflateEnabled` vlastnost **true** a nastavte `maximumThroughputUnits` až 10. Příklad:
 
 ```json
 "resources": [
@@ -100,7 +100,7 @@ Můžete povolit zvýšilo automaticky během nasazení šablony Azure Resource 
     ]
 ```
 
-Úplnou šablonu, najdete v článku [centra událostí vytvořit obor názvů a povolit zvýšilo](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) šablony na Githubu.
+Úplnou šablonu najdete v článku [oboru názvů Event Hubs vytvořit a povolit rozšiřování](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) šablony na Githubu.
 
 ## <a name="next-steps"></a>Další postup
 

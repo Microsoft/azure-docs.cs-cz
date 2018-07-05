@@ -5,17 +5,17 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d8ee78ecb253e0b29fd0c2fee2388195c8aa6918
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5007e18db0af40621ab4b30a16d705d3a5b3915c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596834"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443813"
 ---
-# <a name="create-relationships"></a>Vytvoření relace
+# <a name="create-relationships"></a>Vytvoření relací
 
 V této lekci ověříte relace, které se automaticky vytvořily při importu dat, a přidáte nové relace mezi různými tabulkami. Relace je propojení dvou tabulek, které určuje, jakým způsobem se data v těchto tabulkách mají korelovat. Například tabulky DimProduct a DimProductSubcategory mají relaci na základě toho, že každý produkt patří do nějaké podkategorie. Další informace najdete v tématu [Relace](https://docs.microsoft.com/sql/analysis-services/tabular-models/relationships-ssas-tabular).
   

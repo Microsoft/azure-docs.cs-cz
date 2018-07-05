@@ -1,5 +1,5 @@
 ---
-title: Přiřazení role pro prostředků Azure pomocí Privileged Identity managementu | Microsoft Docs
+title: Přiřazení rolí pro prostředky Azure s použitím Privileged Identity Management | Dokumentace Microsoftu
 description: Popisuje, jak přiřadit role v PIM.
 services: active-directory
 documentationcenter: ''
@@ -7,72 +7,72 @@ author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 246467d5eeebd43b8d89d98a30fdfc1c5ca0909a
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: da5a0e41c476a75f230e2d2645e7f5befd644a93
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233651"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441426"
 ---
-# <a name="assign-roles-for-azure-resources-by-using-privileged-identity-management"></a>Přiřazení role pro prostředků Azure pomocí Privileged Identity Management
+# <a name="assign-roles-for-azure-resources-by-using-privileged-identity-management"></a>Přiřazení rolí pro prostředky Azure s použitím Privileged Identity Management
 
 ## <a name="assign-roles"></a>Přiřazení rolí
 
-Když zobrazujete přiřadit uživatele nebo skupiny k roli **role** podokně, vyberte roli a potom vyberte **přidat uživatele**. 
+Přiřadit uživatele nebo skupiny k roli při zobrazení **role** podokně, vyberte roli a pak vyberte **přidat uživatele**. 
 
-!["Role" podokně s tlačítko "Přidat uživatele"](media/azure-pim-resource-rbac/rbac-assign-roles-1.png)
+![Podokno "Role" tlačítko "Přidat uživatele"](media/azure-pim-resource-rbac/rbac-assign-roles-1.png)
 
 Můžete také vybrat **přidat uživatele** z **členy** podokně.
 
-!["Členy" podokně s tlačítko "Přidat uživatele"](media/azure-pim-resource-rbac/rbac-assign-roles-2.png)
+!["Členy" podokno s tlačítko "Přidat uživatele"](media/azure-pim-resource-rbac/rbac-assign-roles-2.png)
 
 
-Pokud chcete přidat uživatele nebo skupiny z **členy** podokně, budete muset: 
+Pokud přidáváte uživatele nebo skupiny z **členy** podokně, budete muset: 
 
-1. Vyberte roli z **vyberte roli** podokně, abyste mohli vybrat uživatele nebo skupinu.
+1. Zvolte roli z **vybrat roli** podokno, abyste mohli vybrat uživatele nebo skupinu.
 
-   !["Vyberte roli" podokno](media/azure-pim-resource-rbac/rbac-assign-roles-select-role.png)
+   !["Vybrat roli" podokno](media/azure-pim-resource-rbac/rbac-assign-roles-select-role.png)
 
-2. Vyberte uživatele nebo skupiny z adresáře.
+2. Zvolte uživatele nebo skupiny z adresáře.
 
-3. Typ odpovídající přiřazení vyberte z rozevírací nabídky: 
+3. Z rozevírací nabídky vyberte typ odpovídající přiřazení: 
 
-   - **Právě v čase**: poskytuje členy uživatele nebo skupinu oprávněné, ale není trvalý přístup do role v zadaném období nebo po neomezenou dobu (Pokud je nakonfigurováno v nastavení role). 
-   - **Přímé**: uživatel nebo skupina členy aktivovat přiřazení role (označované jako trvalý přístup) nevyžaduje. Doporučujeme používat přímé přiřazení ke krátkodobému použití, kde přístup nebude muset po dokončení úlohy. Příklady jsou posuny na volání a dobou aktivity.
+   - **Za běhu**: poskytuje členům uživatele nebo skupinu oprávnění, ale není trvalý přístup k roli během zadaného období nebo odkládat donekonečna (Pokud je nakonfigurovaný v nastavení role). 
+   - **Přímé**: nevyžaduje, aby uživatel nebo skupina členy aktivovat přiřazení role (označuje se jako trvalý přístup). Doporučujeme používat přímého přiřazení pro krátkodobé použití, ve kterém nesmí být nutný přístup k po dokončení úkolu. Příklady se posune na volání a časově závislé aktivity.
 
-4. Pokud má být přiřazení trvalé (trvale vhodné pro přiřazení za běhu, nebo pro přímé přiřazení trvale aktivní), zaškrtněte níže políčko **typ přiřazení** pole.
+4. Pokud má být přiřazení trvalé (trvalá způsobilost pro přiřazení v čase, nebo trvale aktivní pro přímého přiřazení), zaškrtněte políčko níže **typ přiřazení** pole.
 
-   ![Podokno "Členství nastavení" pole "Typ přiřazení" a odpovídající zaškrtávací políčko](media/azure-pim-resource-rbac/rbac-assign-roles-settings.png)
+   ![Podokno "Nastavení členství" s "přiřazení zadejte" a související zaškrtávacího políčka](media/azure-pim-resource-rbac/rbac-assign-roles-settings.png)
 
    >[!NOTE]
-   >Zaškrtávací políčko může být unmodifiable, pokud jiný správce má zadanou dobu trvání maximální přiřazení pro každý typ přiřazení v nastavení role.
+   >Zaškrtávací políčko může neupravitelných, pokud jiný správce má zadanou přiřazení maximální doba trvání pro každý typ přiřazení v nastavení role.
 
-   K určení doby trvání konkrétní přiřazení, zrušte zaškrtnutí políčka a změnit počáteční nebo koncové datum a čas polí.
+   Chcete-li určit dobu trvání konkrétní přiřazení, zrušte zaškrtnutí políčka a upravit počáteční a koncové datum a čas polí.
 
-   !["Nastavení členství" podokně s polí pro počáteční datum, čas zahájení, koncové datum a čas ukončení](media/azure-pim-resource-rbac/rbac-assign-roles-duration.png)
+   ![Podokno "Nastavení členství" s polí pro počáteční datum, čas zahájení, koncové datum a čas ukončení](media/azure-pim-resource-rbac/rbac-assign-roles-duration.png)
 
 
 ## <a name="manage-role-assignments"></a>Správa přiřazení rolí
 
-Správci mohou spravovat přiřazení rolí tak, že vyberete buď **role** nebo **členy** v levém podokně. Výběr **role** umožňuje správcům určit obor jejich úlohy správy pro určité role. Výběr **členy** zobrazí všechny uživatele a skupiny přiřazení rolí pro prostředek.
+Správci můžou Spravovat přiřazení rolí tak, že vyberete buď **role** nebo **členy** v levém podokně. Výběr **role** umožňuje správcům k určení rozsahu jejich úlohy správy pro konkrétní role. Výběr **členy** zobrazí všechny uživatele a skupiny přiřazení rolí pro prostředek.
 
-![Podokno "Role"](media/azure-pim-resource-rbac/rbac-assign-roles-roles.png)
+!["Role"](media/azure-pim-resource-rbac/rbac-assign-roles-roles.png)
 
-![Podokno "Členy"](media/azure-pim-resource-rbac/rbac-assign-roles-members.png)
+!["Členy" podokno](media/azure-pim-resource-rbac/rbac-assign-roles-members.png)
 
 >[!NOTE]
-Pokud máte role čekající na vyřízení aktivace, banner oznámení se zobrazí v horní části podokna, když zobrazujete členství.
+Pokud máte roli čekající na aktivaci, zobrazí se banner s oznámením v horní části podokna při zobrazení členství.
 
 
 ## <a name="modify-existing-assignments"></a>Upravte existující přiřazení
 
-Chcete-li upravit existující přiřazení ze zobrazení podrobností uživatele nebo skupiny, vyberte **změnit nastavení** z panelu akcí. Změnit typ přiřazení na **těsně v čase** nebo **přímé**.
+Chcete-li upravit existující přiřazení ze zobrazení podrobností uživatele nebo skupiny, vyberte **změnit nastavení** z panelu akcí. Změnit typ přiřazení k **pouze v čase** nebo **přímé**.
 
-![Podokno "Podrobnosti uživatele" pomocí tlačítka "Změnu nastavení"](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)
+![Podokno "Podrobnosti o uživateli" s "Nastavení" tlačítko](media/azure-pim-resource-rbac/rbac-assign-role-manage.png)

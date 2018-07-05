@@ -1,22 +1,22 @@
 ---
 title: Plánovač nasazení služby Azure Site Recovery pro nasazení Hyper-V do Azure| Dokumentace Microsoftu
-description: V tomto článku se naučíte, jak spustit obnovení lokality nasazení planner foro technologie Hyper-V na Azure replikaci.
+description: V tomto článku se naučíte, jak spustit do replikace Azure Site Recovery deployment planner foro Hyper-V.
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: nisoneji
-ms.openlocfilehash: 0293ace13dbcd30988ce571c60f2d7c6a338e779
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 870b8d501db4a31bf7a822bd9c86965bdfa224e4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36287486"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447614"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Spuštění Plánovače nasazení služby Azure Site Recovery pro nasazení Hyper-V do Azure
 
-Můžete spustit obnovení lokality nasazení planner nástroj příkazového řádku (ASRDeploymentPlanner.exe) v některém z těchto čtyř režimů: 
+Site Recovery můžete spustit nástroj Plánovač nasazení příkazového řádku (ASRDeploymentPlanner.exe) v některém z těchto čtyř režimů: 
 -   [Získání seznamu virtuálních počítačů](#get-vm-list-for-profiling-hyper-v-vms)
 -   [Profil](#profile-hyper-v-vms)
 -   [Generování sestav](#generate-report)
@@ -40,7 +40,7 @@ ASRDeploymentPlanner.exe -Operation GetVMList /?
 | -User | Uživatelské jméno pro připojení k hostiteli Hyper-V nebo clusteru Hyper-V. Uživatel musí mít přístup pro správu.|
 | -ServerListFile | Soubor se seznamem serverů obsahujících virtuální počítače, které se mají profilovat. Cesta k souboru může být absolutní nebo relativní. Tento soubor by měl na každém řádku obsahovat jednu z těchto hodnot:<ul><li>IP adresa nebo název hostitele Hyper-V</li><li>IP adresa nebo název clusteru Hyper-V</li></ul><br>**Příklad:** Soubor ServerList.txt obsahuje následující servery:<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
 | -Directory|(Volitelné) Název UNC (Universal Naming Convention) nebo cesta k místnímu adresáři, do kterého se budou ukládat data vygenerovaná během této operace. Pokud název není zadaný, jako výchozí se použije adresář ProfiledData v aktuální cestě.|
-|-OutputFile| (Volitelné) Soubor se seznamem načtených ze serverů Hyper-V virtuální počítače je uložen. Pokud se název neuvede, budou podrobné informace uložené v souboru VMList.txt.  Tento soubor použijte k zahájení profilace, až odeberete virtuální počítače, které se nemusí profilovat.|
+|-OutputFile| (Volitelné) Soubor se seznamem virtuálních počítačů načtený ze serverů Hyper-V je uložen. Pokud se název neuvede, budou podrobné informace uložené v souboru VMList.txt.  Tento soubor použijte k zahájení profilace, až odeberete virtuální počítače, které se nemusí profilovat.|
 |-Password|(Volitelné) Heslo pro připojení k hostiteli Hyper-V. Pokud ho neurčíte jako parametr, budete k tomu vyzváni při spuštění příkazu.|
 
 ### <a name="getvmlist-discovery"></a>Zjišťování GetVMList
@@ -56,7 +56,7 @@ Otevřete výstupní soubor v Poznámkovém bloku a zkopírujte názvy všech vi
 
 #### <a name="store-the-list-of-vms-in-a-file"></a>Uložení seznamu virtuálních počítačů v souboru
 ```
-ASRDeploymentPlanner.exe -Operation GetVMlist -ServerListFile “E:\Hyper-V_ProfiledData\ServerList.txt" -User Hyper-VUser1 -OutputFile "E:\Hyper-V_ProfiledData\VMListFile.txt"
+ASRDeploymentPlanner.exe -Operation GetVMlist -ServerListFile "E:\Hyper-V_ProfiledData\ServerList.txt" -User Hyper-VUser1 -OutputFile "E:\Hyper-V_ProfiledData\VMListFile.txt"
 ```
 
 #### <a name="store-the-list-of-vms-at-the-default-location--directory-path"></a>Uložení seznamu virtuálních počítačů ve výchozím umístění (cesta -Directory)
@@ -128,22 +128,22 @@ Příkaz profilace vygeneruje v adresáři profilace několik souborů. Žádný
 
 #### <a name="profile-vms-for-30-days-and-find-the-throughput-from-on-premises-to-azure"></a>Profilování virtuálních počítačů po dobu 30 dnů a zjištění propustnosti z místního prostředí do Azure
 ```
-ASRDeploymentPlanner.exe -Operation StartProfiling -virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile 30 -User Contoso\HyperVUser1 -StorageAccountName  asrspfarm1 -StorageAccountKey Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+ASRDeploymentPlanner.exe -Operation StartProfiling -virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -NoOfDaysToProfile 30 -User Contoso\HyperVUser1 -StorageAccountName  asrspfarm1 -StorageAccountKey Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
 
 #### <a name="profile-vms-for-15-days"></a>Profilování virtuálních počítačů po dobu 15 dnů
 ```
-ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\vCenter1_ProfiledData\ProfileVMList1.txt”  -NoOfDaysToProfile  15  -User contoso\HypreVUser1
+ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\vCenter1_ProfiledData\ProfileVMList1.txt"  -NoOfDaysToProfile  15  -User contoso\HypreVUser1
 ```
 
 #### <a name="profile-vms-for-60-minutes-for-a-quick-test-of-the-tool"></a>Rychlé otestování nástroje profilováním virtuálních počítačů po dobu 60 minut
 ```
-ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -NoOfMinutesToProfile 60 -User Contoso\HyperVUser1
+ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -NoOfMinutesToProfile 60 -User Contoso\HyperVUser1
 ```
 
 #### <a name="profile-vms-for-2-hours-for-a-proof-of-concept"></a>Profilace virtuálních počítačů po dobu 2 hodin pro testování konceptu
 ```
-ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -NoOfHoursToProfile 2 -User Contoso\HyperVUser1
+ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -NoOfHoursToProfile 2 -User Contoso\HyperVUser1
 ```
 
 ### <a name="considerations-for-profiling"></a>Důležité informace týkající se profilování
@@ -152,7 +152,7 @@ Pokud se server, na kterém je nástroj spuštěný, restartuje nebo na něm doj
 
 Pokud předáte název a klíč účtu úložiště, nástroj bude měřit propustnost v posledním kroku profilace. Pokud bude nástroj zavřen před dokončením profilace, propustnost se nevypočítá. Pokud chcete zjistit propustnost před generováním sestavy, můžete z konzoly příkazového řádku spustit operaci GetThroughput. Jinak vygenerovaná sestava nebude obsahovat informace o propustnosti.
 
-Azure Site Recovery nepodporuje virtuální počítače, které mají iSCSI a průchozí disky. Nástroj nelze rozpoznat a profil iSCSI a průchozí disky, které jsou připojené k virtuálním počítačům.
+Azure Site Recovery nepodporuje virtuální počítače, které mají iSCSI a průchozí disky. Nástroj nemůže detekovat a Profilovat iSCSI a průchozí disky, které jsou připojené k virtuálním počítačům.
 
 ## <a name="generate-a-report"></a>Generování sestav
 Nástroj jako výstup sestavy generuje soubor aplikace Microsoft Excel s podporou maker (soubor XLSM). Ten shrnuje veškerá doporučení pro nasazení. Sestava má název DeploymentPlannerReport_*jedinečný číselný identifikátor*.xlsm a je umístěná v zadaném adresáři.
@@ -192,39 +192,39 @@ Ve výchozím nastavení je tento nástroj konfigurovaný tak, aby profiloval a 
 ### <a name="examples"></a>Příklady
 #### <a name="generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>Generování sestavy s použitím výchozích hodnot pro profilovaná data umístěná na místním disku
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”
+ASRDeploymentPlanner.exe -Operation GenerateReport -virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"
 ```
 
 #### <a name="generate-a-report-when-the-profiled-data-is-on-a-remote-server"></a>Generování sestavy pro profilovaná data umístěná na vzdáleném serveru
 Ke vzdálenému adresáři musíte mít přístup ke čtení a zápisu.
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “\\PS1-W2K12R2\Hyper-V_ProfiledData” -VMListFile “\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt”
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "\\PS1-W2K12R2\Hyper-V_ProfiledData" -VMListFile "\\PS1-W2K12R2\vCenter1_ProfiledData\ProfileVMList1.txt"
 ```
 
 #### <a name="generate-a-report-with-a-specific-bandwidth-that-you-will-provision-for-the-replication"></a>Generování sestavy s konkrétní šířkou pásma, která se zřídí pro replikaci
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt” -Bandwidth 100
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt" -Bandwidth 100
 ```
 
 #### <a name="generate-a-report-with-a-5-percent-growth-factor-instead-of-the-default-30-percent"></a>Generování sestavy s použitím 5% faktoru růstu namísto výchozích 30 % 
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt” -GrowthFactor 5
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt" -GrowthFactor 5
 ```
 
 #### <a name="generate-a-report-with-a-subset-of-profiled-data"></a>Generování sestavy s použitím podmnožiny profilovaných dat
 Máte například profilovaná data za 30 dnů a chcete vygenerovat sestavu pouze pro 20 dnů.
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt” -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
+ASRDeploymentPlanner.exe -Operation GenerateReport -virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt" -StartDate  01-10-2017:12:30 -EndDate 01-19-2017:12:30
 ```
 
 #### <a name="generate-a-report-for-a-5-minute-rpo"></a>Generování sestavy s použitím 5minutového cíle bodu obnovení
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -DesiredRPO 5
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -DesiredRPO 5
 ```
 
 #### <a name="generate-a-report-for-the-south-india-azure-region-with-indian-rupee-and-a-specific-offer-id"></a>Generování sestavy pro oblast Azure Indie – jih s indickými rupiemi a konkrétním ID nabídky
 ```
-ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
+ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
 ```
 
 
@@ -283,7 +283,7 @@ ASRDeploymentPlanner.exe -Operation GetThroughput /?
 
 ### <a name="example"></a>Příklad:
 ```
-ASRDeploymentPlanner.exe -Operation GetThroughput -Virtualization Hyper-V -Directory E:\Hyp-erV_ProfiledData -VMListFile E:\Hyper-V_ProfiledData\ProfileVMList1.txt  -StorageAccountName  asrspfarm1 -StorageAccountKey by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+ASRDeploymentPlanner.exe -Operation GetThroughput -Virtualization Hyper-V -Directory "E:\Hyper-V_ProfiledData" -VMListFile "E:\Hyper-V_ProfiledData\ProfileVMList1.txt"  -StorageAccountName  asrspfarm1 -StorageAccountKey by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
 
 ### <a name="throughput-considerations"></a>Důležité informace o propustnosti

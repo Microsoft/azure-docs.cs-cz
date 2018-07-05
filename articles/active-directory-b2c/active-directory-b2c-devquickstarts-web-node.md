@@ -1,27 +1,27 @@
 ---
-title: Přidání přihlašování do webové aplikace Node.js v Azure Active Directory B2C | Microsoft Docs
-description: Jak vytvořit webovou aplikaci Node.js s přihlašováním uživatelů s Azure Active Directory B2C.
+title: Přidání přihlašování do webové aplikace Node.js v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Jak vytvořit webové aplikace v Node.js s přihlašováním uživatelů pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/10/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b9c589f8bf8189961f88a6ae1d66f1fd9e17e9bc
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ee8dab24d53c7f3563d741ff74e49b0b87cda6da
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711106"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442490"
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: Přidání přihlašování do webové aplikace Node.js
 
 **Passport** je ověřovací middleware pro Node.js. Passport je flexibilní a modulární a lze ho snadno nainstalovat v jakékoli webové aplikaci využívající Express nebo Restify. Komplexní sada strategií podporuje ověřování pomocí uživatelského jména a hesla, Facebooku, Twitteru a dalších.
 
-Pro Azure Active Directory (Azure AD), nainstalujete tento modul a poté přidejte Azure AD `passport-azure-ad` modulu plug-in.
+Pro Azure Active Directory (Azure AD), nainstalujete tento modul a poté přidejte služby Azure AD `passport-azure-ad` modulu plug-in.
 
 Budete muset:
 

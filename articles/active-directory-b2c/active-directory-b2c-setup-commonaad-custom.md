@@ -1,93 +1,93 @@
 ---
-title: Přidání poskytovatele identity více klientů Azure AD pomocí vlastních zásad v Azure Active Directory B2C | Microsoft Docs
-description: Přidání poskytovatele identity více klientů Azure AD pomocí vlastních zásad – Azure Active Directory B2C.
+title: Přidat zprostředkovatele identity více tenanty Azure AD pomocí vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Přidáte zprostředkovatele identity více tenanty Azure AD pomocí vlastních zásad – Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/14/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 83a2ce5d885a446713470c92fc3a638d37d4517d
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 2a8a23245a17c9a80c70860588a8312dbbb5e926
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34709219"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446050"
 ---
-# <a name="azure-active-directory-b2c-allow-users-to-sign-in-to-a-multi-tenant-azure-ad-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Umožňují uživatelům přihlásit se k poskytovateli identity více klientů Azure AD pomocí vlastních zásad
+# <a name="azure-active-directory-b2c-allow-users-to-sign-in-to-a-multi-tenant-azure-ad-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Povolit uživatelům umožní přihlásit k poskytovateli identity více tenantů Azure AD pomocí vlastních zásad
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek ukazuje, jak povolit přihlášení pro uživatele, kteří používají víceklientské koncový bod pro Azure Active Directory (Azure AD) prostřednictvím [vlastní zásady](active-directory-b2c-overview-custom.md). Uživatelé mohou od víc klientů Azure AD pro přihlášení do Azure AD B2C bez konfigurace technické zprostředkovatele pro každého klienta. Ale hosta členy v některém z těchto klientů **nikoli** moct přihlásit. Pro tento, budete muset [individuálně konfigurovat každý klient](active-directory-b2c-setup-aad-custom.md).
+V tomto článku se dozvíte, jak povolit přihlášení pro uživatele, kteří používají více tenantů koncový bod pro službu Azure Active Directory (Azure AD) prostřednictvím [vlastní zásady](active-directory-b2c-overview-custom.md). To umožňuje uživatelům z více tenantů Azure AD pro přihlášení do Azure AD B2C bez konfigurace technické zprostředkovatele pro jednotlivé tenanty. Ale hosta členy v některém z těchto klientů **nebudou** moct přihlásit. K tomu budete muset [konfigurovat jednotlivě každý tenant](active-directory-b2c-setup-aad-custom.md).
 
 >[!NOTE]
-> Používáme "contoso.com" pro organizační klienta Azure AD a "fabrikamb2c.onmicrosoft.com" jako klienta Azure AD B2C v následujících pokynech.
+> Používáme "contoso.com" pro organizační tenanta Azure AD a "fabrikamb2c.onmicrosoft.com" jako tenant Azure AD B2C v následujících pokynech.
 
 ## <a name="prerequisites"></a>Požadavky
 
 Proveďte kroky v [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md) článku.
 
-K těmto krokům patří:
+Tyto kroky zahrnují:
      
-1. Vytvoření Azure Active Directory B2C klienta (Azure AD B2C).
+1. Vytváří se službou Azure Active Directory B2C (Azure AD B2C) tenanta.
 1. Vytvoření aplikace Azure AD B2C.    
-1. Probíhá registrace dvě aplikace modul zásad.  
+1. Registruje se dvěma aplikacemi modul zásad.  
 1. Nastavení klíče. 
-1. Nastavení úvodní pack.
+1. Nastavení úvodní balíček.
 
-## <a name="step-1-create-a-multi-tenant-azure-ad-app"></a>Krok 1. Vytvoření aplikace pro více klientů Azure AD
+## <a name="step-1-create-a-multi-tenant-azure-ad-app"></a>Krok 1. Vytvoření aplikace s více tenanty Azure AD
 
-Povolit přihlášení pro uživatele, kteří používají víceklientské koncového bodu Azure AD, musíte mít aplikaci víceklientské zaregistrován v jednom z vašich klientů Azure AD. V tomto článku jsme vám ukáže, jak vytvořit aplikaci víceklientské služby Azure AD ve vašem klientovi Azure AD B2C. Potom povolte přihlášení pro uživatele pomocí tohoto víceklientské aplikace Azure AD.
+Pokud chcete povolit přihlášení pro uživatele, kteří používají více tenantů koncového bodu Azure AD, musíte mít aplikaci s více tenanty zaregistrovaný v jednom z vašich tenantů Azure AD. V tomto článku vám ukážeme, jak vytvořit aplikaci s více tenanty Azure AD ve vašem tenantovi Azure AD B2C. Povolte přihlášení pro uživatele pomocí tohoto víceklientské aplikace Azure AD.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Na horním panelu vyberte svůj účet. Z **Directory** vyberte klienta Azure AD B2C zaregistrovat aplikaci Azure AD (fabrikamb2c.onmicrosoft.com).
-1. Vyberte **další služby** v levém podokně a vyhledejte "Aplikace registrace."
+1. Na horním panelu vyberte svůj účet. Z **Directory** , zvolte tenanta Azure AD B2C k registraci aplikace Azure AD (fabrikamb2c.onmicrosoft.com).
+1. Vyberte **další služby** v levém podokně a vyhledejte "Registrace aplikací."
 1. Vyberte **Registrace nové aplikace**.
 1. Zadejte název pro vaši aplikaci (například `Azure AD B2C App`).
 1. Jako typ aplikace vyberte položku **Webová aplikace / webové rozhraní API**.
-1. Pro **přihlašovací adresa URL**, zadejte následující adresu URL, kde `yourtenant` je nahrazena název vašeho klienta Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
+1. Pro **přihlašovací adresa URL**, zadejte následující adresu URL, kde `yourtenant` se nahradí názvem vašeho tenanta Azure AD B2C (`fabrikamb2c.onmicrosoft.com`):
 
     >[!NOTE]
-    >Hodnota pro "yourtenant" musí být psaný malými písmeny v **přihlašovací adresa URL**.
+    >Hodnota pro "yourtenant" musí být malými písmeny v **přihlašovací adresa URL**.
 
     ```
     https://login.microsoftonline.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
     ```
 
-1. Uložit ID aplikace.
+1. Uložení ID aplikace.
 1. Vyberte nově vytvořenou aplikaci.
-1. V části **nastavení** vyberte **vlastnosti**.
-1. Nastavit **nevyužívá dělené tabulky více** k **Ano**.
-1. V části **nastavení** vyberte **klíče**.
-1. Vytvořte nový klíč a uložte jej. Budete ho používat v krocích v další části.
+1. V části **nastavení** okně vyberte **vlastnosti**.
+1. Nastavte **víceklientských** k **Ano**.
+1. V části **nastavení** okně vyberte **klíče**.
+1. Vytvořte nový klíč a uložte ho. Použijete ho v krocích v další části.
 
-## <a name="step-2-add-the-azure-ad-key-to-azure-ad-b2c"></a>Krok 2. Přidat klíč Azure AD do Azure AD B2C
+## <a name="step-2-add-the-azure-ad-key-to-azure-ad-b2c"></a>Krok 2. Přidat klíč služby Azure AD do Azure AD B2C
 
-Je třeba zaregistrovat klíč aplikace v Azure AD B2C nastavení. Použijte následující postup:
+Budete muset zaregistrovat klíč aplikace v nastavení Azure AD B2C. Použijte následující postup:
 
 1. Přejděte do nabídky nastavení pro Azure AD B2C
-1. Klikněte na **Identity rozhraní Framework** > **zásad klíče**.
+1. Klikněte na **architekturu rozhraní identit** > **klíče zásad**.
 1. Vyberte **+ přidat**.
 1. Vyberte nebo zadejte tyto možnosti:
    * Vyberte **ruční**.
-   * Pro **název**, zvolte název, který odpovídá název vašeho klienta Azure AD (například `AADAppSecret`).  Předpona `B2C_1A_` se automaticky přidá k názvu klíče.
-   * Vložte klíč vaší aplikace v **tajný klíč** pole.
+   * Pro **název**, zvolte název, který odpovídá název tenanta Azure AD (například `AADAppSecret`).  Předpona, která `B2C_1A_` je automaticky přidán do názvu klíče.
+   * Vložte klíč aplikace v **tajný kód** pole.
    * Vyberte **podpis**.
 1. Vyberte **Vytvořit**.
 1. Potvrďte, že jste vytvořili klíč `B2C_1A_AADAppSecret`.
 
-## <a name="step-3-add-a-claims-provider-in-your-base-policy"></a>Krok 3. Přidání poskytovatele deklarací identity v základní zásady
+## <a name="step-3-add-a-claims-provider-in-your-base-policy"></a>Krok 3. Přidat zprostředkovatele deklarací identity v základních zásadách
 
-Pokud chcete, aby uživatelé přihlásit pomocí služby Azure AD, budete muset definovat Azure AD jako zprostředkovatele deklarací identity. Jinými slovy budete muset zadat koncový bod, který Azure AD B2C bude komunikovat se. Koncový bod poskytne sadu deklarací identity, které používají Azure AD B2C k ověření, že byl ověřen konkrétního uživatele. 
+Pokud chcete uživatelům umožní přihlásit pomocí Azure AD, musíte definovat Azure AD jako poskytovatele deklarací identity. Jinými slovy budete muset zadat koncový bod, který Azure AD B2C bude komunikovat s. Koncový bod poskytne sadu deklarací identity, které používají Azure AD B2C k ověření, že se ověřil konkrétního uživatele. 
 
-Azure AD jako zprostředkovatele deklarací identity můžete definovat přidáním Azure AD `<ClaimsProvider>` uzlu v souboru rozšíření zásad:
+Azure AD jako poskytovatele deklarací identity můžete definovat tak, že přidáte Azure AD, aby `<ClaimsProvider>` uzel v souboru rozšíření zásady:
 
 1. Otevřete soubor rozšíření (TrustFrameworkExtensions.xml) z pracovního adresáře.
-1. Najít `<ClaimsProviders>` části. Pokud neexistuje, přidejte ji do kořenového uzlu.
-1. Přidejte nový `<ClaimsProvider>` uzlu následujícím způsobem:
+1. Najít `<ClaimsProviders>` oddílu. Pokud neexistuje, přidejte ho do kořenového uzlu.
+1. Přidat nový `<ClaimsProvider>` uzel následujícím způsobem:
 
 ```XML
 <ClaimsProvider>
@@ -140,51 +140,51 @@ Azure AD jako zprostředkovatele deklarací identity můžete definovat přidán
 </ClaimsProvider>
 ```
 
-1. V části `<ClaimsProvider>` uzlu, aktualizujte hodnotu pro `<Domain>` k jedinečná hodnota, které je možné ho odlišuje od jiných zprostředkovatelů identity.
+1. V části `<ClaimsProvider>` uzlu, aktualizujte hodnotu `<Domain>` na jedinečnou hodnotu, která je možné, aby se odlišil od jiných zprostředkovatelů identity.
 1. V části `<TechnicalProfile>` uzlu, aktualizujte hodnotu pro `<DisplayName>`. Tato hodnota se zobrazí na tlačítko přihlásit na obrazovce přihlášení.
 1. Aktualizujte hodnotu pro `<Description>`.
-1. Nastavit `<Item Key="client_id">` ID aplikace z registrace mulity klienta aplikace Azure AD.
+1. Nastavte `<Item Key="client_id">` do ID aplikace z registrace aplikace mulity tenanta služby Azure AD.
 
-### <a name="step-31-restrict-access-to-a-specific-list-of-azure-ad-tenants"></a>Krok 3.1 omezení přístupu ke konkrétní seznam klientů Azure AD
+### <a name="step-31-restrict-access-to-a-specific-list-of-azure-ad-tenants"></a>Krok 3.1 omezení přístupu ke konkrétní seznam tenantů Azure AD
 
 > [!NOTE]
-> Pomocí `https://sts.windows.net` hodnotu **ValidTokenIssuerPrefixes** bude povolit všechny uživatele Azure AD pro přihlášení do aplikace.
+> Pomocí `https://sts.windows.net` hodnotu **ValidTokenIssuerPrefixes** všechny služby Azure AD uživatelům umožní přihlášení do vaší aplikace.
 
-Budete muset aktualizovat seznam vystavitelů platný token a omezení přístupu ke konkrétní seznam klientů Azure AD uživatelům můžete přihlásit. Pokud chcete získat hodnoty, budete muset podívejte se na metadata pro každou z konkrétní klienty Azure AD, které chcete mít uživatelé přihlásit z. Formát dat vypadat takhle: `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`, kde `yourAzureADtenant` je název klienta Azure AD (contoso.com nebo žádným jiným klientem Azure AD).
+Budete muset aktualizovat seznam platní Vystavitelé tokenů a omezit přístup na konkrétní seznam tenantů Azure AD, uživatelé můžou přihlásit. K získání hodnot, budete muset podívejte se na metadata pro každou z konkrétních klientů Azure AD, která byste chtěli nechat uživatele přihlásit z. Formát dat vypadá takto: `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration`, kde `yourAzureADtenant` je název tenanta Azure AD (contoso.com nebo žádným jiným tenantem Azure AD).
 1. Otevřete prohlížeč a přejděte na adresu URL metadat.
-1. V prohlížeči vyhledejte objekt 'vystavitele' a zkopírujte jeho hodnotu. Měl by vypadat třeba takto: `https://sts.windows.net/{tenantId}/`.
-1. Vložte hodnotu `ValidTokenIssuerPrefixes` klíč. Můžete přidat více, oddělte je čárkou. Příkladem je označeno jako komentář v ukázce výše XML.
+1. V prohlížeči vyhledejte "vystavitele" objekt a zkopírujte jeho hodnotu. Měl by vypadat nějak takto: `https://sts.windows.net/{tenantId}/`.
+1. Vložte hodnotu `ValidTokenIssuerPrefixes` klíč. Můžete přidat více, oddělte je čárkou. Příkladem je zakomentovaný v ukázce výše XML.
 
-## <a name="step-4-register-the-azure-ad-account-claims-provider"></a>Krok 4. Zaregistrujte poskytovatele deklarací identity účtu služby Azure AD
+## <a name="step-4-register-the-azure-ad-account-claims-provider"></a>Krok 4. Registrace poskytovatele deklarací identity účtu služby Azure AD
 
-### <a name="step-41-make-a-copy-of-the-user-journey"></a>Krok 4.1 vytvořit kopii cesty uživatele
+### <a name="step-41-make-a-copy-of-the-user-journey"></a>Krok 4.1 vytvořte kopii cesty uživatele
 
-Teď je potřeba přidat poskytovatele identit Azure AD na jednu z vaší uživatelské cesty. V tomto okamžiku byla nastavena zprostředkovatele identity, ale není k dispozici v žádném z obrazovky registrace-množství nebo přihlášení.
+Teď musíte přidat zprostředkovatele identity Azure AD do jednoho z vaší cesty uživatele. V tomto okamžiku je nastavený zprostředkovatele identity, ale není k dispozici v některém z obrazovky přihlášení-registrace/přihlášení.
 
-Chcete-li k dispozici, jsme se duplicitní existující uživatele cesty šablony vytvořit a upravit ho tak, aby je také poskytovatele identit Azure AD:
+Chcete-li k dispozici, jsme se vytvořit duplikát cesty existující uživatele šablony a upravte ho tak, aby má také zprostředkovatele identity Azure AD:
 
-1. Otevřete soubor základní zásad (například TrustFrameworkBase.xml).
-1. Najít `<UserJourneys>` elementu a zkopírujte celou `<UserJourney>` uzlu, který zahrnuje `Id="SignUpOrSignIn"`.
-1. Otevřete soubor rozšíření (například TrustFrameworkExtensions.xml) a najděte `<UserJourneys>` elementu. Pokud element neexistuje, přidejte jedno.
-1. Vložte celý `<UserJourney>` uzlu, který jste zkopírovali jako podřízenou `<UserJourneys>` elementu.
-1. Přejmenujte ID nové cesty uživatele (například přejmenování jako `SignUpOrSignUsingAzureAD`). 
+1. Otevřete soubor základní zásady (například TrustFrameworkBase.xml).
+1. Najít `<UserJourneys>` elementu a zkopírujte celý `<UserJourney>` uzel, který zahrnuje `Id="SignUpOrSignIn"`.
+1. Otevřete soubor rozšíření (například TrustFrameworkExtensions.xml) a vyhledejte `<UserJourneys>` elementu. Pokud element neexistuje, přidejte jeden.
+1. Vložit celé `<UserJourney>` uzel, který jste zkopírovali jako podřízený objekt `<UserJourneys>` elementu.
+1. Přejmenovat ID nové cesty uživatele (například přejmenovat jako `SignUpOrSignUsingAzureAD`). 
 
-### <a name="step-42-display-the-button"></a>Zobrazení krok 4.2 "button"
+### <a name="step-42-display-the-button"></a>Krok 4.2 zobrazení "button"
 
-`<ClaimsProviderSelection>` Element je obdobou tlačítko zprostředkovatele identity na obrazovce registrace-množství nebo přihlášení. Pokud přidáte `<ClaimsProviderSelection>` element pro Azure AD, nové tlačítko se zobrazí při pojmenováváme uživatele na stránce. Chcete-li přidat tento element:
+`<ClaimsProviderSelection>` Element je obdobou k tlačítku na obrazovce přihlášení-registrace/přihlášení zprostředkovatele identity. Pokud chcete přidat `<ClaimsProviderSelection>` – element pro Azure AD, nové tlačítko se zobrazí při uživatel umístil na stránce. Chcete-li přidat tento element:
 
-1. Najít `<OrchestrationStep>` uzlu, který zahrnuje `Order="1"` v cesty uživatele, který jste vytvořili.
+1. Najít `<OrchestrationStep>` uzel, který zahrnuje `Order="1"` v cestě uživatele, který jste vytvořili.
 1. Přidejte následující:
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="AzureADExchange" />
     ```
 
-1. Nastavit `TargetClaimsExchangeId` na odpovídající hodnotu. Doporučujeme následující stejné konvence jako ostatní:  *\[ClaimProviderName\]Exchange*.
+1. Nastavte `TargetClaimsExchangeId` na odpovídající hodnotu. Doporučujeme stejnou konvencí jako ostatní:  *\[ClaimProviderName\]Exchange*.
 
-### <a name="step-43-link-the-button-to-an-action"></a>Krok 4.3 odkaz na tlačítko akce
+### <a name="step-43-link-the-button-to-an-action"></a>Krok 4.3 odkaz na tlačítko na akci
 
-Nyní když máte tlačítka na místě, budete muset propojit akce. Akce, v takovém případě je pro Azure AD B2C ke komunikaci s Azure AD přijmout token. Odkaz na tlačítko akce pomocí propojení technické profil pro poskytovatele deklarací identity služby Azure AD:
+Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Akce v tomto případě je pro Azure AD B2C ke komunikaci s Azure AD za účelem získání tokenu. Tlačítko odkazu na akci propojením technický profil pro vašeho poskytovatele deklarací identity Azure AD:
 
 1. Najít `<OrchestrationStep>` , který obsahuje `Order="2"` v `<UserJourney>` uzlu.
 1. Přidejte následující:
@@ -194,43 +194,43 @@ Nyní když máte tlačítka na místě, budete muset propojit akce. Akce, v tak
     ```
 
 1. Aktualizace `Id` na stejnou hodnotu jako `TargetClaimsExchangeId` v předchozí části.
-1. Aktualizace `TechnicalProfileReferenceId` na ID technické profil vytvoříte starší (běžné AAD).
+1. Aktualizace `TechnicalProfileReferenceId` ID technického profilu vytvořeného starší (běžné AAD).
 
 ## <a name="step-5-create-a-new-rp-policy"></a>Krok 5: Vytvořte novou zásadu RP
 
-Teď je potřeba aktualizovat soubor předávající stranu, který zahájí cesty uživatele, který jste právě vytvořili:
+Teď je potřeba aktualizovat předávající stranu soubor, který opraví, zahájí se cesty uživatele, který jste právě vytvořili:
  
-1. Vytvořte kopii SignUpOrSignIn.xml v pracovní adresář a přejmenujte ho (například přejmenujte jej na SignUpOrSignInWithAAD.xml).  
-1. Otevřete nový soubor a aktualizace `PolicyId` atribut pro `<TrustFrameworkPolicy>` s jedinečnou hodnotu (například SignUpOrSignInWithAAD). To bude název vaší zásady (například B2C\_1A\_SignUpOrSignInWithAAD). 
-1. Změnit `ReferenceId` atribut `<DefaultUserJourney>` tak, aby odpovídaly ID nové cesty uživatele, který jste vytvořili (SignUpOrSignUsingAzureAD). 
-1. Uložte změny a soubor odešlete. 
+1. Vytvořte kopii SignUpOrSignIn.xml ve svém pracovním adresáři a přejmenujte jej (například, přejmenujte ho na SignUpOrSignInWithAAD.xml).  
+1. Otevřete nový soubor a aktualizace `PolicyId` atributu `<TrustFrameworkPolicy>` s jedinečnou hodnotu (například SignUpOrSignInWithAAD). To bude název zásady (například B2C\_1A\_SignUpOrSignInWithAAD). 
+1. Upravit `ReferenceId` atribut `<DefaultUserJourney>` tak, aby odpovídaly ID nové cesty uživatele, který jste vytvořili (SignUpOrSignUsingAzureAD). 
+1. Uložte změny a nahrajte soubor. 
 
-## <a name="step-6-upload-the-policy-to-your-tenant"></a>Krok 6: Nahrajte zásady klienta
+## <a name="step-6-upload-the-policy-to-your-tenant"></a>Krok 6: Nahrajte zásady pro vašeho tenanta
 
-1. V [portál Azure](https://portal.azure.com), přepnout [kontextu klienta služby Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a potom vyberte **Azure AD B2C**.
-1. Vyberte **Identity rozhraní Framework**.
+1. V [webu Azure portal](https://portal.azure.com), přepněte [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak vyberte **Azure AD B2C**.
+1. Vyberte **architekturu rozhraní identit**.
 1. Vyberte **všechny zásady**.
 1. Vyberte **nahrát zásady**.
 1. Vyberte **přepsat zásady, pokud existuje** zaškrtávací políčko.
-1. Nahrát `TrustFrameworkExtensions.xml` soubor a soubor RP (například `SignUpOrSignInWithAAD.xml`) a ujistěte se, že projít ověřením.
+1. Nahrát `TrustFrameworkExtensions.xml` soubor a soubor RP (třeba `SignUpOrSignInWithAAD.xml`) a ujistěte se bude úspěšné ověření.
 
-## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>Krok 7: Testování spustit pomocí vlastních zásad
+## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>Krok 7: Test spustit pomocí vlastních zásad
 
-1. Vyberte **nastavení Azure AD B2C**a potom vyberte **Identity rozhraní Framework**.
+1. Vyberte **nastavení Azure AD B2C**a pak vyberte **architekturu rozhraní identit**.
     > [!NOTE]
-    > Spustit nyní vyžaduje alespoň jedné aplikace do být preregistered u klienta. Další postup registrace aplikace najdete v tématu Azure AD B2C [Začínáme](active-directory-b2c-get-started.md) článek nebo [registrace aplikace](active-directory-b2c-app-registration.md) článku.
+    > Spustit nyní vyžaduje aspoň jednu aplikaci do být registrované u klienta. Informace o postupu registrace aplikací, najdete v tématu Azure AD B2C [Začínáme](active-directory-b2c-get-started.md) článku nebo [registrace aplikace](active-directory-b2c-app-registration.md) článku.
 
-1. Otevřete předávající stranu vlastních zásad, které jste odeslali (*B2C\_1A\_SignUpOrSignInWithAAD*) a potom vyberte **spustit nyní**.
-1. Nyní byste měli být moct přihlásit pomocí účtu Azure AD.
+1. Otevřete předávající stranu vlastní zásady, které jste nahráli (*B2C\_1A\_SignUpOrSignInWithAAD*) a pak vyberte **spustit nyní**.
+1. Teď by měl být schopni se přihlásit pomocí účtu Azure AD.
 
-## <a name="optional-step-8-register-the-azure-ad-account-claims-provider-to-the-profile-edit-user-journey"></a>(Volitelné) Krok 8: Registrace zprostředkovatele deklarací identity účtu služby Azure AD k cesty úpravy profilu uživatele
+## <a name="optional-step-8-register-the-azure-ad-account-claims-provider-to-the-profile-edit-user-journey"></a>(Volitelné) Krok 8: Registrace zprostředkovatele deklarací identity účtu služby Azure AD k úpravě profilu cesty uživatele
 
-Můžete také přidat zprostředkovatele identity účtu služby Azure AD, který se vaše `ProfileEdit` cesty uživatele. Chcete-li uživatel cesty k dispozici, opakujte kroky 4 až 6. Tentokrát vyberte `<UserJourney>` uzlu, který obsahuje `Id="ProfileEdit"`. Uložit, odeslání a testování vaší zásady.
+Můžete také přidat zprostředkovatele identity účtu služby Azure AD pro vaši `ProfileEdit` cesty uživatele. Chcete-li k dispozici cesty uživatele, opakujte kroky 4 až 6. Tentokrát vyberte `<UserJourney>` uzel, který obsahuje `Id="ProfileEdit"`. Uložit nahrát a testování vaší zásady.
 
 ## <a name="troubleshooting"></a>Řešení potíží
 
-K diagnostikování problémů, přečtěte si informace o [řešení potíží s](active-directory-b2c-troubleshoot-custom.md).
+K diagnostice problémů, přečtěte si informace o [řešení potíží s](active-directory-b2c-troubleshoot-custom.md).
 
 ## <a name="next-steps"></a>Další postup
 
-Poskytnutí zpětné vazby k [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com).
+Poskytnout zpětnou vazbu k [ AADB2CPreview@microsoft.com ](mailto:AADB2CPreview@microsoft.com).

@@ -1,73 +1,73 @@
 ---
-title: Vytvořit tabulkový model pomocí návrháře Azure Analysis Services – webové | Microsoft Docs
-description: Naučte se vytvořit Azure Analysis Services tabulkový model pomocí návrháře webové na portálu Azure.
+title: Vytváření tabelárního modelu pomocí Azure Analysis Services – webové návrháře | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit tabulkový model služby Azure Analysis Services pomocí webový Návrhář na webu Azure portal.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/23/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 443549b9456d8e7d29e807fb00a9f25be00e6faa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 17ff6ebed615971b4157831431d9e2395ca68b48
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597837"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441671"
 ---
-# <a name="create-a-model-in-azure-portal"></a>Vytvoření modelu na portálu Azure
+# <a name="create-a-model-in-azure-portal"></a>Vytvoření modelu na webu Azure portal
 
-Funkce Azure Analysis Services webová návrháře (preview) na portálu Azure poskytuje rychlý a snadný způsob, jak vytvořit a upravit tabulkové modely a dotazování modelu dat vpravo v prohlížeči. 
+Funkce návrháře (preview) webové služby Azure Analysis Services na webu Azure portal poskytuje rychlý a snadný způsob, jak vytvořit a upravit tabulkové modely a dotazovat data modelu přímo v prohlížeči. 
 
-Mějte na paměti, Návrhář webu je **preview**. Funkce je omezena. Pro pokročilejší model vývoje a testování je nejvhodnější použít Visual Studio (SSDT) a SQL Server Management Studio (SSMS).
+Mějte na paměti, je webový Návrhář **ve verzi preview**. Funkce je omezena. Pro pokročilejší model vývoje a testování je nejvhodnější použít Visual Studio (SSDT) a SQL Server Management Studio (SSMS).
 
 ## <a name="before-you-begin"></a>Než začnete
 
-- Serveru Azure Analysis Services na úroveň Standard nebo Developer. Nové modelů vytvořených pomocí webové návrháře jsou DirectQuery, podporuje pouze tyto vrstvy.
-- Databáze SQL Azure, Azure SQL Data Warehouse nebo souboru Power BI Desktop (.pbix) jako zdroj dat. Nové modely vytvořené pomocí Power BI Desktop soubory podpory Azure SQL Database a Azure SQL Data Warehouse.
-- Účet systému SQL Server a heslo pro připojení ke zdrojům dat databáze SQL Azure nebo Azure SQL Data Warehouse.
+- Server Azure Analysis Services na úrovni Standard a Developer. Nové modely vytvořené pomocí webový Návrhář se DirectQuery, podporuje pouze tyto úrovně.
+- Azure SQL Database, Azure SQL Data Warehouse nebo soubor Power BI Desktopu (.pbix) jako zdroj. Nové modely vytvořené z Power BI Desktopu soubory podpory Azure SQL Database a Azure SQL Data Warehouse.
+- Účet serveru SQL a heslo pro připojení ke zdrojům dat Azure SQL Database nebo Azure SQL Data Warehouse.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
 Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="to-create-a-new-tabular-model"></a>Chcete-li vytvořit nový tabulkový model.
+## <a name="to-create-a-new-tabular-model"></a>Chcete-li vytvořit nový tabulkový model
 
-1. Na vašem serveru **přehled** > **Návrhář**, klikněte na tlačítko **otevřete**.
+1. Na vašem serveru **přehled** > **webový Návrhář**, klikněte na tlačítko **otevřít**.
 
-    ![Vytvoření modelu na portálu Azure](./media/analysis-services-create-model-portal/aas-create-portal-overview-wd.png)
+    ![Vytvoření modelu na webu Azure portal](./media/analysis-services-create-model-portal/aas-create-portal-overview-wd.png)
 
-2. V **Návrhář** > **modely**, klikněte na tlačítko **+ přidat**.
+2. V **webový Návrhář** > **modely**, klikněte na tlačítko **+ přidat**.
 
-    ![Vytvoření modelu na portálu Azure](./media/analysis-services-create-model-portal/aas-create-portal-models.png)
+    ![Vytvoření modelu na webu Azure portal](./media/analysis-services-create-model-portal/aas-create-portal-models.png)
 
-3. V **nový model**, zadejte název modelu a potom vyberte zdroj dat.
+3. V **nový model**, zadejte název modelu a pak vyberte zdroj dat.
 
-    ![Dialogové okno Nový model na portálu Azure](./media/analysis-services-create-model-portal/aas-create-portal-new-model.png)
+    ![Dialogové okno Nový model na webu Azure portal](./media/analysis-services-create-model-portal/aas-create-portal-new-model.png)
 
-4. V **Connect**, zadejte vlastnosti připojení. Uživatelské jméno a heslo musí být účet systému SQL Server.
+4. V **připojit**, zadejte vlastnosti připojení. Uživatelské jméno a heslo musí být účet systému SQL Server.
 
-     ![Připojit dialogové okno na portálu Azure](./media/analysis-services-create-model-portal/aas-create-portal-connect.png)
+     ![Připojit dialogového okna na webu Azure portal](./media/analysis-services-create-model-portal/aas-create-portal-connect.png)
 
-5. V **tabulek a zobrazení**, vyberte tabulky, které chcete zahrnout do modelu a potom klikněte na **vytvořit**. Jsou automaticky vytvářet relace mezi tabulkami s pár klíčů.
+5. V **tabulek a zobrazení**, vyberte tabulky, které chcete zahrnout do modelu a pak klikněte na tlačítko **vytvořit**. Relace se automaticky vytvoří mezi tabulkami pomocí páru klíčů.
 
-     ![Vyberte tabulky a zobrazení](./media/analysis-services-create-model-portal/aas-create-portal-tables.png)
+     ![Výběr tabulek a zobrazení](./media/analysis-services-create-model-portal/aas-create-portal-tables.png)
 
-Nový model se zobrazí v prohlížeči. Tady můžete:   
+Nový model se zobrazí v prohlížeči. Odsud můžete:   
 
-- Dotaz na data modelu přetažením polí do Návrháře dotazů a přidáte filtry.
-- Vytvořte nové míry v tabulkách.
-- Úpravy metadat modelu s použitím json editor.
-- Visual Studio (SSDT), Power BI Desktop nebo aplikace Excel otevřete model.
+- Dotaz modelu na data přetažením polí do aplikace Návrhář dotazů a přidáním filtrů.
+- Nové míry můžete vytvořte v tabulkách.
+- Úprava metadat modelu pomocí editoru json.
+- Otevřete model v sadě Visual Studio (SSDT), Power BI Desktopu nebo Excelu.
 
-![Vyberte tabulky a zobrazení](./media/analysis-services-create-model-portal/aas-create-portal-query.png)
+![Výběr tabulek a zobrazení](./media/analysis-services-create-model-portal/aas-create-portal-query.png)
 
 > [!NOTE]
-> Když budete upravovat metadata modelu nebo vytvářet nové míry v prohlížeči, ukládáte tyto změny modelu v Azure. Také při práci na modelu SSDT, Power BI Desktop nebo aplikace Excel, můžete získat váš model synchronizován.
+> Když upravit metadata modelu nebo vytvořte nové míry v prohlížeči, které ukládáte tyto změny na váš model v Azure. Také při práci na modelu v sadě SSDT, Power BI Desktopu nebo Excelu, můžete získat model synchronizovaný.
 
 
 ## <a name="next-steps"></a>Další postup 
-[Spravovat role databáze a uživatele](analysis-services-database-users.md)  
+[Spravovat databázové role a uživatele](analysis-services-database-users.md)  
 [Propojení s Excelem](analysis-services-connect-excel.md)  
 
 

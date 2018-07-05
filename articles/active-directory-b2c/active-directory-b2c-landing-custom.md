@@ -1,23 +1,23 @@
 ---
-title: Vlastní zásady pro Azure Active Directory B2C | Microsoft Docs
-description: Vývoj aplikací určených s Azure Active Directory B2C pomocí vlastních zásad.
+title: Vlastní zásady služby Azure Active Directory B2C | Dokumentace Microsoftu
+description: Vývoj aplikací určených pomocí Azure Active Directory B2C pomocí vlastních zásad.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 5/06/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 0a22731f5e047a29e1b9287c6e89b1dc37291f3a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 26469d735d7165e8b21665df6c169bc4668d8a5a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712347"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440514"
 ---
-# <a name="sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies-in-azure-active-directory-b2c"></a>Registrace a přihlašování uživatelů vaší aplikace s použitím vlastní zásady v Azure Active Directory B2C
+# <a name="sign-up-and-sign-in-consumers-in-your-applications-using-custom-policies-in-azure-active-directory-b2c"></a>Registrace a přihlašování uživatelů ve svých aplikacích pomocí vlastních zásad v Azure Active Directory B2C
 
 Vlastní zásady jsou konfigurační soubory, které určují chování tenanta služby Azure AD B2C. Vývojář identit je může plně upravit a přizpůsobit je pro skoro neomezené množství úloh.
 

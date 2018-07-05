@@ -1,37 +1,37 @@
 ---
-title: Protokoly ověřování v Azure Active Directory B2C | Microsoft Docs
-description: Jak vytvářet aplikace přímo pomocí protokolů, které podporuje Azure Active Directory B2C.
+title: Protokoly pro ověřování v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Jak vytvářet aplikace přímo s použitím protokolů, které podporuje Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 09b76cd2235663d76b9973ff722ec6a515c30285
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: e6f722afead39c8a0ba940d9e2cb54d1f197d143
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709678"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442276"
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C: Protokoly pro ověřování
-Azure Active Directory B2C (Azure AD B2C) poskytuje identitu jako služba pro aplikací díky podpoře dvou standardních protokolů: OpenID Connect a OAuth 2.0. Služba je kompatibilní se standardy, ale žádné dvě implementace těchto protokolů můžete mít jemně lišit. 
+Azure Active Directory B2C (Azure AD B2C) poskytuje identitu jako služba pro vaše aplikace díky podpoře dvou standardních oborových protokolů: OpenID Connect a OAuth 2.0. Služba je kompatibilní se standardy, ale žádné dvě implementace těchto protokolů můžete jemně lišit. 
 
-Informace v této příručce je užitečné, pokud napíšete kód přímo odeslání a zpracování žádostí HTTP, nikoli pomocí knihovny otevřeným zdrojem. Doporučujeme, abyste si přečetli tuto stránku před podrobně podrobnosti o jednotlivých určitý protokol. Ale pokud jste již obeznámeni s Azure AD B2C, můžete přejít rovnou na [referenční příručky protokol](#protocols).
+Informace v této příručce je užitečný, pokud při psaní kódu tak, že přímo odesílání a zpracování žádostí HTTP, nikoli pomocí open source knihovna. Doporučujeme, abyste si přečetli tuto stránku předtím, než můžete přejít k podrobnostem jednotlivých určitý protokol. Ale pokud jste již obeznámeni s Azure AD B2C, můžete přejít přímo na [referenční příručky protokol](#protocols).
 
 <!-- TODO: Need link to libraries above -->
 
 ## <a name="the-basics"></a>Základy
-Každá aplikace používající Azure AD B2C musí být zaregistrovaný ve svém adresáři B2C v [portál Azure](https://portal.azure.com). Proces registrace aplikace shromáždí a přiřadí vaší aplikaci několik hodnot:
+Každá aplikace, kterou používá Azure AD B2C musí být zaregistrované ve svém adresáři B2C v [webu Azure portal](https://portal.azure.com). Proces registrace aplikace shromáždí a přiřadí vaší aplikaci několik hodnot:
 
 * **ID aplikace**, které jednoznačně identifikuje vaši aplikaci.
-* A **identifikátor URI pro přesměrování** nebo **balíček identifikátor** který lze použít k cílení odpovědí zpět do vaší aplikace.
-* Pár dalších hodnot konkrétní scénáře. Další informace najdete další [postup registrace vaší aplikace](active-directory-b2c-app-registration.md).
+* A **identifikátor URI pro přesměrování** nebo **balíček identifikátor** , který lze použít k cílení odpovědí zpět do vaší aplikace.
+* Pár dalších hodnot specifické pro scénář. Další informace, přečtěte si [postup při registraci vaší aplikace](active-directory-b2c-app-registration.md).
 
-Po registraci aplikace komunikuje se službou Azure Active Directory (Azure AD) pomocí zasílání požadavků do koncového bodu:
+Po registraci aplikace komunikuje se službou Azure Active Directory (Azure AD) pomocí zasílání požadavků na koncový bod:
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
@@ -42,38 +42,38 @@ Téměř všechny toky OAuth a OpenID Connect čtyři strany podílejí na excha
 
 ![Role OAuth 2.0](./media/active-directory-b2c-reference-protocols/protocols_roles.png)
 
-* **Serveru ověřování** je koncový bod Azure AD. Bezpečně zpracovává nic související s informace o uživateli a přístup. Také obstará vztahy důvěryhodnosti mezi stranami v toku. Zodpovídá za ověření identity uživatele, udělení a odvolání přístupu k prostředkům a vystavování tokenů. Je také označované jako zprostředkovatele identity.
+* **Autorizační server** je koncový bod Azure AD. Zpracovává bezpečně nic související s informací o uživateli a přístup. Zpracovává také vztahy důvěryhodnosti mezi stranami v toku. Zodpovídá za ověření identity uživatele, poskytování a odvolání přístupu k prostředkům a vydávání tokenů. Je také označován jako zprostředkovatele identity.
 
-* **Vlastník prostředku** je obvykle koncového uživatele. Je stranu, která je vlastníkem dat a má možnost povolit třetím stranám umožnit přístup k dané dat nebo prostředků.
+* **Vlastníka prostředku** je obvykle koncového uživatele. Je stranu, která vlastní data a má možnost povolit třetími stranami pro přístup k této dat nebo prostředek.
 
-* **Klienta OAuth** je vaše aplikace. Je identifikována jeho ID aplikace. Je obvykle stranu, která koncovým uživatelům interakci s. Také vyžádá tokeny ze serveru ověřování. Vlastník prostředku musí udělit oprávnění k klienta pro přístup k prostředku.
+* **Klienta OAuth** používá vaše aplikace. Je identifikován jeho ID aplikace. Je to obvykle stran, se koncovým uživatelům pracovat. Požadavky také tokeny od autorizačního serveru. Vlastník prostředku musí udělit svolení pro přístup k prostředku.
 
-* **Server prostředků** je, kde se nachází prostředků nebo data. Důvěřovat serveru ověřování k bezpečně ověřování a autorizaci klienta OAuth. Používá také přístupových tokenů nosiče k zajištění, že lze udělit přístup k prostředku.
+* **Server prostředků** je, ve kterém se nachází zdroj nebo data. Důvěřuje autorizační server pro zabezpečené ověřování a autorizaci klienta OAuth. Využívá také přístupových tokenů nosiče k zajištění, že lze udělit přístup k prostředku.
 
 ## <a name="policies"></a>Zásady
-Pravděpodobně Azure AD B2C zásady jsou nejdůležitější funkce služby. Azure AD B2C rozšiřuje standardní protokoly OAuth 2.0 a OpenID Connect zavedením zásad. Tyto rutiny umožňují Azure AD B2C provést mnohem víc než jednoduché ověřování a autorizace. 
+Nejdůležitější funkce služby jsou pravděpodobně, zásady Azure AD B2C. Úvod do zásad Azure AD B2C je rozšířením standardní protokoly OAuth 2.0 a OpenID Connect. Tyto rutiny umožňují Azure AD B2C k provedení mnohem více než jednoduché ověřování a autorizace. 
 
-Zásady plně popisují činnosti identity uživatelů, včetně registrace, přihlášení a úpravy profilu. Zásady můžete být definován v správu uživatelského rozhraní. Mohou být provedeny s použitím parametru speciální dotazu v žádosti o ověření protokolu HTTP. 
+Zásady plně popisují činnosti identity uživatelů, včetně registrace, přihlášení a úpravy profilu. Zásady můžete definovat v správu uživatelského rozhraní. Mohou být provedeny s použitím parametru speciální dotazu v žádosti o ověření protokolu HTTP. 
 
-Zásady nejsou standardní funkce OAuth 2.0 a OpenID Connect, takže byste měli vzít je doba, která je pochopit. Další informace najdete v tématu [Azure AD B2C zásad referenční příručka](active-directory-b2c-reference-policies.md).
+Zásady nejsou standardních funkcí OAuth 2.0 a OpenID Connect, proto byste měli podniknout čas, abyste je líp pochopili. Další informace najdete v tématu [referenční příručka zásady Azure AD B2C](active-directory-b2c-reference-policies.md).
 
 ## <a name="tokens"></a>Tokeny
-Azure AD B2C provádění OAuth 2.0 a OpenID Connect díky rozsáhlé používání tokenů nosiče, včetně nosné tokeny, které jsou reprezentovány jako webové tokeny JSON (Jwt). Je token nosiče tokenu lightweight zabezpečení, který uděluje přístup "nosiče" k chráněnému prostředku.
+Azure AD B2C provádění OAuth 2.0 a OpenID Connect díky rozsáhlé používání šířky nosné tokeny, včetně nosné tokeny, které jsou reprezentovány ve formě webové tokeny JSON (Jwt). Nosný token je token zjednodušené zabezpečení, která uděluje "nosiče" přístup k chráněnému prostředku.
 
-Nosiče je jakékoli strany, který může být token. Azure AD musí je nejdřív ověřit a stranou předtím, než mohl přijímat token nosiče. Ale požadované kroky nebudou přijata zabezpečit token v přenosu a úložiště, můžete zachytit a použít nezamýšleným strana.
+Nositele je každá strana, která může představovat token. Azure AD musí nejdřív ověřit strana předtím, než může přijímat nosný token. Ale pokud nejsou požadované kroky k zabezpečení token v přenos a ukládání, můžete zachytit a používá nežádoucí osobou.
 
-Některé tokeny zabezpečení mají integrovaný mechanismus, které brání neoprávněným stranám jejich používání, ale nosné tokeny nemají tento mechanismus. Musí být přenosu v zabezpečený kanál, jako je například transportní vrstvy zabezpečení (HTTPS). 
+Některé tokeny zabezpečení mají vestavěné mechanismy, které brání neoprávněnému strany jejich používání, ale tento mechanismus není nutné nosné tokeny. Musí být přenášet v zabezpečeného kanálu, například zabezpečení transportní vrstvy (HTTPS). 
 
-Pokud token nosiče je přenesen mimo zabezpečený kanál, škodlivý strany slouží útok man-in-the-middle k získání tokenu a použít ho k získání neoprávněného přístupu k chráněnému prostředku. Stejné zásady zabezpečení platí, když jsou nosné tokeny uložené nebo ukládání do mezipaměti pro pozdější použití. Vždy zajistěte, aby vaše aplikace odesílá a ukládá nosné tokeny zabezpečeným způsobem.
+Pokud nosný token je přenesen mimo zabezpečený kanál, můžete použít škodlivý stran útok man-in-the-middle k získání tokenu a použije ho k získání neoprávněného přístupu k chráněnému prostředku. Stejné zásady zabezpečení platí při nosné tokeny jsou uložená nebo ukládání do mezipaměti pro pozdější použití. Vždy zajistěte, aby vaše aplikace odesílá a ukládá nosné tokeny bezpečným způsobem.
 
-Důležité informace o dalších nosiče tokenu zabezpečení, najdete v části [RFC 6750 část 5](http://tools.ietf.org/html/rfc6750).
+Důležité informace o další nosný token zabezpečení, najdete v části [5 část dokumentu RFC 6750](http://tools.ietf.org/html/rfc6750).
 
 Další informace o různých typech tokenů, které se používají v Azure AD B2C jsou k dispozici v [odkaz tokenu Azure AD](active-directory-b2c-reference-tokens.md).
 
 ## <a name="protocols"></a>Protokoly
-Až budete připraveni ke kontrole některých požadavků příklad, můžete spustit některý z následujících kurzů. Každý scénář konkrétní ověřování odpovídá. Pokud potřebujete pomoc při rozhodování, které tok je pro vás správný, podívejte se na [s typy aplikací můžete vytvořit pomocí Azure AD B2C](active-directory-b2c-apps.md).
+Až budete připraveni ke kontrole některé příklad požadavky, můžete začít s jednou z následujících kurzů. Každý odpovídá konkrétní ověřovacím scénáři. Pokud potřebujete pomoc při rozhodování, která tok je pro vás ta pravá, prohlédněte si [typy aplikací můžete vytvořit pomocí Azure AD B2C](active-directory-b2c-apps.md).
 
-* [Vytvářet aplikace, mobilní a nativní pomocí standardu OAuth 2.0](active-directory-b2c-reference-oauth-code.md)
-* [Vytvoření webové aplikace pomocí OpenID Connect](active-directory-b2c-reference-oidc.md)
-* [Vytvářet jednostránkové aplikace pomocí implicitního toku OAuth 2.0](active-directory-b2c-reference-spa.md)
+* [Vytvářet mobilní a nativní aplikace s použitím OAuth 2.0](active-directory-b2c-reference-oauth-code.md)
+* [Tvořte webové aplikace s použitím OpenID Connect](active-directory-b2c-reference-oidc.md)
+* [Sestavení jednostránkové aplikace pomocí implicitního toku OAuth 2.0](active-directory-b2c-reference-spa.md)
 

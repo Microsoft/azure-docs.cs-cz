@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 7342e0fe69cf3c82ec82bf1a864e7325449fff22
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 87381a27a59d6719f4bfff9ed367598932c1985c
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342248"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436399"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložit a konfigurace konfigurace služby API Management pomocí Gitu
 
@@ -226,7 +226,7 @@ Nastavení konečného `$ref-policy`, mapuje příkazy soubor globálních zása
 ### <a name="groups-folder"></a>složka skupiny
 `groups` Složka obsahuje složku pro jednotlivé skupiny definované v instanci služby.
 
-* `groups\<group name>\configuration.json` – Jedná se o konfiguraci pro skupinu. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [získání konkrétní skupiny](https://msdn.microsoft.com/library/azure/dn776329.aspx#GetGroup) operace.
+* `groups\<group name>\configuration.json` – Jedná se o konfiguraci pro skupinu. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [získání konkrétní skupiny](https://docs.microsoft.com/en-us/rest/api/apimanagement/group/get) operace.
 * `groups\<group name>\description.html` – Toto je popis skupiny a odpovídá `description` vlastnost [skupiny entit](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties).
 
 ### <a name="policies-folder"></a>Složka zásad
@@ -246,7 +246,7 @@ Nastavení konečného `$ref-policy`, mapuje příkazy soubor globálních zása
 ### <a name="products-folder"></a>Složka produkty
 `products` Složka obsahuje složku pro každý produkt definovaný v instanci služby.
 
-* `products\<product name>\configuration.json` – Jedná se o konfiguraci produktu. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [získat konkrétní produkt](https://msdn.microsoft.com/library/azure/dn776336.aspx#GetProduct) operace.
+* `products\<product name>\configuration.json` – Jedná se o konfiguraci produktu. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [získat konkrétní produkt](https://docs.microsoft.com/en-us/rest/api/apimanagement/product/get) operace.
 * `products\<product name>\product.description.html` – Toto je popis produktu a odpovídá `description` vlastnost [entitou produkt](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-product-entity) v rozhraní REST API.
 
 ### <a name="templates"></a>šablony
@@ -255,7 +255,7 @@ Nastavení konečného `$ref-policy`, mapuje příkazy soubor globálních zása
 * `<template name>\configuration.json` – Jedná se o konfiguraci pro e-mailové šablony.
 * `<template name>\body.html` -tělo e-mailové šablony.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 Informace o jiných způsobech ke správě vaší instance služby najdete tady:
 
 * Spravovat pomocí následujících rutin Powershellu pro instance služby

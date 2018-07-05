@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 6/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 354c5da815f19e4366a04c8c031fd9cbca6f060b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: ecb9cfa08888a8998473a7f23f1b4de6d12c5808
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711854"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445892"
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: Registrace vaší aplikace
 
@@ -130,7 +130,7 @@ Pokud aplikaci Azure AD B2C upravíte popsaným způsobem a pokusíte se ji znov
 
 Pokud chcete aplikaci odstranit, přejděte na [Portál pro registraci aplikací](https://apps.dev.microsoft.com/) a tam ji odstraňte. Aby byla aplikace viditelná, musíte být vlastníkem aplikace (nestačí být pouze správcem tenanta).
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Jakmile budete mít aplikaci registrovanou pomocí Azure AD B2C, můžete absolvovat jeden z [našich kurzů pro rychlý start](active-directory-b2c-overview.md), který vám pomůže uvést ji do provozu.
 

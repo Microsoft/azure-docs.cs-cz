@@ -1,23 +1,23 @@
 ---
-title: Přidat Google + jako zprostředkovatele identity OAuth2 pomocí vlastních zásad v Azure Active Directory B2C | Microsoft Docs
-description: Ukázka použití Google + jako zprostředkovatele identity pomocí protokolu OAuth2.
+title: Přidat služby Google + jako zprostředkovatele identity OAuth2 pomocí vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Ukázka pomocí Google + jako zprostředkovatele identity pomocí protokolu OAuth2.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 3be17ca815910b7472a8760529971bd6c2016792
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 19b7f708d43907ac45450a64f988b2a517293511
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34709270"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446703"
 ---
-# <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Přidejte Google + jako zprostředkovatele identity OAuth2 pomocí vlastních zásad
+# <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: Přidání Google + jako zprostředkovatele identity OAuth2 pomocí vlastních zásad
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -27,88 +27,88 @@ Tento průvodce vám ukáže, jak povolit přihlášení pro uživatele z účtu
 
 Proveďte kroky v [Začínáme s vlastními zásadami](active-directory-b2c-get-started-custom.md) článku.
 
-K těmto krokům patří:
+Tyto kroky zahrnují:
 
 1.  Vytvoření aplikace pro účet Google +.
 2.  Přidání aplikace klíč účtu Google + do Azure AD B2C
-3.  Přidání poskytovatele deklarací identity k zásadě
-4.  Registrace Google + účet zprostředkovatele deklarací identity pro uživatele cesty
-5.  Odeslání zásady do Azure AD B2C klienta a otestovat ji
+3.  Přidání poskytovatele deklarací identity do zásad
+4.  Registrace Google + účet zprostředkovatele deklarací identity pro cestu uživatele
+5.  Odeslání zásady do Azure AD B2C tenanta a testování
 
-## <a name="create-a-google-account-application"></a>Vytvoření aplikace účet Google +
-Pokud chcete používat Google + jako poskytovatel identit v Azure Active Directory (Azure AD) B2C, musíte vytvořit aplikaci Google + a zadat se správné parametry. Můžete zaregistrovat Google aplikace + tady: [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp)
+## <a name="create-a-google-account-application"></a>Vytvoření účtu aplikace Google +.
+Pokud chcete používat Google + jako zprostředkovatele identity v Azure Active Directory (Azure AD) B2C, budete muset vytvoření aplikace služby Google + a zadejte správné parametry. Můžete zaregistrovat Google + aplikace tady: [https://accounts.google.com/SignUp](https://accounts.google.com/SignUp)
 
-1.  Přejděte na [konzole pro vývojáře Google](https://console.developers.google.com/) a přihlaste se pomocí přihlašovací údaje účtu Google +.
-2.  Klikněte na tlačítko **vytvořit projekt**, zadejte **název projektu**a potom klikněte na **vytvořit**.
+1.  Přejděte [konzole pro vývojáře Google](https://console.developers.google.com/) a přihlaste se pomocí pověření účtu Google +.
+2.  Klikněte na tlačítko **vytvořit projekt**, zadejte **název projektu**a potom klikněte na tlačítko **vytvořit**.
 
-3.  Klikněte na **projekty nabídky**.
+3.  Klikněte na **nabídce projekty**.
 
-    ![Google + účet – vyberte projektu](media/active-directory-b2c-custom-setup-goog-idp/goog-add-new-app1.png)
+    ![Google + účet – výběr projektu](media/active-directory-b2c-custom-setup-goog-idp/goog-add-new-app1.png)
 
 4.  Klikněte na **+** tlačítko.
 
-    ![Google + účet – vytvoření nového projektu](media/active-directory-b2c-custom-setup-goog-idp//goog-add-new-app2.png)
+    ![Google + účtu – vytvoření nového projektu](media/active-directory-b2c-custom-setup-goog-idp//goog-add-new-app2.png)
 
-5.  Zadejte **název projektu**a potom klikněte na **vytvořit**.
+5.  Zadejte **název projektu**a potom klikněte na tlačítko **vytvořit**.
 
     ![Google + účet – nový projekt](media/active-directory-b2c-custom-setup-goog-idp//goog-app-name.png)
 
-6.  Počkejte, dokud není připraven na projekt a klikněte na **projekty nabídky**.
+6.  Počkejte, až projekt je připravený a klikněte na **nabídce projekty**.
 
-    ![Google + účet – Počkejte, až je připravený k použití nového projektu](media/active-directory-b2c-custom-setup-goog-idp//goog-select-app1.png)
+    ![Google + účet – Počkejte, než je připravený k použití nového projektu](media/active-directory-b2c-custom-setup-goog-idp//goog-select-app1.png)
 
-7.  Klikněte na název projektu.
+7.  Klikněte na název vašeho projektu.
 
     ![Google + účet – vyberte nový projekt](media/active-directory-b2c-custom-setup-goog-idp//goog-select-app2.png)
 
-8.  Klikněte na tlačítko **rozhraní API Správce** a pak klikněte na **pověření** v levém navigačním panelu.
-9.  Klikněte **obrazovky souhlas OAuth** v horní části.
+8.  Klikněte na tlačítko **správce rozhraní API** a potom klikněte na tlačítko **pověření** v levém navigačním panelu.
+9.  Klikněte na tlačítko **obrazovku se souhlasem OAuth** kartě v horní části.
 
-    ![Google + účet – nastavte OAuth souhlasu obrazovky](media/active-directory-b2c-custom-setup-goog-idp/goog-add-cred.png)
+    ![Google + účet – obrazovku se souhlasem OAuth nastavení](media/active-directory-b2c-custom-setup-goog-idp/goog-add-cred.png)
 
-10.  Vyberte nebo zadejte platný **e-mailová adresa**, poskytovat **název produktu**a klikněte na tlačítko **Uložit**.
+10.  Vyberte nebo zadejte platný **e-mailová adresa**, zadejte **název produktu**a klikněte na tlačítko **Uložit**.
 
-    ![Google + - přihlašovací údaje aplikací](media/active-directory-b2c-custom-setup-goog-idp/goog-consent-screen.png)
+    ![Google +.-aplikace přihlašovacích údajů](media/active-directory-b2c-custom-setup-goog-idp/goog-consent-screen.png)
 
-11.  Klikněte na tlačítko **nové přihlašovací údaje** a potom zvolte **ID klienta OAuth**.
+11.  Klikněte na tlačítko **nové přihlašovací údaje** a klikněte na tlačítko **ID klienta OAuth**.
 
-    ![Google + - vytvořit nové přihlašovací údaje aplikací](media/active-directory-b2c-custom-setup-goog-idp/goog-add-oauth2-client-id.png)
+    ![Google + - vytvořit nové přihlašovací údaje aplikace](media/active-directory-b2c-custom-setup-goog-idp/goog-add-oauth2-client-id.png)
 
-12.  V části **typ aplikace**, vyberte **webové aplikace**.
+12.  V části **typ aplikace**vyberte **webovou aplikaci**.
 
-    ![Google + - výběr typu aplikace](media/active-directory-b2c-custom-setup-goog-idp/goog-web-app.png)
+    ![Google + – výběr typu aplikace](media/active-directory-b2c-custom-setup-goog-idp/goog-web-app.png)
 
-13.  Zadejte **název** pro vaši aplikaci, zadejte `https://login.microsoftonline.com` v **zdroje oprávnění JavaScript** pole, a `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` v **autorizováno přesměrování identifikátory URI** pole. Nahraďte **{klient}** s názvem vašeho klienta (například contosob2c.onmicrosoft.com). **{Klient}** hodnota je malá a velká písmena. Klikněte na možnost **Vytvořit**.
+13.  Zadejte **název** pro vaši aplikaci, zadejte `https://login.microsoftonline.com` v **oprávnění JavaScript zdroje** pole, a `https://login.microsoftonline.com/te/{tenant}/oauth2/authresp` v **identifikátory URI pro přesměrování autorizovaní** pole. Nahraďte **{klient}** s názvem vašeho tenanta (například contosob2c.onmicrosoft.com). **{Klient}** hodnota je velká a malá písmena. Klikněte na možnost **Vytvořit**.
 
-    ![Google + - zadejte oprávnění JavaScript zdroje a identifikátory URI pro přesměrování](media/active-directory-b2c-custom-setup-goog-idp/goog-create-client-id.png)
+    ![Google +. - zadat oprávnění JavaScript zdroje a identifikátory URI pro přesměrování](media/active-directory-b2c-custom-setup-goog-idp/goog-create-client-id.png)
 
-14.  Zkopírujte hodnoty z **Id klienta** a **tajný klíč klienta**. Je nutné obě konfigurace Google + jako zprostředkovatele identity ve vašem klientovi. **Tajný klíč klienta** je důležitým bezpečnostním pověřením.
+14.  Zkopírujte hodnoty **Id klienta** a **tajný kód klienta**. Je třeba obě konfigurace Google + jako zprostředkovatele identity ve vašem tenantovi. **Tajný kód klienta** je důležitým bezpečnostním pověřením.
 
-    ![Google + - zkopírujte hodnoty Id a klienta sdílený tajný klíč klienta](media/active-directory-b2c-custom-setup-goog-idp/goog-client-secret.png)
+    ![Google + - kopírování hodnot klienta Id a tajný klíč klienta](media/active-directory-b2c-custom-setup-goog-idp/goog-client-secret.png)
 
-## <a name="add-the-google-account-application-key-to-azure-ad-b2c"></a>Klíč aplikace účet Google + přidat do Azure AD B2C
-Federace se Google + účty vyžaduje tajný klíč klienta pro účet Google + do vztahu důvěryhodnosti Azure AD B2C jménem aplikace. Je třeba uložit vaše Google + tajný klíč aplikace v Azure AD B2C klienta:  
+## <a name="add-the-google-account-application-key-to-azure-ad-b2c"></a>Přidat do Azure AD B2C aplikace klíč účtu Google +.
+Federace se službou Google + účty se vyžaduje tajný kód klienta pro účet Google +. pro vztah důvěryhodnosti Azure AD B2C jménem aplikace. Potřebujete ukládat vaše Google + tajný klíč aplikace v tenantovi Azure AD B2C:  
 
-1.  Přejděte ke klientovi Azure AD B2C a vyberte **nastavení B2C** > **Identity rozhraní Framework**
-2.  Vyberte **zásad klíče** zobrazíte klíče, které jsou k dispozici ve vašem klientovi.
+1.  Přejděte do svého tenanta Azure AD B2C a vyberte **nastavení B2C** > **architekturu rozhraní identit**
+2.  Vyberte **klíče zásad** zobrazíte klíče, které jsou k dispozici ve vašem tenantovi.
 3.  Klikněte na tlačítko **+ přidat**.
 4.  Pro **možnosti**, použijte **ruční**.
 5.  Pro **název**, použijte `GoogleSecret`.  
-    Předpona `B2C_1A_` může automaticky přidat.
-6.  V **tajný klíč** zadejte tajný klíč Google vaší aplikace z [konzole pro vývojáře Google](https://console.developers.google.com/) zkopírovaného výše.
+    Předpona, která `B2C_1A_` může být automaticky přidán.
+6.  V **tajný kód** zadejte váš tajný klíč aplikace Google z [konzole pro vývojáře Google](https://console.developers.google.com/) , který jste zkopírovali výše.
 7.  Pro **použití klíče**, použijte **podpis**.
 8.  Klikněte na **Vytvořit**
 9.  Potvrďte, že jste vytvořili klíč `B2C_1A_GoogleSecret`.
 
-## <a name="add-a-claims-provider-in-your-extension-policy"></a>Přidání poskytovatele deklarací identity v rozšíření zásady
+## <a name="add-a-claims-provider-in-your-extension-policy"></a>Přidat zprostředkovatele deklarací identity ve svojí zásadě rozšíření
 
-Pokud chcete uživatelům přihlášení pomocí účtu Google +, musíte zadat účet Google + jako poskytovatele deklarací identity. Jinými slovy budete muset zadat koncový bod, který komunikuje se službou Azure AD B2C. Koncový bod poskytuje sadu deklarací identity, které používají Azure AD B2C k ověření, že byl ověřen konkrétního uživatele.
+Pokud chcete uživatelům umožní přihlásit pomocí účtu Google +, musíte definovat účet Google + jako poskytovatele deklarací identity. Jinými slovy budete muset zadat koncový bod, který komunikuje se službou Azure AD B2C. Koncový bod poskytuje sadu deklarací identity, které používají Azure AD B2C k ověření, že se ověřil konkrétního uživatele.
 
-Zadejte účet Google + jako poskytovatele deklarací identity, přidáním `<ClaimsProvider>` uzlu v souboru rozšíření zásad:
+Určete účet Google + jako poskytovatele deklarací identity, tak, že přidáte `<ClaimsProvider>` uzlu v souboru rozšíření zásad:
 
-1.  Otevřete soubor rozšíření zásad (TrustFrameworkExtensions.xml) z pracovního adresáře. Pokud potřebujete editoru XML [zkuste Visual Studio Code](https://code.visualstudio.com/download), lightweight editor napříč platformami.
-2.  Najít `<ClaimsProviders>` části
-3.  Přidejte následující fragment kódu XML v části `ClaimsProviders` elementu a nahraďte `client_id` hodnotu s vaší Google + účet ID klienta aplikace před uložením souboru.  
+1.  Otevřete soubor rozšíření zásad (TrustFrameworkExtensions.xml) z pracovního adresáře. Pokud potřebujete XML editor [nabídne Visual Studio Code](https://code.visualstudio.com/download), jednoduchý editor napříč platformami.
+2.  Najít `<ClaimsProviders>` oddílu
+3.  Přidejte následující fragment kódu XML v rámci `ClaimsProviders` prvku a nahraďte `client_id` hodnotu s vaší Google + účet ID klienta aplikace před uložením tohoto souboru.  
 
 ```xml
 <ClaimsProvider>
@@ -161,35 +161,35 @@ Zadejte účet Google + jako poskytovatele deklarací identity, přidáním `<Cl
 </ClaimsProvider>
 ```
 
-## <a name="register-the-google-account-claims-provider-to-sign-up-or-sign-in-user-journey"></a>Zaregistrovat Google + účet zprostředkovatele deklarací identity registrace nebo přihlášení uživatele cesty
+## <a name="register-the-google-account-claims-provider-to-sign-up-or-sign-in-user-journey"></a>Registrace Google + účet zprostředkovatele deklarací identity k registraci nebo přihlášení cesty uživatele
 
-Poskytovatel identity nastavit.  Však není k dispozici v žádném z obrazovky registrace-množství nebo přihlášení. Přidejte zprostředkovatele identity účet Google + pro vaše uživatele `SignUpOrSignIn` cesty uživatele. Chcete-li k dispozici, vytvoříme duplicitní existující uživatele cesty šablony.  Potom přidáme zprostředkovatele identity účet Google +:
+Zprostředkovatel identity je nastavený.  To však není k dispozici v některém z obrazovky přihlášení-registrace/přihlášení. Přidat zprostředkovatele identity účtu Google +. pro vaše uživatele `SignUpOrSignIn` cesty uživatele. Chcete-li k dispozici, se nám vytvořit duplikát cesty existující uživatele šablony.  Potom přidáme zprostředkovatele identity účtu služby Google +:
 
 >[!NOTE]
 >
->Pokud jste zkopírovali `<UserJourneys>` element ze základního souboru zásad k rozšíření souboru (TrustFrameworkExtensions.xml), můžete přeskočit k této části.
+>Pokud jste si zkopírovali `<UserJourneys>` element ze základního souboru zásady do souboru rozšíření (TrustFrameworkExtensions.xml), můžete přeskočit k této sekci.
 
-1.  Otevřete soubor základní zásad (například TrustFrameworkBase.xml).
+1.  Otevřete soubor základní zásady (například TrustFrameworkBase.xml).
 2.  Najít `<UserJourneys>` elementu a zkopírujte celý obsah `<UserJourneys>` uzlu.
-3.  Otevřete soubor rozšíření (například TrustFrameworkExtensions.xml) a najděte `<UserJourneys>` elementu. Pokud element neexistuje, přidejte jedno.
-4.  Vložte celý obsah `<UserJourney>` uzlu, který jste zkopírovali jako podřízenou `<UserJourneys>` elementu.
+3.  Otevřete soubor rozšíření (například TrustFrameworkExtensions.xml) a vyhledejte `<UserJourneys>` elementu. Pokud element neexistuje, přidejte jeden.
+4.  Vložte celý obsah `<UserJourney>` uzel, který jste zkopírovali jako podřízený objekt `<UserJourneys>` elementu.
 
-### <a name="display-the-button"></a>Zobrazení tlačítka
-`<ClaimsProviderSelections>` Element definuje seznam možnosti výběru poskytovatele deklarací identity a jejich pořadí.  `<ClaimsProviderSelection>` Element je obdobou tlačítko zprostředkovatele identity na stránce registrace-množství nebo přihlášení. Pokud přidáte `<ClaimsProviderSelection>` element pro účet Google + nové tlačítko se zobrazí při pojmenováváme uživatele na stránce. Chcete-li přidat tento element:
+### <a name="display-the-button"></a>Zobrazit tlačítko
+`<ClaimsProviderSelections>` Element definuje seznam možnosti výběru zprostředkovatele deklarací identity a jejich pořadí.  `<ClaimsProviderSelection>` Element je obdobou k tlačítku na stránce přihlášení-registrace/přihlášení zprostředkovatele identity. Pokud chcete přidat `<ClaimsProviderSelection>` – element pro účet Google +, nové tlačítko se zobrazí při uživatel umístil na stránce. Chcete-li přidat tento element:
 
-1.  Najít `<UserJourney>` uzlu, který zahrnuje `Id="SignUpOrSignIn"` v cesty uživatele, který jste zkopírovali.
-2.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje `Order="1"`
-3.  Přidejte následující fragment kódu XML v části `<ClaimsProviderSelections>` uzlu:
+1.  Najít `<UserJourney>` uzel, který zahrnuje `Id="SignUpOrSignIn"` v cestě uživatele, který jste zkopírovali.
+2.  Vyhledejte `<OrchestrationStep>` uzel, který obsahuje `Order="1"`
+3.  Přidat následující fragment kódu XML v rámci `<ClaimsProviderSelections>` uzlu:
 
 ```xml
 <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
 ```
 
-### <a name="link-the-button-to-an-action"></a>Tlačítko propojit akce
-Nyní když máte tlačítka na místě, budete muset propojit akce. Akce, v takovém případě je pro Azure AD B2C ke komunikaci s účet Google + přijmout token.
+### <a name="link-the-button-to-an-action"></a>Tlačítko s odkazem na akci
+Teď, když máte tlačítko na místě, budete potřebovat odkázat na akci. Akce v tomto případě je pro Azure AD B2C ke komunikaci s účtem Google +. pro získání tokenu.
 
 1.  Najít `<OrchestrationStep>` , který obsahuje `Order="2"` v `<UserJourney>` uzlu.
-2.  Přidejte následující fragment kódu XML v části `<ClaimsExchanges>` uzlu:
+2.  Přidat následující fragment kódu XML v rámci `<ClaimsExchanges>` uzlu:
 
 ```xml
 <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
@@ -197,63 +197,63 @@ Nyní když máte tlačítka na místě, budete muset propojit akce. Akce, v tak
 
 >[!NOTE]
 >
-> * Ujistěte se, `Id` mají stejnou hodnotu jako `TargetClaimsExchangeId` v předchozí části
-> * Ujistěte se, `TechnicalProfileReferenceId` ID je nastaveno na technické profil vytvoříte starší (Google OAUTH).
+> * Zkontrolujte, `Id` má stejnou hodnotu jako `TargetClaimsExchangeId` v předchozí části
+> * Zajištění `TechnicalProfileReferenceId` ID je nastaven na technický profil vytvoříte starší (služby Google OAUTH).
 
-## <a name="upload-the-policy-to-your-tenant"></a>Nahrát zásady klienta
-1.  V [portál Azure](https://portal.azure.com), přepněte do [kontextu klienta služby Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a otevřete **Azure AD B2C** okno.
-2.  Vyberte **Identity rozhraní Framework**.
-3.  Otevřete **všechny zásady** okno.
+## <a name="upload-the-policy-to-your-tenant"></a>Odeslání zásady do vašeho tenanta
+1.  V [webu Azure portal](https://portal.azure.com), přepněte do [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a otevřete **Azure AD B2C** okno.
+2.  Vyberte **architekturu rozhraní identit**.
+3.  Otevřít **všechny zásady** okno.
 4.  Vyberte **nahrát zásady**.
 5.  Zkontrolujte **přepsat zásady, pokud existuje** pole.
-6.  **Nahrát** TrustFrameworkExtensions.xml a ujistěte se, že neselže ověření
+6.  **Nahrát** TrustFrameworkExtensions.xml a ujistěte se, že se selhání ověření
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>Otestovat vlastní zásady pomocí spustit nyní
-1.  Otevřete **nastavení Azure AD B2C** a přejděte na **Identity rozhraní Framework**.
+## <a name="test-the-custom-policy-by-using-run-now"></a>Testování vlastní zásady pomocí možnosti spustit hned
+1.  Otevřít **nastavení Azure AD B2C** a přejděte na **architekturu rozhraní identit**.
 
     >[!NOTE]
     >
-    >    **Spustit nyní** vyžaduje alespoň jedné aplikace do být preregistered u klienta. 
-    >    Další postup registrace aplikace najdete v tématu Azure AD B2C [Začínáme](active-directory-b2c-get-started.md) článek nebo [registrace aplikace](active-directory-b2c-app-registration.md) článku.
+    >    **Spustit nyní** vyžaduje aspoň jednu aplikaci do být registrované u klienta. 
+    >    Informace o postupu registrace aplikací, najdete v tématu Azure AD B2C [Začínáme](active-directory-b2c-get-started.md) článku nebo [registrace aplikace](active-directory-b2c-app-registration.md) článku.
 
 
-2.  Otevřete **B2C_1A_signup_signin**, předávající stranu vlastních zásad, který jste nahráli. Vyberte **spustit nyní**.
-3.  Nyní byste měli mít k přihlášení pomocí účtu Google +.
+2.  Otevřít **B2C_1A_signup_signin**, předávající stranu vlastní zásady, které jste nahráli. Vyberte **spustit nyní**.
+3.  Byste měli být schopni se přihlásit pomocí účtu Google +.
 
-## <a name="optional-register-the-google-account-claims-provider-to-profile-edit-user-journey"></a>[Nepovinné] Zaregistrovat Google + účet zprostředkovatele deklarací identity pro úpravy profilu uživatele cesty
-Můžete také přidat zprostředkovatele identity účet Google + pro vaše uživatele `ProfileEdit` cesty uživatele. Chcete-li k dispozici, jsme zopakujte poslední dva kroky:
+## <a name="optional-register-the-google-account-claims-provider-to-profile-edit-user-journey"></a>[Volitelné] Registrace Google + účet zprostředkovatele deklarací identity pro cestu uživatele úpravy profilu
+Můžete také přidat zprostředkovatele identity účtu Google +. pro vaše uživatele `ProfileEdit` cesty uživatele. Chcete-li k dispozici, jsme zopakujte poslední dva kroky:
 
-### <a name="display-the-button"></a>Zobrazení tlačítka
+### <a name="display-the-button"></a>Zobrazit tlačítko
 1.  Otevřete soubor rozšíření zásad (například TrustFrameworkExtensions.xml).
-2.  Najít `<UserJourney>` uzlu, který zahrnuje `Id="ProfileEdit"` v cesty uživatele, který jste zkopírovali.
-3.  Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje `Order="1"`
-4.  Přidejte následující fragment kódu XML v části `<ClaimsProviderSelections>` uzlu:
+2.  Najít `<UserJourney>` uzel, který zahrnuje `Id="ProfileEdit"` v cestě uživatele, který jste zkopírovali.
+3.  Vyhledejte `<OrchestrationStep>` uzel, který obsahuje `Order="1"`
+4.  Přidat následující fragment kódu XML v rámci `<ClaimsProviderSelections>` uzlu:
 
 ```xml
 <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
 ```
 
-### <a name="link-the-button-to-an-action"></a>Tlačítko propojit akce
+### <a name="link-the-button-to-an-action"></a>Tlačítko s odkazem na akci
 1.  Najít `<OrchestrationStep>` , který obsahuje `Order="2"` v `<UserJourney>` uzlu.
-2.  Přidejte následující fragment kódu XML v části `<ClaimsExchanges>` uzlu:
+2.  Přidat následující fragment kódu XML v rámci `<ClaimsExchanges>` uzlu:
 
 ```xml
 <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
 ```
 
-### <a name="upload-the-policy-to-your-tenant"></a>Nahrát zásady klienta
-1.  V [portál Azure](https://portal.azure.com), přepněte do [kontextu klienta služby Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a otevřete **Azure AD B2C** okno.
-2.  Vyberte **Identity rozhraní Framework**.
-3.  Otevřete **všechny zásady** okno.
+### <a name="upload-the-policy-to-your-tenant"></a>Odeslání zásady do vašeho tenanta
+1.  V [webu Azure portal](https://portal.azure.com), přepněte do [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a otevřete **Azure AD B2C** okno.
+2.  Vyberte **architekturu rozhraní identit**.
+3.  Otevřít **všechny zásady** okno.
 4.  Vyberte **nahrát zásady**.
-5.  Zkontrolujte **přepsat zásady, pokud existuje** pole.
-6.  **Nahrát** TrustFrameworkExtensions.xml a ujistěte se, že ověření neselže.
+5.  Zkontrolujte, **přepsat zásady, pokud existuje** pole.
+6.  **Nahrát** TrustFrameworkExtensions.xml a ujistěte se, že se selhání ověření.
 
-### <a name="test-the-custom-profile-edit-policy-by-using-run-now"></a>Otestovat vlastní úpravy profilu zásady pomocí spustit nyní
+### <a name="test-the-custom-profile-edit-policy-by-using-run-now"></a>Pomocí možnosti spustit hned otestovat vlastní zásady úprav profilu
 
-1.  Otevřete **nastavení Azure AD B2C** a přejděte na **Identity rozhraní Framework**.
-2.  Otevřete **B2C_1A_ProfileEdit**, předávající stranu vlastních zásad, který jste nahráli. Vyberte **spustit nyní**.
-3.  Nyní byste měli mít k přihlášení pomocí účtu Google +.
+1.  Otevřít **nastavení Azure AD B2C** a přejděte na **architekturu rozhraní identit**.
+2.  Otevřít **B2C_1A_ProfileEdit**, předávající stranu vlastní zásady, které jste nahráli. Vyberte **spustit nyní**.
+3.  Byste měli být schopni se přihlásit pomocí účtu Google +.
 
-## <a name="download-the-complete-policy-files"></a>Stáhnout soubory dokončení zásad
-Volitelné: Doporučujeme že vytvořit váš scénář pomocí vlastní vlastní zásady, které soubory po dokončení Začínáme se zásadami vlastní provede namísto použití tyto ukázkové soubory.  [Ukázkové soubory zásad pro – referenční informace](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-goog-app)
+## <a name="download-the-complete-policy-files"></a>Stažení kompletní zásad souborů
+Volitelné: Doporučujeme že vytvořit váš scénář pomocí vlastní vlastní zásady, které provedou soubory po dokončení, jak začít s vlastní zásady, namísto použití těchto ukázkových souborů.  [Ukázkové soubory zásad pro odkaz](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-goog-app)

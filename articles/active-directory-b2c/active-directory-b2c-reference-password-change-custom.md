@@ -1,38 +1,38 @@
 ---
-title: Změna hesla pomocí samoobslužné služby v Azure Active Directory B2C | Microsoft Docs
-description: Téma, který ukazuje, jak nastavit změnu hesla pomocí samoobslužné služby pro uživatele v Azure Active Directory B2C.
+title: Změna hesla pomocí samoobslužné služby v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Téma ukazuje, jak nastavit Změna hesla pomocí samoobslužné služby pro uživatele v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/05/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 5474f469c6271a0c1348004664ead8b190de08c7
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 028d10b5c005be2db7cfd9c5ca5210ab55f0592a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34709134"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448131"
 ---
-# <a name="azure-active-directory-b2c-configure-password-change-in-custom-policies"></a>Azure Active Directory B2C: Konfigurace Změna hesla v vlastní zásady  
+# <a name="azure-active-directory-b2c-configure-password-change-in-custom-policies"></a>Azure Active Directory B2C: Konfigurace Změna hesla ve vlastní zásady  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Funkce změnu hesla s přihlášeného příjemci (pomocí místní účty) můžete změnit jejich hesla bez nutnosti potvrzení jejich pravosti pomocí ověření e-mailu, jak je popsáno v [toku resetování hesla pomocí samoobslužné služby.](active-directory-b2c-reference-sspr.md) Pokud relace vyprší v čase příjemce získá heslo změnit toku, uživatel je vyzván, aby znovu přihlásit. 
+Díky funkci změnu hesla přihlášeného uživatele (pomocí místních účtů) mohou změnit svá hesla bez nutnosti potvrzení jejich pravosti pomocí ověření e-mailu, jak je popsáno v [resetování hesla pomocí samoobslužné služby flow.](active-directory-b2c-reference-sspr.md) Pokud vyprší platnost relace době získá uživatel heslo změnit toku, uživatel je vyzván k znovu se přihlaste. 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Klient služby Azure AD B2C, nakonfigurované k dokončení registrace-množství nebo přihlášení, místní účet, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
+Klient služby Azure AD B2C nakonfigurovaný tak, aby dokončit místní účet přihlášení-registrace/přihlášení, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
 
-## <a name="how-to-configure-password-change-in-custom-policy"></a>Postup konfigurace ve vlastních zásadách pro změnu hesla
+## <a name="how-to-configure-password-change-in-custom-policy"></a>Jak nakonfigurovat ve vlastních zásadách pro změnu hesla
 
-Změna hesla ve vlastních zásadách pro konfigurace proveďte následující změny v zásadách rozšíření framework vztahu důvěryhodnosti 
+Změna hesla ve vlastních zásadách konfigurace proveďte následující změny v zásadách zabezpečení framework rozšíření 
 
-## <a name="define-a-claimtype-oldpassword"></a>Definování typ ClaimType 'Původní_heslo.
+## <a name="define-a-claimtype-oldpassword"></a>Definování typu deklarace identity "oldPassword.
 
-Celková struktura vaše vlastní zásada musí obsahovat `ClaimsSchema`a definovat novou `ClaimType` 'Původní_heslo, jak je uvedeno níže, 
+Celková struktura vaše vlastní zásada musí obsahovat `ClaimsSchema`a definovat novou `ClaimType` "oldPassword" jak je uvedeno níže, 
 
 ```XML
   <BuildingBlocks>
@@ -47,20 +47,20 @@ Celková struktura vaše vlastní zásada musí obsahovat `ClaimsSchema`a defino
   </BuildingBlocks>
 ```
 
-Účelem těchto prvků vypadá takto:
+Účelem těchto prvků je následujícím způsobem:
 
-- `ClaimsSchema` Definuje, které deklarace identity je ověřován.  V takovém případě bude ověřeno staré heslo. 
+- `ClaimsSchema` Definuje, jaké deklarace identity se ověřuje.  V takovém případě bude ověřeno staré heslo. 
 
-## <a name="add-a-password-change-claims-provider-with-its-supporting-elements"></a>Přidání poskytovatele deklarací identity změnu hesla s jeho podpůrné elementy
+## <a name="add-a-password-change-claims-provider-with-its-supporting-elements"></a>Přidat zprostředkovatele deklarací identity změnu hesla s její podpůrné prvky
 
-Deklarace identity, které bude zprostředkovatel pro změnu hesla
+Změna deklarace identit, které bude zprostředkovatel hesla
 
-1. Ověření uživatele vůči staré heslo
-2. A pokud 'nové heslo, odpovídá "potvrzení nového hesla", tato hodnota je uložena v úložišti dat B2C, a proto je heslo úspěšně změněno. 
+1. Ověřit uživatele vůči staré heslo
+2. A pokud "nové heslo" odpovídá "Potvrdit nové heslo", tato hodnota bude uložena v úložišti dat B2C, a proto je heslo úspěšně změněno. 
 
 ![obrázek](images/passwordchange.jpg)
 
-Přidejte následující zprostředkovatele deklarací identity do vaší zásady rozšíření. 
+Přidejte následující zprostředkovatele deklarací identity k rozšíření zásady. 
 
 ```XML
 <ClaimsProviders>
@@ -148,25 +148,25 @@ Přidejte následující zprostředkovatele deklarací identity do vaší zásad
 
 
 
-### <a name="add-the-application-ids-to-your-custom-policy"></a>Přidat ID aplikace do vlastních zásad
+### <a name="add-the-application-ids-to-your-custom-policy"></a>ID aplikace přidat do vlastní zásady
 
-Přidat ID aplikace souboru rozšíření (`TrustFrameworkExtensions.xml`):
+Přidejte do souboru rozšíření ID aplikace (`TrustFrameworkExtensions.xml`):
 
-1. V souboru rozšíření (TrustFrameworkExtensions.xml) nalezen element `<TechnicalProfile Id="login-NonInteractive">` a `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
+1. V souboru rozšíření (TrustFrameworkExtensions.xml) najděte prvek `<TechnicalProfile Id="login-NonInteractive">` a `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
 
-2. Nahraďte všechny výskyty `IdentityExperienceFrameworkAppId` s ID aplikace Framework prostředí Identity aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md). Zde naleznete příklad:
+2. Nahraďte všechny výskyty `IdentityExperienceFrameworkAppId` s ID aplikace, architekturu rozhraní identit aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md). Zde naleznete příklad:
 
    ```
    <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
    ```
 
-3. Nahraďte všechny výskyty `ProxyIdentityExperienceFrameworkAppId` s ID aplikace Framework prostředí Identity Proxy aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
+3. Nahraďte všechny výskyty `ProxyIdentityExperienceFrameworkAppId` s ID aplikace, architekturu rozhraní identit Proxy aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
 
 4. Uložte soubor rozšíření.
 
 
 
-## <a name="create-a-password-change-user-journey"></a>Vytvoření cesty uživatel změnit heslo
+## <a name="create-a-password-change-user-journey"></a>Vytvoření cesty uživatele změnu hesla
 
 ```XML
  <UserJourneys>
@@ -194,26 +194,26 @@ Přidat ID aplikace souboru rozšíření (`TrustFrameworkExtensions.xml`):
   </UserJourneys>
 ```
 
-Dokončení úpravy souboru rozšíření. Uložte a nahrajte tento soubor. Ujistěte se, že všechny ověření úspěšné.
+Dokončení úpravy souboru rozšíření. Uložte a odešlete tento soubor. Ujistěte se, že všechny ověření úspěšné.
 
 
 
-## <a name="create-a-relying-party-rp-file"></a>Vytvořte soubor předávající stranu
+## <a name="create-a-relying-party-rp-file"></a>Vytvořit soubor předávající stranu
 
-Potom aktualizujte soubor předávající stranu, který iniciuje cesty uživatele, který jste vytvořili:
+V dalším kroku aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, který jste vytvořili:
 
-1. Vytvořte kopii ProfileEdit.xml v pracovní adresář. Potom přejmenujte ji (například PasswordChange.xml).
-2. Otevřete nový soubor a aktualizace `PolicyId` atribut pro `<TrustFrameworkPolicy>` s jedinečnou hodnotu. Toto je název vaší zásady (například PasswordChange).
-3. Změnit `ReferenceId` atribut `<DefaultUserJourney>` tak, aby odpovídala `Id` nové cesty uživatele, který jste vytvořili (například PasswordChange).
-4. Uložte změny a potom soubor odešlete.
-5. Pokud chcete otestovat vlastní zásady, který jste nahráli, na portálu Azure, přejděte do okna zásady a pak klikněte na tlačítko **spustit nyní**.
-
-
+1. Vytvořte kopii ProfileEdit.xml ve svém pracovním adresáři. Přejmenujte (například PasswordChange.xml).
+2. Otevřete nový soubor a aktualizace `PolicyId` atributu `<TrustFrameworkPolicy>` s jedinečnou hodnotu. Toto je název zásady (například PasswordChange).
+3. Upravit `ReferenceId` atribut `<DefaultUserJourney>` tak, aby odpovídaly `Id` nové cesty uživatele, který jste vytvořili (například PasswordChange).
+4. Uložte změny a pak nahrajte soubor.
+5. Vlastní zásady, které jste nahráli, otestovat na webu Azure Portal, přejděte na okno zásad a pak klikněte na tlačítko **spustit nyní**.
 
 
-## <a name="link-to-password-change-sample-policy"></a>Odkaz na heslo změnit ukázkové zásady
 
-Můžete najít ukázkové zásady [zde](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change). 
+
+## <a name="link-to-password-change-sample-policy"></a>Odkaz na zásady ukázka změnit heslo
+
+Můžete najít ukázkové zásady [tady](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change). 
 
 
 

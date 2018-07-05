@@ -1,32 +1,32 @@
 ---
-title: Vlastní nastavení jazyka v Azure Active Directory B2C vlastní zásady | Microsoft Docs
-description: Další informace o použití lokalizaci obsahu ve vlastních zásad pro víc jazyků.
+title: Přizpůsobení jazyka v Azure Active Directory B2C vlastních zásad | Dokumentace Microsoftu
+description: Další informace o použití lokalizaci obsahu ve vlastních zásad pro různé jazyky.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c8deabd4d0a4126365b014875624525d5b1f3063
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6269ac65e5db20521346d5312bcbadd0905c36e2
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711752"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440560"
 ---
-# <a name="language-customization-in-custom-policies"></a>Vlastní nastavení jazyka v vlastní zásady
+# <a name="language-customization-in-custom-policies"></a>Přizpůsobení jazyka ve vlastních zásad
 
 > [!NOTE]
 > Tato funkce je ve verzi public preview.
 > 
 
-V vlastní zásady funguje jazyk přizpůsobení stejné jako integrovaných zásad.  V tématu integrované [dokumentace](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-language-customization) jejich chování v tom, jak jazyk je zvolen v závislosti na parametry a nastavení prohlížeče, který popisuje.
+Vlastní zásady přizpůsobení jazyka funguje stejně jako integrované zásady.  Zobrazit předdefinované [dokumentaci](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-language-customization) , který popisuje chování v tom, jak je vybrán jazyk na základě parametry a nastavení prohlížeče.
 
 ## <a name="enable-supported-languages"></a>Povolit podporované jazyky
-Pokud nebyl zadán uživatelského rozhraní – národní prostředí a prohlížeče uživatele požádá o jednu z těchto jazyků, podporovaných jazyků se zobrazí uživateli.  
+Pokud prohlížeč uživatele požádá o jednu z těchto jazyků uživatelského rozhraní národní prostředí nebyl zadán, jsou uvedeny podporované jazyky pro uživatele.  
 
 Podporované jazyky jsou definovány v `<BuildingBlocks>` v následujícím formátu:
 
@@ -41,19 +41,19 @@ Podporované jazyky jsou definovány v `<BuildingBlocks>` v následujícím form
 </BuildingBlocks>
 ```
 
-Výchozí jazyk a podporovaných jazyků, chovají stejným způsobem jako ve integrovaných zásad.
+Výchozí jazyk a podporované jazyky se chovají stejným způsobem jako v předdefinované zásady.
 
-## <a name="enable-custom-language-strings"></a>Povolit vlastní jazyk řetězce
+## <a name="enable-custom-language-strings"></a>Povolit vlastní jazyk. řetězce
 
-Vytváření vlastní jazyk řetězců vyžaduje dva kroky:
-1. Upravit `<ContentDefinition>` pro stránku a zadejte ID prostředku pro požadované jazyky
-2. Vytvořte `<LocalizedResources>` s odpovídající ID vašeho `<BuildingBlocks>`
+Vytváření vlastních jazykových řetězců sestává ze dvou kroků:
+1. Upravit `<ContentDefinition>` pro stránky můžete zadat ID prostředku pro požadované jazyky
+2. Vytvořte `<LocalizedResources>` s odpovídajícím ID ve vaší `<BuildingBlocks>`
 
-Mějte na paměti, který můžete umístit `<ContentDefinition>` a `<BuildingBlock>` v souboru rozšíření nebo předávající soubor zásad, který v závislosti na tom, zda chcete změny být ve všech dědičných zásad, nebo ne.
+Mějte na paměti, který můžete umístit `<ContentDefinition>` a `<BuildingBlock>` v souboru rozšíření nebo předávající soubor zásad v závislosti na tom, zda chcete změny bude v dědičné zásad, nebo ne.
 
-### <a name="edit-the-contentdefinition-for-the-page"></a>Upravit ContentDefinition pro stránku.
+### <a name="edit-the-contentdefinition-for-the-page"></a>Upravit ContentDefinition stránky
 
-Pro každou stránku lokalizovat, můžete zadat v `<ContentDefinition>` prostředky jazyk má být vyhledán každý kód jazyka.
+Pro každou stránku chcete lokalizovat, můžete zadat v `<ContentDefinition>` jazykové prostředky k vyhledání každý kód jazyka.
 
 ```XML
 <ContentDefinition Id="api.signuporsignin">
@@ -64,12 +64,12 @@ Pro každou stránku lokalizovat, můžete zadat v `<ContentDefinition>` prostř
 </ContentDefinition>
 ```
 
-V této ukázce francouzština (fr) a vlastní řetězce Angličtina (en) se přidají na stránku Unified registrace nebo přihlášení.  `LocalizedResourcesReferenceId` Pro každou `LocalizedResourcesReference` je stejný jako jejich národního prostředí, ale můžete použít libovolný řetězec jako ID.  Pro každou kombinaci jazyka a stránky, budete muset vytvořit odpovídající `<LocalizedResources>` vidět v následujícím.
+V této ukázce francouzština (fr) a angličtina (en) vlastní řetězce jsou přidány na stránku registrace nebo přihlášení Unified.  `LocalizedResourcesReferenceId` Pro každou `LocalizedResourcesReference` je stejný jako jejich národní prostředí, ale můžete použít libovolný řetězec jako ID.  Pro každou kombinaci jazyka a stránky, je nutné vytvořit odpovídající `<LocalizedResources>` je znázorněno v následujícím.
 
 
 ### <a name="create-the-localizedresources"></a>Vytvořte LocalizedResources
 
-Vaše přepsání jsou obsaženy v vaše `<BuildingBlocks>` a je `<LocalizedResources>` pro každou stránku a jazyk jste zadali v `<ContentDefinition>` pro jednotlivé stránky.  Každý přepsání je zadán jako `<LocalizedString>` například následující ukázka:
+Zvolená přepsání jsou obsaženy ve vaší `<BuildingBlocks>` a je `<LocalizedResources>` pro jednotlivé stránky a jazyka jste zadali v `<ContentDefinition>` pro každou stránku.  Každý přepsání je zadán jako `<LocalizedString>` například v následujícím příkladu:
 
 ```XML
 <BuildingBlocks>
@@ -88,8 +88,8 @@ Vaše přepsání jsou obsaženy v vaše `<BuildingBlocks>` a je `<LocalizedReso
 </BuildingBlocks>
 ```
 
-Existují čtyři typy řetězec elementy na stránce:
+Existují čtyři typy řetězce elementy na stránce:
 
-**ClaimsProvider** -štítky pro vaši zprostředkovatelé identity (Facebook, Google, Azure AD atd.) **Typ ClaimType** -štítky pro vaši atributy a jejich odpovídající text nápovědy nebo pole chyby ověření **UxElement** – jiné řetězce elementy na stránce, které jsou ve výchozím nastavení, jako jsou tlačítka, odkazy nebo text **ErrorMessage** -formuláři chybových zpráv ověření
+**ClaimsProvider** – popisky pro svoje zprostředkovatele identit (Facebook, Google, Azure AD atd.) **Typ ClaimType** – popisky pro svoje atributy a jejich odpovídající text nápovědy nebo pole chyby ověření **UxElement** – ostatní řetězce elementy na stránce, které se nacházejí ve výchozím nastavení, jako je například tlačítka, odkazy nebo text **ErrorMessage** -tvoří chybových zpráv ověření
 
-Ujistěte se, že `StringId`s odpovídat pro stránku, že používáte tato přepsání, jinak je blokována ověření zásad na odeslání.  
+Ujistěte se, že `StringId`s odpovídat, že používáte tato přepsání, jinak zablokovaly zásady ověřování na odeslání stránky.  

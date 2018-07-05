@@ -1,6 +1,6 @@
 ---
-title: Před nasazením služby App Service v zásobníku Azure | Microsoft Docs
-description: Kroky k dokončení před nasazením služby App Service v Azure zásobníku
+title: Před nasazením služby App Service ve službě Azure Stack | Dokumentace Microsoftu
+description: Kroky k dokončení před nasazením služby App Service ve službě Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: anwestg
-ms.openlocfilehash: 37d6ee2f047768f08ea7a113b7d97911d58a46e2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 660532118549a23416f4c0571845ec3517cb1b5b
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110571"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436214"
 ---
-# <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service v Azure zásobníku
+# <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Před nasazením služby Azure App Service v zásobníku Azure, musíte provést nutné kroky v tomto článku.
+Před nasazením služby Azure App Service ve službě Azure Stack, musíte dokončit požadované kroky uvedené v tomto článku.
 
 > [!IMPORTANT]
-> Použitím 1804 aktualizace v zásobníku Azure integrované systému nebo nasadit nejnovější Azure zásobníku Development Kit (ASDK) před nasazením Azure App Service 1.2.
+> Nainstalovat verzi 1804 na systém Azure Stack integrované nebo můžete nasadit nejnovější Azure Stack Development Kit (ASDK) před nasazením Azure App Service 1.2.
 
-## <a name="download-the-installer-and-helper-scripts"></a>Stáhněte si skripty Instalační program a pomocné rutiny
+## <a name="download-the-installer-and-helper-scripts"></a>Stáhněte si instalační program a pomocné skripty
 
-1. Stažení [služby App Service na Azure zásobníku nasazení pomocníka skripty](https://aka.ms/appsvconmashelpers).
-2. Stažení [služby App Service na Instalační službě Azure zásobníku](https://aka.ms/appsvconmasinstaller).
-3. Extrahujte soubory ze souboru ZIP, skripty pomocné rutiny. Extrahují se tyto soubory a složky:
+1. Stáhněte si [služby App Service v Azure stacku nasazení pomocné skripty](https://aka.ms/appsvconmashelpers).
+2. Stáhněte si [služby App Service na Instalační službě Azure Stack](https://aka.ms/appsvconmasinstaller).
+3. Extrahujte soubory ze souboru ZIP pomocné skripty. Extrahují se následující soubory a složky:
 
    - Common.ps1
    - Create-AADIdentityApp.ps1
@@ -42,26 +42,26 @@ Před nasazením služby Azure App Service v zásobníku Azure, musíte provést
    - Create-AppServiceCerts.ps1
    - Get-AzureStackRootCert.ps1
    - Remove-AppService.ps1
-   - Moduly složky
+   - Složky modulů
      - GraphAPI.psm1
 
 ## <a name="high-availability"></a>Vysoká dostupnost
 
-Aktualizace zásobníku 1802 Azure přidána podpora pro domén selhání. Nová nasazení služby Azure App Service v Azure zásobníku distribuovány v domén selhání a zajistit odolnost proti chybám.
+Aktualizace Azure Stack 1802 přidali podporu domén selhání. Nová nasazení služby Azure App Service ve službě Azure Stack se bude distribuovat napříč doménami selhání a zajistit odolnost proti chybám.
 
-Existující nasazení služby Azure App Service v zásobníku Azure, které byly nasazeny před aktualizací 1802, najdete v článku [znovu vyvážit poskytovatele prostředků služby App Service napříč doménami selhání](azure-stack-app-service-fault-domain-update.md) článku.
+Existující nasazení služby Azure App Service ve službě Azure Stack, které se nasadily před aktualizace 1802, najdete v článku [vyrovnat poskytovatele prostředků App Service napříč doménami selhání](azure-stack-app-service-fault-domain-update.md) článku.
 
 Kromě toho nasaďte požadované souborového serveru a instance systému SQL Server v konfiguraci s vysokou dostupností.
 
 ## <a name="get-certificates"></a>Získání certifikátů
 
-### <a name="azure-resource-manager-root-certificate-for-azure-stack"></a>Azure Resource Manager kořenový certifikát pro Azure zásobníku
+### <a name="azure-resource-manager-root-certificate-for-azure-stack"></a>Azure Resource Manageru kořenový certifikát pro službu Azure Stack
 
-Otevřete relaci prostředí PowerShell zvýšenými oprávněními v počítači, který můžete dosáhnout privilegované koncového bodu na integrovaný systém zásobník Azure nebo Azure zásobníku Development Kit hostitele.
+Otevřete relaci Powershellu se zvýšenými oprávněními na počítači, se kterým dosáhnete privileged koncový bod na integrovaný systém Azure Stack nebo Azure Stack Development Kit hostitele.
 
-Spustit *Get-AzureStackRootCert.ps1* skriptu ze složky, které jste extrahovali skripty pomocné rutiny. Kořenový certifikát vytvoří skript ve stejné složce jako skript, který potřebuje služby App Service pro vytváření certifikátů.
+Spustit *Get-AzureStackRootCert.ps1* skriptu ze složky, které jste extrahovali pomocné skripty. Skript vytvoří ve stejné složce jako skript, který potřebuje služby App Service pro vytváření certifikátů kořenový certifikát.
 
-Když spustíte následující příkaz prostředí PowerShell budete muset poskytnout AzureStack\CloudAdmin privilegované koncový bod a přihlašovací údaje.
+Když spustíte následující příkaz Powershellu budete mít k poskytnutí privileged koncového bodu a přihlašovací údaje pro AzureStack\CloudAdmin.
 
 ```PowerShell
     Get-AzureStackRootCert.ps1
@@ -71,48 +71,48 @@ Když spustíte následující příkaz prostředí PowerShell budete muset posk
 
 | Parametr | Požadované nebo volitelné | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
-| PrivilegedEndpoint | Požaduje se | AzS-ERCS01 | Privilegované koncový bod |
-| CloudAdminCredential | Požaduje se | AzureStack\CloudAdmin | Pověření pro účet domény pro admins cloudu Azure zásobníku |
+| PrivilegedEndpoint | Požaduje se | AzS-ERCS01 | Privilegované koncového bodu |
+| CloudAdminCredential | Požaduje se | AzureStack\CloudAdmin | Přihlašovací údaje účtu domény pro správce cloudu Azure Stack |
 
 ### <a name="certificates-required-for-asdk-deployment-of-azure-app-service"></a>Certifikáty pro ASDK nasazení služby Azure App Service
 
-*Vytvořit AppServiceCerts.ps1* skriptu funguje s certifikační autority zásobník Azure k vytvoření čtyři certifikátů, které potřebuje služby App Service.
+*Vytvořit AppServiceCerts.ps1* skript funguje u certifikační autority Azure stacku vytvořit čtyři certifikáty, které vyžaduje služba App Service.
 
 | Název souboru | Použití |
 | --- | --- |
 | _.appservice.local.azurestack.external.pfx | Výchozí certifikát SSL služby App Service |
 | api.appservice.local.azurestack.external.pfx | Certifikát SSL rozhraní API služby aplikace |
-| ftp.appservice.local.azurestack.external.pfx | Certifikát SSL služby App Service vydavatele |
-| sso.appservice.local.azurestack.external.pfx | Certifikátu identity aplikace služby App Service |
+| ftp.appservice.local.azurestack.external.pfx | Certifikát SSL vydavatele služby App Service |
+| sso.appservice.local.azurestack.external.pfx | Certifikát aplikace identity služby App Service |
 
-K vytvoření certifikátů, postupujte takto:
+K vytvoření certifikátů, postupujte podle těchto kroků:
 
-1. Přihlaste se k hostiteli Development Kit zásobník Azure pomocí účtu AzureStack\AzureStackAdmin.
-2. Otevřete relaci prostředí PowerShell zvýšenými oprávněními.
-3. Spustit *vytvořit AppServiceCerts.ps1* skriptu ze složky, které jste extrahovali skripty pomocné rutiny. Tento skript vytvoří čtyři certifikáty ve stejné složce jako skript, který potřebuje služby App Service pro vytváření certifikátů.
-4. Zadejte heslo k zabezpečení soubory PFX a poznamenejte si ho. Budete mít k jeho zadání ve službě App Service na Azure zásobníku Instalační služby.
+1. Přihlaste se pomocí účtu AzureStack\AzureStackAdmin hostiteli Azure Stack Development Kit.
+2. Otevřete relaci Powershellu se zvýšenými oprávněními.
+3. Spustit *vytvořit AppServiceCerts.ps1* skriptu ze složky, které jste extrahovali pomocné skripty. Tento skript vytvoří čtyři certifikáty ve stejné složce jako skript, který požadavkům vytváření certifikátů služby App Service.
+4. Zadejte heslo k zabezpečení soubory PFX a poznamenejte si ho. Budete muset zadat ve službě App Service na Instalační službě Azure Stack.
 
 #### <a name="create-appservicecertsps1-script-parameters"></a>Vytvoření AppServiceCerts.ps1 parametry skriptu
 
 | Parametr | Požadované nebo volitelné | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
-| pfxPassword | Požaduje se | Null | Heslo, který pomáhá chránit privátní klíč certifikátu |
-| DomainName | Požaduje se | local.azurestack.external | Azure příponu zásobníku oblast a domény |
+| pfxPassword | Požaduje se | Null | Heslo, který pomáhá chránit soukromý klíč certifikátu |
+| DomainName | Požaduje se | local.azurestack.external | Přípona oblasti a domény Azure Stack |
 
-### <a name="certificates-required-for-azure-stack-production-deployment-of-azure-app-service"></a>Certifikátů vyžadovaných pro Azure zásobníku produkční nasazení služby Azure App Service
+### <a name="certificates-required-for-azure-stack-production-deployment-of-azure-app-service"></a>Certifikáty pro produkční nasazení Azure Stack služby Azure App Service
 
-Chcete-li spustit zprostředkovatel prostředků v produkčním prostředí, je nutné zadat tyto certifikáty:
+Ke spuštění poskytovatele prostředků v produkčním prostředí, je nutné zadat tyto certifikáty:
 
 - Výchozí certifikát domény
 - Certifikát rozhraní API
-- Publikování certifikátů
+- Certifikát pro publikování
 - Certifikát identity
 
 #### <a name="default-domain-certificate"></a>Výchozí certifikát domény
 
-Výchozí certifikát domény je umístěn v roli Front-endu. Uživatelské aplikace pro zástupný znak nebo výchozí domény požadavek do služby Azure App Service pomocí tohoto certifikátu. Certifikát je také použít k řízení operací se zdrojovým (Kudu).
+Výchozí certifikát domény je umístěn na role front-endu. Uživatelské aplikace pro zástupný znak nebo výchozí domény žádost do služby Azure App Service použít tento certifikát. Certifikát se také používá pro operací správy zdrojů (Kudu).
 
-Certifikát musí být ve formátu .pfx a musí být certifikát se zástupným znakem tři subjektu. Tento požadavek umožňuje jeden certifikát tak, aby pokrývalo výchozí doménu a SCM koncový bod pro operace zdroj ovládacího prvku.
+Certifikát musí být ve formátu .pfx a musí být certifikát se zástupným znakem tři předmět. Tento požadavek umožňuje jeden certifikát pro výchozí doménu a koncový bod správce řízení služeb pro operací správy zdrojů.
 
 | Formát | Příklad: |
 | --- | --- |
@@ -122,15 +122,15 @@ Certifikát musí být ve formátu .pfx a musí být certifikát se zástupným 
 
 #### <a name="api-certificate"></a>Certifikát rozhraní API
 
-Rozhraní API certifikát je umístěn na roli správy. Zprostředkovatel prostředků se používá k lepšímu zabezpečená volání rozhraní API. Certifikát pro publikování musí obsahovat subjektem, který odpovídá položky DNS rozhraní API.
+Certifikát rozhraní API je umístěn na roli správy. Poskytovatel prostředků se použije k tomu zabezpečené volání rozhraní API. Certifikát pro publikování musí obsahovat subjektem, který odpovídá položce DNS rozhraní API.
 
 | Formát | Příklad: |
 | --- | --- |
 | api.appservice.\<region\>.\<DomainName\>.\<extension\> | api.appservice.redmond.azurestack.external |
 
-#### <a name="publishing-certificate"></a>Publikování certifikátů
+#### <a name="publishing-certificate"></a>Certifikát pro publikování
 
-Certifikát pro roli vydavatele zabezpečuje FTPS přenos pro vlastníci aplikace při uložení obsahu. Certifikát pro publikování musí obsahovat subjektem, který odpovídá položce FTPS DNS.
+Certifikát pro role vydavatele zabezpečuje FTPS provoz pro vlastníky aplikace. při jejich nahrávání obsahu. Certifikát pro publikování musí obsahovat subjektem, který odpovídá položce FTPS DNS.
 
 | Formát | Příklad: |
 | --- | --- |
@@ -138,12 +138,12 @@ Certifikát pro roli vydavatele zabezpečuje FTPS přenos pro vlastníci aplikac
 
 #### <a name="identity-certificate"></a>Certifikát identity
 
-Certifikát identity aplikace umožňuje:
+Certifikát aplikace identity umožňuje:
 
-- Integrace mezi Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) directory zásobník Azure a služby App Service pro podporu integrace s poskytovatele výpočetních prostředků.
-- Jeden přihlašování scénáře pro nástroje pro pokročilé vývojáře ve službě Azure App Service v Azure zásobníku.
+- Integrace mezi Azure Active Directory (Azure AD) nebo Active Directory Federation Services (AD FS) directory, Azure Stack a App Service pro integraci s poskytovateli prostředků compute.
+- Jednotné přihlašování scénáře pro pokročilé vývojářské nástroje v rámci Azure App Service ve službě Azure Stack.
 
-Certifikát pro identitu musí obsahovat subjektem, který odpovídá následujícím formátu.
+Certifikát identity musí obsahovat subjektem, který odpovídá formátu.
 
 | Formát | Příklad: |
 | --- | --- |
@@ -151,9 +151,9 @@ Certifikát pro identitu musí obsahovat subjektem, který odpovídá následuj�
 
 ## <a name="virtual-network"></a>Virtuální síť
 
-Aplikační služba Azure v zásobníku Azure umožňují nasadit poskytovatele prostředků na existující virtuální síť nebo můžete vytvořit virtuální síť jako součást nasazení. Použití existující virtuální síť umožňuje použití interní IP adresy pro připojení k souborovému serveru a vyžaduje službou Azure App Service v Azure zásobníku serveru SQL server. Virtuální síť musí být nakonfigurované následující rozsah adres a podsítí před instalací služby Azure App Service v zásobníku Azure:
+Azure App Service ve službě Azure Stack umožňuje nasazení poskytovatele prostředků do existující virtuální síť nebo vám umožní vytvářet virtuální sítě jako součást svého nasazení. Použití existující virtuální síť umožňuje využívání interní IP adresy pro připojení k souborový server a SQL server vyžaduje ve službě Azure App Service ve službě Azure Stack. Virtuální síť musí mít nakonfigurovanou následující rozsah adres a podsítí před instalací služby Azure App Service ve službě Azure Stack:
 
-Virtuální síť – /16
+Virtuální sítě – /16
 
 Podsítě
 
@@ -165,14 +165,14 @@ Podsítě
 
 ## <a name="prepare-the-file-server"></a>Příprava souborového serveru
 
-Aplikační služba Azure vyžaduje použití souborového serveru. Pro nasazení v produkčním prostředí musí být souborový server nakonfigurovaný jako vysoce dostupné a umožňuje zpracovávat chyby.
+Azure App Service vyžaduje použití souborového serveru. Pro nasazení v produkčním prostředí musí být souborový server nakonfigurovaný jako vysoce dostupné a umožňuje zpracovávat chyby.
 
-Pro nasazení Azure zásobníku Development Kit můžete použít [šablonu nasazení Azure Resource Manager příklad](https://aka.ms/appsvconmasdkfstemplate) pro nasazení nakonfigurovaný jeden uzel souborového serveru. Jeden uzel souborového serveru bude v pracovní skupině.
+Pouze nasazení Azure Stack Development Kit, můžete použít [příklad šablony nasazení Azure Resource Manageru](https://aka.ms/appsvconmasdkfstemplate) pro nasazení nakonfigurované jedním uzlem souborového serveru. Jeden souborový server se bude v pracovní skupině.
 
 >[!IMPORTANT]
-> Pokud se rozhodnete nasadit služby App Service v existující virtuální síť souborový Server musí být nasazené do samostatnou podsíť ze služby App Service.
+> Pokud budete chtít nasadit službu App Service v existující virtuální sítě na souborovém serveru musí být nasazené do samostatné podsítě ze služby App Service.
 
-### <a name="provision-groups-and-accounts-in-active-directory"></a>Zřídit skupin a účtů ve službě Active Directory
+### <a name="provision-groups-and-accounts-in-active-directory"></a>Zřízení skupin a účtů ve službě Active Directory
 
 1. Vytvořte následující skupiny globálního zabezpečení služby Active Directory:
 
@@ -181,55 +181,57 @@ Pro nasazení Azure zásobníku Development Kit můžete použít [šablonu nasa
 
 2. Vytvořte následující účty služby Active Directory jako účty služeb:
 
-   - Vlastník sdílené složky
+   - Vlastníka sdílené složky
    - FileShareUser
 
-   Zabezpečení doporučujeme uživatelům pro tyto účty (a pro všechny webové role) by měl být jedinečný a mít silné uživatelských jmen a hesel. Nastavení hesla s následující podmínky:
+   Osvědčeným postupem je uživatelů pro tyto účty (a pro všechny webové role) zabezpečení by měl být jedinečný a mít silné uživatelská jména a hesla. Nastavení hesla pomocí následujících podmínek:
 
-   - Povolit **heslo je platné stále**.
+   - Povolit **platnost hesla nikdy nevyprší**.
    - Povolit **uživatel nemůže změnit heslo**.
    - Zakázat **musí uživatel změnit heslo při příštím přihlášení**.
 
-3. Přidejte účty na členství ve skupinách následujícím způsobem:
+3. Přidejte účty do členství ve skupinách následujícím způsobem:
 
-   - Přidat **vlastník sdílené složky** k **FileShareOwners** skupiny.
-   - Přidat **FileShareUser** k **FileShareUsers** skupiny.
+   - Přidat **vlastníka sdílené složky** k **FileShareOwners** skupiny.
+   - Přidat **uživatele sdílené složky** k **FileShareUsers** skupiny.
 
-### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Zřídit skupin a účtů v pracovní skupině.
+### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Zřízení skupin a účtů v pracovní skupině
 
 >[!NOTE]
-> Když konfigurujete souborový server, spusťte následující příkazy z **příkazový řádek správce**. <br>***Nepoužívejte prostředí PowerShell.***
+> Když konfigurujete souborového serveru, spusťte následující příkazy z **příkazový řádek správce**. <br>***Nepoužívejte prostředí PowerShell.***
 
-Když použijete šablonu Azure Resource Manager, uživatelé jsou již vytvořeny.
+Při použití šablony Azure Resource Manageru jsou uživatelé už vytvořili.
 
-1. Spusťte následující příkazy můžete vytvořit účty vlastník sdílené složky a FileShareUser. Nahraďte `<password>` vlastními hodnotami.
+1. Spuštěním následujících příkazů vytvořte vlastníka sdílené složky a přihlašovací účty. Nahraďte `<password>` vlastními hodnotami.
 
-    ``` DOS
-    net user FileShareOwner <password> /add /expires:never /passwordchg:no
-    net user FileShareUser <password> /add /expires:never /passwordchg:no
-    ```
-2. Nastavení hesla pro účty bez vypršení platnosti spuštěním následujících příkazů WMIC:
+``` DOS
+net user FileShareOwner <password> /add /expires:never /passwordchg:no
+net user FileShareUser <password> /add /expires:never /passwordchg:no
+```
 
-    ``` DOS
-    WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
-    WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
-    ```
-3. Vytvořte místní skupiny FileShareUsers a FileShareOwners a do nich přidat účty v prvním kroku:
+2. Nastavení hesla pro účty bez vypršení platnosti tak spustíte následující příkazy:
 
-    ``` DOS
-    net localgroup FileShareUsers /add
-    net localgroup FileShareUsers FileShareUser /add
-    net localgroup FileShareOwners /add
-    net localgroup FileShareOwners FileShareOwner /add
-    ```
+``` DOS
+WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
+WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
+```
 
-### <a name="provision-the-content-share"></a>Zřídit sdílené složce obsahu
+3. Vytvoří místní skupiny FileShareUsers a FileShareOwners a do nich přidejte účty v prvním kroku:
 
-Sdílené složce obsahu obsahuje obsah webu klienta. Postup přidělení sdílené složky obsahu na jeden souborový server je stejný pro prostředí služby Active Directory a pracovní skupiny. Ale se liší pro cluster s podporou převzetí služeb při selhání ve službě Active Directory.
+``` DOS
+net localgroup FileShareUsers /add
+net localgroup FileShareUsers FileShareUser /add
+net localgroup FileShareOwners /add
+net localgroup FileShareOwners FileShareOwner /add
+```
 
-#### <a name="provision-the-content-share-on-a-single-file-server-active-directory-or-workgroup"></a>Zřídit sdílené složky obsahu na jeden souborový server (Active Directory nebo pracovní skupině)
+### <a name="provision-the-content-share"></a>Poskytování obsahu sdílené složky
 
-Na jeden souborový server, na příkazovém řádku se zvýšenými oprávněními spusťte následující příkazy. Nahraďte hodnotu pro `C:\WebSites` s příslušnými cestami ve vašem prostředí.
+Sdílená složka obsahu obsahuje obsah webu tenanta. Postup pro zřízení sdílené složky obsahu na jeden souborový server je stejný pro prostředí služby Active Directory a pracovní skupiny. Ale to se liší pro cluster převzetí služeb při selhání ve službě Active Directory.
+
+#### <a name="provision-the-content-share-on-a-single-file-server-active-directory-or-workgroup"></a>Zřízení sdílené složky obsahu na jeden souborový server (Active Directory nebo pracovní skupiny)
+
+Jeden souborový server spusťte následující příkazy v příkazovém řádku se zvýšenými oprávněními. Nahraďte hodnotu pro `C:\WebSites` s příslušnými cestami ve vašem prostředí.
 
 ```DOS
 set WEBSITES_SHARE=WebSites
@@ -241,11 +243,11 @@ net share %WEBSITES_SHARE%=%WEBSITES_FOLDER% /grant:Everyone,full
 
 ### <a name="add-the-fileshareowners-group-to-the-local-administrators-group"></a>Přidejte skupinu FileShareOwners do místní skupiny Administrators
 
-Vzdálená správa systému Windows fungovat správně musíte přidat FileShareOwners skupiny do místní skupiny Administrators.
+Pro vzdálenou správu Windows fungovalo správně musíte přidat skupiny FileShareOwners do místní skupiny Administrators.
 
 #### <a name="active-directory"></a>Active Directory
 
-Na souborovém serveru nebo na všech souborových serverů, který funguje jako uzel clusteru s podporou převzetí služeb při selhání, spusťte na příkazovém řádku se zvýšenými oprávněními následující příkazy. Nahraďte hodnotu pro `<DOMAIN>` s názvem domény, který chcete použít.
+Spusťte následující příkazy v příkazovém řádku se zvýšenými oprávněními na souborovém serveru nebo na každý souborový server, který funguje jako uzel clusteru převzetí služeb při selhání. Nahraďte hodnotu pro `<DOMAIN>` s názvem domény, který chcete použít.
 
 ```DOS
 set DOMAIN=<DOMAIN>
@@ -262,7 +264,7 @@ net localgroup Administrators FileShareOwners /add
 
 ### <a name="configure-access-control-to-the-shares"></a>Konfigurace řízení přístupu ke sdíleným složkám
 
-Na příkazovém řádku se zvýšenými oprávněními spusťte následující příkazy, na souborovém serveru nebo na uzlu clusteru převzetí služeb při selhání, což je aktuální vlastník prostředku clusteru. Nahraďte hodnoty kurzívou hodnoty, které jsou specifické pro vaše prostředí.
+Spusťte následující příkazy v příkazovém řádku se zvýšenými oprávněními na souborovém serveru nebo na uzlu clusteru převzetí služeb při selhání, na kterém je aktuálním vlastníkem prostředku clusteru. Nahraďte hodnoty kurzívou hodnoty, které jsou specifické pro vaše prostředí.
 
 #### <a name="active-directory"></a>Active Directory
 
@@ -289,52 +291,52 @@ icacls %WEBSITES_FOLDER% /grant FileShareUsers:(CI)(S,X,RA)
 icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 ```
 
-## <a name="prepare-the-sql-server-instance"></a>Příprava instance systému SQL Server
+## <a name="prepare-the-sql-server-instance"></a>Připravit instanci systému SQL Server
 
-Pro Azure App Service na hostování zásobník Azure a měření databáze je nutné připravit instance systému SQL Server k uchování databáze služby App Service.
+Pro Azure App Service v Azure stacku hostování a monitorování míry využití databáze musíte připravit instanci SQL serveru pro uchování databáze služby App Service.
 
-Pro nasazení Azure zásobníku Development Kit, můžete použít SQL Server Express 2014 SP2 nebo novější.
+Pro nasazení Azure Stack Development Kit, můžete použít SQL serveru Express 2014 SP2 nebo novější.
 
-Pro účely vysokou dostupnost a provozní doporučujeme použít s plnou verzí systému SQL Server 2014 SP2 nebo novější, povolit ověřování ve smíšeném režimu a nasadit v [vysoce dostupné konfiguraci](https://docs.microsoft.com/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
+Pro produkci a vysokou dostupnost, doporučujeme použít plnou verzi SQL Server 2014 SP2 nebo novější, povolit ověřování ve smíšeném režimu a nasazení v [konfiguraci s vysokou dostupností](https://docs.microsoft.com/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
 
-Instanci systému SQL Server pro službu Azure App Service v zásobníku Azure musí být přístupné ze všech rolí služby App Service. SQL Server v rámci předplatného výchozí zprostředkovatel v zásobníku Azure můžete nasadit. Můžete taky použít stávající infrastruktury v rámci vaší organizace (Pokud je k dispozici připojení k Azure zásobníku). Pokud používáte image Azure Marketplace, nezapomeňte nakonfigurovat bránu firewall, odpovídajícím způsobem.
+Instanci systému SQL Server pro službu Azure App Service ve službě Azure Stack musí být přístupné ze všech rolí služby App Service. Můžete nasadit SQL Server v rámci výchozí předplatné poskytovatele ve službě Azure Stack. Můžete taky použít stávající infrastruktury v rámci vaší organizace (za předpokladu, že je připojení ke službě Azure Stack). Pokud používáte image Azure Marketplace, nezapomeňte nakonfigurovat bránu firewall odpovídajícím způsobem.
 
 >[!NOTE]
-> Počet bitové kopie virtuálních počítačů SQL IaaS jsou k dispozici prostřednictvím funkce správy Marketplace. Zajistěte, aby vám vždy stáhnout nejnovější verzi rozšíření IaaS SQL před nasazením virtuálního počítače pomocí příslušné položky Marketplace. Image s SQL serverem jsou stejné jako virtuální počítače SQL, které jsou k dispozici v Azure. Pro virtuální počítače SQL vytvořené z těchto bitových kopií, rozšíření IaaS a odpovídající portálu vylepšení poskytují funkce, jako je automatické opravy a možnosti zálohování.
+> Počet imagí virtuálních počítačů SQL IaaS jsou dostupné prostřednictvím funkce pro správu webu Marketplace. Ujistěte se, že můžete kdykoli stáhnout nejnovější verzi rozšíření SQL IaaS, před nasazením virtuálního počítače pomocí položky Marketplace. Image s SQL serverem jsou stejné jako virtuální počítače SQL, které jsou dostupné v Azure. Pro virtuální počítače vytvořené z těchto imagí rozšíření IaaS a odpovídající portálu vylepšení SQL poskytují funkce, jako jsou automatické opravy a zálohování.
 >
-Pro všechny role systému SQL Server můžete použít výchozí instance nebo pojmenované instance. Pokud používáte pojmenovanou instanci, je nutné ručně spusťte službu SQL Server Browser a otevřete port 1434.
+Pro všechny role systému SQL Server můžete použít výchozí instance nebo pojmenované instance. Pokud používáte pojmenovanou instanci, je potřeba ručně spusťte službu SQL Server Browser a otevřete port 1434.
 
 >[!IMPORTANT]
-> Pokud se rozhodnete nasadit služby App Service v existující virtuální síť systému SQL Server musí být nasazené do samostatnou podsíť ze služby App Service a souborový Server.
+> Pokud budete chtít nasadit službu App Service v existující virtuální sítě serveru SQL Server musí být nasazené do samostatné podsítě služby App Service a souborový Server.
 >
 
 ## <a name="create-an-azure-active-directory-application"></a>Vytvoření aplikace Azure Active Directory
 
-Konfigurace objektu služby Azure AD pro podporu následující operace:
+Konfigurace instančního objektu služby Azure AD podporují následující operace:
 
-- Škálovací sady virtuálních počítačů integrace v vrstvách pracovního procesu.
-- Jednotné přihlašování pro nástroje portálu a pokročilé vývojáře Azure Functions.
+- Škálovací sady virtuálních počítačů integrace na vrstvy pracovních procesů.
+- Jednotné přihlašování k portálu a pokročilé vývojářské nástroje Azure Functions.
 
-Tento postup platí pro pouze prostředí Azure AD zabezpečené Azure zásobníku.
+Tento postup platí pro pouze prostředí Azure AD zabezpečené Azure Stack.
 
-Správci musí nakonfigurovat jednotné přihlašování k:
+Správci musí nakonfigurovat jednotné přihlašování pro:
 
-- Povolte rozšířené vývojářské nástroje v rámci služby App Service (Kudu).
-- Povolte používání prostředí portálu Azure Functions.
+- Povolte nástroje pro pokročilé vývojáře ve službě App Service (Kudu).
+- Povolte použití možnosti portálu Azure Functions.
 
 Postupujte následovně:
 
-1. Otevřete prostředí PowerShell instance jako azurestack\AzureStackAdmin.
-2. Přejděte do umístění souboru skripty, které stažené a rozbalené v [požadovaných krok](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
-3. [Instalace prostředí PowerShell pro Azure zásobníku](azure-stack-powershell-install.md).
-4. Spustit **vytvořit AADIdentityApp.ps1** skriptu. Když se zobrazí výzva, zadejte ID klienta Azure AD, který používáte pro vaše nasazení Azure zásobníku. Zadejte například **myazurestack.onmicrosoft.com**.
-5. V **pověření** okno, zadejte účet správce služby Azure AD a heslo. Vyberte **OK**.
-6. Zadejte heslo certifikátu pro a cesta k souboru certifikátu [certifikát vytvořený dříve](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certifikát vytvořený pro tento krok ve výchozím nastavení je **sso.appservice.local.azurestack.external.pfx**.
-7. Tento skript vytvoří novou aplikaci v instanci Azure AD klienta. Poznamenejte si ID aplikace, která je vrácena ve výstupu prostředí PowerShell. Je třeba tyto informace během instalace.
-8. Otevřete nové okno prohlížeče a přihlaste se k [portál Azure](https://portal.azure.com) jako správce služby Azure Active Directory
-9. Otevřete poskytovatel prostředků Azure AD.
-10. Vyberte **registrace aplikace**.
-11. Vyhledejte číslo ID aplikace, které jsou vrácena jako součást kroku 7. Aplikace služby App Service je uveden.
+1. Otevřete prostředí PowerShell instanci jako azurestack\AzureStackAdmin.
+2. Přejděte do umístění skripty, které jste stažené a rozbalené v [požadovaný krok](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
+3. [Instalace Powershellu pro Azure Stack](azure-stack-powershell-install.md).
+4. Spustit **vytvořit AADIdentityApp.ps1** skriptu. Jakmile budete vyzváni, zadejte ID tenanta Azure AD, který používáte pro nasazení Azure Stack. Zadejte například **myazurestack.onmicrosoft.com**.
+5. V **přihlašovacích údajů** okno, zadejte účet správce služby Azure AD a heslo. Vyberte **OK**.
+6. Zadejte cestu k souboru certifikátu a heslo certifikátu pro [certifikát vytvořený dříve](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certifikát vytvořený pro tento krok ve výchozím nastavení je **sso.appservice.local.azurestack.external.pfx**.
+7. Tento skript vytvoří novou aplikaci v instanci tenanta Azure AD. Poznamenejte si ID aplikace, který je vrácen ve výstupu prostředí PowerShell. Tyto informace během instalace budete potřebovat.
+8. Otevřete nové okno prohlížeče a přihlaste se k [webu Azure portal](https://portal.azure.com) jako správce služby Azure Active Directory
+9. Otevřete poskytovatele prostředků služby Azure AD.
+10. Vyberte **registrace aplikací**.
+11. Vyhledejte ID aplikace vrací jako součást kroku 7. Aplikace služby App Service je uvedena.
 12. Vyberte **aplikace** v seznamu.
 13. Vyberte **nastavení**.
 14. Vyberte **požadovaná oprávnění** > **udělit oprávnění** > **Ano**.
@@ -345,34 +347,34 @@ Postupujte následovně:
 
 | Parametr | Požadované nebo volitelné | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
-| DirectoryTenantName | Požaduje se | Null | Azure AD ID klienta. Zadejte identifikátor GUID nebo řetězec. Příkladem je myazureaaddirectory.onmicrosoft.com. |
-| AdminArmEndpoint | Požaduje se | Null | Koncový bod správce Azure Resource Manager. Příkladem je adminmanagement.local.azurestack.external. |
-| TenantARMEndpoint | Požaduje se | Null | Koncový bod tenant Azure Resource Manager. Příkladem je management.local.azurestack.external. |
+| DirectoryTenantName | Požaduje se | Null | ID tenanta Azure AD Zadejte identifikátor GUID nebo řetězec. Příkladem je myazureaaddirectory.onmicrosoft.com. |
+| AdminArmEndpoint | Požaduje se | Null | Koncový bod Azure Resource Manageru správce. Příkladem je adminmanagement.local.azurestack.external. |
+| TenantARMEndpoint | Požaduje se | Null | Koncový bod Azure Resource Manageru tenanta. Příkladem je management.local.azurestack.external. |
 | AzureStackAdminCredential | Požaduje se | Null | Pověření správce služby Azure AD. |
-| CertificateFilePath | Požaduje se | Null | **Úplná cesta** soubor certifikátu identity aplikace vygeneruje dříve. |
-| CertificatePassword | Požaduje se | Null | Heslo, který pomáhá chránit privátní klíč certifikátu. |
+| CertificateFilePath | Požaduje se | Null | **Úplná cesta** pro soubor certifikátu aplikace identity vygeneruje dříve. |
+| CertificatePassword | Požaduje se | Null | Heslo, který pomáhá chránit soukromý klíč certifikátu. |
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Vytvoření aplikace Active Directory Federation Services
 
-Pro prostředí Azure zásobníku zabezpečeným službou AD FS musíte nakonfigurovat objektu služby AD FS pro podporu následující operace:
+Pro prostředí Azure Stack zabezpečené službou AD FS musíte nakonfigurovat instanční objekt služby AD FS pro podporu následujících operací:
 
-- Škálovací sady virtuálních počítačů integrace v vrstvách pracovního procesu.
-- Jednotné přihlašování pro nástroje portálu a pokročilé vývojáře Azure Functions.
+- Škálovací sady virtuálních počítačů integrace na vrstvy pracovních procesů.
+- Jednotné přihlašování k portálu a pokročilé vývojářské nástroje Azure Functions.
 
-Správci musí nakonfigurovat jednotné přihlašování k:
+Správci musí nakonfigurovat jednotné přihlašování pro:
 
-- Nakonfigurujte hlavní název služby pro integraci sady škálování virtuálního počítače v pracovní vrstvách.
-- Povolte rozšířené vývojářské nástroje v rámci služby App Service (Kudu).
-- Povolte používání prostředí portálu Azure Functions.
+- Nakonfigurujte hlavní název služby pro integraci sady škálování virtuálního počítače na vrstvy pracovních procesů.
+- Povolte nástroje pro pokročilé vývojáře ve službě App Service (Kudu).
+- Povolte použití možnosti portálu Azure Functions.
 
 Postupujte následovně:
 
-1. Otevřete prostředí PowerShell instance jako azurestack\AzureStackAdmin.
-2. Přejděte do umístění souboru skripty, které stažené a rozbalené v [požadovaných krok](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
-3. [Instalace prostředí PowerShell pro Azure zásobníku](azure-stack-powershell-install.md).
+1. Otevřete prostředí PowerShell instanci jako azurestack\AzureStackAdmin.
+2. Přejděte do umístění skripty, které jste stažené a rozbalené v [požadovaný krok](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts).
+3. [Instalace Powershellu pro Azure Stack](azure-stack-powershell-install.md).
 4. Spustit **vytvořit ADFSIdentityApp.ps1** skriptu.
-5. V **pověření** okno, zadejte účet správce cloudové služby AD FS a heslo. Vyberte **OK**.
-6. Zadejte heslo certifikátu pro a cesta k souboru certifikátu [certifikát vytvořený dříve](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certifikát vytvořený pro tento krok ve výchozím nastavení je **sso.appservice.local.azurestack.external.pfx**.
+5. V **přihlašovacích údajů** okno, zadejte účet správce cloudu služby AD FS a heslo. Vyberte **OK**.
+6. Zadejte cestu k souboru certifikátu a certifikát heslo pro [certifikát vytvořený dříve](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack). Certifikát vytvořený pro tento krok ve výchozím nastavení je **sso.appservice.local.azurestack.external.pfx**.
 
 ```PowerShell
     Create-ADFSIdentityApp.ps1
@@ -380,12 +382,12 @@ Postupujte následovně:
 
 | Parametr | Požadované nebo volitelné | Výchozí hodnota | Popis |
 | --- | --- | --- | --- |
-| AdminArmEndpoint | Požaduje se | Null | Koncový bod správce Azure Resource Manager. Příkladem je adminmanagement.local.azurestack.external. |
-| PrivilegedEndpoint | Požaduje se | Null | Privilegované koncový bod. Příkladem je AzS ERCS01. |
-| CloudAdminCredential | Požaduje se | Null | Přihlašovací údaje účtu domény pro správce cloudu Azure zásobníku. Příkladem je Azurestack\CloudAdmin. |
-| CertificateFilePath | Požaduje se | Null | **Úplná cesta** do souboru PFX certifikátu identity aplikace. |
-| CertificatePassword | Požaduje se | Null | Heslo, který pomáhá chránit privátní klíč certifikátu. |
+| AdminArmEndpoint | Požaduje se | Null | Koncový bod Azure Resource Manageru správce. Příkladem je adminmanagement.local.azurestack.external. |
+| PrivilegedEndpoint | Požaduje se | Null | Privilegované koncový bod. Příkladem je AzS-ERCS01. |
+| CloudAdminCredential | Požaduje se | Null | Přihlašovací údaje účtu domény pro správce cloudu Azure Stack. Příkladem je Azurestack\CloudAdmin. |
+| CertificateFilePath | Požaduje se | Null | **Úplná cesta** na soubor PFX certifikátu aplikace identity. |
+| CertificatePassword | Požaduje se | Null | Heslo, který pomáhá chránit soukromý klíč certifikátu. |
 
 ## <a name="next-steps"></a>Další postup
 
-[Nainstalujte zprostředkovatele prostředků služby App Service](azure-stack-app-service-deploy.md)
+[Instalace poskytovatele prostředků App Service](azure-stack-app-service-deploy.md)

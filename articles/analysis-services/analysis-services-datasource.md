@@ -1,25 +1,25 @@
 ---
-title: Zdroje dat podporované ve službě Azure Analysis Services | Microsoft Docs
-description: Popisuje zdroje dat, které jsou podporovány pro modely dat v Azure Analysis Services.
+title: Zdroje dat podporované ve službě Azure Analysis Services | Dokumentace Microsoftu
+description: Popisuje zdroje dat podporované pro datové modely ve službě Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 06/21/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 60b6769dd3c15bbe628f60318cc08fcac78357ea
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: f6ad95eb45cc208fe2289cb2095214f98a0b250b
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307955"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442385"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Zdroje dat podporované ve službě Azure Analysis Services
 
-Zdroje dat a konektory zobrazí v načíst Data nebo Průvodce importem v sadě Visual Studio se zobrazí pro Azure Analysis Services a SQL Server Analysis Services. Ale ne všechny zdroje dat a konektory, zobrazí se podporují v Azure Analysis Services. Typy zdrojů dat, se můžete připojit k závisí na mnoha faktorech, jako model úroveň kompatibility, konektory dostupných dat, typ ověřování, zprostředkovatele a podpory brány místní data. 
+Zdroje dat a konektory zobrazují v získat Data nebo Průvodce importem v sadě Visual Studio se zobrazí pro Azure Analysis Services a SQL Server Analysis Services. Ale ne všechny zdroje dat a konektory, zobrazí se podporují ve službě Azure Analysis Services. Typy zdrojů dat, které se můžete připojit k závisí na mnoha faktorech, jako model úroveň kompatibility, k dispozici datové konektory, typ ověřování, zprostředkovatele a podpora On-premises data gateway. 
 
-## <a name="azure-data-sources"></a>Zdroje dat Azure
+## <a name="azure-data-sources"></a>Zdroji dat v Azure
 
 |Zdroj dat  |V paměti  |DirectQuery  |
 |---------|---------|---------|
@@ -33,38 +33,38 @@ Zdroje dat a konektory zobrazí v načíst Data nebo Průvodce importem v sadě 
 |Azure HDInsight Spark *     |   Ano       |   Ne       |
 ||||
 
-\* Tabulkové 1400 modely jenom.
+\* Tabulkové modely 1400 pouze.
 
 **Zprostředkovatel**   
 V paměti a modelech DirectQuery připojení ke zdrojům dat Azure pomocí zprostředkovatele dat .NET Framework pro SQL Server.
 
 ## <a name="on-premises-data-sources"></a>Místní zdroje dat
 
-Připojení k místní, že zdroje dat z a server Azure AS vyžadují místní bránu. Při použití brány, jsou požadovány 64bitová verze zprostředkovatele.
+Připojení k místní zdroje dat z a serveru Azure AS vyžadují místní brány. Při použití brány, 64-bit poskytovatelé jsou povinné.
 
-### <a name="in-memory-and-directquery"></a>V paměti a DirectQuery
+### <a name="in-memory-and-directquery"></a>In-memory a DirectQuery
 
-|Zdroj dat | Zprostředkovatel v paměti | DirectQuery zprostředkovatele |
+|Zdroj dat | Zprostředkovatel v paměti | Poskytovatel DirectQuery |
 |  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11.0 zprostředkovatel Microsoft OLE DB pro SQL Server, zprostředkovatel dat .NET Framework pro SQL Server | Zprostředkovatel dat .NET framework pro SQL Server |
-| SQL Server datového skladu |SQL Server Native Client 11.0 zprostředkovatel Microsoft OLE DB pro SQL Server, zprostředkovatel dat .NET Framework pro SQL Server | Zprostředkovatel dat .NET framework pro SQL Server |
-| Oracle |Zprostředkovatel Microsoft OLE DB pro Oracle, poskytovatele dat Oracle pro .NET |Zprostředkovatel dat Oracle pro .NET | |
-| Teradata |Zprostředkovatel OLE DB pro Teradata, Teradata Data Provider pro rozhraní .NET |Zprostředkovatel dat Teradata pro rozhraní .NET | |
+| SQL Server |SQL Server Native Client 11.0, zprostředkovatel Microsoft OLE DB pro SQL Server, zprostředkovatele dat .NET Framework pro SQL Server | Zprostředkovatel dat .NET framework pro SQL Server |
+| SQL Server Data Warehouse |SQL Server Native Client 11.0, zprostředkovatel Microsoft OLE DB pro SQL Server, zprostředkovatele dat .NET Framework pro SQL Server | Zprostředkovatel dat .NET framework pro SQL Server |
+| Oracle |Zprostředkovatel Microsoft OLE DB pro Oracle, poskytovatel dat Oracle pro .NET |Poskytovatel dat Oracle pro .NET | |
+| Teradata |Zprostředkovatel OLE DB pro Teradata, Teradata Data Provider for .NET |Poskytovatel Teradata dat pro .NET | |
 | | | |
 
 ### <a name="in-memory-only"></a>V paměti pouze
 
 |Zdroj dat  |  
 |---------|---------|
-|Databáze Access     |  
+|Databáze aplikace Access     |  
 |Active Directory *     |  
 |Analysis Services     |  
-|Analytics Platform System     |  
+|Systém Analytics Platform System     |  
 |Dynamics CRM*     |  
-|Sešit aplikace Excel     |  
+|Excelový sešit     |  
 |Exchange*     |  
-|Složky *     |
-|IBM Informix * (Beta) |
+|Složka *     |
+|IBM Informix * (beta verze) |
 |Dokument JSON *     |  
 |Řádky z binárního souboru *     | 
 |Databáze MySQL     | 
@@ -72,42 +72,42 @@ Připojení k místní, že zdroje dat z a server Azure AS vyžadují místní b
 |Dotaz rozhraní ODBC     | 
 |OLE DB     |   
 |Databáze Postgre SQL *    | 
-|Objekty služby Salesforce * |  
-|Sestavy služby Salesforce * |
+|Objekty Salesforce * |  
+|Sestavy Salesforce * |
 |SAP HANA *    |  
 |SAP Business Warehouse *    |  
 |SharePoint*     |   
 |Databáze Sybase     |  
-|XML tabulky *    |  
+|Tabulky XML *    |  
 |||
  
-\* Tabulkové 1400 modely jenom.
+\* Tabulkové modely 1400 pouze.
 
-## <a name="specifying-a-different-provider"></a>Určení jiného zprostředkovatele
+## <a name="specifying-a-different-provider"></a>Zadání jiného poskytovatele
 
-Modely dat v Azure Analysis Services může vyžadovat různé datové zprostředkovatele při připojování k určité zdroje dat. V některých případech může vrátit tabulkové modely služby připojení ke zdrojům dat pomocí nativního zprostředkovatele, jako je například SQL Server Native Client (SQLNCLI11) k chybě. Pokud používáte nativní zprostředkovatelé než SQLOLEDB, mohou se zobrazit chybová zpráva: **zprostředkovatele není registrovaný 'SQLNCLI11.1'**. Nebo, pokud je model DirectQuery připojení k místním zdrojům dat a používat nativní zprostředkovatele, mohou se zobrazit chybová zpráva: **Chyba při vytváření sady řádků OLE DB. Nesprávná syntaxe poblíž textu 'LIMIT'**.
+Modely dat ve službě Azure Analysis Services může vyžadovat různé datové zprostředkovatele při připojování k určité zdroje dat. V některých případech může tabulkových modelů připojení ke zdrojům dat pomocí nativní poskytovatelů, jako je například SQL Server Native Client (SQLNCLI11) vrátí chybu. Pokud používáte nativní poskytovatelů než SQLOLEDB, může se zobrazit chybová zpráva: **'SQLNCLI11.1' není registrovaný poskytovatel**. Nebo, pokud máte modelu DirectQuery připojení k místním zdrojům dat a používají nativní zprostředkovatele, může se zobrazit chybová zpráva: **Chyba při vytváření sady řádků OLE DB. Nesprávná syntaxe poblíž textu "LIMIT"**.
 
-Při migraci místní SQL Server Analysis Services tabulkový model Azure Analysis Services, může být nutné změnit zprostředkovatele.
+Při migraci tabulkový model místní SQL Server Analysis Services do služby Azure Analysis Services, může být nutné změnit zprostředkovatele.
 
 **Pokud chcete zadat zprostředkovatele**
 
-1. V sadě SSDT > **tabulkový Model Explorer** > **zdroje dat**, klikněte pravým tlačítkem na připojení ke zdroji dat a pak klikněte na tlačítko **upravit zdroj dat**.
-2. V **upravit připojení**, klikněte na tlačítko **Upřesnit** a otevřete okno Vlastnosti zálohy.
-3. V **nastavit rozšířené vlastnosti** > **zprostředkovatelé**, pak vyberte příslušného poskytovatele.
+1. V sadě SSDT > **Průzkumníku tabelárních modelů** > **zdroje dat**, klikněte pravým tlačítkem na připojení ke zdroji dat a potom klikněte na tlačítko **upravit zdroj dat**.
+2. V **upravit připojení**, klikněte na tlačítko **Upřesnit** otevřete okno Vlastnosti zálohy.
+3. V **nastavte rozšířené vlastnosti** > **poskytovatelé**, vyberte odpovídající zprostředkovatele.
 
 ## <a name="impersonation"></a>Zosobnění
-V některých případech může být nutné zadat účet jiné zosobnění. Účet zosobnění lze zadat v aplikaci Visual Studio (SSDT) nebo aplikace SSMS.
+V některých případech může být nutné zadat účet jiné zosobnění. Účet zosobnění se dá nastavit v sadě Visual Studio (SSDT) nebo aplikaci SSMS.
 
 Pro místní zdroje dat:
 
-* Pokud používáte ověřování SQL, musí být zosobnění účtu služby.
-* Pokud používáte ověřování systému Windows, nastavte uživatele nebo heslo systému Windows. Ověřování systému Windows s konkrétní zosobnění účtu systému SQL Server, je podporováno pouze pro modely dat v paměti.
+* Pokud používáte ověřování SQL, by měl být zosobnění účtu služby.
+* Pokud používáte ověřování Windows, nastavte Windows uživatele a hesla. Pro SQL Server Windows ověřování pomocí zosobnění konkrétní účet je podporována pouze pro modely dat v paměti.
 
 Pro cloudové zdroje dat:
 
-* Pokud používáte ověřování SQL, musí být zosobnění účtu služby.
+* Pokud používáte ověřování SQL, by měl být zosobnění účtu služby.
 
 ## <a name="next-steps"></a>Další postup
-[Místní brány](analysis-services-gateway.md)   
+[Místní brána](analysis-services-gateway.md)   
 [Správa serveru](analysis-services-manage.md)   
 

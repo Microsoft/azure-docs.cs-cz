@@ -14,12 +14,12 @@ ms.date: 07/02/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: e8aaf828d366db0f008e842ba1b0f76907aa8791
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 39f7d69482845af48b1dce8c2e51f4acf77bf4fb
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346897"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448056"
 ---
 # <a name="view-all-members-of-an-administrator-role-in-azure-active-directory"></a>Zobrazit všechny členy s rolí správce v Azure Active Directory
 
@@ -42,8 +42,8 @@ Při zobrazení členů role, vyberte **popis** zobrazíte úplný seznam všech
 ![ze seznamu oprávnění pro roli správce](./media/directory-manage-roles-portal/role-description.png)
 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * Nebojte se budou sdílet s námi na [fórum správní role Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
-* Další informace o rolích a přiřazení role správce, naleznete v tématu [přiřazení rolí správce](active-directory-assign-admin-roles-azure-portal.md).
+* Další informace o rolích a přiřazení role správce, naleznete v tématu [přiřazení rolí správce](users-groups-roles/directory-assign-admin-roles.md).
 * Výchozí oprávnění uživatelů, najdete v článku [porovnání výchozí uživatelská oprávnění hostů a člen](./fundamentals/users-default-permissions.md).

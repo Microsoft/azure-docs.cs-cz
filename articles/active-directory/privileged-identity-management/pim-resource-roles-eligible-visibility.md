@@ -1,6 +1,6 @@
 ---
-title: Oprávněné přiřazení a viditelnost prostředku pro Azure v Privileged Identity managementu | Microsoft Docs
-description: Popisuje, jak přiřadit členy jako vhodné pro role prostředků při použití PIM.
+title: Oprávněné přiřazení a viditelnost prostředků Azure v Privileged Identity Management | Dokumentace Microsoftu
+description: Popisuje, jak přiřazovat členy jako oprávněné pro role prostředků při použití PIM.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,64 +10,64 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 205b4f3113f369279dbe18e75b5945a0498e7bbd
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 8089591708676073bcef84ad13b3690b39bdc653
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260375"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448199"
 ---
 # <a name="eligible-assignments-and-resource-visibility-with-privileged-identity-management"></a>Oprávněné přiřazení a viditelnost prostředku s Privileged Identity Management
 
-Privileged Identity Management (PIM) pro role prostředků Azure poskytuje vylepšené zabezpečení pro organizace, které mají důležité prostředky Azure. Správci prostředků můžete používat PIM přiřadit členy jako vhodné pro role prostředků. Další informace o přiřazení různé typy a stavy přiřazení rolí prostředků Azure v následujících částech. 
+Privileged Identity Management (PIM) pro role prostředků Azure poskytuje vylepšené zabezpečení pro organizace, které mají důležité prostředky Azure. Správci prostředků můžete přiřazovat členy jako oprávněné pro role prostředků PIM. Další informace o typech různých přiřazení a stavy přiřazení pro role prostředků Azure v následujících částech. 
 
-## <a name="assignment-types"></a>Přiřazení typy
+## <a name="assignment-types"></a>Typy přiřazení
 
-PIM pro prostředky Azure nabízí dva typy odlišné přiřazení:
+PIM pro prostředky Azure poskytuje dva typy různých přiřazení:
 
 - Oprávnění
 - Aktivní
 
-Oprávněné přiřazení vyžadují členem role provést akci, kterou chcete použít roli. Akce mohou zahrnovat úspěšné kontrolu služby Multi-Factor authentication, poskytuje obchodního oprávnění nebo požaduje schválení ze schvalovatelů určené.
+Oprávněnými přiřazeními vyžadují členem role provádět akci, kterou chcete použít roli. Akce může obsahovat buď úspěšné kontroly ověřování službou Multi-Factor Authentication, poskytuje obchodní odůvodnění nebo z určených schvalovatelů odesílání žádostí o schválení.
 
-Aktivní přiřazení nevyžadují člen provádět veškeré akce použít roli. Členové přiřazen jako aktivní mají oprávnění přiřazena k roli za všech okolností.
+Aktivní přiřazení nevyžadují člen podnikat žádné kroky, chcete-li použít roli. Členové přiřazeno jako aktivní mají oprávnění přiřazená k roli za všech okolností.
 
 ## <a name="assignment-duration"></a>Doba trvání přiřazení
 
-Správci prostředků můžete vybrat z dvě možnosti pro každý typ přiřazení při konfiguraci nastavení PIM pro roli. Tyto možnosti se výchozí maximální doba, když je členem přiřazení role v PIM. 
+Správci prostředků můžete zvolit ze dvou možností pro každý typ přiřazení při konfiguraci nastavení PIM pro role. Tyto možnosti se výchozí maximální doba, kdy je člen přiřazeny k roli v PIM. 
 
-Může správce zvolit jednu z těchto typů přiřazení:
+Správce zvolit jednu z těchto typů přiřazení:
 
 - Povolit trvalé přiřazení oprávnění
 - Povolit trvalé aktivní přiřazení
 
 Nebo může správce zvolit jednu z těchto typů přiřazení:
 
-- Oprávněné přiřazení po vypršení platnosti
+- Platnost oprávněných přiřazení po
 - Ukončit platnost aktivních přiřazení po
 
-Pokud se rozhodne správce prostředků **povolit trvalého přiřazení oprávněné** nebo **povolit trvalého přiřazení active**, všechny správce, kteří členové přiřadit prostředku můžete přiřadit trvalé členství ve skupinách.
+Pokud správce prostředků **Povolit trvalé oprávněné přiřazení** nebo **Povolit trvalé aktivní přiřazení**, všechny správce, které přiřazení členů k prostředku přiřadit trvalé členství ve skupinách.
 
-Pokud se rozhodne správce prostředků **vyprší oprávněné přiřazení po** nebo **vyprší active přiřazení po**, správce prostředků řídí životního cyklu přiřazení vyžadováním, všechny přiřazení mít zadaný počáteční a koncové datum.
+Pokud správce prostředků **platnost oprávněných přiřazení po** nebo **ukončit platnost aktivních přiřazení po**, určuje správce prostředků životního cyklu přiřazení tak, že vyžaduje, všechny přiřazení mít zadaný počáteční a koncové datum.
 
 > [!NOTE] 
-> Všechna přiřazení, které mají zadané koncové datum můžete obnovit ve Správci prostředků. Navíc členy můžete zahájit samoobslužných žádostí k [rozšířit nebo obnovení přiřazení](pim-resource-roles-renew-extend.md).
+> Všechna přiřazení, které mají zadaného koncového data můžete obnovit ve Správci prostředků. Navíc členy můžete zahájit samoobslužných žádostí do [rozšíření nebo obnovení přiřazení](pim-resource-roles-renew-extend.md).
 
 
-## <a name="assignment-states"></a>Přiřazení stavy
+## <a name="assignment-states"></a>Stavy přiřazení
 
-PIM pro prostředky Azure má dva odlišné přiřazení stavy, které se zobrazují na **aktivní role** ve **Moje role**, **role**, a **členy**zobrazení PIM. Tyto stavy jsou:
+PIM pro prostředky Azure má dva odlišné přiřazení stavy, které se zobrazují na **aktivních rolí** kartu **Moje role**, **role**, a **členy**zobrazení PIM. Tyto stavy jsou:
 
 - Přiřazené
 - Aktivováno
 
-Při prohlížení členství, která je uvedena v **aktivní role**, můžete použít hodnotu v **stavu** sloupec k rozlišení mezi uživatele, kteří jsou **přiřazeno** jako aktivní a Uživatelé, **aktivované** oprávněné přiřazení a jsou teď aktivní.
+Při prohlížení členství, který je uveden v **aktivních rolí**, můžete použít hodnotu v **stavu** sloupec rozlišovat mezi uživatele, kteří jsou **přiřazeno** jako aktivní a Uživatelé, který **aktivováno** oprávněného přiřazení a jsou nyní aktivní.
 
 ## <a name="next-steps"></a>Další postup
 
-[Přiřazení role v Privileged Identity Manager](pim-resource-roles-assign-roles.md)
+[Přiřadit role v Privileged Identity Manager](pim-resource-roles-assign-roles.md)

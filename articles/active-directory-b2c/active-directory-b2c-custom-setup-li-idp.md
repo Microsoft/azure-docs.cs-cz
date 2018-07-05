@@ -1,100 +1,100 @@
 ---
-title: Přidejte LinkedIn jako zprostředkovatel identity OAuth2 pomocí vlastních zásad v Azure Active Directory B2C | Microsoft Docs
-description: Článek s postupy, jak nastavit aplikace LinkedIn pomocí OAuth2 protokol a vlastní zásady.
+title: Přidat LinkedIn jako zprostředkovatele identity OAuth2 pomocí vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Článek o nastavení Linkedinu aplikaci pomocí protokolu OAuth2 a vlastních zásad.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 889264dc06d1a6f10713ff5fcd7ff644c113bb45
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: 334f696d79cf801facf7c5301b2240b69f7134f7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36752312"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444374"
 ---
-# <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Přidejte LinkedIn jako zprostředkovatel identity pomocí vlastních zásad
+# <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Přidání LinkedIn jako zprostředkovatele identity pomocí vlastních zásad
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek ukazuje, jak povolit přihlášení pro uživatele účtu LinkedIn pomocí [vlastní zásady](active-directory-b2c-overview-custom.md).
+V tomto článku se dozvíte, jak povolit přihlášení pro uživatele s účtem LinkedIn pomocí [vlastní zásady](active-directory-b2c-overview-custom.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Proveďte kroky v [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md) článku.
 
 ## <a name="step-1-create-a-linkedin-account-application"></a>Krok 1: Vytvoření aplikace účet LinkedIn
-Použít LinkedIn jako poskytovatel identit v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci LinkedIn a zadat se správné parametry. Můžete zaregistrovat aplikaci LinkedIn přechodem na [stránku pro přihlášení LinkedIn](https://www.linkedin.com/start/join).
+Použití LinkedIn jako zprostředkovatele identity v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci LinkedIn a zadejte správné parametry. Můžete zaregistrovat LinkedIn aplikace tak, že přejdete [stránku pro přihlášení na LinkedIn](https://www.linkedin.com/start/join).
 
-1. Přejděte na [Správa aplikací LinkedIn](https://www.linkedin.com/secure/developer?newapp=) web, přihlaste se pomocí přihlašovacích údajů účtu LinkedIn a pak vyberte **vytvořit aplikaci**.
+1. Přejděte [LinkedIn správy aplikací](https://www.linkedin.com/secure/developer?newapp=) webu, přihlaste se pomocí přihlašovacích údajů k účtu LinkedIn a pak vyberte **vytvořit aplikaci**.
 
-    ![LinkedIn účet – vytvoření aplikace](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app1.png)
+    ![LinkedIn účtu – vytvoření aplikace](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app1.png)
 
-2. Na **vytvořte novou aplikaci** proveďte následující:
+2. Na **vytvořte novou aplikaci** stránce, postupujte takto:
 
-    a. Typ vaše **název společnosti**, popisný **název** pro společnosti a **popis** nové aplikace.
+    a. Typ vaší **název společnosti**, popisný **název** pro společnosti a **popis** nové aplikace.
 
-    b. Nahrát váš **Logo aplikace**.
+    b. Nahrajte vaše **Logo aplikace**.
 
     c. Vyberte **využívání aplikací**.
 
-    d. V **adresu URL webu** pole, vložte **https://login.microsoftonline.com**.
+    d. V **adresu URL webu** vložte **https://login.microsoftonline.com**.
 
-    e. Typ vaše **e-mailová adresa** adresu a **Telefon do zaměstnání** číslo.
+    e. Typ vaší **e-mailová adresa** adresu a **Telefon do zaměstnání** číslo.
 
-    f. V dolní části stránky, přečtěte si a přijměte podmínky použití a pak vyberte **odeslání**.
+    f. V dolní části stránky, přečtěte si a přijměte podmínky použití a pak vyberte **odeslat**.
 
-    ![LinkedIn účet - konfigurovat vlastnosti aplikace](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app2.png)
+    ![LinkedIn účtu – konfigurace vlastností aplikace](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app2.png)
 
-3. Vyberte **ověřování**a poznamenejte si **ID klienta** a **tajný klíč klienta** hodnoty.
+3. Vyberte **ověřování**a potom si poznamenejte **ID klienta** a **tajný kód klienta** hodnoty.
 
-4. V **oprávnění adres URL pro přesměrování** pole, vložte **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp**. Nahraďte {*klienta*} s názvem vašeho klienta (například contosob2c.onmicrosoft.com). Ujistěte se, že používáte schéma HTTPS. 
+4. V **oprávnění adresy URL pro přesměrování** vložte **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp**. Nahradit {*tenanta*} s názvem vašeho tenanta (například contosob2c.onmicrosoft.com). Ujistěte se, že budou používat schéma HTTPS. 
 
-    ![Účet LinkedIn – sadu oprávnění přesměrování adresy URL](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app3.png)
+    ![Účet LinkedIn – sada oprávnění přesměrovat adresy URL](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app3.png)
 
     >[!NOTE]
-    >Tajný klíč klienta je důležitým bezpečnostním pověřením. S kýmkoli sdílet tento tajný klíč nebo distribuovat s vaší aplikací.
+    >Tajný kód klienta je důležitým bezpečnostním pověřením. S kýmkoli sdílet tento tajný kód nebo distribuovat s vaší aplikací.
 
 5. Vyberte **Přidat**.
 
-6. Vyberte **nastavení**, změnit **stav aplikace** k **živé**a potom vyberte **aktualizace**.
+6. Vyberte **nastavení**, změnit **stav aplikace** k **Live**a pak vyberte **aktualizace**.
 
-    ![Účet LinkedIn – nastavit stav aplikace](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app4.png)
+    ![Účet LinkedIn - nastavit stav aplikace](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app4.png)
 
-## <a name="step-2-add-your-linkedin-application-key-to-azure-ad-b2c"></a>Krok 2: Přidejte svůj klíč LinkedIn aplikace do Azure AD B2C
-Federace s účty LinkedIn vyžaduje tajný klíč klienta pro účet LinkedIn do vztahu důvěryhodnosti Azure AD B2C jménem aplikace. K uložení tajný klíč aplikace LinkedIn v klientovi služby Azure AD B2C, postupujte takto:  
+## <a name="step-2-add-your-linkedin-application-key-to-azure-ad-b2c"></a>Krok 2: Přidejte klíč LinkedIn aplikace Azure AD B2C
+Federace se službou LinkedIn účtů vyžaduje tajný kód klienta pro účet LinkedIn, abyste vztah důvěryhodnosti Azure AD B2C jménem aplikace. Pokud chcete uložit LinkedIn tajný klíč aplikace ve vašem tenantovi Azure AD B2C, postupujte takto:  
 
-1. Ve vašem klientu Azure AD B2C, vyberte **nastavení B2C** > **Identity rozhraní Framework**.
+1. Ve vašem tenantovi Azure AD B2C vyberte **nastavení B2C** > **architekturu rozhraní identit**.
 
-2. Chcete-li zobrazit klíčů, které jsou k dispozici ve vašem klientovi, vyberte **zásad klíče**.
+2. Chcete-li zobrazit klíče, které jsou k dispozici ve vašem tenantovi, vyberte **klíče zásad**.
 
 3. Vyberte **Přidat**.
 
 4. V **možnosti** vyberte **nahrát**.
 
 5. V **název** zadejte **B2cRestClientCertificate**.  
-    Předpona *B2C_1A_* může automaticky přidat.
+    Předpona, která *B2C_1A_* může být automaticky přidán.
 
-6. V **tajný klíč** zadejte váš tajný klíč aplikace LinkedIn z [portálu pro registraci aplikace](https://apps.dev.microsoft.com).
+6. V **tajný kód** zadejte váš tajný klíč aplikace LinkedIn z [portál pro registraci aplikací](https://apps.dev.microsoft.com).
 
-7. Pro **použití klíče**, vyberte **šifrování**.
+7. Pro **použití klíče**vyberte **šifrování**.
 
 8. Vyberte **Vytvořit**. 
 
 9. Potvrďte, že jste vytvořili `B2C_1A_LinkedInSecret`klíč.
 
-## <a name="step-3-add-a-claims-provider-in-your-extension-policy"></a>Krok 3: Přidání poskytovatele deklarací identity v rozšíření zásady
-Pokud chcete uživatelům přihlásit pomocí svého účtu LinkedIn, je nutné zadat LinkedIn jako poskytovatele deklarací identity. Jinými slovy je nutné zadat koncové body, které komunikuje se službou Azure AD B2C. Koncové body poskytují sadu deklarací identity, které používají Azure AD B2C k ověření, že byl ověřen konkrétního uživatele.
+## <a name="step-3-add-a-claims-provider-in-your-extension-policy"></a>Krok 3: Přidání zprostředkovatele deklarací identity ve svojí zásadě rozšíření
+Pokud chcete uživatelům umožní přihlásit se pomocí svého účtu LinkedIn, je nutné definovat LinkedIn jako poskytovatele deklarací identity. Jinými slovy je nutné zadat koncové body, které komunikuje se službou Azure AD B2C. Koncové body poskytují sadu deklarací identity, které používají Azure AD B2C k ověření, že se ověřil konkrétního uživatele.
 
-Definování LinkedIn jako poskytovatele deklarací identity tak, že přidáte `<ClaimsProvider>` uzlu v souboru rozšíření zásad:
+Definujte LinkedIn jako poskytovatele deklarací identity tak, že přidáte `<ClaimsProvider>` uzlu v souboru rozšíření zásad:
 
 1. V pracovním adresáři, otevřete *TrustFrameworkExtensions.xml* soubor rozšíření zásad. 
 
-2. Vyhledejte `<ClaimsProviders>` elementu.
+2. Hledat `<ClaimsProviders>` elementu.
 
-3. V `<ClaimsProviders>` elementu, přidejte následující fragment kódu XML: 
+3. V `<ClaimsProviders>` prvku, přidejte následující fragment kódu XML: 
 
     ```xml
     <ClaimsProvider>
@@ -141,59 +141,59 @@ Definování LinkedIn jako poskytovatele deklarací identity tak, že přidáte 
     </ClaimsProvider>
     ```
 
-4. Nahraďte *client_id* hodnotu s vaším ID klienta aplikace LinkedIn.
+4. Nahradit *client_id* hodnotu s vaším ID klienta aplikace LinkedIn.
 
 5. Uložte soubor.
 
-## <a name="step-4-register-the-linkedin-account-claims-provider"></a>Krok 4: Registrace zprostředkovatele deklarací identity účtu LinkedIn
-Nastavili jste si poskytovatele identit. Ale ho dosud nejsou k dispozici v žádném z registrace nebo přihlášení systému windows. Nyní je nutné přidat zprostředkovatele identity účtu LinkedIn pro vaše uživatele `SignUpOrSignIn` cesty uživatele.
+## <a name="step-4-register-the-linkedin-account-claims-provider"></a>Krok 4: Registrace zprostředkovatele deklarací identity účet LinkedIn
+Nastavení zprostředkovatele identity. Však není zatím k dispozici v některém z registrace / přihlášení ve windows. Teď musíte přidat zprostředkovatele identity účet LinkedIn pro vaše uživatele `SignUpOrSignIn` cesty uživatele.
 
-### <a name="step-41-make-a-copy-of-the-user-journey"></a>Krok 4.1: Vytvoření kopie cesty uživatele
-Chcete-li k dispozici cesty uživatele, vytvořte duplicitní existující šablony cesty uživatele a pak přidejte zprostředkovatele identity LinkedIn:
+### <a name="step-41-make-a-copy-of-the-user-journey"></a>Krok 4.1: Vytvořte kopii cesty uživatele
+Zpřístupnit cesty uživatele, vytvořte kopii existující šablony cesty uživatele a pak přidejte zprostředkovatele identity LinkedIn:
 
 >[!NOTE]
->Pokud jste zkopírovali `<UserJourneys>` element ze základního souboru v zásadách *TrustFrameworkExtensions.xml* souboru rozšíření, můžete tuto část přeskočit.
+>Pokud jste si zkopírovali `<UserJourneys>` element ze základního souboru zásadu *TrustFrameworkExtensions.xml* příponu souboru, můžete tuto část přeskočit.
 
-1. Otevřete soubor základní zásad (například TrustFrameworkBase.xml).
+1. Otevřete soubor základní zásady (například TrustFrameworkBase.xml).
 
-2. Vyhledejte `<UserJourneys>` element, vyberte celý obsah `<UserJourney>` uzel a potom vyberte **Vyjmout** přesunout vybraný text do schránky.
+2. Hledat `<UserJourneys>` element, vyberte veškerý obsah `<UserJourney>` uzlu a pak vyberte **Vyjmout** přesunutí vybraného textu do schránky.
 
 3. Otevřete soubor rozšíření (například TrustFrameworkExtensions.xml) a vyhledejte `<UserJourneys>` elementu. Pokud element neexistuje, přidejte ji.
 
-4. Vložte celý obsah `<UserJourney>` uzlu, který jste přesunuli do schránky v kroku 2, do `<UserJourneys>` elementu.
+4. Vložte celý obsah `<UserJourney>` uzlu, na kterém jste přesunuli do schránky. v kroku 2, do `<UserJourneys>` elementu.
 
-### <a name="step-42-display-the-button"></a>Krok 4.2: Zobrazit "button"
-`<ClaimsProviderSelections>` Element definuje seznam možnosti výběru poskytovatele deklarací identity a jejich pořadí. `<ClaimsProviderSelection>` Uzel je obdobou tlačítko zprostředkovatele identity na stránce registrace nebo přihlášení. Pokud přidáte `<ClaimsProviderSelection>` uzel pro účet LinkedIn nové tlačítko se zobrazí, když uživatel pojmenováváme na stránce. Pokud chcete přidat tento element, postupujte takto:
+### <a name="step-42-display-the-button"></a>Krok 4.2: Zobrazit "tlačítko"
+`<ClaimsProviderSelections>` Element definuje seznam možnosti výběru zprostředkovatele deklarací identity a jejich pořadí. `<ClaimsProviderSelection>` Uzel je obdobou k tlačítku na stránce registrace nebo přihlášení zprostředkovatele identity. Pokud chcete přidat `<ClaimsProviderSelection>` uzel pro účet LinkedIn, nové tlačítko se zobrazí, když uživatel umístil na stránce. Chcete-li přidat tento element, postupujte takto:
 
-1. Vyhledejte `<UserJourney>` uzlu, který obsahuje `Id="SignUpOrSignIn"` v cesty uživatele, který jste zkopírovali.
+1. Hledat `<UserJourney>` uzel, který obsahuje `Id="SignUpOrSignIn"` v cestě uživatele, který jste zkopírovali.
 
-2. Vyhledejte `<OrchestrationStep>` uzlu, který zahrnuje `Order="1"`.
+2. Vyhledejte `<OrchestrationStep>` uzel, který zahrnuje `Order="1"`.
 
-3. V `<ClaimsProviderSelections>` elementu, přidejte následující fragment kódu XML:
+3. V `<ClaimsProviderSelections>` prvku, přidejte následující fragment kódu XML:
 
     ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="LinkedInExchange" />
     ```
 
-### <a name="step-43-link-the-button-to-an-action"></a>Krok 4.3: Odkaz na tlačítko akce
-Nyní když máte tlačítka na místě, musíte ho propojit akce. Akce, v takovém případě je pro Azure AD B2C ke komunikaci s účtem LinkedIn přijmout token. Pomocí propojení technické profil pro poskytovatele deklarací identity účtu LinkedIn odkazu na tlačítko akce:
+### <a name="step-43-link-the-button-to-an-action"></a>Krok 4.3: Odkaz na tlačítko na akci
+Teď, když máte tlačítko na místě, je třeba propojit na akci. Akce v tomto případě je pro Azure AD B2C ke komunikaci s účtem LinkedIn k získání tokenu. Tlačítko odkazu na akci propojením technický profil pro vašeho poskytovatele deklarací identity účet LinkedIn:
 
-1. Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje `Order="2"` v `<UserJourney>` uzlu.
+1. Hledat `<OrchestrationStep>` uzel, který obsahuje `Order="2"` v `<UserJourney>` uzlu.
 
-2. V `<ClaimsExchanges>` elementu, přidejte následující fragment kódu XML:
+2. V `<ClaimsExchanges>` prvku, přidejte následující fragment kódu XML:
 
     ```xml
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAuth" />
     ```
 
     >[!NOTE]
-    >* Ujistěte se, že `Id` mají stejnou hodnotu jako `TargetClaimsExchangeId` v předchozí části.
-    >* Ujistěte se, že `TechnicalProfileReferenceId` ID je nastaven na technické profil vytvořený starší (-OAuth pro LinkedIn).
+    >* Ujistěte se, že `Id` má stejnou hodnotu jako `TargetClaimsExchangeId` v předchozí části.
+    >* Ujistěte se, `TechnicalProfileReferenceId` ID je nastaven na technický profil, který jste vytvořili starší (-OAuth pro LinkedIn).
 
-## <a name="step-5-upload-the-policy-to-your-tenant"></a>Krok 5: Nahrajte zásady klienta
-1. V [portál Azure](https://portal.azure.com), přepnout [kontextu klienta služby Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a potom vyberte **Azure AD B2C**.
+## <a name="step-5-upload-the-policy-to-your-tenant"></a>Krok 5: Nahrajte zásady pro vašeho tenanta
+1. V [webu Azure portal](https://portal.azure.com), přepněte [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak vyberte **Azure AD B2C**.
 
-2. Vyberte **Identity rozhraní Framework**.
+2. Vyberte **architekturu rozhraní identit**.
 
 3. Vyberte **všechny zásady**.
 
@@ -201,19 +201,19 @@ Nyní když máte tlačítka na místě, musíte ho propojit akce. Akce, v takov
 
 5. Vyberte **přepsat zásady, pokud existuje** zaškrtávací políčko.
 
-6. Nahrát *TrustFrameworkBase.xml* a *TrustFrameworkExtensions.xml* soubory a ujistěte se, že jejich úspěšné ověření.
+6. Nahrát *TrustFrameworkBase.xml* a *TrustFrameworkExtensions.xml* soubory a ujistěte se, že bude úspěšné ověření.
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>Krok 6: Testování spustit pomocí vlastních zásad
-1. Vyberte **nastavení Azure AD B2C**a potom vyberte **Identity rozhraní Framework**.
+1. Vyberte **nastavení Azure AD B2C**a pak vyberte **architekturu rozhraní identit**.
 
     >[!NOTE]
-    >Spustit nyní vyžaduje alespoň jedné aplikace do být preregistered u klienta. Další postup registrace aplikace najdete v tématu Azure AD B2C [Začínáme](active-directory-b2c-get-started.md) článek nebo [registrace aplikace](active-directory-b2c-app-registration.md) článku.
+    >Spustit nyní vyžaduje aspoň jednu aplikaci do být registrované u klienta. Informace o postupu registrace aplikací, najdete v tématu Azure AD B2C [Začínáme](active-directory-b2c-get-started.md) článku nebo [registrace aplikace](active-directory-b2c-app-registration.md) článku.
 
-2. Otevřete **B2C_1A_signup_signin**, předávající stranu vlastních zásad, které jste nahráli a potom vyberte **spustit nyní**.  
-    Nyní byste měli být moct přihlásit pomocí účtu LinkedIn.
+2. Otevřít **B2C_1A_signup_signin**, předávající stranu vlastní zásady, které jste nahráli a pak vyberte **spustit nyní**.  
+    Teď by měl být schopni se přihlásit pod účtem LinkedIn.
 
-## <a name="step-7-optional-register-the-linkedin-account-claims-provider-to-the-profile-edit-user-journey"></a>Krok 7: (Volitelné) zaregistrovat účet LinkedIn deklarací zprostředkovatele, který se cesty úpravy profilu uživatele
-Můžete také přidat zprostředkovatele identity LinkedIn účet, který má vaše `ProfileEdit` cesty uživatele. Aby se uživatel přepravě k dispozici, opakování "krok 4." Tentokrát vyberte `<UserJourney>` uzlu, který obsahuje `Id="ProfileEdit"`. Uložit, odeslání a testování vaší zásady.
+## <a name="step-7-optional-register-the-linkedin-account-claims-provider-to-the-profile-edit-user-journey"></a>Krok 7: (Volitelné) zaregistrujte účet LinkedIn deklarací poskytovatele pro cestu uživatele úpravy profilu
+Můžete také přidat zprostředkovatele identity účet LinkedIn k vaší `ProfileEdit` cesty uživatele. Aby se uživatel přepravě k dispozici, opakujte "krok 4." Tentokrát vyberte `<UserJourney>` uzel, který obsahuje `Id="ProfileEdit"`. Uložit nahrát a testování vaší zásady.
 
-## <a name="optional-download-the-complete-policy-files"></a>(Volitelné) Stáhnout soubory dokončení zásad
-Po dokončení [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md) návod, doporučujeme vám vytvořit váš scénář pomocí vlastních zásad pro soubory. Pro vaši informaci uvádíme [ukázkové soubory zásad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-li-app).
+## <a name="optional-download-the-complete-policy-files"></a>(Volitelné) Stažení kompletní zásad souborů
+Po dokončení [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md) návodu, doporučujeme vám vytvořit váš scénář s využitím vlastních zásad pro soubory. Pro srovnání si uvádíme [ukázkové soubory zásad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-li-app).

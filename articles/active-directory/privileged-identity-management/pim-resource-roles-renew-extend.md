@@ -1,6 +1,6 @@
 ---
-title: Rozšíření a revizi rolí v prostředků Azure pomocí Privileged Identity managementu | Microsoft Docs
-description: Tento dokument popisuje, jak rozšířit a obnovit role prostředků Azure pro prostředky PIM.
+title: Rozšíření a zkontrolovat role v prostředcích Azure s použitím Privileged Identity Management | Dokumentace Microsoftu
+description: Tento dokument popisuje, jak rozšířit a obnovení role prostředků Azure pro prostředky PIM.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,128 +10,128 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: cd1524bf03256a2ed706d11a8702c7b5eff5dad4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0f4919fb11d50269f5d4f5956e956bae31c96dc7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260501"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442300"
 ---
-# <a name="extend-and-review-roles-in-azure-resources-by-using-privileged-identity-management"></a>Rozšíření a revizi rolí v prostředků Azure pomocí Privileged Identity Management
+# <a name="extend-and-review-roles-in-azure-resources-by-using-privileged-identity-management"></a>Rozšíření a zkontrolovat role v prostředcích Azure s použitím Privileged Identity Management
 
-Privileged Identity Management (PIM) k prostředkům Azure zavádí nové ovládací prvky pro správu životního cyklu přístup a přiřazení k prostředkům Azure. Správci mohou přiřadit členství pomocí vlastnosti počáteční a koncové datum a čas. Když se blíží konec přiřazování, PIM odešle e-mailová oznámení k ovlivnění uživatelé nebo skupiny. Rovněž odesílá e-mailová oznámení správcům prostředku zajistit, že se zachová odpovídající přístup. Přiřazení může být obnovena a zůstanou viditelné v stav vypršené platnosti po dobu 30 dnů, i když není rozšířeno přístup.
+Privileged Identity Management (PIM) pro prostředky Azure, zavádí nové ovládací prvky pro správu přístupu a přiřazení životní cyklus pro prostředky Azure. Správci mohou přiřadit členství pomocí vlastnosti počáteční a koncové datum a čas. Když se blíží konec přiřazení PIM odešle e-mailová oznámení k ovlivnění uživatelé nebo skupiny. Rovněž odesílá e-mailová oznámení pro správce prostředků k zajištění, že se udržuje odpovídající přístup. Přiřazení může být obnovena a zůstávají viditelné vypršela platnost po dobu až 30 dnů, i když není rozšířené přístup.
 
 ## <a name="who-can-extend-and-renew"></a>Kdo může rozšířit a obnovit?
 
-Pouze správci prostředku mohou rozšířit nebo obnovit přiřazení rolí. Ovlivněné člen může požadavek na rozšíření role, které se chystáte vyprší a žádat o obnovení role, které jsou již vypršela platnost.
+Pouze správci prostředků mohou rozšířit nebo prodlužovat platnost přiřazení role. Ovlivněné člen požádat o prodloužení role, které se chystáte vypršení platnosti a žádat o obnovení role, které jsou už vypršela.
 
 ## <a name="when-are-notifications-sent"></a>Když se odešlou oznámení?
 
-PIM odešle e-mailová oznámení pro správce a ovlivněné členy rolí, které jsou vyprší během 14 dnů a jeden den před vypršením platnosti. Přiřazení oficiálně vyprší odešle další e-mailu. 
+PIM odešle e-mailová oznámení pro správce a ovlivněné členy rolí, které jsou vyprší během 14 dnů a jeden den před vypršením platnosti. Další e-mailu odešle po přiřazení oficiálně vypršení platnosti. 
 
-Správci přijímat upozornění, když členem role kterým vyprší platnost nebo vypršela její platnost žádosti o na rozšířit nebo obnovení. Po vyřešení určitého správce požadavku ostatními správci oznámeno rozhodnutí řešení (schváleny nebo odmítnuty). Vyžádání člen je pak informováni o rozhodnutí. 
+Správci dostanou oznámení, pokud u nichž vyprší platnost nebo vypršela její platnost rolí požádá o rozšíření nebo obnovení. Po vyřešení určitého správce požadavku všech ostatních správců upozorněni rozhodnutí řešení (schválení nebo zamítnutí). Žádost o člen je pak informováni o rozhodnutí. 
 
 ## <a name="extend-role-assignments"></a>Rozšíření přiřazení rolí
 
-Následující kroky popisují proces požaduje, řešení nebo jejich správě rozšíření nebo obnovení přiřazení role. 
+Následující kroky popisují proces vyžádání, řešení nebo Správa k rozšíření nebo obnovení přiřazení role. 
 
 ### <a name="member-extend"></a>Člen rozšíření
 
-Členy přiřazení rolí můžete rozšířit, kterým vyprší platnost přiřazení rolí přímo z **vhodné** nebo **Active** na kartě **Moje role** stránky prostředku a z nejvyšší úrovně **Moje role** stránce portálu PIM. Členy můžete požádat o prodloužení oprávněné a aktivní (přiřazené) role, jejichž platnost skončí za další 14 dnů.
+Členy z přiřazení role můžete rozšíření u nichž vyprší platnost přiřazení rolí přímo z **oprávněné** nebo **aktivní** kartě **Moje role** stránky prostředku a z nejvyšší úrovně **Moje role** stránce portálu PIM. Členové můžou požádat o prodloužení oprávněných a aktivních rolí (přiřazené), které vyprší za 14 dní.
 
 ![Rozšíření role](media/azure-pim-resource-rbac/aadpim_rbac_extend_ui.png)
 
-Po přiřazení koncové datum a čas během 14 dnů, na tlačítko **rozšíření** stane aktivní odkaz v uživatelském rozhraní. V následujícím příkladu se předpokládá, aktuální datum následuje dne 27.
+Pokud je datum a čas konce přiřazení do 14 dnů, na tlačítko **rozšířit** stane aktivní odkaz v uživatelském rozhraní. V následujícím příkladu se předpokládá aktuální datum následuje 27. března.
 
-![Tlačítko "Rozšíření"](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
+![Tlačítko "Rozšířit"](media/azure-pim-resource-rbac/aadpim_rbac_extend_within_14.png)
 
-Chcete-li požádat o prodloužení přiřazení této role, vyberte **rozšíření** otevřete formulář požadavku.
+Chcete-li požádat o rozšíření přiřazení této role, vyberte **rozšířit** otevřete formulář žádosti.
 
-![Otevřete formulář žádosti o](media/azure-pim-resource-rbac/aadpim_rbac_extend_role_assignment_request.png)
+![Otevřete formulář žádosti](media/azure-pim-resource-rbac/aadpim_rbac_extend_role_assignment_request.png)
 
-Chcete-li zobrazit informace o původní přiřazení, rozbalte **podrobnosti o přiřazení**. Zadejte důvod pro žádost o rozšíření a potom vyberte **rozšíření**.
+Chcete-li zobrazit informace o původní přiřazení, rozbalte **podrobnosti o přiřazení**. Zadejte důvod, proč požadavek na rozšíření a pak vyberte **rozšířit**.
 
 >[!Note]
->Doporučujeme vám, včetně podrobnosti, proč je potřebná rozšíření a jak dlouho by měla být poskytnuta rozšíření (Pokud máte tyto informace).
+>Doporučujeme vám, včetně podrobnosti, proč je nutné rozšíření, a jak dlouho mají udělit rozšíření (Pokud máte tyto informace).
 
 ![Rozšíření přiřazení role](media/azure-pim-resource-rbac/aadpim_rbac_extend_form_complete.png)
 
-V několika situacích správci prostředků dostávat e-mailové oznámení, vyžaduje, že si žádost rozšíření. Pokud již byla odeslána žádost o rozšíření, zobrazí se v horní části portálu Azure vysvětlením chyba oznámení s informační zprávou.
+Během několika okamžiků správci prostředků dostávat e-mailové oznámení, požadování, že si žádost o rozšíření. Pokud již byla odeslána žádost o rozšíření, zobrazí se v horní části webu Azure portal s vysvětlením, chyba oznámení s informační zprávou.
 
 ![](media/azure-pim-resource-rbac/aadpim_rbac_extend_failed_existing_request.png)
 
-Přejděte na **nevyřízené žádosti o** kartě v levém podokně zobrazit stav žádosti nebo ji zrušte.
+Přejděte **žádosti čekající na vyřízení** kartu v levém podokně, chcete-li zobrazit stav své žádosti, nebo chcete ho zrušit.
 
 ![](media/azure-pim-resource-rbac/aadpim_rbac_extend_cancel_request.png)
 
 ### <a name="admin-approve"></a>Schválení správce
 
-Když členem odešle požadavek na rozšíření přiřazení role, zobrazí se správci prostředků e-mailové oznámení, který obsahuje podrobnosti o původní přiřazení a důvod žádosti. Oznámení obsahuje přímý odkaz na žádost o správce schválí nebo zamítne. 
+Když člen odešle žádost o rozšíření přiřazení rolí, správci prostředků, dostanete oznámení e-mailu, který obsahuje podrobné informace o původní přiřazení a důvod žádosti. Oznámení obsahuje přímý odkaz na žádost správce schválil nebo zamítl. 
 
-Kromě používání následujících odkaz z e-mailu, můžete schválit nebo odmítnout požadavky, tak, že přejdete do správy PIM portálu a vyberete správci **schvalovat žádosti o** v levém podokně.
+Kromě použití následujícího odkaz z e-mailu, správci mohli schválit nebo odmítnout žádosti o tak, že přejdete na správu PIM portálu a následným výběrem **schvalovat žádosti o** v levém podokně.
 
 ![Snímek obrazovky chyby](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_grid.png)
 
-Když správce vybere **schválit** nebo **Odepřít**, jsou uvedeny podrobnosti žádosti, společně s pole do uveďte její odůvodnění protokoly auditu.
+Pokud správce vybere **schválit** nebo **Odepřít**, jsou uvedeny podrobnosti žádosti, spolu s polem zadávat odůvodnění k protokolům auditu.
 
 ![](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
 
-Po schválení žádosti o rozšíření přiřazení role, prostředků mohou správci nové počáteční datum, koncové datum a typ přiřazení. Změna přiřazení typu může být nutné v případě, že správce chce omezený přístup k dokončení konkrétních úkolů (jeden den, např.). V tomto příkladu může správce změnit přiřazení z **vhodné** k **Active**. To znamená, že se může poskytnout přístup k žadatel bez nutnosti jejich aktivovat.
+Při schválení žádosti o rozšíření přiřazení role, prostředek mohou správci nové datum zahájení, datum ukončení a typ přiřazení. Změna přiřazení typu může být nutné v případě, že správce chce omezený přístup k dokončení úkolu (jeden den, například). V tomto příkladu může správce změnit přiřazení z **oprávněné** k **aktivní**. To znamená, že můžete poskytují přístup žadateli bez nutnosti jejich nutnost aktivovat.
 
 ### <a name="admin-extend"></a>Rozšíření správce
 
-Pokud člena role zapomene nebo nemůže požádat o příponu členství role, správce můžete rozšířit přiřazení jménem člena. Správce rozšíření členství role nevyžadují schválení, ale oznámení se odesílají na všechny ostatní správce po rozšířilo roli.
+Pokud člen role zapomene nebo nemůže požádat o prodloužení členství role, správce můžete rozšířit přiřazení jménem člena. Administrativní rozšíření členství role nevyžadují schválení, ale oznámení se posílají do všech ostatních správců po role byla prodloužena.
 
-Pokud chcete rozšířit členství role, přejděte do zobrazení zdrojů role nebo člen v PIM. Najít člena, který vyžaduje rozšíření. Potom vyberte **rozšíření** ve sloupci Akce.
+Rozšíření členství v roli, přejděte do zobrazení prostředků roli nebo člen v PIM. Najdete člena, který vyžaduje rozšíření. Potom vyberte **rozšířit** ve sloupci Akce.
 
-![Rozšíření členství role](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_extend.png)
+![Rozšíření členství v roli](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_extend.png)
 
-## <a name="renew-role-assignments"></a>Obnovit přiřazení rolí
+## <a name="renew-role-assignments"></a>Prodlužovat platnost přiřazení role
 
-Při koncepčně podobá procesu pro požaduje rozšíření, proces obnovení přiřazení role s vypršenou platností se liší. Pomocí následujících kroků, můžou členové a správci obnovit přístup k vypršela platnost role, pokud je to nezbytné.
+I když je koncepčně podobá procesu žádosti o rozšíření, se proces obnovení přiřazení role vypršela platnost. Pomocí následujících kroků, můžou členové a správci obnovit přístup k platnost rolí, pokud je to nezbytné.
 
 ### <a name="member-renew"></a>Obnovení člena
 
-Členové, kteří už přístup k prostředkům, mají přístup k až 30 dnů od historie vypršela platnost přiřazení. K tomu, že vyhledejte **Moje role** v levém podokně a potom vyberte **platnost role** kartě v části role prostředků Azure.
+Členové, kteří už přístup k prostředkům můžete přistupovat až 30 dní historie vypršela platnost přiřazení. Uděláte to tak, že při procházení **Moje role** v levém podokně a pak vyberte **platnost rolí** kartu v části role prostředků Azure.
 
 ![Na kartě "Prošlé role"](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_myroles.png)
 
-Seznam rolí, zobrazí se výchozí hodnota je **vhodné role**. Použijte rozevírací nabídky k přepnutí mezi způsobilých a aktivní přiřazené role.
+Seznam rolí, které jsou uvedené výchozí hodnota je **oprávněných rolí**. Pomocí rozevírací nabídky můžete přepnout mezi oprávněných a aktivních přiřazené role.
 
-Chcete-li požádat o obnovení pro všechny přiřazení rolí v seznamu, vyberte **obnovení** akce. Zadejte důvod pro požadavek. Je vhodné zajistit dobu trvání kromě žádné další kontext, který pomáhá správce prostředků se rozhodnete schválí nebo zamítne.
+Chcete-li požádat o prodloužení platnosti pro některý z přiřazení rolí v seznamu, vyberte **obnovit** akce. Zadejte důvod pro daný požadavek. Je vhodné zadat dobu trvání kromě jakékoli další kontext, který pomáhá správce prostředků se rozhodnete schválit nebo zamítnout.
 
-![Obnovit přiřazení role](media/azure-pim-resource-rbac/aadpim_rbac_renew_request_form.png)
+![Obnovení přiřazení role](media/azure-pim-resource-rbac/aadpim_rbac_renew_request_form.png)
 
-Po odeslání žádosti správci prostředků oznámí čekající žádosti o obnovení přiřazení role.
+Po odeslání žádosti jsou správci prostředků upozorněni na čekající žádosti o obnovení přiřazení role.
 
 ### <a name="admin-approves"></a>Schválí správce
 
-Správci prostředků můžete žádost o obnovení přístup pomocí odkazu v e-mailových oznámení nebo přístup k PIM z portálu Azure a vybrat **schvalovat žádosti o** v levém podokně.
+Správci prostředků mohou přistupovat k žádost o obnovení z odkazu v e-mailových oznámení nebo přístupu k PIM z webu Azure portal a výběrem **schvalovat žádosti o** v levém podokně.
 
 ![Schválit žádosti](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_grid.png)
 
-Když správce vybere **schválit** nebo **Odepřít**, jsou uvedeny podrobnosti požadavku společně s pole zadávat odůvodnění pro protokoly auditu.
+Pokud správce vybere **schválit** nebo **Odepřít**, jsou uvedeny podrobnosti požadavku spolu s polem zadávat odůvodnění pro protokoly auditu.
 
 ![Schválit přiřazení role](media/azure-pim-resource-rbac/aadpim_rbac_extend_admin_approve_blade.png)
 
-Po schválení žádosti o obnovení přiřazení role, musíte zadat správci prostředků nové počáteční datum, koncové datum a typ přiřazení. 
+Při schválení žádosti o obnovení přiřazení role, správce prostředků musíte zadat nové počáteční datum, koncové datum a typ přiřazení. 
 
 ### <a name="admin-renew"></a>Obnovení správce
 
-Správci prostředků můžete obnovit přiřazení role s vypršenou platností ze **členy** kartě v levé navigační nabídce prostředku. Přiřazení vypršela platnost rolí v nástroji se můžete obnovit také **platnost vypršela** kartu role role prostředků.
+Správci prostředků můžete obnovit přiřazení role s vypršenou platností ze **členy** kartu v levé navigační nabídce prostředku. Jsou také prodlužovat platnost přiřazení vypršela platnost rolí v rámci **neplatné** kartu role prostředku role.
 
-Chcete-li zobrazit seznam všech v platnost přiřazení rolí **členy** obrazovku, vyberte **platnost role**.
+Chcete-li zobrazit seznam všech skončila přiřazení rolí **členy** obrazovky, vyberte **platnost rolí**.
 
 ![Role, kterým vypršela platnost](media/azure-pim-resource-rbac/aadpim_rbac_renew_from_member_blade.png)
 
 ## <a name="next-steps"></a>Další postup
 
-[Vyžadovat schválení aktivovat](pim-resource-roles-approval-workflow.md)
+[K aktivaci vyžadovat schválení](pim-resource-roles-approval-workflow.md)
 
 [Aktivovat roli](pim-resource-roles-use-the-audit-log.md)
 

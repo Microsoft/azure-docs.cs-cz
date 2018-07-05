@@ -1,7 +1,7 @@
 ---
-title: 'Microsoft genomika: Průvodce odstraňováním potíží s | Microsoft Docs'
+title: 'Microsoft Genomics: Průvodce odstraňováním potíží | Dokumentace Microsoftu'
 titleSuffix: Azure
-description: Další informace o řešení potíží s strategie
+description: Další informace o strategií pro řešení potíží
 keywords: řešení potíží s chybou, ladění
 services: microsoft-genomics
 author: grhuynh
@@ -12,69 +12,68 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 04/13/2018
-ms.openlocfilehash: 18761c02cc423affe7b1050700e560b1f0b0594d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: d3991bdbcd9c3dcd08572dc92cc75aaebb02b133
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/18/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34627360"
 ---
 # <a name="troubleshooting-guide"></a>Průvodce odstraňováním potíží
-Tento přehled popisuje strategií, které řeší běžné problémy při použití služby Microsoft Genomics. Obecné – nejčastější dotazy, najdete v části [běžné otázky](frequently-asked-questions-genomics.md). 
+Tento přehled popisuje strategie pro řešení běžných potíží s při použití služby Microsoft Genomics. Nejčastější dotazy týkající se obecné, naleznete v tématu [běžné otázky](frequently-asked-questions-genomics.md). 
 
 
-## <a name="how-do-i-check-my-job-status"></a>Jak zkontrolovat stav Moje úlohy?
-Stav pracovního postupu můžete zkontrolovat voláním `msgen status` z příkazového řádku, jak je vidět. 
+## <a name="how-do-i-check-my-job-status"></a>Jak můžu zkontrolovat stav úlohy?
+Můžete zkontrolovat stav pracovního postupu pomocí volání `msgen status` z příkazového řádku, jak je znázorněno. 
 
 ```
 msgen status -u URL -k KEY -w ID [-f CONFIG] 
 ```
 
-Existují tři požadované argumenty:
+Existují tři povinné argumenty:
 * Adresa URL – základní identifikátor URI pro rozhraní API
-* KLÍČ – přístupový klíč pro váš účet genomika. 
+* KLÍČ – přístupový klíč pro svůj účet Genomics. 
 * ID – ID pracovního postupu
 
-Pokud chcete vyhledat adresu URL a klíče, přejděte na portál Azure a otevřete stránku genomika účtu. V části **správy** záhlaví, vyberte **přístupové klíče**. Zde najít adresu rozhraní API a klíče pro přístup k.
+Najít adresu URL a klíč, přejděte na webu Azure portal a otevřete stránku svého účtu Genomics. V části **správu** záhlaví, vyberte **přístupové klíče**. Tam najdete adresy URL rozhraní API a přístupové klíče.
 
-Alternativně můžete zahrnout cestu k souboru konfigurace nemusí přímo zadávat adresu URL a klíč. Všimněte si, že pokud zahrnete tyto argumenty příkazového řádku, jakož i do konfiguračního souboru, argumenty příkazového řádku bude mít přednost. 
+Alternativně můžete zahrnout cesty do konfiguračního souboru nemusí přímo zadávat adresu URL a klíč. Všimněte si, že pokud zahrnete tyto argumenty příkazového řádku, jakož i konfiguračním souboru, argumenty příkazového řádku bude mít přednost. 
 
-Po volání `msgen status`, se zobrazí uživatelsky přívětivý zpráva popisující, zda pracovním postupu byla úspěšně nebo udává příčinu selhání úlohy. 
+Po volání `msgen status`, se zobrazí uživatelsky přívětivou zpráva popisující, zda pracovní postup proběhl úspěšně nebo pojmenováním důvod selhání úlohy. 
 
 
-## <a name="get-more-information-about-my-workflow-status"></a>Další informace o stavu pracovního postupu
+## <a name="get-more-information-about-my-workflow-status"></a>Získejte další informace o stavu pracovního postupu
 
-Chcete-li získat další informace o proč nemusí mít úlohu úspěšné, můžete prozkoumat souborů protokolů během pracovního postupu. V kontejneru vaší výstup, měli byste vidět `[youroutputfilename].logs.zip` složky.  Rozbalení této složky, zobrazí se následující položky:
+Pokud chcete získat další informace o proč nemusí být úspěšné úlohy, můžete prozkoumat soubory protokolu vytvořené během pracovního postupu. Ve výstupní kontejner byste měli vidět `[youroutputfilename].logs.zip` složky.  Rozzipování tuto složku, zobrazí se následující položky:
 
 * outputFileList.txt – seznam výstupní soubory vytvořené během pracovního postupu
 * StandardError.txt – Tento soubor je prázdný.
 * standardoutput.txt – obsahuje nejvyšší úrovně protokolování pracovního postupu. 
-* Soubory – všechny ostatní soubory v protokolu GATK `logs` složky
+* Soubory – všechny ostatní soubory protokolu GATK `logs` složky
 
-`standardoutput.txt` Souboru je vhodná k určení, proč nebylo úspěšné pracovní postup, zahrnuje informace nízké úrovně pracovního postupu. 
+`standardoutput.txt` Soubor je dobrým začátkem určit, proč pracovního postupu se nezdařilo, protože zahrnuje další údaje nízké úrovně pracovního postupu. 
 
 ## <a name="common-issues-and-how-to-resolve-them"></a>Běžné problémy a jejich řešení
-V této části jsou zdůrazněné stručně nejčastější problémy a jejich řešení.
+Tato část se stručně zaměřuje běžné problémy a jejich řešení.
 
-### <a name="fastq-files-are-unmatched"></a>Fastq soubory neodpovídající
-Soubory Fastq by se měly lišit pouze koncové /1 nebo /2 v identifikátoru ukázka. Pokud jste omylem odeslali neodpovídající FASTQ soubory, může se zobrazit následující chybové zprávy při volání metody `msgen status`.
+### <a name="fastq-files-are-unmatched"></a>Jsou bezkonkurenční souborů Fastq
+Souborů Fastq by se měly lišit pouze koncové /1 nebo /2 v ukázkový identifikátor. Pokud jste omylem odeslali bezkonkurenční souborů FASTQ, může se zobrazit následující chybové zprávy při volání metody `msgen status`.
 * `Encountered an unmatched read`
 * `Error reading a FASTQ file, make sure the input files are valid and paired correctly` 
 
-To vyřešit, zkontrolujte, pokud jsou soubory fastq odeslána do pracovního postupu ve skutečnosti odpovídající sadu. 
+Chcete-li tento problém vyřešit, zkontrolujte, pokud jsou soubory fastq odeslané do pracovního postupu ve skutečnosti odpovídající sady. 
 
 
-### <a name="error-uploading-bam-file-output-blob-already-exists-and-the-overwrite-option-was-set-to-false"></a>Chyba při odesílání souboru .bam. Objekt blob výstup už existuje a volba přepisování byla nastavena na hodnotu False.
-Pokud se zobrazí následující chybová zpráva, `Error uploading .bam file. Output blob already exists and the overwrite option was set to False`, zadaná výstupní složka již obsahuje výstupního souboru se stejným názvem.  Odstraňte existující výstupní soubor nebo zapnout možnost přepisování v konfiguračním souboru. Potom odešlete znovu pracovního postupu.
+### <a name="error-uploading-bam-file-output-blob-already-exists-and-the-overwrite-option-was-set-to-false"></a>Chyba při nahrávání souborů .bam souboru. Výstupní objekt blob již existuje a možnost přepsat byl nastaven na hodnotu False.
+Pokud se zobrazí následující chybová zpráva, `Error uploading .bam file. Output blob already exists and the overwrite option was set to False`, výstupní složka již obsahuje výstupní soubor se stejným názvem.  Odstraňte existující výstupní soubor nebo zapnout možnost přepsat v konfiguračním souboru. Odešlete váš workflow.
 
-### <a name="when-to-contact-microsoft-genomics-support"></a>Když se obrátit na podporu společnosti Microsoft Genomics
+### <a name="when-to-contact-microsoft-genomics-support"></a>Při kontaktování podpory Microsoft Genomics
 Pokud se zobrazí následující chybové zprávy, došlo k vnitřní chybě. 
 
 * `Error locating input files on worker machine`
 * `Process management failure`
 
-Zkuste odeslat znovu pracovního postupu. Pokud nadále úlohy s chybami, nebo pokud máte další otázky, obraťte se na podporu společnosti Microsoft genomika z portálu Azure.
-
-![Obraťte se na podporu na portálu Azure](./media/troubleshooting-guide/genomics-contact-support.png "obraťte se na podporu na portálu Azure")
+Zkuste se znovu spustit pracovní postup. Pokud budete nadále došlo k selhání úlohy, nebo pokud máte nějaké dotazy, obraťte se na podporu Microsoft Genomics na webu Azure Portal. Další informace o tom, jak odeslat žádost o podporu můžete najít [tady](file-support-ticket-genomics.md).
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku jste zjistili, jak k řešení běžných problémů se službou Microsoft Genomics. Další informace a další obecné – nejčastější dotazy najdete v tématu [běžné otázky](frequently-asked-questions-genomics.md). 
+V tomto článku jste zjistili, jak odstraňovat potíže a řešit běžné problémy se službou Microsoft Genomics. Další informace a další obecné – nejčastější dotazy najdete v tématu [běžné otázky](frequently-asked-questions-genomics.md). 

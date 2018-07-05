@@ -1,48 +1,48 @@
 ---
-title: Nainstalovat bránu dat místní | Microsoft Docs
-description: Zjistěte, jak nainstalovat a nakonfigurovat bránu místní data.
+title: Instalace místní brány dat | Dokumentace Microsoftu
+description: Zjistěte, jak nainstalovat a nakonfigurovat službu On-premises data gateway.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9681d4895de4b5c5c5488fffa85a3314532b41a3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 59dc2dad103de60cb7d4b6a44a6d6f7271368391
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598187"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444935"
 ---
-# <a name="install-and-configure-an-on-premises-data-gateway"></a>Nainstalujte a nakonfigurujte bránu místní data
-Místní brána dat je potřeba při jeden nebo více serverů ve stejné oblasti Azure Analysis Services připojení ke zdrojům dat v místě. Další informace o bráně najdete v tématu [místní brána dat](analysis-services-gateway.md).
+# <a name="install-and-configure-an-on-premises-data-gateway"></a>Instalace a konfigurace místní brány dat
+Při jeden nebo více serverů služby Azure Analysis Services ve stejné oblasti připojení k místním zdrojům dat, místní brány dat se vyžaduje. Další informace o bráně, naleznete v tématu [On-premises data gateway](analysis-services-gateway.md).
 
 ## <a name="prerequisites"></a>Požadavky
 **Minimální požadavky:**
 
-* Rozhraní .NET 4.5 framework
-* 64bitová verze systému Windows 7 nebo Windows Server 2008 R2 (nebo novější)
+* 4.5 rozhraní .NET framework
+* 64bitová verze Windows 7 / Windows Server 2008 R2 (nebo novější)
 
-**Doporučujeme:**
+**Doporučené:**
 
-* 8 jader procesoru
+* Procesor s 8 jádry
 * 8 GB paměti
-* 64bitová verze systému Windows 2012 R2 (nebo novější)
+* 64bitová verze Windows 2012 R2 (nebo novější)
 
 **Důležité informace:**
 
-* Během instalace, při registraci brány na Azure je vybrán výchozí oblasti pro vaše předplatné. Můžete použít v jiné oblasti. Pokud máte servery ve více než jedné oblasti, je nutné nainstalovat bránu pro každou oblast. 
-* Brána nemůže být nainstalována na řadiči domény.
-* V jednom počítači lze nainstalovat pouze jedna brána.
-* Bránu nainstalujte na počítač, který zůstává na a není přejít do režimu spánku.
-* Neinstalujte bránu v počítači se bezdrátově připojený k síti. Výkon může být snížena.
-* Přihlaste se k Azure pomocí účtu ve službě Azure AD pro stejné [klienta](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) jako předplatné registrujete brána. Azure B2B účty (Host) nejsou podporována při instalaci a registraci brány.
-* (Jednotné) gateway popsané tady není podporována v Azure Government, Azure v Německu a Azure China svrchovaných oblastech. Použití **vyhrazené místní brána pro Azure Analysis Services**, nainstalované z vašeho serveru **rychlý Start** na portálu. 
+* Během instalace, při registraci vaší brány Azure je vybrán výchozí oblast pro vaše předplatné. Můžete použít v jiné oblasti. Pokud máte servery ve více než jedné oblasti, musíte nainstalovat bránu pro každou oblast. 
+* Brány nelze nainstalovat na řadič domény.
+* V jednom počítači lze nainstalovat pouze jednu bránu.
+* Bránu nainstalujte na počítač, který zůstane na a ne přechází do režimu spánku.
+* Bránu neinstalujte na počítač bezdrátově připojené k vaší síti. Výkon můžete snížila.
+* Přihlášení k Azure pomocí účtu ve službě Azure AD pro stejné [tenanta](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) jako předplatné při registraci brány v. Azure B2B účty (Host) nejsou podporována při instalaci a registraci brány.
+* (Sjednocené) brány je zde popsáno, není podporována v Azure Government, Azure Germany a Azure China suverénních oblastech. Použití **vyhrazená místní brána pro Azure Analysis Services**, nainstalované ze svého serveru **rychlý Start** na portálu. 
 
 
-## <a name="download"></a>Stahování
- [Stáhněte bránu](https://aka.ms/azureasgateway)
+## <a name="download"></a>Stáhnout
+ [Stáhněte si bránu](https://aka.ms/azureasgateway)
 
 ## <a name="install"></a>Instalace
 
@@ -52,66 +52,66 @@ Místní brána dat je potřeba při jeden nebo více serverů ve stejné oblast
 
    ![Nainstalujte umístění a licenční podmínky](media/analysis-services-gateway-install/aas-gateway-installer-accept.png)
 
-3. Přihlaste se k Azure. Účet musí být v vašeho klienta Azure Active Directory. Tento účet slouží pro správce brány. Azure B2B účty (Host) nejsou podporována při instalaci a registraci brány.
+3. Přihlaste se k Azure. Účet musí být ve vašem tenantovi Azure Active Directory. Tento účet slouží pro správce brány. Azure B2B účty (Host) nejsou podporována při instalaci a registraci brány.
 
    ![Přihlášení k Azure](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
    > [!NOTE]
-   > Pokud se přihlásíte pomocí účtu domény, je namapována na váš účet organizace v Azure AD. Váš účet organizace se používá jako správce brány.
+   > Pokud jste se přihlásit pomocí účtu domény, se mapuje na váš účet organizace ve službě Azure AD. Váš účet organizace se používá jako správce brány.
 
 ## <a name="register"></a>Registrace
-Chcete-li vytvořit bránu prostředků v Azure, je nutné zaregistrovat místní instance, kterou jste nainstalovali s cloudové službě brány. 
+Chcete-li vytvořit bránu prostředků v Azure, je nutné zaregistrovat místní instance, kterou jste nainstalovali, se Cloudová služba brány. 
 
-1.  Vyberte **registrace nové brány na tomto počítači**.
+1.  Vyberte **registrovat novou bránu na tomto počítači**.
 
     ![Registrace](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
-2. Zadejte název a obnovení klíče pro bránu. Ve výchozím nastavení brána používá výchozí oblasti vašeho předplatného. Pokud je nutné vybrat jiné oblasti, vyberte **změnu oblast**.
+2. Zadejte název a obnovení klíče pro bránu. Ve výchozím nastavení brána používá výchozí oblasti vašeho předplatného. Pokud je potřeba vybrat jinou oblast, vyberte **změnit oblast**.
 
     > [!IMPORTANT]
-    > Obnovovací klíč uložte na bezpečném místě. Obnovovací klíč se vyžaduje v daném pořadí k převzetí, migraci nebo obnovení brány. 
+    > Obnovovací klíč uložte na bezpečném místě. Obnovovací klíč se vyžaduje mohli převzetí, migrovat nebo obnovit bránu. 
 
    ![Registrace](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
-## <a name="create-resource"></a>Vytvořte prostředek Azure brány
-Po instalaci a zaregistrovat bránu, musíte vytvořit prostředek brány ve vašem předplatném Azure. Přihlaste se k Azure pomocí stejného účtu, který jste použili při registraci brány.
+## <a name="create-resource"></a>Vytvoření prostředku Azure gateway
+Po nainstalovaný a zaregistrovaný bránu, je potřeba vytvořit prostředek brány ve vašem předplatném Azure. Přihlaste se k Azure pomocí stejného účtu, který jste použili při registraci brány.
 
-1. Na portálu Azure, klikněte na tlačítko **vytvoření nové služby** > **Enterprise integrace** > **místní brána dat** > **vytvořit**.
+1. Na webu Azure portal, klikněte na tlačítko **vytvořit novou službu** > **podniková integrace** > **On-premises data gateway**  >   **Vytvoření**.
 
-   ![Vytvořte prostředek brány](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
+   ![Vytváření prostředku brány](media/analysis-services-gateway-install/aas-gateway-new-azure-resource.png)
 
-2. V **vytvořit připojení bránu**, zadejte tato nastavení:
+2. V **vytvořit připojení brány**, zadejte tato nastavení:
 
     * **Název**: Zadejte název pro prostředek brány. 
 
     * **Předplatné**: Vyberte předplatné Azure, které chcete přidružit k prostředku brány. 
    
-      Výchozí předplatné je založena na účet Azure, který jste použili k přihlášení.
+      Výchozí odběr je založený na účtu Azure, který jste použili k přihlášení.
 
     * **Skupina prostředků**: Vytvořte skupinu prostředků, nebo vyberte existující.
 
-    * **Umístění**: Vyberte oblast zaregistrovat bránu v.
+    * **Umístění**: Vyberte oblast, jste zaregistrovali bránu.
 
-    * **Název instalace**: Pokud vaše instalace brány již není vybrána, vyberte bránu zaregistrován. 
+    * **Název instalace**: Pokud vaše instalace brány není vybrána, vyberte bránu, zaregistrovaný. 
 
-    Když jste hotovi, klikněte na tlačítko **vytvořit**.
+    Jakmile budete hotovi, klikněte na tlačítko **vytvořit**.
 
-## <a name="connect-servers"></a>Připojte servery k prostředku brány
+## <a name="connect-servers"></a>Připojení serverů k prostředku brány
 
-1. V přehledu vaší služby Azure Analysis Services serveru, klikněte na tlačítko **místní brána dat**.
+1. V přehledu vaší služby Azure Analysis Services serveru, klikněte na tlačítko **On-Premises Data Gateway**.
 
    ![Připojení serveru k bráně](media/analysis-services-gateway-install/aas-gateway-connect-server.png)
 
-2. V **vyberte bránu místní Data připojit**, vyberte prostředek vaší brány a pak klikněte na tlačítko **připojit vybrané brány**.
+2. V **vybrat službu On-Premises Data Gateway pro připojení**, vyberte prostředek brány a potom klikněte na tlačítko **připojit vybranou bránu**.
 
    ![Připojení serveru k prostředku brány](media/analysis-services-gateway-install/aas-gateway-connect-resource.png)
 
     > [!NOTE]
-    > Pokud vaše brána v seznamu nezobrazí, je váš server pravděpodobně že není ve stejné oblasti jako oblast jste zadali při registraci brány. 
+    > Pokud vaše brána se nezobrazí v seznamu, je váš server pravděpodobně že není ve stejné oblasti jako oblast jste zadali při registraci brány. 
 
-A je to. Pokud potřebujete otevřít porty nebo provést žádné řešení potíží, nezapomeňte se podívat [místní brána dat](analysis-services-gateway.md).
+A je to. Pokud je potřeba otevřít porty nebo provést další řešení potíží, nezapomeňte se podívat [On-premises data gateway](analysis-services-gateway.md).
 
 ## <a name="next-steps"></a>Další postup
 * [Správa služby Analysis Services](analysis-services-manage.md)   
-* [Získání dat z Azure Analysis Services](analysis-services-connect.md)
+* [Získání dat ze služby Azure Analysis Services](analysis-services-connect.md)

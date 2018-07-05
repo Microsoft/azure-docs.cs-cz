@@ -3,23 +3,24 @@ title: Kontroly přístupu Azure AD | Dokumentace Microsoftu
 description: Pomocí kontrol přístupu Azure Active Directory můžete řídit členství ve skupinách a přístup k aplikacím, abyste v organizaci splňovali iniciativy týkající se zásad správného řízení, řízení rizik a dodržování předpisů.
 services: active-directory
 documentationcenter: ''
-author: markwahl-msft
+author: rolyon
 manager: mtillman
-editor: ''
+editor: markwahl-msft
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 05/02/2018
 ms.author: rolyon
-ms.openlocfilehash: 31f3ce4ae7915ef463a557a9be60c651acdbabe6
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
-ms.translationtype: HT
+ms.reviewer: mwahl
+ms.openlocfilehash: 0180968d85fffcaf1ee5e224e72864d2ab0511ca
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233267"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446041"
 ---
 # <a name="azure-ad-access-reviews"></a>Kontroly přístupu Azure AD
 
@@ -36,7 +37,7 @@ Kontroly přístupu Azure Active Directory (Azure AD) umožňují organizacím e
 - Můžete opětovně certifikovat přiřazení rolí správců přiřazených k rolím Azure AD, jako je globální správce, nebo rolím předplatného Azure.  Tato funkce je součástí technologie Azure AD Privileged Identity Management.
     
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 - [Správa přístupu uživatelů pomocí kontrol přístupu Azure AD](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
 - [Správa přístupu uživatelů typu host pomocí kontrol přístupu Azure AD](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)

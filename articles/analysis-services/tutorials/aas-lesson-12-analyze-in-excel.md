@@ -5,17 +5,17 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 729156636795fce3355ab1474fdfcb9337296ddd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1e487f6778c45e554f95489e62ac2dedd01ee3f0
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596919"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442949"
 ---
-# <a name="analyze-in-excel"></a>Doplněk analyzovat v aplikaci Excel
+# <a name="analyze-in-excel"></a>Analyzovat v aplikaci Excel
 
 V této lekci pomocí funkce Analýza v aplikaci Excel otevřete aplikaci Microsoft Excel, automaticky vytvoříte připojení k pracovnímu prostoru modelu a automaticky do listu přidáte kontingenční tabulku. Smyslem funkce Analýza v aplikaci Excel je poskytnout rychlý a snadný způsob, jak otestovat efektivnost návrhu modelu před jeho nasazením. V této lekci nebudete provádět žádné analýzy dat. Účelem této lekce je seznámit vás jako autora modelu s nástroji, pomocí kterých můžete otestovat návrh modelu.   
   

@@ -1,80 +1,80 @@
 ---
-title: Protokoly auditu ukázky a definice v Azure Active Directory B2C | Microsoft Docs
-description: Průvodce a ukázky v přístupu k protokolů auditu Azure AD B2C.
+title: Protokoly auditu definice a ukázky v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Příručka a ukázky na přístup k protokolům auditu Azure AD B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4828bf2f0faa596c8222c3a36dc3d38ec1b3bd1a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0024f8ab914eba83effe8f5787cfb252775b5f0f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709814"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443381"
 ---
-# <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k Azure AD B2C protokoly auditu
+# <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
-Azure Active Directory B2C (Azure AD B2C) vysílá protokoly auditu obsahující aktivitu informací o prostředcích B2C, vystavené tokeny a přístup správce. Tento článek poskytuje stručný přehled informací dostupných prostřednictvím protokolů auditu a pokyny o tom, jak přístup k těmto datům pro vašeho tenanta Azure AD B2C.
+Azure Active Directory B2C (Azure AD B2C) vysílá protokoly auditu obsahující aktivitu informací o prostředcích B2C, vydané tokeny a přístup správce. Tento článek poskytuje stručný přehled informací dostupných prostřednictvím protokolů auditu a pokyny o tom, jak přístup k těmto datům pro vašeho tenanta Azure AD B2C.
 
 > [!IMPORTANT]
-> Protokoly auditu jsou uchovány pouze sedm dní. Naplánujte ke stažení a uložení protokolů pomocí jedné z metod vidíte níže, pokud požadujete delší dobu uchování. 
+> Protokoly auditu se zachovají jenom po dobu sedmi dní. Plán stažení a ukládat vaše protokoly pomocí jedné z metod je uvedeno níže, pokud budete potřebovat delší doba uchovávání informací. 
 
-##<a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Přehled aktivit, které jsou k dispozici v kategorii B2C protokoly auditu
-**B2C** kategorie v protokolech auditu obsahuje následující typy aktivit:
+##<a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>Přehled aktivit, které jsou k dispozici v kategorii B2C protokolů auditu
+**B2C** kategorie z protokolů auditu obsahuje následující typy aktivit:
 |Typ aktivity |Popis  |
 |---------|---------|
-|Autorizace |Činnosti týkající se povolení uživatele pro přístup k B2C prostředkům (například správce přístupu k zobrazení seznamu zásad B2C)         |
-|Adresář |Aktivity související s atributy adresáře načítají, když se správce přihlásí pomocí portálu Azure |
-|Aplikace | Operace CRUD v aplikacích B2C |
-|Klíč |Operace CRUD v klíče uložené v kontejneru klíčů B2C |
-|Prostředek |Operace CRUD v B2C prostředky (například zásady a zprostředkovatelů identity)
-|Authentication |Ověření pověření uživatele a vystavování tokenů|
+|Autorizace |Aktivity týkající se povolení uživatele B2C přístup k prostředkům (například správce přístup k seznamu zásad B2C)         |
+|Adresář |Aktivity související s atributy adresáře, načíst, když se správce přihlásí pomocí webu Azure Portal |
+|Aplikace | Operace CRUD s aplikace B2C |
+|Klíč |Operací CRUD u klíčů uložených v kontejneru klíčů B2C |
+|Prostředek |Operace CRUD s B2C prostředky (například, zásady a zprostředkovatele identity)
+|Authentication |Ověření přihlašovacích údajů uživatele a vydávání tokenů|
 
 > [!NOTE]
-> Aktivity CRUD objekt uživatele, najdete v části **základní Directory** kategorie.
+> Aktivity CRUD objekt uživatele, najdete **základní adresář** kategorie.
 
 ##<a name="example-activity"></a>Ukázkové aktivity
-Následující příklad ukazuje data zaznamenaná Pokud se uživatel přihlásí pomocí zprostředkovatele identity externí: ![protokoly auditu – příklad](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
+Následující příklad ukazuje data zaznamenaná, když se uživatel přihlásí pomocí externího zprostředkovatele identity: ![protokoly auditu – příklad](./media/active-directory-b2c-reference-audit-logs/audit-logs-example.png)
 
-##<a name="accessing-audit-logs-through-the-azure-portal"></a>Přístup k protokoly auditu prostřednictvím portálu Azure
-1. Přejděte na [portál Azure](https://portal.azure.com). Ujistěte se, že jste ve svém adresáři B2C.
-2. Klikněte na **Azure Active Directory** na panelu oblíbených položek na levé straně 
+##<a name="accessing-audit-logs-through-the-azure-portal"></a>Přístup k protokolům auditu na webu Azure Portal
+1. Přejděte na [portál Azure](https://portal.azure.com). Ujistěte se, že máte ve svém adresáři B2C.
+2. Klikněte na **Azure Active Directory** na panel Oblíbené položky na levé straně 
     
     ![Protokoly auditu – tlačítko AAD](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-aad.png)
 
-1. V části **aktivity**, klikněte na **protokoly auditu**
+1. V části **aktivity**, klikněte na **protokolů auditu**
 
     ![Protokoly auditu - části protokoly](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-section.png)
 
-2. V **kategorie** dropbox, vyberte **B2C**
+2. V **kategorie** dropboxu, vyberte **B2C**
 3. Klikněte na **použít**
 
-    ![Protokoly auditu - kategorie](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
+    ![Protokoly auditu – kategorie](./media/active-directory-b2c-reference-audit-logs/audit-logs-portal-category.png)
 
-Zobrazí se seznam aktivity zaprotokolovány za posledních 7 dní. 
-- Použití **typ prostředku aktivity** rozevírací filtrovat podle typy aktivit uvedených výše
-- Použití **rozsah** rozevírací vyfiltrujete rozsah kalendářních dat aktivity zobrazit
-- Pokud kliknete na konkrétní řádek v seznamu, pole kontextové na pravé straně vám ukáže další atributy, které jsou přidružené k aktivitě
-- Klikněte na **Stáhnout** ke stažení aktivity do souboru csv
+Zobrazí se seznam aktivit přihlášení za posledních sedm dní. 
+- Použití **typ prostředku aktivity** rozevírací seznam můžete filtrovat podle typů aktivit uvedených výše
+- Použití **rozsah** rozevírací seznam pro filtrování rozsah aktivit zobrazí
+- Pokud kliknete na konkrétní řádek v seznamu, kontextové pole na pravé straně se zobrazí další atributy, které jsou přidružená k aktivitě
+- Klikněte na **Stáhnout** stáhnete aktivity jako soubor csv
 
-##<a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Přístup k protokoly auditu prostřednictvím generování sestav rozhraní API Azure AD
-Protokoly auditu jsou publikovány do stejné kanálu jako ostatní aktivity pro Azure Active Directory, takže je přístupná prostřednictvím [Azure Active Directory, vytváření sestav rozhraní API](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-api-audit-reference). 
+##<a name="accessing-audit-logs-through-the-azure-ad-reporting-api"></a>Přístup k protokolům auditu prostřednictvím rozhraní API pro generování sestav Azure AD
+Protokoly auditu se publikují do stejné kanálu další aktivity pro Azure Active Directory, takže k nim může přistupovat prostřednictvím [Azure Active Directory API pro vytváření sestav](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-api-audit-reference). 
 
 ###<a name="prerequisites"></a>Požadavky
-K ověření do služby Azure AD reporting rozhraní API musíte nejprve zaregistrovat aplikaci. Ujistěte se, postupujte podle kroků v [požadavky pro přístup k rozhraní API pro vytváření sestav Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/).
+K ověření na rozhraní API pro generování sestav Azure AD musíte nejprve registrovat aplikaci. Ujistěte se, že podle kroků v [požadavky pro přístup k rozhraní API pro generování sestav Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/).
 
 ###<a name="accesing-the-api"></a>Accesing rozhraní API
-Ke stažení protokolů auditu Azure AD B2C prostřednictvím rozhraní API, budete chtít filtrování protokolů **B2C** kategorie. Filtrovat podle kategorie, použijte parametr řetězce dotazu při volání metody generování sestav koncový bod rozhraní API, Azure AD, jak je uvedeno níže:
+Ke stažení protokolů auditu Azure AD B2C prostřednictvím rozhraní API, budete chtít filtrovat protokoly a **B2C** kategorie. Filtrovat podle kategorie, použijte parametr řetězce dotazu při volání koncového bodu rozhraní API pro generování sestav Azure AD, jak je znázorněno níže:
 
 `https://graph.windows.net/your-b2c-tentant.onmicrosoft.com/activities/audit?api-version=beta&$filter=category eq 'B2C'`
 
 ###<a name="powershell-script"></a>Skript PowerShellu
-Následující skript představuje příklad použití prostředí PowerShell pro dotaz na generování sestav rozhraní API Azure AD a výsledek uložit jako soubor JSON:
+Následující skript představuje příklad použití Powershellu k dotazování rozhraní API pro generování sestav Azure AD a výsledek uložit jako soubor JSON:
 
 ```powershell
 # This script will require registration of a Web Application in Azure Active Directory (see https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/)

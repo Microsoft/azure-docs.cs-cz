@@ -1,24 +1,24 @@
 ---
-title: Ověřování, registrace, upravit profil v Azure Active Directory B2C | Microsoft Docs
-description: Jak sestavit aplikaci plochy Windows, která zahrnuje přihlášení, registrace, a správy profilů pomocí Azure Active Directory B2C.
+title: Ověřování, registrace, upravte profil v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Jak sestavit aplikaci klasické pracovní plochy Windows, která zahrnuje přihlášení, registraci, a správy profilů pomocí Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 980d554d96796a673db13bb369337d90088e8a75
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: bd504beabbb126db2cd90ac010dbc2757e571185
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711051"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441895"
 ---
-# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Sestavení aplikace na ploše systému Windows
-Pomocí Azure Active Directory (Azure AD) B2C můžete přidat výkonné identity samoobslužné funkce pro správu k vaší aplikace na ploše v několika krocích. Tento článek vám ukáže, jak vytvořit aplikaci "seznam úkolů".NET Windows Presentation Foundation (WPF), která zahrnuje uživatelskou registraci, přihlašování a správu profilu. Aplikace bude zahrnují podporu pro registraci a přihlaste se pomocí uživatelského jména nebo e-mailu. Podporu registrace a přihlašování bude zahrnovat také pomocí sociálních účty například Facebook nebo Google.
+# <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Vytváření desktopových aplikací pro Windows
+Pomocí Azure Active Directory (Azure AD) B2C můžete přidat funkce správy identity výkonné samoobslužné služby do aplikace klasické pracovní plochy v několika krocích. Tento článek vám ukáže jak vytvořit aplikaci "seznam úkolů".NET Windows Presentation Foundation (WPF), která zahrnuje uživatelské registrace, přihlašování a správy profilů. Aplikace bude zahrnovat podporu registrace a přihlášení pomocí uživatelského jména nebo e-mailu. Bude také zahrnovat podporu registrace a přihlášení pomocí účtů na sociálních sítích, jako je například Facebook nebo Google.
 
 ## <a name="get-an-azure-ad-b2c-directory"></a>Získání adresáře služby Azure AD B2C
 Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta.  Adresář je kontejner pro všechny vaše uživatele, aplikace, skupiny a další. Pokud ho ještě nemáte, [vytvořte adresář B2C](active-directory-b2c-get-started.md) předtím, než budete pokračovat.
@@ -27,11 +27,11 @@ Před použitím Azure AD B2C musíte vytvořit adresář, nebo klienta.  Adres�
 Dále musíte vytvořit aplikaci v adresáři B2C. Azure AD díky tomu získá informace potřebné k bezpečné komunikaci s vaší aplikací. Chcete-li vytvořit aplikaci, postupujte podle [těchto pokynů](active-directory-b2c-app-registration.md).  Ujistěte se, že:
 
 * Zahrnout **nativního klienta** v aplikaci.
-* Kopírování **identifikátor URI pro přesměrování** `urn:ietf:wg:oauth:2.0:oob`. To je výchozí URL pro tento příklad.
+* Kopírovat **identifikátor URI pro přesměrování** `urn:ietf:wg:oauth:2.0:oob`. To je výchozí URL pro tento příklad.
 * Poznamenejte si **ID aplikace** přiřazené vaší aplikaci. Budete ho potřebovat později.
 
 ## <a name="create-your-policies"></a>Vytvořte svoje zásady
-V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato ukázka kódu obsahuje tři činnosti identity: registrace, přihlášení a úprava profilu. Je třeba vytvořit zásadu pro každý typ, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Když vytváříte tyto tři zásady, nezapomeňte:
+V Azure AD B2C je každé uživatelské rozhraní definováno [zásadou](active-directory-b2c-reference-policies.md). Tato ukázka kódu obsahuje tři činnosti identity: registrace, přihlášení a úpravy profilu. Budete muset vytvořit zásadu pro každý typ, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md#create-a-sign-up-policy). Když vytváříte tyto tři zásady, nezapomeňte:
 
 * Zvolit v okně zprostředkovatelé identity buď **Registrace pomocí ID uživatele** nebo **Registrace pomocí e-mailu**.
 * Zvolit **Zobrazovaný název** a další atributy registrace ve svojí registrační zásadě.
@@ -51,12 +51,12 @@ git clone --branch skeleton https://github.com/AzureADQuickStarts/B2C-NativeClie
 
 Dokončená aplikace je také [k dispozici jako soubor ZIP](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip) nebo ve větvi `complete` stejného úložiště.
 
-Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohli začít. `TaskClient` Je projekt WPF plochy aplikace, která uživatel komunikuje. Pro účely tohoto kurzu zavolá back-end úloh webového rozhraní API, hostované v Azure, která ukládá seznam úkolů každého uživatele.  Není potřeba vytvářet webové rozhraní API, jsme ji systémem pro vás už máte.
+Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohli začít. `TaskClient` Projektu je desktopová aplikace WPF, kterou uživatel komunikuje. Pro účely tohoto kurzu volá úkol back endové webové rozhraní API, hostované v Azure, které ukládá seznam úkolů každého uživatele.  Není potřeba vytvářet webová rozhraní API, jsme již je spuštěna za vás.
 
-Informace o tom, jak webové rozhraní API bezpečně ověřuje požadavků pomocí Azure AD B2C, podívejte se [webové rozhraní API Začínáme článku](active-directory-b2c-devquickstarts-api-dotnet.md).
+Informace o tom, jak webové rozhraní API bezpečně ověřuje požadavky s využitím Azure AD B2C, podívejte se [webového rozhraní API Začínáme článku](active-directory-b2c-devquickstarts-api-dotnet.md).
 
 ## <a name="execute-policies"></a>Spuštění zásady
-Aplikace komunikuje se službou Azure AD B2C odesláním zprávy ověřování, které zadejte zásady, které chtějí spouštět jako součást požadavku HTTP. Pro rozhraní .NET aplikací klasické pracovní plochy můžete pomocí náhledu Microsoft ověřování knihovny (MSAL) odesílat zprávy ověřování OAuth 2.0, spustit zásady a získat tokeny, které volají webové rozhraní API.
+Vaše aplikace komunikovala s Azure AD B2C odesláním zprávy o ověřování, které určují zásady, kterou chce spouštět jako součást požadavku HTTP. Pro desktopové aplikace .NET můžete pomocí Microsoft Authentication Library (MSAL) ve verzi preview můžete odesílat zprávy o ověřování OAuth 2.0, spuštění zásad a získat tokeny, které volání webového rozhraní API.
 
 ### <a name="install-msal"></a>Nainstalujte MSAL
 Přidat MSAL k `TaskClient` projektu pomocí konzole Správce balíčků Visual Studio.
@@ -66,7 +66,7 @@ PM> Install-Package Microsoft.Identity.Client -IncludePrerelease
 ```
 
 ### <a name="enter-your-b2c-details"></a>Zadejte podrobnosti o svém B2C
-Otevřete soubor `Globals.cs` a všechny hodnoty vlastností, nahraďte vlastními. Tato třída se používá v rámci `TaskClient` odkaz běžně používané hodnoty.
+Otevřete soubor `Globals.cs` a všechny hodnoty vlastností nahradit vlastními. Tato třída se používá v rámci `TaskClient` odkaz běžně používané hodnoty.
 
 ```csharp
 public static class Globals
@@ -87,7 +87,7 @@ public static class Globals
 [!INCLUDE [active-directory-b2c-devquickstarts-tenant-name](../../includes/active-directory-b2c-devquickstarts-tenant-name.md)]
 
 ### <a name="create-the-publicclientapplication"></a>Vytvořte PublicClientApplication
-Primární třída MSAL je `PublicClientApplication`. Tato třída reprezentuje vaší aplikace v systému Azure AD B2C. Když initalizes aplikace, vytvořte instanci `PublicClientApplication` v `MainWindow.xaml.cs`. To lze použít v celé okno.
+Primární třída MSAL je `PublicClientApplication`. Tato třída reprezentuje vaši aplikaci v systému Azure AD B2C. Když initalizes aplikace vytvořit instanci `PublicClientApplication` v `MainWindow.xaml.cs`. To je možné v rámci okna.
 
 ```csharp
 protected async override void OnInitialized(EventArgs e)
@@ -105,7 +105,7 @@ protected async override void OnInitialized(EventArgs e)
 ```
 
 ### <a name="initiate-a-sign-up-flow"></a>Zahájení registrace toku
-Když uživatel rozhodne pro přihlásí nahoru, chcete zahájit registraci toku, který používá registrační zásadě, kterou jste vytvořili. Pomocí MSAL jen zavoláte `pca.AcquireTokenAsync(...)`. Parametry, které předat `AcquireTokenAsync(...)` určit, které token se zobrazí, zásady používané v žádosti o ověření a další.
+Když uživatel požádá o na příznaky nahoru, budete chtít zahájit registraci tok, který používá zásady registrace, který jste vytvořili. S použitím MSAL ho prostě zavoláte `pca.AcquireTokenAsync(...)`. Parametry předání `AcquireTokenAsync(...)` určit, které token se zobrazí, zásady používané v žádosti o ověření a další.
 
 ```csharp
 private async void SignUp(object sender, RoutedEventArgs e)
@@ -155,8 +155,8 @@ private async void SignUp(object sender, RoutedEventArgs e)
 }
 ```
 
-### <a name="initiate-a-sign-in-flow"></a>Zahájit toku přihlášení
-Tok přihlášení můžete zahájit stejným způsobem zahájení registrace toku. Když se uživatel přihlásí, ujistěte se stejným volání MSAL, tentokrát pomocí přihlášení zásad:
+### <a name="initiate-a-sign-in-flow"></a>Zahájení toku přihlášení
+Stejným způsobem zahájení registrace tok můžete spustit tok přihlášení. Když se uživatel přihlásí, provede stejné volání MSAL, tentokrát pomocí vaší registrační zásady:
 
 ```csharp
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
@@ -170,8 +170,8 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
         ...
 ```
 
-### <a name="initiate-an-edit-profile-flow"></a>Zahájit tok úpravy profilu
-Znovu můžete zásadu upravit profil spustit stejným způsobem:
+### <a name="initiate-an-edit-profile-flow"></a>Spustit tok, který upravit profil
+Zásady úprav profilu můžete znovu spustit stejným způsobem:
 
 ```csharp
 private async void EditProfile(object sender, RoutedEventArgs e)
@@ -184,10 +184,10 @@ private async void EditProfile(object sender, RoutedEventArgs e)
                     Globals.editProfilePolicy);
 ```
 
-Ve všech těchto případech MSAL buď vrátí token v `AuthenticationResult` nebo vyvolá výjimku. Pokaždé, když získání tokenu z MSAL, můžete použít `AuthenticationResult.User` objekt, který chcete aktualizovat data uživatele v aplikaci, jako je například uživatelské rozhraní. ADAL také ukládá do mezipaměti token pro použití v dalších částí aplikace.
+Ve všech těchto případech MSAL buď vrátí token v `AuthenticationResult` nebo vyvolá výjimku. Pokaždé, když získáváte token z MSAL, můžete použít `AuthenticationResult.User` objektu k aktualizaci dat uživatele v aplikacích, jako je například uživatelské rozhraní. ADAL také ukládá do mezipaměti tokenu pro použití v ostatních částech aplikace.
 
-### <a name="check-for-tokens-on-app-start"></a>Zkontrolujte pro tokeny při spuštění aplikace
-MSAL můžete také použít ke sledování stavu přihlášení uživatele.  V této aplikaci chceme uživateli zůstanou přihlášeného i po jejich zavřete aplikaci a znovu ho otevřete.  Zpět v `OnInitialized` přepsat, použijte na MSAL `AcquireTokenSilent` metoda zkontrolujte s mezipamětí tokenů:
+### <a name="check-for-tokens-on-app-start"></a>Kontrolovat tokeny při spuštění aplikace
+Můžete také použití MSAL k udržovat přehled o stavu přihlášení uživatele.  V této aplikaci chceme, aby uživatel zůstane přihlášený i po zavření aplikace a znovu ho otevřete.  Vrátí zpět do `OnInitialized` přepsat, použijte pro MSAL `AcquireTokenSilent` metodu ke kontrole s mezipamětí tokenů:
 
 ```csharp
 AuthenticationResult result = null;
@@ -225,8 +225,8 @@ catch (MsalException ex)
 }
 ```
 
-## <a name="call-the-task-api"></a>Volání rozhraní API úloh
-Teď používáte MSAL ke spouštění zásad a získat tokeny.  Když chcete použít tyto tokeny k volání rozhraní API úloh, můžete znovu použít na MSAL `AcquireTokenSilent` metoda zkontrolujte s mezipamětí tokenů:
+## <a name="call-the-task-api"></a>Volání rozhraní API úkolů
+Knihovna MSAL mají nyní používají ke spouštění zásad a získat tokeny.  Pokud chcete použít jeden tyto tokeny pro volání rozhraní API úkolů, můžete opět pomocí vaší MSAL `AcquireTokenSilent` metodu ke kontrole s mezipamětí tokenů:
 
 ```csharp
 private async void GetTodoList()
@@ -271,7 +271,7 @@ private async void GetTodoList()
     ...
 ```
 
-Při volání `AcquireTokenSilentAsync(...)` úspěšné a nebude nalezen token v mezipaměti, můžete přidat token, který má `Authorization` hlavičky požadavku HTTP. Úloha webové rozhraní API bude tuto hlavičku používají k ověření požadavek na čtení seznamu úkolů uživatele:
+Při volání `AcquireTokenSilentAsync(...)` úspěšné a nebude nalezen token v mezipaměti, můžete přidat token, který má `Authorization` hlavičku požadavku HTTP. Úlohy webové rozhraní API bude tuto hlavičku používají k ověření žádosti o čtení seznamu úkolů uživatele:
 
 ```csharp
     ...
@@ -283,8 +283,8 @@ Při volání `AcquireTokenSilentAsync(...)` úspěšné a nebude nalezen token 
     ...
 ```
 
-## <a name="sign-the-user-out"></a>Odhlášení uživatele
-Nakonec můžete MSAL k ukončení relace uživatele s aplikací, když uživatel vybere **Odhlásit se**.  Při použití MSAL, toho dosahuje tím, že zrušíte všechny tokeny z tokenu mezipaměti:
+## <a name="sign-the-user-out"></a>Odhlásit uživatele
+Nakonec můžete použití MSAL k ukončení relace uživatele s aplikací, když uživatel vybere **Odhlásit**.  Při použití MSAL toho dosahuje tím, že zrušíte všechny tokeny z mezipamětí tokenů:
 
 ```csharp
 private void SignOut(object sender, RoutedEventArgs e)
@@ -306,22 +306,22 @@ private void SignOut(object sender, RoutedEventArgs e)
 ```
 
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
-Nakonec sestavte a spusťte vzorku.  Zaregistrujte se pro aplikace pomocí e-mailové adresy nebo uživatelské jméno. Odhlásit se a znovu se přihlaste jako jeden uživatel. Upravte profil uživatele. Odhlásit se a přihlásit pomocí jiného uživatele.
+Nakonec sestavte a spusťte ukázku.  Zaregistrujte se pro aplikaci s použitím e-mailové adresy nebo uživatelského jména. Odhlaste se a znovu se přihlásit pod stejným uživatelem. Upravte profil daného uživatele. Odhlaste se a zaregistrujte s použitím jiného uživatele.
 
-## <a name="add-social-idps"></a>Přidat sociálních IDPs
-V současné době aplikace podporuje pouze uživatele registrace a přihlášení, použít **místní účty**. Toto jsou účty uložené v adresáři B2C, které používají uživatelské jméno a heslo. Pomocí Azure AD B2C můžete přidat podporu pro jiných poskytovatelů identit (IDPs) beze změny některé z vašeho kódu.
+## <a name="add-social-idps"></a>Přidání sociálních sítí zprostředkovatelů identity
+V současné době aplikace podporuje pouze registrace uživatele a přihlašování, použít **místní účty**. Toto jsou účty uložené v adresáři B2C, které používají uživatelské jméno a heslo. Pomocí Azure AD B2C, můžete přidat podporu pro jiných zprostředkovatelů identity (IDP) bez změny vašich kód.
 
-Sociální IDPs přidat do vaší aplikace, začněte tím, že následující podrobné pokyny v těchto článcích. Pro každý deklarací identity, které chcete podporovat je třeba zaregistrovat aplikaci v daném systému a získat ID klienta.
+Chcete-li přidat zprostředkovatelů sociálních sítí do vaší aplikace, začněte podle podrobných pokynů v těchto článcích. Pro každého zprostředkovatele identity, které chcete podporovat budete muset zaregistrovat aplikaci v daném systému a získat ID klienta.
 
-* [Nastavení sítě Facebook jako IDP](active-directory-b2c-setup-fb-app.md)
-* [Nastavit Google jako IDP](active-directory-b2c-setup-goog-app.md)
-* [Nastavit Amazon jako IDP](active-directory-b2c-setup-amzn-app.md)
-* [Nastavit LinkedIn jako IDP](active-directory-b2c-setup-li-app.md)
+* [Nastavení sítě Facebook jako identity](active-directory-b2c-setup-fb-app.md)
+* [Nastavení Google jako identity](active-directory-b2c-setup-goog-app.md)
+* [Nastavení Amazon jako identity](active-directory-b2c-setup-amzn-app.md)
+* [Nastavení Linkedinu jako identity](active-directory-b2c-setup-li-app.md)
 
-Po přidání zprostředkovatelů identity do vašeho adresáře B2C, budete muset upravit každou z vaší tři zásady, které zahrnují nové IDPs, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md). Po uložení zásad, znovu spusťte aplikaci. Měli byste vidět nové IDPs přidat jako přihlášení a registrace možnosti v každé z vaší identity činnost.
+Po přidání zprostředkovatele identity do vašeho tenanta B2C, budete muset upravit každé tři zásady zahrnout nové zprostředkovatelů identity, jak je popsáno v [článku o zásadách](active-directory-b2c-reference-policies.md). Po uložení zásady znovu spusťte aplikaci. Měli byste vidět nové zprostředkovatelů identity, které jsou přidány jako přihlášení a prostředí možností registrace v jednotlivých vaši identitu.
 
-Můžete experimentovat s vašimi zásadami a sledovat účinky na ukázkové aplikace. Přidat nebo odebrat IDPs, pracovat s deklarace identity aplikace nebo změnit atributy registrace. Experiment, dokud se nezobrazí, jak zásady, žádosti o ověření a MSAL tie společně.
+Můžete experimentovat s vašimi zásadami a podívejte se, na ukázkovou aplikaci. Přidat nebo odebrat zprostředkovatelů identity, manipulovat s deklaracemi identity aplikace nebo změnit atributy registrace. Experiment, dokud se nezobrazí, jak spojovat MSAL, zásady a žádosti o ověření.
 
-Pro srovnání je hotová ukázka [je k dispozici jako soubor ZIP](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip). Můžete ho také klonovat z GitHubu:
+Pro srovnání je hotová ukázka [k dispozici jako soubor ZIP](https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet/archive/complete.zip). Můžete ho také klonovat z GitHubu:
 
 ```git clone --branch complete https://github.com/AzureADQuickStarts/B2C-NativeClient-DotNet.git```

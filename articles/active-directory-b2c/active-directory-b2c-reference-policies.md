@@ -1,36 +1,36 @@
 ---
-title: Předdefinované zásady v Azure Active Directory B2C | Microsoft Docs
-description: Téma na rozhraní rozšiřitelných zásad služby Azure Active Directory B2C a o tom, jak vytvořit různé typy zásad.
+title: Předdefinované zásady v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Téma na rozhraní rozšiřitelných zásad Azure Active Directory B2C a o tom, jak vytvořit různé typy zásad.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 840de51f2aeff2c14cba0f90fe9072ba7ceb7fcf
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5c89f39b2f94309ea3d99230f5265d834c7093d9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712109"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444811"
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C: Předdefinované zásady
 
 
-Rozhraní rozšiřitelných zásad služby Azure Active Directory (Azure AD) B2C je základní sílu služby. Zásady, jako plně popisují činnosti identity příjemce registrace, přihlášení nebo úpravy profilu. Například registrační zásadě můžete řídit chování konfigurací následujícího nastavení:
+Rozhraní rozšiřitelných zásad služby Azure Active Directory (Azure AD) B2C je základní sílu služby. Zásady například plně popisují činnosti identity uživatelů registrace, přihlašování a úpravy profilu. Například zásadu registrace umožňuje řídit chování konfigurací následujícího nastavení:
 
-* Typy účtů (jako je Facebook sociálních účty) nebo místní účty například e-mailové adresy, které mohou příjemci použít se přihlásit k aplikaci
-* Atributy (například křestní jméno, poštovní směrovací číslo a velikosti), které se mají shromažďovat od příjemce během registrace
-* Použití Azure Multi-Factor Authentication
-* Vzhledu a chování registrace všechny stránky
-* Informace o (manifesty jako deklarace do tokenu), aplikace obdrží, kdy zásady spustit dokončení
+* Typy účtů (účtů v sociálních sítích například Facebook) nebo místní účty, jako jsou e-mailové adresy, které uživatele můžete použít k registraci pro aplikaci
+* Atributy (například křestní jméno, PSČ a velikost bot), které se mají shromažďovat od uživatele během registrace
+* Použití služby Azure Multi-Factor Authentication
+* Vzhled a chování registrace všech stránek
+* Informace o (které manifesty jako deklarace identity v tokenu), aplikace obdrží, když zásady spouštění dokončí
 
-Můžete vytvořit několik zásad různých typů ve vašem klientovi a podle potřeby používat ve svých aplikacích. Zásady můžete opětovně použít napříč aplikací. Tato možnost umožňuje vývojářům definování a úprava činnosti identity uživatelů s minimální nebo žádný změny svůj kód.
+Můžete vytvořit více zásad různých typů ve vašem tenantovi a podle potřeby využít ve svých aplikacích. Zásady můžete použít opakovaně napříč aplikacemi. Díky této flexibilitě vývojářům umožňuje definovat a upravovat činnosti identity uživatelů s minimálními nebo žádnými změnami na svůj kód.
 
-Zásady jsou k dispozici pro použití prostřednictvím rozhraní jednoduché developer. Vaše aplikace aktivuje zásadu pomocí standardní požadavek ověřování HTTP (předání parametru zásad v žádosti o) a obdrží token přizpůsobené jako odpověď. Jediným rozdílem mezi požadavky, které vyvolají registrační zásadě a požadavky, které vyvolají zásad přihlašování je například název zásady, který se používá v parametru řetězce dotazu "p":
+Zásady se dají používat prostřednictvím jednoduchého pro vývojáře rozhraní. Vaše aplikace zásada se aktivuje pomocí standardní ověřování požadavek HTTP, který je (předání parametrů zásad v žádosti) a obdrží token přizpůsobené jako odpověď. Jediným rozdílem mezi požadavky, které vyvolají zásadu registrace a požadavky, které vyvolají zásad přihlašování je například název zásady, který se používá v parametru řetězce dotazu "p":
 
 ```
 
@@ -62,7 +62,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 ## <a name="create-a-sign-up-or-sign-in-policy"></a>Vytvoření zásady registrace nebo přihlašování
 
-Tato zásada zpracuje obě příjemce s konfigurací jedné možnosti registrace a přihlášení. Příjemci knihovny jsou vedla dolů správné cesty (registrace nebo přihlášení) v závislosti na kontextu. Také popisuje obsah tokeny, které aplikace se zobrazí po úspěšné zápisy nebo přihlášení.  Ukázka kódu pro **registrace nebo přihlášení** zásady [k dispozici zde](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Doporučuje se používají tuto zásadu přes **registrace** zásad nebo **přihlášení** zásad.  
+Tato zásada zpracovává i příjemce s konfigurací jedné prostředí registrace a přihlášení. Příjemci jsou vedla dolů správné cestě (registrace / přihlášení) v závislosti na kontextu. Také popisuje obsah tokenů, které bude aplikace přijímat po úspěšné registraci nebo přihlášení.  Ukázka kódu pro **registrace nebo přihlašování** zásady [tady k dispozici](active-directory-b2c-devquickstarts-web-dotnet-susi.md).  Je doporučeno používat tyto zásady přes **registrace** zásad nebo **přihlášení** zásad.  
 
 [!INCLUDE [active-directory-b2c-create-sign-in-sign-up-policy](../../includes/active-directory-b2c-create-sign-in-sign-up-policy.md)]
 
@@ -70,7 +70,7 @@ Tato zásada zpracuje obě příjemce s konfigurací jedné možnosti registrace
 
 [!INCLUDE [active-directory-b2c-create-sign-up-policy](../../includes/active-directory-b2c-create-sign-up-policy.md)]
 
-## <a name="create-a-sign-in-policy"></a>Vytvoření zásady přihlášení
+## <a name="create-a-sign-in-policy"></a>Vytvoření zásady přihlašování
 
 [!INCLUDE [active-directory-b2c-create-sign-in-policy](../../includes/active-directory-b2c-create-sign-in-policy.md)]
 
@@ -82,25 +82,25 @@ Tato zásada zpracuje obě příjemce s konfigurací jedné možnosti registrace
 
 [!INCLUDE [active-directory-b2c-create-password-reset-policy](../../includes/active-directory-b2c-create-password-reset-policy.md)]
 
-## <a name="preview-policies"></a>Zásady verze Preview
+## <a name="preview-policies"></a>Zásady ve verzi Preview
 
-Jak jsme vydání nové funkce, nemusí být některá z těchto k dispozici na existující zásady.  Plánujeme nahradit starší verze na nejnovější stejného typu, až tyto zásady zadejte všeobecné  Nedojde ke změně stávající zásady a využít tak, aby tyto nové funkce budete muset vytvořit nové zásady.
+Jak vydáváme nové funkce, v některých případech nemusí být k dispozici na existující zásady.  Plánujeme nahradit starší verze s nejnovějšími verzemi stejného typu, až tyto zásady zadejte obecné dostupnosti.  Existující zásady se nezmění a abyste mohli využívat tyto nové funkce budete muset vytvořit nové zásady.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
-### <a name="how-do-i-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>Jak lze propojit zásady registrace nebo přihlášení se zásady resetování hesel?
-Při vytváření **registrace nebo přihlášení** zásad (s místní účty), uvidíte **zapomněli jste heslo?** odkaz na první stránce prostředí. Kliknutím na tento odkaz není automaticky aktivační událost heslo resetovat zásady. 
+### <a name="how-do-i-link-a-sign-up-or-sign-in-policy-with-a-password-reset-policy"></a>Jak připojím zásady registrace nebo přihlášení se zásady resetování hesla?
+Při vytváření **registrace nebo přihlašování** zásady (s místní účty), uvidíte **zapomněli jste heslo?** odkaz na první stránce prostředí. Kliknutím na tento odkaz nebude automaticky aktivační událost heslo zásady pro resetování. 
 
-Místo toho kód chyby **`AADB2C90118`** se vrátí do vaší aplikace. Aplikace je potřeba zpracovat tomto kódu chyby vyvoláním zásad resetování hesel konkrétní. Další informace najdete v tématu [vzorku, který ukazuje přístup propojení zásad](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
+Místo toho kód chyby: **`AADB2C90118`** se vrátí do vaší aplikace. Vaše aplikace potřebuje pro zpracování tohoto kódu vyvoláním zásady resetování hesla. Další informace najdete v tématu [ukázka, která předvádí postup propojení zásady](https://github.com/AzureADQuickStarts/B2C-WebApp-OpenIDConnect-DotNet-SUSI).
 
-### <a name="should-i-use-a-sign-up-or-sign-in-policy-or-a-sign-up-policy-and-a-sign-in-policy"></a>Použít zásadu registrace nebo přihlášení nebo registraci zásady a zásady přihlášení?
-Doporučujeme vám, že používáte **registrace nebo přihlášení** zásady u **registrace** zásad a **přihlášení** zásad.  
+### <a name="should-i-use-a-sign-up-or-sign-in-policy-or-a-sign-up-policy-and-a-sign-in-policy"></a>Mám použít zásady registrace nebo přihlášení nebo registraci zásady a zásady přihlašování?
+Doporučujeme používat **registrace nebo přihlašování** zásad přes **registrace** zásad a **přihlášení** zásad.  
 
-**Registrace nebo přihlášení** zásad k dispozici další možnosti, než **přihlášení** zásad. Také umožňuje používat přizpůsobení uživatelského rozhraní stránky a má lepší podporu pro lokalizaci. 
+**Registrace nebo přihlášení** zásady k dispozici další možnosti, než **přihlášení** zásad. Také vám umožní použít přizpůsobení uživatelského rozhraní stránky a má lepší podporu pro lokalizaci. 
 
-**Přihlášení** zásad se doporučuje, pokud nepotřebujete k lokalizaci zásad, pouze nutnost branding schopnosti menší přizpůsobení a mají heslo resetovat integrovaný do ní.
+**Přihlášení** zásad se doporučuje, pokud už nebudete potřebovat k lokalizaci zásad, pouze potřebovat možnosti vedlejších přizpůsobení brandingu a chcete heslo integrovaný do jeho resetování.
 
 ## <a name="next-steps"></a>Další postup
-* [Token, relace a jednotné přihlašování](active-directory-b2c-token-session-sso.md)
-* [Zakázání e-mailu ověření během registrace příjemce](active-directory-b2c-reference-disable-ev.md)
+* [Token, relace a konfigurace jednotného přihlašování](active-directory-b2c-token-session-sso.md)
+* [Zakázání ověření e-mailu během registrace uživatelů](active-directory-b2c-reference-disable-ev.md)
 

@@ -6,16 +6,16 @@ author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 12/06/2016
 ms.author: davidmu1
 ms.component: B2C
-ms.openlocfilehash: 63bf3725eddd14d665e51427a65a339116ceb09b
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
-ms.translationtype: HT
+ms.openlocfilehash: d306d27f448ab9dd95e891b81f27b69e11f05495
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34710079"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442062"
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C: Typy aplikací
 Azure Active Directory (Azure AD) B2C podporuje ověřování pro celou řadu architektur moderních aplikací. Všechny jsou založeny na standardních oborových protokolech [OAuth 2.0](active-directory-b2c-reference-protocols.md) nebo [OpenID Connect](active-directory-b2c-reference-protocols.md). Tento dokument stručně popisuje typy aplikací, které můžete sestavit, nezávisle na jazyce nebo platformě, kterým dáváte přednost. Také pomáhá pochopit scénáře vysoké úrovně před tím, než [začnete sestavovat aplikace](active-directory-b2c-overview.md).
@@ -38,8 +38,7 @@ Interakce každé aplikace probíhá podle podobného vzoru:
 5. Server prostředků ověří token zabezpečení, aby ověřil, zda lze udělit přístup.
 6. Aplikace token zabezpečení pravidelně aktualizuje.
 
-<!-- TODO: Need a page for libraries to link to -->
-Tento postup se může mírně lišit v závislosti na typu aplikace, kterou sestavujete.
+<!-- TODO: Need a page for libraries to link to --> Tyto kroky může mírně lišit v závislosti na typu aplikace, kterou vytváříte.
 
 ## <a name="web-apps"></a>Webové aplikace
 U webových aplikací (včetně .NET, PHP, Javy, Ruby, Pythonu a Node.js) hostovaných na serveru a přístupných prostřednictvím prohlížeče Azure AD B2C podporuje [OpenID Connect](active-directory-b2c-reference-protocols.md) pro všechny činnosti koncového uživatele. To zahrnuje přihlášení, registraci a správu profilů. V implementaci OpenID Connect v Azure AD B2C zahajuje webová aplikace tyto činnosti koncového uživatele zasláním požadavků na ověření do Azure AD. Výsledkem požadavku je `id_token`. Tento token zabezpečení představuje identitu uživatele. Poskytuje také informace o uživateli ve formě deklarací identity:

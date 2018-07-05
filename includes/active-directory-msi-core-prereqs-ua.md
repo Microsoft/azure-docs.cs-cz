@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: daveba
 ms.custom: include file
 ms.openlocfilehash: 106c4796bde838e28b91771454e971f9999194e1
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37116543"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436612"
 ---
-Pokud jste obeznámeni s MSI, podívejte se [přehled identita spravované služby](~/articles/active-directory/managed-service-identity/overview.md), a **nezapomeňte si přečíst [rozdíl mezi generovaný systémem a uživatel přiřazenou MSI](~/articles/active-directory/managed-service-identity/overview.md#how-does-it-work)** . Pokud ještě nemáte účet Azure [si zaregistrovat bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.
+Pokud nejste obeznámeni s MSI, podívejte se [identita spravované služby přehled](~/articles/active-directory/managed-service-identity/overview.md), a **si přečtěte téma [rozdíl mezi systém přiřadil a uživatelsky přiřazené MSI](~/articles/active-directory/managed-service-identity/overview.md#how-does-it-work)** . Pokud ještě nemáte účet Azure [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) než budete pokračovat.

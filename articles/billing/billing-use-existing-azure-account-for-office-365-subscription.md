@@ -1,6 +1,6 @@
 ---
-title: Účet Azure zaregistrovat pro Office 365 | Microsoft Docs
-description: Naučte se vytvářet předplatné služeb Office 365 pomocí účtu Azure
+title: Zaregistrovat pro Office 365 pomocí účtu Azure | Dokumentace Microsoftu
+description: Naučte se vytvořit předplatné Office 365 pomocí účtu Azure
 services: ''
 documentationcenter: ''
 author: JiangChen79
@@ -13,61 +13,61 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/03/2017
+ms.date: 06/15/2018
 ms.author: cjiang
-ms.openlocfilehash: bce4b58d4197eee34be43a4dc852c6f43e0e18b4
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: HT
+ms.openlocfilehash: 8368055ed017d8a9e9af92ae6461086abf1d0cff
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33203370"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37449874"
 ---
-# <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Zaregistrujte si předplatné služeb Office 365 s vaším účtem Azure
-Pokud jste Azure odběratele, můžete si zaregistrovat pro předplatné služeb Office 365 účtu Azure. Pokud jste součástí v organizaci, která má předplatné Azure, můžete vytvořit předplatná Office 365 pro uživatele ve vaší stávající Azure Active Directory (Azure AD). Zaregistrovat se k Office 365 pomocí účtu, který má oprávnění globální správce nebo správce fakturace v klientovi služby Azure Active Directory. Další informace najdete v tématu [zkontrolujte oprávnění pro uživatelský účet ve službě Azure AD](#RoleInAzureAD) a [přiřazení rolí správce v Azure Active Directory](../active-directory/active-directory-assign-admin-roles-azure-portal.md).
+# <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Zaregistrujte si předplatné Office 365 pomocí svého účtu Azure
+Pokud jste předplatitelem Azure, můžete si zaregistrovat předplatné služeb Office 365 účtu Azure. Pokud jste součástí organizace, který má předplatné Azure, můžete vytvořit předplatných Office 365 pro uživatele ve vaší stávající Azure Active Directory (Azure AD). Zaregistrujte se k Office 365 pomocí účtu, který má oprávnění globálním správcem nebo správcem pro fakturaci ve vašem tenantovi Azure Active Directory. Další informace najdete v tématu [zkontrolujte Moje oprávnění účtu ve službě Azure AD](#RoleInAzureAD) a [přiřazení rolí správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
-Pokud již máte účet Office 365 a předplatné Azure, můžete [přidružit klienta služby Office 365 k předplatnému Azure](billing-add-office-365-tenant-to-azure-subscription.md).
+Pokud už máte účet Office 365 a předplatné Azure, můžete si [přidružit tenanta Office 365 s předplatným Azure](billing-add-office-365-tenant-to-azure-subscription.md).
 
-## <a name="get-an-office-365-subscription-by-using-your-azure-account"></a>Získat předplatné služeb Office 365 pomocí účtu Azure
+## <a name="get-an-office-365-subscription-by-using-your-azure-account"></a>Získat předplatné Office 365 pomocí svého účtu Azure
 
-1. Přejděte na [stránky produktu Office 365](https://products.office.com/business)a vyberte plán.
+1. Přejděte [stránky produktu Office 365](https://products.office.com/business)a vyberte si plán.
 2. Klikněte na tlačítko **přihlášení** v pravém horním rohu stránky.
 
     ![snímek obrazovky stránky zkušební verzi Office 365](./media/billing-use-existing-azure-account-office-365-subscription/12-office-365-trial-page.png)
-3. Přihlaste se pomocí přihlašovacích údajů účtu Azure. Pokud vytváříte odběr pro vaši organizaci, použijte účet Azure, který je členem role Globální správce nebo správce fakturace adresáře v klientovi služby Azure Active Directory.
+3. Přihlaste se pomocí přihlašovacích údajů k účtu Azure. Pokud vytváříte předplatné pro vaši organizaci, pomocí účtu Azure, který je členem role adresáře globálním správcem nebo správcem pro fakturaci ve vašem tenantovi Azure Active Directory.
 
-    ![Snímek obrazovky Office 365 přihlásit](./media/billing-use-existing-azure-account-office-365-subscription/13-office-365-sign-in.png)
+    ![Snímek obrazovky s Office 365 přihlásit](./media/billing-use-existing-azure-account-office-365-subscription/13-office-365-sign-in.png)
 4. Klikněte na tlačítko **vyzkoušet**.
 
-    ![Snímek obrazovky, který potvrzuje vaši objednávku pro Office 365.](./media/billing-use-existing-azure-account-office-365-subscription/14-office-365-confirm-your-order.png)
-5. Na stránce potvrzení pořadí, klikněte na tlačítko **pokračovat**.
+    ![Snímek obrazovky, který potvrdí vaši objednávku na Office 365.](./media/billing-use-existing-azure-account-office-365-subscription/14-office-365-confirm-your-order.png)
+5. Na stránce potvrzení objednávky, klikněte na tlačítko **pokračovat**.
 
-    ![Snímek obrazovky příjmu pořadí Office 365](./media/billing-use-existing-azure-account-office-365-subscription/15-office-365-order-receipt.png)
+    ![Snímek obrazovky příjemce objednávky Office 365](./media/billing-use-existing-azure-account-office-365-subscription/15-office-365-order-receipt.png)
 
-Nyní je vše připraveno. Pokud jste vytvořili předplatné služeb Office 365 pro vaši organizaci, pomocí následujících kroků zkontrolujte, jestli vaše uživatele Azure AD jsou nyní v Office 365.
+Teď všechno je nastavené. Pokud jste předplatné Office 365 vytvořili pro vaši organizaci, postupujte následovně Chcete-li zkontrolovat, že uživatele Azure AD jsou teď v Office 365.
 
 1. Otevřete Centrum pro správu Office 365.
-2. Rozbalte položku **uživatelé**a potom klikněte na **aktivní uživatelé**.
+2. Rozbalte **uživatelé**a potom klikněte na tlačítko **aktivní uživatelé**.
 
-    ![Snímek obrazovky uživatele center Správce služeb Office 365](./media/billing-use-existing-azure-account-office-365-subscription/16-office-365-admin-center-users.png)
+    ![Snímek obrazovky uživatele služeb Office 365 admin System center](./media/billing-use-existing-azure-account-office-365-subscription/16-office-365-admin-center-users.png)
 
-Po přihlášení, předplatné služeb Office 365 se přidá do stejnou instanci služby Azure Active Directory, který je součástí vašeho předplatného Azure. Další informace najdete v tématu [Další informace o předplatných Azure a Office 365](billing-use-existing-office-365-account-azure-subscription.md#more-about-subs) a [asociování předplatných Azure se službou Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md).
+Když si zaregistrujete předplatné služeb Office 365 se přidá do stejné instance služby Azure Active Directory, které patří vaše předplatné Azure. Další informace najdete v tématu [Další informace o předplatných Azure a Office 365](billing-use-existing-office-365-account-azure-subscription.md#more-about-subs) a [předplatné Azure propojeno se službou Azure Active Directory](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
-## <a id="RoleInAzureAD"></a>Zkontrolujte oprávnění pro uživatelský účet ve službě Azure AD
+## <a id="RoleInAzureAD"></a>Zkontrolujte oprávnění Můj účet ve službě Azure AD
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Klikněte na tlačítko **všechny služby**a poté vyhledejte **služby Active Directory**.
 
-    ![Snímek obrazovky Active Directory na portálu Azure](./media/billing-use-existing-azure-account-office-365-subscription/billing-more-services-active-directory.png)
+    ![Snímek obrazovky s Active Directory na webu Azure Portal](./media/billing-use-existing-azure-account-office-365-subscription/billing-more-services-active-directory.png)
 3. Klikněte na tlačítko **uživatelů a skupin** > **všichni uživatelé**.
 4. Vyberte uživatelské jméno. 
 
-    ![Snímek obrazovky, který zobrazuje uživatele Azure Active Directory](./media/billing-use-existing-azure-account-office-365-subscription/billing-users-groups.png)
+    ![Snímek obrazovky zobrazující uživatele Azure Active Directory](./media/billing-use-existing-azure-account-office-365-subscription/billing-users-groups.png)
 
-5. Klikněte na tlačítko **Directory role**.
+5. Klikněte na tlačítko **role adresáře**.
   
-    ![Snímek obrazovky zobrazující roli adresáře portálu Azure](./media/billing-use-existing-azure-account-office-365-subscription/billing-user-directory-role.png)
-6.  Role **globálního správce** nebo **správce s omezeními** > **správce fakturace** je potřeba vytvořit předplatné služeb Office 365 pro uživatele v existující Azure Active Directory.
+    ![Snímek obrazovky zobrazující role adresáře Azure portal](./media/billing-use-existing-azure-account-office-365-subscription/billing-user-directory-role.png)
+6.  Roli **globálního správce** nebo **správce s omezením** > **správce fakturace** je potřebný k vytvoření předplatného Office 365 pro uživatele existující Azure Active Directory.
 
-    ![Snímek obrazovky zobrazující role Azure directory portálu správce fakturace](./media/billing-use-existing-azure-account-office-365-subscription/billing-directoryrole-limited.png)
+    ![Snímek obrazovky zobrazující role adresáře Azure portal správcem pro fakturaci](./media/billing-use-existing-azure-account-office-365-subscription/billing-directoryrole-limited.png)
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoct? Obraťte se na podporu.
-Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) získat rychle vyřešit problém. 
+Pokud stále potřebujete pomoc, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) pro rychlé vyřešení problému. 

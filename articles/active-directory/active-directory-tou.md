@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.component: compliance-reports
-ms.date: 06/18/2018
+ms.date: 06/29/2018
 ms.author: rolyon
-ms.openlocfilehash: 2919ce1d7c57b7a92420ac11b61503caa1fdd3b0
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
-ms.translationtype: HT
+ms.openlocfilehash: f22190d81d8ffbb91e9573974d93d4b1ad35af18
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36267553"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444340"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít s funkcí Azure AD Terms of Use.
@@ -48,7 +48,7 @@ K používání a konfiguraci funkce Azure AD Terms of Use potřebujete:
 
 ## <a name="terms-of-use-document"></a>Dokument podmínek použití
 
-Funkce Azure AD Terms of Use k předkládání obsahu používá formát PDF. Soubor PDF může mít libovolný obsah, jako jsou například stávající smluvní dokumenty, a umožňuje od koncových uživatelů při přihlášení získat jejich souhlas. Doporučená velikost písma v souboru PDF je 24.
+Funkce Azure AD Terms of Use k předkládání obsahu používá formát PDF. Soubor PDF může mít libovolný obsah, jako je například stávající smluvní dokumenty, a umožňuje od koncových uživatelů, které smlouvy během uživatele přihlásit. Doporučená velikost písma v souboru PDF je 24.
 
 ## <a name="add-terms-of-use"></a>Přidání podmínek použití
 Jakmile dokončíte dokument podmínek použití, přidejte ho pomocí následujícího postupu.
@@ -98,7 +98,7 @@ V okně Terms of Use se zobrazí počet uživatelů, kteří podmínky přijali 
     ![Událost auditu](media/active-directory-tou/accepted-tou.png)
 
 ## <a name="view-audit-logs"></a>Zobrazení protokolů auditu
-Pokud chcete zobrazit další aktivitu, funkce Azure AD Terms of Use zahrnuje protokoly auditu. Každé vyjádření souhlasu uživatele aktivuje událost v protokolech auditu, které se ukládají po dobu 30 dnů. Tyto protokoly můžete zobrazit na portálu nebo stáhnout jako soubor .csv.
+Pokud chcete zobrazit další aktivitu, funkce Azure AD Terms of Use zahrnuje protokoly auditu. Každý souhlasu uživatele aktivuje události z protokolů auditu, která je uložena po dobu 30 dnů. Tyto protokoly můžete zobrazit na portálu nebo stáhnout jako soubor .csv.
 
 Pokud chcete začít s protokoly auditu, použijte následující postup:
 
@@ -115,7 +115,7 @@ Pokud chcete začít s protokoly auditu, použijte následující postup:
 1. Můžete také kliknout na **Stáhnout** a stáhnout tyto informace jako soubor .csv pro místní použití.
 
 ## <a name="what-terms-of-use-looks-like-for-users"></a>Jak podmínky použití vypadají pro uživatele
-Po vytvoření a vynucení podmínek použití se příslušným uživatelům při přihlášení zobrazí následující obrazovka.
+Po podmínky použití se vytvoří a vynutit, uživatele, kteří jsou v oboru, zobrazí se následující obrazovka během svého přihlašování.
 
 ![Událost auditu](media/active-directory-tou/user-tou.png)
 
@@ -126,7 +126,7 @@ Následující obrazovka ukazuje, jak podmínky použití vypadají na mobilníc
 ### <a name="how-users-can-review-their-terms-of-use"></a>Jak si uživatelé můžou zobrazit a přečíst své podmínky použití
 Uživatelé si můžou zobrazit a přečíst podmínky použití, které přijali, pomocí následujícího postupu.
 
-1. Přihlaste se na adrese [https://myapps.microsoft.com](https://myapps.microsoft.com).
+1. Přihlaste se k [ https://myapps.microsoft.com ](https://myapps.microsoft.com).
 
 1. V pravém horním rohu klikněte na své jméno a v rozevírací nabídce vyberte **Profil**.
 
@@ -157,7 +157,7 @@ K odstranění starých podmínek použití můžete použít tento postup.
 Ve výchozím nastavení zůstane odstraněný uživatel ve službě Azure AD v odstraněném stavu po dobu 30 dnů, během kterých ho v případě potřeby může správce obnovit.  Po 30 dnech je tento uživatel odstraněn trvale.  Kromě toho může globální správce pomocí portálu Azure Active Directory explicitně [trvale odstranit nedávno odstraněného uživatele](fundamentals/active-directory-users-restore.md) ještě před dosažením tohoto časového období.  Jakmile je uživatel trvale odstraněný, odeberou se z aktivních podmínek použití i další data o tomto uživateli.  Informace o auditování o odstraněných uživatelích zůstávají v protokolu auditu.
 
 ## <a name="policy-changes"></a>Změny zásad
-Zásady podmíněného přístupu vstupují v platnost okamžitě. Když k tomu dojde, správci se začnou zobrazovat „smutné cloudy“ nebo „potíže s tokenem Azure AD“. Správce se musí odhlásit a znovu přihlásit, aby tyto nové zásady splnil.
+Zásady podmíněného přístupu vstupují v platnost okamžitě. Pokud k tomu dojde, správci se začnou naleznete v tématu "smutné cloudy" nebo "Token problémy s Azure AD". Správce musí odhlásit a znovu se přihlaste k tyto nové zásady.
 
 >[!IMPORTANT]
 > Příslušní uživatelé se musí odhlásit a znovu přihlásit, aby vyhověli novým zásadám:
@@ -167,10 +167,10 @@ Zásady podmíněného přístupu vstupují v platnost okamžitě. Když k tomu 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
 **Otázka: Jak poznám, kdy/jestli uživatel přijal podmínky použití?**</br>
-Odpověď: Můžete kliknout na číslo v části Přijato vedle vašich podmínek použití.  Další informace najdete v části [Zobrazení seznamu těch, kdo podmínky přijali a odmítli](#view-who-has-accepted-and-declined).  Vyjádření souhlasu uživatele s podmínkami použití se také zapíše do protokolu auditu. Můžete prohledat protokol auditu Azure AD a prohlédnout si výsledky.  
+Odpověď: na podmínky použití okna, klikněte na číslo pod **přijato**. Můžete také zobrazit nebo aktivity přijmout hledání v protokolech auditování. Další informace najdete v tématu [zobrazení, kteří je přijali a odmítli](#view-who-has-accepted-and-declined) a [zobrazit protokoly auditu](#view-audit-logs).
 
-**Otázka: Pokud změníte podmínky použití, je potřeba, aby je uživatelé přijali znovu?**</br>
-Odpověď: Ano, správce může změnit podmínky použití. Vyžaduje to opakované přijetí nových podmínek.
+**Otázka: Pokud změníte podmínky použití, je potřeba, aby uživatelé přijali znovu?**</br>
+Odpověď: Ano, Správce může změnit podmínky použití a vyžaduje, aby uživatelé znovu přijali jako nové podmínky.
 
 **Otázka: Podporují se podmínky použití ve více jazycích?**</br>
 Odpověď: Ano.  Správce v současné době může pro jedny podmínky použití nakonfigurovat 18 různých jazyků. 
@@ -179,13 +179,16 @@ Odpověď: Ano.  Správce v současné době může pro jedny podmínky použit�
 Odpověď: Podmínky použití se aktivují během přihlašování.
 
 **Otázka: Na které aplikace je možné podmínkami použití cílit?**</br>
-Odpověď: Můžete vytvořit zásady podmíněného přístupu pro podnikové aplikace s využitím moderního ověřování.  Další informace najdete v tématu věnovaném [podnikovým aplikacím](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-view-azure-portal).
+Odpověď: Můžete vytvořit zásady podmíněného přístupu pro podnikové aplikace s využitím moderního ověřování.  Další informace najdete v tématu věnovaném [podnikovým aplikacím](./manage-apps/view-applications-portal.md).
 
 **Otázka: Je možné pro konkrétního uživatele nebo aplikaci přidat několikero podmínek použití?**</br>
 Odpověď: Ano, a to tak, že vytvoříte několik zásad podmíněného přístupu, které cílí na tyto skupiny nebo aplikace. Pokud uživatel spadá do rozsahu několika podmínek použití, musí je odsouhlasit postupně.
  
 **Otázka: Co se stane, když uživatel odmítne podmínky použití?**</br>
-Odpověď: Uživatel bude mít k zablokovaný přístup k aplikaci. Aby uživatel získal přístup, musel by se musel znovu přihlásit a s těmito podmínkami souhlasit.
+Odpověď: Uživatel bude mít k zablokovaný přístup k aplikaci. Uživatel musel znovu přihlásit a souhlasit s podmínkami, aby bylo možné získat přístup.
+ 
+**Otázka: je možné unaccept podmínky použití, které byly dříve přijali službu?**</br>
+Odpověď: můžete [kontrola dříve přijali podmínky použití](#how-users-can-review-their-terms-of-use), ale aktuálně není k dispozici způsob, jak unaccept.
  
 **Otázka: Jak dlouho se informace uchovávají?**</br>
 Odpověď: Počty uživatelů a informace o těch, kdo podmínky přijali nebo odmítli, se uchovávají po celou dobu platnosti podmínek použití. Protokoly auditu se uchovávají po dobu 30 dnů.

@@ -1,40 +1,40 @@
 ---
-title: Volání zabezpečené ASP.NET webové rozhraní api v Azure Active Directory B2C | Microsoft Docs
-description: Sestavení .NET webové aplikace a volání webového rozhraní api pomocí přístupových tokenů Azure Active Directory B2C a OAuth 2.0.
+title: Volání zabezpečené ASP.NET web api v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Vytvoření aplikace .NET Web app a volání webového rozhraní api pomocí přístupových tokenů Azure Active Directory B2C a OAuth 2.0.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 39603cf103a8ff2656c76843aeae36b17936d13a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 0fd00672e53d0b0148b70b364df5959ced1e554a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712398"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442453"
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C: Volání webového rozhraní API .NET z webové aplikace .NET
 
-Pomocí Azure AD B2C můžete přidat funkce správy identit výkonné webové aplikace a webové rozhraní API. Tento článek popisuje, jak požádat o přístupové tokeny a zkontrolujte volání z webové aplikace .NET "seznam úkolů".NET webové rozhraní api.
+Pomocí Azure AD B2C, můžete přidat funkce správy identity výkonné do vašich webových aplikacích a webových rozhraní API. Tento článek popisuje, jak požádat o tokeny přístupu a zkontrolujte volání z webové aplikace .NET "seznam úkolů".NET webové rozhraní api.
 
-Tento článek nepopisuje, jak implementovat přihlášení, registrace a správy profilů pomocí Azure AD B2C. Zaměřuje se na volání webových rozhraní API po již byl uživatel ověřen. Pokud jste to ještě neudělali, měli byste:
+Tento článek nepopisuje, jak implementovat přihlášení, registrace a správy profilů pomocí Azure AD B2C. Jakmile uživatel je již ověřen, zaměřuje se na volání webových rozhraní API. Pokud jste tak dosud neučinili, měli byste:
 
-* Začínáme s [webové aplikace .NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
-* Začínáme s [webové rozhraní api .NET](active-directory-b2c-devquickstarts-api-dotnet.md)
+* Začněte [webové aplikace .NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md)
+* Začněte [webové rozhraní api .NET](active-directory-b2c-devquickstarts-api-dotnet.md)
 
 ## <a name="prerequisite"></a>Požadavek
 
-K vytvoření webové aplikace, která volá webové rozhraní api, potřebujete:
+Chcete-li vytvořit webovou aplikaci, která volá webové rozhraní api, musíte:
 
-1. [Vytvoření klienta Azure AD B2C](active-directory-b2c-get-started.md).
-2. [Zaregistrovat webového rozhraní api](active-directory-b2c-app-registration.md#register-a-web-api).
-3. [Webovou aplikaci zaregistrovat](active-directory-b2c-app-registration.md#register-a-web-app).
-4. [Nastavit zásady](active-directory-b2c-reference-policies.md).
-5. [Udělení oprávnění aplikace prostřednictvím webu webového rozhraní api](active-directory-b2c-access-tokens.md#publishing-permissions).
+1. [Vytvoření tenanta Azure AD B2C](active-directory-b2c-get-started.md).
+2. [Registrace webové rozhraní api](active-directory-b2c-app-registration.md#register-a-web-api).
+3. [Zaregistrovat webovou aplikaci](active-directory-b2c-app-registration.md#register-a-web-app).
+4. [Nastavení zásad](active-directory-b2c-reference-policies.md).
+5. [Udělit oprávnění k použití webové aplikaci webového rozhraní api](active-directory-b2c-access-tokens.md#publishing-permissions).
 
 > [!IMPORTANT]
 > Klientská aplikace a webové rozhraní API musí používat stejný adresář Azure AD B2C.
@@ -48,16 +48,16 @@ Kód k tomuto kurzu se udržuje na [GitHubu](https://github.com/Azure-Samples/ac
 git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi.git
 ```
 
-Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohli začít. Soubor řešení obsahuje dva projekty: `TaskWebApp` a `TaskService`. `TaskWebApp` je webová aplikace MVC, který uživatel komunikuje. `TaskService` je back-endové webové rozhraní API aplikace, které ukládá seznam úkolů každého uživatele. Tento článek nepopisuje sestavování `TaskWebApp` webovou aplikaci nebo `TaskService` webové rozhraní api. Naučte se vytvářet webové aplikace .NET pomocí Azure AD B2C, najdete v tématu naše [kurz .NET pro webové aplikace](active-directory-b2c-devquickstarts-web-dotnet-susi.md). Naučte se vytvářet rozhraní .NET webové rozhraní API zabezpečené pomocí Azure AD B2C, najdete v tématu naše [kurz webové rozhraní API .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
+Po stažení ukázkového kódu otevřete soubor Visual Studio .sln, abyste mohli začít. Soubor řešení obsahuje dva projekty: `TaskWebApp` a `TaskService`. `TaskWebApp` je webová aplikace MVC, kterou uživatel komunikuje. `TaskService` je back-endové webové rozhraní API aplikace, které ukládá seznam úkolů každého uživatele. Tento článek nezahrnuje sestavení `TaskWebApp` webovou aplikaci nebo `TaskService` webové rozhraní api. Naučte se vytvářet webové aplikace .NET pomocí Azure AD B2C, najdete v našich [kurz webových aplikací .NET](active-directory-b2c-devquickstarts-web-dotnet-susi.md). Informace o sestavení .NET webového rozhraní API zabezpečené pomocí Azure AD B2C, najdete v našich [kurz vývoje webové rozhraní API .NET](active-directory-b2c-devquickstarts-api-dotnet.md).
 
 ### <a name="update-the-azure-ad-b2c-configuration"></a>Aktualizace konfigurace Azure AD B2C
 
-Naše ukázka je nakonfigurovaná k použití zásad a ID klienta naše ukázkového tenanta. Pokud chcete použít vlastního klienta:
+Naše ukázka je nakonfigurovaná k použití zásad a ID klienta naše ukázkového tenanta. Pokud chcete použít vlastního tenanta:
 
 1. Otevřete `web.config` v projektu `TaskService` a nahraďte následující hodnoty:
 
     * `ida:Tenant` názvem vašeho tenanta
-    * `ida:ClientId` pomocí svého ID aplikace webového rozhraní api
+    * `ida:ClientId` identifikátorem aplikace webového rozhraní api
     * `ida:SignUpSignInPolicyId` názvem zásady registrace/přihlášení
 
 2. Otevřete `web.config` v projektu `TaskWebApp` a nahraďte následující hodnoty:
@@ -71,13 +71,13 @@ Naše ukázka je nakonfigurovaná k použití zásad a ID klienta naše ukázkov
 
 
 
-## <a name="requesting-and-saving-an-access-token"></a>Požaduje a ukládání token přístupu
+## <a name="requesting-and-saving-an-access-token"></a>Vyžádání a ukládání přístupového tokenu
 
 ### <a name="specify-the-permissions"></a>Zadejte oprávnění
 
-Aby bylo možné volání webového rozhraní API, budete muset ověřit uživatele (pomocí zásad služby registrace-množství nebo přihlášení) a [přijímat přístupový token](active-directory-b2c-access-tokens.md) z Azure AD B2C. Chcete-li získat přístupový token, nejprve musíte zadat chcete přístupový token k udělení oprávnění. Oprávnění jsou určené v `scope` parametr při provádění požadavku `/authorize` koncový bod. Chcete-li například získat přístupový token s oprávnění "číst" prostředků aplikace, kterou je identifikátor ID URI aplikace z `https://contoso.onmicrosoft.com/tasks`, oboru by `https://contoso.onmicrosoft.com/tasks/read`.
+Aby mohl uskutečnit volání webového rozhraní API, je potřeba se přihlásit uživatele (pomocí zásady přihlášení-registrace/přihlášení) a [přijímat přístupový token](active-directory-b2c-access-tokens.md) z Azure AD B2C. Pro získání přístupového tokenu, nejprve musíte zadat byste chtěli přístupový token k udělení oprávnění. Oprávnění jsou určené v `scope` parametr, když vytvoříte žádost o `/authorize` koncového bodu. Například pro získání přístupového tokenu se aplikace prostředků, která obsahuje identifikátor URI ID aplikace oprávnění "číst" `https://contoso.onmicrosoft.com/tasks`, bude rozsah `https://contoso.onmicrosoft.com/tasks/read`.
 
-K určení oboru ve výběru, otevřete soubor `App_Start\Startup.Auth.cs` a definovat `Scope` proměnné v OpenIdConnectAuthenticationOptions.
+K zadání oboru v naší ukázce, otevřete soubor `App_Start\Startup.Auth.cs` a definovat `Scope` proměnné v OpenIdConnectAuthenticationOptions.
 
 ```CSharp
 // App_Start\Startup.Auth.cs
@@ -94,9 +94,9 @@ K určení oboru ve výběru, otevřete soubor `App_Start\Startup.Auth.cs` a def
 }
 ```
 
-### <a name="exchange-the-authorization-code-for-an-access-token"></a>Exchange autorizační kód pro token přístupu
+### <a name="exchange-the-authorization-code-for-an-access-token"></a>Exchange autorizační kód pro přístupový token
 
-Po dokončení registrace nebo přihlášení zkušeností uživatele s vaší aplikace obdrží autorizační kód z Azure AD B2C. Middleware OWIN OpenID Connect uloží kód, ale nebude exchange pro přístupový token. Můžete použít [MSAL knihovny](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) aby exchange. V našem ukázce jsme nakonfigurovali zpětné volání oznámení do middleware OpenID Connect vždy, když je obdržena autorizační kód. Zpětné volání používáme MSAL exchange kód pro token a uložení tokenu do mezipaměti.
+Po dokončení prostředí registrace nebo přihlášení jako uživatel aplikace obdrží autorizační kód z Azure AD B2C. Middleware OWIN OpenID Connect uloží kód, ale nebude výměně pro přístupový token. Můžete použít [knihovna MSAL](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) provést výměnu. V naší ukázce jsme nakonfigurovali zpětné volání oznámení do middlewaru OpenID Connect pokaždé, když se obdrží autorizační kód. Při zpětném volání jsme použití MSAL k výměně kód pro token a uložte tokenu do mezipaměti.
 
 ```CSharp
 /*
@@ -121,11 +121,11 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
 
 ## <a name="calling-the-web-api"></a>Volání webového rozhraní API
 
-Tato část popisuje postup použití tokenu obdržel během registrace-množství nebo přihlášení s Azure AD B2C, aby měli přístup na webové rozhraní API.
+Tato část popisuje, jak použít token přijatý během přihlášení-registrace/přihlášení pomocí Azure AD B2C, aby měl přístup k webovému rozhraní API.
 
-### <a name="retrieve-the-saved-token-in-the-controllers"></a>Načtení uložené token v na řadiče
+### <a name="retrieve-the-saved-token-in-the-controllers"></a>Načtení uložené tokenu v kontrolery
 
-`TasksController` Je zodpovědný za komunikaci s webové rozhraní API a pro odesílání požadavků HTTP do rozhraní API číst, vytvářet a odstraňovat úlohy. Protože rozhraní API je zabezpečená službou Azure AD B2C, musíte nejdřív načíst token, který jste uložili v předchozím kroku.
+`TasksController` Je zodpovídá za komunikaci s webovým rozhraním API a odesílání požadavků HTTP do rozhraní API, číst, vytvářet a odstraňovat úkoly. Protože je rozhraní API zabezpečené pomocí Azure AD B2C, musíte nejdřív načíst token, který jste uložili v předchozím kroku.
 
 ```CSharp
 // Controllers\TasksController.cs
@@ -150,9 +150,9 @@ private async void acquireToken(String[] scope)
 }
 ```
 
-### <a name="read-tasks-from-the-web-api"></a>Čtení úlohy z webové rozhraní API
+### <a name="read-tasks-from-the-web-api"></a>Čtení úkolů ve webovém rozhraní API
 
-Když máte token, abyste ho připojili k HTTP `GET` v požadavku `Authorization` záhlaví bezpečně volat `TaskService`:
+Když máte token, abyste ho připojili k HTTP `GET` žádosti `Authorization` hlavičky, má bezpečné volat `TaskService`:
 
 ```CSharp
 // Controllers\TasksController.cs
@@ -176,11 +176,11 @@ public async Task<ActionResult> Index()
 
 ```
 
-### <a name="create-and-delete-tasks-on-the-web-api"></a>Vytvářet a odstraňovat úlohy na webové rozhraní API
+### <a name="create-and-delete-tasks-on-the-web-api"></a>Vytvářet a odstraňovat úkoly na webové rozhraní API
 
-Postupujte podle stejného vzoru při odesílání `POST` a `DELETE` požadavky na webové rozhraní API, pomocí MSAL k získání přístupového tokenu z mezipaměti.
+Postupujte podle stejného vzoru při odeslání `POST` a `DELETE` požadavky do webového rozhraní API s využitím MSAL k získání přístupového tokenu z mezipaměti.
 
 ## <a name="run-the-sample-app"></a>Spuštění ukázkové aplikace
 
-Nakonec sestavte a spusťte obě aplikace. Registrace a přihlášení a vytvořte úkoly pro přihlášeného uživatele. Odhlásit se a přihlaste se jako jiný uživatel. Vytvořte úkoly pro tohoto uživatele. Všimněte si, jak jsou úlohy ukládají pro každého uživatele na volání rozhraní API, protože rozhraní API extrahuje identitu uživatele z tokenu obdrží. Zkuste taky přehrávání s obory. Odeberte oprávnění k "zápisu" a potom zkuste přidat úloha. Ujistěte se odhlásit se při každé změně oboru.
+Nakonec sestavte a spusťte obě aplikace. Registrace a přihlášení a vytvoření úlohy pro přihlášeného uživatele. Odhlaste se a přihlaste se jako jiný uživatel. Vytvořte úkoly pro tohoto uživatele. Všimněte si, jak se úlohy ukládají pro každého uživatele na rozhraní API, protože rozhraní API extrahuje identitu uživatele z tokenu přijme. Zkuste taky přehrávání s obory. Odeberte oprávnění k "write" a potom zkuste přidat úkol. Jenom nezapomeňte odhlásit se při každé změně oboru.
 

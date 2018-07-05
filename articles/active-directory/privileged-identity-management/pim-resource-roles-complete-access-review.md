@@ -1,64 +1,64 @@
 ---
-title: Dokončit kontrola přístupu k prostředkům Azure pomocí Privileged Identity managementu | Microsoft Docs
-description: Popisuje, jak provést kontrola přístupu k prostředkům Azure.
+title: Dokončení kontroly přístupu pro prostředky Azure s použitím Privileged Identity Management | Dokumentace Microsoftu
+description: Popisuje postup při dokončení kontroly přístupu pro prostředky Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2e6556d3bac386bff26f9a5ce8f599e099fdb6c4
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: e21d0240469a9c775e610c97f98c073b8f83ce8e
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233797"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442186"
 ---
-# <a name="complete-an-access-review-for-azure-resources-by-using-privileged-identity-management"></a>Dokončit kontrola přístupu k prostředkům Azure pomocí Privileged Identity Management
-Správce privilegovaných rolí můžete zkontrolovat privilegovaného přístupu po [revize zabezpečení byla spuštěna](pim-resource-roles-start-access-review.md). Privileged Identity Management (PIM) k prostředkům Azure automaticky odešle e-mail, který vyzve uživatele, aby kontrolovat jejich přístup. Pokud uživatel nebude přijímat e-mailu, můžete jim poslat pokynů [jak provádět kontrolu zabezpečení](pim-resource-roles-perform-access-review.md).
+# <a name="complete-an-access-review-for-azure-resources-by-using-privileged-identity-management"></a>Dokončení kontroly přístupu pro prostředky Azure s použitím Privileged Identity Management
+Správci privilegovaných rolí můžete zkontrolovat privilegovaný přístup po [se spustila kontrola zabezpečení](pim-resource-roles-start-access-review.md). Privileged Identity Management (PIM) pro prostředky Azure automaticky odesílá e-mail, který vyzve uživatele ke kontrole jejich přístupu. Pokud uživatel e-mailu, můžete jim poslat pokyny [provádění kontroly zabezpečení](pim-resource-roles-perform-access-review.md).
 
-Po dokončení zkontrolujte období zabezpečení nebo po dokončení své samoobslužné zkontrolujte všechny uživatele, postupujte podle kroků v tomto článku ke správě kontrola a zobrazit výsledky.
+Po období kontroly zabezpečení, nebo po dokončení všech uživatelů jejich svým přezkoumat, postupujte podle kroků v tomto článku můžete spravovat revize a zobrazit výsledky.
 
-## <a name="manage-security-reviews"></a>Správa zabezpečení recenze
-1. Přejděte na [portál Azure](https://portal.azure.com/). Na řídicím panelu, vyberte **prostředky Azure** aplikace.
+## <a name="manage-security-reviews"></a>Spravovat revize zabezpečení
+1. Přejděte na [portál Azure](https://portal.azure.com/). Vyberte na řídicím panelu **prostředky Azure** aplikace.
 
 2. Vyberte prostředek.
 
-3. Vyberte **přístup recenze** část řídicího panelu.
+3. Vyberte **kontrol přístupu** část řídicího panelu.
 ![Kontroly přístupu](media/azure-pim-resource-rbac/rbac-access-review-home-list.png)
 
-4. Vyberte kontrola přístupu, který chcete spravovat.
+4. Vyberte kontroly přístupu, kterou chcete spravovat.
 
-V okně podrobností kontrola přístupu existuje několik možností pro správu této revize. Možnosti jsou následující:
+V okně Podrobnosti o kontrolu přístupu existuje mnoho možností pro správu této revize. Možnosti jsou následující:
 
-![Možnosti pro správu kontrolu](media/azure-pim-resource-rbac/rbac-access-review-menu.png)
+![Možnosti pro správu revize](media/azure-pim-resource-rbac/rbac-access-review-menu.png)
 
 ### <a name="stop"></a>Zastavit
-Všechny recenze přístup mít koncové datum, ale můžete použít **Zastavit** tlačítko ukončíte již v rané fázi. Všichni uživatelé, kteří nedokončily jejich revize této doby nebude možné dokončit, je poté, co zastavíte kontrola. Kontrolu nelze restartovat po byla zastavena.
+Všechny kontroly přístupu mají koncové datum, ale můžete použít **Zastavit** tlačítko pro dokončení včas. Všichni uživatelé, kteří nedokončili svoji kontrolu té doby nebude možné ji dokončit po zastavení revize. Kontrola nelze restartovat po byla zastavena.
 
 ### <a name="reset"></a>Resetovat
-Můžete resetovat kontrola přístupu k odebrání všech rozhodnutí, která jsou probíhají. Po resetujete kontrola přístupu, všichni uživatelé jsou označeny jako nerevidované znovu. 
+Kontroly přístupu k odebrání všech rozhodnutí, které jsou provedeny v něm můžete resetovat. Poté, co jste změnili kontroly přístupu, všichni uživatelé jsou označeny jako znovu neprovedla kontrola. 
 
 ### <a name="apply"></a>Použít
-Po dokončení kontrola přístupu používat **použít** tlačítko implementovat výsledek kontrola. Pokud v kontrola byl odepřen přístup uživatele, tento krok Odstraní přiřazení role.  
+Po dokončení kontroly přístupu používat **použít** tlačítko k implementaci výsledek kontroly. Pokud v revizi byl odepřen přístup uživatelů, tento krok Odstraní přiřazení role.  
 
 ### <a name="delete"></a>Odstranění
-Pokud máte nejsou zájem o kontrola víc, odstraňte jej. **Odstranit** tlačítko odstraní kontrola z aplikace PIM.
+Můžete se v případě zájmu revize víc, odstraňte jej. **Odstranit** tlačítko kontroly odebere z aplikace PIM.
 
 ## <a name="results"></a>Výsledky
-Na **výsledky** kartě, zobrazení a stažení seznamu zobrazit výsledky. 
+Na **výsledky** kartu, zobrazit a stáhnout seznam výsledků kontroly. 
 ![Karta výsledky](media/azure-pim-resource-rbac/rbac-access-review-results.png)
 
 ## <a name="reviewers"></a>Revidující
-Zobrazení a přidejte kontroloři do vaší stávající kontrola přístupu. Připomeňte kontroloři dokončit jejich recenze.
-![Přidání revidujících](media/azure-pim-resource-rbac/rbac-access-review-reviewers.png)
+Zobrazení a přidání revidujících k vaší existující kontrolu přístupu. Připomeňte revidujících k dokončení jejich revize.
+![Přidat kontrolory](media/azure-pim-resource-rbac/rbac-access-review-reviewers.png)
 
 
 

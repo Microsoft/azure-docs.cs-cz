@@ -1,73 +1,73 @@
 ---
-title: Přidejte služby Twitter jako zprostředkovatel identity OAuth1 pomocí vlastních zásad v Azure Active Directory B2C | Microsoft Docs
-description: Pomocí služby Twitter jako poskytovatel identit pomocí protokolu OAuth1.
+title: Přidat Twitteru jako zprostředkovatele identity OAuth1 pomocí vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Pomocí protokolu OAuth1 pomocí Twitteru jako zprostředkovatele identity.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6b09bb295d889255dada0cebbb9ded2379d95d23
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 786f0dfd0cf3cf2e9ab0d16e26811fabd6bfc17c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34710232"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440942"
 ---
-# <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Přidání služby Twitter jako zprostředkovatel identity OAuth1 pomocí vlastních zásad
+# <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: Přidání Twitteru jako zprostředkovatele identity OAuth1 pomocí vlastních zásad
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek ukazuje, jak povolit přihlášení pro uživatele služby Twitter účtu pomocí [vlastní zásady](active-directory-b2c-overview-custom.md).
+Tento článek ukazuje, jak povolit přihlášení pro uživatele z účtu na Twitteru s použitím [vlastní zásady](active-directory-b2c-overview-custom.md).
 
 ## <a name="prerequisites"></a>Požadavky
 Proveďte kroky v [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md) článku.
 
-## <a name="step-1-create-a-twitter-account-application"></a>Krok 1: Vytvoření aplikace účet služby Twitter.
-Použití služby Twitter jako poskytovatel identit v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci služby Twitter a zadat se správné parametry. Můžete zaregistrovat aplikaci služby Twitter přechodem na [stránku pro přihlášení služby Twitter](https://twitter.com/signup).
+## <a name="step-1-create-a-twitter-account-application"></a>Krok 1: Vytvoření aplikace Twitter účtu
+Chcete-li použít Twitteru jako zprostředkovatele identity v Azure Active Directory B2C (Azure AD B2C), musíte vytvořit aplikaci Twitter a zadejte správné parametry. Můžete zaregistrovat aplikaci Twitter tak, že přejdete [registrační stránku Twitteru](https://twitter.com/signup).
 
-1. Přejděte na [Twitter vývojáři](https://apps.twitter.com/) web, přihlaste se pomocí přihlašovacích údajů účtu služby Twitter a pak vyberte **vytvořit novou aplikaci**.
+1. Přejděte [Twitteru vývojáři](https://apps.twitter.com/) webu, přihlaste se pomocí přihlašovacích údajů k účtu Twitteru a pak vyberte **vytvořit novou aplikaci**.
 
-    ![Účet služby Twitter – vytvoření nové aplikace](media/active-directory-b2c-custom-setup-twitter-idp/adb2c-ief-setup-twitter-idp-new-app1.png)
+    ![Twitterovém účtu – vytvoření nové aplikace](media/active-directory-b2c-custom-setup-twitter-idp/adb2c-ief-setup-twitter-idp-new-app1.png)
 
 2. V **vytvořit aplikaci** okno, postupujte takto:
  
     a. Typ **název** a **popis** pro novou aplikaci. 
 
-    b. V **webu** pole, vložte **https://login.microsoftonline.com**. 
+    b. V **webu** vložte **https://login.microsoftonline.com**. 
 
-    c. V **adresu URL zpětné volání** pole, vložte **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp**. Nahraďte {*klienta*} s názvem vašeho klienta (například contosob2c.onmicrosoft.com). Ujistěte se, že používáte schéma HTTPS. 
+    c. 4. Pro **adresu URL zpětného volání**, zadejte `https://login.microsoftonline.com/te/{tenant}/{policyId}/oauth1/authresp`. Nezapomeňte nahradit **{klient}** s názvem vašeho tenanta (například contosob2c.onmicrosoft.com) a **{policyId}** se svým id zásad (například b2c_1_policy).  **Zpětné volání adresy URL musí být v všechna písmena malá.** Měli byste přidat adresu URL zpětného volání pro všechny zásady, které používají přihlášení Twitter. Ujistěte se, že používáte `b2clogin.com` místo ` login.microsoftonline.com` Pokud používáte ho ve vaší aplikaci.
 
-    d. V dolní části stránky, přečtěte si a přijměte podmínky a potom vyberte **vytvořit aplikaci služby Twitter**.
+    d. V dolní části stránky, přečtěte si a přijměte podmínky a pak vyberte **vytvoření aplikace Twitter**.
 
-    ![Účet služby Twitter – přidání nové aplikace](media/active-directory-b2c-custom-setup-twitter-idp/adb2c-ief-setup-twitter-idp-new-app2.png)
+    ![Twitterovém účtu – přidání nové aplikace](media/active-directory-b2c-custom-setup-twitter-idp/adb2c-ief-setup-twitter-idp-new-app2.png)
 
-3. V **B2C ukázku** vyberte **nastavení**, vyberte **povolit této aplikace, který se má použít k přihlášení pomocí služby Twitter** zaškrtněte políčko a potom vyberte **aktualizace Nastavení**.
+3. V **B2C ukázka** okně **nastavení**, vyberte **povolit této aplikace se použije k přihlášení pomocí Twitteru** zaškrtněte políčko a potom vyberte **aktualizace Nastavení**.
 
-4. Vyberte **klíče a přístupové tokeny**a poznamenejte si **uživatelský klíč (klíč rozhraní API)** a **uživatelský tajný klíč (tajný klíč rozhraní API)** hodnoty.
+4. Vyberte **klíče a přístupové tokeny**a Všimněte si, **uživatelský klíč (klíč rozhraní API)** a **uživatelský tajný klíč (tajný klíč rozhraní API)** hodnoty.
 
-    ![Účet služby Twitter – nastavení vlastností aplikací](media/active-directory-b2c-custom-setup-twitter-idp/adb2c-ief-setup-twitter-idp-new-app3.png)
+    ![Účet na twitteru – nastavení vlastností aplikace](media/active-directory-b2c-custom-setup-twitter-idp/adb2c-ief-setup-twitter-idp-new-app3.png)
 
     >[!NOTE]
-    >Uživatelský tajný klíč je důležitým bezpečnostním pověřením. S kýmkoli sdílet tento tajný klíč nebo distribuovat s vaší aplikací.
+    >Uživatelský tajný klíč je důležitým bezpečnostním pověřením. S kýmkoli sdílet tento tajný kód nebo distribuovat s vaší aplikací.
 
-## <a name="step-2-add-your-twitter-account-application-key-to-azure-ad-b2c"></a>Krok 2: Přidáte váš klíč pro Twitter účet aplikace do Azure AD B2C
-Federace s účty služby Twitter vyžaduje uživatelský tajný klíč pro účet služby Twitter do vztahu důvěryhodnosti Azure AD B2C jménem aplikace. K uložení uživatelský tajný klíč pro Twitter aplikace v klientovi služby Azure AD B2C, postupujte takto: 
+## <a name="step-2-add-your-twitter-account-application-key-to-azure-ad-b2c"></a>Krok 2: Přidání aplikací klíč vašeho účtu Twitter do Azure AD B2C
+Federace se službou Twitter účtů vyžaduje uživatelský tajný klíč pro účet Twitteru do vztahu důvěryhodnosti Azure AD B2C jménem aplikace. Pokud chcete uložit uživatelský tajný klíč pro Twitter application ve vašem tenantovi Azure AD B2C, postupujte takto: 
 
-1. Ve vašem klientu Azure AD B2C, vyberte **nastavení B2C** > **Identity rozhraní Framework**.
+1. Ve vašem tenantovi Azure AD B2C vyberte **nastavení B2C** > **architekturu rozhraní identit**.
 
-2. Chcete-li zobrazit klíčů, které jsou k dispozici ve vašem klientovi, vyberte **zásad klíče**.
+2. Chcete-li zobrazit klíče, které jsou k dispozici ve vašem tenantovi, vyberte **klíče zásad**.
 
 3. Vyberte **Přidat**.
 
 4. V **možnosti** vyberte **ruční**.
 
 5. V **název** vyberte **TwitterSecret**.  
-    Předpona *B2C_1A_* může automaticky přidat.
+    Předpona, která *B2C_1A_* může být automaticky přidán.
 
-6. V **tajný klíč** zadejte váš tajný klíč aplikace Microsoft z [portálu pro registraci aplikace](https://apps.dev.microsoft.com).
+6. V **tajný kód** zadejte váš tajný klíč aplikace Microsoft z [portál pro registraci aplikací](https://apps.dev.microsoft.com).
 
 7. Pro **použití klíče**, použijte **šifrování**.
 
@@ -75,17 +75,17 @@ Federace s účty služby Twitter vyžaduje uživatelský tajný klíč pro úč
 
 9. Potvrďte, že jste vytvořili `B2C_1A_TwitterSecret` klíč.
 
-## <a name="step-3-add-a-claims-provider-in-your-extension-policy"></a>Krok 3: Přidání poskytovatele deklarací identity v rozšíření zásady
+## <a name="step-3-add-a-claims-provider-in-your-extension-policy"></a>Krok 3: Přidání zprostředkovatele deklarací identity ve svojí zásadě rozšíření
 
-Pokud chcete uživatelům přihlášení pomocí účtu sítě Twitter, je nutné zadat Twitter jako poskytovatele deklarací identity. Jinými slovy je nutné zadat koncové body, které komunikuje se službou Azure AD B2C. Koncové body poskytují sadu deklarací identity, které používají Azure AD B2C k ověření, že byl ověřen konkrétního uživatele.
+Pokud chcete uživatelům umožní přihlásit pomocí účtu sítě Twitter, je nutné definovat Twitteru jako zprostředkovatele deklarací identity. Jinými slovy je nutné zadat koncové body, které komunikuje se službou Azure AD B2C. Koncové body poskytují sadu deklarací identity, které používají Azure AD B2C k ověření, že se ověřil konkrétního uživatele.
 
-Definování Twitter jako poskytovatele deklarací identity tak, že přidáte `<ClaimsProvider>` uzlu v souboru rozšíření zásad:
+Definujte Twitteru jako zprostředkovatele deklarací tak, že přidáte `<ClaimsProvider>` uzlu v souboru rozšíření zásad:
 
 1. V pracovním adresáři, otevřete *TrustFrameworkExtensions.xml* soubor rozšíření zásad. 
 
-2. Vyhledejte `<ClaimsProviders>` části.
+2. Hledat `<ClaimsProviders>` oddílu.
 
-3. V `<ClaimsProviders>` uzlu, přidejte následující fragment kódu XML:  
+3. V `<ClaimsProviders>` uzel, přidejte následující fragment kódu XML:  
 
     ```xml
     <ClaimsProvider>
@@ -127,58 +127,58 @@ Definování Twitter jako poskytovatele deklarací identity tak, že přidáte `
     </ClaimsProvider>
     ```
 
-4. Nahraďte *client_id*' hodnotu s vaší aplikací uživatelský klíč pro Twitter účtu.
+4. Nahradit *client_id*"hodnotu s vaší aplikací uživatelský klíč pro Twitter účtu.
 
 5. Uložte soubor.
 
-## <a name="step-4-register-the-twitter-account-claims-provider-to-your-sign-up-or-sign-in-user-journey"></a>Krok 4: Registrace zprostředkovatele deklarací identity účtu služby Twitter k vám dobře slouží registrace nebo přihlášení uživatele
-Nastavili jste si poskytovatele identit. Ale ho dosud nejsou k dispozici v žádném z registrace nebo přihlášení systému windows. Nyní je nutné přidat zprostředkovatele identity účtu služby Twitter pro vaše uživatele `SignUpOrSignIn` cesty uživatele.
+## <a name="step-4-register-the-twitter-account-claims-provider-to-your-sign-up-or-sign-in-user-journey"></a>Krok 4: Zaregistrujte poskytovatele deklarací identity účtu Twitter na vaší cestě registrace nebo přihlašování uživatelů
+Nastavení zprostředkovatele identity. Však není zatím k dispozici v některém z registrace / přihlášení ve windows. Teď musíte přidat zprostředkovatele identity účtu Twitter pro vaše uživatele `SignUpOrSignIn` cesty uživatele.
 
-### <a name="step-41-make-a-copy-of-the-user-journey"></a>Krok 4.1: Vytvoření kopie cesty uživatele
-Aby cesty uživatele dostupné, vytvořte duplicitní existující šablony cesty uživatele a pak přidejte zprostředkovatele identity Twitter:
+### <a name="step-41-make-a-copy-of-the-user-journey"></a>Krok 4.1: Vytvořte kopii cesty uživatele
+Chcete-li k dispozici cesty uživatele, vytvořit kopii existující šablony cesty uživatele a pak přidejte zprostředkovatele identity Twitteru:
 
 >[!NOTE]
->Pokud jste zkopírovali `<UserJourneys>` element ze základního souboru v zásadách *TrustFrameworkExtensions.xml* souboru rozšíření, můžete přeskočit k další části.
+>Pokud jste si zkopírovali `<UserJourneys>` element ze základního souboru zásadu *TrustFrameworkExtensions.xml* příponu souboru, můžete přeskočit k další části.
 
-1. Otevřete soubor základní zásad (například TrustFrameworkBase.xml).
+1. Otevřete soubor základní zásady (například TrustFrameworkBase.xml).
 
-2. Vyhledejte `<UserJourneys>` element, vyberte celý obsah `<UserJourney>` uzel a potom vyberte **Vyjmout** přesunout vybraný text do schránky.
+2. Hledat `<UserJourneys>` element, vyberte veškerý obsah `<UserJourney>` uzlu a pak vyberte **Vyjmout** přesunutí vybraného textu do schránky.
 
-3. Otevřete soubor rozšíření (například TrustFrameworkExtensions.xml) a poté vyhledejte `<UserJourneys>` elementu. Pokud element neexistuje, přidejte ji.
+3. Otevřete soubor rozšíření (například TrustFrameworkExtensions.xml) a pak vyhledejte oddíl týkající `<UserJourneys>` elementu. Pokud element neexistuje, přidejte ji.
 
-4. Vložte celý obsah `<UserJourney>` uzlu, který jste přesunuli do schránky v kroku 2, do `<UserJourneys>` elementu.
+4. Vložte celý obsah `<UserJourney>` uzlu, na kterém jste přesunuli do schránky. v kroku 2, do `<UserJourneys>` elementu.
 
-### <a name="step-42-display-the-button"></a>Krok 4.2: Zobrazit "button"
-`<ClaimsProviderSelections>` Element definuje seznam možnosti výběru poskytovatele deklarací identity a jejich pořadí. `<ClaimsProviderSelection>` Uzel je obdobou tlačítko zprostředkovatele identity na stránce registrace nebo přihlášení. Pokud přidáte `<ClaimsProviderSelection>` uzel pro účet služby Twitter, nové tlačítko se zobrazí, když uživatel pojmenováváme na stránce. Pokud chcete přidat tento element, postupujte takto:
+### <a name="step-42-display-the-button"></a>Krok 4.2: Zobrazit "tlačítko"
+`<ClaimsProviderSelections>` Element definuje seznam možnosti výběru zprostředkovatele deklarací identity a jejich pořadí. `<ClaimsProviderSelection>` Uzel je obdobou k tlačítku na stránce registrace nebo přihlášení zprostředkovatele identity. Pokud chcete přidat `<ClaimsProviderSelection>` uzel účtu sítě Twitter, nové tlačítko se zobrazí, když uživatel umístil na stránce. Chcete-li přidat tento element, postupujte takto:
 
-1. Vyhledejte `<UserJourney>` uzlu, který obsahuje `Id="SignUpOrSignIn"` v cesty uživatele, který jste zkopírovali.
+1. Hledat `<UserJourney>` uzel, který obsahuje `Id="SignUpOrSignIn"` v cestě uživatele, který jste zkopírovali.
 
-2. Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje `Order="1"`.
+2. Vyhledejte `<OrchestrationStep>` uzel, který obsahuje `Order="1"`.
 
-3. V `<ClaimsProviderSelections>` elementu, přidejte následující fragment kódu XML:
+3. V `<ClaimsProviderSelections>` prvku, přidejte následující fragment kódu XML:
 
     ```xml
     <ClaimsProviderSelection TargetClaimsExchangeId="TwitterExchange" />
     ```
 
-### <a name="step-43-link-the-button-to-an-action"></a>Krok 4.3: Odkaz na tlačítko akce
-Nyní když máte tlačítka na místě, musíte ho propojit akce. Akce, v takovém případě je pro Azure AD B2C ke komunikaci s účtem služby Twitter přijmout token. Pomocí propojení technické profil pro poskytovatele deklarací identity účtu služby Twitter odkazu na tlačítko akce:
+### <a name="step-43-link-the-button-to-an-action"></a>Krok 4.3: Odkaz na tlačítko na akci
+Teď, když máte tlačítko na místě, je třeba propojit na akci. Akce v tomto případě je pro Azure AD B2C ke komunikaci s účtem Twitteru získat token. Tlačítko odkazu na akci propojením technický profil pro poskytovatele deklarací identity účtu Twitter:
 
-1. Vyhledejte `<OrchestrationStep>` uzlu, který obsahuje `Order="2"` v `<UserJourney>` uzlu.
-2. V `<ClaimsExchanges>` elementu, přidejte následující fragment kódu XML:
+1. Hledat `<OrchestrationStep>` uzel, který obsahuje `Order="2"` v `<UserJourney>` uzlu.
+2. V `<ClaimsExchanges>` prvku, přidejte následující fragment kódu XML:
 
     ```xml
     <ClaimsExchange Id="TwitterExchange" TechnicalProfileReferenceId="Twitter-OAUTH1" />
     ```
 
     >[!NOTE]
-    >* Ujistěte se, že `Id` mají stejnou hodnotu jako `TargetClaimsExchangeId` v předchozí části.
-    >* Ujistěte se, že `TechnicalProfileReferenceId` ID nastavena na technické profil, který jste vytvořili starší (Twitter OAUTH1).
+    >* Ujistěte se, že `Id` má stejnou hodnotu jako `TargetClaimsExchangeId` v předchozí části.
+    >* Ujistěte se, `TechnicalProfileReferenceId` ID je nastaven na technický profil, který jste vytvořili starší (Twitter OAUTH1).
 
-## <a name="step-5-upload-the-policy-to-your-tenant"></a>Krok 5: Nahrajte zásady klienta
-1. V [portál Azure](https://portal.azure.com), přepnout [kontextu klienta služby Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a potom vyberte **Azure AD B2C**.
+## <a name="step-5-upload-the-policy-to-your-tenant"></a>Krok 5: Nahrajte zásady pro vašeho tenanta
+1. V [webu Azure portal](https://portal.azure.com), přepněte [kontextu vašeho tenanta Azure AD B2C](active-directory-b2c-navigate-to-b2c-context.md)a pak vyberte **Azure AD B2C**.
 
-2. Vyberte **Identity rozhraní Framework**.
+2. Vyberte **architekturu rozhraní identit**.
 
 3. Vyberte **všechny zásady**.
 
@@ -186,21 +186,21 @@ Nyní když máte tlačítka na místě, musíte ho propojit akce. Akce, v takov
 
 5. Vyberte **přepsat zásady, pokud existuje** zaškrtávací políčko.
 
-6. Nahrát *TrustFrameworkBase.xml* a *TrustFrameworkExtensions.xml* soubory a ujistěte se, že jejich úspěšné ověření.
+6. Nahrát *TrustFrameworkBase.xml* a *TrustFrameworkExtensions.xml* soubory a ujistěte se, že bude úspěšné ověření.
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>Krok 6: Testování spustit pomocí vlastních zásad
 
-1. Vyberte **nastavení Azure AD B2C**a potom vyberte **Identity rozhraní Framework**.
+1. Vyberte **nastavení Azure AD B2C**a pak vyberte **architekturu rozhraní identit**.
 
     >[!NOTE]
-    >Spustit nyní vyžaduje alespoň jedné aplikace do být preregistered u klienta. Další postup registrace aplikace najdete v tématu Azure AD B2C [Začínáme](active-directory-b2c-get-started.md) článek nebo [registrace aplikace](active-directory-b2c-app-registration.md) článku.
+    >Spustit nyní vyžaduje aspoň jednu aplikaci do být registrované u klienta. Informace o postupu registrace aplikací, najdete v tématu Azure AD B2C [Začínáme](active-directory-b2c-get-started.md) článku nebo [registrace aplikace](active-directory-b2c-app-registration.md) článku.
 
-2. Otevřete **B2C_1A_signup_signin**, předávající stranu vlastních zásad, které jste nahráli a potom vyberte **spustit nyní**.  
-    Teď by měla být neúspěšné přihlášení pomocí účtu sítě Twitter.
+2. Otevřít **B2C_1A_signup_signin**, předávající stranu vlastní zásady, které jste nahráli a pak vyberte **spustit nyní**.  
+    Teď by měl být schopni se přihlásit pomocí účtu sítě Twitter.
 
-## <a name="step-7-optional-register-the-twitter-account-claims-provider-to-the-profile-edit-user-journey"></a>Krok 7: Zprostředkovatele pro úpravy profilu uživatele cesty deklarace identity (volitelné) zaregistrovat účet služby Twitter.
-Můžete také přidat zprostředkovatele identity účtu služby Twitter na váš `ProfileEdit` cesty uživatele. Aby se uživatel přepravě k dispozici, opakování "krok 4." Tentokrát vyberte `<UserJourney>` uzlu, který obsahuje `Id="ProfileEdit"`. Uložit, odeslání a testování vaší zásady.
+## <a name="step-7-optional-register-the-twitter-account-claims-provider-to-the-profile-edit-user-journey"></a>Krok 7: Registrace (volitelně) účtu sítě Twitter deklarací poskytovatele pro cestu uživatele úpravy profilu
+Můžete také přidat zprostředkovatele identity účtu Twitter na váš `ProfileEdit` cesty uživatele. Aby se uživatel přepravě k dispozici, opakujte "krok 4." Tentokrát vyberte `<UserJourney>` uzel, který obsahuje `Id="ProfileEdit"`. Uložit nahrát a testování vaší zásady.
 
 
-## <a name="optional-download-the-complete-policy-files"></a>(Volitelné) Stáhnout soubory dokončení zásad
-Po dokončení [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md) návod, doporučujeme vám vytvořit váš scénář pomocí vlastních zásad pro soubory. Pro vaši informaci uvádíme [ukázkové soubory zásad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-twitter-app).
+## <a name="optional-download-the-complete-policy-files"></a>(Volitelné) Stažení kompletní zásad souborů
+Po dokončení [začít pracovat s vlastními zásadami](active-directory-b2c-get-started-custom.md) návodu, doporučujeme vám vytvořit váš scénář s využitím vlastních zásad pro soubory. Pro srovnání si uvádíme [ukázkové soubory zásad](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-twitter-app).

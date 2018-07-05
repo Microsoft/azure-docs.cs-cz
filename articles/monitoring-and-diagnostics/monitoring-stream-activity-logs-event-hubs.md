@@ -1,6 +1,6 @@
 ---
-title: Datový proud protokolu Azure činnosti do centra událostí
-description: Zjistěte, jak k vysílání datového proudu protokol činnosti Azure do centra událostí.
+title: Stream protokolů aktivit Azure do služby Event Hubs
+description: Naučíte se Streamovat protokol aktivit Azure do služby Event Hubs.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,59 +8,59 @@ ms.topic: conceptual
 ms.date: 03/02/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 1f1a131d4e0cf900d04acc9730b04e1375f396a6
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 45352c1cf4aca9043c23bbe12e94ba770a38c01b
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264295"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436701"
 ---
-# <a name="stream-the-azure-activity-log-to-event-hubs"></a>Datový proud protokolu Azure činnosti do centra událostí
-Dá Streamovat [protokol činnosti Azure](monitoring-overview-activity-logs.md) skoro v reálném čase pro všechny aplikace, a to buď:
+# <a name="stream-the-azure-activity-log-to-event-hubs"></a>Stream protokolů aktivit Azure do služby Event Hubs
+Můžete Streamovat [protokolu aktivit Azure](monitoring-overview-activity-logs.md) téměř v reálném čase pro libovolné aplikace buď:
 
-* Pomocí integrovaných **exportovat** možnost na portálu
-* Povolení služby Azure Service Bus pravidlo ID v profilu protokolu prostřednictvím rutin prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure
+* Použití předdefinované **exportovat** možnosti na portálu
+* ID pravidla služby Azure Service Bus v profilu protokolu prostřednictvím rutin prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure
 
-## <a name="what-you-can-do-with-the-activity-log-and-event-hubs"></a>Co můžete dělat s protokol aktivit a Event Hubs
-Můžete použít možnost streamování pro protokol činnosti těmito dvěma způsoby:
+## <a name="what-you-can-do-with-the-activity-log-and-event-hubs"></a>Co můžete dělat s protokolu aktivit a Event Hubs
+Tady jsou dva způsoby, jak můžete použít funkci streamování pro protokol aktivit:
 
-* **Datový proud na protokolování a telemetrie systémů jiných výrobců**: V čase, streamování Azure Event Hubs se stane mechanismus kanálem protokolu aktivit do jiných systémů Siem a řešení pro analýzu protokolu.
-* **Vytvoření vlastní telemetrii a protokolování platformy**: Pokud už máte uživatelské telemetrie platformy nebo jsou přemýšlení o vytváření jeden, vysoce škálovatelné publikování a odběru povaha Event Hubs umožňuje flexibilně ingestování protokolu aktivit. Další informace najdete v tématu [Dana Rosanova video o používání služby Event Hubs v globálním měřítku telemetrie platformy](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
+* **Stream protokolování a telemetrie systémům třetích stran**: v průběhu času streamování služby Azure Event Hubs se stanou mechanismus kanálem váš protokol aktivit do sady Siem třetích stran a protokolu analytická řešení.
+* **Vytvořit vlastní telemetrii a protokolování platformy**: Pokud už máte platformu vlastními silami sestavených telemetrická data nebo přemýšlí o vytvoříte, vysoce škálovatelné publikování a odběru povaha služby Event Hubs umožňuje flexibilně ingestování protokolu aktivit. Další informace najdete v tématu [Dan Rosanova video o používání služby Event Hubs v globálním měřítku telemetrie platformě](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/).
 
-## <a name="enable-streaming-of-the-activity-log"></a>Povolit vysílání datového proudu protokolu aktivit
-Můžete povolit vysílání datového proudu protokolu aktivit buď programově, nebo prostřednictvím portálu. V obou případech vyberete na obor názvů služby Event Hubs a zásady sdíleného přístupu pro tento obor názvů. Centra událostí s název insights-logs-operationallogs se vytvoří v daném oboru názvů dojde k první nové aktivity protokolu události. 
+## <a name="enable-streaming-of-the-activity-log"></a>Povolení streamování protokolu aktivit
+Můžete povolit streamování protokolu aktivit programově nebo prostřednictvím portálu. V obou případech můžete vybrat obor názvů služby Event Hubs a zásadu sdíleného přístup pro tento obor názvů. Centrum událostí s názvem insights protokoly operationallogs se vytvoří v tomto oboru názvů při výskytu první nové události protokolu aktivit. 
 
-Pokud nemáte na obor názvů služby Event Hubs, musíte nejprve vytvořit. Pokud jste dříve streamování aktivity protokolu události na tento obor názvů služby Event Hubs, bude znovu použita centra událostí, která byla dříve vytvořena. 
+Pokud nemáte k dispozici obor názvů služby Event Hubs, musíte nejdřív vytvořit. Pokud jste předtím streamovali události protokolu aktivit do tohoto oboru názvů služby Event Hubs, bude znovu použita centra událostí, který byl dříve vytvořen. 
 
-Zásada sdíleného přístupu definuje oprávnění, která má streamování mechanismus. V současné době vyžadují streamování Event Hubs **spravovat**, **odeslat**, a **naslouchání** oprávnění. Můžete vytvářet nebo upravovat zásady sdíleného přístupu pro obor názvů služby Event Hubs na portálu Azure v části **konfigurace** kartě pro obor názvů služby Event Hubs. 
+Zásady sdíleného přístupu definuje oprávnění, která má mechanismu datových proudů. Streamování do Event Hubs v současné době vyžaduje **spravovat**, **odeslat**, a **naslouchání** oprávnění. Můžete vytvářet nebo upravovat zásady sdíleného přístupu pro službu Event Hubs oboru názvů na webu Azure Portal v části **konfigurovat** kartu pro váš obor názvů služby Event Hubs. 
 
-Aktualizovat profil protokolu protokol aktivit zahrnout streamování, uživatele, který je provedení změny, musí mít oprávnění ListKey na tuto službu Event Hubs autorizační pravidlo. Obor názvů služby Event Hubs nemusí být ve stejném předplatném jako odběr, který je generování protokoly, tak dlouho, dokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC do oba odběry.
+K aktualizaci profilu protokolu aktivit protokolu zahrnout streamování, musí mít uživatel, který je provádění změny ListKey oprávnění na tento autorizační pravidlo Event Hubs. Obor názvů Event Hubs, nemusí být ve stejném předplatném jako předplatné, které je vysílá protokoly, za předpokladu, že uživatel, který konfiguruje nastavení má odpovídající přístup RBAC k oběma předplatným.
 
-### <a name="via-the-azure-portal"></a>Prostřednictvím portálu Azure
-1. Přejděte do **protokol aktivit** části pomocí **všechny služby** vyhledávání na levé straně na portálu.
+### <a name="via-the-azure-portal"></a>Prostřednictvím portálu Azure portal
+1. Přejděte **protokolu aktivit** části pomocí **všechny služby** hledání na levé straně na portálu.
    
-   ![Výběr protokol aktivit ze seznamu služeb na portálu](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
-2. Vyberte **exportovat** tlačítka v horní části protokolu.
+   ![Výběr protokolu aktivit ze seznamu služeb na portálu](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
+2. Vyberte **exportovat** tlačítko v horní části v protokolu.
    
-   ![Tlačítko Exportovat na portálu](./media/monitoring-stream-activity-logs-event-hubs/export.png)
+   ![Tlačítko pro export na portálu](./media/monitoring-stream-activity-logs-event-hubs/export.png)
 
-   Všimněte si, že nastavení filtru, který měl použité při zobrazování protokol aktivit v předchozí zobrazení nemají žádný vliv na nastavení exportu. Ty jsou pouze pro účely filtrování najdete při procházení prostřednictvím protokolu aktivit na portálu.
-3. V oddílu, který se zobrazí, vyberte **všech oblastech**. Nevybírejte konkrétní oblasti.
+   Všimněte si, že nastavení filtru, který jste použili při zobrazení protokolu aktivit do předchozího zobrazení mít vliv na Exportovat nastavení. Ty jsou určeny pouze pro filtrování, co se zobrazí při procházení váš protokol aktivit na portálu.
+3. V části, která se zobrazí, vyberte **všech oblastech**. Nesmí být zvolen konkrétní oblasti.
    
    ![Export části](./media/monitoring-stream-activity-logs-event-hubs/export-audit.png)
 
    > [!WARNING]  
-   > Pokud nic jiné než vyberete **všech oblastech**, budete neproběhly klíče události, které chcete dostávat. Protokol aktivit je globální protokolu (není místní), takže většina události nemají oblasti s nimi spojených. 
+   > Pokud něco jiného než vyberete **všech oblastech**, budete si ujít klíčových událostí, které očekáváte, že pro příjem. Protokol aktivit je globální protokolu (– neregionální), tak nejvíce událostem nemají k nim má přiřazené oblasti. 
    >
 
-4. Vyberte **Uložit** uložit tato nastavení. Nastavení se použije okamžitě do vašeho předplatného.
-5. Pokud máte několik předplatných, opakujte tuto akci a odeslat veškerá data do stejné centra událostí.
+4. Vyberte **Uložit** nastavení uložte. Nastavení se okamžitě použijí k vašemu předplatnému.
+5. Pokud máte několik předplatných, opakujte tuto akci a odeslat veškerá data do centra událostí, stejné.
 
 ### <a name="via-powershell-cmdlets"></a>Pomocí rutin prostředí PowerShell
-Pokud profil protokolu již existuje, musíte nejprve odebrat existující profil protokolu a pak vytvořit nový profil protokolu.
+Pokud profil protokolu již existuje, musíte nejprve odstranit stávající profilu protokolu a potom vytvořit nový profil protokolu.
 
-1. Použití `Get-AzureRmLogProfile` a zjistit, zda existuje profil protokolu.  Pokud profil protokolu neexistuje, vyhledejte *název* vlastnost.
-2. Použití `Remove-AzureRmLogProfile` pro odebrání profilu protokolu z hodnoty *název* vlastnost.
+1. Použití `Get-AzureRmLogProfile` a zjistěte, jestli existuje profil protokolu.  Pokud profil protokolu neexistuje, vyhledejte *název* vlastnost.
+2. Použití `Remove-AzureRmLogProfile` odebrání profilu protokolu z hodnoty *název* vlastnost.
 
     ```powershell
     # For example, if the log profile name is 'default'
@@ -78,27 +78,27 @@ Pokud profil protokolu již existuje, musíte nejprve odebrat existující profi
    $eventHubNamespace = "<event hub namespace>"
 
    # Build the service bus rule Id from the settings above
-   $serviceBusRuleId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventHubNamespaceName/authorizationrules/RootManageSharedAccessKey"
+   $serviceBusRuleId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventHubNamespace/authorizationrules/RootManageSharedAccessKey"
 
    Add-AzureRmLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
    ```
 
 ### <a name="via-azure-cli"></a>Prostřednictvím rozhraní příkazového řádku Azure
-Pokud profil protokolu již existuje, musíte nejprve odebrat existující profil protokolu a pak vytvořit nový profil protokolu.
+Pokud profil protokolu již existuje, musíte nejprve odstranit stávající profilu protokolu a potom vytvořit nový profil protokolu.
 
-1. Použití `az monitor log-profiles list` a zjistit, zda existuje profil protokolu.
-2. Použití `az monitor log-profiles delete --name "<log profile name>` pro odebrání profilu protokolu z hodnoty *název* vlastnost.
+1. Použití `az monitor log-profiles list` a zjistěte, jestli existuje profil protokolu.
+2. Použití `az monitor log-profiles delete --name "<log profile name>` odebrání profilu protokolu z hodnoty *název* vlastnost.
 3. Použití `az monitor log-profiles create` k vytvoření nového profilu protokolu:
 
    ```azurecli-interactive
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --service-bus-rule-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.EventHub/namespaces/<EVENT HUB NAME SPACE>/authorizationrules/RootManageSharedAccessKey"
    ```
 
-## <a name="consume-the-log-data-from-event-hubs"></a>Tato data protokolu ze služby Event Hubs
-Schéma pro protokol aktivit je k dispozici v [sledovat činnost předplatné s protokol činnosti Azure](monitoring-overview-activity-logs.md). Každá událost je v pole objektů JSON BLOB názvem *záznamy*.
+## <a name="consume-the-log-data-from-event-hubs"></a>Zpracovat data protokolů ze služby Event Hubs
+Schéma pro protokol aktivit je k dispozici v [monitorovat aktivitu předplatného se protokol aktivit Azure](monitoring-overview-activity-logs.md). Každá událost je v poli objektů BLOB JSON s názvem *záznamy*.
 
 ## <a name="next-steps"></a>Další postup
-* [Archiv protokol aktivit na účet úložiště](monitoring-archive-activity-log.md)
-* [Přečtěte si přehled protokol činnosti Azure](monitoring-overview-activity-logs.md)
-* [Nastavit výstrahy na základě aktivity protokolu události](insights-auditlog-to-webhook-email.md)
+* [Archivace protokolu aktivit do účtu úložiště](monitoring-archive-activity-log.md)
+* [Přečtěte si přehled protokolu aktivit Azure](monitoring-overview-activity-logs.md)
+* [Nastavte si výstrahy na základě události protokolu aktivit](insights-auditlog-to-webhook-email.md)
 

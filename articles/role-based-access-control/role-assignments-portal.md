@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 8078f366-a2c4-4fbb-a44b-fc39fd89df81
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/13/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0aec1f50225bea25d5f68289c22ccc7b69703f7a
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
-ms.translationtype: HT
+ms.openlocfilehash: 6544503353f085a9dd9b0fe7207bbf8d4e0bc9d0
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36317942"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435613"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Správa přístupu pomocí RBAC a webu Azure Portal
 
@@ -170,7 +170,7 @@ Přiřazování rolí a správu přístupu pomocí řízení přístupu na zákl
 * [Azure CLI](role-assignments-cli.md)
 * [REST API](role-assignments-rest.md)
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 * [Rychlý start: Udělení přístupu pro uživatele pomocí RBAC a webu Azure Portal](quickstart-assign-role-user-portal.md)
 * [Kurz: Udělení přístupu pro uživatele pomocí RBAC a Azure PowerShellu](tutorial-role-assignments-user-powershell.md)

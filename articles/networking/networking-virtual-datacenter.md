@@ -1,6 +1,6 @@
 ---
-title: 'Microsoft Azure virtuální Datacenter: Sítě perspektivy | Microsoft Docs'
-description: Naučte se vytvářet virtuální datové centrum v Azure
+title: Virtuální datové centrum Azure – Z hlediska sítě
+description: Další informace o vytváření vašeho virtuálního datového centra v Azure
 services: networking
 author: tracsman
 manager: rossort
@@ -11,356 +11,356 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/3/2018
 ms.author: jonor
-ms.openlocfilehash: a62d52e30b04b525dc8ff685ed6c3033d6029542
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 2c8ca8bcce43596d521fa9c81438ac6a16f6dcdf
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942441"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445377"
 ---
-# <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure virtuální Datacenter: Hlediska sítě
-**Microsoft Azure**: rychlejší, šetřit peníze, integraci místní aplikace a data
+# <a name="azure-virtual-datacenter-a-network-perspective"></a>Virtuální datové centrum Azure: Z hlediska sítě
+**Microsoft Azure**: jděte rychleji dopředu, ušetřit peníze, integrace místních aplikací a dat
 
 ## <a name="overview"></a>Přehled
-Migrace místní aplikace do Azure, i bez žádné významné změny (přístup označuje jako "navýšení a posunutí"), poskytuje organizacím výhody zabezpečené a nákladově efektivní infrastruktury. Chcete-li možné většinu flexibility s cloud computing, ale podniky by se měl vyvíjet jejich architektury využívat možnosti Azure. Microsoft Azure poskytuje flexibilně škálovatelné služby a infrastruktury, možnosti podnikové úrovni a spolehlivost a mnoho možností pro hybridní připojení. Tato volba se přístup k těmto službám cloudu přes Internet nebo s Azure ExpressRoute, které poskytuje připojení k privátní síti. Platforma Microsoft Azure umožňuje zákazníkům bezproblémově rozšířit jejich infrastrukturu do cloudu a vytvářet vícevrstvé architektury. Kromě toho partnery společnosti Microsoft nabízí rozšířené možnosti prostřednictvím nabídky zabezpečení služeb a virtuálních zařízení, které jsou optimalizovány pro spuštění v Azure.
+Migrace místních aplikací do Azure, i bez žádné významné změny (přístup známý jako "lift and shift"), poskytuje organizacím výhody zabezpečeného a cenově efektivní infrastruktury. Chcete-li maximálně využít flexibilitu možné díky cloud computingu, ale by se měl podniky vyvíjet jejich architektury, abyste mohli využívat možnosti Azure. Microsoft Azure poskytuje vysoce škálovatelné služby a infrastruktury, možnosti na podnikové úrovni a spolehlivost a spoustu možností pro hybridní připojení. Zákazníci můžou zvolit přístup k těmto cloudovým službám prostřednictvím Internetu nebo s využitím Azure ExpressRoute, které poskytuje připojení privátní sítě. Platforma Microsoft Azure umožňuje zákazníkům bezproblémově rozšířit svoji infrastrukturu do cloudu a vytvářet vícevrstvé architektury. Kromě toho partneři Microsoftu poskytují vylepšené funkce tím, že nabízí zabezpečení služeb a virtuálních zařízení, které jsou optimalizované pro spouštění v Azure.
 
-Tento článek obsahuje přehled vzory a návrhy, které lze použít k řešení architektury obavy škálování, výkonu a zabezpečení mnoho se zákazníci setkávají u o en masse přechodu do cloudu. Přehled o tom, jak začlenit jiné organizační rolemi v oddělení IT do správy a zásad správného řízení systému je také popsané, s důrazem na požadavky na zabezpečení a nákladů optimalizace.
+Tento článek obsahuje přehled modelů a návrhů, které lze použít k řešení architektury škálování, výkon a zabezpečení nemuseli dělat starosti o mnoho se zákazníci setkávají při úvahách o kompletním do cloudu. Přehled o tom, jak začlenit různé role v IT organizaci do rozhraní pro správu a zásady správného řízení v systému je také popsáno, s důrazem na požadavky na zabezpečení a optimalizaci nákladů.
 
 ## <a name="what-is-a-virtual-data-center"></a>Co je virtuální datové centrum?
-V současné době byly navrženy cloudové řešení pro hostitele jeden, relativně izolované aplikace v veřejné spektra. Tento přístup fungovala správně pro několik let. Však jako výhody technologie cloud se objevily řešení a více rozsáhlé úlohy byly hostované v cloudu, adresování zabezpečení, spolehlivost, výkon a náklady riziko z hlediska nasazení v jedné nebo více oblastí se aktivovala důležitých v průběhu životního cyklu cloudové služby.
+V těchto raných dobách Cloudová řešení byly navrženy k hostování jeden, relativně izolované aplikací v veřejné spektra. Tento přístup pracoval pro několik let. Však jako výhody cloudu se objevily řešení a více rozsáhlé úlohy byly hostované v cloudu, adresování zabezpečení, spolehlivost, výkon a náklady obavy z nasazení v jedné nebo více oblastí začal být důležité v celém životním cyklu cloudové služby.
 
-Následující diagram nasazení cloudu znázorňuje některé příklady zabezpečení mezer (červeným rámečkem) a místo pro optimalizace sítě virtuálního zařízení napříč úlohy (žlutý pole).
+Následující diagram nasazení cloudu dokládá několik příkladů mezery v zabezpečení (červeným rámečkem) a místa pro optimalizaci síťových virtuálních zařízení napříč úlohami (žlutým rámečkem).
 
 [![0]][0]
 
-Z této nezbytné pro škálování k podpoře podnikové úlohy a není nutné se k řešení problémů zavedená při podpoře aplikace ve velkém měřítku ve veřejném cloudu se narodil virtuální datového centra (vDC).
+Virtuální datové centrum (vDC) se zrodil z této nezbytná pro škálování pro podporu firemních procesů a není nutné řešit problémy při podpoře rozsáhlé aplikace ve veřejném cloudu.
 
-VDC není právě úlohy aplikací v cloudu, ale také sítě, zabezpečení, správy a infrastruktury (třeba DNS a Directory Services). Obvykle poskytuje také privátní připojení zpět do místní sítě nebo datového centra. Jako další a další úlohy přesunout do Azure, je důležité zvážit podpůrnou infrastrukturu a objekty, které tyto úlohy jsou umístěny v. Přemýšlení pečlivě o tom, jak jsou strukturovaná prostředky se můžete vyhnout tím, jak narůstá stovek "zatížení ostrovy", které se musí spravovat samostatně nezávislé datový tok, modely zabezpečení a problémy dodržování předpisů.
+VDC není právě úloh aplikací v cloudu, ale také sítě, zabezpečení, správy a infrastruktury (třeba DNS a Directory Services). Obvykle obsahuje také soukromého připojení zpět k místní síti nebo datového centra. Jako další a další úlohy přesunout do Azure, je důležité zvážit podpůrnou infrastrukturu a objekty, které tyto úlohy jsou umístěny v. Přemýšlet pečlivě o tom, jak jsou strukturované zdroje se můžete vyhnout tím, jak narůstá stovky ostrovů"úloh", které se musí spravovat odděleně nezávislý datový tok, modely zabezpečení a dodržování předpisů problémy.
 
-Virtuální datového centra je v podstatě kolekcí entity, ale běžné podpůrné funkce, funkce a infrastruktury. Zobrazením vašich úloh jako integrované vDC můžou realizovat snížené náklady z důvodu velkých úspor optimalizované zabezpečení prostřednictvím součásti a data toku centralizace, společně s jednodušší operace, správu a audity dodržování předpisů.
+Virtuální datové centrum je v podstatě kolekce samostatných, ale související entity, které běžné podpůrné funkce, funkce a infrastruktury. Zobrazením vašich úloh jako integrované vDC můžete zaznamenat snížení nákladů z důvodu cenové výhody optimalizované zabezpečení prostřednictvím centralizace komponent a datové tok společně s jednodušší operací, řízení a audity dodržování předpisů.
 
 > [!NOTE]
-> Je důležité si uvědomit, že je virtuálního **není** diskrétní Azure produktu, ale kombinaci různých funkcí a možností pro splnění požadavků na přesný. vDC představuje způsob přemýšlení o Azure využití a úloh maximalizovat schopnostmi v cloudu a zdroje. Virtuální řadiče domény je proto modulární přístup, o tom, jak vytvořit IT služeb ve službě Azure, bere ohledy organizační role a zodpovědnosti.
+> Je důležité informace o tom, že se virtuálního **není** samostatný produkt Azure, ale kombinace různých funkcí a možností pro splnění požadavků na přesný. vDC se způsobem přemýšlení o své pracovní postupy a využití Azure pro maximalizaci prostředků a možnosti v cloudu. Virtuální řadiče domény je proto modulární přístup o tom, jak sestavuješ IT služeb v Azure, ale současně zachovává organizační role a zodpovědnosti.
 
-Virtuálního může pomoci podnikům získat úlohy a aplikace do Azure pro následující scénáře:
+Virtuálního pomáhá podnikům získat úlohy a aplikace do Azure v následujících scénářích:
 
 -   Hostování více souvisejících úloh
 -   Migrace úloh z místního prostředí do Azure
--   Implementaci sdílených nebo centralizované zabezpečení a požadavky na přístup v rámci úlohy
--   Kombinování DevOps a centralizované IT správně pro velký podnik
+-   Implementace sdílené nebo centralizované zabezpečení a požadavky na přístup napříč úlohami
+-   Smíšené používání DevOps a centralizované IT odpovídajícím způsobem pro velké podniky
 
-Klíč k odemknutí výhody virtuálních řadičů domény, je centralizované topologie (rozbočovače a koncových) se smíšenými funkce Azure: [virtuální síť Azure][VNet], [skupiny Nsg][NSG], [VNet Peering][VNetPeering], [trasy definované uživatelem (UDR)][UDR]a Azure Identity s [řízení přístupu základní Role (RBAC)][RBAC].
+Klíč k odemknutí výhody vDC, je centralizované topologie (hvězdicové) s využitím kombinace funkce Azure: [virtuální sítě Azure][VNet], [skupin zabezpečení sítě] [ NSG], [VNet Peering][VNetPeering], [trasy definované uživatelem (UDR)][UDR]a Azure Identity s [základ rolí Přístup k řízení][RBAC].
 
 ## <a name="who-needs-a-virtual-data-center"></a>Kdo potřebuje virtuální datové centrum?
-Všechny Azure zákazníkovi, který musí přesunout více než několik úloh do Azure můžete využívat výhod přemýšlení o pomocí společných prostředků. V závislosti na velikosti se i jedné aplikace můžete využít pomocí vzorce a součásti sloužící k vytvoření virtuálních řadičů domény.
+Kterou je potřeba přesunout více než několik úloh do Azure využívat přemýšlení o používání společných prostředků Azure zákazníka. V závislosti na velikosti se může přinést i jednotlivých aplikací pomocí vzorů a komponenty sloužící k sestavení vDC.
 
-Pokud má vaše organizace centralizované IT, sítě, zabezpečení, nebo tým nebo oddělení pro dodržování předpisů, virtuálních řadičů domény může pomoct vynutit zásady body, oddělení cla a zajistit jednotnost součástí základní běžné při poskytnutí aplikace týmy tolik volnost a řízení, jako je vhodné pro vaše požadavky.
+Pokud má vaše organizace centralizované zabezpečení IT, sítě, nebo tým nebo oddělení pro dodržování předpisů, vDC může pomoct vynutit zásady body, oddělení provozu a zajistit jednotnost základní běžné součásti přitom aplikační týmy co nejvíce volného a řídit, jak je vhodné pro vaše požadavky.
 
-Organizace, které se zaměřujete na DevOps můžete využít vDC koncepty poskytuje oprávnění kapsami prostředků Azure a zajišťuje mají úplnou kontrolu v rámci dané skupiny (skupina předplatné nebo prostředek v rámci běžných předplatného), ale zůstávají kompatibilní podle definice centralizovaných zásad v rozbočovači virtuální sítě a skupině prostředků hranicích sítě a zabezpečení.
+Organizace, které chcete DevOps se můžou využívat koncepty vDC poskytovat autorizovaným po kapsách prostředků Azure a zajistit, aby měly úplnou kontrolu v rámci této skupiny (buď předplatné nebo skupinu prostředků v předplatném běžné), ale v síti a hranice zabezpečení zajistěte dodržování předpisů v souladu s definicemi centralizovaných zásad ve virtuální síti centra a skupině prostředků.
 
-## <a name="considerations-on-implementing-a-virtual-data-center"></a>Požadavky na implementaci virtuální datového centra
-Při navrhování vDC, existuje několik hrají problémy, které je třeba zvážit:
+## <a name="considerations-on-implementing-a-virtual-data-center"></a>Důležité informace o implementaci virtuální datové centrum
+Při navrhování vDC, existují nejrůznější pivotal problémy, které byste měli zvážit:
 
 -   Identitu a adresářové služby
--   Infrastruktura zabezpečení
+-   Zabezpečení infrastruktury
 -   Připojení ke cloudu
 -   Připojení v rámci cloudu
 
 ##### <a name="identity-and-directory-service"></a>*Identitu a adresářové služby*
-Identitu a adresářové služby jsou klíčovým prvkem všechna data centra, jak místně a v cloudu. Identity se týká všech aspektů přístupu a autorizaci ke službám v rámci virtuálního. Abyste zajistili, že pouze autorizovaným uživatelům a procesů přístup k účtu Azure a prostředků, Azure používá několik typů přihlašovacích údajů pro ověřování. Mezi ně patří hesel (a přístup k účtu Azure), kryptografické klíče, digitální podpisy a certifikáty. [*Azure Multi-Factor Authentication* (MFA)] [ MFA] představuje další vrstvu zabezpečení pro přístup ke službám Azure. Azure MFA poskytuje silné ověřování s celou řadu možností snadno ověření – telefonní hovor, textová zpráva nebo oznámení mobilní aplikace, a povolit zákazníci zvolit metodu dávají přednost.
+Klíčový aspekt všechna data jsou identitu a adresářové služby centra, v místním prostředí i v cloudu. Identity se vztahuje na všechny aspekty přístupu a autorizace pro služby v rámci virtuálního. K zajištění, že jenom Autorizovaní uživatelé a procesy přístup k účtu Azure a prostředků, Azure využívá několik typů přihlašovacích údajů pro ověřování. Patří mezi ně hesel (pro přístup k účtu Azure), šifrovací klíče, digitální podpisy a certifikáty. [*Azure Multi-Factor Authentication* (MFA)] [ MFA] představuje další vrstvu zabezpečení pro přístup ke službám Azure. Azure MFA poskytuje silné ověřování s řadou jednoduchých možností – telefonní hovor, textová zpráva nebo oznámení přes mobilní aplikaci – a umožňuje zákazníkům zvolit metodu, co jim vyhovuje.
 
-Všechny velký podnik musí definovat proces správy identit, které popisuje správu jednotlivých identit, jejich ověřování, autorizace, rolí a oprávnění v rámci nebo virtuálního. Pokud chcete zvýšit zabezpečení a produktivitu při snížení nákladů, výpadku a opakující se ruční úlohy by měl být cílů tohoto procesu.
+Jakékoli velké organizace je potřeba definovat proces správy identit, které popisuje správu jednotlivých identit, jejich ověřování, autorizace, rolí a oprávnění v rámci nebo virtuálního. Cíle tohoto procesu musí být pro zvýšení zabezpečení a produktivitu při snížení nákladů, výpadky a opakující se ruční úlohy.
 
-Enterprise nebo organizace můžou vyžadovat náročné směs služby pro různé řádku z – firmy pole (LOB) a zaměstnanci často mají různé role při zapojená do různých projektů. Virtuálních řadičů domény vyžaduje funkční spolupráce mezi různými týmy, každý s definicemi konkrétní roli, chcete-li získat systémy s operačním systémem s funkčním zásad správného řízení. Matice odpovědnosti, přístupu a oprávnění může být velmi složité. Správa identit v vDC se implementuje pomocí [ *Azure Active Directory* (AAD)] [ AAD] a řízení přístupu na základě Role (RBAC).
+Organizace a může vyžadovat náročné kombinaci služeb pro různé řádku sady firmy (objekty LOBs) a zaměstnanci často mají rozdílné role, když péči o různých projektech. VDC vyžaduje funkční spolupráce mezi různými týmy, každý s definicemi konkrétní roli, chcete-li získat systémy s operačním systémem s dobré zásady správného řízení. V matici zodpovědnosti, přístupu a oprávnění, mohou být extrémně složitá. Správa identit v vDC se implementuje pomocí [ *Azure Active Directory* (AAD)] [ AAD] a řízení přístupu na základě Role (RBAC).
 
-Adresářová služba je infrastruktura sdílené informace pro hledání, správa, správě a uspořádání položek každý den a síťovým prostředkům. Tyto prostředky mohou zahrnovat svazky, složky, soubory, tiskárny, uživatelé, skupiny, zařízení a jiné objekty. Všechny prostředky v síti se považuje za objekt adresářovým serverem. Informace o zdroji, jsou uloženy jako kolekce atributů přiřazených k této prostředků nebo objekt.
+Adresářová služba je do sdílené informace infrastruktury pro hledání, správa, Správa a uspořádání položek každý den a síťové prostředky. Tyto prostředky mohou zahrnovat svazky, složky, soubory, tiskárny, uživatelé, skupiny, zařízení a dalších objektů. Každý prostředek v síti se považuje za objekt adresářovým serverem. Informace o prostředku se ukládá jako kolekce atributů přiřazených k prostředek nebo objekt.
 
-Všechny služby Microsoft online obchodní spoléhají na Azure Active Directory (AAD) pro přihlášení a je třeba další identity. Azure Active Directory je komplexní, vysoce dostupné cloudové řešení pro správu identit a přístupu, které představuje kombinaci základních adresářových služeb, rozšířené správy identit a správy přístupu k aplikacím. AAD se dá integrovat s místní služby Active Directory umožňující jednotné přihlašování pro všechny cloudové a místní hostované (místní) aplikace. Atributy uživatele místní služby Active Directory lze automaticky synchronizovat aad.
+Všechny Microsoft online firemní služby závisí na Azure Active Directory (AAD) pro přihlášení a potřebuje jinou identitu. Azure Active Directory je komplexní, vysoce dostupné cloudové řešení pro správu identit a přístupu, které představuje kombinaci základních adresářových služeb, rozšířené správy identit a správy přístupu k aplikacím. AAD je možné integrovat s místní Active Directory k povolení jednotného přihlašování pro všechny cloudové a místní prostředí (místní) aplikace. Atributy uživatele z místní služby Active Directory můžete automaticky synchronizovat s AAD.
 
-Jeden globální správce není potřeba přiřadit všechna oprávnění v virtuálních řadičů domény. Místo toho každý určitého oddělení (nebo skupiny uživatelů nebo služeb v adresářové službě) může mít oprávnění potřebná ke správě svých vlastních prostředků v rámci virtuální kopie disků. Strukturování oprávnění vyžaduje vyrovnávání. Příliš mnoho oprávnění může mít dopad na výkon efektivitu a příliš málo nebo přijít oprávnění může zvýšit rizika zabezpečení. Chcete-li vyřešit tento problém, prostřednictvím nabídky vyladění správy přístupu pro prostředky vDC pomáhá Azure na základě rolí řízení přístupu (RBAC).
+Přiřadit všechna oprávnění v vDC není vyžadován jeden globální správce. Místo toho každý určitého oddělení (nebo skupiny uživatelů nebo služeb v adresářové službě) může mít oprávnění potřebná ke správě svoje vlastní prostředky v rámci vDC. Strukturování oprávnění vyžaduje vyrovnávání. Příliš mnoho oprávnění může bránit efektivity, výkonu a příliš málo nebo dojde ke ztrátě oprávnění mohou zvýšit rizika zabezpečení. Azure na základě rolí řízení přístupu (RBAC) pomáhá tento problém vyřešit tím, že nabízí propracovanou správu přístupu pro prostředky vDC.
 
-##### <a name="security-infrastructure"></a>*Infrastruktura zabezpečení*
-Infrastruktura zabezpečení v souvislosti s vDC, souvisí především se oddělení přenosů dat v segmentu vDC konkrétní virtuální sítě a tom, jak řídit příchozí a odchozí toky v rámci virtuálního. Azure je založen na víceklientské architektuře, která brání neoprávněným i neúmyslně se překrývající provoz mezi nasazení, pomocí izolace virtuální síť (VNet), seznamy řízení přístupu (ACL), zatížení nástroje pro vyrovnávání a filtry IP, společně s zásady tok provozu. Překlad síťových adres (NAT) odděluje interní síťové přenosy od externích přenosů.
+##### <a name="security-infrastructure"></a>*Zabezpečení infrastruktury*
+Infrastruktura zabezpečení v rámci vDC, hlavně má vztah k oddělení provozu vDC konkrétnímu virtuálnímu síťovému segmentu a tom, jak řídit příchozí a odchozí toky v rámci virtuálního. Azure je založen na víceklientské architektury, které brání neoprávněnému a nechtěnému přenosu mezi různými nasazeními, izolaci virtuálních sítí (VNet) používáte, seznamy řízení přístupu (ACL), zatížení nástroje pro vyrovnávání a filtrů IP adres spolu s zásady toku provozu. Překlad síťových adres (NAT) odděluje vnitřního síťového provozu z externích přenosů.
 
-Prostředky infrastruktury Azure přiděluje prostředky infrastruktury pro úlohy klientů a spravuje komunikace do a z virtuálních počítačů (VM). Azure hypervisor vynucuje paměti a proces oddělení mezi virtuálními počítači a bezpečně trasy síťový provoz klientům hostovaného operačního systému.
+Prostředky infrastruktury Azure přiděluje prostředků infrastruktury pro úlohy klientů a spravuje komunikace do a z virtuálních počítačů (VM). Azure hypervisor vynucuje oddělení paměti a zpracování mezi virtuálními počítači a zajišťuje zabezpečení směrování síťového provozu do hostovaného operačního systému klientů.
 
 ##### <a name="connectivity-to-the-cloud"></a>*Připojení ke cloudu*
-Virtuálního potřebuje připojení s externími sítěmi nabízet služby zákazníkům, partnerům a/nebo interní uživatele. To obvykle znamená připojení jenom k Internetu, ale taky do místní sítě a datacentry.
+Virtuálního potřebuje připojení s externími sítěmi k nabízení služeb zákazníkům, partnerům a/nebo interní uživatele. To obvykle znamená připojení nejen k Internetu, ale také do místní sítě a datových center.
 
-Zákazníci mohou vytvářet své zásady zabezpečení, které určují, co a jak konkrétní vDC hostované služby jsou přístupné z Internetu pomocí virtuálních síťových zařízení (s filtrování a provoz kontroly) a vlastní směrování zásady a sítě filtrování (směrování definované uživatele a skupiny zabezpečení sítě).
+Zákazníci mohou vytvářet jejich zásady zabezpečení, které určují, co a jak konkrétní vDC hostované služby jsou přístupné z Internetu pomocí síťových virtuálních zařízení (pomocí filtrování a provoz kontroly) a vlastní směrování zásady a síť filtrování) Směrování definované uživatelem a skupin zabezpečení sítě).
 
-Podniky často potřebují pro připojení virtuálních místní datových centrech nebo jiným prostředkům. Připojení mezi Azure a místními sítěmi je proto velmi důležitý aspekt při navrhování efektivní architektura. Podniků má dva různé způsoby vytvoření propojení mezi vDC a místně v Azure: přenosu přes Internet nebo privátní přímé připojení.
+Podniky se často potřebují k připojení virtuálních místních datových center nebo jiným prostředkům. Připojení mezi Azure a místní sítě je proto zásadní aspekt při navrhování efektivní architektura. Podniky mají dva různé způsoby vytváření propojení mezi vDC i v místním prostředí v Azure: přenosu přes Internet nebo privátní připojení s přímým přístupem.
 
-[ **Azure VPN Site-to-Site** ] [ VPN] je služba propojení prostřednictvím Internetu mezi místními sítěmi a vDC, navázat prostřednictvím zabezpečeného šifrované připojení (tunelových propojení protokolu IPsec/IKE). Azure připojení Site-to-Site je flexibilní, rychle vytvořit a nevyžaduje žádné další nákup, protože všechna připojení připojit přes internet.
+[ **Azure VPN typu Site-to-Site** ] [ VPN] je propojení služby prostřednictvím Internetu mezi místními sítěmi a zašifrovaný vDC, navázané prostřednictvím zabezpečené připojení (tunelových propojení IPsec/IKE). Připojení Site-to-Site Azure je flexibilní, pokud chcete vytvořit, rychlý a nevyžaduje žádné další zakázek, všechna připojení připojit přes internet.
 
-[**ExpressRoute** ] [ ExR] je služba Azure připojení, která umožňuje vytvářet privátní připojení mezi vDC a místní sítě. Připojení ExpressRoute nezadávejte přejděte prostřednictvím veřejného Internetu a nabízí vyšší zabezpečení, spolehlivost a vyšší rychlosti (až 10 GB/s) společně s konzistentní latence. ExpressRoute je velmi užitečná pro virtuálních, jako zákazníci můžete získat výhody pravidla dodržování předpisů, které jsou přidružené k privátní připojení ExpressRoute.
+[**ExpressRoute** ] [ ExR] je služba Azure připojení, která umožňuje vytvářet privátní připojení mezi vDC a místními sítěmi. Připojení ExpressRoute nemáte se přenášejí prostřednictvím veřejného Internetu a nabízí vyšší zabezpečení, spolehlivost a vyšších rychlostí (až 10 GB/s) společně s konzistentní latence. ExpressRoute je velmi užitečné pro virtuálních, jako zákazníci mohou získat výhody pravidla dodržování předpisů, které jsou přidružené k privátní připojení ExpressRoute.
 
-Nasazení připojení ExpressRoute zahrnuje zapojení u poskytovatele služeb ExpressRoute. Pro zákazníky, které je potřeba rychle začít je běžné původně používat Site-to-Site VPN k navázání připojení mezi virtuálního a místních prostředků a potom migrovat do připojení ExpressRoute.
+Nasazení připojení ExpressRoute vyžaduje zapojení poskytovatele služeb ExpressRoute. Pro zákazníky, které je potřeba rychle začít je běžné zpočátku použití sítě Site-to-Site VPN k navázání připojení mezi virtuálního a místním prostředkům a potom migrovat do připojení ExpressRoute.
 
 ##### <a name="connectivity-within-the-cloud"></a>*Připojení v rámci cloudu*
-[Virtuální sítě] [ VNet] a [VNet Peering] [ VNetPeering] jsou základní síťové služby připojení uvnitř virtuální kopie disků. Virtuální síť, která zaručí přirozené hranice izolace pro prostředky v DC a partnerský vztah virtuální sítě umožňuje spojovacího mezi různých virtuálních sítí v rámci stejné oblasti Azure nebo dokonce i v jiných oblastech. Řízení přenosů dat uvnitř virtuální sítě a mezi virtuálními sítěmi musí odpovídat sada pravidel zabezpečení zadaná pomocí seznamů řízení přístupu ([skupinu zabezpečení sítě][NSG]), [síťových virtuálních zařízení][NVA]a vlastní směrovacích tabulek ([UDR][UDR]).
+[Virtuální sítě] [ VNet] a [VNet Peering] [ VNetPeering] jsou základní síťové služby připojení uvnitř vDC. Přirozené hranice izolace vDC prostředků zaručuje virtuální sítě a partnerský vztah virtuální sítě umožňuje spojovacího mezi různých virtuálních sítích ve stejné oblasti Azure nebo dokonce napříč oblastmi. Řízení přenosů dat v síti VNet a mezi virtuálními sítěmi se musí shodovat sadu pravidel zabezpečení zadaná pomocí seznamů řízení přístupu ([skupinu zabezpečení sítě][NSG]), [síťových virtuálních zařízení ] [ NVA]a vlastní směrovací tabulky ([uživatelem definovaná TRASA][UDR]).
 
-## <a name="virtual-data-center-overview"></a>Přehled virtuální datového centra
+## <a name="virtual-data-center-overview"></a>Přehled virtuálního datového centra
 
 ### <a name="topology"></a>Topologie
-Model rozbočovače a koncových rozšířené virtuální datového centra v rámci jedné oblasti Azure
+Rozšířené hvězdicové model virtuálního datového centra v rámci jedné oblasti Azure
 
 [![1]][1]
 
-Rozbočovače je centrální zóny, která řídí a kontroluje příchozí a odchozí provoz mezi různým zónám: Internet, místní a větve. Hvězdicová topologie dává oddělení IT efektivní způsob, jak vynutit zásady zabezpečení v centrálním umístění, a současně potenciální chybné konfigurace a ohrožení.
+Centrum je ústřední zóny, která řídí a kontroluje příchozí nebo odchozí provoz mezi různými zónami: Internet, místní a aby se paprsky mezi. Hvězdicová topologie dává oddělení IT účinný způsob, jak vynutit zásady zabezpečení v centrálním umístění, a snižuje riziko chybné konfigurace a ohrožení.
 
-Rozbočovač obsahuje společné součásti služby spotřebovávají větve. Tady je několik příkladů typické běžné centrální služby:
+Centrum obsahuje společné součásti služby používané paprsky. Tady je pár příkladů typické společných služeb, ústřední:
 
--   Infrastrukturu služby Active Directory systému Windows (s související služby AD FS), požadované pro ověřování uživatelů třetích stran, přístup k z nedůvěryhodné sítě před získáním přístupu k úlohy v ramenem
--   Služba DNS přeložit názvy pro zatížení v koncových, přístup k prostředkům na pracovišti a na Internetu
--   Infrastrukturu veřejných KLÍČŮ, k implementaci jednotného přihlašování na úlohy
--   Řízení toku (TCP/UDP) mezi koncových a Internet
--   Řízení toku mezi místními a ramenem
--   V případě potřeby toku řízení mezi jeden ramenem a další
+-   Infrastruktura Windows Active Directory (s související služby AD FS) požadované pro ověřování uživatelů přístup k z nedůvěryhodné sítě před získáním přístupu k úlohy v paprsku třetích stran
+-   Služba DNS přeložit názvy pro zatížení v paprsky, pro přístup k prostředkům na pracovišti a na Internetu
+-   Infrastrukturu veřejných KLÍČŮ, k implementaci jednotného přihlašování u úloh
+-   Řízení toku (TCP/UDP) mezi paprsky a Internet
+-   Tok řízení mezi paprsky i v místním
+-   V případě potřeby tok řízení mezi jednoho paprsku a další
 
-Virtuálního snižuje celkové náklady na pomocí infrastruktury sdílené rozbočovače mezi více servery.
+Virtuálního snižuje celkové náklady s využitím infrastruktury centra sdílené mezi více paprsků.
 
-Role každý paprsek může být na hostiteli různé typy úloh. Větve můžete také zadat modulární přístup pro opakovatelná nasazení (například vývoje a testování, testování přijetí uživateli předprodukční režim a produkci) stejné úlohy. Větve lze také oddělit a povolte různé skupiny v rámci vaší organizace (například skupiny DevOps). Uvnitř ramenem je možné nasadit základní zatížení nebo složité úlohy několika vrstvami s řízení přenosů dat mezi vrstvami.
+Tato role každého paprsku může být na hostiteli různé typy úloh. Paprsky může také poskytnout modulární přístup pro opakovatelná nasazení (například vývoj a testování, testování přijetí u zákazníků, předprodukčních a produkčních) ze stejné úlohy. Paprsky je také možné oddělit a povolení různých skupin v rámci vaší organizace (například DevOps skupiny). Uvnitř jednoho paprsku je možné nasadit základní úlohy nebo složitých několikaúrovňových úloh s řízení přenosů dat mezi vrstvami.
 
-##### <a name="subscription-limits-and-multiple-hubs"></a>Limity předplatného a více rozbočovače
-V Azure všechny komponenty jakéhokoli typu, nasadí předplatné Azure. Izolace součástí Azure v různých předplatných Azure můžete vyhovět jejich požadavkům různé objekty LOBs, jako je například nastavení různých úrovní přístupu a autorizaci.
+##### <a name="subscription-limits-and-multiple-hubs"></a>Limity předplatného a několika rozbočovače
+V Azure všechny komponenty, bez ohledu typ nasazení v rámci předplatného Azure. Izolace komponenty Azure v různých předplatných Azure můžete splňovat požadavky různé objekty LOBs, jako je třeba nastavení různých úrovní přístupu a autorizace.
 
-Jeden vDC můžete škálovat velký počet koncových, i když stejně jako u každé IT systému existují omezení platformy. Nasazení centra je vázána na konkrétní předplatné Azure, který má omezení a limity (například maximální počet partnerských vztahů VNet - najdete v části [předplatného Azure a omezení služby, kvóty a omezení] [ Limits] podrobnosti). V případech, kdy omezení může být problém, můžete škálovat architekturu až další rozšířením modelu z jednoho rozbočovače koncových do clusteru s podporou rozbočovače a koncových. Pomocí partnerský vztah virtuální síť, ExpressRoute nebo VPN typu site-to-site, může být připojen více centra v jedné nebo více oblastech Azure.
+Jeden vDC vertikálně navýšit kapacitu až větší počet paprsků, i když stejně jako všechny systémy IT existují omezení platformy. Nasazení centra je vázán na konkrétní předplatné Azure, který má omezení a omezení (například maximální počet partnerských vztahů virtuální sítě – viz [předplatného Azure a limity, kvóty a omezení] [ Limits] podrobnosti). V případech, kdy omezení může být problém, můžete architektury škálovat nahoru ještě rozšířením modelu z jednoho Centrum – paprsky do clusteru hvězdicové. Pomocí VNet Peering, ExpressRoute nebo VPN typu site-to-site, může být připojen více centra v jedné nebo několika oblastech Azure.
 
 [![2]][2]
 
-Zavedení více centra zvyšuje náklady a správa úsilí systému a by pouze oprávněné podle škálovatelnost (příklady: omezení systému nebo redundance) a místní replikace (příklady: výkonu nebo havárii obnovení koncového uživatele). Ve scénářích nutnosti více rozbočovače, všechny rozbočovače měli snažit nabízejí stejnou sadu služeb pro provozní snadné.
+Po zavedení služby více Center zvyšuje úsilí náklady a správa systému a by pouze zarovnané podle škálovatelnost (příklady: omezení systému nebo redundanci) a místní replikace (příklady: výkonu nebo havárii obnovení koncového uživatele). Ve scénářích, které vyžadují více rozbočovače, všechna centra přiklonit nabízí stejnou sadu služeb pro provozní snadné.
 
-##### <a name="interconnection-between-spokes"></a>Propojení mezi servery
-V jednom ramenem je možné implementovat složité úlohy několika vrstev. Vícevrstvé konfigurace se dá implementovat pomocí podsítě (jeden pro každou vrstvu) ve stejné virtuální síti a filtrování toky pomocí skupin Nsg.
+##### <a name="interconnection-between-spokes"></a>Propojení mezi paprsky
+Uvnitř jednoho paprsku je možné provádět složité úlohy několika vrstev. Konfigurace úrovně je možné implementovat pomocí podsítí (jeden pro každou vrstvu) ve stejné virtuální síti a filtrování toky pomocí skupin zabezpečení sítě.
 
-Na druhé straně na architekt chtít nasadit vícevrstvé zatížení mezi více virtuálních sítí. Pomocí virtuální sítě partnerský vztah, koncových můžete připojit k servery ve stejném centru nebo jiné rozbočovače. Typickým příkladem tohoto scénáře je případ, kde jsou servery aplikace zpracování v jedné ramenem (VNet), při nasazení databáze v různých ramenem (VNet). V takovém případě je snadné propojení koncových s partnerský vztah virtuální sítě a tím procházejících rozbočovače. Pečlivě zkontrolujte architektuře a zabezpečení je třeba provést k zajištění, že obcházení rozbočovače není vynechat důležité zabezpečení nebo auditování body, které může existovat pouze v rozbočovači.
+Na druhé straně architekta chtít nasadit vícevrstvé úlohy mezi několika virtuálními sítěmi. Pomocí partnerského vztahu virtuální sítě, můžete pro ostatní paprsky ve stejném centru nebo různými uzly připojení paprsků. Typickým příkladem tohoto scénáře je případ, ve kterém aplikace zpracování servery jsou v jednoho paprsku (VNet), při nasazení databáze v různých paprsku (VNet). V takovém případě je snadné propojení paprsky s využitím partnerského vztahu virtuální sítě a tím zabránit přechodem mezi protokoly prostřednictvím centra. Pečlivě zkontrolujte architektuře a zabezpečení je třeba provést k zajištění, že obcházení centra není obejít důležité zabezpečení nebo auditování body, které může existovat pouze v centru.
 
 [![3]][3]
 
-Koncových může být taky připojen do ramenem, který funguje jako centrum. Tento postup vytvoří dvě úrovně hierarchie: ramenem na vyšší úrovni (úroveň 0) se rozbočovače nižší koncových (úroveň 1) v hierarchii. Větve vDC potřebovat pro přenos dat do centrální rozbočovač k oslovení buď k místní síti nebo Internetu. Architekturu s dvě úrovně rozbočovače představuje komplexní směrování, která odebere výhod vztahu jednoduché hvězdicovou rozbočovače.
+Paprsky může být také připojen do paprsku, který funguje jako centrum. Tento postup vytvoří dvojúrovňové hierarchii: paprsku na vyšší úrovni (úroveň 0) se Centrum nižší paprsky (úroveň 1) v hierarchii. Paprsky vDC potřebovat přesměrování provozu do centrálního bodu oslovit buď do místní sítě nebo Internetu. Architektura se dvěma úrovněmi centra představuje komplexní směrování, která odebere výhod vztahu jednoduché centra s paprsky.
 
-Azure umožňuje komplexních topologiích, principů základní konceptu vDC sice opakovatelnost a jednoduchost. Minimalizovat úsilí vynaložené na správu, je jednoduchý rozbočovače ramenem doporučené vDC referenční architektura.
+I když vám Azure povolí složité topologie, je jedním z principů základní koncepce vDC opakovatelnost a jednoduchost. Chcete-li minimalizovat úsilí vynaložené na správu, je jednoduchý centra s paprsky doporučené vDC referenční architektura.
 
 ### <a name="components"></a>Komponenty
-Virtuální datového centra se skládá ze čtyř typů základní součásti: **infrastruktury**, **hraniční sítě**, **úlohy**, a **monitorování**.
+Virtuální datové centrum se skládá ze čtyř typů základní součást: **infrastruktury**, **hraniční sítě**, **úlohy**, a **monitorování**.
 
-Každý typ součásti se skládá z různých funkce Azure a prostředky. Vaše vDC se skládá z instance více typů součásti a více variace stejný typ součásti. Například můžete mít velký počet instancí jiné, logicky oddělených zatížení, které představují různé aplikace. Použijete k výsledku sestavení virtuálního tyto typy různé součásti a instance.
+Každý typ součásti se skládá z různých prostředků a funkcí Azure. Vaše vDC se skládá z instance různé typy komponent a několik variant stejný typ součásti. Například může mít mnoho instancí jiné logicky oddělené, úlohy, které představují různé aplikace. Nakonec vytvářet virtuálního použijete tyto různé typy komponent a instancí.
 
 [![4]][4]
 
-Předchozí Architektura vysoké úrovně vDC ukazuje různé součásti typy používané v jiných zónách topologie rozbočovače koncových. Diagram zobrazuje součásti infrastruktury v různých částí architektury.
+Předchozí Základní architektura vDC znázorňuje různé typy komponent použít v různých oblastech topologie Centrum – paprsky. Diagram znázorňuje komponenty infrastruktury v různých částech architektury.
 
-Pro přístup k osvědčených postupů (pro místní řadič domény nebo vDC) práva a oprávnění musí být na základě skupiny. Plánování práce se skupinami, místo jednotlivým uživatelům pomáhá zachování zásady přístupu konzistentně napříč týmy a pomůckách v minimalizovat chyby konfigurace. Přiřazení a odebrání uživatelů z příslušných skupin a pomáhá udržovat aktuální oprávnění konkrétních uživatelů.
+Jako přístup osvědčených postupů (pro místní řadič domény nebo vDC) práva a oprávnění by mělo být na základě skupin. Práce se skupinami, namísto jednotlivých uživatelů pomáhá Správa zásad přístupu konzistentně napříč týmy a pomáhá při minimalizovat chyby v konfiguraci. Přiřazení a odebrání uživatelů z příslušných skupin a pomáhá udržovat aktuální oprávnění konkrétního uživatele.
 
-Každou skupinu role by měl mít jedinečnou předponu na jejich názvy, a usnadňuje tak určit, které skupiny zatížením, které souvisí. Například zatížení hostování ověřovací služba možná skupiny s názvem *AuthServiceNetOps, AuthServiceSecOps, AuthServiceDevOps a AuthServiceInfraOps.* Stejně tak pro centralizované role nebo rolí, které nesouvisí s konkrétní službu, může být uvedena "Corp" *CorpNetOps* třeba.
+Každá skupina role by měla mít jedinečnou předponu pro jejich názvy, což usnadňuje identifikaci, která skupina je spojen s úlohou, které. Například zatížení, hostování ověřovací služba může mít skupiny s názvem *AuthServiceNetOps, AuthServiceSecOps, AuthServiceDevOps a AuthServiceInfraOps.* Podobně pro centralizované rolím nebo rolím pro konkrétní službu nesouvisí, může být uvozena řetězcem "Corp", *CorpNetOps* třeba.
 
-Mnoho organizací použijte k poskytnutí hlavní rozdělení rolí varianta následujících skupin:
+Řada organizací používá k poskytování hlavní rozdělení rolí varianta z následujících skupin:
 
--   *Centrální skupinu IT (Corp)* má vlastnická práva k řízení součásti infrastruktury (například sítě a zabezpečení) a proto musí mít role Přispěvatel na předplatné (a mít kontrolu nad rozbočovače) a sítě oprávněním přispěvatele v větve. Velké organizace často rozdělit tyto odpovědnosti správy mezi několik týmů. například; Skupina síťových operací (CorpNetOps) (s výhradní aktivní sítě) a skupinu zabezpečení operací (CorpSecOps) (zodpovědná za zásady brány firewall a zabezpečení). V tomto případě konkrétní dvě různé skupiny musí vytvořit pro přiřazení vlastních rolí.
--   *Dev & testovací (AppDevOps) skupina* odpovídá za nasazení úloh (aplikace nebo služby). Tato skupina přebírá roli Přispěvatel virtuálních počítačů pro nasazení IaaS a/nebo jednu nebo více PaaS Přispěvatel rolí (najdete v části [předdefinované role pro řízení přístupu][Roles]). Volitelně může týmem vývojářů & test musí být viditelnost na zásady zabezpečení (Nsg) a zásady směrování (UDR) uvnitř rozbočovače nebo konkrétní ramenem. Kromě role Přispěvatel pro úlohy, proto tato skupina by také potřebovat roli čtečky sítě.
--   *Operace a údržba skupiny (CorpInfraOps nebo AppInfraOps)* mají odpovědnost za správu úlohy v produkčním prostředí. Tato skupina musí být Přispěvatel předplatné na úlohy v žádné produkční předplatné. Některé organizace mohou také měli zvážit, pokud je nutné skupinu team další eskalaci podpory k roli Přispěvatel předplatného v produkčním prostředí a v rámci předplatného centrální rozbočovač, aby bylo možné opravte potenciální problémy s konfigurací v provozním prostředí.
+-   *Centrální skupina IT (Corp)* má vlastnická práva k řízení komponenty infrastruktury (například sítě a zabezpečení) a proto musí mít roli přispěvatele v předplatném (a mají kontrolu nad centra) a oprávněním přispěvatele sítě v paprsky. Velké organizace často rozdělit tyto povinnosti správy mezi několik týmů, jako; Skupina síťových operací (CorpNetOps) (s výhradním zaměřením na sítě) a skupinu zabezpečení operací (CorpSecOps) (zodpovědná za zásadu brány firewall a zabezpečení). V tomto konkrétním případě dvou různých skupin muset vytvořit pro přiřazení vlastních rolí.
+-   *Dev & testu (AppDevOps) skupiny* odpovídá za nasadit úlohy o velikosti (aplikacím nebo službám). Tato skupina má role Přispěvatel virtuálních počítačů pro nasazení IaaS a/nebo jednu nebo více PaaS Přispěvatel rolí (viz [předdefinované role pro řízení přístupu][Roles]). Volitelně vývojového a testovacího týmu muset mají viditelnost na zásady zabezpečení (Nsg) a zásady směrování (UDR) do rozbočovače nebo konkrétní paprsku. Kromě role přispěvatele pro úlohy, proto se tato skupina budete také potřebovat role čtečky sítě.
+-   *Operace a údržba skupiny (CorpInfraOps nebo AppInfraOps)* mají na starost správu úloh v produkčním prostředí. Tato skupina musí být přispěvatelem předplatného u úloh v jakékoli předplatná pro produkční prostředí. Některé organizace může také měli zvážit, pokud potřebují skupinu týmu další eskalaci podpory s rolí přispěvatele předplatného v produkčním prostředí a v daném předplatném centrální rozbočovač, abyste mohli vyřešit potenciální problémy s konfigurací v produkční prostředí.
 
-VDC strukturovaná tak, aby skupiny vytvořené pro centrální správu rozbočovače skupiny IT odpovídající skupiny na úrovni pracovního vytížení. Kromě správy prostředků rozbočovače by být schopné řídit nejvyšší úrovně oprávnění u předplatného a externí přístup jenom centrální skupiny IT. Skupiny úloh by však být schopné řídit prostředků a oprávnění své virtuální síti nezávisle na centrálního oddělení IT.
+Strukturovaná vDC tak, aby skupiny vytvořené pro centrální správu centra skupiny IT odpovídajících skupin na úrovni zpracovávaných úloh. Kromě správy prostředků centra by centrální skupiny IT řídit externí přístup a oprávnění nejvyšší úrovně v rámci předplatného. Skupiny úloh, ale bude řídit prostředků a oprávnění své virtuální síti nezávisle na z centrálního oddělení IT.
 
-Virtuálního potřebuje k rozdělení na oddíly pro bezpečně hostování více projektů mezi různé řádku z – firmy (pole LOB). Všechny projekty vyžadují různé izolované prostředí (vývojářů, UAT, produkční). Samostatné předplatná Azure pro každou z těchto prostředích poskytují přirozené izolaci.
+Virtuálního potřebuje k rozdělení na oddíly pro bezpečné hostování více projektů přes různé řádku sady firmy (objekty LOBs). Všechny projekty vyžadují různé izolovaného prostředí (vývoj, UAT, produkčním prostředí). Samostatné předplatná Azure pro každou z těchto prostředí zajišťují izolaci fyzické.
 
 [![5]][5]
 
-Předchozí diagram znázorňuje vztah mezi projekty v organizaci, uživatelé, skupiny a prostředí, kde jsou nasazeny komponenty Azure.
+Předchozí diagram znázorňuje vztah mezi projekty v organizaci, uživatelé, skupiny a prostředí, ve které jsou nasazené komponenty Azure.
 
-Obvykle v oddělení IT prostředí (nebo vrstvě) je systém, ve kterém je více aplikací, nasadit a spustit. Velké podniky použít vývojové prostředí (kde změny původně vytvářeny a testovány) a provozním prostředí (co koncoví uživatelé použít). Tato prostředí jsou často oddělené s několika přípravná prostředí mezi je umožnit postupné nasazování (zavedení), testování a vrácení zpět v případě problémů. Nasazení architektury výrazně liší, ale obvykle je stále následovaný základní proces začínající na vývoj (vývoj) a končí na produkční (PRODUKČNÍMU).
+Obvykle v IT prostředí (nebo vrstvy) je systém, ve kterém se nasazují a spuštění více aplikací. Velké podniky pomocí vývojového prostředí (změny původně provedli a testování) a produkčním prostředí (co koncoví uživatelé použít). Těchto prostředích jsou často oddělené několik přípravných prostředí mezi ho, aby povolil postupného nasazení (zavádění), testování a vrácení zpět v případě problémů. Nasazení architektury výrazně lišit, ale obvykle je stále a potom základní proces počínaje development (vývoj) a konče v produkčním prostředí (produkční).
 
-Běžné architektura pro tyto typy vícevrstvé prostředí se skládá z DevOps (vývoj a testování), UAT (pracovní) a provozní prostředí. Organizace mohou využívat jeden nebo více klientů Azure AD definovat přístup a práva do těchto prostředí. Předchozí diagram ukazuje případu tam, kde dva různé klienty Azure AD se používají: jeden pro DevOps a UAT a druhou výhradně pro produkční.
+Běžné architektury pro tyto typy vícevrstvé prostředí se skládá z DevOps (vývoj a testování), UAT (pracovní) a produkční prostředí. Organizace můžou využívat jeden nebo více tenantů Azure AD k definování přístup a práva k těmto prostředím. Předchozí diagram ukazuje případ tam, kde dva různé tenanty Azure AD se používají: jeden pro DevOps a UAT a další výhradně pro produkční prostředí.
 
-Přítomnosti různých Azure AD klienty vynucuje oddělení mezi prostředími. Stejnou skupinu uživatelů (jako třeba centrálního oddělení IT) musí provést ověření pomocí na jiný identifikátor URI pro přístup k jiné klient AD upravit role nebo oprávnění buď DevOps nebo produkční prostředí projektu. Přítomnost ověřování jiného uživatele pro přístup k různých prostředích snižuje možné výpadky a jiné potíže způsobené lidské chyby.
+Přítomnost z různých služeb Azure AD tenanty zajišťuje oddělení mezi prostředími. Stejnou skupinu uživatelů (například z centrálního oddělení IT) potřebuje ověřit pomocí jiného identifikátoru URI pro přístup k na jiného tenanta AD upravit role nebo oprávnění buď DevOps nebo produkční prostředí projektu. Přítomnost jiné ověření uživatele pro přístup k jednotlivým prostředím snižuje případnému výpadku a další potíže způsobené službou lidské chyby.
 
 #### <a name="component-type-infrastructure"></a>Typ součásti: infrastruktury
-Tento typ součásti je, kde se nachází většina podpůrné infrastruktury. Je také kde vaše centralizované IT, zabezpečení, nebo dodržování předpisů týmy tráví většinu své doby.
+Tento typ součásti je, ve které se nachází většina podpůrnou infrastrukturu. Je také kde vaše centralizované IT, zabezpečení, nebo dodržování předpisů týmy tráví většinu svého času.
 
 [![6]][6]
 
-Součásti infrastruktury zajišťují propojení mezi různými součástmi služby vDC a jsou k dispozici v centru a větve. Centrální obvykle přiřazená zodpovědnost za správu a údržbu součásti infrastruktury IT nebo tým pro zabezpečení.
+Součásti infrastruktury poskytují propojení mezi různými součástmi vDC a jsou k dispozici v centru a aby se paprsky mezi. Centrální obvykle přiřazená zodpovědnost za správu a údržbu součásti infrastruktury IT a/nebo bezpečnostní tým.
 
-Jedním z primární úlohy týmu IT infrastruktury je zaručit konzistenci IP adres schémat celém podniku. Privátní IP adresní prostor virtuálních řadičů domény musí být v souladu se přiřadila a není překrývající se s privátní IP adresy přiřazené na vaše místní sítě.
+Jedním z primární úlohy IT infrastruktury tým je zaručit konzistenci schémat IP adres napříč celým podnikem. Privátní IP adresa adresní prostor přiřazený k vDC musí být konzistentní vzhledem k aplikacím a ne překrývá s privátními IP adresami přiřazenými na vaše místní sítě.
 
-Zatímco NAT hraniční směrovače místně nebo v prostředí Azure se můžete vyhnout konfliktům IP adres, přidá komplikace u součástí infrastruktury. Zjednodušení správy je jedním z klíče cílů virtuálních řadičů domény, takže použití překladu síťových adres pro zpracování obavy IP není doporučené řešení.
+Při překladu adres na místní hraniční směrovače nebo v prostředí Azure můžete nedošlo ke konfliktům IP adres, přidá komplikace u součástí infrastruktury. Zjednodušení správy je jedním z klíčových cílů vDC, tak použití NAT pro zpracování obavy IP není doporučená řešení.
 
 Součásti infrastruktury obsahují následující funkce:
 
--   [**Identitu a adresářové služby**][AAD]. Přístup pro každý typ prostředku v Azure je řízen pomocí identity uložené v adresářové službě. Adresářová služba ukládá pouze seznam uživatelů, ale také přístupová práva k prostředkům v rámci konkrétní předplatného Azure. Tyto služby může existovat jenom pro cloud nebo mohou být synchronizovány s identitou místně uložené ve službě Active Directory.
--   [**Virtuální síť**][VPN]. Virtuální sítě jsou jedním z hlavních komponent vDC a umožňují vytvořit hranici izolace přenosů na platformě Azure. Virtuální síť se skládá z jedné nebo více segmentech virtuální sítě, každý s konkrétní IP předpony sítě (podsítě). Virtuální síť definuje oblast interní hraniční kde virtuální počítače IaaS a PaaS služby můžete vytvořit privátní komunikaci. Virtuální počítače (a služby PaaS) v jedné virtuální sítě nemůže komunikovat přímo na virtuální počítače (a PaaS services) v jinou virtuální síť, i když jsou obě virtuální sítě vytvořené pomocí stejné zákazníka, v rámci stejného předplatného. Izolace je kritické vlastnosti, které zajišťuje, aby virtuální počítače zákazníka a komunikace zůstane privátní virtuální sítě.
--   [**UDR**][UDR]. Ve výchozím nastavení založené na systémovou tabulku směrování se směruje provoz ve virtuální síti. Trasy se definují uživatele je vlastní směrovací tabulku, která správci sítě můžete přidružit k jedné nebo několika podsítích přepsat chování systémovou tabulku směrování a zadejte cestu k komunikace v rámci virtuální sítě. Přítomnost udr zaručuje, aby odchozí provoz z přenosu ramenem prostřednictvím konkrétní vlastní virtuální počítače nebo virtuální zařízení sítě a nástroje pro vyrovnávání zatížení nachází v centru a větve.
--   [**NSG**][NSG]. Skupina zabezpečení sítě je seznam pravidel zabezpečení, které fungují jako provoz filtrování zdrojů IP, cílové IP, protokoly, porty zdrojové IP a cílové IP porty. NSG můžete použít k podsíti, karty virtuální síťovou kartu spojené s virtuální počítač Azure, nebo obojí. Skupin Nsg je nezbytné k implementaci správné toku řízení v centru a větve. Úroveň zabezpečení poskytované NSG je funkce, které porty, otevřete a pro jaké účely. Zákazníci by se měly používat filtry další jednotlivé virtuální počítače s založené na hostiteli brány firewall například IPtables nebo brány Windows Firewall.
--   [**DNS**][DNS]. Překlad prostředků do virtuální sítě vDC je zajišťováno prostřednictvím DNS. Azure poskytuje služby DNS pro obě [veřejné][DNS] a [privátní] [ PrivateDNS] překlad názvů. Privátní zón překladu názvů v rámci virtuální sítě i do virtuálních sítí. Privátní zón pouze rozpětí může mít virtuální sítí ve stejné oblasti, ale také napříč oblasti a odběry. Pro překlad IP adres veřejný Azure DNS poskytuje hostitelské služby domén DNS poskytnutí překladu názvů pomocí infrastruktury Microsoft Azure. Pokud svoje domény hostujete v Azure, můžete spravovat svoje DNS záznamy pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
--   [**Předplatné** ] [ SubMgmt] a [ **správu skupiny prostředků**][RGMgmt]. Předplatné definuje hranici přirozené vytvořit více skupin prostředků v Azure. Prostředky v předplatném se sestaví společně v logické kontejnery s názvem skupiny prostředků. Skupina prostředků představuje logické skupiny pro uspořádání prostředků virtuálních řadičů domény.
--   [**RBAC**][RBAC]. Prostřednictvím RBAC je možné mapy organizační roli společně s práva pro přístup k určité prostředky Azure, což umožňuje omezit přístup jenom určité podmnožiny akce uživatele. S RBAC můžete udělit přístup přiřazením příslušné role uživatele, skupiny a aplikace v rámci oboru relevantní. Předplatné Azure, skupinu prostředků nebo jediný zdroj, může být oboru přiřazení role. RBAC umožňuje dědičnosti oprávnění. Role přiřazené v nadřazeném oboru podřízené objekty jsou v něm obsažena také uděluje přístup. RBAC můžete oddělit povinností a poskytnout pouze takovou úroveň přístupu pro uživatele, kteří potřebují k provádění svých úloh. Například použijte funkci RBAC umožníte jednoho zaměstnance spravovat virtuální počítače v předplatném, zatímco jiné můžete spravovat databáze SQL v rámci stejného předplatného.
--   [**VNet Peering**][VNetPeering]. Základní funkce umožňuje vytvořit infrastrukturu vDC je ve stejné oblasti prostřednictvím sítě Azure datového centra, nebo pomocí páteřní strukturu Azure světě v oblastech sítě VNet partnerský vztah, mechanismus, který se připojuje dvě virtuální sítě (virtuální sítě).
+-   [**Identitu a adresářové služby**][AAD]. Přístup pro všemi typy prostředků v Azure je řízen identitu uložená v adresářové službě. Adresářová služba ukládá pouze seznam uživatelů, ale také přístupová práva k prostředkům v rámci konkrétního předplatného Azure. Tyto služby může existovat jenom pro cloud, nebo mohou být synchronizovány s do místních identit, které jsou uložené ve službě Active Directory.
+-   [**Virtuální síť**][VPN]. Virtuální sítě jsou jedním z hlavních komponentách vDC a umožňují vytvářet hranicí izolace provozu na platformě Azure. Virtuální síť se skládá z jednoho nebo více segmentů virtuální sítě, každý s určitou předponou IP sítě (podsítě). Virtuální síť vymezuje interní hraniční oblast, kde virtuální počítače IaaS a PaaS služby můžete vytvořit privátní komunikaci. Virtuální počítače (a služby PaaS) v jedné virtuální síti nemohou komunikovat přímo do virtuálních počítačů (a služby PaaS) v jiné virtuální síti, i když obě virtuální sítě jsou vytvořeny tentýž zákazník pod stejné předplatné. Izolace je důležité vlastnost, která zajišťuje virtuální počítače zákazníků a komunikace zůstávají privátní virtuální sítě.
+-   [**UDR**][UDR]. Ve výchozím nastavení založené na systémovou tabulku směrování se směruje provoz ve virtuální síti. Trasy se definují uživatele je vlastní směrovací tabulku, která správci sítě můžete přidružit jen k jedné nebo několika podsítí přepsat chování systémovou tabulku směrování a definovat komunikační trasa virtuální sítě. Přítomnost trasy definované uživatelem zaručuje této výchozí přenos z přenosu paprsku po konkrétní vlastní virtuální počítače a/nebo síťových virtuálních zařízení a nástroje pro vyrovnávání zatížení k dispozici v centru a v paprsky.
+-   [**NSG**][NSG]. Skupina zabezpečení sítě je seznam pravidel zabezpečení, které se chovají jako provoz filtrování podle zdroje IP, cílové IP, protokoly, porty zdrojové IP a cílové IP porty. Skupiny zabezpečení sítě lze použít k podsíti, karty virtuální síťovou kartu spojené s Virtuálním počítači Azure, nebo obojí. Skupiny zabezpečení sítě jsou nezbytné k implementaci ovládacího prvku správné toku v centru a v paprsky. Úroveň zabezpečení poskytované skupiny zabezpečení sítě je funkce, které porty otevřete a pro jaké účely. Zákazníci by měli použít filtry další jednotlivé virtuální počítače založené na hostiteli brány firewall například IPtables nebo brány Windows Firewall.
+-   [**DNS**][DNS]. Překlad prostředků v rámci virtuální sítě vDC je zajišťováno prostřednictvím DNS. Azure poskytuje služby DNS pro obě [veřejné][DNS] a [privátní] [ PrivateDNS] překlad názvů. Privátní zóny poskytují překlad v rámci virtuální sítě a mezi virtuálními sítěmi. Mezi virtuálními sítěmi ve stejné oblasti, ale také napříč oblastmi a předplatné může mít pouze span privátních zón. Pro veřejné rozlišení poskytuje Azure DNS hostitelská služba určená pro domény DNS a zajišťuje překlad názvů využitím infrastruktury Microsoft Azure. Pokud svoje domény hostujete v Azure, můžete spravovat svoje DNS záznamy pomocí stejných přihlašovacích údajů, rozhraní API a nástrojů a za stejných fakturačních podmínek jako u ostatních služeb Azure.
+-   [**Předplatné** ] [ SubMgmt] a [ **Správa skupin prostředků**][RGMgmt]. Předplatné definuje přirozené hranice v Azure vytvořit více skupin prostředků. Prostředky v předplatném jsou složeny dohromady v logické kontejnery s názvem skupiny prostředků. Skupina prostředků představuje logické skupiny k uspořádání prostředků vDC.
+-   [**RBAC**][RBAC]. Pomocí RBAC je možné do mapy organizační role spolu s práva pro přístup ke konkrétním prostředkům Azure, abyste mohli omezit uživatele na jenom určité podmnožiny akce. Pomocí RBAC můžete udělit přístup přiřazením příslušné role uživatele, skupiny nebo aplikace v rámci oboru relevantní. Obor přiřazení role může být předplatné Azure, skupinu prostředků nebo jediný prostředek. RBAC umožňuje dědičnost oprávnění. Role přiřazená na nadřazeném oboru uděluje přístup také podřízené objekty jsou v něm obsaženy. RBAC můžete oddělit a udělit pouze takovou úroveň přístupu pro uživatele, kteří potřebují k provádění svých úloh. Například pomocí RBAC nechat jednoho zaměstnance spravovat virtuální počítače v předplatném, zatímco jiné můžete spravovat databáze SQL v rámci stejného předplatného.
+-   [**VNet Peering**][VNetPeering]. Základní funkce použité k vytvoření infrastruktury vDC je VNet Peering, mechanismus, který spojuje dvě virtuální sítě (Vnet) ve stejné oblasti prostřednictvím sítě Azure datového centra nebo napříč oblastmi pomocí páteřní síť Azure na celém světě.
 
 #### <a name="component-type-perimeter-networks"></a>Typ součásti: Hraniční sítě
-[Hraniční síť] [ DMZ] součásti (také označované jako zóna DMZ síť) umožňují poskytovat připojení k síti s místními nebo sítě fyzické datového centra, společně s žádné připojení do a z Internetu. Je také kde vaší sítě a zabezpečení pravděpodobně týmy tráví většinu jejich doby.
+[Hraniční síť] [ DMZ] komponenty (označované také jako DMZ sítě) umožňují poskytovat připojení k síti s místním nebo fyzické sítě System center, spolu s žádné připojení k Internetu nebo z něj. Je také kde vaší sítě a zabezpečení pravděpodobně týmy tráví většinu svého času.
 
-Příchozí pakety musí procházet skrz zabezpečovací zařízení v rozbočovači, jako je například Brána firewall, ID a IP adresy, dříve, než dorazila back-end serverů v větve. Internetový pakety z úlohy by také procházet skrz zabezpečovací zařízení v hraniční síti pro vynucení zásad, kontrolu a auditování, před opuštěním sítě.
+Příchozí pakety jakým způsobem se předávají prostřednictvím zabezpečovací zařízení v rozbočovači, jako je například Brána firewall, ID a IP adresy, před dosažením back-end serverů v paprsky. Pakety směřující na Internet z úlohy byste také tok prostřednictvím zabezpečovací zařízení v hraniční síti pro vynucení zásad, kontrolu a auditování, před opuštěním sítě.
 
 Komponenty hraniční sítě poskytují následující funkce:
 
--   [Virtuální sítě][VNet], [UDR][UDR], [NSG][NSG]
--   [Virtuální síťové zařízení][NVA]
+-   [Virtuální sítě][VNet], [uživatelem definovaná TRASA][UDR], [skupiny zabezpečení sítě][NSG]
+-   [Síťové virtuální zařízení][NVA]
 -   [Nástroj pro vyrovnávání zatížení][ALB]
--   [Aplikační brána][AppGW] / [firewall webových aplikací][WAF]
+-   [Služba Application Gateway][AppGW] / [WAF][WAF]
 -   [Veřejné IP adresy][PIP]
 
-Obvykle centrální IT a zabezpečení týmy mají odpovědnost za definice požadavek a operací hraniční sítě.
+Obvykle centrální IT a zabezpečení týmy mají odpovědnost za operace hraniční sítě a definice požadavků.
 
 [![7]][7]
 
-Na předchozím obrázku uvádí vynucení dvě okruhu s přístupem k Internetu a místní sítě, jak v centru trvalé. V jednom rozbočovači hraniční sítě do Internetu můžete postupně škálovat pro podporu velkého počtu objekty LOBs, pomocí více farmy brány Web Application firewall (WAFs) nebo brány firewall.
+Předchozí diagram znázorňuje vynucení dvě perimetry s přístupem k Internetu a v místní síti, jak v centru. V jednom rozbočovači hraniční sítě do Internetu vertikálně navýšit kapacitu pro podporu velkého počtu objekty LOBs, použití více farmy brány firewall webových aplikací (Waf) a/nebo brány firewall.
 
-[**Virtuální sítě** ] [ VNet] rozbočovače je obvykle založený na virtuální síť s více podsítěmi k hostování různých typ služeb filtrování a kontroly přenosů dat do nebo z Internetu prostřednictvím NVAs, WAFs a Azure Application Gateway.
+[**Virtuální sítě** ] [ VNet] rozbočovače obvykle postavena virtuální sítě s několika podsítěmi hostovat jiný typ služby, filtrování a že provoz do nebo z Internetu prostřednictvím síťových virtuálních zařízení, brány Waf a Azure Application Gateway.
 
-[**UDR** ] [ UDR] pomocí UDR zákazníci můžou nasazovat brány firewall, ID nebo IP adresy a jiné virtuální zařízení a směrovat síťový provoz prostřednictvím těchto zabezpečovací zařízení pro vynucení hranic zásad zabezpečení, auditování a kontroly. Udr lze vytvořit v centru a koncových zaručit, že tranzitů provoz přes konkrétní vlastní virtuální počítače, virtuální zařízení sítě a používané virtuálního nástroje pro vyrovnávání zatížení. Zaručit, že přenosy dat vytvářené z virtuálních počítačů v přenosu ramenem trvalé na správnou virtuální zařízení, UDR musí být nastavena v podsítě ramenem nastavování front-end IP adresy služby Vyrovnávání zatížení pro vnitřní jako další směrování. Nástroje pro vyrovnávání zatížení pro vnitřní distribuuje interní provoz na virtuální zařízení (fond back-end pro vyrovnávání zatížení).
+[**Uživatelem definovaná TRASA** ] [ UDR] pomocí uživatelem definovaná TRASA, zákazníci můžou nasadit brány firewall, IDS/IPS a dalších virtuálních zařízení a směrovat síťový provoz prostřednictvím těchto zabezpečovací zařízení pro vynucení hranic zásad zabezpečení, auditování a kontroly. V centru a aby se paprsky mezi zaručit, že tranzitů provoz přes konkrétní vlastní virtuální počítače, síťová virtuální zařízení a nástroje pro vyrovnávání zatížení používá virtuálního možné vytvářet trasy definované uživatelem. Pokud chcete zajistit přenosy generované z virtuálních počítačů v paprsku přenosu na správnou virtuální zařízení, trasu UDR se musí nastavit v podsítích paprsků nastavením front-endovou IP adresu interního nástroje jako další směrování. Interní služby load balancer distribuuje interního provozu do virtuálních zařízení (back endového fondu nástroje pro vyrovnávání zatížení).
 
 [![8]][8]
 
-[**Síťových virtuálních zařízení** ] [ NVA] v centru, v hraniční síti s přístupem k Internetu obvykle spravovat prostřednictvím farmu brány firewall nebo brány firewall systému webové aplikace (WAFs).
+[**Síťová virtuální zařízení** ] [ NVA] v rozbočovači, hraniční síti s přístupem k Internetu obvykle spravuje prostřednictvím farmy brány firewall a/nebo brány firewall webových aplikací (Waf).
 
-Různé objekty LOBs běžně používají mnoho webových aplikací a tyto aplikace jsou obvykle dochází z různých ohrožení zabezpečení a potenciální zneužití. Brány firewall webových aplikací je zvláštní druh produktu použít k detekci útoky na webové aplikace (HTTP či HTTPS) do větší hloubky než obecné brány firewall. Porovnání s tradiční Typografie technologii brány firewall, WAFs mají sadu konkrétní funkcí k ochraně před hrozbami interní webové servery.
+Různé objekty LOBs běžně používají mnoho webových aplikací a tyto aplikace jsou obvykle dochází z různých ohrožení zabezpečení a potenciální zneužití. Brány firewall webových aplikací je zvláštní druh produkt slouží ke zjištění útoků, které webové aplikace (HTTP/HTTPS) do větší hloubky než obecné brány firewall. Ve srovnání s technologií tradici brány firewall, řešení Waf mají sadu specifické funkce ochrany před hrozbami interní webové servery.
 
-Brány firewall farmy je skupina práci současně v rámci stejné společné správy sadu pravidel zabezpečení k ochraně zatížení hostovaná v koncových, brány firewall a řízení přístupu pro místní sítě. Brány firewall farmy má menší specializuje softwaru ve srovnání s firewall webových aplikací, ale má obor široký aplikace k filtrování a zkontrolovat libovolného typu provoz ve výstupní a vstupní. Brány firewall farmy jsou obvykle implementované v Azure pomocí síťových virtuálních zařízení (NVAs), které jsou k dispozici v Azure marketplace.
+Brány firewall farmy je skupina práci při vytvoření celostní v rámci stejné běžné práci se sadou pravidel zabezpečení k ochraně úloh hostovaných v paprsky, brány firewall a řízení přístupu k místním sítím. Brána firewall farmy má méně specializovanou software ve srovnání s WAF, ale má obor široké aplikace můžete filtrovat a kontrolovat libovolného typu v příchozího a odchozího provozu. Farmy brány firewall jsou obvykle implementovány v Azure prostřednictvím síťových virtuálních zařízení (Nva), které jsou dostupné v Tržišti Azure marketplace.
 
-Doporučuje se použít jednu sadu NVAs pro přenosy na Internetu, a druhý pro provoz pocházející místně. Použití jen jednu sadu NVAs pro obě je bezpečnostní riziko, protože poskytuje žádné zabezpečení hraniční mezi dvěma sadami síťových přenosů. Pomocí samostatných NVAs snižuje složitost zabezpečení pravidla pro kontrolu a udělá z něj vymazat, která pravidla bude odpovídat které příchozí žádosti o síti.
+Doporučuje se použít jedna sada síťových virtuálních zařízení pro přenosy z Internetu, a jinou pro přenosy pocházející místní. Použití jenom jedné sady síťových virtuálních zařízení pro oba představuje bezpečnostní riziko, protože nabízí neexistuje žádná bezpečnostní hranice mezi těmito dvěma sadami síťových přenosů. Pomocí samostatných síťových virtuálních zařízení snižuje složitost pravidel pro kontrolu zabezpečení a vyjasňuje, která pravidla platí pro které příchozí žádosti v síti.
 
-Většina velké podniky spravovat víc domén. Azure DNS můžete použít k hostování záznamů DNS pro konkrétní doménu. Například můžete zaregistrovat virtuální IP adresa (VIP) Vyrovnávání zatížení Azure externí (nebo WAFs) ve záznam A záznam Azure DNS.
+Většina velkých podniků spravovat víc domén. Azure DNS umožňuje hostovat záznamy DNS pro konkrétní doménu. Například lze registrovat virtuální IP adresa (VIP) Azure externím vyrovnáváním zatížení (nebo brány Waf) v záznamu A záznam Azure DNS.
 
-[**Azure Vyrovnávání zatížení** ] [ ALB] pro vyrovnávání zatížení Azure nabízí vysokou dostupnost služby vrstvy 4 (TCP, UDP), která můžete distribuovat příchozí komunikaci mezi instance služby, které jsou definované v sadě s vyrovnáváním zatížení. Data odesílaná do nástroje pro vyrovnávání zatížení z front-endu koncových bodů (veřejné koncové body IP nebo privátní IP koncových bodů) mohou být znovu distribuovány s nebo bez překladu adres k sadě fond back-end IP adres (příklady probíhá; Virtuální síťová zařízení nebo virtuálních počítačů).
+[**Nástroj Azure Load Balancer** ] [ ALB] nástroje pro vyrovnávání zatížení Azure nabízí vysokou dostupnost služby vrstvy 4 (TCP, UDP), která může distribuce příchozího provozu mezi instance služby, které jsou definovány v sadě s vyrovnáváním zatížení. Data odesílaná do nástroje pro vyrovnávání zatížení z front-endových koncových bodů (veřejné koncové body IP nebo privátní koncovými body IP) mohou být znovu distribuovány s nebo bez překladu adres k sadě fond back-end IP adres (příklady se; Síťová virtuální zařízení nebo virtuálních počítačů).
 
-Azure Vyrovnávání zatížení můžete testovat stav také různé instance serveru a když sondu přestane reagovat nástroje pro vyrovnávání zatížení zastaví odesílání provozu do instance není v pořádku. V vDC máme přítomnost externím vyrovnáváním zatížení v centru (například vyrovnávat přenosy do NVAs) a v koncových (k provedení úlohy, jako je vyrovnávání přenosů mezi různé virtuální počítače vícevrstvé aplikace).
+Nástroj Azure Load Balancer můžete testovat stav také různé instance serveru, a když sonda přestane reagovat, nástroj pro vyrovnávání zatížení zastaví odesílání provozu do instance není v pořádku. V vDC máme přítomnost externím vyrovnáváním zatížení v centru (například vyrovnávat provoz do síťových virtuálních zařízení) a aby se paprsky mezi (provádět úkoly, jako je vyrovnávání mezi virtuálními počítači v různých vícevrstvé aplikace).
 
-[**Aplikační brána** ] [ AppGW] Microsoft Azure Application Gateway je vyhrazené virtuální zařízení poskytuje aplikace doručení řadiče (ADC) jako služba nabízí různé vrstvy 7 Vyrovnávání zatížení možnosti pro vaši aplikaci. Umožňuje optimalizovat webové farmy produktivitu přesměrováním zátěže procesoru náročné ukončení protokolu SSL pro službu application gateway. Nabízí také další možnosti přesměrování vrstvy 7, jako je kruhové dotazování na distribuci příchozích přenosů, spřažení relací na základě souborů cookie, přesměrování založené na cestách URL a možnost hostování několika webů za jedinou službou Application Gateway. Firewall webových aplikací (WAF) je také součástí skladové položky WAF služby Application Gateway. Tato SKU poskytuje ochranu k webovým aplikacím z běžných chyb zabezpečení webové a zneužití. Application Gateway je možné nakonfigurovat jako internetovou bránu nebo jen jako interní bránu, případně jako kombinaci obojího. 
+[**Služba Application Gateway** ] [ AppGW] Microsoft Azure Application Gateway je vyhrazené virtuální zařízení poskytující kontroler doručování aplikací (ADC) jako službu, nabízí různé vrstvy 7 Vyrovnávání zatížení možnosti pro vaši aplikaci. To umožňuje optimalizovat produktivitu webové farmy tím, že se ukončování náročné na CPU SSL ke službě application gateway. Nabízí také další možnosti přesměrování vrstvy 7, jako je kruhové dotazování na distribuci příchozích přenosů, spřažení relací na základě souborů cookie, přesměrování založené na cestách URL a možnost hostování několika webů za jedinou službou Application Gateway. Firewall webových aplikací (WAF) je také součástí skladové položky WAF služby Application Gateway. Tato skladová položka zajišťuje ochranu webových aplikací před běžnými webovými ohroženími zabezpečení a zneužitím. Application Gateway je možné nakonfigurovat jako internetovou bránu nebo jen jako interní bránu, případně jako kombinaci obojího. 
 
-[**Veřejné IP adresy** ] [ PIP] funkce některá Azure umožňují přidružení koncové body služby veřejné IP adresy umožňuje k prostředku získat přístup z Internetu. Tento koncový bod používá překládání adres (NAT) pro směrování provozu na interní adresu a port na virtuální síť Azure. Tato cesta je primární způsob pro externí přenos dat do virtuální sítě. Veřejné IP adresy se dá nakonfigurovat určit, jaký provoz, je předaná a jak a kde je přeložená k virtuální síti.
+[**Veřejné IP adresy** ] [ PIP] funkce některé Azure umožňují přiřadit koncových bodů služby pro veřejné IP adresy, které umožňuje na váš prostředek přistupuje z Internetu. Tento koncový bod používá překládání adres (NAT) Pokud chcete směrovat provoz na interní adresu a port ve službě Azure virtual network. Tato cesta je hlavní způsob, jak pro externí přenos dat do virtuální sítě. Veřejné IP adresy se dá určit, jaký provoz je předáno a jak a kde je přeložen do virtuální sítě.
 
 #### <a name="component-type-monitoring"></a>Typ součásti: monitorování
-Monitorování komponenty poskytují viditelnost a výstrah z všechny ostatní typy součásti. Všechny týmy mají mít přístup k monitorování součástí a služeb, kterým mají přístup. Pokud máte centralizovanou pomoc HelpDesk nebo operations týmy, by musí mít přístup k datům poskytuje tyto součásti integrované.
+Monitorování komponenty nabízejí viditelnost a výstrah z všechny ostatní typy komponenty. Všechny týmy mají mít přístup k monitorování pro komponenty a služby, kterým mají přístup. Pokud máte centralizovanou pomoc HelpDesk nebo operace týmy by potřebují integrovanou přístup k datům poskytuje tyto komponenty.
 
-Azure nabízí různé typy protokolování a monitorování služeb ke sledování chování Azure hostovaným prostředkům. Zásady správného řízení a kontrolu nad úlohy v Azure je na základě jenom na shromažďování dat protokolu, ale také schopnost akce aktivační události na základě konkrétní hlášené událostí.
+Azure nabízí různé druhy protokolování a monitorování služeb ke sledování chování Azure hostovala prostředky. Zásady správného řízení a kontrolu nad úloh v Azure je na základě jenom na shromažďování dat protokolu, ale také schopnost aktivujte akce na základě konkrétních ohlášené událostí.
 
-[**Azure monitorování** ] [ Monitor] -Azure obsahuje více služeb, které jednotlivě provádět určité role nebo úkolu v prostoru pro monitorování. Společně tyto služby poskytovat komplexní řešení pro shromažďování, analýze a funguje na telemetrie z vaší aplikace a prostředky Azure, které je podporují. Může spolupracovat taky monitorovat kritické místních prostředků s cílem poskytnout hybridním monitorování prostředí. Pochopení nástroje a data, která jsou k dispozici je prvním krokem při vývoji dokončení strategie monitorování pro vaši aplikaci.
+[**Azure Monitor** ] [ Monitor] -Azure zahrnuje několik služeb, které jednotlivě provádět konkrétní role nebo úkolu v prostoru pro monitorování. Tyto služby společně poskytují komplexní řešení pro shromažďování dat, analýzy a akce na základě telemetrie z vaší aplikace a prostředků Azure, které je podporují. Můžou také provádět monitorování důležitých místních prostředků s cílem poskytovat prostředí hybridního monitorování. Důkladné seznámení s dostupnými nástroji a daty je prvním krokem při vývoji úplné strategie monitorování pro vaši aplikaci.
 
 Existují dva hlavní typy protokolů v Azure:
 
--   [**Protokoly aktivity**][ActLog] (označované také jako "Operační protokol") umožní získat přehled o operace, které byly provedeny na prostředky v rámci předplatného Azure. Tyto protokoly sestavy události rovině řízení pro vaše předplatné. Každý prostředek Azure vytvoří protokoly auditu.
+-   [**Protokoly aktivity**][ActLog] (označované také jako "Operační protokol") umožní získat přehled o operace, které byly provedeny na prostředky v rámci předplatného Azure. Tyto protokoly hlášení událostí rovina řízení pro vaše předplatná. Každý prostředek Azure vytvoří protokoly auditu.
 
--   [**Azure diagnostické protokoly** ] [ DiagLog] protokoly generované prostředku, které poskytují bohatou a často data o operaci prostředku. Obsah tyto protokoly se liší podle typu prostředku.
+-   [**Diagnostické protokoly Azure** ] [ DiagLog] jsou protokoly generované prostředek, které poskytují bohatě vybaveným a časté informace o fungování tohoto prostředku. Obsah tyto protokoly se liší podle typu prostředku.
 
 [![9]][9]
 
-V vDC je velmi důležité ke sledování protokolů Nsg, zejména tyto informace:
+V vDC je velmi důležité pro sledování protokolů skupiny zabezpečení sítě, zvláště tyto informace:
 
--   [**Protokoly událostí**][NSGLog]: poskytuje informace o jaké pravidla NSG se použijí u virtuálních počítačů a instance rolí na základě adresy MAC.
--   [**Čítač protokoly**][NSGLog]: sleduje kolikrát každého pravidla NSG byl proveden zakázat nebo povolit provoz.
+-   [**Protokoly událostí**][NSGLog]: poskytuje informace o jaká pravidla skupiny zabezpečení sítě se použijí na virtuální počítače a instance rolí na základě adresy MAC.
+-   [**Čítač protokoly**][NSGLog]: sleduje, kolikrát se každé pravidlo NSG provedl zakázat nebo povolit provoz.
 
-Všechny protokoly mohou být uloženy v účtech úložiště Azure pro audit, statické analýzy nebo pro účely zálohování. Když protokoly jsou uložené v účtu úložiště Azure, můžete zákazníci používají různé typy rozhraní k načtení, Příprava, analýze a vizualizovat tato data do sestavy stavu a stavu prostředků cloudu.
+Všechny protokoly mohou být uloženy v účtech úložiště Azure pro audit, statické analýzy nebo zálohování. Když protokoly ukládají v účtu služby Azure storage, Zákazníci můžete použít různé typy architektur pro načtení, přípravu, analyzovat a vizualizovat tato data hlásit stav a stav prostředků cloudu.
 
-Velké podniky by měl mít již získal standardní rozhraní pro monitorování místních systémů a můžete rozšířit dané platformy pro integraci protokoly Cloudová nasazení. Pro organizace, které chcete zachovat všechny protokolování v cloudu, je – Log Analytics [LogAnalytics] je služba skvělou volbou. Vzhledem k tomu, že analýzy protokolů je implementovaný jako cloudová služba, můžete jej budete mít spuštěný a funkční rychle s minimálním investice do infrastruktury služby. Analýzy protokolů můžete také integrovat s součástí produktu System Center, jako je například System Center Operations Manager k rozšíření stávajících investic správy do cloudu.
+Velké podniky musí už získali standardní rozhraní pro místní systémy pro monitorování a můžete rozšířit tímto rozhraním integrovat protokoly generované nasazeními v cloudu. Pro organizace, které chcete zachovat všechny protokolování v cloudu, – Log Analytics [LogAnalytics] je skvělou volbou. Od Log Analytics je implementovaná jako cloudová služba, můžete mít ji zprovoznit rychle s minimálními investicemi do infrastrukturních služeb. Log Analytics můžete také integrovat s komponentami nástroje System Center, jako je System Center Operations Manager a rozšířit vaše stávající investice do správy do cloudu.
 
-Analýzy protokolů je služba v Azure, který pomáhá shromažďování, korelovat, vyhledávání a fungovat na data protokolu a výkonu generovaných operačních systémů, aplikací a součástí infrastruktury cloudu. Nabízí zákazníkům v reálném čase statistiky provozu analyzovat všechny záznamy mezi všechny úlohy v virtuálních řadičů domény pomocí integrovaného hledání a vlastní řídicí panely.
+Log Analytics je služba v Azure, která pomáhá shromažďovat, korelovat, vyhledávat a reagovat na data protokolů a výkonu generovaných operačních systémů, aplikací a komponent infrastruktury cloudu. Poskytuje zákazníkům provozní informace v reálném čase pomocí integrovaného vyhledávání a vlastních řídicích panelů k analýze všech záznamů napříč vašimi úlohami vDC.
 
-[Monitorování výkonu v síti (NPM)] [ NPM] řešení uvnitř OMS může poskytovat sítě podrobné informace na kompletní, včetně jednoduchého zobrazení sítě Azure a místními sítěmi. S konkrétní monitorování pro ExpressRoute a veřejné služby.
+[Network Performance Monitor (NPM)] [ NPM] řešení v OMS může poskytovat podrobné sítě informace end až do konce, včetně ucelený přehled o sítích Azure a místními sítěmi. S konkrétní monitory pro ExpressRoute a veřejné služby.
 
 #### <a name="component-type-workloads"></a>Typ součásti: úlohy
-Zatížení součásti jsou, kde jsou umístěné vaše vlastní aplikace a služby. Je také kde vaše aplikace vývojové týmy tráví většinu jejich doby.
+Úloha součásti jsou, kde jsou umístěné vaše vlastní aplikace a služby. Je také kde vaše aplikace vývojové týmy tráví většinu svého času.
 
-Možnosti zatížení jsou skutečně nekonečná. Následující je uvedeno několik možných zatížení typů:
+Možnosti úlohy jsou skutečně nekonečné. Tady jsou jen některé typy možných úloh:
 
 **Interní obchodní aplikace**
 
-Obchodní aplikace jsou aplikace počítače kritická pro probíhající operace podniku. OBCHODNÍCH aplikací mít některé společné vlastnosti:
+Obchodní aplikace jsou aplikací pro počítače kritická pro probíhající operace podniku. OBCHODNÍ aplikace mají některé společné vlastnosti:
 
--   **Interaktivní**. OBCHODNÍ aplikace, jsou interaktivní svou povahou: zadávání dat, a se vrátí výsledek nebo sestavy.
--   **Řízených daty**. Aplikace LOB jsou data s častým přístupem do databáze nebo jiného úložiště náročné.
--   **Integrované**. OBCHODNÍ aplikace nabídka integrace s jinými systémy uvnitř nebo vně organizace.
+-   **Interaktivní**. OBCHODNÍ aplikace jsou interaktivní povahou: Zadaná data a výsledek nebo sestavy jsou vráceny.
+-   **Na základě dat**. OBCHODNÍ aplikace jsou data s častým přístupem do databáze nebo jiného úložiště náročné.
+-   **Integrované**. OBCHODNÍ aplikace nabídka integrace s jinými systémy v rámci nebo mimo organizaci.
 
-**Určeno webů (Internet nebo interní přístupem) pro odběratele** většina aplikací, které komunikovat přes Internet, jsou webové servery. Azure nabízí možnost spuštění webu na virtuální počítač IaaS nebo ze [Azure Web Apps] [ WebApps] lokality (PaaS). Azure Web Apps podporují integraci s virtuální sítě, které umožní nasazení webové aplikace v ramenem systému vDC. Při vyhledávání v interní přístupných weby, s integrací virtuální síť, není nutné vystavit Internet koncový bod pro vaše aplikace, ale můžete místo toho použít prostředkům přes privátní adresy směrovatelné Internetu jiných z vaší privátní virtuální sítě.
+**Webové stránky (internetové nebo interní přístupem) určených pro zákazníky** většina aplikací, které komunikují s Internetem jsou webové servery. Azure nabízí možnost spustit webový server na Virtuálním počítači IaaS nebo ze [Azure Web Apps] [ WebApps] lokality (PaaS). Azure Web Apps nepodporují integraci s virtuálními sítěmi, které umožní nasazení webové aplikace v paprsku vDC. Při pohledu na interní různé weby, integrace virtuální sítě, není potřeba zveřejnit koncový bod Internet pro vaše aplikace, ale můžete místo toho použít prostředky prostřednictvím privátních adres směrovatelný bez Internetu z vaší privátní virtuální sítě.
 
-**Big Data nebo Analytics** když potřebuje vertikálně navýšit kapacitu na velmi velký objem dat, nemusí správně škálování databáze. Hadoop technologie nabízí systému ke spouštění distribuovaných dotazů paralelně na velký počet uzlů. Zákazníci, mají možnost spouštět úlohy dat. ve virtuálních počítačů IaaS nebo PaaS ([HDInsight][HDI]). HDInsight podporuje nasazování do virtuální sítě na základě polohy, se dá nasadit na cluster ramenem virtuálního.
+**Analýza velkých objemůdat/** když je potřeba vertikálně navýšit kapacitu na velmi velké objemy dat, nemusí správně škálování databáze. Technologie Hadoop poskytuje systém ke spouštění distribuovaných dotazů paralelně na velký počet uzlů. Zákazníci mají možnost spouštět úlohy dat ve virtuální počítače IaaS nebo PaaS ([HDInsight][HDI]). HDInsight podporuje nasazování do virtuální sítě založená na poloze, je možné nasadit do clusteru v paprsku virtuálního.
 
 **Události a zasílání zpráv**
-[Azure Event Hubs] [ EventHubs] je služba přijímání velkého rozsahu telemetrii, která shromažďuje, transformuje a ukládá miliony událostí. Jako distribuované streamování platformu nabízí nízkou latencí a uchování nastavitelném časovém, což umožňuje ingestování masivní objemy telemetrická data do Azure a čtení dat z více aplikací. Službě Event Hubs může podporovat jeden datový proud v reálném čase i na základě batch kanály.
+[Azure Event Hubs] [ EventHubs] je služba příjmu telemetrických dat vysoce škálovatelné, který shromažďuje, transformuje a ukládá miliony událostí. Jako platforma pro distribuované streamování nabízí nízkou latenci a konfigurovatelné časové uchovávání, která vám umožní ingestovat velké objemy telemetrických dat do Azure a načtení dat z více aplikací. S Event Hubs může jeden datový proud podporovat kanály v reálném čase i na základě služby batch.
 
-Vysoce spolehlivé cloudové služby mezi aplikací a služeb pro zasílání zpráv se dají implementovat pomocí [Azure Service Bus] [ ServiceBus] , nabízí asynchronní zprostředkované zasílání zpráv mezi klientem a serverem, spolu s strukturovaná možnosti zasílání zpráv a publikování a přihlášení k odběru objektů first in first out (FIFO).
+Vysoce spolehlivé cloudové služby mezi aplikacemi a službami, zasílání zpráv je možné implementovat pomocí [Azure Service Bus] [ ServiceBus] , že nabízí asynchronní zasílání zprostředkovaných zpráv mezi klientem a serverem, spolu s strukturované zasílání zpráv first-in-first-out (FIFO) a možnosti publikace nebo odběru.
 
 [![10]][10]
 
 ### <a name="multiple-vdc"></a>Více vDC
-Pokud má tento článek zaměřuje na jedné vDC, které popisují základní komponenty a architektura, která můžete přispět k odolné vDC. Funkce Azure, jako je například Azure zatížení vyrovnávání NVAs, skupiny dostupnosti sady škálování, společně s jiným mechanismem podílet se na systém, který vám umožní sestavit plnou SLA úrovně do služeb produkční.
+Zatím Tento článek se zaměřuje na jedné vDC, popisující základních komponent a architektury, které přispívají k odolné vDC. Funkce Azure, jako je Azure load balancer, síťová virtuální zařízení, skupiny dostupnosti, škálovací sady, společně s další mechanismy přispívat do systému, který umožňuje vytvářet plné úrovně SLA do produkčního prostředí služeb.
 
-Ale jeden vDC je hostovaná v jedné oblasti a je snadno napadnutelný hlavní výpadku, které by mohly ovlivnit danou celou oblast. Zákazníkům, kteří k dosažení vysoké SLA nutné k ochraně služeb prostřednictvím nasazení stejného projektu ve virtuálních dva (nebo více), umístěny v různých oblastech.
+Však jeden vDC hostována v rámci jedné oblasti a je zranitelný vůči velký výpadek, který může mít vliv na tuto celou oblast. Zákazníci, kteří k dosažení vysoké smlouvy o úrovni služeb potřebují chránit služby prostřednictvím nasazení stejného projektu ve virtuálních dva (nebo více), umístěné v různých oblastech.
 
-Kromě SLA obavy existuje několik běžné scénáře, kde nasazení více virtuálních dává smysl:
+Rovněž na starosti smlouvy SLA existuje několik běžných scénářů, kde nasazení více virtuálních dává smysl:
 
--   Místní nebo globální přítomnosti
+-   Místní a globální přítomnosti
 -   Zotavení po havárii
--   Mechanismus pro přesměrovat provoz mezi řadiči domény
+-   Mechanismus pro rozdělení provozu mezi řadiče domény
 
-#### <a name="regionalglobal-presence"></a>Místní nebo globální přítomnosti
-Datových center Azure jsou k dispozici v mnoha oblastech po celém světě. Když vyberete několik datových center Azure, zákazníky, který je potřeba zvážit dva faktory související s: zeměpisné vzdálenosti a latenci. Zákazníci se třeba vyhodnotit zeměpisné vzdálenost mezi virtuálních a vzdálenost mezi virtuálního a koncových uživatelích, a nabídnout nejlepších výsledků.
+#### <a name="regionalglobal-presence"></a>Místní a globální přítomnosti
+Dat do Datacenter Azure jsou k dispozici v mnoha oblastech po celém světě. Při výběru více datových centrech Azure, zákazníci musí vzít v úvahu dva faktory související s: geografické vzdálenosti a latenci. Zákazníci se musí vyhodnotit geografické vzdálenosti mezi virtuálních a vzdálenost mezi virtuálního a koncovým uživatelům nabídnout nejlepší uživatelské prostředí.
 
-Oblast Azure, kde jsou hostované virtuálních také tak, aby odpovídala zákonným požadavkům vymezenému žádné právní jurisdikce, pod kterou vaše organizace provozuje potřebovat.
+Oblast Azure, kde jsou hostované virtuálních je také potřeba splňovat zákonné požadavky stanovené žádné právní jurisdikci, pod kterým vaše organizace pracuje.
 
 #### <a name="disaster-recovery"></a>Zotavení po havárii
-Implementace plánu zotavení po havárii se týká silného typu příslušné úlohy a možnost synchronizace stavu zatížení mezi různé virtuálních. V ideálním případě většina zákazníků chcete synchronizovat data aplikací mezi systémem ve dvou různých virtuálních implementovat mechanismus rychlého převzetí služeb při selhání nasazení. Většina aplikací jsou citlivá na latenci a které můžou způsobit potenciální časový limit a prodlevu synchronizace dat.
+Implementace plánu zotavení po havárii se týká silného typu úlohy obavy a možnost synchronizace stavu úloh mezi různých virtuálních. V ideálním případě by většina zákazníků chcete synchronizovat data aplikací mezi spuštěných ve dvou různých virtuálních implementovat mechanismus rychlé převzetí služeb při selhání nasazení. Většina aplikací jsou citlivá na latenci, a to může způsobit potenciální časový limit a zpoždění synchronizace dat.
 
-Synchronizace nebo monitorování prezenčního signálu v různých virtuálních aplikací vyžaduje komunikaci mezi nimi. Dva uloženými v různých oblastech mohou připojené prostřednictvím:
+Synchronizace nebo monitorování prezenčních signálů v různých virtuálních aplikací vyžaduje komunikace mezi nimi. Prostřednictvím dá připojit dva virtuálních v různých oblastech:
 
--   Partnerský vztah VNet - virtuální síť partnerského vztahu můžete připojit rozbočovače v oblastech
--   ExpressRoute privátní partnerský vztah při vDC centrech jsou připojeny ke stejnému okruhu ExpressRoute
--   připojení přes vaše podnikové páteřní více okruhů ExpressRoute a vaší vDC mřížky připojené k okruhy ExpressRoute
--   Připojení Site-to-Site VPN mezi vaší vDC centra v každé oblasti Azure
+-   Partnerský vztah virtuální sítě – vytvoření partnerského vztahu virtuální sítě můžete připojit rozbočovače napříč oblastmi
+-   ExpressRoute privátní partnerský vztah při vDC hubs jsou připojené ke stejnému okruhu ExpressRoute
+-   připojení víc okruhů ExpressRoute prostřednictvím podnikové páteřní a vaše síť vDC připojení ke okruhy ExpressRoute
+-   Připojení Site-to-Site VPN mezi vaší vDC hubs v každé oblasti Azure
 
-Obvykle partnerský vztah virtuální síť nebo ExpressRoute připojení jsou upřednostňované mechanismu kvůli větší šířku pásma a konzistentní latence při přes páteřní společnosti Microsoft.
+Obvykle připojení VNet Peering nebo ExpressRoute jsou upřednostňované mechanismu kvůli větší šířku pásma a konzistentní latence při přes páteřní infrastrukturu Microsoftu.
 
-Neexistuje žádné magic recepturách k ověření aplikace distribuovány mezi dva (nebo více) různých virtuálních umístěné v různých oblastech. Zákazníci měli spustit testy kvalifikace sítě pro ověření latenci a šířky pásma připojení a cílová, zda je příslušná data synchronní nebo asynchronní replikaci a plánovanou dobu optimální obnovení (RTO), může být pro zatížení.
+Neexistuje žádný recept magic k ověření aplikace distribuovat mezi dva (nebo více) různých virtuálních umístěné v různých oblastech. By měli zákazníci spouštět sítě kvalifikace testů pro ověření latencí a šířkou pásma připojení a cíl Určuje, zda je příslušná data synchronní nebo asynchronní replikace a plánovaná doba optimální obnovení (RTO), může být pro vaše úlohy.
 
-#### <a name="mechanism-to-divert-traffic-between-dc"></a>Mechanismus pro přesměrovat provoz mezi řadiči domény
-Jeden efektivní technika, jak přesměrovat příchozí provoz v jeden řadič domény do jiné vychází z DNS. [Azure Traffic Manager] [ TM] používá k směrovat provoz koncového uživatele na nejvhodnější veřejný koncový bod v konkrétní vDC systému DNS (Domain Name). Prostřednictvím sondy Traffic Manager pravidelně kontroluje stav služby veřejné koncové body v různých virtuálních a v případě selhání těchto koncových bodů, směruje automaticky na sekundární virtuálních řadičů domény.
+#### <a name="mechanism-to-divert-traffic-between-dc"></a>Mechanismus pro rozdělení provozu mezi řadiče domény
+Jeden efektivní technikou k rozdělení příchozí provoz v jeden řadič domény do druhého vychází z DNS. [Azure Traffic Manager] [ TM] používá mechanismus systému DNS (Domain Name) směruje provoz koncového uživatele na nejvhodnější veřejný koncový bod v konkrétní vDC. Pomocí sond Traffic Manager pravidelně kontroluje stav služby veřejné koncové body v různých virtuálních a v případě selhání těchto koncových bodů, směruje automaticky na sekundární vDC.
 
-Traffic Manager lze například ovládací prvek nebo přesměrovat provoz na virtuálních počítačích Azure a webové aplikace v příslušné vDC a funguje na veřejné koncové body Azure. Traffic Manager odolný proti i při krátkodobém selhání celou oblast Azure a můžete řízení distribuce provozu generovaného uživateli pro koncové body služby v různých virtuálních na základě několika kritérií (například Chyba služby v konkrétní vDC nebo výběr virtuálního s nejnižší latenci sítě pro klienta).
+Traffic Manager pracuje na veřejné koncové body Azure a je možné, například do ovládacího prvku nebo přesměrovat provoz do virtuálních počítačů Azure a Web Apps v příslušné vDC. Traffic Manager je odolné, dokonce i v případě selhání celé oblasti Azure zůstane a můžete řídit distribuci uživatelského provozu do koncových bodů služby v různých virtuálních na základě několika kritérií (například Chyba služby v konkrétní vDC nebo výběrem virtuálního s nejnižší síťovou latencí pro klienta).
 
 ### <a name="conclusion"></a>Závěr
-Virtuální datového centra je přístup k migraci dat center do cloudu, který používá kombinaci funkcí a možností vytvoření škálovatelná architektura v Azure, který maximalizuje využití prostředků cloudu, snížení nákladů a zjednodušení zásad správného řízení systému. Koncept vDC je založena na topologii koncových rozbočovače, poskytuje společné sdílených služeb v centru a povolení konkrétní aplikace nebo zatížení v větve. V DC odpovídá struktuře role společnosti, kde různá oddělení (centrálního oddělení IT, DevOps, operace a údržba) pracují společně se na konkrétní seznam rolí a úloh. VDC splňuje požadavky pro migraci "Navýšení a Shift", ale také poskytuje celou řadu výhod nativní Cloudová nasazení.
+Virtuální datové centrum je přístup k přenesení datového centra do cloudu, který používá kombinaci funkcí a možností vytvoření škálovatelnou architekturu v Azure, která maximalizuje využití prostředků cloudu, snížení nákladů a zjednodušení systému zásad správného řízení. Koncept vDC podle topologie Centrum – paprsky, poskytuje společné sdílené služby v centru a povolení konkrétní aplikace a úlohy v paprsky. VDC odpovídá struktuře rolí společnosti, kde různá oddělení (z centrálního oddělení IT, DevOps, operace a údržba) spolupracují, každý s konkrétní seznam rolí a povinností. VDC splňuje požadavky pro migrace "metodou Lift a Shift", ale také nabízí celou řadu výhod pro nativní cloudové nasazení.
 
 ## <a name="references"></a>Odkazy
-Následující funkce byly popsané v tomto dokumentu. Kliknutím na odkazy na další informace.
+Následující funkce byly probírané v tomto dokumentu. Kliknutím na odkazy na další.
 
 | | | |
 |-|-|-|
 |Funkce sítě|Vyrovnávání zatížení|Připojení|
-|[Virtuální sítě Azure][VNet]</br>[Skupiny zabezpečení sítě][NSG]</br>[Protokolů NSG][NSGLog]</br>[Směrování definované uživatelem][UDR]</br>[Virtuální síťová zařízení][NVA]</br>[Veřejné IP adresy][PIP]</br>[DNS]|[Pro vyrovnávání zatížení Azure (L3) ][ALB]</br>[Aplikační brána (L7) ][AppGW]</br>[Brány Firewall webových aplikací][WAF]</br>[Azure Traffic Manager][TM] |[Partnerský vztah virtuální sítě][VNetPeering]</br>[Virtuální privátní síť][VPN]</br>[ExpressRoute][ExR]
+|[Virtuální sítě Azure][VNet]</br>[Skupiny zabezpečení sítě][NSG]</br>[Protokoly skupiny zabezpečení sítě][NSGLog]</br>[Směrování definované uživatelem][UDR]</br>[Síťová virtuální zařízení][NVA]</br>[Veřejné IP adresy][PIP]</br>[DNS]|[Azure Load Balancer (L3) ][ALB]</br>[Služba Application Gateway (L7) ][AppGW]</br>[Firewall webových aplikací][WAF]</br>[Azure Traffic Manageru][TM] |[VNet Peering][VNetPeering]</br>[Virtuální privátní síť][VPN]</br>[ExpressRoute][ExR]
 |Identita</br>|Monitorování</br>|Osvědčené postupy</br>|
-|[Azure Active Directory][AAD]</br>[Vícefaktorové ověřování][MFA]</br>[Ovládací prvky přístupu na základě role][RBAC]</br>[Výchozí role AAD][Roles] |[Azure monitorování][Monitor]</br>[Protokoly aktivity][ActLog]</br>[Diagnostické protokoly][DiagLog]</br>[Microsoft Operations Management Suite][OMS]</br>[Sledování výkonu sítě][NPM]|[Hraniční sítě osvědčené postupy][DMZ]</br>[Správa předplatného][SubMgmt]</br>[Správa skupin prostředků][RGMgmt]</br>[Limity předplatného Azure][Limits] |
-|Jinými službami Azure|
-|[Webové aplikace Azure][WebApps]</br>[HDInsights (Hadoop) ][HDI]</br>[Event Hubs][EventHubs]</br>[Service Bus][ServiceBus]|
+|[Azure Active Directory][AAD]</br>[Ověřování službou Multi-Factor Authentication][MFA]</br>[Řízení přístupu na základní role][RBAC]</br>[Výchozí role AAD][Roles] |[Azure Monitor][Monitor]</br>[Protokoly aktivit][ActLog]</br>[Diagnostické protokoly][DiagLog]</br>[Microsoft Operations Management Suite][OMS]</br>[Network Performance monitoru][NPM]|[Hraniční sítě, osvědčené postupy][DMZ]</br>[Správa předplatného][SubMgmt]</br>[Správa skupin prostředků][RGMgmt]</br>[Limity předplatného Azure][Limits] |
+|Další služby Azure|
+|[Azure Web Apps][WebApps]</br>[HDInsights (Hadoop) ][HDI]</br>[Event Hubs][EventHubs]</br>[Service Bus][ServiceBus]|
 
 
 
 ## <a name="next-steps"></a>Další kroky
- - Prozkoumejte [VNet Peering][VNetPeering], podpora technologie pro návrhy hvězdicové vDC
- - Implementace [AAD] [ AAD] začít pracovat s [RBAC] [ RBAC] zkoumání
- - Vyvinout model správy předplatného a prostředků a RBAC modelu ke splnění strukturu, požadavky a zásady vaší organizace. Plánování je nejdůležitější aktivity. Podobně jako praktické naplánujte pro uspořádání, při slučování, nové řádky produktu atd.
+ - Prozkoumejte [VNet Peering][VNetPeering], rozšiřováním technologie pro návrhy vDC střed a paprsek
+ - Implementace [AAD] [ AAD] začít s [RBAC] [ RBAC] průzkum
+ - Vývoj modelu správy předplatného a prostředků a RBAC model pro splnění strukturu, požadavky a zásad vaší organizace. Plánování je nejdůležitější aktivit. Podobně jako praktické plánování uspořádání, spojení, nové řádky produktu, atd.
 
 <!--Image References-->
-[0]: ./media/networking-virtual-datacenter/redundant-equipment.png "příklady překrývají součásti" 
-[1]: ./media/networking-virtual-datacenter/vdc-high-level.png "podrobný příklad hvězdicové vDC"
-[2]: ./media/networking-virtual-datacenter/hub-spokes-cluster.png "clusteru rozbočovače a koncových"
-[3]: ./media/networking-virtual-datacenter/spoke-to-spoke.png "ramenem ramenem"
-[4]: ./media/networking-virtual-datacenter/vdc-block-level-diagram.png "úrovně Blokový diagram serveru virtuálních řadičů domény"
-[5]: ./media/networking-virtual-datacenter/users-groups-subsciptions.png "uživatelů, skupin, odběry a projektů"
+[0]: ./media/networking-virtual-datacenter/redundant-equipment.png "příklady překrytí komponenty" 
+[1]: ./media/networking-virtual-datacenter/vdc-high-level.png "podrobný ukázkový hvězdicové vDC"
+[2]: ./media/networking-virtual-datacenter/hub-spokes-cluster.png "clusteru rozbočovače a paprsky"
+[3]: ./media/networking-virtual-datacenter/spoke-to-spoke.png "paprsku – paprsky"
+[4]: ./media/networking-virtual-datacenter/vdc-block-level-diagram.png "úrovně diagram virtuálního bloku"
+[5]: ./media/networking-virtual-datacenter/users-groups-subsciptions.png "uživatelů, skupin, předplatných a projekty"
 [6]: ./media/networking-virtual-datacenter/infrastructure-high-level.png "diagram základní infrastruktury"
 [7]: ./media/networking-virtual-datacenter/highlevel-perimeter-networks.png "diagram základní infrastruktury"
-[8]: ./media/networking-virtual-datacenter/vnet-peering-perimeter-neworks.png "partnerský vztah virtuální sítě a hraniční sítě"
+[8]: ./media/networking-virtual-datacenter/vnet-peering-perimeter-neworks.png "partnerský vztah virtuálních sítí a hraniční sítě"
 [9]: ./media/networking-virtual-datacenter/high-level-diagram-monitoring.png "vysokoúrovňový diagram pro monitorování"
-[10]: ./media/networking-virtual-datacenter/high-level-workloads.png "vysokoúrovňový diagram pro pracovní vytížení"
+[10]: ./media/networking-virtual-datacenter/high-level-workloads.png "vysokoúrovňový diagram úloh"
 
 <!--Link References-->
 [Limits]: https://docs.microsoft.com/azure/azure-subscription-service-limits

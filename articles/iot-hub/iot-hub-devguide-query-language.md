@@ -1,6 +1,6 @@
 ---
-title: Pochopení dotazovací jazyk Azure IoT Hub | Microsoft Docs
-description: Příručka vývojáře – popis IoT Hub SQL jako dotaz jazyk používaný k načtení informací o úlohách a dvojčata zařízení a modulem ze služby IoT hub.
+title: Vysvětlení dotazovací jazyk služby Azure IoT Hub | Dokumentace Microsoftu
+description: Příručka pro vývojáře – popis služby IoT Hub podobném SQL dotazovací jazyk používá k načtení informací o zařízení a modul dvojčata a úlohy ze služby IoT hub.
 author: fsautomata
 manager: ''
 ms.service: iot-hub
@@ -8,25 +8,25 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 663277bfe347f42fa7ee241f5acddf4a3dca9268
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 321d70a04e3c524e578a01e8531d63733d088c3f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633508"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444180"
 ---
-# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub dotazovacího jazyka pro dvojčata zařízení a modul, úlohy a směrování zpráv
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Dotazovací jazyk služby IoT Hub pro dvojčata zařízení a modul, úlohy a směrování zpráv
 
-Služba IoT Hub zajišťuje efektivní jazyka SQL jako k načtení informací o [dvojčata zařízení] [ lnk-twins] a [úlohy][lnk-jobs], a [směrování zpráv][lnk-devguide-messaging-routes]. Tento článek představuje:
+Centrum IoT poskytuje výkonné jazyce podobném SQL k načtení informací o [dvojčata zařízení] [ lnk-twins] a [úlohy][lnk-jobs]a [směrování zpráv][lnk-devguide-messaging-routes]. Tento článek představuje:
 
-* Úvod do hlavní funkce jazyka dotazů služby IoT Hub, a
+* Úvod do hlavní funkce dotazovací jazyk služby IoT Hub, a
 * Podrobný popis jazyka.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="device-and-module-twin-queries"></a>Zařízení a modul dotazů twin
-[Dvojčata zařízení] [ lnk-twins] a dvojčata modul může obsahovat libovolné objekty JSON vlastnosti a značky. IoT Hub umožňuje dotazu dvojčata zařízení a modul dvojčata jako jeden dokument JSON obsahující všechny informace o dvojici.
-Předpokládejme například, splnit vaše dvojčata zařízení IoT hub s následující strukturou (twin modulu by být podobné právě s další moduleId):
+## <a name="device-and-module-twin-queries"></a>Dotazů na dvojčata zařízení a modul
+[Dvojčata zařízení] [ lnk-twins] a dvojčaty modulů může obsahovat libovolné objekty JSON vlastnosti a značky. IoT Hub umožňuje dvojčaty modulů a dvojčata zařízení dotazu jako jeden dokument JSON obsahující informace o veškerém dvojčete.
+Předpokládejme například, že vaše dvojčata zařízení centra IoT mají následující strukturu (dvojče zařízení by se měl podobat pouze s další moduleId):
 
 ```json
 {
@@ -78,26 +78,26 @@ Předpokládejme například, splnit vaše dvojčata zařízení IoT hub s násl
 }
 ```
 
-### <a name="device-twin-queries"></a>Dotazy twin zařízení
+### <a name="device-twin-queries"></a>Dotazy dvojčete zařízení
 
-IoT Hub zpřístupní dvojčata zařízení jako kolekce dokumentů s názvem **zařízení**.
-Následující dotaz načte tak celou sadu dvojčata zařízení:
+Služba IoT Hub zpřístupní dvojčata zařízení jako kolekce dokumentů s názvem **zařízení**.
+Proto následující dotaz načte celou sadu dvojčata zařízení:
 
 ```sql
 SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Sady SDK služby Azure IoT] [ lnk-hub-sdks] podporu stránkování výsledků velký.
+> [Sady SDK Azure IoT] [ lnk-hub-sdks] podporuje stránkování výsledků velký.
 
-IoT Hub můžete načíst dvojčata zařízení filtrování pomocí libovolné podmínky. Například pro příjem zařízení dvojčata where **location.region** značky je nastaven na **USA** následující dotaz:
+IoT Hub umožňuje načíst dvojčata zařízení filtrování pomocí libovolné podmínky. Například pro příjem zařízení dvojčat where **location.region** značka je nastavená na **USA** následující dotaz:
 
 ```sql
 SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-Logické operátory a aritmetické porovnání jsou také podporovány. Například pro načtení zařízení dvojčata nachází v USA a nakonfigurované k odeslání telemetrie menší než každou minutu použijte následující dotaz:
+Logické operátory a aritmetické porovnání jsou také podporovány. Dvojčata nachází ve Spojených státech a nakonfigurovaná k odesílání telemetrických dat kratší než každou minutu použijte k načtení zařízení následující dotaz:
 
 ```sql
 SELECT * FROM devices
@@ -105,23 +105,23 @@ WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
-Pro potřeby je také možné použít konstanty pole s **IN** a **NV** operátory (ne v). Například pro načtení dvojčata zařízení, které oznamuje Wi-Fi nebo kabelové připojení použijte následující dotaz:
+V zájmu usnadnění práce, je také možné použít konstanty pole s **v** a **NVE** operátory (ne v). Například k načtení dvojčata zařízení, které podléhají Wi-Fi nebo drátová připojení použijte tento dotaz:
 
 ```sql
 SELECT * FROM devices
 WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-Často je potřeba určit všechny dvojčata zařízení, které obsahují určité vlastnosti. IoT Hub podporuje funkce `is_defined()` pro tento účel. Za účelem načtení dvojčata zařízení, které definují `connectivity` vlastnost použít následující dotaz:
+Často je potřeba identifikovat všechny dvojčata zařízení, které obsahují určitou vlastnost. IoT Hub podporuje funkci `is_defined()` pro tento účel. Například k načtení dvojčata zařízení, které definují `connectivity` vlastnosti použijte tento dotaz:
 
 ```SQL
 SELECT * FROM devices
 WHERE is_defined(properties.reported.connectivity)
 ```
 
-Odkazovat [klauzule WHERE] [ lnk-query-where] části pro úplný přehled funkcí filtrování.
+Odkazovat [klauzule WHERE] [ lnk-query-where] najdete úplný přehled možností filtrování.
 
-Seskupení a agregace jsou také podporovány. Například pokud chcete najít počet zařízení v každé telemetrie stav konfigurace použít následující dotaz:
+Seskupení a agregace jsou také podporovány. Najít počet zařízení v jednotlivých telemetrii, stav konfigurace použijte tento dotaz:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -130,7 +130,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-Tento dotaz seskupení vrátí výsledek podobně jako v následujícím příkladu:
+Toto seskupení dotaz by vrátil výsledek podobný následujícím příkladu:
 
 ```json
 [
@@ -149,36 +149,36 @@ Tento dotaz seskupení vrátí výsledek podobně jako v následujícím příkl
 ]
 ```
 
-V tomto příkladu tři zařízení hlášené úspěšná konfigurace, dva jsou stále aplikování konfigurace a jeden ohlásil chybu.
+V tomto příkladu tři zařízení hlásí úspěšné konfigurace, dva jsou stále použití konfigurace a jeden ohlásil chybu.
 
-Na dotazy projekce. umožňují vývojářům vrátit pouze vlastnosti, které jsou pro ně důležité. Například k načtení času posledního aktivity všech odpojit zařízení použijte následující dotaz:
+Projekce dotazů umožňují vývojářům vrátit pouze vlastnosti, které se o ně stojí. Například k načtení poslední čas aktivity všech odpojení zařízení použijte následující dotaz:
 
 ```sql
 SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 ```
 
-### <a name="module-twin-queries"></a>Modul twin dotazy
+### <a name="module-twin-queries"></a>Dotazy dvojčete modulu
 
-Dotazování na modulu dvojčata je podobná dotazu na dvojčata zařízení, ale pomocí jiný kolekce nebo obor názvů, tj. místo "zařízení z" můžete dotazovat
+Při dotazování u dvojčaty modulů je podobný dotaz na dvojčata zařízení, ale pomocí jiné kolekce/oboru názvů, tedy ne "zařízení z" můžete zadat dotaz
 
 ```sql
 SELECT * FROM devices.modules
 ```
 
-Nepovolit jsme spojení mezi zařízeními a devices.modules kolekce. Pokud chcete dotaz modulu dvojčata mezi zařízeními, můžete udělat podle značky. Tento dotaz vrátí všechny dvojčata modulu ve všech zařízeních se stavem prohledávání:
+Nepovolit jsme spojení mezi zařízeními a devices.modules kolekce. Pokud chcete dotazování dvojčat modulů napříč zařízeními, můžete to na základě značek. Tento dotaz vrátí všechny dvojčaty modulů napříč všemi zařízeními se stavem prohledávání:
 
 ```sql
-Select * from devices.modules where reported.properties.status = 'scanning'
+Select * from devices.modules where properties.reported.status = 'scanning'
 ```
 
-Tento dotaz vrátí všechny modulu dvojčata prohledávání stavem, ale jenom na zadaný podmnožinu zařízení.
+Tento dotaz vrátí všechny dvojčaty modulů s kontroly stavu, ale jenom na zadaný dílčí sadu zařízení.
 
 ```sql
-Select * from devices.modules where reported.properties.status = 'scanning' and deviceId IN ('device1', 'device2')  
+Select * from devices.modules where properties.reported.status = 'scanning' and deviceId IN ('device1', 'device2')  
 ```
 
 ### <a name="c-example"></a>Příklad jazyka C#
-Funkce dotazu je zveřejněna rozhraním [C# sady SDK služby] [ lnk-hub-sdks] v **RegistryManager** třídy.
+Funkce dotazu je zveřejněna rozhraním [sady SDK služby jazyka C#] [ lnk-hub-sdks] v **RegistryManager** třídy.
 Tady je příklad jednoduchého dotazu:
 
 ```csharp
@@ -193,12 +193,12 @@ while (query.HasMoreResults)
 }
 ```
 
-**Dotazu** vytvořit instanci objektu s velikostí stránky (až 100). Pak více stránek se načítají pomocí volání **GetNextAsTwinAsync** metody vícekrát.
+**Dotazu** s velikostí stránky (až 100) je vytvořena instance objektu. Pak více stránek se načítají pomocí volání **GetNextAsTwinAsync** metody více než jednou.
 
-Objekt dotazu vystavuje více **Další** hodnoty, v závislosti na možnosti deserializaci vyžadované dotazu. Například objekty úlohy nebo twin zařízení nebo prostý JSON při použití projekce.
+Objekt dotazu vystavuje více **Další** hodnoty v závislosti na možnosti deserializace vyžadované dotazu. Například objekty úlohy nebo dvojčat zařízení nebo prostý JSON při použití projekce.
 
 ### <a name="nodejs-example"></a>Příklad Node.js
-Funkce dotazu je zveřejněna rozhraním [sady SDK služby Azure IoT pro Node.js] [ lnk-hub-sdks] v **registru** objektu.
+Funkce dotazu je zveřejněna rozhraním [pro službu Azure IoT SDK pro Node.js] [ lnk-hub-sdks] v **registru** objektu.
 Tady je příklad jednoduchého dotazu:
 
 ```nodejs
@@ -220,20 +220,20 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-**Dotazu** vytvořit instanci objektu s velikostí stránky (až 100). Pak více stránek se načítají pomocí volání **nextAsTwin** metoda vícekrát.
+**Dotazu** s velikostí stránky (až 100) je vytvořena instance objektu. Pak více stránek se načítají pomocí volání **nextAsTwin** metodu více než jednou.
 
-Objekt dotazu vystavuje více **Další** hodnoty, v závislosti na možnosti deserializaci vyžadované dotazu. Například objekty úlohy nebo twin zařízení nebo prostý JSON při použití projekce.
+Objekt dotazu vystavuje více **Další** hodnoty v závislosti na možnosti deserializace vyžadované dotazu. Například objekty úlohy nebo dvojčat zařízení nebo prostý JSON při použití projekce.
 
 ### <a name="limitations"></a>Omezení
 
 > [!IMPORTANT]
-> Výsledky dotazu může mít několik minut zpoždění s ohledem na něj nejnovější hodnoty v dvojčata zařízení. Pokud dotazuje dvojčata jednotlivých zařízení podle ID, pomocí rozhraní API pro načtení zařízení twin. Toto rozhraní API vždy obsahuje nejnovější hodnoty a má, vyšší omezení.
+> Výsledky dotazu může mít několik minut, než zpoždění s ohledem na nejnovější hodnoty v dvojčata zařízení. Pokud se dotaz na dvojčata zařízení jednotlivých podle ID, pomocí rozhraní API dvojčete zařízení načtení. Toto rozhraní API vždy obsahuje nejnovější hodnoty a má vyšší omezení.
 
-V současné době porovnání jsou podporovány pouze mezi primitivní typy (žádné objekty), například `... WHERE properties.desired.config = properties.reported.config` je podporováno pouze v případě, že tyto vlastnosti mají primitivní hodnoty.
+V současné době porovnání jsou podporovány pouze mezi primitivní typy (žádné objekty), například `... WHERE properties.desired.config = properties.reported.config` je podporována pouze v případě, že máte primitivní hodnoty těchto vlastností.
 
 ## <a name="get-started-with-jobs-queries"></a>Začínáme s dotazy úlohy
 
-[Úlohy] [ lnk-jobs] poskytují způsob k provedení operací na sadu zařízení. Každý dvojče zařízení obsahuje informace o úlohách, které je součástí v kolekci s názvem **úlohy**.
+[Úlohy] [ lnk-jobs] poskytují způsob, jak provádět operace na sadu zařízení. Dvojče každého zařízení obsahuje informace o úlohy, které je součástí v kolekci s názvem **úlohy**.
 Logicky,
 
 ```json
@@ -265,10 +265,10 @@ Logicky,
 }
 ```
 
-Tato kolekce je v současné době dotazovatelné jako **devices.jobs** ve službě IoT Hub dotazu jazyka.
+Tato kolekce je v současné době dotazovatelné příkazem **devices.jobs** ve službě IoT Hub dotazovací jazyk.
 
 > [!IMPORTANT]
-> V současné době je nikdy vrácena vlastnost úlohy při dotazování dvojčata zařízení. To znamená, dotazy, které obsahují 'ze zařízení". Vlastnost úlohy lze přistupovat pouze přímo s dotazy pomocí `FROM devices.jobs`.
+> V současné době se nikdy vrátí vlastnost úlohy při dotazování dvojčat zařízení. To znamená, dotazy, které obsahují "ze zařízení". Vlastnosti úlohy je přístupný pouze přímo s dotazy, které používají `FROM devices.jobs`.
 >
 >
 
@@ -279,9 +279,9 @@ SELECT * FROM devices.jobs
 WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
-Všimněte si, jak tento dotaz obsahuje stav konkrétní zařízení (a případně přímá metoda odpověď) každé úlohy vrátil.
-Je také možné filtrovat pomocí libovolné Boolean podmínek na všechny vlastnosti objektu v **devices.jobs** kolekce.
-Například pokud chcete načíst všechny úlohy aktualizace twin dokončené zařízení, které byly vytvořeny po září 2016 pro konkrétní zařízení, použijte následující dotaz:
+Všimněte si, jak tento dotaz obsahuje stav specifický pro zařízení (a případně odpovědi přímé metody) jednotlivých úloh vrátila.
+Je také možné filtrovat pomocí libovolného logické podmínky u všech vlastností objektu v **devices.jobs** kolekce.
+Například pokud chcete načíst všechny úlohy aktualizace dvojčete dokončené zařízení, vytvořené pro konkrétní zařízení od září 2016, použijte tento dotaz:
 
 ```sql
 SELECT * FROM devices.jobs
@@ -291,7 +291,7 @@ WHERE devices.jobs.deviceId = 'myDeviceId'
     AND devices.jobs.createdTimeUtc > '2016-09-01'
 ```
 
-Můžete také načíst výstupy podle zařízení jednu úlohu.
+Můžete také načíst výsledky na zařízení z jedné úlohy.
 
 ```sql
 SELECT * FROM devices.jobs
@@ -302,18 +302,18 @@ WHERE devices.jobs.jobId = 'myJobId'
 V současné době se dotazuje na **devices.jobs** nepodporují:
 
 * Projekce, proto pouze `SELECT *` je možné.
-* Podmínky, které odkazují na dvojče zařízení kromě vlastnosti úlohy (viz předchozí části).
-* Provádění agregace, jako je počet, avg, Seskupit podle.
+* Podmínky, které odkazují na dvojče zařízení kromě vlastnosti úlohy (viz předchozí část).
+* Provádění agregací, jako je například počet, průměr, Seskupit podle.
 
-## <a name="device-to-cloud-message-routes-query-expressions"></a>Výrazy dotazu zprávu typu zařízení cloud trasy
+## <a name="device-to-cloud-message-routes-query-expressions"></a>Směrování zpráv typu zařízení cloud výrazech dotazů
 
-Pomocí [zařízení cloud trasy][lnk-devguide-messaging-routes], můžete nakonfigurovat Centrum IoT k odesílání zpráv typu zařízení cloud do různých koncových bodů. Odeslání je založené na výrazech vyhodnotit na základě jednotlivých zpráv.
+Pomocí [trasy typu zařízení cloud][lnk-devguide-messaging-routes], můžete nakonfigurovat službu IoT Hub odesílat zprávy typu zařízení cloud do různých koncových bodů. Odesílání podle výrazů vyhodnocovaných proti jednotlivé zprávy.
 
-Trasa [podmínku] [ lnk-query-expressions] používá stejný dotaz jazyk IoT Hub jako podmínky v dotazech twin a úlohy. Podmínky trasy se vyhodnocují na hlavičky zpráv a text. Směrování výraz dotazu může zahrnovat pouze hlavičky zpráv pouze text zprávy, nebo obojí. IoT Hub předpokládá konkrétní schéma pro záhlaví a text zprávy, aby bylo možné směrovat zprávy. Následující části popisují, co je vyžadována pro IoT Hub, která správně trasy.
+Trasa [podmínku] [ lnk-query-expressions] používá stejné dotazovací jazyk služby IoT Hub jako podmínky v dotazech dvojčete a úlohy. Trasy podmínky se vyhodnocují v záhlaví zpráv a text. Směrování výrazu dotazu může zahrnovat pouze hlavičky zpráv, text zprávy, nebo obojí. IoT Hub předpokládá určité schéma pro hlavičky a tělo zprávy směrování zpráv. Následující části popisují, co je potřeba pro službu IoT Hub správně směrovat.
 
-### <a name="routing-on-message-headers"></a>Směrování v záhlaví zpráv
+### <a name="routing-on-message-headers"></a>Směrování na záhlaví zpráv
 
-IoT Hub předpokládá následující reprezentace JSON hlavičky zpráv pro směrování zpráv:
+IoT Hub se předpokládá následující reprezentaci JSON záhlaví zpráv pro směrování zpráv:
 
 ```json
 {
@@ -335,23 +335,23 @@ IoT Hub předpokládá následující reprezentace JSON hlavičky zpráv pro sm�
 }
 ```
 
-Vlastnosti zprávu systému mají předponu `'$'` symbol.
-Vlastnosti uživatelů jsou vždy přistupovat pomocí jeho názvu. Pokud vlastnost uživatelské jméno se shoduje s vlastností systému (například `$contentType`), je načíst vlastnost uživatele s `$contentType` výraz.
-Vždy přístup k vlastnosti systému pomocí závorek `{}`: například můžete použít ve výrazu `{$contentType}` pro přístup k vlastnosti systému `contentType`. Názvy vlastností v závorkách vždy načítají odpovídající vlastnost systému.
+Vlastnosti zprávy systému začínají `'$'` symbol.
+Vlastnosti uživatele se vždy přistupuje včetně jejich jména. Pokud název vlastnosti uživatele shoduje s vlastností systému (například `$contentType`), vlastnost uživatele získáte pomocí `$contentType` výrazu.
+Vždy přístup k vlastnosti systému pomocí ostrých závorek `{}`: můžete například použít výraz `{$contentType}` pro přístup k vlastnosti systému `contentType`. Názvy vlastností závorkách vždy načíst odpovídající vlastnost systému.
 
-Mějte na paměti, že jsou názvy vlastností malá a velká písmena.
+Mějte na paměti, že v názvech vlastností se malá a velká písmena.
 
 > [!NOTE]
-> Všechny vlastnosti zprávy jsou řetězce. Vlastnosti systému, jak je popsáno v [Příručka vývojáře][lnk-devguide-messaging-format], nejsou aktuálně k dispozici pro použití v dotazech.
+> Všechny vlastnosti zprávy jsou řetězce. Vlastnosti systému, jak je popsáno v [– Příručka pro vývojáře][lnk-devguide-messaging-format], aktuálně nejsou k dispozici pro použití v dotazech.
 >
 
-Například, pokud používáte `messageType` vlastnost, můžete chtít směrovat všechny telemetrická jeden koncový bod a všechny výstrahy pro jiný koncový bod. Můžete napsat následující výraz směrovat telemetrie:
+Například, pokud použijete `messageType` vlastnosti, můžete chtít směrovat všechny telemetrie na jeden koncový bod a všechny výstrahy do jiného koncového bodu. Můžete napsat následující výraz směrovat telemetrická data:
 
 ```sql
 messageType = 'telemetry'
 ```
 
-A následující výraz směrovat výstražných zpráv:
+A následující výraz pro směrování zpráv s výstrahou:
 
 ```sql
 messageType = 'alert'
@@ -363,13 +363,13 @@ Logické výrazy a funkce jsou také podporovány. Tato funkce umožňuje rozli�
 messageType = 'alerts' AND as_number(severity) <= 2
 ```
 
-Odkazovat [výraz a podmínky] [ lnk-query-expressions] části úplný seznam podporovaných operátory a funkce.
+Odkazovat [výraz a podmínky] [ lnk-query-expressions] najdete úplný seznam podporovaných operátory a funkce.
 
-### <a name="routing-on-message-bodies"></a>Směrování na obsah zpráv
+### <a name="routing-on-message-bodies"></a>Směrování zpráv
 
-IoT Hub můžete pouze směrování podle tělo zprávy obsah, pokud text zprávy je správně vytvořen JSON kódování UTF-8, UTF-16 nebo UTF-32. Nastavit typ obsahu zprávy `application/json`. Nastavte na jednu z podporovaných kódování UTF v záhlaví zprávy kódování obsahu. Pokud není zadán buď z hlaviček, IoT Hub nebude pokoušet o vyhodnocení jakýkoli výraz dotazu zahrnující těla proti zprávy. Pokud zpráva není JSON zprávu nebo zprávu neurčuje typu obsahu a kódování obsahu, stále můžete zprávu směrování směrovat zprávy založené na záhlaví zprávy.
+IoT Hub můžete pouze směrování podle textu zprávy obsah, pokud text zprávy je správně vytvořený JSON zakódován do kódování UTF-8, UTF-16 nebo UTF-32. Nastavit typ obsahu zprávy, která se `application/json`. Nastavte na jednu z podporovaných kódování UTF v hlavičkách zpráv kódování obsahu. Pokud není zadán buď z hlaviček, IoT Hub nebude pokoušet o vyhodnocení libovolný výraz dotazu zahrnující orgánu proti zprávě. Pokud zpráva není JSON zpráva nebo zpráva neurčuje typu obsahu a kódování obsahu, stále můžete směrování zpráv pro směrování zpráv založené na hlavičkách zpráv.
 
-Následující příklad ukazuje, jak vytvořit zprávu s správně formátovaný a zakódovaný text JSON:
+Následující příklad ukazuje, jak vytvořit zprávu s správně formát a je kódovaný text JSON:
 
 ```csharp
 string messageBody = @"{ 
@@ -416,7 +416,7 @@ using (var message = new Message(messageBytes))
 }
 ```
 
-Můžete použít `$body` ve výrazu dotazu pro odesílání zpráv. Jednoduchý text odkazu, odkaz na pole text nebo více odkazů text můžete použít ve výrazu dotazu. Výraz dotazu můžete také kombinovat textu odkaz s odkazem na záhlaví zprávy. Tady jsou například všechny výrazy platný dotaz:
+Můžete použít `$body` ve výrazu dotazu pro odesílání zpráv. Jednoduchý text odkazu, odkaz na pole text nebo více odkazů textu můžete použít ve výrazu dotazu. Výraz dotazu můžete také kombinovat odkaz text s odkazem záhlaví zprávy. Následující příklad, jsou všechny výrazy platný dotaz:
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb'
@@ -425,8 +425,8 @@ length($body.Weather.Location.State) = 2
 $body.Weather.Temperature = 50 AND Status = 'Active'
 ```
 
-## <a name="basics-of-an-iot-hub-query"></a>Základní informace o dotaz služby IoT Hub
-Každé centrum IoT dotazu se skládá vyberte a z klauzule volitelné místo, kde a klauzule GROUP BY. Každý dotaz je spuštěn na kolekci dokumentů JSON, například dvojčata zařízení. V klauzuli FROM označuje kolekce dokumentu. Chcete-li být vstupní na (**zařízení** nebo **devices.jobs**). Pak je použit filtr v klauzuli WHERE. S agregací, seskupování výsledků hledání tohoto kroku uvedené v klauzuli GROUP BY. Pro každou skupinu, je vygenerována řádek uvedené v klauzuli SELECT.
+## <a name="basics-of-an-iot-hub-query"></a>Základní informace o službě IoT Hub dotazu
+Každý dotaz služby IoT Hub se skládá, vyberte a z klauzule volitelné místo, kde a klauzule GROUP BY. Každý dotaz se spouští v kolekci dokumentů JSON, například dvojčata zařízení. Klauzule FROM označuje provést iteraci v kolekci dokumentů (**zařízení** nebo **devices.jobs**). Poté je použit filtr v klauzuli WHERE. Pomocí agregace, jsou výsledky tohoto kroku seskupené podle zadání v klauzuli Group by. Pro každou skupinu, je vygenerována řádku zadané v klauzuli SELECT.
 
 ```sql
 SELECT <select_list>
@@ -436,18 +436,18 @@ FROM <from_specification>
 ```
 
 ## <a name="from-clause"></a>FROM – klauzule
-**z < from_specification >** klauzule můžete předpokládat pouze dvě hodnoty: **ze zařízení** k dvojčata zařízení dotaz, nebo **z devices.jobs** dotazu úlohy podle zařízení podrobnosti o.
+**z < from_specification >** klauzule může převzít jenom dvě hodnoty: **ze zařízení** na dvojčata zařízení dotazu, nebo **z devices.jobs** na podrobnosti o dotazu úlohy na zařízení.
 
 ## <a name="where-clause"></a>Klauzule WHERE
-**Kde < filter_condition >** klauzule je volitelný. Určuje, že jeden nebo více podmínky, že dokumenty JSON v kolekci FROM musí splňovat zahrnuty jako součást výsledku. Dokumentu JSON se musí vyhodnotit na hodnotu true, mají být zahrnuty do výsledku k zadaným podmínkám.
+**Kde < filter_condition >** klauzule je volitelný. Určuje, že mají být zahrnuty jako součást výsledku musí splňovat jednu nebo více podmínek, že v kolekci z dokumentů JSON. Jakýkoliv dokument JSON musí být zadané podmínky na "true" mají být zahrnuty ve výsledku.
 
 Povolené podmínky jsou popsány v části [výrazy a podmínky][lnk-query-expressions].
 
 ## <a name="select-clause"></a>Klauzule SELECT
-**Vyberte < select_list >** je povinná a určuje, jaké hodnoty jsou načteny z dotazu. Určuje hodnoty JSON, které mají být použita ke generování nových objektů JSON.
-Pro každý prvek filtrované (a volitelně seskupené) podmnožinu kolekce FROM fázi projekce generuje nový objekt JSON. Tento objekt je vytvořený pomocí hodnot zadaných v klauzuli SELECT.
+**Vyberte < select_list >** je povinná a určuje, jaké hodnoty jsou načteny z dotazu. Určuje hodnoty JSON se použije k vygenerování nových objektů JSON.
+Pro každý prvek filtrované (a volitelně seskupené) podmnožinu kolekce z fáze projekce vygeneruje nový objekt JSON. Tento objekt je vytvořený pomocí hodnoty zadané v klauzuli SELECT.
 
-Toto je gramatiky klauzuli SELECT:
+Toto je gramatika klauzuli SELECT:
 
 ```
 SELECT [TOP <max number>] <projection list>
@@ -469,14 +469,14 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**Attribute_name** odkazuje na žádnou vlastnost dokumentu JSON v kolekci FROM. Některé příklady klauzule FROM lze nalézt v [Začínáme s dotazy twin zařízení] [ lnk-query-getstarted] části.
+**Attribute_name v relaci** odkazuje na všechny vlastnosti v kolekci z dokumentu JSON. Některé příklady klauzule FROM najdete v [Začínáme s dotazy dvojčete zařízení] [ lnk-query-getstarted] oddílu.
 
-V současné době výběr klauzule liší od **vyberte*** jsou podporovány pouze v agregační dotazy na dvojčata zařízení.
+V současné době výběr klauzule liší od **vyberte*** jsou podporovány pouze v agregačních dotazů na dvojčata zařízení.
 
 ## <a name="group-by-clause"></a>Klauzule GROUP BY
-**GROUP BY < group_specification >** klauzule je volitelný krok, který provádí po filtr zadaný v klauzuli WHERE a před projekce určená v SELECT. Seskupuje dokumentů na základě hodnoty atributu. Tyto skupiny se používají ke generování agregované hodnoty zadané v klauzuli SELECT.
+**Group < group_specification >** klauzule je volitelný krok, který se spustí po zadaný v klauzuli WHERE a před projekce určená v seznamu vyberte filtr. Seskupuje dokumentů na základě hodnoty atributu. Tyto skupiny slouží ke generování agregovaných hodnot zadaných v klauzuli SELECT.
 
-Příklad dotazu pomocí skupiny je:
+Příklad dotazu pomocí GROUP BY je:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -485,7 +485,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-Formální syntaxe GROUP BY je:
+Formální syntaxe pro GROUP BY je následující:
 
 ```
 GROUP BY <group_by_element>
@@ -494,19 +494,19 @@ GROUP BY <group_by_element>
     | < group_by_element > '.' attribute_name
 ```
 
-**Attribute_name** odkazuje na žádnou vlastnost dokumentu JSON v kolekci FROM.
+**Attribute_name v relaci** odkazuje na všechny vlastnosti v kolekci z dokumentu JSON.
 
-V klauzuli GROUP BY je v současné době podporována pouze při dotazování dvojčata zařízení.
+V klauzuli GROUP BY se v současné době podporuje jenom při dotazování dvojčat zařízení.
 
 ## <a name="expressions-and-conditions"></a>Výrazy a podmínky
 Na vysoké úrovni *výraz*:
 
-* Vyhodnotí jako instanci typu JSON (například logická hodnota, čísla, řetězce, pole nebo objekt).
-* Je definován manipulace s daty z dokumentu JSON zařízení a konstanty pomocí předdefinovaných operátory a funkce.
+* Vyhodnotí jako instanci typu JSON (jako je logická hodnota, číslo, řetězec, pole nebo objekt).
+* Je definovaná pomocí manipulace s daty z dokumentu JSON zařízení a konstant pomocí integrované operátory a funkce.
 
-*Podmínky* jsou výrazy, které vyhodnocena jako logická hodnota. Žádné jiné než logická hodnota konstanta **true** se považuje za **false**. Toto pravidlo obsahuje **null**, **nedefinované**, všechny objekt nebo pole instance libovolného řetězce a logická hodnota **false**.
+*Podmínky* jsou výrazy, které vedou na logickou hodnotu. Libovolná konstanta liší od datový typ Boolean **true** považuje **false**. Toto pravidlo zahrnuje **null**, **nedefinované**, libovolný objekt nebo pole instance, libovolný řetězec a logickou hodnotu **false**.
 
-Syntaxe pro výrazy je:
+Syntaxe výrazů je:
 
 ```
 <expression> ::=
@@ -534,19 +534,19 @@ Syntaxe pro výrazy je:
 <array_constant> ::= '[' <constant> [, <constant>]+ ']'
 ```
 
-Zjistit, co každý symbol v syntaxi výrazy znamená, najdete v následující tabulce:
+Informace o tom co zastupuje každý symbol v syntaxi výrazů, najdete v následující tabulce:
 
 | Symbol | Definice |
 | --- | --- |
-| attribute_name | Všechny vlastnosti v dokumentu JSON **FROM** kolekce. |
-| binary_operator | Všechny binární operátor uvedené v [operátory](#operators) části. |
-| Název_funkce| Všechny funkce uvedené v [funkce](#functions) části. |
-| decimal_literal |Float, vyjádřené v desítkovém zápisu. |
-| hexadecimal_literal |Číslo vyjádřená řetězec '0 x, za nímž následuje řetězec šestnáctkových číslic. |
-| string_literal |Textové literály jsou reprezentována posloupnost nula nebo více znaků Unicode nebo řídicí sekvence řetězců v kódu Unicode. Textové literály jsou uzavřené v jednoduchých uvozovkách nebo dvojité uvozovky. Povolené řídicí sekvence: `\'`, `\"`, `\\`, `\uXXXX` pro znaky znakové sady Unicode, které jsou definované 4 hexadecimální číslice. |
+| attribute_name v relaci | Nějaká vlastnost v dokumentu JSON **FROM** kolekce. |
+| binary_operator | Žádné binární operátor uvedené v [operátory](#operators) oddílu. |
+| Název_funkce| Všechny funkce uvedené v [funkce](#functions) oddílu. |
+| decimal_literal |Plovoucí desetinné čárky v desítkovém zápisu. |
+| hexadecimal_literal |Číslo vyjadřuje řetězcem "0 x", za nímž následuje řetězec šestnáctkových číslic. |
+| řetězcový_literál |Řetězcové literály jsou reprezentovány posloupnost nula nebo více znaků Unicode nebo řídicí sekvence řetězců v kódu Unicode. Řetězcové literály jsou uzavřeny v jednoduchých uvozovkách nebo dvojité uvozovky. Povolené řídicí sekvence: `\'`, `\"`, `\\`, `\uXXXX` znaků Unicode, které jsou definovány 4 šestnáctkovými číslicemi. |
 
 ### <a name="operators"></a>Operátory
-Podporovány jsou následující operátory:
+Jsou podporovány následující operátory:
 
 | Rodina | Operátory |
 | --- | --- |
@@ -555,55 +555,55 @@ Podporovány jsou následující operátory:
 | porovnání |=, !=, <, >, <=, >=, <> |
 
 ### <a name="functions"></a>Functions
-Při dotazování dvojčata a úlohám, které jediný podporovaný je funkce:
+Při dotazování na dvojčata a úlohy, které jediný podporovaný je funkce:
 
 | Funkce | Popis |
 | -------- | ----------- |
-| IS_DEFINED(Property) | Vrátí logickou hodnotu udávající, pokud byla vlastnost přiřazenou hodnotu (včetně `null`). |
+| IS_DEFINED(Property) | Vrátí logickou hodnotu označující, pokud vlastnost byla přiřazena hodnota (včetně `null`). |
 
 V podmínkách trasy jsou podporovány následující matematické funkce:
 
 | Funkce | Popis |
 | -------- | ----------- |
-| ABS(x) | Vrátí absolutní hodnotu (kladné) zadaný číselný výraz. |
-| EXP(x) | Vrátí hodnotu exponenciálního zadaný číselný výraz (e ^ x). |
-| Power(x,y) | Vrátí hodnotu zadaného výrazu určenou mocninu (x ^ y).|
-| Square(x) | Vrátí druhou mocninu Zadaná číselná hodnota. |
-| CEILING(x) | Vrátí nejmenší hodnotu, celé číslo větší než nebo rovna hodnotě zadané číselný výraz. |
-| Floor(x) | Vrátí největší celé číslo menší než nebo rovna zadané číselný výraz. |
-| Sign(x) | Vrátí kladnou (+ 1), nula (0) nebo záporné znaménko (-1) zadaný číselný výraz.|
-| SQRT(x) | Vrátí druhou odmocninu čísla zadaná číselná hodnota. |
+| ABS(x) | Vrátí absolutní hodnotu (pozitivní) zadaný číselný výraz. |
+| EXP(x) | Vrátí hodnotu exponenciální zadaný číselný výraz (e ^ x). |
+| Power(x,y) | Vrátí hodnotu zadaného výrazu určenou (x ^ y).|
+| Square(x) | Vrátí druhou mocninu zadané číselnou hodnotu. |
+| CEILING(x) | Vrátí nejmenší hodnotu celé číslo větší než nebo rovna zadané číselný výraz. |
+| Floor(x) | Vrátí největší celé číslo menší nebo rovna zadané číselný výraz. |
+| Sign(x) | Vrátí kladné (+ 1), nula (0) nebo záporné znaménko (-1), z určeného číselného výrazu.|
+| SQRT(x) | Vrátí druhou odmocninu zadanou číselnou hodnotu. |
 
-V podmínkách trasy jsou podporovány následující kontrola typu a přetypování funkce:
-
-| Funkce | Popis |
-| -------- | ----------- |
-| AS_NUMBER | Převede vstupní řetězec na číslo. `noop` Pokud vstup je číslo; `Undefined` Pokud řetězec nepředstavuje číslo.|
-| IS_ARRAY | Vrátí logickou hodnotu udávající, pokud je typ zadaný výraz pole. |
-| IS_BOOL | Vrátí logickou hodnotu udávající, pokud typ zadaný výraz je logická hodnota. |
-| IS_DEFINED | Vrátí logickou hodnotu udávající, pokud byla vlastnost přiřazenou hodnotu. |
-| IS_NULL | Vrátí logickou hodnotu udávající, pokud není typ zadaného výrazu hodnotu null. |
-| IS_NUMBER | Vrátí logickou hodnotu udávající, pokud typ zadaný výraz je číslo. |
-| IS_OBJECT | Vrátí logickou hodnotu udávající, pokud typ zadaný výraz je objekt JSON. |
-| IS_PRIMITIVE | Vrátí logickou hodnotu udávající, pokud není typ zadaného výrazu jednoduchého typu (řetězec, logická hodnota, číselné, nebo `null`). |
-| IS_STRING | Vrátí logickou hodnotu udávající, pokud typ zadaný výraz obsahuje řetězec. |
-
-V podmínkách trasy jsou podporovány následující funkce řetězce:
+V podmínkách trasy jsou podporovány následující kontroly typu a funkce přetypování:
 
 | Funkce | Popis |
 | -------- | ----------- |
-| CONCAT (x, y,...) | Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcové hodnoty. |
+| AS_NUMBER | Převede vstupní řetězec na číslo. `noop` Pokud je vstup na číslo. `Undefined` Pokud řetězec nepředstavuje číslo.|
+| IS_ARRAY – | Vrátí logickou hodnotu označující, zda je typ z určeného výrazu pole. |
+| IS_BOOL | Vrátí logickou hodnotu označující, pokud typ z určeného výrazu je logická hodnota. |
+| IS_DEFINED | Vrátí logickou hodnotu označující, pokud vlastnost byla přiřazena hodnota. |
+| IS_NULL | Vrátí logickou hodnotu označující, zda je typ z určeného výrazu hodnotu null. |
+| IS_NUMBER | Vrátí logickou hodnotu označující, pokud typ z určeného výrazu je číslo. |
+| IS_OBJECT – | Vrátí logickou hodnotu označující, pokud je typ z určeného výrazu objektu JSON. |
+| IS_PRIMITIVE | Vrátí logickou hodnotu označující, zda je typ z určeného výrazu jednoduchého typu (string, Boolean, číselná, nebo `null`). |
+| IS_STRING | Vrátí logickou hodnotu označující, pokud je typ z určeného výrazu string. |
+
+V podmínkách trasy jsou podporovány následující funkce řetězec:
+
+| Funkce | Popis |
+| -------- | ----------- |
+| CONCAT (x, y,...) | Vrátí řetězec, který je výsledkem zřetězení dvou nebo více řetězcových hodnot. |
 | LENGTH(x) | Vrátí počet znaků ze zadaného řetězcového výrazu.|
-| LOWER(x) | Vrací výraz řetězce po převodu dat velké písmeno na malá písmena. |
-| UPPER(x) | Vrací výraz řetězce po převodu dat malé písmeno na velká písmena. |
-| Dílčí řetězec (string, spuštění [, délka]) | Vrátí část řetězcového výrazu od pozice s nulovým základem zadaný znak a pokračuje na určenou délku nebo na konci řetězce. |
-| INDEX_OF (řetězec, fragment) | Vrátí počáteční pozici prvního výskytu druhý řetězec výrazu v rámci první zadaného řetězcového výrazu nebo -1, pokud není nalezen řetězec.|
-| STARTS_WITH (x, y) | Vrátí logická hodnota, která určuje zda první řetězec výraz začíná druhý. |
-| ENDS_WITH (x, y) | Vrátí logická hodnota, která určuje zda první řetězec výraz končí druhý. |
-| CONTAINS(x,y) | Vrátí logická hodnota, která určuje zda první řetězec výraz obsahuje druhý. |
+| LOWER(x) | Vrátí řetězcový výraz po převedení dat velkým písmenem na malá písmena. |
+| UPPER(x) | Vrátí řetězcový výraz po převedení data znaků na malá písmena na velká písmena. |
+| Dílčí řetězec (string, start [, délka]) | Vrátí část řetězcového výrazu počínaje pozice s nulovým základem zadaný znak a pokračuje na určenou délku nebo na konci řetězce. |
+| INDEX_OF (string, fragment) | Vrátí počáteční pozici prvního výskytu druhý řetězec výrazu v rámci prvního zadaného řetězcového výrazu nebo -1, pokud není nalezen řetězec.|
+| STARTS_WITH (x, y) | Vrátí hodnotu typu Boolean označující, zda se první výraz řetězce začíná druhé. |
+| ENDS_WITH (x, y) | Vrátí hodnotu typu Boolean označující, zda se první výraz řetězce končí na druhý. |
+| CONTAINS(x,y) | Vrátí hodnotu typu Boolean označující, zda řetězec prvního výrazu obsahuje druhý. |
 
 ## <a name="next-steps"></a>Další postup
-Zjistěte, jak na provedení dotazů ve svých aplikacích pomocí [SDK služby Azure IoT][lnk-hub-sdks].
+Zjistěte, jak provádět dotazy ve svých aplikacích pomocí [sad SDK Azure IoT][lnk-hub-sdks].
 
 [lnk-query-where]: iot-hub-devguide-query-language.md#where-clause
 [lnk-query-expressions]: iot-hub-devguide-query-language.md#expressions-and-conditions

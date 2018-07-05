@@ -1,81 +1,81 @@
 ---
-title: Správa privilegovaných identit pro prostředky Azure – povolit správu předplatné | Microsoft Docs
-description: Zjistěte, jak globální správci můžete spravovat odběry v klientovi.
+title: Privileged Identity Management pro prostředky Azure – povolení správy předplatného | Dokumentace Microsoftu
+description: Zjistěte, jak globální správci můžou spravovat předplatná v tenantovi.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 ms.service: active-directory
 ms.devlang: na
-ms.topic: how-to
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 03/27/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 628ee70f7eb59673d4229441e3c4242e1ef8e0d3
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 6aeb82ff1feb3521f3a09dc1b28186754568bb27
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234268"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442979"
 ---
-# <a name="enable-subscription-management-in-your-tenant"></a>Povolení správy předplatného ve vašem klientovi
+# <a name="enable-subscription-management-in-your-tenant"></a>Povolení správy předplatného ve vašem tenantovi
 
-Jako globální správce adresáře nemusí mít výchozí přístup ke všem prostředkům předplatného ve vašem klientovi. Tento článek popisuje kroky, abyste měli přístup na všechny odběry ve vašem klientovi. Také poskytuje doporučený postup pro zbývající splňovat všechny prvky zabezpečení, které vaše organizace vyžaduje, jakmile se zobrazí přístup.
+Jako globální správce adresáře nemusí mít výchozí přístup ke všem prostředkům předplatné ve vašem tenantovi. Tento článek popisuje kroky, abyste měli přístup pro všechna předplatná v tenantovi. Také poskytuje doporučený postup pro zbývající splňovat všechny kontrolní mechanismy zabezpečení, které vaše organizace vyžaduje, jakmile se zobrazí přístup.
 
-## <a name="who-can-enable-management-of-subscriptions-in-my-directory"></a>Kdo může povolit správu odběry ve adresáře Moje?
+## <a name="who-can-enable-management-of-subscriptions-in-my-directory"></a>Kdo může povolit správu předplatných v mém adresáři?
 
-Každý uživatel přiřazený k roli globálního správce musí použijte následující postup k povolení správy předplatného. Po povolení správy předplatného sami, můžete přidat další globální správce, kteří může být nutné prostředků také přístup. Neexistuje žádné nastavení adresář, který umožňuje přístup pro všechny členy rolí globálního správce.
+Každý uživatel přiřazený k roli globálního správce musí podle následujících pokynů k povolení správy předplatného. Po povolení správy předplatných sami, můžete přidat další globální správce, kteří může být nutné prostředků i přístup. Neexistuje žádné nastavení adresáře, který umožňuje přístup pro všechny členy rolí globálního správce.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k portálu Azure pomocí účtu, který je členem role Globální správce oprávněné nebo active. Pokud účet, je vhodné globální správce, musíte nejprve aktivovat roli než budete pokračovat k dalšímu kroku.
+Přihlaste se k webu Azure portal pomocí účtu, který je členem role Globální správce oprávněné nebo aktivní. Pokud je účet globálního správce, musíte nejprve aktivovat roli před přechodem k dalšímu kroku.
 
 ## <a name="access-the-azure-active-directory-admin-center"></a>Přístup k centru pro správu Azure Active Directory
 
-Teď, když jste přihlášení k portálu Azure jako globální správce, můžete upravit nastavení, které poskytují přístup k předplatným služby Azure. Přejděte do centra pro správu Azure Active Directory (Azure AD) a vyberte **vlastnosti**.
+Teď, když jste přihlášeni k webu Azure portal jako globální správce, můžete upravit nastavení, které poskytují přístup k předplatným Azure. Přejděte do centra pro správu Azure Active Directory (Azure AD) a vyberte **vlastnosti**.
 
-![Centrum pro správu – snímek obrazovky Azure AD, se zvýrazněnou vlastnosti](media/azure-pim-resource-rbac/aad_properties.png)
+![Snímek obrazovky s Azure AD, centra pro správu pomocí vlastnosti zvýrazněné](media/azure-pim-resource-rbac/aad_properties.png)
 
-V seznamu vlastností v části **globálního správce může spravovat předplatná Azure**, vyberte **Ano**.
+V seznamu vlastností v části **globální správce může spravovat předplatná Azure**vyberte **Ano**.
 
-![Snímek obrazovky vlastností stránky s přepnutí nastavenou na Ano](media/azure-pim-resource-rbac/aad_properties_save.png)
+![Snímek obrazovky vlastností stránky s přepínací tlačítko, nastavte na Ano](media/azure-pim-resource-rbac/aad_properties_save.png)
 
-Teď váš účet je automaticky přidán do role správce přístupu uživatelů pro každé předplatné prostředek v klientovi.
+Teď váš účet je automaticky přidán do role správce přístupu uživatelů pro každý prostředek předplatného v tenantovi.
 
 ## <a name="browse-to-azure-ad-pim"></a>Přejděte do Azure AD PIM
 
- Z tohoto místa přejděte na Azure AD Privileged Identity Management (PIM). V části **spravovat**, vyberte **prostředky Azure**.
+ Odtud přejdete na Azure AD Privileged Identity Management (PIM). V části **spravovat**vyberte **prostředky Azure**.
 
-![Snímek obrazovky z PIM s prostředky Azure zvýrazněná](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
+![Snímek obrazovky z PIM, se zvýrazněným prostředků Azure](media/azure-pim-resource-rbac/aadpim_manage_azure_resources.png)
 
-## <a name="manage-and-discover-resources"></a>Spravovat a zjišťovat prostředky
+## <a name="manage-and-discover-resources"></a>Správa a zjišťování prostředků
 
-Pokud vaše organizace už používá Azure AD PIM k ochraně správci ve službě Azure AD, zobrazí se seznam předplatných, až se načte v okně.
+Pokud vaše organizace už používá Azure AD PIM k ochraně správců ve službě Azure AD, zobrazí se seznam předplatných, při načtení okna.
 
-![Snímek obrazovky z PIM s seznamu předplatných zobrazí v okně](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
+![Snímek obrazovky z PIM, se seznam předplatných, které jsou zobrazeny v okně](media/azure-pim-resource-rbac/aadpim_manage_azure_resource_some_there.png)
 
 > [!NOTE]
-> Pokud nevidíte všechny prostředky, potvrďte, že:
->- Vaše role Globální správce nevyprší platnost. 
->- Vaše organizace nemá předplatné služby Azure.
+> Pokud se nezobrazí žádné prostředky, ověřte, že:
+>- Nevyprší platnost vaší role globálního správce. 
+>- Vaše organizace má předplatné Azure.
 
-![Snímek obrazovky z PIM s seznam prázdný prostředků](media/azure-pim-resource-rbac/aadpim_rbac_empty_resource_list.png)
+![Snímek obrazovky z PIM, se seznamem prázdný prostředků](media/azure-pim-resource-rbac/aadpim_rbac_empty_resource_list.png)
 
 ## <a name="configure-assignments"></a>Konfigurace přiřazení
 
-Zvolte předplatné ze seznamu a přiřaďte sami (nebo skupiny, jejichž jste členem) jako oprávněné vlastníka prostředku. 
+Vyberte předplatné, ze seznamu a přiřadit sami sebe (nebo skupinu, ve které jsou členy) jako oprávnění vlastníka prostředku. 
 [Další informace o přiřazení rolí](pim-resource-roles-assign-roles.md).
 
 Tento postup opakujte pro každý prostředek, než budete pokračovat k dalšímu kroku.
 
-## <a name="clean-up-standing-access"></a>Vyčištění stálý přístup
+## <a name="clean-up-standing-access"></a>Odstraňte stávající přístup
 
-Teď, když máte nárok přiřazení pro důležité odběry ve vaší organizaci, můžete vyčistit stálý přístup tím, že zakážete možnost ve vlastnostech adresáře.
+Teď, když máte oprávněnými přiřazeními pro důležité předplatná ve vaší organizaci, můžete vyčistit neměli přímý přístup tím, že zakážete možnost ve vlastnosti adresáře.
 
-![Snímek obrazovky vlastností stránky s přepnutí nastavena na Ne](media/azure-pim-resource-rbac/aad_properties_no.png)
+![Snímek obrazovky vlastností stránky s přepnout nastavená na Ne](media/azure-pim-resource-rbac/aad_properties_no.png)
 
 ## <a name="next-steps"></a>Další postup
 

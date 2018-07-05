@@ -1,6 +1,6 @@
 ---
-title: Archiv protokol činnosti Azure
-description: Archivujte váš protokol činnosti Azure pro dlouhodobé uchovávání v účtu úložiště.
+title: Archivace protokolu aktivit Azure
+description: Protokol aktivit Azure pro dlouhodobé uchovávání v účtu úložiště můžete archivovat.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,39 +8,39 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 508b2f615819f20a717065d8fff25beff64957d5
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0f3f2347dd277cb155bf5edf3f8c30da34788b65
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263425"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437755"
 ---
-# <a name="archive-the-azure-activity-log"></a>Archiv protokol činnosti Azure
-V tomto článku jsme ukazují, jak pomocí portálu Azure, rutiny prostředí PowerShell nebo rozhraní příkazového řádku a platformy pro archivaci vaše [ **protokol činnosti Azure** ](monitoring-overview-activity-logs.md) v účtu úložiště. Tato možnost je užitečná, pokud chcete uchovat déle, než 90 dní (s plnou kontrolu nad zásady uchovávání informací) pro audit, statické analýzy nebo zálohování aktivity protokolu. Pokud potřebujete události uchovávány 90 dnů nebo méně není nutné nastavit archivace na účet úložiště, protože aktivity protokolu události se zachovají v platformy Azure za 90 dnů bez povolení archivace.
+# <a name="archive-the-azure-activity-log"></a>Archivace protokolu aktivit Azure
+V tomto článku vám ukážeme, jak pomocí webu Azure portal, rutin Powershellu nebo CLI pro různé platformy pro archivaci vaše [ **protokolu aktivit Azure** ](monitoring-overview-activity-logs.md) v účtu úložiště. Tato možnost je užitečná, pokud byste chtěli zachovat váš protokol aktivit déle než 90 dnů (s úplnou kontrolou nad zásady uchovávání informací) pro audit, statické analýzy nebo pro zálohování. Pokud potřebujete události uchovávat po 90 dní nebo méně nepotřebujete nastavit archivaci do účtu úložiště, protože události protokolu aktivit se zachovají na platformě Azure po dobu 90 dnů bez povolení archivace.
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete, budete muset [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account) ke kterému může archivaci protokolu aktivit. Důrazně doporučujeme nepoužívejte stávající účet úložiště, který má jiné, -monitoring data v ní uloženy, takže může lépe řídit přístup k datům monitorování. Ale pokud jsou také archivace diagnostické protokoly a metriky na účet úložiště, má smysl pro použití tohoto účtu úložiště pro protokol aktivit také pro monitorování všech dat v centrálním umístění. Účet úložiště, které používáte, musí být účet úložiště obecné účely, nikoli účet úložiště objektů blob. Účet úložiště nemusí být ve stejném předplatném jako předplatné emitování protokoly tak dlouho, dokud uživatel, který konfiguruje nastavení, má odpovídající přístup RBAC do oba odběry.
+Než začnete, budete muset [vytvořit účet úložiště](../storage/common/storage-create-storage-account.md#create-a-storage-account) ke kterému je možné protokol aktivit můžete archivovat. Důrazně doporučujeme, že nepoužíváte existující účet úložiště, který obsahuje jiné, než monitorování data uložená v něm může lépe řídit přístup k datům monitorování. Ale pokud jsou také archivace diagnostických protokolů a metrik na účet úložiště, může mít smysl použít tento účet úložiště pro váš protokol aktivit také zajistit všechna data monitorování v centrálním umístění. Účet úložiště nemusí být ve stejném předplatném jako předplatné, které vysílá protokoly za předpokladu, že uživatel, který konfiguruje nastavení má odpovídající přístup RBAC k oběma předplatným.
 
 > [!NOTE]
->  Nelze archivovat aktuálně dat do úložiště účtu, který za zabezpečené virtuální sítě.
+>  Momentálně nelze archivovat data do úložiště účtu, který za zabezpečené virtuální síti.
 
-## <a name="log-profile"></a>Profil protokolu
-K archivaci protokolu aktivit pomocí kteréhokoli z následujících metod, můžete nastavit **profil protokolu** pro předplatné. Profil protokolu definuje typ události, které jsou uložené nebo prostřednictvím datového proudu a výstupy – úložiště účet nebo události rozbočovače. Definuje také zásady uchovávání informací (počet dní, které chcete zachovat) pro události, které jsou uložené v účtu úložiště. Pokud zásady uchovávání informací je nastaven na hodnotu nula, události jsou uloženy po neomezenou dobu. Jinak to je možné nastavit na jakoukoli hodnotu od 1 do 2147483647. Zásady uchovávání informací jsou použité denní, takže na konci za den (UTC), protokoly dnem, který je teď nad rámec uchovávání se zásada odstraní. Například pokud jste měli zásady uchovávání informací jeden den, od začátku dnešní den protokoly z včerejšek před den by odstraněn. Proces odstraňování začíná na půlnoc UTC, ale Všimněte si, že může trvat až 24 hodin protokolů k odstranění z vašeho účtu úložiště. [Další informace o protokolu profily zde](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). 
+## <a name="log-profile"></a>Profilu protokolu
+Archivace protokolu aktivit některou z níže uvedených metod, že nastavíte **profilu protokolu** pro odběr. Profil protokolu definuje typ události, které jsou uložená nebo prostřednictvím datového proudu a výstupy – úložiště účtu a/nebo event hub. Definuje také zásady uchovávání informací (počet dní uchování) pro události, které jsou uložené v účtu úložiště. Pokud zásady uchovávání informací je nastavena na hodnotu nula, události jsou uloženy po neomezenou dobu. V opačném případě to lze nastavit na libovolnou hodnotu mezi 1 a 2147483647. Zásady uchovávání informací jsou použité za den, takže na konci za den (UTC), tento počet protokolů ze dne, který je nyní mimo uchovávání se zásada odstraní. Například pokud máte zásady uchovávání informací o jeden den, na začátku dne dnes protokoly ze včerejška před den se odstraní. Proces odstraňování začíná o půlnoci UTC, ale Všimněte si, že může trvat až 24 hodin pro protokoly, které mají být odstraněny z vašeho účtu úložiště. [Další informace o protokolu profily zde](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). 
 
-## <a name="archive-the-activity-log-using-the-portal"></a>Archivovat protokol aktivit pomocí portálu
-1. Na portálu, klikněte **protokol aktivit** na levé straně navigační odkaz. Pokud nevidíte odkaz pro protokol aktivit, klikněte **všechny služby** první odkaz.
+## <a name="archive-the-activity-log-using-the-portal"></a>Archivace protokolu aktivit na portálu
+1. Na portálu klikněte na tlačítko **protokolu aktivit** odkaz v levé navigaci. Pokud nevidíte odkaz pro protokol aktivit, klikněte na tlačítko **všechny služby** nejdřív propojit.
    
-    ![Přejděte do okna Protokol aktivit](media/monitoring-archive-activity-log/act-log-portal-navigate.png)
+    ![Přejděte do okna protokolu aktivit](media/monitoring-archive-activity-log/act-log-portal-navigate.png)
 2. V horní části okna klikněte na tlačítko **exportovat**.
    
-    ![Klikněte na tlačítko Export](media/monitoring-archive-activity-log/act-log-portal-export-button.png)
-3. V okně, který se zobrazí, zaškrtněte políčko pro **exportovat do účtu úložiště** a vyberte účet úložiště.
+    ![Klikněte na tlačítko pro Export](media/monitoring-archive-activity-log/act-log-portal-export-button.png)
+3. V okně, které se zobrazí, zaškrtněte políčko u **exportovat do účtu úložiště** a vyberte účet úložiště.
    
     ![Nastavit účet úložiště](media/monitoring-archive-activity-log/act-log-portal-export-blade.png)
-4. Pomocí posuvníku nebo textové pole, zadejte počet dní, pro které by měly být udržovány aktivity protokolu události v účtu úložiště. Pokud chcete, aby vaše data uchovávané v účtu úložiště bez omezení, nastavte toto číslo na hodnotu nula.
+4. Pomocí posuvník nebo textové pole, definujte počet dní (0 až 365), pro které události protokolu aktivit se uchovávají v účtu úložiště. Pokud chcete, aby vaše data ukládají v účtu úložiště po neomezenou dobu, nastavte toto číslo na hodnotu nula. Pokud je potřeba zadat číslo větší než 365 dnů, použijte PowerShell nebo rozhraní příkazového řádku metody popsané níže.
 5. Klikněte na **Uložit**.
 
-## <a name="archive-the-activity-log-via-powershell"></a>Archiv protokol aktivit pomocí prostředí PowerShell
+## <a name="archive-the-activity-log-via-powershell"></a>Archivace protokolu aktivit přes PowerShell
 
    ```powershell
    # Settings needed for the new log profile
@@ -59,12 +59,12 @@ K archivaci protokolu aktivit pomocí kteréhokoli z následujících metod, mů
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
-| StorageAccountId |Ano |ID prostředku účtu úložiště, který má být uložen protokoly aktivity. |
-| Umístění |Ano |Seznam oddělený čárkami oblastí, pro které chcete shromažďovat aktivity protokolu události. Můžete zobrazit seznam všech oblastech pro předplatné s použitím `(Get-AzureRmLocation).Location`. |
-| retentionInDays |Ne |Počet dní pro události, které by měl být zachován, od 1 do 2147483647. Hodnota nula ukládá protokoly bez omezení (navždy). |
-| Kategorie |Ne |Seznam oddělený čárkami kategorií událostí, které by měl být shromážděny. Možné hodnoty jsou zápisu, odstranění a akce.  Pokud není zadaná, pak všechny možné hodnoty jsou považovány za |
+| StorageAccountId |Ano |ID prostředku účtu úložiště, ke kterému má být uložen protokolů aktivit. |
+| Umístění |Ano |Čárkami oddělený seznam oblasti, pro které chcete shromažďovat události protokolu aktivit. Můžete zobrazit seznam všech oblastí pro vaše předplatné pomocí `(Get-AzureRmLocation).Location`. |
+| RetentionInDays |Ne |Počet dní pro události, které by měla být zachována, od 1 do 2147483647. Hodnota nula ukládá protokoly po neomezenou dobu (trvale). |
+| Kategorie |Ne |Čárkami oddělený seznam kategorie událostí, které se mají shromažďovat. Možné hodnoty jsou Write, Delete a akce.  Pokud se nezadá, pak všechny možné hodnoty jsou považovány za |
 
-## <a name="archive-the-activity-log-via-cli"></a>Archiv protokol aktivit prostřednictvím rozhraní příkazového řádku
+## <a name="archive-the-activity-log-via-cli"></a>Archivace protokolu aktivit prostřednictvím rozhraní příkazového řádku
 
    ```azurecli-interactive
    az monitor log-profiles create --name "default" --location null --locations "global" "eastus" "westus" --categories "Delete" "Write" "Action"  --enabled false --days 0 --storage-account-id "/subscriptions/<YOUR SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP NAME>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>"
@@ -72,31 +72,31 @@ K archivaci protokolu aktivit pomocí kteréhokoli z následujících metod, mů
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
-| jméno |Ano |Název vašeho profilu protokolu. |
-| id účtu úložiště |Ano |ID prostředku účtu úložiště, který má být uložen protokoly aktivity. |
-| Umístění |Ano |Oddělených mezerami seznam oblastí, pro které chcete shromažďovat aktivity protokolu události. Můžete zobrazit seznam všech oblastech pro předplatné s použitím `az account list-locations --query [].name`. |
-| dny |Ano |Počet dní pro události, které by měl být zachován, od 1 do 2147483647. Hodnota nula bude po neomezenou dobu ukládání protokolů (navždy).  Pokud nula, pak povoleno parametr by měl být nastaven na hodnotu true. |
-|povoleno | Ano |True nebo False.  Umožňuje povolit nebo zakázat zásady uchovávání informací.  V případě hodnoty True, musí být parametr dní hodnotu větší než 0.
-| Kategorie |Ano |Oddělených mezerami seznam kategorií událostí, které by měl být shromážděny. Možné hodnoty jsou zápisu, odstranění a akce. |
+| jméno |Ano |Název profilu protokolu. |
+| id účtu úložiště |Ano |ID prostředku účtu úložiště, ke kterému má být uložen protokolů aktivit. |
+| umístění |Ano |Místo oddělený seznam oblastí, pro které chcete shromažďovat události protokolu aktivit. Můžete zobrazit seznam všech oblastí pro vaše předplatné pomocí `az account list-locations --query [].name`. |
+| dny |Ano |Počet dní pro události, které by měla být zachována, od 1 do 2147483647. Hodnota nula bude po neomezenou dobu ukládání protokolů (trvale).  Pokud nula, povolené parametr by měl být nastavte na hodnotu true. |
+|povoleno | Ano |True nebo False.  Umožňuje povolit nebo zakázat zásady uchovávání informací.  Pokud je hodnota True, musí být parametr dní hodnotu větší než 0.
+| Kategorie |Ano |Místo oddělený seznam kategorie událostí, které se mají shromažďovat. Možné hodnoty jsou Write, Delete a akce. |
 
-## <a name="storage-schema-of-the-activity-log"></a>Schéma úložiště protokolu činnosti
-Jakmile jste nastavili archivace, kontejner úložiště bude vytvořen v účtu úložiště Jakmile dojde k aktivity protokolu události. Objekty BLOB v kontejneru použijte stejný formát přes protokol aktivit a diagnostické protokoly. Struktura tyto objekty BLOB je:
+## <a name="storage-schema-of-the-activity-log"></a>Schéma úložiště protokolu aktivit
+Po jste nastavili archivaci, kontejner úložiště se vytvoří v účtu úložiště, jakmile dojde k události protokolu aktivit. Objekty BLOB v kontejneru podle stejné zásady vytváření názvů v protokolech aktivit a diagnostické protokoly, jak je znázorněno zde:
 
-> insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/{ID_předplatného}/y={čtyřmístné_číslo_roku}/m={dvoumístné_číslo_měsíce}/d={dvoumístné_číslo_dne}/h={dvoumístné_číslo_hodiny_ve_24hodinovém_formátu}/m=00/PT1H.json
-> 
-> 
+```
+insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/{subscription ID}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
+```
 
 Například může být název objektu blob:
 
-> insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/y=2016/m=08/d=22/h=18/m=00/PT1H.json
-> 
-> 
-
-Každý objekt blob PT1H.json obsahuje objekt blob JSON událostí, které nastaly během hodiny zadaného v adrese URL objektu blob (například h = 12). Během aktuální hodiny se události připojují do souboru PT1H.json, když k nim dojde. Hodnota minutu (m = 00) je vždy 00, protože aktivity protokolu události jsou rozdělená do jednotlivých objektů blob za hodinu.
-
-V souboru PT1H.json se ukládají všechny události v poli "záznamy" následující tento formát:
-
 ```
+insights-operational-logs/name=default/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/y=2016/m=08/d=22/h=18/m=00/PT1H.json
+```
+
+Každý objekt blob PT1H.json obsahuje objekt blob JSON událostí, ke kterým došlo během hodiny zadané v adrese URL objektu blob (například h = 12). Během aktuální hodiny se události připojují do souboru PT1H.json, když k nim dojde. Minut (m = 00) je vždy 00, protože události protokolu aktivit se rozdělují do jednotlivých objektů BLOB po hodinách.
+
+V rámci souboru pt1h.JSON, když se ukládají všechny události v poli "záznamy", za tento formát:
+
+``` JSON
 {
     "records": [
         {
@@ -155,28 +155,28 @@ V souboru PT1H.json se ukládají všechny události v poli "záznamy" následuj
 
 | Název elementu | Popis |
 | --- | --- |
-| time |Časové razítko při zpracování požadavku odpovídající události služby Azure vygenerovalo událost. |
-| resourceId |ID prostředku ovlivněné prostředku. |
+| time |Časové razítko události vygenerované službou Azure zpracování požadavku odpovídající události. |
+| resourceId |ID prostředku ovlivněných prostředků. |
 | operationName |Název operace |
-| category |Kategorie Akce, např. Zápis, čtení, akce. |
-| resultType |Typ výsledku, např. Úspěch, chyba, spuštění |
+| category |Kategorie Akce, např. Zápisu, čtení, akce. |
+| resultType |Typ výsledku, např. Úspěch, selhání spuštění |
 | resultSignature |Závisí na typu prostředku. |
 | durationMs |Doba trvání operace v milisekundách |
-| callerIpAddress |IP adresa uživatele, který se má provést operace, deklarace hlavní název uživatele nebo název SPN deklarace identity na základě dostupnosti. |
-| correlationId |Obvykle GUID ve formátu řetězce. Události, které sdílejí correlationId patřit do stejné uber akce. |
-| identity |Objekt blob JSON s popisem autorizace a deklarace identity. |
-| Autorizace |Objekt BLOB RBAC vlastností události. Obvykle zahrnuje vlastnosti "action", "role" a "obor". |
-| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritická", "Chyba", "Upozornění", "Informační" a "Podrobné" |
-| location |Oblast, ve které došlo k umístění (nebo globální). |
+| callerIpAddress |IP adresa uživatele, který provedl operaci, deklarace nebo hlavní název služby deklarace identity na základě dostupnosti. |
+| correlationId |Obvykle GUID ve formátu řetězce. Události, které sdílejí ID korelace patřit do stejné akce uber. |
+| identity |Objekt blob JSON popisující autorizace a deklarace identity. |
+| Autorizace |Objekt BLOB RBAC vlastností události. Obvykle obsahuje vlastnosti "action", "role" a "rozsah". |
+| úroveň |Úroveň události. Jeden z následujících hodnot: "Kritický", "Chyba", "Upozornění", "Informační" a "Verbose" |
+| location |Oblast, ve kterém došlo k umístění (nebo globálního). |
 | properties |Sada `<Key, Value>` páry (tj. slovník) popisující podrobnosti o události. |
 
 > [!NOTE]
-> Vlastnosti a využití tyto vlastnosti se může lišit v závislosti na prostředek.
+> Vlastnosti a využití těchto vlastností se může lišit v závislosti na prostředku.
 > 
 > 
 
 ## <a name="next-steps"></a>Další postup
-* [Stáhnout objekty BLOB pro analýzu](../storage/blobs/storage-quickstart-blobs-dotnet.md)
-* [Datový proud protokolu aktivit do centra událostí](monitoring-stream-activity-logs-event-hubs.md)
+* [Stažení objektů blob pro analýzu](../storage/blobs/storage-quickstart-blobs-dotnet.md)
+* [Stream protokolů aktivit do služby Event Hubs](monitoring-stream-activity-logs-event-hubs.md)
 * [Další informace o protokolu aktivit](monitoring-overview-activity-logs.md)
 

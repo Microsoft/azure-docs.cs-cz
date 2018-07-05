@@ -1,6 +1,6 @@
 ---
-title: Azure Privileged Identity Management schválení pracovních | Microsoft Docs
-description: Další informace o schválení pracovních postupů v Privileged Identity Management (PIM)
+title: Azure Privileged Identity Management schvalovacích pracovních postupů | Dokumentace Microsoftu
+description: Další informace o pracovních postupů schvalování v Privileged Identity Management (PIM)
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,60 +8,60 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: protection
 ms.date: 04/28/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 135c789dc6e41e07bb939ece679756c8c42de2d1
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 025bcd0cde8d73cfdd4d79a77256a1705950f90a
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085279"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444642"
 ---
 # <a name="approvals"></a>Schvalování
 
 ## <a name="overview"></a>Přehled
 
-Schválení Privileged Identity Management můžete nakonfigurovat role za účelem vyžadovat schválení pro aktivaci a zvolte jednu nebo víc uživatelů nebo skupin jako delegovaný schvalovatelů. Zachovat čtení Další informace o konfiguraci rolí a vyberte schvalovatelů.
+Schvalování Privileged Identity Management můžete konfigurovat role, které vyžadují schválení pro aktivaci a zvolte jednu nebo více uživatelů nebo skupin jako delegovaný schvalovatele. Pokračujte ve čtení a zjistěte, jak nakonfigurovat role a vybrat schvalovatele.
 
 
-## <a name="new-terminology"></a>Nové terminologie
+## <a name="new-terminology"></a>Nový terminologií
 
-*Oprávněný uživatel Role* – oprávněné role uživatel je uživatelem v rámci vaší organizace, který je přiřazený k roli služby Azure AD jako způsobilých (role vyžaduje aktivaci).
+*Oprávněný uživatel roli* – oprávněné role uživatele je uživateli ve vaší organizaci, který je přiřazený k roli Azure AD jako oprávněné (role vyžaduje aktivaci).
 
-*Delegovaná schvalovatel* – delegované schvalovatel je jeden nebo více jednotlivce nebo skupiny v rámci služby Azure AD, který je zodpovědný za schvalování žádostí k aktivaci role.
+*Delegovaná schvalovatel* – delegovaný schvalovatel má na jeden nebo více jednotlivců nebo skupin v rámci služby Azure AD, který je zodpovědný za schvalování žádostí o aktivaci role.
 
 ## <a name="scenarios"></a>Scénáře
 
-Privátní preview podporuje následující scénáře:
+Privátní verze preview podporuje následující scénáře:
 
 **Jako privilegované Role správce (PRA) můžete:**
 
 -   [Povolit schválení pro konkrétní role](#enable-approval-for-specific-roles)
 
--   [Zadejte schvalovatel uživatelé nebo skupiny ke schválení žádostí](#specify-approver-users-and/or-groups-to-approve-requests)
+-   [Zadejte uživatele schvalovatele a/nebo skupiny schválit žádosti](#specify-approver-users-and/or-groups-to-approve-requests)
 
--   [Zobrazit historii požadavku a schválení všech privilegovaných rolí](#view-request-and-approval-history-for-all-privileged-roles)
+-   [Zobrazit historii žádosti a schválení pro všechny privilegované role](#view-request-and-approval-history-for-all-privileged-roles)
 
 **Jako určeného schvalovatele můžete:**
 
--   [Zobrazit čeká na schválení (počet požadavků)](#view-pending-approvals-requests)
+-   [Zobrazení čekajících na schválení (požadavků)](#view-pending-approvals-requests)
 
--   [Schválit nebo odmítnout žádosti o zvýšení oprávnění role (jeden nebo hromadně)](#approve-or-reject-requests-for-role-elevation-single-and/or-bulk)
+-   [schválení nebo odmítnutí žádostí o zvýšení oprávnění role (jeden nebo hromadně)](#approve-or-reject-requests-for-role-elevation-single-and/or-bulk)
 
 -   [uveďte její odůvodnění moje schválení nebo zamítnutí](#provide-justification-for-my-approval/rejection) 
 
 **Jako oprávněný uživatel roli můžete:**
 
--   [žádost o aktivaci role, který vyžaduje schválení](#request-activation-of-a-role-that-requires-approval)
+-   [žádost o aktivaci role, která vyžaduje schválení](#request-activation-of-a-role-that-requires-approval)
 
 -   [Zobrazení stavu vaši žádost o aktivaci](#view-the-status-of-your-request-to-activate)
 
--   [dokončení úkolu ve službě Azure AD, pokud byla schválena aktivace](#complete-your-task-in-azure-ad-if-activation-was-approved)
+-   [Dokončení úlohy ve službě Azure AD, pokud aktivace byla schválena](#complete-your-task-in-azure-ad-if-activation-was-approved)
 
 ### <a name="navigation"></a>Navigace
 
@@ -69,21 +69,21 @@ Aktualizovali jsme navigace pro podporu schválení
 
 ![](media/azure-ad-pim-approval-workflow/image001.png)
 
-Výchozí úvodní stránka poskytuje pohodlné přístup k informacím o PIM a nová dokumentace schválení.
+Výchozí úvodní stránka poskytuje pohodlný přístup k informacím o PIM a novou dokumentaci schválení.
 
 ![](media/azure-ad-pim-approval-workflow/image002.png)
 
-Přidali jsme také novou část pro všechny uživatele PIM, historie Moje auditu. Tady najdete všechny informace relevantní pro vaši identitu. To zahrnuje všechny vaše požadavky na vyřízení a dokončený, všechny rozhodnutí, které jste udělali týkající se požadavků, které můžete vyřešit a všechny vaše posledních aktivace role z jednoho místa.
+Přidali jsme také nový oddíl pro všechny uživatele PIM, "Moje historie auditů". Tady najdete všechny informace relevantní pro vaši identitu. To zahrnuje všechny vaše žádosti čekající na vyřízení a dokončený, rozhodnutí, které jste udělali o žádosti, na které můžete vyřešit a všechny vaše poslední aktivace rolí na jediném místě.
 
 ![](media/azure-ad-pim-approval-workflow/image003.png)
 
 ### <a name="enable-approval-for-specific-roles"></a>Povolit schválení pro konkrétní role
 
-Pokud chcete povolit schválení pro určité role, nejprve vyberte role Directory z levé navigaci.
+Pokud chcete povolit schvalování pro určitou roli, vyberte nejprve role adresáře v levém navigačním panelu.
 
 ![](media/azure-ad-pim-approval-workflow/image004.png)
 
-Najděte a vyberte nastavení v levé navigaci Directory role
+Vyhledejte a vyberte nastavení v levém navigačním panelu role adresáře
 
 ![](media/azure-ad-pim-approval-workflow/image006.png)
 
@@ -91,104 +91,104 @@ Vyberte privilegované role:
 
 ![](media/azure-ad-pim-approval-workflow/image009.png)
 
-Vyberte možnost "Povolit" v vyžadují části:
+Vyberte možnost "Povolit" v vyžadují schválení části:
 
 ![](media/azure-ad-pim-approval-workflow/image011.png)
 
-Jakmile bude povoleno, v okně se rozbalí a zobrazí následující podrobnosti:
+Po povolení okna se rozbalí a zobrazí následující podrobnosti:
 
 ![](media/azure-ad-pim-approval-workflow/image013.png)
 
 >[!NOTE]
-Pokud je nesmí zadat všechny schvalovatelů, stanou se PRA(s) schvalovatelům výchozí. PRA(s) by byly zapotřebí k schválit všechny žádosti o aktivaci pro tuto roli.
+Neměňte při zadání jakékoli schvalovatelé, PRA(s) stane výchozí schvalovateli. PRA(s) by vyžadoval schválit všechny žádosti o aktivaci pro tuto roli.
 
-### <a name="specify-approver-users-andor-groups-to-approve-requests"></a>Zadejte schvalovatel uživatelé nebo skupiny ke schválení žádostí
+### <a name="specify-approver-users-andor-groups-to-approve-requests"></a>Zadejte uživatele schvalovatele a/nebo skupiny schválit žádosti
 
-Delegovat schválení, klikněte na možnost "Vyberte schvalovatelů":
+Na delegáta schválení, klikněte na možnost "Vybrat schvalovatelům":
 
 ![](media/azure-ad-pim-approval-workflow/image015.png)
 
-Až se načte v okně vyberte schvalovatelů, pravděpodobně vyhledávání pro konkrétního uživatele nebo skupiny pomocí panelu Hledat v horní části, nebo výběrem ze seznamu předem vyplněná a pak klikněte na tlačítko "Vyberte" po dokončení:
+Při načtení okna vyberte schvalovatelé, může vyhledat konkrétního uživatele nebo skupiny pomocí panelu hledání v horní části nebo výběrem ze seznamu předem vyplněná a pak klikněte na tlačítko "Vyberte" po dokončení:
 
 ![](media/azure-ad-pim-approval-workflow/image017.png)
 
-Poznámka: Může vybrat více uživatelů nebo skupin současně.
+Poznámka: Můžete vybrat víc uživatelů nebo skupin po jednom.
 
-Výběr se objeví v seznamu vybraný schvalovatelů, jak vidíte níže:
+Váš výběr se zobrazí v seznamu Vybraní schvalovatelé, jak je znázorněno níže:
 
 ![](media/azure-ad-pim-approval-workflow/image019.png)
 
-Odebrání schvalovatele, jednoduše kliknutím na tlačítko Odebrat vedle jména.
+Odebrání schvalovatele, stačí klikněte na tlačítko Odebrat vedle jejich názvu.
 
-Pokud chcete přidat další schvalovatele, proces opakujte.
+Pokud chcete přidat další schvalovatele, opakujte proces.
 
-## <a name="view-request-and-approval-history-for-all-privileged-roles"></a>Zobrazit historii požadavku a schválení všech privilegovaných rolí
+## <a name="view-request-and-approval-history-for-all-privileged-roles"></a>Zobrazit historii žádosti a schválení pro všechny privilegované role
 
-Chcete-li zobrazit historii požadavku a schválení všech privilegovaných rolí, vyberte historie auditu na řídicím panelu:
+Chcete-li zobrazit historii žádosti a schválení všech privilegovaných rolí, vyberte historie auditu z řídicího panelu:
 
 ![](media/azure-ad-pim-approval-workflow/image021.png)
 
 >[!NOTE]
-Můžete řadit data akcí a vyhledejte "Aktivace schválené"
+Řazení dat podle akce a vyhledejte "Schválení aktivace"
 
-### <a name="view-pending-approvals-requests"></a>Zobrazit čeká na schválení (počet požadavků)
+### <a name="view-pending-approvals-requests"></a>Zobrazení čekajících na schválení (požadavků)
 
-Jako delegovaný schvalovatel obdržíte e-mailová oznámení při žádost čeká na schválení. Chcete-li zobrazit tyto požadavky na portálu PIM, na řídicím panelu (v nové navigační) vyberte kartu "Čekající žádosti o schválení" v levém navigačním panelu.
+Jako delegovaný schvalovatel obdržíte e-mailová oznámení, když je požadavek čekající na vaše schválení. Chcete-li zobrazit tyto požadavky na portálu PIM, z řídicího panelu (v nové navigace) vyberte v levém navigačním panelu kartu "Čekající na vyřízení žádosti o schválení".
 
 ![](media/azure-ad-pim-approval-workflow/image023.png)
 
-Z tohoto místa se zobrazí seznam žádosti čekající na schválení:
+Tady se zobrazí seznam žádostí o schválení:
 
 ![](media/azure-ad-pim-approval-workflow/image024.png)
 
-### <a name="approve-or-reject-requests-for-role-elevation-single-andor-bulk"></a>Schválit nebo odmítnout žádosti o zvýšení oprávnění role (jeden nebo hromadně)
+### <a name="approve-or-reject-requests-for-role-elevation-single-andor-bulk"></a>Schválení nebo odmítnutí žádostí o zvýšení oprávnění role (jeden nebo hromadně)
 
-Vyberte požadavky, které chcete schválit nebo zamítnout a klikněte na tlačítko na panelu akcí, která odpovídá vaše rozhodnutí:
+Vyberte žádosti, na které chcete schválit nebo zamítnout a klikněte na tlačítko na panelu akcí, která odpovídá vaší rozhodnutí:
 
 ![](media/azure-ad-pim-approval-workflow/image025.png)
 
 ### <a name="provide-justification-for-my-approvalrejection"></a>Uveďte její odůvodnění moje schválení nebo zamítnutí
 
-Otevře se nové okno schválí nebo zamítne více požadavků najednou. Zadejte odůvodnění pro vaše rozhodnutí, a klikněte na tlačítko Schválit (nebo odepřít) v dolní části nebo v okně:
+Otevře se nové okno Schválit nebo zamítnout žádosti více najednou. Zadejte odůvodnění pro své rozhodnutí, a klikněte na tlačítko Schválit (nebo zakázat) v dolní části nebo v okně:
 
 ![](media/azure-ad-pim-approval-workflow/image029.png)
 
-Po dokončení zpracování žádosti o symbolu stavu bude odrážet rozhodnutí, které jste nastavili (v tomto příkladu rozhodnutí je schválit):
+Po dokončení zpracování žádosti o symbolu stavu bude odrážet provedené rozhodnutí (v tomto příkladu rozhodnutí je schválit):
 
 ![](media/azure-ad-pim-approval-workflow/image031.png)
 
-### <a name="request-activation-of-a-role-that-requires-approval"></a>Žádost o aktivaci role, který vyžaduje schválení
+### <a name="request-activation-of-a-role-that-requires-approval"></a>Žádost o aktivaci role, která vyžaduje schválení
 
-Žádají o aktivaci role, který vyžaduje schválení lze zahájit z původního navigační PIM nebo nové navigační jako proces pro aktivaci role zůstává stejná. Jednoduše vyberte v seznamu rolí k aktivaci role:
+Žádá se o aktivaci role, která vyžaduje schválení může být zahájen ze staré PIM navigace nebo novou navigaci jako proces na aktivaci role zůstává stejná. Stačí vyberte roli ze seznamu rolí k aktivaci:
 
 ![](media/azure-ad-pim-approval-workflow/image033.png)
 
-Pokud privilegovaných rolí vyžaduje Vícefaktorové ověřování, budete vyzváni k dokončení této úlohy nejdřív:
+Pokud privilegovaných rolí vyžaduje Vícefaktorové ověřování, budete vyzváni k dokončení této úlohy nejprve:
 
 ![](media/azure-ad-pim-approval-workflow/image035.png)
 
-Po dokončení, kliknout na aktivovat a zadejte odůvodnění (v případě potřeby):
+Po dokončení, klikněte na tlačítko aktivovat a zadejte odůvodnění (v případě potřeby):
 
 ![](media/azure-ad-pim-approval-workflow/image037.png)
 
-Žadatel se zobrazí oznámení, že žádosti čekající na schválení:
+Žadateli se zobrazí oznámení, že žádost čeká na schválení:
 
 ![](media/azure-ad-pim-approval-workflow/image039.png)
 
 ### <a name="view-the-status-of-your-request-to-activate"></a>Zobrazení stavu vaši žádost o aktivaci
 
-Zobrazení stavu čekající žádost o aktivaci, musí se přístup z nové navigace. V levém navigačním panelu vyberte kartu "Moje žádosti o":
+Zobrazení stavu čeká na požadavek na aktivaci musí přistupovat z novou navigaci. V levém navigačním panelu vyberte na kartě "Moje žádosti o":
 
 ![](media/azure-ad-pim-approval-workflow/image041.png)
 
-Stav žádosti bude jako výchozí nastavena na "Čekající na vyřízení", ale můžete přepínat zobrazíte všechny nebo odepření požadavků.
+Stav žádosti o výchozí nastavení "Čekající na vyřízení", ale můžete přepínat zobrazíte všechny nebo odepření požadavků.
 
-### <a name="complete-your-task-in-azure-ad-if-activation-was-approved"></a>Dokončení úkolu ve službě Azure AD, pokud byla schválena aktivace
+### <a name="complete-your-task-in-azure-ad-if-activation-was-approved"></a>Dokončení úlohy ve službě Azure AD, pokud aktivace byla schválena
 
-Po schválení žádosti role je aktivní a veškerou práci, kterou vyžaduje tato role může pokračovat.
+Jakmile se žádost schválí, role je aktivní a žádnou práci, kterou vyžaduje tato role může pokračovat.
 
 ![](media/azure-ad-pim-approval-workflow/image043.png)
 
 ## <a name="next-steps"></a>Další postup
 
-Je vhodné nám svůj názor. Prosím Nebojte se zde sdílet komentáře nebo zpětnou vazbu s námi!
+Vaše zpětná vazba je pro nás důležité. Můžete tady sdílet vaše připomínky či názory s námi!

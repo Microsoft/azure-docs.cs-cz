@@ -1,49 +1,49 @@
 ---
-title: Připojení k serverům Azure Analysis Services | Microsoft Docs
-description: Zjistěte, jak se připojit k a získat data ze serveru služby Analysis Services v Azure.
+title: Připojení k serverům služby Azure Analysis Services | Dokumentace Microsoftu
+description: Zjistěte, jak se připojit k a získání dat ze serveru služby Analysis Services v Azure.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/23/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ce95337c042d6acbdf6e7cff300eb643146e3d87
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 19f5fb7b779f538f46b1813f30795e01a75f065c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597364"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443252"
 ---
 # <a name="connecting-to-servers"></a>Připojení k serverům
 
-Tento článek popisuje připojení k serveru pomocí modelování dat a správu aplikace jako SQL Server Management Studio (SSMS) nebo SQL Server Data Tools (SSDT). Nebo s klientem služby generování sestav aplikace, jako je Microsoft Excel, Power BI Desktop nebo vlastních aplikací. Připojení k Azure Analysis Services používat protokol HTTPS.
+Tento článek popisuje připojení k serveru pomocí modelování dat a správu aplikací, jako je SQL Server Management Studio (SSMS) nebo SQL Server Data Tools (SSDT). Nebo s klientem vytváření sestav aplikace, jako je Microsoft Excel, Power BI Desktopu nebo vlastních aplikací. Připojení ke službě Azure Analysis Services používají protokol HTTPS.
 
 ## <a name="client-libraries"></a>Klientské knihovny
-[Získat nejnovější knihovny klienta](analysis-services-data-providers.md)
+[Získání nejnovějších knihoven klienta](analysis-services-data-providers.md)
 
-Všechna připojení k serveru, bez ohledu na typ, vyžadují aktualizované AMO ADOMD.NET a OLEDB klientské knihovny pro připojení k a rozhraní se serverem služby Analysis Services. Pro aplikace SSMS, rozšíření SSDT, aplikace Excel 2016 a Power BI nejnovější knihovny klienta instalaci nebo aktualizaci s měsíční verzemi. V některých případech je však možné že aplikace nemusí mít nejnovější. Například když zpoždění zásady aktualizace nebo aktualizace Office 365 jsou na odložené kanálu.
+Všechna připojení k serveru, bez ohledu na typ, vyžadují aktualizovanou AMO, ADOMD.NET a OLEDB klientské knihovny pro připojení k a interface pomocí serveru služby Analysis Services. SSMS, rozšíření SSDT, Excel 2016 a Power BI najdete nejnovější klientské knihovny instalaci nebo aktualizaci s měsíční verzemi. V některých případech je možné, že aplikace nemusí mít nejnovější verzi. Například když zpoždění zásady aktualizace nebo aktualizace Office 365 se na kanálu odloženo.
 
 ## <a name="server-name"></a>Název serveru
 
-Při vytváření serveru služby Analysis Services v Azure, je třeba zadat jedinečný název a oblasti, kde je server, který se má vytvořit. Při zadávání názvu serveru v připojení, je schéma pojmenování serveru:
+Když vytvoříte server služby Analysis Services v Azure, je třeba zadat jedinečný název a oblast, ve kterém má být vytvořen na serveru. Při zadávání názvu serveru v připojení, je schéma pojmenování serveru:
 
 ```
 <protocol>://<region>/<servername>
 ```
- Kde protokol je řetězec **asazure**, oblast je identifikátor Uri, které bylo vytvořeno serveru (například westus.asazure.windows.net) a servername je název jedinečný serveru v rámci oblasti.
+ Kde je řetězec protokolu **asazure**, oblast je identifikátor Uri, ve kterém byla vytvořena na serveru (například westus.asazure.windows.net) a servername je název serveru jedinečný v rámci oblasti.
 
-### <a name="get-the-server-name"></a>Získat název serveru
-V **portál Azure** > serveru > **přehled** > **název serveru**, zkopírujte název celý server. Pokud ostatní uživatelé ve vaší organizaci se připojují k tomuto serveru příliš, můžete tento název serveru sdílet s nimi. Při zadávání názvu serveru, třeba zadat celou cestu.
+### <a name="get-the-server-name"></a>Získání názvu serveru
+V **webu Azure portal** > server > **přehled** > **název serveru**, zkopírujte název celý server. Pokud se ostatní uživatelé ve vaší organizaci se připojují k tomuto serveru příliš, s nimi mohli sdílet tento název serveru. Při zadávání názvu serveru, musíte použít celou cestu.
 
 ![Získání názvu serveru v Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
 
 
 ## <a name="connection-string"></a>Připojovací řetězec
 
-Při připojování k serveru Azure Analysis Services pomocí tabulkový objektový Model, použijte následující formáty řetězec připojení:
+Při připojování ke službě Azure Analysis Services pomocí tabulkový objektový Model, použijte následující připojovací řetězec formáty:
 
-###### <a name="integrated-azure-active-directory-authentication"></a>Integrované ověřování služby Azure Active Directory
+###### <a name="integrated-azure-active-directory-authentication"></a>Integrované ověřování Azure Active Directory
 Integrované ověřování převezme mezipaměti přihlašovacích údajů Azure Active Directory, pokud je k dispozici. V opačném případě se zobrazí okno přihlášení k Azure.
 
 ```
@@ -51,14 +51,14 @@ Integrované ověřování převezme mezipaměti přihlašovacích údajů Azure
 ```
 
 
-###### <a name="azure-active-directory-authentication-with-username-and-password"></a>Azure Active Directory ověřování pomocí uživatelského jména a hesla
+###### <a name="azure-active-directory-authentication-with-username-and-password"></a>Ověřování Azure Active Directory pomocí uživatelského jména a hesla
 
 ```
 "Provider=MSOLAP;Data Source=<Azure AS instance name>;User ID=<user name>;Password=<password>;Persist Security Info=True; Impersonation Level=Impersonate;";
 ```
 
-###### <a name="windows-authentication-integrated-security"></a>Ověřování systému Windows (integrované zabezpečení)
-Použijte účet systému Windows s aktuálním procesu.
+###### <a name="windows-authentication-integrated-security"></a>Ověřování Windows (integrované zabezpečení)
+Použijte účet Windows, který spouští aktuální proces.
 
 ```
 "Provider=MSOLAP;Data Source=<Azure AS instance name>; Integrated Security=SSPI;Persist Security Info=True;"
@@ -66,12 +66,12 @@ Použijte účet systému Windows s aktuálním procesu.
 
 
 
-## <a name="connect-using-an-odc-file"></a>Připojit pomocí souboru ODC
-Ve starších verzích aplikace Excel mohou uživatelé připojit k serveru Azure Analysis Services pomocí souboru (ODC) Office Data Connection. Další informace najdete v tématu [vytvořit soubor dat ODC (Office Connection)](analysis-services-odc.md).
+## <a name="connect-using-an-odc-file"></a>Připojte se pomocí souboru .odc
+Se staršími verzemi aplikace Excel můžou uživatelé připojit k serveru Azure Analysis Services pomocí souboru dat ODC (Office Connection). Další informace najdete v tématu [vytvořit soubor dat ODC (Office Connection)](analysis-services-odc.md).
 
 
 ## <a name="next-steps"></a>Další postup
-[Připojit pomocí aplikace Excel](analysis-services-connect-excel.md)    
-[Připojit k Power BI](analysis-services-connect-pbi.md)   
+[Propojení s Excelem](analysis-services-connect-excel.md)    
+[Propojení s Power BI](analysis-services-connect-pbi.md)   
 [Správa serveru](analysis-services-manage.md)   
 

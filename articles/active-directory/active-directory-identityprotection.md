@@ -1,8 +1,8 @@
 ---
-title: Ochrany identit Azure Active Directory | Microsoft Docs
-description: Zjistěte, jak Azure AD Identity Protection umožňuje omezit možnost útočník zneužít ohroženými identity nebo zařízení a zabezpečit identity nebo zařízení, která byla dříve by mohly vzbuzovat podezření nebo známé došlo k narušení.
+title: Azure Active Directory Identity Protection | Dokumentace Microsoftu
+description: Zjistěte, jak Azure AD Identity Protection umožňuje omezit schopnost útočníka zneužít ohrožení zabezpečení identity nebo zařízení a zabezpečit identitu nebo zařízení, který byl dříve podezřelý nebo známé u něho ohrožena bezpečnost.
 services: active-directory
-keywords: ochrany identit Azure active directory, cloud app discovery,. Správa aplikací, zabezpečení, rizik, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
+keywords: Azure active directory identity protection, zjišťování cloudových aplikací, Správa aplikací, zabezpečení, rizika, úroveň rizika, ohrožení zabezpečení, zásady zabezpečení
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -16,79 +16,79 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 9658eaaf35d9b937d76926c73dba23d2a4989b3a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: faeeebb21c6dde73be855af469e03ede4c6d0b5d
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34713180"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444952"
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
-Azure Active Directory ochrany identit je funkce služby Azure AD Premium P2 edici, která vám umožní:
+Azure Active Directory Identity Protection je funkce edice Azure AD Premium P2, která vám umožní:
 
-- Zjistit potenciální ohrožení zabezpečení, které ovlivňují identity ve vaší organizaci
+- Zjistit potenciální ohrožení zabezpečení dopadem na identity vaší organizace
 
-- Nakonfigurovat automatické odpovědi na zjištěné podezřelé akce, které se vztahují k identity ve vaší organizaci  
+- Nakonfigurovat automatické odpovědi na zjištěné podezřelé akce, které se vztahují na identity vaší organizace  
 
-- Prozkoumat podezřelé incidenty a proveďte příslušné akce jejich řešení   
+- Prozkoumat podezřelé incidenty a přijmout vhodná opatření k jejich řešení   
 
 
 ## <a name="getting-started"></a>Začínáme
 
-Microsoft má zabezpečené cloudové identity pro více než deset. S Azure Active Directory Identity Protection ve vašem prostředí, můžete použít stejné ochrany systémů, které společnost Microsoft používá k zabezpečení identity.
+Microsoft má zabezpečené cloudové identity pro více než deset let. S Azure Active Directory Identity Protection ve vašem prostředí, můžete použít samé systémy ochrany, které společnost Microsoft používá k zabezpečení identit.
 
-Velká většina narušení zabezpečení se provede při útočník přístupu do prostředí tak, že krádež identity uživatele. V průběhu let se staly útočníci stále efektivní využívání narušení třetích stran a za použití útoky phishing sofistikované. Jakmile útočník získá přístup k i nízkou privilegované uživatelských účtů, je pro ně k získání přístupu k prostředkům společnosti důležité prostřednictvím laterální pohyb je poměrně snadné.
+Většinu narušení zabezpečení se použijí při útočníci získají přístup k prostředí krádeží identity uživatele. V průběhu let staly útočníci stále častěji efektivní využití porušení třetích stran a pomocí sofistikovaných útoků phishing útoky. Jakmile útočník získá přístup k i nízkou privilegovaných uživatelské účty, je pro ně k získání přístupu k prostředkům společnosti důležité prostřednictvím taktiky Lateral Movement je poměrně snadné.
 
-V důsledku toho je potřeba:
+Následkem toho budete muset:
 
-- Chránit všechny identity, bez ohledu na jejich úroveň oprávnění
+- Chránit všechny identity bez ohledu na jejich úrovně oprávnění
 
-- Proaktivní ohroženými identity zabránit se překročen
+- Proaktivně ohrožení zabezpečení identity zabránit se zneužít
 
-Zjišťování ohrožení zabezpečení identity je bez snadno úlohy. Azure Active Directory používá algoritmy adaptivní strojového učení a heuristiky zjištění anomálií a podezřelé incidenty, které indikují potenciálně ohrožených identity. Na základě těchto dat Identity Protection generuje sestavy a výstrahy, které umožňují vyhodnotit zjištěné problémy a proveďte příslušné zmírnění nebo nápravné akce.
+Zjišťování ohrožení zabezpečení identit je žádný snadný úkol. Azure Active Directory používá algoritmy adaptivní strojového učení a heuristik detekovat anomálie a podezřelé incidenty, které indikují potenciální ohrožení identit. Ochrana Identity na základě těchto dat generuje sestavy a výstrahy, které vám umožní zjištěné problémy vyhodnotit a přijmout odpovídající omezení nebo nápravné akce.
 
-Azure Active Directory Identity Protection je větší než monitorování a vytváření sestav nástroje. Pokud chcete ochránit identity ve vaší organizaci, můžete nakonfigurovat zásady na základě rizik, které automaticky reagovat na zjištěné problémy, pokud bylo dosaženo úroveň zadaný rizika. Tyto zásady, kromě jiných ovládacích prvků podmíněného přístupu poskytuje Azure Active Directory a EMS, můžete buď automaticky blokovat nebo zahájit adaptivní nápravných akcí, které resetuje včetně heslo a vynucování služby Multi-Factor authentication.
+Azure Active Directory Identity Protection je větší než monitorování a vytváření sestav nástroje. K ochraně identity ve vaší organizaci, můžete nakonfigurovat zásady, které automaticky reagují na zjištěné problémy, když se dosáhne úroveň zadané rizika. Tyto zásady, kromě jiných ovládacích prvků podmíněný přístup poskytuje Azure Active Directory a EMS, můžete buď automaticky blokovat nebo zahájit adaptivní nápravných akcí, které resetuje heslo včetně a vynucování služby Multi-Factor authentication.
 
 
-#### <a name="identity-protection-capabilities"></a>Funkce ochrany identit
+#### <a name="identity-protection-capabilities"></a>Možnosti ochrany identit
 
-**Zjišťování ohrožení zabezpečení a rizikové účty:**  
+**Zjišťování ohrožení zabezpečení a rizikových účty:**  
 
-* Poskytování vlastních doporučení pro zlepšení celkové postavení zabezpečení podle zvýraznění ohrožení zabezpečení
-* Výpočet úrovní rizika přihlášení
-* Výpočet úrovní rizika uživatele
+* Poskytuje vlastní doporučení k vylepšení celkové postavení zabezpečení zvýrazněním ohrožení zabezpečení
+* Výpočet úrovně rizika přihlášení
+* Výpočet úrovně rizika uživatele
 
 
 **Zkoumání rizikových událostí:**
 
-* Odesílání oznámení o rizikových událostech
-* Zkoumání rizikových událostí pomocí relevantní a kontextové informace
-* Poskytuje základní pracovní postupy pro sledování šetření
-* Poskytuje snadný přístup k nápravné akce, jako je například resetování hesla
+* Odesílání oznámení pro rizikové události
+* Zkoumání pomocí relevantní a kontextové informace o rizikových událostí
+* Poskytuje základní pracovní postupy ke sledování vyšetřování
+* Poskytování snadného přístupu pro nápravné akce, jako je například resetování hesla
 
-**Zásady podmíněného přístupu na základě rizika:**
+**Zásady podmíněného přístupu na základě rizik:**
 
-* Zásady pro zmírnění rizikové přihlášení blokování přihlášení nebo že vyřeší problémy spojené vícefaktorového ověřování
-* Zásady na blokování nebo zabezpečený rizikové uživatelské účty
-* Zásady budou muset uživatelé zaregistrovat u služby Multi-Factor authentication
+* Zásady pro blokování přihlášení nebo vyžadování výzvy ověřování službou Multi-Factor Authentication zmírnění rizikových přihlášení
+* Zásady na blokování nebo zabezpečené rizikové uživatelské účty
+* Zásadu, která vyžaduje uživatelé zaregistrovali k ověření službou Multi-Factor Authentication
 
 
 
-## <a name="identity-protection-roles"></a>Role ochranu identity
+## <a name="identity-protection-roles"></a>Role identity Protection
 
-Pro vyrovnávání zatížení činnosti správy kolem implementaci Identity Protection můžete přiřadit několik rolí. Azure AD Identity Protection podporuje 3 directory role:
+Pro vyrovnávání zatížení správy aktivit kolem vaší implementace Identity Protection můžete přiřadit několik rolí. Azure AD Identity Protection podporuje 3 role adresáře:
 
-| Role                         | Můžete provést                          | Nelze provést
+| Role                         | Můžete provést                          | Nelze provést.
 | :--                          | ---                                |  ---   |
-| Globální správce         | Úplný přístup k ochraně Identity, zařadit ochranu Identity| |
-| Správce zabezpečení       | Úplný přístup k Identity Protection | Zařadit Identity Protection resetovat hesla pro uživatele |
-| Čtenář zabezpečení              | Přístup jen pro čtení k Identity Protection | Zařadit Identity Protection, uživatelé remidiate, nakonfigurovat zásady, resetování hesla |
+| Globální správce         | Úplný přístup k Identity Protection, připojit Identity Protection| |
+| Správce zabezpečení       | Úplný přístup k Identity Protection | Připojení Identity Protection, resetujte hesla pro uživatele |
+| Čtenář zabezpečení              | Přístup k Identity Protection jen pro čtení | Připojení Identity Protection, uživatelům remidiate, nakonfigurovat zásady, resetování hesla |
 
 
 
 
-Další podrobnosti najdete v tématu [přiřazení rolí správce v Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md)
+Další podrobnosti najdete v tématu [přiřazení rolí správce v Azure Active Directory](users-groups-roles/directory-assign-admin-roles.md)
 
 
 
@@ -96,288 +96,288 @@ Další podrobnosti najdete v tématu [přiřazení rolí správce v Azure Activ
 
 ### <a name="vulnerabilities"></a>Ohrožení zabezpečení
 
-Azure Active Directory Identity Protection analýz konfiguraci a zjistí chyby zabezpečení, které můžou mít vliv na identit uživatelů. Další podrobnosti najdete v tématu [chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection](active-directory-identityprotection-vulnerabilities.md).
+Azure Active Directory Identity Protection analyzuje konfiguraci a zjistí ohrožení zabezpečení, která může mít vliv na identity vašich uživatelů. Další podrobnosti najdete v tématu [chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection](active-directory-identityprotection-vulnerabilities.md).
 
 ### <a name="risk-events"></a>Rizikové události
 
-Azure Active Directory používá algoritmy adaptivní strojového učení a heuristiky ke zjištění podezřelé akce, které se vztahují k identit uživatelů. Systém vytvoří záznam pro každé zjištěné podezřelé akce. Tyto záznamy se také označují jako rizikových událostech.  
+Azure Active Directory používá algoritmy adaptivní strojového učení a heuristik ke zjištění podezřelé akce, které se vztahují k identity vašich uživatelů. Systém vytvoří záznam pro každé zjištěné podezřelé akce. Tyto záznamy jsou také známé jako rizikové události.  
 Další podrobnosti najdete v tématu věnovaném [rizikovým událostem služby Azure Active Directory](active-directory-identity-protection-risk-events.md).
 
 
 ## <a name="investigation"></a>Šetření
-Vaše cesty přes Identity Protection obvykle začíná řídicího panelu ochrany identit.
+Svou cestu prostřednictvím služby Identity Protection obvykle začíná řídicího panelu služby Identity Protection.
 
 ![Náprava](./media/active-directory-identityprotection/1000.png "nápravy")
 
-Řídicí panel poskytuje přístup k:
+Řídicí panel poskytuje přístup:
 
-* Sestavy, jako **uživatelé označení příznakem rizik**, **rizik události** a **ohrožení zabezpečení**
-* Nastavení, jako například konfigurace vaší **zásady zabezpečení**, **oznámení** a **registrace služby Multi-Factor authentication**
+* Sestavy, jako například **uživatelé označení příznakem rizika**, **rizikových událostí** a **ohrožení zabezpečení**
+* Nastavení, jako je konfigurace vašeho **zásady zabezpečení**, **oznámení** a **registracích vícefaktorového ověřování**
 
-Je obvykle počáteční bod pro šetření, což je proces kontroly aktivity, protokoly a další důležité informace vztahující se k události riziko rozhodnout, zda jsou potřebné kroky ke zmírnění nebo nápravy, a jak se identita dojde k ohrožení a pochopit použití ohroženými identity.
+Obvykle je vaším výchozím bodem pro šetření, což je proces kontroly aktivity, protokoly a další relevantní informace související s riziková událost se rozhodnout, zda jsou nezbytné kroky ke zmírnění nebo nápravy, a jak se identita dojde k ohrožení bezpečnosti a seznamte se s použití ohrožených identity.
 
-Dokáže spojit vaše aktivity šetření a [oznámení](active-directory-identityprotection-notifications.md) Azure Active Directory Protection odešle na e-mailu.
+Vaše aktivity šetření tak můžete navázat [oznámení](active-directory-identityprotection-notifications.md) Azure Active Directory Protection odesílá na e-mailu.
 
 Následující části poskytují další podrobnosti a kroky, které se vztahují k vyšetřování.  
 
 
 ## <a name="risky-sign-ins"></a>Riziková přihlášení
 
-Azure Active Directory zjistí [rizik typů událostí](active-directory-reporting-risk-events.md#risk-event-types) v reálném čase a offline. Každý riziko událost, která byla zjištěna u přihlášení uživatele přispívá k logický pojem, který volá rizikové přihlášení. Rizikové přihlášení je indikátorem pro pokusu přihlášení, který nemusí provedly legitimní vlastníkem uživatelského účtu.
+Azure Active Directory detekuje [typech rizikových událostí](active-directory-reporting-risk-events.md#risk-event-types) v reálném čase a v režimu offline. Každý rizikovou událost, která byla zjištěna přihlásit uživatele přispívá k logický pojem volána rizikových přihlášení. Riziková přihlášení je indikátorem pokusu přihlásit, který se nemusí provést legitimním vlastníkem uživatelského účtu.
 
 
 ### <a name="sign-in-risk-level"></a>Úroveň rizika přihlášení
 
-Úroveň rizika přihlášení je označením (vysoká, střední nebo nízká) pravděpodobnost, že pokus o přihlášení nebyla provedena legitimní vlastníkem uživatelského účtu.
+Úroveň rizika přihlášení je označení (vysoká, střední nebo nízká) pravděpodobnost, že pokus o přihlášení nebyl prováděné legitimním vlastníkem uživatelského účtu.
 
-### <a name="mitigating-sign-in-risk-events"></a>Zmírnění rizika přihlašovací události
+### <a name="mitigating-sign-in-risk-events"></a>Zmírnění rizika přihlašování události
 
-Zmírnění je akci, kterou chcete omezit schopnost útočník zneužít ohroženými identity nebo zařízení bez obnovení identity nebo zařízení do bezpečného stavu. Zmírnění nevyřeší předchozí přihlášení rizikových událostech spojených s identity nebo zařízení.
+Omezení rizik je akci, kterou chcete omezit schopnost útočníka zneužít ohrožení zabezpečení identity nebo zařízení bez obnovení identity nebo zařízení do bezpečného stavu. Omezení rizik nevyřeší předchozí přihlášení rizikové události spojené s identity nebo zařízení.
 
-Pro zmírnění rizikové přihlášení automaticky, můžete nakonfigurovat zásady zabezpečení riziko přihlášení. Pomocí těchto zásad, zvažte úroveň rizika uživatele nebo přihlášení k blokování rizikové přihlášení nebo vyžadovat, aby uživatel k provedení ověřování Multi-Factor authentication. Tato akce může zabránit útočníkům ve využívání odcizené identity způsobit poškození a může získáte chvíli k zabezpečení identity.
+Zmírnění rizikových přihlášení automaticky, můžete nakonfigurovat zásady zabezpečení rizik přihlašování. Pomocí těchto zásad, zvažte úroveň rizika uživatele nebo přihlášení k blokování rizikových přihlášení nebo vyžadovat, aby uživatel k provedení ověřování Multi-Factor Authentication. Tato akce může zabránit útočníkům ve využívajícím krádež identity způsobit poškození a může dát nějaký čas zabezpečit identitu.
 
-### <a name="sign-in-risk-security-policy"></a>Zásady zabezpečení riziko přihlášení
-Zásady přihlášení riziko je zásadu podmíněného přístupu, která vyhodnotí riziko pro konkrétní přihlášení a použije způsoby zmírnění rizik na základě předem definované podmínky a pravidla.
+### <a name="sign-in-risk-security-policy"></a>Zásady zabezpečení rizik přihlašování
+Zásady rizik přihlašování se zásady podmíněného přístupu, která vyhodnotí riziko pro konkrétní přihlášení a použije omezení rizik na základě předem definované podmínky a pravidla.
 
-![Zásady přihlášení riziko](./media/active-directory-identityprotection/1014.png "zásad riziko přihlašování")
+![Zásady rizik přihlašování](./media/active-directory-identityprotection/1014.png "zásady rizik přihlašování")
 
-Azure AD Identity Protection pomáhá spravovat zmírnění rizikové přihlášení tím, že vám umožňuje:
+Služba Azure AD Identity Protection umožňuje správu zmírnění rizikových přihlášení tím, že vám umožňuje:
 
 * Nastavte uživatele a skupiny, které zásady platí pro:
 
-    ![Zásady přihlášení riziko](./media/active-directory-identityprotection/1015.png "zásad riziko přihlašování")
-* Nastavte přihlašovací riziko úrovně prahovou hodnotu (nízká, střední nebo vysokou), která spustí zásady:
+    ![Zásady rizik přihlašování](./media/active-directory-identityprotection/1015.png "zásady rizik přihlašování")
+* Nastavte rizika přihlašování úrovně prahovou hodnotu (nízká, střední nebo vysoké), která aktivuje zásady:
 
-    ![Zásady přihlášení riziko](./media/active-directory-identityprotection/1016.png "zásad riziko přihlašování")
-* Nastavte ovládací prvky vynutit, pokud aktivuje zásady:  
+    ![Zásady rizik přihlašování](./media/active-directory-identityprotection/1016.png "zásady rizik přihlašování")
+* Můžete nastavte řízení vynucení při aktivaci zásady:  
 
-    ![Zásady přihlášení riziko](./media/active-directory-identityprotection/1017.png "zásad riziko přihlašování")
+    ![Zásady rizik přihlašování](./media/active-directory-identityprotection/1017.png "zásady rizik přihlašování")
 * Přepnutí stavu zásad:
 
     ![Registrace MFA](./media/active-directory-identityprotection/403.png "registrace MFA")
-* Kontrola a vyhodnocení dopad změny před aktivací ho:
+* Kontrola a vyhodnocení dopadu změn před aktivací ho:
 
-    ![Zásady přihlášení riziko](./media/active-directory-identityprotection/1018.png "zásad riziko přihlašování")
+    ![Zásady rizik přihlašování](./media/active-directory-identityprotection/1018.png "zásady rizik přihlašování")
 
-#### <a name="what-you-need-to-know"></a>Co potřebujete vědět
-Můžete nakonfigurovat zásady zabezpečení riziko přihlášení pro požadovat použití vícefaktorového ověřování:
+#### <a name="what-you-need-to-know"></a>Co je potřeba vědět
+Můžete nakonfigurovat zásady zabezpečení rizik přihlašování vyžadovat vícefaktorové ověřování:
 
-![Zásady přihlášení riziko](./media/active-directory-identityprotection/1017.png "zásad riziko přihlašování")
+![Zásady rizik přihlašování](./media/active-directory-identityprotection/1017.png "zásady rizik přihlašování")
 
-Ale z bezpečnostních důvodů se toto nastavení funguje pouze pro uživatele, kteří již byl registrován pro službu Multi-Factor authentication. Pokud je splněna podmínka vyžadovat vícefaktorové ověřování pro uživatele, který dosud není registrován u služby Multi-Factor authentication, uživatel je blokován.
+Ale z bezpečnostních důvodů se toto nastavení funguje jenom pro uživatele, kteří jsou již zaregistrovány ověřování službou Multi-Factor Authentication. Tento uživatel je zablokovaný, pokud je splněna podmínka tak, aby vyžadovala vícefaktorové ověřování pro uživatele, který ještě není zaregistrovaný k vícefaktorovému ověřování.
 
-Jako osvědčený postup Pokud chcete požadovat použití vícefaktorového ověřování pro rizikové přihlášení, proveďte následující kroky:
+Jako osvědčený postup Pokud chcete, aby ověřování službou Multi-Factor Authentication pro rizikových přihlášení, měli byste:
 
-1. Povolit [zásady registrace služby Multi-Factor authentication](#multi-factor-authentication-registration-policy) pro příslušné uživatele.
+1. Povolit [zásady registrace pro vícefaktorové ověřování](#multi-factor-authentication-registration-policy) pro ovlivnění uživatelé.
 2. Vyžadovat ovlivněných uživatelů na přihlášení v relaci rizikové k provedení registrace MFA
 
-Dokončení těchto kroků zajistí, že je vyžadované pro rizikové přihlášení vícefaktorové ověřování.
+Dokončení těchto kroků se zajistí, že ověřování službou Multi-Factor Authentication je vyžadováno pro rizikové přihlášení.
 
 #### <a name="best-practices"></a>Osvědčené postupy
-Výběr **vysokou** prahová hodnota snižuje počet zásady se aktivuje a minimalizuje dopad na uživatele.  
+Výběr **vysokou** prahová hodnota snižuje počet, kolikrát zásada se aktivuje a minimalizuje dopad na uživatele.  
 
-Ale vyloučí **nízká** a **střední** přihlášení příznakem rizik ze zásad, které nemusí blokovat útočník z zneužitím ohrožení zabezpečení identity.
+Ale nezahrnuje **nízká** a **střední** přihlášení označených jako rizikoví ze zásad, které nemusí blokovat útočník ze zneužití ohrožení zabezpečení identity.
 
-Při nastavení zásad,
+Při nastavování zásad,
 
-* Vyloučit uživatele, kteří nepodporují / nemůže mít vícefaktorového ověřování
-* Vyloučit uživatele v národní prostředí, kde není praktické povolení zásad (například žádný přístup na technickou podporu)
-* Vyloučení uživatelé, kteří jsou pravděpodobně vygeneroval velké množství false pozitivních (vývojáři, analytikům zabezpečení)
-* Použití **vysokou** prahová hodnota během počáteční zásadách, nebo pokud minimalizujete musí výzvy pohledu koncové uživatele.
-* Použití **nízká** prahovou hodnotu, pokud vaše organizace vyžaduje vyšší úroveň zabezpečení. Výběr **nízká** prahová hodnota zavádí další uživatelské přihlašovací výzvy, ale zvýšení zabezpečení.
+* Vyloučit uživatele, kteří nejsou / nemůže mít ověřování službou Multi-Factor Authentication
+* Vyloučit uživatele v národních prostředí, kde není praktické povolení zásad (například žádný přístup k technické podpory)
+* Vyloučit uživatele, kteří mohou generovat velké množství pozitivní hodnotu false (vývojáři, analytikům zabezpečení)
+* Použití **vysokou** prahové hodnoty během počáteční zásad uvádění, nebo pokud musíte minimalizovat problémy, koncový uživatel neuvidí.
+* Použití **nízká** prahovou hodnotu, pokud vaše organizace vyžaduje vyšší úroveň zabezpečení. Výběr **nízká** prahová hodnota představuje další uživatele přihlásit výzvy, ale zvýšené zabezpečení.
 
-Doporučené výchozí hodnota pro většinu organizací je nakonfigurovat pravidlo pro **střední** prahovou hodnotu na vytvořit rovnováhu mezi využitelností a zabezpečení.
+Doporučené výchozí nastavení pro většinu organizací je a nakonfigurujte pravidlo pro **střední** prahová hodnota hledají rovnováhu mezi použitelnost a zabezpečení.
 
-Zásady přihlášení riziko je:
+Zásady rizik přihlašování je:
 
-* Použít pro všechny přenosy prohlížeče a přihlášení pomocí moderní ověřování.
-* Nevztahuje se na aplikace, které používají starší protokoly zabezpečení zakázáním WS-Trust koncový bod na federované rozšíření IDP, jako je například služba AD FS.
+* Použít pro všechny prohlížeče provoz a přihlášení pomocí moderního ověřování.
+* Bez použití aplikací s použitím starší protokoly zabezpečení tím, že zakážete koncového bodu WS-Trust ve federovaných zprostředkovatele identity, jako jsou služby AD FS.
 
-**Rizikových událostech** stránky v konzole Identity Protection zobrazuje všechny události:
+**Rizikových událostí** stránky v konzole Identity Protection obsahuje seznam všech událostí:
 
-* Použití této zásady
-* Můžete zkontrolovat aktivity a zjistit, zda byla akce odpovídající
+* Tato zásada byla použita k
+* Můžete zkontrolovat aktivity a zjistit, jestli byla akce odpovídající
 
-Přehled související uživatelské prostředí najdete v tématu:
+Přehled související uživatelské prostředí naleznete v tématu:
 
-* [Obnovení rizikové přihlášení](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
-* [Rizikové přihlášení blokován](active-directory-identityprotection-flows.md#risky-sign-in-blocked)  
-* [Možnosti přihlášení s Azure AD Identity Protection](active-directory-identityprotection-flows.md)  
+* [Obnovení riziková přihlášení](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
+* [Riziková přihlášení blokováno](active-directory-identityprotection-flows.md#risky-sign-in-blocked)  
+* [Možnosti přihlašování s Azure AD Identity Protection](active-directory-identityprotection-flows.md)  
 
-**Tím otevřete dialogové okno Konfigurace související**:
+**Chcete-li otevřít dialogové okno Konfigurace související**:
 
-- Na **Azure AD Identity Protection** okno v **konfigurace** klikněte na tlačítko **zásad přihlašování riziko**.
+- Na **Azure AD Identity Protection** okno v **konfigurovat** klikněte na tlačítko **zásady rizik přihlašování**.
 
-    ![Zásady uživatele riziko](./media/active-directory-identityprotection/1014.png "riziko zásady uživatele")
+    ![Zásady rizik uživatelů](./media/active-directory-identityprotection/1014.png "zásady rizik uživatelů")
 
 
 
 ## <a name="users-flagged-for-risk"></a>Uživatelé označení příznakem rizika
 
-Všechny aktivní [rizik události](active-directory-identity-protection-risk-events.md) , byly zjištěny službou Azure Active Directory pro uživatele můžete přispět k logický pojem, který volá riziko pro uživatele. Uživatele s příznakem pro riziko je indikátorem pro uživatelský účet, který byl napaden.
+Všechny aktivní [rizikových událostí](active-directory-identity-protection-risk-events.md) , které byly zjištěny službou Azure Active Directory pro uživatele přispívat na logický pojem, který volá uživatelského rizika. Uživatele označené příznakem rizika je indikátorem uživatelského účtu, který mohl být ohrožený.
 
 ![Uživatelé označení příznakem rizika](./media/active-directory-identityprotection/1200.png)
 
 
 ### <a name="user-risk-level"></a>Úroveň rizika uživatele
 
-Úroveň rizika uživatel je označením (vysoká, střední nebo nízká) pravděpodobnost, že byl napaden identitu uživatele. Se počítá na základě událostí riziko uživatele, které jsou přidružené k identitě uživatele.
+Úroveň rizika uživatele je indikací (vysoká, střední nebo nízká) pravděpodobnost, že se k ohrožení identity uživatele. To se počítají na základě rizikových událostí uživatele, které jsou spojené s identitou uživatele.
 
-Stav události riziko je buď **Active** nebo **uzavřeno**. Pouze riziko události, které jsou **Active** podílet se na uživatelské úrovni výpočet riziko.
+Stav rizikové události je buď **aktivní** nebo **uzavřeno**. Pouze rizikových událostí, které jsou **aktivní** přispívat k výpočtu úroveň rizika uživatele.
 
-Úroveň rizika uživatele se počítá pomocí následující zadání:
+Úroveň rizika pro uživatele se počítá pomocí následující vstupy:
 
-* Aktivní rizikových událostech, které mají vliv uživatele
-* Úroveň rizika tyto události
-* Jestli nebyly provedeny žádné nápravné akce
+* Vliv na uživatele Active rizikových událostí
+* Úroveň rizika těchto událostí
+* Určuje, zda byla přijata jaké nápravné akce
 
-![Uživatel rizika](./media/active-directory-identityprotection/1031.png "rizika uživatele")
+![Riziko uživatele](./media/active-directory-identityprotection/1031.png "rizika uživatele")
 
-Můžete použít k vytvoření zásady podmíněného přístupu, které zablokovat rizikové uživatelům přihlášení úrovní rizika uživatele nebo vynutit, aby bezpečně změnit své heslo.
+Můžete použít úrovně rizika uživatele k vytvoření zásady podmíněného přístupu, které zablokovat uživatelům rizikových přihlášení, nebo vynuťte jejich bezpečně změnit své heslo.
 
-### <a name="closing-risk-events-manually"></a>Zavřením rizikových událostí ručně
+### <a name="closing-risk-events-manually"></a>Ručnímu zavření rizikových událostí
 
-Ve většině případů bude trvat nápravné akce, jako například zabezpečené heslo resetovat automaticky uzavřít rizikových událostech. Ale to nemusí být vždy možné.  
-Toto je, například případě, když:
+Ve většině případů bude trvat nápravné akce, jako je zabezpečené heslo resetovat automaticky zavření rizikové události. Nicméně to nemusí být vždy možné.  
+To platí, například když:
 
-* Uživatel s Active rizikových událostí byl odstraněn.
-* Šetření zjistí, že byla událostí vykazuje riziko provést legitimní uživatel
+* Uživatel s aktivním rizikové události se odstranil.
+* Šetření odhalí, že ohlášená riziková událost provést legitimní uživatel
 
-Protože rizikových událostech, které jsou **Active** přispívat k výpočtu riziko uživatele, možná budete muset ručně nižší úroveň rizika ukončením rizikových událostí ručně.  
-Během šetření můžete provést některou z těchto akcí pro změnu stavu riziko události:
+Protože rizikové události, které jsou **aktivní** přispívat k výpočtu rizika uživatele, bude pravděpodobně nutné ručně ručnímu zavření rizikových událostí snížit úroveň rizika.  
+V průběhu šetření můžete provést některou z těchto akcí, chcete-li změnit stav rizikové události:
 
 ![Akce](./media/active-directory-identityprotection/34.png "akce")
 
-* **Vyřešte** – Pokud po prozkoumání riziko událostí, trvalo akce odpovídající nápravu mimo ochrany identit a budete mít dojem, že riziko události by se měly zvažovat zavřená, označte událostí jako Vyřešeno. Přeložit události na uzavřený nastaví stav riziko události a události riziko už přispějí k riziko pro uživatele.
-* **Označit jako falešně pozitivní** – v některých případech můžete prozkoumat události riziko a zjistit, že byla nesprávně označena jako rizikové. Můžete snížit počet takových výskytů označením riziko událostí jako falešně pozitivní. To vám pomůže zlepšit klasifikaci podobné události v budoucnu algoritmů strojového učení. Stav falešně pozitivní událostí je **uzavřeno** a už přispívají k riziko pro uživatele.
-* **Ignorovat** – Pokud jste ještě nevstoupilo žádnou akci nápravy, ale má být odebrán ze seznamu active událost riziko můžete označit riziko událostí ignorovat a bude uzavřen stav události. Ignoruje události nepřispívají k riziko pro uživatele. Tato možnost by měla být použita pouze za neobvyklé okolnosti.
-* **Znovu aktivovat** -riziko události, které byly ručně (výběrem **vyřešit**, **falešně pozitivní**, nebo **Ignorovat**) lze znovu aktivovat, nastavení události stavu zpět do **Active**. Opětovně aktivovaných rizikových událostech podílet se na uživatelské úrovni výpočet riziko. Nelze znovu aktivovat, rizikových událostech (například zabezpečené heslo resetovat) uzavřeny prostřednictvím nápravy.
+* **Vyřešit** – Pokud po prozkoumání rizikovou událost, trvalo odpovídajících nápravných akci mimo Identity Protection. proto si myslíte, že by měl za riziková událost zavřená, označte události jako vyřešenou. Vyřešené události se riziková událost stav nastaven na Uzavřeno a rizikové události se už přispívat do uživatelského rizika.
+* **Označit jako falešně pozitivní** – v některých případech můžete vyšetřovat rizikovou událost a zjistit, že byla nesprávně označena jako rizikové. Vám může pomoct snížit počet výskytů těchto označením riziková událost jako falešně pozitivní. To vám pomůže zlepšit klasifikace podobné události v budoucnu algoritmech strojového učení. Stav falešně pozitivní událostí je **uzavřeno** a už se přispívat do uživatelského rizika.
+* **Ignorovat** – Pokud ještě nevstoupilo v libovolné akci nápravy, ale chcete riziková událost odebrat ze seznamu aktivní, můžete označit rizikové události ignorovat a bude uzavřeno stav události. Ignoruje události nepočítají do uživatelského rizika. Tato možnost by měla sloužit pouze v rámci neobvyklé okolnosti.
+* **Znovu aktivovat** -rizikových událostí, které nebyly uzavřeny ručně (výběrem **vyřešit**, **falešně pozitivní**, nebo **Ignorovat**) můžete znovu aktivovat, nastavení události stavu zpět do **aktivní**. Opětovně rizikových událostí přispívat k výpočtu úroveň rizika uživatele. Rizikové události jsou zavřené prostřednictvím nápravy (například zabezpečené heslo resetovat) nelze aktivovat.
 
-**Tím otevřete dialogové okno Konfigurace související**:
+**Chcete-li otevřít dialogové okno Konfigurace související**:
 
-1. Na **Azure AD Identity Protection** okno, v části **prošetření**, klikněte na tlačítko **rizik události**.
+1. Na **Azure AD Identity Protection** okně v části **prošetření**, klikněte na tlačítko **rizikových událostí**.
 
-    ![Resetování hesla ruční](./media/active-directory-identityprotection/1002.png "resetování hesla ruční")
-2. V **rizik události** klikněte na riziko.
+    ![Resetování hesla ruční](./media/active-directory-identityprotection/1002.png "ruční heslo resetovat")
+2. V **rizikových událostí** klikněte na možnost riziko.
 
-    ![Resetování hesla ruční](./media/active-directory-identityprotection/1003.png "resetování hesla ruční")
-3. V okně riziko klikněte pravým tlačítkem na uživatele.
+    ![Resetování hesla ruční](./media/active-directory-identityprotection/1003.png "ruční heslo resetovat")
+3. V okně rizika klikněte pravým tlačítkem na uživatele.
 
-    ![Resetování hesla ruční](./media/active-directory-identityprotection/1004.png "resetování hesla ruční")
+    ![Resetování hesla ruční](./media/active-directory-identityprotection/1004.png "ruční heslo resetovat")
 
-### <a name="closing-all-risk-events-for-a-user-manually"></a>Zavřít všechny události riziko pro uživatele ručně
-Místo ručně zavřete riziko události pro uživatele jednotlivě, Azure Active Directory Identity Protection také poskytuje metodu zavřete všechny události pro uživatele s jedním kliknutím.
+### <a name="closing-all-risk-events-for-a-user-manually"></a>Ruční zavření všechny rizikové události pro uživatele
+Místo ruční zavření rizikové události pro uživatele jednotlivě, Azure Active Directory Identity Protection také poskytuje metodu pro zavřít všechny události pro uživatele s jedním kliknutím.
 
 ![Akce](./media/active-directory-identityprotection/2222.png "akce")
 
-Když kliknete na tlačítko **zavřít všechny události**, jsou zavřeny všechny události a ovlivněného uživatele jsou již v ohrožení.
+Po kliknutí na **zavřít všechny události**, jsou uzavřeny všechny události a ovlivněného uživatele už nejsou ohrožení.
 
-### <a name="remediating-user-risk-events"></a>Nekompatibilních rizikových událostí uživatele
+### <a name="remediating-user-risk-events"></a>Napravování rizikové události uživatele
 
-Nápravy je akci, kterou chcete zabezpečit identity nebo zařízení, která byla dříve by mohly vzbuzovat podezření nebo známé došlo k narušení. Akce nápravy obnoví identity nebo zařízení do bezpečného stavu a odstraňuje předchozí rizikových událostech spojených s identity nebo zařízení.
+Nápravy je akce zabezpečení identity nebo zařízení, který byl dříve podezřelý nebo známé u něho ohrožena bezpečnost. Nápravné akce obnoví identity nebo zařízení do bezpečného stavu a odstraňuje předchozí rizikové události související s identity nebo zařízení.
 
-Chcete-li opravit událostí riziko uživatele, můžete:
+Chcete-li odstranit uživatele rizikové události, můžete:
 
-* Zabezpečené heslo resetovat k nápravě uživatele rizikových událostí ručně
-* Konfigurace uživatelských zásad zabezpečení riziko zmírnit nebo automaticky napravovat riziko událostí uživatele
-* Znovu přeinstalovat image nakažených zařízení  
+* Zabezpečené heslo obnovit ručně odstranit rizikové události uživatele
+* Konfigurovat zásady zabezpečení rizik uživatelů k zmírnit dopady nebo automaticky odstranit rizikové události uživatele
+* Přeinstalace (RE-Image) nakažených zařízení  
 
-#### <a name="manual-secure-password-reset"></a>Resetování ruční zabezpečeného hesla
-Resetování zabezpečeného hesla je efektivní nápravy pro mnoho událostí riziko a při provádění automaticky zavře tyto události riziko přepočítá úroveň rizika uživatele. Řídicí panel ochrany identit můžete zahájit obnovení hesla pro rizikové uživatele.
+#### <a name="manual-secure-password-reset"></a>Ruční zabezpečené heslo resetovat
+Zabezpečené heslo resetovat je efektivní opravy mnoha rizikových událostech a při provádění, automaticky zavře tyto rizikové události a přepočítá úroveň rizika pro uživatele. K zahájení obnovení hesla pro uživatele rizikový uživatel mohou pomocí řídicího panelu služby Identity Protection.
 
-Související dialogové okno obsahuje dvě různé metody pro obnovení hesla:
+Dialogové okno související poskytuje dva různé způsoby vytvoření nového hesla:
 
-**Resetovat heslo** – vyberte **vyžadovat, aby uživatel změnit heslo** chcete umožnit uživatelům samoobslužné obnovení, pokud má uživatel zaregistrován u služby Multi-Factor authentication. Při jeho příštím přihlášení bude potřeba řešit výzvy ověřování Multi-Factor authentication úspěšně a pak přinucení změnit heslo uživatele. Tato možnost není dostupná, pokud uživatelský účet ještě není registrované služby Multi-Factor authentication.
+**Resetovat heslo** – vyberte **vyžaduje, aby uživatel k resetování hesla** povolit uživatelské samoobslužné obnovení, pokud má uživatel zaregistrován u služby Multi-Factor authentication. Během uživatele příštím přihlášení bude uživatel vyžaduje řešení výzvu ověřování službou Multi-Factor Authentication úspěšně a pak, budete muset změnit heslo. Tato možnost není dostupná, pokud uživatelský účet ještě není registrované služby Multi-Factor authentication.
 
-**Dočasné heslo** – vyberte **generovat dočasné heslo** okamžitě zneplatní stávající heslo a vytvořit nové dočasné heslo pro uživatele. Odeslání nové dočasné heslo na alternativní e-mailovou adresu pro uživatele nebo pro uživatele správce. Protože je dočasné heslo, uživatel se vyzve k změnit heslo při přihlášení.
+**Dočasné heslo** – vyberte **vygenerovat dočasné heslo** okamžitě zneplatnit existující heslo a vytvoří nové dočasné heslo pro daného uživatele. Odešlete nové dočasné heslo na alternativní e-mailovou adresu uživatele nebo jeho manažerovi. Protože je dočasné heslo, uživateli zobrazí výzva ke změně hesla při přihlášení.
 
 ![Zásady](./media/active-directory-identityprotection/1005.png "zásad")
 
-**Tím otevřete dialogové okno Konfigurace související**:
+**Chcete-li otevřít dialogové okno Konfigurace související**:
 
-1. Na **Azure AD Identity Protection** okně klikněte na tlačítko **uživatelé označení příznakem rizik**.
+1. Na **Azure AD Identity Protection** okna, klikněte na tlačítko **uživatelé označení příznakem rizika**.
 
-    ![Resetování hesla ruční](./media/active-directory-identityprotection/1006.png "resetování hesla ruční")
-2. V seznamu uživatelů vyberte uživatele, který má alespoň jeden rizikových událostí.
+    ![Resetování hesla ruční](./media/active-directory-identityprotection/1006.png "ruční heslo resetovat")
+2. Ze seznamu uživatelů vyberte uživatele s alespoň jeden rizikové události.
 
-    ![Resetování hesla ruční](./media/active-directory-identityprotection/1007.png "resetování hesla ruční")
-3. V okně uživatele klikněte na **resetovat heslo**.
+    ![Resetování hesla ruční](./media/active-directory-identityprotection/1007.png "ruční heslo resetovat")
+3. V okně uživatele klikněte na tlačítko **resetovat heslo**.
 
-    ![Resetování hesla ruční](./media/active-directory-identityprotection/1008.png "resetování hesla ruční")
+    ![Resetování hesla ruční](./media/active-directory-identityprotection/1008.png "ruční heslo resetovat")
 
-### <a name="user-risk-security-policy"></a>Zásada zabezpečení riziko uživatelů
-Zásady uživatele rizik zabezpečení je zásadu podmíněného přístupu, která vyhodnotí úroveň rizika pro konkrétního uživatele a použije nápravy a zmírnění akce na základě předem definované podmínky a pravidla.
+### <a name="user-risk-security-policy"></a>Zásady zabezpečení rizik uživatelů
+Zásady zabezpečení rizik uživatelů se zásady podmíněného přístupu, který vyhodnotí úroveň rizika pro konkrétního uživatele a provede akce nápravy a zmírnění distribuovaných útoků na základě předem definované podmínky a pravidla.
 
-![Zásady uživatele riziko](./media/active-directory-identityprotection/1009.png "riziko zásady uživatele")
+![Zásady rizik uživatelů](./media/active-directory-identityprotection/1009.png "zásady rizik uživatelů")
 
-Azure AD Identity Protection pomáhá spravovat omezení rizik a náprava uživatelé označení příznakem rizik a to:
+Azure AD Identity Protection vám pomůže se správou zmírnění a odstraňování problémů uživatelů označených příznakem rizika umožňuje:
 
 * Nastavte uživatele a skupiny, které zásady platí pro:
 
-    ![Zásady uživatele riziko](./media/active-directory-identityprotection/1010.png "riziko zásady uživatele")
-* Nastavte uživatele riziko úrovně prahovou hodnotu (nízká, střední nebo vysokou), která spustí zásady:
+    ![Zásady rizik uživatelů](./media/active-directory-identityprotection/1010.png "zásady rizik uživatelů")
+* Nastavte uživatele riziko úrovně prahovou hodnotu (nízká, střední nebo vysoké), která aktivuje zásady:
 
-    ![Zásady uživatele riziko](./media/active-directory-identityprotection/1011.png "riziko zásady uživatele")
-* Nastavte ovládací prvky vynutit, pokud aktivuje zásady:
+    ![Zásady rizik uživatelů](./media/active-directory-identityprotection/1011.png "zásady rizik uživatelů")
+* Můžete nastavte řízení vynucení při aktivaci zásady:
 
-    ![Zásady uživatele riziko](./media/active-directory-identityprotection/1012.png "riziko zásady uživatele")
+    ![Zásady rizik uživatelů](./media/active-directory-identityprotection/1012.png "zásady rizik uživatelů")
 * Přepnutí stavu zásad:
 
-    ![Zásady uživatele riziko](./media/active-directory-identityprotection/403.png "registrace MFA")
-* Kontrola a vyhodnocení dopad změny před aktivací ho:
+    ![Zásady rizik uživatelů](./media/active-directory-identityprotection/403.png "registrace MFA")
+* Kontrola a vyhodnocení dopadu změn před aktivací ho:
 
-    ![Zásady uživatele riziko](./media/active-directory-identityprotection/1013.png "riziko zásady uživatele")
+    ![Zásady rizik uživatelů](./media/active-directory-identityprotection/1013.png "zásady rizik uživatelů")
 
-Výběr **vysokou** prahová hodnota snižuje počet zásady se aktivuje a minimalizuje dopad na uživatele.
-Ale vyloučí **nízká** a **střední** uživatelé označení příznakem rizik ze zásad, které nemusí zabezpečit identity nebo zařízení, měla by mohly vzbuzovat podezření nebo známé došlo k narušení.
+Výběr **vysokou** prahová hodnota snižuje počet, kolikrát zásada se aktivuje a minimalizuje dopad na uživatele.
+Ale nezahrnuje **nízká** a **střední** uživatelů označených příznakem rizika ze zásad, které nemusí zabezpečit identity nebo zařízení, které byly dříve vzbuzovat podezření na nebo známé u něho ohrožena bezpečnost.
 
-Při nastavení zásad,
+Při nastavování zásad,
 
-* Vyloučení uživatelé, kteří jsou pravděpodobně vygeneroval velké množství false pozitivních (vývojáři, analytikům zabezpečení)
-* Vyloučit uživatele v národní prostředí, kde není praktické povolení zásad (například žádný přístup na technickou podporu)
-* Použití **vysokou** prahová hodnota během počáteční zásadách, nebo pokud minimalizujete musí výzvy pohledu koncové uživatele.
-* Použití **nízká** prahovou hodnotu, pokud vaše organizace vyžaduje vyšší úroveň zabezpečení. Výběr **nízká** prahová hodnota zavádí další uživatelské přihlašovací výzvy, ale zvýšení zabezpečení.
+* Vyloučit uživatele, kteří mohou generovat velké množství pozitivní hodnotu false (vývojáři, analytikům zabezpečení)
+* Vyloučit uživatele v národních prostředí, kde není praktické povolení zásad (například žádný přístup k technické podpory)
+* Použití **vysokou** prahové hodnoty během počáteční zásad uvádění, nebo pokud musíte minimalizovat problémy, koncový uživatel neuvidí.
+* Použití **nízká** prahovou hodnotu, pokud vaše organizace vyžaduje vyšší úroveň zabezpečení. Výběr **nízká** prahová hodnota představuje další uživatele přihlásit výzvy, ale zvýšené zabezpečení.
 
-Doporučené výchozí hodnota pro většinu organizací je nakonfigurovat pravidlo pro **střední** prahovou hodnotu na vytvořit rovnováhu mezi využitelností a zabezpečení.
+Doporučené výchozí nastavení pro většinu organizací je a nakonfigurujte pravidlo pro **střední** prahová hodnota hledají rovnováhu mezi použitelnost a zabezpečení.
 
-Přehled související uživatelské prostředí najdete v tématu:
+Přehled související uživatelské prostředí naleznete v tématu:
 
-* [Dojde k ohrožení tok obnovení účtu](active-directory-identityprotection-flows.md#compromised-account-recovery).  
-* [Dojde k ohrožení účet byl uzamčen toku](active-directory-identityprotection-flows.md#compromised-account-blocked).  
+* [Dojde k ohrožení bezpečnosti účtu obnovení toku](active-directory-identityprotection-flows.md#compromised-account-recovery).  
+* [Dojde k ohrožení bezpečnosti účtu blokované tok](active-directory-identityprotection-flows.md#compromised-account-blocked).  
 
-**Tím otevřete dialogové okno Konfigurace související**:
+**Chcete-li otevřít dialogové okno Konfigurace související**:
 
-- Na **Azure AD Identity Protection** okno v **konfigurace** klikněte na tlačítko **zásady uživatele riziko**.
+- Na **Azure AD Identity Protection** okno v **konfigurovat** klikněte na tlačítko **zásady rizik uživatelů**.
 
-    ![Zásady uživatele riziko](./media/active-directory-identityprotection/1009.png "riziko zásady uživatele")
+    ![Zásady rizik uživatelů](./media/active-directory-identityprotection/1009.png "zásady rizik uživatelů")
 
-### <a name="mitigating-user-risk-events"></a>Zmírnění rizik událostí uživatele
-Správci mohou nastavit zásady uživatele riziko zabezpečení pro blokování uživatele při přihlášení v závislosti na úroveň rizika.
+### <a name="mitigating-user-risk-events"></a>Zmírnění rizikových událostí uživatele
+Správci můžou nastavit zásady zabezpečení rizik uživatelů k blokování uživatelů při přihlášení v závislosti na úrovni rizika.
 
-Blokování přihlášení:
+Blokování přihlašování se změnami:
 
-* Zabrání generování nových událostí riziko uživatele pro ovlivněného uživatele
-* Umožňuje správcům ručně opravit rizikových událostech, které mají vliv na identitu uživatele a obnovte ji do zabezpečené stavu
+* Brání generování nového uživatele rizikové události pro ovlivněného uživatele
+* Správcům umožňuje ručně odstranit rizikové události by to ovlivnilo identitu uživatele a jeho obnovení stavu zabezpečení
 
 
 
 ## <a name="multi-factor-authentication-registration-policy"></a>Zásady registrace pro vícefaktorové ověřování
-Ověřování Azure Multi-Factor authentication je metoda ověřování, který jste, která vyžaduje použití víc věcí než jenom uživatelské jméno a heslo. Poskytuje druhou vrstvu zabezpečení uživatelská přihlášení a transakce.  
-Doporučujeme vyžadovat ověřování Azure Multi-Factor authentication pro přihlášení uživatele, protože ho:
+Azure Multi-Factor authentication je metodu ověřování, který se vyžaduje použití víc než jenom uživatelské jméno a heslo. Poskytuje druhou vrstvu zabezpečení, které uživatelská přihlášení a transakce.  
+Doporučujeme, abyste vyžadují ověřování Azure Multi-Factor Authentication pro přihlášení uživatelů, protože ho:
 
-* Poskytuje silné ověřování s celou řadu možností snadno ověření
-* Hraje důležitou roli při přípravě vaší organizace k ochraně a obnovování z účtu ohrožení
+* Nabízí silné ověřování s řadou jednoduchých možností
+* Hrají klíčovou roli při přípravě vaší organizaci, aby ochrana a obnovení z účtu ohrožení
 
-![Zásady uživatele riziko](./media/active-directory-identityprotection/1019.png "riziko zásady uživatele")
+![Zásady rizik uživatelů](./media/active-directory-identityprotection/1019.png "zásady rizik uživatelů")
 
 Další podrobnosti najdete v tématu [co je Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md)
 
-Azure AD Identity Protection pomáhá spravovat zavádění registrace služby Multi-Factor authentication tím, že nakonfigurujete zásadu, která umožňuje:
+Služba Azure AD Identity Protection umožňuje správu zavedení registrace služby Multi-Factor authentication tím, že nakonfigurujete zásady, které vám umožní:
 
 * Nastavte uživatele a skupiny, které zásady platí pro:
 
     ![Zásady vícefaktorového ověřování](./media/active-directory-identityprotection/1020.png "zásad vícefaktorového ověřování")
-* Nastavit ovládací prvky vynutit, pokud zásady aktivuje::  
+* Můžete nastavit řízení vynucení při aktivaci zásady::  
 
     ![Zásady vícefaktorového ověřování](./media/active-directory-identityprotection/1021.png "zásad vícefaktorového ověřování")
 * Přepnutí stavu zásad:
@@ -387,34 +387,34 @@ Azure AD Identity Protection pomáhá spravovat zavádění registrace služby M
 
     ![Zásady vícefaktorového ověřování](./media/active-directory-identityprotection/1022.png "zásad vícefaktorového ověřování")
 
-Přehled související uživatelské prostředí najdete v tématu:
+Přehled související uživatelské prostředí naleznete v tématu:
 
-* [Postup registrace služby Multi-Factor authentication](active-directory-identityprotection-flows.md#multi-factor-authentication-registration).  
-* [Přihlášení vyskytne s Azure AD Identity Protection](active-directory-identityprotection-flows.md).  
+* [Tok ověřování službou Multi-Factor Authentication registrace](active-directory-identityprotection-flows.md#multi-factor-authentication-registration).  
+* [Přihlašovací prostředí v Azure AD Identity Protection](active-directory-identityprotection-flows.md).  
 
-**Tím otevřete dialogové okno Konfigurace související**:
+**Chcete-li otevřít dialogové okno Konfigurace související**:
 
-- Na **Azure AD Identity Protection** okno v **konfigurace** klikněte na tlačítko **registrace služby Multi-Factor authentication**.
+- Na **Azure AD Identity Protection** okno v **konfigurovat** klikněte na tlačítko **registracích vícefaktorového ověřování**.
 
     ![Zásady vícefaktorového ověřování](./media/active-directory-identityprotection/1019.png "zásad vícefaktorového ověřování")
 
 ## <a name="next-steps"></a>Další postup
-* [Kanál 9: Azure AD a Identity zobrazení: Identity Protection verze Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Kanál 9: Azure AD a Identity Show: Identity Protection ve verzi Preview](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
-* [Povolení ochrany identit Azure Active Directory](active-directory-identityprotection-enable.md)
+* [Povolení služby Azure Active Directory Identity Protection](active-directory-identityprotection-enable.md)
 
 * [Chyb zabezpečení detekovaných službou Azure Active Directory Identity Protection](active-directory-identityprotection-vulnerabilities.md)
 
 * [Azure Active Directory rizikových událostí](active-directory-identity-protection-risk-events.md)
 
-* [Azure oznámení ochrany identit služby Active Directory](active-directory-identityprotection-notifications.md)
+* [Oznámení služby Azure Active Directory Identity Protection](active-directory-identityprotection-notifications.md)
 
-* [Azure seznam strategií ochrany identit Active Directory](active-directory-identityprotection-playbook.md)
+* [Playbook Azure Active Directory Identity Protection](active-directory-identityprotection-playbook.md)
 
-* [Azure slovník ochrany identit služby Active Directory](active-directory-identityprotection-glossary.md)
+* [Glosář Azure Active Directory Identity Protection](active-directory-identityprotection-glossary.md)
 
-* [Možnosti přihlášení s Azure AD Identity Protection](active-directory-identityprotection-flows.md)
+* [Možnosti přihlašování s Azure AD Identity Protection](active-directory-identityprotection-flows.md)
 
-* [Azure Active Directory identitu ochrana – jak odblokovat uživatele](active-directory-identityprotection-unblock-howto.md)
+* [Azure Active Directory Identity Protection – jak odblokovat uživatele](active-directory-identityprotection-unblock-howto.md)
 
 * [Začínáme s Azure Active Directory Identity Protection a Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)

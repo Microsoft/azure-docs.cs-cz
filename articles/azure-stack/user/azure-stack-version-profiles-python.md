@@ -1,6 +1,6 @@
 ---
-title: Pomocí profilů rozhraní API verze Python v zásobníku Azure | Microsoft Docs
-description: Další informace o použití profilů verze rozhraní API s Pythonem v zásobníku Azure.
+title: Použití profilů verzí API s využitím Pythonu ve službě Azure Stack | Dokumentace Microsoftu
+description: Další informace o použití profilů verzí API s využitím Pythonu ve službě Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,62 +15,62 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 <!-- dev: viananth -->
 ms.openlocfilehash: d17ba9ed4548a986d6846d934aee197609ec80ca
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
+ms.lasthandoff: 07/03/2018
 ms.locfileid: "34806832"
 ---
-# <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Použití profilů verze rozhraní API s Pythonem v Azure zásobníku
+# <a name="use-api-version-profiles-with-python-in-azure-stack"></a>Použití profilů verzí API s využitím Pythonu ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-## <a name="python-and-api-version-profiles"></a>Profily verze Python a rozhraní API
+## <a name="python-and-api-version-profiles"></a>Profilů verzí Pythonu a rozhraní API
 
-Python SDK podporuje profily verze rozhraní API pro platformu jiný cloud, jako je například Azure zásobníku a globální Azure. Pomocí profilů rozhraní API pro vytváření řešení pro hybridní cloud. Python SDK podporuje následující profily rozhraní API:
+Python SDK podporuje profilů verzí API cílit na různé cloudové platformy, jako je Azure Stack a globální Azure. Pomocí profilů rozhraní API ve vytváření řešení pro hybridní cloud. Python SDK podporuje následující profily rozhraní API:
 
-1. **Nejnovější**  
-    Profil cílí nejnovější verze rozhraní API pro všechny poskytovatele služeb v platformě Azure.
-2.  **2017-03-09profil**  
-    **2017-03-09profil**  
-    Profil cílí verze rozhraní API poskytovatele prostředků nepodporuje Azure zásobníku.
+1. **nejnovější**  
+    Profil, který cílí na nejnovější verze rozhraní API pro všechny poskytovatele služby na platformě Azure.
+2.  **2017-03-09-profile**  
+    **2017-03-09-profile**  
+    Profil, který cílí na verze rozhraní API poskytovatele prostředků, které jsou podporované ve službě Azure Stack.
 
-    Další informace o profilech API a zásobník Azure najdete v tématu [profily verze spravovat rozhraní API v Azure zásobníku](azure-stack-version-profiles.md).
+    Další informace o profilech rozhraní API a služby Azure Stack najdete v tématu [profilů verzí API spravovat ve službě Azure Stack](azure-stack-version-profiles.md).
 
 ## <a name="install-azure-python-sdk"></a>Instalace sady Azure Python SDK
 
 1.  Nainstalovat Git z [oficiální web](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-2.  Pokyny k instalaci sady SDK pro Python najdete v tématu [Azure pro vývojáře v Pythonu](https://docs.microsoft.com/python/azure/python-sdk-azure-install?view=azure-python).
-3.  Pokud není k dispozici, vytvořit odběr a uložte ID předplatného pro pozdější použití. Pokyny pro vytvoření odběru naleznete v tématu [vytvoření odběrů nabídky v Azure zásobníku](../azure-stack-subscribe-plan-provision-vm.md). 
-4.  Vytvořit objekt služby a uložte jeho ID a tajný klíč. Pokyny k vytvoření objektu služby pro Azure zásobníku najdete v tématu [poskytnout přístup aplikace k Azure zásobníku](../azure-stack-create-service-principals.md). 
-5.  Ujistěte se, zda že má vaše objektu služby roli Přispěvatel nebo vlastníka vaše předplatné. Pokyny o tom, jak přiřadit role objektu služby najdete v tématu [poskytnout přístup aplikace k Azure zásobníku](../azure-stack-create-service-principals.md).
+2.  Pokyny k instalaci sady Python SDK najdete v tématu [Azure pro vývojáře v Pythonu](https://docs.microsoft.com/python/azure/python-sdk-azure-install?view=azure-python).
+3.  Pokud není k dispozici, vytvořte předplatné a uložte ID předplatného pro pozdější použití. Pokyny pro vytvoření odběru naleznete v tématu [vytvářet předplatná na nabídky ve službě Azure Stack](../azure-stack-subscribe-plan-provision-vm.md). 
+4.  Vytvoření instančního objektu a uložit jeho ID a tajný klíč. Pokyny k vytvoření instančního objektu pro Azure Stack najdete v tématu [poskytují aplikacím přístup ke službě Azure Stack](../azure-stack-create-service-principals.md). 
+5.  Zajistěte, aby že váš objekt služby má role Přispěvatel nebo vlastník v rámci předplatného. Pokyny o tom, jak přiřadit roli instančnímu objektu služby najdete v tématu [poskytují aplikacím přístup ke službě Azure Stack](../azure-stack-create-service-principals.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li použít Python Azure SDK s Azure zásobníku, musíte zadat následující hodnoty a potom nastavte hodnoty proměnné prostředí. Postupujte podle pokynů pod tabulkou pro operační systém na nastavení proměnné prostředí. 
+Chcete-li používat sadu Azure SDK pro Python pomocí služby Azure Stack, musíte zadat následující hodnoty a pak nastavte hodnoty proměnné prostředí. Postupujte podle pokynů pod tabulkou pro váš operační systém na nastavení proměnné prostředí. 
 
 | Hodnota | Proměnné prostředí | Popis |
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
-| ID tenanta | AZURE_TENANT_ID | Hodnota zásobník Azure [ID klienta](../azure-stack-identity-overview.md). |
-| ID klienta | AZURE_CLIENT_ID | Služba ID hlavní aplikace se neuloží, když instanční objekt byl vytvořen v předchozí části tohoto dokumentu. |
-| ID předplatného | AZURE_SUBSCRIPTION_ID | [ID předplatného](../azure-stack-plan-offer-quota-overview.md#subscriptions) je, jak přistupovat k nabídky v Azure zásobníku. |
-| Tajný kód klienta | AZURE_CLIENT_SECRET | Aplikace služby hlavní tajný klíč uložit při vytvoření objektu služby. |
-| Koncový bod služby Resource Manager | ARM_ENDPOINT | V tématu [koncový bod služby zásobník Azure resource manager](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
+| ID tenanta | AZURE_TENANT_ID | Výhody služby Azure Stack [ID tenanta](../azure-stack-identity-overview.md). |
+| ID klienta | AZURE_CLIENT_ID | Služba ID instančního objektu aplikace neuloží, když se vytvoří nový instanční objekt služby v předchozí části tohoto dokumentu. |
+| ID předplatného | AZURE_SUBSCRIPTION_ID | [ID předplatného](../azure-stack-plan-offer-quota-overview.md#subscriptions) je, jak získat přístup k nabídky ve službě Azure Stack. |
+| Tajný kód klienta | AZURE_CLIENT_SECRET | Aplikace instančního objektu služby tajný klíč neuloží, když se vytvoří nový instanční objekt služby. |
+| Koncový bod Resource Manageru | ARM_ENDPOINT | Zobrazit [koncový bod služby Azure Stack resource manager](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
 
 
-## <a name="python-samples-for-azure-stack"></a>Ukázky jazyka Python pro Azure zásobníku 
+## <a name="python-samples-for-azure-stack"></a>Ukázky Pythonu pro službu Azure Stack 
 
-Následující ukázky kódu můžete provádět běžné úlohy správy pro virtuální počítače v do Azure zásobníku.
+Následující ukázky kódu můžete použít k provádění běžných úloh správy pro virtuální počítače v Azure stacku.
 
-Ukázky kódu ukazují na:
+Ukázky kódu ukazují, na:
 
-- Vytváření virtuálních počítačů:
+- Vytvoření virtuálních počítačů:
     - Vytvoření virtuálního počítače s Linuxem
     - Vytvoření virtuálního počítače s Windows
 - Aktualizujte virtuální počítač:
-    - Rozbalte položku na jednotku
-    - Značka virtuálního počítače
-    - Připojte datových disků
+    - Rozšířit jednotku
+    - Označit virtuální počítač
+    - Připojit datové disky
     - Odpojení datových disků
 - Provoz virtuálního počítače:
     - Spuštění virtuálního počítače
@@ -79,22 +79,22 @@ Ukázky kódu ukazují na:
 - Seznam virtuálních počítačů
 - Odstranění virtuálního počítače
 
-Projít k provádění těchto operací, podívejte se **run_example()** funkce ve skriptu Python **Hybrid/unmanaged-disks/example.py** v úložišti GitHub [ virtuální počítače python spravovat](https://github.com/viananth/virtual-machines-python-manage/tree/8643ed4bec62aae6fdb81518f68d835452872f88).
+Ke kontrole kódu k provedení těchto operací, podívejte se **run_example()** funkce ve skriptu Pythonu **Hybrid/unmanaged-disks/example.py** v úložišti Githubu [ virtuální počítače python Správa](https://github.com/viananth/virtual-machines-python-manage/tree/8643ed4bec62aae6fdb81518f68d835452872f88).
 
-Každé operace jasně označený verzí komentář a tiskové funkce.
-Příklady, nemusí nutně být v pořadí uvedeném v seznamu nahoře.
+Každá operace jasně označené jako komentář a tisku funkcí.
+Příklady není nutně v pořadí uvedeném v seznamu nahoře.
 
 
-## <a name="run-the-python-sample"></a>Spustit ukázku Python
+## <a name="run-the-python-sample"></a>Spuštění ukázky Pythonu
 
-1.  Pokud ještě nemáte, [instalaci Pythonu](https://www.python.org/downloads/).
+1.  Pokud ještě nemáte, [nainstalujte Python](https://www.python.org/downloads/).
 
-    Tato ukázka (a sady SDK) je kompatibilní s Python 2.7, 3,4, 3.5 a 3.6.
+    Tato ukázka (a sady SDK) je kompatibilní s Pythonem 2.7, 3.4, 3.5 a 3.6.
 
-2.  Obecná doporučení pro vývoj Python je použití virtuálního prostředí. 
+2.  Obecná doporučení pro vývoj v jazyce Python se má použít virtuální prostředí. 
     Další informace najdete v tématu https://docs.python.org/3/tutorial/venv.html
     
-    Instalace a inicializace virtuálního prostředí s modulem "venv" na Python 3 (je třeba nainstalovat [virtualenv](https://pypi.python.org/pypi/virtualenv) pro Python 2.7):
+    Instalace a inicializovat virtuální prostředí s modulem "venv" na jazyce Python 3 (je nutné nainstalovat [virtualenv](https://pypi.python.org/pypi/virtualenv) for Python 2.7):
 
     ````bash
     python -m venv mytestenv # Might be "python3" or "py -3.6" depending on your Python installation
@@ -110,16 +110,16 @@ Příklady, nemusí nutně být v pořadí uvedeném v seznamu nahoře.
     git clone https://github.com/Azure-Samples/virtual-machines-python-manage.git
     ````
 
-4.  Nainstalujte pomocí nástroje pip závislosti.
+4.  Instalace závislostí pomocí nástroje pip.
 
     ````bash
     cd virtual-machines-python-manage\Hybrid
     pip install -r requirements.txt
     ````
 
-5.  Vytvoření [instanční objekt](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals) pro práci s Azure zásobníku. Ověřte, zda má instanční objekt [roli Přispěvatel nebo vlastníka](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal) vaše předplatné.
+5.  Vytvoření [instanční objekt služby](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals) pro práci s Azure Stack. Ujistěte se, že má váš objekt služby [role přispěvatele nebo vlastníka](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal) v rámci předplatného.
 
-6.  Nastavte následující proměnné a exportovat těchto proměnných prostředí do své aktuální prostředí. 
+6.  Nastavte následující proměnné a vyexportovat tyto proměnné prostředí do aktuálního prostředí. 
 
     ````bash
     export AZURE_TENANT_ID={your tenant id}

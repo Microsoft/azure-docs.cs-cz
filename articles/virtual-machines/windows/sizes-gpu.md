@@ -1,6 +1,6 @@
 ---
-title: Azure velikosti virtuálních počítačů Windows - GPU | Microsoft Docs
-description: Seznamy různých GPU optimalizované velikosti, které jsou k dispozici pro virtuální počítače s Windows v Azure. Uvádí informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
+title: Azure velikosti virtuálních počítačů s Windows – GPU | Dokumentace Microsoftu
+description: Seznamy různé GPU optimalizované velikosti, které jsou k dispozici pro Windows virtual machines v Azure. Obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -13,24 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 03/01/2018
+ms.date: 07/03/2018
 ms.author: jonbeck
-ms.openlocfilehash: 5cc8db11e61eba1c5a366ac9816a472e8b692360
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5a6e2872d1c9bd0e13aae0e0abecdb011dd79fb9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654211"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37443296"
 ---
-# <a name="gpu-optimized-virtual-machine-sizes"></a>Grafický procesor optimalizované velikosti virtuálních počítačů
+# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU optimalizované velikosti virtuálních počítačů
 
 [!INCLUDE [virtual-machines-common-sizes-gpu](../../../includes/virtual-machines-common-sizes-gpu.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-[!INCLUDE [virtual-machines-n-series-windows-support](../../../includes/virtual-machines-n-series-windows-support.md)]
+## <a name="supported-operating-systems-and-drivers"></a>Podporované operační systémy a ovladače
 
-Postup instalace a ověření ovladačů najdete v tématu [N-series instalace ovladače pro Windows](n-series-driver-setup.md).
+Abyste mohli využívat výhod GPU virtuální počítače Azure řady N-series s Windows, musí být nainstalována ovladačů NVIDIA GPU. [Rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-windows.md) nainstaluje vhodných ovladačů NVIDIA CUDA nebo mřížky na virtuální počítač řady N-series. Instalovat ani spravovat rozšíření pomocí webu Azure portal nebo nástrojů, jako je šablon Azure Resource Manageru nebo Azure Powershellu. Najdete v článku [dokumentaci rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-windows.md) pro podporované operační systémy a kroky nasazení. Obecné informace o rozšíření virtuálních počítačů najdete v tématu [rozšíření virtuálního počítače Azure a funkce](../extensions/overview.md).
+
+Pokud zvolíte ruční instalace ovladačů NVIDIA GPU, přečtěte si téma [instalace ovladačů v instancích N-series GPU pro Windows](n-series-driver-setup.md) pro podporované operační systémy, ovladačů a postup instalace a ověření.
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
@@ -40,8 +42,8 @@ Postup instalace a ověření ovladačů najdete v tématu [N-series instalace o
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
 - [Optimalizované z hlediska paměti](sizes-memory.md)
 - [Optimalizované z hlediska úložiště](sizes-storage.md)
-- [Starší generace](sizes-previous-gen.md)
+- [Předchozí generace](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [Azure výpočetní jednotky (ACU)](acu.md) můžete porovnat výpočetní výkon v Azure SKU.
+Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.
 

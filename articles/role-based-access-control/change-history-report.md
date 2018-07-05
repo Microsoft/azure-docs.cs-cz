@@ -1,6 +1,6 @@
 ---
-title: Zobrazit protokoly aktivity pro RBAC změny v Azure | Microsoft Docs
-description: Zobrazit aktivitu protokoly pro řízení přístupu na základě role (RBAC) změny za posledních 90 dnů.
+title: Zobrazení protokolů aktivit pro RBAC změny v Azure | Dokumentace Microsoftu
+description: Zobrazit protokoly aktivit pro řízení přístupu na základě role (RBAC) změny za posledních 90 dnů.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,27 +8,27 @@ manager: mtillman
 ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/23/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c82c24c6d652a65f5ba851de66a1f2fe595a46a5
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 10e0df78d75763dfcf8636983c9f9092b78b9c3b
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293383"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437644"
 ---
-# <a name="view-activity-logs-for-rbac-changes"></a>Zobrazit protokoly aktivity pro RBAC změny
+# <a name="view-activity-logs-for-rbac-changes"></a>Zobrazení protokolů aktivit pro RBAC změny
 
-Někdy musíte informace o změnách přístupu na základě rolí k řízení (RBAC), například pro auditování nebo účely odstraňování potíží. Vždy, když někdo nějaký provádí změny v přiřazení role nebo definice rolí v rámci vašich předplatných, změny se budou protokolovat [protokol činnosti Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Můžete zobrazit protokoly aktivity zobrazíte všechny změny RBAC za posledních 90 dnů.
+Někdy potřebujete informace o změnách přístupu na základě role (RBAC) ovládacího prvku, například pro auditování a odstraňování potíží. Kdykoli někdo provádí změny v přiřazení role nebo definice rolí v rámci vašich předplatných, změny budou protokolovat [protokolu aktivit Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md). Můžete zobrazit protokoly aktivit zobrazíte všechny RBAC změny za posledních 90 dnů.
 
 ## <a name="operations-that-are-logged"></a>Operace, které se protokolují
 
-Zde jsou operací souvisejících s RBAC, které se zaznamenávají v protokolu aktivit:
+Tady jsou operace související s RBAC, které se zaznamenávají v protokolu aktivit:
 
 - Vytvořit přiřazení role
 - Odstranit přiřazení role
@@ -37,11 +37,11 @@ Zde jsou operací souvisejících s RBAC, které se zaznamenávají v protokolu 
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Nejjednodušší způsob, jak začít pracovat se má zobrazit protokoly aktivity pomocí portálu Azure. Následující snímek obrazovky ukazuje příklad protokol činnosti filtrovanou zobrazíte operace definice role a přiřazení role. Zahrnuje také odkaz ke stažení protokolů do souboru CSV.
+Chcete-li zobrazit protokoly aktivit pomocí webu Azure portal je nejjednodušší způsob, jak začít pracovat. Následující snímek obrazovky ukazuje příklad, který je filtrován. Chcete-li zobrazit přiřazení role a role definice operace protokol aktivit. Zahrnuje také odkaz ke stažení protokolů jako soubor CSV.
 
-![Protokoly aktivity portálu – snímek obrazovky](./media/change-history-report/activity-log-portal.png)
+![Protokoly aktivit na portálu – snímek obrazovky](./media/change-history-report/activity-log-portal.png)
 
-Protokol aktivit v portálu má několik filtrů. Zde jsou filtry související RBAC:
+Protokol aktivit na portálu má několik filtrů. Tady jsou filtry související RBAC:
 
 |Filtr  |Hodnota  |
 |---------|---------|
@@ -49,25 +49,25 @@ Protokol aktivit v portálu má několik filtrů. Zde jsou filtry související 
 |Operace     | <ul><li>Vytvořit přiřazení role</li> <li>Odstranit přiřazení role</li> <li>Vytvořit nebo aktualizovat vlastní definici role</li> <li>Odstranit definice rolí</li></ul>      |
 
 
-Další informace o protokoly aktivity najdete v tématu [zobrazit události v protokolu aktivit](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
+Další informace o protokolech aktivit najdete v tématu [zobrazení událostí v protokolu aktivit](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json).
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Chcete-li zobrazit protokoly aktivity s prostředím Azure PowerShell, použijte [Get-AzureRmLog](/powershell/module/azurerm.insights/get-azurermlog) příkaz.
+Chcete-li zobrazit protokoly aktivit pomocí Azure Powershellu, použijte [Get-AzureRmLog](/powershell/module/azurerm.insights/get-azurermlog) příkazu.
 
-Tento příkaz vypíše všechny změny v přiřazení role v rámci předplatného pro posledních sedmi dnech:
+Tento příkaz vypíše všechny změny přiřazení role v rámci předplatného za posledních sedm dnů:
 
 ```azurepowershell
 Get-AzureRmLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleAssignments/*'}
 ```
 
-Tento příkaz vypíše všechny změny definice role ve skupině prostředků pro posledních sedmi dnech:
+Tento příkaz vypíše všechny změny definice rolí ve skupině prostředků za posledních sedm dnů:
 
 ```azurepowershell
 Get-AzureRmLog -ResourceGroupName pharma-sales-projectforecast -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/roleDefinitions/*'}
 ```
 
-Tento příkaz zobrazí všechny změny definice role v rámci předplatného pro posledních sedmi dnech a přiřazení role a zobrazí výsledky v seznamu:
+Tento příkaz jsou uvedeny všechny přiřazení role a role definition změny v rámci předplatného za posledních sedm dnů a zobrazí výsledky v seznamu:
 
 ```azurepowershell
 Get-AzureRmLog -StartTime (Get-Date).AddDays(-7) | Where-Object {$_.Authorization.Action -like 'Microsoft.Authorization/role*'} | Format-List Caller,EventTimestamp,{$_.Authorization.Action},Properties
@@ -92,15 +92,15 @@ Properties              :
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Chcete-li zobrazit protokoly aktivity pomocí Azure CLI, použijte [az monitorování protokol aktivit seznamu](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) příkaz.
+Chcete-li zobrazit protokoly aktivit pomocí Azure CLI, použijte [az monitor protokolu aktivit seznamu](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) příkazu.
 
-Tento příkaz vypíše protokoly aktivit ve skupině prostředků od čas spuštění:
+Tento příkaz vypíše protokoly aktivit ve skupině prostředků od počáteční čas:
 
 ```azurecli
 az monitor activity-log list --resource-group pharma-sales-projectforecast --start-time 2018-04-20T00:00:00Z
 ```
 
-Tento příkaz vypíše protokoly aktivity pro poskytovatele prostředků autorizace od čas spuštění:
+Tento příkaz vypíše protokolů aktivit pro poskytovatele prostředků autorizace od počáteční čas:
 
 ```azurecli
 az monitor activity-log list --resource-provider "Microsoft.Authorization" --start-time 2018-04-20T00:00:00Z
@@ -108,26 +108,26 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 ## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-[Azure Log Analytics](../log-analytics/log-analytics-overview.md) je jiný nástroj, můžete shromažďovat a analyzovat změny RBAC pro všechny prostředky Azure. Analýzy protokolů má následující výhody:
+[Azure Log Analytics](../log-analytics/log-analytics-overview.md) je jiný nástroj, můžete použít ke shromažďování a analýze RBAC změny provedené u všech vašich prostředků Azure. Log Analytics má následující výhody:
 
 - Zápis složitých dotazů a logiku
-- Integrovat výstrahy, Power BI a další nástroje
-- Uložení dat po delší dobu uchovávání dat
-- Vytvořit křížový odkaz s další protokoly, jako je například zabezpečení, virtuální počítač a vlastní
+- Integrujte upozornění, Power BI a další nástroje
+- Ukládání dat pro delších dob uchování
+- Křížový odkaz s jiné protokoly, jako je zabezpečení, virtuální počítač a vlastní
 
-Zde jsou základní kroky, abyste mohli začít:
+Tady jsou základní kroky, abyste mohli začít:
 
-1. [Vytvořit pracovní prostor analýzy protokolů](../log-analytics/log-analytics-quick-create-workspace.md).
+1. [Vytvoření pracovního prostoru Log Analytics](../log-analytics/log-analytics-quick-create-workspace.md).
 
-1. [Nakonfigurujte řešení, analýzy protokolů aktivity](../log-analytics/log-analytics-activity.md#configuration) vašeho pracovního prostoru.
+1. [Konfigurovat řešení Activity Log Analytics](../log-analytics/log-analytics-activity.md#configuration) pro váš pracovní prostor.
 
-1. [Zobrazit protokoly aktivity](../log-analytics/log-analytics-activity.md#using-the-solution). Rychlý způsob, jak přejít na stránku přehled Analytics protokolu aktivit je kliknout na odkaz **analýzy protokolů** možnost.
+1. [Zobrazení protokolů aktivit](../log-analytics/log-analytics-activity.md#using-the-solution). Rychlý způsob, jak přejít na stránku přehled Activity Log Analytics je kliknout **Log Analytics** možnost.
 
-   ![Log Analytics možnost portálu](./media/change-history-report/azure-log-analytics-option.png)
+   ![Možnost log Analytics na portálu](./media/change-history-report/azure-log-analytics-option.png)
 
-1. Volitelně můžete použít [hledání protokolů](../log-analytics/log-analytics-log-search.md) stránky nebo [pokročilé analýzy portál](https://docs.loganalytics.io/docs/Learn) pro dotazování a zobrazení protokolů. Další informace o těchto dvou možností najdete v tématu [stránky hledání protokolu nebo portálu pokročilé analýzy](../log-analytics/log-analytics-log-search-portals.md).
+1. Volitelně můžete použít [prohledávání protokolů](../log-analytics/log-analytics-log-search.md) stránky nebo [portálu pro pokročilou analýzu](https://docs.loganalytics.io/docs/Learn) pro dotazování a zobrazení protokolů. Další informace o těchto dvou možnostech naleznete v tématu [stránku prohledávání protokolů nebo portálu pro pokročilou analýzu](../log-analytics/log-analytics-log-search-portals.md).
 
-Zde je dotaz, který vrátí nové přiřazení role uspořádané podle zprostředkovatel prostředků cíle:
+Tady je dotaz, který vrátí uspořádané podle poskytovatele prostředků cílového nové přiřazení rolí:
 
 ```
 AzureActivity
@@ -136,7 +136,7 @@ AzureActivity
 | summarize count(), makeset(Caller) by TargetResourceAuthProvider
 ```
 
-Zde je dotaz, který vrátí změny v přiřazení role v grafu zobrazí:
+Tady je dotaz, který vrátí změny v přiřazení role zobrazí v grafu:
 
 ```
 AzureActivity
@@ -145,8 +145,8 @@ AzureActivity
 | render timechart
 ```
 
-![Protokoly aktivity pomocí portálu Advanced Analytics – snímek obrazovky](./media/change-history-report/azure-log-analytics.png)
+![Protokoly aktivit pomocí portálu pro pokročilou analýzu – snímek obrazovky](./media/change-history-report/azure-log-analytics.png)
 
 ## <a name="next-steps"></a>Další postup
 * [Zobrazení událostí v protokolu aktivit](/azure/azure-resource-manager/resource-group-audit?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
-* [Sledování aktivity předplatné s protokol činnosti Azure](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)
+* [Monitorování aktivit předplatného s protokolem aktivit Azure](/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)

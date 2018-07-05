@@ -1,6 +1,6 @@
 ---
-title: Virtuální počítač Azure s Linuxem velikostí - GPU | Microsoft Docs
-description: Seznamy různých GPU optimalizované velikosti, které jsou k dispozici pro virtuální počítače s Linuxem v Azure. Uvádí informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
+title: Velikosti virtuálních počítačů Azure s Linuxem – GPU | Dokumentace Microsoftu
+description: Seznamy různé GPU optimalizované velikosti, které jsou k dispozici pro virtuální počítače s Linuxem v Azure. Obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -13,29 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/01/2018
+ms.date: 07/03/2018
 ms.author: jonbeck
-ms.openlocfilehash: 5b856ec14febefc96e77d3c131b746e597a3aa5b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fe581ca45d88c88c4892e80f2c72a9b21e697ea5
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653616"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442874"
 ---
-# <a name="gpu-optimized-virtual-machine-sizes"></a>Grafický procesor optimalizované velikosti virtuálních počítačů
+# <a name="gpu-optimized-virtual-machine-sizes"></a>GPU optimalizované velikosti virtuálních počítačů
 
 [!INCLUDE [virtual-machines-common-sizes-gpu](../../../includes/virtual-machines-common-sizes-gpu.md)]
 
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
-[!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
+## <a name="supported-distributions-and-drivers"></a>Podporované distribuce a ovladače
 
-Postup instalace a ověření ovladačů najdete v tématu [instalaci ovladačů N-series pro Linux](n-series-driver-setup.md).
+Abyste mohli využívat výhod GPU virtuální počítače Azure řady N-series s Linuxem, musí být nainstalována ovladačů NVIDIA GPU. [Rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-linux.md) nainstaluje vhodných ovladačů NVIDIA CUDA nebo mřížky na virtuální počítač řady N-series. Instalovat ani spravovat rozšíření pomocí webu Azure portal nebo nástrojů, jako jsou šablony Azure Resource Manageru nebo rozhraní příkazového řádku Azure. Zobrazit [dokumentaci rozšíření ovladače GPU NVIDIA](../extensions/hpccompute-gpu-linux.md) podporovaných distribucích a kroky nasazení. Obecné informace o rozšíření virtuálních počítačů najdete v tématu [rozšíření virtuálního počítače Azure a funkce](../extensions/overview.md).
+
+Pokud zvolíte ruční instalace ovladačů NVIDIA GPU, přečtěte si téma [instalace ovladačů v instancích N-series GPU pro Linux](n-series-driver-setup.md) pro podporované distribuce, ovladačů a postup instalace a ověření.
+
 
 [!INCLUDE [virtual-machines-n-series-considerations](../../../includes/virtual-machines-n-series-considerations.md)]
 
-* Neinstalujte X server nebo jiné systémy, které používají `Nouveau` ovladač na virtuálních počítačích Ubuntu názvového kontextu. Před instalací NVIDIA GPU ovladače, je nutné zakázat `Nouveau` ovladačů.  
+* X byste neměli instalovat server nebo jiné systémy, které používají `Nouveau` ovladač na virtuální počítače s Ubuntu síťového adaptéru. Před instalací ovladače NVIDIA GPU, je nutné zakázat `Nouveau` ovladače.  
 
 ## <a name="other-sizes"></a>Další velikosti
 - [Obecné účely](sizes-general.md)
@@ -43,7 +46,7 @@ Postup instalace a ověření ovladačů najdete v tématu [instalaci ovladačů
 - [Optimalizované z hlediska paměti](sizes-memory.md)
 - [Optimalizované z hlediska úložiště](sizes-storage.md)
 - [Vysokovýkonné výpočetní prostředí](sizes-hpc.md)
-- [Starší generace](sizes-previous-gen.md)
+- [Předchozí generace](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Další postup
-Další informace o [Azure výpočetní jednotky (ACU)](acu.md) můžete porovnat výpočetní výkon v Azure SKU.
+Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.

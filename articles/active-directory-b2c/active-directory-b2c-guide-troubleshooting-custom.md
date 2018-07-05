@@ -1,76 +1,76 @@
 ---
-title: Řešení potíží s vlastní zásady v Azure Active Directory B2C | Microsoft Docs
-description: Další informace o přístupy k řešení chyb při práci s vlastní zásady v Azure Active Directory B2C.
+title: Řešení potíží s vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Další informace o přístup k řešení chyb při práci s vlastními zásadami v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 22e7bc7bd275769f78ac2e482cb1af11e9404222
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 61f2dfcada0f7e03d8043d9b8f1b6dadf7027c8b
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709610"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441161"
 ---
-# <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Řešení potíží s Azure AD B2C vlastní zásady a Identity rozhraní Framework
+# <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Řešení potíží s vlastní zásady Azure AD B2C a architekturu rozhraní identit
 
-Pokud používáte Azure Active Directory B2C (Azure AD B2C) vlastní zásady, můžete zaznamenat problémy nastavení Identity Framework prostředí v jeho formátu jazyka XML zásad.  Učení psaní vlastních zásad může být třeba učení o nový jazyk. V tomto článku jsme popisují nástrojů a tipů, které vám pomohou rychle zjistit a řešit problémy. 
+Pokud používáte Azure Active Directory B2C (Azure AD B2C) vlastní zásady, se mohou vyskytnout problémy při nastavení prostředí architekturu identit v jeho formát jazyka XML zásad.  Učení psaní vlastních zásad může být jako učení nový jazyk. V tomto článku popisujeme nástrojů a tipů, které vám můžou pomoct rychle zjišťovat a řešit problémy. 
 
 > [!NOTE]
-> Tento článek se zaměřuje na řešení potíží s vlastních zásad pro konfiguraci Azure AD B2C. Není adres, aplikace předávající strany nebo jeho identity knihovny.
+> Tento článek se zaměřuje na řešení potíží s vlastních zásad pro konfiguraci Azure AD B2C. Proto se nezabývá aplikaci předávající strany nebo jeho identita knihovny.
 
 ## <a name="xml-editing"></a>Úpravy XML
 
-Nejběžnější Chyba v nastavení vlastních zásad je nesprávně formátovaný XML. Dobrý editoru XML je téměř nezbytné. Dobrý editoru XML zobrazí XML nativně, barevně označí obsah, předvyplníte běžné podmínky, udržuje elementů XML indexované a můžete ověřit se schématem. Zde jsou uvedeny dvě naše Oblíbené editory XML:
+Nejčastěji používané při nastavení vlastních zásad je nesprávně ve formátu XML. Dobré editoru XML je téměř nezbytné. Dobré editoru XML zobrazí XML nativně, barevně označí obsah, prefills běžných termínů, udržuje elementů XML indexovat a ověřit se schématem. Tady jsou dvě z našich oblíbených editory XML:
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Poznámkový blok ++](https://notepad-plus-plus.org/)
 
-Ověření schématu XML označuje chyby před nahráním souboru XML. V kořenové složce sady starter získáte definice schématu XML TrustFrameworkPolicy_0.3.0.0.xsd. Další informace najdete v dokumentaci XML editor, vyhledejte *nástroje XML* a *ověření XML*.
+Ověření schématu XML identifikuje chyby před nahráním souboru XML. V kořenové složce sady starter získáte definici schématu XML TrustFrameworkPolicy_0.3.0.0.xsd. Další informace najdete v dokumentaci k editoru XML, vyhledejte *nástroje XML* a *ověření XML*.
 
-Mohou být užitečné kontrolu pravidla XML. Azure AD B2C odmítne všechny XML formátování chyb, které zjistí. V některých případech nesprávný formát XML může způsobit chybové zprávy, které jsou zavádějící.
+Mohou být užitečné kontroly pravidel XML. Azure AD B2C odmítne všechny zjištěné chyby formátování jazyka XML. V některých případech nesprávný formát XML může způsobit, že chybové zprávy, které jsou zavádějící.
 
-## <a name="upload-policies-and-policy-validation"></a>Nahrát zásady a ověření zásad
+## <a name="upload-policies-and-policy-validation"></a>Nahrát zásady a zásady ověřování
 
- Ověření nahrávání souboru XML je automaticky. Nejčastější chyby způsobit nahrávání selhání. Ověření zahrnuje soubor zásad, který odesíláte. Zahrnuje také řetězu soubory, které odkazuje souboru k odeslání (soubor zásad předávající strany, soubor rozšíření a základního souboru). 
+ Ověření nahrání souboru XML je automatické. Většina chyb způsobit, že se nezdaří. Ověření zahrnuje soubor zásad, která nahráváte. Zahrnuje také řetězci souborů, na který odkazuje nahrání souboru (souboru zásad předávající strany, přípony souborů a základního souboru). 
  
- Běžné chyby ověření, patří.
+ Běžné chyby ověření jsou následující.
 
-Fragment kódu chyby: `... makes a reference to ClaimType with id "displaName" but neither the policy nor any of its base policies contain such an element`
-* Typ ClaimType hodnota může být zadáno chybně nebo neexistuje ve schématu.
-* Typ ClaimType hodnoty musí být definován v alespoň jeden ze souborů v zásadách. 
+Chyba fragment kódu: `... makes a reference to ClaimType with id "displaName" but neither the policy nor any of its base policies contain such an element`
+* Hodnota typu deklarace identity může být překlep nebo neexistuje ve schématu.
+* Hodnoty typu deklarace identity musí být definován v alespoň jeden ze souborů v zásadách. 
     Příklad: ` <ClaimType Id="socialIdpUserId">`
-* Pokud je definován typ ClaimType v souboru rozšíření, ale používá se také hodnotu TechnicalProfile do základního souboru, odesílání základního souboru výsledkem chyba.
+* Pokud typu deklarace identity je definována v souboru rozšíření, ale používá se také hodnotu základního souboru do technický profil, nahrávání základního souboru způsobí chybu.
 
-Fragment kódu chyby: `...makes a reference to a ClaimsTransformation with id...`
-* Příčiny chyby může být stejné jako typ ClaimType chyby.
+Chyba fragment kódu: `...makes a reference to a ClaimsTransformation with id...`
+* Příčiny chyby může být stejná jako chyba typu deklarace identity.
 
-Fragment kódu chyby: `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
-* Zkontrolujte, zda hodnoty TenantId hodnotu **\<TrustFrameworkPolicy\>** a **\<BasePolicy\>** elementy odpovídat tenanta cíl Azure AD B2C.  
+Chyba fragment kódu: `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
+* Zkontrolujte, že hodnota ID Tenanta v **\<TrustFrameworkPolicy\>** a **\<BasePolicy\>** prvky odpovídají vašeho tenanta Azure AD B2C cíl.  
 
-## <a name="troubleshoot-the-runtime"></a>Řešení potíží s modulem runtime
+## <a name="troubleshoot-the-runtime"></a>Řešení potíží s modulu runtime
 
-* Použití `Run Now` a `https://jwt.io` k otestování vašich zásad nezávisle na váš web nebo mobilní aplikaci. Tento web se chová jako aplikace předávající strany. Zobrazuje obsah z JSON Web Token (JWT) generovaných zásad služby Azure AD B2C. Pokud chcete vytvořit testovací aplikaci v rozhraní Framework Identity, použijte následující hodnoty:
+* Použití `Run Now` a `https://jwt.io` k otestování vašich zásad nezávisle na svou webovou nebo mobilní aplikaci. Tento web se chová jako aplikaci předávající strany. Zobrazí obsah z JSON Web Token (JWT), který je generován zásady Azure AD B2C. Vytvoření aplikace testů v rozhraní prostředí pro Identity, použijte následující hodnoty:
     * Název: TestApp
-    * Webovou aplikaci nebo webové rozhraní API: Ne
-    * Nativní klient: Ne
+    * Webovou aplikaci/webové rozhraní API: Ne
+    * Nativní klient systému: Ne
 
-* Pokud chcete trasovat výměny zpráv mezi prohlížeče klienta a Azure AD B2C, použijte [Fiddler](http://www.telerik.com/fiddler). Může pomoct vám to znamenat kde nedaří vám dobře slouží uživatele ve vaší kroků Orchestrace.
+* Pro sledování výměny zpráv mezi prohlížeče klienta a Azure AD B2C, použijte [Fiddler](http://www.telerik.com/fiddler). Pomůže vám zajistit indikaci, kde se nedaří vaší cesty uživatele v postupu k orchestraci.
 
-* V **režimu pro vývoj**, použijte **Application Insights** pro trasování aktivity vám dobře slouží Identity Framework činnost koncového uživatele. V **režimu pro vývoj**, můžete sledovat výměny deklarací identity mezi Framework prostředí Identity a různých zprostředkovatelů deklarací identity, které jsou definovány technické profilů, jako je například poskytovatelů identit, služeb založených na rozhraní API Adresáře uživatele Azure AD B2C a dalším službám, jako například Azure více-Factor-ověřování.  
+* V **vývojový režim**, použijte **Application Insights** trasování aktivity vaší cesty uživatele architekturu rozhraní identit. V **vývojový režim**, můžete sledovat výměny deklarací identity mezi rozhraní prostředí pro Identity a různých zprostředkovatelů deklarací identity, které jsou definovány technické profily, jako je například zprostředkovatelů identity, služby založené na rozhraní API Adresář uživatele Azure AD B2C a dalším službám, jako je Azure více ověřování Multi-Factor-Authentication.  
 
 ## <a name="recommended-practices"></a>Doporučené postupy
 
-**Zachovat více verzí vaše scénáře. Seskupte je do projektu s vaší aplikací.** Základní, rozšíření a předávající strany soubory jsou na sobě navzájem přímo závislé. Uložte jako skupinu. Jako nové funkce jsou přidány do zásad, zachovat samostatné pracovní verze. Fáze pracovní verze ve vašem vlastním systému s kódem aplikace, které komunikují s souborů.  Vaše aplikace může vyvolat mnoho různých předávající strany zásad v klientovi. Že jsou závislé na deklaracích identity, které se na základě zásad Azure AD B2C.
+**Uchovat více verzí scénáře. Seskupte v projektu s vaší aplikací.** Základ, rozšíření a předávající strany soubory jsou přímo na sobě navzájem závislé. Uložte jako skupinu. Při přidání nových funkcí do zásad, zachovejte samostatné pracovní verze. Fáze pracovní verze ve svém vlastním systému s kódem aplikace, které interagují s souborů.  Vaše aplikace může vyvolat mnoho různých předávající strana zásad v tenantovi. Že jsou závislé na deklaracích identity, které očekávají na základě zásad Azure AD B2C.
 
-**Vývoj a testování technické profily pomocí cesty známé uživatele.** Otestované starter pack zásady slouží k nastavení vaše technické profilů. Test je samostatně předtím, než můžete začlenit do vlastní uživatelské cesty.
+**Vyvíjejte a testujte technické profily s jízdy známé uživatele.** Pomocí zásad otestované starter pack nastavit technické profily. Testování je samostatně před začlenit do vlastní cesty uživatele.
 
-**Vývoj a testování cesty uživatele pomocí otestované technické profilů.** Změňte kroků Orchestrace cesty uživatele postupně. Progresivně sestavení určený scénářů.
+**Vyvíjejte a testujte cesty uživatele s otestované technické profily.** Změňte kroky Orchestrace cesty uživatele postupně. Postupnému vytváření zamýšlený scénáře.
 
 ## <a name="next-steps"></a>Další postup
 

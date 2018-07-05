@@ -1,80 +1,80 @@
 ---
-title: Složitost hesla v Azure Active Directory B2C | Microsoft Docs
-description: Jak konfigurovat požadavky na složitost hesel poskytl příjemce v Azure Active Directory B2C.
+title: Složitost hesla v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Jak konfigurovat požadavky na složitost hesel poskytnutých uživatelům v Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 617385bec29e2c09ae18bde3a7878624c0b2461f
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 4b027f6cd57dfa48ba2e230371ffcad97b1f8ec4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34709831"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445105"
 ---
-# <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: Konfigurujte požadavky na složitost hesel
+# <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: Konfigurovat požadavky na složitost hesel
 
 > [!NOTE]
 > **Tato funkce je ve verzi public preview.**
 
-Azure Active Directory B2C (Azure AD B2C) podporuje změna požadavky na složitost hesla poskytl koncového uživatele při vytváření účtu.  Ve výchozím nastavení používá Azure AD B2C `Strong` hesla.  Azure AD B2C podporuje také konfigurační možnosti pro řízení složitosti hesla, které zákazníci mohou používat.
+Azure Active Directory B2C (Azure AD B2C) podporuje se měnící požadavky na složitost hesel poskytnutých koncového uživatele při vytváření účtu.  Ve výchozím nastavení, Azure AD B2C používá `Strong` hesla.  Azure AD B2C podporuje také možnosti konfigurace pro řízení složitosti hesla, které můžou zákazníci využívat.
 
 ## <a name="when-password-rules-are-enforced"></a>Když se vynucují pravidla pro hesla
 
-Během registrace nebo resetování hesla, koncový uživatel musí zadat heslo, které splňuje pravidla složitosti.  Podle zásad se vynucují pravidla složitosti hesla.  Je možné, že jeden zásad vyžadovat kód pin čtyřciferné během registrace chvíli vyžaduje jinou zásadou řetězec osm znaků během registrace.  Může například pomocí zásad se složitost jiné heslo pro dospělé než pro děti.
+Při registraci nebo resetování hesla, koncový uživatel musí zadat heslo, které splňuje pravidla složitosti.  Podle zásad se vynucují pravidla složitosti hesla.  Je možné mít jednu zásadu vyžadují čtyřmístný PIN kód během registrace při jiné zásady, vyžaduje řetězec osm znaků během registrace.  Například můžete použít zásady s jiným heslem složitost pro dospělé než pro děti.
 
-Složitost hesla se nikdy vynucují během přihlášení.  Uživatelé nikdy vyzváni během přihlášení změnit své heslo, protože nesplňuje požadavek na aktuální složitost.
+Složitost hesla nikdy vynucuje během přihlašování.  Uživatelé nikdy vyzváni během přihlášení změnit své heslo, protože nesplňuje požadavek na aktuální složitost.
 
-Toto jsou typy zásad konfigurovaným složitost hesla:
+Toto jsou typy zásad kde lze nastavit složitost hesla:
 
-* Zásady registrace nebo přihlášení
-* Zásady resetování hesel
-* Vlastní zásady ([nakonfigurujte složitost hesel ve vlastních zásadách pro](active-directory-b2c-reference-password-complexity-custom.md))
+* Zásady registrace / přihlášení
+* Zásady pro resetování hesla
+* Vlastní zásady ([nakonfigurujte složitost hesla ve vlastních zásadách](active-directory-b2c-reference-password-complexity-custom.md))
 
-## <a name="how-to-configure-password-complexity"></a>Postup konfigurace složitost hesla
+## <a name="how-to-configure-password-complexity"></a>Jak nakonfigurovat složitost hesla
 
-1. Postupujte podle těchto kroků [přejděte do nastavení Azure AD B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
-1. Otevřete **registrace nebo přihlášení zásady**.
-1. Vyberte zásadu a klikněte na **upravit**.
-1. Otevřete **složitost hesla**.
-1. Změnit složitost hesla pro tuto zásadu **jednoduché**, **silným**, nebo **vlastní**.
+1. Postupujte podle těchto kroků [přechod k nastavením Azure AD B2C](active-directory-b2c-app-registration.md#navigate-to-b2c-settings).
+1. Otevřít **zásady registrace / přihlášení**.
+1. Vyberte zásadu a klikněte na tlačítko **upravit**.
+1. Otevřít **složitost hesla používal**.
+1. Složitost hesla pro tuto zásadu změnit **jednoduché**, **silné**, nebo **vlastní**.
 
-### <a name="comparison-chart"></a>Porovnávací graf
+### <a name="comparison-chart"></a>Graf porovnání
 
 | Složitost | Popis |
 | --- | --- |
-| Jednoduchý | Heslo, které je alespoň 8 až 64 znaků. |
-| Silné | Heslo, které je alespoň 8 až 64 znaků. To vyžaduje 3 ze 4 malá písmena, velká písmena, číslice a symboly. |
-| Vlastní | Tato možnost poskytuje maximální kontrolu nad pravidla složitosti hesla.  Umožňuje konfiguraci vlastní délka.  Umožňuje také přijetí hesla jenom číslo (PIN). |
+| Jednoduchý | Heslo, které je nejméně 8 až 64 znaků. |
+| Silné | Heslo, které je nejméně 8 až 64 znaků. Vyžaduje 3 ze 4 malá písmena, velká písmena, číslice nebo symboly. |
+| Vlastní | Tato možnost poskytuje většinu kontrolu nad pravidlům složitosti hesla.  To umožňuje konfigurovat vlastní délku.  Umožňuje také přijímat hesla jenom číslo (PIN). |
 
-## <a name="options-available-under-custom"></a>Možnosti, které jsou k dispozici v části vlastní
+## <a name="options-available-under-custom"></a>Možnosti dostupné v rámci vlastní
 
-### <a name="character-set"></a>Znakové sady
+### <a name="character-set"></a>Znaková sada
 
-Umožňuje přijímat pouze číslice (PIN) nebo celý znaková sada.
+Můžete tak, aby přijímal pouze číslice (PIN) nebo celé znakové sady.
 
 * **Pouze čísla** umožňuje číslic pouze (0-9) při zadávání hesla.
-* **Všechny** umožňuje jakékoli písmeno, číslo nebo symbol.
+* **Všechny** umožňuje libovolné písmenem, číslicí nebo symbolem.
 
 ### <a name="length"></a>Délka
 
 Umožňuje řídit požadavky na délku hesla.
 
 * **Minimální délka** musí být aspoň na 4.
-* **Maximální délka** musí být větší nebo rovna minimální délku a může obsahovat maximálně 64 znaků.
+* **Maximální délka** musí být větší nebo rovna hodnotě minimální délku a může být maximálně 64 znaků.
 
 ### <a name="character-classes"></a>Třídy znaků
 
-Umožňuje řídit typy různých znakových použít heslo.
+Umožňuje řídit typy různých znaků hesla.
 
-* **2 4: malé písmeno, velké písmeno, číslici (0-9), Symbol** zajišťuje heslo obsahuje alespoň dva typy znaků. Například číslo a malé písmeno.
-* **3 4: malé písmeno, velké písmeno, číslici (0-9), Symbol** zajišťuje heslo obsahuje alespoň dva typy znaků. Například: číslo, malé písmeno a velké písmeno.
-* **4 4: malé písmeno, velké písmeno, číslici (0-9), Symbol** zajišťuje heslo obsahuje všechny pro znakové typy.
+* **2 z 4: malé písmeno, velké písmeno, číslici (0-9), Symbol** zajistí, heslo obsahuje alespoň dva typy znaků. Například čísla a znak malého písmene.
+* **3 ze 4: malé písmeno, velké písmeno, číslici (0-9), Symbol** zajistí, heslo obsahuje alespoň dva typy znaků. Například: číslo, malé písmeno a znak velkého písmene.
+* **4 ze 4: malé písmeno, velké písmeno, číslici (0-9), Symbol** zajišťuje heslo obsahuje všechny typy znaků.
 
     > [!NOTE]
-    > Vyžadování **4 4** může mít za následek před koncového uživatele. Některé ze studií vyplývá, že tento požadavek není zlepšit heslo šifrování. V tématu [pokynů NIST heslo](https://pages.nist.gov/800-63-3/sp800-63b.html#appA)
+    > Vyžadování **4 ze 4** může vést k frustrace koncového uživatele. Několik studií ukázalo, že tento požadavek nezvyšuje heslo entropie. Zobrazit [pokynů NIST heslo](https://pages.nist.gov/800-63-3/sp800-63b.html#appA)

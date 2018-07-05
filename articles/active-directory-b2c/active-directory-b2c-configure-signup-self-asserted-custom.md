@@ -1,38 +1,38 @@
 ---
-title: Upravit přihlašovací nahoru v vlastní zásady a nakonfigurovat vlastní prohlašovanou zprostředkovatele | Microsoft Docs
-description: Návod k přidání deklarací zaregistrovat a nakonfigurovat uživatelský vstup
+title: Upravit přihlášení do vlastní zásady a nakonfigurovat vlastní s prohlašovanou poskytovatele | Dokumentace Microsoftu
+description: Postup přidání deklarace identity se zaregistrovat a konfigurace uživatelského vstupu
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9d8f644e819ceb83f0b436789d6d8610ed01f6a6
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 1a949007750ae9607ac31f02d23e39204b9f58e4
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34710793"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440497"
 ---
-# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: Upravte přihlašovací nahoru k přidání nových deklarací identity a konfiguraci vstup uživatele.
+# <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: Upravte přihlašování k přidání nových deklarací identity a konfigurace uživatelského vstupu.
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-V tomto článku přidáte nový záznam uživatel zadal (deklarace identity) vám dobře slouží registrace uživatele.  Bude nakonfigurovat položku jako rozevírací seznam a definovat v případě potřeby.
+V tomto článku se přidá nový záznam zadaného uživatelem (deklarace identity) na vaší cestě registrace uživatele.  Bude nakonfigurujte položka rozevíracího seznamu a definovat, jestli je povinné.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Proveďte kroky v následujícím článku [Začínáme se zásadami vlastní](active-directory-b2c-get-started-custom.md).  Otestujte cesty registrace nebo přihlášení uživatele k registraci nového místní účet, než budete pokračovat.
+* Proveďte kroky v následujícím článku [Začínáme se zásadami vlastní](active-directory-b2c-get-started-custom.md).  Otestujte cestu registrace/přihlášení uživatele k registraci nový místní účet, než budete pokračovat.
 
 
-Shromažďování dat prvotní od uživatelů se dosahuje prostřednictvím registrace nebo přihlášení.  Další deklarace identity se dají shromáždit později prostřednictvím profilu upravit uživatele cesty. Kdykoliv Azure AD B2C shromáždí informace o interaktivním přímo od uživatele, používá rozhraní prostředí Identity jeho `selfasserted provider`. Následující postup použít, kdykoliv se používá tohoto zprostředkovatele.
+Shromažďování počáteční data od uživatelů se dosahuje prostřednictvím registrace/přihlášení.  Další deklarace identity se dají shromáždit později pomocí cesty uživatele úpravy profilu. Když Azure AD B2C interaktivně shromažďuje informace přímo od uživatele, používá architekturu rozhraní identit jeho `selfasserted provider`. Následující postup použít, kdykoli se používá tento zprostředkovatel.
 
 
-## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a>Zadejte deklarace identity, jeho zobrazovaný název a typ vstupu uživatele
-Umožňuje požádat uživatele pro jejich město.  Přidejte následující elementu, který chcete `<ClaimsSchema>` element v souboru TrustFrameworkBase zásad:
+## <a name="define-the-claim-its-display-name-and-the-user-input-type"></a>Zadejte deklaraci identity, její zobrazovaný název a typ uživatelského vstupu
+Umožňuje požádat uživatele o jejich město.  Přidejte následující prvek k `<ClaimsSchema>` element v souboru TrustFrameworkBase zásad:
 
 ```xml
 <ClaimType Id="city">
@@ -42,13 +42,13 @@ Umožňuje požádat uživatele pro jejich město.  Přidejte následující ele
   <UserInputType>TextBox</UserInputType>
 </ClaimType>
 ```
-Existují další možnosti, které můžete provést zde přizpůsobit deklarace identity.  Úplné schéma, najdete v části **Identity rozhraní Framework technické referenční příručka**.  Tato příručka brzy zveřejníme v části odkaz.
+Existují další možnosti, můžete tady provedené přizpůsobení deklarace identity.  Úplného schématu, najdete **Identity prostředí Framework technické referenční příručka**.  Tento průvodce bude brzy zveřejníme v referenční části.
 
-* `<DisplayName>` je řetězec, který definuje uživatelsky orientovaný *popisek*
+* `<DisplayName>` řetězec, který definuje uživatele přístupných *popisek*
 
-* `<UserHelpText>` pomáhá uživateli pochopit, co je požadováno
+* `<UserHelpText>` pomáhá uživatelům pochopit, co je potřeba
 
-* `<UserInputType>` obsahuje následující čtyři možnosti zvýrazněná níže:
+* `<UserInputType>` obsahuje následující čtyři možnosti jejichž přehled najdete níže:
     * `TextBox`
 ```xml
 <ClaimType Id="city">
@@ -59,7 +59,7 @@ Existují další možnosti, které můžete provést zde přizpůsobit deklarac
 </ClaimType>
 ```
 
-    * `RadioSingleSelectduration` -Vynucuje jednoho výběru.
+    * `RadioSingleSelectduration` -Vynucuje jeden výběr.
 ```xml
 <ClaimType Id="city">
   <DisplayName>city where you work</DisplayName>
@@ -73,9 +73,9 @@ Existují další možnosti, které můžete provést zde přizpůsobit deklarac
 </ClaimType>
 ```
 
-    * `DropdownSingleSelect` -Umožňuje výběr pouze platnou hodnotu.
+    * `DropdownSingleSelect` – Umožňuje vybrat pouze platná hodnota.
 
-![Snímek obrazovky možností rozevíracího seznamu](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
+![Snímek obrazovky s rozevírací seznam možností](./media/active-directory-b2c-configure-signup-self-asserted-custom/dropdown-menu-example.png)
 
 
 ```xml
@@ -92,9 +92,9 @@ Existují další možnosti, které můžete provést zde přizpůsobit deklarac
 ```
 
 
-* `CheckboxMultiSelect` Umožňuje výběr jednoho nebo více hodnot.
+* `CheckboxMultiSelect` Umožňuje vybrat jednu nebo více hodnot.
 
-![Snímek obrazovky možnost vícenásobného výběru.](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
+![Snímek obrazovky s možností vícenásobného výběru](./media/active-directory-b2c-configure-signup-self-asserted-custom/multiselect-menu-example.png)
 
 
 ```xml
@@ -110,9 +110,9 @@ Existují další možnosti, které můžete provést zde přizpůsobit deklarac
 </ClaimType>
 ```
 
-## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a>Přidá deklaraci k přihlašovací nahoru nebo přihlášení uživatele cesty
+## <a name="add-the-claim-to-the-sign-upsign-in-user-journey"></a>Přidá deklaraci k znaménko up/sign v cestě uživatele
 
-1. Přidání deklarace identity jako `<OutputClaim ClaimTypeReferenceId="city"/>` k TechnicalProfile `LocalAccountSignUpWithLogonEmail` (nalezené v souboru TrustFrameworkBase zásad).  Všimněte si, že tento TechnicalProfile používá SelfAssertedAttributeProvider.
+1. Přidání deklarace identity jako `<OutputClaim ClaimTypeReferenceId="city"/>` na technický profil `LocalAccountSignUpWithLogonEmail` (tuto možnost najdete v souboru zásad TrustFrameworkBase).  Všimněte si, že tento technický profil používá SelfAssertedAttributeProvider.
 
   ```xml
   <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -149,7 +149,7 @@ Existují další možnosti, které můžete provést zde přizpůsobit deklarac
   </TechnicalProfile>
   ```
 
-2. Přidá deklaraci do AAD-UserWriteUsingLogonEmail jako `<PersistedClaim ClaimTypeReferenceId="city" />` zápis deklarace identity k adresáři AAD po shromáždění od uživatele. Pokud nechcete zachovat deklarace identity v adresáři pro budoucí použití, může tento krok přeskočte.
+2. Přidá deklaraci k UserWriteUsingLogonEmail AAD jako `<PersistedClaim ClaimTypeReferenceId="city" />` zápis deklarace identity do služby AAD po shromáždění od uživatele. Pokud nechcete zachovat pro budoucí použití deklarací identity v adresáři, může tento krok přeskočit.
 
   ```xml
   <!-- Technical profiles for local accounts -->
@@ -185,7 +185,7 @@ Existují další možnosti, které můžete provést zde přizpůsobit deklarac
   </TechnicalProfile>
   ```
 
-3. Přidá deklaraci k TechnicalProfile, který čte z adresáře, když se uživatel přihlásí jako `<OutputClaim ClaimTypeReferenceId="city" />`
+3. Přidá deklaraci k technický profil, který čte z adresáře, když se uživatel přihlásí na jako `<OutputClaim ClaimTypeReferenceId="city" />`
 
   ```xml
   <TechnicalProfile Id="AAD-UserReadUsingEmailAddress">
@@ -213,7 +213,7 @@ Existují další možnosti, které můžete provést zde přizpůsobit deklarac
   </TechnicalProfile>
   ```
 
-4. Přidat `<OutputClaim ClaimTypeReferenceId="city" />` zásad RP souboru SignUporSignIn.xml tak tuto deklaraci posílá po úspěšné uživatele cestu aplikace v tokenu.
+4. Přidat `<OutputClaim ClaimTypeReferenceId="city" />` RP zásad souborů SignUporSignIn.xml, takže tato deklarace identity se odešlou do aplikace v tokenu po cesty uživatele úspěšné.
 
   ```xml
   <RelyingParty>
@@ -235,17 +235,17 @@ Existují další možnosti, které můžete provést zde přizpůsobit deklarac
   </RelyingParty>
   ```
 
-## <a name="test-the-custom-policy-using-run-now"></a>Otestovat vlastní zásady pomocí "Spustit nyní"
+## <a name="test-the-custom-policy-using-run-now"></a>Vlastní zásady "Spustit nyní" pomocí testování
 
-1. Otevřete **okno Azure AD B2C** a přejděte do **Identity rozhraní Framework > vlastní zásady**.
-2. Vyberte vlastní zásady, který jste nahráli a klikněte na **spustit nyní** tlačítko.
-3. Nyní byste měli mít zaregistrovat pomocí e-mailovou adresu.
+1. Otevřít **okno Azure AD B2C** a přejděte do **architekturu rozhraní identit > vlastní zásady**.
+2. Vyberte vlastní zásady, které jste nahráli a klikněte na tlačítko **spustit nyní** tlačítko.
+3. Měli byste být schopni registrace pomocí e-mailovou adresu.
 
-Na obrazovce registrace v testovacím režimu by měl vypadat podobně jako tento:
+Obrazovka registrace v režimu testu by měla vypadat nějak takto:
 
-![Snímek obrazovky upravené možnost zápisu](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
+![Snímek obrazovky s upravenou možnost registrace](./media/active-directory-b2c-configure-signup-self-asserted-custom/signup-with-city-claim-dropdown-example.png)
 
-  Token zpět do aplikace bude teď obsahovat `city` deklarace identity, jak je uvedeno níže
+  Teď bude zahrnovat token zpět do aplikace `city` deklarace identity, jak je znázorněno níže
 ```json
 {
   "exp": 1493596822,
@@ -266,18 +266,18 @@ Na obrazovce registrace v testovacím režimu by měl vypadat podobně jako tent
 }
 ```
 
-## <a name="optional-remove-email-verification-from-signup-journey"></a>Volitelné: Ověření e-mailu odeberte z cesty registrace
+## <a name="optional-remove-email-verification-from-signup-journey"></a>Volitelné: Ověření e-mailu odebrat z cesty registrace
 
-Pokud chcete přeskočit ověření e-mailu, Autor zásady můžete odebrat `PartnerClaimType="Verified.Email"`. E-mailová adresa bude potřeba ale není ověřen, pokud "Požadavky" = true se odebere.  Pečlivě zvažte, pokud tato možnost není pravé pro vaše případy použití!
+Chcete-li přeskočit ověření e-mailu, Autor zásad můžete odebrat `PartnerClaimType="Verified.Email"`. E-mailová adresa se vyžaduje, ale nebyla ověřena, není-li "Required" = true se odebere.  Pečlivě zvažte, jestli tato možnost je vhodná pro vaše případy použití!
 
-Ověřit e-mailu je povolena ve výchozím nastavení `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` v souboru TrustFrameworkBase zásad sadě starter:
+Ověřit e-mailu je povolena ve výchozím nastavení `<TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">` TrustFrameworkBase souboru zásad v starter pack:
 ```xml
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
 ## <a name="next-steps"></a>Další postup
 
-Přidejte novou deklaraci na toky pro sociálních účet přihlášení změnou TechnicalProfiles uvedené níže. Ty se používají sociálního/federovaný účet přihlášení k zápisu a čtení dat uživatele pomocí alternativeSecurityId jako Lokátor.
+Přidáte novou deklaraci do toků pro přihlášení účtu na sociální síti tak, že změníte TechnicalProfiles uvedených níže. Ty se používají/chyby federovaného sociálního účtu přihlášení pro zápis a čtení dat uživatele pomocí alternativeSecurityId jako Lokátor.
 ```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">

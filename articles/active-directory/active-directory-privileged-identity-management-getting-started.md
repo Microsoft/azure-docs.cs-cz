@@ -1,5 +1,5 @@
 ---
-title: Začínáme s aplikací Azure AD Privileged Identity Management | Microsoft Docs
+title: Začínáme s aplikací Azure AD Privileged Identity Management | Dokumentace Microsoftu
 description: Přečtěte si, jak spravovat privilegované identity pomocí aplikace Azure Active Directory Privileged Identity Management na webu Azure Portal.
 services: active-directory
 documentationcenter: ''
@@ -8,17 +8,17 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.component: protection
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/17/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 882f76b8f6529e2a6e72a5bbc1b24842150e1af0
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
-ms.translationtype: HT
+ms.openlocfilehash: 6a9e4a93df02e55deb29ba372dc874ae1fac308c
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233233"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446012"
 ---
 # <a name="start-using-azure-ad-privileged-identity-management"></a>Začátek práce s aplikací Azure AD Privileged Identity Management
 
@@ -50,7 +50,7 @@ Po nastavení Azure AD Privileged Identity Management se vždy, když aplikaci o
 - **Role adresáře služby Azure AD** v části správy levé navigační nabídky zobrazí řídicí panel pro správce privilegovaných rolí, odkud se dá spravovat přiřazení rolí, měnit nastavení aktivace rolí, začít kontrolu přístupu atd. Tento řídicí panel se zobrazuje jen správcům privilegovaných rolí. Ostatní uživatelé mají přístup ke speciálnímu řídicímu panelu s názvem Moje zobrazení. Řídicí panel Moje zobrazení zobrazuje informace pouze o uživateli přistupujícím k řídicím panelu, ne pro celého tenanta.
 - **Role prostředků Azure (Preview)** v části správy levé navigační nabídky zobrazí seznam prostředků předplatného, pro které máte možnost výběru přiřazení role. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 [Přehled aplikace Azure AD Privileged Identity Management](active-directory-privileged-identity-management-configure.md) obsahuje podrobné informace o tom, jak můžete spravovat přístup pro správu ve vaší organizaci.
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

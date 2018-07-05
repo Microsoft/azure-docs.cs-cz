@@ -1,6 +1,6 @@
 ---
-title: Service Bus ceny a fakturace | Microsoft Docs
-description: Přehled služby Service Bus cenové struktury.
+title: Služby Service Bus, ceny a fakturace | Dokumentace Microsoftu
+description: Přehled služby Service Bus Cenová struktura.
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
@@ -14,57 +14,60 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 8ccb44b5009588c28bc79bb45e1a7640ead6c817
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 4faf37394b8e4f6c4e463acb11aea898a29fef80
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 12/22/2017
-ms.locfileid: "27159782"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448403"
 ---
-# <a name="service-bus-pricing-and-billing"></a>Service Bus ceny a fakturace
+# <a name="service-bus-pricing-and-billing"></a>Služby Service Bus, ceny a fakturace
 
-Ve verzi Standard se nabízí Azure Service Bus a [Premium](service-bus-premium-messaging.md) vrstev. Můžete vybrat vrstvy služby pro každý obor názvů sběrnice služby, který vytvoříte, a tento výběr vrstvy platí mezi všechny entity vytvořené v daném oboru názvů.
+Azure Service Bus nabízíme v Standard a [Premium](service-bus-premium-messaging.md) úrovně. Můžete zvolit úroveň služby pro každý obor názvů služby Service Bus služby, které vytvoříte, a tento výběr úrovně vztahuje na všechny entity vytvořené v daném oboru názvů.
 
 > [!NOTE]
-> Podrobné informace o cenách aktuální Service Bus, najdete v článku [Azure Service Bus stránce s cenami](https://azure.microsoft.com/pricing/details/service-bus/)a [nejčastější dotazy týkající se Service Bus](service-bus-faq.md#pricing).
+> Podrobné informace o aktuální ceny služby Service Bus, najdete v článku [stránce s cenami služby Azure Service Bus](https://azure.microsoft.com/pricing/details/service-bus/)a [nejčastějších dotazech ke službě Service Bus](service-bus-faq.md#pricing).
 >
 >
 
-Service Bus používá následující 2 měřidla pro fronty a témata nebo odběry:
+Service Bus pomocí následujících měřičů 2 pro fronty a témata nebo předplatná:
 
-1. **Zasílání zpráv operace**: definován jako volání rozhraní API proti fronta nebo téma/odběr koncové body služby. Toto měření nahradí zprávy odesílané nebo přijímané jako primární jednotka fakturovatelný využití pro fronty a témata nebo předplatných.
-2. **Zprostředkované připojení**: definován jako počet ve špičce trvalé připojení otevřete před fronty, témata a odběry, během období daného hodinových vzorkování. Toto monitorování se vztahuje pouze na vrstvě Standard, ve kterém můžete otevřít další připojení (dříve připojení byly omezeno na 100 podle fronty, tématu nebo předplatného) za úplatu nominální připojení.
+1. **Operace zasílání zpráv**: definovaných jako volání rozhraní API proti fronty nebo tématu/odběru koncových bodů služby. Měří nahradí zprávy odesílané nebo přijímané jako primární jednotkou fakturovatelné využití pro fronty a témata nebo předplatná.
+2. **Zprostředkovaná připojení**: definovaný jako nejvyšší počet trvalých připojení otevřete front, témat nebo předplatných v dané vzorkování hodinová období. Tato měření se používá pouze na úrovni Standard, ve kterém můžete otevřít další připojení (dříve připojení byly omezené na 100 za fronty/tématu nebo odběru) za nominální připojení.
 
-**Standardní** vrstvy zavádí dělené ceny pro operace provedené pomocí fronty a témata nebo odběry, což vede k slevy na základě svazku až 80 % na nejvyšší úrovni využití. Je také úrovně Standard základní poplatek za 10 za měsíc, která umožňuje provádět operace 12,5 milionů měsíčně bez dalších poplatků.
+**Standardní** úroveň zavádí jsou odstupňované ceny za operace prováděné s frontami a tématy nebo předplatnými, což vede k slevy na základě objemového až 80 % na nejvyšší úrovni využití. Je také základní poplatek úrovně Standard z 10 USD za měsíc, které umožňuje provádět 12,5 milionů operací za měsíc bez dalších poplatků.
 
-**Premium** vrstvy nabízí izolaci prostředků v rovině CPU a paměti, aby každá úloha zákazníka běží izolovaně. Kontejner prostředků se nazývá *jednotka zasílání zpráv*. Každému prémiovému obor názvů se přiřadí aspoň jedna jednotka zasílání zpráv. Pro každý obor názvů Service Bus Premium můžete koupit 1, 2 nebo 4 jednotky zasílání zpráv. Jedna úloha nebo entita může zabírat několik jednotek zasílání zpráv a počet jednotek zasílání zpráv se dá změnit podle libosti, ale fakturuje se podle 24hodinoví/denní sazby. Výsledkem je předvídatelný a opakovatelný výkon vašeho řešení postaveného na Service Bus. Vedle toho, že je tento výkon předvídatelnější, je také rychlejší.
+**Premium** úroveň zajišťuje izolaci prostředků ve vrstvě CPU a paměti, takže každá úloha zákazníka běží izolovaně. Kontejner prostředků se nazývá *jednotka zasílání zpráv*. Každému prémiovému obor názvů se přiřadí aspoň jedna jednotka zasílání zpráv. Pro každý obor názvů Service Bus Premium můžete koupit 1, 2 nebo 4 jednotky zasílání zpráv. Jedna úloha nebo entita může zabírat několik jednotek zasílání zpráv a počet jednotek zasílání zpráv se dá změnit podle libosti, ale fakturuje se podle 24hodinoví/denní sazby. Výsledkem je předvídatelný a opakovatelný výkon vašeho řešení postaveného na Service Bus. Vedle toho, že je tento výkon předvídatelnější, je také rychlejší.
 
-Všimněte si, že poplatků základní úroveň Standard je účtován pouze jednou za měsíc na předplatné Azure. To znamená, po vytvoření oboru názvů Service Bus jednu standardní vrstvy, můžete vytvořit libovolný počet dalších standardní obory názvů tak, jak chcete v rámci této stejného předplatného Azure, aniž by docházelo k základní spojené další poplatky.
+> [!NOTE]
+> Témata a odběry jsou dostupné jenom v Standard nebo Premium cenové úrovně; na úrovni Basic podporuje pouze fronty.
 
-[Ceny služby Service Bus](https://azure.microsoft.com/pricing/details/service-bus/) tabulka shrnuje funkční rozdíly mezi úrovních Standard a Premium.
+Základní poplatek úrovně Standard se účtuje jenom jednou za měsíc za jedno předplatné Azure. To znamená, že po vytvoření služby Service Bus jednoho standardního názvového můžete vytvořit libovolný počet dalších standardních názvových prostorů chcete v rámci jednoho předplatného Azure, aniž by se účtovaly další základní poplatky.
+
+[Cenách služby Service Bus](https://azure.microsoft.com/pricing/details/service-bus/) tabulka shrnuje funkční rozdíly mezi úrovněmi Standard a Premium.
 
 ## <a name="messaging-operations"></a>Operace zasílání zpráv
 
-Fronty a témata nebo odběry fakturují se za "operace," není jednotlivých zpráv. Operace se odkazuje na všechny volání rozhraní API proti fronta nebo téma/odběr koncového bodu služby. Patří sem operace správy, odeslání/přijetí a stavu relace.
+Fronty a témata nebo předplatná se účtují po "operace", ne podle zpráv. Operace se odkazuje na jakékoli volání rozhraní API provedená oproti frontě nebo tématu/odběru koncového bodu služby. Patří sem operace správy, odeslání/přijetí a stavu relace.
 
 | Typ operace | Popis |
 | --- | --- |
-| Správa |Vytváření, čtení, aktualizaci, odstranění (CRUD) před fronty a témata nebo předplatných. |
-| Zasílání zpráv |Odesílat a přijímat zprávy z fronty nebo témata nebo předplatných. |
-| Stav relace |Získání nebo nastavení stavu relace na fronta nebo téma/odběr. |
+| Správa |Vytvoření, čtení, aktualizace, odstranění (CRUD) front nebo témat/odběrů. |
+| Zasílání zpráv |Odesílání a příjem zpráv s frontami nebo tématy nebo předplatnými. |
+| Stav relace |Získání nebo nastavení stavu relace ve frontě nebo tématu nebo odběru. |
 
-Náklady na podrobnosti najdete v tématu ceny uvedené na [ceny služby Service Bus](https://azure.microsoft.com/pricing/details/service-bus/) stránky.
+Nákladů, prohlédněte si ceny uvedené na [cenách služby Service Bus](https://azure.microsoft.com/pricing/details/service-bus/) stránky.
 
 ## <a name="brokered-connections"></a>Zprostředkovaná připojení
 
-*Zprostředkované připojení* zohlednit vzorce, které zahrnují velké množství "trvalé připojené" odesílatelé nebo příjemci před fronty, témata a odběry. Trvalé připojené odesílatelé nebo příjemci jsou ty, které se připojují prostřednictvím protokolu AMQP nebo HTTP s nenulovou hodnotou přijímat časový limit (například HTTP dlouhé dotazování). HTTP odesílateli a příjemci s okamžitou časový limit negenerují zprostředkovaná připojení.
+*Zprostředkovaná připojení* podle vzorce používání, které se týkají velkého počtu "trvale připojené" odesílatelů/příjemců pro fronty, témata nebo předplatná. Odesílatelé trvale připojené/příjemci jsou ty, které se připojují pomocí protokolu AMQP nebo HTTP s nenulové přijímat časový limit (třeba HTTP dlouhý interval dotazování). HTTP odesílateli a příjemci s okamžitou časový limit negenerují zprostředkovaných připojení.
 
-Připojení kvóty a omezení jiné služby najdete v tématu [Service Bus kvóty](service-bus-quotas.md) článku. Další informace o zprostředkovaná připojení najdete v tématu [– nejčastější dotazy](#faq) později v tomto článku.
+Připojení kvóty a omezení dalších služeb najdete v tématu [kvótách služby Service Bus](service-bus-quotas.md) článku. Další informace o zprostředkovaných připojení, najdete v článku [nejčastější dotazy k](#faq) části dále v tomto článku.
 
-Úroveň Standard počty využití agregační zprostředkované připojení mezi předplatné Azure a odstraňuje omezení zprostředkovaných připojení na obor názvů. Další informace najdete v tématu [zprostředkované připojení](https://azure.microsoft.com/pricing/details/service-bus/) tabulky.
+Na úrovni Standard odebere limit zprostředkovaných připojení na obor názvů a počty využití agregace zprostředkované připojení přes předplatné Azure. Další informace najdete v tématu [zprostředkovaných připojení](https://azure.microsoft.com/pricing/details/service-bus/) tabulky.
 
 > [!NOTE]
-> 1 000 zprostředkované připojení jsou součástí zasílání zpráv úrovně Standard (prostřednictvím základní zdarma) a mohou být sdíleny všechny fronty, témata a odběry v rámci přidružené předplatné Azure.
+> 1 000 zprostředkovaných připojení součástí zasílání zpráv úrovně Standard (v základním poplatku), lze sdílet mezi všechny fronty, témata a odběry v rámci přidruženého předplatného Azure.
 >
 >
 
@@ -81,27 +84,27 @@ Zprostředkovaná připojení se na úrovni Premium neúčtují.
 
 ## <a name="faq"></a>Nejčastější dotazy
 
-### <a name="what-are-brokered-connections-and-how-do-i-get-charged-for-them"></a>Jaké jsou zprostředkované připojení a jak mohu získat účtovat poplatek za je?
+### <a name="what-are-brokered-connections-and-how-do-i-get-charged-for-them"></a>Co je zprostředkované připojení a jak se mi účtovat pro ně?
 
 Zprostředkované připojení se definuje jedním z těchto způsobů:
 
-1. AMQP připojení z klienta do fronty Service Bus nebo tématu nebo předplatného.
+1. Připojení AMQP klienta k tématu/odběru a fronty služby Service Bus.
 2. Volání HTTP při příjmu zprávy z tématu nebo fronty Service Bus, které má hodnotu časového limitu příjmu větší než nula.
 
-Service Bus poplatky za nejvyšší počet souběžných zprostředkovaná připojení, které překračují zahrnuté množství (1000 na vrstvě Standard). Špičky se měří po hodinách. Výsledek měření se vydělí 744 hodinami za měsíc a přičte se k měsíčnímu fakturačnímu období. Zahrnuté množství (1 000 hodin zprostředkovaných připojení za měsíc) se na konci fakturačního období porovná s úhrnem poměrných hodinových špiček.
+Poplatkům za Service Bus pro nejvyšší počet souběžných zprostředkovaných připojení, která překročí zahrnuté množství (1 000 na úrovni Standard). Špičky se měří po hodinách. Výsledek měření se vydělí 744 hodinami za měsíc a přičte se k měsíčnímu fakturačnímu období. Zahrnuté množství (1 000 hodin zprostředkovaných připojení za měsíc) se na konci fakturačního období porovná s úhrnem poměrných hodinových špiček.
 
 Příklad:
 
-1. Každý z 10 000 zařízení připojí pomocí jednoho připojení AMQP a přijímá příkazy z tématu Service Bus. Zařízení odesílat telemetrická data události do centra událostí. Pokud se všechna zařízení připojit 12 hodin denně, tyto připojení poplatky (kromě jiných Service Bus tématu poplatků): 10 000 připojení * 12 hodin * 31 dnů / 744 = 5 000 zprostředkované připojení. Po měsíční příspěvek ve výši 1 000 zprostředkované připojení by se vám účtovat pro 4000 zprostředkovaná připojení ve výši 0.03 za zprostředkované připojení celkem $120.
-2. 10 000 zařízení příjem zpráv z fronty Service Bus prostřednictvím protokolu HTTP, zadání nenulové vypršení časového limitu. Pokud se všechna zařízení připojit 12 hodin denně, zobrazí se následující poplatky připojení (kromě jiných Service Bus poplatků): 10 000 HTTP přijímat připojení * 12 hodin za den * 31 dnů nebo hodin 744 = 5 000 zprostředkované připojení.
+1. Každý z 10 000 zařízení se připojuje přes samostatné připojení AMQP a přijímá příkazy z tématu Service Bus. Zařízení odesílá události telemetrie do centra událostí. Pokud všechna zařízení připojená 12 hodin každý den, platí následující poplatky za připojení (navíc k žádné jiné téma poplatkům za Service Bus): 10 000 připojení * 12 hodin * 31 dnů / 744 = 5 000 zprostředkovaných připojení. Protože máte měsíčně povolených 1000 zprostředkovaných připojení vám bude účtovat 4 000 zprostředkovaných připojení se sazbou 0.03 za zprostředkované připojení, tedy celkem 120 $.
+2. 10 000 zařízení přijímá zprávy z fronty Service Bus přes protokol HTTP nenulovým časovým limitem. Pokud všechna zařízení připojená 12 hodin každý den, zobrazí se následující poplatky za připojení (navíc k poplatkům jiné služby Service Bus): 10 000 připojení pro přijetí přes protokol HTTP * 12 hodin každý den * 31 dnů / 744 hodin = 5 000 zprostředkovaných připojení.
 
 ### <a name="do-brokered-connection-charges-apply-to-queues-and-topicssubscriptions"></a>Vztahují se poplatky za připojení na fronty a předplatná?
 
-Ano. Za odesílání událostí přes HTTP se neúčtují žádné poplatky za připojení, bez ohledu na počet odesílajících systémů nebo zařízení. Příjem událostí s protokolem HTTP pomocí vypršení časového limitu větší než nula, které se někdy označuje jako "dlouhé dotazování," generuje náklady zprostředkované připojení. Připojení AMQP generují poplatky za zprostředkované připojení bez ohledu na to, jestli se připojení použije k odeslání nebo přijetí. Prvních 1000 zprostředkovaná připojení mezi všechny standardní obory názvů v předplatné Azure jsou zahrnuty bez dalších poplatků (kromě základní zdarma). Protože tyto příspěvky dostatek tak, aby pokrýval scénáře zasílání zpráv mnoha service-to-service, náklady zprostředkované připojení obvykle pouze stát relevantní, pokud máte v úmyslu použít protokol AMQP nebo HTTP dlouho dotazování s velkým počtem klientů. Chcete-li například dosažení efektivnější vysílání datového proudu událostí nebo povolit obousměrnou komunikaci s mnoha zařízení nebo instancí aplikace.
+Ano. Za odesílání událostí přes HTTP se neúčtují žádné poplatky za připojení, bez ohledu na počet odesílajících systémů nebo zařízení. Události přijímané přes HTTP s časovým limitem větším než nula, někdy označuje jako "dlouhý interval dotazování" generuje poplatky za zprostředkované připojení. Připojení AMQP generují poplatky za zprostředkované připojení bez ohledu na to, jestli se připojení použije k odeslání nebo přijetí. Prvních 1000 zprostředkovaných připojení ve všech názvových prostorech předplatného Azure je zahrnutých bez dalších poplatků (kromě základního poplatku). Protože tyto limity stačí na pokrytí mnoha scénářů zasílání zpráv služby service, poplatky za zprostředkovaná připojení narostou jen tehdy, relevantní, pokud plánujete použít připojení přes AMQP nebo HTTP s dlouhým intervalem dotazování u velkého počtu klientů; Chcete-li například efektivněji Streamovat události nebo zapnout obousměrnou komunikaci s mnoha zařízení nebo instancí aplikace.
 
 ## <a name="next-steps"></a>Další postup
 
-* Úplné podrobnosti o cenách služby Service Bus, najdete v článku [Service Bus stránce s cenami](https://azure.microsoft.com/pricing/details/service-bus/).
-* Najdete v článku [nejčastější dotazy týkající se Service Bus](service-bus-faq.md#pricing) pro některé běžné nejčastější dotazy o službě Service bus ceny a fakturace.
+* Úplné podrobnosti o cenách služby Service Bus, najdete v článku [stránce s cenami služby Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
+* Zobrazit [nejčastějších dotazech ke službě Service Bus](service-bus-faq.md#pricing) pro některé běžné nejčastější dotazy o Service bus, ceny a fakturace.
 
 [Azure portal]: https://portal.azure.com

@@ -5,12 +5,12 @@ author: rajani-janaki-ram
 ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 05ae90767c6f0347c43e6476001eb84df61b9df5
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: f5f92b0dc064a992b93447f785db6c717f81e47b
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342493"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436639"
 ---
 # <a name="delete-a-site-recovery-vault"></a>Odstranit trezor Site Recovery
 
@@ -48,7 +48,7 @@ Pokud chcete trezor odstranit, postupujte podle doporučené kroky pro váš sc�
 
 2. Zrušit přidružení a odstranit tak, že přejdete do svého trezoru všechny zásady replikace -> **infrastruktura Site Recovery** -> **pro servery Hyper-V** -> **zásady replikace**
 
-3. Odstranit odkazy na servery Hyper-V pomocí následujících kroků v [zrušit registraci hostitele Hyper-V](/site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site).
+3. Odstranit odkazy na servery Hyper-V pomocí následujících kroků v [zrušit registraci hostitele Hyper-V](site-recovery-manage-registration-and-protection.md#unregister-a-hyper-v-host-in-a-hyper-v-site).
 
 4. Odstraníte lokalitu Hyper-V.
 

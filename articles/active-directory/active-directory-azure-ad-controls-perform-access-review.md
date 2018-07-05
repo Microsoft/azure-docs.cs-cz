@@ -1,6 +1,6 @@
 ---
-title: Kontrolujte přístup pomocí služby Azure AD přístup recenze | Microsoft Docs
-description: Zjistěte, jak kontrolovat přístup pomocí služby Azure Active Directory přístup recenze.
+title: Kontrola přístupu Azure AD pomocí kontrol přístupu | Dokumentace Microsoftu
+description: Zjistěte, jak kontrolovat přístup pomocí kontrol přístupu Azure Active Directory.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -9,43 +9,43 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 09/19/2017
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: e6a109e499395e09be27770a510427038872da38
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 52d832de10de93c5bd4b91df821f96845b3b21be
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085119"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446635"
 ---
-# <a name="review-access-with-azure-ad-access-reviews"></a>Kontrolujte přístup s Azure AD přístup recenze
+# <a name="review-access-with-azure-ad-access-reviews"></a>Zkontrolovat přístup s Azure AD kontroly přístupu
 
-Azure Active Directory (Azure AD) zjednodušuje podnikům správu přístup k aplikacím a členů skupin ve službě Azure AD a zkontroluje jiných služeb Microsoft Online Services s funkci přístup. Možná jste dostali e-mailu od společnosti Microsoft, který se zeptá, chcete-li zkontrolovat přístup pro členy skupiny nebo uživatelé s přístupem k aplikaci. 
+Azure Active Directory (Azure AD) zjednodušuje podnikům správu přístupu k aplikacím a členy skupin ve službě Azure AD a dalších Microsoft Online Services s funkci s názvem přístup kontroly. Možná jste dostali e-mailu od Microsoftu, která vás vyzve k kontrola přístupu pro členy skupiny nebo uživatelé s přístupem k aplikaci. 
 
-## <a name="open-an-access-review"></a>Otevřete kontrola přístupu
+## <a name="open-an-access-review"></a>Otevřete kontroly přístupu
 
-Pokud chcete zobrazit recenze čekající přístup, vyberte odkaz v e-mailu. Pokud nemáte e-mailu, můžete vyhledat recenze přístup pomocí následujících kroků:
+Kontroly přístupu zobrazíte výběrem odkazu v e-mailu. Pokud nemáte k dispozici v e-mailu, můžete vyhledat kontrol přístupu pomocí následujících kroků:
 
-1. Přihlaste se [přístupový panel Azure AD](https://myapps.microsoft.com).
+1. Přihlaste se [přístupový panel služby Azure AD](https://myapps.microsoft.com).
 
-2. V pravém horním rohu stránky, která zobrazuje název a výchozí organizace vyberte symbol uživatele. Pokud je uveden více než jedné organizace, vyberte v organizaci, která požadovaná kontrola přístupu.
+2. Vyberte symbol uživatele v pravém horním rohu stránky, která zobrazuje název a výchozí organizace. Pokud je uveden více než jedné organizace, vyberte organizace, která požadované kontroly přístupu.
 
-3. Pokud na dlaždici s názvem bez přípony **přístup recenze** je na pravé straně stránky, vyberte ho. Pokud dlaždice není zobrazena, neexistují žádné recenze přístup k provedení pro dané organizace a v tuto chvíli není vyžadována žádná akce.
+3. Pokud dlaždice s popiskem **kontrol přístupu** je na pravé straně stránky vyberte ji. Pokud není zobrazena na dlaždici, neexistují žádné kontroly přístupu k provedení pro danou organizaci a v tuto chvíli není potřeba žádná akce.
 
-## <a name="fill-out-an-access-review"></a>Vyplňte kontrola přístupu
+## <a name="fill-out-an-access-review"></a>Vyplňte kontroly přístupu
 
-Když vyberete ze seznamu Kontrola přístupu, zobrazí se jména uživatelů, kteří potřebují ke kontrole. Může se zobrazit pouze jeden název – vlastní – Pokud se požadavek ke kontrole vlastní přístup.
+Když vyberete kontroly přístupu ze seznamu, uvidíte jména uživatelů, kteří potřebují ke kontrole. Může se zobrazit pouze jeden název – vlastní – Pokud se požadavek na kontrolovat svůj vlastní přístup.
 
-Pro každý řádek v seznamu můžete rozhodnout, zda schválit nebo zamítnout přístup uživatele. Vyberte řádek a vyberte, zda chcete schválit nebo zamítnout. (Pokud neznáte uživatele, můžete určit, že, příliš.)
+Pro každý řádek v seznamu můžete rozhodnout, zda Schvalte nebo zamítněte přístup daného uživatele. Vyberte řádek a vyberte, jestli chcete schválit nebo zamítnout. (Pokud si nejste jisti, že uživatel, můžete určit, že příliš.)
 
-Kontrolorovi může vyžadovat, že zadáte odůvodnění schválení nepřetržitý přístup nebo členství ve skupině.
+Revidující můžou vyžadovat, abyste zadali odůvodnění pro schválení přístup nebo členství ve skupině.
 
 ## <a name="next-steps"></a>Další postup
 
-Odepření přístupu uživatele se neodebere okamžitě. Může být odebrán až po dokončení kontrola nebo když se správce zastaví kontrola. Pokud chcete změnit odpověď a schválit dříve odepření uživatele nebo odepřít dříve schválené uživatele, vyberte řádek, reset odpověď a vyberte novou odpověď. Tento krok můžete provést, dokud nebude dokončeno kontrola přístupu.
+Odepření přístupu uživatele odebrán okamžitě. Je možné odebrat, když je revize dokončena nebo když správce zastaví revizi. Pokud chcete změnit vaše odpověď a schválit dříve odepřených uživatelů nebo zamítnout dříve schválené uživatele, vyberte řádek, resetovat odpovědi a vyberte nová odpověď. Tento krok můžete provést, dokud se nedokončí kontroly přístupu.
 
 
 

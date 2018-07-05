@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3f6f2768e13e85edb8a314359fef0b0312a8e84d
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: a29379492f4ffd662244c3e42de321f47be13d9f
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344886"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436968"
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Aktualizace ověřování účtu Automation o účty Spustit jako 
 Existující účet Automation můžete aktualizovat z webu Azure Portal nebo pomocí PowerShellu, pokud jste postupovali takto:
@@ -248,6 +248,9 @@ Tento skript PowerShellu zahrnuje podporu následujících konfigurací:
         Write-Host -ForegroundColor red       $UploadMessage
     }
     ```
+
+    > [!IMPORTANT]
+    > **Add-AzureRmAccount** je nyní alias pro **Connect-AzureRMAccount**. Při vyhledávání knihovny položky, pokud se nezobrazí **Connect-AzureRMAccount**, můžete použít **Add-AzureRmAccount**, nebo ve vašem účtu Automation můžete aktualizovat moduly.
 
 2. Na svém počítači na obrazovce **Start** spusťte **Windows PowerShell** se zvýšenými uživatelskými právy.
 3. V prostředí příkazového řádku se zvýšenými oprávněními přejděte do složky, která obsahuje skript vytvořený v kroku 1.  

@@ -1,6 +1,6 @@
 ---
-title: Zkontrolujte váš přístup | Microsoft Docs
-description: Zkontrolujte váš přístup s Azure Active Directory
+title: Kontrolovat přístup | Dokumentace Microsoftu
+description: Kontrolovat přístup v Azure Active Directory
 author: rolyon
 manager: mtillman
 editor: markwahl-msft
@@ -8,41 +8,41 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 09/19/2017
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 32cdbf75025c1368ff3d5173307883179af184c7
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 0ac43637adc91c22aaab78f04732a613c74706d9
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085619"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446111"
 ---
-# <a name="review-your-access"></a>Zkontrolujte váš přístup
+# <a name="review-your-access"></a>Kontrolovat přístup
 
-Azure Active Directory (Azure AD) zjednodušuje podnikům správu přístup k aplikacím a členů skupin ve službě Azure AD a zkontroluje jiných služeb Microsoft Online Services s funkci přístup. Možná jste dostali e-mailu od společnosti Microsoft, který se zeptá, chcete-li zkontrolovat přístup pro členy skupiny nebo uživatelé s přístupem k aplikaci. 
+Azure Active Directory (Azure AD) zjednodušuje podnikům správu přístupu k aplikacím a členy skupin ve službě Azure AD a dalších Microsoft Online Services s funkci s názvem přístup kontroly. Možná jste dostali e-mailu od Microsoftu, která vás vyzve k kontrola přístupu pro členy skupiny nebo uživatelé s přístupem k aplikaci. 
 
-## <a name="open-an-access-review"></a>Otevřete kontrola přístupu
+## <a name="open-an-access-review"></a>Otevřete kontroly přístupu
 
-Pokud chcete zobrazit recenze čekající přístup, vyberte odkaz v e-mailu. Pokud nemáte e-mailu, můžete vyhledat recenze přístup pomocí následujících kroků:
+Kontroly přístupu zobrazíte výběrem odkazu v e-mailu. Pokud nemáte k dispozici v e-mailu, můžete vyhledat kontrol přístupu pomocí následujících kroků:
 
-1. Přihlaste se [přístupový panel Azure AD](https://myapps.microsoft.com).
+1. Přihlaste se [přístupový panel služby Azure AD](https://myapps.microsoft.com).
 
-2. V pravém horním rohu stránky, která zobrazuje název a výchozí organizace vyberte symbol uživatele. Pokud je uveden více než jedné organizace, vyberte v organizaci, která požadovaná kontrola přístupu.
+2. Vyberte symbol uživatele v pravém horním rohu stránky, která zobrazuje název a výchozí organizace. Pokud je uveden více než jedné organizace, vyberte organizace, která požadované kontroly přístupu.
 
-3. Pokud na dlaždici s názvem bez přípony **přístup recenze** je na pravé straně stránky, vyberte ho. Pokud dlaždice není zobrazena, neexistují žádné recenze přístup k provedení pro dané organizace a v tuto chvíli není vyžadována žádná akce.
+3. Pokud dlaždice s popiskem **kontrol přístupu** je na pravé straně stránky vyberte ji. Pokud není zobrazena na dlaždici, neexistují žádné kontroly přístupu k provedení pro danou organizaci a v tuto chvíli není potřeba žádná akce.
 
-## <a name="fill-out-an-access-review"></a>Vyplňte kontrola přístupu
+## <a name="fill-out-an-access-review"></a>Vyplňte kontroly přístupu
 
-Když vyberete ze seznamu Kontrola přístupu, zobrazí se váš přístup. Vyberte řádek a vyberte, zda chcete schválit nebo zamítnout vašim potřebám pro nepřetržitý přístup.
+Když vyberete ze seznamu kontroly přístupu, zobrazí se váš přístup. Vyberte řádek a vyberte, jestli chcete schválit nebo zamítnout vaše nutnosti dalšího přístupu pro.
 
-Kontrolorovi může vyžadovat, že zadáte odůvodnění schválení nepřetržitý přístup.
+Revidující můžou vyžadovat, abyste zadali zdůvodnění schválit pokračování přístupu.
 
 ## <a name="next-steps"></a>Další postup
 
-Odepření přístupu se neodebere okamžitě. Pokud chcete změnit odpověď a schválit, reset odpovědi a vyberte novou odpověď. Tento krok můžete provést, dokud nebude dokončeno kontrola přístupu.
+Odepření přístupu odebrán okamžitě. Pokud chcete změnit vaše odpověď a schválit, resetovat odpovědi a vyberte nová odpověď. Tento krok můžete provést, dokud se nedokončí kontroly přístupu.
 
 
 

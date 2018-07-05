@@ -1,35 +1,35 @@
 ---
-title: Využití sestav ukázky rozhraní API a definice v Azure Active Directory B2C | Microsoft Docs
-description: Průvodce a ukázky na získávání sestavy na klienta Azure AD B2C, uživatelé, ověřování a ověřování službou Multi-Factor Authentication.
+title: Ukázky rozhraní API vytváření sestav využití a definice v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Příručka a ukázky na získání sestavy v tenantovi Azure AD B2C, uživatelů, ověřování a ověřování službou Multi-Factor Authentication.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: dc7f18e29367a3979a2650a87465366d9727cff6
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 544b0618f9135b684846c42bb7edeb37cf599883
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34711626"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445530"
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Přístup k použití sestav v Azure AD B2C prostřednictvím rozhraní API pro generování sestav
 
-Azure Active Directory B2C (Azure AD B2C) zajišťuje ověřování na základě přihlášení uživatele a ověřování Azure Multi-Factor Authentication. Ověřování se poskytuje koncovým uživatelům vaší aplikace rodiny napříč poskytovatelů identit. Když víte, počet uživatelů, registrované v klientovi, zprostředkovatele, který se používá k registraci a počet ověřování podle typu, je zodpovědět otázky jako:
-* Kolik uživatelů z každého typu zprostředkovatele identity (například účet Microsoft nebo LinkedIn) registrovali v posledních 10 dnů?
-* Kolik ověřování pomocí služby Multi-Factor Authentication byly úspěšně dokončeny za minulý měsíc?
-* Kolik ověřování přihlášení v základě byly dokončeny tohoto měsíce? Za den? Na aplikaci?
-* Jak můžete odhadnout očekávané měsíční náklady na Moje aktivity klienta Azure AD B2C?
+Azure Active Directory B2C (Azure AD B2C) zajišťuje ověřování na základě přihlášení uživatele a ověřování Azure Multi-Factor Authentication. Ověřování je k dispozici pro koncové uživatele řady aplikace zprostředkovatele identity. Když víte, počet uživatelů v tenantovi, zprostředkovatele, který se použije k registraci a počet ověření registrovaných typů, můžete zodpovědět dotazy jako:
+* Kolik uživatelů z každého typu zprostředkovatele identity (třeba účtu Microsoft nebo LinkedIn) jste se zaregistrovali v posledních 10 dnů?
+* Kolik ověření pomocí služby Multi-Factor Authentication byly úspěšně dokončeny během posledního měsíce?
+* Kolik ověřování přihlašování v podle dokončili jste tento měsíc? Za den? Na aplikaci?
+* Jak lze odhadněte očekávané měsíční náklady pro moje aktivity tenanta Azure AD B2C?
 
-Tento článek se zaměřuje na sestavy, které jsou svázané s fakturační aktivity, která je založena na počtu uživatelů, fakturovatelný sign v based ověřování a ověřování službou Multi-Factor Authentication.
+Tento článek se zaměřuje na sestavy, které jsou vázány na fakturační aktivitu, která je založena na počet uživatelů, fakturovatelný přihlašování v podle ověřování a ověřování službou Multi-Factor Authentication.
 
 
 ## <a name="prerequisites"></a>Požadavky
-Než začnete, musíte dokončit kroky v [požadavky pro přístup k rozhraní API pro vytváření sestav Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/). Vytvořit aplikaci, získat tajný klíč a jí udělit přístup práva k sestavy klienta Azure AD B2C. *Bash skriptu* a *skript v jazyce Python* příklady jsou také uvedeny zde. 
+Než začnete, potřebujete k dokončení kroků v [požadavky pro přístup k rozhraní API pro generování sestav Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-reporting-api-getting-started/). Vytvoření aplikace, získání tajného kódu pro něj a jí udělit přístup práva k sestavy vašeho tenanta Azure AD B2C. *Skriptu bash* a *skript Pythonu* příklady jsou také uvedeny zde. 
 
 ## <a name="powershell-script"></a>Skript PowerShellu
 Tento skript ukazuje vytvoření čtyři sestavy využití pomocí `TimeStamp` parametr a `ApplicationId` filtru.
@@ -96,33 +96,33 @@ if ($oauth.access_token -ne $null) {
 ```
 
 
-## <a name="usage-report-definitions"></a>Definice sestavy využití
-* **tenantUserCount**: počet uživatelů v klientovi typem zprostředkovatele identity, za den za posledních 30 dní. (Volitelně `TimeStamp` filtr poskytuje počty uživatelů ze zadaného data na aktuální datum). Sestava obsahuje:
-  * **TotalUserCount**: počet všechny uživatelské objekty.
-  * **OtherUserCount**: počet uživatelů Azure Active Directory (nikoli uživatelům Azure AD B2C).
-  * **LocalUserCount**: počet uživatelských účtů Azure AD B2C vytvořit s přihlašovacími údaji místního klienta Azure AD B2C.
+## <a name="usage-report-definitions"></a>Definice sestav využití
+* **tenantUserCount**: počet uživatelů v tenantovi typem zprostředkovatele identity, každý den za posledních 30 dní. (Volitelně můžete `TimeStamp` filtr poskytuje počty uživatelů od zadaného data na aktuální datum). Tato sestava poskytuje:
+  * **TotalUserCount**: počet všech objektů uživatelů.
+  * **OtherUserCount**: počet uživatelů Azure Active Directory (nikoli uživatele Azure AD B2C).
+  * **LocalUserCount**: počet uživatelských účtů Azure AD B2C vytvořené pomocí přihlašovacích údajů místního do tenanta Azure AD B2C.
 
-* **AlternateIdUserCount**: počet uživatelů, Azure AD B2C zaregistrována zprostředkovatelů externí identity (například Facebook, účet Microsoft nebo jiného klienta Azure Active Directory, také označuje jako `OrgId`).
+* **AlternateIdUserCount**: počet uživatelů Azure AD B2C zaregistrovaného externích zprostředkovatelů identity (například Facebook, účet Microsoft nebo jiného tenanta Azure Active Directory, také nazývané `OrgId`).
 
-* **b2cAuthenticationCountSummary**: Souhrn denní počet fakturovatelný ověření za posledních 30 dní, podle dne a typu toku ověřování.
+* **b2cAuthenticationCountSummary**: Souhrn denní počet účtovaných ověření za posledních 30 dní, den a typu tok ověřování.
 
-* **b2cAuthenticationCount**: počet ověření v časovém období. Výchozí hodnota je za posledních 30 dní.  (Volitelné: na začátek a konec `TimeStamp` parametry definovat za určité časové období.) Výstup obsahuje `StartTimeStamp` (nejdřívější datum aktivity pro tohoto klienta) a `EndTimeStamp` (nejnovější aktualizace).
+* **b2cAuthenticationCount**: počet ověření v časovém období. Výchozí hodnota je v posledních 30 dnech.  (Volitelné: na začátek a konec `TimeStamp` definovat parametry za určité časové období.) Výstup obsahuje `StartTimeStamp` (nejstarší data aktivity pro tohoto tenanta) a `EndTimeStamp` (nejnovější aktualizace).
 
-* **b2cMfaRequestCountSummary**: Souhrn denní počet ověřování službou Multi-Factor Authentication podle dne a typu (SMS nebo hlasové).
+* **b2cMfaRequestCountSummary**: Souhrn dennímu počtu ověřování službou Multi-Factor Authentication, den a typ (SMS nebo hlasových).
 
 
 ## <a name="limitations"></a>Omezení
-Uživatel počet data se aktualizují každých 24 až 48 hodin. Ověření se aktualizují několikrát za den. Při použití `ApplicationId` odpověď prázdná sestavy filtr, může být kvůli jednomu z následujících podmínek:
-  * ID aplikace v klientovi neexistuje. Zkontrolujte, zda že je správný.
-  * ID aplikace existuje, ale v období vytváření sestav nebyla nalezena žádná data. Zkontrolujte parametry data a času.
+Údaje o počtu uživatelů se aktualizují každých 24 až 48 hodin. Ověření jsou aktualizuje několikrát denně. Při použití `ApplicationId` filtr, odpověď prázdnou sestavou může být způsobené jedním z následujících podmínek:
+  * ID aplikace neexistuje v tenantovi. Ujistěte se, že je správný.
+  * ID aplikace existuje, ale v období vytváření sestav se nenašla žádná data. Zkontrolujte parametry data a času.
 
 
 ## <a name="next-steps"></a>Další postup
-### <a name="monthly-bill-estimates-for-azure-ad"></a>Odhadne měsíčních nákladů pro Azure AD
-V kombinaci s [nejaktuálnější Azure AD B2C cenách dostupné](https://azure.microsoft.com/pricing/details/active-directory-b2c/), můžete odhadnout denní, týdenní a měsíční využití platformy Azure.  Odhad je obzvláště užitečná při plánování změny v chování klienta, který může mít vliv na celkové náklady. Můžete zkontrolovat skutečné náklady v vaše [přidružené předplatné Azure](active-directory-b2c-how-to-enable-billing.md).
+### <a name="monthly-bill-estimates-for-azure-ad"></a>Měsíční náklady odhady pro službu Azure AD
+V kombinaci s [nejaktuálnější Azure AD B2C ceny dostupné](https://azure.microsoft.com/pricing/details/active-directory-b2c/), chcete-li odhadnout denní, týdenní a měsíční využití Azure.  Odhad je obzvláště užitečná při plánování změny v chování tenanta, které může mít vliv na celkové náklady. Můžete zkontrolovat skutečné náklady v vaše [propojené předplatné Azure](active-directory-b2c-how-to-enable-billing.md).
 
 ### <a name="options-for-other-output-formats"></a>Možnosti pro ostatní formáty výstupu
-Následující kód ukazuje příklady odeslání výstupu do formátu JSON, seznam hodnot název a XML:
+Následující kód ukazuje příklady odesílání výstupu XML, JSON a seznam hodnot název:
 ```powershell
 # to output to JSON use following line in the PowerShell sample
 $myReport.Content | Out-File -FilePath name-your-file.json -Force

@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: f819952c0b20a632f3ee2b95f0b5b2d4613be3e1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: c1d797e3dd3a0926cfce8fee323aaaa1a866a169
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345970"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37436922"
 ---
 # <a name="best-practices"></a>Osvědčené postupy
 Proces tvorby aplikace používejte k sestavení aplikace LUIS. 
@@ -111,8 +111,6 @@ Nepřidávejte příliš mnoho [vzory](luis-concept-patterns.md). Služba LUIS j
 ## <a name="dont-train-and-publish-with-every-single-example-utterance"></a>Nemáte trénování a publikování s každou utterance jeden příklad
 Přidání projevů 10 až 15 před trénování a publikování. Který můžete vidět, jaký dopad na přesnost předpovědi. Přidání jednoho utterance nemusí mít viditelné dopad na skóre. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
-* Zjistěte, jak [plánování aplikace](plan-your-app.md) ve vaší aplikaci LUIS.
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
+* Zjistěte, jak [plánování aplikace](luis-how-plan-your-app.md) ve vaší aplikaci LUIS.

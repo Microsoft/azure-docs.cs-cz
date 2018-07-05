@@ -1,6 +1,6 @@
 ---
-title: Přehled a porovnání Azure na vyžádání média kodéry | Microsoft Docs
-description: Toto téma nabízí přehled a porovnání Azure na vyžádání kodéry média.
+title: Přehled a porovnání kodérů médií vyžádání Azure | Dokumentace Microsoftu
+description: Toto téma nabízí přehled a porovnání Azure na vyžádání kodérů médií.
 services: media-services
 documentationcenter: ''
 author: juliako
@@ -14,74 +14,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: juliako
-ms.openlocfilehash: 6e44cff930f943f5cf30fb5335ad6a7fd1d08ab5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f44f5cffd105d958c7d6552a170150623a0701ea
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34638447"
 ---
-# <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Přehled a porovnání Azure na vyžádání média kodéry
+# <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Přehled a porovnání Azure na vyžádání kodérů médií
 ## <a name="encoding-overview"></a>Kódování – přehled
-Azure Media Services poskytuje několik možností kódování média v cloudu.
+Azure Media Services nabízí několik možností pro kódování multimédií v cloudu.
 
-Při spouštění pomocí služby Media Services, je důležité si uvědomit rozdíl mezi formáty kodeků a souboru.
-Kodeky jsou software, který implementuje kompresi nebo dekompresi algoritmy, zatímco formáty souborů jsou kontejnery, které obsahují komprimované video.
+Když začínáte se službou Media Services, je důležité pochopit rozdíl mezi formáty kodeky a soubor.
+Kodeky jsou software, který implementuje algoritmy komprese nebo dekomprese, zatímco formáty souborů jsou kontejnery, které obsahují komprimované video.
 
-Služba Media Services poskytuje dynamické balení, což vám umožní dodávat váš obsah s adaptivní přenosovou rychlostí s kódováním MP4 nebo technologie Smooth Streaming ve formátech streamování podporovaných službou Media Services (MPEG DASH, HLS, technologie Smooth Streaming), aniž byste je museli znovu zabalit do těchto formátů streamování.
+Služba Media Services poskytuje dynamické balení, což vám umožní dodávat váš obsah s adaptivní přenosovou rychlostí kódováním MP4 nebo technologie Smooth Streaming ve formátech streamování podporovaných službou Media Services (MPEG DASH, HLS, technologie Smooth Streaming), aniž byste je museli znovu zabalit do těchto formátů streamování.
 
->[!NOTE]
->Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. Chcete využít výhod [dynamické balení](media-services-dynamic-packaging-overview.md), musíte udělat následující:
->
->Navíc zakódujte váš zdrojový soubor do sady souborů MP4 s adaptivní přenosovou rychlostí nebo technologie Smooth Streaming soubory s adaptivní přenosovou rychlostí (postup kódování je ukázán později v tomto kurzu).
+> [!NOTE]
+> Po vytvoření účtu AMS se do vašeho účtu přidá **výchozí** koncový bod streamování ve stavu **Zastaveno**. Pokud chcete spustit streamování vašeho obsahu a využít výhod dynamického balení a dynamického šifrování, musí koncový bod streamování, ze kterého chcete streamovat obsah, být ve stavu **Spuštěno**. 
 
-Služba Media Services podporuje následující na vyžádání kodéry, které jsou popsané v tomto článku:
+Služba Media Services podporuje následující na vyžádání kodéry, které jsou popsány v tomto článku:
 
 * [Media Encoder Standard](media-services-encode-asset.md#media-encoder-standard)
 * [Pracovní postup kodéru Media Encoder Premium](media-services-encode-asset.md#media-encoder-premium-workflow)
 
-Tento článek poskytuje stručný přehled na vyžádání kodéry média a poskytuje odkazy na články, které poskytují podrobnější informace. V tématu taky najdete porovnání kodérů.
+Tento článek poskytuje stručný přehled na vyžádání kodérů médií a obsahuje odkazy na články, které poskytují podrobnější informace. V tématu taky najdete porovnání u kodérů.
 
 >[!NOTE]
->Ve výchozím nastavení může každý účet Media Services mít jeden aktivní kódování úkol najednou. Je možné rezervovat kódování jednotky, které vám umožní mít více kódování úloh spuštěných současně, jednu pro jednotlivé kódování vyhrazené jednotky, které jste si koupili. Informace najdete v tématu [škálování kódování jednotky](media-services-scale-media-processing-overview.md).
+>Ve výchozím nastavení každý účet Media Services může mít jednu aktivní úlohu kódování najednou. Si můžete rezervovat kódovací jednotky, které vám umožní mít více úloh kódování, které jsou spuštěny souběžně, jeden pro každou kódování, kdy jste si koupili rezervovanou jednotku. Informace najdete v tématu [škálování jednotek pro kódování](media-services-scale-media-processing-overview.md).
 
 ## <a name="media-encoder-standard"></a>Media Encoder Standard
 ### <a name="how-to-use"></a>Způsob použití
-[Postup Kódovat pomocí kodéru Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
+[Kódování pomocí Media Encoderu Standard](media-services-dotnet-encode-with-media-encoder-standard.md)
 
 ### <a name="formats"></a>Formáty
 [Formáty a kodeky](media-services-media-encoder-standard-formats.md)
 
-### <a name="presets"></a>Přednastavení
-Media Encoder Standard je konfigurován pomocí jedno z přednastavení kodér popsané [zde](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
+### <a name="presets"></a>Předvolby
+Media Encoder Standard je nakonfigurovaný pomocí jedné z přednastavení kodér popsané [tady](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
-### <a name="input-and-output-metadata"></a>Vstup a výstup metadat
-Vstupní metadata kodéry je popsán [zde](media-services-input-metadata-schema.md).
+### <a name="input-and-output-metadata"></a>Vstupní a výstupní metadata
+Vstupní metadata kodérů popsaného [tady](media-services-input-metadata-schema.md).
 
-Výstup metadat kodéry je popsán [zde](media-services-output-metadata-schema.md).
+Výstupní metadata kodérů popsaného [tady](media-services-output-metadata-schema.md).
 
-### <a name="generate-thumbnails"></a>Vytváření miniatur
-Informace najdete v tématu [jak vygenerovat miniatur pomocí kodéru Media Encoder Standard](media-services-advanced-encoding-with-mes.md#thumbnails).
+### <a name="generate-thumbnails"></a>Generování miniatur
+Informace najdete v tématu [postup generování miniatur pomocí kodéru Media Encoder Standard](media-services-advanced-encoding-with-mes.md#thumbnails).
 
-### <a name="trim-videos-clipping"></a>Trim videa (výstřižek)
-Informace najdete v tématu [postup trim videa pomocí kodéru Media Encoder Standard](media-services-advanced-encoding-with-mes.md#trim_video).
+### <a name="trim-videos-clipping"></a>Oříznutí videa (výstřižek)
+Informace najdete v tématu [jak k oříznutí videa pomocí kodéru Media Encoder Standard](media-services-advanced-encoding-with-mes.md#trim_video).
 
-### <a name="create-overlays"></a>Vytvoření překryvy
-Informace najdete v tématu [vytvoření překryvy pomocí kodéru Media Encoder Standard](media-services-advanced-encoding-with-mes.md#overlay).
+### <a name="create-overlays"></a>Vytvořit překrytí
+Informace najdete v tématu [Vytvoření překrytí pomocí kodéru Media Encoder Standard](media-services-advanced-encoding-with-mes.md#overlay).
 
 ### <a name="see-also"></a>Další informace najdete v tématech
 [Blog služby Media Services](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/)
 
 ## <a name="media-encoder-premium-workflow"></a>Pracovní postup kodéru Media Encoder Premium
 ### <a name="overview"></a>Přehled
-[Představení Premium kódování v Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
+[Úvod do Premium Encoding v Azure Media Services](https://azure.microsoft.com/blog/2015/03/05/introducing-premium-encoding-in-azure-media-services/)
 
 ### <a name="how-to-use"></a>Způsob použití
-Media Encoder Premium pracovní postup je nakonfigurovat pomocí komplexní pracovních postupů. Soubory pracovního postupu by bylo možné vytvořit a aktualizovat pomocí [Návrhář postupu provádění](media-services-workflow-designer.md) nástroj.
+Pracovní postup kodéru Media Encoder Premium je nakonfigurován pomocí komplexní pracovní postupy. Soubory pracovních postupů nemohl být vytvořen a aktualizovat pomocí [návrháře postupu provádění](media-services-workflow-designer.md) nástroj.
 
-[Jak používat Premium kódování v Azure Media Services](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
+[Jak používat Premium Encoding v Azure Media Services](https://azure.microsoft.com/blog/2015/03/06/how-to-use-premium-encoding-in-azure-media-services/)
 
 ### <a name="known-issues"></a>Známé problémy
-Pokud vaše vstupní video neobsahuje uzavřen, přidávání titulků, výstup Asset bude stále obsahovat prázdný soubor TTML.
+Pokud vaše vstupní video neobsahuje titulků, výstup Asset bude stále obsahovat prázdný soubor TTML.
 
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
@@ -91,7 +90,7 @@ Pokud vaše vstupní video neobsahuje uzavřen, přidávání titulků, výstup 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Související články
-* [Přizpůsobením Media Encoder Standard přednastavení provádět pokročilé úlohy kódování](media-services-custom-mes-presets-with-dotnet.md)
+* [Pokročilé kódovací úlohy provést pomocí přizpůsobení předvoleb Media Encoderu Standard](media-services-custom-mes-presets-with-dotnet.md)
 * [Kvóty a omezení](media-services-quotas-and-limitations.md)
 
 <!--Reference links in article-->

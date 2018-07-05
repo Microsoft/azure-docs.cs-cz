@@ -1,6 +1,6 @@
 ---
-title: Použít existující přehrávače k přehrávání obsahu – Azure | Microsoft Docs
-description: Toto téma obsahuje seznam existující přehrávače, můžete použít k přehrávání obsahu.
+title: Pomocí stávajících přehrávačů pro přehrávání obsahu – Azure | Dokumentace Microsoftu
+description: Toto téma obsahuje seznam stávajících přehrávačů, můžete použít k přehrávání obsahu.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,22 +12,22 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 07/02/2018
 ms.author: juliako
-ms.openlocfilehash: a64d32747371aab2bd927e53c5d43e30de9108f9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3fe82b98163182c73a144b72da371e8aa195e8cf
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788477"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435853"
 ---
-# <a name="playing-your-content-with-existing-players"></a>Přehrávání obsahu s existující hráči
-Azure Media Services podporuje mnoho oblíbených streamování formátů, jako je například technologie Smooth Streaming, HTTP Live Streaming a MPEG-Dash. Toto téma vám ukazuje na existující přehrávačů, které můžete použít k testování vaše datové proudy.
+# <a name="playing-your-content-with-existing-players"></a>Přehrávání obsahu ve stávajících přehrávačích
+Azure Media Services podporuje řadu oblíbených streamování formátů, jako je například technologie Smooth Streaming, HTTP Live Streaming a MPEG-Dash. Toto téma odkazuje na stávajících přehrávačů, které můžete použít k testování vašich streamů.
 
-### <a name="the-azure-portal-media-services-content-player"></a>Azure portálu Media Services obsahu přehrávač.
+### <a name="the-azure-portal-media-services-content-player"></a>Azure portál Media Services content player.
 **Azure** portál nabízí přehrávač obsahu, který můžete použít k testování videa.
 
-Klikněte na požadované video (zajistěte, aby byl [publikovaná](media-services-portal-publish.md)) a klikněte na tlačítko **přehrání** tlačítko v dolní části portálu.
+Klikněte na požadované video (ujistěte se, že byla [publikované](media-services-portal-publish.md)) a klikněte na tlačítko **Přehrát** tlačítko v dolní části portálu.
 
 Musí být splněny určité předpoklady:
 
@@ -36,37 +36,35 @@ Musí být splněny určité předpoklady:
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Přehrávač médií Azure
-Použití [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) k přehrávání obsahu (Vymazat nebo chráněného) v některém z následujících formátů:
+Použití [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) k přehrávání obsahu (Vymazat nebo chráněný) v některém z následujících formátů:
 
 * Technologie Smooth Streaming
 * MPEG DASH
 * HLS
 * Progresivní MP4
 
-### <a name="flash-player"></a>Flash Player
-#### <a name="aes-encrypted-with-token"></a>AES šifrované pomocí tokenu
+### <a name="flash-player"></a>Přehrávače pro Flash
+#### <a name="aes-encrypted-with-token"></a>Šifrováním AES s tokenem
 [http://aestoken.azurewebsites.net](http://aestoken.azurewebsites.net)
 
-### <a name="silverlight-players"></a>Vybavené přehrávače prostředí Silverlight
-#### <a name="monitoring"></a>Monitorování
-[http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor)
+### <a name="silverlight-players"></a>Hráči Silverlight
 
-#### <a name="playready-with-token"></a>PlayReady pomocí tokenu
+#### <a name="playready-with-token"></a>PlayReady s tokenem
 [http://sltoken.azurewebsites.net](http://sltoken.azurewebsites.net)
 
-### <a name="dash-players"></a>Přehrávače čárka
+### <a name="dash-players"></a>Hráči DASH
 [http://dashplayer.azurewebsites.net](http://dashplayer.azurewebsites.net)
 
 [http://dashif.org](http://dashif.org)
 
 ### <a name="other"></a>Ostatní
-K testování HLS adresy URL můžete použít také:
+K otestování HLS adresy URL můžete také použít:
 
 * **Safari** na zařízení s iOS nebo
-* **Přehrávač HLS 3ivx** v systému Windows.
+* **Přehrávač HLS 3ivx** na Windows.
 
-## <a name="developing-video-players"></a>Vývoj přehrávačů videa
-Informace o tom, jak vyvíjet vlastní přehrávače najdete v tématu [vývoj přehrávačů videa](media-services-develop-video-players.md)
+## <a name="developing-video-players"></a>Vývoj přehrávače videa
+Informace o tom, jak vyvíjet své vlastní hráče, naleznete v tématu [vývoj přehrávače videa](media-services-develop-video-players.md)
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů ke službě Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

@@ -1,83 +1,83 @@
 ---
-title: Postup spuštění kontrola přístupu | Microsoft Docs
-description: Naučte se vytvářet kontrola přístupu pro privilegované identity s aplikací Azure Privileged Identity Management.
+title: Zahájení kontroly přístupu | Dokumentace Microsoftu
+description: Informace o vytvoření kontroly přístupu pro privilegované identity s aplikací Azure Privileged Identity Management.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
 ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a4ef91f7055db8f202e3a4e48375427c85964781
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 28a998647dacdf57390638b8ce1629a76077b450
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020943"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446890"
 ---
-# <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Spuštění kontrola přístupu v Azure AD Privileged Identity Management
-Přiřazení rolí stát "zastaralé", když uživatelé mají privilegovaný přístup, které už nepotřebují. Chcete-li snížit riziko spojené s těchto zastaralých role přiřazení privilegované role by měl správci nebo globální správci pravidelné vytváření přístup recenze požádat správcům revizi rolí, které mají uživatelé. Tento dokument popisuje kroky pro spuštění kontrola přístupu v Azure AD Privileged Identity Management (PIM).
+# <a name="how-to-start-an-access-review-in-azure-ad-privileged-identity-management"></a>Zahájení kontroly přístupu v Azure AD Privileged Identity Management
+Přiřazení rolí stát "zastaralých", když uživatelé privilegovaný přístup, které už nepotřebují. Pokud chcete snížit riziko spojené s tyto zastaralé role přiřazení privilegovaných rolí by správci nebo globální správci pravidelně vytvářet kontroly přístupu požádat správce ke kontrole role, které mají uživatelé. Tento dokument popisuje kroky pro spuštění kontroly přístupu v Azure AD Privileged Identity Management (PIM).
 
 ## <a name="start-an-access-review"></a>Spustit revizi přístupu
 > [!NOTE]
-> Pokud jste nepřidali aplikaci PIM do řídicího panelu portálu Azure, podívejte se na postup v [Začínáme s Azure Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)
+> Pokud jste nepřidali aplikaci PIM do řídicího panelu na webu Azure Portal, podívejte se na postup v [Začínáme se službou Azure Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)
 > 
 > 
 
-Na hlavní stránce aplikace PIM existují tři způsoby, jak začít kontrola přístupu:
+Na hlavní stránce aplikace PIM existují tři způsoby, jak spustit revizi přístupu:
 
-* **Přístup k recenze** > **přidat**
-* **Role** > **zkontrolujte** tlačítko
-* Vyberte konkrétní roli, které mají být zkontrolovány ze seznamu rolí > **zkontrolujte** tlačítko
+* **Kontroly přístupu** > **přidat**
+* **Role** > **revize** tlačítko
+* Vyberte konkrétní roli zkontrolovat ze seznamu rolí > **revize** tlačítko
 
-Po kliknutí na **zkontrolujte** tlačítko **spustit kontrola přístupu** otevře se okno. V tomto okně budete konfigurovat kontrola s názvem a časový limit, vyberte roli zkontrolovat a rozhodnout, který provede kontrola.
+Po kliknutí na **zkontrolujte** tlačítko, **zahájení kontroly přístupu** otevře se okno. V tomto okně budete konfigurace revizi pomocí názvu a časového limitu, vyberte roli, kterou chcete zkontrolovat a rozhodnout, který bude provádět revizi.
 
-![Kontrola přístupu – snímek obrazovky Start][1]
+![Zahájení kontroly přístupu – snímek obrazovky][1]
 
-### <a name="configure-the-review"></a>Kontrola konfigurace
-Pokud chcete vytvořit kontrola přístupu, potřebujete název a nastavit počáteční a koncové datum.
+### <a name="configure-the-review"></a>Konfigurace kontroly
+Vytvoření kontroly přístupu, potřebujete název a nastavte počáteční a koncové datum.
 
-![Nakonfigurujte kontrolní – snímek obrazovky][2]
+![Konfigurace kontroly – snímek obrazovky][2]
 
-Ujistěte se, délka dostatečně dlouhé, aby se pro uživatele dokončit, protože se kontrola. Pokud dokončíte před datem ukončení, můžete vždy zastavit kontrola již v rané fázi.
+Ujistěte se, délka revize dostatečně dlouhé pro uživatele k jejímu dokončení. Pokud dokončíte dřívější než datum ukončení, můžete vždy ukončit revizi již v rané fázi.
 
 ### <a name="choose-a-role-to-review"></a>Vyberte role ke kontrole
-Každý revize se zaměřuje na jen jednu roli. Pokud jste začali kontrola přístupu v okně konkrétní roli, musíte teď zvolte roli.
+Každou recenzi, zaměřuje na jenom jedné roli. Pokud nezahájíte kontroly přístupu v okně konkrétní roli, bude nutné zvolit roli teď.
 
-1. Přejděte na **Zkontrolujte členství v roli**
+1. Přejděte na **kontrola členství v rolích**
    
-    ![Zkontrolujte členství v rolích – snímek obrazovky][3]
-2. Vyberte jednu roli ze seznamu.
+    ![Kontrola členství v rolích – snímek obrazovky][3]
+2. V seznamu vyberte jednu roli.
 
-### <a name="decide-who-will-perform-the-review"></a>Rozhodněte, který provede kontrola
-Existují tři možnosti pro provádění kontrolu. Kontrola můžete přiřadit někomu jinému k dokončení, můžete provést sami nebo můžete mít každý uživatel, zkontrolujte své vlastní přístup.
+### <a name="decide-who-will-perform-the-review"></a>Rozhodněte, kdo bude provádět revizi
+Existují tři možnosti pro provádění kontrolu. Revize můžete přiřadit někomu jinému k dokončení, můžete to provést sami nebo může mít každý uživatel kontrolovat svůj vlastní přístup.
 
-1. Přejděte do **vyberte**
+1. Přejděte na **vybrat revidující**
    
-    ![Vyberte – snímek obrazovky][4]
+    ![Vybrat revidující – snímek obrazovky][4]
 2. Vyberte jednu z možností:
    
-   * **Vyberte kontrolora**: tuto možnost použijte, pokud si nejste jisti, který potřebuje přístup. Pomocí této možnosti můžete přiřadit kontrola prostředků vlastníka nebo správce skupiny pro dokončení.
-   * **Poslat mi**: užitečné, pokud si chcete prohlédnout, jak přístupu zkontroluje pracovní, nebo chcete zkontrolovat jménem osoby, které nelze.
-   * **Členy zkontrolujte sami**: tuto možnost použijte, pokud chcete, aby uživatelé Zkontrolujte své vlastní přiřazení rolí.
+   * **Vyberte kontrolora**: tuto možnost použijte, pokud si nejste jisti, který potřebuje přístup. Pomocí této možnosti můžete přiřadit revize vlastník prostředku nebo správce skupiny pro dokončení.
+   * **ME**: užitečné, pokud chcete zobrazit náhled, jak pracovní kontroly přístupu, nebo chcete zkontrolovat jménem uživatelů, kteří nemohou.
+   * **Členové si měli přečíst sami**: pomocí této možnosti můžete mít uživatele, projděte si svoje vlastní přiřazení rolí.
 
-### <a name="start-the-review"></a>Kontrola spuštění
-Nakonec máte možnost, která vyžaduje, aby uživatelé zadali příslušný důvod. Pokud schválí jejich přístup. Pokud chcete přidat popis kontrola a vyberte **spustit**.
+### <a name="start-the-review"></a>Spustit revizi
+A konečně máte možnost vyžadovat, aby uživatelé zadat příslušný důvod. Pokud jejich schválit přístup. Pokud chcete, můžete přidat popis kontroly a vyberte **Start**.
 
-Zajistěte, aby dát uživatelům vědět, že je kontrola přístupu jim a zobrazit je [postup kontrola přístupu](active-directory-privileged-identity-management-how-to-perform-security-review.md).
+Ujistěte se, že umožníte uživatelům vědět, že je čekat na jejich kontroly přístupu a zobrazit je [jak k provádění kontroly přístupu](active-directory-privileged-identity-management-how-to-perform-security-review.md).
 
-## <a name="manage-the-access-review"></a>Spravovat kontrola přístupu
-Průběh můžete sledovat, kontroloři dokončení jejich recenze v řídicím panelu Azure AD PIM, v části recenze přístup. Žádné oprávnění se změní v adresáři, dokud [kontrola dokončí](active-directory-privileged-identity-management-how-to-complete-review.md).
+## <a name="manage-the-access-review"></a>Správa kontroly přístupu.
+Průběh můžete sledovat, jak se revidující dokončení své recenze na řídicím panelu Azure AD PIM, v části kontroly přístupu. Žádné přístupová práva se změní v adresáři, dokud [kontrola dokončí](active-directory-privileged-identity-management-how-to-complete-review.md).
 
-Dokud zkontrolujte doba je u konce, můžete připomenout uživatelům dokončení jejich kontrola nebo zastavit kontrola již v rané fázi z části recenze přístup.
+Až skončí období kontroly, můžete jim Připomeňte dokončení jejich kontroly nebo zastavte kontrolu již v rané fázi z část kontroly přístupu.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="pim-table-of-contents"></a>Tabulka PIM obsahu
+## <a name="pim-table-of-contents"></a>PIM obsahy
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
 <!--Image references-->

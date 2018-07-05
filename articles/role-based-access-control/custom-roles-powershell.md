@@ -1,6 +1,6 @@
 ---
-title: Vytvořit vlastní role pomocí Azure PowerShell | Microsoft Docs
-description: Naučte se vytvářet vlastní role pro řízení přístupu na základě role (RBAC) pomocí prostředí Azure PowerShell. To zahrnuje seznam, vytvářet, aktualizovat a odstraňovat vlastní role.
+title: Vytvoření vlastní role pomocí Azure Powershellu | Dokumentace Microsoftu
+description: Zjistěte, jak vytvořit vlastní role řízení přístupu na základě rolí (RBAC) pomocí Azure Powershellu. Jedná se o seznam, vytvářet, aktualizovat a odstraňovat vlastní role.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -8,33 +8,33 @@ manager: mtillman
 ms.assetid: 9e225dba-9044-4b13-b573-2f30d77925a9
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6205198d3f9c4ec5bfa2311014cf9b90dcade6dc
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: c8e5f34bb6b38a3f187d86a1ebc0c7019c7f1046
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36320517"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37437014"
 ---
-# <a name="create-custom-roles-using-azure-powershell"></a>Vytvořit vlastní role pomocí Azure PowerShell
+# <a name="create-custom-roles-using-azure-powershell"></a>Vytvoření vlastní role pomocí Azure Powershellu
 
-Pokud [předdefinované role](built-in-roles.md) nemáte splnili specifické požadavky vaší organizace, můžete vytvořit vlastní role. Tento článek popisuje, jak vytvářet a spravovat vlastní role pomocí Azure PowerShell.
+Pokud [předdefinované role](built-in-roles.md) nesplňují konkrétní požadavky vaší organizace, můžete vytvořit své vlastní role. Tento článek popisuje, jak vytvořit a spravovat vlastní role pomocí Azure Powershellu.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Chcete-li vytvořit vlastní role, je třeba:
+Pokud chcete vytvořit vlastní role, budete potřebovat:
 
-- Oprávnění k vytvoření vlastních rolí, například [vlastníka](built-in-roles.md#owner) nebo [správce přístupu uživatelů](built-in-roles.md#user-access-administrator)
-- [Prostředí Azure PowerShell](/powershell/azure/install-azurerm-ps) nainstalovány místně
+- Oprávnění k vytváření vlastních rolí, například [Vlastník](built-in-roles.md#owner) nebo [Správce přístupu uživatelů](built-in-roles.md#user-access-administrator)
+- Místně nainstalovaný [Azure PowerShell](/powershell/azure/install-azurerm-ps)
 
-## <a name="list-custom-roles"></a>Vlastní role seznamu
+## <a name="list-custom-roles"></a>Výpis vlastních rolí
 
-K zobrazení seznamu rolí, které jsou k dispozici pro přiřazení v oboru, použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) příkaz. Následující příklad vypíše všechny role, které jsou k dispozici pro přiřazení ve vybraném předplatném.
+K zobrazení seznamu rolí, které jsou k dispozici pro přiřazení v oboru, použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) příkazu. Následující příklad vypíše všechny role, které jsou k dispozici pro přiřazení ve vybraném předplatném.
 
 ```azurepowershell
 Get-AzureRmRoleDefinition | FT Name, IsCustom
@@ -51,7 +51,7 @@ API Management Service Contributor                   False
 ...
 ```
 
-Následující příklad uvádí jenom vlastní role, které jsou k dispozici pro přiřazení ve vybraném předplatném.
+Následující příklad zobrazí seznam právě vlastních rolí, které jsou k dispozici pro přiřazení ve vybraném předplatném.
 
 ```azurepowershell
 Get-AzureRmRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
@@ -63,17 +63,17 @@ Name                     IsCustom
 Virtual Machine Operator     True
 ```
 
-Pokud vybrané předplatné není v `AssignableScopes` rolí, vlastní role nebude v seznamu uveden.
+Pokud vybrané předplatné není v `AssignableScopes` role, nebudou uvedené vlastní roli.
 
-## <a name="create-a-custom-role"></a>Vytvořit vlastní roli
+## <a name="create-a-custom-role"></a>Vytvoření vlastní role
 
-Chcete-li vytvořit vlastní roli, použijte [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) příkaz. Strukturování roli, dva způsoby použití `PSRoleDefinition` objekt nebo šablonu JSON. 
+Chcete-li vytvořit vlastní roli, použijte [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) příkazu. Existují dva způsoby strukturování roli, pomocí `PSRoleDefinition` objektu nebo šablony JSON. 
 
-### <a name="get-operations-for-a-resource-provider"></a>Získejte operace pro poskytovatele prostředků
+### <a name="get-operations-for-a-resource-provider"></a>Získat operace pro poskytovatele prostředků.
 
-Když vytvoříte vlastní role, je důležité vědět, všechny možné operace od poskytovatelů prostředků.
-Můžete zobrazit seznam [operace poskytovatele prostředků](resource-provider-operations.md) nebo můžete použít [Get-AzureRMProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) získat tyto informace.
-Například pokud chcete zkontrolovat všechny operace, které jsou k dispozici pro virtuální počítače, použijte tento příkaz:
+Při vytváření vlastních rolí, je důležité vědět, všechny možné operace od poskytovatelů prostředků.
+Můžete zobrazit seznam [operace poskytovatele prostředků](resource-provider-operations.md) nebo můžete použít [Get-AzureRMProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) příkazu získat tyto informace.
+Pokud chcete zkontrolovat všechny operace, které jsou k dispozici pro virtuální počítače, použijte tento příkaz:
 
 ```azurepowershell
 Get-AzureRMProviderOperation <operation> | FT OperationName, Operation, Description -AutoSize
@@ -91,11 +91,11 @@ Start Virtual Machine                          Microsoft.Compute/virtualMachines
 ...
 ```
 
-### <a name="create-a-custom-role-with-the-psroledefinition-object"></a>Vytvoření vlastních rolí s objektem PSRoleDefinition
+### <a name="create-a-custom-role-with-the-psroledefinition-object"></a>Vytvořit vlastní roli s objektem PSRoleDefinition
 
-Pokud používáte PowerShell můžete vytvořit vlastní roli, můžete použít jednu z [předdefinované role](built-in-roles.md) jako počáteční bod, nebo můžete začít úplně od začátku. V prvním příkladu v této části začíná předdefinovaná role a pak ho přizpůsobí s další oprávnění. Upravit atributy, které se přidat `Actions`, `NotActions`, nebo `AssignableScopes` a potom uložte změny jako novou roli.
+Při použití Powershellu k vytvoření vlastní roli, můžete použít jednu z [předdefinované role](built-in-roles.md) jako výchozí bod nebo je můžete začít úplně od začátku. První příklad v této části začíná předdefinovanou roli a potom přizpůsobí s více oprávnění. Upravit atributy pro přidání `Actions`, `NotActions`, nebo `AssignableScopes` a následně změny uložte novou roli.
 
-Následující příklad začíná [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) předdefinovaná role, chcete-li vytvořit vlastní roli s názvem *operátor virtuální počítač*. Nová role uděluje přístup ke všem operacím čtení z *Microsoft.Compute*, *Microsoft.Storage*, a *Microsoft.Network* zprostředkovatelé a uděluje přístup k prostředkům spuštění , restartujte a monitorování virtuálních počítačů. Vlastní role lze použít ve dvou odběry.
+V následujícím příkladu začíná [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) předdefinovaná role, chcete-li vytvořit vlastní roli s názvem *virtuálního počítače operátor*. Nová role uděluje přístup pro všechny operace čtení z *Microsoft.Compute*, *Microsoft.Storage*, a *Microsoft.Network* poskytovatelů a uděluje přístup k prostředkům spuštění , restartování a monitorovat virtuální počítače. Vlastní roli je možné ve dvou předplatných.
 
 ```azurepowershell
 $role = Get-AzureRmRoleDefinition "Virtual Machine Contributor"
@@ -118,7 +118,7 @@ $role.AssignableScopes.Add("/subscriptions/11111111-1111-1111-1111-111111111111"
 New-AzureRmRoleDefinition -Role $role
 ```
 
-Následující příklad ukazuje další způsob vytvoření *virtuální počítač operátor* vlastní role. Začne tím, že vytvoříte novou `PSRoleDefinition` objektu. Akce operace, které jsou určené v `perms` proměnné a nastavena `Actions` vlastnost. `NotActions` Načtením je hodnota nastavena `NotActions` z [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) předdefinovaná role. Vzhledem k tomu [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) nemá žádné `NotActions`, tento řádek není vyžadováno, ale ukazuje, jak můžete načíst informace z jiné role.
+Následující příklad ukazuje další způsob, jak vytvořit *virtuálního počítače operátor* vlastní roli. Začne tím, že vytvoříte nový `PSRoleDefinition` objektu. Operace akce jsou uvedeny v `perms` proměnné a jsou nastaveny na `Actions` vlastnost. `NotActions` Načtením je hodnota nastavena `NotActions` z [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) předdefinovaná role. Protože [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) nemá žádný `NotActions`, tento řádek není potřeba, ale ukazuje, jak načíst informace z jiné role.
 
 ```azurepowershell
 $role = [Microsoft.Azure.Commands.Resources.Models.Authorization.PSRoleDefinition]::new()
@@ -136,9 +136,9 @@ $role.AssignableScopes = $subs
 New-AzureRmRoleDefinition -Role $role
 ```
 
-### <a name="create-a-custom-role-with-json-template"></a>Vytvořit vlastní role pomocí šablony JSON
+### <a name="create-a-custom-role-with-json-template"></a>Vytvoření vlastní role pomocí šablony JSON
 
-Šablonu JSON slouží jako zdroj definice pro vlastní roli. Následující příklad vytvoří vlastní role, která umožňuje přístup pro čtení na úložiště a výpočetní prostředky, přístup k podporovat, a přidá do dvou odběry této role. Vytvoření nového souboru `C:\CustomRoles\customrole1.json` s následující příklad. Id musí být nastavena na `null` na vytvoření počáteční role jako nové ID je generován automaticky. 
+Šablonu JSON může sloužit jako zdroj definice pro vlastní roli. Následující příklad vytvoří vlastní roli, která umožňuje přístup pro čtení do úložiště a výpočetních prostředků, přístup k podpoře, a tuto roli přidá dva odběry. Vytvořte nový soubor `C:\CustomRoles\customrole1.json` v následujícím příkladu. Id by mělo být nastavené `null` na vytvoření počáteční role jako nové ID se vygeneruje automaticky. 
 
 ```json
 {
@@ -160,21 +160,21 @@ New-AzureRmRoleDefinition -Role $role
 }
 ```
 
-Přidejte roli k předplatným, spusťte následující příkaz prostředí PowerShell:
+Přidejte roli pro předplatná, spusťte následující příkaz Powershellu:
 
 ```azurepowershell
 New-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 ```
 
-## <a name="update-a-custom-role"></a>Aktualizovat vlastní role
+## <a name="update-a-custom-role"></a>Aktualizace vlastní role
 
-Podobně jako u vytváření vlastní roli, můžete upravit existující vlastní role pomocí `PSRoleDefinition` objekt nebo šablonu JSON.
+Podobné jako vytvoření vlastní roli, můžete upravit stávající vlastní role pomocí `PSRoleDefinition` objektu nebo šablony JSON.
 
 ### <a name="update-a-custom-role-with-the-psroledefinition-object"></a>Aktualizovat vlastní roli s objektem PSRoleDefinition
 
-Chcete-li upravit vlastní roli, nejprve použijte [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) příkaz načíst definici role. Za druhé proveďte požadované změny k definici role. Nakonec použijte [Set-AzureRmRoleDefinition](/powershell/module/azurerm.resources/set-azurermroledefinition) příkaz pro uložení definice upravené role.
+Pokud chcete upravit vlastní roli, nejprve pomocí [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) příkaz načíst definici role. Za druhé proveďte požadované změny do definice role. Nakonec použijte [Set-AzureRmRoleDefinition](/powershell/module/azurerm.resources/set-azurermroledefinition) příkazu uložte upravené role definition.
 
-Následující příklad přidá `Microsoft.Insights/diagnosticSettings/*` operace *virtuální počítač operátor* vlastní role.
+Následující příklad přidá `Microsoft.Insights/diagnosticSettings/*` operace *virtuálního počítače operátor* vlastní roli.
 
 ```azurepowershell
 $role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
@@ -198,7 +198,7 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/11111111-1111-1111-1111-111111111111}
 ```
 
-Následující příklad přidá do přiřaditelnými obory z předplatného Azure *virtuální počítač operátor* vlastní role.
+Následující příklad přidá do přiřaditelnými obory z předplatného Azure *virtuálního počítače operátor* vlastní roli.
 
 ```azurepowershell
 Get-AzureRmSubscription -SubscriptionName Production3
@@ -232,9 +232,9 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/22222222-2222-2222-2222-222222222222}
 ```
 
-### <a name="update-a-custom-role-with-a-json-template"></a>Aktualizovat vlastní role pomocí šablony JSON
+### <a name="update-a-custom-role-with-a-json-template"></a>Aktualizovat vlastní roli pomocí šablony JSON
 
-Pomocí předchozího šablony JSON, můžete snadno upravit existující vlastní roli přidat nebo odebrat akce. Aktualizovat šablonu JSON a přidejte čtení akce pro sítě, jak je znázorněno v následujícím příkladu. Definice uvedené v šabloně nepoužívají kumulativně existující definice, což znamená, že role zobrazí přesně tak, jak zadáte v šabloně. Také musíte aktualizovat pole Id s ID role. Pokud si nejste jisti, co je tato hodnota, můžete použít [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) rutiny získat tyto informace.
+Pomocí předchozího šablony JSON, můžete snadno upravit stávající vlastní role pro přidání nebo odebrání akce. Aktualizovat šablonu JSON a přidejte další akci pro sítě, jak je znázorněno v následujícím příkladu. Definice uvedené v šabloně se nepoužije kumulativně existující definice, což znamená, že role se zobrazí přesně tak, jak jste zadali v šabloně. Také musíte aktualizovat Id pole s ID role. Pokud si nejste jistí, co je tato hodnota, můžete použít [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) rutiny pro získání těchto informací.
 
 ```json
 {
@@ -257,17 +257,17 @@ Pomocí předchozího šablony JSON, můžete snadno upravit existující vlastn
 }
 ```
 
-Pokud chcete aktualizovat existující roli, spusťte následující příkaz prostředí PowerShell:
+Pokud chcete aktualizovat existující role, spusťte následující příkaz Powershellu:
 
 ```azurepowershell
 Set-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 ```
 
-## <a name="delete-a-custom-role"></a>Odstranit vlastní roli
+## <a name="delete-a-custom-role"></a>Odstranění vlastní role
 
-Chcete-li odstranit vlastní roli, použijte [Remove-AzureRmRoleDefinition](/powershell/module/azurerm.resources/remove-azurermroledefinition) příkaz.
+Pokud chcete odstranit vlastní roli, použijte [Remove-AzureRmRoleDefinition](/powershell/module/azurerm.resources/remove-azurermroledefinition) příkazu.
 
-Následující příklad odebere *virtuální počítač operátor* vlastní role.
+Následující příklad odebere *virtuálního počítače operátor* vlastní roli.
 
 ```azurepowershell
 Get-AzureRmRoleDefinition "Virtual Machine Operator"
@@ -296,6 +296,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>Další postup
 
-- [Kurz: Vytvoření vlastní role pomocí Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Kurz: Vytvoření vlastní role pomocí Azure Powershellu](tutorial-custom-role-powershell.md)
 - [Vlastní role v Azure](custom-roles.md)
-- [Operace zprostředkovatele prostředků v Azure Resource Manager](resource-provider-operations.md)
+- [Operace poskytovatele prostředků Azure Resource Manageru](resource-provider-operations.md)

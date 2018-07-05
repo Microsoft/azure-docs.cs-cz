@@ -1,47 +1,47 @@
 ---
-title: Zůstat přihlášeni v Azure Active Directory B2C | Microsoft Docs
-description: Téma, který ukazuje, jak nastavit "zajistit mi přihlášení".
+title: Zůstat přihlášeni v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Téma ukazuje, jak nastavit "zachovat zůstat přihlášeni".
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/05/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a32aaa5d91426199c29765d2d9645e8a4ddb03b4
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 6bad6e1f2b204f76b075652a9d3f27367a8de49f
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "34709151"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441313"
 ---
-# <a name="azure-active-directory-b2c-enable-keep-me-signed-in-kmsi"></a>Azure Active Directory B2C: Povolte 'zůstat přihlášeni (KMSI).  
+# <a name="azure-active-directory-b2c-enable-keep-me-signed-in-kmsi"></a>Azure Active Directory B2C: Povolte "neodhlašovat (políčko zůstat Přihlášeni).  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure AD B2C teď umožňuje web a nativních aplikací k povolení funkcí, zůstat přihlášeni (KMSI)'. Tato funkce uděluje přístup k vrácení uživatelé aplikaci bez zobrazení výzvy k znovu zadejte uživatelské jméno a heslo. Tento přístup odvolaný při odhlášení uživatele. 
+Azure AD B2C teď umožňuje vašich webových a nativních aplikací k povolení funkcí "Neodhlašovat (políčko zůstat Přihlášeni)". Tato funkce uděluje přístup k vrácení uživatelé aplikaci bez zobrazení výzvy znovu zadat uživatelské jméno a heslo. Když se uživatel odhlásí, je tento přístup odvolat. 
 
-Doporučujeme, abyste před uživatelé kontrola této možnosti na veřejné počítače. 
+Nedoporučujeme tuto možnost na veřejné počítače kontroly uživatelů. 
 
 ![obrázek](images/kmsi.PNG)
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Klient služby Azure AD B2C nakonfigurovat tak, aby místní účet registrace-množství nebo přihlášení, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
+Tenanta služby Azure AD B2C nakonfigurované tak, aby místní účty přihlášení-registrace/přihlášení, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
 
-## <a name="how-to-enable-kmsi"></a>Postup povolení KMSI
+## <a name="how-to-enable-kmsi"></a>Jak povolit políčko zůstat Přihlášeni
 
-Proveďte následující změny v vaše zásady důvěryhodnosti framework rozšíření.
+Proveďte následující změny v zásadách zabezpečení framework rozšíření.
 
-## <a name="adding-a-content-definition-element"></a>Přidání obsahu definice elementu 
+## <a name="adding-a-content-definition-element"></a>Přidání elementu definice obsahu 
 
-`BuildingBlocks` Musí zahrnovat uzlu souboru rozšíření `ContentDefinitions` elementu. 
+`BuildingBlocks` Uzlu souboru rozšíření musí obsahovat `ContentDefinitions` elementu. 
 
-1. V `ContentDefinitions` části, zadejte nový `ContentDefinition` s ID `api.signuporsigninwithkmsi`.
-2. Nové `ContentDefinition` musí obsahovat `LoadUri`, `RecoveryUri` a `DataUri` následujícím způsobem.
-3. Datauri`urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` je identifikátor nerozumí počítač, který zobrazí zaškrtávací políčko KMSI v přihlašovací stránky. Zkontrolujte prosím, že nemáte tuto hodnotu změnit. 
+1. V `ContentDefinitions` části, definovat novou `ContentDefinition` s ID `api.signuporsigninwithkmsi`.
+2. Vaše nová `ContentDefinition` musí obsahovat `LoadUri`, `RecoveryUri` a `DataUri` následujícím způsobem.
+3. Parametr`urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0` srozumitelné identifikátor počítače, který se zobrazí zaškrtávací políčko políčko zůstat Přihlášeni v přihlašovací stránky. Ujistěte se prosím, že nemusíte tuto hodnotu změnit. 
 
 ```XML
   <BuildingBlocks>
@@ -60,14 +60,14 @@ Proveďte následující změny v vaše zásady důvěryhodnosti framework rozš
 
 
 
-## <a name="add-a--local-account-sign-in-claims-provider"></a>Přidání poskytovatele deklarací identity přihlášení místní účet 
+## <a name="add-a--local-account-sign-in-claims-provider"></a>Přidat zprostředkovatele deklarací identity přihlášení místním účtem 
 
-Místní přihlášení účtu můžete definovat jako zprostředkovatele deklarací identity k `<ClaimsProvider>` uzlu v souboru rozšíření zásad:
+Můžete definovat přihlášení místním účtem jako zprostředkovatele deklarací identity, aby `<ClaimsProvider>` uzel v souboru rozšíření zásady:
 
 1. Otevřete soubor rozšíření (TrustFrameworkExtensions.xml) z pracovního adresáře. 
-2. Najít `<ClaimsProviders>` části. Pokud neexistuje, přidejte ji do kořenového uzlu.
-3. Startovní sady z [Začínáme](active-directory-b2c-get-started-custom.md) se dodává s poskytovatele deklarací identity, místní účet přihlášení". 
-4. Pokud ne, přidejte nový `<ClaimsProvider>` uzlu následujícím způsobem:
+2. Najít `<ClaimsProviders>` oddílu. Pokud neexistuje, přidejte ho do kořenového uzlu.
+3. Úvodní balíček z [Začínáme](active-directory-b2c-get-started-custom.md) součástí zprostředkovatele deklarací identity přihlášení místním účtem. 
+4. Pokud ne, přidejte novou `<ClaimsProvider>` uzel následujícím způsobem:
 
 ```XML
 <ClaimsProviders>
@@ -88,33 +88,33 @@ Místní přihlášení účtu můžete definovat jako zprostředkovatele deklar
  </ClaimsProviders>
 ```
 
-### <a name="add-the-application-ids-to-your-custom-policy"></a>Přidat ID aplikace do vlastních zásad
+### <a name="add-the-application-ids-to-your-custom-policy"></a>ID aplikace přidat do vlastní zásady
 
-Přidat ID aplikace souboru rozšíření (`TrustFrameworkExtensions.xml`):
+Přidejte do souboru rozšíření ID aplikace (`TrustFrameworkExtensions.xml`):
 
-1. V souboru rozšíření (TrustFrameworkExtensions.xml) nalezen element `<TechnicalProfile Id="login-NonInteractive">` a `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
+1. V souboru rozšíření (TrustFrameworkExtensions.xml) najděte prvek `<TechnicalProfile Id="login-NonInteractive">` a `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
 
-2. Nahraďte všechny výskyty `IdentityExperienceFrameworkAppId` s ID aplikace Framework prostředí Identity aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md). Zde naleznete příklad:
+2. Nahraďte všechny výskyty `IdentityExperienceFrameworkAppId` s ID aplikace, architekturu rozhraní identit aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md). Zde naleznete příklad:
 
    ```
    <Item Key="client_id">8322dedc-cbf4-43bc-8bb6-141d16f0f489</Item>
    ```
 
-3. Nahraďte všechny výskyty `ProxyIdentityExperienceFrameworkAppId` s ID aplikace Framework prostředí Identity Proxy aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
+3. Nahraďte všechny výskyty `ProxyIdentityExperienceFrameworkAppId` s ID aplikace, architekturu rozhraní identit Proxy aplikace, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
 
 4. Uložte soubor rozšíření.
 
-## <a name="create-a-kmsi-in-enabled-user-journey"></a>Vytvoření KMSI v cesty povoleného uživatele
+## <a name="create-a-kmsi-in-enabled-user-journey"></a>Vytvoření políčko zůstat Přihlášeni na cestě povoleného uživatele
 
-Teď je potřeba přidat poskytovatele deklarací identity místní účet přihlášení pro vaše uživatele cesty. 
+Teď musíte přidat poskytovatele deklarací identity přihlášení místním účtem vaší cesty uživatele. 
 
-1. Otevřete soubor základní zásad (například TrustFrameworkBase.xml).
-2. Najít `<UserJourneys>` elementu a zkopírujte celou `<UserJourney>` uzlu, který zahrnuje `Id="SignUpOrSignIn"`.
-3. Otevřete soubor rozšíření (například TrustFrameworkExtensions.xml) a najděte `<UserJourneys>` elementu. Pokud element neexistuje, přidejte jedno.
-4. Vložte celý `<UserJourney>` uzlu, který jste zkopírovali jako podřízenou `<UserJourneys>` elementu.
-5. Přejmenujte ID nové cesty uživatele (například přejmenování jako `SignUpOrSignInWithKmsi`).
-6. Nakonec v `OrchestrationStep 1` změnit `ContentDefinitionReferenceId` k `api.signuporsigninwithkmsi` , definována v dřívějších krocích. To umožňuje políčka v cesty uživatele. 
-7. Dokončení úpravy souboru rozšíření. Uložte a nahrajte tento soubor. Ujistěte se, že všechny ověření úspěšné.
+1. Otevřete soubor základní zásady (například TrustFrameworkBase.xml).
+2. Najít `<UserJourneys>` elementu a zkopírujte celý `<UserJourney>` uzel, který zahrnuje `Id="SignUpOrSignIn"`.
+3. Otevřete soubor rozšíření (například TrustFrameworkExtensions.xml) a vyhledejte `<UserJourneys>` elementu. Pokud element neexistuje, přidejte jeden.
+4. Vložit celé `<UserJourney>` uzel, který jste zkopírovali jako podřízený objekt `<UserJourneys>` elementu.
+5. Přejmenovat ID nové cesty uživatele (například přejmenovat jako `SignUpOrSignInWithKmsi`).
+6. Nakonec v `OrchestrationStep 1` změnit `ContentDefinitionReferenceId` k `api.signuporsigninwithkmsi` , definované v předchozích krocích. To umožňuje zaškrtávací políčko v cestě uživatele. 
+7. Dokončení úpravy souboru rozšíření. Uložte a odešlete tento soubor. Ujistěte se, že všechny ověření úspěšné.
 
 ```XML
 <UserJourneys>
@@ -152,23 +152,23 @@ Teď je potřeba přidat poskytovatele deklarací identity místní účet přih
   </UserJourneys>
 ```
 
-## <a name="create-a-relying-party-rp-file"></a>Vytvořte soubor předávající stranu
+## <a name="create-a-relying-party-rp-file"></a>Vytvořit soubor předávající stranu
 
-Potom aktualizujte soubor předávající stranu, který iniciuje cesty uživatele, který jste vytvořili:
+V dalším kroku aktualizujte předávající stranu soubor, který iniciuje cesty uživatele, který jste vytvořili:
 
-1. Vytvořte kopii SignUpOrSignIn.xml v pracovní adresář. Potom přejmenujte ji (například SignUpOrSignInWithKmsi.xml).
+1. Vytvořte kopii SignUpOrSignIn.xml ve svém pracovním adresáři. Přejmenujte (například SignUpOrSignInWithKmsi.xml).
 
-2. Otevřete nový soubor a aktualizace `PolicyId` atribut pro `<TrustFrameworkPolicy>` s jedinečnou hodnotu. Toto je název vaší zásady (například SignUpOrSignInWithKmsi).
+2. Otevřete nový soubor a aktualizace `PolicyId` atributu `<TrustFrameworkPolicy>` s jedinečnou hodnotu. Toto je název zásady (například SignUpOrSignInWithKmsi).
 
-3. Změnit `ReferenceId` atribut `<DefaultUserJourney>` tak, aby odpovídala `Id` nové cesty uživatele, který jste vytvořili (například SignUpOrSignInWithKmsi).
+3. Upravit `ReferenceId` atribut `<DefaultUserJourney>` tak, aby odpovídaly `Id` nové cesty uživatele, který jste vytvořili (například SignUpOrSignInWithKmsi).
 
-4. KMSI je nakonfigurovaný v `UserJourneyBehaviors`. 
+4. Políčko zůstat Přihlášeni je nakonfigurovaný v `UserJourneyBehaviors`. 
 
-5. **`KeepAliveInDays`** Určuje, jak dlouho zůstane přihlášeného uživatele. V následujícím příkladu KMSI relace automaticky vyprší 14 dnů bez ohledu na to, jak často uživatel provede bezobslužnou ověřování.
+5. **`KeepAliveInDays`** Určuje, jak dlouho zůstane přihlášený uživatel. V následujícím příkladu políčko zůstat Přihlášeni relace automaticky vyprší 14 dnů bez ohledu na to, kolikrát uživatel provádí bezobslužné ověření.
 
-   Nastavení `KeepAliveInDays` hodnota 0 vypne KMSI funkce. Ve výchozím nastavení tato hodnota je 0
+   Nastavení `KeepAliveInDays` hodnota 0 vypne funkce políčko zůstat Přihlášeni. Ve výchozím nastavení tato hodnota je 0
 
-6. Pokud **`SessionExpiryType`** je *kolejová*, pak KMSI relace je rozšířeno 14 dnů pokaždé, když uživatel provede bezobslužnou ověřování.  Pokud *kolejová* je vybraný, doporučujeme zachovat s minimální počet dnů. 
+6. Pokud **`SessionExpiryType`** je *Hromadná*, pak políčko zůstat Přihlášeni relace je rozšířená 14 dny pokaždé, když uživatel provádí bezobslužné ověření.  Pokud *Hromadná* je vybraný, doporučujeme udržovat počet dní, minimální. 
 
        <RelyingParty>
        <DefaultUserJourney ReferenceId="SignUpOrSignInWithKmsi" />
@@ -191,14 +191,14 @@ Potom aktualizujte soubor předávající stranu, který iniciuje cesty uživate
        </TechnicalProfile>
        </RelyingParty>
 
-7. Uložte změny a potom soubor odešlete.
+7. Uložte změny a pak nahrajte soubor.
 
-8. Pokud chcete otestovat vlastní zásady, který jste nahráli, na portálu Azure, přejděte do okna zásady a pak klikněte na tlačítko **spustit nyní**.
+8. Vlastní zásady, které jste nahráli, otestovat na webu Azure Portal, přejděte na okno zásad a pak klikněte na tlačítko **spustit nyní**.
 
 
-## <a name="link-to-sample-policy"></a>Propojit ukázka zásad
+## <a name="link-to-sample-policy"></a>Odkaz na ukázkové zásady
 
-Můžete najít ukázkové zásady [zde](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in).
+Můžete najít ukázkové zásady [tady](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/keep%20me%20signed%20in).
 
 
 

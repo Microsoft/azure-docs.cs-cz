@@ -1,6 +1,6 @@
 ---
-title: Jazyky podporované obsahu moderátorem Azure | Microsoft Docs
-description: Tady je seznam jazyků podporovaných moderátorem obsahu.
+title: Jazyky podporované službou Azure Content Moderator | Dokumentace Microsoftu
+description: Tady je seznam jazyků podporovaných Content Moderatoru.
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,22 +9,22 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: sajagtap
-ms.openlocfilehash: 0fb9f92e736e598662f66ae3d283ba02f715e3af
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 973e4efcbe9d0627ca261def2449a237819559ad
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35342810"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441144"
 ---
-# <a name="text-moderation---supported-languages-by-feature"></a>Text přerušování – podporované jazyky funkcí
+# <a name="text-moderation---supported-languages-by-feature"></a>Moderování textu – jazyky podporované funkce
 
 > [!NOTE]
-> Pro **jazyk** parametr přiřadit `eng` nebo hodnotu nevyplňujte najdete v části asistované počítač **klasifikace** odpovědi (funkce ve verzi preview). **Tato funkce podporuje pouze Angličtina**.
+> Pro **jazyk** parametr, přiřaďte `eng` nebo toto podokno nechat prázdné najdete v článku s počítače **klasifikace** odpovědí (funkce preview). **Tato funkce podporuje pouze angličtinu**.
 >
-> Pro **vulgárnost podmínky** detekce, použijte [kód ISO 639 3](http://www-01.sil.org/iso639-3/codes.asp) z podporovaných jazyků uvedených v tomto článku, nebo hodnotu nevyplňujte.
+> Pro **vulgárních výrazů podmínek** detekce, použijte [kód ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) podporovaných jazyků uvedených v tomto článku, nebo nechte prázdné.
 
 
-| Detekce jazyka | Vulgárnost   | OCR    | Automatické opravy     |
+| Detekce jazyka | Vulgárních výrazů   | OCR    | Automatické opravy     |
 | -------------------- |-------------|--------|---------------------|
 | Arabština (Romanized)   | Afrikánština   | arabština   | arabština
 | Balijština – | Albánština | Čínština (zjednodušená)    | dánština
@@ -32,71 +32,71 @@ ms.locfileid: "35342810"
 | Bugiština – | arabština | Čeština                     | Angličtina
 | Buhid | Arménština | dánština                     | Finština
 | Carian | Ásámština | Holandština                     | Francouzština
-| Čínština (zjednodušená) | ázerbájdžánština | Angličtina  | Řečtina (moderních)
-| Čínština (tradiční) | Bengálském - Bangladéš | Finština  | italština
-| Kirke (Slovanské jazyky) | Bengálském - Indie | Francouzština     | Korejština
+| Čínština (zjednodušená) | ázerbájdžánština | Angličtina  | Řečtina (moderní)
+| Čínština (tradiční) | Bengálština – Bangladéš | Finština  | italština
+| Kirke (Slovanské jazyky) | Bengálština – Indie | Francouzština     | Korejština
 | Koptština | Baskičtina | Němčina                      | norština
-| Dhivehi | Běloruština | Řečtina (moderních)         | polština
-| fársíjština | Bosenské - cyrilice | Maďarština        | Portugalština
-| Řečtina | Bosenské - latinka | italština             | Rumunština
-| Vedoucí (Creole) | Bretonština [jiný GeoPol] | Japonština  | ruština
-| Hebrejština | Bulharština | Korejština                        | Slovenština
-| Hmong | Katalánština | norština                        | Španělština
-| Kurdská (Arabské) | Centrální Kurdská | polština        | turečtina
-| Kurdská (Latina) | Čerokí | Portugalština
-| Lepčské písmo | Čínština (zjednodušená) | Rumunština
-| Limbu | Čínština (tradiční) - Hongkong – zvláštní správní oblast | ruština
-| Logická jednotka | Čínština (tradiční) – Tchaj-wan | Srbská cyrilici
-| Lycian | Chorvatština | Srbština (latinka)
-| Lydian | Čeština | Slovenština
-| Mycenaean (řečtina) | dánština | Španělština
-| Nko | Dáríština | švédština
-| norština (bokmal) | Holandština | turečtina
-| Norština (Nynorsk) | Angličtina 
-| Starý (perština) | Estonština 
-| Paštština | Filipínština
-| Paňdžábština | Finština
-| Rejang | Francouzština
-| Santali | Galicijština
-| Sasak | Gruzínština
-| Saurashtra | Němčina
-| Srbština (cyrilice) | Řečtina
-| Srbština (latinka) | Gudžarátština
-| Sinhálština | Hauština
-| Slovinština | Hebrejština
-| Sylheti | Hindština
-| Syrština | Maďarština
-| Tagbanwa | Islandština
-| Tai (Nua) | Igbo
-| Tamashek | Indonéština
-| Ugaritic | Inuktitutština
-| Uzbečtina (cyrilice) | Irština
-| Uzbečtina (latinka) | Xhoština
-| Vai | Zuluština
-| Yi | italština
-| Zhuang Chuang | Japonština
-| | Kannadština
-| | Kazaština
-| | Khmerština
-| | Kičejština
-| | Kinyarwandština
-| | Svahilština
-| | Konkánština
-| | Korejština
-| | Kyrgyzština
-| | Laoština
-| | Lotyština
-| | Litevština
-| | Lucemburština
-| | Makedonština
-| | Malajština
-| | Malajálamština
+| Čeština |  Běloruština | Řečtina (moderní)         | polština
+| Dhivehi | Bosenština – cyrilice | Maďarština      | Portugalština
+| Holandština | Bosenština - Latin | italština             | Rumunština
+| Angličtina | (Kreolština) | Bretonština [bez GeoPol] | Japonština  | ruština
+| fársíjština | Bulharština | Korejština                        | Slovenština
+| Francouzština | Katalánština | norština                        | Španělština
+| Němčina | Centrální Kurdština | polština        | turečtina
+| Řečtina | Čerokézština | Portugalština
+| Haitský | Čínština (zjednodušená) | Rumunština
+| Hebrejština | Čínština (tradiční) – zvláštní administrativní oblast Hongkong | ruština
+| Hindština | Čínština (tradiční) – Tchaj-wan | Srbština cyrilice
+| Hmong | Chorvatština | Srbština Latin
+| Maďarština | Čeština | Slovenština
+| italština | dánština | Španělština
+| Japonština | Dáríština | švédština
+| Korejština | Holandština | turečtina
+| Kurdština (Arabské písmo) | Angličtina
+| Kurdština (latinka) | Estonština
+| Lepčské písmo | Filipínština
+| Limbu | Finština
+| Logická jednotka | Francouzština
+| Lycian | Galicijština
+| Lydian | Gruzínština
+| Mycenaean (řečtina) | Němčina
+| Nko | Řečtina
+| norština (bokmal) | Gudžarátština
+| Norština (Nynorsk) |  Hauština
+| Staré (perština) | Hebrejština
+| Paštština | Hindština
+| polština | Maďarština
+| Portugalské | Islandština
+| Paňdžábština | Igbo
+| Rejang | Indonéština
+| ruština | Inuktitutština
+| Santali | Irština
+| Sasak | Xhoština
+| Saurashtra | Zuluština
+| Srbština (cyrilice) | italština
+| Srbština (latinka) | Japonština
+| Sinhálština | Kannadština
+| Slovinština | Kazaština
+| Španělština | Khmerština
+| švédština | Kičejština
+| Sylheti | Kinyarwandština
+| Syrština | Svahilština
+| Tagbanwa | Konkánština
+| Tai (Nua) | Korejština
+| Tamashek | Kyrgyzština
+| turečtina | Laoština
+| Ugaritic | Lotyština
+| Uzbečtina (cyrilice) | Litevština
+| Uzbečtina (latinka) | Lucemburština
+| Vai | Makedonština
+| Yi | Malajština
+| Čuangština | Malajálamština
 | | Maltština
 | | Maorština
 | | Maráthština
 | | Mongolština
 | | Nepálština
-| | Norština (Bokmål)
+| | Norština (Bokmal)
 | | Norština (Nynorsk)
 | | Udijština
 | | Paštština
@@ -112,7 +112,7 @@ ms.locfileid: "35342810"
 | | ruština
 | | Skotská gaelština
 | | Srbština (cyrilice)
-| | Srbština (cyrilice, Bosny a Hercegoviny)
+| | Srbština (cyrilice, Bosna a Hercegovina)
 | | Srbština (latinka)
 | | Severní
 | | Severní sótština
@@ -135,7 +135,7 @@ ms.locfileid: "35342810"
 | | Urdština
 | | Ujghurština
 | | Uzbečtina
-| | Valencian
+| | Valencijština
 | | Vietnamština
 | | Velština
 | | Volofština

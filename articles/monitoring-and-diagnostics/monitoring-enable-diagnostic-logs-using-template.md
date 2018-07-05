@@ -1,6 +1,6 @@
 ---
-title: Automaticky povolte nastavení pro diagnostiku pomocí šablony Resource Manageru
-description: Další informace o použití šablony Resource Manageru k vytvoření nastavení diagnostiky, které vám umožní datového proudu k diagnostickým protokolům do centra událostí nebo uchováváte v účtu úložiště.
+title: Automaticky povolení diagnostických nastavení pomocí šablony Resource Manageru
+description: Zjistěte, jak pomocí šablony Resource Manageru k vytvoření nastavení diagnostiky, které vám umožní streamování diagnostických protokolů do služby Event Hubs a uložit je do účtu úložiště.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,34 +8,34 @@ ms.topic: conceptual
 ms.date: 3/26/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 6c202afaca893609d41384ee8302b0c4c6c4a6f6
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: a69cefc3c9363c0e8378a90c44d6a466780402b1
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263384"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37434483"
 ---
-# <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automaticky povolte nastavení pro diagnostiku při vytváření prostředků pomocí šablony Resource Manageru
-V tomto článku jsme ukazují, jak můžete použít [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci nastavení pro diagnostiku na prostředku při jeho vytvoření. To umožňuje automatické spuštění streamování diagnostické protokoly a metriky do centra událostí, archivaci je v účtu úložiště nebo jejich odeslání k analýze protokolů při vytváření prostředku.
+# <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automaticky povolení diagnostických nastavení při vytváření prostředků pomocí šablony Resource Manageru
+V tomto článku vám ukážeme, jak můžete použít [šablony Azure Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md) ke konfiguraci nastavení diagnostiky pro prostředek při jeho vytvoření. To umožňuje automaticky spustit streamování diagnostických protokolů a metrik do služby Event Hubs, archivovat v účtu úložiště nebo odeslání do Log Analytics, když se vytvoří prostředek.
 
 Metoda pro povolení diagnostických protokolů pomocí šablony Resource Manageru závisí na typu prostředku.
 
-* **Bez výpočetní** prostředků (například skupiny zabezpečení sítě, Logic Apps automatizace), použijte [diagnostické nastavení popsané v tomto článku](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
-* **Výpočetní** prostředků (WAD/LAD na základě), použijte [WAD/LAD konfigurační soubor popsané v tomto článku](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
+* **Non-Compute** používají prostředky (například skupiny zabezpečení sítě, Logic Apps, automatizace) [nastavení diagnostiky, které jsou popsané v tomto článku](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings).
+* **COMPUTE** používají prostředky (WAD/LAD min.) [WAD/LAD konfigurační soubor je popsáno v tomto článku](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md).
 
-V tomto článku jsme popisují, jak nakonfigurovat diagnostiku pomocí těchto metod.
+V tomto článku zjistíte, jak nakonfigurovat diagnostiku pomocí některé z metod.
 
 Základní kroky jsou následující:
 
-1. Vytvořte šablonu jako soubor JSON, který popisuje, jak vytvořit prostředek a zapněte diagnostiku.
-2. [Šablonu nasadit pomocí libovolné metody nasazení](../azure-resource-manager/resource-group-template-deploy.md).
+1. Vytvoření šablony jako soubor JSON, který popisuje, jak vytvořit prostředek a povolit diagnostiku.
+2. [Nasazení šablony pomocí libovolné metody nasazení](../azure-resource-manager/resource-group-template-deploy.md).
 
-Níže nás dostanete příklad soubor JSON šablony, které potřebujete k vygenerování pro jiný výpočetní prostředí a výpočetní prostředky.
+Dále poskytujeme příklad souboru JSON šablony, které je potřeba vygenerovat pro rozsáhlých výpočetních prostředků a výpočetní prostředky.
 
-## <a name="non-compute-resource-template"></a>Bez výpočetních prostředků šablony
-Pro jiné výpočetní prostředky budete muset udělat dvě věci:
+## <a name="non-compute-resource-template"></a>Non-výpočetního prostředku šablony
+Pro prostředky rozsáhlých výpočetních prostředků budete muset udělat dvě věci:
 
-1. Přidání parametrů do objektu blob parametry pro název účtu úložiště, ID události rozbočovače autorizační pravidlo nebo ID pracovního prostoru analýzy protokolů (povolení archivace diagnostických protokolů v účtu úložiště, datové proudy protokoluje události do centra událostí a odesílání protokolů k analýze protokolů).
+1. Přidání parametrů do objektu blob parametry pro název účtu úložiště, ID pravidla autorizace centra událostí nebo ID pracovního prostoru Log Analytics (povolení archivace diagnostických protokolů v účtu úložiště, streamování protokolů do služby Event Hubs nebo odesílání protokolů do Log Analytics).
    
     ```json
     "settingName": {
@@ -69,13 +69,13 @@ Pro jiné výpočetní prostředky budete muset udělat dvě věci:
       }
     }
     ```
-2. V poli prostředky prostředků, pro který chcete povolit diagnostických protokolů přidat prostředek typu `[resource namespace]/providers/diagnosticSettings`.
+2. V poli prostředky prostředku, pro kterou chcete povolit diagnostické protokoly přidání prostředku typu `[resource namespace]/providers/diagnosticSettings`.
    
     ```json
     "resources": [
       {
         "type": "providers/diagnosticSettings",
-        "name": "Microsoft.Insights/[parameters('settingName')]",
+        "name": "[concat('Microsoft.Insights/', parameters('settingName'))]",
         "dependsOn": [
           "[/*resource Id for which Diagnostic Logs will be enabled>*/]"
         ],
@@ -111,9 +111,9 @@ Pro jiné výpočetní prostředky budete muset udělat dvě věci:
     ]
     ```
 
-Odpovídá vlastnosti objektu blob pro nastavení diagnostiky [formát popsaný v tomto článku](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Přidávání `metrics` vlastnost vám umožní také odeslat metrika prostředků tyto stejné výstupů za předpokladu, že [prostředek podporuje Azure monitorování metriky](monitoring-supported-metrics.md).
+Vlastnosti objektu blob pro nastavení diagnostiky následuje [formátu popsaném v tomto článku](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate). Přidávání `metrics` vlastnost vám umožní také odeslat metriky prostředků tyto stejné výstupy, za předpokladu, že [prostředek podporuje metrik Azure monitoru](monitoring-supported-metrics.md).
 
-Zde je úplný příklad, který vytvoří aplikace logiky a zapne streamování centrům událostí a úložiště v účtu úložiště.
+Tady je úplný příklad, který vytváří aplikaci logiky a zapne streamování do Event Hubs a úložiště v účtu úložiště.
 
 ```json
 
@@ -205,7 +205,7 @@ Zde je úplný příklad, který vytvoří aplikace logiky a zapne streamování
       "resources": [
         {
           "type": "providers/diagnosticSettings",
-          "name": "Microsoft.Insights/[parameters('settingName')]",
+          "name": "[concat('Microsoft.Insights/', parameters('settingName'))]",
           "dependsOn": [
             "[resourceId('Microsoft.Logic/workflows', parameters('logicAppName'))]"
           ],
@@ -246,21 +246,21 @@ Zde je úplný příklad, který vytvoří aplikace logiky a zapne streamování
 
 ```
 
-## <a name="compute-resource-template"></a>Výpočetní šablony prostředků
-Povolí se Diagnostika na výpočetních prostředků, například cluster virtuálního počítače nebo Service Fabric, budete muset:
+## <a name="compute-resource-template"></a>Výpočetních prostředků šablony
+Povolit diagnostiku na výpočetní prostředek, třeba clusteru virtuálního počítače nebo Service Fabric, budete muset:
 
-1. Přidejte rozšíření Azure Diagnostics do definice prostředků virtuálního počítače.
-2. Zadejte úložiště účet nebo události rozbočovače jako parametr.
-3. Přidejte obsah souboru WADCfg XML do vlastnost XMLCfg správně uvozovací znaky všechny znaky XML.
+1. Přidání rozšíření Azure Diagnostics do definice prostředků virtuálního počítače.
+2. Jako parametr uvést úložiště účtu a/nebo event hub.
+3. Přidáte obsah souboru WADCfg XML do vlastnost XMLCfg správně uvození všechny znaky XML.
 
 > [!WARNING]
-> Tento poslední krok může být složité získat správné. [Najdete v článku](../virtual-machines/extensions/diagnostics-template.md#diagnostics-configuration-variables) příklad, která rozdělí schématu konfigurace diagnostiky do proměnné, které jsou uvozené a správně naformátovaná.
+> Tento poslední krok může být velmi obtížné zjistit správný. [Najdete v článku](../virtual-machines/extensions/diagnostics-template.md#diagnostics-configuration-variables) příklad, který rozdělí schéma konfigurace diagnostiky do proměnné, které jsou uvozeny řídicími znaky a správně naformátované.
 > 
 > 
 
-Celý proces, včetně ukázky, je popsaný [v tomto dokumentu](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Celý proces, včetně ukázek, je popsaná [v tomto dokumentu](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ## <a name="next-steps"></a>Další kroky
-* [Další informace o diagnostických protokolů Azure.](monitoring-overview-of-diagnostic-logs.md)
-* [Stream Azure diagnostických protokolů do centra událostí](monitoring-stream-diagnostic-logs-to-event-hubs.md)
+* [Další informace o diagnostické protokoly Azure](monitoring-overview-of-diagnostic-logs.md)
+* [Stream diagnostické protokoly Azure do služby Event Hubs](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 

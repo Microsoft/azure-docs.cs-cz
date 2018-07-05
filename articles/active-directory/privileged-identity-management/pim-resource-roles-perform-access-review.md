@@ -1,6 +1,6 @@
 ---
-title: Proveďte kontrola přístupu k prostředkům Azure v Privileged Identity Management | Microsoft Docs
-description: Tento dokument popisuje, jak provádět kontrola přístupu v PIM pro prostředky Azure, podle role prostředků.
+title: Provádění kontroly přístupu v Privileged Identity Management pro prostředky Azure | Dokumentace Microsoftu
+description: Tento dokument popisuje, jak k provádění kontroly přístupu v PIM pro prostředky Azure, podle role prostředků.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,43 +10,43 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: protection
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 10da40cf83dd39251033403a6a6913eb2e3b8b1d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fc4499e56d3508086365a353d5fa3f2bb42082b7
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260847"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37447298"
 ---
-# <a name="perform-an-access-review-in-pim-according-to-resource-role"></a>Provést kontrola přístupu v PIM, podle role prostředků
-Privileged Identity Management (PIM) k prostředkům Azure zjednodušuje, jak spravovat podniky privilegovaného přístupu k prostředkům v Azure. 
+# <a name="perform-an-access-review-in-pim-according-to-resource-role"></a>Provádění kontroly přístupu v PIM, podle role prostředků
+Privileged Identity Management (PIM) pro prostředky Azure zjednodušuje, jak podniky správy privilegovaného přístupu k prostředkům v Azure. 
 
-Pokud jste přiřazeni k roli správce privilegovaných rolí správce ve vaší organizaci může požádáni, abyste pravidelně potvrďte, že je stále nutné této role pro úlohu. Může získat e-mailu, který obsahuje odkaz, nebo můžete přejít přímo na [portál Azure](https://portal.azure.com). Postupujte podle kroků v tomto článku provést samoobslužné zkontrolujte přiřazené role.
+Pokud máte přiřazenou roli správce privilegovaných rolí správce ve vaší organizaci může vás vyzve k pravidelně potvrzení pro vaše úloha stále potřebovat danou roli. Může se zobrazit e-mailu, který obsahuje odkaz, nebo můžete přejít přímo na [webu Azure portal](https://portal.azure.com). Postupujte podle kroků v tomto článku provádět svým přezkoumat přiřazených rolí.
 
-Pokud jste správcem privilegovaných rolí zájem o recenze přístup, získat další podrobnosti o [spuštění kontrola přístupu](pim-resource-roles-start-access-review.md).
+Pokud jste správce privilegovaných rolí, odkud chtějí kontroly přístupu, získáte další podrobnosti najdete v [zahájení kontroly přístupu](pim-resource-roles-start-access-review.md).
 
 ## <a name="add-the-privileged-identity-management-application"></a>Přidání aplikace Privileged Identity Management
-Můžete použít aplikaci Azure Active Directory (Azure AD) PIM v [portál Azure](https://portal.azure.com/) k provedení zkontrolovali. Pokud nemáte aplikaci na portálu, postupujte podle těchto kroků, abyste mohli začít.
+Můžete použít aplikaci Azure Active Directory (Azure AD) PIM [webu Azure portal](https://portal.azure.com/) provádět revizi. Pokud nemáte aplikaci na portálu, postupujte podle těchto kroků, abyste mohli začít.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. Vyberte uživatele, název v pravém horním rohu portálu Azure a vyberte adresář, kde vám budou pracovat.
-3. Vyberte **všechny služby**a použít **filtru** pro vyhledání *Azure AD Privileged Identity Management*.
-4. Zkontrolujte **připnout na řídicí panel**a potom vyberte **vytvořit**. Otevře se aplikace PIM.
+2. Vyberte vaše uživatelské jméno v pravém horním rohu webu Azure portal a vyberte adresář, kde se dozvíte, jak můžete pracovat.
+3. Vyberte **všechny služby**a použít **filtr** pole pro hledání *Azure AD Privileged Identity Management*.
+4. Zkontrolujte **připnout na řídicí panel**a pak vyberte **vytvořit**. Otevře se aplikace PIM.
 
-## <a name="approve-or-deny-access"></a>Schválí nebo zamítne přístup
-Při schválit nebo zamítnout přístup, můžete se právě informuje kontrolorovi zda můžete dál používat tuto roli nebo ne. Zvolte **schválit** Pokud chcete, aby zůstali v roli, nebo **Odepřít** Pokud nepotřebujete přístup. Vaše změny stavu jenom v případě, že kontrolorovi platí výsledky.
+## <a name="approve-or-deny-access"></a>Schvalte nebo zamítněte přístup
+Pokud, schvalte nebo zamítněte přístup, je právě tím rozdílem, revidující, zda stále použít tuto roli nebo ne. Zvolte **schválit** Pokud budete chtít zůstat v roli, nebo **Odepřít** Pokud už nepotřebujete přístup. Změny stavu jenom v případě, že revidující se vztahuje výsledky.
 
-Postupujte podle těchto kroků můžete najít a dokončit kontrolu přístupu:
+Postupujte podle těchto kroků můžete najít a dokončení kontroly přístupu:
 1. Přejděte do aplikace Azure AD PIM.
-2. Vyberte **kontrolujte přístup** okno.
+2. Vyberte **kontrolovat přístup** okno.
 
-   ![Snímek obrazovky PIM aplikace s okno přístup zkontrolujte vybrané](media/azure-pim-resource-rbac/rbac-access-review-complete.png)
+   ![PIM – snímek obrazovky aplikace s vybrané okna kontroly přístupu](media/azure-pim-resource-rbac/rbac-access-review-complete.png)
 
-3. Vyberte kontrolní, kterou chcete provést. 
-4. Vyberte buď **schválit** nebo **Odepřít**. V **s polem, důvod**, možná bude potřeba přidat důvod pro vaše rozhodnutí.
+3. Vyberte revizi, kterou chcete provést. 
+4. Zvolte buď **schválit** nebo **Odepřít**. V **poskytují pole důvod**, možná budete muset zahrnout důvod svého rozhodnutí.
 
-   ![Snímek obrazovky kontrolní stránce s podrobnostmi o](media/azure-pim-resource-rbac/rbac-access-review-choice.png)
+   ![Přezkoumání snímku obrazovky podrobností stránky](media/azure-pim-resource-rbac/rbac-access-review-choice.png)

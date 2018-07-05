@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 65aad3244ce49e77bdd2e207bf14cf2e7ef459b9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 4f91cfcce3643d96f241cb5408efc2455367c336
+ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195358"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37435689"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>Můj první runbook pracovního postupu PowerShellu
 
@@ -27,32 +27,32 @@ ms.locfileid: "34195358"
 > 
 > 
 
-V tomto kurzu se seznámíte s vytvořením [runbooku pracovního postupu PowerShellu](automation-runbook-types.md#powershell-workflow-runbooks) ve službě Azure Automation. Spuštění s jednoduchým runbookem, který testování a publikování při vysvětlením, jak sledovat stav úlohy sady runbook. Potom runbook upravíte, aby skutečně spravoval prostředky Azure, v tomto případě virtuální počítač Azure. Nakonec můžete nastavit sadu runbook robustnější přidáním parametrů.
+V tomto kurzu se seznámíte s vytvořením [runbooku pracovního postupu PowerShellu](automation-runbook-types.md#powershell-workflow-runbooks) ve službě Azure Automation. Začnete s jednoduchým runbookem, který jste otestujeme a publikujeme a současně vám vysvětlíme, jak sledovat stav úlohy runbooku. Potom runbook upravíte, aby skutečně spravoval prostředky Azure, v tomto případě virtuální počítač Azure. Nakonec provedete runbook robustnější přidáním parametrů runbooku.
 
 ## <a name="prerequisites"></a>Požadavky
 Pro absolvování tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud ještě žádné nemáte, můžete si [aktivovat výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Účet Automation](automation-offering-get-started.md), abyste si mohli runbook podržet a mohli ověřovat prostředky Azure.  Tento účet musí mít oprávnění ke spuštění a zastavení virtuálního počítače.
-* Virtuální počítač Azure. Zastavení a spuštění tohoto počítače, proto to nesmí být produkční počítač.
+* Virtuální počítač Azure. zastavení a spuštění tohoto počítače, proto to nesmí být produkční virtuální počítač.
 
 ## <a name="step-1---create-new-runbook"></a>Krok 1 – vytvoření nového runbooku
-Začněte vytvořením jednoduchého runbooku, který zobrazí text *Hello, World*.
+Začněte vytvořením jednoduchého runbooku, který zobrazí text *Hello World*.
 
 1. Na webu Azure Portal otevřete účet Automation.
 
    Stránka účtu Automation nabízí rychlý přehled prostředků v tomto účtu. Už byste tam měli mít nějaké prostředky. Většina z nich jsou moduly, které jsou automaticky obsažené v novém účtu Automation. Také potřebujete asset přihlašovacích údajů, který je uvedený v [požadavcích](#prerequisites).
 
-1. Klikněte na tlačítko **Runbooky** pod **automatizace procesu** otevřete seznam runbooků.
-2. Kliknutím na vytvořit novou sadu runbook **+ přidat runbook** tlačítko a potom **vytvořit nový runbook**.
+1. Klikněte na tlačítko **sady Runbook** pod **automatizace procesů** otevřete seznam runbooků.
+2. Po kliknutí na vytvořit nový runbook **+ přidat runbook** tlačítko a pak **vytvořit nový runbook**.
 3. Dejte runbooku název *MyFirstRunbook-Workflow*.
-4. V takovém případě se chystáte vytvořit [runbook pracovního postupu Powershellu](automation-runbook-types.md#powershell-workflow-runbooks) tak vyberte **pracovního postupu Powershellu** pro **typ Runbooku**.
+4. V takovém případě se chystáte vytvořit [runbook Powershellového Workflow](automation-runbook-types.md#powershell-workflow-runbooks) proto vyberte **pracovního postupu Powershellu** pro **typ Runbooku**.
 5. Kliknutím na **Vytvořit** vytvoříte runbook a otevřete textový editor.
 
 ## <a name="step-2---add-code-to-the-runbook"></a>Krok 2 – přidání kódu do runbooku
-Kód můžete buď zadat přímo do runbooku, nebo můžete vybrat rutiny, runbooky a assety z ovládacího prvku Knihovna a přidat je do runbooku spolu se všemi souvisejícími parametry. Pro účely tohoto postupu můžete zadat přímo do runbooku.
+Kód můžete buď zadat přímo do runbooku, nebo můžete vybrat rutiny, runbooky a assety z ovládacího prvku Knihovna a přidat je do runbooku spolu se všemi souvisejícími parametry. V tomto návodu budete psát přímo do runbooku.
 
-1. Vaše sada runbook je teď prázdný a obsahuje jenom požadované *pracovního postupu* – klíčové slovo, název runbooku a složené závorky, který encases celého pracovního postupu.
+1. Vaše sada runbook je aktuálně prázdný jenom požadované *pracovního postupu* – klíčové slovo, název runbooku a složené závorky, který encases celého pracovního postupu.
 
    ```powershell-interactive
    Workflow MyFirstRunbook-Workflow
@@ -76,33 +76,33 @@ Před publikováním runbooku, které ho zpřístupní v produkčním prostřed�
 2. Kliknutím na **Spustit** spustíte test. Měla by to být jediná povolená možnost.
 3. Vytvoří se [úloha runbooku](automation-runbook-execution.md) a její stav se zobrazí.
 
-   Počáteční stav úlohy bude *Zařazeno ve frontě*. To označuje, že čekáte na zpřístupnění pracovního procesu runbooku v cloudu. Přesune na *počáteční* když pracovní proces úlohu a potom *systémem* při runbook skutečně spustí.  
+   Počáteční stav úlohy bude *Zařazeno ve frontě*. To označuje, že čekáte na zpřístupnění pracovního procesu runbooku v cloudu. Přejde do *počáteční* když pracovní proces úlohu a potom *systémem* když sada runbook skutečně spustí, změní.  
 
-1. Po dokončení úlohy runbooku se zobrazí jeho výstup. V případě, byste měli vidět *Hello, World*.<br><br> ![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
+1. Po dokončení úlohy runbooku se zobrazí jeho výstup. V případě, byste měli vidět *Hello World*.<br><br> ![Hello World](media/automation-first-runbook-textual/test-output-hello-world.png)
 2. Zavřete testovací podokno a vraťte se na plátno.
 
 ## <a name="step-4---publish-and-start-the-runbook"></a>Krok 4 – publikování a spuštění runbooku
-Vytvořený runbook je stále v režimu konceptu. Je potřeba publikovat před jeho spuštěním v produkčním prostředí. Když runbook publikujete, přepíšete vydanou verzi verzí v režimu konceptu. Ve vašem případě publikovanou verzi ještě nemáte vzhledem k tomu, že jste právě vytvořili sadu runbook.
+Vytvořený runbook je stále v režimu konceptu. Je potřeba publikovat před spuštěním v produkčním prostředí. Když runbook publikujete, přepíšete vydanou verzi verzí v režimu konceptu. V případě publikovanou verzi ještě nemáte protože jste runbook teprve vytvořili.
 
 1. Kliknutím na **Publikovat** runbook publikujte a po zobrazení výzvy klikněte na **Ano**.
-2. Pokud jste posunete doleva, abyste runbook viděli v **Runbooky** podokně nyní zobrazuje **stav vytváření** z **publikováno**.
+2. Pokud se posunete doleva, abyste runbook viděli v **sady Runbook** podokně nyní zobrazuje **stav vytváření** z **publikováno**.
 3. Posuňte se zpět doprava, abyste viděli podokno **MyFirstRunbook-Workflow**.  
    Možnosti v horní části nám umožňují spuštění runbooku, naplánování jeho spuštění někdy v budoucnu nebo vytvoření [webhooku](automation-webhooks.md), který umožní spuštění prostřednictvím volání protokolu HTTP.
-4. Chcete spustit runbook, klikněte na tlačítko **spustit** a potom **Ano** po zobrazení výzvy.<br><br> ![Spuštění runbooku](media/automation-first-runbook-textual/automation-runbook-controls-start.png)
-5. Podokno úlohy se spustí úloha sady runbook, kterou jste vytvořili. V tomto podokně můžete zavřít, ale v takovém případě můžete ho můžete nechat otevřený, mohli sledovat průběh úlohy.
-6. Stav úlohy se zobrazí v **Souhrn úlohy** a odpovídá stavům, že jste viděli při testování runbooku.<br><br> ![Souhrn úlohy](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)
-7. Když se jako stav runbooku zobrazí *Dokončeno*, klikněte na **Výstup**. Otevře se podokno výstup a zobrazí se vaše *Hello, World*.<br><br> ![Souhrn úlohy](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)  
+4. chcete spouštět sadu runbook proto klikněte na **Start** a potom **Ano** po zobrazení výzvy.<br><br> ![Spuštění runbooku](media/automation-first-runbook-textual/automation-runbook-controls-start.png)
+5. Podokno úlohy je otevřen pro úlohy runbooku, který jste vytvořili. v tomto podokně můžete zavřít, ale v takovém případě vám ho můžete nechat otevřený mohli sledovat průběh úlohy.
+6. Stav úlohy se zobrazuje v **Souhrn úlohy** a odpovídá stavům, že jste viděli při testování runbooku.<br><br> ![Souhrn úlohy](media/automation-first-runbook-textual/job-pane-status-blade-jobsummary.png)
+7. Když se jako stav runbooku zobrazí *Dokončeno*, klikněte na **Výstup**. Otevře se podokno výstup a zobrazí se váš *Hello World*.<br><br> ![Souhrn úlohy](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)  
 8. Zavřete podokno Výstup.
-9. Klikněte na **Všechny protokoly** a otevřete podokno Datové proudy, které patří k úloze runbooku. Byste měli vidět jenom *Hello, World* ve výstupu datového proudu, ale můžou se zobrazit jiné datové proudy z úlohy runbooku, například podrobný nebo Chyba Pokud runbook zapisuje na ně.<br><br> ![Souhrn úlohy](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
+9. Klikněte na **Všechny protokoly** a otevřete podokno Datové proudy, které patří k úloze runbooku. byste měli vidět jenom *Hello World* ve výstupu datového proudu, ale můžou se zobrazit jiné datové proudy z úlohy runbooku, například podrobný nebo Chyba Pokud do nich runbook zapisuje.<br><br> ![Souhrn úlohy](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 10. Zavřete podokno Datové proudy a podokno Úloha a vraťte se do podokna MyFirstRunbook.
-11. Kliknutím na **Úlohy** otevřete podokno Úlohy, které patří k tomuto runbooku. Vypíšou se všechny úlohy, které tento runbook vytvořil. Měli byste vidět jenom jednu úlohu, protože jste spustili jenom jednou.<br><br> ![Úlohy](media/automation-first-runbook-textual/runbook-control-job-tile.png)
-12. Kliknutím na tuto úlohu chcete-li otevřít podokno úloha, která jste si zobrazili při spuštění sady runbook. Pomocí této možnosti se můžete vrátit v čase a zobrazit si podrobnosti libovolné úlohy, která byla pro konkrétní runbook vytvořena.
+11. Kliknutím na **Úlohy** otevřete podokno Úlohy, které patří k tomuto runbooku. Vypíšou se všechny úlohy, které tento runbook vytvořil. byste měli vidět jenom jednu úlohu, protože jste ji spustili jenom jednou.<br><br> ![Úlohy](media/automation-first-runbook-textual/runbook-control-job-tile.png)
+12. Kliknutím na tuto úlohu chcete-li otevřít podokno úloha, která jste zobrazili při spuštění runbooku. Pomocí této možnosti se můžete vrátit v čase a zobrazit si podrobnosti libovolné úlohy, která byla pro konkrétní runbook vytvořena.
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>Krok 5 – přidání ověřování ke správě prostředků Azure
-Jste otestovali a publikovali runbookem, ale zatím nedělá nic užitečného. Chcete ho spravovat prostředky Azure. Nebudete moci v případě, že pokud nemáte ověření pomocí přihlašovacích údajů, které jsou uvedené v to udělat [požadavky](#prerequisites). Můžete to udělat pomocí **Connect-AzureRmAccount** rutiny.
+jste otestovali a publikovali vaše sada runbook, ale zatím nedělá nic užitečného. Chcete ho spravovat prostředky Azure. Nebude moct k tomu, ale pokud nemáte ověření pomocí přihlašovacích údajů, které jsou uvedené v [požadavky](#prerequisites). Můžete to udělat pomocí **Connect-AzureRmAccount** rutiny.
 
 1. Kliknutím na **Upravit** v podokně MyFirstRunbook-Workflow otevřete textový editor.
-2. Není nutné **Write-Output** řádek už, proto pokračujte a odstraňte ji.
+2. není nutné **Write-Output** řádek už, neváhejte a sami ho odstranit.
 3. Umístěte kurzor na prázdný řádek mezi složenými závorkami.
 4. Zadejte nebo zkopírujte a vložte následující kód, který bude zpracovávat ověřování pomocí vašeho účtu Automation Spustit jako:
 
@@ -111,11 +111,15 @@ Jste otestovali a publikovali runbookem, ale zatím nedělá nic užitečného. 
    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
    ```
+
+   > [!IMPORTANT]
+   > **Add-AzureRmAccount** a **Login-AzureRmAccount** jsou nyní aliasy pro **Connect-AzureRMAccount**. Pokud **Connect-AzureRMAccount** rutina neexistuje, můžete použít **Add-AzureRmAccount** nebo **Login-AzureRmAccount**, nebo můžete aktualizovat moduly ve vaší službě Automation Účet pro nejnovější verze.
+
 5. Klikněte na tlačítko **testovací podokno** tak, aby mohli runbook otestovat.
 6. Kliknutím na **Spustit** spustíte test. Po dokončení byste měli obdržet výstup podobný následujícímu se základními informacemi z vašeho účtu. Tím se potvrdí platnost přihlašovacích údajů.<br><br> ![Ověření](media/automation-first-runbook-textual/runbook-auth-output.png)
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>Krok 6 – přidání kódu pro spuštění virtuálního počítače
-Teď, když runbook umí ověřit vašeho předplatného Azure, můžete spravovat prostředky. Můžete přidat příkaz ke spuštění virtuálního počítače. Můžete vybrat jakýkoli virtuální počítač ve vašem předplatném Azure a teď jste hardcoding, název sady runbook.
+Teď, když vaše sada runbook umí ověřit vaše předplatné Azure, můžete spravovat prostředky. můžete přidat příkaz ke spuštění virtuálního počítače. Můžete vybrat jakýkoli virtuální počítač ve vašem předplatném Azure a nyní jsou hardcoding tento název v sadě runbook.
 
 1. Po *Connect-AzureRmAccount*, typ *Start-AzureRmVM-Name 'VMName' - ResourceGroupName 'NameofResourceGroup'* název a název skupiny prostředků virtuálního počítače spustit.  
 
@@ -127,11 +131,11 @@ Teď, když runbook umí ověřit vašeho předplatného Azure, můžete spravov
    Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName'
    }
    ```
-2. Uložte runbook a pak klikněte na tlačítko **testovací podokno** tak, aby ji můžete otestovat.
+2. Uložte runbook a potom klikněte na tlačítko **testovací podokno** tak, aby ji mohli otestovat.
 3. Kliknutím na **Spustit** spustíte test. Po jeho dokončení zkontrolujte, jestli se virtuální počítač spustil.
 
 ## <a name="step-7---add-an-input-parameter-to-the-runbook"></a>Krok 7 – přidání vstupního parametru do runbooku
-vaše sada runbook aktuálně spouští virtuální počítač tento pevně zakódované můžete v sadě runbook, ale by být užitečnější, pokud se virtuální počítač mohl při spuštění runbooku. Vstupní parametry přidáte do sady runbook pro poskytnutí těchto funkcí.
+vaše sada runbook aktuálně spouští virtuální počítač tohoto pevně zakódované můžete v sadě runbook, ale by mohl být užitečnější, pokud je virtuální počítač zadat při spuštění runbooku. Přidání vstupních parametrů do runbooku pro poskytnutí těchto funkcí.
 
 1. Přidejte do runbooku parametry pro *VMName* a *ResourceGroupName* a použijte tyto proměnné s rutinou **Start-AzureRmVM**, jak vidíte na níže uvedeném příkladu.
 

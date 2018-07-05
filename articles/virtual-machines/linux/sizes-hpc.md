@@ -1,6 +1,6 @@
 ---
-title: Virtuální počítač Azure s Linuxem velikostí - HPC | Microsoft Docs
-description: Obsahuje seznam různých velikostí, které jsou k dispozici pro Linux s vysokým výkonem virtuálních počítačů v Azure. Uvádí informace o počtu Vcpu, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
+title: Velikosti virtuálních počítačů Azure s Linuxem – HPC | Dokumentace Microsoftu
+description: Obsahuje seznam různých velikostí, které jsou k dispozici pro Linux vysoce výkonných výpočetních virtuálních počítačů v Azure. Obsahuje informace o počtu virtuálních procesorů, datové disky a síťové adaptéry, jakož i úložiště propustnost a šířku pásma sítě pro velikosti této série.
 services: virtual-machines-linux
 documentationcenter: ''
 author: jonbeck7
@@ -15,13 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/15/2018
 ms.author: jonbeck
-ms.openlocfilehash: a24cb03cd30b212650a36cd5ac40977de5eea11e
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 441e99b86e9560d47af8ea18a2633e3f37a05e94
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 07/04/2018
+ms.locfileid: "34653837"
 ---
-# <a name="high-performance-compute-virtual-machine-sizes"></a>Vysoký výkon výpočetní velikostí virtuálních počítačů
+# <a name="high-performance-compute-virtual-machine-sizes"></a>Vysokovýkonné výpočetní velikosti virtuálních počítačů
 
 [!INCLUDE [virtual-machines-common-sizes-hpc](../../../includes/virtual-machines-common-sizes-hpc.md)]
 
@@ -32,41 +33,41 @@ ms.lasthandoff: 04/06/2018
 
 ### <a name="mpi"></a>MPI 
 
-Jsou podporovány pouze verze 5.x Intel MPI. Novější verze (2017, 2018) knihovny modulu runtime Intel MPI nejsou kompatibilní s ovladači Azure Linux RDMA.
+Podporovány jsou pouze verze 5.x Intel MPI. Novější verze (2017, 2018) Intel MPI knihovny modulu runtime nejsou kompatibilní s ovladači Azure Linux RDMA.
 
 
 ### <a name="distributions"></a>Distribuce
  
-Nasazení náročné na výkon virtuálního počítače z jedné bitové kopie v Azure Marketplace, která podporuje připojení RDMA:
+Nasazení virtuálního počítače náročné na výpočetní z některou k imagí v Tržišti Azure Marketplace, který podporuje připojení RDMA:
   
-* **Ubuntu** -Ubuntu Server 16.04 LTS. Konfigurace ovladače RDMA na virtuálním počítači a zaregistrovat Intel ke stažení Intel MPI:
+* **Ubuntu** – Ubuntu Server 16.04 LTS. Konfigurace ovladače RDMA na virtuálním počítači a s technologií Intel stáhnout Intel MPI registrace:
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
-* **SUSE Linux Enterprise Server** -SLES 12 SP3 pro prostředí HPC, SLES 12 SP3 pro HPC (Premium), SLES 12 SP1 pro prostředí HPC, SLES 12 SP1 pro HPC (Premium). Instalace ovladačů RDMA a Intel MPI balíčků distribuováno do virtuálního počítače. Instalace MPI spuštěním následujícího příkazu:
+* **SUSE Linux Enterprise Server** – SLES 12 SP3 pro prostředí HPC, SLES 12 SP3 pro prostředí HPC (Premium), SLES 12 SP1 pro prostředí HPC, SLES 12 SP1 pro prostředí HPC (Premium). Instalace ovladačů RDMA a Intel MPI balíčky nejsou distribuovány na virtuálním počítači. Nainstalujte MPI spuštěním následujícího příkazu:
 
   ```bash
   sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
   ```
     
-* **Na základě centOS HPC** – na základě CentOS verze 6.5 HPC nebo novější (pro H-series, je doporučeno verze 7.1 nebo novější). RDMA ovladače a Intel MPI 5.1 jsou nainstalovány ve virtuálním počítači.  
+* **Založené na centOS HPC** -založené na CentOS 6.5 HPC nebo novější verze (pro H-series, se doporučuje verze 7.1 nebo novější). Na virtuálním počítači se nainstalují ovladače RDMA a Intel MPI 5.1.  
  
   > [!NOTE]
-  > Na základě CentOS HPC Image, jsou zakázané jádra aktualizace v **yum** konfigurační soubor. Je to proto, že jsou ovladače Linux RDMA distribuován jako balíček RPM a aktualizací ovladače nemusí fungovat, pokud se aktualizuje jádra.
+  > Pro Image založené na CentOS HPC aktualizace jádra jsou zakázány ve **yumu** konfigurační soubor. Je to proto, že ovladače RDMA Linuxu se distribuují jako balíček RPM a aktualizace ovladačů nemusí fungovat, pokud se aktualizuje jádra.
   > 
  
 ### <a name="cluster-configuration"></a>Konfigurace clusteru 
     
-Konfigurace dalších systému je potřeba k spouštění úloh MPI na clusterových virtuálních počítačích. Například v clusteru virtuálních počítačů, musíte vytvořit vztah důvěryhodnosti mezi výpočetní uzly. Typické nastavení, najdete v části [nastavení clusteru s podporou Linux RDMA ke spuštění aplikací MPI](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+Konfigurace dalších systému je potřeba ke spouštění úloh MPI na Clusterované virtuální počítače. Například v clusteru virtuálních počítačů, musíte vytvořit vztah důvěryhodnosti mezi výpočetní uzly. Typické nastavení, najdete v části [nastavení clusteru Linux RDMA pro spouštění aplikací MPI](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 ### <a name="network-topology-considerations"></a>Aspekty topologie sítě
-* Na podporou RDMA virtuální počítače s Linuxem v Azure je Eth1 vyhrazený pro RDMA síťový provoz. Neměňte nastavení Eth1 nebo jakékoli informace v souboru konfigurace odkazující na tuto síť. Eth0 je vyhrazený pro regulární Azure síťový provoz.
+* Na podporou RDMA virtuálních počítačů s Linuxem v Azure je Eth1 vyhrazený pro RDMA síťový provoz. Neměňte nastavení Eth1 nebo jakékoli informace v konfiguračním souboru odkazující na tuto síť. Eth0 je vyhrazený pro pravidelné Azure síťový provoz.
 
-* RDMA sítě v Azure si vyhrazuje 172.16.0.0/16 prostor adres. 
+* Sítě RDMA v Azure si vyhrazuje 172.16.0.0/16 prostor adres. 
 
 
 ## <a name="using-hpc-pack"></a>Pomocí sady HPC Pack
-[HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), volné HPC clusteru a úlohy řešení správy společnosti Microsoft, je jednou z možností budete moci použít náročné instancí operačního systému Linux. Nejnovější verze sady HPC Pack podporu několik distribucí Linux ke spuštění na výpočetních uzlech nasazené ve virtuálních počítačích Azure, spravuje hlavního uzlu systému Windows Server. S podporou RDMA Linux výpočetní uzly systémem Intel MPI HPC Pack můžete naplánovat a spustit Linux MPI aplikace, které přístup k síti RDMA. V tématu [začít pracovat s Linux výpočetní uzly v clusteru služby HPC Pack v Azure](classic/hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+[HPC Pack](https://technet.microsoft.com/library/jj899572.aspx), od Microsoftu zdarma HPC clusteru a úlohy řešení správy, je jednou z možností pro použití výpočetně náročných instancí s Linuxem. Nejnovější verze sady HPC Pack podporu několika Linuxových distribucí pro spuštění na nasazených výpočetních uzlů ve virtuálních počítačích Azure, spravuje hlavního uzlu Windows serveru. S podporou RDMA Linuxovými výpočetními uzly s technologií Intel MPI sady HPC Pack můžete naplánovat a spustit Linux MPI aplikace s přístupem k síti přístup RDMA. Zobrazit [začít pracovat s Linuxovými výpočetními uzly v clusteru HPC Pack v Azure](classic/hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
 ## <a name="other-sizes"></a>Další velikosti
 - [Obecné účely](sizes-general.md)
@@ -74,13 +75,13 @@ Konfigurace dalších systému je potřeba k spouštění úloh MPI na clusterov
 - [Optimalizované z hlediska paměti](sizes-memory.md)
 - [Optimalizované z hlediska úložiště](sizes-storage.md)
 - [GPU](../windows/sizes-gpu.md)
-
+- [Předchozí generace](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>Další postup
 
-- Abyste mohli začít, nasazení a používání náročné velikosti s RDMA v systému Linux, najdete v části [nastavení clusteru s podporou Linux RDMA ke spuštění aplikací MPI](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
+- Chcete-li začít nasazovat a RDMA v Linuxu pomocí velikosti náročné na výpočetní prostředky, přečtěte si téma [nastavení clusteru Linux RDMA pro spouštění aplikací MPI](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json).
 
-- Další informace o [Azure výpočetní jednotky (ACU)](acu.md) můžete porovnat výpočetní výkon v Azure SKU.
+- Další informace o tom [Azure výpočetních jednotek (ACU)](acu.md) můžete porovnat výpočetní výkon jednotlivých SKU v Azure.
 
 
 

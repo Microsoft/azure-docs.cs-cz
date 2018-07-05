@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 6/28/2018
+ms.date: 07/03/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: fb870cbfbc233725752b3d97fc0ad048a7c14040
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 0e03b524834f528ddb7555a344fbebe720b4d9ff
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341728"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446967"
 ---
 # <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Šablony řešení Azure Stack Etherea blockchain
 
@@ -69,7 +69,7 @@ Vedoucí instancí šablony consortium nakonfiguruje první člen nároky na mí
     ADMINUSERNAME | Uživatelské jméno správce každé nasazení virtuálního počítače | 1 – 64 znaků. | gethadmin
     ADMINPASSWORD (typ ověřování = heslo)| Heslo pro účet správce pro jednotlivé virtuální počítače nasazené. Heslo musí obsahovat 3 z těchto požadavků: 1 velké písmeno, 1 malé písmeno, 1 číslici a 1 speciální znak. <br />Všechny virtuální počítače mají zpočátku stejné heslo, můžete změnit heslo po zřízení.|12 – 72 znaků|
     ADMINSSHKEY (typ ověřování = sshPublicKey) | Klíč zabezpečeného prostředí použitý ke vzdálenému přihlášení. | |
-    GENESISBLOCK | Řetězec JSON představující vlastní genesis bloku. | |
+    GENESISBLOCK | Řetězec JSON představující vlastní genesis bloku.  Zadání hodnoty pro tento parametr je volitelný. | |
     ETHEREUMACCOUNTPSSWD | Heslo správce používá k zabezpečení účtu Etherea. | |
     ETHEREUMACCOUNTPASSPHRASE | Heslo se vygenerovat privátní klíč spojený s účtem Etherea. | |
     ETHEREUMNETWORKID | ID sítě konsorcia. | Použít libovolnou hodnotu mezi 5 a 999 999 999 | 72

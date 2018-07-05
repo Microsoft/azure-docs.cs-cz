@@ -1,55 +1,55 @@
 ---
-title: Připojení ke službě Azure Analysis Services s Power BI | Microsoft Docs
+title: Připojení ke službě Azure Analysis Services v Power BI | Dokumentace Microsoftu
 description: Zjistěte, jak se připojit k serveru Azure Analysis Services pomocí Power BI.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2ab13c0d36102c5cd75a5b297f77b23cae40b530
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 00a975ae3acb470912c702d8a37717e5c270c9af
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596674"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446788"
 ---
-# <a name="connect-with-power-bi"></a>Připojit k Power BI
+# <a name="connect-with-power-bi"></a>Propojení s Power BI
 
-Jakmile jste vytvořili serveru v Azure a nasadili do ní tabulkový model, jste připravení připojit a začít zkoumat data uživatele ve vaší organizaci. 
+Po vytvoření serveru v Azure a nasadili do ní tabulkový model, uživatelé ve vaší organizaci jsou připraveny k připojení a začít zkoumat data. 
 
 > [!TIP]
-> Nezapomeňte použít nejnovější verzi [Power BI Desktop](https://powerbi.microsoft.com/desktop/).
+> Nezapomeňte použít nejnovější verzi [Power BI Desktopu](https://powerbi.microsoft.com/desktop/).
 > 
 > 
   
-## <a name="connect-in-power-bi-desktop"></a>Připojení v Power BI Desktop
+## <a name="connect-in-power-bi-desktop"></a>Připojení v Power BI Desktopu
 
-1. V Power BI Desktop, klikněte na **načíst Data** > **Azure** > **databáze Azure Analysis Services**.
+1. V Power BI Desktopu klikněte na **Získat data** > **Azure** > **Databáze Azure Analysis Services**.
 
-2. V **Server**, zadejte název serveru. Nezapomeňte zahrnout úplnou adresu URL; například asazure://westcentralus.asazure.windows.net/advworks.
+2. V **Server**, zadejte název serveru. Nezapomeňte uvést úplnou adresu URL; například asazure://westcentralus.asazure.windows.net/advworks.
 
-3. V **databáze**, pokud znáte název databázi tabulkového modelu nebo perspektivy, kterou chcete připojit, vložte jej zde. Jinak můžete ponechat toto pole prázdné a vybrat databázi nebo perspektivy později.
+3. V **databáze**, pokud znáte název databázi tabulkového modelu nebo perspektivy, které se chcete připojit, sem. V opačném případě můžete toto pole nechat prázdné a vyberte databázi nebo perspektivy později.
 
-4. Vyberte možnost připojení a potom stiskněte klávesu **Connect**. 
+4. Výběr možnosti připojení a potom stiskněte klávesu **připojit**. 
 
-    Obě **připojit za provozu** a **Import** možnosti jsou podporovány. Doporučujeme však, že používáte připojení za provozu, protože režim Import mají určitá omezení; zejména server může mít dopad na výkon při importu. Také v případě, že model je nutné je aktualizovat v rámci služby Power BI **povolit přístup z Power BI** nastavení platí pouze při výběru **připojit za provozu**.
+    Obě **připojit živě** a **Import** možnosti jsou podporovány. Doporučujeme však, že používáte živé připojení, protože režim Import mají určitá omezení; zejména server může mít dopad na výkon při importu. Také, pokud je model se aktualizují ve službě Power BI **povolit přístup z Power BI** nastavení platí pouze při výběru **připojit živě**.
 
-5. Po zobrazení výzvy zadejte své přihlašovací údaje. 
+5. Pokud se zobrazí výzva, zadejte své přihlašovací údaje. 
 
-6. V **Navigátor**, rozbalte server a pak vyberte modelu nebo perspektivy, kterou chcete připojit k a pak klikněte na tlačítko **Connect**. Klikněte na modelu nebo perspektivy k zobrazení všech objektů v tomto zobrazení.
+6. V **Navigátor**, rozbalte server a pak vyberte model nebo perspektivu, kterou chcete připojit a potom klikněte na **připojit**. Klikněte na modelu nebo perspektivě zobrazíte všechny objekty pro dané zobrazení.
 
-    Model se otevře v Power BI Desktop s prázdnou sestavou v zobrazení sestavy. V seznamu polí zobrazí všechny objekty modelu nebyla skrytá. Stav připojení je zobrazen v pravém dolním rohu.
+    Model se otevře s prázdnou sestavou v zobrazení sestav v Power BI Desktopu. V seznamu polí zobrazí všechny objekty modelu, že není skrytý. Stav připojení se zobrazuje v pravém dolním rohu.
 
-## <a name="connect-in-power-bi-service"></a>Připojení v Power BI (služba)
+## <a name="connect-in-power-bi-service"></a>Připojit v Power BI (služba)
 
-1. Vytvořte soubor Power BI Desktop, která má aktivní připojení k vašemu modelu na vašem serveru.
-2. V [Power BI](https://powerbi.microsoft.com), klikněte na tlačítko **načíst Data** > **soubory**, vyhledejte a vyberte soubor .pbix.
+1. Vytvořte soubor Power BI Desktopu, která má aktivní připojení k modelu na vašem serveru.
+2. V [Power BI](https://powerbi.microsoft.com), klikněte na tlačítko **získat Data** > **soubory**, vyhledejte a vyberte soubor .pbix.
 
 
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 [Připojení ke službě Azure Analysis Services](analysis-services-connect.md)   
-[Knihovny klienta](analysis-services-data-providers.md)
+[Klientské knihovny](analysis-services-data-providers.md)
 

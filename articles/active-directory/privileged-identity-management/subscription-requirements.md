@@ -1,6 +1,6 @@
 ---
-title: Privileged Identity Management odběry - Azure | Microsoft Docs
-description: Vysvětluje, předplatné a licenční požadavky pro správu a použití ve vašem klientovi Azure AD Privileged Identity Management
+title: Privileged Identity Management předplatná – Azure | Dokumentace Microsoftu
+description: Vysvětluje, předplatné a licenční požadavky pro správu a použití ve vašem tenantovi Azure AD Privileged Identity Management
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,55 +11,55 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.component: protection
 ms.date: 06/01/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a83b1b32bc7c1ba8dcfb0e96b11540253903a01f
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: b4322ab5c90b04cf4eb0591e97e5e026664a2769
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085143"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37442368"
 ---
-# <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Požadavky předplatné služby Azure Active Directory Privileged Identity Management
+# <a name="azure-active-directory-privileged-identity-management-subscription-requirements"></a>Požadavky na předplatné Azure Active Directory Privileged Identity Management
 
-Azure AD Privileged Identity Management je k dispozici jako součást na edici Premium P2 služby Azure AD. Další informace o dalších funkcích P2 a srovnání se Premium P1 najdete v tématu [edice služby Azure Active Directory](../active-directory-editions.md).
+Azure AD Privileged Identity Management je k dispozici jako součást v edici Premium P2 služby Azure AD. Další informace o jiných funkcích P2 a jejím srovnání s Premium P1, naleznete v tématu [edice Azure Active Directory](../active-directory-editions.md).
 
 >[!NOTE]
-Pokud Azure Active Directory (Azure AD) Privileged Identity Management ve verzi preview, nebyly k dispozici žádné licence kontroly pro klienta k vyzkoušení služby.  Teď, když Azure AD Privileged Identity Management bylo dosaženo obecné dostupnosti, musí být k dispozici pro klienta můžete pokračovat v používání Privileged Identity Management po prosinci 2016 zkušební nebo placené předplatné.
+Když Azure Active Directory (Azure AD) Privileged Identity Management byla ve verzi preview, nebyly žádné kontroly licence pro tenanta pro službu si můžete vyzkoušet.  Teď, když Azure AD Privileged Identity Management bylo dosaženo obecné dostupnosti, zkušebnímu nebo placenému odběru musí být k dispozici pro tenanta, abyste mohli nadále používat Privileged Identity Management po. prosince 2016.
   
 
 ## <a name="confirm-your-trial-or-paid-subscription"></a>Potvrďte zkušebnímu nebo placenému odběru
 
-Pokud nejste jistí, jestli má vaše organizace zkušební verzi nebo zakoupit předplatné, můžete zkontrolovat, zda je odběr ve vašem klientovi pomocí příkazů, které jsou součástí Azure Active Directory modulu pro Windows PowerShell V1. 
-1. Otevřete okno PowerShell.
-2. Zadejte `Connect-MsolService` k ověření jako uživatel ve vašem klientovi.
+Pokud si nejste jistí, jestli má vaše organizace zkušební verze nebo zakoupili předplatné, můžete zkontrolovat, jestli je předplatné ve vašem tenantovi pomocí příkazů v Azure Active Directory modulu pro Windows PowerShell V1. 
+1. Otevřete okno Powershellu.
+2. Zadejte `Connect-MsolService` ověřit se jako uživatel ve vašem tenantovi.
 3. Zadejte `Get-MsolSubscription | ft SkuPartNumber,IsTrial,Status`.
 
-Tento příkaz načte seznam předplatných ve vašem klientovi. Pokud nejsou žádné řádky vrátil, musíte získat Azure AD Premium P2 vyzkoušení, zakoupení Azure AD Premium P2 předplatné nebo EMS E5 předplatné použít Azure AD Privileged Identity Management.  Chcete-li získat zkušební verze a začít používat Azure AD Privileged Identity Management, přečtěte si [Začínáme s Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md).
+Tento příkaz načte seznam předplatných ve vašem tenantovi. Pokud neexistují žádné řádky vrátil, je potřeba získat vyzkoušení, zakoupení Azure AD Premium P2 Azure AD Premium P2 předplatné nebo předplatné EMS E5, které chcete použít Azure AD Privileged Identity Management.  Získejte zkušební verzi a začněte používat Azure AD Privileged Identity Management, přečtěte si téma [Začínáme s Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md).
 
-Pokud tento příkaz vrátí řádek, ve které SkuPartNumber je "AAD_PREMIUM_P2" nebo "EMSPREMIUM" a IsTrial je "True", to znamená, že je k dispozici v klientovi zkušební verzi Azure AD Premium P2.  Pokud stav předplatného není povoleno a není nutné zakoupit předplatné služby Azure AD Premium P2 nebo EMS E5, pak musíte koupit Azure AD Premium P2 předplatné nebo předplatné EMS E5-li nadále používat Azure AD Privileged Identity Management.
+Pokud tento příkaz vrátí řádek v které SkuPartNumber je "AAD_PREMIUM_P2" nebo "EMSPREMIUM" a IsTrial je "True", znamená to, že je k dispozici v tenantovi zkušební verzi Azure AD Premium P2.  Pokud se stav předplatného není povolená, a nemáte předplatné Azure AD Premium P2 nebo EMS E5 nákupu, pak musíte koupit Azure AD Premium P2 předplatné nebo předplatné EMS E5 a pokračujte v používání Azure AD Privileged Identity Management.
 
-Je k dispozici prostřednictvím Azure AD Premium P2 [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx), [otevřete multilicenčního programu](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)a [programu poskytovatele cloudových řešení](https://partner.microsoft.com/en-US/cloud-solution-provider). Odběratelé Azure a Office 365 může taky koupit Azure AD Premium P2 online.  Další informace o cenách Azure AD Premium a postup pořadí online naleznete na [Azure Active Directory ceny](https://azure.microsoft.com/pricing/details/active-directory/).
+Je dostupná prostřednictvím Azure AD Premium P2 [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx), [programu Open Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)a [programu Cloud Solution Provider](https://partner.microsoft.com/en-US/cloud-solution-provider). Předplatitelé Azure a Office 365 si můžete koupit i online Azure AD Premium P2.  Další informace o cenách Azure AD Premium a jak objednat online najdete v [cenami Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="azure-ad-privileged-identity-management-is-not-available-in-tenant"></a>Není k dispozici v klientovi Azure AD Privileged Identity Management
+## <a name="azure-ad-privileged-identity-management-is-not-available-in-tenant"></a>Není k dispozici v tenantovi Azure AD Privileged Identity Management
 
-Azure AD Privileged Identity Management už nebude k dispozici ve vašem klientovi pokud:
-- Při byl ve verzi preview a není zakoupit předplatné Azure AD Premium P2 nebo EMS E5 předplatné, byla vaše organizace používá Azure AD Privileged Identity Management.
-- Vaše organizace měla služby Azure AD Premium P2 nebo EMS E5 zkušební verzi, jehož platnost vypršela.
-- Vaše organizace měla zakoupené předplatné, jehož platnost vypršela.
+Bude nadále již nebudou k dispozici ve vašem tenantovi Azure AD Privileged Identity Management pokud:
+- Vaše organizace používal Azure AD Privileged Identity Management, když byla ve verzi preview a nekoupí předplatné Azure AD Premium P2 nebo předplatné EMS E5.
+- Vaše organizace měla Azure AD Premium P2 nebo EMS E5 zkušební verze, jehož platnost vypršela.
+- Vaše organizace má platné předplatné, jehož platnost vypršela.
 
-Když Azure AD Premium P2 předplatné nebo EMS E5 předplatné vyprší platnost, nebo organizaci, která se pomocí Azure AD Privileged Identity Management ve verzi preview není získat předplatné Azure AD Premium P2 nebo EMS E5:
+Když vyprší platnost Azure AD Premium P2 předplatné nebo předplatné EMS E5, nebo nezíská předplatného služby Azure AD Premium P2 nebo EMS E5 organizace, která byla ve verzi preview pomocí Azure AD Privileged Identity Management:
 
-- Trvalá role přiřazení role se službou Azure AD, zůstanou beze změn.
-- Rozšíření Azure AD Privileged Identity Management v portálu Azure a také rozhraní Graph API rutiny a PowerShell rozhraní Azure AD Privileged Identity Management už nebude k dispozici pro uživatele aktivovat privilegované role, spravovat oprávněními získat přístup, nebo provést přístup recenze privilegovaných rolí.
-- Role vhodné přiřazení rolí Azure AD bude odebrat, jelikož uživatelé nebudou moci uživatel aktivovat privilegované role.
-- Všechny probíhající přístup recenze rolí Azure AD se ukončí a nastavení konfigurace Azure AD Privileged Identity Management se odeberou.
+- Přiřazení trvalých rolí pro role Azure AD, zůstanou beze změn.
+- Rozšíření Azure AD Privileged Identity Management na webu Azure portal, jakož i rutiny rozhraní Graph API a rozhraní prostředí PowerShell služby Azure AD Privileged Identity Management, nebudou k dispozici pro uživatele aktivovat privilegované role, spravovat oprávnění přístup nebo provádět kontroly přístupu privilegovaných rolí.
+- Role oprávněné přiřazení role Azure AD se odebere, jak uživatelé už nebudou moci uživatel aktivovat privilegované role.
+- Žádné kontroly přístupu probíhající rolí Azure AD se ukončí a nastavení konfigurace Azure AD Privileged Identity Management se odeberou.
 - Azure AD Privileged Identity Management už pošle e-mailů na změny v přiřazení role.
 
 ## <a name="next-steps"></a>Další postup
 
 - [Začínáme s Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-getting-started.md)
-- [Role v Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-roles.md)
+- [Role ve službě Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-roles.md)

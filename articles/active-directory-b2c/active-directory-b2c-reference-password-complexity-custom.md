@@ -1,39 +1,39 @@
 ---
-title: Složitost hesla v vlastní zásady v Azure Active Directory B2C | Microsoft Docs
-description: Jak konfigurovat požadavky na složitost hesel v vlastní zásady.
+title: Složitost hesla ve vlastních zásad v Azure Active Directory B2C | Dokumentace Microsoftu
+description: Jak konfigurovat požadavky na složitost hesel ve vlastních zásadách.
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/16/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6ad205167477715713b58fe06a771c3e683f5c04
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: ed0001d8d88a2604e3128a4d5f7a365aeb7b00b1
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34712160"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440787"
 ---
-# <a name="configure-password-complexity-in-custom-policies"></a>Nakonfigurujte složitost hesel v vlastní zásady
+# <a name="configure-password-complexity-in-custom-policies"></a>Nakonfigurujte složitost hesla ve vlastní zásady
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Tento článek k pokročilé popis toho, jak funguje složitost hesla a je povolit pomocí vlastních zásad Azure AD B2C.
+Tento článek je pokročilá popis toho, jak funguje složitost hesla a se aktivuje pomocí vlastních zásad Azure AD B2C.
 
-## <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: Konfigurujte požadavky na složitost hesel
+## <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: Konfigurovat požadavky na složitost hesel
 
-Azure Active Directory B2C (Azure AD B2C) podporuje změna požadavky na složitost hesla poskytl koncového uživatele při vytváření účtu.  Ve výchozím nastavení používá Azure AD B2C **silným** hesla.  Azure AD B2C podporuje také konfigurační možnosti pro řízení složitosti hesla, které zákazníci mohou používat.  V tomto článku bude zmíněn konfiguraci složitosti hesla v vlastní zásady.  Je také možné použít [nakonfigurujte složitost hesel v integrovaných zásad](active-directory-b2c-reference-password-complexity.md).
+Azure Active Directory B2C (Azure AD B2C) podporuje se měnící požadavky na složitost hesel poskytnutých koncového uživatele při vytváření účtu.  Ve výchozím nastavení, Azure AD B2C používá **silné** hesla.  Azure AD B2C podporuje také možnosti konfigurace pro řízení složitosti hesla, které můžou zákazníci využívat.  Tento článek hovoří o tom, jak nakonfigurovat složitost hesla ve vlastní zásady.  Je také možné použít [nakonfigurujte složitost hesla v předdefinované zásady](active-directory-b2c-reference-password-complexity.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Klient služby Azure AD B2C, nakonfigurované k dokončení registrace-množství nebo přihlášení, místní účet, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
+Klient služby Azure AD B2C nakonfigurovaný tak, aby dokončit místní účet přihlášení-registrace/přihlášení, jak je popsáno v [Začínáme](active-directory-b2c-get-started-custom.md).
 
-## <a name="how-to-configure-password-complexity-in-custom-policy"></a>Postup konfigurace složitost hesla ve vlastních zásadách
+## <a name="how-to-configure-password-complexity-in-custom-policy"></a>Jak nakonfigurovat ve vlastních zásadách pro složitost hesla
 
-Nakonfigurujte složitost hesla ve vlastních zásadách, musí obsahovat celková struktura vlastní zásady `ClaimsSchema`, `Predicates`, a `InputValidations` prvku v `BuildingBlocks`.
+Ke konfiguraci složitosti hesla ve vlastních zásadách, musí obsahovat celkovou strukturu vlastní zásadu `ClaimsSchema`, `Predicates`, a `InputValidations` element v rámci `BuildingBlocks`.
 
 ```XML
   <BuildingBlocks>
@@ -43,15 +43,15 @@ Nakonfigurujte složitost hesla ve vlastních zásadách, musí obsahovat celkov
   </BuildingBlocks>
 ```
 
-Účelem těchto prvků vypadá takto:
+Účelem těchto prvků je následujícím způsobem:
 
-- Každý `Predicate` element definuje kontrolu ověření základní řetězec, který vrací hodnotu true nebo false.
-- `InputValidations` Element má jeden nebo více `InputValidation` elementy.  Každý `InputValidation` je vytvořený pomocí řady `Predicate` elementy. Tento element umožňuje provádět boolean agregace (podobně jako `and` a `or`).
-- `ClaimsSchema` Definuje, které deklarace identity je ověřován.  Potom definuje, které `InputValidation` pravidlo se používá k ověření, že deklarace identity.
+- Každý `Predicate` element definuje ověření základní řetězec, který vrací hodnotu true nebo false.
+- `InputValidations` Element má jeden nebo více `InputValidation` elementy.  Každý `InputValidation` byl vytvořen pomocí řady `Predicate` elementy. Tento prvek umožňuje provádět logická agregace (podobně jako `and` a `or`).
+- `ClaimsSchema` Definuje, jaké deklarace identity se ověřuje.  Potom definuje, které `InputValidation` pravidlo se používá k ověření tuto žádost.
 
 ### <a name="defining-a-predicate-element"></a>Definování predikátu element
 
-Predikáty má dva typy metoda: IsLengthRange nebo MatchesRegex. Pojďme si každý příkladem.  Nejprve máme příkladem MatchesRegex, který se používá k odpovídají regulárnímu výrazu.  V tomto příkladu odpovídá řetězec, který obsahuje čísla.
+Predikáty má dva typy metoda: IsLengthRange nebo MatchesRegex. Pojďme se podívat na příklad každého.  Máme první příklad MatchesRegex, který se používá k odpovídají regulárnímu výrazu.  V tomto příkladu odpovídá řetězec, který obsahuje čísla.
 
 ```XML
       <Predicate Id="PIN" Method="MatchesRegex" HelpText="The password must be a pin.">
@@ -61,7 +61,7 @@ Predikáty má dva typy metoda: IsLengthRange nebo MatchesRegex. Pojďme si kaž
       </Predicate>
 ```
 
-Další pojďme si příklad IsLengthRange.  Tato metoda přebírá řetězec minimální a maximální délku.
+Další Pojďme se podívat na příklad IsLengthRange.  Tato metoda přebírá řetězec minimální a maximální délku.
 
 ```XML
       <Predicate Id="Length" Method="IsLengthRange" HelpText="The password must be between 8 and 16 characters.">
@@ -72,11 +72,11 @@ Další pojďme si příklad IsLengthRange.  Tato metoda přebírá řetězec mi
       </Predicate>
 ```
 
-Použití `HelpText` atribut poskytněte chybovou zprávu pro koncové uživatele, pokud kontrola selže.  Tento řetězec je možné lokalizovat pomocí [jazyk přizpůsobení funkce](active-directory-b2c-reference-language-customization.md).
+Použití `HelpText` atribut poskytněte chybovou zprávu pro koncové uživatele, pokud kontrola selže.  Tento řetězec může být lokalizovány pomocí [funkci přizpůsobení jazyka](active-directory-b2c-reference-language-customization.md).
 
-### <a name="defining-an-inputvalidation-element"></a>Definování InputValidation element
+### <a name="defining-an-inputvalidation-element"></a>Definování InputValidation elementu
 
-`InputValidation` Je agregaci `PredicateReferences`. Každý `PredicateReferences` musí být splněné, aby `InputValidation` proběhla úspěšně.  Ale uvnitř `PredicateReferences` element použít atribut `MatchAtLeast` k určení kolik `PredicateReference` kontroly true musí vracet.  Volitelně můžete definovat `HelpText` definován atribut přepsat chybovou zprávu v `Predicate` elementy, které odkazuje.
+`InputValidation` Souhrn `PredicateReferences`. Každý `PredicateReferences` musí být splněné, aby `InputValidation` proběhla úspěšně.  Ale uvnitř `PredicateReferences` element použijte atribut volá `MatchAtLeast` k určení kolik `PredicateReference` kontroly musí vrátit hodnotu true.  Volitelně můžete definovat `HelpText` definován atribut přepsat chybovou zprávu v `Predicate` prvky, na které odkazuje.
 
 ```XML
       <InputValidation Id="PasswordValidation">
@@ -94,7 +94,7 @@ Použití `HelpText` atribut poskytněte chybovou zprávu pro koncové uživatel
 
 ### <a name="defining-a-claimsschema-element"></a>Definování ClaimsSchema element
 
-Typy deklarací identity `newPassword` a `reenterPassword` jsou považovány za zvláštní, takže názvy beze změny.  Uživatelské rozhraní ověří uživatele správně znovu zadat hesla během vytváření účtu založené na těchto `ClaimType` elementy.  K vyhledání stejné `ClaimType` elementy, vyhledejte v TrustFrameworkBase.xml v svůj balíček starter.  Co je nového v tomto příkladu je potlačuje tyto prvky můžete definovat `InputValidationReference`. `ID` Atribut tohoto nového elementu odkazuje `InputValidation` element, který jsme definovali.
+Typy deklarací identity `newPassword` a `reenterPassword` jsou považovány za zvláštní, tak názvy beze změny.  Uživatelské rozhraní ověřuje uživatele správně znovu zadat heslo během vytváření účtu založené na těchto `ClaimType` elementy.  K vyhledání stejné `ClaimType` prvky, podívejte se v TrustFrameworkBase.xml sady starter.  Co je nového v tomto příkladu je, že jsme se přepsání těchto prvků můžete definovat `InputValidationReference`. `ID` Atribut tento nový element odkazující `InputValidation` element, který jsme definovali.
 
 ```XML
     <ClaimsSchema>
@@ -107,19 +107,19 @@ Typy deklarací identity `newPassword` a `reenterPassword` jsou považovány za 
     </ClaimsSchema>
 ```
 
-### <a name="putting-it-all-together"></a>Třeba umisťovat všechny společně
+### <a name="putting-it-all-together"></a>Vložení všechno dohromady
 
-Tento příklad ukazuje, jak všechny části zapadají k vytvoření pracovních zásad.  Použití tohoto příkladu:
+Tento příklad ukazuje, jak všechno zapadají do formuláře pracovní zásady.  Chcete-li použít tento příklad:
 
-1. Postupujte podle pokynů v nezbytné [Začínáme](active-directory-b2c-get-started-custom.md) Pokud chcete stáhnout, konfigurace a nahrajte TrustFrameworkBase.xml a TrustFrameworkExtensions.xml
-1. Vytvořte soubor SignUporSignIn.xml pomocí příklad obsah v této části.
-1. Aktualizovat nahrazení SignUporSignIn.xml `yourtenant` s název vašeho klienta Azure AD B2C.
+1. Postupujte podle pokynů v požadovanou přípravu popsanou [Začínáme](active-directory-b2c-get-started-custom.md) ke stažení, konfiguraci a nahrání TrustFrameworkBase.xml a TrustFrameworkExtensions.xml
+1. Vytvořte soubor SignUporSignIn.xml pomocí příkladu obsah v této části.
+1. Aktualizace nahrazující SignUporSignIn.xml `yourtenant` názvem vašeho tenanta Azure AD B2C.
 1. Nahrajte soubor zásad SignUporSignIn.xml poslední.
 
-Tento příklad obsahuje ověření pro hesla PIN kód a jeden pro silná hesla:
+V tomto příkladu obsahuje ověření pro kód pin, hesla a jeden pro silná hesla:
 
-- Vyhledejte `PINpassword`. To `InputValidation` element ověří PIN kód o libovolné délce.  Není použit v okamžiku, protože není odkazovaný ve `InputValidationReference` prvku v `ClaimType`. 
-- Vyhledejte `PasswordValidation`. To `InputValidation` element ověří hesla je 8 až 16 znaků a obsahuje hodnotu 3 4 velkých a malých písmen, čísel nebo symboly.  Se odkazuje v `ClaimType`.  Toto pravidlo je proto vynucován v této zásadě.
+- Vyhledejte `PINpassword`. To `InputValidation` element ověří PIN kód z jakékoli délky.  Není použit v okamžiku, protože se neodkazuje v `InputValidationReference` element v rámci `ClaimType`. 
+- Vyhledejte `PasswordValidation`. To `InputValidation` element ověřuje hesla je 8 až 16 znaků a obsahuje 3 ze 4 velká písmena, malá písmena, číslice nebo symboly.  Je odkazováno v `ClaimType`.  Proto se toto pravidlo vynucuje se v této zásadě.
 
 ```XML
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>

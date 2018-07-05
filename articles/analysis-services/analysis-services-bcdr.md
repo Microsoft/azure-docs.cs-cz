@@ -1,37 +1,37 @@
 ---
-title: Azure vysokou dostupnost služby Analysis Services | Microsoft Docs
+title: Vysoká dostupnost služby Azure Analysis Services | Dokumentace Microsoftu
 description: Zajišťuje vysokou dostupnost služby Azure Analysis Services.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: db8f8b9b5af1583662418f774b2eb141bea53ffa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 42e270f26a4576014d3a08a0ab3c59808c65fc56
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596732"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37445462"
 ---
-# <a name="analysis-services-high-availability"></a>Vysoká dostupnost Analysis Services
-Tento článek popisuje, zajištění vysoké dostupnosti pro servery Azure Analysis Services. 
+# <a name="analysis-services-high-availability"></a>Vysoká dostupnost služby analýzy
+Tento článek popisuje, je ujištěním, vysoká dostupnost pro servery služby Azure Analysis Services. 
 
 
-## <a name="assuring-high-availability-during-a-service-disruption"></a>Zajištění vysoké dostupnosti během přerušení služby
-Když je taková situace vzácná, může mít datové centrum Azure k výpadku. Pokud dojde k výpadku, budou přerušení obchodní, který může trvat několik minut nebo může trvat hodiny. Vysoká dostupnost nejčastěji dosáhnout s nadbytečností serveru. S Azure Analysis Services můžete dosáhnout vytvořením další, sekundární servery v oblastech jeden nebo více redundance. Při vytváření redundantních serverů, aby zajistil, data a metadata na těchto serverech je v synchronizaci se serverem v oblasti, který přešel do stavu offline, můžete:
+## <a name="assuring-high-availability-during-a-service-disruption"></a>Zajišťuje vysokou dostupnost během přerušení služby
+Když taková situace vzácná, datové centrum Azure může dojít k výpadku. Pokud dojde k výpadku, dojde k narušení provozu, které může trvat několik minut nebo hodin trvat. Vysoké dostupnosti se dosahuje nejčastěji s redundancí serveru. Pomocí služby Azure Analysis Services můžete dosáhnout redundance tím, že vytvoříte další, sekundární servery v jedné nebo několika oblastech. Při vytváření redundantních serverech, aby bylo zaručeno dat a metadat na těchto serverech je v synchronizaci se serverem v oblasti, který přešel do stavu offline, můžete:
 
-* Modely nasazení na redundantní servery v jiných oblastech. Tato metoda vyžaduje zpracování dat na primární server i redundantní servery v paralelní, zajištění všechny servery jsou v synchronizaci.
+* Nasazování modelů na redundantních serverech v jiných oblastech. Tato metoda vyžaduje, zpracování dat na primárním serveru i redundantních serverech v paralelní, je ujištěním, všechny servery jsou synchronizovaná.
 
-* [Zálohování](analysis-services-backup.md) databáze z primárního serveru a obnovení na redundantní serverech. Například můžete automatizovat noční zálohování do úložiště Azure a obnovení na jiné servery redundantní v jiných oblastech. 
+* [Zálohování](analysis-services-backup.md) databází z primárního serveru a obnovení na redundantních serverech. Například můžete automatizovat nočních záloh do služby Azure storage a obnovit na jiné servery redundantní v jiných oblastech. 
 
-V obou případech Pokud primární server dojde k výpadku, musíte změnit připojovací řetězce v generování sestav klientům připojit se k serveru v jiném datovém centru místní. Tato změna považovat za poslední možnost a dochází pouze v případě výpadku center závažné místní data. Je pravděpodobnější, výpadku datacentra hostování primární server by dostane zpět online, než může aktualizovat připojení na všechny klienty. 
+V obou případech se primární server dojde k výpadku, musíte změnit připojovací řetězce v generování sestav klienty pro připojení k serveru v jiného místního datového centra. Tato změna by měl být poslední možnost a dochází pouze v případě výpadku katastrofickými místního datového centra. Je větší pravděpodobnost výpadku datového centra hostujícího vaše primární server by návratu do režimu online předtím, než může aktualizovat připojení ve všech klientech. 
 
-Chcete-li předejít chcete změnit připojovací řetězce na generování sestav klientů, můžete vytvořit serveru [alias](analysis-services-server-alias.md) pro primární server. Pokud primární server přestane fungovat, můžete změnit alias tak, aby odkazoval na redundantní server v jiné oblasti. Můžete automatizovat alias pro název serveru pomocí kódování kontrolu stavu koncový bod na primárním serveru. Pokud se nezdaří Kontrola stavu, můžete přímo stejný koncový bod redundantní server v jiné oblasti. 
+Aby se nemusela změnit připojovací řetězce na klienti oznamující, vytvoříte server [alias](analysis-services-server-alias.md) pro primární server. Pokud primární server přestane fungovat, můžete změnit aliasu, aby odkazoval na záložní server v jiné oblasti. Můžete automatizovat alias pro název serveru kódu pro kontrolu stavu koncových bodů na primárním serveru. Pokud se nezdaří Kontrola stavu stejný koncový bod může směrovat na záložní server v jiné oblasti. 
 
 ## <a name="related-information"></a>Související informace
 [Zálohování a obnovení](analysis-services-backup.md)   
 [Správa služby Azure Analysis Services](analysis-services-manage.md)   
-[Názvy serverů alias](analysis-services-server-alias.md) 
+[Názvy serveru aliasů](analysis-services-server-alias.md) 
 

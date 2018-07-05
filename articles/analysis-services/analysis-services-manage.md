@@ -1,70 +1,70 @@
 ---
-title: Správa služby Azure Analysis Services | Microsoft Docs
-description: Zjistěte, jak ke správě serveru služby Analysis Services v Azure.
+title: Správa služby Azure Analysis Services | Dokumentace Microsoftu
+description: Další informace o správě serveru služby Analysis Services v Azure.
 author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a589a75c1d8c353c7e8dabc508904282e28cf371
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fa5eeaad6ec98bb7ce725e1bf4c977cb2d5398a6
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597684"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448607"
 ---
 # <a name="manage-analysis-services"></a>Správa služby Analysis Services
-Po vytvoření serveru služby Analysis Services v Azure, mohou být některé úlohy správy a údržby, které je třeba provést hned nebo zopakovat dolů na cestách. Například spusťte zpracování aktualizace dat, určovat, kdo může získat přístup modely na vašem serveru, nebo sledování stavu vašeho serveru. Některé úlohy správy lze provést pouze na portálu Azure, jiné v SQL Server Management Studio (SSMS) a některé úlohy lze provádět buď.
+Po vytvoření serveru služby Analysis Services v Azure, může být administrace a správa úlohy, které je potřeba provést hned nebo nějakou dobu mimo provoz cestách. Například spusťte zpracování pro aktualizaci dat, řízení, kdo může přistupovat modely na serveru nebo monitorování stavu vašeho serveru. Některé úlohy správy lze provést pouze webu Azure Portal, ostatní v SQL Server Management Studio (SSMS) a některé úkoly lze provést v jednom.
 
 ## <a name="azure-portal"></a>Azure Portal
-[Portál Azure](http://portal.azure.com/) je, kde můžete vytvořit a odstraněním serverů, monitorování prostředky serveru, změnit velikost a spravovat, kdo má přístup k serverům.  Pokud máte nějaké problémy, můžete také odeslat žádost o podporu.
+[Azure portal](http://portal.azure.com/) je, kde můžete vytvořit a odstranit servery, monitorovat prostředky serveru, změna velikosti a spravovat, kdo má přístup k vašim serverům.  Pokud máte nějaké problémy, můžete také odeslat žádost o podporu.
 
 ![Získání názvu serveru v Azure](./media/analysis-services-manage/aas-manage-portal.png)
 
 ## <a name="sql-server-management-studio"></a>SQL Server Management Studio
-Připojení k serveru v Azure je stejně jako připojení k instanci serveru ve vaší vlastní organizaci. Z aplikace SSMS můžete provádět mnoho úloh, jako je například zpracování dat nebo vytvořit skript zpracování, správě rolí a pomocí prostředí PowerShell.
+Připojení k serveru v Azure je stejné jako připojení k instanci serveru ve vaší vlastní organizaci. Z aplikace SSMS můžete provádět množství stejných úkolů, jako je zpracování dat nebo vytvořit skript zpracování, spravovat role a pomocí Powershellu.
   
 ![SQL Server Management Studio](./media/analysis-services-manage/aas-manage-ssms.png)
 
-### <a name="download-and-install-ssms"></a>Stažení a instalace aplikace SSMS
-Chcete-li získat všechny nejnovější funkce a nejhladší zkušenosti při připojování k serveru Azure Analysis Services, ujistěte se, že používáte nejnovější verzi aplikace SSMS. 
+### <a name="download-and-install-ssms"></a>Stažení a instalace SSMS
+Pokud chcete získat všechny nejnovější funkce a možnosti nejhladší při připojování k serveru Azure Analysis Services, ujistěte se, že používáte nejnovější verzi SSMS. 
 
 [Stáhněte si SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
 
 ### <a name="to-connect-with-ssms"></a>Připojit pomocí SSMS
- Při použití aplikace SSMS, před připojením k serveru poprvé, zkontrolujte, zda že vaše uživatelské jméno je zahrnutá ve skupině Admins služby Analysis Services. Další informace najdete v tématu [správci serveru](#server-administrators) dále v tomto článku.
+ Při použití aplikace SSMS, před připojením k serveru poprvé, ujistěte se, že vaše uživatelské jméno je součástí skupiny Správci Analysis Services. Další informace najdete v tématu [správcům serverů](#server-administrators) dále v tomto článku.
 
-1. Než připojíte, potřebujete získat název serveru. Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopírujte název serveru.
+1. Než připojíte, musíte získat název serveru. Na portálu **Azure Portal** > Server > **Přehled** > **Název serveru** zkopírujte název serveru.
    
     ![Získání názvu serveru v Azure](./media/analysis-services-deploy/aas-deploy-get-server-name.png)
-2. V aplikaci SSMS > **Průzkumník objektů**, klikněte na tlačítko **připojit** > **služby Analysis Services**.
-3. V **připojit k serveru** dialogové okno, vložte v názvu serveru, a potom v **ověřování**, vyberte jednu z následujících typů ověřování:   
+2. V **Průzkumníku objektů** SQL Server Management Studia klikněte na **Připojit** > **Analysis Services**.
+3. V **připojit k serveru** dialogové okno, vložte název serveru, pak v **ověřování**, zvolte jednu z následujících typů ověřování:   
     > [!NOTE]
-    > Typ ověřování, **Universal s podpora vícefaktorového ověřování služby Active Directory -**, doporučuje se.
+    > Typ ověřování, **univerzální podporující vícefaktorové ověřování služby Active Directory –**, doporučuje se.
 
     > [!NOTE]
-    > Pokud se přihlásíte Account Microsoft Live ID, Yanoo, z Gmailu, atd., ponechejte pole heslo prázdné. Po kliknutí na tlačítko připojit, zobrazí se výzva k zadání hesla.
+    > Pokud se přihlásíte Account Microsoft Live ID, Yanoo, Gmail, atd., ponechejte pole pro heslo prázdné. Zobrazí se výzva k zadání hesla po kliknutí na tlačítko Připojit.
 
-    **Ověřování systému Windows** používat přihlašovací údaje doména\uživatelské jméno a heslo systému Windows.
+    **Ověřování Windows** k použijte přihlašovací údaje Windows doména\uživatelské jméno a heslo.
 
-    **Ověřování hesla Active Directory** použít účet organizace. Například když připojení z jiné domény připojený počítač.
+    **Ověřování hesla Active Directory** používat účet organizace. Například při připojování z jiné domény počítač připojený.
 
-    **Univerzální s podpora vícefaktorového ověřování služby Active Directory -** používat [neinteraktivní nebo vícefaktorového ověřování](../sql-database/sql-database-ssms-mfa-authentication.md). 
+    **Univerzální podporující vícefaktorové ověřování služby Active Directory –** používat [ověřování službou Multi-Factor Authentication nebo jako neinteraktivní](../sql-database/sql-database-ssms-mfa-authentication.md). 
    
-    ![V aplikaci SSMS připojit](./media/analysis-services-manage/aas-manage-connect-ssms.png)
+    ![Připojení v SQL Server Management Studiu](./media/analysis-services-manage/aas-manage-connect-ssms.png)
 
-## <a name="server-administrators-and-database-users"></a>Správci serveru a databáze uživatelů
-V Azure Analysis Services existují dva typy uživatelů, správce serveru a uživatele databáze. Oba typy uživatelů, musí být ve vašem Azure Active Directory a musí být určena organizační e-mailovou adresu nebo hlavní název uživatele. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
+## <a name="server-administrators-and-database-users"></a>Správce serveru a databáze uživatelů
+Ve službě Azure Analysis Services existují dva typy uživatelů, správci serveru a databázi uživatelů. Oba typy uživatelů musí být ve službě Azure Active Directory a musí být určena organizační e-mailovou adresu nebo hlavní název uživatele. Další informace najdete v tématu [Ověřování a uživatelská oprávnění](analysis-services-manage-users.md).
 
 
-## <a name="troubleshooting-connection-problems"></a>Odstraňování potíží s připojením
-Pokud se připojujete pomocí aplikace SSMS, pokud narazíte na problém, musíte vymazat mezipaměť přihlášení. Nic se uloží do mezipaměti na disku. Vymazání mezipaměti, ukončete a restartujte proces připojení. 
+## <a name="troubleshooting-connection-problems"></a>Řešení potíží s problémy s připojením
+Když se připojujete pomocí aplikace SSMS, pokud narazíte na problémy, budete muset vymazat mezipaměť přihlášení. Nic se uloží do mezipaměti na disku. Vymazání mezipaměti, ukončete a restartujte proces připojit. 
 
 ## <a name="next-steps"></a>Další postup
-Pokud již jste nenasadili tabulkový model na nový server, teď je vhodná doba. Další informace najdete v tématu [Nasazení do služby Azure Analysis Services](analysis-services-deploy.md).
+Pokud už jste nenasadili tabulkový model na nový server, teď je vhodná doba. Další informace najdete v tématu [Nasazení do služby Azure Analysis Services](analysis-services-deploy.md).
 
-Pokud model jste nasadili na server, jste připraveni připojit se pomocí klienta nebo prohlížeče. Další informace najdete v tématu [načíst data ze serveru Azure Analysis Services](analysis-services-connect.md).
+Pokud jste nasadili model na server, budete připraveni k připojení k němu pomocí klienta nebo prohlížeče. Další informace najdete v tématu [získání dat ze serveru Azure Analysis Services](analysis-services-connect.md).
 

@@ -1,8 +1,8 @@
 ---
-title: Azure Active Directory doklad koncept playbook stavební bloky | Microsoft Docs
-description: Prozkoumejte a rychle implementovat scénáře identita a správa přístupu
+title: Testování konceptu playbook stavebních bloků Azure Active Directory | Dokumentace Microsoftu
+description: Prozkoumejte a rychle implementovat scénáře správy identit a přístupu
 services: active-directory
-keywords: Azure active directory, scénářem, testování konceptu, PoC
+keywords: Azure active directory, playbooku, testování konceptu, PoC
 documentationcenter: ''
 author: dstefanMSFT
 manager: mtillman
@@ -14,563 +14,563 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: 36cbf9249664af1cd469d7e27c617a4810d0e74f
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: c5f3904621dcc4fe992b2c2f8293ad706b01f713
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098953"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37446771"
 ---
-# <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o koncept playbook: stavební bloky
+# <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o playbook koncept: stavební bloky
 
 ## <a name="catalog-of-roles"></a>Katalog rolí
 
-| Role | Popis | Testování konceptu (PoC) zodpovědnosti |
+| Role | Popis | Testování konceptu (PoC) odpovědnosti |
 | --- | --- | --- |
-| **Architektura identity / vývojový tým** | Tento tým je obvykle ten, který navrhuje řešení, implementuje prototypy, jednotky schválení a nakonec předá k operacím | Poskytují prostředí a jsou ty, které vyhodnocení různé scénáře z hlediska správy |
-| **Místní Identity provozní tým** | Spravuje jinou identitu zdroje místní: doménové struktury služby Active Directory, adresářů protokolu LDAP, HR systémy a poskytovatelů federace identit. | Poskytnout přístup k místní prostředky potřebné pro scénáře testování koncepce.<br/>Jejich by měl být zahrnut co nejméně|
-| **Technické vlastníci aplikace** | Technické vlastníky různých cloudových aplikací a služeb, které se integrují s Azure AD | Obsahují podrobnosti o SaaS aplikace (potenciálně instance pro testování) |
-| **Globální správce Azure AD** | Spravuje konfiguraci Azure AD | Zadejte přihlašovací údaje ke konfiguraci služby synchronizace. Obvykle stejné jako architektura Identity team během testování koncepce ale oddělte během fáze operace|
-| **Databáze team** | Vlastníci databáze infrastruktury | Poskytovat přístup k prostředí SQL (služby AD FS nebo Azure AD Connect) pro konkrétní scénář přípravy.<br/>Jejich by měl být zahrnut co nejméně |
-| **Tým síťových** | Vlastníci síťové infrastruktury | Zadejte požadovaný přístup na úrovni sítě pro synchronizační servery správně přistupovat ke zdrojům dat a cloudových služeb (pravidla brány firewall, porty otevřít, pravidla IPSec atd.) |
-| **Bezpečnostní tým** | Definuje bezpečnostní strategie, analyzuje zabezpečení sestavy z různých zdrojů a postupuje podle zjištění. | Zadejte cíl zabezpečení vyhodnocení scénáře |
+| **Architektura identity / vývojový tým** | Tento tým je obvykle ten, který navrhuje řešení implementuje prototypy, jednotky schválení a nakonec předá do operací | Poskytují prostředí a jsou ty vaše rozhodnutí vyzkoušet různé scénáře z hlediska správy |
+| **On-Premises Identity provozní tým** | Spravuje jiná identita zdroje místní: doménové struktury služby Active Directory, adresáře LDAP, systémy oddělení Personalistiky a federačního zprostředkovatele Identity. | Poskytnutí přístupu k místním prostředkům, které jsou potřebné pro scénáře PoC.<br/>Jejich by měl podílejí co|
+| **Technické vlastníky aplikace.** | Technické vlastníky různých cloudových aplikací a služeb, které se bude integrovat s Azure AD | Podrobnější informace najdete na aplikace SaaS (potenciálně instance pro účely testování) |
+| **Globální správce Azure AD** | Spravuje konfiguraci Azure AD | Zadejte přihlašovací údaje pro službu synchronizace. Obvykle stejný týmu během PoC jako architektura Identity, ale samostatné fázi operace|
+| **Databáze team** | Vlastníci databázové infrastruktury | Poskytují přístup k prostředí SQL (služby AD FS nebo služby Azure AD Connect) pro konkrétní scénář přípravy.<br/>Jejich by měl podílejí co |
+| **Tým síťových** | Vlastníci síťové infrastruktury | Zadejte požadovaný přístup na úrovni sítě pro synchronizační servery správně přistupovat ke zdrojům dat a cloudovým službám (pravidla brány firewall, porty otevřít, pravidla IPSec atd.) |
+| **Bezpečnostní tým** | Definuje bezpečnostní strategie, analyzuje zprávy o zabezpečení z různých zdrojů a postupuje podle zjištění. | Zajištění zabezpečení cílové scénáře hodnocení |
 
 ## <a name="common-prerequisites-for-all-building-blocks"></a>Běžné požadavky pro všechny stavební bloky
 
-Toto jsou některé součásti potřebné pro všechny POC s Azure AD Premium.
+Tady jsou některé požadavky potřebné pro všechny POC s Azure AD Premium.
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Klientovi Azure AD, které jsou definované s platným předplatným Azure | [Postup získání klienta Azure Active Directory](active-directory-howto-tenant.md)<br/>**Poznámka:** Pokud již máte v prostředí s licencí Azure AD Premium, můžete získat nulové cap předplatné přechodem na https://aka.ms/accessaad <br/>Další informace na: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ a https://technet.microsoft.com/library/dn832618.aspx |
-| Definované a ověření domény | [Přidání vlastního názvu domény do Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Poznámka:** některé úlohy, jako například Power BI může mít zřízení klient služby azure AD v pozadí. Chcete-li zkontrolovat, pokud je přidružena k klienta pro danou doménu, přejděte na https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Je-li získat k úspěšné odpovědi, pak domény je již přiřazen k klienta a převzít kontrolu nad mohou být potřebné. Pokud ano, požádejte Microsoft o další pokyny. Další informace o převzetí možnosti v: [co je Samoobslužná registrace pro Azure?](active-directory-self-service-signup.md) |
-| Azure AD Premium nebo EMS zkušební povoleno | [Azure Active Directory Premium zdarma pro jeden měsíc](https://azure.microsoft.com/trial/get-started-active-directory/) |
-| Přiřadili jste Azure AD Premium nebo licencí pro EMS PoC uživatelům | [Licence vy a vaši uživatelé v Azure Active Directory](active-directory-licensing-get-started-azure-portal.md) |
-| Přihlašovací údaje Azure AD globálního správce. | [Přiřazení rolí správce v Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md) |
-| Volitelné, ale důrazně ho doporučujeme: paralelní testovacího prostředí jako zálohu | [Požadavky pro Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) |
+| Tenant Azure AD definované s platným předplatným Azure | [Získání tenanta služby Azure Active Directory](active-directory-howto-tenant.md)<br/>**Poznámka:** Pokud již máte prostředí s licencí Azure AD Premium, žádný limit předplatného můžete získat tak, že přejdete na https://aka.ms/accessaad <br/>Další informace najdete na: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ a https://technet.microsoft.com/library/dn832618.aspx |
+| Definice a ověření domény | [Přidání vlastního názvu domény do Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Poznámka:** některé úlohy, jako jsou Power BI může mít zřízení tenanta služby azure AD na pozadí. Zkontrolujte, jestli je dané domény přidružené k tenantovi, přejděte na https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Je-li získat úspěšné odpovědi, pak doména je už přiřazený k tenantovi a převzít kontrolu nad může být nutné. Pokud ano, pro další informace získáte od Microsoftu. Další informace o převzetí možnosti v: [co je Samoobslužná registrace pro Azure?](active-directory-self-service-signup.md) |
+| Azure AD Premium nebo EMS zkušební povoleno | [Azure Active Directory Premium zdarma po dobu jednoho měsíce](https://azure.microsoft.com/trial/get-started-active-directory/) |
+| PoC uživatelům přiřadíte licence EMS nebo Azure AD Premium | [Licence sami sebe i vaše uživatele v Azure Active Directory](active-directory-licensing-get-started-azure-portal.md) |
+| Přihlašovací údaje Azure AD globálního správce | [Přiřazení rolí správce v Azure Active Directory](users-groups-roles/directory-assign-admin-roles.md) |
+| Volitelné, ale důrazně ho doporučujeme: paralelní testovacího prostředí jako záložní | [Požadavky pro Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) |
 
-## <a name="directory-synchronization---password-hash-sync-phs---new-installation"></a>Instalace nové synchronizace - synchronizace hodnot Hash hesel (PBS) - Directory
+## <a name="directory-synchronization---password-hash-sync-phs---new-installation"></a>Nová instalace synchronizace - synchronizace hodnot Hash hesel (PHS) - Directory
 
-Přibližná doba na dokončeno: jednu hodinu, než menší než 1 000 uživatelů PoC
+Přibližný čas dokončení: jednu hodinu, než méně než 1000 uživateli současně PoC
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Připojení serveru ke spuštění služby Azure AD | [Požadavky pro Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) |
-| Cíloví uživatelé POC ve stejné doméně a součástí skupiny zabezpečení a organizační jednotky | [Vlastní instalace služby Azure AD Connect](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) |
-| Azure AD Connect funkce, která je potřebná pro fázi testování Koncepce jsou identifikovány. | [Připojení služby Active Directory s Azure Active Directory – konfigurace synchronizace funkce](./connect/active-directory-aadconnect.md#configure-sync-features) |
+| Připojte server ke spuštění služby Azure AD | [Požadavky pro Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) |
+| Cíloví uživatelé POC ve stejné doméně a součást zabezpečení skupiny a organizační jednotky | [Vlastní instalace služby Azure AD Connect](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) |
+| Azure AD Connect funkce, která je potřebné pro testování Konceptu jsou označeny. | [Připojení Active Directory s Azure Active Directory – konfigurace synchronizace funkcí](./connect/active-directory-aadconnect.md#configure-sync-features) |
 | Požadovaná pověření pro místní a cloudové prostředí  | [Azure AD Connect: Účty a oprávnění](./connect/active-directory-aadconnect-accounts-permissions.md) |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Stáhnout nejnovější verzi služby Azure AD Connect | [Stáhněte si Microsoft Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) |
-| Nainstalujte Azure AD Connect s ta nejjednodušší cesta: Express <br/>1. Filtrovat, aby cílové organizační jednotky a zkraťte dobu synchronizačním cyklu<br/>2. Vyberte cílovou sadu uživatelů v místní skupině.<br/>3. Nasazení funkce vyžaduje další POC motivy | [Azure AD Connect: Vlastní instalace: domény a organizační jednotky filtrování](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) <br/>[Azure AD Connect: Vlastní instalace: filtrování na základě skupiny](./connect/active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)<br/>[Azure AD Connect: Integrování místních identit s Azure Active Directory: Konfigurace funkcí synchronizace](./connect/active-directory-aadconnect.md#configure-sync-features) |
-| Otevřít Azure AD Connect uživatelského rozhraní a zobrazit spuštěný profily dokončené (Import, synchronizace a export) | [Synchronizace Azure AD Connect: Plánovač](./connect/active-directory-aadconnectsync-feature-scheduler.md) |
-| Otevřete [portálu pro správu Azure AD](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/), přejděte do okna "Všichni uživatelé", přidat sloupec "Zdroj autority" a najdete v tématu, která se zobrazí uživatelům, správně označené jako pocházející od "Windows Server AD" | [Portál pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) |
+| Stáhněte si nejnovější verzi Azure AD Connect | [Stáhněte si Microsoft Azure Active Directory Connect](https://www.microsoft.com/download/details.aspx?id=47594) |
+| Instalace služby Azure AD Connect pomocí nejjednodušší cesta: Express <br/>1. Filtrovat k cíli organizační jednotky, aby se minimalizoval čas cyklus synchronizace<br/>2. Zvolte cíl sadu uživatelů v místní skupině.<br/>3. Nasazení funkce vyžadované jiné POC motivy | [Azure AD Connect: Vlastní instalace: domény a organizační jednotky filtrování](./connect/active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering) <br/>[Azure AD Connect: Vlastní instalace: filtrování na základě skupiny](./connect/active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)<br/>[Azure AD Connect: Integrování místních identit Azure Active Directory: Konfigurace synchronizačních funkcí](./connect/active-directory-aadconnect.md#configure-sync-features) |
+| Otevřete Azure AD Connect uživatelského rozhraní a zobrazit spuštěné profily dokončené (Import, synchronizace a export) | [Synchronizace Azure AD Connect: Plánovač](./connect/active-directory-aadconnectsync-feature-scheduler.md) |
+| Otevřít [portálu pro správu Azure AD](https://ms.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/), přejděte do okna "Všechny uživatele", přidejte sloupec "Zdroj autority" a, že se zobrazí uživatelům, správně označené jako pocházející z "Windows Server AD" | [Portál pro správu Azure AD](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) |
 
 ### <a name="considerations"></a>Požadavky
 
-1. Podívejte se na důležité informace o zabezpečení synchronizace hodnot hash hesel [zde](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).  Pokud synchronizací hodnoty hash hesla pro uživatele pilotního nasazení produkční není platností možnost, pak zvažte následující možnosti:
-   * Vytvoření testovacích uživatelů v doméně v produkčním prostředí. Ujistěte se, že nemáte synchronizovat jiný účet
+1. Podívejte se na aspekty zabezpečení synchronizace hodnot hash hesel [tady](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md).  Pokud synchronizace hodnot hash hesel pro uživatele pilotního nasazení produkčního prostředí není platností možnost, pak zvažte následující možnosti:
+   * Vytvoření testovacích uživatelů do domény v produkčním prostředí. Ujistěte se, že nesynchronizovat jiný účet
    * Přesunout do prostředí UAT
-2.  Pokud chcete, federační pokračovat, je vhodné pochopit, že náklady na přidružené zprostředkovatele Identity místní nad rámec ve fázi POC federované řešení a míře, které proti výhody, které hledáte:
-    * Je důležité cesty, budete muset navrhnout pro zajištění vysoké dostupnosti
-    * Je místní služby, které potřebujete k plánování kapacity
-    * Je místní služby, které potřebujete k monitorování nebo udržovat nebo oprava
+2.  Pokud chcete vykonávat federation, je vhodné pochopit, že náklady na přidružený k federované řešení místního zprostředkovatele Identity nad rámec testování Konceptu a vyhodnocování, které podle výhod, které hledáte:
+    * Jde na kritické cestě, takže budete muset návrh pro zajištění vysoké dostupnosti
+    * Je to místní služba, které potřebujete k plánování kapacity
+    * Je to místní služba, které potřebujete k monitorování/udržovat/patch
 
-Další informace: [identity Principy Office 365 a Azure Active Directory - federované Identity](https://support.office.com/article/Understanding-Office-365-identity-and-Azure-Active-Directory-06a189e7-5ec6-4af2-94bf-a22ea225a7a9#bk_federated)
+Další informace: [identity Principy Office 365 a Azure Active Directory – Federated Identity](https://support.office.com/article/Understanding-Office-365-identity-and-Azure-Active-Directory-06a189e7-5ec6-4af2-94bf-a22ea225a7a9#bk_federated)
 
 ## <a name="branding"></a>Branding
 
-Přibližná doba na dokončeno: 15 minut
+Přibližný čas dokončení: 15 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Prostředky (bitové kopie, loga, atd.); Pro nejlepší vizualizace Ujistěte se, že mají prostředky doporučené velikosti. | [Přidání firemního brandingu na přihlašovací stránku ve službě Azure Active Directory](active-directory-branding-custom-signon-azure-portal.md) |
-| Volitelné: Pokud prostředí obsahuje server služby AD FS, přístup k serveru za účelem přizpůsobení webových motivů | [AD FS uživatele přihlásit přizpůsobení](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/ad-fs-user-sign-in-customization) |
-| Klientský počítač k provedení přihlášení činnost koncového uživatele |  |
-| Volitelné: Mobilních zařízení a ověřit činnost |  |
+| Prostředky (obrázky, loga, atd.); Pro nejlepší vizualizaci Ujistěte se, že máte prostředky doporučené velikosti. | [Přidání firemního brandingu na přihlašovací stránku ve službě Azure Active Directory](active-directory-branding-custom-signon-azure-portal.md) |
+| Volitelné: Pokud prostředí obsahuje server služby AD FS, přístup k serveru, aby vlastní webový motiv | [AD FS uživatele přihlásit vlastního nastavení](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/ad-fs-user-sign-in-customization) |
+| Klientského počítače provádět činnost koncového uživatele přihlášení |  |
+| Volitelné: Mobilní zařízení k ověření prostředí |  |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Přejděte na portál pro správu Azure AD | [Portál pro správu Azure AD - firemního brandingu](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
-| Nahrajte prostředků pro přihlašovací stránku (nejdůležitější logo, malé logo, popisky, atd.). Případně pokud máte služby AD FS, zarovnejte stejné prostředky s přihlašovací stránky služby AD FS | [Přidání firemního brandingu na vaše přihlášení a přístupový Panel stránky: přizpůsobitelné prvky](fundamentals/customize-branding.md) |
-| Počkejte několik minut, aby tato změna se plně projeví |  |
+| Přejděte na portálu pro správu Azure AD | [Portál pro správu Azure AD – vlastní firemní Branding](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
+| Nahrávejte prostředky pro přihlašovací stránku (hero logo, malé logo, popisky, atd.). Případně pokud máte službu AD FS, zarovnání stejné prostředky s přihlašovací stránky služby AD FS | [Přidat vlastní firemní branding přihlašování a přístupového panelu stránky: přizpůsobitelné prvky](fundamentals/customize-branding.md) |
+| Počkejte pár minut, než se změna se plně projeví |  |
 | Přihlaste se pomocí přihlašovacích údajů uživatele POC do https://myapps.microsoft.com |  |
-| Potvrďte vzhledu a chování v prohlížeči | [Přidání firemního brandingu na vaše přihlášení a přístupový Panel stránky](fundamentals/customize-branding.md) |
+| Potvrďte vzhledu a chování v prohlížeči | [Přidat vlastní firemní branding přihlašování a přístupového panelu stránky](fundamentals/customize-branding.md) |
 | Volitelně můžete potvrďte vzhledu a chování v jiných zařízení |  |
 
 ### <a name="considerations"></a>Požadavky
 
-Pokud původní vzhledu a chování zůstane po přizpůsobení vyprázdnit mezipaměť klienta prohlížeče a zkuste operaci zopakovat.
+Pokud původní vzhledu a chování zůstane po přizpůsobení vyprázdnit mezipaměť prohlížeče klienta a zkuste operaci zopakovat.
 
 ## <a name="group-based-licensing"></a>Na základě skupiny licencí
 
-Přibližná doba na dokončeno: 10 minut
+Přibližný čas dokončení: 10 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Všichni uživatelé POC jsou součástí skupiny zabezpečení (cloudové nebo místní) | [Vytvořte skupinu a přidejte členy v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
+| Všichni uživatelé POC jsou součástí skupiny zabezpečení (Cloudová nebo místní) | [Vytvoření skupiny a přidání členů v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Přejděte do okna licencí na portálu správy Azure AD | [Portál pro správu Azure AD: Správa licencí](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) |
-| Přiřadíte licence do skupiny zabezpečení s POC uživateli. | [Přiřazení licencí pro skupinu uživatelů ve službě Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md) |
+| Přejděte do okna licence v portálu pro správu Azure AD | [Portál pro správu Azure AD: licencování](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) |
+| Přiřazení licencí ke skupině zabezpečení s uživateli POC. | [Přiřazení licencí ke skupině uživatelů v Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md) |
 
 ### <a name="considerations"></a>Požadavky
 
-V případě jakékoli problémy, přejděte na [scénáře, omezení a známé problémy s použití skupin ke správě licencování v Azure Active Directory](active-directory-licensing-group-advanced.md)
+V případě jakékoli problémy, přejděte na [scénářů, omezení a známé problémy s použití skupin pro správu licencování v Azure Active Directory](active-directory-licensing-group-advanced.md)
 
 ## <a name="saas-federated-sso-configuration"></a>Konfigurace SaaS federovaného jednotného přihlašování
 
-Přibližná doba na dokončeno: 60 minut
+Přibližný čas dokončení: 60 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Testovací prostředí aplikace SaaS, která je k dispozici. V této příručce použijeme ServiceNow jako příklad.<br/>Důrazně doporučujeme používat testovací instance minimalizovat tření na navigace existující data kvality a mapování. | Přejděte na https://developer.servicenow.com/app.do#! / domácí zahájíte proces získávání testovací instance |
-| Přístup správce ke konzole pro správu ServiceNow | [Kurz: Azure Active Directory integrace s ServiceNow](saas-apps/servicenow-tutorial.md) |
-| Cíl nastaví uživatelů přiřazení aplikace k. Skupinu zabezpečení obsahující uživatele PoC se doporučuje. <br/>Pokud vytváření skupiny není vhodná, přiřadíte přímo k aplikaci ve fázi poc pak uživatelům | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
+| Testovací prostředí aplikace SaaS, která je k dispozici. V této příručce použijeme jako příklad ServiceNow.<br/>Důrazně doporučujeme používat instanci testu chcete-li minimalizovat případná problémová místa pro přechod existující kvalitu dat a mapování. | Přejděte na https://developer.servicenow.com/app.do#! / domácí zahájíte proces načítání instance testu |
+| Přístup správce ke konzole pro správu ServiceNow | [Kurz: Integrace Azure Active Directory s použitím ServiceNow](saas-apps/servicenow-tutorial.md) |
+| Cílové sadu uživatelů do přiřazení aplikace k. Doporučuje se skupinu zabezpečení obsahující uživatele PoC. <br/>Pokud se vytváření skupiny není proveditelné, zařaďte uživatelům přímo do aplikace pro testování konceptu | [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Sdílet kurzu pro všechny účastníky z Documentation společnosti Microsoft  | [Kurz: Azure Active Directory integrace s ServiceNow](saas-apps/servicenow-tutorial.md) |
-| Nastavit pracovní schůzku a postupujte podle kroků kurzu s každou objektu actor. | [Kurz: Azure Active Directory integrace s ServiceNow](saas-apps/servicenow-tutorial.md) |
-| Přiřadíte skupinu určené v požadavky aplikace. Pokud ve fázi POC podmíněného přístupu v oboru, můžete později, pokroku a přidat vícefaktorového ověřování a podobné. <br/>Všimněte si, že to bude nové proces zajišťování (Pokud je nakonfigurováno) |  [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) <br/>[Vytvořte skupinu a přidejte členy v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
-| Pomocí Azure AD management Portal můžete přidat ServiceNow aplikace z Galerie| [Správa služby Azure AD portál: podnikové aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Co je nového v nástroji Správa podniková aplikace v Azure Active Directory](active-directory-enterprise-apps-whats-new-azure-portal.md) |
-| V okně "Jednotného přihlašování" aplikace ServiceNow povolte "na základě SAML přihlašování" |  |
-| Vyplňte pole "Přihlašovací adresa URL" a "Identifikátor" s ServiceNow adresu URL<br/>Zaškrtněte políčko "Aktivujte nový certifikát"<br/>a uložte nastavení |  |
-| Otevřete okno "Konfigurace ServiceNow" v dolní části panelu vlastní pokyny pro konfiguraci ServiceNow |  |
+| Sdílet kurzu pro všechny objekty actor z Documentation Microsoftu  | [Kurz: Integrace Azure Active Directory s použitím ServiceNow](saas-apps/servicenow-tutorial.md) |
+| Nastavit pracovní schůzku a postupujte podle kroků kurzu se každý objekt actor. | [Kurz: Integrace Azure Active Directory s použitím ServiceNow](saas-apps/servicenow-tutorial.md) |
+| Aplikaci můžete přiřadíte ke skupině identifikované v rámci požadavků. Pokud testování Konceptu podmíněného přístupu v oboru, můžete opakování, který později a přidat vícefaktorové ověřování a podobně. <br/>Všimněte si, že to bude spouštět v procesu zřízení (je-li konfigurováno) |  [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) <br/>[Vytvoření skupiny a přidání členů v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
+| Správa služby Azure AD Portal slouží k přidání ServiceNow aplikaci z Galerie| [Správa služby Azure AD Portal: podnikových aplikací](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/Overview) <br/>[Co je nového ve správě podnikových aplikací v Azure Active Directory](active-directory-enterprise-apps-whats-new-azure-portal.md) |
+| V okně aplikace ServiceNow "Jednotné přihlašování" zapnout "založené na SAML Sign-on" |  |
+| Vyplňte pole "Přihlášení na URL" a "Identifikátor" s adresou URL vašeho ServiceNow<br/>Zaškrtnutím políčka "Nastavit nový certifikát jako aktivní"<br/>a uložte nastavení |  |
+| Otevře se okno "Konfigurovat ServiceNow" v dolní části panelu zobrazíte přizpůsobené pokyny, jak je možné nakonfigurovat ServiceNow |  |
 | Postupujte podle pokynů ke konfiguraci ServiceNow |  |
-| V okně "Zřizování" aplikace ServiceNow povolte zřizování "Automatické" | [Správa zřizování pro podnikové aplikace na portálu Azure nový uživatelský účet](manage-apps/configure-automatic-user-provisioning-portal.md) |
-| Zatímco bude zřizování dokončeno, počkejte několik minut.  Do té doby můžete zkontrolovat na zřizování sestavy |  |
-| Přihlaste se k https://myapps.microsoft.com/ jako testovacího uživatele, který má přístup | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
-| Klikněte na dlaždici pro aplikaci, kterou jste právě vytvořili. Potvrďte volbu přístup |  |
-| Volitelně můžete zkontrolovat sestavy využití aplikace. Všimněte si, že se některé latenci, takže budete muset počkat, než určitou dobu sledovat provoz v sestavách. | [Přihlašovací aktivity sestav na portálu Azure Active Directory: využití spravovaných aplikací](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](active-directory-reporting-retention.md) |
+| V okně aplikace ServiceNow "Zřizování" zapnout "Automatické" zřizování | [Správa uživatelského účtu zřizování pro podnikové aplikace na novém portálu Azure Portal](manage-apps/configure-automatic-user-provisioning-portal.md) |
+| Počkejte pár minut bude zřizování dokončeno.  Do té doby můžete zkontrolovat na sestavy o zřizování |  |
+| Přihlaste se k https://myapps.microsoft.com/ jako testovací uživatel, který má přístup | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
+| Kliknutím na dlaždici aplikace, kterou jste právě vytvořili. Ověření přístupu |  |
+| Volitelně můžete zkontrolovat sestavy využití aplikací. Všimněte si, že není určitou latenci, takže budete muset počkat určitou dobu sledovat provoz v sestavách. | [Sestavy aktivit přihlašování na portálu Azure Active Directory: použití spravovaných aplikací](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](active-directory-reporting-retention.md) |
 
 ### <a name="considerations"></a>Požadavky
 
-1. Výše [kurzu](saas-apps/servicenow-tutorial.md) odkazuje na staré Azure prostředí pro správu AD. Ale PoC je založena na [rychlý Start](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away) prostředí.
-2. Pokud cílová aplikace se nenachází v galerii, můžete použít, "Přineste vlastní aplikace". Další informace: [co je nového v nástroji Správa podniková aplikace v Azure Active Directory: Přidat vlastní aplikace z jednoho místa](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
+1. Nad [kurzu](saas-apps/servicenow-tutorial.md) odkazuje na starý Azure prostředí pro správu AD. Ale PoC je založen na [rychlý Start](active-directory-enterprise-apps-whats-new-azure-portal.md#quickstart-get-going-with-your-new-application-right-away) prostředí.
+2. Pokud je cílová aplikace není k dispozici v galerii, můžete použít, "Přineste si vlastní aplikaci". Další informace: [co je nového ve správě podnikových aplikací v Azure Active Directory: Přidání vlastních aplikacích na jednom místě](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
 
-## <a name="saas-password-sso-configuration"></a>Konfigurace jednotného přihlašování k SaaS heslo
+## <a name="saas-password-sso-configuration"></a>Konfigurace jednotného přihlašování hesla SaaS
 
-Přibližná doba na dokončeno: 15 minut
+Přibližný čas dokončení: 15 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Testovací prostředí pro aplikace SaaS. Příklad přihlašování heslo je HipChat a Twitter. Pro všechny ostatní aplikace budete potřebovat přesnou adresu URL stránky s přihlášení formuláře html. | [Twitter na webu Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[HipChat na webu Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
-| Testovací účty pro aplikace. | [Zaregistrujte si služby Twitter.](https://twitter.com/signup?lang=en)<br/>[Zaregistrujte se zdarma: HipChat](https://www.hipchat.com/sign_up) |
-| Cíl nastaví uživatelů přiřazení aplikace k. Skupiny zabezpečení obsažené uživatele se nedoporučuje. | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
-| Místní správce přístupu k počítači a nasazení rozšíření Panel přístupu pro Internet Explorer, Chrome nebo Firefox | [Rozšíření přístup k panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístup k panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístup k panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
+| Testovací prostředí pro aplikace SaaS. Příklad jednotné přihlašování heslem je HipChat a Twitter. Pro jakékoli jiné aplikace budete potřebovat přesnou adresu URL stránky pomocí přihlašovacího formuláře html. | [Na webu Microsoft Azure Marketplace na twitteru](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[HipChat na webu Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.hipchat) |
+| Testovací účty pro aplikace. | [Zaregistrujte si Twitter](https://twitter.com/signup?lang=en)<br/>[Zaregistrovat si bezplatný: Hipchatu](https://www.hipchat.com/sign_up) |
+| Cílové sadu uživatelů do přiřazení aplikace k. Skupiny zabezpečení obsažené uživatelé se doporučuje. | [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
+| Oprávnění místního správce přístup k počítači a nasazení pro aplikaci Internet Explorer, Chrome nebo Firefox rozšíření přístupového panelu | [Rozšíření přístupového panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístupového panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístupového panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Nainstalujte rozšíření prohlížeče | [Rozšíření přístup k panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístup k panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístup k panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| Nakonfigurovat aplikaci z Galerie | [Co je nového v nástroji Správa podniková aplikace v Azure Active Directory: galerii nových a vylepšených aplikací](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Konfigurace hesla jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na portálu Azure nové: založené na heslech přihlašování](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
-| Přiřadit skupinu určené v požadované součásti aplikace | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
-| Přihlaste se k https://myapps.microsoft.com/ jako testovacího uživatele, který má přístup |  |
-| Klikněte na dlaždici pro aplikaci, kterou jste právě vytvořili. | [Co je na přístupovém panelu?: založené na heslech jednotné přihlašování bez zřizování identity](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
-| Zadejte přihlašovací údaje aplikací | [Co je na přístupovém panelu?: založené na heslech jednotné přihlašování bez zřizování identity](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
-| Zavřete prohlížeč a opakujte přihlášení. Uživatel nyní měli vidět bezproblémový přístup k aplikaci. |  |
-| Volitelně můžete zkontrolovat sestavy využití aplikace. Všimněte si, že se některé latenci, takže budete muset počkat, než určitou dobu sledovat provoz v sestavách. | [Přihlašovací aktivity sestav na portálu Azure Active Directory: využití spravovaných aplikací](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](active-directory-reporting-retention.md) |
+| Instalace rozšíření prohlížeče | [Rozšíření přístupového panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístupového panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístupového panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
+| Nakonfigurovat aplikaci z Galerie | [Co je nového ve správě podnikových aplikací v Azure Active Directory: nové a vylepšené aplikace Galerie](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
+| Konfigurace heslem jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na novém portálu Azure Portal: přihlašování založené na heslech](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Přiřadit skupinu určené v požadavcích aplikace | [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
+| Přihlaste se k https://myapps.microsoft.com/ jako testovací uživatel, který má přístup |  |
+| Kliknutím na dlaždici aplikace, kterou jste právě vytvořili. | [Co je na přístupovém panelu?: založené na heslech jednotné přihlašování bez zřizování identity](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| Zadat přihlašovací údaje, které aplikace | [Co je na přístupovém panelu?: založené na heslech jednotné přihlašování bez zřizování identity](active-directory-saas-access-panel-introduction.md#password-based-sso-without-identity-provisioning) |
+| Zavřete prohlížeč a opakujte přihlášení. Uživatel by měl nyní zobrazit bezproblémový přístup k aplikaci. |  |
+| Volitelně můžete zkontrolovat sestavy využití aplikací. Všimněte si, že není určitou latenci, takže budete muset počkat určitou dobu sledovat provoz v sestavách. | [Sestavy aktivit přihlašování na portálu Azure Active Directory: použití spravovaných aplikací](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](active-directory-reporting-retention.md) |
 
 ### <a name="considerations"></a>Požadavky
 
-Pokud cílová aplikace se nenachází v galerii, můžete použít, "Přineste vlastní aplikace". Další informace: [co je nového v nástroji Správa podniková aplikace v Azure Active Directory: Přidat vlastní aplikace z jednoho místa](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
+Pokud je cílová aplikace není k dispozici v galerii, můžete použít, "Přineste si vlastní aplikaci". Další informace: [co je nového ve správě podnikových aplikací v Azure Active Directory: Přidání vlastních aplikacích na jednom místě](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
 
  Mějte na paměti následující požadavky:
-   * Aplikace by měl mít známých přihlašovací adresa URL
-   * Na přihlašovací stránce by měl obsahovat formuláře HTML s jeden další textová pole, které rozšíření prohlížeče můžete automatické vyplnění. Minimálně měl by obsahovat uživatelské jméno a heslo.
+   * Aplikace by měla mít známé přihlašovací adresa URL
+   * Přihlašovací stránka by měla obsahovat s jeden další textová pole, které rozšíření prohlížeče mohou automaticky vyplnit pole formuláře HTML. Minimálně musí obsahovat uživatelské jméno a heslo.
 
-## <a name="saas-shared-accounts-configuration"></a>SaaS sdílenou konfiguraci účtů
+## <a name="saas-shared-accounts-configuration"></a>Konfigurace sdílené účty SaaS
 
-Přibližná doba na dokončeno: 30 minut
+Přibližný čas dokončení: 30 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Seznam cíl aplikací a přesně přihlašovací adresy URL předem. Jako příklad můžete Twitter. | [Twitter na webu Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Zaregistrujte si služby Twitter.](https://twitter.com/signup?lang=en) |
-| Sdílené přihlašovací údaje pro tuto aplikaci SaaS. | [Sdílení účtů pomocí služby Azure AD](active-directory-sharing-accounts.md)<br/>[Heslo převrácení pro Facebook, Twitter a LinkedIn nyní ve verzi preview služby azure AD automatizované! -Enterprise Mobility and Security Blog] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
-| Přihlašovací údaje pro alespoň dva členy týmu, kteří budou mít přístup stejný účet. Musí být součástí skupiny zabezpečení. | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
-| Místní správce přístupu k počítači a nasazení rozšíření Panel přístupu pro Internet Explorer, Chrome nebo Firefox | [Rozšíření přístup k panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístup k panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístup k panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
+| Seznam cílové aplikace a přesně přihlašovací adresy URL předem. Například můžete použít Twitter. | [Na webu Microsoft Azure Marketplace na twitteru](https://azuremarketplace.microsoft.com/marketplace/apps/aad.twitter)<br/>[Zaregistrujte si Twitter](https://twitter.com/signup?lang=en) |
+| Sdílené přihlašovací údaje pro tuto aplikaci SaaS. | [Sdílení účtů pomocí Azure AD](active-directory-sharing-accounts.md)<br/>[Azure AD automatizované heslo převrácení pro Facebook, Twitter a LinkedIn teď ve verzi preview! – Enterprise Mobility and Security Blog] (https://blogs.technet.microsoft.com/enterprisemobility/2015/02/20/azure-ad-automated-password-roll-over-for-facebook-twitter-and-linkedin-now-in-preview/ ) |
+| Přihlašovací údaje pro alespoň dva členy týmu, kteří budou přistupovat k stejný účet. Musí být součástí skupiny zabezpečení. | [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
+| Oprávnění místního správce přístup k počítači a nasazení pro aplikaci Internet Explorer, Chrome nebo Firefox rozšíření přístupového panelu | [Rozšíření přístupového panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístupového panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístupového panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Nainstalujte rozšíření prohlížeče | [Rozšíření přístup k panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístup k panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístup k panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
-| Nakonfigurovat aplikaci z Galerie | [Co je nového v nástroji Správa podniková aplikace v Azure Active Directory: galerii nových a vylepšených aplikací](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
-| Konfigurace hesla jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na portálu Azure nové: založené na heslech přihlašování](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
-| Aplikace přiřadit skupinu určené v požadavky při přiřazování jejich přihlašovací údaje | [Přiřadit uživatele nebo skupinu enterprise aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
-| Přihlaste se jako různým uživatelům přístup k aplikaci jako **stejné sdílené účtu.**  |  |
-| Volitelně můžete zkontrolovat sestavy využití aplikace. Všimněte si, že se některé latenci, takže budete muset počkat, než určitou dobu sledovat provoz v sestavách. | [Přihlašovací aktivity sestav na portálu Azure Active Directory: využití spravovaných aplikací](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](active-directory-reporting-retention.md) |
+| Instalace rozšíření prohlížeče | [Rozšíření přístupového panelu pro aplikaci Internet Explorer](https://account.activedirectory.windowsazure.com/Applications/Installers/x64/Access%20Panel%20Extension.msi)<br/>[Rozšíření přístupového panelu pro Chrome](https://go.microsoft.com/fwLink/?LinkID=311859&clcid=0x409)<br/>[Rozšíření přístupového panelu pro Firefox](https://go.microsoft.com/fwLink/?LinkID=626998&clcid=0x409) |
+| Nakonfigurovat aplikaci z Galerie | [Co je nového ve správě podnikových aplikací v Azure Active Directory: nové a vylepšené aplikace Galerie](active-directory-enterprise-apps-whats-new-azure-portal.md#improvements-to-the-azure-active-directory-application-gallery) |
+| Konfigurace heslem jednotného přihlašování | [Správa jednotného přihlašování pro podnikové aplikace na novém portálu Azure Portal: přihlašování založené na heslech](manage-apps/configure-single-sign-on-portal.md#password-based-sign-on) |
+| Přiřadit aplikace do skupiny podle požadavků při přiřazování jejich přihlašovacích údajů | [Přiřadit uživatele nebo skupiny k podnikové aplikace v Azure Active Directory](manage-apps/assign-user-or-group-access-portal.md) |
+| Přihlaste se jako různí uživatelé tuto aplikaci přístup, jako **sdílí stejný účet.**  |  |
+| Volitelně můžete zkontrolovat sestavy využití aplikací. Všimněte si, že není určitou latenci, takže budete muset počkat určitou dobu sledovat provoz v sestavách. | [Sestavy aktivit přihlašování na portálu Azure Active Directory: použití spravovaných aplikací](active-directory-reporting-activity-sign-ins.md#usage-of-managed-applications)<br/>[Zásady uchovávání sestav služby Azure Active Directory](active-directory-reporting-retention.md) |
 
 
 ### <a name="considerations"></a>Požadavky
 
-Pokud cílová aplikace se nenachází v galerii, můžete použít, "Přineste vlastní aplikace". Další informace: [co je nového v nástroji Správa podniková aplikace v Azure Active Directory: Přidat vlastní aplikace z jednoho místa](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
+Pokud je cílová aplikace není k dispozici v galerii, můžete použít, "Přineste si vlastní aplikaci". Další informace: [co je nového ve správě podnikových aplikací v Azure Active Directory: Přidání vlastních aplikacích na jednom místě](active-directory-enterprise-apps-whats-new-azure-portal.md#add-custom-applications-from-one-place)
 
  Mějte na paměti následující požadavky:
-   * Aplikace by měl mít známých přihlašovací adresa URL
-   * Na přihlašovací stránce by měl obsahovat formuláře HTML s jeden další textová pole, které rozšíření prohlížeče můžete automatické vyplnění. Minimálně měl by obsahovat uživatelské jméno a heslo.
+   * Aplikace by měla mít známé přihlašovací adresa URL
+   * Přihlašovací stránka by měla obsahovat s jeden další textová pole, které rozšíření prohlížeče mohou automaticky vyplnit pole formuláře HTML. Minimálně musí obsahovat uživatelské jméno a heslo.
 
-## <a name="app-proxy-configuration"></a>Konfigurace Proxy aplikace
+## <a name="app-proxy-configuration"></a>Konfigurace Proxy aplikací
 
-Přibližná doba na dokončeno: 20 minut
+Přibližný čas dokončení: 20 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Microsoft Azure AD basic nebo předplatné premium a adresář Azure AD, u kterého jste globální správce | [Edice služby Azure Active Directory](fundamentals/active-directory-whatis.md) |
-| Webové aplikace hostované místní, které chcete nakonfigurovat pro vzdálený přístup |  |
-| Serveru se systémem Windows Server 2012 R2 nebo Windows 8.1 nebo vyšší, na který nainstalujete konektor Proxy aplikace | [Pochopení konektory proxy aplikace služby Azure AD](manage-apps/application-proxy-connectors.md) |
-| Pokud v cestě je brána firewall, ujistěte se, že je otevřete tak, aby konektor můžete provést požadavky HTTPS (TCP) proxy aplikace | [Povolení Proxy aplikace na portálu Azure: požadavky na Proxy aplikace](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
-| Pokud vaše organizace používá proxy servery pro připojení k Internetu, proveďte podívejte se na blogu k vystavení práci se stávající místní servery proxy podrobnosti o tom, jak je nakonfigurovat | [Práce s existující místní proxy servery](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md) |
+| Microsoft Azure AD basic nebo předplatné premium a adresář služby Azure AD, u kterého jste globální správce | [Edice Azure Active Directory](fundamentals/active-directory-whatis.md) |
+| Webové aplikace hostované v místním prostředí, který chcete nakonfigurovat pro vzdálený přístup |  |
+| Serveru se systémem Windows Server 2012 R2 nebo Windows 8.1 nebo novější, na který nainstalujete konektor Proxy aplikace | [Principy konektorů Proxy aplikací Azure AD](manage-apps/application-proxy-connectors.md) |
+| Pokud je v cestě brána firewall, ujistěte se, že je otevřete tak, aby konektor může provádět požadavky prostřednictvím protokolu HTTPS (TCP) Proxy aplikací | [Povolení Proxy aplikace na webu Azure Portal: požadavky na Proxy aplikace](manage-apps/application-proxy-enable.md#application-proxy-prerequisites) |
+| Pokud vaše organizace používá proxy servery pro připojení k Internetu, proveďte najdete v blogovém příspěvku s existující místní proxy server pro podrobnosti o tom, jak je nakonfigurovat pracovní | [Práce s existující místní proxy servery](manage-apps/application-proxy-configure-connectors-with-proxy-servers.md) |
 
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Instalace konektoru na serveru | [Povolení Proxy aplikace na portálu Azure: instalace a registrace konektoru](manage-apps/application-proxy-enable.md#install-and-register-a-connector) |
-| Publikovat místní aplikace ve službě Azure AD jako aplikace Proxy aplikace | [Publikování aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-publish-azure-portal.md) |
-| Přiřadit testovací uživatele | [Publikování aplikací pomocí proxy aplikace služby Azure AD: Přidání testovacího uživatele](manage-apps/application-proxy-publish-azure-portal.md#add-a-test-user) |
-| Volitelně můžete nakonfigurujte jeden přihlašování pro vaše uživatele | [Zadejte jednotné přihlašování s proxy aplikace služby Azure AD](manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md) |
-| Testování aplikace po přihlášení na portál MyApps jako přiřazený uživatel | https://myapps.microsoft.com |
+| Nainstalujte konektor na server | [Povolení Proxy aplikace na webu Azure Portal: instalace a registrace konektoru](manage-apps/application-proxy-enable.md#install-and-register-a-connector) |
+| Publikování aplikace v místním prostředí ve službě Azure AD jako aplikace Proxy aplikací | [Publikování aplikací pomocí Proxy aplikací Azure AD](manage-apps/application-proxy-publish-azure-portal.md) |
+| Přiřadit testovací uživatele | [Publikování aplikací pomocí Proxy aplikací Azure AD: Přidání testovacího uživatele](manage-apps/application-proxy-publish-azure-portal.md#add-a-test-user) |
+| Volitelně můžete nakonfigurujte jednotné přihlašování prostředí pro uživatele | [Poskytuje jednotné přihlašování s Azure AD Application Proxy](manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md) |
+| Testování aplikace po přihlášení k portálu MyApps jako přiřazený uživatel | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>Požadavky
 
-1. Při doporučujeme uvedení konektor v podnikové síti, existují případy, když se zobrazí lepší výkon jeho umístění v cloudu. Další informace: [aspekty topologie sítě, při použití aplikace Proxy Azure Active Directory](manage-apps/application-proxy-network-topology.md)
-2. Další podrobné informace o zabezpečení a jak to zejména zabezpečený vzdálený přístup poskytuje řešení udržováním pouze odchozí připojení najdete v tématu: [důležité informace o zabezpečení pro vzdálený přístup k aplikací pomocí proxy aplikace služby Azure AD](manage-apps/application-proxy-security.md)
+1. Přestože doporučujeme uvedení konektoru v podnikové síti, existují případy, když se zobrazí lepší výkon, že ho umístíte do cloudu. Další informace: [aspekty topologie sítě, při použití Azure Active Directory Application Proxy](manage-apps/application-proxy-network-topology.md)
+2. Další podrobné informace o zabezpečení a jak to zejména zabezpečený vzdálený přístup poskytuje řešení pouze udržováním odchozího připojení naleznete v tématu: [aspekty zabezpečení pro vzdálený přístup k aplikací s využitím Azure AD Application Proxy](manage-apps/application-proxy-security.md)
 
-## <a name="generic-ldap-connector-configuration"></a>Obecná konfigurace konektoru LDAP
+## <a name="generic-ldap-connector-configuration"></a>Obecný konektor LDAP konfigurace
 
-Přibližná doba na dokončeno: 60 minut
+Přibližný čas dokončení: 60 minut
 
 > [!IMPORTANT]
-> Toto je pokročilou konfiguraci nutnosti některé znalost FIM nebo MIM. Pokud se používá v produkčním prostředí, doporučujeme, aby dotazy týkající se tato konfigurace projít [Premier Support](https://support.microsoft.com/premier).
+> Toto je pokročilou konfiguraci, které vyžadují některé znalost FIM nebo MIM. Je-li použít v produkčním prostředí, kterými byste dotazy týkající se této konfigurace projít [Premier Support](https://support.microsoft.com/premier).
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Instalace a konfigurace Azure AD Connect | Stavební blok: [synchronizace adresáře – synchronizace hodnot Hash hesel](#directory-synchronization--password-hash-sync-phs--new-installation) |
-| Požadavky na schůzku ADLDS instance | [Technické informace o obecné konektor LDAP: Přehled obecné konektor LDAP](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#overview-of-the-generic-ldap-connector) |
-| Seznam úloh, které uživatelé používají a atributy přidružené tyto úlohy | [Synchronizace Azure AD Connect: atributy se synchronizují do Azure Active Directory](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
+| Azure AD Connect, instalace a konfigurace | Stavebním blokem: [synchronizace adresáře – synchronizace hodnot Hash hesel](#directory-synchronization--password-hash-sync-phs--new-installation) |
+| Požadavky na schůzku ADLDS instance | [Technické reference pro obecný konektor LDAP: přehled obecný konektor LDAP](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#overview-of-the-generic-ldap-connector) |
+| Seznam úloh, které uživatelé používají a atributy přidružené k tyto úlohy | [Synchronizace Azure AD Connect: atributy synchronizované do Azure Active Directory](./connect/active-directory-aadconnectsync-attributes-synchronized.md) |
 
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Přidat generický konektor LDAP | [Technické informace o obecné konektor LDAP: vytvořit nový konektor](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
-| Vytvoření profilů spuštění pro vytvořený konektor (úplný import, Rozdílový import, úplná synchronizace, rozdílová synchronizace, export) | [Vytvořit profil spuštění agenta správy](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Použití konektorů s Azure AD Connect Sync Správce služeb](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
-| Spustit úplný import profilu a ověřte, jestli jsou objekty v prostoru konektoru | [Vyhledejte objekt prostoru konektoru](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[Použití konektorů s Azure AD Connect Sync Správce služeb: hledání prostoru konektoru](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
-| Vytvoření pravidla synchronizace, tak, aby objektů v Metaverse nezbytné atributy pro úlohy | [Synchronizace Azure AD Connect: osvědčené postupy pro změnu výchozí konfigurace: změny pravidla synchronizace](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Synchronizace Azure AD Connect: Principy deklarativní zřizování](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Synchronizace Azure AD Connect: Principy výrazů deklarativní zřizování](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
-| Spustit úplnou synchronizaci cyklu | [Synchronizace Azure AD Connect: Scheduler: spuštění plánovače](./connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler) |
+| Přidat obecný konektor LDAP | [Technické reference pro obecný konektor LDAP: vytvořit nový konektor](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap#create-a-new-connector) |
+| Vytvoření profilů spuštění pro vytvořený konektor (úplný import, Rozdílový import, úplná synchronizace, rozdílová synchronizace, export) | [Vytvoření profilu spuštění agenta správy](https://technet.microsoft.com/library/jj590219(v=ws.10).aspx)<br/> [Používání konektorů s Azure AD Connect Sync Service Manager](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md)|
+| Spustit úplný import profilu a ověřte, že jsou objekty v prostoru konektoru | [Vyhledejte objekt prostoru konektoru](https://technet.microsoft.com/library/jj590287(v=ws.10).aspx)<br/>[Používání konektorů s Azure AD Connect Sync Service Manager: Search Connector Space](./connect/active-directory-aadconnectsync-service-manager-ui-connectors.md#search-connector-space) |
+| Vytvoření pravidla synchronizace tak, aby objektů v Metaverse atributy vyžadované pro úlohy | [Synchronizace Azure AD Connect: osvědčené postupy pro změnu výchozí konfigurace: změní na synchronizační pravidla](./connect/active-directory-aadconnectsync-best-practices-changing-default-configuration.md#changes-to-synchronization-rules)<br/>[Synchronizace Azure AD Connect: Principy deklarativní zřizování](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning.md)<br/>[Synchronizace Azure AD Connect: Principy výrazů deklarativního zřizování](./connect/active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md) |
+| Spustí cyklus úplné synchronizace | [Synchronizace Azure AD Connect: Plánovač: spustit Plánovač](./connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler) |
 | V případě problémů se řešení potíží | [Řešení potíží s objektem, který se nesynchronizuje do Azure AD](./connect/active-directory-aadconnectsync-troubleshoot-object-not-syncing.md) |
-| Ověřte, zda LDAP uživatel může přihlásit a přístup k aplikaci | https://myapps.microsoft.com |
+| Ověřte, že LDAP uživatel může přihlásit a přístup k aplikaci | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>Požadavky
 
 > [!IMPORTANT]
-> Toto je pokročilou konfiguraci nutnosti některé znalost FIM nebo MIM. Pokud se používá v produkčním prostředí, doporučujeme, aby dotazy týkající se tato konfigurace projít [Premier Support](https://support.microsoft.com/premier).
+> Toto je pokročilou konfiguraci, které vyžadují některé znalost FIM nebo MIM. Je-li použít v produkčním prostředí, kterými byste dotazy týkající se této konfigurace projít [Premier Support](https://support.microsoft.com/premier).
 
 ## <a name="groups---delegated-ownership"></a>Skupin, delegovat vlastnictví
 
-Přibližná doba na dokončeno: 10 minut
+Přibližný čas dokončení: 10 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Již nakonfigurována aplikace SaaS (Federovanému nebo heslo jednotné přihlašování) | Stavební blok: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) |
-| Skupina cloudu, kterému je přiřazen přístup k aplikaci v #1 je určena | Stavební blok: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) <br/>[Vytvořte skupinu a přidejte členy v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
-| Přihlašovací údaje pro vlastník skupiny jsou k dispozici | [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](fundamentals/active-directory-manage-groups.md) |
-| Byla zjištěna přihlašovací údaje pro přístup aplikace k pracovníkovi s informacemi | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
+| Aplikace SaaS (jednotného přihlašování k federovanému nebo jednotného přihlašování hesla) už nakonfigurovala | Stavebním blokem: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) |
+| Je identifikován cloudu skupiny, který je přiřazen přístup k aplikaci v #1 | Stavebním blokem: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) <br/>[Vytvoření skupiny a přidání členů v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
+| Přihlašovací údaje pro vlastníka skupiny jsou k dispozici | [Správa přístupu k prostředkům pomocí skupin služby Azure Active Directory](fundamentals/active-directory-manage-groups.md) |
+| Byla zjištěna přihlašovací údaje pro přístup k aplikacím pracovníkovi s informacemi | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Identifikovat skupinu, kterému byla udělena přístup k aplikaci a nakonfigurovat vlastník daného skupiny| [Spravovat nastavení pro skupinu v Azure Active Directory ](fundamentals/active-directory-groups-settings-azure-portal.md) |
-| Přihlaste se jako vlastník skupiny, najdete v části členství ve skupině skupiny kartě přístupového panelu | [Stránky Azure Active Directory, Správa skupin](https://account.activedirectory.windowsazure.com/r#/groups) |
-| Přidat pracovník s informacemi, které chcete testovat |  |
-| Přihlaste se jako pracovník, potvrďte, že dlaždice je k dispozici | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
+| Identifikovat skupinu, která získala přístup k aplikaci a nakonfigurovat vlastník dané skupiny| [Správa nastavení pro skupinu v Azure Active Directory ](fundamentals/active-directory-groups-settings-azure-portal.md) |
+| Přihlaste se jako vlastník skupiny najdete v tématu členství ve skupinách v kartě skupiny z přístupového panelu | [Azure Active Directory skupiny Management stránky](https://account.activedirectory.windowsazure.com/r#/groups) |
+| Přidat pracovníkovi s informacemi, které chcete testovat |  |
+| Přihlaste se jako informační pracovník, abyste potvrdili, že tato dlaždice je k dispozici | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
 
 ### <a name="considerations"></a>Požadavky
 
-Pokud má aplikace zřizování povolené, může budete muset Počkejte několik minut pro zřizování dokončit před přístupem k aplikaci jako pracovník s informacemi.
+Pokud má aplikace zřizování povolená, můžete potřebovat Počkejte několik minut, než se zřízení dokončí před přístupem k aplikaci jako informační pracovník.
 
-## <a name="saas-and-identity-lifecycle"></a>SaaS a životního cyklu Identity
+## <a name="saas-and-identity-lifecycle"></a>SaaS a životního cyklu identit
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Již nakonfigurována aplikace SaaS (Federovanému nebo heslo jednotné přihlašování) | Stavební blok: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) |
-| Skupina cloudu, kterému je přiřazen přístup k aplikaci v #1 je určena | Stavební blok: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) <br/>[Vytvořte skupinu a přidejte členy v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
-| Byla zjištěna přihlašovací údaje pro přístup aplikace k pracovníkovi s informacemi | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
+| Aplikace SaaS (jednotného přihlašování k federovanému nebo jednotného přihlašování hesla) už nakonfigurovala | Stavebním blokem: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) |
+| Je identifikován cloudu skupiny, který je přiřazen přístup k aplikaci v #1 | Stavebním blokem: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) <br/>[Vytvoření skupiny a přidání členů v Azure Active Directory](fundamentals/active-directory-groups-create-azure-portal.md) |
+| Byla zjištěna přihlašovací údaje pro přístup k aplikacím pracovníkovi s informacemi | [Co je na přístupovém panelu?](active-directory-saas-access-panel-introduction.md) |
 
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Odeberte uživatele ze skupiny, které aplikace je přiřazena k | [Správa členství ve skupině pro uživatele v klientovi služby Azure Active Directory](fundamentals/active-directory-groups-members-azure-portal.md) |
-| Počkejte několik minut, než jeho rušení | [Automatické zřizování uživatelů aplikace SaaS ve službě Azure AD: Jak funguje automatické zřizování?](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
-| Na relace samostatné prohlížeče Přihlaste se jako pracovník Moje aplikace portál a potvrďte, že dlaždice chybí | http://myapps.microsoft.com |
+| Odebrání uživatele ze skupiny přiřazené k aplikaci | [Správa členství ve skupinách pro uživatele ve vašem tenantovi Azure Active Directory](fundamentals/active-directory-groups-members-azure-portal.md) |
+| Počkejte několik minut, než se jeho rušení | [Automatické zřizování uživatelů aplikace SaaS ve službě Azure AD: Jak funguje automatické zřizování?](active-directory-saas-app-provisioning.md#how-does-automatic-provisioning-work) |
+| Na relace samostatné prohlížeče Přihlaste se jako informační pracovník na portálu Moje aplikace a potvrďte tuto dlaždici chybí | http://myapps.microsoft.com |
 
 
 ### <a name="considerations"></a>Požadavky
 
-Odvodit PoC scénáři a odešlé jednotky nebo absencí scénáře. Pokud uživatel získá zakázán v místní službě AD nebo odebrán, už je způsob, jak se přihlásit k aplikaci SaaS.
+Potom údaje Extrapolujte PoC scénář, který má odešlé jednotky a/nebo absencí scénáře. Pokud uživatel získá zakázán v místní služby AD nebo odebrali, již není možné přihlásit k aplikaci SaaS.
 
-## <a name="self-service-access-to-application-management"></a>Samoobslužné přístup ke správě aplikací
+## <a name="self-service-access-to-application-management"></a>Samoobslužný přístup ke správě aplikací
 
-Přibližná doba na dokončeno: 10 minut
+Přibližný čas dokončení: 10 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Identifikace uživatelů POC, které bude požadovat přístup k aplikacím, jako součást skupiny zabezpečení | Stavební blok: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) |
-| Cílová aplikace nasazené | Stavební blok: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) |
+| Identifikace uživatele služby POC, které se požadují přístup k aplikacím, jako součást zabezpečení skupiny | Stavebním blokem: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) |
+| Cílová aplikace nasazení | Stavebním blokem: [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Přejděte do okna podnikové aplikace v portálu správy Azure AD | [Portál pro správu Azure AD: Podnikové aplikace, které](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) |
-| Nakonfigurovat aplikaci z požadavky se samoobslužné služby | [Co je nového v nástroji Správa podniková aplikace v Azure Active Directory: Konfigurace přístupu k aplikaci Samoobslužné služby](active-directory-enterprise-apps-whats-new-azure-portal.md#configure-self-service-application-access) |
-| Přihlaste se jako pracovník na portál Moje aplikace | http://myapps.microsoft.com |
-| Všimněte si, "+ Přidat aplikaci" tlačítko na op stránky. Umožňuje vám získat přístup k aplikaci |  |
+| Přejděte do okna podnikové aplikace v portálu pro správu Azure AD | [Portálu pro správu Azure AD: Podnikové aplikace](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) |
+| Nakonfigurovat samoobslužné aplikace v požadavcích | [Co je nového ve správě podnikových aplikací v Azure Active Directory: Konfigurace samoobslužného přístupu k aplikacím](active-directory-enterprise-apps-whats-new-azure-portal.md#configure-self-service-application-access) |
+| Přihlaste se jako informační pracovník na portálu Moje aplikace | http://myapps.microsoft.com |
+| Všimněte si, že "+ Přidat aplikaci" tlačítko na op stránky. Použijte ho k získání přístupu k aplikaci |  |
 
 ### <a name="considerations"></a>Požadavky
 
-Aplikace vybrali používají zřizování požadavky, takže okamžitě přejdete k aplikaci by mohly způsobit některé chyby. Pokud aplikace vybrali podporuje zřizování s azure ad a je nakonfigurován, tuto funkci můžete použít jako příležitost k zobrazení celého toku práce a provést tak kompletní. V tématu stavební blok pro [Konfigurace jednotného přihlašování federovaného SaaS](#saas-federated-sso-configuration) pro další doporučení
+Zvolené aplikace může mít zřizování požadavky, tak bude okamžitě aplikace může způsobit nějaké chyby. Pokud aplikace zvolit podporuje zřizování s využitím azure ad a je nakonfigurován, tuto funkci můžete použít jako příležitost k zobrazení celého toku práce komplexní. Zobrazit stavební blok pro [SaaS federované jednotné přihlašování konfigurace](#saas-federated-sso-configuration) Další doporučení
 
 ## <a name="self-service-password-reset"></a>Samoobslužné resetování hesla
 
-Přibližná doba na dokončeno: 15 minut
+Přibližný čas dokončení: 15 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Povolte správu hesla pomocí samoobslužné služby ve vašem klientovi. | [Azure Active Directory resetování hesla pro správce IT](active-directory-passwords-update-your-own-password.md) |
-| Povolte zpětný zápis hesla ke správě hesel z místní. Poznámka: to vyžaduje konkrétní Azure AD Connect verze | [Požadavky pro zpětný zápis hesla](authentication/howto-sspr-writeback.md) |
-| Identifikujte PoC uživatele, kteří tuto funkci používat a ujistěte se, že jsou členy skupiny zabezpečení. Uživatelé musí být bez oprávnění správce na plně prezentují funkce | [Přizpůsobení: Správa hesel Azure AD: omezení přístupu k resetování hesla](authentication/howto-sspr-writeback.md) |
+| Povolte správu hesla pomocí samoobslužné služby ve vašem tenantovi. | [Azure Active Directory – heslo resetoval správce IT](active-directory-passwords-update-your-own-password.md) |
+| Povolte zpětný zápis hesla ke správě místních hesel. Poznámka: to vyžaduje, aby konkrétní služby Azure AD Connect verze | [Požadavky pro zpětný zápis hesla](authentication/howto-sspr-writeback.md) |
+| Identifikujte PoC uživatele, kteří budou tuto funkci použít a ujistěte se, že jsou členy skupiny zabezpečení. Uživatelé musí být bez oprávnění správce k prezentaci plně možnosti | [Přizpůsobení: Správa hesel Azure AD: omezení přístupu k resetování hesla](authentication/howto-sspr-writeback.md) |
 
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Přejděte na portál pro správu Azure AD: resetování hesla | [Portálu pro správu Azure AD: Resetování hesla](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset) |
-| Určí, že zásady resetování hesla. Pro účely testování Koncepce můžete použít telefonní hovor a otázek a odpovědí. Doporučujeme povolit registrace, která má být potřeba zadat v přihlášení na panel přístupu |  |
+| Přejděte na portálu pro správu Azure AD: resetování hesla | [Portál pro správu Azure AD: Resetování hesla](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset) |
+| Určete že zásady pro resetování hesla. Pro účely POC můžete použít telefonních hovorů a funkce Q & A. Doporučuje povolit registraci vyžadovat přihlášení na přístupovém panelu |  |
 | Odhlaste se a přihlaste se jako pracovník s informacemi |  |
-| Zadat data funkce samoobslužného resetování hesla, jak nakonfigurovat po jednotlivých krok 2 | https://aka.ms/ssprsetup |
+| Zadat data pro samoobslužné resetování hesla nakonfigurované na krok 2 | https://aka.ms/ssprsetup |
 | Zavřete prohlížeč |  |
-| Začít od začátku procesu přihlášení jako pracovník s informacemi, které jste použili v kroku 4 |  |
-| Resetování hesla | [Aktualizujte své heslo: resetování hesla](active-directory-passwords-update-your-own-password.md) |
-| Zkuste se přihlásit pomocí nového hesla ke službě Azure AD i tak, aby místní prostředky |  |
+| Začněte proces přihlášení jako pracovníkovi s informacemi, které jste použili v kroku 4 |  |
+| Resetovat heslo | [Aktualizace vlastního hesla: resetování hesla](active-directory-passwords-update-your-own-password.md) |
+| Zkuste se přihlásit pomocí nového hesla ke službě Azure AD stejně jako místní prostředky |  |
 
 ### <a name="considerations"></a>Požadavky
 
-1. Jestliže upgrade Azure AD Connect bude způsobit tření, zvažte použití proti cloudové účty ani ji nastavit jako ukázku proti samostatné prostředí
-2. Správci mají různé zásady a resetování hesla pomocí účtu správce může nezanechávajícího skvrny ve fázi PoC a způsobit nejasnostem. Ujistěte se, že použijete k testování operací resetování běžného uživatelského účtu
+1. Pokud upgradu Azure AD Connect bude způsobit případná problémová místa, zvažte použití proti cloudové účty nebo nastavte ji na ukázku proti samostatné prostředí
+2. Správci, které mají různé zásady a pomocí účtu správce na resetování hesla můžou taint testování konceptu a způsobit zmatení. Ujistěte se, že používáte běžný uživatelský účet a otestujte operace resetování
 
 
-## <a name="azure-multi-factor-authentication-with-phone-calls"></a>Azure Multi-Factor Authentication s telefonní hovory
+## <a name="azure-multi-factor-authentication-with-phone-calls"></a>Azure Multi-Factor Authentication s telefonních hovorů
 
-Přibližná doba na dokončeno: 10 minut
+Přibližný čas dokončení: 10 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Identifikovat POC uživatele, kteří budou používat vícefaktorového ověřování  |  |
-| Phone s funkčním příjem pro ověřovací test MFA  | [Co je Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md) |
+| Identifikovat POC uživatele, kteří budou používat vícefaktorové ověřování  |  |
+| Telefon s dobrým recepci ověřovacím testem MFA  | [Co je Azure Multi-Factor Authentication?](authentication/multi-factor-authentication.md) |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Přejděte do okna "Uživatelé a skupiny" v portálu správy Azure AD | [Správy portálu Azure AD: Uživatelé a skupiny](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Overview/menuId/) |
-| Zvolte okno "Všichni uživatelé" |  |
-| V horním panelu zvolte tlačítko "Vícefaktorového ověřování" | Přímá adresa URL pro portál Azure MFA: https://aka.ms/mfaportal |
-| V nastavení "User" Vyberte uživatele, ověření koncepce a povolení vícefaktorového ověřování | [Stavy uživatele ve službě Azure Multi-Factor Authentication](authentication/howto-mfa-userstates.md) |
-| Přihlaste se jako PoC uživatelů a procházení procesem výš  |  |
+| Přejděte do okna "Uživatele a skupiny" v portálu pro správu Azure AD | [Azure AD Management Portal: Uživatelé a skupiny](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/Overview/menuId/) |
+| Zvolte možnost "Všechny uživatele" okno |  |
+| V horní části panelu zvolte tlačítko "Ověřování službou Multi-Factor Authentication" | Přímá adresa URL pro portál Azure MFA: https://aka.ms/mfaportal |
+| V nastavení "Uživatelského" Vyberte PoC uživatelů a povolit pro vícefaktorové ověřování | [Stavy uživatele ve službě Azure Multi-Factor Authentication](authentication/howto-mfa-userstates.md) |
+| Přihlaste se jako uživatel PoC a názorný postup vás provede procesem výš  |  |
 
 ### <a name="considerations"></a>Požadavky
 
-1. Ve fázi PoC kroky v této stavebním blokem explicitně nastavení vícefaktorového ověřování pro uživatele na všechny přihlášení. Existují jiné nástroje, jako je například podmíněný přístup a ochrana Identity, které zaujmout MFA na více cílových scénářů. To bude vypadat přibližně vzít v úvahu při přesouvání z POC do produkčního prostředí.
-2. Testování koncepce kroků v této stavebním blokem explicitně používají telefonní hovory jako metodu vícefaktorového ověřování pro expedience. Jak z POC přechod do produkčního prostředí, doporučujeme používat aplikace, jako [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) jako vaše druhý faktor, kdykoli je to možné.
+1. Testování konceptu kroky v tomto stavebním blokem explicitním nastavením MFA pro uživatele na všechna přihlášení. Existují jiné nástroje jako je například podmíněný přístup a ochrana Identity, které kontaktovat MFA na více cílových scénářů. Bude jím něco, co zvážit při přesouvání z POC do produkčního prostředí.
+2. PoC kroky v tomto stavebním blokem jsou jako metody vícefaktorového ověřování pro expedience explicitně pomocí telefonních hovorů. Jak přejít od Koncepce do produkčního prostředí doporučujeme používat aplikace, jako [Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) jako váš druhý faktor, kdykoli je to možné.
 Další informace: [koncept speciální publikace NIST 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html)
 
-## <a name="mfa-conditional-access-for-saas-applications"></a>MFA podmíněného přístupu pro aplikace SaaS
+## <a name="mfa-conditional-access-for-saas-applications"></a>Vícefaktorové ověřování, podmíněného přístupu pro aplikace SaaS
 
-Přibližná doba na dokončeno: 10 minut
+Přibližný čas dokončení: 10 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Identifikaci PoC uživatelů pro zásady. Tito uživatelé musí být ve skupině zabezpečení k určení rozsahu zásad podmíněného přístupu | [Konfigurace SaaS federovaného jednotného přihlašování](#saas-federated-sso-configuration) |
-| Aplikace SaaS byl již nakonfigurován. |  |
-| Uživatelé PoC jsou již přiřazena k aplikaci |  |
+| Identifikujte uživatele PoC cílit na zásady. Tito uživatelé by měl být ve skupině zabezpečení, pokud chcete určit obor zásady podmíněného přístupu | [Konfigurace SaaS federovaného jednotného přihlašování](#saas-federated-sso-configuration) |
+| SaaS aplikace byl již nakonfigurován. |  |
+| Uživatelé PoC jsou už přiřazené k aplikaci |  |
 | Přihlašovací údaje, aby uživatel POC jsou k dispozici |  |
-| Testování Koncepce uživatel je registrovaný pro MFA. Pomocí telefonu s funkčním příjem | https://aka.ms/ssprsetup |
-| Zařízení v interní síti. IP adresou nakonfigurovanou v interní adresa rozsahu | Najít ip adresu: https://www.bing.com/search?q=what%27s+my+ip |
-| Zařízení v externí síti (může být telefon pomocí rozumí provozovatel mobilní sítě.) |  |
+| Uživatel POC je zaregistrovaný pro MFA. Pomocí telefonu s dobrým příjem | https://aka.ms/ssprsetup |
+| Zařízení v interní síti. IP adresu nakonfigurovanou v rozsahu adres interní | Najdete vaše ip adresa: https://www.bing.com/search?q=what%27s+my+ip |
+| Zařízení v externí síti (může být telefonu pomocí dopravce mobilní sítě) |  |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Přejděte na portál pro správu Azure AD: okno podmíněného přístupu | [Portálu pro správu Azure AD: Podmíněný přístup](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) |
-| Vytvoření zásady podmíněného přístupu:<br/>-Cíl PoC uživatele v části "Uživatelé a skupiny"<br/>-Cíl aplikací PoC v části "Cloudových aplikací"<br/>-Cílový všech umístění s výjimkou důvěryhodné ty, které jsou v části "Podmínky" -> "Umístění" **Poznámka:** důvěryhodné IP adresy se konfigurují v [portál vícefaktorového ověřování](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)<br/>-Vyžadovat vícefaktorové ověřování v části "Grant" | [Začínáme s podmíněným přístupem v Azure Active Directory: postup konfigurace zásad](active-directory-conditional-access-azure-portal-get-started.md#policy-configuration-steps) |
-| Přístup z aplikace uvnitř podnikové sítě | [Začínáme s podmíněným přístupem v Azure Active Directory: testování zásad](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
+| Přejděte na portálu pro správu Azure AD: okna podmíněného přístupu | [Portálu pro správu Azure AD: Podmíněný přístup](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) |
+| Vytvoření zásad podmíněného přístupu:<br/>-Target PoC uživatele v části "Uživatele a skupiny"<br/>-Target PoC aplikace v části "Cloudových aplikací"<br/>-Cíl všechna místa s výjimkou důvěryhodné ty v části "Podmínky" -> "Umístění" **Poznámka:** důvěryhodné IP adresy se konfigurují v [portál vícefaktorového ověřování](https://account.activedirectory.windowsazure.com/UserManagement/MfaSettings.aspx)<br/>-Vyžadovat vícefaktorové ověřování v části "Udělení" | [Začínáme s podmíněným přístupem v Azure Active Directory: postup konfigurace zásad](active-directory-conditional-access-azure-portal-get-started.md#policy-configuration-steps) |
+| Přístup z aplikace uvnitř firemní sítě. | [Začínáme s podmíněným přístupem v Azure Active Directory: testování zásad](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
 | Přístup k aplikaci z veřejné síti | [Začínáme s podmíněným přístupem v Azure Active Directory: testování zásad](active-directory-conditional-access-azure-portal-get-started.md#testing-the-policy) |
 
 ### <a name="considerations"></a>Požadavky
 
-Pokud používáte federace, můžete použít místní zprostředkovatele Identity (IdP) ke komunikaci s deklaracemi identity stav uvnitř/mimo podnikovou síť. Tento postup můžete použít bez nutnosti ke správě seznamu IP adres, které může být složité k posuzování a správě ve velkých organizacích. V této instalaci potřebovat účet pro scénář "roamingu sítě" (uživatel, protokolování z interní sítě a při přihlášeného přepínače umístění, například v kavárně) a ujistěte se, že rozumíte důsledkům. Další informace: [zabezpečení cloudových prostředků s Azure Multi-Factor Authentication a AD FS: důvěryhodné IP adresy pro federované uživatele](authentication/howto-mfa-adfs.md#trusted-ips-for-federated-users)
+Pokud používáte federaci, můžete ke komunikaci stav uvnitř nebo mimo podnikovou síť s deklaracemi místního zprostředkovatele Identity (IdP). Tento postup můžete použít bez nutnosti spravovat seznam IP adres, které můžou být složité vyhodnocovat a spravovat ve velkých organizacích. V nastavení potřebujete účet pro scénář "roamingu sítě" (uživatel protokolování z interní sítě a při přihlášení přepínače umístění, například v kavárně) a ujistěte se, že chápete důsledky. Další informace: [zabezpečení cloudových prostředků pomocí ověřování Azure Multi-Factor Authentication a AD FS: důvěryhodné IP adresy pro federované uživatele](authentication/howto-mfa-adfs.md#trusted-ips-for-federated-users)
 
-## <a name="privileged-identity-management-pim"></a>Správa privilegovaných identit (PIM)
+## <a name="privileged-identity-management-pim"></a>Privileged Identity Management (PIM)
 
-Přibližná doba na dokončeno: 15 minut
+Přibližný čas dokončení: 15 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Identifikovat globální správce, který bude součástí POC v PIM. | [Začít používat Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) |
-| Identifikovat globální správce, který se stane správce zabezpečení. | [Začít používat Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)<br/> [Různé správu role v Azure Active Directory PIM](active-directory-privileged-identity-management-roles.md) |
-| Volitelné: Ujistěte se, pokud globální správci e-mailu přístup k e-mailová oznámení v PIM výkonu | [Co je Azure AD Privileged Identity Management?: Konfigurace nastavení aktivace role](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)
+| Identifikujte globálního správce, který bude součástí POC PIM | [Začněte používat Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md) |
+| Identifikujte globálního správce, který se stane správce zabezpečení | [Začněte používat Azure AD Privileged Identity Management](active-directory-privileged-identity-management-getting-started.md)<br/> [Různé role pro správu v Azure Active Directory PIM](active-directory-privileged-identity-management-roles.md) |
+| Volitelné: Potvrzení, pokud globální Správci mají přístup k e-mailu k e-mailových oznámení v PIM | [Co je Azure AD Privileged Identity Management?: Konfigurace nastavení aktivace rolí](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)
 
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Přihlášení k https://portal.azure.com jako globální správce (GA) a bootstrap okně PIM. Globální správce, který provádí tento krok je nasazených jako správce zabezpečení.  Umožňuje volání této GA1 objektu actor | [Pomocí Průvodce zabezpečení v Azure AD Privileged Identity Management](active-directory-privileged-identity-management-security-wizard.md) |
-| Identifikujte globálního správce a přesunout z trvalé do vhodné. To by měl být samostatné správce ze používaný pro přehlednost v kroku 1. Umožňuje volání této GA2 objektu actor | [Azure AD Privileged Identity Management: Jak přidat nebo odebrat roli uživatele](active-directory-privileged-identity-management-how-to-add-role-to-user.md)<br/>[Co je Azure AD Privileged Identity Management?: Konfigurace nastavení aktivace role](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)  |
-| Nyní, přihlaste se jako GA2 k https://portal.azure.com a zkuste změnit "Nastavení uživatele". Všimněte si, že se některé možnosti jsou zobrazena šedě. | |
-| Na nové kartě a ve stejné relaci jako krok 3, přejděte nyní na https://portal.azure.com a přidejte okně PIM do řídicího panelu. | [Postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management: Přidání aplikace Privileged Identity Management](active-directory-privileged-identity-management-how-to-activate-role.md#add-the-privileged-identity-management-application) |
-| Žádost o aktivaci role Globální správce | [Postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management: aktivovat roli](active-directory-privileged-identity-management-how-to-activate-role.md#activate-a-role) |
-| Všimněte si, že pokud GA2 nikdy zaregistrovali do vícefaktorového ověřování, registrace pro Azure MFA bude nutné |  |
-| Přejděte zpět na kartu původního v kroku 3 a klikněte na tlačítko Aktualizovat v prohlížeči. Všimněte si, že teď máte přístup k změna "Uživatelského nastavení" | |
-| Volitelně Pokud globální správci e-mailu povolen, můžete zkontrolovat GA1 a GA2 pro složky Doručená pošta a oznámení, Probíhá aktivace role |  |
-| 8 zkontrolujte historie auditu a pozorovat, že sestava potvrďte zvýšení úrovně GA2 zobrazí. | [Co je Azure AD Privileged Identity Management?: kontrolní aktivita role](active-directory-privileged-identity-management-configure.md#review-role-activity) |
+| Přihlaste se k https://portal.azure.com jako globální správce (GA) a bootstrap okno PIM. Globální správce, který provádí tento krok je nasazený jako správce zabezpečení.  Pojmenujme tuto GA1 objektu actor | [Pomocí Průvodce zabezpečení v Azure AD Privileged Identity Management](active-directory-privileged-identity-management-security-wizard.md) |
+| Identifikujte globální správce a přesunout z trvalé na oprávněné. To by měl být samostatný správce, než jaký se používá v kroku 1 pro přehlednost. Pojmenujme tuto GA2 objektu actor | [Azure AD Privileged Identity Management: Jak přidat nebo odebrat roli uživatele](active-directory-privileged-identity-management-how-to-add-role-to-user.md)<br/>[Co je Azure AD Privileged Identity Management?: Konfigurace nastavení aktivace rolí](active-directory-privileged-identity-management-configure.md#configure-the-role-activation-settings)  |
+| Nyní, přihlaste se jako GA2 k https://portal.azure.com a zkuste změnit "Nastavení". Všimněte si, některé možnosti jsou zobrazena šedě. | |
+| Na nové kartě a ve stejné relaci v kroku 3 vyhledejte nyní https://portal.azure.com a přidání PIM okno na řídicí panel. | [Postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management: Přidání aplikace Privileged Identity Management](active-directory-privileged-identity-management-how-to-activate-role.md#add-the-privileged-identity-management-application) |
+| Žádost o aktivaci role Globální správce | [Postup aktivace nebo deaktivace role v Azure AD Privileged Identity Management: aktivaci role](active-directory-privileged-identity-management-how-to-activate-role.md#activate-a-role) |
+| Všimněte si, že pokud GA2 se nikdy zaregistrovali pro vícefaktorové ověřování, registrace pro vícefaktorové ověřování Azure bude nutné |  |
+| Přejděte zpět na původní kartu v kroku 3 a klikněte na tlačítko Aktualizovat v prohlížeči. Všimněte si, že máte teď přístup k nastavení "uživatel" | |
+| Volitelně Pokud globální Správci mají zapnutým e-mailem, můžete zkontrolovat GA1 a GA2 vaší doručené pošty a zobrazit tato zpráva role aktivuje |  |
+| 8 zkontrolujte historie auditu a podívejte se, že sestava potvrďte zvýšení GA2 zobrazí. | [Co je Azure AD Privileged Identity Management?: kontrolní aktivita role](active-directory-privileged-identity-management-configure.md#review-role-activity) |
 
 ### <a name="considerations"></a>Požadavky
 
-Tato funkce je součástí P2 Azure AD Premium nebo EMS E5
+Tato funkce je součástí Azure AD Premium P2 a/nebo EMS E5
 
 ## <a name="discovering-risk-events"></a>Zjišťování rizikových událostí
 
-Přibližná doba na dokončeno: 20 minut
+Přibližný čas dokončení: 20 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Zařízení s prohlížečem Tor staženy a nainstalovány | [Stáhněte si Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| Přístup k uživatelům testování Koncepce provést přihlášení | [Azure seznam strategií ochrany identit Active Directory](active-directory-identityprotection-playbook.md) |
+| Zařízení s prohlížečem Tor, stahování a instalace | [Stáhněte si Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
+| Přístup k přihlášení uživatele POC | [Playbook Azure Active Directory Identity Protection](active-directory-identityprotection-playbook.md) |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Otevřete tor prohlížeče | [Stáhněte si Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| Přihlaste se k https://myapps.microsoft.com pomocí uživatelského účtu POC | [Azure Active Directory Identity Protection playbook: simulaci rizikových událostí](active-directory-identityprotection-playbook.md#simulating-risk-events) |
-| Počkejte 5 – 7 minut |  |
+| Otevřít tor prohlížeče | [Stáhněte si Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
+| Přihlaste se k https://myapps.microsoft.com pomocí uživatelského účtu POC | [Playbook Azure Active Directory Identity Protection: simulace rizikových událostí](active-directory-identityprotection-playbook.md#simulating-risk-events) |
+| Počkejte 5-7 minut |  |
 | Přihlaste se jako globální správce, aby https://portal.azure.com a otevřete okno Identity Protection | https://aka.ms/aadipgetstarted |
-| Otevřete okno riziko události. Měli byste vidět položku v části "Přihlášení z anonymních IP adres"  | [Azure Active Directory Identity Protection playbook: simulaci rizikových událostí](active-directory-identityprotection-playbook.md#simulating-risk-events) |
+| Otevře se okno rizikové události. Měli byste vidět položku "Přihlášení z anonymních IP adres"  | [Playbook Azure Active Directory Identity Protection: simulace rizikových událostí](active-directory-identityprotection-playbook.md#simulating-risk-events) |
 
 ### <a name="considerations"></a>Požadavky
 
-Tato funkce je součástí P2 Azure AD Premium nebo EMS E5
+Tato funkce je součástí Azure AD Premium P2 a/nebo EMS E5
 
-## <a name="deploying-sign-in-risk-policies"></a>Nasazení zásad riziko přihlášení
+## <a name="deploying-sign-in-risk-policies"></a>Nasazení zásady rizik přihlašování
 
-Přibližná doba na dokončeno: 10 minut
+Přibližný čas dokončení: 10 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
-| Zařízení s prohlížečem Tor staženy a nainstalovány | [Stáhněte si Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
-| Přístup jako POC uživatel mohl přihlásit testování |  |
-| Testování Koncepce uživatel je registrovaný pomocí vícefaktorového ověřování. Nezapomeňte použít telefon s funkčním příjem | Stavební blok: [Azure Multi-Factor Authentication s telefonní hovory](#azure-multi-factor-authentication-with-phone-calls) |
+| Zařízení s prohlížečem Tor, stahování a instalace | [Stáhněte si Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
+| Přístup jako uživatele POC protokolu v testování |  |
+| Uživatel POC je zaregistrován s MFA. Nezapomeňte použít telefon s dobrým příjem | Stavebním blokem: [ověřování Azure Multi-Factor Authentication s telefonních hovorů](#azure-multi-factor-authentication-with-phone-calls) |
 
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Přihlaste se jako globální správce, aby https://portal.azure.com a otevřete okno Identity Protection | https://aka.ms/aadipgetstarted |
-| Povolte zásadu přihlášení riziko takto:<br/>– Přiřazené k: POC uživatele<br/>-Podmínky: Přihlášení riziko, střední a vyšší (přihlášení z anonymních umístění se považuje jako riziko střední úroveň)<br/>– Ovládací prvky: Vícefaktorové ověřování vyžadovat | [Azure Active Directory Identity Protection playbook: riziko přihlášení](active-directory-identityprotection-playbook.md) |
-| Otevřete tor prohlížeče | [Stáhněte si Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
+| Přihlaste se jako globální správce, aby https://portal.azure.com a otevře se okno Identity Protection | https://aka.ms/aadipgetstarted |
+| Zásady rizik přihlašování povolte následujícím způsobem:<br/>-Přiřazeno: uživatel POC<br/>-Podmínky: Rizika přihlašování střední a vyšší (přihlášení z anonymní umístění se bude považovat za jako střední riziko úroveň)<br/>– Ovládací prvky: Vyžadovat vícefaktorové ověřování | [Playbook Azure Active Directory Identity Protection: riziko přihlášení](active-directory-identityprotection-playbook.md) |
+| Otevřít tor prohlížeče | [Stáhněte si Tor prohlížeče](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | Přihlaste se k https://myapps.microsoft.com pomocí uživatelského účtu PoC |  |
-| Všimněte si ověřovací test MFA | [Přihlášení vyskytne s Azure AD Identity Protection: obnovení rizikové přihlášení](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
+| Všimněte si, že ověřovací test MFA | [Přihlašovací prostředí v Azure AD Identity Protection: obnovení riziková přihlášení](active-directory-identityprotection-flows.md#risky-sign-in-recovery)
 
 ### <a name="considerations"></a>Požadavky
 
-Tato funkce je součástí Azure AD Premium P2 nebo EMS E5. Další informace o rizikových událostech navštivte: [rizikových událostí Azure Active Directory](active-directory-reporting-risk-events.md)
+Tato funkce je součástí Azure AD Premium P2 a/nebo EMS E5. Další informace o rizikových událostech najdete tady: [rizikových událostech Azure Active Directory](active-directory-reporting-risk-events.md)
 
 ## <a name="configuring-certificate-based-authentication"></a>Konfigurace ověřování na základě certifikátů
 
-Přibližná doba na dokončení: 20 minut
+Přibližný čas dokončení: 20 minut
 
 ### <a name="pre-requisites"></a>Požadavky
 
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
 | Zařízení s uživatelský certifikát zřízení (Windows, iOS nebo Android) z infrastruktury veřejných KLÍČŮ rozlehlé sítě | [Nasazení uživatelských certifikátů](https://msdn.microsoft.com/library/cc770857.aspx) |
-| Azure AD domain sdružených se službou AD FS | [Azure AD Connect a federace](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Přehled služby Active Directory Certificate Services](https://technet.microsoft.com/library/hh831740.aspx)|
-| Pro zařízení s iOS mají nainstalovanou aplikaci Microsoft Authenticator | [Začínáme s aplikací Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
+| Doména služby Azure AD Federovaná pomocí služby AD FS | [Azure AD Connect a federace](./connect/active-directory-aadconnectfed-whatis.md)<br/>[Přehled služby Active Directory Certificate Services](https://technet.microsoft.com/library/hh831740.aspx)|
+| Pro zařízení s Iosem mají nainstalovanou aplikaci Microsoft Authenticator | [Začínáme s aplikací Microsoft Authenticator](authentication/end-user/current/microsoft-authenticator-app-how-to.md) |
 
 ### <a name="steps"></a>Kroky
 
 | Krok | Zdroje a prostředky |
 | --- | --- |
-| Povolení "Ověřování pomocí certifikátů" na služby AD FS | [Nakonfigurovat zásady ověřování: Globální konfigurace primární ověřování ve Windows serveru 2012 R2](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-authentication-policies#to-configure-primary-authentication-globally-in-windows-server-2012-r2) |
-| Volitelné: Povolení ověřování pomocí certifikátů ve službě Azure AD pro klienty protokolu Exchange Active Sync | [Začínáme s ověřováním pomocí certifikátů v Azure Active Directory](active-directory-certificate-based-authentication-get-started.md) |
+| Povolit "Ověřování certifikátu" na služby AD FS | [Konfigurace zásad ověřování: Globálně konfigurace primární ověřování ve Windows serveru 2012 R2](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-authentication-policies#to-configure-primary-authentication-globally-in-windows-server-2012-r2) |
+| Volitelné: Povolení ověřování pomocí certifikátu ve službě Azure AD pro klienty protokolu Exchange Active Sync | [Začínáme s ověřováním pomocí certifikátů v Azure Active Directory](active-directory-certificate-based-authentication-get-started.md) |
 | Přejděte na Panel přístupu a ověřování pomocí certifikátu uživatele | https://myapps.microsoft.com |
 
 ### <a name="considerations"></a>Požadavky
 
-Další informace o upozornění tohoto nasazení navštivte: [služby AD FS: ověření certifikátu s Azure AD & Office 365](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/)
+Další informace o upozornění tímto nasazením najdete tady: [služby AD FS: ověření certifikátu s využitím Azure AD & Office 365](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/)
 
 
 
 > [!NOTE]
-> U sebe uživatelský certifikát by měl být chráněn. Buď pomocí správy zařízení nebo pomocí kódu PIN v případě čipové karty.
+> Kdo vlastní certifikát uživatele by měly mít ochranu. Buď tím, že spravuje zařízení nebo PIN kód pro případ čipové karty.
 
 
 

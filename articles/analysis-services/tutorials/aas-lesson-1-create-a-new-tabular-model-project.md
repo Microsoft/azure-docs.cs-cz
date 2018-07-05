@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/12/2018
+ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 12e090996df4b8b1ee364e5dae9349cedd045c4a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 17abcc7dea2f695b4678b30fe7448b0bcbb11590
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34596062"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37441481"
 ---
 # <a name="create-a-tabular-model-project"></a>Vytvoření projektu s tabelárním modelem
 

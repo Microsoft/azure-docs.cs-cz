@@ -1,86 +1,62 @@
 ---
-title: Sadách škálování virtuálních počítačů zkontrolujte dostupné v zásobníku Azure | Microsoft Docs
-description: Zjistěte, jak přidat škálování virtuálních počítačů do Azure Marketplace zásobníku operátor cloudu
+title: Zpřístupnit Škálovací sady virtuálních počítačů ve službě Azure Stack | Dokumentace Microsoftu
+description: Zjistěte, jak můžete přidat Škálovací sady virtuálních počítačů na Azure Marketplace zásobníku operátor cloudu
 services: azure-stack
 author: brenduns
 manager: femila
 editor: ''
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 06/05/2018
 ms.author: brenduns
 ms.reviewer: kivenkat
-ms.openlocfilehash: 12425ab53ca16bb985a0a8658b5058998565b01a
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: ddde2e6bad8a373df405ac05e78a5dbccd0257fc
+ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "34800636"
 ---
-# <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Zpřístupnit sady škálování virtuálního počítače v Azure zásobníku
+# <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>Zpřístupnit Škálovací sady virtuálních počítačů ve službě Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Sady škálování virtuálního počítače jsou výpočetní prostředek Azure zásobníku. Můžete je používat k nasazení a správě sadu identickými virtuálními počítači. S všechny virtuální počítače nakonfigurované stejně, nevyžadují předem zřizování virtuálních počítačů sady škálování. Aby bylo jednodušší vytváření rozsáhlých služeb, které se zaměřují velkých výpočetních, velké objemy dat a kontejnerizované úlohy.
+Škálovací sady virtuálních počítačů jsou výpočetní prostředek Azure Stack. Můžete využít k nasazení a správě sady identických virtuálních počítačů. Všechny virtuální počítače nakonfigurované stejně, nevyžadují škálovací sady virtuálních počítačů předem zřizování. Je snazší zajistit rozsáhlé služby zaměřené na vysoký výpočetní výkon, velké objemy dat a kontejnerizované úlohy.
 
-Tento článek vás provede procesem vytvoření sady škálování dostupné v Azure Marketplace zásobníku. Po dokončení tohoto postupu můžete přidat uživatele sady škálování virtuálních počítačů do svých předplatných.
+Tento článek vás provede procesem vytvoření škálovací sady dostupné v Tržišti Azure Stack. Po dokončení tohoto postupu můžete přidat uživatele škálovacích sad virtuálních počítačů pro svá předplatná.
 
-Sady škálování virtuálního počítače v Azure zásobníku jsou stejné jako sady škálování virtuálního počítače na platformě Azure. Další informace najdete na následující videa:
+Jsou škálovací sady virtuálních počítačů ve službě Azure Stack jako škálovací sady virtuálních počítačů v Azure. Další informace najdete v tématu následujícího videa:
 * [Mark Russinovich hovoří o škálovacích sadách Azure](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
 * [Guy Bowerman provádí škálovacími sadami virtuálních počítačů](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
-V zásobníku Azure sady škálování virtuálního počítače nepodporuje automatické škálování. Můžete přidat více instancí škálování, nastavit pomocí portálu Azure zásobníku, šablony Resource Manageru nebo prostředí PowerShell.
+Ve službě Azure Stack nepodporují škálovací sady virtuálních počítačů automatického škálování. Přidání instancí na škálovací sadu pomocí šablony Resource Manageru, rozhraní příkazového řádku nebo Powershellu.
 
 ## <a name="prerequisites"></a>Požadavky
-* **Prostředí PowerShell a nástroje**
 
-   Instalace a nakonfigurované prostředí PowerShell pro Azure zásobníku a nástroje Azure zásobníku. V tématu [zprovoznění pomocí prostředí PowerShell v zásobníku Azure](azure-stack-powershell-configure-quickstart.md).
+- **Syndikace Marketplace**  
+    Registrace Azure Stack s globální Azure a umožňuje Marketplace syndikace. Postupujte podle pokynů v [registrace Azure Stack s využitím Azure](azure-stack-registration.md).
+- **Image operačního systému**  
+    Pokud jste nepřidali image operačního systému na Azure Marketplace zásobníku, přečtěte si téma [přidat položku marketplace služby Azure Stack od Azure](asdk/asdk-marketplace-item.md).
 
-   Po instalaci nástroje Azure zásobníku, ujistěte se, importujte modul PowerShell následující (cesta vzhledem k. \ComputeAdmin složky ve složce AzureStack. nástroje pro hlavní):
-  ````PowerShell
-        Import-Module .\AzureStack.ComputeAdmin.psm1
-  ````
+## <a name="add-the-virtual-machine-scale-set"></a>Přidat Škálovací sadu virtuálních počítačů
 
-* **Bitové kopie operačního systému**
+1. Otevřete Azure Marketplace zásobníku a připojte se k Azure. Vyberte **Marketplace správu**> **+ přidat z Azure**.
 
-   Nepřidali jste image operačního systému vaší Azure Marketplace zásobníku, najdete v části [přidat bitovou kopii virtuálního počítače Windows serveru 2016 do zásobníku Azure marketplace](azure-stack-add-default-image.md).
+    ![Správa webu Marketplace](media/azure-stack-compute-add-scalesets/image01.png)
 
-   Podpora systému Linux, stáhněte Ubuntu Server 16.04 a přidejte ho pomocí ```Add-AzsPlatformImage``` s následujícími parametry: ```-publisher "Canonical" -offer "UbuntuServer" -sku "16.04-LTS"```.
+2. Přidat a stáhnout položky marketplace Škálovací sady virtuálních počítačů.
 
+    ![Škálovací sada virtuálních počítačů](media/azure-stack-compute-add-scalesets/image02.png)
 
-## <a name="add-the-virtual-machine-scale-set"></a>Přidat sady škálování virtuálního počítače
+## <a name="update-images-in-a-virtual-machine-scale-set"></a>Aktualizace Image ve Škálovací sadě virtuálních počítačů
 
-Upravte následující skript prostředí PowerShell pro vaše prostředí a spusťte jej přidejte škálování virtuálních počítačů, nastavte na vaše Azure Marketplace zásobníku. 
+Když vytvoříte škálovací sadu virtuálních počítačů, mohou uživatelé aktualizovat Image ve škálovací sadě bez škálovací sady, by bylo nutné znovu vytvořit. Proces pro aktualizaci bitové kopie závisí na následujících scénářů:
 
-``$User`` je účet, který používáte pro připojení správce portálu. Například, serviceadmin@contoso.onmicrosoft.com.
+1. Škálovací sady virtuálních počítačů šablony nasazení **určuje nejnovější** pro *verze*:  
 
-````PowerShell  
-$Arm = "https://adminmanagement.local.azurestack.external"
-$Location = "local"
+   Když *verze* je nastaven jako **nejnovější** v *imageReference* část šablony pro změnu velikosti nastavit, vertikálně navýšit kapacitu operace týkající se použití škálovací sadě na nejnovější dostupnou verzi image pro škálovací sady instancí. Po dokončení vertikálního navýšení můžete odstranit starší instance sady škálování virtuálních počítačů.  (Hodnoty *vydavatele*, *nabízejí*, a *sku* zůstanou beze změny). 
 
-Add-AzureRMEnvironment -Name AzureStackAdmin -ArmEndpoint $Arm
-
-$Password = ConvertTo-SecureString -AsPlainText -Force "<your Azure Stack administrator password>"
-
-$User = "<your Azure Stack service administrator user name>"
-
-$Creds =  New-Object System.Management.Automation.PSCredential $User, $Password
-
-$AzsEnv = Get-AzureRmEnvironment AzureStackAdmin
-$AzsEnvContext = Add-AzureRmAccount -Environment $AzsEnv -Credential $Creds
-
-Select-AzureRmSubscription -SubscriptionName "Default Provider Subscription"
-
-Add-AzsVMSSGalleryItem -Location $Location
-````
-
-## <a name="update-images-in-a-virtual-machine-scale-set"></a>Aktualizace bitové kopie v sadě škálování virtuálního počítače 
-Po vytvoření škálovací sadu virtuálních počítačů, uživatelů můžete aktualizovat obrázků v měřítka nastavit bez nutnosti znovu vytvořen sad škálování. Proces pro aktualizaci bitové kopie, závisí na následujících scénářů:
-
-1. Škálovací sady virtuálních počítačů šablonu nasazení **určuje nejnovější** pro *verze*:  
-
-   Když *verze* je nastaven jako **nejnovější** v *elementu imageReference* část šablony pro změnu velikosti nastaven, škálovat operací na používání sady škálování na nejnovější dostupnou verzi bitové kopie stupnice nastavit instancí. Po dokončení škálování si můžete odstranit starší instancí sady škálování virtuálního počítače.  (Hodnoty *vydavatele*, *nabízejí*, a *sku* zůstanou beze změny). 
-
-   Tady je příklad zadání *nejnovější*:  
+   Následuje příklad určení *nejnovější*:  
 
     ```Json  
     "imageReference": {
@@ -91,32 +67,32 @@ Po vytvoření škálovací sadu virtuálních počítačů, uživatelů můžet
         }
     ```
 
-   Rozšiřování škálování využívajících mohli používat novou bitovou kopii, je nutné stáhnout této nové bitové kopie:  
+   Vertikální navýšení mohli používat novou bitovou kopii, je nutné stáhnout této nové bitové kopie:  
 
-   - Když bitovou kopii na webu Marketplace je novější verze než bitové kopie v sadě škálování: Stáhněte si novou bitovou kopii, která nahrazuje starší obrázek. Po bitovou kopii je nahrazena, uživatel přistoupit škálování. 
+   - Pokud image na webu Marketplace je novější verze než image ve škálovací sadě: Stáhněte si novou image, který nahrazuje starší obrázek. Po nahrazuje obrázek uživatele můžete přejít k vertikálně navýšit kapacitu. 
 
-   - Pokud verze bitové kopie na webu Marketplace je stejný jako bitové kopie v sadě škálování: Odstraňte bitovou kopii, která se používá v sadě škálování a potom stáhněte novou bitovou kopii. V době mezi odebrání původní bitové kopie a stahování nová bitová kopie nemůže škálovat. 
+   - Když se verze image na webu Marketplace je stejný jako image ve škálovací sadě: odstranit image, která se používá ve škálovací sadě a pak si stáhnout novou bitovou kopii. V době mezi odebrání původní bitové kopie a stažení image nového nejde vertikálně navýšit kapacitu. 
       
-     Tento postup je nutný k resyndicate bitové kopie, které pomocí formátu zhuštěných souborů, představený poprvé ve verzi 1803. 
+     Tento proces je vyžadován resyndicate imagí, které využívají chování řídkého souboru formátu, představený poprvé ve verzi 1803. 
  
 
-2. Škálovací sady virtuálních počítačů šablonu nasazení **neurčuje nejnovější** pro *verze* a místo toho určuje číslo verze:  
+2. Škálovací sady virtuálních počítačů šablony nasazení **neurčuje nejnovější** pro *verze* a místo toho určuje číslo verze:  
 
-     Pokud si stáhnout bitovou kopii z novější verze (který změny k dispozici verze), nelze škálovat byly sadou škálování. Jedná se o návrhu jako image verze zadané v šabloně sady škálování musí být k dispozici.  
+    Pokud si stáhnete obrázek z novější verze (která se změní na dostupnou verzi), nelze škálovat škálovací sady. Jedná se o účel jako verze image zadané v šabloně škálovací sady, musí být k dispozici.  
 
-Další informace najdete v tématu [disky operačního systému a bitové kopie](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images).  
+Další informace najdete v tématu [disky operačního systému a image](.\user\azure-stack-compute-overview.md#operating-system-disks-and-images).  
 
 
-## <a name="remove-a-virtual-machine-scale-set"></a>Odstranit škálovací sadu virtuálních počítačů
+## <a name="remove-a-virtual-machine-scale-set"></a>Odstranit Škálovací sadu virtuálních počítačů
 
-Odebrat virtuální počítač škálování položky galerie sady, spusťte následující příkaz prostředí PowerShell:
+K odebrání virtuálního počítače změnit velikost položky galerie sady, spusťte následující příkaz Powershellu:
 
 ```PowerShell  
-    Remove-AzsVMSSGalleryItem
+    Remove-AzsGalleryItem
 ````
 
 > [!NOTE]
-> Položky galerie nemusí být okamžitě odstraněna. Noční potřebujete aktualizujte portál několikrát, než položka ukazuje, jak odebrat z Marketplace.
+> Položky galerie nemůže být okamžitě odstraněna. Noční musíte aktualizovat portál několikrát, než položka zobrazuje jako odebrané z webu Marketplace.
 
 ## <a name="next-steps"></a>Další postup
-[Nejčastější dotazy pro Azure zásobníku](azure-stack-faq.md)
+[Nejčastější dotazy ke službě Azure Stack](azure-stack-faq.md)

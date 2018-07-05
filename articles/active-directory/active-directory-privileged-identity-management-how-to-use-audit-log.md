@@ -1,59 +1,59 @@
 ---
-title: Jak používat protokol auditu v Azure AD Privileged Identity managementu | Microsoft Docs
-description: Naučte se používat protokol auditu v rozšíření Azure Privileged Identity Management.
+title: Použití protokolu auditu v Azure AD Privileged Identity Management | Dokumentace Microsoftu
+description: Další informace o použití protokolu auditu v rozšíření Azure Privileged Identity Management.
 services: active-directory
 documentationcenter: ''
 author: rolyon
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
 ms.component: protection
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 05a70874367d578beee1dc605510f9370b6abd42
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 7dfd14246622f297a42c6b7975539fec2882bbe0
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35232988"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37448165"
 ---
-# <a name="using-the-audit-log-in-pim"></a>Použití protokolu auditování v PIM
-Protokol auditu Privileged Identity Management (PIM) můžete zobrazit všechny uživatele přiřazení a aktivace v daném časovém období. Pokud chcete zobrazit historii úplné auditu aktivity ve vašem klientovi, včetně správce, koncového uživatele a aktivity synchronizace můžete použít [přístupu a použití sestav Azure Active Directory.](active-directory-view-access-usage-reports.md)
+# <a name="using-the-audit-log-in-pim"></a>Použití protokolu auditu v PIM
+Protokol auditu Privileged Identity Management (PIM) můžete zobrazit všechna přiřazení uživatelů a aktivace v daném časovém období. Pokud chcete zobrazit úplnou historii auditu aktivity ve vašem tenantovi, včetně správce, koncový uživatel a aktivitu synchronizace můžete použít [sestavy o přístupech a použití služby Azure Active Directory.](active-directory-view-access-usage-reports.md)
 
-## <a name="navigate-to-the-audit-log"></a>Přejděte na protokol auditu
-Z [portál Azure](https://portal.azure.com) řídicí panel, vyberte **Azure AD Privileged Identity Management** aplikace. Odtud, přístup k protokolu auditu kliknutím **spravovat privilegované role** > **historie auditu** v řídicím panelu PIM.
+## <a name="navigate-to-the-audit-log"></a>Přejděte do protokolu auditu
+Z [webu Azure portal](https://portal.azure.com) řídicího panelu, vyberte **Azure AD Privileged Identity Management** aplikace. Odtud, přístup k protokolu auditu kliknutím **spravovat privilegované role** > **historie auditu** na řídicím panelu PIM.
 
 ## <a name="the-audit-log-graph"></a>Graf protokolu auditu
-Chcete-li zobrazit celkový počet aktivací, maximální počet aktivací za den a průměrný počet aktivací za den ve spojnicovém grafu, můžete použít protokol auditu.  Data lze filtrovat také role, pokud je víc než jedné role v historie auditu.
+Chcete-li zobrazit celkový počet aktivací, maximální počet aktivací za den a průměrný počet aktivací za den ve spojnicovém grafu můžete použít protokol auditu.  Můžete také filtrovat data podle rolí, pokud existuje více než jedné role do historie auditu.
 
-Použití **čas**, **akce**, a **role** tlačítka seřadíte v protokolu.
+Použití **čas**, **akce**, a **role** tlačítka řazení v protokolu.
 
 ## <a name="the-audit-log-list"></a>Seznam protokolu auditu
 Sloupce v seznamu protokolů auditu jsou:
 
-* **Žadatel** -uživatel, který požadovaný aktivaci role nebo změnit.  Pokud je hodnota "Azure systém", zkontrolujte protokol auditu Azure pro další informace.
-* **Uživatel** -uživatel, který je přiřazený k roli nebo aktivace.
-* **Role** – přiřazené roli, nebo uživatel aktivoval.
+* **Žadatel** – uživatel, který požadované aktivaci role nebo změnit.  Pokud je hodnota "Azure systém", zkontrolujte protokol auditování Azure pro další informace.
+* **Uživatel** – uživatel, který je přiřazený k roli nebo aktivace.
+* **Role** -roli přiřazeni nebo uživatel aktivoval.
 * **Akce** – akce prováděné žadatel. To může zahrnovat přiřazení, zrušení, aktivace nebo deaktivace.
-* **Čas** – Pokud akce došlo k chybě.
-* **Důvody** – Pokud jakýkoli text byl zadali do pole Důvod během aktivace, se zobrazí tady.
+* **Čas** – kdy akce došlo k chybě.
+* **Důvody** – Pokud jakýkoli text byl zadán do pole Důvod při aktivaci, se zobrazí tady.
 * **Vypršení platnosti** – pouze relevantní pro aktivaci role.
 
 ## <a name="filter-the-audit-log"></a>Filtrovat protokol auditu
-Můžete filtrovat informace, které se zobrazí v protokolu auditování kliknutím **filtru** tlačítko.  **Aktualizace grafu parametry okno** se zobrazí.
+Můžete filtrovat informace, které se zobrazí v protokolu auditu kliknutím **filtr** tlačítko.  **Aktualizace grafu parametry okno** se zobrazí.
 
-Jakmile jste nastavili filtry, klikněte na tlačítko **aktualizace** k filtrování dat v protokolu.  Pokud data nezobrazí okamžitě, aktualizujte stránku.
+Po nastavení filtrů, klikněte na tlačítko **aktualizace** k filtrování dat v protokolu.  Pokud se data nezobrazí okamžitě, aktualizujte stránku.
 
-### <a name="change-the-date-range"></a>Změnit rozsah dat
-Použití **Dnes**, **minulého týdne**, **poslední měsíc**, nebo **vlastní** Chcete-li změnit časové rozmezí protokol auditu.
+### <a name="change-the-date-range"></a>Změnit rozsah
+Použití **Dnes**, **minulý týden**, **poslední měsíc**, nebo **vlastní** tlačítka, chcete-li změnit časový rozsah protokolu auditu.
 
-Pokud vyberete **vlastní** tlačítko, budete mít **z** pole pro datum a **k** pole pro datum k určení rozsahu dat pro protokol.  Můžete zadat data ve formátu MM/DD/RRRR nebo klikněte na **kalendáře** ikonu a vyberte datum z kalendáře.
+Při výběru **vlastní** tlačítko, budete mít **z** pole pro datum a **k** pole pro datum pro zadání rozsahu kalendářních dat protokolu.  Můžete zadat data ve formátu MM/DD/RRRR nebo klikněte na **kalendáře** ikonu a pak vyberte datum z kalendáře.
 
-### <a name="change-the-roles-included-in-the-log"></a>Změna role zahrnuté v protokolu
-Zaškrtněte nebo zrušte zaškrtnutí políčka **Role** zaškrtávací políčko vedle každé role zahrnout nebo vyloučit z protokolu.
+### <a name="change-the-roles-included-in-the-log"></a>Změna role součástí protokolu
+Zaškrtněte nebo zrušte zaškrtnutí políčka **Role** zaškrtávací políčko vedle každé role pro zahrnutí nebo vyloučení z protokolu.
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Další postup

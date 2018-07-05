@@ -1,6 +1,6 @@
 ---
-title: Vytvořit objekt služby pro Azure zásobníku | Microsoft Docs
-description: Popisuje, jak vytvořit nový objekt služby, které je možné pomocí řízení přístupu na základě rolí ve službě Správce prostředků Azure, které pokud chcete spravovat přístup k prostředkům.
+title: Vytvoření instančního objektu pro Azure Stack | Dokumentace Microsoftu
+description: Popisuje, jak vytvořit nový instanční objekt, který lze použít s řízením přístupu na základě role v Azure Resource Manageru pro správu přístupu k prostředkům.
 services: azure-resource-manager
 documentationcenter: na
 author: mattbriggs
@@ -13,104 +13,132 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/21/2018
 ms.author: mabrigg
-ms.openlocfilehash: b505e0fa215b04a5b05ca1b4c3fa9548d8deb71f
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 0db3f19c99b786d7f32f126ad7bd70efc999a751
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36320776"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37444261"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Poskytnutí přístupu aplikací do Azure Stack
 
-*Platí pro: Azure zásobníku integrované systémy a Azure zásobníku Development Kit*
+*Platí pro: Azure Stack integrované systémy a Azure Stack Development Kit*
 
-Když aplikace potřebuje přístup k nasazení nebo konfiguraci prostředků prostřednictvím Správce Azure Resource Manager v zásobníku Azure, můžete vytvořit objekt, služby, což je přihlašovací údaje pro vaši aplikaci.  Potom můžete delegovat pouze potřebná oprávnění pro tohoto objektu služby.  
+Když aplikace potřebuje přístup k nasazení nebo konfiguraci prostředků prostřednictvím Azure Resource Manageru ve službě Azure Stack, vytvoření instančního objektu, což je přihlašovacích údajů pro vaši aplikaci.  Potom můžete delegovat pouze potřebná oprávnění pro tento instanční objekt.  
 
-Například můžete mít nástroj pro správu konfigurace pomocí Azure Resource Manager, která inventáře prostředků Azure.  V tomto scénáři můžete vytvořit objekt služby, udělení tohoto objektu služby role Čtenář a omezit nástroj Konfigurace správy na oprávnění jen pro čtení. 
+Například můžete mít nástroj pro správu konfigurace, která používá Azure Resource Manageru k inventarizaci prostředků Azure.  V tomto scénáři můžete vytvořit instanční objekt služby, přidělit tuto roli Čtenář takového objektu služby a omezit nástroje pro správu konfigurace pro přístup jen pro čtení. 
 
-Objekty služby, je vhodnější spuštění aplikace vlastní oprávnění, protože:
+Instanční objekty jsou upřednostňovány vůči spuštění aplikace pod svými přihlašovacími údaji, protože:
 
-* Můžete přiřadit oprávnění do objektu, který se liší od vlastní oprávnění účtu služby. Tato oprávnění jsou obvykle omezená přesně na to, co aplikace potřebuje dělat.
-* Nemáte ke změně pověření aplikace, pokud vaše odpovědnosti změnit.
+* Můžete přiřadit oprávnění pro instanční objekt, který se liší od účtu oprávnění. Tato oprávnění jsou obvykle omezená přesně na to, co aplikace potřebuje dělat.
+* Není potřeba změnit přihlašovací údaje aplikace, pokud se změní vaše odpovědnosti.
 * Certifikát můžete použít k automatizaci ověřování při provádění bezobslužného skriptu.  
 
 ## <a name="getting-started"></a>Začínáme
 
-V závislosti na tom, jak jste nasadili zásobník Azure je nejprve vytvořit službu objektu zabezpečení.  Tento dokument vás provede vytvořením objekt služby pro obě [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad) a [Active Directory Federation Services(AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).  Po vytvoření objektu služby, sadu kroků běžné služby AD FS a Azure Active Directory se používá ke [delegovat oprávnění](azure-stack-create-service-principals.md#assign-role-to-service-principal) k roli.     
+V závislosti na tom, jak nasadíte Azure Stack začnete tím, že vytváření instančního objektu.  Tento dokument vás provede procesem vytvoření instančního objektu pro obě [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad) a [Active Directory Federation Services(AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).  Jakmile vytvoříte instanční objekt služby, se používají pro sadu kroků běžné služby AD FS a Azure Active Directory [delegovat oprávnění](azure-stack-create-service-principals.md#assign-role-to-service-principal) k roli.     
 
-## <a name="create-service-principal-for-azure-ad"></a>Vytvoření instančního objektu pro Azure AD
+## <a name="create-service-principal-for-azure-ad"></a>Vytvoření instančního objektu pro službu Azure AD
 
-Pokud jste nasadili zásobník Azure pomocí služby Azure AD jako úložiště identit, můžete vytvořit objekty služby stejně, jako je tomu u Azure.  V této části se dozvíte, jak provést kroky prostřednictvím portálu.  Zkontrolujte, zda máte [požadovaná oprávnění Azure AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions) před zahájením.
+Pokud jste nasadili Azure Stack jako úložiště identit pomocí Azure AD, můžete vytvořit instanční objekty stejně jako pro Azure.  Tato část ukazuje, jak k provedení kroků na portálu.  Zkontrolujte, jestli máte [požadovaná oprávnění Azure AD](../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions) před zahájením.
 
 ### <a name="create-service-principal"></a>Vytvoření instančního objektu
 V této části vytvoříte aplikaci (instanční objekt) ve službě Azure AD, která reprezentuje vaši aplikaci.
 
-1. Přihlaste se k účtu Azure prostřednictvím [portál Azure](https://portal.azure.com).
-2. Vyberte **Azure Active Directory** > **registrace aplikace** > **přidat**   
-3. Zadejte název a URL aplikace. Vyberte buď **webovou aplikaci nebo API** nebo **nativní** pro typ aplikace, kterou chcete vytvořit. Po nastavení hodnoty, vyberte **vytvořit**.
+1. Přihlaste se ke svému účtu Azure prostřednictvím [webu Azure portal](https://portal.azure.com).
+2. Vyberte **Azure Active Directory** > **registrace aplikací** > **přidat**   
+3. Zadejte název a URL aplikace. Vyberte buď **webovou aplikaci nebo API** nebo **nativní** pro typ aplikace, kterou chcete vytvořit. Po nastavení hodnot, vyberte **vytvořit**.
 
-Vytvořili jste objekt služby pro vaši aplikaci.
+Vytvoříte instanční objekt služby pro vaši aplikaci.
 
 ### <a name="get-credentials"></a>Získat přihlašovací údaje
-Při prostřednictvím kódu programu přihlášení, abyste používali ID pro vaši aplikaci a pro webovou aplikaci nebo rozhraní API, ověřovací klíč. K získání těchto hodnot použijte následující postup:
+Při programovém přihlášení pomocí ID je pro vaši aplikaci a webové aplikace a rozhraní API, ověřovací klíč. K získání těchto hodnot použijte následující postup:
 
-1. Z **registrace aplikace** ve službě Active Directory, vyberte svou aplikaci.
+1. Z **registrace aplikací** ve službě Active Directory, vyberte svou aplikaci.
 
-2. Zkopírujte **ID aplikace** a uložte ho v kódu aplikace. Aplikace v [ukázkové aplikace](#sample-applications) části odkazují na tuto hodnotu jako ID klienta.
+2. Zkopírujte **ID aplikace** a uložte ho v kódu aplikace. Aplikací [ukázkové aplikace](#sample-applications) části odkazují na tuto hodnotu jako ID klienta.
 
      ![ID klienta](./media/azure-stack-create-service-principal/image12.png)
-3. Generovat ověřovací klíč pro webovou aplikaci nebo rozhraní API, vyberte **nastavení** > **klíče**. 
+3. Chcete-li generovat ověřovací klíč pro webovou aplikaci / rozhraní API, vyberte **nastavení** > **klíče**. 
 
 4. Zadejte popis klíče a jeho dobu platnosti. Až budete hotovi, vyberte **Uložit**.
 
-Jakmile klíč uložíte, zobrazí se jeho hodnota. Zkopírujte si ji, protože později už klíč nepůjde načíst. Hodnota klíče byl poskytnout ID aplikace pro přihlášení jako aplikace. Hodnotu klíče uložte na místo, odkud ji aplikace může načíst.
+Jakmile klíč uložíte, zobrazí se jeho hodnota. Zkopírujte si ji, protože později už klíč nepůjde načíst. Hodnotu klíče uveďte s ID aplikace, aby přihlásit jako aplikace. Hodnotu klíče uložte na místo, odkud ji aplikace může načíst.
 
 ![Uložený klíč](./media/azure-stack-create-service-principal/image15.png)
 
 
-Po dokončení pokračujte [přiřazení aplikace k roli](azure-stack-create-service-principals.md#assign-role-to-service-principal).
+Jakmile budete hotovi, přejděte k [přiřazení role aplikace](azure-stack-create-service-principals.md#assign-role-to-service-principal).
 
 ## <a name="create-service-principal-for-ad-fs"></a>Vytvoření instančního objektu služby AD FS
-Pokud jste nasadili zásobník Azure se službou AD FS, můžete použít PowerShell vytvoření instančního objektu, přiřazení role pro přístup a přihlašování z prostředí PowerShell pomocí danou identitu.
+Pokud jste nasadili Azure Stack se službou AD FS, slouží k vytvoření instančního objektu, přiřazení role pro přístup a přihlásit z Powershellu pomocí tohoto identity prostředí PowerShell.
 
-Z koncového bodu privilegované spuštění skriptu na virtuálním počítači ERCS.
+Je skript spuštěn na virtuálním počítači ERCS z privileged koncového bodu.
 
 
 Požadavky:
-- Je vyžadován certifikát.
+- Certifikát je povinný.
 
 **Parametry**
 
-Tyto informace o požadované jako vstup pro automatizaci parametry:
+Tyto informace se vyžaduje jako vstup pro automatizaci parametry:
 
 
 |Parametr|Popis|Příklad:|
 |---------|---------|---------|
-|Název|Název SPN účtu|Moje aplikace|
-|ClientCertificates|Pole objektů certifikátu|X509 certifikátu|
-|ClientRedirectUris<br>(Volitelné)|Aplikace identifikátor URI pro přesměrování|         |
+|Název|Název pro účet hlavní název služby|Moje aplikace|
+|Vlastnost ClientCertificates|Pole objektů certifikátu|X509 certifikátu|
+|ClientRedirectUris<br>(Volitelné)|Identifikátor URI přesměrování aplikace|         |
 
 **Příklad**
 
-1. Otevřete relaci prostředí Windows PowerShell zvýšenými oprávněními a spusťte následující příkazy:
+1. Otevřete relaci Windows Powershellu se zvýšenými oprávněními a spusťte následující příkazy:
 
    > [!NOTE]
-   > Tento příklad vytvoří certifikát podepsaný svým držitelem. Při spuštění těchto příkazů v produkčním nasazení, použijte Get-certifikát načíst objekt certifikátu pro certifikát, který chcete použít.
+   > Tento příklad vytvoří certifikát podepsaný svým držitelem. Při spuštění těchto příkazů v produkčním nasazení pomocí certifikátu získat objekt certifikátu pro certifikát, který chcete použít.
 
+   ```PowerShell  
+    # Credential for accessing the ERCS PrivilegedEndpoint typically domain\cloudadmin
+    $creds = Get-Credential
+
+    # Creating a PSSession to the ERCS PrivilegedEndpoint
+    $session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $creds
+
+    # This produces a self signed cert for testing purposes.  It is prefered to use a managed certificate for this.
+    $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
+
+    $ServicePrincipal = Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name '<yourappname>' -ClientCertificates $using:cert}
+    $AzureStackInfo = Invoke-Command -Session $session -ScriptBlock { get-azurestackstampinformation }
+    $session|remove-pssession
+
+    # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. We will read this from the AzureStackStampInformation output of the ERCS VM.
+    $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
+
+    # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. We will read this from the AzureStackStampInformation output of the ERCS VM.
+    $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
+
+    # TenantID for the stamp. We will read this from the AzureStackStampInformation output of the ERCS VM.
+    $TenantID = $AzureStackInfo.AADTenantID
+
+    # Register an AzureRM environment that targets your Azure Stack instance
+    Add-AzureRMEnvironment `
+    -Name "AzureStackUser" `
+    -ArmEndpoint $ArmEndpoint
+
+    # Set the GraphEndpointResourceId value
+    Set-AzureRmEnvironment `
+    -Name "AzureStackUser" `
+    -GraphAudience $GraphAudience `
+    -EnableAdfsAuthentication:$true
+
+    Add-AzureRmAccount -EnvironmentName "azurestackuser" `
+    -ServicePrincipal `
+    -CertificateThumbprint $ServicePrincipal.Thumbprint `
+    -ApplicationId $ServicePrincipal.ClientId `
+    -TenantId $TenantID
    ```
-   $creds = Get-Credential
 
-   $session = New-PSSession -ComputerName <IP Address of ECRS> -ConfigurationName PrivilegedEndpoint -Credential $creds
-
-   $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=testspn2" -KeySpec KeyExchange
-
-   Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name 'MyApp' -ClientCertificates $using:cert}
-
-   $session|remove-pssession
-
-   ```
-
-2. Po dokončení automatizace zobrazí požadované podrobnosti používat hlavní název služby. 
+2. Po dokončení automatizace, zobrazí požadované podrobnosti, které chcete použít hlavní název služby. 
 
    Příklad:
 
@@ -122,11 +150,12 @@ Tyto informace o požadované jako vstup pro automatizaci parametry:
    PSComputerName        : azs-ercs01
    RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
    ```
-### <a name="assign-a-role"></a>Přiřazení role
-Po vytvoření objektu služby musíte [přiřadit k roli](azure-stack-create-service-principals.md#assign-role-to-service-principal)
 
-### <a name="sign-in-through-powershell"></a>Přihlaste se pomocí prostředí PowerShell
-Jakmile jste přiřazenou roli, můžete přihlásit do protokolů Azure pomocí objektu služby pomocí následujícího příkazu:
+### <a name="assign-a-role"></a>Přiřazení role
+Jakmile se vytvoří nový instanční objekt služby, je nutné [přiřadit k roli](azure-stack-create-service-principals.md#assign-role-to-service-principal)
+
+### <a name="sign-in-through-powershell"></a>Přihlaste se pomocí Powershellu
+Jakmile přiřadíte roli, můžete přihlásit ke službě Azure Stack pomocí instančního objektu pomocí následujícího příkazu:
 
 ```powershell
 Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
@@ -136,32 +165,32 @@ Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
  -TenantId $directoryTenantId
 ```
 
-## <a name="assign-role-to-service-principal"></a>Přiřazení role instančního objektu
-Pro přístup k prostředkům ve vašem předplatném, je nutné přiřadit aplikace k roli. Rozhodněte, jakou roli představuje správná oprávnění pro aplikaci. Další informace o dostupných rolí najdete v tématu [RBAC: integrovaným rolím](../role-based-access-control/built-in-roles.md).
+## <a name="assign-role-to-service-principal"></a>Přiřadit roli instančnímu objektu služby
+Pro přístup k prostředkům ve vašem předplatném, musíte přiřadit aplikace k roli. Rozhodněte, jakou roli představuje správná oprávnění pro aplikaci. Další informace o dostupných rolí, najdete v článku [RBAC: vestavěné role](../role-based-access-control/built-in-roles.md).
 
-Rozsah můžete nastavit na úrovni předplatné, skupinu prostředků nebo prostředek. Na nižších úrovních oboru dědí oprávnění. Například přidání aplikace do role Čtenář pro skupinu prostředků znamená, že ho může číst skupině prostředků a všechny prostředky, které obsahuje.
+Nastavit obor na úrovni předplatného, skupinu prostředků nebo prostředek. Oprávnění se dědí do oboru na nižších úrovních. Například přidáním aplikace k roli Čtenář pro skupinu prostředků znamená, že můžete přečíst, skupinu prostředků a všechny prostředky, které obsahuje.
 
-1. Na portálu Azure zásobníku přejděte na úroveň oboru, který chcete přiřadit aplikaci. Například přiřazení role v oboru předplatné, vyberte **odběry**. Místo toho můžete třeba vybrat skupinu prostředků nebo prostředek.
+1. Na portálu Azure Stack přejděte na úroveň oboru, který chcete přiřadit aplikaci. Například vyberte přiřazení role v oboru předplatného, **předplatná**. Místo toho můžete třeba vybrat skupinu prostředků nebo prostředek.
 
-2. Vyberte určitý odběr (skupinu prostředků nebo prostředek) aplikaci přiřadit.
+2. Vyberte konkrétní předplatné (skupinu prostředků nebo prostředek), přiřazení aplikace.
 
      ![Vyberte předplatné pro přiřazení](./media/azure-stack-create-service-principal/image16.png)
 
-3. Vyberte **přístup k ovládacímu prvku (IAM)**.
+3. Vyberte **řízení přístupu (IAM)**.
 
-     ![Vybrat přístupu](./media/azure-stack-create-service-principal/image17.png)
+     ![Vyberte přístup](./media/azure-stack-create-service-principal/image17.png)
 
 4. Vyberte **Přidat**.
 
 5. Vyberte roli, kterou chcete přiřadit k aplikaci.
 
-6. Vyhledávání pro vaši aplikaci a vyberte jej.
+6. Vyhledávání pro vaši aplikaci a vyberte ji.
 
-7. Vyberte **OK** k dokončení přiřazení role. Zobrazí aplikace v seznamu Uživatelé s přiřazenou rolí pro tento obor.
+7. Vyberte **OK** k dokončení přiřazení role. Zobrazí se vaše aplikace v seznamu Uživatelé přiřazení k roli pro tento obor.
 
-Teď, když jste vytvořili objekt služby a přiřazenou roli, můžete začít používat to v rámci vaší aplikace pro přístup k prostředkům Azure zásobníku.  
+Teď, když máte vytvořený instanční objekt služby a přiřazenou roli, můžete začít používat to v rámci vaší aplikace pro přístup k prostředkům Azure Stack.  
 
 ## <a name="next-steps"></a>Další postup
 
-[Přidat uživatele pro AD FS](azure-stack-add-users-adfs.md)
-[Správa oprávnění uživatele](azure-stack-manage-permissions.md)
+[Přidání uživatelů pro AD FS](azure-stack-add-users-adfs.md)
+[Správa uživatelských oprávnění](azure-stack-manage-permissions.md)
