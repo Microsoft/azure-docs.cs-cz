@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: f54179329b521cc861e90f023ff0b010b7ce1f75
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 81f2302df5740b482f03a4a724d2899734579949
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164949"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096855"
 ---
 # <a name="update-an-application-in-kubernetes"></a>Aktualizace aplikace v Kubernetes
 
@@ -100,7 +100,7 @@ docker push <acrLoginServer>/azure-vote-front:redis-v2
 
 ## <a name="deploy-update-application"></a>Nasazení aktualizované aplikace
 
-K zajištění maximální doby provozu musí být spuštěno několik instancí podu aplikace. Ověřte tuto konfiguraci pomocí příkazu [kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get).
+K zajištění maximální doby provozu musí být spuštěno několik instancí podu aplikace. Ověřte tuto konfiguraci pomocí příkazu [kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get).
 
 ```bash
 kubectl get pod
@@ -123,13 +123,13 @@ Pokud nemáte několik podů se spuštěnou imagí azure-vote-front, škálujte 
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
-K aktualizaci aplikace použijte příkaz [kubectl set](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#set). Jako `<acrLoginServer>` použijte přihlašovací název serveru nebo hostitele vašeho registru kontejneru.
+K aktualizaci aplikace použijte příkaz [kubectl set](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set). Jako `<acrLoginServer>` použijte přihlašovací název serveru nebo hostitele vašeho registru kontejneru.
 
 ```azurecli-interactive
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-K monitorování nasazení použijte příkaz [kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get). Při nasazení aktualizované aplikace se vaše pody ukončí a vytvoří se znovu s novou imagí kontejneru.
+K monitorování nasazení použijte příkaz [kubectl get pod](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get). Při nasazení aktualizované aplikace se vaše pody ukončí a vytvoří se znovu s novou imagí kontejneru.
 
 ```azurecli-interactive
 kubectl get pod

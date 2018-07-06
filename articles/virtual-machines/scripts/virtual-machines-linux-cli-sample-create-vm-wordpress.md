@@ -3,7 +3,7 @@ title: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s L
 description: Ukázkový skript Azure CLI – Vytvoření virtuálního počítače s Linuxem a WordPressem
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,18 +14,18 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 76b113167690d04af73cce9ffc208090b9c2328f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3427f53293cb23ec4596c32456d5f156d7065b44
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653361"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096106"
 ---
 # <a name="create-a-vm-with-wordpress"></a>Vytvoření virtuálního počítače s WordPressem
 
-Tento skript vytvoří virtuální počítač a pomocí rozšíření vlastních skriptů virtuálního počítače Azure nainstaluje WordPress. Po spuštění skriptu můžete ke konfiguračnímu webu WordPressu přistupovat na adrese `http://<public IP of VM>/wordpress`. 
+Tento skript vytvoří virtuální počítač a pomocí rozšíření vlastních skriptů virtuálního počítače Azure nainstaluje WordPress. Po spuštění skriptu můžete ke konfiguračnímu webu WordPressu přistupovat na adrese `http://<public IP of VM>/wordpress`.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -35,11 +35,11 @@ Tento skript vytvoří virtuální počítač a pomocí rozšíření vlastních
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-wordpress-mysql/create-wordpress-mysql.sh "Quick Create VM")]
 
-## <a name="clean-up-deployment"></a>Vyčištění nasazení 
+## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup
 ```
 

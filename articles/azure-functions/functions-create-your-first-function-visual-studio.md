@@ -1,5 +1,5 @@
 ---
-title: Vytvoření první funkce v Azure pomocí sady Visual Studio | Microsoft Docs
+title: Vytvoření první funkce v Azure pomocí sady Visual Studio | Dokumentace Microsoftu
 description: Vytvořte v sadě Visual Studio funkci Azure Function aktivovanou protokolem HTTP a publikujte ji.
 services: functions
 documentationcenter: na
@@ -17,12 +17,12 @@ ms.workload: na
 ms.date: 05/22/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, 23113853-34f2-4f
-ms.openlocfilehash: d815bf3fa4b63f12ac9f0d871e353e872a5aca25
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: c5d09e03eb79d89604cba6d9533051bb9b50ce90
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34699967"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37084837"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Vytvoření první funkce pomocí sady Visual Studio
 
@@ -95,5 +95,4 @@ Před publikováním projektu musíte mít v předplatném Azure aplikaci funkc�
 Pomocí sady Visual Studio jste vytvořili a publikovali aplikaci funkcí jazyka C# s jednoduchou funkcí aktivovanou protokolem HTTP.
 
 * [Zjistěte, jak přidat vstupní a výstupní vazby, které se integrují s jinými službami.](functions-develop-vs.md#add-bindings)
-* [Získejte další informace o místním testování a ladění pomocí Azure Functions Core Tools.](functions-run-local.md#vs-debug)
 * [Získejte další informace o vývoji funkcí jako knihoven třídy .NET](functions-dotnet-class-library.md).

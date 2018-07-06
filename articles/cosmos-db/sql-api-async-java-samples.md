@@ -9,14 +9,14 @@ ms.service: cosmos-db
 ms.workload: data-services
 ms.devlang: java
 ms.topic: sample
-ms.date: 02/08/2018
+ms.date: 06/18/2018
 ms.author: sngun
-ms.openlocfilehash: 90b6ac48373056d5a4bec13c79574336bab73c51
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: eafc05d825535fe1a0c13dd52823b4e59499fb91
+ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34839915"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37113652"
 ---
 # <a name="azure-cosmos-db-async-java-examples-for-the-sql-api"></a>Azure Cosmos DB: Příklady v asynchronní Javě pro rozhraní SQL API
 

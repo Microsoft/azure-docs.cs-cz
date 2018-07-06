@@ -3,7 +3,7 @@ title: Ukázkový skript Azure PowerShellu – Služba IIS s DSC | Microsoft Doc
 description: Ukázkový skript Azure PowerShellu – Služba IIS s DSC
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: nepeters
-ms.openlocfilehash: 1c911c2b5f3d493131f592e4af164897bbb873d4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: iainfou
+ms.openlocfilehash: 54ea4eba550a4a05c6041cbd9d1fa4f6fa24cc25
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654007"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100364"
 ---
 # <a name="create-an-iis-vm-with-powershell"></a>Vytvoření virtuálního počítače se službou IIS pomocí PowerShellu
 
@@ -34,7 +34,7 @@ Tento skript vytvoří virtuální počítač Azure s Windows Serverem 2016 a pa
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-dsc/create-windows-vm-iis-dsc.ps1 "Create VM IIS DSC")]
 
-## <a name="clean-up-deployment"></a>Vyčištění nasazení 
+## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 

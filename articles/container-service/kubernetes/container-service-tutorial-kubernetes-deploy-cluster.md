@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 762a659e588a9b26b98241fce4c46fb831d355aa
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 29a5cc67ab4d515809d00e5f0b4277f95bfb08e6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32163074"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100164"
 ---
 # <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Nasazení clusteru Kubernetes ve službě Azure Container Service
 
@@ -69,7 +69,7 @@ Abyste nakonfigurovali kubectl pro připojení ke svému clusteru Kubernetes, sp
 az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster
 ```
 
-Pro ověření připojení k vašemu clusteru spusťte příkaz [kubectl get nodes](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get).
+Pro ověření připojení k vašemu clusteru spusťte příkaz [kubectl get nodes](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get).
 
 ```azurecli-interactive
 kubectl get nodes

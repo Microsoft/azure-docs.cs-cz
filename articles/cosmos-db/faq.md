@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: sngun
-ms.openlocfilehash: c1ddb6beec3f7c41fa49f62a3ed9baa17c515fbd
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 30ebe4f990dc65e53c34673f0948d3aa2240385c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445513"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859696"
 ---
 # <a name="azure-cosmos-db-faq"></a>Nejčastější dotazy k Azure Cosmos DB
 ## <a name="azure-cosmos-db-fundamentals"></a>Základy služby Azure Cosmos DB
@@ -136,12 +136,16 @@ Ukázky pro rozhraní SQL API [.NET](sql-api-dotnet-samples.md), [Java](https://
 Ano, rozhraní SQL API umožňuje aplikacím ukládat libovolné dokumenty JSON bez definic schématu nebo parametrů. Data se okamžitě dotazovat přes rozhraní dotazů SQL služby Azure Cosmos DB k dispozici.  
 
 ### <a name="does-the-sql-api-support-acid-transactions"></a>Podporuje rozhraní SQL API transakce ACID?
-Ano, rozhraní SQL API podporuje transakce mezi dokumenty vyjádřené jako JavaScript uložených procedur a aktivačních událostí. Transakce jsou omezená na jeden oddíl v rámci každé z kolekcí a jsou prováděny s odpovídající zásadám ACID sémantiku jako "všechno nebo nic," izolovaně od jiných souběžně spuštěných kódů a požadavků uživatelů. Pokud jsou výjimky vyvolány prostřednictvím provádění kód Javascriptové aplikace na straně serveru, celá transakce se vrátí zpět. Další informace o transakcích najdete v tématu [databáze programu transakce](programming.md#database-program-transactions).
+Ano, rozhraní SQL API podporuje transakce mezi dokumenty vyjádřené jako JavaScript uložených procedur a aktivačních událostí. Transakce jsou omezená na jeden oddíl v rámci každého kontejneru a jsou prováděny s odpovídající zásadám ACID sémantiku jako "všechno nebo nic," izolovaně od jiných souběžně spuštěných kódů a požadavků uživatelů. Pokud jsou výjimky vyvolány prostřednictvím provádění kód Javascriptové aplikace na straně serveru, celá transakce se vrátí zpět. Další informace o transakcích najdete v tématu [databáze programu transakce](programming.md#database-program-transactions).
 
-### <a name="what-is-a-collection"></a>Co je kolekce?
-Kolekce je skupina dokumentů a jejich přidružené logiky Javascriptové aplikace. Kolekce je fakturovatelná entita, kde [náklady](performance-levels.md) se určuje podle propustnosti a úložiště použít. Kolekce může zahrnovat jeden nebo více oddílů nebo serverů a můžete škálovat tak, aby zvládaly prakticky neomezené objemy úložišť a propustnosti.
+### <a name="what-is-a-container"></a>Co je kontejner?
+Kontejner je skupina dokumentů a jejich přidružené logiky Javascriptové aplikace. Kontejner je fakturovatelná entita, kde [náklady](performance-levels.md) se určuje podle propustnosti a úložiště použít. Kontejnery můžou pokrývat jeden nebo více oddílů nebo serverů a můžete škálovat tak, aby zvládaly prakticky neomezené objemy úložišť a propustnosti. 
 
-Kolekce jsou také entitami fakturace pro službu Azure Cosmos DB. Každá kolekce se účtuje po hodinách podle zřízené propustnosti a využitého prostoru úložiště. Další informace najdete v tématu [ceny služby Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/). 
+* Pro účty SQL a rozhraní API MongoDB kontejner mapuje na kolekci. 
+* Pro účty Cassandra a rozhraní Table API služby kontejneru mapuje na tabulku. 
+* Pro účty rozhraní Gremlin API kontejner mapuje do grafu. 
+
+Kontejnery jsou také entitami fakturace pro službu Azure Cosmos DB. Každý kontejner se účtuje po hodinách podle zřízené propustnosti a využitého prostoru úložiště. Další informace najdete v tématu [ceny služby Azure Cosmos DB](https://azure.microsoft.com/pricing/details/cosmos-db/). 
 
 ### <a name="how-do-i-create-a-database"></a>Jak vytvořím databázi?
 Databáze můžete vytvořit pomocí [webu Azure portal](https://portal.azure.com), jak je popsáno v [přidat kolekci](create-sql-api-dotnet.md#create-collection), jeden z [sady SDK služby Azure Cosmos DB](sql-api-sdk-dotnet.md), nebo [rozhraní REST API](/rest/api/cosmos-db/). 
@@ -170,7 +174,7 @@ Vám může hromadného vložení dokumenty do služby Azure Cosmos DB v jednom 
 * Nástroj pro migraci dat, jak je popsáno v [nástroj pro migraci databáze pro službu Azure Cosmos DB](import-data.md).
 * Uložené procedury, jak je popsáno v [programování v jazyce JavaScript na straně serveru pro službu Azure Cosmos DB](programming.md).
 
-### <a name="i-have-setup-my-collection-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>Mám nastavení mé kolekce použití Opožděné indexování, vidím, že moje dotazy nevrátí očekávané výsledky. 
+### <a name="i-have-setup-my-container-to-use-lazy-indexing-i-see-that-my-queries-do-not-return-expected-results"></a>Mám nastavení Moje kontejneru pro použití Opožděné indexování, vidím, že moje dotazy nevrátí očekávané výsledky. 
 Jak je popsáno v části indexování, opožděné indexování může vést k tomuto chování. Používejte vždy konzistentní indexování u všech aplikací. 
 
 
@@ -185,7 +189,7 @@ Toto je omezení jazyka JavaScript. JavaScript používá dvojité přesnosti s 
 
 ### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>Pokud jsou povolené oprávnění v hierarchii objektů?
 
-Vytváření oprávnění s použitím ResourceTokens je povolené na úrovni kolekce a jejích potomků (jako jsou dokumenty, přílohy). To znamená, že při pokusu o vytvoření oprávnění v databázi nebo úrovni účtu není aktuálně povoleno.
+Vytváření oprávnění s použitím ResourceTokens je povolené na úrovni kontejneru a jeho následníky (jako jsou dokumenty, přílohy). To znamená, že při pokusu o vytvoření oprávnění v databázi nebo úrovni účtu není aktuálně povoleno.
 
 
 ## <a name="develop-against-the-api-for-mongodb"></a>Vývoj s využitím rozhraní API pro MongoDB

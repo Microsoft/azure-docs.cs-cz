@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/27/2018
 ms.author: kgremban
 ms.custom: include file
-ms.openlocfilehash: 9c562f1ce938e5f5d9371cbccf032c0eb1d67125
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 3e7fcde204966e5a6a8154ab307807652cfa0419
+ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055026"
+ms.lasthandoff: 06/28/2018
+ms.locfileid: "37086207"
 ---
 Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat moduly do zařízení IoT Edge z cloudu. Modul IoT Edge je spustitelný balíček implementovaný jako kontejner. V této části nasadíte modul, který generuje telemetrická data pro vaše simulované zařízení. 
 
@@ -21,7 +21,7 @@ Jednou z klíčových možností služby Azure IoT Edge je schopnost nasazovat m
 1. Přejděte na **IoT Edge** a vyberte zařízení IoT Edge.
 1. Vyberte **Nastavit moduly**.
 1. Na stránce v části **Deployment Modules** (Nasazované moduly) klikněte na **Add** (Přidat) a vyberte **IoT Edge Module** (Modul IoT Edge).
-1. Do pole **Název** zadejte `tempsensor`. 
+1. Do pole **Název** zadejte `tempSensor`. 
 1. Do pole **Identifikátor URI image** zadejte `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`. 
 1. Ostatní nastavení ponechte beze změny a vyberte **Uložit**.
 

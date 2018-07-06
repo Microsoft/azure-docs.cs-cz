@@ -1,5 +1,5 @@
 ---
-title: Portál User Portal pro Azure MFA Server | Microsoft Docs
+title: Portál User Portal pro Azure MFA Server | Dokumentace Microsoftu
 description: Začínáme s Azure MFA a portálem User Portal.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: richagi
-ms.openlocfilehash: 38f75b8fc48f6fdcafd4c6ae25ec0f52641b2c05
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 7254e8d1b5a525c3ab06230837bd368e17911dbe
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869620"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100275"
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>User Portal pro Azure Multi-Factor Authentication Server
 
@@ -30,7 +30,7 @@ V závislosti na vašem prostředí můžete chtít portál User Portal nasadit 
 ![MFA User Portal](./media/howto-mfaserver-deploy-userportal/portal.png)
 
 > [!NOTE]
-> Portál User Portal je k dispozici pouze v Azure Multi-Factor Authentication Serveru. Pokud používáte službu Multi-Factor Authentication v cloudu, odkažte své uživatele na témata [Nastavení účtu pro dvoustupňové ověřování](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-first-time.md) nebo [Správa nastavení pro dvoustupňové ověřování](./../../multi-factor-authentication/end-user/multi-factor-authentication-end-user-manage-settings.md).
+> Portál User Portal je k dispozici pouze v Azure Multi-Factor Authentication Serveru. Pokud používáte službu Multi-Factor Authentication v cloudu, odkažte své uživatele na témata [Nastavení účtu pro dvoustupňové ověřování](end-user/current/multi-factor-authentication-end-user-first-time.md) nebo [Správa nastavení pro dvoustupňové ověřování](end-user/current/multi-factor-authentication-end-user-manage-settings.md).
 
 ## <a name="install-the-web-service-sdk"></a>Instalaci sady SDK webové služby
 
@@ -173,7 +173,7 @@ Pokud správci nastavili Azure Multi-Factor Authentication Server tak, aby shrom
 
 ![Bezpečnostní otázky uživatelského portálu](./media/howto-mfaserver-deploy-userportal/secq.png)
 
-Samoobslužný zápis je teď dokončený a uživatel je přihlášený k portálu User Portal. V budoucnu se uživatel může k portálu User Portal kdykoli znovu přihlásit, a pokud má od správce oprávnění ke změně metod, bude moci změnit svá telefonní čísla, kódy PIN, metody ověřování a bezpečnostní otázky.
+Samoobslužný zápis je teď dokončený a uživatel je přihlášený k portálu User Portal. V budoucnu se uživatel může k portálu User Portal kdykoli znovu přihlásit a pokud má od správce oprávnění ke změně metod, bude moci změnit svá telefonní čísla, kódy PIN, metody ověřování a bezpečnostní otázky.
 
 ## <a name="next-steps"></a>Další kroky
 

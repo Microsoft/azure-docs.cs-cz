@@ -1,5 +1,5 @@
 ---
-title: Vytvoření první funkce v Azure pomocí Javy a Mavenu | Microsoft Docs
+title: Vytvoření první funkce v Azure pomocí Javy a Mavenu | Dokumentace Microsoftu
 description: Vytvořte a publikujte do Azure jednoduchou funkci aktivovanou protokolem HTTP pomocí Javy a Mavenu.
 services: functions
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 05/15/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: f9b8046e0fb730f55dbdacf567869ae88df2a524
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: df3c64938cfc5835fd9eb2f0bbed0135b611347f
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600591"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37341517"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Vytvoření první funkce pomocí Javy a Mavenu (Preview)
 
@@ -114,7 +114,7 @@ public class Function {
 Změňte adresář na složku nově vytvořeného projektu a sestavte a spusťte funkci pomocí Mavenu:
 
 ```
-cd fabrikam-function
+cd fabrikam-functions
 mvn clean package 
 mvn azure-functions:run
 ```
@@ -172,7 +172,7 @@ Po dokončení nasazení se zobrazí adresa URL, pomocí které můžete přistu
 Otestujte aplikaci funkcí spuštěnou v Azure pomocí `cURL`. V níže uvedené ukázce budete muset změnit adresu URL, aby odpovídala adrese URL nasazené vlastní aplikace funkcí z předchozího kroku.
 
 ```
-curl -w '\n' https://fabrikam-function-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
+curl -w '\n' https://fabrikam-functions-20170920120101928.azurewebsites.net/api/hello -d AzureFunctions
 ```
 
 ```Output

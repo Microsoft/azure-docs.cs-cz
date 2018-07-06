@@ -3,7 +3,7 @@ title: Ukázkový skript Azure PowerShellu – Vytvoření virtuálního počít
 description: Ukázkový skript Azure PowerShellu – Vytvoření virtuálního počítače s Windows
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b50751f5cdad18a0584032e1ef2dcd325b0c77ac
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0b8b26123929c7c47203e7a0ecc7486d489fb9ab
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657801"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37098419"
 ---
 # <a name="create-a-virtual-machine-with-powershell"></a>Vytvoření virtuálního počítače pomocí PowerShellu
 
@@ -35,7 +35,7 @@ Tento skript vytvoří virtuální počítač Azure s Windows Serverem 2016. Po 
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/create-vm-detailed/create-windows-vm-quick.ps1 "Create VM")]
 
-## <a name="clean-up-deployment"></a>Vyčištění nasazení 
+## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 

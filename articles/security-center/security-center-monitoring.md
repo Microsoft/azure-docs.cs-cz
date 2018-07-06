@@ -1,5 +1,5 @@
 ---
-title: Sledování zabezpečení v Azure Security Center | Microsoft Docs
+title: Sledování zabezpečení v Azure Security Center | Dokumentace Microsoftu
 description: Tento článek vám pomůže začít pracovat s funkcemi sledování v Azure Security Center.
 services: security-center
 documentationcenter: na
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/26/2018
 ms.author: terrylan
-ms.openlocfilehash: dc362306e20b4d39aa73a552e47cbcbd3037edbd
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 434b73d4625f86fab195dbda1fed9c841791f5b6
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063387"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37099455"
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Sledování stavu zabezpečení v Azure Security Center
 Tento článek vám pomůže s využíváním možností v Azure Security Center ke sledování dodržování zásad.
@@ -84,7 +84,7 @@ Tato tabulka je řazená podle závažnosti (virtuální počítače a podsítě
 * Oranžová: Střední priorita, mělo by se řešit co nejdříve.
 * Zelená (poslední): Stav v pořádku.
 
-V tomto zobrazení topologie obsahuje první úroveň [virtuální sítě](../virtual-network/virtual-networks-overview.md), [brány virtuální sítě](/vpn-gateway/vpn-gateway-site-to-site-create.md) a [virtuální sítě (klasické)](/virtual-network/virtual-networks-create-vnet-classic-pportal.md). Na druhé úrovni jsou podsítě a na třetí úrovni virtuální počítače, které patří do těchto podsítí. V pravém sloupci je aktuální stav skupiny zabezpečení sítě pro tyto prostředky, jak ukazuje následující příklad:
+V tomto zobrazení topologie obsahuje první úroveň [virtuální sítě](../virtual-network/virtual-networks-overview.md), [brány virtuální sítě](../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md) a [virtuální sítě (klasické)](../virtual-network/virtual-networks-create-vnet-classic-pportal.md). Na druhé úrovni jsou podsítě a na třetí úrovni virtuální počítače, které patří do těchto podsítí. V pravém sloupci je aktuální stav skupiny zabezpečení sítě pro tyto prostředky, jak ukazuje následující příklad:
 
 ![Stav skupiny zabezpečení sítě v části topologie sítě](./media/security-center-monitoring/security-center-monitoring-fig12-ga.png)
 

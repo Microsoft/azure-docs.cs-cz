@@ -3,7 +3,7 @@ title: Ukázkový skript Azure CLI – Instalace služby IIS | Microsoft Docs
 description: Ukázkový skript Azure CLI – Instalace služby IIS
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/28/2017
-ms.author: nepeters
-ms.openlocfilehash: 691c04d002b345b532bc5d5a37ce7d8f1dcab124
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: iainfou
+ms.openlocfilehash: 341006a352898c7dfab36804ab91b0efd304c656
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34654262"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37097212"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>Rychlé vytvoření virtuálního počítače pomocí Azure CLI
 
@@ -34,11 +34,11 @@ Tento skript vytvoří virtuální počítač Azure s Windows Serverem 2016 a po
 
 [!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-windows-iis/create-vm-windows-iis.sh "Quick Create VM")]
 
-## <a name="clean-up-deployment"></a>Vyčištění nasazení 
+## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 
-```azurecli-interactive 
+```azurecli-interactive
 az group delete --name myResourceGroup --yes
 ```
 

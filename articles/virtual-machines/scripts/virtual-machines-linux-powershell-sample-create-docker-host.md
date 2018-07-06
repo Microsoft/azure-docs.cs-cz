@@ -3,7 +3,7 @@ title: Ukázkový skript Azure PowerShellu – Docker | Microsoft Docs
 description: Ukázkový skript Azure PowerShellu – Docker
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,18 +14,18 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/02/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 87b87734ebf2eaa266447cab0083c24399844f55
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cfa42180d0cc25b3ee4da3f79b51775e8e62db81
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653388"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37096658"
 ---
 # <a name="create-a-docker-host-with-powershell"></a>Vytvoření hostitele Dockeru pomocí PowerShellu
 
-Tento skript vytvoří virtuální počítač s povoleným Dockerem a spustí kontejner se serverem NGINX. Po spuštění skriptu můžete k webovému serveru NGINX přistupovat přes plně kvalifikovaný název domény virtuálního počítače Azure. 
+Tento skript vytvoří virtuální počítač s povoleným Dockerem a spustí kontejner se serverem NGINX. Po spuštění skriptu můžete k webovému serveru NGINX přistupovat přes plně kvalifikovaný název domény virtuálního počítače Azure.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -35,7 +35,7 @@ Tento skript vytvoří virtuální počítač s povoleným Dockerem a spustí ko
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/create-docker-host/create-docker-host.ps1 "Create Docker host")]
 
-## <a name="clean-up-deployment"></a>Vyčištění nasazení 
+## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
 Spuštěním následujícího příkazu odeberte skupinu prostředků, virtuální počítač a všechny související prostředky.
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: adegeo
-ms.openlocfilehash: 16d35a6b36f4dd85db430e05abdff898affbfd67
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 7860af5dea41ce00739b592c5409fe5a1a05383b
+ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32160017"
+ms.lasthandoff: 07/02/2018
+ms.locfileid: "37342289"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
@@ -291,7 +291,7 @@ Nastavení `<Instances>` určuje počet virtuálních počítačů, na kterých 
 
     ![Krok Nastavení](./media/cloud-services-dotnet-get-started/pubsettings.png)
 
-    Výchozí nastavení na kartě **Upřesnit** jsou pro účely tohoto kurzu vyhovující. Informace o kartě Upřesnit naleznete v článku o [průvodci publikováním aplikace Azure](http://msdn.microsoft.com/library/hh535756.aspx).
+    Výchozí nastavení na kartě **Upřesnit** jsou pro účely tohoto kurzu vyhovující. Informace o kartě Upřesnit naleznete v článku o [průvodci publikováním aplikace Azure](https://docs.microsoft.com/azure/vs-azure-tools-publish-azure-application-wizard).
 4. V kroku **Souhrn** klikněte na tlačítko **Publikovat**.
 
     ![Krok Souhrn](./media/cloud-services-dotnet-get-started/pubsummary.png)

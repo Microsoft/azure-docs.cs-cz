@@ -2,33 +2,31 @@
 title: Kurz Kubernetes v Azure – Aktualizace aplikace
 description: Kurz AKS – Aktualizace aplikace
 services: container-service
-author: neilpeterson
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/24/2018
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 622cd17a93bf1b9fa9d3c138d385ca1d29426f3b
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 97d8c4bd179edc59d97914f86e2aa139681e739a
+ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33934052"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37100936"
 ---
 # <a name="tutorial-update-an-application-in-azure-kubernetes-service-aks"></a>Kurz: Aktualizace aplikace ve službě Azure Kubernetes Service (AKS)
 
 Aplikaci je možné po nasazení v Kubernetes aktualizovat zadáním nové image kontejneru nebo verze image. Aktualizace je přitom fázovaná, takže se současně aktualizuje jenom část nasazení. Tato fázovaná aktualizace umožňuje, aby aplikace během aktualizace běžela. Poskytuje také mechanismus vrácení zpět pro případ, že dojde k selhání nasazení.
 
-V tomto kurzu, který je šestou částí osmidílné série, se aktualizuje aplikace Azure Vote. Úlohy, které provedete:
+V tomto kurzu, který je šestou částí sedmidílné série, se aktualizuje aplikace Azure Vote. Úlohy, které provedete:
 
 > [!div class="checklist"]
 > * Aktualizace aplikačního kódu front-endu
 > * Vytvoření aktualizované image kontejneru
 > * Nahrání image kontejneru do služby Azure Container Registry
 > * Nasazení aktualizované image kontejneru
-
-V dalších kurzech se služba Log Analytics konfiguruje pro monitorování clusteru Kubernetes.
 
 ## <a name="before-you-begin"></a>Než začnete
 

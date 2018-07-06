@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 06/25/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: 7ed564d5954841f96109568b33183908d25bb8be
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: ec30f1507bfa45c29709a7f4b7dc1e91aa25ca57
+ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939520"
+ms.lasthandoff: 07/03/2018
+ms.locfileid: "37440744"
 ---
 # <a name="assign-a-user-to-administrator-roles-in-azure-active-directory"></a>Přiřazení uživatele k rolím správce v Azure Active Directory
 Tento článek vysvětluje, jak uživateli přiřadit roli správce v Azure Active Directory (Azure AD). Informace o přidávání nových uživatelů v organizaci najdete v tématu [Přidávání nových uživatelů do služby Azure Active Directory](../add-users-azure-active-directory.md). Přidaní uživatelé nemají ve výchozím nastavení oprávnění správce, ale příslušné role jim můžete kdykoli přiřadit.
@@ -30,7 +30,7 @@ Tento článek vysvětluje, jak uživateli přiřadit roli správce v Azure Acti
 
     ![Otevírání správy uživatelů](./media/active-directory-users-assign-role-azure-portal/create-users-user-management.png)
 
-3. Pro vybraného uživatele vyberte **Role adresáře**, pak **Přidat roli** a pak v seznamu **Role adresáře** vyberte příslušné role správce, například **Správce podmíněného přístupu**. Další informace o rolích správce najdete v tématu [Přiřazování rolí správce ve službě Azure AD](../active-directory-assign-admin-roles-azure-portal.md). 
+3. Pro vybraného uživatele vyberte **Role adresáře**, pak **Přidat roli** a pak v seznamu **Role adresáře** vyberte příslušné role správce, například **Správce podmíněného přístupu**. Další informace o rolích správce najdete v tématu [Přiřazování rolí správce ve službě Azure AD](../users-groups-roles/directory-assign-admin-roles.md). 
 
     ![Přiřazení uživatele k roli](./media/active-directory-users-assign-role-azure-portal/create-users-assign-role.png)
 
