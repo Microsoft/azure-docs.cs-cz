@@ -14,12 +14,12 @@ ms.date: 06/13/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 79d78d282d454586f5930d54248467365f2e684f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 658ec5bb2aa7c15fb1d38da5249ff9b13973cf41
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449766"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867993"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Rutiny Azure Active Directory pro konfiguraci nastavení skupiny
 Tento článek obsahuje pokyny, jak pomocí rutin Powershellu pro Azure Active Directory (Azure AD) k vytvoření a aktualizaci skupiny. Tento obsah platí jenom pro skupiny Office 365 (říká se jim sjednocené skupiny). 
@@ -98,8 +98,8 @@ Tady je nastavení definované v Group.Unified SettingsTemplate. Pokud není uve
 |  <ul><li>UsageGuidelinesUrl<li>Typ: Řetězec<li>Výchozí hodnota: "" |Odkaz na pokyny k používání skupin. |
 |  <ul><li>ClassificationDescriptions<li>Typ: Řetězec<li>Výchozí hodnota: "" | Čárkami oddělený seznam popisů klasifikace. |
 |  <ul><li>DefaultClassification<li>Typ: Řetězec<li>Výchozí hodnota: "" | Klasifikace, která má být použita jako výchozí klasifikace pro skupinu Pokud nebyla zadána žádná.|
-|  <ul><li>PrefixSuffixNamingRequirement<li>Typ: Řetězec<li>Výchozí hodnota: "" | Řetězec s maximální délku 64 znaků, který definuje zásady vytváření názvů nakonfigurovaný pro skupiny Office 365. Další informace najdete v tématu [vynucení zásad pojmenování pro skupiny Office 365 (preview)](../groups-naming-policy.md). |
-| <ul><li>CustomBlockedWordsList<li>Typ: Řetězec<li>Výchozí hodnota: "" | Čárkou oddělený řetězec fráze, které uživatelé nebudou moci používat ve skupině názvy nebo aliasy. Další informace najdete v tématu [vynucení zásad pojmenování pro skupiny Office 365 (preview)](../groups-naming-policy.md). |
+|  <ul><li>PrefixSuffixNamingRequirement<li>Typ: Řetězec<li>Výchozí hodnota: "" | Řetězec s maximální délku 64 znaků, který definuje zásady vytváření názvů nakonfigurovaný pro skupiny Office 365. Další informace najdete v tématu [vynucení zásad pojmenování pro skupiny Office 365](groups-naming-policy.md). |
+| <ul><li>CustomBlockedWordsList<li>Typ: Řetězec<li>Výchozí hodnota: "" | Čárkou oddělený řetězec fráze, které uživatelé nebudou moci používat ve skupině názvy nebo aliasy. Další informace najdete v tématu [vynucení zásad pojmenování pro skupiny Office 365](groups-naming-policy.md). |
 | <ul><li>EnableMSStandardBlockedWords<li>Typ: Boolean<li>Výchozí hodnota: "False" | Nepoužívejte
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Typ: Boolean<li>Výchozí: False | Logická hodnota označující, zda uživatel typu Host může být vlastníkem skupiny. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Typ: Boolean<li>Výchozí: True | Logická hodnota označující, zda uživatel typu Host může mít přístup k obsahu skupiny Office 365.  Toto nastavení nevyžaduje licenci pro Azure Active Directory Premium P1.|

@@ -1,6 +1,6 @@
 ---
-title: Apache Storm při zápisu do úložiště nebo Data Lake Store - Azure HDInsight | Microsoft Docs
-description: Další informace o použití Apache Storm k zápisu do HDFS kompatibilní úložiště pro HDInsight. Azure Storage nebo Azure Data Lake Store zadejte HDFS comptabile úložiště pro HDInsight. Tento dokument a související příklad ukazují, jak součást HdfsBolt slouží k zápisu do výchozího úložiště Storm v clusteru HDInsight.
+title: Apache Storm zápis do úložiště a Data Lake Store – Azure HDInsight | Dokumentace Microsoftu
+description: Další informace o použití Apache Storm pro HDInsight zapsat do úložiště kompatibilního se systémem HDFS. Azure Storage nebo Azure Data Lake Store poskytují HDFS comptabile úložiště pro HDInsight. Tento dokument a související příklad ukazují, jak komponenty HdfsBolt slouží k zápisu do výchozího úložiště Storm v clusteru HDInsight.
 services: hdinsight
 documentationcenter: na
 author: Blackmist
@@ -13,25 +13,25 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 149f91f3091f08da2e54458d708a17da928c1972
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 95dea2896bf1d116a14d8b51ada9e17f186d4373
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131731"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856252"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Zápis do HDFS z Apache Storm v HDInsight
 
-Naučte se používat Storm k zápisu dat do HDFS kompatibilní úložiště používané Apache Storm v HDInsight. HDInsight můžete je používat jako úložiště HDFS kompatibilní úložiště Azure Storage a Azure Data Lake. Storm poskytuje [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) komponenty, která zapisuje data do HDFS. Tento dokument obsahuje informace o zápis z HdfsBolt na některý typ úložiště. 
+Zjistěte, jak použít k zápisu dat do HDFS kompatibilního úložiště využitá službou Apache Storm v HDInsight Storm. HDInsight můžete použít obě služby Azure Storage a Azure Data Lake úložiště jako HDFS kompatibilního úložiště. Storm poskytuje [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) komponenta, která zapisuje data do rozhraní HDFS. Tento dokument obsahuje informace o zápisu do obou typů úložiště z HdfsBolt. 
 
 > [!IMPORTANT]
-> Příklad topologii použitou v tomto dokumentu využívá součásti, které jsou součástí Storm v HDInsight. Změny pro práci s Azure Data Lake Store při použití s další clustery Apache Storm může požadovat.
+> Topologii příkladu v tomto dokumentu se spoléhá na součásti, které jsou součástí Storm v HDInsight. Může vyžadovat změny pro práci s Azure Data Lake Store při použití s další clustery Apache Storm.
 
 ## <a name="get-the-code"></a>Získání kódu
 
-Projekt obsahující tato topologie je k dispozici ke stažení z [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store).
+Projekt, který obsahuje tato topologie je k dispozici ke stažení z [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store).
 
-Kompilace projektu, potřebujete následující konfigurace pro vývojové prostředí:
+Pro kompilaci tohoto projektu, potřebujete následující konfigurace pro vývojové prostředí:
 
 * [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) nebo vyšší. HDInsight 3.5 nebo vyšší vyžadují Java 8.
 
@@ -46,30 +46,30 @@ Když na svoji vývojářskou pracovní stanici nainstalujete Javu a JDK, mohou 
     * `JAVA_HOME\bin` (nebo odpovídající cestu).
     * Adresář, kde je nainstalovaný Maven.
 
-## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>Postup použití HdfsBolt s HDInsight
+## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>Jak používat HdfsBolt s HDInsight
 
 > [!IMPORTANT]
-> Před použitím HdfsBolt se Storm v HDInsight, musíte nejprve použít akci skriptu pro kopírování souborů vyžaduje jar do `extpath` pro Storm. Další informace najdete v tématu [konfigurovat cluster](#configure) části.
+> Před použitím HdfsBolt se Stormem v HDInsight, musíte nejprve použít akci skriptu ke kopírování souborů vyžaduje soubor jar do `extpath` pro Storm. Další informace najdete v tématu [konfigurace clusteru](#configure) oddílu.
 
-HdfsBolt používá schéma souboru, které poskytujete pochopit, jak k zápisu do HDFS. S HDInsight použijte jednu z následujících schémat:
+HdfsBolt používá schéma souboru, které poskytují návod k zápisu do rozhraní HDFS. S HDInsight použijte jednu z následujících schémat:
 
-* `wasb://`: Používá se účtu úložiště Azure.
-* `adl://`: Použít s Azure Data Lake Store.
+* `wasb://`: Používá se s účtem Azure Storage.
+* `adl://`: Používá se s Azure Data Lake Store.
 
 Následující tabulka obsahuje příklady použití souboru schématu pro různé scénáře:
 
 | Schéma | Poznámky |
 | ----- | ----- |
-| `wasb:///` | Výchozí účet úložiště je kontejner objektů blob v účtu Azure Storage |
-| `adl:///` | Výchozí účet úložiště je adresář v Azure Data Lake Store. Při vytváření clusteru zadejte adresář v Data Lake Store, který je kořenem HDFS clusteru. Například `/clusters/myclustername/` adresáře. |
-| `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Účet úložiště Azure (Další) jiné než výchozí přidružen ke clusteru. |
-| `adl://STORENAME/` | Kořenovém adresáři Data Lake Store používaný v clusteru. Toto schéma umožňuje přístup k datům, která se nachází mimo adresář, který obsahuje clusteru systému souborů. |
+| `wasb:///` | Výchozí účet úložiště je kontejner objektů blob v účtu služby Azure Storage |
+| `adl:///` | Výchozí účet úložiště je adresář v Azure Data Lake Store. Při vytváření clusteru zadejte adresář, v Data Lake Store, kořenový clusteru HDFS. Například `/clusters/myclustername/` adresáře. |
+| `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Účet úložiště Azure (Další) jiné než výchozí, přidružené ke clusteru. |
+| `adl://STORENAME/` | Kořenový adresář Data Lake Store používané clusterem. Toto schéma umožňuje přístup k datům, která se nachází mimo adresář, který obsahuje systém souborů clusteru. |
 
-Další informace najdete v tématu [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) odkaz na Apache.org.
+Další informace najdete v tématu [HdfsBolt](http://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) odkaz na webu Apache.org.
 
 ### <a name="example-configuration"></a>Příklad konfigurace
 
-Následující YAML je výňatek ze `resources/writetohdfs.yaml` zahrnutý v příkladu. Tento soubor definuje pomocí topologie Storm [tok](https://storm.apache.org/releases/1.1.0/flux.html) framework pro Apache Storm.
+Následující kód YAML je výňatkem z `resources/writetohdfs.yaml` souboru zahrnutém v příkladu. Tento soubor definuje pomocí topologie Storm [tok](https://storm.apache.org/releases/1.1.2/flux.html) rámec pro Apache Storm.
 
 ```yaml
 components:
@@ -127,72 +127,72 @@ bolts:
 
 Tato YAML definuje následující položky:
 
-* `syncPolicy`: Definuje, když jsou soubory synchronizována/vyprazdňuje na systém souborů. V tomto příkladu každých 1000 řazené kolekce členů.
-* `fileNameFormat`: Definuje použijte při zápisu souborů vzoru pro název a cesta k souboru. V tomto příkladu jsou poskytovány cesta za běhu pomocí filtru, a přípona souboru `.txt`.
-* `recordFormat`: Definuje interní formát zapisovat soubory. V tomto příkladu jsou odděleny pole `|` znak.
-* `rotationPolicy`: Určuje, kdy otočení soubory. V tomto příkladu se provádí bez otočení.
+* `syncPolicy`: Definuje, kdy jsou soubory synchronizovat/vyprázdní do systému souborů. V tomto příkladu každých 1000 řazené kolekce členů.
+* `fileNameFormat`: Určuje cestu a název souboru vzor názvu pro použití při zapisování souborů. V tomto příkladu je cesta k dispozici za běhu pomocí filtru a přípona souboru je `.txt`.
+* `recordFormat`: Definuje interní formát soubory zapsané. V tomto příkladu jsou odděleny pole `|` znak.
+* `rotationPolicy`: Určuje, kdy obměna soubory. V tomto příkladu se provádí bez otočení.
 * `hdfs-bolt`: Používá předchozí komponenty jako parametry konfigurace pro `HdfsBolt` třídy.
 
-Další informace o rozhraní tok najdete v tématu [ https://storm.apache.org/releases/1.1.0/flux.html ](https://storm.apache.org/releases/1.1.0/flux.html).
+Další informace o rozhraní tok, najdete v části [ https://storm.apache.org/releases/1.1.0/flux.html ](https://storm.apache.org/releases/1.1.0/flux.html).
 
 ## <a name="configure-the-cluster"></a>Konfigurace clusteru
 
-Ve výchozím nastavení Storm v HDInsight neobsahuje součásti, které HdfsBolt používá ke komunikaci s Azure Storage nebo Data Lake Store v Storm je cesta pro třídy. Pomocí následující akce skriptu přidejte tyto součásti `extlib` adresář pro Storm v clusteru:
+Storm v HDInsight ve výchozím nastavení, neobsahuje součásti, které HdfsBolt používá ke komunikaci s Azure Storage nebo Azure Data Lake Store v cestě pro Storm. Použijte následující akci skriptu pro přidání těchto komponent k `extlib` adresáře pro Storm v clusteru:
 
 * Identifikátor URI skriptu: `https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`
-* Uzly, které chcete použít: Nimbus, Supervisor
+* Uzly platí pro: Nimbus, správce
 * Parametry: žádné
 
-Informace o použití tohoto skriptu k vašemu clusteru najdete v tématu [HDInsight přizpůsobit clustery pomocí akcí skriptů](./../hdinsight-hadoop-customize-cluster-linux.md) dokumentu.
+Informace o použití tohoto skriptu s vaším clusterem, najdete v článku [HDInsight přizpůsobit clustery pomocí akcí skriptů](./../hdinsight-hadoop-customize-cluster-linux.md) dokumentu.
 
-## <a name="build-and-package-the-topology"></a>Sestavení a balíček topologie
+## <a name="build-and-package-the-topology"></a>Sestavení a zabalení topologie
 
-1. Stáhněte si příklad projektu ze [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) na svoje vývojové prostředí.
+1. Stáhnout příklad projektu ze [ https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store ](https://github.com/Azure-Samples/hdinsight-storm-azure-data-lake-store) do svého vývojového prostředí.
 
-2. Z příkazového řádku, terminálu nebo skořápce relace, změnit adresáře do kořenového adresáře staženého projektu. Pro sestavení a balíček topologii, použijte následující příkaz:
+2. Z příkazového řádku, terminálu nebo skořápce relace změnit adresáře do kořenového adresáře ze staženého projektu. Pokud chcete sestavit a zabalit topologii, použijte následující příkaz:
    
         mvn compile package
    
-    Po dokončení sestavení a balení, je nový adresář s názvem `target`, který obsahuje soubor s názvem `StormToHdfs-1.0-SNAPSHOT.jar`. Tento soubor obsahuje kompilované topologie.
+    Po dokončení sestavení a zabalení je nový adresář s názvem `target`, který bude obsahovat soubor s názvem `StormToHdfs-1.0-SNAPSHOT.jar`. Tento soubor obsahuje zkompilovaný topologie.
 
-## <a name="deploy-and-run-the-topology"></a>Nasazení a spuštění topologie
+## <a name="deploy-and-run-the-topology"></a>Nasadit a spustit topologii
 
-1. Použijte následující příkaz pro kopírování topologie do clusteru HDInsight. Nahraďte **uživatele** uživatelským jménem SSH, které jste použili při vytvoření clusteru. Místo **CLUSTERNAME** zadejte název vašeho clusteru.
+1. Použijte následující příkaz pro kopírování topologie do clusteru HDInsight. Nahraďte **uživatele** s uživatelským jménem SSH jste použili při vytváření clusteru. Místo **CLUSTERNAME** zadejte název vašeho clusteru.
    
         scp target\StormToHdfs-1.0-SNAPSHOT.jar USER@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs-1.0-SNAPSHOT.jar
    
-    Po zobrazení výzvy zadejte heslo použité při vytváření uživatele SSH pro cluster. Pokud jste použili veřejný klíč místo hesla, budete možná muset použít `-i` parametru určete cestu k odpovídající soukromý klíč.
+    Po zobrazení výzvy zadejte heslo použité při vytváření uživatele SSH pro cluster. Pokud jste použili veřejný klíč, místo hesla, budete možná muset použít `-i` parametr zadejte cestu k odpovídající privátní klíč.
    
    > [!NOTE]
    > Další informace o použití `scp` se službou HDInsight najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-2. Po dokončení nahrávání, použijte následující se připojit ke clusteru HDInsight pomocí protokolu SSH. Nahraďte **uživatele** uživatelským jménem SSH, které jste použili při vytvoření clusteru. Místo **CLUSTERNAME** zadejte název vašeho clusteru.
+2. Po dokončení nahrávání, použijte následující postup pro připojení ke clusteru HDInsight pomocí SSH. Nahraďte **uživatele** s uživatelským jménem SSH jste použili při vytváření clusteru. Místo **CLUSTERNAME** zadejte název vašeho clusteru.
    
         ssh USER@CLUSTERNAME-ssh.azurehdinsight.net
    
-    Po zobrazení výzvy zadejte heslo použité při vytváření uživatele SSH pro cluster. Pokud jste použili veřejný klíč místo hesla, budete možná muset použít `-i` parametru určete cestu k odpovídající soukromý klíč.
+    Po zobrazení výzvy zadejte heslo použité při vytváření uživatele SSH pro cluster. Pokud jste použili veřejný klíč, místo hesla, budete možná muset použít `-i` parametr zadejte cestu k odpovídající privátní klíč.
    
    Další informace najdete v tématu [Použití SSH se službou HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
-3. Po připojení, použijte následující příkaz k vytvoření souboru s názvem `dev.properties`:
+3. Jakmile budete připojeni, použijte následující příkaz k vytvoření souboru s názvem `dev.properties`:
 
         nano dev.properties
 
-4. Použít následující text jako obsah `dev.properties` souboru:
+4. Použijte následující text jako obsah `dev.properties` souboru:
 
         hdfs.write.dir: /stormdata/
         hdfs.url: wasb:///
 
     > [!IMPORTANT]
-    > Tento příklad předpokládá, že váš cluster používá jako úložiště pro výchozí účet úložiště Azure. Pokud váš cluster používá Azure Data Lake Store, použijte `hdfs.url: adl:///` místo.
+    > Tento příklad předpokládá, že váš cluster používá účet Azure Storage jako výchozí úložiště. Pokud váš cluster používá Azure Data Lake Store, použijte `hdfs.url: adl:///` místo.
     
-    Chcete-li uložit soubor, použijte __kombinaci kláves Ctrl + X__, pak __Y__a v neposlední řadě __Enter__. Hodnoty v tomto souboru nastavit adresu URL obchodu s Data Lake a název adresáře, který data se zapisují do.
+    Chcete-li uložit soubor, použijte __Ctrl + X__, pak __Y__a nakonec __Enter__. Hodnoty v tomto souboru nastavit adresu URL Data Lake store a název adresáře, který data se zapisují do.
 
-3. Použijte následující příkaz spusťte topologie:
+3. Spustit topologii použijte následující příkaz:
    
         storm jar StormToHdfs-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /writetohdfs.yaml --filter dev.properties
 
-    Tento příkaz spustí topologie pomocí rozhraní tok odesláním uzel Nimbus clusteru. Topologie je definována `writetohdfs.yaml` souborů, které jsou součástí jar. `dev.properties` Souboru se předá jako filtr a hodnoty obsažené v souboru jsou číst topologii.
+    Tento příkaz spustí topologii s použitím rozhraní tok odesláním do uzlu Nimbus clusteru. Topologie je definován `writetohdfs.yaml` soubor součástí soubor jar. `dev.properties` Souboru je předán jako filtr a hodnoty obsažené v souboru jsou přečteny topologie.
 
 ## <a name="view-output-data"></a>Zobrazení výstupní data
 
@@ -200,9 +200,9 @@ Chcete-li zobrazit data, použijte následující příkaz:
 
     hdfs dfs -ls /stormdata/
 
-Zobrazí se seznam souborů vytvořených pomocí této topologii.
+Zobrazí se seznam soubory vytvořené v této topologii.
 
-V následujícím seznamu je příklad dat retuned podle předchozích příkazů:
+V následujícím seznamu je příklad dat retuned předchozí příkazy:
 
     Found 30 items
     -rw-r-----+  1 sshuser sshuser       488000 2017-03-03 19:13 /stormdata/hdfs-bolt-3-0-1488568403092.txt
@@ -213,15 +213,15 @@ V následujícím seznamu je příklad dat retuned podle předchozích příkaz�
 
 ## <a name="stop-the-topology"></a>Zastavení topologie
 
-Topologie Storm spustit, dokud nebude zastaven nebo odstranění clusteru. K zastavení topologie, použijte následující příkaz:
+Topologie Storm běží až do ukončení nebo odstranění clusteru. Pokud chcete ukončit topologii, použijte následující příkaz:
 
     storm kill hdfswriter
 
-## <a name="delete-your-cluster"></a>Odstranění clusteru
+## <a name="delete-your-cluster"></a>Odstranit cluster
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="next-steps"></a>Další postup
 
-Teď, když jste se naučili jak používat Storm k zápisu do úložiště Azure a Azure Data Lake Store, zjišťování dalších [Storm příklady pro HDInsight](apache-storm-example-topology.md).
+Teď, když jste se naučili, jak používat Storm k zápisu do služby Azure Storage a Azure Data Lake Store, zjišťovat další [příklady Storm pro HDInsight](apache-storm-example-topology.md).
 

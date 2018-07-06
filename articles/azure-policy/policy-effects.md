@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 07774d424f07ee6b3151c0a1a4ca533a8a8959a8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a3267d8f2f088c93a8f69f949dc928437a80f455
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444444"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856942"
 ---
 # <a name="understanding-policy-effects"></a>Principy zásad efekty
 

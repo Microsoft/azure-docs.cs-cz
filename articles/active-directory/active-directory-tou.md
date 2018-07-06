@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance-reports
 ms.date: 06/29/2018
 ms.author: rolyon
-ms.openlocfilehash: f22190d81d8ffbb91e9573974d93d4b1ad35af18
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7833c9da2303d119f0cb421f21bea455ab449898
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37444340"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856412"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkce Azure Active Directory Terms of Use
 Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání informací koncovým uživatelům. Toto předkládání zajistí, že se uživatelům zobrazí příslušná právní omezení pro zákonné požadavky nebo požadavky dodržování předpisů. Tento článek popisuje, jak začít s funkcí Azure AD Terms of Use.
@@ -30,7 +30,7 @@ Azure AD Terms of Use poskytuje organizacím jednoduchý způsob předkládání
 Funkce Azure AD Terms of Use umožňuje následující:
 - Vyžadovat souhlas zaměstnanců nebo hostů s vašimi podmínkami použití před tím, než získají přístup.
 - Předkládat obecné podmínky použití všem uživatelům ve vaší organizaci.
-- Předkládat konkrétní podmínky použití založené na atributech uživatelů (např. doktoři vs. sestry nebo místní vs. zahraniční pracovníci, a to pomocí [dynamických skupin](active-directory-groups-dynamic-membership-azure-portal.md)).
+- Předkládat konkrétní podmínky použití založené na atributech uživatelů (např. doktoři vs. sestry nebo místní vs. zahraniční pracovníci, a to pomocí [dynamických skupin](users-groups-roles/groups-dynamic-membership.md)).
 - Předkládat konkrétní podmínky použití při přístupu k aplikacím s velkým vlivem na chod firmy, jako je například Salesforce.
 - Předkládat podmínky použití v různých jazycích.
 - Zobrazit seznam těch, kdo odsouhlasili nebo neodsouhlasili vaše podmínky použití.
