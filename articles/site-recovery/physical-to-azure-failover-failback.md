@@ -1,61 +1,61 @@
 ---
-title: Převzetí služeb při selhání a selhání zpět fyzických serverů, které se replikují do Azure pomocí Site Recovery | Microsoft Docs
-description: Naučte se vrátí zpátky na místní lokalitu s Azure Site Recovery a selhání fyzických serverů do Azure
+title: Převzetí služeb při selhání a navrácení služeb po obnovení fyzických serverů replikovaných do Azure pomocí Site Recovery | Dokumentace Microsoftu
+description: Další informace o převzetí služeb při selhání fyzických serverů do Azure a navrácení služeb po obnovení místní lokality pomocí Azure Site Recovery
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: raynew
-ms.openlocfilehash: 2610a331ef8ef17b319da99eb89288b59532be9f
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 1a51946a0da67e3158268e6147afba960502ffe0
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37111494"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865212"
 ---
-# <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a selhání zpět fyzických serverů replikovat do Azure
+# <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Převzetí služeb při selhání a navrácení služeb po obnovení fyzických serverů replikovaných do Azure
 
-Tento kurz popisuje, jak při selhání fyzického serveru do Azure. Poté, co jste při selhání, můžete nezdaří serveru zpět do místního webu případě, že je k dispozici. 
+Tento kurz popisuje, jak převzít služby při selhání fyzického serveru do Azure. Po přes, převezme služby při server zpět do místní lokality až bude k dispozici. 
 
 ## <a name="preparing-for-failover-and-failback"></a>Příprava na převzetí služeb při selhání a navrácení služeb po obnovení
 
-Fyzické servery replikovat do Azure pomocí Site Recovery může selhat pouze zpět jako virtuální počítače VMware. Chcete-li navrácení služeb po obnovení musíte infrastruktury VMware. 
+Fyzických serverů replikovaných do Azure pomocí Site Recovery můžete předat jenom zpět jako virtuální počítače VMware. K navrácení služeb po obnovení budete potřebovat infrastrukturu VMware. 
 
 Převzetí služeb při selhání a navrácení služeb po obnovení probíhá ve čtyřech fázích:
 
 1. **Převzetí služeb při selhání do Azure:** Převezmou se služby při selhání počítačů z místní lokality do Azure.
-2. **Znovu nastavte ochranu virtuálních počítačů Azure**: znovu nastavte ochranu virtuálních počítačů Azure, tak, aby jejich spuštění replikovat místní virtuální počítače VMware.
+2. **Znovunastavení ochrany virtuálních počítačů Azure**: znovunastavení ochrany virtuálních počítačů Azure tak, aby se začaly replikovat zpět do místních virtuálních počítačů VMware.
 3. **Převzetí služeb při selhání do místní lokality:** Spustí se převzetí služeb při selhání, které zajistí navrácení služeb po obnovení z Azure.
-4. **Opětovné ochrany místní virtuální počítače**: po dat se nezdařila zpět, znovu aktivujte ochranu virtuálních počítačů VMware místní při selhání zpátky do tak, aby jejich spuštění replikaci do Azure.
+4. **Znovunastavení ochrany místních virtuálních počítačů**: po zpět navrácení dat znovunastavení ochrany virtuálních počítačů VMware v místním při selhání zpátky do tak, aby se začaly replikovat do Azure.
 
-## <a name="verify-server-properties"></a>Ověřte vlastnosti serveru
+## <a name="verify-server-properties"></a>Zkontrolujte vlastnosti serveru
 
-Ověřte vlastnosti serveru a ujistěte se, zda je v souladu s [požadavky pro Azure](vmware-physical-azure-support-matrix.md#replicated-machines) pro virtuální počítače Azure.
+Zkontrolujte vlastnosti serveru a ujistěte se, že je v souladu s [požadavky služby Azure](vmware-physical-azure-support-matrix.md#replicated-machines) pro virtuální počítače Azure.
 
 1. V **chráněné položky**, klikněte na tlačítko **replikované položky**a vyberte počítač.
 
-2. V **replikované položky** podokně je souhrn informace o počítači, stav, a nejnovější dostupný bod obnovení. Kliknutím na **Vlastnosti** zobrazíte další podrobnosti.
+2. V **replikovaná položka** podokně je souhrn informací o počítači, stav, a nejnovější dostupné body obnovení. Kliknutím na **Vlastnosti** zobrazíte další podrobnosti.
 3. V části **Výpočty a síť** můžete upravit název Azure, skupinu prostředků, cílovou velikost, [skupinu dostupnosti](../virtual-machines/windows/tutorial-availability-sets.md) a [nastavení spravovaného disku](#managed-disk-considerations).
 4. Můžete zobrazit a upravit nastavení sítě, včetně sítě a podsítě, do které se virtuální počítače Azure umístí po převzetí služeb při selhání, a IP adresy, která se jim přiřadí.
-5. V **disky**, zobrazí se informace o operačního systému počítače a datové disky.
+5. V **disky**, zobrazí se informace o počítači operačního systému a datové disky.
 
 ## <a name="run-a-failover-to-azure"></a>Spuštění převzetí služeb při selhání do Azure
 
 1. V části **Nastavení** > **Replikované položky** klikněte na počítač a pak na **Převzetí služeb při selhání**.
 2. V části **Převzetí služeb při selhání** vyberte **Bod obnovení**, ke kterému se mají převzít služby při selhání. Můžete použít jednu z následujících možností:
    - **Nejnovější (výchozí):** Tato možnost nejprve zpracuje veškerá data odeslaná do Site Recovery. Poskytuje nejnižší cíl bodu obnovení (RPO), protože se virtuální počítač Azure vytvoří teprve tehdy, až převzetí služeb při selhání bude mít veškerá data, která se do Site Recovery replikovala při aktivaci převzetí služeb při selhání.
-   - **Nejnovější zpracované**: tuto možnost převezme počítače do nejnovějšího bodu obnovení, které jsou zpracovávány Site Recovery. Tato možnost poskytuje nízkou plánovanou dobu obnovení (RTO), protože se neztrácí žádný čas zpracováním nezpracovaných dat.
-   - **Nejnovější aplikace konzistentní**: tuto možnost převezme počítače do bodu nejnovější konzistentní obnovení zpracovaných službou Site Recovery.
+   - **Nejnovější zpracovaný**: Tato možnost převezme služby při selhání počítače k nejnovějšímu bodu obnovení zpracovanému službou Site Recovery. Tato možnost poskytuje nízkou plánovanou dobu obnovení (RTO), protože se neztrácí žádný čas zpracováním nezpracovaných dat.
+   - **Nejnovější konzistentní vzhledem k**: Tato možnost převezme služby při selhání počítače do bodu nejnovější konzistentní vzhledem k obnovení zpracovanému službou Site Recovery.
    - **Vlastní:** Zadáte vlastní bod obnovení.
 
-3. Vyberte **vypnout počítač před zahájením převzetí služeb při selhání** Pokud chcete, aby Site Recovery a zkuste to vypnout zdrojový počítač před spuštěním převzetí služeb při selhání. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
+3. Vyberte **před spuštěním převzetí služeb při selhání vypnout počítač** Pokud chcete, aby Site Recovery se pokouší vypnout zdrojový počítač, před aktivací převzetí služeb. Převzetí služeb při selhání bude pokračovat i v případě, že se vypnutí nepovede. Průběh převzetí služeb při selhání můžete sledovat na stránce **Úlohy**.
 4. Pokud jste připraveni na připojení k virtuálnímu počítači Azure, připojte se k němu, abyste ho po převzetí služeb při selhání ověřili.
 5. Po ověření můžete převzetí služeb při selhání **Potvrdit**. Tím se odstraní všechny dostupné body obnovení.
 
 > [!WARNING]
-> Nemáte zrušit převzetí služeb při selhání v průběhu. Před zahájením převzetí služeb při selhání, zastaví replikaci počítače. Pokud zrušíte převzetí služeb při selhání, zastaví, ale tento počítač nebude znovu replikovat.
-> Pro fyzické servery zpracování dalších převzetí služeb při selhání může trvat přibližně osm až deset minut. 
+> Nepřerušujte převzetí služeb při selhání v průběhu. Před zahájením převzetí služeb při selhání, zastaví se replikace počítačů. Pokud zrušíte převzetí služeb při selhání, zastaví, ale tento počítač se znovu nereplikuje.
+> Pro fyzické servery převzetí služeb při selhání další zpracování, může trvat přibližně osm až deset minut na dokončení. 
 
 ## <a name="create-a-process-server-in-azure"></a>Vytvoření procesového serveru v Azure
 
@@ -63,16 +63,16 @@ Procesový server přijímá data z virtuálního počítače Azure a odesílá 
 
 - Pokud používáte připojení Azure ExpressRoute, můžete pro účely testování použít místní procesový server, který je automaticky nainstalovaný na konfiguračním serveru.
 - Pokud používáte připojení VPN nebo pokud spouštíte navrácení služeb po obnovení v produkčním prostředí, musíte nastavit virtuální počítač Azure jako procesový server založený na Azure pro navrácení služeb po obnovení.
-- Postupujte podle pokynů v [v tomto článku](vmware-azure-set-up-process-server-azure.md) nastavit procesní server v Azure.
+- Postupujte podle pokynů v [v tomto článku](vmware-azure-set-up-process-server-azure.md) nastavit procesový server v Azure.
 
 ## <a name="configure-the-master-target-server"></a>Konfigurace hlavního cílového serveru
 
-Ve výchozím nastavení hlavní cílový server přijímá data navrácení služeb po obnovení. Běží na serveru místní konfigurace.
+Ve výchozím nastavení hlavní cílový server přijímá data navrácení služeb po obnovení. Běží na místní konfigurační server.
 
-- Pokud virtuální počítač VMware, ke kterému jste navrácení služeb po obnovení je na hostiteli ESXi, který je spravován pomocí serveru VMware vCenter Server, hlavní cílový server musí mít přístup k úložišti dat Virtuálního počítače (VMDK), k zápisu replikovaná data na disky virtuálních počítačů. Ujistěte se, že je úložiště dat virtuálního počítače připojené k hostiteli hlavního cílového serveru a že umožňuje přístup pro čtení i zápis.
-- Pokud hostitele ESXi, který není spravován systémem vCenter server, služba Site Recovery vytvoří při vytvoření nového virtuálního počítače. Virtuální počítač se vytvoří na hostiteli ESX, ve kterém vytvoříte virtuální počítač na hlavním cíli. Pevný disk virtuálního počítače musí být v úložišti dat přístupném pro hostitele, na kterém běží hlavní cílový server.
-- Pro fyzické počítače, které jste navrácení služeb po obnovení musíte provést zjišťování hostitele, na kterém je spuštěný hlavní cílový server, než můžete znovu nastavte ochranu na počítač.
-- Další možnost, pokud místní počítač již existuje pro navrácení služeb po obnovení, je před provedením navrácení služeb po obnovení odstranit. Navrácení služeb po obnovení pak vytvoří nový virtuální počítač na stejném hostiteli, jako je hostitel ESX hlavního cílového serveru. Když provedete navrácení služeb po obnovení do alternativního umístění, data se obnoví do stejného úložiště dat a stejného hostitele ESX, které používá místní hlavní cílový server.
+- Pokud virtuální počítač VMware, ke kterému jste navrácení služeb po obnovení je na hostiteli ESXi, kterého spravuje VMware vCenter Server, hlavní cílový server musí mít přístup k úložišti dat Virtuálního počítače (VMDK), zapisovat replikovaná data na disky virtuálního počítače. Ujistěte se, že je úložiště dat virtuálního počítače připojené k hostiteli hlavního cílového serveru a že umožňuje přístup pro čtení i zápis.
+- Pokud hostitele ESXi, který není spravován serverem vCenter, služba Site Recovery vytvoří nový virtuální počítač během opětovného nastavování ochrany. Na hostiteli ESX, na kterém vytvoříte hlavní cílový virtuální počítač se vytvoří virtuální počítač. V úložišti dat, které je přístupné pro hostitele, na kterém běží hlavní cílový server musí být pevný disk virtuálního počítače.
+- Pro fyzické počítače, které navrácení služeb po obnovení byste měli dokončit zjišťování hostitele, na kterém je spuštěný hlavního cílového serveru, před znovunastavením ochrany počítač.
+- Další možností, pokud již existuje místní virtuální počítač pro navrácení služeb po obnovení, je ho odstranit, než se pustíte navrácení služeb po obnovení. Navrácení služeb po obnovení pak vytvoří nový virtuální počítač na stejném hostiteli, jako je hostitel ESX hlavního cílového serveru. Když provedete navrácení služeb po obnovení do alternativního umístění, data se obnoví do stejného úložiště dat a stejného hostitele ESX, které používá místní hlavní cílový server.
 - Na hlavním cílovém serveru nemůžete používat funkci Storage vMotion. Jinak navrácení služeb po obnovení nebude fungovat, protože nebude mít přístup k diskům. Vylučte hlavní cílové servery ze svého seznamu vMotion.
 
 ## <a name="reprotect-azure-vms"></a>Znovunastavení ochrany virtuálních počítačů Azure
@@ -114,7 +114,7 @@ Spusťte převzetí služeb při selhání následujícím způsobem:
 
 ## <a name="reprotect-on-premises-machines-to-azure"></a>Znovunastavení ochrany místních počítačů do Azure
 
-Data by teď měly být zpět na místní lokalitu, ale není replikaci do Azure. Replikaci do Azure můžete znovu spustit následujícím způsobem:
+Data by měla nyní být zpět ve vaší místní lokalitě, ale nereplikují se do Azure. Replikaci do Azure můžete znovu spustit následujícím způsobem:
 
 1. V části trezor > **Nastavení** > **Replikované položky** vyberte virtuální počítače, u kterých došlo k navrácení služeb po obnovení, a klikněte na **Znovu nastavit ochranu**.
 2. Vyberte procesový server, který se používá k odesílání replikovaných dat do Azure, a klikněte na **OK**.

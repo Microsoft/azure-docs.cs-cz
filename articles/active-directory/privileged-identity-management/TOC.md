@@ -1,6 +1,6 @@
 # Přehled
 ## [Co je Azure AD PIM](../active-directory-privileged-identity-management-configure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
-## [Zabezpečení privilegovaného přístupu](../admin-roles-best-practices.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
+## [Zabezpečení privilegovaného přístupu](../users-groups-roles/directory-admin-roles-secure.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [Role adresáře v PIM](../active-directory-privileged-identity-management-roles.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json)
 ## [PIM pro prostředky Azure](azure-pim-resource-rbac.md)
 ## [Schvalovací pracovní postup PIM](azure-ad-pim-approval-workflow.md)

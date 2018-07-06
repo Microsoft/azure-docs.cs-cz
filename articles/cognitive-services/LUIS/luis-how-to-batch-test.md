@@ -1,6 +1,6 @@
 ---
-title: Batch testování aplikace LEOŠ - Azure | Microsoft Docs
-description: Testování batch znalosti jazyka (LEOŠ) slouží k vyhledání utterances s nesprávnou záměry a entity.
+title: Testování aplikace LUIS – Azure batch | Dokumentace Microsoftu
+description: Language Understanding (LUIS) testování služby batch použijte k vyhledání projevy s nesprávnou záměry a entity.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,57 +9,57 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/14/2018
 ms.author: v-geberr
-ms.openlocfilehash: 822fb1e2d5b13941527d242e8501b423bd6b81cb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 0844ec9c421afd4cd1e9e8b2e6ab5fbe93b23d04
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265509"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868901"
 ---
-# <a name="batch-testing"></a>Testování batch
- Testování batch je komplexní test na váš aktuální trained model k měření jeho výkon v LEOŠ. 
+# <a name="batch-testing"></a>Dávkové testování
+ Testování služby batch je komplexní test na aktuální trénovaný model pro měření jejího výkonu v LUIS. 
 
 <a name="batch-testing"></a>
-## <a name="import-a-dataset-file-for-batch-testing"></a>Importovat soubor datovou sadu pro testování batch
+## <a name="import-a-dataset-file-for-batch-testing"></a>Importovat datovou sadu pro testování služby batch
 
-1. Vyberte **Test** v horním panelu a pak vyberte **dávky testování panely**.
+1. Vyberte **testovací** v horní části panelu a pak vyberte **Batch testování panel**.
 
-    ![Testování odkaz batch](./media/luis-how-to-batch-test/batch-testing-link.png)
+    ![Testování propojení služby batch](./media/luis-how-to-batch-test/batch-testing-link.png)
 
-2. Vyberte **datovou sadu Import**. **Nová datová sada Import** zobrazí se dialogové okno. Vyberte **zvolit soubor** a najděte [JSON](luis-concept-batch-test.md#batch-file-format) soubor, který obsahuje *více než 1 000* utterances k testování.
+2. Vyberte **datové sady importu**. **Nová datová sada Import** zobrazí se dialogové okno. Vyberte **zvolit soubor** a vyhledejte soubor JSON se správnými [formátu JSON](luis-concept-batch-test.md#batch-file-format) obsahující *více než 1 000* projevy k testování.
 
-    ![Soubor importu datové sady](./media/luis-how-to-batch-test/batchtest-importset.png)
+    ![Importovat soubor datové sady](./media/luis-how-to-batch-test/batchtest-importset.png)
 
-    Chyby při importu oznámí red oznamovací pruh v horní části prohlížeče. Při importu obsahuje chyby, je vytvořena žádná datová sada. Další informace najdete v tématu [běžné chyby](luis-concept-batch-test.md#common-errors-importing-a-batch).
+    Chyby importu jsou hlášeny v red oznamovací pruh v horní části stránky prohlížeče. Při importu obsahuje chyby, žádná datová sada se vytvoří. Další informace najdete v tématu [běžné chyby](luis-concept-batch-test.md#common-errors-importing-a-batch).
 
-3. V **název datové sady** pole, zadejte název souboru datové sady. Soubor datová sada obsahuje **pole utterances** včetně *s názvem bez přípony záměr* a *entity*. Zkontrolujte [příklad dávkového souboru](luis-concept-batch-test.md#batch-file-format) syntaxe. 
+3. V **název datové sady** pole, zadejte název pro soubor datové sady. Zahrnuje soubor datové sady **pole projevy** včetně *označené záměr* a *entity*. Zkontrolujte [příklad dávkový soubor](luis-concept-batch-test.md#batch-file-format) syntaxi. 
 
-4. Vyberte **provádí**. Soubor datové sady je přidán.
+4. Vyberte **Done** (Hotovo). Přidá soubor datové sady.
 
-## <a name="run-rename-export-or-delete-dataset"></a>Spuštění, přejmenovat, exportu nebo odstranění datové sady
-Pokud chcete spustit, přejmenovat, exportu nebo datovou sadu odstranit, použijte se třemi tečkami (**...** ) na konci řádku datovou sadu.
+## <a name="run-rename-export-or-delete-dataset"></a>Spuštění, přejmenování, export nebo odstranění datové sady
+Chcete-li spustit, přejmenovat, export nebo odstranění datové sady, použijte na tři tečky (***...*** ) tlačítko na konci řádku datové sady.
 
 ![Akce datové sady](./media/luis-how-to-batch-test/batch-testing-options.png)
 
-## <a name="run-a-batch-test-on-your-trained-app"></a>Spuštění testu batch na vyškolení aplikace
+## <a name="run-a-batch-test-on-your-trained-app"></a>Spuštění testu služby batch v aplikaci trénovaného
 
-Pokud chcete spustit test, vyberte název datové sady. Po dokončení testu tento řádek zobrazuje výsledek testu datové sady.
+Pro spuštění testu, vyberte název datové sady. Po dokončení testu, tento řádek zobrazuje výsledek testu datové sady.
 
-![Výsledek testu batch](./media/luis-how-to-batch-test/run-test.png)
+![Výsledek testu služby batch](./media/luis-how-to-batch-test/run-test.png)
 
-Ke stažení datové sady je stejný soubor, který byl odeslán pro testování batch.
+Ke stažení datová sada je stejný soubor, který byl nahrán pro testování služby batch.
 
 |Stav|Význam|
 |--|--|
-|![Ikona zeleného kruhu úspěšné testu](./media/luis-how-to-batch-test/batch-test-result-green.png)|Všechny utterances jsou úspěšné.|
-|![Červené x ikonu chybě testu](./media/luis-how-to-batch-test/batch-test-result-red.png)|Alespoň jeden utterance záměr neodpovídá předpovědi.|
-|![Připraveno k ikona testu](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Test je připraven ke spuštění.|
+|![Ikona zeleném kroužku úspěšných testů](./media/luis-how-to-batch-test/batch-test-result-green.png)|Všechny projevy jsou úspěšné.|
+|![Červené x ikonu selhání testu](./media/luis-how-to-batch-test/batch-test-result-red.png)|Alespoň jeden utterance záměr neodpovídá do predikce.|
+|![Jste připravení ikona testu](./media/luis-how-to-batch-test/batch-test-result-blue.png)|Test je připraven ke spuštění.|
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
-## <a name="view-batch-test-results"></a>Zobrazení výsledků testu batch 
-Chcete-li zobrazit výsledky testů batch, vyberte **zobrazte výsledky**.
+## <a name="view-batch-test-results"></a>Zobrazení výsledků testu služby batch 
+Chcete-li zkontrolovat výsledky testů služby batch, vyberte **zobrazit výsledky**.
 
-![Výsledky testu batch](./media/luis-how-to-batch-test/run-test-results.png)
+![Výsledky testu služby batch](./media/luis-how-to-batch-test/run-test-results.png)
 
 <!--
  Select the **See results** link that appears after you run the test. A scatter graph known as an error matrix displays. The data points represent the utterances in the dataset. 
@@ -71,11 +71,11 @@ The filtering panel on the right side of the screen displays a list of all inten
 -->
 
 
-<a name="filter-chart-results-by-intent-or-entity"></a> ## Filtrování výsledků grafu
+<a name="filter-chart-results-by-intent-or-entity"></a> ## Filtrování grafu výsledků
 
-Pokud chcete filtrovat grafu konkrétní záměr nebo entity, vyberte v pravé straně panelu filtrování záměr nebo entity. Datové body a jejich aktualizace v tomto grafu podle vašeho výběru. 
+Filtrování grafu specifické cílem nebo entity, vyberte na pravé straně panelu filtrování záměr nebo entity. Datové body a jejich distribuci aktualizací v grafu podle vašeho výběru. 
  
-![Výsledek testu vizualizovaných Batch](./media/luis-how-to-batch-test/filter-by-entity.png) 
+![Výsledek testu vizualizovaný služby Batch](./media/luis-how-to-batch-test/filter-by-entity.png) 
 
 <!--
 ## Investigate false sections
@@ -84,8 +84,8 @@ Data points on the **[False Positive][false-positive]** and **[False Negative][f
 
 The graph indicates [F-measure][f-measure], [recall][recall], and [precision][precision].  
 -->
-## <a name="view-single-point-utterance-data"></a>Jeden bod utterance data zobrazení
-V grafu najeďte myší na datový bod zobrazíte jistoty skóre jeho předpovědi. Vyberte datový bod k načtení jeho odpovídající utterance v seznamu utterances v dolní části stránky. 
+## <a name="view-single-point-utterance-data"></a>Zobrazení jednoho bodu utterance dat
+V diagramu najeďte myší na datový bod zobrazíte skóre jistoty jeho předpovědí. Vyberte datový bod k načtení jeho odpovídajícího utterance v seznamu projevy v dolní části stránky. 
 
 ![Vybrané utterance](./media/luis-how-to-batch-test/selected-utterance.png)
 
@@ -93,24 +93,24 @@ V grafu najeďte myší na datový bod zobrazíte jistoty skóre jeho předpově
 <a name="relabel-utterances-and-retrain"></a>
 <a name="false-test-results"></a>
 ## <a name="view-section-data"></a>Část dat zobrazení
-V části čtyři grafu, vyberte název oddílu **False kladné** v pravé horní grafu. Pod grafem zobrazit všechny utterances v této části pod grafu v seznamu. 
+V grafu čtyři části, vyberte název oddílu, jako je například **falešně pozitivní** v pravém horním rohu grafu. Pod grafem všechny projevy v této části zobrazí pod grafem v seznamu. 
 
-![Vybrané utterances oddílu](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
+![Vybrané projevy oddílu](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
 
-Na předchozím obrázku utterance `switch on` s názvem bez přípony je záměrem použití TurnAllOn však obdržela předpovědi žádná záměrné. Toto je to znamenat, že záměr TurnAllOn potřebuje další příklad utterances aby očekávaný předpovědi. 
+Na předchozím obrázku utterance `switch on` označená s cílem TurnAllOn však obdržela předpovědi none záměru. Toto je jako ukazatel toho, že cílem TurnAllOn potřebuje další příklad projevy používat, aby očekávané předpověď. 
 
-Dva oddíly grafu červeně znamenat utterances, které neodpovídá očekávané předpovědi. Ty naznačují utterances které LEOŠ potřebuje další školení. 
+Dva oddíly grafu červeně označení projevy, které neodpovídá očekávanému předpovědi. Tyto zprávy značí projevy které LUIS potřebuje další školení. 
 
 Dva oddíly grafu zeleně odpovídají očekávané předpovědi.
 
 ## <a name="next-steps"></a>Další postup
 
-Pokud testování uvádí, že aplikace LEOŠ nerozpoznal správné záměry a entity, můžete pracovat ke zlepšení výkonu aplikace LEOŠ označování další utterances nebo přidáním funkcí. 
+Pokud testování označuje, že aplikace LUIS nedokáže rozpoznat správný záměry a entity, můžete pracovat ke zlepšení výkonu vaší aplikace LUIS označování další projevy nebo přidáním funkcí. 
 
-* [Označení navrhované utterances s LEOŠ](Label-Suggested-Utterances.md) 
-* [Funkce lze použít ke zlepšení výkonu aplikace LEOŠ](luis-how-to-add-features.md) 
-* [Pochopení batch testování v tomto kurzu](luis-tutorial-batch-testing.md)
-* [Další dávky testování koncepce](luis-concept-batch-test.md).
+* [Popisek navrhované projevy služba luis](Label-Suggested-Utterances.md) 
+* [Použití funkcí pro zvýšení výkonu aplikace LUIS](luis-how-to-add-features.md) 
+* [Vysvětlení služby batch testování v tomto kurzu](luis-tutorial-batch-testing.md)
+* [Další dávky testování konceptů](luis-concept-batch-test.md).
 
 [true-positive]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#true-positive
 [true-negative]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-glossary#true-negative

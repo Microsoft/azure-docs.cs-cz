@@ -1,6 +1,6 @@
 ---
-title: Rychlý start Python pro programu QnA Maker rozhraní API (V4) – služby Azure kognitivní | Microsoft Docs
-description: Get informace a ukázky kódu můžete rychle začít používat rozhraní API služby Microsoft překladač Text v kognitivní služby společnosti Microsoft na platformě Azure.
+title: Rychlý start Python pro rozhraní API (V4) – služby Azure Cognitive Services QnA Maker Microsoft | Dokumentace Microsoftu
+description: Získat informace a ukázky kódu můžete rychle začít používat Microsoft Translator Text API ve službě Microsoft Cognitive Services v Azure.
 services: cognitive-services
 documentationcenter: ''
 author: v-jaswel
@@ -9,49 +9,49 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jaswel
-ms.openlocfilehash: add5322dde89f3e3f44fddc1e3c63eb2f91013a8
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: c0d02a0f586857f6dd303fc98407da71b2addb9b
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301742"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869115"
 ---
-# <a name="quickstart-for-microsoft-qna-maker-api-with-python"></a>Rychlý start pro programu QnA Maker rozhraní API s Pythonem 
+# <a name="quickstart-for-microsoft-qna-maker-api-with-python"></a>Rychlý start pro nástroj QnA Maker Microsoft API s využitím Pythonu 
 <a name="HOLTop"></a>
 
-V tomto článku se dozvíte, jak používat [rozhraní API služby Microsoft QnA Maker](../Overview/overview.md) s Pythonem proveďte následující.
+V tomto článku se dozvíte, jak používat [API nástroje QnA Maker Microsoft](../Overview/overview.md) s využitím Pythonu můžete provádět následující.
 
-- [Vytvořte nové báze knowledge base.](#Create)
-- [Aktualizujte stávající znalostní báze.](#Update)
-- [Načíst stav žádosti o vytvoření nebo aktualizace znalostní bázi knowledge base.](#Status)
-- [Publikování existující znalostní báze.](#Publish)
-- [Nahraďte obsah existující znalostní báze.](#Replace)
-- [Stáhněte si obsah znalostní bázi knowledge base.](#GetQnA)
-- [Získejte odpovědi na dotaz pomocí znalostní bázi knowledge base.](#GetAnswers)
-- [Získání informací o knowledge base.](#GetKB)
-- [Získáte informace o všech znalostních bází, které patří do zadaného uživatele.](#GetKBsByUser)
-- [Odstraňte znalostní bázi knowledge base.](#Delete)
-- [Získáte aktuální koncový bod klíče.](#GetKeys)
-- [Znovu vygenerujte klíče aktuální koncový bod.](#PutKeys)
-- [Získáte aktuální sadu word změnách v podniku.](#GetAlterations)
-- [Nahradí aktuální sadu word změnách v podniku.](#PutAlterations)
+- [Vytvoření nové znalostní báze.](#Create)
+- [Aktualizujte existující znalostní báze.](#Update)
+- [Získáte stav žádosti o vytvoření nebo aktualizace znalostní báze.](#Status)
+- [Publikujte existující znalostní báze.](#Publish)
+- [Nahraďte obsah existujícího znalostní báze.](#Replace)
+- [Stáhněte si obsah znalostní báze.](#GetQnA)
+- [Získejte odpovědi na otázky v znalostní báze.](#GetAnswers)
+- [Získejte informace o znalostní báze.](#GetKB)
+- [Získejte informace o všech znalostních bází, které patří do zadaného uživatele.](#GetKBsByUser)
+- [Odstraňte znalostní báze.](#Delete)
+- [Získejte aktuální klíče koncového bodu.](#GetKeys)
+- [Znovu generujte klíče aktuální koncový bod.](#PutKeys)
+- [Získejte aktuální sadu změn aplikace word.](#GetAlterations)
+- [Nahraďte aktuální sadu změn aplikace word.](#PutAlterations)
 
 ## <a name="prerequisites"></a>Požadavky
 
-Budete potřebovat [Python 3.x](https://www.python.org/downloads/) pro spuštění tohoto kódu.
+Budete potřebovat [Python 3.x](https://www.python.org/downloads/) tento kód spustit.
 
-Musíte mít [kognitivní rozhraní API služby účet](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API služby Microsoft QnA Maker**. Budete potřebovat předplatné klíč z vaší [řídicí panel Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Musíte mít [účet rozhraní API služeb Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **API nástroje QnA Maker Microsoft**. Budete potřebovat placené předplatné klíče z vašeho [řídicí panel Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 <a name="Create"></a>
 
-## <a name="create-knowledge-base"></a>Vytvoření znalostní báze knowledge base
+## <a name="create-knowledge-base"></a>Vytvoření znalostní báze
 
-Následující kód vytvoří novou znalostní báze základní, pomocí [vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) metoda.
+Následující kód vytvoří základ, pomocí nových poznatků [vytvořit](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) metody.
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -144,7 +144,7 @@ while False == done:
         done = True
 ```
 
-**Vytvořit odpověď znalostní báze knowledge base**
+**Vytvoření znalostní báze odpovědi**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -181,12 +181,12 @@ while False == done:
 
 ## <a name="update-knowledge-base"></a>Aktualizace znalostní báze
 
-Následující kód aktualizuje existující znalostní báze základní, pomocí [aktualizace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) metoda.
+Následující kód aktualizuje existující základnu, s využitím znalostní báze [aktualizace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) metody.
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -284,7 +284,7 @@ while False == done:
         done = True
 ```
 
-**Aktualizovat znalostní báze knowledge base odpovědi**
+**Aktualizace znalostní báze odpovědi**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -312,22 +312,22 @@ Press any key to continue.
 
 <a name="Status"></a>
 
-## <a name="get-request-status"></a>Získat stav žádosti o
+## <a name="get-request-status"></a>Získat stav žádosti
 
-Můžete volat [operace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) metoda a zkontrolujte stav žádosti o vytvoření nebo aktualizace znalostní bázi knowledge base. Pokud chcete zobrazit, jak tato metoda se používá, najdete ukázkový kód pro [vytvořit](#Create) nebo [aktualizace](#Update) metoda.
+Můžete volat [operace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) metodu ke kontrole stavu žádosti o vytvoření nebo aktualizace znalostní báze. Pokud chcete zobrazit, jak tato metoda se používá, najdete vzorový kód pro [vytvořit](#Create) nebo [aktualizace](#Update) metoda.
 
 [Zpět na začátek](#HOLTop)
 
 <a name="Publish"></a>
 
-## <a name="publish-knowledge-base"></a>Publikování znalostní báze knowledge base
+## <a name="publish-knowledge-base"></a>Publikování znalostní báze
 
-Následující kód publikuje stávajících znalostí základní, pomocí [publikovat](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metoda.
+Publikuje existující znalostní bázi, pomocí následujícího kódu [publikovat](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metody.
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -373,7 +373,7 @@ result = publish_kb (path, '')
 print (pretty_print(result))
 ```
 
-**Publikování odpovědi znalostní báze knowledge base**
+**Publikování znalostní báze odpovědi**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -387,14 +387,14 @@ print (pretty_print(result))
 
 <a name="Replace"></a>
 
-## <a name="replace-knowledge-base"></a>Nahraďte znalostní báze knowledge base
+## <a name="replace-knowledge-base"></a>Nahraďte znalostní báze
 
-Následující kód, nahradí obsah zadané knowledge base, pomocí [nahradit](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metoda.
+Nahradí obsah zadané znalostní bázi, pomocí následujícího kódu [nahradit](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metody.
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -461,7 +461,7 @@ result = replace_kb (path, content)
 print (pretty_print(result))
 ```
 
-**Nahraďte znalostní báze knowledge base odpovědi**
+**Nahraďte odpovědi znalostní báze**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -475,14 +475,14 @@ print (pretty_print(result))
 
 <a name="GetQnA"></a>
 
-## <a name="download-the-contents-of-a-knowledge-base"></a>Stažení obsahu znalostní báze
+## <a name="download-the-contents-of-a-knowledge-base"></a>Stáhněte si obsah znalostní báze
 
-Následující kód stáhne obsah zadané knowledge base, pomocí [stáhnout znalostní báze knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metoda.
+Následující kód stáhne obsah zadaného znalostní bázi, pomocí [stáhnout znalostní báze](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metody.
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -525,7 +525,7 @@ result = get_qna (path)
 print (pretty_print(result))
 ```
 
-**Stáhněte si znalostní bázi knowledge base odpovědi**
+**Stáhněte si odpovědi znalostní báze**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -564,16 +564,16 @@ print (pretty_print(result))
 
 <a name="GetAnswers"></a>
 
-## <a name="get-answers-to-a-question-using-a-knowledge-base"></a>Získejte odpovědi na dotaz pomocí znalostní bázi
+## <a name="get-answers-to-a-question-using-a-knowledge-base"></a>Získejte odpovědi na otázky v znalostní báze
 
-Následující kód získá odpovědi na dotaz pomocí zadané znalostní bázi knowledge base, pomocí **generování odpovědi** metoda.
+Získá odpovědi na dotaz pomocí zadaného znalostní báze, pomocí následujícího kódu **generování odpovědi** metody.
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-1. Přidejte kód níže uvedenou.
-1. Nahraďte `host` hodnotu s názvem webu pro vaše předplatné QnA Maker. Další informace najdete v části [vytvoření služby QnA Maker](../How-To/set-up-qnamaker-service-azure.md).
-1. Nahraďte `endpoint_key` hodnotu s klíčem platný koncový bod pro vaše předplatné. Všimněte si, že to není stejný jako svůj klíč předplatného. Můžete získat pomocí klíče pro koncový bod [získat koncový bod klíče](#GetKeys) metoda.
-1. Nahraďte `kb` hodnotu s ID znalostní báze chcete dotaz pro odpovědi. Poznámka: Tato znalostní báze knowledge base musí již byly publikovány pomocí [publikovat](#Publish) metoda.
-1. Spusťte program.
+1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+1. Přidejte níže uvedený kód.
+1. Nahraďte `host` hodnotu s názvem webu pro vaše předplatné nástroje QnA Maker. Další informace najdete v části [vytvořit službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md).
+1. Nahraďte `endpoint_key` hodnotu s klíčem platný koncový bod pro vaše předplatné. Všimněte si, že to není stejné jako váš klíč předplatného. Můžete získat pomocí klíče koncového bodu [získat klíče koncového bodu](#GetKeys) metody.
+1. Nahraďte `kb` hodnotu s ID znalostní báze, který chcete zadat dotaz pro odpovědi. Mějte na paměti tato znalostní báze musí již byly publikovány pomocí [publikovat](#Publish) metody.
+1. Spuštění programu.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -626,7 +626,7 @@ result = get_answers (method, content)
 print (pretty_print(result))
 ```
 
-**Získat odpovědi**
+**Získání odpovědi odpovědi**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -652,14 +652,14 @@ print (pretty_print(result))
 
 <a name="GetKB"></a>
 
-## <a name="get-information-about-a-knowledge-base"></a>Získání informací o znalostní bázi
+## <a name="get-information-about-a-knowledge-base"></a>Získání informací o znalostní báze
 
-Následující kód získá informace o zadané knowledge base, pomocí [získat podrobnosti o znalostní báze knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metoda.
+Následující kód načte informace o zadané znalostní báze základní použití [získat tak podrobné údaje znalostní báze](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metody.
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -699,7 +699,7 @@ result = get_kb (path)
 print (pretty_print(result))
 ```
 
-**Získání odezvy podrobnosti znalostní báze knowledge base**
+**Získat podrobnosti odpovědi znalostní báze**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -727,12 +727,12 @@ print (pretty_print(result))
 
 ## <a name="get-all-knowledge-bases-for-a-user"></a>Získá všechny znalostních bází pro uživatele.
 
-Následující kód získá informace o všech znalostních bází pro zadaného uživatele pomocí [získat znalostních bází pro uživatele](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metoda.
+Následující kód načte informace o všech znalostních bází pro zadaného uživatele pomocí [získat znalostních bází pro uživatele](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metody.
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -769,7 +769,7 @@ result = get_kbs (path)
 print (pretty_print(result))
 ```
 
-**Získat znalostních bází odpověď uživatele**
+**Získat znalostních bází na odpověď uživatele**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -811,14 +811,14 @@ Press any key to continue.
 
 <a name="Delete"></a>
 
-## <a name="delete-a-knowledge-base"></a>Odstranit znalostní bázi
+## <a name="delete-a-knowledge-base"></a>Odstranit znalostní báze
 
-Následující kód odstraní zadaný knowledge base, pomocí [odstranit znalostní báze knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metoda.
+Odstraní zadaný znalostní bázi, pomocí následujícího kódu [odstranit znalostní báze](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metody.
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -864,7 +864,7 @@ result = delete_kb (path, '')
 print (pretty_print(result))
 ```
 
-**Odstranit znalostní báze knowledge base odpovědi**
+**Odstranit odpověď znalostní báze**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -878,14 +878,14 @@ print (pretty_print(result))
 
 <a name="GetKeys"></a>
 
-## <a name="get-endpoint-keys"></a>Získání koncového bodu klíčů
+## <a name="get-endpoint-keys"></a>Získat klíče koncového bodu
 
-Následující kód získá aktuální koncový bod klíče, pomocí [získat koncový bod klíče](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metoda.
+Následující kód načte aktuální klíče koncového bodu pomocí [získat klíče koncového bodu](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metody.
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -922,7 +922,7 @@ result = get_keys (path)
 print (pretty_print(result))
 ```
 
-**Získání odezvy klíče koncový bod**
+**Získání odpovědi klíče koncového bodu**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -937,14 +937,14 @@ print (pretty_print(result))
 
 <a name="PutKeys"></a>
 
-## <a name="refresh-endpoint-keys"></a>Aktualizovat klíče koncový bod
+## <a name="refresh-endpoint-keys"></a>Aktualizovat klíče koncového bodu
 
-Následující kód znovu vygeneruje aktuální koncový bod klíče, pomocí [aktualizovat koncový bod klíče](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metoda.
+Obnoví aktuální klíče koncového bodu pomocí následujícího kódu [aktualizovat klíče koncového bodu](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metody.
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -990,7 +990,7 @@ result = refresh_keys (path, '')
 print (pretty_print(result))
 ```
 
-**Aktualizovat klíče odpovědi koncového bodu**
+**Aktualizujte koncový bod klíče odpovědi**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -1007,12 +1007,12 @@ print (pretty_print(result))
 
 ## <a name="get-word-alterations"></a>Získat změny aplikace word
 
-Následující kód získá aktuální změny aplikace word, pomocí [stáhnout mění](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metoda.
+Následující kód načte aktuální změny slovo pomocí [Stáhnout změny](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metody.
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -1049,7 +1049,7 @@ result = get_alterations (path)
 print (pretty_print(result))
 ```
 
-**Získání odezvy změny aplikace word**
+**Získání odpovědi změny aplikace word**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -1070,14 +1070,14 @@ print (pretty_print(result))
 
 <a name="PutAlterations"></a>
 
-## <a name="replace-word-alterations"></a>Nahraďte změny aplikace word
+## <a name="replace-word-alterations"></a>Nahraďte slovo změny
 
-Následující kód nahradí aktuální aplikaci word mění, pomocí [nahradit změny](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metoda.
+Následující kód nahradí aktuální změny slovo pomocí [nahraďte změny](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metody.
 
-1. Vytvořte nový projekt Python v vaše oblíbená rozhraní IDE.
-2. Přidejte kód níže uvedenou.
+1. Vytvoření nového projektu Pythonu v oblíbeném prostředí IDE.
+2. Přidejte níže uvedený kód.
 3. Nahraďte `key` hodnotu s přístupový klíč platný pro vaše předplatné.
-4. Spusťte program.
+4. Spuštění programu.
 
 ```python
 # -*- coding: utf-8 -*-
@@ -1133,7 +1133,7 @@ result = put_alterations (path, content)
 print (pretty_print(result))
 ```
 
-**Nahraďte odpovědi změny aplikace word**
+**Nahraďte slovo změny odpovědi**
 
 Úspěšná odpověď se vrátí ve formátu JSON, jak je znázorněno v následujícím příkladu: 
 
@@ -1148,8 +1148,8 @@ print (pretty_print(result))
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Referenční dokumentace rozhraní API REST QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [Reference k REST API služby QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
 ## <a name="see-also"></a>Další informace najdete v tématech 
 
-[Přehled QnA Maker](../Overview/overview.md)
+[Přehled nástroje QnA Maker](../Overview/overview.md)

@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9ec396e8a1ad36e85e1291995345ca1de24668d0
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: d814bed6f126cb3b81d85c4e797a22d2ac22ddfb
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128056"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856201"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Běžné potíže se službou Azure IoT Edge a jejich řešení
 
@@ -23,22 +23,22 @@ Pokud ve vašem prostředí dochází k potížím s provozem služby Azure IoT 
 
 Když narazíte na problém, získejte další informace o stavu vašeho zařízení IoT Edge tím, že zkontrolujete protokoly kontejneru a zprávy předávané do a ze zařízení. Ke shromáždění informací použijte příkazy a nástroje uvedené v této části. 
 
-### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Zkontrolujte stav jeho protokoly a správce zabezpečení hraniční IoT:
+### <a name="check-the-status-of-the-iot-edge-security-manager-and-its-logs"></a>Zkontrolujte stav IoT Edge Security Manager a jeho protokoly:
 
-V systému Linux:
-- Chcete-li zobrazit stav správce zabezpečení hraniční IoT:
+V Linuxu:
+- Chcete-li zobrazit stav správce zabezpečení Edge IoT:
 
    ```bash
    sudo systemctl status iotedge
    ```
 
-- Pokud chcete zobrazit protokoly správce zabezpečení hraniční IoT:
+- Chcete-li zobrazit protokoly správce zabezpečení Edge IoT:
 
     ```bash
     sudo journalctl -u iotedge -f
     ```
 
-- Zobrazení podrobnějších protokoly správce zabezpečení hraniční IoT:
+- Zobrazení podrobnějších protokoly správce zabezpečení Edge IoT:
 
    - Upravte nastavení démon iotedge:
 
@@ -53,7 +53,7 @@ V systému Linux:
       Environment=IOTEDGE_LOG=edgelet=debug
       ```
     
-   - Restartujte démon zabezpečení hraniční IoT:
+   - Restartujte démona zabezpečení IoT Edge:
     
       ```bash
       sudo systemctl cat iotedge.service
@@ -62,13 +62,13 @@ V systému Linux:
       ```
 
 Ve Windows:
-- Chcete-li zobrazit stav správce zabezpečení hraniční IoT:
+- Chcete-li zobrazit stav správce zabezpečení Edge IoT:
 
    ```powershell
    Get-Service iotedge
    ```
 
-- Pokud chcete zobrazit protokoly správce zabezpečení hraniční IoT:
+- Chcete-li zobrazit protokoly správce zabezpečení Edge IoT:
 
    ```powershell
    # Displays logs from today, newest at the bottom.
@@ -80,12 +80,12 @@ Ve Windows:
    sort-object @{Expression="TimeCreated";Descending=$false}
    ```
 
-### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Pokud správce zabezpečení hraniční IoT neběží, zkontrolujte vaši yaml konfigurační soubor
+### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Pokud není spuštěn Správce zabezpečení IoT Edge, ověřte váš konfigurační soubor yaml
 
 > [!WARNING]
-> Soubory YAML nemůže obsahovat karty jako identation. Místo toho použijte 2 mezery.
+> Soubory YAML nesmí obsahovat tabulátory jako identation. Místo toho použijte 2 mezery.
 
-V systému Linux:
+V Linuxu:
 
    ```bash
    sudo nano /etc/iotedge/config.yaml
@@ -97,19 +97,19 @@ Ve Windows:
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-### <a name="check-container-logs-for-issues"></a>Zkontrolujte protokoly kontejneru problémů
+### <a name="check-container-logs-for-issues"></a>Zkontrolujte protokoly kontejneru pro problémy
 
-Jakmile je spuštěn démon zabezpečení hraniční IoT, podívejte se na protokoly kontejnery rozpoznat problémy s. Začněte nasazenými kontejnery a pak si prohlédněte kontejnery, ze kterých se skládá modul runtime IoT Edge: agent Edge a centrum Edge. Protokoly agenta Edge obvykle obsahují informace o životním cyklu jednotlivých kontejnerů. Protokoly centra Edge obsahují informace o zasílání zpráv a směrování. 
+Po spuštění démona zabezpečení IoT Edge, prohlédněte si protokoly kontejnerů a detekujte problémy. Začněte nasazenými kontejnery a pak si prohlédněte kontejnery, ze kterých se skládá modul runtime IoT Edge: agent Edge a centrum Edge. Protokoly agenta Edge obvykle obsahují informace o životním cyklu jednotlivých kontejnerů. Protokoly centra Edge obsahují informace o zasílání zpráv a směrování. 
 
    ```cmd
    iotedge logs <container name>
    ```
 
-### <a name="view-the-messages-going-through-the-edge-hub"></a>Zobrazení zpráv průchodu přes hraniční rozbočovače
+### <a name="view-the-messages-going-through-the-edge-hub"></a>Zobrazte zprávy procházející přes Centrum Edge
 
-Zobrazení zpráv průchodu přes hraniční rozbočovače a shromažďovat přehledy o aktualizace vlastností zařízení s podrobné protokoly z kontejnerů runtime edgeAgent a edgeHub. Chcete-li zapnout podrobné protokoly na těchto kontejnerů, nastavte `RuntimeLogLevel` proměnnou prostředí: 
+Zobrazte zprávy procházející přes Centrum Edge a získejte přehled o aktualizacích vlastností zařízení s využitím podrobných protokolů z kontejnerů modulu runtime edgeAgent a edgeHub. Chcete-li zapnout podrobné protokolování na těchto kontejnerů, nastavte `RuntimeLogLevel` proměnné prostředí: 
 
-V systému Linux:
+V Linuxu:
     
    ```cmd
    export RuntimeLogLevel="debug"
@@ -124,23 +124,23 @@ Ve Windows:
 Můžete zkontrolovat také zprávy odesílané mezi službou IoT Hub a hraničními zařízeními IoT. Tyto zprávy zobrazíte pomocí rozšíření [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) pro Visual Studio Code. Další pokyny najdete v článku [Užitečný nástroj pro vývoj se službou Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/).
 
 ### <a name="restart-containers"></a>Restartujte kontejnery
-Po prozkoumání protokoly a zprávy pro informace, pokuste se restartovat kontejnerů:
+Po prozkoumání v protokolech a zprávách informace, můžete zkusit restartovat kontejnerů:
 
 ```
 iotedge restart <container name>
 ```
 
-Restartujte kontejnery runtime hraniční IoT:
+Restartujte kontejnerů modulu runtime IoT Edge:
 
 ```
 iotedge restart edgeAgent && iotedge restart edgeHub
 ```
 
-### <a name="restart-the-iot-edge-security-manager"></a>Restartovat správce zabezpečení hraniční IoT
+### <a name="restart-the-iot-edge-security-manager"></a>Restartovat správce zabezpečení IoT Edge
 
-Pokud je stále uložením problém, můžete zkusit restartování správce zabezpečení hraniční IoT.
+Problém je stále uchování, můžete restartováním správce zabezpečení IoT Edge.
 
-V systému Linux:
+V Linuxu:
 
    ```cmd
    sudo systemctl restart iotedge
@@ -199,11 +199,11 @@ Kontejner se nedaří spustit a v protokolech agenta Edge se zobrazí chyba 403.
 Agent Edge nemá oprávnění pro přístup k imagi modulu. 
 
 ### <a name="resolution"></a>Řešení
-Ujistěte se, že přihlašovací údaje registru jsou správně zadané v manifestu nasazení
+Ujistěte se, že jsou vaše přihlašovací údaje registru správně zadána v manifestu nasazení
 
-## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>Démon zabezpečení hraniční IoT selže s neplatný název hostitele
+## <a name="iot-edge-security-daemon-fails-with-an-invalid-hostname"></a>Démon zabezpečení IoT Edge se nezdaří s platný název hostitele
 
-Příkaz `sudo journalctl -u iotedge` se nezdaří a zobrazí se následující zpráva: 
+Příkaz `sudo journalctl -u iotedge` selže a zobrazí následující zprávu: 
 
 ```output
 Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
@@ -213,18 +213,18 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 Modul runtime IoT Edge podporuje pouze názvy hostitelů, které jsou kratší než 64 znaků. To obvykle není problém pro fyzické počítače, ale může dojít, když nastavíte modul runtime na virtuálním počítači. Automaticky generované názvy hostitelů pro virtuální počítače s Windows, které jsou hostované v Azure, zejména, jsou obvykle dlouhé. 
 
 ### <a name="resolution"></a>Řešení
-Když se tato chyba, abyste ho mohli vyřešit konfiguraci název DNS virtuálního počítače, a jako název hostitele v možnosti instalačního příkazu nastavením názvu DNS.
+Když se zobrazí tato chyba, ho mohli vyřešit tak, že konfigurace názvu DNS virtuálního počítače a pak nastavení název DNS jako název hostitele v příkazu pro nastavení.
 
-1. Na portálu Azure přejděte na stránku přehled virtuálního počítače. 
-2. Vyberte **konfigurace** pod názvem DNS. Pokud virtuální počítač už má název DNS nakonfigurovaný, nemusíte konfigurovat nový. 
+1. Na webu Azure Portal přejděte na stránku přehled vašeho virtuálního počítače. 
+2. Vyberte **konfigurace** pod názvem DNS. Pokud je váš virtuální počítač už nakonfigurovaný název DNS, není nutné konfigurovat nové. 
 
    ![Konfigurace názvu DNS](./media/troubleshoot/configure-dns.png)
 
-3. Zadejte hodnotu pro **Popisek názvu DNS** a vyberte **Uložit**.
+3. Zadejte hodnotu pro **popisku názvu DNS** a vyberte **Uložit**.
 4. Zkopírujte nový název DNS, které by měly být ve formátu  **\<DNSnamelabel\>.\< vmlocation\>. cloudapp.azure.com**.
-5. Ve virtuálním počítači použijte následující příkaz Nastavit hraniční IoT modulu runtime s název DNS:
+5. Ve virtuálním počítači použijte následující příkaz pro nastavení modulu runtime IoT Edge s názvem DNS:
 
-   - V systému Linux:
+   - V Linuxu:
 
       ```bash
       sudo nano /etc/iotedge/config.yaml
@@ -236,5 +236,37 @@ Když se tato chyba, abyste ho mohli vyřešit konfiguraci název DNS virtuáln�
       notepad C:\ProgramData\iotedge\config.yaml
       ```
 
+## <a name="stability-issues-on-resource-constrained-devices"></a>Problémy se stabilitou u prostředku omezené zařízení 
+Můžete setkat s problémy stabilitu na omezené zařízeními, jako je Raspberry Pi, zejména v případě, že se používá jako brána. Mezi příznaky patří nedostatek paměti výjimky v modulu Centrum edge, podřízené zařízení se nemohou připojit nebo zařízení zastaví odesílání telemetrických zpráv po několik hodin.
+
+### <a name="root-cause"></a>Původní příčina
+Centrum edge, která je součástí modulu runtime edge, je optimalizován pro výkon ve výchozím nastavení a pokusí se přidělit velké množství paměti. To není ideální pro omezené hraničními zařízeními a může způsobit problémy se stabilitou.
+
+### <a name="resolution"></a>Řešení
+Centrum pro na hraničních zařízeních nastavení proměnné prostředí **OptimizeForPerformance** k **false**. Chcete-li to provést dvěma způsoby:
+
+V uživatelském rozhraní: na portálu ze *podrobnosti o zařízení*->*nastavit moduly*->*konfigurovat rozšířená nastavení modulu Runtime Edge*, vytvořit prostředí proměnné s názvem *OptimizeForPerformance* , která je nastavena na *false* pro *Centrum Edge*.
+
+![optimizeforperformance][img-optimize-for-perf]
+
+V manifestu nasazení:
+
+```json
+  "edgeHub": {
+    "type": "docker",
+    "settings": {
+      "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
+      "createOptions": <snipped>
+    },
+    "env": {
+      "OptimizeForPerformance": {
+          "value": "false"
+      }
+    },
+```
+
 ## <a name="next-steps"></a>Další postup
 Myslíte si, že jste v platformě IoT Edge našli chybu? [Odešlete problém](https://github.com/Azure/iotedge/issues), abychom mohli pokračovat ve zlepšování. 
+
+<!-- Images -->
+[img-optimize-for-perf]: ./media/troubleshoot/OptimizeForPerformanceFalse.png

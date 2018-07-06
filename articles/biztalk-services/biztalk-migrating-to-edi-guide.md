@@ -1,6 +1,6 @@
 ---
-title: Migrace řešení BizTalk Server EDI technické příručce BizTalk Services | Microsoft Docs
-description: Migrovat EDI MABS; Microsoft Azure BizTalk Services
+title: Migrace řešení EDI z BizTalk serveru do BizTalk Services – technický průvodce | Dokumentace Microsoftu
+description: Migrace EDI MABS; Microsoft Azure BizTalk Services
 services: biztalk-services
 documentationcenter: na
 author: MandiOhlinger
@@ -14,114 +14,114 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 1b70fc3d199d7f1521acb534dafec8fb3e69500e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaa7028bb37ac4c2c313efce2afebc1dc5e814d2
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23843487"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860074"
 ---
-# <a name="migrating-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>Migrace řešení EDI BizTalk Server na služby BizTalk Services: technické příručce
+# <a name="migrating-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>Migrace řešení EDI z BizTalk serveru do BizTalk Services: technický průvodce
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Autor: Tim Wieman a Nitin Mehrotra
+Autora: Tim Wieman a Nitin Mehrotra
 
 Recenzenti: Karthik Bharthy
 
-Vytvořené pomocí: verze služby Microsoft Azure BizTalk Services – únor 2014.
+Napsané s využitím: verze Microsoft Azure BizTalk Services – únor 2014.
 
 ## <a name="introduction"></a>Úvod
-Elektronické Data Interchange (EDI) je jedním ze současných převažujících prostředek, pomocí které firmám data serveru exchange elektronicky, také označovaných jako Business-to-Business nebo B2B transakce. BizTalk Server má obsahoval pro podporu EDI přes deset od původní verze BizTalk serveru. Společnost Microsoft s služby BizTalk Services nadále podporu EDI řešení na platformě Microsoft Azure. B2B transakce jsou většinou mimo organizaci, a proto je snazší implementovat, pokud již byl implementován na cloudové platformy. Tuto možnost prostřednictvím služby BizTalk Services nabízí Microsoft Azure.
+Elektronické výměny dat (EDI) je jedním z nejrozšířenější prostředky dat systému exchange které firmám elektronicky, také označován jako Business-to-Business nebo B2B transakce. BizTalk Server EDI podporu pro víc než dekádu, od počáteční verze BizTalk severu došlo. Microsoft pokračuje s BizTalk Services v podpory pro řešení EDI z na platformě Microsoft Azure. B2B transakce jsou většinou externí vůči organizaci, a proto je snadnější implementovat, pokud bylo implementováno na cloudové platformě. Microsoft Azure poskytuje tuto funkci služby BizTalk Services.
 
-Když někteří zákazníci podívejte se na službu BizTalk Services jako platforma "greenfield" nové řešení EDI, mít mnoho zákazníků aktuální řešení BizTalk serveru EDI, která může chcete provést migraci na Azure. Protože BizTalk Services EDI je navržen podle stejných klíče entit jako architektura BizTalk serveru EDI (obchodní partnery, entity, smluv), je možné migrovat BizTalk serveru EDI artefakty do služby BizTalk Services.
+Zatímco některé zákazníků si prohlédne BizTalk Services jako platforma "úplně nové" nová řešení EDI, řada zákazníků má aktuální řešení EDI z BizTalk serveru, která může být vhodné k migraci do Azure. Protože BizTalk Services EDI je navržena podle stejných klíčů entit jako architektura EDI z BizTalk serveru (obchodní partneři, entity, smlouvy), je možné k migraci artefaktů EDI z BizTalk serveru do BizTalk Services.
 
-Tento dokument popisuje některé rozdíly spojené s migraci artefaktů BizTalk serveru EDI BizTalk Services. Tento dokument předpokládá praktické znalosti zpracování EDI BizTalk serveru a Trading Partner smlouvy. Další informace o EDI BizTalk serveru najdete v tématu [Trading Partner Management pomocí BizTalk Server](https://msdn.microsoft.com/library/bb259970.aspx).
+Tento dokument popisuje některé rozdíly spojené s migraci artefaktů EDI z BizTalk serveru do BizTalk Services. Tento dokument předpokládá praktické znalosti zpracování EDI z BizTalk serveru a obchodních partnerů smlouvy. Další informace o EDI z BizTalk serveru najdete v tématu [Trading Partner pomocí BizTalk serveru pro správu](https://msdn.microsoft.com/library/bb259970.aspx).
 
-## <a name="which-version-of-biztalk-server-edi-artifacts-can-be-migrated-to-biztalk-services"></a>Kterou verzi BizTalk serveru EDI artefakty se dají migrovat na službu BizTalk Services?
-BizTalk Server EDI modulu došlo k výraznému rozšíření pro BizTalk Server 2010, pokud byla změna modelu partnerů, profilů a smlouvy. BizTalk Services používá stejný model pro uspořádání obchodními partnery a divizí v rámci těchto obchodními partnery. V důsledku toho migraci artefaktů EDI z BizTalk Server 2010 a novější verze do služby BizTalk Services, je mnohem víc splněny následující proces. K migraci artefaktů EDI přidružené verze starší než BizTalk Server 2010, musíte nejprve upgradovat na BizTalk Server 2010 a následná migrace EDI artefakty na služby BizTalk Services.
+## <a name="which-version-of-biztalk-server-edi-artifacts-can-be-migrated-to-biztalk-services"></a>Kterou verzi EDI z BizTalk serveru artefakty se dají migrovat do služby BizTalk Services?
+Modul EDI z BizTalk serveru došlo k výraznému rozšíření pro BizTalk Server 2010, když se změna modelu partnerů, profilů a smlouvy. BizTalk Services používá stejný model pro uspořádání obchodními partnery a divizí v rámci těchto obchodními partnery. V důsledku toho migraci artefaktů EDI z BizTalk Server 2010 a novějších verzí do BizTalk Services, je mnohem více přímo dopředné proces. K migraci EDI artefakty spojené s verze starší než BizTalk Server 2010, musíte nejprve upgradovat na BizTalk Server 2010 a potom migrovat EDI artefaktů do BizTalk Services.
 
-## <a name="scenariosmessage-flow"></a>Tok scénáře/zpráv
-Jako BizTalk Server EDI zpracování ve službě BizTalk Services vytvořené kolem řešení Trading Partner Management (TPM). Řešení TPM má následující klíčové komponenty:
+## <a name="scenariosmessage-flow"></a>Scénáře a zprávu toku
+Jako BizTalk Server EDI zpracování ve službě BizTalk Services je postavené na řešení správy obchodních partnerů (TPM). TPM řešení má následující klíčové komponenty:
 
-* Obchodních partnerů, které představují organizaci ve B2B transakce.
+* Obchodní partneři, které představují organizaci v rámci transakce B2B.
 * Profily, které představují divizemi v rámci obchodního partnera.
-* Trading partner smlouvy (nebo smluv), která představují obchodní smlouva mezi dva partneři nebo profily.
+* Obchodní partner smlouvy (nebo smluv), které představují obchodní případ nevztahuje Smlouva mezi dva partneři a profily.
 
-Následující obrázek znázorňuje podobnosti a také rozdíly mezi řešení BizTalk serveru EDI a řešení BizTalk Services EDI:
+Následující obrázek znázorňuje podobnosti, jakož i rozdíly mezi řešení EDI z BizTalk serveru a BizTalk Services EDI řešení:
 
 ![][EDImessageflow]
 
-Jsou hlavní rozdíly a podobnosti mezi tok EDI řešení BizTalk serveru a služby BizTalk Services:
+Hlavní rozdíly a podobnosti mezi tok, který řešení EDI BizTalk serveru a BizTalk Services jsou:
 
-* Stejně jako BizTalk Server používá kanál EDIReceive přijmout zprávu EDI a kanál EDISend k odeslání zprávy EDI, používá služba BizTalk Services EDI přijímat most pro příjem a odesílání EDI mostu k odeslání zprávy EDI. BizTalk serveru kanálů jsou spojeny s smlouvu pomocí odesílat nebo přijímat porty. Ve službě BizTalk Services smlouvu, samotné označuje odesílání nebo přijímat most.
-* BizTalk serveru po kanálu EDIReceive zpracovává zprávy EDI zpráva vypsána k databázi systému SQL Server. Kanál EdiSend pak převezme zprávy z databáze serveru SQL, procesy a poté odešle do obchodního partnera.
+* Stejně jako BizTalk Server používá kanál EDIReceive na zprávu EDI a kanál EDISend k odeslání zprávy EDI, BizTalk Services používá EDI přijímat bridge pro příjem a odesílání EDI mostu k odesílání zpráv EDI. BizTalk serveru kanály jsou spojeny se smlouvou pomocí odesílání nebo příjmu porty. Ve službě BizTalk Services smlouvu samotné označuje odesílání nebo příjmu most.
+* Po EDIReceive kanál zpracování zpráv EDI, BizTalk serveru vypsána zprávy k databázi SQL serveru. Kanál EdiSend pak převezme zprávy z databáze SQL serveru, zpracovává je a odesílá je do obchodního partnera.
   
-    Ve službě BizTalk Services po EDI přijímat most EDI zprávu zpracuje, směruje zprávy do externího procesu. Externí proces může být spuštěn v Microsoft Azure nebo místně. Externího procesu by měl směrovat zprávy k odeslání mostu EDI; odeslání most ze své podstaty nestahuje zprávy. Po zpracování zprávy, most odesílání EDI směruje zprávy obchodního partnera.
+    Ve službě BizTalk Services po EDI přijímat most zpracovává zprávy EDI, směruje zprávy k externímu procesu. Externí proces může běžet na Microsoft Azure nebo místně. Externí proces by měl zprávy směruje do most odeslat EDI; Most odeslat ze své podstaty nestahuje zprávy. Po zpracování zprávy, směruje most EDI odeslat zprávu do obchodního partnera.
 
-BizTalk Services poskytuje snadno použít konfiguraci rychle vytvořit a nasadit smlouvy B2B mezi obchodních partnerů bez konfigurace žádné Microsoft Azure Compute instance (role Web nebo Worker), všechny databáze SQL Azure Microsoft nebo žádné Účty úložiště Microsoft Azure. Složitější scénáře bude vyžadovat příkazů v pracovních postupech nebo další zpracování služby "kolem okrajů" obchodování partnerskou smlouvu, který je před nebo po zpracování most Trading Partner smlouvy EDI. Podrobně následující pořadí událostí dojde během zprávu EDI zpracování ve službě BizTalk Services.
+BizTalk Services umožňují snadno použít konfiguraci prostředí rychle vytvořit a nasadit smlouvy s B2B mezi obchodními partnery, bez jakékoli Microsoft Azure Compute konfigurace instance (webové nebo pracovní role), všechny databáze Microsoft Azure SQL nebo některý Účet úložiště Microsoft Azure. Složitější scénáře budou vyžadovat propojí pracovní postupy nebo další zpracování služby "kolem okraje" Trading Partner smlouvy před nebo po zpracování most obchodní Partner smlouvy EDI. Podrobně následující posloupnosti událostí během zpracování ve službě BizTalk Services zpráv EDI.
 
-1. Zprávu EDI byl přijat z obchodního partnera, Fabrikam.  Pro příjem zpráv EDI z obchodními partnery, BizTalk Services podporuje protokoly s transportní například FTP, SFTP, AS2 a HTTP/S.
-2. Provede zpětný překlad obchodním zpracování škálování na straně partnera smlouvy EDI zprávu formátu XML.  Na koncové body Service Bus jako koncový bod předávání přes Service Bus, téma sběrnice, frontou Service Bus nebo mostu BizTalk Services je možné směrovat bylo EDI zprávy (ve formátu XML).
-3. Z koncového bodu pro další vlastní zpracování může pak přijat bylo zpráv XML.  Tyto koncové body nebylo možno zpracovat komponentu místně nebo do instance Microsoft Azure Compute pro zpracování zpráv ve službě Windows Workflow (WF) nebo Windows Communication Foundation (WCF), např.
-4. "Zpracování na straně odesílání" z obchodního partnera smlouvy pak sestaví zprávy XML do formátu EDI a odešle ji do obchodním partnerem společnosti Contoso.  BizTalk Services pro odesílání zpráv EDI obchodním partnerům, podporuje stejné protokoly jako používaných pro příjem zpráv EDI.
+1. Přijme zprávu EDI z obchodní partner, společnost Fabrikam.  Pro příjem zpráv EDI z obchodní partneři, služby BizTalk Services podporují přenosové protokoly, jako je například FTP, SFTP, AS2 a HTTP/S.
+2. Obchodní partner zpracování škálování na straně smlouvy zpětně přeloží zpráv EDI do formátu XML.  Zpětně přeložený zpráv EDI (ve formátu XML) lze směrovat na koncové body služby Service Bus jako koncový bod Service Bus Relay, téma služby Service Bus, frontu služby Service Bus nebo Most BizTalk Services.
+3. Zpětně přeložený zprávy XML může být přijata pak z koncového bodu pro další vlastní zpracování.  Tyto koncové body může být zpracována jako součást v místním nebo instance Microsoft Azure Compute pro zpracování zpráv ve službě Windows pracovního postupu (WF) nebo Windows Communication Foundation (WCF), třeba.
+4. "Zpracování na straně odesílání" z obchodního partnera smlouvy poté sestaví zprávy XML do formátu EDI a odesílá je do obchodního partnera společnosti Contoso.  Služby BizTalk Services pro odesílání zpráv EDI obchodní partneři, podporují stejné protokoly používané pro příjem zpráv EDI.
 
-Další tento dokument obsahuje koncepční pokyny na některé z různých artefaktů BizTalk serveru EDI migrace na službu BizTalk Services.
+Tento dokument dále poskytuje koncepční pokyny na migraci některé jiné artefakty EDI z BizTalk serveru do BizTalk Services.
 
-## <a name="sendreceive-ports-to-trading-partners"></a>Odesílání a přijímání porty do obchodních partnerů
-BizTalk serveru, můžete nastavit přijímat umístění a Receive porty pro příjem zpráv EDI/XML z obchodními partnery a nastavíte odeslání porty pro odesílání zpráv EDI/XML pro obchodního partnera. Potom vytížit tyto porty, které se smlouvy s obchodním partnerem pomocí konzoly pro správu serveru BizTalk. Ve službě BizTalk Services, umístění, kde přijímat zprávy z obchodních partnerů a kde odesílání zpráv do obchodních partnerů jsou nakonfigurovány jako součást smlouvy obchodním partnerem samostatně (jako součást nastavení přenosu) na portálu služby BizTalk.  Proto není nutné skutečně koncepci "odesílání portů" a "přijímat umístění", samo o sobě, ve službě BizTalk Services. Další informace najdete v tématu [vytváření smlouvy](https://msdn.microsoft.com/library/windowsazure/hh689908.aspx).
+## <a name="sendreceive-ports-to-trading-partners"></a>Posílání a přijímání porty na obchodními partnery
+V BizTalk serveru nastavíte umístění příjmu a Receive porty pro příjem zpráv EDI a XML z obchodními partnery a nastavíte odeslání portů pro odesílání zpráv EDI a XML do obchodního partnera. Potom vytížit tyto porty pro smlouvy s obchodním partnerem pomocí konzoly pro správu BizTalk serveru. Ve službě BizTalk Services, umístění, kam budete dostávat zprávy z obchodních partnerů a kam poslat zprávy obchodními partnery jsou nakonfigurované v rámci obchodní partnerskou smlouvu samostatně (jako součást přenosu nastavení) v portálu BizTalk Services.  Proto není nutné ve skutečnosti koncept "send porty" a "zobrazí umístění", samo o sobě, ve službě BizTalk Services. Další informace najdete v tématu [vytváření smluv](https://msdn.microsoft.com/library/windowsazure/hh689908.aspx).
 
-## <a name="pipelines-bridges"></a>Kanály (mostů)
-Kanály v EDI BizTalk serveru, jsou entit zpracování zpráv, které může také obsahovat vlastní logiky pro zpracování specifické možnosti, podle potřeby aplikací. Služby BizTalk Services by ekvivalent EDI most. Ale ve službě BizTalk Services zatím mostů EDI "zavřeny".  To znamená nelze přidat vlastní aktivitu do mostu EDI. Všechny vlastní zpracování je třeba provést mimo most EDI ve vaší aplikaci, před nebo po zpráva zadá most nakonfigurovaný jako součást obchodování partnerskou smlouvu. Mosty EAI, máte možnost provést vlastní zpracování. Pokud chcete vlastní zpracování, můžete mosty EAI, před nebo po most EDI zpracovává zprávy. Další informace najdete v tématu [postupy zahrnují vlastní kód v mostů](https://msdn.microsoft.com/library/azure/dn232389.aspx).
+## <a name="pipelines-bridges"></a>Kanály (přemostění)
+Kanály v EDI z BizTalk serveru, jsou entity zpracování zpráv, které může také obsahovat vlastní logiku zpracování specifické pro funkce, podle potřeb aplikace. Pro služby BizTalk Services by ekvivalent most EDI. Ale ve službě BizTalk Services teď mosty EDI jsou "uzavřený".  To znamená nelze přidat vlastní vlastní aktivity do mostu EDI. Všechny vlastní zpracování musí provést mimo most EDI ve vaší aplikaci před nebo po zprávy zadá most nakonfigurovaný jako součást obchodování partnerskou smlouvu. Mosty EAI máte možnost provést vlastní zpracování. Pokud chcete vlastní zpracování, můžete použít přemostění EAI, před nebo po zpracovává zprávy EDI mostu. Další informace najdete v tématu [jak zahrnout vlastní kód v mosty](https://msdn.microsoft.com/library/azure/dn232389.aspx).
 
-Můžete vložit k publikování a přihlášení k odběru toku vlastního kódu a/nebo pomocí služby Service Bus zasílání zpráv fronty a témata před smlouvy obchodním partnerem obdrží zprávu, nebo po smlouvu zpracovává zprávy a směruje na koncový bod Service Bus.
+Můžete vložit tok publikování nebo odběr pomocí vlastního kódu nebo použití předtím, než smlouvy s obchodním partnerem obdrží zprávu, nebo po její zprávu zpracuje a směruje na koncový bod služby Service Bus zasílání zpráv front a témat Service Bus.
 
-V tématu **scénáře/zprávy toku** v tomto tématu vzoru toku zpráv.
+V tématu **tok scénáře/zprávy** v tomto tématu pro vzor tok zpráv.
 
 ## <a name="agreements"></a>Smlouvy
-Pokud jste obeznámeni s BizTalk Server 2010 Trading Partner smlouvy použitý pro zpracování EDI, vyhledejte BizTalk Services smluv s obchodními partnery velmi dobře. Většina nastavení smlouvy jsou stejné a použít stejné technologiím. V některých případech jsou mnohem jednodušší nastavení smluv ve srovnání s stejné nastavení BizTalk serveru. Microsoft Azure BizTalk Services podporuje X12, EDIFACT a AS2 přenosu.
+Pokud jste se seznámili s BizTalk Server 2010 Trading Partner smlouvy používá ke zpracování EDI, pak BizTalk Services smluv s obchodními partnery velmi povědomá. Většinu nastavení smlouvy jsou stejné a použít stejné terminologie. V některých případech jsou mnohem jednodušší nastavení smlouvy ve srovnání s stejné nastavení BizTalk serveru. Microsoft Azure BizTalk Services podporuje X12 a EDIFACT, AS2 přenosu.
 
-Služba Microsoft Azure BizTalk Services také poskytuje **migrace dat TPM** nástroj pro migraci obchodní partnery a smlouvy z modulu BizTalk serveru Trading Partner na portál služby BizTalk. Nástroj pro migraci dat čip TPM je k dispozici jako součást balíčku nástrojů, který si můžete stáhnout z [MABS SDK](http://go.microsoft.com/fwlink/p/?LinkId=235057). Balíček obsahuje také soubor readme, který poskytuje pokyny o tom, jak používat nástroj a základní informace o odstraňování potíží pro nástroj.
+Microsoft Azure BizTalk Services také poskytuje **migrace dat TPM** nástroj pro migraci obchodních partnerů a smluv z modulu BizTalk Server Trading Partner k portálu BizTalk Services. Nástroj pro migraci dat čip TPM je k dispozici jako součást balíčku nástrojů, který si můžete stáhnout z [MABS SDK](http://go.microsoft.com/fwlink/p/?LinkId=235057). Balíček obsahuje také soubor readme, který poskytuje pokyny o tom, jak použít nástroje a základní informace o odstraňování potíží pro nástroj.
 
 ## <a name="schemas"></a>Schémata
-Služba BizTalk Services nabízí schémat EDI, které se dají použít v řešení BizTalk Services.  Kromě toho schémat BizTalk Server EDI lze také službou BizTalk Services protože do kořenového uzlu schémat EDI je stejná napříč BizTalk serveru, jakož i služba BizTalk Services. Proto bude možné přímo trvat vaší schémat EDI BizTalk serveru a použít je v EDI řešení, které vyvíjíte pomocí služby BizTalk Services. Můžete také stáhnout schémata z [MABS SDK](http://go.microsoft.com/fwlink/p/?LinkId=235057).
+BizTalk Services zajišťují funkce schémat EDI, které je možné použít v řešeních služby BizTalk Services.  Navíc schémat EDI z BizTalk serveru můžete také použít s BizTalk Services protože kořenový uzel schémat EDI je stejná napříč BizTalk serveru a BizTalk Services. Proto bude možné přímo využít vaše schémat EDI z BizTalk serveru a používat je v řešení EDI, které vyvíjíte pomocí BizTalk Services. Můžete si také stáhnout schémata z [MABS SDK](http://go.microsoft.com/fwlink/p/?LinkId=235057).
 
-## <a name="maps-transforms"></a>Mapy (transformací)
-Mapy BizTalk serveru, se nazývají transformací ve službě BizTalk Services. Migrace mapy služby BizTalk Server do služby BizTalk Services může mít jednu z složitější úlohy k dosažení (v závislosti na složitosti mapy). Mapování nástroj, který slouží pro BizTalk Services se liší od BizTalk mapper. I když mapper vypadá většinou stejný, základní formát mapy se liší. Functoids (nazývá **mapy Operations** ve službě BizTalk Services) k dispozici pro uživatele se také liší.  V důsledku toho nelze použít přímo BizTalk mapy ve službě BizTalk Services. Ne všechny functoids k dispozici v BizTalk Server jsou také k dispozici jako mapy operace ve službě BizTalk Services.
+## <a name="maps-transforms"></a>Maps (transformace)
+Mapování v BizTalk serveru se nazývají transformací v BizTalk Services. Migrace map z BizTalk serveru do BizTalk Services můžou mít jednu z složitější úlohy k dosažení (v závislosti na složitosti mapy). Mapování nástroj používaný pro služby BizTalk Services se liší od Mapovač BizTalk. I v případě, Mapovač vypadá převážně stejně, se liší základní formát mapování. Functoids (volá **mapy Operations** v BizTalk Services) k dispozici pro uživatele se také liší.  V důsledku toho nelze použít přímo BizTalk map ve službě BizTalk Services. Také ne všechny functoids dostupné v BizTalk serveru jsou k dispozici jako operace map ve službě BizTalk Services.
 
 ### <a name="new-transform-operations"></a>Nové operace transformace.
-Když se může zdát výrazně lišit od mapper BizTalk Server seznam operací na mapu transformace, které jsou k dispozici, transformuje služby BizTalk mít nové způsoby provádění úloh. Například transformuje služby BizTalk mít **operace výpisu** k dispozici. Nebyl k dispozici v BizTalk mapper.  **Operace výpisu** vám umožní vytvořit a provozovat na "Seznam", kde seznam je sada položek (také označované jako "řádky") a kde každá položka může mít více členů (také označované jako "sloupce").  Můžete seřaďte seznam, vyberte položky na základě podmínky, atd.
+Zatímco seznam operací mapy transformace, které jsou k dispozici se může zdát zcela liší od Mapovač BizTalk Server, transformuje BizTalk Services mají nových způsobech provádění úloh. Například BizTalk Services transformuje mít **operace výpisu** k dispozici. Nebyl k dispozici v mapování BizTalk.  **Operace výpisu** vám umožní vytvořit a pracovat v "Seznamu", kde je seznam sadu položek (označované také jako "řádků") a každá položka může mít více členů (označované také jako "sloupce").  Můžete seřadit, vyberte položky podle stavu, atd.
 
-Další příklad nové funkce v BizTalk Services transformuje se **smyčky Operations**.  Je těžké vytvořit vnořené smyčky v mapper BizTalk Server.  Operace mapy smyčky jsou proto přidány pro transformuje služby BizTalk.
+Další příklad nové funkce transformuje BizTalk Services jsou **smyčky operace**.  Je těžké vytvořit vnořené smyčky v mapování BizTalk serveru.  Díky tomu se operace mapy smyčky jsou přidány pro transformace BizTalk Services.
 
-Ještě dalším příkladem je **If-potom Else** operace mapy výrazu.  Provádění operace if potom else bylo možné v BizTalk mapper, ale je vyžadován více functoids k provedení zdánlivě jednoduché úlohy.
+Dalším příkladem je, ale **If-Then-Else** operaci mapování výrazů.  If-then-else operace to bylo možné v mapování BizTalk, ale vyžaduje více functoids či provést určitý úkol zdánlivě jednoduché.
 
-### <a name="migrating-biztalk-server-maps"></a>Migrace serveru BizTalk mapy
-Microsoft Azure BizTalk Services obsahuje nástroj pro migraci BizTalk Server mapuje transformací BizTalk Services. **BTMMigrationTool** je k dispozici jako součást **nástroje** součástí balíčku [stažení sady SDK služby BizTalk](http://go.microsoft.com/fwlink/p/?LinkId=235057). Další informace o tomto nástroji naleznete v tématu [převést mapu BizTalk k transformaci služby BizTalk](https://msdn.microsoft.com/library/windowsazure/hh949812.aspx).
+### <a name="migrating-biztalk-server-maps"></a>Mapování migrace BizTalk serveru
+Microsoft Azure BizTalk Services zajišťují, že nástroj pro migraci BizTalk serveru se mapuje na transformace BizTalk Services. **BTMMigrationTool** je k dispozici jako součást **nástroje** balíčku, opatřeného [stáhnout sadu SDK pro BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkId=235057). Další informace o tomto nástroji naleznete v tématu [převést BizTalk mapy pro transformaci BizTalk Services](https://msdn.microsoft.com/library/windowsazure/hh949812.aspx).
 
-Můžete také prohlédnout ukázku Sandro Pereira, BizTalk MVP, o tom, jak [migrace map BizTalk Server do služby BizTalk Services transformací](http://social.technet.microsoft.com/wiki/contents/articles/23220.migrating-biztalk-server-maps-to-windows-azure-biztalk-services-wabs-maps.aspx).
+Můžete se také podívat na ukázku Sandro Pereira, MVP pro BizTalk, o tom, jak [migrace mapy BizTalk serveru do BizTalk Services transformace](http://social.technet.microsoft.com/wiki/contents/articles/23220.migrating-biztalk-server-maps-to-windows-azure-biztalk-services-wabs-maps.aspx).
 
-## <a name="orchestrations"></a>Orchestrations
-Pokud potřebujete migrovat BizTalk serveru orchestration zpracování do služby Microsoft Azure, orchestrations potřebovat třeba přepsat, protože Microsoft Azure nepodporuje spuštěné orchestrations BizTalk Server.  Může přepisování funkce orchestration ve službě Windows Workflow Foundation 4.0 (WF4).  To může být dokončení přepisování není aktuálně žádné migrace ze serveru BizTalk orchestrations WF4. Zde jsou některé prostředky pro pracovní postup systému Windows:
+## <a name="orchestrations"></a>Orchestrace
+Pokud je potřeba migrovat BizTalk Server Orchestrace zpracování do Microsoft Azure, Orchestrace bude nutné, aby se povolilo, protože Microsoft Azure nepodporuje spuštěné Orchestrace BizTalk serveru.  Může přepsat funkci Orchestrace ve službě Windows Workflow Foundation 4.0 (WF4).  To může být kompletní revize, protože není aktuálně žádné migrace z Orchestrace BizTalk serveru do WF4. Tady jsou některé prostředky pracovního postupu Windows:
 
-* [*Postup pro integraci služby pracovního postupu WCF témata a fronty služby Service Bus* ](https://msdn.microsoft.com/library/azure/hh709041.aspx) podle Paolo Salvatori. 
-* [*Vytváření aplikací s Windows Workflow Foundation a Azure* relace](http://go.microsoft.com/fwlink/p/?LinkId=237314) z konference Build 2011.
-* [*Centrum vývojářů pro Windows Workflow Foundation* ](http://go.microsoft.com/fwlink/p/?LinkId=237315) na webu MSDN.
-* [*Dokumentaci k Windows Workflow Foundation 4 (WF4)* ](https://msdn.microsoft.com/library/dd489441.aspx) na webu MSDN.
+* [*Postup při integraci služby pracovního postupu WCF pomocí front Service Bus a témat* ](https://blogs.msdn.microsoft.com/paolos/2013/04/09/how-to-integrate-a-wcf-workflow-service-with-service-bus-queues-and-topics/) podle Paolo Salvatori. 
+* [*Vytváření aplikací pomocí Windows Workflow Foundation a Azure* relace](http://go.microsoft.com/fwlink/p/?LinkId=237314) z konference Build 2011.
+* [*Středisko pro vývojáře aplikace Windows Workflow Foundation* ](http://go.microsoft.com/fwlink/p/?LinkId=237315) na webové stránce MSDN.
+* [*Dokumentaci k Windows Workflow Foundation 4 (WF4)* ](https://msdn.microsoft.com/library/dd489441.aspx) na webové stránce MSDN.
 
 ## <a name="other-considerations"></a>Další důležité informace
-Toto jsou několik aspekty, které musíte provést při používání služby BizTalk Services.
+Následuje několik důležitých informací, které je nutné provést při používání služby BizTalk Services.
 
-### <a name="fallback-agreements"></a>Záložní smlouvy
-Zpracování BizTalk Server EDI obsahuje koncepci "Záložního smlouvy".  BizTalk Services nepodporuje **není** , pokud mají koncept záložního smlouvy.  Dokumentace tématech BizTalk [z smlouvy Role při zpracování EDI](http://go.microsoft.com/fwlink/p/?LinkId=237317) a [záložního smlouvy vlastnosti nebo konfigurace globální](https://msdn.microsoft.com/library/bb245981.aspx) informace o používání záložního smluv v BizTalk Server.
+### <a name="fallback-agreements"></a>Použití náhradní lokality smlouvy
+Zpracování EDI z BizTalk serveru nemá koncept "Záložní smlouvy".  BizTalk Services nemá **není** zatím jste koncept smlouvu pro použití náhradní lokality.  Najdete v tématech dokumentace ke službě BizTalk [ze smluv roli při zpracování EDI](http://go.microsoft.com/fwlink/p/?LinkId=237317) a [Konfigurace globálních nebo vlastnosti smlouvy záložní](https://msdn.microsoft.com/library/bb245981.aspx) informace o používání záložního smluv v BizTalk Server.
 
 ### <a name="routing-to-multiple-destinations"></a>Směrování do více cílů
-BizTalk Services mostů v jejím aktuálním stavu nepodporuje směrování zpráv do více cílů pomocí publikovat-přihlášení k odběru modelu. Místo toho může směrovat zprávy ze služby BizTalk Services most do tématu Service Bus, který pak může mít několik odběrů pro příjem zprávy na více než jeden koncový bod.
+Mosty BizTalk Services v jejím aktuálním stavu nepodporuje směrování zpráv do více cílů pomocí publikování-odběru modelu. Místo toho může směrovat zprávy z most BizTalk Services do tématu Service Bus, které pak může obsahovat víc předplatných pro příjem zprávy na víc než jednom koncovém bodě.
 
 ## <a name="conclusion"></a>Závěr
-Microsoft Azure BizTalk Services je aktualizován v pravidelných milníky přidat další funkce a možnosti. Při každé aktualizaci Těšíme podpory rozšířené funkce pro usnadnění vytváření řešení pro kompletní pomocí služby BizTalk Services a další technologie Azure.
+Microsoft Azure BizTalk Services se aktualizuje v pravidelných milníky, chcete-li přidat další funkce a možnosti. Při každé z nich Těšíme se podporuje rozšířené funkce pro usnadnění vytváření začátku do konce řešení využívající BizTalk Services a jiné technologie Azure.
 
 ## <a name="see-also"></a>Viz také
-[Vývoj aplikací Enterprise s Azure](https://msdn.microsoft.com/library/azure/hh674490.aspx)
+[Vývoj podnikových aplikací s využitím Azure](https://msdn.microsoft.com/library/azure/hh674490.aspx)
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png

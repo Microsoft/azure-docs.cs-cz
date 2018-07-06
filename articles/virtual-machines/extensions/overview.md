@@ -1,6 +1,6 @@
 ---
-title: Rozšíření virtuálního počítače Azure a funkce | Microsoft Docs
-description: Zjistěte, jaké anre rozšíření virtuálního počítače Azure jak používat s virtuálními počítači Azure
+title: Funkce a rozšíření virtuálních počítačů Azure | Dokumentace Microsoftu
+description: Naučte se, jaké anre rozšíření virtuálního počítače Azure k použití s virtuálními počítači Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: danielsollondon
@@ -15,45 +15,45 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: danis
-ms.openlocfilehash: 04f6d68feccf4a9b2bf2fa0f03ad8bd978cf5f17
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1fd4e1a67b6aa4cc66e62822c34606e2769890f8
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34653259"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866487"
 ---
-# <a name="azure-virtual-machine-extensions-and-features"></a>Rozšíření virtuálního počítače Azure a funkce
-Rozšíření virtuálních počítačů (VM) Azure jsou malých aplikacích, které poskytují konfiguraci a automatizaci úloh po nasazení na virtuálních počítačích Azure, můžete použít existující bitové kopie a potom si je přizpůsobit, v rámci vašeho nasazení, můžete získávání mimo firmy vlastní vytváření bitové kopie.
+# <a name="azure-virtual-machine-extensions-and-features"></a>Funkce a rozšíření virtuálních počítačů Azure
+Rozšíření virtuálních počítačů (VM) Azure jsou malých aplikací, které poskytují konfiguraci a automatizaci úloh po nasazení na virtuálních počítačích Azure, můžete použít existující Image a pak si je přizpůsobit, jako součást nasazení, začít z firmy vlastní vytváření bitové kopie.
 
-Platformy Azure hostitelem mnoho rozšíření, která v rozsahu od konfigurace virtuálního počítače, monitorování, zabezpečení a nástroj aplikace. Vydavatelé trvat aplikace, potom zabalit do rozšíření a zjednodušení instalace, tak, aby všechny, které je potřeba zadat povinné parametry. 
+Platforma Azure je hostitelem mnoho rozšíření, které v rozsahu od konfigurace virtuálního počítače, monitorování, zabezpečení a nástroje aplikace. Vydavatelé trvat aplikace, potom zabalit do rozšíření a zjednodušit instalaci, takže všechno, co je potřeba je zadat povinné parametry. 
 
- Při volbě velké první a rozšíření třetích stran, pokud aplikace v úložišti rozšíření neexistuje, pak můžete použít rozšíření vlastních skriptů a konfigurace virtuálního počítače pomocí vlastní skripty a příkazy.
+ Existuje velké řadu první a rozšíření jiných výrobců, pokud aplikace v úložišti rozšíření neexistuje, pak můžete použít rozšíření vlastních skriptů a na virtuálním počítači nakonfigurovat vlastní skripty a příkazy.
 
-Příklady klíčových scénářů, které se používají rozšíření pro:
-* Konfigurace virtuálního počítače, můžete Powershell DSC (Konfigurace požadovaného stavu), Chef, Puppet a rozšíření vlastní skript k instalaci agentů konfigurace virtuálních počítačů a konfiguraci virtuálního počítače. 
-* AV produkty, jako je například Symantec, obnovit.
-* Virtuální počítač nástroj ohrožení zabezpečení, například Qualys, Rapid7, HPE.
-* Virtuální počítač a nástroje, jako je například DynaTrace, sledovací proces sítě Azure, Site24x7 a Stackify monitorování aplikací.
+Příklady klíčových scénářů, které se používají rozšíření:
+* Konfigurace virtuálního počítače, můžete použít Powershell DSC (Desired State Configuration), Chef, Puppet nebo rozšíření vlastních skriptů k instalaci konfigurace agentů virtuálních počítačů a konfiguraci virtuálního počítače. 
+* Antivirové produkty, jako například Symantec, ESET.
+* Nástroj ohrožení zabezpečení virtuálních počítačů, například Qualys, Rapid7, HPE.
+* Virtuální počítač a nástroje, jako je například DynaTrace, Azure Network Watcher, Site24x7 a Stackify monitorování aplikací.
 
-Rozšíření můžete dodávat s nové nasazení virtuálního počítače. Například může být součástí větší nasazení, konfiguraci aplikací na zřizování virtuálních počítačů, nebo spouštění na všech podporovaných rozšíření provozovat systémy post nasazení.
+Rozšíření je možné seskupit s nasazením nového virtuálního počítače. Například může být součástí větší nasazení, konfigurace aplikací na zřizování virtuálních počítačů, nebo spouštět všechny podporované rozšíření provozuje systémy po nasazení.
 
-## <a name="how-can-i-find-what-extensions-are-available"></a>Jak najdete jaké rozšíření jsou k dispozici?
-Můžete dostupná rozšíření zobrazit v okně virtuálního počítače na portálu, v seznamu rozšíření, reprezentuje jenom malé množství pro úplný seznam, můžete pomocí nástrojů příkazového řádku najdete v tématu [zjišťování rozšíření virtuálního počítače pro Linux](features-linux.md) a [ Zjišťování rozšíření virtuálního počítače pro systém Windows](features-windows.md).
+## <a name="how-can-i-find-what-extensions-are-available"></a>Jak najdu, jaká rozšíření jsou k dispozici?
+Můžete dostupná rozšíření zobrazit v okně virtuálního počítače na portálu v části rozšíření, to představuje jen malou, seznam, můžete používat nástroje rozhraní příkazového řádku, naleznete v tématu [zjišťování rozšíření virtuálních počítačů pro Linux](features-linux.md) a [ Zjišťování rozšíření virtuálních počítačů pro Windows](features-windows.md).
 
 ## <a name="how-can-i-install-an-extension"></a>Jak můžete nainstalovat rozšíření?
-Rozšíření virtuálního počítače Azure můžete spravovat pomocí Azure CLI 2.0, prostředí Azure PowerShell, šablon Azure Resource Manageru a webu Azure portal. Pokud chcete vyzkoušet rozšíření, můžete přejít na portálu Azure, vyberte možnost rozšíření vlastních skriptů, pak předat v příkazu / skriptu a spuštění rozšíření.
+Rozšíření virtuálního počítače Azure je možné spravovat pomocí rozhraní příkazového řádku Azure CLI 2.0, Azure Powershellu, šablon Azure Resource Manageru a webu Azure portal. Pokud chcete vyzkoušet rozšíření, můžete přejít na webu Azure portal vyberte rozšíření vlastních skriptů, potom předejte příkazu / skript a spustíte rozšíření.
 
-Pokud chcete stejné rozšiřující jste přidali v portálu pomocí rozhraní příkazového řádku nebo správce prostředků šablony, naleznete v dokumentaci k jiné rozšíření, jako například [rozšíření vlastních skriptů Windows](custom-script-windows.md) a [rozšíření vlastních skriptů Linux](custom-script-linux.md).
+Pokud chcete do stejného rozšíření, které jste přidali na portálu pomocí šablony Resource Manageru nebo rozhraní příkazového řádku, najdete dokumentaci k jiné rozšíření, jako například [rozšíření vlastních skriptů Windows](custom-script-windows.md) a [rozšíření vlastních skriptů Linux](custom-script-linux.md).
 
-## <a name="how-do-i-manage-extension-application-lifecycle"></a>Jak lze spravovat životní cyklus aplikace rozšíření?
-Není nutné se připojit k virtuálnímu počítači přímo na instalaci nebo odstranit rozšíření. Životní cyklus aplikace rozšíření Azure je spravuje mimo virtuální počítač a integrovat do platformy Azure, získáte také integrované stav rozšíření.
+## <a name="how-do-i-manage-extension-application-lifecycle"></a>Jak spravovat životní cyklus aplikace rozšíření?
+Nemusíte připojit přímo k instalaci nebo odstranit rozšíření virtuálního počítače. Životní cyklus aplikace rozšíření Azure se spravovanými mimo virtuální počítač a integrované do platformy Azure, budete mít také integrovaného stav rozšíření.
 
-## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Cokoliv jiného I by měl přemýšlíte o rozšíření?
-Rozšíření instalovat aplikace, stejně jako všechny aplikace, které jsou některé požadavky pro rozšíření, že je seznam podporované operační systémy Linux a Windows a je potřeba mít virtuální počítač Azure agenty nainstalovat. Některé aplikace pro jednotlivé rozšíření virtuálního počítače může mít vlastní požadavky prostředí, jako je například přístup ke koncovému bodu.
+## <a name="anything-else-i-should-be-thinking-about-for-extensions"></a>Cokoli, co jsem by měl být uvažujete o pro rozšíření?
+Rozšíření instalovat aplikace, stejně jako všechny aplikace jsou některé požadavky, že rozšíření je seznam podporovaných operačních systémů Linux a Windows a budete muset nainstalovaní agenti virtuálního počítače Azure. Některé jednotlivé aplikace rozšíření virtuálního počítače mohou mít své vlastní požadavky prostředí, jako je například přístup do koncového bodu.
 
 ## <a name="next-steps"></a>Další postup
-* Další informace o fungování agenta pro Linux a rozšíření najdete v tématu [rozšíření virtuálního počítače Azure a funkce pro Linux](features-linux.md).
-* Další informace o fungování agenta hosta Windows a rozšíření najdete v tématu [rozšíření virtuálního počítače Azure a funkce ve Windows](features-windows.md).  
-* Nainstalujte agenta hosta Windows, najdete v tématu [přehled agenta virtuálního počítače Windows Azure ](agent-windows.md).  
-* Chcete-li instalovat agenta systému Linux, přečtěte si téma [přehled agenta virtuálního počítače Azure Linux ](agent-linux.md).  
+* Další informace o fungování agenta pro Linux a rozšíření najdete v tématu [funkcí a rozšíření virtuálních počítačů Azure pro Linux](features-linux.md).
+* Další informace o fungování agenta hosta Windows a rozšíření najdete v tématu [funkcí a rozšíření virtuálních počítačů Azure pro Windows](features-windows.md).  
+* Chcete-li nainstalovat agenta hosta Windows, naleznete v tématu [přehled agenta virtuálního počítače Windows Azure ](agent-windows.md).  
+* Pokud chcete nainstalovat agenta pro Linux, najdete v článku [přehled agenta virtuálního počítače Linux Azure ](agent-linux.md).  
 

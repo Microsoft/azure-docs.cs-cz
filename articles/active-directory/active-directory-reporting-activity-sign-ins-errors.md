@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 05/31/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: cc5b4955d6bd239f99a9be0ab158ac8003f67ddf
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 8892f9a2699d18fbaf9161ffb01906a071ab2243
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110517"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856752"
 ---
 # <a name="sign-in-activity-report-error-codes-in-the-azure-active-directory-portal"></a>Kódy chyb v sestavě aktivit přihlašování na portálu Azure Active Directory
 
@@ -75,6 +75,7 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |50008|V tokenu chybí nebo je špatně nakonfigurovaný kontrolní výraz SAML. Obraťte se na svého federačního zprostředkovatele.|
 |50010|Ověření identifikátoru URI cílové skupiny pro aplikaci se nezdařilo, protože nejsou nakonfigurované cílové skupiny tokenu. Obraťte se na vlastníka aplikace.|
 |50011|Adresa pro odpovědi chybí, je špatně nakonfigurována nebo neodpovídá adresám pro odpovědi, které jsou pro aplikaci nakonfigurované. Vyzkoušejte řešení uvedené na adrese [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application). Pokud se vám přesto nedaří potíže vyřešit, kontaktujte vlastníka nebo správce aplikace.|
+|50012| Toto je obecné chybové zprávy, která označuje, že ověřování se nezdařilo. To může nastat z důvodu například chybí nebo není platný přihlašovací údaje nebo deklarací identity v požadavku. Ujistěte se, že žádost se poslala se správnými přihlašovacími údaji a deklarace identity. |
 |50013|Kontrolní výraz může být neplatný z různých důvodů: vydavatel tokenu se neshoduje s verzí rozhraní API v rámci jeho platného časového rozsahu; vypršela jeho platnost; je poškozený; nebo obnovovací token v kontrolním výrazu není primárním obnovovacím tokenem.|
 |50017|Ověření certifikace se nezdařilo kvůli jednomu z následujících důvodů:<ul><li>Na seznamu důvěryhodných certifikátů nebylo možné najít certifikát vystavitele.</li><li>Nepodařilo se najít očekávaný CrlSegment.</li><li>Na seznamu důvěryhodných certifikátů nebylo možné najít certifikát vystavitele.</li><li>Distribuční bod rozdílového seznamu CRL je nakonfigurovaný bez odpovídajícího distribučního bodu CRL.</li><li>Z důvodu vypršení časového limitu se nepodařilo načíst platné segmenty CRL.</li><li>CRL nejde stáhnout.</li></ul>Obraťte se na správce tenanta.|
 |50020|Uživatel nemá oprávnění – kvůli problému s verzí není možné vystavit tokeny – není zadané jméno vystavitele – problémy se jménem vystavitele (chybí nebo překračuje maximální délku). Obraťte se na vlastníka aplikace.|
@@ -104,7 +105,7 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |50120|Problém s hlavičkou JWT. Obraťte se na správce tenanta.|
 |50124|Transformace deklarací identity obsahuje neplatný vstupní parametr. Obraťte se na správce klienta, aby aktualizovat zásady.|
 |50125|Přihlášení se přerušilo z důvodu resetování hesla nebo položky registrace hesla.|
-|50126|Neplatné uživatelské jméno nebo heslo nebo neplatný místní uživatelské jméno nebo heslo.|
+|50126|Neplatné uživatelské jméno nebo heslo nebo neplatné místní uživatelské jméno nebo heslo.|
 |50127|Aby uživatel získal přístup k tomuto obsahu, musí si nainstalovat aplikaci zprostředkovatele.|
 |50128|Neplatný název domény – identifikující informace o tenantovi se nenachází ani v požadavku a ani je není možné odvodit z poskytnutých přihlašovacích údajů.|
 |50129|Zařízení není připojené k pracovišti. Připojení k pracovišti je nezbytné, aby se zařízení mohlo zaregistrovat.|
@@ -173,7 +174,9 @@ Následující část poskytuje úplný přehled o všech možných chybách a s
 |81001|Lístek Kerberos uživatele je příliš velký. K tomu může dojít, když je uživatel členem příliš mnoha skupin a lístek Kerberos obsahuje příliš velký počet členství. Snižte počet členství uživatele ve skupinách a zkuste to znovu.|
 |81005|Ověřovací balíček není podporovaný.|
 |81007|Tenant není povolený pro bezproblémové jednotné přihlašování.|
-
+|90014| Chybí povinné pole. pro zprávy protokolu, obraťte se na vlastníka aplikace. Pokud jste vlastníkem aplikace, ujistěte se, že máte všechny potřebné parametry pro žádost o přihlášení. 
+|90072| Účet musí být nejprve přidán jako externí uživatel v tenantovi. Odhlášení a přihlaste se znovu pomocí jiné služby Azure AD účtu.|
+|90094| Udělení vyžaduje oprávnění správce. Požádejte správce tenanta k poskytnutí souhlasu pro tuto aplikaci.
 
 ## <a name="next-steps"></a>Další postup
 

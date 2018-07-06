@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: ff78a7ed700506625761b0b1060040548b4a3ea1
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 0572caa1cd09c164d6c5a53bfe1c143bccffd535
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344810"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859084"
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace a AppSource vydavatele Průvodce  
 
@@ -75,27 +75,18 @@ Jakmile [odeslání vašeho řešení](https://azuremarketplace.microsoft.com/se
 Další informace o Microsoft go-to-market výhody a způsobech rozvoje vašeho podnikání na marketplace najdete [stránky služby Microsoft Go-To-Market Services](https://partner.microsoft.com/reach-customers/gtm).
 
 ---  
+## <a name="marketplace-and-storefronts"></a>Marketplace a prodejní místa 
 
-## <a name="storefronts"></a>Prodejní místa  
-Společnost Microsoft poskytuje dvě různé prodejní místa na webu marketplace. Prodejní místa umožňují seznam nabídek, povolit zkušební verze a provádět transakce přímo se zákazníky Microsoftu.  
-*   Porovnání AppSource a webu Azure Marketplace
-    *   Další informace o prodejní místa, najdete na webu AppSource porovnání a stránku na webu Azure Marketplace na [porovnání AppSource a webu Azure Marketplace](./comparing-appsource-azure-marketplace.md).
-*   AppSource 
-    *   Další informace o AppSource, navštivte růstu podnikání s využitím AppSource stránky umístěného v [Rozvíjejte své podnikání s využitím AppSource](./grow-your-business-with-appsource.md).  
-*   Azure Marketplace 
-    *   Další informace o Azure Marketplace, navštivte růstu své podnikání díky stránku na webu Azure Marketplace se nachází v [Rozvíjejte své podnikání díky Azure Marketplace](./grow-your-business-with-azure-marketplace.md).  
+Společnost Microsoft poskytuje dvě různé prodejní místa na našem webu marketplace: AppSource a webu Azure Marketplace. Prodejní místa marketplace je zarovnán cílovým skupinám na místě a produkty společnosti Microsoft cloud pomáhá zákazníkům snadno najdete přesně to, co potřebují. 
 
-Prodejní místa umožňují snadno najít, zkoušet a nakupovat aplikace a služby, které Zrychlete svoji digitální transformaci. Prodejní místa umožňují rozvoji vašeho podnikání zvýšením přístupu k Microsoft zákazníkům a partnerům.  
- 
-Každé z prodejních míst zajišťuje specializované možnosti vám pomůžou maximálně využít vaše investice do publikování. V následující tabulce najdete souhrn těchto možností.  
+Výběr prezentace začíná identifikaci cílová skupina pro vaše řešení. Použijte následující tabulku k rozhodnutí: 
 
-|  | AppSource | Azure Marketplace |  
-|:--- |:--- |:--- |  
-| Cílová skupina | Obchodní rozhodování<table> <tr> <th>role specialistou na produkty </th> </tr> <tr> <td>Účetnictví</td> </tr> <tr> <td>Zajišťování</td> </tr> <tr> <td>Výroba</td> </tr> </table> | IT Profesionálové a vývojáři<table> <tr> <th>role specialistou na produkty </th> </tr> <tr> <td>DevOps</td> </tr> <tr> <td>Specializující</td> </tr> <tr> <td>SecOps</td> </tr> </table> |  
+|  | AppSource | Azure Marketplace |
+|:--- |:--- |:--- |
+| Cílová skupina | Obchodní rozhodování | IT Profesionálové a vývojáři | 
 | Sestavován nebo rozšířit | Azure<br />Dynamics 365<br />Office 365<br />Power BI<br />PowerApps | Azure |  
-| Typy řešení a služeb | Dokončení-podnikových cloudových aplikací<br />Doplňky pro Office 365 | Řešení infrastruktury<br />Odborné služby |  
-| Typ nabídky | Konzultační služby<br />Kontaktujte mě<br />Bezplatná zkušební verze<br />Získat<br />Testovací verze | Aplikace Azure: aplikace spravované zásadou<br />Aplikace Azure: šablony řešení<br />Konzultační služby<br />Kontaktujte mě<br />Zkušební verze<br />virtuální počítač |  
-| Prostředí v aplikaci uživatele přístup<br />k aplikacím a službám v kontextu<br />vaše aplikace | Dynamics 365<br />Office 365<br />Klientské aplikace Office<br />Power BI | Azure Portal<br />Rozhraní příkazového řádku Azure Resource Manageru |  
+
+Každé z prodejních míst zajišťuje specializované možnostech a funkcích pro maximalizaci obchodní příležitosti. Další podrobné porovnání náš prodejní místa, navštivte web [porovnání AppSource a webu Azure Marketplace](./comparing-appsource-azure-marketplace.md). 
 
 ---   
 

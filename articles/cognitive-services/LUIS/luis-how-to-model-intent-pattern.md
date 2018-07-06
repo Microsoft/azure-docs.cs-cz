@@ -10,12 +10,12 @@ ms.technology: luis
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: v-geberr;
-ms.openlocfilehash: 9dd23fd5f8a0024f127b71160899d10042037a66
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 26fb9c6349b46e0c920506c39ba53b26f215d330
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346004"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867184"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Jak přidat vzorce, a zvyšte přesnost předpovědi
 Po aplikaci LUIS obdrží koncový bod projevy, použijte [koncept](luis-concept-patterns.md) vzorů zvyšte přesnost předpovědi pro projevy, které se zjistí vzor v pořadí slov a požadované aplikace word. Vzory používání [entity](luis-concept-entity-types.md) a jejich rolí k extrakci dat pomocí specifického vzoru syntaxe. 
@@ -57,7 +57,7 @@ Vyhledávání umožňuje najít vzory, které obsahují daný text.
 <!-- TBD: should I be able to click on the magnifying glass again to close the search box? It doesn't reset the list. -->
 
 ## <a name="edit-a-pattern"></a>Úprava vzoru
-1. Chcete-li upravit vzor, vyberte ikonu tří teček (...) na pravém konci řádku pro tento model a pak vyberte **upravit**. 
+1. Chcete-li upravit vzor, vyberte tři tečky (***...*** ) tlačítko na pravém konci řádku pro tento model a pak vyberte **upravit**. 
 
     ![Snímek obrazovky Upravit položku nabídky na řádku vzor](./media/luis-how-to-model-intent-pattern/patterns-three-dots.png) 
 
@@ -79,7 +79,7 @@ Změnit některé postupy na různých záměr přiřazení, vyberte zaškrtáva
 
 ## <a name="delete-a-single-pattern"></a>Odstranit jeden vzor
 
-1. Pokud chcete odstranit vzor, vyberte ikonu tří teček (...) na pravém konci řádku pro tento model a pak vyberte **odstranit**. 
+1. Pokud chcete odstranit vzor, vyberte tři tečky (***...*** ) tlačítko na pravém konci řádku pro tento model a pak vyberte **odstranit**. 
 
     ![Snímek obrazovky odstranit utterance](./media/luis-how-to-model-intent-pattern/patterns-three-dots-ddl.png)
 
@@ -123,7 +123,7 @@ Bude filtr odebrán a zobrazit všechny vzorky.
 ## <a name="add-pattern-from-existing-utterance-on-intent-or-entity-page"></a>Přidat model z existující utterance na stránce záměr nebo entity
 Vzoru můžete vytvořit ze stávající utterance buď **záměr** nebo **Entity** stránky. Všechny projevy na libovolné stránce záměr nebo entity se zobrazí v seznamu se v pravém sloupci, jako poskytuje přístup k možnosti na úrovni utterance **upravit**, **odstranit**, a **přidat jako vzor**.
 
-1. Na vybraný řádek utterance, vyberte tři tečky (...) napravo od utterance a vyberte **přidat jako vzor**.
+1. Na vybraný řádek utterance, vyberte tři tečky (***...*** ) tlačítko vpravo utterance a vybrat **přidat jako vzor**.
 
     [![](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png "Snímek obrazovky projevy tabulky se vzorem přidat zvýrazní v nabídce Možnosti v")](./media/luis-how-to-model-intent-pattern/add-pattern-from-utterance.png)
 

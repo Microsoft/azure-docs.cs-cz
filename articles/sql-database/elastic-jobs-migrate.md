@@ -1,6 +1,6 @@
 ---
-title: Migrace na nové úlohy elastické databáze | Microsoft Docs
-description: Migrujte na nové úlohy elastické databáze.
+title: Migrovat na nové úlohy Elastic Database | Dokumentace Microsoftu
+description: Migrace na nové úlohy Elastic Database.
 services: sql-database
 author: johnpaulkee
 manager: craigg
@@ -8,29 +8,29 @@ ms.service: sql-database
 ms.topic: article
 ms.date: 06/14/2018
 ms.author: johnpaulkee
-ms.openlocfilehash: 2f5e4587de009329cd8cf0eded88f79afe96a184
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 97d50b6ddcbb46cb291578caab5193e13cc56932
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035808"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868877"
 ---
-# <a name="migrate-to-the-new-elastic-database-jobs"></a>Migrace na nové úlohy elastické databáze
+# <a name="migrate-to-the-new-elastic-database-jobs"></a>Migrovat na nové úlohy elastické databáze
 
-Upgradovanou verzi produktu [elastické databáze úlohy](elastic-jobs-overview.md) je k dispozici.
+Upgradovaná verze [úlohy Elastic Database](elastic-jobs-overview.md) je k dispozici.
 
-Pokud máte existující verze zákazníka hostované [elastické databáze úlohy](sql-database-elastic-jobs-overview.md), migrace rutin a skriptů jsou k dispozici pro snadno migrace na nejnovější verzi.
+Pokud máte existující verze zákazníka hostované [úlohy Elastic Database](sql-database-elastic-jobs-overview.md), migrace rutin a skriptů jsou k dispozici pro snadno migrovat na nejnovější verzi.
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Upgradovaná verze úlohy elastické databáze má novou sadu rutin prostředí PowerShell pro použití během migrace. Tyto nové rutiny přenosu všechny stávající úlohy pověření cílí (včetně databází, servery, vlastní kolekce), aktivační události úlohy, plány úloh, obsah úlohy a úlohy prostřednictvím nového agenta elastické úlohy.
+Upgradovaná verze úlohy elastické databáze má nová sada rutin prostředí PowerShell pro použití během migrace. Tyto nové rutiny přenesou všechny vaše stávající přihlašovací údaje k úloze, zaměřuje (včetně databází, serverů, vlastní kolekce), aktivační události úlohy, plány úloh, obsah úlohy a úlohy prostřednictvím nového agenta Elastických úloh.
 
-### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Nainstalovat rutiny nejnovější elastické úlohy
+### <a name="install-the-latest-elastic-jobs-cmdlets"></a>Nainstalujte nejnovější rutiny Elastických úloh
 
-Pokud nemáte již máte předplatné Azure, [vytvořit bezplatný účet](https://azure.microsoft.com/free/) před zahájením.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
-Nainstalujte nejnovější verzi preview modulu AzureRM.Sql Powershell získat rutiny elastické úlohy.
+Nainstalujte nejnovější verzi preview modulu AzureRM.Sql Powershell zobrazíte rutiny Elastických úloh.
 
 ```powershell
 # Installs the latest PackageManagement powershell package which PowershellGet v1.6.5 is dependent on
@@ -44,9 +44,9 @@ Find-Package PowerShellGet -RequiredVersion 1.6.5 | Install-Package -Force
 Install-Module -Name AzureRM.Sql -AllowPrerelease -Force
 ```
 
-### <a name="create-a-new-elastic-job-agent"></a>Vytvoření nové elastické úlohy agenta
+### <a name="create-a-new-elastic-job-agent"></a>Vytvořit nového agenta Elastických úloh
 
-Po instalaci nové rutiny, vytvořte nový agent elastické úlohy.
+Po instalaci nové rutiny, vytvořte nového agenta Elastických úloh.
 
 ```powershell
 # Register your subscription for the for the Elastic Jobs public preview feature
@@ -58,15 +58,15 @@ $db = Get-AzureRmSqlDatabase -ResourceGroupName <resourceGroupName> -ServerName 
 $agent = $db | New-AzureRmSqlElasticJobAgent -Name <agentName>
 ```
 
-### <a name="install-the-old-elastic-database-jobs-cmdlets"></a>Nainstalovat rutiny staré úlohy elastické databáze
+### <a name="install-the-old-elastic-database-jobs-cmdlets"></a>Instalace rutin staré úlohy Elastic Database
 
-Migrace je potřeba použít některé *staré* rutiny elastické úlohy, spusťte následující příkazy, pokud ještě nemáte je nainstalovaný.
+Migrace je potřeba použít některé z *staré* rutiny elastických úloh, proto spusťte následující příkazy, pokud ještě nemáte nainstalovány.
 
 ```powershell
 # Install the old elastic job cmdlets if necessary and initialize the old jobs cmdlets
 .\nuget install Microsoft.Azure.SqlDatabase.Jobs -prerelease
 
-# Install the the old jobs cmdlets
+# Install the old jobs cmdlets
 cd Microsoft.Azure.SqlDatabase.Jobs.x.x.xxxx.x*\tools
 Unblock-File .\InstallElasticDatabaseJobsCmdlets.ps1
 .\InstallElasticDatabaseJobsCmdlets.ps1
@@ -80,7 +80,7 @@ Use-AzureSqlJobConnection -CurrentAzureSubscription -Credential (Get-Credential)
 
 ## <a name="migration"></a>Migrace
 
-Teď, když jsou inicializovány staré a nové rutiny se elastické úlohy, migrovat vaše přihlašovací údaje úlohy, cílů a úloh do nového *úlohy databáze*.
+Teď, když jsou inicializovány staré a nové rutiny se Elastic Jobs, migrovat vaše přihlašovací údaje k úloze, cíle a úlohy do nového *databáze úloh*.
 
 ### <a name="setup"></a>Nastavení
 
@@ -128,7 +128,7 @@ function Migrate-Credentials ($agent) {
 }
 ```
 
-Migrace přihlašovacích údajů, spusťte následující příkaz tak, že předávání `$agent` prostředí PowerShell objekt z dříve.
+Pokud chcete migrovat svoje přihlašovací údaje, spusťte následující příkaz předáním `$agent` objekt prostředí PowerShell z předchozí.
 
 ```powershell
 Migrate-Credentials $agent
@@ -147,7 +147,7 @@ Ukázkový výstup
 #  - Added user user3
 ```
 
-### <a name="migrate-targets"></a>Migrovat cíle
+### <a name="migrate-targets"></a>Migrace cíle
 
 ```powershell
 function Migrate-TargetGroups ($agent) {
@@ -356,10 +356,10 @@ function Setup-TargetGroup ($tgName, $agent) {
 }
 ```
 
-Vaše cíle (servery, databáze a vlastní kolekce) migrovat na nové úlohy databáze, spusťte **migrací TargetGroups** rutiny, proveďte následující kroky:
+K migraci vašich cílů (servery, databázemi a vlastní kolekce) do vaší nové databáze úlohy, spusťte **migrace TargetGroups** rutiny, proveďte následující kroky:
 
 - Kořenové úrovně cíle, které jsou servery a databáze se budou migrovat do nového cílovou skupinu s názvem "(\<serverName\>, \<databaseName\>)" obsahující pouze kořenové úrovně cíl.
-- Vlastní kolekce bude migrovat na nové cílová skupina obsahující všechny podřízené cíle.
+- Vlastní kolekce se migrují do nové cílová skupina obsahující všechny podřízený cíle.
 
 ```powershell
 Migrate-TargetGroups $agent
@@ -389,7 +389,7 @@ Ukázkový výstup:
 
 
 
-### <a name="migrate-jobs"></a>Úlohy migrace
+### <a name="migrate-jobs"></a>Migrace úloh
 
 ```powershell
 function Migrate-Jobs ($agent)
@@ -552,10 +552,10 @@ function Setup-JobStep ($newJob, $job) {
 }
 ```
 
-Pokud chcete migrovat úlohy, úlohy obsah, aktivační události úlohy a plány úloh přes do vaší nové elastické úlohy agenta databáze, spusťte **úlohy migrace** rutiny předávání v agenta.
+Pokud chcete migrovat úlohy, úlohy obsah, aktivační události úlohy a plány úloh přes do vašeho nového agenta Elastických úloh databáze, spusťte **úlohy migrace** rutiny předávajícího agenta.
 
-- Úlohy s více aktivačních událostí s různé plány jsou rozdělené do více úloh s schéma pojmenování: "\<jobName\> (\<scheduleName\>)".
-- Obsah úlohy migrace budou zahrnuty do úlohy Přidání kroku výchozí úloha s názvem krok úlohy se text přidružený příkazu.
+- Úlohy s více aktivačních událostí pomocí různých plánů jsou rozdělené do několika úloh s schéma pojmenování: "\<jobName\> (\<scheduleName\>)".
+- Obsah úlohy migrace budou zahrnuty do úlohy přidání výchozí krok úlohy s názvem JobStep textem přidružený příkaz.
 - Úlohy jsou ve výchozím nastavení zakázané, tak, aby je mohli ověřit před jejím povolením.
 
 ```powershell
@@ -592,11 +592,11 @@ Job job4
 
 
 
-## <a name="migration-complete"></a>Dokončení migrace
+## <a name="migration-complete"></a>Migrace byla dokončena
 
-*Úlohy databáze* by měl nyní mají všechny úlohy přihlašovací údaje, cíle, aktivační události úlohy, plány úloh, obsah úlohy a úlohy migrace přes.
+*Databáze úloh* teď měli mít všechny přihlašovací údaje k úloze, cíle, triggery úlohy, plány úloh, obsah úlohy a úlohy migrovat.
 
-Pokud chcete potvrdit, jestli všechno, co se správně migrovaly, použijte následující skripty:
+Potvrďte, že všechno správně migrovaly pomocí těchto skriptů:
 
 ```powershell
 $creds = $agent | Get-AzureRmSqlElasticJobCredential
@@ -605,13 +605,13 @@ $jobs = $agent | Get-AzureRmSqlElasticJob
 $steps = $jobs | Get-AzureRmSqlElasticJobStep
 ```
 
-Chcete-li otestovat, zda jsou správně provádění úlohy, spusťte je:
+Pokud chcete otestovat, že jsou správně spuštěny úlohy, je spusťte:
 
 ```powershell
 $jobs | Start-AzureRmSqlElasticJob
 ```
 
-Pro všechny úlohy, které byly spuštěné podle plánu mějte na paměti, aby jim umožnil tak, aby mohly běžet na pozadí:
+Pro všechny úlohy, které byly spuštěny podle plánu nezapomeňte povolit, je tak, aby mohly běžet na pozadí:
 
 ```powershell
 $jobs | Set-AzureRmSqlElasticJob -Enable
@@ -619,5 +619,5 @@ $jobs | Set-AzureRmSqlElasticJob -Enable
 
 ## <a name="next-steps"></a>Další postup
 
-- [Vytvářet a spravovat elastické úlohy pomocí prostředí PowerShell](elastic-jobs-powershell.md)
-- [Vytvářet a spravovat elastické úlohy pomocí jazyka Transact-SQL (T-SQL)](elastic-jobs-tsql.md)
+- [Vytváření a správa elastických úloh s využitím PowerShellu](elastic-jobs-powershell.md)
+- [Vytváření a správa elastických úloh pomocí Transact-SQL (T-SQL)](elastic-jobs-tsql.md)

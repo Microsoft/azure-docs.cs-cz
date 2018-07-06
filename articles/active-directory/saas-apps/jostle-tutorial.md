@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s Jostle | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou Jostle | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a Jostle.
 services: active-directory
 documentationCenter: na
@@ -14,205 +14,207 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
-ms.openlocfilehash: d4e754192d15bce6f7803ba34500e7c018c4dc54
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 5be27723e6dfea9ce0d720baab2b650cff9c0f64
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222761"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866283"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-jostle"></a>Kurz: Azure Active Directory integrace s Jostle
+# <a name="tutorial-azure-active-directory-integration-with-jostle"></a>Kurz: Integrace Azure Active Directory se službou Jostle
 
-V tomto kurzu zjistěte, jak integrovat Jostle s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat Jostle s Azure Active Directory (Azure AD).
 
-Integrace Jostle s Azure AD poskytuje následující výhody:
+Jostle integraci se službou Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k Jostle
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k Jostle (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k Jostle (Single Sign-On) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s Jostle, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Jostle jednotného přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Jostle jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí.
+Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání Jostle z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-jostle-from-the-gallery"></a>Přidání Jostle z Galerie
-Při konfiguraci integrace Jostle do služby Azure AD musíte přidat do seznamu spravovaných aplikací SaaS Jostle z galerie.
+Konfigurace integrace Jostle do služby Azure AD, budete muset přidat Jostle z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat Jostle z galerie, proveďte následující kroky:**
+**Chcete-li přidat Jostle z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu.
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
-    
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
 
-    ![Aplikace][3]
+3. Klikněte na tlačítko **přidat** v horní části okna.
 
-4. Do vyhledávacího pole zadejte **Jostle**.
+    ![add_01](./media/jostle-tutorial/add_01.png)
 
-    ![Vytváření testovacího uživatele Azure AD](./media/jostle-tutorial/tutorial_jostle_search.png)
+4. Do vyhledávacího pole v rámci **přidat aplikaci** typ **Jostle**.
 
-5. Na panelu výsledků vyberte **Jostle**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+    ![add_02](./media/jostle-tutorial/add_02.png)
 
-    ![Vytváření testovacího uživatele Azure AD](./media/jostle-tutorial/tutorial_jostle_addfromgallery.png)
+5. Na panelu výsledků vyberte **Jostle**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
+
+    ![Vytváří se testovací uživatele služby Azure AD](./media/jostle-tutorial/tutorial_jostle_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části můžete nakonfigurovat a otestovat Azure AD jednotné přihlašování s Jostle podle testovacího uživatele názvem "Britta Simon."
+V této části Konfigurace a testování Azure AD jednotné přihlašování s Jostle podle testovacího uživatele nazývá "Britta Simon."
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v Jostle je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v Jostle musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v Jostle je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v Jostle potřeba navázat.
 
-V Jostle, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V Jostle, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Jostle, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s Jostle, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytvoření zkušebního uživatele Jostle](#creating-a-jostle-test-user)**  – Pokud chcete mít protějšek Britta Simon v Jostle propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytvoření zkušebního uživatele Jostle](#creating-a-jostle-test-user)**  – Pokud chcete mít protějšek Britta Simon Jostle, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci Jostle.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci Jostle.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s Jostle, proveďte následující kroky:**
 
-1. Na portálu Azure na **Jostle** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **Jostle** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
- 
-    ![Konfigurovat jednotné přihlašování](./media/jostle-tutorial/tutorial_jostle_samlbase.png)
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
 
-3. Na **Jostle domény a adresy URL** část, proveďte následující kroky:
+    ![Konfigurace jednotného přihlašování](./media/jostle-tutorial/tutorial_jostle_samlbase.png)
 
-    ![Konfigurovat jednotné přihlašování](./media/jostle-tutorial/tutorial_jostle_url.png)
+3. Na **Jostle domény a adresy URL** části, proveďte následující kroky:
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tanent name>.jostle.us/jostle-prod/`
+    ![url_01](./media/jostle-tutorial/url_01.png)
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<tanent name>.jostle.us`
+    a. V **přihlašovací adresa URL** textového pole zadejte: `https://login-prod.jostle.us`
 
-    > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory Jostle](mailto:support@jostle.me) k získání těchto hodnot. 
- 
+    b. V **identifikátor** textového pole zadejte: `https://jostle.us`
 
+    c. Zaškrtněte políčko vedle položky **zobrazit pokročilé nastavení URL**
 
-4. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+    d. V **adresy URL odpovědi** textového pole zadejte: `https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`
 
-    ![Konfigurovat jednotné přihlašování](./media/jostle-tutorial/tutorial_jostle_certificate.png) 
+4. Na **atributy uživatele** části pro **identifikátor uživatele** pole, zadejte: `user.userprincipalname`
 
-5. Klikněte na tlačítko **Uložit** tlačítko.
+    ![url_02](./media/jostle-tutorial/url_02.png)
 
-    ![Konfigurovat jednotné přihlašování](./media/jostle-tutorial/tutorial_general_400.png)
+5. Klikněte na tlačítko **Uložit** v horní části okna.
 
-7. Na straně Jostle nakonfigurovat jednotné přihlašování, budete muset odeslat stažené metadata XML do [tým podpory Jostle](mailto:support@jostle.me). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách. 
+6. Přejděte na **podpisový certifikát SAML** a ověřte, že je nastavena na **aktivní**. Pak klikněte na tlačítko **soubor XML s metadaty** se stažení souboru metadat.
+
+    ![url_03](./media/jostle-tutorial/url_03.png)
+
+7. Konfigurace jednotného přihlašování na straně Jostle společnosti, budete muset odeslat stažené kód XML metadat do [tým podpory Jostle](mailto:support@jostle.me). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
+>
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/jostle-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/jostle-tutorial/create_aaduser_01.png)
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
-    
-    ![Vytváření testovacího uživatele Azure AD](./media/jostle-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
- 
-    ![Vytváření testovacího uživatele Azure AD](./media/jostle-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/jostle-tutorial/create_aaduser_02.png)
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
- 
-    ![Vytváření testovacího uživatele Azure AD](./media/jostle-tutorial/create_aaduser_04.png) 
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    ![Vytváří se testovací uživatele služby Azure AD](./media/jostle-tutorial/create_aaduser_03.png)
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    ![Vytváří se testovací uživatele služby Azure AD](./media/jostle-tutorial/create_aaduser_04.png)
+
+    a. V **název** textové pole, typ **BrittaSimon**.
+
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
+
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
- 
+
 ### <a name="creating-a-jostle-test-user"></a>Vytvoření zkušebního uživatele Jostle
 
-V této části vytvoříte volal Britta Simon v Jostle uživatele. Pokud nevíte jak přidat Britta Simon v Jostle, kontaktujte prosím s [tým podpory Jostle](mailto:support@jostle.me) k přidání testovacího uživatele a povolení jednotného přihlašování.
+V této části vytvoříte uživatele v Jostle jako Britta Simon. Pokud si nejste jisti, jak přidat Britta Simon v Jostle, obraťte se prosím s [tým podpory Jostle](mailto:support@jostle.me) přidat testovacího uživatele a povolení jednotného přihlašování.
 
 > [!NOTE]
-> Držitel účtu Azure Active Directory obdrží e-mailu a dodržuje odkaz potvrďte svůj účet, pak se změní na aktivní.
+> Držitel účtu Azure Active Directory obdrží e-mailu a řídí se odkaz potvrďte svůj účet, pak se změní na aktivní.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu Jostle.
+V této části je povolit Britta Simon k udělení přístupu k Jostle použití Azure jednotného přihlašování.
 
-![Přiřadit uživatele][200] 
+![Přiřadit uživatele][200]
 
-**Pokud chcete přiřadit Britta Simon Jostle, proveďte následující kroky:**
+**Přiřadit Jostle Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
-    ![Přiřadit uživatele][201] 
+    ![Přiřadit uživatele][201]
 
 2. V seznamu aplikací vyberte **Jostle**.
 
-    ![Konfigurovat jednotné přihlašování](./media/jostle-tutorial/tutorial_jostle_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/jostle-tutorial/tutorial_jostle_app.png)
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
-    ![Přiřadit uživatele][202] 
+    ![Přiřadit uživatele][202]
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
-    
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
+
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
 Když kliknete na dlaždici Jostle na přístupovém panelu, měli byste obdržet automaticky přihlašovací stránku Jostle aplikace.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
@@ -230,4 +232,3 @@ Další informace o na přístupovém panelu najdete v tématu [Úvod k přístu
 [201]: ./media/jostle-tutorial/tutorial_general_201.png
 [202]: ./media/jostle-tutorial/tutorial_general_202.png
 [203]: ./media/jostle-tutorial/tutorial_general_203.png
-

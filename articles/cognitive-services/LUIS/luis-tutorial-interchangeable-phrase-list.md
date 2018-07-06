@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/07/2017
 ms.author: v-geberr
-ms.openlocfilehash: 9f12d9e8c9ee2038e7841cd05bb438421a5a8984
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2fd53225a455a34d03772487a10f62a94ac86735
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345341"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868969"
 ---
 # <a name="tutorial-add-phrase-list-to-improve-predictions"></a>Kurz: Přidání seznamu frází k vylepšení predikce
 V tomto kurzu, zvýšit přesnost záměru skóre a identifikaci entity pro slova, která mají stejný význam (synonym) tak, že přidáte zaměnitelné [funkci seznamu frázi](./luis-concept-feature.md).
@@ -254,7 +254,7 @@ Chcete-li zobrazit skóre entity [model publikujte](luis-how-to-publish-app.md) 
 
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
-Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Provedete to tak, že vyberete nabídku se třemi tečkami (...) vpravo od názvu aplikace v seznamu aplikací a vyberete **Delete** (Odstranit). V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
+Pokud už aplikaci LUIS nepotřebujete, odstraňte ji. Uděláte to tak, vyberte tři tečky (***...*** ) napravo od názvu aplikace v seznamu aplikací vyberte **odstranit**. V automaticky otevíraném dialogovém okně **Delete app?** (Odstranit aplikaci?) vyberte **Ok**.
 
 ## <a name="next-steps"></a>Další postup
 

@@ -1,6 +1,6 @@
 ---
-title: Práce s daty geoprostorové v Azure Cosmos DB | Microsoft Docs
-description: Pochopit, jak vytvářet, index a dotaz prostorových objekty s Azure Cosmos DB a rozhraní SQL API.
+title: Práce s Geoprostorová data ve službě Azure Cosmos DB | Dokumentace Microsoftu
+description: Naučte se vytvářet, indexování a dotazovat Prostorové objekty s Azure Cosmos DB a rozhraní SQL API.
 services: cosmos-db
 author: SnehaGunda
 manager: kfile
@@ -10,32 +10,32 @@ ms.topic: conceptual
 ms.date: 10/20/2017
 ms.author: sngun
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 893b985514f4c812da673a90fc40148e8ac9ce81
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 74824af6f17a6c1d2638c8604edd38ffa419d607
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34611363"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858114"
 ---
-# <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Práce s geoprostorové a GeoJSON umístění dat v Azure Cosmos DB
-Tento článek je úvodem k funkci geoprostorové v [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Po přečtení to, budete moct odpovězte si na následující otázky:
+# <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Práce s geoprostorové a údaje o poloze GeoJSON ve službě Azure Cosmos DB
+Tento článek je úvodem do geoprostorové funkce v [služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/). Po přečtení to, bude moci odpovědět na následující otázky:
 
-* Jak ukládat prostorových dat v Azure Cosmos DB?
-* Jak můžete dotazovat geoprostorové data v Azure DB Cosmos v SQL a LINQ?
-* Jak povolit nebo zakázat prostorových indexování v Azure Cosmos DB?
+* Jak můžu ukládat prostorová data ve službě Azure Cosmos DB?
+* Jak lze Geoprostorová data ve službě Azure Cosmos DB v SQL a LINQ dotaz?
+* Jak povolit nebo zakázat prostorového indexování ve službě Azure Cosmos DB?
 
-Tento článek ukazuje, jak pracovat s prostorových dat s rozhraním API SQL. Toto [Githubu projektu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) pro ukázky kódu.
+Tento článek popisuje, jak pracovat s prostorovými daty pomocí rozhraní SQL API. Najdete v tomto [projektu z Githubu](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs) ukázky kódu.
 
 ## <a name="introduction-to-spatial-data"></a>Úvod do prostorových dat
-Prostorová data popisuje pozice a tvar objektů v prostoru. Ve většině aplikací se tyto odpovídají objekty na země a geoprostorové data. Prostorová data můžete používá k reprezentování umístění osoby, místo zájmu nebo hranici města nebo jezero. Běžné případy použití často zahrnují blízkosti dotazy, například, "najít všechny v kavárnách téměř Moje aktuální umístění." 
+Prostorová data popisuje pozice a tvar objektů v prostoru. Ve většině aplikací tyto odpovídá objektům na světě a Geoprostorová data. Prostorová data slouží k reprezentaci umístění osoby, místa, které vás zajímají nebo hranici město nebo jezera. Běžné případy použití často zahrnují blízkých výrazů dotazů, třeba, "najít všechny v kavárnách téměř moji aktuální polohu." 
 
 ### <a name="geojson"></a>GeoJSON
-Podporuje Azure Cosmos DB indexování a dotazování dat geoprostorové bodu, která je reprezentována pomocí [GeoJSON specifikace](https://tools.ietf.org/html/rfc7946). GeoJSON datové struktury, jsou vždy objekty JSON je platný, a tak, aby se mohou být uloženy a dotazovat pomocí Azure Cosmos DB bez jakýchkoli specializovaných nástrojů nebo knihovny. Sady SDK Azure Cosmos DB zadejte pomocné třídy a metody, které usnadňují pracovat s prostorovými daty formátu. 
+Azure Cosmos DB podporuje indexování a dotazování na data bodu geoprostorové, která je reprezentována pomocí [specifikaci GeoJSON](https://tools.ietf.org/html/rfc7946). GeoJSON datové struktury jsou vždycky platné objekty JSON, tak můžete ukládat a dotazovat pomocí služby Azure Cosmos DB bez jakékoli specializované nástroje a knihovny. Azure Cosmos DB SDK poskytuje pomocné třídy a metody, které usnadňují práci s prostorovými daty formátu. 
 
 ### <a name="points-linestrings-and-polygons"></a>Body, LineStrings a mnohoúhelníky
-A **bodu** označuje jeden pozice v prostoru. V datech geoprostorové představuje bod přesné umístění, které by mohly být adresu supermarketu úložiště, celoobrazovkovém režimu, automobilu nebo města.  Bod je reprezentována v páru GeoJSON (a Azure Cosmos DB) pomocí jeho souřadnice nebo zeměpisné šířky a délky. Tady je příklad JSON pro bod.
+A **bodu** označuje jedna pozice v prostoru. V Geoprostorová data představuje bod přesné umístění, které by mohly být adresu blízkým úložiště, jako veřejný terminál, automobilu nebo město.  Bod je vyjádřena v páru GeoJSON (a Azure Cosmos DB) pomocí jeho souřadnice nebo zeměpisné šířky a délky. Tady je příklad JSON pro bod.
 
-**Body v Azure Cosmos DB**
+**Body ve službě Azure Cosmos DB**
 
 ```json
 {
@@ -45,15 +45,15 @@ A **bodu** označuje jeden pozice v prostoru. V datech geoprostorové představu
 ```
 
 > [!NOTE]
-> Specifikace GeoJSON určuje zeměpisnou délku první a zeměpisnou šířku druhý. Podobně jako v ostatních aplikacích mapování zeměpisné šířky a délky jsou úhly a uvádí stupňů. Hodnoty zeměpisné délky se měří od základního poledníku a jsou v rozmezí od-180 stupňů a 180.0 stupňů a hodnoty zeměpisné šířky se měří od rovníku a jsou mezi-90.0 stupňů a 90.0 stupňů. 
+> Specifikaci GeoJSON určuje zeměpisnou délku prvním šířku a délku druhé. Stejně jako v ostatních aplikacích mapování zeměpisné šířky a délky se jedná o úhly a reprezentovat z hlediska stupňů. Zeměpisná délka hodnoty se měří z poledníku, který a jsou v rozmezí od-180 stupňů a 180.0 stupňů, a hodnoty zeměpisné šířky se měří od rovníku spadají do rozsahu-90.0 stupňů a 90.0 stupňů. 
 > 
-> Azure Cosmos DB interpretuje souřadnice reprezentovaný za WGS 84 referenčního systému. Níže najdete další podrobnosti o souřadnic referenčních systémů.
+> Azure Cosmos DB interpretuje souřadnice reprezentovaný za WGS 84 referenčního systému. Níže naleznete další podrobnosti o souřadnic referenčních systémů.
 > 
 > 
 
-To může být vložen do dokument Azure Cosmos DB, jak je znázorněno v tomto příkladu obsahující data o umístění profilu uživatele:
+To může být vložen do dokumentu služby Azure Cosmos DB, jak je znázorněno v tomto příkladu profilu uživatele, který obsahuje data o poloze:
 
-**Použít profil s umístěním, které jsou uloženy v databázi Cosmos Azure**
+**Použít profil s umístěním uložené ve službě Azure Cosmos DB**
 
 ```json
 {
@@ -68,7 +68,7 @@ To může být vložen do dokument Azure Cosmos DB, jak je znázorněno v tomto 
 }
 ```
 
-Kromě bodů GeoJSON také podporuje LineStrings a mnohoúhelníky. **LineStrings** představují řadu dva nebo víc bodů v prostoru i segmenty čáry, která se připojují, je. V datech geoprostorové LineStrings běžně se používají k reprezentaci dálnice nebo řeky. A **mnohoúhelníku** je hranice připojené body, která tvoří uzavřené LineString. Mnohoúhelníky se běžně používají k vyjádření přirozené vytváření jako jezera nebo politickou oblasti jurisdikce jako města a stavy. Tady je příklad mnohoúhelníku v Azure Cosmos DB. 
+Kromě body také podporuje GeoJSON LineStrings a mnohoúhelníku. **LineStrings** reprezentaci řady dva nebo víc bodů v prostoru a segmenty čáry, které je propojují. V Geoprostorová data jsou LineStrings běžně používaných ke znázornění dálnice nebo řek. A **mnohoúhelníku** je hranice připojené body, která tvoří uzavřené LineString. Mnohoúhelníky se běžně používá k reprezentování fyzických struktur jako jezera nebo politickou jurisdikce jako měst a států. Tady je příklad mnohoúhelníku ve službě Azure Cosmos DB. 
 
 **Mnohoúhelníky v GeoJSON**
 
@@ -86,23 +86,23 @@ Kromě bodů GeoJSON také podporuje LineStrings a mnohoúhelníky. **LineString
 ```
 
 > [!NOTE]
-> Specifikace GeoJSON vyžaduje, aby pro platný mnohoúhelníky, poslední souřadnic pár zadat stejný jako první, chcete-li vytvořit uzavřený obrazec.
+> Specifikaci GeoJSON vyžaduje, že pro platné mnohoúhelníky poslední souřadnic pár poskytuje by měl být stejný jako první, chcete-li vytvořit zavřeného tvaru.
 > 
-> Je třeba zadat body v rámci mnohoúhelníku v pořadí proti směru hodinových ručiček. Mnohoúhelníku zadaný v po směru hodinových ručiček pořadí představuje inverzní oblasti v něm.
+> Body v rámci mnohoúhelníku musí zadat v pořadí proti směru hodinových ručiček. Mnohoúhelník zadat v pořadí po směru hodinových ručiček představuje inverzní oblasti v rámci něj.
 > 
 > 
 
-Kromě Point, LineString a mnohoúhelníku GeoJSON také určuje vyjádření pro způsob seskupení více Geoprostorové umístění a také jak přidružit informace o zeměpisné poloze jako libovolné vlastnosti **funkce**. Vzhledem k tomu, že tyto objekty jsou platný kód JSON, všechny jde uloženy a zpracovány v Azure Cosmos DB. Ale Azure Cosmos DB podporuje pouze automatické indexování bodů.
+Kromě Point, LineString a mnohoúhelník GeoJSON také určuje vyjádření způsob seskupení více míst geoprostorové, jakož i jak přidružit informace o zeměpisné poloze jako libovolné vlastnosti **funkce**. Protože tyto objekty jsou platný kód JSON, se mohou všechny ukládat a zpracovávat ve službě Azure Cosmos DB. Ale služby Azure Cosmos DB podporuje pouze automatického indexování body.
 
-### <a name="coordinate-reference-systems"></a>Koordinaci referenčních systémů
-Vzhledem k tomu, že tvar zemském povrchu je nestandardní, jsou reprezentovány souřadnice geoprostorové data v mnoha systémy souřadnic odkaz (CRS), každou s vlastní referenční rámce a měrné jednotky. Například "National mřížky z Británie" je referenční systém je přesný pro Velkou Británii, ale ne mimo něj. 
+### <a name="coordinate-reference-systems"></a>Souřadnice referenčních systémů
+Protože je nestandardní tvar všech koutech světa, souřadnice Geoprostorová data jsou reprezentovány v řadě systémů souřadnic odkaz (CRS), každá má své vlastní referenčním snímků a měrné jednotky. Například "National mřížky z Británie" je referenční systém je přesné pro Spojené království, ale ne mimo něj. 
 
-Nejoblíbenější řádku používá dnes je systém geodetické World [WGS 84](http://earth-info.nga.mil/GandG/wgs84/). GPS zařízení a velký počet mapování služby včetně mapy Google a rozhraní API map Bing pomocí WGS 84. Azure Cosmos DB podporuje indexování a dotazování dat geoprostorové rezervační WGS 84 systém pouze. 
+Nejoblíbenější CRS používá dnes je systém geodetické World [WGS 84](http://earth-info.nga.mil/GandG/wgs84/). GPS zařízení a mnoho služeb mapování, včetně mapy Google a rozhraní API map Bing použijte WGS 84. Azure Cosmos DB podporuje indexování a dotazování prostřednictvím CRS WGS 84 pouze. 
 
-## <a name="creating-documents-with-spatial-data"></a>Vytváření dokumentů s prostorovými daty
-Když vytvoříte dokumenty, které obsahují GeoJSON hodnoty, budou se automaticky indexované prostorový index podle zásady indexování kolekce. Pokud pracujete se sadou Azure SDK DB Cosmos v jazyce dynamicky zadávaných jako Pythonu nebo Node.js, musíte vytvořit platný GeoJSON.
+## <a name="creating-documents-with-spatial-data"></a>Vytváření dokumentů s prostorovými daty formátu
+Při vytváření dokumentů, které obsahují hodnoty GeoJSON se automaticky indexují se prostorový index podle zásady indexování kontejneru. Pokud pracujete s využitím Azure Cosmos DB SDK v dynamicky psaný jazyk, jako je Python nebo Node.js, je nutné vytvořit platný GeoJSON.
 
-**Vytvořte dokument s daty geoprostorové v Node.js**
+**Vytvoření dokumentu pomocí Geoprostorová data v Node.js**
 
 ```json
 var userProfileDocument = {
@@ -118,9 +118,9 @@ client.createDocument(`dbs/${databaseName}/colls/${collectionName}`, userProfile
 });
 ```
 
-Při práci s rozhraními API SQL, můžete použít `Point` a `Polygon` tříd v rámci `Microsoft.Azure.Documents.Spatial` obor názvů pro vložení informace o umístění v rámci vašich objektů aplikace. Tyto třídy zjednodušit serializace a deserializace prostorových dat do GeoJSON.
+Pokud pracujete s rozhraním SQL API, můžete použít `Point` a `Polygon` třídy v rámci `Microsoft.Azure.Documents.Spatial` obor názvů vložit informace o umístění v rámci vaší aplikace objekty. Tyto třídy pomáhají zjednodušit serializace a deserializace prostorových dat do GeoJSON.
 
-**Vytvořte dokument s daty geoprostorové v rozhraní .NET**
+**Vytvoření dokumentu pomocí Geoprostorová data v .NET**
 
 ```json
 using Microsoft.Azure.Documents.Spatial;
@@ -145,13 +145,13 @@ await client.CreateDocumentAsync(
     });
 ```
 
-Pokud nemáte informace o zeměpisné šířky a délky, ale název umístění jako města nebo země nebo fyzické adresy, můžete vyhledat skutečné souřadnice pomocí služeb určování zeměpisných souřadnic jako služby REST Bing Maps. Další informace o určování zeměpisných souřadnic mapy Bing [zde](https://msdn.microsoft.com/library/ff701713.aspx).
+Pokud není k dispozici informace o zeměpisné šířce a délce, ale název umístění jako město nebo okres nebo fyzické adresy, můžete vyhledat skutečné souřadnice pomocí geokódování službě, jako je REST služby Bing Maps. Další informace o geografické kódování služby mapy Bing [tady](https://msdn.microsoft.com/library/ff701713.aspx).
 
-## <a name="querying-spatial-types"></a>Dotazování prostorové typy
-Teď, když bylo podívejte se na tom, jak vkládání dat geoprostorové, Podívejme se na postup dotazování tato data pomocí Azure DB Cosmos pomocí SQL a LINQ.
+## <a name="querying-spatial-types"></a>Prostorové typy dotazování
+Teď, když jsme měli podívat, jak vložit Geoprostorová data, Pojďme se podívat, jak zadávat dotazy na tato data pomocí služby Azure Cosmos DB pomocí jazyka SQL a LINQ.
 
 ### <a name="spatial-sql-built-in-functions"></a>Prostorové integrované funkce SQL
-Azure Cosmos DB podporuje následující předdefinované funkce otevřete geoprostorové Consortium (OGC) pro geoprostorové dotazování. Další podrobnosti o kompletní sadu integrovaných funkcí v jazyce SQL najdete v tématu [dotazu Azure Cosmos DB](sql-api-sql-query.md).
+Azure Cosmos DB podporuje následující předdefinované funkce Otevřít geoprostorové W3c (OGC) pro geoprostorové dotazování. Další podrobnosti o kompletní sadu integrovaných funkcí v jazyce SQL najdete v tématu [dotazů Azure Cosmos DB](sql-api-sql-query.md).
 
 <table>
 <tr>
@@ -160,27 +160,27 @@ Azure Cosmos DB podporuje následující předdefinované funkce otevřete geopr
 </tr>
 <tr>
   <td>ST_DISTANCE (spatial_expr, spatial_expr)</td>
-  <td>Vrací vzdálenost mezi dvěma GeoJSON bodu, mnohoúhelníku nebo LineString výrazy.</td>
+  <td>Vrací vzdálenost mezi dvěma GeoJSON bodu mnohoúhelníku či LineString výrazy.</td>
 </tr>
 <tr>
   <td>ST_WITHIN (spatial_expr, spatial_expr)</td>
-  <td>Vrací výraz logická hodnota určující, zda je první objekt GeoJSON (bod, mnohoúhelníku nebo LineString) je v rámci druhý objekt GeoJSON (bod, mnohoúhelníku nebo LineString).</td>
+  <td>Vrací výraz Boolean určující, zda je první objekt GeoJSON (bodu, mnohoúhelník nebo LineString) v rámci druhého objektu GeoJSON (bodu, mnohoúhelník nebo LineString).</td>
 </tr>
 <tr>
   <td>ST_INTERSECTS (spatial_expr, spatial_expr)</td>
-  <td>Vrátí hodnotu označující, zda dva zadané GeoJSON objekty (bod, mnohoúhelníku nebo LineString) intersect logický výraz.</td>
+  <td>Vrátí hodnotu určující, zda dvě zadané GeoJSON objekty (bodu, mnohoúhelník nebo LineString) intersect logický výraz.</td>
 </tr>
 <tr>
   <td>ST_ISVALID</td>
-  <td>Vrátí logickou hodnotu udávající, zda je zadaný výraz GeoJSON bodu, mnohoúhelníku nebo LineString platný.</td>
+  <td>Vrátí logickou hodnotu označující, zda je zadaný výraz GeoJSON bodu mnohoúhelníku či LineString platný.</td>
 </tr>
 <tr>
   <td>ST_ISVALIDDETAILED</td>
-  <td>Vrátí hodnotu hodnotu JSON obsahující logickou hodnotu, pokud zadaný výraz GeoJSON bodu, mnohoúhelníku nebo LineString je platný a pokud neplatný, dále z důvodu jako hodnotu řetězce.</td>
+  <td>Vrátí hodnotu JSON obsahující logická hodnota, pokud zadaný výraz GeoJSON bodu mnohoúhelníku či LineString je platný a pokud není platný, kromě důvod jako hodnotu řetězce.</td>
 </tr>
 </table>
 
-Prostorové funkcí lze provádět dotazy blízkosti proti prostorová data. Tady je příklad dotaz, který vrátí všechny rodiny dokumenty, které jsou v rámci 30 km v zadaném umístění pomocí předdefinované funkci ST_DISTANCE. 
+Prostorové funkce lze použít k provádění dotazů blízkosti prostorová data. Například tady je dotaz, který vrátí všechny rodiny dokumenty, které jsou v rámci 30 km pomocí integrované funkce ST_DISTANCE zadaného umístění. 
 
 **Dotaz**
 
@@ -194,11 +194,11 @@ Prostorové funkcí lze provádět dotazy blízkosti proti prostorová data. Tad
       "id": "WakefieldFamily"
     }]
 
-Pokud zahrnete prostorových indexování v zásady indexování, pak "vzdálenost dotazy" se zpracuje efektivně prostřednictvím index. Další informace o prostorových indexování najdete v části níže. Pokud nemáte prostorový index pro zadané cesty, stále můžete provádět prostorových dotazů zadáním `x-ms-documentdb-query-enable-scan` hlavička požadavku s nastavenou hodnotu "true". V rozhraní .NET, to lze provést pomocí předání nepovinný **FeedOptions** argument pro dotazy s [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) nastaven na hodnotu true. 
+Pokud zahrnete prostorového indexování v zásady indexování, pak "vzdálenost dotazy" bude obsluhovat efektivně pomocí indexu. Další podrobnosti o prostorového indexování najdete v následující části. Pokud nemáte prostorový index pro zadané cesty, může stále zlepšovat prostorových dotazů tak, že zadáte `x-ms-documentdb-query-enable-scan` hlavičce žádosti s nastavenou hodnotu "true". V rozhraní .NET, to můžete udělat tak volitelného **FeedOptions** argument dotazů s [EnableScanInQuery](https://msdn.microsoft.com/library/microsoft.azure.documents.client.feedoptions.enablescaninquery.aspx#P:Microsoft.Azure.Documents.Client.FeedOptions.EnableScanInQuery) nastavenou na hodnotu true. 
 
-ST_WITHIN slouží ke kontrole, pokud bod leží uvnitř mnohoúhelníku. Mnohoúhelníky se běžně používají k vyjádření hranice jako PSČ, hranice stavu nebo přírodní vytváření. Znovu Pokud zahrnete prostorových indexování v zásady indexování, pak "v" dotazy se zpracuje efektivně prostřednictvím index. 
+ST_WITHIN slouží ke kontrole, pokud bod leží uvnitř mnohoúhelníku. Mnohoúhelníky se běžně používá k reprezentování hranice jako PSČ, hranice stavu nebo fyzických struktur. Znovu zadáte-li prostorového indexování v zásady indexování, pak "v" dotazy bude obsluhovat efektivně pomocí indexu. 
 
-Argumenty mnohoúhelníku v ST_WITHIN může obsahovat pouze jedno zazvonění, tedy polygonů nesmí obsahovat mezery v nich. 
+Argumenty mnohoúhelníku ve ST_WITHIN může obsahovat jenom jeden okruh, to znamená, mnohoúhelníky nesmí obsahovat otvory v nich. 
 
 **Dotaz**
 
@@ -216,11 +216,11 @@ Argumenty mnohoúhelníku v ST_WITHIN může obsahovat pouze jedno zazvonění, 
     }]
 
 > [!NOTE]
-> Podobná jak neodpovídající pracovní typy v Azure Cosmos DB dotazu, pokud hodnota umístění v zadána buď argument je chybný nebo není platný, pak je vyhodnocen jako **nedefinované** a vyhodnotí dokumentu, který má být přeskočeno z výsledků dotazu. Pokud dotaz vrátí žádné výsledky, spusťte ST_ISVALIDDETAILED k ladění proč prostorový typ je neplatný.     
+> Podobně jako jak neodpovídající typy práce ve službě Azure Cosmos DB dotazu, pokud je hodnota umístění zadaná v buď argumentu je chybný nebo není platný, pak je vyhodnocen jako **nedefinované** a vyhodnocené dokumentu přeskočit z výsledků dotazu. Pokud váš dotaz nebyly vráceny žádné výsledky, ST_ISVALIDDETAILED pro spuštění ladění důvod, proč prostorových typ je neplatný.     
 > 
 > 
 
-Azure Cosmos DB také podporuje provádění inverzní dotazy, tedy můžete indexu mnohoúhelníky nebo řádků v databázi Cosmos Azure a pak dotazu pro oblasti, které obsahují zadaný bod. Tento vzor se obvykle používá v logistiky k identifikaci, například když vůz vstoupí do nebo opustí určené oblasti. 
+Azure Cosmos DB podporuje také provádí inverzní dotazy, to znamená, můžete indexování mnohoúhelníky nebo řádky ve službě Azure Cosmos DB a pak dotazování v oblastech, které obsahují zadaný bod. Tento model se běžně používá v logistiky k identifikaci, třeba při nákladní vozidlo zadá nebo ji opustí určená oblast. 
 
 **Dotaz**
 
@@ -239,9 +239,9 @@ Azure Cosmos DB také podporuje provádění inverzní dotazy, tedy můžete ind
       }
     }]
 
-ST_ISVALID a ST_ISVALIDDETAILED slouží ke kontrole, jestli je objekt prostorových platný. Například následující dotaz kontroluje platnost bod s out hodnoty zeměpisné šířky rozsah (-132.8). ST_ISVALID vrací pouze logickou hodnotu, a ST_ISVALIDDETAILED vrátí řetězec obsahující důvod, proč má se za neplatný a logická hodnota.
+ST_ISVALID a ST_ISVALIDDETAILED umožňuje zkontrolujte, jestli je platný prostorových objektů. Například následující dotaz ověří platnost bod mimo rozsah hodnoty zeměpisné šířky (-132.8). ST_ISVALID vrátí jenom logickou hodnotu a ST_ISVALIDDETAILED vrátí logickou hodnotu a řetězec obsahující důvod, proč bude považován za neplatný.
 
-** Dotaz **
+** Dotazování **
 
     SELECT ST_ISVALID({ "type": "Point", "coordinates": [31.9, -132.8] })
 
@@ -251,7 +251,7 @@ ST_ISVALID a ST_ISVALIDDETAILED slouží ke kontrole, jestli je objekt prostorov
       "$1": false
     }]
 
-Tyto funkce lze také ověřit mnohoúhelníky. Například tady používáme ST_ISVALIDDETAILED ověření mnohoúhelníku, který není uzavřený. 
+Tyto funkce lze také ověřit mnohoúhelníku. Například tady používáme ST_ISVALIDDETAILED ověření mnohoúhelníku, která není uzavřená. 
 
 **Dotaz**
 
@@ -268,12 +268,12 @@ Tyto funkce lze také ověřit mnohoúhelníky. Například tady používáme ST
           }
     }]
 
-### <a name="linq-querying-in-the-net-sdk"></a>LINQ dotazování v .NET SDK
-.NET SDK služby SQL také poskytovatelé zóny se zakázaným inzerováním metody `Distance()` a `Within()` pro použití v rámci LINQ – výrazy. Zprostředkovatel SQL LINQ znamená, že je tato metoda volání ekvivalentní integrovaná funkce volání SQL (ST_DISTANCE a ST_WITHIN v uvedeném pořadí). 
+### <a name="linq-querying-in-the-net-sdk"></a>LINQ dotazování v sadě .NET SDK
+SQL SDK pro .NET také poskytovatelé zástupných procedur metody `Distance()` a `Within()` pro použití v rámci LINQ – výrazy. Tato metoda převádí zprostředkovatele SQL LINQ volání ekvivalentní předdefinované funkce volání SQL (ST_DISTANCE a ST_WITHIN v uvedeném pořadí). 
 
-Tady je příklad dotazu LINQ, který najde všechny dokumenty v kolekci Azure Cosmos DB, jehož hodnota "umístění" je v rámci okruhu 30 km zadaného bodu pomocí LINQ.
+Tady je příklad dotazu LINQ, který najde všechny dokumenty v kolekci Azure Cosmos DB, jehož hodnota "umístění" je v rámci okruhu 30 km zadaného bodu pomocí jazyka LINQ.
 
-**Dotaz LINQ pro vzdálenost**
+**Dotaz LINQ vzdálenosti**
 
     foreach (UserProfile user in client.CreateDocumentQuery<UserProfile>(UriFactory.CreateDocumentCollectionUri("db", "profiles"))
         .Where(u => u.ProfileType == "Public" && a.Location.Distance(new Point(32.33, -4.66)) < 30000))
@@ -281,9 +281,9 @@ Tady je příklad dotazu LINQ, který najde všechny dokumenty v kolekci Azure C
         Console.WriteLine("\t" + user);
     }
 
-Podobně je zde dotazu pro vyhledání všech dokumentů, jejichž "umístění" je v rámci zadaného pole nebo mnohoúhelníku. 
+Podobně tady je dotaz pro vyhledání všech dokumentů, jejichž "umístění" je v rámci zadaného pole/mnohoúhelníku. 
 
-**LINQ dotazu v rámci**
+**Dotazy LINQ pro v rámci**
 
     Polygon rectangularArea = new Polygon(
         new[]
@@ -304,23 +304,23 @@ Podobně je zde dotazu pro vyhledání všech dokumentů, jejichž "umístění"
     }
 
 
-Teď, když bylo podívejte se na postup dotazování dokumentů pomocí LINQ a SQL, Podívejme se na tom, jak nakonfigurovat databázi Cosmos Azure pro prostorových indexování.
+Teď, když jsme měli podívat, jak zadávat dotazy na dokumenty pomocí LINQ a SQL, Pojďme se podívat, jak nakonfigurovat službu Azure Cosmos DB pro prostorového indexování.
 
 ## <a name="indexing"></a>Indexování
-Jsme popsané v [schématu bez ohledu na indexování s Azure Cosmos DB](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) dokumentu, jsme určený databázový stroj databázi Azure Cosmos jako skutečně nezávislá na schéma a poskytovat prvotřídní podporu pro formát JSON. Databázový stroj zápisu optimalizované Azure Cosmos databáze nativně rozumí prostorových dat (body, mnohoúhelníků a čar), které jsou v GeoJSON standard.
+Jak jsme je popsáno v [schématu nezávislé indexování pomocí služby Azure Cosmos DB](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf) papíru, jsme navrhovali databázový stroj služby Azure Cosmos DB bude skutečně nezávislá na schématu a poskytovat prvotřídní podporu pro formát JSON. Databázový stroj optimalizovaný pro zápis služby Azure Cosmos DB nativně rozumí prostorovým datům (body, mnohoúhelníků a čar), které jsou reprezentovány ve standardu GeoJSON.
 
-Stručně řečeno, je geometrie projektovat z geodetické souřadnice na 2D rovinu pak progresivně rozdělené do buňky pomocí **quadtree**. Tyto buněk jsou namapované na 1D na základě umístění buňky v rámci **Hilbertův místo naplnění křivky**, který zachovává polohu bodů. Dále pokud je indexovaný data o umístění, prochází skrz tento proces se označuje jako **teselace**, to znamená, že se všechny buněk, které intersect umístění identifikovat a uložené jako klíče v Azure Cosmos DB indexu. V době dotazů argumenty jako body a mnohoúhelníky jsou také teselace sestavy k extrakci oblasti relevantní buněk ID a potom použít k načtení dat z indexu.
+Řečeno v kostce, je geometrii plánovaných z geodetické souřadnice na plochu 2D pak postupně rozdělit do buňky **quadtree**. Tyto buňky jsou mapovány na 1D, v závislosti na umístění v rámci buňky **Hilbertův místo naplnění křivky**, která zachovává lokality bodů. Kromě toho při indexování umístění dat prochází přes tento proces se označuje jako **teselace**, to znamená všechny buňky, které intersect umístění identifikovaná a uloženy jako klíče v indexu služby Azure Cosmos DB. V době zpracování dotazu argumenty, jako je bodů a mnohoúhelníků jsou také teselace sestavy extrahovat ID oblasti relevantní buněk a potom se používá k načtení dat z indexu.
 
-Pokud zadáte zásady indexování, zahrnující prostorový index pro / * (všechny cesty), pak všechny body nalezené v rámci kolekce jsou indexované pro efektivní prostorových dotazů (ST_WITHIN a ST_DISTANCE). Prostorové indexy nemáte hodnotu přesnost a vždy použít výchozí hodnotu přesnost.
+Pokud zadáte zásady indexování, který obsahuje prostorový index pro / * (všechny cesty), pak všechny body nalezené v rámci kolekce jsou indexována pro efektivní prostorových dotazů (ST_WITHIN a ST_DISTANCE). Prostorové indexy nemáte hodnota přesnosti a vždy použijte výchozí hodnotu přesnosti.
 
 > [!NOTE]
-> Azure Cosmos DB podporuje automatické indexování bodů, mnohoúhelníky a LineStrings
+> Azure Cosmos DB podporuje automatické indexování LineStrings, bodů a mnohoúhelníků
 > 
 > 
 
-Následující fragment kódu JSON zobrazí zásady indexování s prostorových indexování, který je povolen, kdykoli GeoJSON v rámci dokumenty nalezen prostorových dotazování indexu. Chcete-li změnit zásady indexování pomocí portálu Azure, můžete zadat následující JSON pro zásady indexování povolit prostorových indexování do kolekce.
+Následující fragment kódu JSON ukazuje zásady indexování s prostorového indexování povoleno, to znamená, čárky GeoJSON najdete v dokumentech pro dotazování na prostorový index. Pokud chcete upravit zásady indexování pomocí webu Azure portal, můžete zadat následující kód JSON pro zásady indexování Povolit prostorové indexování do kolekce.
 
-**Kolekce JSON zásady indexování s Spatial povoleno pro body a mnohoúhelníky**
+**Kolekce JSON zásady indexování s Spatial povolena pro bodů a mnohoúhelníků**
 
     {
        "automatic":true,
@@ -354,17 +354,17 @@ Následující fragment kódu JSON zobrazí zásady indexování s prostorových
        ]
     }
 
-Zde je fragment kódu v rozhraní .NET, který ukazuje, jak můžete vytvořit kolekci s prostorových indexování zapnuta pro všechny cesty obsahující body. 
+Zde je fragment kódu v .NET, která ukazuje, jak vytvořit kolekci s zapnuté pro všechny cesty obsahující body prostorového indexování. 
 
-**Vytvořte kolekci s prostorových indexování**
+**Vytvořte kolekci s prostorového indexování**
 
     DocumentCollection spatialData = new DocumentCollection()
     spatialData.IndexingPolicy = new IndexingPolicy(new SpatialIndex(DataType.Point)); //override to turn spatial on by default
     collection = await client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("db"), spatialData);
 
-A tady je, jak můžete upravit existující kolekci využít prostorových indexování přes všechny body, které jsou uloženy v rámci dokumenty.
+A tady je, jak můžete upravit existující kolekci výhod prostorového indexování přes všechny body, které jsou uloženy v dokumentech.
 
-**Upravit existující kolekci s prostorových indexování**
+**Upravit existující kolekci s prostorového indexování**
 
     Console.WriteLine("Updating collection with spatial indexing enabled in indexing policy...");
     collection.IndexingPolicy = new IndexingPolicy(new SpatialIndex(DataType.Point));
@@ -381,17 +381,17 @@ A tady je, jak můžete upravit existující kolekci využít prostorových inde
     }
 
 > [!NOTE]
-> Pokud umístění GeoJSON hodnotu v tomto dokumentu je chybný nebo není platný, pak jej nebude získat indexovaný prostorových dotazování. Můžete ověřit pomocí ST_ISVALID a ST_ISVALIDDETAILED hodnoty umístění.
+> Pokud umístění hodnota GeoJSON v rámci dokumentu je chybný nebo není platný, pak ji nebude indexování pro prostorová dotazování. Můžete ověřit pomocí ST_ISVALID a ST_ISVALIDDETAILED hodnoty umístění.
 > 
-> Pokud svou definici. kolekce obsahuje klíč oddílu, není hlášena indexování průběh transformace. 
+> Pokud vaše definice kolekce obsahuje klíč oddílu, není hlášena ve indexování průběh transformace. 
 > 
 > 
 
 ## <a name="next-steps"></a>Další postup
-Teď, když jste se naučili jak začít pracovat s podporou geoprostorové v Azure Cosmos DB, dále můžete:
+Teď, když jste se naučili, jak začít pracovat s podporuje geoprostorové funkce ve službě Azure Cosmos DB, dále můžete:
 
-* Psaní s [ukázky kódu .NET geoprostorové na Githubu](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
-* Získat rukou na s geoprostorové dotazování na [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial)
-* Další informace o [Azure Cosmos DB dotazu](sql-api-sql-query.md)
-* Další informace o [Azure Cosmos DB indexování zásady](indexing-policies.md)
+* Pusťte se do programování se [geoprostorové .NET ukázky kódu na Githubu](https://github.com/Azure/azure-documentdb-dotnet/blob/fcf23d134fc5019397dcf7ab97d8d6456cd94820/samples/code-samples/Geospatial/Program.cs)
+* Vyzkoušejte v praxi s geoprostorové dotazování na [Azure Cosmos DB Query Playground](http://www.documentdb.com/sql/demo#geospatial)
+* Další informace o [dotazu služby Azure Cosmos DB](sql-api-sql-query.md)
+* Další informace o [zásady indexování Azure Cosmos DB](indexing-policies.md)
 

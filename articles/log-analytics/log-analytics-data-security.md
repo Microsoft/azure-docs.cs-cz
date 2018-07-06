@@ -1,6 +1,6 @@
 ---
-title: Protokolu zabezpečení dat Analytics | Microsoft Docs
-description: Další informace o tom, jak analýzy protokolů chrání vaše osobní údaje a zabezpečuje data.
+title: Protokolovat analýzy dat zabezpečení | Dokumentace Microsoftu
+description: Další informace o tom, jak Log Analytics chrání vaše osobní údaje a chrání vaše data.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -12,160 +12,159 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/16/2018
+ms.date: 07/05/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 7596428b4ed067bf53f3b295a1682ed372f8d472
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: df4c60be8a29ab397424e9e5f9de7050f64d87c2
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131440"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859768"
 ---
-# <a name="log-analytics-data-security"></a>Protokolu zabezpečení analýzy dat
-Tento dokument je určený k poskytování Azure Log Analytics konkrétní informace, které doplňují informace na [Centrum zabezpečení Azure](../security/security-microsoft-trust-center.md).  
+# <a name="log-analytics-data-security"></a>Zabezpečení dat analýzy protokolů
+Účelem tohoto dokumentu je poskytnout konkrétní informace o Azure Log Analytics k doplnění informací na [Centrum zabezpečení Azure](../security/security-microsoft-trust-center.md).  
 
-Tento článek vysvětluje, jak data jsou shromažďována, zpracování a zabezpečené analýzy protokolů. Agenti můžete použít pro připojení k webové službě, použít System Center Operations Manager ke shromažďování provozních dat nebo načtení dat z Azure diagnostics pro použití analýzy protokolů. 
+Tento článek vysvětluje, jak shromažďovat, zpracování a zabezpečené službou Log Analytics. Agenty můžete použít pro připojení k webové službě, pomocí System Center Operations Manager ke shromažďování provozních dat nebo načíst data z diagnostiky Azure pro použití službou Log Analytics. 
 
-Službu analýzy protokolů bezpečně spravuje vaše data založená na cloudu pomocí následujících metod:
+Služba Log Analytics spravuje vaše data založené na cloudu bezpečně pomocí následujících metod:
 
 * Oddělení dat
 * Uchovávání dat
 * Fyzické zabezpečení
 * Správa incidentů
 * Dodržování předpisů
-* Certifikace standardy zabezpečení
+* Certifikace standardů zabezpečení
 
-Kontaktujte nás s dotazy, návrhy nebo problémy k libovolnému následující informace, včetně naše zásady zabezpečení v [možnosti Azure podpory](http://azure.microsoft.com/support/options/).
+Kontaktujte nás s dotazy, návrhy nebo potíže některý z následujících informací, včetně naše zásady zabezpečení na straně [možnosti podpory Azure](http://azure.microsoft.com/support/options/).
 
 ## <a name="data-segregation"></a>Oddělení dat
-Po službou analýzy protokolů je konzumována vaše data, se ukládají data logicky samostatné na jednotlivé komponenty v celé službě. Všechna data se označí za pracovního prostoru. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby. Data se ukládají vyhrazené databázi v clusteru úložiště, oblast, kterou jste vybrali.
+Po ingestuje data služby Log Analytics, se ukládají data logicky oddělená pro jednotlivé komponenty v rámci služby. Všechna data jsou označená za jednotlivé pracovní prostory. Toto značení přetrvává v průběhu celého životního cyklu dat a je vyžadováno na každé úrovni služby. Vaše data se ukládají v databázi vyhrazené v clusteru úložiště v oblasti, které jste vybrali.
 
 ## <a name="data-retention"></a>Uchovávání dat
-Indexovaná data vyhledávání protokolu je uložena a zachována podle cenový plán. Další informace najdete v tématu [Log Analytics ceny](https://azure.microsoft.com/pricing/details/log-analytics/).
+Indexovaná data vyhledávání protokolu je uložen a zachována podle cenového plánu. Další informace najdete v tématu [ceny Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/).
 
-Jako součást vaší [předplatné smlouvy](https://azure.microsoft.com/support/legal/subscription-agreement/), společnost Microsoft bude uchovávat data dle podmínek smlouvy.  Při odstranění dat jsme také odstranit účet úložiště Azure, kde se nachází data.  Při odebrání data zákazníků žádné fyzické disky zničena.  
+Jako součást vaší [smlouva o předplatném](https://azure.microsoft.com/support/legal/subscription-agreement/), Microsoft bude uchovávat data za podmínky smlouvy.  Když data se odstraní, jsme také odstranit účet úložiště Azure, kde jsou data uložená.  Při odebrání zákaznická data nejsou zničeny žádné fyzické disky.  
 
-Následující tabulka uvádí některé z dostupných řešení a obsahuje příklady typu shromážděná data.
+V následující tabulce jsou uvedeny některé dostupná řešení a poskytuje příklady typů shromážděná data.
 
 | **Řešení** | **Datové typy** |
 | --- | --- |
-| Kapacitu a výkon |Údaje o výkonu a metadata |
-| Posouzení malwaru |Konfigurační data a metadata |
-| Update Management |Stav metadata a data |
-| Správa protokolů |Uživatelem definované protokoly událostí, protokoly událostí systému Windows nebo protokoly služby IIS |
-| Sledování změn |Inventář softwaru, služba systému Windows a Linux démon metadata a metadata souboru Windows nebo Linuxem |
-| SQL a hodnocení služby Active Directory |Data rozhraní WMI, registru dat, údaje o výkonu a dynamické správy SQL Server zobrazení výsledků |
+| Kapacitu a výkon |Údaje o výkonu a metadat |
+| Update Management |Metadata a stav dat |
+| Správa protokolů |Uživatelem definované protokoly událostí, protokoly událostí Windows a/nebo protokoly IIS |
+| Sledování změn |Inventář softwaru, služby Windows a Linux démon metadat a soubor metadat Windows/Linux |
+| SQL a Active Directory Assessment |Data rozhraní WMI, registru data, údaje o výkonu a dynamické správy SQL Server zobrazení výsledků |
 
 V následující tabulce jsou uvedeny příklady typů dat:
 
 | **Datový typ** | **Pole** |
 | --- | --- |
-| Výstrahy |Výstrahy název, popis výstrahy, BaseManagedEntityId, ID problému, IsMonitorAlert, RuleId, ResolutionState, Priority, závažnosti, kategorie, vlastníka, ResolvedBy, TimeRaised, TimeAdded, změněno, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved RepeatCount TimeResolutionStateLastModified, TimeResolutionStateLastModifiedInDB, |
-| Konfigurace |CustomerID, ID agenta, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
-| Událost |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Poznámka:** při zápisu událostí s vlastními poli v protokolu událostí systému Windows shromažďuje OMS je. |
-| Metadata |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IP adresa, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Adresa, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
-| Výkon |ObjectName, název_čítače, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
+| Výstrahy |Upozornění název, popis výstrahy, BaseManagedEntityId, ID problému, IsMonitorAlert, RuleId, elementu ResolutionState, prioritu, závažnost, kategorie, vlastník, ResolvedBy, TimeRaised, TimeAdded, LastModified, LastModifiedBy, LastModifiedExceptRepeatCount, TimeResolved RepeatCount TimeResolutionStateLastModified TimeResolutionStateLastModifiedInDB, |
+| Konfigurace |ID zákazníka, ID agenta, EntityID, ManagedTypeID, ManagedTypePropertyID, CurrentValue, ChangeDate |
+| Událost |EventId, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, PublisherName, FullNumber, Number, Category, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Poznámka:** při zápisu událostí pomocí vlastních polí v protokolu událostí Windows, Log Analytics shromažďuje je. |
+| Metadata |BaseManagedEntityId, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, IP adresa, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP Adresa, NetbiosDomainName LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, PrincipalName, OffsetInMinuteFromGreenwichTime |
+| Výkon |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
 | Stav |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, BaseManagedEntityId, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fyzické zabezpečení
-Službu analýzy protokolů je spravovat zaměstnanců společnosti Microsoft a všechny aktivity se zaznamenávají a je možné je auditovat. Analýzy protokolů je provozována jako služba Azure a splňuje všechny požadavky na zabezpečení a dodržování předpisů Azure. Podrobnosti o fyzické zabezpečení prostředků Azure lze zobrazit na stránce 18 [Přehled zabezpečení Microsoft Azure](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Pro každý, kdo již nemá odpovědnost za OMS služby, včetně přenosu a ukončení jsou fyzické přístupová práva k zabezpečení oblasti změnit do jednoho pracovního dne. Další informace o globální fyzické infrastruktuře používáme v [Microsoft Datacenters](https://azure.microsoft.com/en-us/global-infrastructure/).
+Služba Log Analytics je spravovaná zaměstnanců společnosti Microsoft a všechny aktivity jsou zaznamenávány a dají auditovat. Log Analytics je provozována jako služba Azure a splňuje všechny požadavky na zabezpečení a dodržování předpisů Azure. Můžete zobrazit podrobnosti o fyzické zabezpečení prostředků Azure na stránce 18 [Přehled zabezpečení služby Microsoft Azure](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf). Fyzické přístupová práva k zabezpečení oblasti se mění v rámci jednoho pracovního dne pro každého, kdo není k dispozici odpovědnost za službu Log Analytics, včetně převodu a ukončení. Informace o globální fyzické infrastruktury, které používáme v [Datacenters Microsoftu](https://azure.microsoft.com/en-us/global-infrastructure/).
 
 ## <a name="incident-management"></a>Správa incidentů
-OMS má proces správy incidentů, které splňovat všechny služby společnosti Microsoft. To Shrneme, jsme:
+Log Analytics má správy incidentů proces, který dodržovat všechny služby společnosti Microsoft. Souhrnně řečeno, jsme:
 
-* Použít sdílené odpovědnost model, kde část zabezpečení odpovědnost patří společnosti Microsoft a část patří k zákazníkovi
-* Spravovat incidenty zabezpečení Azure:
+* Použít sdílenou odpovědnost modelu, kde část zabezpečení odpovědnosti patří společnosti Microsoft a části patří k zákazníkovi
+* Správa incidentů zabezpečení Azure:
   * Spustit šetření při zjištění incidentu
-  * Hodnotit dopad a závažnost incident podle reakcí na incidenty na volání člen týmu. Na základě na důkaz, hodnocení může nebo nemusí mít za následek další eskalaci zabezpečení týmu odpovědi.
-  * Diagnostika incident odborníky zabezpečení odpovědi provede technické nebo forenzního vyšetřování, identifikovat strategie omezení, omezení rizik a alternativní řešení. Pokud týmem zabezpečení dochází k závěru, že data zákazníků může stát vystavené až k jednotlivcům nezákonné nebo neoprávněným, paralelní provádění proces oznámení Incident zákazník zahájí paralelně.  
-  * Stabilizovat a obnovit z incidentu. Reakce na incidenty týmu vytvoří plán obnovení pro zmírnění problém. Krizové členství ve skupině kroky jako je například umístění do karantény ovlivněné systémy může dojít, okamžitě a souběžně s diagnostiku. Způsoby zmírnění rizik delší období může plánované kterých se provádějí až po uplynutí okamžitou riziko.  
-  * Uzavřít incident a provedení po porážce. Reakce na incidenty týmu vytvoří postmortální, který popisuje podrobnosti o incidentu, s úmyslem zkontrolovat, jestli zásady, postupy a procesy, aby se zabránilo opakování události.
-* Upozorněte na bezpečnostní incidenty v oblasti:
-  * Určení oboru dopad odběratelů a pro poskytování kdokoliv, kdo je ovlivněno jako podrobné oznámení o nejdříve
-  * Vytvoření oznámení zajistit, že zákazníkům podrobné dostatek informací, takže můžete provést šetření na jejich end a splňovat žádné závazky, která byla pro své koncové uživatele při zpozdit přílišný proces oznámení.
+  * Posuzujete dopad a závažnost incidentu podle členů týmu volání na reakce na incidenty. Hodnocení založené na důkaz, může nebo nemusí mít za následek další eskalaci bezpečnostní tým odpovědi.
+  * Diagnostika incidentu zabezpečení odpovědi expertů technické a forenzní zkoumání chování, určení strategií pro zadržení, zmírnění a alternativní řešení. Pokud bezpečnostní tým domnívá, že zákaznická data mají vystavení jednotlivec nezákonně nebo neoprávněně, paralelní provádění procesu odběratele oznámení Incident začne paralelně.  
+  * Stabilizujte a obnovit z incidentu. Tým reakce na incidenty vytvoří plán obnovení tak, jak tyto problémy zmírnit. Kroky krize členství ve skupině jako je například umístění do karantény ovlivněné systémy může dojít okamžitě a paralelně při diagnóze. Zmírnění rizik delší období může plánované ke kterým dochází po uplynutí okamžitě riziko.  
+  * Uzavřít incident a chování následné. Tým reakce na incidenty vytvoří následné, které jsou popsány podrobnosti o incidentu s úmyslem, pokud chcete upravit zásady, postupy a procesy, aby se zabránilo opakování události.
+* Upozornění zákazníků na bezpečnostní incidenty v oblasti:
+  * Určení rozsahu ovlivněných zákazníků a každý, kdo to má vliv na jako podrobné oznámení o nejdříve
+  * Vytvořte upozornění poskytnout zákazníkům s podrobné dostatek informací, takže můžete provést šetření na své straně a splňovat žádné závazky, které se provedly pro své koncové uživatele při zpoždění není neoprávněně proces oznámení.
   * Potvrďte a deklarovat incidentu, podle potřeby.
-  * Upozorněte zákazníkům incidentu oznámení bez prodlení nepřiměřený a v souladu s žádné právní či smluvními závazků. Oznámení bezpečnostních incidentů se doručují na jeden nebo více správců zákazníka a to jakýmkoli způsobem, který vybere Microsoft, včetně e-mailem.
-* Chování team připravenosti a školení:
-  * Microsoft pracovníky jsou nutné k dokončení zabezpečení a školení sledování, která pomáhá identifikovat a hlášení problémů možného zabezpečení.  
-  * Operátory práce ve službě Microsoft Azure mají povinnosti školení přidání kolem svůj přístup k citlivé systémy hostování zákaznická data.
-  * Microsoft security odpovědi pracovníky přijímat specializované školení pro své role
+  * Informujte zákazníky se oznámení o incidentu neprodleně způsobit nepřiměřený a v souladu s jakékoli právních nebo smluvních závazků. Upozornění na incidenty zabezpečení jsou doručovány na jeden nebo více správců zákazníka prostřednictvím jakýmkoli způsobem, který vybere Microsoft, včetně e-mailem.
+* Připravenost týmu chování a vzdělávání:
+  * Zaměstnanci Microsoftu nutných k dokončení zabezpečení a povědomí školení, která pomáhá identifikovat a hlášení problémů podezřelý zabezpečení.  
+  * Operátory práci na službě Microsoft Azure mají povinnosti školení přidání obaluje přístup do citlivých systémů, který je hostitelem dat zákazníků.
+  * Zaměstnanci Microsoftu zabezpečení odpovědi přijímat specializovaná školení pro jejich role
 
-Pokud dojde ke ztrátě všech datech zákazníků, upozorníme každého zákazníka a to během jednoho dne. Ale zákazníka došlo ke ztrátě dat. nikdy se službou. 
+Pokud dojde ke ztrátě o všech datech zákazníků, upozorníme za jediný den každého zákazníka. Ale zákazníka nedošlo ke ztrátě dat nikdy se službou. 
 
-Další informace o tom, jak Microsoft odpoví na bezpečnostní incidenty v najdete v tématu [odpověď zabezpečení společnosti Microsoft Azure v cloudu](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
+Další informace o jak Microsoft reaguje na incidenty zabezpečení najdete v tématu [reakce zabezpečení Microsoft Azure v cloudu](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/4/Microsoft%20Azure%20Security%20Response%20in%20the%20cloud.pdf).
 
 ## <a name="compliance"></a>Dodržování předpisů
-Analýzy protokolů softwaru vývoj a služby týmu informace o zabezpečení a zásad správného řízení programu podporuje požadavky na jeho firmy a dodržuje zákonů a nařízení, jak je popsáno v [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) a [ Centrum zabezpečení Microsoft dodržování předpisů](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx). Jak vytváří požadavky na zabezpečení analýzy protokolů, identifikuje ovládací prvky zabezpečení, spravuje a monitoruje rizika jsou také popsány existuje. Ročně, jsme zkontrolujte zásady, standardy, postupy a pokyny.
+Log Analytics software development a služba týmu informace o zabezpečení a zásad správného řízení programu podporuje jeho podnikových požadavků a dodržuje zákony a nařízeními, jak je popsáno v [Microsoft Azure Trust Center](https://azure.microsoft.com/support/trust-center/) a [ Dodržování předpisů Microsoft Trust Center](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx). Jak stanovuje požadavky na zabezpečení Log Analytics, identifikuje kontrolní mechanismy zabezpečení, spravuje a monitoruje rizika jsou také popsány zde. Ročně, jsme revize zásad, standardů, postupy a pokyny.
 
-Každý člen týmu vývoj obdrží formální aplikace bezpečnostního školení. Interně používáme systém správy verzí pro vývoj softwaru. Každý projekt softwaru je chráněn systém správy verzí.
+Každý člen týmu vývoje obdrží školení o zabezpečení formální aplikace. Interně používáme systém správy verzí pro vývoj softwaru. Každý projekt software je chráněn systém správy verzí.
 
-Společnost Microsoft nemá tým zabezpečení a dodržování předpisů, který dohlíží a vyhodnocuje všechny služby ve službě Microsoft. Informace o zabezpečení osob tvoří tým a nejsou přidruženy engineering oddělení, které sama vyvinula analýzy protokolů. Zabezpečení osoby mít vlastní řetězec správy a provedení nezávislé posuzování produktů a služeb k zajištění zabezpečení a dodržování předpisů.
+Microsoft má tým zabezpečení a dodržování předpisů, který dohlíží a vyhodnocuje všechny služby v Microsoftu. Informace o zabezpečení vedoucí pracovníci pověření ochranou tvoří tým a nejsou spojené s technické oddělení, které vyvíjí Log Analytics. Pracovníci zabezpečení mají své vlastní řetězec správy a chování nezávislé hodnocení produktů a služeb k zajištění zabezpečení a dodržování předpisů.
 
-Společnosti Microsoft správní rady je oznámení roční zprávu o všechny programy pro zabezpečení informací společnosti Microsoft.
+Zprávy o všech programy zabezpečení informací v Microsoftu se dostávat oznámení od Microsoftu správní rady.
 
-Tým vývoj a služby softwaru analýzy protokolů aktivně ve spolupráci s týmy Microsoft Legal a dodržování předpisů a dalšími partnery odvětví získat různé certifikáty.
+Týmový vývoj a služby softwaru Log Analytics aktivně pracuje s týmy Microsoft Legal a dodržování předpisů a další oborových partnerů k získání různých certifikace.
 
-## <a name="certifications-and-attestations"></a>Certifikace a atestace podle
+## <a name="certifications-and-attestations"></a>Certifikací a atestací
 Azure Log Analytics splňuje následující požadavky:
 
 * [ISO/IEC 27001](http://www.iso.org/iso/home/standards/management-standards/iso27001.htm)
 * [ISO/IEC 27018:2014](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498)
 * [ISO 22301](https://azure.microsoft.com/blog/iso22301/)
-* [Platebních karet (PCI kompatibilní) Data zabezpečení Standardní (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) Radou standardy PCI zabezpečení.
-* [Typ služby organizace ovládacích prvků (SOC) 1 1 a 1 typ SOC 2](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) kompatibilní
-* [HIPAA a HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) pro společnosti, které mají HIPAA obchodní přidružit smlouvu
-* Společná kritéria technikům Windows
+* [Platebních karet (PCI kompatibilní) Data zabezpečení standardního (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI) podle PCI Security Standards Council.
+* [Ovládací prvky SOC (Service Organization) 1 typu 1 a SOC 1 typ 2](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) předpisy
+* [HIPAA a HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/hipaa) pro společnosti, které mají smlouvy přidružit s HIPAA Business
+* Obecná kritéria Engineering Windows
 * Microsoft Trustworthy Computing
-* Jako služba Azure součásti, které využívá analýzy protokolů splňovat požadavky na Azure dodržování předpisů. Další informace v [dodržování předpisů Center důvěřovat Microsoft](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).
+* Součásti, které používá Log Analytics jako služba Azure, proto zavázala dodržovat požadavky na dodržování předpisů Azure. Další informace na [Microsoft Trust Center dodržování předpisů](https://www.microsoft.com/en-us/trustcenter/compliance/default.aspx).
 
 > [!NOTE]
-> V některých osvědčení služby nebo atestace podle, analýzy protokolů je uveden v části jeho starší název *Statistika provozu*.
+> V některých certifikací a atestací, Log Analytics je uveden v rámci jeho původní název *Operational Insights*.
 >
 >
 
-## <a name="cloud-computing-security-data-flow"></a>Cloud computing tok dat zabezpečení
-Následující diagram znázorňuje Architektura zabezpečení cloud jako toku informací z vaší společnosti a jak jsou zabezpečená, jako je přesune do služby analýzy protokolů, nakonec kontaktu s vámi v portálu Azure nebo klasického portálu OMS. Další informace o jednotlivých kroků následuje diagramu.
+## <a name="cloud-computing-security-data-flow"></a>Cloud computingu tok dat zabezpečení
+Následující diagram znázorňuje architekturu zabezpečení cloudu jako daný tok informací ve vaší společnosti a jak je zabezpečený, jako je přesune do služby Log Analytics, takže v konečném důsledku zjištěných můžete na webu Azure Portal. Další informace o jednotlivých kroků následuje diagramu.
 
-![Obrázek shromažďování dat analýzy protokolů a zabezpečení](./media/log-analytics-data-security/log-analytics-data-security-diagram.png)
+![Obrázek shromažďování dat Log Analytics a zabezpečení](./media/log-analytics-data-security/log-analytics-data-security-diagram.png)
 
-## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. Zaregistrujte si analýzy protokolů a shromažďování dat
-Pro vaši organizaci k odesílání dat k analýze protokolů dokončení konfigurace agenta systému Windows nebo Linux spuštěné na virtuálních počítačích Azure nebo na virtuální nebo fyzické počítače v prostředí nebo ostatní poskytovatele cloudových služeb.  Pokud používáte nástroj Operations Manager, ze skupiny pro správu můžete nakonfigurovat agenta nástroje Operations Manager. Uživatelé (které mohou být můžete, ostatní jednotlivé uživatele nebo skupinu uživatelů) vytvořit jeden nebo více pracovních prostorů analýzy protokolů a zaregistrujte agenty pomocí jedné z těchto účtů:
+## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1. Zaregistrujte si Log Analytics a shromažďování dat
+Pro vaši organizaci k odesílání dat do Log Analytics konfiguraci agenta pro Windows nebo Linux spuštěný na virtuálních počítačích Azure nebo na virtuálních nebo fyzických počítačích ve vašem prostředí nebo jiný poskytovatel cloudu.  Pokud používáte nástroj Operations Manager, ze skupiny pro správu můžete nakonfigurovat agenta nástroje Operations Manager. Uživateli (která by se vám, jiné jednotlivé uživatele nebo skupinu osob) vytvořte jeden nebo více pracovních prostorů Log Analytics a zaregistrujte agenty pomocí jedné z těchto účtů:
 
 * [ID organizace](../active-directory/fundamentals/sign-up-organization.md)
-* [Účet Microsoft - Outlook, Office Live, MSN](https://account.microsoft.com/account)
+* [Účet Microsoft - Outlooku Office Live, MSN](https://account.microsoft.com/account)
 
-Pracovní prostor analýzy protokolů je, kde se data shromažďují, agregován, analyzovat a zobrazovat. Pracovní prostor slouží především jako prostředek k oddílu dat a každý pracovního prostoru není jedinečný. Například můžete chtít mít vaše produkční data spravovaná pomocí jednoho pracovního prostoru a testovací data spravovaná pomocí jiného pracovního prostoru. Pracovní prostory také pomoci správci řídit uživatel přístup k datům. Každém pracovním prostoru může mít víc uživatelských účtů s ním spojená, a všechny uživatelské účty, můžete přístup k více analýzy protokolů pracovních prostorů. Můžete vytvořit na základě datacenter oblasti pracovních prostorů. Každý pracovní prostor se replikují do jiných datových centrech v oblasti, především pro dostupnost služeb analýzy protokolů.
+Pracovní prostor Log Analytics je se shromažďují data, agregují, analyzují a zobrazí. Pracovní prostor se používá především jako prostředek k dělení dat a každý pracovní prostor je jedinečný. Například můžete chtít mít produkční data spravovat pomocí jednoho pracovního prostoru a zkušebních dat spravované s jiným pracovním prostorem. Pracovní prostory také pomoci správce řízení uživatelského přístupu k datům. Každý pracovní prostor může mít více uživatelských účtů, které s ním spojená, a každý uživatelský účet dostanete víc pracovních prostorů Log Analytics. Můžete vytvořit pracovní prostory podle oblast datového centra. Každý pracovní prostor se replikují do jiných datových centrech v oblasti, především pro dostupnost služby Log Analytics.
 
-Skupina pro správu nástroje Operations Manager pro nástroj Operations Manager, naváže připojení se služba analýzy protokolů. Pak je třeba nakonfigurovat, které systémy spravováno agentem ve skupině pro správu jsou povoleny pro shromažďování a odesílání dat do služby. V závislosti na řešení, které jste povolili, jsou data z těchto řešení buď odeslaný přímo serveru pro správu nástroje Operations Manager ke službě Analýza protokolů nebo z důvodu objem shromážděných spravovaný agent systému, dat jsou odesílány přímo z agenta ke službě. Pro systémy není sledovaných nástrojem Operations Manager každý připojuje bezpečně ke službě Analýza protokolů přímo.
+Skupiny pro správu nástroje Operations Manager pro nástroj Operations Manager, naváže připojení se službou Log Analytics. Potom nakonfigurujete, které systémech spravovaných agentem ve skupině pro správu jsou povoleny pro shromažďování a odesílání dat do služby. V závislosti na řešení, které jste povolili, data z těchto řešení jsou buď odesílá přímo ze serveru pro správu Operations Manageru ke službě Log Analytics nebo kvůli objemu data shromážděná agentem řízený systém, odesílají přímo z agenta ke službě. Pro systémy nemonitorováno nástrojem Operations Manager každý spojuje bezpečně ke službě Log Analytics přímo.
 
-Veškerá komunikace mezi systémy připojené a službu analýzy protokolů je zašifrovaná.  Protokol TLS (HTTPS) se používá pro šifrování.  V rámci procesu Microsoft SDL je následovaný zajistit, že je aktuální pomocí nejnovější pokroky v kryptografické protokoly analýzy protokolů.
+Veškerá komunikace mezi systémy připojené a služba Log Analytics je zašifrovaná. Protokol TLS (HTTPS) se používá pro šifrování.  Procesu Microsoft SDL je následovat, ujistěte se, že je aktuální pomocí nejnovější zálohy v kryptografické protokoly Log Analytics.
 
-Každý typ agent shromažďuje data pro analýzu protokolu. Typ dat, která se shromažďují je závisí na typech řešení použít. Zobrazí souhrn shromažďování dat v [řešení přidat analýzy protokolů z Galerie řešení](log-analytics-add-solutions.md). Kromě toho je k dispozici pro většinu řešení podrobnější informace o kolekci. Řešení je sady předdefinovaných zobrazení, protokolu vyhledávací dotazy, pravidla shromažďování dat a zpracování logiky. Analýzy protokolů pro import řešení mohou používat pouze správci. Po importu řešení, se přesune do serverů pro správu nástroje Operations Manager (Pokud se používá) a pro všechny agenty, které jste vybrali. Potom agenty shromažďovat data.
+Každý typ agent shromažďuje data pro Log Analytics. Typ dat, která se shromažďují je závisí na typech řešení použít. Můžete prohlédnout souhrnné informace o shromažďování dat [přidání řešení Log Analytics z Galerie řešení](log-analytics-add-solutions.md). Kromě toho je k dispozici pro většinu řešení podrobnější informace o kolekci. Řešení je sada předdefinovaných zobrazení, vyhledávací dotazy protokolů, pravidla shromažďování dat a zpracování logiky. Pouze správci Log Analytics můžete použít k importu řešení. Po importu řešení se přesune na servery pro správu nástroje Operations Manager (Pokud se používá) a potom na všechny agenty, které jste zvolili. Následně agenty shromažďovat data.
 
 ## <a name="2-send-data-from-agents"></a>2. Odesílání dat z agentů
-Zaregistrujte všechny typy agenta s klíčem registrace a je navázat zabezpečené připojení mezi agentem a analýzy protokolů služby pomocí ověřování pomocí certifikátů a protokol SSL s portem 443. Analýzy protokolů používá tajný úložiště pro vygenerování a udržovat klíče. Privátní klíče otáčejí každých 90 dní a jsou uložené v Azure a spravuje činnosti Azure, kteří podle striktní regulačních a dodržování předpisů.
+Zaregistrujte všechny typy agenta s klíčem registrace a navázat zabezpečené připojení mezi agentem a službou Log Analytics pomocí ověřování pomocí certifikátů a šifrování protokolu SSL s portem 443. Log Analytics používá úložiště tajných kódů pro generování a správy klíčů. Soukromé klíče jsou otočeny každých 90 dní a jsou uloženy v Azure a jsou spravované pomocí operací Azure, kteří striktní postupy zákonné požadavky a dodržování předpisů.
 
-S nástrojem Operations Manager vytvoří skupiny pro správu zaregistrována pracovní prostor analýzy protokolů zabezpečeného připojení HTTPS se serverem pro správu nástroje Operations Manager.
+S nástrojem Operations Manager vytvoří skupiny pro správu zaregistrované s pracovním prostorem Log Analytics zabezpečeného připojení HTTPS pomocí serveru pro správu Operations Manageru.
 
-U systému Windows nebo Linux agentů spuštěných na virtuálních počítačích Azure se použije klíč k úložišti jen pro čtení ke čtení diagnostických událostí do tabulek Azure.  
+Pro agenty Windows nebo Linux spuštěný na Azure virtual machines se používá klíč k úložišti jen pro čtení ke čtení diagnostické události do tabulek Azure.  
 
-S každého agenta generování sestav do skupiny pro správu nástroje Operations Manager, která je integrovaná s analýzy protokolů Pokud nemůže komunikovat se serverem pro správu služby z jakéhokoli důvodu shromážděná data ukládají se místně v dočasné mezipaměti na správu Server.   Se pokusí znovu odeslat data každých 8 minut po dobu dvou hodin.  Pro data, která obchází serveru pro správu a je odeslána přímo k Log Analytics chování je konzistentní s agentem Windows.  
+Pomocí libovolného agenta generování sestav pro skupinu pro správu nástroje Operations Manager, který je integrovaný s Log Analytics Pokud nemůže komunikovat se serverem pro správu služby z jakéhokoli důvodu, shromážděná data ukládají se místně v dočasné mezipaměti na správu Server.   Se pokusí znovu poslat data každých osm minut, další dvě hodiny.  Pro data, která obchází serveru pro správu a je odeslána přímo ke službě Log Analytics chování je konzistentní s agentem Windows.  
 
-Windows nebo data agenta do mezipaměti serveru správy je chráněn úložiště přihlašovacích údajů operačního systému. Pokud služba nemůže zpracovat data po dvou hodin, budou data fronty agentů. Pokud zaplnění fronty, agent začne, vyřazení datové typy, počínaje údaje o výkonu. Limit fronty agenta je klíč registru, můžete upravit, v případě potřeby. Shromážděná data komprimovaná a odešle do služby, obcházení databáze skupiny správy nástroje Operations Manager, nepřidá žádné zatížení na ně. Po odeslání shromážděná data, odebere se z mezipaměti.
+Windows nebo data agenta do mezipaměti serveru správy je chráněný službou úložiště přihlašovacích údajů operačního systému. Pokud služba nemůže zpracovat data za dvě hodiny, fronty agentů data. Pokud se fronta zaplní, agenta spustí vyřadit datové typy, počínaje údaje o výkonu. Limit fronty agenta je klíč registru, můžete upravit, v případě potřeby. Shromážděná data je komprimován a odešle do služby, bez použití nástroje Operations Manager management seskupit databáze, tak nepřidá žádné zatížení k nim. Po odeslání shromážděných dat, odebere se z mezipaměti.
 
-Jak je popsáno výše, data ze serveru pro správu nebo přímo připojené agentů se odešlou přes SSL datová centra služby Microsoft Azure. Volitelně můžete ExpressRoute pro další zabezpečení pro data. ExpressRoute je způsob, jak připojovat přímo k Azure z existující sítě WAN, například více protokol popisku přepínání sítě VPN (MPLS) poskytované poskytovatelem síťové služby. Další informace najdete v tématu [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
+Jak je popsáno výše, data ze serveru pro správu nebo přímo připojených agentů se odesílají prostřednictvím protokolu SSL do Datacenter Microsoft Azure. Volitelně můžete použít ExpressRoute pro zvýšení zabezpečení pro data. ExpressRoute je způsob, jak k Azure připojit přímo ze stávající sítě WAN, jako například více protokol popisek přepínání sítě VPN (MPLS) poskytované poskytovatelem síťové služby. Další informace najdete v tématu [ExpressRoute](https://azure.microsoft.com/services/expressroute/).
 
-## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Službu analýzy protokolů přijímá a zpracovává data
-Službu analýzy protokolů zajišťuje, že příchozích dat z důvěryhodného zdroje pomocí ověřování certifikátů a integrity dat pomocí ověřování Azure. Nezpracované nezpracovaná data se pak uloženy v Centru událostí Azure v oblasti, které se data uloží nakonec v klidovém stavu. Typ dat uložených závisí na typech řešení, které byly naimportovány a používá ke shromažďování dat. Poté analýzy protokolů služby procesy nezpracovaná data a ingestuje do databáze.
+## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Služba Log Analytics přijímá a zpracovává data
+Služba Log Analytics zajišťuje, že příchozí data z důvěryhodného zdroje pomocí ověřování certifikátů a integritu dat s ověřováním Azure. Nezpracované nezpracovaná data se pak ukládá v Centru událostí Azure v oblasti, které nakonec se uloží data v klidovém stavu. Typ dat, která je uložena závisí na typech řešení, které byly naimportovány a používá ke shromažďování dat. Log Analytics pak služby procesy nezpracovaných dat a ingestuje do databáze.
 
-Doba uchování shromážděných dat uložených v databázi, závisí na vybrané cenový plán. Pro *volné* vrstvy, shromážděná data je k dispozici 7 dní. Pro *zaplacenou* vrstvy, shromážděná data 31 dní ve výchozím nastavení je k dispozici, ale můžete rozšířit na 720 dnů. Data se ukládají zašifrovaná přinejmenším v úložišti Azure, šifrovací. Poslední dva týdny dat jsou také uloženy v mezipaměti založená na SSD a tato mezipaměť není aktuálně šifrována.  Plánujeme podporu takové šifrování v novější polovině 2018.  
+Doba uchování shromážděná data uložená v databázi, závisí na vybrané cenového plánu. Pro *Free* vrstvy, shromážděná data se po dobu 7 dní k dispozici. Pro *Paid* úrovni shromažďovat data po dobu 31 dnů ve výchozím nastavení je k dispozici, ale je možné rozšířit na 720 dnů. Data se ukládají v klidovém stavu ve službě Azure storage k zajištění důvěrnosti data zašifrovaná. Poslední dva týdny dat jsou také uloženy v mezipaměti založené na jednotkách SSD a tato mezipaměť není aktuálně zašifrovaný.  Plánujeme podporu šifrování v pozdější polovině roku 2018.  
 
-## <a name="4-use-log-analytics-to-access-the-data"></a>4. Pomocí analýzy protokolů pro přístup k datům
-Pro přístup k pracovní prostor analýzy protokolů se přihlásíte do portálu Azure pomocí účtu organizace nebo účtu Microsoft, kterou jste vytvořili dříve. Všechny přenosy mezi portálem a službou analýzy protokolů se odesílají přes zabezpečený kanál protokolu HTTPS. Při použití portálu, se vygeneruje ID relace na straně klienta uživatele (webový prohlížeč) a data jsou uložena v místní mezipaměti, dokud relace je ukončena. Pokud byla ukončena, mezipaměti je odstranit. Soubory cookie na straně klienta, které neobsahují identifikovatelné osobní údaje, se automaticky neodeberou. Soubory cookie relací jsou označeny HTTPOnly, která jsou zabezpečená. Po předem určené době nečinnosti Azure portálu relace je ukončena.
+## <a name="4-use-log-analytics-to-access-the-data"></a>4. Přístup k datům pomocí Log Analytics
+Pro přístup k pracovním prostoru Log Analytics, přihlášení k webu Azure portal pomocí účtu organizace nebo účtu Microsoft, který jste dřív nastavili. Všechny přenosy mezi portálem a službou Log Analytics se odesílají prostřednictvím zabezpečeného kanálu protokolu HTTPS. Během používání portálu, se vygeneruje ID relace na straně klienta uživatelské (webový prohlížeč) a data se ukládají do místní mezipaměti, dokud nebude ukončena relace. Když byla ukončena, odstraní se mezipaměť. Soubory cookie na straně klienta, které neobsahují identifikovatelné osobní údaje, se automaticky neodeberou. Soubory cookie relací jsou označeny HTTPOnly, která jsou zabezpečená. Po předem určené období nečinnosti je Azure portal relace ukončena.
 
 ## <a name="next-steps"></a>Další postup
-* Postup shromažďování dat pomocí analýzy protokolů pro vaše virtuální počítače Azure následující [virtuálního počítače Azure rychlý Start](log-analytics-quick-collect-azurevm.md).  
+* Zjistěte, jak shromažďovat data s využitím Log Analytics pro vaše virtuální počítače Azure následující [virtuálního počítače Azure quickstart](log-analytics-quick-collect-azurevm.md).  
 
-*  Pokud chcete shromažďovat data z fyzické nebo virtuální počítače Windows nebo Linux ve vašem prostředí, najdete v článku [rychlý start pro počítače se systémem Linux](log-analytics-quick-collect-linux-computer.md) nebo [počítače rychlý start pro Windows](log-analytics-quick-collect-windows-computer.md)
+*  Pokud chcete shromažďovat data z fyzických nebo virtuálních počítačů Windows nebo Linux ve vašem prostředí, najdete v článku [rychlý start pro počítače s Linuxem](log-analytics-quick-collect-linux-computer.md) nebo [počítače rychlý start pro Windows](log-analytics-quick-collect-windows-computer.md)
 

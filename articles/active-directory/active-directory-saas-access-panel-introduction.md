@@ -15,12 +15,12 @@ ms.date: 05/11/18
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bc05ff8c6961cd9389a12ff9c082867eecb79bca
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: eff93b37be2ff770b90518f886bd4b54fa0ca2a1
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449790"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868986"
 ---
 # <a name="what-is-the-access-panel"></a>Co je na přístupovém panelu?
 
@@ -104,6 +104,10 @@ Použití interní firemní adresy URL při vzdálené pomocí rozšíření, po
 2. [Publikování aplikace](https://docs.microsoft.com/en-us/azure/active-directory/application-proxy-publish-azure-portal) a adresa URL, přes Proxy aplikací.
 3. Instalace rozšíření a přihlaste se k němu tak, že vyberete přihlášení začít.
 4. Teď můžete přejít na adresu URL interní společnosti i v průběhu vzdálené.
+
+> [!NOTE]
+> Můžete také vypnout automatické přesměrování na adresy URL společnosti výběrem v hlavní nabídce ozubené kolo nastavení a vyberete **vypnout** pro možnost společnosti interní adresa URL přesměrování.
+
 
 ## <a name="mobile-app-support"></a>Podpora mobilních aplikací
 

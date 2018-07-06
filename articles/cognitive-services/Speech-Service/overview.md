@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: ccdcdeeaf4ac8730be4f9e3ee648dc41c2a02641
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 2c1fce35749dee12caec0bcd15a9eccdf81b8d1d
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345154"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856769"
 ---
 # <a name="what-is-the-speech-service-preview"></a>Co je Speech service (preview)?
 
@@ -60,7 +60,7 @@ Můžete přizpůsobit převod řeči na Text akustických a jazykových modelů
 
 [Převod textu na řeč](text-to-speech.md) (převod textu na ŘEČ), nebo syntézu řeči, rozhraní API převede prostého textu na řeč přirozeného to nezní, doručí do vaší aplikace v zvukový soubor. Více hlasů ve pohlaví nebo zvýraznění, jsou k dispozici pro mnoho podporované jazyky.
 
-Rozhraní API podporuje značky řeči syntézu Markup Language (SSML) umožňující vám zadat přesné fonetická výslovnost problémových slov. SSML může také přímo v textu indikovat řečové charakteristiky (včetně důrazu, rychlosti, hlasitosti, pohlaví a výšky).
+Rozhraní API podporuje [řeči syntézu Markup Language (SSML)](speech-synthesis-markup.md) značky, umožňující vám zadat přesné fonetická výslovnost problémových slov. SSML může také přímo v textu indikovat řečové charakteristiky (včetně důrazu, rychlosti, hlasitosti, pohlaví a výšky).
 
 Tady jsou běžné případy použití pro převod textu na řeč rozhraní API.
 
@@ -68,7 +68,7 @@ Tady jsou běžné případy použití pro převod textu na řeč rozhraní API.
 * Hlasové vás vyzve k zadání automobilu aplikací, jako je navigace
 * Konverzační uživatelská rozhraní společně s rozhraním Speech to Text API
 
-Pokud potřebujete nepodporované dialekt nebo chcete jenom jedinečný hlas pro vaši aplikaci, převod textu na řeč rozhraní API podporuje vlastní hlasové modely.
+Pokud potřebujete nepodporované dialekt nebo chcete jenom jedinečný hlas pro vaši aplikaci, převod textu na řeč rozhraní API podporuje [vlastní hlasové modely](how-to-customize-voice-font.md).
 
 ## <a name="speech-translation"></a>Překlad řeči
 

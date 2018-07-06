@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s UNIFI | Microsoft Docs'
+title: 'Kurz: Integrace Azure Active Directory se službou UNIFI | Dokumentace Microsoftu'
 description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a UNIFI.
 services: active-directory
 documentationCenter: na
@@ -14,225 +14,225 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: 589366bc3a079cdf1cacc21982cd03a1ff6d74ce
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 0aa3ec013e93ddb89cd6982c01a38411f67b34c4
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36220773"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866344"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-unifi"></a>Kurz: Azure Active Directory integrace s UNIFI
+# <a name="tutorial-azure-active-directory-integration-with-unifi"></a>Kurz: Integrace Azure Active Directory se službou UNIFI
 
-V tomto kurzu zjistěte, jak integrovat UNIFI s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat UNIFI s Azure Active Directory (Azure AD).
 
-Integrace UNIFI s Azure AD poskytuje následující výhody:
+UNIFI integraci se službou Azure AD poskytuje následující výhody:
 
 - Můžete řídit ve službě Azure AD, který má přístup k UNIFI
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k UNIFI (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete povolit uživatelům, aby automaticky získat přihlášení k UNIFI (Single Sign-On) s jejich účty Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Konfigurace integrace Azure AD s UNIFI, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- UNIFI jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- UNIFI jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
 1. Přidání UNIFI z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
 ## <a name="adding-unifi-from-the-gallery"></a>Přidání UNIFI z Galerie
-Při konfiguraci integrace UNIFI do služby Azure AD potřebujete přidat UNIFI z Galerie si na seznam spravovaných aplikací SaaS.
+Konfigurace integrace UNIFI do služby Azure AD, budete muset přidat UNIFI z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat UNIFI z galerie, proveďte následující kroky:**
+**Chcete-li přidat UNIFI z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
 4. Do vyhledávacího pole zadejte **UNIFI**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/unifi-tutorial/tutorial_unifi_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/unifi-tutorial/tutorial_unifi_search.png)
 
-5. Na panelu výsledků vyberte **UNIFI**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **UNIFI**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/unifi-tutorial/tutorial_unifi_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/unifi-tutorial/tutorial_unifi_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části nakonfigurovat a otestovat Azure AD jednotné přihlašování s UNIFI podle testovacího uživatele názvem "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí UNIFI podle testovacího uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem v UNIFI je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské v UNIFI musí navázat.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšky v UNIFI je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské v UNIFI potřeba navázat.
 
-V UNIFI, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+V UNIFI, přiřaďte hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování s UNIFI, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s UNIFI, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření UNIFI testovací uživatel](#creating-a-unifi-test-user)**  – Pokud chcete mít protějšek Britta Simon v UNIFI propojeném s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváření UNIFI testovací uživatele](#creating-a-unifi-test-user)**  – Pokud chcete mít protějšek Britta Simon UNIFI, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci UNIFI.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci UNIFI.
 
 **Ke konfiguraci Azure AD jednotné přihlašování s UNIFI, proveďte následující kroky:**
 
-1. Na portálu Azure na **UNIFI** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **UNIFI** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/unifi-tutorial/tutorial_unifi_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/unifi-tutorial/tutorial_unifi_samlbase.png)
 
-3. Na **UNIFI domény a adresy URL** část, pokud chcete nakonfigurovat aplikace **IDP** iniciované režimu:
+3. Na **UNIFI domény a adresy URL** části, pokud chcete nakonfigurovat aplikace v **IDP** iniciované režimu:
 
-    ![Konfigurovat jednotné přihlašování](./media/unifi-tutorial/tutorial_unifi_url1.png)
+    ![Konfigurace jednotného přihlašování](./media/unifi-tutorial/tutorial_unifi_url1.png)
 
-    V **identifikátor** textovému poli, zadejte hodnotu: `INVIEWlabs` 
+    V **identifikátor** textového pole zadejte hodnotu: `INVIEWlabs` 
 
-4. Zkontrolujte **zobrazit upřesňující nastavení adresy URL**, pokud chcete nakonfigurovat aplikace **SP** iniciované režimu:
+4. Zkontrolujte **zobrazit pokročilé nastavení URL**, pokud chcete nakonfigurovat aplikace v **SP** iniciované režimu:
 
-    ![Konfigurovat jednotné přihlašování](./media/unifi-tutorial/tutorial_unifi_url2.png)
+    ![Konfigurace jednotného přihlašování](./media/unifi-tutorial/tutorial_unifi_url2.png)
 
-    V **přihlašovací adresa URL** textovému poli, zadejte adresu URL: `https://app.discoverunifi.com/login`
+    V **přihlašovací adresa URL** textového pole zadejte adresu URL: `https://app.discoverunifi.com/login`
 
-5. Na **SAML podpisový certifikát** klikněte na tlačítko **Certificate(Base64)** a potom uložte soubor certifikátu v počítači.
+5. Na **podpisový certifikát SAML** klikněte na tlačítko **Certificate(Base64)** a uložte soubor certifikátu v počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/unifi-tutorial/tutorial_unifi_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/unifi-tutorial/tutorial_unifi_certificate.png) 
 
 6. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/unifi-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/unifi-tutorial/tutorial_general_400.png)
     
-7. Na **UNIFI konfigurace** klikněte na tlačítko **konfigurace UNIFI** otevřete **konfigurovat přihlášení** okno. Kopírování **SAML jeden přihlašování adresa URL služby** z **Stručná referenční příručka části.**
+7. Na **UNIFI konfigurace** klikněte na tlačítko **konfigurace UNIFI** otevřete **nakonfigurovat přihlašování** okna. Kopírovat **SAML jednotné přihlašování – adresa URL služby** z **Stručná referenční příručka oddílu.**
 
-    ![Konfigurovat jednotné přihlašování](./media/unifi-tutorial/tutorial_unifi_configure.png)
+    ![Konfigurace jednotného přihlašování](./media/unifi-tutorial/tutorial_unifi_configure.png)
 
-8. V okně prohlížeče jiný web, přihlaste se k vaší **UNIFI** společnosti lokality jako správce.
+8. V okně jiné webové prohlížeče, přihlaste se k vaší **UNIFI** společnosti serveru jako správce.
 
 9. Klikněte na **uživatelé**.
 
-    ![Konfigurovat jednotné přihlašování](./media/unifi-tutorial/app1.png) 
+    ![Konfigurace jednotného přihlašování](./media/unifi-tutorial/app1.png) 
 
-10. Klikněte na **přidat nového poskytovatele Identity**.
+10. Klikněte na **přidat nového zprostředkovatele Identity**.
 
-    ![Konfigurovat jednotné přihlašování](./media/unifi-tutorial/app2.png)
+    ![Konfigurace jednotného přihlašování](./media/unifi-tutorial/app2.png)
 
-11. V **přidat zprostředkovatele Identity** část, proveďte následující kroky:   
+11. V **přidat zprostředkovatele Identity** části, proveďte následující kroky:   
 
-    ![Konfigurovat jednotné přihlašování](./media/unifi-tutorial/app3.png) 
+    ![Konfigurace jednotného přihlašování](./media/unifi-tutorial/app3.png) 
 
-    a. V **název zprostředkovatele** textovému poli, zadejte název zprostředkovatele Identity...
+    a. V **název zprostředkovatele** textového pole zadejte název zprostředkovatele Identity...
 
-    b. V **adresa URL poskytovatele** vložení textové pole **SAML jeden přihlašování adresa URL služby** hodnotu, kterou jste zkopírovali z portálu Azure.
+    b. V **adresa URL zprostředkovatele** vložení textového pole **SAML jednotné přihlašování – adresa URL služby** hodnotu, kterou jste zkopírovali z portálu Azure portal.
 
-    c. Otevřete odebrat certifikát, který jste stáhli z portálu Azure v poznámkovém bloku **---BEGIN CERTIFICATE---** a **---KONCOVÝ certifikát,** značku a potom vložte zbývající obsah **certifikát** textové pole.
+    c. Otevřete certifikát, že jste si stáhli z portálu Azure v programu Poznámkový blok, odeberte **---BEGIN CERTIFICATE---** a **---END CERTIFICATE---** značky a pak vložte zbývající obsah **Certifikát** textového pole.
 
     d. Vyberte **je výchozí zprostředkovatel** zaškrtávací políčko.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/unifi-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/unifi-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/unifi-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/unifi-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/unifi-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/unifi-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/unifi-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/unifi-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
 ### <a name="creating-a-unifi-test-user"></a>Vytvoření zkušebního uživatele UNIFI
 
-V této části vytvoříte názvem Britta Simon uživatele. **UNIFI** podporuje zřizování automatické uživatelů, takže nejsou potřeba žádné ruční kroky. Uživatelé se vytvoří automaticky po úspěšném ověření z Azure AD.
+V této části vytvořte uživatele Britta Simon. **UNIFI** podporuje automatické zřizování uživatelů, nejsou požadované žádné ruční kroky. Uživatelé jsou automaticky vytvořeny po úspěšném ověření ze služby Azure AD.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu UNIFI.
+V této části je povolit Britta Simon k udělení přístupu k UNIFI použití Azure jednotného přihlašování.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon UNIFI, proveďte následující kroky:**
+**Přiřadit UNIFI Britta Simon, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
 2. V seznamu aplikací vyberte **UNIFI**.
 
-    ![Konfigurovat jednotné přihlašování](./media/unifi-tutorial/tutorial_unifi_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/unifi-tutorial/tutorial_unifi_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-V této části můžete vyzkoušet Azure AD jeden přihlašování konfiguraci pomocí přístupového panelu.
+V této části Testování služby Azure AD jednotné přihlašování – konfigurace pomocí přístupového panelu.
 
-Když kliknete na dlaždici UNIFI na přístupovém panelu, jste měli získat automaticky přihlášení k aplikaci UNIFI.
-Další informace o na přístupovém panelu najdete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknutí na dlaždici UNIFI na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci UNIFI.
+Další informace o přístupovém panelu, naleznete v tématu [Úvod k přístupovému panelu](../active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->

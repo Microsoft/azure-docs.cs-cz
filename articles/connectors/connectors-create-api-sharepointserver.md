@@ -1,6 +1,6 @@
 ---
-title: Pomocí konektoru serveru SharePoint Server ve vašich Logic Apps | Microsoft Docs
-description: Začněte používat konektor Server služby SharePoint ve vašich Logic apps
+title: Použití konektoru pro SharePoint Server v Logic Apps | Dokumentace Microsoftu
+description: Začínáme s využitím konektoru serveru SharePoint ve službě Logic apps
 services: logic-apps
 documentationcenter: ''
 author: ecfan
@@ -15,44 +15,44 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2016
 ms.author: estfan; ladocs
-ms.openlocfilehash: c153b4987e37a5d97b95d4f1249de1ed92e851b3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 3ac3105231017cdbf8bfcf143b26451a68da5283
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295940"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868697"
 ---
 # <a name="get-started-with-the-sharepoint-connector"></a>Začínáme s konektorem služby SharePoint
-Konektor služby SharePoint poskytuje způsob, jak pracovat s seznamy služby SharePoint.
+Konektor SharePoint poskytuje způsob, jak fungují se seznamy v Sharepointu.
 
-Začněte vytvořením aplikace logiky; v tématu [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Začněte vytvořením aplikace logiky; Zobrazit [vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="create-a-connection-to-sharepoint"></a>Umožňuje vytvořit připojení do služby SharePoint
-K používání konektoru služby SharePoint, je třeba nejprve vytvořit **připojení** pak zadejte podrobnosti pro tyto vlastnosti: 
+## <a name="create-a-connection-to-sharepoint"></a>Vytvoření připojení k Sharepointu
+K používání konektoru služby SharePoint, je třeba nejprve vytvořit **připojení** pak zadejte podrobnosti o těchto vlastností: 
 
 | Vlastnost | Požaduje se | Popis |
 | --- | --- | --- |
 | Podpisový |Ano |Zadejte přihlašovací údaje k SharePointu |
 
-Pro připojení k **SharePoint**, zadejte svoji identitu (uživatelské jméno a heslo, pověření čipové karty a tak dále). Jakmile došlo k ověření, můžete přejít k používání konektoru služby SharePoint v aplikaci logiky. 
+Pro připojení k **SharePoint**, zadejte svou identitu (uživatelské jméno a heslo, pověření čipové karty a tak dále). Po ověření, můžete přejít k používání konektoru služby SharePoint v aplikaci logiky. 
 
-V návrháři aplikace logiky, použijte následující postup k přihlášení a vytvořte **připojení** pro použití v aplikaci logiky:
+V návrháři aplikace logiky pomocí následujícího postupu přihlásit a vytvořit **připojení** pro použití ve vaší aplikaci logiky:
 
-1. Zadejte do pole vyhledávání služby SharePoint a počkat na výsledky vyhledávání na vrátí všechny položky se službou SharePoint v názvu:   
-   ![Konfigurace služby SharePoint][1]  
-2. Vyberte **SharePoint – když dojde k vytvoření souboru**   
-3. Vyberte **přihlásit do služby SharePoint**:   
-   ![Konfigurace služby SharePoint][2]    
+1. Do vyhledávacího pole zadejte SharePoint a počkejte, hledání vrátí všechny záznamy se Sharepointem v názvu:   
+   ![Konfigurace Sharepointu][1]  
+2. Vyberte **SharePoint – když se vytvoří soubor**   
+3. Vyberte **přihlášení do Sharepointu**:   
+   ![Konfigurace Sharepointu][2]    
 4. Zadejte svoje přihlašovací údaje služby SharePoint pro přihlášení k ověření pomocí služby SharePoint   
-   ![Konfigurace služby SharePoint][3]     
-5. Po dokončení ověření budete přesměrováni na svou aplikaci logiky dokončit konfigurací služby SharePoint na **vytvoření souboru** dialogové okno.          
-   ![Konfigurace služby SharePoint][4]  
-6. Poté můžete přidat další aktivační události a akce, které potřebujete k dokončení svou aplikaci logiky.   
-7. Uložte si práci, výběrem **Uložit** v nabídce (směrem nahoru).
+   ![Konfigurace Sharepointu][3]     
+5. Až se ověřování dokončí, budete přesměrováni do aplikace logiky k dokončení konfigurace Sharepointu **při vytvoření souboru** dialogového okna.          
+   ![Konfigurace Sharepointu][4]  
+6. Potom můžete přidat další aktivační události a akce, které potřebujete k dokončení vaší aplikace logiky.   
+7. Uložte svou práci tak, že vyberete **Uložit** v nabídce (směrem nahoru).
 
-## <a name="connector-specific-details"></a>Podrobnosti o konkrétní konektor
+## <a name="connector-specific-details"></a>Podrobné informace specifické pro konektor
 
-Zobrazit všechny aktivační události a akce definované v swagger a také zobrazit žádné limity v [connector – podrobnosti](/connectors/sharepoint/).
+Zobrazit všechny aktivační události a akce definované ve swaggeru a také zjistit žádné omezení [podrobnosti o konektoru](/connectors/sharepoint/).
 
 ## <a name="more-connectors"></a>Více konektorů
 Přejděte zpět [rozhraní API seznamu](apis-list.md).

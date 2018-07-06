@@ -1,6 +1,6 @@
 ---
-title: Koncový bod volání pomocí Node.js - Bing vlastní vyhledávání - Microsoft kognitivní služby
-description: Tento rychlý start ukazuje, jak požádat výsledky hledání instance vlastní vyhledávání pomocí Node.js volat koncový bod služby Bing vlastní vyhledávání.
+title: Volání koncového bodu s využitím Node.js – vlastní vyhledávání Bingu – Microsoft Cognitive Services
+description: Tento rychlý start ukazuje, jak si vyžádat výsledky hledání s použitím prostředí Node.js k volání koncového bodu pro vlastní vyhledávání Bingu z vaší instance vlastního hledání.
 services: cognitive-services
 author: brapel
 manager: ehansen
@@ -9,38 +9,42 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 48fc234e15ce3b9172d766f6fae11b51a017ce70
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5d9391cc486dc868a1a291ccc7095291cddd3e4c
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35343814"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858455"
 ---
-# <a name="call-bing-custom-search-endpoint-nodejs"></a>Volání hledání vlastní Bing koncový bod (Node.js)
+# <a name="call-bing-custom-search-endpoint-nodejs"></a>Volání koncového bodu pro vlastní vyhledávání Bingu (Node.js)
 
-Tento rychlý start ukazuje, jak požádat výsledky hledání instance vlastní vyhledávání pomocí Node.js volat koncový bod služby Bing vlastní vyhledávání. 
+Tento rychlý start ukazuje, jak si vyžádat výsledky hledání s použitím prostředí Node.js k volání koncového bodu pro vlastní vyhledávání Bingu z vaší instance vlastního hledání. 
 
 ## <a name="prerequisites"></a>Požadavky
 K dokončení tohoto rychlého startu je potřeba:
 
-- Vlastní hledání instance. V tématu [vytvoření vaší první instance Bing vlastní vyhledávání](quick-start.md).
+- Instanci vlastního vyhledávání. Zobrazit [vytvořit první instanci vlastního vyhledávání Bingu](quick-start.md).
 
-- [Node.js](https://www.nodejs.org/) nainstalována.
+- [Node.js](https://www.nodejs.org/) nainstalované.
 
--  [Kognitivní účet rozhraní API služby](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API pro Bing vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) stačí pro tento rychlý start. Je nutné přístupový klíč zadaný při aktivaci bezplatné zkušební verze, nebo může použít klíč placené předplatné z řídicího panelu Azure.
+-  [Účet služby cognitive Services API](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) s **rozhraní API Bingu pro vyhledávání**. [Bezplatnou zkušební verzi](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) stačí pro účely tohoto rychlého startu. Budete potřebovat přístupový klíč získáte při aktivaci vaší bezplatné zkušební verze, nebo můžete použít klíč placené předplatné z řídicího panelu Azure.
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
-Volání hledání vlastní Bing koncový bod, postupujte takto:
+K volání koncového bodu vlastní vyhledávání Bingu, postupujte podle těchto kroků:
 
 1. Vytvořte složku pro váš kód.
-2. Z příkazového řádku nebo terminálu přejděte do složky, kterou jste právě vytvořili.
-3. Nainstalujte **požadavku** modulu uzlu:
+
+2. Z příkazového řádku nebo v terminálu přejděte do složky, kterou jste právě vytvořili.
+
+3. Nainstalujte **požadavek** uzel modulu:
     <pre>
     npm install request
     </pre>
-4. Vytvoření souboru BingCustomSearch.js a zkopírujte do ní následující kód.
-5. Nahraďte **YOUR-SUBSCRIPTION-KEY** a **YOUR-vlastní-CONFIG-ID** pomocí svého ID klíče a konfigurace (viz krok 1).
+    
+4. Vytvořte soubor BingCustomSearch.js a zkopírujte do něj následující kód.
+
+5. Nahraďte **YOUR-SUBSCRIPTION-KEY** a **YOUR-vlastní-CONFIG-ID** identifikátorem klíče a konfigurace (viz krok 1).
 
     ``` javascript
     var request = require("request");
@@ -77,6 +81,6 @@ Volání hledání vlastní Bing koncový bod, postupujte takto:
    ``` 
 
 ## <a name="next-steps"></a>Další postup
-- [Konfigurace prostředí hostované uživatelského rozhraní](./hosted-ui.md)
-- [Použití decoration značky zvýraznění textu](./hit-highlighting.md)
+- [Konfigurace prostředí uživatelského rozhraní](./hosted-ui.md)
+- [Použití dekorace značek zvýraznění textu](./hit-highlighting.md)
 - [Stránka webové stránky](./page-webpages.md)

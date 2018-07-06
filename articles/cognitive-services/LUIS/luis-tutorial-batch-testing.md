@@ -10,25 +10,25 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: v-geberr
-ms.openlocfilehash: 5788f17f2724a0354a1db506971c2343c1800f01
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 4a5ace10c171d17235051c5bd666526318829fd7
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266392"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867337"
 ---
-# <a name="use-batch-testing-to-find-prediction-accuracy-issues"></a>Dávky k testování používejte k vyhledání problémů přesnost předpovědi
+# <a name="use-batch-testing-to-find-prediction-accuracy-issues"></a>Najít problémy, přesnost předpovědi pomocí služby batch testu
 
-Tento kurz ukazuje, jak dávky k testování používejte najít utterance předpovědi problémy.  
+Tento kurz ukazuje, jak najít utterance předpovědi problémy pomocí služby batch testu.  
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 * Vytvořte dávkový soubor testu 
-* Spuštění dávky testu
-* Zkontrolujte výsledky testů
-* Opravte chyby pro záměry
-* Testování dávky
+* Spuštění testu služby batch
+* Kontrola výsledků testu
+* Opravte chyby pro příkazy
+* Opětovné testování služby batch
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -36,10 +36,10 @@ V tomto kurzu se naučíte:
 > * V tomto článku budete také potřebovat [LUIS][LUIS] účet, aby bylo možné vytvořit aplikace LEOŠ.
 
 > [!Tip]
-> Pokud již nemáte předplatné, můžete si zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
+> Pokud ještě nemáte předplatné, si můžete zaregistrovat [bezplatný účet](https://azure.microsoft.com/free/).
 
 ## <a name="create-new-app"></a>Vytvoření nové aplikace
-Tento článek používá předem domény HomeAutomation. Předkompilované domény má záměry, entit a utterances řízení HomeAutomation zařízení, jako jsou indikátory. Vytvořit aplikaci, přidejte doménu, školení a publikování.
+Tento článek používá předem připravených domény HomeAutomation. Předem připravená doména má záměrů, entit a projevy pro řízení HomeAutomation zařízení, jako jsou světla. Vytvořit aplikaci, přidat doménu, trénování a publikování.
 
 1. V [LUIS] webu, vytvořte novou aplikaci tak, že vyberete **vytvořit novou aplikaci** na **MyApps** stránky. 
 
@@ -47,26 +47,26 @@ Tento článek používá předem domény HomeAutomation. Předkompilované dom�
 
 2. Zadejte název `Batchtest-HomeAutomation` v dialogovém okně.
 
-    ![Zadejte název aplikace.](./media/luis-tutorial-batch-testing/create-app-2.png)
+    ![Zadejte název aplikace](./media/luis-tutorial-batch-testing/create-app-2.png)
 
-3. Vyberte **předem domén** v levém dolním rohu. 
+3. Vyberte **předem připravených domén** v levém dolním rohu. 
 
-    ![Vyberte předem domény](./media/luis-tutorial-batch-testing/prebuilt-domain-1.png)
+    ![Vyberte doménu, předem připravené](./media/luis-tutorial-batch-testing/prebuilt-domain-1.png)
 
 4. Vyberte **přidat doménu** pro HomeAutomation.
 
-    ![Přidání domény HomeAutomation](./media/luis-tutorial-batch-testing/prebuilt-domain-2.png)
+    ![Přidat doménu HomeAutomation](./media/luis-tutorial-batch-testing/prebuilt-domain-2.png)
 
-5. Vyberte **Train** v pravém horním navigačním panelu.
+5. Vyberte **Train** v horním pravém navigačním panelu.
 
-    ![Kliknutím na tlačítko Train](./media/luis-tutorial-batch-testing/train-button.png)
+    ![Tlačítko pro výběr trénování](./media/luis-tutorial-batch-testing/train-button.png)
 
-## <a name="batch-test-criteria"></a>Kritéria testovací batch
-Testování batch můžete otestovat až 1 000 utterances najednou. Dávky nesmí obsahovat duplikáty. [Export](create-new-app.md#export-app) aplikaci chcete-li zobrazit seznam aktuální utterances.  
+## <a name="batch-test-criteria"></a>Testovací kritérium služby batch
+Testování služby batch můžete otestovat až 1 000 projevy najednou. Dávka by neměl mít duplicitní položky. [Export](create-new-app.md#export-app) aplikace, chcete-li zobrazit seznam aktuální projevy.  
 
-Test strategií LUIS používá tři samostatné sady dat: model utterances, utterances testovací batch a utterances koncový bod. V tomto kurzu Ujistěte se, že nepoužíváte utterances z buď utterances modelu (Přidat do záměrem) nebo utterances koncový bod. 
+Test strategií LUIS používá tři samostatné sady dat: model utterances, utterances testovací batch a utterances koncový bod. Pro účely tohoto kurzu Ujistěte se, že nepoužíváte projevy z obou modelů projevy (přidá k záměru) nebo projevy koncový bod. 
 
-Nepoužívejte žádné utterances již v aplikaci pro batch test:
+Nepoužívejte všechny projevy již v aplikaci pro batch test:
 
 ```
 'breezeway on please',
@@ -108,12 +108,12 @@ Nepoužívejte žádné utterances již v aplikaci pro batch test:
 'turn thermostat on 70 .' 
 ```
 
-## <a name="create-a-batch-to-test-intent-prediction-accuracy"></a>Vytvoření dávky k testování přesnost předpovědi záměrné
+## <a name="create-a-batch-to-test-intent-prediction-accuracy"></a>Vytvoření služby batch k otestování přesnost předpovědi záměru
 1. Vytvoření `homeauto-batch-1.json` v textovém editoru, jako [VSCode](https://code.visualstudio.com/). 
 
-2. Přidat utterances s **záměr** chcete předpokládaných v testu. V tomto kurzu, chcete-li jednoduchý, proveďte utterances `HomeAutomation.TurnOn` a `HomeAutomation.TurnOff` a přepněte `on` a `off` textu v utterances. Pro `None` záměr, přidat pár utterances, které nejsou součástí [domény](luis-glossary.md#domain) oblasti (předmět). 
+2. Přidání projevů s **záměr** chcete předpokládané v testu. Pro účely tohoto kurzu, aby byl jednoduchý, využít projevy `HomeAutomation.TurnOn` a `HomeAutomation.TurnOff` a přepnout `on` a `off` textu v projevy. Pro `None` záměr, přidejte do ní několik projevy, které nejsou součástí [domény](luis-glossary.md#domain) (oblastí). 
 
-    Chcete-li pochopit, jak se výsledky testů batch korelovat dávku JSON, přidejte pouze šest záměry.
+    Chcete-li pochopit, jak korelaci výsledků testů batch do služby batch JSON, přidejte pouze šest tříd Intent.
 
     ```JSON
     [
@@ -153,102 +153,102 @@ Nepoužívejte žádné utterances již v aplikaci pro batch test:
 ## <a name="run-the-batch"></a>Spusťte dávku
 1. Vyberte **Test** v horním navigačním panelu. 
 
-    ![Vyberte v navigačním panelu testu](./media/luis-tutorial-batch-testing/test-1.png)
+    ![V navigačním panelu vyberte Test](./media/luis-tutorial-batch-testing/test-1.png)
 
-2. Vyberte **dávky testování panel** na pravé straně panelu. 
+2. Vyberte **Batch testování panel** na pravé straně panelu. 
 
-    ![Vyberte testovací panely Batch](./media/luis-tutorial-batch-testing/test-2.png)
+    ![Vyberte test panelu služby Batch](./media/luis-tutorial-batch-testing/test-2.png)
 
-3. Vyberte **datovou sadu Import**.
+3. Vyberte **datové sady importu**.
 
     ![Vyberte Import datové sady](./media/luis-tutorial-batch-testing/test-3.png)
 
-4. Vyberte umístění systému souborů `homeauto-batch-1.json` souboru.
+4. Vyberte umístění systému souboru `homeauto-batch-1.json` souboru.
 
-5. Název datové sady `set 1`.
+5. Zadejte název datové sady `set 1`.
 
     ![Výběr souboru](./media/luis-tutorial-batch-testing/test-4.png)
 
-6. Vyberte tlačítko **Spustit**. Počkejte na dokončení testu.
+6. Vyberte tlačítko **Spustit**. Počkejte, dokud se provádí test.
 
-    ![Vyberte spustit](./media/luis-tutorial-batch-testing/test-5.png)
+    ![Výběrem spuštění](./media/luis-tutorial-batch-testing/test-5.png)
 
-7. Vyberte **zobrazte výsledky**.
+7. Vyberte **zobrazit výsledky**.
 
-    ![Zobrazte výsledky](./media/luis-tutorial-batch-testing/test-6.png)
+    ![Zobrazit výsledky](./media/luis-tutorial-batch-testing/test-6.png)
 
-8. Zkontrolujte výsledky v a legendu grafu.
+8. Zkontrolujte výsledky v grafu a legend.
 
-    ![Výsledky batch](./media/luis-tutorial-batch-testing/batch-result-1.png)
+    ![Výsledky služby batch](./media/luis-tutorial-batch-testing/batch-result-1.png)
 
-## <a name="review-batch-results"></a>Zkontrolujte výsledky batch
-Výsledky batch jsou dvě části. V horní části obsahuje a legendu grafu. V dolní části utterances zobrazí, když vyberete název oblasti grafu.
+## <a name="review-batch-results"></a>Zkontrolujte výsledky služby batch
+Výsledky batch jsou ve dvou částech. V horní části obsahuje a legendy grafu. V dolní části zobrazí projevy, když vyberete název oblasti grafu.
 
-Všechny chyby jsou označeny červenou barvu. Graf je v čtyři části, se dvěma části zobrazí červeně. **Tyto jsou oddíly zaměřit se na**. 
+Chyby jsou označeny červenou barvu. Graf je do čtyř oddílů, dva oddíly zobrazí červeně. **Toto jsou oddíly pro zaměření na**. 
 
-Horní pravé části označuje test nesprávně předpovědět existence záměr nebo entity. Spodní levé části označuje, že test nesprávně předpovědět absence záměr nebo entity.
+Horní pravé části označuje testu správně předpovědět existence záměr nebo entity. V dolní části levého označuje, že test nesprávně předpovědět absence záměr nebo entity.
 
 ### <a name="homeautomationturnoff-test-results"></a>Výsledky testu HomeAutomation.TurnOff
-V legendě, vyberte `HomeAutomation.TurnOff` záměr. Ikona s zelenou úspěch nalevo od názvu má v legendě. Nejsou žádné chyby pro tento záměr. 
+V legendě, vyberte `HomeAutomation.TurnOff` záměr. Ikona s zelenou úspěch nalevo od názvu má v legendě. Nejsou žádné chyby tohoto záměru. 
 
-![Výsledky batch](./media/luis-tutorial-batch-testing/batch-result-1.png)
+![Výsledky služby batch](./media/luis-tutorial-batch-testing/batch-result-1.png)
 
-### <a name="homeautomationturnon-and-none-intents-have-errors"></a>HomeAutomation.TurnOn a žádná záměry chybami
-Dvou tříd Intent mít chyby, což znamená, že testovací předpovědi neodpovídal očekávání souboru batch. Vyberte `None` záměrné v legendě ke kontrole první chyba. 
+### <a name="homeautomationturnon-and-none-intents-have-errors"></a>HomeAutomation.TurnOn a žádné záměry došlo k chybám
+Další dva příkazy mají chyby, což znamená, že test predikcí neodpovídal očekávání dávkového souboru. Vyberte `None` záměru v legendě, čímž zkontrolujte první chyba. 
 
-![Žádné záměrné](./media/luis-tutorial-batch-testing/none-intent-failures.png)
+![Žádný záměru](./media/luis-tutorial-batch-testing/none-intent-failures.png)
 
-Chyby se v grafu v částech red: **False kladné** a **False záporné**. Vyberte **False záporné** název oddílu v grafu pro zobrazení se nezdařilo utterances pod grafem. 
+Selhání se zobrazí v grafu v části red: **falešně pozitivní** a **falešně negativní**. Vyberte **falešně negativní** název oddílu v grafu pro zobrazení neúspěšných projevy pod grafem. 
 
-![False záporné selhání](./media/luis-tutorial-batch-testing/none-intent-false-negative.png)
+![Falešné chyby záporná](./media/luis-tutorial-batch-testing/none-intent-false-negative.png)
 
-Selhání utterance, `help` byl očekáván jako `None` záměr ale test předpovědět `HomeAutomation.TurnOn` záměr.  
+Utterance selhání `help` byl očekáván jako `None` záměr, ale test předpovědět `HomeAutomation.TurnOn` záměr.  
 
-Existují dvě selhání, jeden v HomeAutomation.TurnOn a jeden v žádné. Obě byla způsobena utterance `help` protože nesplnila se očekává v žádné a bylo v případě neočekávané shody pro HomeAutomation.TurnOn záměr. 
+Existují dva selhání, jeden v HomeAutomation.TurnOn a druhý v žádné. Obě byly způsobeny utterance `help` protože nesplnila očekávání v žádné a bylo neočekávané hledat HomeAutomation.TurnOn záměr. 
 
-Chcete-li zjistit důvod, proč `None` utterances selhávají, zkontrolujte utterances aktuálně v `None`. 
+Chcete-li zjistit, proč `None` projevy selhávají, zkontrolujte projevy, které jsou aktuálně ve `None`. 
 
-## <a name="review-none-intents-utterances"></a>Zkontrolujte žádné záměrné je utterances
+## <a name="review-none-intents-utterances"></a>Kontrola žádný záměru uživatele projevy
 
-1. Zavřít **Test** panely výběrem **Test** tlačítko v horním navigačním panelu. 
+1. Zavřít **testovací** panel tak, že vyberete **Test** tlačítko na horním navigačním panelu. 
 
-2. Vyberte **sestavení** z panelu horním navigačním panelu. 
+2. Vyberte **sestavení** na horním navigačním panelu. 
 
-3. Vyberte **žádné** záměrné ze seznamu tříd Intent.
+3. Vyberte **žádný** záměru ze seznamu záměry.
 
-4. Vyberte ovládací prvek + E získat token zobrazení utterances 
+4. Vyberte ovládací prvek + E, jeho token zobrazení projevy 
     
-    |Žádné záměrné je utterances|Předpověď skóre|
+    |Žádný záměru uživatele projevy|Skóre předpovědi|
     |--|--|
-    |"snížit teploty pro mi prosím"|0.44|
-    |"dim kuchyně indikátory na 25."|0.43|
-    |"nižší svazku"|0.46|
-    |"zapnout Internetu v mé ložnici prosím"|0.28|
+    |"snížit teploty pro mě prosím"|0.44|
+    |"dimenze kuchyně indikátory 25."|0.43|
+    |"snížit hlasitost"|0.46|
+    |"zapnout Internetu v mé ložnici prosím"|0,28|
 
-## <a name="fix-none-intents-utterances"></a>Opravte žádné záměrné je utterances
+## <a name="fix-none-intents-utterances"></a>Opravit žádné záměru uživatele projevy
     
-Všechny utterances v `None` jsou by měl být mimo doménu aplikace. Tyto utterances jsou relativní vzhledem k HomeAutomation, tak, aby byly v nesprávný záměr. 
+V jakékoli projevy `None` jsou by měl být mimo doménu aplikace. Tyto projevy jsou relativní vzhledem k HomeAutomation, tak, aby byly v nesprávné záměr. 
 
-LUIS také poskytuje 50 % utterances menší než (<.50) skóre předpovědi. Pokud se podíváte na utterances v ostatních dvě záměrů, zobrazí mnohem vyšší skóre předpovědi. Když LUIS má nízkou skóre pro příklad utterances, které je dobrá indikace toho utterances jsou pro LUISmatoucí mezi aktuální záměr a dalších tříd Intent. 
+LUIS také poskytuje 50 % utterances menší než (<.50) skóre předpovědi. Pokud podíváte na projevy ve dvou příkazů, uvidíte mnohem vyšší skóre předpovědi. Když LUIS má nízkou skóre pro příklad utterances, které je dobrá indikace toho utterances jsou pro LUISmatoucí mezi aktuální záměr a dalších tříd Intent. 
 
-Opravit aplikaci aktuálně v utterances `None` záměr potřebujete přesunout do správné záměr a `None` záměr musí nové, odpovídající záměry. 
+Chcete-li vyřešit aplikace projevy, které jsou aktuálně ve `None` záměr musí přesunout do správné záměr a `None` záměr potřebuje nové, odpovídající záměry. 
 
-Tři utterances v `None` záměr mají nižší automatizace nastavení zařízení. Například používají slova `dim`, `lower`, nebo `decrease`. Čtvrtý utterance zobrazí dotaz, chcete-li na Internetu. Vzhledem k tomu, že všechny čtyři utterances o zapnutím nebo změna síle na zařízení se musí přesunout do `HomeAutomation.TurnOn` záměr. 
+Tři projevy v `None` záměr jsou určené k snížení automatizaci nastavení zařízení. Například používají slova `dim`, `lower`, nebo `decrease`. Čtvrtý utterance vyzve k zapnutí nastavení v Internetu. Protože jsou všechny čtyři projevy o zapnutí nebo změnit úroveň výkonu na zařízení, by měl být přesunut do `HomeAutomation.TurnOn` záměr. 
 
-Toto je pouze jeden řešení. Můžete také vytvořit nové záměr `ChangeSetting` přesunout utterances pomocí dimenze, snížit a snížit do této nové záměr. 
+Toto je jenom jedno řešení. Můžete také vytvořit nové záměr `ChangeSetting` přesunout projevy pomocí dim, snížit a snížit do této nové záměr. 
 
-## <a name="fix-the-app-based-on-batch-results"></a>Opravit aplikaci na základě výsledků batch
-Přesunout čtyři utterances k `HomeAutomation.TurnOn` záměr. 
+## <a name="fix-the-app-based-on-batch-results"></a>Oprava aplikace na základě výsledků služby batch
+Přesunout čtyři projevy do `HomeAutomation.TurnOn` záměr. 
 
-1. Zaškrtněte políčko výše v seznamu utterance tak, že jsou vybrané všechny utterances. 
+1. Proto jsou vybrány všechny projevy, zaškrtněte políčko nad seznamem utterance. 
 
-2. V **přiřazení záměr** rozevíracího seznamu, vyberte `HomeAutomation.TurnOn`. 
+2. V **záměr přiřazení** rozevíracího seznamu, vyberte `HomeAutomation.TurnOn`. 
 
-    ![Přesunout utterances](./media/luis-tutorial-batch-testing/move-utterances.png)
+    ![Přesunout projevy](./media/luis-tutorial-batch-testing/move-utterances.png)
 
-    Po čtyři utterances jsou přiřazeny, utterance seznam pro `None` je prázdný.
+    Až čtyři projevy jsou přiřazeny, utterance seznamu pro `None` záměr je prázdný.
 
-3. Přidejte nové čtyři způsoby pro záměrné žádnou:
+3. Přidejte čtyři nové příkazy pro záměru žádná:
 
     ```
     "fish"
@@ -257,26 +257,26 @@ Přesunout čtyři utterances k `HomeAutomation.TurnOn` záměr.
     "pizza"
     ```
 
-    Tyto utterances výborný jsou mimo doménu HomeAutomation. Při zadávání jednotlivých utterance sledujte skóre pro ni. Skóre může být nízkou nebo i velmi nízkou (s červeným rámečkem kolem něj). Po cvičení aplikace v kroku 8, bude skóre mnohem vyšší. 
+    Tyto projevy jsou jednoznačně mimo doménu HomeAutomation. Při vkládání jednotlivých utterance, podívejte se na toto skóre pro něj. Skóre může být, střední nebo dokonce i velmi nízký (s červeným rámečkem okolo něj). Po trénování aplikace v kroku 8, bude toto skóre mnohem vyšší. 
 
-7. Odebrat všechny popisky výběrem blue popisek v utterance a vyberte **odebrání štítku**.
+7. Odebrat všechny popisky tak, že vyberete modrého popisku utterance a vyberte **odebrat popisek**.
 
-8. Vyberte **Train** v pravém horním navigačním panelu. Skóre každé utterance je mnohem vyšší. Všech výsledků `None` záměr by měla být vyšší než.80 nyní. 
+8. Vyberte **Train** v horním pravém navigačním panelu. Skóre každé utterance je mnohem vyšší. Všechny výsledky pro `None` záměr by měla být vyšší než.80 nyní. 
 
-## <a name="verify-the-fix-worked"></a>Ověřte opravu práce na incidentu
-Abyste ověřili, že jsou pro správně předpovědět utterances v testu batch **žádné** záměr, znovu spusťte batch test.
+## <a name="verify-the-fix-worked"></a>Ověření opravy pracoval
+Pokud chcete ověřit, že jsou projevy v testu batch správně předpovědět pro **žádný** záměr, znovu spusťte testovací služby batch.
 
 1. Vyberte **Test** v horním navigačním panelu. 
 
-2. Vyberte **dávky testování panel** na pravé straně panelu. 
+2. Vyberte **Batch testování panel** na pravé straně panelu. 
 
-3. Vyberte se třemi tečkami (...) vpravo od názvu batch a vyberte **spustit datovou sadu**. Počkejte na dokončení testu batch.
+3. Vyberte tři tečky (***...*** ) tlačítko vpravo od názvu služby batch a vyberte **spouštět datovou sadu**. Počkejte, dokud se provádí test služby batch.
 
-    ![Spustit datové sady](./media/luis-tutorial-batch-testing/run-dataset.png)
+    ![Spuštění datové sady](./media/luis-tutorial-batch-testing/run-dataset.png)
 
-4. Vyberte **zobrazte výsledky**. Záměry by měly mít zelené ikony nalevo od záměrné názvy. S vhodný filtr, nastavte na `HomeAutomation.Turnoff` záměr, vyberte zeleným dot v horním pravém panelu nejblíže k středu grafu. Název utterance se zobrazí v následující tabulce grafu. Skóre `breezeway off please` velmi nízké. Volitelné aktivita je přidat další utterances do cílem zvýšit tento skóre. 
+4. Vyberte **zobrazit výsledky**. Příkazů by měly mít zelené ikony nalevo od názvu záměru. S nastavena na správný filtr `HomeAutomation.Turnoff` záměr, vyberte zelený tečky v horním pravém panelu nejbližší ve středu grafu. Název utterance se zobrazí v tabulce pod grafem. Skóre `breezeway off please` je velmi nízký. Volitelné aktivita je přidání další projevů k příslušnému záměru zvýšit Toto skóre. 
 
-    ![Spustit datové sady](./media/luis-tutorial-batch-testing/turnoff-low-score.png)
+    ![Spuštění datové sady](./media/luis-tutorial-batch-testing/turnoff-low-score.png)
 
 <!--
     The Entities section of the legend may have errors. That is the next thing to fix.
@@ -374,7 +374,7 @@ Entity testing is diferrent than intents. An utterance will have only one top sc
 
 3. Select **Test** on the top navigation panel to open the Batch testing pane again. 
 
-4. If the list of datasets is not visible, select **Back to list**. Select the three dots (...) at the end of `Set 2` and select `Run Dataset`. Wait for the test to complete.
+4. If the list of datasets is not visible, select **Back to list**. Select the ellipsis (***...***) button at the end of `Set 2` and select `Run Dataset`. Wait for the test to complete.
 
 5. Select **See results** to review the test results.
 
@@ -383,6 +383,6 @@ Entity testing is diferrent than intents. An utterance will have only one top sc
 ## <a name="next-steps"></a>Další postup
 
 > [!div class="nextstepaction"]
-> [Další informace o příklad utterances](luis-how-to-add-example-utterances.md)
+> [Další informace o příklad projevy](luis-how-to-add-example-utterances.md)
 
 [LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions

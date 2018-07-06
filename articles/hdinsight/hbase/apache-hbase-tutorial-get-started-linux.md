@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: b9298b081baf94350ab19a5d9a8af2705327eed6
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: a77724bd5ed14bf8eb91bf64a1837ce7106edd06
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37102116"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867891"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Začínáme s příkladem Apache HBase ve službě HDInsight
 
@@ -35,7 +35,7 @@ Než se pustíte do tohoto příkladu HBase, musíte mít následující položk
 * [curl](http://curl.haxx.se/download.html).
 
 ## <a name="create-hbase-cluster"></a>Vytvoření clusteru HBase
-Následující postup používá šablonu Azure Resource Manageru pro vytvoření clusteru HBase a výchozího účtu služby Azure Storage. Pro lepší pochopení parametrů použitých v postupu a dalších metod vytvoření clusteru si projděte téma [Vytvoření Hadoop clusterů se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Další informace o používání Gen2 úložiště Data Lake najdete v tématu [rychlý start: nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
+Následující postup používá šablonu Azure Resource Manageru pro vytvoření clusteru HBase a výchozího účtu služby Azure Storage. Pro lepší pochopení parametrů použitých v postupu a dalších metod vytvoření clusteru si projděte téma [Vytvoření Hadoop clusterů se systémem Linux v HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Další informace o použití Data Lake Storage Gen2 najdete v tématu [rychlý start: nastavení clusterů v HDInsight](../../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
 1. Kliknutím na následující obrázek otevřete šablonu na portálu Azure Portal. Tuto šablonu najdete v [šablonách Azure pro rychlý start](https://azure.microsoft.com/resources/templates/).
    
@@ -43,7 +43,7 @@ Následující postup používá šablonu Azure Resource Manageru pro vytvořen�
 2. V okně **Vlastní nasazení** zadejte následující hodnoty:
    
    * **Předplatné:** Vyberte předplatné Azure, které se použije k vytvoření clusteru.
-   * **Skupina prostředků**: vytvoření skupiny správy prostředků Azure nebo použijte existující.
+   * **Skupina prostředků**: Vytvořte skupinu správy prostředků Azure nebo použijte již existující.
    * **Umístění**: Zadejte umístění skupiny prostředků. 
    * **Název clusteru:** Zadejte název pro cluster HBase.
    * **Přihlašovací jméno a heslo clusteru**: výchozí přihlašovací jméno je **admin**.
@@ -248,7 +248,7 @@ HBase v HDInsight se dodává s webovým uživatelským rozhraním pro sledován
 
 **Přístup k hlavnímu uživatelskému rozhraní HBase**
 
-1. Přihlaste se k webovému uživatelskému rozhraní Ambari na adrese https://&lt;název_clusteru>.azurehdinsight.net.
+1. Přihlásit se do webového uživatelského rozhraní Ambari na https://&lt;Název_clusteru >. azurehdinsight.net.
 2. V nabídce vlevo klikněte na **HBase**.
 3. V horní části stránky klikněte na **Rychlé odkazy**, najeďte myší na odkaz na aktivní uzel Zookeeper a klikněte na **Hlavní uživatelské rozhraní HBase**.  Uživatelské rozhraní se otevře na nové kartě prohlížeče:
 

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 1e8bc92c15296395121a3b9c2696a761f676e430
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 12a3c4556de21bb0c0dd6b09458943fb03092532
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437670"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866123"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Zpracování oznámení plánované údržby pro virtuální počítače s Linuxem
 
 Azure provádí pravidelné aktualizace zvýšit spolehlivost, výkon a zabezpečení hostitelské infrastruktury pro virtuální počítače. Aktualizace jsou změny, jako jsou opravy hostitelské prostředí nebo upgradu a vyřazení z provozu hardwaru. Většina těchto aktualizací nemá jejich provedení žádný vliv na hostované virtuální počítače. Existují však případy, kdy aktualizace mít vliv:
 
-- Pokud údržbu nevyžaduje restartování, Azure využívá místní migrace se pozastavit virtuální počítač během aktualizace hostitele.
+- Pokud údržbu nevyžaduje restartování, Azure využívá místní migrace se pozastavit virtuální počítač během aktualizace hostitele. Tyto operace údržby bez rebootful jsou použité doména podle domény selhání a průběh je zastaven, pokud jsou přijímány všechny signály stavu upozornění.
 
 - Údržba vyžaduje restartování, dostanete oznámení o při plánované údržby. V těchto případech budete mít časové okno, kde můžete začít údržbu sami, když se vám bude vyhovovat.
 
@@ -44,30 +44,31 @@ Dotaz pro období údržby pro virtuální počítače a spusťte samoobslužné
  
 ## <a name="should-you-start-maintenance-using-during-the-self-service-window"></a>By měl spustit údržbu pomocí během časového intervalu samoobslužné služby?  
 
-Následující pokyny by vám pomohou určit, jestli se má použít tuto funkci a spustit údržbu na vlastní čas.
+Následující pokyny by vám pomohou určit, jestli se má použít tuto funkci a spustit údržbu na vlastní čas. 
 
 > [!NOTE] 
 > Samoobslužné údržby nemusí být k dispozici pro všechny vaše virtuální počítače. Chcete-li zjistit, jestli proaktivní opětovného nasazení je k dispozici pro váš virtuální počítač, vyhledejte **spustit** ve stavu údržby. Samoobslužné údržby není aktuálně k dispozici pro cloudové služby (Web/Role pracovního procesu) a Service Fabric.
 
 
 Nedoporučuje se používat samoobslužné údržby pro nasazení s využitím **dostupnosti** protože to jsou vysoce dostupné nastavení, kde je ovlivněné jenom jedna aktualizační doména v daném okamžiku. 
-    - Umožní aktivační událost Azure údržbu, ale mějte na paměti, že pořadí aktualizačních domén ně neměly vliv neproběhne ani nutně postupně a že je pozastavit víkend na 30minutové mezi aktualizační domény.
-    - Pokud k dočasné ztrátě některých vaší kapacity (počet domén/aktualizace 1) je důležité zajistit, jej lze snadno kompenzovat přidělením přidání instancí během doby údržby. 
+- Nechejte systém Azure aktivuje údržbu. Kvůli údržbě, která vyžaduje restartování mějte na paměti, že údržba bude provedeno aktualizační doména podle aktualizačních domén, že aktualizačních domén nebudou přijímat nutně údržbu postupně, a že je pozastavit víkend na 30minutové mezi aktualizační domény. 
+- Pokud k dočasné ztrátě některých vaší kapacity (počet domén/aktualizace 1) je důležité zajistit, jej lze snadno kompenzovat přidělením přidání instancí během doby údržby. 
+- Údržby, které nevyžaduje restartování, mají aktualizace použít na úrovni domény selhání. 
 
 **Není** používat samoobslužné údržby v následujících scénářích: 
-    - Pokud vypnete virtuální počítače často, buď ručně, pomocí DevTest Labs, pomocí automatické vypnutí, nebo podle plánu, se může vrátit stav údržby a proto způsobí další prostoje.
-    - Na virtuálních počítačích krátkodobou znát bude odstraněn před koncem vlna údržby. 
-    - Pro úlohy s velké stavu uloženého v místní disk (dočasný), který je požadován udržovat při aktualizaci. 
-    - V případech, kde můžete změnit velikost virtuálního počítače často protože může vrátit zpět stav údržby. 
-    - Pokud si osvojila naplánované události, které umožňují proaktivní převzetí služeb při selhání nebo řádné vypnutí vašich úloh 15 minut před začátkem údržby vypnutí
+- Pokud vypnete virtuální počítače často, buď ručně, pomocí DevTest Labs, pomocí automatické vypnutí, nebo podle plánu, se může vrátit stav údržby a proto způsobí další prostoje.
+- Na virtuálních počítačích krátkodobou znát bude odstraněn před koncem vlna údržby. 
+- Pro úlohy s velké stavu uloženého v místní disk (dočasný), který je požadován udržovat při aktualizaci. 
+- V případech, kde můžete změnit velikost virtuálního počítače často protože může vrátit zpět stav údržby. 
+- Pokud si osvojila naplánované události, které umožňují proaktivní převzetí služeb při selhání nebo řádné vypnutí vašich úloh 15 minut před začátkem údržby vypnutí
 
 **Použití** samoobslužné údržby, pokud máte v úmyslu spustit virtuální počítač bez přerušení během fáze plánované údržby a žádné čítače označení uvedeného výše se vztahují. 
 
 Je nejvhodnější použít samoobslužné údržby v následujících případech:
-    - Potřebujete pro komunikaci přesné časovém intervalu pro správu nebo koncových zákazníků. 
-    - Potřebujete k dokončení údržby podle daného data. 
-    - Je nutné určit pořadí údržby, třeba vícevrstvou aplikaci zajistit bezpečné obnovení.
-    - Potřebujete více než 30 minut od čas obnovení virtuálního počítače mezi dvěma aktualizační doména (ud). K řízení času mezi aktualizačních doménách, musí spustit údržbu na vaše virtuální počítače jedné aktualizační doméně (UD) současně.
+- Potřebujete pro komunikaci přesné časovém intervalu pro správu nebo koncových zákazníků. 
+- Potřebujete k dokončení údržby podle daného data. 
+- Je nutné určit pořadí údržby, třeba vícevrstvou aplikaci zajistit bezpečné obnovení.
+- Potřebujete více než 30 minut od čas obnovení virtuálního počítače mezi dvěma aktualizační doména (ud). K řízení času mezi aktualizačních doménách, musí spustit údržbu na vaše virtuální počítače jedné aktualizační doméně (UD) současně.
 
 
 

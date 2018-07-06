@@ -12,18 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2018
+ms.date: 07/03/2018
 ms.author: sethm
-ms.openlocfilehash: feb4332f8f6b5ab26067b5c80a376cdee62c7739
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 0886c220dfe926c7dfd9fa378ebb3c13fc900cbf
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28984982"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37860033"
 ---
 # <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>Odeslání událostí do Azure Event Hubs pomocí rozhraní .NET Framework
-
-## <a name="introduction"></a>Úvod
 
 Event Hubs je služba, která zpracovává velké objemy dat událostí (telemetrie) z připojených zařízení a aplikací. Data, která shromáždíte pomocí služby Event Hubs, můžete uložit pomocí úložného clusteru nebo transformovat pomocí zprostředkovatele datové analýzy v reálném čase. Schopnost shromažďovat a zpracovávat velké množství událostí je klíčovou komponentou moderních aplikačních architektur, například internetu věcí (Internet of Things – IoT).
 
@@ -31,7 +29,7 @@ Díky tomuto kurzu se dozvíte, jak pomocí webu [Azure Portal](https://portal.a
 
 Pro absolvování tohoto kurzu musí být splněné následující požadavky:
 
-* [Microsoft Visual Studio 2015 nebo vyšší](http://visualstudio.com). Pro snímky obrazovky v tomto kurzu se používá Visual Studio 2017.
+* [Microsoft Visual Studio 2017 nebo vyšší](http://visualstudio.com).
 * Aktivní účet Azure. Pokud účet nemáte, můžete si ho bezplatně vytvořit během několika minut. Podrobnosti najdete v článku [Bezplatná zkušební verze Azure](https://azure.microsoft.com/free/).
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Vytvoření oboru názvů Event Hubs a centra událostí
@@ -40,7 +38,7 @@ Prvním krokem je použití webu [Azure Portal](https://portal.azure.com) k vytv
 
 ## <a name="create-a-sender-console-application"></a>Vytvoření konzolové aplikace Odesílatel
 
-V této části napíšete konzolovou aplikaci systému Windows, která zasílá události do vašeho centra událostí.
+V této části napíšete konzolovou aplikaci Windows, která zasílá události do vašeho centra událostí.
 
 1. Pomocí šablony projektu **Konzolová aplikace** vytvořte v sadě Visual Studio nový projekt desktopové aplikace Visual C#. Projekt pojmenujte **Odesílatel**.
    
@@ -60,8 +58,8 @@ V této části napíšete konzolovou aplikaci systému Windows, která zasílá
 5. K třídě **Program** přidejte následující pole a zástupné hodnoty nahraďte názvem centra událostí, které jste vytvořili v předchozí části, a připojovacím řetězcem na úrovni oboru názvů, který jste si předtím uložili.
    
   ```csharp
-  static string eventHubName = "{Event Hub name}";
-  static string connectionString = "{send connection string}";
+  static string eventHubName = "Your Event Hub name";
+  static string connectionString = "namespace connection string";
   ```
 6. Přidejte následující metodu do třídy **Program**:
    
@@ -103,6 +101,7 @@ V této části napíšete konzolovou aplikaci systému Windows, která zasílá
 Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
 
 ## <a name="next-steps"></a>Další postup
+
 Gratulujeme, sestavili jste funkční aplikaci, která vytvoří centrum událostí a odesílá data. Nyní se můžete podívat na některý z následujících scénářů:
 
 * [Příjem událostí pomocí třídy EventProcessorHost](event-hubs-dotnet-framework-getstarted-receive-eph.md)

@@ -1,6 +1,6 @@
 ---
-title: Licence samoobslužného resetování hesel – Azure Active Directory
-description: Azure AD samoobslužného resetování hesel licenční požadavky
+title: Licence samoobslužné resetování hesla – Azure Active Directory
+description: Azure AD samoobslužné resetování hesla licenčním požadavkům
 services: active-directory
 ms.service: active-directory
 ms.component: authentication
@@ -10,25 +10,25 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: b1cfb76c7e196441ebad3bcfcd1d788bd544ab74
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 64c12177e5cf6c82018731b493c0da22e1895b7f
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292555"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37855520"
 ---
-# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetování licenční požadavky pro hesla pomocí samoobslužné služby Azure AD
+# <a name="licensing-requirements-for-azure-ad-self-service-password-reset"></a>Resetovat licenčních požadavcích pro hesla pomocí samoobslužné služby Azure AD
 
-Aby funkce, pro vytvoření nového hesla Azure Active Directory (Azure AD) můžete *musí mít alespoň jednu licenci přiřazené ve vaší organizaci* pro daného uživatele. Řádná licence se požaduje, pokud uživatel přímo nebo nepřímo využívá výhod libovolné funkce, na kterou se tato licence vztahuje.
+V pořadí pro funkci resetování hesel v Azure Active Directory (Azure AD) můžete *musí mít v organizaci přiřazenu alespoň jednu licenci* pro tohoto uživatele. Řádná licence se požaduje, pokud uživatel přímo nebo nepřímo využívá výhod libovolné funkce, na kterou se tato licence vztahuje.
 
-* **Uživatelé cloudové**: Office 365 žádné placené SKU nebo Azure AD Basic
+* **Uživatelů pouze cloudu**: Office 365 placených SKU nebo Azure AD Basic
 * **Cloud** nebo **místních uživatelů**: Azure AD Premium P1 nebo P2, Enterprise Mobility + Security (EMS) nebo Microsoft 365
 
 ## <a name="licensing-requirements-for-password-writeback"></a>Licenční požadavky pro zpětný zápis hesla
 
-**Samoobslužné služby heslo resetovat nebo změnit nebo odemčení s místními zpětný zápis je funkce služby Azure AD premium**. Další informace o licencování najdete v tématu [Azure Active Directory ceny lokality](https://azure.microsoft.com/pricing/details/active-directory/).
+**Samoobslužné služby heslo resetovat/změny/odemknutí přes místní zpětný zápis je Prémiová funkce služby Azure AD**. Další informace o licencích najdete v článku [cenami služby Azure Active Directory web](https://azure.microsoft.com/pricing/details/active-directory/).
 
-Pokud chcete používat zpětný zápis hesla, musí mít jednu z následujících licencí přiřazených na vašeho klienta:
+Pokud chcete použít zpětný zápis hesla, musí mít jeden z přiřazené ve svém tenantovi následující licence:
 
 * Azure AD Premium P1
 * Azure AD Premium P2
@@ -39,21 +39,21 @@ Pokud chcete používat zpětný zápis hesla, musí mít jednu z následující
 * Microsoft 365 F1
 
 > [!WARNING]
-> Samostatné Office 365 licenční plány *nepodporují zpětný zápis hesla* a vyžadovat, že máte jeden z předchozí plánů pro tuto funkci pro práci.
+> Office 365 samostatné licenční plány *nepodporují zpětný zápis hesla* a vyžadují, abyste měli jeden z předchozích plánů pro tuto funkci pracovat.
 >
 
-Další licenční informace, včetně náklady, najdete na následujících stránkách:
+Další licenční informace, včetně nákladů, najdete na následujících stránkách:
 
-* [Azure Active Directory ceny lokality](https://azure.microsoft.com/pricing/details/active-directory/)
+* [Azure Active Directory, ceny za Web](https://azure.microsoft.com/pricing/details/active-directory/)
 * [Azure Active Directory funkce a možnosti](https://www.microsoft.com/cloud-platform/azure-active-directory-features)
 * [Enterprise Mobility + Security](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)
 * [Microsoft 365 Enterprise](https://www.microsoft.com/microsoft-365/enterprise)
 
-## <a name="enable-group-or-user-based-licensing"></a>Povolit skupinu nebo uživatele na základě licencí
+## <a name="enable-group-or-user-based-licensing"></a>Povolit skupiny nebo licencování na základě uživatele
 
-Azure AD nyní podporuje, na základě skupin licencí. Správci mohou přiřadit hromadných licencí pro skupinu uživatelů, než jim přiřadil najednou. Další informace najdete v tématu [přiřadit zkontrolujte a vyřešte problémy s licencí](../active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses).
+Azure AD teď podporuje licencování na základě skupiny. Správci mohou přiřadit hromadných licencí ke skupině uživatelů, a ne přiřazení postupně po jednom. Další informace najdete v tématu [přiřadit zkontrolujte a vyřešte problémy s licencemi](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
-Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, Správce musí určit **umístění využití** vlastnost na uživatele. Přiřazení licencí, lze provést v rámci **uživatele** > **profil** > **nastavení** části portálu Azure. *Při použití přiřazení skupiny licencí, zdědí všechny uživatele bez využití umístění zadané umístění adresáře.*
+Některé služby nejsou k dispozici ve všech umístěních. Předtím, než je možné přiřadit licence pro uživatele, musí správce zadat **místo využívání** vlastnost na uživatele. Přiřazení licencí můžete udělat v rámci **uživatele** > **profilu** > **nastavení** části webu Azure Portal. *Při použití přiřazení licence skupině dědí všechny uživatele bez zadaného místa využití umístění adresáře.*
 
 ## <a name="next-steps"></a>Další postup
 

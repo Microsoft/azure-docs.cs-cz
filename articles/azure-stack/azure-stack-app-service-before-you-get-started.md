@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 07/05/2018
 ms.author: anwestg
-ms.openlocfilehash: 660532118549a23416f4c0571845ec3517cb1b5b
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 22901374988f6654bc1fb282315db81bb17c815f
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436214"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857861"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Před zahájením práce s App Service ve službě Azure Stack
 
@@ -204,26 +204,26 @@ Při použití šablony Azure Resource Manageru jsou uživatelé už vytvořili.
 
 1. Spuštěním následujících příkazů vytvořte vlastníka sdílené složky a přihlašovací účty. Nahraďte `<password>` vlastními hodnotami.
 
-``` DOS
-net user FileShareOwner <password> /add /expires:never /passwordchg:no
-net user FileShareUser <password> /add /expires:never /passwordchg:no
-```
+   ``` DOS
+   net user FileShareOwner <password> /add /expires:never /passwordchg:no
+   net user FileShareUser <password> /add /expires:never /passwordchg:no
+   ```
 
 2. Nastavení hesla pro účty bez vypršení platnosti tak spustíte následující příkazy:
 
-``` DOS
-WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
-WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
-```
+   ``` DOS
+   WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
+   WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
+   ```
 
 3. Vytvoří místní skupiny FileShareUsers a FileShareOwners a do nich přidejte účty v prvním kroku:
 
-``` DOS
-net localgroup FileShareUsers /add
-net localgroup FileShareUsers FileShareUser /add
-net localgroup FileShareOwners /add
-net localgroup FileShareOwners FileShareOwner /add
-```
+   ``` DOS
+   net localgroup FileShareUsers /add
+   net localgroup FileShareUsers FileShareUser /add
+   net localgroup FileShareOwners /add
+   net localgroup FileShareOwners FileShareOwner /add
+   ```
 
 ### <a name="provision-the-content-share"></a>Poskytování obsahu sdílené složky
 

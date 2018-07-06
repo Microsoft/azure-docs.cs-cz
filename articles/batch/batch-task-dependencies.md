@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d9d58d12e8b2060fe6062118e639dd4f4a7504f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6a9b44ed56774466bae2f0f5d48b5e012382721b
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445549"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865229"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Vytvoření závislosti úkolů ke spuštění úlohy, které závisí na jiné úkoly
 
@@ -117,7 +117,7 @@ new CloudTask("Flowers", "cmd.exe /c echo Flowers")
 ``` 
 
 ### <a name="task-id-range"></a>Rozsah ID úkolu
-V závislosti na mnoha různých nadřízeným úkolům, úkol závisí dokončení úkolů, jejichž ID ležet v rozsahu.
+V závislosti na mnoha různých nadřízeným úkolům úkol závisí na dokončení úkolů, jejichž ID ležet v rozsahu.
 K vytvoření závislost, zadejte první a poslední úlohy ID v rozsahu, který chcete [TaskDependencies][net_taskdependencies].[ OnIdRange] [ net_onidrange] statickou metodu při naplňování [DependsOn] [ net_dependson] vlastnost [CloudTask] [ net_cloudtask].
 
 > [!IMPORTANT]

@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 9b9f72812b1a1f0e30379c32e10d316fcbf71d3b
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 3c5629dc1ad87456583f5a713f16e696bc9b7b1e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37345585"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858659"
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Monitorování a ladění s využitím metrik ve službě Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Nejběžnější stavový kód chyby je 429 (přenosové rychlosti, omezení a o
 
 ## <a name="determining-the-throughput-distribution-across-partitions"></a>Zjištění propustnosti distribuce napříč oddíly
 
-S dobrým Kardinalita klíče oddílu je zásadní pro jakékoli škálovatelné aplikace. Pokud chcete zjistit propustnost distribuci libovolné dělené kolekce rozdělená na oddíly, přejděte **do okna metrik** v [webu Azure portal](https://portal.azure.com). V **propustnost** kartě rozpis úložiště se zobrazí v **maximální počet spotřebovaných RU/s pro jednotlivé fyzické oddíly** grafu. Následující obrázek znázorňuje příklad špatného distribuci dat doloženo výrazně nerovnoměrnou distribucí oddílu úplně vlevo. 
+S dobrým Kardinalita klíče oddílu je zásadní pro jakékoli škálovatelné aplikace. Pokud chcete zjistit propustnost distribuci libovolné dělený kontejner porušena oddíly, přejděte **do okna metrik** v [webu Azure portal](https://portal.azure.com). V **propustnost** kartě rozpis úložiště se zobrazí v **maximální počet spotřebovaných RU/s pro jednotlivé fyzické oddíly** grafu. Následující obrázek znázorňuje příklad špatného distribuci dat doloženo výrazně nerovnoměrnou distribucí oddílu úplně vlevo. 
 
 ![Jeden oddíl zobrazuje náročné využití v 15:05:00](media/use-metrics/metrics-17.png)
 
@@ -47,7 +47,7 @@ Může způsobit, že nerovnoměrné propustnost distribuce *horké* oddíly, co
 
 ## <a name="determining-the-storage-distribution-across-partitions"></a>Určení úložiště distribuce napříč oddíly
 
-S dobrým Kardinalita oddílů je zásadní pro jakékoli škálovatelné aplikace. Pokud chcete zjistit propustnost distribuci libovolné dělené kolekce rozdělená na oddíly, přejděte do okna metrik [webu Azure portal](https://portal.azure.com). Na kartě propustnost rozpis úložiště se zobrazí v maximální počet spotřebovaných RU/s každým grafem fyzický oddíl. Nízký distribuci dat doloženo výrazně nerovnoměrnou distribucí oddílu úplně vlevo je znázorněný na následujícím obrázku. 
+S dobrým Kardinalita oddílů je zásadní pro jakékoli škálovatelné aplikace. Pokud chcete zjistit propustnost distribuci libovolné dělený kontejner porušena oddíly, přejděte do okna metrik [webu Azure portal](https://portal.azure.com). Na kartě propustnost rozpis úložiště se zobrazí v maximální počet spotřebovaných RU/s každým grafem fyzický oddíl. Nízký distribuci dat doloženo výrazně nerovnoměrnou distribucí oddílu úplně vlevo je znázorněný na následujícím obrázku. 
 
 ![Příklad distribuce nízký dat](media/use-metrics/metrics-07.png)
 
@@ -55,7 +55,7 @@ Můžete hlavní příčiny, které klíče oddílu je zkosení distribuci po kl
 
 ![Klíč oddílu je zkosení distribuce](media/use-metrics/metrics-05.png)
 
-Po identifikaci který klíč oddílu je příčinou zkosení v distribuci, budete muset změnit rozdělení kolekce s více distribuované klíč oddílu. Další informace o dělení ve službě Azure Cosmos DB najdete v tématu [dělení a škálování ve službě Azure Cosmos DB](./partition-data.md).
+Po identifikaci který klíč oddílu je příčinou zkosení v distribuci, budete muset změnit rozdělení kontejneru s více distribuované klíč oddílu. Další informace o dělení ve službě Azure Cosmos DB najdete v tématu [dělení a škálování ve službě Azure Cosmos DB](./partition-data.md).
 
 ## <a name="comparing-data-size-against-index-size"></a>Porovnání dat velikosti velikost indexu
 
@@ -90,7 +90,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 *QueryMetrics* poskytuje podrobné informace o jak dlouho trvalo každou komponentu dotazu ke spuštění. Nejběžnější příčina pro dlouho běžící dotazy jsou kontroly (dotaz nebyl schopen využít indexy), které mohou být vyřešeny s lepší podmínky filtru.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Teď, když jste zjistili, jak k monitorování a ladění problémů pomocí metrik na webu Azure Portal k dispozici, můžete další informace týkající se vylepšení výkonu databáze najdete v následujících článcích:
 

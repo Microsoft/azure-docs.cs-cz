@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-geberr
 ms.service: cognitive-services
-ms.openlocfilehash: f004a0a1726ca6c513e2cb4c137f82ae40e31a01
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 479fa450b86d19032e75ef6aa511a7bdca608d75
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37344323"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37869039"
 ---
 # <a name="manage-intents"></a>Správa záměrů 
 Přidat [záměry](luis-concept-intent.md) do vaší aplikace LUIS k identifikaci skupin dotazy nebo příkazy, které mají stejné záměry. 
@@ -75,9 +75,9 @@ Zobrazit [přidat vzorek z existující utterance na stránce záměr nebo entit
 
 ## <a name="edit-an-utterance-on-intent-page"></a>Upravit utterance na stránce záměru
 
-Upravit utterance, vyberte ikonu tří teček (...) na pravém konci řádku pro tento utterance a pak vyberte **upravit**. Upravit text a stiskněte klávesu Enter na klávesnici.
+Upravit utterance, vyberte tři tečky (***...*** ) na pravém konci řádku pro tento utterance tlačítko a pak vyberte **upravit**. Upravit text a stiskněte klávesu Enter na klávesnici.
 
-![Stránce s podrobnostmi o snímek obrazovky záměrů, se zvýrazněným ikonu tří teček](./media/luis-how-to-add-intents/edit-utterance.png) 
+![Stránce s podrobnostmi o snímek obrazovky záměrů, se zvýrazněným tlačítkem tlačítko se třemi tečkami](./media/luis-how-to-add-intents/edit-utterance.png) 
 
 ## <a name="reassign-utterances-on-intent-page"></a>Změnit přiřazení projevy na stránce záměru
 Záměr projevů jeden nebo více můžete změnit změnou přiřazení na jiné záměr. 
@@ -92,7 +92,7 @@ Chcete-li změnit záměr projevů několik, zaškrtněte políčka nalevo od pr
 
 ## <a name="delete-utterances-on-intent-page"></a>Odstranit projevy na stránce záměru
 
-Pokud chcete odstranit utterance, vyberte ikonu tří teček (...) na pravém konci řádku pro tento utterance a pak vyberte **odstranit**. Utterance se odebere ze seznamu a aplikaci LUIS.
+Pokud chcete odstranit utterance, vyberte tři tečky (***...*** ) na pravém konci řádku pro tento utterance tlačítko a pak vyberte **odstranit**. Utterance se odebere ze seznamu a aplikaci LUIS.
 
 ![Stránce s podrobnostmi o snímek obrazovky záměrů, se zvýrazněnou možností odstranit](./media/luis-how-to-add-intents/delete-utterance-ddl.png)
 
@@ -141,6 +141,6 @@ Přepnout **tokeny zobrazení** zobrazíte tokeny namísto názvů typu entity. 
 ## <a name="train-your-app-after-changing-model-with-intents"></a>Po změně modelu pomocí tříd Intent trénování vaší aplikace
 Po přidání, úprava nebo odebrání záměrů, [trénování](luis-how-to-train.md) a [publikovat](luis-how-to-publish-app.md) vaší aplikace pro vaše změny ovlivnit dotazy koncový bod. 
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Po přidání záměrů do vaší aplikace, dalším krokem je začít přidávat [příklad projevy](luis-how-to-add-example-utterances.md) pro záměrů, které jste přidali. 

@@ -1,9 +1,9 @@
 ---
-title: Správa doporučení zabezpečení v Azure Security Center | Microsoft Docs
-description: Tento dokument vás provede jak doporučení v Azure Security Center pomáhá zůstat souladu se zásadami zabezpečení a ochraně vašich prostředků Azure.
+title: Správa doporučení zabezpečení v Azure Security Center | Dokumentace Microsoftu
+description: Tento dokument vás provede jak doporučení ve službě Azure Security Center pomoci chránit prostředky Azure a zůstat souladu se zásadami zabezpečení.
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 86c50c9f-eb6b-4d97-acb3-6d599c06133e
@@ -12,109 +12,136 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/04/2018
-ms.author: terrylan
-ms.openlocfilehash: 72070f46309adb526901192752fe421a3846398b
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.date: 04/07/2018
+ms.author: rkarlin
+ms.openlocfilehash: 7bb7f36338fe117a3e31834570b3ee5c3ae1b83b
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34364246"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856429"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Správa doporučení zabezpečení v Azure Security Center
-Tento dokument vás provede procesem jak používat doporučení v Azure Security Center k ochraně vašich prostředků Azure.
+Tento dokument vás provede postupy použijte doporučení ve službě Azure Security Center k ochraně vašich prostředků Azure.
 
 > [!NOTE]
-> Tento dokument vám tuto službu představí formou ukázkového nasazení.  Tento dokument není to podrobný průvodce.
+> Tento dokument vám tuto službu představí formou ukázkového nasazení.  Tento dokument není podrobný průvodce.
 >
 >
 
-## <a name="what-are-security-recommendations"></a>Jaké jsou doporučení zabezpečení?
+## <a name="what-are-security-recommendations"></a>Co jsou doporučení týkající se zabezpečení?
 Security Center pravidelně analyzuje stav zabezpečení vašich prostředků Azure. Když Security Center identifikuje potenciální ohrožení zabezpečení, vytvoří doporučení. Doporučení vás provedou procesem konfigurace potřebných kontrol.
 
 ## <a name="implementing-security-recommendations"></a>Implementace doporučení zabezpečení
-### <a name="set-recommendations"></a>Sadu doporučení
-V [nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md), Naučte se:
+### <a name="set-recommendations"></a>Sada doporučení
+V [nastavení zásad zabezpečení ve službě Azure Security Center](security-center-policies.md), zjistíte, jak:
 
 * Konfigurovat zásady zabezpečení.
 * Shromažďování dat zapněte.
-* Vyberte, které doporučení zobrazíte v rámci svých zásad zabezpečení.
+* Zvolte, které doporučení zobrazíte jako součást zásad zabezpečení.
 
-Aktuální zásady doporučení center kolem aktualizací systému, standardních pravidel, antimalwarových programů, [skupin zabezpečení sítě](../virtual-network/security-overview.md) na podsítí a síťových rozhraní, auditování databáze SQL, SQL database transparentní šifrování dat, a webové aplikace brány firewall.  [Nastavení zásad zabezpečení](security-center-policies.md) obsahuje popis jednotlivých možností doporučení.
+Aktuální zásady doporučení center po aktualizacích systému, pravidla standardních hodnot, antimalwarové programy [skupiny zabezpečení sítě](../virtual-network/security-overview.md) podsítí a síťových rozhraní, auditování služby SQL database, SQL database transparentní šifrování dat, a brány firewall webových aplikací.  [Nastavení zásad zabezpečení](security-center-policies.md) obsahuje popis jednotlivých možností doporučení.
 
-### <a name="monitor-recommendations"></a>Monitorování doporučení
-Po nastavení zásad zabezpečení bude Security Center analyzovat stav zabezpečení vašich prostředků Azure za účelem identifikace potenciálních ohrožení zabezpečení. **Doporučení** dlaždici v části **přehled** umožňuje zjistit celkový počet doporučení identifikovaný Security Center.
+### <a name="monitor-recommendations"></a>Doporučení pro monitorování
+Po nastavení zásad zabezpečení bude Security Center analyzovat stav zabezpečení vašich prostředků Azure za účelem identifikace potenciálních ohrožení zabezpečení. **Doporučení** dlaždici v části **přehled** vás informuje, celkový počet doporučení identifikované pomocí služby Security Center.
 
-![Dlaždice doporučení][1]
+![Doporučení pro dlaždici][1]
 
-Pokud chcete zobrazit podrobnosti o každé doporučení, vyberte **doporučení dlaždici** pod **přehled**. **Doporučení** otevře.
+Pokud chcete zobrazit podrobnosti o jednotlivých doporučení, vyberte **doporučení dlaždici** pod **přehled**. **Doporučení** otevře.
 
 ![Filtrovat doporučení][2]
 
-Doporučení jsou zobrazena ve formátu tabulky, kde každý řádek představuje jedno konkrétní doporučení. Sloupce v této tabulce jsou:
+Doporučení jsou zobrazena ve formátu tabulky, kde každý řádek představuje jedno konkrétní doporučení. Jsou sloupce této tabulky:
 
-* **Popis**: vysvětluje doporučení a co je třeba provést k vyřešení ho.
-* **PROSTŘEDEK**: jsou uvedeny prostředky, u kterých bude použito toto doporučení.
+* **Popis**: vysvětluje doporučení a co je potřeba provést k vyřešení ho.
+* **PROSTŘEDEK**: seznam materiálů, u kterých bude použito toto doporučení.
 * **Stav**: popisuje aktuální stav doporučení:
-  * **Otevřete**: doporučení dosud nebylo řešeno.
-  * **V průběhu**: doporučení se aktuálně na prostředky a není třeba žádné akce.
-  * **Vyřešit**: doporučení již byla dokončena (v tomto případě řádku je zobrazena šedě).
+  * **Otevřít**: doporučení dosud nebylo řešeno.
+  * **V průběhu**: doporučení se aktuálně zavádí prostředky a nevyžaduje žádné akce se.
+  * **Vyřešené**: doporučení již byla dokončena (v tomto případě řádku je zobrazena šedě).
 * **SEVERITY** (Závažnost): Popisuje závažnost tohoto konkrétního doporučení:
-  * **Vysoká**: ohrožení zabezpečení existuje u významného prostředku (například aplikace, virtuální počítač nebo skupinu zabezpečení sítě) a vyžaduje pozornost.
-  * **Střední**: byla zjištěna chyba zabezpečení a nekritické nebo další kroky jsou požadovány k jeho odstranění nebo k dokončení procesu.
-  * **Nízká**: obsahuje chybu, mělo by se řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení, nejsou přítomny nízkou doporučení, ale můžete filtrovat podle nízkou doporučení, pokud chcete, aby byla zobrazena.)
+  * **Vysoká**: ohrožení zabezpečení existuje u významného prostředku (například aplikace, virtuálního počítače nebo skupiny zabezpečení sítě) a vyžaduje pozornost.
+  * **Střední**: existuje ohrožení zabezpečení a nekritické nebo další kroky jsou požadovány k jeho odstranění nebo k dokončení procesu.
+  * **Nízká**: existuje ohrožení zabezpečení, které mělo by se řešit, ale nevyžaduje okamžitou pozornost. (Ve výchozím nastavení, s nízkou doporučení nejsou k dispozici, ale můžete filtrovat podle doporučení s nízkou, pokud chcete zobrazit.)
 
-Použijte v následující tabulce vám pomohou pochopit dostupné doporučení a co každé z nich dělá Pokud použijete ho jako odkaz.
+V následující tabulce použijte jako odkaz vám pomůžou pochopit dostupné doporučení a každý z nich, co dělá když je použijete.
 
 > [!NOTE]
-> Můžete zjistit [classic a modelech nasazení Resource Manager](../azure-classic-rm.md) pro prostředky Azure.
+> Chcete se dozvědět [klasické modely nasazení a modely nasazení Resource Manager](../azure-classic-rm.md) pro prostředky Azure.
 >
 >
 
 | Doporučení | Popis |
 | --- | --- |
-| [Povolení shromažďování dat pro předplatná](security-center-enable-data-collection.md) |Doporučuje zapnout shromažďování dat v zásadě zabezpečení pro každou z vašich předplatných a všechny virtuální počítače Azure (VM) a počítače mimo Azure. |
-| [Náprava konfigurací zabezpečení](security-center-remediate-os-vulnerabilities.md) |Doporučuje zarovnat vaše konfigurace operačního systému s pravidla zabezpečení doporučená konfigurace, například, zakázat ukládání hesel. |
-| [Instalace aktualizací systému](security-center-apply-system-updates.md) |Doporučuje nasazení chybí systému zabezpečení a důležité aktualizace pro Windows a virtuální počítače s Linuxem a počítače. |
-| [Použít pouze v době provedená sítě řízení přístupu](security-center-just-in-time.md) | Doporučuje se použít jenom v přístup k časovému virtuálních počítačů. Právě v čase je funkce ve verzi preview a je k dispozici ve standardní vrstvě služby Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md). |
+| [Povolení shromažďování dat pro předplatná](security-center-enable-data-collection.md) |Doporučuje zapnout shromažďování dat v zásadách zabezpečení pro každý z vašich předplatných a všechny virtuální počítače Azure (virtuální počítače) a počítače mimo Azure. |
+| [Náprava konfigurací zabezpečení](security-center-remediate-os-vulnerabilities.md) |Doporučuje konfiguraci operačního systému se konfigurace pravidla doporučené zabezpečení, například zarovnání, není povoleno ukládání hesel. |
+| [Instalace aktualizací systému](security-center-apply-system-updates.md) |Doporučuje nasazení chybějících zabezpečení systému a kritických aktualizací do Windows a virtuální počítače s Linuxem a počítačích. |
+| [Použít Just-In-Time řízení přístupu k síti](security-center-just-in-time.md) | Doporučuje se použít dočasný přístup virtuálních počítačů v. Jenom v čase je funkce ve verzi preview a dostupné na úrovni Standard služby Security Center. Další informace o cenových úrovních služby Security Center najdete na stránce s [cenami](security-center-pricing.md). |
 | [Restartování po aktualizacích systému](security-center-apply-system-updates.md#reboot-after-system-updates) |Doporučuje, abyste restartovali virtuální počítač k dokončení procesu instalace aktualizací systému. |
-| [Přidání brány firewall webových aplikací](security-center-add-web-application-firewall.md) |Doporučuje, která můžete nasadit brány firewall webových aplikací (firewall webových aplikací) pro koncových bodů webové. Doporučení firewall webových aplikací je zobrazený pro všechny veřejné přístupných IP adresy (IP úrovni Instance nebo IP skupinu s vyrovnáváním zatížení), skupinu zabezpečení sítě spojenou s otevřete příchozí webovými porty (80,443). </br>Security Center doporučuje zřízení firewall webových aplikací, které pomáhají bránit proti útokům na cílení na vaše webové aplikace na virtuální počítače a služby App Service Environment. Je aplikaci služby prostředí (App Service Environment) [Premium](https://azure.microsoft.com/pricing/details/app-service/) služby možnost plánu služby Azure App Service, která poskytuje plně izolovaném a vyhrazeném prostředí pro zabezpečené spouštění aplikací Azure App Service. Další informace o App Service Environment, najdete v článku [dokumentace k aplikaci služby prostředí](../app-service/environment/intro.md).</br>Přidáním těchto aplikací na vaše stávající nasazení firewall webových aplikací můžete chránit několika webových aplikací ve službě Security Center. |
-| [Finalizace ochrany aplikací](security-center-add-web-application-firewall.md#finalize-application-protection) |K dokončení konfigurace firewall webových aplikací, musí být přenos přesměruje do zařízení firewall webových aplikací. Následující toto doporučení dokončení změny potřebné instalační. |
-| [Přidání brány firewall příští generace](security-center-add-next-generation-firewall.md) |Doporučuje přidat brány Firewall pro další generace (NGFW) z partnera společnosti Microsoft pro zvýšení ochrany vaší zabezpečení. |
-| [Směrování provozu jenom přes NGFW](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only) |Doporučuje konfiguraci pravidla zabezpečení skupiny (NSG) sítě, které vynutit příchozí provoz do virtuálního počítače prostřednictvím vaší NGFW. |
+| [Přidání brány firewall webových aplikací](security-center-add-web-application-firewall.md) |Doporučuje, firewall webových aplikací (WAF) pro koncové body webové nasazení. Doporučení WAF se zobrazí pro jakékoli veřejnou IP adresu (IP adresa na úrovni Instance nebo IP adresu s vyrovnáváním zatížení), který má skupinu zabezpečení sítě spojenou s otevřenými vstupními webovými porty (80,443). </br>Security Center doporučuje zřízení WAF, které pomáhají bránit útokům, které cílí na vaše webové aplikace na virtuálních počítačích a ve službě App Service Environment. App Service Environment (ASE) je [Premium](https://azure.microsoft.com/pricing/details/app-service/) služeb možnost plánu služby Azure App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění aplikací Azure App Service. Další informace o službě ASE, najdete v článku [dokumentace pro App Service Environment](../app-service/environment/intro.md).</br>Přidáním těchto aplikací na vašich stávajících nasazení WAF může chránit několik webových aplikací ve službě Security Center. |
+| [Finalizace ochrany aplikací](security-center-add-web-application-firewall.md#finalize-application-protection) |K dokončení konfigurace brány WAF, musí přesměrovat provoz do zařízení WAF. Toto doporučení dokončení změny nezbytné instalační program. |
+| [Přidání brány firewall příští generace](security-center-add-next-generation-firewall.md) |Doporučuje se přidání brány Firewall pro další generace (NGFW) od partnera Microsoftu o navýšení vaší ochrany zabezpečení. |
+| [Směrování provozu jenom přes NGFW](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only) |Doporučuje konfiguraci sítě pravidla skupiny zabezpečení (NSG), které vynucují příchozí provoz k vašemu virtuálnímu počítači přes vaše NGFW. |
 | [Instalace Endpoint Protection](security-center-install-endpoint-protection.md) |Doporučuje, abyste do virtuálních počítačů nainstalovali antimalwarové programy (platí pouze pro virtuální počítače s Windows). |
-| [Povolení skupin zabezpečení sítě pro podsítě nebo virtuální počítače](security-center-enable-network-security-groups.md) |Doporučuje, abyste povolili skupiny Nsg na podsítě nebo virtuálních počítačů. |
-| [Omezení přístupu prostřednictvím internetové koncový bod](security-center-restrict-access-through-internet-facing-endpoints.md) |Doporučuje konfigurace pravidla pro příchozí provoz pro skupiny Nsg. |
-| [Povolení auditování a detekce hrozeb na SQL serverech](security-center-enable-auditing-on-sql-servers.md) |Doporučuje zapnout auditování a zjišťování hrozeb pro servery Azure SQL. (Jenom služba azure SQL. Neobsahuje SQL běžících na virtuálních počítačích.) |
-| [Povolení auditování a detekce hrozeb v databázích SQL](security-center-enable-auditing-on-sql-databases.md) |Doporučuje zapnout auditování a zjišťování hrozeb pro databáze Azure SQL. (Jenom služba azure SQL. Neobsahuje SQL běžících na virtuálních počítačích.) |
-| [Povolit transparentní šifrování dat v databázích SQL](security-center-enable-transparent-data-encryption.md) |Doporučuje se, že povolíte šifrování pro databáze SQL. (Služba azure SQL pouze.) |
-| [Povolení agenta virtuálního počítače](security-center-enable-vm-agent.md) |Umožňuje vám zobrazit, které virtuální počítače vyžadují agenta virtuálního počítače. Agent virtuálního počítače musí být nainstalován na virtuálních počítačích na opravu zřizování, kontrolu, kontrolu směrného plánu a antimalwarových programů. Agent virtuálního počítače je ve výchozím nastavení nainstalován na virtuálních počítačích nasazených z Azure Marketplace. V článku [Agenti a rozšíření virtuálních počítačů – Část 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) najdete informace o tom, jak agenta virtuálního počítače nainstalovat. |
+| [Povolit skupiny zabezpečení sítě u podsítí nebo virtuálních počítačů](security-center-enable-network-security-groups.md) |Doporučuje povolit skupiny Nsg na podsítě nebo virtuálních počítačů. |
+| [Omezit přístup přes internetový koncový bod](security-center-restrict-access-through-internet-facing-endpoints.md) |Doporučuje nakonfigurovat pravidla pro příchozí provoz pro skupiny zabezpečení sítě. |
+| [Povolení auditování a detekce hrozeb na SQL serverech](security-center-enable-auditing-on-sql-servers.md) |Doporučuje, zapněte auditování a detekce hrozeb pro servery Azure SQL. (Pouze služby azure SQL. Nezahrnuje běžící na virtuálních počítačích SQL.) |
+| [Povolení auditování a detekce hrozeb v databázích SQL](security-center-enable-auditing-on-sql-databases.md) |Doporučuje, zapněte auditování a detekci hrozeb u databází Azure SQL. (Pouze služby azure SQL. Nezahrnuje běžící na virtuálních počítačích SQL.) |
+| [Povolit transparentní šifrování dat v databázích SQL](security-center-enable-transparent-data-encryption.md) |Doporučuje povolit šifrování pro databáze SQL. (Azure SQL služby pouze.) |
+| [Povolení agenta virtuálního počítače](security-center-enable-vm-agent.md) |Umožňuje vám zobrazit, které virtuální počítače vyžadují agenta virtuálního počítače. O zřízení opravu, vyhledávání směrných plánů a antimalwarové programy musí být Agent virtuálního počítače nainstalovaný na virtuálních počítačích. Agent virtuálního počítače je ve výchozím nastavení nainstalován na virtuálních počítačích nasazených z Azure Marketplace. V článku [Agenti a rozšíření virtuálních počítačů – Část 2](http://azure.microsoft.com/blog/2014/04/15/vm-agent-and-extensions-part-2/) najdete informace o tom, jak agenta virtuálního počítače nainstalovat. |
 | [Použití šifrování disku](security-center-apply-disk-encryption.md) |Doporučuje, abyste disky svých virtuálních počítačů zašifrovali pomocí služby Azure Disk Encryption (platí pro virtuální počítače s Windows a Linuxem). Na virtuálním počítači se doporučuje šifrování svazku operačního systému i svazku s daty. |
-| [Poskytnutí podrobností kontaktů zabezpečení](security-center-provide-security-contact-details.md) |Doporučuje se, že zadáte zabezpečení kontaktní informace pro každé z vašich předplatných. Kontaktní informace je e-mailovou adresu a telefonní číslo. Tyto informace slouží k vás kontaktovat, pokud náš tým zabezpečení zjistí, že jsou ohrožení zabezpečení vašich prostředků. |
-| [Aktualizace verze operačního systému](security-center-update-os-version.md) |Doporučuje aktualizovat na verzi operačního systému (OS) pro cloudové služby na nejnovější dostupnou verzi pro operačních systémů.  Další informace o službách Cloud Services najdete v tématu [cloudové služby přehled](../cloud-services/cloud-services-choose-me.md). |
+| [Poskytnutí podrobností kontaktů zabezpečení](security-center-provide-security-contact-details.md) |Doporučuje se, že zadáte zabezpečení kontaktní informace na každé z vašich předplatných. Kontaktní údaje je e-mailovou adresu a telefonní číslo. Tyto informace slouží k vás kontaktovat, pokud náš tým zabezpečení zjistí ohrožení vašich prostředků. |
+| [Aktualizace verze operačního systému](security-center-update-os-version.md) |Doporučuje se aktualizovat verzi operačního systému (OS) pro cloudové služby na nejnovější verzi k dispozici pro váš operační systém řady.  Další informace o službách Cloud Services, najdete v článku [Přehled služby Cloud Services](../cloud-services/cloud-services-choose-me.md). |
 | [Není nainstalováno posouzení ohrožení zabezpečení](security-center-vulnerability-assessment-recommendations.md) |Doporučuje, abyste na vašem virtuálním počítači nainstalovali řešení posouzení ohrožení zabezpečení. |
 | [Náprava ohrožení zabezpečení](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |Umožňuje vám zobrazit ohrožení zabezpečení systému a aplikací zjištěná řešením posouzení ohrožení zabezpečení nainstalovaným na vašem virtuálním počítači. |
-| [Povolit šifrování pro účet úložiště Azure](security-center-enable-encryption-for-storage-account.md) | Doporučuje povolit šifrování služby úložiště Azure pro data v klidovém stavu. Šifrování služby úložiště (SSE) funguje tak, že šifrování dat při je zapsán do úložiště Azure a dešifruje před načtení. SSE aktuálně nejsou k dispozici pouze pro službu Azure Blob lze použít pro objekty BLOB bloku, objektů BLOB stránky a doplňovacích objektů BLOB. Další informace najdete v tématu [šifrování služby úložiště pro data v klidovém stavu](../storage/common/storage-service-encryption.md).</br>SSE je podporována pouze na účty úložiště Resource Manager. |
-
+| [Povolit šifrování pro účet služby Azure Storage](security-center-enable-encryption-for-storage-account.md) | Doporučuje povolit šifrování služby Azure Storage pro neaktivní uložená data. Šifrování služby Storage (SSE) funguje tak, že šifrování dat, když se zapisují do úložiště Azure a dešifruje před načítání. SSE je momentálně dostupná jenom pro službu Azure Blob service a lze použít pro objekty BLOB bloku, objekty BLOB stránky a doplňovací objekty BLOB. Další informace najdete v tématu [šifrování služby Storage pro neaktivní uložená data](../storage/common/storage-service-encryption.md).</br>SSE je podporována pouze pro účty úložiště Resource Manageru. |
+| App Service by měly být dostupné jenom přes protokol HTTPS | Doporučuje se pouze omezit přístup služby App Service přes protokol HTTPS. |
+| Webové sokety by mělo být zakázáno pro webovou aplikaci| Doporučuje, abyste si pečlivě používání webových soketů ve webových aplikacích.  Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb. |
+| Použijte vlastní domény pro webovou aplikaci | Doporučuje, použijte vlastní domény k ochraně webové aplikace před běžnými útoky, jako je útok phishing a další útoky související s DNS. |
+| Nakonfigurovat omezení IP adres pro webovou aplikaci | Doporučuje se, že můžete definovat seznam IP adres, které můžou přistupovat k vaší aplikace.  Použití omezení IP adres, ochrání webovou aplikaci před běžnými útoky. |
+| Nejsou povoleny všechny ("*") prostředkům pro přístup k aplikaci | Doporučuje, nenastavujte parametr WEBSITE_LOAD_CERTIFICATES na "*". Nastavení parametru na "*" znamená, že všechny certifikáty se načtou do úložiště osobních certifikátů webové aplikace.  To může vést k porušení principu nejnižší úrovně oprávnění, jak je pravděpodobné, že web potřebuje přístup ke všem certifikátům za běhu. |
+| CORS by nemělo umožňovat každý prostředek pro přístup k aplikaci | Doporučuje se, že povolíte jenom požadované domén pro interakci s vaší webovou aplikací. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat přístup k webové aplikaci všem doménám. |
+| Použijte nejnovější podporované rozhraní .NET Framework pro webovou aplikaci | Doporučuje se, že používáte nejnovější verzi rozhraní .NET Framework pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
+| Použít nejnovější podporovanou verzi Javy pro webovou aplikaci | Doporučuje se, že používáte nejnovější verzi Javy pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
+| Použít nejnovější podporovanou verzi PHP pro webovou aplikaci | Doporučuje se, že používáte nejnovější verzi PHP pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
+| [Přidání brány firewall webových aplikací](security-center-add-web-application-firewall.md) |Doporučuje, firewall webových aplikací (WAF) pro koncové body webové nasazení. Doporučení WAF se zobrazí pro jakékoli veřejnou IP adresu (IP adresa na úrovni Instance nebo IP adresu s vyrovnáváním zatížení), který má skupinu zabezpečení sítě spojenou s otevřenými vstupními webovými porty (80,443).</br></br>Security Center doporučuje zřízení WAF, které pomáhají bránit útokům, které cílí na vaše webové aplikace na virtuálních počítačích a ve službě App Service Environment. App Service Environment (ASE) je [Premium](https://azure.microsoft.com/pricing/details/app-service/) služeb možnost plánu služby Azure App Service, která poskytuje plně izolované a vyhrazené prostředí pro bezpečné spouštění aplikací Azure App Service. Další informace o službě ASE, najdete v článku [dokumentace pro App Service Environment](../app-service/environment/intro.md).</br></br>Přidáním těchto aplikací na vašich stávajících nasazení WAF může chránit několik webových aplikací ve službě Security Center. |
+| [Finalizace ochrany aplikací](security-center-add-web-application-firewall.md#finalize-application-protection) |K dokončení konfigurace brány WAF, musí přesměrovat provoz do zařízení WAF. Toto doporučení dokončení změny nezbytné instalační program. |
+| Použít nejnovější podporovanou verzi Node.js pro webovou aplikaci | Doporučuje se, že používáte nejnovější verzi Node.js pro nejnovější třídy zabezpečení. Použití starší třídy a typy můžou ohrožovat zabezpečení aplikace. |
+| CORS by nemělo umožňovat každý prostředek pro přístup k aplikaci Function App | Doporučuje se, že povolíte jenom požadované domén pro interakci s vaší webovou aplikací. Pro různé prostředků zdroji (CORS) pro sdílení obsahu by nemělo umožňovat všechny domény pro přístup k vaší aplikaci funkcí. |
+| Použijte vlastní domény pro aplikaci Function App | Doporučuje, použijte vlastní domény k ochraně aplikace function app před běžnými útoky, jako je útok phishing a další útoky související s DNS. |
+| Nakonfigurovat omezení IP adres pro aplikaci Function App | Doporučuje se, že můžete definovat seznam IP adres, které můžou přistupovat k vaší aplikace. Použití omezení IP adres chrání před běžnými útoky aplikaci function app. |
+| Funkce aplikace by měla být přístupná jen přes HTTPS | Doporučuje se pouze omezit přístup z aplikace Function App přes protokol HTTPS. |
+| Vzdálené ladění by měl být vypnuté pro aplikaci Function App | Doporučuje vypnout ladění pro aplikace Function App, pokud už nepotřebujete ho používat. Vzdálené ladění vyžaduje příchozí porty potřeba otevřít v aplikaci Function App. |
+| Webové sokety by mělo být zakázáno pro aplikaci Function App | Doporučuje, abyste pečlivě zkontrolujte použití procedury webové sokety v rámci aplikace Function App. Protokol webových soketů se dá ohrozit různými typy bezpečnostních hrozeb. |
+| Určení více než jednoho vlastníka předplatného | Doporučuje se určit více než jednoho vlastníka předplatného abyste měli redundance přístup správce. |
+| Určit vlastníky až 3 v rámci předplatného | Doporučuje se určit méně než 3 na vlastníky těchto předplatných za účelem snížení riziko porušení zabezpečení ohroženým uživatelem. |
+| Povolte MFA pro účty s oprávněními vlastníka v rámci předplatného | Doporučuje povolit Vícefaktorové ověřování (MFA) pro všechny účty předplatných s oprávněními správce nedošlo k porušení zabezpečení účtů nebo prostředků. |
+| Povolte MFA pro účty s oprávněním pro zápis v předplatném | Doporučuje povolit Vícefaktorové ověřování (MFA) pro všechny účty předplatných s oprávněními pro zápis do nedošlo k porušení zabezpečení účtů nebo prostředků. |
+| Povolte MFA pro účty s oprávněním pro čtení v rámci předplatného | Doporučuje povolit Vícefaktorové ověřování (MFA) pro všechny účty předplatných s oprávněními pro čtení k nedošlo k porušení zabezpečení účtů nebo prostředků. |
+| Z předplatného odebrat externí účty s oprávněním pro čtení | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními pro čtení z předplatného. |
+| Z předplatného odebrat externí účty s oprávněním pro zápis | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními pro zápis z předplatného. |
+| Z předplatného odebrat externí účty s oprávněními vlastníka | Doporučuje, aby nedocházelo k nemonitorovanému přístupu odebrat externí účty s oprávněními vlastníka ze svého předplatného. |
+| Odeberte zastaralé účty z předplatného | Doporučuje odebrat zastaralé účty z vašich předplatných. |
+| Z předplatného odebrat zastaralé účty s oprávněními vlastníka | Doporučuje odebrat zastaralé účty s oprávněními vlastníka z vašich předplatných. |
 Můžete filtrovat a zavřít doporučení.
 
-1. Vyberte **filtru** na **doporučení** okno. **Filtru** otevře se okno a vybrat stav a závažnost hodnoty, které chcete vidět.
+1. Vyberte **filtr** na **doporučení** okno. **Filtr** se otevře okno a vybrat závažnost a stavu hodnoty, které chcete zobrazit.
 
-2. Pokud zjistíte, že doporučení se nedá použít, můžete zrušit doporučení a pak ji odfiltrovat ze zobrazení. Existují dva způsoby zamítnutí doporučení. Jedním ze způsobů je klikněte pravým tlačítkem na položku a pak vyberte **přeskočení**. Druhá je pozastavte ukazatel myši nad položku, klikněte na tlačítko se třemi tečkami, které se zobrazí napravo a potom vyberte **přeskočení**. Kliknutím můžete zobrazit dismissed doporučení **filtru**a potom vyberete **zamítnuto**.
+2. Pokud zjistíte, že doporučení se nedá použít, můžete zavřít doporučení a pak ji odfiltrovat ze zobrazení. Existují dva způsoby zamítnutí doporučení. Jedním ze způsobů je klikněte pravým tlačítkem myši klikněte na položku a potom vyberte **Zavřít**. Druhá je najeďte myší na položku, klikněte na tlačítko se třemi tečkami, které se zobrazí napravo a pak vyberte **Zavřít**. Kliknutím si můžete zobrazit dismissed doporučení **filtr**a pak vyberete **zamítnuto**.
 
-    ![Zavření doporučení][3]
+    ![Zavřít doporučení][3]
 
-### <a name="apply-recommendations"></a>Použít doporučení
-Po kontrole všech doporučení, rozhodněte, který jeden byste měli použít první. Doporučujeme používat hodnocení závažnosti, jako parametr hlavní k vyhodnocení, která doporučení by měl použít první.
+### <a name="apply-recommendations"></a>Použití doporučení
+Po kontrole všech doporučení, rozhodněte, které ten, který jste měli nejdřív použít. Doporučujeme používat hodnocení závažnosti, protože parametr hlavní k vyhodnocení, které doporučení bude použito první.
 
-V tabulce předchozí doporučení vyberte doporučení a provede ji jako příklad tom, jak používat doporučení.
+V tabulce výše uvedených doporučení vyberte doporučení a projděte jej jako příklad toho, jak chcete doporučení použít.
 
 ## <a name="next-steps"></a>Další postup
-V tomto dokumentu jste se seznámili s doporučení zabezpečení v Centru zabezpečení. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
+V tomto dokumentu jste se seznámili doporučení zabezpečení v Security Center. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
 
-* [Nastavení zásad zabezpečení v Azure Security Center](security-center-policies.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro skupiny prostředků a předplatná Azure.
+* [Nastavení zásad zabezpečení ve službě Azure Security Center](security-center-policies.md) – zjistěte, jak nakonfigurovat zásady zabezpečení pro vaše předplatná Azure a skupiny prostředků.
 * [Sledování stavu zabezpečení v Azure Security Center](security-center-monitoring.md) – Naučte se sledovat stav svých prostředků Azure.
-* [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reakce na výstrahy zabezpečení.
+* [Správa a zpracování výstrah zabezpečení ve službě Azure Security Center](security-center-managing-and-responding-alerts.md) – zjistěte, jak spravovat a reagovat na výstrahy zabezpečení.
 * [Sledování partnerských řešení pomocí Azure Security Center](security-center-partner-solutions.md) – Zjistěte, jak pomocí Azure Security Center sledovat stav vašich partnerských řešení.
 * [Azure Security Center – nejčastější dotazy](security-center-faq.md) – Přečtěte si nejčastější dotazy o použití této služby.
 * [Blog o zabezpečení Azure](http://blogs.msdn.com/b/azuresecurity/) – Přečtěte si příspěvky o zabezpečení Azure a dodržování předpisů.

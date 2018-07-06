@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 306032ece4feda0e8132db1e95c4a229472e6c04
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3630d4d694452f2c619e707d1e2e58f1bfe71c0e
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/04/2018
-ms.locfileid: "34643494"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37858948"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Auditování ve službě Azure SQL Data Warehouse
 
@@ -52,8 +52,9 @@ Zásady auditu mohou být definovány pro konkrétní databázi nebo jako výcho
 > * Chcete použít jinou *účtu úložiště* nebo *dobu uchování* konkrétní databáze.
 > * Chcete auditovat typy událostí nebo kategorie pro určitou databázi, která se liší od ostatních databází na serveru. Například můžete mít vloží tabulky, které musí být auditován jenom pro konkrétní databáze.
 > * Chcete použít detekci hrozeb, která je aktuálně podporuje jen při auditování na úrovni databáze.
->
 
+> [!IMPORTANT]
+>Povolení auditování služby Azure SQL Data Warehouse, nebo na serveru, který má službu Azure SQL Data Warehouse, **povede k datovému skladu obnovuje**, i v případě, kde bylo dříve pozastaveno. **Zkontrolujte prosím, že se pozastavit datový sklad znovu po povolení auditování**.
 
 ## <a id="subheading-5"></a>Nastavení auditování na úrovni serveru pro všechny databáze
 

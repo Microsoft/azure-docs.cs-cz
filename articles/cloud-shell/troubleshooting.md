@@ -1,6 +1,6 @@
 ---
-title: Řešení potíží Azure Cloud prostředí | Microsoft Docs
-description: Řešení potíží s prostředí cloudu Azure
+title: Řešení potíží Azure Cloud Shell | Dokumentace Microsoftu
+description: Řešení potíží s Azure Cloud Shell.
 services: azure
 documentationcenter: ''
 author: maertendMSFT
@@ -12,102 +12,82 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 07/03/2018
 ms.author: damaerte
-ms.openlocfilehash: cffa67509690f4c594182fbe8104f0620da56bee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 21bc0633a9cc607325b48998791cb12631ecd0d7
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608946"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856483"
 ---
-# <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s & omezení Azure cloudové prostředí
+# <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Řešení potíží s & omezení Azure Cloud Shell
 
-Známá řešení pro odstraňování potíží v prostředí cloudu Azure patří:
+Známá řešení pro řešení potíží ve službě Azure Cloud Shell patří:
 
 ## <a name="general-troubleshooting"></a>Obecné řešení potíží
 
 ### <a name="early-timeouts-in-firefox"></a>Časná vypršení časových limitů ve Firefoxu
-- **Podrobnosti o**: prostředí cloudu využívá otevřete websocket předat vstupu a výstupu do prohlížeče. FireFox má přednastavené zásady, které můžete zavřít websocket předčasně způsobuje časná vypršení časových limitů v prostředí cloudu.
-- **Řešení**: Otevřete FireFox a přejděte do "o: konfigurace" do pole Adresa URL. Vyhledejte "network.websocket.timeout.ping.request" a změňte hodnotu od 0 do 10.
+- **Podrobnosti o**: využívá Cloud Shell otevřené protokolu websocket předat vstup/výstup do prohlížeče. FireFox má předvolby zásad, které můžete zavřít objekt websocket předčasně způsobí vypršení časového limitu pro dřívější ve službě Cloud Shell.
+- **Rozlišení**: Otevřete FireFox a přejděte na "o: konfigurace" v poli Adresa URL. Vyhledejte "network.websocket.timeout.ping.request" a změňte hodnotu od 0 do 10.
 
-### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Dialogové okno úložiště - Chyba: 403 RequestDisallowedByPolicy
-- **Podrobnosti o**: při vytváření účtu úložiště prostřednictvím cloudové prostředí, se nezdařilo z důvodu zásady služby Azure umístit váš správce. Chybová zpráva bude obsahovat: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- **Řešení**: Obraťte se na správce odstranit nebo aktualizovat Azure zásady odepření vytvoření úložiště Azure.
+### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Dialogové okno úložiště – Chyba: 403 RequestDisallowedByPolicy
+- **Podrobnosti o**: při vytváření účtu úložiště Cloud Shell neúspěšný kvůli zásady služby Azure umístěn váš správce. Chybová zpráva bude obsahovat: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **Rozlišení**: Obraťte se na správce odstranit nebo aktualizovat Azure policy odepření vytvoření úložiště Azure.
 
-### <a name="storage-dialog---error-400-disallowedoperation"></a>Dialogové okno úložiště - Chyba: 400 DisallowedOperation
- - **Podrobnosti o**: při použití předplatného služby Azure Active Directory, nelze vytvořit úložiště.
- - **Řešení**: používat předplatné Azure podporuje vytváření prostředků úložiště. Předplatná Azure AD, nebudou se moct vytváření prostředků Azure.
+### <a name="storage-dialog---error-400-disallowedoperation"></a>Dialogové okno úložiště – Chyba: 400 DisallowedOperation
+ - **Podrobnosti o**: Pokud používají předplatné Azure Active Directory, nelze vytvořit úložiště.
+ - **Rozlišení**: použít předplatné Azure dokáže vytvořit prostředky úložiště. Předplatná Azure AD, nebudou se moct vytváření prostředků Azure.
 
-### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminálové výstup - Chyba: připojení terminál se nezdařilo: Nelze vytvořit protokolu websocket. Stiskněte klávesu `Enter` se znovu připojit.
- - **Podrobnosti o**: cloudové prostředí vyžaduje schopnost připojení protokolu websocket prostředí cloudové infrastruktury.
- - **Řešení**: Zkontrolujte jste nakonfigurovali nastavení sítě umožnit odesílání požadavky https a požadavky protokolu websocket do domén v *. console.azure.com.
+### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminál výstup – Chyba: nepovedlo se připojit terminál: protokolu websocket nelze navázat. Stisknutím klávesy `Enter` znovu připojit.
+ - **Podrobnosti o**: službě Cloud Shell vyžaduje možnost připojení pomocí protokolu websocket k službě Cloud Shell infrastruktury.
+ - **Rozlišení**: Zkontrolujte jste nakonfigurovali nastavení sítě, abyste povolili odeslání žádosti o https a požadavky protokolu websocket na domén na *. console.azure.com.
 
-## <a name="bash-troubleshooting"></a>Bash, řešení potíží
+## <a name="bash-troubleshooting"></a>Řešení potíží s bash
 
-### <a name="cannot-run-the-docker-daemon"></a>Nelze spustit proces démon docker
+### <a name="cannot-run-the-docker-daemon"></a>Nelze spustit démona dockeru
 
-- **Podrobnosti o**: kontejner pro hostování prostředí shell využívá cloudové prostředí, v důsledku spuštění démona je zakázaná.
-- **Řešení**: využívat [počítač docker](https://docs.docker.com/machine/overview/), nainstalované ve výchozím nastavení se ke správě vzdáleného hostitele Docker docker kontejnery.
+- **Podrobnosti o**: využívá kontejner pro hostování vašeho prostředí Cloud Shell, v důsledku spuštění démona se nepovoluje.
+- **Rozlišení**: využívat [docker-machine](https://docs.docker.com/machine/overview/), která se instaluje standardně Spravovat kontejnery dockeru ze vzdáleného hostitele Docker.
 
-## <a name="powershell-troubleshooting"></a>Řešení potíží s prostředí PowerShell
+## <a name="powershell-troubleshooting"></a>Řešení potíží s Powershellu
 
-### <a name="no-home-directory-persistence"></a>Trvalost No $Home adresáře
+### <a name="gui-applications-are-not-supported"></a>Aplikace grafického uživatelského rozhraní se nepodporují.
 
-- **Podrobnosti o**: všechna data aplikace (například: git, vim a dalších) zapisuje do `$Home` není zachován po relací prostředí PowerShell.
-- **Řešení**: ve vašem profilu prostředí PowerShell vytvořit symbolický odkaz na aplikaci v konkrétní složce `clouddrive` na $Home.
+- **Podrobnosti o**: Pokud uživatel spustí aplikaci s grafickým uživatelským rozhraním, řádku tento příkaz nevrací. Například když uživatel duplicity privátní úložiště GitHub, který je dvoufaktorové ověřování povoleno, se zobrazí dialogové okno pro dokončení dvoufaktorového ověřování.  
+- **Rozlišení**: zavřete a znovu otevřete prostředí.
 
-### <a name="ctrlc-doesnt-exit-out-of-a-cmdlet-prompt"></a>CTRL + C není ukončit rutiny řádku
+### <a name="get-help--online-does-not-open-the-help-page"></a>Get-Help - online neotevřeno stránky s nápovědou
 
-- **Podrobnosti o**: Při pokusu o ukončení výzvou rutiny `Ctrl+C` neexistuje řádku.
-- **Řešení**: ukončíte řádku stiskněte `Ctrl+C` pak `Enter`.
+- **Podrobnosti o**: Pokud uživatel zadá `Get-Help Find-Module -online`, jeden jako zobrazí chybová zpráva: `Starting a browser to display online Help failed. No program or browser is associated to open the URI http://go.microsoft.com/fwlink/?LinkID=398574.`
+- **Rozlišení**: Zkopírujte adresu url a ručně ho otevřete ve webovém prohlížeči.
 
-### <a name="gui-applications-are-not-supported"></a>Grafické uživatelské rozhraní aplikací není podporované.
-
-- **Podrobnosti o**: Pokud uživatel spustí aplikaci pomocí grafického uživatelského rozhraní, nevrátí řádku. Například když uživatel provede klonování privátní úložiště GitHub, který je dvoufaktorové ověřování povoleno, se zobrazí dialogové okno pro dokončení dvoufaktorové ověřování.  
-- **Řešení**: zavřením a otevřením okna.
-
-### <a name="get-help--online-does-not-open-the-help-page"></a>Get-Help - online nelze otevřít stránku nápovědy
-
-- **Podrobnosti o**: Pokud typy uživatelů `Get-Help Find-Module -online`, například jeden zobrazí chybovou zprávu: `Starting a browser to display online Help failed. No program or browser is associated to open the URI http://go.microsoft.com/fwlink/?LinkID=398574.`
-- **Řešení**: Zkopírujte adresu url a ručně ho otevřete v prohlížeči.
-
-### <a name="troubleshooting-remote-management-of-azure-vms"></a>Řešení potíží s vzdálenou správu virtuálních počítačů Azure
+### <a name="troubleshooting-remote-management-of-azure-vms"></a>Řešení potíží s Vzdálená správa virtuálních počítačů Azure
 
 - **Podrobnosti o**: z důvodu výchozí nastavení brány Windows Firewall pro WinRM může uživatel zobrazit následující chyba: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Řešení**: Zkontrolujte, že je spuštěný virtuální počítač. Můžete spustit `Get-AzureRmVM -Status` chcete zjistit stav virtuálního počítače.  V dalším kroku přidejte nové pravidlo brány firewall na vzdálené virtuální počítač povolit vzdálená připojení z žádné podsítě, například
+- **Rozlišení**: Spusťte `Enable-AzureRmVMPSRemoting` povolit všechny aspekty vzdálené komunikace Powershellu na cílovém počítači.
+ 
 
- ``` Powershell
- New-NetFirewallRule -Name 'WINRM-HTTP-In-TCP-PSCloudShell' -Group 'Windows Remote Management' -Enabled True -Protocol TCP -LocalPort 5985 -Direction Inbound -Action Allow -DisplayName 'Windows Remote Management - PSCloud (HTTP-In)' -Profile Public
- ```
- Můžete použít [rozšíření vlastních skriptů Azure](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-customscript) předejdete přihlášení k virtuálnímu počítači vzdáleného pro přidání nové pravidlo brány firewall.
- Předchozí skript můžete uložit do souboru, například `addfirerule.ps1`a odešlete ji do vašeho kontejneru úložiště Azure.
- Opakujte následující příkaz:
+### <a name="dir-caches-the-result-in-azure-drive"></a>`dir` ukládá do mezipaměti výsledek v Azure disk
 
- ``` Powershell
- Get-AzureRmVM -Name MyVM1 -ResourceGroupName MyResourceGroup | Set-AzureRmVMCustomScriptExtension -VMName MyVM1 -FileUri https://mystorageaccount.blob.core.windows.net/mycontainer/addfirerule.ps1 -Run 'addfirerule.ps1' -Name myextension
- ```
-
-### <a name="dir-caches-the-result-in-azure-drive"></a>`dir` ukládá do mezipaměti výsledek v Azure jednotky
-
-- **Podrobnosti o**: výsledek `dir` se uloží do mezipaměti v Azure jednotce.
-- **Řešení**: Po vytvoření nebo odeberete prostředek v Azure jednotky zobrazení, spusťte `dir -force` aktualizovat.
+- **Podrobnosti o**: výsledek `dir` se uloží do mezipaměti v Azure disk.
+- **Rozlišení**: Po vytvoření nebo odebrání prostředku v zobrazení jednotka Azure, spusťte `dir -force` aktualizovat.
 
 ## <a name="general-limitations"></a>Obecná omezení
-Prostředí Azure Cloud má tato známá omezení:
+Azure Cloud Shell má tato známá omezení:
 
-### <a name="system-state-and-persistence"></a>Stav systému a trvalost
+### <a name="system-state-and-persistence"></a>Stav systému a trvalosti
 
-Na počítač, který obsahuje vaše cloudové prostředí relace je dočasný a bude recyklována po vaše relace je neaktivní po dobu 20 minut. Cloudové prostředí vyžaduje sdílenou složku Azure chcete připojit. Vaše předplatné v důsledku toho musí být schopni nastavit prostředků úložiště pro přístup k prostředí cloudu. Mezi další aspekty patří:
+Počítač, který poskytuje relace prostředí Cloud Shell je dočasný a bude recyklována po relaci je neaktivní po dobu 20 minut. Cloud Shell vyžaduje sdílenou složku Azure připojit. Předplatné musí být v důsledku toho nám nastavit prostředky úložiště pro přístup k službě Cloud Shell. Mezi další aspekty patří:
 
-* S použitím připojené úložiště, pouze změny v rámci `clouddrive` adresáře jsou nastavené jako trvalé. V Bash vaše `$Home` adresáře je také jako trvalý.
-* Sdílené složky Azure může být připojen pouze z uvnitř vaší [přiřazené oblast](persisting-shell-storage.md#mount-a-new-clouddrive).
-  * V Bash, spusťte `env` najít vaší oblasti nastavit jako `ACC_LOCATION`.
-* Soubory Azure podporuje pouze místně redundantního úložiště a účty geograficky redundantní úložiště.
+* Připojené úložiště, pouze změny v rámci `clouddrive` adresáře jsou trvalé. V prostředí Bash vaše `$Home` adresáře je také zachována.
+* Sdílené složky Azure je možné připojit pouze v rámci vaší [přiřazené oblasti](persisting-shell-storage.md#mount-a-new-clouddrive).
+  * V prostředí Bash, spusťte `env` najít vaši oblast nastavit jako `ACC_LOCATION`.
+* Služba soubory Azure podporuje jen místně redundantní úložiště a účtů geograficky redundantního úložiště.
 
 ### <a name="browser-support"></a>Podpora prohlížeče
 
-Cloudové prostředí podporuje nejnovější verze Microsoft Edge, Microsoft Internet Explorer, Google Chrome, Mozilla Firefox a Apple Safari. Safari v privátním režimu není podporována.
+Cloud Shell podporuje nejnovější verze Microsoft Edge, Microsoft Internet Explorer, Google Chrome, Mozilla Firefox a Apple Safari. Safari v privátním režimu není podporováno.
 
 ### <a name="copy-and-paste"></a>Kopírování a vkládání
 
@@ -115,44 +95,62 @@ Cloudové prostředí podporuje nejnovější verze Microsoft Edge, Microsoft In
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Pro daného uživatele může být aktivní pouze jeden prostředí
 
-Uživatelé mohou spouštět pouze jeden typ prostředí najednou, buď **Bash** nebo **prostředí PowerShell**. Ale může mít více instancí spuštěné v jednom okamžiku Bash nebo prostředí PowerShell. Vzájemná záměna mezi Bash nebo prostředí PowerShell příčiny cloudové prostředí k restartování, což Ukončí existující relací.
+Uživatelé mohou pouze spouštět jeden typ prostředí najednou, buď **Bash** nebo **Powershellu**. Však může mít více instancí spuštěných v jednom okamžiku Bashe nebo Powershellu. Prohození mezi Bashe nebo Powershellu způsobí, že službě Cloud Shell k restartování, které ukončuje existující relace.
 
 ### <a name="usage-limits"></a>Limity využití
 
-Cloudové prostředí je určen pro případy použití interaktivní. V důsledku toho ukončení relací neinteraktivní všechny dlouhodobé bez upozornění.
+Cloud Shell je určen pro případy použití interaktivní. V důsledku toho se dlouho probíhající relace jako neinteraktivní skončilo bez upozornění.
 
 ## <a name="bash-limitations"></a>Omezení bash
 
 ### <a name="user-permissions"></a>Uživatelská oprávnění
 
-Máte nastavená oprávnění jako běžní uživatelé bez přístupu sudo. Všechny instalace mimo vaší `$Home` adresáře není trvalý.
+Oprávnění se nastavují jako běžní uživatelé bez přístupu sudo. Všechny instalace mimo váš `$Home` adresář není trvalý.
 
 ### <a name="editing-bashrc"></a>Úpravy .bashrc
 
-Proveďte opatrní při úpravě .bashrc, tak může způsobit neočekávané chyby v prostředí cloudu.
+Provést upozornění, když úpravy .bashrc, to může způsobit neočekávané chyby ve službě Cloud Shell.
 
 ## <a name="powershell-limitations"></a>Omezení prostředí PowerShell
 
-### <a name="slow-startup-time"></a>Pomalé spuštění
+### <a name="azuread-module-name"></a>`AzureAD` Název modulu
 
-Prostředí PowerShell v prostředí cloudu Azure (Preview) může trvat až 60 sekund k chybě při inicializaci verzi Preview.
+`AzureAD` Název modulu je aktuálně `AzureAD.Standard.Preview`, modul nabízí stejné funkce.
+
+### <a name="sqlserver-module-functionality"></a>`SqlServer` modul funkce
+
+`SqlServer` Ve službě Cloud Shell zahrnuje modul má pouze předprodejní podpora pro PowerShell Core. Zejména `Invoke-SqlCmd` ještě není k dispozici.
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Výchozí umístění souboru při vytvoření z disku Azure:
 
-Pomocí rutin prostředí PowerShell, uživatelé nemůžou vytvářet soubory v Azure jednotce. Pokud uživatelé vytvářejí nové soubory pomocí jiných nástrojů, jako je například vim nebo nano, soubory se uloží do složky C:\Users ve výchozím nastavení. 
+Pomocí rutin prostředí PowerShell, uživatelé nemůžou vytvářet soubory v Azure disk. Když uživatelé vytvářejí nové soubory pomocí jiných nástrojů, jako je například vim nebo nano, soubory se uloží do `$HOME` ve výchozím nastavení. 
 
-### <a name="gui-applications-are-not-supported"></a>Grafické uživatelské rozhraní aplikací není podporované.
+### <a name="gui-applications-are-not-supported"></a>Aplikace grafického uživatelského rozhraní se nepodporují.
 
-Pokud uživatel spustí příkaz, který by vytvořit dialogové okno Windows, jako například `Connect-AzureAD` nebo `Connect-AzureRmAccount`, například jeden zobrazí chybovou zprávu: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+Pokud uživatel spustí příkaz, který by vytvoření dialogového okna Windows, jako například `Connect-AzureAD` nebo `Connect-AzureRmAccount`, jeden jako zobrazí chybová zpráva: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
-## <a name="gdpr-compliance-for-cloud-shell"></a>GDPR dodržování předpisů pro cloudové prostředí
+### <a name="tab-completion-crashes-psreadline"></a>Dokončování pomocí tabulátoru PSReadline dojde k chybě.
 
-Prostředí Azure Cloud vážně trvá vašich osobních údajů, dat zaznamenaných a uložené ve službě Azure Cloud prostředí používané k zajištění výchozí hodnoty pro vaše prostředí, například naposledy použitých prostředí, velikost písma upřednostňované, typ upřednostňované písma a sdílených složek podrobnosti který zpět clouddrive. Měli chcete exportovat nebo odstranění těchto dat, jsme zahrnuli podle následujících pokynů.
+Pokud uživatele EditMode v PSReadline je nastavena na (emacs), uživatel se pokusí zobrazit všechny možnosti prostřednictvím tab k dokončování příkazů a velikost okna je příliš malá, zobrazíte všechny možnosti, PSReadline dojde k chybě.
+
+### <a name="large-gap-after-displaying-progress-bar"></a>Velké mezeru po zobrazuje indikátor průběhu
+
+Pokud uživatel provede akci, která se zobrazí indikátor, tato karta při dokončení v `Azure:` jednotky, pak je možné, že kurzor nejsou správně nastaveny a mezera se zobrazí, pokud byla dříve indikátor průběhu.
+
+### <a name="random-characters-appear-inline"></a>Zobrazí vložený náhodných znaků
+
+Například sekvence pozice kurzoru kódů `5;13R`, se mohou objevit v vstupu uživatele.  Znaky lze ručně odebrat.
+
+## <a name="personal-data-in-cloud-shell"></a>Osobní údaje ve službě Cloud Shell
+
+Azure Cloud Shell používá vaše osobní údaje vážně, data, zachytí a uložené ve službě Azure Cloud Shell se používají k zajištění výchozí hodnoty pro vaše prostředí, jako je vaše naposledy použité prostředí, upřednostňované písmo, upřednostňované písmo a sdílených složek podrobnosti který zpět cloudové jednotky. Pokud, budete chtít exportovat nebo odstraňovat data, jsme přidali následující pokyny.
+
+[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ### <a name="export"></a>Export
-Za účelem **exportovat** uživatelská nastavení prostředí cloudové uloží pro vás, jako upřednostňovaný prostředí, velikost písma a typ písma, spusťte následující příkazy.
+Za účelem **exportovat** uživatelská nastavení uloží Cloud Shell za vás jako upřednostňované prostředí a velikost písma a typ písma, spusťte následující příkazy.
 
-1. Spusťte Bash v prostředí cloudu
+1. Spusťte prostředí Bash ve službě Cloud Shell
 2. Spusťte následující příkazy:
 ```
 user@Azure:~$ token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"
@@ -160,11 +158,11 @@ user@Azure:~$ curl https://management.azure.com/providers/Microsoft.Portal/users
 ```
 
 ### <a name="delete"></a>Odstranění
-Za účelem **odstranit** uživatelská nastavení prostředí cloudové uloží pro vás, jako upřednostňovaný prostředí, velikost písma a typ písma, spusťte následující příkazy. Při příštím spuštění prostředí cloudu zobrazí se výzva k připojit sdílenou složku znovu. 
+Za účelem **odstranit** uživatelských nastavení uloží Cloud Shell za vás jako upřednostňované prostředí a velikost písma a typ písma, spusťte následující příkazy. Při příštím spuštění Cloud Shell zobrazí se výzva k připojení sdílené složky znovu. 
 
-Skutečné soubory Azure sdílené složky nebudou odstraněny, pokud odstraníte uživatelská nastavení, přejděte na Azure soubory pro dokončení této akce.
+Skutečné soubory Azure, sdílené složky nebudou odstraněny, pokud odstraníte uživatelská nastavení, přejděte do služby soubory Azure k dokončení této akce.
 
-1. Spusťte Bash v prostředí cloudu
+1. Spusťte prostředí Bash ve službě Cloud Shell
 2. Spusťte následující příkazy:
 ```
 user@Azure:~$ token="Bearer $(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/" -H Metadata:true -s | jq -r ".access_token")"

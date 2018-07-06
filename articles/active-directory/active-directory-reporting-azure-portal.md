@@ -16,12 +16,12 @@ ms.component: compliance-reports
 ms.date: 01/15/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1bcd7f9e0a134173a8942b71259428a720a3d076
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 06179d42d2904a4d82f466be0719768f9f010858
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222497"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868554"
 ---
 # <a name="azure-active-directory-reporting"></a>Generování sestav v Azure Active Directory
 
@@ -113,7 +113,7 @@ Pokud se chcete dozvědět více o různých typech sestav v Azure Active Direct
 - [Sestava protokolů auditu](active-directory-reporting-activity-audit-logs.md)
 - [Sestava protokolů přihlášení](active-directory-reporting-activity-sign-ins.md)
 
-Pokud se chcete dozvědět více o přístupu k datům sestav pomocí rozhraní API pro generování sestav, přečtěte si: 
+Pokud se chcete dozvědět více o přístupu k datům sestav pomocí rozhraní API pro generování sestav, naleznete v tématu: 
 
 - [Začínáme s rozhraním API pro generování sestav v Azure Active Directory](active-directory-reporting-api-getting-started-azure-portal.md)
 

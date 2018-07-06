@@ -1,6 +1,6 @@
 ---
-title: Růst vaší firmy s Azure Marketplace | Azure
-description: Podrobný průvodce a publikování kontrolní seznamy pro nové zdroje pro Azure Marketplace
+title: Rozvíjejte své podnikání díky Azure Marketplace | Azure
+description: Podrobný průvodce a publikování kontrolní seznamy pro nové vydavatele na webu Azure Marketplace
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,129 +14,129 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: adf4e05b3d2ae477e2fd520bb8d1c7dbf9b6c008
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: c9c643228157b5ad347d6913d7c4087684591970
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825088"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865344"
 ---
-# <a name="grow-your-business-with-azure-marketplace"></a>Růst vaší firmy s Azure Marketplace  
-Poté, co jste si vytvořili technické prostředky pro vaše Azure Marketplace, výpis, budete moci zvýšit počet uživatelů, přejdete-li na vaši nabídku a růstu využití vašeho produktu podle následující doporučené postupy pro marketing. 
+# <a name="grow-your-business-with-azure-marketplace"></a>Rozvíjejte své podnikání díky Azure Marketplace  
+Až získáte dostatek technických prostředků pro výpis Azure Marketplace, budete moct navýšení tohoto počtu uživatelů, chystá se vaše nabídky a růstu využití produktu pomocí marketingových osvědčených postupů. 
 
 >[!NOTE]
->Další informace o proces publikování a technické požadavky, přečtěte si [Průvodce publikování webu Azure Marketplace a AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
+>Další informace o procesu publikování a technických požadavků najdete v článku [Průvodce publikováním webu Azure Marketplace a AppSource](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide).
 
-## <a name="how-marketing-helps"></a>Jak pomáhá marketing  
-Následující osvědčené postupy v marketingové hlps můžete nastavit pro úspěch s přejděte na trh a iniciativami společné Sell společnosti Microsoft. Maximalizuje také vaše obchodní výhody přes marketplace. Sítě partnera společnosti Microsoft (MPN) je brána pro všechny marketing a programové materiály související s obchodní poutače na webu marketplace. 
+## <a name="how-marketing-helps"></a>Jak vám pomůže marketing  
+Následující osvědčené postupy v marketingových hlps můžete nastavit Zajistěte úspěch s go-to-market a Microsoft Sell iniciativy. Také maximalizuje výhodách pro firmy prostřednictvím webu marketplace. Microsoft Partner Network (MPN) je brána pro všechny programové a marketingové materiály související s prodejní místa na webu marketplace. 
 
-Kvalitu vaši nabídku a vaše snahy o zákazníka zaměřená na vyžádání generování a partnerské engagement nápovědy jednotky zákazníka růstu pro vaši organizaci. Účastnit tyto aktivity pomáhá Microsoft rozšířit přejděte na trh práci a funkce klíče řešení napříč obchodní poutače na webu marketplace. 
+Kvality vaší nabídky a vašim závazkům souvisejícím s zaměřeného na zákazníky vyžádání generování a jeho partnerů engagement pomoc tím napomoct rozvoji zákazníka svého pro vaši firmu. Zapojení do těchto aktivit rozšířit pomáhá Microsoft go-to-market pracovní funkce klíče řešení a napříč prodejní místa na webu marketplace. 
 
-Použijte následující seznam marketing postupy pro vaši nabídku.  
-*   Můžete optimalizované vašeho seznamu přesměrovat provoz a engagement.  
-*   Vytvoří, zasílání zpráv na tento web a vytvořit jedinečný cílová stránka, přesměrovat provoz na vaši nabídku na webu marketplace.  
-*   Jste publikovali disk nebo jiné zkušební verze, aby zákazníci mohou zaznamenat vaši nabídku živý běh v Azure.  
-*   Naplánování a vytvořené vlastní marketing a povýšení kampaně sledování jednotky a engagement.  
-*   Jste povolili generování realizace na vyžádání, aby pokaždé, když zákazník slouží k otestování nebo nasadit vaši nabídku, zobrazí se název a kontaktní informace vašeho zákazníka.  
-*   Seznámili a propojená s partnera prostředky, které jsou k dispozici prostřednictvím MPN.  
-    *   Další informace o MPN, najdete v článku Přehled členství stránky nacházející se v [partner.microsoft.com/membership](https://partner.microsoft.com/membership).  
+V následujícím seznamu použijte ke kontrole marketingových postupů pro vaši nabídku.  
+*   Můžete optimalizovat svůj výpis přesměrovat provoz a zapojení.  
+*   Vytvořené na tento web pro zasílání zpráv a vytvoří jedinečné cílové stránky si přesměrovat provoz na vaší nabídky na webu marketplace.  
+*   Testovací verze nebo jiné zkušební verze publikovány tak, aby zákazníci mohli vaši nabídku živý běh v Azure.  
+*   Plánovaná a sestaven vlastní marketingem a propagací kampaně zvýšit povědomí a zapojení.  
+*   Je povolené generování potenciálních zákazníků na vyžádání, tak, aby pokaždé, když váš zákazník slouží k testování nebo nasazení vaší nabídky, se zobrazí název a kontaktních údajů zákazníka.  
+*   Seznámili a související s partnery, které jsou k dispozici prostřednictvím do sítě MPN.  
+    *   Další informace o do sítě MPN najdete přehled členství stránky umístění [partner.microsoft.com/membership](https://partner.microsoft.com/membership).  
 
-### <a name="create-a-great-listing"></a>Vytvoření skvělé výpis  
-Výpis na webu marketplace, může být vaše první interakci s potenciálních zákazníků. Jako první dojem má být silné a něco cílovou skupinu chce zpracovat. Existují některé základní věci, které budete moci provést abyste měli tento první dojem na webu Marketplace skvělé:
+### <a name="create-a-great-listing"></a>Vytvořit skvělý popis  
+Váš výpis na webu marketplace mohou být první interakce s potenciálního zákazníka. Jako první dojem chtít zvětšit silná a něco svou cílovou skupinu chce zpracovat. Existují některé základní věci, které budete moct udělat, abyste mohli tento první dojem na webu Marketplace skvělé:
 
 | dojem | Podrobnosti |  
 |:--- |:--- |  
-| Najít | Zadejte popis pro vaši nabídku pomocí klíčových slov a podmínky, se kterými se vaši zákazníci vyhledávání.  |  
-| Být visual | Bitové kopie a videa pomůže zobrazit uživatele klíčové funkce a může ilustrují prostředí. Zamyslete se co může zobrazit, který pomáhá poskytovat vaše nabízená hodnota nebo odpovězte si na nejvyšší otázky z vašich zákazníků. |  
-| Zadejte prostředí | Zákazníci, jako například pokusit před jejich zakoupení. Vede generovaný z ukázky, zkušební verze a výsledků testů jednotek ve více obchodů zákazníka. Čím silnější tuto zkušební verzi prostředí zadat, Čím silnější realizace, který generovat. Microsoft nalezl disku (v průměru) vede výsledek ve 40 procent uzavřený nabídky. |  
-| Cílovou skupinu další Nápověda | I když společnost Microsoft doporučuje udržovat přehled místo zrušte a jednoduchý, není dostatek místa tak, aby odkazoval na další zdroje informací o vašem produkt. Použijte tento prostor pro doručení stručné zprávy o jaké jsou vaše produktu a jak je vyhovuje potřebám vašeho zákazníka. Není třeba obávat přímé zákazník na další materiály Další informace. Pokud tyto studijních materiálů nebo odkazy mohou sledovat do obsahu, který vede marketingové strategie, takže budete moci konzistentně bude možné rozvíjet je bonus. |  
-| Využijte hodnocení a recenze | Umožní vašim zákazníkům prodeji určitého produktu za vás. Hájící zájmy zákazníka může být největších ovladač prodeje a je často, kde přejděte kupující před jejich další informace o vašem produkt. S více silné recenze také pomáhá zvýšit až vaši nabídku ve výsledcích hledání a do klíčové vybrané oblasti. |  
+| Najít | Zadejte popis pro vaši nabídku pomocí klíčových slov a podmínky, které vašim zákazníkům vyhledávání.  |  
+| Být visual | Obrázky a videa, pomáhají uživatelům zobrazit klíčové funkce a může mohli co nejlépe ilustrovat vaše prostředí. Přemýšlení o co může zobrazit, který pomáhá dodávat váš návrh hodnoty nebo odpovědi nejdůležitější otázky od svých zákazníků. |  
+| Poskytovat prostředí | Zákazníci chtěli před nakupují vyzkoušet. Vede generované z ukázky, zkušební verze a výsledek testu jednotek ve více obchodů zákazníka. Čím silnější zkušební verze prostředí, že zadáte, Čím silnější potenciálních zákazníků, které vytvoříte. Microsoft zjistila, že testovací verze vede výsledek (v průměru) v obchody 40 procent uzavřen. |  
+| Nápověda svou cílovou skupinu, přečtěte si | I když společnost Microsoft doporučuje udržovat přehled prostoru zrušte a jednoduché, není dostatek místa, aby ukazoval na další zdroje informací o produktu. Tento prostor použijte k doručování stručné zprávy o co dělá váš produkt a jak je vhodný pro potřeby vašich zákazníků. Není třeba se obávat směrovat vaše zákazníky, aby další materiály pro další informace. Pokud může sledovat tyto výukové materiály nebo odkazů do vašeho obsahu, který vede marketingové strategie, takže budete moct konzistentně pečovat o stávající je bonus. |  
+| Využijte výhod hodnocení a recenze | Informujte zákazníky o prodeji svůj produkt za vás. Zákazník zákaznického servisu s orientací je pravděpodobně největší ovladač prodeje a je často, kam se obrátit kupci před jejich další informace o produktu. S více recenzí silné také pomáhá zvýšit tak vaši nabídku ve výsledcích hledání a do vybrané klíčové oblasti. |  
 
-### <a name="promote-your-new-offer"></a>Zvýšení úrovně vaší nové nabídky  
+### <a name="promote-your-new-offer"></a>Propagace vaší nové nabídky  
 
 #### <a name="build-an-effective-marketing-campaign"></a>Vytvářet efektivní marketingové kampaně  
-Marketingovou kampaň je řada aktivit, propagační nebo marketingové svoji zaměřené na cílovou skupinu požadované akce nebo výsledek. Dříve, než vytvoříte kampaň, měli byste udělat následující.
+Marketingové kampaně je řada propagační aktivit nebo marketingové taktika zaměřené na svou cílovou skupinu na požadovanou akci nebo výsledek. Než bude možné navrhnout svoji kampaň, byste měli dělat následující.
 
-##### <a name="know-your-audience"></a>Vědět, cílová skupina  
-Nejprve ověří, kdo je kupující a kdo je Vlivná osoba. Svoji a volání akce pro každou skupinu mohou lišit. Položte si následující otázky vyhodnocení:  
-*   Přes nákupu rozhodnutí kolik řízení má kupující? 
-*   Kolik vliv Vlivná osoba mít? 
-*   Co vliv Vlivná osoba? 
-*   Jejich k ovlivnění rozpočet nebo řešení, které je vybráno? 
+##### <a name="know-your-audience"></a>Poznání cílové skupiny  
+Nejprve ověří, kteří jsou a kdo je upomínku. Taktika a volání k akci pro každou skupinu mohou lišit. Ptejte se tyto vyhodnocení:  
+*   Jak velkou kontrolu má kupující nějaké přes rozhodnutí o nákupu? 
+*   Kolik vliv upomínku máte? 
+*   Co vliv upomínku? 
+*   Ovlivňují rozpočtu nebo řešení, které se vybere? 
 
-Znalost odpovědi na tyto otázky pomáhá vám při rozhodování o investice peníze a jak se bude distribuovat peníze.
+Znalost odpovědi na tyto otázky pomáhá při rozhodování o investice vaše peníze a jak se bude distribuovat vaše peníze.
 
-##### <a name="define-where-your-audience-learns"></a>Zadejte, kde zjišťuje cílová skupina  
-Kupující jsou 90 procent způsob prostřednictvím cesty na době navštíví na trhu. Kupující získat to daleko hotová v procesu rozhodování získávání informací o řešení a vyhodnocení možností předem. Chcete navrhnout kampaň, která je cílem je možné, kde získat informace odběrateli a vlivné osoby. 
+##### <a name="define-where-your-audience-learns"></a>Definujte, ve kterém se učí vaše cílová skupina  
+Kupující jsou 90 procent tak, jak prostřednictvím vyplynuly podle času, najdete webu marketplace. Kupující získat to daleko spolu v procesu rozhodování o řešení a vyhodnocení možností předem. Chcete navrhnout kampaně, který bude, kde další odběrateli a vlivné osoby. 
 
-Všechny cílové skupiny pro každou odvětví, vertical nebo kategorie se liší. Nemá cílovou skupinu další online, e-mailem na veletrzích, prostřednictvím sociálních médií nebo konverzace s důvěryhodné poradci? V závislosti na tom, kde a jak zjišťuje cílovou skupinu Navrhněte aktivity a distribuovat vaší marketingové dolarů odpovídajícím způsobem. Kombinace těchto svoji stane strategie kampaně.
+Všechny cílové skupiny pro každý odvětví, svislé nebo kategorii se liší. Provede svou cílovou skupinu online výuka, prostřednictvím e-mailu na veletrzích, prostřednictvím sociálních médií, nebo konverzací s důvěryhodní poradci? V závislosti na tom, kde a jak se učí vaše cílová skupina by měl návrh aktivity a odpovídajícím způsobem distribuovat marketingové dolarech. Kombinací těchto taktika stane strategie kampaně.
 
-#### <a name="create-clear-campaign-goals"></a>Vytvoření cíle zrušte kampaně  
-Musí definovat úspěch kampaně na webu marketplace a vytvořit zrušte klíčové ukazatele výkonu. Můžete spustit několik kampaní s jiného elementu end cíle. Chcete růst prodeje jste s Microsoftem. Konečným cílem je vyšší akvizice výnosy nebo zákazníků. Však může být marketingových kampaní vázáno cíle v dalších fázích nákupní cyklu.
+#### <a name="create-clear-campaign-goals"></a>Vytvořit kampaň jasné cíle  
+By měl definovat úspěšnosti kampaně na webu marketplace a vytvořit vymazat klíčové ukazatele výkonu. Můžete spustit několik kampaní s cíli různých end. Vy i společnost Microsoft má růst prodeje. Ultimate konečným cílem je zvýšení výnosů nebo zákazník pořízení. Vašich marketingových kampaní však může být vázán na cíle ve dalších fázích životního cyklu nákupu.
 
-Například pokud je spuštěn nově svůj produkt na webu Marketplace, můžete zjistit, nejlépe strávená vaší zaměřit na cílovou skupinu education a realizace generování. Úspěch může být definovaná počet zájemce získané z vašeho seznamu Marketplace. V takovém případě vaší marketingové svoji (a úvodní stránka) by se zaměřit na kreslení zákazníků k vaší tržišti.
+Například pokud je spuštěn nově váš produkt na webu Marketplace, můžete zjistit, že váš výběr se nejlépe tráví generování vzdělávání a zájemcích cílovou skupinu. Počet zájemců vygenerovaných z vaší tržišti může být definovaná úspěch. V tomto případě vašich marketingových taktika (a úvodní stránka) by se zaměřují na vykreslení zákazníků na zařazení na Marketplace.
 
-Pokud používáte zkušební verzi nastavit na webu Marketplace a víte, že produkt vyžaduje určité úrovně engagement a před nákupu, můžete provést vaším cílem kampaně, které stáhli počet pokusů. V takovém případě CTA pro vaše svoji kampaň se by prudce zaměřit na podporu zkušební verze na webu Marketplace. 
+Pokud používáte zkušební verzi nastavit na webu Marketplace a víte, že váš produkt vyžaduje určitou úroveň zapojení a prostředí před nákupem, může být vaším cílem kampaně, které stáhli počet pokusů. Výzva k akci pro kampaň taktiky by v tomto případě prudce zaměřit na podporu zkušební verze na webu Marketplace. 
 
-Pokud produkt nebo kategorie je dobře známé a máte nákupu možnosti nastavit na webu Marketplace, můžete se rozhodnout zkušební krok přeskočit a přímé cílovou skupinu pro odkaz na vaši "koupit" na webu Marketplace.
+Pokud je dobře známé produktu nebo kategorie a získáte možnosti nákupu nastavit na webu Marketplace, můžete se rozhodnout pro zkušební krok přeskočit a přímé svou cílovou skupinu na odkaz "koupit" na webu Marketplace.
 
-V bodě víc vyspělých v historii vaši nabídku můžete se rozhodnout a zaměřit se vaše kampaň úsilí na upselling zákaznické základní a jednotky akce směrem k vyšší nákupu v Marketplace. Vaše svoji by zaměřit se na podporu zákazníkům "koupit" na webu Marketplace. Klíčový ukazatel výkonu může být výnosy generované přes Marketplace.
+Na vyspělejší bod v historii o vaší nabídce můžete se rozhodnout zaměřit své úsilí kampaně na upselling zákazníka základní a jednotku akce směrem k vyšší nákupu na webu Marketplace. Taktiky by zaměřit se na podporu zákazníků "koupit" na webu Marketplace. Klíčový ukazatel výkonu může být příjmy prostřednictvím webu Marketplace.
 
-Bez ohledu vyspělosti vaši nabídku a cílů vaší organizace jsou následující klíče k maximalizaci efektivitu vaší kampaně.
+Ať se s vyspělostí vaší nabídky a cíle vaší organizace jsou následující klíče pro maximalizaci efektivity kampaně.
 
-*   Zachování zaměřují se na tento cíl
-*   Mapování na sadu integrované marketingové strategie zarovnán tohoto cíle
+*   Zachování zaměřené na tento cíl
+*   Mapování na sadu integrované marketingové strategie zarovnána na tento cíl
 
-Jako součást se nové vydavatele v Azure Marketplace Microsoft nabízí některé zdarma výhody Marketplace GTM. Zásadní by měl myslíte o tom, jak používat tyto výhody ve vaší strategii kampaně. Umožní náš marketing tým vědět cílů kampaň Marketplace a akci požadované cílové skupiny. Microsoft může přizpůsobit tyto úkoly do práce do plánu.
+Jako součást se nové vydavatele na webu Azure Marketplace Microsoft nabízí některé bezplatné výhody Marketplace GTM. Kriticky byste uvažovat o tom, jak používat tyto výhody strategie kampaně. Umožní náš marketingový tým vědět cílů Marketplace kampaně a akci požadovanou cílovou skupinu. Společnost Microsoft může vytvořit tyto výstupy pro práci do vašeho plánu.
 
-Inteligentní partnera Marketing je programu Microsoft Partner Network. 
-*   Další obsah na kampaň vytváření a marketingu postupy, najdete inteligentní partnera Marketing stránky nacházející se v [partner.microsoft.com/smart-partner-marketing](https://partner.microsoft.com/smart-partner-marketing).  
+Smart Partner Marketing je program Microsoft Partner Network. 
+*   Další obsah na kampaň vytváření a marketingu, najdete inteligentní Partner Marketing stránky umístění [partner.microsoft.com/smart-partner-marketing](https://partner.microsoft.com/smart-partner-marketing).  
 
-#### <a name="link-to-gtm-benefits"></a>Odkaz na GTM výhody
-*  Přejděte [GTM výhody na webu marketplace](./gtm-benefits.md) stránky.   
+#### <a name="link-to-gtm-benefits"></a>Odkaz na výhodách GTM
+*  Přejděte [výhodách GTM na webu marketplace](./gtm-benefits.md) stránky.   
 
 ---  
 
 ### <a name="link-to-landing-page"></a>Odkaz na úvodní stránka
 *   Přejděte [sestavení si úvodní stránka](./build-your-landing-page.md) stránky.  
 
-#### <a name="link-to-enable-lead-sharing"></a>Odkaz na povolit nepovedou sdílení  
+#### <a name="link-to-enable-lead-sharing"></a>Odkaz na povolit průběžné sdílení  
 *   Přejděte [povolit vést sdílení](./enable-lead-sharing.md) stránky.  
 
-#### <a name="link-to-promote-your-business-with-microsoft"></a>Odkaz na podporu vaší firmě se společností Microsoft  
-*   Přejděte [povýšit vaše firma Microsoft](promote-your-business-with-microsoft.md) stránky.  
+#### <a name="link-to-promote-your-business-with-microsoft"></a>Odkaz na propagaci vašeho podnikání s Microsoftem  
+*   Přejděte [podporovat obchody s Microsoftem](promote-your-business-with-microsoft.md) stránky.  
 
-#### <a name="invest-in-merchandising"></a>Investovat do prodeje  
-Jako součást procesu publikování zvažte, jaký typ nabídky k vytvoření a zvolit kategorii pro vaši nabídku Azure Marketplace. Ujistěte se, že vyberte kategorii, které je přesný pro vaše řešení tak, aby se zobrazí přesně pro potenciální zákazníky.  
+#### <a name="invest-in-merchandising"></a>Investuje do podpory prodeje  
+Jako součást procesu publikování měli byste zvážit jaký typ nabídky a vytvořit zvolte kategorii pro nabídky na webu Azure Marketplace. Ujistěte se, že vyberete kategorii, která je přesné pro vaše řešení tak, aby se zobrazí přesně potenciálním zákazníkům.  
 
-V Azure Marketplace budete moci využívat doporučenou nabízí vyberete zkušební verze nebo transact výpis typu. 
-*   Další informace o tom, jak doporučenou nabídkách přizpůsobit v rámci své výhody přejděte na trh, najdete na stránce marketplace nacházející se v výhody GTM [gtm výhody](./gtm-benefits.md).  
+Na webu Azure Marketplace budete moci využívat vybrané nabídky vyberete zkušební verze nebo transact výpis typu. 
+*   Další informace o způsobu vybrané nabídky přizpůsobit v rámci výhod go-to-market, navštivte výhodách GTM na na stránku na webu marketplace [výhodách gtm](./gtm-benefits.md).  
 
-Doporučenou nabídky je možné zvolit podle které nabídky poskytují pro vaše zákazníky mají zákazníci maximální pohodlí a využít vysoce kvalitní partnera marketingové zapojení. Následující kritéria definovat doporučenou nabídky.  
-*   Přehlednost seznam.  
+Vybrané nabídky je možné zvolit podle toho, jaké nabídky poskytují nejlepší uživatelské prostředí pro vaše zákazníky a využijte výhod vysoce kvalitní partner marketing engagement. Tato kritéria definují vybrané nabídky.  
+*   Srozumitelnost seznamu.  
 *   Spolehlivost technologie.  
-*   Růst využití platformy podle vašich zákazníků.  
-*   Vaše úroveň zapojení vytváření vysoce kvalitní marketingové materiály.  
+*   Růst využití platformy ho vaši zákazníci.  
+*   Úroveň zapojení vytváření vysoce kvalitních marketingové materiály.  
 
-Pokud chcete maximalizovat pravděpodobnost, že je vybrané vaši nabídku, by měl investovat do úspěch vaší nabídky Marketplace. Vezměte v úvahu následující přístupy k zajištění pohodlí zákazníků prostředí pro vaši nabídku.  
-*   Zajistěte, aby marketing artefakty nahrávat a zobrazování správně.  
-*   Připojení k Microsoft Partner Network a zapojit ekosystém partnerů.  
-    *   Další informace o MPN, navštivte stránku nacházející se v programu Microsoft Partner Network [partner.microsoft.com/membership](https://partner.microsoft.com/membership).
-*   Jednotka vysoce kvalitní provoz do vaší nabídky v Azure Marketplace vytvořením vysoce kvalitní vyžádání generování kampaně.  
-*   Ujistěte se, že všechny vaše nabídky jsou k dispozici v Azure Marketplace.  
-*   Růst spotřeby vašeho webu Azure Marketplace nabízí řídí vyžádání, poskytnete vysoce kvalitní zákaznický servis, a poskytuje včasné aktualizace na vaši nabídku.  
+Pokud chcete maximalizovat pravděpodobnost, že je mezi vybranými položkami nabídky, by měl investovat do úspěch vašich nabídek na webu Marketplace. Vezměte v úvahu následující přístupy k zajištění skvělé uživatelské prostředí pro vaši nabídku.  
+*   Zajištění marketingové artefakty nahrané a zobrazování správně.  
+*   Připojte se k programu Microsoft Partner Network a spojte se s ekosystémem partnerů.  
+    *   Další informace o programu MPN, navštivte stránku umístěného v programu Microsoft Partner Network [partner.microsoft.com/membership](https://partner.microsoft.com/membership).
+*   Získejte vysoce kvalitní provozu do vaší nabídky na webu Azure Marketplace na základě vytváření vysoce kvalitních vyžádání generování kampaní.  
+*   Ujistěte se, že všechny vaše nabídky jsou k dispozici na webu Azure Marketplace.  
+*   Rozšiřte využití nabídky na webu Azure Marketplace a vedení poptávky, poskytování služeb zákazníkům vysoce kvalitní a poskytování včasné aktualizace na vaše nabídky.  
 
 ## <a name="analytics-and-reporting"></a>Analýzy a generování sestav  
-V části Statistika portál pro partnery cloudu uvidíte přehled vysoké úrovně výkonu pro vaši nabídku. V této části jsou zahrnuty následující sestavy.  
-*   Souhrn snímek objednávky  
+V části Insights na portál Cloud Partner se zobrazí přehled vysoké úrovně výkonu pro vaši nabídku. V této části jsou zahrnuty následující sestavy.  
+*   Souhrnný snímek objednávky  
 *   Využití  
 *   Nasazení  
-*   Trendy zákazníka na domovské stránce Statistika  
-*   Podrobné objednávky, použití a data zákazníků  
-*   Objednávek a zobrazí jako měsíční souhrn nebo jako zobrazení šestiměsíční trend využití  
-*   Využití a objednávky rozříznut několik kritérií  
+*   Na domovské stránce přehledy zákazníků trendy  
+*   Podrobné objednávek, využití a zákaznická data  
+*   Objednávky a zobrazí jako měsíční souhrnné informace nebo v zobrazení šestiměsíční trend využití  
+*   Využití a vytvořit průřez podle několika kritérií objednávky  
 
-Podrobné sestavy zobrazit údaje zákazníka, jako je název společnosti a zeměpisnou polohu dolů poštovnímu směrovacímu číslu. Měli byste použít tyto informace k porovnání zákazníků a odpovídajícím způsobem vaše prodejci. Společnost Microsoft poskytuje následující konkrétní atributy o vašich zákazníků.  
+Podrobné sestavy zobrazit informace o zákaznících, jako je název společnosti a zeměpisnou polohu na poštovní směrovací číslo. Abyste používali tyto informace můžete porovnat vaše zákazníky a kompenzovat vaše prodejci. Společnost Microsoft poskytuje následující konkrétní atributy o vašich zákazníků.  
 *   Prodejce   
 *   Jméno  
 *   Příjmení  
@@ -144,21 +144,21 @@ Podrobné sestavy zobrazit údaje zákazníka, jako je název společnosti a zem
 *   Název společnosti  
 *   Datum transakce  
 *   Název předplatného  
-*   ID předplatného Azure (pouze srážek daně ze MZDY zákazníci)  
+*   ID předplatného Azure (pouze zákazníků se průběžné platby)  
 *   Název Instance cloudu  
-*   Počet pořadí  
-*   Zákazník země oblast  
+*   Počet objednávek  
+*   Zemi zákazníka  
 *   Město zákazníka  
 *   Jazyková verze komunikaci zákazníků  
 *   PSČ zákazníka  
 
-Osvědčeným postupem informace v těchto sestavách je sjednotit se vaše interní data. Umožňuje vám pomohou určit priority vaše akce marketingové kampaně.  
+Osvědčeným postupem informace v těchto sestavách je sloučit s interní daty. Pomocí ho upřednostnit vaše marketing kampaně akce.  
 
-Části Analytics cloudu partnera portálu statistika poskytuje bohaté řídicí panel podle Power BI. Budete moci použít tento řídicí panel zobrazit provoz na stránce podrobností vaši nabídku. Nové funkce pro tento řídicí panel se nasazuje probíhající způsobem.  
+Část Analytics Insights portál partnerů cloudu poskytuje bohaté řídicí panel Power BI. Budete moct pomocí tohoto řídicího panelu sledovat provoz na stránce s podrobnostmi o vaší nabídce. Nové funkce pro tento řídicí panel jsou nasazeny v probíhající způsobem.  
 
-V portálu pro partnery cloudu je také dokumentace na Campaigns společnosti Microsoft. V dokumentaci k Microsoft Campaigns může použít k nastavení vaší kampaně a sledování kampaň na portál pro partnery cloudu.  
+Na portálu partnerů cloudu je také dokumentaci k Microsoft Campaigns. Dokumentace ke službě Microsoft Campaigns může použít k nastavení kampaně a sledování kampaně na portál partnerů cloudu.  
 
 ## <a name="next-steps"></a>Další postup
-*   Přejděte [AppSource vydavatele průvodce a Azure Marketplace](./marketplace-publishers-guide.md) stránky.  
+*   Přejděte [Azure Marketplace a AppSource příručce pro vydavatele](./marketplace-publishers-guide.md) stránky.  
 
 ---  

@@ -1,6 +1,6 @@
 ---
-title: Použijte Hadoop Hive a Vzdálená plocha v HDInsight - Azure | Microsoft Docs
-description: Zjistěte, jak se připojit ke clusteru Hadoop v HDInsight pomocí vzdálené plochy a pak spouštění dotazů Hive pomocí rozhraní příkazového řádku Hive.
+title: Použití Hadoop Hive a Vzdálená plocha v HDInsight – Azure | Dokumentace Microsoftu
+description: Zjistěte, jak se připojit ke clusteru Hadoop v HDInsight pomocí vzdálené plochy a následné spouštění dotazů Hive pomocí rozhraní příkazového řádku Hive.
 services: hdinsight
 documentationcenter: ''
 author: Blackmist
@@ -14,42 +14,42 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.openlocfilehash: 70eab088ce87d8a62d3f258b70aaec5e2e147d0e
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 73b85e99ae1c100cefd50a1f2136a6b526490776
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31400635"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868952"
 ---
-# <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>Použijte Hive s Hadoop v HDInsight pomocí vzdálené plochy
+# <a name="use-hive-with-hadoop-on-hdinsight-with-remote-desktop"></a>Použití Hivu s Hadoopem v HDInsight pomocí vzdálené plochy
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-V tomto článku zjistěte, jak se připojit ke clusteru HDInsight pomocí vzdálené plochy a pak spouštění dotazů Hive pomocí Hive rozhraní příkazového řádku (CLI).
+V tomto článku najdete informace o připojení ke clusteru HDInsight pomocí vzdálené plochy a následné spouštění dotazů Hive pomocí Hive rozhraní příkazového řádku (CLI).
 
 > [!IMPORTANT]
-> Vzdálená plocha je dostupná pouze na clustery HDInsight, které používají Windows jako operační systém. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
+> Vzdálená plocha je dostupná pouze na clustery HDInsight, používající jako operační systém Windows. HDInsight od verze 3.4 výše používá výhradně operační systém Linux. Další informace najdete v tématu [Vyřazení prostředí HDInsight ve Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
 >
-> HDInsight 3.4 nebo větší, projděte si téma [používání Hive s HDInsight a Beeline](apache-hadoop-use-hive-beeline.md) informace o spouštění dotazů Hive přímo na clusteru z příkazového řádku.
+> HDInsight 3.4 nebo větší, přečtěte si téma [použití Hivu se službou HDInsight a Beeline](apache-hadoop-use-hive-beeline.md) informace o spouštění dotazů Hive přímo v clusteru z příkazového řádku.
 
 ## <a id="prereq"></a>Požadavky
-Pokud chcete provést kroky v tomto článku, budete potřebovat následující:
+K dokončení kroků v tomto článku, budete potřebovat následující:
 
-* Cluster HDInsight se systémem Windows (Hadoop v HDInsight)
-* Klientský počítač se systémem Windows 10, Windows 8 nebo Windows 7
+* Cluster Windows systémem HDInsight (Hadoop v HDInsight)
+* Klientský počítač používající systém Windows 10, Windows 8 nebo Windows 7
 
-## <a id="connect"></a>Připojit pomocí vzdálené plochy
-Povolení vzdálené plochy pro HDInsight cluster a pak připojit pomocí pokynů uvedených v [připojení ke clusterům HDInsight pomocí protokolu RDP](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
+## <a id="connect"></a>Připojte se přes vzdálenou plochu
+Povolení vzdálené plochy pro HDInsight cluster a pak k němu připojit pomocí následujících pokynů na adrese [připojit ke clusterům HDInsight pomocí protokolu RDP](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
 
-## <a id="hive"></a>Použijte příkaz Hive
-Když připojíte k ploše pro HDInsight cluster, použijte následující postup pro práci s Hive:
+## <a id="hive"></a>Použití příkazu Hive
+Jakmile budete mít připojené na plochu pro HDInsight cluster, postupujte následovně pro práci s Hive:
 
-1. Z plochy HDInsight, spusťte **Hadoop příkazového řádku**.
-2. Zadejte následující příkaz, který spouští rozhraní příkazového řádku Hive:
+1. Z plochy HDInsight, spusťte **příkazového řádku Hadoopu**.
+2. Zadejte následující příkaz pro spuštění rozhraní příkazového řádku Hive:
 
         %hive_home%\bin\hive
 
-    Pokud bylo zahájeno rozhraní příkazového řádku, zobrazí se řádku Hive rozhraní příkazového řádku: `hive>`.
-3. Pomocí rozhraní příkazového řádku, zadejte následující příkazy, čímž umožňuje vytvořit novou tabulku s názvem **log4jLogs** pomocí ukázkových dat:
+    Po spuštění rozhraní příkazového řádku, se zobrazí výzva Hive rozhraní příkazového řádku: `hive>`.
+3. Pomocí rozhraní příkazového řádku zadejte následující příkazy, čímž umožňuje vytvořit novou tabulku s názvem **log4jLogs** pomocí ukázkových dat:
 
         set hive.execution.engine=tez;
         DROP TABLE log4jLogs;
@@ -60,58 +60,58 @@ Když připojíte k ploše pro HDInsight cluster, použijte následující postu
 
     Tyto příkazy provádět následující akce:
 
-   * **VYŘAĎTE tabulku**: Odstraní tabulku a datový soubor, pokud tabulka již existuje.
-   * **Vytvoření externí tabulky**: vytvoří novou tabulku "externí" v Hive. Externí tabulky uložit pouze definici tabulky Hive (data je ponechán v původním umístění).
+   * **DROP TABLE**: Odstraní tabulku a datový soubor, pokud tabulka již existuje.
+   * **CREATE EXTERNAL TABLE**: vytvoří novou tabulku "externí" v podregistru. Externí tabulky uložte definici tabulky Hive (data zůstane v původním umístění).
 
      > [!NOTE]
-     > Externí tabulky by měl být použit při očekáváte, že v základních datech aktualizovat externího zdroje (například procesu nahrávání automatizované dat), nebo jiná operace MapReduce, ale chcete, aby dotazy Hive používat nejnovější data.
+     > Externí tabulky, které má být použit, při očekáváte, že podkladová data aktualizovat pomocí externího zdroje (například procesu nahrávání automatizovaných datových) nebo jiné operaci MapReduce, ale chcete, aby dotazy Hive používat nejnovější data.
      >
-     > Vyřazení externí tabulku nemá **není** odstranit data, jenom definici tabulky.
+     > Vyřazení externí tabulky neodpovídá **není** odstranit data, pouze definici tabulky.
      >
      >
-   * **Řádek formátu**: informuje Hive formátování data. V takovém případě polí v každém protokolu jsou oddělené mezerou.
-   * **ULOŽENÉ umístění textový soubor AS**: informuje Hive, kde je data uložená (adresář, příklad nebo data) a která je uložena jako text.
-   * **Vyberte**: počet všech řádků vybere kde sloupec **t4** obsahuje hodnotu **[Chyba]**. To by měla vrátit hodnotu **3** vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
-   * **INPUT__FILE__NAME jako '%.log'** -informuje Hive, který jsme by měl vrátit pouze data ze souborů končící na. log. To brání hledání k sample.log souboru, který obsahuje data a udržuje ho z vrací data z jiných příkladu datové soubory, které neodpovídají schématu, které jsme definovali.
-4. Použít následující příkazy k vytvoření nové "interní" tabulku s názvem **errorLogs**:
+   * **ŘÁDEK formát**: říká Hive formátování data. V tomto případě pole v každém protokolu jsou oddělené mezerou.
+   * **ULOŽEN jako textový soubor umístění**: říká Hive, ve kterém se data ukládají (do adresáře příkladu/dat) a, která je uložená jako text.
+   * **Vyberte**: vybere počet všech řádků ve kterém sloupci **t4** obsahuje hodnotu **[Chyba]**. To by měl vrátit hodnotu **3** vzhledem k tomu, že existují tři řádky, které obsahují tuto hodnotu.
+   * **INPUT__FILE__NAME jako "%.log"** -říká Hive, který jsme by měl vrátit pouze data ze souborů s koncovkou. log. To omezuje vyhledávání na souboru sample.log, který obsahuje data a udržuje ho z vracet data z jiných příklad datové soubory, které neodpovídají schématu, které jsme definovali.
+4. Pomocí následujících příkazů vytvořte nové "vnitřní" tabulku s názvem **nepřenesl**:
 
         CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
         INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log';
 
     Tyto příkazy provádět následující akce:
 
-   * **Vytvoření tabulka není v případě existuje**: vytvoří tabulku, pokud ještě neexistuje. Protože **externí** – klíčové slovo nepoužívá, jde o interní tabulku, která je uložena v datovém skladu Hive a je zcela spravuje Hive.
+   * **Vytvoření tabulky IF NOT EXISTS**: Pokud ještě neexistuje, vytvoří tabulku. Vzhledem k tomu, **externí** – klíčové slovo se nepoužívá, je interní tabulku, která je uložena v datovém skladu Hive a spravuje úplně Hive.
 
      > [!NOTE]
-     > Na rozdíl od **externí** tabulky, vyřazení interní tabulku taky odstraní zadaná data.
+     > Na rozdíl od **externí** tabulek, vyřadit interní tabulku také odstraní podkladová data.
      >
      >
-   * **ULOŽENÉ ORC AS**: ukládá data ve sloupcovém formátu (ORC) optimalizované řádek. Toto je vysoce optimalizovaný a efektivní formát pro ukládání dat Hive.
-   * **PŘEPSAT INSERT... Vyberte**: vybere řádky z **log4jLogs** tabulku, která obsahují **[Chyba]**, pak vkládá data do **errorLogs** tabulky.
+   * **ULOŽENÉ jako ORC**: ukládá data ve sloupcovém formátu (ORC) optimalizované řádek. Toto je vysoce optimalizovaných a efektivní formát pro ukládání dat Hive.
+   * **VLOŽIT PŘEPSÁNÍ... Vyberte**: vybere řádky z **log4jLogs** tabulce, která obsahuje **[Chyba]**, pak vloží data do **nepřenesl** tabulky.
 
-     Chcete-li ověřit, že pouze řádky, které obsahují **[Chyba]** ve sloupci t4 byly uloženy do **errorLogs** tabulky, použijte následující příkaz a vrátí všechny řádky z **errorLogs**:
+     Chcete-li ověřit, že, které obsahují jenom řádky **[Chyba]** ve sloupci t4 byly uloženy do **nepřenesl** tabulky, použijte následující příkaz vrátí všechny řádky z **nepřenesl**:
 
-       Vybrat * z errorLogs;
+       Vybrat * z nepřenesl;
 
-     Tří řádků dat má být vrácen, všechny obsahující **[Chyba]** v t4 sloupce.
+     Tří řádků dat by měla být vrácena, všechny obsahující **[Chyba]** ve sloupci t4.
 
 ## <a id="summary"></a>Shrnutí
-Jak je vidět příkaz Hive poskytuje snadný způsob, jak interaktivně spouštění dotazů Hive v clusteru HDInsight, monitorovat stav úlohy a načíst výstup.
+Jak je vidět, příkaz Hive poskytuje snadný způsob, jak interaktivně spouštění dotazů Hive v clusteru HDInsight, sledovat stav úlohy a načtení výstupu.
 
 ## <a id="nextsteps"></a>Další kroky
-Obecné informace o Hive v HDInsight:
+Obecné informace o Hivu ve službě HDInsight:
 
-* [Použijte Hive s Hadoop v HDInsight](hdinsight-use-hive.md)
+* [Použití Hivu s Hadoopem v HDInsight](hdinsight-use-hive.md)
 
-Informace o jiných způsobech můžete pracovat s Hadoop v HDInsight:
+Informace o jiných způsobech, jakými můžete pracovat s Hadoop v HDInsight:
 
-* [Použijte Pig s Hadoop v HDInsight](hdinsight-use-pig.md)
-* [Používání nástroje MapReduce s Hadoop v HDInsight](hdinsight-use-mapreduce.md)
+* [Použití Pigu se systémem Hadoop v HDInsight](hdinsight-use-pig.md)
+* [Použití MapReduce se systémem Hadoop v HDInsight](hdinsight-use-mapreduce.md)
 
-Pokud používáte s Hive Tez, najdete v následujících dokumentech pro ladění informace:
+Pokud používáte pomocí Hive Tez, naleznete v následujících dokumentech pro informace o ladění:
 
-* [Pomocí uživatelského rozhraní Tez na HDInsight se systémem Windows](../hdinsight-debug-tez-ui.md)
-* [Použití zobrazení Ambari Tez na HDInsight se systémem Linux](../hdinsight-debug-ambari-tez-view.md)
+* [Použití uživatelského rozhraní Tez na HDInsight se systémem Windows](../hdinsight-debug-tez-ui.md)
+* [Použití zobrazení Ambari Tez na HDInsight založených na Linuxu](../hdinsight-debug-ambari-tez-view.md)
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
 

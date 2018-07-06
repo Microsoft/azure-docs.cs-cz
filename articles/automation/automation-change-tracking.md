@@ -10,12 +10,12 @@ ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79d64a5a7eb339c6904fe026209292202632f640
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 717cf6b2abfb529313699836b790bd3f07844a67
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342007"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867949"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Sledování změn ve vašem prostředí pomocí řešení Change Tracking
 
@@ -57,6 +57,7 @@ Použijte následující postup ke konfiguraci sledování souborů na počíta�
 |Rekurze     | Určuje, jestli se při hledání položky, která se má sledovat, používá rekurze.        |
 |Použít sudo     | Toto nastavení určuje, jestli se při kontrole položky používá sudo.         |
 |Odkazy     | Toto nastavení určuje, jak se při procházení adresářů zpracovávají symbolické odkazy.<br> **Ignorovat** – ignoruje symbolické odkazy a nezahrnuje odkazované soubory a adresáře.<br>**Postupujte podle** – během rekurze sleduje symbolické odkazy a zahrnuje i odkazované soubory a adresáře.<br>**Spravovat** – sleduje symbolické odkazy a umožňuje změnu vráceného obsahu.     |
+|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne odeslání obsahu souboru na sledované změny. Dostupné možnosti: **True** nebo **False**.|
 
 > [!NOTE]
 > Možnost Spravovat se nedoporučuje. Načítání obsahu souborů se nepodporuje.
@@ -75,6 +76,13 @@ Použijte následující postup ke konfiguraci soubory sledování na počítač
 |Název položky     | Popisný název souboru, který má být sledovány.        |
 |Skupina     | Název skupiny pro logické seskupení souborů.        |
 |Zadat cestu     | Cesta, ve které se má soubor hledat. Například: c:\temp\myfile.txt       |
+|Nahrát obsah souboru pro všechna nastavení| Zapne nebo vypne odeslání obsahu souboru na sledované změny. Dostupné možnosti: **True** nebo **False**.|
+
+## <a name="configure-file-content-tracking"></a>Konfigurovat sledování obsah souboru
+
+Můžete zobrazit obsah před a po změně souboru s File Content Change Tracking. To je k dispozici pro soubory Windows a Linuxem, pro jednotlivé změny do souboru, obsah souboru je uložené v účtu úložiště a zobrazuje soubor před a po změnu, vložených nebo vedle sebe. Další informace najdete v tématu [zobrazit obsah souboru sledované](change-tracking-file-contents.md).
+
+![zobrazení změn v souboru](./media/change-tracking-file-contents/view-file-changes.png)
 
 ### <a name="configure-windows-registry-keys-to-track"></a>Nakonfigurovat sledování klíčů registru Windows
 

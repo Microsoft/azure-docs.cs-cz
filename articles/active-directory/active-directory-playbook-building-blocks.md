@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: c5f3904621dcc4fe992b2c2f8293ad706b01f713
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d2a63a1a9b335b7765c5eaf8c90e1d755b2ce9c9
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446771"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867116"
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory doklad o playbook koncept: stavební bloky
 
@@ -42,7 +42,7 @@ Tady jsou některé požadavky potřebné pro všechny POC s Azure AD Premium.
 | Předpoklad | Zdroje a prostředky |
 | --- | --- |
 | Tenant Azure AD definované s platným předplatným Azure | [Získání tenanta služby Azure Active Directory](active-directory-howto-tenant.md)<br/>**Poznámka:** Pokud již máte prostředí s licencí Azure AD Premium, žádný limit předplatného můžete získat tak, že přejdete na https://aka.ms/accessaad <br/>Další informace najdete na: https://blogs.technet.microsoft.com/enterprisemobility/2016/02/26/azure-ad-mailbag-azure-subscriptions-and-azure-ad-2/ a https://technet.microsoft.com/library/dn832618.aspx |
-| Definice a ověření domény | [Přidání vlastního názvu domény do Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Poznámka:** některé úlohy, jako jsou Power BI může mít zřízení tenanta služby azure AD na pozadí. Zkontrolujte, jestli je dané domény přidružené k tenantovi, přejděte na https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Je-li získat úspěšné odpovědi, pak doména je už přiřazený k tenantovi a převzít kontrolu nad může být nutné. Pokud ano, pro další informace získáte od Microsoftu. Další informace o převzetí možnosti v: [co je Samoobslužná registrace pro Azure?](active-directory-self-service-signup.md) |
+| Definice a ověření domény | [Přidání vlastního názvu domény do Azure Active Directory](active-directory-domains-add-azure-portal.md)<br/>**Poznámka:** některé úlohy, jako jsou Power BI může mít zřízení tenanta služby azure AD na pozadí. Zkontrolujte, jestli je dané domény přidružené k tenantovi, přejděte na https://login.microsoftonline.com/{domain}/v2.0/.well-known/openid-configuration. Je-li získat úspěšné odpovědi, pak doména je už přiřazený k tenantovi a převzít kontrolu nad může být nutné. Pokud ano, pro další informace získáte od Microsoftu. Další informace o převzetí možnosti v: [co je Samoobslužná registrace pro Azure?](users-groups-roles/directory-self-service-signup.md) |
 | Azure AD Premium nebo EMS zkušební povoleno | [Azure Active Directory Premium zdarma po dobu jednoho měsíce](https://azure.microsoft.com/trial/get-started-active-directory/) |
 | PoC uživatelům přiřadíte licence EMS nebo Azure AD Premium | [Licence sami sebe i vaše uživatele v Azure Active Directory](active-directory-licensing-get-started-azure-portal.md) |
 | Přihlašovací údaje Azure AD globálního správce | [Přiřazení rolí správce v Azure Active Directory](users-groups-roles/directory-assign-admin-roles.md) |
@@ -125,11 +125,11 @@ Přibližný čas dokončení: 10 minut
 | Krok | Zdroje a prostředky |
 | --- | --- |
 | Přejděte do okna licence v portálu pro správu Azure AD | [Portál pro správu Azure AD: licencování](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) |
-| Přiřazení licencí ke skupině zabezpečení s uživateli POC. | [Přiřazení licencí ke skupině uživatelů v Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md) |
+| Přiřazení licencí ke skupině zabezpečení s uživateli POC. | [Přiřazení licencí ke skupině uživatelů v Azure Active Directory](users-groups-roles/licensing-groups-assign.md) |
 
 ### <a name="considerations"></a>Požadavky
 
-V případě jakékoli problémy, přejděte na [scénářů, omezení a známé problémy s použití skupin pro správu licencování v Azure Active Directory](active-directory-licensing-group-advanced.md)
+V případě jakékoli problémy, přejděte na [scénářů, omezení a známé problémy s použití skupin pro správu licencování v Azure Active Directory](users-groups-roles/licensing-group-advanced.md)
 
 ## <a name="saas-federated-sso-configuration"></a>Konfigurace SaaS federovaného jednotného přihlašování
 

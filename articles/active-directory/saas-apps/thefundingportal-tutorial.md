@@ -1,6 +1,6 @@
 ---
-title: 'Kurz: Azure Active Directory integrace s aplikace finančních prostředků Portal | Microsoft Docs'
-description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a portálu finančních prostředků.
+title: 'Kurz: Integrace Azure Active Directory se službou financování portál | Dokumentace Microsoftu'
+description: Zjistěte, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a financování portál.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,221 +14,221 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 5e6707e8f537e173a851e575a5c32622951dda99
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 98ddd26bce7a8e2741db4f8e064a1b5bf2b6bed5
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36222683"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37865854"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>Kurz: Azure Active Directory integrace s aplikace Portal finančních prostředků
+# <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>Kurz: Integrace Azure Active Directory se službou financování portál
 
-V tomto kurzu zjistěte, jak integrovat aplikace Portal finančních prostředků s Azure Active Directory (Azure AD).
+V tomto kurzu se dozvíte, jak integrovat financování portál Azure Active Directory (Azure AD).
 
-Integrace aplikace Portal finančních prostředků s Azure AD poskytuje následující výhody:
+Portál financování integrování Azure AD poskytuje následující výhody:
 
-- Můžete řídit ve službě Azure AD, který má přístup k portálu finančních prostředků
-- Můžete povolit uživatelům, aby automaticky získat přihlášení k aplikace finančních prostředků Portal (jednotné přihlášení) s jejich účty Azure AD
-- Můžete spravovat vaše účty v jednom centrálním místě - portálu Azure
+- Můžete řídit ve službě Azure AD, který má přístup k financování portál
+- Uživatele, aby automaticky získat přihlášení k financování portál (Single Sign-On) můžete povolit pomocí jejich účtů služby Azure AD
+- Můžete spravovat své účty na jediném místě – na webu Azure portal
 
-Pokud chcete vědět, další informace o integraci aplikací SaaS v Azure AD, najdete v části [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Pokud chcete zjistit další podrobnosti o integraci aplikací SaaS v Azure AD, přečtěte si téma [co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-Ke konfiguraci integrace služby Azure AD pomocí portálu finančních prostředků, potřebujete následující položky:
+Konfigurace integrace Azure AD s financování portál, potřebujete následující položky:
 
-- Předplatné služby Azure AD
-- Portálu finančních prostředků jednotné přihlašování povolené předplatné
+- S předplatným služby Azure AD
+- Financování portál jednotného přihlašování povolená předplatného
 
 > [!NOTE]
-> K testování kroky v tomto kurzu, nedoporučujeme používání provozním prostředí.
+> Pokud chcete vyzkoušet kroky v tomto kurzu, nedoporučujeme použití produkční prostředí.
 
-Chcete-li otestovat kroky v tomto kurzu, postupujte podle těchto doporučení:
+Pokud chcete vyzkoušet kroky v tomto kurzu, postupujte podle těchto doporučení:
 
-- Nepoužívejte provozním prostředí, pokud to není nutné.
-- Pokud nemáte prostředí zkušební verze Azure AD, můžete získat zkušební verze jeden měsíc [zde](https://azure.microsoft.com/pricing/free-trial/).
+- Nepoužívejte produkčním prostředí, pokud to není nutné.
+- Pokud nemáte prostředí zkušební verzi Azure AD, můžete získat měsíční zkušební [tady](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Popis scénáře
-V tomto kurzu můžete otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénáři uvedeném v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
+V tomto kurzu je otestovat Azure AD jednotné přihlašování v testovacím prostředí. Scénář popsaný v tomto kurzu se skládá ze dvou hlavních stavebních bloků:
 
-1. Přidání aplikace Portal finančních prostředků z Galerie
+1. Přidání financování portál z Galerie
 2. Konfigurace a testování Azure AD jednotného přihlašování
 
-## <a name="adding-the-funding-portal-from-the-gallery"></a>Přidání aplikace Portal finančních prostředků z Galerie
-Konfigurace integrace portál finančních prostředků do Azure AD, potřebujete přidat portálu finančních prostředků z Galerie si na seznam spravovaných aplikací SaaS.
+## <a name="adding-the-funding-portal-from-the-gallery"></a>Přidání financování portál z Galerie
+Konfigurace integrace financování portál do služby Azure AD, budete muset přidat portál financování z Galerie na váš seznam spravovaných aplikací SaaS.
 
-**Pokud chcete přidat aplikace Portal finančních prostředků z galerie, proveďte následující kroky:**
+**Chcete-li přidat portál financování z galerie, postupujte následovně:**
 
-1. V  **[portál Azure](https://portal.azure.com)**, v levém navigačním panelu klikněte na tlačítko **Azure Active Directory** ikonu. 
+1. V  **[webu Azure portal](https://portal.azure.com)**, v levém navigačním panelu klikněte na **Azure Active Directory** ikonu. 
 
     ![Active Directory][1]
 
-2. Přejděte na **podnikové aplikace, které**. Pak přejděte na **všechny aplikace**.
+2. Přejděte do **podnikové aplikace**. Pak přejděte na **všechny aplikace**.
 
     ![Aplikace][2]
     
-3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko horní dialogové okno.
+3. Chcete-li přidat novou aplikaci, klikněte na tlačítko **novou aplikaci** tlačítko v horní části dialogového okna.
 
     ![Aplikace][3]
 
-4. Do vyhledávacího pole zadejte **aplikace finančních prostředků Portal**.
+4. Do vyhledávacího pole zadejte **financování portál**.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/thefundingportal-tutorial/tutorial_thefundingportal_search.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/thefundingportal-tutorial/tutorial_thefundingportal_search.png)
 
-5. Na panelu výsledků vyberte **aplikace finančních prostředků Portal**a potom klikněte na **přidat** tlačítko Přidat aplikaci.
+5. Na panelu výsledků vyberte **financování portál**a potom klikněte na tlačítko **přidat** tlačítko pro přidání aplikace.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/thefundingportal-tutorial/tutorial_thefundingportal_addfromgallery.png)
+    ![Vytváří se testovací uživatele služby Azure AD](./media/thefundingportal-tutorial/tutorial_thefundingportal_addfromgallery.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurace a testování Azure AD jednotného přihlašování
-V této části konfiguraci a testování Azure AD jednotné přihlašování pomocí aplikace Portal finančních prostředků na základě testovací uživatele, nazývá "Britta Simon".
+V této části Konfigurace a testování Azure AD jednotné přihlašování pomocí financování portál na základě testovací uživatele nazývá "Britta Simon".
 
-Azure AD pro jednotné přihlašování pro práci, musí vědět, co uživatel protějškem portálu finančních prostředků je pro uživatele ve službě Azure AD. Jinými slovy odkaz vztah mezi uživatele Azure AD a související uživatelské portálu finančních prostředků je potřeba vytvořit.
+Pro jednotné přihlašování pro práci služba Azure AD potřebuje vědět, co uživatel protějšek The financování portálu je pro uživatele ve službě Azure AD. Jinými slovy vztah odkazu mezi uživatele služby Azure AD a související uživatelské portálu financování potřeba navázat.
 
-Portálu finančních prostředků, přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** k navázání vztahu odkazu.
+Portálu financování přiřadit hodnotu **uživatelské jméno** ve službě Azure AD jako hodnotu **uživatelské jméno** a tím vytvoří vztah odkazu.
 
-Nakonfigurovat a otestovat Azure AD jednotné přihlašování portálu finančních prostředků, je třeba dokončit následující stavební bloky:
+Nakonfigurovat a otestovat Azure AD jednotné přihlašování s financování portál, které potřebujete k dokončení následujících stavebních bloků:
 
-1. **[Konfigurace Azure AD jednotné přihlašování](#configuring-azure-ad-single-sign-on)**  – Pokud chcete povolit uživatelům tuto funkci používat.
-2. **[Vytváření testovacího uživatele Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
-3. **[Vytváření testovacího uživatele portálu finančních prostředků](#creating-the-funding-portal-test-user)**  – Pokud chcete mít protějšek Britta Simon v The finančních prostředků portál, který je propojený s Azure AD reprezentace daného uživatele.
-4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotné přihlašování.
-5. **[Testování jednotné přihlašování](#testing-single-sign-on)**  – Pokud chcete ověřit, zda je funkční konfigurace.
+1. **[Konfigurace Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**  – Pokud chcete, aby uživatelé mohli tuto funkci používat.
+2. **[Vytváří se testovací uživatele služby Azure AD](#creating-an-azure-ad-test-user)**  – Pokud chcete otestovat Azure AD jednotné přihlašování s Britta Simon.
+3. **[Vytváří se testovací uživatel financování portál](#creating-the-funding-portal-test-user)**  – Pokud chcete mít protějšek Britta Simon financování portál, který je propojený s Azure AD reprezentace uživatele.
+4. **[Přiřazení testovacího uživatele Azure AD](#assigning-the-azure-ad-test-user)**  – Pokud chcete povolit Britta Simon používat Azure AD jednotného přihlašování.
+5. **[Testování Single Sign-On](#testing-single-sign-on)**  – Pokud chcete ověřit, jestli funguje v konfiguraci.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace Azure AD jednotné přihlašování
+### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurace služby Azure AD jednotného přihlašování
 
-V této části můžete povolit Azure AD jednotného přihlašování na portálu Azure a nakonfigurovat jednotné přihlašování v aplikaci portálu finančních prostředků.
+V této části Povolení služby Azure AD jednotného přihlašování na portálu Azure portal a konfigurace jednotného přihlašování v aplikaci financování portál.
 
-**Ke konfiguraci Azure AD jednotné přihlašování portálu finančních prostředků, proveďte následující kroky:**
+**Ke konfiguraci Azure AD jednotné přihlašování s financování portál, proveďte následující kroky:**
 
-1. Na portálu Azure na **aplikace finančních prostředků Portal** stránky integrace aplikací, klikněte na tlačítko **jednotného přihlašování**.
+1. Na webu Azure Portal na **financování portál** integrace stránka aplikace, klikněte na tlačítko **jednotného přihlašování**.
 
-    ![Konfigurovat jednotné přihlašování][4]
+    ![Konfigurace jednotného přihlašování][4]
 
-2. Na **jednotného přihlašování** dialogovém okně, vyberte **režimu** jako **na základě SAML přihlašování** umožňující jednotného přihlašování.
+2. Na **jednotného přihlašování** dialogového okna, vyberte **režimu** jako **přihlašování na základě SAML** povolit jednotné přihlašování.
  
-    ![Konfigurovat jednotné přihlašování](./media/thefundingportal-tutorial/tutorial_thefundingportal_samlbase.png)
+    ![Konfigurace jednotného přihlašování](./media/thefundingportal-tutorial/tutorial_thefundingportal_samlbase.png)
 
-3. Na **doméně prostředků portál a adresy URL** část, proveďte následující kroky:
+3. Na **financování domén portál a adresy URL** části, proveďte následující kroky:
 
-    ![Konfigurovat jednotné přihlašování](./media/thefundingportal-tutorial/tutorial_thefundingportal_url.png)
+    ![Konfigurace jednotného přihlašování](./media/thefundingportal-tutorial/tutorial_thefundingportal_url.png)
 
-    a. V **přihlašovací adresa URL** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.regenteducation.net/`
+    a. V **přihlašovací adresa URL** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.regenteducation.net/`
 
-    b. V **identifikátor** textovému poli, zadejte adresu URL pomocí následujícího vzorce: `https://<subdomain>.regenteducation.net`
+    b. V **identifikátor** textového pole zadejte adresu URL pomocí následujícímu vzoru: `https://<subdomain>.regenteducation.net`
 
     > [!NOTE] 
-    > Tyto hodnoty nejsou skutečné. Tyto hodnoty aktualizujte skutečné přihlašovací adresa URL a identifikátor. Obraťte se na [tým podpory finančních prostředků klient portál](mailto:info@regenteducation.com) k získání těchto hodnot. 
+    > Tyto hodnoty nejsou skutečný. Tyto hodnoty aktualizujte s skutečné přihlašovací adresu URL a identifikátorem. Kontakt [tým podpory financování klient portál](mailto:info@regenteducation.com) k získání těchto hodnot. 
 
-4. Aplikace z portálu finančních prostředků očekává kontrolní výrazy SAML obsahuje atribut s názvem "externalId1". Hodnota "externalId1" by měl být rozpoznaný studentID. Konfigurace deklarace identity "externalId1" pro tuto aplikaci. Můžete spravovat hodnoty těchto atributů z **uživatelské atributy** aplikace. Následující snímek obrazovky ukazuje příklad pro tento.
+4. Aplikace portálu financování očekává, že kontrolní výrazy SAML obsahuje atribut s názvem "externalId1". Hodnota "externalId1" by měla být rozpoznané studentID. Konfigurace deklarace identity "externalId1" pro tuto aplikaci. Můžete spravovat hodnotami těchto atributů z **atributy uživatele** aplikace. Následující snímek obrazovky ukazuje příklad pro tuto.
 
-    ![Konfigurovat jednotné přihlašování](./media/thefundingportal-tutorial/tutorial_thefundingportal_attribute.png)
+    ![Konfigurace jednotného přihlašování](./media/thefundingportal-tutorial/tutorial_thefundingportal_attribute.png)
 
-5. V **uživatelské atributy** části na **jednotného přihlašování** dialogové okno, nakonfigurujte atribut tokenu SAML, jak je znázorněno na obrázku a proveďte následující kroky:
+5. V **atributy uživatele** části na **jednotného přihlašování** dialogovém okně Konfigurovat atribut tokenu SAML, jak je znázorněno na obrázku a proveďte následující kroky:
 
     | Název atributu | Hodnota atributu |
     | ------------------- | ---------------- |
     | externalId1 | User.extensionattribute1 |
 
-    a. Klikněte na tlačítko **přidat atribut** otevřete **přidat atribut** dialogové okno.
+    a. Klikněte na tlačítko **přidat atribut** otevřít **přidat atribut** dialogového okna.
 
-    ![Konfigurovat jednotné přihlašování](./media/thefundingportal-tutorial/tutorial_attribute_04.png)
+    ![Konfigurace jednotného přihlašování](./media/thefundingportal-tutorial/tutorial_attribute_04.png)
 
-    ![Konfigurovat jednotné přihlašování](./media/thefundingportal-tutorial/tutorial_attribute_05.png)
+    ![Konfigurace jednotného přihlašování](./media/thefundingportal-tutorial/tutorial_attribute_05.png)
 
-    b. V **název** textovému poli, zadejte název atributu, který je uvedený na příslušném řádku.
+    b. V **název** textového pole zadejte název atributu, který je zobrazený pro tento řádek.
 
-    c. Z **hodnota atributu** vyberte atribut, který chcete použít týkající se vaší implementace. Například pokud je hodnota StudentID mít uložen v ExtensionAttribute1, pak vyberte user.extensionattribute1.
+    c. Z **hodnota atributu** vyberte atribut, který chcete použít pro implementaci. Například pokud hodnota StudentID jste uložili v ExtensionAttribute1, pak vyberte user.extensionattribute1.
     
     d. Klikněte na tlačítko **OK**.
  
-6. Na **SAML podpisový certifikát** klikněte na tlačítko **soubor XML s metadaty** a potom uložte soubor metadat ve vašem počítači.
+6. Na **podpisový certifikát SAML** klikněte na tlačítko **soubor XML s metadaty** a uložte soubor metadat ve vašem počítači.
 
-    ![Konfigurovat jednotné přihlašování](./media/thefundingportal-tutorial/tutorial_thefundingportal_certificate.png) 
+    ![Konfigurace jednotného přihlašování](./media/thefundingportal-tutorial/tutorial_thefundingportal_certificate.png) 
 
 7. Klikněte na tlačítko **Uložit** tlačítko.
 
-    ![Konfigurovat jednotné přihlašování](./media/thefundingportal-tutorial/tutorial_general_400.png)
+    ![Konfigurace jednotného přihlašování](./media/thefundingportal-tutorial/tutorial_general_400.png)
 
-8. Konfigurace jednotného přihlašování na **aplikace finančních prostředků Portal** straně, budete muset odeslat stažené **soubor XML s metadaty** k [tým podpory aplikace finančních prostředků Portal](mailto:info@regenteducation.com). Nastavují toto nastavení tak, aby měl jednotné přihlašování SAML připojení správně nastavena na obou stranách.
+8. Ke konfiguraci jednotného přihlašování na **financování portál** straně, je nutné odeslat na stažený **soubor XML s metadaty** k [tým podpory portálu financování](mailto:info@regenteducation.com). Nastavují tohoto nastavení můžete mít správně nastavené na obou stranách připojení SAML SSO.
 
 > [!TIP]
-> Teď si můžete přečíst stručným verzi tyto pokyny uvnitř [portál Azure](https://portal.azure.com), zatímco nastavujete aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace, které** jednoduše klikněte na položku **jednotné přihlašování** kartě a přístup v embedded dokumentaci prostřednictvím **konfigurace** v dolní části. Můžete přečíst další informace o funkci embedded dokumentace: [vložených dokumentace k Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> Teď si můžete přečíst stručné verzi těchto pokynů uvnitř [webu Azure portal](https://portal.azure.com), zatímco jsou nastavení aplikace!  Po přidání této aplikace z **služby Active Directory > podnikové aplikace** části, stačí kliknout **Single Sign-On** kartu a přístup k vložené dokumentaci prostřednictvím  **Konfigurace** oblast v dolní části. Další informace o funkci vložená dokumentace: [dokumentace ke službě Azure AD embedded]( https://go.microsoft.com/fwlink/?linkid=845985)
 > 
 
-### <a name="creating-an-azure-ad-test-user"></a>Vytváření testovacího uživatele Azure AD
-Cílem této části je vytvoření zkušebního uživatele na portálu Azure, názvem Britta Simon.
+### <a name="creating-an-azure-ad-test-user"></a>Vytváří se testovací uživatele služby Azure AD
+Cílem této části je vytvoření zkušebního uživatele na webu Azure Portal volá Britta Simon.
 
-![Vytvořit uživatele Azure AD][100]
+![Vytvoření uživatele Azure AD][100]
 
-**Vytvoření zkušebního uživatele ve službě Azure AD, proveďte následující kroky:**
+**Chcete-li vytvořit testovacího uživatele ve službě Azure AD, postupujte následovně:**
 
-1. V **portál Azure**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
+1. V **webu Azure portal**, v levém navigačním podokně klikněte na tlačítko **Azure Active Directory** ikonu.
 
-    ![Vytváření testovacího uživatele Azure AD](./media/thefundingportal-tutorial/create_aaduser_01.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/thefundingportal-tutorial/create_aaduser_01.png) 
 
 2. Chcete-li zobrazit seznam uživatelů, přejděte na **uživatelů a skupin** a klikněte na tlačítko **všichni uživatelé**.
     
-    ![Vytváření testovacího uživatele Azure AD](./media/thefundingportal-tutorial/create_aaduser_02.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/thefundingportal-tutorial/create_aaduser_02.png) 
 
-3. Chcete-li otevřít **uživatele** dialogové okno, klikněte na tlačítko **přidat** horní dialogové okno.
+3. Chcete-li otevřít **uživatele** dialogového okna, klikněte na tlačítko **přidat** horní části dialogového okna.
  
-    ![Vytváření testovacího uživatele Azure AD](./media/thefundingportal-tutorial/create_aaduser_03.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/thefundingportal-tutorial/create_aaduser_03.png) 
 
-4. Na **uživatele** dialogové okno stránky, proveďte následující kroky:
+4. Na **uživatele** dialogového okna stránky, proveďte následující kroky:
  
-    ![Vytváření testovacího uživatele Azure AD](./media/thefundingportal-tutorial/create_aaduser_04.png) 
+    ![Vytváří se testovací uživatele služby Azure AD](./media/thefundingportal-tutorial/create_aaduser_04.png) 
 
-    a. V **název** textovému poli, typ **BrittaSimon**.
+    a. V **název** textové pole, typ **BrittaSimon**.
 
-    b. V **uživatelské jméno** textovému poli, typ **e-mailová adresa** z BrittaSimon.
+    b. V **uživatelské jméno** textové pole, typ **e-mailová adresa** z BrittaSimon.
 
-    c. Vyberte **zobrazit hesla** a poznamenejte si hodnotu **heslo**.
+    c. Vyberte **zobrazit heslo** a zapište si hodnotu **heslo**.
 
     d. Klikněte na možnost **Vytvořit**.
  
-### <a name="creating-the-funding-portal-test-user"></a>Vytvoření aplikace finančních prostředků Portal testovacího uživatele
+### <a name="creating-the-funding-portal-test-user"></a>Vytváření financování portál testovacího uživatele
 
-V této části vytvoříte uživatele volat Britta Simon portálu finančních prostředků. Práce s [tým podpory aplikace Portal finančních prostředků](mailto:info@regenteducation.com) k přidání testovacího uživatele a povolení jednotného přihlašování.
+V této části vytvořte uživatele Britta Simon The financování portálu. Práce s [tým podpory portálu financování](mailto:info@regenteducation.com) přidat testovacího uživatele a povolení jednotného přihlašování.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
 
-V této části povolíte Britta Simon používat Azure jednotné přihlašování pomocí udělení přístupu aplikace Portal finančních prostředků.
+V této části je povolit Britta Simon používat jednotné přihlašování Azure díky udělení přístupu k financování portál.
 
 ![Přiřadit uživatele][200] 
 
-**Pokud chcete přiřadit Britta Simon aplikace Portal finančních prostředků, proveďte následující kroky:**
+**Britta Simon přiřadit financování portál, proveďte následující kroky:**
 
-1. Na portálu Azure otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace, které** klikněte **všechny aplikace**.
+1. Na webu Azure Portal, otevřete zobrazení aplikací a pak přejděte do zobrazení adresáře a přejděte na **podnikové aplikace** klikněte **všechny aplikace**.
 
     ![Přiřadit uživatele][201] 
 
-2. V seznamu aplikací vyberte **aplikace finančních prostředků Portal**.
+2. V seznamu aplikací vyberte **financování portál**.
 
-    ![Konfigurovat jednotné přihlašování](./media/thefundingportal-tutorial/tutorial_thefundingportal_app.png) 
+    ![Konfigurace jednotného přihlašování](./media/thefundingportal-tutorial/tutorial_thefundingportal_app.png) 
 
 3. V nabídce na levé straně klikněte na tlačítko **uživatelů a skupin**.
 
     ![Přiřadit uživatele][202] 
 
-4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogové okno.
+4. Klikněte na tlačítko **přidat** tlačítko. Potom vyberte **uživatelů a skupin** na **přidat přiřazení** dialogového okna.
 
     ![Přiřadit uživatele][203]
 
-5. Na **uživatelů a skupin** dialogovém okně, vyberte **Britta Simon** v seznamu uživatelů.
+5. Na **uživatelů a skupin** dialogového okna, vyberte **Britta Simon** v seznamu uživatelů.
 
-6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogové okno.
+6. Klikněte na tlačítko **vyberte** tlačítko **uživatelů a skupin** dialogového okna.
 
-7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogové okno.
+7. Klikněte na tlačítko **přiřadit** tlačítko **přidat přiřazení** dialogového okna.
     
-### <a name="testing-single-sign-on"></a>Testování jednotné přihlašování
+### <a name="testing-single-sign-on"></a>Testování jednotného přihlašování
 
-Cílem této části je Azure AD jeden přihlašování konfigurace pomocí přístupového panelu.
+Cílem této části je test vaší konfigurace Azure AD jednotné přihlašování pomocí přístupového panelu.
 
-Když kliknete na dlaždici aplikace finančních prostředků Portal na přístupovém panelu, můžete by měl získat automaticky přihlášení k aplikaci portálu finančních prostředků.
+Po kliknutí na dlaždici financování portál na přístupovém panelu, vám by měl získat automaticky přihlášení k aplikaci financování portál.
 
 ## <a name="additional-resources"></a>Další zdroje informací:
 
-* [Seznam kurzů k integraci aplikací SaaS službou Azure Active Directory](tutorial-list.md)
+* [Seznam kurzů o integraci aplikací SaaS pomocí Azure Active Directory](tutorial-list.md)
 * [Co je přístup k aplikaci a jednotné přihlašování s Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 

@@ -1,77 +1,78 @@
 ---
-title: Batch testování aplikace LEOŠ - Azure | Microsoft Docs
-description: Dávky k testování používejte nepřetržitě fungovat ve vaší aplikaci ji upravit a zlepšovat její znalosti jazyka.
+title: Testování aplikace LUIS – Azure batch | Dokumentace Microsoftu
+description: Pomocí služby batch testování neustále pracovat na aplikaci zpřesnit jej a zvýšit jeho umožňující porozumět jazyku.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 07/05/2018
 ms.author: v-geberr
-ms.openlocfilehash: 3803df32d6431b8413e8df0837ed62b2e4344cdc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f0366e805c9ae809a2800b0f4be53d08d9fc3d60
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343020"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857904"
 ---
-# <a name="batch-testing-in-luis"></a>Testování v LEOŠ batch
+# <a name="batch-testing-in-luis"></a>Testování v LUIS služby batch
 
-Testování batch ověří vaše [active](luis-concept-version.md#active-version) trained model k měření jeho přesnost předpovědi. Batch test umožňuje zobrazit přesnost každý záměr a entity ve vaší aktuální trained model v grafu. Zkontrolujte výsledky testu batch a proveďte příslušné akce a zvyšte tak přesnost, jako je například přidávání další příklad utterances k záměrem aplikace často selže-li identifikovat správný záměr.
+Testování služby batch ověří vaše [aktivní](luis-concept-version.md#active-version) trénovaný model pro měření jeho přesnost předpovědi. Testovací služby batch umožňuje zobrazit aktuální trained model v grafu přesnosti jednotlivých záměr a entity. Posoudit výsledky testu služby batch a přijmout vhodná opatření zvyšte přesnost, jako je například přidávání další příklad projevy k záměru, pokud vaše aplikace často nepodaří identifikovat správné záměr.
 
-## <a name="group-data-for-batch-test"></a>Data skupiny pro batch test
-Je důležité, že jsou pro nové LEOŠ utterances používat pro testování batch. Pokud máte datové sady utterances, rozdělte utterances do tří nastaví: utterances přidány do záměrem utterances přijaté z publikovaných koncového bodu a utterances použít do dávky testu LEOŠ po je vycvičena. 
+## <a name="group-data-for-batch-test"></a>Data skupiny pro testovací služby batch
+Je důležité, že teprve začínáte LUIS projevy, používá se pro testování služby batch. Pokud už máte datovou sadu projevy, rozdělit projevy do tří sad: projevy přidá k záměru, projevy přijatých z publikovaných koncového bodu a projevy po jsou trénovaná používat batch testu LUIS. 
 
-## <a name="a-dataset-of-utterances"></a>Datové sady utterances
-Odeslat soubor batch utterances, označuje jako *datovou sadu*, pro testování batch. Datová sada je soubor ve formátu JSON obsahující maximálně 1000 s názvem bez přípony **jedinečných** utterances. V aplikaci můžete otestovat až 10 datové sady. Pokud je potřeba provést testování více, odstranit datovou sadu a poté přidejte novou.
+## <a name="a-dataset-of-utterances"></a>Datovou sadu projevy
+Odeslat soubor batch projevy, označované jako *datovou sadu*, pro účely testování služby batch. Tato datová sada je soubor ve formátu JSON, který obsahuje maximálně 1 000 označené **neduplicitní** projevy. V aplikaci můžete otestovat až 10 datové sady. Pokud potřebujete další testování, odstranění datové sady a pak přidat nový.
 
 |**Pravidla**|
 |--|
-|* Žádné duplicitní utterances|
-|Žádné podřízené objekty hierarchické entity|
-|utterances 1 000 nebo méně|
+|* Žádné duplicitní projevy|
+|Žádné podřízené položky v hierarchické entity|
+|projevy 1 000 nebo méně|
 
-* Duplikáty jsou považovány za odpovídá přesným řetězcem, není shody, které jsou nejprve tokenizovat. 
+* Duplicity, jsou považovány za přesná shody, ne shody, které jsou nejprve tokenizovaného. 
 
 <a name="json-file-with-no-duplicates"></a>
 <a name="example-batch-file"></a>
-## <a name="batch-file-format"></a>Formát souboru batch
-Dávkový soubor se skládá z utterances. Každý utterance musí mít očekávané záměrné předpovědi společně s žádné [naučili počítač entity](luis-concept-entity-types.md#types-of-entities) byste měli zjistit. 
+## <a name="batch-file-format"></a>Formát souboru služby batch
+Dávkový soubor se skládá z projevy. Každý utterance musí mít očekávané záměru předpovědi spolu s [zjištěné počítače entity](luis-concept-entity-types.md#types-of-entities) očekáváte, že aby se rozpoznal. 
 
-Následuje příklad dávkového souboru:
+Následující příklad dávkového souboru:
 
    [!code-json[Valid batch test](~/samples-luis/documentation-samples/batch-testing/travel-agent-1.json)]
 
 
-## <a name="common-errors-importing-a-batch"></a>Běžné chyby import dávky
+## <a name="common-errors-importing-a-batch"></a>Běžné chyby při importu služby batch
 Běžné chyby patří: 
 
-> * Více než 1 000 utterances
-> * Utterance objekt JSON, který nemá ve vlastnosti entity
+> * Víc než 1 000 projevy
+> * Objekt utterance JSON, který nemá na vlastnost entity
+> * Slova popisem více entit
 
-## <a name="batch-test-state"></a>Stav testu batch
-LEOŠ sleduje stav poslední test každé datové sady. To zahrnuje datum posledního spuštění velikost (počet utterances v dávce) a poslední výsledek (počet úspěšně předpokládaných utterances).
+## <a name="batch-test-state"></a>Stav testu služby batch
+Služba LUIS sleduje stav poslední sady testů každou datovou sadu. To zahrnuje velikost (počet v dávce projevy), poslední spuštění data a výsledek posledního (počet úspěšně předpokládané projevy).
 
 <a name="sections-of-the-results-chart"></a>
-## <a name="batch-test-results"></a>Výsledky testu batch
-Výsledek testu batch je bodový graf, označuje jako matice k chybě. Tento graf je 4 způsob porovnání utterances v souboru a předpokládaných záměr na aktuální model a entity. 
+## <a name="batch-test-results"></a>Výsledky testu služby batch
+Výsledek testu batch je bodový graf, označované jako matici chyby. Tento graf se 4 způsob porovnání projevy v souboru a předpokládané záměr aktuální model a entity. 
 
-Datových bodů na **False kladné** a **False záporné** části označení chyb, které by se měly prozkoumat. Pokud jsou všechny datové body na **True kladné** a **True záporné** částech, pak je ideální pro tuto datovou sadu přesnost vaší aplikace.
+Datových bodů na **falešně pozitivní** a **falešně negativní** části označují chyby, které by mělo být vypátráno. Pokud jsou všechny datové body na **True kladné** a **True negativní** části, je ideální pro tuto datovou sadu přesnost vaší aplikace.
 
 ![Čtyři části grafu](./media/luis-concept-batch-test/chart-sections.png)
 
-Tento graf vám pomůže najít utterances, které předpovídá LEOŠ nesprávně podle jeho aktuální školení. Výsledky se zobrazí na oblast grafu. Vyberte jednotlivé body na graf tak, aby informace utterance nebo vyberte název oblasti a zkontrolovat výsledky utterance v této oblasti.
+Tento graf vám pomůže najít projevy, které předpoví LUIS nesprávně podle jeho aktuální školení. Výsledky se zobrazí v jedné oblasti grafu. Vyberte jednotlivé body v grafu zkontrolujte informace utterance nebo vyberte název oblasti a zkontrolovat výsledky utterance v dané oblasti.
 
-![Testování batch](./media/luis-concept-batch-test/batch-testing.png)
+![Dávkové testování](./media/luis-concept-batch-test/batch-testing.png)
 
-## <a name="errors-in-the-results"></a>Chyby ve výsledcích
-Chyby v testu batch naznačují záměry, které nejsou předpovědět, jak jsme uvedli v dávkovém souboru. Chyby jsou vypsány dva oddíly red grafu. 
+## <a name="errors-in-the-results"></a>Ve výsledcích chyby
+Chyby v testu batch označují záměrů, které nejsou předpovědět, jak je uvedeno v dávkovém souboru. Chyby jsou uvedené v dvě red části grafu. 
 
-Části false kladné označuje, že utterance shodná záměr nebo entity při by neměl mít. Falešně negativní označuje, že že utterance se neshoduje záměr nebo entity při by měl mít. 
+Falešně pozitivní části označuje, že utterance shoda s cílem nebo entity při by neměl mít. Záporné hodnoty false označuje, že že utterance se neshodoval s cílem nebo entity při by měl mít. 
 
-## <a name="fixing-batch-errors"></a>Opravy chyb batch
-Pokud nejsou chyby v batch testování, můžete přidat další utterances do záměrem, nebo označení další utterances s entitou, abyste LEOŠ, ujistěte se, k ní mezi tříd Intent. Pokud máte přidat utterances a s názvem bez přípony je a stále get předpovědi chyby při testování batch, je vhodné přidat [frázi seznamu](luis-concept-feature.md) funkce s specifické pro doménu termínů pomohou LEOŠ další rychlejší. 
+## <a name="fixing-batch-errors"></a>Opravy chyb služby batch
+Pokud nejsou chyby při testování služby batch, můžete přidat další projevy záměru, nebo popisek další projevy s entitou umožňující LUIS, ujistěte se, k ní mezi záměry. Pokud jste přidali projevy a s popiskem je a stále get předpovědi chyb při testování služby batch, zvažte přidání [seznam frází](luis-concept-feature.md) funkce, která nabízí slovník jazyka specifického pro doménu umožňující LUIS při učení. 
 
 ## <a name="next-steps"></a>Další postup
 

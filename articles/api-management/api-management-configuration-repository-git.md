@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 87381a27a59d6719f4bfff9ed367598932c1985c
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: b2cdb88ba71b4a3d3005ec9d64b6e94cdb1d1c55
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436399"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37857527"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Uložit a konfigurace konfigurace služby API Management pomocí Gitu
 
@@ -227,7 +227,7 @@ Nastavení konečného `$ref-policy`, mapuje příkazy soubor globálních zása
 `groups` Složka obsahuje složku pro jednotlivé skupiny definované v instanci služby.
 
 * `groups\<group name>\configuration.json` – Jedná se o konfiguraci pro skupinu. Toto je stejné informace, které by byly vráceny, pokud byste chtěli volání [získání konkrétní skupiny](https://docs.microsoft.com/en-us/rest/api/apimanagement/group/get) operace.
-* `groups\<group name>\description.html` – Toto je popis skupiny a odpovídá `description` vlastnost [skupiny entit](https://msdn.microsoft.com/library/azure/dn776329.aspx#EntityProperties).
+* `groups\<group name>\description.html` – Toto je popis skupiny a odpovídá `description` vlastnost [skupiny entit](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-group-entity).
 
 ### <a name="policies-folder"></a>Složka zásad
 `policies` Složka obsahuje příkazy zásad vaší instance služby.

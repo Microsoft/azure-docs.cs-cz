@@ -1,6 +1,6 @@
 ---
-title: Prostředky služby Azure Automation v řešení pro správu | Microsoft Docs
-description: Řešení pro správu by měl obvykle zahrnovat sady runbook ve službě Azure Automation k automatizaci procesů, jako je shromažďování a zpracování dat monitorování.  Tento článek popisuje, jak se zahrnuje sady runbook a jejich související prostředky v řešení.
+title: Prostředky Azure Automation v řešení pro správu | Dokumentace Microsoftu
+description: Řešení pro správu obvykle zahrnují sady runbook ve službě Azure Automation pro automatizaci procesů, jako je shromažďování a zpracování dat monitorování.  Tento článek popisuje, jak zahrnout do řešení sady runbook a jejich souvisejících prostředcích.
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -15,43 +15,43 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7f32cc47c96f6fc8adaedef8f8ea3156ee70115
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 95d5b2499f9e260e6ed134c4191b053325ca3f42
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887892"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868818"
 ---
-# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Přidání prostředky Azure Automation do řešení pro správu (Preview)
+# <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Přidání prostředků služby Azure Automation do řešení pro správu (Preview)
 > [!NOTE]
-> Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma popsané níže se mohou změnit.   
+> Toto je předběžná dokumentace pro vytváření řešení pro správu, které jsou aktuálně ve verzi preview. Žádné schéma je popsáno níže se může změnit.   
 
 
-[Řešení pro správu]( monitoring-solutions.md) by měl obvykle zahrnovat sady runbook ve službě Azure Automation k automatizaci procesů, jako je shromažďování a zpracování dat monitorování.  Účty Automation kromě sady runbook, obsahuje prostředky, jako jsou proměnné a plány, které podporují sady runbook používá v řešení.  Tento článek popisuje, jak se zahrnuje sady runbook a jejich související prostředky v řešení.
+[Řešení pro správu]( monitoring-solutions.md) by měl obvykle zahrnovat sady runbook ve službě Azure Automation pro automatizaci procesů, jako je shromažďování a zpracování dat monitorování.  Kromě runbooků účty služby Automation obsahuje prostředky, jako jsou proměnné a plány, které podporoval runbooky, které používají v řešení.  Tento článek popisuje, jak zahrnout do řešení sady runbook a jejich souvisejících prostředcích.
 
 > [!NOTE]
-> Ukázky v tomto článku použít parametry a proměnné, které jsou nutné nebo společné pro řešení pro správu a jsou popsány v [návrhu a sestavení řešení pro správu v Azure ]( monitoring-solutions-creating.md) 
+> Ukázky v tomto článku použijte parametry a proměnné, které jsou povinné nebo společné pro řešení pro správu a jsou popsány v [návrh a sestavení řešení pro správu v Azure ]( monitoring-solutions-creating.md) 
 
 
 ## <a name="prerequisites"></a>Požadavky
 Tento článek předpokládá, že jste již obeznámeni s následujícími informacemi.
 
-- Postup [vytvoření řešení správy]( monitoring-solutions-creating.md).
+- Jak [vytvořte řešení pro správu]( monitoring-solutions-creating.md).
 - Struktura [soubor řešení]( monitoring-solutions-solution-file.md).
-- Postup [vytváření šablon Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
+- Jak [vytváření šablon Resource Manageru](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ## <a name="automation-account"></a>Účet Automation
-Všechny prostředky ve službě Azure Automation jsou součástí [účet Automation](../automation/automation-security-overview.md#automation-account-overview).  Jak je popsáno v [pracovní prostor analýzy protokolů a účet Automation]( monitoring-solutions.md#log-analytics-workspace-and-automation-account) účet Automation není zahrnutý v řešení pro správu, ale musí existovat před instalací řešení.  Pokud není k dispozici, se nezdaří instalace řešení.
+Všechny prostředky ve službě Azure Automation jsou součástí [účtu Automation](../automation/automation-security-overview.md#automation-account-overview).  Jak je popsáno v [pracovní prostor Log Analytics a účet Automation]( monitoring-solutions.md#log-analytics-workspace-and-automation-account) není zahrnutý v řešení pro správu účtu služby Automation, ale musí existovat před instalací řešení.  Pokud není k dispozici, se nezdaří instalace řešení.
 
-Název každého prostředku automatizace obsahuje název svůj účet Automation.  To se provádí v řešení s **accountName** parametr jako v následujícím příkladu runbook prostředku.
+Název každého prostředku automatizace obsahuje název jeho účet služby Automation.  To se provádí v řešení se **accountName** parametr jako v následujícím příkladu runbook prostředku.
 
     "name": "[concat(parameters('accountName'), '/MyRunbook'))]"
 
 
 ## <a name="runbooks"></a>Runbooky
-By měly obsahovat všechny sady runbook používá řešení v souboru řešení tak, aby se vytváří při instalaci řešení.  Text sady runbook v šabloně nemůže obsahovat Přestože, proto byste měli publikovat sadu runbook na veřejném místě, kde je přístupná žádný uživatel instalaci řešení.
+Měli byste zahrnout všechny runbooky tak, aby byla vytvořena při instalaci řešení používá řešení v souboru řešení.  Tělo dané sady runbook v šabloně nemůže obsahovat však, měli byste Publikovat sadu runbook na veřejné umístění, kde byla přístupná libovolným uživatelem instalaci vašeho řešení.
 
-[Azure Automation runbook](../automation/automation-runbook-types.md) prostředky mít typ **Microsoft.Automation/automationAccounts/runbooks** a mít následující strukturu. Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
+[Azure Automation runbook](../automation/automation-runbook-types.md) prostředky mají typ **Microsoft.Automation/automationAccounts/runbooks** a mají následující strukturu. To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů. 
 
     {
         "name": "[concat(parameters('accountName'), '/', variables('Runbook').Name)]",
@@ -78,17 +78,17 @@ Vlastnosti pro sady runbook jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| runbookType |Určuje typy sady runbook. <br><br> Skript - skript prostředí PowerShell <br>PowerShell – pracovní postup prostředí PowerShell <br> GraphPowerShell - runbook skriptu grafické prostředí PowerShell <br> GraphPowerShellWorkflow - runbook pracovního postupu grafické prostředí PowerShell |
-| logProgress |Určuje, zda [průběhu záznamy](../automation/automation-runbook-output-and-messages.md) by měl být vygenerován pro sadu runbook. |
-| logVerbose |Určuje, zda [podrobných záznamů](../automation/automation-runbook-output-and-messages.md) by měl být vygenerován pro sadu runbook. |
+| runbookType |Určuje typy sady runbook. <br><br> Skript – skript prostředí PowerShell <br>PowerShell – pracovního postupu Powershellu <br> GraphPowerShell – grafický Powershellový skript runbook <br> GraphPowerShellWorkflow – grafický Powershellový pracovní postup runbook |
+| logProgress |Určuje, zda [záznamy o průběhu](../automation/automation-runbook-output-and-messages.md) by měl být vygenerován pro sadu runbook. |
+| logVerbose |Určuje, zda [podrobné záznamy](../automation/automation-runbook-output-and-messages.md) by měl být vygenerován pro sadu runbook. |
 | description |Volitelný popis pro sadu runbook. |
-| publishContentLink |Určuje obsah sady runbook. <br><br>identifikátor URI – identifikátor Uri, který obsah sady runbook.  Bude jím souboru s příponou .ps1 pro prostředí PowerShell a skript sady runbook a soubor exportovaný grafický runbook pro sadu runbook grafu.  <br> verze - verze sady runbook pro vlastní sledování. |
+| publishContentLink |Určuje obsah sady runbook. <br><br>identifikátor URI - Uri, který se obsah sady runbook.  Bude jím soubor .ps1 pro sady runbook Powershellu a skriptu a souboru exportované grafický runbook pro sadu runbook graf.  <br> verze – verze sady runbook pro vlastní sledování. |
 
 
-## <a name="automation-jobs"></a>Automatizace úloh
-Když spustíte runbook ve službě Azure Automation, vytvoří úlohu automatizace.  Prostředek automatizace úloh můžete přidat do vašeho řešení na automatické spuštění sady runbook, když je nainstalován do řešení pro správu.  Tato metoda se obvykle používá ke spuštění sady runbook, které se používají pro počáteční konfiguraci řešení.  Chcete-li spuštění sady runbook v pravidelných intervalech, vytvořte [plán](#schedules) a [plán úloh](#job-schedules)
+## <a name="automation-jobs"></a>Úloh služby Automation
+Při spuštění runbooku ve službě Azure Automation, vytvoří úlohu služby automation.  Prostředek úloh služby automation můžete přidat do vašeho řešení na automatické spuštění sady runbook při instalaci řešení pro správu.  Tato metoda se obvykle používá ke spuštění sady runbook, které se používají pro počáteční konfiguraci řešení.  Chcete-li spustit sadu runbook v pravidelných intervalech, vytvořte [plán](#schedules) a [plán úlohy](#job-schedules)
 
-Úloha prostředky mít typ **Microsoft.Automation/automationAccounts/jobs** a mít následující strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
+Prostředky úlohy mají typ **Microsoft.Automation/automationAccounts/jobs** a mají následující strukturu.  To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů. 
 
     {
       "name": "[concat(parameters('accountName'), '/', parameters('Runbook').JobGuid)]",
@@ -110,20 +110,20 @@ Když spustíte runbook ve službě Azure Automation, vytvoří úlohu automatiz
       }
     }
 
-Vlastnosti pro automatizaci úloh jsou popsané v následující tabulce.
+Vlastnosti pro automatizaci úloh jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| sady runbook |Jeden název entity s názvem runbook spustit. |
-| parameters |Entita pro každou hodnotu parametru vyžaduje sadu runbook. |
+| sady runbook |Jeden název entity s názvem spuštění sady runbook. |
+| parameters |Entitu pro každou hodnotu parametru vyžaduje sadu runbook. |
 
-Úloha obsahuje název sady runbook a všechny hodnoty parametrů pro odeslání do runbooku.  Úloha by měla [závisí na]( monitoring-solutions-solution-file.md#resources) před úlohy je třeba vytvořit runbook, která se spouští od runbooku.  Pokud máte více sad runbook, který by měl být spuštěn můžete definovat jejich pořadí tak, že úloha závisí na jiné úlohy, které by měl být spuštěn první.
+Úloha obsahuje název sady runbook a všechny hodnoty parametrů pro odeslaný do runbooku.  Úloha by měla [závisí na]( monitoring-solutions-solution-file.md#resources) runbook, který se spouští od sady runbook musí být vytvořen před skončením úlohy.  Pokud máte více sad runbook, který by měl být spuštěn můžete definovat jejich pořadí tak, že úloha závisí na jiné úlohy, které by se měl spustit první.
 
-Název prostředku úlohy musí obsahovat identifikátor GUID, který je obvykle přiřadila parametr.  Další informace o parametrech identifikátor GUID v [vytvoření souboru sady management řešení v Azure]( monitoring-solutions-solution-file.md#parameters).  
+Název prostředku úlohy musí obsahovat identifikátor GUID, které je přiřazeno obvykle parametrem.  Další informace o parametrech identifikátor GUID v [vytváření souboru řešení správy v Azure]( monitoring-solutions-solution-file.md#parameters).  
 
 
 ## <a name="certificates"></a>Certifikáty
-[Azure Automation certifikáty](../automation/automation-certificates.md) mít typ **Microsoft.Automation/automationAccounts/certificates** a mít následující strukturu. Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
+[Azure Automation certifikáty](../automation/automation-certificates.md) mají typ **Microsoft.Automation/automationAccounts/certificates** a mají následující strukturu. To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Certificate').Name)]",
@@ -145,13 +145,13 @@ Vlastnosti pro certifikáty prostředky jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| base64Value |Hodnota Base 64 pro certifikát. |
+| base64Value |Hodnoty Base 64 pro certifikát. |
 | Kryptografický otisk |Kryptografický otisk certifikátu. |
 
 
 
 ## <a name="credentials"></a>Přihlašovací údaje
-[Přihlašovací údaje Azure Automation](../automation/automation-credentials.md) mít typ **Microsoft.Automation/automationAccounts/credentials** a mít následující strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
+[Přihlašovací údaje Azure Automation](../automation/automation-credentials.md) mají typ **Microsoft.Automation/automationAccounts/credentials** a mají následující strukturu.  To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů. 
 
 
     {
@@ -168,16 +168,16 @@ Vlastnosti pro certifikáty prostředky jsou popsány v následující tabulce.
       }
     }
 
-Vlastnosti přihlašovacích údajů prostředky jsou popsané v následující tabulce.
+Vlastnosti Credential zdroje jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Uživatelské jméno |Uživatelské jméno pro přihlašovací údaje. |
+| uživatelské jméno |Uživatelské jméno pro přihlašovací údaje. |
 | heslo |Heslo pro přihlašovací údaje. |
 
 
 ## <a name="schedules"></a>Plány
-[Azure Automation plány](../automation/automation-schedules.md) mít typ **Microsoft.Automation/automationAccounts/schedules** a mají následující strukturu. Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
+[Plány služeb automatizace Azure](../automation/automation-schedules.md) mají typ **Microsoft.Automation/automationAccounts/schedules** a mají následující strukturu. To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').Name)]",
@@ -200,22 +200,22 @@ Vlastnosti pro plán prostředky jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| description |Volitelný popis pro plán. |
-| startTime |Určuje počáteční čas plánu jako objekt data a času. Řetězec lze zadat, pokud je možné ji převést na platný datový typ DateTime. |
-| Hodnotu IsEnabled |Určuje, zda je povoleno plán. |
-| interval |Typ intervalu pro plán.<br><br>den<br>hodina |
-| frequency |Četnost plán by měl fire počtu dnů nebo hodin. |
+| description |Volitelný popis pro daný plán. |
+| startTime |Určuje počáteční čas plánu jako objekt DateTime. Řetězec lze zadat, pokud je možné převést na platný DateTime. |
+| hodnotu isEnabled |Určuje, zda je povolena v plánu. |
+| interval |Typ intervalu pro daný plán.<br><br>den<br>hodina |
+| frequency |Četnost plán by měl vyvolat za počet dnů nebo hodin. |
 
-Plány musí mít počáteční čas s hodnotou větší než aktuální čas.  Tuto hodnotu nelze poskytnout proměnné, vzhledem k tomu, že by měla mít žádný způsob, jak zjistit, kdy se bude nainstalována.
+Plány musí mít počáteční čas s hodnotou větší než aktuální čas.  Tato hodnota nemůže poskytnout proměnnou, vzhledem k tomu, že byste měli vědět, kdy se chystá k instalaci.
 
-Při použití plánu prostředky v řešení, použijte jednu z následujících dvou strategií.
+Při použití plánu prostředků v řešení, použijte jednu z následujících dvou strategií.
 
-- Použijte parametr pro čas spuštění plánu.  To se zobrazí výzva k zadání hodnoty při instalaci řešení.  Pokud máte více plánů, můžete použít jeden parametr hodnotu pro více než jeden z nich.
-- Vytvořte plány pomocí sady runbook, který se spustí při řešení je nainstalováno.  To eliminuje požadavek uživatele na určují dobu, ale nemůže obsahovat plán ve vašem řešení, když dojde k odebrání řešení bude odebrán.
+- Parametr lze použijte pro čas spuštění plánu.  Tím se zobrazí výzva k zadání hodnoty při instalaci řešení.  Pokud máte více plánů, můžete použít hodnotu jednoho parametru pro více než jeden z nich.
+- Vytvořte plány pomocí sady runbook, která se spustí, když je řešení nainstalováno.  To eliminuje nutnost uživatele, jak určit čas, ale nemůže obsahovat plán ve vašem řešení, tak se odebere po odebrání řešení.
 
 
 ### <a name="job-schedules"></a>Plány úlohy
-Prostředky plán úlohy propojit sady runbook s plánem.  Mají typ **Microsoft.Automation/automationAccounts/jobSchedules** a mají následující strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů. 
+Prostředky plánu úlohy propojení sady runbook s plánem.  Mají typ **Microsoft.Automation/automationAccounts/jobSchedules** a mají následující strukturu.  To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů. 
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Schedule').LinkGuid)]",
@@ -239,17 +239,17 @@ Prostředky plán úlohy propojit sady runbook s plánem.  Mají typ **Microsoft
     }
 
 
-Vlastnosti pro plány úloh jsou popsané v následující tabulce.
+Vlastnosti pro plány úloh jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| Název plánu |Jeden **název** entity s názvem plánu. |
-| Název sady Runbook  |Jeden **název** entity se název sady runbook.  |
+| Název plánu |Jeden **název** entitě s názvem podle plánu. |
+| Název sady runbook  |Jeden **název** entitě s názvem sady runbook.  |
 
 
 
 ## <a name="variables"></a>Proměnné
-[Azure Automation proměnné](../automation/automation-variables.md) mít typ **Microsoft.Automation/automationAccounts/variables** a mít následující strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů.
+[Azure Automation proměnné](../automation/automation-variables.md) mají typ **Microsoft.Automation/automationAccounts/variables** a mají následující strukturu.  To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů.
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Variable').Name)]",
@@ -271,26 +271,26 @@ Vlastnosti pro proměnné prostředky jsou popsány v následující tabulce.
 | Vlastnost | Popis |
 |:--- |:--- |
 | description | Volitelný popis pro proměnnou. |
-| isEncrypted | Určuje, jestli by se proměnná šifrovat. |
+| isEncrypted | Určuje, jestli by měl být šifrovaná proměnná. |
 | type | Tato vlastnost aktuálně nemá žádný vliv.  Datový typ proměnné určí počáteční hodnota. |
 | hodnota | Hodnota proměnné. |
 
 > [!NOTE]
-> **Typ** vlastnost aktuálně nemá žádný vliv na proměnnou vytváří.  Hodnota závisí na datový typ pro proměnnou.  
+> **Typ** vlastnost aktuálně nemá žádný vliv na proměnné vytváří.  Datový typ pro proměnnou určí hodnotu.  
 
-Pokud jste nastavili počáteční hodnotu pro proměnnou, musí být nakonfigurované jako správného datového typu.  Následující tabulka obsahuje různé datové typy, které jsou povolené a jejich syntaxi.  Všimněte si, že se hodnoty ve formátu JSON očekává vždycky být uzavřena v uvozovkách s žádné speciální znaky v rámci uvozovky.  Například by být řetězcová hodnota určena řetězec v uvozovkách (pomocí řídicí znak (\\)) číselnou hodnotu by zadán s jednu sadu uvozovky.
+Pokud jste nastavili počáteční hodnotu pro proměnnou, musí nakonfigurovat na správného datového typu.  Následující tabulka obsahuje různé datové typy, které jsou povolené a jejich syntaxi.  Všimněte si, že se hodnoty ve formátu JSON očekává vždy být uzavřen v uvozovkách s žádné speciální znaky v uvozovkách.  Například by se zadal hodnotu řetězce podle uvozovky kolem řetězce (pomocí řídicí znak (\\)) zatímco číselná hodnota by se zadal s jednou sadou uvozovky.
 
-| Typ dat | Popis | Příklad: | Přeloží na |
+| Typ dat | Popis | Příklad: | Řeší na |
 |:--|:--|:--|:--|
-| řetězec   | Vložte hodnotu do dvojitých uvozovek.  | "\"Hello, world\"" | "Hello, world" |
-| číselné  | Číselná hodnota se jednoduchých uvozovkách.| "64" | 64 |
-| Boolean  | **Hodnota TRUE,** nebo **false** v uvozovkách.  Všimněte si, že tato hodnota musí být malými písmeny. | "true" | true (pravda) |
-| datetime | Hodnota serializovaná data.<br>Můžete použít rutinu ConvertTo-Json v prostředí PowerShell k vygenerování této hodnoty pro konkrétní datum.<br>Příklad: get datum "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
+| řetězec   | Hodnota uzavřete do dvojitých uvozovek.  | "\"Hello world\"" | "Hello world" |
+| číselné  | Číselná hodnota v jednoduchých uvozovkách.| "64" | 64 |
+| Boolean  | **Hodnota TRUE** nebo **false** v uvozovkách.  Všimněte si, že tato hodnota musí obsahovat malá písmena. | "true" | true (pravda) |
+| datetime | Hodnota serializovaná data.<br>Rutiny ConvertTo-Json v prostředí PowerShell můžete použít k vygenerování této hodnoty pro konkrétní datum.<br>Příklad: get datum "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Moduly
-Řešení pro správu není nutné definovat [globální moduly](../automation/automation-integration-modules.md) použít ve vašich sadách runbook, protože se budou vždy k dispozici ve vašem účtu Automation.  Musíte zahrnout prostředku pro ostatní moduly používané vaší sady runbook.
+Řešení pro správu není nutné definovat [globální moduly](../automation/automation-integration-modules.md) použít ve vašich sadách runbook, protože se bude mít vždycky k dispozici ve vašem účtu Automation.  Je nutné pro zahrnutí prostředků pro ostatní moduly používané vaší sady runbook.
 
-[Integrační moduly](../automation/automation-integration-modules.md) mít typ **Microsoft.Automation/automationAccounts/modules** a mít následující strukturu.  Jedná se o běžné parametry a proměnné tak, aby můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změnit názvy parametrů.
+[Integrační moduly](../automation/automation-integration-modules.md) mají typ **Microsoft.Automation/automationAccounts/modules** a mají následující strukturu.  To zahrnuje společné proměnné a parametry, takže můžete zkopírovat a vložit tento fragment kódu do souboru řešení a změňte názvy parametrů.
 
     {
       "name": "[concat(parameters('accountName'), '/', variables('Module').Name)]",
@@ -306,35 +306,35 @@ Pokud jste nastavili počáteční hodnotu pro proměnnou, musí být nakonfigur
     }
 
 
-Vlastnosti modulu prostředky jsou popsané v následující tabulce.
+Vlastnosti modulu prostředky jsou popsány v následující tabulce.
 
 | Vlastnost | Popis |
 |:--- |:--- |
-| contentLink |Určuje obsah modulu. <br><br>identifikátor URI – identifikátor Uri obsahu modulu.  Bude jím souboru s příponou .ps1 pro prostředí PowerShell a skript sady runbook a soubor exportovaný grafický runbook pro sadu runbook grafu.  <br> verze - verze modulu pro vlastní sledování. |
+| contentLink |Určuje obsah modulu. <br><br>identifikátor URI – identifikátor Uri obsahu modulu.  Bude jím soubor .ps1 pro sady runbook Powershellu a skriptu a souboru exportované grafický runbook pro sadu runbook graf.  <br> verze – verze modulu pro vlastní sledování. |
 
-Sada runbook by měl závisí na modulu prostředků a ověřte, že je vytvořen před sady runbook.
+Runbook by měl záviset na modulu prostředků a ověřte, že je vytvořen před sady runbook.
 
-### <a name="updating-modules"></a>Aktualizace moduly
-Pokud aktualizujete řešení pro správu, která zahrnuje sadu runbook, která používá plánu a novou verzi řešení má nové modulu používá dané sady runbook, může používat runbook stará verze modulu.  Musí zahrnovat následující sady runbook ve vašem řešení a vytvořit úlohu, abyste je mohli spustit před jiné runbooky.  To zajistí, že jsou všechny moduly, aktualizovat, protože požadované než sady runbook jsou načtena.
+### <a name="updating-modules"></a>Aktualizace modulů
+Pokud aktualizujete řešení pro správu, který obsahuje sadu runbook, která používá plánu a novou verzi vašeho řešení se nový modul používaný dané sady runbook, může sada runbook používají starší verzi modulu.  By měl obsahovat následující sady runbook ve vašem řešení a vytvořte úlohu pro spuštění před všechny runbooky.  Tím se zajistí, že se aktualizovaly všechny moduly, které vyžaduje předtím, než se načítají sady runbook.
 
 * [Aktualizace ModulesinAutomationToLatestVersion](https://www.powershellgallery.com/packages/Update-ModulesInAutomationToLatestVersion/1.03/DisplayScript) zajistí, že jsou všechny moduly používané v sadách runbook ve vašem řešení na nejnovější verzi.  
-* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) bude znovu registrovat všechny prostředky plán zajistit, že sady runbook s nimi propojené s použitím nejnovější moduly.
+* [ReRegisterAutomationSchedule-MS-Mgmt](https://www.powershellgallery.com/packages/ReRegisterAutomationSchedule-MS-Mgmt/1.0/DisplayScript) bude znovu zaregistrujte všechny prostředky plánu zajistit, že runbooky propojené s jejich s použitím nejnovější moduly.
 
 
 
 
 ## <a name="sample"></a>Ukázka
-Tady je ukázka řešení, které zahrnují, který obsahuje následující zdroje:
+Tady je příklad řešení, které zahrnují, který obsahuje následující zdroje:
 
-- Sady Runbook.  Toto je uložen v úložišti GitHub, které veřejné vzorové sady runbook.
-- Úlohu automatizace, který se spustí sada runbook při řešení je nainstalováno.
+- Sady Runbook.  Toto je vzorový runbook uložena ve veřejném úložišti Githubu.
+- Úlohy automatizace, která spustí sadu runbook, když je řešení nainstalováno.
 - Plán a plán úlohy pro spuštění sady runbook v pravidelných intervalech.
 - Certifikát.
 - Přihlašovací údaje.
 - Proměnná.
-- Modul.  Toto je [OMSIngestionAPI modulu](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) pro zápis dat k analýze protokolů. 
+- Modul.  Toto je [OMSIngestionAPI modulu](https://www.powershellgallery.com/packages/OMSIngestionAPI/1.5) za zápis dat do Log Analytics. 
 
-Příklad používá [standardní řešení parametry]( monitoring-solutions-solution-file.md#parameters) proměnné, které by běžně používané v řešení oproti hardcoding hodnoty v definicích prostředků.
+Ukázka používá [standardní řešení parametry]( monitoring-solutions-solution-file.md#parameters) proměnné, které používají ho většinou v řešení, na rozdíl od hodnoty hardcoding v definicích prostředků.
 
 
     {
@@ -651,4 +651,4 @@ Příklad používá [standardní řešení parametry]( monitoring-solutions-sol
 
 
 ## <a name="next-steps"></a>Další postup
-* [Přidat zobrazení do řešení]( monitoring-solutions-resources-views.md) k vizualizaci shromážděná data.
+* [Přidání zobrazení do vašeho řešení]( monitoring-solutions-resources-views.md) vizualizovat shromážděná data.

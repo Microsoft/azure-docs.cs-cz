@@ -1,6 +1,6 @@
 ---
-title: Zabezpečené protokolem TLS pro klienta Azure Storage | Microsoft Docs
-description: Informace o povolení TLS 1.2 v klientovi Azure Storage.
+title: Povolení zabezpečeného protokolu TLS pro klienta služby Azure Storage | Dokumentace Microsoftu
+description: Informace o povolení protokolu TLS 1.2 v klientovi služby Azure Storage.
 services: storage
 documentationcenter: na
 author: fhryo-msft
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/25/2018
 ms.author: fryu
-ms.openlocfilehash: 5c21df2b3bdeee6ac7c3956fe1cafa4f947dd6dd
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 6c313b6015a8a6dcc4ca5befb5fef70b047d0410
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37035801"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866521"
 ---
-# <a name="enable-secure-tls-for-azure-storage-client"></a>Zabezpečené protokolem TLS pro klienta Azure Storage
+# <a name="enable-secure-tls-for-azure-storage-client"></a>Povolení zabezpečeného TLS pro klienta Azure Storage
 
-Pokud budete potřebovat k auditování vašim službám pomocí Azure Storage podle nejnovější dodržování předpisů a požadavky na zabezpečení SSL 1.0, 2.0, 3.0 a TLS 1.0 jsou rozpoznán jako nevyhovující komunikační protokoly.
+Když budete potřebovat k auditování služby pomocí služby Azure Storage na základě nejnovější dodržování předpisů a požadavky na zabezpečení, SSL 1.0, 2.0, 3.0 a TLS 1.0, jsou rozpoznány jako nedodržující předpisy komunikační protokoly.
 
-Chcete-li být zranitelné v důsledku byly zjištěny SSL 1.0, 2.0 a 3.0. Mít bylo zakázáno v dokumentu RFC. Protokol TLS 1.0 stane nezabezpečené nezabezpečené bloku šifer (CBC šifrování DES a RC2 CBC) a šifrovací datového proudu (RC4). Rady PCI také navrhované migrace na vyšších verzí protokolu TLS. Další podrobnosti najdete v tématu [zabezpečení TLS (Transport Layer)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0).
+Bylo zjištěno SSL 1.0, 2.0 a 3.0 ohrožen. Mít bylo zakázáno v dokumentu RFC. Protokol TLS 1.0 stane nezabezpečené nezabezpečené blokových šifrách (CBC šifrování DES a RC2 CBC) a Stream šifrování (RC4). Rady PCI také navrhované přechodu na vyšší verze protokolu TLS. Další podrobnosti najdete v tématu [zabezpečení TLS (Transport Layer)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0).
 
-Úložiště Azure od 2015 zastavil SSL 3.0 a používá TLS 1.2 na veřejné koncové body HTTPs, ale TLS 1.0 a protokol TLS 1.1 jsou stále podporovány pro zpětnou kompatibilitu.
+Úložiště Azure od 2015 byla zastavena SSL 3.0 a používá TLS 1.2 na veřejné koncové body HTTPs, ale protokol TLS 1.0 a TLS 1.1 jsou stále podporovány z důvodu zpětné kompatibility.
 
-Aby se zajistilo, zabezpečení a dodržování připojení do služby Azure Storage, musíte povolit TLS 1.2 na straně klienta před odesláním požadavky na provoz služby Azure Storage.
+Aby bylo možné zajistit zabezpečení a dodržování připojení ke službě Azure Storage, je potřeba povolit TLS 1.2 na straně klienta před odesláním žádosti o provoz služby Azure Storage.
 
-## <a name="enable-tls-12-in-net-client"></a>Povolení protokolu TLS 1.2 ve klient .NET
+## <a name="enable-tls-12-in-net-client"></a>Protokol TLS 1.2 v .NET klienta
 
-Pro klienta pro vyjednávání protokolu TLS 1.2, operačního systému a verzi rozhraní .NET Framework obě musí podporovat protokol TLS 1.2. Více informací najdete v [podpora protokolu TLS 1.2](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12).
+Pro klienta pro vyjednávání protokolu TLS 1.2, operační systém a verzi rozhraní .NET Framework obě musí podporovat protokol TLS 1.2. Další podrobnosti najdete v [podpora protokolu TLS 1.2](https://docs.microsoft.com/en-us/dotnet/framework/network-programming/tls#support-for-tls-12).
 
-Následující příklad ukazuje, jak povolit TLS 1.2 ve vašeho klienta rozhraní .NET.
+Následující příklad ukazuje, jak v klientovi .NET protokol TLS 1.2.
 
 ```csharp
 
@@ -54,9 +54,9 @@ Následující příklad ukazuje, jak povolit TLS 1.2 ve vašeho klienta rozhran
 
 ```
 
-## <a name="enable-tls-12-in-powershell-client"></a>Povolení protokolu TLS 1.2 ve klienta PowerShell
+## <a name="enable-tls-12-in-powershell-client"></a>Protokol TLS 1.2 v klientovi prostředí PowerShell
 
-Následující příklad ukazuje, jak povolit TLS 1.2 ve vašeho klienta PowerShell.
+Následující příklad ukazuje, jak protokol TLS 1.2 v klientovi prostředí PowerShell.
 
 ```powershell
 
@@ -77,12 +77,13 @@ $listOfContainers
 
 ## <a name="verify-tls-12-connection"></a>Ověření připojení protokolu TLS 1.2
 
-Můžete použít aplikaci Fiddler k ověření, pokud se ve skutečnosti používá TLS 1.2. Otevřete aplikaci Fiddler zahájíte zachytávající síťový přenos klienta potom spusťte výše ukázka. Pak TLS verze najdete v připojení, které vzorku.
+Použití aplikace Fiddler k ověření, pokud se ve skutečnosti používá TLS 1.2. Otevřete Fiddler spustit zachytávání síťového provozu klienta poté spuštěním nad vzorku. Pak verze TLS najdete v připojení, které vzorku.
 
-Na následujícím snímku obrazovky je ukázka pro ověření.
+Na následujícím snímku obrazovky je příklad pro ověření.
 
-![snímek obrazovky ověřování TLS verze v aplikaci Fiddler](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
+![snímek obrazovky ověřování TLS verze ve Fiddleru](./media/storage-security-tls/storage-security-tls-verify-in-fiddler.png)
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
 * [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)
+* [Povolení protokolu TLS v klientskou sadou Java](https://www.java.com/en/configure_crypto.html)

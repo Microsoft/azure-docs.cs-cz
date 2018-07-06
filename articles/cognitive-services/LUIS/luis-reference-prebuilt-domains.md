@@ -1,7 +1,7 @@
 ---
-title: Informace o předem domény - Azure | Microsoft Docs
+title: Informace o předem připravených domény – Azure | Dokumentace Microsoftu
 titleSuffix: Azure
-description: Referenční dokumentace pro předkompilované domény, které jsou předem sestavené kolekce tříd Intent a entity z jazyka Principy inteligentního služby (LEOŠ).
+description: Referenční informace pro předem připravených domén, které jsou předem sestavené kolekce záměry a entity z Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -10,235 +10,235 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: v-geberr
-ms.openlocfilehash: 14c53bd25913922a0cd7cc438ad0fbe8b4663dd1
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: fe035c744e7cbc291fa392205239f331410412dc
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061960"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37866327"
 ---
 # <a name="prebuilt-domain-reference"></a>Referenční informace k předem připraveným doménám
-Tento odkaz obsahuje informace o [předem domény](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce tříd Intent a entitami, které nabízí LEOŠ.
+V tomto materiálu najdete informace o [předem připravených domén](luis-how-to-use-prebuilt-domains.md), které jsou předem sestavené kolekce záměry a entity, které nabízí služba LUIS.
 
-[Vlastní domény](create-new-app.md), naopak spustit bez záměry a modely. Všechny předem domény záměry a entity můžete přidat vlastní modelu.
+[Vlastní domény](create-new-app.md), naopak spustit bez záměry a modely. Všechny předem připravených domény záměry a entity můžete přidat do vlastního modelu.
 
-## <a name="list-of-prebuilt-domains"></a>Seznam přednastavených domén
-LEOŠ nabízí 20 předem domén. 
+## <a name="list-of-prebuilt-domains"></a>Seznam předem připravených domén
+Služba LUIS nabízí 20 předem připravených domén. 
 
-| Předkompilované domény | Popis | Podporované jazyky |
+| Předem připravená doména | Popis | Podporované jazyky |
 | ---------------- |-----------------------|:------:|
-| Kalendář | Domény kalendáře poskytuje záměr a entity pro přidávání, odstraňování, nebo úpravy události, kontrola účastníci dostupnosti a hledání informací o události v kalendáři.| cs-CZ<br/> zh-CN |
-| Fotoaparát | Domény fotoaparát poskytuje tříd Intent a entity odběru obrázky, záznam videa a video všesměrové vysílání na aplikaci.| cs-CZ |
+| Kalendář | Doména kalendáře poskytuje záměr a entity pro přidávání, odstraňování, nebo úpravy události, kontrola dostupnosti účastníků a hledání informací o události v kalendáři.| cs-CZ<br/> zh-CN |
+| Fotoaparát | Doména fotoaparátu poskytuje záměry a entity pro provádění obrázky, nahrávání videa a všesměrového vysílání video k aplikaci.| cs-CZ |
 | Komunikace | Zasílání zpráv a telefonní hovor.| cs-CZ <br/> zh-CN |
-| Zábava  | Zpracování dotazů souvisejících s hudba, filmy a televize.| cs-CZ |
-| Události | Rezervace lístků pro koncerty, festivalech, sportu hry a komedie zobrazuje.| cs-CZ |
-| Vhodnosti | Zpracovává požadavky týkající se sledování vhodnosti aktivity.| cs-CZ |
-| Hraní her | Zpracovává požadavky související s herní strany v hry s víc hráčů.| cs-CZ |
-| HomeAutomation | Řízení inteligentní domácí zařízeními, jako je indikátory a zařízení.| cs-CZ<br/> zh-CN |
-| MovieTickets | Rezervace lístků na filmy na film kina.| cs-CZ |
-| Hudba | Přehrávání hudby na hudební přehrávač.| cs-CZ<br/> zh-CN |
-| Poznámka | Poznámka: domény poskytuje záměry a entity související vytváření, úpravy a hledání poznámky.| cs-CZ<br/> zh-CN |
-| OnDevice | Domény OnDevice poskytuje záměry a entity související řízení zařízení.| cs-CZ<br/> zh-CN |
-| Míst  | Zpracování dotazů souvisejících s jako podnikům, instituce, restaurace, veřejné prostory a adresy.| cs-CZ<br/> zh-CN |
-| Připomenutí | Zpracovává požadavky týkající se vytváření, úpravy a hledání připomenutí.| cs-CZ<br/> zh-CN |
+| Zábava  | Zpracování dotazů souvisejících s hudba, filmů a televizního vysílání.| cs-CZ |
+| Události | Rezervace letenek pro koncerty, festivalů, sportovní hry a komedie ukazuje.| cs-CZ |
+| Způsobilost | Zpracování žádosti týkající se sledování vhodnosti aktivity.| cs-CZ |
+| Hraní her | Zpracování žádostí souvisejících her straně hry pro více hráčů.| cs-CZ |
+| HomeAutomation | Řízení inteligentní domácí zařízení, jako jsou indikátory a zařízení.| cs-CZ<br/> zh-CN |
+| MovieTickets | Rezervace lístky na filmy v celé obrazovky video.| cs-CZ |
+| Hudba | Přehrávání hudby v hudební přehrávač.| cs-CZ<br/> zh-CN |
+| Poznámka | Poznámka: domény poskytuje záměry a entity týkající se vytváření, úpravám a hledání poznámky.| cs-CZ<br/> zh-CN |
+| OnDevice | Doména OnDevice poskytuje záměry a entity související řízení zařízení.| cs-CZ<br/> zh-CN |
+| Místa  | Zpracování dotazů souvisejících s jako firmám, instituce, restaurace, veřejné mezery a adresy.| cs-CZ<br/> zh-CN |
+| Připomenutí | Zpracování žádosti týkající se vytváření, úprav a vyhledání připomenutí.| cs-CZ<br/> zh-CN |
 | RestaurantReservation | Zpracování požadavků pro správu restaurace rezervace.| cs-CZ<br/> zh-CN |
-| Taxíkem | Rezervace pro taxíkem zpracování.| cs-CZ<br/> zh-CN |
-| Překlad | Text pro daný jazyk překladu.| cs-CZ<br/> zh-CN |
-| TV | Řízení televizní přijímače.| cs-CZ |
-| Veřejné služby  | Zpracování požadavků, které jsou obvyklé v mnoha oblastech, jako je "Nápověda", "opakovat", "začněte znovu."| cs-CZ |
-| Počasí | Získávání zprávy o počasí a prognózy.| cs-CZ<br/> zh-CN |
-| Web | Navigace na webu.| cs-CZ<br/> zh-CN |
+| Taxislužby města | Zpracování rezervací taxislužby.| cs-CZ<br/> zh-CN |
+| Překlad | Překlad textu do cílového jazyka.| cs-CZ<br/> zh-CN |
+| TV | Řízení televizí.| cs-CZ |
+| Veřejné služby  | Zpracování požadavků, které jsou běžné v mnoha oblastech, jako je "Nápověda", "opakování", "začít znovu."| cs-CZ |
+| Počasí | Načtení počasí a předpovědi.| cs-CZ<br/> zh-CN |
+| Web | Přejděte na web.| cs-CZ<br/> zh-CN |
 
-Další podrobnosti v každé doméně najdete následujících částech.
+Další podrobnosti o každé domény najdete v následující části.
 
 ## <a name="calendar"></a>Kalendář 
 
-Domény kalendáře poskytuje záměry a entity související záznamů v kalendáři. Záměry kalendáře zahrnují přidání, odstranění nebo úpravy události, kontrola dostupnosti a hledání informací o schůzku nebo položka kalendáře.
+Doména kalendáře poskytuje záměry a entity související položky v kalendáři. Kalendář záměry zahrnují přidání, odstranění nebo úpravy schůzku, kontroluje se dostupnost a vyhledávání informací o události a položky kalendáře.
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Přidat | Přidáte novou položku jednorázové do kalendáře.| Vytvořit událost s Lisa na 14: 00 v neděli <br/><br/>Chcete naplánovat schůzku<br/><br/>Potřebuji nastavení schůzky|
-| CheckAvailability | Najít dostupnosti pro události nebo schůzky na uživatele nebo jiná osoba kalendáře.| Pokud je k dispozici ke splnění Jima? <br/><br/>Zobrazit, když je Karolína je k dispozici zítra<br/><br/>Je Jan volné na sobotu?|
-| Odstranění | Žádost o odstranění položky kalendáře.| Zrušte Moje schůzku s Karolínu. <br/><br/>Odstranit mé schůzku 9: 00<br/>|
-| Upravit | Požadavek na změnu existující schůzku nebo položka kalendáře.| Přesuňte Moje schůzku 9: 00 10 am.<br/><br/>Chci aktualizovat mé plán.<br/><br/>Reschdule Moje schůzku s Ryan.|
-| Vyhledávání | Zobrazí týdenní kalendáře.| Najde k zubaři Zkontrolujte událost. <br/><br/>Zobrazit kalendář<br/>|
+| Přidat | Přidáte novou položku jednorázové do kalendáře.| Vytvořit událost s Lisa ve 14 v neděli <br/><br/>Chci naplánovat schůzku<br/><br/>Je potřeba nastavit na schůzce|
+| CheckAvailability | Zjistěte dostupnost pro událost nebo schůzku na uživatele nebo jinou osobu kalendáře.| Pokud je k dispozici podle Jima? <br/><br/>Zobrazit, když Karolína je k dispozici zítra<br/><br/>Je Chris zdarma v sobotu?|
+| Odstranění | Požadavek na odstranění položku kalendáře.| Zrušte Moje s Karolínu. <br/><br/>Odstranit Moje schůzky 9: 00<br/>|
+| Upravit | Požadavek na změnu existující schůzce nebo položku kalendáře.| Přesuňte Moje schůzky 9: 00 do 10: 00.<br/><br/>Chci aktualizovat mé plán.<br/><br/>S Ryanem Reschdule Moje schůzky.|
+| Vyhledávání | Zobrazí týdenní kalendáře.| Hledání k zubaři Zkontrolujte událost. <br/><br/>Zobrazit kalendář<br/>|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Umístění | Umístění položky kalendáře, schůzka nebo událost. Adresy, města a oblasti jsou dobrými příklady umístění.| 209 Nashville sebou <br/><br/>897 úklidové masopustní<br/><br/>Garážový|
-| Předmět | Název nebo schůzku.| Zubní lékař na schůzku <br/><br/>Oběd s Dita<br/><br/>Lékařské schůzku|
+| Umístění | Umístění položky kalendáře, schůzce nebo události. Adresy, města a oblasti jsou dobrým příkladem umístění.| 209 americkém Nashvillu Posilovně <br/><br/>897 masopustní house<br/><br/>Garáži|
+| Předmět | Název schůzky nebo události.| Událost zubní lékař. <br/><br/>Oběd s Julia<br/><br/>Lékaři|
 
 ## <a name="camera"></a>Fotoaparát 
-Domény fotoaparát poskytuje tříd Intent a entity související s použitím fotoaparátu. Záměry zahrnují zaznamenání fotografií, selfie, snímek obrazovky nebo video a vysílání videa k aplikaci.
+Doména fotoaparátu poskytuje záměry a entity související s používáním kamery. Příkazů se věnují zachytávání fotky, selfie, snímku obrazovky nebo videa a vysílání videa k aplikaci.
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| CapturePhoto| Zaznamenejte fotografie.| Vytvoří fotografii<br/><br/>zachycení|
-| CaptureScreenshot | Vytvoření snímku obrazovky.| Snímek obrazovky trvat.<br/><br/>zachycení obrazovky.|
-| CaptureSelfie | Zaznamenání selfie.| Trvat selfie <br/><br/>pořídit snímek mi |
-| CaptureVideo | Spusťte záznam videa.| Spustit nahrávání <br/><br/>Begin – záznam|
-| StartBroadcasting| Spusťte video všesměrové vysílání.| Počáteční všesměrové vysílání pro Facebook|
-| StopBroadcasting| Zastavte video všesměrové vysílání.| Zastavit všesměrové vysílání|
-| StopVideoRecording| Záznam videa zastavte.| Které je dostatek<br/><br/>Zastavit záznam|
+| CapturePhoto| Zachycení fotografii.| Vyfotit<br/><br/>zachycení|
+| CaptureScreenshot | Pořízení snímku obrazovky.| Získat snímek obrazovky.<br/><br/>Zachytit obrazovku.|
+| CaptureSelfie | Zachycení selfie.| Přijmout selfie <br/><br/>pořídit snímek mě |
+| CaptureVideo | Spusťte nahrávání videa.| Spustit nahrávání <br/><br/>Začátek nahrávání|
+| StartBroadcasting| Spusťte video všesměrové vysílání.| Počáteční všesměrové vysílání na Facebook|
+| StopBroadcasting| Zastavte video všesměrové vysílání.| Zastavit všesměrového vysílání|
+| StopVideoRecording| Zastavte záznam videa.| Tím<br/><br/>Zastavit záznam|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| AppName | Název aplikace k vysílání video, které.| OneNote<br/><br/>Facebook<br/><br/>Skype|
+| AppName | Název aplikace k vysílání video.| OneNote<br/><br/>Facebook<br/><br/>Skype|
 
 
 ## <a name="communication"></a>Komunikace 
-Komunikace domény poskytuje tříd Intent a entity související s e-mailu, zpráv a telefonních hovorů.
+Doména komunikace poskytuje záměry a entity související s e-mailu, zpráv a telefonních hovorů.
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| AddContact| Přidejte nový kontakt do seznamu kontaktů uživatele.|Přidat nový kontakt <br/><br/>Uložte tento počet a uveďte název jako Karolínu|
-| AddMore| Přidejte informace e-mailu nebo textu, jako součást kompozice step-wise e-mailu nebo text.|Přidat další na text <br/><br/>Přidat další tělo e-mailu|
-| Odpověď| Přijetí příchozího telefonního hovoru.|odpověď volání <br/><br/>Vyberte|
-| AssignContactNickname| Přiřaďte přezdívku kontaktu.|Změňte Isaac dad <br/>Upravit Jima Přezdívka<br/>Přidání Přezdívka do Patti Owens|
-| CallVoiceMail| Připojte k hlasová pošta uživatele.|Připojit se k schránce hlasová pošta <br/>Hlasová pošta<br/>volání hlasová pošta|
-| CheckIMStatus| Zkontrolujte stav kontaktu, Skype.|Online stav Jim je nastavena na počítače? <br/>Karolína je k dispozici pro chat s?|
-| Potvrdit| Potvrďte akci.|Ano<br/>Dobře<br/>Dobře<br/>Potvrzuji, že chcete odeslat tuto e-mailu.<br/>|
-| telefonické připojení| Telefonní hovor.|Volání Jima<br/>Prosím vytočit 311<br/>|
-| FindContact| Najít kontaktní údaje podle názvu.|Najít číslo Karolínu<br/>Zobrazit mi číslo Karolínu<br/>|
-| FindSpeedDial| Vyhledejte rychlé vytáčení číslo telefonní číslo je nastavena na a naopak.|Co je můj dial číslo 5?<br/>Jsou rychlost vytočit sadu?<br/>Co je číslo dial pro 941-5555-333?|
-| GetForwardingsStatus| Získáte aktuální stav předávání volání.|Je zapnutý Moje předávání volání?<br/>Chci vědět, pokud je můj stav volání zapnutí nebo vypnutí<br/>|
-| GoBack| Přejděte zpět na předchozí krok.|Přejděte zpět na twitteru<br/>Vraťte se krok<br/>Přejít zpět|
-| Ignorovat| Ignorujte příchozího hovoru.|Neobsahují odpověď<br/>Ignorovat volání|
-| IgnoreWithMessage| Ignorovat příchozího hovoru a místo toho odpovědět s textem.|Nechcete odpovězte toto volání, ale místo toho odeslat zprávu.<br/>Ignorovat a odešlete textový zpět.|
-| PressKey| Na klávesnici stiskněte tlačítko nebo číslo.|Vytočit hvězdičky.<br/>Stisknutím tlačítka 1 2 3.|
-| ReadAloud| Čtení zprávy nebo e-mailu pro uživatele.|Čtení textu.<br/>Co uživatel říká ve zprávě?|
+| AddContact| Přidáte nový kontakt seznamu kontaktů uživatele.|Přidat nový kontakt <br/><br/>Uložit toto číslo a uveďte název jako Karolínu|
+| AddMore| Přidáte informace do e-mailu nebo textu, jako součást kompozice podle jednotlivých kroků e-mailu nebo text.|Přidat další na text <br/><br/>Přidat další tělo e-mailu|
+| Odpověď| Přijetí příchozího telefonního hovoru.|Odpověď volání <br/><br/>Výběr|
+| AssignContactNickname| Pojmenovat kontakt.|Změnit Petr táta <br/>Přezdívka Jim úpravy<br/>Přidat Přezdívka Patti Owens|
+| CallVoiceMail| Připojte se k uživatele hlasová pošta.|Připojit se k Moje hlasovou poštu políčko <br/>Hlasová pošta<br/>Volání hlasová pošta.|
+| CheckIMStatus| Zkontrolujte stav kontakt ve Skypu.|Je Jim jeho online stav nastaven na hned? <br/>Je k dispozici se Karolínu?|
+| Potvrdit| Potvrďte akci.|Ano<br/>Dobře<br/>Dobře<br/>Potvrzuji, že chcete odeslat tento e-mail.<br/>|
+| Telefonické připojení| Telefonní hovor.|Jan volání<br/>Prosím vytáčení 311<br/>|
+| FindContact| Najdete kontaktní údaje podle názvu.|Najít číslo Karolínu<br/>Zobrazit číslo Karolínu<br/>|
+| FindSpeedDial| Najdete číslo rychlé vytáčení, telefonní číslo je nastavena na a naopak.|Co je volání čísla 5?<br/>Je nutné rychlost vytáčení sady?<br/>Co je počet volání pro 941-5555-333?|
+| GetForwardingsStatus| Získejte aktuální stav předávání volání.|Moje předávání volání zapnutý?<br/>Řekněte mi, pokud je můj stav volání zapnutí nebo vypnutí<br/>|
+| GoBack| Přejděte zpět na předchozí krok.|Přejděte zpět na twitteru<br/>Přejděte zpět krok<br/>Přejít zpět|
+| Ignorovat| Ignorujte příchozí volání.|Není odpovědět<br/>Ignorovat volání|
+| IgnoreWithMessage| Ignorovat příchozí volání a místo toho odpovědět s textem.|Toto volání není odpovědět, ale místo odeslání zprávy.<br/>Ignorovat a odeslala textová zpráva zpět.|
+| PressKey| Na klávesnici stiskněte tlačítko nebo číslo.|Volání na hvězdičku.<br/>Stiskněte 1 2 3.|
+| ReadAloud| Přečíst zprávu nebo e-mailu pro uživatele.|Přečtěte si text.<br/>Co uživatel Řekněme, že ve zprávě?|
 | TurnForwardingOff| Telefonní hovor.|<br/><br/>|
-| Opakovat vytáčení| Opakovat vytáčení nebo volejte číslo znovu.|Vytočte znovu.<br/>Vytočte znovu Moje posledním volání.|
-| Odmítnout| Odmítnutí příchozí volání.|Odmítnout volání<br/>Nelze nyní odpovědět<br/>V tuto chvíli není k dispozici a bude zpětné volání, později.|
-| Connectoru| Odešlete e-mail. Tento pokus se vztahuje na e-mailu, ale ne textové zprávy.|E-mailu Karel vod: Michal obsaženému, aby byl splendid večeři minulého týdne.<br/>Odeslat e-mail Bob<br/>|
-| SendMessage| Odešlete textovou zprávu nebo rychlou zprávu.|Text poslat Jan a Karolínu|
-| SetSpeedDial| Nastavte rychlost vytočit zástupce pro telefonní číslo kontaktu.|Nastavte telefonní paměť, jednu pro Karolínu.<br/>Nastavení telefonní paměť pro mom.|
-| ShowNext| Najdete v další položky, například v seznamu textové zprávy nebo e-mailů.|Zobrazit dalšímu.<br/>Přejděte na další stránku.|
-| ShowPrevious| Najdete v předchozí položce, například v seznamu textové zprávy nebo e-mailů.|Zobrazit předchozí.<br/>Předchozí<br/>Přejděte na předchozí.|
-| StartOver| Spusťte systém přes nebo zahájit novou relaci.|Začít znovu<br/>Novou relaci<br/>restart|
-| TurnForwardingOff| Vypněte přesměrování volání.|Zastaví předávání Moje volání<br/>vypnout přesměrování volání|
-| TurnForwardingOn| Vypněte mluvčího telefonu.|Předávání Moje volání 3333<br/>Přepnout na volání předávání 3333|
-| TurnSpeakerOff| Vypněte mluvčího telefonu.|Přejít na požadované vypnout mluvčího.<br/>Vypněte sluchátek s mikrofonem.<br/>|
-| TurnSpeakerOn| Zapněte mluvčího telefonu.|Sluchátek s mikrofonem režimu.<br/>Umístí sluchátek s mikrofonem.<br/>|
+| Vytočit| Vytáčení nebo znovu volat na číslo.|Vytočit.<br/>Vytáčení Moje poslední volání.|
+| Odmítnout| Odmítne příchozí volání.|Odmítnutí volání<br/>Nelze přijmout<br/>V tuto chvíli není k dispozici a bude zpětné volání, později.|
+| Connectoru| Odeslání e-mailu. Cílem tohoto je se vztahuje na e-mailu, ale ne textové zprávy.|E-mailu do vod Mike: Mike, bylo splendid dinner minulý týden.<br/>Odeslání e-mailu pro Roberta<br/>|
+| SendMessage| Odešlete textovou zprávu nebo rychlou zprávu.|Poslat text Chris a Karolínu|
+| SetSpeedDial| Nastavte místní volání rychlost pro telefonní číslo kontaktu.|Nastavení telefonního seznamu, jeden pro Karolínu.<br/>Nastavení telefonní pro mom.|
+| ShowNext| Zobrazit další položky, například na seznam textových zpráv nebo e-mailů.|Zobrazit další příkaz.<br/>Přejdete na další stránku.|
+| ShowPrevious| Viz předchozí položka, třeba na seznam textových zpráv nebo e-mailů.|Zobrazit předchozí.<br/>Předchozí<br/>Přejdete na předchozí.|
+| StartOver| Začněte v systému nebo zahájit novou relaci.|Začít znovu<br/>Nová relace<br/>restart|
+| TurnForwardingOff| Vypněte přesměrování volání.|Zastaví předávání Moje volání<br/>Vypnout přesměrování volání|
+| TurnForwardingOn| Vypněte phone mluvčího.|Předávání Moje volání 3333<br/>Přepnout na předávání volání do 3333|
+| TurnSpeakerOff| Vypněte phone mluvčího.|Přeneste do složky vypnout mluvčího.<br/>Vypněte sluchátek s mikrofonem.<br/>|
+| TurnSpeakerOn| Zapněte telefon mluvčího.|Režim sluchátek s mikrofonem.<br/>Umístí sluchátek s mikrofonem.<br/>|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| AudioDeviceType | Typ zvukového zařízení (mluvčího, sluchátky, mikrofon atd.).| Přednášející<br/>Bezobslužná<br/>Bluetooth|
+| AudioDeviceType | Typ zvukové zařízení (mluvčího, sluchátka s mikrofonem, mikrofon atd.).| Přednášející<br/>Bezobslužné<br/>Bluetooth|
 | Kategorie | Kategorie zpráv nebo e-mailu.| Důležité<br/>S vysokou prioritou|
-| ContactAttribute | O dotazy zákazníků atribut kontaktu uživatele.| Datum narození<br/>Adresa<br/>Telefonní číslo|
-| Kontakt | Jméno kontaktu nebo zprávy příjemce.| Karolína<br/>Jima<br/>Jan|
-| EmailSubject | Text, který slouží jako řádek předmětu e-mailu.| RE: zajímavé scénáře|
-| Perokresba | Řádku uživatel chce použít se volat nebo posílat textové nebo e-maily z.| Pracovní řádku<br/>Britské buňky<br/>Skype|
-| Zpráva | Zpráva k odeslání jako e-mailu nebo text.| Bylo skvělé splňuje můžete ještě dnes. Můžete vidět brzo!|
+| ContactAttribute | Atribut, který uživatel dotazy o kontaktu.| Datum narození<br/>Adresa<br/>Telefonní číslo|
+| Jméno kontaktu | Jméno kontaktu nebo zprávy příjemce.| Karolína<br/>Jan<br/>Chris|
+| EmailSubject | Text použitý jako řádek předmětu e-mailu.| RE: zajímavé scénář|
+| Perokresba | Řádek uživatel chce, aby se k volání nebo odeslání textu nebo e-mailu z.| Řádek práce<br/>Britské buňky<br/>Skype|
+| Zpráva | Zpráva k odeslání e-mailu nebo text.| Bylo vynikající schůzku můžete ještě dnes. Podívejte se, můžete to za chvíli znovu.|
 | MessageType | Jméno kontaktu nebo zprávy příjemce.| Text<br/>Email|
-| OrderReference | Pořadí nebo relativní pozici v seznamu identifikace položku, kterou chcete načíst. Například "posledního" nebo "poslední" v "Co se poslední zprávu poslaný?"| Poslední<br/>Poslední|
-| SenderName | Název odesílatele.| Patti Owens|
+| OrderReference | Ordinální nebo relativní umístění v seznamu, určení položek k načtení. Například "last" nebo "poslední" v "Jaké byly poslední zprávy odeslané?"| Poslední<br/>Poslední|
+| SenderName | Jméno odesílatele.| Patti Owens|
 
 ## <a name="entertainment"></a>Zábava  
-Zobrazuje Zábava, které poskytuje domény záměry a entity související hledání filmy, hudbu, hry a televize.
+Ukazuje, zábava, které doména poskytuje záměry a entity související hledání filmy, hudbu, hry a televize.
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Search| Zobrazuje vyhledávání filmy, Hudba, aplikace, hry a televize.|Vyhledejte v obchodě bylo.<br/>Vyhledejte miniatury.|
+| Search| Hledat videa, Hudba, aplikace, hry a TV ukazuje.|Vyhledejte v obchodě Haló.<br/>Hledání miniatury.|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| ContentRating | Hodnocení jako G nebo R pro filmy obsahu média.|Video dětí.<br/>PG hodnocení.|
-| Genre | Genre film, hry, aplikace nebo skladbu.|Comedies<br/>Hrané filmy<br/>Legrační|
-| – Klíčové slovo| Určení atribut – klíčové slovo obecné vyhledávání neexistuje v konkrétnější sloty média.|Nahrávky především<br/>Měsíc oblasti<br/>Amelia Earhart|
-| Jazyk | Hodnocení jako G nebo R pro filmy obsahu média.|Francouzština<br/>Angličtina<br/>Korejština|
-| MediaFormat | Další technické speciální typ ve kterém je naformátován média.|HD videa<br/>3D filmy<br/>Ke stažení|
-| MediaSource | V úložišti nebo marketplace pro získávání média.|Netflix<br/>Prime|
-| MediaSubTypes| Typy médií menší než filmy a hry.|Ukázky<br/>DLC<br/>Přípojných|
-| Příslušnosti| Zemi, kde byl vytvořen film, zobrazit nebo skladbu.|Francouzština<br/>Němčina<br/>Korejština|
-| Person (Osoba)| Objektu actor, ředitel, producent, hudebníkem nebo umělcem přidružené videa, aplikace, herní nebo televizního pořadu.|Madonna<br/>Stanley Kubrick|
-| Role| Úloze, kterou uživatel k vytvoření média.|Sings<br/>Podle<br/>Od společnosti|
-| Titul| Název film, aplikace, hry, televizního pořadu nebo skladbu.|Friends<br/>Minecraft|
-| Typ| Typ nebo médium formát film, aplikace, hry, televizního pořadu nebo skladbu.|Hudba<br/>MovieTV <br/>Zobrazuje|
-| UserRating| Uživatel hvězdičky nebo palec hodnocení.|5 hvězdiček<br/>3 hvězdičky<br/>4 hvězdičkami|
+| ContentRating | Hodnocení G nebo R filmů obsahu médií.|Videa pro děti.<br/>PG hodnocení.|
+| Genre | Rozšířením podle tematických videa, hry, aplikace nebo skladby.|Comedies<br/>Hrané filmy<br/>Legrační|
+| Klíčové slovo| Obecný hledané klíčové slovo zadáním atributu neexistuje mezi sloty konkrétnější média.|Nahrávky především<br/>Řeka měsíce<br/>Amelia Earhart|
+| Jazyk | Hodnocení G nebo R filmů obsahu médií.|Francouzština<br/>Angličtina<br/>Korejština|
+| MediaFormat | Další technické speciální typ ve kterém je formátováno média.|HD, High Density filmy<br/>3D filmy<br/>Ke stažení|
+| MediaSource | Úložiště nebo webu marketplace k získání média.|Netflix<br/>Prime|
+| MediaSubTypes| Typy médií je menší než filmy a hry.|Ukázky<br/>DLC<br/>Přípojných|
+| Národnosti| Země, ve kterém byla vytvořena videa, zobrazit nebo skladby.|Francouzština<br/>Němčina<br/>Korejština|
+| Person (Osoba)| Objekt actor, ředitel, výrobce, hudebníkem nebo interpreta přidružené videa, aplikaci, hru nebo televizního pořadu.|Madonna<br/>Stanley Kubrick|
+| Role| Roli hrají osoby při vytváření média.|Souboru<br/>Podle<br/>Od společnosti|
+| Titul| Název filmu, aplikace, hry, televizního pořadu nebo skladby.|Přátelé<br/>Minecraftu.|
+| Typ| Formát typu nebo media Video, aplikace, hry, televizního pořadu nebo skladby.|Hudba<br/>MovieTV <br/>ukazuje|
+| UserRating| Uživatel star nebo thumbs hodnocení.|5 hvězdiček<br/>3 hvězdičky<br/>4 hvězdičky|
 
 ## <a name="events"></a>Události 
-Události domény poskytuje tříd Intent a související entity na celém světě pro událostmi, jako je koncerty, festivalech, sportu hry a komedie ukazuje.
+Doména události poskytuje záměry a entity související s rezervace letenek pro události, jako jsou koncerty, festivalů, sportovní hry a komedie ukazuje.
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Adresáře| Zakoupit lístky pro událost.|Nastavit jako koupit lístek pro symphony tento víkendu.|
+| Knihy| Nákup lístků na událost.|Chci si chcete koupit lístku symphony tento víkendu.|
 
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Adresa | Umístění události nebo adresu. |Palo Alto<br/>300 112th průměr SE <br/> Seattle |
-| Název | Název události.|Shakespeare v do parku|
-| PlaceName| Název umístění události.|Louvre<br/>Opera úklidové<br/>Broadway|
-| PlaceType | Typ umístění události bude uchovávat v.|Cafe<br/>THEATRE<br/>Knihovna|
-| Typ | Typ události.|Vzájemné součinnosti<br/>Herní sportu|
+| Adresa | Umístění události nebo adresu. |Palo Alto<br/>300 112th uložit SE <br/> Seattle |
+| Název | Název události.|Shakespeare v Park|
+| PlaceName| Název události umístění.|Louvre<br/>Opera House<br/>Broadway|
+| PlaceType | Typ umístění událost bude uchovávat v datovém typu.|Cafe<br/>Oblasti divadla<br/>Knihovna|
+| Typ | Typ události.|Vzájemné součinnosti<br/>Sportovní hra|
 
-## <a name="fitness"></a>Vhodnosti 
-Domény vhodnosti poskytuje záměry a entity související sledování vhodnosti aktivity. Záměry zahrnují ukládání poznámky, zbývající čas nebo vzdálenost nebo uložení výsledků aktivity.
+## <a name="fitness"></a>Způsobilost 
+Doména vhodnosti poskytuje záměry a entity související vhodnosti aktivity pro sledování. Příkazů zahrnují ukládání poznámky, zbývající čas nebo vzdálenost nebo uložení výsledků aktivity.
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| AddNote| Přidá další poznámky sledovaných aktivity.|Potíže s tohoto spuštění byl 6/10<br/>Geologické struktury, které se počítač nachází v systémem je asfaltu<br/>Používám kolo 3 rychlosti|
-|GetRemaining| Získá zbývající čas nebo vzdálenost pro aktivitu.|Jak dlouho do další okruhu?<br/>Kolik miles zůstávají ve Moje spustit? Kolik času pro rozdělení?|
-| LogActivity| Uložení nebo protokolu výsledky dokončené aktivity.|Uložit Moje poslední spuštění<br/>Přihlaste se Moje procházení soboty<br/>uložení Moje předchozí swim|
-| LogWeight| Uložení nebo protokolu váhy aktuálního uživatele.|Uložit Moje aktuální váhy<br/>Nyní protokolu Moje váhy<br/>uložení Moje aktuální váhy textu|
+| AddNote| Přidá další poznámky sledované aktivity.|Problémy s dokončením tohoto spuštění nastavený na hodnotu 6/10<br/>Terénu, které využívám systémem je asfaltů<br/>Používám kolo 3 rychlost|
+|GetRemaining| Získá zbývající čas nebo vzdálenost pro aktivitu.|Kolik času do další okruh?<br/>Kolik mil zůstávají ve Můj test? Kolik času pro rozdělení?|
+| LogActivity| Uložit nebo protokolovat výsledky dokončené aktivity.|Uložit Moje poslední spuštění<br/>Protokolovat Moje funkce walk soboty<br/>Uložit Moje předchozí drah|
+| LogWeight| Uložit nebo protokolování hmotnost aktuálního uživatele.|Uložit Moje aktuální hmotnost<br/>Moje váha nyní protokolu<br/>Uložit Moje aktuální váha textu|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| ActivityType | Typ aktivitu ke sledování. |Spusťte<br/>Procházení<br/>Swim<br/>Cyklus |
-| Potravinářství | Typ jídlo sledovat v aplikaci vhodnosti. |Banánů<br/>Losos<br/>Bílkovin zatřesením|
-| MealType| Typ jídlem ke sledování stavu nebo vhodnosti aplikace.|Snídani<br/>Večeři<br/>Oběd<br/>Supper|
-| Měření| Typ měření času, vzdálenost či váha pro použití v aplikaci vhodnosti nebo stavu.|Kilometrech<br/>Miles<br/>Minut<br/>Kg|
+| ActivityType | Typ aktivity pro sledování. |Spusťte<br/>Procházení<br/>Drah<br/>Cyklus |
+| Potravinářství | Typ potravin můžete sledovat v vhodnosti aplikace. |Banánů<br/>Lososová<br/>Bílkovin zatřesením|
+| MealType| Typ jídla ke sledování stavu nebo vhodnosti aplikace.|Snídani<br/>Společnost dinner<br/>Oběd<br/>Supper|
+| Měření| Typ měření času, vzdálenost či váha pro použití v aplikaci vhodnosti nebo stavu.|Kilometrů<br/>Mil<br/>Minut<br/>Kg|
 | Číslo | Číselné množství pro použití v aplikaci vhodnosti nebo stavu.|19<br/>tři<br/>200<br/>jeden|
-| StatType | Typ statistiky na agregovaná data pro použití v aplikaci vhodnosti nebo stavu.|Součet<br/>Průměr<br/>Maximum<br/>Minimální|
+| StatType | Typ statistiky pro agregovaná data pro použití v aplikaci vhodnosti nebo stavu.|Součet<br/>Průměr<br/>Maximum<br/>Minimální|
 
 ## <a name="gaming"></a>Hraní her 
-Herní domény poskytuje záměry a související se správou herní strany ve hře hru s více entit.
+Doména herní poskytuje záměry a entity související se správou herní stran hry pro více hráčů.
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| InviteParty| Pozvěte a obraťte se na připojení herní strany.|Pozvěte tento přehrávač Moje strany<br/>Dřívější Moje strany<br/>Připojení k mé klan|
-|LeaveParty| Získá zbývající čas nebo vzdálenost pro aktivitu.|Jsem si<br/>I mě opuštění této straně pro jinou<br/>Mě ukončení programu|
-| StartParty| Spuštění herní strany v hry s víc hráčů.|Kamaráde umožňuje spustit a stranou<br/>spuštění a stranou<br/>Měli jsme spustit klan dnešní večer|
+| InviteParty| Libovolnému připojit herní stran.|Pozvat tento přehrávač Moje straně<br/>Přijďte na můj stran<br/>Připojte se k Moje klan|
+|LeaveParty| Získá zbývající čas nebo vzdálenost pro aktivitu.|Já jsem si<br/>Můžu jsem byste museli opustit tuto stranu dalších<br/>Jsem ukončení programu|
+| StartParty| Začněte strana herní hry pro více hráčů.|Kamaráde Pojďme začít strana<br/>Spustit strana<br/>by měl začneme klan dnešní večer|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Kontakt| Jméno kontaktní osoby pro použití v hry s víc hráčů.|Karolína<br/>Jima|
+| Kontakt| Jméno kontaktu pro použití v hry pro více hráčů.|Karolína<br/>Jan|
 
 
 ## <a name="homeautomation"></a>HomeAutomation 
-Domény HomeAutomation poskytuje záměry a entity související řízení inteligentní domácí zařízeními, jako je indikátory a zařízení.
+Doména HomeAutomation poskytuje záměry a entity související s řízením inteligentní domácí zařízení, jako jsou indikátory a zařízení.
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Vypnutí| Vypnout, zavřít nebo odemknutí zařízení.|Vypnout světla<br/>Zastavit kávy maker<br/>Dvířka zavřít Garážový|
-|TurnOn| Zapnout zařízení nebo nastavte zařízení na určité nastavení nebo režim.|zapnout Moje kávy maker<br/>můžete zapnout Moje kávy maker?<br/>Nastavte termostatu 72 stupňů.|
+| Vypnutí| Vypnout, zavřít nebo odemknutí zařízení.|Vypnout světla<br/>Zastavit kávy maker<br/>Zavřít garážových|
+|TurnOn| Zapněte zařízení nebo nastavte zařízení do režimu a konkrétní nastavení.|zapnout Moje kávy maker<br/>můžete zapnout Moje kávy maker?<br/>Nastavte termostat 72 stupňů.|
 
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Zařízení | Typ zařízení, které můžete zapnout nebo vypnout.|kávy maker<br/>Termostat<br/>indikátory|
+| Zařízení | Typ zařízení, které je možné zapnout nebo vypnout.|kávy maker<br/>Termostat<br/>indikátory|
 | Operace | Stav nastavení zařízení.|Zámek<br/>otevřít<br/>zapnuté<br/>vypnuto|
-| Místnosti | Umístění nebo místnosti zařízení je v.|Obývací pokoj<br/>ložnici<br/>kuchyně|
+| Místnosti | Umístění nebo místnosti, ve kterém zařízení nachází.|Obývací pokoj<br/>ložnici<br/>kuchyně|
 
 ## <a name="movietickets"></a>MovieTickets 
-Domény MovieTickets poskytuje záměry a související na celém světě na filmy na film kina entity.
+Doména MovieTickets poskytuje záměry a entity související rezervace letenek na filmy v celé obrazovky video.
 
 ### <a name="examples"></a>Příklady
 ```
@@ -248,22 +248,22 @@ When is Captain Omar showing?
 ```
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Adresáře | Nákupu video lístků.|Sešit dva lístky pro vedoucího Omar a dvě musketeers<br/>Chcete koupit lístek pro budoucí filmu<br/>Další středa I má lístek Captian Omar část 2|
-|GetShowTime| Získáte showtime přehrávání videa.|Když se zobrazuje Pilot Omar?|
+| Knihy | Nákup lístků video.|Rezervuje dvě lístky pro vedoucího Omar a dvě musketeers<br/>Budu chtít koupit lístek filmu dneška<br/>Chci, aby lístek pro 2. část Omar Captian další středa|
+|GetShowTime| Získejte showtime videa.|Když se zobrazuje vedoucího Omar?|
 
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Adresa | Adresa kina film.|Palo Alto<br/>300 112th průměr SE<br/>Seattle|
-| MovieTitle | Název film.|Dobu životnosti platformy<br/>Hladu hry<br/>Zahájení|
-| PlaceName | Název film kina nebo filmu.|Amir filmu<br/>Alexandrii Theatre<br/>New Yorku kina|
-| PlaceType | Typ umístění film se zobrazuje v.|filmu<br/>kina<br/>Imax – filmu|
+| Adresa | Adresa celé obrazovky video.|Palo Alto<br/>300 112th uložit SE<br/>Seattle|
+| MovieTitle | Název filmu.|Životnosti Pi<br/>Hladu hry<br/>Zahájení|
+| PlaceName | Název filmu celé obrazovky nebo kina.|Kina Amir<br/>Oblasti divadla Alexandrii<br/>New York celé obrazovky|
+| PlaceType | Typ umístění videa se zobrazuje v.|kina<br/>celé obrazovky<br/>IMAX kina|
 
 ## <a name="music"></a>Hudba 
-Hudba domény poskytuje záměry a entity související přehrávání hudby na hudební přehrávač.
+Doména Hudba poskytuje záměry a entity související přehrávání hudby v hudební přehrávač.
 
 ### <a name="examples"></a>Příklady
 ```
@@ -273,28 +273,28 @@ Skip to the next song
 ```
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| DecreaseVolume | Zmenšení svazku zařízení.|snížit sledovat svazku<br/>svazek dolů|
-| IncreaseVolume | Zvětšete svazek zařízení.|Zvětšete svazek sledování<br/>svazek nahoru|
-| Ztlumení |Ztlumení přehrávání Hudba.|Ztlumení skladbu<br/>Uveďte sledovat na ztlumení<br/>Ztlumení Hudba |
-| Pozastavení | Pozastavení přehrávání Hudba.|Pozastavení<br/>Pozastavení Hudba<br/>Pozastavení sledování|
-| PlayMusic | Hudba hrát na zařízení.|přehrání kevina Durant<br/>přehrání Paradise podle Coldplay<br/>přehrání Hello podle Adele|
-| Opakovat |Opakujte přehrávané Hudba.|Opakujte skladbu<br/>Přehrání nárůst sledování<br/>Opakujte Hudba|
-| Obnovit | Obnoví přehrávání Hudba.|Obnovit skladbu<br/>znovu spustit Hudba<br/>Zrušení pozastavení|
-| SkipBack | Přeskočte zpětné sledovat.|Přejděte na další skladbu<br/>Přehrát další skladbu|
-| SkipForward |Přeskočte dopředu sledovat.|Přehrát předchozí skladbu<br/>Přejděte zpět na předchozí sledování |
-| Zastavit | Zastavte akci týkající se hudba přehrávání. |Zastavte přehrávání tohoto alba.|
-| Zapnout | Zrušit ztlumení Hudba přehrávání zařízení.| Zapnout.|
+| DecreaseVolume | Zeslabení hlasitosti zařízení.|Zeslabení hlasitosti sledování<br/>svazek dolů|
+| IncreaseVolume | Zesílení hlasitosti zařízení.|zesílení hlasitosti sledování<br/>svazek nahoru|
+| Ztlumit |Ztlumte přehrávání hudby.|Ztlumit skladby<br/>Vložit jeden směr určený na ztlumení<br/>Ztlumit Hudba |
+| Pozastavení | Pozastavte přehrávání hudby.|Pozastavení<br/>Pozastavit Hudba<br/>Pozastavit sledování|
+| PlayMusic | Přehrávání hudby v zařízení.|Přehrát Kevin Durant<br/>Přehrát Paradise podle Coldplay<br/>Přehrát Hello podle Adele|
+| Opakovat |Přehrávání hudby opakujte.|Při opakovaném skladby<br/>Přehrát takto získané místo sledování<br/>Při opakovaném Hudba|
+| Obnovit | Obnoví přehrávání hudby.|Skladby Resume<br/>Znovu spusťte Hudba<br/>Zrušení pozastavení|
+| SkipBack | Přeskočte zpět stopy.|Přeskočit na další skladbu<br/>Přehrát další skladbu|
+| SkipForward |Přeskočte dopředu sledování.|Přehrát předchozí skladbu<br/>Přejděte zpět na předchozí stopa |
+| Zastavit | Zastavte akce týkající se přehrávání hudby. |Zastavte tento obrázek.|
+| Zrušit ztlumení | Zrušit ztlumení zařízení pro přehrávání hudby.| Zrušit ztlumení.|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| ArtistName | Objektu actor, ředitel, producenta, zapisovač, hudebníkem nebo umělcem přidružené média hrát na zařízení.|Elvis Presley<br/>Kód Swift Taylora<br/>Adele<br/>Mozart|
-| Genre | Genre Hudba požadováno.|Hudba země<br/>Klasické Broadway<br/>Přehrání Hudba klasického z Baroque období.|
+| ArtistName | Objekt actor, ředitel, výrobce, zapisovače, hudebníkem nebo interpreta související s médii hrát na zařízení.|Elvis Presley<br/>Kód Swift Taylora<br/>Adele<br/>Mozart|
+| Genre | Rozšířením podle tematických Hudba žádá.|Hudba země<br/>Klasické Broadway<br/>Přehrát Hudba klasického z Baroque období|
 
 ## <a name="note"></a>Poznámka 
-Poznámka: domény poskytuje záměry a entity související vytváření, úpravy a hledání poznámky.
+Poznámka: domény poskytuje záměry a entity týkající se vytváření, úpravám a hledání poznámky.
 
 ### <a name="examples"></a>Příklady
 ```
@@ -304,30 +304,30 @@ Remove all items from my vacation list
 ```
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| AddToNote | Informace o přidání poznámky.|Přidejte do mé nákup Poznámka salát rajčete chléb kávy<br/>Přidat do seznamu úkolů<br/>Přidání cupcakes do mé Wunderlist|
-| CheckOffItem | Zkontrolujte vypnout položek z existující poznámky.|Zkontrolujte vypnout banánů z mé seznam na nákup<br/>Označit sýr dort na můj svátek shopping seznamu, jak provést|
-| Vymazat | Vymazání všech položek z existující poznámky.|Odstranit všechny položky ze seznamu dovolenou<br/>Vymazat všechna Moje čtení seznamu|
-| Potvrdit | Potvrďte akci týkající se poznámky.|Je to v pořádku mnou<br/>ano<br/>I mě potvrzení udržuje všechny položky na seznamu|
-| Vytvořit | Vytvořte novou poznámku. | Vytvořit seznam<br/>Všimněte si, že Jason připomenout je ve městě první týden může|
-| Odstranění | Odstraníte celou poznámku. |Odstranit mé dovolenou seznamu <br/>Odstranit mé nákup Poznámka|
-| DeleteNoteItem | Odstranění položek z existující poznámky.| Odstranit čipy z mé seznam na nákup<br/>Odebrání Moje školní shopping seznamu pera|
-| ReadAloud | Číst seznam nahlas.|Soubor Readme první<br/>Soubor Readme podrobnosti|
-| ShowNext | V tématu na další položku v seznamu poznámky.|Zobrazit následující<br/>Další stránka<br/>Další|
+| AddToNote | Informace o přidání poznámky.|Přidat do mé nákup Poznámka salát rajčete bread kávy<br/>Přidat do seznamu todo<br/>Přidat cupcakes Moje Wunderlistu|
+| CheckOffItem | Zaškrtněte položky z již existujících poznámek.|Zaškrtávat bananas ze seznamu blízkým<br/>Označit produkci minipivovarů ve wisconsinu dort na můj sváteční nákupní seznam jako hotové|
+| Vymazat | Vymažte všechny položky z již existujících poznámky.|Odebrat všechny položky ze seznamu o dovolenou<br/>Vymazat vše ze seznamu čtení|
+| Potvrdit | Potvrďte akci vztahující se na poznámku.|Je to v pořádku mnou<br/>ano<br/>Můžu jsem potvrzení zachovat všechny položky v seznamech|
+| Vytvořit | Vytvoří novou poznámku. | Vytvořit seznam<br/>Všimněte si připomenout, že Jason je ve městě první týden v květnu|
+| Odstranění | Odstraníte celý poznámku. |Odstranění seznamu o dovolenou <br/>Odstranit poznámku Moje nákup|
+| DeleteNoteItem | Odstranění položek z existující poznámky.| Odstranit ze seznamu blízkým čipy<br/>Odebrat z mojí školy nákupní seznam pera|
+| ReadAloud | Seznam číst nahlas.|Soubor Readme první z nich<br/>Soubor Readme podrobnosti|
+| ShowNext | Podívejte se na další položku v seznamu poznámky.|Zobrazit další příkaz<br/>Další stránka<br/>Další|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| AppName | Název aplikace poznámek.|Wunderlist<br/>OneNote|
-| Kontakt | Název a obraťte se na v poznámce.|Karolína<br/>Jima<br/>Jan|
-| Zdroj dat | Umístění poznámky.|OneDrive<br/>Dokumentace Google<br/>počítač|
-| DataType | Typ souboru nebo s dokumentem, obvykle spojené s konkrétní softwarové programy.|Snímky<br/>Tabulka<br/>List|
-| Text | Text poznámky nebo připomenutí.|Funkce Stretch před proti<br/>Spustit dlouho zítra|
-| Titul | Název poznámky.|Nákup<br/>uživatele, kteří mají volání<br/>úkolů|
+| AppName | Název aplikace pořizování poznámek.|Wunderlist<br/>OneNote|
+| Jméno kontaktu | Jméno kontaktu v poznámce.|Karolína<br/>Jan<br/>Chris|
+| Zdroj dat | Umístění poznámky.|OneDrive<br/>Dokumenty Google<br/>Tento počítač|
+| DataType | Typ souboru nebo dokumentu, obvykle spojené s konkrétní softwarové programy.|Snímky<br/>Tabulka<br/>List|
+| Text | Text poznámky nebo připomenutí.|roztažení před procházení<br/>dlouho běžící zítra|
+| Titul | Název poznámky.|Nákup<br/>uživatelům volání<br/>úkol|
 
 ## <a name="ondevice"></a>OnDevice 
-Domény OnDevice poskytuje záměry a entity související řízení zařízení.
+Doména OnDevice poskytuje záměry a entity související řízení zařízení.
 
 ### <a name="examples"></a>Příklady
 ```
@@ -337,48 +337,48 @@ Can you make the screen brighter?
 ```
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| AreYouListening | Požádejte, pokud zařízení naslouchá.|je to na?<br/>jsou vám naslouchání?|
-|CloseApplication|Zavřete aplikaci zařízení.|Zavřete přehrávání videa|
-|FileBug|Založení záznamu o chybě v zařízení.|založení záznamu o chybě prosím<br/>Můžete založení záznamu o chybě pro mě nejlepší?<br/>Chci ohlásit této chyby|
-|GoBack|Zeptejte se můžete vrátit jeden krok nebo vrátit na předchozí krok.|Vraťte se prosím<br/>Přejít na předchozí obrazovce<br/>Přejděte zpět zastavení naslouchání|
-|Nápověda| Požádat o pomoc.|Pomůže prosím<br/>Dobrý den,<br/>Co můžete dělat?<br/>Potřebuji pomoc s| 
-|LocateDevice|Vyhledejte zařízení.|Můžete najít Můj telefon<br/>Najít iphone na tní<br/>Najít Můj telefon|
-|Přihlášení|Přihlaste se k službě pomocí zařízení.|Přihlášení prosím<br/>Přihlašovací službě Facebook.<br/>Přihlaste se k LinkedIn|
-|Odhlášení|Odhlaste se ze služby pomocí zařízení.|Odhlásit Můj telefon<br/>Přihlaste se k služby twitter<br/>Odhlásit se|
-|MainMenu|Zobrazení v hlavní nabídce zařízení.|Zobrazení nabídky.|
-|OpenApplication|Otevřete aplikaci na zařízení.|Otevřete na upozornění prosím<br/>Zapnout fotoaparát<br/>Spusťte kalendáře|
-|OpenSetting|Otevřete nastavení v zařízení.|Otevřete nastavení sítě.|
-|PairDevice|Pár zařízení.|Můžete mi pomoci v párování signál Bluetooth na telefon<br/>Zapnout bluetooth a spárujte ho s přenosných počítačů<br/>Spárujte signál Bluetooth na svém přenosném počítači|
-|PowerOff | Vypněte zařízení.|Můžete vypnout počítač<br/>Shutdown<br/>Vypnout mobilní telefon|
-|QueryBattery|Získání informací o výdrž baterie.|Zobrazit výdrž baterie.<br/>Co je můj stav baterie<br/>Kolik baterie nyní?<br/>Zobrazit stav baterie.|
-|QueryWifi|Získání informací o Wi-Fi.|Získání informací o Wi-Fi.|
-|Restartování|Zařízení restartujte.|Restartujte.|
-|RingDevice| Požádejte zařízení prstenec, aby bylo možné ji najít, když se ztratí.|Prstence telefon.| 
-|SetBrightness|Nastavte také průraznost zařízení.|Sada také průraznost střední<br/>Sada také průraznost na vysoká<br/>Sada také průraznost na nízkou prioritu|
-|SetupDevice|Zahájit instalaci zařízení.|Chcete nainstalovat Instalační program operačního systému<br/>Instalační program prosím<br/>Provést nastavení pro mě nejlepší|
-|ShowAppBar|Zobrazte panel aplikaci.|Zobrazit mi na panelu aplikace<br/>Prosím panelu aplikací<br/>Chci panel aplikací|
-|ShowContextMenu|Zobrazení místní nabídky.|Chci najdete v části místní nabídky<br/>Kontextové nabídky prosím<br/>Můžete je zobrazit v místní nabídce|
+| AreYouListening | Dotaz, pokud zařízení naslouchá.|je to na?<br/>které naslouchají?|
+|CloseApplication|Ukončete aplikaci zařízení.|Zavřete přehrávače videa|
+|FileBug|Oznámit chybu na zařízení.|oznámit chybu prosím<br/>Můžete oznámit chybu pro mě nejlepší?<br/>Chci ohlásit tuto chybu|
+|GoBack|Požádejte o jeden krok zpět nebo vrátit na předchozí krok.|Vraťte se prosím<br/>Přejít na předchozí obrazovku<br/>Přejít zpět stop naslouchání|
+|Nápověda| Požádat o pomoc.|Nápověda prosím<br/>Dobrý den,<br/>Co můžete dělat?<br/>Potřebuji pomoc s| 
+|LocateDevice|Vyhledání zařízení.|Můžete najít Můj telefon<br/>Najít iphone Tomáš.<br/>Najít Můj telefon|
+|Přihlášení|Přihlaste se ke službě pomocí zařízení.|Přihlášení prosím<br/>Přihlášení k Facebooku<br/>Přihlaste se k Linkedinu|
+|Odhlášení|Odhlaste se z služby pomocí zařízení.|Odhlášení mi na telefon<br/>Přihlaste se na twitteru<br/>Odhlásit se|
+|MainMenu|Zobrazte hlavní nabídky zařízení.|Zobrazení nabídky.|
+|OpenApplication|Otevřete aplikaci na zařízení.|Otevřete prosím alarm<br/>Zapnout fotoaparátu<br/>Spusťte kalendáře|
+|OpenSetting|Otevřete nastavení na zařízení.|Otevřete nastavení sítě.|
+|PairDevice|Pár zařízení.|Můžete mi může pomoci v párování Bluetooth signálu do telefonu<br/>Zapněte bluetooth a spárujte ho s přenosných počítačů<br/>Párování Bluetooth signál na můj notebook|
+|Vypnout počítač | Vypněte zařízení.|Můžete vypnout počítač<br/>Shutdown<br/>Vypnout mobilní telefon|
+|QueryBattery|Získejte informace o výdrži baterie.|Zobrazit výdrž baterie.<br/>Co je můj stav baterie<br/>Kolik baterie nyní?<br/>Zobrazit stav baterie|
+|QueryWifi|Získejte informace o Wi-Fi.|Získání informací o Wi-Fi.|
+|Restartování|Restartujte zařízení.|Restartujte prosím.|
+|RingDevice| Požádejte zařízení kanál, aby bylo možné ji najít, když bylo ukončeno.|Cyklické mi na telefon.| 
+|SetBrightness|Nastavte jas zařízení.|Nastavení jasu na médium<br/>Nastavení jasu na vysoká<br/>Nastavení jasu na nízkou prioritu|
+|SetupDevice|Zahajte instalaci zařízení.|Nainstalovat Instalační program operačního systému<br/>Nastavte prosím<br/>Proveďte nastavení pro mě|
+|ShowAppBar|Zobrazte indikátor aplikace.|Zobrazit na panelu aplikace<br/>Prosím panel aplikace<br/>Chci zobrazit na panelu aplikace|
+|ShowContextMenu|Zobrazení místní nabídky.|Chci zobrazit kontextovou nabídku<br/>Místní nabídka prosím<br/>Můžete je zobrazit v místní nabídce|
 |Přejít do režimu spánku|Umístěte zařízení do režimu spánku.|Jdi spát<br/>Přejít do režimu spánku<br/>Můj počítač v režimu spánku|
-|SwitchApplication|Přepínač aplikace pro použití v zařízení.|Přepnout na můj přehrávač médií.|
-|TurnDownBrightness|Snižte také průraznost zařízení.|Dim na obrazovce.|
+|SwitchApplication|Přepněte aplikace pro použití na zařízení.|Přepnout na můj media Playeru.|
+|TurnDownBrightness|Snižte jasu zařízení.|Dim na obrazovce.|
 |TurnOffSetting|Vypněte nastavení zařízení.|Deaktivovat Bluetooth<br/>Zakázat dat<br/>Odpojit bluetooth|
 |TurnOnSetting|Zapněte nastavení zařízení.|Zapnuto <br/> Vypnuto|
-|TurnUpBrightness|Zapněte si také průraznost zařízení.|Můžete provádět na obrazovce světlejší?|
+|TurnUpBrightness|Objevit jas zařízení.|Můžete vytvořit obrazovky světlejší?|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| AppName | Název aplikace v zařízení.|SoundCloud<br/>YouTube|
-| BrightnessLevel | Nastaví úroveň také průraznost na zařízení.|100 %<br/>Padesát<br/>40%|
-| Kontakt | Název obraťte se na zařízení.|Paul<br/>Maximální počet Marlen|
+| AppName | Název aplikace na zařízení.|SoundCloud<br/>YouTube|
+| BrightnessLevel | Nastaví úroveň jasu na zařízení.|100 %<br/>Padesát<br/>40%|
+| Jméno kontaktu | Jméno kontaktu na zařízení.|Paul<br/>Maximální počet Marlen|
 | DeviceType | Typ zařízení. |Telefon<br/>Kindle<br/>Přenosný počítač|
-| Typ média | Typ média provádí zařízení.|Hudba<br/>Film<br/>Televizní pořady|
-| Typem SettingType | Typ nastavení nebo panel nastavení, která chce uživatel upravit.|Wi-Fi<br/>Bezdrátové sítě<br/>Barevné schéma<br/>Centra oznámení|
+| MediaType | Typ média stará zařízení.|Hudba<br/>Video<br/>Televizní pořady|
+| Typem SettingType | Typ nastavení nebo nastavení panelu, který chce uživatel upravit.|Wi-Fi<br/>Bezdrátové sítě<br/>Barevné schéma<br/>Centrum oznámení|
 
-## <a name="places"></a>Míst  
-Domény místech poskytuje záměry pro zpracování dotazů souvisejících s jako podnikům, instituce, restaurace, veřejné prostory a adresy.
+## <a name="places"></a>Místa  
+Doména míst poskytuje příkazy pro zpracování dotazů souvisejících s jako firmám, instituce, restaurace, veřejné mezery a adresy.
 
 ### <a name="examples"></a>Příklady
 ```
@@ -388,66 +388,66 @@ At what time does Safeway close?
 ```
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| AddFavoritePlace | Přidejte umístění, které má seznamu oblíbených položek uživatele.|Toto umístění pro uložení do složky Oblíbené položky<br/>Přidat tuto adresu do složky Oblíbené položky|
-|CheckAccident|Dotaz, zda je v zadané cesty havárie.|Je na 880 nehody?<br/>Zobrazit informace o havárii|
-|CheckAreaTraffic|Zkontrolujte provoz pro obecné oblasti nebo dálnice, nikoli na zadanou trasu.|Přenosy dat v Praze<br/>Co je provoz jako v Praze?|
-|CheckIntoPlace|Zkontrolujte místo používání sociálních médií.|Poslat mi změnami na Foursquare<br/>Zde se změnami|
-|CheckRouteTraffic| Zkontrolujte síťový provoz na konkrétní trasy specifikovaných uživatelem.|Jak je provoz do Mashiko?<br/>Zobrazit mi traffice k Kirkland<br/>Jak je provoz k webu Seattle?| 
-|Potvrdit|Potvrďte akci týkající se místo.|Potvrďte Moje restaurace rezervace.|
-|Konec|Akce pro ukončení úlohy týkající se místo.|Ukončete prosím<br/>Ukončení mi poskytnutí pokynů|
-|FindPlace|Vyhledejte na místě (business, instituce, restaurace, prostor veřejných adres).|Kde je nejbližší knihovny?<br/>Najít dobrou Italská restaurace v Horská zobrazení|
-|Getaddress –| Požádejte o adresu na místě.|Zobrazit adresu Guu v ulici Robson<br/>Co je adresa nejbližší Starbucks?| 
-|GetDistance|Požádejte o vzdálenost na určité místo.|Jak daleko je svátek DIČ?<br/>jak daleko je k Bellevue odmocnina z tohoto umístění<br/>Co je vzdálenost k Tahoe|
-|Gethours –|Požádejte o provozní dobu na místě.|Jaké během Safeway zavřít?<br/>Jaké jsou dobu Domů skladu?<br/>Je stále otevřen Starbucks?|
-|GetMenu|Požádejte položek nabídky pro restaurace.|Nemá Zucca sloužit nic vegan?<br/>Co je v nabídce v Sizzler<br/>Zobrazit mi na Applebee nabídky|
-|GetPhoneNumber| Požádejte o telefonní číslo na místě.|Co je telefonní číslo nejbližší Starbucks?<br/>Zadejte číslo pro Domů skladu| 
-|GetPriceRange| Požádá o rozsahu cena na místě.|Je Zucca levných?<br/>Je polovinu ceny Cineplex ve středu?<br/>Kolik stojí celý severského večeři v Sizzler?|
-|GetReviews|Požádejte o recenze na místě.|Zobrazit recenze objektu pro vytváření Cheesecase<br/>Cineplex recenze v Yelp|
-|GetRoute|Požádejte o pokynů na místo.|Tom, jak procházet k Bellevue odmocnina<br/>Zobrazit mi nejkratší způsob, jak 8. a 59th z tohoto umístění<br/>Získat mi pokynů pro certifikační Autoritu, horská zobrazení|
-|GetStarRating|Požádejte o hvězdiček na místě.|Jak Zucca hodnocením podle Yelp?<br/>Kolik hvězdiček má prací francouzština?<br/>Je vhodné akvárium v Monterrey?|
-|GetTransportationSchedule|Získáte sběrnice plán pro místo.|Jaké čas je další bus downtown?<br/>Zobrazit sběrnicích v král okres|
-|GetTravelTime|Požádejte dobu cesta do určeného cíle.|Jak dlouho bude trvat zobrazíte Brno z tohoto umístění<br/>Co je doba řízení k Ostravy z SF|
-|Funkce MakeCall|Telefonní hovor na místo.|Volání mom<br/>Chcete umístit Skype volání Anna<br/>Volání Jima|
-|MakeReservation|Rezervace pro restaurace nebo jiné obchodní požadavek.|Vyhradit v Zucca pro dva jsou pro tonight<br/>Seznam na tabulku pro zítra<br/>Tabulka pro 3 v Palo Alto na 8|
-|MapQuestions|Požádat o informace o pokynů nebo jestli se zadaný silniční přejde do cílového umístění.|13 předávat downtown?<br/>Můžete provést 880 při Oakland?|
-|hodnocení|Získá Popis hodnocení restaurace nebo místní.|Kolik hvězdiček DIČ Contoso má?|
-|ReadAloud|Číst seznam místech nahlas.|Soubor Readme první<br/>Soubor Readme podrobnosti|
-|Selectitem –|Vyberte položku ze seznamu voleb týkající se místo nebo místech.|Vyberte druhý<br/>Vyberte první|
-|ShowMap|Zobrazit mapu oblast.|Zobrazit mapu pro druhý<br/>Zobrazit mapu<br/>Najít Brno na mapě|
-|ShowNext|Zobrazte další položku v řadě.|Zobrazit následující<br/>přejděte na další stránku|
-|ShowPrevious|Zobrazte předchozí položce v řadě.|Zobrazit předchozí<br/>předchozí<br/>Přejít na předchozí|
-|StartOver|Restartujte aplikaci nebo zahájit novou relaci.|Začít znovu<br/>Novou relaci<br/>
+| AddFavoritePlace | Přidáte složku do seznamu oblíbených položek uživatele.|Toto umístění pro uložení k oblíbeným<br/>Přidat tuto adresu k oblíbeným|
+|CheckAccident|Zadejte dotaz, zda je v zadané cesty havárie.|Je na 880 nehody?<br/>Zobrazit informace o havárii|
+|CheckAreaTraffic|Kontrola provozu pro obecné oblasti nebo highway, ne na zadanou trasu.|Provoz v Praze<br/>Co je provoz například v Praze?|
+|CheckIntoPlace|Vrácení se změnami do místo použití sociálních médií.|Vrátit se změnami mě na Foursquare<br/>Tady se změnami|
+|CheckRouteTraffic| Kontrola provozu konkrétní trasy specifikovaných uživatelem.|Jak se provoz do Mashiko?<br/>Zobrazit traffice k Kirkland<br/>Jak se provoz do Seattlu?| 
+|Potvrdit|Potvrďte akci vztahující se na místo.|Potvrďte restaurace rezervace.|
+|Konec|Akce pro ukončení úlohy týkající se na místo.|Ukončete prosím<br/>Ukončit, mi dává pokynů|
+|FindPlace|Hledat na místě (business, instituce, restaurace, prostor veřejných adres).|Kde je nejbližší knihovny?<br/>Najít dobré italské restaurace v zobrazení Horská oblast|
+|GetAddress| Požádejte o adresu místo.|Zobrazit adresu Guu na Robson ulice<br/>Jaká je adresa nejbližší Starbucks?| 
+|GetDistance|Požádejte o vzdálenost na konkrétní místo.|Jak daleko je sváteční DIČ?<br/>jak daleko je Bellevue Čtvereček odsud<br/>Co je vzdálenost k Tahoe|
+|Gethours –|Požádejte o provozní dobu na místě.|Zároveň Safeway zavřít?<br/>Co jsou hodiny pro Domů Depot?<br/>Je stále otevřen Starbucks?|
+|GetMenu|Požádejte o položky nabídky pro restauraci.|Nemá Zucca sloužit nic veganská?<br/>Co je v nabídce v Sizzler<br/>Zobrazit nabídku společnosti Applebee|
+|GetPhoneNumber| Požádejte o telefonní číslo na místě.|Co je telefonní číslo nejbližší Starbucks?<br/>Zadejte číslo pro Domů Depot| 
+|GetPriceRange| Vyzve k zadání rozsahu cena na místě.|Je Zucca levné?<br/>Ve středu je Cineplex poloviční cenu?<br/>Kolik stojí celý lobster večeře v Sizzler?|
+|GetReviews|Požádejte o kontroly na místě.|Zobrazit objektu pro vytváření Cheesecase revize<br/>Přečtěte si recenze Cineplex v Yelp|
+|GetRoute|Požádejte o pokyny na místo.|Jak vás Čtvereček Bellevue<br/>Zobrazit nejkratší způsob, jak 8. a 59th odsud<br/>Získat mě pokynů k certifikační Autoritě Horská oblast zobrazení|
+|GetStarRating|Požádejte o hodnocení hvězdičkami místa.|Jak Zucca hodnocením podle Yelp?<br/>Kolik hvězdiček prací francouzština máte?<br/>Je dobré aquarium v Monterrey?|
+|GetTransportationSchedule|Získáte plán Service bus pro místo.|Kdy je další Service bus k centru?<br/>Zobrazit sběrnice v okrese King County|
+|GetTravelTime|Požádejte o dobu trvání cesty do určeného cíle.|Jak dlouho bude trvat odsud se dostat k San Francisku<br/>Co je doby jízdy okolo něj k Denver z SF|
+|Funkce MakeCall|Telefonní hovor na místo.|Volání mom<br/>Chci umístit volání Skype Anna<br/>Jan volání|
+|MakeReservation|Požádat o rezervaci restaurace nebo jiné firmě.|Rezervovat na Zucca pro dvě pro tonight<br/>Kniha tabulky na zítřejší den<br/>Tabulka 3 v Palo Alto na 8|
+|MapQuestions|Žádost o informace o pokynů nebo určuje, zda zadaný silniční přejde do cíle.|Předat 13 prostřednictvím centru?<br/>Můžete provést 880 při Oakland?|
+|Hodnocení|Získáte popis hodnocení restaurace nebo místa.|Kolik hvězdiček DIČ Contoso má?|
+|ReadAloud|Seznam míst číst nahlas.|Soubor Readme první z nich<br/>Soubor Readme podrobnosti|
+|Selectitem –|Zvolte položku ze seznamu voleb týkajících se místa nebo místa.|Vyberte druhou<br/>Vyberte první|
+|ShowMap|Zobrazit mapu oblast.|Zobrazit mapu pro druhý<br/>Zobrazit mapu<br/>Najít kalifornském San Franciscu na mapě|
+|ShowNext|Zobrazte další položky v řadě.|Zobrazit další příkaz<br/>Přejít na další stránku|
+|ShowPrevious|Zobrazte předchozí položky v řadě.|Zobrazit předchozí<br/>předchozí<br/>Přejít na předchozí|
+|StartOver|Restartování aplikace nebo zahájit novou relaci.|Začít znovu<br/>Nová relace<br/>
 restart|
-|TakesReservations|Dotaz, zda místo přijímá rezervace.|galerii obrázky přijímat rezervace<br/>Je možné provádět rezervace v zahrada olivového
+|TakesReservations|Dotaz, jestli místo přijímá rezervace.|Nepřijme umělecké galerie rezervace<br/>Je možné provádět rezervace na kachnami Olivově
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| AbsoluteLocation | Umístění nebo adresu na místě.|Palo Alto<br/>300 112th průměr SE<br/>Seattle|
-| Veřejných zařízení | Cíle charakteristiky nebo výhod na místě.|bezpečnost dětí eat free<br/>waterfront<br/>volné parkovací|
-| Prostředí | Prostředí na místě.|dětský friendly<br/>běžné restaurace<br/>Sporty|
-| Kuchyni | Kuchyni na místě. |Středozemního<br/>italština<br/>Indickém|
-| DestinationAddress| Cílové umístění nebo adresu.|Palo Alto<br/>300 112th průměr SE<br/>Seattle|
-| DestinationPlaceName| Název cílového umístění, které je obchodní, restaurace, veřejné přitažlivosti nebo instituce.|parku – střed<br/>safeway<br/>walmart|
-| DestinationPlaceType | Typ cílového umístění, které je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. |Restaurace<br/>Opera<br/>filmu|
-| Vzdálenost | Vzdálenost na místo.|15 miles<br/>5 miles<br/>rychle 10 miles|
-| MealType | Typ jídlem jako snídani nebo oběd. |Snídani<br/>Večeři<br/>Oběd<br/>Supper|
-| OpenStatus | Určuje, zda je na místě otevřené nebo uzavřený.|Otevřenost<br/>uzavřený<br/>otevření|
+| AbsoluteLocation | Umístění nebo adresu místo.|Palo Alto<br/>300 112th uložit SE<br/>Seattle|
+| Vymoženosti | Cíle vlastnosti/výhody na místě.|děti jíst zdarma<br/>waterfront<br/>parkovací zdarma|
+| Prostředí | Prostředí na místě.|dětský zařízení<br/>příležitostné restaurace<br/>Sporty|
+| Kuchyni | Kuchyni na místě. |Středozemního<br/>italština<br/>Území v Indickém|
+| DestinationAddress| Cílové umístění nebo adresu.|Palo Alto<br/>300 112th uložit SE<br/>Seattle|
+| DestinationPlaceName| Název cíl, který je firmy, restaurace, veřejné přitažlivosti nebo instituce.|centrální park<br/>safeway<br/>walmart|
+| DestinationPlaceType | Zadejte cíl, který je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. |Restaurace<br/>Opera<br/>Kina|
+| Vzdálenost | Vzdálenost na místo.|15 mil.<br/>5 mil.<br/>10 mil okamžitě|
+| MealType | Typ jídla jako snídani nebo oběd. |snídani<br/>Společnost dinner<br/>oběd<br/>supper|
+| OpenStatus | Určuje, zda místo, kde je otevřeno nebo Uzavřeno.|Otevřenost<br/>Uzavřeno<br/>otevření|
 | PlaceName | Název na místě.|Objekt pro vytváření cheesecake|
-| PlaceType | Typ na místě.|Cafe<br/>THEATRE<br/>Knihovna|
-| PreferredRoute | Upřednostňované trasa specifikovaných uživatelem. | 101 <br/>202 <br/>Trasy 401|
-| Produkt | Produktu, které nabízí na místě. | Oblečení<br/>Automatické obnovení systému digitální fotoaparáty<br/>Nový rybího | 
-| PublicTransportationRoute | Název veřejné Transport trasy, která hledá uživatele. | Train severovýchodním ose<br/>Sběrnice trasy 3 X |
-| hodnocení | Hodnocení na místě. | 5 hvězdiček<br/>3 hvězdičky<br/>4 hvězdičkami|
-| RouteAvoidanceCriteria | Kritéria pro vyloučení konkrétní trasy jako zabraňující havárií, konstrukce nebo mýtné | Mýtné <br/>Konstrukce<br/>Trasy 11|
-| ServiceProvided | Toto je služba poskytovaná firmy nebo místní například kadeřnictví, sněhové plowing, terénní úpravy. | kadeřnictví<br/>Mechanic<br/>instalatér|
+| PlaceType | Typ na místě.|Cafe<br/>Oblasti divadla<br/>Knihovna|
+| PreferredRoute | O trasu upřednostňovanou specifikovaných uživatelem. | 101 <br/>202 <br/>Trasa 401|
+| Produkt | Produkt nabízí na místě. | Oblečení<br/>Azure Site Recovery digitální fotoaparáty<br/>Čerstvé ryb | 
+| PublicTransportationRoute | Název veřejné transportation trasy, který je vyhledat uživatele. | Severovýchodní ose trénování<br/>Route Service bus 3 X |
+| Hodnocení | Hodnocení na místě. | 5 hvězdiček<br/>3 hvězdičky<br/>4 hvězdičky|
+| RouteAvoidanceCriteria | Kritéria pro vyloučení konkrétních trasy, jako jsou zabraňující havárií, konstrukce nebo mýtné | Mýtné <br/>Konstrukce<br/>Trasa 11|
+| ServiceProvided | Toto je služba poskytovaná podnikový proces nebo místo například kadeřnictví, sníh plowing, terénní úpravy. | kadeřnictví<br/>Mechanic<br/>instalatér|
 | TransportationCompany | Název zprostředkovatele přenosu.|Amtrak<br/>Acela<br/>Greyhound|
-| TransportationType | Typ Transport.|Sběrnice<br/>Trénování<br/>Autem|
+| TransportationType | Typ dopravy.|Service Bus<br/>Trénování<br/>Autem|
 
 ## <a name="reminder"></a>Připomenutí 
-Připomenutí domény poskytuje záměry a entity pro vytváření, úpravy a hledání připomenutí.
+Doména připomenutí poskytuje záměry a entity pro vytváření, úprav a vyhledání připomenutí.
 
 ### <a name="examples"></a>Příklady
 ```
@@ -457,20 +457,20 @@ Can you check if I have a reminder about Christine's birthday?
 ```
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Změnit| Změňte připomenutí.|Změňte Moje rozhovoru 9: 00 zítra<br/>Přesunout Moje připomenutí přiřazení do zítra|
-| Vytvořit| Vytvořte nový připomenutí.|Vytvoření připomenutí<br/>Připomenout koupit mléka<br/>Chci nezapomeňte volat Milena při jsem doma|
-| Odstranění | Odstraňte připomenutí.|Odstranit připomenutí Moje obrázek<br/>odstranit toto připomenutí|
-| Vyhledávání | Zjistí, zobrazí se připomenutí.|O Moje výročí jsou připomenutí?<br/>Můžete je zkontrolovat, pokud připomenutí o narozeninách Jana na?|
+| Změnit| Změňte připomenutí.|Změnit Moje rozhovor 9: 00 zítra<br/>Přesunout Moje přiřazení připomenutí na zítřejší den|
+| Vytvořit| Vytvořte nové připomenutí.|Vytvoření připomenutí<br/>Připomenout si chcete koupit mléka<br/>Chci nezapomeňte volat Milena při jmenuji se během chvilky|
+| Odstranění | Odstraňte připomenutí.|Odstranit tento obrázek připomenutí<br/>Odstranit toto připomenutí|
+| Vyhledávání | Najdete připomenutí.|Musím připomenutí o mé výročí?<br/>Můžete je zkontrolovat, pokud mám připomenutí týkající se vaší Jana datum narození?|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Text | Textový popis připomenutí.|vyzvednutí čistírna<br/>vyřazení automobil v centru služby|
+| Text | Textový popis připomenutí.|sbírání suchého čištění<br/>vyřazení mém autě v centru služby|
 
 ## <a name="restaurantreservation"></a>RestaurantReservation 
-Domény RestaurantReservation poskytuje tříd Intent a entity související se správou restaurace rezervace.
+Doména RestaurantReservation poskytuje záměry a entity související se správou restaurace rezervace.
 
 ### <a name="examples"></a>Příklady
 ```
@@ -480,26 +480,26 @@ Table for 3 in Palo Alto at 7
 ```
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Rezerva | Rezervace pro restaurace žádost. |Vyhradit v Zucca pro dva jsou pro tonight<br/>Seznam na tabulku pro zítra<br/>Tabulka pro 3 v Palo Alto na 7|
+| Rezervovat | Požádat o rezervaci pro restauraci. |Rezervovat na Zucca pro dvě pro tonight<br/>Kniha tabulky na zítřejší den<br/>Tabulka 3 v Palo Alto na 7|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Adresa| Umístění událostí nebo adresu rezervace.|Palo Alto<br/>300 112th průměr SE<br/>Seattle|
-| Veřejných zařízení | Atribut popisující je vybavení na místě.|zobrazení oceánu<br/>bez kouření|
-| AppName | Název aplikace pro provádění rezervací.|OtevřítTabulku<br/>Yelp<br/>TripAdvisor|
-| Prostředí | Popis prostředí restaurace nebo jiném místě.|Romantický<br/>běžné<br/>vhodné pro skupiny|
-| Kuchyni | Typ jídlo, kuchyni nebo kuchyni příslušnosti. |Čínština<br/>italština<br/>Mexických|
-| MealType | Typ jídlem přidružené rezervace.|Snídani<br/>Večeři<br/>Oběd<br/>Supper|
-| PlaceName | Název místního firmy, restaurace, veřejné přitažlivosti nebo instituce.|IHOP<br/>Objekt pro vytváření cheesecake<br/>Louvre|
-| PlaceType | Typ místní firmy, restaurace, veřejné přitažlivosti nebo instituce.|restaurace<br/>Opera<br/>filmu|
-| hodnocení | Hodnocení místní nebo restaurace.|5 hvězdiček<br/>3 hvězdičky<br/>4 hvězdičkami|
+| Adresa| Umístění události nebo adresy pro rezervaci.|Palo Alto<br/>300 112th uložit SE<br/>Seattle|
+| Vymoženosti | Atribut popisující vymoženosti na místě.|zobrazení na oceánských<br/>bez kouření|
+| AppName | Název aplikace pro provedení rezervace.|OtevřítTabulku<br/>Yelp<br/>TripAdvisor|
+| Prostředí | Popis prostředí restaurace nebo druhém místě.|Romantický<br/>příležitostné<br/>vhodné pro skupiny|
+| Kuchyni | Typ food, kuchyni nebo kuchyni příslušnosti. |Čínština<br/>italština<br/>Mexické|
+| MealType | Typ jídla přidružené k rezervaci.|snídani<br/>Společnost dinner<br/>oběd<br/>supper|
+| PlaceName | Název místní firmy, restaurace, veřejné přitažlivosti nebo instituce.|IHOP<br/>Objekt pro vytváření cheesecake<br/>Louvre|
+| PlaceType | Typ místní firmy, restaurace, veřejné přitažlivosti nebo instituce.|restaurace<br/>Opera<br/>kina|
+| Hodnocení | Hodnocení místa nebo restauraci.|5 hvězdiček<br/>3 hvězdičky<br/>4 hvězdičky|
 
-## <a name="taxi"></a>Taxíkem 
+## <a name="taxi"></a>Taxislužby města 
  
-Domény taxíkem poskytuje tříd Intent a entity pro vytváření a správu taxíkem rezervace.
+Doména taxislužby poskytuje záměry a entity pro vytváření a Správa rezervací taxislužby.
 
 ### <a name="examples"></a>Příklady
 ```
@@ -509,26 +509,26 @@ Cancel my Uber
 ```
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Adresáře | Volání taxíkem. |Získat mi soubor cab<br/>Najít taxíkem<br/>Sešit mi uber x|
-| Zrušit | Zrušte akci týkajících se rezervace taxíkem.|Zrušit Moje taxíkem<br/>Zrušit Moje Uber|
-| sledování | Sledovat taxíkem trasy.|Jak dlouho je nutné čekat na můj taxíkem?<br/>Kde je můj Uber?|
+| Knihy | Volání taxislužby. |Načítání me souboru cab<br/>Najít taxislužby města<br/>Rezervuje mě uber x|
+| Zrušit | Zrušte akci týkajících se rezervace taxislužby.|Zrušit Moje taxislužby města<br/>Zrušit Moje Uber|
+| sledování | Sledování postupu taxislužby.|Jak dlouho je nutné čekat Moje taxislužby?<br/>Kde je Moje Uber?|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Adresa| Adresa přidružená rezervace taxíkem. |Palo Alto<br/>300 112th průměr SE<br/>Seattle|
-| DestinationAddress| Cílové umístění nebo adresu. |Palo Alto<br/>300 112th průměr SE<br/>Seattle|
-| DestinationPlaceName | Název cílového umístění, které je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. |Parku – střed<br/>Safeway<br/>Walmart|
-| DestinationPlaceType | Typ cílového umístění, které je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. |Restaurace<br/>Opera<br/>filmu|
-| PlaceName | Název místního firmy, restaurace, veřejné přitažlivosti nebo instituce, která. |Parku – střed<br/>Safeway<br/>Walmart|
-| PlaceType| Typ místní v požadavku na sešit taxíkem.|Restaurace<br/>Opera<br/>filmu|
+| Adresa| Adresa přidružená k rezervace taxislužby. |Palo Alto<br/>300 112th uložit SE<br/>Seattle|
+| DestinationAddress| Cílové umístění nebo adresu. |Palo Alto<br/>300 112th uložit SE<br/>Seattle|
+| DestinationPlaceName | Název cíl, který je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. |Centrální Park<br/>Safeway<br/>Walmart|
+| DestinationPlaceType | Zadejte cíl, který je místní firmy, restaurace, veřejné přitažlivosti nebo instituce. |Restaurace<br/>Opera<br/>Kina|
+| PlaceName | Název místní pracovní, restaurace, veřejné přitažlivosti nebo instituce. |Centrální Park<br/>Safeway<br/>Walmart|
+| PlaceType| Typ místa v žádosti o rezervovat taxislužby.|Restaurace<br/>Opera<br/>Kina|
 | TransportationCompany | Název zprostředkovatele přenosu.|Amtrak<br/>Acela<br/>Greyhound|
-| TransportationType | Typ Transport.|Sběrnice<br/>Trénování<br/>Autem|
+| TransportationType | Typ dopravy.|Service Bus<br/>Trénování<br/>Autem|
 
 ## <a name="translate"></a>Překlad 
-Domény přeložit poskytuje záměry a entity související text pro daný jazyk překladu.
+Doména přeložit poskytuje záměry a entity související překlad textu do cílového jazyka.
 
 ### <a name="examples"></a>Příklady
 ```
@@ -538,20 +538,20 @@ Translate this sentence to English
 ```
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Překlad| Převede text na jiný jazyk.|Převede na francouzštinu<br/>Převede hello němčina|
+| Překlad| Překlad textu do jiného jazyka.|Převést na Francouzština<br/>Přeložit hello na němčinu|
 
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| TargetLanguage | Cílový jazyk překladu.|Francouzština<br/>Němčina<br/>Korejština|
+| TargetLanguage | Cílový jazyk překlad.|Francouzština<br/>Němčina<br/>Korejština|
 | Text | Text na překlad|Hello World<br/>Dobré ráno<br/>Dobrý večer|
 
 ## <a name="tv"></a>TV 
  
-Televizního domény poskytuje pro řízení televizní přijímače tříd Intent a entity.
+TV domény poskytuje pro řízení televizorů záměry a entity.
 
 ### <a name="examples"></a>Příklady
 ```
@@ -561,19 +561,19 @@ Watch National Geographic
 ```
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| ChangeChannel| Změňte kanál na Televizi.|Změna kanálu pro CNN<br/>Kanál přepínače do BBC<br/>Přejděte do kanálu 4|
-| Showguide –| Zobrazit v Průvodci TV.|Zobrazit televize<br/>Co je na film kanálu nyní?<br/>Zobrazit seznam programu|
-| WatchTV| Požádejte o sledovat televizního kanálu.|Chcete sledovat Disney kanál<br/>přejděte prosím na TV<br/>Podívejte se na National geografické|
+| ChangeChannel| Kanál na Televizi změňte.|Kanál změn na CNN<br/>Přepínač kanálu BBC<br/>Přejděte do kanálu 4|
+| Showguide –| Zobrazit Průvodce TV.|Zobrazit televize<br/>Co je ve filmu kanálu teď?<br/>Zobrazit seznam programu|
+| WatchTV| Požádejte o podívejte se kanál.|Budu chtít sledovat kanál Disney<br/>přejděte prosím na TV<br/>Podívejte se na geografické národní|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| ChannelName | Název televizního kanálu.|CNN<br/>BBC<br/>Film kanálu|
+| ChannelName | Název kanál.|CNN<br/>BBC<br/>Video channel|
 
 ## <a name="utilities"></a>Veřejné služby  
-Domény nástrojů poskytuje záměry pro úlohy, které jsou společné pro celou řadu úloh, jako je například pozdrav, zrušení, potvrzení, Nápověda, opakování, navigace, spuštění a zastavení.
+Domény nástroje zajišťující úlohy, které jsou společné pro mnoho úloh, jako je například greetings, zrušení, potvrzení, Nápověda, opakování, navigace, spouštění a zastavování záměry.
 
 ### <a name="examples"></a>Příklady
 ```
@@ -583,21 +583,21 @@ Repeat last question please
 ```
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Zrušit | Zrušte akci.|Zrušit zprávu<br/>Nechci už odesílat e-mailu|
-| Potvrdit | Potvrďte akci.|Ano jejda potvrzuji<br/>Vhodné I mě potvrzení<br/>V pořádku I mě potvrzení|
-| FinishTask | Dokončete úlohu spustit uživatel.|Mám Hotovo<br/>Dokončeno.<br/>Je Hotovo|
-| GoBack | Přejděte zpět jeden krok nebo vrátit do předchozího kroku.|Přejděte zpět na Twitteru<br/>Vraťte se krok<br/>Přejít zpět|
-| Nápověda | Žádost o pomoc.|Pomozte<br/>Otevřít nápovědu<br/>Nápověda|
-| Opakovat | Opakujte akci.|Opakujte poslední otázku prosím<br/>Opakujte poslední skladbu|
-| ShowNext | Zobrazte další položku v řadě. |Zobrazit následující<br/>přejděte na další stránku|
-| ShowPrevious | Zobrazte předchozí položce v řadě.|Zobrazit předchozí|
-| StartOver | Restartujte aplikaci nebo zahájit novou relaci.|Začít znovu<br/>Novou relaci<br/>restart|
-| Zastavit | Zastavte akci.| Zastavit oznámením této<br/>Zmlkni<br/>Zastavit prosím|
+| Zrušit | Zrušte akci.|Zrušit zprávy<br/>Nechci už odeslat e-mailu|
+| Potvrdit | Potvrďte akci.|Ano ale potvrzuji, že<br/>Kvalitní můžu jsem potvrzení<br/>Dobře I jsem potvrzení|
+| FinishTask | Dokončení úkolu uživatel začal.|Už mám všechno<br/>Dokončena<br/>To se dělá|
+| GoBack | Vrátit zpět o jeden krok nebo návrat k předchozímu kroku.|Přejděte zpět na Twitteru<br/>Přejděte zpět krok<br/>Přejít zpět|
+| Nápověda | Žádost o pomoc.|Pomozte<br/>Otevření nápovědy<br/>Nápověda|
+| Opakovat | Opakujte akci.|Opakujte prosím poslední dotaz<br/>Opakujte poslední skladby|
+| ShowNext | Zobrazte další položky v řadě. |Zobrazit další příkaz<br/>Přejít na další stránku|
+| ShowPrevious | Zobrazte předchozí položky v řadě.|Zobrazit předchozí|
+| StartOver | Restartování aplikace nebo zahájit novou relaci.|Začít znovu<br/>Nová relace<br/>restart|
+| Zastavit | Zastavte akci.| Zastavit oznámením této<br/>Zmlkni<br/>Zastavte prosím|
 
 ## <a name="weather"></a>Počasí 
-Domény počasí poskytuje tříd Intent a entity pro zprávy o počasí a prognózy.
+Doména počasí poskytuje záměry a entity pro zprávy o počasí a předpovědi.
 
 ### <a name="examples"></a>Příklady
 ```
@@ -607,10 +607,10 @@ What's the average temperature in India in september?
 ```
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| GetCondition | Získáte historické fakty související s počasí. |počasí v Londýně v září<br/>Co je průměrnou teplotu v Indii v září?|
-| GetForecast | Získejte aktuální počasí a prognózy další několik dní. |Jak je počasí dnes?<br/>Co je 10 den prognózy?<br/>Jak bude počasí tento víkendu?|
+| GetCondition | Získejte historické údaje týkající se počasí. |o počasí v Londýně v září<br/>Co je průměrná teplota v Indii v září?|
+| GetForecast | Získá aktuální počasí a předpovědi na během několika dalších dnů. |Jak se počasí dnes?<br/>Co je 10 dní prognózy?<br/>Jak se tento víkendu počasí|
 
 ### <a name="entities"></a>Entity
 | Název entity | Popis | Příklady |
@@ -618,7 +618,7 @@ What's the average temperature in India in september?
 | Umístění| Absolutní umístění pro žádost o počasí.|Seattle<br/>Paříž<br/>Palo Alto|
 
 ## <a name="web"></a>Web 
-Doména webové poskytuje záměrem pro navigaci k webu.
+Doména webové poskytuje záměru pro přechod na web.
 
 ### <a name="examples"></a>Příklady
 ```
@@ -628,7 +628,7 @@ Navigate to www.bing.com
 ```
 
 ### <a name="intents"></a>Záměry
-| Záměrné název | Popis | Příklady |
+| Název záměru | Popis | Příklady |
 | ---------------- |-----------------------|----|
-| Navigace | Žádost o navigaci na zadané webové stránky. |Přejděte na facebook.com<br/>Přejděte na www.twitter.com|
+| Navigace | Požadavek na přejděte do zadaného webu. |Přejděte na facebook.com<br/>Přejít na www.twitter.com|
 

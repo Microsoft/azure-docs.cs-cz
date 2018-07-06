@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/21/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8aea56017d38b57d36f5f1d42e2d4e9ed1d809e5
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f807264dc2c2e07ccd175fb1b0427b7ce9e9f524
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346089"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37868241"
 ---
 # <a name="volumes-with-azure-disks"></a>Svazky s disků v Azure
 
@@ -52,6 +52,10 @@ Po vytvoření disku, byste měli vidět výstup podobný následujícímu. Tato
 > [!NOTE]
 > Spravované disky Azure se účtují po SKU pro určité velikosti. Tyto skladové položky sahají od 32GiB disků S4 nebo P4 4TiB S50 nebo P50 disků. Kromě toho propustnost a výkon vstupně-výstupních operací na úrovni Premium managed disku závisí na SKU a velikosti instance uzlů v clusteru AKS. Zobrazit [ceny a výkonu spravované disky][managed-disk-pricing-performance].
 
+> [!NOTE]
+> Pokud je potřeba vytvořit disk v samostatné skupiny prostředků, musíte také přidat instanční objekt služby Azure Kubernetes Service (AKS) je pro váš cluster do skupiny prostředků obsahující disk s `Contributor` role. 
+>
+
 ## <a name="mount-disk-as-volume"></a>Připojení disku jako svazek
 
 Připojení Azure disku do podu pomocí konfigurace svazku v kontejneru specifikace.
@@ -86,7 +90,7 @@ kubectl apply -f azure-disk-pod.yaml
 
 Teď máte spuštěné pod s připojený k disku Azure `/mnt/azure`.
 
-## <a name="next-steps"></a>Další kroky
+## <a name="next-steps"></a>Další postup
 
 Další informace o Kubernetes svazky s využitím disků v Azure.
 

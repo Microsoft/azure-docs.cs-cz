@@ -5,28 +5,28 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: include
-ms.date: 03/26/2018
-ms.author: jeking
+ms.date: 07/03/2018
+ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 0347d6ca951b75c385b138487f58b85a809c6805
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 056007ba9d28280a6055ca3312e2aa53e635d1d3
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076666"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859795"
 ---
-Zóny redundantní úložiště (ZRS) synchronně replikuje data mezi tří (3) clustery úložiště v jedné oblasti. Každý cluster úložiště je fyzicky oddělená od ostatních a se nachází ve vlastní zóně dostupnosti (AZ). Každou zónu dostupnosti a cluster ZRS v něm, je autonomní pomocí samostatných nástrojů a možností sítě.
+Zónově redundantní úložiště (ZRS) vaše data synchronně replikuje mezi tři úložnými clustery v jedné oblasti. Každý cluster úložiště je fyzicky oddělená od ostatních a je umístěn ve své vlastní zóně dostupnosti (AZ). Každá zóna dostupnosti a cluster ZRS obsahuje, je autonomní pomocí samostatných nástrojů a možností sítě.
 
-Ukládání dat v účtu ZRS zajistí, že budete přistupovat a správě dat v případě, že nedostupný zónu. ZRS poskytuje vynikající výkon a s velmi nízkou latencí. Ve skutečnosti ZRS má stejné [cíle škálovatelnosti](../articles/storage/common/storage-scalability-targets.md) jako LRS.
+Ukládání dat v účtu ZRS zajistí, že budete mít přístup a spravovat vaše data v případě, že zónu přestane být k dispozici. ZRS poskytuje vynikající výkon a nízkou latencí. ZRS poskytuje stejné [cíle škálovatelnosti](../articles/storage/common/storage-scalability-targets.md) jako [místně redundantní úložiště (LRS)](../articles/storage/common/storage-redundancy-lrs.md).
 
-Zvažte ZRS pro scénáře, které vyžadují silnou konzistenci, silné odolnost a vysokou dostupnost, i když výpadku nebo přírodní katastrofě vykreslí oblastmi datového centra není k dispozici. ZRS poskytuje odolnost pro úložiště objektů alespoň % 99.9999999999 (12 na 9) během daného roku.
+Zvažte použití ZRS pro scénáře, které vyžadují silnou konzistenci, silné odolnost a vysokou dostupnost i v případě výpadku nebo přírodní katastrofě vykreslí oblastmi datového centra není k dispozici. ZRS poskytuje pro objekty úložiště alespoň 99,9999999999 % (12 9) průběhu daného roku.
 
-Další informace o dostupnosti zón najdete v tématu [dostupnost zóny přehled](https://docs.microsoft.com/azure/availability-zones/az-overview).
+Další informace o zónách dostupnosti najdete v tématu [Přehled zón dostupnosti](https://docs.microsoft.com/azure/availability-zones/az-overview).
 
-## <a name="support-coverage-and-regional-availability"></a>Podpora je poskytována a místní dostupnost
-ZRS je aktuálně podporuje [ **standardní, obecný v2 (GPv2)** ](../articles/storage/common/storage-account-options.md#general-purpose-v2) typy účtů. ZRS je k dispozici pro objekty BLOB bloku, objekty BLOB stránky jiný disk, soubory, tabulky a fronty. Kromě toho všechny vaše [Storage Analytics](../articles/storage/common/storage-analytics.md) protokoly a [metriky úložiště](../articles/storage/common/storage-enable-and-view-metrics.md)
+## <a name="support-coverage-and-regional-availability"></a>Podpora je poskytována a dostupnosti v jednotlivých oblastech
+ZRS v současné době podporuje standard [pro obecné účely v2 (GPv2)](../articles/storage/common/storage-account-options.md#general-purpose-v2) typy účtů. Zónově redundantní úložiště je k dispozici pro objekty BLOB bloku, objekty BLOB stránky bez disku, soubory, tabulky a fronty. Kromě toho všechny vaše [Storage Analytics](../articles/storage/common/storage-analytics.md) protokoly a [Storage Metrics](../articles/storage/common/storage-enable-and-view-metrics.md)
 
-ZRS je **všeobecně dostupná** v následujících oblastech:
+Zónově redundantní úložiště je obecně dostupná v těchto oblastech:
 
 - USA – východ 2
 - USA – střed
@@ -35,58 +35,58 @@ ZRS je **všeobecně dostupná** v následujících oblastech:
 - Francie – střed
 - Jihovýchodní Asie
 
-Společnost Microsoft nadále povolit ZRS v jiných oblastech Azure a tento seznam bude aktualizovat, pokud k tomu dojde. Také budeme takové oznámení prostřednictvím standardních kanálů, jako [aktualizace služby Azure](https://azure.microsoft.com/updates/) stránku a e-mailové oznámení pro vlastníky předplatného Azure a správce.
+Microsoft nadále povolit ZRS v dalších oblastech Azure. Zkontrolujte [aktualizace služby Azure](https://azure.microsoft.com/updates/) stránky pravidelně informace o nové oblasti.
 
-## <a name="what-happens-when-a-zone-becomes-unavailable"></a>Co se stane, když zónu přestane být dostupný?
+## <a name="what-happens-when-a-zone-becomes-unavailable"></a>Co se stane, když se stane nedostupným zóny?
 
-Vaše data zůstanou odolné zónu přestane být dostupný. Společnost Microsoft doporučuje nadále osvědčených postupů pro přechodná chyba zpracování úloh, jako je například implementace zásady opakování s exponenciální back vypnout. Když zóna není k dispozici, se zavazuje Azure sítě aktualizace, jako je například DNS repointing. Tyto aktualizace může ovlivnit vaší aplikace, pokud se připojujete data předtím, než nebude dokončena.
+Vaše data zůstanou odolné pro případ nedostupnosti zóny. Společnost Microsoft doporučuje nadále postupy pro zpracování, jako je například implementace zásad opakování s exponenciální regresní přechodných chyb. Když zóna je k dispozici, Azure se zavazuje, že síťové aktualizace, jako je například DNS repointing. Tyto aktualizace může ovlivnit vaši aplikaci při přístupu k datům předtím, než byl dokončen.
 
-ZRS nemusí chránit vaše data před regionální po havárii, kde jsou několika zón trvale vliv. Místo toho ZRS poskytuje odolnost proti chybám pro vaše data v případě dočasné nedostupnosti. Pro ochranu proti místní havárie, společnost Microsoft doporučuje používat [geograficky redundantní úložiště (GRS): mezi místní replikace pro Azure Storage](../articles/storage/common/storage-redundancy-grs.md).
+ZRS nemůže chránit vaše data před regionální po havárii, ve kterém jsou několika zónami trvale vliv. Místo toho ZRS nabízí odolnost proti chybám pro vaše data v případě, že bude dočasně není k dispozici. Pro ochranu před katastrofami regionální společnost Microsoft doporučuje používat geograficky redundantní úložiště (GRS). Další informace o GRS najdete v tématu [geograficky redundantní úložiště (GRS): replikace mezi zónami pro službu Azure Storage](../articles/storage/common/storage-redundancy-grs.md).
 
-## <a name="converting-to-zrs-replication"></a>Převádění na replikaci ZRS
-V současné době je poměrně jednoduché změnit mezi LRS, GRS a RA-GRS – využít portálu nebo rozhraní API. S ZRS ale není jako jednoznačné protože se týká přesunu fyzické dat z jednoho úložiště razítka do několika razítek v oblasti. Jako takový je k dispozici dvě možnosti primární – ručně zkopírovat nebo přesunout data na nový účet ZRS z vašeho stávajícího účtu nebo požádejte migrace za provozu. Důrazně doporučujeme provést ruční migraci, protože nejde zaručit při migraci za provozu dokončí; Existuje celá řada faktorů, které přímo a nepřímo vliv na dokončení úlohy migrace. 
+## <a name="converting-to-zrs-replication"></a>Převod na replikací zónově redundantního úložiště
+V současné době můžete na webu Azure portal nebo rozhraní API poskytovatele prostředků úložiště chcete-li změnit typ redundance vašeho účtu, za předpokladu, migrujete do nebo z LRS, GRS a RA-GRS. S ZRS ale migrace není jako jednoznačné protože zahrnuje přesun fyzických dat z jednoho úložiště razítka do více razítek v rámci oblasti. 
 
-Chcete-li provést ruční migraci, máte různé možnosti:
-- Použijte existující nástrojů jako AzCopy, sada SDK, úložiště spolehlivé nástroje třetích stran, atd.
-- Pokud jste obeznámeni s Hadoop nebo HDInsight, můžete připojit i zdrojové a cílové (ZRS) účet ke clusteru a použít něco jako DistCp učinit masivně paralelní proces kopírování dat
-- Vytvoření vlastních nástrojů využití jeden příchuť sada SDK úložiště
+Máte dvě primární možnosti pro migraci do nebo z ZRS. Můžete ručně zkopírovat nebo přesunout data do nového účtu ZRS z vašeho stávajícího účtu. Můžete také požádat o migraci za provozu. Společnost Microsoft důrazně doporučuje provést ruční migrace, protože neexistuje žádná záruka, kdy bude dokončena migrace za provozu. Ruční migraci trasa poskytuje větší flexibilitu než migrace za provozu nepodporuje a máte pod kontrolou načasování migrace.
 
-Jak už bylo zmíněno dříve, DŮRAZNĚ doporučujeme přejít trasy ruční migraci, protože nabízí větší flexibilitu než migrace za provozu. Také jste ve plně pod kontrolou když dojde k migraci.
+Pokud chcete provést ruční migrace, máte různé možnosti:
+- Použijte stávající nástroje, jako je AzCopy, úložiště, sady SDK, spolehlivé nástroje třetích stran atd.
+- Pokud jste se seznámili s Hadoop nebo HDInsight, můžete připojit i zdroj a cíl (ZRS) účet ke svému clusteru a pomocí něčeho jako DistCp do masivně paralelní zpracování proces kopírování dat
+- Vytváření vlastních nástrojů využívat jeden charakter úložiště sady SDK
 
-Pokud však ruční migraci bude mít za následek výpadky aplikací a nemůžete vyrovná se se zatížením, na vaše koncové, poskytujeme možnost migrace za provozu. Migrace za provozu je místní migrace, která umožňuje pokračovat v používání vaší stávající účet úložiště při migraci dat mezi zdrojovým a cílovým razítka úložiště. Během migrace budete mít stále stejnou úroveň odolnost a smlouva SLA o dostupnosti, obvyklým způsobem.
+Pokud ale ruční migraci způsobí výpadek aplikace a nemůžete chránit před, který dalšího, Microsoft nabízí možnost migrace za provozu. Migrace za provozu je místní migrace, která umožňuje pokračovat v používání existující účet úložiště, zatímco vaše data jsou migrována mezi zdrojovým a cílovým razítka úložiště. Během migrace bude stále mít stejnou úroveň odolnosti a smlouva SLA o dostupnosti obvyklým způsobem.
 
-Migrace za provozu s určitými omezeními ale pocházet. Jsou uvedeny níže.
+S určitými omezeními ale pocházet migrace za provozu. Jsou uvedeny níže.
 
-- Když jsme vyřeší vaši žádost o migraci za provozu okamžitě, ale nemůžeme zaručit při migraci se ve skutečnosti dokončit. Pokud potřebujete dat, aby se v ZRS do určité doby, byste měli provést ruční migraci. Obecně platí, více dat, které máte v účtu tím déle bude trvat migrovat data. 
-- Pouze za provozu můžete migrovat z účtu s LRS a GRS replikace. Pokud máte RA-GRS pak bude muset nejdřív změnit na jednu z těchto typů replikace, než budete pokračovat. Tento zprostředkující krok zajistí, že sekundární endpoint jen pro čtení, který RA-GRS poskytuje, jsou odebrány při jsou připravené.
-- Váš účet musí být neprázdný.
-- Jsou podporovány pouze uvnitř oblasti migrace. Pokud chcete migrovat data do účtu ZRS umístěný v oblasti, která se liší od zdrojového účtu, je třeba provést ruční migraci.
-- Standardní úložiště pouze typy účtů. Nemůžete migrovat z prémiový účet úložiště.
+- Když Microsoft bude zabývat vaše žádost o migraci za provozu okamžitě, neexistuje žádná záruka, kdy se migrace dokončí. Pokud potřebujete, aby vaše data, aby se v ZRS do určité doby, byste měli provést ruční migraci. Obecně platí, čím více dat mají ve vašem účtu tím déle bude trvat migrovat data. 
+- Migrace za provozu mohou provést pouze z účtu služby pomocí replikace sazbou za LRS nebo GRS. Pokud váš účet používá RA-GRS, je potřeba nejdřív migrujte na jednu z těchto typů replikace, než budete pokračovat. Tento zprostředkující krok zajistí, že sekundární jen pro čtení koncový bod poskytující RA-GRS se odebere před migrací.
+- Váš účet musí obsahovat data.
+- Jsou podporovány pouze uvnitř oblasti migrace. Pokud chcete migrovat data do účtu ZRS nachází v jiné než účet zdrojové oblasti, je nutné provést ruční migraci.
+- Jsou podporovány pouze typy účtů úložiště úrovně standard. Nemůžete migrovat z účtu služby premium storage.
 
-Požadavky přejděte prostřednictvím portálu Azure podporu migrace za provozu. Z portálu vyberte účet úložiště, který chcete převést na ZRS.
+Požadavky, projděte si portál podpory Azure migrace za provozu. Z portálu vyberte účet úložiště, který chcete převést na ZRS.
 1. Klikněte na tlačítko **novou žádost o podporu**
 2. Ověření základní informace. Klikněte na **Další**. 
 3. Na **problém** části 
-    - Nechte závažnost jako-je.
+    - Ponechte závažnost jako-je.
     - Typ problému = **migrace dat**
-    - Kategorie = **migrace na ZRS v rámci oblasti**
-    - Title = **ZRS účet migrace** (nebo něco popisný)
-    - Podrobnosti = chci migrace z [LRS, GRS] na ZRS v oblasti ___. 
+    - Kategorie = **migrovat ZRS v rámci oblasti**
+    - Název = **migrace účtu ZRS** (nebo něco popisné)
+    - Podrobnosti = chci migrovat do ZRS z [LRS, GRS] v oblasti ___. 
 4. Klikněte na **Další**.
 5. Ověřte správnost kontaktní informace v okně kontaktní informace.
-6. Klikněte na tlačítko **odeslání**.
+6. Klikněte na tlačítko **odeslat**.
 
-V kontaktu s vám pak bude pracovníci technické podpory. Tato osoba bude k dispozici pro všechny pomoc, které možná budete potřebovat. 
+Pracovník podpory pak bude vás budeme kontaktovat. Tato osoba bude k dispozici, kterou budete potřebovat pomoc. 
 
-## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>ZRS Classic: Starší verze možnost pro blok objektů BLOB redundance
+## <a name="zrs-classic-a-legacy-option-for-block-blobs-redundancy"></a>ZRS Classic: Starší verze požadované za účelem zajištění redundance objekty BLOB bloku
 > [!NOTE]
-> ZRS klasické účty jsou plánované pro vyřazení a požadované migrace na 31. března 2021. Společnost Microsoft bude posílat podrobnosti ZRS Classic zákazníkům před vyřazení. Společnost Microsoft se plánuje poskytovat automatické migraci z ZRS Classic ZRS v budoucnu.
+> Účty ZRS Classic jsou plánovány pro vyřazení a vyžaduje migraci na 31. března 2021. Microsoft vám pošle další podrobnosti ZRS Classic zákazníkům před vyřazení. Microsoft má v plánu poskytovat procesu automatizovaný přenos z ZRS Classic ZRS v budoucnu.
 
 >[!NOTE]
-> Po ZRS [všeobecně dostupná](#support-coverage-and-regional-availability) v oblasti, už nebudete moct vytvořit účet ZRS Classic z portálu v daném regionu stejné. Však můžete stále vytvořit jednu jiným způsobem, jako je Microsoft PowerShell a rozhraní příkazového řádku Azure, to znamená, dokud ZRS Classic je zastaralý.
+> Jakmile zónově redundantní úložiště je [obecně k dispozici](#support-coverage-and-regional-availability) v oblasti, se již budete moci vytvořit účet ZRS Classic na portálu v dané stejné oblasti. Však můžete stále vytvořit jeden prostřednictvím jiným způsobem, jako je Microsoft PowerShell a rozhraní příkazového řádku Azure, to znamená, dokud ZRS Classic je zastaralý.
 
-ZRS Classic asynchronně replikuje data napříč datovými centry v rámci jedné nebo dvou oblastech. Replika nemusí být k dispozici, pokud společnost Microsoft nezahájí převzetí služeb při selhání a přechod na sekundární data. ZRS Classic je dostupná jenom pro **objekty BLOB bloků** v [pro obecné účely V1 (GPv1)](../articles/storage/common/storage-account-options.md#general-purpose-v1) účty úložiště. Účet ZRS Classic nelze převést na LRS nebo GRS ani naopak a nepodporuje možnosti metrik ani protokolování.
+ZRS Classic asynchronně replikuje data napříč datovými centry v jedné až dvou oblastech. Replika nemusí být k dispozici, pokud společnost Microsoft nezahájí převzetí služeb při selhání a přechod na sekundární data. ZRS Classic je k dispozici pouze pro **objekty BLOB bloku** v [pro obecné účely V1 (GPv1)](../articles/storage/common/storage-account-options.md#general-purpose-v1) účty úložiště. Účet ZRS Classic nelze převést na LRS nebo GRS ani naopak a nepodporuje možnosti metrik ani protokolování.
 
-ZRS klasické účty nelze převést na nebo z LRS, GRS nebo RA-GRS. ZRS klasické účty také nepodporují metriky nebo protokolování.
+Účty ZRS Classic nelze převést na nebo z LRS, GRS nebo RA-GRS. Účty ZRS Classic také nepodporují protokolování nebo metrik.
 
-Pokud chcete ručně migrovat data účtu ZRS do nebo z účtu LRS, ZRS Classic, GRS nebo RA-GRS, použijte AzCopy, Azure Storage Explorer, prostředí Azure PowerShell nebo rozhraní příkazového řádku Azure. Můžete také vytvořit vlastní migrace řešení s jedním z knihovny klienta Azure Storage.
+Jak ručně provést migraci dat účtu ZRS do nebo z účet LRS, ZRS Classic, GRS nebo RA-GRS, použijte AzCopy, Průzkumníka služby Azure Storage, Azure Powershellu nebo rozhraní příkazového řádku Azure. Můžete také vytvořit svoje vlastní řešení migrace s jedním z klientských knihoven pro úložiště Azure.

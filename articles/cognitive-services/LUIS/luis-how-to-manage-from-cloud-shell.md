@@ -1,6 +1,6 @@
 ---
-title: Zobrazit použití LEOŠ z prostředí cloudu Azure | Microsoft Docs
-description: Další informace o získání informací o využití v prostředí cloudu Azure pro LEOŠ.
+title: Zobrazit využití LUIS ze služby Azure Cloud Shell | Dokumentace Microsoftu
+description: Další informace o získání informací o využití ve službě Azure Cloud Shell pro LUIS.
 services: cognitive-services
 author: v-geberr
 manager: kaiqb
@@ -9,35 +9,35 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: v-geberr
-ms.openlocfilehash: 2de25645e5377efdd53bcc980695804d34db5ee2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8dfe5b2363fbf9b89947956f212d8d4e1ef5d82a
+ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35343426"
+ms.lasthandoff: 07/06/2018
+ms.locfileid: "37867031"
 ---
-# <a name="manage-luis-service-from-azure-cloud-shell"></a>Spravovat službu LEOŠ z prostředí cloudu Azure
-Portál Azure umožňuje pracovat s prostředky LEOŠ pomocí rutin prostředí PowerShell. 
+# <a name="manage-luis-service-from-azure-cloud-shell"></a>Správa služby LUIS ze služby Azure Cloud Shell
+Na webu Azure portal umožňuje pomocí rutin prostředí PowerShell pro práci s prostředky služby LUIS. 
 
-Tyto rutiny umožňují [vytvořit](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0) odběru LEOŠ get informace o předplatném, včetně [využití](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0), a [odebrat](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0) předplatné. 
+Tyto rutiny umožňují [vytvořit](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0) předplatného služby LUIS, získáte informace o předplatném, včetně [využití](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0), a [odebrat](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0) předplatné. 
 
-## <a name="cloud-shell-storage-account-and-authentication"></a>Účet cloudového prostředí úložiště a ověřování
-Chcete-li použít PowerShell na portálu Azure [cloudové prostředí](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell), musíte mít účet úložiště Azure. Pokud nemáte [účet úložiště](https://docs.microsoft.com/en-us/azure/cloud-shell/persisting-shell-storage#set-up-a-clouddrive-file-share), zobrazí se výzva k jeho vytvoření. Účet úložiště umožňuje uložit skripty prostředí PowerShell v prostředí cloudu.  
+## <a name="cloud-shell-storage-account-and-authentication"></a>Účet úložiště cloud shell a ověřování
+Chcete-li použít prostředí PowerShell na webu Azure Portal [cloud shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell), musíte mít účet úložiště Azure. Pokud nemáte k dispozici [účtu úložiště](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#set-up-a-clouddrive-file-share), budou vyzváni k jeho vytvoření. Účet úložiště umožňuje uložit skripty prostředí PowerShell ve službě cloud shell.  
 
-Budete také muset ověřování v Azure v prostředí cloudu přístup k prostředkům. 
+Budete potřebovat k ověření ve službě cloud shell pro přístup ke všem prostředkům Azure. 
 
 Jakmile máte účet úložiště a ověření, můžete spustit rutiny prostředí PowerShell.
 
 ## <a name="open-cloud-shell"></a>Otevření služby Cloud Shell
-Pokud používáte prostředí cloudu portálu Azure, se vždy na nejnovější verzi prostředí PowerShell. 
+Při použití portálu Azure cloud shell, jste vždy na nejnovější verzi prostředí PowerShell. 
 
-Použití **spustit prostředí cloudu** tlačítko otevřete prostředí pro Cloud nebo otevřete prohlížeč s [ https://shell.azure.com ](https://shell.azure.com). 
+Použití **spustit Cloud Shell** tlačítko otevřete Cloud Shell nebo otevřete prohlížeč s [ https://shell.azure.com ](https://shell.azure.com). 
 
 <a style="cursor:pointer" onclick='javascript:window.open("https://shell.azure.com", "_blank", "toolbar=no,scrollbars=yes,resizable=yes,menubar=no,location=no,status=no")'><image src="https://shell.azure.com/images/launchcloudshell.png" /></a>
 
-## <a name="luis-endpoint-usage-information"></a>Informace o využití LEOŠ koncový bod
+## <a name="luis-endpoint-usage-information"></a>Informace o použití koncového bodu služby LUIS
 
-Rutiny prostředí PowerShell 6.x, `Get-AzureRmCognitiveServicesAccountUsage`, poskytuje informace o kognitivní služby společnosti Microsoft, včetně LEOŠ využití. [Get-AzureRmCognitiveServicesAccountUsage](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0) vyžaduje skupiny prostředků a název prostředku služby. 
+Rutiny Powershellu 6.x `Get-AzureRmCognitiveServicesAccountUsage`, poskytuje informace o Microsoft Cognitive Services LUIS včetně využití. [Get-AzureRmCognitiveServicesAccountUsage](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0) vyžaduje skupinu prostředků a název prostředku služby. 
 
 Syntaxe příkazu je:
 
@@ -45,9 +45,9 @@ Syntaxe příkazu je:
 Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName my-resource-group -Name my-luis-service-name
 ```
 
-V následujícím příkladu je název skupiny prostředků `luis-westus-rg` a je název odběru služby LEOŠ `luis-westus-1`. Oba tyto názvy jsou vybrali při vytvoření služby LEOŠ. 
+V následujícím příkladu je název skupiny prostředků `luis-westus-rg` a název předplatného služba LUIS je `luis-westus-1`. Oba tyto názvy jsou vybrána při vytvoření službu LUIS. 
 
-Rutina vrátí informace o využití 16 přístupů do 10 000 koncový bod používán období 30 dnů s období do června 7:
+Rutina vrátí informace o použití 16 používané 30denního období se období do 7. června 10 000 koncových bodů přístupů:
 
 ```
 CurrentValue  : 16
@@ -59,10 +59,10 @@ QuotaPeriod   : 30.00:00:00
 NextResetTime : 2018-06-07T18:28:52Z
 ```
 
-Příkaz uložte jako soubor prostředí PowerShell *.ps1 v účtu úložiště Azure přidružený prostředí cloudu a spustit kdykoli. 
+Příkaz Uložit jako soubor prostředí PowerShell, *.ps1 v účtu úložiště Azure přidružený k službě cloud shell a spusťte v každém okamžiku. 
 
-![Spusťte skript z úložiště](./media/luis-how-to-manage-from-powershell/run-script-from-storage.png)
+![Spusťte skript ze služby storage](./media/luis-how-to-manage-from-powershell/run-script-from-storage.png)
 
-Jakmile skript je uložený na jednotce cloudu, můžete spustit skript prostředí PowerShell z Azure telefonní aplikace cloudové prostředí. 
+Po uložení skriptu na cloudovou jednotku můžete spustit skript prostředí PowerShell Azure cloud shellu telefonní aplikace. 
 
-![Spusťte skript z úložiště v telefonní aplikace](./media/luis-how-to-manage-from-powershell/phone-app.png)
+![Spusťte skript ze služby storage v aplikaci pro telefon](./media/luis-how-to-manage-from-powershell/phone-app.png)

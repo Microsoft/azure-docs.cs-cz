@@ -1,6 +1,6 @@
 ---
-title: Odkaz na soubor ApplicationInsights.config - Azure | Microsoft Docs
-description: Povolte nebo zakažte moduly shromažďování dat a přidejte čítače výkonu a dalších parametrů.
+title: Odkaz na soubor ApplicationInsights.config – Azure | Dokumentace Microsoftu
+description: Povolte nebo zakažte modulů kolekce dat a přidejte čítače výkonu a další parametry.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,137 +11,137 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/03/2017
+ms.date: 07/05/2018
 ms.reviewer: olegan
 ms.author: mbullwin
-ms.openlocfilehash: 664f31d64ac037acea2fb45a8d8b813da52b6da5
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 9e53fa896f1d958e505d26af430b262be9195605
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294696"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37859679"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
-Application Insights .NET SDK se skládá z počet balíčků NuGet. [Základní balíček](http://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrie Application insights. [Další balíčky](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automaticky sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat telemetrii moduly a inicializátory a nastavit parametry pro některé z nich.
+Application Insights .NET SDK se skládá z počtu balíčků NuGet. [Balíčku core](http://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro odesílání telemetrických dat ze služby Application Insights. [Další balíčky](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují telemetrie *moduly* a *inicializátory* pro automatické sledování telemetrie z vaší aplikace a jeho kontextu. Úpravou konfiguračního souboru, můžete povolit nebo zakázat inicializátory a moduly telemetrie a nastavit parametry pro některé z nich.
 
-Konfigurační soubor je s názvem `ApplicationInsights.config` nebo `ApplicationInsights.xml`, v závislosti na typu aplikace. Je automaticky přidán do projektu když jste [nainstalujte většina verze sady SDK][start]. Je také přidán do webové aplikace pomocí [monitorování stavu na serveru se službou IIS][redfield], nebo když vyberete Application Insights [rozšíření pro webové stránky Azure, nebo virtuální počítač](app-insights-azure-web-apps.md).
+Konfigurační soubor má název `ApplicationInsights.config` nebo `ApplicationInsights.xml`, v závislosti na typu aplikace. Je automaticky přidán do projektu při vám [nainstalovat většině verzí sady SDK][start]. Je taky přidaný do webové aplikace pomocí [monitorování stavu na serveru služby IIS][redfield], nebo když vyberete Application Insights [rozšíření webu Azure nebo na virtuálním počítači](app-insights-azure-web-apps.md).
 
-Není k dispozici soubor ekvivalentní k řízení [SDK na webové stránce][client].
+Není k dispozici odpovídající soubor do ovládacího prvku [SDK na webové stránce][client].
 
-Tento dokument popisuje oddílů, které se zobrazí v konfiguraci souboru, jak budou řídit komponenty sady SDK, a které balíčky NuGet načíst těchto součástí.
+Tento dokument popisuje oddílů, které se zobrazí v konfiguraci souboru, jak jsou součástí sady SDK, řídit a které balíčky NuGet načítání těchto komponent.
 
 > [!NOTE]
-> Pokyny k souboru ApplicationInsights.config a .xml se nevztahují na .NET Core SDK. Změny k aplikaci .NET Core používáme obvykle soubor appSettings.JSON určený. Příklady najdete v [dokumentace snímku ladicí program.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)
+> Pokyny k souboru ApplicationInsights.config nebo .xml se nevztahují na .NET Core SDK. Změny v aplikaci .NET Core obvykle používáme soubor appsettings.json. Příklad najdete v [dokumentaci Snapshot Debugger.](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)
 
-## <a name="telemetry-modules-aspnet"></a>Telemetrie moduly (ASP.NET)
-Každý modul telemetrie shromažďuje konkrétní typ dat a používá základní rozhraní API odeslat data. Moduly jsou nainstalovány jiné balíčky NuGet, které také přidat do souboru .config požadovaných řádků.
+## <a name="telemetry-modules-aspnet"></a>Moduly telemetrická data (ASP.NET)
+Každý modul telemetrie určitém typu dat shromažďuje a používá základního rozhraní API odesílat data. Moduly jsou nainstalovány jiné balíčky NuGet, které také přidat požadované řádky do souboru .config.
 
-V souboru konfigurace pro každý modul není uzlu. Zakázat modul, odstraňte uzlu nebo ho nastavte jako komentář.
+V konfiguračním souboru pro každý modul je uzel. Zakázat modul, odstranit uzel nebo ji komentář.
 
 ### <a name="dependency-tracking"></a>Sledování závislostí
-[Závislost sledování](app-insights-asp-net-dependencies.md) shromažďuje telemetrická data o volání aplikace provede databáze a externí služby a databáze. Chcete-li povolit tento modul pro práci v serveru se službou IIS, je potřeba [nainstalujte monitorování stavu][redfield]. Pro použití ve službě Azure web apps nebo virtuálních počítačů, [vyberte rozšíření Application Insights](app-insights-azure-web-apps.md).
+[Sledování závislostí](app-insights-asp-net-dependencies.md) shromažďuje telemetrii o voláních vaší aplikace díky k databázím a externí služby a databáze. Chcete-li povolit tento modul pro práci na serveru služby IIS, je potřeba [nainstalujte monitorování stavu][redfield]. Jeho použití v Azure web apps nebo virtuální počítače, [vyberte rozšíření Application Insights](app-insights-azure-web-apps.md).
 
-Můžete taky napsat vlastní závislost sledování kódu pomocí [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
+Můžete také napsat vlastní sledování kódu pomocí závislostí [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
 
 * `Microsoft.ApplicationInsights.DependencyCollector.DependencyTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.DependencyCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) balíček NuGet.
 
-### <a name="performance-collector"></a>Kolekce výkonu
-[Shromažďuje čítače výkonu systému](app-insights-performance-counters.md) například CPU, paměť a síť načíst z instalace služby IIS. Můžete zadat čítače, které mají shromažďovat, včetně čítačů výkonu, které jste nastavili sami.
+### <a name="performance-collector"></a>Výkon kolektoru
+[Shromažďuje čítače výkonu systému](app-insights-performance-counters.md) , jako například procesoru, paměti a sítě z instalace služby IIS. Můžete zadat které čítače, které chcete shromažďovat, včetně čítačů výkonu, které jste vytvořili sami.
 
 * `Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule`
 * [Microsoft.ApplicationInsights.PerfCounterCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector) balíček NuGet.
 
-### <a name="application-insights-diagnostics-telemetry"></a>Telemetrii Diagnostics Application Insights
-`DiagnosticsTelemetryModule` Sestavy chyb v samotný kód instrumentace Application Insights. Například pokud kód nelze získat přístup k čítače výkonu nebo `ITelemetryInitializer` vyvolá výjimku. Trasování telemetrie sleduje tento modul se zobrazí v [diagnostické vyhledávání][diagnostic]. Odešle dc.services.vsallin.net diagnostická data.
+### <a name="application-insights-diagnostics-telemetry"></a>Diagnostika Telemetrie Application Insights
+`DiagnosticsTelemetryModule` Hlásí chyby v samotný kód instrumentace Application Insights. Například kód nemůže získat přístup k čítače výkonu, nebo pokud `ITelemetryInitializer` vyvolá výjimku. Telemetrie trasování sledován pomocí funkce tento modul se zobrazí ve [diagnostické vyhledávání][diagnostic]. Odešle dc.services.vsallin.net diagnostická data.
 
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
-* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud máte pouze instalaci tohoto balíčku, není soubor ApplicationInsights.config vytvoří automaticky.
+* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud nainstalujete jenom tento balíček, soubor ApplicationInsights.config se nevytvoří automaticky.
 
-### <a name="developer-mode"></a>Režim vývojáře
-`DeveloperModeWithDebuggerAttachedTelemetryModule` Vynutí Application Insights `TelemetryChannel` k odesílání dat okamžitě, jeden telemetrie položky v době, kdy je připojen ladicí program na proces aplikace. Tím se zkracuje dobu mezi odhalením Pokud vaše aplikace sleduje telemetrie a pokud se zobrazí na portálu služby Application Insights. Způsobuje významné režijní náklady v procesoru a šířku pásma sítě.
+### <a name="developer-mode"></a>Vývojářský režim
+`DeveloperModeWithDebuggerAttachedTelemetryModule` Vynutí Application Insights `TelemetryChannel` k odesílání dat okamžitě, jeden telemetrie položky v době, když je připojen ladicí program k procesu aplikace. To snižuje množství času mezi okamžikem, když vaše aplikace sleduje telemetrická data, a když se objeví na portálu služby Application Insights. To způsobí, že významné režijní náklady v procesoru a šířku pásma sítě.
 
 * `Microsoft.ApplicationInsights.WindowsServer.DeveloperModeWithDebuggerAttachedTelemetryModule`
-* [Application Insights systému Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) balíček NuGet
+* [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) balíček NuGet
 
 ### <a name="web-request-tracking"></a>Sledování webové žádosti
-Sestavy [čas a výsledek kód odpovědi](app-insights-asp-net.md) požadavků HTTP.
+Sestavy [čas a výsledek kód odpovědi](app-insights-asp-net.md) požadavků protokolu HTTP.
 
 * `Microsoft.ApplicationInsights.Web.RequestTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) balíček NuGet
 
 ### <a name="exception-tracking"></a>Sledování výjimek
-`ExceptionTrackingTelemetryModule` sleduje neošetřených výjimek ve vaší webové aplikaci. V tématu [chyby a výjimky][exceptions].
+`ExceptionTrackingTelemetryModule` sleduje neošetřených výjimek ve vaší webové aplikace. Zobrazit [chyby a výjimky][exceptions].
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
 * [Microsoft.ApplicationInsights.Web](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) balíček NuGet
-* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` -sleduje [nepozorovaná úloh výjimky](http://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx).
-* `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` -sleduje neošetřené výjimky pro role pracovního procesu, služby systému windows a konzolové aplikace.
-* [Application Insights systému Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) balíček NuGet.
+* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule` -sleduje [nepozorované výjimky úkolu](http://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx).
+* `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule` -sleduje neošetřené výjimky pro pracovní role, služby systému windows a konzolových aplikací.
+* [Application Insights Windows Server](http://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) balíček NuGet.
 
-### <a name="eventsource-tracking"></a>EventSource sledování
-`EventSourceTelemetryModule` Umožňuje nakonfigurovat událostí EventSource k odeslání do Application Insights jako trasování. Informace o sledování událostí EventSource najdete v tématu [pomocí událostí EventSource](app-insights-asp-net-trace-logs.md#using-eventsource-events).
+### <a name="eventsource-tracking"></a>Sledování EventSource
+`EventSourceTelemetryModule` Umožňuje nakonfigurovat událostí EventSource k odeslání do Application Insights jako trasování. Informace o sledování událostí EventSource, naleznete v tématu [pomocí událostí EventSource](app-insights-asp-net-trace-logs.md#using-eventsource-events).
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
 * [Microsoft.ApplicationInsights.EventSourceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
 
 ### <a name="etw-event-tracking"></a>Sledování událostí trasování událostí pro Windows
-`EtwCollectorTelemetryModule` Umožňuje nakonfigurovat události od zprostředkovatelů trasování událostí pro Windows k odeslání do Application Insights jako trasování. Informace o sledování události trasování událostí pro Windows najdete v tématu [události trasování událostí pro Windows pomocí](app-insights-asp-net-trace-logs.md#using-etw-events).
+`EtwCollectorTelemetryModule` Umožňuje nakonfigurovat událostí ze zprostředkovatele trasování událostí pro Windows k odeslání do Application Insights jako trasování. Informace o sledování událostí trasování událostí pro Windows najdete v tématu [události trasování událostí pro Windows pomocí](app-insights-asp-net-trace-logs.md#using-etw-events).
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
 * [Microsoft.ApplicationInsights.EtwCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
-Balíček Microsoft.ApplicationInsights poskytuje [základní rozhraní API](https://msdn.microsoft.com/library/mt420197.aspx) sady SDK. Další moduly telemetrie použít, a můžete také [použijte jej k definování vlastní telemetrii](app-insights-api-custom-events-metrics.md).
+Balíček Microsoft.ApplicationInsights poskytuje [základní rozhraní API](https://msdn.microsoft.com/library/mt420197.aspx) sady SDK. Další telemetrická data moduly se řídí tím, a můžete je také [použijte k definování vlastní telemetrii](app-insights-api-custom-events-metrics.md).
 
-* Žádný záznam v souboru ApplicationInsights.config.
-* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud instalujete právě tento NuGet, vygeneruje se žádný soubor .config.
+* Žádné položky v souboru ApplicationInsights.config.
+* [Microsoft.ApplicationInsights](http://www.nuget.org/packages/Microsoft.ApplicationInsights) balíček NuGet. Pokud právě instalaci tohoto balíčku NuGet, vygeneruje se žádný soubor .config.
 
 ## <a name="telemetry-channel"></a>Kanál telemetrie
-Kanál telemetrie spravuje ukládání do vyrovnávací paměti a přenos telemetrie do služby Application Insights.
+Kanál telemetrie slouží ke správě ukládání do vyrovnávací paměti a přenos telemetrických dat do služby Application Insights.
 
-* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` je výchozím kanálu pro služby. Data ukládány v paměti.
-* `Microsoft.ApplicationInsights.PersistenceChannel` představuje alternativu pro konzolové aplikace. Žádná unflushed data ho můžete uložit do trvalého úložiště, když vaše aplikace zavře a odešle ho při spuštění aplikace znovu.
+* `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` je výchozím kanálu pro služby. Ukládány data v paměti.
+* `Microsoft.ApplicationInsights.PersistenceChannel` představuje alternativu pro konzolové aplikace. Když vaše aplikace se zavře a odešle ho při spuštění aplikace znovu ho můžete uložit všechna unflushed data do trvalého úložiště.
 
-## <a name="telemetry-initializers-aspnet"></a>Inicializátory telemetrie (ASP.NET)
-Inicializátory telemetrie nastavit kontext vlastnosti, které se odesílají společně s každou položkou telemetrie.
+## <a name="telemetry-initializers-aspnet"></a>Inicializátory telemetrická data (ASP.NET)
+Inicializátory telemetrie nastavit vlastnosti kontextu, které jsou odeslány společně s každou položkou telemetrie.
 
-Můžete [zápisu vlastní inicializátory](app-insights-api-filtering-sampling.md#add-properties) pro nastavení vlastností kontextu.
+Je možné [napsat vlastní inicializátory](app-insights-api-filtering-sampling.md#add-properties) můžete nastavit vlastnosti kontextu.
 
-Standardní inicializátory jsou nastavené buď webové nebo Windows Server NuGet balíčků:
+Standardní inicializátory vše je nastaveno buď pomocí webové nebo WindowsServer NuGet balíčků:
 
 * `AccountIdTelemetryInitializer` Nastaví vlastnost ID účtu.
-* `AuthenticatedUserIdTelemetryInitializer` Nastaví vlastnost AuthenticatedUserId jako sada SDK jazyka JavaScript.
-* `AzureRoleEnvironmentTelemetryInitializer` aktualizace `RoleName` a `RoleInstance` vlastnosti `Device` kontext pro všechny položky telemetrie s informacemi, které jsou extrahovány z Azure běhové prostředí.
-* `BuildInfoConfigComponentVersionTelemetryInitializer` aktualizace `Version` vlastnost `Component` kontext pro všechny položky telemetrie s hodnotou z extrahovat `BuildInfo.config` souboru vytvořeného pomocí MS Build.
-* `ClientIpHeaderTelemetryInitializer` aktualizace `Ip` vlastnost `Location` na základě kontextu všechny položky telemetrii `X-Forwarded-For` hlavičky protokolu HTTP žádosti.
+* `AuthenticatedUserIdTelemetryInitializer` Nastaví vlastnost AuthenticatedUserId jako sada JavaScript SDK.
+* `AzureRoleEnvironmentTelemetryInitializer` aktualizace `RoleName` a `RoleInstance` vlastnosti `Device` kontext pro všechny položky telemetrie s informacemi o extrahují z prostředí modul runtime služby Azure.
+* `BuildInfoConfigComponentVersionTelemetryInitializer` aktualizace `Version` vlastnost `Component` kontext pro všechny položky telemetrie s hodnotou extrahují z `BuildInfo.config` vytvořen soubor pomocí MS Build.
+* `ClientIpHeaderTelemetryInitializer` aktualizace `Ip` vlastnost `Location` na základě kontextu všech položkách telemetrie `X-Forwarded-For` hlavičky protokolu HTTP žádosti.
 * `DeviceTelemetryInitializer` aktualizuje následující vlastnosti `Device` kontext pro všechny položky telemetrie.
-  * `Type` je nastavena na "Počítač"
-  * `Id` je nastavena na název domény počítače, kde je spuštěna webová aplikace.
-  * `OemName` je nastaven na hodnotu z extrahovat `Win32_ComputerSystem.Manufacturer` pole pomocí služby WMI.
-  * `Model` je nastaven na hodnotu z extrahovat `Win32_ComputerSystem.Model` pole pomocí služby WMI.
-  * `NetworkType` je nastaven na hodnotu z extrahovat `NetworkInterface`.
+  * `Type` je nastavena na "PC"
+  * `Id` je nastavena na název domény počítače, ve kterém je spuštěna webová aplikace.
+  * `OemName` je nastavena na hodnotu extrahují z `Win32_ComputerSystem.Manufacturer` pole pomocí rozhraní WMI.
+  * `Model` je nastavena na hodnotu extrahují z `Win32_ComputerSystem.Model` pole pomocí rozhraní WMI.
+  * `NetworkType` je nastavena na hodnotu extrahují z `NetworkInterface`.
   * `Language` je nastavena na název `CurrentCulture`.
-* `DomainNameRoleInstanceTelemetryInitializer` aktualizace `RoleInstance` vlastnost `Device` kontext pro všechny položky telemetrie s názvem domény počítače, kde je spuštěna webová aplikace.
-* `OperationNameTelemetryInitializer` aktualizace `Name` vlastnost `RequestTelemetry` a `Name` vlastnost `Operation` kontextu všechny položky telemetrie podle metoda HTTP, jakož i názvy ASP.NET MVC jsou řadič MVC a akce vyvolaná při zpracování požadavku.
-* `OperationIdTelemetryInitializer` nebo `OperationCorrelationTelemetryInitializer` aktualizace `Operation.Id` vlastností kontextu všechny položky telemetrie sledovat při zpracování žádosti o se automaticky generované `RequestTelemetry.Id`.
-* `SessionTelemetryInitializer` aktualizace `Id` vlastnost `Session` kontext pro všechny položky telemetrie s hodnotou z extrahovat `ai_session` generované kód ApplicationInsights JavaScript instrumentace spouštění v prohlížeči uživatele soubor cookie.
-* `SyntheticTelemetryInitializer` nebo `SyntheticUserAgentTelemetryInitializer` aktualizace `User`, `Session` a `Operation` kontexty vlastnosti všech položek telemetrie sledovat při zpracování požadavku z syntetické zdroje, například dostupnosti testů nebo vyhledávání modul robota. Ve výchozím nastavení [Průzkumníku metrik](app-insights-metrics-explorer.md) nezobrazí syntetické telemetrie.
+* `DomainNameRoleInstanceTelemetryInitializer` aktualizace `RoleInstance` vlastnost `Device` kontext pro všechny položky telemetrie s názvem domény počítače, ve kterém je spuštěna webová aplikace.
+* `OperationNameTelemetryInitializer` aktualizace `Name` vlastnost `RequestTelemetry` a `Name` vlastnost `Operation` kontextu všech položkách telemetrie podle metody HTTP, jakož i názvy kontroler ASP.NET MVC a akce vyvolat a zpracovat požadavek.
+* `OperationIdTelemetryInitializer` nebo `OperationCorrelationTelemetryInitializer` aktualizace `Operation.Id` kontextu vlastnosti všech položkách telemetrie sledovat při zpracovávání žádosti pomocí automaticky generovaného `RequestTelemetry.Id`.
+* `SessionTelemetryInitializer` aktualizace `Id` vlastnost `Session` kontext pro všechny položky telemetrie s hodnotou extrahují z `ai_session` vygenerovaný kód instrumentace ApplicationInsights JavaScript spuštěný v prohlížeči uživatele soubor cookie.
+* `SyntheticTelemetryInitializer` nebo `SyntheticUserAgentTelemetryInitializer` aktualizace `User`, `Session`, a `Operation` kontexty vlastnosti všech položkách telemetrie sledovat při zpracovávání konkrétní žádosti ze syntetického zdroje, jako například testování dostupnosti nebo hledání modulu bot. Ve výchozím nastavení [Průzkumníka metrik](app-insights-metrics-explorer.md) nezobrazuje syntetické telemetrie.
 
     `<Filters>` Nastavte výchozí určující vlastnosti žádosti.
-* `UserTelemetryInitializer` aktualizace `Id` a `AcquisitionDate` vlastnosti `User` kontext pro všechny položky telemetrie s hodnotami z extrahovat `ai_user` souboru cookie generované kód instrumentace Application Insights JavaScript, který je spuštěný v uživatele prohlížeč.
+* `UserTelemetryInitializer` aktualizace `Id` a `AcquisitionDate` vlastnosti `User` kontext pro všechny položky telemetrie se extrahují z hodnoty `ai_user` vygenerovaný kód instrumentace Application Insights JavaScript spuštěný v uživatele soubor cookie prohlížeč.
 * `WebTestTelemetryInitializer` Nastaví id uživatele, id relace a vlastnosti syntetické zdroje pro požadavky HTTP, která pocházejí z [testy dostupnosti](app-insights-monitor-web-app-availability.md).
   `<Filters>` Nastavte výchozí určující vlastnosti žádosti.
 
-Pro aplikace .NET běžící v Service Fabric, můžete zahrnout `Microsoft.ApplicationInsights.ServiceFabric` balíček NuGet. Tento balíček obsahuje `FabricTelemetryInitializer`, přidává vlastnosti Service Fabric položkám telemetrie. Další informace najdete v tématu [GitHub stránce](https://go.microsoft.com/fwlink/?linkid=848457) o vlastnostech přidal tento balíček NuGet.
+Pro aplikace .NET spuštěné v Service Fabric, můžete zahrnout `Microsoft.ApplicationInsights.ServiceFabric` balíček NuGet. Tento balíček obsahuje `FabricTelemetryInitializer`, který přidá vlastnosti Service Fabric do položky telemetrie. Další informace najdete v tématu [stránku Githubu](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md) o vlastnostech přidal tento balíček NuGet.
 
-## <a name="telemetry-processors-aspnet"></a>Telemetrie procesorů (ASP.NET)
-Telemetrie procesory můžete filtrovat a upravit každou položku telemetrie těsně před odesláním ze sady SDK k portálu.
+## <a name="telemetry-processors-aspnet"></a>Telemetrie procesory (ASP.NET)
+Procesory telemetrická data můžete filtrovat a upravit každou položku telemetrie těsně před odesláním ze sady SDK k portálu.
 
-Můžete [psát vlastní telemetrii procesory](app-insights-api-filtering-sampling.md#filtering).
+Je možné [psát vlastní telemetrii procesory](app-insights-api-filtering-sampling.md#filtering).
 
-#### <a name="adaptive-sampling-telemetry-processor-from-200-beta3"></a>Procesor telemetrie adaptivního vzorkování (od 2.0.0-beta3)
-Tato možnost je ve výchozím nastavení zapnutá. Pokud vaše aplikace odešle velké množství telemetrická data, některé jeho tohoto procesoru odebere.
+#### <a name="adaptive-sampling-telemetry-processor-from-200-beta3"></a>Adaptivní vzorkování procesoru telemetrická data (z 2.0.0-beta3)
+Tato možnost je ve výchozím nastavení zapnutá. Pokud vaše aplikace odešle velké množství telemetrie, odstraní tento procesor některé.
 
 ```xml
 
@@ -153,12 +153,12 @@ Tato možnost je ve výchozím nastavení zapnutá. Pokud vaše aplikace odešle
 
 ```
 
-Parametr poskytuje cíl, který algoritmus se pokusí dosáhnout. Každá instance sady SDK funguje nezávisle, takže pokud je server clusteru s podporou několik počítačů, skutečný objem telemetrie se násobí odpovídajícím způsobem.
+Parametr obsahuje cíl, který algoritmus se snaží dosáhnout. Každou instanci sady SDK funguje nezávisle na sobě, takže pokud je server clusteru několik počítačů, skutečný objem telemetrických dat bude vynásobené odpovídajícím způsobem.
 
 [Další informace o vzorkování](app-insights-sampling.md).
 
-#### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>Procesor-míry vzorkování telemetrie (od 2.0.0-beta1)
-Je také standardní [vzorkování procesoru telemetrie](app-insights-api-filtering-sampling.md) (z 2.0.1):
+#### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>Procesor-frekvence vzorkování telemetrie (od 2.0.0-beta1)
+K dispozici je také standardní [vzorkování procesoru telemetrie](app-insights-api-filtering-sampling.md) (z 2.0.1):
 
 ```XML
 
@@ -176,10 +176,10 @@ Je také standardní [vzorkování procesoru telemetrie](app-insights-api-filter
 
 
 ## <a name="channel-parameters-java"></a>Parametry kanálu (Java)
-Tyto parametry vliv na způsob sady Java SDK měli uložit a vyprázdnit telemetrická data, která shromažďuje.
+Tyto parametry mají vliv, jak ukládat a vyprázdnění, který shromažďuje telemetrická data sady Java SDK.
 
 #### <a name="maxtelemetrybuffercapacity"></a>MaxTelemetryBufferCapacity
-Počet položek telemetrie, které mohou být uloženy v úložišti sady SDK v paměti. Při dosažení tohoto počtu vyprázdní vyrovnávací paměť telemetrie – to znamená, položky telemetrie posílají se na serveru Application Insights.
+Počet položek telemetrie, které mohou být uloženy v úložišti sady SDK v paměti. Při dosažení tohoto počtu vyprázdní vyrovnávací paměť telemetrická data – to znamená, položky telemetrie se odesílají do Application Insights serveru.
 
 * Min: 1
 * Max: 1000
@@ -197,7 +197,7 @@ Počet položek telemetrie, které mohou být uloženy v úložišti sady SDK v 
 ```
 
 #### <a name="flushintervalinseconds"></a>FlushIntervalInSeconds
-Určuje, jak často mají být data, která je uložená v úložišti v paměti vyprázdněny (odeslané do služby Application Insights).
+Určuje, jak často by měla být data, která jsou uložena v úložišti v paměti vyprázdní (odeslané do služby Application Insights).
 
 * Min: 1
 * Max: 300
@@ -215,7 +215,7 @@ Určuje, jak často mají být data, která je uložená v úložišti v paměti
 ```
 
 #### <a name="maxtransmissionstoragecapacityinmb"></a>MaxTransmissionStorageCapacityInMB
-Určuje maximální velikost v MB, která je vymezena pro trvalé úložiště na místním disku. Toto úložiště se používá pro zachování telemetrie položky, které se nepodařilo přenést do koncového bodu služby Application Insights. Pokud velikost úložiště byly splněny, nové položky telemetrie se zahodí.
+Určuje maximální velikost v Megabajtech, která je vymezena do trvalého úložiště na místním disku. Toto úložiště se používá pro uchování položky telemetrie, které se předávají do koncového bodu Application Insights. Pokud byly splněny velikost úložiště, nové položky telemetrie se zahodí.
 
 * Min: 1
 * Max: 100
@@ -235,11 +235,11 @@ Určuje maximální velikost v MB, která je vymezena pro trvalé úložiště n
 
 
 ## <a name="instrumentationkey"></a>InstrumentationKey
-Určuje prostředek Application Insights, ve kterém se zobrazí data. Obvykle vytvoříte prostředek samostatné samostatné klíčem pro každý z vašich aplikací.
+Určuje, ve kterém se zobrazí data prostředku Application Insights. Obvykle vytvoříte samostatný prostředek s samostatný klíč pro každý z vašich aplikací.
 
-Pokud chcete nastavit klíč dynamicky – například pokud chcete odeslat výsledky z vaší aplikace do různých prostředků – můžete vynechat klíč z konfiguračního souboru a nastavení v kódu.
+Pokud chcete nastavit klíč dynamicky – například pokud chcete odeslat výsledky z vaší aplikace pro různé prostředky – můžete vynechat klíč z konfiguračního souboru a nastavit v kódu.
 
-Klíč pro všechny instance TelemetryClient, včetně standardní telemetrie moduly nastavit klíč v TelemetryConfiguration.Active. V metodě inicializace, jako jsou například souboru global.aspx.cs v službě ASP.NET, postupujte takto:
+Chcete-li nastavit klíč pro všemi instancemi TelemetryClient, včetně modulů standardní telemetrická data, nastavte klíč v TelemetryConfiguration.Active. V metodě inicializace, jako je například souboru global.aspx.cs v rámci služby technologie ASP.NET, postupujte takto:
 
 ```csharp
 
@@ -252,7 +252,7 @@ Klíč pro všechny instance TelemetryClient, včetně standardní telemetrie mo
       //...
 ```
 
-Pokud chcete odeslat sadu událostí na jiný prostředek, můžete nastavit klíč pro konkrétní TelemetryClient:
+Pokud chcete odeslat sadu událostí, které k jinému prostředku, můžete nastavit klíč pro konkrétní TelemetryClient:
 
 ```csharp
 
@@ -263,17 +263,17 @@ Pokud chcete odeslat sadu událostí na jiný prostředek, můžete nastavit kl�
 
 ```
 
-Chcete-li získat nový klíč, [vytvoření nového prostředku na portálu služby Application Insights][new].
+Chcete-li získat nový klíč, [vytvořit nový prostředek na portálu Application Insights][new].
 
 
 
-## <a name="applicationid-provider"></a>ApplicationId zprostředkovatele
+## <a name="applicationid-provider"></a>ApplicationId poskytovatele
 
 _K dispozici od v2.6.0_
 
-Účelem tohoto zprostředkovatele je k vyhledání Id aplikací podle kód instrumentace. Id aplikace je součástí RequestTelemetry a DependencyTelemetry a používá k určení korelace na portálu.
+Účelem tohoto zprostředkovatele je k vyhledání ID aplikací založené na Instrumentační klíč. ID aplikace je součástí RequestTelemetry a DependencyTelemetry a použít k určení korelace na portálu.
 
-Toto je k dispozici nastavením `TelemetryConfiguration.ApplicationIdProvider` v kódu nebo v konfiguraci.
+To je k dispozici nastavením `TelemetryConfiguration.ApplicationIdProvider` v kódu nebo v konfiguraci.
 
 ### <a name="interface-iapplicationidprovider"></a>Rozhraní: IApplicationIdProvider
 
@@ -285,17 +285,17 @@ public interface IApplicationIdProvider
 ```
 
 
-Poskytujeme dva implementace v [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) sdk: `ApplicationInsightsApplicationIdProvider` a `DictionaryApplicationIdProvider`.
+Nabízíme dvě implementace v [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) sdk: `ApplicationInsightsApplicationIdProvider` a `DictionaryApplicationIdProvider`.
 
 ### <a name="applicationinsightsapplicationidprovider"></a>ApplicationInsightsApplicationIdProvider
 
-Toto je obálku kolem našem rozhraní API profilu. Bude omezení, požadavky a výsledky mezipaměti.
+Toto je obálka kolem rozhraní API profilu. To se omezení požadavků a výsledků do mezipaměti.
 
-Tohoto zprostředkovatele se přidá do konfiguračního souboru při instalaci buď [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) nebo [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)
+Tento zprostředkovatel je přidána do konfiguračního souboru při instalaci buď [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) nebo [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)
 
-Tato třída obsahuje volitelná vlastnost `ProfileQueryEndpoint`.
-Ve výchozím nastavení to je nastavena na `https://dc.services.visualstudio.com/api/profiles/{0}/appId`.
-Pokud potřebujete nakonfigurovat proxy server pro tuto konfiguraci, doporučujeme, abyste proxy základní adresu a včetně "/api/profily/{0}/appId". Všimněte si, že se{0}' je nahrazena klíč instrumentace za běhu na základě požadavku.
+Tato třída obsahuje volitelné vlastnosti `ProfileQueryEndpoint`.
+Ve výchozím nastavení je nastavené na `https://dc.services.visualstudio.com/api/profiles/{0}/appId`.
+Pokud je potřeba nakonfigurovat proxy server pro tuto konfiguraci, doporučujeme provést činnost základní adresu a včetně "/api/profily/{0}/appId". Všimněte si, že "{0}" bude nahrazena klíč instrumentace za běhu na požadavek.
 
 #### <a name="example-configuration-via-applicationinsightsconfig"></a>Příklad konfigurace pomocí souboru ApplicationInsights.config:
 ```xml
@@ -315,11 +315,11 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new ApplicationInsightsApp
 
 ### <a name="dictionaryapplicationidprovider"></a>DictionaryApplicationIdProvider
 
-Toto je statický poskytovatele, který bude záviset na nakonfigurovaných klíč instrumentace nebo páry Id aplikace.
+Toto je statické poskytovatele, který bude záviset na nakonfigurovaných Instrumentační klíč / ID aplikace dvojice.
 
-Tato třída má vlastnost `Defined` tedy slovník < řetězec, řetězec > klíč instrumentace na páry Id aplikace.
+Tato třída obsahuje vlastnosti `Defined`, což je Dictionary < string, string > Instrumentačního klíče dvojice ID aplikace.
 
-Tato třída obsahuje volitelná vlastnost `Next` který můžete použít ke konfiguraci jiného zprostředkovatele použít, pokud se požaduje kód instrumentace, který neexistuje v konfiguraci.
+Tato třída obsahuje volitelné vlastnosti `Next` které lze použít ke konfiguraci jiného zprostředkovatele pro použití při vyžádání Instrumentační klíč, který neexistuje v konfiguraci.
 
 #### <a name="example-configuration-via-applicationinsightsconfig"></a>Příklad konfigurace pomocí souboru ApplicationInsights.config:
 ```xml

@@ -1,6 +1,6 @@
 ---
-title: Vytváření oddílů rozhraní Graph API | Microsoft Docs
-description: Zjistěte, jak můžete graf oddílů v Azure Cosmos DB.
+title: Dělení rozhraní Graph API | Dokumentace Microsoftu
+description: Zjistěte, jak můžete graf oddílů ve službě Azure Cosmos DB.
 services: cosmos-db
 author: luisbosquez
 manager: kfile
@@ -10,67 +10,67 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.author: lbosq
-ms.openlocfilehash: e2658c01ea3a31efdcf2fef3bb9b56df536de295
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 202c575a917cfb24436d86881e5368b61f216d42
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795648"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37861635"
 ---
-# <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Pomocí oddílů grafu v Azure Cosmos DB
+# <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>Použití dělené grafu ve službě Azure Cosmos DB
 
-Jedním z klíčových funkcích služby rozhraní Graph API v Azure Cosmos DB je schopnost zpracovávat rozsáhlé grafy prostřednictvím vodorovné škálovatelnost. Tento proces je dosaženo pomocí [dělení možnosti v Azure Cosmos DB](partition-data.md#how-does-partitioning-work), ujistěte se, které využívají kolekcí, které jsou také označovány jako kontejnery, které je možné škálovat nezávisle z hlediska úložiště a propustnosti. Azure Cosmos DB podporuje následující typy kontejnery mezi všechna rozhraní API:
+Jednou z klíčových funkcí rozhraní Graph API ve službě Azure Cosmos DB je schopnost zpracování rozsáhlých grafů prostřednictvím vodorovné škálovatelnost. Tento proces můžete dosáhnout [rozdělení funkcí ve službě Azure Cosmos DB](partition-data.md#how-does-partitioning-work), ujistěte se, která pomocí kontejnerů, které je možné nezávisle škálovat z hlediska úložiště a propustnosti. Azure Cosmos DB podporuje následující typy kontejnerů na všechna rozhraní API:
 
-- **Pevné kolekce**: těchto kolekcí můžete uložit graf databáze velikost maximálně 10 000 jednotek žádosti za sekundu přidělených až 10 GB. Chcete-li vytvořit kolekci pevné není nutné zadat vlastnost klíče oddílu v datech.
+- **Pevný kontejner**: těchto kontejnerů můžete uložit graf databáze až 10 GB velikosti s délkou maximálně 10 000 jednotek žádostí za sekundu přiřazen. Vytvořte kontejner pevnou není nutné zadat vlastnost klíče oddílu v datech.
 
-- **Neomezená kolekce**: těchto kolekcí může automaticky škálovat pro uložení grafu překračuje limit 10 GB prostřednictvím vodorovné rozdělení do oddílů. Každý oddíl uloží 10 GB a data budou automaticky rovnoměrně rozdělen na základě **klíč zadaný oddíl**, která bude požadovaný parametr při použití neomezená kolekce. Tento typ kontejneru může ukládat data prakticky neomezené velikosti a můžete povolit až 100 000 jednotek žádosti za sekundu, nebo více [kontaktováním podpory](https://aka.ms/cosmosdbfeedback?subject=Cosmos%20DB%20More%20Throughput%20Request).
+- **Neomezený kontejner**: těchto kontejnerů může automaticky škálovat na uložení grafu nad limit 10 GB až horizontální dělení. Každý oddíl uloží 10 GB a data budou automaticky vyváženy podle **klíč zadaný oddíl**, které budou požadovaný parametr při používání neomezeného kontejneru. Tento typ kontejneru můžete uložit data prakticky neomezené velikosti a můžete povolit až 100 000 jednotek žádostí za sekundu, nebo více [kontaktovat podporu](https://aka.ms/cosmosdbfeedback?subject=Cosmos%20DB%20More%20Throughput%20Request).
 
-V tomto dokumentu jsou specifikace na tom, jak jsou databáze grafu do několika oddílů najdete společně s jeho důsledků pro obě vrcholy (nebo uzlech) a okraje.
+V tomto dokumentu specifika na jak dělí databáze grafů najdete společně s jeho důsledky pro vrcholy (i uzly) a hrany.
 
-## <a name="requirements-for-partitioned-graph"></a>Požadavky pro oddílů grafu
+## <a name="requirements-for-partitioned-graph"></a>Požadavky pro dělené grafu
 
-Zde jsou informace, které je třeba rozumět při vytváření oddílů grafu kontejneru:
-- **Nastavení dělení bude nutné** Pokud kolekce musí být větší než 10 GB, velikost, nebo pokud přidělení více než 10 000 jednotek žádosti za sekundu (RU/s) se bude vyžadovat.
-- **Vrcholy i okraje jsou ukládány jako dokumenty JSON** v back-end kontejner Azure Cosmos DB Graph API.
-- **Vrcholy vyžadují klíč oddílu**. Tento klíč určí v oddíl, který se uloží vrchol prostřednictvím algoritmu hash. Název tohoto klíče oddílu je řetězec jednoslovného výrazu bez mezery nebo speciální znaky a je definován při vytváření nové kolekce formátu `/partitioning-key-name` na portálu.
-- **Okraje se uloží s jejich zdroje vrchol**. Jinými slovy u jednotlivých vrchol svůj klíč oddílu bude definovat, kde bude uložen spolu s jeho odchozí okraje. Tím se vyhnout dotazy mezi oddílu při použití `out()` kardinalitu v dotazech grafu.
-- **Dotazy grafu je nutné zadat klíč oddílu**. Aby naplno využít vodorovné oddíly v Azure Cosmos DB, musí se zadat klíč oddílu, pokud je vybraný jeden vrchol, kdykoli to bude možné. Tady jsou dotazy pro výběr jednoho nebo více vrcholy v oddílů grafu:
+Toto jsou podrobnosti, které je třeba porozumět při vytváření oddílů grafu kontejneru:
+- **Nastavení dělení bude nutné** Pokud kontejner má mít více než 10 GB a/nebo pokud přidělení více než 10 000 jednotek žádostí za sekundu (RU/s) se bude vyžadovat.
+- **Vrcholů a hran jsou ukládány jako dokumenty JSON** v back endu kontejneru Azure Cosmos DB Graph API.
+- **Klíč oddílu vyžadovat vrcholy**. Tento klíč určí, do kterého oddílu se uloží vrchol pomocí algoritmu hash. Název tohoto klíče oddílu je řetězec jednoslovnou bez mezery ani speciální znaky a je definován při vytváření nového kontejneru pomocí formátu `/partitioning-key-name` na portálu.
+- **Okraje se uloží s jejich zdrojový vrchol**. Jinými slovy pro každý vrchol svůj klíč oddílu budou definovat kam se má uložit spolu s jeho odchozí okraje. To se provádí při použití, aby dotazy napříč oddíly `out()` kardinalitu v dotazy na grafy.
+- **Dotazy na grafy musí určovat klíč oddílu**. Pokud chcete využívat všech výhod horizontální dělení ve službě Azure Cosmos DB, musí být zadaný klíč oddílu, když je vybraný jeden vrchol, kdykoli to bude možné. Tady jsou dotazy pro výběr jednoho nebo více vrcholy v dělené grafu:
 
-    - Výběr vrchol podle ID, potom **pomocí `.has()` krok k určení vlastnost klíče oddílu**: 
+    - Výběr vrcholů podle ID, potom **pomocí `.has()` krok pro určení této vlastnosti klíče oddílu**: 
     
         ```
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
     
-    - Výběr vrchol podle **zadání řazené kolekce členů včetně hodnotu klíče oddílu a ID**: 
+    - Výběr vrcholů podle **zadání řazené kolekce členů, včetně hodnoty klíče oddílu a ID**: 
     
         ```
         g.V(['partitionKey_value', 'vertex_id'])
         ```
         
-    - Určení **pole řazené kolekce členů hodnoty klíče oddílu a ID**:
+    - Určení **pole řazených kolekcí členů hodnoty klíče oddílu a identifikátorů**:
     
         ```
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
         
-    - Vyberte sadu vrcholy a **zadat seznam hodnot klíče oddílu**: 
+    - Vyberte sadu vrcholů a **určení seznamu hodnot klíče oddílu**: 
     
         ```
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
         ```
 
-## <a name="best-practices-when-using-a-partitioned-graph"></a>Osvědčené postupy při použití oddílů grafu.
+## <a name="best-practices-when-using-a-partitioned-graph"></a>Osvědčené postupy při používání oddílů grafu
 
-Toto jsou pokyny, které musí být sledována zajistit nejúčinnější výkon a škálovatelnost, při použití oddílů grafy v neomezená kolekce:
-- **Při dotazování vrchol vždycky zadat hodnotu klíče oddílu**. Získání vrchol z známé oddílu je nejúčinnější způsob, jak z hlediska výkonu.
-- **Při dotazování okraje vždy, když je možné použít odchozí směr**. Jak je uvedeno nahoře, jsou uloženy okraje s jejich vrcholy zdroje v odchozích směru. To znamená, že když data a dotazy jsou navrženy s tento vzor pamatovat, minimalizuje se pravděpodobnost opětné řazení do cross oddílu dotazy.
-- **Vyberte klíč oddílu, který rovnoměrně rozdělit data napříč oddíly**. Toto rozhodnutí výraznou závisí na datový model řešení. Další informace o vytváření klíčem odpovídající oddíl v [Partitining a škálování v Azure Cosmos DB](partition-data.md).
-- **Optimalizace dotazů k získání dat v rámci hranice oddílu, pokud je to možné**. Strategie dělení optimální by zarovnán k dotazování modelům. Dotazy, které získávají data z jednoho oddílu poskytují nejlepší možný výkon.
+Toto jsou pokyny, které byste měli dodržet, aby nejúčinnější výkon a škálovatelnost při používání oddílů grafů v neomezené kontejnery:
+- **Vždycky zadat hodnotu klíče oddílu při dotazování na vrcholu**. Získávání vrcholu ze známých oddílu je nejúčinnější způsob, jak z hlediska výkonu.
+- **Při dotazování hrany, kdykoli to bude možné použít odchozí směr**. Jak je uvedeno výše, okraje ukládají s jejich zdroj vrcholy v odchozím směru. To znamená, že při dat a dotazy jsou navržené v tomto modelu v paměti, minimalizuje se pravděpodobnost nutnosti uchýlit se k dotazy napříč oddíly.
+- **Zvolit klíč oddílu, který bude rovnoměrně distribuovat data napříč oddíly**. Toto rozhodnutí silně závisí na datovém modelu řešení. Další informace o vytváření klíčem odpovídající typ oddílu v [dělení a škálování ve službě Azure Cosmos DB](partition-data.md).
+- **Optimalizace dotazů k získání dat v rámci hranic oddílů, pokud je to možné**. Optimální strategie dělení by mělo být zarovnáno na dotazování vzory. Dotazy, které získávají data z jednoho oddílu poskytují nejlepší možný výkon.
 
 ## <a name="next-steps"></a>Další postup
-V tomto článku se poskytovaly přehled o konceptech a osvědčené postupy pro vytváření oddílů s Cosmos Azure DB Graph API. 
+V tomto článku se poskytla Přehled konceptů a osvědčené postupy pro dělení pomocí Azure Cosmos DB Graph API. 
 
-* Další informace o [oddílu a škálování v Azure Cosmos DB](partition-data.md).
-* Další informace o [Gremlin podpora v rozhraní Graph API](gremlin-support.md).
-* Další informace o [Úvod do rozhraní Graph API](graph-introduction.md).
+* Další informace o [dělení a škálování ve službě Azure Cosmos DB](partition-data.md).
+* Další informace o [podpora Gremlin v rozhraní Graph API](gremlin-support.md).
+* Další informace o [Úvod k rozhraní Graph API](graph-introduction.md).

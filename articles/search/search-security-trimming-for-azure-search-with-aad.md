@@ -1,6 +1,6 @@
 ---
-title: Filtry zabezpečení pro oříznutí výsledky hledání Azure pomocí služby Active Directory identit | Microsoft Docs
-description: Řízení přístupu na obsahu Azure Search pomocí filtrů zabezpečení a identity služby Active Directory.
+title: Filtry zabezpečení pro oříznutí Azure Search výsledků s použitím identity služby Active Directory | Dokumentace Microsoftu
+description: Řízení přístupu u obsahu Azure Search pomocí filtrů zabezpečení a identity služby Active Directory.
 author: revitalbarletz
 manager: jlembicz
 services: search
@@ -8,60 +8,60 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: 7c1723e01c78132169d8975473a0e9f5466a066c
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 75017a1a3a400ca5390210225f26a6c5f3bb7c47
+ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31796529"
+ms.lasthandoff: 07/05/2018
+ms.locfileid: "37856160"
 ---
-# <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Filtry zabezpečení pro ořezávání výsledky Azure Search pomocí identit služby Active Directory
+# <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Filtry zabezpečení pro oříznutí výsledky Azure Search pomocí identity služby Active Directory
 
-Tento článek ukazuje, jak používat identity zabezpečení Azure Active Directory (AAD) společně s filtry ve službě Azure Search oříznout výsledky vyhledávání založené na členství ve skupině uživatelů.
+Tento článek ukazuje, jak používat identity zabezpečení Azure Active Directory (AAD) spolu s filtry ve službě Azure Search k oříznutí výsledky hledání založené na členství ve skupině uživatelů.
 
 Tento článek se zabývá následujícími úkony:
 > [!div class="checklist"]
-- Vytváření AAD skupin a uživatelů
-- Přiřadit uživatele na skupinu, kterou jste vytvořili
+- Vytvořit uživatele a skupiny AAD
+- Přiřadit uživatele ke skupině, kterou jste vytvořili
 - Nové skupiny do mezipaměti
 - Indexování dokumentů s související skupiny
-- Vydejte žádost o vyhledávání pomocí filtru identifikátory skupiny
+- Vydejte žádost o vyhledávání pomocí filtr identifikátorů skupiny
 
 >[!NOTE]
-> Ukázka fragmenty kódu v tomto článku jsou napsané v C#. Úplný zdrojový kód najdete [na GitHubu](http://aka.ms/search-dotnet-howto). 
+> Ukázka fragmentu kódu v tomto článku jsou napsané v C#. Úplný zdrojový kód najdete [na GitHubu](http://aka.ms/search-dotnet-howto). 
 
 ## <a name="prerequisites"></a>Požadavky
 
-Musí mít indexu ve službě Azure Search [zabezpečení pole](search-security-trimming-for-azure-search.md) k uložení seznamu identit skupiny, kteří mají přístup pro čtení k dokumentu. Tento případ použití předpokládá souvislosti mezi položkou zabezpečitelné (například k jednotlivcům univerzity, kterou aplikace) a určení, kdo má přístup k této položce (přijetí pracovníky) pole zabezpečení.
+Musí mít indexu ve službě Azure Search [zabezpečení pole](search-security-trimming-for-azure-search.md) uložení seznamu skupiny identit máte přístup pro čtení k tomuto dokumentu. Tento případ použití předpokládá shoda mezi zabezpečitelných položku (třeba jednotlivce Fakultě aplikace) a zabezpečení pole určující, kdo má přístup k této položky (nemocnicích pracovníky).
 
-Musí mít oprávnění správce AAD, vyžaduje v tomto názorném postupu pro vytváření uživatelů, skupin a přidružení v AAD.
+Musíte mít oprávnění správce AAD, vyžaduje v tomto názorném postupu pro vytváření uživatelů, skupin a přidružení ve službě AAD.
 
-Aplikace musí být také zaregistrováno v AAD, jak je popsáno v následujícím postupu.
+Vaše aplikace musí být zaregistrovaná v AAD, také, jak je popsáno v následujícím postupu.
 
-### <a name="register-your-application-with-aad"></a>Registrace vaší aplikace v AAD
+### <a name="register-your-application-with-aad"></a>Registrace aplikace pomocí AAD
 
-Tento krok integruje vaše aplikace s AAD za účelem přijetí přihlášení účty uživatelů a skupin. Pokud si nejste správcem AAD ve vaší organizaci, možná budete muset [vytvořit nového klienta](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) provést následující kroky.
+Tento krok integruje do vaší aplikace AAD pro účely přijímat přihlášení účty uživatelů a skupin. Pokud si nejste správce AAD ve vaší organizaci, možná budete muset [vytvořit nového tenanta](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) provést následující kroky.
 
-1. Přejděte na [ **portálu pro registraci aplikace**](https://apps.dev.microsoft.com) >  **sblížené aplikace** > **přidat aplikaci**.
+1. Přejděte [ **portál pro registraci aplikací**](https://apps.dev.microsoft.com) >  **Konvergované aplikace** > **přidat aplikaci**.
 2. Zadejte název pro vaši aplikaci a pak klikněte na **vytvořit**. 
-3. Vyberte aplikaci nově zaregistrovaný na stránce Moje aplikace.
-4. Na stránce registrace aplikace > **platformy** > **přidejte platformu**, zvolte **webového rozhraní API**.
-5. Ještě na stránce registrace aplikace, přejděte na > **Microsoft Graph oprávnění** > **přidat**.
-6. Vyberte oprávnění, přidejte následující delegovaná oprávnění a potom klikněte na **OK**:
+3. Na stránce Moje aplikace vyberte svoji nově zaregistrovaný aplikaci.
+4. Na stránce pro registraci aplikace > **platformy** > **přidat platformy**, zvolte **webového rozhraní API**.
+5. Stále na registrační stránku aplikace, přejděte na > **oprávnění Microsoft Graphu** > **přidat**.
+6. Vyberte oprávnění, přidejte následující delegovaná oprávnění a pak klikněte na tlačítko **OK**:
 
    + **Directory.ReadWrite.All**
    + **Group.ReadWrite.All**
    + **User.ReadWrite.All**
 
-Microsoft Graph poskytuje rozhraní API, která umožňuje programový přístup k AAD přes REST API. Ukázka kódu pro tento návod používá oprávnění k volání rozhraní Microsoft Graph API pro vytváření skupin, uživatele a přidružení. Rozhraní API se taky používají k mezipaměti skupiny identifikátory pro rychlejší filtrování.
+Microsoft Graph poskytuje rozhraní API, který umožňuje programový přístup k AAD pomocí rozhraní REST API. Vzorový kód pro tento návod používá oprávnění k volání rozhraní Microsoft Graph API pro vytváření skupin uživatelů a přidružení. Rozhraní API se také používají identifikátory skupiny mezipaměti pro rychlejší filtrování.
 
 ## <a name="create-users-and-groups"></a>Vytvoření uživatelů a skupin
 
-Pokud přidáváte vyhledávání zavedené aplikace, může být stávajícího uživatele a skupiny v AAD. V takovém případě můžete přeskočit následující tři kroky. 
+Pokud se přidání vyhledávání do vytvořených aplikací, bude pravděpodobně stávajícího uživatele a skupiny v adresáři AAD. V takovém případě můžete přeskočit následující tři kroky. 
 
-Ale pokud nemáte stávajících uživatelů, můžete rozhraní Microsoft Graph API k vytvoření objektů zabezpečení. Následující fragmenty kódu ukazují, jak vygenerovat identifikátory, které se stanou hodnoty dat pro zabezpečení pole v indexu Azure Search. V naší aplikaci přijetí hypotetický univerzity, kterou bude identifikátory zabezpečení pracovníků, přijetí.
+Ale pokud nemáte stávající uživatele, můžete rozhraní Microsoft Graph API k vytvoření objektů zabezpečení. Následující fragmenty kódu ukazují, jak generovat identifikátory, které se stanou hodnoty dat pro zabezpečení pole v indexu Azure Search. V naší aplikaci nemocnicích hypotetické škole to může být identifikátory zabezpečení nemocnicích pracovníkům.
 
-Může být velmi plynulá práce zvlášť ve velkých organizacích, uživatele a členství ve skupině. Kód, který sestaví identity uživatelů a skupin měli spustit dostatečně často mohla vybrat změny v členství v organizaci. Obdobně indexu Azure Search vyžaduje plán aktualizací podobné tak, aby odrážela aktuální stav povolených uživatelů a prostředků.
+Uživatele a členství ve skupině může být velmi plynulé, zejména ve velkých organizacích. Kód, který vytváří identity uživatelů a skupin byste spouštěn dostatečně často, aby přebíral změny v členství v organizaci. Obdobně indexu Azure Search vyžaduje podobné plán aktualizace tak, aby odrážela aktuální stav povolených uživatelů a prostředků.
 
 ### <a name="step-1-create-aad-grouphttpsdevelopermicrosoftcomgraphdocsapi-referencev10apigrouppostgroups"></a>Krok 1: Vytvoření [skupiny AAD](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/group_post_groups) 
 ```csharp
@@ -77,7 +77,7 @@ Group group = new Group()
 Group newGroup = await graph.Groups.Request().AddAsync(group);
 ```
    
-### <a name="step-2-create-aad-userhttpsdevelopermicrosoftcomgraphdocsapi-referencev10apiuserpostusers"></a>Krok 2: Vytvoření [AAD uživatele](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_post_users) 
+### <a name="step-2-create-aad-userhttpsdevelopermicrosoftcomgraphdocsapi-referencev10apiuserpostusers"></a>Krok 2: Vytvoření [uživatele AAD](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_post_users) 
 ```csharp
 User user = new User()
 {
@@ -97,20 +97,20 @@ User newUser = await graph.Users.Request().AddAsync(user);
 await graph.Groups[newGroup.Id].Members.References.Request().AddAsync(newUser);
 ```
 
-### <a name="step-4-cache-the-groups-identifiers"></a>Krok 4: Mezipaměti identifikátory skupiny
-Volitelně můžete snížit latenci sítě, můžete mezipaměti přidružení skupiny uživatelů, aby při vydání žádost o vyhledávání skupin jsou vráceny z mezipaměti, ukládání zvyšuje výkon aad. Můžete použít (AAD Batch API) [https://developer.microsoft.com/graph/docs/concepts/json_batching] k odeslání jedné žádosti Http s více uživateli a sestavení mezipaměti.
+### <a name="step-4-cache-the-groups-identifiers"></a>Krok 4: Do mezipaměti identifikátorů skupiny
+Volitelně Pokud chcete snížit latenci sítě, můžete ukládat do mezipaměti přidružení skupiny uživatelů tak, aby při vydání požadavku hledání skupin se vrátí z mezipaměti, ukládání umožňujícím zpětnou transformaci na AAD. Můžete použít (rozhraní API služby Batch v AAD) [https://developer.microsoft.com/graph/docs/concepts/json_batching] pro odesílání jednoho požadavku Http s více uživateli a sestavení mezipaměti.
 
-Microsoft Graph je určený k řešení k velkému počtu požadavků. Dojde-li čtenáře počet požadavků, Microsoft Graph selže s kódem stavu HTTP 429 žádosti. Další informace najdete v tématu [Microsoft Graph omezení](https://developer.microsoft.com/graph/docs/concepts/throttling).
+Microsoft Graph je určený pro zpracování k velkému počtu požadavků. Pokud dojde k příliš velkého počtu požadavků, Microsoft Graphu selže požadavek se stavovým kódem HTTP 429. Další informace najdete v tématu [Microsoft Graphu omezování](https://developer.microsoft.com/graph/docs/concepts/throttling).
 
 ## <a name="index-document-with-their-permitted-groups"></a>U dokumentu indexu s jejich povolených skupin
 
-Provedení operace dotazů ve službě Azure Search přes indexu Azure Search. V tomto kroku operace indexování importuje prohledávatelná data do indexu, včetně identifikátory používané jako filtry zabezpečení. 
+Operace dotazů ve službě Azure Search jsou spouštěné přes indexu Azure Search. V tomto kroku operace indexování importuje prohledávatelných dat do indexu, včetně identifikátory používané jako filtry zabezpečení. 
 
-Vyhledávání systému Azure není ověření identity uživatele nebo zadejte logiku pro vytvoření obsah, který má uživatel oprávnění k zobrazení. Případ použití oříznutí zabezpečení se předpokládá, že zadáte přidružení mezi citlivých dokumentů a identifikátor skupiny, které mají přístup k dokumentu, Internet nedotčené importovat do indexu vyhledávání. 
+Služba Azure Search neobsahuje ověření identity uživatelů, nebo poskytnout logiku pro vytváření obsahu, které má uživatel oprávnění k zobrazení. Případ použití pro oříznutí zabezpečení se předpokládá, že zadáte přidružení mezi citlivých dokumentů a identifikátor skupiny mají přístup k dokumentu, importovat Internet do indexu vyhledávání. 
 
-V příkladu hypotetický bude zahrnovat těle žádosti PUT na index Azure Search kompozice univerzity, kterou žadatele nebo přepis společně s identifikátor skupiny mají oprávnění k zobrazení tohoto obsahu. 
+V tomto příkladu hypotetické bude zahrnovat text žádosti PUT na index Azure Search kompozice Fakultě žadatele nebo přepisu společně s identifikátorem skupiny mají oprávnění k zobrazení tohoto obsahu. 
 
-Akce indexu obecné příkladu v ukázce kódu v tomto návodu, může vypadat takto:
+Akce indexu obecný příklad použitý v ukázkovém kódu v tomto návodu, může vypadat takto:
 
 ```csharp
 var actions = new IndexAction<SecuredFiles>[]
@@ -130,15 +130,15 @@ var batch = IndexBatch.New(actions);
 _indexClient.Documents.Index(batch);  
 ```
 
-## <a name="issue-a-search-request"></a>Vydat žádost o vyhledávání
+## <a name="issue-a-search-request"></a>Vydat požadavek hledání
 
-Z bezpečnostních důvodů oříznutí hodnoty ve vašem oboru zabezpečení v indexu jsou statické hodnoty používané pro zahrnutí nebo vyloučení dokumenty ve výsledcích hledání. Například pokud je identifikátor skupiny pro přijetí "A11B22C33D44 E55F66G77 H88I99JKK", všechny dokumenty v indexu Azure Search, že tento identifikátor v zabezpečení selhala jsou zahrnuty (nebo vyloučit) ve výsledcích hledání odeslána zpět do žadatel.
+Z bezpečnostních důvodů ořezávání jsou hodnoty ve svém oboru zabezpečení v indexu statické hodnoty používané pro zahrnutí nebo vyloučení dokumenty ve výsledcích hledání. Například pokud identifikátor skupiny pro nemocnicích "A11B22C33D44 E55F66G77 H88I99JKK", všech dokumentů v indexu Azure Search s tímto identifikátorem zabezpečení zaznamenaná jsou zahrnuté (nebo vyloučit) ve výsledcích hledání pošle žadateli.
 
-Chcete-li filtrovat dokumenty vrácené ve výsledcích hledání na základě skupin vydání žádosti o uživatele, zkontrolujte následující kroky.
+K filtrování vrácených ve výsledcích hledání na základě skupin uživatelů odesíláním žádosti dokumentů, najdete v následujících krocích.
 
-### <a name="step-1-retrieve-users-group-identifiers"></a>Krok 1: Načíst identifikátory skupiny uživatele
+### <a name="step-1-retrieve-users-group-identifiers"></a>Krok 1: Načtení identifikátory skupiny uživatele
 
-Pokud uživatele skupiny již do mezipaměti neuložily, nebo vypršela platnost mezipaměti, [skupiny](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/directoryobject_getmembergroups) požadavku
+Pokud uživatele skupiny již do mezipaměti neuložily, nebo vypršela platnost mezipaměti, [skupiny](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/directoryobject_getmembergroups) žádosti
 ```csharp
 private static void RefreshCacheIfRequired(string user)
 {
@@ -164,9 +164,9 @@ private static async Task<List<string>> GetGroupIdsForUser(string userPrincipalN
 }
 ``` 
 
-### <a name="step-2-compose-the-search-request"></a>Krok 2: Tvoří požadavek hledání
+### <a name="step-2-compose-the-search-request"></a>Krok 2: Vytvořte žádost o vyhledávání
 
-Za předpokladu, že máte členství skupiny uživatele, můžete vydat požadavek hledání hodnotami příslušný filtr.
+Za předpokladu, že máte členství skupin uživatele, může vydat požadavek hledání hodnotami, které příslušný filtr.
 
 ```csharp
 string filter = String.Format("groupIds/any(p:search.in(p, '{0}'))", string.Join(",", groups.Select(g => g.ToString())));
@@ -180,14 +180,14 @@ DocumentSearchResult<SecuredFiles> results = _indexClient.Documents.Search<Secur
 ```
 ### <a name="step-3-handle-the-results"></a>Krok 3: Zpracování výsledků
 
-Odpověď obsahuje filtrovaný seznam dokumentů, který se skládá z těch, které má uživatel oprávnění k zobrazení. V závislosti na tom, jak vytvořit stránky s výsledky hledání můžete chtít zahrnují vizuální upozornění tak, aby odrážela filtrované výsledné sady.
+Odpověď obsahuje filtrovaný seznam dokumentů, který se skládá z ty, které má uživatel oprávnění k zobrazení. V závislosti na tom, jak vytvořit stránku výsledků hledání můžete chtít zahrnout vizuální upozornění tak, aby odrážely sady filtrovaných výsledků.
 
 ## <a name="conclusion"></a>Závěr
 
-V tomto návodu jste se dozvěděli techniky pro filtrování dokumenty ve výsledcích hledání Azure, pomocí AAD přihlášení ořezávání výsledky dokumenty, které neodpovídají filtr zadaný v požadavku.
+V tomto návodu jste se dozvěděli techniky pro použití přihlášení AAD k filtrování dokumenty ve výsledcích hledání Azure, ořezávání výsledky dokumenty, které se neshodují s filtr zadaný v požadavku.
 
 ## <a name="see-also"></a>Další informace najdete v tématech
 
-+ [Řízení přístupu na základě identit pomocí filtrů Azure Search](search-security-trimming-for-azure-search.md)
++ [Ovládací prvek přístupu na základě identit pomocí Azure Search filtry](search-security-trimming-for-azure-search.md)
 + [Filtry ve službě Azure Search](search-filters.md)
-+ [Řízení přístupu a zabezpečení a data v operacích Azure Search](search-security-overview.md)
++ [Řízení přístupu a zabezpečení dat v provozu Azure Search](search-security-overview.md)
